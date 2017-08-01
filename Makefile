@@ -3,3 +3,6 @@ build: fmt
 
 fmt:
 	gofmt -w .
+
+clean:
+	git clean -df

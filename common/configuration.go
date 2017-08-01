@@ -8,7 +8,6 @@ type ClientRequestConfiguration struct {
 
 type Configuration struct {
 	ClientRequestConfiguration
-	Region string
+	Region   string
 	Endpoint string
 }
-

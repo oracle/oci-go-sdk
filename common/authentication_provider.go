@@ -13,12 +13,11 @@ type AuthenticationProvider interface {
 	PrivateKeyPassphrase() string
 }
 
-
 type AuthenticationDetailsProvider struct {
 	Fingerprint string
-	TenantID string
-	UserID string
-	PemKey []byte
+	TenantID    string
+	UserID      string
+	PemKey      []byte
 }
 
 /// TODO expand these methods
@@ -33,7 +32,3 @@ func (provider AuthenticationDetailsProvider) PrivateKey() []byte {
 func (provider AuthenticationDetailsProvider) PrivateKeyPassphrase() string {
 	return ""
 }
-
-
-
-
