@@ -9,6 +9,8 @@ import (
 	"go/ast"
 	"bytes"
 	"go/printer"
+	"strconv"
+	"golang.org/x/tools/go/ast/astutil"
 )
 
 var (
@@ -22,38 +24,41 @@ func dieGracefully(e error) {
 	}
 }
 
-func createOrOpen(filename string) (file *os.File, e error) {
-	if _ , err := os.Stat(filename); os.IsNotExist(err) {
-		//file doesn't exist
-		file, e = os.Create(filename)
-		return
-	}
-	file, e = os.OpenFile(filename, os.O_APPEND|os.O_RDWR, 0600)
-	return
-}
-
 func parseFile(filename string) (fset *token.FileSet, parsedFile *ast.File, e error)  {
 	fset = token.NewFileSet()
 	parsedFile, e = parser.ParseFile(fset, filename, nil, parser.ParseComments )
 	return
 }
 
-func mergeImports(intoFile *ast.File, fromFile *ast.File) *ast.File  {
+func MergeImports(intoFile *ast.File, fromFile *ast.File, tokenSet *token.FileSet) {
 	setOfImports := make(map[string]*ast.ImportSpec)
-	newImports := make([]*ast.ImportSpec,0)
 
 	for _, intoImports := range intoFile.Imports {
 		setOfImports[intoImports.Path.Value] = intoImports
-		newImports = append(newImports, intoImports)
 	}
 
 	for _, fromImport := range fromFile.Imports {
 		if setOfImports[fromImport.Path.Value] == nil {
-			newImports = append(newImports, fromImport)
+			unquotedImport, _ := strconv.Unquote(fromImport.Path.Value)
+			astutil.AddImport(tokenSet, intoFile, unquotedImport)
 		}
 	}
-	intoFile.Imports = newImports
-	return intoFile
+}
+
+func DeleteComment(file *ast.File, set *token.FileSet, commentToRemove string) {
+	for _, commentGroups := range file.Comments {
+		newComments := make([]*ast.Comment, 0)
+		for _, comment := range commentGroups.List {
+			if comment.Text != commentToRemove {
+				newComments = append(newComments, comment)
+			}
+		}
+		if len(newComments) == 0 {
+			commentGroups = nil
+		} else {
+			commentGroups.List = newComments
+		}
+	}
 }
 
 
@@ -75,16 +80,9 @@ func main() {
 
 	//MergeImports
 	buffer := bytes.NewBuffer(nil)
-	mergedFile := mergeImports(modelFile, pSourceFile)
+	 MergeImports(modelFile, pSourceFile, mf)
 
-	//This prints the ast for debugging
-	//ast.Fprint(buffer, mf, mergedFile, nil)
-
-	//This prints the ast as code
-	printer.Fprint(buffer, mf, mergedFile)
 	fmt.Println(string(buffer.Bytes()))
-
-	//MergeBody
 }
 
 
