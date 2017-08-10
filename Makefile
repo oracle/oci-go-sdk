@@ -11,4 +11,4 @@ fmt:
 	gofmt -w .
 
 clean:
-	git clean -df --exclude=cmd/
+	git clean -dfn
