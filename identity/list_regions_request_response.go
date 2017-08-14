@@ -9,16 +9,11 @@ type ListRegionsRequest struct {
 
 // Response wrapper for the ListRegions operation
 type ListRegionsResponse struct {
-        
- // Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
- // particular request, please provide the request ID.
-        OpcRequestID string
 
-        
- // The []Region instance
-        ListRegions []Region
+	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
+	// particular request, please provide the request ID.
+	OpcRequestID string
 
-
+	// The []Region instance
+	ListRegions []Region
 }
-
-

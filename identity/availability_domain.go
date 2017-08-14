@@ -12,9 +12,9 @@ package identity
 
 type AvailabilityDomain struct {
 
-    // The name of the Availability Domain.
-    Name string `json:"name,omitempty"`
+	// The name of the Availability Domain.
+	Name string `json:"name,omitempty"`
 
-    // The OCID of the tenancy.
-    CompartmentId string `json:"compartmentId,omitempty"`
+	// The OCID of the tenancy.
+	CompartmentId string `json:"compartmentId,omitempty"`
 }

@@ -12,15 +12,15 @@ package identity
 
 type Tenancy struct {
 
-    // The OCID of the tenancy.
-    Id string `json:"id,omitempty"`
+	// The OCID of the tenancy.
+	Id string `json:"id,omitempty"`
 
-    // The name of the tenancy.
-    Name string `json:"name,omitempty"`
+	// The name of the tenancy.
+	Name string `json:"name,omitempty"`
 
-    // The description of the tenancy.
-    Description string `json:"description,omitempty"`
+	// The description of the tenancy.
+	Description string `json:"description,omitempty"`
 
-    // The region key for the tenancy's home region.\n\nAllowed values are:\n- `IAD`\n- `PHX`\n
-    HomeRegionKey string `json:"homeRegionKey,omitempty"`
+	// The region key for the tenancy's home region.\n\nAllowed values are:\n- `IAD`\n- `PHX`\n
+	HomeRegionKey string `json:"homeRegionKey,omitempty"`
 }

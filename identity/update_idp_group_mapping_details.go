@@ -8,12 +8,11 @@
 
 package identity
 
-
 type UpdateIdpGroupMappingDetails struct {
 
-    // The idp group name.
-    IdpGroupName string `json:"idpGroupName,omitempty"`
+	// The idp group name.
+	IdpGroupName string `json:"idpGroupName,omitempty"`
 
-    // The OCID of the group.
-    GroupId string `json:"groupId,omitempty"`
+	// The OCID of the group.
+	GroupId string `json:"groupId,omitempty"`
 }

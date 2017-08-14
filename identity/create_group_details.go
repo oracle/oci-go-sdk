@@ -8,15 +8,14 @@
 
 package identity
 
-
 type CreateGroupDetails struct {
 
-    // The OCID of the tenancy containing the group.
-    CompartmentId string `json:"compartmentId,omitempty"`
+	// The OCID of the tenancy containing the group.
+	CompartmentId string `json:"compartmentId,omitempty"`
 
-    // The name you assign to the group during creation. The name must be unique across all groups\nin the tenancy and cannot be changed.\n
-    Name string `json:"name,omitempty"`
+	// The name you assign to the group during creation. The name must be unique across all groups\nin the tenancy and cannot be changed.\n
+	Name string `json:"name,omitempty"`
 
-    // The description you assign to the group during creation. Does not have to be unique, and it's changeable.
-    Description string `json:"description,omitempty"`
+	// The description you assign to the group during creation. Does not have to be unique, and it's changeable.
+	Description string `json:"description,omitempty"`
 }

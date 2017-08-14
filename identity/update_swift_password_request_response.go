@@ -5,37 +5,32 @@ package identity
 
 // Request wrapper for the UpdateSwiftPassword operation
 type UpdateSwiftPasswordRequest struct {
-        
- // The OCID of the user. 
-        UserID string
-        
- // The OCID of the Swift password. 
-        SwiftPasswordID string
-        
- // Request object for updating a Swift password. 
-        UpdateSwiftPasswordDetails UpdateSwiftPasswordDetails
-        
- // For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
- // parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
- // will be updated or deleted only if the etag you provide matches the resource's current etag value. 
-        IfMatch string
+
+	// The OCID of the user.
+	UserID string
+
+	// The OCID of the Swift password.
+	SwiftPasswordID string
+
+	// Request object for updating a Swift password.
+	UpdateSwiftPasswordDetails UpdateSwiftPasswordDetails
+
+	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
+	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
+	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
+	IfMatch string
 }
 
 // Response wrapper for the UpdateSwiftPassword operation
 type UpdateSwiftPasswordResponse struct {
-        
- // Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
- // particular request, please provide the request ID.
-        OpcRequestID string
-        
- // For optimistic concurrency control. See `if-match`.
-        Etag string
 
-        
- // The SwiftPassword instance
-        UpdateSwiftPassword SwiftPassword
+	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
+	// particular request, please provide the request ID.
+	OpcRequestID string
 
+	// For optimistic concurrency control. See `if-match`.
+	Etag string
 
+	// The SwiftPassword instance
+	UpdateSwiftPassword SwiftPassword
 }
-
-

@@ -8,12 +8,11 @@
 
 package identity
 
-
 type CreateIdpGroupMappingDetails struct {
 
-    // The name of the IdP group you want to map.
-    IdpGroupName string `json:"idpGroupName,omitempty"`
+	// The name of the IdP group you want to map.
+	IdpGroupName string `json:"idpGroupName,omitempty"`
 
-    // The OCID of the IAM Service [group](#/en/identity/20160918/Group/)\nyou want to map to the IdP group.\n
-    GroupId string `json:"groupId,omitempty"`
+	// The OCID of the IAM Service [group](#/en/identity/20160918/Group/)\nyou want to map to the IdP group.\n
+	GroupId string `json:"groupId,omitempty"`
 }

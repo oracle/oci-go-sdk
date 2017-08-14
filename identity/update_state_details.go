@@ -8,9 +8,8 @@
 
 package identity
 
-
 type UpdateStateDetails struct {
 
-    // Update state to blocked or unblocked. Only \"false\" is supported (for changing the state to unblocked).\n
-    Blocked bool `json:"blocked,omitempty"`
+	// Update state to blocked or unblocked. Only \"false\" is supported (for changing the state to unblocked).\n
+	Blocked bool `json:"blocked,omitempty"`
 }

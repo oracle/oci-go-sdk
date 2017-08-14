@@ -8,12 +8,11 @@
 
 package identity
 
-
 type AddUserToGroupDetails struct {
 
-    // The OCID of the user.
-    UserId string `json:"userId,omitempty"`
+	// The OCID of the user.
+	UserId string `json:"userId,omitempty"`
 
-    // The OCID of the group.
-    GroupId string `json:"groupId,omitempty"`
+	// The OCID of the group.
+	GroupId string `json:"groupId,omitempty"`
 }

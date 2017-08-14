@@ -5,33 +5,28 @@ package identity
 
 // Request wrapper for the CreateRegionSubscription operation
 type CreateRegionSubscriptionRequest struct {
-        
- // Request object for activate a new region. 
-        CreateRegionSubscriptionDetails CreateRegionSubscriptionDetails
-        
- // The OCID of the tenancy. 
-        TenancyID string
-        
- // A token that uniquely identifies a request so it can be retried in case of a timeout or
- // server error without risk of executing that same action again. Retry tokens expire after 24
- // hours, but can be invalidated before then due to conflicting operations (e.g., if a resource
- // has been deleted and purged from the system, then a retry of the original creation request
- // may be rejected). 
-        OpcRetryToken string
+
+	// Request object for activate a new region.
+	CreateRegionSubscriptionDetails CreateRegionSubscriptionDetails
+
+	// The OCID of the tenancy.
+	TenancyID string
+
+	// A token that uniquely identifies a request so it can be retried in case of a timeout or
+	// server error without risk of executing that same action again. Retry tokens expire after 24
+	// hours, but can be invalidated before then due to conflicting operations (e.g., if a resource
+	// has been deleted and purged from the system, then a retry of the original creation request
+	// may be rejected).
+	OpcRetryToken string
 }
 
 // Response wrapper for the CreateRegionSubscription operation
 type CreateRegionSubscriptionResponse struct {
-        
- // Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
- // particular request, please provide the request ID.
-        OpcRequestID string
 
-        
- // The RegionSubscription instance
-        CreateRegionSubscription RegionSubscription
+	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
+	// particular request, please provide the request ID.
+	OpcRequestID string
 
-
+	// The RegionSubscription instance
+	CreateRegionSubscription RegionSubscription
 }
-
-

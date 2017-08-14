@@ -8,18 +8,17 @@
 
 package identity
 
-
 type UpdateSaml2IdentityProviderDetails struct {
 
-    // The protocol used for federation.\n\nExample: `SAML2`\n
-    Protocol string `json:"protocol,omitempty"`
+	// The protocol used for federation.\n\nExample: `SAML2`\n
+	Protocol string `json:"protocol,omitempty"`
 
-    // The description you assign to the `IdentityProvider`. Does not have to\nbe unique, and it's changeable.\n
-    Description string `json:"description,omitempty"`
+	// The description you assign to the `IdentityProvider`. Does not have to\nbe unique, and it's changeable.\n
+	Description string `json:"description,omitempty"`
 
-    // The URL for retrieving the identity provider's metadata,\nwhich contains information required for federating.\n
-    MetadataUrl string `json:"metadataUrl,omitempty"`
+	// The URL for retrieving the identity provider's metadata,\nwhich contains information required for federating.\n
+	MetadataUrl string `json:"metadataUrl,omitempty"`
 
-    // The XML that contains the information required for federating.\n
-    Metadata string `json:"metadata,omitempty"`
+	// The XML that contains the information required for federating.\n
+	Metadata string `json:"metadata,omitempty"`
 }

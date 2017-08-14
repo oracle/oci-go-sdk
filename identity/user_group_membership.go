@@ -9,32 +9,31 @@
 package identity
 
 import (
-        "time"
+	"time"
 )
-
 
 //UserGroupMembership An object that represents the membership of a user in a group. When you add a user to a group, the result is a\n`UserGroupMembership` with its own OCID. To remove a user from a group, you delete the `UserGroupMembership` object.\n
 
 type UserGroupMembership struct {
 
-    // The OCID of the membership.
-    Id string `json:"id,omitempty"`
+	// The OCID of the membership.
+	Id string `json:"id,omitempty"`
 
-    // The OCID of the tenancy containing the user, group, and membership object.
-    CompartmentId string `json:"compartmentId,omitempty"`
+	// The OCID of the tenancy containing the user, group, and membership object.
+	CompartmentId string `json:"compartmentId,omitempty"`
 
-    // The OCID of the group.
-    GroupId string `json:"groupId,omitempty"`
+	// The OCID of the group.
+	GroupId string `json:"groupId,omitempty"`
 
-    // The OCID of the user.
-    UserId string `json:"userId,omitempty"`
+	// The OCID of the user.
+	UserId string `json:"userId,omitempty"`
 
-    // Date and time the membership was created, in the format defined by RFC3339.\n\nExample: `2016-08-25T21:10:29.600Z`\n
-    TimeCreated time.Time `json:"timeCreated,omitempty"`
+	// Date and time the membership was created, in the format defined by RFC3339.\n\nExample: `2016-08-25T21:10:29.600Z`\n
+	TimeCreated time.Time `json:"timeCreated,omitempty"`
 
-    // The membership's current state.  After creating a membership object, make sure its `lifecycleState` changes\nfrom CREATING to ACTIVE before using it.\n
-    LifecycleState string `json:"lifecycleState,omitempty"`
+	// The membership's current state.  After creating a membership object, make sure its `lifecycleState` changes\nfrom CREATING to ACTIVE before using it.\n
+	LifecycleState string `json:"lifecycleState,omitempty"`
 
-    // The detailed status of INACTIVE lifecycleState.
-    InactiveStatus int64 `json:"inactiveStatus,omitempty"`
+	// The detailed status of INACTIVE lifecycleState.
+	InactiveStatus int64 `json:"inactiveStatus,omitempty"`
 }

@@ -5,23 +5,18 @@ package identity
 
 // Request wrapper for the GetTenancy operation
 type GetTenancyRequest struct {
-        
- // The OCID of the tenancy. 
-        TenancyID string
+
+	// The OCID of the tenancy.
+	TenancyID string
 }
 
 // Response wrapper for the GetTenancy operation
 type GetTenancyResponse struct {
-        
- // Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
- // particular request, please provide the request ID.
-        OpcRequestID string
 
-        
- // The Tenancy instance
-        GetTenancy Tenancy
+	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
+	// particular request, please provide the request ID.
+	OpcRequestID string
 
-
+	// The Tenancy instance
+	GetTenancy Tenancy
 }
-
-

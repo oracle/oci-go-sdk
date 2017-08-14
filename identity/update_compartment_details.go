@@ -8,9 +8,8 @@
 
 package identity
 
-
 type UpdateCompartmentDetails struct {
 
-    // The description you assign to the compartment. Does not have to be unique, and it's changeable.
-    Description string `json:"description,omitempty"`
+	// The description you assign to the compartment. Does not have to be unique, and it's changeable.
+	Description string `json:"description,omitempty"`
 }

@@ -12,9 +12,9 @@ package identity
 
 type Region struct {
 
-    // The key of the region.\n\nAllowed values are:\n- `PHX`\n- `IAD`\n
-    Key string `json:"key,omitempty"`
+	// The key of the region.\n\nAllowed values are:\n- `PHX`\n- `IAD`\n
+	Key string `json:"key,omitempty"`
 
-    // The name of the region.\n\nAllowed values are:\n- `us-phoenix-1`\n- `us-ashburn-1`\n
-    Name string `json:"name,omitempty"`
+	// The name of the region.\n\nAllowed values are:\n- `us-phoenix-1`\n- `us-ashburn-1`\n
+	Name string `json:"name,omitempty"`
 }

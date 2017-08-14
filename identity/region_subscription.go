@@ -12,15 +12,15 @@ package identity
 
 type RegionSubscription struct {
 
-    // The region's key.\n\nAllowed values are:\n- `PHX`\n- `IAD`\n
-    RegionKey string `json:"regionKey,omitempty"`
+	// The region's key.\n\nAllowed values are:\n- `PHX`\n- `IAD`\n
+	RegionKey string `json:"regionKey,omitempty"`
 
-    // The region's name.\n\nAllowed values are:\n- `us-phoenix-1`\n- `us-ashburn-1`\n
-    RegionName string `json:"regionName,omitempty"`
+	// The region's name.\n\nAllowed values are:\n- `us-phoenix-1`\n- `us-ashburn-1`\n
+	RegionName string `json:"regionName,omitempty"`
 
-    // The region subscription status.
-    Status string `json:"status,omitempty"`
+	// The region subscription status.
+	Status string `json:"status,omitempty"`
 
-    // Indicates if the region is the home region or not.
-    IsHomeRegion bool `json:"isHomeRegion,omitempty"`
+	// Indicates if the region is the home region or not.
+	IsHomeRegion bool `json:"isHomeRegion,omitempty"`
 }
