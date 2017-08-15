@@ -1,6 +1,5 @@
 package common
 
-
 type RequestOCI struct {
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
@@ -20,7 +19,6 @@ type PaginatedRequestOCI struct {
 	Limit int32
 }
 
-
 type ResponseOCI struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
@@ -29,7 +27,6 @@ type ResponseOCI struct {
 }
 
 type PaginatedResponseOCI struct {
-
 	ResponseOCI
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,
@@ -37,4 +34,3 @@ type PaginatedResponseOCI struct {
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage string
 }
-
