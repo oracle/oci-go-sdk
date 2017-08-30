@@ -11,7 +11,7 @@ package identity
 type CreateCompartmentDetails struct {
 
 	// The OCID of the tenancy containing the compartment.
-	CompartmentId string `json:"compartmentId,omitempty"`
+	CompartmentID string `json:"compartmentId,omitempty"`
 
 	// The name you assign to the compartment during creation. The name must be unique across all compartments
 	// in the tenancy and cannot be changed.

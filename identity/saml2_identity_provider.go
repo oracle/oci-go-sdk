@@ -15,14 +15,13 @@ import (
 // Saml2IdentityProvider. A special type of [IdentityProvider](#/en/identity/20160918/IdentityProvider/) that
 // supports the SAML 2.0 protocol. For more information, see
 // [Identity Providers and Federation](/Content/Identity/Concepts/federation.htm).
-
 type Saml2IdentityProvider struct {
 
 	// The OCID of the `IdentityProvider`.
-	Id string `json:"id,omitempty"`
+	ID string `json:"id,omitempty"`
 
 	// The OCID of the tenancy containing the `IdentityProvider`.
-	CompartmentId string `json:"compartmentId,omitempty"`
+	CompartmentID string `json:"compartmentId,omitempty"`
 
 	// The name you assign to the `IdentityProvider` during creation. The name
 	// must be unique across all `IdentityProvider` objects in the tenancy and
@@ -57,7 +56,7 @@ type Saml2IdentityProvider struct {
 
 	// The URL for retrieving the identity provider's metadata, which
 	// contains information required for federating.
-	MetadataUrl string `json:"metadataUrl,omitempty"`
+	MetadataURL string `json:"metadataUrl,omitempty"`
 
 	// The identity provider's signing certificate used by the IAM Service
 	// to validate the SAML2 token.
@@ -65,5 +64,5 @@ type Saml2IdentityProvider struct {
 
 	// The URL to redirect federated users to for authentication with the
 	// identity provider.
-	RedirectUrl string `json:"redirectUrl,omitempty"`
+	RedirectURL string `json:"redirectUrl,omitempty"`
 }

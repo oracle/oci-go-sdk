@@ -21,23 +21,22 @@ import (
 // Each `IdPGroupMapping` object has its own OCID.
 // **Note:** Any users who are in more than 50 IdP groups cannot be authenticated to use the Oracle
 // Bare Metal Cloud Services Console.
-
 type IdpGroupMapping struct {
 
 	// The OCID of the `IdpGroupMapping`.
-	Id string `json:"id,omitempty"`
+	ID string `json:"id,omitempty"`
 
 	// The OCID of the `IdentityProvider` this mapping belongs to.
-	IdpId string `json:"idpId,omitempty"`
+	IdpID string `json:"idpId,omitempty"`
 
 	// The name of the IdP group that is mapped to the IAM Service group.
 	IdpGroupName string `json:"idpGroupName,omitempty"`
 
 	// The OCID of the IAM Service group that is mapped to the IdP group.
-	GroupId string `json:"groupId,omitempty"`
+	GroupID string `json:"groupId,omitempty"`
 
 	// The OCID of the tenancy containing the `IdentityProvider`.
-	CompartmentId string `json:"compartmentId,omitempty"`
+	CompartmentID string `json:"compartmentId,omitempty"`
 
 	// Date and time the mapping was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`

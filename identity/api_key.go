@@ -19,12 +19,11 @@ import (
 // **Important:** This is **not** the SSH key for accessing compute instances.
 // Each user can have a maximum of three API signing keys.
 // For more information about user credentials, see [User Credentials](/Content/Identity/Concepts/usercredentials.htm).
-
 type ApiKey struct {
 
 	// An Oracle-assigned identifier for the key, in this format:
 	// TENANCY_OCID/USER_OCID/KEY_FINGERPRINT.
-	KeyId string `json:"keyId,omitempty"`
+	KeyID string `json:"keyId,omitempty"`
 
 	// The key's value.
 	KeyValue string `json:"keyValue,omitempty"`
@@ -33,7 +32,7 @@ type ApiKey struct {
 	Fingerprint string `json:"fingerprint,omitempty"`
 
 	// The OCID of the user the key belongs to.
-	UserId string `json:"userId,omitempty"`
+	UserID string `json:"userId,omitempty"`
 
 	// Date and time the `ApiKey` object was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`

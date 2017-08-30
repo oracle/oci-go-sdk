@@ -11,7 +11,7 @@ package identity
 type CreateSaml2IdentityProviderDetails struct {
 
 	// The OCID of your tenancy.
-	CompartmentId string `json:"compartmentId,omitempty"`
+	CompartmentID string `json:"compartmentId,omitempty"`
 
 	// The name you assign to the `IdentityProvider` during creation.
 	// The name must be unique across all `IdentityProvider` objects in the
@@ -32,7 +32,7 @@ type CreateSaml2IdentityProviderDetails struct {
 
 	// The URL for retrieving the identity provider's metadata,
 	// which contains information required for federating.
-	MetadataUrl string `json:"metadataUrl,omitempty"`
+	MetadataURL string `json:"metadataUrl,omitempty"`
 
 	// The XML that contains the information required for federating.
 	Metadata string `json:"metadata,omitempty"`

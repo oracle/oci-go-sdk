@@ -11,7 +11,7 @@ package identity
 type CreateIdentityProviderDetails struct {
 
 	// The OCID of your tenancy.
-	CompartmentId string `json:"compartmentId,omitempty"`
+	CompartmentID string `json:"compartmentId,omitempty"`
 
 	// The name you assign to the `IdentityProvider` during creation.
 	// The name must be unique across all `IdentityProvider` objects in the

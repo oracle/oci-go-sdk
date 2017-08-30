@@ -14,5 +14,5 @@ type UpdateIdpGroupMappingDetails struct {
 	IdpGroupName string `json:"idpGroupName,omitempty"`
 
 	// The OCID of the group.
-	GroupId string `json:"groupId,omitempty"`
+	GroupID string `json:"groupId,omitempty"`
 }

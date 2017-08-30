@@ -20,7 +20,7 @@ type UpdateSaml2IdentityProviderDetails struct {
 
 	// The URL for retrieving the identity provider's metadata,
 	// which contains information required for federating.
-	MetadataUrl string `json:"metadataUrl,omitempty"`
+	MetadataURL string `json:"metadataUrl,omitempty"`
 
 	// The XML that contains the information required for federating.
 	Metadata string `json:"metadata,omitempty"`

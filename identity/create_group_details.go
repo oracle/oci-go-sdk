@@ -11,7 +11,7 @@ package identity
 type CreateGroupDetails struct {
 
 	// The OCID of the tenancy containing the group.
-	CompartmentId string `json:"compartmentId,omitempty"`
+	CompartmentID string `json:"compartmentId,omitempty"`
 
 	// The name you assign to the group during creation. The name must be unique across all groups
 	// in the tenancy and cannot be changed.

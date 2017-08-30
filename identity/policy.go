@@ -22,14 +22,13 @@ import (
 //   * The overall body of policies your organization uses to control access to resources
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator.
-
 type Policy struct {
 
 	// The OCID of the policy.
-	Id string `json:"id,omitempty"`
+	ID string `json:"id,omitempty"`
 
 	// The OCID of the compartment containing the policy (either the tenancy or another compartment).
-	CompartmentId string `json:"compartmentId,omitempty"`
+	CompartmentID string `json:"compartmentId,omitempty"`
 
 	// The name you assign to the policy during creation. The name must be unique across all policies
 	// in the tenancy and cannot be changed.

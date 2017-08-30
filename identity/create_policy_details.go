@@ -15,7 +15,7 @@ import (
 type CreatePolicyDetails struct {
 
 	// The OCID of the compartment containing the policy (either the tenancy or another compartment).
-	CompartmentId string `json:"compartmentId,omitempty"`
+	CompartmentID string `json:"compartmentId,omitempty"`
 
 	// The name you assign to the policy during creation. The name must be unique across all policies
 	// in the tenancy and cannot be changed.

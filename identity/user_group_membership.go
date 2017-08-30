@@ -14,20 +14,19 @@ import (
 
 // UserGroupMembership. An object that represents the membership of a user in a group. When you add a user to a group, the result is a
 // `UserGroupMembership` with its own OCID. To remove a user from a group, you delete the `UserGroupMembership` object.
-
 type UserGroupMembership struct {
 
 	// The OCID of the membership.
-	Id string `json:"id,omitempty"`
+	ID string `json:"id,omitempty"`
 
 	// The OCID of the tenancy containing the user, group, and membership object.
-	CompartmentId string `json:"compartmentId,omitempty"`
+	CompartmentID string `json:"compartmentId,omitempty"`
 
 	// The OCID of the group.
-	GroupId string `json:"groupId,omitempty"`
+	GroupID string `json:"groupId,omitempty"`
 
 	// The OCID of the user.
-	UserId string `json:"userId,omitempty"`
+	UserID string `json:"userId,omitempty"`
 
 	// Date and time the membership was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`

@@ -17,7 +17,6 @@ import (
 // the user's Console login. Swift passwords never expire. A user can have up to two Swift passwords at a time.
 // **Note:** The password is always an Oracle-generated string; you can't change it to a string of your choice.
 // For more information, see [Managing User Credentials](/Content/Identity/Tasks/managingcredentials.htm).
-
 type SwiftPassword struct {
 
 	// The Swift password. The value is available only in the response for `CreateSwiftPassword`, and not
@@ -25,10 +24,10 @@ type SwiftPassword struct {
 	Password string `json:"password,omitempty"`
 
 	// The OCID of the Swift password.
-	Id string `json:"id,omitempty"`
+	ID string `json:"id,omitempty"`
 
 	// The OCID of the user the password belongs to.
-	UserId string `json:"userId,omitempty"`
+	UserID string `json:"userId,omitempty"`
 
 	// The description you assign to the Swift password. Does not have to be unique, and it's changeable.
 	Description string `json:"description,omitempty"`

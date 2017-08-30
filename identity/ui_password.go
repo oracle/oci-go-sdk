@@ -15,14 +15,13 @@ import (
 // UiPassword. A text password that enables a user to sign in to the Console, the user interface for interacting with Oracle Bare
 // Metal Cloud Services.
 // For more information about user credentials, see [User Credentials](/Content/Identity/Concepts/usercredentials.htm).
-
 type UiPassword struct {
 
 	// The user's password for the Console.
 	Password string `json:"password,omitempty"`
 
 	// The OCID of the user.
-	UserId string `json:"userId,omitempty"`
+	UserID string `json:"userId,omitempty"`
 
 	// Date and time the password was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
