@@ -22,6 +22,9 @@ type ListIdentityProvidersRequest struct {
 // Response wrapper for the ListIdentityProviders operation
 type ListIdentityProvidersResponse struct {
 
+	// The []IdentityProvider instance
+	Items []IdentityProvider
+
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestID string
@@ -30,7 +33,4 @@ type ListIdentityProvidersResponse struct {
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage string
-
-	// The []IdentityProvider instance
-	ListIdentityProviders []IdentityProvider
 }

@@ -13,13 +13,13 @@ type GetCompartmentRequest struct {
 // Response wrapper for the GetCompartment operation
 type GetCompartmentResponse struct {
 
+	// The Compartment instance
+	Compartment
+
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestID string
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag string
-
-	// The Compartment instance
-	GetCompartment Compartment
 }

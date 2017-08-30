@@ -13,13 +13,13 @@ type GetUserGroupMembershipRequest struct {
 // Response wrapper for the GetUserGroupMembership operation
 type GetUserGroupMembershipResponse struct {
 
+	// The UserGroupMembership instance
+	UserGroupMembership
+
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestID string
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag string
-
-	// The UserGroupMembership instance
-	GetUserGroupMembership UserGroupMembership
 }

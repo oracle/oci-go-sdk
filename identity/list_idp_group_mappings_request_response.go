@@ -19,6 +19,9 @@ type ListIdpGroupMappingsRequest struct {
 // Response wrapper for the ListIdpGroupMappings operation
 type ListIdpGroupMappingsResponse struct {
 
+	// The []IdpGroupMapping instance
+	Items []IdpGroupMapping
+
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestID string
@@ -27,7 +30,4 @@ type ListIdpGroupMappingsResponse struct {
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage string
-
-	// The []IdpGroupMapping instance
-	ListIdpGroupMappings []IdpGroupMapping
 }

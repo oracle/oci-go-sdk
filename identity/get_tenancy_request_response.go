@@ -13,10 +13,10 @@ type GetTenancyRequest struct {
 // Response wrapper for the GetTenancy operation
 type GetTenancyResponse struct {
 
+	// The Tenancy instance
+	Tenancy
+
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestID string
-
-	// The Tenancy instance
-	GetTenancy Tenancy
 }

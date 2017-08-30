@@ -13,6 +13,9 @@ type ListAvailabilityDomainsRequest struct {
 // Response wrapper for the ListAvailabilityDomains operation
 type ListAvailabilityDomainsResponse struct {
 
+	// The []AvailabilityDomain instance
+	Items []AvailabilityDomain
+
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestID string
@@ -21,7 +24,4 @@ type ListAvailabilityDomainsResponse struct {
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage string
-
-	// The []AvailabilityDomain instance
-	ListAvailabilityDomains []AvailabilityDomain
 }

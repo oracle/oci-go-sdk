@@ -23,10 +23,10 @@ type CreateRegionSubscriptionRequest struct {
 // Response wrapper for the CreateRegionSubscription operation
 type CreateRegionSubscriptionResponse struct {
 
+	// The RegionSubscription instance
+	RegionSubscription
+
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestID string
-
-	// The RegionSubscription instance
-	CreateRegionSubscription RegionSubscription
 }
