@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the ListPolicies operation
+// ListPoliciesRequest wrapper for the ListPolicies operation
 type ListPoliciesRequest struct {
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
@@ -16,7 +16,7 @@ type ListPoliciesRequest struct {
 	Limit int32
 }
 
-// Response wrapper for the ListPolicies operation
+// ListPoliciesResponse wrapper for the ListPolicies operation
 type ListPoliciesResponse struct {
 
 	// The []Policy instance

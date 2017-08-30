@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the CreateGroup operation
+// CreateGroupRequest wrapper for the CreateGroup operation
 type CreateGroupRequest struct {
 
 	// Request object for creating a new group.
@@ -17,7 +17,7 @@ type CreateGroupRequest struct {
 	OpcRetryToken string
 }
 
-// Response wrapper for the CreateGroup operation
+// CreateGroupResponse wrapper for the CreateGroup operation
 type CreateGroupResponse struct {
 
 	// The Group instance

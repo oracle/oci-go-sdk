@@ -3,14 +3,14 @@
 
 package identity
 
-// Request wrapper for the GetPolicy operation
+// GetPolicyRequest wrapper for the GetPolicy operation
 type GetPolicyRequest struct {
 
 	// The OCID of the policy.
 	PolicyID string
 }
 
-// Response wrapper for the GetPolicy operation
+// GetPolicyResponse wrapper for the GetPolicy operation
 type GetPolicyResponse struct {
 
 	// The Policy instance

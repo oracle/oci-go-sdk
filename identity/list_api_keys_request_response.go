@@ -3,14 +3,14 @@
 
 package identity
 
-// Request wrapper for the ListApiKeys operation
+// ListApiKeysRequest wrapper for the ListApiKeys operation
 type ListApiKeysRequest struct {
 
 	// The OCID of the user.
 	UserID string
 }
 
-// Response wrapper for the ListApiKeys operation
+// ListApiKeysResponse wrapper for the ListApiKeys operation
 type ListApiKeysResponse struct {
 
 	// The []ApiKey instance

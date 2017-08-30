@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the UploadApiKey operation
+// UploadApiKeyRequest wrapper for the UploadApiKey operation
 type UploadApiKeyRequest struct {
 
 	// The OCID of the user.
@@ -20,7 +20,7 @@ type UploadApiKeyRequest struct {
 	OpcRetryToken string
 }
 
-// Response wrapper for the UploadApiKey operation
+// UploadApiKeyResponse wrapper for the UploadApiKey operation
 type UploadApiKeyResponse struct {
 
 	// The ApiKey instance

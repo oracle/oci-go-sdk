@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the ListIdpGroupMappings operation
+// ListIdpGroupMappingsRequest wrapper for the ListIdpGroupMappings operation
 type ListIdpGroupMappingsRequest struct {
 
 	// The OCID of the identity provider.
@@ -16,7 +16,7 @@ type ListIdpGroupMappingsRequest struct {
 	Limit int32
 }
 
-// Response wrapper for the ListIdpGroupMappings operation
+// ListIdpGroupMappingsResponse wrapper for the ListIdpGroupMappings operation
 type ListIdpGroupMappingsResponse struct {
 
 	// The []IdpGroupMapping instance

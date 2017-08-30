@@ -13,9 +13,10 @@ type CreateCompartmentDetails struct {
 	// The OCID of the tenancy containing the compartment.
 	CompartmentId string `json:"compartmentId,omitempty"`
 
-	// The name you assign to the compartment during creation. The name must be unique across all compartments\nin the tenancy and cannot be changed.\n
+	// The name you assign to the compartment during creation. The name must be unique across all compartments
+	// in the tenancy and cannot be changed.
 	Name string `json:"name,omitempty"`
 
-	// The description you assign to the compartment during creation. Does not have to be unique, and it's changeable.\n
+	// The description you assign to the compartment during creation. Does not have to be unique, and it's changeable.
 	Description string `json:"description,omitempty"`
 }

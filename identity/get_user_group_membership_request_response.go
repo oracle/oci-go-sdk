@@ -3,14 +3,14 @@
 
 package identity
 
-// Request wrapper for the GetUserGroupMembership operation
+// GetUserGroupMembershipRequest wrapper for the GetUserGroupMembership operation
 type GetUserGroupMembershipRequest struct {
 
 	// The OCID of the userGroupMembership.
 	UserGroupMembershipID string
 }
 
-// Response wrapper for the GetUserGroupMembership operation
+// GetUserGroupMembershipResponse wrapper for the GetUserGroupMembership operation
 type GetUserGroupMembershipResponse struct {
 
 	// The UserGroupMembership instance

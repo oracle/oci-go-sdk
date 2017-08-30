@@ -13,7 +13,8 @@ type CreateUserDetails struct {
 	// The OCID of the tenancy containing the user.
 	CompartmentId string `json:"compartmentId,omitempty"`
 
-	// The name you assign to the user during creation. This is the user's login for the Console.\nThe name must be unique across all users in the tenancy and cannot be changed.\n
+	// The name you assign to the user during creation. This is the user's login for the Console.
+	// The name must be unique across all users in the tenancy and cannot be changed.
 	Name string `json:"name,omitempty"`
 
 	// The description you assign to the user during creation. Does not have to be unique, and it's changeable.

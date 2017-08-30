@@ -10,6 +10,10 @@ package identity
 
 type CreateRegionSubscriptionDetails struct {
 
-	// The regions's key.\n\nAllowed values are:\n- `PHX`\n- `IAD`\n\nExample: `PHX`\n
+	// The regions's key.
+	// Allowed values are:
+	// - `PHX`
+	// - `IAD`
+	// Example: `PHX`
 	RegionKey string `json:"regionKey,omitempty"`
 }

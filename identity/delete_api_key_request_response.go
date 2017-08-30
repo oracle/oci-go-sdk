@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the DeleteApiKey operation
+// DeleteApiKeyRequest wrapper for the DeleteApiKey operation
 type DeleteApiKeyRequest struct {
 
 	// The OCID of the user.
@@ -18,7 +18,7 @@ type DeleteApiKeyRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the DeleteApiKey operation
+// DeleteApiKeyResponse wrapper for the DeleteApiKey operation
 type DeleteApiKeyResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

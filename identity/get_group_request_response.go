@@ -3,14 +3,14 @@
 
 package identity
 
-// Request wrapper for the GetGroup operation
+// GetGroupRequest wrapper for the GetGroup operation
 type GetGroupRequest struct {
 
 	// The OCID of the group.
 	GroupID string
 }
 
-// Response wrapper for the GetGroup operation
+// GetGroupResponse wrapper for the GetGroup operation
 type GetGroupResponse struct {
 
 	// The Group instance

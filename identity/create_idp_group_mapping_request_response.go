@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the CreateIdpGroupMapping operation
+// CreateIdpGroupMappingRequest wrapper for the CreateIdpGroupMapping operation
 type CreateIdpGroupMappingRequest struct {
 
 	// Add a mapping from an SAML2.0 identity provider group to a BMC group.
@@ -20,7 +20,7 @@ type CreateIdpGroupMappingRequest struct {
 	OpcRetryToken string
 }
 
-// Response wrapper for the CreateIdpGroupMapping operation
+// CreateIdpGroupMappingResponse wrapper for the CreateIdpGroupMapping operation
 type CreateIdpGroupMappingResponse struct {
 
 	// The IdpGroupMapping instance

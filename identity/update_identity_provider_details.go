@@ -10,9 +10,11 @@ package identity
 
 type UpdateIdentityProviderDetails struct {
 
-	// The protocol used for federation.\n\nExample: `SAML2`\n
+	// The protocol used for federation.
+	// Example: `SAML2`
 	Protocol string `json:"protocol,omitempty"`
 
-	// The description you assign to the `IdentityProvider`. Does not have to\nbe unique, and it's changeable.\n
+	// The description you assign to the `IdentityProvider`. Does not have to
+	// be unique, and it's changeable.
 	Description string `json:"description,omitempty"`
 }

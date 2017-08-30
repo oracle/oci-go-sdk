@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the ListIdentityProviders operation
+// ListIdentityProvidersRequest wrapper for the ListIdentityProviders operation
 type ListIdentityProvidersRequest struct {
 
 	// The protocol used for federation.
@@ -19,7 +19,7 @@ type ListIdentityProvidersRequest struct {
 	Limit int32
 }
 
-// Response wrapper for the ListIdentityProviders operation
+// ListIdentityProvidersResponse wrapper for the ListIdentityProviders operation
 type ListIdentityProvidersResponse struct {
 
 	// The []IdentityProvider instance

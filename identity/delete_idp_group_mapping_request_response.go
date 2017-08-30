@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the DeleteIdpGroupMapping operation
+// DeleteIdpGroupMappingRequest wrapper for the DeleteIdpGroupMapping operation
 type DeleteIdpGroupMappingRequest struct {
 
 	// The OCID of the identity provider.
@@ -18,7 +18,7 @@ type DeleteIdpGroupMappingRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the DeleteIdpGroupMapping operation
+// DeleteIdpGroupMappingResponse wrapper for the DeleteIdpGroupMapping operation
 type DeleteIdpGroupMappingResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

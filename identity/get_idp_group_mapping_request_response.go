@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the GetIdpGroupMapping operation
+// GetIdpGroupMappingRequest wrapper for the GetIdpGroupMapping operation
 type GetIdpGroupMappingRequest struct {
 
 	// The OCID of the identity provider.
@@ -13,7 +13,7 @@ type GetIdpGroupMappingRequest struct {
 	MappingID string
 }
 
-// Response wrapper for the GetIdpGroupMapping operation
+// GetIdpGroupMappingResponse wrapper for the GetIdpGroupMapping operation
 type GetIdpGroupMappingResponse struct {
 
 	// The IdpGroupMapping instance

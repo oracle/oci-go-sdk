@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the UpdateUser operation
+// UpdateUserRequest wrapper for the UpdateUser operation
 type UpdateUserRequest struct {
 
 	// The OCID of the user.
@@ -18,7 +18,7 @@ type UpdateUserRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the UpdateUser operation
+// UpdateUserResponse wrapper for the UpdateUser operation
 type UpdateUserResponse struct {
 
 	// The User instance

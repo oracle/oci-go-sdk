@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the DeleteUser operation
+// DeleteUserRequest wrapper for the DeleteUser operation
 type DeleteUserRequest struct {
 
 	// The OCID of the user.
@@ -15,7 +15,7 @@ type DeleteUserRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the DeleteUser operation
+// DeleteUserResponse wrapper for the DeleteUser operation
 type DeleteUserResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

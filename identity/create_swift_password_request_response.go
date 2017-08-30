@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the CreateSwiftPassword operation
+// CreateSwiftPasswordRequest wrapper for the CreateSwiftPassword operation
 type CreateSwiftPasswordRequest struct {
 
 	// Request object for creating a new swift password.
@@ -20,7 +20,7 @@ type CreateSwiftPasswordRequest struct {
 	OpcRetryToken string
 }
 
-// Response wrapper for the CreateSwiftPassword operation
+// CreateSwiftPasswordResponse wrapper for the CreateSwiftPassword operation
 type CreateSwiftPasswordResponse struct {
 
 	// The SwiftPassword instance

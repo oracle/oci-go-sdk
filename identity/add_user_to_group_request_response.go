@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the AddUserToGroup operation
+// AddUserToGroupRequest wrapper for the AddUserToGroup operation
 type AddUserToGroupRequest struct {
 
 	// Request object for adding a user to a group.
@@ -17,7 +17,7 @@ type AddUserToGroupRequest struct {
 	OpcRetryToken string
 }
 
-// Response wrapper for the AddUserToGroup operation
+// AddUserToGroupResponse wrapper for the AddUserToGroup operation
 type AddUserToGroupResponse struct {
 
 	// The UserGroupMembership instance

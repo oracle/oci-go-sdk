@@ -13,15 +13,20 @@ type CreateIdentityProviderDetails struct {
 	// The OCID of your tenancy.
 	CompartmentId string `json:"compartmentId,omitempty"`
 
-	// The name you assign to the `IdentityProvider` during creation.\nThe name must be unique across all `IdentityProvider` objects in the\ntenancy and cannot be changed.\n
+	// The name you assign to the `IdentityProvider` during creation.
+	// The name must be unique across all `IdentityProvider` objects in the
+	// tenancy and cannot be changed.
 	Name string `json:"name,omitempty"`
 
-	// The description you assign to the `IdentityProvider` during creation.\nDoes not have to be unique, and it's changeable.\n
+	// The description you assign to the `IdentityProvider` during creation.
+	// Does not have to be unique, and it's changeable.
 	Description string `json:"description,omitempty"`
 
-	// The identity provider service or product (e.g., Oracle Identity Cloud Service).\n\nExample: `IDCS`\n
+	// The identity provider service or product (e.g., Oracle Identity Cloud Service).
+	// Example: `IDCS`
 	ProductType string `json:"productType,omitempty"`
 
-	// The protocol used for federation.\n\nExample: `SAML2`\n
+	// The protocol used for federation.
+	// Example: `SAML2`
 	Protocol string `json:"protocol,omitempty"`
 }

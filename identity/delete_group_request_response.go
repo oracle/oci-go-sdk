@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the DeleteGroup operation
+// DeleteGroupRequest wrapper for the DeleteGroup operation
 type DeleteGroupRequest struct {
 
 	// The OCID of the group.
@@ -15,7 +15,7 @@ type DeleteGroupRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the DeleteGroup operation
+// DeleteGroupResponse wrapper for the DeleteGroup operation
 type DeleteGroupResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

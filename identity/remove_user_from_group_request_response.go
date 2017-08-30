@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the RemoveUserFromGroup operation
+// RemoveUserFromGroupRequest wrapper for the RemoveUserFromGroup operation
 type RemoveUserFromGroupRequest struct {
 
 	// The OCID of the userGroupMembership.
@@ -15,7 +15,7 @@ type RemoveUserFromGroupRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the RemoveUserFromGroup operation
+// RemoveUserFromGroupResponse wrapper for the RemoveUserFromGroup operation
 type RemoveUserFromGroupResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

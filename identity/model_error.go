@@ -10,7 +10,8 @@ package identity
 
 type ModelError struct {
 
-	// A short error code that defines the error, meant for programmatic parsing. See\n[API Errors](/Content/API/References/apierrors.htm).\n
+	// A short error code that defines the error, meant for programmatic parsing. See
+	// [API Errors](/Content/API/References/apierrors.htm).
 	Code string `json:"code,omitempty"`
 
 	// A human-readable error string.

@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the DeleteSwiftPassword operation
+// DeleteSwiftPasswordRequest wrapper for the DeleteSwiftPassword operation
 type DeleteSwiftPasswordRequest struct {
 
 	// The OCID of the user.
@@ -18,7 +18,7 @@ type DeleteSwiftPasswordRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the DeleteSwiftPassword operation
+// DeleteSwiftPasswordResponse wrapper for the DeleteSwiftPassword operation
 type DeleteSwiftPasswordResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

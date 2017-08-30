@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the UpdateSwiftPassword operation
+// UpdateSwiftPasswordRequest wrapper for the UpdateSwiftPassword operation
 type UpdateSwiftPasswordRequest struct {
 
 	// The OCID of the user.
@@ -21,7 +21,7 @@ type UpdateSwiftPasswordRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the UpdateSwiftPassword operation
+// UpdateSwiftPasswordResponse wrapper for the UpdateSwiftPassword operation
 type UpdateSwiftPasswordResponse struct {
 
 	// The SwiftPassword instance

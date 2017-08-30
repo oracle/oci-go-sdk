@@ -3,14 +3,14 @@
 
 package identity
 
-// Request wrapper for the GetTenancy operation
+// GetTenancyRequest wrapper for the GetTenancy operation
 type GetTenancyRequest struct {
 
 	// The OCID of the tenancy.
 	TenancyID string
 }
 
-// Response wrapper for the GetTenancy operation
+// GetTenancyResponse wrapper for the GetTenancy operation
 type GetTenancyResponse struct {
 
 	// The Tenancy instance

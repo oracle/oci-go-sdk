@@ -8,7 +8,7 @@ gen: build-gen
 	go generate ./identity
 
 fmt:
-	gofmt -w .
+	gofmt -s -w .
 
 clean:
 	git clean -dfn

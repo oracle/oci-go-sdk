@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the UpdateCompartment operation
+// UpdateCompartmentRequest wrapper for the UpdateCompartment operation
 type UpdateCompartmentRequest struct {
 
 	// The OCID of the compartment.
@@ -18,7 +18,7 @@ type UpdateCompartmentRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the UpdateCompartment operation
+// UpdateCompartmentResponse wrapper for the UpdateCompartment operation
 type UpdateCompartmentResponse struct {
 
 	// The Compartment instance

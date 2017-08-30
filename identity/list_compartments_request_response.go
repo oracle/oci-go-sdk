@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the ListCompartments operation
+// ListCompartmentsRequest wrapper for the ListCompartments operation
 type ListCompartmentsRequest struct {
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
@@ -16,7 +16,7 @@ type ListCompartmentsRequest struct {
 	Limit int32
 }
 
-// Response wrapper for the ListCompartments operation
+// ListCompartmentsResponse wrapper for the ListCompartments operation
 type ListCompartmentsResponse struct {
 
 	// The []Compartment instance

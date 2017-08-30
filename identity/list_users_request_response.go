@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the ListUsers operation
+// ListUsersRequest wrapper for the ListUsers operation
 type ListUsersRequest struct {
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
@@ -16,7 +16,7 @@ type ListUsersRequest struct {
 	Limit int32
 }
 
-// Response wrapper for the ListUsers operation
+// ListUsersResponse wrapper for the ListUsers operation
 type ListUsersResponse struct {
 
 	// The []User instance

@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the CreateOrResetUIPassword operation
+// CreateOrResetUIPasswordRequest wrapper for the CreateOrResetUIPassword operation
 type CreateOrResetUIPasswordRequest struct {
 
 	// The OCID of the user.
@@ -17,7 +17,7 @@ type CreateOrResetUIPasswordRequest struct {
 	OpcRetryToken string
 }
 
-// Response wrapper for the CreateOrResetUIPassword operation
+// CreateOrResetUIPasswordResponse wrapper for the CreateOrResetUIPassword operation
 type CreateOrResetUIPasswordResponse struct {
 
 	// The UiPassword instance

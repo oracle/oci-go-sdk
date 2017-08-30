@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the UpdateIdpGroupMapping operation
+// UpdateIdpGroupMappingRequest wrapper for the UpdateIdpGroupMapping operation
 type UpdateIdpGroupMappingRequest struct {
 
 	// The OCID of the identity provider.
@@ -21,7 +21,7 @@ type UpdateIdpGroupMappingRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the UpdateIdpGroupMapping operation
+// UpdateIdpGroupMappingResponse wrapper for the UpdateIdpGroupMapping operation
 type UpdateIdpGroupMappingResponse struct {
 
 	// The IdpGroupMapping instance

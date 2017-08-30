@@ -12,7 +12,15 @@ import (
 	"time"
 )
 
-//IdpGroupMapping A mapping between a single group defined by the identity provider (IdP) you're federating with\nand a single IAM Service [group](#/en/identity/20160918/Group/) in Oracle Bare Metal Cloud\nServices. For more information about group mappings and what they're for, see\n[Identity Providers and Federation](/Content/Identity/Concepts/federation.htm).\n\nA given IdP group can be mapped to zero, one, or multiple IAM Service groups, and vice versa.\nBut each `IdPGroupMapping` object is between only a single IdP group and IAM Service group.\nEach `IdPGroupMapping` object has its own OCID.\n\n**Note:** Any users who are in more than 50 IdP groups cannot be authenticated to use the Oracle\nBare Metal Cloud Services Console.\n
+// IdpGroupMapping. A mapping between a single group defined by the identity provider (IdP) you're federating with
+// and a single IAM Service [group](#/en/identity/20160918/Group/) in Oracle Bare Metal Cloud
+// Services. For more information about group mappings and what they're for, see
+// [Identity Providers and Federation](/Content/Identity/Concepts/federation.htm).
+// A given IdP group can be mapped to zero, one, or multiple IAM Service groups, and vice versa.
+// But each `IdPGroupMapping` object is between only a single IdP group and IAM Service group.
+// Each `IdPGroupMapping` object has its own OCID.
+// **Note:** Any users who are in more than 50 IdP groups cannot be authenticated to use the Oracle
+// Bare Metal Cloud Services Console.
 
 type IdpGroupMapping struct {
 
@@ -31,10 +39,12 @@ type IdpGroupMapping struct {
 	// The OCID of the tenancy containing the `IdentityProvider`.
 	CompartmentId string `json:"compartmentId,omitempty"`
 
-	// Date and time the mapping was created, in the format defined by RFC3339.\n\nExample: `2016-08-25T21:10:29.600Z`\n
+	// Date and time the mapping was created, in the format defined by RFC3339.
+	// Example: `2016-08-25T21:10:29.600Z`
 	TimeCreated time.Time `json:"timeCreated,omitempty"`
 
-	// The mapping's current state.  After creating a mapping object, make sure its `lifecycleState` changes\nfrom CREATING to ACTIVE before using it.\n
+	// The mapping's current state.  After creating a mapping object, make sure its `lifecycleState` changes
+	// from CREATING to ACTIVE before using it.
 	LifecycleState string `json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.

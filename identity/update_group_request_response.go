@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the UpdateGroup operation
+// UpdateGroupRequest wrapper for the UpdateGroup operation
 type UpdateGroupRequest struct {
 
 	// The OCID of the group.
@@ -18,7 +18,7 @@ type UpdateGroupRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the UpdateGroup operation
+// UpdateGroupResponse wrapper for the UpdateGroup operation
 type UpdateGroupResponse struct {
 
 	// The Group instance

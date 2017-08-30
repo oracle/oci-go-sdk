@@ -3,14 +3,14 @@
 
 package identity
 
-// Request wrapper for the GetUser operation
+// GetUserRequest wrapper for the GetUser operation
 type GetUserRequest struct {
 
 	// The OCID of the user.
 	UserID string
 }
 
-// Response wrapper for the GetUser operation
+// GetUserResponse wrapper for the GetUser operation
 type GetUserResponse struct {
 
 	// The User instance

@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the UpdatePolicy operation
+// UpdatePolicyRequest wrapper for the UpdatePolicy operation
 type UpdatePolicyRequest struct {
 
 	// The OCID of the policy.
@@ -18,7 +18,7 @@ type UpdatePolicyRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the UpdatePolicy operation
+// UpdatePolicyResponse wrapper for the UpdatePolicy operation
 type UpdatePolicyResponse struct {
 
 	// The Policy instance

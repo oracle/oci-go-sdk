@@ -3,14 +3,14 @@
 
 package identity
 
-// Request wrapper for the GetIdentityProvider operation
+// GetIdentityProviderRequest wrapper for the GetIdentityProvider operation
 type GetIdentityProviderRequest struct {
 
 	// The OCID of the identity provider.
 	IdentityProviderID string
 }
 
-// Response wrapper for the GetIdentityProvider operation
+// GetIdentityProviderResponse wrapper for the GetIdentityProvider operation
 type GetIdentityProviderResponse struct {
 
 	// The IdentityProvider instance

@@ -10,6 +10,6 @@ package identity
 
 type CreateSwiftPasswordDetails struct {
 
-	// The description you assign to the Swift password during creation. Does not have to be unique, and it's changeable.\n
+	// The description you assign to the Swift password during creation. Does not have to be unique, and it's changeable.
 	Description string `json:"description,omitempty"`
 }

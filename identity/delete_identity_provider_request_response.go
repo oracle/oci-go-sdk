@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the DeleteIdentityProvider operation
+// DeleteIdentityProviderRequest wrapper for the DeleteIdentityProvider operation
 type DeleteIdentityProviderRequest struct {
 
 	// The OCID of the identity provider.
@@ -15,7 +15,7 @@ type DeleteIdentityProviderRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the DeleteIdentityProvider operation
+// DeleteIdentityProviderResponse wrapper for the DeleteIdentityProvider operation
 type DeleteIdentityProviderResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

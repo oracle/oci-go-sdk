@@ -3,14 +3,14 @@
 
 package identity
 
-// Request wrapper for the GetCompartment operation
+// GetCompartmentRequest wrapper for the GetCompartment operation
 type GetCompartmentRequest struct {
 
 	// The OCID of the compartment.
 	CompartmentID string
 }
 
-// Response wrapper for the GetCompartment operation
+// GetCompartmentResponse wrapper for the GetCompartment operation
 type GetCompartmentResponse struct {
 
 	// The Compartment instance

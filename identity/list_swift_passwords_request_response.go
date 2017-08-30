@@ -3,14 +3,14 @@
 
 package identity
 
-// Request wrapper for the ListSwiftPasswords operation
+// ListSwiftPasswordsRequest wrapper for the ListSwiftPasswords operation
 type ListSwiftPasswordsRequest struct {
 
 	// The OCID of the user.
 	UserID string
 }
 
-// Response wrapper for the ListSwiftPasswords operation
+// ListSwiftPasswordsResponse wrapper for the ListSwiftPasswords operation
 type ListSwiftPasswordsResponse struct {
 
 	// The []SwiftPassword instance

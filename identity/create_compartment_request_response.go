@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the CreateCompartment operation
+// CreateCompartmentRequest wrapper for the CreateCompartment operation
 type CreateCompartmentRequest struct {
 
 	// Request object for creating a new compartment.
@@ -17,7 +17,7 @@ type CreateCompartmentRequest struct {
 	OpcRetryToken string
 }
 
-// Response wrapper for the CreateCompartment operation
+// CreateCompartmentResponse wrapper for the CreateCompartment operation
 type CreateCompartmentResponse struct {
 
 	// The Compartment instance

@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the DeletePolicy operation
+// DeletePolicyRequest wrapper for the DeletePolicy operation
 type DeletePolicyRequest struct {
 
 	// The OCID of the policy.
@@ -15,7 +15,7 @@ type DeletePolicyRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the DeletePolicy operation
+// DeletePolicyResponse wrapper for the DeletePolicy operation
 type DeletePolicyResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

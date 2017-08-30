@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the CreateUser operation
+// CreateUserRequest wrapper for the CreateUser operation
 type CreateUserRequest struct {
 
 	// Request object for creating a new user.
@@ -17,7 +17,7 @@ type CreateUserRequest struct {
 	OpcRetryToken string
 }
 
-// Response wrapper for the CreateUser operation
+// CreateUserResponse wrapper for the CreateUser operation
 type CreateUserResponse struct {
 
 	// The User instance

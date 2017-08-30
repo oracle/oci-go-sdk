@@ -3,11 +3,11 @@
 
 package identity
 
-// Request wrapper for the ListRegions operation
+// ListRegionsRequest wrapper for the ListRegions operation
 type ListRegionsRequest struct {
 }
 
-// Response wrapper for the ListRegions operation
+// ListRegionsResponse wrapper for the ListRegions operation
 type ListRegionsResponse struct {
 
 	// The []Region instance

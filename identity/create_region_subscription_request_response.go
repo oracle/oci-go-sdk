@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the CreateRegionSubscription operation
+// CreateRegionSubscriptionRequest wrapper for the CreateRegionSubscription operation
 type CreateRegionSubscriptionRequest struct {
 
 	// Request object for activate a new region.
@@ -20,7 +20,7 @@ type CreateRegionSubscriptionRequest struct {
 	OpcRetryToken string
 }
 
-// Response wrapper for the CreateRegionSubscription operation
+// CreateRegionSubscriptionResponse wrapper for the CreateRegionSubscription operation
 type CreateRegionSubscriptionResponse struct {
 
 	// The RegionSubscription instance

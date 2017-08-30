@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the CreatePolicy operation
+// CreatePolicyRequest wrapper for the CreatePolicy operation
 type CreatePolicyRequest struct {
 
 	// Request object for creating a new policy.
@@ -17,7 +17,7 @@ type CreatePolicyRequest struct {
 	OpcRetryToken string
 }
 
-// Response wrapper for the CreatePolicy operation
+// CreatePolicyResponse wrapper for the CreatePolicy operation
 type CreatePolicyResponse struct {
 
 	// The Policy instance

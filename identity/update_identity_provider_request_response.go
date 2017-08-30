@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the UpdateIdentityProvider operation
+// UpdateIdentityProviderRequest wrapper for the UpdateIdentityProvider operation
 type UpdateIdentityProviderRequest struct {
 
 	// The OCID of the identity provider.
@@ -18,7 +18,7 @@ type UpdateIdentityProviderRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the UpdateIdentityProvider operation
+// UpdateIdentityProviderResponse wrapper for the UpdateIdentityProvider operation
 type UpdateIdentityProviderResponse struct {
 
 	// The IdentityProvider instance

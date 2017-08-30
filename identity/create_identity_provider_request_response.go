@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the CreateIdentityProvider operation
+// CreateIdentityProviderRequest wrapper for the CreateIdentityProvider operation
 type CreateIdentityProviderRequest struct {
 
 	// Request object for creating a new SAML2 identity provider.
@@ -17,7 +17,7 @@ type CreateIdentityProviderRequest struct {
 	OpcRetryToken string
 }
 
-// Response wrapper for the CreateIdentityProvider operation
+// CreateIdentityProviderResponse wrapper for the CreateIdentityProvider operation
 type CreateIdentityProviderResponse struct {
 
 	// The IdentityProvider instance

@@ -3,14 +3,14 @@
 
 package identity
 
-// Request wrapper for the ListRegionSubscriptions operation
+// ListRegionSubscriptionsRequest wrapper for the ListRegionSubscriptions operation
 type ListRegionSubscriptionsRequest struct {
 
 	// The OCID of the tenancy.
 	TenancyID string
 }
 
-// Response wrapper for the ListRegionSubscriptions operation
+// ListRegionSubscriptionsResponse wrapper for the ListRegionSubscriptions operation
 type ListRegionSubscriptionsResponse struct {
 
 	// The []RegionSubscription instance

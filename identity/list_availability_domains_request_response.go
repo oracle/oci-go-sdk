@@ -3,14 +3,14 @@
 
 package identity
 
-// Request wrapper for the ListAvailabilityDomains operation
+// ListAvailabilityDomainsRequest wrapper for the ListAvailabilityDomains operation
 type ListAvailabilityDomainsRequest struct {
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
 	CompartmentID string
 }
 
-// Response wrapper for the ListAvailabilityDomains operation
+// ListAvailabilityDomainsResponse wrapper for the ListAvailabilityDomains operation
 type ListAvailabilityDomainsResponse struct {
 
 	// The []AvailabilityDomain instance

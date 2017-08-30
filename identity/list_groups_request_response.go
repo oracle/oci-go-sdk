@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the ListGroups operation
+// ListGroupsRequest wrapper for the ListGroups operation
 type ListGroupsRequest struct {
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
@@ -16,7 +16,7 @@ type ListGroupsRequest struct {
 	Limit int32
 }
 
-// Response wrapper for the ListGroups operation
+// ListGroupsResponse wrapper for the ListGroups operation
 type ListGroupsResponse struct {
 
 	// The []Group instance

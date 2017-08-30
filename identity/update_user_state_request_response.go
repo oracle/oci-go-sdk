@@ -3,7 +3,7 @@
 
 package identity
 
-// Request wrapper for the UpdateUserState operation
+// UpdateUserStateRequest wrapper for the UpdateUserState operation
 type UpdateUserStateRequest struct {
 
 	// The OCID of the user.
@@ -18,7 +18,7 @@ type UpdateUserStateRequest struct {
 	IfMatch string
 }
 
-// Response wrapper for the UpdateUserState operation
+// UpdateUserStateResponse wrapper for the UpdateUserState operation
 type UpdateUserStateResponse struct {
 
 	// The User instance
