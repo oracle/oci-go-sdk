@@ -7,16 +7,16 @@ package identity
 type ListIdentityProvidersRequest struct {
 
 	// The protocol used for federation.
-	Protocol string
+	Protocol string `mandatory:"true" contributesTo:"query" name:"protocol"`
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
-	CompartmentID string
+	CompartmentID string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
-	Page string
+	Page string `mandatory:"false" contributesTo:"query" name:"page"`
 
 	// The maximum number of items to return in a paginated "List" call.
-	Limit int32
+	Limit int32 `mandatory:"false" contributesTo:"query" name:"limit"`
 }
 
 // ListIdentityProvidersResponse wrapper for the ListIdentityProviders operation

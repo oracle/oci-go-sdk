@@ -7,7 +7,7 @@ package identity
 type ListApiKeysRequest struct {
 
 	// The OCID of the user.
-	UserID string
+	UserID string `mandatory:"true" contributesTo:"path"`
 }
 
 // ListApiKeysResponse wrapper for the ListApiKeys operation

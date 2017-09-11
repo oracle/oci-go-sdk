@@ -7,13 +7,13 @@ package identity
 type ListIdpGroupMappingsRequest struct {
 
 	// The OCID of the identity provider.
-	IdentityProviderID string
+	IdentityProviderID string `mandatory:"true" contributesTo:"path"`
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
-	Page string
+	Page string `mandatory:"false" contributesTo:"query" name:"page"`
 
 	// The maximum number of items to return in a paginated "List" call.
-	Limit int32
+	Limit int32 `mandatory:"false" contributesTo:"query" name:"limit"`
 }
 
 // ListIdpGroupMappingsResponse wrapper for the ListIdpGroupMappings operation

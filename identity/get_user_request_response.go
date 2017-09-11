@@ -7,7 +7,7 @@ package identity
 type GetUserRequest struct {
 
 	// The OCID of the user.
-	UserID string
+	UserID string `mandatory:"true" contributesTo:"path"`
 }
 
 // GetUserResponse wrapper for the GetUser operation

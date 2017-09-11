@@ -11,8 +11,8 @@ package identity
 type UpdateIdpGroupMappingDetails struct {
 
 	// The idp group name.
-	IdpGroupName string `json:"idpGroupName,omitempty"`
+	IdpGroupName string `mandatory:"false" json:"idpGroupName,omitempty"`
 
 	// The OCID of the group.
-	GroupID string `json:"groupId,omitempty"`
+	GroupID string `mandatory:"false" json:"groupId,omitempty"`
 }

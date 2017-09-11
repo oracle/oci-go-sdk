@@ -7,7 +7,7 @@ package identity
 type GetCompartmentRequest struct {
 
 	// The OCID of the compartment.
-	CompartmentID string
+	CompartmentID string `mandatory:"true" contributesTo:"path"`
 }
 
 // GetCompartmentResponse wrapper for the GetCompartment operation

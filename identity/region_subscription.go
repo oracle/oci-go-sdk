@@ -19,17 +19,17 @@ type RegionSubscription struct {
 	// Allowed values are:
 	// - `PHX`
 	// - `IAD`
-	RegionKey string `json:"regionKey,omitempty"`
+	RegionKey string `mandatory:"true" json:"regionKey,omitempty"`
 
 	// The region's name.
 	// Allowed values are:
 	// - `us-phoenix-1`
 	// - `us-ashburn-1`
-	RegionName string `json:"regionName,omitempty"`
+	RegionName string `mandatory:"true" json:"regionName,omitempty"`
 
 	// The region subscription status.
-	Status string `json:"status,omitempty"`
+	Status string `mandatory:"true" json:"status,omitempty"`
 
 	// Indicates if the region is the home region or not.
-	IsHomeRegion bool `json:"isHomeRegion,omitempty"`
+	IsHomeRegion bool `mandatory:"true" json:"isHomeRegion,omitempty"`
 }

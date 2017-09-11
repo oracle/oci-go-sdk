@@ -7,7 +7,7 @@ package identity
 type ListAvailabilityDomainsRequest struct {
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
-	CompartmentID string
+	CompartmentID string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 }
 
 // ListAvailabilityDomainsResponse wrapper for the ListAvailabilityDomains operation

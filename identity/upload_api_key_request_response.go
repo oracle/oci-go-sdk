@@ -7,7 +7,7 @@ package identity
 type UploadApiKeyRequest struct {
 
 	// The OCID of the user.
-	UserID string
+	UserID string `mandatory:"true" contributesTo:"path"`
 
 	// Request object for uploading an API key for a user.
 	CreateApiKeyDetails CreateApiKeyDetails
@@ -17,7 +17,7 @@ type UploadApiKeyRequest struct {
 	// hours, but can be invalidated before then due to conflicting operations (e.g., if a resource
 	// has been deleted and purged from the system, then a retry of the original creation request
 	// may be rejected).
-	OpcRetryToken string
+	OpcRetryToken string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
 // UploadApiKeyResponse wrapper for the UploadApiKey operation

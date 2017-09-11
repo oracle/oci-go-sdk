@@ -20,11 +20,11 @@ type Region struct {
 	// Allowed values are:
 	// - `PHX`
 	// - `IAD`
-	Key string `json:"key,omitempty"`
+	Key string `mandatory:"false" json:"key,omitempty"`
 
 	// The name of the region.
 	// Allowed values are:
 	// - `us-phoenix-1`
 	// - `us-ashburn-1`
-	Name string `json:"name,omitempty"`
+	Name string `mandatory:"false" json:"name,omitempty"`
 }

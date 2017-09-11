@@ -15,5 +15,5 @@ type CreateRegionSubscriptionDetails struct {
 	// - `PHX`
 	// - `IAD`
 	// Example: `PHX`
-	RegionKey string `json:"regionKey,omitempty"`
+	RegionKey string `mandatory:"true" json:"regionKey,omitempty"`
 }

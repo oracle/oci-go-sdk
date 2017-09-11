@@ -7,7 +7,7 @@ package identity
 type GetGroupRequest struct {
 
 	// The OCID of the group.
-	GroupID string
+	GroupID string `mandatory:"true" contributesTo:"path"`
 }
 
 // GetGroupResponse wrapper for the GetGroup operation

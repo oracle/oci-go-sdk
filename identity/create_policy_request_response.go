@@ -14,7 +14,7 @@ type CreatePolicyRequest struct {
 	// hours, but can be invalidated before then due to conflicting operations (e.g., if a resource
 	// has been deleted and purged from the system, then a retry of the original creation request
 	// may be rejected).
-	OpcRetryToken string
+	OpcRetryToken string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
 // CreatePolicyResponse wrapper for the CreatePolicy operation

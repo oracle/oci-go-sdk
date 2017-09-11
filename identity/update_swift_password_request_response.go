@@ -7,10 +7,10 @@ package identity
 type UpdateSwiftPasswordRequest struct {
 
 	// The OCID of the user.
-	UserID string
+	UserID string `mandatory:"true" contributesTo:"path"`
 
 	// The OCID of the Swift password.
-	SwiftPasswordID string
+	SwiftPasswordID string `mandatory:"true" contributesTo:"path"`
 
 	// Request object for updating a Swift password.
 	UpdateSwiftPasswordDetails UpdateSwiftPasswordDetails
@@ -18,7 +18,7 @@ type UpdateSwiftPasswordRequest struct {
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
 	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
-	IfMatch string
+	IfMatch string `mandatory:"false" contributesTo:"header" name:"if-match"`
 }
 
 // UpdateSwiftPasswordResponse wrapper for the UpdateSwiftPassword operation

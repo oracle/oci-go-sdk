@@ -10,14 +10,14 @@ type CreateIdpGroupMappingRequest struct {
 	CreateIdpGroupMappingDetails CreateIdpGroupMappingDetails
 
 	// The OCID of the identity provider.
-	IdentityProviderID string
+	IdentityProviderID string `mandatory:"true" contributesTo:"path"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
 	// hours, but can be invalidated before then due to conflicting operations (e.g., if a resource
 	// has been deleted and purged from the system, then a retry of the original creation request
 	// may be rejected).
-	OpcRetryToken string
+	OpcRetryToken string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
 // CreateIdpGroupMappingResponse wrapper for the CreateIdpGroupMapping operation

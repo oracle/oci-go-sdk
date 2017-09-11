@@ -7,19 +7,19 @@ package identity
 type ListUserGroupMembershipsRequest struct {
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
-	CompartmentID string
+	CompartmentID string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The OCID of the user.
-	UserID string
+	UserID string `mandatory:"false" contributesTo:"query" name:"userId"`
 
 	// The OCID of the group.
-	GroupID string
+	GroupID string `mandatory:"false" contributesTo:"query" name:"groupId"`
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
-	Page string
+	Page string `mandatory:"false" contributesTo:"query" name:"page"`
 
 	// The maximum number of items to return in a paginated "List" call.
-	Limit int32
+	Limit int32 `mandatory:"false" contributesTo:"query" name:"limit"`
 }
 
 // ListUserGroupMembershipsResponse wrapper for the ListUserGroupMemberships operation

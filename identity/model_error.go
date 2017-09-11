@@ -12,8 +12,8 @@ type ModelError struct {
 
 	// A short error code that defines the error, meant for programmatic parsing. See
 	// [API Errors](/Content/API/References/apierrors.htm).
-	Code string `json:"code,omitempty"`
+	Code string `mandatory:"true" json:"code,omitempty"`
 
 	// A human-readable error string.
-	Message string `json:"message,omitempty"`
+	Message string `mandatory:"true" json:"message,omitempty"`
 }

@@ -7,12 +7,12 @@ package identity
 type DeleteGroupRequest struct {
 
 	// The OCID of the group.
-	GroupID string
+	GroupID string `mandatory:"true" contributesTo:"path"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
 	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
-	IfMatch string
+	IfMatch string `mandatory:"false" contributesTo:"header" name:"if-match"`
 }
 
 // DeleteGroupResponse wrapper for the DeleteGroup operation
