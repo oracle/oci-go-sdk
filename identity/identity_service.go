@@ -19,14 +19,14 @@ type Identity interface {
 	// **Important:** Compartments cannot be renamed or deleted.
 	// You must specify your tenancy's OCID as the compartment ID in the request object. Remember that the tenancy
 	// is simply the root compartment. For information about OCIDs, see
-	// [Resource Identifiers](/Content/General/Concepts/identifiers.htm).
+	// [Resource Identifiers](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/General/Concepts/identifiers.htm).
 	// You must also specify a *name* for the compartment, which must be unique across all compartments in
 	// your tenancy and cannot be changed. You can use this name or the OCID when writing policies that apply
 	// to the compartment. For more information about policies, see
-	// [How Policies Work](/Content/Identity/Concepts/policies.htm).
+	// [How Policies Work](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/policies.htm).
 	// You must also specify a *description* for the compartment (although it can be an empty string). It does
 	// not have to be unique, and you can change it anytime with
-	// [UpdateCompartment](#/en/identity/20160918/Compartment/UpdateCompartment).
+	// UpdateCompartment.
 	// After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
 	// object, first make sure its `lifecycleState` has changed to ACTIVE.
 	CreateCompartment(request CreateCompartmentRequest) (response CreateCompartmentResponse, err error)
@@ -36,59 +36,59 @@ type Identity interface {
 	// is simply the root compartment). Notice that IAM resources (users, groups, compartments, and some policies)
 	// reside within the tenancy itself, unlike cloud resources such as compute instances, which typically
 	// reside within compartments inside the tenancy. For information about OCIDs, see
-	// [Resource Identifiers](/Content/General/Concepts/identifiers.htm).
+	// [Resource Identifiers](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/General/Concepts/identifiers.htm).
 	// You must also specify a *name* for the group, which must be unique across all groups in your tenancy and
 	// cannot be changed. You can use this name or the OCID when writing policies that apply to the group. For more
-	// information about policies, see [How Policies Work](/Content/Identity/Concepts/policies.htm).
+	// information about policies, see [How Policies Work](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/policies.htm).
 	// You must also specify a *description* for the group (although it can be an empty string). It does not
-	// have to be unique, and you can change it anytime with [UpdateGroup](#/en/identity/20160918/Group/UpdateGroup).
+	// have to be unique, and you can change it anytime with UpdateGroup.
 	// After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
 	// object, first make sure its `lifecycleState` has changed to ACTIVE.
 	// After creating the group, you need to put users in it and write policies for it.
-	// See [AddUserToGroup](#/en/identity/20160918/UserGroupMembership/AddUserToGroup) and
-	// [CreatePolicy](#/en/identity/20160918/Policy/CreatePolicy).
+	// See AddUserToGroup and
+	// CreatePolicy.
 	CreateGroup(request CreateGroupRequest) (response CreateGroupResponse, err error)
 
 	// Creates a new identity provider in your tenancy. For more information, see
-	// [Identity Providers and Federation](/Content/Identity/Concepts/federation.htm).
+	// [Identity Providers and Federation](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/federation.htm).
 	// You must specify your tenancy's OCID as the compartment ID in the request object.
 	// Remember that the tenancy is simply the root compartment. For information about
-	// OCIDs, see [Resource Identifiers](/Content/General/Concepts/identifiers.htm).
+	// OCIDs, see [Resource Identifiers](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/General/Concepts/identifiers.htm).
 	// You must also specify a *name* for the `IdentityProvider`, which must be unique
 	// across all `IdentityProvider` objects in your tenancy and cannot be changed.
 	// You must also specify a *description* for the `IdentityProvider` (although
 	// it can be an empty string). It does not have to be unique, and you can change
 	// it anytime with
-	// [UpdateIdentityProvider](#/en/identity/20160918/IdentityProvider/UpdateIdentityProvider).
+	// UpdateIdentityProvider.
 	// After you send your request, the new object's `lifecycleState` will temporarily
 	// be CREATING. Before using the object, first make sure its `lifecycleState` has
 	// changed to ACTIVE.
 	CreateIdentityProvider(request CreateIdentityProviderRequest) (response CreateIdentityProviderResponse, err error)
 
 	// Creates a single mapping between an IdP group and an IAM Service
-	// [group](#/en/identity/20160918/Group/).
+	// Group.
 	CreateIdpGroupMapping(request CreateIdpGroupMappingRequest) (response CreateIdpGroupMappingResponse, err error)
 
 	// Creates a new Console one-time password for the specified user. For more information about user
-	// credentials, see [User Credentials](/Content/Identity/Concepts/usercredentials.htm).
+	// credentials, see [User Credentials](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/usercredentials.htm).
 	// Use this operation after creating a new user, or if a user forgets their password. The new one-time
 	// password is returned to you in the response, and you must securely deliver it to the user. They'll
 	// be prompted to change this password the next time they sign in to the Console. If they don't change
 	// it within 7 days, the password will expire and you'll need to create a new one-time password for the
 	// user.
 	// **Note:** The user's Console login is the unique name you specified when you created the user
-	// (see [CreateUser](#/en/identity/20160918/User/CreateUser)).
+	// (see CreateUser).
 	CreateOrResetUIPassword(request CreateOrResetUIPasswordRequest) (response CreateOrResetUIPasswordResponse, err error)
 
 	// Creates a new policy in the specified compartment (either the tenancy or another of your compartments).
-	// If you're new to policies, see [Getting Started with Policies](/Content/Identity/Concepts/policygetstarted.htm).
+	// If you're new to policies, see [Getting Started with Policies](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/policygetstarted.htm).
 	// You must specify a *name* for the policy, which must be unique across all policies in your tenancy
 	// and cannot be changed.
 	// You must also specify a *description* for the policy (although it can be an empty string). It does not
-	// have to be unique, and you can change it anytime with [UpdatePolicy](#/en/identity/20160918/Policy/UpdatePolicy).
+	// have to be unique, and you can change it anytime with UpdatePolicy.
 	// You must specify one or more policy statements in the statements array. For information about writing
-	// policies, see [How Policies Work](/Content/Identity/Concepts/policies.htm) and
-	// [Common Policies](/Content/Identity/Concepts/commonpolicies.htm).
+	// policies, see [How Policies Work](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/policies.htm) and
+	// [Common Policies](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/commonpolicies.htm).
 	// After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
 	// object, first make sure its `lifecycleState` has changed to ACTIVE.
 	// New policies take effect typically within 10 seconds.
@@ -98,22 +98,22 @@ type Identity interface {
 	CreateRegionSubscription(request CreateRegionSubscriptionRequest) (response CreateRegionSubscriptionResponse, err error)
 
 	// Creates a new Swift password for the specified user. For information about what Swift passwords are for, see
-	// [Managing User Credentials](/Content/Identity/Tasks/managingcredentials.htm).
+	// [Managing User Credentials](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Tasks/managingcredentials.htm).
 	// You must specify a *description* for the Swift password (although it can be an empty string). It does not
 	// have to be unique, and you can change it anytime with
-	// [UpdateSwiftPassword](#/en/identity/20160918/SwiftPassword/UpdateSwiftPassword).
+	// UpdateSwiftPassword.
 	// Every user has permission to create a Swift password for *their own user ID*. An administrator in your organization
 	// does not need to write a policy to give users this ability. To compare, administrators who have permission to the
 	// tenancy can use this operation to create a Swift password for any user, including themselves.
 	CreateSwiftPassword(request CreateSwiftPasswordRequest) (response CreateSwiftPasswordResponse, err error)
 
 	// Creates a new user in your tenancy. For conceptual information about users, your tenancy, and other
-	// IAM Service components, see [Overview of the IAM Service](/Content/Identity/Concepts/overview.htm).
+	// IAM Service components, see [Overview of the IAM Service](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/overview.htm).
 	// You must specify your tenancy's OCID as the compartment ID in the request object (remember that the
 	// tenancy is simply the root compartment). Notice that IAM resources (users, groups, compartments, and
 	// some policies) reside within the tenancy itself, unlike cloud resources such as compute instances,
 	// which typically reside within compartments inside the tenancy. For information about OCIDs, see
-	// [Resource Identifiers](/Content/General/Concepts/identifiers.htm).
+	// [Resource Identifiers](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/General/Concepts/identifiers.htm).
 	// You must also specify a *name* for the user, which must be unique across all users in your tenancy
 	// and cannot be changed. Allowed characters: No spaces. Only letters, numerals, hyphens, periods,
 	// underscores, +, and @. If you specify a name that's already in use, you'll get a 409 error.
@@ -123,18 +123,18 @@ type Identity interface {
 	// users because they have different OCIDs.
 	// You must also specify a *description* for the user (although it can be an empty string).
 	// It does not have to be unique, and you can change it anytime with
-	// [UpdateUser](#/en/identity/20160918/User/UpdateUser). You can use the field to provide the user's
+	// UpdateUser. You can use the field to provide the user's
 	// full name, a description, a nickname, or other information to generally identify the user.
 	// After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before
 	// using the object, first make sure its `lifecycleState` has changed to ACTIVE.
 	// A new user has no permissions until you place the user in one or more groups (see
-	// [AddUserToGroup](#/en/identity/20160918/UserGroupMembership/AddUserToGroup)). If the user needs to
+	// AddUserToGroup). If the user needs to
 	// access the Console, you need to provide the user a password (see
-	// [CreateOrResetUIPassword](#/en/identity/20160918/UIPassword/CreateOrResetUIPassword)).
+	// CreateOrResetUIPassword).
 	// If the user needs to access the Oracle Bare Metal Cloud Services REST API, you need to upload a
 	// public API signing key for that user (see
-	// [Required Keys and OCIDs](/Content/API/Concepts/apisigningkey.htm) and also
-	// [UploadApiKey](#/en/identity/20160918/ApiKey/UploadApiKey)).
+	// [Required Keys and OCIDs](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/API/Concepts/apisigningkey.htm) and also
+	// UploadApiKey).
 	// **Important:** Make sure to inform the new user which compartment(s) they have access to.
 	CreateUser(request CreateUserRequest) (response CreateUserResponse, err error)
 
@@ -149,7 +149,7 @@ type Identity interface {
 	DeleteGroup(request DeleteGroupRequest) (err error)
 
 	// Deletes the specified identity provider. The identity provider must not have
-	// any group mappings (see [IdpGroupMapping](#/en/identity/20160918/IdpGroupMapping/)).
+	// any group mappings (see IdpGroupMapping).
 	DeleteIdentityProvider(request DeleteIdentityProviderRequest) (err error)
 
 	// Deletes the specified group mapping.
@@ -169,13 +169,13 @@ type Identity interface {
 	// API operation that does that. Compartments can contain multiple types of resources (instances, block
 	// storage volumes, etc.). To find out what's in a compartment, you must call the "List" operation for
 	// each resource type and specify the compartment's OCID as a query parameter in the request. For example,
-	// call the [ListInstances](#/en/iaas/20160918/Instance/ListInstances) operation in the Cloud Compute
-	// Service or the [ListVolumes](#/en/iaas/20160918/Volume/ListVolumes) operation in Cloud Block Storage.
+	// call the ListInstances operation in the Cloud Compute
+	// Service or the ListVolumes operation in Cloud Block Storage.
 	GetCompartment(request GetCompartmentRequest) (response GetCompartmentResponse, err error)
 
 	// Gets the specified group's information.
 	// This operation does not return a list of all the users in the group. To do that, use
-	// [ListUserGroupMemberships](#/en/identity/20160918/UserGroupMembership/ListUserGroupMemberships) and
+	// ListUserGroupMemberships and
 	// provide the group's OCID as a query parameter in the request.
 	GetGroup(request GetGroupRequest) (response GetGroupResponse, err error)
 
@@ -204,30 +204,30 @@ type Identity interface {
 
 	// Lists the Availability Domains in your tenancy. Specify the OCID of either the tenancy or another
 	// of your compartments as the value for the compartment ID (remember that the tenancy is simply the root compartment).
-	// See [Where to Get the Tenancy's OCID and User's OCID](/Content/API/Concepts/apisigningkey.htm#five).
+	// See [Where to Get the Tenancy's OCID and User's OCID](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/API/Concepts/apisigningkey.htm#five).
 	ListAvailabilityDomains(request ListAvailabilityDomainsRequest) (response ListAvailabilityDomainsResponse, err error)
 
 	// Lists the compartments in your tenancy. You must specify your tenancy's OCID as the value
 	// for the compartment ID (remember that the tenancy is simply the root compartment).
-	// See [Where to Get the Tenancy's OCID and User's OCID](/Content/API/Concepts/apisigningkey.htm#five).
+	// See [Where to Get the Tenancy's OCID and User's OCID](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/API/Concepts/apisigningkey.htm#five).
 	ListCompartments(request ListCompartmentsRequest) (response ListCompartmentsResponse, err error)
 
 	// Lists the groups in your tenancy. You must specify your tenancy's OCID as the value for
 	// the compartment ID (remember that the tenancy is simply the root compartment).
-	// See [Where to Get the Tenancy's OCID and User's OCID](/Content/API/Concepts/apisigningkey.htm#five).
+	// See [Where to Get the Tenancy's OCID and User's OCID](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/API/Concepts/apisigningkey.htm#five).
 	ListGroups(request ListGroupsRequest) (response ListGroupsResponse, err error)
 
 	// Lists all the identity providers in your tenancy. You must specify the identity provider type (e.g., `SAML2` for
 	// identity providers using the SAML2.0 protocol). You must specify your tenancy's OCID as the value for the
 	// compartment ID (remember that the tenancy is simply the root compartment).
-	// See [Where to Get the Tenancy's OCID and User's OCID](/Content/API/Concepts/apisigningkey.htm#five).
+	// See [Where to Get the Tenancy's OCID and User's OCID](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/API/Concepts/apisigningkey.htm#five).
 	ListIdentityProviders(request ListIdentityProvidersRequest) (response ListIdentityProvidersResponse, err error)
 
 	// Lists the group mappings for the specified identity provider.
 	ListIdpGroupMappings(request ListIdpGroupMappingsRequest) (response ListIdpGroupMappingsResponse, err error)
 
 	// Lists the policies in the specified compartment (either the tenancy or another of your compartments).
-	// See [Where to Get the Tenancy's OCID and User's OCID](/Content/API/Concepts/apisigningkey.htm#five).
+	// See [Where to Get the Tenancy's OCID and User's OCID](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/API/Concepts/apisigningkey.htm#five).
 	// To determine which policies apply to a particular group or compartment, you must view the individual
 	// statements inside all your policies. There isn't a way to automatically obtain that information via the API.
 	ListPolicies(request ListPoliciesRequest) (response ListPoliciesResponse, err error)
@@ -244,7 +244,7 @@ type Identity interface {
 
 	// Lists the `UserGroupMembership` objects in your tenancy. You must specify your tenancy's OCID
 	// as the value for the compartment ID
-	// (see [Where to Get the Tenancy's OCID and User's OCID](/Content/API/Concepts/apisigningkey.htm#five)).
+	// (see [Where to Get the Tenancy's OCID and User's OCID](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/API/Concepts/apisigningkey.htm#five)).
 	// You must also then filter the list in one of these ways:
 	// - You can limit the results to just the memberships for a given user by specifying a `userId`.
 	// - Similarly, you can limit the results to just the memberships for a given group by specifying a `groupId`.
@@ -254,7 +254,7 @@ type Identity interface {
 
 	// Lists the users in your tenancy. You must specify your tenancy's OCID as the value for the
 	// compartment ID (remember that the tenancy is simply the root compartment).
-	// See [Where to Get the Tenancy's OCID and User's OCID](/Content/API/Concepts/apisigningkey.htm#five).
+	// See [Where to Get the Tenancy's OCID and User's OCID](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/API/Concepts/apisigningkey.htm#five).
 	ListUsers(request ListUsersRequest) (response ListUsersResponse, err error)
 
 	// Removes a user from a group by deleting the corresponding `UserGroupMembership`.

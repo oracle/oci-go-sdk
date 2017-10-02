@@ -11,7 +11,7 @@ package identity
 type ModelError struct {
 
 	// A short error code that defines the error, meant for programmatic parsing. See
-	// [API Errors](/Content/API/References/apierrors.htm).
+	// [API Errors](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/API/References/apierrors.htm).
 	Code string `mandatory:"true" json:"code,omitempty"`
 
 	// A human-readable error string.

@@ -18,8 +18,8 @@ type UpdatePolicyDetails struct {
 	Description string `mandatory:"false" json:"description,omitempty"`
 
 	// An array of policy statements written in the policy language. See
-	// [How Policies Work](/Content/Identity/Concepts/policies.htm) and
-	// [Common Policies](/Content/Identity/Concepts/commonpolicies.htm).
+	// [How Policies Work](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/policies.htm) and
+	// [Common Policies](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/commonpolicies.htm).
 	Statements []string `mandatory:"false" json:"statements,omitempty"`
 
 	// The version of the policy. If null or set to an empty string, when a request comes in for authorization, the

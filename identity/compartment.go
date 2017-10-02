@@ -17,15 +17,15 @@ import (
 // of measuring usage and billing, access (through the use of IAM Service policies), and isolation (separating the
 // resources for one project or business unit from another). A common approach is to create a compartment for each
 // major part of your organization. For more information, see
-// [Overview of the IAM Service](/Content/Identity/Concepts/overview.htm) and also
-// [Setting Up Your Tenancy](/Content/GSG/Concepts/settinguptenancy.htm).
+// [Overview of the IAM Service](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/overview.htm) and also
+// [Setting Up Your Tenancy](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/GSG/Concepts/settinguptenancy.htm).
 // To place a resource in a compartment, simply specify the compartment ID in the "Create" request object when
 // initially creating the resource. For example, to launch an instance into a particular compartment, specify
 // that compartment's OCID in the `LaunchInstance` request. You can't move an existing resource from one
 // compartment to another.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
-// see [Getting Started with Policies](/Content/Identity/Concepts/policygetstarted.htm).
+// see [Getting Started with Policies](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/policygetstarted.htm).
 type Compartment struct {
 
 	// The OCID of the compartment.

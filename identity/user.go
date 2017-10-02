@@ -14,18 +14,18 @@ import (
 
 // User. An individual employee or system that needs to manage or use your company's Oracle Bare Metal Cloud Services
 // resources. Users might need to launch instances, manage remote disks, work with your cloud network, etc. Users
-// have one or more IAM Service credentials ([ApiKey](#/en/identity/20160918/ApiKey/),
-// [UIPassword](#/en/identity/20160918/UIPassword/), and [SwiftPassword](#/en/identity/20160918/SwiftPassword/)).
-// For more information, see [User Credentials](/Content/API/Concepts/usercredentials.htm)). End users of your
+// have one or more IAM Service credentials (ApiKey,
+// UIPassword, and SwiftPassword).
+// For more information, see [User Credentials](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/API/Concepts/usercredentials.htm)). End users of your
 // application are not typically IAM Service users. For conceptual information about users and other IAM Service
-// components, see [Overview of the IAM Service](/Content/Identity/Concepts/overview.htm).
+// components, see [Overview of the IAM Service](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/overview.htm).
 // These users are created directly within the Oracle Bare Metal Cloud Services system, via the IAM service.
 // They are different from *federated users*, who authenticate themselves to the Oracle Bare Metal
 // Cloud Services Console via an identity provider. For more information, see
-// [Identity Providers and Federation](/Content/Identity/Concepts/federation.htm).
+// [Identity Providers and Federation](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/federation.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
-// see [Getting Started with Policies](/Content/Identity/Concepts/policygetstarted.htm).
+// see [Getting Started with Policies](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/policygetstarted.htm).
 type User struct {
 
 	// The OCID of the user.

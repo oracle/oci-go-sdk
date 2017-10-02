@@ -16,7 +16,7 @@ import (
 // Swift client with the Oracle Bare Metal Cloud Services Object Storage Service. This password is associated with
 // the user's Console login. Swift passwords never expire. A user can have up to two Swift passwords at a time.
 // **Note:** The password is always an Oracle-generated string; you can't change it to a string of your choice.
-// For more information, see [Managing User Credentials](/Content/Identity/Tasks/managingcredentials.htm).
+// For more information, see [Managing User Credentials](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Tasks/managingcredentials.htm).
 type SwiftPassword struct {
 
 	// The Swift password. The value is available only in the response for `CreateSwiftPassword`, and not

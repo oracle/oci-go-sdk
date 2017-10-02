@@ -9,10 +9,10 @@
 package identity
 
 // RegionSubscription. An object that represents your tenancy's access to a particular region (i.e., a subscription), the status of that
-// access, and whether that region is the home region. For more information, see [Managing Regions](/Content/Identity/Tasks/managingregions.htm).
+// access, and whether that region is the home region. For more information, see [Managing Regions](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Tasks/managingregions.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
-// see [Getting Started with Policies](/Content/Identity/Concepts/policygetstarted.htm).
+// see [Getting Started with Policies](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/policygetstarted.htm).
 type RegionSubscription struct {
 
 	// The region's key.

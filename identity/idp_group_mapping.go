@@ -13,9 +13,9 @@ import (
 )
 
 // IdpGroupMapping. A mapping between a single group defined by the identity provider (IdP) you're federating with
-// and a single IAM Service [group](#/en/identity/20160918/Group/) in Oracle Bare Metal Cloud
+// and a single IAM Service Group in Oracle Bare Metal Cloud
 // Services. For more information about group mappings and what they're for, see
-// [Identity Providers and Federation](/Content/Identity/Concepts/federation.htm).
+// [Identity Providers and Federation](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/federation.htm).
 // A given IdP group can be mapped to zero, one, or multiple IAM Service groups, and vice versa.
 // But each `IdPGroupMapping` object is between only a single IdP group and IAM Service group.
 // Each `IdPGroupMapping` object has its own OCID.

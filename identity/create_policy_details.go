@@ -22,8 +22,8 @@ type CreatePolicyDetails struct {
 	Name string `mandatory:"true" json:"name,omitempty"`
 
 	// An array of policy statements written in the policy language. See
-	// [How Policies Work](/Content/Identity/Concepts/policies.htm) and
-	// [Common Policies](/Content/Identity/Concepts/commonpolicies.htm).
+	// [How Policies Work](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/policies.htm) and
+	// [Common Policies](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/commonpolicies.htm).
 	Statements []string `mandatory:"true" json:"statements,omitempty"`
 
 	// The description you assign to the policy during creation. Does not have to be unique, and it's changeable.

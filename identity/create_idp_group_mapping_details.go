@@ -13,7 +13,7 @@ type CreateIdpGroupMappingDetails struct {
 	// The name of the IdP group you want to map.
 	IdpGroupName string `mandatory:"true" json:"idpGroupName,omitempty"`
 
-	// The OCID of the IAM Service [group](#/en/identity/20160918/Group/)
+	// The OCID of the IAM Service Group
 	// you want to map to the IdP group.
 	GroupID string `mandatory:"true" json:"groupId,omitempty"`
 }
