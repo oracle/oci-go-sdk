@@ -7,7 +7,7 @@ package identity
 type CreateSwiftPasswordRequest struct {
 
 	// Request object for creating a new swift password.
-	CreateSwiftPasswordDetails CreateSwiftPasswordDetails
+	CreateSwiftPasswordDetails CreateSwiftPasswordDetails `contributesTo:"body"`
 
 	// The OCID of the user.
 	UserID string `mandatory:"true" contributesTo:"path"`

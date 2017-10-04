@@ -13,7 +13,7 @@ type UpdateSwiftPasswordRequest struct {
 	SwiftPasswordID string `mandatory:"true" contributesTo:"path"`
 
 	// Request object for updating a Swift password.
-	UpdateSwiftPasswordDetails UpdateSwiftPasswordDetails
+	UpdateSwiftPasswordDetails UpdateSwiftPasswordDetails `contributesTo:"body"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource

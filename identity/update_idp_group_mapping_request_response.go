@@ -13,7 +13,7 @@ type UpdateIdpGroupMappingRequest struct {
 	MappingID string `mandatory:"true" contributesTo:"path"`
 
 	// Request object for updating an identity provider group mapping
-	UpdateIdpGroupMappingDetails UpdateIdpGroupMappingDetails
+	UpdateIdpGroupMappingDetails UpdateIdpGroupMappingDetails `contributesTo:"body"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource

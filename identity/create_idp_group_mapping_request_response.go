@@ -7,7 +7,7 @@ package identity
 type CreateIdpGroupMappingRequest struct {
 
 	// Add a mapping from an SAML2.0 identity provider group to a BMC group.
-	CreateIdpGroupMappingDetails CreateIdpGroupMappingDetails
+	CreateIdpGroupMappingDetails CreateIdpGroupMappingDetails `contributesTo:"body"`
 
 	// The OCID of the identity provider.
 	IdentityProviderID string `mandatory:"true" contributesTo:"path"`

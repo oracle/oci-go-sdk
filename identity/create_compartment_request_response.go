@@ -7,7 +7,7 @@ package identity
 type CreateCompartmentRequest struct {
 
 	// Request object for creating a new compartment.
-	CreateCompartmentDetails CreateCompartmentDetails
+	CreateCompartmentDetails CreateCompartmentDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24

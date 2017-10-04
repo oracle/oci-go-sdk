@@ -7,7 +7,7 @@ package identity
 type CreateRegionSubscriptionRequest struct {
 
 	// Request object for activate a new region.
-	CreateRegionSubscriptionDetails CreateRegionSubscriptionDetails
+	CreateRegionSubscriptionDetails CreateRegionSubscriptionDetails `contributesTo:"body"`
 
 	// The OCID of the tenancy.
 	TenancyID string `mandatory:"true" contributesTo:"path"`

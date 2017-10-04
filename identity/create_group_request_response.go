@@ -7,7 +7,7 @@ package identity
 type CreateGroupRequest struct {
 
 	// Request object for creating a new group.
-	CreateGroupDetails CreateGroupDetails
+	CreateGroupDetails CreateGroupDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
