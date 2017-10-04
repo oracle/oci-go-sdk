@@ -10,7 +10,7 @@ package identity
 
 // AvailabilityDomain. One or more isolated, fault-tolerant Oracle data centers that host cloud resources such as instances, volumes,
 // and subnets. A region contains several Availability Domains. For more information, see
-// [Regions and Availability Domains](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/General/Concepts/regions.htm).
+// [Regions and Availability Domains]({{DOC_SERVER_URL}}/Content/General/Concepts/regions.htm).
 type AvailabilityDomain struct {
 
 	// The name of the Availability Domain.

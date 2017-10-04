@@ -14,7 +14,7 @@ import (
 
 // Saml2IdentityProvider. A special type of IdentityProvider that
 // supports the SAML 2.0 protocol. For more information, see
-// [Identity Providers and Federation](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/federation.htm).
+// [Identity Providers and Federation]({{DOC_SERVER_URL}}/Content/Identity/Concepts/federation.htm).
 type Saml2IdentityProvider struct {
 
 	// The OCID of the `IdentityProvider`.

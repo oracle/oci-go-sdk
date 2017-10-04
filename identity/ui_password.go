@@ -14,7 +14,7 @@ import (
 
 // UiPassword. A text password that enables a user to sign in to the Console, the user interface for interacting with Oracle Bare
 // Metal Cloud Services.
-// For more information about user credentials, see [User Credentials](http://lgl-bybliothece-01.virt.lgl.grungy.us/Content/Identity/Concepts/usercredentials.htm).
+// For more information about user credentials, see [User Credentials]({{DOC_SERVER_URL}}/Content/Identity/Concepts/usercredentials.htm).
 type UiPassword struct {
 
 	// The user's password for the Console.
