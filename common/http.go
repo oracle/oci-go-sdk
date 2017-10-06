@@ -11,11 +11,128 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"runtime"
+	"regexp"
 )
 
 const (
-	BaseUrl = "https://%s.%s.oracle.com"
+	defaultHostUrlTemplate = "%s.%s.oracle.com"
+	defaultScheme = "https"
+	defaultUserAgentTemplate = "OracleGoSDK/%s (%s/%s; go/%s)"
+	defaultTimeout = time.Second * 15
 )
+
+
+type RequestInterceptor func(*http.Request) error
+
+//Base httpClient structure
+type SDKClient struct {
+	OCIRequestSigner
+	ApiVersion string
+	UserAgent string
+	ServiceName string
+	Region Region
+	Interceptor RequestInterceptor
+	httpClient http.Client
+}
+
+func NewClient()(client SDKClient) {
+	userAgent := fmt.Sprintf(defaultUserAgentTemplate, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
+
+	client = SDKClient{
+		UserAgent: userAgent,
+		Region: DefaultRegion,
+		Interceptor: nil,
+		httpClient:http.Client{
+			Timeout:defaultTimeout,
+			Transport:      &http.Transport{},
+		},
+	}
+	return
+}
+
+func NewClientWithInterceptor(interceptor RequestInterceptor)(client SDKClient) {
+	userAgent := fmt.Sprintf(defaultUserAgentTemplate, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
+
+	client = SDKClient{
+		UserAgent: userAgent,
+		Region: DefaultRegion,
+		Interceptor: interceptor,
+		httpClient:http.Client{
+			Timeout:defaultTimeout,
+			Transport:      &http.Transport{},
+		},
+	}
+	return
+}
+
+func (client *SDKClient) SetUserAgent(userAgentString string) {
+	client.UserAgent = userAgentString
+}
+
+func (client *SDKClient) prepareRequest(request *http.Request) (err error) {
+	hostUrl := fmt.Sprintf(defaultHostUrlTemplate, client.ServiceName, client.Region)
+	request.URL.Host = hostUrl
+	request.URL.Scheme = defaultScheme
+	currentPath := request.URL.Path
+	request.URL.Path = fmt.Sprintf("%s/%s", client.ApiVersion, currentPath)
+	return
+}
+
+func (client SDKClient) intercept(request *http.Request) (err error){
+	if client.Interceptor != nil {
+		err = client.Interceptor(request)
+	}
+	return
+}
+
+func (client SDKClient) addContentLenToRequest(request *http.Request) (err error){
+	if request.Method == http.MethodPost || request.Method == http.MethodPut {
+		request.Header.Set("content-length",  strconv.FormatInt(request.ContentLength, 10))
+		if request.ContentLength > 0 {
+			hash, err :=  GetBodyHash(*request)
+			if err != nil {
+				return err
+			}
+			request.Header.Set( "x-content-sha256", hash)
+		}
+	}
+	return
+}
+
+
+func (client SDKClient) Call(request http.Request) (response *http.Response, err error) {
+	Debugln("Atempting to call downstream service")
+	err = client.prepareRequest(&request)
+	if err != nil {
+		return
+	}
+
+	//Intercept
+	err = client.intercept(&request)
+	if err != nil {
+		return
+	}
+
+	//Add request body header information
+	err = client.addContentLenToRequest(&request)
+	if err != nil {
+		return
+	}
+
+
+	//Sign the request
+	client.Sign(&request)
+	if err != nil {
+		return
+	}
+
+	response, err = client.httpClient.Do(&request)
+	return
+}
+
+
+
 
 // isEmptyValue checks if a value should be considered empty for the purposes
 // of omitting fields with the "omitempty" option.
@@ -121,9 +238,14 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 	}
 
 	if request.URL == nil {
-		Debugln("Marshaling to path from field:", field.Name)
 		request.URL = &url.URL{}
-		currentUrlPath := request.URL.Path
+		request.URL.Path = ""
+	}
+	var currentUrlPath = request.URL.Path
+
+	var templatedPathRegex, _ = regexp.Compile(".*{.+}.*")
+	if !templatedPathRegex.MatchString(currentUrlPath) {
+		Debugln("Marshaling request to path by appending field:", field.Name)
 		allPath := []string{currentUrlPath, additionalUrlPathPart}
 		newPath := strings.Join(allPath, "/")
 		request.URL.Path = newPath
@@ -134,7 +256,7 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 			e = fmt.Errorf("Marshaling request to path name and template requires a 'name' tag for field: %s", field.Name)
 			return
 		}
-		urlTemplate := request.URL.Path
+		urlTemplate := currentUrlPath
 		Debugln("Marshaling to path from field:", field.Name, "in template:", urlTemplate)
 		request.URL.Path = strings.Replace(urlTemplate, "{"+fieldName+"}", additionalUrlPathPart, -1)
 		return
@@ -238,3 +360,26 @@ func HttpRequestMarshaller(requestStruct interface{}, httpRequest *http.Request)
 	err = structToRequestPart(httpRequest, *val)
 	return
 }
+
+func normalizeRequest(method, path string, httpRequest *http.Request){
+	httpRequest.Header.Set("content-type", "application/json")
+	httpRequest.Header.Set("date", time.Now().UTC().Format(http.TimeFormat))
+	httpRequest.Header.Set("accept", "*/*")
+	httpRequest.Method = method
+	httpRequest.URL.Path = path
+	return
+}
+
+func MakeDefaultHttpRequest(method, path string)(httpRequest http.Request, err error) {
+	httpRequest = http.Request{URL:&url.URL{}}
+	normalizeRequest(method, path, &httpRequest)
+	return
+}
+
+func MakeDefaultHttpRequestWithTaggedStruct(method, path string, requestStruct interface{})(httpRequest http.Request, err error) {
+	httpRequest = http.Request{URL:&url.URL{}}
+	normalizeRequest(method, path, &httpRequest)
+	err = HttpRequestMarshaller(requestStruct, &httpRequest)
+	return
+}
+
