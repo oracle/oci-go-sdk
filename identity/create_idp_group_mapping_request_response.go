@@ -10,7 +10,7 @@ type CreateIdpGroupMappingRequest struct {
 	CreateIdpGroupMappingDetails CreateIdpGroupMappingDetails `contributesTo:"body"`
 
 	// The OCID of the identity provider.
-	IdentityProviderID string `mandatory:"true" contributesTo:"path"`
+	IdentityProviderID string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24

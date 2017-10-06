@@ -7,7 +7,7 @@ package identity
 type UpdateIdentityProviderRequest struct {
 
 	// The OCID of the identity provider.
-	IdentityProviderID string `mandatory:"true" contributesTo:"path"`
+	IdentityProviderID string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
 
 	// Request object for updating a identity provider.
 	UpdateIdentityProviderDetails UpdateIdentityProviderDetails `contributesTo:"body"`

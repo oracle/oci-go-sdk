@@ -7,7 +7,7 @@ package identity
 type UpdateUserRequest struct {
 
 	// The OCID of the user.
-	UserID string `mandatory:"true" contributesTo:"path"`
+	UserID string `mandatory:"true" contributesTo:"path" name:"userId"`
 
 	// Request object for updating a user.
 	UpdateUserDetails UpdateUserDetails `contributesTo:"body"`

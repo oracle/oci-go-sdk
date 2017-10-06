@@ -7,7 +7,7 @@ package identity
 type GetIdentityProviderRequest struct {
 
 	// The OCID of the identity provider.
-	IdentityProviderID string `mandatory:"true" contributesTo:"path"`
+	IdentityProviderID string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
 }
 
 // GetIdentityProviderResponse wrapper for the GetIdentityProvider operation

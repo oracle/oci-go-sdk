@@ -7,7 +7,7 @@ package identity
 type UploadApiKeyRequest struct {
 
 	// The OCID of the user.
-	UserID string `mandatory:"true" contributesTo:"path"`
+	UserID string `mandatory:"true" contributesTo:"path" name:"userId"`
 
 	// Request object for uploading an API key for a user.
 	CreateApiKeyDetails CreateApiKeyDetails `contributesTo:"body"`

@@ -7,7 +7,7 @@ package identity
 type ListSwiftPasswordsRequest struct {
 
 	// The OCID of the user.
-	UserID string `mandatory:"true" contributesTo:"path"`
+	UserID string `mandatory:"true" contributesTo:"path" name:"userId"`
 }
 
 // ListSwiftPasswordsResponse wrapper for the ListSwiftPasswords operation

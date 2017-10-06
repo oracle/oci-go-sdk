@@ -7,10 +7,10 @@ package identity
 type DeleteIdpGroupMappingRequest struct {
 
 	// The OCID of the identity provider.
-	IdentityProviderID string `mandatory:"true" contributesTo:"path"`
+	IdentityProviderID string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
 
 	// The OCID of the group mapping.
-	MappingID string `mandatory:"true" contributesTo:"path"`
+	MappingID string `mandatory:"true" contributesTo:"path" name:"mappingId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource

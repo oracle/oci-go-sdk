@@ -7,7 +7,7 @@ package identity
 type UpdateGroupRequest struct {
 
 	// The OCID of the group.
-	GroupID string `mandatory:"true" contributesTo:"path"`
+	GroupID string `mandatory:"true" contributesTo:"path" name:"groupId"`
 
 	// Request object for updating a group.
 	UpdateGroupDetails UpdateGroupDetails `contributesTo:"body"`

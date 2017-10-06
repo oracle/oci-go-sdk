@@ -7,7 +7,7 @@ package identity
 type GetTenancyRequest struct {
 
 	// The OCID of the tenancy.
-	TenancyID string `mandatory:"true" contributesTo:"path"`
+	TenancyID string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
 }
 
 // GetTenancyResponse wrapper for the GetTenancy operation

@@ -7,7 +7,7 @@ package identity
 type ListIdpGroupMappingsRequest struct {
 
 	// The OCID of the identity provider.
-	IdentityProviderID string `mandatory:"true" contributesTo:"path"`
+	IdentityProviderID string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
 	Page string `mandatory:"false" contributesTo:"query" name:"page"`

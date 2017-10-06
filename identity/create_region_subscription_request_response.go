@@ -10,7 +10,7 @@ type CreateRegionSubscriptionRequest struct {
 	CreateRegionSubscriptionDetails CreateRegionSubscriptionDetails `contributesTo:"body"`
 
 	// The OCID of the tenancy.
-	TenancyID string `mandatory:"true" contributesTo:"path"`
+	TenancyID string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24

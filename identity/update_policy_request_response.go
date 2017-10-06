@@ -7,7 +7,7 @@ package identity
 type UpdatePolicyRequest struct {
 
 	// The OCID of the policy.
-	PolicyID string `mandatory:"true" contributesTo:"path"`
+	PolicyID string `mandatory:"true" contributesTo:"path" name:"policyId"`
 
 	// Request object for updating a policy.
 	UpdatePolicyDetails UpdatePolicyDetails `contributesTo:"body"`

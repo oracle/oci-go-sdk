@@ -7,7 +7,7 @@ package identity
 type ListRegionSubscriptionsRequest struct {
 
 	// The OCID of the tenancy.
-	TenancyID string `mandatory:"true" contributesTo:"path"`
+	TenancyID string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
 }
 
 // ListRegionSubscriptionsResponse wrapper for the ListRegionSubscriptions operation

@@ -7,7 +7,7 @@ package identity
 type GetUserGroupMembershipRequest struct {
 
 	// The OCID of the userGroupMembership.
-	UserGroupMembershipID string `mandatory:"true" contributesTo:"path"`
+	UserGroupMembershipID string `mandatory:"true" contributesTo:"path" name:"userGroupMembershipId"`
 }
 
 // GetUserGroupMembershipResponse wrapper for the GetUserGroupMembership operation

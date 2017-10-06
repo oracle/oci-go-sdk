@@ -7,7 +7,7 @@ package identity
 type UpdateCompartmentRequest struct {
 
 	// The OCID of the compartment.
-	CompartmentID string `mandatory:"true" contributesTo:"path"`
+	CompartmentID string `mandatory:"true" contributesTo:"path" name:"compartmentId"`
 
 	// Request object for updating a compartment.
 	UpdateCompartmentDetails UpdateCompartmentDetails `contributesTo:"body"`

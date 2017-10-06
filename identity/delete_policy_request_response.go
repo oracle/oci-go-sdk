@@ -7,7 +7,7 @@ package identity
 type DeletePolicyRequest struct {
 
 	// The OCID of the policy.
-	PolicyID string `mandatory:"true" contributesTo:"path"`
+	PolicyID string `mandatory:"true" contributesTo:"path" name:"policyId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource

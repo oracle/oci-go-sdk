@@ -7,10 +7,10 @@ package identity
 type UpdateSwiftPasswordRequest struct {
 
 	// The OCID of the user.
-	UserID string `mandatory:"true" contributesTo:"path"`
+	UserID string `mandatory:"true" contributesTo:"path" name:"userId"`
 
 	// The OCID of the Swift password.
-	SwiftPasswordID string `mandatory:"true" contributesTo:"path"`
+	SwiftPasswordID string `mandatory:"true" contributesTo:"path" name:"swiftPasswordId"`
 
 	// Request object for updating a Swift password.
 	UpdateSwiftPasswordDetails UpdateSwiftPasswordDetails `contributesTo:"body"`

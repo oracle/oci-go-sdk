@@ -7,10 +7,10 @@ package identity
 type GetIdpGroupMappingRequest struct {
 
 	// The OCID of the identity provider.
-	IdentityProviderID string `mandatory:"true" contributesTo:"path"`
+	IdentityProviderID string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
 
 	// The OCID of the group mapping.
-	MappingID string `mandatory:"true" contributesTo:"path"`
+	MappingID string `mandatory:"true" contributesTo:"path" name:"mappingId"`
 }
 
 // GetIdpGroupMappingResponse wrapper for the GetIdpGroupMapping operation

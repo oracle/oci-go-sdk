@@ -7,10 +7,10 @@ package identity
 type DeleteSwiftPasswordRequest struct {
 
 	// The OCID of the user.
-	UserID string `mandatory:"true" contributesTo:"path"`
+	UserID string `mandatory:"true" contributesTo:"path" name:"userId"`
 
 	// The OCID of the Swift password.
-	SwiftPasswordID string `mandatory:"true" contributesTo:"path"`
+	SwiftPasswordID string `mandatory:"true" contributesTo:"path" name:"swiftPasswordId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource

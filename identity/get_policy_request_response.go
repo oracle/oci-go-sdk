@@ -7,7 +7,7 @@ package identity
 type GetPolicyRequest struct {
 
 	// The OCID of the policy.
-	PolicyID string `mandatory:"true" contributesTo:"path"`
+	PolicyID string `mandatory:"true" contributesTo:"path" name:"policyId"`
 }
 
 // GetPolicyResponse wrapper for the GetPolicy operation

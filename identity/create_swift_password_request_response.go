@@ -10,7 +10,7 @@ type CreateSwiftPasswordRequest struct {
 	CreateSwiftPasswordDetails CreateSwiftPasswordDetails `contributesTo:"body"`
 
 	// The OCID of the user.
-	UserID string `mandatory:"true" contributesTo:"path"`
+	UserID string `mandatory:"true" contributesTo:"path" name:"userId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
