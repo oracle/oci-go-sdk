@@ -6,22 +6,25 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"sync"
 )
 
 // Simple logging proxy to distinguish control for logging messages
 // Debug logging is turned on/off by the presence of the environment variable "OCI_GO_SDK_DEBUG"
 var debugLog = log.New(os.Stderr, "DEBUG ", log.Ldate|log.Ltime|log.Lshortfile)
 var mainLog = log.New(os.Stderr, "", log.Ldate|log.Ltime|log.Lshortfile)
-var isDebugLogEnabled *bool = nil
+var isDebugLogEnabled bool
+var checkDebug sync.Once
+
 
 func getOutputForEnv() (writer io.Writer) {
-	if isDebugLogEnabled == nil {
-		isDebugLogEnabled = new(bool)
-		_, *isDebugLogEnabled = os.LookupEnv("OCI_GO_SDK_DEBUG")
-	}
+	checkDebug.Do(func () {
+		isDebugLogEnabled = *new(bool)
+		_, isDebugLogEnabled = os.LookupEnv("OCI_GO_SDK_DEBUG")
+	})
 
 	writer = ioutil.Discard
-	if *isDebugLogEnabled {
+	if isDebugLogEnabled {
 		writer = os.Stderr
 	}
 	return
@@ -45,6 +48,17 @@ func Debugln(v ...interface{}) {
 	debugLog.Output(3, fmt.Sprintln(v...))
 }
 
+// Executes closure if we have the debug log enabled
+func IfDebug(fn func()) {
+	if isDebugLogEnabled {
+		fn()
+	}
+}
+
 func Logln(v ...interface{}) {
 	mainLog.Output(3, fmt.Sprintln(v...))
+}
+
+func Logf(format string, v ...interface{}) {
+	mainLog.Output(3, fmt.Sprintf(format, v...))
 }

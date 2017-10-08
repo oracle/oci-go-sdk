@@ -2,22 +2,26 @@ package common
 
 import (
 	"net/http"
+	"crypto"
 	"crypto/sha256"
+	"crypto/rsa"
+	"crypto/x509"
+	"crypto/rand"
+	"encoding/pem"
 	"io/ioutil"
 	"encoding/base64"
-	"crypto/rsa"
-	"crypto"
-	"crypto/rand"
 	"fmt"
 	"strings"
+	"os"
 )
 
+//RequestSigner the interface to sign a request
 type RequestSigner interface {
 	Sign(r *http.Request) error
 }
 
 type OCIRequestSigner struct {
-	PrivateKey *rsa.PrivateKey
+	KeyProvider KeyProvider
 }
 
 func getSigningHeaders(method string) []string {
@@ -62,9 +66,14 @@ func (signer OCIRequestSigner) computeSignature(request *http.Request) (signatur
 	hasher := sha256.New()
 	hasher.Write([]byte(signingString))
 	hashed := hasher.Sum(nil)
-	var unencodedSig []byte
-	unencodedSig, e := rsa.SignPKCS1v15(rand.Reader, signer.PrivateKey, crypto.SHA256, hashed)
 
+	privateKey, err := signer.KeyProvider.PrivateRSAKey()
+	if err != nil {
+		return
+	}
+
+	var unencodedSig []byte
+	unencodedSig, e := rsa.SignPKCS1v15(rand.Reader, privateKey, crypto.SHA256, hashed)
 	if e != nil {
 		err = fmt.Errorf("Can not compute signature while signing the request %s: ", e.Error())
 		return
@@ -86,7 +95,95 @@ func GetBodyHash(request http.Request) (hashString string, err error) {
 	return
 }
 
-func (signer *OCIRequestSigner) Sign(request *http.Request) (err error) {
+func (signer OCIRequestSigner) Sign(request *http.Request) (err error) {
 	signer.computeSignature(request)
 	return
 }
+
+type KeyProvider interface {
+	PrivateRSAKey() (*rsa.PrivateKey, error)
+}
+// ConfigurationProvider returns information about the account owner
+type ConfigurationProvider interface {
+	KeyProvider
+	TenancyOCID() (string, error)
+	UserOCID() (string, error)
+	KeyFingerPrint() (string, error)
+}
+
+type EnvironmentConfigurationProvider struct {
+	PrivateKeyPassword string
+	EnvironmentVariablePrefix string
+}
+
+// PrivateKeyFromBytes is a helper function that will produce a RSA private
+// key from bytes.
+func privateKeyFromBytes(pemData []byte, password *string) (key *rsa.PrivateKey, e error) {
+	if pemBlock, _ := pem.Decode(pemData); pemBlock != nil {
+		decrypted := pemBlock.Bytes
+		if x509.IsEncryptedPEMBlock(pemBlock) {
+			if password == nil {
+				e = fmt.Errorf("private_key_password is required for encrypted private keys")
+				return
+			}
+			if decrypted, e = x509.DecryptPEMBlock(pemBlock, []byte(*password)); e != nil {
+				return
+			}
+		}
+
+		key, e = x509.ParsePKCS1PrivateKey(decrypted)
+
+	} else {
+		e = fmt.Errorf("PEM data was not found in buffer")
+		return
+	}
+	return
+}
+
+func (p EnvironmentConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, err error) {
+	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "key_file")
+	var ok bool
+	var value string
+	if value, ok = os.LookupEnv(environmentVariable); !ok {
+		err = fmt.Errorf("Can not read PrivateKey from env variable %s", environmentVariable)
+		return
+	}
+
+	pemFileContent, err := ioutil.ReadFile(value)
+	if err != nil {
+		Debugln("Can not read PrivateKey location from environment variable: " + environmentVariable)
+		return
+	}
+
+	key, err = privateKeyFromBytes(pemFileContent, &p.PrivateKeyPassword)
+	return
+}
+
+func (p EnvironmentConfigurationProvider) TenancyOCID() (value string, err error) {
+	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "tenancy")
+	var ok bool
+	if value, ok = os.LookupEnv(environmentVariable); !ok {
+		err = fmt.Errorf("Can not read Tenancy from env variable %s", environmentVariable)
+	}
+	return
+}
+
+func (p EnvironmentConfigurationProvider) UserOCID() (value string, err error) {
+	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "user")
+	var ok bool
+	if value, ok = os.LookupEnv(environmentVariable); !ok {
+		err = fmt.Errorf("Can not read Tenancy from env variable %s", environmentVariable)
+	}
+	return
+}
+
+func (p EnvironmentConfigurationProvider) KeyFingerPrint() (value string, err error) {
+	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "fingerprint")
+	var ok bool
+	if value, ok = os.LookupEnv(environmentVariable); !ok {
+		err = fmt.Errorf("Can not read Tenancy from env variable %s", environmentVariable)
+	}
+	return
+}
+
+

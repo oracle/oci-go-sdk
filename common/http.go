@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"net/http/httputil"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -12,11 +13,12 @@ import (
 	"strings"
 	"time"
 	"runtime"
+	"path"
 	"regexp"
 )
 
 const (
-	defaultHostUrlTemplate = "%s.%s.oracle.com"
+	defaultHostUrlTemplate = "%s.%s.oraclecloud.com"
 	defaultScheme = "https"
 	defaultUserAgentTemplate = "OracleGoSDK/%s (%s/%s; go/%s)"
 	defaultTimeout = time.Second * 15
@@ -25,68 +27,72 @@ const (
 
 type RequestInterceptor func(*http.Request) error
 
-//Base httpClient structure
-type SDKClient struct {
-	OCIRequestSigner
-	ApiVersion string
-	UserAgent string
-	ServiceName string
-	Region Region
-	Interceptor RequestInterceptor
-	httpClient http.Client
+// HttpRequestor wraps the execution of a http request, it is generally implemented by
+// http.Client.Do, but can be customized for testing
+type HttpRequestDispatcher interface {
+	Do(req *http.Request) (*http.Response, error)
 }
 
-func NewClient()(client SDKClient) {
-	userAgent := fmt.Sprintf(defaultUserAgentTemplate, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
+// Client wraps the basic operation to call the downstream services
+type Client interface {
+	Call(request http.Request) (response *http.Response, err error)
+}
 
-	client = SDKClient{
+//BaseClient struct implements all basic operations to call oci web services.
+type BaseClient struct {
+	httpClient             HttpRequestDispatcher
+	Signer                 RequestSigner
+	ApiVersion             string
+	UserAgent              string
+	ServiceName            string
+	Region                 Region
+	AuthenticationProvider ConfigurationProvider
+	//A request interceptor can be used to customize the request before signing and dispatching
+	Interceptor RequestInterceptor
+}
+
+func NewClientWithHttpDispatcher(dispatcher HttpRequestDispatcher)(client BaseClient) {
+	userAgent := fmt.Sprintf(defaultUserAgentTemplate, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
+	client = BaseClient{
 		UserAgent: userAgent,
 		Region: DefaultRegion,
 		Interceptor: nil,
-		httpClient:http.Client{
-			Timeout:defaultTimeout,
-			Transport:      &http.Transport{},
-		},
+		Signer : OCIRequestSigner{KeyProvider:EnvironmentConfigurationProvider{}},
+		httpClient: dispatcher,
 	}
 	return
 }
 
-func NewClientWithInterceptor(interceptor RequestInterceptor)(client SDKClient) {
-	userAgent := fmt.Sprintf(defaultUserAgentTemplate, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
+func NewClient()(client BaseClient) {
+	return NewClientWithHttpDispatcher(&http.Client {
+		Timeout:   defaultTimeout,
+		Transport: &http.Transport{},
+	})
+}
 
-	client = SDKClient{
-		UserAgent: userAgent,
-		Region: DefaultRegion,
-		Interceptor: interceptor,
-		httpClient:http.Client{
-			Timeout:defaultTimeout,
-			Transport:      &http.Transport{},
-		},
+
+func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
+	regionString, err := RegionToString(client.Region)
+	if err != nil {
+		return
 	}
-	return
-}
-
-func (client *SDKClient) SetUserAgent(userAgentString string) {
-	client.UserAgent = userAgentString
-}
-
-func (client *SDKClient) prepareRequest(request *http.Request) (err error) {
-	hostUrl := fmt.Sprintf(defaultHostUrlTemplate, client.ServiceName, client.Region)
+	request.Header.Set("user-agent", client.UserAgent)
+	hostUrl := fmt.Sprintf(defaultHostUrlTemplate, client.ServiceName, regionString)
 	request.URL.Host = hostUrl
 	request.URL.Scheme = defaultScheme
 	currentPath := request.URL.Path
-	request.URL.Path = fmt.Sprintf("%s/%s", client.ApiVersion, currentPath)
+	request.URL.Path = path.Clean(fmt.Sprintf("%s/%s", client.ApiVersion, currentPath))
 	return
 }
 
-func (client SDKClient) intercept(request *http.Request) (err error){
+func (client BaseClient) intercept(request *http.Request) (err error){
 	if client.Interceptor != nil {
 		err = client.Interceptor(request)
 	}
 	return
 }
 
-func (client SDKClient) addContentLenToRequest(request *http.Request) (err error){
+func (client BaseClient) addContentLenToRequest(request *http.Request) (err error){
 	if request.Method == http.MethodPost || request.Method == http.MethodPut {
 		request.Header.Set("content-length",  strconv.FormatInt(request.ContentLength, 10))
 		if request.ContentLength > 0 {
@@ -101,7 +107,7 @@ func (client SDKClient) addContentLenToRequest(request *http.Request) (err error
 }
 
 
-func (client SDKClient) Call(request http.Request) (response *http.Response, err error) {
+func (client BaseClient) Call(request http.Request) (response *http.Response, err error) {
 	Debugln("Atempting to call downstream service")
 	err = client.prepareRequest(&request)
 	if err != nil {
@@ -122,42 +128,36 @@ func (client SDKClient) Call(request http.Request) (response *http.Response, err
 
 
 	//Sign the request
-	client.Sign(&request)
+	client.Signer.Sign(&request)
 	if err != nil {
 		return
 	}
 
+	IfDebug(func() {
+		if dump, e := httputil.DumpRequest(&request, true); e == nil {
+			Logf("Dump Request %q", dump)
+		} else { Debugln(e)}
+	})
+
 	response, err = client.httpClient.Do(&request)
+	IfDebug(func() {
+		if err != nil {
+			Logln(err)
+			return
+		}
+
+		if dump, e := httputil.DumpResponse(response, true); e == nil {
+			Logf("Dump Request %q", dump)
+		} else { Debugln(e)}
+	})
 	return
 }
 
-
-
-
-// isEmptyValue checks if a value should be considered empty for the purposes
-// of omitting fields with the "omitempty" option.
-func isEmptyValue(v reflect.Value) bool {
-	switch v.Kind() {
-	case reflect.Array, reflect.Map, reflect.Slice, reflect.String:
-		return v.Len() == 0
-	case reflect.Bool:
-		return !v.Bool()
-	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-		return v.Int() == 0
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
-		return v.Uint() == 0
-	case reflect.Float32, reflect.Float64:
-		return v.Float() == 0
-	case reflect.Interface, reflect.Ptr:
-		return v.IsNil()
-	}
-
-	if v.Type() == timeType {
-		return v.Interface().(time.Time).IsZero()
-	}
-
-	return false
-}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Request Marshaling
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var timeType = reflect.TypeOf(time.Time{})
 
@@ -371,13 +371,13 @@ func normalizeRequest(method, path string, httpRequest *http.Request){
 }
 
 func MakeDefaultHttpRequest(method, path string)(httpRequest http.Request, err error) {
-	httpRequest = http.Request{URL:&url.URL{}}
+	httpRequest = http.Request{Header:http.Header{}, URL:&url.URL{}}
 	normalizeRequest(method, path, &httpRequest)
 	return
 }
 
 func MakeDefaultHttpRequestWithTaggedStruct(method, path string, requestStruct interface{})(httpRequest http.Request, err error) {
-	httpRequest = http.Request{URL:&url.URL{}}
+	httpRequest = http.Request{Header:http.Header{}, URL:&url.URL{}}
 	normalizeRequest(method, path, &httpRequest)
 	err = HttpRequestMarshaller(requestStruct, &httpRequest)
 	return

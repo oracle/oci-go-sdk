@@ -1,6 +1,10 @@
 // Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
 package common
 
+import (
+	"fmt"
+)
+
 type Region int
 
 const (
@@ -10,20 +14,21 @@ const (
 	FRA
 )
 
-var DefaultRegion = IAD
+var DefaultRegion = PHX
 
-func RegionToString(r Region) string {
+func RegionToString(r Region) (s string, err error) {
 	switch r {
 	case SEA:
-		return "sea"
+		s =  "sea"
 	case PHX:
-		return "phx"
+		s = "us-phoenix-1"
 	case IAD:
-		return "iad"
+		s =  "iad"
 	case FRA:
-		return "fra"
+		s =  "fra"
 	default:
-		return ""
+		err = fmt.Errorf("Region with value: %d, was not found", r)
 	}
+	return
 }
 
