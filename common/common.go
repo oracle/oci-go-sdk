@@ -23,9 +23,9 @@ func RegionToString(r Region) (s string, err error) {
 	case PHX:
 		s = "us-phoenix-1"
 	case IAD:
-		s =  "iad"
+		s =  "us-ashburn-1"
 	case FRA:
-		s =  "fra"
+		s =  "eu-frankfurt-1"
 	default:
 		err = fmt.Errorf("Region with value: %d, was not found", r)
 	}

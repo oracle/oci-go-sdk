@@ -20,7 +20,8 @@ import (
 const (
 	defaultHostUrlTemplate = "%s.%s.oraclecloud.com"
 	defaultScheme = "https"
-	defaultUserAgentTemplate = "OracleGoSDK/%s (%s/%s; go/%s)"
+	defaultSDKMarker = "Oracle-GoSDK"
+	defaultUserAgentTemplate = "%s/%s (%s/%s; go/%s)" //SDK/SDK-version (OS/OSVersion; Lang/LangVerson)
 	defaultTimeout = time.Second * 15
 )
 
@@ -46,18 +47,21 @@ type BaseClient struct {
 	UserAgent              string
 	ServiceName            string
 	Region                 Region
-	AuthenticationProvider ConfigurationProvider
+	ConfigurationProvider ConfigurationProvider
 	//A request interceptor can be used to customize the request before signing and dispatching
 	Interceptor RequestInterceptor
 }
 
 func NewClientWithHttpDispatcher(dispatcher HttpRequestDispatcher)(client BaseClient) {
-	userAgent := fmt.Sprintf(defaultUserAgentTemplate, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
+	userAgent := fmt.Sprintf(defaultUserAgentTemplate, defaultSDKMarker, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
+	provider := EnvironmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
+
 	client = BaseClient{
 		UserAgent: userAgent,
 		Region: DefaultRegion,
 		Interceptor: nil,
-		Signer : OCIRequestSigner{KeyProvider:EnvironmentConfigurationProvider{}},
+		ConfigurationProvider:provider,
+		Signer : OCIRequestSigner{KeyProvider:provider},
 		httpClient: dispatcher,
 	}
 	return
@@ -76,7 +80,7 @@ func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
 	if err != nil {
 		return
 	}
-	request.Header.Set("user-agent", client.UserAgent)
+	request.Header.Set("User-Agent", client.UserAgent)
 	hostUrl := fmt.Sprintf(defaultHostUrlTemplate, client.ServiceName, regionString)
 	request.URL.Host = hostUrl
 	request.URL.Scheme = defaultScheme
@@ -92,8 +96,9 @@ func (client BaseClient) intercept(request *http.Request) (err error){
 	return
 }
 
-func (client BaseClient) addContentLenToRequest(request *http.Request) (err error){
+func addContentLenToRequest(request *http.Request) (err error){
 	if request.Method == http.MethodPost || request.Method == http.MethodPut {
+		//TODO fix this not getting content len
 		request.Header.Set("content-length",  strconv.FormatInt(request.ContentLength, 10))
 		if request.ContentLength > 0 {
 			hash, err :=  GetBodyHash(*request)
@@ -121,21 +126,21 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 	}
 
 	//Add request body header information
-	err = client.addContentLenToRequest(&request)
+	err = addContentLenToRequest(&request)
 	if err != nil {
 		return
 	}
 
 
 	//Sign the request
-	client.Signer.Sign(&request)
+	err = client.Signer.Sign(&request)
 	if err != nil {
 		return
 	}
 
 	IfDebug(func() {
 		if dump, e := httputil.DumpRequest(&request, true); e == nil {
-			Logf("Dump Request %q", dump)
+			Logf("Dump Request %v", string(dump))
 		} else { Debugln(e)}
 	})
 
@@ -147,7 +152,7 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 		}
 
 		if dump, e := httputil.DumpResponse(response, true); e == nil {
-			Logf("Dump Request %q", dump)
+			Logf("Dump Response %v", string(dump))
 		} else { Debugln(e)}
 	})
 	return
@@ -361,24 +366,25 @@ func HttpRequestMarshaller(requestStruct interface{}, httpRequest *http.Request)
 	return
 }
 
-func normalizeRequest(method, path string, httpRequest *http.Request){
-	httpRequest.Header.Set("content-type", "application/json")
-	httpRequest.Header.Set("date", time.Now().UTC().Format(http.TimeFormat))
-	httpRequest.Header.Set("accept", "*/*")
+func MakeDefaultHttpRequest(method, path string)(httpRequest http.Request) {
+	httpRequest = http.Request{
+		Proto: "HTTP/1.1",
+		ProtoMajor:1,
+		ProtoMinor:1,
+		Header:make(http.Header),
+		URL:&url.URL{},
+	}
+	httpRequest.Header.Set("Content-Type", "application/json")
+	httpRequest.Header.Set("Date", time.Now().UTC().Format(http.TimeFormat))
+	httpRequest.Header.Set("Opc-Client-Info", strings.Join([]string{defaultSDKMarker, Version()}, "/"))
+	httpRequest.Header.Set("Accept", "*/*")
 	httpRequest.Method = method
 	httpRequest.URL.Path = path
 	return
 }
 
-func MakeDefaultHttpRequest(method, path string)(httpRequest http.Request, err error) {
-	httpRequest = http.Request{Header:http.Header{}, URL:&url.URL{}}
-	normalizeRequest(method, path, &httpRequest)
-	return
-}
-
 func MakeDefaultHttpRequestWithTaggedStruct(method, path string, requestStruct interface{})(httpRequest http.Request, err error) {
-	httpRequest = http.Request{Header:http.Header{}, URL:&url.URL{}}
-	normalizeRequest(method, path, &httpRequest)
+	httpRequest = MakeDefaultHttpRequest(method, path)
 	err = HttpRequestMarshaller(requestStruct, &httpRequest)
 	return
 }

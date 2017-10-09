@@ -5,14 +5,11 @@ import (
 	"crypto"
 	"crypto/sha256"
 	"crypto/rsa"
-	"crypto/x509"
 	"crypto/rand"
-	"encoding/pem"
 	"io/ioutil"
 	"encoding/base64"
 	"fmt"
 	"strings"
-	"os"
 )
 
 //RequestSigner the interface to sign a request
@@ -20,6 +17,13 @@ type RequestSigner interface {
 	Sign(r *http.Request) error
 }
 
+//KeyProvider interface that wraps information about the key's account owner
+type KeyProvider interface {
+	PrivateRSAKey() (*rsa.PrivateKey, error)
+	KeyID() (string, error)
+}
+
+var signerVersion = "1"
 type OCIRequestSigner struct {
 	KeyProvider KeyProvider
 }
@@ -28,6 +32,7 @@ func getSigningHeaders(method string) []string {
 	result := []string{
 		"date",
 		"(request-target)",
+		"host",
 	}
 
 	if method == http.MethodPost || method == http.MethodPut {
@@ -39,19 +44,21 @@ func getSigningHeaders(method string) []string {
 
 func getSigningString(request *http.Request) string {
 	signingHeaders := getSigningHeaders(request.Method)
-	signingString := ""
-	for _, header := range signingHeaders {
-		if signingString != "" {
-			signingString += "\n"
+	signingParts := make([]string, len(signingHeaders))
+	for i, part := range signingHeaders {
+		var value string
+		switch part {
+		case "(request-target)":
+			value = getRequestTarget(request)
+		case "host":
+			value = request.URL.Host
+		default:
+			value = request.Header.Get(part)
 		}
-
-		if header == "(request-target)" {
-			signingString += fmt.Sprintf("%s: %s", header, getRequestTarget(request))
-		} else {
-			signingString += fmt.Sprintf("%s: %s", header, request.Header.Get(header))
-		}
+		signingParts[i] = fmt.Sprintf("%s: %s", part, value)
 	}
 
+	signingString := strings.Join(signingParts, "\n")
 	return signingString
 
 }
@@ -63,6 +70,7 @@ func getRequestTarget(request *http.Request) string {
 
 func (signer OCIRequestSigner) computeSignature(request *http.Request) (signature string, err error) {
 	signingString := getSigningString(request)
+	Debugf("Signing string is: %s", signingString)
 	hasher := sha256.New()
 	hasher.Write([]byte(signingString))
 	hashed := hasher.Sum(nil)
@@ -96,94 +104,24 @@ func GetBodyHash(request http.Request) (hashString string, err error) {
 }
 
 func (signer OCIRequestSigner) Sign(request *http.Request) (err error) {
-	signer.computeSignature(request)
-	return
-}
-
-type KeyProvider interface {
-	PrivateRSAKey() (*rsa.PrivateKey, error)
-}
-// ConfigurationProvider returns information about the account owner
-type ConfigurationProvider interface {
-	KeyProvider
-	TenancyOCID() (string, error)
-	UserOCID() (string, error)
-	KeyFingerPrint() (string, error)
-}
-
-type EnvironmentConfigurationProvider struct {
-	PrivateKeyPassword string
-	EnvironmentVariablePrefix string
-}
-
-// PrivateKeyFromBytes is a helper function that will produce a RSA private
-// key from bytes.
-func privateKeyFromBytes(pemData []byte, password *string) (key *rsa.PrivateKey, e error) {
-	if pemBlock, _ := pem.Decode(pemData); pemBlock != nil {
-		decrypted := pemBlock.Bytes
-		if x509.IsEncryptedPEMBlock(pemBlock) {
-			if password == nil {
-				e = fmt.Errorf("private_key_password is required for encrypted private keys")
-				return
-			}
-			if decrypted, e = x509.DecryptPEMBlock(pemBlock, []byte(*password)); e != nil {
-				return
-			}
-		}
-
-		key, e = x509.ParsePKCS1PrivateKey(decrypted)
-
-	} else {
-		e = fmt.Errorf("PEM data was not found in buffer")
-		return
-	}
-	return
-}
-
-func (p EnvironmentConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, err error) {
-	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "key_file")
-	var ok bool
-	var value string
-	if value, ok = os.LookupEnv(environmentVariable); !ok {
-		err = fmt.Errorf("Can not read PrivateKey from env variable %s", environmentVariable)
+	var signature string
+	if signature,  err = signer.computeSignature(request); err != nil {
 		return
 	}
 
-	pemFileContent, err := ioutil.ReadFile(value)
-	if err != nil {
-		Debugln("Can not read PrivateKey location from environment variable: " + environmentVariable)
+	signigHeaders := strings.Join(getSigningHeaders(request.Method), " ")
+
+
+	var keyID string
+	if keyID, err = signer.KeyProvider.KeyID();  err != nil {
 		return
 	}
 
-	key, err = privateKeyFromBytes(pemFileContent, &p.PrivateKeyPassword)
+	authValue := fmt.Sprintf("Signature version=\"%s\",headers=\"%s\",keyId=\"%s\",algorithm=\"rsa-sha256\",signature=\"%s\"",
+		signerVersion, signigHeaders, keyID, signature)
+
+	request.Header.Add("Authorization", authValue)
+
 	return
 }
-
-func (p EnvironmentConfigurationProvider) TenancyOCID() (value string, err error) {
-	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "tenancy")
-	var ok bool
-	if value, ok = os.LookupEnv(environmentVariable); !ok {
-		err = fmt.Errorf("Can not read Tenancy from env variable %s", environmentVariable)
-	}
-	return
-}
-
-func (p EnvironmentConfigurationProvider) UserOCID() (value string, err error) {
-	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "user")
-	var ok bool
-	if value, ok = os.LookupEnv(environmentVariable); !ok {
-		err = fmt.Errorf("Can not read Tenancy from env variable %s", environmentVariable)
-	}
-	return
-}
-
-func (p EnvironmentConfigurationProvider) KeyFingerPrint() (value string, err error) {
-	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "fingerprint")
-	var ok bool
-	if value, ok = os.LookupEnv(environmentVariable); !ok {
-		err = fmt.Errorf("Can not read Tenancy from env variable %s", environmentVariable)
-	}
-	return
-}
-
 
