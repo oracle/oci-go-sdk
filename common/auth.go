@@ -1,15 +1,17 @@
 package common
 
 import (
-	"net/http"
 	"crypto"
-	"crypto/sha256"
-	"crypto/rsa"
 	"crypto/rand"
-	"io/ioutil"
+	"crypto/rsa"
+	"crypto/sha256"
 	"encoding/base64"
 	"fmt"
+	"io/ioutil"
+	"net/http"
 	"strings"
+	"io"
+	"bytes"
 )
 
 //RequestSigner the interface to sign a request
@@ -24,6 +26,7 @@ type KeyProvider interface {
 }
 
 var signerVersion = "1"
+
 type OCIRequestSigner struct {
 	KeyProvider KeyProvider
 }
@@ -92,28 +95,46 @@ func (signer OCIRequestSigner) computeSignature(request *http.Request) (signatur
 }
 
 func GetBodyHash(request http.Request) (hashString string, err error) {
-	body, e := ioutil.ReadAll(request.Body)
-	if e != nil {
-		err = fmt.Errorf("Can not read body of request while calculating body hash: %s", e.Error())
-		return
+	var data []byte
+	if request.GetBody != nil {
+		bodyReader, e := request.GetBody()
+		if e != nil {
+			return "", fmt.Errorf("Can not read body of request while calculating body hash: %s", e.Error())
+		}
+		data, e = ioutil.ReadAll(bodyReader)
+		if e != nil {
+			return "", fmt.Errorf("Can not read body of request while calculating body hash: %s", e.Error())
+		}
+	} else {
+		buffer := &bytes.Buffer{}
+		_, e := io.Copy(buffer, request.Body)
+		if e != nil {
+			return "", fmt.Errorf("Can not read body of request while calculating body hash: %s", e.Error())
+		}
+
+		data = buffer.Bytes()
 	}
 
-	hash := sha256.Sum256(body)
+	hash := sha256.Sum256(data)
 	hashString = base64.StdEncoding.EncodeToString(hash[:])
 	return
 }
 
 func (signer OCIRequestSigner) Sign(request *http.Request) (err error) {
+	err = calculateHashOfBody(request)
+	if err != nil {
+		return
+	}
+
 	var signature string
-	if signature,  err = signer.computeSignature(request); err != nil {
+	if signature, err = signer.computeSignature(request); err != nil {
 		return
 	}
 
 	signigHeaders := strings.Join(getSigningHeaders(request.Method), " ")
 
-
 	var keyID string
-	if keyID, err = signer.KeyProvider.KeyID();  err != nil {
+	if keyID, err = signer.KeyProvider.KeyID(); err != nil {
 		return
 	}
 
@@ -124,4 +145,3 @@ func (signer OCIRequestSigner) Sign(request *http.Request) (err error) {
 
 	return
 }
-

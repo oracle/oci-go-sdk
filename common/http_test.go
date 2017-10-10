@@ -5,7 +5,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"net/http"
-	"net/url"
 	"strconv"
 	"strings"
 	"testing"
@@ -58,25 +57,33 @@ func TestHttpRequestMarshallerQuery(t *testing.T) {
 	assert.True(t, query.Get("limit") == "23")
 }
 
+func TestMakeDefault(t *testing.T) {
+	r := MakeDefaultHttpRequest(http.MethodPost, "/one/two")
+	assert.Equal(t, r.Header.Get("Content-Type"),  "application/json")
+	assert.NotEmpty(t, r.Header.Get("Date"))
+	assert.NotEmpty(t, r.Header.Get("Opc-Client-Info"))
+}
+
+
 func TestHttpMarshallerSimpleHeader(t *testing.T) {
 	s := UpdateUserRequest{UserID: "id1", IfMatch: "n=as", UpdateUserDetails: UpdateUserDetails{Description: "name of"}}
-	request := &http.Request{}
-	HttpRequestMarshaller(s, request)
+	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
+	HttpRequestMarshaller(s, &request)
 	header := request.Header
 	assert.True(t, header.Get("if-match") == "n=as")
 }
 
 func TestHttpMarshallerSimpleStruct(t *testing.T) {
 	s := UploadApiKeyRequest{UserID: "111", OpcRetryToken: "token", CreateApiKeyDetails: CreateApiKeyDetails{Key: "thekey"}}
-	request := &http.Request{}
-	HttpRequestMarshaller(s, request)
+	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
+	HttpRequestMarshaller(s, &request)
 	assert.True(t, strings.Contains(request.URL.Path, "111"))
 }
 func TestHttpMarshallerSimpleBody(t *testing.T) {
 	desc := "theDescription"
 	s := UpdateUserRequest{UserID: "id1", IfMatch: "n=as", UpdateUserDetails: UpdateUserDetails{Description: desc}}
-	request := &http.Request{}
-	HttpRequestMarshaller(s, request)
+	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
+	HttpRequestMarshaller(s, &request)
 	body, _ := ioutil.ReadAll(request.Body)
 	var content map[string]string
 	json.Unmarshal(body, &content)
@@ -98,8 +105,8 @@ func TestHttpMarshalerAll(t *testing.T) {
 	}{
 		"101", "tapir", time.Now(), 3.23, true, UpdateUserDetails{Description: desc},
 	}
-	request := &http.Request{}
-	HttpRequestMarshaller(s, request)
+	request := MakeDefaultHttpRequest(http.MethodPost, "/")
+	HttpRequestMarshaller(s, &request)
 	var content map[string]string
 	body, _ := ioutil.ReadAll(request.Body)
 	json.Unmarshal(body, &content)
@@ -123,9 +130,8 @@ func TestHttpMarshalerPointers(t *testing.T) {
 	}{
 		n,
 	}
-	request := &http.Request{}
-	e := HttpRequestMarshaller(s, request)
-	assert.NoError(t, e)
+	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
+	HttpRequestMarshaller(s, &request)
 	assert.NotNil(t, request)
 	assert.True(t, request.URL.Query().Get("name") == *s.Name)
 }
@@ -149,9 +155,8 @@ func TestHttpMarshalerUntaggedFields(t *testing.T) {
 func TestHttpMarshalerPathTemplate(t *testing.T) {
 	urlTemplate := "/name/{userId}/aaa"
 	s := UploadApiKeyRequest{UserID: "111", OpcRetryToken: "token", CreateApiKeyDetails: CreateApiKeyDetails{Key: "thekey"}}
-	request := &http.Request{URL: &url.URL{}}
-	request.URL.Path = urlTemplate
-	e := HttpRequestMarshaller(s, request)
+	request := MakeDefaultHttpRequest(http.MethodPost, urlTemplate)
+	e := HttpRequestMarshaller(s, &request)
 	assert.NoError(t, e)
 	assert.Equal(t, "/name/111/aaa", request.URL.Path)
 }

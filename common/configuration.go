@@ -3,10 +3,10 @@ package common
 import (
 	"crypto/rsa"
 	"crypto/x509"
-	"fmt"
-	"os"
-	"io/ioutil"
 	"encoding/pem"
+	"fmt"
+	"io/ioutil"
+	"os"
 )
 
 // ConfigurationProvider returns information about the account owner
@@ -20,7 +20,7 @@ type ConfigurationProvider interface {
 
 // ConfigurationProvider reads configuration from environment variables
 type EnvironmentConfigurationProvider struct {
-	PrivateKeyPassword string
+	PrivateKeyPassword        string
 	EnvironmentVariablePrefix string
 }
 
@@ -85,7 +85,6 @@ func (p EnvironmentConfigurationProvider) KeyID() (keyID string, err error) {
 	return fmt.Sprintf("%s/%s/%s", ocid, userocid, fingerPrint), nil
 }
 
-
 func (p EnvironmentConfigurationProvider) TenancyOCID() (value string, err error) {
 	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "tenancy_ocid")
 	var ok bool
@@ -121,5 +120,3 @@ func (p EnvironmentConfigurationProvider) KeyFingerPrint() (value string, err er
 	}
 	return
 }
-
-

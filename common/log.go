@@ -16,9 +16,8 @@ var mainLog = log.New(os.Stderr, "", log.Ldate|log.Ltime|log.Lshortfile)
 var isDebugLogEnabled bool
 var checkDebug sync.Once
 
-
 func getOutputForEnv() (writer io.Writer) {
-	checkDebug.Do(func () {
+	checkDebug.Do(func() {
 		isDebugLogEnabled = *new(bool)
 		_, isDebugLogEnabled = os.LookupEnv("OCI_GO_SDK_DEBUG")
 	})

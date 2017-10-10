@@ -5,26 +5,26 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"net/http/httputil"
 	"net/http"
+	"net/http/httputil"
 	"net/url"
+	"path"
 	"reflect"
+	"regexp"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
-	"runtime"
-	"path"
-	"regexp"
+	"io"
 )
 
 const (
-	defaultHostUrlTemplate = "%s.%s.oraclecloud.com"
-	defaultScheme = "https"
-	defaultSDKMarker = "Oracle-GoSDK"
-	defaultUserAgentTemplate = "%s/%s (%s/%s; go/%s)" //SDK/SDK-version (OS/OSVersion; Lang/LangVerson)
-	defaultTimeout = time.Second * 15
+	defaultHostUrlTemplate   = "%s.%s.oraclecloud.com"
+	defaultScheme            = "https"
+	defaultSDKMarker         = "Oracle-GoSDK"
+	defaultUserAgentTemplate = "%s/%s (%s/%s; go/%s)" //SDK/SDKVersion (OS/OSVersion; Lang/LangVersion)
+	defaultTimeout           = time.Second * 15
 )
-
 
 type RequestInterceptor func(*http.Request) error
 
@@ -41,39 +41,38 @@ type Client interface {
 
 //BaseClient struct implements all basic operations to call oci web services.
 type BaseClient struct {
-	httpClient             HttpRequestDispatcher
-	Signer                 RequestSigner
-	ApiVersion             string
-	UserAgent              string
-	ServiceName            string
-	Region                 Region
+	httpClient            HttpRequestDispatcher
+	Signer                RequestSigner
+	ApiVersion            string
+	UserAgent             string
+	ServiceName           string
+	Region                Region
 	ConfigurationProvider ConfigurationProvider
 	//A request interceptor can be used to customize the request before signing and dispatching
 	Interceptor RequestInterceptor
 }
 
-func NewClientWithHttpDispatcher(dispatcher HttpRequestDispatcher)(client BaseClient) {
+func NewClientWithHttpDispatcher(dispatcher HttpRequestDispatcher) (client BaseClient) {
 	userAgent := fmt.Sprintf(defaultUserAgentTemplate, defaultSDKMarker, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
 	provider := EnvironmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
 
 	client = BaseClient{
-		UserAgent: userAgent,
-		Region: DefaultRegion,
-		Interceptor: nil,
-		ConfigurationProvider:provider,
-		Signer : OCIRequestSigner{KeyProvider:provider},
-		httpClient: dispatcher,
+		UserAgent:             userAgent,
+		Region:                DefaultRegion,
+		Interceptor:           nil,
+		ConfigurationProvider: provider,
+		Signer:                OCIRequestSigner{KeyProvider: provider},
+		httpClient:            dispatcher,
 	}
 	return
 }
 
-func NewClient()(client BaseClient) {
-	return NewClientWithHttpDispatcher(&http.Client {
+func NewClient() (client BaseClient) {
+	return NewClientWithHttpDispatcher(&http.Client{
 		Timeout:   defaultTimeout,
 		Transport: &http.Transport{},
 	})
 }
-
 
 func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
 	regionString, err := RegionToString(client.Region)
@@ -89,28 +88,25 @@ func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
 	return
 }
 
-func (client BaseClient) intercept(request *http.Request) (err error){
+func (client BaseClient) intercept(request *http.Request) (err error) {
 	if client.Interceptor != nil {
 		err = client.Interceptor(request)
 	}
 	return
 }
 
-func addContentLenToRequest(request *http.Request) (err error){
+func calculateHashOfBody(request *http.Request) (err error) {
 	if request.Method == http.MethodPost || request.Method == http.MethodPut {
-		//TODO fix this not getting content len
-		request.Header.Set("content-length",  strconv.FormatInt(request.ContentLength, 10))
 		if request.ContentLength > 0 {
-			hash, err :=  GetBodyHash(*request)
-			if err != nil {
-				return err
+			hash, e := GetBodyHash(*request)
+			if e != nil {
+				return e
 			}
-			request.Header.Set( "x-content-sha256", hash)
+			request.Header.Set("X-Content-Sha256", hash)
 		}
 	}
 	return
 }
-
 
 func (client BaseClient) Call(request http.Request) (response *http.Response, err error) {
 	Debugln("Atempting to call downstream service")
@@ -125,12 +121,6 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 		return
 	}
 
-	//Add request body header information
-	err = addContentLenToRequest(&request)
-	if err != nil {
-		return
-	}
-
 
 	//Sign the request
 	err = client.Signer.Sign(&request)
@@ -141,7 +131,9 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 	IfDebug(func() {
 		if dump, e := httputil.DumpRequest(&request, true); e == nil {
 			Logf("Dump Request %v", string(dump))
-		} else { Debugln(e)}
+		} else {
+			Debugln(e)
+		}
 	})
 
 	response, err = client.httpClient.Do(&request)
@@ -153,7 +145,9 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 
 		if dump, e := httputil.DumpResponse(response, true); e == nil {
 			Logf("Dump Response %v", string(dump))
-		} else { Debugln(e)}
+		} else {
+			Debugln(e)
+		}
 	})
 	return
 }
@@ -211,7 +205,13 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 		Logln("The body of the request is already set. Structure: ", field.Name, " will overwrite it")
 	}
 	marshaled, e := json.Marshal(value.Interface())
-	request.Body = ioutil.NopCloser(bytes.NewReader(marshaled))
+	bodyBytes := bytes.NewReader(marshaled)
+	request.ContentLength = int64(bodyBytes.Len())
+	request.Header.Set("Content-Length", strconv.FormatInt(request.ContentLength, 10))
+	request.Body = ioutil.NopCloser(bodyBytes)
+	request.GetBody = func() (io.ReadCloser, error) {
+		return ioutil.NopCloser(bodyBytes), nil
+	}
 	return
 }
 
@@ -253,7 +253,7 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 		Debugln("Marshaling request to path by appending field:", field.Name)
 		allPath := []string{currentUrlPath, additionalUrlPathPart}
 		newPath := strings.Join(allPath, "/")
-		request.URL.Path = newPath
+		request.URL.Path = path.Clean(newPath)
 		return
 	} else {
 		var fieldName string
@@ -263,7 +263,7 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 		}
 		urlTemplate := currentUrlPath
 		Debugln("Marshaling to path from field:", field.Name, "in template:", urlTemplate)
-		request.URL.Path = strings.Replace(urlTemplate, "{"+fieldName+"}", additionalUrlPathPart, -1)
+		request.URL.Path = path.Clean(strings.Replace(urlTemplate, "{"+fieldName+"}", additionalUrlPathPart, -1))
 		return
 	}
 }
@@ -366,14 +366,16 @@ func HttpRequestMarshaller(requestStruct interface{}, httpRequest *http.Request)
 	return
 }
 
-func MakeDefaultHttpRequest(method, path string)(httpRequest http.Request) {
+func MakeDefaultHttpRequest(method, path string) (httpRequest http.Request) {
 	httpRequest = http.Request{
-		Proto: "HTTP/1.1",
-		ProtoMajor:1,
-		ProtoMinor:1,
-		Header:make(http.Header),
-		URL:&url.URL{},
+		Proto:      "HTTP/1.1",
+		ProtoMajor: 1,
+		ProtoMinor: 1,
+		Header:     make(http.Header),
+		URL:        &url.URL{},
 	}
+
+	httpRequest.Header.Set("Content-Length", "0")
 	httpRequest.Header.Set("Content-Type", "application/json")
 	httpRequest.Header.Set("Date", time.Now().UTC().Format(http.TimeFormat))
 	httpRequest.Header.Set("Opc-Client-Info", strings.Join([]string{defaultSDKMarker, Version()}, "/"))
@@ -383,9 +385,8 @@ func MakeDefaultHttpRequest(method, path string)(httpRequest http.Request) {
 	return
 }
 
-func MakeDefaultHttpRequestWithTaggedStruct(method, path string, requestStruct interface{})(httpRequest http.Request, err error) {
+func MakeDefaultHttpRequestWithTaggedStruct(method, path string, requestStruct interface{}) (httpRequest http.Request, err error) {
 	httpRequest = MakeDefaultHttpRequest(method, path)
 	err = HttpRequestMarshaller(requestStruct, &httpRequest)
 	return
 }
-

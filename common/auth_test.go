@@ -1,14 +1,15 @@
 package common
 
 import (
+	"bytes"
 	"crypto/rsa"
 	"github.com/stretchr/testify/assert"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
 	"testing"
-	"io/ioutil"
-	"bytes"
+	"strconv"
 )
 
 var (
@@ -22,10 +23,11 @@ var (
 		"compartmentId=ocid1.compartment.oc1..aaaaaaaam3we6vgnherjq5q2idnccdflvjsnog7mlr6rtdb25gilchfeyjxa" +
 		"&displayName=TeamXInstances&volumeId=ocid1.volume.oc1.phx.abyhqljrgvttnlx73nmrwfaux7kcvzfs3s66izvxf2h4lgvyndsdsnoiwr5q"
 	testURL2 = "https://iaas.us-phoenix-1.oraclecloud.com/20160918/volumeAttachments"
-	testBody = `{
-"compartmentId": "ocid1.compartment.oc1..aaaaaaaam3we6vgnherjq5q2idnccdflvjsnog7mlr6rtdb25gilchfeyjxa",
-"instanceId": "ocid1.instance.oc1.phx.abuw4ljrlsfiqw6vzzxb43vyypt4pkodawglp3wqxjqofakrwvou52gb6s5a",
-"volumeId": "ocid1.volume.oc1.phx.abyhqljrgvttnlx73nmrwfaux7kcvzfs3s66izvxf2h4lgvyndsdsnoiwr5q"
+	testBody =
+`{
+    "compartmentId": "ocid1.compartment.oc1..aaaaaaaam3we6vgnherjq5q2idnccdflvjsnog7mlr6rtdb25gilchfeyjxa",
+    "instanceId": "ocid1.instance.oc1.phx.abuw4ljrlsfiqw6vzzxb43vyypt4pkodawglp3wqxjqofakrwvou52gb6s5a",
+    "volumeId": "ocid1.volume.oc1.phx.abyhqljrgvttnlx73nmrwfaux7kcvzfs3s66izvxf2h4lgvyndsdsnoiwr5q"
 }`
 
 	testPrivateKey = `-----BEGIN RSA PRIVATE KEY-----
@@ -50,18 +52,17 @@ G6aFKaqQfOXKCyWoUiVknQJAXrlgySFci/2ueKlIE1QqIiLSZ8V8OlpFLRnb1pzI
 		"dnccdflvjsnog7mlr6rtdb25gilchfeyjxa&displayName=TeamXInstances&" +
 		"volumeId=ocid1.volume.oc1.phx.abyhqljrgvttnlx73nmrwfaux7kcvzfs3s66izvxf2h4lgvyndsdsnoiwr5q\n" +
 		"host: iaas.us-phoenix-1.oraclecloud.com"
-		expectedSigningString2 = `date: Thu, 05 Jan 2014 21:31:40 GMT
+	expectedSigningString2 = `date: Thu, 05 Jan 2014 21:31:40 GMT
 (request-target): post /20160918/volumeAttachments
 host: iaas.us-phoenix-1.oraclecloud.com
 content-length: 316
 content-type: application/json
 x-content-sha256: V9Z20UJTvkvpJ50flBzKE32+6m2zJjweHpDMX/U4Uy0=`
 
-	expectedSignature = "GBas7grhyrhSKHP6AVIj/h5/Vp8bd/peM79H9Wv8kjoaCivujVXlpbKLjMPe"+
-		"DUhxkFIWtTtLBj3sUzaFj34XE6YZAHc9r2DmE4pMwOAy/kiITcZxa1oHPOeRheC0jP2dqbTll"+
+	expectedSignature = "GBas7grhyrhSKHP6AVIj/h5/Vp8bd/peM79H9Wv8kjoaCivujVXlpbKLjMPe" +
+		"DUhxkFIWtTtLBj3sUzaFj34XE6YZAHc9r2DmE4pMwOAy/kiITcZxa1oHPOeRheC0jP2dqbTll" +
 		"8fmTZVwKZOKHYPtrLJIJQHJjNvxFWeHQjMaR7M="
 	expectedSignature2 = "Mje8vIDPlwIHmD/cTDwRxE7HaAvBg16JnVcsuqaNRim23fFPgQfLoOOxae6WqKb1uPjYEl0qIdazWaBy/Ml8DRhqlocMwoSXv0fbukP8J5N80LCmzT/FFBvIvTB91XuXI3hYfP9Zt1l7S6ieVadHUfqBedWH0itrtPJBgKmrWso="
-
 )
 
 type testKeyProvider struct{}
@@ -94,7 +95,7 @@ func TestOCIRequestSigner_SigningString(t *testing.T) {
 }
 
 func TestOCIRequestSigner_ComputeSignature(t *testing.T) {
-	s := OCIRequestSigner{KeyProvider:testKeyProvider{}}
+	s := OCIRequestSigner{KeyProvider: testKeyProvider{}}
 	url, _ := url.Parse(testURL)
 	r := http.Request{
 		Proto:      "HTTP/1.1",
@@ -112,7 +113,7 @@ func TestOCIRequestSigner_ComputeSignature(t *testing.T) {
 }
 
 func TestOCIRequestSigner_Sign(t *testing.T) {
-	s := OCIRequestSigner{KeyProvider:testKeyProvider{}}
+	s := OCIRequestSigner{KeyProvider: testKeyProvider{}}
 	url, _ := url.Parse(testURL)
 	r := http.Request{
 		Proto:      "HTTP/1.1",
@@ -136,23 +137,75 @@ DUhxkFIWtTtLBj3sUzaFj34XE6YZAHc9r2DmE4pMwOAy/kiITcZxa1oHPOeRheC0jP2dqbTll
 
 }
 
-
 func TestOCIRequestSigner_SignString2(t *testing.T) {
-	url, _ := url.Parse(testURL2)
+	u, _ := url.Parse(testURL2)
 	r := http.Request{
 		Proto:      "HTTP/1.1",
 		ProtoMajor: 1,
 		ProtoMinor: 1,
 		Header:     make(http.Header),
-		URL:        url,
+		URL:        u,
 	}
+	bodyBuffer := bytes.NewBufferString(testBody)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	r.ContentLength = int64(bodyBuffer.Len())
 	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
 	r.Header.Set("Content-Type", "application/json")
+	r.Header.Set("Content-Length", strconv.FormatInt(r.ContentLength, 10))
 	r.Method = http.MethodPost
-	r.Body = ioutil.NopCloser(bytes.NewBufferString(testBody))
-	addContentLenToRequest(&r)
+	calculateHashOfBody(&r)
 	signingString := getSigningString(&r)
 
+	assert.Equal(t, r.ContentLength, int64(316))
 	assert.Equal(t, expectedSigningString2, signingString)
+}
 
+func TestOCIRequestSigner_ComputeSignature2(t *testing.T) {
+	s := OCIRequestSigner{KeyProvider: testKeyProvider{}}
+	u, _ := url.Parse(testURL2)
+	r := http.Request{
+		Proto:      "HTTP/1.1",
+		ProtoMajor: 1,
+		ProtoMinor: 1,
+		Header:     make(http.Header),
+		URL:        u,
+	}
+	bodyBuffer := bytes.NewBufferString(testBody)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	r.ContentLength = int64(bodyBuffer.Len())
+	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Header.Set("Content-Type", "application/json")
+	r.Header.Set("Content-Length", strconv.FormatInt(r.ContentLength, 10))
+	r.Method = http.MethodPost
+	calculateHashOfBody(&r)
+	signature, err := s.computeSignature(&r)
+
+	assert.NoError(t, err)
+	assert.Equal(t, r.ContentLength, int64(316))
+	assert.Equal(t, expectedSignature2, signature)
+}
+
+func TestOCIRequestSigner_Sign2(t *testing.T) {
+	s := OCIRequestSigner{KeyProvider: testKeyProvider{}}
+	u, _ := url.Parse(testURL2)
+	r := http.Request{
+		Proto:      "HTTP/1.1",
+		ProtoMajor: 1,
+		ProtoMinor: 1,
+		Header:     make(http.Header),
+		URL:        u,
+	}
+	bodyBuffer := bytes.NewBufferString(testBody)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	r.ContentLength = int64(bodyBuffer.Len())
+	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Header.Set("Content-Type", "application/json")
+	r.Header.Set("Content-Length", strconv.FormatInt(r.ContentLength, 10))
+	r.Method = http.MethodPost
+	err := s.Sign(&r)
+
+	expectedAuthHeader := `Signature version="1",headers="date (request-target) host content-length content-type x-content-sha256",keyId="ocid1.tenancy.oc1..aaaaaaaaba3pv6wkcr4jqae5f15p2b2m2yt2j6rx32uzr4h25vqstifsfdsq/ocid1.user.oc1..aaaaaaaat5nvwcna5j6aqzjcaty5eqbb6qt2jvpkanghtgdaqedqw3rynjq/20:3b:97:13:55:1c:5b:0d:d3:37:d8:50:4e:c5:3a:34",algorithm="rsa-sha256",signature="Mje8vIDPlwIHmD/cTDwRxE7HaAvBg16JnVcsuqaNRim23fFPgQfLoOOxae6WqKb1uPjYEl0qIdazWaBy/Ml8DRhqlocMwoSXv0fbukP8J5N80LCmzT/FFBvIvTB91XuXI3hYfP9Zt1l7S6ieVadHUfqBedWH0itrtPJBgKmrWso="`
+	assert.NoError(t, err)
+	assert.Equal(t, r.ContentLength, int64(316))
+	assert.Equal(t, expectedAuthHeader, r.Header.Get("Authorization"))
 }
