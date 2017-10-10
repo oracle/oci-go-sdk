@@ -6,41 +6,157 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/http/httputil"
 	"net/url"
+	"path"
 	"reflect"
+	"regexp"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
+	"io"
 )
 
 const (
-	BaseUrl = "https://%s.%s.oracle.com"
+	defaultHostUrlTemplate   = "%s.%s.oraclecloud.com"
+	defaultScheme            = "https"
+	defaultSDKMarker         = "Oracle-GoSDK"
+	defaultUserAgentTemplate = "%s/%s (%s/%s; go/%s)" //SDK/SDKVersion (OS/OSVersion; Lang/LangVersion)
+	defaultTimeout           = time.Second * 15
 )
 
-// isEmptyValue checks if a value should be considered empty for the purposes
-// of omitting fields with the "omitempty" option.
-func isEmptyValue(v reflect.Value) bool {
-	switch v.Kind() {
-	case reflect.Array, reflect.Map, reflect.Slice, reflect.String:
-		return v.Len() == 0
-	case reflect.Bool:
-		return !v.Bool()
-	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-		return v.Int() == 0
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
-		return v.Uint() == 0
-	case reflect.Float32, reflect.Float64:
-		return v.Float() == 0
-	case reflect.Interface, reflect.Ptr:
-		return v.IsNil()
-	}
+type RequestInterceptor func(*http.Request) error
 
-	if v.Type() == timeType {
-		return v.Interface().(time.Time).IsZero()
-	}
-
-	return false
+// HttpRequestor wraps the execution of a http request, it is generally implemented by
+// http.Client.Do, but can be customized for testing
+type HttpRequestDispatcher interface {
+	Do(req *http.Request) (*http.Response, error)
 }
+
+// Client wraps the basic operation to call the downstream services
+type Client interface {
+	Call(request http.Request) (response *http.Response, err error)
+}
+
+//BaseClient struct implements all basic operations to call oci web services.
+type BaseClient struct {
+	httpClient            HttpRequestDispatcher
+	Signer                RequestSigner
+	ApiVersion            string
+	UserAgent             string
+	ServiceName           string
+	Region                Region
+	ConfigurationProvider ConfigurationProvider
+	//A request interceptor can be used to customize the request before signing and dispatching
+	Interceptor RequestInterceptor
+}
+
+func NewClientWithHttpDispatcher(dispatcher HttpRequestDispatcher) (client BaseClient) {
+	userAgent := fmt.Sprintf(defaultUserAgentTemplate, defaultSDKMarker, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
+	provider := EnvironmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
+
+	client = BaseClient{
+		UserAgent:             userAgent,
+		Region:                DefaultRegion,
+		Interceptor:           nil,
+		ConfigurationProvider: provider,
+		Signer:                OCIRequestSigner{KeyProvider: provider},
+		httpClient:            dispatcher,
+	}
+	return
+}
+
+func NewClient() (client BaseClient) {
+	return NewClientWithHttpDispatcher(&http.Client{
+		Timeout:   defaultTimeout,
+		Transport: &http.Transport{},
+	})
+}
+
+func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
+	regionString, err := RegionToString(client.Region)
+	if err != nil {
+		return
+	}
+	request.Header.Set("User-Agent", client.UserAgent)
+	hostUrl := fmt.Sprintf(defaultHostUrlTemplate, client.ServiceName, regionString)
+	request.URL.Host = hostUrl
+	request.URL.Scheme = defaultScheme
+	currentPath := request.URL.Path
+	request.URL.Path = path.Clean(fmt.Sprintf("%s/%s", client.ApiVersion, currentPath))
+	return
+}
+
+func (client BaseClient) intercept(request *http.Request) (err error) {
+	if client.Interceptor != nil {
+		err = client.Interceptor(request)
+	}
+	return
+}
+
+func calculateHashOfBody(request *http.Request) (err error) {
+	if request.Method == http.MethodPost || request.Method == http.MethodPut {
+		if request.ContentLength > 0 {
+			hash, e := GetBodyHash(*request)
+			if e != nil {
+				return e
+			}
+			request.Header.Set("X-Content-Sha256", hash)
+		}
+	}
+	return
+}
+
+func (client BaseClient) Call(request http.Request) (response *http.Response, err error) {
+	Debugln("Atempting to call downstream service")
+	err = client.prepareRequest(&request)
+	if err != nil {
+		return
+	}
+
+	//Intercept
+	err = client.intercept(&request)
+	if err != nil {
+		return
+	}
+
+
+	//Sign the request
+	err = client.Signer.Sign(&request)
+	if err != nil {
+		return
+	}
+
+	IfDebug(func() {
+		if dump, e := httputil.DumpRequest(&request, true); e == nil {
+			Logf("Dump Request %v", string(dump))
+		} else {
+			Debugln(e)
+		}
+	})
+
+	response, err = client.httpClient.Do(&request)
+	IfDebug(func() {
+		if err != nil {
+			Logln(err)
+			return
+		}
+
+		if dump, e := httputil.DumpResponse(response, true); e == nil {
+			Logf("Dump Response %v", string(dump))
+		} else {
+			Debugln(e)
+		}
+	})
+	return
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Request Marshaling
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var timeType = reflect.TypeOf(time.Time{})
 
@@ -89,7 +205,13 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 		Logln("The body of the request is already set. Structure: ", field.Name, " will overwrite it")
 	}
 	marshaled, e := json.Marshal(value.Interface())
-	request.Body = ioutil.NopCloser(bytes.NewReader(marshaled))
+	bodyBytes := bytes.NewReader(marshaled)
+	request.ContentLength = int64(bodyBytes.Len())
+	request.Header.Set("Content-Length", strconv.FormatInt(request.ContentLength, 10))
+	request.Body = ioutil.NopCloser(bodyBytes)
+	request.GetBody = func() (io.ReadCloser, error) {
+		return ioutil.NopCloser(bodyBytes), nil
+	}
 	return
 }
 
@@ -121,12 +243,17 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 	}
 
 	if request.URL == nil {
-		Debugln("Marshaling to path from field:", field.Name)
 		request.URL = &url.URL{}
-		currentUrlPath := request.URL.Path
+		request.URL.Path = ""
+	}
+	var currentUrlPath = request.URL.Path
+
+	var templatedPathRegex, _ = regexp.Compile(".*{.+}.*")
+	if !templatedPathRegex.MatchString(currentUrlPath) {
+		Debugln("Marshaling request to path by appending field:", field.Name)
 		allPath := []string{currentUrlPath, additionalUrlPathPart}
 		newPath := strings.Join(allPath, "/")
-		request.URL.Path = newPath
+		request.URL.Path = path.Clean(newPath)
 		return
 	} else {
 		var fieldName string
@@ -134,9 +261,9 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 			e = fmt.Errorf("Marshaling request to path name and template requires a 'name' tag for field: %s", field.Name)
 			return
 		}
-		urlTemplate := request.URL.Path
+		urlTemplate := currentUrlPath
 		Debugln("Marshaling to path from field:", field.Name, "in template:", urlTemplate)
-		request.URL.Path = strings.Replace(urlTemplate, "{"+fieldName+"}", additionalUrlPathPart, -1)
+		request.URL.Path = path.Clean(strings.Replace(urlTemplate, "{"+fieldName+"}", additionalUrlPathPart, -1))
 		return
 	}
 }
@@ -236,5 +363,30 @@ func HttpRequestMarshaller(requestStruct interface{}, httpRequest *http.Request)
 
 	Debugln("Marshaling to Request:", val.Type().Name())
 	err = structToRequestPart(httpRequest, *val)
+	return
+}
+
+func MakeDefaultHttpRequest(method, path string) (httpRequest http.Request) {
+	httpRequest = http.Request{
+		Proto:      "HTTP/1.1",
+		ProtoMajor: 1,
+		ProtoMinor: 1,
+		Header:     make(http.Header),
+		URL:        &url.URL{},
+	}
+
+	httpRequest.Header.Set("Content-Length", "0")
+	httpRequest.Header.Set("Content-Type", "application/json")
+	httpRequest.Header.Set("Date", time.Now().UTC().Format(http.TimeFormat))
+	httpRequest.Header.Set("Opc-Client-Info", strings.Join([]string{defaultSDKMarker, Version()}, "/"))
+	httpRequest.Header.Set("Accept", "*/*")
+	httpRequest.Method = method
+	httpRequest.URL.Path = path
+	return
+}
+
+func MakeDefaultHttpRequestWithTaggedStruct(method, path string, requestStruct interface{}) (httpRequest http.Request, err error) {
+	httpRequest = MakeDefaultHttpRequest(method, path)
+	err = HttpRequestMarshaller(requestStruct, &httpRequest)
 	return
 }
