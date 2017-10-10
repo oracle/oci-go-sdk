@@ -84,7 +84,7 @@ func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
 	request.URL.Host = hostUrl
 	request.URL.Scheme = defaultScheme
 	currentPath := request.URL.Path
-	request.URL.Path = path.Clean(fmt.Sprintf("%s/%s", client.ApiVersion, currentPath))
+	request.URL.Path = path.Clean(fmt.Sprintf("/%s/%s", client.ApiVersion, currentPath))
 	return
 }
 
