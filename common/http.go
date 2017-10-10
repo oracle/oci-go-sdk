@@ -42,7 +42,7 @@ type Client interface {
 //BaseClient struct implements all basic operations to call oci web services.
 type BaseClient struct {
 	httpClient            HttpRequestDispatcher
-	Signer                RequestSigner
+	Signer                HttpRequestSigner
 	ApiVersion            string
 	UserAgent             string
 	ServiceName           string
@@ -151,11 +151,11 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 	return
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Request Marshaling
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var timeType = reflect.TypeOf(time.Time{})
 
@@ -365,6 +365,7 @@ func HttpRequestMarshaller(requestStruct interface{}, httpRequest *http.Request)
 	return
 }
 
+// MakeDefaultHttpRequest creates the basic http request with the necessary headers set
 func MakeDefaultHttpRequest(method, path string) (httpRequest http.Request) {
 	httpRequest = http.Request{
 		Proto:      "HTTP/1.1",
@@ -384,6 +385,8 @@ func MakeDefaultHttpRequest(method, path string) (httpRequest http.Request) {
 	return
 }
 
+// MakeDefaultHttpRequestWithTaggedStruct creates an http request from an struct with tagged fields, see HttpRequestMarshaller
+// for more information
 func MakeDefaultHttpRequestWithTaggedStruct(method, path string, requestStruct interface{}) (httpRequest http.Request, err error) {
 	httpRequest = MakeDefaultHttpRequest(method, path)
 	err = HttpRequestMarshaller(requestStruct, &httpRequest)

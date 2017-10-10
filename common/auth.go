@@ -14,8 +14,8 @@ import (
 	"strings"
 )
 
-//RequestSigner the interface to sign a request
-type RequestSigner interface {
+//HttpRequestSigner the interface to sign a request
+type HttpRequestSigner interface {
 	Sign(r *http.Request) error
 }
 
@@ -27,6 +27,8 @@ type KeyProvider interface {
 
 var signerVersion = "1"
 
+//OCIRequestSigner implements the http-signatures-draft spec
+//as described in https://tools.ietf.org/html/draft-cavage-http-signatures-08
 type OCIRequestSigner struct {
 	KeyProvider KeyProvider
 }
@@ -73,7 +75,6 @@ func getRequestTarget(request *http.Request) string {
 
 func (signer OCIRequestSigner) computeSignature(request *http.Request) (signature string, err error) {
 	signingString := getSigningString(request)
-	Debugf("Signing string is: %s", signingString)
 	hasher := sha256.New()
 	hasher.Write([]byte(signingString))
 	hashed := hasher.Sum(nil)
@@ -86,7 +87,7 @@ func (signer OCIRequestSigner) computeSignature(request *http.Request) (signatur
 	var unencodedSig []byte
 	unencodedSig, e := rsa.SignPKCS1v15(rand.Reader, privateKey, crypto.SHA256, hashed)
 	if e != nil {
-		err = fmt.Errorf("Can not compute signature while signing the request %s: ", e.Error())
+		err = fmt.Errorf("can not compute signature while signing the request %s: ", e.Error())
 		return
 	}
 
@@ -99,17 +100,17 @@ func GetBodyHash(request http.Request) (hashString string, err error) {
 	if request.GetBody != nil {
 		bodyReader, e := request.GetBody()
 		if e != nil {
-			return "", fmt.Errorf("Can not read body of request while calculating body hash: %s", e.Error())
+			return "", fmt.Errorf("can not read body of request while calculating body hash: %s", e.Error())
 		}
 		data, e = ioutil.ReadAll(bodyReader)
 		if e != nil {
-			return "", fmt.Errorf("Can not read body of request while calculating body hash: %s", e.Error())
+			return "", fmt.Errorf("can not read body of request while calculating body hash: %s", e.Error())
 		}
 	} else {
 		buffer := &bytes.Buffer{}
 		_, e := io.Copy(buffer, request.Body)
 		if e != nil {
-			return "", fmt.Errorf("Can not read body of request while calculating body hash: %s", e.Error())
+			return "", fmt.Errorf("can not read body of request while calculating body hash: %s", e.Error())
 		}
 
 		data = buffer.Bytes()
@@ -120,6 +121,9 @@ func GetBodyHash(request http.Request) (hashString string, err error) {
 	return
 }
 
+// Signs the http request, by inspecting the necessary headers. Once signed
+// the request will have the proper 'Authorization' header set, otherwise
+// and error is returned
 func (signer OCIRequestSigner) Sign(request *http.Request) (err error) {
 	err = calculateHashOfBody(request)
 	if err != nil {
@@ -141,7 +145,7 @@ func (signer OCIRequestSigner) Sign(request *http.Request) (err error) {
 	authValue := fmt.Sprintf("Signature version=\"%s\",headers=\"%s\",keyId=\"%s\",algorithm=\"rsa-sha256\",signature=\"%s\"",
 		signerVersion, signigHeaders, keyID, signature)
 
-	request.Header.Add("Authorization", authValue)
+	request.Header.Set("Authorization", authValue)
 
 	return
 }

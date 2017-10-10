@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-// ConfigurationProvider returns information about the account owner
+// ConfigurationProvider wraps information about the account owner
 type ConfigurationProvider interface {
 	KeyProvider
 	TenancyOCID() (string, error)
