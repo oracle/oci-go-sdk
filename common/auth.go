@@ -1,17 +1,17 @@
 package common
 
 import (
+	"bytes"
 	"crypto"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/sha256"
 	"encoding/base64"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"strings"
-	"io"
-	"bytes"
 )
 
 //RequestSigner the interface to sign a request

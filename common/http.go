@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"net/http/httputil"
@@ -15,7 +16,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"io"
 )
 
 const (
@@ -120,7 +120,6 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 	if err != nil {
 		return
 	}
-
 
 	//Sign the request
 	err = client.Signer.Sign(&request)

@@ -59,11 +59,10 @@ func TestHttpRequestMarshallerQuery(t *testing.T) {
 
 func TestMakeDefault(t *testing.T) {
 	r := MakeDefaultHttpRequest(http.MethodPost, "/one/two")
-	assert.Equal(t, r.Header.Get("Content-Type"),  "application/json")
+	assert.Equal(t, r.Header.Get("Content-Type"), "application/json")
 	assert.NotEmpty(t, r.Header.Get("Date"))
 	assert.NotEmpty(t, r.Header.Get("Opc-Client-Info"))
 }
-
 
 func TestHttpMarshallerSimpleHeader(t *testing.T) {
 	s := UpdateUserRequest{UserID: "id1", IfMatch: "n=as", UpdateUserDetails: UpdateUserDetails{Description: "name of"}}
