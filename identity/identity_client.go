@@ -10,6 +10,8 @@ package identity
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -33,7 +35,16 @@ func AddUserToGroup(client common.Client, request AddUserToGroupRequest) (respon
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -60,7 +71,16 @@ func CreateCompartment(client common.Client, request CreateCompartmentRequest) (
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -89,7 +109,16 @@ func CreateGroup(client common.Client, request CreateGroupRequest) (response Cre
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -116,7 +145,16 @@ func CreateIdentityProvider(client common.Client, request CreateIdentityProvider
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -131,7 +169,16 @@ func CreateIdpGroupMapping(client common.Client, request CreateIdpGroupMappingRe
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -153,7 +200,16 @@ func CreateOrResetUIPassword(client common.Client, request CreateOrResetUIPasswo
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -178,7 +234,16 @@ func CreatePolicy(client common.Client, request CreatePolicyRequest) (response C
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -192,7 +257,16 @@ func CreateRegionSubscription(client common.Client, request CreateRegionSubscrip
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -213,7 +287,16 @@ func CreateSwiftPassword(client common.Client, request CreateSwiftPasswordReques
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -255,7 +338,16 @@ func CreateUser(client common.Client, request CreateUserRequest) (response Creat
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -277,6 +369,7 @@ func DeleteApiKey(client common.Client, request DeleteApiKeyRequest) (err error)
 	if err != nil {
 		return
 	}
+
 	return
 }
 
@@ -291,6 +384,7 @@ func DeleteGroup(client common.Client, request DeleteGroupRequest) (err error) {
 	if err != nil {
 		return
 	}
+
 	return
 }
 
@@ -306,6 +400,7 @@ func DeleteIdentityProvider(client common.Client, request DeleteIdentityProvider
 	if err != nil {
 		return
 	}
+
 	return
 }
 
@@ -320,6 +415,7 @@ func DeleteIdpGroupMapping(client common.Client, request DeleteIdpGroupMappingRe
 	if err != nil {
 		return
 	}
+
 	return
 }
 
@@ -334,6 +430,7 @@ func DeletePolicy(client common.Client, request DeletePolicyRequest) (err error)
 	if err != nil {
 		return
 	}
+
 	return
 }
 
@@ -348,6 +445,7 @@ func DeleteSwiftPassword(client common.Client, request DeleteSwiftPasswordReques
 	if err != nil {
 		return
 	}
+
 	return
 }
 
@@ -362,6 +460,7 @@ func DeleteUser(client common.Client, request DeleteUserRequest) (err error) {
 	if err != nil {
 		return
 	}
+
 	return
 }
 
@@ -378,7 +477,16 @@ func GetCompartment(client common.Client, request GetCompartmentRequest) (respon
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -395,7 +503,16 @@ func GetGroup(client common.Client, request GetGroupRequest) (response GetGroupR
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -409,7 +526,16 @@ func GetIdentityProvider(client common.Client, request GetIdentityProviderReques
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -423,7 +549,16 @@ func GetIdpGroupMapping(client common.Client, request GetIdpGroupMappingRequest)
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -437,7 +572,16 @@ func GetPolicy(client common.Client, request GetPolicyRequest) (response GetPoli
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -451,7 +595,16 @@ func GetTenancy(client common.Client, request GetTenancyRequest) (response GetTe
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -465,7 +618,16 @@ func GetUser(client common.Client, request GetUserRequest) (response GetUserResp
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -479,7 +641,16 @@ func GetUserGroupMembership(client common.Client, request GetUserGroupMembership
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -495,7 +666,16 @@ func ListApiKeys(client common.Client, request ListApiKeysRequest) (response Lis
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -511,7 +691,16 @@ func ListAvailabilityDomains(client common.Client, request ListAvailabilityDomai
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -527,7 +716,16 @@ func ListCompartments(client common.Client, request ListCompartmentsRequest) (re
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -543,7 +741,16 @@ func ListGroups(client common.Client, request ListGroupsRequest) (response ListG
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -560,7 +767,16 @@ func ListIdentityProviders(client common.Client, request ListIdentityProvidersRe
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -574,7 +790,16 @@ func ListIdpGroupMappings(client common.Client, request ListIdpGroupMappingsRequ
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -591,7 +816,16 @@ func ListPolicies(client common.Client, request ListPoliciesRequest) (response L
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -605,7 +839,16 @@ func ListRegionSubscriptions(client common.Client, request ListRegionSubscriptio
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -616,7 +859,16 @@ func ListRegionSubscriptions(client common.Client, request ListRegionSubscriptio
 func ListRegions(client common.Client) (response ListRegionsResponse, err error) {
 	httpRequest := common.MakeDefaultHttpRequest(http.MethodGet, "/regions")
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -631,7 +883,16 @@ func ListSwiftPasswords(client common.Client, request ListSwiftPasswordsRequest)
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -652,7 +913,16 @@ func ListUserGroupMemberships(client common.Client, request ListUserGroupMembers
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -668,7 +938,16 @@ func ListUsers(client common.Client, request ListUsersRequest) (response ListUse
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -686,6 +965,7 @@ func RemoveUserFromGroup(client common.Client, request RemoveUserFromGroupReques
 	if err != nil {
 		return
 	}
+
 	return
 }
 
@@ -696,7 +976,16 @@ func UpdateCompartment(client common.Client, request UpdateCompartmentRequest) (
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -710,7 +999,16 @@ func UpdateGroup(client common.Client, request UpdateGroupRequest) (response Upd
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -724,7 +1022,16 @@ func UpdateIdentityProvider(client common.Client, request UpdateIdentityProvider
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -738,7 +1045,16 @@ func UpdateIdpGroupMapping(client common.Client, request UpdateIdpGroupMappingRe
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -753,7 +1069,16 @@ func UpdatePolicy(client common.Client, request UpdatePolicyRequest) (response U
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -767,7 +1092,16 @@ func UpdateSwiftPassword(client common.Client, request UpdateSwiftPasswordReques
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -781,7 +1115,16 @@ func UpdateUser(client common.Client, request UpdateUserRequest) (response Updat
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -795,7 +1138,16 @@ func UpdateUserState(client common.Client, request UpdateUserStateRequest) (resp
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
@@ -820,7 +1172,16 @@ func UploadApiKey(client common.Client, request UploadApiKeyRequest) (response U
 		return
 	}
 
-	_, err = client.Call(httpRequest)
+	httpResponse, err := client.Call(httpRequest)
+	if err != nil {
+		return
+	}
+	responseBody, err := ioutil.ReadAll(httpResponse.Body)
+	if err != nil {
+		return
+	}
+
+	err = json.Unmarshal(responseBody, &response)
 	if err != nil {
 		return
 	}
