@@ -151,11 +151,11 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 	return
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Request Marshaling
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var timeType = reflect.TypeOf(time.Time{})
 
@@ -195,7 +195,6 @@ func toStringValue(v reflect.Value, field reflect.StructField) (string, error) {
 		return "", fmt.Errorf("Marshaling structure to a http.Request does not support field named: %s of type: %v",
 			field.Name, v.Type().String())
 	}
-
 }
 
 func addToBody(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
@@ -287,7 +286,7 @@ func addToHeader(request *http.Request, value reflect.Value, field reflect.Struc
 
 //Makes sure the incoming structure is able to be marshalled
 //to a request
-func checkForValidStruct(s interface{}) (*reflect.Value, error) {
+func checkForValidRequestStruct(s interface{}) (*reflect.Value, error) {
 	val := reflect.ValueOf(s)
 	for val.Kind() == reflect.Ptr {
 		if val.IsNil() {
@@ -356,7 +355,7 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 // The body of a request will be marshaled using the tags of the structure
 func HttpRequestMarshaller(requestStruct interface{}, httpRequest *http.Request) (err error) {
 	var val *reflect.Value
-	if val, err = checkForValidStruct(requestStruct); err != nil {
+	if val, err = checkForValidRequestStruct(requestStruct); err != nil {
 		return
 	}
 
@@ -391,4 +390,181 @@ func MakeDefaultHttpRequestWithTaggedStruct(method, path string, requestStruct i
 	httpRequest = MakeDefaultHttpRequest(method, path)
 	err = HttpRequestMarshaller(requestStruct, &httpRequest)
 	return
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Request UnMarshaling
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Makes sure the incoming structure is able to be unmarshaled
+//to a request
+func checkForValidResponseStruct(s interface{}) (*reflect.Value, error) {
+	val := reflect.ValueOf(s)
+	for val.Kind() == reflect.Ptr {
+		if val.IsNil() {
+			return nil, fmt.Errorf("can not unmarshal to response a pointer to nil structure")
+		}
+		val = val.Elem()
+	}
+
+	if s == nil {
+		return nil, fmt.Errorf("can not unmarshal to response a nil structure")
+	}
+
+	if val.Kind() != reflect.Struct {
+		return nil, fmt.Errorf("can not unmarshal to response, expects struct input. Got %v", val.Kind())
+	}
+
+	return &val, nil
+}
+
+func intSizeFromKind(kind reflect.Kind) int {
+	switch kind {
+	case reflect.Int8, reflect.Uint8:
+		return 8
+	case reflect.Int16, reflect.Uint16:
+		return 16
+	case reflect.Int32, reflect.Uint32:
+		return 32
+	case reflect.Int64, reflect.Uint64:
+		return 64
+	case reflect.Int, reflect.Uint:
+		return strconv.IntSize
+	default:
+		Debugln("The type is not valid: %v. Returing int size for arch", kind.String())
+		return strconv.IntSize
+	}
+
+}
+
+//Sets the field of a struct, with the appropiate value of the string
+//Only sets basic types
+func fromStringValue(newValue string, val *reflect.Value, field reflect.StructField) (err error) {
+
+	if !val.CanSet() {
+		err = fmt.Errorf("can not set field name: %s of type: %v", field.Name, val.Type().String)
+		return
+	}
+
+	if val.Type() == timeType {
+		t, e := time.Parse(time.RFC3339, newValue)
+		if e != nil {
+			return e
+		}
+		val.Set(reflect.ValueOf(t))
+		return
+	}
+
+	switch val.Kind() {
+	case reflect.Bool:
+		var bVal bool
+		if bVal, err = strconv.ParseBool(newValue); err != nil {
+			return
+		}
+		val.SetBool(bVal)
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+		size := intSizeFromKind(val.Kind())
+		var iVal int64
+		if iVal, err = strconv.ParseInt(newValue, 10, size); err != nil {
+			return
+		}
+		val.SetInt(iVal)
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+		size := intSizeFromKind(val.Kind())
+		var iVal uint64
+		if iVal, err = strconv.ParseUint(newValue, 10, size); err != nil {
+			return
+		}
+		val.SetUint(iVal)
+	case reflect.String:
+		val.SetString(newValue)
+	case reflect.Float32:
+		var fVal float64
+		if fVal, err = strconv.ParseFloat(newValue, 32); err != nil {
+			return
+		}
+		val.SetFloat(fVal)
+	case reflect.Float64:
+		var fVal float64
+		if fVal, err = strconv.ParseFloat(newValue, 64); err != nil {
+			return
+		}
+		val.SetFloat(fVal)
+	default:
+		return fmt.Errorf("unmarshaling response to the given struct does not support field named: %s of type: %v",
+			field.Name, val.Type().String())
+	}
+	return nil
+}
+
+func addFromBody(response *http.Response, value *reflect.Value, field reflect.StructField) error {
+	Debugln("Unmarshaling from body to field:", field.Name)
+	return nil
+}
+
+func addFromHeader(response *http.Response, value *reflect.Value, field reflect.StructField) (err error) {
+	Debugln("Unmarshaling from header to field:", field.Name)
+	var headerName string
+	if headerName = field.Tag.Get("name"); headerName == "" {
+		return fmt.Errorf("Unmarshaling response to a header requires the 'name' tag for field: %s", field.Name)
+	}
+
+	headerValue := response.Header.Get(headerName)
+	if headerValue == "" {
+		return fmt.Errorf("Unmarshalling did not find header with name:%s", headerName)
+	}
+
+	if err = fromStringValue(headerValue, value, field); err != nil {
+		return
+	}
+	return
+}
+
+// Populates the parts of a request by reading tags in the passed structure
+// nested structs are followed recursively depth-first.
+func responseToStruct(response *http.Response, val *reflect.Value) (err error) {
+	typ := val.Type()
+	for i := 0; i < typ.NumField(); i++ {
+		if err != nil {
+			return
+		}
+
+		sf := typ.Field(i)
+		//unexported
+		if sf.PkgPath != "" && !sf.Anonymous {
+			continue
+		}
+
+		sv := val.Field(i)
+		tag := sf.Tag.Get("presentIn")
+		switch tag {
+		case "header":
+			err = addFromHeader(response, &sv, sf)
+		case "body":
+			err = addFromBody(response, &sv, sf)
+		case "":
+			Debugln(sf.Name, "does not contain presentIn tag. Skipping")
+		default:
+			err = fmt.Errorf("can not unmarshal field: %s. It needs to contain valid presentIn tag", sf.Name)
+		}
+	}
+	return
+}
+
+func UnmarshalResponse(httpResponse *http.Response, responseStruct interface{}) (err error) {
+	//with reflection look into the fields if their taggs if they respond to a particualr one
+	//then fill the appropiate field with its value, you will have to xtransform from string to
+	// every other type
+	var val *reflect.Value
+	if val, err = checkForValidResponseStruct(responseStruct); err != nil {
+		return
+	}
+
+	if err = responseToStruct(httpResponse, val); err != nil {
+		return
+	}
+
+	return nil
 }

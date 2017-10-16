@@ -13,29 +13,29 @@ import (
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Test data structures, avoid import cycle
-type UpdateUserDetails struct {
+type updateUserDetails struct {
 	Description string `mandatory:"false" json:"description,omitempty"`
 }
 
-type ListCompartmentsRequest struct {
+type listCompartmentsRequest struct {
 	CompartmentID string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 	Page          string `mandatory:"false" contributesTo:"query" name:"page"`
 	Limit         int32  `mandatory:"false" contributesTo:"query" name:"limit"`
 }
 
-type UpdateUserRequest struct {
+type updateUserRequest struct {
 	UserID            string            `mandatory:"true" contributesTo:"path" name:"userId"`
-	UpdateUserDetails UpdateUserDetails `contributesTo:"body"`
+	UpdateUserDetails updateUserDetails `contributesTo:"body"`
 	IfMatch           string            `mandatory:"false" contributesTo:"header" name:"if-match"`
 }
 
-type CreateApiKeyDetails struct {
+type createApiKeyDetails struct {
 	Key string `mandatory:"true" json:"key,omitempty"`
 }
 
-type UploadApiKeyRequest struct {
+type uploadApiKeyRequest struct {
 	UserID              string              `mandatory:"true" contributesTo:"path" name:"userId"`
-	CreateApiKeyDetails CreateApiKeyDetails `contributesTo:"body"`
+	CreateApiKeyDetails createApiKeyDetails `contributesTo:"body"`
 	OpcRetryToken       string              `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
@@ -48,7 +48,7 @@ func TestHttpMarshallerInvalidStruct(t *testing.T) {
 }
 
 func TestHttpRequestMarshallerQuery(t *testing.T) {
-	s := ListCompartmentsRequest{CompartmentID: "ocid1", Page: "p", Limit: 23}
+	s := listCompartmentsRequest{CompartmentID: "ocid1", Page: "p", Limit: 23}
 	request := &http.Request{}
 	HttpRequestMarshaller(s, request)
 	query := request.URL.Query()
@@ -65,7 +65,7 @@ func TestMakeDefault(t *testing.T) {
 }
 
 func TestHttpMarshallerSimpleHeader(t *testing.T) {
-	s := UpdateUserRequest{UserID: "id1", IfMatch: "n=as", UpdateUserDetails: UpdateUserDetails{Description: "name of"}}
+	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", UpdateUserDetails: updateUserDetails{Description: "name of"}}
 	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
 	HttpRequestMarshaller(s, &request)
 	header := request.Header
@@ -73,14 +73,14 @@ func TestHttpMarshallerSimpleHeader(t *testing.T) {
 }
 
 func TestHttpMarshallerSimpleStruct(t *testing.T) {
-	s := UploadApiKeyRequest{UserID: "111", OpcRetryToken: "token", CreateApiKeyDetails: CreateApiKeyDetails{Key: "thekey"}}
+	s := uploadApiKeyRequest{UserID: "111", OpcRetryToken: "token", CreateApiKeyDetails: createApiKeyDetails{Key: "thekey"}}
 	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
 	HttpRequestMarshaller(s, &request)
 	assert.True(t, strings.Contains(request.URL.Path, "111"))
 }
 func TestHttpMarshallerSimpleBody(t *testing.T) {
 	desc := "theDescription"
-	s := UpdateUserRequest{UserID: "id1", IfMatch: "n=as", UpdateUserDetails: UpdateUserDetails{Description: desc}}
+	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", UpdateUserDetails: updateUserDetails{Description: desc}}
 	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
 	HttpRequestMarshaller(s, &request)
 	body, _ := ioutil.ReadAll(request.Body)
@@ -100,9 +100,9 @@ func TestHttpMarshalerAll(t *testing.T) {
 		When    time.Time         `contributesTo:"query" name:"when"`
 		Income  float32           `contributesTo:"query" name:"income"`
 		Male    bool              `contributesTo:"header" name:"male"`
-		Details UpdateUserDetails `contributesTo:"body"`
+		Details updateUserDetails `contributesTo:"body"`
 	}{
-		"101", "tapir", time.Now(), 3.23, true, UpdateUserDetails{Description: desc},
+		"101", "tapir", time.Now(), 3.23, true, updateUserDetails{Description: desc},
 	}
 	request := MakeDefaultHttpRequest(http.MethodPost, "/")
 	HttpRequestMarshaller(s, &request)
@@ -140,10 +140,10 @@ func TestHttpMarshalerUntaggedFields(t *testing.T) {
 		Name  string `contributesTo:"query" name:"name"`
 		AList []string
 		AMap  map[string]int
-		UpdateUserDetails
+		updateUserDetails
 	}{
 		"theName", []string{"a", "b"}, map[string]int{"a": 1, "b": 2},
-		UpdateUserDetails{Description: "n"},
+		updateUserDetails{Description: "n"},
 	}
 	request := &http.Request{}
 	e := HttpRequestMarshaller(s, request)
@@ -153,7 +153,7 @@ func TestHttpMarshalerUntaggedFields(t *testing.T) {
 }
 func TestHttpMarshalerPathTemplate(t *testing.T) {
 	urlTemplate := "/name/{userId}/aaa"
-	s := UploadApiKeyRequest{UserID: "111", OpcRetryToken: "token", CreateApiKeyDetails: CreateApiKeyDetails{Key: "thekey"}}
+	s := uploadApiKeyRequest{UserID: "111", OpcRetryToken: "token", CreateApiKeyDetails: createApiKeyDetails{Key: "thekey"}}
 	request := MakeDefaultHttpRequest(http.MethodPost, urlTemplate)
 	e := HttpRequestMarshaller(s, &request)
 	assert.NoError(t, e)
@@ -165,10 +165,10 @@ func TestHttpMarshalerFunnyTags(t *testing.T) {
 		Name  string `contributesTo:"quer" name:"name"`
 		AList []string
 		AMap  map[string]int
-		UpdateUserDetails
+		updateUserDetails
 	}{
 		"theName", []string{"a", "b"}, map[string]int{"a": 1, "b": 2},
-		UpdateUserDetails{Description: "n"},
+		updateUserDetails{Description: "n"},
 	}
 	request := &http.Request{}
 	e := HttpRequestMarshaller(s, request)
@@ -189,10 +189,10 @@ func TestHttpMarshalerUnsupportedTypes(t *testing.T) {
 		"theName", []string{"a", "b"},
 	}
 	s3 := struct {
-		Name              string `contributesTo:"query" name:"name"`
-		UpdateUserDetails `contributesTo:"query" name:"str"`
+		Name              string            `contributesTo:"query" name:"name"`
+		UpdateUserDetails updateUserDetails `contributesTo:"query" name:"str"`
 	}{
-		"theName", UpdateUserDetails{Description: "a"},
+		"theName", updateUserDetails{Description: "a"},
 	}
 	var n *string = new(string)
 	col := make([]int, 10)
@@ -211,6 +211,72 @@ func TestHttpMarshalerUnsupportedTypes(t *testing.T) {
 		Debugln(e)
 		assert.Error(t, e)
 	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Response Unmarshaling
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ListRegionsResponse wrapper for the ListRegions operation
+type listRegionsResponse struct {
+
+	// The []Region instance
+	Items []int `presentIn:"body"`
+
+	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
+	// particular request, please provide the request ID.
+	OpcRequestID string `presentIn:"header" name:"opcrequestid"`
+}
+
+type listUsersResponse struct {
+	Items        []int     `presentIn:"body"`
+	OpcRequestID string    `presentIn:"header" name:"opcrequestid"`
+	OpcNextPage  int32     `presentIn:"header" name:"opcnextpage"`
+	SomeUint     uint      `presentIn:"header" name:"someuint"`
+	SomeBool     bool      `presentIn:"header" name:"somebool"`
+	SomeTime     time.Time `presentIn:"header" name:"sometime"`
+	SomeFloat    float64   `presentIn:"header" name:"somefloat"`
+}
+
+func TestUnmarshalResponse_StringHeader(t *testing.T) {
+	header := http.Header{}
+	opcId := "111"
+	header.Set("OpcrequestId", opcId)
+	r := http.Response{Header: header}
+	s := listRegionsResponse{}
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.Equal(t, s.OpcRequestID, opcId)
+
+}
+
+func TestUnmarshalResponse_MixHeader(t *testing.T) {
+	header := http.Header{}
+	opcId := "111"
+	nextPage := 333
+	someuint := uint(12)
+	somebool := true
+	sometime := time.Now()
+	somefloat := 2.556
+
+	header.Set("OpcrequestId", opcId)
+	header.Set("opcnextpage", strconv.FormatInt(int64(nextPage), 10))
+	header.Set("someuint", strconv.FormatUint(uint64(someuint), 10))
+	header.Set("somebool", strconv.FormatBool(somebool))
+	header.Set("sometime", FormatTime(sometime))
+	header.Set("somefloat", strconv.FormatFloat(somefloat, 'f', 3, 64))
+
+	r := http.Response{Header: header}
+	s := listUsersResponse{}
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.Equal(t, s.OpcRequestID, opcId)
+	assert.Equal(t, int(nextPage), int(s.OpcNextPage))
+	assert.Equal(t, someuint, s.SomeUint)
+	assert.Equal(t, somebool, s.SomeBool)
+	assert.Equal(t, sometime.Format(time.RFC3339), s.SomeTime.Format(time.RFC3339))
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
