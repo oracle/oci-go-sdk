@@ -444,7 +444,7 @@ func intSizeFromKind(kind reflect.Kind) int {
 func fromStringValue(newValue string, val *reflect.Value, field reflect.StructField) (err error) {
 
 	if !val.CanSet() {
-		err = fmt.Errorf("can not set field name: %s of type: %v", field.Name, val.Type().String)
+		err = fmt.Errorf("can not set field name: %s of type: %v", field.Name, val.Type().String())
 		return
 	}
 
@@ -499,9 +499,31 @@ func fromStringValue(newValue string, val *reflect.Value, field reflect.StructFi
 	return nil
 }
 
-func addFromBody(response *http.Response, value *reflect.Value, field reflect.StructField) error {
+func addFromBody(response *http.Response, value *reflect.Value, field reflect.StructField) (err error) {
 	Debugln("Unmarshaling from body to field:", field.Name)
-	return nil
+	if response.Body == nil {
+		Debugln("Unmarshaling body skipped due to nil body content for field: ", field.Name)
+		return nil
+	}
+
+	//TODO read in a safe manner
+	content, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		return
+	}
+	newStruct := reflect.New(value.Type()).Interface()
+	err = json.Unmarshal(content, &newStruct)
+	if err != nil {
+		return
+	}
+
+	newVal := reflect.ValueOf(newStruct)
+	if newVal.Kind() == reflect.Ptr {
+		newVal = newVal.Elem()
+	}
+	value.Set(newVal)
+	return
+
 }
 
 func addFromHeader(response *http.Response, value *reflect.Value, field reflect.StructField) (err error) {
@@ -522,8 +544,7 @@ func addFromHeader(response *http.Response, value *reflect.Value, field reflect.
 	return
 }
 
-// Populates the parts of a request by reading tags in the passed structure
-// nested structs are followed recursively depth-first.
+// Populates a struct from parts of a request by reading tags of the struct
 func responseToStruct(response *http.Response, val *reflect.Value) (err error) {
 	typ := val.Type()
 	for i := 0; i < typ.NumField(); i++ {
@@ -532,8 +553,9 @@ func responseToStruct(response *http.Response, val *reflect.Value) (err error) {
 		}
 
 		sf := typ.Field(i)
+
 		//unexported
-		if sf.PkgPath != "" && !sf.Anonymous {
+		if sf.PkgPath != "" {
 			continue
 		}
 
@@ -553,10 +575,12 @@ func responseToStruct(response *http.Response, val *reflect.Value) (err error) {
 	return
 }
 
+// UnmrashalResponse hydrates the fileds of an struct with the values of an http response, guided
+// by the field tags. The directive tag is "presentIn" and it can be either
+//  - "header": Will look for the header tagged as "name" in the headers of the struct and set it value to that
+//  - "body": It will try to marshal the json body of the request to the field annontated with body
+// Notice the current implementation only supports native types:int, strings, floats, bool
 func UnmarshalResponse(httpResponse *http.Response, responseStruct interface{}) (err error) {
-	//with reflection look into the fields if their taggs if they respond to a particualr one
-	//then fill the appropiate field with its value, you will have to xtransform from string to
-	// every other type
 	var val *reflect.Value
 	if val, err = checkForValidResponseStruct(responseStruct); err != nil {
 		return

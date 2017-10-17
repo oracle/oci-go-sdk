@@ -1,6 +1,7 @@
 package common
 
 import (
+	"bytes"
 	"encoding/json"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
@@ -254,7 +255,7 @@ func TestUnmarshalResponse_StringHeader(t *testing.T) {
 func TestUnmarshalResponse_MixHeader(t *testing.T) {
 	header := http.Header{}
 	opcId := "111"
-	nextPage := 333
+	nextPage := int32(333)
 	someuint := uint(12)
 	somebool := true
 	sometime := time.Now()
@@ -272,11 +273,118 @@ func TestUnmarshalResponse_MixHeader(t *testing.T) {
 	err := UnmarshalResponse(&r, &s)
 	assert.NoError(t, err)
 	assert.Equal(t, s.OpcRequestID, opcId)
-	assert.Equal(t, int(nextPage), int(s.OpcNextPage))
+	assert.Equal(t, nextPage, s.OpcNextPage)
 	assert.Equal(t, someuint, s.SomeUint)
 	assert.Equal(t, somebool, s.SomeBool)
 	assert.Equal(t, sometime.Format(time.RFC3339), s.SomeTime.Format(time.RFC3339))
 
+}
+
+type rgn struct {
+	Key  string `mandatory:"false" json:"key,omitempty"`
+	Name string `mandatory:"false" json:"name,omitempty"`
+}
+
+func TestUnmarshalResponse_SimpleBody(t *testing.T) {
+	sampleResponse := `{"key" : "FRA","name" : "eu-frankfurt-1"}`
+	header := http.Header{}
+	opcId := "111"
+	header.Set("OpcrequestId", opcId)
+	s := struct {
+		Rg rgn `presentIn:"body"`
+	}{}
+	r := http.Response{Header: header}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.Equal(t, "eu-frankfurt-1", s.Rg.Name)
+}
+
+func TestUnmarshalResponse_SimpleBodyList(t *testing.T) {
+	sampleResponse := `[{"key" : "FRA","name" : "eu-frankfurt-1"},{"key" : "IAD","name" : "us-ashburn-1"}]`
+	header := http.Header{}
+	opcId := "111"
+	header.Set("OpcrequestId", opcId)
+	s := struct {
+		Items []rgn `presentIn:"body"`
+	}{}
+	r := http.Response{Header: header}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.NotEmpty(t, s.Items)
+	assert.Equal(t, "eu-frankfurt-1", s.Items[0].Name)
+	assert.Equal(t, "IAD", s.Items[1].Key)
+}
+
+func TestUnmarshalResponse_SimpleBodyPtr(t *testing.T) {
+	sampleResponse := `{"key" : "FRA","name" : "eu-frankfurt-1"}`
+	header := http.Header{}
+	opcId := "111"
+	header.Set("OpcrequestId", opcId)
+	s := struct {
+		Rg *rgn `presentIn:"body"`
+	}{}
+	r := http.Response{Header: header}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.Equal(t, "eu-frankfurt-1", s.Rg.Name)
+}
+
+type testRnUnexported struct {
+	Key  string `mandatory:"false" json:"key,omitempty"`
+	Name string `mandatory:"false" json:"name,omitempty"`
+}
+
+type TestRn struct {
+	Key  string `mandatory:"false" json:"key,omitempty"`
+	Name string `mandatory:"false" json:"name,omitempty"`
+}
+
+type listRgRes struct {
+	testRnUnexported `presentIn:"body"`
+	OpcRequestID     string `presentIn:"header" name:"opcrequestid"`
+}
+
+type listRgResEx struct {
+	TestRn       `presentIn:"body"`
+	OpcRequestID string `presentIn:"header" name:"opcrequestid"`
+}
+
+func TestUnmarshalResponse_BodyAndHeaderUnex(t *testing.T) {
+	sampleResponse := `{"key" : "FRA","name" : "eu-frankfurt-1"}`
+	header := http.Header{}
+	opcId := "111"
+	header.Set("OpcrequestId", opcId)
+	s := listRgRes{}
+	r := http.Response{Header: header}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.Equal(t, opcId, s.OpcRequestID)
+	assert.Equal(t, "", s.Name)
+	assert.Equal(t, "", s.Key)
+}
+
+func TestUnmarshalResponse_BodyAndHeader(t *testing.T) {
+	sampleResponse := `{"key" : "FRA","name" : "eu-frankfurt-1"}`
+	header := http.Header{}
+	opcId := "111"
+	header.Set("OpcrequestId", opcId)
+	s := listRgResEx{}
+	r := http.Response{Header: header}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.Equal(t, opcId, s.OpcRequestID)
+	assert.Equal(t, "eu-frankfurt-1", s.Name)
+	assert.Equal(t, "FRA", s.Key)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
