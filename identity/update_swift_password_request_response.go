@@ -25,12 +25,12 @@ type UpdateSwiftPasswordRequest struct {
 type UpdateSwiftPasswordResponse struct {
 
 	// The SwiftPassword instance
-	SwiftPassword
+	SwiftPassword `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID string
+	OpcRequestID string `presentIn:"header" name:"opcrequestid"`
 
 	// For optimistic concurrency control. See `if-match`.
-	Etag string
+	Etag string `presentIn:"header" name:"etag"`
 }

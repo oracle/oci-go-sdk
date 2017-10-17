@@ -14,14 +14,14 @@ type ListAvailabilityDomainsRequest struct {
 type ListAvailabilityDomainsResponse struct {
 
 	// The []AvailabilityDomain instance
-	Items []AvailabilityDomain
+	Items []AvailabilityDomain `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID string
+	OpcRequestID string `presentIn:"header" name:"opcrequestid"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
-	OpcNextPage string
+	OpcNextPage string `presentIn:"header" name:"opcnextpage"`
 }

@@ -11,9 +11,9 @@ type ListRegionsRequest struct {
 type ListRegionsResponse struct {
 
 	// The []Region instance
-	Items []Region
+	Items []Region `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID string
+	OpcRequestID string `presentIn:"header" name:"opcrequestid"`
 }
