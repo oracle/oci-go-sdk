@@ -108,6 +108,14 @@ func calculateHashOfBody(request *http.Request) (err error) {
 	return
 }
 
+func checkForSuccessfulResponse(res http.Response) error {
+	if res.StatusCode == http.StatusOK {
+		return nil
+	}
+
+	return newServiceFailureFromResponse(res)
+}
+
 func (client BaseClient) Call(request http.Request) (response *http.Response, err error) {
 	Debugln("Atempting to call downstream service")
 	err = client.prepareRequest(&request)
@@ -135,7 +143,9 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 		}
 	})
 
+	//Execute the http request
 	response, err = client.httpClient.Do(&request)
+
 	IfDebug(func() {
 		if err != nil {
 			Logln(err)
@@ -148,8 +158,15 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 			Debugln(e)
 		}
 	})
+
+	if err != nil {
+		return
+	}
+
+	err = checkForSuccessfulResponse(*response)
 	return
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -575,7 +592,7 @@ func responseToStruct(response *http.Response, val *reflect.Value) (err error) {
 	return
 }
 
-// UnmrashalResponse hydrates the fileds of an struct with the values of an http response, guided
+// UnmarshalResponse hydrates the fileds of an struct with the values of an http response, guided
 // by the field tags. The directive tag is "presentIn" and it can be either
 //  - "header": Will look for the header tagged as "name" in the headers of the struct and set it value to that
 //  - "body": It will try to marshal the json body of the request to the field annontated with body
@@ -592,3 +609,5 @@ func UnmarshalResponse(httpResponse *http.Response, responseStruct interface{}) 
 
 	return nil
 }
+
+
