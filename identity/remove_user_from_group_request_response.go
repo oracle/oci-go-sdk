@@ -3,6 +3,8 @@
 
 package identity
 
+import "net/http"
+
 // RemoveUserFromGroupRequest wrapper for the RemoveUserFromGroup operation
 type RemoveUserFromGroupRequest struct {
 
@@ -18,7 +20,10 @@ type RemoveUserFromGroupRequest struct {
 // RemoveUserFromGroupResponse wrapper for the RemoveUserFromGroup operation
 type RemoveUserFromGroupResponse struct {
 
+	// The underlying http response
+	RawResponse http.Response
+
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID string `presentIn:"header" name:"opcrequestid"`
+	OpcRequestID string `presentIn:"header" name:"opc-request-id"`
 }

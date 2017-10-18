@@ -3,6 +3,8 @@
 
 package identity
 
+import "net/http"
+
 // ListUsersRequest wrapper for the ListUsers operation
 type ListUsersRequest struct {
 
@@ -19,15 +21,18 @@ type ListUsersRequest struct {
 // ListUsersResponse wrapper for the ListUsers operation
 type ListUsersResponse struct {
 
+	// The underlying http response
+	RawResponse http.Response
+
 	// The []User instance
 	Items []User `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID string `presentIn:"header" name:"opcrequestid"`
+	OpcRequestID string `presentIn:"header" name:"opc-request-id"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
-	OpcNextPage string `presentIn:"header" name:"opcnextpage"`
+	OpcNextPage string `presentIn:"header" name:"opc-next-page"`
 }

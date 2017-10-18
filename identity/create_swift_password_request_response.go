@@ -3,6 +3,8 @@
 
 package identity
 
+import "net/http"
+
 // CreateSwiftPasswordRequest wrapper for the CreateSwiftPassword operation
 type CreateSwiftPasswordRequest struct {
 
@@ -23,12 +25,15 @@ type CreateSwiftPasswordRequest struct {
 // CreateSwiftPasswordResponse wrapper for the CreateSwiftPassword operation
 type CreateSwiftPasswordResponse struct {
 
+	// The underlying http response
+	RawResponse http.Response
+
 	// The SwiftPassword instance
 	SwiftPassword `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID string `presentIn:"header" name:"opcrequestid"`
+	OpcRequestID string `presentIn:"header" name:"opc-request-id"`
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag string `presentIn:"header" name:"etag"`
