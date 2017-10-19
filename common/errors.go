@@ -67,7 +67,7 @@ func (se servicefailure) GetCode() string {
 
 // IsServiceError returns false if the error is not service side, othwerise true
 // additionally it returns an interface representing the ServiceError
-func IsServiceError(err error) (ok bool, failure ServiceError) {
+func IsServiceError(err error) (failure ServiceError, ok bool) {
 	failure, ok = err.(servicefailure)
 	return
 }
