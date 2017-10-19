@@ -3,6 +3,8 @@
 
 package identity
 
+import "net/http"
+
 // CreatePolicyRequest wrapper for the CreatePolicy operation
 type CreatePolicyRequest struct {
 
@@ -20,12 +22,15 @@ type CreatePolicyRequest struct {
 // CreatePolicyResponse wrapper for the CreatePolicy operation
 type CreatePolicyResponse struct {
 
+	// The underlying http response
+	RawResponse http.Response
+
 	// The Policy instance
 	Policy `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID string `presentIn:"header" name:"opcrequestid"`
+	OpcRequestID string `presentIn:"header" name:"opc-request-id"`
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag string `presentIn:"header" name:"etag"`
