@@ -40,9 +40,6 @@ func AddUserToGroup(client common.Client, request AddUserToGroupRequest) (respon
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -73,9 +70,6 @@ func CreateCompartment(client common.Client, request CreateCompartmentRequest) (
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -108,9 +102,6 @@ func CreateGroup(client common.Client, request CreateGroupRequest) (response Cre
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -141,9 +132,6 @@ func CreateIdentityProvider(client common.Client, request CreateIdentityProvider
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -162,9 +150,6 @@ func CreateIdpGroupMapping(client common.Client, request CreateIdpGroupMappingRe
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -190,9 +175,6 @@ func CreateOrResetUIPassword(client common.Client, request CreateOrResetUIPasswo
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -221,9 +203,6 @@ func CreatePolicy(client common.Client, request CreatePolicyRequest) (response C
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -241,9 +220,6 @@ func CreateRegionSubscription(client common.Client, request CreateRegionSubscrip
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -268,9 +244,6 @@ func CreateSwiftPassword(client common.Client, request CreateSwiftPasswordReques
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -316,9 +289,6 @@ func CreateUser(client common.Client, request CreateUserRequest) (response Creat
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -334,10 +304,6 @@ func DeleteApiKey(client common.Client, request DeleteApiKeyRequest) (err error)
 	}
 
 	_, err = client.Call(httpRequest)
-	if err != nil {
-		return
-	}
-
 	return
 }
 
@@ -349,10 +315,6 @@ func DeleteGroup(client common.Client, request DeleteGroupRequest) (err error) {
 	}
 
 	_, err = client.Call(httpRequest)
-	if err != nil {
-		return
-	}
-
 	return
 }
 
@@ -365,10 +327,6 @@ func DeleteIdentityProvider(client common.Client, request DeleteIdentityProvider
 	}
 
 	_, err = client.Call(httpRequest)
-	if err != nil {
-		return
-	}
-
 	return
 }
 
@@ -380,10 +338,6 @@ func DeleteIdpGroupMapping(client common.Client, request DeleteIdpGroupMappingRe
 	}
 
 	_, err = client.Call(httpRequest)
-	if err != nil {
-		return
-	}
-
 	return
 }
 
@@ -395,10 +349,6 @@ func DeletePolicy(client common.Client, request DeletePolicyRequest) (err error)
 	}
 
 	_, err = client.Call(httpRequest)
-	if err != nil {
-		return
-	}
-
 	return
 }
 
@@ -410,10 +360,6 @@ func DeleteSwiftPassword(client common.Client, request DeleteSwiftPasswordReques
 	}
 
 	_, err = client.Call(httpRequest)
-	if err != nil {
-		return
-	}
-
 	return
 }
 
@@ -425,10 +371,6 @@ func DeleteUser(client common.Client, request DeleteUserRequest) (err error) {
 	}
 
 	_, err = client.Call(httpRequest)
-	if err != nil {
-		return
-	}
-
 	return
 }
 
@@ -452,9 +394,6 @@ func GetCompartment(client common.Client, request GetCompartmentRequest) (respon
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -475,9 +414,6 @@ func GetGroup(client common.Client, request GetGroupRequest) (response GetGroupR
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -495,9 +431,6 @@ func GetIdentityProvider(client common.Client, request GetIdentityProviderReques
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -515,9 +448,6 @@ func GetIdpGroupMapping(client common.Client, request GetIdpGroupMappingRequest)
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -535,9 +465,6 @@ func GetPolicy(client common.Client, request GetPolicyRequest) (response GetPoli
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -555,9 +482,6 @@ func GetTenancy(client common.Client, request GetTenancyRequest) (response GetTe
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -575,9 +499,6 @@ func GetUser(client common.Client, request GetUserRequest) (response GetUserResp
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -595,9 +516,6 @@ func GetUserGroupMembership(client common.Client, request GetUserGroupMembership
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -617,9 +535,6 @@ func ListApiKeys(client common.Client, request ListApiKeysRequest) (response Lis
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -639,9 +554,6 @@ func ListAvailabilityDomains(client common.Client, request ListAvailabilityDomai
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -661,9 +573,6 @@ func ListCompartments(client common.Client, request ListCompartmentsRequest) (re
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -683,9 +592,6 @@ func ListGroups(client common.Client, request ListGroupsRequest) (response ListG
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -706,9 +612,6 @@ func ListIdentityProviders(client common.Client, request ListIdentityProvidersRe
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -726,9 +629,6 @@ func ListIdpGroupMappings(client common.Client, request ListIdpGroupMappingsRequ
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -749,9 +649,6 @@ func ListPolicies(client common.Client, request ListPoliciesRequest) (response L
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -769,9 +666,6 @@ func ListRegionSubscriptions(client common.Client, request ListRegionSubscriptio
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -786,9 +680,6 @@ func ListRegions(client common.Client) (response ListRegionsResponse, err error)
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -807,9 +698,6 @@ func ListSwiftPasswords(client common.Client, request ListSwiftPasswordsRequest)
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -834,9 +722,6 @@ func ListUserGroupMemberships(client common.Client, request ListUserGroupMembers
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -856,9 +741,6 @@ func ListUsers(client common.Client, request ListUsersRequest) (response ListUse
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -870,10 +752,6 @@ func RemoveUserFromGroup(client common.Client, request RemoveUserFromGroupReques
 	}
 
 	_, err = client.Call(httpRequest)
-	if err != nil {
-		return
-	}
-
 	return
 }
 
@@ -891,9 +769,6 @@ func UpdateCompartment(client common.Client, request UpdateCompartmentRequest) (
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -911,9 +786,6 @@ func UpdateGroup(client common.Client, request UpdateGroupRequest) (response Upd
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -931,9 +803,6 @@ func UpdateIdentityProvider(client common.Client, request UpdateIdentityProvider
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -951,9 +820,6 @@ func UpdateIdpGroupMapping(client common.Client, request UpdateIdpGroupMappingRe
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -972,9 +838,6 @@ func UpdatePolicy(client common.Client, request UpdatePolicyRequest) (response U
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -992,9 +855,6 @@ func UpdateSwiftPassword(client common.Client, request UpdateSwiftPasswordReques
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -1012,9 +872,6 @@ func UpdateUser(client common.Client, request UpdateUserRequest) (response Updat
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -1032,9 +889,6 @@ func UpdateUserState(client common.Client, request UpdateUserStateRequest) (resp
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
 
@@ -1063,8 +917,5 @@ func UploadApiKey(client common.Client, request UploadApiKeyRequest) (response U
 
 	response.RawResponse = *httpResponse
 	err = common.UnmarshalResponse(httpResponse, &response)
-	if err != nil {
-		return
-	}
 	return
 }
