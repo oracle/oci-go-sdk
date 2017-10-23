@@ -5,11 +5,14 @@ package identity
 
 import "net/http"
 
-// CreateIdentityProviderRequest wrapper for the CreateIdentityProvider operation
-type CreateIdentityProviderRequest struct {
+// CreateCustomerSecretKeyRequest wrapper for the CreateCustomerSecretKey operation
+type CreateCustomerSecretKeyRequest struct {
 
-	// Request object for creating a new SAML2 identity provider.
-	CreateIdentityProviderDetails `contributesTo:"body"`
+	// Request object for creating a new secret key.
+	CreateCustomerSecretKeyDetails `contributesTo:"body"`
+
+	// The OCID of the user.
+	UserID string `mandatory:"true" contributesTo:"path" name:"userId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
@@ -19,14 +22,14 @@ type CreateIdentityProviderRequest struct {
 	OpcRetryToken string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
-// CreateIdentityProviderResponse wrapper for the CreateIdentityProvider operation
-type CreateIdentityProviderResponse struct {
+// CreateCustomerSecretKeyResponse wrapper for the CreateCustomerSecretKey operation
+type CreateCustomerSecretKeyResponse struct {
 
 	// The underlying http response
 	RawResponse http.Response
 
-	// The IdentityProvider instance
-	IdentityProvider `presentIn:"body"`
+	// The CustomerSecretKey instance
+	CustomerSecretKey `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.

@@ -9,7 +9,7 @@ import "net/http"
 type AddUserToGroupRequest struct {
 
 	// Request object for adding a user to a group.
-	AddUserToGroupDetails AddUserToGroupDetails `contributesTo:"body"`
+	AddUserToGroupDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24

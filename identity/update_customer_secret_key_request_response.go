@@ -5,14 +5,17 @@ package identity
 
 import "net/http"
 
-// UpdateGroupRequest wrapper for the UpdateGroup operation
-type UpdateGroupRequest struct {
+// UpdateCustomerSecretKeyRequest wrapper for the UpdateCustomerSecretKey operation
+type UpdateCustomerSecretKeyRequest struct {
 
-	// The OCID of the group.
-	GroupID string `mandatory:"true" contributesTo:"path" name:"groupId"`
+	// The OCID of the user.
+	UserID string `mandatory:"true" contributesTo:"path" name:"userId"`
 
-	// Request object for updating a group.
-	UpdateGroupDetails `contributesTo:"body"`
+	// The OCID of the secret key.
+	CustomerSecretKeyID string `mandatory:"true" contributesTo:"path" name:"customerSecretKeyId"`
+
+	// Request object for updating a secret key.
+	UpdateCustomerSecretKeyDetails `contributesTo:"body"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
@@ -20,14 +23,14 @@ type UpdateGroupRequest struct {
 	IfMatch string `mandatory:"false" contributesTo:"header" name:"if-match"`
 }
 
-// UpdateGroupResponse wrapper for the UpdateGroup operation
-type UpdateGroupResponse struct {
+// UpdateCustomerSecretKeyResponse wrapper for the UpdateCustomerSecretKey operation
+type UpdateCustomerSecretKeyResponse struct {
 
 	// The underlying http response
 	RawResponse http.Response
 
-	// The Group instance
-	Group `presentIn:"body"`
+	// The CustomerSecretKeySummary instance
+	CustomerSecretKeySummary `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.

@@ -20,11 +20,13 @@ type Region struct {
 	// Allowed values are:
 	// - `PHX`
 	// - `IAD`
+	// - 'FRA'
 	Key string `mandatory:"false" json:"key,omitempty"`
 
 	// The name of the region.
 	// Allowed values are:
 	// - `us-phoenix-1`
 	// - `us-ashburn-1`
+	// - 'de-frankfurt-1'
 	Name string `mandatory:"false" json:"name,omitempty"`
 }

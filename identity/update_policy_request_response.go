@@ -12,7 +12,7 @@ type UpdatePolicyRequest struct {
 	PolicyID string `mandatory:"true" contributesTo:"path" name:"policyId"`
 
 	// Request object for updating a policy.
-	UpdatePolicyDetails UpdatePolicyDetails `contributesTo:"body"`
+	UpdatePolicyDetails `contributesTo:"body"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource

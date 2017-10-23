@@ -8,13 +8,8 @@
 
 package identity
 
-type CreateRegionSubscriptionDetails struct {
+type UpdateCustomerSecretKeyDetails struct {
 
-	// The regions's key.
-	// Allowed values are:
-	// - `PHX`
-	// - `IAD`
-	// - `FRA`
-	// Example: `PHX`
-	RegionKey string `mandatory:"true" json:"regionKey,omitempty"`
+	// The description you assign to the secret key. Does not have to be unique, and it's changeable.
+	DisplayName string `mandatory:"false" json:"displayName,omitempty"`
 }

@@ -9,7 +9,7 @@ import "net/http"
 type CreateIdpGroupMappingRequest struct {
 
 	// Add a mapping from an SAML2.0 identity provider group to a BMC group.
-	CreateIdpGroupMappingDetails CreateIdpGroupMappingDetails `contributesTo:"body"`
+	CreateIdpGroupMappingDetails `contributesTo:"body"`
 
 	// The OCID of the identity provider.
 	IdentityProviderID string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`

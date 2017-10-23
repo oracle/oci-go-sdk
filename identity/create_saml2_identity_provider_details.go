@@ -22,7 +22,9 @@ type CreateSaml2IdentityProviderDetails struct {
 	// Does not have to be unique, and it's changeable.
 	Description string `mandatory:"true" json:"description,omitempty"`
 
-	// The identity provider service or product (e.g., Oracle Identity Cloud Service).
+	// The identity provider service or product.
+	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
+	// Active Directory Federation Services (ADFS).
 	// Example: `IDCS`
 	ProductType string `mandatory:"true" json:"productType,omitempty"`
 

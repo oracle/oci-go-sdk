@@ -14,7 +14,7 @@ type CreateCompartmentDetails struct {
 	CompartmentID string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the compartment during creation. The name must be unique across all compartments
-	// in the tenancy and cannot be changed.
+	// in the tenancy.
 	Name string `mandatory:"true" json:"name,omitempty"`
 
 	// The description you assign to the compartment during creation. Does not have to be unique, and it's changeable.

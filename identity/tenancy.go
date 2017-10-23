@@ -30,5 +30,6 @@ type Tenancy struct {
 	// Allowed values are:
 	// - `IAD`
 	// - `PHX`
+	// - `FRA`
 	HomeRegionKey string `mandatory:"false" json:"homeRegionKey,omitempty"`
 }

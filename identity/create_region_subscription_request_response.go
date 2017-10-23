@@ -9,7 +9,7 @@ import "net/http"
 type CreateRegionSubscriptionRequest struct {
 
 	// Request object for activate a new region.
-	CreateRegionSubscriptionDetails CreateRegionSubscriptionDetails `contributesTo:"body"`
+	CreateRegionSubscriptionDetails `contributesTo:"body"`
 
 	// The OCID of the tenancy.
 	TenancyID string `mandatory:"true" contributesTo:"path" name:"tenancyId"`

@@ -9,7 +9,7 @@ import "net/http"
 type CreateSwiftPasswordRequest struct {
 
 	// Request object for creating a new swift password.
-	CreateSwiftPasswordDetails CreateSwiftPasswordDetails `contributesTo:"body"`
+	CreateSwiftPasswordDetails `contributesTo:"body"`
 
 	// The OCID of the user.
 	UserID string `mandatory:"true" contributesTo:"path" name:"userId"`

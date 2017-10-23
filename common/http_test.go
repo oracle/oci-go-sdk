@@ -14,7 +14,7 @@ import (
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Test data structures, avoid import cycle
-type updateUserDetails struct {
+type TestupdateUserDetails struct {
 	Description string `mandatory:"false" json:"description,omitempty"`
 }
 
@@ -25,19 +25,19 @@ type listCompartmentsRequest struct {
 }
 
 type updateUserRequest struct {
-	UserID            string            `mandatory:"true" contributesTo:"path" name:"userId"`
-	UpdateUserDetails updateUserDetails `contributesTo:"body"`
-	IfMatch           string            `mandatory:"false" contributesTo:"header" name:"if-match"`
+	UserID                string `mandatory:"true" contributesTo:"path" name:"userId"`
+	TestupdateUserDetails `contributesTo:"body"`
+	IfMatch               string `mandatory:"false" contributesTo:"header" name:"if-match"`
 }
 
-type createApiKeyDetails struct {
+type TestcreateApiKeyDetails struct {
 	Key string `mandatory:"true" json:"key,omitempty"`
 }
 
 type uploadApiKeyRequest struct {
-	UserID              string              `mandatory:"true" contributesTo:"path" name:"userId"`
-	CreateApiKeyDetails createApiKeyDetails `contributesTo:"body"`
-	OpcRetryToken       string              `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
+	UserID                  string `mandatory:"true" contributesTo:"path" name:"userId"`
+	TestcreateApiKeyDetails `contributesTo:"body"`
+	OpcRetryToken           string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -66,7 +66,7 @@ func TestMakeDefault(t *testing.T) {
 }
 
 func TestHttpMarshallerSimpleHeader(t *testing.T) {
-	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", UpdateUserDetails: updateUserDetails{Description: "name of"}}
+	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", TestupdateUserDetails: TestupdateUserDetails{Description: "name of"}}
 	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
 	HttpRequestMarshaller(s, &request)
 	header := request.Header
@@ -74,14 +74,14 @@ func TestHttpMarshallerSimpleHeader(t *testing.T) {
 }
 
 func TestHttpMarshallerSimpleStruct(t *testing.T) {
-	s := uploadApiKeyRequest{UserID: "111", OpcRetryToken: "token", CreateApiKeyDetails: createApiKeyDetails{Key: "thekey"}}
+	s := uploadApiKeyRequest{UserID: "111", OpcRetryToken: "token", TestcreateApiKeyDetails: TestcreateApiKeyDetails{Key: "thekey"}}
 	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
 	HttpRequestMarshaller(s, &request)
 	assert.True(t, strings.Contains(request.URL.Path, "111"))
 }
 func TestHttpMarshallerSimpleBody(t *testing.T) {
 	desc := "theDescription"
-	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", UpdateUserDetails: updateUserDetails{Description: desc}}
+	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", TestupdateUserDetails: TestupdateUserDetails{Description: desc}}
 	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
 	HttpRequestMarshaller(s, &request)
 	body, _ := ioutil.ReadAll(request.Body)
@@ -96,14 +96,14 @@ func TestHttpMarshallerSimpleBody(t *testing.T) {
 func TestHttpMarshalerAll(t *testing.T) {
 	desc := "theDescription"
 	s := struct {
-		Id      string            `contributesTo:"path"`
-		Name    string            `contributesTo:"query" name:"name"`
-		When    time.Time         `contributesTo:"query" name:"when"`
-		Income  float32           `contributesTo:"query" name:"income"`
-		Male    bool              `contributesTo:"header" name:"male"`
-		Details updateUserDetails `contributesTo:"body"`
+		Id      string                `contributesTo:"path"`
+		Name    string                `contributesTo:"query" name:"name"`
+		When    time.Time             `contributesTo:"query" name:"when"`
+		Income  float32               `contributesTo:"query" name:"income"`
+		Male    bool                  `contributesTo:"header" name:"male"`
+		Details TestupdateUserDetails `contributesTo:"body"`
 	}{
-		"101", "tapir", time.Now(), 3.23, true, updateUserDetails{Description: desc},
+		"101", "tapir", time.Now(), 3.23, true, TestupdateUserDetails{Description: desc},
 	}
 	request := MakeDefaultHttpRequest(http.MethodPost, "/")
 	HttpRequestMarshaller(s, &request)
@@ -141,10 +141,10 @@ func TestHttpMarshalerUntaggedFields(t *testing.T) {
 		Name  string `contributesTo:"query" name:"name"`
 		AList []string
 		AMap  map[string]int
-		updateUserDetails
+		TestupdateUserDetails
 	}{
 		"theName", []string{"a", "b"}, map[string]int{"a": 1, "b": 2},
-		updateUserDetails{Description: "n"},
+		TestupdateUserDetails{Description: "n"},
 	}
 	request := &http.Request{}
 	e := HttpRequestMarshaller(s, request)
@@ -154,7 +154,7 @@ func TestHttpMarshalerUntaggedFields(t *testing.T) {
 }
 func TestHttpMarshalerPathTemplate(t *testing.T) {
 	urlTemplate := "/name/{userId}/aaa"
-	s := uploadApiKeyRequest{UserID: "111", OpcRetryToken: "token", CreateApiKeyDetails: createApiKeyDetails{Key: "thekey"}}
+	s := uploadApiKeyRequest{UserID: "111", OpcRetryToken: "token", TestcreateApiKeyDetails: TestcreateApiKeyDetails{Key: "thekey"}}
 	request := MakeDefaultHttpRequest(http.MethodPost, urlTemplate)
 	e := HttpRequestMarshaller(s, &request)
 	assert.NoError(t, e)
@@ -166,10 +166,10 @@ func TestHttpMarshalerFunnyTags(t *testing.T) {
 		Name  string `contributesTo:"quer" name:"name"`
 		AList []string
 		AMap  map[string]int
-		updateUserDetails
+		TestupdateUserDetails
 	}{
 		"theName", []string{"a", "b"}, map[string]int{"a": 1, "b": 2},
-		updateUserDetails{Description: "n"},
+		TestupdateUserDetails{Description: "n"},
 	}
 	request := &http.Request{}
 	e := HttpRequestMarshaller(s, request)
@@ -190,10 +190,10 @@ func TestHttpMarshalerUnsupportedTypes(t *testing.T) {
 		"theName", []string{"a", "b"},
 	}
 	s3 := struct {
-		Name              string            `contributesTo:"query" name:"name"`
-		UpdateUserDetails updateUserDetails `contributesTo:"query" name:"str"`
+		Name                  string `contributesTo:"query" name:"name"`
+		TestupdateUserDetails `contributesTo:"query" name:"str"`
 	}{
-		"theName", updateUserDetails{Description: "a"},
+		"theName", TestupdateUserDetails{Description: "a"},
 	}
 	var n *string = new(string)
 	col := make([]int, 10)

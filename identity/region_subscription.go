@@ -19,12 +19,14 @@ type RegionSubscription struct {
 	// Allowed values are:
 	// - `PHX`
 	// - `IAD`
+	// - 'FRA'
 	RegionKey string `mandatory:"true" json:"regionKey,omitempty"`
 
 	// The region's name.
 	// Allowed values are:
 	// - `us-phoenix-1`
 	// - `us-ashburn-1`
+	// - 'de-frankfurt-1'
 	RegionName string `mandatory:"true" json:"regionName,omitempty"`
 
 	// The region subscription status.

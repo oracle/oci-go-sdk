@@ -73,6 +73,60 @@ func getRequestTarget(request *http.Request) string {
 	return fmt.Sprintf("%s %s", lowercaseMethod, request.URL.RequestURI())
 }
 
+func calculateHashOfBody(request *http.Request) (err error) {
+	if request.Method == http.MethodPost || request.Method == http.MethodPut {
+		if request.ContentLength > 0 {
+			hash, e := GetBodyHash(request)
+			if e != nil {
+				return e
+			}
+			request.Header.Set("X-Content-Sha256", hash)
+		}
+	}
+	return
+}
+
+// drainBody reads all of b to memory and then returns two equivalent
+// ReadClosers yielding the same bytes.
+//
+// It returns an error if the initial slurp of all bytes fails. It does not attempt
+// to make the returned ReadClosers have identical error-matching behavior.
+func drainBody(b io.ReadCloser) (r1, r2 io.ReadCloser, err error) {
+	if b == http.NoBody {
+		// No copying needed. Preserve the magic sentinel meaning of NoBody.
+		return http.NoBody, http.NoBody, nil
+	}
+	var buf bytes.Buffer
+	if _, err = buf.ReadFrom(b); err != nil {
+		return nil, b, err
+	}
+	if err = b.Close(); err != nil {
+		return nil, b, err
+	}
+	return ioutil.NopCloser(&buf), ioutil.NopCloser(bytes.NewReader(buf.Bytes())), nil
+}
+
+func GetBodyHash(request *http.Request) (hashString string, err error) {
+	if request.Body == nil {
+		return "", fmt.Errorf("can not read body of request while calculating body hash, nil body?")
+	}
+
+	var data []byte
+	bReader := request.Body
+	bReader, request.Body, err = drainBody(request.Body)
+	if err != nil {
+		return "", fmt.Errorf("can not read body of request while calculating body hash: %s", err.Error())
+	}
+
+	data, err = ioutil.ReadAll(bReader)
+	if err != nil {
+		return "", fmt.Errorf("can not read body of request while calculating body hash: %s", err.Error())
+	}
+	hash := sha256.Sum256(data)
+	hashString = base64.StdEncoding.EncodeToString(hash[:])
+	return
+}
+
 func (signer OCIRequestSigner) computeSignature(request *http.Request) (signature string, err error) {
 	signingString := getSigningString(request)
 	hasher := sha256.New()
@@ -92,32 +146,6 @@ func (signer OCIRequestSigner) computeSignature(request *http.Request) (signatur
 	}
 
 	signature = base64.StdEncoding.EncodeToString(unencodedSig)
-	return
-}
-
-func GetBodyHash(request http.Request) (hashString string, err error) {
-	var data []byte
-	if request.GetBody != nil {
-		bodyReader, e := request.GetBody()
-		if e != nil {
-			return "", fmt.Errorf("can not read body of request while calculating body hash: %s", e.Error())
-		}
-		data, e = ioutil.ReadAll(bodyReader)
-		if e != nil {
-			return "", fmt.Errorf("can not read body of request while calculating body hash: %s", e.Error())
-		}
-	} else {
-		buffer := &bytes.Buffer{}
-		_, e := io.Copy(buffer, request.Body)
-		if e != nil {
-			return "", fmt.Errorf("can not read body of request while calculating body hash: %s", e.Error())
-		}
-
-		data = buffer.Bytes()
-	}
-
-	hash := sha256.Sum256(data)
-	hashString = base64.StdEncoding.EncodeToString(hash[:])
 	return
 }
 

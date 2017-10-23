@@ -3,6 +3,7 @@ package common
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 )
@@ -25,8 +26,10 @@ type servicefailure struct {
 	Message    string `json:"message,omitempty"`
 }
 
-func newServiceFailureFromResponse(response http.Response) error {
-	body, err := ioutil.ReadAll(response.Body)
+func newServiceFailureFromResponse(response *http.Response) error {
+	var err error
+	var bReader io.ReadCloser
+	bReader, response.Body, err = drainBody(response.Body)
 	if err != nil {
 		return servicefailure{
 			StatusCode: response.StatusCode,
@@ -35,7 +38,16 @@ func newServiceFailureFromResponse(response http.Response) error {
 		}
 	}
 
-	se := servicefailure{}
+	body, err := ioutil.ReadAll(bReader)
+	if err != nil {
+		return servicefailure{
+			StatusCode: response.StatusCode,
+			Code:       "BadErrorResponse",
+			Message:    fmt.Sprintf("The body of the response was not readable, due to :%s", err.Error()),
+		}
+	}
+
+	se := servicefailure{StatusCode: response.StatusCode}
 	err = json.Unmarshal(body, &se)
 	if err != nil {
 		return servicefailure{

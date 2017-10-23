@@ -2,6 +2,7 @@ package common
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -34,14 +35,9 @@ type HttpRequestDispatcher interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
-// Client wraps the basic operation to call the downstream services
-type Client interface {
-	Call(request http.Request) (response *http.Response, err error)
-}
-
 //BaseClient struct implements all basic operations to call oci web services.
 type BaseClient struct {
-	httpClient            HttpRequestDispatcher
+	HttpClient            HttpRequestDispatcher
 	Signer                HttpRequestSigner
 	ApiVersion            string
 	UserAgent             string
@@ -62,7 +58,7 @@ func NewClientWithHttpDispatcher(dispatcher HttpRequestDispatcher) (client BaseC
 		Interceptor:           nil,
 		ConfigurationProvider: provider,
 		Signer:                OCIRequestSigner{KeyProvider: provider},
-		httpClient:            dispatcher,
+		HttpClient:            dispatcher,
 	}
 	return
 }
@@ -95,48 +91,38 @@ func (client BaseClient) intercept(request *http.Request) (err error) {
 	return
 }
 
-func calculateHashOfBody(request *http.Request) (err error) {
-	if request.Method == http.MethodPost || request.Method == http.MethodPut {
-		if request.ContentLength > 0 {
-			hash, e := GetBodyHash(*request)
-			if e != nil {
-				return e
-			}
-			request.Header.Set("X-Content-Sha256", hash)
-		}
+func checkForSuccessfulResponse(res *http.Response) error {
+	familyStatusCode := res.StatusCode / 100
+	if familyStatusCode == 4 || familyStatusCode == 5 {
+		return newServiceFailureFromResponse(res)
 	}
-	return
+	return nil
+
 }
 
-func checkForSuccessfulResponse(res http.Response) error {
-	if res.StatusCode == http.StatusOK {
-		return nil
-	}
-
-	return newServiceFailureFromResponse(res)
-}
-
-func (client BaseClient) Call(request http.Request) (response *http.Response, err error) {
+func (client BaseClient) Call(ctx context.Context, request *http.Request) (response *http.Response, err error) {
 	Debugln("Atempting to call downstream service")
-	err = client.prepareRequest(&request)
+	request = request.WithContext(ctx)
+
+	err = client.prepareRequest(request)
 	if err != nil {
 		return
 	}
 
 	//Intercept
-	err = client.intercept(&request)
+	err = client.intercept(request)
 	if err != nil {
 		return
 	}
 
 	//Sign the request
-	err = client.Signer.Sign(&request)
+	err = client.Signer.Sign(request)
 	if err != nil {
 		return
 	}
 
 	IfDebug(func() {
-		if dump, e := httputil.DumpRequest(&request, true); e == nil {
+		if dump, e := httputil.DumpRequest(request, true); e == nil {
 			Logf("Dump Request %v", string(dump))
 		} else {
 			Debugln(e)
@@ -144,7 +130,7 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 	})
 
 	//Execute the http request
-	response, err = client.httpClient.Do(&request)
+	response, err = client.HttpClient.Do(request)
 
 	IfDebug(func() {
 		if err != nil {
@@ -163,10 +149,13 @@ func (client BaseClient) Call(request http.Request) (response *http.Response, er
 		return
 	}
 
-	err = checkForSuccessfulResponse(*response)
+	defer func() {
+		response.Body.Close()
+	}()
+
+	err = checkForSuccessfulResponse(response)
 	return
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -220,6 +209,10 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 		Logln("The body of the request is already set. Structure: ", field.Name, " will overwrite it")
 	}
 	marshaled, e := json.Marshal(value.Interface())
+	if e != nil {
+		return
+	}
+	Debugf("Marshaled body is: %s", string(marshaled))
 	bodyBytes := bytes.NewReader(marshaled)
 	request.ContentLength = int64(bodyBytes.Len())
 	request.Header.Set("Content-Length", strconv.FormatInt(request.ContentLength, 10))
@@ -241,7 +234,23 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 	if queryParameterName = field.Tag.Get("name"); queryParameterName == "" {
 		return fmt.Errorf("Marshaling request to a query requires the 'name' tag for field: %s ", field.Name)
 	}
+
+	mandatoryTag := strings.ToLower(field.Tag.Get("mandatory"))
+	mandatory := mandatoryTag == "" || mandatoryTag == "false"
+
 	if queryParameterValue, e = toStringValue(value, field); e != nil {
+		return
+	}
+
+	//if not mandatory and empty do not set query parameter
+	if !mandatory && queryParameterValue == "" {
+		Debugf("Query parameter value is not mandatory and is an empty string in field: %s. Skipping parameter", field.Name)
+		return
+	}
+
+	//Special cases
+	if strings.ToLower(queryParameterName) == "limit" && queryParameterValue == "0" {
+		Debugf("Query parameter 'Limit' can not be zero. Eliding query param: %s,", field.Name)
 		return
 	}
 
@@ -289,6 +298,12 @@ func addToHeader(request *http.Request, value reflect.Value, field reflect.Struc
 		request.Header = http.Header{}
 	}
 
+	mandatoryTag := strings.ToLower(field.Tag.Get("mandatory"))
+	mandatory := true
+	if mandatoryTag == "" || mandatoryTag == "false" {
+		mandatory = false
+	}
+
 	var headerName, headerValue string
 	if headerName = field.Tag.Get("name"); headerName == "" {
 		return fmt.Errorf("Marshaling request to a header requires the 'name' tag for field: %s", field.Name)
@@ -296,6 +311,13 @@ func addToHeader(request *http.Request, value reflect.Value, field reflect.Struc
 	if headerValue, e = toStringValue(value, field); e != nil {
 		return
 	}
+
+	//if not mandatory and empty do not set header
+	if !mandatory && headerValue == "" {
+		Debugf("Header value is not mandatory and is an empty string in field: %s. Skipping header", field.Name)
+		return
+	}
+
 	header := request.Header
 	header.Set(headerName, headerValue)
 	return
@@ -552,7 +574,8 @@ func addFromHeader(response *http.Response, value *reflect.Value, field reflect.
 
 	headerValue := response.Header.Get(headerName)
 	if headerValue == "" {
-		return fmt.Errorf("Unmarshalling did not find header with name:%s", headerName)
+		Debugf("Unmarshalling did not find header with name:%s", headerName)
+		return nil
 	}
 
 	if err = fromStringValue(headerValue, value, field); err != nil {
@@ -609,5 +632,3 @@ func UnmarshalResponse(httpResponse *http.Response, responseStruct interface{}) 
 
 	return nil
 }
-
-
