@@ -13,12 +13,14 @@ import (
 	"fmt"
 	"github.com/stretchr/testify/assert"
 	"testing"
+	//"time"
 )
 
 var (
 	rootTestCompartmentID = "ocidv1:tenancy:oc1:phx:1460406592660:aaaaaaaab4faofrfkxecohhjuivjq262pu"
 	validUserID           = "ocid1.user.oc1..aaaaaaaav6gsclr6pd4yjqengmriylyck55lvon5ujjnhkok5gyxii34lvra"
 	validCompartmetnID    = "ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma"
+	validGroupID          = "ocid1.group.oc1..aaaaaaaaf5lt5afvucqrtzvinpuhfq4rlhmdxqevcdqe7rv6d3vl5ytdqoyq"
 )
 
 // Group operations
@@ -77,20 +79,7 @@ func TestIdentityClient_DeleteGroup(t *testing.T) {
 }
 
 // Compartment operations
-func TestIdentityClient_UpdateCompartment(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.UpdateCompartmentRequest{UpdateCompartmentDetails: identity.UpdateCompartmentDetails{
-		Name:        "GOSDK2_Test",
-		Description: "GOSDK2 description",
-	},
-		CompartmentID: validCompartmetnID,
-	}
-	r, err := c.UpdateCompartment(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
+//Can not delete compartments right now! Careful!
 /*
 func TestIdentityClient_CreateCompartment(t *testing.T) {
 	c:= identity.NewClient()
@@ -105,15 +94,128 @@ func TestIdentityClient_CreateCompartment(t *testing.T) {
 	return
 }
 */
-
-func TestIdentityClient_AddUserToGroup(t *testing.T) {
+func TestIdentityClient_UpdateCompartment(t *testing.T) {
 	c := identity.NewClient()
-	request := identity.AddUserToGroupRequest{}
-	r, err := c.AddUserToGroup(context.Background(), request)
+	request := identity.UpdateCompartmentRequest{UpdateCompartmentDetails: identity.UpdateCompartmentDetails{
+		Name:        "GOSDK2_Test",
+		Description: "GOSDK2 description",
+	},
+		CompartmentID: validCompartmetnID,
+	}
+	r, err := c.UpdateCompartment(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	return
 }
+
+func TestIdentityClient_GetCompartment(t *testing.T) {
+	c := identity.NewClient()
+	request := identity.GetCompartmentRequest{CompartmentID: rootTestCompartmentID}
+	r, err := c.GetCompartment(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+//User Operations
+func TestIdentityClient_ListUsers(t *testing.T) {
+	c := identity.NewClient()
+	request := identity.ListUsersRequest{CompartmentID: rootTestCompartmentID}
+	r, err := c.ListUsers(context.Background(), request)
+	assert.NotEmpty(t, r.Items, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_UserCRUD(t *testing.T) {
+	c := identity.NewClient()
+	request := identity.CreateUserRequest{}
+	request.CompartmentID = rootTestCompartmentID
+	request.Name = "GolangSDK2_testUser"
+	request.Description = "Test user for golagn sdk2"
+	resCreate, err := c.CreateUser(context.Background(), request)
+	assert.NotEmpty(t, resCreate, fmt.Sprint(resCreate))
+	assert.NoError(t, err)
+
+	//Read
+	rRead := identity.GetUserRequest{UserID: resCreate.ID}
+	resRead, err := c.GetUser(context.Background(), rRead)
+	assert.NotEmpty(t, resRead, fmt.Sprint(resRead))
+	assert.NoError(t, err)
+
+	//Update
+	rUpdate := identity.UpdateUserRequest{}
+	rUpdate.UserID = resCreate.ID
+	rUpdate.Description = "This is a new description"
+	resUpdate, err := c.UpdateUser(context.Background(), rUpdate)
+	assert.NotEmpty(t, resUpdate, fmt.Sprint(resUpdate))
+	assert.NoError(t, err)
+
+	//remove
+	rDelete := identity.DeleteUserRequest{}
+	rDelete.UserID = resCreate.ID
+	err = c.DeleteUser(context.Background(), rDelete)
+	assert.NoError(t, err)
+
+	return
+}
+
+//User-Group operations
+func TestIdentityClient_AddUserToGroup(t *testing.T) {
+	c := identity.NewClient()
+	requestAdd := identity.AddUserToGroupRequest{}
+	requestAdd.UserID = validUserID
+	requestAdd.GroupID = validGroupID
+	r, err := c.AddUserToGroup(context.Background(), requestAdd)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+
+	requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipID: r.UserGroupMembership.ID}
+	err = c.RemoveUserFromGroup(context.Background(), requestRemove)
+	assert.NoError(t, err)
+	return
+}
+
+//Policy Operations see DEX-1945
+//func TestIdentityClient_PolicyCRUD(t *testing.T) {
+//	//Create
+//	client := identity.NewClient()
+//	/*
+//	createRequest := identity.CreatePolicyRequest{}
+//	createRequest.CompartmentID = rootTestCompartmentID
+//	createRequest.Name = "goSDK2Policy2"
+//	createRequest.Description = "some policy"
+//	createRequest.Statements = []string{"Allow group goSDK2CreateGroup read all-resources on compartment egineztest"}
+//	createRequest.VersionDate = time.Now()
+//	createResponse, err := client.CreatePolicy(context.Background(), createRequest)
+//	assert.NotEmpty(t, createResponse, fmt.Sprint(createResponse))
+//	assert.NoError(t, err)
+//	*/
+//	createResponseID :=  ""
+//
+//	//Read
+//	readRequest := identity.GetPolicyRequest{}
+//	readRequest.PolicyID = createResponseID
+//	readResponse, err := client.GetPolicy(context.Background(), readRequest)
+//	assert.NotEmpty(t, readResponse, fmt.Sprint(readResponse))
+//	assert.NoError(t, err)
+//
+//	//Update
+//	/*
+//	updateRequest := identity.UpdatePolicyRequest{}
+//	updateRequest.PolicyID = createResponseID
+//	updateRequest.Description = "new descripption"
+//	updateResponse, err := client.UpdatePolicy(context.Background(), updateRequest)
+//	assert.NotEmpty(t, updateResponse, fmt.Sprint(updateResponse))
+//	assert.NoError(t, err)
+//	*/
+//
+//	request := identity.DeletePolicyRequest{PolicyID:createResponseID}
+//	err = client.DeletePolicy(context.Background(), request)
+//	assert.NoError(t, err)
+//
+//	return
+//}
 
 func TestIdentityClient_CreateCustomerSecretKey(t *testing.T) {
 	c := identity.NewClient()
@@ -151,15 +253,6 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 	return
 }
 
-func TestIdentityClient_CreatePolicy(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.CreatePolicyRequest{}
-	r, err := c.CreatePolicy(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
 func TestIdentityClient_CreateRegionSubscription(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.CreateRegionSubscriptionRequest{}
@@ -173,15 +266,6 @@ func TestIdentityClient_CreateSwiftPassword(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.CreateSwiftPasswordRequest{}
 	r, err := c.CreateSwiftPassword(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
-func TestIdentityClient_CreateUser(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.CreateUserRequest{}
-	r, err := c.CreateUser(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	return
@@ -219,35 +303,10 @@ func TestIdentityClient_DeleteIdpGroupMapping(t *testing.T) {
 	return
 }
 
-func TestIdentityClient_DeletePolicy(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.DeletePolicyRequest{}
-	err := c.DeletePolicy(context.Background(), request)
-	assert.NoError(t, err)
-	return
-}
-
 func TestIdentityClient_DeleteSwiftPassword(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.DeleteSwiftPasswordRequest{}
 	err := c.DeleteSwiftPassword(context.Background(), request)
-	assert.NoError(t, err)
-	return
-}
-
-func TestIdentityClient_DeleteUser(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.DeleteUserRequest{}
-	err := c.DeleteUser(context.Background(), request)
-	assert.NoError(t, err)
-	return
-}
-
-func TestIdentityClient_GetCompartment(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.GetCompartmentRequest{}
-	r, err := c.GetCompartment(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	return
 }
@@ -270,28 +329,10 @@ func TestIdentityClient_GetIdpGroupMapping(t *testing.T) {
 	return
 }
 
-func TestIdentityClient_GetPolicy(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.GetPolicyRequest{}
-	r, err := c.GetPolicy(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
 func TestIdentityClient_GetTenancy(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.GetTenancyRequest{}
 	r, err := c.GetTenancy(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
-func TestIdentityClient_GetUser(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.GetUserRequest{}
-	r, err := c.GetUser(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	return
@@ -404,23 +445,6 @@ func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
 	return
 }
 
-func TestIdentityClient_ListUsers(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.ListUsersRequest{}
-	r, err := c.ListUsers(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
-func TestIdentityClient_RemoveUserFromGroup(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.RemoveUserFromGroupRequest{}
-	err := c.RemoveUserFromGroup(context.Background(), request)
-	assert.NoError(t, err)
-	return
-}
-
 func TestIdentityClient_UpdateCustomerSecretKey(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.UpdateCustomerSecretKeyRequest{}
@@ -457,28 +481,10 @@ func TestIdentityClient_UpdateIdpGroupMapping(t *testing.T) {
 	return
 }
 
-func TestIdentityClient_UpdatePolicy(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.UpdatePolicyRequest{}
-	r, err := c.UpdatePolicy(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
 func TestIdentityClient_UpdateSwiftPassword(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.UpdateSwiftPasswordRequest{}
 	r, err := c.UpdateSwiftPassword(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
-func TestIdentityClient_UpdateUser(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.UpdateUserRequest{}
-	r, err := c.UpdateUser(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	return

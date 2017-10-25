@@ -165,8 +165,10 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 
 var timeType = reflect.TypeOf(time.Time{})
 
+const sdkTimeFormat = time.RFC3339
+
 func FormatTime(t time.Time) string {
-	return t.Format(time.RFC3339)
+	return t.Format(sdkTimeFormat)
 }
 
 //Returns the string representation of a reflect.Value
@@ -251,6 +253,11 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 	//Special cases
 	if strings.ToLower(queryParameterName) == "limit" && queryParameterValue == "0" {
 		Debugf("Query parameter 'Limit' can not be zero. Eliding query param: %s,", field.Name)
+		return
+	}
+
+	if strings.ToLower(queryParameterName) == "page" && queryParameterValue == "" {
+		Debugf("Query parameter 'Page' can not be empty. Eliding query param: %s,", field.Name)
 		return
 	}
 
