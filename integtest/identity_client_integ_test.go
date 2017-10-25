@@ -163,6 +163,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 //User-Group operations
 func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	c := identity.NewClient()
+	//add
 	requestAdd := identity.AddUserToGroupRequest{}
 	requestAdd.UserID = validUserID
 	requestAdd.GroupID = validGroupID
@@ -170,6 +171,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 
+	//remove
 	requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipID: r.UserGroupMembership.ID}
 	err = c.RemoveUserFromGroup(context.Background(), requestRemove)
 	assert.NoError(t, err)
@@ -217,10 +219,70 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 //	return
 //}
 
-func TestIdentityClient_CreateCustomerSecretKey(t *testing.T) {
+//SecretKey operations
+func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.CreateCustomerSecretKeyRequest{}
-	r, err := c.CreateCustomerSecretKey(context.Background(), request)
+	request.UserID = validUserID
+	request.DisplayName = "GolangSDK2TestSecretKey"
+	resCreate, err := c.CreateCustomerSecretKey(context.Background(), request)
+	assert.NotEmpty(t, resCreate, fmt.Sprint(resCreate))
+	assert.NoError(t, err)
+
+	//Update
+	rUpdate := identity.UpdateCustomerSecretKeyRequest{}
+	rUpdate.CustomerSecretKeyID = resCreate.ID
+	rUpdate.UserID = validUserID
+	rUpdate.DisplayName = "This is a new description"
+	resUpdate, err := c.UpdateCustomerSecretKey(context.Background(), rUpdate)
+	assert.NotEmpty(t, resUpdate, fmt.Sprint(resUpdate))
+	assert.NoError(t, err)
+
+	//remove
+	rDelete := identity.DeleteCustomerSecretKeyRequest{}
+	rDelete.CustomerSecretKeyID = resCreate.ID
+	rDelete.UserID = validUserID
+	err = c.DeleteCustomerSecretKey(context.Background(), rDelete)
+	assert.NoError(t, err)
+
+	return
+}
+
+func TestIdentityClient_ListCustomerSecretKeys(t *testing.T) {
+	c := identity.NewClient()
+	request := identity.ListCustomerSecretKeysRequest{}
+	request.UserID = validUserID
+	r, err := c.ListCustomerSecretKeys(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+//Apikeys
+func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
+	userID := ""
+	c := identity.NewClient()
+	request := identity.UploadApiKeyRequest{}
+	request.UserID = userID
+	request.Key = "some key"
+	resCreate, err := c.UploadApiKey(context.Background(), request)
+	assert.NotEmpty(t, resCreate, fmt.Sprint(resCreate))
+	assert.NoError(t, err)
+
+	//remove
+	rDelete := identity.DeleteApiKeyRequest{}
+	rDelete.Fingerprint = resCreate.Fingerprint
+	rDelete.UserID = userID
+	err = c.DeleteApiKey(context.Background(), rDelete)
+	assert.NoError(t, err)
+
+	return
+}
+func TestIdentityClient_ListApiKeys(t *testing.T) {
+	c := identity.NewClient()
+	request := identity.ListApiKeysRequest{}
+	request.UserID = validUserID
+	r, err := c.ListApiKeys(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	return
@@ -272,19 +334,6 @@ func TestIdentityClient_CreateSwiftPassword(t *testing.T) {
 }
 
 func TestIdentityClient_DeleteApiKey(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.DeleteApiKeyRequest{}
-	err := c.DeleteApiKey(context.Background(), request)
-	assert.NoError(t, err)
-	return
-}
-
-func TestIdentityClient_DeleteCustomerSecretKey(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.DeleteCustomerSecretKeyRequest{}
-	err := c.DeleteCustomerSecretKey(context.Background(), request)
-	assert.NoError(t, err)
-	return
 }
 
 func TestIdentityClient_DeleteIdentityProvider(t *testing.T) {
@@ -347,15 +396,6 @@ func TestIdentityClient_GetUserGroupMembership(t *testing.T) {
 	return
 }
 
-func TestIdentityClient_ListApiKeys(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.ListApiKeysRequest{}
-	r, err := c.ListApiKeys(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
 func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.ListAvailabilityDomainsRequest{}
@@ -369,15 +409,6 @@ func TestIdentityClient_ListCompartments(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.ListCompartmentsRequest{}
 	r, err := c.ListCompartments(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
-func TestIdentityClient_ListCustomerSecretKeys(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.ListCustomerSecretKeysRequest{}
-	r, err := c.ListCustomerSecretKeys(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	return
@@ -440,15 +471,6 @@ func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.ListUserGroupMembershipsRequest{}
 	r, err := c.ListUserGroupMemberships(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
-func TestIdentityClient_UpdateCustomerSecretKey(t *testing.T) {
-	c := identity.NewClient()
-	request := identity.UpdateCustomerSecretKeyRequest{}
-	r, err := c.UpdateCustomerSecretKey(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	return
