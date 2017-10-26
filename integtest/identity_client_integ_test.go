@@ -476,6 +476,7 @@ func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
 	return
 }
 
+
 func TestIdentityClient_UpdateGroup(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.UpdateGroupRequest{}

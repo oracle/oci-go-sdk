@@ -50,7 +50,7 @@ type BaseClient struct {
 
 func NewClientWithHttpDispatcher(dispatcher HttpRequestDispatcher) (client BaseClient) {
 	userAgent := fmt.Sprintf(defaultUserAgentTemplate, defaultSDKMarker, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
-	provider := EnvironmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
+	provider := environmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
 
 	client = BaseClient{
 		UserAgent:             userAgent,
