@@ -8,8 +8,16 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type UpdateStateDetails struct {
 
 	// Update state to blocked or unblocked. Only "false" is supported (for changing the state to unblocked).
 	Blocked *bool `mandatory:"false" json:"blocked,omitempty"`
+}
+
+func (model UpdateStateDetails) String() string {
+	return common.PointerString(model)
 }

@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // CreateCompartmentRequest wrapper for the CreateCompartment operation
 type CreateCompartmentRequest struct {
@@ -17,6 +20,10 @@ type CreateCompartmentRequest struct {
 	// has been deleted and purged from the system, then a retry of the original creation request
 	// may be rejected).
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
+}
+
+func (request CreateCompartmentRequest) String() string {
+	return common.PointerString(request)
 }
 
 // CreateCompartmentResponse wrapper for the CreateCompartment operation
@@ -34,4 +41,8 @@ type CreateCompartmentResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response CreateCompartmentResponse) String() string {
+	return common.PointerString(response)
 }

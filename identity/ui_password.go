@@ -34,3 +34,7 @@ type UiPassword struct {
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
+
+func (model UiPassword) String() string {
+	return common.PointerString(model)
+}

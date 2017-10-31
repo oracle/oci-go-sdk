@@ -3,13 +3,20 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // ListApiKeysRequest wrapper for the ListApiKeys operation
 type ListApiKeysRequest struct {
 
 	// The OCID of the user.
 	UserID *string `mandatory:"true" contributesTo:"path" name:"userId"`
+}
+
+func (request ListApiKeysRequest) String() string {
+	return common.PointerString(request)
 }
 
 // ListApiKeysResponse wrapper for the ListApiKeys operation
@@ -29,4 +36,8 @@ type ListApiKeysResponse struct {
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+}
+
+func (response ListApiKeysResponse) String() string {
+	return common.PointerString(response)
 }

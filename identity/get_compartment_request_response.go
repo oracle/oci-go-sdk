@@ -3,13 +3,20 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // GetCompartmentRequest wrapper for the GetCompartment operation
 type GetCompartmentRequest struct {
 
 	// The OCID of the compartment.
 	CompartmentID *string `mandatory:"true" contributesTo:"path" name:"compartmentId"`
+}
+
+func (request GetCompartmentRequest) String() string {
+	return common.PointerString(request)
 }
 
 // GetCompartmentResponse wrapper for the GetCompartment operation
@@ -27,4 +34,8 @@ type GetCompartmentResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response GetCompartmentResponse) String() string {
+	return common.PointerString(response)
 }

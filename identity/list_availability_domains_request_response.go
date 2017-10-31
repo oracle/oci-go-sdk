@@ -3,13 +3,20 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // ListAvailabilityDomainsRequest wrapper for the ListAvailabilityDomains operation
 type ListAvailabilityDomainsRequest struct {
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
 	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+}
+
+func (request ListAvailabilityDomainsRequest) String() string {
+	return common.PointerString(request)
 }
 
 // ListAvailabilityDomainsResponse wrapper for the ListAvailabilityDomains operation
@@ -29,4 +36,8 @@ type ListAvailabilityDomainsResponse struct {
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+}
+
+func (response ListAvailabilityDomainsResponse) String() string {
+	return common.PointerString(response)
 }

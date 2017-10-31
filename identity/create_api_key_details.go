@@ -8,8 +8,16 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type CreateApiKeyDetails struct {
 
 	// The public key.  Must be an RSA key in PEM format.
 	Key *string `mandatory:"true" json:"key,omitempty"`
+}
+
+func (model CreateApiKeyDetails) String() string {
+	return common.PointerString(model)
 }

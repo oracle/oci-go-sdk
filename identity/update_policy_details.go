@@ -27,3 +27,7 @@ type UpdatePolicyDetails struct {
 	// date (YYYY-MM-DD), the policy will be evaluated according to the behavior of the services on that date.
 	VersionDate *common.SDKTime `mandatory:"false" json:"versionDate,omitempty"`
 }
+
+func (model UpdatePolicyDetails) String() string {
+	return common.PointerString(model)
+}

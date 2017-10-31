@@ -3,13 +3,20 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // GetGroupRequest wrapper for the GetGroup operation
 type GetGroupRequest struct {
 
 	// The OCID of the group.
 	GroupID *string `mandatory:"true" contributesTo:"path" name:"groupId"`
+}
+
+func (request GetGroupRequest) String() string {
+	return common.PointerString(request)
 }
 
 // GetGroupResponse wrapper for the GetGroup operation
@@ -27,4 +34,8 @@ type GetGroupResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response GetGroupResponse) String() string {
+	return common.PointerString(response)
 }

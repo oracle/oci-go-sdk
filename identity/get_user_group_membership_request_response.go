@@ -3,13 +3,20 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // GetUserGroupMembershipRequest wrapper for the GetUserGroupMembership operation
 type GetUserGroupMembershipRequest struct {
 
 	// The OCID of the userGroupMembership.
 	UserGroupMembershipID *string `mandatory:"true" contributesTo:"path" name:"userGroupMembershipId"`
+}
+
+func (request GetUserGroupMembershipRequest) String() string {
+	return common.PointerString(request)
 }
 
 // GetUserGroupMembershipResponse wrapper for the GetUserGroupMembership operation
@@ -27,4 +34,8 @@ type GetUserGroupMembershipResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response GetUserGroupMembershipResponse) String() string {
+	return common.PointerString(response)
 }

@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type CreateCompartmentDetails struct {
 
 	// The OCID of the tenancy containing the compartment.
@@ -19,4 +23,8 @@ type CreateCompartmentDetails struct {
 
 	// The description you assign to the compartment during creation. Does not have to be unique, and it's changeable.
 	Description *string `mandatory:"true" json:"description,omitempty"`
+}
+
+func (model CreateCompartmentDetails) String() string {
+	return common.PointerString(model)
 }

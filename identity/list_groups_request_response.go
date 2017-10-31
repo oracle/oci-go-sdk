@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // ListGroupsRequest wrapper for the ListGroups operation
 type ListGroupsRequest struct {
@@ -16,6 +19,10 @@ type ListGroupsRequest struct {
 
 	// The maximum number of items to return in a paginated "List" call.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
+}
+
+func (request ListGroupsRequest) String() string {
+	return common.PointerString(request)
 }
 
 // ListGroupsResponse wrapper for the ListGroups operation
@@ -35,4 +42,8 @@ type ListGroupsResponse struct {
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+}
+
+func (response ListGroupsResponse) String() string {
+	return common.PointerString(response)
 }

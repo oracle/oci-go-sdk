@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // UpdateUserRequest wrapper for the UpdateUser operation
 type UpdateUserRequest struct {
@@ -18,6 +21,10 @@ type UpdateUserRequest struct {
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
 	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
+}
+
+func (request UpdateUserRequest) String() string {
+	return common.PointerString(request)
 }
 
 // UpdateUserResponse wrapper for the UpdateUser operation
@@ -35,4 +42,8 @@ type UpdateUserResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response UpdateUserResponse) String() string {
+	return common.PointerString(response)
 }

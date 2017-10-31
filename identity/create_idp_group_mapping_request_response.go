@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // CreateIdpGroupMappingRequest wrapper for the CreateIdpGroupMapping operation
 type CreateIdpGroupMappingRequest struct {
@@ -22,6 +25,10 @@ type CreateIdpGroupMappingRequest struct {
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
+func (request CreateIdpGroupMappingRequest) String() string {
+	return common.PointerString(request)
+}
+
 // CreateIdpGroupMappingResponse wrapper for the CreateIdpGroupMapping operation
 type CreateIdpGroupMappingResponse struct {
 
@@ -37,4 +44,8 @@ type CreateIdpGroupMappingResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response CreateIdpGroupMappingResponse) String() string {
+	return common.PointerString(response)
 }

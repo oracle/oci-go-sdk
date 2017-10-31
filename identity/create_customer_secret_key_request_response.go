@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // CreateCustomerSecretKeyRequest wrapper for the CreateCustomerSecretKey operation
 type CreateCustomerSecretKeyRequest struct {
@@ -22,6 +25,10 @@ type CreateCustomerSecretKeyRequest struct {
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
+func (request CreateCustomerSecretKeyRequest) String() string {
+	return common.PointerString(request)
+}
+
 // CreateCustomerSecretKeyResponse wrapper for the CreateCustomerSecretKey operation
 type CreateCustomerSecretKeyResponse struct {
 
@@ -37,4 +44,8 @@ type CreateCustomerSecretKeyResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response CreateCustomerSecretKeyResponse) String() string {
+	return common.PointerString(response)
 }

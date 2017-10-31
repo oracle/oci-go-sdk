@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // UploadApiKeyRequest wrapper for the UploadApiKey operation
 type UploadApiKeyRequest struct {
@@ -22,6 +25,10 @@ type UploadApiKeyRequest struct {
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
+func (request UploadApiKeyRequest) String() string {
+	return common.PointerString(request)
+}
+
 // UploadApiKeyResponse wrapper for the UploadApiKey operation
 type UploadApiKeyResponse struct {
 
@@ -37,4 +44,8 @@ type UploadApiKeyResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response UploadApiKeyResponse) String() string {
+	return common.PointerString(response)
 }

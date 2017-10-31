@@ -49,3 +49,7 @@ type Group struct {
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
+
+func (model Group) String() string {
+	return common.PointerString(model)
+}

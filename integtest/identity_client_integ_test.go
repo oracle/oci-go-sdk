@@ -94,7 +94,7 @@ func TestIdentityClient_UpdateCompartment(t *testing.T) {
 	c := identity.NewClient()
 	//Update
 	request := identity.UpdateCompartmentRequest{UpdateCompartmentDetails: identity.UpdateCompartmentDetails{
-		Name:       common.String( "GOSDK2_Test"),
+		Name:        common.String("GOSDK2_Test"),
 		Description: common.String("GOSDK2 description2"),
 	},
 		CompartmentID: common.String(validCompartmetnID),
@@ -124,8 +124,8 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.CreateUserRequest{}
 	request.CompartmentID = common.String(rootTestCompartmentID)
-	request.Name =common.String("GolangSDK2_testUser")
-	request.Description =common.String( "Test user for golagn sdk2")
+	request.Name = common.String("GolangSDK2_testUser")
+	request.Description = common.String("Test user for golagn sdk2")
 	resCreate, err := c.CreateUser(context.Background(), request)
 	fmt.Println(resCreate)
 	assert.NotEmpty(t, resCreate, fmt.Sprint(resCreate))
@@ -140,7 +140,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 	//Update
 	rUpdate := identity.UpdateUserRequest{}
 	rUpdate.UserID = resCreate.ID
-	rUpdate.Description =common.String( "This is a new description")
+	rUpdate.Description = common.String("This is a new description")
 	resUpdate, err := c.UpdateUser(context.Background(), rUpdate)
 	assert.NotEmpty(t, resUpdate, fmt.Sprint(resUpdate))
 	assert.NoError(t, err)
@@ -159,7 +159,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	c := identity.NewClient()
 	//add
 	requestAdd := identity.AddUserToGroupRequest{}
-	requestAdd.UserID =common.String( validUserID)
+	requestAdd.UserID = common.String(validUserID)
 	requestAdd.GroupID = common.String(validGroupID)
 	r, err := c.AddUserToGroup(context.Background(), requestAdd)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -219,7 +219,7 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.CreateCustomerSecretKeyRequest{}
 	request.UserID = common.String(validUserID)
-	request.DisplayName =common.String( "GolangSDK2TestSecretKey")
+	request.DisplayName = common.String("GolangSDK2TestSecretKey")
 	resCreate, err := c.CreateCustomerSecretKey(context.Background(), request)
 	panicIfError(t, err)
 	assert.NotEmpty(t, resCreate, fmt.Sprint(resCreate))
@@ -228,7 +228,7 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	//Update
 	rUpdate := identity.UpdateCustomerSecretKeyRequest{}
 	rUpdate.CustomerSecretKeyID = resCreate.ID
-	rUpdate.UserID =common.String( validUserID)
+	rUpdate.UserID = common.String(validUserID)
 	rUpdate.DisplayName = common.String("This is a new description")
 	resUpdate, err := c.UpdateCustomerSecretKey(context.Background(), rUpdate)
 	assert.NotEmpty(t, resUpdate, fmt.Sprint(resUpdate))
@@ -237,7 +237,7 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	//remove
 	rDelete := identity.DeleteCustomerSecretKeyRequest{}
 	rDelete.CustomerSecretKeyID = resCreate.ID
-	rDelete.UserID =common.String( validUserID)
+	rDelete.UserID = common.String(validUserID)
 	err = c.DeleteCustomerSecretKey(context.Background(), rDelete)
 	panicIfError(t, err)
 
@@ -259,8 +259,8 @@ func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 	userID := ""
 	c := identity.NewClient()
 	request := identity.UploadApiKeyRequest{}
-	request.UserID =common.String( userID)
-	request.Key =common.String( "some key")
+	request.UserID = common.String(userID)
+	request.Key = common.String("some key")
 	resCreate, err := c.UploadApiKey(context.Background(), request)
 	assert.NotEmpty(t, resCreate, fmt.Sprint(resCreate))
 	panicIfError(t, err)
@@ -268,7 +268,7 @@ func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 	//remove
 	rDelete := identity.DeleteApiKeyRequest{}
 	rDelete.Fingerprint = resCreate.Fingerprint
-	rDelete.UserID =common.String( userID)
+	rDelete.UserID = common.String(userID)
 	err = c.DeleteApiKey(context.Background(), rDelete)
 	panicIfError(t, err)
 
@@ -277,13 +277,12 @@ func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 func TestIdentityClient_ListApiKeys(t *testing.T) {
 	c := identity.NewClient()
 	request := identity.ListApiKeysRequest{}
-	request.UserID =common.String( validUserID)
+	request.UserID = common.String(validUserID)
 	r, err := c.ListApiKeys(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	panicIfError(t, err)
 	return
 }
-
 
 //TODO
 //func TestIdentityClient_CreateIdentityProvider(t *testing.T) {

@@ -3,13 +3,20 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // GetIdentityProviderRequest wrapper for the GetIdentityProvider operation
 type GetIdentityProviderRequest struct {
 
 	// The OCID of the identity provider.
 	IdentityProviderID *string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
+}
+
+func (request GetIdentityProviderRequest) String() string {
+	return common.PointerString(request)
 }
 
 // GetIdentityProviderResponse wrapper for the GetIdentityProvider operation
@@ -27,4 +34,8 @@ type GetIdentityProviderResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response GetIdentityProviderResponse) String() string {
+	return common.PointerString(response)
 }

@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type CreateSaml2IdentityProviderDetails struct {
 
 	// The OCID of your tenancy.
@@ -38,4 +42,8 @@ type CreateSaml2IdentityProviderDetails struct {
 
 	// The XML that contains the information required for federating.
 	Metadata *string `mandatory:"true" json:"metadata,omitempty"`
+}
+
+func (model CreateSaml2IdentityProviderDetails) String() string {
+	return common.PointerString(model)
 }

@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 // Tenancy. The root compartment that contains all of your organization's compartments and other
 // Oracle Bare Metal Cloud Services cloud resources. When you sign up for Oracle Bare Metal Cloud Services,
 // Oracle creates a tenancy for your company, which is a secure and isolated partition
@@ -32,4 +36,8 @@ type Tenancy struct {
 	// - `PHX`
 	// - `FRA`
 	HomeRegionKey *string `mandatory:"false" json:"homeRegionKey,omitempty"`
+}
+
+func (model Tenancy) String() string {
+	return common.PointerString(model)
 }

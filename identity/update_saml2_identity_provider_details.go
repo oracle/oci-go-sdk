@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type UpdateSaml2IdentityProviderDetails struct {
 
 	// The protocol used for federation.
@@ -24,4 +28,8 @@ type UpdateSaml2IdentityProviderDetails struct {
 
 	// The XML that contains the information required for federating.
 	Metadata *string `mandatory:"false" json:"metadata,omitempty"`
+}
+
+func (model UpdateSaml2IdentityProviderDetails) String() string {
+	return common.PointerString(model)
 }

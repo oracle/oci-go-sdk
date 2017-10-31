@@ -8,8 +8,16 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type UpdateCustomerSecretKeyDetails struct {
 
 	// The description you assign to the secret key. Does not have to be unique, and it's changeable.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+}
+
+func (model UpdateCustomerSecretKeyDetails) String() string {
+	return common.PointerString(model)
 }

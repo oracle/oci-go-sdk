@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // ListIdpGroupMappingsRequest wrapper for the ListIdpGroupMappings operation
 type ListIdpGroupMappingsRequest struct {
@@ -16,6 +19,10 @@ type ListIdpGroupMappingsRequest struct {
 
 	// The maximum number of items to return in a paginated "List" call.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
+}
+
+func (request ListIdpGroupMappingsRequest) String() string {
+	return common.PointerString(request)
 }
 
 // ListIdpGroupMappingsResponse wrapper for the ListIdpGroupMappings operation
@@ -35,4 +42,8 @@ type ListIdpGroupMappingsResponse struct {
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+}
+
+func (response ListIdpGroupMappingsResponse) String() string {
+	return common.PointerString(response)
 }

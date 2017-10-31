@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type UpdateIdentityProviderDetails struct {
 
 	// The protocol used for federation.
@@ -17,4 +21,8 @@ type UpdateIdentityProviderDetails struct {
 	// The description you assign to the `IdentityProvider`. Does not have to
 	// be unique, and it's changeable.
 	Description *string `mandatory:"false" json:"description,omitempty"`
+}
+
+func (model UpdateIdentityProviderDetails) String() string {
+	return common.PointerString(model)
 }

@@ -70,3 +70,7 @@ type Saml2IdentityProvider struct {
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
+
+func (model Saml2IdentityProvider) String() string {
+	return common.PointerString(model)
+}

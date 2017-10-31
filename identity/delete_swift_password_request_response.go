@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // DeleteSwiftPasswordRequest wrapper for the DeleteSwiftPassword operation
 type DeleteSwiftPasswordRequest struct {
@@ -20,6 +23,10 @@ type DeleteSwiftPasswordRequest struct {
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
 }
 
+func (request DeleteSwiftPasswordRequest) String() string {
+	return common.PointerString(request)
+}
+
 // DeleteSwiftPasswordResponse wrapper for the DeleteSwiftPassword operation
 type DeleteSwiftPasswordResponse struct {
 
@@ -29,4 +36,8 @@ type DeleteSwiftPasswordResponse struct {
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+}
+
+func (response DeleteSwiftPasswordResponse) String() string {
+	return common.PointerString(response)
 }

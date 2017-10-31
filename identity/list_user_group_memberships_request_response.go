@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // ListUserGroupMembershipsRequest wrapper for the ListUserGroupMemberships operation
 type ListUserGroupMembershipsRequest struct {
@@ -24,6 +27,10 @@ type ListUserGroupMembershipsRequest struct {
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 }
 
+func (request ListUserGroupMembershipsRequest) String() string {
+	return common.PointerString(request)
+}
+
 // ListUserGroupMembershipsResponse wrapper for the ListUserGroupMemberships operation
 type ListUserGroupMembershipsResponse struct {
 
@@ -41,4 +48,8 @@ type ListUserGroupMembershipsResponse struct {
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+}
+
+func (response ListUserGroupMembershipsResponse) String() string {
+	return common.PointerString(response)
 }

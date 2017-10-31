@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // CreateSwiftPasswordRequest wrapper for the CreateSwiftPassword operation
 type CreateSwiftPasswordRequest struct {
@@ -22,6 +25,10 @@ type CreateSwiftPasswordRequest struct {
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
+func (request CreateSwiftPasswordRequest) String() string {
+	return common.PointerString(request)
+}
+
 // CreateSwiftPasswordResponse wrapper for the CreateSwiftPassword operation
 type CreateSwiftPasswordResponse struct {
 
@@ -37,4 +44,8 @@ type CreateSwiftPasswordResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response CreateSwiftPasswordResponse) String() string {
+	return common.PointerString(response)
 }

@@ -3,13 +3,20 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // ListRegionSubscriptionsRequest wrapper for the ListRegionSubscriptions operation
 type ListRegionSubscriptionsRequest struct {
 
 	// The OCID of the tenancy.
 	TenancyID *string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
+}
+
+func (request ListRegionSubscriptionsRequest) String() string {
+	return common.PointerString(request)
 }
 
 // ListRegionSubscriptionsResponse wrapper for the ListRegionSubscriptions operation
@@ -24,4 +31,8 @@ type ListRegionSubscriptionsResponse struct {
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+}
+
+func (response ListRegionSubscriptionsResponse) String() string {
+	return common.PointerString(response)
 }

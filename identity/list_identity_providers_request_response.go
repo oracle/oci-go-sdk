@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // ListIdentityProvidersRequest wrapper for the ListIdentityProviders operation
 type ListIdentityProvidersRequest struct {
@@ -19,6 +22,10 @@ type ListIdentityProvidersRequest struct {
 
 	// The maximum number of items to return in a paginated "List" call.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
+}
+
+func (request ListIdentityProvidersRequest) String() string {
+	return common.PointerString(request)
 }
 
 // ListIdentityProvidersResponse wrapper for the ListIdentityProviders operation
@@ -38,4 +45,8 @@ type ListIdentityProvidersResponse struct {
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+}
+
+func (response ListIdentityProvidersResponse) String() string {
+	return common.PointerString(response)
 }

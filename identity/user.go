@@ -56,3 +56,7 @@ type User struct {
 	// - bit 2: BLOCKED (the user has exceeded the maximum number of failed login attempts for the Console)
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
+
+func (model User) String() string {
+	return common.PointerString(model)
+}

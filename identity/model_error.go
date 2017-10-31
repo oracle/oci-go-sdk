@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type ModelError struct {
 
 	// A short error code that defines the error, meant for programmatic parsing. See
@@ -16,4 +20,8 @@ type ModelError struct {
 
 	// A human-readable error string.
 	Message *string `mandatory:"true" json:"message,omitempty"`
+}
+
+func (model ModelError) String() string {
+	return common.PointerString(model)
 }

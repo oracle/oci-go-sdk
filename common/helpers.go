@@ -1,10 +1,10 @@
 package common
 
 import (
-	"reflect"
-	"time"
 	"fmt"
+	"reflect"
 	"strings"
+	"time"
 )
 
 func String(value string) *string {
@@ -31,7 +31,9 @@ func Bool(value bool) *bool {
 	return &value
 }
 
-//Extracts the values of the pointer fields in the structs
+//PointerString prints the values of pointers in a struct
+//Producing a human friendly string for an struct with pointers.
+//useful when debugging the values of a struct
 func PointerString(datastruct interface{}) (representation string) {
 	val := reflect.ValueOf(datastruct)
 	typ := reflect.TypeOf(datastruct)
@@ -62,18 +64,17 @@ func PointerString(datastruct interface{}) (representation string) {
 	return
 }
 
-
 // A time struct, which renders to/from json using RFC339
 type SDKTime struct {
 	time.Time
 }
 
-//Returns and SDKTime from a time.Time struct
+//Returns a SDKTime from a time.Time struct
 func SDKTimeFromTime(t time.Time) SDKTime {
 	return SDKTime{t}
 }
 
-//Returns the time.Now() as an SDKTime pointer
+//Returns the time.Now() as a SDKTime pointer
 func Now() *SDKTime {
 	t := SDKTime{time.Now()}
 	return &t

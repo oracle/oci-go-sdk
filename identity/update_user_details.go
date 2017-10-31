@@ -8,8 +8,16 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type UpdateUserDetails struct {
 
 	// The description you assign to the user. Does not have to be unique, and it's changeable.
 	Description *string `mandatory:"false" json:"description,omitempty"`
+}
+
+func (model UpdateUserDetails) String() string {
+	return common.PointerString(model)
 }

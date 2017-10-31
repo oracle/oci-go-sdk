@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 // RegionSubscription. An object that represents your tenancy's access to a particular region (i.e., a subscription), the status of that
 // access, and whether that region is the home region. For more information, see [Managing Regions]({{DOC_SERVER_URL}}/Content/Identity/Tasks/managingregions.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
@@ -34,4 +38,8 @@ type RegionSubscription struct {
 
 	// Indicates if the region is the home region or not.
 	IsHomeRegion *bool `mandatory:"true" json:"isHomeRegion,omitempty"`
+}
+
+func (model RegionSubscription) String() string {
+	return common.PointerString(model)
 }

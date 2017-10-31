@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // CreateRegionSubscriptionRequest wrapper for the CreateRegionSubscription operation
 type CreateRegionSubscriptionRequest struct {
@@ -22,6 +25,10 @@ type CreateRegionSubscriptionRequest struct {
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
+func (request CreateRegionSubscriptionRequest) String() string {
+	return common.PointerString(request)
+}
+
 // CreateRegionSubscriptionResponse wrapper for the CreateRegionSubscription operation
 type CreateRegionSubscriptionResponse struct {
 
@@ -34,4 +41,8 @@ type CreateRegionSubscriptionResponse struct {
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+}
+
+func (response CreateRegionSubscriptionResponse) String() string {
+	return common.PointerString(response)
 }

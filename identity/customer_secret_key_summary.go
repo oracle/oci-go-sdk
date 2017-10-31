@@ -41,3 +41,7 @@ type CustomerSecretKeySummary struct {
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
+
+func (model CustomerSecretKeySummary) String() string {
+	return common.PointerString(model)
+}

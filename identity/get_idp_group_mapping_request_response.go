@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // GetIdpGroupMappingRequest wrapper for the GetIdpGroupMapping operation
 type GetIdpGroupMappingRequest struct {
@@ -13,6 +16,10 @@ type GetIdpGroupMappingRequest struct {
 
 	// The OCID of the group mapping.
 	MappingID *string `mandatory:"true" contributesTo:"path" name:"mappingId"`
+}
+
+func (request GetIdpGroupMappingRequest) String() string {
+	return common.PointerString(request)
 }
 
 // GetIdpGroupMappingResponse wrapper for the GetIdpGroupMapping operation
@@ -30,4 +37,8 @@ type GetIdpGroupMappingResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response GetIdpGroupMappingResponse) String() string {
+	return common.PointerString(response)
 }

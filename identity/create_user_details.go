@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type CreateUserDetails struct {
 
 	// The OCID of the tenancy containing the user.
@@ -19,4 +23,8 @@ type CreateUserDetails struct {
 
 	// The description you assign to the user during creation. Does not have to be unique, and it's changeable.
 	Description *string `mandatory:"true" json:"description,omitempty"`
+}
+
+func (model CreateUserDetails) String() string {
+	return common.PointerString(model)
 }

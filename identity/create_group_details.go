@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type CreateGroupDetails struct {
 
 	// The OCID of the tenancy containing the group.
@@ -19,4 +23,8 @@ type CreateGroupDetails struct {
 
 	// The description you assign to the group during creation. Does not have to be unique, and it's changeable.
 	Description *string `mandatory:"true" json:"description,omitempty"`
+}
+
+func (model CreateGroupDetails) String() string {
+	return common.PointerString(model)
 }

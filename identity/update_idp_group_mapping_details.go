@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type UpdateIdpGroupMappingDetails struct {
 
 	// The idp group name.
@@ -15,4 +19,8 @@ type UpdateIdpGroupMappingDetails struct {
 
 	// The OCID of the group.
 	GroupID *string `mandatory:"false" json:"groupId,omitempty"`
+}
+
+func (model UpdateIdpGroupMappingDetails) String() string {
+	return common.PointerString(model)
 }

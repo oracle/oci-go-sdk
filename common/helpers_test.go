@@ -7,7 +7,7 @@ import (
 )
 
 func TestStructToString(t *testing.T) {
-	ints := []int{1,2,4}
+	ints := []int{1, 2, 4}
 
 	s := struct {
 		Anint        *int
@@ -15,12 +15,12 @@ func TestStructToString(t *testing.T) {
 		AFloat       *float32
 		SimpleString string
 		SimepleInt   int
-		IntSlice *[]int
+		IntSlice     *[]int
 	}{Int(1),
-	String("one"),
-	Float32(2.3),
-	"simple",
-	2, &ints}
+		String("one"),
+		Float32(2.3),
+		"simple",
+		2, &ints}
 
 	str := PointerString(s)
 	assert.Contains(t, str, "one")

@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // CreateIdentityProviderRequest wrapper for the CreateIdentityProvider operation
 type CreateIdentityProviderRequest struct {
@@ -17,6 +20,10 @@ type CreateIdentityProviderRequest struct {
 	// has been deleted and purged from the system, then a retry of the original creation request
 	// may be rejected).
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
+}
+
+func (request CreateIdentityProviderRequest) String() string {
+	return common.PointerString(request)
 }
 
 // CreateIdentityProviderResponse wrapper for the CreateIdentityProvider operation
@@ -34,4 +41,8 @@ type CreateIdentityProviderResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response CreateIdentityProviderResponse) String() string {
+	return common.PointerString(response)
 }

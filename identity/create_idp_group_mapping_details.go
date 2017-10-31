@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type CreateIdpGroupMappingDetails struct {
 
 	// The name of the IdP group you want to map.
@@ -16,4 +20,8 @@ type CreateIdpGroupMappingDetails struct {
 	// The OCID of the IAM Service Group
 	// you want to map to the IdP group.
 	GroupID *string `mandatory:"true" json:"groupId,omitempty"`
+}
+
+func (model CreateIdpGroupMappingDetails) String() string {
+	return common.PointerString(model)
 }

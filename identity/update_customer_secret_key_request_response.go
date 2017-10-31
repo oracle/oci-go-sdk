@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // UpdateCustomerSecretKeyRequest wrapper for the UpdateCustomerSecretKey operation
 type UpdateCustomerSecretKeyRequest struct {
@@ -23,6 +26,10 @@ type UpdateCustomerSecretKeyRequest struct {
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
 }
 
+func (request UpdateCustomerSecretKeyRequest) String() string {
+	return common.PointerString(request)
+}
+
 // UpdateCustomerSecretKeyResponse wrapper for the UpdateCustomerSecretKey operation
 type UpdateCustomerSecretKeyResponse struct {
 
@@ -38,4 +45,8 @@ type UpdateCustomerSecretKeyResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response UpdateCustomerSecretKeyResponse) String() string {
+	return common.PointerString(response)
 }

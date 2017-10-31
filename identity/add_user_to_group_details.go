@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type AddUserToGroupDetails struct {
 
 	// The OCID of the user.
@@ -15,4 +19,8 @@ type AddUserToGroupDetails struct {
 
 	// The OCID of the group.
 	GroupID *string `mandatory:"true" json:"groupId,omitempty"`
+}
+
+func (model AddUserToGroupDetails) String() string {
+	return common.PointerString(model)
 }

@@ -48,3 +48,7 @@ type SwiftPassword struct {
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
+
+func (model SwiftPassword) String() string {
+	return common.PointerString(model)
+}

@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // UpdateSwiftPasswordRequest wrapper for the UpdateSwiftPassword operation
 type UpdateSwiftPasswordRequest struct {
@@ -23,6 +26,10 @@ type UpdateSwiftPasswordRequest struct {
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
 }
 
+func (request UpdateSwiftPasswordRequest) String() string {
+	return common.PointerString(request)
+}
+
 // UpdateSwiftPasswordResponse wrapper for the UpdateSwiftPassword operation
 type UpdateSwiftPasswordResponse struct {
 
@@ -38,4 +45,8 @@ type UpdateSwiftPasswordResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response UpdateSwiftPasswordResponse) String() string {
+	return common.PointerString(response)
 }

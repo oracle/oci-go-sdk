@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // UpdatePolicyRequest wrapper for the UpdatePolicy operation
 type UpdatePolicyRequest struct {
@@ -18,6 +21,10 @@ type UpdatePolicyRequest struct {
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
 	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
+}
+
+func (request UpdatePolicyRequest) String() string {
+	return common.PointerString(request)
 }
 
 // UpdatePolicyResponse wrapper for the UpdatePolicy operation
@@ -35,4 +42,8 @@ type UpdatePolicyResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response UpdatePolicyResponse) String() string {
+	return common.PointerString(response)
 }

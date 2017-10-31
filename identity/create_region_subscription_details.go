@@ -8,6 +8,10 @@
 
 package identity
 
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
 type CreateRegionSubscriptionDetails struct {
 
 	// The regions's key.
@@ -17,4 +21,8 @@ type CreateRegionSubscriptionDetails struct {
 	// - `FRA`
 	// Example: `PHX`
 	RegionKey *string `mandatory:"true" json:"regionKey,omitempty"`
+}
+
+func (model CreateRegionSubscriptionDetails) String() string {
+	return common.PointerString(model)
 }

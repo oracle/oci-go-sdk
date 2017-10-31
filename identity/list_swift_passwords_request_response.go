@@ -3,13 +3,20 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // ListSwiftPasswordsRequest wrapper for the ListSwiftPasswords operation
 type ListSwiftPasswordsRequest struct {
 
 	// The OCID of the user.
 	UserID *string `mandatory:"true" contributesTo:"path" name:"userId"`
+}
+
+func (request ListSwiftPasswordsRequest) String() string {
+	return common.PointerString(request)
 }
 
 // ListSwiftPasswordsResponse wrapper for the ListSwiftPasswords operation
@@ -29,4 +36,8 @@ type ListSwiftPasswordsResponse struct {
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+}
+
+func (response ListSwiftPasswordsResponse) String() string {
+	return common.PointerString(response)
 }

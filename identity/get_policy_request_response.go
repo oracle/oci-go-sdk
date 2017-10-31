@@ -3,13 +3,20 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // GetPolicyRequest wrapper for the GetPolicy operation
 type GetPolicyRequest struct {
 
 	// The OCID of the policy.
 	PolicyID *string `mandatory:"true" contributesTo:"path" name:"policyId"`
+}
+
+func (request GetPolicyRequest) String() string {
+	return common.PointerString(request)
 }
 
 // GetPolicyResponse wrapper for the GetPolicy operation
@@ -27,4 +34,8 @@ type GetPolicyResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response GetPolicyResponse) String() string {
+	return common.PointerString(response)
 }

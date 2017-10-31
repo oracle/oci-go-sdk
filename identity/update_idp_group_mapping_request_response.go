@@ -3,7 +3,10 @@
 
 package identity
 
-import "net/http"
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"net/http"
+)
 
 // UpdateIdpGroupMappingRequest wrapper for the UpdateIdpGroupMapping operation
 type UpdateIdpGroupMappingRequest struct {
@@ -23,6 +26,10 @@ type UpdateIdpGroupMappingRequest struct {
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
 }
 
+func (request UpdateIdpGroupMappingRequest) String() string {
+	return common.PointerString(request)
+}
+
 // UpdateIdpGroupMappingResponse wrapper for the UpdateIdpGroupMapping operation
 type UpdateIdpGroupMappingResponse struct {
 
@@ -38,4 +45,8 @@ type UpdateIdpGroupMappingResponse struct {
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+}
+
+func (response UpdateIdpGroupMappingResponse) String() string {
+	return common.PointerString(response)
 }
