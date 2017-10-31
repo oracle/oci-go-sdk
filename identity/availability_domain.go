@@ -14,8 +14,8 @@ package identity
 type AvailabilityDomain struct {
 
 	// The name of the Availability Domain.
-	Name string `mandatory:"false" json:"name,omitempty"`
+	Name *string `mandatory:"false" json:"name,omitempty"`
 
 	// The OCID of the tenancy.
-	CompartmentID string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
 }

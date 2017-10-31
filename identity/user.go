@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"time"
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 )
 
 // User. An individual employee or system that needs to manage or use your company's Oracle Bare Metal Cloud Services
@@ -29,30 +29,30 @@ import (
 type User struct {
 
 	// The OCID of the user.
-	ID string `mandatory:"true" json:"id,omitempty"`
+	ID *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the tenancy containing the user.
-	CompartmentID string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the user during creation. This is the user's login for the Console.
 	// The name must be unique across all users in the tenancy and cannot be changed.
-	Name string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name,omitempty"`
 
 	// The description you assign to the user. Does not have to be unique, and it's changeable.
-	Description string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description,omitempty"`
 
 	// Date and time the user was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated time.Time `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
 	// The user's current state. After creating a user, make sure its `lifecycleState` changes from CREATING to
 	// ACTIVE before using it.
-	LifecycleState string `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState *string `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// Returned only if the user's `lifecycleState` is INACTIVE. A 16-bit value showing the reason why the user
 	// is inactive:
 	// - bit 0: SUSPENDED (reserved for future use)
 	// - bit 1: DISABLED (reserved for future use)
 	// - bit 2: BLOCKED (the user has exceeded the maximum number of failed login attempts for the Console)
-	InactiveStatus int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
 }

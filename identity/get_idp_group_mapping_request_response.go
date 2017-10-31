@@ -9,25 +9,25 @@ import "net/http"
 type GetIdpGroupMappingRequest struct {
 
 	// The OCID of the identity provider.
-	IdentityProviderID string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
+	IdentityProviderID *string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
 
 	// The OCID of the group mapping.
-	MappingID string `mandatory:"true" contributesTo:"path" name:"mappingId"`
+	MappingID *string `mandatory:"true" contributesTo:"path" name:"mappingId"`
 }
 
 // GetIdpGroupMappingResponse wrapper for the GetIdpGroupMapping operation
 type GetIdpGroupMappingResponse struct {
 
 	// The underlying http response
-	RawResponse http.Response
+	RawResponse *http.Response
 
 	// The IdpGroupMapping instance
 	IdpGroupMapping `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
 
 	// For optimistic concurrency control. See `if-match`.
-	Etag string `presentIn:"header" name:"etag"`
+	Etag *string `presentIn:"header" name:"etag"`
 }

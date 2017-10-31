@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"time"
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 )
 
 // CustomerSecretKeySummary. As the name suggests, a `CustomerSecretKeySummary` object contains information about a `CustomerSecretKey`.
@@ -17,27 +17,27 @@ import (
 type CustomerSecretKeySummary struct {
 
 	// The OCID of the secret key.
-	ID string `mandatory:"false" json:"id,omitempty"`
+	ID *string `mandatory:"false" json:"id,omitempty"`
 
 	// The OCID of the user the password belongs to.
-	UserID string `mandatory:"false" json:"userId,omitempty"`
+	UserID *string `mandatory:"false" json:"userId,omitempty"`
 
 	// The displayName you assign to the secret key. Does not have to be unique, and it's changeable.
-	DisplayName string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
 	// Date and time the `CustomerSecretKey` object was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated time.Time `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 
 	// Date and time when this password will expire, in the format defined by RFC3339.
 	// Null if it never expires.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeExpires time.Time `mandatory:"false" json:"timeExpires,omitempty"`
+	TimeExpires *common.SDKTime `mandatory:"false" json:"timeExpires,omitempty"`
 
 	// The secret key's current state. After creating a secret key, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState string `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState *string `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
 }

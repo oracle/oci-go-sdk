@@ -17,7 +17,7 @@ type ConfigurationProvider interface {
 	TenancyOCID() (string, error)
 	UserOCID() (string, error)
 	KeyFingerPrint() (string, error)
-	Region()(string, error)
+	Region() (string, error)
 }
 
 // environmentConfigurationProvider reads configuration from environment variables
@@ -30,11 +30,9 @@ type environmentConfigurationProvider struct {
 // The env variables should look like: prefix_private_key_path, prefix_tenancy_ocid, prefix_user_ocid, prefix_fingerprint
 // prefix_region
 func ConfigurationProviderEnvironmentVariables(environmentVariablePrefix, privateKeyPassword string) ConfigurationProvider {
-	return environmentConfigurationProvider{EnvironmentVariablePrefix:environmentVariablePrefix,
-		PrivateKeyPassword:privateKeyPassword}
+	return environmentConfigurationProvider{EnvironmentVariablePrefix: environmentVariablePrefix,
+		PrivateKeyPassword: privateKeyPassword}
 }
-
-
 
 // PrivateKeyFromBytes is a helper function that will produce a RSA private
 // key from bytes.
@@ -151,12 +149,12 @@ func ConfigurationProviderFromFile(configFilePath, privateKeyPassword string) (C
 		return nil, fmt.Errorf("config file path can not be empty")
 	}
 
-	return fileConfigurationProvider{ConfigPath:configFilePath, PrivateKeyPassword:privateKeyPassword}, nil
+	return fileConfigurationProvider{ConfigPath: configFilePath, PrivateKeyPassword: privateKeyPassword}, nil
 }
 
 type configFileInfo struct {
 	UserOcid, Fingerprint, KeyFilePath, TenancyOcid, Region string
-	PresentConfiguration byte
+	PresentConfiguration                                    byte
 }
 
 const (
@@ -167,8 +165,6 @@ const (
 	hasKeyFile
 	none
 )
-
-
 
 func parseConfigFile(data []byte) (info *configFileInfo, err error) {
 	var configurationPresent byte
@@ -234,8 +230,8 @@ func (p fileConfigurationProvider) readAndParseConfigFile() (info *configFileInf
 	return parseConfigFile(data)
 }
 
-func presentOrError(value string, expectedConf, presentConf byte, confMissing string) (string,error){
-	if presentConf & expectedConf == expectedConf {
+func presentOrError(value string, expectedConf, presentConf byte, confMissing string) (string, error) {
+	if presentConf&expectedConf == expectedConf {
 		return value, nil
 	} else {
 		return "", errors.New(confMissing + " configuration is missing from file")
@@ -244,7 +240,7 @@ func presentOrError(value string, expectedConf, presentConf byte, confMissing st
 
 func (p fileConfigurationProvider) TenancyOCID() (value string, err error) {
 	info, err := p.readAndParseConfigFile()
-	if err != nil  {
+	if err != nil {
 		err = fmt.Errorf("can not read tenancy configuration due to: %s", err.Error())
 		return
 	}
@@ -317,7 +313,7 @@ func (p fileConfigurationProvider) Region() (value string, err error) {
 }
 
 // A configuration provider that look for information in  multiple configuration providers
-type composingConfigurationProvider struct{
+type composingConfigurationProvider struct {
 	Providers []ConfigurationProvider
 }
 
@@ -328,7 +324,7 @@ func ComposingConfigurationProvider(providers []ConfigurationProvider) (Configur
 	if len(providers) == 0 {
 		return nil, fmt.Errorf("providers can not be an empty slice")
 	}
-	return composingConfigurationProvider{Providers:providers}, nil
+	return composingConfigurationProvider{Providers: providers}, nil
 }
 
 func (c composingConfigurationProvider) TenancyOCID() (string, error) {
@@ -380,7 +376,7 @@ func (c composingConfigurationProvider) KeyID() (string, error) {
 	return "", fmt.Errorf("did not find a proper configuration for key id")
 }
 
-func (c composingConfigurationProvider) PrivateRSAKey()(*rsa.PrivateKey, error) {
+func (c composingConfigurationProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
 	for _, p := range c.Providers {
 		val, err := p.PrivateRSAKey()
 		if err == nil {

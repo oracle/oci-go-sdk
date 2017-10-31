@@ -27,10 +27,14 @@ type KeyProvider interface {
 
 var signerVersion = "1"
 
-//OCIRequestSigner implements the http-signatures-draft spec
+//ociRequestSigner implements the http-signatures-draft spec
 //as described in https://tools.ietf.org/html/draft-cavage-http-signatures-08
-type OCIRequestSigner struct {
+type ociRequestSigner struct {
 	KeyProvider KeyProvider
+}
+
+func NewOCIRequestSigner(provider KeyProvider) HttpRequestSigner {
+	return ociRequestSigner{KeyProvider: provider}
 }
 
 func getSigningHeaders(method string) []string {
@@ -127,7 +131,7 @@ func GetBodyHash(request *http.Request) (hashString string, err error) {
 	return
 }
 
-func (signer OCIRequestSigner) computeSignature(request *http.Request) (signature string, err error) {
+func (signer ociRequestSigner) computeSignature(request *http.Request) (signature string, err error) {
 	signingString := getSigningString(request)
 	hasher := sha256.New()
 	hasher.Write([]byte(signingString))
@@ -152,7 +156,7 @@ func (signer OCIRequestSigner) computeSignature(request *http.Request) (signatur
 // Signs the http request, by inspecting the necessary headers. Once signed
 // the request will have the proper 'Authorization' header set, otherwise
 // and error is returned
-func (signer OCIRequestSigner) Sign(request *http.Request) (err error) {
+func (signer ociRequestSigner) Sign(request *http.Request) (err error) {
 	err = calculateHashOfBody(request)
 	if err != nil {
 		return

@@ -11,24 +11,24 @@ package identity
 type CreateIdentityProviderDetails struct {
 
 	// The OCID of your tenancy.
-	CompartmentID string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the `IdentityProvider` during creation.
 	// The name must be unique across all `IdentityProvider` objects in the
 	// tenancy and cannot be changed.
-	Name string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name,omitempty"`
 
 	// The description you assign to the `IdentityProvider` during creation.
 	// Does not have to be unique, and it's changeable.
-	Description string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description,omitempty"`
 
 	// The identity provider service or product.
 	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
 	// Active Directory Federation Services (ADFS).
 	// Example: `IDCS`
-	ProductType string `mandatory:"true" json:"productType,omitempty"`
+	ProductType *string `mandatory:"true" json:"productType,omitempty"`
 
 	// The protocol used for federation.
 	// Example: `SAML2`
-	Protocol string `mandatory:"true" json:"protocol,omitempty"`
+	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
 }

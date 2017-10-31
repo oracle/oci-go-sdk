@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"time"
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 )
 
 // Policy. A document that specifies the type of access a group has to the resources in a compartment. For information about
@@ -25,34 +25,34 @@ import (
 type Policy struct {
 
 	// The OCID of the policy.
-	ID string `mandatory:"true" json:"id,omitempty"`
+	ID *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the compartment containing the policy (either the tenancy or another compartment).
-	CompartmentID string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the policy during creation. The name must be unique across all policies
 	// in the tenancy and cannot be changed.
-	Name string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name,omitempty"`
 
 	// An array of one or more policy statements written in the policy language.
-	Statements []string `mandatory:"true" json:"statements,omitempty"`
+	Statements *[]string `mandatory:"true" json:"statements,omitempty"`
 
 	// The description you assign to the policy. Does not have to be unique, and it's changeable.
-	Description string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description,omitempty"`
 
 	// Date and time the policy was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated time.Time `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
 	// The policy's current state. After creating a policy, make sure its `lifecycleState` changes from CREATING to
 	// ACTIVE before using it.
-	LifecycleState string `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState *string `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
 
 	// The version of the policy. If null or set to an empty string, when a request comes in for authorization, the
 	// policy will be evaluated according to the current behavior of the services at that moment. If set to a particular
 	// date (YYYY-MM-DD), the policy will be evaluated according to the behavior of the services on that date.
-	VersionDate time.Time `mandatory:"false" json:"versionDate,omitempty"`
+	VersionDate *common.SDKTime `mandatory:"false" json:"versionDate,omitempty"`
 }

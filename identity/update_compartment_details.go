@@ -11,8 +11,8 @@ package identity
 type UpdateCompartmentDetails struct {
 
 	// The description you assign to the compartment. Does not have to be unique, and it's changeable.
-	Description string `mandatory:"false" json:"description,omitempty"`
+	Description *string `mandatory:"false" json:"description,omitempty"`
 
 	// The new name you assign to the compartment. The name must be unique across all compartments in the tenancy.
-	Name string `mandatory:"false" json:"name,omitempty"`
+	Name *string `mandatory:"false" json:"name,omitempty"`
 }

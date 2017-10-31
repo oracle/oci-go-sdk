@@ -18,18 +18,18 @@ package identity
 type Tenancy struct {
 
 	// The OCID of the tenancy.
-	ID string `mandatory:"false" json:"id,omitempty"`
+	ID *string `mandatory:"false" json:"id,omitempty"`
 
 	// The name of the tenancy.
-	Name string `mandatory:"false" json:"name,omitempty"`
+	Name *string `mandatory:"false" json:"name,omitempty"`
 
 	// The description of the tenancy.
-	Description string `mandatory:"false" json:"description,omitempty"`
+	Description *string `mandatory:"false" json:"description,omitempty"`
 
 	// The region key for the tenancy's home region.
 	// Allowed values are:
 	// - `IAD`
 	// - `PHX`
 	// - `FRA`
-	HomeRegionKey string `mandatory:"false" json:"homeRegionKey,omitempty"`
+	HomeRegionKey *string `mandatory:"false" json:"homeRegionKey,omitempty"`
 }

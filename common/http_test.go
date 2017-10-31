@@ -3,6 +3,7 @@ package common
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"net/http"
@@ -34,10 +35,21 @@ type TestcreateApiKeyDetails struct {
 	Key string `mandatory:"true" json:"key,omitempty"`
 }
 
+type TestcreateApiKeyDetailsPtr struct {
+	Key     *string  `mandatory:"true" json:"key,omitempty"`
+	TheTime *SDKTime `mandatory:"true" json:"theTime,omitempty"`
+}
+
 type uploadApiKeyRequest struct {
 	UserID                  string `mandatory:"true" contributesTo:"path" name:"userId"`
 	TestcreateApiKeyDetails `contributesTo:"body"`
 	OpcRetryToken           string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
+}
+
+type uploadApiKeyRequestPtr struct {
+	UserID                     *string `mandatory:"true" contributesTo:"path" name:"userId"`
+	TestcreateApiKeyDetailsPtr `contributesTo:"body"`
+	OpcRetryToken              *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,6 +91,7 @@ func TestHttpMarshallerSimpleStruct(t *testing.T) {
 	HttpRequestMarshaller(s, &request)
 	assert.True(t, strings.Contains(request.URL.Path, "111"))
 }
+
 func TestHttpMarshallerSimpleBody(t *testing.T) {
 	desc := "theDescription"
 	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", TestupdateUserDetails: TestupdateUserDetails{Description: desc}}
@@ -98,15 +111,16 @@ func TestHttpMarshalerAll(t *testing.T) {
 	s := struct {
 		Id      string                `contributesTo:"path"`
 		Name    string                `contributesTo:"query" name:"name"`
-		When    time.Time             `contributesTo:"query" name:"when"`
+		When    *SDKTime              `contributesTo:"query" name:"when"`
 		Income  float32               `contributesTo:"query" name:"income"`
 		Male    bool                  `contributesTo:"header" name:"male"`
 		Details TestupdateUserDetails `contributesTo:"body"`
 	}{
-		"101", "tapir", time.Now(), 3.23, true, TestupdateUserDetails{Description: desc},
+		"101", "tapir", Now(), 3.23, true, TestupdateUserDetails{Description: desc},
 	}
 	request := MakeDefaultHttpRequest(http.MethodPost, "/")
-	HttpRequestMarshaller(s, &request)
+	e := HttpRequestMarshaller(s, &request)
+	assert.NoError(t, e)
 	var content map[string]string
 	body, _ := ioutil.ReadAll(request.Body)
 	json.Unmarshal(body, &content)
@@ -134,6 +148,65 @@ func TestHttpMarshalerPointers(t *testing.T) {
 	HttpRequestMarshaller(s, &request)
 	assert.NotNil(t, request)
 	assert.True(t, request.URL.Query().Get("name") == *s.Name)
+}
+
+func TestHttpMarshalerPointersErrorHeader(t *testing.T) {
+
+	var n *string = new(string)
+	*n = "theName"
+	s := struct {
+		Name *string `mandatory:"true" contributesTo:"header" name:"name"`
+	}{
+		nil,
+	}
+	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
+	e := HttpRequestMarshaller(s, &request)
+	assert.Error(t, e)
+}
+
+func TestHttpMarshalerPointersErrorPath(t *testing.T) {
+
+	var n *string = new(string)
+	*n = "theName"
+	s := struct {
+		Name *string `mandatory:"true" contributesTo:"path" name:"name"`
+	}{
+		nil,
+	}
+	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
+	e := HttpRequestMarshaller(s, &request)
+	assert.Error(t, e)
+}
+
+func TestHttpMarshallerSimpleStructPointers(t *testing.T) {
+	now := SDKTime{time.Now()}
+	s := uploadApiKeyRequestPtr{
+		UserID:        String("111"),
+		OpcRetryToken: nil,
+		TestcreateApiKeyDetailsPtr: TestcreateApiKeyDetailsPtr{
+			Key:     String("thekey"),
+			TheTime: &now,
+		}}
+	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
+	HttpRequestMarshaller(s, &request)
+	all, _ := ioutil.ReadAll(request.Body)
+	assert.True(t, len(all) > 2)
+	assert.Equal(t, "", request.Header.Get("opc-retry-token"))
+	assert.True(t, strings.Contains(request.URL.Path, "111"))
+	assert.True(t, strings.Contains(string(all), "thekey"))
+	assert.Contains(t, string(all), now.Format(time.RFC3339))
+}
+
+func TestHttpMarshallerSimpleStructPointersFilled(t *testing.T) {
+	s := uploadApiKeyRequestPtr{
+		UserID:                     String("111"),
+		OpcRetryToken:              String("token"),
+		TestcreateApiKeyDetailsPtr: TestcreateApiKeyDetailsPtr{Key: String("thekey")}}
+	request := MakeDefaultHttpRequest(http.MethodPost, "/random")
+	HttpRequestMarshaller(s, &request)
+	assert.Equal(t, "token", request.Header.Get("opc-retry-token"))
+	assert.True(t, strings.Contains(request.URL.Path, "111"))
+
 }
 
 func TestHttpMarshalerUntaggedFields(t *testing.T) {
@@ -231,13 +304,13 @@ type listRegionsResponse struct {
 }
 
 type listUsersResponse struct {
-	Items        []int     `presentIn:"body"`
-	OpcRequestID string    `presentIn:"header" name:"opcrequestid"`
-	OpcNextPage  int32     `presentIn:"header" name:"opcnextpage"`
-	SomeUint     uint      `presentIn:"header" name:"someuint"`
-	SomeBool     bool      `presentIn:"header" name:"somebool"`
-	SomeTime     time.Time `presentIn:"header" name:"sometime"`
-	SomeFloat    float64   `presentIn:"header" name:"somefloat"`
+	Items        []int   `presentIn:"body"`
+	OpcRequestID string  `presentIn:"header" name:"opcrequestid"`
+	OpcNextPage  int     `presentIn:"header" name:"opcnextpage"`
+	SomeUint     uint    `presentIn:"header" name:"someuint"`
+	SomeBool     bool    `presentIn:"header" name:"somebool"`
+	SomeTime     SDKTime `presentIn:"header" name:"sometime"`
+	SomeFloat    float64 `presentIn:"header" name:"somefloat"`
 }
 
 func TestUnmarshalResponse_StringHeader(t *testing.T) {
@@ -255,17 +328,17 @@ func TestUnmarshalResponse_StringHeader(t *testing.T) {
 func TestUnmarshalResponse_MixHeader(t *testing.T) {
 	header := http.Header{}
 	opcId := "111"
-	nextPage := int32(333)
+	nextPage := int(333)
 	someuint := uint(12)
 	somebool := true
-	sometime := time.Now()
+	sometime := Now()
 	somefloat := 2.556
 
 	header.Set("OpcrequestId", opcId)
 	header.Set("opcnextpage", strconv.FormatInt(int64(nextPage), 10))
 	header.Set("someuint", strconv.FormatUint(uint64(someuint), 10))
 	header.Set("somebool", strconv.FormatBool(somebool))
-	header.Set("sometime", FormatTime(sometime))
+	header.Set("sometime", FormatTime(*sometime))
 	header.Set("somefloat", strconv.FormatFloat(somefloat, 'f', 3, 64))
 
 	r := http.Response{Header: header}
@@ -355,6 +428,16 @@ type listRgResEx struct {
 	OpcRequestID string `presentIn:"header" name:"opcrequestid"`
 }
 
+type listRgResPtr struct {
+	OpcRequestID               *string  `presentIn:"header" name:"opcrequestid"`
+	NumericHeader              *int     `presentIn:"header" name:"numeric"`
+	SomeTime                   *SDKTime `presentIn:"header" name:"theTime"`
+	SomeBool                   *bool    `presentIn:"header" name:"aBool"`
+	SomeUint                   *uint    `presentIn:"header" name:"aUint"`
+	SomeFloat                  *float32 `presentIn:"header" name:"aFloat"`
+	TestcreateApiKeyDetailsPtr `presentIn:"body"`
+}
+
 func TestUnmarshalResponse_BodyAndHeaderUnex(t *testing.T) {
 	sampleResponse := `{"key" : "FRA","name" : "eu-frankfurt-1"}`
 	header := http.Header{}
@@ -385,6 +468,37 @@ func TestUnmarshalResponse_BodyAndHeader(t *testing.T) {
 	assert.Equal(t, opcId, s.OpcRequestID)
 	assert.Equal(t, "eu-frankfurt-1", s.Name)
 	assert.Equal(t, "FRA", s.Key)
+}
+
+func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {
+	header := http.Header{}
+	opcId := "111"
+	numericHeader := "1414"
+	someFloat := float32(2.332342)
+	someUint := uint(33)
+	theTime := SDKTime{time.Now()}
+	theTimeStr := theTime.Format(sdkTimeFormat)
+	sampleResponse := fmt.Sprintf(`{"key" : "FRA","theTime" : "%s"}`, theTimeStr)
+	header.Set("OpcrequestId", opcId)
+	header.Set("numeric", numericHeader)
+	header.Set("theTime", theTimeStr)
+	header.Set("aBool", "true")
+	header.Set("aUint", "33")
+	header.Set("aFloat", "2.332342")
+	s := listRgResPtr{}
+	r := http.Response{Header: header}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.Equal(t, opcId, *s.OpcRequestID)
+	delta, _ := time.ParseDuration("1s")
+	assert.WithinDuration(t, theTime.Time, s.SomeTime.Time, delta)
+	assert.Equal(t, true, *s.SomeBool)
+	assert.Equal(t, someFloat, *s.SomeFloat)
+	assert.Equal(t, someUint, *s.SomeUint)
+	assert.WithinDuration(t, theTime.Time, s.TheTime.Time, delta)
+	assert.Equal(t, "FRA", *s.Key)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -24,7 +24,7 @@ const (
 	defaultScheme            = "https"
 	defaultSDKMarker         = "Oracle-GoSDK"
 	defaultUserAgentTemplate = "%s/%s (%s/%s; go/%s)" //SDK/SDKVersion (OS/OSVersion; Lang/LangVersion)
-	defaultTimeout           = time.Second * 15
+	defaultTimeout           = time.Second * 30
 )
 
 type RequestInterceptor func(*http.Request) error
@@ -51,13 +51,14 @@ type BaseClient struct {
 func NewClientWithHttpDispatcher(dispatcher HttpRequestDispatcher) (client BaseClient) {
 	userAgent := fmt.Sprintf(defaultUserAgentTemplate, defaultSDKMarker, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
 	provider := environmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
+	signer := NewOCIRequestSigner(provider)
 
 	client = BaseClient{
 		UserAgent:             userAgent,
 		Region:                DefaultRegion,
 		Interceptor:           nil,
 		ConfigurationProvider: provider,
-		Signer:                OCIRequestSigner{KeyProvider: provider},
+		Signer:                signer,
 		HttpClient:            dispatcher,
 	}
 	return
@@ -163,12 +164,8 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-var timeType = reflect.TypeOf(time.Time{})
-
-const sdkTimeFormat = time.RFC3339
-
-func FormatTime(t time.Time) string {
-	return t.Format(sdkTimeFormat)
+func isNil(v reflect.Value) bool {
+	return v.Kind() == reflect.Ptr && v.IsNil()
 }
 
 //Returns the string representation of a reflect.Value
@@ -182,7 +179,7 @@ func toStringValue(v reflect.Value, field reflect.StructField) (string, error) {
 	}
 
 	if v.Type() == timeType {
-		t := v.Interface().(time.Time)
+		t := v.Interface().(SDKTime)
 		return FormatTime(t), nil
 	}
 
@@ -237,27 +234,20 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 		return fmt.Errorf("Marshaling request to a query requires the 'name' tag for field: %s ", field.Name)
 	}
 
-	mandatoryTag := strings.ToLower(field.Tag.Get("mandatory"))
-	mandatory := mandatoryTag == "" || mandatoryTag == "false"
+	mandatory, _ := strconv.ParseBool(strings.ToLower(field.Tag.Get("mandatory")))
+
+	//If mandatory and nil. Error out
+	if mandatory && isNil(value) {
+		return fmt.Errorf("marshaling request to a header requires not nil pointer for field: %s", field.Name)
+	}
+
+	//if not mandatory and nil. Omit
+	if !mandatory && isNil(value) {
+		Debugf("Query parameter value is not mandatory and is nil pointer in field: %s. Skipping header", field.Name)
+		return
+	}
 
 	if queryParameterValue, e = toStringValue(value, field); e != nil {
-		return
-	}
-
-	//if not mandatory and empty do not set query parameter
-	if !mandatory && queryParameterValue == "" {
-		Debugf("Query parameter value is not mandatory and is an empty string in field: %s. Skipping parameter", field.Name)
-		return
-	}
-
-	//Special cases
-	if strings.ToLower(queryParameterName) == "limit" && queryParameterValue == "0" {
-		Debugf("Query parameter 'Limit' can not be zero. Eliding query param: %s,", field.Name)
-		return
-	}
-
-	if strings.ToLower(queryParameterName) == "page" && queryParameterValue == "" {
-		Debugf("Query parameter 'Page' can not be empty. Eliding query param: %s,", field.Name)
 		return
 	}
 
@@ -270,7 +260,7 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 func addToPath(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
 	var additionalUrlPathPart string
 	if additionalUrlPathPart, e = toStringValue(value, field); e != nil {
-		return
+		return fmt.Errorf("can not marshal to path in request for field %s. Due to %s", field.Name, e.Error())
 	}
 
 	if request.URL == nil {
@@ -305,28 +295,29 @@ func addToHeader(request *http.Request, value reflect.Value, field reflect.Struc
 		request.Header = http.Header{}
 	}
 
-	mandatoryTag := strings.ToLower(field.Tag.Get("mandatory"))
-	mandatory := true
-	if mandatoryTag == "" || mandatoryTag == "false" {
-		mandatory = false
-	}
-
 	var headerName, headerValue string
 	if headerName = field.Tag.Get("name"); headerName == "" {
-		return fmt.Errorf("Marshaling request to a header requires the 'name' tag for field: %s", field.Name)
+		return fmt.Errorf("marshaling request to a header requires the 'name' tag for field: %s", field.Name)
 	}
+
+	mandatory, _ := strconv.ParseBool(strings.ToLower(field.Tag.Get("mandatory")))
+	//If mandatory and nil. Error out
+	if mandatory && isNil(value) {
+		return fmt.Errorf("marshaling request to a header requires not nil pointer for field: %s", field.Name)
+	}
+
+	//if not mandatory and nil. Omit
+	if !mandatory && isNil(value) {
+		Debugf("Header value is not mandatory and is nil pointer in field: %s. Skipping header", field.Name)
+		return
+	}
+
+	//Otherwise get value and set header
 	if headerValue, e = toStringValue(value, field); e != nil {
 		return
 	}
 
-	//if not mandatory and empty do not set header
-	if !mandatory && headerValue == "" {
-		Debugf("Header value is not mandatory and is an empty string in field: %s. Skipping header", field.Name)
-		return
-	}
-
-	header := request.Header
-	header.Set(headerName, headerValue)
+	request.Header.Set(headerName, headerValue)
 	return
 }
 
@@ -485,6 +476,84 @@ func intSizeFromKind(kind reflect.Kind) int {
 
 }
 
+func analyzeValue(stringValue string, kind reflect.Kind) (val reflect.Value, valPointer reflect.Value, err error) {
+	switch kind {
+	case timeType.Kind():
+		var t time.Time
+		t, err = time.Parse(time.RFC3339, stringValue)
+		if err != nil {
+			return
+		}
+		sdkTime := SDKTimeFromTime(t)
+		val = reflect.ValueOf(sdkTime)
+		valPointer = reflect.ValueOf(&sdkTime)
+		return
+	case reflect.Bool:
+		var bVal bool
+		if bVal, err = strconv.ParseBool(stringValue); err != nil {
+			return
+		}
+		val = reflect.ValueOf(bVal)
+		valPointer = reflect.ValueOf(&bVal)
+		return
+	case reflect.Int:
+		size := intSizeFromKind(kind)
+		var iVal int64
+		if iVal, err = strconv.ParseInt(stringValue, 10, size); err != nil {
+			return
+		}
+		var iiVal int
+		iiVal = int(iVal)
+		val = reflect.ValueOf(iiVal)
+		valPointer = reflect.ValueOf(&iiVal)
+		return
+	case reflect.Int64:
+		size := intSizeFromKind(kind)
+		var iVal int64
+		if iVal, err = strconv.ParseInt(stringValue, 10, size); err != nil {
+			return
+		}
+		val = reflect.ValueOf(iVal)
+		valPointer = reflect.ValueOf(&iVal)
+		return
+	case reflect.Uint:
+		size := intSizeFromKind(kind)
+		var iVal uint64
+		if iVal, err = strconv.ParseUint(stringValue, 10, size); err != nil {
+			return
+		}
+		var uiVal uint
+		uiVal = uint(iVal)
+		val = reflect.ValueOf(uiVal)
+		valPointer = reflect.ValueOf(&uiVal)
+		return
+	case reflect.String:
+		val = reflect.ValueOf(stringValue)
+		valPointer = reflect.ValueOf(&stringValue)
+	case reflect.Float32:
+		var fVal float64
+		if fVal, err = strconv.ParseFloat(stringValue, 32); err != nil {
+			return
+		}
+		var ffVal float32
+		ffVal = float32(fVal)
+		val = reflect.ValueOf(ffVal)
+		valPointer = reflect.ValueOf(&ffVal)
+		return
+	case reflect.Float64:
+		var fVal float64
+		if fVal, err = strconv.ParseFloat(stringValue, 64); err != nil {
+			return
+		}
+		val = reflect.ValueOf(fVal)
+		valPointer = reflect.ValueOf(&fVal)
+		return
+	default:
+		err = fmt.Errorf("Value for kind: %s not supported", kind)
+	}
+	return
+}
+
 //Sets the field of a struct, with the appropiate value of the string
 //Only sets basic types
 func fromStringValue(newValue string, val *reflect.Value, field reflect.StructField) (err error) {
@@ -494,55 +563,23 @@ func fromStringValue(newValue string, val *reflect.Value, field reflect.StructFi
 		return
 	}
 
-	if val.Type() == timeType {
-		t, e := time.Parse(time.RFC3339, newValue)
-		if e != nil {
-			return e
-		}
-		val.Set(reflect.ValueOf(t))
-		return
+	kind := val.Kind()
+	isPointer := false
+	if val.Kind() == reflect.Ptr {
+		isPointer = true
+		kind = field.Type.Elem().Kind()
 	}
 
-	switch val.Kind() {
-	case reflect.Bool:
-		var bVal bool
-		if bVal, err = strconv.ParseBool(newValue); err != nil {
-			return
-		}
-		val.SetBool(bVal)
-	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-		size := intSizeFromKind(val.Kind())
-		var iVal int64
-		if iVal, err = strconv.ParseInt(newValue, 10, size); err != nil {
-			return
-		}
-		val.SetInt(iVal)
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
-		size := intSizeFromKind(val.Kind())
-		var iVal uint64
-		if iVal, err = strconv.ParseUint(newValue, 10, size); err != nil {
-			return
-		}
-		val.SetUint(iVal)
-	case reflect.String:
-		val.SetString(newValue)
-	case reflect.Float32:
-		var fVal float64
-		if fVal, err = strconv.ParseFloat(newValue, 32); err != nil {
-			return
-		}
-		val.SetFloat(fVal)
-	case reflect.Float64:
-		var fVal float64
-		if fVal, err = strconv.ParseFloat(newValue, 64); err != nil {
-			return
-		}
-		val.SetFloat(fVal)
-	default:
-		return fmt.Errorf("unmarshaling response to the given struct does not support field named: %s of type: %v",
-			field.Name, val.Type().String())
+	value, valPtr, err := analyzeValue(newValue, kind)
+	if err != nil {
+		return
 	}
-	return nil
+	if !isPointer {
+		val.Set(value)
+	} else {
+		val.Set(valPtr)
+	}
+	return
 }
 
 func addFromBody(response *http.Response, value *reflect.Value, field reflect.StructField) (err error) {
@@ -552,8 +589,13 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 		return nil
 	}
 
-	//TODO read in a safe manner
-	content, err := ioutil.ReadAll(response.Body)
+	var bReader io.Reader
+	bReader, response.Body, err = drainBody(response.Body)
+	if err != nil {
+		return
+	}
+
+	content, err := ioutil.ReadAll(bReader)
 	if err != nil {
 		return
 	}
@@ -586,7 +628,8 @@ func addFromHeader(response *http.Response, value *reflect.Value, field reflect.
 	}
 
 	if err = fromStringValue(headerValue, value, field); err != nil {
-		return
+		return fmt.Errorf("unmarshaling response to a header failed for field %s, due to %s", field.Name,
+			err.Error())
 	}
 	return
 }

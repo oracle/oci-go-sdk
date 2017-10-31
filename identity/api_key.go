@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"time"
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 )
 
 // ApiKey. A PEM-format RSA credential for securing requests to the Oracle Bare Metal Cloud Services REST API. Also known
@@ -23,25 +23,25 @@ type ApiKey struct {
 
 	// An Oracle-assigned identifier for the key, in this format:
 	// TENANCY_OCID/USER_OCID/KEY_FINGERPRINT.
-	KeyID string `mandatory:"false" json:"keyId,omitempty"`
+	KeyID *string `mandatory:"false" json:"keyId,omitempty"`
 
 	// The key's value.
-	KeyValue string `mandatory:"false" json:"keyValue,omitempty"`
+	KeyValue *string `mandatory:"false" json:"keyValue,omitempty"`
 
 	// The key's fingerprint (e.g., 12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef).
-	Fingerprint string `mandatory:"false" json:"fingerprint,omitempty"`
+	Fingerprint *string `mandatory:"false" json:"fingerprint,omitempty"`
 
 	// The OCID of the user the key belongs to.
-	UserID string `mandatory:"false" json:"userId,omitempty"`
+	UserID *string `mandatory:"false" json:"userId,omitempty"`
 
 	// Date and time the `ApiKey` object was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated time.Time `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 
 	// The API key's current state. After creating an `ApiKey` object, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState string `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState *string `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
 }

@@ -9,19 +9,19 @@ import "net/http"
 type GetTenancyRequest struct {
 
 	// The OCID of the tenancy.
-	TenancyID string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
+	TenancyID *string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
 }
 
 // GetTenancyResponse wrapper for the GetTenancy operation
 type GetTenancyResponse struct {
 
 	// The underlying http response
-	RawResponse http.Response
+	RawResponse *http.Response
 
 	// The Tenancy instance
 	Tenancy `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
 }

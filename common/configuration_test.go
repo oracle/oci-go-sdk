@@ -1,19 +1,20 @@
 package common
+
 import (
+	"fmt"
 	"github.com/stretchr/testify/assert"
-	"testing"
 	"io/ioutil"
 	"os"
-	"fmt"
+	"testing"
 )
 
 var (
-	tuser = "someuser"
-	tfingerprint = "somefingerprint"
-	tkeyfile = "somelocation"
-	ttenancy = "sometenancy"
-	tregion = "someregion"
-	 testPrivateKeyConf = `-----BEGIN RSA PRIVATE KEY-----
+	tuser              = "someuser"
+	tfingerprint       = "somefingerprint"
+	tkeyfile           = "somelocation"
+	ttenancy           = "sometenancy"
+	tregion            = "someregion"
+	testPrivateKeyConf = `-----BEGIN RSA PRIVATE KEY-----
 MIICXgIBAAKBgQDCFENGw33yGihy92pDjZQhl0C36rPJj+CvfSC8+q28hxA161QF
 NUd13wuCTUcq0Qd2qsBe/2hFyc2DCJJg0h1L78+6Z4UMR7EOcpfdUE9Hf3m/hs+F
 UR45uBJeDK1HSFHD8bHKD6kv8FPGfJTotc+2xjJwoYi+1hqp1fIekaxsyQIDAQAB
@@ -30,8 +31,7 @@ G6aFKaqQfOXKCyWoUiVknQJAXrlgySFci/2ueKlIE1QqIiLSZ8V8OlpFLRnb1pzI
 -----END RSA PRIVATE KEY-----`
 )
 
-
-func removeFileFn (filename string) func(){
+func removeFileFn(filename string) func() {
 	return func() {
 		os.Remove(filename)
 	}
@@ -68,7 +68,6 @@ func TestFileConfigurationProvider_ParseEmptyFile(t *testing.T) {
 	assert.Error(t, e)
 }
 
-
 func TestFileConfigurationProvider_FromFile(t *testing.T) {
 	expected := []string{ttenancy, tuser, tfingerprint, tkeyfile}
 	data := `[DEFAULT]
@@ -82,9 +81,8 @@ region=someregion
 	filename := writeTempFile(data)
 	defer removeFileFn(filename)
 
-
-	c := fileConfigurationProvider{ConfigPath: filename,}
-	fns := []func()(string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerPrint}
+	c := fileConfigurationProvider{ConfigPath: filename}
+	fns := []func() (string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerPrint}
 
 	for i, fn := range fns {
 		val, e := fn()
@@ -94,15 +92,14 @@ region=someregion
 }
 
 func TestFileConfigurationProvider_NoFile(t *testing.T) {
-	c := fileConfigurationProvider{ConfigPath: "/no/file",}
-	fns := []func()(string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerPrint}
+	c := fileConfigurationProvider{ConfigPath: "/no/file"}
+	fns := []func() (string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerPrint}
 
 	for _, fn := range fns {
 		_, e := fn()
 		assert.Error(t, e)
 	}
 }
-
 
 func TestFileConfigurationProvider_KeyProvider(t *testing.T) {
 	dataTpl := `[DEFAULT]
@@ -121,7 +118,7 @@ region=someregion
 	defer removeFileFn(tmpConfFile)
 	defer removeFileFn(keyFile)
 
-	c := fileConfigurationProvider{ConfigPath: tmpConfFile,}
+	c := fileConfigurationProvider{ConfigPath: tmpConfFile}
 	rskey, e := c.PrivateRSAKey()
 	keyId, e1 := c.KeyID()
 	assert.NoError(t, e)
@@ -233,7 +230,7 @@ region=someregion
 
 	provider, ec := ComposingConfigurationProvider([]ConfigurationProvider{c0, c})
 	assert.NoError(t, ec)
-	fns := []func()(string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerPrint}
+	fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerPrint}
 
 	for _, fn := range fns {
 		val, e := fn()
@@ -262,7 +259,7 @@ func TestComposingConfigurationProvider_MultipleFilesNoConf(t *testing.T) {
 
 	provider, ec := ComposingConfigurationProvider([]ConfigurationProvider{c0, c})
 	assert.NoError(t, ec)
-	fns := []func()(string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerPrint}
+	fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerPrint}
 
 	for _, fn := range fns {
 		_, e := fn()

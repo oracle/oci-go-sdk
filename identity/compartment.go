@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"time"
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 )
 
 // Compartment. A collection of related resources. Compartments are a fundamental component of Oracle Bare Metal Cloud Services
@@ -29,26 +29,26 @@ import (
 type Compartment struct {
 
 	// The OCID of the compartment.
-	ID string `mandatory:"true" json:"id,omitempty"`
+	ID *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the tenancy containing the compartment.
-	CompartmentID string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the compartment during creation. The name must be unique across all
 	// compartments in the tenancy and cannot be changed.
-	Name string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name,omitempty"`
 
 	// The description you assign to the compartment. Does not have to be unique, and it's changeable.
-	Description string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description,omitempty"`
 
 	// Date and time the compartment was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated time.Time `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
 	// The compartment's current state. After creating a compartment, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState string `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState *string `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
 }

@@ -12,26 +12,26 @@ type CreateRegionSubscriptionRequest struct {
 	CreateRegionSubscriptionDetails `contributesTo:"body"`
 
 	// The OCID of the tenancy.
-	TenancyID string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
+	TenancyID *string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
 	// hours, but can be invalidated before then due to conflicting operations (e.g., if a resource
 	// has been deleted and purged from the system, then a retry of the original creation request
 	// may be rejected).
-	OpcRetryToken string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
+	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
 // CreateRegionSubscriptionResponse wrapper for the CreateRegionSubscription operation
 type CreateRegionSubscriptionResponse struct {
 
 	// The underlying http response
-	RawResponse http.Response
+	RawResponse *http.Response
 
 	// The RegionSubscription instance
 	RegionSubscription `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
 }
