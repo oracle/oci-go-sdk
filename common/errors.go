@@ -12,10 +12,11 @@ type ServiceError interface {
 	// The http status code of the error
 	GetHttpStatusCode() int
 
-	// The message of the error as sent by the service
+	// The human-readable error string as sent by the service
 	GetMessage() string
 
-	// The code of the error as sent by the service
+	// A short error code that defines the error, meant for programmatic parsing.
+	// See {{DOC_SERVER_URL}}/Content/API/References/apierrors.htm
 	GetCode() string
 }
 
