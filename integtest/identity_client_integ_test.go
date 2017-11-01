@@ -526,3 +526,12 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //	assert.NoError(t, err)
 //	return
 //}
+
+
+func TestBadHost(t *testing.T) {
+	client := identity.NewClientForRegion(region)
+	client.Host = "badhostname"
+	response, err := client.ListRegions(context.Background())
+	assert.Nil(t, response.RawResponse)
+	assert.Error(t, err)
+}
