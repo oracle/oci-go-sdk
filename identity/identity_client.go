@@ -22,12 +22,9 @@ type IdentityClient struct {
 //Create a new default Identity client for a given region
 func NewClientForRegion(region common.Region) (client IdentityClient) {
 	client = IdentityClient{BaseClient: common.NewClientForRegion(region)}
-	serviceName := "identity"
-	apiVersion := "20160918"
-	regionString, _ := common.RegionToString(region)
 
-	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, serviceName, regionString)
-	client.BasePath = apiVersion
+	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "identity", string(region))
+	client.BasePath = "20160918"
 	return
 }
 
