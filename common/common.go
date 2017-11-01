@@ -3,31 +3,30 @@ package common
 
 import (
 	"fmt"
+	"strings"
 )
 
-type Region int
+type Region string
 
 const (
-	SEA Region = 1 << iota
-	PHX
-	IAD
-	FRA
+	REGION_SEA Region = "sea"
+	REGION_PHX Region = "us-phoenix-1"
+	REGION_IAD Region = "us-ashburn-1"
+	REGION_FRA Region = "eu-frankfurt-1"
 )
 
-var DefaultRegion = PHX
-
-func RegionToString(r Region) (s string, err error) {
-	switch r {
-	case SEA:
-		s = "sea"
-	case PHX:
-		s = "us-phoenix-1"
-	case IAD:
-		s = "us-ashburn-1"
-	case FRA:
-		s = "eu-frankfurt-1"
+func StringToRegion(stringRegion string) (r Region, err error) {
+	switch strings.ToLower(stringRegion) {
+	case "sea":
+		r = REGION_SEA
+	case "us-phoenix-1":
+		r = REGION_PHX
+	case "us-ashburn-1":
+		r = REGION_IAD
+	case "eu-frankfur-1":
+		r = REGION_FRA
 	default:
-		err = fmt.Errorf("Region with value: %d, was not found", r)
+		err = fmt.Errorf("Region named: %s, not valid", stringRegion)
 	}
 	return
 }

@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	defaultHostUrlTemplate   = "%s.%s.oraclecloud.com"
+	DefaultHostUrlTemplate   = "%s.%s.oraclecloud.com"
 	defaultScheme            = "https"
 	defaultSDKMarker         = "Oracle-GoSDK"
 	defaultUserAgentTemplate = "%s/%s (%s/%s; go/%s)" //SDK/SDKVersion (OS/OSVersion; Lang/LangVersion)
@@ -37,51 +37,82 @@ type HttpRequestDispatcher interface {
 
 //BaseClient struct implements all basic operations to call oci web services.
 type BaseClient struct {
-	HttpClient            HttpRequestDispatcher
-	Signer                HttpRequestSigner
-	ApiVersion            string
-	UserAgent             string
-	ServiceName           string
-	Region                Region
-	ConfigurationProvider ConfigurationProvider
+	//HttpClient performs the http network operations
+	HttpClient HttpRequestDispatcher
+
+	//Signer performs auth operation
+	Signer HttpRequestSigner
+
 	//A request interceptor can be used to customize the request before signing and dispatching
 	Interceptor RequestInterceptor
+
+	//The region of the client
+	Region Region
+
+	//The host of the service
+	Host string
+
+	//The user agent
+	UserAgent string
+
+	//Base path for all operations of this client
+	BasePath string
 }
 
-func NewClientWithHttpDispatcher(dispatcher HttpRequestDispatcher) (client BaseClient) {
+func newClientWithHttpDispatcher(dispatcher HttpRequestDispatcher, region Region, provider ConfigurationProvider) (client BaseClient) {
 	userAgent := fmt.Sprintf(defaultUserAgentTemplate, defaultSDKMarker, Version(), runtime.GOOS, runtime.GOARCH, runtime.Version())
-	provider := environmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
 	signer := NewOCIRequestSigner(provider)
 
 	client = BaseClient{
-		UserAgent:             userAgent,
-		Region:                DefaultRegion,
-		Interceptor:           nil,
-		ConfigurationProvider: provider,
-		Signer:                signer,
-		HttpClient:            dispatcher,
+		UserAgent:   userAgent,
+		Region:      region,
+		Interceptor: nil,
+		Signer:      signer,
+		HttpClient:  dispatcher,
 	}
 	return
 }
 
-func NewClient() (client BaseClient) {
-	return NewClientWithHttpDispatcher(&http.Client{
+func getDefaultHttpDispatcher() http.Client {
+	httpClient := http.Client{
 		Timeout:   defaultTimeout,
 		Transport: &http.Transport{},
-	})
+	}
+	return httpClient
+}
+
+//Create a new client with a configuration provider, the configuration provider
+//will be used for the default signer as well as reading the region
+func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClient, err error) {
+	regionstr, err := configProvider.Region()
+	if err != nil {
+		err = fmt.Errorf("can not create client, bad region configuration: %s", err.Error())
+		return
+	}
+	region, err := StringToRegion(regionstr)
+	if err != nil {
+		err = fmt.Errorf("can not create client, bad region configuration: %s", err.Error())
+		return
+	}
+
+	dispatcher := getDefaultHttpDispatcher()
+	client = newClientWithHttpDispatcher(&dispatcher, region, configProvider)
+	return
+}
+
+//Create a new default client for a given region
+func NewClientForRegion(region Region) (client BaseClient) {
+	dispatcher := getDefaultHttpDispatcher()
+	provider := environmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
+	return newClientWithHttpDispatcher(&dispatcher, region, provider)
 }
 
 func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
-	regionString, err := RegionToString(client.Region)
-	if err != nil {
-		return
-	}
 	request.Header.Set("User-Agent", client.UserAgent)
-	hostUrl := fmt.Sprintf(defaultHostUrlTemplate, client.ServiceName, regionString)
-	request.URL.Host = hostUrl
 	request.URL.Scheme = defaultScheme
+	request.URL.Host = client.Host
 	currentPath := request.URL.Path
-	request.URL.Path = path.Clean(fmt.Sprintf("/%s/%s", client.ApiVersion, currentPath))
+	request.URL.Path = path.Clean(fmt.Sprintf("/%s/%s", client.BasePath, currentPath))
 	return
 }
 
@@ -149,10 +180,6 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 	if err != nil {
 		return
 	}
-
-	defer func() {
-		response.Body.Close()
-	}()
 
 	err = checkForSuccessfulResponse(response)
 	return
@@ -589,13 +616,9 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 		return nil
 	}
 
-	var bReader io.Reader
-	bReader, response.Body, err = drainBody(response.Body)
-	if err != nil {
-		return
-	}
-
-	content, err := ioutil.ReadAll(bReader)
+	//Consumes the body, consider implementing it
+	//without body consumption
+	content, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		return
 	}
@@ -668,7 +691,8 @@ func responseToStruct(response *http.Response, val *reflect.Value) (err error) {
 // UnmarshalResponse hydrates the fileds of an struct with the values of an http response, guided
 // by the field tags. The directive tag is "presentIn" and it can be either
 //  - "header": Will look for the header tagged as "name" in the headers of the struct and set it value to that
-//  - "body": It will try to marshal the json body of the request to the field annontated with body
+//  - "body": It will try to marshal the body from a json string to a struct tagged with 'presentIn: "body"'.
+// Further this method will consume the body as it should safe to close after it returns
 // Notice the current implementation only supports native types:int, strings, floats, bool
 func UnmarshalResponse(httpResponse *http.Response, responseStruct interface{}) (err error) {
 	var val *reflect.Value

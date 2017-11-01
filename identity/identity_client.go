@@ -11,6 +11,7 @@ package identity
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 	"context"
+	"fmt"
 	"net/http"
 )
 
@@ -18,10 +19,12 @@ type IdentityClient struct {
 	common.BaseClient
 }
 
-func NewClient() (client IdentityClient) {
-	client = IdentityClient{BaseClient: common.NewClient()}
-	client.ServiceName = "identity"
-	client.ApiVersion = "20160918"
+//Create a new default Identity client for a given region
+func NewClientForRegion(region common.Region) (client IdentityClient) {
+	client = IdentityClient{BaseClient: common.NewClientForRegion(region)}
+
+	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "identity", string(region))
+	client.BasePath = "20160918"
 	return
 }
 
@@ -35,6 +38,7 @@ func (client IdentityClient) AddUserToGroup(ctx context.Context, request AddUser
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -65,6 +69,7 @@ func (client IdentityClient) CreateCompartment(ctx context.Context, request Crea
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -90,6 +95,7 @@ func (client IdentityClient) CreateCustomerSecretKey(ctx context.Context, reques
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -122,6 +128,7 @@ func (client IdentityClient) CreateGroup(ctx context.Context, request CreateGrou
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -152,6 +159,7 @@ func (client IdentityClient) CreateIdentityProvider(ctx context.Context, request
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -170,6 +178,7 @@ func (client IdentityClient) CreateIdpGroupMapping(ctx context.Context, request 
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -195,6 +204,7 @@ func (client IdentityClient) CreateOrResetUIPassword(ctx context.Context, reques
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -223,6 +233,7 @@ func (client IdentityClient) CreatePolicy(ctx context.Context, request CreatePol
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -240,6 +251,7 @@ func (client IdentityClient) CreateRegionSubscription(ctx context.Context, reque
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -264,6 +276,7 @@ func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request Cr
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -309,6 +322,7 @@ func (client IdentityClient) CreateUser(ctx context.Context, request CreateUserR
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -425,6 +439,7 @@ func (client IdentityClient) GetCompartment(ctx context.Context, request GetComp
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -445,6 +460,7 @@ func (client IdentityClient) GetGroup(ctx context.Context, request GetGroupReque
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -462,6 +478,7 @@ func (client IdentityClient) GetIdentityProvider(ctx context.Context, request Ge
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -479,6 +496,7 @@ func (client IdentityClient) GetIdpGroupMapping(ctx context.Context, request Get
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -496,6 +514,7 @@ func (client IdentityClient) GetPolicy(ctx context.Context, request GetPolicyReq
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -513,6 +532,7 @@ func (client IdentityClient) GetTenancy(ctx context.Context, request GetTenancyR
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -530,6 +550,7 @@ func (client IdentityClient) GetUser(ctx context.Context, request GetUserRequest
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -547,6 +568,7 @@ func (client IdentityClient) GetUserGroupMembership(ctx context.Context, request
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -566,6 +588,7 @@ func (client IdentityClient) ListApiKeys(ctx context.Context, request ListApiKey
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -585,6 +608,7 @@ func (client IdentityClient) ListAvailabilityDomains(ctx context.Context, reques
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -604,6 +628,7 @@ func (client IdentityClient) ListCompartments(ctx context.Context, request ListC
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -622,6 +647,7 @@ func (client IdentityClient) ListCustomerSecretKeys(ctx context.Context, request
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -641,6 +667,7 @@ func (client IdentityClient) ListGroups(ctx context.Context, request ListGroupsR
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -661,6 +688,7 @@ func (client IdentityClient) ListIdentityProviders(ctx context.Context, request 
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -678,6 +706,7 @@ func (client IdentityClient) ListIdpGroupMappings(ctx context.Context, request L
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -698,6 +727,7 @@ func (client IdentityClient) ListPolicies(ctx context.Context, request ListPolic
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -715,6 +745,7 @@ func (client IdentityClient) ListRegionSubscriptions(ctx context.Context, reques
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -729,6 +760,7 @@ func (client IdentityClient) ListRegions(ctx context.Context) (response ListRegi
 	httpRequest := common.MakeDefaultHttpRequest(http.MethodGet, "/regions")
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -747,6 +779,7 @@ func (client IdentityClient) ListSwiftPasswords(ctx context.Context, request Lis
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -771,6 +804,7 @@ func (client IdentityClient) ListUserGroupMemberships(ctx context.Context, reque
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -790,6 +824,7 @@ func (client IdentityClient) ListUsers(ctx context.Context, request ListUsersReq
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -818,6 +853,7 @@ func (client IdentityClient) UpdateCompartment(ctx context.Context, request Upda
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -835,6 +871,7 @@ func (client IdentityClient) UpdateCustomerSecretKey(ctx context.Context, reques
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -852,6 +889,7 @@ func (client IdentityClient) UpdateGroup(ctx context.Context, request UpdateGrou
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -869,6 +907,7 @@ func (client IdentityClient) UpdateIdentityProvider(ctx context.Context, request
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -886,6 +925,7 @@ func (client IdentityClient) UpdateIdpGroupMapping(ctx context.Context, request 
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -904,6 +944,7 @@ func (client IdentityClient) UpdatePolicy(ctx context.Context, request UpdatePol
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -921,6 +962,7 @@ func (client IdentityClient) UpdateSwiftPassword(ctx context.Context, request Up
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -938,6 +980,7 @@ func (client IdentityClient) UpdateUser(ctx context.Context, request UpdateUserR
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -955,6 +998,7 @@ func (client IdentityClient) UpdateUserState(ctx context.Context, request Update
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -983,6 +1027,7 @@ func (client IdentityClient) UploadApiKey(ctx context.Context, request UploadApi
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer httpResponse.Body.Close()
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
