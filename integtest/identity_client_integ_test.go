@@ -21,7 +21,8 @@ var (
 	rootTestCompartmentID = "ocidv1:tenancy:oc1:phx:1460406592660:aaaaaaaab4faofrfkxecohhjuivjq262pu"
 	validUserID           = "ocid1.user.oc1..aaaaaaaav6gsclr6pd4yjqengmriylyck55lvon5ujjnhkok5gyxii34lvra"
 	validCompartmetnID    = "ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma"
-	validGroupID          = "ocid1.group.oc1..aaaaaaaaf5lt5afvucqrtzvinpuhfq4rlhmdxqevcdqe7rv6d3vl5ytdqoyq"
+	validGroupID          = "ocid1.group.oc1..aaaaaaaayvxomawkk23wkp32cgdufufgqvx62qanmbn6vs3lv65xuc42r5sq"
+	region                = common.REGION_PHX
 )
 
 func panicIfError(t *testing.T, err error) {
@@ -33,7 +34,7 @@ func panicIfError(t *testing.T, err error) {
 
 // Group operations CRUD
 func TestIdentityClient_GroupCRUD(t *testing.T) {
-	c := identity.NewClient()
+	c := identity.NewClientForRegion(region)
 	request := identity.CreateGroupRequest{}
 	request.CompartmentID = &rootTestCompartmentID
 	request.Name = common.String("GoSDK2_someGroup")
@@ -62,13 +63,14 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 }
 
 func TestIdentityClient_ListGroups(t *testing.T) {
-	c := identity.NewClient()
+	c := identity.NewClientForRegion(region)
 	request := identity.ListGroupsRequest{CompartmentID: &rootTestCompartmentID}
 	r, err := c.ListGroups(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	assert.NotEmpty(t, r.Items)
 	assert.NotEmpty(t, r.OpcNextPage)
+
 	return
 }
 
@@ -76,7 +78,7 @@ func TestIdentityClient_ListGroups(t *testing.T) {
 //Can not delete compartments right now! Careful!
 /*
 func TestIdentityClient_CreateCompartment(t *testing.T) {
-	c:= identity.NewClient()
+	c:= identity.NewClientForRegion(region)
 	request:= identity.CreateCompartmentRequest{CreateCompartmentDetails:identity.CreateCompartmentDetails{
 		Name:"egTest2",
 		Description:"egTest2_descp",
@@ -91,7 +93,7 @@ func TestIdentityClient_CreateCompartment(t *testing.T) {
 
 //Comparment RU
 func TestIdentityClient_UpdateCompartment(t *testing.T) {
-	c := identity.NewClient()
+	c := identity.NewClientForRegion(region)
 	//Update
 	request := identity.UpdateCompartmentRequest{UpdateCompartmentDetails: identity.UpdateCompartmentDetails{
 		Name:        common.String("GOSDK2_Test"),
@@ -112,7 +114,7 @@ func TestIdentityClient_UpdateCompartment(t *testing.T) {
 
 //User Operations
 func TestIdentityClient_ListUsers(t *testing.T) {
-	c := identity.NewClient()
+	c := identity.NewClientForRegion(region)
 	request := identity.ListUsersRequest{CompartmentID: common.String(rootTestCompartmentID)}
 	r, err := c.ListUsers(context.Background(), request)
 	assert.NotEmpty(t, r.Items, fmt.Sprint(r))
@@ -121,7 +123,7 @@ func TestIdentityClient_ListUsers(t *testing.T) {
 }
 
 func TestIdentityClient_UserCRUD(t *testing.T) {
-	c := identity.NewClient()
+	c := identity.NewClientForRegion(region)
 	request := identity.CreateUserRequest{}
 	request.CompartmentID = common.String(rootTestCompartmentID)
 	request.Name = common.String("GolangSDK2_testUser")
@@ -156,26 +158,26 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 
 //User-Group operations
 func TestIdentityClient_AddUserToGroup(t *testing.T) {
-	c := identity.NewClient()
+	c := identity.NewClientForRegion(region)
 	//add
 	requestAdd := identity.AddUserToGroupRequest{}
 	requestAdd.UserID = common.String(validUserID)
 	requestAdd.GroupID = common.String(validGroupID)
 	r, err := c.AddUserToGroup(context.Background(), requestAdd)
+	panicIfError(t, err)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
 
 	//remove
 	requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipID: r.UserGroupMembership.ID}
 	err = c.RemoveUserFromGroup(context.Background(), requestRemove)
-	assert.NoError(t, err)
+	panicIfError(t, err)
 	return
 }
 
 //Policy Operations see DEX-1945
 //func TestIdentityClient_PolicyCRUD(t *testing.T) {
 //	//Create
-//	client := identity.NewClient()
+//	client := identity.NewClientForRegion(region)
 //	/*
 //	createRequest := identity.CreatePolicyRequest{}
 //	createRequest.CompartmentID = rootTestCompartmentID
@@ -216,7 +218,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 
 //SecretKey operations
 func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
-	c := identity.NewClient()
+	c := identity.NewClientForRegion(region)
 	request := identity.CreateCustomerSecretKeyRequest{}
 	request.UserID = common.String(validUserID)
 	request.DisplayName = common.String("GolangSDK2TestSecretKey")
@@ -245,7 +247,7 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 }
 
 func TestIdentityClient_ListCustomerSecretKeys(t *testing.T) {
-	c := identity.NewClient()
+	c := identity.NewClientForRegion(region)
 	request := identity.ListCustomerSecretKeysRequest{}
 	request.UserID = common.String(validUserID)
 	r, err := c.ListCustomerSecretKeys(context.Background(), request)
@@ -257,25 +259,29 @@ func TestIdentityClient_ListCustomerSecretKeys(t *testing.T) {
 //Apikeys
 func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 	userID := ""
-	c := identity.NewClient()
+	c := identity.NewClientForRegion(region)
 	request := identity.UploadApiKeyRequest{}
 	request.UserID = common.String(userID)
 	request.Key = common.String("some key")
 	resCreate, err := c.UploadApiKey(context.Background(), request)
-	assert.NotEmpty(t, resCreate, fmt.Sprint(resCreate))
-	panicIfError(t, err)
+	assert.Error(t, err)
+	ser, ok := common.IsServiceError(err)
+	assert.True(t, ok)
+	assert.NotEmpty(t, ser.GetMessage())
 
 	//remove
 	rDelete := identity.DeleteApiKeyRequest{}
 	rDelete.Fingerprint = resCreate.Fingerprint
 	rDelete.UserID = common.String(userID)
 	err = c.DeleteApiKey(context.Background(), rDelete)
-	panicIfError(t, err)
+	ser, ok = common.IsServiceError(err)
+	assert.False(t, ok)
+	assert.NotEmpty(t, err.Error())
 
 	return
 }
 func TestIdentityClient_ListApiKeys(t *testing.T) {
-	c := identity.NewClient()
+	c := identity.NewClientForRegion(region)
 	request := identity.ListApiKeysRequest{}
 	request.UserID = common.String(validUserID)
 	r, err := c.ListApiKeys(context.Background(), request)
@@ -286,7 +292,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 
 //TODO
 //func TestIdentityClient_CreateIdentityProvider(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.CreateIdentityProviderRequest{}
 //	r, err := c.CreateIdentityProvider(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -295,7 +301,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_CreateIdpGroupMapping(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.CreateIdpGroupMappingRequest{}
 //	r, err := c.CreateIdpGroupMapping(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -304,7 +310,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.CreateOrResetUIPasswordRequest{}
 //	r, err := c.CreateOrResetUIPassword(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -313,7 +319,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_CreateRegionSubscription(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.CreateRegionSubscriptionRequest{}
 //	r, err := c.CreateRegionSubscription(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -322,7 +328,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_CreateSwiftPassword(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.CreateSwiftPasswordRequest{}
 //	r, err := c.CreateSwiftPassword(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -334,7 +340,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_DeleteIdentityProvider(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.DeleteIdentityProviderRequest{}
 //	err := c.DeleteIdentityProvider(context.Background(), request)
 //	assert.NoError(t, err)
@@ -342,7 +348,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_DeleteIdpGroupMapping(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.DeleteIdpGroupMappingRequest{}
 //	err := c.DeleteIdpGroupMapping(context.Background(), request)
 //	assert.NoError(t, err)
@@ -350,7 +356,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_DeleteSwiftPassword(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.DeleteSwiftPasswordRequest{}
 //	err := c.DeleteSwiftPassword(context.Background(), request)
 //	assert.NoError(t, err)
@@ -358,7 +364,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_GetIdentityProvider(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.GetIdentityProviderRequest{}
 //	r, err := c.GetIdentityProvider(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -367,7 +373,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_GetIdpGroupMapping(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.GetIdpGroupMappingRequest{}
 //	r, err := c.GetIdpGroupMapping(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -376,7 +382,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_GetTenancy(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.GetTenancyRequest{}
 //	r, err := c.GetTenancy(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -385,7 +391,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_GetUserGroupMembership(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.GetUserGroupMembershipRequest{}
 //	r, err := c.GetUserGroupMembership(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -394,7 +400,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.ListAvailabilityDomainsRequest{}
 //	r, err := c.ListAvailabilityDomains(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -403,7 +409,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_ListCompartments(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.ListCompartmentsRequest{}
 //	r, err := c.ListCompartments(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -412,7 +418,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_ListIdentityProviders(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.ListIdentityProvidersRequest{}
 //	r, err := c.ListIdentityProviders(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -421,7 +427,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_ListIdpGroupMappings(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.ListIdpGroupMappingsRequest{}
 //	r, err := c.ListIdpGroupMappings(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -430,7 +436,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_ListPolicies(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.ListPoliciesRequest{}
 //	r, err := c.ListPolicies(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -439,7 +445,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.ListRegionSubscriptionsRequest{}
 //	r, err := c.ListRegionSubscriptions(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -448,7 +454,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_ListRegions(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	r, err := c.ListRegions(context.Background())
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
 //	assert.NoError(t, err)
@@ -456,7 +462,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.ListSwiftPasswordsRequest{}
 //	r, err := c.ListSwiftPasswords(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -465,7 +471,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.ListUserGroupMembershipsRequest{}
 //	r, err := c.ListUserGroupMemberships(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -477,7 +483,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_UpdateIdentityProvider(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.UpdateIdentityProviderRequest{}
 //	r, err := c.UpdateIdentityProvider(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -486,7 +492,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_UpdateIdpGroupMapping(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.UpdateIdpGroupMappingRequest{}
 //	r, err := c.UpdateIdpGroupMapping(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -495,7 +501,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_UpdateSwiftPassword(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.UpdateSwiftPasswordRequest{}
 //	r, err := c.UpdateSwiftPassword(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -504,7 +510,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_UpdateUserState(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.UpdateUserStateRequest{}
 //	r, err := c.UpdateUserState(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -513,7 +519,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //}
 //
 //func TestIdentityClient_UploadApiKey(t *testing.T) {
-//	c := identity.NewClient()
+//	c := identity.NewClientForRegion(region)
 //	request := identity.UploadApiKeyRequest{}
 //	r, err := c.UploadApiKey(context.Background(), request)
 //	assert.NotEmpty(t, r, fmt.Sprint(r))
