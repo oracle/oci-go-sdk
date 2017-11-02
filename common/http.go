@@ -109,8 +109,18 @@ func NewClientForRegion(region Region) (client BaseClient) {
 
 func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
 	request.Header.Set("User-Agent", client.UserAgent)
-	request.URL.Scheme = defaultScheme
-	request.URL.Host = client.Host
+
+	if !strings.Contains(client.Host, "http") &&
+		!strings.Contains(client.Host, "https") {
+		client.Host = fmt.Sprintf("%s://%s", defaultScheme, client.Host)
+	}
+
+	clientUrl, err := url.Parse(client.Host)
+	if err != nil {
+		return fmt.Errorf("host is invalid. %s", err.Error())
+	}
+	request.URL.Host = clientUrl.Host
+	request.URL.Scheme = clientUrl.Scheme
 	currentPath := request.URL.Path
 	request.URL.Path = path.Clean(fmt.Sprintf("/%s/%s", client.BasePath, currentPath))
 	return
