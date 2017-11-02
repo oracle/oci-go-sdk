@@ -23,7 +23,7 @@ func StringToRegion(stringRegion string) (r Region, err error) {
 		r = REGION_PHX
 	case "us-ashburn-1":
 		r = REGION_IAD
-	case "eu-frankfur-1":
+	case "eu-frankfurt-1":
 		r = REGION_FRA
 	default:
 		err = fmt.Errorf("Region named: %s, not valid", stringRegion)
