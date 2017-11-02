@@ -30,13 +30,93 @@ type CreateIdentityProviderDetails struct {
 	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
 	// Active Directory Federation Services (ADFS).
 	// Example: `IDCS`
-	ProductType *string `mandatory:"true" json:"productType,omitempty"`
+	ProductType CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType,omitempty"`
 
 	// The protocol used for federation.
 	// Example: `SAML2`
-	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
+	Protocol CreateIdentityProviderDetailsProtocolEnum `mandatory:"true" json:"protocol,omitempty"`
 }
 
 func (model CreateIdentityProviderDetails) String() string {
 	return common.PointerString(model)
+}
+
+type CreateIdentityProviderDetailsProductTypeEnum string
+type CreateIdentityProviderDetailsProductType struct{}
+
+const (
+	CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_IDCS    CreateIdentityProviderDetailsProductTypeEnum = "IDCS"
+	CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS    CreateIdentityProviderDetailsProductTypeEnum = "ADFS"
+	CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN CreateIdentityProviderDetailsProductTypeEnum = "UNKNOWN"
+)
+
+var mapping_createidentityproviderdetails_productType = map[string]CreateIdentityProviderDetailsProductTypeEnum{
+	"IDCS":    CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_IDCS,
+	"ADFS":    CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS,
+	"UNKNOWN": CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN,
+}
+
+func (receiver CreateIdentityProviderDetailsProductType) Values() []CreateIdentityProviderDetailsProductTypeEnum {
+	values := make([]CreateIdentityProviderDetailsProductTypeEnum, 0)
+	for _, v := range mapping_createidentityproviderdetails_productType {
+		if v != CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver CreateIdentityProviderDetailsProductType) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if CreateIdentityProviderDetailsProductTypeEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver CreateIdentityProviderDetailsProductType) From(toBeConverted string) CreateIdentityProviderDetailsProductTypeEnum {
+	if val, ok := mapping_createidentityproviderdetails_productType[toBeConverted]; ok {
+		return val
+	}
+	return CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN
+}
+
+type CreateIdentityProviderDetailsProtocolEnum string
+type CreateIdentityProviderDetailsProtocol struct{}
+
+const (
+	CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2   CreateIdentityProviderDetailsProtocolEnum = "SAML2"
+	CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN CreateIdentityProviderDetailsProtocolEnum = "UNKNOWN"
+)
+
+var mapping_createidentityproviderdetails_protocol = map[string]CreateIdentityProviderDetailsProtocolEnum{
+	"SAML2":   CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2,
+	"UNKNOWN": CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN,
+}
+
+func (receiver CreateIdentityProviderDetailsProtocol) Values() []CreateIdentityProviderDetailsProtocolEnum {
+	values := make([]CreateIdentityProviderDetailsProtocolEnum, 0)
+	for _, v := range mapping_createidentityproviderdetails_protocol {
+		if v != CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver CreateIdentityProviderDetailsProtocol) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if CreateIdentityProviderDetailsProtocolEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver CreateIdentityProviderDetailsProtocol) From(toBeConverted string) CreateIdentityProviderDetailsProtocolEnum {
+	if val, ok := mapping_createidentityproviderdetails_protocol[toBeConverted]; ok {
+		return val
+	}
+	return CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN
 }

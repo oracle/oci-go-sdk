@@ -16,7 +16,7 @@ type UpdateIdentityProviderDetails struct {
 
 	// The protocol used for federation.
 	// Example: `SAML2`
-	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
+	Protocol UpdateIdentityProviderDetailsProtocolEnum `mandatory:"true" json:"protocol,omitempty"`
 
 	// The description you assign to the `IdentityProvider`. Does not have to
 	// be unique, and it's changeable.
@@ -25,4 +25,43 @@ type UpdateIdentityProviderDetails struct {
 
 func (model UpdateIdentityProviderDetails) String() string {
 	return common.PointerString(model)
+}
+
+type UpdateIdentityProviderDetailsProtocolEnum string
+type UpdateIdentityProviderDetailsProtocol struct{}
+
+const (
+	UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2   UpdateIdentityProviderDetailsProtocolEnum = "SAML2"
+	UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN UpdateIdentityProviderDetailsProtocolEnum = "UNKNOWN"
+)
+
+var mapping_updateidentityproviderdetails_protocol = map[string]UpdateIdentityProviderDetailsProtocolEnum{
+	"SAML2":   UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2,
+	"UNKNOWN": UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN,
+}
+
+func (receiver UpdateIdentityProviderDetailsProtocol) Values() []UpdateIdentityProviderDetailsProtocolEnum {
+	values := make([]UpdateIdentityProviderDetailsProtocolEnum, 0)
+	for _, v := range mapping_updateidentityproviderdetails_protocol {
+		if v != UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver UpdateIdentityProviderDetailsProtocol) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if UpdateIdentityProviderDetailsProtocolEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver UpdateIdentityProviderDetailsProtocol) From(toBeConverted string) UpdateIdentityProviderDetailsProtocolEnum {
+	if val, ok := mapping_updateidentityproviderdetails_protocol[toBeConverted]; ok {
+		return val
+	}
+	return UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN
 }

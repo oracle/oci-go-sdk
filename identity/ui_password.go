@@ -12,8 +12,8 @@ import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 )
 
-// UiPassword. A text password that enables a user to sign in to the Console, the user interface for interacting with Oracle Bare
-// Metal Cloud Services.
+// UiPassword. A text password that enables a user to sign in to the Console, the user interface for interacting with Oracle
+// Cloud Infrastructure.
 // For more information about user credentials, see [User Credentials]({{DOC_SERVER_URL}}/Content/Identity/Concepts/usercredentials.htm).
 type UiPassword struct {
 
@@ -29,7 +29,7 @@ type UiPassword struct {
 
 	// The password's current state. After creating a password, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState *string `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState UiPasswordLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
@@ -37,4 +37,51 @@ type UiPassword struct {
 
 func (model UiPassword) String() string {
 	return common.PointerString(model)
+}
+
+type UiPasswordLifecycleStateEnum string
+type UiPasswordLifecycleState struct{}
+
+const (
+	UI_PASSWORD_LIFECYCLE_STATE_CREATING UiPasswordLifecycleStateEnum = "CREATING"
+	UI_PASSWORD_LIFECYCLE_STATE_ACTIVE   UiPasswordLifecycleStateEnum = "ACTIVE"
+	UI_PASSWORD_LIFECYCLE_STATE_INACTIVE UiPasswordLifecycleStateEnum = "INACTIVE"
+	UI_PASSWORD_LIFECYCLE_STATE_DELETING UiPasswordLifecycleStateEnum = "DELETING"
+	UI_PASSWORD_LIFECYCLE_STATE_DELETED  UiPasswordLifecycleStateEnum = "DELETED"
+	UI_PASSWORD_LIFECYCLE_STATE_UNKNOWN  UiPasswordLifecycleStateEnum = "UNKNOWN"
+)
+
+var mapping_uipassword_lifecycleState = map[string]UiPasswordLifecycleStateEnum{
+	"CREATING": UI_PASSWORD_LIFECYCLE_STATE_CREATING,
+	"ACTIVE":   UI_PASSWORD_LIFECYCLE_STATE_ACTIVE,
+	"INACTIVE": UI_PASSWORD_LIFECYCLE_STATE_INACTIVE,
+	"DELETING": UI_PASSWORD_LIFECYCLE_STATE_DELETING,
+	"DELETED":  UI_PASSWORD_LIFECYCLE_STATE_DELETED,
+	"UNKNOWN":  UI_PASSWORD_LIFECYCLE_STATE_UNKNOWN,
+}
+
+func (receiver UiPasswordLifecycleState) Values() []UiPasswordLifecycleStateEnum {
+	values := make([]UiPasswordLifecycleStateEnum, 0)
+	for _, v := range mapping_uipassword_lifecycleState {
+		if v != UI_PASSWORD_LIFECYCLE_STATE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver UiPasswordLifecycleState) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if UiPasswordLifecycleStateEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver UiPasswordLifecycleState) From(toBeConverted string) UiPasswordLifecycleStateEnum {
+	if val, ok := mapping_uipassword_lifecycleState[toBeConverted]; ok {
+		return val
+	}
+	return UI_PASSWORD_LIFECYCLE_STATE_UNKNOWN
 }

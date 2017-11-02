@@ -42,7 +42,7 @@ type CustomerSecretKey struct {
 
 	// The secret key's current state. After creating a secret key, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState *string `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState CustomerSecretKeyLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
@@ -50,4 +50,51 @@ type CustomerSecretKey struct {
 
 func (model CustomerSecretKey) String() string {
 	return common.PointerString(model)
+}
+
+type CustomerSecretKeyLifecycleStateEnum string
+type CustomerSecretKeyLifecycleState struct{}
+
+const (
+	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_CREATING CustomerSecretKeyLifecycleStateEnum = "CREATING"
+	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_ACTIVE   CustomerSecretKeyLifecycleStateEnum = "ACTIVE"
+	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_INACTIVE CustomerSecretKeyLifecycleStateEnum = "INACTIVE"
+	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_DELETING CustomerSecretKeyLifecycleStateEnum = "DELETING"
+	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_DELETED  CustomerSecretKeyLifecycleStateEnum = "DELETED"
+	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_UNKNOWN  CustomerSecretKeyLifecycleStateEnum = "UNKNOWN"
+)
+
+var mapping_customersecretkey_lifecycleState = map[string]CustomerSecretKeyLifecycleStateEnum{
+	"CREATING": CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_CREATING,
+	"ACTIVE":   CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_ACTIVE,
+	"INACTIVE": CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_INACTIVE,
+	"DELETING": CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_DELETING,
+	"DELETED":  CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_DELETED,
+	"UNKNOWN":  CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_UNKNOWN,
+}
+
+func (receiver CustomerSecretKeyLifecycleState) Values() []CustomerSecretKeyLifecycleStateEnum {
+	values := make([]CustomerSecretKeyLifecycleStateEnum, 0)
+	for _, v := range mapping_customersecretkey_lifecycleState {
+		if v != CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver CustomerSecretKeyLifecycleState) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if CustomerSecretKeyLifecycleStateEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver CustomerSecretKeyLifecycleState) From(toBeConverted string) CustomerSecretKeyLifecycleStateEnum {
+	if val, ok := mapping_customersecretkey_lifecycleState[toBeConverted]; ok {
+		return val
+	}
+	return CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_UNKNOWN
 }

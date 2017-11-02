@@ -55,12 +55,12 @@ func (client IdentityClient) AddUserToGroup(ctx context.Context, request AddUser
 }
 
 // Creates a new compartment in your tenancy.
-// **Important:** Compartments cannot be renamed or deleted.
+// **Important:** Compartments cannot be deleted.
 // You must specify your tenancy's OCID as the compartment ID in the request object. Remember that the tenancy
 // is simply the root compartment. For information about OCIDs, see
 // [Resource Identifiers]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the compartment, which must be unique across all compartments in
-// your tenancy and cannot be changed. You can use this name or the OCID when writing policies that apply
+// your tenancy. You can use this name or the OCID when writing policies that apply
 // to the compartment. For more information about policies, see
 // [How Policies Work]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policies.htm).
 // You must also specify a *description* for the compartment (although it can be an empty string). It does
@@ -316,7 +316,7 @@ func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request Cr
 // AddUserToGroup). If the user needs to
 // access the Console, you need to provide the user a password (see
 // CreateOrResetUIPassword).
-// If the user needs to access the Oracle Bare Metal Cloud Services REST API, you need to upload a
+// If the user needs to access the Oracle Cloud Infrastructure REST API, you need to upload a
 // public API signing key for that user (see
 // [Required Keys and OCIDs]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm) and also
 // UploadApiKey).
@@ -761,7 +761,7 @@ func (client IdentityClient) ListRegionSubscriptions(ctx context.Context, reques
 	return
 }
 
-// Lists all the regions offered by Oracle Bare Metal Cloud Services.
+// Lists all the regions offered by Oracle Cloud Infrastructure.
 func (client IdentityClient) ListRegions(ctx context.Context) (response ListRegionsResponse, err error) {
 	httpRequest := common.MakeDefaultHttpRequest(http.MethodGet, "/regions")
 
@@ -851,7 +851,7 @@ func (client IdentityClient) RemoveUserFromGroup(ctx context.Context, request Re
 	return
 }
 
-// Updates the specified compartment's description.
+// Updates the specified compartment's description or name. You can't update the root compartment.
 func (client IdentityClient) UpdateCompartment(ctx context.Context, request UpdateCompartmentRequest) (response UpdateCompartmentResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/compartments/{compartmentId}", request)
 	if err != nil {

@@ -31,8 +31,8 @@ type IdentityProvider struct {
 	// The name you assign to the `IdentityProvider` during creation. The name
 	// must be unique across all `IdentityProvider` objects in the tenancy and
 	// cannot be changed. This is the name federated users see when choosing
-	// which identity provider to use when signing in to the Oracle Bare Metal Cloud
-	// Services Console.
+	// which identity provider to use when signing in to the Oracle Cloud Infrastructure
+	// Console.
 	Name *string `mandatory:"true" json:"name,omitempty"`
 
 	// The description you assign to the `IdentityProvider` during creation. Does
@@ -54,7 +54,7 @@ type IdentityProvider struct {
 
 	// The current state. After creating an `IdentityProvider`, make sure its
 	// `lifecycleState` changes from CREATING to ACTIVE before using it.
-	LifecycleState *string `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState IdentityProviderLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The protocol used for federation. Allowed value: `SAML2`.
 	// Example: `SAML2`
@@ -66,4 +66,51 @@ type IdentityProvider struct {
 
 func (model IdentityProvider) String() string {
 	return common.PointerString(model)
+}
+
+type IdentityProviderLifecycleStateEnum string
+type IdentityProviderLifecycleState struct{}
+
+const (
+	IDENTITY_PROVIDER_LIFECYCLE_STATE_CREATING IdentityProviderLifecycleStateEnum = "CREATING"
+	IDENTITY_PROVIDER_LIFECYCLE_STATE_ACTIVE   IdentityProviderLifecycleStateEnum = "ACTIVE"
+	IDENTITY_PROVIDER_LIFECYCLE_STATE_INACTIVE IdentityProviderLifecycleStateEnum = "INACTIVE"
+	IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETING IdentityProviderLifecycleStateEnum = "DELETING"
+	IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETED  IdentityProviderLifecycleStateEnum = "DELETED"
+	IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN  IdentityProviderLifecycleStateEnum = "UNKNOWN"
+)
+
+var mapping_identityprovider_lifecycleState = map[string]IdentityProviderLifecycleStateEnum{
+	"CREATING": IDENTITY_PROVIDER_LIFECYCLE_STATE_CREATING,
+	"ACTIVE":   IDENTITY_PROVIDER_LIFECYCLE_STATE_ACTIVE,
+	"INACTIVE": IDENTITY_PROVIDER_LIFECYCLE_STATE_INACTIVE,
+	"DELETING": IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETING,
+	"DELETED":  IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETED,
+	"UNKNOWN":  IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN,
+}
+
+func (receiver IdentityProviderLifecycleState) Values() []IdentityProviderLifecycleStateEnum {
+	values := make([]IdentityProviderLifecycleStateEnum, 0)
+	for _, v := range mapping_identityprovider_lifecycleState {
+		if v != IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver IdentityProviderLifecycleState) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if IdentityProviderLifecycleStateEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver IdentityProviderLifecycleState) From(toBeConverted string) IdentityProviderLifecycleStateEnum {
+	if val, ok := mapping_identityprovider_lifecycleState[toBeConverted]; ok {
+		return val
+	}
+	return IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN
 }

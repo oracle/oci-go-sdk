@@ -12,13 +12,14 @@ import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 )
 
-// Compartment. A collection of related resources. Compartments are a fundamental component of Oracle Bare Metal Cloud Services
+// Compartment. A collection of related resources. Compartments are a fundamental component of Oracle Cloud Infrastructure
 // for organizing and isolating your cloud resources. You use them to clearly separate resources for the purposes
 // of measuring usage and billing, access (through the use of IAM Service policies), and isolation (separating the
 // resources for one project or business unit from another). A common approach is to create a compartment for each
 // major part of your organization. For more information, see
 // [Overview of the IAM Service]({{DOC_SERVER_URL}}/Content/Identity/Concepts/overview.htm) and also
 // [Setting Up Your Tenancy]({{DOC_SERVER_URL}}/Content/GSG/Concepts/settinguptenancy.htm).
+//
 // To place a resource in a compartment, simply specify the compartment ID in the "Create" request object when
 // initially creating the resource. For example, to launch an instance into a particular compartment, specify
 // that compartment's OCID in the `LaunchInstance` request. You can't move an existing resource from one
@@ -35,7 +36,7 @@ type Compartment struct {
 	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the compartment during creation. The name must be unique across all
-	// compartments in the tenancy and cannot be changed.
+	// compartments in the tenancy.
 	Name *string `mandatory:"true" json:"name,omitempty"`
 
 	// The description you assign to the compartment. Does not have to be unique, and it's changeable.
@@ -47,7 +48,7 @@ type Compartment struct {
 
 	// The compartment's current state. After creating a compartment, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState *string `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState CompartmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
@@ -55,4 +56,51 @@ type Compartment struct {
 
 func (model Compartment) String() string {
 	return common.PointerString(model)
+}
+
+type CompartmentLifecycleStateEnum string
+type CompartmentLifecycleState struct{}
+
+const (
+	COMPARTMENT_LIFECYCLE_STATE_CREATING CompartmentLifecycleStateEnum = "CREATING"
+	COMPARTMENT_LIFECYCLE_STATE_ACTIVE   CompartmentLifecycleStateEnum = "ACTIVE"
+	COMPARTMENT_LIFECYCLE_STATE_INACTIVE CompartmentLifecycleStateEnum = "INACTIVE"
+	COMPARTMENT_LIFECYCLE_STATE_DELETING CompartmentLifecycleStateEnum = "DELETING"
+	COMPARTMENT_LIFECYCLE_STATE_DELETED  CompartmentLifecycleStateEnum = "DELETED"
+	COMPARTMENT_LIFECYCLE_STATE_UNKNOWN  CompartmentLifecycleStateEnum = "UNKNOWN"
+)
+
+var mapping_compartment_lifecycleState = map[string]CompartmentLifecycleStateEnum{
+	"CREATING": COMPARTMENT_LIFECYCLE_STATE_CREATING,
+	"ACTIVE":   COMPARTMENT_LIFECYCLE_STATE_ACTIVE,
+	"INACTIVE": COMPARTMENT_LIFECYCLE_STATE_INACTIVE,
+	"DELETING": COMPARTMENT_LIFECYCLE_STATE_DELETING,
+	"DELETED":  COMPARTMENT_LIFECYCLE_STATE_DELETED,
+	"UNKNOWN":  COMPARTMENT_LIFECYCLE_STATE_UNKNOWN,
+}
+
+func (receiver CompartmentLifecycleState) Values() []CompartmentLifecycleStateEnum {
+	values := make([]CompartmentLifecycleStateEnum, 0)
+	for _, v := range mapping_compartment_lifecycleState {
+		if v != COMPARTMENT_LIFECYCLE_STATE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver CompartmentLifecycleState) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if CompartmentLifecycleStateEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver CompartmentLifecycleState) From(toBeConverted string) CompartmentLifecycleStateEnum {
+	if val, ok := mapping_compartment_lifecycleState[toBeConverted]; ok {
+		return val
+	}
+	return COMPARTMENT_LIFECYCLE_STATE_UNKNOWN
 }

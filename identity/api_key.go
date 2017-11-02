@@ -12,7 +12,7 @@ import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 )
 
-// ApiKey. A PEM-format RSA credential for securing requests to the Oracle Bare Metal Cloud Services REST API. Also known
+// ApiKey. A PEM-format RSA credential for securing requests to the Oracle Cloud Infrastructure REST API. Also known
 // as an *API signing key*. Specifically, this is the public key from the key pair. The private key remains with
 // the user calling the API. For information about generating a key pair
 // in the required PEM format, see [Required Keys and OCIDs]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm).
@@ -40,7 +40,7 @@ type ApiKey struct {
 
 	// The API key's current state. After creating an `ApiKey` object, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState *string `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState ApiKeyLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
@@ -48,4 +48,51 @@ type ApiKey struct {
 
 func (model ApiKey) String() string {
 	return common.PointerString(model)
+}
+
+type ApiKeyLifecycleStateEnum string
+type ApiKeyLifecycleState struct{}
+
+const (
+	API_KEY_LIFECYCLE_STATE_CREATING ApiKeyLifecycleStateEnum = "CREATING"
+	API_KEY_LIFECYCLE_STATE_ACTIVE   ApiKeyLifecycleStateEnum = "ACTIVE"
+	API_KEY_LIFECYCLE_STATE_INACTIVE ApiKeyLifecycleStateEnum = "INACTIVE"
+	API_KEY_LIFECYCLE_STATE_DELETING ApiKeyLifecycleStateEnum = "DELETING"
+	API_KEY_LIFECYCLE_STATE_DELETED  ApiKeyLifecycleStateEnum = "DELETED"
+	API_KEY_LIFECYCLE_STATE_UNKNOWN  ApiKeyLifecycleStateEnum = "UNKNOWN"
+)
+
+var mapping_apikey_lifecycleState = map[string]ApiKeyLifecycleStateEnum{
+	"CREATING": API_KEY_LIFECYCLE_STATE_CREATING,
+	"ACTIVE":   API_KEY_LIFECYCLE_STATE_ACTIVE,
+	"INACTIVE": API_KEY_LIFECYCLE_STATE_INACTIVE,
+	"DELETING": API_KEY_LIFECYCLE_STATE_DELETING,
+	"DELETED":  API_KEY_LIFECYCLE_STATE_DELETED,
+	"UNKNOWN":  API_KEY_LIFECYCLE_STATE_UNKNOWN,
+}
+
+func (receiver ApiKeyLifecycleState) Values() []ApiKeyLifecycleStateEnum {
+	values := make([]ApiKeyLifecycleStateEnum, 0)
+	for _, v := range mapping_apikey_lifecycleState {
+		if v != API_KEY_LIFECYCLE_STATE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver ApiKeyLifecycleState) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if ApiKeyLifecycleStateEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver ApiKeyLifecycleState) From(toBeConverted string) ApiKeyLifecycleStateEnum {
+	if val, ok := mapping_apikey_lifecycleState[toBeConverted]; ok {
+		return val
+	}
+	return API_KEY_LIFECYCLE_STATE_UNKNOWN
 }

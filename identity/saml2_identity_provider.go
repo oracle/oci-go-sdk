@@ -26,8 +26,8 @@ type Saml2IdentityProvider struct {
 	// The name you assign to the `IdentityProvider` during creation. The name
 	// must be unique across all `IdentityProvider` objects in the tenancy and
 	// cannot be changed. This is the name federated users see when choosing
-	// which identity provider to use when signing in to the Oracle Bare Metal Cloud
-	// Services Console.
+	// which identity provider to use when signing in to the Oracle Cloud Infrastructure
+	// Console.
 	Name *string `mandatory:"true" json:"name,omitempty"`
 
 	// The description you assign to the `IdentityProvider` during creation. Does
@@ -49,7 +49,7 @@ type Saml2IdentityProvider struct {
 
 	// The current state. After creating an `IdentityProvider`, make sure its
 	// `lifecycleState` changes from CREATING to ACTIVE before using it.
-	LifecycleState *string `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState Saml2IdentityProviderLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The protocol used for federation. Allowed value: `SAML2`.
 	// Example: `SAML2`
@@ -73,4 +73,51 @@ type Saml2IdentityProvider struct {
 
 func (model Saml2IdentityProvider) String() string {
 	return common.PointerString(model)
+}
+
+type Saml2IdentityProviderLifecycleStateEnum string
+type Saml2IdentityProviderLifecycleState struct{}
+
+const (
+	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_CREATING Saml2IdentityProviderLifecycleStateEnum = "CREATING"
+	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_ACTIVE   Saml2IdentityProviderLifecycleStateEnum = "ACTIVE"
+	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_INACTIVE Saml2IdentityProviderLifecycleStateEnum = "INACTIVE"
+	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETING Saml2IdentityProviderLifecycleStateEnum = "DELETING"
+	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETED  Saml2IdentityProviderLifecycleStateEnum = "DELETED"
+	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN  Saml2IdentityProviderLifecycleStateEnum = "UNKNOWN"
+)
+
+var mapping_saml2identityprovider_lifecycleState = map[string]Saml2IdentityProviderLifecycleStateEnum{
+	"CREATING": SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_CREATING,
+	"ACTIVE":   SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_ACTIVE,
+	"INACTIVE": SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_INACTIVE,
+	"DELETING": SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETING,
+	"DELETED":  SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETED,
+	"UNKNOWN":  SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN,
+}
+
+func (receiver Saml2IdentityProviderLifecycleState) Values() []Saml2IdentityProviderLifecycleStateEnum {
+	values := make([]Saml2IdentityProviderLifecycleStateEnum, 0)
+	for _, v := range mapping_saml2identityprovider_lifecycleState {
+		if v != SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver Saml2IdentityProviderLifecycleState) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if Saml2IdentityProviderLifecycleStateEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver Saml2IdentityProviderLifecycleState) From(toBeConverted string) Saml2IdentityProviderLifecycleStateEnum {
+	if val, ok := mapping_saml2identityprovider_lifecycleState[toBeConverted]; ok {
+		return val
+	}
+	return SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN
 }

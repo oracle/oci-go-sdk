@@ -1,5 +1,5 @@
 DOC_SERVER_URL=http:\/\/lgl-bybliothece-01.virt.lgl.grungy.us
-TARGETS = common identity
+TARGETS = common identity core objectstorage
 TARGETS_BUILD = $(patsubst %,build-%, $(TARGETS))
 TARGETS_TEST = $(patsubst %,test-%, $(TARGETS))
 

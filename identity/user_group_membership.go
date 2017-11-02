@@ -34,7 +34,7 @@ type UserGroupMembership struct {
 
 	// The membership's current state.  After creating a membership object, make sure its `lifecycleState` changes
 	// from CREATING to ACTIVE before using it.
-	LifecycleState *string `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState UserGroupMembershipLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
@@ -42,4 +42,51 @@ type UserGroupMembership struct {
 
 func (model UserGroupMembership) String() string {
 	return common.PointerString(model)
+}
+
+type UserGroupMembershipLifecycleStateEnum string
+type UserGroupMembershipLifecycleState struct{}
+
+const (
+	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_CREATING UserGroupMembershipLifecycleStateEnum = "CREATING"
+	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_ACTIVE   UserGroupMembershipLifecycleStateEnum = "ACTIVE"
+	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_INACTIVE UserGroupMembershipLifecycleStateEnum = "INACTIVE"
+	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_DELETING UserGroupMembershipLifecycleStateEnum = "DELETING"
+	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_DELETED  UserGroupMembershipLifecycleStateEnum = "DELETED"
+	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_UNKNOWN  UserGroupMembershipLifecycleStateEnum = "UNKNOWN"
+)
+
+var mapping_usergroupmembership_lifecycleState = map[string]UserGroupMembershipLifecycleStateEnum{
+	"CREATING": USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_CREATING,
+	"ACTIVE":   USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_ACTIVE,
+	"INACTIVE": USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_INACTIVE,
+	"DELETING": USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_DELETING,
+	"DELETED":  USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_DELETED,
+	"UNKNOWN":  USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_UNKNOWN,
+}
+
+func (receiver UserGroupMembershipLifecycleState) Values() []UserGroupMembershipLifecycleStateEnum {
+	values := make([]UserGroupMembershipLifecycleStateEnum, 0)
+	for _, v := range mapping_usergroupmembership_lifecycleState {
+		if v != USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver UserGroupMembershipLifecycleState) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if UserGroupMembershipLifecycleStateEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver UserGroupMembershipLifecycleState) From(toBeConverted string) UserGroupMembershipLifecycleStateEnum {
+	if val, ok := mapping_usergroupmembership_lifecycleState[toBeConverted]; ok {
+		return val
+	}
+	return USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_UNKNOWN
 }

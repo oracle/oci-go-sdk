@@ -23,18 +23,18 @@ type RegionSubscription struct {
 	// Allowed values are:
 	// - `PHX`
 	// - `IAD`
-	// - 'FRA'
+	// - `FRA`
 	RegionKey *string `mandatory:"true" json:"regionKey,omitempty"`
 
 	// The region's name.
 	// Allowed values are:
 	// - `us-phoenix-1`
 	// - `us-ashburn-1`
-	// - 'de-frankfurt-1'
+	// - `eu-frankurt-1`
 	RegionName *string `mandatory:"true" json:"regionName,omitempty"`
 
 	// The region subscription status.
-	Status *string `mandatory:"true" json:"status,omitempty"`
+	Status RegionSubscriptionStatusEnum `mandatory:"true" json:"status,omitempty"`
 
 	// Indicates if the region is the home region or not.
 	IsHomeRegion *bool `mandatory:"true" json:"isHomeRegion,omitempty"`
@@ -42,4 +42,45 @@ type RegionSubscription struct {
 
 func (model RegionSubscription) String() string {
 	return common.PointerString(model)
+}
+
+type RegionSubscriptionStatusEnum string
+type RegionSubscriptionStatus struct{}
+
+const (
+	REGION_SUBSCRIPTION_STATUS_READY       RegionSubscriptionStatusEnum = "READY"
+	REGION_SUBSCRIPTION_STATUS_IN_PROGRESS RegionSubscriptionStatusEnum = "IN_PROGRESS"
+	REGION_SUBSCRIPTION_STATUS_UNKNOWN     RegionSubscriptionStatusEnum = "UNKNOWN"
+)
+
+var mapping_regionsubscription_status = map[string]RegionSubscriptionStatusEnum{
+	"READY":       REGION_SUBSCRIPTION_STATUS_READY,
+	"IN_PROGRESS": REGION_SUBSCRIPTION_STATUS_IN_PROGRESS,
+	"UNKNOWN":     REGION_SUBSCRIPTION_STATUS_UNKNOWN,
+}
+
+func (receiver RegionSubscriptionStatus) Values() []RegionSubscriptionStatusEnum {
+	values := make([]RegionSubscriptionStatusEnum, 0)
+	for _, v := range mapping_regionsubscription_status {
+		if v != REGION_SUBSCRIPTION_STATUS_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver RegionSubscriptionStatus) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if RegionSubscriptionStatusEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver RegionSubscriptionStatus) From(toBeConverted string) RegionSubscriptionStatusEnum {
+	if val, ok := mapping_regionsubscription_status[toBeConverted]; ok {
+		return val
+	}
+	return REGION_SUBSCRIPTION_STATUS_UNKNOWN
 }

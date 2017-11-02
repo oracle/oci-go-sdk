@@ -1,0 +1,27 @@
+// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Code generated. DO NOT EDIT.
+
+// Core Services API
+//
+// APIs for Networking Service, Compute Service, and Block Volume Service.
+//
+
+package core
+
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
+// ImageShapeCompatibilityEntry. An image and shape that are compatible.
+type ImageShapeCompatibilityEntry struct {
+
+	// The image OCID.
+	ImageID *string `mandatory:"true" json:"imageId,omitempty"`
+
+	// The shape name.
+	Shape *string `mandatory:"true" json:"shape,omitempty"`
+}
+
+func (model ImageShapeCompatibilityEntry) String() string {
+	return common.PointerString(model)
+}

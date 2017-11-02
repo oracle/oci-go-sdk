@@ -46,7 +46,7 @@ type Policy struct {
 
 	// The policy's current state. After creating a policy, make sure its `lifecycleState` changes from CREATING to
 	// ACTIVE before using it.
-	LifecycleState *string `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState PolicyLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
@@ -59,4 +59,51 @@ type Policy struct {
 
 func (model Policy) String() string {
 	return common.PointerString(model)
+}
+
+type PolicyLifecycleStateEnum string
+type PolicyLifecycleState struct{}
+
+const (
+	POLICY_LIFECYCLE_STATE_CREATING PolicyLifecycleStateEnum = "CREATING"
+	POLICY_LIFECYCLE_STATE_ACTIVE   PolicyLifecycleStateEnum = "ACTIVE"
+	POLICY_LIFECYCLE_STATE_INACTIVE PolicyLifecycleStateEnum = "INACTIVE"
+	POLICY_LIFECYCLE_STATE_DELETING PolicyLifecycleStateEnum = "DELETING"
+	POLICY_LIFECYCLE_STATE_DELETED  PolicyLifecycleStateEnum = "DELETED"
+	POLICY_LIFECYCLE_STATE_UNKNOWN  PolicyLifecycleStateEnum = "UNKNOWN"
+)
+
+var mapping_policy_lifecycleState = map[string]PolicyLifecycleStateEnum{
+	"CREATING": POLICY_LIFECYCLE_STATE_CREATING,
+	"ACTIVE":   POLICY_LIFECYCLE_STATE_ACTIVE,
+	"INACTIVE": POLICY_LIFECYCLE_STATE_INACTIVE,
+	"DELETING": POLICY_LIFECYCLE_STATE_DELETING,
+	"DELETED":  POLICY_LIFECYCLE_STATE_DELETED,
+	"UNKNOWN":  POLICY_LIFECYCLE_STATE_UNKNOWN,
+}
+
+func (receiver PolicyLifecycleState) Values() []PolicyLifecycleStateEnum {
+	values := make([]PolicyLifecycleStateEnum, 0)
+	for _, v := range mapping_policy_lifecycleState {
+		if v != POLICY_LIFECYCLE_STATE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver PolicyLifecycleState) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if PolicyLifecycleStateEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver PolicyLifecycleState) From(toBeConverted string) PolicyLifecycleStateEnum {
+	if val, ok := mapping_policy_lifecycleState[toBeConverted]; ok {
+		return val
+	}
+	return POLICY_LIFECYCLE_STATE_UNKNOWN
 }
