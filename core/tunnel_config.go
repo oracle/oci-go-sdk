@@ -1,0 +1,33 @@
+// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Code generated. DO NOT EDIT.
+
+// Core Services API
+//
+// APIs for Networking Service, Compute Service, and Block Volume Service.
+//
+
+package core
+
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
+// TunnelConfig. Specific connection details for an IPSec tunnel.
+type TunnelConfig struct {
+
+	// The IP address of Oracle's VPN headend.
+	// Example: `129.146.17.50`
+	IpAddress *string `mandatory:"true" json:"ipAddress,omitempty"`
+
+	// The shared secret of the IPSec tunnel.
+	// Example: `vFG2IF6TWq4UToUiLSRDoJEUs6j1c.p8G.dVQxiMfMO0yXMLi.lZTbYIWhGu4V8o`
+	SharedSecret *string `mandatory:"true" json:"sharedSecret,omitempty"`
+
+	// The date and time the IPSec connection was created, in the format defined by RFC3339.
+	// Example: `2016-08-25T21:10:29.600Z`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+}
+
+func (model TunnelConfig) String() string {
+	return common.PointerString(model)
+}

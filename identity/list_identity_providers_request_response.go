@@ -12,7 +12,7 @@ import (
 type ListIdentityProvidersRequest struct {
 
 	// The protocol used for federation.
-	Protocol *string `mandatory:"true" contributesTo:"query" name:"protocol"`
+	Protocol ListIdentityProvidersProtocolEnum `mandatory:"true" contributesTo:"query" name:"protocol"`
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
 	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
@@ -49,4 +49,43 @@ type ListIdentityProvidersResponse struct {
 
 func (response ListIdentityProvidersResponse) String() string {
 	return common.PointerString(response)
+}
+
+type ListIdentityProvidersProtocolEnum string
+type ListIdentityProvidersProtocol struct{}
+
+const (
+	LIST_IDENTITY_PROVIDERS_PROTOCOL_SAML2   ListIdentityProvidersProtocolEnum = "SAML2"
+	LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN ListIdentityProvidersProtocolEnum = "UNKNOWN"
+)
+
+var mapping_Identity_protocol = map[string]ListIdentityProvidersProtocolEnum{
+	"SAML2":   LIST_IDENTITY_PROVIDERS_PROTOCOL_SAML2,
+	"UNKNOWN": LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN,
+}
+
+func (receiver ListIdentityProvidersProtocol) Values() []ListIdentityProvidersProtocolEnum {
+	values := make([]ListIdentityProvidersProtocolEnum, 0)
+	for _, v := range mapping_Identity_protocol {
+		if v != LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver ListIdentityProvidersProtocol) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if ListIdentityProvidersProtocolEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver ListIdentityProvidersProtocol) From(toBeConverted string) ListIdentityProvidersProtocolEnum {
+	if val, ok := mapping_Identity_protocol[toBeConverted]; ok {
+		return val
+	}
+	return LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN
 }

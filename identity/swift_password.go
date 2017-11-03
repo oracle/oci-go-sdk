@@ -13,7 +13,7 @@ import (
 )
 
 // SwiftPassword. Swift is the OpenStack object storage service. A `SwiftPassword` is an Oracle-provided password for using a
-// Swift client with the Oracle Bare Metal Cloud Services Object Storage Service. This password is associated with
+// Swift client with the Oracle Cloud Infrastructure Object Storage Service. This password is associated with
 // the user's Console login. Swift passwords never expire. A user can have up to two Swift passwords at a time.
 // **Note:** The password is always an Oracle-generated string; you can't change it to a string of your choice.
 // For more information, see [Managing User Credentials]({{DOC_SERVER_URL}}/Content/Identity/Tasks/managingcredentials.htm).
@@ -43,7 +43,7 @@ type SwiftPassword struct {
 
 	// The password's current state. After creating a password, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState *string `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState SwiftPasswordLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
@@ -51,4 +51,51 @@ type SwiftPassword struct {
 
 func (model SwiftPassword) String() string {
 	return common.PointerString(model)
+}
+
+type SwiftPasswordLifecycleStateEnum string
+type SwiftPasswordLifecycleState struct{}
+
+const (
+	SWIFT_PASSWORD_LIFECYCLE_STATE_CREATING SwiftPasswordLifecycleStateEnum = "CREATING"
+	SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE   SwiftPasswordLifecycleStateEnum = "ACTIVE"
+	SWIFT_PASSWORD_LIFECYCLE_STATE_INACTIVE SwiftPasswordLifecycleStateEnum = "INACTIVE"
+	SWIFT_PASSWORD_LIFECYCLE_STATE_DELETING SwiftPasswordLifecycleStateEnum = "DELETING"
+	SWIFT_PASSWORD_LIFECYCLE_STATE_DELETED  SwiftPasswordLifecycleStateEnum = "DELETED"
+	SWIFT_PASSWORD_LIFECYCLE_STATE_UNKNOWN  SwiftPasswordLifecycleStateEnum = "UNKNOWN"
+)
+
+var mapping_swiftpassword_lifecycleState = map[string]SwiftPasswordLifecycleStateEnum{
+	"CREATING": SWIFT_PASSWORD_LIFECYCLE_STATE_CREATING,
+	"ACTIVE":   SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE,
+	"INACTIVE": SWIFT_PASSWORD_LIFECYCLE_STATE_INACTIVE,
+	"DELETING": SWIFT_PASSWORD_LIFECYCLE_STATE_DELETING,
+	"DELETED":  SWIFT_PASSWORD_LIFECYCLE_STATE_DELETED,
+	"UNKNOWN":  SWIFT_PASSWORD_LIFECYCLE_STATE_UNKNOWN,
+}
+
+func (receiver SwiftPasswordLifecycleState) Values() []SwiftPasswordLifecycleStateEnum {
+	values := make([]SwiftPasswordLifecycleStateEnum, 0)
+	for _, v := range mapping_swiftpassword_lifecycleState {
+		if v != SWIFT_PASSWORD_LIFECYCLE_STATE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver SwiftPasswordLifecycleState) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if SwiftPasswordLifecycleStateEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver SwiftPasswordLifecycleState) From(toBeConverted string) SwiftPasswordLifecycleStateEnum {
+	if val, ok := mapping_swiftpassword_lifecycleState[toBeConverted]; ok {
+		return val
+	}
+	return SWIFT_PASSWORD_LIFECYCLE_STATE_UNKNOWN
 }

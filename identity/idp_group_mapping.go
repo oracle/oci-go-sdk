@@ -13,14 +13,14 @@ import (
 )
 
 // IdpGroupMapping. A mapping between a single group defined by the identity provider (IdP) you're federating with
-// and a single IAM Service Group in Oracle Bare Metal Cloud
-// Services. For more information about group mappings and what they're for, see
+// and a single IAM Service Group in Oracle Cloud Infrastructure.
+// For more information about group mappings and what they're for, see
 // [Identity Providers and Federation]({{DOC_SERVER_URL}}/Content/Identity/Concepts/federation.htm).
 // A given IdP group can be mapped to zero, one, or multiple IAM Service groups, and vice versa.
 // But each `IdPGroupMapping` object is between only a single IdP group and IAM Service group.
 // Each `IdPGroupMapping` object has its own OCID.
 // **Note:** Any users who are in more than 50 IdP groups cannot be authenticated to use the Oracle
-// Bare Metal Cloud Services Console.
+// Cloud Infrastructure Console.
 type IdpGroupMapping struct {
 
 	// The OCID of the `IdpGroupMapping`.
@@ -44,7 +44,7 @@ type IdpGroupMapping struct {
 
 	// The mapping's current state.  After creating a mapping object, make sure its `lifecycleState` changes
 	// from CREATING to ACTIVE before using it.
-	LifecycleState *string `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState IdpGroupMappingLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
@@ -52,4 +52,51 @@ type IdpGroupMapping struct {
 
 func (model IdpGroupMapping) String() string {
 	return common.PointerString(model)
+}
+
+type IdpGroupMappingLifecycleStateEnum string
+type IdpGroupMappingLifecycleState struct{}
+
+const (
+	IDP_GROUP_MAPPING_LIFECYCLE_STATE_CREATING IdpGroupMappingLifecycleStateEnum = "CREATING"
+	IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE   IdpGroupMappingLifecycleStateEnum = "ACTIVE"
+	IDP_GROUP_MAPPING_LIFECYCLE_STATE_INACTIVE IdpGroupMappingLifecycleStateEnum = "INACTIVE"
+	IDP_GROUP_MAPPING_LIFECYCLE_STATE_DELETING IdpGroupMappingLifecycleStateEnum = "DELETING"
+	IDP_GROUP_MAPPING_LIFECYCLE_STATE_DELETED  IdpGroupMappingLifecycleStateEnum = "DELETED"
+	IDP_GROUP_MAPPING_LIFECYCLE_STATE_UNKNOWN  IdpGroupMappingLifecycleStateEnum = "UNKNOWN"
+)
+
+var mapping_idpgroupmapping_lifecycleState = map[string]IdpGroupMappingLifecycleStateEnum{
+	"CREATING": IDP_GROUP_MAPPING_LIFECYCLE_STATE_CREATING,
+	"ACTIVE":   IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE,
+	"INACTIVE": IDP_GROUP_MAPPING_LIFECYCLE_STATE_INACTIVE,
+	"DELETING": IDP_GROUP_MAPPING_LIFECYCLE_STATE_DELETING,
+	"DELETED":  IDP_GROUP_MAPPING_LIFECYCLE_STATE_DELETED,
+	"UNKNOWN":  IDP_GROUP_MAPPING_LIFECYCLE_STATE_UNKNOWN,
+}
+
+func (receiver IdpGroupMappingLifecycleState) Values() []IdpGroupMappingLifecycleStateEnum {
+	values := make([]IdpGroupMappingLifecycleStateEnum, 0)
+	for _, v := range mapping_idpgroupmapping_lifecycleState {
+		if v != IDP_GROUP_MAPPING_LIFECYCLE_STATE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver IdpGroupMappingLifecycleState) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if IdpGroupMappingLifecycleStateEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver IdpGroupMappingLifecycleState) From(toBeConverted string) IdpGroupMappingLifecycleStateEnum {
+	if val, ok := mapping_idpgroupmapping_lifecycleState[toBeConverted]; ok {
+		return val
+	}
+	return IDP_GROUP_MAPPING_LIFECYCLE_STATE_UNKNOWN
 }

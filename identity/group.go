@@ -44,7 +44,7 @@ type Group struct {
 
 	// The group's current state. After creating a group, make sure its `lifecycleState` changes from CREATING to
 	// ACTIVE before using it.
-	LifecycleState *string `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState GroupLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
@@ -52,4 +52,51 @@ type Group struct {
 
 func (model Group) String() string {
 	return common.PointerString(model)
+}
+
+type GroupLifecycleStateEnum string
+type GroupLifecycleState struct{}
+
+const (
+	GROUP_LIFECYCLE_STATE_CREATING GroupLifecycleStateEnum = "CREATING"
+	GROUP_LIFECYCLE_STATE_ACTIVE   GroupLifecycleStateEnum = "ACTIVE"
+	GROUP_LIFECYCLE_STATE_INACTIVE GroupLifecycleStateEnum = "INACTIVE"
+	GROUP_LIFECYCLE_STATE_DELETING GroupLifecycleStateEnum = "DELETING"
+	GROUP_LIFECYCLE_STATE_DELETED  GroupLifecycleStateEnum = "DELETED"
+	GROUP_LIFECYCLE_STATE_UNKNOWN  GroupLifecycleStateEnum = "UNKNOWN"
+)
+
+var mapping_group_lifecycleState = map[string]GroupLifecycleStateEnum{
+	"CREATING": GROUP_LIFECYCLE_STATE_CREATING,
+	"ACTIVE":   GROUP_LIFECYCLE_STATE_ACTIVE,
+	"INACTIVE": GROUP_LIFECYCLE_STATE_INACTIVE,
+	"DELETING": GROUP_LIFECYCLE_STATE_DELETING,
+	"DELETED":  GROUP_LIFECYCLE_STATE_DELETED,
+	"UNKNOWN":  GROUP_LIFECYCLE_STATE_UNKNOWN,
+}
+
+func (receiver GroupLifecycleState) Values() []GroupLifecycleStateEnum {
+	values := make([]GroupLifecycleStateEnum, 0)
+	for _, v := range mapping_group_lifecycleState {
+		if v != GROUP_LIFECYCLE_STATE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver GroupLifecycleState) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if GroupLifecycleStateEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver GroupLifecycleState) From(toBeConverted string) GroupLifecycleStateEnum {
+	if val, ok := mapping_group_lifecycleState[toBeConverted]; ok {
+		return val
+	}
+	return GROUP_LIFECYCLE_STATE_UNKNOWN
 }

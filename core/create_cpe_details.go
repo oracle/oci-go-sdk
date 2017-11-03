@@ -1,0 +1,30 @@
+// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Code generated. DO NOT EDIT.
+
+// Core Services API
+//
+// APIs for Networking Service, Compute Service, and Block Volume Service.
+//
+
+package core
+
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
+type CreateCpeDetails struct {
+
+	// The OCID of the compartment to contain the CPE.
+	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+
+	// The public IP address of the on-premises router.
+	// Example: `143.19.23.16`
+	IpAddress *string `mandatory:"true" json:"ipAddress,omitempty"`
+
+	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+}
+
+func (model CreateCpeDetails) String() string {
+	return common.PointerString(model)
+}

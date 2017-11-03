@@ -30,11 +30,11 @@ type CreateSaml2IdentityProviderDetails struct {
 	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
 	// Active Directory Federation Services (ADFS).
 	// Example: `IDCS`
-	ProductType *string `mandatory:"true" json:"productType,omitempty"`
+	ProductType CreateSaml2IdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType,omitempty"`
 
 	// The protocol used for federation.
 	// Example: `SAML2`
-	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
+	Protocol CreateSaml2IdentityProviderDetailsProtocolEnum `mandatory:"true" json:"protocol,omitempty"`
 
 	// The URL for retrieving the identity provider's metadata,
 	// which contains information required for federating.
@@ -46,4 +46,84 @@ type CreateSaml2IdentityProviderDetails struct {
 
 func (model CreateSaml2IdentityProviderDetails) String() string {
 	return common.PointerString(model)
+}
+
+type CreateSaml2IdentityProviderDetailsProductTypeEnum string
+type CreateSaml2IdentityProviderDetailsProductType struct{}
+
+const (
+	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_IDCS    CreateSaml2IdentityProviderDetailsProductTypeEnum = "IDCS"
+	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS    CreateSaml2IdentityProviderDetailsProductTypeEnum = "ADFS"
+	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN CreateSaml2IdentityProviderDetailsProductTypeEnum = "UNKNOWN"
+)
+
+var mapping_createsaml2identityproviderdetails_productType = map[string]CreateSaml2IdentityProviderDetailsProductTypeEnum{
+	"IDCS":    CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_IDCS,
+	"ADFS":    CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS,
+	"UNKNOWN": CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN,
+}
+
+func (receiver CreateSaml2IdentityProviderDetailsProductType) Values() []CreateSaml2IdentityProviderDetailsProductTypeEnum {
+	values := make([]CreateSaml2IdentityProviderDetailsProductTypeEnum, 0)
+	for _, v := range mapping_createsaml2identityproviderdetails_productType {
+		if v != CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver CreateSaml2IdentityProviderDetailsProductType) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if CreateSaml2IdentityProviderDetailsProductTypeEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver CreateSaml2IdentityProviderDetailsProductType) From(toBeConverted string) CreateSaml2IdentityProviderDetailsProductTypeEnum {
+	if val, ok := mapping_createsaml2identityproviderdetails_productType[toBeConverted]; ok {
+		return val
+	}
+	return CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN
+}
+
+type CreateSaml2IdentityProviderDetailsProtocolEnum string
+type CreateSaml2IdentityProviderDetailsProtocol struct{}
+
+const (
+	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2   CreateSaml2IdentityProviderDetailsProtocolEnum = "SAML2"
+	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN CreateSaml2IdentityProviderDetailsProtocolEnum = "UNKNOWN"
+)
+
+var mapping_createsaml2identityproviderdetails_protocol = map[string]CreateSaml2IdentityProviderDetailsProtocolEnum{
+	"SAML2":   CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2,
+	"UNKNOWN": CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN,
+}
+
+func (receiver CreateSaml2IdentityProviderDetailsProtocol) Values() []CreateSaml2IdentityProviderDetailsProtocolEnum {
+	values := make([]CreateSaml2IdentityProviderDetailsProtocolEnum, 0)
+	for _, v := range mapping_createsaml2identityproviderdetails_protocol {
+		if v != CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+func (receiver CreateSaml2IdentityProviderDetailsProtocol) IsValid(toBeChecked string) bool {
+	for _, v := range receiver.Values() {
+		if CreateSaml2IdentityProviderDetailsProtocolEnum(toBeChecked) == v {
+			return true
+		}
+	}
+	return false
+}
+
+func (receiver CreateSaml2IdentityProviderDetailsProtocol) From(toBeConverted string) CreateSaml2IdentityProviderDetailsProtocolEnum {
+	if val, ok := mapping_createsaml2identityproviderdetails_protocol[toBeConverted]; ok {
+		return val
+	}
+	return CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN
 }
