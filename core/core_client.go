@@ -23,7 +23,7 @@ type VirtualNetworkClient struct {
 func NewClientForRegion(region common.Region) (client VirtualNetworkClient) {
 	client = VirtualNetworkClient{BaseClient: common.NewClientForRegion(region)}
 
-	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "core", string(region))
+	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "iaas", string(region))
 	client.BasePath = "20160918"
 	return
 }
