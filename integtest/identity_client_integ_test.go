@@ -527,7 +527,6 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 //	return
 //}
 
-
 func TestBadHost(t *testing.T) {
 	client := identity.NewClientForRegion(region)
 	client.Host = "badhostname"
