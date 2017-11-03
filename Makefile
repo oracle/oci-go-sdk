@@ -1,7 +1,8 @@
 DOC_SERVER_URL=http:\/\/lgl-bybliothece-01.virt.lgl.grungy.us
 TARGETS = common identity
+TARGETS_WITH_TESTS = common integtest
 TARGETS_BUILD = $(patsubst %,build-%, $(TARGETS))
-TARGETS_TEST = $(patsubst %,test-%, $(TARGETS))
+TARGETS_TEST = $(patsubst %,test-%, $(TARGETS_WITH_TESTS))
 
 
 .PHONY: $(TARGETS_BUILD) $(TARGET_TEST)
