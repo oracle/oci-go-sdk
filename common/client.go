@@ -1,15 +1,15 @@
 package common
 
 import (
-	"strings"
+	"context"
 	"fmt"
+	"net/http"
+	"net/http/httputil"
 	"net/url"
 	"path"
-	"net/http/httputil"
-	"time"
 	"runtime"
-	"net/http"
-	"context"
+	"strings"
+	"time"
 )
 
 const (
@@ -112,7 +112,6 @@ func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
 		request.Header = http.Header{}
 	}
 	request.Header.Set("User-Agent", client.UserAgent)
-
 
 	if !strings.Contains(client.Host, "http") &&
 		!strings.Contains(client.Host, "https") {
