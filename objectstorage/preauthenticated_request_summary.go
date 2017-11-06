@@ -40,7 +40,6 @@ func (model PreauthenticatedRequestSummary) String() string {
 }
 
 type PreauthenticatedRequestSummaryAccessTypeEnum string
-type PreauthenticatedRequestSummaryAccessType struct{}
 
 const (
 	PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_OBJECTREAD      PreauthenticatedRequestSummaryAccessTypeEnum = "ObjectRead"
@@ -58,7 +57,7 @@ var mapping_preauthenticatedrequestsummary_accessType = map[string]Preauthentica
 	"UNKNOWN":         PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_UNKNOWN,
 }
 
-func (receiver PreauthenticatedRequestSummaryAccessType) Values() []PreauthenticatedRequestSummaryAccessTypeEnum {
+func GetPreauthenticatedRequestSummaryAccessTypeEnumValues() []PreauthenticatedRequestSummaryAccessTypeEnum {
 	values := make([]PreauthenticatedRequestSummaryAccessTypeEnum, 0)
 	for _, v := range mapping_preauthenticatedrequestsummary_accessType {
 		if v != PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_UNKNOWN {
@@ -66,20 +65,4 @@ func (receiver PreauthenticatedRequestSummaryAccessType) Values() []Preauthentic
 		}
 	}
 	return values
-}
-
-func (receiver PreauthenticatedRequestSummaryAccessType) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if PreauthenticatedRequestSummaryAccessTypeEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver PreauthenticatedRequestSummaryAccessType) From(toBeConverted string) PreauthenticatedRequestSummaryAccessTypeEnum {
-	if val, ok := mapping_preauthenticatedrequestsummary_accessType[toBeConverted]; ok {
-		return val
-	}
-	return PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_UNKNOWN
 }

@@ -56,7 +56,6 @@ func (model VolumeAttachment) String() string {
 }
 
 type VolumeAttachmentLifecycleStateEnum string
-type VolumeAttachmentLifecycleState struct{}
 
 const (
 	VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHING VolumeAttachmentLifecycleStateEnum = "ATTACHING"
@@ -74,7 +73,7 @@ var mapping_volumeattachment_lifecycleState = map[string]VolumeAttachmentLifecyc
 	"UNKNOWN":   VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver VolumeAttachmentLifecycleState) Values() []VolumeAttachmentLifecycleStateEnum {
+func GetVolumeAttachmentLifecycleStateEnumValues() []VolumeAttachmentLifecycleStateEnum {
 	values := make([]VolumeAttachmentLifecycleStateEnum, 0)
 	for _, v := range mapping_volumeattachment_lifecycleState {
 		if v != VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN {
@@ -82,20 +81,4 @@ func (receiver VolumeAttachmentLifecycleState) Values() []VolumeAttachmentLifecy
 		}
 	}
 	return values
-}
-
-func (receiver VolumeAttachmentLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VolumeAttachmentLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VolumeAttachmentLifecycleState) From(toBeConverted string) VolumeAttachmentLifecycleStateEnum {
-	if val, ok := mapping_volumeattachment_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN
 }

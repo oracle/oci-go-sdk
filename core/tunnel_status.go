@@ -36,7 +36,6 @@ func (model TunnelStatus) String() string {
 }
 
 type TunnelStatusLifecycleStateEnum string
-type TunnelStatusLifecycleState struct{}
 
 const (
 	TUNNEL_STATUS_LIFECYCLE_STATE_UP                   TunnelStatusLifecycleStateEnum = "UP"
@@ -52,7 +51,7 @@ var mapping_tunnelstatus_lifecycleState = map[string]TunnelStatusLifecycleStateE
 	"UNKNOWN":              TUNNEL_STATUS_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver TunnelStatusLifecycleState) Values() []TunnelStatusLifecycleStateEnum {
+func GetTunnelStatusLifecycleStateEnumValues() []TunnelStatusLifecycleStateEnum {
 	values := make([]TunnelStatusLifecycleStateEnum, 0)
 	for _, v := range mapping_tunnelstatus_lifecycleState {
 		if v != TUNNEL_STATUS_LIFECYCLE_STATE_UNKNOWN {
@@ -60,20 +59,4 @@ func (receiver TunnelStatusLifecycleState) Values() []TunnelStatusLifecycleState
 		}
 	}
 	return values
-}
-
-func (receiver TunnelStatusLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if TunnelStatusLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver TunnelStatusLifecycleState) From(toBeConverted string) TunnelStatusLifecycleStateEnum {
-	if val, ok := mapping_tunnelstatus_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return TUNNEL_STATUS_LIFECYCLE_STATE_UNKNOWN
 }

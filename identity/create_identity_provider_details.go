@@ -42,7 +42,6 @@ func (model CreateIdentityProviderDetails) String() string {
 }
 
 type CreateIdentityProviderDetailsProductTypeEnum string
-type CreateIdentityProviderDetailsProductType struct{}
 
 const (
 	CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_IDCS    CreateIdentityProviderDetailsProductTypeEnum = "IDCS"
@@ -56,7 +55,7 @@ var mapping_createidentityproviderdetails_productType = map[string]CreateIdentit
 	"UNKNOWN": CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN,
 }
 
-func (receiver CreateIdentityProviderDetailsProductType) Values() []CreateIdentityProviderDetailsProductTypeEnum {
+func GetCreateIdentityProviderDetailsProductTypeEnumValues() []CreateIdentityProviderDetailsProductTypeEnum {
 	values := make([]CreateIdentityProviderDetailsProductTypeEnum, 0)
 	for _, v := range mapping_createidentityproviderdetails_productType {
 		if v != CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN {
@@ -66,24 +65,7 @@ func (receiver CreateIdentityProviderDetailsProductType) Values() []CreateIdenti
 	return values
 }
 
-func (receiver CreateIdentityProviderDetailsProductType) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if CreateIdentityProviderDetailsProductTypeEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver CreateIdentityProviderDetailsProductType) From(toBeConverted string) CreateIdentityProviderDetailsProductTypeEnum {
-	if val, ok := mapping_createidentityproviderdetails_productType[toBeConverted]; ok {
-		return val
-	}
-	return CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN
-}
-
 type CreateIdentityProviderDetailsProtocolEnum string
-type CreateIdentityProviderDetailsProtocol struct{}
 
 const (
 	CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2   CreateIdentityProviderDetailsProtocolEnum = "SAML2"
@@ -95,7 +77,7 @@ var mapping_createidentityproviderdetails_protocol = map[string]CreateIdentityPr
 	"UNKNOWN": CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN,
 }
 
-func (receiver CreateIdentityProviderDetailsProtocol) Values() []CreateIdentityProviderDetailsProtocolEnum {
+func GetCreateIdentityProviderDetailsProtocolEnumValues() []CreateIdentityProviderDetailsProtocolEnum {
 	values := make([]CreateIdentityProviderDetailsProtocolEnum, 0)
 	for _, v := range mapping_createidentityproviderdetails_protocol {
 		if v != CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN {
@@ -103,20 +85,4 @@ func (receiver CreateIdentityProviderDetailsProtocol) Values() []CreateIdentityP
 		}
 	}
 	return values
-}
-
-func (receiver CreateIdentityProviderDetailsProtocol) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if CreateIdentityProviderDetailsProtocolEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver CreateIdentityProviderDetailsProtocol) From(toBeConverted string) CreateIdentityProviderDetailsProtocolEnum {
-	if val, ok := mapping_createidentityproviderdetails_protocol[toBeConverted]; ok {
-		return val
-	}
-	return CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN
 }

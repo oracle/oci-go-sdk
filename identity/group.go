@@ -55,7 +55,6 @@ func (model Group) String() string {
 }
 
 type GroupLifecycleStateEnum string
-type GroupLifecycleState struct{}
 
 const (
 	GROUP_LIFECYCLE_STATE_CREATING GroupLifecycleStateEnum = "CREATING"
@@ -75,7 +74,7 @@ var mapping_group_lifecycleState = map[string]GroupLifecycleStateEnum{
 	"UNKNOWN":  GROUP_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver GroupLifecycleState) Values() []GroupLifecycleStateEnum {
+func GetGroupLifecycleStateEnumValues() []GroupLifecycleStateEnum {
 	values := make([]GroupLifecycleStateEnum, 0)
 	for _, v := range mapping_group_lifecycleState {
 		if v != GROUP_LIFECYCLE_STATE_UNKNOWN {
@@ -83,20 +82,4 @@ func (receiver GroupLifecycleState) Values() []GroupLifecycleStateEnum {
 		}
 	}
 	return values
-}
-
-func (receiver GroupLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if GroupLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver GroupLifecycleState) From(toBeConverted string) GroupLifecycleStateEnum {
-	if val, ok := mapping_group_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return GROUP_LIFECYCLE_STATE_UNKNOWN
 }

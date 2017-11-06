@@ -91,7 +91,6 @@ func (model Vnic) String() string {
 }
 
 type VnicLifecycleStateEnum string
-type VnicLifecycleState struct{}
 
 const (
 	VNIC_LIFECYCLE_STATE_PROVISIONING VnicLifecycleStateEnum = "PROVISIONING"
@@ -109,7 +108,7 @@ var mapping_vnic_lifecycleState = map[string]VnicLifecycleStateEnum{
 	"UNKNOWN":      VNIC_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver VnicLifecycleState) Values() []VnicLifecycleStateEnum {
+func GetVnicLifecycleStateEnumValues() []VnicLifecycleStateEnum {
 	values := make([]VnicLifecycleStateEnum, 0)
 	for _, v := range mapping_vnic_lifecycleState {
 		if v != VNIC_LIFECYCLE_STATE_UNKNOWN {
@@ -117,20 +116,4 @@ func (receiver VnicLifecycleState) Values() []VnicLifecycleStateEnum {
 		}
 	}
 	return values
-}
-
-func (receiver VnicLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VnicLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VnicLifecycleState) From(toBeConverted string) VnicLifecycleStateEnum {
-	if val, ok := mapping_vnic_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return VNIC_LIFECYCLE_STATE_UNKNOWN
 }

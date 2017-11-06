@@ -41,7 +41,6 @@ func (model LetterOfAuthority) String() string {
 }
 
 type LetterOfAuthorityCircuitTypeEnum string
-type LetterOfAuthorityCircuitType struct{}
 
 const (
 	LETTER_OF_AUTHORITY_CIRCUIT_TYPE_LC      LetterOfAuthorityCircuitTypeEnum = "Single_mode_LC"
@@ -55,7 +54,7 @@ var mapping_letterofauthority_circuitType = map[string]LetterOfAuthorityCircuitT
 	"UNKNOWN":        LETTER_OF_AUTHORITY_CIRCUIT_TYPE_UNKNOWN,
 }
 
-func (receiver LetterOfAuthorityCircuitType) Values() []LetterOfAuthorityCircuitTypeEnum {
+func GetLetterOfAuthorityCircuitTypeEnumValues() []LetterOfAuthorityCircuitTypeEnum {
 	values := make([]LetterOfAuthorityCircuitTypeEnum, 0)
 	for _, v := range mapping_letterofauthority_circuitType {
 		if v != LETTER_OF_AUTHORITY_CIRCUIT_TYPE_UNKNOWN {
@@ -63,20 +62,4 @@ func (receiver LetterOfAuthorityCircuitType) Values() []LetterOfAuthorityCircuit
 		}
 	}
 	return values
-}
-
-func (receiver LetterOfAuthorityCircuitType) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if LetterOfAuthorityCircuitTypeEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver LetterOfAuthorityCircuitType) From(toBeConverted string) LetterOfAuthorityCircuitTypeEnum {
-	if val, ok := mapping_letterofauthority_circuitType[toBeConverted]; ok {
-		return val
-	}
-	return LETTER_OF_AUTHORITY_CIRCUIT_TYPE_UNKNOWN
 }

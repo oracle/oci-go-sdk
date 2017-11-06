@@ -49,7 +49,6 @@ func (model CreateSaml2IdentityProviderDetails) String() string {
 }
 
 type CreateSaml2IdentityProviderDetailsProductTypeEnum string
-type CreateSaml2IdentityProviderDetailsProductType struct{}
 
 const (
 	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_IDCS    CreateSaml2IdentityProviderDetailsProductTypeEnum = "IDCS"
@@ -63,7 +62,7 @@ var mapping_createsaml2identityproviderdetails_productType = map[string]CreateSa
 	"UNKNOWN": CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN,
 }
 
-func (receiver CreateSaml2IdentityProviderDetailsProductType) Values() []CreateSaml2IdentityProviderDetailsProductTypeEnum {
+func GetCreateSaml2IdentityProviderDetailsProductTypeEnumValues() []CreateSaml2IdentityProviderDetailsProductTypeEnum {
 	values := make([]CreateSaml2IdentityProviderDetailsProductTypeEnum, 0)
 	for _, v := range mapping_createsaml2identityproviderdetails_productType {
 		if v != CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN {
@@ -73,24 +72,7 @@ func (receiver CreateSaml2IdentityProviderDetailsProductType) Values() []CreateS
 	return values
 }
 
-func (receiver CreateSaml2IdentityProviderDetailsProductType) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if CreateSaml2IdentityProviderDetailsProductTypeEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver CreateSaml2IdentityProviderDetailsProductType) From(toBeConverted string) CreateSaml2IdentityProviderDetailsProductTypeEnum {
-	if val, ok := mapping_createsaml2identityproviderdetails_productType[toBeConverted]; ok {
-		return val
-	}
-	return CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN
-}
-
 type CreateSaml2IdentityProviderDetailsProtocolEnum string
-type CreateSaml2IdentityProviderDetailsProtocol struct{}
 
 const (
 	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2   CreateSaml2IdentityProviderDetailsProtocolEnum = "SAML2"
@@ -102,7 +84,7 @@ var mapping_createsaml2identityproviderdetails_protocol = map[string]CreateSaml2
 	"UNKNOWN": CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN,
 }
 
-func (receiver CreateSaml2IdentityProviderDetailsProtocol) Values() []CreateSaml2IdentityProviderDetailsProtocolEnum {
+func GetCreateSaml2IdentityProviderDetailsProtocolEnumValues() []CreateSaml2IdentityProviderDetailsProtocolEnum {
 	values := make([]CreateSaml2IdentityProviderDetailsProtocolEnum, 0)
 	for _, v := range mapping_createsaml2identityproviderdetails_protocol {
 		if v != CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN {
@@ -110,20 +92,4 @@ func (receiver CreateSaml2IdentityProviderDetailsProtocol) Values() []CreateSaml
 		}
 	}
 	return values
-}
-
-func (receiver CreateSaml2IdentityProviderDetailsProtocol) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if CreateSaml2IdentityProviderDetailsProtocolEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver CreateSaml2IdentityProviderDetailsProtocol) From(toBeConverted string) CreateSaml2IdentityProviderDetailsProtocolEnum {
-	if val, ok := mapping_createsaml2identityproviderdetails_protocol[toBeConverted]; ok {
-		return val
-	}
-	return CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN
 }

@@ -39,7 +39,6 @@ func (model CrossConnectStatus) String() string {
 }
 
 type CrossConnectStatusInterfaceStateEnum string
-type CrossConnectStatusInterfaceState struct{}
 
 const (
 	CROSS_CONNECT_STATUS_INTERFACE_STATE_UP      CrossConnectStatusInterfaceStateEnum = "UP"
@@ -53,7 +52,7 @@ var mapping_crossconnectstatus_interfaceState = map[string]CrossConnectStatusInt
 	"UNKNOWN": CROSS_CONNECT_STATUS_INTERFACE_STATE_UNKNOWN,
 }
 
-func (receiver CrossConnectStatusInterfaceState) Values() []CrossConnectStatusInterfaceStateEnum {
+func GetCrossConnectStatusInterfaceStateEnumValues() []CrossConnectStatusInterfaceStateEnum {
 	values := make([]CrossConnectStatusInterfaceStateEnum, 0)
 	for _, v := range mapping_crossconnectstatus_interfaceState {
 		if v != CROSS_CONNECT_STATUS_INTERFACE_STATE_UNKNOWN {
@@ -63,24 +62,7 @@ func (receiver CrossConnectStatusInterfaceState) Values() []CrossConnectStatusIn
 	return values
 }
 
-func (receiver CrossConnectStatusInterfaceState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if CrossConnectStatusInterfaceStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver CrossConnectStatusInterfaceState) From(toBeConverted string) CrossConnectStatusInterfaceStateEnum {
-	if val, ok := mapping_crossconnectstatus_interfaceState[toBeConverted]; ok {
-		return val
-	}
-	return CROSS_CONNECT_STATUS_INTERFACE_STATE_UNKNOWN
-}
-
 type CrossConnectStatusLightLevelIndicatorEnum string
-type CrossConnectStatusLightLevelIndicator struct{}
 
 const (
 	CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_NO_LIGHT  CrossConnectStatusLightLevelIndicatorEnum = "NO_LIGHT"
@@ -100,7 +82,7 @@ var mapping_crossconnectstatus_lightLevelIndicator = map[string]CrossConnectStat
 	"UNKNOWN":   CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_UNKNOWN,
 }
 
-func (receiver CrossConnectStatusLightLevelIndicator) Values() []CrossConnectStatusLightLevelIndicatorEnum {
+func GetCrossConnectStatusLightLevelIndicatorEnumValues() []CrossConnectStatusLightLevelIndicatorEnum {
 	values := make([]CrossConnectStatusLightLevelIndicatorEnum, 0)
 	for _, v := range mapping_crossconnectstatus_lightLevelIndicator {
 		if v != CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_UNKNOWN {
@@ -108,20 +90,4 @@ func (receiver CrossConnectStatusLightLevelIndicator) Values() []CrossConnectSta
 		}
 	}
 	return values
-}
-
-func (receiver CrossConnectStatusLightLevelIndicator) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if CrossConnectStatusLightLevelIndicatorEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver CrossConnectStatusLightLevelIndicator) From(toBeConverted string) CrossConnectStatusLightLevelIndicatorEnum {
-	if val, ok := mapping_crossconnectstatus_lightLevelIndicator[toBeConverted]; ok {
-		return val
-	}
-	return CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_UNKNOWN
 }

@@ -55,7 +55,6 @@ func (model IdpGroupMapping) String() string {
 }
 
 type IdpGroupMappingLifecycleStateEnum string
-type IdpGroupMappingLifecycleState struct{}
 
 const (
 	IDP_GROUP_MAPPING_LIFECYCLE_STATE_CREATING IdpGroupMappingLifecycleStateEnum = "CREATING"
@@ -75,7 +74,7 @@ var mapping_idpgroupmapping_lifecycleState = map[string]IdpGroupMappingLifecycle
 	"UNKNOWN":  IDP_GROUP_MAPPING_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver IdpGroupMappingLifecycleState) Values() []IdpGroupMappingLifecycleStateEnum {
+func GetIdpGroupMappingLifecycleStateEnumValues() []IdpGroupMappingLifecycleStateEnum {
 	values := make([]IdpGroupMappingLifecycleStateEnum, 0)
 	for _, v := range mapping_idpgroupmapping_lifecycleState {
 		if v != IDP_GROUP_MAPPING_LIFECYCLE_STATE_UNKNOWN {
@@ -83,20 +82,4 @@ func (receiver IdpGroupMappingLifecycleState) Values() []IdpGroupMappingLifecycl
 		}
 	}
 	return values
-}
-
-func (receiver IdpGroupMappingLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if IdpGroupMappingLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver IdpGroupMappingLifecycleState) From(toBeConverted string) IdpGroupMappingLifecycleStateEnum {
-	if val, ok := mapping_idpgroupmapping_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return IDP_GROUP_MAPPING_LIFECYCLE_STATE_UNKNOWN
 }

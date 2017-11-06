@@ -55,7 +55,6 @@ func (model IpSecConnection) String() string {
 }
 
 type IpSecConnectionLifecycleStateEnum string
-type IpSecConnectionLifecycleState struct{}
 
 const (
 	IP_SEC_CONNECTION_LIFECYCLE_STATE_PROVISIONING IpSecConnectionLifecycleStateEnum = "PROVISIONING"
@@ -73,7 +72,7 @@ var mapping_ipsecconnection_lifecycleState = map[string]IpSecConnectionLifecycle
 	"UNKNOWN":      IP_SEC_CONNECTION_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver IpSecConnectionLifecycleState) Values() []IpSecConnectionLifecycleStateEnum {
+func GetIpSecConnectionLifecycleStateEnumValues() []IpSecConnectionLifecycleStateEnum {
 	values := make([]IpSecConnectionLifecycleStateEnum, 0)
 	for _, v := range mapping_ipsecconnection_lifecycleState {
 		if v != IP_SEC_CONNECTION_LIFECYCLE_STATE_UNKNOWN {
@@ -81,20 +80,4 @@ func (receiver IpSecConnectionLifecycleState) Values() []IpSecConnectionLifecycl
 		}
 	}
 	return values
-}
-
-func (receiver IpSecConnectionLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if IpSecConnectionLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver IpSecConnectionLifecycleState) From(toBeConverted string) IpSecConnectionLifecycleStateEnum {
-	if val, ok := mapping_ipsecconnection_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return IP_SEC_CONNECTION_LIFECYCLE_STATE_UNKNOWN
 }

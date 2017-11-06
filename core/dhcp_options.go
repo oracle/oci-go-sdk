@@ -54,7 +54,6 @@ func (model DhcpOptions) String() string {
 }
 
 type DhcpOptionsLifecycleStateEnum string
-type DhcpOptionsLifecycleState struct{}
 
 const (
 	DHCP_OPTIONS_LIFECYCLE_STATE_PROVISIONING DhcpOptionsLifecycleStateEnum = "PROVISIONING"
@@ -72,7 +71,7 @@ var mapping_dhcpoptions_lifecycleState = map[string]DhcpOptionsLifecycleStateEnu
 	"UNKNOWN":      DHCP_OPTIONS_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver DhcpOptionsLifecycleState) Values() []DhcpOptionsLifecycleStateEnum {
+func GetDhcpOptionsLifecycleStateEnumValues() []DhcpOptionsLifecycleStateEnum {
 	values := make([]DhcpOptionsLifecycleStateEnum, 0)
 	for _, v := range mapping_dhcpoptions_lifecycleState {
 		if v != DHCP_OPTIONS_LIFECYCLE_STATE_UNKNOWN {
@@ -80,20 +79,4 @@ func (receiver DhcpOptionsLifecycleState) Values() []DhcpOptionsLifecycleStateEn
 		}
 	}
 	return values
-}
-
-func (receiver DhcpOptionsLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if DhcpOptionsLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver DhcpOptionsLifecycleState) From(toBeConverted string) DhcpOptionsLifecycleStateEnum {
-	if val, ok := mapping_dhcpoptions_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return DHCP_OPTIONS_LIFECYCLE_STATE_UNKNOWN
 }

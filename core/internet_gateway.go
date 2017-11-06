@@ -50,7 +50,6 @@ func (model InternetGateway) String() string {
 }
 
 type InternetGatewayLifecycleStateEnum string
-type InternetGatewayLifecycleState struct{}
 
 const (
 	INTERNET_GATEWAY_LIFECYCLE_STATE_PROVISIONING InternetGatewayLifecycleStateEnum = "PROVISIONING"
@@ -68,7 +67,7 @@ var mapping_internetgateway_lifecycleState = map[string]InternetGatewayLifecycle
 	"UNKNOWN":      INTERNET_GATEWAY_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver InternetGatewayLifecycleState) Values() []InternetGatewayLifecycleStateEnum {
+func GetInternetGatewayLifecycleStateEnumValues() []InternetGatewayLifecycleStateEnum {
 	values := make([]InternetGatewayLifecycleStateEnum, 0)
 	for _, v := range mapping_internetgateway_lifecycleState {
 		if v != INTERNET_GATEWAY_LIFECYCLE_STATE_UNKNOWN {
@@ -76,20 +75,4 @@ func (receiver InternetGatewayLifecycleState) Values() []InternetGatewayLifecycl
 		}
 	}
 	return values
-}
-
-func (receiver InternetGatewayLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if InternetGatewayLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver InternetGatewayLifecycleState) From(toBeConverted string) InternetGatewayLifecycleStateEnum {
-	if val, ok := mapping_internetgateway_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return INTERNET_GATEWAY_LIFECYCLE_STATE_UNKNOWN
 }

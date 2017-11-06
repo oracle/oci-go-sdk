@@ -45,7 +45,6 @@ func (model DrgAttachment) String() string {
 }
 
 type DrgAttachmentLifecycleStateEnum string
-type DrgAttachmentLifecycleState struct{}
 
 const (
 	DRG_ATTACHMENT_LIFECYCLE_STATE_ATTACHING DrgAttachmentLifecycleStateEnum = "ATTACHING"
@@ -63,7 +62,7 @@ var mapping_drgattachment_lifecycleState = map[string]DrgAttachmentLifecycleStat
 	"UNKNOWN":   DRG_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver DrgAttachmentLifecycleState) Values() []DrgAttachmentLifecycleStateEnum {
+func GetDrgAttachmentLifecycleStateEnumValues() []DrgAttachmentLifecycleStateEnum {
 	values := make([]DrgAttachmentLifecycleStateEnum, 0)
 	for _, v := range mapping_drgattachment_lifecycleState {
 		if v != DRG_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN {
@@ -71,20 +70,4 @@ func (receiver DrgAttachmentLifecycleState) Values() []DrgAttachmentLifecycleSta
 		}
 	}
 	return values
-}
-
-func (receiver DrgAttachmentLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if DrgAttachmentLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver DrgAttachmentLifecycleState) From(toBeConverted string) DrgAttachmentLifecycleStateEnum {
-	if val, ok := mapping_drgattachment_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return DRG_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN
 }

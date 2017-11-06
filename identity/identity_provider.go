@@ -69,7 +69,6 @@ func (model IdentityProvider) String() string {
 }
 
 type IdentityProviderLifecycleStateEnum string
-type IdentityProviderLifecycleState struct{}
 
 const (
 	IDENTITY_PROVIDER_LIFECYCLE_STATE_CREATING IdentityProviderLifecycleStateEnum = "CREATING"
@@ -89,7 +88,7 @@ var mapping_identityprovider_lifecycleState = map[string]IdentityProviderLifecyc
 	"UNKNOWN":  IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver IdentityProviderLifecycleState) Values() []IdentityProviderLifecycleStateEnum {
+func GetIdentityProviderLifecycleStateEnumValues() []IdentityProviderLifecycleStateEnum {
 	values := make([]IdentityProviderLifecycleStateEnum, 0)
 	for _, v := range mapping_identityprovider_lifecycleState {
 		if v != IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN {
@@ -97,20 +96,4 @@ func (receiver IdentityProviderLifecycleState) Values() []IdentityProviderLifecy
 		}
 	}
 	return values
-}
-
-func (receiver IdentityProviderLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if IdentityProviderLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver IdentityProviderLifecycleState) From(toBeConverted string) IdentityProviderLifecycleStateEnum {
-	if val, ok := mapping_identityprovider_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN
 }

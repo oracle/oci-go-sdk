@@ -73,7 +73,6 @@ func (model IScsiVolumeAttachment) String() string {
 }
 
 type IScsiVolumeAttachmentLifecycleStateEnum string
-type IScsiVolumeAttachmentLifecycleState struct{}
 
 const (
 	I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHING IScsiVolumeAttachmentLifecycleStateEnum = "ATTACHING"
@@ -91,7 +90,7 @@ var mapping_iscsivolumeattachment_lifecycleState = map[string]IScsiVolumeAttachm
 	"UNKNOWN":   I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver IScsiVolumeAttachmentLifecycleState) Values() []IScsiVolumeAttachmentLifecycleStateEnum {
+func GetIScsiVolumeAttachmentLifecycleStateEnumValues() []IScsiVolumeAttachmentLifecycleStateEnum {
 	values := make([]IScsiVolumeAttachmentLifecycleStateEnum, 0)
 	for _, v := range mapping_iscsivolumeattachment_lifecycleState {
 		if v != I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN {
@@ -99,20 +98,4 @@ func (receiver IScsiVolumeAttachmentLifecycleState) Values() []IScsiVolumeAttach
 		}
 	}
 	return values
-}
-
-func (receiver IScsiVolumeAttachmentLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if IScsiVolumeAttachmentLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver IScsiVolumeAttachmentLifecycleState) From(toBeConverted string) IScsiVolumeAttachmentLifecycleStateEnum {
-	if val, ok := mapping_iscsivolumeattachment_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN
 }

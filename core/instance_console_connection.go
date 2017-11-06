@@ -42,7 +42,6 @@ func (model InstanceConsoleConnection) String() string {
 }
 
 type InstanceConsoleConnectionLifecycleStateEnum string
-type InstanceConsoleConnectionLifecycleState struct{}
 
 const (
 	INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_ACTIVE   InstanceConsoleConnectionLifecycleStateEnum = "ACTIVE"
@@ -62,7 +61,7 @@ var mapping_instanceconsoleconnection_lifecycleState = map[string]InstanceConsol
 	"UNKNOWN":  INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver InstanceConsoleConnectionLifecycleState) Values() []InstanceConsoleConnectionLifecycleStateEnum {
+func GetInstanceConsoleConnectionLifecycleStateEnumValues() []InstanceConsoleConnectionLifecycleStateEnum {
 	values := make([]InstanceConsoleConnectionLifecycleStateEnum, 0)
 	for _, v := range mapping_instanceconsoleconnection_lifecycleState {
 		if v != INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_UNKNOWN {
@@ -70,20 +69,4 @@ func (receiver InstanceConsoleConnectionLifecycleState) Values() []InstanceConso
 		}
 	}
 	return values
-}
-
-func (receiver InstanceConsoleConnectionLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if InstanceConsoleConnectionLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver InstanceConsoleConnectionLifecycleState) From(toBeConverted string) InstanceConsoleConnectionLifecycleStateEnum {
-	if val, ok := mapping_instanceconsoleconnection_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_UNKNOWN
 }

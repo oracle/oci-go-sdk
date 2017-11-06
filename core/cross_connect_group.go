@@ -48,7 +48,6 @@ func (model CrossConnectGroup) String() string {
 }
 
 type CrossConnectGroupLifecycleStateEnum string
-type CrossConnectGroupLifecycleState struct{}
 
 const (
 	CROSS_CONNECT_GROUP_LIFECYCLE_STATE_PROVISIONING CrossConnectGroupLifecycleStateEnum = "PROVISIONING"
@@ -68,7 +67,7 @@ var mapping_crossconnectgroup_lifecycleState = map[string]CrossConnectGroupLifec
 	"UNKNOWN":      CROSS_CONNECT_GROUP_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver CrossConnectGroupLifecycleState) Values() []CrossConnectGroupLifecycleStateEnum {
+func GetCrossConnectGroupLifecycleStateEnumValues() []CrossConnectGroupLifecycleStateEnum {
 	values := make([]CrossConnectGroupLifecycleStateEnum, 0)
 	for _, v := range mapping_crossconnectgroup_lifecycleState {
 		if v != CROSS_CONNECT_GROUP_LIFECYCLE_STATE_UNKNOWN {
@@ -76,20 +75,4 @@ func (receiver CrossConnectGroupLifecycleState) Values() []CrossConnectGroupLife
 		}
 	}
 	return values
-}
-
-func (receiver CrossConnectGroupLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if CrossConnectGroupLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver CrossConnectGroupLifecycleState) From(toBeConverted string) CrossConnectGroupLifecycleStateEnum {
-	if val, ok := mapping_crossconnectgroup_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return CROSS_CONNECT_GROUP_LIFECYCLE_STATE_UNKNOWN
 }

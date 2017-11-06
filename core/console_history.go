@@ -48,7 +48,6 @@ func (model ConsoleHistory) String() string {
 }
 
 type ConsoleHistoryLifecycleStateEnum string
-type ConsoleHistoryLifecycleState struct{}
 
 const (
 	CONSOLE_HISTORY_LIFECYCLE_STATE_REQUESTED       ConsoleHistoryLifecycleStateEnum = "REQUESTED"
@@ -66,7 +65,7 @@ var mapping_consolehistory_lifecycleState = map[string]ConsoleHistoryLifecycleSt
 	"UNKNOWN":         CONSOLE_HISTORY_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver ConsoleHistoryLifecycleState) Values() []ConsoleHistoryLifecycleStateEnum {
+func GetConsoleHistoryLifecycleStateEnumValues() []ConsoleHistoryLifecycleStateEnum {
 	values := make([]ConsoleHistoryLifecycleStateEnum, 0)
 	for _, v := range mapping_consolehistory_lifecycleState {
 		if v != CONSOLE_HISTORY_LIFECYCLE_STATE_UNKNOWN {
@@ -74,20 +73,4 @@ func (receiver ConsoleHistoryLifecycleState) Values() []ConsoleHistoryLifecycleS
 		}
 	}
 	return values
-}
-
-func (receiver ConsoleHistoryLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if ConsoleHistoryLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver ConsoleHistoryLifecycleState) From(toBeConverted string) ConsoleHistoryLifecycleStateEnum {
-	if val, ok := mapping_consolehistory_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return CONSOLE_HISTORY_LIFECYCLE_STATE_UNKNOWN
 }

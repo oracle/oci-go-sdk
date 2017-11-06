@@ -74,7 +74,6 @@ func (model Vcn) String() string {
 }
 
 type VcnLifecycleStateEnum string
-type VcnLifecycleState struct{}
 
 const (
 	VCN_LIFECYCLE_STATE_PROVISIONING VcnLifecycleStateEnum = "PROVISIONING"
@@ -92,7 +91,7 @@ var mapping_vcn_lifecycleState = map[string]VcnLifecycleStateEnum{
 	"UNKNOWN":      VCN_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver VcnLifecycleState) Values() []VcnLifecycleStateEnum {
+func GetVcnLifecycleStateEnumValues() []VcnLifecycleStateEnum {
 	values := make([]VcnLifecycleStateEnum, 0)
 	for _, v := range mapping_vcn_lifecycleState {
 		if v != VCN_LIFECYCLE_STATE_UNKNOWN {
@@ -100,20 +99,4 @@ func (receiver VcnLifecycleState) Values() []VcnLifecycleStateEnum {
 		}
 	}
 	return values
-}
-
-func (receiver VcnLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VcnLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VcnLifecycleState) From(toBeConverted string) VcnLifecycleStateEnum {
-	if val, ok := mapping_vcn_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return VCN_LIFECYCLE_STATE_UNKNOWN
 }

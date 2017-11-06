@@ -62,7 +62,6 @@ func (model User) String() string {
 }
 
 type UserLifecycleStateEnum string
-type UserLifecycleState struct{}
 
 const (
 	USER_LIFECYCLE_STATE_CREATING UserLifecycleStateEnum = "CREATING"
@@ -82,7 +81,7 @@ var mapping_user_lifecycleState = map[string]UserLifecycleStateEnum{
 	"UNKNOWN":  USER_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver UserLifecycleState) Values() []UserLifecycleStateEnum {
+func GetUserLifecycleStateEnumValues() []UserLifecycleStateEnum {
 	values := make([]UserLifecycleStateEnum, 0)
 	for _, v := range mapping_user_lifecycleState {
 		if v != USER_LIFECYCLE_STATE_UNKNOWN {
@@ -90,20 +89,4 @@ func (receiver UserLifecycleState) Values() []UserLifecycleStateEnum {
 		}
 	}
 	return values
-}
-
-func (receiver UserLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if UserLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver UserLifecycleState) From(toBeConverted string) UserLifecycleStateEnum {
-	if val, ok := mapping_user_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return USER_LIFECYCLE_STATE_UNKNOWN
 }

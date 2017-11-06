@@ -90,7 +90,6 @@ func (model Instance) String() string {
 }
 
 type InstanceLifecycleStateEnum string
-type InstanceLifecycleState struct{}
 
 const (
 	INSTANCE_LIFECYCLE_STATE_PROVISIONING   InstanceLifecycleStateEnum = "PROVISIONING"
@@ -116,7 +115,7 @@ var mapping_instance_lifecycleState = map[string]InstanceLifecycleStateEnum{
 	"UNKNOWN":        INSTANCE_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver InstanceLifecycleState) Values() []InstanceLifecycleStateEnum {
+func GetInstanceLifecycleStateEnumValues() []InstanceLifecycleStateEnum {
 	values := make([]InstanceLifecycleStateEnum, 0)
 	for _, v := range mapping_instance_lifecycleState {
 		if v != INSTANCE_LIFECYCLE_STATE_UNKNOWN {
@@ -124,20 +123,4 @@ func (receiver InstanceLifecycleState) Values() []InstanceLifecycleStateEnum {
 		}
 	}
 	return values
-}
-
-func (receiver InstanceLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if InstanceLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver InstanceLifecycleState) From(toBeConverted string) InstanceLifecycleStateEnum {
-	if val, ok := mapping_instance_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return INSTANCE_LIFECYCLE_STATE_UNKNOWN
 }

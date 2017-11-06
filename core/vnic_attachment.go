@@ -58,7 +58,6 @@ func (model VnicAttachment) String() string {
 }
 
 type VnicAttachmentLifecycleStateEnum string
-type VnicAttachmentLifecycleState struct{}
 
 const (
 	VNIC_ATTACHMENT_LIFECYCLE_STATE_ATTACHING VnicAttachmentLifecycleStateEnum = "ATTACHING"
@@ -76,7 +75,7 @@ var mapping_vnicattachment_lifecycleState = map[string]VnicAttachmentLifecycleSt
 	"UNKNOWN":   VNIC_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver VnicAttachmentLifecycleState) Values() []VnicAttachmentLifecycleStateEnum {
+func GetVnicAttachmentLifecycleStateEnumValues() []VnicAttachmentLifecycleStateEnum {
 	values := make([]VnicAttachmentLifecycleStateEnum, 0)
 	for _, v := range mapping_vnicattachment_lifecycleState {
 		if v != VNIC_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN {
@@ -84,20 +83,4 @@ func (receiver VnicAttachmentLifecycleState) Values() []VnicAttachmentLifecycleS
 		}
 	}
 	return values
-}
-
-func (receiver VnicAttachmentLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VnicAttachmentLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VnicAttachmentLifecycleState) From(toBeConverted string) VnicAttachmentLifecycleStateEnum {
-	if val, ok := mapping_vnicattachment_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return VNIC_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN
 }
