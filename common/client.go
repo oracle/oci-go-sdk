@@ -197,3 +197,10 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 	err = checkForSuccessfulResponse(response)
 	return
 }
+
+//Closes the body of an http reponse if the response and the body are valid
+func CloseBodyIfValid(httpResponse *http.Response) {
+	if httpResponse != nil && httpResponse.Body != nil {
+		httpResponse.Body.Close()
+	}
+}
