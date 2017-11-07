@@ -20,18 +20,12 @@ type ObjectStorageClient struct {
 }
 
 //Create a new default ObjectStorage client for a given region
-func NewClientForRegion(region common.Region) (client ObjectStorageClient) {
+func NewObjectStorageClientForRegion(region common.Region) (client ObjectStorageClient) {
 	client = ObjectStorageClient{BaseClient: common.NewClientForRegion(region)}
 
 	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "objectstorage", string(region))
 	client.BasePath = "20160918"
 	return
-}
-
-func closeIfValid(httpResponse *http.Response) {
-	if httpResponse != nil && httpResponse.Body != nil {
-		httpResponse.Body.Close()
-	}
 }
 
 // Aborts an in-progress multipart upload and deletes all parts that have been uploaded.
@@ -67,7 +61,7 @@ func (client ObjectStorageClient) CreateBucket(ctx context.Context, request Crea
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -85,7 +79,7 @@ func (client ObjectStorageClient) CreateMultipartUpload(ctx context.Context, req
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -103,7 +97,7 @@ func (client ObjectStorageClient) CreatePreauthenticatedRequest(ctx context.Cont
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -154,7 +148,7 @@ func (client ObjectStorageClient) GetBucket(ctx context.Context, request GetBuck
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -173,7 +167,7 @@ func (client ObjectStorageClient) GetNamespace(ctx context.Context, request GetN
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -191,7 +185,7 @@ func (client ObjectStorageClient) GetObject(ctx context.Context, request GetObje
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -209,7 +203,7 @@ func (client ObjectStorageClient) GetPreauthenticatedRequest(ctx context.Context
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -253,7 +247,7 @@ func (client ObjectStorageClient) ListBuckets(ctx context.Context, request ListB
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -271,7 +265,7 @@ func (client ObjectStorageClient) ListMultipartUploadParts(ctx context.Context, 
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -289,7 +283,7 @@ func (client ObjectStorageClient) ListMultipartUploads(ctx context.Context, requ
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -310,7 +304,7 @@ func (client ObjectStorageClient) ListObjects(ctx context.Context, request ListO
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -328,7 +322,7 @@ func (client ObjectStorageClient) ListPreauthenticatedRequests(ctx context.Conte
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
@@ -360,7 +354,7 @@ func (client ObjectStorageClient) UpdateBucket(ctx context.Context, request Upda
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer closeIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return
