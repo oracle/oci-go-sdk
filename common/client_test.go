@@ -1,13 +1,13 @@
 package common
 
 import (
-	"testing"
+	"bytes"
+	"context"
 	"github.com/stretchr/testify/assert"
+	"io/ioutil"
 	"net/http"
 	"net/url"
-	"context"
-	"bytes"
-	"io/ioutil"
+	"testing"
 )
 
 func TestClient_prepareRequestDefScheme(t *testing.T) {
@@ -15,15 +15,15 @@ func TestClient_prepareRequestDefScheme(t *testing.T) {
 	basePath := "basePath"
 	restPath := "somepath"
 
-	c := BaseClient{UserAgent:"asdf"}
+	c := BaseClient{UserAgent: "asdf"}
 	c.Host = host
 	c.BasePath = basePath
 
 	request := http.Request{}
 	request.URL = &url.URL{Path: restPath}
 	c.prepareRequest(&request)
-	assert.Equal(t, "https",request.URL.Scheme)
-	assert.Equal(t,host, request.URL.Host)
+	assert.Equal(t, "https", request.URL.Scheme)
+	assert.Equal(t, host, request.URL.Host)
 }
 
 func TestClient_prepareRequestSetScheme(t *testing.T) {
@@ -31,17 +31,16 @@ func TestClient_prepareRequestSetScheme(t *testing.T) {
 	basePath := "basePath"
 	restPath := "somepath"
 
-	c := BaseClient{UserAgent:"asdf"}
+	c := BaseClient{UserAgent: "asdf"}
 	c.Host = host
 	c.BasePath = basePath
 
 	request := http.Request{}
 	request.URL = &url.URL{Path: restPath}
 	c.prepareRequest(&request)
-	assert.Equal(t, "http",request.URL.Scheme)
-	assert.Equal(t,"somehost:9000", request.URL.Host)
+	assert.Equal(t, "http", request.URL.Scheme)
+	assert.Equal(t, "somehost:9000", request.URL.Host)
 }
-
 
 func TestClient_containsUserAgent(t *testing.T) {
 	host := "http://somehost:9000"
@@ -77,7 +76,6 @@ func TestClient_userAgentBlank(t *testing.T) {
 	assert.Error(t, e)
 }
 
-
 func TestClient_clientForRegion(t *testing.T) {
 	region := REGION_PHX
 	c := NewClientForRegion(region)
@@ -111,16 +109,16 @@ func TestClient_customClientForRegion(t *testing.T) {
 	assert.Equal(t, REGION_IAD, c.Region)
 	assert.Nil(t, c.Interceptor)
 	assert.NotNil(t, c.Signer)
-	assert.Equal(t, "http",request.URL.Scheme)
-	assert.Equal(t,"somehost:9000", request.URL.Host)
+	assert.Equal(t, "http", request.URL.Scheme)
+	assert.Equal(t, "somehost:9000", request.URL.Host)
 }
 
 type fakeCaller struct {
 	CustomResponse *http.Response
-	Customcall func(r *http.Request)(*http.Response, error)
+	Customcall     func(r *http.Request) (*http.Response, error)
 }
 
-func (f fakeCaller) Do(req *http.Request)(*http.Response, error) {
+func (f fakeCaller) Do(req *http.Request) (*http.Response, error) {
 	if f.CustomResponse != nil {
 		return f.CustomResponse, nil
 	}
@@ -129,8 +127,8 @@ func (f fakeCaller) Do(req *http.Request)(*http.Response, error) {
 
 func TestBaseClient_Call(t *testing.T) {
 	response := http.Response{
-		Header:http.Header{},
-		StatusCode:200,
+		Header:     http.Header{},
+		StatusCode: 200,
 	}
 	body := `{"key" : "REGION_FRA","name" : "eu-frankfurt-1"}`
 	c := NewClientForRegion(REGION_IAD)
@@ -141,7 +139,7 @@ func TestBaseClient_Call(t *testing.T) {
 		Customcall: func(r *http.Request) (*http.Response, error) {
 			assert.Equal(t, "somehost:9000", r.URL.Host)
 			assert.Equal(t, defaultUserAgent(), r.UserAgent())
-			assert.Contains(t,r.Header.Get("Authorization"), "signature")
+			assert.Contains(t, r.Header.Get("Authorization"), "signature")
 			assert.Contains(t, r.URL.Path, "basePath/somepath")
 			bodyBuffer := bytes.NewBufferString(body)
 			response.Body = ioutil.NopCloser(bodyBuffer)
@@ -163,8 +161,8 @@ func TestBaseClient_Call(t *testing.T) {
 
 func TestBaseClient_CallError(t *testing.T) {
 	response := http.Response{
-		Header:http.Header{},
-		StatusCode:400,
+		Header:     http.Header{},
+		StatusCode: 400,
 	}
 	body := `{"code" : "some fake error","message" : "fake error not here"}`
 	c := NewClientForRegion(REGION_IAD)
@@ -175,7 +173,7 @@ func TestBaseClient_CallError(t *testing.T) {
 		Customcall: func(r *http.Request) (*http.Response, error) {
 			assert.Equal(t, "somehost:9000", r.URL.Host)
 			assert.Equal(t, defaultUserAgent(), r.UserAgent())
-			assert.Contains(t,r.Header.Get("Authorization"), "signature")
+			assert.Contains(t, r.Header.Get("Authorization"), "signature")
 			assert.Contains(t, r.URL.Path, "basePath/somepath")
 			bodyBuffer := bytes.NewBufferString(body)
 			response.Body = ioutil.NopCloser(bodyBuffer)

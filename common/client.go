@@ -1,15 +1,15 @@
 package common
 
 import (
-	"strings"
+	"context"
 	"fmt"
+	"net/http"
+	"net/http/httputil"
 	"net/url"
 	"path"
-	"net/http/httputil"
-	"time"
 	"runtime"
-	"net/http"
-	"context"
+	"strings"
+	"time"
 )
 
 const (
@@ -113,7 +113,6 @@ func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
 	}
 	request.Header.Set("User-Agent", client.UserAgent)
 
-
 	if !strings.Contains(client.Host, "http") &&
 		!strings.Contains(client.Host, "https") {
 		client.Host = fmt.Sprintf("%s://%s", defaultScheme, client.Host)
@@ -197,4 +196,11 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 
 	err = checkForSuccessfulResponse(response)
 	return
+}
+
+//Closes the body of an http reponse if the response and the body are valid
+func CloseBodyIfValid(httpResponse *http.Response) {
+	if httpResponse != nil && httpResponse.Body != nil {
+		httpResponse.Body.Close()
+	}
 }
