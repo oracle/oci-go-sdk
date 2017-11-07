@@ -66,7 +66,6 @@ func (model UpdateVirtualCircuitDetails) String() string {
 }
 
 type UpdateVirtualCircuitDetailsProviderStateEnum string
-type UpdateVirtualCircuitDetailsProviderState struct{}
 
 const (
 	UPDATE_VIRTUAL_CIRCUIT_DETAILS_PROVIDER_STATE_ACTIVE   UpdateVirtualCircuitDetailsProviderStateEnum = "ACTIVE"
@@ -80,7 +79,7 @@ var mapping_updatevirtualcircuitdetails_providerState = map[string]UpdateVirtual
 	"UNKNOWN":  UPDATE_VIRTUAL_CIRCUIT_DETAILS_PROVIDER_STATE_UNKNOWN,
 }
 
-func (receiver UpdateVirtualCircuitDetailsProviderState) Values() []UpdateVirtualCircuitDetailsProviderStateEnum {
+func GetUpdateVirtualCircuitDetailsProviderStateEnumValues() []UpdateVirtualCircuitDetailsProviderStateEnum {
 	values := make([]UpdateVirtualCircuitDetailsProviderStateEnum, 0)
 	for _, v := range mapping_updatevirtualcircuitdetails_providerState {
 		if v != UPDATE_VIRTUAL_CIRCUIT_DETAILS_PROVIDER_STATE_UNKNOWN {
@@ -88,20 +87,4 @@ func (receiver UpdateVirtualCircuitDetailsProviderState) Values() []UpdateVirtua
 		}
 	}
 	return values
-}
-
-func (receiver UpdateVirtualCircuitDetailsProviderState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if UpdateVirtualCircuitDetailsProviderStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver UpdateVirtualCircuitDetailsProviderState) From(toBeConverted string) UpdateVirtualCircuitDetailsProviderStateEnum {
-	if val, ok := mapping_updatevirtualcircuitdetails_providerState[toBeConverted]; ok {
-		return val
-	}
-	return UPDATE_VIRTUAL_CIRCUIT_DETAILS_PROVIDER_STATE_UNKNOWN
 }

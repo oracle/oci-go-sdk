@@ -40,7 +40,6 @@ func (model UiPassword) String() string {
 }
 
 type UiPasswordLifecycleStateEnum string
-type UiPasswordLifecycleState struct{}
 
 const (
 	UI_PASSWORD_LIFECYCLE_STATE_CREATING UiPasswordLifecycleStateEnum = "CREATING"
@@ -60,7 +59,7 @@ var mapping_uipassword_lifecycleState = map[string]UiPasswordLifecycleStateEnum{
 	"UNKNOWN":  UI_PASSWORD_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver UiPasswordLifecycleState) Values() []UiPasswordLifecycleStateEnum {
+func GetUiPasswordLifecycleStateEnumValues() []UiPasswordLifecycleStateEnum {
 	values := make([]UiPasswordLifecycleStateEnum, 0)
 	for _, v := range mapping_uipassword_lifecycleState {
 		if v != UI_PASSWORD_LIFECYCLE_STATE_UNKNOWN {
@@ -68,20 +67,4 @@ func (receiver UiPasswordLifecycleState) Values() []UiPasswordLifecycleStateEnum
 		}
 	}
 	return values
-}
-
-func (receiver UiPasswordLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if UiPasswordLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver UiPasswordLifecycleState) From(toBeConverted string) UiPasswordLifecycleStateEnum {
-	if val, ok := mapping_uipassword_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return UI_PASSWORD_LIFECYCLE_STATE_UNKNOWN
 }

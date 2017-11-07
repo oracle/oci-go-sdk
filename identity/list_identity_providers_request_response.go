@@ -52,7 +52,6 @@ func (response ListIdentityProvidersResponse) String() string {
 }
 
 type ListIdentityProvidersProtocolEnum string
-type ListIdentityProvidersProtocol struct{}
 
 const (
 	LIST_IDENTITY_PROVIDERS_PROTOCOL_SAML2   ListIdentityProvidersProtocolEnum = "SAML2"
@@ -64,7 +63,7 @@ var mapping_Identity_protocol = map[string]ListIdentityProvidersProtocolEnum{
 	"UNKNOWN": LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN,
 }
 
-func (receiver ListIdentityProvidersProtocol) Values() []ListIdentityProvidersProtocolEnum {
+func GetListIdentityProvidersProtocolEnumValues() []ListIdentityProvidersProtocolEnum {
 	values := make([]ListIdentityProvidersProtocolEnum, 0)
 	for _, v := range mapping_Identity_protocol {
 		if v != LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN {
@@ -72,20 +71,4 @@ func (receiver ListIdentityProvidersProtocol) Values() []ListIdentityProvidersPr
 		}
 	}
 	return values
-}
-
-func (receiver ListIdentityProvidersProtocol) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if ListIdentityProvidersProtocolEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver ListIdentityProvidersProtocol) From(toBeConverted string) ListIdentityProvidersProtocolEnum {
-	if val, ok := mapping_Identity_protocol[toBeConverted]; ok {
-		return val
-	}
-	return LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN
 }

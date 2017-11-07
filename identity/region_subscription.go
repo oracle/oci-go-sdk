@@ -45,7 +45,6 @@ func (model RegionSubscription) String() string {
 }
 
 type RegionSubscriptionStatusEnum string
-type RegionSubscriptionStatus struct{}
 
 const (
 	REGION_SUBSCRIPTION_STATUS_READY       RegionSubscriptionStatusEnum = "READY"
@@ -59,7 +58,7 @@ var mapping_regionsubscription_status = map[string]RegionSubscriptionStatusEnum{
 	"UNKNOWN":     REGION_SUBSCRIPTION_STATUS_UNKNOWN,
 }
 
-func (receiver RegionSubscriptionStatus) Values() []RegionSubscriptionStatusEnum {
+func GetRegionSubscriptionStatusEnumValues() []RegionSubscriptionStatusEnum {
 	values := make([]RegionSubscriptionStatusEnum, 0)
 	for _, v := range mapping_regionsubscription_status {
 		if v != REGION_SUBSCRIPTION_STATUS_UNKNOWN {
@@ -67,20 +66,4 @@ func (receiver RegionSubscriptionStatus) Values() []RegionSubscriptionStatusEnum
 		}
 	}
 	return values
-}
-
-func (receiver RegionSubscriptionStatus) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if RegionSubscriptionStatusEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver RegionSubscriptionStatus) From(toBeConverted string) RegionSubscriptionStatusEnum {
-	if val, ok := mapping_regionsubscription_status[toBeConverted]; ok {
-		return val
-	}
-	return REGION_SUBSCRIPTION_STATUS_UNKNOWN
 }

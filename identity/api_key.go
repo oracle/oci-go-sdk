@@ -51,7 +51,6 @@ func (model ApiKey) String() string {
 }
 
 type ApiKeyLifecycleStateEnum string
-type ApiKeyLifecycleState struct{}
 
 const (
 	API_KEY_LIFECYCLE_STATE_CREATING ApiKeyLifecycleStateEnum = "CREATING"
@@ -71,7 +70,7 @@ var mapping_apikey_lifecycleState = map[string]ApiKeyLifecycleStateEnum{
 	"UNKNOWN":  API_KEY_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver ApiKeyLifecycleState) Values() []ApiKeyLifecycleStateEnum {
+func GetApiKeyLifecycleStateEnumValues() []ApiKeyLifecycleStateEnum {
 	values := make([]ApiKeyLifecycleStateEnum, 0)
 	for _, v := range mapping_apikey_lifecycleState {
 		if v != API_KEY_LIFECYCLE_STATE_UNKNOWN {
@@ -79,20 +78,4 @@ func (receiver ApiKeyLifecycleState) Values() []ApiKeyLifecycleStateEnum {
 		}
 	}
 	return values
-}
-
-func (receiver ApiKeyLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if ApiKeyLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver ApiKeyLifecycleState) From(toBeConverted string) ApiKeyLifecycleStateEnum {
-	if val, ok := mapping_apikey_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return API_KEY_LIFECYCLE_STATE_UNKNOWN
 }

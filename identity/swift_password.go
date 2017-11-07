@@ -54,7 +54,6 @@ func (model SwiftPassword) String() string {
 }
 
 type SwiftPasswordLifecycleStateEnum string
-type SwiftPasswordLifecycleState struct{}
 
 const (
 	SWIFT_PASSWORD_LIFECYCLE_STATE_CREATING SwiftPasswordLifecycleStateEnum = "CREATING"
@@ -74,7 +73,7 @@ var mapping_swiftpassword_lifecycleState = map[string]SwiftPasswordLifecycleStat
 	"UNKNOWN":  SWIFT_PASSWORD_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver SwiftPasswordLifecycleState) Values() []SwiftPasswordLifecycleStateEnum {
+func GetSwiftPasswordLifecycleStateEnumValues() []SwiftPasswordLifecycleStateEnum {
 	values := make([]SwiftPasswordLifecycleStateEnum, 0)
 	for _, v := range mapping_swiftpassword_lifecycleState {
 		if v != SWIFT_PASSWORD_LIFECYCLE_STATE_UNKNOWN {
@@ -82,20 +81,4 @@ func (receiver SwiftPasswordLifecycleState) Values() []SwiftPasswordLifecycleSta
 		}
 	}
 	return values
-}
-
-func (receiver SwiftPasswordLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if SwiftPasswordLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver SwiftPasswordLifecycleState) From(toBeConverted string) SwiftPasswordLifecycleStateEnum {
-	if val, ok := mapping_swiftpassword_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return SWIFT_PASSWORD_LIFECYCLE_STATE_UNKNOWN
 }

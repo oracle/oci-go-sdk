@@ -45,7 +45,6 @@ func (model UserGroupMembership) String() string {
 }
 
 type UserGroupMembershipLifecycleStateEnum string
-type UserGroupMembershipLifecycleState struct{}
 
 const (
 	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_CREATING UserGroupMembershipLifecycleStateEnum = "CREATING"
@@ -65,7 +64,7 @@ var mapping_usergroupmembership_lifecycleState = map[string]UserGroupMembershipL
 	"UNKNOWN":  USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver UserGroupMembershipLifecycleState) Values() []UserGroupMembershipLifecycleStateEnum {
+func GetUserGroupMembershipLifecycleStateEnumValues() []UserGroupMembershipLifecycleStateEnum {
 	values := make([]UserGroupMembershipLifecycleStateEnum, 0)
 	for _, v := range mapping_usergroupmembership_lifecycleState {
 		if v != USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_UNKNOWN {
@@ -73,20 +72,4 @@ func (receiver UserGroupMembershipLifecycleState) Values() []UserGroupMembership
 		}
 	}
 	return values
-}
-
-func (receiver UserGroupMembershipLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if UserGroupMembershipLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver UserGroupMembershipLifecycleState) From(toBeConverted string) UserGroupMembershipLifecycleStateEnum {
-	if val, ok := mapping_usergroupmembership_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_UNKNOWN
 }

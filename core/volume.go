@@ -52,7 +52,6 @@ func (model Volume) String() string {
 }
 
 type VolumeLifecycleStateEnum string
-type VolumeLifecycleState struct{}
 
 const (
 	VOLUME_LIFECYCLE_STATE_PROVISIONING VolumeLifecycleStateEnum = "PROVISIONING"
@@ -74,7 +73,7 @@ var mapping_volume_lifecycleState = map[string]VolumeLifecycleStateEnum{
 	"UNKNOWN":      VOLUME_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver VolumeLifecycleState) Values() []VolumeLifecycleStateEnum {
+func GetVolumeLifecycleStateEnumValues() []VolumeLifecycleStateEnum {
 	values := make([]VolumeLifecycleStateEnum, 0)
 	for _, v := range mapping_volume_lifecycleState {
 		if v != VOLUME_LIFECYCLE_STATE_UNKNOWN {
@@ -82,20 +81,4 @@ func (receiver VolumeLifecycleState) Values() []VolumeLifecycleStateEnum {
 		}
 	}
 	return values
-}
-
-func (receiver VolumeLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VolumeLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VolumeLifecycleState) From(toBeConverted string) VolumeLifecycleStateEnum {
-	if val, ok := mapping_volume_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return VOLUME_LIFECYCLE_STATE_UNKNOWN
 }

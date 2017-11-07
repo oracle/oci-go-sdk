@@ -33,7 +33,6 @@ func (model CreatePreauthenticatedRequestDetails) String() string {
 }
 
 type CreatePreauthenticatedRequestDetailsAccessTypeEnum string
-type CreatePreauthenticatedRequestDetailsAccessType struct{}
 
 const (
 	CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_OBJECTREAD      CreatePreauthenticatedRequestDetailsAccessTypeEnum = "ObjectRead"
@@ -51,7 +50,7 @@ var mapping_createpreauthenticatedrequestdetails_accessType = map[string]CreateP
 	"UNKNOWN":         CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_UNKNOWN,
 }
 
-func (receiver CreatePreauthenticatedRequestDetailsAccessType) Values() []CreatePreauthenticatedRequestDetailsAccessTypeEnum {
+func GetCreatePreauthenticatedRequestDetailsAccessTypeEnumValues() []CreatePreauthenticatedRequestDetailsAccessTypeEnum {
 	values := make([]CreatePreauthenticatedRequestDetailsAccessTypeEnum, 0)
 	for _, v := range mapping_createpreauthenticatedrequestdetails_accessType {
 		if v != CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_UNKNOWN {
@@ -59,20 +58,4 @@ func (receiver CreatePreauthenticatedRequestDetailsAccessType) Values() []Create
 		}
 	}
 	return values
-}
-
-func (receiver CreatePreauthenticatedRequestDetailsAccessType) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if CreatePreauthenticatedRequestDetailsAccessTypeEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver CreatePreauthenticatedRequestDetailsAccessType) From(toBeConverted string) CreatePreauthenticatedRequestDetailsAccessTypeEnum {
-	if val, ok := mapping_createpreauthenticatedrequestdetails_accessType[toBeConverted]; ok {
-		return val
-	}
-	return CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_UNKNOWN
 }

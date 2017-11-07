@@ -43,7 +43,6 @@ func (model FastConnectProviderService) String() string {
 }
 
 type FastConnectProviderServicePrivatePeeringBgpManagementEnum string
-type FastConnectProviderServicePrivatePeeringBgpManagement struct{}
 
 const (
 	FAST_CONNECT_PROVIDER_SERVICE_PRIVATE_PEERING_BGP_MANAGEMENT_CUSTOMER_MANAGED FastConnectProviderServicePrivatePeeringBgpManagementEnum = "CUSTOMER_MANAGED"
@@ -59,7 +58,7 @@ var mapping_fastconnectproviderservice_privatePeeringBgpManagement = map[string]
 	"UNKNOWN":          FAST_CONNECT_PROVIDER_SERVICE_PRIVATE_PEERING_BGP_MANAGEMENT_UNKNOWN,
 }
 
-func (receiver FastConnectProviderServicePrivatePeeringBgpManagement) Values() []FastConnectProviderServicePrivatePeeringBgpManagementEnum {
+func GetFastConnectProviderServicePrivatePeeringBgpManagementEnumValues() []FastConnectProviderServicePrivatePeeringBgpManagementEnum {
 	values := make([]FastConnectProviderServicePrivatePeeringBgpManagementEnum, 0)
 	for _, v := range mapping_fastconnectproviderservice_privatePeeringBgpManagement {
 		if v != FAST_CONNECT_PROVIDER_SERVICE_PRIVATE_PEERING_BGP_MANAGEMENT_UNKNOWN {
@@ -69,24 +68,7 @@ func (receiver FastConnectProviderServicePrivatePeeringBgpManagement) Values() [
 	return values
 }
 
-func (receiver FastConnectProviderServicePrivatePeeringBgpManagement) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if FastConnectProviderServicePrivatePeeringBgpManagementEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver FastConnectProviderServicePrivatePeeringBgpManagement) From(toBeConverted string) FastConnectProviderServicePrivatePeeringBgpManagementEnum {
-	if val, ok := mapping_fastconnectproviderservice_privatePeeringBgpManagement[toBeConverted]; ok {
-		return val
-	}
-	return FAST_CONNECT_PROVIDER_SERVICE_PRIVATE_PEERING_BGP_MANAGEMENT_UNKNOWN
-}
-
 type FastConnectProviderServicePublicPeeringBgpManagementEnum string
-type FastConnectProviderServicePublicPeeringBgpManagement struct{}
 
 const (
 	FAST_CONNECT_PROVIDER_SERVICE_PUBLIC_PEERING_BGP_MANAGEMENT_CUSTOMER_MANAGED FastConnectProviderServicePublicPeeringBgpManagementEnum = "CUSTOMER_MANAGED"
@@ -102,7 +84,7 @@ var mapping_fastconnectproviderservice_publicPeeringBgpManagement = map[string]F
 	"UNKNOWN":          FAST_CONNECT_PROVIDER_SERVICE_PUBLIC_PEERING_BGP_MANAGEMENT_UNKNOWN,
 }
 
-func (receiver FastConnectProviderServicePublicPeeringBgpManagement) Values() []FastConnectProviderServicePublicPeeringBgpManagementEnum {
+func GetFastConnectProviderServicePublicPeeringBgpManagementEnumValues() []FastConnectProviderServicePublicPeeringBgpManagementEnum {
 	values := make([]FastConnectProviderServicePublicPeeringBgpManagementEnum, 0)
 	for _, v := range mapping_fastconnectproviderservice_publicPeeringBgpManagement {
 		if v != FAST_CONNECT_PROVIDER_SERVICE_PUBLIC_PEERING_BGP_MANAGEMENT_UNKNOWN {
@@ -112,24 +94,7 @@ func (receiver FastConnectProviderServicePublicPeeringBgpManagement) Values() []
 	return values
 }
 
-func (receiver FastConnectProviderServicePublicPeeringBgpManagement) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if FastConnectProviderServicePublicPeeringBgpManagementEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver FastConnectProviderServicePublicPeeringBgpManagement) From(toBeConverted string) FastConnectProviderServicePublicPeeringBgpManagementEnum {
-	if val, ok := mapping_fastconnectproviderservice_publicPeeringBgpManagement[toBeConverted]; ok {
-		return val
-	}
-	return FAST_CONNECT_PROVIDER_SERVICE_PUBLIC_PEERING_BGP_MANAGEMENT_UNKNOWN
-}
-
 type FastConnectProviderServiceType_Enum string
-type FastConnectProviderServiceType_ struct{}
 
 const (
 	FAST_CONNECT_PROVIDER_SERVICE_TYPE__LAYER2  FastConnectProviderServiceType_Enum = "LAYER2"
@@ -143,7 +108,7 @@ var mapping_fastconnectproviderservice_type = map[string]FastConnectProviderServ
 	"UNKNOWN": FAST_CONNECT_PROVIDER_SERVICE_TYPE__UNKNOWN,
 }
 
-func (receiver FastConnectProviderServiceType_) Values() []FastConnectProviderServiceType_Enum {
+func GetFastConnectProviderServiceType_EnumValues() []FastConnectProviderServiceType_Enum {
 	values := make([]FastConnectProviderServiceType_Enum, 0)
 	for _, v := range mapping_fastconnectproviderservice_type {
 		if v != FAST_CONNECT_PROVIDER_SERVICE_TYPE__UNKNOWN {
@@ -151,20 +116,4 @@ func (receiver FastConnectProviderServiceType_) Values() []FastConnectProviderSe
 		}
 	}
 	return values
-}
-
-func (receiver FastConnectProviderServiceType_) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if FastConnectProviderServiceType_Enum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver FastConnectProviderServiceType_) From(toBeConverted string) FastConnectProviderServiceType_Enum {
-	if val, ok := mapping_fastconnectproviderservice_type[toBeConverted]; ok {
-		return val
-	}
-	return FAST_CONNECT_PROVIDER_SERVICE_TYPE__UNKNOWN
 }

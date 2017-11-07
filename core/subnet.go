@@ -104,7 +104,6 @@ func (model Subnet) String() string {
 }
 
 type SubnetLifecycleStateEnum string
-type SubnetLifecycleState struct{}
 
 const (
 	SUBNET_LIFECYCLE_STATE_PROVISIONING SubnetLifecycleStateEnum = "PROVISIONING"
@@ -122,7 +121,7 @@ var mapping_subnet_lifecycleState = map[string]SubnetLifecycleStateEnum{
 	"UNKNOWN":      SUBNET_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver SubnetLifecycleState) Values() []SubnetLifecycleStateEnum {
+func GetSubnetLifecycleStateEnumValues() []SubnetLifecycleStateEnum {
 	values := make([]SubnetLifecycleStateEnum, 0)
 	for _, v := range mapping_subnet_lifecycleState {
 		if v != SUBNET_LIFECYCLE_STATE_UNKNOWN {
@@ -130,20 +129,4 @@ func (receiver SubnetLifecycleState) Values() []SubnetLifecycleStateEnum {
 		}
 	}
 	return values
-}
-
-func (receiver SubnetLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if SubnetLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver SubnetLifecycleState) From(toBeConverted string) SubnetLifecycleStateEnum {
-	if val, ok := mapping_subnet_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return SUBNET_LIFECYCLE_STATE_UNKNOWN
 }

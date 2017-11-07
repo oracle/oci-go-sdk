@@ -35,7 +35,6 @@ func (model UpdateSaml2IdentityProviderDetails) String() string {
 }
 
 type UpdateSaml2IdentityProviderDetailsProtocolEnum string
-type UpdateSaml2IdentityProviderDetailsProtocol struct{}
 
 const (
 	UPDATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2   UpdateSaml2IdentityProviderDetailsProtocolEnum = "SAML2"
@@ -47,7 +46,7 @@ var mapping_updatesaml2identityproviderdetails_protocol = map[string]UpdateSaml2
 	"UNKNOWN": UPDATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN,
 }
 
-func (receiver UpdateSaml2IdentityProviderDetailsProtocol) Values() []UpdateSaml2IdentityProviderDetailsProtocolEnum {
+func GetUpdateSaml2IdentityProviderDetailsProtocolEnumValues() []UpdateSaml2IdentityProviderDetailsProtocolEnum {
 	values := make([]UpdateSaml2IdentityProviderDetailsProtocolEnum, 0)
 	for _, v := range mapping_updatesaml2identityproviderdetails_protocol {
 		if v != UPDATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN {
@@ -55,20 +54,4 @@ func (receiver UpdateSaml2IdentityProviderDetailsProtocol) Values() []UpdateSaml
 		}
 	}
 	return values
-}
-
-func (receiver UpdateSaml2IdentityProviderDetailsProtocol) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if UpdateSaml2IdentityProviderDetailsProtocolEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver UpdateSaml2IdentityProviderDetailsProtocol) From(toBeConverted string) UpdateSaml2IdentityProviderDetailsProtocolEnum {
-	if val, ok := mapping_updatesaml2identityproviderdetails_protocol[toBeConverted]; ok {
-		return val
-	}
-	return UPDATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN
 }

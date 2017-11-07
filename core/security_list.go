@@ -57,7 +57,6 @@ func (model SecurityList) String() string {
 }
 
 type SecurityListLifecycleStateEnum string
-type SecurityListLifecycleState struct{}
 
 const (
 	SECURITY_LIST_LIFECYCLE_STATE_PROVISIONING SecurityListLifecycleStateEnum = "PROVISIONING"
@@ -75,7 +74,7 @@ var mapping_securitylist_lifecycleState = map[string]SecurityListLifecycleStateE
 	"UNKNOWN":      SECURITY_LIST_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver SecurityListLifecycleState) Values() []SecurityListLifecycleStateEnum {
+func GetSecurityListLifecycleStateEnumValues() []SecurityListLifecycleStateEnum {
 	values := make([]SecurityListLifecycleStateEnum, 0)
 	for _, v := range mapping_securitylist_lifecycleState {
 		if v != SECURITY_LIST_LIFECYCLE_STATE_UNKNOWN {
@@ -83,20 +82,4 @@ func (receiver SecurityListLifecycleState) Values() []SecurityListLifecycleState
 		}
 	}
 	return values
-}
-
-func (receiver SecurityListLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if SecurityListLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver SecurityListLifecycleState) From(toBeConverted string) SecurityListLifecycleStateEnum {
-	if val, ok := mapping_securitylist_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return SECURITY_LIST_LIFECYCLE_STATE_UNKNOWN
 }

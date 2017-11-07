@@ -56,7 +56,6 @@ func (response InstanceActionResponse) String() string {
 }
 
 type InstanceActionActionEnum string
-type InstanceActionAction struct{}
 
 const (
 	INSTANCE_ACTION_ACTION_STOP      InstanceActionActionEnum = "STOP"
@@ -74,7 +73,7 @@ var mapping_Compute_action = map[string]InstanceActionActionEnum{
 	"UNKNOWN":   INSTANCE_ACTION_ACTION_UNKNOWN,
 }
 
-func (receiver InstanceActionAction) Values() []InstanceActionActionEnum {
+func GetInstanceActionActionEnumValues() []InstanceActionActionEnum {
 	values := make([]InstanceActionActionEnum, 0)
 	for _, v := range mapping_Compute_action {
 		if v != INSTANCE_ACTION_ACTION_UNKNOWN {
@@ -82,20 +81,4 @@ func (receiver InstanceActionAction) Values() []InstanceActionActionEnum {
 		}
 	}
 	return values
-}
-
-func (receiver InstanceActionAction) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if InstanceActionActionEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver InstanceActionAction) From(toBeConverted string) InstanceActionActionEnum {
-	if val, ok := mapping_Compute_action[toBeConverted]; ok {
-		return val
-	}
-	return INSTANCE_ACTION_ACTION_UNKNOWN
 }

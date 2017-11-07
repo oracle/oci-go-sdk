@@ -73,7 +73,6 @@ func (response ListObjectsResponse) String() string {
 }
 
 type ListObjectsFieldsEnum string
-type ListObjectsFields struct{}
 
 const (
 	LIST_OBJECTS_FIELDS_NAME        ListObjectsFieldsEnum = "name"
@@ -91,7 +90,7 @@ var mapping_ObjectStorage_fields = map[string]ListObjectsFieldsEnum{
 	"UNKNOWN":     LIST_OBJECTS_FIELDS_UNKNOWN,
 }
 
-func (receiver ListObjectsFields) Values() []ListObjectsFieldsEnum {
+func GetListObjectsFieldsEnumValues() []ListObjectsFieldsEnum {
 	values := make([]ListObjectsFieldsEnum, 0)
 	for _, v := range mapping_ObjectStorage_fields {
 		if v != LIST_OBJECTS_FIELDS_UNKNOWN {
@@ -99,20 +98,4 @@ func (receiver ListObjectsFields) Values() []ListObjectsFieldsEnum {
 		}
 	}
 	return values
-}
-
-func (receiver ListObjectsFields) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if ListObjectsFieldsEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver ListObjectsFields) From(toBeConverted string) ListObjectsFieldsEnum {
-	if val, ok := mapping_ObjectStorage_fields[toBeConverted]; ok {
-		return val
-	}
-	return LIST_OBJECTS_FIELDS_UNKNOWN
 }

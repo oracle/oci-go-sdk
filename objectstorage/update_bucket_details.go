@@ -38,7 +38,6 @@ func (model UpdateBucketDetails) String() string {
 }
 
 type UpdateBucketDetailsPublicAccessTypeEnum string
-type UpdateBucketDetailsPublicAccessType struct{}
 
 const (
 	UPDATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_NOPUBLICACCESS UpdateBucketDetailsPublicAccessTypeEnum = "NoPublicAccess"
@@ -52,7 +51,7 @@ var mapping_updatebucketdetails_publicAccessType = map[string]UpdateBucketDetail
 	"UNKNOWN":        UPDATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_UNKNOWN,
 }
 
-func (receiver UpdateBucketDetailsPublicAccessType) Values() []UpdateBucketDetailsPublicAccessTypeEnum {
+func GetUpdateBucketDetailsPublicAccessTypeEnumValues() []UpdateBucketDetailsPublicAccessTypeEnum {
 	values := make([]UpdateBucketDetailsPublicAccessTypeEnum, 0)
 	for _, v := range mapping_updatebucketdetails_publicAccessType {
 		if v != UPDATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_UNKNOWN {
@@ -60,20 +59,4 @@ func (receiver UpdateBucketDetailsPublicAccessType) Values() []UpdateBucketDetai
 		}
 	}
 	return values
-}
-
-func (receiver UpdateBucketDetailsPublicAccessType) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if UpdateBucketDetailsPublicAccessTypeEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver UpdateBucketDetailsPublicAccessType) From(toBeConverted string) UpdateBucketDetailsPublicAccessTypeEnum {
-	if val, ok := mapping_updatebucketdetails_publicAccessType[toBeConverted]; ok {
-		return val
-	}
-	return UPDATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_UNKNOWN
 }

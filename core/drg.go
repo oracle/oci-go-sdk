@@ -45,7 +45,6 @@ func (model Drg) String() string {
 }
 
 type DrgLifecycleStateEnum string
-type DrgLifecycleState struct{}
 
 const (
 	DRG_LIFECYCLE_STATE_PROVISIONING DrgLifecycleStateEnum = "PROVISIONING"
@@ -63,7 +62,7 @@ var mapping_drg_lifecycleState = map[string]DrgLifecycleStateEnum{
 	"UNKNOWN":      DRG_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver DrgLifecycleState) Values() []DrgLifecycleStateEnum {
+func GetDrgLifecycleStateEnumValues() []DrgLifecycleStateEnum {
 	values := make([]DrgLifecycleStateEnum, 0)
 	for _, v := range mapping_drg_lifecycleState {
 		if v != DRG_LIFECYCLE_STATE_UNKNOWN {
@@ -71,20 +70,4 @@ func (receiver DrgLifecycleState) Values() []DrgLifecycleStateEnum {
 		}
 	}
 	return values
-}
-
-func (receiver DrgLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if DrgLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver DrgLifecycleState) From(toBeConverted string) DrgLifecycleStateEnum {
-	if val, ok := mapping_drg_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return DRG_LIFECYCLE_STATE_UNKNOWN
 }

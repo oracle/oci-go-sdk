@@ -62,7 +62,6 @@ func (model Policy) String() string {
 }
 
 type PolicyLifecycleStateEnum string
-type PolicyLifecycleState struct{}
 
 const (
 	POLICY_LIFECYCLE_STATE_CREATING PolicyLifecycleStateEnum = "CREATING"
@@ -82,7 +81,7 @@ var mapping_policy_lifecycleState = map[string]PolicyLifecycleStateEnum{
 	"UNKNOWN":  POLICY_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver PolicyLifecycleState) Values() []PolicyLifecycleStateEnum {
+func GetPolicyLifecycleStateEnumValues() []PolicyLifecycleStateEnum {
 	values := make([]PolicyLifecycleStateEnum, 0)
 	for _, v := range mapping_policy_lifecycleState {
 		if v != POLICY_LIFECYCLE_STATE_UNKNOWN {
@@ -90,20 +89,4 @@ func (receiver PolicyLifecycleState) Values() []PolicyLifecycleStateEnum {
 		}
 	}
 	return values
-}
-
-func (receiver PolicyLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if PolicyLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver PolicyLifecycleState) From(toBeConverted string) PolicyLifecycleStateEnum {
-	if val, ok := mapping_policy_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return POLICY_LIFECYCLE_STATE_UNKNOWN
 }

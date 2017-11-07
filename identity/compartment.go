@@ -59,7 +59,6 @@ func (model Compartment) String() string {
 }
 
 type CompartmentLifecycleStateEnum string
-type CompartmentLifecycleState struct{}
 
 const (
 	COMPARTMENT_LIFECYCLE_STATE_CREATING CompartmentLifecycleStateEnum = "CREATING"
@@ -79,7 +78,7 @@ var mapping_compartment_lifecycleState = map[string]CompartmentLifecycleStateEnu
 	"UNKNOWN":  COMPARTMENT_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver CompartmentLifecycleState) Values() []CompartmentLifecycleStateEnum {
+func GetCompartmentLifecycleStateEnumValues() []CompartmentLifecycleStateEnum {
 	values := make([]CompartmentLifecycleStateEnum, 0)
 	for _, v := range mapping_compartment_lifecycleState {
 		if v != COMPARTMENT_LIFECYCLE_STATE_UNKNOWN {
@@ -87,20 +86,4 @@ func (receiver CompartmentLifecycleState) Values() []CompartmentLifecycleStateEn
 		}
 	}
 	return values
-}
-
-func (receiver CompartmentLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if CompartmentLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver CompartmentLifecycleState) From(toBeConverted string) CompartmentLifecycleStateEnum {
-	if val, ok := mapping_compartment_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return COMPARTMENT_LIFECYCLE_STATE_UNKNOWN
 }

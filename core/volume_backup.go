@@ -65,7 +65,6 @@ func (model VolumeBackup) String() string {
 }
 
 type VolumeBackupLifecycleStateEnum string
-type VolumeBackupLifecycleState struct{}
 
 const (
 	VOLUME_BACKUP_LIFECYCLE_STATE_CREATING         VolumeBackupLifecycleStateEnum = "CREATING"
@@ -87,7 +86,7 @@ var mapping_volumebackup_lifecycleState = map[string]VolumeBackupLifecycleStateE
 	"UNKNOWN":          VOLUME_BACKUP_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver VolumeBackupLifecycleState) Values() []VolumeBackupLifecycleStateEnum {
+func GetVolumeBackupLifecycleStateEnumValues() []VolumeBackupLifecycleStateEnum {
 	values := make([]VolumeBackupLifecycleStateEnum, 0)
 	for _, v := range mapping_volumebackup_lifecycleState {
 		if v != VOLUME_BACKUP_LIFECYCLE_STATE_UNKNOWN {
@@ -95,20 +94,4 @@ func (receiver VolumeBackupLifecycleState) Values() []VolumeBackupLifecycleState
 		}
 	}
 	return values
-}
-
-func (receiver VolumeBackupLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VolumeBackupLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VolumeBackupLifecycleState) From(toBeConverted string) VolumeBackupLifecycleStateEnum {
-	if val, ok := mapping_volumebackup_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return VOLUME_BACKUP_LIFECYCLE_STATE_UNKNOWN
 }

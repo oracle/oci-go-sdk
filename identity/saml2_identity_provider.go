@@ -76,7 +76,6 @@ func (model Saml2IdentityProvider) String() string {
 }
 
 type Saml2IdentityProviderLifecycleStateEnum string
-type Saml2IdentityProviderLifecycleState struct{}
 
 const (
 	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_CREATING Saml2IdentityProviderLifecycleStateEnum = "CREATING"
@@ -96,7 +95,7 @@ var mapping_saml2identityprovider_lifecycleState = map[string]Saml2IdentityProvi
 	"UNKNOWN":  SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver Saml2IdentityProviderLifecycleState) Values() []Saml2IdentityProviderLifecycleStateEnum {
+func GetSaml2IdentityProviderLifecycleStateEnumValues() []Saml2IdentityProviderLifecycleStateEnum {
 	values := make([]Saml2IdentityProviderLifecycleStateEnum, 0)
 	for _, v := range mapping_saml2identityprovider_lifecycleState {
 		if v != SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN {
@@ -104,20 +103,4 @@ func (receiver Saml2IdentityProviderLifecycleState) Values() []Saml2IdentityProv
 		}
 	}
 	return values
-}
-
-func (receiver Saml2IdentityProviderLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if Saml2IdentityProviderLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver Saml2IdentityProviderLifecycleState) From(toBeConverted string) Saml2IdentityProviderLifecycleStateEnum {
-	if val, ok := mapping_saml2identityprovider_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN
 }

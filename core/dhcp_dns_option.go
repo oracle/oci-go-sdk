@@ -46,7 +46,6 @@ func (model DhcpDnsOption) String() string {
 }
 
 type DhcpDnsOptionServerTypeEnum string
-type DhcpDnsOptionServerType struct{}
 
 const (
 	DHCP_DNS_OPTION_SERVER_TYPE_VCNLOCAL             DhcpDnsOptionServerTypeEnum = "VcnLocal"
@@ -62,7 +61,7 @@ var mapping_dhcpdnsoption_serverType = map[string]DhcpDnsOptionServerTypeEnum{
 	"UNKNOWN":              DHCP_DNS_OPTION_SERVER_TYPE_UNKNOWN,
 }
 
-func (receiver DhcpDnsOptionServerType) Values() []DhcpDnsOptionServerTypeEnum {
+func GetDhcpDnsOptionServerTypeEnumValues() []DhcpDnsOptionServerTypeEnum {
 	values := make([]DhcpDnsOptionServerTypeEnum, 0)
 	for _, v := range mapping_dhcpdnsoption_serverType {
 		if v != DHCP_DNS_OPTION_SERVER_TYPE_UNKNOWN {
@@ -70,20 +69,4 @@ func (receiver DhcpDnsOptionServerType) Values() []DhcpDnsOptionServerTypeEnum {
 		}
 	}
 	return values
-}
-
-func (receiver DhcpDnsOptionServerType) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if DhcpDnsOptionServerTypeEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver DhcpDnsOptionServerType) From(toBeConverted string) DhcpDnsOptionServerTypeEnum {
-	if val, ok := mapping_dhcpdnsoption_serverType[toBeConverted]; ok {
-		return val
-	}
-	return DHCP_DNS_OPTION_SERVER_TYPE_UNKNOWN
 }

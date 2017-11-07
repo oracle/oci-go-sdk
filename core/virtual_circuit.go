@@ -117,7 +117,6 @@ func (model VirtualCircuit) String() string {
 }
 
 type VirtualCircuitBgpManagementEnum string
-type VirtualCircuitBgpManagement struct{}
 
 const (
 	VIRTUAL_CIRCUIT_BGP_MANAGEMENT_CUSTOMER_MANAGED VirtualCircuitBgpManagementEnum = "CUSTOMER_MANAGED"
@@ -133,7 +132,7 @@ var mapping_virtualcircuit_bgpManagement = map[string]VirtualCircuitBgpManagemen
 	"UNKNOWN":          VIRTUAL_CIRCUIT_BGP_MANAGEMENT_UNKNOWN,
 }
 
-func (receiver VirtualCircuitBgpManagement) Values() []VirtualCircuitBgpManagementEnum {
+func GetVirtualCircuitBgpManagementEnumValues() []VirtualCircuitBgpManagementEnum {
 	values := make([]VirtualCircuitBgpManagementEnum, 0)
 	for _, v := range mapping_virtualcircuit_bgpManagement {
 		if v != VIRTUAL_CIRCUIT_BGP_MANAGEMENT_UNKNOWN {
@@ -143,24 +142,7 @@ func (receiver VirtualCircuitBgpManagement) Values() []VirtualCircuitBgpManageme
 	return values
 }
 
-func (receiver VirtualCircuitBgpManagement) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VirtualCircuitBgpManagementEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VirtualCircuitBgpManagement) From(toBeConverted string) VirtualCircuitBgpManagementEnum {
-	if val, ok := mapping_virtualcircuit_bgpManagement[toBeConverted]; ok {
-		return val
-	}
-	return VIRTUAL_CIRCUIT_BGP_MANAGEMENT_UNKNOWN
-}
-
 type VirtualCircuitBgpSessionStateEnum string
-type VirtualCircuitBgpSessionState struct{}
 
 const (
 	VIRTUAL_CIRCUIT_BGP_SESSION_STATE_UP      VirtualCircuitBgpSessionStateEnum = "UP"
@@ -174,7 +156,7 @@ var mapping_virtualcircuit_bgpSessionState = map[string]VirtualCircuitBgpSession
 	"UNKNOWN": VIRTUAL_CIRCUIT_BGP_SESSION_STATE_UNKNOWN,
 }
 
-func (receiver VirtualCircuitBgpSessionState) Values() []VirtualCircuitBgpSessionStateEnum {
+func GetVirtualCircuitBgpSessionStateEnumValues() []VirtualCircuitBgpSessionStateEnum {
 	values := make([]VirtualCircuitBgpSessionStateEnum, 0)
 	for _, v := range mapping_virtualcircuit_bgpSessionState {
 		if v != VIRTUAL_CIRCUIT_BGP_SESSION_STATE_UNKNOWN {
@@ -184,24 +166,7 @@ func (receiver VirtualCircuitBgpSessionState) Values() []VirtualCircuitBgpSessio
 	return values
 }
 
-func (receiver VirtualCircuitBgpSessionState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VirtualCircuitBgpSessionStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VirtualCircuitBgpSessionState) From(toBeConverted string) VirtualCircuitBgpSessionStateEnum {
-	if val, ok := mapping_virtualcircuit_bgpSessionState[toBeConverted]; ok {
-		return val
-	}
-	return VIRTUAL_CIRCUIT_BGP_SESSION_STATE_UNKNOWN
-}
-
 type VirtualCircuitLifecycleStateEnum string
-type VirtualCircuitLifecycleState struct{}
 
 const (
 	VIRTUAL_CIRCUIT_LIFECYCLE_STATE_PENDING_PROVIDER VirtualCircuitLifecycleStateEnum = "PENDING_PROVIDER"
@@ -227,7 +192,7 @@ var mapping_virtualcircuit_lifecycleState = map[string]VirtualCircuitLifecycleSt
 	"UNKNOWN":          VIRTUAL_CIRCUIT_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver VirtualCircuitLifecycleState) Values() []VirtualCircuitLifecycleStateEnum {
+func GetVirtualCircuitLifecycleStateEnumValues() []VirtualCircuitLifecycleStateEnum {
 	values := make([]VirtualCircuitLifecycleStateEnum, 0)
 	for _, v := range mapping_virtualcircuit_lifecycleState {
 		if v != VIRTUAL_CIRCUIT_LIFECYCLE_STATE_UNKNOWN {
@@ -237,24 +202,7 @@ func (receiver VirtualCircuitLifecycleState) Values() []VirtualCircuitLifecycleS
 	return values
 }
 
-func (receiver VirtualCircuitLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VirtualCircuitLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VirtualCircuitLifecycleState) From(toBeConverted string) VirtualCircuitLifecycleStateEnum {
-	if val, ok := mapping_virtualcircuit_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return VIRTUAL_CIRCUIT_LIFECYCLE_STATE_UNKNOWN
-}
-
 type VirtualCircuitProviderStateEnum string
-type VirtualCircuitProviderState struct{}
 
 const (
 	VIRTUAL_CIRCUIT_PROVIDER_STATE_ACTIVE   VirtualCircuitProviderStateEnum = "ACTIVE"
@@ -268,7 +216,7 @@ var mapping_virtualcircuit_providerState = map[string]VirtualCircuitProviderStat
 	"UNKNOWN":  VIRTUAL_CIRCUIT_PROVIDER_STATE_UNKNOWN,
 }
 
-func (receiver VirtualCircuitProviderState) Values() []VirtualCircuitProviderStateEnum {
+func GetVirtualCircuitProviderStateEnumValues() []VirtualCircuitProviderStateEnum {
 	values := make([]VirtualCircuitProviderStateEnum, 0)
 	for _, v := range mapping_virtualcircuit_providerState {
 		if v != VIRTUAL_CIRCUIT_PROVIDER_STATE_UNKNOWN {
@@ -278,24 +226,7 @@ func (receiver VirtualCircuitProviderState) Values() []VirtualCircuitProviderSta
 	return values
 }
 
-func (receiver VirtualCircuitProviderState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VirtualCircuitProviderStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VirtualCircuitProviderState) From(toBeConverted string) VirtualCircuitProviderStateEnum {
-	if val, ok := mapping_virtualcircuit_providerState[toBeConverted]; ok {
-		return val
-	}
-	return VIRTUAL_CIRCUIT_PROVIDER_STATE_UNKNOWN
-}
-
 type VirtualCircuitServiceTypeEnum string
-type VirtualCircuitServiceType struct{}
 
 const (
 	VIRTUAL_CIRCUIT_SERVICE_TYPE_COLOCATED VirtualCircuitServiceTypeEnum = "COLOCATED"
@@ -311,7 +242,7 @@ var mapping_virtualcircuit_serviceType = map[string]VirtualCircuitServiceTypeEnu
 	"UNKNOWN":   VIRTUAL_CIRCUIT_SERVICE_TYPE_UNKNOWN,
 }
 
-func (receiver VirtualCircuitServiceType) Values() []VirtualCircuitServiceTypeEnum {
+func GetVirtualCircuitServiceTypeEnumValues() []VirtualCircuitServiceTypeEnum {
 	values := make([]VirtualCircuitServiceTypeEnum, 0)
 	for _, v := range mapping_virtualcircuit_serviceType {
 		if v != VIRTUAL_CIRCUIT_SERVICE_TYPE_UNKNOWN {
@@ -321,24 +252,7 @@ func (receiver VirtualCircuitServiceType) Values() []VirtualCircuitServiceTypeEn
 	return values
 }
 
-func (receiver VirtualCircuitServiceType) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VirtualCircuitServiceTypeEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VirtualCircuitServiceType) From(toBeConverted string) VirtualCircuitServiceTypeEnum {
-	if val, ok := mapping_virtualcircuit_serviceType[toBeConverted]; ok {
-		return val
-	}
-	return VIRTUAL_CIRCUIT_SERVICE_TYPE_UNKNOWN
-}
-
 type VirtualCircuitType_Enum string
-type VirtualCircuitType_ struct{}
 
 const (
 	VIRTUAL_CIRCUIT_TYPE__PUBLIC  VirtualCircuitType_Enum = "PUBLIC"
@@ -352,7 +266,7 @@ var mapping_virtualcircuit_type = map[string]VirtualCircuitType_Enum{
 	"UNKNOWN": VIRTUAL_CIRCUIT_TYPE__UNKNOWN,
 }
 
-func (receiver VirtualCircuitType_) Values() []VirtualCircuitType_Enum {
+func GetVirtualCircuitType_EnumValues() []VirtualCircuitType_Enum {
 	values := make([]VirtualCircuitType_Enum, 0)
 	for _, v := range mapping_virtualcircuit_type {
 		if v != VIRTUAL_CIRCUIT_TYPE__UNKNOWN {
@@ -360,20 +274,4 @@ func (receiver VirtualCircuitType_) Values() []VirtualCircuitType_Enum {
 		}
 	}
 	return values
-}
-
-func (receiver VirtualCircuitType_) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if VirtualCircuitType_Enum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver VirtualCircuitType_) From(toBeConverted string) VirtualCircuitType_Enum {
-	if val, ok := mapping_virtualcircuit_type[toBeConverted]; ok {
-		return val
-	}
-	return VIRTUAL_CIRCUIT_TYPE__UNKNOWN
 }

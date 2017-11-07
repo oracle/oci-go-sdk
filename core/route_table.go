@@ -49,7 +49,6 @@ func (model RouteTable) String() string {
 }
 
 type RouteTableLifecycleStateEnum string
-type RouteTableLifecycleState struct{}
 
 const (
 	ROUTE_TABLE_LIFECYCLE_STATE_PROVISIONING RouteTableLifecycleStateEnum = "PROVISIONING"
@@ -67,7 +66,7 @@ var mapping_routetable_lifecycleState = map[string]RouteTableLifecycleStateEnum{
 	"UNKNOWN":      ROUTE_TABLE_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver RouteTableLifecycleState) Values() []RouteTableLifecycleStateEnum {
+func GetRouteTableLifecycleStateEnumValues() []RouteTableLifecycleStateEnum {
 	values := make([]RouteTableLifecycleStateEnum, 0)
 	for _, v := range mapping_routetable_lifecycleState {
 		if v != ROUTE_TABLE_LIFECYCLE_STATE_UNKNOWN {
@@ -75,20 +74,4 @@ func (receiver RouteTableLifecycleState) Values() []RouteTableLifecycleStateEnum
 		}
 	}
 	return values
-}
-
-func (receiver RouteTableLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if RouteTableLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver RouteTableLifecycleState) From(toBeConverted string) RouteTableLifecycleStateEnum {
-	if val, ok := mapping_routetable_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return ROUTE_TABLE_LIFECYCLE_STATE_UNKNOWN
 }

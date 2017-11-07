@@ -59,7 +59,6 @@ func (model Image) String() string {
 }
 
 type ImageLifecycleStateEnum string
-type ImageLifecycleState struct{}
 
 const (
 	IMAGE_LIFECYCLE_STATE_PROVISIONING ImageLifecycleStateEnum = "PROVISIONING"
@@ -81,7 +80,7 @@ var mapping_image_lifecycleState = map[string]ImageLifecycleStateEnum{
 	"UNKNOWN":      IMAGE_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver ImageLifecycleState) Values() []ImageLifecycleStateEnum {
+func GetImageLifecycleStateEnumValues() []ImageLifecycleStateEnum {
 	values := make([]ImageLifecycleStateEnum, 0)
 	for _, v := range mapping_image_lifecycleState {
 		if v != IMAGE_LIFECYCLE_STATE_UNKNOWN {
@@ -89,20 +88,4 @@ func (receiver ImageLifecycleState) Values() []ImageLifecycleStateEnum {
 		}
 	}
 	return values
-}
-
-func (receiver ImageLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if ImageLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver ImageLifecycleState) From(toBeConverted string) ImageLifecycleStateEnum {
-	if val, ok := mapping_image_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return IMAGE_LIFECYCLE_STATE_UNKNOWN
 }

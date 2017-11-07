@@ -50,7 +50,6 @@ func (model Bucket) String() string {
 }
 
 type BucketPublicAccessTypeEnum string
-type BucketPublicAccessType struct{}
 
 const (
 	BUCKET_PUBLIC_ACCESS_TYPE_NOPUBLICACCESS BucketPublicAccessTypeEnum = "NoPublicAccess"
@@ -64,7 +63,7 @@ var mapping_bucket_publicAccessType = map[string]BucketPublicAccessTypeEnum{
 	"UNKNOWN":        BUCKET_PUBLIC_ACCESS_TYPE_UNKNOWN,
 }
 
-func (receiver BucketPublicAccessType) Values() []BucketPublicAccessTypeEnum {
+func GetBucketPublicAccessTypeEnumValues() []BucketPublicAccessTypeEnum {
 	values := make([]BucketPublicAccessTypeEnum, 0)
 	for _, v := range mapping_bucket_publicAccessType {
 		if v != BUCKET_PUBLIC_ACCESS_TYPE_UNKNOWN {
@@ -72,20 +71,4 @@ func (receiver BucketPublicAccessType) Values() []BucketPublicAccessTypeEnum {
 		}
 	}
 	return values
-}
-
-func (receiver BucketPublicAccessType) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if BucketPublicAccessTypeEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver BucketPublicAccessType) From(toBeConverted string) BucketPublicAccessTypeEnum {
-	if val, ok := mapping_bucket_publicAccessType[toBeConverted]; ok {
-		return val
-	}
-	return BUCKET_PUBLIC_ACCESS_TYPE_UNKNOWN
 }

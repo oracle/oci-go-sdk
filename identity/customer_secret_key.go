@@ -53,7 +53,6 @@ func (model CustomerSecretKey) String() string {
 }
 
 type CustomerSecretKeyLifecycleStateEnum string
-type CustomerSecretKeyLifecycleState struct{}
 
 const (
 	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_CREATING CustomerSecretKeyLifecycleStateEnum = "CREATING"
@@ -73,7 +72,7 @@ var mapping_customersecretkey_lifecycleState = map[string]CustomerSecretKeyLifec
 	"UNKNOWN":  CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_UNKNOWN,
 }
 
-func (receiver CustomerSecretKeyLifecycleState) Values() []CustomerSecretKeyLifecycleStateEnum {
+func GetCustomerSecretKeyLifecycleStateEnumValues() []CustomerSecretKeyLifecycleStateEnum {
 	values := make([]CustomerSecretKeyLifecycleStateEnum, 0)
 	for _, v := range mapping_customersecretkey_lifecycleState {
 		if v != CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_UNKNOWN {
@@ -81,20 +80,4 @@ func (receiver CustomerSecretKeyLifecycleState) Values() []CustomerSecretKeyLife
 		}
 	}
 	return values
-}
-
-func (receiver CustomerSecretKeyLifecycleState) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if CustomerSecretKeyLifecycleStateEnum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver CustomerSecretKeyLifecycleState) From(toBeConverted string) CustomerSecretKeyLifecycleStateEnum {
-	if val, ok := mapping_customersecretkey_lifecycleState[toBeConverted]; ok {
-		return val
-	}
-	return CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_UNKNOWN
 }

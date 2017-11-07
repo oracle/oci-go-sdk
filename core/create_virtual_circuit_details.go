@@ -70,7 +70,6 @@ func (model CreateVirtualCircuitDetails) String() string {
 }
 
 type CreateVirtualCircuitDetailsType_Enum string
-type CreateVirtualCircuitDetailsType_ struct{}
 
 const (
 	CREATE_VIRTUAL_CIRCUIT_DETAILS_TYPE__PUBLIC  CreateVirtualCircuitDetailsType_Enum = "PUBLIC"
@@ -84,7 +83,7 @@ var mapping_createvirtualcircuitdetails_type = map[string]CreateVirtualCircuitDe
 	"UNKNOWN": CREATE_VIRTUAL_CIRCUIT_DETAILS_TYPE__UNKNOWN,
 }
 
-func (receiver CreateVirtualCircuitDetailsType_) Values() []CreateVirtualCircuitDetailsType_Enum {
+func GetCreateVirtualCircuitDetailsType_EnumValues() []CreateVirtualCircuitDetailsType_Enum {
 	values := make([]CreateVirtualCircuitDetailsType_Enum, 0)
 	for _, v := range mapping_createvirtualcircuitdetails_type {
 		if v != CREATE_VIRTUAL_CIRCUIT_DETAILS_TYPE__UNKNOWN {
@@ -92,20 +91,4 @@ func (receiver CreateVirtualCircuitDetailsType_) Values() []CreateVirtualCircuit
 		}
 	}
 	return values
-}
-
-func (receiver CreateVirtualCircuitDetailsType_) IsValid(toBeChecked string) bool {
-	for _, v := range receiver.Values() {
-		if CreateVirtualCircuitDetailsType_Enum(toBeChecked) == v {
-			return true
-		}
-	}
-	return false
-}
-
-func (receiver CreateVirtualCircuitDetailsType_) From(toBeConverted string) CreateVirtualCircuitDetailsType_Enum {
-	if val, ok := mapping_createvirtualcircuitdetails_type[toBeConverted]; ok {
-		return val
-	}
-	return CREATE_VIRTUAL_CIRCUIT_DETAILS_TYPE__UNKNOWN
 }
