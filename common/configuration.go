@@ -20,6 +20,27 @@ type ConfigurationProvider interface {
 	Region() (string, error)
 }
 
+
+// Test to each part of the configration provider does not return an error
+// If it does the function return false and the first error that caused the failure
+func IsConfigurationProviderValid(conf ConfigurationProvider) (ok bool, err error) {
+	baseFn := []func()(string, error){conf.TenancyOCID, conf.UserOCID, conf.KeyFingerPrint, conf.Region, conf.KeyID}
+	for _, fn := range baseFn {
+		_, err = fn()
+		ok = err == nil
+		if err != nil {
+			return
+		}
+	}
+
+	_, err = conf.PrivateRSAKey()
+	ok = err == nil
+	if err != nil {
+		return
+	}
+	return true, nil
+}
+
 // environmentConfigurationProvider reads configuration from environment variables
 type environmentConfigurationProvider struct {
 	PrivateKeyPassword        string
@@ -33,6 +54,11 @@ func ConfigurationProviderEnvironmentVariables(environmentVariablePrefix, privat
 	return environmentConfigurationProvider{EnvironmentVariablePrefix: environmentVariablePrefix,
 		PrivateKeyPassword: privateKeyPassword}
 }
+
+func (p environmentConfigurationProvider) String() string {
+	return fmt.Sprintf("Configuration provided by environment variables prefixed with: %s", p.EnvironmentVariablePrefix)
+}
+
 
 // PrivateKeyFromBytes is a helper function that will produce a RSA private
 // key from bytes.
@@ -212,6 +238,10 @@ func openConfigFile(configFilePath string) (data []byte, err error) {
 	return
 }
 
+func (p fileConfigurationProvider) String() string {
+	return fmt.Sprintf("Configuration provided by file: %s", p.ConfigPath)
+}
+
 func (p fileConfigurationProvider) readAndParseConfigFile() (info *configFileInfo, err error) {
 	if configurationFileInfo != nil {
 		return configurationFileInfo, nil
@@ -316,7 +346,6 @@ func (p fileConfigurationProvider) Region() (value string, err error) {
 type composingConfigurationProvider struct {
 	Providers []ConfigurationProvider
 }
-
 // Creates a composing configuration provider with the given slice of configuration providers
 // A composing provider will return the configuration of the first provider that has the configuration
 // if no provider has the configuration it will return an error.

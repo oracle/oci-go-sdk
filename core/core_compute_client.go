@@ -19,9 +19,28 @@ type ComputeClient struct {
 	common.BaseClient
 }
 
-//Create a new default Compute client for a given region
+// Create a new default Compute client for a given region and default configuration provider
 func NewComputeClientForRegion(region common.Region) (client ComputeClient) {
 	client = ComputeClient{BaseClient: common.NewClientForRegion(region)}
+
+	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "iaas", string(region))
+	client.BasePath = "20160918"
+	return
+}
+
+// Create a new default Compute client with the given configuration provider.
+// the configuration provider will be used for the default signer as well as reading the region
+func NewComputeClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ComputeClient, err error) {
+	baseClient, err := common.NewClientWithConfig(configProvider)
+	if err != nil {
+		return
+	}
+
+	client = ComputeClient{BaseClient: baseClient}
+	region, err := configProvider.Region()
+	if err != nil {
+		return
+	}
 
 	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "iaas", string(region))
 	client.BasePath = "20160918"

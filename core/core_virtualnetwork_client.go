@@ -19,9 +19,28 @@ type VirtualNetworkClient struct {
 	common.BaseClient
 }
 
-//Create a new default VirtualNetwork client for a given region
+// Create a new default VirtualNetwork client for a given region and default configuration provider
 func NewVirtualNetworkClientForRegion(region common.Region) (client VirtualNetworkClient) {
 	client = VirtualNetworkClient{BaseClient: common.NewClientForRegion(region)}
+
+	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "iaas", string(region))
+	client.BasePath = "20160918"
+	return
+}
+
+// Create a new default VirtualNetwork client with the given configuration provider.
+// the configuration provider will be used for the default signer as well as reading the region
+func NewVirtualNetworkClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client VirtualNetworkClient, err error) {
+	baseClient, err := common.NewClientWithConfig(configProvider)
+	if err != nil {
+		return
+	}
+
+	client = VirtualNetworkClient{BaseClient: baseClient}
+	region, err := configProvider.Region()
+	if err != nil {
+		return
+	}
 
 	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "iaas", string(region))
 	client.BasePath = "20160918"

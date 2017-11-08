@@ -19,9 +19,28 @@ type BlockstorageClient struct {
 	common.BaseClient
 }
 
-//Create a new default Blockstorage client for a given region
+// Create a new default Blockstorage client for a given region and default configuration provider
 func NewBlockstorageClientForRegion(region common.Region) (client BlockstorageClient) {
 	client = BlockstorageClient{BaseClient: common.NewClientForRegion(region)}
+
+	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "iaas", string(region))
+	client.BasePath = "20160918"
+	return
+}
+
+// Create a new default Blockstorage client with the given configuration provider.
+// the configuration provider will be used for the default signer as well as reading the region
+func NewBlockstorageClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client BlockstorageClient, err error) {
+	baseClient, err := common.NewClientWithConfig(configProvider)
+	if err != nil {
+		return
+	}
+
+	client = BlockstorageClient{BaseClient: baseClient}
+	region, err := configProvider.Region()
+	if err != nil {
+		return
+	}
 
 	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "iaas", string(region))
 	client.BasePath = "20160918"

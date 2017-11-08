@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"testing"
+	"fmt"
 )
 
 func TestClient_prepareRequestDefScheme(t *testing.T) {
@@ -191,4 +192,71 @@ func TestBaseClient_CallError(t *testing.T) {
 	assert.Error(t, err)
 	assert.Equal(t, &response, retRes)
 
+}
+
+
+func TestBaseClient_CreateWithInvalidConfig(t *testing.T) {
+	dataTpl := `[DEFAULT]
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+region=us-ashburn-1
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	configurationProvider := fileConfigurationProvider{ConfigPath: tmpConfFile}
+
+	_, err := NewClientWithConfig(configurationProvider)
+	assert.Error(t, err)
+}
+
+func TestBaseClient_CreateWithConfig(t *testing.T) {
+	dataTpl := `[DEFAULT]
+tenancy=sometenancy
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+region=us-ashburn-1
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	configurationProvider := fileConfigurationProvider{ConfigPath: tmpConfFile}
+
+	client, err := NewClientWithConfig(configurationProvider)
+	assert.NotNil(t, client)
+	assert.NoError(t, err)
+}
+
+func TestBaseClient_CreateWithBadRegion(t *testing.T) {
+	dataTpl := `[DEFAULT]
+tenancy=sometenancy
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+region=noregion
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	configurationProvider := fileConfigurationProvider{ConfigPath: tmpConfFile}
+
+	_, err := NewClientWithConfig(configurationProvider)
+	assert.Error(t, err)
 }
