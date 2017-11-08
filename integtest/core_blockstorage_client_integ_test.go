@@ -8,8 +8,6 @@
 
 package integtest
 
-
-/*
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/core"
@@ -24,6 +22,7 @@ var (
 )
 
 func TestBlockstorageClient_CreateVolume(t *testing.T) {
+	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.CreateVolumeRequest{}
 	r, err := c.CreateVolume(context.Background(), request)
@@ -33,6 +32,7 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 }
 
 func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
+	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.CreateVolumeBackupRequest{}
 	r, err := c.CreateVolumeBackup(context.Background(), request)
@@ -42,6 +42,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 }
 
 func TestBlockstorageClient_DeleteVolume(t *testing.T) {
+	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.DeleteVolumeRequest{}
 	err := c.DeleteVolume(context.Background(), request)
@@ -50,6 +51,7 @@ func TestBlockstorageClient_DeleteVolume(t *testing.T) {
 }
 
 func TestBlockstorageClient_DeleteVolumeBackup(t *testing.T) {
+	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.DeleteVolumeBackupRequest{}
 	err := c.DeleteVolumeBackup(context.Background(), request)
@@ -58,6 +60,7 @@ func TestBlockstorageClient_DeleteVolumeBackup(t *testing.T) {
 }
 
 func TestBlockstorageClient_GetVolume(t *testing.T) {
+	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.GetVolumeRequest{}
 	r, err := c.GetVolume(context.Background(), request)
@@ -67,6 +70,7 @@ func TestBlockstorageClient_GetVolume(t *testing.T) {
 }
 
 func TestBlockstorageClient_GetVolumeBackup(t *testing.T) {
+	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.GetVolumeBackupRequest{}
 	r, err := c.GetVolumeBackup(context.Background(), request)
@@ -76,6 +80,7 @@ func TestBlockstorageClient_GetVolumeBackup(t *testing.T) {
 }
 
 func TestBlockstorageClient_ListVolumeBackups(t *testing.T) {
+	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.ListVolumeBackupsRequest{}
 	r, err := c.ListVolumeBackups(context.Background(), request)
@@ -85,6 +90,7 @@ func TestBlockstorageClient_ListVolumeBackups(t *testing.T) {
 }
 
 func TestBlockstorageClient_ListVolumes(t *testing.T) {
+	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.ListVolumesRequest{}
 	r, err := c.ListVolumes(context.Background(), request)
@@ -94,6 +100,7 @@ func TestBlockstorageClient_ListVolumes(t *testing.T) {
 }
 
 func TestBlockstorageClient_UpdateVolume(t *testing.T) {
+	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.UpdateVolumeRequest{}
 	r, err := c.UpdateVolume(context.Background(), request)
@@ -103,6 +110,7 @@ func TestBlockstorageClient_UpdateVolume(t *testing.T) {
 }
 
 func TestBlockstorageClient_UpdateVolumeBackup(t *testing.T) {
+	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.UpdateVolumeBackupRequest{}
 	r, err := c.UpdateVolumeBackup(context.Background(), request)
@@ -110,4 +118,3 @@ func TestBlockstorageClient_UpdateVolumeBackup(t *testing.T) {
 	assert.NoError(t, err)
 	return
 }
-*/
