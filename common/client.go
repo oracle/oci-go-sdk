@@ -10,6 +10,7 @@ import (
 	"runtime"
 	"strings"
 	"time"
+	"os"
 )
 
 const (
@@ -18,6 +19,9 @@ const (
 	defaultSDKMarker         = "Oracle-GoSDK"
 	defaultUserAgentTemplate = "%s/%s (%s/%s; go/%s)" //SDK/SDKVersion (OS/OSVersion; Lang/LangVersion)
 	defaultTimeout           = time.Second * 30
+	defaultConfigFileName    = "config"
+	defaultConfigDirName     =  ".oci"
+	secondorayConfigDirName  =  ".oraclebmc"
 )
 
 type RequestInterceptor func(*http.Request) error
@@ -98,10 +102,26 @@ func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClien
 	return
 }
 
-//Create a new default client for a given region
+
+func getHomeFolder() string {
+	return os.Getenv("HOME")
+}
+
+
+//Create a new default client for a given region, with a default config provider
 func NewClientForRegion(region Region) (client BaseClient) {
 	dispatcher := getDefaultHttpDispatcher()
-	provider := environmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
+	homeFolder := getHomeFolder()
+	defaultConfigFile := path.Join(homeFolder, defaultConfigDirName, defaultConfigFileName)
+	secondaryConfigFile := path.Join(homeFolder, secondorayConfigDirName, defaultConfigFileName)
+
+	defaultFileProvider, _ := ConfigurationProviderFromFile(defaultConfigFile, "")
+	secondaryFileProvider, _ := ConfigurationProviderFromFile(secondaryConfigFile, "")
+	environmentProvider := environmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
+
+
+	provider, _ := ComposingConfigurationProvider([]ConfigurationProvider{defaultFileProvider, secondaryFileProvider, environmentProvider})
+	Debugf("Configuration provided by: %s", provider)
 	return newClientWithHttpDispatcher(&dispatcher, region, provider)
 }
 

@@ -55,6 +55,11 @@ func ConfigurationProviderEnvironmentVariables(environmentVariablePrefix, privat
 		PrivateKeyPassword: privateKeyPassword}
 }
 
+func (p environmentConfigurationProvider) String() string {
+	return fmt.Sprintf("Configuration provided by environment variables prefixed with: %s", p.EnvironmentVariablePrefix)
+}
+
+
 // PrivateKeyFromBytes is a helper function that will produce a RSA private
 // key from bytes.
 func privateKeyFromBytes(pemData []byte, password *string) (key *rsa.PrivateKey, e error) {
@@ -233,6 +238,10 @@ func openConfigFile(configFilePath string) (data []byte, err error) {
 	return
 }
 
+func (p fileConfigurationProvider) String() string {
+	return fmt.Sprintf("Configuration provided by file: %s", p.ConfigPath)
+}
+
 func (p fileConfigurationProvider) readAndParseConfigFile() (info *configFileInfo, err error) {
 	if configurationFileInfo != nil {
 		return configurationFileInfo, nil
@@ -337,7 +346,6 @@ func (p fileConfigurationProvider) Region() (value string, err error) {
 type composingConfigurationProvider struct {
 	Providers []ConfigurationProvider
 }
-
 // Creates a composing configuration provider with the given slice of configuration providers
 // A composing provider will return the configuration of the first provider that has the configuration
 // if no provider has the configuration it will return an error.
