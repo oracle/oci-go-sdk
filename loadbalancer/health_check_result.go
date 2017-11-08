@@ -46,7 +46,6 @@ const (
 	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_IO_ERROR            HealthCheckResultHealthCheckStatusEnum = "IO_ERROR"
 	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_OFFLINE             HealthCheckResultHealthCheckStatusEnum = "OFFLINE"
 	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_UNKNOWN             HealthCheckResultHealthCheckStatusEnum = "UNKNOWN"
-	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_UNKNOWN             HealthCheckResultHealthCheckStatusEnum = "UNKNOWN"
 )
 
 var mapping_healthcheckresult_healthCheckStatus = map[string]HealthCheckResultHealthCheckStatusEnum{
@@ -58,15 +57,12 @@ var mapping_healthcheckresult_healthCheckStatus = map[string]HealthCheckResultHe
 	"IO_ERROR":            HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_IO_ERROR,
 	"OFFLINE":             HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_OFFLINE,
 	"UNKNOWN":             HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_UNKNOWN,
-	"UNKNOWN":             HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_UNKNOWN,
 }
 
 func GetHealthCheckResultHealthCheckStatusEnumValues() []HealthCheckResultHealthCheckStatusEnum {
 	values := make([]HealthCheckResultHealthCheckStatusEnum, 0)
 	for _, v := range mapping_healthcheckresult_healthCheckStatus {
-		if v != HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_UNKNOWN {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

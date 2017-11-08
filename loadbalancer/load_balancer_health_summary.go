@@ -43,7 +43,6 @@ const (
 	LOAD_BALANCER_HEALTH_SUMMARY_STATUS_WARNING  LoadBalancerHealthSummaryStatusEnum = "WARNING"
 	LOAD_BALANCER_HEALTH_SUMMARY_STATUS_CRITICAL LoadBalancerHealthSummaryStatusEnum = "CRITICAL"
 	LOAD_BALANCER_HEALTH_SUMMARY_STATUS_UNKNOWN  LoadBalancerHealthSummaryStatusEnum = "UNKNOWN"
-	LOAD_BALANCER_HEALTH_SUMMARY_STATUS_UNKNOWN  LoadBalancerHealthSummaryStatusEnum = "UNKNOWN"
 )
 
 var mapping_loadbalancerhealthsummary_status = map[string]LoadBalancerHealthSummaryStatusEnum{
@@ -51,15 +50,12 @@ var mapping_loadbalancerhealthsummary_status = map[string]LoadBalancerHealthSumm
 	"WARNING":  LOAD_BALANCER_HEALTH_SUMMARY_STATUS_WARNING,
 	"CRITICAL": LOAD_BALANCER_HEALTH_SUMMARY_STATUS_CRITICAL,
 	"UNKNOWN":  LOAD_BALANCER_HEALTH_SUMMARY_STATUS_UNKNOWN,
-	"UNKNOWN":  LOAD_BALANCER_HEALTH_SUMMARY_STATUS_UNKNOWN,
 }
 
 func GetLoadBalancerHealthSummaryStatusEnumValues() []LoadBalancerHealthSummaryStatusEnum {
 	values := make([]LoadBalancerHealthSummaryStatusEnum, 0)
 	for _, v := range mapping_loadbalancerhealthsummary_status {
-		if v != LOAD_BALANCER_HEALTH_SUMMARY_STATUS_UNKNOWN {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

@@ -57,7 +57,6 @@ const (
 	BACKEND_SET_HEALTH_STATUS_WARNING  BackendSetHealthStatusEnum = "WARNING"
 	BACKEND_SET_HEALTH_STATUS_CRITICAL BackendSetHealthStatusEnum = "CRITICAL"
 	BACKEND_SET_HEALTH_STATUS_UNKNOWN  BackendSetHealthStatusEnum = "UNKNOWN"
-	BACKEND_SET_HEALTH_STATUS_UNKNOWN  BackendSetHealthStatusEnum = "UNKNOWN"
 )
 
 var mapping_backendsethealth_status = map[string]BackendSetHealthStatusEnum{
@@ -65,15 +64,12 @@ var mapping_backendsethealth_status = map[string]BackendSetHealthStatusEnum{
 	"WARNING":  BACKEND_SET_HEALTH_STATUS_WARNING,
 	"CRITICAL": BACKEND_SET_HEALTH_STATUS_CRITICAL,
 	"UNKNOWN":  BACKEND_SET_HEALTH_STATUS_UNKNOWN,
-	"UNKNOWN":  BACKEND_SET_HEALTH_STATUS_UNKNOWN,
 }
 
 func GetBackendSetHealthStatusEnumValues() []BackendSetHealthStatusEnum {
 	values := make([]BackendSetHealthStatusEnum, 0)
 	for _, v := range mapping_backendsethealth_status {
-		if v != BACKEND_SET_HEALTH_STATUS_UNKNOWN {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
