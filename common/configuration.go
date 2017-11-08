@@ -20,6 +20,27 @@ type ConfigurationProvider interface {
 	Region() (string, error)
 }
 
+
+// Test to each part of the configration provider does not return an error
+// If it does the function return false and the first error that caused the failure
+func IsConfigurationProviderValid(conf ConfigurationProvider) (ok bool, err error) {
+	baseFn := []func()(string, error){conf.TenancyOCID, conf.UserOCID, conf.KeyFingerPrint, conf.Region, conf.KeyID}
+	for _, fn := range baseFn {
+		_, err = fn()
+		ok = err == nil
+		if err != nil {
+			return
+		}
+	}
+
+	_, err = conf.PrivateRSAKey()
+	ok = err == nil
+	if err != nil {
+		return
+	}
+	return true, nil
+}
+
 // environmentConfigurationProvider reads configuration from environment variables
 type environmentConfigurationProvider struct {
 	PrivateKeyPassword        string

@@ -36,7 +36,7 @@ func NewComputeClientWithConfigurationProvider(configProvider common.Configurati
 		return
 	}
 
-	client = IdentityClient{BaseClient: baseClient}
+	client = ComputeClient{BaseClient: baseClient}
 	region, err := configProvider.Region()
 	if err != nil {
 		return

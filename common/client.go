@@ -77,14 +77,16 @@ func getDefaultHttpDispatcher() http.Client {
 	return httpClient
 }
 
-//Create a new client with a configuration provider, the configuration provider
-//will be used for the default signer as well as reading the region
+// Create a new client with a configuration provider, the configuration provider
+// will be used for the default signer as well as reading the region
 func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClient, err error) {
-	regionstr, err := configProvider.Region()
-	if err != nil {
-		err = fmt.Errorf("can not create client, bad region configuration: %s", err.Error())
+	var ok bool
+	if ok, err = IsConfigurationProviderValid(configProvider); !ok {
+		err = fmt.Errorf("can not create client, bad configuration: %s", err.Error())
 		return
 	}
+
+	regionstr, _ := configProvider.Region()
 	region, err := StringToRegion(regionstr)
 	if err != nil {
 		err = fmt.Errorf("can not create client, bad region configuration: %s", err.Error())

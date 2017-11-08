@@ -36,7 +36,7 @@ func NewVirtualNetworkClientWithConfigurationProvider(configProvider common.Conf
 		return
 	}
 
-	client = IdentityClient{BaseClient: baseClient}
+	client = VirtualNetworkClient{BaseClient: baseClient}
 	region, err := configProvider.Region()
 	if err != nil {
 		return

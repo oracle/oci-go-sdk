@@ -36,7 +36,7 @@ func NewBlockstorageClientWithConfigurationProvider(configProvider common.Config
 		return
 	}
 
-	client = IdentityClient{BaseClient: baseClient}
+	client = BlockstorageClient{BaseClient: baseClient}
 	region, err := configProvider.Region()
 	if err != nil {
 		return
