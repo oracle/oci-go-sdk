@@ -1,0 +1,29 @@
+// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Code generated. DO NOT EDIT.
+
+// Database Service API
+//
+// The API for the Database Service.
+//
+
+package database
+
+import (
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+)
+
+type RestoreDatabaseDetails struct {
+
+	// Restores using the backup with the System Change Number (SCN) specified.
+	DatabaseSCN *string `mandatory:"false" json:"databaseSCN,omitempty"`
+
+	// Restores to the last known good state with the least possible data loss.
+	Latest *bool `mandatory:"false" json:"latest,omitempty"`
+
+	// Restores to the timestamp specified.
+	Timestamp *common.SDKTime `mandatory:"false" json:"timestamp,omitempty"`
+}
+
+func (model RestoreDatabaseDetails) String() string {
+	return common.PointerString(model)
+}
