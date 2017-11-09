@@ -6,7 +6,7 @@
 // APIs for Networking Service, Compute Service, and Block Volume Service.
 //
 
-package integtest
+package main
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
@@ -25,6 +25,8 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.CreateVolumeRequest{}
+	request.AvailabilityDomain=common.String("uGEq:PHX-AD-1")
+	request.CompartmentID=common.String("ocidv1:tenancy:oc1:phx:1460406592660:aaaaaaaab4faofrfkxecohhjuivjq262pu")
 	r, err := c.CreateVolume(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
@@ -90,9 +92,9 @@ func TestBlockstorageClient_ListVolumeBackups(t *testing.T) {
 }
 
 func TestBlockstorageClient_ListVolumes(t *testing.T) {
-	t.Skip("Not implemented")
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.ListVolumesRequest{}
+	request.CompartmentID=common.String("ocidv1:tenancy:oc1:phx:1460406592660:aaaaaaaab4faofrfkxecohhjuivjq262pu")
 	r, err := c.ListVolumes(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
