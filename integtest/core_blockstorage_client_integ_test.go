@@ -6,7 +6,7 @@
 // APIs for Networking Service, Compute Service, and Block Volume Service.
 //
 
-package main
+package integtest
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
@@ -19,17 +19,36 @@ import (
 
 var (
 	testRegionForBlockstorage = common.REGION_PHX
+	validOCID =  "ocidv1:tenancy:oc1:phx:1460406592660:aaaaaaaab4faofrfkxecohhjuivjq262pu"
+	validAD = "kIdk:PHX-AD-2"
 )
 
+//Volumes CRUD
 func TestBlockstorageClient_CreateVolume(t *testing.T) {
-	t.Skip("Not implemented")
+
 	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.CreateVolumeRequest{}
-	request.AvailabilityDomain=common.String("uGEq:PHX-AD-1")
-	request.CompartmentID=common.String("ocidv1:tenancy:oc1:phx:1460406592660:aaaaaaaab4faofrfkxecohhjuivjq262pu")
-	r, err := c.CreateVolume(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
+
+	request.AvailabilityDomain=common.String(validAD)
+	request.CompartmentID=common.String(validOCID)
+	request.DisplayName = common.String("GoSDK2_CreateVolumeDisplayName")
+
+	resCreate, err := c.CreateVolume(context.Background(), request)
 	assert.NoError(t, err)
+	assert.NotEmpty(t, resCreate.ID)
+
+	//Read
+	readTest := func (t *testing.T) {
+		c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+		request := core.GetVolumeRequest{}
+		request.VolumeID = resCreate.ID
+		resRead, err := c.GetVolume(context.Background(), request)
+		assert.NoError(t, err)
+		assert.Equal(t, resCreate.ID, resRead.ID)
+		return
+	}
+
+	readTest(t)
 	return
 }
 
@@ -61,15 +80,6 @@ func TestBlockstorageClient_DeleteVolumeBackup(t *testing.T) {
 	return
 }
 
-func TestBlockstorageClient_GetVolume(t *testing.T) {
-	t.Skip("Not implemented")
-	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
-	request := core.GetVolumeRequest{}
-	r, err := c.GetVolume(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
 
 func TestBlockstorageClient_GetVolumeBackup(t *testing.T) {
 	t.Skip("Not implemented")
