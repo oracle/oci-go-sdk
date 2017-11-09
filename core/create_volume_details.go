@@ -26,11 +26,11 @@ type CreateVolumeDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
 	// The size of the volume in GBs.
-	SizeInGBs *int64 `mandatory:"false" json:"sizeInGBs,omitempty"`
+	SizeInGBs *int `mandatory:"false" json:"sizeInGBs,omitempty"`
 
 	// The size of the volume in MBs. The value must be a multiple of 1024.
 	// This field is deprecated. Please use sizeInGBs.
-	SizeInMBs *int64 `mandatory:"false" json:"sizeInMBs,omitempty"`
+	SizeInMBs *int `mandatory:"false" json:"sizeInMBs,omitempty"`
 
 	// The OCID of the volume backup from which the data should be restored on the newly created volume.
 	VolumeBackupID *string `mandatory:"false" json:"volumeBackupId,omitempty"`

@@ -45,7 +45,7 @@ type CustomerSecretKey struct {
 	LifecycleState CustomerSecretKeyLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
 func (model CustomerSecretKey) String() string {
