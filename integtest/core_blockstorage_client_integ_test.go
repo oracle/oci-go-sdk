@@ -14,8 +14,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/stretchr/testify/assert"
-	"reflect"
-	"strings"
 	"testing"
 	"time"
 )
@@ -28,86 +26,6 @@ var (
 	tick                      = time.Tick(500 * time.Millisecond)
 	timeout                   = time.After(30 * time.Second)
 )
-
-func failIfError(t *testing.T, e error) {
-	if e != nil {
-		t.Error(e)
-		t.FailNow()
-	}
-}
-
-func retryUntilTrueOrError(operation func() (interface{}, error), predicate func(interface{}) (bool, error), frequency, timeout <-chan time.Time) error {
-	for {
-		select {
-		case <-timeout:
-			return fmt.Errorf("timeout reached")
-		case <-frequency:
-			result, err := operation()
-			if err != nil {
-				return err
-			}
-
-			isTrue, err := predicate(result)
-			if err != nil {
-				return err
-			}
-
-			if isTrue {
-				return nil
-			}
-		}
-	}
-}
-
-func findLifecycleFieldValue(request interface{}) (string, error) {
-	val := reflect.ValueOf(request)
-	if val.Kind() == reflect.Ptr {
-		if val.IsNil() {
-			return "", fmt.Errorf("can not unmarshal to response a pointer to nil structure")
-		}
-		val = val.Elem()
-	}
-
-	var err error
-	typ := val.Type()
-	for i := 0; i < typ.NumField(); i++ {
-		if err != nil {
-			return "", err
-		}
-
-		sf := typ.Field(i)
-
-		//unexported
-		if sf.PkgPath != "" {
-			continue
-		}
-
-		sv := val.Field(i)
-
-		if sv.Kind() == reflect.Struct {
-			lif, err := findLifecycleFieldValue(sv.Interface())
-			if err == nil {
-				return lif, nil
-			}
-		}
-		if !strings.Contains(strings.ToLower(sf.Name), "lifecycle") {
-			continue
-		}
-		return sv.String(), nil
-	}
-	return "", fmt.Errorf("request does not have a lifecycle field")
-}
-
-func checkLifecycleState(lifecycleState string) func(interface{}) (bool, error) {
-	return func(request interface{}) (bool, error) {
-		fieldLifecycle, err := findLifecycleFieldValue(request)
-		if err != nil {
-			return false, err
-		}
-		isEqual := fieldLifecycle == lifecycleState
-		return isEqual, nil
-	}
-}
 
 //Volumes CRUDL
 func TestBlockstorageClient_CreateVolume(t *testing.T) {
