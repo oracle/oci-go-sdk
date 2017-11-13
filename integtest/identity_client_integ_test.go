@@ -386,6 +386,48 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	return
 }
 
+func TestIdentityClient_GetTenancy(t *testing.T) {
+	c := identity.NewIdentityClientForRegion(getRegion())
+	request := identity.GetTenancyRequest{TenancyID: common.String(getTenancyID())}
+	r, err := c.GetTenancy(context.Background(), request)
+	verifyResponseIsValid(t,r,err)
+
+	assert.Equal(t, request.TenancyID, r.ID)
+	assert.NotEmpty(t, r.OpcRequestID)
+
+	return
+}
+
+func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
+	c := identity.NewIdentityClientForRegion(getRegion())
+	request := identity.ListAvailabilityDomainsRequest{CompartmentID: common.String(getCompartmentID())}
+	r, err := c.ListAvailabilityDomains(context.Background(), request)
+	verifyResponseIsValid(t,r,err)
+
+	assert.NotEmpty(t, r.OpcRequestID)
+	assert.NotZero(t, len(r.Items))
+	return
+}
+
+func TestIdentityClient_ListCompartments(t *testing.T) {
+	c := identity.NewIdentityClientForRegion(getRegion())
+	request := identity.ListCompartmentsRequest{CompartmentID: common.String(getTenancyID())}
+	r, err := c.ListCompartments(context.Background(), request)
+	verifyResponseIsValid(t,r,err)
+
+	assert.NotEmpty(t, r.OpcRequestID)
+	assert.NotZero(t, len(r.Items))
+	return
+}
+
+func TestIdentityClient_ListRegions(t *testing.T) {
+	c := identity.NewIdentityClientForRegion(getRegion())
+	r, err := c.ListRegions(context.Background())
+	verifyResponseIsValid(t, r, err)
+	assert.NotZero(t, len(r.Items))
+	return
+}
+
 // TODO
 //func TestIdentityClient_CreateIdpGroupMapping(t *testing.T) {
 //	c := identity.NewIdentityClientForRegion(getRegion())
@@ -454,16 +496,7 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 //	assert.NoError(t, err)
 //	return
 //}
-//
-//func TestIdentityClient_GetTenancy(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.GetTenancyRequest{}
-//	r, err := c.GetTenancy(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
+
 //func TestIdentityClient_GetUserGroupMembership(t *testing.T) {
 //	c := identity.NewIdentityClientForRegion(getRegion())
 //	request := identity.GetUserGroupMembershipRequest{}
@@ -472,27 +505,7 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 //	assert.NoError(t, err)
 //	return
 //}
-//
-//func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.ListAvailabilityDomainsRequest{}
-//	r, err := c.ListAvailabilityDomains(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
-//func TestIdentityClient_ListCompartments(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.ListCompartmentsRequest{}
-//	r, err := c.ListCompartments(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
 
-//
 //func TestIdentityClient_ListIdpGroupMappings(t *testing.T) {
 //	c := identity.NewIdentityClientForRegion(getRegion())
 //	request := identity.ListIdpGroupMappingsRequest{}
@@ -519,15 +532,7 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 //	assert.NoError(t, err)
 //	return
 //}
-//
-//func TestIdentityClient_ListRegions(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	r, err := c.ListRegions(context.Background())
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
+
 //func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 //	c := identity.NewIdentityClientForRegion(getRegion())
 //	request := identity.ListSwiftPasswordsRequest{}
@@ -578,14 +583,6 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 //	return
 //}
 //
-//func TestIdentityClient_UploadApiKey(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.UploadApiKeyRequest{}
-//	r, err := c.UploadApiKey(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
 
 func TestBadHost(t *testing.T) {
 	client := identity.NewIdentityClientForRegion(getRegion())
