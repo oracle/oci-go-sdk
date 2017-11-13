@@ -17,7 +17,7 @@ $(TARGETS_BUILD): build-%:%
 	@(cd $< && go build -v)
 
 $(TARGETS_TEST): test-%:%
-	@(cd $< && go test -v)
+	@(cd $< && OCI_GO_SDK_DEBUG=1 go test -v)
 
 clean:
 	git clean -dfn
