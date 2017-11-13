@@ -9,7 +9,7 @@ TARGETS_TEST = $(patsubst %,test-%, $(TARGETS_WITH_TESTS))
 
 build: $(TARGETS_BUILD)
 
-test: $(TARGETS_TEST)
+test: build $(TARGETS_TEST)
 
 $(TARGETS_BUILD): build-%:%
 	@echo "\nbuilding: $<"
@@ -17,7 +17,7 @@ $(TARGETS_BUILD): build-%:%
 	@(cd $< && go build -v)
 
 $(TARGETS_TEST): test-%:%
-	@(cd $< && go test)
+	@(cd $< && go test -v)
 
 clean:
 	git clean -dfn
