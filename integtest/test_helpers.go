@@ -6,9 +6,11 @@ import (
 	"fmt"
 	"os"
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/stretchr/testify/assert"
 )
 
-var (
+const (
+	GoSDK2_Test_Prefix 		 = "GOSDK2_Test_"
 	ENV_TENANCY_OCID 		 = "tenancy_ocid"
 	ENV_USER_OCID 			 = "user_ocid"
 	ENV_COMPARTMENT_OCID	 = "compartment_ocid"
@@ -39,7 +41,7 @@ func getEnvSetting(s string, defaultValue string) string {
 }
 
 // For now we will just use the default value if the env var is not set
-// Eventually, certain values (TenancyID, UserID, etc.) will be required
+// Eventually, certain values (TenancyID, UserID, etc.) may be required
 //func getRequiredEnvSetting(s string) string {
 //	val := getEnvSetting(s, "")
 //  if val == "" {
@@ -95,5 +97,10 @@ func getUuid() string {
 }
 
 func getUniqueName(base string) string {
-	return fmt.Sprintf("%s%s", base, getUuid())
+	return fmt.Sprintf("%s%s%s", GoSDK2_Test_Prefix, base, getUuid())
+}
+
+func verifyResponseIsValid(t *testing.T, response interface{}, err error) {
+	assert.NotEmpty(t, response, fmt.Sprint(response))
+	assert.NoError(t, err)
 }
