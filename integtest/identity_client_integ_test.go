@@ -166,10 +166,44 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 //User-Group operations
 func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	c := identity.NewIdentityClientForRegion(getRegion())
+
+	// for robustness, create a user and group to use for this test. delete it at the end
+	reqAddUser := identity.CreateUserRequest{}
+	reqAddUser.CompartmentID = common.String(getCompartmentID())
+	reqAddUser.Name = common.String(getUniqueName("AUTG_User"))
+	reqAddUser.Description = common.String("AddUserToGroup Test User")
+	rspAddUser, err1 := c.CreateUser(context.Background(), reqAddUser)
+
+	// TODO switch to failIfError
+	panicIfError(t, err1)
+
+	defer func() {
+		// Delete the user
+		reqUserDelete := identity.DeleteUserRequest{UserID: rspAddUser.ID}
+		delUserErr := c.DeleteUser(context.Background(), reqUserDelete)
+		assert.NoError(t, delUserErr)
+	}()
+
+	reqAddGroup := identity.CreateGroupRequest{}
+	reqAddGroup.CompartmentID = common.String(getCompartmentID())
+	reqAddGroup.Name = common.String(getUniqueName("AUTG_Group_"))
+	reqAddGroup.Description = common.String("AddUserToGroup Test Group")
+	rspAddGroup, err2 := c.CreateGroup(context.Background(), reqAddGroup)
+
+	// TODO switch to failIfError
+	panicIfError(t, err2)
+
+	defer func() {
+		// Delete the group
+		reqGroupDelete := identity.DeleteGroupRequest{GroupID: rspAddGroup.ID}
+		delGrpErr := c.DeleteGroup(context.Background(), reqGroupDelete)
+		assert.NoError(t, delGrpErr)
+	}()
+
 	//add
 	requestAdd := identity.AddUserToGroupRequest{}
-	requestAdd.UserID = common.String(getUserID())
-	requestAdd.GroupID = common.String(getGroupID())
+	requestAdd.UserID = rspAddUser.ID
+	requestAdd.GroupID = rspAddGroup.ID
 	r, err := c.AddUserToGroup(context.Background(), requestAdd)
 	panicIfError(t, err)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
