@@ -198,7 +198,3 @@ func verifyResponseIsValid(t *testing.T, response interface{}, err error) {
 func validAD() string {
 	return DEF_VALID_AD
 }
-
-func validVolume() string {
-	return DEF_VOLUME
-}
