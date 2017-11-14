@@ -26,7 +26,6 @@ const (
 	DEF_GROUP_ID            = "ocid1.group.oc1..aaaaaaaayvxomawkk23wkp32cgdufufgqvx62qanmbn6vs3lv65xuc42r5sq"
 	DEF_REGION              = common.REGION_PHX
 	DEF_VALID_AD            = "kIdk:PHX-AD-2"
-	DEF_VOLUME              = "ocid1.volume.oc1.phx.abyhqljrm66bxtplnokqq762przj3s67ewvqlk7eidgpvwdjm35f2hxd6c5a"
 )
 
 func getEnvSetting(s string, defaultValue string) string {
