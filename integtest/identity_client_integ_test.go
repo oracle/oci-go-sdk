@@ -28,7 +28,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	request.Description = common.String("GoSDK_someGroupDesc")
 	r, err := c.CreateGroup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	panicIfError(t, err)
+	failIfError(t, err)
 
 	// if we've successfully created a group during testing, make sure that we delete it
 	defer func() {
@@ -45,7 +45,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	rRead := identity.GetGroupRequest{GroupID: r.ID}
 	resRead, err := c.GetGroup(context.Background(), rRead)
 	assert.NotEmpty(t, r, fmt.Sprint(resRead.ID))
-	panicIfError(t, err)
+	failIfError(t, err)
 
 	// validate group lifecycle state enum value after read
 	assert.Equal(t, resRead.LifecycleState, identity.GROUP_LIFECYCLE_STATE_ACTIVE)
@@ -54,7 +54,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	rUpdate := identity.UpdateGroupRequest{GroupID: r.ID}
 	rUpdate.Description = common.String("New description")
 	resUpdate, err := c.UpdateGroup(context.Background(), rUpdate)
-	panicIfError(t, err)
+	failIfError(t, err)
 	assert.NotNil(t, resUpdate.ID)
 }
 
@@ -98,12 +98,12 @@ func TestIdentityClient_UpdateCompartment(t *testing.T) {
 		CompartmentID: common.String(getCompartmentID()),
 	}
 	r, err := c.UpdateCompartment(context.Background(), request)
-	panicIfError(t, err)
+	failIfError(t, err)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 
 	rRead := identity.GetCompartmentRequest{CompartmentID: common.String(getTenancyID())}
 	resRead, err := c.GetCompartment(context.Background(), rRead)
-	panicIfError(t, err)
+	failIfError(t, err)
 	assert.NotEmpty(t, r, fmt.Sprint(resRead))
 	return
 }
@@ -174,8 +174,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	reqAddUser.Description = common.String("AddUserToGroup Test User")
 	rspAddUser, err1 := c.CreateUser(context.Background(), reqAddUser)
 
-	// TODO switch to failIfError
-	panicIfError(t, err1)
+	failIfError(t, err1)
 
 	defer func() {
 		// Delete the user
@@ -190,8 +189,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	reqAddGroup.Description = common.String("AddUserToGroup Test Group")
 	rspAddGroup, err2 := c.CreateGroup(context.Background(), reqAddGroup)
 
-	// TODO switch to failIfError
-	panicIfError(t, err2)
+	failIfError(t, err2)
 
 	defer func() {
 		// Delete the group
@@ -205,14 +203,14 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	requestAdd.UserID = rspAddUser.ID
 	requestAdd.GroupID = rspAddGroup.ID
 	r, err := c.AddUserToGroup(context.Background(), requestAdd)
-	panicIfError(t, err)
+	failIfError(t, err)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 
 	defer func() {
 		//remove
 		requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipID: r.UserGroupMembership.ID}
 		err = c.RemoveUserFromGroup(context.Background(), requestRemove)
-		panicIfError(t, err)
+		failIfError(t, err)
 	}()
 
 	// validate user membership lifecycle state enum value after create
@@ -274,7 +272,7 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	request.UserID = common.String(getUserID())
 	request.DisplayName = common.String("GolangSDK2TestSecretKey")
 	resCreate, err := c.CreateCustomerSecretKey(context.Background(), request)
-	panicIfError(t, err)
+	failIfError(t, err)
 	assert.NotEmpty(t, resCreate, fmt.Sprint(resCreate))
 	assert.NoError(t, err)
 
@@ -284,7 +282,7 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 		rDelete.CustomerSecretKeyID = resCreate.ID
 		rDelete.UserID = common.String(getUserID())
 		err = c.DeleteCustomerSecretKey(context.Background(), rDelete)
-		panicIfError(t, err)
+		failIfError(t, err)
 	}()
 
 	// validate user membership lifecycle state enum value after create
@@ -297,7 +295,7 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	rUpdate.DisplayName = common.String("This is a new description")
 	resUpdate, err := c.UpdateCustomerSecretKey(context.Background(), rUpdate)
 	assert.NotEmpty(t, resUpdate, fmt.Sprint(resUpdate))
-	panicIfError(t, err)
+	failIfError(t, err)
 
 	return
 }
@@ -308,7 +306,7 @@ func TestIdentityClient_ListCustomerSecretKeys(t *testing.T) {
 	request.UserID = common.String(getUserID())
 	r, err := c.ListCustomerSecretKeys(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	panicIfError(t, err)
+	failIfError(t, err)
 	return
 }
 
@@ -349,7 +347,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 	request.UserID = common.String(getUserID())
 	r, err := c.ListApiKeys(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	panicIfError(t, err)
+	failIfError(t, err)
 	return
 }
 
@@ -386,7 +384,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 		rDelete := identity.DeleteIdentityProviderRequest{}
 		rDelete.IdentityProviderID = rspCreate.ID
 		err := c.DeleteIdentityProvider(context.Background(), rDelete)
-		panicIfError(t, err)
+		failIfError(t, err)
 	}()
 
 	// Read
