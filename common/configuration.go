@@ -20,11 +20,10 @@ type ConfigurationProvider interface {
 	Region() (string, error)
 }
 
-
 // Test to each part of the configration provider does not return an error
 // If it does the function return false and the first error that caused the failure
 func IsConfigurationProviderValid(conf ConfigurationProvider) (ok bool, err error) {
-	baseFn := []func()(string, error){conf.TenancyOCID, conf.UserOCID, conf.KeyFingerPrint, conf.Region, conf.KeyID}
+	baseFn := []func() (string, error){conf.TenancyOCID, conf.UserOCID, conf.KeyFingerPrint, conf.Region, conf.KeyID}
 	for _, fn := range baseFn {
 		_, err = fn()
 		ok = err == nil
@@ -58,7 +57,6 @@ func ConfigurationProviderEnvironmentVariables(environmentVariablePrefix, privat
 func (p environmentConfigurationProvider) String() string {
 	return fmt.Sprintf("Configuration provided by environment variables prefixed with: %s", p.EnvironmentVariablePrefix)
 }
-
 
 // PrivateKeyFromBytes is a helper function that will produce a RSA private
 // key from bytes.
@@ -346,6 +344,7 @@ func (p fileConfigurationProvider) Region() (value string, err error) {
 type composingConfigurationProvider struct {
 	Providers []ConfigurationProvider
 }
+
 // Creates a composing configuration provider with the given slice of configuration providers
 // A composing provider will return the configuration of the first provider that has the configuration
 // if no provider has the configuration it will return an error.
