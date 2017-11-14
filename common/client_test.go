@@ -3,12 +3,12 @@ package common
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"testing"
-	"fmt"
 )
 
 func TestClient_prepareRequestDefScheme(t *testing.T) {
@@ -193,7 +193,6 @@ func TestBaseClient_CallError(t *testing.T) {
 	assert.Equal(t, &response, retRes)
 
 }
-
 
 func TestBaseClient_CreateWithInvalidConfig(t *testing.T) {
 	dataTpl := `[DEFAULT]

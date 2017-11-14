@@ -25,6 +25,7 @@ const (
 	DEF_COMPARTMENT_ID      = "ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma"
 	DEF_GROUP_ID            = "ocid1.group.oc1..aaaaaaaayvxomawkk23wkp32cgdufufgqvx62qanmbn6vs3lv65xuc42r5sq"
 	DEF_REGION              = common.REGION_PHX
+	DEF_VALID_AD            = "kIdk:PHX-AD-2"
 )
 
 func getEnvSetting(s string, defaultValue string) string {
@@ -192,4 +193,8 @@ func getUniqueName(base string) string {
 func verifyResponseIsValid(t *testing.T, response interface{}, err error) {
 	assert.NotEmpty(t, response, fmt.Sprint(response))
 	assert.NoError(t, err)
+}
+
+func validAD() string {
+	return DEF_VALID_AD
 }
