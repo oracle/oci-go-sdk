@@ -1,27 +1,30 @@
 package integtest
 
 import (
-	"testing"
-	"os/exec"
-	"fmt"
-	"os"
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"fmt"
 	"github.com/stretchr/testify/assert"
+	"os"
+	"os/exec"
+	"reflect"
+	"strings"
+	"testing"
+	"time"
 )
 
 const (
-	GoSDK2_Test_Prefix 		 = "GOSDK2_Test_"
-	ENV_TENANCY_OCID 		 = "tenancy_ocid"
-	ENV_USER_OCID 			 = "user_ocid"
-	ENV_COMPARTMENT_OCID	 = "compartment_ocid"
-	ENV_GROUP_OCID			 = "group_ocid"
-	ENV_REGION				 = "region"
+	GoSDK2_Test_Prefix   = "GOSDK2_Test_"
+	ENV_TENANCY_OCID     = "tenancy_ocid"
+	ENV_USER_OCID        = "user_ocid"
+	ENV_COMPARTMENT_OCID = "compartment_ocid"
+	ENV_GROUP_OCID       = "group_ocid"
+	ENV_REGION           = "region"
 
-	DEF_ROOT_COMPARTMENT_ID  = "ocidv1:tenancy:oc1:phx:1460406592660:aaaaaaaab4faofrfkxecohhjuivjq262pu"
-	DEF_USER_ID              = "ocid1.user.oc1..aaaaaaaav6gsclr6pd4yjqengmriylyck55lvon5ujjnhkok5gyxii34lvra"
-	DEF_COMPARTMENT_ID     	 = "ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma"
-	DEF_GROUP_ID           	 = "ocid1.group.oc1..aaaaaaaayvxomawkk23wkp32cgdufufgqvx62qanmbn6vs3lv65xuc42r5sq"
-	DEF_REGION				 = common.REGION_PHX
+	DEF_ROOT_COMPARTMENT_ID = "ocidv1:tenancy:oc1:phx:1460406592660:aaaaaaaab4faofrfkxecohhjuivjq262pu"
+	DEF_USER_ID             = "ocid1.user.oc1..aaaaaaaav6gsclr6pd4yjqengmriylyck55lvon5ujjnhkok5gyxii34lvra"
+	DEF_COMPARTMENT_ID      = "ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma"
+	DEF_GROUP_ID            = "ocid1.group.oc1..aaaaaaaayvxomawkk23wkp32cgdufufgqvx62qanmbn6vs3lv65xuc42r5sq"
+	DEF_REGION              = common.REGION_PHX
 )
 
 func getEnvSetting(s string, defaultValue string) string {
@@ -81,10 +84,96 @@ func getRegion() common.Region {
 	return DEF_REGION
 }
 
+//Panics on error
 func panicIfError(t *testing.T, err error) {
 	if err != nil {
 		t.Fail()
 		panic(err)
+	}
+}
+
+//Fails the test on error
+func failIfError(t *testing.T, e error) {
+	if e != nil {
+		t.Error(e)
+		t.FailNow()
+	}
+}
+
+// Retries a function until the predicate is true or it reaches a timeout.
+// The operation is retried at the give frequency
+func retryUntilTrueOrError(operation func() (interface{}, error), predicate func(interface{}) (bool, error), frequency, timeout <-chan time.Time) error {
+	for {
+		select {
+		case <-timeout:
+			return fmt.Errorf("timeout reached")
+		case <-frequency:
+			result, err := operation()
+			if err != nil {
+				return err
+			}
+
+			isTrue, err := predicate(result)
+			if err != nil {
+				return err
+			}
+
+			if isTrue {
+				return nil
+			}
+		}
+	}
+}
+
+//Finds lifecycle value inside the struct based on reflection
+func findLifecycleFieldValue(request interface{}) (string, error) {
+	val := reflect.ValueOf(request)
+	if val.Kind() == reflect.Ptr {
+		if val.IsNil() {
+			return "", fmt.Errorf("can not unmarshal to response a pointer to nil structure")
+		}
+		val = val.Elem()
+	}
+
+	var err error
+	typ := val.Type()
+	for i := 0; i < typ.NumField(); i++ {
+		if err != nil {
+			return "", err
+		}
+
+		sf := typ.Field(i)
+
+		//unexported
+		if sf.PkgPath != "" {
+			continue
+		}
+
+		sv := val.Field(i)
+
+		if sv.Kind() == reflect.Struct {
+			lif, err := findLifecycleFieldValue(sv.Interface())
+			if err == nil {
+				return lif, nil
+			}
+		}
+		if !strings.Contains(strings.ToLower(sf.Name), "lifecycle") {
+			continue
+		}
+		return sv.String(), nil
+	}
+	return "", fmt.Errorf("request does not have a lifecycle field")
+}
+
+//Returns a function that checks for that a struct has the given lifecycle
+func checkLifecycleState(lifecycleState string) func(interface{}) (bool, error) {
+	return func(request interface{}) (bool, error) {
+		fieldLifecycle, err := findLifecycleFieldValue(request)
+		if err != nil {
+			return false, err
+		}
+		isEqual := fieldLifecycle == lifecycleState
+		return isEqual, nil
 	}
 }
 

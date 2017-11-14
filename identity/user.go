@@ -54,7 +54,7 @@ type User struct {
 	// - bit 0: SUSPENDED (reserved for future use)
 	// - bit 1: DISABLED (reserved for future use)
 	// - bit 2: BLOCKED (the user has exceeded the maximum number of failed login attempts for the Console)
-	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
 func (model User) String() string {

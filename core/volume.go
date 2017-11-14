@@ -38,13 +38,13 @@ type Volume struct {
 	LifecycleState VolumeLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The size of the volume in MBs. This field is deprecated. Please use sizeInGBs.
-	SizeInMBs *int64 `mandatory:"true" json:"sizeInMBs,omitempty"`
+	SizeInMBs *int `mandatory:"true" json:"sizeInMBs,omitempty"`
 
 	// The date and time the volume was created. Format defined by RFC3339.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
 	// The size of the volume in GBs.
-	SizeInGBs *int64 `mandatory:"false" json:"sizeInGBs,omitempty"`
+	SizeInGBs *int `mandatory:"false" json:"sizeInGBs,omitempty"`
 }
 
 func (model Volume) String() string {

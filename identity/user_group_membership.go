@@ -37,7 +37,7 @@ type UserGroupMembership struct {
 	LifecycleState UserGroupMembershipLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
 func (model UserGroupMembership) String() string {

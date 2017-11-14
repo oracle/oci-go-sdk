@@ -61,7 +61,7 @@ type IdentityProvider struct {
 	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
 func (model IdentityProvider) String() string {

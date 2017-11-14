@@ -68,7 +68,7 @@ type Saml2IdentityProvider struct {
 	RedirectURL *string `mandatory:"true" json:"redirectUrl,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int64 `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
 func (model Saml2IdentityProvider) String() string {

@@ -38,23 +38,23 @@ type VolumeBackup struct {
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
 	// The size of the volume, in GBs.
-	SizeInGBs *int64 `mandatory:"false" json:"sizeInGBs,omitempty"`
+	SizeInGBs *int `mandatory:"false" json:"sizeInGBs,omitempty"`
 
 	// The size of the volume in MBs. The value must be a multiple of 1024.
 	// This field is deprecated. Please use sizeInGBs.
-	SizeInMBs *int64 `mandatory:"false" json:"sizeInMBs,omitempty"`
+	SizeInMBs *int `mandatory:"false" json:"sizeInMBs,omitempty"`
 
 	// The date and time the request to create the volume backup was received. Format defined by RFC3339.
 	TimeRequestReceived *common.SDKTime `mandatory:"false" json:"timeRequestReceived,omitempty"`
 
 	// The size used by the backup, in GBs. It is typically smaller than sizeInGBs, depending on the space
 	// consumed on the volume and whether the backup is full or incremental.
-	UniqueSizeInGBs *int64 `mandatory:"false" json:"uniqueSizeInGBs,omitempty"`
+	UniqueSizeInGBs *int `mandatory:"false" json:"uniqueSizeInGBs,omitempty"`
 
 	// The size used by the backup, in MBs. It is typically smaller than sizeInMBs, depending on the space
 	// consumed on the volume and whether the backup is full or incremental.
 	// This field is deprecated. Please use uniqueSizeInGBs.
-	UniqueSizeInMbs *int64 `mandatory:"false" json:"uniqueSizeInMbs,omitempty"`
+	UniqueSizeInMbs *int `mandatory:"false" json:"uniqueSizeInMbs,omitempty"`
 
 	// The OCID of the volume.
 	VolumeID *string `mandatory:"false" json:"volumeId,omitempty"`
