@@ -208,3 +208,28 @@ func TestOCIRequestSigner_Sign2(t *testing.T) {
 	assert.Equal(t, r.ContentLength, int64(316))
 	assert.Equal(t, expectedAuthHeader, r.Header.Get("Authorization"))
 }
+
+func TestOCIRequestSigner_SignEmptyBody(t *testing.T) {
+	s := ociRequestSigner{KeyProvider: testKeyProvider{}}
+	u, _ := url.Parse(testURL2)
+	r := http.Request{
+		Proto:      "HTTP/1.1",
+		ProtoMajor: 1,
+		ProtoMinor: 1,
+		Header:     make(http.Header),
+		URL:        u,
+	}
+	bodyBuffer := bytes.NewBufferString("")
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	r.ContentLength = int64(bodyBuffer.Len())
+	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Header.Set("Content-Type", "application/json")
+	r.Header.Set("Content-Length", strconv.FormatInt(r.ContentLength, 10))
+	r.Method = http.MethodPost
+	err := s.Sign(&r)
+
+	assert.NoError(t, err)
+	assert.Equal(t, r.ContentLength, int64(0))
+	assert.NotEmpty(t, r.Header.Get("Authorization"))
+	assert.NotEmpty(t, r.Header.Get("x-content-sha256"))
+}

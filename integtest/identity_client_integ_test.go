@@ -219,6 +219,48 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	return
 }
 
+func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
+	c := identity.NewIdentityClientForRegion(getRegion())
+
+	//create the user
+	u, err := createTestUser(c)
+	failIfError(t, err)
+	defer func() {
+		failIfError(t, deleteTestUser(c, u.ID))
+	}()
+
+	request := identity.CreateOrResetUIPasswordRequest{}
+	request.UserID = u.ID
+	rspCreate, err := c.CreateOrResetUIPassword(context.Background(), request)
+	failIfError(t, err)
+	verifyResponseIsValid(t, rspCreate, err)
+
+	assert.NotEmpty(t, rspCreate.OpcRequestID)
+	assert.Equal(t, rspCreate.UserID, u.ID)
+	assert.NotEmpty(t, rspCreate.Password)
+	assert.Equal(t, rspCreate.LifecycleState, identity.UI_PASSWORD_LIFECYCLE_STATE_ACTIVE)
+
+	// make the request again and ensure that we get a different password
+	rspReset, err := c.CreateOrResetUIPassword(context.Background(), request)
+	failIfError(t, err)
+	verifyResponseIsValid(t, rspReset, err)
+
+	assert.Equal(t, rspCreate.UserID, rspReset.UserID)
+	assert.NotEqual(t, rspCreate.Password, rspReset.Password)
+	assert.Equal(t, rspCreate.LifecycleState, identity.UI_PASSWORD_LIFECYCLE_STATE_ACTIVE)
+
+	return
+}
+
+//func TestIdentityClient_CreateSwiftPassword(t *testing.T) {
+//	c := identity.NewIdentityClientForRegion(getRegion())
+//	request := identity.CreateSwiftPasswordRequest{}
+//	r, err := c.CreateSwiftPassword(context.Background(), request)
+//	assert.NotEmpty(t, r, fmt.Sprint(r))
+//	assert.NoError(t, err)
+//	return
+//}
+
 //Policy Operations see DEX-1945
 //func TestIdentityClient_PolicyCRUD(t *testing.T) {
 //	//Create
@@ -402,7 +444,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	rspUpdate, err := c.UpdateIdentityProvider(context.Background(), rUpdate)
 
 	verifyResponseIsValid(t, rspUpdate, err)
-	assert.Equal(t, rspUpdate.Protocol, rUpdate.Protocol )
+	assert.Equal(t, rspUpdate.Protocol, rUpdate.Protocol)
 	assert.Equal(t, rspUpdate.Description, rUpdate.Description)
 
 	return
@@ -470,14 +512,7 @@ func TestIdentityClient_ListRegions(t *testing.T) {
 //	return
 //}
 //
-//func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.CreateOrResetUIPasswordRequest{}
-//	r, err := c.CreateOrResetUIPassword(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
+
 //
 //func TestIdentityClient_CreateRegionSubscription(t *testing.T) {
 //	c := identity.NewIdentityClientForRegion(getRegion())
