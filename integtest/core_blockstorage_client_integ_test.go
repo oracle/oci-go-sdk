@@ -152,6 +152,8 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 	listTest := func(t *testing.T) {
 		c := core.NewBlockstorageClientForRegion(getRegion())
 		request := core.ListVolumeBackupsRequest{}
+		request.CompartmentID = common.String(getTenancyID())
+		request.VolumeID = volumeID
 		r, err := c.ListVolumeBackups(context.Background(), request)
 		failIfError(t, err)
 		assert.True(t, len(r.Items) > 0)
