@@ -2,6 +2,8 @@ package integtest
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/identity"
+	"context"
 	"fmt"
 	"github.com/stretchr/testify/assert"
 	"os"
@@ -25,7 +27,6 @@ const (
 	DEF_COMPARTMENT_ID      = "ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma"
 	DEF_GROUP_ID            = "ocid1.group.oc1..aaaaaaaayvxomawkk23wkp32cgdufufgqvx62qanmbn6vs3lv65xuc42r5sq"
 	DEF_REGION              = common.REGION_PHX
-	DEF_VALID_AD            = "kIdk:PHX-AD-2"
 )
 
 func getEnvSetting(s string, defaultValue string) string {
@@ -196,5 +197,9 @@ func verifyResponseIsValid(t *testing.T, response interface{}, err error) {
 }
 
 func validAD() string {
-	return DEF_VALID_AD
+	c := identity.NewIdentityClientForRegion(DEF_REGION)
+	req := identity.ListAvailabilityDomainsRequest{}
+	req.CompartmentID = common.String(getCompartmentID())
+	response, _ := c.ListAvailabilityDomains(context.Background(), req)
+	return *response.Items[0].Name
 }
