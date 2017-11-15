@@ -79,13 +79,17 @@ func getRequestTarget(request *http.Request) string {
 
 func calculateHashOfBody(request *http.Request) (err error) {
 	if request.Method == http.MethodPost || request.Method == http.MethodPut {
+		var hash string
 		if request.ContentLength > 0 {
-			hash, e := GetBodyHash(request)
+			var e error
+			hash, e = GetBodyHash(request)
 			if e != nil {
 				return e
 			}
-			request.Header.Set("X-Content-Sha256", hash)
+		} else {
+			hash = hashAndEncode([]byte(""))
 		}
+		request.Header.Set("X-Content-Sha256", hash)
 	}
 	return
 }
@@ -110,6 +114,12 @@ func drainBody(b io.ReadCloser) (r1, r2 io.ReadCloser, err error) {
 	return ioutil.NopCloser(&buf), ioutil.NopCloser(bytes.NewReader(buf.Bytes())), nil
 }
 
+func hashAndEncode(data []byte) string {
+	hashedContent := sha256.Sum256(data)
+	hash := base64.StdEncoding.EncodeToString(hashedContent[:])
+	return hash
+}
+
 func GetBodyHash(request *http.Request) (hashString string, err error) {
 	if request.Body == nil {
 		return "", fmt.Errorf("can not read body of request while calculating body hash, nil body?")
@@ -126,8 +136,7 @@ func GetBodyHash(request *http.Request) (hashString string, err error) {
 	if err != nil {
 		return "", fmt.Errorf("can not read body of request while calculating body hash: %s", err.Error())
 	}
-	hash := sha256.Sum256(data)
-	hashString = base64.StdEncoding.EncodeToString(hash[:])
+	hashString = hashAndEncode(data)
 	return
 }
 

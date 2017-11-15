@@ -224,6 +224,7 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 
 	//create the user
 	u, err := createTestUser(c)
+	failIfError(t, err)
 	defer func() {
 		failIfError(t, deleteTestUser(c, u.ID))
 	}()
@@ -231,6 +232,7 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 	request := identity.CreateOrResetUIPasswordRequest{}
 	request.UserID = u.ID
 	rspCreate, err := c.CreateOrResetUIPassword(context.Background(), request)
+	failIfError(t, err)
 	verifyResponseIsValid(t, rspCreate, err)
 
 	assert.NotEmpty(t, rspCreate.OpcRequestID)
@@ -240,6 +242,7 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 
 	// make the request again and ensure that we get a different password
 	rspReset, err := c.CreateOrResetUIPassword(context.Background(), request)
+	failIfError(t, err)
 	verifyResponseIsValid(t, rspReset, err)
 
 	assert.Equal(t, rspCreate.UserID, rspReset.UserID)
@@ -441,7 +444,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	rspUpdate, err := c.UpdateIdentityProvider(context.Background(), rUpdate)
 
 	verifyResponseIsValid(t, rspUpdate, err)
-	assert.Equal(t, rspUpdate.Protocol, rUpdate.Protocol )
+	assert.Equal(t, rspUpdate.Protocol, rUpdate.Protocol)
 	assert.Equal(t, rspUpdate.Description, rUpdate.Description)
 
 	return
