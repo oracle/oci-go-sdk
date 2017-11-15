@@ -19,22 +19,18 @@ import (
 )
 
 var (
-	testRegionForBlockstorage = common.REGION_PHX
-	validOCID                 = "ocidv1:tenancy:oc1:phx:1460406592660:aaaaaaaab4faofrfkxecohhjuivjq262pu"
-	validAD                   = "kIdk:PHX-AD-2"
-	validVolume               = "ocid1.volume.oc1.phx.abyhqljrm66bxtplnokqq762przj3s67ewvqlk7eidgpvwdjm35f2hxd6c5a"
-	tick                      = time.Tick(500 * time.Millisecond)
-	timeout                   = time.After(30 * time.Second)
+	tick    = time.Tick(500 * time.Millisecond)
+	timeout = time.After(30 * time.Second)
 )
 
 //Volumes CRUDL
 func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
-	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	c := core.NewBlockstorageClientForRegion(getRegion())
 	request := core.CreateVolumeRequest{}
 
-	request.AvailabilityDomain = common.String(validAD)
-	request.CompartmentID = common.String(validOCID)
+	request.AvailabilityDomain = common.String(validAD())
+	request.CompartmentID = common.String(getTenancyID())
 	request.DisplayName = common.String("GoSDK2_TestBlockStorageCreateVolumeDisplayName")
 
 	resCreate, err := c.CreateVolume(context.Background(), request)
@@ -43,7 +39,7 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//Read
 	readTest := func() (interface{}, error) {
-		c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+		c := core.NewBlockstorageClientForRegion(getRegion())
 		request := core.GetVolumeRequest{}
 		request.VolumeID = resCreate.ID
 		resRead, err := c.GetVolume(context.Background(), request)
@@ -55,7 +51,7 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//update
 	updateTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+		c := core.NewBlockstorageClientForRegion(getRegion())
 		request := core.UpdateVolumeRequest{}
 		request.VolumeID = resCreate.ID
 		request.DisplayName = common.String("GoSDK2_TestBlockStorageCreateVolumeDisplayNameUpdated")
@@ -68,9 +64,9 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//list
 	listTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+		c := core.NewBlockstorageClientForRegion(getRegion())
 		request := core.ListVolumesRequest{}
-		request.CompartmentID = common.String(validOCID)
+		request.CompartmentID = common.String(getTenancyID())
 		r, err := c.ListVolumes(context.Background(), request)
 		assert.NoError(t, err)
 		assert.NotEmpty(t, r.Items)
@@ -80,7 +76,7 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//delete
 	deleteTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+		c := core.NewBlockstorageClientForRegion(getRegion())
 		request := core.DeleteVolumeRequest{}
 		request.VolumeID = resCreate.ID
 		err := c.DeleteVolume(context.Background(), request)
@@ -93,10 +89,46 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 }
 
 func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
+
+	c := core.NewBlockstorageClientForRegion(getRegion())
+
+	var volumeID *string
+	//First create a volume
+	createVol := func(t *testing.T) {
+		rCreateVol := core.CreateVolumeRequest{}
+		rCreateVol.AvailabilityDomain = common.String(validAD())
+		rCreateVol.CompartmentID = common.String(getTenancyID())
+		rCreateVol.DisplayName = common.String("GoSDK2_TestBlockStorageCreateVolumeForBackup")
+		resCreate, err := c.CreateVolume(context.Background(), rCreateVol)
+		volumeID = resCreate.ID
+		failIfError(t, err)
+	}
+
+	deleteVol := func() {
+		c := core.NewBlockstorageClientForRegion(getRegion())
+		request := core.DeleteVolumeRequest{}
+		request.VolumeID = volumeID
+		c.DeleteVolume(context.Background(), request)
+		return
+	}
+
+	readVol := func() (interface{}, error) {
+		c := core.NewBlockstorageClientForRegion(getRegion())
+		request := core.GetVolumeRequest{}
+		request.VolumeID = volumeID
+		resRead, err := c.GetVolume(context.Background(), request)
+		return resRead, err
+	}
+
+	createVol(t)
+	defer deleteVol()
+	failIfError(t,
+		retryUntilTrueOrError(readVol,
+			checkLifecycleState(string(core.VOLUME_LIFECYCLE_STATE_AVAILABLE)), tick, time.After(120*time.Second)))
+
 	//Create
-	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.CreateVolumeBackupRequest{}
-	request.VolumeID = common.String(validVolume)
+	request.VolumeID = volumeID
 	request.DisplayName = common.String("GoSDK2_TestBlockStorageCreateVolumeBackup")
 	r, err := c.CreateVolumeBackup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -105,7 +137,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//Read
 	readTest := func() (interface{}, error) {
-		c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+		c := core.NewBlockstorageClientForRegion(getRegion())
 		request := core.GetVolumeBackupRequest{}
 		request.VolumeBackupID = r.ID
 		rRead, err := c.GetVolumeBackup(context.Background(), request)
@@ -118,8 +150,10 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//List
 	listTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+		c := core.NewBlockstorageClientForRegion(getRegion())
 		request := core.ListVolumeBackupsRequest{}
+		request.CompartmentID = common.String(getTenancyID())
+		request.VolumeID = volumeID
 		r, err := c.ListVolumeBackups(context.Background(), request)
 		failIfError(t, err)
 		assert.True(t, len(r.Items) > 0)
@@ -129,7 +163,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//Update
 	updateTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+		c := core.NewBlockstorageClientForRegion(getRegion())
 		request := core.UpdateVolumeBackupRequest{}
 		request.VolumeBackupID = r.ID
 		request.DisplayName = common.String("GoSDK2_TestBlockStorageVolumeBackupUpdate")
@@ -142,7 +176,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//Delete
 	deleteTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+		c := core.NewBlockstorageClientForRegion(getRegion())
 		request := core.DeleteVolumeBackupRequest{}
 		request.VolumeBackupID = r.ID
 		err := c.DeleteVolumeBackup(context.Background(), request)

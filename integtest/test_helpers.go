@@ -2,6 +2,8 @@ package integtest
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/identity"
+	"context"
 	"fmt"
 	"github.com/stretchr/testify/assert"
 	"os"
@@ -10,8 +12,6 @@ import (
 	"strings"
 	"testing"
 	"time"
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/identity"
-	"context"
 )
 
 const (
@@ -196,7 +196,7 @@ func verifyResponseIsValid(t *testing.T, response interface{}, err error) {
 	assert.NoError(t, err)
 }
 
-func createTestUser (client identity.IdentityClient) (identity.User,  error) {
+func createTestUser(client identity.IdentityClient) (identity.User, error) {
 	req := identity.CreateUserRequest{}
 	req.CompartmentID = common.String(getCompartmentID())
 	req.Name = common.String(getUniqueName("AUTG_User_"))
@@ -205,8 +205,16 @@ func createTestUser (client identity.IdentityClient) (identity.User,  error) {
 	return rsp.User, err
 }
 
-func deleteTestUser(client identity.IdentityClient, userID *string) (error) {
+func deleteTestUser(client identity.IdentityClient, userID *string) error {
 	req := identity.DeleteUserRequest{UserID: userID}
 	err := client.DeleteUser(context.Background(), req)
 	return err
+}
+
+func validAD() string {
+	c := identity.NewIdentityClientForRegion(DEF_REGION)
+	req := identity.ListAvailabilityDomainsRequest{}
+	req.CompartmentID = common.String(getCompartmentID())
+	response, _ := c.ListAvailabilityDomains(context.Background(), req)
+	return *response.Items[0].Name
 }

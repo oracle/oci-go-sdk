@@ -6,11 +6,11 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"os"
 	"path"
 	"runtime"
 	"strings"
 	"time"
-	"os"
 )
 
 const (
@@ -20,8 +20,8 @@ const (
 	defaultUserAgentTemplate = "%s/%s (%s/%s; go/%s)" //SDK/SDKVersion (OS/OSVersion; Lang/LangVersion)
 	defaultTimeout           = time.Second * 30
 	defaultConfigFileName    = "config"
-	defaultConfigDirName     =  ".oci"
-	secondorayConfigDirName  =  ".oraclebmc"
+	defaultConfigDirName     = ".oci"
+	secondorayConfigDirName  = ".oraclebmc"
 )
 
 type RequestInterceptor func(*http.Request) error
@@ -102,11 +102,9 @@ func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClien
 	return
 }
 
-
 func getHomeFolder() string {
 	return os.Getenv("HOME")
 }
-
 
 //Create a new default client for a given region, with a default config provider
 func NewClientForRegion(region Region) (client BaseClient) {
@@ -118,7 +116,6 @@ func NewClientForRegion(region Region) (client BaseClient) {
 	defaultFileProvider, _ := ConfigurationProviderFromFile(defaultConfigFile, "")
 	secondaryFileProvider, _ := ConfigurationProviderFromFile(secondaryConfigFile, "")
 	environmentProvider := environmentConfigurationProvider{EnvironmentVariablePrefix: "TF_VAR"}
-
 
 	provider, _ := ComposingConfigurationProvider([]ConfigurationProvider{defaultFileProvider, secondaryFileProvider, environmentProvider})
 	Debugf("Configuration provided by: %s", provider)
