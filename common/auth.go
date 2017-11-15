@@ -81,10 +81,9 @@ func calculateHashOfBody(request *http.Request) (err error) {
 	if request.Method == http.MethodPost || request.Method == http.MethodPut {
 		var hash string
 		if request.ContentLength > 0 {
-			var e error
-			hash, e = GetBodyHash(request)
-			if e != nil {
-				return e
+			hash, err = GetBodyHash(request)
+			if err != nil {
+				return
 			}
 		} else {
 			hash = hashAndEncode([]byte(""))
