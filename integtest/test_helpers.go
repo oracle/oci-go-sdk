@@ -10,6 +10,8 @@ import (
 	"strings"
 	"testing"
 	"time"
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/identity"
+	"context"
 )
 
 const (
@@ -192,4 +194,19 @@ func getUniqueName(base string) string {
 func verifyResponseIsValid(t *testing.T, response interface{}, err error) {
 	assert.NotEmpty(t, response, fmt.Sprint(response))
 	assert.NoError(t, err)
+}
+
+func createTestUser (client identity.IdentityClient) (identity.User,  error) {
+	req := identity.CreateUserRequest{}
+	req.CompartmentID = common.String(getCompartmentID())
+	req.Name = common.String(getUniqueName("AUTG_User_"))
+	req.Description = common.String("GoSDK Test User")
+	rsp, err := client.CreateUser(context.Background(), req)
+	return rsp.User, err
+}
+
+func deleteTestUser(client identity.IdentityClient, userID *string) (error) {
+	req := identity.DeleteUserRequest{UserID: userID}
+	err := client.DeleteUser(context.Background(), req)
+	return err
 }
