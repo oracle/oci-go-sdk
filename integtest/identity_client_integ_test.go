@@ -39,7 +39,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	}()
 
 	// validate group lifecycle state enum value after create
-	assert.Equal(t, r.Group.LifecycleState, identity.GROUP_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.GROUP_LIFECYCLE_STATE_ACTIVE, r.Group.LifecycleState)
 
 	//Get
 	rRead := identity.GetGroupRequest{GroupID: r.ID}
@@ -48,7 +48,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	failIfError(t, err)
 
 	// validate group lifecycle state enum value after read
-	assert.Equal(t, resRead.LifecycleState, identity.GROUP_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.GROUP_LIFECYCLE_STATE_ACTIVE, resRead.LifecycleState)
 
 	//Update
 	rUpdate := identity.UpdateGroupRequest{GroupID: r.ID}
@@ -141,7 +141,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 	}()
 
 	// validate user lifecycle state enum value after read
-	assert.Equal(t, resCreate.LifecycleState, identity.USER_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.USER_LIFECYCLE_STATE_ACTIVE, resCreate.LifecycleState)
 
 	//Read
 	rRead := identity.GetUserRequest{UserID: resCreate.ID}
@@ -150,7 +150,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 	assert.NoError(t, err)
 
 	// validate user lifecycle state enum value after read
-	assert.Equal(t, resRead.LifecycleState, identity.USER_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.USER_LIFECYCLE_STATE_ACTIVE, resRead.LifecycleState)
 
 	//Update
 	rUpdate := identity.UpdateUserRequest{}
@@ -214,7 +214,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	}()
 
 	// validate user membership lifecycle state enum value after create
-	assert.Equal(t, rspAdd.LifecycleState, identity.USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_ACTIVE, rspAdd.LifecycleState)
 
 
 	// Read
@@ -255,9 +255,9 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 	verifyResponseIsValid(t, rspCreate, err)
 
 	assert.NotEmpty(t, rspCreate.OpcRequestID)
-	assert.Equal(t, rspCreate.UserID, u.ID)
+	assert.Equal(t, u.ID, rspCreate.UserID)
 	assert.NotEmpty(t, rspCreate.Password)
-	assert.Equal(t, rspCreate.LifecycleState, identity.UI_PASSWORD_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.UI_PASSWORD_LIFECYCLE_STATE_ACTIVE, rspCreate.LifecycleState)
 
 	// make the request again and ensure that we get a different password
 	rspReset, err := c.CreateOrResetUIPassword(context.Background(), request)
@@ -266,7 +266,7 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 
 	assert.Equal(t, rspCreate.UserID, rspReset.UserID)
 	assert.NotEqual(t, rspCreate.Password, rspReset.Password)
-	assert.Equal(t, rspCreate.LifecycleState, identity.UI_PASSWORD_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.UI_PASSWORD_LIFECYCLE_STATE_ACTIVE, rspCreate.LifecycleState)
 
 	return
 }
@@ -296,9 +296,9 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 	}()
 
 	assert.NotEmpty(t, rspPwd.ID)
-	assert.Equal(t, rspPwd.UserID, usr.ID)
+	assert.Equal(t, usr.ID, rspPwd.UserID)
 	assert.NotEmpty(t, rspPwd.Password)
-	assert.Equal(t, rspPwd.LifecycleState, identity.SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE, rspPwd.LifecycleState)
 	assert.Equal(t, createDesc, *rspPwd.Description)
 
 	// Update Swift Password
@@ -309,7 +309,7 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 	verifyResponseIsValid(t, updRsp, err)
 
 	assert.NotEqual(t, rspPwd.Password, updRsp.Password)
-	assert.Equal(t, updRsp.LifecycleState, identity.SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE, updRsp.LifecycleState)
 	assert.Equal(t, updateDesc, *updRsp.Description)
 
 	//assert.NotEmpty(t, updRsp.ExpiresOn)
@@ -421,7 +421,7 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	}()
 
 	// validate user membership lifecycle state enum value after create
-	assert.Equal(t, resCreate.LifecycleState, identity.CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_ACTIVE, resCreate.LifecycleState)
 
 	//Update
 	rUpdate := identity.UpdateCustomerSecretKeyRequest{}
@@ -472,7 +472,7 @@ func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 	// TODO: [2017-Nov-07::shalka] presently LifecycleState isn't being set on ApiKey struct in the Response => merits
 	//  further investigation
 	// validate api key lifecycle state enum value after create
-	// assert.Equal(t, resCreate.LifecycleState, identity.API_KEY_LIFECYCLE_STATE_ACTIVE)
+	// assert.Equal(t, identity.API_KEY_LIFECYCLE_STATE_ACTIVE, resCreate.LifecycleState)
 
 	return
 }
@@ -507,13 +507,13 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	// Verify requested values are correct
 	assert.NotEmpty(t, rspCreate.ID)
 	assert.NotEmpty(t, rspCreate.OpcRequestID)
-	assert.Equal(t, rspCreate.CompartmentID, rCreate.CompartmentID)
-	assert.Equal(t, rspCreate.Name, rCreate.Name)
-	assert.Equal(t, rspCreate.Description, rCreate.Description)
-	assert.Equal(t, rspCreate.ProductType, rCreate.ProductType)
-	assert.Equal(t, rspCreate.Protocol, rCreate.Protocol)
+	assert.Equal(t, rCreate.CompartmentID, rspCreate.CompartmentID)
+	assert.Equal(t, rCreate.Name, rspCreate.Name)
+	assert.Equal(t, rCreate.Description, rspCreate.Description)
+	assert.Equal(t, rCreate.ProductType, rspCreate.ProductType)
+	assert.Equal(t, rCreate.Protocol, rspCreate.Protocol)
 
-	assert.Equal(t, rspCreate.LifecycleState, identity.API_KEY_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.API_KEY_LIFECYCLE_STATE_ACTIVE, rspCreate.LifecycleState)
 
 	defer func() {
 		//remove
@@ -529,7 +529,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	rspRead, err := c.GetIdentityProvider(context.Background(), rRead)
 	failIfError(t, err)
 	verifyResponseIsValid(t, rspRead, err)
-	assert.Equal(t, rspRead.ID, rRead.IdentityProviderID)
+	assert.Equal(t, rRead.IdentityProviderID, rspRead.ID)
 
 	// Update
 	rUpdate := identity.UpdateIdentityProviderRequest{}
@@ -540,8 +540,8 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 
 	failIfError(t, err)
 	verifyResponseIsValid(t, rspUpdate, err)
-	assert.Equal(t, rspUpdate.Protocol, rUpdate.Protocol)
-	assert.Equal(t, rspUpdate.Description, rUpdate.Description)
+	assert.Equal(t, rUpdate.Protocol, rspUpdate.Protocol)
+	assert.Equal(t, rUpdate.Description, rspUpdate.Description)
 
 	return
 }
@@ -611,14 +611,14 @@ func TestIdentityClient_UpdateUserState(t *testing.T) {
 	r, err := c.UpdateUserState(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
 
-	assert.True(t, r.LifecycleState == identity.USER_LIFECYCLE_STATE_INACTIVE)
+
 	assert.Equal(t, 2, r.InactiveStatus)
 
 	request.Blocked = common.Bool(false)
 	r, err = c.UpdateUserState(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
 
-	assert.True(t, r.LifecycleState == identity.USER_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, identity.USER_LIFECYCLE_STATE_INACTIVE, r.LifecycleState)
 	assert.Equal(t, 0, r.InactiveStatus)
 	return
 }
