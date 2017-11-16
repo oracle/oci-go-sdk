@@ -325,13 +325,16 @@ func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 	defer deleteTestUser(c, usr.ID)
 
 	pwdReq := identity.CreateSwiftPasswordRequest{UserID: usr.ID}
+	pwdReq.Description = common.String("Test Swift Password 1")
 	pwdRsp1, err := c.CreateSwiftPassword(context.Background(), pwdReq)
 	verifyResponseIsValid(t, pwdRsp1, err)
 
 	pwdRsp2, err := c.CreateSwiftPassword(context.Background(), pwdReq)
+	pwdReq.Description = common.String("Test Swift Password 2")
 	verifyResponseIsValid(t, pwdRsp2, err)
 
 	request := identity.ListSwiftPasswordsRequest{}
+	request.UserID = usr.ID
 	r, err := c.ListSwiftPasswords(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
 
@@ -623,7 +626,7 @@ func TestIdentityClient_UpdateUserState(t *testing.T) {
 // This test can only realistically be run once since once a region is subscribed to, there is no
 // mechanism to unsubscribe to it. For now we will skip
 func TestIdentityClient_CreateRegionSubscription(t *testing.T) {
-	t.Skip("")
+	t.Skip("SKIPPING: Region Subscriptions cannot be undone.")
 	c := identity.NewIdentityClientForRegion(getRegion())
 	request := identity.CreateRegionSubscriptionRequest{}
 	request.TenancyID = common.String(getTenancyID())
