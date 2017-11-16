@@ -199,23 +199,42 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	}()
 
 	//add
-	requestAdd := identity.AddUserToGroupRequest{}
-	requestAdd.UserID = rspAddUser.ID
-	requestAdd.GroupID = rspAddGroup.ID
-	r, err := c.AddUserToGroup(context.Background(), requestAdd)
+	reqAdd := identity.AddUserToGroupRequest{}
+	reqAdd.UserID = rspAddUser.ID
+	reqAdd.GroupID = rspAddGroup.ID
+	rspAdd, err := c.AddUserToGroup(context.Background(), reqAdd)
 	failIfError(t, err)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NotEmpty(t, rspAdd, fmt.Sprint(rspAdd))
 
 	defer func() {
 		//remove
-		requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipID: r.UserGroupMembership.ID}
+		requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipID: rspAdd.UserGroupMembership.ID}
 		err = c.RemoveUserFromGroup(context.Background(), requestRemove)
 		failIfError(t, err)
 	}()
 
 	// validate user membership lifecycle state enum value after create
-	assert.Equal(t, r.LifecycleState, identity.USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, rspAdd.LifecycleState, identity.USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_ACTIVE)
 
+
+	// Read
+	reqRead := identity.GetUserGroupMembershipRequest{}
+	reqRead.UserGroupMembershipID = rspAdd.ID
+	rspRead, readErr := c.GetUserGroupMembership(context.Background(), reqRead)
+	verifyResponseIsValid(t, rspRead, readErr)
+	assert.Equal(t, rspAdd.ID, rspRead.ID)
+	return
+
+}
+
+func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
+	c := identity.NewIdentityClientForRegion(getRegion())
+	request := identity.ListUserGroupMembershipsRequest{}
+	request.UserID = common.String(getUserID())
+	request.CompartmentID = common.String(getTenancyID())
+	r, err := c.ListUserGroupMemberships(context.Background(), request)
+	verifyResponseIsValid(t, r, err)
+	assert.NotZero(t, len(r.Items))
 	return
 }
 
@@ -252,14 +271,76 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 	return
 }
 
-//func TestIdentityClient_CreateSwiftPassword(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.CreateSwiftPasswordRequest{}
-//	r, err := c.CreateSwiftPassword(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
+func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
+
+	createDesc := "Go SDK Test Swift Password - CREATED"
+	updateDesc := "Go SDK Test Swift Password - UPDATED"
+	c := identity.NewIdentityClientForRegion(getRegion())
+
+	usr, usrErr := createTestUser(c)
+	failIfError(t, usrErr)
+
+	defer deleteTestUser(c, usr.ID)
+
+	// Create Swift Password
+	addReq := identity.CreateSwiftPasswordRequest{UserID: usr.ID}
+	addReq.Description = &createDesc
+	rspPwd, err := c.CreateSwiftPassword(context.Background(), addReq)
+	verifyResponseIsValid(t, rspPwd, err)
+
+	//Delete Swift Password
+	defer func() {
+		delReq := identity.DeleteSwiftPasswordRequest{}
+		delReq.UserID = usr.ID
+		delReq.SwiftPasswordID = rspPwd.ID
+	}()
+
+	assert.NotEmpty(t, rspPwd.ID)
+	assert.Equal(t, rspPwd.UserID, usr.ID)
+	assert.NotEmpty(t, rspPwd.Password)
+	assert.Equal(t, rspPwd.LifecycleState, identity.SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, createDesc, *rspPwd.Description)
+
+	// Update Swift Password
+	updReq := identity.UpdateSwiftPasswordRequest{UserID: usr.ID}
+	updReq.SwiftPasswordID =rspPwd.ID
+	updReq.Description = &updateDesc
+	updRsp, err := c.UpdateSwiftPassword(context.Background(), updReq)
+	verifyResponseIsValid(t, updRsp, err)
+
+	assert.NotEqual(t, rspPwd.Password, updRsp.Password)
+	assert.Equal(t, updRsp.LifecycleState, identity.SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, updateDesc, *updRsp.Description)
+
+	//assert.NotEmpty(t, updRsp.ExpiresOn)
+
+	return
+}
+
+func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
+	c := identity.NewIdentityClientForRegion(getRegion())
+
+	usr, usrErr := createTestUser(c)
+	failIfError(t, usrErr)
+	defer deleteTestUser(c, usr.ID)
+
+	pwdReq := identity.CreateSwiftPasswordRequest{UserID: usr.ID}
+	pwdRsp1, err := c.CreateSwiftPassword(context.Background(), pwdReq)
+	verifyResponseIsValid(t, pwdRsp1, err)
+
+	pwdRsp2, err := c.CreateSwiftPassword(context.Background(), pwdReq)
+	verifyResponseIsValid(t, pwdRsp2, err)
+
+	request := identity.ListSwiftPasswordsRequest{}
+	r, err := c.ListSwiftPasswords(context.Background(), request)
+	verifyResponseIsValid(t, r, err)
+
+	assert.Equal(t, 2, len(r.Items))
+	assert.NotEqual(t, r.Items[0].ID, r.Items[1].ID)
+	assert.NotEqual(t, r.Items[0].Password, r.Items[1].Password)
+
+	return
+}
 
 //Policy Operations see DEX-1945
 //func TestIdentityClient_PolicyCRUD(t *testing.T) {
@@ -306,6 +387,15 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 //	return
 //}
 //
+//func TestIdentityClient_ListPolicies(t *testing.T) {
+//	c := identity.NewIdentityClientForRegion(getRegion())
+//	request := identity.ListPoliciesRequest{}
+//	r, err := c.ListPolicies(context.Background(), request)
+//	assert.NotEmpty(t, r, fmt.Sprint(r))
+//	assert.NoError(t, err)
+//	return
+//}
+
 
 //SecretKey operations
 func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
@@ -505,6 +595,55 @@ func TestIdentityClient_ListRegions(t *testing.T) {
 	return
 }
 
+func TestIdentityClient_UpdateUserState(t *testing.T) {
+	c := identity.NewIdentityClientForRegion(getRegion())
+	usr, usrErr := createTestUser(c)
+	failIfError(t, usrErr)
+	defer deleteTestUser(c, usr.ID)
+
+	request := identity.UpdateUserStateRequest{}
+	request.UserID = usr.ID
+	request.Blocked = common.Bool(true)
+
+	r, err := c.UpdateUserState(context.Background(), request)
+	verifyResponseIsValid(t, r, err)
+
+	assert.True(t, r.LifecycleState == identity.USER_LIFECYCLE_STATE_INACTIVE)
+	assert.Equal(t, 2, r.InactiveStatus)
+
+	request.Blocked = common.Bool(false)
+	r, err = c.UpdateUserState(context.Background(), request)
+	verifyResponseIsValid(t, r, err)
+
+	assert.True(t, r.LifecycleState == identity.USER_LIFECYCLE_STATE_ACTIVE)
+	assert.Equal(t, 0, r.InactiveStatus)
+	return
+}
+
+// This test can only realistically be run once since once a region is subscribed to, there is no
+// mechanism to unsubscribe to it. For now we will skip
+func TestIdentityClient_CreateRegionSubscription(t *testing.T) {
+	t.Skip("")
+	c := identity.NewIdentityClientForRegion(getRegion())
+	request := identity.CreateRegionSubscriptionRequest{}
+	request.TenancyID = common.String(getTenancyID())
+	request.RegionKey = common.String("FRA")
+	r, err := c.CreateRegionSubscription(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
+	c := identity.NewIdentityClientForRegion(getRegion())
+	request := identity.ListRegionSubscriptionsRequest{TenancyID: common.String(getTenancyID())}
+	r, err := c.ListRegionSubscriptions(context.Background(), request)
+	failIfError(t, err)
+	verifyResponseIsValid(t, r, err)
+	assert.NotZero(t, len(r.Items))
+	return
+}
+
 // TODO
 //func TestIdentityClient_CreateIdpGroupMapping(t *testing.T) {
 //	c := identity.NewIdentityClientForRegion(getRegion())
@@ -515,30 +654,6 @@ func TestIdentityClient_ListRegions(t *testing.T) {
 //	return
 //}
 //
-
-//
-//func TestIdentityClient_CreateRegionSubscription(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.CreateRegionSubscriptionRequest{}
-//	r, err := c.CreateRegionSubscription(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
-//func TestIdentityClient_CreateSwiftPassword(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.CreateSwiftPasswordRequest{}
-//	r, err := c.CreateSwiftPassword(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
-//func TestIdentityClient_DeleteApiKey(t *testing.T) {
-//}
-//
-
 //
 //func TestIdentityClient_DeleteIdpGroupMapping(t *testing.T) {
 //	c := identity.NewIdentityClientForRegion(getRegion())
@@ -548,15 +663,6 @@ func TestIdentityClient_ListRegions(t *testing.T) {
 //	return
 //}
 //
-//func TestIdentityClient_DeleteSwiftPassword(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.DeleteSwiftPasswordRequest{}
-//	err := c.DeleteSwiftPassword(context.Background(), request)
-//	assert.NoError(t, err)
-//	return
-//}
-//
-
 //
 //func TestIdentityClient_GetIdpGroupMapping(t *testing.T) {
 //	c := identity.NewIdentityClientForRegion(getRegion())
@@ -566,16 +672,7 @@ func TestIdentityClient_ListRegions(t *testing.T) {
 //	assert.NoError(t, err)
 //	return
 //}
-
-//func TestIdentityClient_GetUserGroupMembership(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.GetUserGroupMembershipRequest{}
-//	r, err := c.GetUserGroupMembership(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-
+//
 //func TestIdentityClient_ListIdpGroupMappings(t *testing.T) {
 //	c := identity.NewIdentityClientForRegion(getRegion())
 //	request := identity.ListIdpGroupMappingsRequest{}
@@ -585,46 +682,6 @@ func TestIdentityClient_ListRegions(t *testing.T) {
 //	return
 //}
 //
-//func TestIdentityClient_ListPolicies(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.ListPoliciesRequest{}
-//	r, err := c.ListPolicies(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
-//func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.ListRegionSubscriptionsRequest{}
-//	r, err := c.ListRegionSubscriptions(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-
-//func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.ListSwiftPasswordsRequest{}
-//	r, err := c.ListSwiftPasswords(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
-//func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.ListUserGroupMembershipsRequest{}
-//	r, err := c.ListUserGroupMemberships(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
-//func TestIdentityClient_UpdateGroup(t *testing.T) {
-//}
-//
-
 //
 //func TestIdentityClient_UpdateIdpGroupMapping(t *testing.T) {
 //	c := identity.NewIdentityClientForRegion(getRegion())
@@ -635,24 +692,7 @@ func TestIdentityClient_ListRegions(t *testing.T) {
 //	return
 //}
 //
-//func TestIdentityClient_UpdateSwiftPassword(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.UpdateSwiftPasswordRequest{}
-//	r, err := c.UpdateSwiftPassword(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
-//func TestIdentityClient_UpdateUserState(t *testing.T) {
-//	c := identity.NewIdentityClientForRegion(getRegion())
-//	request := identity.UpdateUserStateRequest{}
-//	r, err := c.UpdateUserState(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
+
 
 func TestBadHost(t *testing.T) {
 	client := identity.NewIdentityClientForRegion(getRegion())
