@@ -169,7 +169,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 
 	// for robustness, create a user and group to use for this test. delete it at the end
 	reqAddUser := identity.CreateUserRequest{}
-	reqAddUser.CompartmentID = common.String(getCompartmentID())
+	reqAddUser.CompartmentID = common.String(getTenancyID())
 	reqAddUser.Name = common.String(getUniqueName("AUTG_User"))
 	reqAddUser.Description = common.String("AddUserToGroup Test User")
 	rspAddUser, err1 := c.CreateUser(context.Background(), reqAddUser)
@@ -184,7 +184,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	}()
 
 	reqAddGroup := identity.CreateGroupRequest{}
-	reqAddGroup.CompartmentID = common.String(getCompartmentID())
+	reqAddGroup.CompartmentID = common.String(getTenancyID())
 	reqAddGroup.Name = common.String(getUniqueName("AUTG_Group_"))
 	reqAddGroup.Description = common.String("AddUserToGroup Test Group")
 	rspAddGroup, err2 := c.CreateGroup(context.Background(), reqAddGroup)
@@ -464,7 +464,7 @@ func TestIdentityClient_GetTenancy(t *testing.T) {
 	c := identity.NewIdentityClientForRegion(getRegion())
 	request := identity.GetTenancyRequest{TenancyID: common.String(getTenancyID())}
 	r, err := c.GetTenancy(context.Background(), request)
-	verifyResponseIsValid(t,r,err)
+	verifyResponseIsValid(t, r, err)
 
 	assert.Equal(t, request.TenancyID, r.ID)
 	assert.NotEmpty(t, r.OpcRequestID)
@@ -476,7 +476,7 @@ func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
 	c := identity.NewIdentityClientForRegion(getRegion())
 	request := identity.ListAvailabilityDomainsRequest{CompartmentID: common.String(getCompartmentID())}
 	r, err := c.ListAvailabilityDomains(context.Background(), request)
-	verifyResponseIsValid(t,r,err)
+	verifyResponseIsValid(t, r, err)
 
 	assert.NotEmpty(t, r.OpcRequestID)
 	assert.NotZero(t, len(r.Items))
@@ -487,7 +487,7 @@ func TestIdentityClient_ListCompartments(t *testing.T) {
 	c := identity.NewIdentityClientForRegion(getRegion())
 	request := identity.ListCompartmentsRequest{CompartmentID: common.String(getTenancyID())}
 	r, err := c.ListCompartments(context.Background(), request)
-	verifyResponseIsValid(t,r,err)
+	verifyResponseIsValid(t, r, err)
 
 	assert.NotEmpty(t, r.OpcRequestID)
 	assert.NotZero(t, len(r.Items))

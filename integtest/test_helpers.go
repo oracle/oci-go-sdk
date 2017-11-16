@@ -198,7 +198,7 @@ func verifyResponseIsValid(t *testing.T, response interface{}, err error) {
 
 func createTestUser(client identity.IdentityClient) (identity.User, error) {
 	req := identity.CreateUserRequest{}
-	req.CompartmentID = common.String(getCompartmentID())
+	req.CompartmentID = common.String(getTenancyID())
 	req.Name = common.String(getUniqueName("AUTG_User_"))
 	req.Description = common.String("GoSDK Test User")
 	rsp, err := client.CreateUser(context.Background(), req)
