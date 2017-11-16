@@ -407,6 +407,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	// Create
 	rspCreate, err := c.CreateIdentityProvider(context.Background(), rCreate)
 
+	failIfError(t, err)
 	// Validate response
 	verifyResponseIsValid(t, rspCreate, err)
 
@@ -433,6 +434,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	rRead := identity.GetIdentityProviderRequest{}
 	rRead.IdentityProviderID = rspCreate.ID
 	rspRead, err := c.GetIdentityProvider(context.Background(), rRead)
+	failIfError(t, err)
 	verifyResponseIsValid(t, rspRead, err)
 	assert.Equal(t, rspRead.ID, rRead.IdentityProviderID)
 
@@ -443,6 +445,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	rUpdate.Description = common.String("CRUD Test Identity Provider UPDATED")
 	rspUpdate, err := c.UpdateIdentityProvider(context.Background(), rUpdate)
 
+	failIfError(t, err)
 	verifyResponseIsValid(t, rspUpdate, err)
 	assert.Equal(t, rspUpdate.Protocol, rUpdate.Protocol)
 	assert.Equal(t, rspUpdate.Description, rUpdate.Description)
