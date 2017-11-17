@@ -487,11 +487,12 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 }
 
 func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
+	t.Skip("Blocked by DEX-2116")
 	c := identity.NewIdentityClientForRegion(getRegion())
 
 	//Create the Identity Provider Request
 	rCreate := identity.CreateIdentityProviderRequest{}
-	rCreate.CompartmentID = common.String(getCompartmentID())
+	rCreate.CompartmentID = common.String(getTenancyID())
 	rCreate.Name = common.String(getUniqueName("Ident_Provider_"))
 	rCreate.Description = common.String("CRUD Test Identity Provider")
 	rCreate.ProductType = identity.CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS
