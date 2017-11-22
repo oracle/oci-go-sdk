@@ -6,6 +6,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/stretchr/testify/assert"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"reflect"
@@ -217,4 +218,10 @@ func validAD() string {
 	req.CompartmentID = common.String(getCompartmentID())
 	response, _ := c.ListAvailabilityDomains(context.Background(), req)
 	return *response.Items[0].Name
+}
+
+func readSampleFederationMetadata(t *testing.T) string {
+	bytes, e := ioutil.ReadFile("sampleFederationMetadata.xml")
+	failIfError(t, e)
+	return string(bytes)
 }

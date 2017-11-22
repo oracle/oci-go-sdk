@@ -216,7 +216,6 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	// validate user membership lifecycle state enum value after create
 	assert.Equal(t, identity.USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_ACTIVE, rspAdd.LifecycleState)
 
-
 	// Read
 	reqRead := identity.GetUserGroupMembershipRequest{}
 	reqRead.UserGroupMembershipID = rspAdd.ID
@@ -303,7 +302,7 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 
 	// Update Swift Password
 	updReq := identity.UpdateSwiftPasswordRequest{UserID: usr.ID}
-	updReq.SwiftPasswordID =rspPwd.ID
+	updReq.SwiftPasswordID = rspPwd.ID
 	updReq.Description = &updateDesc
 	updRsp, err := c.UpdateSwiftPassword(context.Background(), updReq)
 	verifyResponseIsValid(t, updRsp, err)
@@ -399,7 +398,6 @@ func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 //	return
 //}
 
-
 //SecretKey operations
 func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	c := identity.NewIdentityClientForRegion(getRegion())
@@ -492,57 +490,53 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 
 	//Create the Identity Provider Request
 	rCreate := identity.CreateIdentityProviderRequest{}
-	rCreate.CompartmentID = common.String(getTenancyID())
-	rCreate.Name = common.String(getUniqueName("Ident_Provider_"))
-	rCreate.Description = common.String("CRUD Test Identity Provider")
-	rCreate.ProductType = identity.CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS
-	rCreate.Protocol = identity.CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2
+	details := identity.CreateSaml2IdentityProviderDetails{}
+	details.CompartmentID = common.String(getTenancyID())
+	details.Name = common.String(getUniqueName("Ident_Provider_"))
+	details.Description = common.String("CRUD Test Identity Provider")
+	details.ProductType = identity.CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS
+	details.Metadata = common.String(readSampleFederationMetadata(t))
+	rCreate.CreateIdentityProviderDetails = details
 
 	// Create
 	rspCreate, err := c.CreateIdentityProvider(context.Background(), rCreate)
-
 	failIfError(t, err)
-	// Validate response
 	verifyResponseIsValid(t, rspCreate, err)
 
 	// Verify requested values are correct
-	assert.NotEmpty(t, rspCreate.ID)
+	assert.NotEmpty(t, rspCreate.GetID())
 	assert.NotEmpty(t, rspCreate.OpcRequestID)
-	assert.Equal(t, rCreate.CompartmentID, rspCreate.CompartmentID)
-	assert.Equal(t, rCreate.Name, rspCreate.Name)
-	assert.Equal(t, rCreate.Description, rspCreate.Description)
-	assert.Equal(t, rCreate.ProductType, rspCreate.ProductType)
-	assert.Equal(t, rCreate.Protocol, rspCreate.Protocol)
-
-	assert.Equal(t, identity.API_KEY_LIFECYCLE_STATE_ACTIVE, rspCreate.LifecycleState)
+	assert.Equal(t, *rCreate.GetCompartmentID(), *rspCreate.GetCompartmentID())
+	assert.NotEmpty(t, *rspCreate.GetName())
 
 	defer func() {
 		//remove
 		rDelete := identity.DeleteIdentityProviderRequest{}
-		rDelete.IdentityProviderID = rspCreate.ID
+		rDelete.IdentityProviderID = rspCreate.GetID()
 		err := c.DeleteIdentityProvider(context.Background(), rDelete)
 		failIfError(t, err)
 	}()
 
 	// Read
 	rRead := identity.GetIdentityProviderRequest{}
-	rRead.IdentityProviderID = rspCreate.ID
+	rRead.IdentityProviderID = rspCreate.GetID()
 	rspRead, err := c.GetIdentityProvider(context.Background(), rRead)
 	failIfError(t, err)
 	verifyResponseIsValid(t, rspRead, err)
-	assert.Equal(t, rRead.IdentityProviderID, rspRead.ID)
+	assert.Equal(t, *rRead.IdentityProviderID, *rspRead.GetID())
 
 	// Update
 	rUpdate := identity.UpdateIdentityProviderRequest{}
-	rUpdate.IdentityProviderID = rspRead.ID
-	rUpdate.Protocol = identity.UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN
-	rUpdate.Description = common.String("CRUD Test Identity Provider UPDATED")
+	updateDetails := identity.UpdateSaml2IdentityProviderDetails{}
+	updateDetails.Description = common.String("New description")
+	rUpdate.IdentityProviderID = rspCreate.GetID()
+	rUpdate.UpdateIdentityProviderDetails = updateDetails
 	rspUpdate, err := c.UpdateIdentityProvider(context.Background(), rUpdate)
 
 	failIfError(t, err)
 	verifyResponseIsValid(t, rspUpdate, err)
-	assert.Equal(t, rUpdate.Protocol, rspUpdate.Protocol)
-	assert.Equal(t, rUpdate.Description, rspUpdate.Description)
+	assert.Equal(t, *rspCreate.GetID(), *rspUpdate.GetID())
+	assert.Equal(t, "New description", *rspUpdate.GetDescription())
 
 	return
 }
@@ -611,7 +605,6 @@ func TestIdentityClient_UpdateUserState(t *testing.T) {
 
 	r, err := c.UpdateUserState(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
-
 
 	assert.Equal(t, 2, r.InactiveStatus)
 
@@ -696,7 +689,6 @@ func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
 //	return
 //}
 //
-
 
 func TestBadHost(t *testing.T) {
 	client := identity.NewIdentityClientForRegion(getRegion())

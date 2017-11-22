@@ -10,19 +10,30 @@ package core
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
+// ExportImageViaObjectStorageUriDetails.
 type ExportImageViaObjectStorageUriDetails struct {
-
-	// The destination type. Use `objectStorageTuple` when specifying the namespace, bucket name, and object name.
-	// Use `objectStorageUri` when specifying the Object Storage URL.
-	DestinationType *string `mandatory:"true" json:"destinationType,omitempty"`
 
 	// The Object Storage URL to export the image to. See [Object Storage URLs]({{DOC_SERVER_URL}}/Content/Compute/Tasks/imageimportexport.htm#URLs)
 	// and [pre-authenticated requests]({{DOC_SERVER_URL}}/Content/Object/Tasks/managingaccess.htm#pre-auth) for constructing URLs for image import/export.
 	DestinationUri *string `mandatory:"true" json:"destinationUri,omitempty"`
 }
 
-func (model ExportImageViaObjectStorageUriDetails) String() string {
-	return common.PointerString(model)
+func (m ExportImageViaObjectStorageUriDetails) String() string {
+	return common.PointerString(m)
+}
+
+func (m ExportImageViaObjectStorageUriDetails) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeExportImageViaObjectStorageUriDetails ExportImageViaObjectStorageUriDetails
+	s := struct {
+		DiscriminatorParam string `json:"destinationType"`
+		MarshalTypeExportImageViaObjectStorageUriDetails
+	}{
+		"objectStorageUri",
+		(MarshalTypeExportImageViaObjectStorageUriDetails)(m),
+	}
+
+	return json.Marshal(&s)
 }

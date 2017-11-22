@@ -10,34 +10,68 @@ package identity
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
-type CreateIdentityProviderDetails struct {
+type CreateIdentityProviderDetails interface {
 
 	// The OCID of your tenancy.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	GetCompartmentID() *string
 
 	// The name you assign to the `IdentityProvider` during creation.
 	// The name must be unique across all `IdentityProvider` objects in the
 	// tenancy and cannot be changed.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	GetName() *string
 
 	// The description you assign to the `IdentityProvider` during creation.
 	// Does not have to be unique, and it's changeable.
-	Description *string `mandatory:"true" json:"description,omitempty"`
+	GetDescription() *string
 
 	// The identity provider service or product.
 	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
 	// Active Directory Federation Services (ADFS).
 	// Example: `IDCS`
-	ProductType CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType,omitempty"`
-
-	// The protocol used for federation.
-	// Example: `SAML2`
-	Protocol CreateIdentityProviderDetailsProtocolEnum `mandatory:"true" json:"protocol,omitempty"`
+	GetProductType() CreateIdentityProviderDetailsProductTypeEnum
 }
 
-func (model CreateIdentityProviderDetails) String() string {
+type createidentityproviderdetails struct {
+	CompartmentID *string                                      `mandatory:"true" json:"compartmentId,omitempty"`
+	Name          *string                                      `mandatory:"true" json:"name,omitempty"`
+	Description   *string                                      `mandatory:"true" json:"description,omitempty"`
+	ProductType   CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType,omitempty"`
+	Protocol      string                                       `json:"protocol"`
+}
+
+func (m *createidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	err := json.Unmarshal(data, m)
+	if err != nil {
+		return nil, err
+	}
+
+	switch m.Protocol {
+	case "SAML2":
+		mm := CreateSaml2IdentityProviderDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	default:
+		return m, nil
+	}
+}
+
+func (m createidentityproviderdetails) GetCompartmentID() *string {
+	return m.CompartmentID
+}
+func (m createidentityproviderdetails) GetName() *string {
+	return m.Name
+}
+func (m createidentityproviderdetails) GetDescription() *string {
+	return m.Description
+}
+func (m createidentityproviderdetails) GetProductType() CreateIdentityProviderDetailsProductTypeEnum {
+	return m.ProductType
+}
+
+func (model createidentityproviderdetails) String() string {
 	return common.PointerString(model)
 }
 
@@ -59,28 +93,6 @@ func GetCreateIdentityProviderDetailsProductTypeEnumValues() []CreateIdentityPro
 	values := make([]CreateIdentityProviderDetailsProductTypeEnum, 0)
 	for _, v := range mapping_createidentityproviderdetails_productType {
 		if v != CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN {
-			values = append(values, v)
-		}
-	}
-	return values
-}
-
-type CreateIdentityProviderDetailsProtocolEnum string
-
-const (
-	CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2   CreateIdentityProviderDetailsProtocolEnum = "SAML2"
-	CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN CreateIdentityProviderDetailsProtocolEnum = "UNKNOWN"
-)
-
-var mapping_createidentityproviderdetails_protocol = map[string]CreateIdentityProviderDetailsProtocolEnum{
-	"SAML2":   CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2,
-	"UNKNOWN": CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN,
-}
-
-func GetCreateIdentityProviderDetailsProtocolEnumValues() []CreateIdentityProviderDetailsProtocolEnum {
-	values := make([]CreateIdentityProviderDetailsProtocolEnum, 0)
-	for _, v := range mapping_createidentityproviderdetails_protocol {
-		if v != CREATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN {
 			values = append(values, v)
 		}
 	}

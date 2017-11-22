@@ -10,41 +10,41 @@ package identity
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
-type UpdateIdentityProviderDetails struct {
-
-	// The protocol used for federation.
-	// Example: `SAML2`
-	Protocol UpdateIdentityProviderDetailsProtocolEnum `mandatory:"true" json:"protocol,omitempty"`
+type UpdateIdentityProviderDetails interface {
 
 	// The description you assign to the `IdentityProvider`. Does not have to
 	// be unique, and it's changeable.
+	GetDescription() *string
+}
+
+type updateidentityproviderdetails struct {
 	Description *string `mandatory:"false" json:"description,omitempty"`
+	Protocol    string  `json:"protocol"`
 }
 
-func (model UpdateIdentityProviderDetails) String() string {
-	return common.PointerString(model)
-}
-
-type UpdateIdentityProviderDetailsProtocolEnum string
-
-const (
-	UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2   UpdateIdentityProviderDetailsProtocolEnum = "SAML2"
-	UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN UpdateIdentityProviderDetailsProtocolEnum = "UNKNOWN"
-)
-
-var mapping_updateidentityproviderdetails_protocol = map[string]UpdateIdentityProviderDetailsProtocolEnum{
-	"SAML2":   UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2,
-	"UNKNOWN": UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN,
-}
-
-func GetUpdateIdentityProviderDetailsProtocolEnumValues() []UpdateIdentityProviderDetailsProtocolEnum {
-	values := make([]UpdateIdentityProviderDetailsProtocolEnum, 0)
-	for _, v := range mapping_updateidentityproviderdetails_protocol {
-		if v != UPDATE_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN {
-			values = append(values, v)
-		}
+func (m *updateidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	err := json.Unmarshal(data, m)
+	if err != nil {
+		return nil, err
 	}
-	return values
+
+	switch m.Protocol {
+	case "SAML2":
+		mm := UpdateSaml2IdentityProviderDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	default:
+		return m, nil
+	}
+}
+
+func (m updateidentityproviderdetails) GetDescription() *string {
+	return m.Description
+}
+
+func (model updateidentityproviderdetails) String() string {
+	return common.PointerString(model)
 }

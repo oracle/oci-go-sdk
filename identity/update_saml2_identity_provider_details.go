@@ -10,13 +10,11 @@ package identity
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
+// UpdateSaml2IdentityProviderDetails.
 type UpdateSaml2IdentityProviderDetails struct {
-
-	// The protocol used for federation.
-	// Example: `SAML2`
-	Protocol UpdateSaml2IdentityProviderDetailsProtocolEnum `mandatory:"true" json:"protocol,omitempty"`
 
 	// The description you assign to the `IdentityProvider`. Does not have to
 	// be unique, and it's changeable.
@@ -30,28 +28,23 @@ type UpdateSaml2IdentityProviderDetails struct {
 	Metadata *string `mandatory:"false" json:"metadata,omitempty"`
 }
 
-func (model UpdateSaml2IdentityProviderDetails) String() string {
-	return common.PointerString(model)
+func (model UpdateSaml2IdentityProviderDetails) GetDescription() *string {
+	return model.Description
 }
 
-type UpdateSaml2IdentityProviderDetailsProtocolEnum string
-
-const (
-	UPDATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2   UpdateSaml2IdentityProviderDetailsProtocolEnum = "SAML2"
-	UPDATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN UpdateSaml2IdentityProviderDetailsProtocolEnum = "UNKNOWN"
-)
-
-var mapping_updatesaml2identityproviderdetails_protocol = map[string]UpdateSaml2IdentityProviderDetailsProtocolEnum{
-	"SAML2":   UPDATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2,
-	"UNKNOWN": UPDATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN,
+func (m UpdateSaml2IdentityProviderDetails) String() string {
+	return common.PointerString(m)
 }
 
-func GetUpdateSaml2IdentityProviderDetailsProtocolEnumValues() []UpdateSaml2IdentityProviderDetailsProtocolEnum {
-	values := make([]UpdateSaml2IdentityProviderDetailsProtocolEnum, 0)
-	for _, v := range mapping_updatesaml2identityproviderdetails_protocol {
-		if v != UPDATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN {
-			values = append(values, v)
-		}
+func (m UpdateSaml2IdentityProviderDetails) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeUpdateSaml2IdentityProviderDetails UpdateSaml2IdentityProviderDetails
+	s := struct {
+		DiscriminatorParam string `json:"protocol"`
+		MarshalTypeUpdateSaml2IdentityProviderDetails
+	}{
+		"SAML2",
+		(MarshalTypeUpdateSaml2IdentityProviderDetails)(m),
 	}
-	return values
+
+	return json.Marshal(&s)
 }

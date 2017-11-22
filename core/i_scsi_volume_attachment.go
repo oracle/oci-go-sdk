@@ -10,13 +10,11 @@ package core
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
 // IScsiVolumeAttachment. An ISCSI volume attachment.
 type IScsiVolumeAttachment struct {
-
-	// The type of volume attachment.
-	AttachmentType *string `mandatory:"true" json:"attachmentType,omitempty"`
 
 	// The Availability Domain of an instance.
 	// Example: `Uocm:PHX-AD-1`
@@ -30,9 +28,6 @@ type IScsiVolumeAttachment struct {
 
 	// The OCID of the instance the volume is attached to.
 	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
-
-	// The current state of the volume attachment.
-	LifecycleState IScsiVolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The date and time the volume was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
@@ -66,36 +61,49 @@ type IScsiVolumeAttachment struct {
 	// The volume's system-generated Challenge-Handshake-Authentication-Protocol (CHAP) user name.
 	// Example: `ocid1.volume.oc1.phx.abyhqljrgvttnlx73nmrwfaux7kcvzfs3s66izvxf2h4lgvyndsdsnoiwr5q`
 	ChapUsername *string `mandatory:"false" json:"chapUsername,omitempty"`
+
+	// The current state of the volume attachment.
+	LifecycleState VolumeAttachmentLifecycleStateEnum
 }
 
-func (model IScsiVolumeAttachment) String() string {
-	return common.PointerString(model)
+func (model IScsiVolumeAttachment) GetAvailabilityDomain() *string {
+	return model.AvailabilityDomain
+}
+func (model IScsiVolumeAttachment) GetCompartmentID() *string {
+	return model.CompartmentID
+}
+func (model IScsiVolumeAttachment) GetDisplayName() *string {
+	return model.DisplayName
+}
+func (model IScsiVolumeAttachment) GetID() *string {
+	return model.ID
+}
+func (model IScsiVolumeAttachment) GetInstanceID() *string {
+	return model.InstanceID
+}
+func (model IScsiVolumeAttachment) GetLifecycleState() VolumeAttachmentLifecycleStateEnum {
+	return model.LifecycleState
+}
+func (model IScsiVolumeAttachment) GetTimeCreated() *common.SDKTime {
+	return model.TimeCreated
+}
+func (model IScsiVolumeAttachment) GetVolumeID() *string {
+	return model.VolumeID
 }
 
-type IScsiVolumeAttachmentLifecycleStateEnum string
-
-const (
-	I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHING IScsiVolumeAttachmentLifecycleStateEnum = "ATTACHING"
-	I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHED  IScsiVolumeAttachmentLifecycleStateEnum = "ATTACHED"
-	I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHING IScsiVolumeAttachmentLifecycleStateEnum = "DETACHING"
-	I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHED  IScsiVolumeAttachmentLifecycleStateEnum = "DETACHED"
-	I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN   IScsiVolumeAttachmentLifecycleStateEnum = "UNKNOWN"
-)
-
-var mapping_iscsivolumeattachment_lifecycleState = map[string]IScsiVolumeAttachmentLifecycleStateEnum{
-	"ATTACHING": I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHING,
-	"ATTACHED":  I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHED,
-	"DETACHING": I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHING,
-	"DETACHED":  I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHED,
-	"UNKNOWN":   I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN,
+func (m IScsiVolumeAttachment) String() string {
+	return common.PointerString(m)
 }
 
-func GetIScsiVolumeAttachmentLifecycleStateEnumValues() []IScsiVolumeAttachmentLifecycleStateEnum {
-	values := make([]IScsiVolumeAttachmentLifecycleStateEnum, 0)
-	for _, v := range mapping_iscsivolumeattachment_lifecycleState {
-		if v != I_SCSI_VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN {
-			values = append(values, v)
-		}
+func (m IScsiVolumeAttachment) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeIScsiVolumeAttachment IScsiVolumeAttachment
+	s := struct {
+		DiscriminatorParam string `json:"attachmentType"`
+		MarshalTypeIScsiVolumeAttachment
+	}{
+		"iscsi",
+		(MarshalTypeIScsiVolumeAttachment)(m),
 	}
-	return values
+
+	return json.Marshal(&s)
 }

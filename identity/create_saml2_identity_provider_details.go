@@ -10,8 +10,10 @@ package identity
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
+// CreateSaml2IdentityProviderDetails.
 type CreateSaml2IdentityProviderDetails struct {
 
 	// The OCID of your tenancy.
@@ -26,70 +28,46 @@ type CreateSaml2IdentityProviderDetails struct {
 	// Does not have to be unique, and it's changeable.
 	Description *string `mandatory:"true" json:"description,omitempty"`
 
-	// The identity provider service or product.
-	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
-	// Active Directory Federation Services (ADFS).
-	// Example: `IDCS`
-	ProductType CreateSaml2IdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType,omitempty"`
-
-	// The protocol used for federation.
-	// Example: `SAML2`
-	Protocol CreateSaml2IdentityProviderDetailsProtocolEnum `mandatory:"true" json:"protocol,omitempty"`
-
 	// The URL for retrieving the identity provider's metadata,
 	// which contains information required for federating.
 	MetadataURL *string `mandatory:"true" json:"metadataUrl,omitempty"`
 
 	// The XML that contains the information required for federating.
 	Metadata *string `mandatory:"true" json:"metadata,omitempty"`
+
+	// The identity provider service or product.
+	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
+	// Active Directory Federation Services (ADFS).
+	// Example: `IDCS`
+	ProductType CreateIdentityProviderDetailsProductTypeEnum
 }
 
-func (model CreateSaml2IdentityProviderDetails) String() string {
-	return common.PointerString(model)
+func (model CreateSaml2IdentityProviderDetails) GetCompartmentID() *string {
+	return model.CompartmentID
+}
+func (model CreateSaml2IdentityProviderDetails) GetName() *string {
+	return model.Name
+}
+func (model CreateSaml2IdentityProviderDetails) GetDescription() *string {
+	return model.Description
+}
+func (model CreateSaml2IdentityProviderDetails) GetProductType() CreateIdentityProviderDetailsProductTypeEnum {
+	return model.ProductType
 }
 
-type CreateSaml2IdentityProviderDetailsProductTypeEnum string
-
-const (
-	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_IDCS    CreateSaml2IdentityProviderDetailsProductTypeEnum = "IDCS"
-	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS    CreateSaml2IdentityProviderDetailsProductTypeEnum = "ADFS"
-	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN CreateSaml2IdentityProviderDetailsProductTypeEnum = "UNKNOWN"
-)
-
-var mapping_createsaml2identityproviderdetails_productType = map[string]CreateSaml2IdentityProviderDetailsProductTypeEnum{
-	"IDCS":    CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_IDCS,
-	"ADFS":    CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS,
-	"UNKNOWN": CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN,
+func (m CreateSaml2IdentityProviderDetails) String() string {
+	return common.PointerString(m)
 }
 
-func GetCreateSaml2IdentityProviderDetailsProductTypeEnumValues() []CreateSaml2IdentityProviderDetailsProductTypeEnum {
-	values := make([]CreateSaml2IdentityProviderDetailsProductTypeEnum, 0)
-	for _, v := range mapping_createsaml2identityproviderdetails_productType {
-		if v != CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN {
-			values = append(values, v)
-		}
+func (m CreateSaml2IdentityProviderDetails) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeCreateSaml2IdentityProviderDetails CreateSaml2IdentityProviderDetails
+	s := struct {
+		DiscriminatorParam string `json:"protocol"`
+		MarshalTypeCreateSaml2IdentityProviderDetails
+	}{
+		"SAML2",
+		(MarshalTypeCreateSaml2IdentityProviderDetails)(m),
 	}
-	return values
-}
 
-type CreateSaml2IdentityProviderDetailsProtocolEnum string
-
-const (
-	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2   CreateSaml2IdentityProviderDetailsProtocolEnum = "SAML2"
-	CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN CreateSaml2IdentityProviderDetailsProtocolEnum = "UNKNOWN"
-)
-
-var mapping_createsaml2identityproviderdetails_protocol = map[string]CreateSaml2IdentityProviderDetailsProtocolEnum{
-	"SAML2":   CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_SAML2,
-	"UNKNOWN": CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN,
-}
-
-func GetCreateSaml2IdentityProviderDetailsProtocolEnumValues() []CreateSaml2IdentityProviderDetailsProtocolEnum {
-	values := make([]CreateSaml2IdentityProviderDetailsProtocolEnum, 0)
-	for _, v := range mapping_createsaml2identityproviderdetails_protocol {
-		if v != CREATE_SAML2_IDENTITY_PROVIDER_DETAILS_PROTOCOL_UNKNOWN {
-			values = append(values, v)
-		}
-	}
-	return values
+	return json.Marshal(&s)
 }

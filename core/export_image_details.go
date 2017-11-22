@@ -10,6 +10,7 @@ package core
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
 // ExportImageDetails. The destination details for the image export.
@@ -19,13 +20,33 @@ import (
 // Set `destinationType` to `objectStorageUri` and
 // use ExportImageViaObjectStorageUriDetails
 // when specifying the Object Storage URL.
-type ExportImageDetails struct {
-
-	// The destination type. Use `objectStorageTuple` when specifying the namespace, bucket name, and object name.
-	// Use `objectStorageUri` when specifying the Object Storage URL.
-	DestinationType *string `mandatory:"true" json:"destinationType,omitempty"`
+type ExportImageDetails interface {
 }
 
-func (model ExportImageDetails) String() string {
+type exportimagedetails struct {
+	DestinationType string `json:"destinationType"`
+}
+
+func (m *exportimagedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	err := json.Unmarshal(data, m)
+	if err != nil {
+		return nil, err
+	}
+
+	switch m.DestinationType {
+	case "objectStorageUri":
+		mm := ExportImageViaObjectStorageUriDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "objectStorageTuple":
+		mm := ExportImageViaObjectStorageTupleDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	default:
+		return m, nil
+	}
+}
+
+func (model exportimagedetails) String() string {
 	return common.PointerString(model)
 }

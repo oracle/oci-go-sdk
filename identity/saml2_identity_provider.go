@@ -10,6 +10,7 @@ package identity
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
 // Saml2IdentityProvider. A special type of IdentityProvider that
@@ -47,14 +48,6 @@ type Saml2IdentityProvider struct {
 	// Example: `2016-08-25T21:10:29.600Z`
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
-	// The current state. After creating an `IdentityProvider`, make sure its
-	// `lifecycleState` changes from CREATING to ACTIVE before using it.
-	LifecycleState Saml2IdentityProviderLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
-
-	// The protocol used for federation. Allowed value: `SAML2`.
-	// Example: `SAML2`
-	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
-
 	// The URL for retrieving the identity provider's metadata, which
 	// contains information required for federating.
 	MetadataURL *string `mandatory:"true" json:"metadataUrl,omitempty"`
@@ -69,38 +62,50 @@ type Saml2IdentityProvider struct {
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
+
+	// The current state. After creating an `IdentityProvider`, make sure its
+	// `lifecycleState` changes from CREATING to ACTIVE before using it.
+	LifecycleState IdentityProviderLifecycleStateEnum
 }
 
-func (model Saml2IdentityProvider) String() string {
-	return common.PointerString(model)
+func (model Saml2IdentityProvider) GetID() *string {
+	return model.ID
+}
+func (model Saml2IdentityProvider) GetCompartmentID() *string {
+	return model.CompartmentID
+}
+func (model Saml2IdentityProvider) GetName() *string {
+	return model.Name
+}
+func (model Saml2IdentityProvider) GetDescription() *string {
+	return model.Description
+}
+func (model Saml2IdentityProvider) GetProductType() *string {
+	return model.ProductType
+}
+func (model Saml2IdentityProvider) GetTimeCreated() *common.SDKTime {
+	return model.TimeCreated
+}
+func (model Saml2IdentityProvider) GetLifecycleState() IdentityProviderLifecycleStateEnum {
+	return model.LifecycleState
+}
+func (model Saml2IdentityProvider) GetInactiveStatus() *int {
+	return model.InactiveStatus
 }
 
-type Saml2IdentityProviderLifecycleStateEnum string
-
-const (
-	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_CREATING Saml2IdentityProviderLifecycleStateEnum = "CREATING"
-	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_ACTIVE   Saml2IdentityProviderLifecycleStateEnum = "ACTIVE"
-	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_INACTIVE Saml2IdentityProviderLifecycleStateEnum = "INACTIVE"
-	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETING Saml2IdentityProviderLifecycleStateEnum = "DELETING"
-	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETED  Saml2IdentityProviderLifecycleStateEnum = "DELETED"
-	SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN  Saml2IdentityProviderLifecycleStateEnum = "UNKNOWN"
-)
-
-var mapping_saml2identityprovider_lifecycleState = map[string]Saml2IdentityProviderLifecycleStateEnum{
-	"CREATING": SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETING,
-	"DELETED":  SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN,
+func (m Saml2IdentityProvider) String() string {
+	return common.PointerString(m)
 }
 
-func GetSaml2IdentityProviderLifecycleStateEnumValues() []Saml2IdentityProviderLifecycleStateEnum {
-	values := make([]Saml2IdentityProviderLifecycleStateEnum, 0)
-	for _, v := range mapping_saml2identityprovider_lifecycleState {
-		if v != SAML2_IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN {
-			values = append(values, v)
-		}
+func (m Saml2IdentityProvider) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeSaml2IdentityProvider Saml2IdentityProvider
+	s := struct {
+		DiscriminatorParam string `json:"protocol"`
+		MarshalTypeSaml2IdentityProvider
+	}{
+		"SAML2",
+		(MarshalTypeSaml2IdentityProvider)(m),
 	}
-	return values
+
+	return json.Marshal(&s)
 }

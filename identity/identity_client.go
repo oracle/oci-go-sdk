@@ -184,7 +184,7 @@ func (client IdentityClient) CreateIdentityProvider(ctx context.Context, request
 		return
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &identityprovider{})
 	return
 }
 
@@ -503,7 +503,7 @@ func (client IdentityClient) GetIdentityProvider(ctx context.Context, request Ge
 		return
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &identityprovider{})
 	return
 }
 
@@ -932,7 +932,7 @@ func (client IdentityClient) UpdateIdentityProvider(ctx context.Context, request
 		return
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &identityprovider{})
 	return
 }
 

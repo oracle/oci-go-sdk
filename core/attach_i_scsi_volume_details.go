@@ -10,15 +10,14 @@ package core
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
+// AttachIScsiVolumeDetails.
 type AttachIScsiVolumeDetails struct {
 
 	// The OCID of the instance.
 	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
-
-	// The type of volume. The only supported value is "iscsi".
-	Type_ *string `mandatory:"true" json:"type,omitempty"`
 
 	// The OCID of the volume.
 	VolumeID *string `mandatory:"true" json:"volumeId,omitempty"`
@@ -30,6 +29,29 @@ type AttachIScsiVolumeDetails struct {
 	UseChap *bool `mandatory:"false" json:"useChap,omitempty"`
 }
 
-func (model AttachIScsiVolumeDetails) String() string {
-	return common.PointerString(model)
+func (model AttachIScsiVolumeDetails) GetDisplayName() *string {
+	return model.DisplayName
+}
+func (model AttachIScsiVolumeDetails) GetInstanceID() *string {
+	return model.InstanceID
+}
+func (model AttachIScsiVolumeDetails) GetVolumeID() *string {
+	return model.VolumeID
+}
+
+func (m AttachIScsiVolumeDetails) String() string {
+	return common.PointerString(m)
+}
+
+func (m AttachIScsiVolumeDetails) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeAttachIScsiVolumeDetails AttachIScsiVolumeDetails
+	s := struct {
+		DiscriminatorParam string `json:"type"`
+		MarshalTypeAttachIScsiVolumeDetails
+	}{
+		"iscsi",
+		(MarshalTypeAttachIScsiVolumeDetails)(m),
+	}
+
+	return json.Marshal(&s)
 }

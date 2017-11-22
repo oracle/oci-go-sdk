@@ -10,6 +10,7 @@ package core
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
 // VolumeAttachment. A base object for all types of attachments between a storage volume and an instance.
@@ -17,41 +18,91 @@ import (
 // IScsiVolumeAttachment.
 // For general information about volume attachments, see
 // [Overview of Block Volume Storage]({{DOC_SERVER_URL}}/Content/Block/Concepts/overview.htm).
-type VolumeAttachment struct {
-
-	// The type of volume attachment.
-	AttachmentType *string `mandatory:"true" json:"attachmentType,omitempty"`
+type VolumeAttachment interface {
 
 	// The Availability Domain of an instance.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	GetAvailabilityDomain() *string
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	GetCompartmentID() *string
 
 	// The OCID of the volume attachment.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	GetID() *string
 
 	// The OCID of the instance the volume is attached to.
-	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
+	GetInstanceID() *string
 
 	// The current state of the volume attachment.
-	LifecycleState VolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	GetLifecycleState() VolumeAttachmentLifecycleStateEnum
 
 	// The date and time the volume was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	GetTimeCreated() *common.SDKTime
 
 	// The OCID of the volume.
-	VolumeID *string `mandatory:"true" json:"volumeId,omitempty"`
+	GetVolumeID() *string
 
 	// A user-friendly name. Does not have to be unique, and it cannot be changed.
 	// Avoid entering confidential information.
 	// Example: `My volume attachment`
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	GetDisplayName() *string
 }
 
-func (model VolumeAttachment) String() string {
+type volumeattachment struct {
+	AvailabilityDomain *string                            `mandatory:"true" json:"availabilityDomain,omitempty"`
+	CompartmentID      *string                            `mandatory:"true" json:"compartmentId,omitempty"`
+	ID                 *string                            `mandatory:"true" json:"id,omitempty"`
+	InstanceID         *string                            `mandatory:"true" json:"instanceId,omitempty"`
+	LifecycleState     VolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	TimeCreated        *common.SDKTime                    `mandatory:"true" json:"timeCreated,omitempty"`
+	VolumeID           *string                            `mandatory:"true" json:"volumeId,omitempty"`
+	DisplayName        *string                            `mandatory:"false" json:"displayName,omitempty"`
+	AttachmentType     string                             `json:"attachmentType"`
+}
+
+func (m *volumeattachment) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	err := json.Unmarshal(data, m)
+	if err != nil {
+		return nil, err
+	}
+
+	switch m.AttachmentType {
+	case "iscsi":
+		mm := IScsiVolumeAttachment{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	default:
+		return m, nil
+	}
+}
+
+func (m volumeattachment) GetAvailabilityDomain() *string {
+	return m.AvailabilityDomain
+}
+func (m volumeattachment) GetCompartmentID() *string {
+	return m.CompartmentID
+}
+func (m volumeattachment) GetID() *string {
+	return m.ID
+}
+func (m volumeattachment) GetInstanceID() *string {
+	return m.InstanceID
+}
+func (m volumeattachment) GetLifecycleState() VolumeAttachmentLifecycleStateEnum {
+	return m.LifecycleState
+}
+func (m volumeattachment) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
+}
+func (m volumeattachment) GetVolumeID() *string {
+	return m.VolumeID
+}
+func (m volumeattachment) GetDisplayName() *string {
+	return m.DisplayName
+}
+
+func (model volumeattachment) String() string {
 	return common.PointerString(model)
 }
 

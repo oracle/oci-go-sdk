@@ -10,16 +10,12 @@ package core
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
 // DhcpSearchDomainOption. DHCP option for specifying a search domain name for DNS queries. For more information, see
 // [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 type DhcpSearchDomainOption struct {
-
-	// The specific DHCP option. Either `DomainNameServer`
-	// (for DhcpDnsOption) or
-	// `SearchDomain` (for DhcpSearchDomainOption).
-	Type_ *string `mandatory:"true" json:"type,omitempty"`
 
 	// A single search domain name according to [RFC 952](https://tools.ietf.org/html/rfc952)
 	// and [RFC 1123](https://tools.ietf.org/html/rfc1123). During a DNS query,
@@ -32,9 +28,22 @@ type DhcpSearchDomainOption struct {
 	// set of DHCP options. Do not include this option with an empty list
 	// of search domain names, or with an empty string as the value for any search
 	// domain name.
-	SearchDomainNames *[]string `mandatory:"true" json:"searchDomainNames,omitempty"`
+	SearchDomainNames []*[]string `mandatory:"true" json:"searchDomainNames,omitempty"`
 }
 
-func (model DhcpSearchDomainOption) String() string {
-	return common.PointerString(model)
+func (m DhcpSearchDomainOption) String() string {
+	return common.PointerString(m)
+}
+
+func (m DhcpSearchDomainOption) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeDhcpSearchDomainOption DhcpSearchDomainOption
+	s := struct {
+		DiscriminatorParam string `json:"type"`
+		MarshalTypeDhcpSearchDomainOption
+	}{
+		"SearchDomain",
+		(MarshalTypeDhcpSearchDomainOption)(m),
+	}
+
+	return json.Marshal(&s)
 }

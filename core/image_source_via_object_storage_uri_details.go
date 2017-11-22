@@ -10,18 +10,29 @@ package core
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
+// ImageSourceViaObjectStorageUriDetails.
 type ImageSourceViaObjectStorageUriDetails struct {
-
-	// The source type for the image. Use `objectStorageTuple` when specifying the namespace,
-	// bucket name, and object name. Use `objectStorageUri` when specifying the Object Storage URL.
-	SourceType *string `mandatory:"true" json:"sourceType,omitempty"`
 
 	// The Object Storage URL for the image.
 	SourceUri *string `mandatory:"true" json:"sourceUri,omitempty"`
 }
 
-func (model ImageSourceViaObjectStorageUriDetails) String() string {
-	return common.PointerString(model)
+func (m ImageSourceViaObjectStorageUriDetails) String() string {
+	return common.PointerString(m)
+}
+
+func (m ImageSourceViaObjectStorageUriDetails) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeImageSourceViaObjectStorageUriDetails ImageSourceViaObjectStorageUriDetails
+	s := struct {
+		DiscriminatorParam string `json:"sourceType"`
+		MarshalTypeImageSourceViaObjectStorageUriDetails
+	}{
+		"objectStorageUri",
+		(MarshalTypeImageSourceViaObjectStorageUriDetails)(m),
+	}
+
+	return json.Marshal(&s)
 }

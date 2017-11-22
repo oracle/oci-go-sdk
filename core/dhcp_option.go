@@ -10,6 +10,7 @@ package core
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
 // DhcpOption. A single DHCP option according to [RFC 1533](https://tools.ietf.org/html/rfc1533).
@@ -17,14 +18,33 @@ import (
 // and DhcpSearchDomainOption. For more
 // information, see [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm)
 // and [DHCP Options]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingDHCP.htm).
-type DhcpOption struct {
-
-	// The specific DHCP option. Either `DomainNameServer`
-	// (for DhcpDnsOption) or
-	// `SearchDomain` (for DhcpSearchDomainOption).
-	Type_ *string `mandatory:"true" json:"type,omitempty"`
+type DhcpOption interface {
 }
 
-func (model DhcpOption) String() string {
+type dhcpoption struct {
+	Type string `json:"type"`
+}
+
+func (m *dhcpoption) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	err := json.Unmarshal(data, m)
+	if err != nil {
+		return nil, err
+	}
+
+	switch m.Type {
+	case "DomainNameServer":
+		mm := DhcpDnsOption{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "SearchDomain":
+		mm := DhcpSearchDomainOption{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	default:
+		return m, nil
+	}
+}
+
+func (model dhcpoption) String() string {
 	return common.PointerString(model)
 }

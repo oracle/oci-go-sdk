@@ -10,23 +10,54 @@ package core
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
-type AttachVolumeDetails struct {
+type AttachVolumeDetails interface {
 
 	// The OCID of the instance.
-	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
-
-	// The type of volume. The only supported value is "iscsi".
-	Type_ *string `mandatory:"true" json:"type,omitempty"`
+	GetInstanceID() *string
 
 	// The OCID of the volume.
-	VolumeID *string `mandatory:"true" json:"volumeId,omitempty"`
+	GetVolumeID() *string
 
 	// A user-friendly name. Does not have to be unique, and it cannot be changed. Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	GetDisplayName() *string
 }
 
-func (model AttachVolumeDetails) String() string {
+type attachvolumedetails struct {
+	InstanceID  *string `mandatory:"true" json:"instanceId,omitempty"`
+	VolumeID    *string `mandatory:"true" json:"volumeId,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	Type        string  `json:"type"`
+}
+
+func (m *attachvolumedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	err := json.Unmarshal(data, m)
+	if err != nil {
+		return nil, err
+	}
+
+	switch m.Type {
+	case "iscsi":
+		mm := AttachIScsiVolumeDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	default:
+		return m, nil
+	}
+}
+
+func (m attachvolumedetails) GetInstanceID() *string {
+	return m.InstanceID
+}
+func (m attachvolumedetails) GetVolumeID() *string {
+	return m.VolumeID
+}
+func (m attachvolumedetails) GetDisplayName() *string {
+	return m.DisplayName
+}
+
+func (model attachvolumedetails) String() string {
 	return common.PointerString(model)
 }

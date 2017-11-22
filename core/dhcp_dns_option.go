@@ -10,6 +10,7 @@ package core
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
 // DhcpDnsOption. DHCP option for specifying how DNS (hostname resolution) is handled in the subnets in the VCN.
@@ -17,10 +18,9 @@ import (
 // [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 type DhcpDnsOption struct {
 
-	// The specific DHCP option. Either `DomainNameServer`
-	// (for DhcpDnsOption) or
-	// `SearchDomain` (for DhcpSearchDomainOption).
-	Type_ *string `mandatory:"true" json:"type,omitempty"`
+	// If you set `serverType` to `CustomDnsServer`, specify the IP address
+	// of at least one DNS server of your choice (three maximum).
+	CustomDnsServers []*[]string `mandatory:"false" json:"customDnsServers,omitempty"`
 
 	// - **VcnLocal:** Reserved for future use.
 	// - **VcnLocalPlusInternet:** Also referred to as "Internet and VCN Resolver".
@@ -34,15 +34,24 @@ type DhcpDnsOption struct {
 	// information, see
 	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// - **CustomDnsServer:** Instances use a DNS server of your choice (three maximum).
-	ServerType DhcpDnsOptionServerTypeEnum `mandatory:"true" json:"serverType,omitempty"`
-
-	// If you set `serverType` to `CustomDnsServer`, specify the IP address
-	// of at least one DNS server of your choice (three maximum).
-	CustomDnsServers *[]string `mandatory:"false" json:"customDnsServers,omitempty"`
+	ServerType DhcpDnsOptionServerTypeEnum
 }
 
-func (model DhcpDnsOption) String() string {
-	return common.PointerString(model)
+func (m DhcpDnsOption) String() string {
+	return common.PointerString(m)
+}
+
+func (m DhcpDnsOption) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeDhcpDnsOption DhcpDnsOption
+	s := struct {
+		DiscriminatorParam string `json:"type"`
+		MarshalTypeDhcpDnsOption
+	}{
+		"DomainNameServer",
+		(MarshalTypeDhcpDnsOption)(m),
+	}
+
+	return json.Marshal(&s)
 }
 
 type DhcpDnsOptionServerTypeEnum string

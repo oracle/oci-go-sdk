@@ -10,6 +10,7 @@ package identity
 
 import (
 	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"encoding/json"
 )
 
 // IdentityProvider. The resulting base object when you add an identity provider to your tenancy. A
@@ -20,24 +21,24 @@ import (
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
 // see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
-type IdentityProvider struct {
+type IdentityProvider interface {
 
 	// The OCID of the `IdentityProvider`.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	GetID() *string
 
 	// The OCID of the tenancy containing the `IdentityProvider`.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	GetCompartmentID() *string
 
 	// The name you assign to the `IdentityProvider` during creation. The name
 	// must be unique across all `IdentityProvider` objects in the tenancy and
 	// cannot be changed. This is the name federated users see when choosing
 	// which identity provider to use when signing in to the Oracle Cloud Infrastructure
 	// Console.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	GetName() *string
 
 	// The description you assign to the `IdentityProvider` during creation. Does
 	// not have to be unique, and it's changeable.
-	Description *string `mandatory:"true" json:"description,omitempty"`
+	GetDescription() *string
 
 	// The identity provider service or product.
 	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
@@ -46,25 +47,74 @@ type IdentityProvider struct {
 	// - `ADFS`
 	// - `IDCS`
 	// Example: `IDCS`
-	ProductType *string `mandatory:"true" json:"productType,omitempty"`
+	GetProductType() *string
 
 	// Date and time the `IdentityProvider` was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	GetTimeCreated() *common.SDKTime
 
 	// The current state. After creating an `IdentityProvider`, make sure its
 	// `lifecycleState` changes from CREATING to ACTIVE before using it.
-	LifecycleState IdentityProviderLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
-
-	// The protocol used for federation. Allowed value: `SAML2`.
-	// Example: `SAML2`
-	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
+	GetLifecycleState() IdentityProviderLifecycleStateEnum
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
+	GetInactiveStatus() *int
 }
 
-func (model IdentityProvider) String() string {
+type identityprovider struct {
+	ID             *string                            `mandatory:"true" json:"id,omitempty"`
+	CompartmentID  *string                            `mandatory:"true" json:"compartmentId,omitempty"`
+	Name           *string                            `mandatory:"true" json:"name,omitempty"`
+	Description    *string                            `mandatory:"true" json:"description,omitempty"`
+	ProductType    *string                            `mandatory:"true" json:"productType,omitempty"`
+	TimeCreated    *common.SDKTime                    `mandatory:"true" json:"timeCreated,omitempty"`
+	LifecycleState IdentityProviderLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	InactiveStatus *int                               `mandatory:"false" json:"inactiveStatus,omitempty"`
+	Protocol       string                             `json:"protocol"`
+}
+
+func (m *identityprovider) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	err := json.Unmarshal(data, m)
+	if err != nil {
+		return nil, err
+	}
+
+	switch m.Protocol {
+	case "SAML2":
+		mm := Saml2IdentityProvider{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	default:
+		return m, nil
+	}
+}
+
+func (m identityprovider) GetID() *string {
+	return m.ID
+}
+func (m identityprovider) GetCompartmentID() *string {
+	return m.CompartmentID
+}
+func (m identityprovider) GetName() *string {
+	return m.Name
+}
+func (m identityprovider) GetDescription() *string {
+	return m.Description
+}
+func (m identityprovider) GetProductType() *string {
+	return m.ProductType
+}
+func (m identityprovider) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
+}
+func (m identityprovider) GetLifecycleState() IdentityProviderLifecycleStateEnum {
+	return m.LifecycleState
+}
+func (m identityprovider) GetInactiveStatus() *int {
+	return m.InactiveStatus
+}
+
+func (model identityprovider) String() string {
 	return common.PointerString(model)
 }
 

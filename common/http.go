@@ -440,7 +440,12 @@ func fromStringValue(newValue string, val *reflect.Value, field reflect.StructFi
 	return
 }
 
-func addFromBody(response *http.Response, value *reflect.Value, field reflect.StructField) (err error) {
+//PolymorphicJSONUnmarshaler is the interface to unmarshal polymorphic json payloads
+type PolymorphicJSONUnmarshaler interface {
+	UnmarshalPolymorphicJSON(data []byte) (interface{}, error)
+}
+
+func addFromBody(response *http.Response, value *reflect.Value, field reflect.StructField, unmarshaler PolymorphicJSONUnmarshaler) (err error) {
 	Debugln("Unmarshaling from body to field:", field.Name)
 	if response.Body == nil {
 		Debugln("Unmarshaling body skipped due to nil body content for field: ", field.Name)
@@ -453,7 +458,19 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 	if err != nil {
 		return
 	}
+
+	if unmarshaler != nil {
+		var uVal interface{}
+		uVal, err = unmarshaler.UnmarshalPolymorphicJSON(content)
+		if err != nil {
+			return
+		}
+		value.Set(reflect.ValueOf(uVal))
+		return
+	}
+
 	newStruct := reflect.New(value.Type()).Interface()
+
 	err = json.Unmarshal(content, &newStruct)
 	if err != nil {
 		return
@@ -465,7 +482,6 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 	}
 	value.Set(newVal)
 	return
-
 }
 
 func addFromHeader(response *http.Response, value *reflect.Value, field reflect.StructField) (err error) {
@@ -489,7 +505,7 @@ func addFromHeader(response *http.Response, value *reflect.Value, field reflect.
 }
 
 // Populates a struct from parts of a request by reading tags of the struct
-func responseToStruct(response *http.Response, val *reflect.Value) (err error) {
+func responseToStruct(response *http.Response, val *reflect.Value, unmarshaler PolymorphicJSONUnmarshaler) (err error) {
 	typ := val.Type()
 	for i := 0; i < typ.NumField(); i++ {
 		if err != nil {
@@ -509,7 +525,7 @@ func responseToStruct(response *http.Response, val *reflect.Value) (err error) {
 		case "header":
 			err = addFromHeader(response, &sv, sf)
 		case "body":
-			err = addFromBody(response, &sv, sf)
+			err = addFromBody(response, &sv, sf, unmarshaler)
 		case "":
 			Debugln(sf.Name, "does not contain presentIn tag. Skipping")
 		default:
@@ -519,19 +535,40 @@ func responseToStruct(response *http.Response, val *reflect.Value) (err error) {
 	return
 }
 
-// UnmarshalResponse hydrates the fileds of an struct with the values of an http response, guided
+// UnmarshalResponse hydrates the fileds of a struct with the values of a http response, guided
 // by the field tags. The directive tag is "presentIn" and it can be either
 //  - "header": Will look for the header tagged as "name" in the headers of the struct and set it value to that
 //  - "body": It will try to marshal the body from a json string to a struct tagged with 'presentIn: "body"'.
-// Further this method will consume the body as it should safe to close after it returns
-// Notice the current implementation only supports native types:int, strings, floats, bool
+// Further this method will consume the body it should be safe to close it after this function
+// Notice the current implementation only supports native types:int, strings, floats, bool as the field types
 func UnmarshalResponse(httpResponse *http.Response, responseStruct interface{}) (err error) {
+
 	var val *reflect.Value
 	if val, err = checkForValidResponseStruct(responseStruct); err != nil {
 		return
 	}
 
-	if err = responseToStruct(httpResponse, val); err != nil {
+	if err = responseToStruct(httpResponse, val, nil); err != nil {
+		return
+	}
+
+	return nil
+}
+
+// UnmarshalResponse hydrates the fileds of a struct with the values of a http response, guided
+// by the field tags. The directive tag is "presentIn" and it can be either
+//  - "header": Will look for the header tagged as "name" in the headers of the struct and set it value to that
+//  - "body": The filed tagged with 'presentIn:"body" will be marshaled with the unmarshaler interface
+// Further this method will consume the body it should be safe to close it after this function
+// Notice the current implementation only supports native types:int, strings, floats, bool as the field types
+func UnmarshalResponseWithPolymorphicBody(httpResponse *http.Response, responseStruct interface{}, unmarshaler PolymorphicJSONUnmarshaler) (err error) {
+
+	var val *reflect.Value
+	if val, err = checkForValidResponseStruct(responseStruct); err != nil {
+		return
+	}
+
+	if err = responseToStruct(httpResponse, val, unmarshaler); err != nil {
 		return
 	}
 
