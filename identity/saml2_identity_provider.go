@@ -65,7 +65,7 @@ type Saml2IdentityProvider struct {
 
 	// The current state. After creating an `IdentityProvider`, make sure its
 	// `lifecycleState` changes from CREATING to ACTIVE before using it.
-	LifecycleState IdentityProviderLifecycleStateEnum
+	LifecycleState IdentityProviderLifecycleStateEnum `mandatory:"true" json:"lifecyclestate,omitempty"`
 }
 
 func (model Saml2IdentityProvider) GetID() *string {

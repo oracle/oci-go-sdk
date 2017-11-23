@@ -63,7 +63,7 @@ type IScsiVolumeAttachment struct {
 	ChapUsername *string `mandatory:"false" json:"chapUsername,omitempty"`
 
 	// The current state of the volume attachment.
-	LifecycleState VolumeAttachmentLifecycleStateEnum
+	LifecycleState VolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecyclestate,omitempty"`
 }
 
 func (model IScsiVolumeAttachment) GetAvailabilityDomain() *string {

@@ -28,7 +28,7 @@ type DhcpSearchDomainOption struct {
 	// set of DHCP options. Do not include this option with an empty list
 	// of search domain names, or with an empty string as the value for any search
 	// domain name.
-	SearchDomainNames []*[]string `mandatory:"true" json:"searchDomainNames,omitempty"`
+	SearchDomainNames *[]string `mandatory:"true" json:"searchDomainNames,omitempty"`
 }
 
 func (m DhcpSearchDomainOption) String() string {

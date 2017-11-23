@@ -39,7 +39,7 @@ type CreateSaml2IdentityProviderDetails struct {
 	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
 	// Active Directory Federation Services (ADFS).
 	// Example: `IDCS`
-	ProductType CreateIdentityProviderDetailsProductTypeEnum
+	ProductType CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"producttype,omitempty"`
 }
 
 func (model CreateSaml2IdentityProviderDetails) GetCompartmentID() *string {
