@@ -601,19 +601,12 @@ func TestIdentityClient_UpdateUserState(t *testing.T) {
 
 	request := identity.UpdateUserStateRequest{}
 	request.UserID = usr.ID
-	request.Blocked = common.Bool(true)
+	request.Blocked = common.Bool(false)
 
 	r, err := c.UpdateUserState(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
 
-	assert.Equal(t, 2, r.InactiveStatus)
-
-	request.Blocked = common.Bool(false)
-	r, err = c.UpdateUserState(context.Background(), request)
-	verifyResponseIsValid(t, r, err)
-
-	assert.Equal(t, identity.USER_LIFECYCLE_STATE_INACTIVE, r.LifecycleState)
-	assert.Equal(t, 0, r.InactiveStatus)
+	assert.Equal(t, identity.USER_LIFECYCLE_STATE_ACTIVE, r.LifecycleState)
 	return
 }
 
