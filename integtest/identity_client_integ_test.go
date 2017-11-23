@@ -328,8 +328,8 @@ func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 	pwdRsp1, err := c.CreateSwiftPassword(context.Background(), pwdReq)
 	verifyResponseIsValid(t, pwdRsp1, err)
 
-	pwdRsp2, err := c.CreateSwiftPassword(context.Background(), pwdReq)
 	pwdReq.Description = common.String("Test Swift Password 2")
+	pwdRsp2, err := c.CreateSwiftPassword(context.Background(), pwdReq)
 	verifyResponseIsValid(t, pwdRsp2, err)
 
 	request := identity.ListSwiftPasswordsRequest{}
@@ -339,7 +339,7 @@ func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 
 	assert.Equal(t, 2, len(r.Items))
 	assert.NotEqual(t, r.Items[0].ID, r.Items[1].ID)
-	assert.NotEqual(t, r.Items[0].Password, r.Items[1].Password)
+	assert.NotEqual(t, r.Items[0].Description, r.Items[1].Description)
 
 	return
 }
