@@ -9,8 +9,8 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
 	"encoding/json"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // VolumeAttachment. A base object for all types of attachments between a storage volume and an instance.

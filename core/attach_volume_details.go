@@ -9,8 +9,8 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
 	"encoding/json"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 type AttachVolumeDetails interface {

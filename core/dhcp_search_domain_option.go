@@ -9,8 +9,8 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
 	"encoding/json"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // DhcpSearchDomainOption. DHCP option for specifying a search domain name for DNS queries. For more information, see

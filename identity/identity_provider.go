@@ -9,8 +9,8 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
 	"encoding/json"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // IdentityProvider. The resulting base object when you add an identity provider to your tenancy. A
