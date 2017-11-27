@@ -5,7 +5,7 @@ This is the official go sdk for oracle cloud infrastructure
 Simply clone this repo into your go sdk you can use the following command
 
 ```
-git clone ssh://git@bitbucket.aka.lgl.grungy.us:7999/sdk/golang-sdk2.git $GOPATH/src/bitbucket.aka.lgl.grungy.us/golang-sdk2
+git clone git@github.com:oracle/oci-go-sdk.git  $GOPATH/src/github.com/oracle
 ```
 
 In addition you'll need to download a testing dependency before you can build or test the sdk

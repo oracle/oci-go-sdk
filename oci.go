@@ -1,1 +1,1 @@
-package golang_sdk2
+package oci_go_sdk
