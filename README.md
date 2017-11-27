@@ -1,4 +1,4 @@
-# Oracle Cloud Infraestructure Golang SDK
+# Oracle Cloud Infrastructure Golang SDK
 This is the official go sdk for oracle cloud infrastructure
 
 ## Installing
