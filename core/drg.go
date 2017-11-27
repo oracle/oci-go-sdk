@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // Drg. A Dynamic Routing Gateway (DRG), which is a virtual router that provides a path for private

@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // VirtualCircuitBandwidthShape. An individual bandwidth level for virtual circuits.

@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // RouteRule. A mapping between a destination IP address range and a virtual device to route matching

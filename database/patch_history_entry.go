@@ -9,7 +9,7 @@
 package database
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // PatchHistoryEntry. The record of a patch action on a specified target.

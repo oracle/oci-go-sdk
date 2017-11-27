@@ -12,8 +12,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/oci-go-sdk/common"
-	"github.com/oci-go-sdk/identity"
+	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
 )
 

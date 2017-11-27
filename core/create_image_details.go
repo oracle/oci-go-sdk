@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // CreateImageDetails. Either instanceId or imageSourceDetails must be provided in addition to other required parameters.

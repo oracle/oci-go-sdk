@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // Group. A collection of users who all need the same type of access to a particular set of resources or compartment.

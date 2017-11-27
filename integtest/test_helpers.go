@@ -1,8 +1,8 @@
 package integtest
 
 import (
-	"github.com/oci-go-sdk/common"
-	"github.com/oci-go-sdk/identity"
+	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/identity"
 	"context"
 	"fmt"
 	"github.com/stretchr/testify/assert"

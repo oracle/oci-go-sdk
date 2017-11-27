@@ -9,8 +9,8 @@
 package integtest
 
 import (
-	"github.com/oci-go-sdk/common"
-	"github.com/oci-go-sdk/database"
+	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/database"
 	"context"
 	"fmt"
 	"github.com/stretchr/testify/assert"

@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // Tenancy. The root compartment that contains all of your organization's compartments and other

@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // TcpOptions. Optional object to specify ports for a TCP rule. If you specify TCP as the

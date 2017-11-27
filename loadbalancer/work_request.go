@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // WorkRequest. Many of the API requests you use to create and configure load balancing do not take effect immediately.

@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // WorkRequestError. An object returned in the event of a work request error.

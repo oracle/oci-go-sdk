@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // BackendSetHealth. The health status details for a backend set.

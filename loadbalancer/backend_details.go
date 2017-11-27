@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // BackendDetails. The load balancing configuration details of a backend server.

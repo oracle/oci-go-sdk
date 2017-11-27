@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // AvailabilityDomain. One or more isolated, fault-tolerant Oracle data centers that host cloud resources such as instances, volumes,

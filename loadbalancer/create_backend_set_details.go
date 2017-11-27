@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // CreateBackendSetDetails. The configuration details for creating a backend set in a load balancer.

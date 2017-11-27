@@ -9,7 +9,7 @@
 package database
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // ReinstateDataGuardAssociationDetails. The Data Guard association reinstate parameters.

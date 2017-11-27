@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // Vnic. A virtual network interface card. Each VNIC resides in a subnet in a VCN.

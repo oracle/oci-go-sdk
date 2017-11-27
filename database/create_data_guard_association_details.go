@@ -9,7 +9,7 @@
 package database
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // CreateDataGuardAssociationDetails. The configuration details for creating a Data Guard association between databases.

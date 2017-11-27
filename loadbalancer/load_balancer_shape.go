@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // LoadBalancerShape. A shape is a template that determines the total pre-provisioned bandwidth (ingress plus egress) for the

@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // CustomerSecretKey. A `CustomerSecretKey` is an Oracle-provided key for using the Object Storage Service's

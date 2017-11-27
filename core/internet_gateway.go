@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // InternetGateway. Represents a router that connects the edge of a VCN with the Internet. For an example scenario

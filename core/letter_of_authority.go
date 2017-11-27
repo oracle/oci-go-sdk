@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // LetterOfAuthority. The Letter of Authority for the cross-connect. You must submit this letter when

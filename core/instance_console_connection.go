@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // InstanceConsoleConnection. The `InstanceConsoleConnection` API provides you with serial console access to virtual machine (VM) instances,

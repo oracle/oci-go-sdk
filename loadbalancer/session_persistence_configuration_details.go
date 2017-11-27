@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // SessionPersistenceConfigurationDetails. The configuration details for implementing session persistence. Session persistence enables the Load Balancing

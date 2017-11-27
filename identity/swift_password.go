@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // SwiftPassword. Swift is the OpenStack object storage service. A `SwiftPassword` is an Oracle-provided password for using a

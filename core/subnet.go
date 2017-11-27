@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // Subnet. A logical subdivision of a VCN. Each subnet exists in a single Availability Domain and

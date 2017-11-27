@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // User. An individual employee or system that needs to manage or use your company's Oracle Cloud Infrastructure

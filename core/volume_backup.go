@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // VolumeBackup. A point-in-time copy of a volume that can then be used to create a new block volume

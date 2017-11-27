@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // UserGroupMembership. An object that represents the membership of a user in a group. When you add a user to a group, the result is a

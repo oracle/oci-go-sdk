@@ -9,7 +9,7 @@
 package core
 
 import (
-	"github.com/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // IcmpOptions. Optional object to specify a particular ICMP type and code. If you specify ICMP as the protocol
