@@ -487,7 +487,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	c := identity.NewIdentityClientForRegion(getRegion())
 
-	//Create the Identity Provider Request
+	// Create the Identity Provider Request
 	rCreate := identity.CreateIdentityProviderRequest{}
 	details := identity.CreateSaml2IdentityProviderDetails{}
 	details.CompartmentID = common.String(getTenancyID())
@@ -498,9 +498,21 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	rCreate.CreateIdentityProviderDetails = details
 
 	// Create
-	rspCreate, err := c.CreateIdentityProvider(context.Background(), rCreate)
-	failIfError(t, err)
-	verifyResponseIsValid(t, rspCreate, err)
+	rspCreate, createErr := c.CreateIdentityProvider(context.Background(), rCreate)
+
+	failIfError(t, createErr)
+	verifyResponseIsValid(t, rspCreate, createErr)
+
+	defer func() {
+		//remove
+		fmt.Println("Deleting Identity Provider")
+		if rspCreate.GetID() != nil {
+			rDelete := identity.DeleteIdentityProviderRequest{}
+			rDelete.IdentityProviderID = rspCreate.GetID()
+			err := c.DeleteIdentityProvider(context.Background(), rDelete)
+			failIfError(t, err)
+		}
+	}()
 
 	// Verify requested values are correct
 	assert.NotEmpty(t, rspCreate.GetID())
@@ -508,20 +520,12 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	assert.Equal(t, *rCreate.GetCompartmentID(), *rspCreate.GetCompartmentID())
 	assert.NotEmpty(t, *rspCreate.GetName())
 
-	defer func() {
-		//remove
-		rDelete := identity.DeleteIdentityProviderRequest{}
-		rDelete.IdentityProviderID = rspCreate.GetID()
-		err := c.DeleteIdentityProvider(context.Background(), rDelete)
-		failIfError(t, err)
-	}()
-
 	// Read
 	rRead := identity.GetIdentityProviderRequest{}
 	rRead.IdentityProviderID = rspCreate.GetID()
-	rspRead, err := c.GetIdentityProvider(context.Background(), rRead)
-	failIfError(t, err)
-	verifyResponseIsValid(t, rspRead, err)
+	rspRead, readErr := c.GetIdentityProvider(context.Background(), rRead)
+	failIfError(t, readErr)
+	verifyResponseIsValid(t, rspRead, readErr)
 	assert.Equal(t, *rRead.IdentityProviderID, *rspRead.GetID())
 
 	// Update
@@ -530,15 +534,81 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	updateDetails.Description = common.String("New description")
 	rUpdate.IdentityProviderID = rspCreate.GetID()
 	rUpdate.UpdateIdentityProviderDetails = updateDetails
-	rspUpdate, err := c.UpdateIdentityProvider(context.Background(), rUpdate)
+	rspUpdate, updErr := c.UpdateIdentityProvider(context.Background(), rUpdate)
 
-	failIfError(t, err)
-	verifyResponseIsValid(t, rspUpdate, err)
+	failIfError(t, updErr)
+	verifyResponseIsValid(t, rspUpdate, updErr)
 	assert.Equal(t, *rspCreate.GetID(), *rspUpdate.GetID())
 	assert.Equal(t, "New description", *rspUpdate.GetDescription())
 
+	// Create the group mapping
+	u, uErr := createTestUser(c)
+	failIfError(t, uErr)
+	defer deleteTestUser(c, u.ID)
+
+	g, gErr := createTestGroup(c)
+	failIfError(t, gErr)
+	defer deleteTestGroup(c, g.ID)
+
+	reqCreateMapping := identity.CreateIdpGroupMappingRequest{}
+	reqCreateMapping.IdentityProviderID = rspCreate.GetID()
+	reqCreateMapping.GroupID = g.ID
+	idpGrpName := *rspCreate.GetName()
+	groupName := *g.Name
+	reqCreateMapping.IdpGroupName = common.String(idpGrpName + "_TO_" + groupName)
+
+	rspCreateMapping, createMapErr := c.CreateIdpGroupMapping(context.Background(), reqCreateMapping)
+	failIfError(t, createMapErr)
+
+	// Delete mapping
+	defer func() {
+		fmt.Println("Deleting Identity Provider Group Mapping")
+		reqDelete := identity.DeleteIdpGroupMappingRequest{MappingID: rspCreateMapping.ID, IdentityProviderID: rspCreateMapping.IdpID}
+		delErr := c.DeleteIdpGroupMapping(context.Background(), reqDelete)
+		failIfError(t, delErr)
+	}()
+
+	verifyResponseIsValid(t, rspCreateMapping, createMapErr)
+
+	assert.NotEmpty(t, *rspCreateMapping.ID)
+	assert.NotEmpty(t, *rspCreateMapping.GroupID)
+	assert.NotEmpty(t, *rspCreateMapping.OpcRequestID)
+	assert.NotEmpty(t, *rspCreateMapping.IdpGroupName)
+	assert.Equal(t, *rspCreate.GetID(), *rspCreateMapping.IdpID)
+	assert.NotEmpty(t, rspCreateMapping.TimeCreated)
+	assert.Equal(t, identity.IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE, rspCreateMapping.LifecycleState)
+
+	//Read group mapping
+	reqReadMapping := identity.GetIdpGroupMappingRequest{IdentityProviderID: rspCreateMapping.IdpID, MappingID: rspCreateMapping.ID}
+	rspReadMapping, readMapErr := c.GetIdpGroupMapping(context.Background(), reqReadMapping)
+	verifyResponseIsValid(t, rspReadMapping, readMapErr)
+
+	assert.Equal(t, rspCreateMapping.ID, rspReadMapping.ID)
+	assert.Equal(t, rspCreateMapping.IdpID, rspReadMapping.IdpID)
+	assert.Equal(t, identity.IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE, rspReadMapping.LifecycleState)
+
+	//update group mapping
+	reqUpdMapping := identity.UpdateIdpGroupMappingRequest{}
+	reqUpdMapping.MappingID = rspReadMapping.ID
+	reqUpdMapping.IdentityProviderID = rspReadMapping.IdpID
+	reqUpdMapping.GroupID = rspReadMapping.GroupID
+	updatedName := *rspReadMapping.IdpGroupName + " - Updated"
+	reqUpdMapping.IdpGroupName = common.String(updatedName)
+	rspUpdMapping, updMapErr := c.UpdateIdpGroupMapping(context.Background(), reqUpdMapping)
+	verifyResponseIsValid(t, rspUpdMapping, updMapErr)
+
+	assert.NotEmpty(t, *rspUpdMapping.ID)
+	assert.NotEmpty(t, *rspUpdMapping.GroupID)
+	assert.NotEmpty(t, *rspUpdMapping.OpcRequestID)
+	assert.Equal(t, *rspReadMapping.ID, *rspUpdMapping.ID)
+	assert.Equal(t, *rspReadMapping.IdpID, *rspUpdMapping.IdpID)
+	assert.NotEqual(t, *rspReadMapping.IdpGroupName, *rspUpdMapping.IdpGroupName)
+	assert.NotEmpty(t, rspUpdMapping.TimeCreated)
+	assert.Equal(t, identity.IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE, rspUpdMapping.LifecycleState)
+
 	return
 }
+
 
 func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	c := identity.NewIdentityClientForRegion(getRegion())
