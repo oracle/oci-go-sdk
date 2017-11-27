@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // BackendDetails. The load balancing configuration details of a backend server.

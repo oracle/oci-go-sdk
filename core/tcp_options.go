@@ -9,7 +9,7 @@
 package core
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // TcpOptions. Optional object to specify ports for a TCP rule. If you specify TCP as the

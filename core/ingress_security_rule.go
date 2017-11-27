@@ -9,7 +9,7 @@
 package core
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // IngressSecurityRule. A rule for allowing inbound IP packets.

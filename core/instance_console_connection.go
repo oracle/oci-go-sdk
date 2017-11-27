@@ -9,7 +9,7 @@
 package core
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // InstanceConsoleConnection. The `InstanceConsoleConnection` API provides you with serial console access to virtual machine (VM) instances,

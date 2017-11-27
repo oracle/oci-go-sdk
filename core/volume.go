@@ -9,7 +9,7 @@
 package core
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // Volume. A detachable block volume device that allows you to dynamically expand

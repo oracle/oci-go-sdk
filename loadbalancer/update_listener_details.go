@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // UpdateListenerDetails. The configuration details for updating a listener.

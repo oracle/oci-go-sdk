@@ -9,7 +9,7 @@
 package core
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // IpSecConnection. A connection between a DRG and CPE. This connection consists of multiple IPSec

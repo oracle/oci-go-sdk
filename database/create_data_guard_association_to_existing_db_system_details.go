@@ -9,7 +9,7 @@
 package database
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // CreateDataGuardAssociationToExistingDbSystemDetails. The configuration details for creating a Data Guard association to an existing database.

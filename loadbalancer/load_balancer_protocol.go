@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // LoadBalancerProtocol. The protocol that defines the type of traffic accepted by a listener.

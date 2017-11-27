@@ -9,7 +9,7 @@
 package database
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // DbHome. A directory where Oracle database software is installed. Each DB System can have multiple database homes,

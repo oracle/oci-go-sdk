@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // UserGroupMembership. An object that represents the membership of a user in a group. When you add a user to a group, the result is a

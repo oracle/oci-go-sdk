@@ -9,7 +9,7 @@
 package database
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 	"context"
 	"fmt"
 	"net/http"

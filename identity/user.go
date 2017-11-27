@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // User. An individual employee or system that needs to manage or use your company's Oracle Cloud Infrastructure

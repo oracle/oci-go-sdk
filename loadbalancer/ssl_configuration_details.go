@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // SslConfigurationDetails. The load balancer's SSL handling configuration details.

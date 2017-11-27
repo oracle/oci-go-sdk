@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // BackendHealth. The health status of the specified backend server as reported by the primary and standby load balancers.

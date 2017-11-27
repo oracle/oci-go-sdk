@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // RegionSubscription. An object that represents your tenancy's access to a particular region (i.e., a subscription), the status of that

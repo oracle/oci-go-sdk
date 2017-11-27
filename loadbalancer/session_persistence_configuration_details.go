@@ -9,7 +9,7 @@
 package loadbalancer
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // SessionPersistenceConfigurationDetails. The configuration details for implementing session persistence. Session persistence enables the Load Balancing

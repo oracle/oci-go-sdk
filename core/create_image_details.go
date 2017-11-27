@@ -9,7 +9,7 @@
 package core
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // CreateImageDetails. Either instanceId or imageSourceDetails must be provided in addition to other required parameters.

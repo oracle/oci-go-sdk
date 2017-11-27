@@ -9,7 +9,7 @@
 package database
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oci-go-sdk/common"
 )
 
 // DbSystemSummary. The Database Service supports several types of DB Systems, ranging in size, price, and performance. For details about each type of system, see:
