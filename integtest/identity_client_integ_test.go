@@ -485,7 +485,6 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 }
 
 func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
-	t.Skip("Blocked by DEX-2116")
 	c := identity.NewIdentityClientForRegion(getRegion())
 
 	//Create the Identity Provider Request
