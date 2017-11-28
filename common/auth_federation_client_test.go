@@ -183,9 +183,7 @@ var (
 	sessionPublicKeyBodyNoNewLine   = strings.Replace(sessionPublicKeyBody, "\n", "", -1)
 )
 
-var (
-	whateverRegion = REGION_PHX
-)
+const whateverRegion = REGION_PHX
 
 func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
 	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -233,6 +231,7 @@ func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
 
 	assert.NoError(t, err)
 	assert.Equal(t, expectedSecurityToken, actualSecurityToken)
+	mockSessionKeySupplier.AssertExpectations(t)
 	mockLeafCertificateRetriever.AssertExpectations(t)
 	mockIntermediateCertificateRetriever.AssertExpectations(t)
 }
@@ -287,6 +286,7 @@ func TestX509FederationClient_RenewSecurityToken(t *testing.T) {
 
 	assert.NoError(t, err)
 	assert.Equal(t, expectedSecurityToken, actualSecurityToken)
+	mockSessionKeySupplier.AssertExpectations(t)
 	mockLeafCertificateRetriever.AssertExpectations(t)
 	mockIntermediateCertificateRetriever.AssertExpectations(t)
 }
@@ -322,6 +322,120 @@ func TestX509FederationClient_GetCachedSecurityToken(t *testing.T) {
 	mockLeafCertificateRetriever.AssertNotCalled(t, "PrivateKey")
 	mockIntermediateCertificateRetriever.AssertNotCalled(t, "Refresh")
 	mockIntermediateCertificateRetriever.AssertNotCalled(t, "CertificatePemRaw")
+}
+
+func TestX509FederationClient_RenewSecurityTokenSessionKeySupplierError(t *testing.T) {
+	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	expectedErrorMessage := "TestSessionKeySupplierRefreshError"
+	mockSessionKeySupplier.On("Refresh").Return(fmt.Errorf(expectedErrorMessage)).Once()
+
+	mockLeafCertificateRetriever := new(mockCertificateRetriever)
+	mockIntermediateCertificateRetriever := new(mockCertificateRetriever)
+
+	mockSecurityToken := new(mockSecurityToken)
+	mockSecurityToken.On("Valid").Return(false)
+
+	federationClient := &x509FederationClient{
+		tenancyId:                         tenancyId,
+		sessionKeySupplier:                mockSessionKeySupplier,
+		leafCertificateRetriever:          mockLeafCertificateRetriever,
+		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
+	}
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.securityToken = mockSecurityToken
+
+	actualSecurityToken, actualError := federationClient.SecurityToken()
+
+	assert.Empty(t, actualSecurityToken)
+	assert.EqualError(t, actualError, expectedErrorMessage)
+}
+
+func TestX509FederationClient_RenewSecurityTokenLeafCertificateRetrieverError(t *testing.T) {
+	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier.On("Refresh").Return(nil).Once()
+
+	mockLeafCertificateRetriever := new(mockCertificateRetriever)
+	expectedErrorMessage := "TestLeafCertificateRetrieverError"
+	mockLeafCertificateRetriever.On("Refresh").Return(fmt.Errorf(expectedErrorMessage)).Once()
+
+	mockIntermediateCertificateRetriever := new(mockCertificateRetriever)
+
+	mockSecurityToken := new(mockSecurityToken)
+	mockSecurityToken.On("Valid").Return(false)
+
+	federationClient := &x509FederationClient{
+		tenancyId:                         tenancyId,
+		sessionKeySupplier:                mockSessionKeySupplier,
+		leafCertificateRetriever:          mockLeafCertificateRetriever,
+		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
+	}
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.securityToken = mockSecurityToken
+
+	actualSecurityToken, actualError := federationClient.SecurityToken()
+
+	assert.Empty(t, actualSecurityToken)
+	assert.EqualError(t, actualError, expectedErrorMessage)
+}
+
+func TestX509FederationClient_RenewSecurityTokenIntermediateCertificateRetrieverError(t *testing.T) {
+	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier.On("Refresh").Return(nil).Once()
+
+	mockLeafCertificateRetriever := new(mockCertificateRetriever)
+	mockLeafCertificateRetriever.On("Refresh").Return(nil).Once()
+	mockLeafCertificateRetriever.On("Certificate").Return(createCertificate(leafCertPem))
+
+	mockIntermediateCertificateRetriever := new(mockCertificateRetriever)
+	expectedErrorMessage := "TestLeafCertificateRetrieverError"
+	mockIntermediateCertificateRetriever.On("Refresh").Return(fmt.Errorf(expectedErrorMessage)).Once()
+
+	mockSecurityToken := new(mockSecurityToken)
+	mockSecurityToken.On("Valid").Return(false)
+
+	federationClient := &x509FederationClient{
+		tenancyId:                         tenancyId,
+		sessionKeySupplier:                mockSessionKeySupplier,
+		leafCertificateRetriever:          mockLeafCertificateRetriever,
+		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
+	}
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.securityToken = mockSecurityToken
+
+	actualSecurityToken, actualError := federationClient.SecurityToken()
+
+	assert.Empty(t, actualSecurityToken)
+	assert.EqualError(t, actualError, expectedErrorMessage)
+}
+
+const previousTenancyId = `ocidv1:tenancy:oc1:phx:1460406592661:aaaaaaaab4faofrfkxecohhjuivjq262pu`
+
+func TestX509FederationClient_RenewSecurityTokenUnexpectedTenancyIdUpdateError(t *testing.T) {
+	mockSessionKeySupplier := new(mockSessionKeySupplier)
+	mockSessionKeySupplier.On("Refresh").Return(nil).Once()
+
+	mockLeafCertificateRetriever := new(mockCertificateRetriever)
+	mockLeafCertificateRetriever.On("Refresh").Return(nil).Once()
+	mockLeafCertificateRetriever.On("Certificate").Return(createCertificate(leafCertPem))
+
+	mockIntermediateCertificateRetriever := new(mockCertificateRetriever)
+
+	mockSecurityToken := new(mockSecurityToken)
+	mockSecurityToken.On("Valid").Return(false)
+
+	federationClient := &x509FederationClient{
+		tenancyId:                         previousTenancyId,
+		sessionKeySupplier:                mockSessionKeySupplier,
+		leafCertificateRetriever:          mockLeafCertificateRetriever,
+		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
+	}
+	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.securityToken = mockSecurityToken
+
+	actualSecurityToken, actualError := federationClient.SecurityToken()
+
+	assert.Empty(t, actualSecurityToken)
+	assert.EqualError(t, actualError, fmt.Sprintf("Unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", previousTenancyId, tenancyId))
 }
 
 func TestX509FederationClient_AuthServerInternalError(t *testing.T) {

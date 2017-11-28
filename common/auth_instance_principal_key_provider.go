@@ -41,13 +41,14 @@ func newInstancePrincipalKeyProvider() (provider *instancePrincipalKeyProvider, 
 	intermediateCertificateRetrievers := []x509CertificateRetriever{
 		newUrlBasedX509CertificateRetriever(intermediateCertificateUrl, intermediateCertificateKeyUrl),
 	}
-	tenancyId := extractTenancyIdFromCertificate(leafCertificateRetriever.Certificate())
 
-	federationClient, err := newX509FederationClient(
-		region, tenancyId, leafCertificateRetriever, intermediateCertificateRetrievers)
-	if err != nil {
+	if err = leafCertificateRetriever.Refresh(); err != nil {
 		return
 	}
+	tenancyId := extractTenancyIdFromCertificate(leafCertificateRetriever.Certificate())
+
+	federationClient := newX509FederationClient(
+		region, tenancyId, leafCertificateRetriever, intermediateCertificateRetrievers)
 
 	provider = &instancePrincipalKeyProvider{regionForFederationClient: region, federationClient: federationClient}
 	return

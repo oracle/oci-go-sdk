@@ -36,7 +36,6 @@ func newUrlBasedX509CertificateRetriever(certUrl string, privateKeyUrl string) x
 		passphrase:    "", // No passphrase for the private key for Compute instances
 		mux:           sync.Mutex{},
 	}
-	retriever.Refresh()
 	return retriever
 }
 

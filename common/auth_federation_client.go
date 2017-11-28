@@ -31,19 +31,15 @@ type x509FederationClient struct {
 	mux                               sync.Mutex
 }
 
-func newX509FederationClient(region Region, tenancyId string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever) (client federationClient, err error) {
-	x509FederationClient := &x509FederationClient{
+func newX509FederationClient(region Region, tenancyId string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever) federationClient {
+	client := &x509FederationClient{
 		tenancyId:                         tenancyId,
 		leafCertificateRetriever:          leafCertificateRetriever,
 		intermediateCertificateRetrievers: intermediateCertificateRetrievers,
 	}
-	x509FederationClient.sessionKeySupplier, err = newSessionKeySupplier()
-	if err != nil {
-		return
-	}
-	x509FederationClient.authClient = newAuthClient(region, x509FederationClient)
-	client = x509FederationClient
-	return
+	client.sessionKeySupplier = newSessionKeySupplier()
+	client.authClient = newAuthClient(region, client)
+	return client
 }
 
 func newAuthClient(region Region, provider KeyProvider) *BaseClient {
@@ -209,10 +205,9 @@ type inMemorySessionKeySupplier struct {
 	publicKeyPemRaw []byte
 }
 
-func newSessionKeySupplier() (supplier sessionKeySupplier, err error) {
-	supplier = &inMemorySessionKeySupplier{keySize: 2048}
-	err = supplier.Refresh()
-	return
+// newSessionKeySupplier creates and returns a sessionKeySupplier instance which generates key pairs of size 2048.
+func newSessionKeySupplier() sessionKeySupplier {
+	return &inMemorySessionKeySupplier{keySize: 2048}
 }
 
 // Refresh() is failure atomic, i.e., PrivateKey() and PublicKeyPemRaw() would return their previous values

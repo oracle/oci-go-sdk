@@ -160,6 +160,10 @@ func TestUrlBasedX509CertificateRetriever_RefreshCertNotFound(t *testing.T) {
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
+	assert.Nil(t, retriever.CertificatePemRaw())
+	assert.Nil(t, retriever.Certificate())
+	assert.Nil(t, retriever.PrivateKeyPemRaw())
+	assert.Nil(t, retriever.PrivateKey())
 }
 
 func TestUrlBasedX509CertificateRetriever_RefreshPrivateKeyNotFound(t *testing.T) {
@@ -174,6 +178,10 @@ func TestUrlBasedX509CertificateRetriever_RefreshPrivateKeyNotFound(t *testing.T
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
+	assert.Nil(t, retriever.CertificatePemRaw())
+	assert.Nil(t, retriever.Certificate())
+	assert.Nil(t, retriever.PrivateKeyPemRaw())
+	assert.Nil(t, retriever.PrivateKey())
 }
 
 func internalServerError(w http.ResponseWriter, r *http.Request) {
@@ -188,6 +196,10 @@ func TestUrlBasedX509CertificateRetriever_RefreshCertInternalServerError(t *test
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
+	assert.Nil(t, retriever.CertificatePemRaw())
+	assert.Nil(t, retriever.Certificate())
+	assert.Nil(t, retriever.PrivateKeyPemRaw())
+	assert.Nil(t, retriever.PrivateKey())
 }
 
 func TestUrlBasedX509CertificateRetriever_RefreshPrivateKeyInternalServerError(t *testing.T) {
@@ -202,4 +214,95 @@ func TestUrlBasedX509CertificateRetriever_RefreshPrivateKeyInternalServerError(t
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
+	assert.Nil(t, retriever.CertificatePemRaw())
+	assert.Nil(t, retriever.Certificate())
+	assert.Nil(t, retriever.PrivateKeyPemRaw())
+	assert.Nil(t, retriever.PrivateKey())
+}
+
+const (
+	anotherCert = `-----BEGIN CERTIFICATE-----
+MIIHFDCCBPygAwIBAgIQRMnR4lozX+GuvxhHRBwUszANBgkqhkiG9w0BAQsFADCB
+nzFzMHEGA1UECxNqb3BjLWRldmljZToxMDo5ZDpmNzplYzo2MTo4YTo3NDo5Mzpk
+YzowZTpkZjpiZDo0MDpiNzo1ZjpmMToxMzo5ODoyZjo0NDpmYjpkMzowNjo4YTo5
+OTo2YzplMTowNDo0MTpkZjo2YToyMTEoMCYGA1UEAxMfUEtJU1ZDIElkZW50aXR5
+IEludGVybWVkaWF0ZSByMjAeFw0xNzExMjgyMDE2MjJaFw0xNzExMjgyMTE2MjJa
+MIIBsDGCAU4wHAYDVQQLExVvcGMtY2VydHR5cGU6aW5zdGFuY2UwZwYDVQQLE2Bv
+cGMtaW5zdGFuY2U6b2NpZDEuaW5zdGFuY2Uub2MxLnBoeC5hYnlocWxqcnpjb2J2
+YnV0N2tuaXFkeTZzZjRmcDU2NTR2YjdkZ2JneDZkcTNoMzdveW5qaTR1NW4ybHEw
+agYDVQQLE2NvcGMtY29tcGFydG1lbnQ6b2NpZDEuY29tcGFydG1lbnQub2MxLi5h
+YWFhYWFhYTIza25uMnFpMjN1cnFxdnZvemJybzN1NWd4MnViZGFieXlndmU2eDU2
+Y2llaHUyemJsdnEwWQYDVQQLE1JvcGMtdGVuYW50Om9jaWR2MTp0ZW5hbmN5Om9j
+MTpwaHg6MTQ2MDQwNjU5MjY2MDphYWFhYWFhYWI0ZmFvZnJma3hlY29oaGp1aXZq
+cTI2MnB1MVwwWgYDVQQDE1NvY2lkMS5pbnN0YW5jZS5vYzEucGh4LmFieWhxbGpy
+emNvYnZidXQ3a25pcWR5NnNmNGZwNTY1NHZiN2RnYmd4NmRxM2gzN295bmppNHU1
+bjJscTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAMzUk6+x8ldxU3rS
+k4p12C8FC2ZsKTzGEKL+lJJ3MgGNe4EAAF5+EkZeWKOdLDjFLzvMGhkX/x/n9evt
+NgigRrfSBee10K/wPcOydDuHtS/1REC1vs6wqFQppjQ0ijtZ1enXvUa8ClJg3Xtl
+jeKcSNavhsM7JyPvCVc6/sXUfz+fH689Z+WF+Wvn5/90s3N2jZAY9ym3e2N253Nc
+ve68HF0hAbcKd67D/MnI+mqzZaUnY32qh6jUBKV9enKPjgDkkkPeEpStTvzZ5rn1
+0fnKzr2n1gDhY0vK43tpfpjvD9EyQPduCSjWGGZrDRk7klvxzPGF7Z2eeguLndu2
++NNLJZ1SHIYR4DGT+zxATONLebOPh7lYS+urjWdO+JG/H67FMtXFE72FR+nTZOD3
+EgE1MrHLyOTuxhNZcwhsLUKFwg1TOKgAOFJCGpDcw6FJwu8uMH4+Sn+UXZLGwmpl
+7QhlJxGQ4IHga3VPxXZ1n2G4iNVWtM9ozFqa+eOqfBoiVbE6v+cK21pCYtmxX17z
+dwUMrFJVMgVnmVkT80NDM0E4lp+MaER3Lpm2lUJ1MXT/TfzdR+89/oeJiDHv30Mt
+cPbb2d6Kg5iSBIs4zmfjrvr8DUdopBpZ0eY/rV+c/HZ3kfjU2CDT56OZwh85/LHD
+vEnDiybjk5HDKiJwHDD7EyUEDY4bAgMBAAGjODA2MBMGA1UdJQQMMAoGCCsGAQUF
+BwMCMB8GA1UdIwQYMBaAFAopIPHmOGY/xIuliu3AxCyth0p8MA0GCSqGSIb3DQEB
+CwUAA4ICAQDHsLu3tvVzKN564MsCbIAQyKavuZI7rdLXbI9VoOjsTAll1PB46AXk
+sGqO8niYNxfkN0XKjgDL7PGIe+7UiTNdjoPKIBiTUYmtad82A3cDW9wiKGMEgn4X
+Fj29I4z/1/uJn2rgvWsEO0YMLtZUL2IiyS+X4HpyMIYJjZ3xpg/t88IRuXlBbz3P
+7q/dDl3o/T3mtklzpBu9FxyejjFLG8ExladSE4Y8dECCEh1n60/adRq63sv2Liuf
+wnmXVK9e//TIrqqiQkaJOem35+Lqn0UzcZ4Y12QJoKU5k6lhFRFA8cifK0rxfWQB
+SChj3xTflap75EEBCASpPiUYymvBppT3MwQbaY3CPqsGpn2IObPjJpsgCB5EMaYR
+vsWsoAZbjstl2WqPpzJ6HlFXGynxTz1ogtW9SWsprsBMnOaZk9M4jp3Tws9H8hK5
+UmgaMy7TUVyu6H9vT+A0E3Jr2A9SPDs1pq3NKEtWZL7hub/tDWmhCiDzG8s4ijDq
+i7agiy+8AgTfgP5VzLO/pusQSs2anKGFMXSJqAS1QUvCWuMrZIxQLeiot4+oQf6K
+ipFy/tzWCetPvWXjlNQ3SeOWfzeb7QVyFMkhbQxIvaTw6ux6AlPxxo6yTiOh/7Sk
+brBmW9J4v5PqRE1mAQV8FAoIJ9Wta7p5kwwwwO0jjcd9uOjt8bxDdQ==
+-----END CERTIFICATE-----
+`
+)
+
+func TestUrlBasedX509CertificateRetriever_FailureAtomicity(t *testing.T) {
+	privateKeyServerFailed := false
+
+	certServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if privateKeyServerFailed {
+			fmt.Fprint(w, anotherCert)
+
+		} else {
+			fmt.Fprint(w, expectedCert)
+		}
+	}))
+	defer certServer.Close()
+
+	privateKeyServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if privateKeyServerFailed {
+			internalServerError(w, r)
+		} else {
+			fmt.Fprint(w, expectedPrivateKey)
+		}
+	}))
+	defer privateKeyServer.Close()
+
+	retriever := newUrlBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL)
+	err := retriever.Refresh()
+
+	assert.NoError(t, err)
+
+	privateKeyServerFailed = true
+
+	err = retriever.Refresh()
+
+	assert.Error(t, err)
+	assert.Equal(t, []byte(expectedCert), retriever.CertificatePemRaw()) // Not anotherCert but expectedCert
+	actualCert := retriever.Certificate()
+	actualCertPem := pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE", Bytes: actualCert.Raw})
+	assert.Equal(t, []byte(expectedCert), actualCertPem)
+
+	assert.Equal(t, []byte(expectedPrivateKey), retriever.PrivateKeyPemRaw())
+	actualPrivateKey := retriever.PrivateKey()
+	actualPrivateKeyPem := pem.EncodeToMemory(&pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(actualPrivateKey)})
+	assert.Equal(t, []byte(expectedPrivateKey), actualPrivateKeyPem)
 }

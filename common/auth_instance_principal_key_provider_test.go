@@ -10,19 +10,6 @@ import (
 	"testing"
 )
 
-type mockFederationClient struct {
-	mock.Mock
-}
-
-func (m *mockFederationClient) PrivateKey() (*rsa.PrivateKey, error) {
-	args := m.Called()
-	return args.Get(0).(*rsa.PrivateKey), args.Error(1)
-}
-func (m *mockFederationClient) SecurityToken() (string, error) {
-	args := m.Called()
-	return args.String(0), args.Error(1)
-}
-
 func TestInstancePrincipalKeyProvider_getRegionForFederationClient(t *testing.T) {
 	regionServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "phx")
@@ -33,6 +20,24 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClient(t *testing.T)
 
 	assert.NoError(t, err)
 	assert.Equal(t, REGION_PHX, actualRegion)
+}
+
+func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFound(t *testing.T) {
+	regionServer := httptest.NewServer(http.NotFoundHandler())
+	defer regionServer.Close()
+
+	_, err := getRegionForFederationClient(regionServer.URL)
+
+	assert.Error(t, err)
+}
+
+func TestInstancePrincipalKeyProvider_getRegionForFederationClientInternalServerError(t *testing.T) {
+	regionServer := httptest.NewServer(http.HandlerFunc(internalServerError))
+	defer regionServer.Close()
+
+	_, err := getRegionForFederationClient(regionServer.URL)
+
+	assert.Error(t, err)
 }
 
 func TestInstancePrincipalKeyProvider_PrivateRSAKey(t *testing.T) {
@@ -88,4 +93,17 @@ func TestInstancePrincipalKeyProvider_KeyIDError(t *testing.T) {
 	assert.Equal(t, "", actualKeyID)
 	assert.EqualError(t, actualError, expectedErrorMessage)
 	mockFederationClient.AssertExpectations(t)
+}
+
+type mockFederationClient struct {
+	mock.Mock
+}
+
+func (m *mockFederationClient) PrivateKey() (*rsa.PrivateKey, error) {
+	args := m.Called()
+	return args.Get(0).(*rsa.PrivateKey), args.Error(1)
+}
+func (m *mockFederationClient) SecurityToken() (string, error) {
+	args := m.Called()
+	return args.String(0), args.Error(1)
 }
