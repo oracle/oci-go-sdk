@@ -9,7 +9,7 @@
 package identity
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // Tenancy. The root compartment that contains all of your organization's compartments and other

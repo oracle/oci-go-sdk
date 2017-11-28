@@ -9,7 +9,7 @@
 package database
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // FailoverDataGuardAssociationDetails. The Data Guard association failover parameters.

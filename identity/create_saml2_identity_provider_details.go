@@ -9,8 +9,8 @@
 package identity
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 	"encoding/json"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // CreateSaml2IdentityProviderDetails.

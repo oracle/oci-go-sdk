@@ -9,7 +9,7 @@
 package core
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // Cpe. An object you create when setting up an IPSec VPN between your on-premises network

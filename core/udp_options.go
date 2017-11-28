@@ -9,7 +9,7 @@
 package core
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // UdpOptions. Optional object to specify ports for a UDP rule. If you specify UDP as the

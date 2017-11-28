@@ -9,8 +9,8 @@
 package integtest
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/loadbalancer"
+	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/loadbalancer"
 	"context"
 	"fmt"
 	"github.com/stretchr/testify/assert"

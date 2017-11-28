@@ -9,7 +9,7 @@
 package core
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // TunnelStatus. Specific connection details for an IPSec tunnel.

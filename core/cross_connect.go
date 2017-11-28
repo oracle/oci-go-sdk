@@ -9,7 +9,7 @@
 package core
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // CrossConnect. For use with Oracle Cloud Infrastructure FastConnect. A cross-connect represents a

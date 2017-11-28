@@ -9,8 +9,8 @@
 package core
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 	"encoding/json"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // DhcpOption. A single DHCP option according to [RFC 1533](https://tools.ietf.org/html/rfc1533).

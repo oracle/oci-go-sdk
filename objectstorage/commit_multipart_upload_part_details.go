@@ -9,7 +9,7 @@
 package objectstorage
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // CommitMultipartUploadPartDetails. To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,

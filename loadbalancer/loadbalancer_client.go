@@ -9,9 +9,9 @@
 package loadbalancer
 
 import (
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 	"context"
 	"fmt"
+	"github.com/oracle/oci-go-sdk/common"
 	"net/http"
 )
 
