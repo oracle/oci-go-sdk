@@ -208,8 +208,7 @@ func createTestUser(client identity.IdentityClient) (identity.User, error) {
 
 func deleteTestUser(client identity.IdentityClient, userID *string) error {
 	req := identity.DeleteUserRequest{UserID: userID}
-	err := client.DeleteUser(context.Background(), req)
-	return err
+	return client.DeleteUser(context.Background(), req)
 }
 
 func validAD() string {
@@ -224,4 +223,18 @@ func readSampleFederationMetadata(t *testing.T) string {
 	bytes, e := ioutil.ReadFile("sampleFederationMetadata.xml")
 	failIfError(t, e)
 	return string(bytes)
+}
+
+func createTestGroup(client identity.IdentityClient) (identity.Group, error) {
+	req := identity.CreateGroupRequest{}
+	req.CompartmentID = common.String(getTenancyID())
+	req.Name = common.String(getUniqueName("Test_Group_"))
+	req.Description = common.String("Go SDK Test Group")
+	rsp, err := client.CreateGroup(context.Background(), req)
+	return rsp.Group, err
+}
+
+func deleteTestGroup(client identity.IdentityClient, groupId *string) error {
+	req := identity.DeleteGroupRequest{GroupID: groupId}
+	return client.DeleteGroup(context.Background(), req)
 }
