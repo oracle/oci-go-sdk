@@ -30,29 +30,36 @@ var signerVersion = "1"
 //ociRequestSigner implements the http-signatures-draft spec
 //as described in https://tools.ietf.org/html/draft-cavage-http-signatures-08
 type ociRequestSigner struct {
-	KeyProvider KeyProvider
+	KeyProvider    KeyProvider
+	genericHeaders []string
+	bodyHeaders    []string
 }
 
-func NewOCIRequestSigner(provider KeyProvider) HttpRequestSigner {
-	return ociRequestSigner{KeyProvider: provider}
+var (
+	defaultGenericHeaders = []string{"date", "(request-target)", "host"}
+	defaultBodyHeaders    = []string{"content-length", "content-type", "x-content-sha256"}
+)
+
+func defaultOCIRequestSigner(provider KeyProvider) HttpRequestSigner {
+	return ociRequestSigner{
+		KeyProvider:    provider,
+		genericHeaders: defaultGenericHeaders,
+		bodyHeaders:    defaultGenericHeaders}
 }
 
-func getSigningHeaders(method string) []string {
-	result := []string{
-		"date",
-		"(request-target)",
-		"host",
-	}
+func (signer ociRequestSigner) getSigningHeaders(method string) []string {
+	var result []string
+	result = append(result, signer.genericHeaders...)
 
 	if method == http.MethodPost || method == http.MethodPut {
-		result = append(result, "content-length", "content-type", "x-content-sha256")
+		result = append(result, signer.bodyHeaders...)
 	}
 
 	return result
 }
 
-func getSigningString(request *http.Request) string {
-	signingHeaders := getSigningHeaders(request.Method)
+func (signer ociRequestSigner) getSigningString(request *http.Request) string {
+	signingHeaders := signer.getSigningHeaders(request.Method)
 	signingParts := make([]string, len(signingHeaders))
 	for i, part := range signingHeaders {
 		var value string
@@ -140,7 +147,7 @@ func GetBodyHash(request *http.Request) (hashString string, err error) {
 }
 
 func (signer ociRequestSigner) computeSignature(request *http.Request) (signature string, err error) {
-	signingString := getSigningString(request)
+	signingString := signer.getSigningString(request)
 	hasher := sha256.New()
 	hasher.Write([]byte(signingString))
 	hashed := hasher.Sum(nil)
@@ -175,7 +182,7 @@ func (signer ociRequestSigner) Sign(request *http.Request) (err error) {
 		return
 	}
 
-	signigHeaders := strings.Join(getSigningHeaders(request.Method), " ")
+	signigHeaders := strings.Join(signer.getSigningHeaders(request.Method), " ")
 
 	var keyID string
 	if keyID, err = signer.KeyProvider.KeyID(); err != nil {

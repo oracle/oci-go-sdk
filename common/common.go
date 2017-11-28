@@ -19,11 +19,11 @@ func StringToRegion(stringRegion string) (r Region, err error) {
 	switch strings.ToLower(stringRegion) {
 	case "sea":
 		r = REGION_SEA
-	case "us-phoenix-1":
+	case "phx", "us-phoenix-1":
 		r = REGION_PHX
-	case "us-ashburn-1":
+	case "iad", "us-ashburn-1":
 		r = REGION_IAD
-	case "eu-frankfurt-1":
+	case "fra", "eu-frankfurt-1":
 		r = REGION_FRA
 	default:
 		err = fmt.Errorf("Region named: %s, not valid", stringRegion)

@@ -61,16 +61,19 @@ func defaultUserAgent() string {
 	return userAgent
 }
 
-func newClientWithHttpDispatcher(dispatcher HttpRequestDispatcher, region Region, provider ConfigurationProvider) (client BaseClient) {
-	signer := NewOCIRequestSigner(provider)
-	client = BaseClient{
+func newBaseClient(signer HttpRequestSigner, dispatcher HttpRequestDispatcher, region Region) BaseClient {
+	return BaseClient{
 		UserAgent:   defaultUserAgent(),
 		Region:      region,
 		Interceptor: nil,
 		Signer:      signer,
 		HttpClient:  dispatcher,
 	}
-	return
+}
+
+func newClientWithHttpDispatcher(dispatcher HttpRequestDispatcher, region Region, provider KeyProvider) BaseClient {
+	signer := defaultOCIRequestSigner(provider)
+	return newBaseClient(signer, dispatcher, region)
 }
 
 func getDefaultHttpDispatcher() http.Client {
