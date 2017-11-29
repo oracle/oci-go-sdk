@@ -9,6 +9,7 @@
 package core
 
 import (
+	"encoding/json"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
@@ -18,9 +19,31 @@ type UpdateDhcpDetails struct {
 	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
-	Options *[]DhcpOption `mandatory:"false" json:"options,omitempty"`
+	Options []DhcpOption `mandatory:"false" json:"options,omitempty"`
 }
 
 func (model UpdateDhcpDetails) String() string {
 	return common.PointerString(model)
+}
+
+func (model *UpdateDhcpDetails) UnmarshalJSON(data []byte) (e error) {
+	m := struct {
+		DisplayName *string      `mandatory:"true" json:"displayName,omitempty"`
+		Options     []dhcpoption `mandatory:"true" json:"options,omitempty"`
+	}{}
+
+	e = json.Unmarshal(data, &m)
+	if e != nil {
+		return
+	}
+	model.DisplayName = m.DisplayName
+	model.Options = make([]DhcpOption, len(m.Options))
+	for i, n := range m.Options {
+		nn, err := n.UnmarshalPolymorphicJSON(n.JsonData)
+		if err != nil {
+			return err
+		}
+		model.Options[i] = nn
+	}
+	return
 }

@@ -9,6 +9,7 @@
 package core
 
 import (
+	"encoding/json"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
@@ -18,7 +19,7 @@ type CreateDhcpDetails struct {
 	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// A set of DHCP options.
-	Options *[]DhcpOption `mandatory:"true" json:"options,omitempty"`
+	Options []DhcpOption `mandatory:"true" json:"options,omitempty"`
 
 	// The OCID of the VCN the set of DHCP options belongs to.
 	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`
@@ -29,4 +30,30 @@ type CreateDhcpDetails struct {
 
 func (model CreateDhcpDetails) String() string {
 	return common.PointerString(model)
+}
+
+func (model *CreateDhcpDetails) UnmarshalJSON(data []byte) (e error) {
+	m := struct {
+		DisplayName   *string      `mandatory:"true" json:"displayName,omitempty"`
+		CompartmentID *string      `mandatory:"true" json:"compartmentId,omitempty"`
+		Options       []dhcpoption `mandatory:"true" json:"options,omitempty"`
+		VcnID         *string      `mandatory:"true" json:"vcnId,omitempty"`
+	}{}
+
+	e = json.Unmarshal(data, &m)
+	if e != nil {
+		return
+	}
+	model.DisplayName = m.DisplayName
+	model.CompartmentID = m.CompartmentID
+	model.Options = make([]DhcpOption, len(m.Options))
+	for i, n := range m.Options {
+		nn, err := n.UnmarshalPolymorphicJSON(n.JsonData)
+		if err != nil {
+			return err
+		}
+		model.Options[i] = nn
+	}
+	model.VcnID = m.VcnID
+	return
 }

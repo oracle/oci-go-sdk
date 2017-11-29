@@ -24,15 +24,27 @@ type ExportImageDetails interface {
 }
 
 type exportimagedetails struct {
+	JsonData        []byte
 	DestinationType string `json:"destinationType"`
 }
 
-func (m *exportimagedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	err := json.Unmarshal(data, m)
+func (m *exportimagedetails) UnmarshalJSON(data []byte) error {
+	m.JsonData = data
+	type Unmarshalerexportimagedetails exportimagedetails
+	s := struct {
+		Model Unmarshalerexportimagedetails
+	}{}
+	err := json.Unmarshal(data, &s.Model)
 	if err != nil {
-		return nil, err
+		return err
 	}
+	m.DestinationType = s.Model.DestinationType
 
+	return err
+}
+
+func (m *exportimagedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	var err error
 	switch m.DestinationType {
 	case "objectStorageUri":
 		mm := ExportImageViaObjectStorageUriDetails{}

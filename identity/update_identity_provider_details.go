@@ -21,16 +21,29 @@ type UpdateIdentityProviderDetails interface {
 }
 
 type updateidentityproviderdetails struct {
+	JsonData    []byte
 	Description *string `mandatory:"false" json:"description,omitempty"`
 	Protocol    string  `json:"protocol"`
 }
 
-func (m *updateidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	err := json.Unmarshal(data, m)
+func (m *updateidentityproviderdetails) UnmarshalJSON(data []byte) error {
+	m.JsonData = data
+	type Unmarshalerupdateidentityproviderdetails updateidentityproviderdetails
+	s := struct {
+		Model Unmarshalerupdateidentityproviderdetails
+	}{}
+	err := json.Unmarshal(data, &s.Model)
 	if err != nil {
-		return nil, err
+		return err
 	}
+	m.Description = s.Model.Description
+	m.Protocol = s.Model.Protocol
 
+	return err
+}
+
+func (m *updateidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	var err error
 	switch m.Protocol {
 	case "SAML2":
 		mm := UpdateSaml2IdentityProviderDetails{}

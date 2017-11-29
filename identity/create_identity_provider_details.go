@@ -35,6 +35,7 @@ type CreateIdentityProviderDetails interface {
 }
 
 type createidentityproviderdetails struct {
+	JsonData      []byte
 	CompartmentID *string                                      `mandatory:"true" json:"compartmentId,omitempty"`
 	Name          *string                                      `mandatory:"true" json:"name,omitempty"`
 	Description   *string                                      `mandatory:"true" json:"description,omitempty"`
@@ -42,12 +43,27 @@ type createidentityproviderdetails struct {
 	Protocol      string                                       `json:"protocol"`
 }
 
-func (m *createidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	err := json.Unmarshal(data, m)
+func (m *createidentityproviderdetails) UnmarshalJSON(data []byte) error {
+	m.JsonData = data
+	type Unmarshalercreateidentityproviderdetails createidentityproviderdetails
+	s := struct {
+		Model Unmarshalercreateidentityproviderdetails
+	}{}
+	err := json.Unmarshal(data, &s.Model)
 	if err != nil {
-		return nil, err
+		return err
 	}
+	m.CompartmentID = s.Model.CompartmentID
+	m.Name = s.Model.Name
+	m.Description = s.Model.Description
+	m.ProductType = s.Model.ProductType
+	m.Protocol = s.Model.Protocol
 
+	return err
+}
+
+func (m *createidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	var err error
 	switch m.Protocol {
 	case "SAML2":
 		mm := CreateSaml2IdentityProviderDetails{}
