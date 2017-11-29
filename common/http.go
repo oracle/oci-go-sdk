@@ -461,6 +461,10 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 
 	if unmarshaler != nil {
 		var uVal interface{}
+		err = json.Unmarshal(content, unmarshaler)
+		if err != nil {
+			return
+		}
 		uVal, err = unmarshaler.UnmarshalPolymorphicJSON(content)
 		if err != nil {
 			return
