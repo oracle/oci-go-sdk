@@ -103,6 +103,7 @@ func (m *mockFederationClient) PrivateKey() (*rsa.PrivateKey, error) {
 	args := m.Called()
 	return args.Get(0).(*rsa.PrivateKey), args.Error(1)
 }
+
 func (m *mockFederationClient) SecurityToken() (string, error) {
 	args := m.Called()
 	return args.String(0), args.Error(1)
