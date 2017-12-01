@@ -17,7 +17,6 @@ import (
 	"testing"
 )
 
-
 func TestDatabaseClient_CreateBackup(t *testing.T) {
 	t.Skip("Not implemented")
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())

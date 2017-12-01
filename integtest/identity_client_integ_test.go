@@ -97,20 +97,19 @@ func TestIdentityClient_CreateCompartment(t *testing.T) {
 	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, cfgErr)
 
-	request:= identity.CreateCompartmentRequest{CreateCompartmentDetails:identity.CreateCompartmentDetails{
-		Name: common.String("Compartment_Test"),
-		Description: common.String("Go SDK Comparment Test"),
+	request := identity.CreateCompartmentRequest{CreateCompartmentDetails: identity.CreateCompartmentDetails{
+		Name:          common.String("Compartment_Test"),
+		Description:   common.String("Go SDK Comparment Test"),
 		CompartmentId: common.String(getTenancyID()),
 	}}
 
-	r, err:= c.CreateCompartment(context.Background(), request)
+	r, err := c.CreateCompartment(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
 	assert.NotEmpty(t, r.Id)
 	assert.Equal(t, request.Name, r.Name)
 	assert.Equal(t, request.Description, r.Description)
 	return
 }
-
 
 //Comparment RU
 func TestIdentityClient_UpdateCompartment(t *testing.T) {
@@ -432,8 +431,13 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 
 	defer func() {
 		// Delete
+<<<<<<< HEAD
 		request := identity.DeletePolicyRequest{PolicyId:createResponse.Id}
 		delRes, err := client.DeletePolicy(context.Background(), request)
+=======
+		request := identity.DeletePolicyRequest{PolicyId: createResponse.Id}
+		err = client.DeletePolicy(context.Background(), request)
+>>>>>>> introduce retry logic and polling in support of terraform migration
 		assert.NoError(t, err)
 		assert.NotEmpty(t, delRes.OpcRequestId)
 	}()
@@ -482,7 +486,6 @@ func TestIdentityClient_ListPolicies(t *testing.T) {
 
 	return
 }
-
 
 //SecretKey operations
 func TestIdentityClient_SecretKeyCRUD(t *testing.T) {

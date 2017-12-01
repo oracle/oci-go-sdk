@@ -56,13 +56,13 @@ func (client *DatabaseClient) ConfigurationProvider() *common.ConfigurationProvi
 }
 
 // CreateBackup Creates a new backup in the specified database based on the request parameters you provide. If you previously used RMAN or dbcli to configure backups and then you switch to using the Console or the API for backups, a new backup configuration is created and associated with your database. This means that you can no longer rely on your previously configured unmanaged backups to work.
-func (client DatabaseClient) CreateBackup(ctx context.Context, request CreateBackupRequest) (response CreateBackupResponse, err error) {
+func (client DatabaseClient) CreateBackup(ctx context.Context, request CreateBackupRequest, options ...common.Option) (response CreateBackupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/backups", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -80,13 +80,13 @@ func (client DatabaseClient) CreateBackup(ctx context.Context, request CreateBac
 // You can also retrieve a resource's OCID by using a List API operation on that resource type, or by viewing the
 // resource in the Console. Fore more information, see
 // [Resource Identifiers](http://localhost:8000/Content/General/Concepts/identifiers.htm).
-func (client DatabaseClient) CreateDataGuardAssociation(ctx context.Context, request CreateDataGuardAssociationRequest) (response CreateDataGuardAssociationResponse, err error) {
+func (client DatabaseClient) CreateDataGuardAssociation(ctx context.Context, request CreateDataGuardAssociationRequest, options ...common.Option) (response CreateDataGuardAssociationResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/databases/{databaseId}/dataGuardAssociations", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -98,13 +98,13 @@ func (client DatabaseClient) CreateDataGuardAssociation(ctx context.Context, req
 }
 
 // CreateDbHome Creates a new DB Home in the specified DB System based on the request parameters you provide.
-func (client DatabaseClient) CreateDbHome(ctx context.Context, request CreateDbHomeRequest) (response CreateDbHomeResponse, err error) {
+func (client DatabaseClient) CreateDbHome(ctx context.Context, request CreateDbHomeRequest, options ...common.Option) (response CreateDbHomeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/dbHomes", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -125,13 +125,13 @@ func (client DatabaseClient) CreateDbHome(ctx context.Context, request CreateDbH
 // to apply against any relevant quotas. You must terminate the DB System
 // (TerminateDbSystem)
 // to remove its resources from billing and quotas.
-func (client DatabaseClient) DbNodeAction(ctx context.Context, request DbNodeActionRequest) (response DbNodeActionResponse, err error) {
+func (client DatabaseClient) DbNodeAction(ctx context.Context, request DbNodeActionRequest, options ...common.Option) (response DbNodeActionResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/dbNodes/{dbNodeId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -143,13 +143,13 @@ func (client DatabaseClient) DbNodeAction(ctx context.Context, request DbNodeAct
 }
 
 // DeleteBackup Deletes a full backup. You cannot delete automatic backups using this API.
-func (client DatabaseClient) DeleteBackup(ctx context.Context, request DeleteBackupRequest) (response DeleteBackupResponse, err error) {
+func (client DatabaseClient) DeleteBackup(ctx context.Context, request DeleteBackupRequest, options ...common.Option) (response DeleteBackupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/backups/{backupId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -161,13 +161,13 @@ func (client DatabaseClient) DeleteBackup(ctx context.Context, request DeleteBac
 }
 
 // DeleteDbHome Deletes a DB Home. The DB Home and its database data are local to the DB System and will be lost when it is deleted. Oracle recommends that you back up any data in the DB System prior to deleting it.
-func (client DatabaseClient) DeleteDbHome(ctx context.Context, request DeleteDbHomeRequest) (response DeleteDbHomeResponse, err error) {
+func (client DatabaseClient) DeleteDbHome(ctx context.Context, request DeleteDbHomeRequest, options ...common.Option) (response DeleteDbHomeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/dbHomes/{dbHomeId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -182,13 +182,13 @@ func (client DatabaseClient) DeleteDbHome(ctx context.Context, request DeleteDbH
 // specified Data Guard association's primary role after the existing primary database fails or becomes unreachable.
 // A failover might result in data loss depending on the protection mode in effect at the time of the primary
 // database failure.
-func (client DatabaseClient) FailoverDataGuardAssociation(ctx context.Context, request FailoverDataGuardAssociationRequest) (response FailoverDataGuardAssociationResponse, err error) {
+func (client DatabaseClient) FailoverDataGuardAssociation(ctx context.Context, request FailoverDataGuardAssociationRequest, options ...common.Option) (response FailoverDataGuardAssociationResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/databases/{databaseId}/dataGuardAssociations/{dataGuardAssociationId}/actions/failover", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -200,13 +200,13 @@ func (client DatabaseClient) FailoverDataGuardAssociation(ctx context.Context, r
 }
 
 // GetBackup Gets information about the specified backup.
-func (client DatabaseClient) GetBackup(ctx context.Context, request GetBackupRequest) (response GetBackupResponse, err error) {
+func (client DatabaseClient) GetBackup(ctx context.Context, request GetBackupRequest, options ...common.Option) (response GetBackupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/backups/{backupId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -218,13 +218,13 @@ func (client DatabaseClient) GetBackup(ctx context.Context, request GetBackupReq
 }
 
 // GetDataGuardAssociation Gets the specified Data Guard association's configuration information.
-func (client DatabaseClient) GetDataGuardAssociation(ctx context.Context, request GetDataGuardAssociationRequest) (response GetDataGuardAssociationResponse, err error) {
+func (client DatabaseClient) GetDataGuardAssociation(ctx context.Context, request GetDataGuardAssociationRequest, options ...common.Option) (response GetDataGuardAssociationResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/databases/{databaseId}/dataGuardAssociations/{dataGuardAssociationId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -236,13 +236,13 @@ func (client DatabaseClient) GetDataGuardAssociation(ctx context.Context, reques
 }
 
 // GetDatabase Gets information about a specific database.
-func (client DatabaseClient) GetDatabase(ctx context.Context, request GetDatabaseRequest) (response GetDatabaseResponse, err error) {
+func (client DatabaseClient) GetDatabase(ctx context.Context, request GetDatabaseRequest, options ...common.Option) (response GetDatabaseResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/databases/{databaseId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -254,13 +254,13 @@ func (client DatabaseClient) GetDatabase(ctx context.Context, request GetDatabas
 }
 
 // GetDbHome Gets information about the specified database home.
-func (client DatabaseClient) GetDbHome(ctx context.Context, request GetDbHomeRequest) (response GetDbHomeResponse, err error) {
+func (client DatabaseClient) GetDbHome(ctx context.Context, request GetDbHomeRequest, options ...common.Option) (response GetDbHomeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbHomes/{dbHomeId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -272,13 +272,13 @@ func (client DatabaseClient) GetDbHome(ctx context.Context, request GetDbHomeReq
 }
 
 // GetDbHomePatch Gets information about a specified patch package.
-func (client DatabaseClient) GetDbHomePatch(ctx context.Context, request GetDbHomePatchRequest) (response GetDbHomePatchResponse, err error) {
+func (client DatabaseClient) GetDbHomePatch(ctx context.Context, request GetDbHomePatchRequest, options ...common.Option) (response GetDbHomePatchResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbHomes/{dbHomeId}/patches/{patchId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -290,13 +290,13 @@ func (client DatabaseClient) GetDbHomePatch(ctx context.Context, request GetDbHo
 }
 
 // GetDbHomePatchHistoryEntry Gets the patch history details for the specified patchHistoryEntryId
-func (client DatabaseClient) GetDbHomePatchHistoryEntry(ctx context.Context, request GetDbHomePatchHistoryEntryRequest) (response GetDbHomePatchHistoryEntryResponse, err error) {
+func (client DatabaseClient) GetDbHomePatchHistoryEntry(ctx context.Context, request GetDbHomePatchHistoryEntryRequest, options ...common.Option) (response GetDbHomePatchHistoryEntryResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbHomes/{dbHomeId}/patchHistoryEntries/{patchHistoryEntryId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -308,13 +308,13 @@ func (client DatabaseClient) GetDbHomePatchHistoryEntry(ctx context.Context, req
 }
 
 // GetDbNode Gets information about the specified database node.
-func (client DatabaseClient) GetDbNode(ctx context.Context, request GetDbNodeRequest) (response GetDbNodeResponse, err error) {
+func (client DatabaseClient) GetDbNode(ctx context.Context, request GetDbNodeRequest, options ...common.Option) (response GetDbNodeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbNodes/{dbNodeId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -326,13 +326,13 @@ func (client DatabaseClient) GetDbNode(ctx context.Context, request GetDbNodeReq
 }
 
 // GetDbSystem Gets information about the specified DB System.
-func (client DatabaseClient) GetDbSystem(ctx context.Context, request GetDbSystemRequest) (response GetDbSystemResponse, err error) {
+func (client DatabaseClient) GetDbSystem(ctx context.Context, request GetDbSystemRequest, options ...common.Option) (response GetDbSystemResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbSystems/{dbSystemId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -344,13 +344,13 @@ func (client DatabaseClient) GetDbSystem(ctx context.Context, request GetDbSyste
 }
 
 // GetDbSystemPatch Gets information about a specified patch package.
-func (client DatabaseClient) GetDbSystemPatch(ctx context.Context, request GetDbSystemPatchRequest) (response GetDbSystemPatchResponse, err error) {
+func (client DatabaseClient) GetDbSystemPatch(ctx context.Context, request GetDbSystemPatchRequest, options ...common.Option) (response GetDbSystemPatchResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbSystems/{dbSystemId}/patches/{patchId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -362,13 +362,13 @@ func (client DatabaseClient) GetDbSystemPatch(ctx context.Context, request GetDb
 }
 
 // GetDbSystemPatchHistoryEntry Gets the patch history details for the specified patchHistoryEntryId.
-func (client DatabaseClient) GetDbSystemPatchHistoryEntry(ctx context.Context, request GetDbSystemPatchHistoryEntryRequest) (response GetDbSystemPatchHistoryEntryResponse, err error) {
+func (client DatabaseClient) GetDbSystemPatchHistoryEntry(ctx context.Context, request GetDbSystemPatchHistoryEntryRequest, options ...common.Option) (response GetDbSystemPatchHistoryEntryResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbSystems/{dbSystemId}/patchHistoryEntries/{patchHistoryEntryId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -387,13 +387,13 @@ func (client DatabaseClient) GetDbSystemPatchHistoryEntry(ctx context.Context, r
 // The DB System will include a command line interface (CLI) that you can use to create additional databases and
 // manage existing databases. For more information, see the
 // [Oracle Database CLI Reference]({{DOC_SERVER_URL}}/Content/Database/References/odacli.htm#Oracle_Database_CLI_Reference).
-func (client DatabaseClient) LaunchDbSystem(ctx context.Context, request LaunchDbSystemRequest) (response LaunchDbSystemResponse, err error) {
+func (client DatabaseClient) LaunchDbSystem(ctx context.Context, request LaunchDbSystemRequest, options ...common.Option) (response LaunchDbSystemResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/dbSystems", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -405,13 +405,13 @@ func (client DatabaseClient) LaunchDbSystem(ctx context.Context, request LaunchD
 }
 
 // ListBackups Gets a list of backups based on the databaseId or compartmentId specified. Either one of the query parameters must be provided.
-func (client DatabaseClient) ListBackups(ctx context.Context, request ListBackupsRequest) (response ListBackupsResponse, err error) {
+func (client DatabaseClient) ListBackups(ctx context.Context, request ListBackupsRequest, options ...common.Option) (response ListBackupsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/backups", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -423,13 +423,13 @@ func (client DatabaseClient) ListBackups(ctx context.Context, request ListBackup
 }
 
 // ListDataGuardAssociations Lists all Data Guard associations for the specified database.
-func (client DatabaseClient) ListDataGuardAssociations(ctx context.Context, request ListDataGuardAssociationsRequest) (response ListDataGuardAssociationsResponse, err error) {
+func (client DatabaseClient) ListDataGuardAssociations(ctx context.Context, request ListDataGuardAssociationsRequest, options ...common.Option) (response ListDataGuardAssociationsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/databases/{databaseId}/dataGuardAssociations", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -441,13 +441,13 @@ func (client DatabaseClient) ListDataGuardAssociations(ctx context.Context, requ
 }
 
 // ListDatabases Gets a list of the databases in the specified database home.
-func (client DatabaseClient) ListDatabases(ctx context.Context, request ListDatabasesRequest) (response ListDatabasesResponse, err error) {
+func (client DatabaseClient) ListDatabases(ctx context.Context, request ListDatabasesRequest, options ...common.Option) (response ListDatabasesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/databases", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -459,13 +459,13 @@ func (client DatabaseClient) ListDatabases(ctx context.Context, request ListData
 }
 
 // ListDbHomePatchHistoryEntries Gets history of the actions taken for patches for the specified database home.
-func (client DatabaseClient) ListDbHomePatchHistoryEntries(ctx context.Context, request ListDbHomePatchHistoryEntriesRequest) (response ListDbHomePatchHistoryEntriesResponse, err error) {
+func (client DatabaseClient) ListDbHomePatchHistoryEntries(ctx context.Context, request ListDbHomePatchHistoryEntriesRequest, options ...common.Option) (response ListDbHomePatchHistoryEntriesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbHomes/{dbHomeId}/patchHistoryEntries", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -477,13 +477,13 @@ func (client DatabaseClient) ListDbHomePatchHistoryEntries(ctx context.Context, 
 }
 
 // ListDbHomePatches Lists patches applicable to the requested database home.
-func (client DatabaseClient) ListDbHomePatches(ctx context.Context, request ListDbHomePatchesRequest) (response ListDbHomePatchesResponse, err error) {
+func (client DatabaseClient) ListDbHomePatches(ctx context.Context, request ListDbHomePatchesRequest, options ...common.Option) (response ListDbHomePatchesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbHomes/{dbHomeId}/patches", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -495,13 +495,13 @@ func (client DatabaseClient) ListDbHomePatches(ctx context.Context, request List
 }
 
 // ListDbHomes Gets a list of database homes in the specified DB System and compartment. A database home is a directory where Oracle database software is installed.
-func (client DatabaseClient) ListDbHomes(ctx context.Context, request ListDbHomesRequest) (response ListDbHomesResponse, err error) {
+func (client DatabaseClient) ListDbHomes(ctx context.Context, request ListDbHomesRequest, options ...common.Option) (response ListDbHomesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbHomes", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -513,13 +513,13 @@ func (client DatabaseClient) ListDbHomes(ctx context.Context, request ListDbHome
 }
 
 // ListDbNodes Gets a list of database nodes in the specified DB System and compartment. A database node is a server running database software.
-func (client DatabaseClient) ListDbNodes(ctx context.Context, request ListDbNodesRequest) (response ListDbNodesResponse, err error) {
+func (client DatabaseClient) ListDbNodes(ctx context.Context, request ListDbNodesRequest, options ...common.Option) (response ListDbNodesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbNodes", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -531,13 +531,13 @@ func (client DatabaseClient) ListDbNodes(ctx context.Context, request ListDbNode
 }
 
 // ListDbSystemPatchHistoryEntries Gets the history of the patch actions performed on the specified DB System.
-func (client DatabaseClient) ListDbSystemPatchHistoryEntries(ctx context.Context, request ListDbSystemPatchHistoryEntriesRequest) (response ListDbSystemPatchHistoryEntriesResponse, err error) {
+func (client DatabaseClient) ListDbSystemPatchHistoryEntries(ctx context.Context, request ListDbSystemPatchHistoryEntriesRequest, options ...common.Option) (response ListDbSystemPatchHistoryEntriesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbSystems/{dbSystemId}/patchHistoryEntries", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -549,13 +549,13 @@ func (client DatabaseClient) ListDbSystemPatchHistoryEntries(ctx context.Context
 }
 
 // ListDbSystemPatches Lists the patches applicable to the requested DB System.
-func (client DatabaseClient) ListDbSystemPatches(ctx context.Context, request ListDbSystemPatchesRequest) (response ListDbSystemPatchesResponse, err error) {
+func (client DatabaseClient) ListDbSystemPatches(ctx context.Context, request ListDbSystemPatchesRequest, options ...common.Option) (response ListDbSystemPatchesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbSystems/{dbSystemId}/patches", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -567,13 +567,13 @@ func (client DatabaseClient) ListDbSystemPatches(ctx context.Context, request Li
 }
 
 // ListDbSystemShapes Gets a list of the shapes that can be used to launch a new DB System. The shape determines resources to allocate to the DB system - CPU cores and memory for VM shapes; CPU cores, memory and storage for non-VM (or bare metal) shapes.
-func (client DatabaseClient) ListDbSystemShapes(ctx context.Context, request ListDbSystemShapesRequest) (response ListDbSystemShapesResponse, err error) {
+func (client DatabaseClient) ListDbSystemShapes(ctx context.Context, request ListDbSystemShapesRequest, options ...common.Option) (response ListDbSystemShapesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbSystemShapes", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -586,13 +586,13 @@ func (client DatabaseClient) ListDbSystemShapes(ctx context.Context, request Lis
 
 // ListDbSystems Gets a list of the DB Systems in the specified compartment.
 //
-func (client DatabaseClient) ListDbSystems(ctx context.Context, request ListDbSystemsRequest) (response ListDbSystemsResponse, err error) {
+func (client DatabaseClient) ListDbSystems(ctx context.Context, request ListDbSystemsRequest, options ...common.Option) (response ListDbSystemsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbSystems", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -604,13 +604,13 @@ func (client DatabaseClient) ListDbSystems(ctx context.Context, request ListDbSy
 }
 
 // ListDbVersions Gets a list of supported Oracle database versions.
-func (client DatabaseClient) ListDbVersions(ctx context.Context, request ListDbVersionsRequest) (response ListDbVersionsResponse, err error) {
+func (client DatabaseClient) ListDbVersions(ctx context.Context, request ListDbVersionsRequest, options ...common.Option) (response ListDbVersionsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/dbVersions", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -622,13 +622,13 @@ func (client DatabaseClient) ListDbVersions(ctx context.Context, request ListDbV
 }
 
 // ReinstateDataGuardAssociation Reinstates the database identified by the `databaseId` parameter into the standby role in a Data Guard association.
-func (client DatabaseClient) ReinstateDataGuardAssociation(ctx context.Context, request ReinstateDataGuardAssociationRequest) (response ReinstateDataGuardAssociationResponse, err error) {
+func (client DatabaseClient) ReinstateDataGuardAssociation(ctx context.Context, request ReinstateDataGuardAssociationRequest, options ...common.Option) (response ReinstateDataGuardAssociationResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/databases/{databaseId}/dataGuardAssociations/{dataGuardAssociationId}/actions/reinstate", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -640,13 +640,13 @@ func (client DatabaseClient) ReinstateDataGuardAssociation(ctx context.Context, 
 }
 
 // RestoreDatabase Restore a Database based on the request parameters you provide.
-func (client DatabaseClient) RestoreDatabase(ctx context.Context, request RestoreDatabaseRequest) (response RestoreDatabaseResponse, err error) {
+func (client DatabaseClient) RestoreDatabase(ctx context.Context, request RestoreDatabaseRequest, options ...common.Option) (response RestoreDatabaseResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/databases/{databaseId}/actions/restore", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -660,13 +660,13 @@ func (client DatabaseClient) RestoreDatabase(ctx context.Context, request Restor
 // SwitchoverDataGuardAssociation Performs a switchover to transition the primary database of a Data Guard association into a standby role. The
 // standby database associated with the `dataGuardAssociationId` assumes the primary database role.
 // A switchover guarantees no data loss.
-func (client DatabaseClient) SwitchoverDataGuardAssociation(ctx context.Context, request SwitchoverDataGuardAssociationRequest) (response SwitchoverDataGuardAssociationResponse, err error) {
+func (client DatabaseClient) SwitchoverDataGuardAssociation(ctx context.Context, request SwitchoverDataGuardAssociationRequest, options ...common.Option) (response SwitchoverDataGuardAssociationResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/databases/{databaseId}/dataGuardAssociations/{dataGuardAssociationId}/actions/switchover", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -678,13 +678,13 @@ func (client DatabaseClient) SwitchoverDataGuardAssociation(ctx context.Context,
 }
 
 // TerminateDbSystem Terminates a DB System and permanently deletes it and any databases running on it, and any storage volumes attached to it. The database data is local to the DB System and will be lost when the system is terminated. Oracle recommends that you back up any data in the DB System prior to terminating it.
-func (client DatabaseClient) TerminateDbSystem(ctx context.Context, request TerminateDbSystemRequest) (response TerminateDbSystemResponse, err error) {
+func (client DatabaseClient) TerminateDbSystem(ctx context.Context, request TerminateDbSystemRequest, options ...common.Option) (response TerminateDbSystemResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/dbSystems/{dbSystemId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -696,13 +696,13 @@ func (client DatabaseClient) TerminateDbSystem(ctx context.Context, request Term
 }
 
 // UpdateDatabase Update a Database based on the request parameters you provide.
-func (client DatabaseClient) UpdateDatabase(ctx context.Context, request UpdateDatabaseRequest) (response UpdateDatabaseResponse, err error) {
+func (client DatabaseClient) UpdateDatabase(ctx context.Context, request UpdateDatabaseRequest, options ...common.Option) (response UpdateDatabaseResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/databases/{databaseId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -714,13 +714,13 @@ func (client DatabaseClient) UpdateDatabase(ctx context.Context, request UpdateD
 }
 
 // UpdateDbHome Patches the specified dbHome.
-func (client DatabaseClient) UpdateDbHome(ctx context.Context, request UpdateDbHomeRequest) (response UpdateDbHomeResponse, err error) {
+func (client DatabaseClient) UpdateDbHome(ctx context.Context, request UpdateDbHomeRequest, options ...common.Option) (response UpdateDbHomeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/dbHomes/{dbHomeId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -732,13 +732,13 @@ func (client DatabaseClient) UpdateDbHome(ctx context.Context, request UpdateDbH
 }
 
 // UpdateDbSystem Updates the properties of a DB System, such as the CPU core count.
-func (client DatabaseClient) UpdateDbSystem(ctx context.Context, request UpdateDbSystemRequest) (response UpdateDbSystemResponse, err error) {
+func (client DatabaseClient) UpdateDbSystem(ctx context.Context, request UpdateDbSystemRequest, options ...common.Option) (response UpdateDbSystemResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/dbSystems/{dbSystemId}", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
