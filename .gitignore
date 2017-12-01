@@ -8,4 +8,5 @@
 .idea/
 *.swp
 .vscode/*
+.swagger-codegen-ignore
 

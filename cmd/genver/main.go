@@ -42,7 +42,7 @@ func main() {
 		Tag                 string
 	}{
 		getEnvOrDefault(majorVer, "0"),
-		getEnvOrDefault(minorVer, "0" ),
+		getEnvOrDefault(minorVer, "0"),
 		getEnvOrDefault(patchVer, "0"),
 		getEnvOrDefault(tag, ""),
 	}
