@@ -3,6 +3,7 @@ package common
 import (
 	"context"
 	"fmt"
+	"math/rand"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -10,18 +11,21 @@ import (
 	"path"
 	"runtime"
 	"strings"
+	"sync"
 	"time"
 )
 
 const (
-	DefaultHostUrlTemplate   = "%s.%s.oraclecloud.com"
-	defaultScheme            = "https"
-	defaultSDKMarker         = "Oracle-GoSDK"
-	defaultUserAgentTemplate = "%s/%s (%s/%s; go/%s)" //SDK/SDKVersion (OS/OSVersion; Lang/LangVersion)
-	defaultTimeout           = time.Second * 30
-	defaultConfigFileName    = "config"
-	defaultConfigDirName     = ".oci"
-	secondorayConfigDirName  = ".oraclebmc"
+	DefaultHostUrlTemplate    = "%s.%s.oraclecloud.com"
+	defaultScheme             = "https"
+	defaultSDKMarker          = "Oracle-GoSDK"
+	defaultUserAgentTemplate  = "%s/%s (%s/%s; go/%s)" //SDK/SDKVersion (OS/OSVersion; Lang/LangVersion)
+	defaultTimeout            = time.Second * 30
+	defaultConfigFileName     = "config"
+	defaultConfigDirName      = ".oci"
+	secondorayConfigDirName   = ".oraclebmc"
+	generatedRetryTokenLength = 30
+	retryTokenKey             = "opc-retry-token"
 )
 
 type RequestInterceptor func(*http.Request) error
@@ -54,6 +58,9 @@ type BaseClient struct {
 
 	//Base path for all operations of this client
 	BasePath string
+
+	//Seed for random number generator
+	Seed int64
 }
 
 func defaultUserAgent() string {
@@ -61,7 +68,15 @@ func defaultUserAgent() string {
 	return userAgent
 }
 
+var mu sync.Mutex
+var clientCounter int64
+
 func newClientWithHttpDispatcher(dispatcher HttpRequestDispatcher, region Region, provider ConfigurationProvider) (client BaseClient) {
+	mu.Lock()
+	defer mu.Unlock()
+
+	clientCounter = clientCounter + 1
+
 	signer := NewOCIRequestSigner(provider)
 	client = BaseClient{
 		UserAgent:   defaultUserAgent(),
@@ -69,6 +84,7 @@ func newClientWithHttpDispatcher(dispatcher HttpRequestDispatcher, region Region
 		Interceptor: nil,
 		Signer:      signer,
 		HttpClient:  dispatcher,
+		Seed:        clientCounter,
 	}
 	return
 }
@@ -162,6 +178,35 @@ func checkForSuccessfulResponse(res *http.Response) error {
 	}
 	return nil
 
+}
+
+func generateRetryToken(randGen *rand.Rand) string {
+	alphanumericChars := []rune("abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	retryToken := make([]rune, generatedRetryTokenLength)
+	for i := range retryToken {
+		retryToken[i] = alphanumericChars[randGen.Intn(len(alphanumericChars))]
+	}
+	return string(retryToken)
+}
+
+func addRetryTokenToRequestIfNeeded(request *http.Request, generator *rand.Rand) {
+	if _, present := request.Header[retryTokenKey]; !present {
+		generatedRetryToken := generateRetryToken(generator)
+		request.Header[retryTokenKey] = []string{generatedRetryToken}
+	}
+}
+
+func (client BaseClient) RetryableCall(ctx context.Context, request *http.Request, retryer Retryer) (response *http.Response, err error) {
+	generator := rand.New(rand.NewSource(client.Seed))
+	addRetryTokenToRequestIfNeeded(request, generator)
+	response, err = client.Call(ctx, request)
+	for retryCount := 1; err != nil && retryer.ShouldRetryRequest(*response); retryCount++ {
+		duration := retryer.GetDurationAndIncrementRetryCount()
+		Debugln(fmt.Sprintf("err was not nil => request retry # %v (waiting %v seconds first)", retryCount, duration))
+		time.Sleep(duration)
+		response, err = client.Call(ctx, request)
+	}
+	return
 }
 
 func (client BaseClient) Call(ctx context.Context, request *http.Request) (response *http.Response, err error) {
