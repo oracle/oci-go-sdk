@@ -1,8 +1,9 @@
-package common
+package auth
 
 import (
 	"crypto/rsa"
 	"fmt"
+	"github.com/oracle/oci-go-sdk/common"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"net/http"
@@ -19,7 +20,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClient(t *testing.T)
 	actualRegion, err := getRegionForFederationClient(regionServer.URL)
 
 	assert.NoError(t, err)
-	assert.Equal(t, REGION_PHX, actualRegion)
+	assert.Equal(t, common.REGION_PHX, actualRegion)
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFound(t *testing.T) {

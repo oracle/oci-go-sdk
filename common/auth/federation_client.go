@@ -1,4 +1,4 @@
-package common
+package auth
 
 import (
 	"context"
@@ -8,6 +8,7 @@ import (
 	"encoding/pem"
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
+	"github.com/oracle/oci-go-sdk/common"
 	"net/http"
 	"strings"
 	"sync"
@@ -27,11 +28,11 @@ type x509FederationClient struct {
 	leafCertificateRetriever          x509CertificateRetriever
 	intermediateCertificateRetrievers []x509CertificateRetriever
 	securityToken                     securityToken
-	authClient                        *BaseClient
+	authClient                        *common.BaseClient
 	mux                               sync.Mutex
 }
 
-func newX509FederationClient(region Region, tenancyId string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever) federationClient {
+func newX509FederationClient(region common.Region, tenancyId string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever) federationClient {
 	client := &x509FederationClient{
 		tenancyId:                         tenancyId,
 		leafCertificateRetriever:          leafCertificateRetriever,
@@ -42,15 +43,15 @@ func newX509FederationClient(region Region, tenancyId string, leafCertificateRet
 	return client
 }
 
-func newAuthClient(region Region, provider KeyProvider) *BaseClient {
-	dispatcher := getDefaultHttpDispatcher()
-	signer := ociRequestSigner{
+func newAuthClient(region common.Region, provider common.KeyProvider) *common.BaseClient {
+	dispatcher := common.DefaultHttpDispatcher()
+	signer := common.OciRequestSigner{
 		KeyProvider:    provider,
-		genericHeaders: []string{"date", "(request-target)"}, // "host" is not needed for the federation endpoint.  Don't ask me why.
-		bodyHeaders:    defaultBodyHeaders,
+		GenericHeaders: []string{"date", "(request-target)"}, // "host" is not needed for the federation endpoint.  Don't ask me why.
+		BodyHeaders:    common.DefaultBodyHeaders,
 	}
-	client := newBaseClient(signer, &dispatcher, "") // Why BaseClient requires "region"?
-	client.Host = fmt.Sprintf(DefaultHostUrlTemplate, "auth", string(region))
+	client := common.NewBaseClient(signer, &dispatcher, "") // Why BaseClient requires "region"?
+	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "auth", string(region))
 	client.BasePath = "v1/x509"
 	return &client
 }
@@ -124,21 +125,21 @@ func (c *x509FederationClient) renewSecurityToken() (err error) {
 func (c *x509FederationClient) getSecurityToken() (token securityToken, err error) {
 	request := c.makeX509FederationRequest()
 	var httpRequest http.Request
-	if httpRequest, err = MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "", request); err != nil {
-		Logln(err)
+	if httpRequest, err = common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "", request); err != nil {
+		common.Logln(err)
 		return
 	}
 
 	var httpResponse *http.Response
-	defer CloseBodyIfValid(httpResponse)
+	defer common.CloseBodyIfValid(httpResponse)
 	if httpResponse, err = c.authClient.Call(context.Background(), &httpRequest); err != nil {
-		Logln(err)
+		common.Logln(err)
 		return
 	}
 
 	response := x509FederationResponse{}
-	if err = UnmarshalResponse(httpResponse, &response); err != nil {
-		Logln(err)
+	if err = common.UnmarshalResponse(httpResponse, &response); err != nil {
+		common.Logln(err)
 		return
 	}
 
@@ -213,18 +214,18 @@ func newSessionKeySupplier() sessionKeySupplier {
 // Refresh() is failure atomic, i.e., PrivateKey() and PublicKeyPemRaw() would return their previous values
 // if Refresh() fails.
 func (s *inMemorySessionKeySupplier) Refresh() (err error) {
-	Debugln("Refreshing session key")
+	common.Debugln("Refreshing session key")
 
 	var privateKey *rsa.PrivateKey
 	privateKey, err = rsa.GenerateKey(rand.Reader, s.keySize)
 	if err != nil {
-		Logln(err)
+		common.Logln(err)
 		return
 	}
 
 	var publicKeyAsnBytes []byte
 	if publicKeyAsnBytes, err = x509.MarshalPKIXPublicKey(privateKey.Public()); err != nil {
-		Logln(err)
+		common.Logln(err)
 		return
 	}
 	publicKeyPemRaw := pem.EncodeToMemory(&pem.Block{
@@ -274,11 +275,11 @@ func newInstancePrincipalToken(tokenString string) (newToken securityToken, err 
 		var validationError *jwt.ValidationError
 		var ok bool
 		if validationError, ok = err.(*jwt.ValidationError); !ok {
-			Logln(err)
+			common.Logln(err)
 			return
 		}
 		if validationError.Errors != jwt.ValidationErrorUnverifiable {
-			Logln(err)
+			common.Logln(err)
 			return
 		}
 	}

@@ -1,4 +1,4 @@
-package common
+package auth
 
 import (
 	"bytes"
@@ -6,6 +6,7 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
+	"github.com/oracle/oci-go-sdk/common"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"net/http"
@@ -467,7 +468,7 @@ var (
 	sessionPublicKeyBodyNoNewLine = strings.Replace(sessionPublicKeyBody, "\n", "", -1)
 )
 
-const whateverRegion = REGION_PHX
+const whateverRegion = common.REGION_PHX
 
 type mockSessionKeySupplier struct {
 	mock.Mock

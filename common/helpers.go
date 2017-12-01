@@ -1,6 +1,9 @@
 package common
 
 import (
+	"crypto/rsa"
+	"crypto/x509"
+	"encoding/pem"
 	"fmt"
 	"reflect"
 	"strings"
@@ -101,5 +104,29 @@ func (t *SDKTime) UnmarshalJSON(data []byte) (e error) {
 func (t *SDKTime) MarshalJSON() (buff []byte, e error) {
 	s := t.Format(sdkTimeFormat)
 	buff = []byte(`"` + s + `"`)
+	return
+}
+
+// PrivateKeyFromBytes is a helper function that will produce a RSA private
+// key from bytes.
+func PrivateKeyFromBytes(pemData []byte, password *string) (key *rsa.PrivateKey, e error) {
+	if pemBlock, _ := pem.Decode(pemData); pemBlock != nil {
+		decrypted := pemBlock.Bytes
+		if x509.IsEncryptedPEMBlock(pemBlock) {
+			if password == nil {
+				e = fmt.Errorf("private_key_password is required for encrypted private keys")
+				return
+			}
+			if decrypted, e = x509.DecryptPEMBlock(pemBlock, []byte(*password)); e != nil {
+				return
+			}
+		}
+
+		key, e = x509.ParsePKCS1PrivateKey(decrypted)
+
+	} else {
+		e = fmt.Errorf("PEM data was not found in buffer")
+		return
+	}
 	return
 }

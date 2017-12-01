@@ -1,10 +1,11 @@
-package common
+package auth
 
 import (
 	"bytes"
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/pem"
+	"github.com/oracle/oci-go-sdk/common"
 	"sync"
 )
 
@@ -29,11 +30,11 @@ type urlBasedX509CertificateRetriever struct {
 	mux               sync.Mutex
 }
 
-func newUrlBasedX509CertificateRetriever(certUrl string, privateKeyUrl string) x509CertificateRetriever {
+func newUrlBasedX509CertificateRetriever(certUrl, privateKeyUrl, passphrase string) x509CertificateRetriever {
 	retriever := &urlBasedX509CertificateRetriever{
 		certUrl:       certUrl,
 		privateKeyUrl: privateKeyUrl,
-		passphrase:    "", // No passphrase for the private key for Compute instances
+		passphrase:    passphrase,
 		mux:           sync.Mutex{},
 	}
 	return retriever
@@ -42,7 +43,7 @@ func newUrlBasedX509CertificateRetriever(certUrl string, privateKeyUrl string) x
 // Refresh() is failure atomic, i.e., CertificatePemRaw(), Certificate(), PrivateKeyPemRaw(), and PrivateKey() would
 // return their previous values if Refresh() fails.
 func (r *urlBasedX509CertificateRetriever) Refresh() (err error) {
-	Debugln("Refreshing certificate")
+	common.Debugln("Refreshing certificate")
 
 	r.mux.Lock()
 	defer r.mux.Unlock()
@@ -72,7 +73,7 @@ func (r *urlBasedX509CertificateRetriever) renewCertificate(url string) (certifi
 	var body bytes.Buffer
 	body, err = httpGet(url)
 	if err != nil {
-		Logln(err)
+		common.Logln(err)
 		return
 	}
 
@@ -80,24 +81,24 @@ func (r *urlBasedX509CertificateRetriever) renewCertificate(url string) (certifi
 	var block *pem.Block
 	block, _ = pem.Decode(certificatePemRaw)
 	if certificate, err = x509.ParseCertificate(block.Bytes); err != nil {
-		Logln(err)
+		common.Logln(err)
 		return nil, nil, err
 	}
 
 	return
 }
 
-func (r *urlBasedX509CertificateRetriever) renewPrivateKey(url string, passphrase string) (privateKeyPemRaw []byte, privateKey *rsa.PrivateKey, err error) {
+func (r *urlBasedX509CertificateRetriever) renewPrivateKey(url, passphrase string) (privateKeyPemRaw []byte, privateKey *rsa.PrivateKey, err error) {
 	var body bytes.Buffer
 	body, err = httpGet(url)
 	if err != nil {
-		Logln(err)
+		common.Logln(err)
 		return
 	}
 
 	privateKeyPemRaw = body.Bytes()
-	if privateKey, err = privateKeyFromBytes(privateKeyPemRaw, &passphrase); err != nil {
-		Logln(err)
+	if privateKey, err = common.PrivateKeyFromBytes(privateKeyPemRaw, &passphrase); err != nil {
+		common.Logln(err)
 		return nil, nil, err
 	}
 

@@ -70,7 +70,7 @@ func (p environmentConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, 
 		return
 	}
 
-	key, err = privateKeyFromBytes(pemFileContent, &p.PrivateKeyPassword)
+	key, err = PrivateKeyFromBytes(pemFileContent, &p.PrivateKeyPassword)
 	return
 }
 
@@ -299,7 +299,7 @@ func (p fileConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, err err
 		return
 	}
 
-	key, err = privateKeyFromBytes(pemFileContent, &p.PrivateKeyPassword)
+	key, err = PrivateKeyFromBytes(pemFileContent, &p.PrivateKeyPassword)
 	return
 }
 
@@ -312,56 +312,6 @@ func (p fileConfigurationProvider) Region() (value string, err error) {
 
 	value, err = presentOrError(info.Region, hasRegion, info.PresentConfiguration, "region")
 	return
-}
-
-type instancePrincipalConfigurationProvider struct {
-	keyProvider *instancePrincipalKeyProvider
-	region      *Region
-}
-
-func InstancePrincipalConfigurationProvider() (provider ConfigurationProvider, err error) {
-	keyProvider, err := newInstancePrincipalKeyProvider()
-	if err != nil {
-		return
-	}
-	provider = instancePrincipalConfigurationProvider{keyProvider: keyProvider, region: nil}
-	return
-}
-
-func InstancePrincipalConfigurationProviderForRegion(region Region) (provider ConfigurationProvider, err error) {
-	keyProvider, err := newInstancePrincipalKeyProvider()
-	if err != nil {
-		return
-	}
-	provider = instancePrincipalConfigurationProvider{keyProvider: keyProvider, region: &region}
-	return
-}
-
-func (p instancePrincipalConfigurationProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
-	return p.keyProvider.PrivateRSAKey()
-}
-
-func (p instancePrincipalConfigurationProvider) KeyID() (string, error) {
-	return p.keyProvider.KeyID()
-}
-
-func (p instancePrincipalConfigurationProvider) TenancyOCID() (string, error) {
-	return "", nil
-}
-
-func (p instancePrincipalConfigurationProvider) UserOCID() (string, error) {
-	return "", nil
-}
-
-func (p instancePrincipalConfigurationProvider) KeyFingerPrint() (string, error) {
-	return "", nil
-}
-
-func (p instancePrincipalConfigurationProvider) Region() (string, error) {
-	if p.region == nil {
-		return string(p.keyProvider.RegionForFederationClient()), nil
-	}
-	return string(*p.region), nil
 }
 
 // A configuration provider that look for information in  multiple configuration providers

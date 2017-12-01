@@ -61,7 +61,7 @@ func defaultUserAgent() string {
 	return userAgent
 }
 
-func newBaseClient(signer HttpRequestSigner, dispatcher HttpRequestDispatcher, region Region) BaseClient {
+func NewBaseClient(signer HttpRequestSigner, dispatcher HttpRequestDispatcher, region Region) BaseClient {
 	return BaseClient{
 		UserAgent:   defaultUserAgent(),
 		Region:      region,
@@ -73,10 +73,10 @@ func newBaseClient(signer HttpRequestSigner, dispatcher HttpRequestDispatcher, r
 
 func newClientWithHttpDispatcher(dispatcher HttpRequestDispatcher, region Region, provider KeyProvider) BaseClient {
 	signer := defaultOCIRequestSigner(provider)
-	return newBaseClient(signer, dispatcher, region)
+	return NewBaseClient(signer, dispatcher, region)
 }
 
-func getDefaultHttpDispatcher() http.Client {
+func DefaultHttpDispatcher() http.Client {
 	httpClient := http.Client{
 		Timeout:   defaultTimeout,
 		Transport: &http.Transport{},
@@ -100,7 +100,7 @@ func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClien
 		return
 	}
 
-	dispatcher := getDefaultHttpDispatcher()
+	dispatcher := DefaultHttpDispatcher()
 	client = newClientWithHttpDispatcher(&dispatcher, region, configProvider)
 	return
 }
@@ -111,7 +111,7 @@ func getHomeFolder() string {
 
 //Create a new default client for a given region, with a default config provider
 func NewClientForRegion(region Region) (client BaseClient) {
-	dispatcher := getDefaultHttpDispatcher()
+	dispatcher := DefaultHttpDispatcher()
 	homeFolder := getHomeFolder()
 	defaultConfigFile := path.Join(homeFolder, defaultConfigDirName, defaultConfigFileName)
 	secondaryConfigFile := path.Join(homeFolder, secondorayConfigDirName, defaultConfigFileName)

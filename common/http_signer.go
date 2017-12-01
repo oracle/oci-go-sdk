@@ -27,38 +27,38 @@ type KeyProvider interface {
 
 var signerVersion = "1"
 
-//ociRequestSigner implements the http-signatures-draft spec
+//OciRequestSigner implements the http-signatures-draft spec
 //as described in https://tools.ietf.org/html/draft-cavage-http-signatures-08
-type ociRequestSigner struct {
+type OciRequestSigner struct {
 	KeyProvider    KeyProvider
-	genericHeaders []string
-	bodyHeaders    []string
+	GenericHeaders []string
+	BodyHeaders    []string
 }
 
 var (
-	defaultGenericHeaders = []string{"date", "(request-target)", "host"}
-	defaultBodyHeaders    = []string{"content-length", "content-type", "x-content-sha256"}
+	DefaultGenericHeaders = []string{"date", "(request-target)", "host"}
+	DefaultBodyHeaders    = []string{"content-length", "content-type", "x-content-sha256"}
 )
 
 func defaultOCIRequestSigner(provider KeyProvider) HttpRequestSigner {
-	return ociRequestSigner{
+	return OciRequestSigner{
 		KeyProvider:    provider,
-		genericHeaders: defaultGenericHeaders,
-		bodyHeaders:    defaultGenericHeaders}
+		GenericHeaders: DefaultGenericHeaders,
+		BodyHeaders:    DefaultBodyHeaders}
 }
 
-func (signer ociRequestSigner) getSigningHeaders(method string) []string {
+func (signer OciRequestSigner) getSigningHeaders(method string) []string {
 	var result []string
-	result = append(result, signer.genericHeaders...)
+	result = append(result, signer.GenericHeaders...)
 
 	if method == http.MethodPost || method == http.MethodPut {
-		result = append(result, signer.bodyHeaders...)
+		result = append(result, signer.BodyHeaders...)
 	}
 
 	return result
 }
 
-func (signer ociRequestSigner) getSigningString(request *http.Request) string {
+func (signer OciRequestSigner) getSigningString(request *http.Request) string {
 	signingHeaders := signer.getSigningHeaders(request.Method)
 	signingParts := make([]string, len(signingHeaders))
 	for i, part := range signingHeaders {
@@ -146,7 +146,7 @@ func GetBodyHash(request *http.Request) (hashString string, err error) {
 	return
 }
 
-func (signer ociRequestSigner) computeSignature(request *http.Request) (signature string, err error) {
+func (signer OciRequestSigner) computeSignature(request *http.Request) (signature string, err error) {
 	signingString := signer.getSigningString(request)
 	hasher := sha256.New()
 	hasher.Write([]byte(signingString))
@@ -171,7 +171,7 @@ func (signer ociRequestSigner) computeSignature(request *http.Request) (signatur
 // Signs the http request, by inspecting the necessary headers. Once signed
 // the request will have the proper 'Authorization' header set, otherwise
 // and error is returned
-func (signer ociRequestSigner) Sign(request *http.Request) (err error) {
+func (signer OciRequestSigner) Sign(request *http.Request) (err error) {
 	err = calculateHashOfBody(request)
 	if err != nil {
 		return
@@ -182,7 +182,7 @@ func (signer ociRequestSigner) Sign(request *http.Request) (err error) {
 		return
 	}
 
-	signigHeaders := strings.Join(signer.getSigningHeaders(request.Method), " ")
+	signingHeaders := strings.Join(signer.getSigningHeaders(request.Method), " ")
 
 	var keyID string
 	if keyID, err = signer.KeyProvider.KeyID(); err != nil {
@@ -190,7 +190,7 @@ func (signer ociRequestSigner) Sign(request *http.Request) (err error) {
 	}
 
 	authValue := fmt.Sprintf("Signature version=\"%s\",headers=\"%s\",keyId=\"%s\",algorithm=\"rsa-sha256\",signature=\"%s\"",
-		signerVersion, signigHeaders, keyID, signature)
+		signerVersion, signingHeaders, keyID, signature)
 
 	request.Header.Set("Authorization", authValue)
 

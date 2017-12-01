@@ -1,16 +1,19 @@
-package common
+package auth
 
 import (
 	"crypto/rsa"
 	"fmt"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 const (
-	regionUrl                     = `http://169.254.169.254/opc/v1/instance/region`
-	leafCertificateUrl            = `http://169.254.169.254/opc/v1/identity/cert.pem`
-	leafCertificateKeyUrl         = `http://169.254.169.254/opc/v1/identity/key.pem`
-	intermediateCertificateUrl    = `http://169.254.169.254/opc/v1/identity/intermediate.pem`
-	intermediateCertificateKeyUrl = ``
+	regionUrl                            = `http://169.254.169.254/opc/v1/instance/region`
+	leafCertificateUrl                   = `http://169.254.169.254/opc/v1/identity/cert.pem`
+	leafCertificateKeyUrl                = `http://169.254.169.254/opc/v1/identity/key.pem`
+	leafCertificateKeyPassphrase         = `` // No passphrase for the private key for Compute instances
+	intermediateCertificateUrl           = `http://169.254.169.254/opc/v1/identity/intermediate.pem`
+	intermediateCertificateKeyUrl        = ``
+	intermediateCertificateKeyPassphrase = `` // No passphrase for the private key for Compute instances
 )
 
 // instancePrincipalKeyProvider implements KeyProvider to provide a key ID and its corresponding private key
@@ -19,7 +22,7 @@ const (
 // The region name of the endpoint for x509FederationClient is obtained from the metadata service on the compute
 // instance.
 type instancePrincipalKeyProvider struct {
-	regionForFederationClient Region
+	regionForFederationClient common.Region
 	federationClient          federationClient
 }
 
@@ -31,15 +34,17 @@ type instancePrincipalKeyProvider struct {
 // The x509FederationClient caches the security token in memory until it is expired.  Thus, even if a client obtains a
 // KeyID that is not expired at the moment, the PrivateRSAKey that the client acquires at a next moment could be
 // invalid because the KeyID could be already expired.
-func newInstancePrincipalKeyProvider() (provider *instancePrincipalKeyProvider, err error) {
+func NewInstancePrincipalKeyProvider() (provider *instancePrincipalKeyProvider, err error) {
 	region, err := getRegionForFederationClient(regionUrl)
 	if err != nil {
 		return
 	}
 
-	leafCertificateRetriever := newUrlBasedX509CertificateRetriever(leafCertificateUrl, leafCertificateKeyUrl)
+	leafCertificateRetriever := newUrlBasedX509CertificateRetriever(
+		leafCertificateUrl, leafCertificateKeyUrl, leafCertificateKeyPassphrase)
 	intermediateCertificateRetrievers := []x509CertificateRetriever{
-		newUrlBasedX509CertificateRetriever(intermediateCertificateUrl, intermediateCertificateKeyUrl),
+		newUrlBasedX509CertificateRetriever(
+			intermediateCertificateUrl, intermediateCertificateKeyUrl, intermediateCertificateKeyPassphrase),
 	}
 
 	if err = leafCertificateRetriever.Refresh(); err != nil {
@@ -54,16 +59,16 @@ func newInstancePrincipalKeyProvider() (provider *instancePrincipalKeyProvider, 
 	return
 }
 
-func getRegionForFederationClient(url string) (r Region, err error) {
+func getRegionForFederationClient(url string) (r common.Region, err error) {
 	body, err := httpGet(url)
 	if err != nil {
-		Logln(err)
+		common.Logln(err)
 		return
 	}
-	return StringToRegion(body.String())
+	return common.StringToRegion(body.String())
 }
 
-func (p *instancePrincipalKeyProvider) RegionForFederationClient() Region {
+func (p *instancePrincipalKeyProvider) RegionForFederationClient() common.Region {
 	return p.regionForFederationClient
 }
 
