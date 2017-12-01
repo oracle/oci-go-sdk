@@ -17,7 +17,6 @@ import (
 	"testing"
 )
 
-
 func TestComputeClient_AttachVnic(t *testing.T) {
 	t.Skip("Not implemented")
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
