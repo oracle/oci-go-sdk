@@ -7,7 +7,6 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
-	"github.com/dgrijalva/jwt-go"
 	"github.com/oracle/oci-go-sdk/common"
 	"net/http"
 	"strings"
@@ -264,24 +263,14 @@ type securityToken interface {
 
 type instancePrincipalToken struct {
 	tokenString string
-	jwtToken    *jwt.Token
+	jwtToken    *jwtToken
 }
 
 func newInstancePrincipalToken(tokenString string) (newToken securityToken, err error) {
-	jwtToken, err := jwt.Parse(tokenString, nil) // No signature verification
+	jwtToken, err := parseJwt(tokenString)
 	if err != nil {
-		// Because of no signature verification, we want to ignore jwt.ValidationErrorUnverifiable.
-		// We should not ignore other errors.
-		var validationError *jwt.ValidationError
-		var ok bool
-		if validationError, ok = err.(*jwt.ValidationError); !ok {
-			common.Logln(err)
-			return
-		}
-		if validationError.Errors != jwt.ValidationErrorUnverifiable {
-			common.Logln(err)
-			return
-		}
+		common.Logln(err)
+		return
 	}
 	newToken = &instancePrincipalToken{tokenString, jwtToken}
 	return newToken, nil
@@ -292,5 +281,5 @@ func (t *instancePrincipalToken) String() string {
 }
 
 func (t *instancePrincipalToken) Valid() bool {
-	return t.jwtToken.Claims.Valid() == nil
+	return !t.jwtToken.expired()
 }
