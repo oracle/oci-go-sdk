@@ -1,22 +1,22 @@
 package integtest
 
 import (
+	"context"
+	"crypto/sha256"
+	"encoding/hex"
+	"fmt"
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/identity"
-	"context"
-	"fmt"
 	"github.com/stretchr/testify/assert"
+	"io"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"os/exec"
 	"reflect"
 	"strings"
 	"testing"
 	"time"
-	"math/rand"
-	"io"
-	"crypto/sha256"
-	"encoding/hex"
 )
 
 const (
@@ -211,8 +211,6 @@ func writeTempFileOfSize(filesize int64) (fileName string, fileSize int64, conte
 	return
 }
 
-
-
 func getUuid() string {
 	output, err := exec.Command("uuidgen").Output()
 	if err != nil {
@@ -274,4 +272,3 @@ func deleteTestGroup(client identity.IdentityClient, groupId *string) error {
 	_, err := client.DeleteGroup(context.Background(), req)
 	return err
 }
-
