@@ -23,7 +23,7 @@ type LoadBalancerClient struct {
 func NewLoadBalancerClientForRegion(region common.Region) (client LoadBalancerClient) {
 	client = LoadBalancerClient{BaseClient: common.NewClientForRegion(region)}
 
-	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "loadbalancer", string(region))
+	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "iaas", string(region))
 	client.BasePath = "20170115"
 	return
 }
