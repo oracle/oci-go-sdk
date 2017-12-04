@@ -42,14 +42,14 @@ func newX509FederationClient(region common.Region, tenancyId string, leafCertifi
 	return client
 }
 
+var (
+	genericHeaders = []string{"date", "(request-target)"} // "host" is not needed for the federation endpoint.  Don't ask me why.
+	bodyHeaders    = []string{"content-length", "content-type", "x-content-sha256"}
+)
+
 func newAuthClient(region common.Region, provider common.KeyProvider) *common.BaseClient {
-	dispatcher := common.DefaultHttpDispatcher()
-	signer := common.OciRequestSigner{
-		KeyProvider:    provider,
-		GenericHeaders: []string{"date", "(request-target)"}, // "host" is not needed for the federation endpoint.  Don't ask me why.
-		BodyHeaders:    common.DefaultBodyHeaders,
-	}
-	client := common.NewBaseClient(signer, &dispatcher, "") // Why BaseClient requires "region"?
+	signer := common.RequestSigner(provider, genericHeaders, bodyHeaders)
+	client := common.DefaultBaseClientWithSigner(signer, "")
 	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "auth", string(region))
 	client.BasePath = "v1/x509"
 	return &client
@@ -67,15 +67,14 @@ func (c *x509FederationClient) PrivateRSAKey() (*rsa.PrivateKey, error) {
 	return c.leafCertificateRetriever.PrivateKey(), nil
 }
 
-func (c *x509FederationClient) PrivateKey() (privateKey *rsa.PrivateKey, err error) {
+func (c *x509FederationClient) PrivateKey() (*rsa.PrivateKey, error) {
 	c.mux.Lock()
 	defer c.mux.Unlock()
 
-	if err = c.renewSecurityTokenIfNotValid(); err != nil {
-		return
+	if err := c.renewSecurityTokenIfNotValid(); err != nil {
+		return nil, err
 	}
-	privateKey = c.sessionKeySupplier.PrivateKey()
-	return
+	return c.sessionKeySupplier.PrivateKey(), nil
 }
 
 func (c *x509FederationClient) SecurityToken() (token string, err error) {
@@ -83,63 +82,66 @@ func (c *x509FederationClient) SecurityToken() (token string, err error) {
 	defer c.mux.Unlock()
 
 	if err = c.renewSecurityTokenIfNotValid(); err != nil {
-		return
+		return "", err
 	}
-	token = c.securityToken.String()
-	return
+	return c.securityToken.String(), nil
 }
 
 func (c *x509FederationClient) renewSecurityTokenIfNotValid() (err error) {
 	if c.securityToken == nil || !c.securityToken.Valid() {
-		err = c.renewSecurityToken()
+		if err = c.renewSecurityToken(); err != nil {
+			return fmt.Errorf("failed to renew security token: %s", err.Error())
+		}
 	}
-	return
+	return nil
 }
 
 func (c *x509FederationClient) renewSecurityToken() (err error) {
 	if err = c.sessionKeySupplier.Refresh(); err != nil {
-		return
+		return fmt.Errorf("failed to refresh session key: %s", err.Error())
 	}
 
 	if err = c.leafCertificateRetriever.Refresh(); err != nil {
-		return
+		return fmt.Errorf("failed to refresh leaf certificate: %s", err.Error())
 	}
 
 	updatedTenancyId := extractTenancyIdFromCertificate(c.leafCertificateRetriever.Certificate())
 	if c.tenancyId != updatedTenancyId {
-		err = fmt.Errorf("Unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", c.tenancyId, updatedTenancyId)
+		err = fmt.Errorf("unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", c.tenancyId, updatedTenancyId)
 		return
 	}
 
 	for _, retriever := range c.intermediateCertificateRetrievers {
 		if err = retriever.Refresh(); err != nil {
-			return
+			return fmt.Errorf("failed to refresh intermediate certificate: %s", err.Error())
 		}
 	}
 
-	c.securityToken, err = c.getSecurityToken()
-	return
+	if c.securityToken, err = c.getSecurityToken(); err != nil {
+		return fmt.Errorf("failed to get security token: %s", err.Error())
+	}
+
+	return nil
 }
 
-func (c *x509FederationClient) getSecurityToken() (token securityToken, err error) {
+func (c *x509FederationClient) getSecurityToken() (securityToken, error) {
 	request := c.makeX509FederationRequest()
+
+	var err error
 	var httpRequest http.Request
 	if httpRequest, err = common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "", request); err != nil {
-		common.Logln(err)
-		return
+		return nil, fmt.Errorf("failed to make http request: %s", err.Error())
 	}
 
 	var httpResponse *http.Response
 	defer common.CloseBodyIfValid(httpResponse)
 	if httpResponse, err = c.authClient.Call(context.Background(), &httpRequest); err != nil {
-		common.Logln(err)
-		return
+		return nil, fmt.Errorf("failed to call: %s", err.Error())
 	}
 
 	response := x509FederationResponse{}
 	if err = common.UnmarshalResponse(httpResponse, &response); err != nil {
-		common.Logln(err)
-		return
+		return nil, fmt.Errorf("failed to unmarshal the response: %s", err.Error())
 	}
 
 	return newInstancePrincipalToken(response.Token.Token)
@@ -218,14 +220,12 @@ func (s *inMemorySessionKeySupplier) Refresh() (err error) {
 	var privateKey *rsa.PrivateKey
 	privateKey, err = rsa.GenerateKey(rand.Reader, s.keySize)
 	if err != nil {
-		common.Logln(err)
-		return
+		return fmt.Errorf("failed to generate a new keypair: %s", err)
 	}
 
 	var publicKeyAsnBytes []byte
 	if publicKeyAsnBytes, err = x509.MarshalPKIXPublicKey(privateKey.Public()); err != nil {
-		common.Logln(err)
-		return
+		return fmt.Errorf("failed to marshal the public part of the new keypair: %s", err.Error())
 	}
 	publicKeyPemRaw := pem.EncodeToMemory(&pem.Block{
 		Type:  "PUBLIC KEY",
@@ -234,7 +234,7 @@ func (s *inMemorySessionKeySupplier) Refresh() (err error) {
 
 	s.privateKey = privateKey
 	s.publicKeyPemRaw = publicKeyPemRaw
-	return
+	return nil
 }
 
 func (s *inMemorySessionKeySupplier) PrivateKey() *rsa.PrivateKey {
@@ -267,13 +267,11 @@ type instancePrincipalToken struct {
 }
 
 func newInstancePrincipalToken(tokenString string) (newToken securityToken, err error) {
-	jwtToken, err := parseJwt(tokenString)
-	if err != nil {
-		common.Logln(err)
-		return
+	var jwtToken *jwtToken
+	if jwtToken, err = parseJwt(tokenString); err != nil {
+		return nil, fmt.Errorf("failed to parse the token string \"%s\": %s", tokenString, err.Error())
 	}
-	newToken = &instancePrincipalToken{tokenString, jwtToken}
-	return newToken, nil
+	return &instancePrincipalToken{tokenString, jwtToken}, nil
 }
 
 func (t *instancePrincipalToken) String() string {

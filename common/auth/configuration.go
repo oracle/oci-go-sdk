@@ -2,6 +2,7 @@ package auth
 
 import (
 	"crypto/rsa"
+	"fmt"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
@@ -10,22 +11,22 @@ type instancePrincipalConfigurationProvider struct {
 	region      *common.Region
 }
 
-func InstancePrincipalConfigurationProvider() (provider common.ConfigurationProvider, err error) {
-	keyProvider, err := NewInstancePrincipalKeyProvider()
-	if err != nil {
-		return
+func InstancePrincipalConfigurationProvider() (common.ConfigurationProvider, error) {
+	var err error
+	var keyProvider *instancePrincipalKeyProvider
+	if keyProvider, err = newInstancePrincipalKeyProvider(); err != nil {
+		return nil, fmt.Errorf("failed to create a new key provider for instance principal: %s", err.Error())
 	}
-	provider = instancePrincipalConfigurationProvider{keyProvider: keyProvider, region: nil}
-	return
+	return instancePrincipalConfigurationProvider{keyProvider: keyProvider, region: nil}, nil
 }
 
-func InstancePrincipalConfigurationProviderForRegion(region common.Region) (provider common.ConfigurationProvider, err error) {
-	keyProvider, err := NewInstancePrincipalKeyProvider()
-	if err != nil {
-		return
+func InstancePrincipalConfigurationProviderForRegion(region common.Region) (common.ConfigurationProvider, error) {
+	var err error
+	var keyProvider *instancePrincipalKeyProvider
+	if keyProvider, err = newInstancePrincipalKeyProvider(); err != nil {
+		return nil, fmt.Errorf("failed to create a new key provider for instance principal: %s", err.Error())
 	}
-	provider = instancePrincipalConfigurationProvider{keyProvider: keyProvider, region: &region}
-	return
+	return instancePrincipalConfigurationProvider{keyProvider: keyProvider, region: &region}, nil
 }
 
 func (p instancePrincipalConfigurationProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {

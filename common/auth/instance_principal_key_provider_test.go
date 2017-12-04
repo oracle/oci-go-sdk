@@ -66,7 +66,7 @@ func TestInstancePrincipalKeyProvider_PrivateRSAKeyError(t *testing.T) {
 	actualPrivateKey, actualError := keyProvider.PrivateRSAKey()
 
 	assert.Nil(t, actualPrivateKey)
-	assert.EqualError(t, actualError, expectedErrorMessage)
+	assert.EqualError(t, actualError, fmt.Sprintf("failed to get private key: %s", expectedErrorMessage))
 	mockFederationClient.AssertExpectations(t)
 }
 
@@ -92,7 +92,7 @@ func TestInstancePrincipalKeyProvider_KeyIDError(t *testing.T) {
 	actualKeyID, actualError := keyProvider.KeyID()
 
 	assert.Equal(t, "", actualKeyID)
-	assert.EqualError(t, actualError, expectedErrorMessage)
+	assert.EqualError(t, actualError, fmt.Sprintf("failed to get security token: %s", expectedErrorMessage))
 	mockFederationClient.AssertExpectations(t)
 }
 

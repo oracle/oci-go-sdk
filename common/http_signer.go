@@ -27,27 +27,31 @@ type KeyProvider interface {
 
 var signerVersion = "1"
 
-//OciRequestSigner implements the http-signatures-draft spec
+//ociRequestSigner implements the http-signatures-draft spec
 //as described in https://tools.ietf.org/html/draft-cavage-http-signatures-08
-type OciRequestSigner struct {
+type ociRequestSigner struct {
 	KeyProvider    KeyProvider
 	GenericHeaders []string
 	BodyHeaders    []string
 }
 
 var (
-	DefaultGenericHeaders = []string{"date", "(request-target)", "host"}
-	DefaultBodyHeaders    = []string{"content-length", "content-type", "x-content-sha256"}
+	defaultGenericHeaders = []string{"date", "(request-target)", "host"}
+	defaultBodyHeaders    = []string{"content-length", "content-type", "x-content-sha256"}
 )
 
-func defaultOCIRequestSigner(provider KeyProvider) HttpRequestSigner {
-	return OciRequestSigner{
-		KeyProvider:    provider,
-		GenericHeaders: DefaultGenericHeaders,
-		BodyHeaders:    DefaultBodyHeaders}
+func defaultRequestSigner(provider KeyProvider) HttpRequestSigner {
+	return RequestSigner(provider, defaultGenericHeaders, defaultBodyHeaders)
 }
 
-func (signer OciRequestSigner) getSigningHeaders(method string) []string {
+func RequestSigner(provider KeyProvider, genericHeaders, bodyHeaders []string) HttpRequestSigner {
+	return ociRequestSigner{
+		KeyProvider:    provider,
+		GenericHeaders: genericHeaders,
+		BodyHeaders:    bodyHeaders}
+}
+
+func (signer ociRequestSigner) getSigningHeaders(method string) []string {
 	var result []string
 	result = append(result, signer.GenericHeaders...)
 
@@ -58,7 +62,7 @@ func (signer OciRequestSigner) getSigningHeaders(method string) []string {
 	return result
 }
 
-func (signer OciRequestSigner) getSigningString(request *http.Request) string {
+func (signer ociRequestSigner) getSigningString(request *http.Request) string {
 	signingHeaders := signer.getSigningHeaders(request.Method)
 	signingParts := make([]string, len(signingHeaders))
 	for i, part := range signingHeaders {
@@ -146,7 +150,7 @@ func GetBodyHash(request *http.Request) (hashString string, err error) {
 	return
 }
 
-func (signer OciRequestSigner) computeSignature(request *http.Request) (signature string, err error) {
+func (signer ociRequestSigner) computeSignature(request *http.Request) (signature string, err error) {
 	signingString := signer.getSigningString(request)
 	hasher := sha256.New()
 	hasher.Write([]byte(signingString))
@@ -171,7 +175,7 @@ func (signer OciRequestSigner) computeSignature(request *http.Request) (signatur
 // Signs the http request, by inspecting the necessary headers. Once signed
 // the request will have the proper 'Authorization' header set, otherwise
 // and error is returned
-func (signer OciRequestSigner) Sign(request *http.Request) (err error) {
+func (signer ociRequestSigner) Sign(request *http.Request) (err error) {
 	err = calculateHashOfBody(request)
 	if err != nil {
 		return

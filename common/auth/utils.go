@@ -6,15 +6,16 @@ import (
 	"crypto/x509"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/common"
-	"io/ioutil"
 	"net/http"
 	"net/http/httputil"
 	"strings"
 )
 
+// httpGet makes a simple HTTP GET request to the given URL, expecting only "200 OK" status code.
+// This is basically for the Instance Metadata Service.
 func httpGet(url string) (body bytes.Buffer, err error) {
-	response, err := http.Get(url)
-	if err != nil {
+	var response *http.Response
+	if response, err = http.Get(url); err != nil {
 		return
 	}
 
@@ -31,20 +32,13 @@ func httpGet(url string) (body bytes.Buffer, err error) {
 		return
 	}
 
-	err = checkStatusCode(url, response)
-	return
-}
-
-func checkStatusCode(url string, response *http.Response) (err error) {
-	if response.StatusCode < 200 || 300 <= response.StatusCode {
-		var body []byte
-		if body, err = ioutil.ReadAll(response.Body); err != nil {
-			common.Logln(err)
-			return
-		}
-		return fmt.Errorf("HTTP Get failed: URL: %s, Status: %s, Message: %s", url, response.Status, string(body))
+	if response.StatusCode != http.StatusOK {
+		err = fmt.Errorf("HTTP Get failed: URL: %s, Status: %s, Message: %s",
+			url, response.Status, body.String())
+		return
 	}
-	return nil
+
+	return
 }
 
 func extractTenancyIdFromCertificate(cert *x509.Certificate) string {

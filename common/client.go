@@ -61,7 +61,7 @@ func defaultUserAgent() string {
 	return userAgent
 }
 
-func NewBaseClient(signer HttpRequestSigner, dispatcher HttpRequestDispatcher, region Region) BaseClient {
+func newBaseClient(signer HttpRequestSigner, dispatcher HttpRequestDispatcher, region Region) BaseClient {
 	return BaseClient{
 		UserAgent:   defaultUserAgent(),
 		Region:      region,
@@ -71,17 +71,28 @@ func NewBaseClient(signer HttpRequestSigner, dispatcher HttpRequestDispatcher, r
 	}
 }
 
-func newClientWithHttpDispatcher(dispatcher HttpRequestDispatcher, region Region, provider KeyProvider) BaseClient {
-	signer := defaultOCIRequestSigner(provider)
-	return NewBaseClient(signer, dispatcher, region)
-}
-
-func DefaultHttpDispatcher() http.Client {
+func defaultHttpDispatcher() http.Client {
 	httpClient := http.Client{
 		Timeout:   defaultTimeout,
 		Transport: &http.Transport{},
 	}
 	return httpClient
+}
+
+func DefaultBaseClient(region Region, provider KeyProvider) BaseClient {
+	dispatcher := defaultHttpDispatcher()
+	signer := defaultRequestSigner(provider)
+	return newBaseClient(signer, &dispatcher, region)
+}
+
+func DefaultBaseClientWithDispatcher(dispatcher HttpRequestDispatcher, region Region, provider KeyProvider) BaseClient {
+	signer := defaultRequestSigner(provider)
+	return newBaseClient(signer, dispatcher, region)
+}
+
+func DefaultBaseClientWithSigner(signer HttpRequestSigner, region Region) BaseClient {
+	dispatcher := defaultHttpDispatcher()
+	return newBaseClient(signer, &dispatcher, region)
 }
 
 // Create a new client with a configuration provider, the configuration provider
@@ -100,8 +111,7 @@ func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClien
 		return
 	}
 
-	dispatcher := DefaultHttpDispatcher()
-	client = newClientWithHttpDispatcher(&dispatcher, region, configProvider)
+	client = DefaultBaseClient(region, configProvider)
 	return
 }
 
@@ -111,7 +121,6 @@ func getHomeFolder() string {
 
 //Create a new default client for a given region, with a default config provider
 func NewClientForRegion(region Region) (client BaseClient) {
-	dispatcher := DefaultHttpDispatcher()
 	homeFolder := getHomeFolder()
 	defaultConfigFile := path.Join(homeFolder, defaultConfigDirName, defaultConfigFileName)
 	secondaryConfigFile := path.Join(homeFolder, secondorayConfigDirName, defaultConfigFileName)
@@ -122,7 +131,7 @@ func NewClientForRegion(region Region) (client BaseClient) {
 
 	provider, _ := ComposingConfigurationProvider([]ConfigurationProvider{defaultFileProvider, secondaryFileProvider, environmentProvider})
 	Debugf("Configuration provided by: %s", provider)
-	return newClientWithHttpDispatcher(&dispatcher, region, provider)
+	return DefaultBaseClient(region, provider)
 }
 
 func (client *BaseClient) prepareRequest(request *http.Request) (err error) {

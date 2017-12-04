@@ -42,23 +42,25 @@ func newUrlBasedX509CertificateRetriever(certUrl, privateKeyUrl, passphrase stri
 
 // Refresh() is failure atomic, i.e., CertificatePemRaw(), Certificate(), PrivateKeyPemRaw(), and PrivateKey() would
 // return their previous values if Refresh() fails.
-func (r *urlBasedX509CertificateRetriever) Refresh() (err error) {
+func (r *urlBasedX509CertificateRetriever) Refresh() error {
 	common.Debugln("Refreshing certificate")
 
 	r.mux.Lock()
 	defer r.mux.Unlock()
 
+	var err error
+
 	var certificatePemRaw []byte
 	var certificate *x509.Certificate
 	if certificatePemRaw, certificate, err = r.renewCertificate(r.certUrl); err != nil {
-		return
+		return err
 	}
 
 	var privateKeyPemRaw []byte
 	var privateKey *rsa.PrivateKey
 	if r.privateKeyUrl != "" {
 		if privateKeyPemRaw, privateKey, err = r.renewPrivateKey(r.privateKeyUrl, r.passphrase); err != nil {
-			return
+			return err
 		}
 	}
 
@@ -66,15 +68,14 @@ func (r *urlBasedX509CertificateRetriever) Refresh() (err error) {
 	r.certificate = certificate
 	r.privateKeyPemRaw = privateKeyPemRaw
 	r.privateKey = privateKey
-	return
+	return nil
 }
 
 func (r *urlBasedX509CertificateRetriever) renewCertificate(url string) (certificatePemRaw []byte, certificate *x509.Certificate, err error) {
 	var body bytes.Buffer
-	body, err = httpGet(url)
-	if err != nil {
+	if body, err = httpGet(url); err != nil {
 		common.Logln(err)
-		return
+		return nil, nil, err
 	}
 
 	certificatePemRaw = body.Bytes()
@@ -85,15 +86,14 @@ func (r *urlBasedX509CertificateRetriever) renewCertificate(url string) (certifi
 		return nil, nil, err
 	}
 
-	return
+	return certificatePemRaw, certificate, nil
 }
 
 func (r *urlBasedX509CertificateRetriever) renewPrivateKey(url, passphrase string) (privateKeyPemRaw []byte, privateKey *rsa.PrivateKey, err error) {
 	var body bytes.Buffer
-	body, err = httpGet(url)
-	if err != nil {
+	if body, err = httpGet(url); err != nil {
 		common.Logln(err)
-		return
+		return nil, nil, err
 	}
 
 	privateKeyPemRaw = body.Bytes()
@@ -102,7 +102,7 @@ func (r *urlBasedX509CertificateRetriever) renewPrivateKey(url, passphrase strin
 		return nil, nil, err
 	}
 
-	return
+	return privateKeyPemRaw, privateKey, nil
 }
 
 func (r *urlBasedX509CertificateRetriever) CertificatePemRaw() []byte {

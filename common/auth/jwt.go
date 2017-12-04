@@ -32,7 +32,7 @@ func parseJwt(tokenString string) (*jwtToken, error) {
 	// Parse Header part
 	var headerBytes []byte
 	if headerBytes, err = decodePart(parts[0]); err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to decode the header bytes: %s", err.Error())
 	}
 	if err = json.Unmarshal(headerBytes, &token.header); err != nil {
 		return nil, err
@@ -41,11 +41,11 @@ func parseJwt(tokenString string) (*jwtToken, error) {
 	// Parse Payload part
 	var payloadBytes []byte
 	if payloadBytes, err = decodePart(parts[1]); err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to decode the payload bytes: %s", err.Error())
 	}
 	decoder := json.NewDecoder(bytes.NewBuffer(payloadBytes))
 	if err = decoder.Decode(&token.payload); err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to decode the payload json: %s", err.Error())
 	}
 
 	return token, nil

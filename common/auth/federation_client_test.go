@@ -177,7 +177,7 @@ func TestX509FederationClient_RenewSecurityTokenSessionKeySupplierError(t *testi
 	actualSecurityToken, actualError := federationClient.SecurityToken()
 
 	assert.Empty(t, actualSecurityToken)
-	assert.EqualError(t, actualError, expectedErrorMessage)
+	assert.EqualError(t, actualError, fmt.Sprintf("failed to renew security token: failed to refresh session key: %s", expectedErrorMessage))
 }
 
 func TestX509FederationClient_RenewSecurityTokenLeafCertificateRetrieverError(t *testing.T) {
@@ -205,7 +205,7 @@ func TestX509FederationClient_RenewSecurityTokenLeafCertificateRetrieverError(t 
 	actualSecurityToken, actualError := federationClient.SecurityToken()
 
 	assert.Empty(t, actualSecurityToken)
-	assert.EqualError(t, actualError, expectedErrorMessage)
+	assert.EqualError(t, actualError, fmt.Sprintf("failed to renew security token: failed to refresh leaf certificate: %s", expectedErrorMessage))
 }
 
 func TestX509FederationClient_RenewSecurityTokenIntermediateCertificateRetrieverError(t *testing.T) {
@@ -235,7 +235,7 @@ func TestX509FederationClient_RenewSecurityTokenIntermediateCertificateRetriever
 	actualSecurityToken, actualError := federationClient.SecurityToken()
 
 	assert.Empty(t, actualSecurityToken)
-	assert.EqualError(t, actualError, expectedErrorMessage)
+	assert.EqualError(t, actualError, fmt.Sprintf("failed to renew security token: failed to refresh intermediate certificate: %s", expectedErrorMessage))
 }
 
 func TestX509FederationClient_RenewSecurityTokenUnexpectedTenancyIdUpdateError(t *testing.T) {
@@ -265,7 +265,7 @@ func TestX509FederationClient_RenewSecurityTokenUnexpectedTenancyIdUpdateError(t
 	actualSecurityToken, actualError := federationClient.SecurityToken()
 
 	assert.Empty(t, actualSecurityToken)
-	assert.EqualError(t, actualError, fmt.Sprintf("Unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", previousTenancyId, tenancyId))
+	assert.EqualError(t, actualError, fmt.Sprintf("failed to renew security token: unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", previousTenancyId, tenancyId))
 }
 
 func TestX509FederationClient_AuthServerInternalError(t *testing.T) {

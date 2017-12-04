@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"bytes"
 	"crypto/rsa"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/common"
@@ -34,10 +35,12 @@ type instancePrincipalKeyProvider struct {
 // The x509FederationClient caches the security token in memory until it is expired.  Thus, even if a client obtains a
 // KeyID that is not expired at the moment, the PrivateRSAKey that the client acquires at a next moment could be
 // invalid because the KeyID could be already expired.
-func NewInstancePrincipalKeyProvider() (provider *instancePrincipalKeyProvider, err error) {
-	region, err := getRegionForFederationClient(regionUrl)
-	if err != nil {
-		return
+func newInstancePrincipalKeyProvider() (provider *instancePrincipalKeyProvider, err error) {
+	var region common.Region
+	if region, err = getRegionForFederationClient(regionUrl); err != nil {
+		err = fmt.Errorf("failed to get the region name from %s: %s", regionUrl, err.Error())
+		common.Logln(err)
+		return nil, err
 	}
 
 	leafCertificateRetriever := newUrlBasedX509CertificateRetriever(
@@ -48,7 +51,8 @@ func NewInstancePrincipalKeyProvider() (provider *instancePrincipalKeyProvider, 
 	}
 
 	if err = leafCertificateRetriever.Refresh(); err != nil {
-		return
+		err = fmt.Errorf("failed to refresh the leaf certificate: %s", err.Error())
+		return nil, err
 	}
 	tenancyId := extractTenancyIdFromCertificate(leafCertificateRetriever.Certificate())
 
@@ -60,9 +64,8 @@ func NewInstancePrincipalKeyProvider() (provider *instancePrincipalKeyProvider, 
 }
 
 func getRegionForFederationClient(url string) (r common.Region, err error) {
-	body, err := httpGet(url)
-	if err != nil {
-		common.Logln(err)
+	var body bytes.Buffer
+	if body, err = httpGet(url); err != nil {
 		return
 	}
 	return common.StringToRegion(body.String())
@@ -72,15 +75,19 @@ func (p *instancePrincipalKeyProvider) RegionForFederationClient() common.Region
 	return p.regionForFederationClient
 }
 
-func (p *instancePrincipalKeyProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
-	return p.federationClient.PrivateKey()
+func (p *instancePrincipalKeyProvider) PrivateRSAKey() (privateKey *rsa.PrivateKey, err error) {
+	if privateKey, err = p.federationClient.PrivateKey(); err != nil {
+		err = fmt.Errorf("failed to get private key: %s", err.Error())
+		return nil, err
+	}
+	return privateKey, nil
 }
 
-func (p *instancePrincipalKeyProvider) KeyID() (keyID string, err error) {
+func (p *instancePrincipalKeyProvider) KeyID() (string, error) {
 	var securityToken string
+	var err error
 	if securityToken, err = p.federationClient.SecurityToken(); err != nil {
-		return
+		return "", fmt.Errorf("failed to get security token: %s", err.Error())
 	}
-	keyID = fmt.Sprintf("ST$%s", securityToken)
-	return
+	return fmt.Sprintf("ST$%s", securityToken), nil
 }
