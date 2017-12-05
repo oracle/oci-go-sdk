@@ -1,6 +1,6 @@
 DOC_SERVER_URL=http:\/\/lgl-bybliothece-01.virt.lgl.grungy.us
 TARGETS = common common/auth identity core objectstorage loadbalancer database
-TARGETS_WITH_TESTS = common integtest
+TARGETS_WITH_TESTS = common common/auth integtest
 TARGETS_BUILD = $(patsubst %,build-%, $(TARGETS))
 TARGETS_TEST = $(patsubst %,test-%, $(TARGETS_WITH_TESTS))
 

@@ -5,6 +5,7 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/pem"
+	"fmt"
 	"github.com/oracle/oci-go-sdk/common"
 	"sync"
 )
@@ -31,13 +32,12 @@ type urlBasedX509CertificateRetriever struct {
 }
 
 func newUrlBasedX509CertificateRetriever(certUrl, privateKeyUrl, passphrase string) x509CertificateRetriever {
-	retriever := &urlBasedX509CertificateRetriever{
+	return &urlBasedX509CertificateRetriever{
 		certUrl:       certUrl,
 		privateKeyUrl: privateKeyUrl,
 		passphrase:    passphrase,
 		mux:           sync.Mutex{},
 	}
-	return retriever
 }
 
 // Refresh() is failure atomic, i.e., CertificatePemRaw(), Certificate(), PrivateKeyPemRaw(), and PrivateKey() would
@@ -53,14 +53,14 @@ func (r *urlBasedX509CertificateRetriever) Refresh() error {
 	var certificatePemRaw []byte
 	var certificate *x509.Certificate
 	if certificatePemRaw, certificate, err = r.renewCertificate(r.certUrl); err != nil {
-		return err
+		return fmt.Errorf("failed to renew certificate: %s", err.Error())
 	}
 
 	var privateKeyPemRaw []byte
 	var privateKey *rsa.PrivateKey
 	if r.privateKeyUrl != "" {
 		if privateKeyPemRaw, privateKey, err = r.renewPrivateKey(r.privateKeyUrl, r.passphrase); err != nil {
-			return err
+			return fmt.Errorf("failed to renew private key: %s", err.Error())
 		}
 	}
 
@@ -74,16 +74,14 @@ func (r *urlBasedX509CertificateRetriever) Refresh() error {
 func (r *urlBasedX509CertificateRetriever) renewCertificate(url string) (certificatePemRaw []byte, certificate *x509.Certificate, err error) {
 	var body bytes.Buffer
 	if body, err = httpGet(url); err != nil {
-		common.Logln(err)
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("failed to get certificate from %s: %s", url, err.Error())
 	}
 
 	certificatePemRaw = body.Bytes()
 	var block *pem.Block
 	block, _ = pem.Decode(certificatePemRaw)
 	if certificate, err = x509.ParseCertificate(block.Bytes); err != nil {
-		common.Logln(err)
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("failed to parse the new certificate: %s", err.Error())
 	}
 
 	return certificatePemRaw, certificate, nil
@@ -92,14 +90,12 @@ func (r *urlBasedX509CertificateRetriever) renewCertificate(url string) (certifi
 func (r *urlBasedX509CertificateRetriever) renewPrivateKey(url, passphrase string) (privateKeyPemRaw []byte, privateKey *rsa.PrivateKey, err error) {
 	var body bytes.Buffer
 	if body, err = httpGet(url); err != nil {
-		common.Logln(err)
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("failed to get private key from %s: %s", url, err.Error())
 	}
 
 	privateKeyPemRaw = body.Bytes()
 	if privateKey, err = common.PrivateKeyFromBytes(privateKeyPemRaw, &passphrase); err != nil {
-		common.Logln(err)
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("failed to parse the new private key: %s", err.Error())
 	}
 
 	return privateKeyPemRaw, privateKey, nil
