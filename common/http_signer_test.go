@@ -68,7 +68,7 @@ type testKeyProvider struct{}
 
 func (kp testKeyProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
 	pass := ""
-	key, e := privateKeyFromBytes([]byte(testPrivateKey), &pass)
+	key, e := PrivateKeyFromBytes([]byte(testPrivateKey), &pass)
 	return key, e
 }
 
@@ -78,6 +78,10 @@ func (kp testKeyProvider) KeyID() (string, error) {
 }
 
 func TestOCIRequestSigner_SigningString(t *testing.T) {
+	s := ociRequestSigner{
+		KeyProvider:    testKeyProvider{},
+		GenericHeaders: defaultGenericHeaders,
+		BodyHeaders:    defaultBodyHeaders}
 	url, _ := url.Parse(testURL)
 	r := http.Request{
 		Proto:      "HTTP/1.1",
@@ -88,13 +92,16 @@ func TestOCIRequestSigner_SigningString(t *testing.T) {
 	}
 	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
 	r.Method = http.MethodGet
-	signature := getSigningString(&r)
+	signature := s.getSigningString(&r)
 
 	assert.Equal(t, expectedSigningString, signature)
 }
 
 func TestOCIRequestSigner_ComputeSignature(t *testing.T) {
-	s := ociRequestSigner{KeyProvider: testKeyProvider{}}
+	s := ociRequestSigner{
+		KeyProvider:    testKeyProvider{},
+		GenericHeaders: defaultGenericHeaders,
+		BodyHeaders:    defaultBodyHeaders}
 	url, _ := url.Parse(testURL)
 	r := http.Request{
 		Proto:      "HTTP/1.1",
@@ -112,7 +119,10 @@ func TestOCIRequestSigner_ComputeSignature(t *testing.T) {
 }
 
 func TestOCIRequestSigner_Sign(t *testing.T) {
-	s := ociRequestSigner{KeyProvider: testKeyProvider{}}
+	s := ociRequestSigner{
+		KeyProvider:    testKeyProvider{},
+		GenericHeaders: defaultGenericHeaders,
+		BodyHeaders:    defaultBodyHeaders}
 	url, _ := url.Parse(testURL)
 	r := http.Request{
 		Proto:      "HTTP/1.1",
@@ -137,6 +147,10 @@ DUhxkFIWtTtLBj3sUzaFj34XE6YZAHc9r2DmE4pMwOAy/kiITcZxa1oHPOeRheC0jP2dqbTll
 }
 
 func TestOCIRequestSigner_SignString2(t *testing.T) {
+	s := ociRequestSigner{
+		KeyProvider:    testKeyProvider{},
+		GenericHeaders: defaultGenericHeaders,
+		BodyHeaders:    defaultBodyHeaders}
 	u, _ := url.Parse(testURL2)
 	r := http.Request{
 		Proto:      "HTTP/1.1",
@@ -153,14 +167,17 @@ func TestOCIRequestSigner_SignString2(t *testing.T) {
 	r.Header.Set("Content-Length", strconv.FormatInt(r.ContentLength, 10))
 	r.Method = http.MethodPost
 	calculateHashOfBody(&r)
-	signingString := getSigningString(&r)
+	signingString := s.getSigningString(&r)
 
 	assert.Equal(t, r.ContentLength, int64(316))
 	assert.Equal(t, expectedSigningString2, signingString)
 }
 
 func TestOCIRequestSigner_ComputeSignature2(t *testing.T) {
-	s := ociRequestSigner{KeyProvider: testKeyProvider{}}
+	s := ociRequestSigner{
+		KeyProvider:    testKeyProvider{},
+		GenericHeaders: defaultGenericHeaders,
+		BodyHeaders:    defaultBodyHeaders}
 	u, _ := url.Parse(testURL2)
 	r := http.Request{
 		Proto:      "HTTP/1.1",
@@ -185,7 +202,10 @@ func TestOCIRequestSigner_ComputeSignature2(t *testing.T) {
 }
 
 func TestOCIRequestSigner_Sign2(t *testing.T) {
-	s := ociRequestSigner{KeyProvider: testKeyProvider{}}
+	s := ociRequestSigner{
+		KeyProvider:    testKeyProvider{},
+		GenericHeaders: defaultGenericHeaders,
+		BodyHeaders:    defaultBodyHeaders}
 	u, _ := url.Parse(testURL2)
 	r := http.Request{
 		Proto:      "HTTP/1.1",

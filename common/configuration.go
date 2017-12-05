@@ -2,8 +2,6 @@ package common
 
 import (
 	"crypto/rsa"
-	"crypto/x509"
-	"encoding/pem"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -41,7 +39,7 @@ func IsConfigurationProviderValid(conf ConfigurationProvider) (ok bool, err erro
 }
 
 // environmentConfigurationProvider reads configuration from environment variables
-type environmentConfigurationProvider struct {
+type environmentConfigurationProvider struct { // TODO: Support Instance Principal
 	PrivateKeyPassword        string
 	EnvironmentVariablePrefix string
 }
@@ -58,30 +56,6 @@ func (p environmentConfigurationProvider) String() string {
 	return fmt.Sprintf("Configuration provided by environment variables prefixed with: %s", p.EnvironmentVariablePrefix)
 }
 
-// PrivateKeyFromBytes is a helper function that will produce a RSA private
-// key from bytes.
-func privateKeyFromBytes(pemData []byte, password *string) (key *rsa.PrivateKey, e error) {
-	if pemBlock, _ := pem.Decode(pemData); pemBlock != nil {
-		decrypted := pemBlock.Bytes
-		if x509.IsEncryptedPEMBlock(pemBlock) {
-			if password == nil {
-				e = fmt.Errorf("private_key_password is required for encrypted private keys")
-				return
-			}
-			if decrypted, e = x509.DecryptPEMBlock(pemBlock, []byte(*password)); e != nil {
-				return
-			}
-		}
-
-		key, e = x509.ParsePKCS1PrivateKey(decrypted)
-
-	} else {
-		e = fmt.Errorf("PEM data was not found in buffer")
-		return
-	}
-	return
-}
-
 func (p environmentConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, err error) {
 	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "private_key_path")
 	var ok bool
@@ -96,7 +70,7 @@ func (p environmentConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, 
 		return
 	}
 
-	key, err = privateKeyFromBytes(pemFileContent, &p.PrivateKeyPassword)
+	key, err = PrivateKeyFromBytes(pemFileContent, &p.PrivateKeyPassword)
 	return
 }
 
@@ -159,7 +133,7 @@ var configurationFileInfo *configFileInfo
 
 // fileConfigurationProvider reads configuration information from a file
 // Does not support multiple profiles
-type fileConfigurationProvider struct {
+type fileConfigurationProvider struct { // TODO: Support Instance Principal
 	//The path to the configuration file
 	ConfigPath string
 
@@ -325,7 +299,7 @@ func (p fileConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, err err
 		return
 	}
 
-	key, err = privateKeyFromBytes(pemFileContent, &p.PrivateKeyPassword)
+	key, err = PrivateKeyFromBytes(pemFileContent, &p.PrivateKeyPassword)
 	return
 }
 
