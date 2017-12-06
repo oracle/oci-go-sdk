@@ -18,7 +18,7 @@ type CreateRouteTableDetails struct {
 	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The collection of rules used for routing destination IPs to network devices.
-	RouteRules *[]RouteRule `mandatory:"true" json:"routeRules,omitempty"`
+	RouteRules []RouteRule `mandatory:"true" json:"routeRules,omitempty"`
 
 	// The OCID of the VCN the route table belongs to.
 	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`

@@ -25,7 +25,7 @@ type UpdateVirtualCircuitDetails struct {
 	// The customer and provider can update different properties in the mapping
 	// depending on the situation. See the description of the
 	// CrossConnectMapping.
-	CrossConnectMappings *[]CrossConnectMapping `mandatory:"false" json:"crossConnectMappings,omitempty"`
+	CrossConnectMappings []CrossConnectMapping `mandatory:"false" json:"crossConnectMappings,omitempty"`
 
 	// The BGP ASN of the network at the other end of the BGP
 	// session from Oracle.

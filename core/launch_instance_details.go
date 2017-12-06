@@ -41,7 +41,7 @@ type LaunchInstanceDetails struct {
 	// Additional metadata key/value pairs that you provide.  They serve a similar purpose and functionality from fields in the 'metadata' object.
 	// They are distinguished from 'metadata' fields in that these can be nested JSON objects (whereas 'metadata' fields are string/string maps only).
 	// If you don't need nested metadata values, it is strongly advised to avoid using this object and use the Metadata object instead.
-	ExtendedMetadata *map[string]interface{} `mandatory:"false" json:"extendedMetadata,omitempty"`
+	ExtendedMetadata map[string]interface{} `mandatory:"false" json:"extendedMetadata,omitempty"`
 
 	// Deprecated. Instead use `hostnameLabel` in
 	// CreateVnicDetails.
@@ -112,7 +112,7 @@ type LaunchInstanceDetails struct {
 	//      curl http://169.254.169.254/opc/v1/instance/metadata/<any-key-name>
 	//  You'll get back a response that includes all the instance information; only the metadata information; or
 	//  the metadata information for the specified key name, respectively.
-	Metadata *map[string]string `mandatory:"false" json:"metadata,omitempty"`
+	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
 
 	// Deprecated. Instead use `subnetId` in
 	// CreateVnicDetails.

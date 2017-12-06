@@ -19,7 +19,7 @@ type UpdateRouteTableDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
 	// The collection of rules used for routing destination IPs to network devices.
-	RouteRules *[]RouteRule `mandatory:"false" json:"routeRules,omitempty"`
+	RouteRules []RouteRule `mandatory:"false" json:"routeRules,omitempty"`
 }
 
 func (model UpdateRouteTableDetails) String() string {

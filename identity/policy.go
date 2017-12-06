@@ -35,7 +35,7 @@ type Policy struct {
 	Name *string `mandatory:"true" json:"name,omitempty"`
 
 	// An array of one or more policy statements written in the policy language.
-	Statements *[]string `mandatory:"true" json:"statements,omitempty"`
+	Statements []string `mandatory:"true" json:"statements,omitempty"`
 
 	// The description you assign to the policy. Does not have to be unique, and it's changeable.
 	Description *string `mandatory:"true" json:"description,omitempty"`

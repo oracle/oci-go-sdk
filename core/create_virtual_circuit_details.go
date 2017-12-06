@@ -35,7 +35,7 @@ type CreateVirtualCircuitDetails struct {
 
 	// Create a `CrossConnectMapping` for each cross-connect or cross-connect
 	// group this virtual circuit will run on.
-	CrossConnectMappings *[]CrossConnectMapping `mandatory:"false" json:"crossConnectMappings,omitempty"`
+	CrossConnectMappings []CrossConnectMapping `mandatory:"false" json:"crossConnectMappings,omitempty"`
 
 	// Your BGP ASN (either public or private). Provide this value only if
 	// there's a BGP session that goes from your edge router to Oracle.

@@ -67,7 +67,7 @@ type CreateSubnetDetails struct {
 	// provide a value, the VCN's default security list will be associated with
 	// the subnet. Remember that security lists are associated at the subnet
 	// level, but the rules are applied to the individual VNICs in the subnet.
-	SecurityListIds *[]string `mandatory:"false" json:"securityListIds,omitempty"`
+	SecurityListIds []string `mandatory:"false" json:"securityListIds,omitempty"`
 }
 
 func (model CreateSubnetDetails) String() string {

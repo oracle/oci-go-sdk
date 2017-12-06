@@ -33,13 +33,13 @@ type SecurityList struct {
 	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
 
 	// Rules for allowing egress IP packets.
-	EgressSecurityRules *[]EgressSecurityRule `mandatory:"true" json:"egressSecurityRules,omitempty"`
+	EgressSecurityRules []EgressSecurityRule `mandatory:"true" json:"egressSecurityRules,omitempty"`
 
 	// The security list's Oracle Cloud ID (OCID).
 	ID *string `mandatory:"true" json:"id,omitempty"`
 
 	// Rules for allowing ingress IP packets.
-	IngressSecurityRules *[]IngressSecurityRule `mandatory:"true" json:"ingressSecurityRules,omitempty"`
+	IngressSecurityRules []IngressSecurityRule `mandatory:"true" json:"ingressSecurityRules,omitempty"`
 
 	// The security list's current state.
 	LifecycleState SecurityListLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`

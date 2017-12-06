@@ -46,7 +46,7 @@ type VirtualCircuit struct {
 	// An array of mappings, each containing properties for a
 	// cross-connect or cross-connect group that is associated with this
 	// virtual circuit.
-	CrossConnectMappings *[]CrossConnectMapping `mandatory:"false" json:"crossConnectMappings,omitempty"`
+	CrossConnectMappings []CrossConnectMapping `mandatory:"false" json:"crossConnectMappings,omitempty"`
 
 	// The BGP ASN of the network at the other end of the BGP
 	// session from Oracle. If the session is between the customer's

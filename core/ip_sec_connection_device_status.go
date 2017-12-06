@@ -26,7 +26,7 @@ type IpSecConnectionDeviceStatus struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 
 	// Two TunnelStatus objects.
-	Tunnels *[]TunnelStatus `mandatory:"false" json:"tunnels,omitempty"`
+	Tunnels []TunnelStatus `mandatory:"false" json:"tunnels,omitempty"`
 }
 
 func (model IpSecConnectionDeviceStatus) String() string {
