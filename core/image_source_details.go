@@ -17,15 +17,27 @@ type ImageSourceDetails interface {
 }
 
 type imagesourcedetails struct {
+	JsonData   []byte
 	SourceType string `json:"sourceType"`
 }
 
-func (m *imagesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	err := json.Unmarshal(data, m)
+func (m *imagesourcedetails) UnmarshalJSON(data []byte) error {
+	m.JsonData = data
+	type Unmarshalerimagesourcedetails imagesourcedetails
+	s := struct {
+		Model Unmarshalerimagesourcedetails
+	}{}
+	err := json.Unmarshal(data, &s.Model)
 	if err != nil {
-		return nil, err
+		return err
 	}
+	m.SourceType = s.Model.SourceType
 
+	return err
+}
+
+func (m *imagesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	var err error
 	switch m.SourceType {
 	case "objectStorageTuple":
 		mm := ImageSourceViaObjectStorageTupleDetails{}

@@ -9,6 +9,7 @@
 package core
 
 import (
+	"encoding/json"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
@@ -25,7 +26,7 @@ type CreateImageDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
 	// Details for creating an image through import
-	ImageSourceDetails *ImageSourceDetails `mandatory:"false" json:"imageSourceDetails,omitempty"`
+	ImageSourceDetails ImageSourceDetails `mandatory:"false" json:"imageSourceDetails,omitempty"`
 
 	// The OCID of the instance you want to use as the basis for the image.
 	InstanceID *string `mandatory:"false" json:"instanceId,omitempty"`
@@ -33,4 +34,27 @@ type CreateImageDetails struct {
 
 func (model CreateImageDetails) String() string {
 	return common.PointerString(model)
+}
+
+func (model *CreateImageDetails) UnmarshalJSON(data []byte) (e error) {
+	m := struct {
+		DisplayName        *string            `mandatory:"true" json:"displayName,omitempty"`
+		ImageSourceDetails imagesourcedetails `mandatory:"true" json:"imageSourceDetails,omitempty"`
+		InstanceID         *string            `mandatory:"true" json:"instanceId,omitempty"`
+		CompartmentID      *string            `mandatory:"true" json:"compartmentId,omitempty"`
+	}{}
+
+	e = json.Unmarshal(data, &m)
+	if e != nil {
+		return
+	}
+	model.DisplayName = m.DisplayName
+	nn, e := m.ImageSourceDetails.UnmarshalPolymorphicJSON(m.ImageSourceDetails.JsonData)
+	if e != nil {
+		return
+	}
+	model.ImageSourceDetails = nn
+	model.InstanceID = m.InstanceID
+	model.CompartmentID = m.CompartmentID
+	return
 }

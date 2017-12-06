@@ -22,15 +22,27 @@ type DhcpOption interface {
 }
 
 type dhcpoption struct {
-	Type string `json:"type"`
+	JsonData []byte
+	Type     string `json:"type"`
+}
+
+func (m *dhcpoption) UnmarshalJSON(data []byte) error {
+	m.JsonData = data
+	type Unmarshalerdhcpoption dhcpoption
+	s := struct {
+		Model Unmarshalerdhcpoption
+	}{}
+	err := json.Unmarshal(data, &s.Model)
+	if err != nil {
+		return err
+	}
+	m.Type = s.Model.Type
+
+	return err
 }
 
 func (m *dhcpoption) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	err := json.Unmarshal(data, m)
-	if err != nil {
-		return nil, err
-	}
-
+	var err error
 	switch m.Type {
 	case "DomainNameServer":
 		mm := DhcpDnsOption{}

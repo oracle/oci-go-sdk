@@ -9,6 +9,7 @@
 package core
 
 import (
+	"encoding/json"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
@@ -35,7 +36,7 @@ type DhcpOptions struct {
 	LifecycleState DhcpOptionsLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The collection of individual DHCP options.
-	Options *[]DhcpOption `mandatory:"true" json:"options,omitempty"`
+	Options []DhcpOption `mandatory:"true" json:"options,omitempty"`
 
 	// Date and time the set of DHCP options was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
@@ -51,6 +52,38 @@ type DhcpOptions struct {
 
 func (model DhcpOptions) String() string {
 	return common.PointerString(model)
+}
+
+func (model *DhcpOptions) UnmarshalJSON(data []byte) (e error) {
+	m := struct {
+		DisplayName    *string                       `mandatory:"true" json:"displayName,omitempty"`
+		CompartmentID  *string                       `mandatory:"true" json:"compartmentId,omitempty"`
+		ID             *string                       `mandatory:"true" json:"id,omitempty"`
+		LifecycleState DhcpOptionsLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+		Options        []dhcpoption                  `mandatory:"true" json:"options,omitempty"`
+		TimeCreated    *common.SDKTime               `mandatory:"true" json:"timeCreated,omitempty"`
+		VcnID          *string                       `mandatory:"true" json:"vcnId,omitempty"`
+	}{}
+
+	e = json.Unmarshal(data, &m)
+	if e != nil {
+		return
+	}
+	model.DisplayName = m.DisplayName
+	model.CompartmentID = m.CompartmentID
+	model.ID = m.ID
+	model.LifecycleState = m.LifecycleState
+	model.Options = make([]DhcpOption, len(m.Options))
+	for i, n := range m.Options {
+		nn, err := n.UnmarshalPolymorphicJSON(n.JsonData)
+		if err != nil {
+			return err
+		}
+		model.Options[i] = nn
+	}
+	model.TimeCreated = m.TimeCreated
+	model.VcnID = m.VcnID
+	return
 }
 
 type DhcpOptionsLifecycleStateEnum string

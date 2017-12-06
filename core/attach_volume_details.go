@@ -26,18 +26,33 @@ type AttachVolumeDetails interface {
 }
 
 type attachvolumedetails struct {
+	JsonData    []byte
 	InstanceID  *string `mandatory:"true" json:"instanceId,omitempty"`
 	VolumeID    *string `mandatory:"true" json:"volumeId,omitempty"`
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 	Type        string  `json:"type"`
 }
 
-func (m *attachvolumedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	err := json.Unmarshal(data, m)
+func (m *attachvolumedetails) UnmarshalJSON(data []byte) error {
+	m.JsonData = data
+	type Unmarshalerattachvolumedetails attachvolumedetails
+	s := struct {
+		Model Unmarshalerattachvolumedetails
+	}{}
+	err := json.Unmarshal(data, &s.Model)
 	if err != nil {
-		return nil, err
+		return err
 	}
+	m.InstanceID = s.Model.InstanceID
+	m.VolumeID = s.Model.VolumeID
+	m.DisplayName = s.Model.DisplayName
+	m.Type = s.Model.Type
 
+	return err
+}
+
+func (m *attachvolumedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	var err error
 	switch m.Type {
 	case "iscsi":
 		mm := AttachIScsiVolumeDetails{}
