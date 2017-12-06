@@ -19,10 +19,10 @@ type UpdateSecurityListDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
 	// Rules for allowing egress IP packets.
-	EgressSecurityRules *[]EgressSecurityRule `mandatory:"false" json:"egressSecurityRules,omitempty"`
+	EgressSecurityRules []EgressSecurityRule `mandatory:"false" json:"egressSecurityRules,omitempty"`
 
 	// Rules for allowing ingress IP packets.
-	IngressSecurityRules *[]IngressSecurityRule `mandatory:"false" json:"ingressSecurityRules,omitempty"`
+	IngressSecurityRules []IngressSecurityRule `mandatory:"false" json:"ingressSecurityRules,omitempty"`
 }
 
 func (model UpdateSecurityListDetails) String() string {

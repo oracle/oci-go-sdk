@@ -85,7 +85,7 @@ type Subnet struct {
 	ProhibitPublicIpOnVnic *bool `mandatory:"false" json:"prohibitPublicIpOnVnic,omitempty"`
 
 	// OCIDs for the security lists to use for VNICs in this subnet.
-	SecurityListIds *[]string `mandatory:"false" json:"securityListIds,omitempty"`
+	SecurityListIds []string `mandatory:"false" json:"securityListIds,omitempty"`
 
 	// The subnet's domain name, which consists of the subnet's DNS label,
 	// the VCN's DNS label, and the `oraclevcn.com` domain.

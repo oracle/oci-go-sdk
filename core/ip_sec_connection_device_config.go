@@ -25,7 +25,7 @@ type IpSecConnectionDeviceConfig struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 
 	// Two TunnelConfig objects.
-	Tunnels *[]TunnelConfig `mandatory:"false" json:"tunnels,omitempty"`
+	Tunnels []TunnelConfig `mandatory:"false" json:"tunnels,omitempty"`
 }
 
 func (model IpSecConnectionDeviceConfig) String() string {

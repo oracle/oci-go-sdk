@@ -30,7 +30,7 @@ type RouteTable struct {
 	LifecycleState RouteTableLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The collection of rules for routing destination IPs to network devices.
-	RouteRules *[]RouteRule `mandatory:"true" json:"routeRules,omitempty"`
+	RouteRules []RouteRule `mandatory:"true" json:"routeRules,omitempty"`
 
 	// The OCID of the VCN the route table list belongs to.
 	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`

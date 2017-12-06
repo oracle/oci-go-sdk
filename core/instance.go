@@ -55,7 +55,7 @@ type Instance struct {
 	// Additional metadata key/value pairs that you provide.  They serve a similar purpose and functionality from fields in the 'metadata' object.
 	// They are distinguished from 'metadata' fields in that these can be nested JSON objects (whereas 'metadata' fields are string/string maps only).
 	// If you don't need nested metadata values, it is strongly advised to avoid using this object and use the Metadata object instead.
-	ExtendedMetadata *map[string]interface{} `mandatory:"false" json:"extendedMetadata,omitempty"`
+	ExtendedMetadata map[string]interface{} `mandatory:"false" json:"extendedMetadata,omitempty"`
 
 	// The image used to boot the instance. You can enumerate all available images by calling
 	// ListImages.
@@ -82,7 +82,7 @@ type Instance struct {
 	IpxeScript *string `mandatory:"false" json:"ipxeScript,omitempty"`
 
 	// Custom metadata that you provide.
-	Metadata *map[string]string `mandatory:"false" json:"metadata,omitempty"`
+	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
 }
 
 func (model Instance) String() string {

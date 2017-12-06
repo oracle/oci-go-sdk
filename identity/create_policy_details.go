@@ -24,7 +24,7 @@ type CreatePolicyDetails struct {
 	// An array of policy statements written in the policy language. See
 	// [How Policies Work]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policies.htm) and
 	// [Common Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/commonpolicies.htm).
-	Statements *[]string `mandatory:"true" json:"statements,omitempty"`
+	Statements []string `mandatory:"true" json:"statements,omitempty"`
 
 	// The description you assign to the policy during creation. Does not have to be unique, and it's changeable.
 	Description *string `mandatory:"true" json:"description,omitempty"`

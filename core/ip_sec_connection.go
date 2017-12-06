@@ -39,7 +39,7 @@ type IpSecConnection struct {
 	// Static routes to the CPE. At least one route must be included. The CIDR must not be a
 	// multicast address or class E address.
 	// Example: `10.0.1.0/24`
-	StaticRoutes *[]string `mandatory:"true" json:"staticRoutes,omitempty"`
+	StaticRoutes []string `mandatory:"true" json:"staticRoutes,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
