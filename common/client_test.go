@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"net/url"
 	"testing"
+	"os"
 )
 
 func TestClient_prepareRequestDefScheme(t *testing.T) {
@@ -258,4 +259,10 @@ region=noregion
 
 	_, err := NewClientWithConfig(configurationProvider)
 	assert.Error(t, err)
+}
+
+func TestHomeDir(t *testing.T){
+	h := getHomeFolder()
+	_, e := os.Stat(h)
+	assert.NoError(t, e)
 }
