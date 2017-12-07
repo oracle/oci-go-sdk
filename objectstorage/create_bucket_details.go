@@ -25,7 +25,7 @@ type CreateBucketDetails struct {
 	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// Arbitrary string, up to 4KB, of keys and values for user-defined metadata.
-	Metadata *map[string]string `mandatory:"false" json:"metadata,omitempty"`
+	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
 
 	// The type of public access available on this bucket. Allows authenticated caller to access the bucket or
 	// contents of this bucket. By default a bucket is set to NoPublicAccess. It is treated as NoPublicAccess

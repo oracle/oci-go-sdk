@@ -59,7 +59,7 @@ type HeadObjectResponse struct {
 	OpcMeta_ *string `presentIn:"header" name:"opc-meta-*"`
 
 	// The object size in bytes.
-	ContentLength *int64 `presentIn:"header" name:"content-length"`
+	ContentLength *int `presentIn:"header" name:"content-length"`
 
 	// Content-MD5 header, as described in [RFC 2616](https://tools.ietf.org/rfc/rfc2616), section 14.15.
 	// Unavailable for objects uploaded using multipart upload.

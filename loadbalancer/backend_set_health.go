@@ -20,7 +20,7 @@ type BackendSetHealth struct {
 	// A list of backend servers that are currently in the `CRITICAL` health state. The list identifies each backend server by
 	// IP address and port.
 	// Example: `1.1.1.1:80`
-	CriticalStateBackendNames *[]string `mandatory:"true" json:"criticalStateBackendNames,omitempty"`
+	CriticalStateBackendNames []string `mandatory:"true" json:"criticalStateBackendNames,omitempty"`
 
 	// Overall health status of the backend set.
 	// *  **OK:** All backend servers in the backend set return a status of `OK`.
@@ -38,12 +38,12 @@ type BackendSetHealth struct {
 	// A list of backend servers that are currently in the `UNKNOWN` health state. The list identifies each backend server by
 	// IP address and port.
 	// Example: `1.1.1.5:80`
-	UnknownStateBackendNames *[]string `mandatory:"true" json:"unknownStateBackendNames,omitempty"`
+	UnknownStateBackendNames []string `mandatory:"true" json:"unknownStateBackendNames,omitempty"`
 
 	// A list of backend servers that are currently in the `WARNING` health state. The list identifies each backend server by
 	// IP address and port.
 	// Example: `1.1.1.7:42`
-	WarningStateBackendNames *[]string `mandatory:"true" json:"warningStateBackendNames,omitempty"`
+	WarningStateBackendNames []string `mandatory:"true" json:"warningStateBackendNames,omitempty"`
 }
 
 func (model BackendSetHealth) String() string {

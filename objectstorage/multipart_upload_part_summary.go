@@ -24,7 +24,7 @@ type MultipartUploadPartSummary struct {
 	Md5 *string `mandatory:"true" json:"md5,omitempty"`
 
 	// the size of the part in bytes.
-	Size *int64 `mandatory:"true" json:"size,omitempty"`
+	Size *int `mandatory:"true" json:"size,omitempty"`
 
 	// the part number for this part.
 	PartNumber *int `mandatory:"true" json:"partNumber,omitempty"`

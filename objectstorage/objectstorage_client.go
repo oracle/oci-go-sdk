@@ -19,9 +19,28 @@ type ObjectStorageClient struct {
 	common.BaseClient
 }
 
-//Create a new default ObjectStorage client for a given region
+// Create a new default ObjectStorage client for a given region and default configuration provider
 func NewObjectStorageClientForRegion(region common.Region) (client ObjectStorageClient) {
 	client = ObjectStorageClient{BaseClient: common.NewClientForRegion(region)}
+
+	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "objectstorage", string(region))
+	client.BasePath = "20160918"
+	return
+}
+
+// Create a new default ObjectStorage client with the given configuration provider.
+// the configuration provider will be used for the default signer as well as reading the region
+func NewObjectStorageClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ObjectStorageClient, err error) {
+	baseClient, err := common.NewClientWithConfig(configProvider)
+	if err != nil {
+		return
+	}
+
+	client = ObjectStorageClient{BaseClient: baseClient}
+	region, err := configProvider.Region()
+	if err != nil {
+		return
+	}
 
 	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "objectstorage", string(region))
 	client.BasePath = "20160918"

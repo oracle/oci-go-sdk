@@ -27,7 +27,7 @@ type Bucket struct {
 	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// Arbitrary string keys and values for user-defined metadata.
-	Metadata *map[string]string `mandatory:"true" json:"metadata,omitempty"`
+	Metadata map[string]string `mandatory:"true" json:"metadata,omitempty"`
 
 	// The OCID of the user who created the bucket.
 	CreatedBy *string `mandatory:"true" json:"createdBy,omitempty"`

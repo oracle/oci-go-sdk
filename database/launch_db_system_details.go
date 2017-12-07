@@ -46,7 +46,7 @@ type LaunchDbSystemDetails struct {
 	Shape *string `mandatory:"true" json:"shape,omitempty"`
 
 	// The public key portion of the key pair to use for SSH access to the DB System. Multiple public keys can be provided. The length of the combined keys cannot exceed 10,000 characters.
-	SshPublicKeys *[]string `mandatory:"true" json:"sshPublicKeys,omitempty"`
+	SshPublicKeys []string `mandatory:"true" json:"sshPublicKeys,omitempty"`
 
 	// The OCID of the subnet the DB System is associated with.
 	// **Subnet Restrictions:**
