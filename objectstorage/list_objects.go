@@ -18,10 +18,10 @@ import (
 type ListObjects struct {
 
 	// An array of object summaries.
-	Objects *[]ObjectSummary `mandatory:"true" json:"objects,omitempty"`
+	Objects []ObjectSummary `mandatory:"true" json:"objects,omitempty"`
 
 	// Prefixes that are common to the results returned by the request if the request specified a delimiter.
-	Prefixes *[]string `mandatory:"false" json:"prefixes,omitempty"`
+	Prefixes []string `mandatory:"false" json:"prefixes,omitempty"`
 
 	// The name of the object to use in the 'startWith' parameter to obtain the next page of
 	// a truncated ListObjects response.

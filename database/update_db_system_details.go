@@ -22,7 +22,7 @@ type UpdateDbSystemDetails struct {
 	DataStorageSizeInGBs *int `mandatory:"false" json:"dataStorageSizeInGBs,omitempty"`
 
 	// The public key portion of the key pair to use for SSH access to the DB System. Multiple public keys can be provided. The length of the combined keys cannot exceed 10,000 characters.
-	SshPublicKeys *[]string `mandatory:"false" json:"sshPublicKeys,omitempty"`
+	SshPublicKeys []string `mandatory:"false" json:"sshPublicKeys,omitempty"`
 
 	Version *PatchDetails `mandatory:"false" json:"version,omitempty"`
 }

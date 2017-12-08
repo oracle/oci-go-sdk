@@ -56,7 +56,7 @@ type DbSystem struct {
 	Shape *string `mandatory:"true" json:"shape,omitempty"`
 
 	// The public key portion of one or more key pairs used for SSH access to the DB System.
-	SshPublicKeys *[]string `mandatory:"true" json:"sshPublicKeys,omitempty"`
+	SshPublicKeys []string `mandatory:"true" json:"sshPublicKeys,omitempty"`
 
 	// The OCID of the subnet the DB System is associated with.
 	// **Subnet Restrictions:**
@@ -112,7 +112,7 @@ type DbSystem struct {
 	// SCAN IP addresses are typically used for load balancing and are not assigned to any interface.
 	// Clusterware directs the requests to the appropriate nodes in the cluster.
 	// - For a single-node DB System, this list is empty.
-	ScanIpIds *[]string `mandatory:"false" json:"scanIpIds,omitempty"`
+	ScanIpIds []string `mandatory:"false" json:"scanIpIds,omitempty"`
 
 	// The date and time the DB System was created.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
@@ -124,7 +124,7 @@ type DbSystem struct {
 	// The Cluster Ready Services (CRS) creates and maintains one VIP address for each node in the DB System to
 	// enable failover. If one node fails, the VIP is reassigned to another active node in the cluster.
 	// - For a single-node DB System, this list is empty.
-	VipIds *[]string `mandatory:"false" json:"vipIds,omitempty"`
+	VipIds []string `mandatory:"false" json:"vipIds,omitempty"`
 }
 
 func (model DbSystem) String() string {

@@ -9,47 +9,66 @@
 package database
 
 import (
+	"encoding/json"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-type CreateDbHomeWithDbSystemIdBase struct {
+type CreateDbHomeWithDbSystemIdBase interface {
 
 	// The OCID of the DB System.
-	DbSystemID *string `mandatory:"true" json:"dbSystemId,omitempty"`
+	GetDbSystemID() *string
 
 	// The user-provided name of the database home.
+	GetDisplayName() *string
+}
+
+type createdbhomewithdbsystemidbase struct {
+	JsonData    []byte
+	DbSystemID  *string `mandatory:"true" json:"dbSystemId,omitempty"`
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
-
-	// Source of database:
-	//   NONE for creating a new database
-	//   DB_BACKUP for creating a new database by restoring a backup
-	Source CreateDbHomeWithDbSystemIdBaseSourceEnum `mandatory:"false" json:"source,omitempty"`
+	Source      string  `json:"source"`
 }
 
-func (model CreateDbHomeWithDbSystemIdBase) String() string {
-	return common.PointerString(model)
-}
-
-type CreateDbHomeWithDbSystemIdBaseSourceEnum string
-
-const (
-	CREATE_DB_HOME_WITH_DB_SYSTEM_ID_BASE_SOURCE_NONE      CreateDbHomeWithDbSystemIdBaseSourceEnum = "NONE"
-	CREATE_DB_HOME_WITH_DB_SYSTEM_ID_BASE_SOURCE_DB_BACKUP CreateDbHomeWithDbSystemIdBaseSourceEnum = "DB_BACKUP"
-	CREATE_DB_HOME_WITH_DB_SYSTEM_ID_BASE_SOURCE_UNKNOWN   CreateDbHomeWithDbSystemIdBaseSourceEnum = "UNKNOWN"
-)
-
-var mapping_createdbhomewithdbsystemidbase_source = map[string]CreateDbHomeWithDbSystemIdBaseSourceEnum{
-	"NONE":      CREATE_DB_HOME_WITH_DB_SYSTEM_ID_BASE_SOURCE_NONE,
-	"DB_BACKUP": CREATE_DB_HOME_WITH_DB_SYSTEM_ID_BASE_SOURCE_DB_BACKUP,
-	"UNKNOWN":   CREATE_DB_HOME_WITH_DB_SYSTEM_ID_BASE_SOURCE_UNKNOWN,
-}
-
-func GetCreateDbHomeWithDbSystemIdBaseSourceEnumValues() []CreateDbHomeWithDbSystemIdBaseSourceEnum {
-	values := make([]CreateDbHomeWithDbSystemIdBaseSourceEnum, 0)
-	for _, v := range mapping_createdbhomewithdbsystemidbase_source {
-		if v != CREATE_DB_HOME_WITH_DB_SYSTEM_ID_BASE_SOURCE_UNKNOWN {
-			values = append(values, v)
-		}
+func (m *createdbhomewithdbsystemidbase) UnmarshalJSON(data []byte) error {
+	m.JsonData = data
+	type Unmarshalercreatedbhomewithdbsystemidbase createdbhomewithdbsystemidbase
+	s := struct {
+		Model Unmarshalercreatedbhomewithdbsystemidbase
+	}{}
+	err := json.Unmarshal(data, &s.Model)
+	if err != nil {
+		return err
 	}
-	return values
+	m.DbSystemID = s.Model.DbSystemID
+	m.DisplayName = s.Model.DisplayName
+	m.Source = s.Model.Source
+
+	return err
+}
+
+func (m *createdbhomewithdbsystemidbase) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	var err error
+	switch m.Source {
+	case "DB_BACKUP":
+		mm := CreateDbHomeWithDbSystemIdFromBackupDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "NONE":
+		mm := CreateDbHomeWithDbSystemIdDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	default:
+		return m, nil
+	}
+}
+
+func (m createdbhomewithdbsystemidbase) GetDbSystemID() *string {
+	return m.DbSystemID
+}
+func (m createdbhomewithdbsystemidbase) GetDisplayName() *string {
+	return m.DisplayName
+}
+
+func (model createdbhomewithdbsystemidbase) String() string {
+	return common.PointerString(model)
 }

@@ -31,7 +31,7 @@ type CreateMultipartUploadDetails struct {
 
 	// Arbitrary string keys and values for the user-defined metadata for the object.
 	// Keys must be in "opc-meta-*" format.
-	Metadata *map[string]string `mandatory:"false" json:"metadata,omitempty"`
+	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
 }
 
 func (model CreateMultipartUploadDetails) String() string {

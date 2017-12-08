@@ -20,7 +20,7 @@ type LoadBalancerHealth struct {
 	// A list of backend sets that are currently in the `CRITICAL` health state. The list identifies each backend set by the
 	// friendly name you assigned when you created it.
 	// Example: `My_backend_set`
-	CriticalStateBackendSetNames *[]string `mandatory:"true" json:"criticalStateBackendSetNames,omitempty"`
+	CriticalStateBackendSetNames []string `mandatory:"true" json:"criticalStateBackendSetNames,omitempty"`
 
 	// The overall health status of the load balancer.
 	// *  **OK:** All backend sets associated with the load balancer return a status of `OK`.
@@ -42,12 +42,12 @@ type LoadBalancerHealth struct {
 	// A list of backend sets that are currently in the `UNKNOWN` health state. The list identifies each backend set by the
 	// friendly name you assigned when you created it.
 	// Example: `Backend_set2`
-	UnknownStateBackendSetNames *[]string `mandatory:"true" json:"unknownStateBackendSetNames,omitempty"`
+	UnknownStateBackendSetNames []string `mandatory:"true" json:"unknownStateBackendSetNames,omitempty"`
 
 	// A list of backend sets that are currently in the `WARNING` health state. The list identifies each backend set by the
 	// friendly name you assigned when you created it.
 	// Example: `Backend_set3`
-	WarningStateBackendSetNames *[]string `mandatory:"true" json:"warningStateBackendSetNames,omitempty"`
+	WarningStateBackendSetNames []string `mandatory:"true" json:"warningStateBackendSetNames,omitempty"`
 }
 
 func (model LoadBalancerHealth) String() string {

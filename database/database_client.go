@@ -19,9 +19,28 @@ type DatabaseClient struct {
 	common.BaseClient
 }
 
-//Create a new default Database client for a given region
+// Create a new default Database client for a given region and default configuration provider
 func NewDatabaseClientForRegion(region common.Region) (client DatabaseClient) {
 	client = DatabaseClient{BaseClient: common.NewClientForRegion(region)}
+
+	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "database", string(region))
+	client.BasePath = "20160918"
+	return
+}
+
+// Create a new default Database client with the given configuration provider.
+// the configuration provider will be used for the default signer as well as reading the region
+func NewDatabaseClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client DatabaseClient, err error) {
+	baseClient, err := common.NewClientWithConfig(configProvider)
+	if err != nil {
+		return
+	}
+
+	client = DatabaseClient{BaseClient: baseClient}
+	region, err := configProvider.Region()
+	if err != nil {
+		return
+	}
 
 	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "database", string(region))
 	client.BasePath = "20160918"

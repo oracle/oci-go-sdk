@@ -9,9 +9,11 @@
 package database
 
 import (
+	"encoding/json"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateDbHomeWithDbSystemIdDetails.
 type CreateDbHomeWithDbSystemIdDetails struct {
 
 	// The OCID of the DB System.
@@ -24,37 +26,28 @@ type CreateDbHomeWithDbSystemIdDetails struct {
 
 	// The user-provided name of the database home.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
-
-	// Source of database:
-	//   NONE for creating a new database
-	//   DB_BACKUP for creating a new database by restoring a backup
-	Source CreateDbHomeWithDbSystemIdDetailsSourceEnum `mandatory:"false" json:"source,omitempty"`
 }
 
-func (model CreateDbHomeWithDbSystemIdDetails) String() string {
-	return common.PointerString(model)
+func (model CreateDbHomeWithDbSystemIdDetails) GetDbSystemID() *string {
+	return model.DbSystemID
+}
+func (model CreateDbHomeWithDbSystemIdDetails) GetDisplayName() *string {
+	return model.DisplayName
 }
 
-type CreateDbHomeWithDbSystemIdDetailsSourceEnum string
-
-const (
-	CREATE_DB_HOME_WITH_DB_SYSTEM_ID_DETAILS_SOURCE_NONE      CreateDbHomeWithDbSystemIdDetailsSourceEnum = "NONE"
-	CREATE_DB_HOME_WITH_DB_SYSTEM_ID_DETAILS_SOURCE_DB_BACKUP CreateDbHomeWithDbSystemIdDetailsSourceEnum = "DB_BACKUP"
-	CREATE_DB_HOME_WITH_DB_SYSTEM_ID_DETAILS_SOURCE_UNKNOWN   CreateDbHomeWithDbSystemIdDetailsSourceEnum = "UNKNOWN"
-)
-
-var mapping_createdbhomewithdbsystemiddetails_source = map[string]CreateDbHomeWithDbSystemIdDetailsSourceEnum{
-	"NONE":      CREATE_DB_HOME_WITH_DB_SYSTEM_ID_DETAILS_SOURCE_NONE,
-	"DB_BACKUP": CREATE_DB_HOME_WITH_DB_SYSTEM_ID_DETAILS_SOURCE_DB_BACKUP,
-	"UNKNOWN":   CREATE_DB_HOME_WITH_DB_SYSTEM_ID_DETAILS_SOURCE_UNKNOWN,
+func (m CreateDbHomeWithDbSystemIdDetails) String() string {
+	return common.PointerString(m)
 }
 
-func GetCreateDbHomeWithDbSystemIdDetailsSourceEnumValues() []CreateDbHomeWithDbSystemIdDetailsSourceEnum {
-	values := make([]CreateDbHomeWithDbSystemIdDetailsSourceEnum, 0)
-	for _, v := range mapping_createdbhomewithdbsystemiddetails_source {
-		if v != CREATE_DB_HOME_WITH_DB_SYSTEM_ID_DETAILS_SOURCE_UNKNOWN {
-			values = append(values, v)
-		}
+func (m CreateDbHomeWithDbSystemIdDetails) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeCreateDbHomeWithDbSystemIdDetails CreateDbHomeWithDbSystemIdDetails
+	s := struct {
+		DiscriminatorParam string `json:"source"`
+		MarshalTypeCreateDbHomeWithDbSystemIdDetails
+	}{
+		"NONE",
+		(MarshalTypeCreateDbHomeWithDbSystemIdDetails)(m),
 	}
-	return values
+
+	return json.Marshal(&s)
 }

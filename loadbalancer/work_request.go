@@ -17,7 +17,7 @@ import (
 // for in-progress work flows.
 // For more information about work requests, see [Viewing the State of a Work Request]({{DOC_SERVER_URL}}/Content/Balance/Tasks/viewingworkrequest.htm).
 type WorkRequest struct {
-	ErrorDetails *[]WorkRequestError `mandatory:"true" json:"errorDetails,omitempty"`
+	ErrorDetails []WorkRequestError `mandatory:"true" json:"errorDetails,omitempty"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the work request.
 	ID *string `mandatory:"true" json:"id,omitempty"`

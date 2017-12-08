@@ -16,7 +16,7 @@ import (
 // For more information on backend set configuration, see
 // [Managing Backend Sets]({{DOC_SERVER_URL}}/Content/Balance/tasks/managingbackendsets.htm).
 type BackendSet struct {
-	Backends *[]Backend `mandatory:"true" json:"backends,omitempty"`
+	Backends []Backend `mandatory:"true" json:"backends,omitempty"`
 
 	HealthChecker *HealthChecker `mandatory:"true" json:"healthChecker,omitempty"`
 

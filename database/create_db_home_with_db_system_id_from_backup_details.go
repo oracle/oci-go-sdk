@@ -9,9 +9,11 @@
 package database
 
 import (
+	"encoding/json"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateDbHomeWithDbSystemIdFromBackupDetails.
 type CreateDbHomeWithDbSystemIdFromBackupDetails struct {
 
 	// The OCID of the DB System.
@@ -21,37 +23,28 @@ type CreateDbHomeWithDbSystemIdFromBackupDetails struct {
 
 	// The user-provided name of the database home.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
-
-	// Source of database:
-	//   NONE for creating a new database
-	//   DB_BACKUP for creating a new database by restoring a backup
-	Source CreateDbHomeWithDbSystemIdFromBackupDetailsSourceEnum `mandatory:"false" json:"source,omitempty"`
 }
 
-func (model CreateDbHomeWithDbSystemIdFromBackupDetails) String() string {
-	return common.PointerString(model)
+func (model CreateDbHomeWithDbSystemIdFromBackupDetails) GetDbSystemID() *string {
+	return model.DbSystemID
+}
+func (model CreateDbHomeWithDbSystemIdFromBackupDetails) GetDisplayName() *string {
+	return model.DisplayName
 }
 
-type CreateDbHomeWithDbSystemIdFromBackupDetailsSourceEnum string
-
-const (
-	CREATE_DB_HOME_WITH_DB_SYSTEM_ID_FROM_BACKUP_DETAILS_SOURCE_NONE      CreateDbHomeWithDbSystemIdFromBackupDetailsSourceEnum = "NONE"
-	CREATE_DB_HOME_WITH_DB_SYSTEM_ID_FROM_BACKUP_DETAILS_SOURCE_DB_BACKUP CreateDbHomeWithDbSystemIdFromBackupDetailsSourceEnum = "DB_BACKUP"
-	CREATE_DB_HOME_WITH_DB_SYSTEM_ID_FROM_BACKUP_DETAILS_SOURCE_UNKNOWN   CreateDbHomeWithDbSystemIdFromBackupDetailsSourceEnum = "UNKNOWN"
-)
-
-var mapping_createdbhomewithdbsystemidfrombackupdetails_source = map[string]CreateDbHomeWithDbSystemIdFromBackupDetailsSourceEnum{
-	"NONE":      CREATE_DB_HOME_WITH_DB_SYSTEM_ID_FROM_BACKUP_DETAILS_SOURCE_NONE,
-	"DB_BACKUP": CREATE_DB_HOME_WITH_DB_SYSTEM_ID_FROM_BACKUP_DETAILS_SOURCE_DB_BACKUP,
-	"UNKNOWN":   CREATE_DB_HOME_WITH_DB_SYSTEM_ID_FROM_BACKUP_DETAILS_SOURCE_UNKNOWN,
+func (m CreateDbHomeWithDbSystemIdFromBackupDetails) String() string {
+	return common.PointerString(m)
 }
 
-func GetCreateDbHomeWithDbSystemIdFromBackupDetailsSourceEnumValues() []CreateDbHomeWithDbSystemIdFromBackupDetailsSourceEnum {
-	values := make([]CreateDbHomeWithDbSystemIdFromBackupDetailsSourceEnum, 0)
-	for _, v := range mapping_createdbhomewithdbsystemidfrombackupdetails_source {
-		if v != CREATE_DB_HOME_WITH_DB_SYSTEM_ID_FROM_BACKUP_DETAILS_SOURCE_UNKNOWN {
-			values = append(values, v)
-		}
+func (m CreateDbHomeWithDbSystemIdFromBackupDetails) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeCreateDbHomeWithDbSystemIdFromBackupDetails CreateDbHomeWithDbSystemIdFromBackupDetails
+	s := struct {
+		DiscriminatorParam string `json:"source"`
+		MarshalTypeCreateDbHomeWithDbSystemIdFromBackupDetails
+	}{
+		"DB_BACKUP",
+		(MarshalTypeCreateDbHomeWithDbSystemIdFromBackupDetails)(m),
 	}
-	return values
+
+	return json.Marshal(&s)
 }

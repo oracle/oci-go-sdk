@@ -30,11 +30,11 @@ type CreateLoadBalancerDetails struct {
 	ShapeName *string `mandatory:"true" json:"shapeName,omitempty"`
 
 	// An array of subnet [OCIDs]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
-	SubnetIds *[]string `mandatory:"true" json:"subnetIds,omitempty"`
+	SubnetIds []string `mandatory:"true" json:"subnetIds,omitempty"`
 
-	BackendSets *map[string]BackendSetDetails `mandatory:"false" json:"backendSets,omitempty"`
+	BackendSets map[string]BackendSetDetails `mandatory:"false" json:"backendSets,omitempty"`
 
-	Certificates *map[string]CertificateDetails `mandatory:"false" json:"certificates,omitempty"`
+	Certificates map[string]CertificateDetails `mandatory:"false" json:"certificates,omitempty"`
 
 	// Whether the load balancer has a VCN-local (private) IP address.
 	// If "true", the service assigns a private IP address to the load balancer. The load balancer requires only one subnet
@@ -49,7 +49,7 @@ type CreateLoadBalancerDetails struct {
 	// Example: `false`
 	IsPrivate *bool `mandatory:"false" json:"isPrivate,omitempty"`
 
-	Listeners *map[string]ListenerDetails `mandatory:"false" json:"listeners,omitempty"`
+	Listeners map[string]ListenerDetails `mandatory:"false" json:"listeners,omitempty"`
 }
 
 func (model CreateLoadBalancerDetails) String() string {

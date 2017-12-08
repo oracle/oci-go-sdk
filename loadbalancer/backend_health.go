@@ -16,7 +16,7 @@ import (
 type BackendHealth struct {
 
 	// A list of the most recent health check results returned for the specified backend server.
-	HealthCheckResults *[]HealthCheckResult `mandatory:"true" json:"healthCheckResults,omitempty"`
+	HealthCheckResults []HealthCheckResult `mandatory:"true" json:"healthCheckResults,omitempty"`
 
 	// The general health status of the specified backend server as reported by the primary and standby load balancers.
 	// *   **OK:** Both health checks returned `OK`.

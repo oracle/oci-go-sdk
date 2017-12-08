@@ -23,7 +23,7 @@ type BackendSetDetails struct {
 	// Example: `LEAST_CONNECTIONS`
 	Policy *string `mandatory:"true" json:"policy,omitempty"`
 
-	Backends *[]BackendDetails `mandatory:"false" json:"backends,omitempty"`
+	Backends []BackendDetails `mandatory:"false" json:"backends,omitempty"`
 
 	SessionPersistenceConfiguration *SessionPersistenceConfigurationDetails `mandatory:"false" json:"sessionPersistenceConfiguration,omitempty"`
 
