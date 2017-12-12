@@ -11,6 +11,7 @@ import (
 	"runtime"
 	"strings"
 	"time"
+	"os/user"
 )
 
 const (
@@ -116,7 +117,16 @@ func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClien
 }
 
 func getHomeFolder() string {
-	return os.Getenv("HOME")
+	current, e := user.Current()
+	if e != nil {
+		//Give up and try to return something sensible
+		home :=  os.Getenv("HOME")
+		if home == "" {
+			home = os.Getenv("USERPROFILE")
+		}
+		return home
+	}
+	return current.HomeDir
 }
 
 //Create a new default client for a given region, with a default config provider
