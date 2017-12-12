@@ -5,6 +5,7 @@ package objectstorage
 
 import (
 	"github.com/oracle/oci-go-sdk/common"
+	"io"
 	"net/http"
 )
 
@@ -26,7 +27,7 @@ type PutObjectRequest struct {
 	ContentLength *int `mandatory:"true" contributesTo:"header" name:"Content-Length"`
 
 	// The object to upload to the object store.
-	PutObjectBody *string `mandatory:"true" contributesTo:"body"`
+	PutObjectBody io.Reader `mandatory:"true" contributesTo:"body"`
 
 	// The entity tag to match. For creating and committing a multipart upload to an object, this is the entity tag of the target object.
 	// For uploading a part, this is the entity tag of the target part.
@@ -83,7 +84,7 @@ type PutObjectResponse struct {
 	ETag *string `presentIn:"header" name:"etag"`
 
 	// The time the object was modified, as described in [RFC 2616](https://tools.ietf.org/rfc/rfc2616), section 14.29.
-	LastModified common.SDKTime `presentIn:"header" name:"last-modified"`
+	LastModified *common.SDKTime `presentIn:"header" name:"last-modified"`
 }
 
 func (response PutObjectResponse) String() string {

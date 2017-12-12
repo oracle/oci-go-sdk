@@ -82,7 +82,7 @@ type HeadObjectResponse struct {
 	ContentEncoding *string `presentIn:"header" name:"content-encoding"`
 
 	// The object modification time, as described in [RFC 2616](https://tools.ietf.org/rfc/rfc2616), section 14.29.
-	LastModified common.SDKTime `presentIn:"header" name:"last-modified"`
+	LastModified *common.SDKTime `presentIn:"header" name:"last-modified"`
 
 	// Flag to indicate whether or not the object was modified.  If this is true,
 	// the getter for the object itself will return null.  Callers should check this

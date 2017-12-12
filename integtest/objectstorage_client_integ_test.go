@@ -118,8 +118,13 @@ func TestObjectStorageClient_GetNamespace(t *testing.T) {
 
 func TestObjectStorageClient_GetObject(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
-	request := objectstorage.GetObjectRequest{}
+	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	request := objectstorage.GetObjectRequest{
+		NamespaceName:      nil,
+		BucketName:         nil,
+		ObjectName:         nil,
+	}
+
 	r, err := c.GetObject(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
