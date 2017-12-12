@@ -445,6 +445,43 @@ type PolymorphicJSONUnmarshaler interface {
 	UnmarshalPolymorphicJSON(data []byte) (interface{}, error)
 }
 
+func valueFromPolymorphicJSON(content []byte, unmarshaler PolymorphicJSONUnmarshaler) (val interface{}, err error) {
+	err = json.Unmarshal(content, unmarshaler)
+	if err != nil {
+		return
+	}
+	val, err = unmarshaler.UnmarshalPolymorphicJSON(content)
+	return
+}
+
+func valueFromJSONBody(response *http.Response, value *reflect.Value, unmarshaler PolymorphicJSONUnmarshaler) (val interface{}, err error) {
+	//Consumes the body, consider implementing it
+	//without body consumption
+	var content []byte
+	content, err = ioutil.ReadAll(response.Body)
+	if err != nil {
+		return
+	}
+
+	if unmarshaler != nil {
+		val, err = valueFromPolymorphicJSON(content, unmarshaler)
+		return
+	}
+
+	val = reflect.New(value.Type()).Interface()
+	err = json.Unmarshal(content, &val)
+	return
+}
+
+func unmarshalBinaryBody(response *http.Response) (interface{}, error) {
+	if reader, ok := response.Body.(io.Reader); ok {
+		return reader, nil
+	} else {
+		err := fmt.Errorf("Body of response does not conform to the Reader interface. Can not unmarshal from binary")
+		return nil, err
+	}
+}
+
 func addFromBody(response *http.Response, value *reflect.Value, field reflect.StructField, unmarshaler PolymorphicJSONUnmarshaler) (err error) {
 	Debugln("Unmarshaling from body to field:", field.Name)
 	if response.Body == nil {
@@ -452,40 +489,33 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 		return nil
 	}
 
-	//Consumes the body, consider implementing it
-	//without body consumption
-	content, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		return
-	}
-
-	if unmarshaler != nil {
-		var uVal interface{}
-		err = json.Unmarshal(content, unmarshaler)
+	tag := field.Tag
+	encoding := tag.Get("encoding")
+	var iVal interface{}
+	switch encoding {
+	case "binary":
+		iVal, err = unmarshalBinaryBody(response)
 		if err != nil {
 			return
 		}
-		uVal, err = unmarshaler.UnmarshalPolymorphicJSON(content)
+		value.Set(reflect.ValueOf(iVal))
+		return
+	case "": //If the encoding is not set. we'll decode with json
+		iVal, err = valueFromJSONBody(response, value, unmarshaler)
 		if err != nil {
 			return
 		}
-		value.Set(reflect.ValueOf(uVal))
+
+		newVal := reflect.ValueOf(iVal)
+		if newVal.Kind() == reflect.Ptr {
+			newVal = newVal.Elem()
+		}
+		value.Set(newVal)
+		return
+	default:
+		err = fmt.Errorf("Encoding: %s is invalid. Can not unmarshal body", encoding)
 		return
 	}
-
-	newStruct := reflect.New(value.Type()).Interface()
-
-	err = json.Unmarshal(content, &newStruct)
-	if err != nil {
-		return
-	}
-
-	newVal := reflect.ValueOf(newStruct)
-	if newVal.Kind() == reflect.Ptr {
-		newVal = newVal.Elem()
-	}
-	value.Set(newVal)
-	return
 }
 
 func addFromHeader(response *http.Response, value *reflect.Value, field reflect.StructField) (err error) {

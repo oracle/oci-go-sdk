@@ -11,6 +11,8 @@ import (
 	"strings"
 	"testing"
 	"time"
+	"io"
+	"os"
 )
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -499,6 +501,26 @@ func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {
 	assert.Equal(t, someUint, *s.SomeUint)
 	assert.WithinDuration(t, theTime.Time, s.TheTime.Time, delta)
 	assert.Equal(t, "REGION_FRA", *s.Key)
+}
+
+type structWithBinaryField struct {
+	Content io.Reader `presentIn:"body" encoding:"binary"`
+}
+
+func TestUnmarshalResponse(t *testing.T) {
+	data := "some data in a file"
+	filename := writeTempFile(data)
+	defer removeFileFn(filename)
+	file, _ := os.Open(filename)
+	header := http.Header{}
+	r := http.Response{Header: header}
+	r.Body = ioutil.NopCloser(file)
+	s := structWithBinaryField{}
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	all, e := ioutil.ReadAll(s.Content)
+	assert.NoError(t, e)
+	assert.Equal(t, data, string(all))
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
