@@ -180,6 +180,19 @@ func checkLifecycleState(lifecycleState string) func(interface{}) (bool, error) 
 	}
 }
 
+func removeFileFn(filename string) func() {
+	return func() {
+		os.Remove(filename)
+	}
+}
+
+func writeTempFile(data string) (filename string) {
+	f, _ := ioutil.TempFile("", "gosdkTestintegtest")
+	f.WriteString(data)
+	filename = f.Name()
+	return
+}
+
 func getUuid() string {
 	output, err := exec.Command("uuidgen").Output()
 	if err != nil {

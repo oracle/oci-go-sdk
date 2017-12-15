@@ -16,6 +16,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"testing"
 	"io/ioutil"
+	"io"
+	"os"
+	"path"
 )
 
 var (
@@ -29,6 +32,28 @@ func getNamespace(t *testing.T) string {
 	failIfError(t, err)
 	return *r.Value
 }
+func getObject(t *testing.T, namespace, bucketname, objectname string) (objectstorage.GetObjectResponse, error){
+	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	request := objectstorage.GetObjectRequest{
+		NamespaceName:      &namespace,
+		BucketName:         &bucketname,
+		ObjectName:         &objectname,
+	}
+
+	return c.GetObject(context.Background(), request)
+}
+
+func pubObject(t *testing.T, namespace, bucketname, objectname string, contentLen int, content io.Reader) error {
+	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	request := objectstorage.PutObjectRequest{
+		NamespaceName: &namespace,
+		BucketName: &bucketname,
+		ObjectName: &objectname,
+		ContentLength:&contentLen,
+		PutObjectBody:content,
+	}
+	return c.PutObject(context.Background(), request)
+}
 
 func TestObjectStorageClient_GetNamespace(t *testing.T) {
 	namespace := getNamespace(t)
@@ -37,19 +62,26 @@ func TestObjectStorageClient_GetNamespace(t *testing.T) {
 }
 
 func TestObjectStorageClient_GetObject(t *testing.T) {
-	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
-	request := objectstorage.GetObjectRequest{
-		NamespaceName:      common.String(getNamespace(t)),
-		BucketName:         common.String("DEXMetricsReports"),
-		ObjectName:         common.String("summary-r2-ad1-30-2017.txt"),
-	}
-
-	r, err := c.GetObject(context.Background(), request)
-	assert.NoError(t, err)
+	r, e := getObject(t, getNamespace(t), "DEXMetricsReports", "summary-r2-ad1-30-2017.txt")
+	failIfError(t, e)
 	bytes, e := ioutil.ReadAll(r.Content)
-	assert.NoError(t, e)
+	failIfError(t, e)
 	fmt.Println(string(bytes))
 	fmt.Println(r.LastModified)
+	return
+}
+
+func TestObjectStorageClient_PutObject(t *testing.T) {
+	data := "some temp data"
+	contentlen := len([]byte(data))
+	filepath := writeTempFile(data)
+	filename := path.Base(filepath)
+	defer removeFileFn(filepath)
+	file, e := os.Open(filepath)
+	defer file.Close()
+	failIfError(t, e)
+	e = pubObject(t, getNamespace(t), "DEXMetricsReports", filename, contentlen, file)
+	failIfError(t, e)
 	return
 }
 
@@ -218,14 +250,6 @@ func TestObjectStorageClient_ListPreauthenticatedRequests(t *testing.T) {
 	return
 }
 
-func TestObjectStorageClient_PutObject(t *testing.T) {
-	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
-	request := objectstorage.PutObjectRequest{}
-	err := c.PutObject(context.Background(), request)
-	assert.NoError(t, err)
-	return
-}
 
 func TestObjectStorageClient_UpdateBucket(t *testing.T) {
 	t.Skip("Not implemented")
