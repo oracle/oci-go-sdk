@@ -24,7 +24,6 @@ func NewObjectStorageClientForRegion(region common.Region) (client ObjectStorage
 	client = ObjectStorageClient{BaseClient: common.NewClientForRegion(region)}
 
 	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "objectstorage", string(region))
-	client.BasePath = "20160918"
 	return
 }
 
@@ -43,7 +42,6 @@ func NewObjectStorageClientWithConfigurationProvider(configProvider common.Confi
 	}
 
 	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "objectstorage", string(region))
-	client.BasePath = "20160918"
 	return
 }
 

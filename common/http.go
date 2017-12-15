@@ -334,11 +334,11 @@ func intSizeFromKind(kind reflect.Kind) int {
 
 }
 
-func analyzeValue(stringValue string, kind reflect.Kind) (val reflect.Value, valPointer reflect.Value, err error) {
+func analyzeValue(stringValue string, kind reflect.Kind, field reflect.StructField) (val reflect.Value, valPointer reflect.Value, err error) {
 	switch kind {
 	case timeType.Kind():
 		var t time.Time
-		t, err = time.Parse(time.RFC3339, stringValue)
+		t, err = tryParsingTimeWithValidFormatsForHeaders([]byte(stringValue), field.Name)
 		if err != nil {
 			return
 		}
@@ -428,7 +428,7 @@ func fromStringValue(newValue string, val *reflect.Value, field reflect.StructFi
 		kind = field.Type.Elem().Kind()
 	}
 
-	value, valPtr, err := analyzeValue(newValue, kind)
+	value, valPtr, err := analyzeValue(newValue, kind, field)
 	if err != nil {
 		return
 	}
@@ -473,9 +473,12 @@ func valueFromJSONBody(response *http.Response, value *reflect.Value, unmarshale
 	return
 }
 
+//Reads the body and returns a new reader with the contents of the body
 func unmarshalBinaryBody(response *http.Response) (interface{}, error) {
-	if reader, ok := response.Body.(io.Reader); ok {
-		return reader, nil
+	r1, r2, err := drainBody(response.Body)
+	if err == nil {
+		response.Body = r1
+		return r2, nil
 	} else {
 		err := fmt.Errorf("Body of response does not conform to the Reader interface. Can not unmarshal from binary")
 		return nil, err

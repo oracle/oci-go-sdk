@@ -5,14 +5,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/stretchr/testify/assert"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"testing"
 	"time"
-	"io"
-	"os"
 )
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

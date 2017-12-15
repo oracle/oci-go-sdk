@@ -15,11 +15,43 @@ import (
 	"fmt"
 	"github.com/stretchr/testify/assert"
 	"testing"
+	"io/ioutil"
 )
 
 var (
 	testRegionForObjectStorage = common.REGION_PHX
 )
+
+func getNamespace(t *testing.T) string {
+	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	request := objectstorage.GetNamespaceRequest{}
+	r, err := c.GetNamespace(context.Background(), request)
+	failIfError(t, err)
+	return *r.Value
+}
+
+func TestObjectStorageClient_GetNamespace(t *testing.T) {
+	namespace := getNamespace(t)
+	assert.NotEmpty(t, namespace)
+	return
+}
+
+func TestObjectStorageClient_GetObject(t *testing.T) {
+	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	request := objectstorage.GetObjectRequest{
+		NamespaceName:      common.String(getNamespace(t)),
+		BucketName:         common.String("DEXMetricsReports"),
+		ObjectName:         common.String("summary-r2-ad1-30-2017.txt"),
+	}
+
+	r, err := c.GetObject(context.Background(), request)
+	assert.NoError(t, err)
+	bytes, e := ioutil.ReadAll(r.Content)
+	assert.NoError(t, e)
+	fmt.Println(string(bytes))
+	fmt.Println(r.LastModified)
+	return
+}
 
 func TestObjectStorageClient_AbortMultipartUpload(t *testing.T) {
 	t.Skip("Not implemented")
@@ -106,30 +138,7 @@ func TestObjectStorageClient_GetBucket(t *testing.T) {
 	return
 }
 
-func TestObjectStorageClient_GetNamespace(t *testing.T) {
-	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
-	request := objectstorage.GetNamespaceRequest{}
-	r, err := c.GetNamespace(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
 
-func TestObjectStorageClient_GetObject(t *testing.T) {
-	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
-	request := objectstorage.GetObjectRequest{
-		NamespaceName:      nil,
-		BucketName:         nil,
-		ObjectName:         nil,
-	}
-
-	r, err := c.GetObject(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
 
 func TestObjectStorageClient_GetPreauthenticatedRequest(t *testing.T) {
 	t.Skip("Not implemented")
