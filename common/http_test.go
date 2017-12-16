@@ -503,6 +503,20 @@ func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {
 	assert.Equal(t, "REGION_FRA", *s.Key)
 }
 
+type reqWithBinaryFiled struct {
+	Content io.Reader `mandatory:"true" contributesTo:"body" encoding:"binary"`
+}
+
+func TestMarshalBinaryRequest(t *testing.T){
+	data := "some data in a file"
+	buffer := bytes.NewBufferString(data)
+	r := reqWithBinaryFiled{Content: ioutil.NopCloser(buffer)}
+	httpRequest, err := MakeDefaultHttpRequestWithTaggedStruct("PUT", "/obj", r)
+	assert.NoError(t, err)
+	all, err := ioutil.ReadAll(httpRequest.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, data, string(all))
+}
 type structWithBinaryField struct {
 	Content io.Reader `presentIn:"body" encoding:"binary"`
 }

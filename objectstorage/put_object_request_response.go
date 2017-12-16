@@ -27,7 +27,7 @@ type PutObjectRequest struct {
 	ContentLength *int `mandatory:"true" contributesTo:"header" name:"Content-Length"`
 
 	// The object to upload to the object store.
-	PutObjectBody io.Reader `mandatory:"true" contributesTo:"body" encoding:"binary"`
+	PutObjectBody io.ReadCloser `mandatory:"true" contributesTo:"body" encoding:"binary"`
 
 	// The entity tag to match. For creating and committing a multipart upload to an object, this is the entity tag of the target object.
 	// For uploading a part, this is the entity tag of the target part.

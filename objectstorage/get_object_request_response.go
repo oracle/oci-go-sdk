@@ -50,8 +50,8 @@ type GetObjectResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The io.Reader instance
-	Content io.Reader `presentIn:"body" encoding:"binary"`
+	// The io.ReadCloser instance
+	Content io.ReadCloser `presentIn:"body" encoding:"binary"`
 
 	// Echoes back the value passed in the opc-client-request-id header, for use by clients when debugging.
 	OpcClientRequestID *string `presentIn:"header" name:"opc-client-request-id"`

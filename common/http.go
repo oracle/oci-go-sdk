@@ -71,7 +71,7 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 		if readCloser, ok := value.Interface().(io.ReadCloser); ok {
 			request.Body = readCloser
 		} else {
-			e = fmt.Errorf("Body of the request needs to be a io.ReadCloser. Can not marshal body of binary request")
+			e = fmt.Errorf("Body of the request needs to be an io.ReadCloser interface. Can not marshal body of binary request")
 		}
 		return
 	}

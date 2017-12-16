@@ -32,6 +32,7 @@ func getNamespace(t *testing.T) string {
 	failIfError(t, err)
 	return *r.Value
 }
+
 func getObject(t *testing.T, namespace, bucketname, objectname string) (objectstorage.GetObjectResponse, error){
 	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
 	request := objectstorage.GetObjectRequest{
@@ -43,7 +44,7 @@ func getObject(t *testing.T, namespace, bucketname, objectname string) (objectst
 	return c.GetObject(context.Background(), request)
 }
 
-func pubObject(t *testing.T, namespace, bucketname, objectname string, contentLen int, content io.Reader) error {
+func pubObject(t *testing.T, namespace, bucketname, objectname string, contentLen int, content io.ReadCloser) error {
 	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
 	request := objectstorage.PutObjectRequest{
 		NamespaceName: &namespace,
@@ -55,24 +56,57 @@ func pubObject(t *testing.T, namespace, bucketname, objectname string, contentLe
 	return c.PutObject(context.Background(), request)
 }
 
+func createBucket(t *testing.T, namespace, compartment, name string){
+	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	request := objectstorage.CreateBucketRequest{
+		NamespaceName:&namespace,
+
+	}
+	request.CompartmentID = &compartment
+	request.Name = &name
+	_, err := c.CreateBucket(context.Background(), request)
+	failIfError(t, err)
+	return
+}
+
+func deleteBucket(t *testing.T, namespace, name string)(err error){
+	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	request := objectstorage.DeleteBucketRequest{
+		NamespaceName:&namespace,
+		BucketName:&name,
+	}
+	err = c.DeleteBucket(context.Background(), request)
+	failIfError(t, err)
+	return
+}
+
+func deleteObject(t *testing.T, namespace, bucketname, objectname string)(err error){
+	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	request := objectstorage.DeleteObjectRequest{
+		NamespaceName:&namespace,
+		BucketName: &bucketname,
+		ObjectName:&objectname,
+	}
+	err = c.DeleteObject(context.Background(), request)
+	failIfError(t, err)
+	return
+}
+
 func TestObjectStorageClient_GetNamespace(t *testing.T) {
 	namespace := getNamespace(t)
 	assert.NotEmpty(t, namespace)
 	return
 }
 
-func TestObjectStorageClient_GetObject(t *testing.T) {
-	r, e := getObject(t, getNamespace(t), "DEXMetricsReports", "summary-r2-ad1-30-2017.txt")
-	failIfError(t, e)
-	bytes, e := ioutil.ReadAll(r.Content)
-	failIfError(t, e)
-	fmt.Println(string(bytes))
-	fmt.Println(r.LastModified)
-	return
-}
 
-func TestObjectStorageClient_PutObject(t *testing.T) {
+func TestObjectStorageClient_Object(t *testing.T) {
+	bname := "testgosdkBucket"
 	data := "some temp data"
+	namespace := getNamespace(t)
+
+	createBucket(t, getNamespace(t), getTenancyID(), bname)
+	defer deleteBucket(t, namespace, bname)
+
 	contentlen := len([]byte(data))
 	filepath := writeTempFile(data)
 	filename := path.Base(filepath)
@@ -80,8 +114,24 @@ func TestObjectStorageClient_PutObject(t *testing.T) {
 	file, e := os.Open(filepath)
 	defer file.Close()
 	failIfError(t, e)
-	e = pubObject(t, getNamespace(t), "DEXMetricsReports", filename, contentlen, file)
+	e = pubObject(t, namespace , bname, filename, contentlen, file)
 	failIfError(t, e)
+
+	r, e := getObject(t, namespace, bname, filename)
+	failIfError(t, e)
+	defer deleteObject(t, namespace, bname, filename)
+	defer r.Content.Close()
+	bytes, e := ioutil.ReadAll(r.Content)
+	failIfError(t, e)
+	assert.Equal(t, contentlen, *r.ContentLength)
+	assert.Equal(t, data, string(bytes))
+	return
+}
+
+func TestObjectStorageClient_Bucket(t *testing.T) {
+	bname := "golangsdktestbucket"
+	createBucket(t, getNamespace(t), getTenancyID(), bname)
+	defer deleteBucket(t, getNamespace(t), bname)
 	return
 }
 
@@ -103,15 +153,6 @@ func TestObjectStorageClient_CommitMultipartUpload(t *testing.T) {
 	return
 }
 
-func TestObjectStorageClient_CreateBucket(t *testing.T) {
-	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
-	request := objectstorage.CreateBucketRequest{}
-	r, err := c.CreateBucket(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
 
 func TestObjectStorageClient_CreateMultipartUpload(t *testing.T) {
 	t.Skip("Not implemented")
