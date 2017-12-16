@@ -507,7 +507,7 @@ type reqWithBinaryFiled struct {
 	Content io.Reader `mandatory:"true" contributesTo:"body" encoding:"binary"`
 }
 
-func TestMarshalBinaryRequest(t *testing.T){
+func TestMarshalBinaryRequest(t *testing.T) {
 	data := "some data in a file"
 	buffer := bytes.NewBufferString(data)
 	r := reqWithBinaryFiled{Content: ioutil.NopCloser(buffer)}
@@ -517,6 +517,7 @@ func TestMarshalBinaryRequest(t *testing.T){
 	assert.NoError(t, err)
 	assert.Equal(t, data, string(all))
 }
+
 type structWithBinaryField struct {
 	Content io.Reader `presentIn:"body" encoding:"binary"`
 }
