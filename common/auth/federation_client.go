@@ -58,8 +58,8 @@ func newAuthClient(region common.Region, provider common.KeyProvider) *common.Ba
 // For authClient to sign requests to X509 Federation Endpoint
 func (c *x509FederationClient) KeyID() (string, error) {
 	tenancy := c.tenancyId
-	fingerPrint := fingerPrint(c.leafCertificateRetriever.Certificate())
-	return fmt.Sprintf("%s/fed-x509/%s", tenancy, fingerPrint), nil
+	fingerprint := fingerprint(c.leafCertificateRetriever.Certificate())
+	return fmt.Sprintf("%s/fed-x509/%s", tenancy, fingerprint), nil
 }
 
 // For authClient to sign requests to X509 Federation Endpoint

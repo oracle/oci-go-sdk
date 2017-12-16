@@ -18,7 +18,7 @@ import (
 func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
 	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Verify request
-		expectedKeyId := fmt.Sprintf("%s/fed-x509/%s", tenancyId, leafCertFingerPrint)
+		expectedKeyId := fmt.Sprintf("%s/fed-x509/%s", tenancyId, leafCertFingerprint)
 		assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf(`Signature version="1",headers="date (request-target) content-length content-type x-content-sha256",keyId="%s",algorithm="rsa-sha256",signature=`, expectedKeyId)))
 
 		expectedBody := fmt.Sprintf(`{"certificate":"%s","publicKey":"%s","intermediateCertificates":["%s"]}`,
@@ -69,7 +69,7 @@ func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
 func TestX509FederationClient_RenewSecurityToken(t *testing.T) {
 	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Verify request
-		expectedKeyId := fmt.Sprintf("%s/fed-x509/%s", tenancyId, leafCertFingerPrint)
+		expectedKeyId := fmt.Sprintf("%s/fed-x509/%s", tenancyId, leafCertFingerprint)
 		assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf(`Signature version="1",headers="date (request-target) content-length content-type x-content-sha256",keyId="%s",algorithm="rsa-sha256",signature=`, expectedKeyId)))
 
 		expectedBody := fmt.Sprintf(`{"certificate":"%s","publicKey":"%s","intermediateCertificates":["%s"]}`,
@@ -401,7 +401,7 @@ ysvMnQwaC0432ceRJ3r6vPAI2EPRd9KOE7Va1IFNJNmOuIkmRx8t`
 	//	certPem = pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE", Bytes: newCertBytes})
 	//	return
 	//}
-	leafCertFingerPrint  = `52:3c:9d:93:8b:b8:07:21:ce:36:30:98:ba:fc:e2:4a:bc:3a:2e:0b`
+	leafCertFingerprint  = `52:3c:9d:93:8b:b8:07:21:ce:36:30:98:ba:fc:e2:4a:bc:3a:2e:0b`
 	intermediateCertBody = `MIIC4TCCAcmgAwIBAgIRAK7jQKVEO6ssUBICuPw4OwQwDQYJKoZIhvcNAQELBQAw
 KjEoMCYGA1UEAxMfUEtJU1ZDIElkZW50aXR5IEludGVybWVkaWF0ZSByMjAeFw0x
 NzExMzAwMDE0MDhaFw0xODExMzAwMDE0MDhaMCoxKDAmBgNVBAMTH1BLSVNWQyBJ

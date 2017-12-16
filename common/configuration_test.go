@@ -82,7 +82,7 @@ region=someregion
 	defer removeFileFn(filename)
 
 	c := fileConfigurationProvider{ConfigPath: filename}
-	fns := []func() (string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerPrint}
+	fns := []func() (string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerprint}
 
 	for i, fn := range fns {
 		val, e := fn()
@@ -93,7 +93,7 @@ region=someregion
 
 func TestFileConfigurationProvider_NoFile(t *testing.T) {
 	c := fileConfigurationProvider{ConfigPath: "/no/file"}
-	fns := []func() (string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerPrint}
+	fns := []func() (string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerprint}
 
 	for _, fn := range fns {
 		_, e := fn()
@@ -230,7 +230,7 @@ region=someregion
 
 	provider, ec := ComposingConfigurationProvider([]ConfigurationProvider{c0, c})
 	assert.NoError(t, ec)
-	fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerPrint}
+	fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerprint}
 
 	for _, fn := range fns {
 		val, e := fn()
@@ -259,7 +259,7 @@ func TestComposingConfigurationProvider_MultipleFilesNoConf(t *testing.T) {
 
 	provider, ec := ComposingConfigurationProvider([]ConfigurationProvider{c0, c})
 	assert.NoError(t, ec)
-	fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerPrint}
+	fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerprint}
 
 	for _, fn := range fns {
 		_, e := fn()
