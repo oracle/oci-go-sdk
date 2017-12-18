@@ -188,6 +188,7 @@ func removeFileFn(filename string) func() {
 
 func writeTempFile(data string) (filename string) {
 	f, _ := ioutil.TempFile("", "gosdkTestintegtest")
+	defer f.Close()
 	f.WriteString(data)
 	filename = f.Name()
 	return

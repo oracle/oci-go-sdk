@@ -44,7 +44,7 @@ func getObject(t *testing.T, namespace, bucketname, objectname string) (objectst
 	return c.GetObject(context.Background(), request)
 }
 
-func pubObject(t *testing.T, namespace, bucketname, objectname string, contentLen int, content io.ReadCloser) error {
+func putObject(t *testing.T, namespace, bucketname, objectname string, contentLen int, content io.ReadCloser) error {
 	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
 	request := objectstorage.PutObjectRequest{
 		NamespaceName: &namespace,
@@ -114,7 +114,7 @@ func TestObjectStorageClient_Object(t *testing.T) {
 	file, e := os.Open(filepath)
 	defer file.Close()
 	failIfError(t, e)
-	e = pubObject(t, namespace , bname, filename, contentlen, file)
+	e = putObject(t, namespace , bname, filename, contentlen, file)
 	failIfError(t, e)
 
 	r, e := getObject(t, namespace, bname, filename)

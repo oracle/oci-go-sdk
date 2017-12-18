@@ -490,10 +490,9 @@ func unmarshalBinaryBody(response *http.Response) (interface{}, error) {
 	if err == nil {
 		response.Body = r1
 		return r2, nil
-	} else {
-		err := fmt.Errorf("Body of response does not conform to the Reader interface. Can not unmarshal from binary")
-		return nil, err
 	}
+
+	return nil, fmt.Errorf("Body of response does not conform to the Reader interface. Can not unmarshal from binary")
 }
 
 func addFromBody(response *http.Response, value *reflect.Value, field reflect.StructField, unmarshaler PolymorphicJSONUnmarshaler) (err error) {
