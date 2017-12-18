@@ -45,7 +45,7 @@ func (p instancePrincipalConfigurationProvider) UserOCID() (string, error) {
 	return "", nil
 }
 
-func (p instancePrincipalConfigurationProvider) KeyFingerPrint() (string, error) {
+func (p instancePrincipalConfigurationProvider) KeyFingerprint() (string, error) {
 	return "", nil
 }
 

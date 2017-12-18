@@ -3,19 +3,20 @@ package common
 import (
 	"bytes"
 	"crypto/rsa"
-	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strconv"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 var (
 	testTenancyOCID    = "ocid1.tenancy.oc1..aaaaaaaaba3pv6wkcr4jqae5f15p2b2m2yt2j6rx32uzr4h25vqstifsfdsq"
 	testUserOCID       = "ocid1.user.oc1..aaaaaaaat5nvwcna5j6aqzjcaty5eqbb6qt2jvpkanghtgdaqedqw3rynjq"
-	testFingerPrint    = "20:3b:97:13:55:1c:5b:0d:d3:37:d8:50:4e:c5:3a:34"
+	testFingerprint    = "20:3b:97:13:55:1c:5b:0d:d3:37:d8:50:4e:c5:3a:34"
 	testComparmentOCID = "ocid1.compartment.oc1..aaaaaaaam3we6vgnherjq5q2idnccdflvjsnog7mlr6rtdb25gilchfeyjxa"
 
 	testURL = "https://iaas.us-phoenix-1.oraclecloud.com/20160918/instances" +
@@ -73,7 +74,7 @@ func (kp testKeyProvider) PrivateRSAKey() (*rsa.PrivateKey, error) {
 }
 
 func (kp testKeyProvider) KeyID() (string, error) {
-	keyID := strings.Join([]string{testTenancyOCID, testUserOCID, testFingerPrint}, "/")
+	keyID := strings.Join([]string{testTenancyOCID, testUserOCID, testFingerprint}, "/")
 	return keyID, nil
 }
 

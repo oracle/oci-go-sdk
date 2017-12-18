@@ -51,12 +51,12 @@ func extractTenancyIdFromCertificate(cert *x509.Certificate) string {
 	return ""
 }
 
-func fingerPrint(certificate *x509.Certificate) string {
-	fingerPrint := sha1.Sum(certificate.Raw)
-	return colonSeparatedString(fingerPrint)
+func fingerprint(certificate *x509.Certificate) string {
+	fingerprint := sha1.Sum(certificate.Raw)
+	return colonSeparatedString(fingerprint)
 }
 
-func colonSeparatedString(fingerPrint [sha1.Size]byte) string {
-	spaceSeparated := fmt.Sprintf("% x", fingerPrint)
+func colonSeparatedString(fingerprint [sha1.Size]byte) string {
+	spaceSeparated := fmt.Sprintf("% x", fingerprint)
 	return strings.Replace(spaceSeparated, " ", ":", -1)
 }

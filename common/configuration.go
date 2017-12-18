@@ -14,14 +14,14 @@ type ConfigurationProvider interface {
 	KeyProvider
 	TenancyOCID() (string, error)
 	UserOCID() (string, error)
-	KeyFingerPrint() (string, error)
+	KeyFingerprint() (string, error)
 	Region() (string, error)
 }
 
 // Test to each part of the configration provider does not return an error
 // If it does the function return false and the first error that caused the failure
 func IsConfigurationProviderValid(conf ConfigurationProvider) (ok bool, err error) {
-	baseFn := []func() (string, error){conf.TenancyOCID, conf.UserOCID, conf.KeyFingerPrint, conf.Region, conf.KeyID}
+	baseFn := []func() (string, error){conf.TenancyOCID, conf.UserOCID, conf.KeyFingerprint, conf.Region, conf.KeyID}
 	for _, fn := range baseFn {
 		_, err = fn()
 		ok = err == nil
@@ -85,12 +85,12 @@ func (p environmentConfigurationProvider) KeyID() (keyID string, err error) {
 		return
 	}
 
-	fingerPrint, err := p.KeyFingerPrint()
+	fingerprint, err := p.KeyFingerprint()
 	if err != nil {
 		return
 	}
 
-	return fmt.Sprintf("%s/%s/%s", ocid, userocid, fingerPrint), nil
+	return fmt.Sprintf("%s/%s/%s", ocid, userocid, fingerprint), nil
 }
 
 func (p environmentConfigurationProvider) TenancyOCID() (value string, err error) {
@@ -111,7 +111,7 @@ func (p environmentConfigurationProvider) UserOCID() (value string, err error) {
 	return
 }
 
-func (p environmentConfigurationProvider) KeyFingerPrint() (value string, err error) {
+func (p environmentConfigurationProvider) KeyFingerprint() (value string, err error) {
 	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "fingerprint")
 	var ok bool
 	if value, ok = os.LookupEnv(environmentVariable); !ok {
@@ -158,7 +158,7 @@ type configFileInfo struct {
 const (
 	hasTenancy = 1 << iota
 	hasUser
-	hasFingerPrint
+	hasFingerprint
 	hasRegion
 	hasKeyFile
 	none
@@ -184,7 +184,7 @@ func parseConfigFile(data []byte) (info *configFileInfo, err error) {
 			configurationPresent = configurationPresent | hasUser
 			info.UserOcid = value
 		case "fingerprint":
-			configurationPresent = configurationPresent | hasFingerPrint
+			configurationPresent = configurationPresent | hasFingerprint
 			info.Fingerprint = value
 		case "key_file":
 			configurationPresent = configurationPresent | hasKeyFile
@@ -262,13 +262,13 @@ func (p fileConfigurationProvider) UserOCID() (value string, err error) {
 	return
 }
 
-func (p fileConfigurationProvider) KeyFingerPrint() (value string, err error) {
+func (p fileConfigurationProvider) KeyFingerprint() (value string, err error) {
 	info, err := p.readAndParseConfigFile()
 	if err != nil {
 		err = fmt.Errorf("can not read tenancy configuration due to: %s", err.Error())
 		return
 	}
-	value, err = presentOrError(info.Fingerprint, hasFingerPrint, info.PresentConfiguration, "fingerprint")
+	value, err = presentOrError(info.Fingerprint, hasFingerprint, info.PresentConfiguration, "fingerprint")
 	return
 }
 
@@ -349,9 +349,9 @@ func (c composingConfigurationProvider) UserOCID() (string, error) {
 	return "", fmt.Errorf("did not find a proper configuration for user")
 }
 
-func (c composingConfigurationProvider) KeyFingerPrint() (string, error) {
+func (c composingConfigurationProvider) KeyFingerprint() (string, error) {
 	for _, p := range c.Providers {
-		val, err := p.KeyFingerPrint()
+		val, err := p.KeyFingerprint()
 		if err == nil {
 			return val, nil
 		}
