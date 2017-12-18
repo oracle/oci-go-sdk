@@ -22,6 +22,7 @@ const (
 	defaultConfigFileName    = "config"
 	defaultConfigDirName     = ".oci"
 	secondorayConfigDirName  = ".oraclebmc"
+	maxBodyLenForDebug       = 1024 * 10000
 )
 
 type RequestInterceptor func(*http.Request) error
@@ -198,7 +199,12 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 	}
 
 	IfDebug(func() {
-		if dump, e := httputil.DumpRequest(request, true); e == nil {
+		dumpBody := true
+		if request.ContentLength > maxBodyLenForDebug {
+			Logln("not dumping body too big")
+			dumpBody = false
+		}
+		if dump, e := httputil.DumpRequest(request, dumpBody); e == nil {
 			Logf("Dump Request %v", string(dump))
 		} else {
 			Debugln(e)
@@ -214,7 +220,13 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 			return
 		}
 
-		if dump, e := httputil.DumpResponse(response, true); e == nil {
+		dumpBody := true
+		if response.ContentLength > maxBodyLenForDebug {
+			Logln("not dumping body too big")
+			dumpBody = false
+		}
+
+		if dump, e := httputil.DumpResponse(response, dumpBody); e == nil {
 			Logf("Dump Response %v", string(dump))
 		} else {
 			Debugln(e)
