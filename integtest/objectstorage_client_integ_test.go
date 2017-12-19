@@ -100,7 +100,7 @@ func TestObjectStorageClient_GetNamespace(t *testing.T) {
 
 
 func TestObjectStorageClient_BigFile(t *testing.T) {
-	bname := "testgosdkBigBucket"
+	bname := getUniqueName("largeBucket")
 	namespace := getNamespace(t)
 
 	createBucket(t, getNamespace(t), getTenancyID(), bname)
@@ -127,7 +127,7 @@ func TestObjectStorageClient_BigFile(t *testing.T) {
 }
 
 func TestObjectStorageClient_Object(t *testing.T) {
-	bname := "testgosdkBucket"
+	bname := getUniqueName("bucket")
 	data := "some temp data"
 	namespace := getNamespace(t)
 
@@ -156,7 +156,7 @@ func TestObjectStorageClient_Object(t *testing.T) {
 }
 
 func TestObjectStorageClient_Bucket(t *testing.T) {
-	bname := "golangsdktestbucket"
+	bname := getUniqueName("bucket")
 	createBucket(t, getNamespace(t), getTenancyID(), bname)
 	defer deleteBucket(t, getNamespace(t), bname)
 	return
