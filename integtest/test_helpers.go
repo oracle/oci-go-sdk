@@ -218,7 +218,8 @@ func getUuid() string {
 	if err != nil {
 		panic(err)
 	}
-	return fmt.Sprintf("%s", output)
+	trimmed := strings.TrimSuffix(string(output), "\n")
+	return trimmed
 }
 
 func getUniqueName(base string) string {
