@@ -202,10 +202,8 @@ func writeTempFileOfSize(filesize int64) (string, int64) {
 	f, _ := ioutil.TempFile("", "gosdkTestintegtest")
 	ra := rand.New(rand.NewSource(time.Now().UnixNano()))
 	defer f.Close()
-	w := bufio.NewWriter(f)
 	for written = 0; written < filesize; {
 		b, _ := io.CopyN(f, ra, 1024)
-		w.Flush()
 		written += int64(b)
 	}
 	return f.Name(), written
