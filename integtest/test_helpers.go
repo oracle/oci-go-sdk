@@ -13,6 +13,9 @@ import (
 	"strings"
 	"testing"
 	"time"
+	"math/rand"
+	"io"
+	"bufio"
 )
 
 const (
@@ -194,6 +197,22 @@ func writeTempFile(data string) (filename string) {
 	return
 }
 
+func writeTempFileOfSize(filesize int64) (string, int64) {
+	var written int64
+	f, _ := ioutil.TempFile("", "gosdkTestintegtest")
+	ra := rand.New(rand.NewSource(time.Now().UnixNano()))
+	defer f.Close()
+	w := bufio.NewWriter(f)
+	for written = 0; written < filesize; {
+		b, _ := io.CopyN(f, ra, 1024)
+		w.Flush()
+		written += int64(b)
+	}
+	return f.Name(), written
+}
+
+
+
 func getUuid() string {
 	output, err := exec.Command("uuidgen").Output()
 	if err != nil {
@@ -252,3 +271,4 @@ func deleteTestGroup(client identity.IdentityClient, groupId *string) error {
 	req := identity.DeleteGroupRequest{GroupID: groupId}
 	return client.DeleteGroup(context.Background(), req)
 }
+

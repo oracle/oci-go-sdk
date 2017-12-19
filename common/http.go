@@ -60,6 +60,22 @@ func toStringValue(v reflect.Value, field reflect.StructField) (string, error) {
 	}
 }
 
+func addBinaryBody(request *http.Request, value reflect.Value) (e error) {
+	readCloser, ok := value.Interface().(io.ReadCloser)
+	if !ok {
+		e = fmt.Errorf("Body of the request needs to be an io.ReadCloser interface. Can not marshal body of binary request")
+		return
+	}
+
+	request.Body = readCloser
+
+	//Set the default content type to application/octet-stream if not set
+	if request.Header.Get("Content-Type") == "" {
+		request.Header.Set("Content-Type", "application/octet-stream")
+	}
+	return nil
+}
+
 func addToBody(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
 	Debugln("Marshaling to body from field:", field.Name)
 	if request.Body != nil {
@@ -67,13 +83,9 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 	}
 	tag := field.Tag
 	encoding := tag.Get("encoding")
+
 	if encoding == "binary" {
-		if readCloser, ok := value.Interface().(io.ReadCloser); ok {
-			request.Body = readCloser
-		} else {
-			e = fmt.Errorf("Body of the request needs to be an io.ReadCloser interface. Can not marshal body of binary request")
-		}
-		return
+		return addBinaryBody(request, value)
 	}
 
 	marshaled, e := json.Marshal(value.Interface())
@@ -84,6 +96,7 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 	bodyBytes := bytes.NewReader(marshaled)
 	request.ContentLength = int64(bodyBytes.Len())
 	request.Header.Set("Content-Length", strconv.FormatInt(request.ContentLength, 10))
+	request.Header.Set("Content-Type", "application/json")
 	request.Body = ioutil.NopCloser(bodyBytes)
 	request.GetBody = func() (io.ReadCloser, error) {
 		return ioutil.NopCloser(bodyBytes), nil
@@ -158,6 +171,19 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 	}
 }
 
+func setWellKnownHeaders(request *http.Request, headerName, headerValue string) (e error) {
+	switch strings.ToLower(headerName) {
+	case "content-length":
+		var len int
+		len, e = strconv.Atoi(headerValue)
+		if e != nil {
+			return
+		}
+		request.ContentLength = int64(len)
+	}
+	return nil
+}
+
 func addToHeader(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
 	Debugln("Marshaling to header from field:", field.Name)
 	if request.Header == nil {
@@ -183,6 +209,10 @@ func addToHeader(request *http.Request, value reflect.Value, field reflect.Struc
 
 	//Otherwise get value and set header
 	if headerValue, e = toStringValue(value, field); e != nil {
+		return
+	}
+
+	if e = setWellKnownHeaders(request, headerName, headerValue); e != nil {
 		return
 	}
 
@@ -281,7 +311,6 @@ func MakeDefaultHttpRequest(method, path string) (httpRequest http.Request) {
 	}
 
 	httpRequest.Header.Set("Content-Length", "0")
-	httpRequest.Header.Set("Content-Type", "application/json")
 	httpRequest.Header.Set("Date", time.Now().UTC().Format(http.TimeFormat))
 	httpRequest.Header.Set("Opc-Client-Info", strings.Join([]string{defaultSDKMarker, Version()}, "/"))
 	httpRequest.Header.Set("Accept", "*/*")
@@ -484,17 +513,6 @@ func valueFromJSONBody(response *http.Response, value *reflect.Value, unmarshale
 	return
 }
 
-//Reads the body and returns a new reader with the contents of the body
-func unmarshalBinaryBody(response *http.Response) (interface{}, error) {
-	r1, r2, err := drainBody(response.Body)
-	if err == nil {
-		response.Body = r1
-		return r2, nil
-	}
-
-	return nil, fmt.Errorf("Body of response does not conform to the Reader interface. Can not unmarshal from binary")
-}
-
 func addFromBody(response *http.Response, value *reflect.Value, field reflect.StructField, unmarshaler PolymorphicJSONUnmarshaler) (err error) {
 	Debugln("Unmarshaling from body to field:", field.Name)
 	if response.Body == nil {
@@ -507,11 +525,7 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 	var iVal interface{}
 	switch encoding {
 	case "binary":
-		iVal, err = unmarshalBinaryBody(response)
-		if err != nil {
-			return
-		}
-		value.Set(reflect.ValueOf(iVal))
+		value.Set(reflect.ValueOf(response.Body))
 		return
 	case "": //If the encoding is not set. we'll decode with json
 		iVal, err = valueFromJSONBody(response, value, unmarshaler)

@@ -99,6 +99,33 @@ func TestObjectStorageClient_GetNamespace(t *testing.T) {
 }
 
 
+func TestObjectStorageClient_BigFile(t *testing.T) {
+	bname := "testgosdkBigBucket"
+	namespace := getNamespace(t)
+
+	createBucket(t, getNamespace(t), getTenancyID(), bname)
+	defer deleteBucket(t, namespace, bname)
+
+	contentlen := 1024 * 100000
+	filepath, filesize := writeTempFileOfSize(int64(contentlen))
+	filename := path.Base(filepath)
+	defer removeFileFn(filepath)
+	file, e := os.Open(filepath)
+	defer file.Close()
+	failIfError(t, e)
+	e = putObject(t, namespace , bname, filename, int(filesize), file)
+	failIfError(t, e)
+
+	rGet, e := getObject(t, namespace, bname, filename)
+	failIfError(t, e)
+	defer deleteObject(t, namespace, bname, filename)
+	assert.Equal(t, filesize, int64(*rGet.ContentLength))
+	assert.Equal(t, "application/octet-stream", *rGet.ContentType)
+
+	rGet.Content.Close()
+
+}
+
 func TestObjectStorageClient_Object(t *testing.T) {
 	bname := "testgosdkBucket"
 	data := "some temp data"

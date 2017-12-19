@@ -22,7 +22,7 @@ const (
 	defaultConfigFileName    = "config"
 	defaultConfigDirName     = ".oci"
 	secondorayConfigDirName  = ".oraclebmc"
-	maxBodyLenForDebug       = 1024 * 10000
+	maxBodyLenForDebug       = 1024 * 1000
 )
 
 type RequestInterceptor func(*http.Request) error
