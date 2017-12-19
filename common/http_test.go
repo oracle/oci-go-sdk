@@ -74,7 +74,6 @@ func TestHttpRequestMarshallerQuery(t *testing.T) {
 
 func TestMakeDefault(t *testing.T) {
 	r := MakeDefaultHttpRequest(http.MethodPost, "/one/two")
-	assert.Equal(t, r.Header.Get("Content-Type"), "application/json")
 	assert.NotEmpty(t, r.Header.Get("Date"))
 	assert.NotEmpty(t, r.Header.Get("Opc-Client-Info"))
 }
@@ -132,6 +131,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 	assert.True(t, request.URL.Query().Get("income") == strconv.FormatFloat(float64(s.Income), 'f', 6, 32))
 	assert.True(t, request.URL.Query().Get("when") == when)
 	assert.Contains(t, content, "description")
+	assert.Equal(t, request.Header.Get("Content-Type"), "application/json")
 	if val, ok := content["description"]; !ok || val != desc {
 		assert.Fail(t, "Should contain: "+desc)
 	}
