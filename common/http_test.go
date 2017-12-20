@@ -64,8 +64,8 @@ func TestHttpMarshallerInvalidStruct(t *testing.T) {
 
 func TestHttpRequestMarshallerQuery(t *testing.T) {
 	s := listCompartmentsRequest{CompartmentID: "ocid1", Page: "p", Limit: 23}
-	request := &http.Request{}
-	HttpRequestMarshaller(s, request)
+	request := MakeDefaultHttpRequest(http.MethodPost, "/")
+	HttpRequestMarshaller(s, &request)
 	query := request.URL.Query()
 	assert.True(t, query.Get("compartmentId") == "ocid1")
 	assert.True(t, query.Get("page") == "p")
