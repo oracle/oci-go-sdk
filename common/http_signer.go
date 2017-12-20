@@ -25,9 +25,9 @@ type KeyProvider interface {
 	KeyID() (string, error)
 }
 
-var signerVersion = "1"
+const signerVersion = "1"
 
-//A function that allows to disable/enable body hashing of requests
+//A function that allows to disable/enable body hashing of requests and headers associated with body content
 type SignerBodyHashPredicate func(r *http.Request) bool
 
 //ociRequestSigner implements the http-signatures-draft spec
@@ -51,6 +51,8 @@ func defaultRequestSigner(provider KeyProvider) HttpRequestSigner {
 	return RequestSigner(provider, defaultGenericHeaders, defaultBodyHeaders)
 }
 
+// Creates a signer that utilizes the specified headers for signing
+// and the default predicate for using the body of the request as part of the signature
 func RequestSigner(provider KeyProvider, genericHeaders, bodyHeaders []string) HttpRequestSigner {
 	return ociRequestSigner{
 		KeyProvider:    provider,
@@ -59,7 +61,9 @@ func RequestSigner(provider KeyProvider, genericHeaders, bodyHeaders []string) H
 		ShouldHashBody: defaultBodyHashPredicate}
 }
 
-func RequestSignerWithoutBodyHashing(provider KeyProvider, genericHeaders, bodyHeaders []string, shouldHashBody SignerBodyHashPredicate) HttpRequestSigner {
+// Creates a signer that utilizes the specified header for signing, as well as a predicate for using
+// the body of the request as part of the signature
+func RequestSignerWithBodyHashingPredicate(provider KeyProvider, genericHeaders, bodyHeaders []string, shouldHashBody SignerBodyHashPredicate) HttpRequestSigner {
 	return ociRequestSigner{
 		KeyProvider:    provider,
 		GenericHeaders: genericHeaders,
@@ -144,6 +148,7 @@ func hashAndEncode(data []byte) string {
 	return hash
 }
 
+// Creates a base64 string from the hash of body the request
 func GetBodyHash(request *http.Request) (hashString string, err error) {
 	if request.Body == nil {
 		return "", fmt.Errorf("can not read body of request while calculating body hash, nil body?")

@@ -25,7 +25,7 @@ func buildSigner(configProvider common.ConfigurationProvider) common.HttpRequest
 	shouldHashBody := func(r *http.Request) bool {
 		return r.Method == http.MethodPost
 	}
-	signer := common.RequestSignerWithoutBodyHashing(configProvider, objStorageHeaders, defaultBodyHeaders, shouldHashBody)
+	signer := common.RequestSignerWithBodyHashingPredicate(configProvider, objStorageHeaders, defaultBodyHeaders, shouldHashBody)
 	return signer
 }
 
