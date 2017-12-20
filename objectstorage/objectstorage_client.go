@@ -202,7 +202,6 @@ func (client ObjectStorageClient) GetObject(ctx context.Context, request GetObje
 	}
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return

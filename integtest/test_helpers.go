@@ -15,7 +15,8 @@ import (
 	"time"
 	"math/rand"
 	"io"
-	"bufio"
+	"crypto/sha256"
+	"encoding/hex"
 )
 
 const (
@@ -197,16 +198,14 @@ func writeTempFile(data string) (filename string) {
 	return
 }
 
-func writeTempFileOfSize(filesize int64) (string, int64) {
-	var written int64
+func writeTempFileOfSize(filesize int64) (string, int64, string) {
+	hash := sha256.New()
 	f, _ := ioutil.TempFile("", "gosdkTestintegtest")
 	ra := rand.New(rand.NewSource(time.Now().UnixNano()))
 	defer f.Close()
-	for written = 0; written < filesize; {
-		b, _ := io.CopyN(f, ra, 1024)
-		written += int64(b)
-	}
-	return f.Name(), written
+	writer := io.MultiWriter(f, hash)
+	written, _ := io.CopyN(writer, ra, filesize)
+	return f.Name(), written, hex.EncodeToString(hash.Sum(nil))
 }
 
 
