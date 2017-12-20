@@ -274,6 +274,12 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 			err = fmt.Errorf("Can not marshal field: %s. It needs to contain valid contributesTo tag", sf.Name)
 		}
 	}
+
+	//If the content type was not set, we default to application/json
+	if request.Header.Get("Content-Type") == "" {
+		 request.Header.Set("Content-Type", "application/json")
+	}
+
 	return
 }
 
