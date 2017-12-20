@@ -122,6 +122,11 @@ func getHomeFolder() string {
 
 //Create a new default client for a given region, with a default config provider
 func NewClientForRegion(region Region) (client BaseClient) {
+	provider := DefaultConfigProvider()
+	return DefaultBaseClient(region, provider)
+}
+
+func DefaultConfigProvider() ConfigurationProvider {
 	homeFolder := getHomeFolder()
 	defaultConfigFile := path.Join(homeFolder, defaultConfigDirName, defaultConfigFileName)
 	secondaryConfigFile := path.Join(homeFolder, secondorayConfigDirName, defaultConfigFileName)
@@ -132,7 +137,7 @@ func NewClientForRegion(region Region) (client BaseClient) {
 
 	provider, _ := ComposingConfigurationProvider([]ConfigurationProvider{defaultFileProvider, secondaryFileProvider, environmentProvider})
 	Debugf("Configuration provided by: %s", provider)
-	return DefaultBaseClient(region, provider)
+	return provider
 }
 
 func (client *BaseClient) prepareRequest(request *http.Request) (err error) {

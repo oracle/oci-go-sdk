@@ -23,12 +23,9 @@ import (
 	"encoding/hex"
 )
 
-var (
-	testRegionForObjectStorage = common.REGION_PHX
-)
 
 func getNamespace(t *testing.T) string {
-	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	c, err := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	request := objectstorage.GetNamespaceRequest{}
 	r, err := c.GetNamespace(context.Background(), request)
 	failIfError(t, err)
@@ -36,7 +33,7 @@ func getNamespace(t *testing.T) string {
 }
 
 func getObject(t *testing.T, namespace, bucketname, objectname string) (objectstorage.GetObjectResponse, error){
-	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	request := objectstorage.GetObjectRequest{
 		NamespaceName:      &namespace,
 		BucketName:         &bucketname,
@@ -47,7 +44,7 @@ func getObject(t *testing.T, namespace, bucketname, objectname string) (objectst
 }
 
 func putObject(t *testing.T, namespace, bucketname, objectname string, contentLen int, content io.ReadCloser) error {
-	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	request := objectstorage.PutObjectRequest{
 		NamespaceName: &namespace,
 		BucketName: &bucketname,
@@ -59,7 +56,7 @@ func putObject(t *testing.T, namespace, bucketname, objectname string, contentLe
 }
 
 func createBucket(t *testing.T, namespace, compartment, name string){
-	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	request := objectstorage.CreateBucketRequest{
 		NamespaceName:&namespace,
 
@@ -72,7 +69,7 @@ func createBucket(t *testing.T, namespace, compartment, name string){
 }
 
 func deleteBucket(t *testing.T, namespace, name string)(err error){
-	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	request := objectstorage.DeleteBucketRequest{
 		NamespaceName:&namespace,
 		BucketName:&name,
@@ -83,7 +80,7 @@ func deleteBucket(t *testing.T, namespace, name string)(err error){
 }
 
 func deleteObject(t *testing.T, namespace, bucketname, objectname string)(err error){
-	c := objectstorage.NewObjectStorageClientForRegion(getRegion())
+	c,_ := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	request := objectstorage.DeleteObjectRequest{
 		NamespaceName:&namespace,
 		BucketName: &bucketname,
@@ -172,7 +169,8 @@ func TestObjectStorageClient_Bucket(t *testing.T) {
 
 func TestObjectStorageClient_AbortMultipartUpload(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.AbortMultipartUploadRequest{}
 	err := c.AbortMultipartUpload(context.Background(), request)
 	assert.NoError(t, err)
@@ -181,7 +179,8 @@ func TestObjectStorageClient_AbortMultipartUpload(t *testing.T) {
 
 func TestObjectStorageClient_CommitMultipartUpload(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.CommitMultipartUploadRequest{}
 	err := c.CommitMultipartUpload(context.Background(), request)
 	assert.NoError(t, err)
@@ -191,7 +190,8 @@ func TestObjectStorageClient_CommitMultipartUpload(t *testing.T) {
 
 func TestObjectStorageClient_CreateMultipartUpload(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.CreateMultipartUploadRequest{}
 	r, err := c.CreateMultipartUpload(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -201,7 +201,8 @@ func TestObjectStorageClient_CreateMultipartUpload(t *testing.T) {
 
 func TestObjectStorageClient_CreatePreauthenticatedRequest(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.CreatePreauthenticatedRequestRequest{}
 	r, err := c.CreatePreauthenticatedRequest(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -211,7 +212,8 @@ func TestObjectStorageClient_CreatePreauthenticatedRequest(t *testing.T) {
 
 func TestObjectStorageClient_DeleteBucket(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.DeleteBucketRequest{}
 	err := c.DeleteBucket(context.Background(), request)
 	assert.NoError(t, err)
@@ -220,7 +222,8 @@ func TestObjectStorageClient_DeleteBucket(t *testing.T) {
 
 func TestObjectStorageClient_DeleteObject(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.DeleteObjectRequest{}
 	err := c.DeleteObject(context.Background(), request)
 	assert.NoError(t, err)
@@ -229,7 +232,8 @@ func TestObjectStorageClient_DeleteObject(t *testing.T) {
 
 func TestObjectStorageClient_DeletePreauthenticatedRequest(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.DeletePreauthenticatedRequestRequest{}
 	err := c.DeletePreauthenticatedRequest(context.Background(), request)
 	assert.NoError(t, err)
@@ -238,7 +242,8 @@ func TestObjectStorageClient_DeletePreauthenticatedRequest(t *testing.T) {
 
 func TestObjectStorageClient_GetBucket(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.GetBucketRequest{}
 	r, err := c.GetBucket(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -246,11 +251,10 @@ func TestObjectStorageClient_GetBucket(t *testing.T) {
 	return
 }
 
-
-
 func TestObjectStorageClient_GetPreauthenticatedRequest(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.GetPreauthenticatedRequestRequest{}
 	r, err := c.GetPreauthenticatedRequest(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -260,7 +264,8 @@ func TestObjectStorageClient_GetPreauthenticatedRequest(t *testing.T) {
 
 func TestObjectStorageClient_HeadBucket(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.HeadBucketRequest{}
 	err := c.HeadBucket(context.Background(), request)
 	assert.NoError(t, err)
@@ -269,7 +274,8 @@ func TestObjectStorageClient_HeadBucket(t *testing.T) {
 
 func TestObjectStorageClient_HeadObject(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.HeadObjectRequest{}
 	err := c.HeadObject(context.Background(), request)
 	assert.NoError(t, err)
@@ -278,7 +284,8 @@ func TestObjectStorageClient_HeadObject(t *testing.T) {
 
 func TestObjectStorageClient_ListBuckets(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.ListBucketsRequest{}
 	r, err := c.ListBuckets(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -288,7 +295,8 @@ func TestObjectStorageClient_ListBuckets(t *testing.T) {
 
 func TestObjectStorageClient_ListMultipartUploadParts(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.ListMultipartUploadPartsRequest{}
 	r, err := c.ListMultipartUploadParts(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -298,7 +306,8 @@ func TestObjectStorageClient_ListMultipartUploadParts(t *testing.T) {
 
 func TestObjectStorageClient_ListMultipartUploads(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.ListMultipartUploadsRequest{}
 	r, err := c.ListMultipartUploads(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -308,7 +317,8 @@ func TestObjectStorageClient_ListMultipartUploads(t *testing.T) {
 
 func TestObjectStorageClient_ListObjects(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.ListObjectsRequest{}
 	r, err := c.ListObjects(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -318,7 +328,8 @@ func TestObjectStorageClient_ListObjects(t *testing.T) {
 
 func TestObjectStorageClient_ListPreauthenticatedRequests(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.ListPreauthenticatedRequestsRequest{}
 	r, err := c.ListPreauthenticatedRequests(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -329,7 +340,8 @@ func TestObjectStorageClient_ListPreauthenticatedRequests(t *testing.T) {
 
 func TestObjectStorageClient_UpdateBucket(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.UpdateBucketRequest{}
 	r, err := c.UpdateBucket(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -339,7 +351,8 @@ func TestObjectStorageClient_UpdateBucket(t *testing.T) {
 
 func TestObjectStorageClient_UploadPart(t *testing.T) {
 	t.Skip("Not implemented")
-	c := objectstorage.NewObjectStorageClientForRegion(testRegionForObjectStorage)
+	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, e)
 	request := objectstorage.UploadPartRequest{}
 	err := c.UploadPart(context.Background(), request)
 	assert.NoError(t, err)

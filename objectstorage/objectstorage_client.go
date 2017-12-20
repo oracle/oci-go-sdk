@@ -19,12 +19,14 @@ type ObjectStorageClient struct {
 	common.BaseClient
 }
 
-// Create a new default ObjectStorage client for a given region and default configuration provider
-func NewObjectStorageClientForRegion(region common.Region) (client ObjectStorageClient) {
-	client = ObjectStorageClient{BaseClient: common.NewClientForRegion(region)}
-
-	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "objectstorage", string(region))
-	return
+func buildSigner(configProvider common.ConfigurationProvider) common.HttpRequestSigner {
+	objStorageHeaders := []string{"date", "(request-target)", "host"}
+	defaultBodyHeaders := []string{"content-length", "content-type", "x-content-sha256"}
+	shouldHashBody := func(r *http.Request) bool {
+		return r.Method == http.MethodPost
+	}
+	signer := common.RequestSignerWithoutBodyHashing(configProvider, objStorageHeaders, defaultBodyHeaders, shouldHashBody)
+	return signer
 }
 
 // Create a new default ObjectStorage client with the given configuration provider.
@@ -34,6 +36,7 @@ func NewObjectStorageClientWithConfigurationProvider(configProvider common.Confi
 	if err != nil {
 		return
 	}
+	baseClient.Signer = buildSigner(configProvider)
 
 	client = ObjectStorageClient{BaseClient: baseClient}
 	region, err := configProvider.Region()

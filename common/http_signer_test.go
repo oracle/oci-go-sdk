@@ -81,7 +81,9 @@ func TestOCIRequestSigner_SigningString(t *testing.T) {
 	s := ociRequestSigner{
 		KeyProvider:    testKeyProvider{},
 		GenericHeaders: defaultGenericHeaders,
+		ShouldHashBody: defaultBodyHashPredicate,
 		BodyHeaders:    defaultBodyHeaders}
+
 	url, _ := url.Parse(testURL)
 	r := http.Request{
 		Proto:      "HTTP/1.1",
@@ -101,6 +103,7 @@ func TestOCIRequestSigner_ComputeSignature(t *testing.T) {
 	s := ociRequestSigner{
 		KeyProvider:    testKeyProvider{},
 		GenericHeaders: defaultGenericHeaders,
+		ShouldHashBody: defaultBodyHashPredicate,
 		BodyHeaders:    defaultBodyHeaders}
 	url, _ := url.Parse(testURL)
 	r := http.Request{
@@ -122,6 +125,7 @@ func TestOCIRequestSigner_Sign(t *testing.T) {
 	s := ociRequestSigner{
 		KeyProvider:    testKeyProvider{},
 		GenericHeaders: defaultGenericHeaders,
+		ShouldHashBody: defaultBodyHashPredicate,
 		BodyHeaders:    defaultBodyHeaders}
 	url, _ := url.Parse(testURL)
 	r := http.Request{
@@ -150,6 +154,7 @@ func TestOCIRequestSigner_SignString2(t *testing.T) {
 	s := ociRequestSigner{
 		KeyProvider:    testKeyProvider{},
 		GenericHeaders: defaultGenericHeaders,
+		ShouldHashBody: defaultBodyHashPredicate,
 		BodyHeaders:    defaultBodyHeaders}
 	u, _ := url.Parse(testURL2)
 	r := http.Request{
@@ -177,6 +182,7 @@ func TestOCIRequestSigner_ComputeSignature2(t *testing.T) {
 	s := ociRequestSigner{
 		KeyProvider:    testKeyProvider{},
 		GenericHeaders: defaultGenericHeaders,
+		ShouldHashBody: defaultBodyHashPredicate,
 		BodyHeaders:    defaultBodyHeaders}
 	u, _ := url.Parse(testURL2)
 	r := http.Request{
@@ -205,6 +211,7 @@ func TestOCIRequestSigner_Sign2(t *testing.T) {
 	s := ociRequestSigner{
 		KeyProvider:    testKeyProvider{},
 		GenericHeaders: defaultGenericHeaders,
+		ShouldHashBody: defaultBodyHashPredicate,
 		BodyHeaders:    defaultBodyHeaders}
 	u, _ := url.Parse(testURL2)
 	r := http.Request{
@@ -230,7 +237,9 @@ func TestOCIRequestSigner_Sign2(t *testing.T) {
 }
 
 func TestOCIRequestSigner_SignEmptyBody(t *testing.T) {
-	s := ociRequestSigner{KeyProvider: testKeyProvider{}}
+	s := ociRequestSigner{KeyProvider: testKeyProvider{},
+		ShouldHashBody: defaultBodyHashPredicate,
+	}
 	u, _ := url.Parse(testURL2)
 	r := http.Request{
 		Proto:      "HTTP/1.1",

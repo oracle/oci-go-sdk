@@ -277,7 +277,7 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 
 	//If headers are and the content type was not set, we default to application/json
 	if request.Header != nil && request.Header.Get("Content-Type") == "" {
-		 request.Header.Set("Content-Type", "application/json")
+		request.Header.Set("Content-Type", "application/json")
 	}
 
 	return
