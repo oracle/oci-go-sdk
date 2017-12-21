@@ -7,11 +7,11 @@ import (
 	"net/http/httputil"
 	"net/url"
 	"os"
+	"os/user"
 	"path"
 	"runtime"
 	"strings"
 	"time"
-	"os/user"
 )
 
 const (
@@ -121,7 +121,7 @@ func getHomeFolder() string {
 	current, e := user.Current()
 	if e != nil {
 		//Give up and try to return something sensible
-		home :=  os.Getenv("HOME")
+		home := os.Getenv("HOME")
 		if home == "" {
 			home = os.Getenv("USERPROFILE")
 		}
