@@ -8,8 +8,8 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"testing"
 	"os"
+	"testing"
 )
 
 func TestClient_prepareRequestDefScheme(t *testing.T) {
@@ -261,7 +261,7 @@ region=noregion
 	assert.Error(t, err)
 }
 
-func TestHomeDir(t *testing.T){
+func TestHomeDir(t *testing.T) {
 	h := getHomeFolder()
 	_, e := os.Stat(h)
 	assert.NoError(t, e)
