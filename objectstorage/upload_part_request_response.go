@@ -5,6 +5,7 @@ package objectstorage
 
 import (
 	"github.com/oracle/oci-go-sdk/common"
+	"io"
 	"net/http"
 )
 
@@ -32,7 +33,7 @@ type UploadPartRequest struct {
 	ContentLength *int `mandatory:"true" contributesTo:"header" name:"Content-Length"`
 
 	// The part being uploaded to the Object Storage Service.
-	UploadPartBody *string `mandatory:"true" contributesTo:"body"`
+	UploadPartBody io.ReadCloser `mandatory:"true" contributesTo:"body" encoding:"binary"`
 
 	// The client request ID for tracing.
 	OpcClientRequestID *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`

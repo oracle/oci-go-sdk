@@ -13,6 +13,10 @@ import (
 	"strings"
 	"testing"
 	"time"
+	"math/rand"
+	"io"
+	"crypto/sha256"
+	"encoding/hex"
 )
 
 const (
@@ -180,12 +184,42 @@ func checkLifecycleState(lifecycleState string) func(interface{}) (bool, error) 
 	}
 }
 
+func removeFileFn(filename string) func() {
+	return func() {
+		os.Remove(filename)
+	}
+}
+
+func writeTempFile(data string) (filename string) {
+	f, _ := ioutil.TempFile("", "gosdkTestintegtest")
+	defer f.Close()
+	f.WriteString(data)
+	filename = f.Name()
+	return
+}
+
+func writeTempFileOfSize(filesize int64) (fileName string, fileSize int64, contentHash string) {
+	hash := sha256.New()
+	f, _ := ioutil.TempFile("", "gosdkTestintegtest")
+	ra := rand.New(rand.NewSource(time.Now().UnixNano()))
+	defer f.Close()
+	writer := io.MultiWriter(f, hash)
+	written, _ := io.CopyN(writer, ra, filesize)
+	fileName = f.Name()
+	fileSize = written
+	contentHash = hex.EncodeToString(hash.Sum(nil))
+	return
+}
+
+
+
 func getUuid() string {
 	output, err := exec.Command("uuidgen").Output()
 	if err != nil {
 		panic(err)
 	}
-	return fmt.Sprintf("%s", output)
+	trimmed := strings.TrimSuffix(string(output), "\n")
+	return trimmed
 }
 
 func getUniqueName(base string) string {
@@ -238,3 +272,4 @@ func deleteTestGroup(client identity.IdentityClient, groupId *string) error {
 	req := identity.DeleteGroupRequest{GroupID: groupId}
 	return client.DeleteGroup(context.Background(), req)
 }
+

@@ -96,8 +96,33 @@ func (t *SDKTime) UnmarshalJSON(data []byte) (e error) {
 	if s == "null" {
 		t.Time = time.Time{}
 	} else {
+		//Try parsing with RFC3339
 		t.Time, e = time.Parse(`"`+sdkTimeFormat+`"`, string(data))
 	}
+	return
+}
+
+func tryParsingTimeWithValidFormatsForHeaders(data []byte, headerName string) (t time.Time, err error) {
+	header := strings.ToLower(headerName)
+	switch header {
+	case "lastmodified", "date":
+		t, err = tryParsing(data, time.RFC3339, time.RFC1123, time.RFC850, time.ANSIC)
+		return
+	default: //By default we parse with RFC3339
+		t, err = time.Parse(sdkTimeFormat, string(data))
+		return
+	}
+}
+
+func tryParsing(data []byte, layouts ...string) (tm time.Time, err error) {
+	datestring := string(data)
+	for _, l := range layouts {
+		tm, err = time.Parse(l, datestring)
+		if err == nil {
+			return
+		}
+	}
+	err = fmt.Errorf("Could not parse time with formats ", layouts[:])
 	return
 }
 

@@ -5,8 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/stretchr/testify/assert"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"testing"
@@ -62,8 +64,8 @@ func TestHttpMarshallerInvalidStruct(t *testing.T) {
 
 func TestHttpRequestMarshallerQuery(t *testing.T) {
 	s := listCompartmentsRequest{CompartmentID: "ocid1", Page: "p", Limit: 23}
-	request := &http.Request{}
-	HttpRequestMarshaller(s, request)
+	request := MakeDefaultHttpRequest(http.MethodPost, "/")
+	HttpRequestMarshaller(s, &request)
 	query := request.URL.Query()
 	assert.True(t, query.Get("compartmentId") == "ocid1")
 	assert.True(t, query.Get("page") == "p")
@@ -72,7 +74,6 @@ func TestHttpRequestMarshallerQuery(t *testing.T) {
 
 func TestMakeDefault(t *testing.T) {
 	r := MakeDefaultHttpRequest(http.MethodPost, "/one/two")
-	assert.Equal(t, r.Header.Get("Content-Type"), "application/json")
 	assert.NotEmpty(t, r.Header.Get("Date"))
 	assert.NotEmpty(t, r.Header.Get("Opc-Client-Info"))
 }
@@ -130,6 +131,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 	assert.True(t, request.URL.Query().Get("income") == strconv.FormatFloat(float64(s.Income), 'f', 6, 32))
 	assert.True(t, request.URL.Query().Get("when") == when)
 	assert.Contains(t, content, "description")
+	assert.Equal(t, request.Header.Get("Content-Type"), "application/json")
 	if val, ok := content["description"]; !ok || val != desc {
 		assert.Fail(t, "Should contain: "+desc)
 	}
@@ -499,6 +501,41 @@ func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {
 	assert.Equal(t, someUint, *s.SomeUint)
 	assert.WithinDuration(t, theTime.Time, s.TheTime.Time, delta)
 	assert.Equal(t, "REGION_FRA", *s.Key)
+}
+
+type reqWithBinaryFiled struct {
+	Content io.Reader `mandatory:"true" contributesTo:"body" encoding:"binary"`
+}
+
+func TestMarshalBinaryRequest(t *testing.T) {
+	data := "some data in a file"
+	buffer := bytes.NewBufferString(data)
+	r := reqWithBinaryFiled{Content: ioutil.NopCloser(buffer)}
+	httpRequest, err := MakeDefaultHttpRequestWithTaggedStruct("PUT", "/obj", r)
+	assert.NoError(t, err)
+	all, err := ioutil.ReadAll(httpRequest.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, data, string(all))
+}
+
+type structWithBinaryField struct {
+	Content io.Reader `presentIn:"body" encoding:"binary"`
+}
+
+func TestUnmarshalResponse(t *testing.T) {
+	data := "some data in a file"
+	filename := writeTempFile(data)
+	defer removeFileFn(filename)
+	file, _ := os.Open(filename)
+	header := http.Header{}
+	r := http.Response{Header: header}
+	r.Body = ioutil.NopCloser(file)
+	s := structWithBinaryField{}
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	all, e := ioutil.ReadAll(s.Content)
+	assert.NoError(t, e)
+	assert.Equal(t, data, string(all))
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

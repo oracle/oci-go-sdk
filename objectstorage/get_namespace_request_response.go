@@ -26,7 +26,7 @@ type GetNamespaceResponse struct {
 	RawResponse *http.Response
 
 	// The string instance
-	value string `presentIn:"body"`
+	Value *string `presentIn:"body"`
 }
 
 func (response GetNamespaceResponse) String() string {

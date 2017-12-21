@@ -7,11 +7,11 @@ import (
 	"net/http/httputil"
 	"net/url"
 	"os"
+	"os/user"
 	"path"
 	"runtime"
 	"strings"
 	"time"
-	"os/user"
 )
 
 const (
@@ -22,7 +22,8 @@ const (
 	defaultTimeout           = time.Second * 30
 	defaultConfigFileName    = "config"
 	defaultConfigDirName     = ".oci"
-	secondorayConfigDirName  = ".oraclebmc"
+	secondaryConfigDirName   = ".oraclebmc"
+	maxBodyLenForDebug       = 1024 * 1000
 )
 
 type RequestInterceptor func(*http.Request) error
@@ -120,7 +121,7 @@ func getHomeFolder() string {
 	current, e := user.Current()
 	if e != nil {
 		//Give up and try to return something sensible
-		home :=  os.Getenv("HOME")
+		home := os.Getenv("HOME")
 		if home == "" {
 			home = os.Getenv("USERPROFILE")
 		}
@@ -131,9 +132,14 @@ func getHomeFolder() string {
 
 //Create a new default client for a given region, with a default config provider
 func NewClientForRegion(region Region) (client BaseClient) {
+	provider := DefaultConfigProvider()
+	return DefaultBaseClient(region, provider)
+}
+
+func DefaultConfigProvider() ConfigurationProvider {
 	homeFolder := getHomeFolder()
 	defaultConfigFile := path.Join(homeFolder, defaultConfigDirName, defaultConfigFileName)
-	secondaryConfigFile := path.Join(homeFolder, secondorayConfigDirName, defaultConfigFileName)
+	secondaryConfigFile := path.Join(homeFolder, secondaryConfigDirName, defaultConfigFileName)
 
 	defaultFileProvider, _ := ConfigurationProviderFromFile(defaultConfigFile, "")
 	secondaryFileProvider, _ := ConfigurationProviderFromFile(secondaryConfigFile, "")
@@ -141,7 +147,7 @@ func NewClientForRegion(region Region) (client BaseClient) {
 
 	provider, _ := ComposingConfigurationProvider([]ConfigurationProvider{defaultFileProvider, secondaryFileProvider, environmentProvider})
 	Debugf("Configuration provided by: %s", provider)
-	return DefaultBaseClient(region, provider)
+	return provider
 }
 
 func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
@@ -208,7 +214,12 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 	}
 
 	IfDebug(func() {
-		if dump, e := httputil.DumpRequest(request, true); e == nil {
+		dumpBody := true
+		if request.ContentLength > maxBodyLenForDebug {
+			Logln("not dumping body too big")
+			dumpBody = false
+		}
+		if dump, e := httputil.DumpRequest(request, dumpBody); e == nil {
 			Logf("Dump Request %v", string(dump))
 		} else {
 			Debugln(e)
@@ -224,7 +235,13 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 			return
 		}
 
-		if dump, e := httputil.DumpResponse(response, true); e == nil {
+		dumpBody := true
+		if response.ContentLength > maxBodyLenForDebug {
+			Logln("not dumping body too big")
+			dumpBody = false
+		}
+
+		if dump, e := httputil.DumpResponse(response, dumpBody); e == nil {
 			Logf("Dump Response %v", string(dump))
 		} else {
 			Debugln(e)

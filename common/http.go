@@ -60,11 +60,34 @@ func toStringValue(v reflect.Value, field reflect.StructField) (string, error) {
 	}
 }
 
+func addBinaryBody(request *http.Request, value reflect.Value) (e error) {
+	readCloser, ok := value.Interface().(io.ReadCloser)
+	if !ok {
+		e = fmt.Errorf("Body of the request needs to be an io.ReadCloser interface. Can not marshal body of binary request")
+		return
+	}
+
+	request.Body = readCloser
+
+	//Set the default content type to application/octet-stream if not set
+	if request.Header.Get("Content-Type") == "" {
+		request.Header.Set("Content-Type", "application/octet-stream")
+	}
+	return nil
+}
+
 func addToBody(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
 	Debugln("Marshaling to body from field:", field.Name)
 	if request.Body != nil {
 		Logln("The body of the request is already set. Structure: ", field.Name, " will overwrite it")
 	}
+	tag := field.Tag
+	encoding := tag.Get("encoding")
+
+	if encoding == "binary" {
+		return addBinaryBody(request, value)
+	}
+
 	marshaled, e := json.Marshal(value.Interface())
 	if e != nil {
 		return
@@ -73,6 +96,7 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 	bodyBytes := bytes.NewReader(marshaled)
 	request.ContentLength = int64(bodyBytes.Len())
 	request.Header.Set("Content-Length", strconv.FormatInt(request.ContentLength, 10))
+	request.Header.Set("Content-Type", "application/json")
 	request.Body = ioutil.NopCloser(bodyBytes)
 	request.GetBody = func() (io.ReadCloser, error) {
 		return ioutil.NopCloser(bodyBytes), nil
@@ -147,6 +171,19 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 	}
 }
 
+func setWellKnownHeaders(request *http.Request, headerName, headerValue string) (e error) {
+	switch strings.ToLower(headerName) {
+	case "content-length":
+		var len int
+		len, e = strconv.Atoi(headerValue)
+		if e != nil {
+			return
+		}
+		request.ContentLength = int64(len)
+	}
+	return nil
+}
+
 func addToHeader(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
 	Debugln("Marshaling to header from field:", field.Name)
 	if request.Header == nil {
@@ -172,6 +209,10 @@ func addToHeader(request *http.Request, value reflect.Value, field reflect.Struc
 
 	//Otherwise get value and set header
 	if headerValue, e = toStringValue(value, field); e != nil {
+		return
+	}
+
+	if e = setWellKnownHeaders(request, headerName, headerValue); e != nil {
 		return
 	}
 
@@ -233,6 +274,12 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 			err = fmt.Errorf("Can not marshal field: %s. It needs to contain valid contributesTo tag", sf.Name)
 		}
 	}
+
+	//If headers are and the content type was not set, we default to application/json
+	if request.Header != nil && request.Header.Get("Content-Type") == "" {
+		request.Header.Set("Content-Type", "application/json")
+	}
+
 	return
 }
 
@@ -270,7 +317,6 @@ func MakeDefaultHttpRequest(method, path string) (httpRequest http.Request) {
 	}
 
 	httpRequest.Header.Set("Content-Length", "0")
-	httpRequest.Header.Set("Content-Type", "application/json")
 	httpRequest.Header.Set("Date", time.Now().UTC().Format(http.TimeFormat))
 	httpRequest.Header.Set("Opc-Client-Info", strings.Join([]string{defaultSDKMarker, Version()}, "/"))
 	httpRequest.Header.Set("Accept", "*/*")
@@ -334,11 +380,11 @@ func intSizeFromKind(kind reflect.Kind) int {
 
 }
 
-func analyzeValue(stringValue string, kind reflect.Kind) (val reflect.Value, valPointer reflect.Value, err error) {
+func analyzeValue(stringValue string, kind reflect.Kind, field reflect.StructField) (val reflect.Value, valPointer reflect.Value, err error) {
 	switch kind {
 	case timeType.Kind():
 		var t time.Time
-		t, err = time.Parse(time.RFC3339, stringValue)
+		t, err = tryParsingTimeWithValidFormatsForHeaders([]byte(stringValue), field.Name)
 		if err != nil {
 			return
 		}
@@ -428,7 +474,7 @@ func fromStringValue(newValue string, val *reflect.Value, field reflect.StructFi
 		kind = field.Type.Elem().Kind()
 	}
 
-	value, valPtr, err := analyzeValue(newValue, kind)
+	value, valPtr, err := analyzeValue(newValue, kind, field)
 	if err != nil {
 		return
 	}
@@ -445,6 +491,34 @@ type PolymorphicJSONUnmarshaler interface {
 	UnmarshalPolymorphicJSON(data []byte) (interface{}, error)
 }
 
+func valueFromPolymorphicJSON(content []byte, unmarshaler PolymorphicJSONUnmarshaler) (val interface{}, err error) {
+	err = json.Unmarshal(content, unmarshaler)
+	if err != nil {
+		return
+	}
+	val, err = unmarshaler.UnmarshalPolymorphicJSON(content)
+	return
+}
+
+func valueFromJSONBody(response *http.Response, value *reflect.Value, unmarshaler PolymorphicJSONUnmarshaler) (val interface{}, err error) {
+	//Consumes the body, consider implementing it
+	//without body consumption
+	var content []byte
+	content, err = ioutil.ReadAll(response.Body)
+	if err != nil {
+		return
+	}
+
+	if unmarshaler != nil {
+		val, err = valueFromPolymorphicJSON(content, unmarshaler)
+		return
+	}
+
+	val = reflect.New(value.Type()).Interface()
+	err = json.Unmarshal(content, &val)
+	return
+}
+
 func addFromBody(response *http.Response, value *reflect.Value, field reflect.StructField, unmarshaler PolymorphicJSONUnmarshaler) (err error) {
 	Debugln("Unmarshaling from body to field:", field.Name)
 	if response.Body == nil {
@@ -452,40 +526,29 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 		return nil
 	}
 
-	//Consumes the body, consider implementing it
-	//without body consumption
-	content, err := ioutil.ReadAll(response.Body)
-	if err != nil {
+	tag := field.Tag
+	encoding := tag.Get("encoding")
+	var iVal interface{}
+	switch encoding {
+	case "binary":
+		value.Set(reflect.ValueOf(response.Body))
 		return
-	}
-
-	if unmarshaler != nil {
-		var uVal interface{}
-		err = json.Unmarshal(content, unmarshaler)
+	case "": //If the encoding is not set. we'll decode with json
+		iVal, err = valueFromJSONBody(response, value, unmarshaler)
 		if err != nil {
 			return
 		}
-		uVal, err = unmarshaler.UnmarshalPolymorphicJSON(content)
-		if err != nil {
-			return
+
+		newVal := reflect.ValueOf(iVal)
+		if newVal.Kind() == reflect.Ptr {
+			newVal = newVal.Elem()
 		}
-		value.Set(reflect.ValueOf(uVal))
+		value.Set(newVal)
+		return
+	default:
+		err = fmt.Errorf("Encoding: %s is invalid. Can not unmarshal body", encoding)
 		return
 	}
-
-	newStruct := reflect.New(value.Type()).Interface()
-
-	err = json.Unmarshal(content, &newStruct)
-	if err != nil {
-		return
-	}
-
-	newVal := reflect.ValueOf(newStruct)
-	if newVal.Kind() == reflect.Ptr {
-		newVal = newVal.Elem()
-	}
-	value.Set(newVal)
-	return
 }
 
 func addFromHeader(response *http.Response, value *reflect.Value, field reflect.StructField) (err error) {
