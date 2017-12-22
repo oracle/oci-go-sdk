@@ -198,14 +198,25 @@ func writeTempFile(data string) (filename string) {
 	return
 }
 
+<<<<<<< HEAD
 func writeTempFileOfSize(filesize int64) (string, int64, string) {
+=======
+func writeTempFileOfSize(filesize int64) (fileName string, fileSize int64, contentHash string) {
+>>>>>>> master
 	hash := sha256.New()
 	f, _ := ioutil.TempFile("", "gosdkTestintegtest")
 	ra := rand.New(rand.NewSource(time.Now().UnixNano()))
 	defer f.Close()
 	writer := io.MultiWriter(f, hash)
 	written, _ := io.CopyN(writer, ra, filesize)
+<<<<<<< HEAD
 	return f.Name(), written, hex.EncodeToString(hash.Sum(nil))
+=======
+	fileName = f.Name()
+	fileSize = written
+	contentHash = hex.EncodeToString(hash.Sum(nil))
+	return
+>>>>>>> master
 }
 
 

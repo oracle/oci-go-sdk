@@ -21,6 +21,9 @@ import (
 	"path"
 	"crypto/sha256"
 	"encoding/hex"
+	"compress/gzip"
+	"bytes"
+	"time"
 )
 
 
@@ -131,6 +134,43 @@ func TestObjectStorageClient_BigFile(t *testing.T) {
 	assert.Equal(t, expectedHash, actualHash)
 }
 
+func TestObjectStorage_GzipFileEncoding(t *testing.T) {
+	bname := getUniqueName("BucketWithZip")
+	objname := getUniqueName("gzippedcontent")
+	namespace := getNamespace(t)
+
+	createBucket(t, getNamespace(t), getTenancyID(), bname)
+	defer deleteBucket(t, namespace, bname)
+
+
+	message := " some random content that will get gzipped"
+	zBytes := bytes.Buffer{}
+	gz := gzip.NewWriter(&zBytes)
+	gz.Write([]byte(message))
+	gz.Close()
+	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	request := objectstorage.PutObjectRequest{
+		NamespaceName: &namespace,
+		BucketName: &bname,
+		ObjectName: &objname,
+		ContentLength:common.Int(zBytes.Len()),
+		PutObjectBody:ioutil.NopCloser(&zBytes),
+		ContentType:common.String("text/plain"),
+		ContentEncoding:common.String("gzip"),
+	}
+	e := c.PutObject(context.Background(), request)
+	defer deleteObject(t, namespace, bname, objname)
+	failIfError(t, e)
+
+	response, e := getObject(t, namespace, bname, objname)
+	failIfError(t, e)
+
+	//The file is served back by its Content-Type, thus it should not be gzipped anymore
+	content, e := ioutil.ReadAll(response.Content)
+	failIfError(t, e)
+	assert.Equal(t, message, string(content))
+}
+
 func TestObjectStorageClient_Object(t *testing.T) {
 	bname := getUniqueName("bucket")
 	data := "some temp data"
@@ -160,11 +200,34 @@ func TestObjectStorageClient_Object(t *testing.T) {
 	return
 }
 
-func TestObjectStorageClient_Bucket(t *testing.T) {
-	bname := getUniqueName("bucket")
+
+func TestObjectStorageClient_AbortUpload(t *testing.T) {
+	bname := getUniqueName("abortUpload")
+	namespace := getNamespace(t)
+
 	createBucket(t, getNamespace(t), getTenancyID(), bname)
-	defer deleteBucket(t, getNamespace(t), bname)
-	return
+	defer deleteBucket(t, namespace, bname)
+
+	contentlen := 1024 * 100
+	filepath, filesize, _ := writeTempFileOfSize(int64(contentlen))
+	filename := path.Base(filepath)
+	defer removeFileFn(filepath)
+	file, e := os.Open(filepath)
+	defer file.Close()
+	failIfError(t, e)
+
+	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	request := objectstorage.PutObjectRequest{
+		NamespaceName: &namespace,
+		BucketName: &bname,
+		ObjectName: &filename,
+		ContentLength:common.Int(int(filesize)),
+		PutObjectBody:file,
+	}
+	ctx, cancelFn := context.WithTimeout(context.Background(), 10*time.Millisecond)
+	defer cancelFn()
+	e = c.PutObject(ctx, request)
+	assert.Error(t, e)
 }
 
 func TestObjectStorageClient_AbortMultipartUpload(t *testing.T) {
@@ -210,26 +273,6 @@ func TestObjectStorageClient_CreatePreauthenticatedRequest(t *testing.T) {
 	return
 }
 
-func TestObjectStorageClient_DeleteBucket(t *testing.T) {
-	t.Skip("Not implemented")
-	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, e)
-	request := objectstorage.DeleteBucketRequest{}
-	err := c.DeleteBucket(context.Background(), request)
-	assert.NoError(t, err)
-	return
-}
-
-func TestObjectStorageClient_DeleteObject(t *testing.T) {
-	t.Skip("Not implemented")
-	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, e)
-	request := objectstorage.DeleteObjectRequest{}
-	err := c.DeleteObject(context.Background(), request)
-	assert.NoError(t, err)
-	return
-}
-
 func TestObjectStorageClient_DeletePreauthenticatedRequest(t *testing.T) {
 	t.Skip("Not implemented")
 	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
@@ -240,16 +283,6 @@ func TestObjectStorageClient_DeletePreauthenticatedRequest(t *testing.T) {
 	return
 }
 
-func TestObjectStorageClient_GetBucket(t *testing.T) {
-	t.Skip("Not implemented")
-	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, e)
-	request := objectstorage.GetBucketRequest{}
-	r, err := c.GetBucket(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
 
 func TestObjectStorageClient_GetPreauthenticatedRequest(t *testing.T) {
 	t.Skip("Not implemented")

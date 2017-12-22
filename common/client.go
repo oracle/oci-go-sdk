@@ -22,7 +22,7 @@ const (
 	defaultTimeout           = time.Second * 30
 	defaultConfigFileName    = "config"
 	defaultConfigDirName     = ".oci"
-	secondorayConfigDirName  = ".oraclebmc"
+	secondaryConfigDirName   = ".oraclebmc"
 	maxBodyLenForDebug       = 1024 * 1000
 )
 
@@ -139,7 +139,7 @@ func NewClientForRegion(region Region) (client BaseClient) {
 func DefaultConfigProvider() ConfigurationProvider {
 	homeFolder := getHomeFolder()
 	defaultConfigFile := path.Join(homeFolder, defaultConfigDirName, defaultConfigFileName)
-	secondaryConfigFile := path.Join(homeFolder, secondorayConfigDirName, defaultConfigFileName)
+	secondaryConfigFile := path.Join(homeFolder, secondaryConfigDirName, defaultConfigFileName)
 
 	defaultFileProvider, _ := ConfigurationProviderFromFile(defaultConfigFile, "")
 	secondaryFileProvider, _ := ConfigurationProviderFromFile(secondaryConfigFile, "")
