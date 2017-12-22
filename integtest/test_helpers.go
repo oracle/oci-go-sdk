@@ -246,7 +246,7 @@ func deleteTestUser(client identity.IdentityClient, userID *string) error {
 }
 
 func validAD() string {
-	c := identity.NewIdentityClientForRegion(DEF_REGION)
+	c, _ := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	req := identity.ListAvailabilityDomainsRequest{}
 	req.CompartmentID = common.String(getCompartmentID())
 	response, _ := c.ListAvailabilityDomains(context.Background(), req)
