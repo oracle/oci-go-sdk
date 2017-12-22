@@ -81,7 +81,7 @@ func defaultHttpDispatcher() http.Client {
 	return httpClient
 }
 
-func DefaultBaseClient(region Region, provider KeyProvider) BaseClient {
+func defaultBaseClient(region Region, provider KeyProvider) BaseClient {
 	dispatcher := defaultHttpDispatcher()
 	signer := defaultRequestSigner(provider)
 	return newBaseClient(signer, &dispatcher, region)
@@ -113,7 +113,7 @@ func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClien
 		return
 	}
 
-	client = DefaultBaseClient(region, configProvider)
+	client = defaultBaseClient(region, configProvider)
 	return
 }
 
@@ -128,12 +128,6 @@ func getHomeFolder() string {
 		return home
 	}
 	return current.HomeDir
-}
-
-//Create a new default client for a given region, with a default config provider
-func NewClientForRegion(region Region) (client BaseClient) {
-	provider := DefaultConfigProvider()
-	return DefaultBaseClient(region, provider)
 }
 
 func DefaultConfigProvider() ConfigurationProvider {
