@@ -3,6 +3,7 @@ package common
 import (
 	"bytes"
 	"context"
+	"crypto/rsa"
 	"fmt"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
@@ -11,6 +12,37 @@ import (
 	"os"
 	"testing"
 )
+
+type customConfig struct {
+	Reg Region
+}
+
+func (c customConfig) Region() (string, error) {
+	return string(c.Reg), nil
+}
+
+func (c customConfig) KeyFingerprint() (string, error) {
+	return "a/a/a", nil
+}
+func (c customConfig) UserOCID() (string, error) {
+	return "ocid", nil
+}
+func (c customConfig) TenancyOCID() (string, error) {
+	return "ocid1", nil
+}
+func (c customConfig) PrivateRSAKey() (*rsa.PrivateKey, error) {
+	key, _ := PrivateKeyFromBytes([]byte(testPrivateKeyConf), nil)
+	return key, nil
+}
+func (c customConfig) KeyID() (string, error) {
+	return "b/b/b", nil
+}
+
+func testClientWithRegion(r Region) BaseClient {
+	p := customConfig{Reg: r}
+	c, _ := NewClientWithConfig(p)
+	return c
+}
 
 func TestClient_prepareRequestDefScheme(t *testing.T) {
 	host := "somehost:9000"
@@ -80,7 +112,7 @@ func TestClient_userAgentBlank(t *testing.T) {
 
 func TestClient_clientForRegion(t *testing.T) {
 	region := REGION_PHX
-	c := NewClientForRegion(region)
+	c := testClientWithRegion(region)
 	assert.Equal(t, defaultUserAgent(), c.UserAgent)
 	assert.NotNil(t, c.HttpClient)
 	assert.Equal(t, region, c.Region)
@@ -96,7 +128,7 @@ func TestClient_customClientForRegion(t *testing.T) {
 	userAgent := "suseragent"
 
 	region := REGION_PHX
-	c := NewClientForRegion(region)
+	c := testClientWithRegion(region)
 	c.Host = host
 	c.UserAgent = userAgent
 	c.BasePath = basePath
@@ -133,7 +165,7 @@ func TestBaseClient_Call(t *testing.T) {
 		StatusCode: 200,
 	}
 	body := `{"key" : "REGION_FRA","name" : "eu-frankfurt-1"}`
-	c := NewClientForRegion(REGION_IAD)
+	c := testClientWithRegion(REGION_IAD)
 	host := "http://somehost:9000"
 	basePath := "basePath/"
 	restPath := "/somepath"
@@ -167,7 +199,7 @@ func TestBaseClient_CallError(t *testing.T) {
 		StatusCode: 400,
 	}
 	body := `{"code" : "some fake error","message" : "fake error not here"}`
-	c := NewClientForRegion(REGION_IAD)
+	c := testClientWithRegion(REGION_IAD)
 	host := "http://somehost:9000"
 	basePath := "basePath/"
 	restPath := "/somepath"

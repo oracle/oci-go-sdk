@@ -9,21 +9,18 @@
 package integtest
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
-	"github.com/oracle/oci-go-sdk/loadbalancer"
 	"context"
 	"fmt"
+	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/loadbalancer"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
-var (
-	testRegionForLoadBalancer = common.REGION_PHX
-)
-
 func TestLoadBalancerClient_CreateBackend(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.CreateBackendRequest{}
 	err := c.CreateBackend(context.Background(), request)
 	assert.NoError(t, err)
@@ -32,7 +29,8 @@ func TestLoadBalancerClient_CreateBackend(t *testing.T) {
 
 func TestLoadBalancerClient_CreateBackendSet(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.CreateBackendSetRequest{}
 	err := c.CreateBackendSet(context.Background(), request)
 	assert.NoError(t, err)
@@ -41,7 +39,8 @@ func TestLoadBalancerClient_CreateBackendSet(t *testing.T) {
 
 func TestLoadBalancerClient_CreateCertificate(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.CreateCertificateRequest{}
 	err := c.CreateCertificate(context.Background(), request)
 	assert.NoError(t, err)
@@ -50,7 +49,8 @@ func TestLoadBalancerClient_CreateCertificate(t *testing.T) {
 
 func TestLoadBalancerClient_CreateListener(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.CreateListenerRequest{}
 	err := c.CreateListener(context.Background(), request)
 	assert.NoError(t, err)
@@ -59,7 +59,8 @@ func TestLoadBalancerClient_CreateListener(t *testing.T) {
 
 func TestLoadBalancerClient_CreateLoadBalancer(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.CreateLoadBalancerRequest{}
 	err := c.CreateLoadBalancer(context.Background(), request)
 	assert.NoError(t, err)
@@ -68,7 +69,8 @@ func TestLoadBalancerClient_CreateLoadBalancer(t *testing.T) {
 
 func TestLoadBalancerClient_DeleteBackend(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.DeleteBackendRequest{}
 	err := c.DeleteBackend(context.Background(), request)
 	assert.NoError(t, err)
@@ -77,7 +79,8 @@ func TestLoadBalancerClient_DeleteBackend(t *testing.T) {
 
 func TestLoadBalancerClient_DeleteBackendSet(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.DeleteBackendSetRequest{}
 	err := c.DeleteBackendSet(context.Background(), request)
 	assert.NoError(t, err)
@@ -86,7 +89,8 @@ func TestLoadBalancerClient_DeleteBackendSet(t *testing.T) {
 
 func TestLoadBalancerClient_DeleteCertificate(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.DeleteCertificateRequest{}
 	err := c.DeleteCertificate(context.Background(), request)
 	assert.NoError(t, err)
@@ -95,7 +99,8 @@ func TestLoadBalancerClient_DeleteCertificate(t *testing.T) {
 
 func TestLoadBalancerClient_DeleteListener(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.DeleteListenerRequest{}
 	err := c.DeleteListener(context.Background(), request)
 	assert.NoError(t, err)
@@ -104,7 +109,8 @@ func TestLoadBalancerClient_DeleteListener(t *testing.T) {
 
 func TestLoadBalancerClient_DeleteLoadBalancer(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.DeleteLoadBalancerRequest{}
 	err := c.DeleteLoadBalancer(context.Background(), request)
 	assert.NoError(t, err)
@@ -113,7 +119,8 @@ func TestLoadBalancerClient_DeleteLoadBalancer(t *testing.T) {
 
 func TestLoadBalancerClient_GetBackend(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.GetBackendRequest{}
 	r, err := c.GetBackend(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -123,7 +130,8 @@ func TestLoadBalancerClient_GetBackend(t *testing.T) {
 
 func TestLoadBalancerClient_GetBackendHealth(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.GetBackendHealthRequest{}
 	r, err := c.GetBackendHealth(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -133,7 +141,8 @@ func TestLoadBalancerClient_GetBackendHealth(t *testing.T) {
 
 func TestLoadBalancerClient_GetBackendSet(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.GetBackendSetRequest{}
 	r, err := c.GetBackendSet(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -143,7 +152,8 @@ func TestLoadBalancerClient_GetBackendSet(t *testing.T) {
 
 func TestLoadBalancerClient_GetBackendSetHealth(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.GetBackendSetHealthRequest{}
 	r, err := c.GetBackendSetHealth(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -153,7 +163,8 @@ func TestLoadBalancerClient_GetBackendSetHealth(t *testing.T) {
 
 func TestLoadBalancerClient_GetHealthChecker(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.GetHealthCheckerRequest{}
 	r, err := c.GetHealthChecker(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -163,7 +174,8 @@ func TestLoadBalancerClient_GetHealthChecker(t *testing.T) {
 
 func TestLoadBalancerClient_GetLoadBalancer(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.GetLoadBalancerRequest{}
 	r, err := c.GetLoadBalancer(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -173,7 +185,8 @@ func TestLoadBalancerClient_GetLoadBalancer(t *testing.T) {
 
 func TestLoadBalancerClient_GetLoadBalancerHealth(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.GetLoadBalancerHealthRequest{}
 	r, err := c.GetLoadBalancerHealth(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -183,7 +196,8 @@ func TestLoadBalancerClient_GetLoadBalancerHealth(t *testing.T) {
 
 func TestLoadBalancerClient_GetWorkRequest(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.GetWorkRequestRequest{}
 	r, err := c.GetWorkRequest(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -193,7 +207,8 @@ func TestLoadBalancerClient_GetWorkRequest(t *testing.T) {
 
 func TestLoadBalancerClient_ListBackendSets(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.ListBackendSetsRequest{}
 	r, err := c.ListBackendSets(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -203,7 +218,8 @@ func TestLoadBalancerClient_ListBackendSets(t *testing.T) {
 
 func TestLoadBalancerClient_ListBackends(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.ListBackendsRequest{}
 	r, err := c.ListBackends(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -213,7 +229,8 @@ func TestLoadBalancerClient_ListBackends(t *testing.T) {
 
 func TestLoadBalancerClient_ListCertificates(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.ListCertificatesRequest{}
 	r, err := c.ListCertificates(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -223,7 +240,8 @@ func TestLoadBalancerClient_ListCertificates(t *testing.T) {
 
 func TestLoadBalancerClient_ListLoadBalancerHealths(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.ListLoadBalancerHealthsRequest{}
 	r, err := c.ListLoadBalancerHealths(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -233,7 +251,8 @@ func TestLoadBalancerClient_ListLoadBalancerHealths(t *testing.T) {
 
 func TestLoadBalancerClient_ListLoadBalancers(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.ListLoadBalancersRequest{}
 	r, err := c.ListLoadBalancers(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -243,7 +262,8 @@ func TestLoadBalancerClient_ListLoadBalancers(t *testing.T) {
 
 func TestLoadBalancerClient_ListPolicies(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.ListPoliciesRequest{}
 	r, err := c.ListPolicies(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -253,7 +273,8 @@ func TestLoadBalancerClient_ListPolicies(t *testing.T) {
 
 func TestLoadBalancerClient_ListProtocols(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.ListProtocolsRequest{}
 	r, err := c.ListProtocols(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -263,7 +284,8 @@ func TestLoadBalancerClient_ListProtocols(t *testing.T) {
 
 func TestLoadBalancerClient_ListShapes(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.ListShapesRequest{}
 	r, err := c.ListShapes(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -273,7 +295,8 @@ func TestLoadBalancerClient_ListShapes(t *testing.T) {
 
 func TestLoadBalancerClient_ListWorkRequests(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.ListWorkRequestsRequest{}
 	r, err := c.ListWorkRequests(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -283,7 +306,8 @@ func TestLoadBalancerClient_ListWorkRequests(t *testing.T) {
 
 func TestLoadBalancerClient_UpdateBackend(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.UpdateBackendRequest{}
 	err := c.UpdateBackend(context.Background(), request)
 	assert.NoError(t, err)
@@ -292,7 +316,8 @@ func TestLoadBalancerClient_UpdateBackend(t *testing.T) {
 
 func TestLoadBalancerClient_UpdateBackendSet(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.UpdateBackendSetRequest{}
 	err := c.UpdateBackendSet(context.Background(), request)
 	assert.NoError(t, err)
@@ -301,7 +326,8 @@ func TestLoadBalancerClient_UpdateBackendSet(t *testing.T) {
 
 func TestLoadBalancerClient_UpdateHealthChecker(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.UpdateHealthCheckerRequest{}
 	err := c.UpdateHealthChecker(context.Background(), request)
 	assert.NoError(t, err)
@@ -310,7 +336,8 @@ func TestLoadBalancerClient_UpdateHealthChecker(t *testing.T) {
 
 func TestLoadBalancerClient_UpdateListener(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.UpdateListenerRequest{}
 	err := c.UpdateListener(context.Background(), request)
 	assert.NoError(t, err)
@@ -319,7 +346,8 @@ func TestLoadBalancerClient_UpdateListener(t *testing.T) {
 
 func TestLoadBalancerClient_UpdateLoadBalancer(t *testing.T) {
 	t.Skip("Not implemented")
-	c := loadbalancer.NewLoadBalancerClientForRegion(testRegionForLoadBalancer)
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := loadbalancer.UpdateLoadBalancerRequest{}
 	err := c.UpdateLoadBalancer(context.Background(), request)
 	assert.NoError(t, err)

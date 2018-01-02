@@ -19,15 +19,6 @@ type IdentityClient struct {
 	common.BaseClient
 }
 
-// Create a new default Identity client for a given region and default configuration provider
-func NewIdentityClientForRegion(region common.Region) (client IdentityClient) {
-	client = IdentityClient{BaseClient: common.NewClientForRegion(region)}
-
-	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "identity", string(region))
-	client.BasePath = "20160918"
-	return
-}
-
 // Create a new default Identity client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewIdentityClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client IdentityClient, err error) {

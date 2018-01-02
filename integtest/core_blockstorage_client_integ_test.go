@@ -9,10 +9,10 @@
 package integtest
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
-	"github.com/oracle/oci-go-sdk/core"
 	"context"
 	"fmt"
+	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/core"
 	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
@@ -26,7 +26,8 @@ var (
 //Volumes CRUDL
 func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
-	c := core.NewBlockstorageClientForRegion(getRegion())
+	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 	request := core.CreateVolumeRequest{}
 
 	request.AvailabilityDomain = common.String(validAD())
@@ -39,7 +40,8 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//Read
 	readTest := func() (interface{}, error) {
-		c := core.NewBlockstorageClientForRegion(getRegion())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		failIfError(t, clerr)
 		request := core.GetVolumeRequest{}
 		request.VolumeID = resCreate.ID
 		resRead, err := c.GetVolume(context.Background(), request)
@@ -51,7 +53,8 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//update
 	updateTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(getRegion())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		failIfError(t, clerr)
 		request := core.UpdateVolumeRequest{}
 		request.VolumeID = resCreate.ID
 		request.DisplayName = common.String("GoSDK2_TestBlockStorageCreateVolumeDisplayNameUpdated")
@@ -64,7 +67,8 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//list
 	listTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(getRegion())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		failIfError(t, clerr)
 		request := core.ListVolumesRequest{}
 		request.CompartmentID = common.String(getTenancyID())
 		r, err := c.ListVolumes(context.Background(), request)
@@ -76,7 +80,8 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//delete
 	deleteTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(getRegion())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		failIfError(t, clerr)
 		request := core.DeleteVolumeRequest{}
 		request.VolumeID = resCreate.ID
 		err := c.DeleteVolume(context.Background(), request)
@@ -90,7 +95,8 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
-	c := core.NewBlockstorageClientForRegion(getRegion())
+	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 
 	var volumeID *string
 	//First create a volume
@@ -105,7 +111,8 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 	}
 
 	deleteVol := func() {
-		c := core.NewBlockstorageClientForRegion(getRegion())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		failIfError(t, clerr)
 		request := core.DeleteVolumeRequest{}
 		request.VolumeID = volumeID
 		c.DeleteVolume(context.Background(), request)
@@ -113,7 +120,8 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 	}
 
 	readVol := func() (interface{}, error) {
-		c := core.NewBlockstorageClientForRegion(getRegion())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		failIfError(t, clerr)
 		request := core.GetVolumeRequest{}
 		request.VolumeID = volumeID
 		resRead, err := c.GetVolume(context.Background(), request)
@@ -137,7 +145,8 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//Read
 	readTest := func() (interface{}, error) {
-		c := core.NewBlockstorageClientForRegion(getRegion())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		failIfError(t, clerr)
 		request := core.GetVolumeBackupRequest{}
 		request.VolumeBackupID = r.ID
 		rRead, err := c.GetVolumeBackup(context.Background(), request)
@@ -150,7 +159,8 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//List
 	listTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(getRegion())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		failIfError(t, clerr)
 		request := core.ListVolumeBackupsRequest{}
 		request.CompartmentID = common.String(getTenancyID())
 		request.VolumeID = volumeID
@@ -163,7 +173,8 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//Update
 	updateTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(getRegion())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		failIfError(t, clerr)
 		request := core.UpdateVolumeBackupRequest{}
 		request.VolumeBackupID = r.ID
 		request.DisplayName = common.String("GoSDK2_TestBlockStorageVolumeBackupUpdate")
@@ -176,7 +187,8 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//Delete
 	deleteTest := func(t *testing.T) {
-		c := core.NewBlockstorageClientForRegion(getRegion())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		failIfError(t, clerr)
 		request := core.DeleteVolumeBackupRequest{}
 		request.VolumeBackupID = r.ID
 		err := c.DeleteVolumeBackup(context.Background(), request)

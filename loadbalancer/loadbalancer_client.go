@@ -19,15 +19,6 @@ type LoadBalancerClient struct {
 	common.BaseClient
 }
 
-// Create a new default LoadBalancer client for a given region and default configuration provider
-func NewLoadBalancerClientForRegion(region common.Region) (client LoadBalancerClient) {
-	client = LoadBalancerClient{BaseClient: common.NewClientForRegion(region)}
-
-	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "iaas", string(region))
-	client.BasePath = "20170115"
-	return
-}
-
 // Create a new default LoadBalancer client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewLoadBalancerClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client LoadBalancerClient, err error) {
