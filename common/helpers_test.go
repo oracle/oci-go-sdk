@@ -71,3 +71,12 @@ func TestStructToString_Nested(t *testing.T) {
 	assert.Contains(t, str, "somestring")
 	assert.Contains(t, str, "<nil>")
 }
+
+func TestDateParsing_LastModifiedHeaderDate(t *testing.T) {
+	data := []string{"Tue, 2 Jan 2018 17:49:29 GMT", "Tue, 02 Jan 2018 17:49:29 GMT"}
+	for _, val := range data {
+		tt, err := tryParsingTimeWithValidFormatsForHeaders([]byte(val), "lastmodified")
+		assert.NoError(t, err)
+		assert.Equal(t, tt.Day(), 2)
+	}
+}

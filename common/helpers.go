@@ -86,6 +86,7 @@ func Now() *SDKTime {
 var timeType = reflect.TypeOf(SDKTime{})
 
 const sdkTimeFormat = time.RFC3339
+const RFC1123OptionalLeadingDigitsInDay     = "Mon, _2 Jan 2006 15:04:05 MST"
 
 func FormatTime(t SDKTime) string {
 	return t.Format(sdkTimeFormat)
@@ -106,7 +107,7 @@ func tryParsingTimeWithValidFormatsForHeaders(data []byte, headerName string) (t
 	header := strings.ToLower(headerName)
 	switch header {
 	case "lastmodified", "date":
-		t, err = tryParsing(data, time.RFC3339, time.RFC1123, time.RFC850, time.ANSIC)
+		t, err = tryParsing(data, time.RFC3339, time.RFC1123, RFC1123OptionalLeadingDigitsInDay, time.RFC850, time.ANSIC)
 		return
 	default: //By default we parse with RFC3339
 		t, err = time.Parse(sdkTimeFormat, string(data))
@@ -122,7 +123,7 @@ func tryParsing(data []byte, layouts ...string) (tm time.Time, err error) {
 			return
 		}
 	}
-	err = fmt.Errorf("Could not parse time with formats ", layouts[:])
+	err = fmt.Errorf("Could not parse time: %s with formats: %s", datestring, layouts[:])
 	return
 }
 
