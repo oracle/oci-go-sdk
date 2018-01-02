@@ -123,7 +123,7 @@ func tryParsing(data []byte, layouts ...string) (tm time.Time, err error) {
 			return
 		}
 	}
-	err = fmt.Errorf("Could not parse time: %s whith formats: %s", datestring, layouts[:])
+	err = fmt.Errorf("Could not parse time: %s with formats: %s", datestring, layouts[:])
 	return
 }
 
