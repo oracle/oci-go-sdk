@@ -86,7 +86,7 @@ func Now() *SDKTime {
 var timeType = reflect.TypeOf(SDKTime{})
 
 const sdkTimeFormat = time.RFC3339
-const RFC1123OptionalLeadingDigitsInDay     = "Mon, _2 Jan 2006 15:04:05 MST"
+const RFC1123OptionalLeadingDigitsInDay = "Mon, _2 Jan 2006 15:04:05 MST"
 
 func FormatTime(t SDKTime) string {
 	return t.Format(sdkTimeFormat)

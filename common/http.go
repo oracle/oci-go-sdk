@@ -252,7 +252,7 @@ func addToHeaderCollection(request *http.Request, value reflect.Value, field ref
 	}
 
 	for k, v := range headerValues {
-		headerName := fmt.Sprintf("%s%s",headerPrefix, k )
+		headerName := fmt.Sprintf("%s%s", headerPrefix, k)
 		request.Header.Set(headerName, v)
 	}
 	return
@@ -611,6 +611,25 @@ func addFromHeader(response *http.Response, value *reflect.Value, field reflect.
 	return
 }
 
+func addFromHeaderCollection(response *http.Response, value *reflect.Value, field reflect.StructField) error {
+	Debugln("Unmarshaling from header-collection to field:", field.Name)
+	var headerPrefix string
+	if headerPrefix = field.Tag.Get("prefix"); headerPrefix == "" {
+		return fmt.Errorf("Unmarshaling response to a header-collection requires the 'prefix' tag for field: %s", field.Name)
+	}
+
+	mapCollection := make(map[string]string)
+	for name, value := range response.Header {
+		if strings.HasPrefix(name, headerPrefix) {
+			headerNoPrefix := strings.TrimPrefix(name, headerPrefix)
+			mapCollection[headerNoPrefix] = value[0]
+		}
+	}
+
+	value.Set(reflect.ValueOf(mapCollection))
+	return nil
+}
+
 // Populates a struct from parts of a request by reading tags of the struct
 func responseToStruct(response *http.Response, val *reflect.Value, unmarshaler PolymorphicJSONUnmarshaler) (err error) {
 	typ := val.Type()
@@ -631,6 +650,8 @@ func responseToStruct(response *http.Response, val *reflect.Value, unmarshaler P
 		switch tag {
 		case "header":
 			err = addFromHeader(response, &sv, sf)
+		case "header-collection":
+			err = addFromHeaderCollection(response, &sv, sf)
 		case "body":
 			err = addFromBody(response, &sv, sf, unmarshaler)
 		case "":
