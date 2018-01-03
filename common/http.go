@@ -31,7 +31,7 @@ func isNil(v reflect.Value) bool {
 func toStringValue(v reflect.Value, field reflect.StructField) (string, error) {
 	if v.Kind() == reflect.Ptr {
 		if v.IsNil() {
-			return "", fmt.Errorf("Can not marshal a nil pointer")
+			return "", fmt.Errorf("can not marshal a nil pointer")
 		}
 		v = v.Elem()
 	}
@@ -55,7 +55,7 @@ func toStringValue(v reflect.Value, field reflect.StructField) (string, error) {
 	case reflect.Float64:
 		return strconv.FormatFloat(v.Float(), 'f', 6, 64), nil
 	default:
-		return "", fmt.Errorf("Marshaling structure to a http.Request does not support field named: %s of type: %v",
+		return "", fmt.Errorf("marshaling structure to a http.Request does not support field named: %s of type: %v",
 			field.Name, v.Type().String())
 	}
 }
@@ -63,7 +63,7 @@ func toStringValue(v reflect.Value, field reflect.StructField) (string, error) {
 func addBinaryBody(request *http.Request, value reflect.Value) (e error) {
 	readCloser, ok := value.Interface().(io.ReadCloser)
 	if !ok {
-		e = fmt.Errorf("Body of the request needs to be an io.ReadCloser interface. Can not marshal body of binary request")
+		e = fmt.Errorf("body of the request needs to be an io.ReadCloser interface. Can not marshal body of binary request")
 		return
 	}
 
@@ -113,7 +113,7 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 	var queryParameterValue, queryParameterName string
 
 	if queryParameterName = field.Tag.Get("name"); queryParameterName == "" {
-		return fmt.Errorf("Marshaling request to a query requires the 'name' tag for field: %s ", field.Name)
+		return fmt.Errorf("marshaling request to a query requires the 'name' tag for field: %s ", field.Name)
 	}
 
 	mandatory, _ := strconv.ParseBool(strings.ToLower(field.Tag.Get("mandatory")))
@@ -161,7 +161,7 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 	} else {
 		var fieldName string
 		if fieldName = field.Tag.Get("name"); fieldName == "" {
-			e = fmt.Errorf("Marshaling request to path name and template requires a 'name' tag for field: %s", field.Name)
+			e = fmt.Errorf("marshaling request to path name and template requires a 'name' tag for field: %s", field.Name)
 			return
 		}
 		urlTemplate := currentUrlPath
@@ -220,23 +220,61 @@ func addToHeader(request *http.Request, value reflect.Value, field reflect.Struc
 	return
 }
 
+// Header collection is a map of string to string that gets rendered as individual headers with a given prefix
+func addToHeaderCollection(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
+	Debugln("Marshaling to header-collection from field:", field.Name)
+	if request.Header == nil {
+		request.Header = http.Header{}
+	}
+
+	var headerPrefix string
+	if headerPrefix = field.Tag.Get("prefix"); headerPrefix == "" {
+		return fmt.Errorf("marshaling request to a header requires the 'prefix' tag for field: %s", field.Name)
+	}
+
+	mandatory, _ := strconv.ParseBool(strings.ToLower(field.Tag.Get("mandatory")))
+	//If mandatory and nil. Error out
+	if mandatory && isNil(value) {
+		return fmt.Errorf("marshaling request to a header requires not nil pointer for field: %s", field.Name)
+	}
+
+	//if not mandatory and nil. Omit
+	if !mandatory && isNil(value) {
+		Debugf("Header value is not mandatory and is nil pointer in field: %s. Skipping header", field.Name)
+		return
+	}
+
+	//cast to map
+	headerValues, ok := value.Interface().(map[string]string)
+	if !ok {
+		e = fmt.Errorf("header fields need to be of type map[string]string")
+		return
+	}
+
+	for k, v := range headerValues {
+		headerName := fmt.Sprintf("%s%s", headerPrefix, k)
+		request.Header.Set(headerName, v)
+	}
+	return
+}
+
 //Makes sure the incoming structure is able to be marshalled
 //to a request
 func checkForValidRequestStruct(s interface{}) (*reflect.Value, error) {
 	val := reflect.ValueOf(s)
 	for val.Kind() == reflect.Ptr {
 		if val.IsNil() {
-			return nil, fmt.Errorf("Can not marshal to request a pointer to structure")
+			return nil, fmt.Errorf("can not marshal to request a pointer to structure")
 		}
 		val = val.Elem()
 	}
 
 	if s == nil {
-		return nil, fmt.Errorf("Can not marshal to request a nil structure")
+		return nil, fmt.Errorf("can not marshal to request a nil structure")
 	}
 
 	if val.Kind() != reflect.Struct {
-		return nil, fmt.Errorf("Can not marshal to request, expects struct input. Got %v", val.Kind())
+		return nil, fmt.Errorf("can not marshal to request, expects struct input. Got %v", val.Kind())
 	}
 
 	return &val, nil
@@ -262,6 +300,8 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 		switch tag {
 		case "header":
 			err = addToHeader(request, sv, sf)
+		case "header-collection":
+			err = addToHeaderCollection(request, sv, sf)
 		case "path":
 			err = addToPath(request, sv, sf)
 		case "query":
@@ -271,7 +311,7 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 		case "":
 			Debugln(sf.Name, "does not contain contributes tag. Skipping.")
 		default:
-			err = fmt.Errorf("Can not marshal field: %s. It needs to contain valid contributesTo tag", sf.Name)
+			err = fmt.Errorf("can not marshal field: %s. It needs to contain valid contributesTo tag", sf.Name)
 		}
 	}
 
@@ -453,7 +493,7 @@ func analyzeValue(stringValue string, kind reflect.Kind, field reflect.StructFie
 		valPointer = reflect.ValueOf(&fVal)
 		return
 	default:
-		err = fmt.Errorf("Value for kind: %s not supported", kind)
+		err = fmt.Errorf("value for kind: %s not supported", kind)
 	}
 	return
 }
@@ -555,7 +595,7 @@ func addFromHeader(response *http.Response, value *reflect.Value, field reflect.
 	Debugln("Unmarshaling from header to field:", field.Name)
 	var headerName string
 	if headerName = field.Tag.Get("name"); headerName == "" {
-		return fmt.Errorf("Unmarshaling response to a header requires the 'name' tag for field: %s", field.Name)
+		return fmt.Errorf("unmarshaling response to a header requires the 'name' tag for field: %s", field.Name)
 	}
 
 	headerValue := response.Header.Get(headerName)
@@ -569,6 +609,25 @@ func addFromHeader(response *http.Response, value *reflect.Value, field reflect.
 			err.Error())
 	}
 	return
+}
+
+func addFromHeaderCollection(response *http.Response, value *reflect.Value, field reflect.StructField) error {
+	Debugln("Unmarshaling from header-collection to field:", field.Name)
+	var headerPrefix string
+	if headerPrefix = field.Tag.Get("prefix"); headerPrefix == "" {
+		return fmt.Errorf("Unmarshaling response to a header-collection requires the 'prefix' tag for field: %s", field.Name)
+	}
+
+	mapCollection := make(map[string]string)
+	for name, value := range response.Header {
+		if strings.HasPrefix(name, headerPrefix) {
+			headerNoPrefix := strings.TrimPrefix(name, headerPrefix)
+			mapCollection[headerNoPrefix] = value[0]
+		}
+	}
+
+	value.Set(reflect.ValueOf(mapCollection))
+	return nil
 }
 
 // Populates a struct from parts of a request by reading tags of the struct
@@ -591,6 +650,8 @@ func responseToStruct(response *http.Response, val *reflect.Value, unmarshaler P
 		switch tag {
 		case "header":
 			err = addFromHeader(response, &sv, sf)
+		case "header-collection":
+			err = addFromHeaderCollection(response, &sv, sf)
 		case "body":
 			err = addFromBody(response, &sv, sf, unmarshaler)
 		case "":

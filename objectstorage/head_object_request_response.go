@@ -56,7 +56,7 @@ type HeadObjectResponse struct {
 	ETag *string `presentIn:"header" name:"etag"`
 
 	// The user-defined metadata for the object.
-	OpcMeta_ *string `presentIn:"header" name:"opc-meta-*"`
+	OpcMeta map[string]string `presentIn:"header-collection" prefix:"opc-meta-"`
 
 	// The object size in bytes.
 	ContentLength *int `presentIn:"header" name:"content-length"`
