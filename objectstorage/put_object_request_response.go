@@ -57,7 +57,7 @@ type PutObjectRequest struct {
 	ContentEncoding *string `mandatory:"false" contributesTo:"header" name:"Content-Encoding"`
 
 	// Optional user-defined metadata key and value.
-	OpcMeta_ *string `mandatory:"false" contributesTo:"header" name:"opc-meta-*"`
+	OpcMeta map[string]string `mandatory:"false" contributesTo:"header-collection" prefix:"opc-meta-"`
 }
 
 func (request PutObjectRequest) String() string {

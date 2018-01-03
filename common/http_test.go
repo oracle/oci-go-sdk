@@ -538,6 +538,33 @@ func TestUnmarshalResponse(t *testing.T) {
 	assert.Equal(t, data, string(all))
 }
 
+type structWithHeaderCollections struct {
+	Meta map[string]string `contributesTo:"header-collection" prefix:"meta-prefix-"`
+}
+
+func TestMarshalWithHeaderCollections(t *testing.T) {
+	vals := make(map[string]string)
+	vals["key1"] = "val1"
+	vals["key2"] = "val2"
+	s := structWithHeaderCollections{Meta: vals}
+
+	request, err := MakeDefaultHttpRequestWithTaggedStruct("GET", "/", s)
+	assert.NoError(t, err)
+	assert.Equal(t, s.Meta["key1"], request.Header.Get("meta-prefix-key1"))
+	assert.Equal(t, s.Meta["key2"], request.Header.Get("meta-prefix-key2"))
+}
+
+func TestMarshalWithHeaderCollections_BadCollectionType(t *testing.T) {
+	vals := make(map[string]int)
+	vals["key1"] = 1
+	s := struct {
+		Meta map[string]int `contributesTo:"header-collection" prefix:"meta-prefix-"`
+	}{Meta: vals}
+
+	_, err := MakeDefaultHttpRequestWithTaggedStruct("GET", "/", s)
+	assert.Error(t, err)
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BaseClient

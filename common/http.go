@@ -220,6 +220,44 @@ func addToHeader(request *http.Request, value reflect.Value, field reflect.Struc
 	return
 }
 
+// Header collection is a map of string to string that gets rendered as individual headers with a given prefix
+func addToHeaderCollection(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
+	Debugln("Marshaling to header-collection from field:", field.Name)
+	if request.Header == nil {
+		request.Header = http.Header{}
+	}
+
+	var headerPrefix string
+	if headerPrefix = field.Tag.Get("prefix"); headerPrefix == "" {
+		return fmt.Errorf("marshaling request to a header requires the 'prefix' tag for field: %s", field.Name)
+	}
+
+	mandatory, _ := strconv.ParseBool(strings.ToLower(field.Tag.Get("mandatory")))
+	//If mandatory and nil. Error out
+	if mandatory && isNil(value) {
+		return fmt.Errorf("marshaling request to a header requires not nil pointer for field: %s", field.Name)
+	}
+
+	//if not mandatory and nil. Omit
+	if !mandatory && isNil(value) {
+		Debugf("Header value is not mandatory and is nil pointer in field: %s. Skipping header", field.Name)
+		return
+	}
+
+	//cast to map
+	headerValues, ok := value.Interface().(map[string]string)
+	if !ok {
+		e = fmt.Errorf("Header fields need to be of type map[string]string")
+		return
+	}
+
+	for k, v := range headerValues {
+		headerName := fmt.Sprintf("%s%s",headerPrefix, k )
+		request.Header.Set(headerName, v)
+	}
+	return
+}
+
 //Makes sure the incoming structure is able to be marshalled
 //to a request
 func checkForValidRequestStruct(s interface{}) (*reflect.Value, error) {
@@ -262,6 +300,8 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 		switch tag {
 		case "header":
 			err = addToHeader(request, sv, sf)
+		case "header-collection":
+			err = addToHeaderCollection(request, sv, sf)
 		case "path":
 			err = addToPath(request, sv, sf)
 		case "query":
