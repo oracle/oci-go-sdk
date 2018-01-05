@@ -16,6 +16,9 @@ import (
 // requesting cabling for the cross-connect at the FastConnect location.
 type LetterOfAuthority struct {
 
+	// The name of the entity authorized by this Letter of Authority.
+	AuthorizedEntityName *string `mandatory:"false" json:"authorizedEntityName,omitempty"`
+
 	// The type of cross-connect fiber, termination, and optical specification.
 	CircuitType LetterOfAuthorityCircuitTypeEnum `mandatory:"false" json:"circuitType,omitempty"`
 
