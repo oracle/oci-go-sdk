@@ -66,6 +66,8 @@ type LoadBalancer struct {
 
 	Listeners map[string]Listener `mandatory:"false" json:"listeners,omitempty"`
 
+	PathRouteSets map[string]PathRouteSet `mandatory:"false" json:"pathRouteSets,omitempty"`
+
 	// An array of subnet [OCIDs]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
 	SubnetIds []string `mandatory:"false" json:"subnetIds,omitempty"`
 }

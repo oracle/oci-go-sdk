@@ -17,11 +17,6 @@ type CreateVirtualCircuitDetails struct {
 	// The OCID of the compartment to contain the virtual circuit.
 	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
 
-	// The Oracle Cloud Infrastructure region where this virtual
-	// circuit is located.
-	// Example: `phx`
-	Region *string `mandatory:"true" json:"region,omitempty"`
-
 	// The type of IP addresses used in this virtual circuit. PRIVATE
 	// means [RFC 1918](https://tools.ietf.org/html/rfc1918) addresses
 	// (10.0.0.0/8, 172.16/12, and 192.168/16). Only PRIVATE is supported.
@@ -63,6 +58,11 @@ type CreateVirtualCircuitDetails struct {
 	// To get a list of the provider OCIDs, see
 	// ListFastConnectProviderServices.
 	ProviderServiceName *string `mandatory:"false" json:"providerServiceName,omitempty"`
+
+	// The Oracle Cloud Infrastructure region where this virtual
+	// circuit is located.
+	// Example: `phx`
+	Region *string `mandatory:"false" json:"region,omitempty"`
 }
 
 func (model CreateVirtualCircuitDetails) String() string {
