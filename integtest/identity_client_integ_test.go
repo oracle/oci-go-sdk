@@ -60,34 +60,55 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 }
 
 func TestIdentityClient_ListGroups(t *testing.T) {
+
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := identity.ListGroupsRequest{CompartmentID: common.String(getTenancyID())}
 	r, err := c.ListGroups(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	assert.NotEmpty(t, r.Items)
-	assert.NotEmpty(t, r.OpcNextPage)
+	failIfError(t, err)
+
+	items := r.Items
+
+	nextRequest := identity.ListGroupsRequest{CompartmentID: request.CompartmentID}
+	nextRequest.Page = r.OpcNextPage
+
+	for nextRequest.Page != nil {
+		if r, err = c.ListGroups(context.Background(), nextRequest); err == nil {
+			items = append(items, r.Items...)
+			nextRequest.Page = r.OpcNextPage
+		} else {
+			failIfError(t, err)
+			break
+		}
+	}
+
+	assert.NotEmpty(t, items)
 
 	return
 }
 
 // Compartment operations
 //Can not delete compartments right now! Careful!
-/*
+
 func TestIdentityClient_CreateCompartment(t *testing.T) {
-	c:= identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	t.Skip("Compartment Creation cannot be undone. Remove Skip and manual execute test to verify")
+	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, cfgErr)
+
 	request:= identity.CreateCompartmentRequest{CreateCompartmentDetails:identity.CreateCompartmentDetails{
-		Name:"egTest2",
-		Description:"egTest2_descp",
-		CompartmentID:getTenancyID(),
+		Name: common.String("Compartment_Test"),
+		Description: common.String("Go SDK Comparment Test"),
+		CompartmentID: common.String(getTenancyID()),
 	}}
-	r, err:= identity.CreateCompartment(c, request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
+
+	r, err:= c.CreateCompartment(context.Background(), request)
+	verifyResponseIsValid(t, r, err)
+	assert.NotEmpty(t, r.ID)
+	assert.Equal(t, request.Name, r.Name)
+	assert.Equal(t, request.Description, r.Description)
 	return
 }
-*/
+
 
 //Comparment RU
 func TestIdentityClient_UpdateCompartment(t *testing.T) {
@@ -117,8 +138,25 @@ func TestIdentityClient_ListUsers(t *testing.T) {
 	failIfError(t, clerr)
 	request := identity.ListUsersRequest{CompartmentID: common.String(getTenancyID())}
 	r, err := c.ListUsers(context.Background(), request)
-	assert.NotEmpty(t, r.Items, fmt.Sprint(r))
-	assert.NoError(t, err)
+	failIfError(t, err)
+
+	items := r.Items
+
+	nextRequest := identity.ListUsersRequest{CompartmentID: request.CompartmentID}
+	nextRequest.Page = r.OpcNextPage
+	for nextRequest.Page != nil {
+		if r, err = c.ListUsers(context.Background(), nextRequest); err == nil {
+			items = append(items, r.Items...)
+			nextRequest.Page = r.OpcNextPage
+		} else {
+			failIfError(t, err)
+			break
+		}
+	}
+
+	// Add verification for items array
+	assert.NotEmpty(t, items)
+
 	return
 }
 
@@ -239,8 +277,25 @@ func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
 	request.UserID = common.String(getUserID())
 	request.CompartmentID = common.String(getTenancyID())
 	r, err := c.ListUserGroupMemberships(context.Background(), request)
-	verifyResponseIsValid(t, r, err)
-	assert.NotZero(t, len(r.Items))
+	failIfError(t, err)
+
+	items := r.Items
+
+	nextRequest := identity.ListUserGroupMembershipsRequest{CompartmentID: request.CompartmentID, UserID: request.UserID}
+	nextRequest.Page = r.OpcNextPage
+
+	for nextRequest.Page != nil {
+		if r, err := c.ListUserGroupMemberships(context.Background(), nextRequest); err == nil {
+			items = append(items, r.Items...)
+			nextRequest.Page = r.OpcNextPage
+		} else {
+			failIfError(t, err)
+			break
+		}
+	}
+
+	assert.NotEmpty(t, items)
+
 	return
 }
 
@@ -342,8 +397,7 @@ func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 	pwdRsp2, err := c.CreateSwiftPassword(context.Background(), pwdReq)
 	verifyResponseIsValid(t, pwdRsp2, err)
 
-	request := identity.ListSwiftPasswordsRequest{}
-	request.UserID = usr.ID
+	request := identity.ListSwiftPasswordsRequest{UserID: usr.ID}
 	r, err := c.ListSwiftPasswords(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
 
@@ -355,58 +409,75 @@ func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 }
 
 //Policy Operations see DEX-1945
-//func TestIdentityClient_PolicyCRUD(t *testing.T) {
-//	//Create
-//	client := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-//	/*
-//	createRequest := identity.CreatePolicyRequest{}
-//	createRequest.CompartmentID = getTenancyID()
-//	createRequest.Name = "goSDK2Policy2"
-//	createRequest.Description = "some policy"
-//	createRequest.Statements = []string{"Allow group goSDK2CreateGroup read all-resources on compartment egineztest"}
-//	createRequest.VersionDate = time.Now()
-//	createResponse, err := client.CreatePolicy(context.Background(), createRequest)
-//	assert.NotEmpty(t, createResponse, fmt.Sprint(createResponse))
-//	assert.NoError(t, err)
-//	*/
-//	createResponseID :=  ""
-//
-//	defer func() {
-//		// Delete
-//		request := identity.DeletePolicyRequest{PolicyID:createResponseID}
-//		err = client.DeletePolicy(context.Background(), request)
-//		assert.NoError(t, err)
-//	}()
-//
-//	//Read
-//	readRequest := identity.GetPolicyRequest{}
-//	readRequest.PolicyID = createResponseID
-//	readResponse, err := client.GetPolicy(context.Background(), readRequest)
-//	assert.NotEmpty(t, readResponse, fmt.Sprint(readResponse))
-//	assert.NoError(t, err)
-//
-//	//Update
-//	/*
-//	updateRequest := identity.UpdatePolicyRequest{}
-//	updateRequest.PolicyID = createResponseID
-//	updateRequest.Description = "new descripption"
-//	updateResponse, err := client.UpdatePolicy(context.Background(), updateRequest)
-//	assert.NotEmpty(t, updateResponse, fmt.Sprint(updateResponse))
-//	assert.NoError(t, err)
-//	*/
-//
-//
-//	return
-//}
-//
-//func TestIdentityClient_ListPolicies(t *testing.T) {
-//c, clerr :=  identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider()); failIfError(t, clerr)
-//	request := identity.ListPoliciesRequest{}
-//	r, err := c.ListPolicies(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
+func TestIdentityClient_PolicyCRUD(t *testing.T) {
+	t.Skip("Policy Operations issue. See DEX-1945 ")
+
+	//Create
+	//client := identity.NewIdentityClientForRegion(getRegion())
+	client, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, cfgErr)
+
+	createRequest := identity.CreatePolicyRequest{}
+	createRequest.CompartmentID = common.String(getTenancyID())
+	createRequest.Name = common.String("goSDK2Policy2")
+	createRequest.Description = common.String("some policy")
+	createRequest.Statements = []string{"Allow group goSDK2CreateGroup read all-resources on compartment egineztest"}
+	createRequest.VersionDate = common.Now()
+	createResponse, err := client.CreatePolicy(context.Background(), createRequest)
+	verifyResponseIsValid(t, createResponse, err)
+
+	defer func() {
+		// Delete
+		request := identity.DeletePolicyRequest{PolicyID:createResponse.ID}
+		err = client.DeletePolicy(context.Background(), request)
+		assert.NoError(t, err)
+	}()
+
+	//Read
+	readRequest := identity.GetPolicyRequest{}
+	readRequest.PolicyID = createResponse.ID
+	readResponse, err := client.GetPolicy(context.Background(), readRequest)
+	verifyResponseIsValid(t, readResponse, err)
+
+	//Update
+
+	updateRequest := identity.UpdatePolicyRequest{}
+	updateRequest.PolicyID = createResponse.ID
+	updateRequest.Description = common.String("new description")
+	updateResponse, err := client.UpdatePolicy(context.Background(), updateRequest)
+	assert.NotEmpty(t, updateResponse, fmt.Sprint(updateResponse))
+	assert.NoError(t, err)
+
+	return
+}
+
+func TestIdentityClient_ListPolicies(t *testing.T) {
+	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, cfgErr)
+	listRequest := identity.ListPoliciesRequest{}
+	listRequest.CompartmentID = common.String(getTenancyID())
+	listResponse, err := c.ListPolicies(context.Background(), listRequest)
+	failIfError(t, err)
+
+	items := listResponse.Items
+
+	nextRequest := identity.ListPoliciesRequest{CompartmentID: listRequest.CompartmentID}
+	nextRequest.Page = listResponse.OpcNextPage
+
+	for nextRequest.Page != nil {
+		if r, err := c.ListPolicies(context.Background(), nextRequest); err == nil {
+			items = append(items, r.Items...)
+			nextRequest.Page = r.OpcNextPage
+		} else {
+			failIfError(t, err)
+		}
+	}
+
+	assert.NotEmpty(t, items)
+
+	return
+}
+
 
 //SecretKey operations
 func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
@@ -631,7 +702,23 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	request.CompartmentID = common.String(getCompartmentID())
 	request.Protocol = identity.LIST_IDENTITY_PROVIDERS_PROTOCOL_SAML2
 	response, err := c.ListIdentityProviders(context.Background(), request)
-	verifyResponseIsValid(t, response, err)
+	failIfError(t, err)
+
+	items := response.Items
+
+	nextRequest := identity.ListIdentityProvidersRequest{CompartmentID: request.CompartmentID}
+	nextRequest.Page = response.OpcNextPage
+
+	for nextRequest.Page != nil {
+		if r, err := c.ListIdentityProviders(context.Background(), nextRequest); err == nil {
+			items = append(items, r.Items...)
+			nextRequest.Page = r.OpcNextPage
+		} else {
+			failIfError(t, err)
+			break
+		}
+	}
+
 	return
 }
 
@@ -653,10 +740,12 @@ func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
 	failIfError(t, clerr)
 	request := identity.ListAvailabilityDomainsRequest{CompartmentID: common.String(getCompartmentID())}
 	r, err := c.ListAvailabilityDomains(context.Background(), request)
-	verifyResponseIsValid(t, r, err)
+	failIfError(t, err)
 
-	assert.NotEmpty(t, r.OpcRequestID)
-	assert.NotZero(t, len(r.Items))
+	items := r.Items
+
+	assert.NotEmpty(t, items)
+
 	return
 }
 
@@ -665,10 +754,25 @@ func TestIdentityClient_ListCompartments(t *testing.T) {
 	failIfError(t, clerr)
 	request := identity.ListCompartmentsRequest{CompartmentID: common.String(getTenancyID())}
 	r, err := c.ListCompartments(context.Background(), request)
-	verifyResponseIsValid(t, r, err)
+	failIfError(t, err)
 
-	assert.NotEmpty(t, r.OpcRequestID)
-	assert.NotZero(t, len(r.Items))
+	items := r.Items
+
+	nextRequest := identity.ListCompartmentsRequest{CompartmentID: request.CompartmentID}
+	nextRequest.Page = r.OpcNextPage
+
+	for nextRequest.Page != nil {
+		if r, err := c.ListCompartments(context.Background(), nextRequest); err == nil {
+			items = append(items, r.Items...)
+			nextRequest.Page = r.OpcNextPage
+		} else {
+			failIfError(t, err)
+			break
+		}
+	}
+
+	assert.NotEmpty(t, items)
+
 	return
 }
 
@@ -677,7 +781,7 @@ func TestIdentityClient_ListRegions(t *testing.T) {
 	failIfError(t, clerr)
 	r, err := c.ListRegions(context.Background())
 	verifyResponseIsValid(t, r, err)
-	assert.NotZero(t, len(r.Items))
+	assert.NotEmpty(t, r.Items)
 	return
 }
 
@@ -720,59 +824,10 @@ func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
 	request := identity.ListRegionSubscriptionsRequest{TenancyID: common.String(getTenancyID())}
 	r, err := c.ListRegionSubscriptions(context.Background(), request)
 	failIfError(t, err)
-	verifyResponseIsValid(t, r, err)
-	assert.NotZero(t, len(r.Items))
+	items := r.Items
+	assert.NotEmpty(t, items)
 	return
 }
-
-// TODO
-//func TestIdentityClient_CreateIdpGroupMapping(t *testing.T) {
-//c, clerr :=  identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider()); failIfError(t, clerr)
-//	request := identity.CreateIdpGroupMappingRequest{}
-//	r, err := c.CreateIdpGroupMapping(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
-//
-//func TestIdentityClient_DeleteIdpGroupMapping(t *testing.T) {
-//c, clerr :=  identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider()); failIfError(t, clerr)
-//	request := identity.DeleteIdpGroupMappingRequest{}
-//	err := c.DeleteIdpGroupMapping(context.Background(), request)
-//	assert.NoError(t, err)
-//	return
-//}
-//
-//
-//func TestIdentityClient_GetIdpGroupMapping(t *testing.T) {
-//c, clerr :=  identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider()); failIfError(t, clerr)
-//	request := identity.GetIdpGroupMappingRequest{}
-//	r, err := c.GetIdpGroupMapping(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
-//func TestIdentityClient_ListIdpGroupMappings(t *testing.T) {
-//c, clerr :=  identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider()); failIfError(t, clerr)
-//	request := identity.ListIdpGroupMappingsRequest{}
-//	r, err := c.ListIdpGroupMappings(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
-//
-//func TestIdentityClient_UpdateIdpGroupMapping(t *testing.T) {
-//c, clerr :=  identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider()); failIfError(t, clerr)
-//	request := identity.UpdateIdpGroupMappingRequest{}
-//	r, err := c.UpdateIdpGroupMapping(context.Background(), request)
-//	assert.NotEmpty(t, r, fmt.Sprint(r))
-//	assert.NoError(t, err)
-//	return
-//}
-//
 
 func TestBadHost(t *testing.T) {
 	client, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
