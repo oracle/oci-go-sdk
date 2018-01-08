@@ -58,14 +58,14 @@ const (
 	LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN ListIdentityProvidersProtocolEnum = "UNKNOWN"
 )
 
-var mapping_Identity_protocol = map[string]ListIdentityProvidersProtocolEnum{
+var mapping_listidentityprovidersprotocol = map[string]ListIdentityProvidersProtocolEnum{
 	"SAML2":   LIST_IDENTITY_PROVIDERS_PROTOCOL_SAML2,
 	"UNKNOWN": LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN,
 }
 
 func GetListIdentityProvidersProtocolEnumValues() []ListIdentityProvidersProtocolEnum {
 	values := make([]ListIdentityProvidersProtocolEnum, 0)
-	for _, v := range mapping_Identity_protocol {
+	for _, v := range mapping_listidentityprovidersprotocol {
 		if v != LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN {
 			values = append(values, v)
 		}

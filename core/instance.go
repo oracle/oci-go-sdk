@@ -9,6 +9,7 @@
 package core
 
 import (
+	"encoding/json"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
@@ -57,8 +58,7 @@ type Instance struct {
 	// If you don't need nested metadata values, it is strongly advised to avoid using this object and use the Metadata object instead.
 	ExtendedMetadata map[string]interface{} `mandatory:"false" json:"extendedMetadata,omitempty"`
 
-	// The image used to boot the instance. You can enumerate all available images by calling
-	// ListImages.
+	// Deprecated. Use `sourceDetails` instead.
 	ImageID *string `mandatory:"false" json:"imageId,omitempty"`
 
 	// When a bare metal or virtual machine
@@ -83,10 +83,54 @@ type Instance struct {
 
 	// Custom metadata that you provide.
 	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
+
+	// Details for creating an instance
+	SourceDetails InstanceSourceDetails `mandatory:"false" json:"sourceDetails,omitempty"`
 }
 
 func (model Instance) String() string {
 	return common.PointerString(model)
+}
+
+func (model *Instance) UnmarshalJSON(data []byte) (e error) {
+	m := struct {
+		DisplayName        *string                    `mandatory:"true" json:"displayName,omitempty"`
+		ExtendedMetadata   map[string]interface{}     `mandatory:"true" json:"extendedMetadata,omitempty"`
+		ImageID            *string                    `mandatory:"true" json:"imageId,omitempty"`
+		IpxeScript         *string                    `mandatory:"true" json:"ipxeScript,omitempty"`
+		Metadata           map[string]string          `mandatory:"true" json:"metadata,omitempty"`
+		SourceDetails      instancesourcedetails      `mandatory:"true" json:"sourceDetails,omitempty"`
+		AvailabilityDomain *string                    `mandatory:"true" json:"availabilityDomain,omitempty"`
+		CompartmentID      *string                    `mandatory:"true" json:"compartmentId,omitempty"`
+		ID                 *string                    `mandatory:"true" json:"id,omitempty"`
+		LifecycleState     InstanceLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+		Region             *string                    `mandatory:"true" json:"region,omitempty"`
+		Shape              *string                    `mandatory:"true" json:"shape,omitempty"`
+		TimeCreated        *common.SDKTime            `mandatory:"true" json:"timeCreated,omitempty"`
+	}{}
+
+	e = json.Unmarshal(data, &m)
+	if e != nil {
+		return
+	}
+	model.DisplayName = m.DisplayName
+	model.ExtendedMetadata = m.ExtendedMetadata
+	model.ImageID = m.ImageID
+	model.IpxeScript = m.IpxeScript
+	model.Metadata = m.Metadata
+	nn, e := m.SourceDetails.UnmarshalPolymorphicJSON(m.SourceDetails.JsonData)
+	if e != nil {
+		return
+	}
+	model.SourceDetails = nn
+	model.AvailabilityDomain = m.AvailabilityDomain
+	model.CompartmentID = m.CompartmentID
+	model.ID = m.ID
+	model.LifecycleState = m.LifecycleState
+	model.Region = m.Region
+	model.Shape = m.Shape
+	model.TimeCreated = m.TimeCreated
+	return
 }
 
 type InstanceLifecycleStateEnum string

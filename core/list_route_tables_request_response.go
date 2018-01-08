@@ -23,6 +23,25 @@ type ListRouteTablesRequest struct {
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
+
+	// A filter to return only resources that match the given display name exactly.
+	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
+
+	// The field to sort by. You can provide one sort order (`sortOrder`). Default order for
+	// TIMECREATED is descending. Default order for DISPLAYNAME is ascending. The DISPLAYNAME
+	// sort order is case sensitive.
+	// **Note:** In general, some "List" operations (for example, `ListInstances`) let you
+	// optionally filter by Availability Domain if the scope of the resource type is within a
+	// single Availability Domain. If you call one of these "List" operations without specifying
+	// an Availability Domain, the resources are grouped by Availability Domain, then sorted.
+	SortBy ListRouteTablesSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy"`
+
+	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order
+	// is case sensitive.
+	SortOrder ListRouteTablesSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder"`
+
+	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
+	LifecycleState *string `mandatory:"false" contributesTo:"query" name:"lifecycleState"`
 }
 
 func (request ListRouteTablesRequest) String() string {
@@ -50,4 +69,52 @@ type ListRouteTablesResponse struct {
 
 func (response ListRouteTablesResponse) String() string {
 	return common.PointerString(response)
+}
+
+type ListRouteTablesSortByEnum string
+
+const (
+	LIST_ROUTE_TABLES_SORT_BY_TIMECREATED ListRouteTablesSortByEnum = "TIMECREATED"
+	LIST_ROUTE_TABLES_SORT_BY_DISPLAYNAME ListRouteTablesSortByEnum = "DISPLAYNAME"
+	LIST_ROUTE_TABLES_SORT_BY_UNKNOWN     ListRouteTablesSortByEnum = "UNKNOWN"
+)
+
+var mapping_listroutetablessortby = map[string]ListRouteTablesSortByEnum{
+	"TIMECREATED": LIST_ROUTE_TABLES_SORT_BY_TIMECREATED,
+	"DISPLAYNAME": LIST_ROUTE_TABLES_SORT_BY_DISPLAYNAME,
+	"UNKNOWN":     LIST_ROUTE_TABLES_SORT_BY_UNKNOWN,
+}
+
+func GetListRouteTablesSortByEnumValues() []ListRouteTablesSortByEnum {
+	values := make([]ListRouteTablesSortByEnum, 0)
+	for _, v := range mapping_listroutetablessortby {
+		if v != LIST_ROUTE_TABLES_SORT_BY_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+type ListRouteTablesSortOrderEnum string
+
+const (
+	LIST_ROUTE_TABLES_SORT_ORDER_ASC     ListRouteTablesSortOrderEnum = "ASC"
+	LIST_ROUTE_TABLES_SORT_ORDER_DESC    ListRouteTablesSortOrderEnum = "DESC"
+	LIST_ROUTE_TABLES_SORT_ORDER_UNKNOWN ListRouteTablesSortOrderEnum = "UNKNOWN"
+)
+
+var mapping_listroutetablessortorder = map[string]ListRouteTablesSortOrderEnum{
+	"ASC":     LIST_ROUTE_TABLES_SORT_ORDER_ASC,
+	"DESC":    LIST_ROUTE_TABLES_SORT_ORDER_DESC,
+	"UNKNOWN": LIST_ROUTE_TABLES_SORT_ORDER_UNKNOWN,
+}
+
+func GetListRouteTablesSortOrderEnumValues() []ListRouteTablesSortOrderEnum {
+	values := make([]ListRouteTablesSortOrderEnum, 0)
+	for _, v := range mapping_listroutetablessortorder {
+		if v != LIST_ROUTE_TABLES_SORT_ORDER_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
 }

@@ -23,7 +23,7 @@ type CreateVirtualCircuitDetails struct {
 	Type_ CreateVirtualCircuitDetailsType_Enum `mandatory:"true" json:"type,omitempty"`
 
 	// The provisioned data rate of the connection.  To get a list of the
-	// available provider's bandwidth levels (i.e., shapes), see
+	// available bandwidth levels (that is, shapes), see
 	// ListFastConnectProviderVirtualCircuitBandwidthShapes.
 	// Example: `10 Gbps`
 	BandwidthShapeName *string `mandatory:"false" json:"bandwidthShapeName,omitempty"`
@@ -40,12 +40,12 @@ type CreateVirtualCircuitDetails struct {
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
-	// The OCID of the Drg
+	// For private virtual circuits only. The OCID of the Drg
 	// that this virtual circuit uses.
 	GatewayID *string `mandatory:"false" json:"gatewayId,omitempty"`
 
 	// Deprecated. Instead use `providerServiceId`.
-	// To get a list of the provider OCID, see
+	// To get a list of the provider names, see
 	// ListFastConnectProviderServices.
 	ProviderName *string `mandatory:"false" json:"providerName,omitempty"`
 
@@ -55,9 +55,13 @@ type CreateVirtualCircuitDetails struct {
 	ProviderServiceID *string `mandatory:"false" json:"providerServiceId,omitempty"`
 
 	// Deprecated. Instead use `providerServiceId`.
-	// To get a list of the provider OCIDs, see
+	// To get a list of the provider names, see
 	// ListFastConnectProviderServices.
 	ProviderServiceName *string `mandatory:"false" json:"providerServiceName,omitempty"`
+
+	// For a public virtual circuit. The public IP prefixes (CIDRs) the customer wants to
+	// advertise across the connection.
+	PublicPrefixes []CreateVirtualCircuitPublicPrefixDetails `mandatory:"false" json:"publicPrefixes,omitempty"`
 
 	// The Oracle Cloud Infrastructure region where this virtual
 	// circuit is located.

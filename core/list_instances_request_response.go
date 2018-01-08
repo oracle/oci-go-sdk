@@ -18,9 +18,7 @@ type ListInstancesRequest struct {
 	// Example: `Uocm:PHX-AD-1`
 	AvailabilityDomain *string `mandatory:"false" contributesTo:"query" name:"availabilityDomain"`
 
-	// A user-friendly name. Does not have to be unique, and it's changeable.
-	// Avoid entering confidential information.
-	// Example: `My new resource`
+	// A filter to return only resources that match the given display name exactly.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
 
 	// The maximum number of items to return in a paginated "List" call.
@@ -29,6 +27,22 @@ type ListInstancesRequest struct {
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
+
+	// The field to sort by. You can provide one sort order (`sortOrder`). Default order for
+	// TIMECREATED is descending. Default order for DISPLAYNAME is ascending. The DISPLAYNAME
+	// sort order is case sensitive.
+	// **Note:** In general, some "List" operations (for example, `ListInstances`) let you
+	// optionally filter by Availability Domain if the scope of the resource type is within a
+	// single Availability Domain. If you call one of these "List" operations without specifying
+	// an Availability Domain, the resources are grouped by Availability Domain, then sorted.
+	SortBy ListInstancesSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy"`
+
+	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order
+	// is case sensitive.
+	SortOrder ListInstancesSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder"`
+
+	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
+	LifecycleState *string `mandatory:"false" contributesTo:"query" name:"lifecycleState"`
 }
 
 func (request ListInstancesRequest) String() string {
@@ -56,4 +70,52 @@ type ListInstancesResponse struct {
 
 func (response ListInstancesResponse) String() string {
 	return common.PointerString(response)
+}
+
+type ListInstancesSortByEnum string
+
+const (
+	LIST_INSTANCES_SORT_BY_TIMECREATED ListInstancesSortByEnum = "TIMECREATED"
+	LIST_INSTANCES_SORT_BY_DISPLAYNAME ListInstancesSortByEnum = "DISPLAYNAME"
+	LIST_INSTANCES_SORT_BY_UNKNOWN     ListInstancesSortByEnum = "UNKNOWN"
+)
+
+var mapping_listinstancessortby = map[string]ListInstancesSortByEnum{
+	"TIMECREATED": LIST_INSTANCES_SORT_BY_TIMECREATED,
+	"DISPLAYNAME": LIST_INSTANCES_SORT_BY_DISPLAYNAME,
+	"UNKNOWN":     LIST_INSTANCES_SORT_BY_UNKNOWN,
+}
+
+func GetListInstancesSortByEnumValues() []ListInstancesSortByEnum {
+	values := make([]ListInstancesSortByEnum, 0)
+	for _, v := range mapping_listinstancessortby {
+		if v != LIST_INSTANCES_SORT_BY_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+type ListInstancesSortOrderEnum string
+
+const (
+	LIST_INSTANCES_SORT_ORDER_ASC     ListInstancesSortOrderEnum = "ASC"
+	LIST_INSTANCES_SORT_ORDER_DESC    ListInstancesSortOrderEnum = "DESC"
+	LIST_INSTANCES_SORT_ORDER_UNKNOWN ListInstancesSortOrderEnum = "UNKNOWN"
+)
+
+var mapping_listinstancessortorder = map[string]ListInstancesSortOrderEnum{
+	"ASC":     LIST_INSTANCES_SORT_ORDER_ASC,
+	"DESC":    LIST_INSTANCES_SORT_ORDER_DESC,
+	"UNKNOWN": LIST_INSTANCES_SORT_ORDER_UNKNOWN,
+}
+
+func GetListInstancesSortOrderEnumValues() []ListInstancesSortOrderEnum {
+	values := make([]ListInstancesSortOrderEnum, 0)
+	for _, v := range mapping_listinstancessortorder {
+		if v != LIST_INSTANCES_SORT_ORDER_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
 }

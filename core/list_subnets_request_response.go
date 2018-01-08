@@ -23,6 +23,25 @@ type ListSubnetsRequest struct {
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
+
+	// A filter to return only resources that match the given display name exactly.
+	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
+
+	// The field to sort by. You can provide one sort order (`sortOrder`). Default order for
+	// TIMECREATED is descending. Default order for DISPLAYNAME is ascending. The DISPLAYNAME
+	// sort order is case sensitive.
+	// **Note:** In general, some "List" operations (for example, `ListInstances`) let you
+	// optionally filter by Availability Domain if the scope of the resource type is within a
+	// single Availability Domain. If you call one of these "List" operations without specifying
+	// an Availability Domain, the resources are grouped by Availability Domain, then sorted.
+	SortBy ListSubnetsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy"`
+
+	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order
+	// is case sensitive.
+	SortOrder ListSubnetsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder"`
+
+	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
+	LifecycleState *string `mandatory:"false" contributesTo:"query" name:"lifecycleState"`
 }
 
 func (request ListSubnetsRequest) String() string {
@@ -50,4 +69,52 @@ type ListSubnetsResponse struct {
 
 func (response ListSubnetsResponse) String() string {
 	return common.PointerString(response)
+}
+
+type ListSubnetsSortByEnum string
+
+const (
+	LIST_SUBNETS_SORT_BY_TIMECREATED ListSubnetsSortByEnum = "TIMECREATED"
+	LIST_SUBNETS_SORT_BY_DISPLAYNAME ListSubnetsSortByEnum = "DISPLAYNAME"
+	LIST_SUBNETS_SORT_BY_UNKNOWN     ListSubnetsSortByEnum = "UNKNOWN"
+)
+
+var mapping_listsubnetssortby = map[string]ListSubnetsSortByEnum{
+	"TIMECREATED": LIST_SUBNETS_SORT_BY_TIMECREATED,
+	"DISPLAYNAME": LIST_SUBNETS_SORT_BY_DISPLAYNAME,
+	"UNKNOWN":     LIST_SUBNETS_SORT_BY_UNKNOWN,
+}
+
+func GetListSubnetsSortByEnumValues() []ListSubnetsSortByEnum {
+	values := make([]ListSubnetsSortByEnum, 0)
+	for _, v := range mapping_listsubnetssortby {
+		if v != LIST_SUBNETS_SORT_BY_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+type ListSubnetsSortOrderEnum string
+
+const (
+	LIST_SUBNETS_SORT_ORDER_ASC     ListSubnetsSortOrderEnum = "ASC"
+	LIST_SUBNETS_SORT_ORDER_DESC    ListSubnetsSortOrderEnum = "DESC"
+	LIST_SUBNETS_SORT_ORDER_UNKNOWN ListSubnetsSortOrderEnum = "UNKNOWN"
+)
+
+var mapping_listsubnetssortorder = map[string]ListSubnetsSortOrderEnum{
+	"ASC":     LIST_SUBNETS_SORT_ORDER_ASC,
+	"DESC":    LIST_SUBNETS_SORT_ORDER_DESC,
+	"UNKNOWN": LIST_SUBNETS_SORT_ORDER_UNKNOWN,
+}
+
+func GetListSubnetsSortOrderEnumValues() []ListSubnetsSortOrderEnum {
+	values := make([]ListSubnetsSortOrderEnum, 0)
+	for _, v := range mapping_listsubnetssortorder {
+		if v != LIST_SUBNETS_SORT_ORDER_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
 }

@@ -36,6 +36,9 @@ type FastConnectProviderService struct {
 
 	// A description of the service offered by the provider.
 	Description *string `mandatory:"false" json:"description,omitempty"`
+
+	// An array of virtual circuit types supported by this service.
+	SupportedVirtualCircuitTypes []FastConnectProviderServiceSupportedVirtualCircuitTypesEnum `mandatory:"false" json:"supportedVirtualCircuitTypes,omitempty"`
 }
 
 func (model FastConnectProviderService) String() string {
@@ -88,6 +91,30 @@ func GetFastConnectProviderServicePublicPeeringBgpManagementEnumValues() []FastC
 	values := make([]FastConnectProviderServicePublicPeeringBgpManagementEnum, 0)
 	for _, v := range mapping_fastconnectproviderservice_publicPeeringBgpManagement {
 		if v != FAST_CONNECT_PROVIDER_SERVICE_PUBLIC_PEERING_BGP_MANAGEMENT_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+type FastConnectProviderServiceSupportedVirtualCircuitTypesEnum string
+
+const (
+	FAST_CONNECT_PROVIDER_SERVICE_SUPPORTED_VIRTUAL_CIRCUIT_TYPES_PUBLIC  FastConnectProviderServiceSupportedVirtualCircuitTypesEnum = "PUBLIC"
+	FAST_CONNECT_PROVIDER_SERVICE_SUPPORTED_VIRTUAL_CIRCUIT_TYPES_PRIVATE FastConnectProviderServiceSupportedVirtualCircuitTypesEnum = "PRIVATE"
+	FAST_CONNECT_PROVIDER_SERVICE_SUPPORTED_VIRTUAL_CIRCUIT_TYPES_UNKNOWN FastConnectProviderServiceSupportedVirtualCircuitTypesEnum = "UNKNOWN"
+)
+
+var mapping_fastconnectproviderservice_supportedVirtualCircuitTypes = map[string]FastConnectProviderServiceSupportedVirtualCircuitTypesEnum{
+	"PUBLIC":  FAST_CONNECT_PROVIDER_SERVICE_SUPPORTED_VIRTUAL_CIRCUIT_TYPES_PUBLIC,
+	"PRIVATE": FAST_CONNECT_PROVIDER_SERVICE_SUPPORTED_VIRTUAL_CIRCUIT_TYPES_PRIVATE,
+	"UNKNOWN": FAST_CONNECT_PROVIDER_SERVICE_SUPPORTED_VIRTUAL_CIRCUIT_TYPES_UNKNOWN,
+}
+
+func GetFastConnectProviderServiceSupportedVirtualCircuitTypesEnumValues() []FastConnectProviderServiceSupportedVirtualCircuitTypesEnum {
+	values := make([]FastConnectProviderServiceSupportedVirtualCircuitTypesEnum, 0)
+	for _, v := range mapping_fastconnectproviderservice_supportedVirtualCircuitTypes {
+		if v != FAST_CONNECT_PROVIDER_SERVICE_SUPPORTED_VIRTUAL_CIRCUIT_TYPES_UNKNOWN {
 			values = append(values, v)
 		}
 	}

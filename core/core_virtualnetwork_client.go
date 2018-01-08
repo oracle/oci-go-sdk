@@ -38,6 +38,51 @@ func NewVirtualNetworkClientWithConfigurationProvider(configProvider common.Conf
 	return
 }
 
+// Adds one or more customer public IP prefixes to the specified public virtual circuit.
+// Use this operation (and not UpdateVirtualCircuit)
+// to add prefixes to the virtual circuit. Oracle must verify the customer's ownership
+// of each prefix before traffic for that prefix will flow across the virtual circuit.
+func (client VirtualNetworkClient) BulkAddVirtualCircuitPublicPrefixes(ctx context.Context, request BulkAddVirtualCircuitPublicPrefixesRequest) (err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/virtualCircuits/{virtualCircuitId}/actions/bulkAddPublicPrefixes", request)
+	if err != nil {
+		return
+	}
+
+	_, err = client.Call(ctx, &httpRequest)
+	return
+}
+
+// Removes one or more customer public IP prefixes from the specified public virtual circuit.
+// Use this operation (and not UpdateVirtualCircuit)
+// to remove prefixes from the virtual circuit. When the virtual circuit's state switches
+// back to PROVISIONED, Oracle stops advertising the specified prefixes across the connection.
+func (client VirtualNetworkClient) BulkDeleteVirtualCircuitPublicPrefixes(ctx context.Context, request BulkDeleteVirtualCircuitPublicPrefixesRequest) (err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/virtualCircuits/{virtualCircuitId}/actions/bulkDeletePublicPrefixes", request)
+	if err != nil {
+		return
+	}
+
+	_, err = client.Call(ctx, &httpRequest)
+	return
+}
+
+// Connects this local peering gateway (LPG) to another one in the same region.
+// This operation must be called by the VCN administrator who is designated as
+// the *requestor* in the peering relationship. The *acceptor* must implement
+// an Identity and Access Management (IAM) policy that gives the requestor permission
+// to connect to LPGs in the acceptor's compartment. Without that permission, this
+// operation will fail. For more information, see
+// [VCN Peering]({{DOC_SERVER_URL}}/Content/Network/Tasks/VCNpeering.htm).
+func (client VirtualNetworkClient) ConnectLocalPeeringGateways(ctx context.Context, request ConnectLocalPeeringGatewaysRequest) (err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/localPeeringGateways/{localPeeringGatewayId}/actions/connect", request)
+	if err != nil {
+		return
+	}
+
+	_, err = client.Call(ctx, &httpRequest)
+	return
+}
+
 // Creates a new virtual Customer-Premises Equipment (CPE) object in the specified compartment. For
 // more information, see [IPSec VPNs]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingIPsec.htm).
 // For the purposes of access control, you must provide the OCID of the compartment where you want
@@ -267,6 +312,24 @@ func (client VirtualNetworkClient) CreateIPSecConnection(ctx context.Context, re
 // the gateway without changing the route rule.
 func (client VirtualNetworkClient) CreateInternetGateway(ctx context.Context, request CreateInternetGatewayRequest) (response CreateInternetGatewayResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/internetGateways", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// Creates a new local peering gateway (LPG) for the specified VCN.
+func (client VirtualNetworkClient) CreateLocalPeeringGateway(ctx context.Context, request CreateLocalPeeringGatewayRequest) (response CreateLocalPeeringGatewayResponse, err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/localPeeringGateways", request)
 	if err != nil {
 		return
 	}
@@ -588,6 +651,19 @@ func (client VirtualNetworkClient) DeleteInternetGateway(ctx context.Context, re
 	return
 }
 
+// Deletes the specified local peering gateway (LPG).
+// This is an asynchronous operation; the local peering gateway's `lifecycleState` changes to TERMINATING temporarily
+// until the local peering gateway is completely removed.
+func (client VirtualNetworkClient) DeleteLocalPeeringGateway(ctx context.Context, request DeleteLocalPeeringGatewayRequest) (err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodDelete, "/localPeeringGateways/{localPeeringGatewayId}", request)
+	if err != nil {
+		return
+	}
+
+	_, err = client.Call(ctx, &httpRequest)
+	return
+}
+
 // Unassigns and deletes the specified private IP. You must
 // specify the object's OCID. The private IP address is returned to
 // the subnet's pool of available addresses.
@@ -898,6 +974,24 @@ func (client VirtualNetworkClient) GetIPSecConnectionDeviceStatus(ctx context.Co
 // Gets the specified Internet Gateway's information.
 func (client VirtualNetworkClient) GetInternetGateway(ctx context.Context, request GetInternetGatewayRequest) (response GetInternetGatewayResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/internetGateways/{igId}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// Gets the specified local peering gateway's information.
+func (client VirtualNetworkClient) GetLocalPeeringGateway(ctx context.Context, request GetLocalPeeringGatewayRequest) (response GetLocalPeeringGatewayResponse, err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/localPeeringGateways/{localPeeringGatewayId}", request)
 	if err != nil {
 		return
 	}
@@ -1275,6 +1369,25 @@ func (client VirtualNetworkClient) ListInternetGateways(ctx context.Context, req
 	return
 }
 
+// Lists the local peering gateways (LPGs) for the specified VCN and compartment
+// (the LPG's compartment).
+func (client VirtualNetworkClient) ListLocalPeeringGateways(ctx context.Context, request ListLocalPeeringGatewaysRequest) (response ListLocalPeeringGatewaysResponse, err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/localPeeringGateways", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
 // Lists the PrivateIp objects based
 // on one of these filters:
 //   - Subnet OCID.
@@ -1380,6 +1493,25 @@ func (client VirtualNetworkClient) ListVcns(ctx context.Context, request ListVcn
 // The deprecated operation lists available bandwidth levels for virtual circuits. For the compartment ID, provide the OCID of your tenancy (the root compartment).
 func (client VirtualNetworkClient) ListVirtualCircuitBandwidthShapes(ctx context.Context, request ListVirtualCircuitBandwidthShapesRequest) (response ListVirtualCircuitBandwidthShapesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/virtualCircuitBandwidthShapes", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// Lists the public IP prefixes and their details for the specified
+// public virtual circuit.
+func (client VirtualNetworkClient) ListVirtualCircuitPublicPrefixes(ctx context.Context, request ListVirtualCircuitPublicPrefixesRequest) (response ListVirtualCircuitPublicPrefixesResponse, err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/virtualCircuits/{virtualCircuitId}/publicPrefixes", request)
 	if err != nil {
 		return
 	}
@@ -1566,6 +1698,24 @@ func (client VirtualNetworkClient) UpdateInternetGateway(ctx context.Context, re
 	return
 }
 
+// Updates the specified local peering gateway (LPG).
+func (client VirtualNetworkClient) UpdateLocalPeeringGateway(ctx context.Context, request UpdateLocalPeeringGatewayRequest) (response UpdateLocalPeeringGatewayResponse, err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/localPeeringGateways/{localPeeringGatewayId}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
 // Updates the specified private IP. You must specify the object's OCID.
 // Use this operation if you want to:
 //   - Move a secondary private IP to a different VNIC in the same subnet.
@@ -1684,6 +1834,13 @@ func (client VirtualNetworkClient) UpdateVcn(ctx context.Context, request Update
 // the associated BGP session is back up. For more information
 // about the various states and how to test connectivity, see
 // [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
+// To change the list of public IP prefixes for a public virtual circuit,
+// use BulkAddVirtualCircuitPublicPrefixes
+// and
+// BulkDeleteVirtualCircuitPublicPrefixes.
+// Updating the list of prefixes does NOT cause the BGP session to go down. However,
+// Oracle must verify the customer's ownership of each added prefix before
+// traffic for that prefix will flow across the virtual circuit.
 func (client VirtualNetworkClient) UpdateVirtualCircuit(ctx context.Context, request UpdateVirtualCircuitRequest) (response UpdateVirtualCircuitResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/virtualCircuits/{virtualCircuitId}", request)
 	if err != nil {

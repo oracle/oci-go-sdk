@@ -65,7 +65,7 @@ const (
 	INSTANCE_ACTION_ACTION_UNKNOWN   InstanceActionActionEnum = "UNKNOWN"
 )
 
-var mapping_Compute_action = map[string]InstanceActionActionEnum{
+var mapping_instanceactionaction = map[string]InstanceActionActionEnum{
 	"STOP":      INSTANCE_ACTION_ACTION_STOP,
 	"START":     INSTANCE_ACTION_ACTION_START,
 	"SOFTRESET": INSTANCE_ACTION_ACTION_SOFTRESET,
@@ -75,7 +75,7 @@ var mapping_Compute_action = map[string]InstanceActionActionEnum{
 
 func GetInstanceActionActionEnumValues() []InstanceActionActionEnum {
 	values := make([]InstanceActionActionEnum, 0)
-	for _, v := range mapping_Compute_action {
+	for _, v := range mapping_instanceactionaction {
 		if v != INSTANCE_ACTION_ACTION_UNKNOWN {
 			values = append(values, v)
 		}

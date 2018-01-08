@@ -44,6 +44,13 @@ type VnicAttachment struct {
 	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
+	// Which physical network interface card (NIC) the VNIC uses.
+	// Certain bare metal instance shapes have two active physical NICs (0 and 1). If
+	// you add a secondary VNIC to one of these instances, you can specify which NIC
+	// the VNIC will use. For more information, see
+	// [Virtual Network Interface Cards (VNICs)]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingVNICs.htm).
+	NicIndex *int `mandatory:"false" json:"nicIndex,omitempty"`
+
 	// The Oracle-assigned VLAN tag of the attached VNIC. Available after the
 	// attachment process is complete.
 	// Example: `0`

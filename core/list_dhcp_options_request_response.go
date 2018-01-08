@@ -23,6 +23,25 @@ type ListDhcpOptionsRequest struct {
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
+
+	// A filter to return only resources that match the given display name exactly.
+	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
+
+	// The field to sort by. You can provide one sort order (`sortOrder`). Default order for
+	// TIMECREATED is descending. Default order for DISPLAYNAME is ascending. The DISPLAYNAME
+	// sort order is case sensitive.
+	// **Note:** In general, some "List" operations (for example, `ListInstances`) let you
+	// optionally filter by Availability Domain if the scope of the resource type is within a
+	// single Availability Domain. If you call one of these "List" operations without specifying
+	// an Availability Domain, the resources are grouped by Availability Domain, then sorted.
+	SortBy ListDhcpOptionsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy"`
+
+	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order
+	// is case sensitive.
+	SortOrder ListDhcpOptionsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder"`
+
+	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
+	LifecycleState *string `mandatory:"false" contributesTo:"query" name:"lifecycleState"`
 }
 
 func (request ListDhcpOptionsRequest) String() string {
@@ -50,4 +69,52 @@ type ListDhcpOptionsResponse struct {
 
 func (response ListDhcpOptionsResponse) String() string {
 	return common.PointerString(response)
+}
+
+type ListDhcpOptionsSortByEnum string
+
+const (
+	LIST_DHCP_OPTIONS_SORT_BY_TIMECREATED ListDhcpOptionsSortByEnum = "TIMECREATED"
+	LIST_DHCP_OPTIONS_SORT_BY_DISPLAYNAME ListDhcpOptionsSortByEnum = "DISPLAYNAME"
+	LIST_DHCP_OPTIONS_SORT_BY_UNKNOWN     ListDhcpOptionsSortByEnum = "UNKNOWN"
+)
+
+var mapping_listdhcpoptionssortby = map[string]ListDhcpOptionsSortByEnum{
+	"TIMECREATED": LIST_DHCP_OPTIONS_SORT_BY_TIMECREATED,
+	"DISPLAYNAME": LIST_DHCP_OPTIONS_SORT_BY_DISPLAYNAME,
+	"UNKNOWN":     LIST_DHCP_OPTIONS_SORT_BY_UNKNOWN,
+}
+
+func GetListDhcpOptionsSortByEnumValues() []ListDhcpOptionsSortByEnum {
+	values := make([]ListDhcpOptionsSortByEnum, 0)
+	for _, v := range mapping_listdhcpoptionssortby {
+		if v != LIST_DHCP_OPTIONS_SORT_BY_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+type ListDhcpOptionsSortOrderEnum string
+
+const (
+	LIST_DHCP_OPTIONS_SORT_ORDER_ASC     ListDhcpOptionsSortOrderEnum = "ASC"
+	LIST_DHCP_OPTIONS_SORT_ORDER_DESC    ListDhcpOptionsSortOrderEnum = "DESC"
+	LIST_DHCP_OPTIONS_SORT_ORDER_UNKNOWN ListDhcpOptionsSortOrderEnum = "UNKNOWN"
+)
+
+var mapping_listdhcpoptionssortorder = map[string]ListDhcpOptionsSortOrderEnum{
+	"ASC":     LIST_DHCP_OPTIONS_SORT_ORDER_ASC,
+	"DESC":    LIST_DHCP_OPTIONS_SORT_ORDER_DESC,
+	"UNKNOWN": LIST_DHCP_OPTIONS_SORT_ORDER_UNKNOWN,
+}
+
+func GetListDhcpOptionsSortOrderEnumValues() []ListDhcpOptionsSortOrderEnum {
+	values := make([]ListDhcpOptionsSortOrderEnum, 0)
+	for _, v := range mapping_listdhcpoptionssortorder {
+		if v != LIST_DHCP_OPTIONS_SORT_ORDER_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
 }

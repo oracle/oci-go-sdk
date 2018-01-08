@@ -27,6 +27,22 @@ type ListConsoleHistoriesRequest struct {
 
 	// The OCID of the instance.
 	InstanceID *string `mandatory:"false" contributesTo:"query" name:"instanceId"`
+
+	// The field to sort by. You can provide one sort order (`sortOrder`). Default order for
+	// TIMECREATED is descending. Default order for DISPLAYNAME is ascending. The DISPLAYNAME
+	// sort order is case sensitive.
+	// **Note:** In general, some "List" operations (for example, `ListInstances`) let you
+	// optionally filter by Availability Domain if the scope of the resource type is within a
+	// single Availability Domain. If you call one of these "List" operations without specifying
+	// an Availability Domain, the resources are grouped by Availability Domain, then sorted.
+	SortBy ListConsoleHistoriesSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy"`
+
+	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order
+	// is case sensitive.
+	SortOrder ListConsoleHistoriesSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder"`
+
+	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
+	LifecycleState *string `mandatory:"false" contributesTo:"query" name:"lifecycleState"`
 }
 
 func (request ListConsoleHistoriesRequest) String() string {
@@ -54,4 +70,52 @@ type ListConsoleHistoriesResponse struct {
 
 func (response ListConsoleHistoriesResponse) String() string {
 	return common.PointerString(response)
+}
+
+type ListConsoleHistoriesSortByEnum string
+
+const (
+	LIST_CONSOLE_HISTORIES_SORT_BY_TIMECREATED ListConsoleHistoriesSortByEnum = "TIMECREATED"
+	LIST_CONSOLE_HISTORIES_SORT_BY_DISPLAYNAME ListConsoleHistoriesSortByEnum = "DISPLAYNAME"
+	LIST_CONSOLE_HISTORIES_SORT_BY_UNKNOWN     ListConsoleHistoriesSortByEnum = "UNKNOWN"
+)
+
+var mapping_listconsolehistoriessortby = map[string]ListConsoleHistoriesSortByEnum{
+	"TIMECREATED": LIST_CONSOLE_HISTORIES_SORT_BY_TIMECREATED,
+	"DISPLAYNAME": LIST_CONSOLE_HISTORIES_SORT_BY_DISPLAYNAME,
+	"UNKNOWN":     LIST_CONSOLE_HISTORIES_SORT_BY_UNKNOWN,
+}
+
+func GetListConsoleHistoriesSortByEnumValues() []ListConsoleHistoriesSortByEnum {
+	values := make([]ListConsoleHistoriesSortByEnum, 0)
+	for _, v := range mapping_listconsolehistoriessortby {
+		if v != LIST_CONSOLE_HISTORIES_SORT_BY_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+type ListConsoleHistoriesSortOrderEnum string
+
+const (
+	LIST_CONSOLE_HISTORIES_SORT_ORDER_ASC     ListConsoleHistoriesSortOrderEnum = "ASC"
+	LIST_CONSOLE_HISTORIES_SORT_ORDER_DESC    ListConsoleHistoriesSortOrderEnum = "DESC"
+	LIST_CONSOLE_HISTORIES_SORT_ORDER_UNKNOWN ListConsoleHistoriesSortOrderEnum = "UNKNOWN"
+)
+
+var mapping_listconsolehistoriessortorder = map[string]ListConsoleHistoriesSortOrderEnum{
+	"ASC":     LIST_CONSOLE_HISTORIES_SORT_ORDER_ASC,
+	"DESC":    LIST_CONSOLE_HISTORIES_SORT_ORDER_DESC,
+	"UNKNOWN": LIST_CONSOLE_HISTORIES_SORT_ORDER_UNKNOWN,
+}
+
+func GetListConsoleHistoriesSortOrderEnumValues() []ListConsoleHistoriesSortOrderEnum {
+	values := make([]ListConsoleHistoriesSortOrderEnum, 0)
+	for _, v := range mapping_listconsolehistoriessortorder {
+		if v != LIST_CONSOLE_HISTORIES_SORT_ORDER_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
 }

@@ -56,6 +56,24 @@ func (client ComputeClient) AddImageShapeCompatibilityEntry(ctx context.Context,
 	return
 }
 
+// Attaches the specified boot volume to the specified instance.
+func (client ComputeClient) AttachBootVolume(ctx context.Context, request AttachBootVolumeRequest) (response AttachBootVolumeResponse, err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/bootVolumeAttachments/", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
 // Creates a secondary VNIC and attaches it to the specified instance.
 // For more information about secondary VNICs, see
 // [Virtual Network Interface Cards (VNICs)]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingVNICs.htm).
@@ -160,13 +178,12 @@ func (client ComputeClient) CreateImage(ctx context.Context, request CreateImage
 	return
 }
 
-// Creates a new serial console connection to the specified instance.
-// Once the serial console connection has been created and is available,
-// you connect to the serial console using an SSH client.
-// The default number of enabled serial console connections per tenancy is 10.
-// For more information about serial console access, see [Accessing the Serial Console]({{DOC_SERVER_URL}}/Content/Compute/References/serialconsole.htm).
+// Creates a new console connection to the specified instance.
+// Once the console connection has been created and is available,
+// you connect to the console using SSH.
+// For more information about console access, see [Accessing the Console]({{DOC_SERVER_URL}}/Content/Compute/References/serialconsole.htm).
 func (client ComputeClient) CreateInstanceConsoleConnection(ctx context.Context, request CreateInstanceConsoleConnectionRequest) (response CreateInstanceConsoleConnectionResponse, err error) {
-	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/instanceConsoleConnections/", request)
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/instanceConsoleConnections", request)
 	if err != nil {
 		return
 	}
@@ -204,9 +221,22 @@ func (client ComputeClient) DeleteImage(ctx context.Context, request DeleteImage
 	return
 }
 
-// Deletes the specified serial console connection.
+// Deletes the specified instance console connection.
 func (client ComputeClient) DeleteInstanceConsoleConnection(ctx context.Context, request DeleteInstanceConsoleConnectionRequest) (err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodDelete, "/instanceConsoleConnections/{instanceConsoleConnectionId}", request)
+	if err != nil {
+		return
+	}
+
+	_, err = client.Call(ctx, &httpRequest)
+	return
+}
+
+// Detaches a boot volume from an instance. You must specify the OCID of the boot volume attachment.
+// This is an asynchronous operation. The attachment's `lifecycleState` will change to DETACHING temporarily
+// until the attachment is completely removed.
+func (client ComputeClient) DetachBootVolume(ctx context.Context, request DetachBootVolumeRequest) (err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodDelete, "/bootVolumeAttachments/{bootVolumeAttachmentId}", request)
 	if err != nil {
 		return
 	}
@@ -256,6 +286,24 @@ func (client ComputeClient) DetachVolume(ctx context.Context, request DetachVolu
 // for constructing URLs for image import/export.
 func (client ComputeClient) ExportImage(ctx context.Context, request ExportImageRequest) (response ExportImageResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/images/{imageId}/actions/export", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// Gets information about the specified boot volume attachment.
+func (client ComputeClient) GetBootVolumeAttachment(ctx context.Context, request GetBootVolumeAttachmentRequest) (response GetBootVolumeAttachmentResponse, err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/bootVolumeAttachments/{bootVolumeAttachmentId}", request)
 	if err != nil {
 		return
 	}
@@ -347,7 +395,7 @@ func (client ComputeClient) GetInstance(ctx context.Context, request GetInstance
 	return
 }
 
-// Gets the specified serial console connection's information.
+// Gets the specified instance console connection's information.
 func (client ComputeClient) GetInstanceConsoleConnection(ctx context.Context, request GetInstanceConsoleConnectionRequest) (response GetInstanceConsoleConnectionResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleConnections/{instanceConsoleConnectionId}", request)
 	if err != nil {
@@ -489,6 +537,25 @@ func (client ComputeClient) LaunchInstance(ctx context.Context, request LaunchIn
 	return
 }
 
+// Lists the boot volume attachments in the specified compartment. You can filter the
+// list by specifying an instance OCID, boot volume OCID, or both.
+func (client ComputeClient) ListBootVolumeAttachments(ctx context.Context, request ListBootVolumeAttachmentsRequest) (response ListBootVolumeAttachmentsResponse, err error) {
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/bootVolumeAttachments/", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
 // Lists the console history metadata for the specified compartment or instance.
 func (client ComputeClient) ListConsoleHistories(ctx context.Context, request ListConsoleHistoriesRequest) (response ListConsoleHistoriesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleHistories/", request)
@@ -507,7 +574,9 @@ func (client ComputeClient) ListConsoleHistories(ctx context.Context, request Li
 	return
 }
 
-// Lists the available images in the specified compartment. For more
+// Lists the available images in the specified compartment.
+// If you specify a value for the `sortBy` parameter, Oracle-provided images appear first in the list, followed by custom images.
+// For more
 // information about images, see
 // [Managing Custom Images]({{DOC_SERVER_URL}}/Content/Compute/Tasks/managingcustomimages.htm).
 func (client ComputeClient) ListImages(ctx context.Context, request ListImagesRequest) (response ListImagesResponse, err error) {
@@ -527,10 +596,10 @@ func (client ComputeClient) ListImages(ctx context.Context, request ListImagesRe
 	return
 }
 
-// Lists the serial console connections for the specified compartment or instance.
-// For more information about serial console access, see [Accessing the Serial Console]({{DOC_SERVER_URL}}/Content/Compute/References/serialconsole.htm).
+// Lists the console connections for the specified compartment or instance.
+// For more information about console access, see [Accessing the Instance Console]({{DOC_SERVER_URL}}/Content/Compute/References/serialconsole.htm).
 func (client ComputeClient) ListInstanceConsoleConnections(ctx context.Context, request ListInstanceConsoleConnectionsRequest) (response ListInstanceConsoleConnectionsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleConnections/", request)
+	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleConnections", request)
 	if err != nil {
 		return
 	}
@@ -638,6 +707,8 @@ func (client ComputeClient) RemoveImageShapeCompatibilityEntry(ctx context.Conte
 
 // Terminates the specified instance. Any attached VNICs and volumes are automatically detached
 // when the instance terminates.
+// To preserve the boot volume associated with the instance, specify `true` for `PreserveBootVolumeQueryParam`.
+// To delete the boot volume when the instance is deleted, specify `false` or do not specify a value for `PreserveBootVolumeQueryParam`.
 // This is an asynchronous operation. The instance's `lifecycleState` will change to TERMINATING temporarily
 // until the instance is completely removed.
 func (client ComputeClient) TerminateInstance(ctx context.Context, request TerminateInstanceRequest) (err error) {

@@ -22,6 +22,13 @@ type AttachVnicDetails struct {
 
 	// A user-friendly name for the attachment. Does not have to be unique, and it cannot be changed.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+
+	// Which physical network interface card (NIC) the VNIC will use. Defaults to 0.
+	// Certain bare metal instance shapes have two active physical NICs (0 and 1). If
+	// you add a secondary VNIC to one of these instances, you can specify which NIC
+	// the VNIC will use. For more information, see
+	// [Virtual Network Interface Cards (VNICs)]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingVNICs.htm).
+	NicIndex *int `mandatory:"false" json:"nicIndex,omitempty"`
 }
 
 func (model AttachVnicDetails) String() string {
