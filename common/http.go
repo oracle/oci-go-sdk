@@ -133,7 +133,6 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 		return
 	}
 
-
 	//check for tag "omitEmpty", this is done to accomodate unset fields that do not
 	//support an empty string: enums in query params
 	if omitEmpty, present := field.Tag.Lookup("omitEmpty"); present {
