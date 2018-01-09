@@ -134,10 +134,14 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 	}
 
 
+	//check for tag "omitEmpty", this is done to accomodate unset fields that do not
+	//support an empty string: enums in query params
 	if omitEmpty, present := field.Tag.Lookup("omitEmpty"); present {
 		omitEmptyBool, _ := strconv.ParseBool(strings.ToLower(omitEmpty))
-		if !(queryParameterValue == "" && omitEmptyBool) {
+		if queryParameterValue != "" || !omitEmptyBool {
 			query.Set(queryParameterName, queryParameterValue)
+		} else {
+			Debugf("Omitting %s, is empty and omitEmpty tag is set", field.Name)
 		}
 	} else {
 		query.Set(queryParameterName, queryParameterValue)

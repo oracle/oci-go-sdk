@@ -581,12 +581,20 @@ func TestUnMarshalWithHeaderCollections(t *testing.T) {
 	assert.Equal(t, s.Meta["key2"], r.Header.Get("val2"))
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// BaseClient
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-func TestBaseClient_prepareRequest(t *testing.T) {
-	assert.True(t, true)
+
+type responseWithEmptyQP struct {
+	Meta string `contributesTo:"query" omitEmpty:"true" name:"meta"`
+	QParam string `contributesTo:"query" omitEmpty:"false" name:"qp"`
+	QParam2 string `contributesTo:"query" name:"qp2"`
+}
+
+func TestEmptyQueryParam(t *testing.T) {
+	s := responseWithEmptyQP{ }
+	r, err := MakeDefaultHttpRequestWithTaggedStruct("GET", "/", s)
+	assert.NoError(t, err)
+	assert.Contains(t, r.URL.RawQuery, "qp2")
+	assert.Contains(t, r.URL.RawQuery, "qp")
+	assert.NotContains(t, r.URL.RawQuery, "meta")
+
 
 }
