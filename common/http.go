@@ -133,7 +133,16 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 		return
 	}
 
-	query.Set(queryParameterName, queryParameterValue)
+
+	if omitEmpty, present := field.Tag.Lookup("omitEmpty"); present {
+		omitEmptyBool, _ := strconv.ParseBool(strings.ToLower(omitEmpty))
+		if !(queryParameterValue == "" && omitEmptyBool) {
+			query.Set(queryParameterName, queryParameterValue)
+		}
+	} else {
+		query.Set(queryParameterName, queryParameterValue)
+	}
+
 	request.URL.RawQuery = query.Encode()
 	return
 }

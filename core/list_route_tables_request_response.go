@@ -34,11 +34,11 @@ type ListRouteTablesRequest struct {
 	// optionally filter by Availability Domain if the scope of the resource type is within a
 	// single Availability Domain. If you call one of these "List" operations without specifying
 	// an Availability Domain, the resources are grouped by Availability Domain, then sorted.
-	SortBy ListRouteTablesSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy"`
+	SortBy ListRouteTablesSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order
 	// is case sensitive.
-	SortOrder ListRouteTablesSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder"`
+	SortOrder ListRouteTablesSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
 	LifecycleState *string `mandatory:"false" contributesTo:"query" name:"lifecycleState"`
