@@ -9,9 +9,12 @@
 package core
 
 import (
+	"encoding/json"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// LaunchInstanceDetails. Instance launch details.
+// Use the sourceDetails parameter to specify whether a boot volume should be used for a new instance launch.
 type LaunchInstanceDetails struct {
 
 	// The Availability Domain of the instance.
@@ -20,9 +23,6 @@ type LaunchInstanceDetails struct {
 
 	// The OCID of the compartment.
 	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
-
-	// The OCID of the image used to boot the instance.
-	ImageID *string `mandatory:"true" json:"imageId,omitempty"`
 
 	// The shape of an instance. The shape determines the number of CPUs, amount of memory,
 	// and other resources allocated to the instance.
@@ -43,10 +43,14 @@ type LaunchInstanceDetails struct {
 	// If you don't need nested metadata values, it is strongly advised to avoid using this object and use the Metadata object instead.
 	ExtendedMetadata map[string]interface{} `mandatory:"false" json:"extendedMetadata,omitempty"`
 
-	// Deprecated. Instead use `hostnameLabel` in
+	// Deprecated. Instead Use `hostnameLabel` in
 	// CreateVnicDetails.
 	// If you provide both, the values must match.
 	HostnameLabel *string `mandatory:"false" json:"hostnameLabel,omitempty"`
+
+	// Deprecated. Use `sourceDetails` with InstanceSourceViaImageDetails
+	// source type instead. If you specify values for both, the values must match.
+	ImageID *string `mandatory:"false" json:"imageId,omitempty"`
 
 	// This is an advanced option.
 	// When a bare metal or virtual machine
@@ -114,6 +118,9 @@ type LaunchInstanceDetails struct {
 	//  the metadata information for the specified key name, respectively.
 	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
 
+	// Details for creating an instance.
+	SourceDetails InstanceSourceDetails `mandatory:"false" json:"sourceDetails,omitempty"`
+
 	// Deprecated. Instead use `subnetId` in
 	// CreateVnicDetails.
 	// At least one of them is required; if you provide both, the values must match.
@@ -122,4 +129,43 @@ type LaunchInstanceDetails struct {
 
 func (model LaunchInstanceDetails) String() string {
 	return common.PointerString(model)
+}
+
+func (model *LaunchInstanceDetails) UnmarshalJSON(data []byte) (e error) {
+	m := struct {
+		CreateVnicDetails  *CreateVnicDetails     `mandatory:"true" json:"createVnicDetails,omitempty"`
+		DisplayName        *string                `mandatory:"true" json:"displayName,omitempty"`
+		ExtendedMetadata   map[string]interface{} `mandatory:"true" json:"extendedMetadata,omitempty"`
+		HostnameLabel      *string                `mandatory:"true" json:"hostnameLabel,omitempty"`
+		ImageID            *string                `mandatory:"true" json:"imageId,omitempty"`
+		IpxeScript         *string                `mandatory:"true" json:"ipxeScript,omitempty"`
+		Metadata           map[string]string      `mandatory:"true" json:"metadata,omitempty"`
+		SourceDetails      instancesourcedetails  `mandatory:"true" json:"sourceDetails,omitempty"`
+		SubnetID           *string                `mandatory:"true" json:"subnetId,omitempty"`
+		AvailabilityDomain *string                `mandatory:"true" json:"availabilityDomain,omitempty"`
+		CompartmentID      *string                `mandatory:"true" json:"compartmentId,omitempty"`
+		Shape              *string                `mandatory:"true" json:"shape,omitempty"`
+	}{}
+
+	e = json.Unmarshal(data, &m)
+	if e != nil {
+		return
+	}
+	model.CreateVnicDetails = m.CreateVnicDetails
+	model.DisplayName = m.DisplayName
+	model.ExtendedMetadata = m.ExtendedMetadata
+	model.HostnameLabel = m.HostnameLabel
+	model.ImageID = m.ImageID
+	model.IpxeScript = m.IpxeScript
+	model.Metadata = m.Metadata
+	nn, e := m.SourceDetails.UnmarshalPolymorphicJSON(m.SourceDetails.JsonData)
+	if e != nil {
+		return
+	}
+	model.SourceDetails = nn
+	model.SubnetID = m.SubnetID
+	model.AvailabilityDomain = m.AvailabilityDomain
+	model.CompartmentID = m.CompartmentID
+	model.Shape = m.Shape
+	return
 }

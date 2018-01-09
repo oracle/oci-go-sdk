@@ -21,7 +21,9 @@ import (
 // cross-connect group, the VLAN, and the BGP peering session.
 // If you're a customer who is colocated with Oracle, that means you own both
 // the virtual circuit and the physical connection it runs on (cross-connect or
-// cross-connect group), so you specify all the information in the mapping.
+// cross-connect group), so you specify all the information in the mapping. There's
+// one exception: for a public virtual circuit, Oracle specifies the BGP IP
+// addresses.
 // If you're a provider, then you own the physical connection that the customer's
 // virtual circuit runs on, so you contribute information about the cross-connect
 // or cross-connect group and VLAN.
@@ -29,7 +31,8 @@ import (
 // provider? If the BGP session goes from Oracle to the provider's edge router, then
 // the provider also specifies the BGP peering information. If the BGP session instead
 // goes from Oracle to the customer's edge router, then the customer specifies the BGP
-// peering information.
+// peering information. There's one exception: for a public virtual circuit, Oracle
+// specifies the BGP IP addresses.
 type CrossConnectMapping struct {
 
 	// The key for BGP MD5 authentication. Only applicable if your system
@@ -48,6 +51,7 @@ type CrossConnectMapping struct {
 	// to a customer, this is the BGP IP address of the customer's edge router. If the
 	// session goes from Oracle to a provider, this is the BGP IP address of the
 	// provider's edge router. Must use a /30 or /31 subnet mask.
+	// There's one exception: for a public virtual circuit, Oracle specifies the BGP IP addresses.
 	// Example: `10.0.0.18/31`
 	CustomerBgpPeeringIp *string `mandatory:"false" json:"customerBgpPeeringIp,omitempty"`
 
@@ -55,6 +59,7 @@ type CrossConnectMapping struct {
 	// subnet mask. If the session goes from Oracle to a customer's edge router,
 	// the customer specifies this information. If the session goes from Oracle to
 	// a provider's edge router, the provider specifies this.
+	// There's one exception: for a public virtual circuit, Oracle specifies the BGP IP addresses.
 	// Example: `10.0.0.19/31`
 	OracleBgpPeeringIp *string `mandatory:"false" json:"oracleBgpPeeringIp,omitempty"`
 

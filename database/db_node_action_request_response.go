@@ -65,7 +65,7 @@ const (
 	DB_NODE_ACTION_ACTION_UNKNOWN   DbNodeActionActionEnum = "UNKNOWN"
 )
 
-var mapping_Database_action = map[string]DbNodeActionActionEnum{
+var mapping_dbnodeactionaction = map[string]DbNodeActionActionEnum{
 	"STOP":      DB_NODE_ACTION_ACTION_STOP,
 	"START":     DB_NODE_ACTION_ACTION_START,
 	"SOFTRESET": DB_NODE_ACTION_ACTION_SOFTRESET,
@@ -75,7 +75,7 @@ var mapping_Database_action = map[string]DbNodeActionActionEnum{
 
 func GetDbNodeActionActionEnumValues() []DbNodeActionActionEnum {
 	values := make([]DbNodeActionActionEnum, 0)
-	for _, v := range mapping_Database_action {
+	for _, v := range mapping_dbnodeactionaction {
 		if v != DB_NODE_ACTION_ACTION_UNKNOWN {
 			values = append(values, v)
 		}

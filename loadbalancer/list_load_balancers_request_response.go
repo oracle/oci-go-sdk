@@ -78,7 +78,7 @@ const (
 	LIST_LOAD_BALANCERS_SORT_BY_UNKNOWN     ListLoadBalancersSortByEnum = "UNKNOWN"
 )
 
-var mapping_LoadBalancer_sortBy = map[string]ListLoadBalancersSortByEnum{
+var mapping_listloadbalancerssortby = map[string]ListLoadBalancersSortByEnum{
 	"TIMECREATED": LIST_LOAD_BALANCERS_SORT_BY_TIMECREATED,
 	"DISPLAYNAME": LIST_LOAD_BALANCERS_SORT_BY_DISPLAYNAME,
 	"UNKNOWN":     LIST_LOAD_BALANCERS_SORT_BY_UNKNOWN,
@@ -86,7 +86,7 @@ var mapping_LoadBalancer_sortBy = map[string]ListLoadBalancersSortByEnum{
 
 func GetListLoadBalancersSortByEnumValues() []ListLoadBalancersSortByEnum {
 	values := make([]ListLoadBalancersSortByEnum, 0)
-	for _, v := range mapping_LoadBalancer_sortBy {
+	for _, v := range mapping_listloadbalancerssortby {
 		if v != LIST_LOAD_BALANCERS_SORT_BY_UNKNOWN {
 			values = append(values, v)
 		}
@@ -102,7 +102,7 @@ const (
 	LIST_LOAD_BALANCERS_SORT_ORDER_UNKNOWN ListLoadBalancersSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_LoadBalancer_sortOrder = map[string]ListLoadBalancersSortOrderEnum{
+var mapping_listloadbalancerssortorder = map[string]ListLoadBalancersSortOrderEnum{
 	"ASC":     LIST_LOAD_BALANCERS_SORT_ORDER_ASC,
 	"DESC":    LIST_LOAD_BALANCERS_SORT_ORDER_DESC,
 	"UNKNOWN": LIST_LOAD_BALANCERS_SORT_ORDER_UNKNOWN,
@@ -110,7 +110,7 @@ var mapping_LoadBalancer_sortOrder = map[string]ListLoadBalancersSortOrderEnum{
 
 func GetListLoadBalancersSortOrderEnumValues() []ListLoadBalancersSortOrderEnum {
 	values := make([]ListLoadBalancersSortOrderEnum, 0)
-	for _, v := range mapping_LoadBalancer_sortOrder {
+	for _, v := range mapping_listloadbalancerssortorder {
 		if v != LIST_LOAD_BALANCERS_SORT_ORDER_UNKNOWN {
 			values = append(values, v)
 		}

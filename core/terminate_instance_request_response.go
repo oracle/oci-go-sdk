@@ -18,6 +18,10 @@ type TerminateInstanceRequest struct {
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
 	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
+
+	// Specifies whether to delete or preserve the boot volume when terminating an instance.
+	// The default value is false.
+	PreserveBootVolume *bool `mandatory:"false" contributesTo:"query" name:"preserveBootVolume"`
 }
 
 func (request TerminateInstanceRequest) String() string {

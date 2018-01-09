@@ -15,7 +15,7 @@ import (
 type UpdateVirtualCircuitDetails struct {
 
 	// The provisioned data rate of the connection. To get a list of the
-	// available bandwidth levels (i.e., shapes), see
+	// available bandwidth levels (that is, shapes), see
 	// ListFastConnectProviderVirtualCircuitBandwidthShapes.
 	// To be updated only by the customer who owns the virtual circuit.
 	BandwidthShapeName *string `mandatory:"false" json:"bandwidthShapeName,omitempty"`
@@ -43,7 +43,7 @@ type UpdateVirtualCircuitDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
 	// The OCID of the Drg
-	// that this virtual circuit uses.
+	// that this private virtual circuit uses.
 	// To be updated only by the customer who owns the virtual circuit.
 	GatewayID *string `mandatory:"false" json:"gatewayId,omitempty"`
 

@@ -12,14 +12,14 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateInstanceConsoleConnectionDetails. The details for creating a serial console connection.
-// The serial console connection is created in the same compartment as the instance.
+// CreateInstanceConsoleConnectionDetails. The details for creating a instance console connection.
+// The instance console connection is created in the same compartment as the instance.
 type CreateInstanceConsoleConnectionDetails struct {
 
-	// The OCID of the instance to create the serial console connection to.
+	// The OCID of the instance to create the console connection to.
 	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
 
-	// The SSH public key used to authenticate the serial console connection.
+	// The SSH public key used to authenticate the console connection.
 	PublicKey *string `mandatory:"true" json:"publicKey,omitempty"`
 }
 

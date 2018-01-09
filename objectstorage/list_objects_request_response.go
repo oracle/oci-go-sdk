@@ -82,7 +82,7 @@ const (
 	LIST_OBJECTS_FIELDS_UNKNOWN     ListObjectsFieldsEnum = "UNKNOWN"
 )
 
-var mapping_ObjectStorage_fields = map[string]ListObjectsFieldsEnum{
+var mapping_listobjectsfields = map[string]ListObjectsFieldsEnum{
 	"name":        LIST_OBJECTS_FIELDS_NAME,
 	"size":        LIST_OBJECTS_FIELDS_SIZE,
 	"timeCreated": LIST_OBJECTS_FIELDS_TIMECREATED,
@@ -92,7 +92,7 @@ var mapping_ObjectStorage_fields = map[string]ListObjectsFieldsEnum{
 
 func GetListObjectsFieldsEnumValues() []ListObjectsFieldsEnum {
 	values := make([]ListObjectsFieldsEnum, 0)
-	for _, v := range mapping_ObjectStorage_fields {
+	for _, v := range mapping_listobjectsfields {
 		if v != LIST_OBJECTS_FIELDS_UNKNOWN {
 			values = append(values, v)
 		}

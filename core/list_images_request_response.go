@@ -14,9 +14,7 @@ type ListImagesRequest struct {
 	// The OCID of the compartment.
 	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// A user-friendly name. Does not have to be unique, and it's changeable.
-	// Avoid entering confidential information.
-	// Example: `My new resource`
+	// A filter to return only resources that match the given display name exactly.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
 
 	// The image's operating system.
@@ -33,6 +31,22 @@ type ListImagesRequest struct {
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
+
+	// The field to sort by. You can provide one sort order (`sortOrder`). Default order for
+	// TIMECREATED is descending. Default order for DISPLAYNAME is ascending. The DISPLAYNAME
+	// sort order is case sensitive.
+	// **Note:** In general, some "List" operations (for example, `ListInstances`) let you
+	// optionally filter by Availability Domain if the scope of the resource type is within a
+	// single Availability Domain. If you call one of these "List" operations without specifying
+	// an Availability Domain, the resources are grouped by Availability Domain, then sorted.
+	SortBy ListImagesSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
+
+	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order
+	// is case sensitive.
+	SortOrder ListImagesSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
+
+	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
+	LifecycleState *string `mandatory:"false" contributesTo:"query" name:"lifecycleState"`
 }
 
 func (request ListImagesRequest) String() string {
@@ -60,4 +74,52 @@ type ListImagesResponse struct {
 
 func (response ListImagesResponse) String() string {
 	return common.PointerString(response)
+}
+
+type ListImagesSortByEnum string
+
+const (
+	LIST_IMAGES_SORT_BY_TIMECREATED ListImagesSortByEnum = "TIMECREATED"
+	LIST_IMAGES_SORT_BY_DISPLAYNAME ListImagesSortByEnum = "DISPLAYNAME"
+	LIST_IMAGES_SORT_BY_UNKNOWN     ListImagesSortByEnum = "UNKNOWN"
+)
+
+var mapping_listimagessortby = map[string]ListImagesSortByEnum{
+	"TIMECREATED": LIST_IMAGES_SORT_BY_TIMECREATED,
+	"DISPLAYNAME": LIST_IMAGES_SORT_BY_DISPLAYNAME,
+	"UNKNOWN":     LIST_IMAGES_SORT_BY_UNKNOWN,
+}
+
+func GetListImagesSortByEnumValues() []ListImagesSortByEnum {
+	values := make([]ListImagesSortByEnum, 0)
+	for _, v := range mapping_listimagessortby {
+		if v != LIST_IMAGES_SORT_BY_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
+}
+
+type ListImagesSortOrderEnum string
+
+const (
+	LIST_IMAGES_SORT_ORDER_ASC     ListImagesSortOrderEnum = "ASC"
+	LIST_IMAGES_SORT_ORDER_DESC    ListImagesSortOrderEnum = "DESC"
+	LIST_IMAGES_SORT_ORDER_UNKNOWN ListImagesSortOrderEnum = "UNKNOWN"
+)
+
+var mapping_listimagessortorder = map[string]ListImagesSortOrderEnum{
+	"ASC":     LIST_IMAGES_SORT_ORDER_ASC,
+	"DESC":    LIST_IMAGES_SORT_ORDER_DESC,
+	"UNKNOWN": LIST_IMAGES_SORT_ORDER_UNKNOWN,
+}
+
+func GetListImagesSortOrderEnumValues() []ListImagesSortOrderEnum {
+	values := make([]ListImagesSortOrderEnum, 0)
+	for _, v := range mapping_listimagessortorder {
+		if v != LIST_IMAGES_SORT_ORDER_UNKNOWN {
+			values = append(values, v)
+		}
+	}
+	return values
 }

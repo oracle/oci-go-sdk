@@ -15,7 +15,7 @@ type InstanceActionRequest struct {
 	InstanceID *string `mandatory:"true" contributesTo:"path" name:"instanceId"`
 
 	// The action to perform on the instance.
-	Action InstanceActionActionEnum `mandatory:"true" contributesTo:"query" name:"action"`
+	Action InstanceActionActionEnum `mandatory:"true" contributesTo:"query" name:"action" omitEmpty:"true"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
@@ -65,7 +65,7 @@ const (
 	INSTANCE_ACTION_ACTION_UNKNOWN   InstanceActionActionEnum = "UNKNOWN"
 )
 
-var mapping_Compute_action = map[string]InstanceActionActionEnum{
+var mapping_instanceactionaction = map[string]InstanceActionActionEnum{
 	"STOP":      INSTANCE_ACTION_ACTION_STOP,
 	"START":     INSTANCE_ACTION_ACTION_START,
 	"SOFTRESET": INSTANCE_ACTION_ACTION_SOFTRESET,
@@ -75,7 +75,7 @@ var mapping_Compute_action = map[string]InstanceActionActionEnum{
 
 func GetInstanceActionActionEnumValues() []InstanceActionActionEnum {
 	values := make([]InstanceActionActionEnum, 0)
-	for _, v := range mapping_Compute_action {
+	for _, v := range mapping_instanceactionaction {
 		if v != INSTANCE_ACTION_ACTION_UNKNOWN {
 			values = append(values, v)
 		}

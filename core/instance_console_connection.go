@@ -12,29 +12,33 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// InstanceConsoleConnection. The `InstanceConsoleConnection` API provides you with serial console access to virtual machine (VM) instances,
+// InstanceConsoleConnection. The `InstanceConsoleConnection` API provides you with console access to virtual machine (VM) instances,
 // enabling you to troubleshoot malfunctioning instances remotely.
-// For more information about serial console access, see
-// [Accessing the Serial Console]({{DOC_SERVER_URL}}/Content/Compute/References/serialconsole.htm).
+// For more information about console access, see
+// [Accessing the Console]({{DOC_SERVER_URL}}/Content/Compute/References/serialconsole.htm).
 type InstanceConsoleConnection struct {
 
-	// The OCID of the compartment to contain the serial console connection.
+	// The OCID of the compartment to contain the console connection.
 	CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
 
-	// The SSH connection string for the serial console connection.
+	// The SSH connection string for the console connection.
 	ConnectionString *string `mandatory:"false" json:"connectionString,omitempty"`
 
-	// The SSH public key fingerprint for the serial console connection.
+	// The SSH public key fingerprint for the console connection.
 	Fingerprint *string `mandatory:"false" json:"fingerprint,omitempty"`
 
-	// The OCID of the serial console connection.
+	// The OCID of the console connection.
 	ID *string `mandatory:"false" json:"id,omitempty"`
 
-	// The OCID of the instance the serial console connection connects to.
+	// The OCID of the instance the console connection connects to.
 	InstanceID *string `mandatory:"false" json:"instanceId,omitempty"`
 
-	// The current state of the serial console connection.
+	// The current state of the console connection.
 	LifecycleState InstanceConsoleConnectionLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
+
+	// The SSH connection string for the SSH tunnel used to
+	// connect to the console connection over VNC.
+	VncConnectionString *string `mandatory:"false" json:"vncConnectionString,omitempty"`
 }
 
 func (model InstanceConsoleConnection) String() string {

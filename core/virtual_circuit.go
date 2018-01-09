@@ -15,9 +15,9 @@ import (
 // VirtualCircuit. For use with Oracle Cloud Infrastructure FastConnect.
 // A virtual circuit is an isolated network path that runs over one or more physical
 // network connections to provide a single, logical connection between the edge router
-// on the customer's existing network and a DRG. A customer could have multiple virtual
-// circuits, for example, to isolate traffic from different parts of their organization
-// (one virtual circuit for 10.0.1.0/24, another for 172.16.0.0/16), or to provide redundancy.
+// on the customer's existing network and Oracle Cloud Infrastructure. *Private*
+// virtual circuits support private peering, and *public* virtual circuits support
+// public peering. For more information, see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
 // Each virtual circuit is made up of information shared between a customer, Oracle,
 // and a provider (if the customer is using FastConnect via a provider). Who fills in
 // a given property of a virtual circuit depends on whether the BGP session related to
@@ -25,7 +25,6 @@ import (
 // edge router to Oracle. Also, in the case where the customer is using a provider, values
 // for some of the properties may not be present immediately, but may get filled in as the
 // provider and Oracle each do their part to provision the virtual circuit.
-// For more information, see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
 // [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
@@ -60,7 +59,7 @@ type VirtualCircuit struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
 	// The OCID of the customer's Drg
-	// that this virtual circuit uses.
+	// that this virtual circuit uses. Applicable only to private virtual circuits.
 	GatewayID *string `mandatory:"false" json:"gatewayId,omitempty"`
 
 	// The virtual circuit's Oracle ID (OCID).
@@ -90,6 +89,10 @@ type VirtualCircuit struct {
 	// circuit, or has de-provisioned it.
 	ProviderState VirtualCircuitProviderStateEnum `mandatory:"false" json:"providerState,omitempty"`
 
+	// For a public virtual circuit. The public IP prefixes (CIDRs) the customer wants to
+	// advertise across the connection. Each prefix must be /24 or less specific.
+	PublicPrefixes []string `mandatory:"false" json:"publicPrefixes,omitempty"`
+
 	// Provider-supplied reference information about this virtual circuit
 	// (if the customer is connecting via a provider).
 	ReferenceComment *string `mandatory:"false" json:"referenceComment,omitempty"`
@@ -106,9 +109,8 @@ type VirtualCircuit struct {
 	// Example: `2016-08-25T21:10:29.600Z`
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 
-	// The type of IP addresses used in this virtual circuit. PRIVATE means
-	// [RFC 1918](https://tools.ietf.org/html/rfc1918) addresses
-	// (10.0.0.0/8, 172.16/12, and 192.168/16). Only PRIVATE is supported.
+	// Whether the virtual circuit supports private or public peering. For more information,
+	// see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
 	Type_ VirtualCircuitType_Enum `mandatory:"false" json:"type,omitempty"`
 }
 
