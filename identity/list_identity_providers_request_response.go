@@ -12,7 +12,7 @@ import (
 type ListIdentityProvidersRequest struct {
 
 	// The protocol used for federation.
-	Protocol ListIdentityProvidersProtocolEnum `mandatory:"true" contributesTo:"query" name:"protocol"`
+	Protocol ListIdentityProvidersProtocolEnum `mandatory:"true" contributesTo:"query" name:"protocol" omitEmpty:"true"`
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
 	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`

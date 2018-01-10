@@ -15,7 +15,7 @@ type DbNodeActionRequest struct {
 	DbNodeID *string `mandatory:"true" contributesTo:"path" name:"dbNodeId"`
 
 	// The action to perform on the DB Node.
-	Action DbNodeActionActionEnum `mandatory:"true" contributesTo:"query" name:"action"`
+	Action DbNodeActionActionEnum `mandatory:"true" contributesTo:"query" name:"action" omitEmpty:"true"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24

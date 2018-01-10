@@ -41,7 +41,7 @@ type ListObjectsRequest struct {
 	// (object size in bytes), 'md5', and 'timeCreated' (object creation date and time) fields.
 	// Value of this parameter should be a comma-separated, case-insensitive list of those field names.
 	// For example 'name,timeCreated,md5'.
-	Fields ListObjectsFieldsEnum `mandatory:"false" contributesTo:"query" name:"fields"`
+	Fields ListObjectsFieldsEnum `mandatory:"false" contributesTo:"query" name:"fields" omitEmpty:"true"`
 
 	// The client request ID for tracing.
 	OpcClientRequestID *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
