@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Tenancy. The root compartment that contains all of your organization's compartments and other
+// Tenancy The root compartment that contains all of your organization's compartments and other
 // Oracle Cloud Infrastructure cloud resources. When you sign up for Oracle Cloud Infrastructure,
 // Oracle creates a tenancy for your company, which is a secure and isolated partition
 // where you can create, organize, and administer your cloud resources.

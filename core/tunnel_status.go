@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// TunnelStatus. Specific connection details for an IPSec tunnel.
+// TunnelStatus Specific connection details for an IPSec tunnel.
 type TunnelStatus struct {
 
 	// The IP address of Oracle's VPN headend.
@@ -35,26 +35,29 @@ func (model TunnelStatus) String() string {
 	return common.PointerString(model)
 }
 
+// TunnelStatusLifecycleStateEnum Enum with underlying type: string
 type TunnelStatusLifecycleStateEnum string
 
+// Set of constants representing the allowable values for TunnelStatusLifecycleState
 const (
-	TUNNEL_STATUS_LIFECYCLE_STATE_UP                   TunnelStatusLifecycleStateEnum = "UP"
-	TUNNEL_STATUS_LIFECYCLE_STATE_DOWN                 TunnelStatusLifecycleStateEnum = "DOWN"
-	TUNNEL_STATUS_LIFECYCLE_STATE_DOWN_FOR_MAINTENANCE TunnelStatusLifecycleStateEnum = "DOWN_FOR_MAINTENANCE"
-	TUNNEL_STATUS_LIFECYCLE_STATE_UNKNOWN              TunnelStatusLifecycleStateEnum = "UNKNOWN"
+	TunnelStatusLifecycleStateUp                 TunnelStatusLifecycleStateEnum = "UP"
+	TunnelStatusLifecycleStateDown               TunnelStatusLifecycleStateEnum = "DOWN"
+	TunnelStatusLifecycleStateDownForMaintenance TunnelStatusLifecycleStateEnum = "DOWN_FOR_MAINTENANCE"
+	TunnelStatusLifecycleStateUnknown            TunnelStatusLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_tunnelstatus_lifecycleState = map[string]TunnelStatusLifecycleStateEnum{
-	"UP":                   TUNNEL_STATUS_LIFECYCLE_STATE_UP,
-	"DOWN":                 TUNNEL_STATUS_LIFECYCLE_STATE_DOWN,
-	"DOWN_FOR_MAINTENANCE": TUNNEL_STATUS_LIFECYCLE_STATE_DOWN_FOR_MAINTENANCE,
-	"UNKNOWN":              TUNNEL_STATUS_LIFECYCLE_STATE_UNKNOWN,
+var mappingTunnelStatusLifecycleState = map[string]TunnelStatusLifecycleStateEnum{
+	"UP":                   TunnelStatusLifecycleStateUp,
+	"DOWN":                 TunnelStatusLifecycleStateDown,
+	"DOWN_FOR_MAINTENANCE": TunnelStatusLifecycleStateDownForMaintenance,
+	"UNKNOWN":              TunnelStatusLifecycleStateUnknown,
 }
 
+// GetTunnelStatusLifecycleStateEnumValues Enumerates the set of values for TunnelStatusLifecycleState
 func GetTunnelStatusLifecycleStateEnumValues() []TunnelStatusLifecycleStateEnum {
 	values := make([]TunnelStatusLifecycleStateEnum, 0)
-	for _, v := range mapping_tunnelstatus_lifecycleState {
-		if v != TUNNEL_STATUS_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingTunnelStatusLifecycleState {
+		if v != TunnelStatusLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

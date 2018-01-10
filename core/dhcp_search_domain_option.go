@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// DhcpSearchDomainOption. DHCP option for specifying a search domain name for DNS queries. For more information, see
+// DhcpSearchDomainOption DHCP option for specifying a search domain name for DNS queries. For more information, see
 // [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 type DhcpSearchDomainOption struct {
 

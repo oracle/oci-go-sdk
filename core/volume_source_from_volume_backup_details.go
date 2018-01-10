@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// VolumeSourceFromVolumeBackupDetails. Specifies the volume backup.
+// VolumeSourceFromVolumeBackupDetails Specifies the volume backup.
 type VolumeSourceFromVolumeBackupDetails struct {
 
 	// The OCID of the volume backup.

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Subnet. A logical subdivision of a VCN. Each subnet exists in a single Availability Domain and
+// Subnet A logical subdivision of a VCN. Each subnet exists in a single Availability Domain and
 // consists of a contiguous range of IP addresses that do not overlap with
 // other subnets in the VCN. Example: 172.16.1.0/24. For more information, see
 // [Overview of the Networking Service]({{DOC_SERVER_URL}}/Content/Network/Concepts/overview.htm) and
@@ -103,28 +103,31 @@ func (model Subnet) String() string {
 	return common.PointerString(model)
 }
 
+// SubnetLifecycleStateEnum Enum with underlying type: string
 type SubnetLifecycleStateEnum string
 
+// Set of constants representing the allowable values for SubnetLifecycleState
 const (
-	SUBNET_LIFECYCLE_STATE_PROVISIONING SubnetLifecycleStateEnum = "PROVISIONING"
-	SUBNET_LIFECYCLE_STATE_AVAILABLE    SubnetLifecycleStateEnum = "AVAILABLE"
-	SUBNET_LIFECYCLE_STATE_TERMINATING  SubnetLifecycleStateEnum = "TERMINATING"
-	SUBNET_LIFECYCLE_STATE_TERMINATED   SubnetLifecycleStateEnum = "TERMINATED"
-	SUBNET_LIFECYCLE_STATE_UNKNOWN      SubnetLifecycleStateEnum = "UNKNOWN"
+	SubnetLifecycleStateProvisioning SubnetLifecycleStateEnum = "PROVISIONING"
+	SubnetLifecycleStateAvailable    SubnetLifecycleStateEnum = "AVAILABLE"
+	SubnetLifecycleStateTerminating  SubnetLifecycleStateEnum = "TERMINATING"
+	SubnetLifecycleStateTerminated   SubnetLifecycleStateEnum = "TERMINATED"
+	SubnetLifecycleStateUnknown      SubnetLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_subnet_lifecycleState = map[string]SubnetLifecycleStateEnum{
-	"PROVISIONING": SUBNET_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    SUBNET_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":  SUBNET_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   SUBNET_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":      SUBNET_LIFECYCLE_STATE_UNKNOWN,
+var mappingSubnetLifecycleState = map[string]SubnetLifecycleStateEnum{
+	"PROVISIONING": SubnetLifecycleStateProvisioning,
+	"AVAILABLE":    SubnetLifecycleStateAvailable,
+	"TERMINATING":  SubnetLifecycleStateTerminating,
+	"TERMINATED":   SubnetLifecycleStateTerminated,
+	"UNKNOWN":      SubnetLifecycleStateUnknown,
 }
 
+// GetSubnetLifecycleStateEnumValues Enumerates the set of values for SubnetLifecycleState
 func GetSubnetLifecycleStateEnumValues() []SubnetLifecycleStateEnum {
 	values := make([]SubnetLifecycleStateEnum, 0)
-	for _, v := range mapping_subnet_lifecycleState {
-		if v != SUBNET_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingSubnetLifecycleState {
+		if v != SubnetLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

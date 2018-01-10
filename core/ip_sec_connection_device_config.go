@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IpSecConnectionDeviceConfig. Information about the IPSecConnection device configuration.
+// IpSecConnectionDeviceConfig Information about the IPSecConnection device configuration.
 type IpSecConnectionDeviceConfig struct {
 
 	// The OCID of the compartment containing the IPSec connection.

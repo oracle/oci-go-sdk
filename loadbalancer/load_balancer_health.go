@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// LoadBalancerHealth. The health status details for the specified load balancer.
+// LoadBalancerHealth The health status details for the specified load balancer.
 // This object does not explicitly enumerate backend sets with a status of `OK`. However, they are included in the
 // `totalBackendSetCount` sum.
 type LoadBalancerHealth struct {
@@ -54,25 +54,28 @@ func (model LoadBalancerHealth) String() string {
 	return common.PointerString(model)
 }
 
+// LoadBalancerHealthStatusEnum Enum with underlying type: string
 type LoadBalancerHealthStatusEnum string
 
+// Set of constants representing the allowable values for LoadBalancerHealthStatus
 const (
-	LOAD_BALANCER_HEALTH_STATUS_OK       LoadBalancerHealthStatusEnum = "OK"
-	LOAD_BALANCER_HEALTH_STATUS_WARNING  LoadBalancerHealthStatusEnum = "WARNING"
-	LOAD_BALANCER_HEALTH_STATUS_CRITICAL LoadBalancerHealthStatusEnum = "CRITICAL"
-	LOAD_BALANCER_HEALTH_STATUS_UNKNOWN  LoadBalancerHealthStatusEnum = "UNKNOWN"
+	LoadBalancerHealthStatusOk       LoadBalancerHealthStatusEnum = "OK"
+	LoadBalancerHealthStatusWarning  LoadBalancerHealthStatusEnum = "WARNING"
+	LoadBalancerHealthStatusCritical LoadBalancerHealthStatusEnum = "CRITICAL"
+	LoadBalancerHealthStatusUnknown  LoadBalancerHealthStatusEnum = "UNKNOWN"
 )
 
-var mapping_loadbalancerhealth_status = map[string]LoadBalancerHealthStatusEnum{
-	"OK":       LOAD_BALANCER_HEALTH_STATUS_OK,
-	"WARNING":  LOAD_BALANCER_HEALTH_STATUS_WARNING,
-	"CRITICAL": LOAD_BALANCER_HEALTH_STATUS_CRITICAL,
-	"UNKNOWN":  LOAD_BALANCER_HEALTH_STATUS_UNKNOWN,
+var mappingLoadBalancerHealthStatus = map[string]LoadBalancerHealthStatusEnum{
+	"OK":       LoadBalancerHealthStatusOk,
+	"WARNING":  LoadBalancerHealthStatusWarning,
+	"CRITICAL": LoadBalancerHealthStatusCritical,
+	"UNKNOWN":  LoadBalancerHealthStatusUnknown,
 }
 
+// GetLoadBalancerHealthStatusEnumValues Enumerates the set of values for LoadBalancerHealthStatus
 func GetLoadBalancerHealthStatusEnumValues() []LoadBalancerHealthStatusEnum {
 	values := make([]LoadBalancerHealthStatusEnum, 0)
-	for _, v := range mapping_loadbalancerhealth_status {
+	for _, v := range mappingLoadBalancerHealthStatus {
 		values = append(values, v)
 	}
 	return values

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateCertificateDetails. The configuration details for adding a certificate bundle to a listener.
+// CreateCertificateDetails The configuration details for adding a certificate bundle to a listener.
 // For more information on SSL certficate configuration, see
 // [Managing SSL Certificates]({{DOC_SERVER_URL}}/Content/Balance/Tasks/managingcertificates.htm).
 type CreateCertificateDetails struct {

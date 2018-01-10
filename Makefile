@@ -15,6 +15,7 @@ test: build $(TARGETS_TEST)
 $(TARGETS_BUILD): build-%:%
 	@echo "\nbuilding: $<"
 	@(cd $< && gofmt -s -w .)
+	@(cd $< && find . -name '*_integ_test.go' | xargs -I{} mv {} ../integtest)
 	@(cd $< && go build -v)
 
 $(TARGETS_TEST): test-%:%

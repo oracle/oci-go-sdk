@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// DhcpOption. A single DHCP option according to [RFC 1533](https://tools.ietf.org/html/rfc1533).
+// DhcpOption A single DHCP option according to [RFC 1533](https://tools.ietf.org/html/rfc1533).
 // The two options available to use are DhcpDnsOption
 // and DhcpSearchDomainOption. For more
 // information, see [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm)

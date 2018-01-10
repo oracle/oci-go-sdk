@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IcmpOptions. Optional object to specify a particular ICMP type and code. If you specify ICMP as the protocol
+// IcmpOptions Optional object to specify a particular ICMP type and code. If you specify ICMP as the protocol
 // but do not provide this object, then all ICMP types and codes are allowed. If you do provide
 // this object, the type is required and the code is optional.
 // See [ICMP Parameters](http://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml)

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Vcn. A Virtual Cloud Network (VCN). For more information, see
+// Vcn A Virtual Cloud Network (VCN). For more information, see
 // [Overview of the Networking Service]({{DOC_SERVER_URL}}/Content/Network/Concepts/overview.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
@@ -73,28 +73,31 @@ func (model Vcn) String() string {
 	return common.PointerString(model)
 }
 
+// VcnLifecycleStateEnum Enum with underlying type: string
 type VcnLifecycleStateEnum string
 
+// Set of constants representing the allowable values for VcnLifecycleState
 const (
-	VCN_LIFECYCLE_STATE_PROVISIONING VcnLifecycleStateEnum = "PROVISIONING"
-	VCN_LIFECYCLE_STATE_AVAILABLE    VcnLifecycleStateEnum = "AVAILABLE"
-	VCN_LIFECYCLE_STATE_TERMINATING  VcnLifecycleStateEnum = "TERMINATING"
-	VCN_LIFECYCLE_STATE_TERMINATED   VcnLifecycleStateEnum = "TERMINATED"
-	VCN_LIFECYCLE_STATE_UNKNOWN      VcnLifecycleStateEnum = "UNKNOWN"
+	VcnLifecycleStateProvisioning VcnLifecycleStateEnum = "PROVISIONING"
+	VcnLifecycleStateAvailable    VcnLifecycleStateEnum = "AVAILABLE"
+	VcnLifecycleStateTerminating  VcnLifecycleStateEnum = "TERMINATING"
+	VcnLifecycleStateTerminated   VcnLifecycleStateEnum = "TERMINATED"
+	VcnLifecycleStateUnknown      VcnLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_vcn_lifecycleState = map[string]VcnLifecycleStateEnum{
-	"PROVISIONING": VCN_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    VCN_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":  VCN_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   VCN_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":      VCN_LIFECYCLE_STATE_UNKNOWN,
+var mappingVcnLifecycleState = map[string]VcnLifecycleStateEnum{
+	"PROVISIONING": VcnLifecycleStateProvisioning,
+	"AVAILABLE":    VcnLifecycleStateAvailable,
+	"TERMINATING":  VcnLifecycleStateTerminating,
+	"TERMINATED":   VcnLifecycleStateTerminated,
+	"UNKNOWN":      VcnLifecycleStateUnknown,
 }
 
+// GetVcnLifecycleStateEnumValues Enumerates the set of values for VcnLifecycleState
 func GetVcnLifecycleStateEnumValues() []VcnLifecycleStateEnum {
 	values := make([]VcnLifecycleStateEnum, 0)
-	for _, v := range mapping_vcn_lifecycleState {
-		if v != VCN_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingVcnLifecycleState {
+		if v != VcnLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CustomerSecretKey. A `CustomerSecretKey` is an Oracle-provided key for using the Object Storage Service's
+// CustomerSecretKey A `CustomerSecretKey` is an Oracle-provided key for using the Object Storage Service's
 // [Amazon S3 compatible API]({{DOC_SERVER_URL}}/Content/Object/Tasks/s3compatibleapi.htm).
 // A user can have up to two secret keys at a time.
 // **Note:** The secret key is always an Oracle-generated string; you can't change it to a string of your choice.
@@ -52,30 +52,33 @@ func (model CustomerSecretKey) String() string {
 	return common.PointerString(model)
 }
 
+// CustomerSecretKeyLifecycleStateEnum Enum with underlying type: string
 type CustomerSecretKeyLifecycleStateEnum string
 
+// Set of constants representing the allowable values for CustomerSecretKeyLifecycleState
 const (
-	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_CREATING CustomerSecretKeyLifecycleStateEnum = "CREATING"
-	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_ACTIVE   CustomerSecretKeyLifecycleStateEnum = "ACTIVE"
-	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_INACTIVE CustomerSecretKeyLifecycleStateEnum = "INACTIVE"
-	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_DELETING CustomerSecretKeyLifecycleStateEnum = "DELETING"
-	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_DELETED  CustomerSecretKeyLifecycleStateEnum = "DELETED"
-	CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_UNKNOWN  CustomerSecretKeyLifecycleStateEnum = "UNKNOWN"
+	CustomerSecretKeyLifecycleStateCreating CustomerSecretKeyLifecycleStateEnum = "CREATING"
+	CustomerSecretKeyLifecycleStateActive   CustomerSecretKeyLifecycleStateEnum = "ACTIVE"
+	CustomerSecretKeyLifecycleStateInactive CustomerSecretKeyLifecycleStateEnum = "INACTIVE"
+	CustomerSecretKeyLifecycleStateDeleting CustomerSecretKeyLifecycleStateEnum = "DELETING"
+	CustomerSecretKeyLifecycleStateDeleted  CustomerSecretKeyLifecycleStateEnum = "DELETED"
+	CustomerSecretKeyLifecycleStateUnknown  CustomerSecretKeyLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_customersecretkey_lifecycleState = map[string]CustomerSecretKeyLifecycleStateEnum{
-	"CREATING": CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_DELETING,
-	"DELETED":  CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_UNKNOWN,
+var mappingCustomerSecretKeyLifecycleState = map[string]CustomerSecretKeyLifecycleStateEnum{
+	"CREATING": CustomerSecretKeyLifecycleStateCreating,
+	"ACTIVE":   CustomerSecretKeyLifecycleStateActive,
+	"INACTIVE": CustomerSecretKeyLifecycleStateInactive,
+	"DELETING": CustomerSecretKeyLifecycleStateDeleting,
+	"DELETED":  CustomerSecretKeyLifecycleStateDeleted,
+	"UNKNOWN":  CustomerSecretKeyLifecycleStateUnknown,
 }
 
+// GetCustomerSecretKeyLifecycleStateEnumValues Enumerates the set of values for CustomerSecretKeyLifecycleState
 func GetCustomerSecretKeyLifecycleStateEnumValues() []CustomerSecretKeyLifecycleStateEnum {
 	values := make([]CustomerSecretKeyLifecycleStateEnum, 0)
-	for _, v := range mapping_customersecretkey_lifecycleState {
-		if v != CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingCustomerSecretKeyLifecycleState {
+		if v != CustomerSecretKeyLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

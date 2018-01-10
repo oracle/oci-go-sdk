@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateBucketDetails. To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
+// CreateBucketDetails To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
 // [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type CreateBucketDetails struct {
@@ -38,24 +38,27 @@ func (model CreateBucketDetails) String() string {
 	return common.PointerString(model)
 }
 
+// CreateBucketDetailsPublicAccessTypeEnum Enum with underlying type: string
 type CreateBucketDetailsPublicAccessTypeEnum string
 
+// Set of constants representing the allowable values for CreateBucketDetailsPublicAccessType
 const (
-	CREATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_NOPUBLICACCESS CreateBucketDetailsPublicAccessTypeEnum = "NoPublicAccess"
-	CREATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_OBJECTREAD     CreateBucketDetailsPublicAccessTypeEnum = "ObjectRead"
-	CREATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_UNKNOWN        CreateBucketDetailsPublicAccessTypeEnum = "UNKNOWN"
+	CreateBucketDetailsPublicAccessTypeNopublicaccess CreateBucketDetailsPublicAccessTypeEnum = "NoPublicAccess"
+	CreateBucketDetailsPublicAccessTypeObjectread     CreateBucketDetailsPublicAccessTypeEnum = "ObjectRead"
+	CreateBucketDetailsPublicAccessTypeUnknown        CreateBucketDetailsPublicAccessTypeEnum = "UNKNOWN"
 )
 
-var mapping_createbucketdetails_publicAccessType = map[string]CreateBucketDetailsPublicAccessTypeEnum{
-	"NoPublicAccess": CREATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_NOPUBLICACCESS,
-	"ObjectRead":     CREATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_OBJECTREAD,
-	"UNKNOWN":        CREATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_UNKNOWN,
+var mappingCreateBucketDetailsPublicAccessType = map[string]CreateBucketDetailsPublicAccessTypeEnum{
+	"NoPublicAccess": CreateBucketDetailsPublicAccessTypeNopublicaccess,
+	"ObjectRead":     CreateBucketDetailsPublicAccessTypeObjectread,
+	"UNKNOWN":        CreateBucketDetailsPublicAccessTypeUnknown,
 }
 
+// GetCreateBucketDetailsPublicAccessTypeEnumValues Enumerates the set of values for CreateBucketDetailsPublicAccessType
 func GetCreateBucketDetailsPublicAccessTypeEnumValues() []CreateBucketDetailsPublicAccessTypeEnum {
 	values := make([]CreateBucketDetailsPublicAccessTypeEnum, 0)
-	for _, v := range mapping_createbucketdetails_publicAccessType {
-		if v != CREATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_UNKNOWN {
+	for _, v := range mappingCreateBucketDetailsPublicAccessType {
+		if v != CreateBucketDetailsPublicAccessTypeUnknown {
 			values = append(values, v)
 		}
 	}

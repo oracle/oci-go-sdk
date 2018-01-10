@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CrossConnectLocation. An individual FastConnect location.
+// CrossConnectLocation An individual FastConnect location.
 type CrossConnectLocation struct {
 
 	// A description of the location.

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// VnicAttachment. Represents an attachment between a VNIC and an instance. For more information, see
+// VnicAttachment Represents an attachment between a VNIC and an instance. For more information, see
 // [Virtual Network Interface Cards (VNICs)]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingVNICs.htm).
 type VnicAttachment struct {
 
@@ -64,28 +64,31 @@ func (model VnicAttachment) String() string {
 	return common.PointerString(model)
 }
 
+// VnicAttachmentLifecycleStateEnum Enum with underlying type: string
 type VnicAttachmentLifecycleStateEnum string
 
+// Set of constants representing the allowable values for VnicAttachmentLifecycleState
 const (
-	VNIC_ATTACHMENT_LIFECYCLE_STATE_ATTACHING VnicAttachmentLifecycleStateEnum = "ATTACHING"
-	VNIC_ATTACHMENT_LIFECYCLE_STATE_ATTACHED  VnicAttachmentLifecycleStateEnum = "ATTACHED"
-	VNIC_ATTACHMENT_LIFECYCLE_STATE_DETACHING VnicAttachmentLifecycleStateEnum = "DETACHING"
-	VNIC_ATTACHMENT_LIFECYCLE_STATE_DETACHED  VnicAttachmentLifecycleStateEnum = "DETACHED"
-	VNIC_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN   VnicAttachmentLifecycleStateEnum = "UNKNOWN"
+	VnicAttachmentLifecycleStateAttaching VnicAttachmentLifecycleStateEnum = "ATTACHING"
+	VnicAttachmentLifecycleStateAttached  VnicAttachmentLifecycleStateEnum = "ATTACHED"
+	VnicAttachmentLifecycleStateDetaching VnicAttachmentLifecycleStateEnum = "DETACHING"
+	VnicAttachmentLifecycleStateDetached  VnicAttachmentLifecycleStateEnum = "DETACHED"
+	VnicAttachmentLifecycleStateUnknown   VnicAttachmentLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_vnicattachment_lifecycleState = map[string]VnicAttachmentLifecycleStateEnum{
-	"ATTACHING": VNIC_ATTACHMENT_LIFECYCLE_STATE_ATTACHING,
-	"ATTACHED":  VNIC_ATTACHMENT_LIFECYCLE_STATE_ATTACHED,
-	"DETACHING": VNIC_ATTACHMENT_LIFECYCLE_STATE_DETACHING,
-	"DETACHED":  VNIC_ATTACHMENT_LIFECYCLE_STATE_DETACHED,
-	"UNKNOWN":   VNIC_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN,
+var mappingVnicAttachmentLifecycleState = map[string]VnicAttachmentLifecycleStateEnum{
+	"ATTACHING": VnicAttachmentLifecycleStateAttaching,
+	"ATTACHED":  VnicAttachmentLifecycleStateAttached,
+	"DETACHING": VnicAttachmentLifecycleStateDetaching,
+	"DETACHED":  VnicAttachmentLifecycleStateDetached,
+	"UNKNOWN":   VnicAttachmentLifecycleStateUnknown,
 }
 
+// GetVnicAttachmentLifecycleStateEnumValues Enumerates the set of values for VnicAttachmentLifecycleState
 func GetVnicAttachmentLifecycleStateEnumValues() []VnicAttachmentLifecycleStateEnum {
 	values := make([]VnicAttachmentLifecycleStateEnum, 0)
-	for _, v := range mapping_vnicattachment_lifecycleState {
-		if v != VNIC_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingVnicAttachmentLifecycleState {
+		if v != VnicAttachmentLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

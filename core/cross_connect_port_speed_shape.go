@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CrossConnectPortSpeedShape. An individual port speed level for cross-connects.
+// CrossConnectPortSpeedShape An individual port speed level for cross-connects.
 type CrossConnectPortSpeedShape struct {
 
 	// The name of the port speed shape.

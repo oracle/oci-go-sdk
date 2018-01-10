@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// SecurityList. A set of virtual firewall rules for your VCN. Security lists are configured at the subnet
+// SecurityList A set of virtual firewall rules for your VCN. Security lists are configured at the subnet
 // level, but the rules are applied to the ingress and egress traffic for the individual instances
 // in the subnet. The rules can be stateful or stateless. For more information, see
 // [Security Lists]({{DOC_SERVER_URL}}/Content/Network/Concepts/securitylists.htm).
@@ -56,28 +56,31 @@ func (model SecurityList) String() string {
 	return common.PointerString(model)
 }
 
+// SecurityListLifecycleStateEnum Enum with underlying type: string
 type SecurityListLifecycleStateEnum string
 
+// Set of constants representing the allowable values for SecurityListLifecycleState
 const (
-	SECURITY_LIST_LIFECYCLE_STATE_PROVISIONING SecurityListLifecycleStateEnum = "PROVISIONING"
-	SECURITY_LIST_LIFECYCLE_STATE_AVAILABLE    SecurityListLifecycleStateEnum = "AVAILABLE"
-	SECURITY_LIST_LIFECYCLE_STATE_TERMINATING  SecurityListLifecycleStateEnum = "TERMINATING"
-	SECURITY_LIST_LIFECYCLE_STATE_TERMINATED   SecurityListLifecycleStateEnum = "TERMINATED"
-	SECURITY_LIST_LIFECYCLE_STATE_UNKNOWN      SecurityListLifecycleStateEnum = "UNKNOWN"
+	SecurityListLifecycleStateProvisioning SecurityListLifecycleStateEnum = "PROVISIONING"
+	SecurityListLifecycleStateAvailable    SecurityListLifecycleStateEnum = "AVAILABLE"
+	SecurityListLifecycleStateTerminating  SecurityListLifecycleStateEnum = "TERMINATING"
+	SecurityListLifecycleStateTerminated   SecurityListLifecycleStateEnum = "TERMINATED"
+	SecurityListLifecycleStateUnknown      SecurityListLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_securitylist_lifecycleState = map[string]SecurityListLifecycleStateEnum{
-	"PROVISIONING": SECURITY_LIST_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    SECURITY_LIST_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":  SECURITY_LIST_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   SECURITY_LIST_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":      SECURITY_LIST_LIFECYCLE_STATE_UNKNOWN,
+var mappingSecurityListLifecycleState = map[string]SecurityListLifecycleStateEnum{
+	"PROVISIONING": SecurityListLifecycleStateProvisioning,
+	"AVAILABLE":    SecurityListLifecycleStateAvailable,
+	"TERMINATING":  SecurityListLifecycleStateTerminating,
+	"TERMINATED":   SecurityListLifecycleStateTerminated,
+	"UNKNOWN":      SecurityListLifecycleStateUnknown,
 }
 
+// GetSecurityListLifecycleStateEnumValues Enumerates the set of values for SecurityListLifecycleState
 func GetSecurityListLifecycleStateEnumValues() []SecurityListLifecycleStateEnum {
 	values := make([]SecurityListLifecycleStateEnum, 0)
-	for _, v := range mapping_securitylist_lifecycleState {
-		if v != SECURITY_LIST_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingSecurityListLifecycleState {
+		if v != SecurityListLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

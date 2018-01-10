@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// PatchSummary. A Patch for a DB System or DB Home.
+// PatchSummary A Patch for a DB System or DB Home.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
 // see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
@@ -48,76 +48,85 @@ func (model PatchSummary) String() string {
 	return common.PointerString(model)
 }
 
+// PatchSummaryAvailableActionsEnum Enum with underlying type: string
 type PatchSummaryAvailableActionsEnum string
 
+// Set of constants representing the allowable values for PatchSummaryAvailableActions
 const (
-	PATCH_SUMMARY_AVAILABLE_ACTIONS_APPLY    PatchSummaryAvailableActionsEnum = "APPLY"
-	PATCH_SUMMARY_AVAILABLE_ACTIONS_PRECHECK PatchSummaryAvailableActionsEnum = "PRECHECK"
-	PATCH_SUMMARY_AVAILABLE_ACTIONS_UNKNOWN  PatchSummaryAvailableActionsEnum = "UNKNOWN"
+	PatchSummaryAvailableActionsApply    PatchSummaryAvailableActionsEnum = "APPLY"
+	PatchSummaryAvailableActionsPrecheck PatchSummaryAvailableActionsEnum = "PRECHECK"
+	PatchSummaryAvailableActionsUnknown  PatchSummaryAvailableActionsEnum = "UNKNOWN"
 )
 
-var mapping_patchsummary_availableActions = map[string]PatchSummaryAvailableActionsEnum{
-	"APPLY":    PATCH_SUMMARY_AVAILABLE_ACTIONS_APPLY,
-	"PRECHECK": PATCH_SUMMARY_AVAILABLE_ACTIONS_PRECHECK,
-	"UNKNOWN":  PATCH_SUMMARY_AVAILABLE_ACTIONS_UNKNOWN,
+var mappingPatchSummaryAvailableActions = map[string]PatchSummaryAvailableActionsEnum{
+	"APPLY":    PatchSummaryAvailableActionsApply,
+	"PRECHECK": PatchSummaryAvailableActionsPrecheck,
+	"UNKNOWN":  PatchSummaryAvailableActionsUnknown,
 }
 
+// GetPatchSummaryAvailableActionsEnumValues Enumerates the set of values for PatchSummaryAvailableActions
 func GetPatchSummaryAvailableActionsEnumValues() []PatchSummaryAvailableActionsEnum {
 	values := make([]PatchSummaryAvailableActionsEnum, 0)
-	for _, v := range mapping_patchsummary_availableActions {
-		if v != PATCH_SUMMARY_AVAILABLE_ACTIONS_UNKNOWN {
+	for _, v := range mappingPatchSummaryAvailableActions {
+		if v != PatchSummaryAvailableActionsUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// PatchSummaryLastActionEnum Enum with underlying type: string
 type PatchSummaryLastActionEnum string
 
+// Set of constants representing the allowable values for PatchSummaryLastAction
 const (
-	PATCH_SUMMARY_LAST_ACTION_APPLY    PatchSummaryLastActionEnum = "APPLY"
-	PATCH_SUMMARY_LAST_ACTION_PRECHECK PatchSummaryLastActionEnum = "PRECHECK"
-	PATCH_SUMMARY_LAST_ACTION_UNKNOWN  PatchSummaryLastActionEnum = "UNKNOWN"
+	PatchSummaryLastActionApply    PatchSummaryLastActionEnum = "APPLY"
+	PatchSummaryLastActionPrecheck PatchSummaryLastActionEnum = "PRECHECK"
+	PatchSummaryLastActionUnknown  PatchSummaryLastActionEnum = "UNKNOWN"
 )
 
-var mapping_patchsummary_lastAction = map[string]PatchSummaryLastActionEnum{
-	"APPLY":    PATCH_SUMMARY_LAST_ACTION_APPLY,
-	"PRECHECK": PATCH_SUMMARY_LAST_ACTION_PRECHECK,
-	"UNKNOWN":  PATCH_SUMMARY_LAST_ACTION_UNKNOWN,
+var mappingPatchSummaryLastAction = map[string]PatchSummaryLastActionEnum{
+	"APPLY":    PatchSummaryLastActionApply,
+	"PRECHECK": PatchSummaryLastActionPrecheck,
+	"UNKNOWN":  PatchSummaryLastActionUnknown,
 }
 
+// GetPatchSummaryLastActionEnumValues Enumerates the set of values for PatchSummaryLastAction
 func GetPatchSummaryLastActionEnumValues() []PatchSummaryLastActionEnum {
 	values := make([]PatchSummaryLastActionEnum, 0)
-	for _, v := range mapping_patchsummary_lastAction {
-		if v != PATCH_SUMMARY_LAST_ACTION_UNKNOWN {
+	for _, v := range mappingPatchSummaryLastAction {
+		if v != PatchSummaryLastActionUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// PatchSummaryLifecycleStateEnum Enum with underlying type: string
 type PatchSummaryLifecycleStateEnum string
 
+// Set of constants representing the allowable values for PatchSummaryLifecycleState
 const (
-	PATCH_SUMMARY_LIFECYCLE_STATE_AVAILABLE   PatchSummaryLifecycleStateEnum = "AVAILABLE"
-	PATCH_SUMMARY_LIFECYCLE_STATE_SUCCESS     PatchSummaryLifecycleStateEnum = "SUCCESS"
-	PATCH_SUMMARY_LIFECYCLE_STATE_IN_PROGRESS PatchSummaryLifecycleStateEnum = "IN_PROGRESS"
-	PATCH_SUMMARY_LIFECYCLE_STATE_FAILED      PatchSummaryLifecycleStateEnum = "FAILED"
-	PATCH_SUMMARY_LIFECYCLE_STATE_UNKNOWN     PatchSummaryLifecycleStateEnum = "UNKNOWN"
+	PatchSummaryLifecycleStateAvailable  PatchSummaryLifecycleStateEnum = "AVAILABLE"
+	PatchSummaryLifecycleStateSuccess    PatchSummaryLifecycleStateEnum = "SUCCESS"
+	PatchSummaryLifecycleStateInProgress PatchSummaryLifecycleStateEnum = "IN_PROGRESS"
+	PatchSummaryLifecycleStateFailed     PatchSummaryLifecycleStateEnum = "FAILED"
+	PatchSummaryLifecycleStateUnknown    PatchSummaryLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_patchsummary_lifecycleState = map[string]PatchSummaryLifecycleStateEnum{
-	"AVAILABLE":   PATCH_SUMMARY_LIFECYCLE_STATE_AVAILABLE,
-	"SUCCESS":     PATCH_SUMMARY_LIFECYCLE_STATE_SUCCESS,
-	"IN_PROGRESS": PATCH_SUMMARY_LIFECYCLE_STATE_IN_PROGRESS,
-	"FAILED":      PATCH_SUMMARY_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":     PATCH_SUMMARY_LIFECYCLE_STATE_UNKNOWN,
+var mappingPatchSummaryLifecycleState = map[string]PatchSummaryLifecycleStateEnum{
+	"AVAILABLE":   PatchSummaryLifecycleStateAvailable,
+	"SUCCESS":     PatchSummaryLifecycleStateSuccess,
+	"IN_PROGRESS": PatchSummaryLifecycleStateInProgress,
+	"FAILED":      PatchSummaryLifecycleStateFailed,
+	"UNKNOWN":     PatchSummaryLifecycleStateUnknown,
 }
 
+// GetPatchSummaryLifecycleStateEnumValues Enumerates the set of values for PatchSummaryLifecycleState
 func GetPatchSummaryLifecycleStateEnumValues() []PatchSummaryLifecycleStateEnum {
 	values := make([]PatchSummaryLifecycleStateEnum, 0)
-	for _, v := range mapping_patchsummary_lifecycleState {
-		if v != PATCH_SUMMARY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingPatchSummaryLifecycleState {
+		if v != PatchSummaryLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

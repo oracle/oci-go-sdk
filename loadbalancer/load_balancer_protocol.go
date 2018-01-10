@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// LoadBalancerProtocol. The protocol that defines the type of traffic accepted by a listener.
+// LoadBalancerProtocol The protocol that defines the type of traffic accepted by a listener.
 type LoadBalancerProtocol struct {
 
 	// The name of the protocol.

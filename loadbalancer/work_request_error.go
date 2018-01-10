@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// WorkRequestError. An object returned in the event of a work request error.
+// WorkRequestError An object returned in the event of a work request error.
 type WorkRequestError struct {
 	ErrorCode WorkRequestErrorErrorCodeEnum `mandatory:"true" json:"errorCode,omitempty"`
 
@@ -24,24 +24,27 @@ func (model WorkRequestError) String() string {
 	return common.PointerString(model)
 }
 
+// WorkRequestErrorErrorCodeEnum Enum with underlying type: string
 type WorkRequestErrorErrorCodeEnum string
 
+// Set of constants representing the allowable values for WorkRequestErrorErrorCode
 const (
-	WORK_REQUEST_ERROR_ERROR_CODE_BAD_INPUT      WorkRequestErrorErrorCodeEnum = "BAD_INPUT"
-	WORK_REQUEST_ERROR_ERROR_CODE_INTERNAL_ERROR WorkRequestErrorErrorCodeEnum = "INTERNAL_ERROR"
-	WORK_REQUEST_ERROR_ERROR_CODE_UNKNOWN        WorkRequestErrorErrorCodeEnum = "UNKNOWN"
+	WorkRequestErrorErrorCodeBadInput      WorkRequestErrorErrorCodeEnum = "BAD_INPUT"
+	WorkRequestErrorErrorCodeInternalError WorkRequestErrorErrorCodeEnum = "INTERNAL_ERROR"
+	WorkRequestErrorErrorCodeUnknown       WorkRequestErrorErrorCodeEnum = "UNKNOWN"
 )
 
-var mapping_workrequesterror_errorCode = map[string]WorkRequestErrorErrorCodeEnum{
-	"BAD_INPUT":      WORK_REQUEST_ERROR_ERROR_CODE_BAD_INPUT,
-	"INTERNAL_ERROR": WORK_REQUEST_ERROR_ERROR_CODE_INTERNAL_ERROR,
-	"UNKNOWN":        WORK_REQUEST_ERROR_ERROR_CODE_UNKNOWN,
+var mappingWorkRequestErrorErrorCode = map[string]WorkRequestErrorErrorCodeEnum{
+	"BAD_INPUT":      WorkRequestErrorErrorCodeBadInput,
+	"INTERNAL_ERROR": WorkRequestErrorErrorCodeInternalError,
+	"UNKNOWN":        WorkRequestErrorErrorCodeUnknown,
 }
 
+// GetWorkRequestErrorErrorCodeEnumValues Enumerates the set of values for WorkRequestErrorErrorCode
 func GetWorkRequestErrorErrorCodeEnumValues() []WorkRequestErrorErrorCodeEnum {
 	values := make([]WorkRequestErrorErrorCodeEnum, 0)
-	for _, v := range mapping_workrequesterror_errorCode {
-		if v != WORK_REQUEST_ERROR_ERROR_CODE_UNKNOWN {
+	for _, v := range mappingWorkRequestErrorErrorCode {
+		if v != WorkRequestErrorErrorCodeUnknown {
 			values = append(values, v)
 		}
 	}

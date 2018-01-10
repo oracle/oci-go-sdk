@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// VolumeAttachment. A base object for all types of attachments between a storage volume and an instance.
+// VolumeAttachment A base object for all types of attachments between a storage volume and an instance.
 // For specific details about iSCSI attachments, see
 // IScsiVolumeAttachment.
 // For general information about volume attachments, see
@@ -126,28 +126,31 @@ func (model volumeattachment) String() string {
 	return common.PointerString(model)
 }
 
+// VolumeAttachmentLifecycleStateEnum Enum with underlying type: string
 type VolumeAttachmentLifecycleStateEnum string
 
+// Set of constants representing the allowable values for VolumeAttachmentLifecycleState
 const (
-	VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHING VolumeAttachmentLifecycleStateEnum = "ATTACHING"
-	VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHED  VolumeAttachmentLifecycleStateEnum = "ATTACHED"
-	VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHING VolumeAttachmentLifecycleStateEnum = "DETACHING"
-	VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHED  VolumeAttachmentLifecycleStateEnum = "DETACHED"
-	VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN   VolumeAttachmentLifecycleStateEnum = "UNKNOWN"
+	VolumeAttachmentLifecycleStateAttaching VolumeAttachmentLifecycleStateEnum = "ATTACHING"
+	VolumeAttachmentLifecycleStateAttached  VolumeAttachmentLifecycleStateEnum = "ATTACHED"
+	VolumeAttachmentLifecycleStateDetaching VolumeAttachmentLifecycleStateEnum = "DETACHING"
+	VolumeAttachmentLifecycleStateDetached  VolumeAttachmentLifecycleStateEnum = "DETACHED"
+	VolumeAttachmentLifecycleStateUnknown   VolumeAttachmentLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_volumeattachment_lifecycleState = map[string]VolumeAttachmentLifecycleStateEnum{
-	"ATTACHING": VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHING,
-	"ATTACHED":  VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHED,
-	"DETACHING": VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHING,
-	"DETACHED":  VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHED,
-	"UNKNOWN":   VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN,
+var mappingVolumeAttachmentLifecycleState = map[string]VolumeAttachmentLifecycleStateEnum{
+	"ATTACHING": VolumeAttachmentLifecycleStateAttaching,
+	"ATTACHED":  VolumeAttachmentLifecycleStateAttached,
+	"DETACHING": VolumeAttachmentLifecycleStateDetaching,
+	"DETACHED":  VolumeAttachmentLifecycleStateDetached,
+	"UNKNOWN":   VolumeAttachmentLifecycleStateUnknown,
 }
 
+// GetVolumeAttachmentLifecycleStateEnumValues Enumerates the set of values for VolumeAttachmentLifecycleState
 func GetVolumeAttachmentLifecycleStateEnumValues() []VolumeAttachmentLifecycleStateEnum {
 	values := make([]VolumeAttachmentLifecycleStateEnum, 0)
-	for _, v := range mapping_volumeattachment_lifecycleState {
-		if v != VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingVolumeAttachmentLifecycleState {
+		if v != VolumeAttachmentLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

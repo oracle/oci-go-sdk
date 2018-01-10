@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Compartment. A collection of related resources. Compartments are a fundamental component of Oracle Cloud Infrastructure
+// Compartment A collection of related resources. Compartments are a fundamental component of Oracle Cloud Infrastructure
 // for organizing and isolating your cloud resources. You use them to clearly separate resources for the purposes
 // of measuring usage and billing, access (through the use of IAM Service policies), and isolation (separating the
 // resources for one project or business unit from another). A common approach is to create a compartment for each
@@ -58,30 +58,33 @@ func (model Compartment) String() string {
 	return common.PointerString(model)
 }
 
+// CompartmentLifecycleStateEnum Enum with underlying type: string
 type CompartmentLifecycleStateEnum string
 
+// Set of constants representing the allowable values for CompartmentLifecycleState
 const (
-	COMPARTMENT_LIFECYCLE_STATE_CREATING CompartmentLifecycleStateEnum = "CREATING"
-	COMPARTMENT_LIFECYCLE_STATE_ACTIVE   CompartmentLifecycleStateEnum = "ACTIVE"
-	COMPARTMENT_LIFECYCLE_STATE_INACTIVE CompartmentLifecycleStateEnum = "INACTIVE"
-	COMPARTMENT_LIFECYCLE_STATE_DELETING CompartmentLifecycleStateEnum = "DELETING"
-	COMPARTMENT_LIFECYCLE_STATE_DELETED  CompartmentLifecycleStateEnum = "DELETED"
-	COMPARTMENT_LIFECYCLE_STATE_UNKNOWN  CompartmentLifecycleStateEnum = "UNKNOWN"
+	CompartmentLifecycleStateCreating CompartmentLifecycleStateEnum = "CREATING"
+	CompartmentLifecycleStateActive   CompartmentLifecycleStateEnum = "ACTIVE"
+	CompartmentLifecycleStateInactive CompartmentLifecycleStateEnum = "INACTIVE"
+	CompartmentLifecycleStateDeleting CompartmentLifecycleStateEnum = "DELETING"
+	CompartmentLifecycleStateDeleted  CompartmentLifecycleStateEnum = "DELETED"
+	CompartmentLifecycleStateUnknown  CompartmentLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_compartment_lifecycleState = map[string]CompartmentLifecycleStateEnum{
-	"CREATING": COMPARTMENT_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   COMPARTMENT_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": COMPARTMENT_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": COMPARTMENT_LIFECYCLE_STATE_DELETING,
-	"DELETED":  COMPARTMENT_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  COMPARTMENT_LIFECYCLE_STATE_UNKNOWN,
+var mappingCompartmentLifecycleState = map[string]CompartmentLifecycleStateEnum{
+	"CREATING": CompartmentLifecycleStateCreating,
+	"ACTIVE":   CompartmentLifecycleStateActive,
+	"INACTIVE": CompartmentLifecycleStateInactive,
+	"DELETING": CompartmentLifecycleStateDeleting,
+	"DELETED":  CompartmentLifecycleStateDeleted,
+	"UNKNOWN":  CompartmentLifecycleStateUnknown,
 }
 
+// GetCompartmentLifecycleStateEnumValues Enumerates the set of values for CompartmentLifecycleState
 func GetCompartmentLifecycleStateEnumValues() []CompartmentLifecycleStateEnum {
 	values := make([]CompartmentLifecycleStateEnum, 0)
-	for _, v := range mapping_compartment_lifecycleState {
-		if v != COMPARTMENT_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingCompartmentLifecycleState {
+		if v != CompartmentLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

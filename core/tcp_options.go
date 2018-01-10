@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// TcpOptions. Optional object to specify ports for a TCP rule. If you specify TCP as the
+// TcpOptions Optional object to specify ports for a TCP rule. If you specify TCP as the
 // protocol but omit this object, then all ports are allowed.
 type TcpOptions struct {
 

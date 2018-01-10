@@ -15,187 +15,145 @@ import (
 	"github.com/oracle/oci-go-sdk/core"
 	"github.com/stretchr/testify/assert"
 	"testing"
-	"time"
 )
 
 var (
-	tick    = time.Tick(500 * time.Millisecond)
-	timeout = time.After(30 * time.Second)
+	testRegionForBlockstorage = common.REGION_PHX
 )
 
-//Volumes CRUDL
 func TestBlockstorageClient_CreateVolume(t *testing.T) {
-
-	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.CreateVolumeRequest{}
-
-	request.AvailabilityDomain = common.String(validAD())
-	request.CompartmentID = common.String(getTenancyID())
-	request.DisplayName = common.String("GoSDK2_TestBlockStorageCreateVolumeDisplayName")
-
-	resCreate, err := c.CreateVolume(context.Background(), request)
+	r, err := c.CreateVolume(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
-	assert.NotEmpty(t, resCreate.ID)
-
-	//Read
-	readTest := func() (interface{}, error) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-		failIfError(t, clerr)
-		request := core.GetVolumeRequest{}
-		request.VolumeID = resCreate.ID
-		resRead, err := c.GetVolume(context.Background(), request)
-		return resRead, err
-	}
-	assert.NoError(t,
-		retryUntilTrueOrError(readTest,
-			checkLifecycleState(string(core.VOLUME_LIFECYCLE_STATE_AVAILABLE)), tick, timeout))
-
-	//update
-	updateTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-		failIfError(t, clerr)
-		request := core.UpdateVolumeRequest{}
-		request.VolumeID = resCreate.ID
-		request.DisplayName = common.String("GoSDK2_TestBlockStorageCreateVolumeDisplayNameUpdated")
-		r, err := c.UpdateVolume(context.Background(), request)
-		assert.NotEmpty(t, r, fmt.Sprint(r))
-		assert.NoError(t, err)
-		return
-	}
-	updateTest(t)
-
-	//list
-	listTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-		failIfError(t, clerr)
-		request := core.ListVolumesRequest{}
-		request.CompartmentID = common.String(getTenancyID())
-		r, err := c.ListVolumes(context.Background(), request)
-		assert.NoError(t, err)
-		assert.NotEmpty(t, r.Items)
-		return
-	}
-	listTest(t)
-
-	//delete
-	deleteTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-		failIfError(t, clerr)
-		request := core.DeleteVolumeRequest{}
-		request.VolumeID = resCreate.ID
-		err := c.DeleteVolume(context.Background(), request)
-		assert.NoError(t, err)
-		return
-	}
-	deleteTest(t)
-
 	return
 }
 
 func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
-
-	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	var volumeID *string
-	//First create a volume
-	createVol := func(t *testing.T) {
-		rCreateVol := core.CreateVolumeRequest{}
-		rCreateVol.AvailabilityDomain = common.String(validAD())
-		rCreateVol.CompartmentID = common.String(getTenancyID())
-		rCreateVol.DisplayName = common.String("GoSDK2_TestBlockStorageCreateVolumeForBackup")
-		resCreate, err := c.CreateVolume(context.Background(), rCreateVol)
-		volumeID = resCreate.ID
-		failIfError(t, err)
-	}
-
-	deleteVol := func() {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-		failIfError(t, clerr)
-		request := core.DeleteVolumeRequest{}
-		request.VolumeID = volumeID
-		c.DeleteVolume(context.Background(), request)
-		return
-	}
-
-	readVol := func() (interface{}, error) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-		failIfError(t, clerr)
-		request := core.GetVolumeRequest{}
-		request.VolumeID = volumeID
-		resRead, err := c.GetVolume(context.Background(), request)
-		return resRead, err
-	}
-
-	createVol(t)
-	defer deleteVol()
-	failIfError(t,
-		retryUntilTrueOrError(readVol,
-			checkLifecycleState(string(core.VOLUME_LIFECYCLE_STATE_AVAILABLE)), tick, time.After(120*time.Second)))
-
-	//Create
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
 	request := core.CreateVolumeBackupRequest{}
-	request.VolumeID = volumeID
-	request.DisplayName = common.String("GoSDK2_TestBlockStorageCreateVolumeBackup")
 	r, err := c.CreateVolumeBackup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
-	failIfError(t, err)
+	return
+}
 
-	//Read
-	readTest := func() (interface{}, error) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-		failIfError(t, clerr)
-		request := core.GetVolumeBackupRequest{}
-		request.VolumeBackupID = r.ID
-		rRead, err := c.GetVolumeBackup(context.Background(), request)
-		return rRead, err
-	}
+func TestBlockstorageClient_DeleteBootVolume(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.DeleteBootVolumeRequest{}
+	err := c.DeleteBootVolume(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
 
-	failIfError(t,
-		retryUntilTrueOrError(readTest,
-			checkLifecycleState(string(core.VOLUME_BACKUP_LIFECYCLE_STATE_AVAILABLE)), tick, time.After(120*time.Second)))
+func TestBlockstorageClient_DeleteVolume(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.DeleteVolumeRequest{}
+	err := c.DeleteVolume(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
 
-	//List
-	listTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-		failIfError(t, clerr)
-		request := core.ListVolumeBackupsRequest{}
-		request.CompartmentID = common.String(getTenancyID())
-		request.VolumeID = volumeID
-		r, err := c.ListVolumeBackups(context.Background(), request)
-		failIfError(t, err)
-		assert.True(t, len(r.Items) > 0)
-		return
-	}
-	listTest(t)
+func TestBlockstorageClient_DeleteVolumeBackup(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.DeleteVolumeBackupRequest{}
+	err := c.DeleteVolumeBackup(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
 
-	//Update
-	updateTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-		failIfError(t, clerr)
-		request := core.UpdateVolumeBackupRequest{}
-		request.VolumeBackupID = r.ID
-		request.DisplayName = common.String("GoSDK2_TestBlockStorageVolumeBackupUpdate")
-		r, err := c.UpdateVolumeBackup(context.Background(), request)
-		assert.NotEmpty(t, r, fmt.Sprint(r))
-		failIfError(t, err)
-		return
-	}
-	updateTest(t)
+func TestBlockstorageClient_GetBootVolume(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.GetBootVolumeRequest{}
+	r, err := c.GetBootVolume(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
 
-	//Delete
-	deleteTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-		failIfError(t, clerr)
-		request := core.DeleteVolumeBackupRequest{}
-		request.VolumeBackupID = r.ID
-		err := c.DeleteVolumeBackup(context.Background(), request)
-		failIfError(t, err)
-		return
-	}
+func TestBlockstorageClient_GetVolume(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.GetVolumeRequest{}
+	r, err := c.GetVolume(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
 
-	deleteTest(t)
+func TestBlockstorageClient_GetVolumeBackup(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.GetVolumeBackupRequest{}
+	r, err := c.GetVolumeBackup(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestBlockstorageClient_ListBootVolumes(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.ListBootVolumesRequest{}
+	r, err := c.ListBootVolumes(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestBlockstorageClient_ListVolumeBackups(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.ListVolumeBackupsRequest{}
+	r, err := c.ListVolumeBackups(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestBlockstorageClient_ListVolumes(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.ListVolumesRequest{}
+	r, err := c.ListVolumes(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestBlockstorageClient_UpdateBootVolume(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.UpdateBootVolumeRequest{}
+	r, err := c.UpdateBootVolume(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestBlockstorageClient_UpdateVolume(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.UpdateVolumeRequest{}
+	r, err := c.UpdateVolume(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestBlockstorageClient_UpdateVolumeBackup(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewBlockstorageClientForRegion(testRegionForBlockstorage)
+	request := core.UpdateVolumeBackupRequest{}
+	r, err := c.UpdateVolumeBackup(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
 	return
 }

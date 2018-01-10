@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// VirtualCircuit. For use with Oracle Cloud Infrastructure FastConnect.
+// VirtualCircuit For use with Oracle Cloud Infrastructure FastConnect.
 // A virtual circuit is an isolated network path that runs over one or more physical
 // network connections to provide a single, logical connection between the edge router
 // on the customer's existing network and Oracle Cloud Infrastructure. *Private*
@@ -118,160 +118,178 @@ func (model VirtualCircuit) String() string {
 	return common.PointerString(model)
 }
 
+// VirtualCircuitBgpManagementEnum Enum with underlying type: string
 type VirtualCircuitBgpManagementEnum string
 
+// Set of constants representing the allowable values for VirtualCircuitBgpManagement
 const (
-	VIRTUAL_CIRCUIT_BGP_MANAGEMENT_CUSTOMER_MANAGED VirtualCircuitBgpManagementEnum = "CUSTOMER_MANAGED"
-	VIRTUAL_CIRCUIT_BGP_MANAGEMENT_PROVIDER_MANAGED VirtualCircuitBgpManagementEnum = "PROVIDER_MANAGED"
-	VIRTUAL_CIRCUIT_BGP_MANAGEMENT_ORACLE_MANAGED   VirtualCircuitBgpManagementEnum = "ORACLE_MANAGED"
-	VIRTUAL_CIRCUIT_BGP_MANAGEMENT_UNKNOWN          VirtualCircuitBgpManagementEnum = "UNKNOWN"
+	VirtualCircuitBgpManagementCustomerManaged VirtualCircuitBgpManagementEnum = "CUSTOMER_MANAGED"
+	VirtualCircuitBgpManagementProviderManaged VirtualCircuitBgpManagementEnum = "PROVIDER_MANAGED"
+	VirtualCircuitBgpManagementOracleManaged   VirtualCircuitBgpManagementEnum = "ORACLE_MANAGED"
+	VirtualCircuitBgpManagementUnknown         VirtualCircuitBgpManagementEnum = "UNKNOWN"
 )
 
-var mapping_virtualcircuit_bgpManagement = map[string]VirtualCircuitBgpManagementEnum{
-	"CUSTOMER_MANAGED": VIRTUAL_CIRCUIT_BGP_MANAGEMENT_CUSTOMER_MANAGED,
-	"PROVIDER_MANAGED": VIRTUAL_CIRCUIT_BGP_MANAGEMENT_PROVIDER_MANAGED,
-	"ORACLE_MANAGED":   VIRTUAL_CIRCUIT_BGP_MANAGEMENT_ORACLE_MANAGED,
-	"UNKNOWN":          VIRTUAL_CIRCUIT_BGP_MANAGEMENT_UNKNOWN,
+var mappingVirtualCircuitBgpManagement = map[string]VirtualCircuitBgpManagementEnum{
+	"CUSTOMER_MANAGED": VirtualCircuitBgpManagementCustomerManaged,
+	"PROVIDER_MANAGED": VirtualCircuitBgpManagementProviderManaged,
+	"ORACLE_MANAGED":   VirtualCircuitBgpManagementOracleManaged,
+	"UNKNOWN":          VirtualCircuitBgpManagementUnknown,
 }
 
+// GetVirtualCircuitBgpManagementEnumValues Enumerates the set of values for VirtualCircuitBgpManagement
 func GetVirtualCircuitBgpManagementEnumValues() []VirtualCircuitBgpManagementEnum {
 	values := make([]VirtualCircuitBgpManagementEnum, 0)
-	for _, v := range mapping_virtualcircuit_bgpManagement {
-		if v != VIRTUAL_CIRCUIT_BGP_MANAGEMENT_UNKNOWN {
+	for _, v := range mappingVirtualCircuitBgpManagement {
+		if v != VirtualCircuitBgpManagementUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// VirtualCircuitBgpSessionStateEnum Enum with underlying type: string
 type VirtualCircuitBgpSessionStateEnum string
 
+// Set of constants representing the allowable values for VirtualCircuitBgpSessionState
 const (
-	VIRTUAL_CIRCUIT_BGP_SESSION_STATE_UP      VirtualCircuitBgpSessionStateEnum = "UP"
-	VIRTUAL_CIRCUIT_BGP_SESSION_STATE_DOWN    VirtualCircuitBgpSessionStateEnum = "DOWN"
-	VIRTUAL_CIRCUIT_BGP_SESSION_STATE_UNKNOWN VirtualCircuitBgpSessionStateEnum = "UNKNOWN"
+	VirtualCircuitBgpSessionStateUp      VirtualCircuitBgpSessionStateEnum = "UP"
+	VirtualCircuitBgpSessionStateDown    VirtualCircuitBgpSessionStateEnum = "DOWN"
+	VirtualCircuitBgpSessionStateUnknown VirtualCircuitBgpSessionStateEnum = "UNKNOWN"
 )
 
-var mapping_virtualcircuit_bgpSessionState = map[string]VirtualCircuitBgpSessionStateEnum{
-	"UP":      VIRTUAL_CIRCUIT_BGP_SESSION_STATE_UP,
-	"DOWN":    VIRTUAL_CIRCUIT_BGP_SESSION_STATE_DOWN,
-	"UNKNOWN": VIRTUAL_CIRCUIT_BGP_SESSION_STATE_UNKNOWN,
+var mappingVirtualCircuitBgpSessionState = map[string]VirtualCircuitBgpSessionStateEnum{
+	"UP":      VirtualCircuitBgpSessionStateUp,
+	"DOWN":    VirtualCircuitBgpSessionStateDown,
+	"UNKNOWN": VirtualCircuitBgpSessionStateUnknown,
 }
 
+// GetVirtualCircuitBgpSessionStateEnumValues Enumerates the set of values for VirtualCircuitBgpSessionState
 func GetVirtualCircuitBgpSessionStateEnumValues() []VirtualCircuitBgpSessionStateEnum {
 	values := make([]VirtualCircuitBgpSessionStateEnum, 0)
-	for _, v := range mapping_virtualcircuit_bgpSessionState {
-		if v != VIRTUAL_CIRCUIT_BGP_SESSION_STATE_UNKNOWN {
+	for _, v := range mappingVirtualCircuitBgpSessionState {
+		if v != VirtualCircuitBgpSessionStateUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// VirtualCircuitLifecycleStateEnum Enum with underlying type: string
 type VirtualCircuitLifecycleStateEnum string
 
+// Set of constants representing the allowable values for VirtualCircuitLifecycleState
 const (
-	VIRTUAL_CIRCUIT_LIFECYCLE_STATE_PENDING_PROVIDER VirtualCircuitLifecycleStateEnum = "PENDING_PROVIDER"
-	VIRTUAL_CIRCUIT_LIFECYCLE_STATE_VERIFYING        VirtualCircuitLifecycleStateEnum = "VERIFYING"
-	VIRTUAL_CIRCUIT_LIFECYCLE_STATE_PROVISIONING     VirtualCircuitLifecycleStateEnum = "PROVISIONING"
-	VIRTUAL_CIRCUIT_LIFECYCLE_STATE_PROVISIONED      VirtualCircuitLifecycleStateEnum = "PROVISIONED"
-	VIRTUAL_CIRCUIT_LIFECYCLE_STATE_FAILED           VirtualCircuitLifecycleStateEnum = "FAILED"
-	VIRTUAL_CIRCUIT_LIFECYCLE_STATE_INACTIVE         VirtualCircuitLifecycleStateEnum = "INACTIVE"
-	VIRTUAL_CIRCUIT_LIFECYCLE_STATE_TERMINATING      VirtualCircuitLifecycleStateEnum = "TERMINATING"
-	VIRTUAL_CIRCUIT_LIFECYCLE_STATE_TERMINATED       VirtualCircuitLifecycleStateEnum = "TERMINATED"
-	VIRTUAL_CIRCUIT_LIFECYCLE_STATE_UNKNOWN          VirtualCircuitLifecycleStateEnum = "UNKNOWN"
+	VirtualCircuitLifecycleStatePendingProvider VirtualCircuitLifecycleStateEnum = "PENDING_PROVIDER"
+	VirtualCircuitLifecycleStateVerifying       VirtualCircuitLifecycleStateEnum = "VERIFYING"
+	VirtualCircuitLifecycleStateProvisioning    VirtualCircuitLifecycleStateEnum = "PROVISIONING"
+	VirtualCircuitLifecycleStateProvisioned     VirtualCircuitLifecycleStateEnum = "PROVISIONED"
+	VirtualCircuitLifecycleStateFailed          VirtualCircuitLifecycleStateEnum = "FAILED"
+	VirtualCircuitLifecycleStateInactive        VirtualCircuitLifecycleStateEnum = "INACTIVE"
+	VirtualCircuitLifecycleStateTerminating     VirtualCircuitLifecycleStateEnum = "TERMINATING"
+	VirtualCircuitLifecycleStateTerminated      VirtualCircuitLifecycleStateEnum = "TERMINATED"
+	VirtualCircuitLifecycleStateUnknown         VirtualCircuitLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_virtualcircuit_lifecycleState = map[string]VirtualCircuitLifecycleStateEnum{
-	"PENDING_PROVIDER": VIRTUAL_CIRCUIT_LIFECYCLE_STATE_PENDING_PROVIDER,
-	"VERIFYING":        VIRTUAL_CIRCUIT_LIFECYCLE_STATE_VERIFYING,
-	"PROVISIONING":     VIRTUAL_CIRCUIT_LIFECYCLE_STATE_PROVISIONING,
-	"PROVISIONED":      VIRTUAL_CIRCUIT_LIFECYCLE_STATE_PROVISIONED,
-	"FAILED":           VIRTUAL_CIRCUIT_LIFECYCLE_STATE_FAILED,
-	"INACTIVE":         VIRTUAL_CIRCUIT_LIFECYCLE_STATE_INACTIVE,
-	"TERMINATING":      VIRTUAL_CIRCUIT_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":       VIRTUAL_CIRCUIT_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":          VIRTUAL_CIRCUIT_LIFECYCLE_STATE_UNKNOWN,
+var mappingVirtualCircuitLifecycleState = map[string]VirtualCircuitLifecycleStateEnum{
+	"PENDING_PROVIDER": VirtualCircuitLifecycleStatePendingProvider,
+	"VERIFYING":        VirtualCircuitLifecycleStateVerifying,
+	"PROVISIONING":     VirtualCircuitLifecycleStateProvisioning,
+	"PROVISIONED":      VirtualCircuitLifecycleStateProvisioned,
+	"FAILED":           VirtualCircuitLifecycleStateFailed,
+	"INACTIVE":         VirtualCircuitLifecycleStateInactive,
+	"TERMINATING":      VirtualCircuitLifecycleStateTerminating,
+	"TERMINATED":       VirtualCircuitLifecycleStateTerminated,
+	"UNKNOWN":          VirtualCircuitLifecycleStateUnknown,
 }
 
+// GetVirtualCircuitLifecycleStateEnumValues Enumerates the set of values for VirtualCircuitLifecycleState
 func GetVirtualCircuitLifecycleStateEnumValues() []VirtualCircuitLifecycleStateEnum {
 	values := make([]VirtualCircuitLifecycleStateEnum, 0)
-	for _, v := range mapping_virtualcircuit_lifecycleState {
-		if v != VIRTUAL_CIRCUIT_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingVirtualCircuitLifecycleState {
+		if v != VirtualCircuitLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// VirtualCircuitProviderStateEnum Enum with underlying type: string
 type VirtualCircuitProviderStateEnum string
 
+// Set of constants representing the allowable values for VirtualCircuitProviderState
 const (
-	VIRTUAL_CIRCUIT_PROVIDER_STATE_ACTIVE   VirtualCircuitProviderStateEnum = "ACTIVE"
-	VIRTUAL_CIRCUIT_PROVIDER_STATE_INACTIVE VirtualCircuitProviderStateEnum = "INACTIVE"
-	VIRTUAL_CIRCUIT_PROVIDER_STATE_UNKNOWN  VirtualCircuitProviderStateEnum = "UNKNOWN"
+	VirtualCircuitProviderStateActive   VirtualCircuitProviderStateEnum = "ACTIVE"
+	VirtualCircuitProviderStateInactive VirtualCircuitProviderStateEnum = "INACTIVE"
+	VirtualCircuitProviderStateUnknown  VirtualCircuitProviderStateEnum = "UNKNOWN"
 )
 
-var mapping_virtualcircuit_providerState = map[string]VirtualCircuitProviderStateEnum{
-	"ACTIVE":   VIRTUAL_CIRCUIT_PROVIDER_STATE_ACTIVE,
-	"INACTIVE": VIRTUAL_CIRCUIT_PROVIDER_STATE_INACTIVE,
-	"UNKNOWN":  VIRTUAL_CIRCUIT_PROVIDER_STATE_UNKNOWN,
+var mappingVirtualCircuitProviderState = map[string]VirtualCircuitProviderStateEnum{
+	"ACTIVE":   VirtualCircuitProviderStateActive,
+	"INACTIVE": VirtualCircuitProviderStateInactive,
+	"UNKNOWN":  VirtualCircuitProviderStateUnknown,
 }
 
+// GetVirtualCircuitProviderStateEnumValues Enumerates the set of values for VirtualCircuitProviderState
 func GetVirtualCircuitProviderStateEnumValues() []VirtualCircuitProviderStateEnum {
 	values := make([]VirtualCircuitProviderStateEnum, 0)
-	for _, v := range mapping_virtualcircuit_providerState {
-		if v != VIRTUAL_CIRCUIT_PROVIDER_STATE_UNKNOWN {
+	for _, v := range mappingVirtualCircuitProviderState {
+		if v != VirtualCircuitProviderStateUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// VirtualCircuitServiceTypeEnum Enum with underlying type: string
 type VirtualCircuitServiceTypeEnum string
 
+// Set of constants representing the allowable values for VirtualCircuitServiceType
 const (
-	VIRTUAL_CIRCUIT_SERVICE_TYPE_COLOCATED VirtualCircuitServiceTypeEnum = "COLOCATED"
-	VIRTUAL_CIRCUIT_SERVICE_TYPE_LAYER2    VirtualCircuitServiceTypeEnum = "LAYER2"
-	VIRTUAL_CIRCUIT_SERVICE_TYPE_LAYER3    VirtualCircuitServiceTypeEnum = "LAYER3"
-	VIRTUAL_CIRCUIT_SERVICE_TYPE_UNKNOWN   VirtualCircuitServiceTypeEnum = "UNKNOWN"
+	VirtualCircuitServiceTypeColocated VirtualCircuitServiceTypeEnum = "COLOCATED"
+	VirtualCircuitServiceTypeLayer2    VirtualCircuitServiceTypeEnum = "LAYER2"
+	VirtualCircuitServiceTypeLayer3    VirtualCircuitServiceTypeEnum = "LAYER3"
+	VirtualCircuitServiceTypeUnknown   VirtualCircuitServiceTypeEnum = "UNKNOWN"
 )
 
-var mapping_virtualcircuit_serviceType = map[string]VirtualCircuitServiceTypeEnum{
-	"COLOCATED": VIRTUAL_CIRCUIT_SERVICE_TYPE_COLOCATED,
-	"LAYER2":    VIRTUAL_CIRCUIT_SERVICE_TYPE_LAYER2,
-	"LAYER3":    VIRTUAL_CIRCUIT_SERVICE_TYPE_LAYER3,
-	"UNKNOWN":   VIRTUAL_CIRCUIT_SERVICE_TYPE_UNKNOWN,
+var mappingVirtualCircuitServiceType = map[string]VirtualCircuitServiceTypeEnum{
+	"COLOCATED": VirtualCircuitServiceTypeColocated,
+	"LAYER2":    VirtualCircuitServiceTypeLayer2,
+	"LAYER3":    VirtualCircuitServiceTypeLayer3,
+	"UNKNOWN":   VirtualCircuitServiceTypeUnknown,
 }
 
+// GetVirtualCircuitServiceTypeEnumValues Enumerates the set of values for VirtualCircuitServiceType
 func GetVirtualCircuitServiceTypeEnumValues() []VirtualCircuitServiceTypeEnum {
 	values := make([]VirtualCircuitServiceTypeEnum, 0)
-	for _, v := range mapping_virtualcircuit_serviceType {
-		if v != VIRTUAL_CIRCUIT_SERVICE_TYPE_UNKNOWN {
+	for _, v := range mappingVirtualCircuitServiceType {
+		if v != VirtualCircuitServiceTypeUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// VirtualCircuitType_Enum Enum with underlying type: string
 type VirtualCircuitType_Enum string
 
+// Set of constants representing the allowable values for VirtualCircuitType_
 const (
-	VIRTUAL_CIRCUIT_TYPE__PUBLIC  VirtualCircuitType_Enum = "PUBLIC"
-	VIRTUAL_CIRCUIT_TYPE__PRIVATE VirtualCircuitType_Enum = "PRIVATE"
-	VIRTUAL_CIRCUIT_TYPE__UNKNOWN VirtualCircuitType_Enum = "UNKNOWN"
+	VirtualCircuitType_Public  VirtualCircuitType_Enum = "PUBLIC"
+	VirtualCircuitType_Private VirtualCircuitType_Enum = "PRIVATE"
+	VirtualCircuitType_Unknown VirtualCircuitType_Enum = "UNKNOWN"
 )
 
-var mapping_virtualcircuit_type = map[string]VirtualCircuitType_Enum{
-	"PUBLIC":  VIRTUAL_CIRCUIT_TYPE__PUBLIC,
-	"PRIVATE": VIRTUAL_CIRCUIT_TYPE__PRIVATE,
-	"UNKNOWN": VIRTUAL_CIRCUIT_TYPE__UNKNOWN,
+var mappingVirtualCircuitType_ = map[string]VirtualCircuitType_Enum{
+	"PUBLIC":  VirtualCircuitType_Public,
+	"PRIVATE": VirtualCircuitType_Private,
+	"UNKNOWN": VirtualCircuitType_Unknown,
 }
 
+// GetVirtualCircuitType_EnumValues Enumerates the set of values for VirtualCircuitType_
 func GetVirtualCircuitType_EnumValues() []VirtualCircuitType_Enum {
 	values := make([]VirtualCircuitType_Enum, 0)
-	for _, v := range mapping_virtualcircuit_type {
-		if v != VIRTUAL_CIRCUIT_TYPE__UNKNOWN {
+	for _, v := range mappingVirtualCircuitType_ {
+		if v != VirtualCircuitType_Unknown {
 			values = append(values, v)
 		}
 	}

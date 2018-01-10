@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// DrgAttachment. A link between a DRG and VCN. For more information, see
+// DrgAttachment A link between a DRG and VCN. For more information, see
 // [Overview of the Networking Service]({{DOC_SERVER_URL}}/Content/Network/Concepts/overview.htm).
 type DrgAttachment struct {
 
@@ -44,28 +44,31 @@ func (model DrgAttachment) String() string {
 	return common.PointerString(model)
 }
 
+// DrgAttachmentLifecycleStateEnum Enum with underlying type: string
 type DrgAttachmentLifecycleStateEnum string
 
+// Set of constants representing the allowable values for DrgAttachmentLifecycleState
 const (
-	DRG_ATTACHMENT_LIFECYCLE_STATE_ATTACHING DrgAttachmentLifecycleStateEnum = "ATTACHING"
-	DRG_ATTACHMENT_LIFECYCLE_STATE_ATTACHED  DrgAttachmentLifecycleStateEnum = "ATTACHED"
-	DRG_ATTACHMENT_LIFECYCLE_STATE_DETACHING DrgAttachmentLifecycleStateEnum = "DETACHING"
-	DRG_ATTACHMENT_LIFECYCLE_STATE_DETACHED  DrgAttachmentLifecycleStateEnum = "DETACHED"
-	DRG_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN   DrgAttachmentLifecycleStateEnum = "UNKNOWN"
+	DrgAttachmentLifecycleStateAttaching DrgAttachmentLifecycleStateEnum = "ATTACHING"
+	DrgAttachmentLifecycleStateAttached  DrgAttachmentLifecycleStateEnum = "ATTACHED"
+	DrgAttachmentLifecycleStateDetaching DrgAttachmentLifecycleStateEnum = "DETACHING"
+	DrgAttachmentLifecycleStateDetached  DrgAttachmentLifecycleStateEnum = "DETACHED"
+	DrgAttachmentLifecycleStateUnknown   DrgAttachmentLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_drgattachment_lifecycleState = map[string]DrgAttachmentLifecycleStateEnum{
-	"ATTACHING": DRG_ATTACHMENT_LIFECYCLE_STATE_ATTACHING,
-	"ATTACHED":  DRG_ATTACHMENT_LIFECYCLE_STATE_ATTACHED,
-	"DETACHING": DRG_ATTACHMENT_LIFECYCLE_STATE_DETACHING,
-	"DETACHED":  DRG_ATTACHMENT_LIFECYCLE_STATE_DETACHED,
-	"UNKNOWN":   DRG_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN,
+var mappingDrgAttachmentLifecycleState = map[string]DrgAttachmentLifecycleStateEnum{
+	"ATTACHING": DrgAttachmentLifecycleStateAttaching,
+	"ATTACHED":  DrgAttachmentLifecycleStateAttached,
+	"DETACHING": DrgAttachmentLifecycleStateDetaching,
+	"DETACHED":  DrgAttachmentLifecycleStateDetached,
+	"UNKNOWN":   DrgAttachmentLifecycleStateUnknown,
 }
 
+// GetDrgAttachmentLifecycleStateEnumValues Enumerates the set of values for DrgAttachmentLifecycleState
 func GetDrgAttachmentLifecycleStateEnumValues() []DrgAttachmentLifecycleStateEnum {
 	values := make([]DrgAttachmentLifecycleStateEnum, 0)
-	for _, v := range mapping_drgattachment_lifecycleState {
-		if v != DRG_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingDrgAttachmentLifecycleState {
+		if v != DrgAttachmentLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}
