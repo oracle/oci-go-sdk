@@ -71,48 +71,54 @@ func (response ListRouteTablesResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListRouteTablesSortByEnum Enum with underlying type: string
 type ListRouteTablesSortByEnum string
 
+// Set of constants representing the allowable values for ListRouteTablesSortBy
 const (
-	LIST_ROUTE_TABLES_SORT_BY_TIMECREATED ListRouteTablesSortByEnum = "TIMECREATED"
-	LIST_ROUTE_TABLES_SORT_BY_DISPLAYNAME ListRouteTablesSortByEnum = "DISPLAYNAME"
-	LIST_ROUTE_TABLES_SORT_BY_UNKNOWN     ListRouteTablesSortByEnum = "UNKNOWN"
+	ListRouteTablesSortByTimecreated ListRouteTablesSortByEnum = "TIMECREATED"
+	ListRouteTablesSortByDisplayname ListRouteTablesSortByEnum = "DISPLAYNAME"
+	ListRouteTablesSortByUnknown     ListRouteTablesSortByEnum = "UNKNOWN"
 )
 
-var mapping_listroutetablessortby = map[string]ListRouteTablesSortByEnum{
-	"TIMECREATED": LIST_ROUTE_TABLES_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_ROUTE_TABLES_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_ROUTE_TABLES_SORT_BY_UNKNOWN,
+var mappingListRouteTablesSortBy = map[string]ListRouteTablesSortByEnum{
+	"TIMECREATED": ListRouteTablesSortByTimecreated,
+	"DISPLAYNAME": ListRouteTablesSortByDisplayname,
+	"UNKNOWN":     ListRouteTablesSortByUnknown,
 }
 
+// GetListRouteTablesSortByEnumValues Enumerates the set of values for ListRouteTablesSortBy
 func GetListRouteTablesSortByEnumValues() []ListRouteTablesSortByEnum {
 	values := make([]ListRouteTablesSortByEnum, 0)
-	for _, v := range mapping_listroutetablessortby {
-		if v != LIST_ROUTE_TABLES_SORT_BY_UNKNOWN {
+	for _, v := range mappingListRouteTablesSortBy {
+		if v != ListRouteTablesSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListRouteTablesSortOrderEnum Enum with underlying type: string
 type ListRouteTablesSortOrderEnum string
 
+// Set of constants representing the allowable values for ListRouteTablesSortOrder
 const (
-	LIST_ROUTE_TABLES_SORT_ORDER_ASC     ListRouteTablesSortOrderEnum = "ASC"
-	LIST_ROUTE_TABLES_SORT_ORDER_DESC    ListRouteTablesSortOrderEnum = "DESC"
-	LIST_ROUTE_TABLES_SORT_ORDER_UNKNOWN ListRouteTablesSortOrderEnum = "UNKNOWN"
+	ListRouteTablesSortOrderAsc     ListRouteTablesSortOrderEnum = "ASC"
+	ListRouteTablesSortOrderDesc    ListRouteTablesSortOrderEnum = "DESC"
+	ListRouteTablesSortOrderUnknown ListRouteTablesSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listroutetablessortorder = map[string]ListRouteTablesSortOrderEnum{
-	"ASC":     LIST_ROUTE_TABLES_SORT_ORDER_ASC,
-	"DESC":    LIST_ROUTE_TABLES_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_ROUTE_TABLES_SORT_ORDER_UNKNOWN,
+var mappingListRouteTablesSortOrder = map[string]ListRouteTablesSortOrderEnum{
+	"ASC":     ListRouteTablesSortOrderAsc,
+	"DESC":    ListRouteTablesSortOrderDesc,
+	"UNKNOWN": ListRouteTablesSortOrderUnknown,
 }
 
+// GetListRouteTablesSortOrderEnumValues Enumerates the set of values for ListRouteTablesSortOrder
 func GetListRouteTablesSortOrderEnumValues() []ListRouteTablesSortOrderEnum {
 	values := make([]ListRouteTablesSortOrderEnum, 0)
-	for _, v := range mapping_listroutetablessortorder {
-		if v != LIST_ROUTE_TABLES_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListRouteTablesSortOrder {
+		if v != ListRouteTablesSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

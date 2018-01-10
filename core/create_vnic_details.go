@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateVnicDetails. Contains properties for a VNIC. You use this object when creating the
+// CreateVnicDetails Contains properties for a VNIC. You use this object when creating the
 // primary VNIC during instance launch or when creating a secondary VNIC.
 // For more information about VNICs, see
 // [Virtual Network Interface Cards (VNICs)]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingVNICs.htm).

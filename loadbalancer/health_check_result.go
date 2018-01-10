@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// HealthCheckResult. Information about a single backend server health check result reported by a load balancer.
+// HealthCheckResult Information about a single backend server health check result reported by a load balancer.
 type HealthCheckResult struct {
 
 	// The result of the most recent health check.
@@ -35,33 +35,36 @@ func (model HealthCheckResult) String() string {
 	return common.PointerString(model)
 }
 
+// HealthCheckResultHealthCheckStatusEnum Enum with underlying type: string
 type HealthCheckResultHealthCheckStatusEnum string
 
+// Set of constants representing the allowable values for HealthCheckResultHealthCheckStatus
 const (
-	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_OK                  HealthCheckResultHealthCheckStatusEnum = "OK"
-	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_INVALID_STATUS_CODE HealthCheckResultHealthCheckStatusEnum = "INVALID_STATUS_CODE"
-	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_TIMED_OUT           HealthCheckResultHealthCheckStatusEnum = "TIMED_OUT"
-	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_REGEX_MISMATCH      HealthCheckResultHealthCheckStatusEnum = "REGEX_MISMATCH"
-	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_CONNECT_FAILED      HealthCheckResultHealthCheckStatusEnum = "CONNECT_FAILED"
-	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_IO_ERROR            HealthCheckResultHealthCheckStatusEnum = "IO_ERROR"
-	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_OFFLINE             HealthCheckResultHealthCheckStatusEnum = "OFFLINE"
-	HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_UNKNOWN             HealthCheckResultHealthCheckStatusEnum = "UNKNOWN"
+	HealthCheckResultHealthCheckStatusOk                HealthCheckResultHealthCheckStatusEnum = "OK"
+	HealthCheckResultHealthCheckStatusInvalidStatusCode HealthCheckResultHealthCheckStatusEnum = "INVALID_STATUS_CODE"
+	HealthCheckResultHealthCheckStatusTimedOut          HealthCheckResultHealthCheckStatusEnum = "TIMED_OUT"
+	HealthCheckResultHealthCheckStatusRegexMismatch     HealthCheckResultHealthCheckStatusEnum = "REGEX_MISMATCH"
+	HealthCheckResultHealthCheckStatusConnectFailed     HealthCheckResultHealthCheckStatusEnum = "CONNECT_FAILED"
+	HealthCheckResultHealthCheckStatusIoError           HealthCheckResultHealthCheckStatusEnum = "IO_ERROR"
+	HealthCheckResultHealthCheckStatusOffline           HealthCheckResultHealthCheckStatusEnum = "OFFLINE"
+	HealthCheckResultHealthCheckStatusUnknown           HealthCheckResultHealthCheckStatusEnum = "UNKNOWN"
 )
 
-var mapping_healthcheckresult_healthCheckStatus = map[string]HealthCheckResultHealthCheckStatusEnum{
-	"OK": HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_OK,
-	"INVALID_STATUS_CODE": HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_INVALID_STATUS_CODE,
-	"TIMED_OUT":           HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_TIMED_OUT,
-	"REGEX_MISMATCH":      HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_REGEX_MISMATCH,
-	"CONNECT_FAILED":      HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_CONNECT_FAILED,
-	"IO_ERROR":            HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_IO_ERROR,
-	"OFFLINE":             HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_OFFLINE,
-	"UNKNOWN":             HEALTH_CHECK_RESULT_HEALTH_CHECK_STATUS_UNKNOWN,
+var mappingHealthCheckResultHealthCheckStatus = map[string]HealthCheckResultHealthCheckStatusEnum{
+	"OK": HealthCheckResultHealthCheckStatusOk,
+	"INVALID_STATUS_CODE": HealthCheckResultHealthCheckStatusInvalidStatusCode,
+	"TIMED_OUT":           HealthCheckResultHealthCheckStatusTimedOut,
+	"REGEX_MISMATCH":      HealthCheckResultHealthCheckStatusRegexMismatch,
+	"CONNECT_FAILED":      HealthCheckResultHealthCheckStatusConnectFailed,
+	"IO_ERROR":            HealthCheckResultHealthCheckStatusIoError,
+	"OFFLINE":             HealthCheckResultHealthCheckStatusOffline,
+	"UNKNOWN":             HealthCheckResultHealthCheckStatusUnknown,
 }
 
+// GetHealthCheckResultHealthCheckStatusEnumValues Enumerates the set of values for HealthCheckResultHealthCheckStatus
 func GetHealthCheckResultHealthCheckStatusEnumValues() []HealthCheckResultHealthCheckStatusEnum {
 	values := make([]HealthCheckResultHealthCheckStatusEnum, 0)
-	for _, v := range mapping_healthcheckresult_healthCheckStatus {
+	for _, v := range mappingHealthCheckResultHealthCheckStatus {
 		values = append(values, v)
 	}
 	return values

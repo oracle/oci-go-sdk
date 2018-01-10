@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ExportImageDetails. The destination details for the image export.
+// ExportImageDetails The destination details for the image export.
 // Set `destinationType` to `objectStorageTuple`
 // and use ExportImageViaObjectStorageTupleDetails
 // when specifying the namespace, bucket name, and object name.

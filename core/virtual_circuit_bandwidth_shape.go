@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// VirtualCircuitBandwidthShape. An individual bandwidth level for virtual circuits.
+// VirtualCircuitBandwidthShape An individual bandwidth level for virtual circuits.
 type VirtualCircuitBandwidthShape struct {
 
 	// The name of the bandwidth shape.

@@ -71,48 +71,54 @@ func (response ListDhcpOptionsResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListDhcpOptionsSortByEnum Enum with underlying type: string
 type ListDhcpOptionsSortByEnum string
 
+// Set of constants representing the allowable values for ListDhcpOptionsSortBy
 const (
-	LIST_DHCP_OPTIONS_SORT_BY_TIMECREATED ListDhcpOptionsSortByEnum = "TIMECREATED"
-	LIST_DHCP_OPTIONS_SORT_BY_DISPLAYNAME ListDhcpOptionsSortByEnum = "DISPLAYNAME"
-	LIST_DHCP_OPTIONS_SORT_BY_UNKNOWN     ListDhcpOptionsSortByEnum = "UNKNOWN"
+	ListDhcpOptionsSortByTimecreated ListDhcpOptionsSortByEnum = "TIMECREATED"
+	ListDhcpOptionsSortByDisplayname ListDhcpOptionsSortByEnum = "DISPLAYNAME"
+	ListDhcpOptionsSortByUnknown     ListDhcpOptionsSortByEnum = "UNKNOWN"
 )
 
-var mapping_listdhcpoptionssortby = map[string]ListDhcpOptionsSortByEnum{
-	"TIMECREATED": LIST_DHCP_OPTIONS_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_DHCP_OPTIONS_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_DHCP_OPTIONS_SORT_BY_UNKNOWN,
+var mappingListDhcpOptionsSortBy = map[string]ListDhcpOptionsSortByEnum{
+	"TIMECREATED": ListDhcpOptionsSortByTimecreated,
+	"DISPLAYNAME": ListDhcpOptionsSortByDisplayname,
+	"UNKNOWN":     ListDhcpOptionsSortByUnknown,
 }
 
+// GetListDhcpOptionsSortByEnumValues Enumerates the set of values for ListDhcpOptionsSortBy
 func GetListDhcpOptionsSortByEnumValues() []ListDhcpOptionsSortByEnum {
 	values := make([]ListDhcpOptionsSortByEnum, 0)
-	for _, v := range mapping_listdhcpoptionssortby {
-		if v != LIST_DHCP_OPTIONS_SORT_BY_UNKNOWN {
+	for _, v := range mappingListDhcpOptionsSortBy {
+		if v != ListDhcpOptionsSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListDhcpOptionsSortOrderEnum Enum with underlying type: string
 type ListDhcpOptionsSortOrderEnum string
 
+// Set of constants representing the allowable values for ListDhcpOptionsSortOrder
 const (
-	LIST_DHCP_OPTIONS_SORT_ORDER_ASC     ListDhcpOptionsSortOrderEnum = "ASC"
-	LIST_DHCP_OPTIONS_SORT_ORDER_DESC    ListDhcpOptionsSortOrderEnum = "DESC"
-	LIST_DHCP_OPTIONS_SORT_ORDER_UNKNOWN ListDhcpOptionsSortOrderEnum = "UNKNOWN"
+	ListDhcpOptionsSortOrderAsc     ListDhcpOptionsSortOrderEnum = "ASC"
+	ListDhcpOptionsSortOrderDesc    ListDhcpOptionsSortOrderEnum = "DESC"
+	ListDhcpOptionsSortOrderUnknown ListDhcpOptionsSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listdhcpoptionssortorder = map[string]ListDhcpOptionsSortOrderEnum{
-	"ASC":     LIST_DHCP_OPTIONS_SORT_ORDER_ASC,
-	"DESC":    LIST_DHCP_OPTIONS_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_DHCP_OPTIONS_SORT_ORDER_UNKNOWN,
+var mappingListDhcpOptionsSortOrder = map[string]ListDhcpOptionsSortOrderEnum{
+	"ASC":     ListDhcpOptionsSortOrderAsc,
+	"DESC":    ListDhcpOptionsSortOrderDesc,
+	"UNKNOWN": ListDhcpOptionsSortOrderUnknown,
 }
 
+// GetListDhcpOptionsSortOrderEnumValues Enumerates the set of values for ListDhcpOptionsSortOrder
 func GetListDhcpOptionsSortOrderEnumValues() []ListDhcpOptionsSortOrderEnum {
 	values := make([]ListDhcpOptionsSortOrderEnum, 0)
-	for _, v := range mapping_listdhcpoptionssortorder {
-		if v != LIST_DHCP_OPTIONS_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListDhcpOptionsSortOrder {
+		if v != ListDhcpOptionsSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

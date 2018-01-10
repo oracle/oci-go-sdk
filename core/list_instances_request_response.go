@@ -72,48 +72,54 @@ func (response ListInstancesResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListInstancesSortByEnum Enum with underlying type: string
 type ListInstancesSortByEnum string
 
+// Set of constants representing the allowable values for ListInstancesSortBy
 const (
-	LIST_INSTANCES_SORT_BY_TIMECREATED ListInstancesSortByEnum = "TIMECREATED"
-	LIST_INSTANCES_SORT_BY_DISPLAYNAME ListInstancesSortByEnum = "DISPLAYNAME"
-	LIST_INSTANCES_SORT_BY_UNKNOWN     ListInstancesSortByEnum = "UNKNOWN"
+	ListInstancesSortByTimecreated ListInstancesSortByEnum = "TIMECREATED"
+	ListInstancesSortByDisplayname ListInstancesSortByEnum = "DISPLAYNAME"
+	ListInstancesSortByUnknown     ListInstancesSortByEnum = "UNKNOWN"
 )
 
-var mapping_listinstancessortby = map[string]ListInstancesSortByEnum{
-	"TIMECREATED": LIST_INSTANCES_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_INSTANCES_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_INSTANCES_SORT_BY_UNKNOWN,
+var mappingListInstancesSortBy = map[string]ListInstancesSortByEnum{
+	"TIMECREATED": ListInstancesSortByTimecreated,
+	"DISPLAYNAME": ListInstancesSortByDisplayname,
+	"UNKNOWN":     ListInstancesSortByUnknown,
 }
 
+// GetListInstancesSortByEnumValues Enumerates the set of values for ListInstancesSortBy
 func GetListInstancesSortByEnumValues() []ListInstancesSortByEnum {
 	values := make([]ListInstancesSortByEnum, 0)
-	for _, v := range mapping_listinstancessortby {
-		if v != LIST_INSTANCES_SORT_BY_UNKNOWN {
+	for _, v := range mappingListInstancesSortBy {
+		if v != ListInstancesSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListInstancesSortOrderEnum Enum with underlying type: string
 type ListInstancesSortOrderEnum string
 
+// Set of constants representing the allowable values for ListInstancesSortOrder
 const (
-	LIST_INSTANCES_SORT_ORDER_ASC     ListInstancesSortOrderEnum = "ASC"
-	LIST_INSTANCES_SORT_ORDER_DESC    ListInstancesSortOrderEnum = "DESC"
-	LIST_INSTANCES_SORT_ORDER_UNKNOWN ListInstancesSortOrderEnum = "UNKNOWN"
+	ListInstancesSortOrderAsc     ListInstancesSortOrderEnum = "ASC"
+	ListInstancesSortOrderDesc    ListInstancesSortOrderEnum = "DESC"
+	ListInstancesSortOrderUnknown ListInstancesSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listinstancessortorder = map[string]ListInstancesSortOrderEnum{
-	"ASC":     LIST_INSTANCES_SORT_ORDER_ASC,
-	"DESC":    LIST_INSTANCES_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_INSTANCES_SORT_ORDER_UNKNOWN,
+var mappingListInstancesSortOrder = map[string]ListInstancesSortOrderEnum{
+	"ASC":     ListInstancesSortOrderAsc,
+	"DESC":    ListInstancesSortOrderDesc,
+	"UNKNOWN": ListInstancesSortOrderUnknown,
 }
 
+// GetListInstancesSortOrderEnumValues Enumerates the set of values for ListInstancesSortOrder
 func GetListInstancesSortOrderEnumValues() []ListInstancesSortOrderEnum {
 	values := make([]ListInstancesSortOrderEnum, 0)
-	for _, v := range mapping_listinstancessortorder {
-		if v != LIST_INSTANCES_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListInstancesSortOrder {
+		if v != ListInstancesSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

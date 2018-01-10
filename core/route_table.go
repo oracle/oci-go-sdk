@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// RouteTable. A collection of `RouteRule` objects, which are used to route packets
+// RouteTable A collection of `RouteRule` objects, which are used to route packets
 // based on destination IP to a particular network entity. For more information, see
 // [Overview of the Networking Service]({{DOC_SERVER_URL}}/Content/Network/Concepts/overview.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
@@ -48,28 +48,31 @@ func (model RouteTable) String() string {
 	return common.PointerString(model)
 }
 
+// RouteTableLifecycleStateEnum Enum with underlying type: string
 type RouteTableLifecycleStateEnum string
 
+// Set of constants representing the allowable values for RouteTableLifecycleState
 const (
-	ROUTE_TABLE_LIFECYCLE_STATE_PROVISIONING RouteTableLifecycleStateEnum = "PROVISIONING"
-	ROUTE_TABLE_LIFECYCLE_STATE_AVAILABLE    RouteTableLifecycleStateEnum = "AVAILABLE"
-	ROUTE_TABLE_LIFECYCLE_STATE_TERMINATING  RouteTableLifecycleStateEnum = "TERMINATING"
-	ROUTE_TABLE_LIFECYCLE_STATE_TERMINATED   RouteTableLifecycleStateEnum = "TERMINATED"
-	ROUTE_TABLE_LIFECYCLE_STATE_UNKNOWN      RouteTableLifecycleStateEnum = "UNKNOWN"
+	RouteTableLifecycleStateProvisioning RouteTableLifecycleStateEnum = "PROVISIONING"
+	RouteTableLifecycleStateAvailable    RouteTableLifecycleStateEnum = "AVAILABLE"
+	RouteTableLifecycleStateTerminating  RouteTableLifecycleStateEnum = "TERMINATING"
+	RouteTableLifecycleStateTerminated   RouteTableLifecycleStateEnum = "TERMINATED"
+	RouteTableLifecycleStateUnknown      RouteTableLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_routetable_lifecycleState = map[string]RouteTableLifecycleStateEnum{
-	"PROVISIONING": ROUTE_TABLE_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    ROUTE_TABLE_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":  ROUTE_TABLE_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   ROUTE_TABLE_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":      ROUTE_TABLE_LIFECYCLE_STATE_UNKNOWN,
+var mappingRouteTableLifecycleState = map[string]RouteTableLifecycleStateEnum{
+	"PROVISIONING": RouteTableLifecycleStateProvisioning,
+	"AVAILABLE":    RouteTableLifecycleStateAvailable,
+	"TERMINATING":  RouteTableLifecycleStateTerminating,
+	"TERMINATED":   RouteTableLifecycleStateTerminated,
+	"UNKNOWN":      RouteTableLifecycleStateUnknown,
 }
 
+// GetRouteTableLifecycleStateEnumValues Enumerates the set of values for RouteTableLifecycleState
 func GetRouteTableLifecycleStateEnumValues() []RouteTableLifecycleStateEnum {
 	values := make([]RouteTableLifecycleStateEnum, 0)
-	for _, v := range mapping_routetable_lifecycleState {
-		if v != ROUTE_TABLE_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingRouteTableLifecycleState {
+		if v != RouteTableLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

@@ -31,10 +31,10 @@ type ListLoadBalancersRequest struct {
 	Detail *string `mandatory:"false" contributesTo:"query" name:"detail"`
 
 	// The field to sort by.  Only one sort order may be provided.  Time created is default ordered as descending.  Display name is default ordered as ascending.
-	SortBy ListLoadBalancersSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy"`
+	SortBy ListLoadBalancersSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// The sort order to use, either 'asc' or 'desc'
-	SortOrder ListLoadBalancersSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder"`
+	SortOrder ListLoadBalancersSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// A filter to only return resources that match the given display name exactly.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
@@ -70,48 +70,54 @@ func (response ListLoadBalancersResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListLoadBalancersSortByEnum Enum with underlying type: string
 type ListLoadBalancersSortByEnum string
 
+// Set of constants representing the allowable values for ListLoadBalancersSortBy
 const (
-	LIST_LOAD_BALANCERS_SORT_BY_TIMECREATED ListLoadBalancersSortByEnum = "TIMECREATED"
-	LIST_LOAD_BALANCERS_SORT_BY_DISPLAYNAME ListLoadBalancersSortByEnum = "DISPLAYNAME"
-	LIST_LOAD_BALANCERS_SORT_BY_UNKNOWN     ListLoadBalancersSortByEnum = "UNKNOWN"
+	ListLoadBalancersSortByTimecreated ListLoadBalancersSortByEnum = "TIMECREATED"
+	ListLoadBalancersSortByDisplayname ListLoadBalancersSortByEnum = "DISPLAYNAME"
+	ListLoadBalancersSortByUnknown     ListLoadBalancersSortByEnum = "UNKNOWN"
 )
 
-var mapping_listloadbalancerssortby = map[string]ListLoadBalancersSortByEnum{
-	"TIMECREATED": LIST_LOAD_BALANCERS_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_LOAD_BALANCERS_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_LOAD_BALANCERS_SORT_BY_UNKNOWN,
+var mappingListLoadBalancersSortBy = map[string]ListLoadBalancersSortByEnum{
+	"TIMECREATED": ListLoadBalancersSortByTimecreated,
+	"DISPLAYNAME": ListLoadBalancersSortByDisplayname,
+	"UNKNOWN":     ListLoadBalancersSortByUnknown,
 }
 
+// GetListLoadBalancersSortByEnumValues Enumerates the set of values for ListLoadBalancersSortBy
 func GetListLoadBalancersSortByEnumValues() []ListLoadBalancersSortByEnum {
 	values := make([]ListLoadBalancersSortByEnum, 0)
-	for _, v := range mapping_listloadbalancerssortby {
-		if v != LIST_LOAD_BALANCERS_SORT_BY_UNKNOWN {
+	for _, v := range mappingListLoadBalancersSortBy {
+		if v != ListLoadBalancersSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListLoadBalancersSortOrderEnum Enum with underlying type: string
 type ListLoadBalancersSortOrderEnum string
 
+// Set of constants representing the allowable values for ListLoadBalancersSortOrder
 const (
-	LIST_LOAD_BALANCERS_SORT_ORDER_ASC     ListLoadBalancersSortOrderEnum = "ASC"
-	LIST_LOAD_BALANCERS_SORT_ORDER_DESC    ListLoadBalancersSortOrderEnum = "DESC"
-	LIST_LOAD_BALANCERS_SORT_ORDER_UNKNOWN ListLoadBalancersSortOrderEnum = "UNKNOWN"
+	ListLoadBalancersSortOrderAsc     ListLoadBalancersSortOrderEnum = "ASC"
+	ListLoadBalancersSortOrderDesc    ListLoadBalancersSortOrderEnum = "DESC"
+	ListLoadBalancersSortOrderUnknown ListLoadBalancersSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listloadbalancerssortorder = map[string]ListLoadBalancersSortOrderEnum{
-	"ASC":     LIST_LOAD_BALANCERS_SORT_ORDER_ASC,
-	"DESC":    LIST_LOAD_BALANCERS_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_LOAD_BALANCERS_SORT_ORDER_UNKNOWN,
+var mappingListLoadBalancersSortOrder = map[string]ListLoadBalancersSortOrderEnum{
+	"ASC":     ListLoadBalancersSortOrderAsc,
+	"DESC":    ListLoadBalancersSortOrderDesc,
+	"UNKNOWN": ListLoadBalancersSortOrderUnknown,
 }
 
+// GetListLoadBalancersSortOrderEnumValues Enumerates the set of values for ListLoadBalancersSortOrder
 func GetListLoadBalancersSortOrderEnumValues() []ListLoadBalancersSortOrderEnum {
 	values := make([]ListLoadBalancersSortOrderEnum, 0)
-	for _, v := range mapping_listloadbalancerssortorder {
-		if v != LIST_LOAD_BALANCERS_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListLoadBalancersSortOrder {
+		if v != ListLoadBalancersSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

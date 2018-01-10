@@ -65,24 +65,27 @@ func (model UpdateVirtualCircuitDetails) String() string {
 	return common.PointerString(model)
 }
 
+// UpdateVirtualCircuitDetailsProviderStateEnum Enum with underlying type: string
 type UpdateVirtualCircuitDetailsProviderStateEnum string
 
+// Set of constants representing the allowable values for UpdateVirtualCircuitDetailsProviderState
 const (
-	UPDATE_VIRTUAL_CIRCUIT_DETAILS_PROVIDER_STATE_ACTIVE   UpdateVirtualCircuitDetailsProviderStateEnum = "ACTIVE"
-	UPDATE_VIRTUAL_CIRCUIT_DETAILS_PROVIDER_STATE_INACTIVE UpdateVirtualCircuitDetailsProviderStateEnum = "INACTIVE"
-	UPDATE_VIRTUAL_CIRCUIT_DETAILS_PROVIDER_STATE_UNKNOWN  UpdateVirtualCircuitDetailsProviderStateEnum = "UNKNOWN"
+	UpdateVirtualCircuitDetailsProviderStateActive   UpdateVirtualCircuitDetailsProviderStateEnum = "ACTIVE"
+	UpdateVirtualCircuitDetailsProviderStateInactive UpdateVirtualCircuitDetailsProviderStateEnum = "INACTIVE"
+	UpdateVirtualCircuitDetailsProviderStateUnknown  UpdateVirtualCircuitDetailsProviderStateEnum = "UNKNOWN"
 )
 
-var mapping_updatevirtualcircuitdetails_providerState = map[string]UpdateVirtualCircuitDetailsProviderStateEnum{
-	"ACTIVE":   UPDATE_VIRTUAL_CIRCUIT_DETAILS_PROVIDER_STATE_ACTIVE,
-	"INACTIVE": UPDATE_VIRTUAL_CIRCUIT_DETAILS_PROVIDER_STATE_INACTIVE,
-	"UNKNOWN":  UPDATE_VIRTUAL_CIRCUIT_DETAILS_PROVIDER_STATE_UNKNOWN,
+var mappingUpdateVirtualCircuitDetailsProviderState = map[string]UpdateVirtualCircuitDetailsProviderStateEnum{
+	"ACTIVE":   UpdateVirtualCircuitDetailsProviderStateActive,
+	"INACTIVE": UpdateVirtualCircuitDetailsProviderStateInactive,
+	"UNKNOWN":  UpdateVirtualCircuitDetailsProviderStateUnknown,
 }
 
+// GetUpdateVirtualCircuitDetailsProviderStateEnumValues Enumerates the set of values for UpdateVirtualCircuitDetailsProviderState
 func GetUpdateVirtualCircuitDetailsProviderStateEnumValues() []UpdateVirtualCircuitDetailsProviderStateEnum {
 	values := make([]UpdateVirtualCircuitDetailsProviderStateEnum, 0)
-	for _, v := range mapping_updatevirtualcircuitdetails_providerState {
-		if v != UPDATE_VIRTUAL_CIRCUIT_DETAILS_PROVIDER_STATE_UNKNOWN {
+	for _, v := range mappingUpdateVirtualCircuitDetailsProviderState {
+		if v != UpdateVirtualCircuitDetailsProviderStateUnknown {
 			values = append(values, v)
 		}
 	}

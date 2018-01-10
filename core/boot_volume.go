@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// BootVolume. A detachable boot volume device that contains the image used to boot an Compute instance. For more information, see
+// BootVolume A detachable boot volume device that contains the image used to boot an Compute instance. For more information, see
 // [Overview of Boot Volumes]({{DOC_SERVER_URL}}/Content/Block/Concepts/bootvolumes.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
@@ -54,32 +54,35 @@ func (model BootVolume) String() string {
 	return common.PointerString(model)
 }
 
+// BootVolumeLifecycleStateEnum Enum with underlying type: string
 type BootVolumeLifecycleStateEnum string
 
+// Set of constants representing the allowable values for BootVolumeLifecycleState
 const (
-	BOOT_VOLUME_LIFECYCLE_STATE_PROVISIONING BootVolumeLifecycleStateEnum = "PROVISIONING"
-	BOOT_VOLUME_LIFECYCLE_STATE_RESTORING    BootVolumeLifecycleStateEnum = "RESTORING"
-	BOOT_VOLUME_LIFECYCLE_STATE_AVAILABLE    BootVolumeLifecycleStateEnum = "AVAILABLE"
-	BOOT_VOLUME_LIFECYCLE_STATE_TERMINATING  BootVolumeLifecycleStateEnum = "TERMINATING"
-	BOOT_VOLUME_LIFECYCLE_STATE_TERMINATED   BootVolumeLifecycleStateEnum = "TERMINATED"
-	BOOT_VOLUME_LIFECYCLE_STATE_FAULTY       BootVolumeLifecycleStateEnum = "FAULTY"
-	BOOT_VOLUME_LIFECYCLE_STATE_UNKNOWN      BootVolumeLifecycleStateEnum = "UNKNOWN"
+	BootVolumeLifecycleStateProvisioning BootVolumeLifecycleStateEnum = "PROVISIONING"
+	BootVolumeLifecycleStateRestoring    BootVolumeLifecycleStateEnum = "RESTORING"
+	BootVolumeLifecycleStateAvailable    BootVolumeLifecycleStateEnum = "AVAILABLE"
+	BootVolumeLifecycleStateTerminating  BootVolumeLifecycleStateEnum = "TERMINATING"
+	BootVolumeLifecycleStateTerminated   BootVolumeLifecycleStateEnum = "TERMINATED"
+	BootVolumeLifecycleStateFaulty       BootVolumeLifecycleStateEnum = "FAULTY"
+	BootVolumeLifecycleStateUnknown      BootVolumeLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_bootvolume_lifecycleState = map[string]BootVolumeLifecycleStateEnum{
-	"PROVISIONING": BOOT_VOLUME_LIFECYCLE_STATE_PROVISIONING,
-	"RESTORING":    BOOT_VOLUME_LIFECYCLE_STATE_RESTORING,
-	"AVAILABLE":    BOOT_VOLUME_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":  BOOT_VOLUME_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   BOOT_VOLUME_LIFECYCLE_STATE_TERMINATED,
-	"FAULTY":       BOOT_VOLUME_LIFECYCLE_STATE_FAULTY,
-	"UNKNOWN":      BOOT_VOLUME_LIFECYCLE_STATE_UNKNOWN,
+var mappingBootVolumeLifecycleState = map[string]BootVolumeLifecycleStateEnum{
+	"PROVISIONING": BootVolumeLifecycleStateProvisioning,
+	"RESTORING":    BootVolumeLifecycleStateRestoring,
+	"AVAILABLE":    BootVolumeLifecycleStateAvailable,
+	"TERMINATING":  BootVolumeLifecycleStateTerminating,
+	"TERMINATED":   BootVolumeLifecycleStateTerminated,
+	"FAULTY":       BootVolumeLifecycleStateFaulty,
+	"UNKNOWN":      BootVolumeLifecycleStateUnknown,
 }
 
+// GetBootVolumeLifecycleStateEnumValues Enumerates the set of values for BootVolumeLifecycleState
 func GetBootVolumeLifecycleStateEnumValues() []BootVolumeLifecycleStateEnum {
 	values := make([]BootVolumeLifecycleStateEnum, 0)
-	for _, v := range mapping_bootvolume_lifecycleState {
-		if v != BOOT_VOLUME_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingBootVolumeLifecycleState {
+		if v != BootVolumeLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// LoadBalancerHealthSummary. A health status summary for the specified load balancer.
+// LoadBalancerHealthSummary A health status summary for the specified load balancer.
 type LoadBalancerHealthSummary struct {
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer the health status is associated with.
@@ -36,25 +36,28 @@ func (model LoadBalancerHealthSummary) String() string {
 	return common.PointerString(model)
 }
 
+// LoadBalancerHealthSummaryStatusEnum Enum with underlying type: string
 type LoadBalancerHealthSummaryStatusEnum string
 
+// Set of constants representing the allowable values for LoadBalancerHealthSummaryStatus
 const (
-	LOAD_BALANCER_HEALTH_SUMMARY_STATUS_OK       LoadBalancerHealthSummaryStatusEnum = "OK"
-	LOAD_BALANCER_HEALTH_SUMMARY_STATUS_WARNING  LoadBalancerHealthSummaryStatusEnum = "WARNING"
-	LOAD_BALANCER_HEALTH_SUMMARY_STATUS_CRITICAL LoadBalancerHealthSummaryStatusEnum = "CRITICAL"
-	LOAD_BALANCER_HEALTH_SUMMARY_STATUS_UNKNOWN  LoadBalancerHealthSummaryStatusEnum = "UNKNOWN"
+	LoadBalancerHealthSummaryStatusOk       LoadBalancerHealthSummaryStatusEnum = "OK"
+	LoadBalancerHealthSummaryStatusWarning  LoadBalancerHealthSummaryStatusEnum = "WARNING"
+	LoadBalancerHealthSummaryStatusCritical LoadBalancerHealthSummaryStatusEnum = "CRITICAL"
+	LoadBalancerHealthSummaryStatusUnknown  LoadBalancerHealthSummaryStatusEnum = "UNKNOWN"
 )
 
-var mapping_loadbalancerhealthsummary_status = map[string]LoadBalancerHealthSummaryStatusEnum{
-	"OK":       LOAD_BALANCER_HEALTH_SUMMARY_STATUS_OK,
-	"WARNING":  LOAD_BALANCER_HEALTH_SUMMARY_STATUS_WARNING,
-	"CRITICAL": LOAD_BALANCER_HEALTH_SUMMARY_STATUS_CRITICAL,
-	"UNKNOWN":  LOAD_BALANCER_HEALTH_SUMMARY_STATUS_UNKNOWN,
+var mappingLoadBalancerHealthSummaryStatus = map[string]LoadBalancerHealthSummaryStatusEnum{
+	"OK":       LoadBalancerHealthSummaryStatusOk,
+	"WARNING":  LoadBalancerHealthSummaryStatusWarning,
+	"CRITICAL": LoadBalancerHealthSummaryStatusCritical,
+	"UNKNOWN":  LoadBalancerHealthSummaryStatusUnknown,
 }
 
+// GetLoadBalancerHealthSummaryStatusEnumValues Enumerates the set of values for LoadBalancerHealthSummaryStatus
 func GetLoadBalancerHealthSummaryStatusEnumValues() []LoadBalancerHealthSummaryStatusEnum {
 	values := make([]LoadBalancerHealthSummaryStatusEnum, 0)
-	for _, v := range mapping_loadbalancerhealthsummary_status {
+	for _, v := range mappingLoadBalancerHealthSummaryStatus {
 		values = append(values, v)
 	}
 	return values

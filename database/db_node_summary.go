@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// DbNodeSummary. A server where Oracle database software is running.
+// DbNodeSummary A server where Oracle database software is running.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type DbNodeSummary struct {
 
@@ -45,38 +45,41 @@ func (model DbNodeSummary) String() string {
 	return common.PointerString(model)
 }
 
+// DbNodeSummaryLifecycleStateEnum Enum with underlying type: string
 type DbNodeSummaryLifecycleStateEnum string
 
+// Set of constants representing the allowable values for DbNodeSummaryLifecycleState
 const (
-	DB_NODE_SUMMARY_LIFECYCLE_STATE_PROVISIONING DbNodeSummaryLifecycleStateEnum = "PROVISIONING"
-	DB_NODE_SUMMARY_LIFECYCLE_STATE_AVAILABLE    DbNodeSummaryLifecycleStateEnum = "AVAILABLE"
-	DB_NODE_SUMMARY_LIFECYCLE_STATE_UPDATING     DbNodeSummaryLifecycleStateEnum = "UPDATING"
-	DB_NODE_SUMMARY_LIFECYCLE_STATE_STOPPING     DbNodeSummaryLifecycleStateEnum = "STOPPING"
-	DB_NODE_SUMMARY_LIFECYCLE_STATE_STOPPED      DbNodeSummaryLifecycleStateEnum = "STOPPED"
-	DB_NODE_SUMMARY_LIFECYCLE_STATE_STARTING     DbNodeSummaryLifecycleStateEnum = "STARTING"
-	DB_NODE_SUMMARY_LIFECYCLE_STATE_TERMINATING  DbNodeSummaryLifecycleStateEnum = "TERMINATING"
-	DB_NODE_SUMMARY_LIFECYCLE_STATE_TERMINATED   DbNodeSummaryLifecycleStateEnum = "TERMINATED"
-	DB_NODE_SUMMARY_LIFECYCLE_STATE_FAILED       DbNodeSummaryLifecycleStateEnum = "FAILED"
-	DB_NODE_SUMMARY_LIFECYCLE_STATE_UNKNOWN      DbNodeSummaryLifecycleStateEnum = "UNKNOWN"
+	DbNodeSummaryLifecycleStateProvisioning DbNodeSummaryLifecycleStateEnum = "PROVISIONING"
+	DbNodeSummaryLifecycleStateAvailable    DbNodeSummaryLifecycleStateEnum = "AVAILABLE"
+	DbNodeSummaryLifecycleStateUpdating     DbNodeSummaryLifecycleStateEnum = "UPDATING"
+	DbNodeSummaryLifecycleStateStopping     DbNodeSummaryLifecycleStateEnum = "STOPPING"
+	DbNodeSummaryLifecycleStateStopped      DbNodeSummaryLifecycleStateEnum = "STOPPED"
+	DbNodeSummaryLifecycleStateStarting     DbNodeSummaryLifecycleStateEnum = "STARTING"
+	DbNodeSummaryLifecycleStateTerminating  DbNodeSummaryLifecycleStateEnum = "TERMINATING"
+	DbNodeSummaryLifecycleStateTerminated   DbNodeSummaryLifecycleStateEnum = "TERMINATED"
+	DbNodeSummaryLifecycleStateFailed       DbNodeSummaryLifecycleStateEnum = "FAILED"
+	DbNodeSummaryLifecycleStateUnknown      DbNodeSummaryLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_dbnodesummary_lifecycleState = map[string]DbNodeSummaryLifecycleStateEnum{
-	"PROVISIONING": DB_NODE_SUMMARY_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    DB_NODE_SUMMARY_LIFECYCLE_STATE_AVAILABLE,
-	"UPDATING":     DB_NODE_SUMMARY_LIFECYCLE_STATE_UPDATING,
-	"STOPPING":     DB_NODE_SUMMARY_LIFECYCLE_STATE_STOPPING,
-	"STOPPED":      DB_NODE_SUMMARY_LIFECYCLE_STATE_STOPPED,
-	"STARTING":     DB_NODE_SUMMARY_LIFECYCLE_STATE_STARTING,
-	"TERMINATING":  DB_NODE_SUMMARY_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   DB_NODE_SUMMARY_LIFECYCLE_STATE_TERMINATED,
-	"FAILED":       DB_NODE_SUMMARY_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":      DB_NODE_SUMMARY_LIFECYCLE_STATE_UNKNOWN,
+var mappingDbNodeSummaryLifecycleState = map[string]DbNodeSummaryLifecycleStateEnum{
+	"PROVISIONING": DbNodeSummaryLifecycleStateProvisioning,
+	"AVAILABLE":    DbNodeSummaryLifecycleStateAvailable,
+	"UPDATING":     DbNodeSummaryLifecycleStateUpdating,
+	"STOPPING":     DbNodeSummaryLifecycleStateStopping,
+	"STOPPED":      DbNodeSummaryLifecycleStateStopped,
+	"STARTING":     DbNodeSummaryLifecycleStateStarting,
+	"TERMINATING":  DbNodeSummaryLifecycleStateTerminating,
+	"TERMINATED":   DbNodeSummaryLifecycleStateTerminated,
+	"FAILED":       DbNodeSummaryLifecycleStateFailed,
+	"UNKNOWN":      DbNodeSummaryLifecycleStateUnknown,
 }
 
+// GetDbNodeSummaryLifecycleStateEnumValues Enumerates the set of values for DbNodeSummaryLifecycleState
 func GetDbNodeSummaryLifecycleStateEnumValues() []DbNodeSummaryLifecycleStateEnum {
 	values := make([]DbNodeSummaryLifecycleStateEnum, 0)
-	for _, v := range mapping_dbnodesummary_lifecycleState {
-		if v != DB_NODE_SUMMARY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingDbNodeSummaryLifecycleState {
+		if v != DbNodeSummaryLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

@@ -68,48 +68,54 @@ func (response ListVirtualCircuitsResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListVirtualCircuitsSortByEnum Enum with underlying type: string
 type ListVirtualCircuitsSortByEnum string
 
+// Set of constants representing the allowable values for ListVirtualCircuitsSortBy
 const (
-	LIST_VIRTUAL_CIRCUITS_SORT_BY_TIMECREATED ListVirtualCircuitsSortByEnum = "TIMECREATED"
-	LIST_VIRTUAL_CIRCUITS_SORT_BY_DISPLAYNAME ListVirtualCircuitsSortByEnum = "DISPLAYNAME"
-	LIST_VIRTUAL_CIRCUITS_SORT_BY_UNKNOWN     ListVirtualCircuitsSortByEnum = "UNKNOWN"
+	ListVirtualCircuitsSortByTimecreated ListVirtualCircuitsSortByEnum = "TIMECREATED"
+	ListVirtualCircuitsSortByDisplayname ListVirtualCircuitsSortByEnum = "DISPLAYNAME"
+	ListVirtualCircuitsSortByUnknown     ListVirtualCircuitsSortByEnum = "UNKNOWN"
 )
 
-var mapping_listvirtualcircuitssortby = map[string]ListVirtualCircuitsSortByEnum{
-	"TIMECREATED": LIST_VIRTUAL_CIRCUITS_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_VIRTUAL_CIRCUITS_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_VIRTUAL_CIRCUITS_SORT_BY_UNKNOWN,
+var mappingListVirtualCircuitsSortBy = map[string]ListVirtualCircuitsSortByEnum{
+	"TIMECREATED": ListVirtualCircuitsSortByTimecreated,
+	"DISPLAYNAME": ListVirtualCircuitsSortByDisplayname,
+	"UNKNOWN":     ListVirtualCircuitsSortByUnknown,
 }
 
+// GetListVirtualCircuitsSortByEnumValues Enumerates the set of values for ListVirtualCircuitsSortBy
 func GetListVirtualCircuitsSortByEnumValues() []ListVirtualCircuitsSortByEnum {
 	values := make([]ListVirtualCircuitsSortByEnum, 0)
-	for _, v := range mapping_listvirtualcircuitssortby {
-		if v != LIST_VIRTUAL_CIRCUITS_SORT_BY_UNKNOWN {
+	for _, v := range mappingListVirtualCircuitsSortBy {
+		if v != ListVirtualCircuitsSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListVirtualCircuitsSortOrderEnum Enum with underlying type: string
 type ListVirtualCircuitsSortOrderEnum string
 
+// Set of constants representing the allowable values for ListVirtualCircuitsSortOrder
 const (
-	LIST_VIRTUAL_CIRCUITS_SORT_ORDER_ASC     ListVirtualCircuitsSortOrderEnum = "ASC"
-	LIST_VIRTUAL_CIRCUITS_SORT_ORDER_DESC    ListVirtualCircuitsSortOrderEnum = "DESC"
-	LIST_VIRTUAL_CIRCUITS_SORT_ORDER_UNKNOWN ListVirtualCircuitsSortOrderEnum = "UNKNOWN"
+	ListVirtualCircuitsSortOrderAsc     ListVirtualCircuitsSortOrderEnum = "ASC"
+	ListVirtualCircuitsSortOrderDesc    ListVirtualCircuitsSortOrderEnum = "DESC"
+	ListVirtualCircuitsSortOrderUnknown ListVirtualCircuitsSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listvirtualcircuitssortorder = map[string]ListVirtualCircuitsSortOrderEnum{
-	"ASC":     LIST_VIRTUAL_CIRCUITS_SORT_ORDER_ASC,
-	"DESC":    LIST_VIRTUAL_CIRCUITS_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_VIRTUAL_CIRCUITS_SORT_ORDER_UNKNOWN,
+var mappingListVirtualCircuitsSortOrder = map[string]ListVirtualCircuitsSortOrderEnum{
+	"ASC":     ListVirtualCircuitsSortOrderAsc,
+	"DESC":    ListVirtualCircuitsSortOrderDesc,
+	"UNKNOWN": ListVirtualCircuitsSortOrderUnknown,
 }
 
+// GetListVirtualCircuitsSortOrderEnumValues Enumerates the set of values for ListVirtualCircuitsSortOrder
 func GetListVirtualCircuitsSortOrderEnumValues() []ListVirtualCircuitsSortOrderEnum {
 	values := make([]ListVirtualCircuitsSortOrderEnum, 0)
-	for _, v := range mapping_listvirtualcircuitssortorder {
-		if v != LIST_VIRTUAL_CIRCUITS_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListVirtualCircuitsSortOrder {
+		if v != ListVirtualCircuitsSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

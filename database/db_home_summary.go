@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// DbHomeSummary. A directory where Oracle database software is installed. Each DB System can have multiple database homes,
+// DbHomeSummary A directory where Oracle database software is installed. Each DB System can have multiple database homes,
 // and each database home can have multiple databases within it. All the databases within a single database home
 // must be the same database version, but different database homes can run different versions. For more information,
 // see [Managing Oracle Databases]({{DOC_SERVER_URL}}/Content/Database/Concepts/overview.htm).
@@ -50,32 +50,35 @@ func (model DbHomeSummary) String() string {
 	return common.PointerString(model)
 }
 
+// DbHomeSummaryLifecycleStateEnum Enum with underlying type: string
 type DbHomeSummaryLifecycleStateEnum string
 
+// Set of constants representing the allowable values for DbHomeSummaryLifecycleState
 const (
-	DB_HOME_SUMMARY_LIFECYCLE_STATE_PROVISIONING DbHomeSummaryLifecycleStateEnum = "PROVISIONING"
-	DB_HOME_SUMMARY_LIFECYCLE_STATE_AVAILABLE    DbHomeSummaryLifecycleStateEnum = "AVAILABLE"
-	DB_HOME_SUMMARY_LIFECYCLE_STATE_UPDATING     DbHomeSummaryLifecycleStateEnum = "UPDATING"
-	DB_HOME_SUMMARY_LIFECYCLE_STATE_TERMINATING  DbHomeSummaryLifecycleStateEnum = "TERMINATING"
-	DB_HOME_SUMMARY_LIFECYCLE_STATE_TERMINATED   DbHomeSummaryLifecycleStateEnum = "TERMINATED"
-	DB_HOME_SUMMARY_LIFECYCLE_STATE_FAILED       DbHomeSummaryLifecycleStateEnum = "FAILED"
-	DB_HOME_SUMMARY_LIFECYCLE_STATE_UNKNOWN      DbHomeSummaryLifecycleStateEnum = "UNKNOWN"
+	DbHomeSummaryLifecycleStateProvisioning DbHomeSummaryLifecycleStateEnum = "PROVISIONING"
+	DbHomeSummaryLifecycleStateAvailable    DbHomeSummaryLifecycleStateEnum = "AVAILABLE"
+	DbHomeSummaryLifecycleStateUpdating     DbHomeSummaryLifecycleStateEnum = "UPDATING"
+	DbHomeSummaryLifecycleStateTerminating  DbHomeSummaryLifecycleStateEnum = "TERMINATING"
+	DbHomeSummaryLifecycleStateTerminated   DbHomeSummaryLifecycleStateEnum = "TERMINATED"
+	DbHomeSummaryLifecycleStateFailed       DbHomeSummaryLifecycleStateEnum = "FAILED"
+	DbHomeSummaryLifecycleStateUnknown      DbHomeSummaryLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_dbhomesummary_lifecycleState = map[string]DbHomeSummaryLifecycleStateEnum{
-	"PROVISIONING": DB_HOME_SUMMARY_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    DB_HOME_SUMMARY_LIFECYCLE_STATE_AVAILABLE,
-	"UPDATING":     DB_HOME_SUMMARY_LIFECYCLE_STATE_UPDATING,
-	"TERMINATING":  DB_HOME_SUMMARY_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   DB_HOME_SUMMARY_LIFECYCLE_STATE_TERMINATED,
-	"FAILED":       DB_HOME_SUMMARY_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":      DB_HOME_SUMMARY_LIFECYCLE_STATE_UNKNOWN,
+var mappingDbHomeSummaryLifecycleState = map[string]DbHomeSummaryLifecycleStateEnum{
+	"PROVISIONING": DbHomeSummaryLifecycleStateProvisioning,
+	"AVAILABLE":    DbHomeSummaryLifecycleStateAvailable,
+	"UPDATING":     DbHomeSummaryLifecycleStateUpdating,
+	"TERMINATING":  DbHomeSummaryLifecycleStateTerminating,
+	"TERMINATED":   DbHomeSummaryLifecycleStateTerminated,
+	"FAILED":       DbHomeSummaryLifecycleStateFailed,
+	"UNKNOWN":      DbHomeSummaryLifecycleStateUnknown,
 }
 
+// GetDbHomeSummaryLifecycleStateEnumValues Enumerates the set of values for DbHomeSummaryLifecycleState
 func GetDbHomeSummaryLifecycleStateEnumValues() []DbHomeSummaryLifecycleStateEnum {
 	values := make([]DbHomeSummaryLifecycleStateEnum, 0)
-	for _, v := range mapping_dbhomesummary_lifecycleState {
-		if v != DB_HOME_SUMMARY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingDbHomeSummaryLifecycleState {
+		if v != DbHomeSummaryLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Volume. A detachable block volume device that allows you to dynamically expand
+// Volume A detachable block volume device that allows you to dynamically expand
 // the storage capacity of an instance. For more information, see
 // [Overview of Cloud Volume Storage]({{DOC_SERVER_URL}}/Content/Block/Concepts/overview.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
@@ -94,32 +94,35 @@ func (model *Volume) UnmarshalJSON(data []byte) (e error) {
 	return
 }
 
+// VolumeLifecycleStateEnum Enum with underlying type: string
 type VolumeLifecycleStateEnum string
 
+// Set of constants representing the allowable values for VolumeLifecycleState
 const (
-	VOLUME_LIFECYCLE_STATE_PROVISIONING VolumeLifecycleStateEnum = "PROVISIONING"
-	VOLUME_LIFECYCLE_STATE_RESTORING    VolumeLifecycleStateEnum = "RESTORING"
-	VOLUME_LIFECYCLE_STATE_AVAILABLE    VolumeLifecycleStateEnum = "AVAILABLE"
-	VOLUME_LIFECYCLE_STATE_TERMINATING  VolumeLifecycleStateEnum = "TERMINATING"
-	VOLUME_LIFECYCLE_STATE_TERMINATED   VolumeLifecycleStateEnum = "TERMINATED"
-	VOLUME_LIFECYCLE_STATE_FAULTY       VolumeLifecycleStateEnum = "FAULTY"
-	VOLUME_LIFECYCLE_STATE_UNKNOWN      VolumeLifecycleStateEnum = "UNKNOWN"
+	VolumeLifecycleStateProvisioning VolumeLifecycleStateEnum = "PROVISIONING"
+	VolumeLifecycleStateRestoring    VolumeLifecycleStateEnum = "RESTORING"
+	VolumeLifecycleStateAvailable    VolumeLifecycleStateEnum = "AVAILABLE"
+	VolumeLifecycleStateTerminating  VolumeLifecycleStateEnum = "TERMINATING"
+	VolumeLifecycleStateTerminated   VolumeLifecycleStateEnum = "TERMINATED"
+	VolumeLifecycleStateFaulty       VolumeLifecycleStateEnum = "FAULTY"
+	VolumeLifecycleStateUnknown      VolumeLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_volume_lifecycleState = map[string]VolumeLifecycleStateEnum{
-	"PROVISIONING": VOLUME_LIFECYCLE_STATE_PROVISIONING,
-	"RESTORING":    VOLUME_LIFECYCLE_STATE_RESTORING,
-	"AVAILABLE":    VOLUME_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":  VOLUME_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   VOLUME_LIFECYCLE_STATE_TERMINATED,
-	"FAULTY":       VOLUME_LIFECYCLE_STATE_FAULTY,
-	"UNKNOWN":      VOLUME_LIFECYCLE_STATE_UNKNOWN,
+var mappingVolumeLifecycleState = map[string]VolumeLifecycleStateEnum{
+	"PROVISIONING": VolumeLifecycleStateProvisioning,
+	"RESTORING":    VolumeLifecycleStateRestoring,
+	"AVAILABLE":    VolumeLifecycleStateAvailable,
+	"TERMINATING":  VolumeLifecycleStateTerminating,
+	"TERMINATED":   VolumeLifecycleStateTerminated,
+	"FAULTY":       VolumeLifecycleStateFaulty,
+	"UNKNOWN":      VolumeLifecycleStateUnknown,
 }
 
+// GetVolumeLifecycleStateEnumValues Enumerates the set of values for VolumeLifecycleState
 func GetVolumeLifecycleStateEnumValues() []VolumeLifecycleStateEnum {
 	values := make([]VolumeLifecycleStateEnum, 0)
-	for _, v := range mapping_volume_lifecycleState {
-		if v != VOLUME_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingVolumeLifecycleState {
+		if v != VolumeLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// InstanceCredentials. The credentials for a particular instance.
+// InstanceCredentials The credentials for a particular instance.
 type InstanceCredentials struct {
 
 	// The password for the username.

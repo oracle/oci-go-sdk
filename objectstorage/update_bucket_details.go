@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateBucketDetails. To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
+// UpdateBucketDetails To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
 // [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type UpdateBucketDetails struct {
@@ -37,24 +37,27 @@ func (model UpdateBucketDetails) String() string {
 	return common.PointerString(model)
 }
 
+// UpdateBucketDetailsPublicAccessTypeEnum Enum with underlying type: string
 type UpdateBucketDetailsPublicAccessTypeEnum string
 
+// Set of constants representing the allowable values for UpdateBucketDetailsPublicAccessType
 const (
-	UPDATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_NOPUBLICACCESS UpdateBucketDetailsPublicAccessTypeEnum = "NoPublicAccess"
-	UPDATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_OBJECTREAD     UpdateBucketDetailsPublicAccessTypeEnum = "ObjectRead"
-	UPDATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_UNKNOWN        UpdateBucketDetailsPublicAccessTypeEnum = "UNKNOWN"
+	UpdateBucketDetailsPublicAccessTypeNopublicaccess UpdateBucketDetailsPublicAccessTypeEnum = "NoPublicAccess"
+	UpdateBucketDetailsPublicAccessTypeObjectread     UpdateBucketDetailsPublicAccessTypeEnum = "ObjectRead"
+	UpdateBucketDetailsPublicAccessTypeUnknown        UpdateBucketDetailsPublicAccessTypeEnum = "UNKNOWN"
 )
 
-var mapping_updatebucketdetails_publicAccessType = map[string]UpdateBucketDetailsPublicAccessTypeEnum{
-	"NoPublicAccess": UPDATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_NOPUBLICACCESS,
-	"ObjectRead":     UPDATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_OBJECTREAD,
-	"UNKNOWN":        UPDATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_UNKNOWN,
+var mappingUpdateBucketDetailsPublicAccessType = map[string]UpdateBucketDetailsPublicAccessTypeEnum{
+	"NoPublicAccess": UpdateBucketDetailsPublicAccessTypeNopublicaccess,
+	"ObjectRead":     UpdateBucketDetailsPublicAccessTypeObjectread,
+	"UNKNOWN":        UpdateBucketDetailsPublicAccessTypeUnknown,
 }
 
+// GetUpdateBucketDetailsPublicAccessTypeEnumValues Enumerates the set of values for UpdateBucketDetailsPublicAccessType
 func GetUpdateBucketDetailsPublicAccessTypeEnumValues() []UpdateBucketDetailsPublicAccessTypeEnum {
 	values := make([]UpdateBucketDetailsPublicAccessTypeEnum, 0)
-	for _, v := range mapping_updatebucketdetails_publicAccessType {
-		if v != UPDATE_BUCKET_DETAILS_PUBLIC_ACCESS_TYPE_UNKNOWN {
+	for _, v := range mappingUpdateBucketDetailsPublicAccessType {
+		if v != UpdateBucketDetailsPublicAccessTypeUnknown {
 			values = append(values, v)
 		}
 	}

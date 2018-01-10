@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IScsiVolumeAttachment. An ISCSI volume attachment.
+// IScsiVolumeAttachment An ISCSI volume attachment.
 type IScsiVolumeAttachment struct {
 
 	// The Availability Domain of an instance.

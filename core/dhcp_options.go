@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// DhcpOptions. A set of DHCP options. Used by the VCN to automatically provide configuration
+// DhcpOptions A set of DHCP options. Used by the VCN to automatically provide configuration
 // information to the instances when they boot up. There are two options you can set:
 // - DhcpDnsOption: Lets you specify how DNS (hostname resolution) is
 // handled in the subnets in your VCN.
@@ -86,28 +86,31 @@ func (model *DhcpOptions) UnmarshalJSON(data []byte) (e error) {
 	return
 }
 
+// DhcpOptionsLifecycleStateEnum Enum with underlying type: string
 type DhcpOptionsLifecycleStateEnum string
 
+// Set of constants representing the allowable values for DhcpOptionsLifecycleState
 const (
-	DHCP_OPTIONS_LIFECYCLE_STATE_PROVISIONING DhcpOptionsLifecycleStateEnum = "PROVISIONING"
-	DHCP_OPTIONS_LIFECYCLE_STATE_AVAILABLE    DhcpOptionsLifecycleStateEnum = "AVAILABLE"
-	DHCP_OPTIONS_LIFECYCLE_STATE_TERMINATING  DhcpOptionsLifecycleStateEnum = "TERMINATING"
-	DHCP_OPTIONS_LIFECYCLE_STATE_TERMINATED   DhcpOptionsLifecycleStateEnum = "TERMINATED"
-	DHCP_OPTIONS_LIFECYCLE_STATE_UNKNOWN      DhcpOptionsLifecycleStateEnum = "UNKNOWN"
+	DhcpOptionsLifecycleStateProvisioning DhcpOptionsLifecycleStateEnum = "PROVISIONING"
+	DhcpOptionsLifecycleStateAvailable    DhcpOptionsLifecycleStateEnum = "AVAILABLE"
+	DhcpOptionsLifecycleStateTerminating  DhcpOptionsLifecycleStateEnum = "TERMINATING"
+	DhcpOptionsLifecycleStateTerminated   DhcpOptionsLifecycleStateEnum = "TERMINATED"
+	DhcpOptionsLifecycleStateUnknown      DhcpOptionsLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_dhcpoptions_lifecycleState = map[string]DhcpOptionsLifecycleStateEnum{
-	"PROVISIONING": DHCP_OPTIONS_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    DHCP_OPTIONS_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":  DHCP_OPTIONS_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   DHCP_OPTIONS_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":      DHCP_OPTIONS_LIFECYCLE_STATE_UNKNOWN,
+var mappingDhcpOptionsLifecycleState = map[string]DhcpOptionsLifecycleStateEnum{
+	"PROVISIONING": DhcpOptionsLifecycleStateProvisioning,
+	"AVAILABLE":    DhcpOptionsLifecycleStateAvailable,
+	"TERMINATING":  DhcpOptionsLifecycleStateTerminating,
+	"TERMINATED":   DhcpOptionsLifecycleStateTerminated,
+	"UNKNOWN":      DhcpOptionsLifecycleStateUnknown,
 }
 
+// GetDhcpOptionsLifecycleStateEnumValues Enumerates the set of values for DhcpOptionsLifecycleState
 func GetDhcpOptionsLifecycleStateEnumValues() []DhcpOptionsLifecycleStateEnum {
 	values := make([]DhcpOptionsLifecycleStateEnum, 0)
-	for _, v := range mapping_dhcpoptions_lifecycleState {
-		if v != DHCP_OPTIONS_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingDhcpOptionsLifecycleState {
+		if v != DhcpOptionsLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

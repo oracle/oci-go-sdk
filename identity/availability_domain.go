@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// AvailabilityDomain. One or more isolated, fault-tolerant Oracle data centers that host cloud resources such as instances, volumes,
+// AvailabilityDomain One or more isolated, fault-tolerant Oracle data centers that host cloud resources such as instances, volumes,
 // and subnets. A region contains several Availability Domains. For more information, see
 // [Regions and Availability Domains]({{DOC_SERVER_URL}}/Content/General/Concepts/regions.htm).
 type AvailabilityDomain struct {

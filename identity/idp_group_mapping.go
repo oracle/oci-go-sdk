@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IdpGroupMapping. A mapping between a single group defined by the identity provider (IdP) you're federating with
+// IdpGroupMapping A mapping between a single group defined by the identity provider (IdP) you're federating with
 // and a single IAM Service Group in Oracle Cloud Infrastructure.
 // For more information about group mappings and what they're for, see
 // [Identity Providers and Federation]({{DOC_SERVER_URL}}/Content/Identity/Concepts/federation.htm).
@@ -54,30 +54,33 @@ func (model IdpGroupMapping) String() string {
 	return common.PointerString(model)
 }
 
+// IdpGroupMappingLifecycleStateEnum Enum with underlying type: string
 type IdpGroupMappingLifecycleStateEnum string
 
+// Set of constants representing the allowable values for IdpGroupMappingLifecycleState
 const (
-	IDP_GROUP_MAPPING_LIFECYCLE_STATE_CREATING IdpGroupMappingLifecycleStateEnum = "CREATING"
-	IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE   IdpGroupMappingLifecycleStateEnum = "ACTIVE"
-	IDP_GROUP_MAPPING_LIFECYCLE_STATE_INACTIVE IdpGroupMappingLifecycleStateEnum = "INACTIVE"
-	IDP_GROUP_MAPPING_LIFECYCLE_STATE_DELETING IdpGroupMappingLifecycleStateEnum = "DELETING"
-	IDP_GROUP_MAPPING_LIFECYCLE_STATE_DELETED  IdpGroupMappingLifecycleStateEnum = "DELETED"
-	IDP_GROUP_MAPPING_LIFECYCLE_STATE_UNKNOWN  IdpGroupMappingLifecycleStateEnum = "UNKNOWN"
+	IdpGroupMappingLifecycleStateCreating IdpGroupMappingLifecycleStateEnum = "CREATING"
+	IdpGroupMappingLifecycleStateActive   IdpGroupMappingLifecycleStateEnum = "ACTIVE"
+	IdpGroupMappingLifecycleStateInactive IdpGroupMappingLifecycleStateEnum = "INACTIVE"
+	IdpGroupMappingLifecycleStateDeleting IdpGroupMappingLifecycleStateEnum = "DELETING"
+	IdpGroupMappingLifecycleStateDeleted  IdpGroupMappingLifecycleStateEnum = "DELETED"
+	IdpGroupMappingLifecycleStateUnknown  IdpGroupMappingLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_idpgroupmapping_lifecycleState = map[string]IdpGroupMappingLifecycleStateEnum{
-	"CREATING": IDP_GROUP_MAPPING_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": IDP_GROUP_MAPPING_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": IDP_GROUP_MAPPING_LIFECYCLE_STATE_DELETING,
-	"DELETED":  IDP_GROUP_MAPPING_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  IDP_GROUP_MAPPING_LIFECYCLE_STATE_UNKNOWN,
+var mappingIdpGroupMappingLifecycleState = map[string]IdpGroupMappingLifecycleStateEnum{
+	"CREATING": IdpGroupMappingLifecycleStateCreating,
+	"ACTIVE":   IdpGroupMappingLifecycleStateActive,
+	"INACTIVE": IdpGroupMappingLifecycleStateInactive,
+	"DELETING": IdpGroupMappingLifecycleStateDeleting,
+	"DELETED":  IdpGroupMappingLifecycleStateDeleted,
+	"UNKNOWN":  IdpGroupMappingLifecycleStateUnknown,
 }
 
+// GetIdpGroupMappingLifecycleStateEnumValues Enumerates the set of values for IdpGroupMappingLifecycleState
 func GetIdpGroupMappingLifecycleStateEnumValues() []IdpGroupMappingLifecycleStateEnum {
 	values := make([]IdpGroupMappingLifecycleStateEnum, 0)
-	for _, v := range mapping_idpgroupmapping_lifecycleState {
-		if v != IDP_GROUP_MAPPING_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingIdpGroupMappingLifecycleState {
+		if v != IdpGroupMappingLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

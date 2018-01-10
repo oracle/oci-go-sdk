@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// LaunchInstanceDetails. Instance launch details.
+// LaunchInstanceDetails Instance launch details.
 // Use the sourceDetails parameter to specify whether a boot volume should be used for a new instance launch.
 type LaunchInstanceDetails struct {
 

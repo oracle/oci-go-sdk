@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateListenerDetails. The configuration details for updating a listener.
+// UpdateListenerDetails The configuration details for updating a listener.
 type UpdateListenerDetails struct {
 
 	// The name of the associated backend set.

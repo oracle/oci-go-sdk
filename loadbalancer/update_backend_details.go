@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateBackendDetails. The configuration details for updating a backend server.
+// UpdateBackendDetails The configuration details for updating a backend server.
 type UpdateBackendDetails struct {
 
 	// Whether the load balancer should treat this server as a backup unit. If `true`, the load balancer forwards no ingress

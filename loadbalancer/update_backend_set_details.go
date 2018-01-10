@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateBackendSetDetails. The configuration details for updating a load balancer backend set.
+// UpdateBackendSetDetails The configuration details for updating a load balancer backend set.
 // For more information on backend set configuration, see
 // [Managing Backend Sets]({{DOC_SERVER_URL}}/Content/Balance/tasks/managingbackendsets.htm).
 type UpdateBackendSetDetails struct {

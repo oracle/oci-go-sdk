@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// WorkRequest. The response for work request.
+// WorkRequest The response for work request.
 type WorkRequest struct {
 
 	// The id of the work request.
@@ -56,54 +56,60 @@ func (model WorkRequest) String() string {
 	return common.PointerString(model)
 }
 
+// WorkRequestOperationTypeEnum Enum with underlying type: string
 type WorkRequestOperationTypeEnum string
 
+// Set of constants representing the allowable values for WorkRequestOperationType
 const (
-	WORK_REQUEST_OPERATION_TYPE_CONFIGURATION WorkRequestOperationTypeEnum = "UPDATE_CONFIGURATION"
-	WORK_REQUEST_OPERATION_TYPE_UNKNOWN       WorkRequestOperationTypeEnum = "UNKNOWN"
+	WorkRequestOperationTypeConfiguration WorkRequestOperationTypeEnum = "UPDATE_CONFIGURATION"
+	WorkRequestOperationTypeUnknown       WorkRequestOperationTypeEnum = "UNKNOWN"
 )
 
-var mapping_workrequest_operationType = map[string]WorkRequestOperationTypeEnum{
-	"UPDATE_CONFIGURATION": WORK_REQUEST_OPERATION_TYPE_CONFIGURATION,
-	"UNKNOWN":              WORK_REQUEST_OPERATION_TYPE_UNKNOWN,
+var mappingWorkRequestOperationType = map[string]WorkRequestOperationTypeEnum{
+	"UPDATE_CONFIGURATION": WorkRequestOperationTypeConfiguration,
+	"UNKNOWN":              WorkRequestOperationTypeUnknown,
 }
 
+// GetWorkRequestOperationTypeEnumValues Enumerates the set of values for WorkRequestOperationType
 func GetWorkRequestOperationTypeEnumValues() []WorkRequestOperationTypeEnum {
 	values := make([]WorkRequestOperationTypeEnum, 0)
-	for _, v := range mapping_workrequest_operationType {
-		if v != WORK_REQUEST_OPERATION_TYPE_UNKNOWN {
+	for _, v := range mappingWorkRequestOperationType {
+		if v != WorkRequestOperationTypeUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// WorkRequestStatusEnum Enum with underlying type: string
 type WorkRequestStatusEnum string
 
+// Set of constants representing the allowable values for WorkRequestStatus
 const (
-	WORK_REQUEST_STATUS_ACCEPTED    WorkRequestStatusEnum = "ACCEPTED"
-	WORK_REQUEST_STATUS_IN_PROGRESS WorkRequestStatusEnum = "IN_PROGRESS"
-	WORK_REQUEST_STATUS_FAILED      WorkRequestStatusEnum = "FAILED"
-	WORK_REQUEST_STATUS_SUCCEEDED   WorkRequestStatusEnum = "SUCCEEDED"
-	WORK_REQUEST_STATUS_CANCELING   WorkRequestStatusEnum = "CANCELING"
-	WORK_REQUEST_STATUS_CANCELED    WorkRequestStatusEnum = "CANCELED"
-	WORK_REQUEST_STATUS_UNKNOWN     WorkRequestStatusEnum = "UNKNOWN"
+	WorkRequestStatusAccepted   WorkRequestStatusEnum = "ACCEPTED"
+	WorkRequestStatusInProgress WorkRequestStatusEnum = "IN_PROGRESS"
+	WorkRequestStatusFailed     WorkRequestStatusEnum = "FAILED"
+	WorkRequestStatusSucceeded  WorkRequestStatusEnum = "SUCCEEDED"
+	WorkRequestStatusCanceling  WorkRequestStatusEnum = "CANCELING"
+	WorkRequestStatusCanceled   WorkRequestStatusEnum = "CANCELED"
+	WorkRequestStatusUnknown    WorkRequestStatusEnum = "UNKNOWN"
 )
 
-var mapping_workrequest_status = map[string]WorkRequestStatusEnum{
-	"ACCEPTED":    WORK_REQUEST_STATUS_ACCEPTED,
-	"IN_PROGRESS": WORK_REQUEST_STATUS_IN_PROGRESS,
-	"FAILED":      WORK_REQUEST_STATUS_FAILED,
-	"SUCCEEDED":   WORK_REQUEST_STATUS_SUCCEEDED,
-	"CANCELING":   WORK_REQUEST_STATUS_CANCELING,
-	"CANCELED":    WORK_REQUEST_STATUS_CANCELED,
-	"UNKNOWN":     WORK_REQUEST_STATUS_UNKNOWN,
+var mappingWorkRequestStatus = map[string]WorkRequestStatusEnum{
+	"ACCEPTED":    WorkRequestStatusAccepted,
+	"IN_PROGRESS": WorkRequestStatusInProgress,
+	"FAILED":      WorkRequestStatusFailed,
+	"SUCCEEDED":   WorkRequestStatusSucceeded,
+	"CANCELING":   WorkRequestStatusCanceling,
+	"CANCELED":    WorkRequestStatusCanceled,
+	"UNKNOWN":     WorkRequestStatusUnknown,
 }
 
+// GetWorkRequestStatusEnumValues Enumerates the set of values for WorkRequestStatus
 func GetWorkRequestStatusEnumValues() []WorkRequestStatusEnum {
 	values := make([]WorkRequestStatusEnum, 0)
-	for _, v := range mapping_workrequest_status {
-		if v != WORK_REQUEST_STATUS_UNKNOWN {
+	for _, v := range mappingWorkRequestStatus {
+		if v != WorkRequestStatusUnknown {
 			values = append(values, v)
 		}
 	}

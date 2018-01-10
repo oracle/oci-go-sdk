@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Drg. A Dynamic Routing Gateway (DRG), which is a virtual router that provides a path for private
+// Drg A Dynamic Routing Gateway (DRG), which is a virtual router that provides a path for private
 // network traffic between your VCN and your existing network. You use it with other Networking
 // Service components to create an IPSec VPN or a connection that uses
 // Oracle Cloud Infrastructure FastConnect. For more information, see
@@ -44,28 +44,31 @@ func (model Drg) String() string {
 	return common.PointerString(model)
 }
 
+// DrgLifecycleStateEnum Enum with underlying type: string
 type DrgLifecycleStateEnum string
 
+// Set of constants representing the allowable values for DrgLifecycleState
 const (
-	DRG_LIFECYCLE_STATE_PROVISIONING DrgLifecycleStateEnum = "PROVISIONING"
-	DRG_LIFECYCLE_STATE_AVAILABLE    DrgLifecycleStateEnum = "AVAILABLE"
-	DRG_LIFECYCLE_STATE_TERMINATING  DrgLifecycleStateEnum = "TERMINATING"
-	DRG_LIFECYCLE_STATE_TERMINATED   DrgLifecycleStateEnum = "TERMINATED"
-	DRG_LIFECYCLE_STATE_UNKNOWN      DrgLifecycleStateEnum = "UNKNOWN"
+	DrgLifecycleStateProvisioning DrgLifecycleStateEnum = "PROVISIONING"
+	DrgLifecycleStateAvailable    DrgLifecycleStateEnum = "AVAILABLE"
+	DrgLifecycleStateTerminating  DrgLifecycleStateEnum = "TERMINATING"
+	DrgLifecycleStateTerminated   DrgLifecycleStateEnum = "TERMINATED"
+	DrgLifecycleStateUnknown      DrgLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_drg_lifecycleState = map[string]DrgLifecycleStateEnum{
-	"PROVISIONING": DRG_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    DRG_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":  DRG_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   DRG_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":      DRG_LIFECYCLE_STATE_UNKNOWN,
+var mappingDrgLifecycleState = map[string]DrgLifecycleStateEnum{
+	"PROVISIONING": DrgLifecycleStateProvisioning,
+	"AVAILABLE":    DrgLifecycleStateAvailable,
+	"TERMINATING":  DrgLifecycleStateTerminating,
+	"TERMINATED":   DrgLifecycleStateTerminated,
+	"UNKNOWN":      DrgLifecycleStateUnknown,
 }
 
+// GetDrgLifecycleStateEnumValues Enumerates the set of values for DrgLifecycleState
 func GetDrgLifecycleStateEnumValues() []DrgLifecycleStateEnum {
 	values := make([]DrgLifecycleStateEnum, 0)
-	for _, v := range mapping_drg_lifecycleState {
-		if v != DRG_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingDrgLifecycleState {
+		if v != DrgLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

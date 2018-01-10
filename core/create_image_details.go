@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateImageDetails. Either instanceId or imageSourceDetails must be provided in addition to other required parameters.
+// CreateImageDetails Either instanceId or imageSourceDetails must be provided in addition to other required parameters.
 type CreateImageDetails struct {
 
 	// The OCID of the compartment containing the instance you want to use as the basis for the image.

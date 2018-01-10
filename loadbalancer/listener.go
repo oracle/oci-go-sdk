@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Listener. The listener's configuration.
+// Listener The listener's configuration.
 // For more information on backend set configuration, see
 // [Managing Load Balancer Listeners]({{DOC_SERVER_URL}}/Content/Balance/tasks/managinglisteners.htm).
 type Listener struct {

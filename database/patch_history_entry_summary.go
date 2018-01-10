@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// PatchHistoryEntrySummary. The record of a patch action on a specified target.
+// PatchHistoryEntrySummary The record of a patch action on a specified target.
 type PatchHistoryEntrySummary struct {
 
 	// The OCID of the patch history entry.
@@ -42,50 +42,56 @@ func (model PatchHistoryEntrySummary) String() string {
 	return common.PointerString(model)
 }
 
+// PatchHistoryEntrySummaryActionEnum Enum with underlying type: string
 type PatchHistoryEntrySummaryActionEnum string
 
+// Set of constants representing the allowable values for PatchHistoryEntrySummaryAction
 const (
-	PATCH_HISTORY_ENTRY_SUMMARY_ACTION_APPLY    PatchHistoryEntrySummaryActionEnum = "APPLY"
-	PATCH_HISTORY_ENTRY_SUMMARY_ACTION_PRECHECK PatchHistoryEntrySummaryActionEnum = "PRECHECK"
-	PATCH_HISTORY_ENTRY_SUMMARY_ACTION_UNKNOWN  PatchHistoryEntrySummaryActionEnum = "UNKNOWN"
+	PatchHistoryEntrySummaryActionApply    PatchHistoryEntrySummaryActionEnum = "APPLY"
+	PatchHistoryEntrySummaryActionPrecheck PatchHistoryEntrySummaryActionEnum = "PRECHECK"
+	PatchHistoryEntrySummaryActionUnknown  PatchHistoryEntrySummaryActionEnum = "UNKNOWN"
 )
 
-var mapping_patchhistoryentrysummary_action = map[string]PatchHistoryEntrySummaryActionEnum{
-	"APPLY":    PATCH_HISTORY_ENTRY_SUMMARY_ACTION_APPLY,
-	"PRECHECK": PATCH_HISTORY_ENTRY_SUMMARY_ACTION_PRECHECK,
-	"UNKNOWN":  PATCH_HISTORY_ENTRY_SUMMARY_ACTION_UNKNOWN,
+var mappingPatchHistoryEntrySummaryAction = map[string]PatchHistoryEntrySummaryActionEnum{
+	"APPLY":    PatchHistoryEntrySummaryActionApply,
+	"PRECHECK": PatchHistoryEntrySummaryActionPrecheck,
+	"UNKNOWN":  PatchHistoryEntrySummaryActionUnknown,
 }
 
+// GetPatchHistoryEntrySummaryActionEnumValues Enumerates the set of values for PatchHistoryEntrySummaryAction
 func GetPatchHistoryEntrySummaryActionEnumValues() []PatchHistoryEntrySummaryActionEnum {
 	values := make([]PatchHistoryEntrySummaryActionEnum, 0)
-	for _, v := range mapping_patchhistoryentrysummary_action {
-		if v != PATCH_HISTORY_ENTRY_SUMMARY_ACTION_UNKNOWN {
+	for _, v := range mappingPatchHistoryEntrySummaryAction {
+		if v != PatchHistoryEntrySummaryActionUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// PatchHistoryEntrySummaryLifecycleStateEnum Enum with underlying type: string
 type PatchHistoryEntrySummaryLifecycleStateEnum string
 
+// Set of constants representing the allowable values for PatchHistoryEntrySummaryLifecycleState
 const (
-	PATCH_HISTORY_ENTRY_SUMMARY_LIFECYCLE_STATE_IN_PROGRESS PatchHistoryEntrySummaryLifecycleStateEnum = "IN_PROGRESS"
-	PATCH_HISTORY_ENTRY_SUMMARY_LIFECYCLE_STATE_SUCCEEDED   PatchHistoryEntrySummaryLifecycleStateEnum = "SUCCEEDED"
-	PATCH_HISTORY_ENTRY_SUMMARY_LIFECYCLE_STATE_FAILED      PatchHistoryEntrySummaryLifecycleStateEnum = "FAILED"
-	PATCH_HISTORY_ENTRY_SUMMARY_LIFECYCLE_STATE_UNKNOWN     PatchHistoryEntrySummaryLifecycleStateEnum = "UNKNOWN"
+	PatchHistoryEntrySummaryLifecycleStateInProgress PatchHistoryEntrySummaryLifecycleStateEnum = "IN_PROGRESS"
+	PatchHistoryEntrySummaryLifecycleStateSucceeded  PatchHistoryEntrySummaryLifecycleStateEnum = "SUCCEEDED"
+	PatchHistoryEntrySummaryLifecycleStateFailed     PatchHistoryEntrySummaryLifecycleStateEnum = "FAILED"
+	PatchHistoryEntrySummaryLifecycleStateUnknown    PatchHistoryEntrySummaryLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_patchhistoryentrysummary_lifecycleState = map[string]PatchHistoryEntrySummaryLifecycleStateEnum{
-	"IN_PROGRESS": PATCH_HISTORY_ENTRY_SUMMARY_LIFECYCLE_STATE_IN_PROGRESS,
-	"SUCCEEDED":   PATCH_HISTORY_ENTRY_SUMMARY_LIFECYCLE_STATE_SUCCEEDED,
-	"FAILED":      PATCH_HISTORY_ENTRY_SUMMARY_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":     PATCH_HISTORY_ENTRY_SUMMARY_LIFECYCLE_STATE_UNKNOWN,
+var mappingPatchHistoryEntrySummaryLifecycleState = map[string]PatchHistoryEntrySummaryLifecycleStateEnum{
+	"IN_PROGRESS": PatchHistoryEntrySummaryLifecycleStateInProgress,
+	"SUCCEEDED":   PatchHistoryEntrySummaryLifecycleStateSucceeded,
+	"FAILED":      PatchHistoryEntrySummaryLifecycleStateFailed,
+	"UNKNOWN":     PatchHistoryEntrySummaryLifecycleStateUnknown,
 }
 
+// GetPatchHistoryEntrySummaryLifecycleStateEnumValues Enumerates the set of values for PatchHistoryEntrySummaryLifecycleState
 func GetPatchHistoryEntrySummaryLifecycleStateEnumValues() []PatchHistoryEntrySummaryLifecycleStateEnum {
 	values := make([]PatchHistoryEntrySummaryLifecycleStateEnum, 0)
-	for _, v := range mapping_patchhistoryentrysummary_lifecycleState {
-		if v != PATCH_HISTORY_ENTRY_SUMMARY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingPatchHistoryEntrySummaryLifecycleState {
+		if v != PatchHistoryEntrySummaryLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

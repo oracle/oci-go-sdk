@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// HealthCheckerDetails. The health check policy's configuration details.
+// HealthCheckerDetails The health check policy's configuration details.
 type HealthCheckerDetails struct {
 
 	// The protocol the health check must use; either HTTP or TCP.

@@ -71,48 +71,54 @@ func (response ListSecurityListsResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListSecurityListsSortByEnum Enum with underlying type: string
 type ListSecurityListsSortByEnum string
 
+// Set of constants representing the allowable values for ListSecurityListsSortBy
 const (
-	LIST_SECURITY_LISTS_SORT_BY_TIMECREATED ListSecurityListsSortByEnum = "TIMECREATED"
-	LIST_SECURITY_LISTS_SORT_BY_DISPLAYNAME ListSecurityListsSortByEnum = "DISPLAYNAME"
-	LIST_SECURITY_LISTS_SORT_BY_UNKNOWN     ListSecurityListsSortByEnum = "UNKNOWN"
+	ListSecurityListsSortByTimecreated ListSecurityListsSortByEnum = "TIMECREATED"
+	ListSecurityListsSortByDisplayname ListSecurityListsSortByEnum = "DISPLAYNAME"
+	ListSecurityListsSortByUnknown     ListSecurityListsSortByEnum = "UNKNOWN"
 )
 
-var mapping_listsecuritylistssortby = map[string]ListSecurityListsSortByEnum{
-	"TIMECREATED": LIST_SECURITY_LISTS_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_SECURITY_LISTS_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_SECURITY_LISTS_SORT_BY_UNKNOWN,
+var mappingListSecurityListsSortBy = map[string]ListSecurityListsSortByEnum{
+	"TIMECREATED": ListSecurityListsSortByTimecreated,
+	"DISPLAYNAME": ListSecurityListsSortByDisplayname,
+	"UNKNOWN":     ListSecurityListsSortByUnknown,
 }
 
+// GetListSecurityListsSortByEnumValues Enumerates the set of values for ListSecurityListsSortBy
 func GetListSecurityListsSortByEnumValues() []ListSecurityListsSortByEnum {
 	values := make([]ListSecurityListsSortByEnum, 0)
-	for _, v := range mapping_listsecuritylistssortby {
-		if v != LIST_SECURITY_LISTS_SORT_BY_UNKNOWN {
+	for _, v := range mappingListSecurityListsSortBy {
+		if v != ListSecurityListsSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListSecurityListsSortOrderEnum Enum with underlying type: string
 type ListSecurityListsSortOrderEnum string
 
+// Set of constants representing the allowable values for ListSecurityListsSortOrder
 const (
-	LIST_SECURITY_LISTS_SORT_ORDER_ASC     ListSecurityListsSortOrderEnum = "ASC"
-	LIST_SECURITY_LISTS_SORT_ORDER_DESC    ListSecurityListsSortOrderEnum = "DESC"
-	LIST_SECURITY_LISTS_SORT_ORDER_UNKNOWN ListSecurityListsSortOrderEnum = "UNKNOWN"
+	ListSecurityListsSortOrderAsc     ListSecurityListsSortOrderEnum = "ASC"
+	ListSecurityListsSortOrderDesc    ListSecurityListsSortOrderEnum = "DESC"
+	ListSecurityListsSortOrderUnknown ListSecurityListsSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listsecuritylistssortorder = map[string]ListSecurityListsSortOrderEnum{
-	"ASC":     LIST_SECURITY_LISTS_SORT_ORDER_ASC,
-	"DESC":    LIST_SECURITY_LISTS_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_SECURITY_LISTS_SORT_ORDER_UNKNOWN,
+var mappingListSecurityListsSortOrder = map[string]ListSecurityListsSortOrderEnum{
+	"ASC":     ListSecurityListsSortOrderAsc,
+	"DESC":    ListSecurityListsSortOrderDesc,
+	"UNKNOWN": ListSecurityListsSortOrderUnknown,
 }
 
+// GetListSecurityListsSortOrderEnumValues Enumerates the set of values for ListSecurityListsSortOrder
 func GetListSecurityListsSortOrderEnumValues() []ListSecurityListsSortOrderEnum {
 	values := make([]ListSecurityListsSortOrderEnum, 0)
-	for _, v := range mapping_listsecuritylistssortorder {
-		if v != LIST_SECURITY_LISTS_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListSecurityListsSortOrder {
+		if v != ListSecurityListsSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

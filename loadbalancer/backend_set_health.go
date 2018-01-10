@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// BackendSetHealth. The health status details for a backend set.
+// BackendSetHealth The health status details for a backend set.
 // This object does not explicitly enumerate backend servers with a status of `OK`. However, they are included in the
 // `totalBackendCount` sum.
 type BackendSetHealth struct {
@@ -50,25 +50,28 @@ func (model BackendSetHealth) String() string {
 	return common.PointerString(model)
 }
 
+// BackendSetHealthStatusEnum Enum with underlying type: string
 type BackendSetHealthStatusEnum string
 
+// Set of constants representing the allowable values for BackendSetHealthStatus
 const (
-	BACKEND_SET_HEALTH_STATUS_OK       BackendSetHealthStatusEnum = "OK"
-	BACKEND_SET_HEALTH_STATUS_WARNING  BackendSetHealthStatusEnum = "WARNING"
-	BACKEND_SET_HEALTH_STATUS_CRITICAL BackendSetHealthStatusEnum = "CRITICAL"
-	BACKEND_SET_HEALTH_STATUS_UNKNOWN  BackendSetHealthStatusEnum = "UNKNOWN"
+	BackendSetHealthStatusOk       BackendSetHealthStatusEnum = "OK"
+	BackendSetHealthStatusWarning  BackendSetHealthStatusEnum = "WARNING"
+	BackendSetHealthStatusCritical BackendSetHealthStatusEnum = "CRITICAL"
+	BackendSetHealthStatusUnknown  BackendSetHealthStatusEnum = "UNKNOWN"
 )
 
-var mapping_backendsethealth_status = map[string]BackendSetHealthStatusEnum{
-	"OK":       BACKEND_SET_HEALTH_STATUS_OK,
-	"WARNING":  BACKEND_SET_HEALTH_STATUS_WARNING,
-	"CRITICAL": BACKEND_SET_HEALTH_STATUS_CRITICAL,
-	"UNKNOWN":  BACKEND_SET_HEALTH_STATUS_UNKNOWN,
+var mappingBackendSetHealthStatus = map[string]BackendSetHealthStatusEnum{
+	"OK":       BackendSetHealthStatusOk,
+	"WARNING":  BackendSetHealthStatusWarning,
+	"CRITICAL": BackendSetHealthStatusCritical,
+	"UNKNOWN":  BackendSetHealthStatusUnknown,
 }
 
+// GetBackendSetHealthStatusEnumValues Enumerates the set of values for BackendSetHealthStatus
 func GetBackendSetHealthStatusEnumValues() []BackendSetHealthStatusEnum {
 	values := make([]BackendSetHealthStatusEnum, 0)
-	for _, v := range mapping_backendsethealth_status {
+	for _, v := range mappingBackendSetHealthStatus {
 		values = append(values, v)
 	}
 	return values

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Group. A collection of users who all need the same type of access to a particular set of resources or compartment.
+// Group A collection of users who all need the same type of access to a particular set of resources or compartment.
 // For conceptual information about groups and other IAM Service components, see
 // [Overview of the IAM Service]({{DOC_SERVER_URL}}/Content/Identity/Concepts/overview.htm).
 // If you're federating with an identity provider (IdP), you need to create mappings between the groups
@@ -54,30 +54,33 @@ func (model Group) String() string {
 	return common.PointerString(model)
 }
 
+// GroupLifecycleStateEnum Enum with underlying type: string
 type GroupLifecycleStateEnum string
 
+// Set of constants representing the allowable values for GroupLifecycleState
 const (
-	GROUP_LIFECYCLE_STATE_CREATING GroupLifecycleStateEnum = "CREATING"
-	GROUP_LIFECYCLE_STATE_ACTIVE   GroupLifecycleStateEnum = "ACTIVE"
-	GROUP_LIFECYCLE_STATE_INACTIVE GroupLifecycleStateEnum = "INACTIVE"
-	GROUP_LIFECYCLE_STATE_DELETING GroupLifecycleStateEnum = "DELETING"
-	GROUP_LIFECYCLE_STATE_DELETED  GroupLifecycleStateEnum = "DELETED"
-	GROUP_LIFECYCLE_STATE_UNKNOWN  GroupLifecycleStateEnum = "UNKNOWN"
+	GroupLifecycleStateCreating GroupLifecycleStateEnum = "CREATING"
+	GroupLifecycleStateActive   GroupLifecycleStateEnum = "ACTIVE"
+	GroupLifecycleStateInactive GroupLifecycleStateEnum = "INACTIVE"
+	GroupLifecycleStateDeleting GroupLifecycleStateEnum = "DELETING"
+	GroupLifecycleStateDeleted  GroupLifecycleStateEnum = "DELETED"
+	GroupLifecycleStateUnknown  GroupLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_group_lifecycleState = map[string]GroupLifecycleStateEnum{
-	"CREATING": GROUP_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   GROUP_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": GROUP_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": GROUP_LIFECYCLE_STATE_DELETING,
-	"DELETED":  GROUP_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  GROUP_LIFECYCLE_STATE_UNKNOWN,
+var mappingGroupLifecycleState = map[string]GroupLifecycleStateEnum{
+	"CREATING": GroupLifecycleStateCreating,
+	"ACTIVE":   GroupLifecycleStateActive,
+	"INACTIVE": GroupLifecycleStateInactive,
+	"DELETING": GroupLifecycleStateDeleting,
+	"DELETED":  GroupLifecycleStateDeleted,
+	"UNKNOWN":  GroupLifecycleStateUnknown,
 }
 
+// GetGroupLifecycleStateEnumValues Enumerates the set of values for GroupLifecycleState
 func GetGroupLifecycleStateEnumValues() []GroupLifecycleStateEnum {
 	values := make([]GroupLifecycleStateEnum, 0)
-	for _, v := range mapping_group_lifecycleState {
-		if v != GROUP_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingGroupLifecycleState {
+		if v != GroupLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}
