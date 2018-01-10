@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Instance. A compute host. The image used to launch the instance determines its operating system and other
+// Instance A compute host. The image used to launch the instance determines its operating system and other
 // software. The shape specified during the launch process determines the number of CPUs and memory
 // allocated to the instance. For more information, see
 // [Overview of the Compute Service]({{DOC_SERVER_URL}}/Content/Compute/Concepts/computeoverview.htm).
@@ -133,36 +133,39 @@ func (model *Instance) UnmarshalJSON(data []byte) (e error) {
 	return
 }
 
+// InstanceLifecycleStateEnum Enum with underlying type: string
 type InstanceLifecycleStateEnum string
 
+// Set of constants representing the allowable values for InstanceLifecycleState
 const (
-	INSTANCE_LIFECYCLE_STATE_PROVISIONING   InstanceLifecycleStateEnum = "PROVISIONING"
-	INSTANCE_LIFECYCLE_STATE_RUNNING        InstanceLifecycleStateEnum = "RUNNING"
-	INSTANCE_LIFECYCLE_STATE_STARTING       InstanceLifecycleStateEnum = "STARTING"
-	INSTANCE_LIFECYCLE_STATE_STOPPING       InstanceLifecycleStateEnum = "STOPPING"
-	INSTANCE_LIFECYCLE_STATE_STOPPED        InstanceLifecycleStateEnum = "STOPPED"
-	INSTANCE_LIFECYCLE_STATE_CREATING_IMAGE InstanceLifecycleStateEnum = "CREATING_IMAGE"
-	INSTANCE_LIFECYCLE_STATE_TERMINATING    InstanceLifecycleStateEnum = "TERMINATING"
-	INSTANCE_LIFECYCLE_STATE_TERMINATED     InstanceLifecycleStateEnum = "TERMINATED"
-	INSTANCE_LIFECYCLE_STATE_UNKNOWN        InstanceLifecycleStateEnum = "UNKNOWN"
+	InstanceLifecycleStateProvisioning  InstanceLifecycleStateEnum = "PROVISIONING"
+	InstanceLifecycleStateRunning       InstanceLifecycleStateEnum = "RUNNING"
+	InstanceLifecycleStateStarting      InstanceLifecycleStateEnum = "STARTING"
+	InstanceLifecycleStateStopping      InstanceLifecycleStateEnum = "STOPPING"
+	InstanceLifecycleStateStopped       InstanceLifecycleStateEnum = "STOPPED"
+	InstanceLifecycleStateCreatingImage InstanceLifecycleStateEnum = "CREATING_IMAGE"
+	InstanceLifecycleStateTerminating   InstanceLifecycleStateEnum = "TERMINATING"
+	InstanceLifecycleStateTerminated    InstanceLifecycleStateEnum = "TERMINATED"
+	InstanceLifecycleStateUnknown       InstanceLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_instance_lifecycleState = map[string]InstanceLifecycleStateEnum{
-	"PROVISIONING":   INSTANCE_LIFECYCLE_STATE_PROVISIONING,
-	"RUNNING":        INSTANCE_LIFECYCLE_STATE_RUNNING,
-	"STARTING":       INSTANCE_LIFECYCLE_STATE_STARTING,
-	"STOPPING":       INSTANCE_LIFECYCLE_STATE_STOPPING,
-	"STOPPED":        INSTANCE_LIFECYCLE_STATE_STOPPED,
-	"CREATING_IMAGE": INSTANCE_LIFECYCLE_STATE_CREATING_IMAGE,
-	"TERMINATING":    INSTANCE_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":     INSTANCE_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":        INSTANCE_LIFECYCLE_STATE_UNKNOWN,
+var mappingInstanceLifecycleState = map[string]InstanceLifecycleStateEnum{
+	"PROVISIONING":   InstanceLifecycleStateProvisioning,
+	"RUNNING":        InstanceLifecycleStateRunning,
+	"STARTING":       InstanceLifecycleStateStarting,
+	"STOPPING":       InstanceLifecycleStateStopping,
+	"STOPPED":        InstanceLifecycleStateStopped,
+	"CREATING_IMAGE": InstanceLifecycleStateCreatingImage,
+	"TERMINATING":    InstanceLifecycleStateTerminating,
+	"TERMINATED":     InstanceLifecycleStateTerminated,
+	"UNKNOWN":        InstanceLifecycleStateUnknown,
 }
 
+// GetInstanceLifecycleStateEnumValues Enumerates the set of values for InstanceLifecycleState
 func GetInstanceLifecycleStateEnumValues() []InstanceLifecycleStateEnum {
 	values := make([]InstanceLifecycleStateEnum, 0)
-	for _, v := range mapping_instance_lifecycleState {
-		if v != INSTANCE_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingInstanceLifecycleState {
+		if v != InstanceLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

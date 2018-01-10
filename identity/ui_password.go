@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UiPassword. A text password that enables a user to sign in to the Console, the user interface for interacting with Oracle
+// UiPassword A text password that enables a user to sign in to the Console, the user interface for interacting with Oracle
 // Cloud Infrastructure.
 // For more information about user credentials, see [User Credentials]({{DOC_SERVER_URL}}/Content/Identity/Concepts/usercredentials.htm).
 type UiPassword struct {
@@ -39,30 +39,33 @@ func (model UiPassword) String() string {
 	return common.PointerString(model)
 }
 
+// UiPasswordLifecycleStateEnum Enum with underlying type: string
 type UiPasswordLifecycleStateEnum string
 
+// Set of constants representing the allowable values for UiPasswordLifecycleState
 const (
-	UI_PASSWORD_LIFECYCLE_STATE_CREATING UiPasswordLifecycleStateEnum = "CREATING"
-	UI_PASSWORD_LIFECYCLE_STATE_ACTIVE   UiPasswordLifecycleStateEnum = "ACTIVE"
-	UI_PASSWORD_LIFECYCLE_STATE_INACTIVE UiPasswordLifecycleStateEnum = "INACTIVE"
-	UI_PASSWORD_LIFECYCLE_STATE_DELETING UiPasswordLifecycleStateEnum = "DELETING"
-	UI_PASSWORD_LIFECYCLE_STATE_DELETED  UiPasswordLifecycleStateEnum = "DELETED"
-	UI_PASSWORD_LIFECYCLE_STATE_UNKNOWN  UiPasswordLifecycleStateEnum = "UNKNOWN"
+	UiPasswordLifecycleStateCreating UiPasswordLifecycleStateEnum = "CREATING"
+	UiPasswordLifecycleStateActive   UiPasswordLifecycleStateEnum = "ACTIVE"
+	UiPasswordLifecycleStateInactive UiPasswordLifecycleStateEnum = "INACTIVE"
+	UiPasswordLifecycleStateDeleting UiPasswordLifecycleStateEnum = "DELETING"
+	UiPasswordLifecycleStateDeleted  UiPasswordLifecycleStateEnum = "DELETED"
+	UiPasswordLifecycleStateUnknown  UiPasswordLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_uipassword_lifecycleState = map[string]UiPasswordLifecycleStateEnum{
-	"CREATING": UI_PASSWORD_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   UI_PASSWORD_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": UI_PASSWORD_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": UI_PASSWORD_LIFECYCLE_STATE_DELETING,
-	"DELETED":  UI_PASSWORD_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  UI_PASSWORD_LIFECYCLE_STATE_UNKNOWN,
+var mappingUiPasswordLifecycleState = map[string]UiPasswordLifecycleStateEnum{
+	"CREATING": UiPasswordLifecycleStateCreating,
+	"ACTIVE":   UiPasswordLifecycleStateActive,
+	"INACTIVE": UiPasswordLifecycleStateInactive,
+	"DELETING": UiPasswordLifecycleStateDeleting,
+	"DELETED":  UiPasswordLifecycleStateDeleted,
+	"UNKNOWN":  UiPasswordLifecycleStateUnknown,
 }
 
+// GetUiPasswordLifecycleStateEnumValues Enumerates the set of values for UiPasswordLifecycleState
 func GetUiPasswordLifecycleStateEnumValues() []UiPasswordLifecycleStateEnum {
 	values := make([]UiPasswordLifecycleStateEnum, 0)
-	for _, v := range mapping_uipassword_lifecycleState {
-		if v != UI_PASSWORD_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingUiPasswordLifecycleState {
+		if v != UiPasswordLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

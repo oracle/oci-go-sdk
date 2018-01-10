@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// BackendHealth. The health status of the specified backend server as reported by the primary and standby load balancers.
+// BackendHealth The health status of the specified backend server as reported by the primary and standby load balancers.
 type BackendHealth struct {
 
 	// A list of the most recent health check results returned for the specified backend server.
@@ -30,25 +30,28 @@ func (model BackendHealth) String() string {
 	return common.PointerString(model)
 }
 
+// BackendHealthStatusEnum Enum with underlying type: string
 type BackendHealthStatusEnum string
 
+// Set of constants representing the allowable values for BackendHealthStatus
 const (
-	BACKEND_HEALTH_STATUS_OK       BackendHealthStatusEnum = "OK"
-	BACKEND_HEALTH_STATUS_WARNING  BackendHealthStatusEnum = "WARNING"
-	BACKEND_HEALTH_STATUS_CRITICAL BackendHealthStatusEnum = "CRITICAL"
-	BACKEND_HEALTH_STATUS_UNKNOWN  BackendHealthStatusEnum = "UNKNOWN"
+	BackendHealthStatusOk       BackendHealthStatusEnum = "OK"
+	BackendHealthStatusWarning  BackendHealthStatusEnum = "WARNING"
+	BackendHealthStatusCritical BackendHealthStatusEnum = "CRITICAL"
+	BackendHealthStatusUnknown  BackendHealthStatusEnum = "UNKNOWN"
 )
 
-var mapping_backendhealth_status = map[string]BackendHealthStatusEnum{
-	"OK":       BACKEND_HEALTH_STATUS_OK,
-	"WARNING":  BACKEND_HEALTH_STATUS_WARNING,
-	"CRITICAL": BACKEND_HEALTH_STATUS_CRITICAL,
-	"UNKNOWN":  BACKEND_HEALTH_STATUS_UNKNOWN,
+var mappingBackendHealthStatus = map[string]BackendHealthStatusEnum{
+	"OK":       BackendHealthStatusOk,
+	"WARNING":  BackendHealthStatusWarning,
+	"CRITICAL": BackendHealthStatusCritical,
+	"UNKNOWN":  BackendHealthStatusUnknown,
 }
 
+// GetBackendHealthStatusEnumValues Enumerates the set of values for BackendHealthStatus
 func GetBackendHealthStatusEnumValues() []BackendHealthStatusEnum {
 	values := make([]BackendHealthStatusEnum, 0)
-	for _, v := range mapping_backendhealth_status {
+	for _, v := range mappingBackendHealthStatus {
 		values = append(values, v)
 	}
 	return values

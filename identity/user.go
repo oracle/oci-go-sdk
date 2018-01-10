@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// User. An individual employee or system that needs to manage or use your company's Oracle Cloud Infrastructure
+// User An individual employee or system that needs to manage or use your company's Oracle Cloud Infrastructure
 // resources. Users might need to launch instances, manage remote disks, work with your cloud network, etc. Users
 // have one or more IAM Service credentials (ApiKey,
 // UIPassword, and SwiftPassword).
@@ -61,30 +61,33 @@ func (model User) String() string {
 	return common.PointerString(model)
 }
 
+// UserLifecycleStateEnum Enum with underlying type: string
 type UserLifecycleStateEnum string
 
+// Set of constants representing the allowable values for UserLifecycleState
 const (
-	USER_LIFECYCLE_STATE_CREATING UserLifecycleStateEnum = "CREATING"
-	USER_LIFECYCLE_STATE_ACTIVE   UserLifecycleStateEnum = "ACTIVE"
-	USER_LIFECYCLE_STATE_INACTIVE UserLifecycleStateEnum = "INACTIVE"
-	USER_LIFECYCLE_STATE_DELETING UserLifecycleStateEnum = "DELETING"
-	USER_LIFECYCLE_STATE_DELETED  UserLifecycleStateEnum = "DELETED"
-	USER_LIFECYCLE_STATE_UNKNOWN  UserLifecycleStateEnum = "UNKNOWN"
+	UserLifecycleStateCreating UserLifecycleStateEnum = "CREATING"
+	UserLifecycleStateActive   UserLifecycleStateEnum = "ACTIVE"
+	UserLifecycleStateInactive UserLifecycleStateEnum = "INACTIVE"
+	UserLifecycleStateDeleting UserLifecycleStateEnum = "DELETING"
+	UserLifecycleStateDeleted  UserLifecycleStateEnum = "DELETED"
+	UserLifecycleStateUnknown  UserLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_user_lifecycleState = map[string]UserLifecycleStateEnum{
-	"CREATING": USER_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   USER_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": USER_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": USER_LIFECYCLE_STATE_DELETING,
-	"DELETED":  USER_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  USER_LIFECYCLE_STATE_UNKNOWN,
+var mappingUserLifecycleState = map[string]UserLifecycleStateEnum{
+	"CREATING": UserLifecycleStateCreating,
+	"ACTIVE":   UserLifecycleStateActive,
+	"INACTIVE": UserLifecycleStateInactive,
+	"DELETING": UserLifecycleStateDeleting,
+	"DELETED":  UserLifecycleStateDeleted,
+	"UNKNOWN":  UserLifecycleStateUnknown,
 }
 
+// GetUserLifecycleStateEnumValues Enumerates the set of values for UserLifecycleState
 func GetUserLifecycleStateEnumValues() []UserLifecycleStateEnum {
 	values := make([]UserLifecycleStateEnum, 0)
-	for _, v := range mapping_user_lifecycleState {
-		if v != USER_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingUserLifecycleState {
+		if v != UserLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

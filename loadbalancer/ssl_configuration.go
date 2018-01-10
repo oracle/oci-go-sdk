@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// SslConfiguration. A listener's SSL handling configuration.
+// SslConfiguration A listener's SSL handling configuration.
 // To use SSL, a listener must be associated with a Certificate.
 type SslConfiguration struct {
 

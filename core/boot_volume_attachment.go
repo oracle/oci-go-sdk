@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// BootVolumeAttachment. Represents an attachment between a boot volume and an instance.
+// BootVolumeAttachment Represents an attachment between a boot volume and an instance.
 type BootVolumeAttachment struct {
 
 	// The Availability Domain of an instance.
@@ -48,28 +48,31 @@ func (model BootVolumeAttachment) String() string {
 	return common.PointerString(model)
 }
 
+// BootVolumeAttachmentLifecycleStateEnum Enum with underlying type: string
 type BootVolumeAttachmentLifecycleStateEnum string
 
+// Set of constants representing the allowable values for BootVolumeAttachmentLifecycleState
 const (
-	BOOT_VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHING BootVolumeAttachmentLifecycleStateEnum = "ATTACHING"
-	BOOT_VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHED  BootVolumeAttachmentLifecycleStateEnum = "ATTACHED"
-	BOOT_VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHING BootVolumeAttachmentLifecycleStateEnum = "DETACHING"
-	BOOT_VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHED  BootVolumeAttachmentLifecycleStateEnum = "DETACHED"
-	BOOT_VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN   BootVolumeAttachmentLifecycleStateEnum = "UNKNOWN"
+	BootVolumeAttachmentLifecycleStateAttaching BootVolumeAttachmentLifecycleStateEnum = "ATTACHING"
+	BootVolumeAttachmentLifecycleStateAttached  BootVolumeAttachmentLifecycleStateEnum = "ATTACHED"
+	BootVolumeAttachmentLifecycleStateDetaching BootVolumeAttachmentLifecycleStateEnum = "DETACHING"
+	BootVolumeAttachmentLifecycleStateDetached  BootVolumeAttachmentLifecycleStateEnum = "DETACHED"
+	BootVolumeAttachmentLifecycleStateUnknown   BootVolumeAttachmentLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_bootvolumeattachment_lifecycleState = map[string]BootVolumeAttachmentLifecycleStateEnum{
-	"ATTACHING": BOOT_VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHING,
-	"ATTACHED":  BOOT_VOLUME_ATTACHMENT_LIFECYCLE_STATE_ATTACHED,
-	"DETACHING": BOOT_VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHING,
-	"DETACHED":  BOOT_VOLUME_ATTACHMENT_LIFECYCLE_STATE_DETACHED,
-	"UNKNOWN":   BOOT_VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN,
+var mappingBootVolumeAttachmentLifecycleState = map[string]BootVolumeAttachmentLifecycleStateEnum{
+	"ATTACHING": BootVolumeAttachmentLifecycleStateAttaching,
+	"ATTACHED":  BootVolumeAttachmentLifecycleStateAttached,
+	"DETACHING": BootVolumeAttachmentLifecycleStateDetaching,
+	"DETACHED":  BootVolumeAttachmentLifecycleStateDetached,
+	"UNKNOWN":   BootVolumeAttachmentLifecycleStateUnknown,
 }
 
+// GetBootVolumeAttachmentLifecycleStateEnumValues Enumerates the set of values for BootVolumeAttachmentLifecycleState
 func GetBootVolumeAttachmentLifecycleStateEnumValues() []BootVolumeAttachmentLifecycleStateEnum {
 	values := make([]BootVolumeAttachmentLifecycleStateEnum, 0)
-	for _, v := range mapping_bootvolumeattachment_lifecycleState {
-		if v != BOOT_VOLUME_ATTACHMENT_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingBootVolumeAttachmentLifecycleState {
+		if v != BootVolumeAttachmentLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// WorkRequestLogEntry. The log entity.
+// WorkRequestLogEntry The log entity.
 type WorkRequestLogEntry struct {
 
 	// A human-readable error string.

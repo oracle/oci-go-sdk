@@ -39,28 +39,31 @@ func (model PreauthenticatedRequestSummary) String() string {
 	return common.PointerString(model)
 }
 
+// PreauthenticatedRequestSummaryAccessTypeEnum Enum with underlying type: string
 type PreauthenticatedRequestSummaryAccessTypeEnum string
 
+// Set of constants representing the allowable values for PreauthenticatedRequestSummaryAccessType
 const (
-	PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_OBJECTREAD      PreauthenticatedRequestSummaryAccessTypeEnum = "ObjectRead"
-	PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_OBJECTWRITE     PreauthenticatedRequestSummaryAccessTypeEnum = "ObjectWrite"
-	PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_OBJECTREADWRITE PreauthenticatedRequestSummaryAccessTypeEnum = "ObjectReadWrite"
-	PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_ANYOBJECTWRITE  PreauthenticatedRequestSummaryAccessTypeEnum = "AnyObjectWrite"
-	PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_UNKNOWN         PreauthenticatedRequestSummaryAccessTypeEnum = "UNKNOWN"
+	PreauthenticatedRequestSummaryAccessTypeObjectread      PreauthenticatedRequestSummaryAccessTypeEnum = "ObjectRead"
+	PreauthenticatedRequestSummaryAccessTypeObjectwrite     PreauthenticatedRequestSummaryAccessTypeEnum = "ObjectWrite"
+	PreauthenticatedRequestSummaryAccessTypeObjectreadwrite PreauthenticatedRequestSummaryAccessTypeEnum = "ObjectReadWrite"
+	PreauthenticatedRequestSummaryAccessTypeAnyobjectwrite  PreauthenticatedRequestSummaryAccessTypeEnum = "AnyObjectWrite"
+	PreauthenticatedRequestSummaryAccessTypeUnknown         PreauthenticatedRequestSummaryAccessTypeEnum = "UNKNOWN"
 )
 
-var mapping_preauthenticatedrequestsummary_accessType = map[string]PreauthenticatedRequestSummaryAccessTypeEnum{
-	"ObjectRead":      PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_OBJECTREAD,
-	"ObjectWrite":     PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_OBJECTWRITE,
-	"ObjectReadWrite": PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_OBJECTREADWRITE,
-	"AnyObjectWrite":  PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_ANYOBJECTWRITE,
-	"UNKNOWN":         PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_UNKNOWN,
+var mappingPreauthenticatedRequestSummaryAccessType = map[string]PreauthenticatedRequestSummaryAccessTypeEnum{
+	"ObjectRead":      PreauthenticatedRequestSummaryAccessTypeObjectread,
+	"ObjectWrite":     PreauthenticatedRequestSummaryAccessTypeObjectwrite,
+	"ObjectReadWrite": PreauthenticatedRequestSummaryAccessTypeObjectreadwrite,
+	"AnyObjectWrite":  PreauthenticatedRequestSummaryAccessTypeAnyobjectwrite,
+	"UNKNOWN":         PreauthenticatedRequestSummaryAccessTypeUnknown,
 }
 
+// GetPreauthenticatedRequestSummaryAccessTypeEnumValues Enumerates the set of values for PreauthenticatedRequestSummaryAccessType
 func GetPreauthenticatedRequestSummaryAccessTypeEnumValues() []PreauthenticatedRequestSummaryAccessTypeEnum {
 	values := make([]PreauthenticatedRequestSummaryAccessTypeEnum, 0)
-	for _, v := range mapping_preauthenticatedrequestsummary_accessType {
-		if v != PREAUTHENTICATED_REQUEST_SUMMARY_ACCESS_TYPE_UNKNOWN {
+	for _, v := range mappingPreauthenticatedRequestSummaryAccessType {
+		if v != PreauthenticatedRequestSummaryAccessTypeUnknown {
 			values = append(values, v)
 		}
 	}

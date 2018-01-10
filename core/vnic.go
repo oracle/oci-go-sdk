@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Vnic. A virtual network interface card. Each VNIC resides in a subnet in a VCN.
+// Vnic A virtual network interface card. Each VNIC resides in a subnet in a VCN.
 // An instance attaches to a VNIC to obtain a network connection into the VCN
 // through that subnet. Each instance has a *primary VNIC* that is automatically
 // created and attached during launch. You can add *secondary VNICs* to an
@@ -90,28 +90,31 @@ func (model Vnic) String() string {
 	return common.PointerString(model)
 }
 
+// VnicLifecycleStateEnum Enum with underlying type: string
 type VnicLifecycleStateEnum string
 
+// Set of constants representing the allowable values for VnicLifecycleState
 const (
-	VNIC_LIFECYCLE_STATE_PROVISIONING VnicLifecycleStateEnum = "PROVISIONING"
-	VNIC_LIFECYCLE_STATE_AVAILABLE    VnicLifecycleStateEnum = "AVAILABLE"
-	VNIC_LIFECYCLE_STATE_TERMINATING  VnicLifecycleStateEnum = "TERMINATING"
-	VNIC_LIFECYCLE_STATE_TERMINATED   VnicLifecycleStateEnum = "TERMINATED"
-	VNIC_LIFECYCLE_STATE_UNKNOWN      VnicLifecycleStateEnum = "UNKNOWN"
+	VnicLifecycleStateProvisioning VnicLifecycleStateEnum = "PROVISIONING"
+	VnicLifecycleStateAvailable    VnicLifecycleStateEnum = "AVAILABLE"
+	VnicLifecycleStateTerminating  VnicLifecycleStateEnum = "TERMINATING"
+	VnicLifecycleStateTerminated   VnicLifecycleStateEnum = "TERMINATED"
+	VnicLifecycleStateUnknown      VnicLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_vnic_lifecycleState = map[string]VnicLifecycleStateEnum{
-	"PROVISIONING": VNIC_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    VNIC_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":  VNIC_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   VNIC_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":      VNIC_LIFECYCLE_STATE_UNKNOWN,
+var mappingVnicLifecycleState = map[string]VnicLifecycleStateEnum{
+	"PROVISIONING": VnicLifecycleStateProvisioning,
+	"AVAILABLE":    VnicLifecycleStateAvailable,
+	"TERMINATING":  VnicLifecycleStateTerminating,
+	"TERMINATED":   VnicLifecycleStateTerminated,
+	"UNKNOWN":      VnicLifecycleStateUnknown,
 }
 
+// GetVnicLifecycleStateEnumValues Enumerates the set of values for VnicLifecycleState
 func GetVnicLifecycleStateEnumValues() []VnicLifecycleStateEnum {
 	values := make([]VnicLifecycleStateEnum, 0)
-	for _, v := range mapping_vnic_lifecycleState {
-		if v != VNIC_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingVnicLifecycleState {
+		if v != VnicLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

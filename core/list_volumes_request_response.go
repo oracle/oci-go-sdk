@@ -72,48 +72,54 @@ func (response ListVolumesResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListVolumesSortByEnum Enum with underlying type: string
 type ListVolumesSortByEnum string
 
+// Set of constants representing the allowable values for ListVolumesSortBy
 const (
-	LIST_VOLUMES_SORT_BY_TIMECREATED ListVolumesSortByEnum = "TIMECREATED"
-	LIST_VOLUMES_SORT_BY_DISPLAYNAME ListVolumesSortByEnum = "DISPLAYNAME"
-	LIST_VOLUMES_SORT_BY_UNKNOWN     ListVolumesSortByEnum = "UNKNOWN"
+	ListVolumesSortByTimecreated ListVolumesSortByEnum = "TIMECREATED"
+	ListVolumesSortByDisplayname ListVolumesSortByEnum = "DISPLAYNAME"
+	ListVolumesSortByUnknown     ListVolumesSortByEnum = "UNKNOWN"
 )
 
-var mapping_listvolumessortby = map[string]ListVolumesSortByEnum{
-	"TIMECREATED": LIST_VOLUMES_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_VOLUMES_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_VOLUMES_SORT_BY_UNKNOWN,
+var mappingListVolumesSortBy = map[string]ListVolumesSortByEnum{
+	"TIMECREATED": ListVolumesSortByTimecreated,
+	"DISPLAYNAME": ListVolumesSortByDisplayname,
+	"UNKNOWN":     ListVolumesSortByUnknown,
 }
 
+// GetListVolumesSortByEnumValues Enumerates the set of values for ListVolumesSortBy
 func GetListVolumesSortByEnumValues() []ListVolumesSortByEnum {
 	values := make([]ListVolumesSortByEnum, 0)
-	for _, v := range mapping_listvolumessortby {
-		if v != LIST_VOLUMES_SORT_BY_UNKNOWN {
+	for _, v := range mappingListVolumesSortBy {
+		if v != ListVolumesSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListVolumesSortOrderEnum Enum with underlying type: string
 type ListVolumesSortOrderEnum string
 
+// Set of constants representing the allowable values for ListVolumesSortOrder
 const (
-	LIST_VOLUMES_SORT_ORDER_ASC     ListVolumesSortOrderEnum = "ASC"
-	LIST_VOLUMES_SORT_ORDER_DESC    ListVolumesSortOrderEnum = "DESC"
-	LIST_VOLUMES_SORT_ORDER_UNKNOWN ListVolumesSortOrderEnum = "UNKNOWN"
+	ListVolumesSortOrderAsc     ListVolumesSortOrderEnum = "ASC"
+	ListVolumesSortOrderDesc    ListVolumesSortOrderEnum = "DESC"
+	ListVolumesSortOrderUnknown ListVolumesSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listvolumessortorder = map[string]ListVolumesSortOrderEnum{
-	"ASC":     LIST_VOLUMES_SORT_ORDER_ASC,
-	"DESC":    LIST_VOLUMES_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_VOLUMES_SORT_ORDER_UNKNOWN,
+var mappingListVolumesSortOrder = map[string]ListVolumesSortOrderEnum{
+	"ASC":     ListVolumesSortOrderAsc,
+	"DESC":    ListVolumesSortOrderDesc,
+	"UNKNOWN": ListVolumesSortOrderUnknown,
 }
 
+// GetListVolumesSortOrderEnumValues Enumerates the set of values for ListVolumesSortOrder
 func GetListVolumesSortOrderEnumValues() []ListVolumesSortOrderEnum {
 	values := make([]ListVolumesSortOrderEnum, 0)
-	for _, v := range mapping_listvolumessortorder {
-		if v != LIST_VOLUMES_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListVolumesSortOrder {
+		if v != ListVolumesSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

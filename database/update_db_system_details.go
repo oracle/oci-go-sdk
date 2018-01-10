@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateDbSystemDetails. Describes the modification parameters for the DB System.
+// UpdateDbSystemDetails Describes the modification parameters for the DB System.
 type UpdateDbSystemDetails struct {
 
 	// The number of CPU Cores to be set on the DB System. Applicable only for non-VM based DB systems.

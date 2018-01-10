@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// TunnelConfig. Specific connection details for an IPSec tunnel.
+// TunnelConfig Specific connection details for an IPSec tunnel.
 type TunnelConfig struct {
 
 	// The IP address of Oracle's VPN headend.

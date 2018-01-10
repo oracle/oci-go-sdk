@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// DataGuardAssociation. The properties that define a Data Guard association.
+// DataGuardAssociation The properties that define a Data Guard association.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an
 // administrator. If you're an administrator who needs to write policies to give users access, see
 // [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
@@ -79,136 +79,151 @@ func (model DataGuardAssociation) String() string {
 	return common.PointerString(model)
 }
 
+// DataGuardAssociationLifecycleStateEnum Enum with underlying type: string
 type DataGuardAssociationLifecycleStateEnum string
 
+// Set of constants representing the allowable values for DataGuardAssociationLifecycleState
 const (
-	DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_PROVISIONING DataGuardAssociationLifecycleStateEnum = "PROVISIONING"
-	DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_AVAILABLE    DataGuardAssociationLifecycleStateEnum = "AVAILABLE"
-	DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_UPDATING     DataGuardAssociationLifecycleStateEnum = "UPDATING"
-	DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_TERMINATING  DataGuardAssociationLifecycleStateEnum = "TERMINATING"
-	DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_TERMINATED   DataGuardAssociationLifecycleStateEnum = "TERMINATED"
-	DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_FAILED       DataGuardAssociationLifecycleStateEnum = "FAILED"
-	DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_UNKNOWN      DataGuardAssociationLifecycleStateEnum = "UNKNOWN"
+	DataGuardAssociationLifecycleStateProvisioning DataGuardAssociationLifecycleStateEnum = "PROVISIONING"
+	DataGuardAssociationLifecycleStateAvailable    DataGuardAssociationLifecycleStateEnum = "AVAILABLE"
+	DataGuardAssociationLifecycleStateUpdating     DataGuardAssociationLifecycleStateEnum = "UPDATING"
+	DataGuardAssociationLifecycleStateTerminating  DataGuardAssociationLifecycleStateEnum = "TERMINATING"
+	DataGuardAssociationLifecycleStateTerminated   DataGuardAssociationLifecycleStateEnum = "TERMINATED"
+	DataGuardAssociationLifecycleStateFailed       DataGuardAssociationLifecycleStateEnum = "FAILED"
+	DataGuardAssociationLifecycleStateUnknown      DataGuardAssociationLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_dataguardassociation_lifecycleState = map[string]DataGuardAssociationLifecycleStateEnum{
-	"PROVISIONING": DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_AVAILABLE,
-	"UPDATING":     DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_UPDATING,
-	"TERMINATING":  DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_TERMINATED,
-	"FAILED":       DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":      DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_UNKNOWN,
+var mappingDataGuardAssociationLifecycleState = map[string]DataGuardAssociationLifecycleStateEnum{
+	"PROVISIONING": DataGuardAssociationLifecycleStateProvisioning,
+	"AVAILABLE":    DataGuardAssociationLifecycleStateAvailable,
+	"UPDATING":     DataGuardAssociationLifecycleStateUpdating,
+	"TERMINATING":  DataGuardAssociationLifecycleStateTerminating,
+	"TERMINATED":   DataGuardAssociationLifecycleStateTerminated,
+	"FAILED":       DataGuardAssociationLifecycleStateFailed,
+	"UNKNOWN":      DataGuardAssociationLifecycleStateUnknown,
 }
 
+// GetDataGuardAssociationLifecycleStateEnumValues Enumerates the set of values for DataGuardAssociationLifecycleState
 func GetDataGuardAssociationLifecycleStateEnumValues() []DataGuardAssociationLifecycleStateEnum {
 	values := make([]DataGuardAssociationLifecycleStateEnum, 0)
-	for _, v := range mapping_dataguardassociation_lifecycleState {
-		if v != DATA_GUARD_ASSOCIATION_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingDataGuardAssociationLifecycleState {
+		if v != DataGuardAssociationLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// DataGuardAssociationPeerRoleEnum Enum with underlying type: string
 type DataGuardAssociationPeerRoleEnum string
 
+// Set of constants representing the allowable values for DataGuardAssociationPeerRole
 const (
-	DATA_GUARD_ASSOCIATION_PEER_ROLE_PRIMARY          DataGuardAssociationPeerRoleEnum = "PRIMARY"
-	DATA_GUARD_ASSOCIATION_PEER_ROLE_STANDBY          DataGuardAssociationPeerRoleEnum = "STANDBY"
-	DATA_GUARD_ASSOCIATION_PEER_ROLE_DISABLED_STANDBY DataGuardAssociationPeerRoleEnum = "DISABLED_STANDBY"
-	DATA_GUARD_ASSOCIATION_PEER_ROLE_UNKNOWN          DataGuardAssociationPeerRoleEnum = "UNKNOWN"
+	DataGuardAssociationPeerRolePrimary         DataGuardAssociationPeerRoleEnum = "PRIMARY"
+	DataGuardAssociationPeerRoleStandby         DataGuardAssociationPeerRoleEnum = "STANDBY"
+	DataGuardAssociationPeerRoleDisabledStandby DataGuardAssociationPeerRoleEnum = "DISABLED_STANDBY"
+	DataGuardAssociationPeerRoleUnknown         DataGuardAssociationPeerRoleEnum = "UNKNOWN"
 )
 
-var mapping_dataguardassociation_peerRole = map[string]DataGuardAssociationPeerRoleEnum{
-	"PRIMARY":          DATA_GUARD_ASSOCIATION_PEER_ROLE_PRIMARY,
-	"STANDBY":          DATA_GUARD_ASSOCIATION_PEER_ROLE_STANDBY,
-	"DISABLED_STANDBY": DATA_GUARD_ASSOCIATION_PEER_ROLE_DISABLED_STANDBY,
-	"UNKNOWN":          DATA_GUARD_ASSOCIATION_PEER_ROLE_UNKNOWN,
+var mappingDataGuardAssociationPeerRole = map[string]DataGuardAssociationPeerRoleEnum{
+	"PRIMARY":          DataGuardAssociationPeerRolePrimary,
+	"STANDBY":          DataGuardAssociationPeerRoleStandby,
+	"DISABLED_STANDBY": DataGuardAssociationPeerRoleDisabledStandby,
+	"UNKNOWN":          DataGuardAssociationPeerRoleUnknown,
 }
 
+// GetDataGuardAssociationPeerRoleEnumValues Enumerates the set of values for DataGuardAssociationPeerRole
 func GetDataGuardAssociationPeerRoleEnumValues() []DataGuardAssociationPeerRoleEnum {
 	values := make([]DataGuardAssociationPeerRoleEnum, 0)
-	for _, v := range mapping_dataguardassociation_peerRole {
-		if v != DATA_GUARD_ASSOCIATION_PEER_ROLE_UNKNOWN {
+	for _, v := range mappingDataGuardAssociationPeerRole {
+		if v != DataGuardAssociationPeerRoleUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// DataGuardAssociationProtectionModeEnum Enum with underlying type: string
 type DataGuardAssociationProtectionModeEnum string
 
+// Set of constants representing the allowable values for DataGuardAssociationProtectionMode
 const (
-	DATA_GUARD_ASSOCIATION_PROTECTION_MODE_AVAILABILITY DataGuardAssociationProtectionModeEnum = "MAXIMUM_AVAILABILITY"
-	DATA_GUARD_ASSOCIATION_PROTECTION_MODE_PERFORMANCE  DataGuardAssociationProtectionModeEnum = "MAXIMUM_PERFORMANCE"
-	DATA_GUARD_ASSOCIATION_PROTECTION_MODE_PROTECTION   DataGuardAssociationProtectionModeEnum = "MAXIMUM_PROTECTION"
-	DATA_GUARD_ASSOCIATION_PROTECTION_MODE_UNKNOWN      DataGuardAssociationProtectionModeEnum = "UNKNOWN"
+	DataGuardAssociationProtectionModeAvailability DataGuardAssociationProtectionModeEnum = "MAXIMUM_AVAILABILITY"
+	DataGuardAssociationProtectionModePerformance  DataGuardAssociationProtectionModeEnum = "MAXIMUM_PERFORMANCE"
+	DataGuardAssociationProtectionModeProtection   DataGuardAssociationProtectionModeEnum = "MAXIMUM_PROTECTION"
+	DataGuardAssociationProtectionModeUnknown      DataGuardAssociationProtectionModeEnum = "UNKNOWN"
 )
 
-var mapping_dataguardassociation_protectionMode = map[string]DataGuardAssociationProtectionModeEnum{
-	"MAXIMUM_AVAILABILITY": DATA_GUARD_ASSOCIATION_PROTECTION_MODE_AVAILABILITY,
-	"MAXIMUM_PERFORMANCE":  DATA_GUARD_ASSOCIATION_PROTECTION_MODE_PERFORMANCE,
-	"MAXIMUM_PROTECTION":   DATA_GUARD_ASSOCIATION_PROTECTION_MODE_PROTECTION,
-	"UNKNOWN":              DATA_GUARD_ASSOCIATION_PROTECTION_MODE_UNKNOWN,
+var mappingDataGuardAssociationProtectionMode = map[string]DataGuardAssociationProtectionModeEnum{
+	"MAXIMUM_AVAILABILITY": DataGuardAssociationProtectionModeAvailability,
+	"MAXIMUM_PERFORMANCE":  DataGuardAssociationProtectionModePerformance,
+	"MAXIMUM_PROTECTION":   DataGuardAssociationProtectionModeProtection,
+	"UNKNOWN":              DataGuardAssociationProtectionModeUnknown,
 }
 
+// GetDataGuardAssociationProtectionModeEnumValues Enumerates the set of values for DataGuardAssociationProtectionMode
 func GetDataGuardAssociationProtectionModeEnumValues() []DataGuardAssociationProtectionModeEnum {
 	values := make([]DataGuardAssociationProtectionModeEnum, 0)
-	for _, v := range mapping_dataguardassociation_protectionMode {
-		if v != DATA_GUARD_ASSOCIATION_PROTECTION_MODE_UNKNOWN {
+	for _, v := range mappingDataGuardAssociationProtectionMode {
+		if v != DataGuardAssociationProtectionModeUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// DataGuardAssociationRoleEnum Enum with underlying type: string
 type DataGuardAssociationRoleEnum string
 
+// Set of constants representing the allowable values for DataGuardAssociationRole
 const (
-	DATA_GUARD_ASSOCIATION_ROLE_PRIMARY          DataGuardAssociationRoleEnum = "PRIMARY"
-	DATA_GUARD_ASSOCIATION_ROLE_STANDBY          DataGuardAssociationRoleEnum = "STANDBY"
-	DATA_GUARD_ASSOCIATION_ROLE_DISABLED_STANDBY DataGuardAssociationRoleEnum = "DISABLED_STANDBY"
-	DATA_GUARD_ASSOCIATION_ROLE_UNKNOWN          DataGuardAssociationRoleEnum = "UNKNOWN"
+	DataGuardAssociationRolePrimary         DataGuardAssociationRoleEnum = "PRIMARY"
+	DataGuardAssociationRoleStandby         DataGuardAssociationRoleEnum = "STANDBY"
+	DataGuardAssociationRoleDisabledStandby DataGuardAssociationRoleEnum = "DISABLED_STANDBY"
+	DataGuardAssociationRoleUnknown         DataGuardAssociationRoleEnum = "UNKNOWN"
 )
 
-var mapping_dataguardassociation_role = map[string]DataGuardAssociationRoleEnum{
-	"PRIMARY":          DATA_GUARD_ASSOCIATION_ROLE_PRIMARY,
-	"STANDBY":          DATA_GUARD_ASSOCIATION_ROLE_STANDBY,
-	"DISABLED_STANDBY": DATA_GUARD_ASSOCIATION_ROLE_DISABLED_STANDBY,
-	"UNKNOWN":          DATA_GUARD_ASSOCIATION_ROLE_UNKNOWN,
+var mappingDataGuardAssociationRole = map[string]DataGuardAssociationRoleEnum{
+	"PRIMARY":          DataGuardAssociationRolePrimary,
+	"STANDBY":          DataGuardAssociationRoleStandby,
+	"DISABLED_STANDBY": DataGuardAssociationRoleDisabledStandby,
+	"UNKNOWN":          DataGuardAssociationRoleUnknown,
 }
 
+// GetDataGuardAssociationRoleEnumValues Enumerates the set of values for DataGuardAssociationRole
 func GetDataGuardAssociationRoleEnumValues() []DataGuardAssociationRoleEnum {
 	values := make([]DataGuardAssociationRoleEnum, 0)
-	for _, v := range mapping_dataguardassociation_role {
-		if v != DATA_GUARD_ASSOCIATION_ROLE_UNKNOWN {
+	for _, v := range mappingDataGuardAssociationRole {
+		if v != DataGuardAssociationRoleUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// DataGuardAssociationTransportTypeEnum Enum with underlying type: string
 type DataGuardAssociationTransportTypeEnum string
 
+// Set of constants representing the allowable values for DataGuardAssociationTransportType
 const (
-	DATA_GUARD_ASSOCIATION_TRANSPORT_TYPE_SYNC     DataGuardAssociationTransportTypeEnum = "SYNC"
-	DATA_GUARD_ASSOCIATION_TRANSPORT_TYPE_ASYNC    DataGuardAssociationTransportTypeEnum = "ASYNC"
-	DATA_GUARD_ASSOCIATION_TRANSPORT_TYPE_FASTSYNC DataGuardAssociationTransportTypeEnum = "FASTSYNC"
-	DATA_GUARD_ASSOCIATION_TRANSPORT_TYPE_UNKNOWN  DataGuardAssociationTransportTypeEnum = "UNKNOWN"
+	DataGuardAssociationTransportTypeSync     DataGuardAssociationTransportTypeEnum = "SYNC"
+	DataGuardAssociationTransportTypeAsync    DataGuardAssociationTransportTypeEnum = "ASYNC"
+	DataGuardAssociationTransportTypeFastsync DataGuardAssociationTransportTypeEnum = "FASTSYNC"
+	DataGuardAssociationTransportTypeUnknown  DataGuardAssociationTransportTypeEnum = "UNKNOWN"
 )
 
-var mapping_dataguardassociation_transportType = map[string]DataGuardAssociationTransportTypeEnum{
-	"SYNC":     DATA_GUARD_ASSOCIATION_TRANSPORT_TYPE_SYNC,
-	"ASYNC":    DATA_GUARD_ASSOCIATION_TRANSPORT_TYPE_ASYNC,
-	"FASTSYNC": DATA_GUARD_ASSOCIATION_TRANSPORT_TYPE_FASTSYNC,
-	"UNKNOWN":  DATA_GUARD_ASSOCIATION_TRANSPORT_TYPE_UNKNOWN,
+var mappingDataGuardAssociationTransportType = map[string]DataGuardAssociationTransportTypeEnum{
+	"SYNC":     DataGuardAssociationTransportTypeSync,
+	"ASYNC":    DataGuardAssociationTransportTypeAsync,
+	"FASTSYNC": DataGuardAssociationTransportTypeFastsync,
+	"UNKNOWN":  DataGuardAssociationTransportTypeUnknown,
 }
 
+// GetDataGuardAssociationTransportTypeEnumValues Enumerates the set of values for DataGuardAssociationTransportType
 func GetDataGuardAssociationTransportTypeEnumValues() []DataGuardAssociationTransportTypeEnum {
 	values := make([]DataGuardAssociationTransportTypeEnum, 0)
-	for _, v := range mapping_dataguardassociation_transportType {
-		if v != DATA_GUARD_ASSOCIATION_TRANSPORT_TYPE_UNKNOWN {
+	for _, v := range mappingDataGuardAssociationTransportType {
+		if v != DataGuardAssociationTransportTypeUnknown {
 			values = append(values, v)
 		}
 	}

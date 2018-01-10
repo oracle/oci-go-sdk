@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// WorkRequestResource. The resource entity.
+// WorkRequestResource The resource entity.
 type WorkRequestResource struct {
 
 	// The identifier of the resource the work request affects.
@@ -32,30 +32,33 @@ func (model WorkRequestResource) String() string {
 	return common.PointerString(model)
 }
 
+// WorkRequestResourceActionTypeEnum Enum with underlying type: string
 type WorkRequestResourceActionTypeEnum string
 
+// Set of constants representing the allowable values for WorkRequestResourceActionType
 const (
-	WORK_REQUEST_RESOURCE_ACTION_TYPE_CREATED     WorkRequestResourceActionTypeEnum = "CREATED"
-	WORK_REQUEST_RESOURCE_ACTION_TYPE_UPDATED     WorkRequestResourceActionTypeEnum = "UPDATED"
-	WORK_REQUEST_RESOURCE_ACTION_TYPE_DELETED     WorkRequestResourceActionTypeEnum = "DELETED"
-	WORK_REQUEST_RESOURCE_ACTION_TYPE_RELATED     WorkRequestResourceActionTypeEnum = "RELATED"
-	WORK_REQUEST_RESOURCE_ACTION_TYPE_IN_PROGRESS WorkRequestResourceActionTypeEnum = "IN_PROGRESS"
-	WORK_REQUEST_RESOURCE_ACTION_TYPE_UNKNOWN     WorkRequestResourceActionTypeEnum = "UNKNOWN"
+	WorkRequestResourceActionTypeCreated    WorkRequestResourceActionTypeEnum = "CREATED"
+	WorkRequestResourceActionTypeUpdated    WorkRequestResourceActionTypeEnum = "UPDATED"
+	WorkRequestResourceActionTypeDeleted    WorkRequestResourceActionTypeEnum = "DELETED"
+	WorkRequestResourceActionTypeRelated    WorkRequestResourceActionTypeEnum = "RELATED"
+	WorkRequestResourceActionTypeInProgress WorkRequestResourceActionTypeEnum = "IN_PROGRESS"
+	WorkRequestResourceActionTypeUnknown    WorkRequestResourceActionTypeEnum = "UNKNOWN"
 )
 
-var mapping_workrequestresource_actionType = map[string]WorkRequestResourceActionTypeEnum{
-	"CREATED":     WORK_REQUEST_RESOURCE_ACTION_TYPE_CREATED,
-	"UPDATED":     WORK_REQUEST_RESOURCE_ACTION_TYPE_UPDATED,
-	"DELETED":     WORK_REQUEST_RESOURCE_ACTION_TYPE_DELETED,
-	"RELATED":     WORK_REQUEST_RESOURCE_ACTION_TYPE_RELATED,
-	"IN_PROGRESS": WORK_REQUEST_RESOURCE_ACTION_TYPE_IN_PROGRESS,
-	"UNKNOWN":     WORK_REQUEST_RESOURCE_ACTION_TYPE_UNKNOWN,
+var mappingWorkRequestResourceActionType = map[string]WorkRequestResourceActionTypeEnum{
+	"CREATED":     WorkRequestResourceActionTypeCreated,
+	"UPDATED":     WorkRequestResourceActionTypeUpdated,
+	"DELETED":     WorkRequestResourceActionTypeDeleted,
+	"RELATED":     WorkRequestResourceActionTypeRelated,
+	"IN_PROGRESS": WorkRequestResourceActionTypeInProgress,
+	"UNKNOWN":     WorkRequestResourceActionTypeUnknown,
 }
 
+// GetWorkRequestResourceActionTypeEnumValues Enumerates the set of values for WorkRequestResourceActionType
 func GetWorkRequestResourceActionTypeEnumValues() []WorkRequestResourceActionTypeEnum {
 	values := make([]WorkRequestResourceActionTypeEnum, 0)
-	for _, v := range mapping_workrequestresource_actionType {
-		if v != WORK_REQUEST_RESOURCE_ACTION_TYPE_UNKNOWN {
+	for _, v := range mappingWorkRequestResourceActionType {
+		if v != WorkRequestResourceActionTypeUnknown {
 			values = append(values, v)
 		}
 	}

@@ -49,7 +49,7 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 	}
 	assert.NoError(t,
 		retryUntilTrueOrError(readTest,
-			checkLifecycleState(string(core.VOLUME_LIFECYCLE_STATE_AVAILABLE)), tick, timeout))
+			checkLifecycleState(string(core.VolumeLifecycleStateAvailable)), tick, timeout))
 
 	//update
 	updateTest := func(t *testing.T) {
@@ -132,7 +132,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 	defer deleteVol()
 	failIfError(t,
 		retryUntilTrueOrError(readVol,
-			checkLifecycleState(string(core.VOLUME_LIFECYCLE_STATE_AVAILABLE)), tick, time.After(120*time.Second)))
+			checkLifecycleState(string(core.VolumeLifecycleStateAvailable)), tick, time.After(120*time.Second)))
 
 	//Create
 	request := core.CreateVolumeBackupRequest{}
@@ -155,7 +155,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	failIfError(t,
 		retryUntilTrueOrError(readTest,
-			checkLifecycleState(string(core.VOLUME_BACKUP_LIFECYCLE_STATE_AVAILABLE)), tick, time.After(120*time.Second)))
+			checkLifecycleState(string(core.VolumeBackupLifecycleStateAvailable)), tick, time.After(120*time.Second)))
 
 	//List
 	listTest := func(t *testing.T) {

@@ -91,24 +91,27 @@ func (model createidentityproviderdetails) String() string {
 	return common.PointerString(model)
 }
 
+// CreateIdentityProviderDetailsProductTypeEnum Enum with underlying type: string
 type CreateIdentityProviderDetailsProductTypeEnum string
 
+// Set of constants representing the allowable values for CreateIdentityProviderDetailsProductType
 const (
-	CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_IDCS    CreateIdentityProviderDetailsProductTypeEnum = "IDCS"
-	CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS    CreateIdentityProviderDetailsProductTypeEnum = "ADFS"
-	CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN CreateIdentityProviderDetailsProductTypeEnum = "UNKNOWN"
+	CreateIdentityProviderDetailsProductTypeIdcs    CreateIdentityProviderDetailsProductTypeEnum = "IDCS"
+	CreateIdentityProviderDetailsProductTypeAdfs    CreateIdentityProviderDetailsProductTypeEnum = "ADFS"
+	CreateIdentityProviderDetailsProductTypeUnknown CreateIdentityProviderDetailsProductTypeEnum = "UNKNOWN"
 )
 
-var mapping_createidentityproviderdetails_productType = map[string]CreateIdentityProviderDetailsProductTypeEnum{
-	"IDCS":    CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_IDCS,
-	"ADFS":    CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS,
-	"UNKNOWN": CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN,
+var mappingCreateIdentityProviderDetailsProductType = map[string]CreateIdentityProviderDetailsProductTypeEnum{
+	"IDCS":    CreateIdentityProviderDetailsProductTypeIdcs,
+	"ADFS":    CreateIdentityProviderDetailsProductTypeAdfs,
+	"UNKNOWN": CreateIdentityProviderDetailsProductTypeUnknown,
 }
 
+// GetCreateIdentityProviderDetailsProductTypeEnumValues Enumerates the set of values for CreateIdentityProviderDetailsProductType
 func GetCreateIdentityProviderDetailsProductTypeEnumValues() []CreateIdentityProviderDetailsProductTypeEnum {
 	values := make([]CreateIdentityProviderDetailsProductTypeEnum, 0)
-	for _, v := range mapping_createidentityproviderdetails_productType {
-		if v != CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_UNKNOWN {
+	for _, v := range mappingCreateIdentityProviderDetailsProductType {
+		if v != CreateIdentityProviderDetailsProductTypeUnknown {
 			values = append(values, v)
 		}
 	}

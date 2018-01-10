@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// SslConfigurationDetails. The load balancer's SSL handling configuration details.
+// SslConfigurationDetails The load balancer's SSL handling configuration details.
 type SslConfigurationDetails struct {
 
 	// A friendly name for the certificate bundle. It must be unique and it cannot be changed.

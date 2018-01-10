@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Policy. A document that specifies the type of access a group has to the resources in a compartment. For information about
+// Policy A document that specifies the type of access a group has to the resources in a compartment. For information about
 // policies and other IAM Service components, see
 // [Overview of the IAM Service]({{DOC_SERVER_URL}}/Content/Identity/Concepts/overview.htm). If you're new to policies, see
 // [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
@@ -61,30 +61,33 @@ func (model Policy) String() string {
 	return common.PointerString(model)
 }
 
+// PolicyLifecycleStateEnum Enum with underlying type: string
 type PolicyLifecycleStateEnum string
 
+// Set of constants representing the allowable values for PolicyLifecycleState
 const (
-	POLICY_LIFECYCLE_STATE_CREATING PolicyLifecycleStateEnum = "CREATING"
-	POLICY_LIFECYCLE_STATE_ACTIVE   PolicyLifecycleStateEnum = "ACTIVE"
-	POLICY_LIFECYCLE_STATE_INACTIVE PolicyLifecycleStateEnum = "INACTIVE"
-	POLICY_LIFECYCLE_STATE_DELETING PolicyLifecycleStateEnum = "DELETING"
-	POLICY_LIFECYCLE_STATE_DELETED  PolicyLifecycleStateEnum = "DELETED"
-	POLICY_LIFECYCLE_STATE_UNKNOWN  PolicyLifecycleStateEnum = "UNKNOWN"
+	PolicyLifecycleStateCreating PolicyLifecycleStateEnum = "CREATING"
+	PolicyLifecycleStateActive   PolicyLifecycleStateEnum = "ACTIVE"
+	PolicyLifecycleStateInactive PolicyLifecycleStateEnum = "INACTIVE"
+	PolicyLifecycleStateDeleting PolicyLifecycleStateEnum = "DELETING"
+	PolicyLifecycleStateDeleted  PolicyLifecycleStateEnum = "DELETED"
+	PolicyLifecycleStateUnknown  PolicyLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_policy_lifecycleState = map[string]PolicyLifecycleStateEnum{
-	"CREATING": POLICY_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   POLICY_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": POLICY_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": POLICY_LIFECYCLE_STATE_DELETING,
-	"DELETED":  POLICY_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  POLICY_LIFECYCLE_STATE_UNKNOWN,
+var mappingPolicyLifecycleState = map[string]PolicyLifecycleStateEnum{
+	"CREATING": PolicyLifecycleStateCreating,
+	"ACTIVE":   PolicyLifecycleStateActive,
+	"INACTIVE": PolicyLifecycleStateInactive,
+	"DELETING": PolicyLifecycleStateDeleting,
+	"DELETED":  PolicyLifecycleStateDeleted,
+	"UNKNOWN":  PolicyLifecycleStateUnknown,
 }
 
+// GetPolicyLifecycleStateEnumValues Enumerates the set of values for PolicyLifecycleState
 func GetPolicyLifecycleStateEnumValues() []PolicyLifecycleStateEnum {
 	values := make([]PolicyLifecycleStateEnum, 0)
-	for _, v := range mapping_policy_lifecycleState {
-		if v != POLICY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingPolicyLifecycleState {
+		if v != PolicyLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// VirtualCircuitPublicPrefix. A public IP prefix and its details. With a public virtual circuit, the customer
+// VirtualCircuitPublicPrefix A public IP prefix and its details. With a public virtual circuit, the customer
 // specifies the customer-owned public IP prefixes to advertise across the connection.
 // For more information, see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
 type VirtualCircuitPublicPrefix struct {
@@ -32,26 +32,29 @@ func (model VirtualCircuitPublicPrefix) String() string {
 	return common.PointerString(model)
 }
 
+// VirtualCircuitPublicPrefixVerificationStateEnum Enum with underlying type: string
 type VirtualCircuitPublicPrefixVerificationStateEnum string
 
+// Set of constants representing the allowable values for VirtualCircuitPublicPrefixVerificationState
 const (
-	VIRTUAL_CIRCUIT_PUBLIC_PREFIX_VERIFICATION_STATE_IN_PROGRESS VirtualCircuitPublicPrefixVerificationStateEnum = "IN_PROGRESS"
-	VIRTUAL_CIRCUIT_PUBLIC_PREFIX_VERIFICATION_STATE_COMPLETED   VirtualCircuitPublicPrefixVerificationStateEnum = "COMPLETED"
-	VIRTUAL_CIRCUIT_PUBLIC_PREFIX_VERIFICATION_STATE_FAILED      VirtualCircuitPublicPrefixVerificationStateEnum = "FAILED"
-	VIRTUAL_CIRCUIT_PUBLIC_PREFIX_VERIFICATION_STATE_UNKNOWN     VirtualCircuitPublicPrefixVerificationStateEnum = "UNKNOWN"
+	VirtualCircuitPublicPrefixVerificationStateInProgress VirtualCircuitPublicPrefixVerificationStateEnum = "IN_PROGRESS"
+	VirtualCircuitPublicPrefixVerificationStateCompleted  VirtualCircuitPublicPrefixVerificationStateEnum = "COMPLETED"
+	VirtualCircuitPublicPrefixVerificationStateFailed     VirtualCircuitPublicPrefixVerificationStateEnum = "FAILED"
+	VirtualCircuitPublicPrefixVerificationStateUnknown    VirtualCircuitPublicPrefixVerificationStateEnum = "UNKNOWN"
 )
 
-var mapping_virtualcircuitpublicprefix_verificationState = map[string]VirtualCircuitPublicPrefixVerificationStateEnum{
-	"IN_PROGRESS": VIRTUAL_CIRCUIT_PUBLIC_PREFIX_VERIFICATION_STATE_IN_PROGRESS,
-	"COMPLETED":   VIRTUAL_CIRCUIT_PUBLIC_PREFIX_VERIFICATION_STATE_COMPLETED,
-	"FAILED":      VIRTUAL_CIRCUIT_PUBLIC_PREFIX_VERIFICATION_STATE_FAILED,
-	"UNKNOWN":     VIRTUAL_CIRCUIT_PUBLIC_PREFIX_VERIFICATION_STATE_UNKNOWN,
+var mappingVirtualCircuitPublicPrefixVerificationState = map[string]VirtualCircuitPublicPrefixVerificationStateEnum{
+	"IN_PROGRESS": VirtualCircuitPublicPrefixVerificationStateInProgress,
+	"COMPLETED":   VirtualCircuitPublicPrefixVerificationStateCompleted,
+	"FAILED":      VirtualCircuitPublicPrefixVerificationStateFailed,
+	"UNKNOWN":     VirtualCircuitPublicPrefixVerificationStateUnknown,
 }
 
+// GetVirtualCircuitPublicPrefixVerificationStateEnumValues Enumerates the set of values for VirtualCircuitPublicPrefixVerificationState
 func GetVirtualCircuitPublicPrefixVerificationStateEnumValues() []VirtualCircuitPublicPrefixVerificationStateEnum {
 	values := make([]VirtualCircuitPublicPrefixVerificationStateEnum, 0)
-	for _, v := range mapping_virtualcircuitpublicprefix_verificationState {
-		if v != VIRTUAL_CIRCUIT_PUBLIC_PREFIX_VERIFICATION_STATE_UNKNOWN {
+	for _, v := range mappingVirtualCircuitPublicPrefixVerificationState {
+		if v != VirtualCircuitPublicPrefixVerificationStateUnknown {
 			values = append(values, v)
 		}
 	}

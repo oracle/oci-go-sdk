@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateLoadBalancerDetails. The configuration details for creating a load balancer.
+// CreateLoadBalancerDetails The configuration details for creating a load balancer.
 type CreateLoadBalancerDetails struct {
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the compartment in which to create the load balancer.

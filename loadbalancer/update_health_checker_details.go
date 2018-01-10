@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateHealthCheckerDetails. The health checker's configuration details.
+// UpdateHealthCheckerDetails The health checker's configuration details.
 type UpdateHealthCheckerDetails struct {
 
 	// The interval between health checks, in milliseconds.

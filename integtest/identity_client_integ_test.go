@@ -40,7 +40,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	}()
 
 	// validate group lifecycle state enum value after create
-	assert.Equal(t, identity.GROUP_LIFECYCLE_STATE_ACTIVE, r.Group.LifecycleState)
+	assert.Equal(t, identity.GroupLifecycleStateActive, r.Group.LifecycleState)
 
 	//Get
 	rRead := identity.GetGroupRequest{GroupID: r.ID}
@@ -49,7 +49,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	failIfError(t, err)
 
 	// validate group lifecycle state enum value after read
-	assert.Equal(t, identity.GROUP_LIFECYCLE_STATE_ACTIVE, resRead.LifecycleState)
+	assert.Equal(t, identity.GroupLifecycleStateActive, resRead.LifecycleState)
 
 	//Update
 	rUpdate := identity.UpdateGroupRequest{GroupID: r.ID}
@@ -184,7 +184,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 	}()
 
 	// validate user lifecycle state enum value after read
-	assert.Equal(t, identity.USER_LIFECYCLE_STATE_ACTIVE, resCreate.LifecycleState)
+	assert.Equal(t, identity.UserLifecycleStateActive, resCreate.LifecycleState)
 
 	//Read
 	rRead := identity.GetUserRequest{UserID: resCreate.ID}
@@ -193,7 +193,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 	assert.NoError(t, err)
 
 	// validate user lifecycle state enum value after read
-	assert.Equal(t, identity.USER_LIFECYCLE_STATE_ACTIVE, resRead.LifecycleState)
+	assert.Equal(t, identity.UserLifecycleStateActive, resRead.LifecycleState)
 
 	//Update
 	rUpdate := identity.UpdateUserRequest{}
@@ -258,7 +258,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	}()
 
 	// validate user membership lifecycle state enum value after create
-	assert.Equal(t, identity.USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_ACTIVE, rspAdd.LifecycleState)
+	assert.Equal(t, identity.UserGroupMembershipLifecycleStateActive, rspAdd.LifecycleState)
 
 	// Read
 	reqRead := identity.GetUserGroupMembershipRequest{}
@@ -319,7 +319,7 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 	assert.NotEmpty(t, rspCreate.OpcRequestID)
 	assert.Equal(t, u.ID, rspCreate.UserID)
 	assert.NotEmpty(t, rspCreate.Password)
-	assert.Equal(t, identity.UI_PASSWORD_LIFECYCLE_STATE_ACTIVE, rspCreate.LifecycleState)
+	assert.Equal(t, identity.UiPasswordLifecycleStateActive, rspCreate.LifecycleState)
 
 	// make the request again and ensure that we get a different password
 	rspReset, err := c.CreateOrResetUIPassword(context.Background(), request)
@@ -328,7 +328,7 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 
 	assert.Equal(t, rspCreate.UserID, rspReset.UserID)
 	assert.NotEqual(t, rspCreate.Password, rspReset.Password)
-	assert.Equal(t, identity.UI_PASSWORD_LIFECYCLE_STATE_ACTIVE, rspCreate.LifecycleState)
+	assert.Equal(t, identity.UiPasswordLifecycleStateActive, rspCreate.LifecycleState)
 
 	return
 }
@@ -361,7 +361,7 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 	assert.NotEmpty(t, rspPwd.ID)
 	assert.Equal(t, usr.ID, rspPwd.UserID)
 	assert.NotEmpty(t, rspPwd.Password)
-	assert.Equal(t, identity.SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE, rspPwd.LifecycleState)
+	assert.Equal(t, identity.SwiftPasswordLifecycleStateActive, rspPwd.LifecycleState)
 	assert.Equal(t, createDesc, *rspPwd.Description)
 
 	// Update Swift Password
@@ -372,7 +372,7 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 	verifyResponseIsValid(t, updRsp, err)
 
 	assert.NotEqual(t, rspPwd.Password, updRsp.Password)
-	assert.Equal(t, identity.SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE, updRsp.LifecycleState)
+	assert.Equal(t, identity.SwiftPasswordLifecycleStateActive, updRsp.LifecycleState)
 	assert.Equal(t, updateDesc, *updRsp.Description)
 
 	//assert.NotEmpty(t, updRsp.ExpiresOn)
@@ -501,7 +501,7 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	}()
 
 	// validate user membership lifecycle state enum value after create
-	assert.Equal(t, identity.CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_ACTIVE, resCreate.LifecycleState)
+	assert.Equal(t, identity.CustomerSecretKeyLifecycleStateActive, resCreate.LifecycleState)
 
 	//Update
 	rUpdate := identity.UpdateCustomerSecretKeyRequest{}
@@ -579,7 +579,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	details.CompartmentID = common.String(getTenancyID())
 	details.Name = common.String(getUniqueName("Ident_Provider_"))
 	details.Description = common.String("CRUD Test Identity Provider")
-	details.ProductType = identity.CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS
+	details.ProductType = identity.CreateIdentityProviderDetailsProductTypeAdfs
 	details.Metadata = common.String(readSampleFederationMetadata(t))
 	rCreate.CreateIdentityProviderDetails = details
 
@@ -662,7 +662,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	assert.NotEmpty(t, *rspCreateMapping.IdpGroupName)
 	assert.Equal(t, *rspCreate.GetID(), *rspCreateMapping.IdpID)
 	assert.NotEmpty(t, rspCreateMapping.TimeCreated)
-	assert.Equal(t, identity.IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE, rspCreateMapping.LifecycleState)
+	assert.Equal(t, identity.IdpGroupMappingLifecycleStateActive, rspCreateMapping.LifecycleState)
 
 	//Read group mapping
 	reqReadMapping := identity.GetIdpGroupMappingRequest{IdentityProviderID: rspCreateMapping.IdpID, MappingID: rspCreateMapping.ID}
@@ -671,7 +671,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 
 	assert.Equal(t, rspCreateMapping.ID, rspReadMapping.ID)
 	assert.Equal(t, rspCreateMapping.IdpID, rspReadMapping.IdpID)
-	assert.Equal(t, identity.IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE, rspReadMapping.LifecycleState)
+	assert.Equal(t, identity.IdpGroupMappingLifecycleStateActive, rspReadMapping.LifecycleState)
 
 	//update group mapping
 	reqUpdMapping := identity.UpdateIdpGroupMappingRequest{}
@@ -690,7 +690,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	assert.Equal(t, *rspReadMapping.IdpID, *rspUpdMapping.IdpID)
 	assert.NotEqual(t, *rspReadMapping.IdpGroupName, *rspUpdMapping.IdpGroupName)
 	assert.NotEmpty(t, rspUpdMapping.TimeCreated)
-	assert.Equal(t, identity.IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE, rspUpdMapping.LifecycleState)
+	assert.Equal(t, identity.IdpGroupMappingLifecycleStateActive, rspUpdMapping.LifecycleState)
 
 	return
 }
@@ -700,7 +700,7 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	failIfError(t, clerr)
 	request := identity.ListIdentityProvidersRequest{}
 	request.CompartmentID = common.String(getCompartmentID())
-	request.Protocol = identity.LIST_IDENTITY_PROVIDERS_PROTOCOL_SAML2
+	request.Protocol = identity.ListIdentityProvidersProtocolSaml2
 	response, err := c.ListIdentityProviders(context.Background(), request)
 	failIfError(t, err)
 
@@ -799,7 +799,7 @@ func TestIdentityClient_UpdateUserState(t *testing.T) {
 	r, err := c.UpdateUserState(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
 
-	assert.Equal(t, identity.USER_LIFECYCLE_STATE_ACTIVE, r.LifecycleState)
+	assert.Equal(t, identity.UserLifecycleStateActive, r.LifecycleState)
 	return
 }
 

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UdpOptions. Optional object to specify ports for a UDP rule. If you specify UDP as the
+// UdpOptions Optional object to specify ports for a UDP rule. If you specify UDP as the
 // protocol but omit this object, then all ports are allowed.
 type UdpOptions struct {
 

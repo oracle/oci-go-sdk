@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CrossConnectMapping. For use with Oracle Cloud Infrastructure FastConnect. Each
+// CrossConnectMapping For use with Oracle Cloud Infrastructure FastConnect. Each
 // VirtualCircuit runs on one or
 // more cross-connects or cross-connect groups. A `CrossConnectMapping`
 // contains the properties for an individual cross-connect or cross-connect group

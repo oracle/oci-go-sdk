@@ -55,28 +55,31 @@ func (response InstanceActionResponse) String() string {
 	return common.PointerString(response)
 }
 
+// InstanceActionActionEnum Enum with underlying type: string
 type InstanceActionActionEnum string
 
+// Set of constants representing the allowable values for InstanceActionAction
 const (
-	INSTANCE_ACTION_ACTION_STOP      InstanceActionActionEnum = "STOP"
-	INSTANCE_ACTION_ACTION_START     InstanceActionActionEnum = "START"
-	INSTANCE_ACTION_ACTION_SOFTRESET InstanceActionActionEnum = "SOFTRESET"
-	INSTANCE_ACTION_ACTION_RESET     InstanceActionActionEnum = "RESET"
-	INSTANCE_ACTION_ACTION_UNKNOWN   InstanceActionActionEnum = "UNKNOWN"
+	InstanceActionActionStop      InstanceActionActionEnum = "STOP"
+	InstanceActionActionStart     InstanceActionActionEnum = "START"
+	InstanceActionActionSoftreset InstanceActionActionEnum = "SOFTRESET"
+	InstanceActionActionReset     InstanceActionActionEnum = "RESET"
+	InstanceActionActionUnknown   InstanceActionActionEnum = "UNKNOWN"
 )
 
-var mapping_instanceactionaction = map[string]InstanceActionActionEnum{
-	"STOP":      INSTANCE_ACTION_ACTION_STOP,
-	"START":     INSTANCE_ACTION_ACTION_START,
-	"SOFTRESET": INSTANCE_ACTION_ACTION_SOFTRESET,
-	"RESET":     INSTANCE_ACTION_ACTION_RESET,
-	"UNKNOWN":   INSTANCE_ACTION_ACTION_UNKNOWN,
+var mappingInstanceActionAction = map[string]InstanceActionActionEnum{
+	"STOP":      InstanceActionActionStop,
+	"START":     InstanceActionActionStart,
+	"SOFTRESET": InstanceActionActionSoftreset,
+	"RESET":     InstanceActionActionReset,
+	"UNKNOWN":   InstanceActionActionUnknown,
 }
 
+// GetInstanceActionActionEnumValues Enumerates the set of values for InstanceActionAction
 func GetInstanceActionActionEnumValues() []InstanceActionActionEnum {
 	values := make([]InstanceActionActionEnum, 0)
-	for _, v := range mapping_instanceactionaction {
-		if v != INSTANCE_ACTION_ACTION_UNKNOWN {
+	for _, v := range mappingInstanceActionAction {
+		if v != InstanceActionActionUnknown {
 			values = append(values, v)
 		}
 	}

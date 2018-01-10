@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// VolumeBackup. A point-in-time copy of a volume that can then be used to create a new block volume
+// VolumeBackup A point-in-time copy of a volume that can then be used to create a new block volume
 // or recover a block volume. For more information, see
 // [Overview of Cloud Volume Storage]({{DOC_SERVER_URL}}/Content/Block/Concepts/overview.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
@@ -64,32 +64,35 @@ func (model VolumeBackup) String() string {
 	return common.PointerString(model)
 }
 
+// VolumeBackupLifecycleStateEnum Enum with underlying type: string
 type VolumeBackupLifecycleStateEnum string
 
+// Set of constants representing the allowable values for VolumeBackupLifecycleState
 const (
-	VOLUME_BACKUP_LIFECYCLE_STATE_CREATING         VolumeBackupLifecycleStateEnum = "CREATING"
-	VOLUME_BACKUP_LIFECYCLE_STATE_AVAILABLE        VolumeBackupLifecycleStateEnum = "AVAILABLE"
-	VOLUME_BACKUP_LIFECYCLE_STATE_TERMINATING      VolumeBackupLifecycleStateEnum = "TERMINATING"
-	VOLUME_BACKUP_LIFECYCLE_STATE_TERMINATED       VolumeBackupLifecycleStateEnum = "TERMINATED"
-	VOLUME_BACKUP_LIFECYCLE_STATE_FAULTY           VolumeBackupLifecycleStateEnum = "FAULTY"
-	VOLUME_BACKUP_LIFECYCLE_STATE_REQUEST_RECEIVED VolumeBackupLifecycleStateEnum = "REQUEST_RECEIVED"
-	VOLUME_BACKUP_LIFECYCLE_STATE_UNKNOWN          VolumeBackupLifecycleStateEnum = "UNKNOWN"
+	VolumeBackupLifecycleStateCreating        VolumeBackupLifecycleStateEnum = "CREATING"
+	VolumeBackupLifecycleStateAvailable       VolumeBackupLifecycleStateEnum = "AVAILABLE"
+	VolumeBackupLifecycleStateTerminating     VolumeBackupLifecycleStateEnum = "TERMINATING"
+	VolumeBackupLifecycleStateTerminated      VolumeBackupLifecycleStateEnum = "TERMINATED"
+	VolumeBackupLifecycleStateFaulty          VolumeBackupLifecycleStateEnum = "FAULTY"
+	VolumeBackupLifecycleStateRequestReceived VolumeBackupLifecycleStateEnum = "REQUEST_RECEIVED"
+	VolumeBackupLifecycleStateUnknown         VolumeBackupLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_volumebackup_lifecycleState = map[string]VolumeBackupLifecycleStateEnum{
-	"CREATING":         VOLUME_BACKUP_LIFECYCLE_STATE_CREATING,
-	"AVAILABLE":        VOLUME_BACKUP_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":      VOLUME_BACKUP_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":       VOLUME_BACKUP_LIFECYCLE_STATE_TERMINATED,
-	"FAULTY":           VOLUME_BACKUP_LIFECYCLE_STATE_FAULTY,
-	"REQUEST_RECEIVED": VOLUME_BACKUP_LIFECYCLE_STATE_REQUEST_RECEIVED,
-	"UNKNOWN":          VOLUME_BACKUP_LIFECYCLE_STATE_UNKNOWN,
+var mappingVolumeBackupLifecycleState = map[string]VolumeBackupLifecycleStateEnum{
+	"CREATING":         VolumeBackupLifecycleStateCreating,
+	"AVAILABLE":        VolumeBackupLifecycleStateAvailable,
+	"TERMINATING":      VolumeBackupLifecycleStateTerminating,
+	"TERMINATED":       VolumeBackupLifecycleStateTerminated,
+	"FAULTY":           VolumeBackupLifecycleStateFaulty,
+	"REQUEST_RECEIVED": VolumeBackupLifecycleStateRequestReceived,
+	"UNKNOWN":          VolumeBackupLifecycleStateUnknown,
 }
 
+// GetVolumeBackupLifecycleStateEnumValues Enumerates the set of values for VolumeBackupLifecycleState
 func GetVolumeBackupLifecycleStateEnumValues() []VolumeBackupLifecycleStateEnum {
 	values := make([]VolumeBackupLifecycleStateEnum, 0)
-	for _, v := range mapping_volumebackup_lifecycleState {
-		if v != VOLUME_BACKUP_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingVolumeBackupLifecycleState {
+		if v != VolumeBackupLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}
