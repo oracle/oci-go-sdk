@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Bucket. To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
+// Bucket To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
 // [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type Bucket struct {
@@ -49,24 +49,27 @@ func (model Bucket) String() string {
 	return common.PointerString(model)
 }
 
+// BucketPublicAccessTypeEnum Enum with underlying type: string
 type BucketPublicAccessTypeEnum string
 
+// Set of constants representing the allowable values for BucketPublicAccessType
 const (
-	BUCKET_PUBLIC_ACCESS_TYPE_NOPUBLICACCESS BucketPublicAccessTypeEnum = "NoPublicAccess"
-	BUCKET_PUBLIC_ACCESS_TYPE_OBJECTREAD     BucketPublicAccessTypeEnum = "ObjectRead"
-	BUCKET_PUBLIC_ACCESS_TYPE_UNKNOWN        BucketPublicAccessTypeEnum = "UNKNOWN"
+	BucketPublicAccessTypeNopublicaccess BucketPublicAccessTypeEnum = "NoPublicAccess"
+	BucketPublicAccessTypeObjectread     BucketPublicAccessTypeEnum = "ObjectRead"
+	BucketPublicAccessTypeUnknown        BucketPublicAccessTypeEnum = "UNKNOWN"
 )
 
-var mapping_bucket_publicAccessType = map[string]BucketPublicAccessTypeEnum{
-	"NoPublicAccess": BUCKET_PUBLIC_ACCESS_TYPE_NOPUBLICACCESS,
-	"ObjectRead":     BUCKET_PUBLIC_ACCESS_TYPE_OBJECTREAD,
-	"UNKNOWN":        BUCKET_PUBLIC_ACCESS_TYPE_UNKNOWN,
+var mappingBucketPublicAccessType = map[string]BucketPublicAccessTypeEnum{
+	"NoPublicAccess": BucketPublicAccessTypeNopublicaccess,
+	"ObjectRead":     BucketPublicAccessTypeObjectread,
+	"UNKNOWN":        BucketPublicAccessTypeUnknown,
 }
 
+// GetBucketPublicAccessTypeEnumValues Enumerates the set of values for BucketPublicAccessType
 func GetBucketPublicAccessTypeEnumValues() []BucketPublicAccessTypeEnum {
 	values := make([]BucketPublicAccessTypeEnum, 0)
-	for _, v := range mapping_bucket_publicAccessType {
-		if v != BUCKET_PUBLIC_ACCESS_TYPE_UNKNOWN {
+	for _, v := range mappingBucketPublicAccessType {
+		if v != BucketPublicAccessTypeUnknown {
 			values = append(values, v)
 		}
 	}

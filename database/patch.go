@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Patch. A Patch for a DB System or DB Home.
+// Patch A Patch for a DB System or DB Home.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
 // see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
@@ -48,76 +48,85 @@ func (model Patch) String() string {
 	return common.PointerString(model)
 }
 
+// PatchAvailableActionsEnum Enum with underlying type: string
 type PatchAvailableActionsEnum string
 
+// Set of constants representing the allowable values for PatchAvailableActions
 const (
-	PATCH_AVAILABLE_ACTIONS_APPLY    PatchAvailableActionsEnum = "APPLY"
-	PATCH_AVAILABLE_ACTIONS_PRECHECK PatchAvailableActionsEnum = "PRECHECK"
-	PATCH_AVAILABLE_ACTIONS_UNKNOWN  PatchAvailableActionsEnum = "UNKNOWN"
+	PatchAvailableActionsApply    PatchAvailableActionsEnum = "APPLY"
+	PatchAvailableActionsPrecheck PatchAvailableActionsEnum = "PRECHECK"
+	PatchAvailableActionsUnknown  PatchAvailableActionsEnum = "UNKNOWN"
 )
 
-var mapping_patch_availableActions = map[string]PatchAvailableActionsEnum{
-	"APPLY":    PATCH_AVAILABLE_ACTIONS_APPLY,
-	"PRECHECK": PATCH_AVAILABLE_ACTIONS_PRECHECK,
-	"UNKNOWN":  PATCH_AVAILABLE_ACTIONS_UNKNOWN,
+var mappingPatchAvailableActions = map[string]PatchAvailableActionsEnum{
+	"APPLY":    PatchAvailableActionsApply,
+	"PRECHECK": PatchAvailableActionsPrecheck,
+	"UNKNOWN":  PatchAvailableActionsUnknown,
 }
 
+// GetPatchAvailableActionsEnumValues Enumerates the set of values for PatchAvailableActions
 func GetPatchAvailableActionsEnumValues() []PatchAvailableActionsEnum {
 	values := make([]PatchAvailableActionsEnum, 0)
-	for _, v := range mapping_patch_availableActions {
-		if v != PATCH_AVAILABLE_ACTIONS_UNKNOWN {
+	for _, v := range mappingPatchAvailableActions {
+		if v != PatchAvailableActionsUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// PatchLastActionEnum Enum with underlying type: string
 type PatchLastActionEnum string
 
+// Set of constants representing the allowable values for PatchLastAction
 const (
-	PATCH_LAST_ACTION_APPLY    PatchLastActionEnum = "APPLY"
-	PATCH_LAST_ACTION_PRECHECK PatchLastActionEnum = "PRECHECK"
-	PATCH_LAST_ACTION_UNKNOWN  PatchLastActionEnum = "UNKNOWN"
+	PatchLastActionApply    PatchLastActionEnum = "APPLY"
+	PatchLastActionPrecheck PatchLastActionEnum = "PRECHECK"
+	PatchLastActionUnknown  PatchLastActionEnum = "UNKNOWN"
 )
 
-var mapping_patch_lastAction = map[string]PatchLastActionEnum{
-	"APPLY":    PATCH_LAST_ACTION_APPLY,
-	"PRECHECK": PATCH_LAST_ACTION_PRECHECK,
-	"UNKNOWN":  PATCH_LAST_ACTION_UNKNOWN,
+var mappingPatchLastAction = map[string]PatchLastActionEnum{
+	"APPLY":    PatchLastActionApply,
+	"PRECHECK": PatchLastActionPrecheck,
+	"UNKNOWN":  PatchLastActionUnknown,
 }
 
+// GetPatchLastActionEnumValues Enumerates the set of values for PatchLastAction
 func GetPatchLastActionEnumValues() []PatchLastActionEnum {
 	values := make([]PatchLastActionEnum, 0)
-	for _, v := range mapping_patch_lastAction {
-		if v != PATCH_LAST_ACTION_UNKNOWN {
+	for _, v := range mappingPatchLastAction {
+		if v != PatchLastActionUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// PatchLifecycleStateEnum Enum with underlying type: string
 type PatchLifecycleStateEnum string
 
+// Set of constants representing the allowable values for PatchLifecycleState
 const (
-	PATCH_LIFECYCLE_STATE_AVAILABLE   PatchLifecycleStateEnum = "AVAILABLE"
-	PATCH_LIFECYCLE_STATE_SUCCESS     PatchLifecycleStateEnum = "SUCCESS"
-	PATCH_LIFECYCLE_STATE_IN_PROGRESS PatchLifecycleStateEnum = "IN_PROGRESS"
-	PATCH_LIFECYCLE_STATE_FAILED      PatchLifecycleStateEnum = "FAILED"
-	PATCH_LIFECYCLE_STATE_UNKNOWN     PatchLifecycleStateEnum = "UNKNOWN"
+	PatchLifecycleStateAvailable  PatchLifecycleStateEnum = "AVAILABLE"
+	PatchLifecycleStateSuccess    PatchLifecycleStateEnum = "SUCCESS"
+	PatchLifecycleStateInProgress PatchLifecycleStateEnum = "IN_PROGRESS"
+	PatchLifecycleStateFailed     PatchLifecycleStateEnum = "FAILED"
+	PatchLifecycleStateUnknown    PatchLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_patch_lifecycleState = map[string]PatchLifecycleStateEnum{
-	"AVAILABLE":   PATCH_LIFECYCLE_STATE_AVAILABLE,
-	"SUCCESS":     PATCH_LIFECYCLE_STATE_SUCCESS,
-	"IN_PROGRESS": PATCH_LIFECYCLE_STATE_IN_PROGRESS,
-	"FAILED":      PATCH_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":     PATCH_LIFECYCLE_STATE_UNKNOWN,
+var mappingPatchLifecycleState = map[string]PatchLifecycleStateEnum{
+	"AVAILABLE":   PatchLifecycleStateAvailable,
+	"SUCCESS":     PatchLifecycleStateSuccess,
+	"IN_PROGRESS": PatchLifecycleStateInProgress,
+	"FAILED":      PatchLifecycleStateFailed,
+	"UNKNOWN":     PatchLifecycleStateUnknown,
 }
 
+// GetPatchLifecycleStateEnumValues Enumerates the set of values for PatchLifecycleState
 func GetPatchLifecycleStateEnumValues() []PatchLifecycleStateEnum {
 	values := make([]PatchLifecycleStateEnum, 0)
-	for _, v := range mapping_patch_lifecycleState {
-		if v != PATCH_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingPatchLifecycleState {
+		if v != PatchLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// EgressSecurityRule. A rule for allowing outbound IP packets.
+// EgressSecurityRule A rule for allowing outbound IP packets.
 type EgressSecurityRule struct {
 
 	// The destination CIDR block for the egress rule. This is the range of IP addresses that a

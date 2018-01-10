@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// BackupSummary. A database backup
+// BackupSummary A database backup
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type BackupSummary struct {
 
@@ -51,56 +51,62 @@ func (model BackupSummary) String() string {
 	return common.PointerString(model)
 }
 
+// BackupSummaryLifecycleStateEnum Enum with underlying type: string
 type BackupSummaryLifecycleStateEnum string
 
+// Set of constants representing the allowable values for BackupSummaryLifecycleState
 const (
-	BACKUP_SUMMARY_LIFECYCLE_STATE_CREATING  BackupSummaryLifecycleStateEnum = "CREATING"
-	BACKUP_SUMMARY_LIFECYCLE_STATE_ACTIVE    BackupSummaryLifecycleStateEnum = "ACTIVE"
-	BACKUP_SUMMARY_LIFECYCLE_STATE_DELETING  BackupSummaryLifecycleStateEnum = "DELETING"
-	BACKUP_SUMMARY_LIFECYCLE_STATE_DELETED   BackupSummaryLifecycleStateEnum = "DELETED"
-	BACKUP_SUMMARY_LIFECYCLE_STATE_FAILED    BackupSummaryLifecycleStateEnum = "FAILED"
-	BACKUP_SUMMARY_LIFECYCLE_STATE_RESTORING BackupSummaryLifecycleStateEnum = "RESTORING"
-	BACKUP_SUMMARY_LIFECYCLE_STATE_UNKNOWN   BackupSummaryLifecycleStateEnum = "UNKNOWN"
+	BackupSummaryLifecycleStateCreating  BackupSummaryLifecycleStateEnum = "CREATING"
+	BackupSummaryLifecycleStateActive    BackupSummaryLifecycleStateEnum = "ACTIVE"
+	BackupSummaryLifecycleStateDeleting  BackupSummaryLifecycleStateEnum = "DELETING"
+	BackupSummaryLifecycleStateDeleted   BackupSummaryLifecycleStateEnum = "DELETED"
+	BackupSummaryLifecycleStateFailed    BackupSummaryLifecycleStateEnum = "FAILED"
+	BackupSummaryLifecycleStateRestoring BackupSummaryLifecycleStateEnum = "RESTORING"
+	BackupSummaryLifecycleStateUnknown   BackupSummaryLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_backupsummary_lifecycleState = map[string]BackupSummaryLifecycleStateEnum{
-	"CREATING":  BACKUP_SUMMARY_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":    BACKUP_SUMMARY_LIFECYCLE_STATE_ACTIVE,
-	"DELETING":  BACKUP_SUMMARY_LIFECYCLE_STATE_DELETING,
-	"DELETED":   BACKUP_SUMMARY_LIFECYCLE_STATE_DELETED,
-	"FAILED":    BACKUP_SUMMARY_LIFECYCLE_STATE_FAILED,
-	"RESTORING": BACKUP_SUMMARY_LIFECYCLE_STATE_RESTORING,
-	"UNKNOWN":   BACKUP_SUMMARY_LIFECYCLE_STATE_UNKNOWN,
+var mappingBackupSummaryLifecycleState = map[string]BackupSummaryLifecycleStateEnum{
+	"CREATING":  BackupSummaryLifecycleStateCreating,
+	"ACTIVE":    BackupSummaryLifecycleStateActive,
+	"DELETING":  BackupSummaryLifecycleStateDeleting,
+	"DELETED":   BackupSummaryLifecycleStateDeleted,
+	"FAILED":    BackupSummaryLifecycleStateFailed,
+	"RESTORING": BackupSummaryLifecycleStateRestoring,
+	"UNKNOWN":   BackupSummaryLifecycleStateUnknown,
 }
 
+// GetBackupSummaryLifecycleStateEnumValues Enumerates the set of values for BackupSummaryLifecycleState
 func GetBackupSummaryLifecycleStateEnumValues() []BackupSummaryLifecycleStateEnum {
 	values := make([]BackupSummaryLifecycleStateEnum, 0)
-	for _, v := range mapping_backupsummary_lifecycleState {
-		if v != BACKUP_SUMMARY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingBackupSummaryLifecycleState {
+		if v != BackupSummaryLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// BackupSummaryType_Enum Enum with underlying type: string
 type BackupSummaryType_Enum string
 
+// Set of constants representing the allowable values for BackupSummaryType_
 const (
-	BACKUP_SUMMARY_TYPE__INCREMENTAL BackupSummaryType_Enum = "INCREMENTAL"
-	BACKUP_SUMMARY_TYPE__FULL        BackupSummaryType_Enum = "FULL"
-	BACKUP_SUMMARY_TYPE__UNKNOWN     BackupSummaryType_Enum = "UNKNOWN"
+	BackupSummaryType_Incremental BackupSummaryType_Enum = "INCREMENTAL"
+	BackupSummaryType_Full        BackupSummaryType_Enum = "FULL"
+	BackupSummaryType_Unknown     BackupSummaryType_Enum = "UNKNOWN"
 )
 
-var mapping_backupsummary_type = map[string]BackupSummaryType_Enum{
-	"INCREMENTAL": BACKUP_SUMMARY_TYPE__INCREMENTAL,
-	"FULL":        BACKUP_SUMMARY_TYPE__FULL,
-	"UNKNOWN":     BACKUP_SUMMARY_TYPE__UNKNOWN,
+var mappingBackupSummaryType_ = map[string]BackupSummaryType_Enum{
+	"INCREMENTAL": BackupSummaryType_Incremental,
+	"FULL":        BackupSummaryType_Full,
+	"UNKNOWN":     BackupSummaryType_Unknown,
 }
 
+// GetBackupSummaryType_EnumValues Enumerates the set of values for BackupSummaryType_
 func GetBackupSummaryType_EnumValues() []BackupSummaryType_Enum {
 	values := make([]BackupSummaryType_Enum, 0)
-	for _, v := range mapping_backupsummary_type {
-		if v != BACKUP_SUMMARY_TYPE__UNKNOWN {
+	for _, v := range mappingBackupSummaryType_ {
+		if v != BackupSummaryType_Unknown {
 			values = append(values, v)
 		}
 	}

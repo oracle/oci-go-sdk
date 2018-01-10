@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateDbHomeWithDbSystemIdFromBackupDetails.
+// CreateDbHomeWithDbSystemIdFromBackupDetails
 type CreateDbHomeWithDbSystemIdFromBackupDetails struct {
 
 	// The OCID of the DB System.

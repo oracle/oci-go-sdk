@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// LetterOfAuthority. The Letter of Authority for the cross-connect. You must submit this letter when
+// LetterOfAuthority The Letter of Authority for the cross-connect. You must submit this letter when
 // requesting cabling for the cross-connect at the FastConnect location.
 type LetterOfAuthority struct {
 
@@ -43,24 +43,27 @@ func (model LetterOfAuthority) String() string {
 	return common.PointerString(model)
 }
 
+// LetterOfAuthorityCircuitTypeEnum Enum with underlying type: string
 type LetterOfAuthorityCircuitTypeEnum string
 
+// Set of constants representing the allowable values for LetterOfAuthorityCircuitType
 const (
-	LETTER_OF_AUTHORITY_CIRCUIT_TYPE_LC      LetterOfAuthorityCircuitTypeEnum = "Single_mode_LC"
-	LETTER_OF_AUTHORITY_CIRCUIT_TYPE_SC      LetterOfAuthorityCircuitTypeEnum = "Single_mode_SC"
-	LETTER_OF_AUTHORITY_CIRCUIT_TYPE_UNKNOWN LetterOfAuthorityCircuitTypeEnum = "UNKNOWN"
+	LetterOfAuthorityCircuitTypeLc      LetterOfAuthorityCircuitTypeEnum = "Single_mode_LC"
+	LetterOfAuthorityCircuitTypeSc      LetterOfAuthorityCircuitTypeEnum = "Single_mode_SC"
+	LetterOfAuthorityCircuitTypeUnknown LetterOfAuthorityCircuitTypeEnum = "UNKNOWN"
 )
 
-var mapping_letterofauthority_circuitType = map[string]LetterOfAuthorityCircuitTypeEnum{
-	"Single_mode_LC": LETTER_OF_AUTHORITY_CIRCUIT_TYPE_LC,
-	"Single_mode_SC": LETTER_OF_AUTHORITY_CIRCUIT_TYPE_SC,
-	"UNKNOWN":        LETTER_OF_AUTHORITY_CIRCUIT_TYPE_UNKNOWN,
+var mappingLetterOfAuthorityCircuitType = map[string]LetterOfAuthorityCircuitTypeEnum{
+	"Single_mode_LC": LetterOfAuthorityCircuitTypeLc,
+	"Single_mode_SC": LetterOfAuthorityCircuitTypeSc,
+	"UNKNOWN":        LetterOfAuthorityCircuitTypeUnknown,
 }
 
+// GetLetterOfAuthorityCircuitTypeEnumValues Enumerates the set of values for LetterOfAuthorityCircuitType
 func GetLetterOfAuthorityCircuitTypeEnumValues() []LetterOfAuthorityCircuitTypeEnum {
 	values := make([]LetterOfAuthorityCircuitTypeEnum, 0)
-	for _, v := range mapping_letterofauthority_circuitType {
-		if v != LETTER_OF_AUTHORITY_CIRCUIT_TYPE_UNKNOWN {
+	for _, v := range mappingLetterOfAuthorityCircuitType {
+		if v != LetterOfAuthorityCircuitTypeUnknown {
 			values = append(values, v)
 		}
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateLoadBalancerDetails. Configuration details to update a load balancer.
+// UpdateLoadBalancerDetails Configuration details to update a load balancer.
 type UpdateLoadBalancerDetails struct {
 
 	// The user-friendly display name for the load balancer. It does not have to be unique, and it is changeable.

@@ -68,48 +68,54 @@ func (response ListCrossConnectGroupsResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListCrossConnectGroupsSortByEnum Enum with underlying type: string
 type ListCrossConnectGroupsSortByEnum string
 
+// Set of constants representing the allowable values for ListCrossConnectGroupsSortBy
 const (
-	LIST_CROSS_CONNECT_GROUPS_SORT_BY_TIMECREATED ListCrossConnectGroupsSortByEnum = "TIMECREATED"
-	LIST_CROSS_CONNECT_GROUPS_SORT_BY_DISPLAYNAME ListCrossConnectGroupsSortByEnum = "DISPLAYNAME"
-	LIST_CROSS_CONNECT_GROUPS_SORT_BY_UNKNOWN     ListCrossConnectGroupsSortByEnum = "UNKNOWN"
+	ListCrossConnectGroupsSortByTimecreated ListCrossConnectGroupsSortByEnum = "TIMECREATED"
+	ListCrossConnectGroupsSortByDisplayname ListCrossConnectGroupsSortByEnum = "DISPLAYNAME"
+	ListCrossConnectGroupsSortByUnknown     ListCrossConnectGroupsSortByEnum = "UNKNOWN"
 )
 
-var mapping_listcrossconnectgroupssortby = map[string]ListCrossConnectGroupsSortByEnum{
-	"TIMECREATED": LIST_CROSS_CONNECT_GROUPS_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_CROSS_CONNECT_GROUPS_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_CROSS_CONNECT_GROUPS_SORT_BY_UNKNOWN,
+var mappingListCrossConnectGroupsSortBy = map[string]ListCrossConnectGroupsSortByEnum{
+	"TIMECREATED": ListCrossConnectGroupsSortByTimecreated,
+	"DISPLAYNAME": ListCrossConnectGroupsSortByDisplayname,
+	"UNKNOWN":     ListCrossConnectGroupsSortByUnknown,
 }
 
+// GetListCrossConnectGroupsSortByEnumValues Enumerates the set of values for ListCrossConnectGroupsSortBy
 func GetListCrossConnectGroupsSortByEnumValues() []ListCrossConnectGroupsSortByEnum {
 	values := make([]ListCrossConnectGroupsSortByEnum, 0)
-	for _, v := range mapping_listcrossconnectgroupssortby {
-		if v != LIST_CROSS_CONNECT_GROUPS_SORT_BY_UNKNOWN {
+	for _, v := range mappingListCrossConnectGroupsSortBy {
+		if v != ListCrossConnectGroupsSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListCrossConnectGroupsSortOrderEnum Enum with underlying type: string
 type ListCrossConnectGroupsSortOrderEnum string
 
+// Set of constants representing the allowable values for ListCrossConnectGroupsSortOrder
 const (
-	LIST_CROSS_CONNECT_GROUPS_SORT_ORDER_ASC     ListCrossConnectGroupsSortOrderEnum = "ASC"
-	LIST_CROSS_CONNECT_GROUPS_SORT_ORDER_DESC    ListCrossConnectGroupsSortOrderEnum = "DESC"
-	LIST_CROSS_CONNECT_GROUPS_SORT_ORDER_UNKNOWN ListCrossConnectGroupsSortOrderEnum = "UNKNOWN"
+	ListCrossConnectGroupsSortOrderAsc     ListCrossConnectGroupsSortOrderEnum = "ASC"
+	ListCrossConnectGroupsSortOrderDesc    ListCrossConnectGroupsSortOrderEnum = "DESC"
+	ListCrossConnectGroupsSortOrderUnknown ListCrossConnectGroupsSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listcrossconnectgroupssortorder = map[string]ListCrossConnectGroupsSortOrderEnum{
-	"ASC":     LIST_CROSS_CONNECT_GROUPS_SORT_ORDER_ASC,
-	"DESC":    LIST_CROSS_CONNECT_GROUPS_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_CROSS_CONNECT_GROUPS_SORT_ORDER_UNKNOWN,
+var mappingListCrossConnectGroupsSortOrder = map[string]ListCrossConnectGroupsSortOrderEnum{
+	"ASC":     ListCrossConnectGroupsSortOrderAsc,
+	"DESC":    ListCrossConnectGroupsSortOrderDesc,
+	"UNKNOWN": ListCrossConnectGroupsSortOrderUnknown,
 }
 
+// GetListCrossConnectGroupsSortOrderEnumValues Enumerates the set of values for ListCrossConnectGroupsSortOrder
 func GetListCrossConnectGroupsSortOrderEnumValues() []ListCrossConnectGroupsSortOrderEnum {
 	values := make([]ListCrossConnectGroupsSortOrderEnum, 0)
-	for _, v := range mapping_listcrossconnectgroupssortorder {
-		if v != LIST_CROSS_CONNECT_GROUPS_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListCrossConnectGroupsSortOrder {
+		if v != ListCrossConnectGroupsSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

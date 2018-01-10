@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// PrivateIp. A *private IP* is a conceptual term that refers to a private IP address and related properties.
+// PrivateIp A *private IP* is a conceptual term that refers to a private IP address and related properties.
 // The `privateIp` object is the API representation of a private IP.
 // Each instance has a *primary private IP* that is automatically created and
 // assigned to the primary VNIC during instance launch. If you add a secondary

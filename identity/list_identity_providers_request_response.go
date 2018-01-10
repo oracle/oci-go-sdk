@@ -51,22 +51,25 @@ func (response ListIdentityProvidersResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListIdentityProvidersProtocolEnum Enum with underlying type: string
 type ListIdentityProvidersProtocolEnum string
 
+// Set of constants representing the allowable values for ListIdentityProvidersProtocol
 const (
-	LIST_IDENTITY_PROVIDERS_PROTOCOL_SAML2   ListIdentityProvidersProtocolEnum = "SAML2"
-	LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN ListIdentityProvidersProtocolEnum = "UNKNOWN"
+	ListIdentityProvidersProtocolSaml2   ListIdentityProvidersProtocolEnum = "SAML2"
+	ListIdentityProvidersProtocolUnknown ListIdentityProvidersProtocolEnum = "UNKNOWN"
 )
 
-var mapping_listidentityprovidersprotocol = map[string]ListIdentityProvidersProtocolEnum{
-	"SAML2":   LIST_IDENTITY_PROVIDERS_PROTOCOL_SAML2,
-	"UNKNOWN": LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN,
+var mappingListIdentityProvidersProtocol = map[string]ListIdentityProvidersProtocolEnum{
+	"SAML2":   ListIdentityProvidersProtocolSaml2,
+	"UNKNOWN": ListIdentityProvidersProtocolUnknown,
 }
 
+// GetListIdentityProvidersProtocolEnumValues Enumerates the set of values for ListIdentityProvidersProtocol
 func GetListIdentityProvidersProtocolEnumValues() []ListIdentityProvidersProtocolEnum {
 	values := make([]ListIdentityProvidersProtocolEnum, 0)
-	for _, v := range mapping_listidentityprovidersprotocol {
-		if v != LIST_IDENTITY_PROVIDERS_PROTOCOL_UNKNOWN {
+	for _, v := range mappingListIdentityProvidersProtocol {
+		if v != ListIdentityProvidersProtocolUnknown {
 			values = append(values, v)
 		}
 	}

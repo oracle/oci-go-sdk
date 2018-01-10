@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UserGroupMembership. An object that represents the membership of a user in a group. When you add a user to a group, the result is a
+// UserGroupMembership An object that represents the membership of a user in a group. When you add a user to a group, the result is a
 // `UserGroupMembership` with its own OCID. To remove a user from a group, you delete the `UserGroupMembership` object.
 type UserGroupMembership struct {
 
@@ -44,30 +44,33 @@ func (model UserGroupMembership) String() string {
 	return common.PointerString(model)
 }
 
+// UserGroupMembershipLifecycleStateEnum Enum with underlying type: string
 type UserGroupMembershipLifecycleStateEnum string
 
+// Set of constants representing the allowable values for UserGroupMembershipLifecycleState
 const (
-	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_CREATING UserGroupMembershipLifecycleStateEnum = "CREATING"
-	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_ACTIVE   UserGroupMembershipLifecycleStateEnum = "ACTIVE"
-	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_INACTIVE UserGroupMembershipLifecycleStateEnum = "INACTIVE"
-	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_DELETING UserGroupMembershipLifecycleStateEnum = "DELETING"
-	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_DELETED  UserGroupMembershipLifecycleStateEnum = "DELETED"
-	USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_UNKNOWN  UserGroupMembershipLifecycleStateEnum = "UNKNOWN"
+	UserGroupMembershipLifecycleStateCreating UserGroupMembershipLifecycleStateEnum = "CREATING"
+	UserGroupMembershipLifecycleStateActive   UserGroupMembershipLifecycleStateEnum = "ACTIVE"
+	UserGroupMembershipLifecycleStateInactive UserGroupMembershipLifecycleStateEnum = "INACTIVE"
+	UserGroupMembershipLifecycleStateDeleting UserGroupMembershipLifecycleStateEnum = "DELETING"
+	UserGroupMembershipLifecycleStateDeleted  UserGroupMembershipLifecycleStateEnum = "DELETED"
+	UserGroupMembershipLifecycleStateUnknown  UserGroupMembershipLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_usergroupmembership_lifecycleState = map[string]UserGroupMembershipLifecycleStateEnum{
-	"CREATING": USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_DELETING,
-	"DELETED":  USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_UNKNOWN,
+var mappingUserGroupMembershipLifecycleState = map[string]UserGroupMembershipLifecycleStateEnum{
+	"CREATING": UserGroupMembershipLifecycleStateCreating,
+	"ACTIVE":   UserGroupMembershipLifecycleStateActive,
+	"INACTIVE": UserGroupMembershipLifecycleStateInactive,
+	"DELETING": UserGroupMembershipLifecycleStateDeleting,
+	"DELETED":  UserGroupMembershipLifecycleStateDeleted,
+	"UNKNOWN":  UserGroupMembershipLifecycleStateUnknown,
 }
 
+// GetUserGroupMembershipLifecycleStateEnumValues Enumerates the set of values for UserGroupMembershipLifecycleState
 func GetUserGroupMembershipLifecycleStateEnumValues() []UserGroupMembershipLifecycleStateEnum {
 	values := make([]UserGroupMembershipLifecycleStateEnum, 0)
-	for _, v := range mapping_usergroupmembership_lifecycleState {
-		if v != USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingUserGroupMembershipLifecycleState {
+		if v != UserGroupMembershipLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

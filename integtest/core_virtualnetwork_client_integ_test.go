@@ -21,10 +21,36 @@ var (
 	testRegionForVirtualNetwork = common.REGION_PHX
 )
 
+func TestVirtualNetworkClient_BulkAddVirtualCircuitPublicPrefixes(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
+	request := core.BulkAddVirtualCircuitPublicPrefixesRequest{}
+	err := c.BulkAddVirtualCircuitPublicPrefixes(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
+func TestVirtualNetworkClient_BulkDeleteVirtualCircuitPublicPrefixes(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
+	request := core.BulkDeleteVirtualCircuitPublicPrefixesRequest{}
+	err := c.BulkDeleteVirtualCircuitPublicPrefixes(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
+func TestVirtualNetworkClient_ConnectLocalPeeringGateways(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
+	request := core.ConnectLocalPeeringGatewaysRequest{}
+	err := c.ConnectLocalPeeringGateways(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
 func TestVirtualNetworkClient_CreateCpe(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateCpeRequest{}
 	r, err := c.CreateCpe(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -34,8 +60,7 @@ func TestVirtualNetworkClient_CreateCpe(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateCrossConnect(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateCrossConnectRequest{}
 	r, err := c.CreateCrossConnect(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -45,8 +70,7 @@ func TestVirtualNetworkClient_CreateCrossConnect(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateCrossConnectGroup(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateCrossConnectGroupRequest{}
 	r, err := c.CreateCrossConnectGroup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -56,8 +80,7 @@ func TestVirtualNetworkClient_CreateCrossConnectGroup(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateDhcpOptions(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateDhcpOptionsRequest{}
 	r, err := c.CreateDhcpOptions(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -67,8 +90,7 @@ func TestVirtualNetworkClient_CreateDhcpOptions(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateDrg(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateDrgRequest{}
 	r, err := c.CreateDrg(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -78,8 +100,7 @@ func TestVirtualNetworkClient_CreateDrg(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateDrgAttachment(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateDrgAttachmentRequest{}
 	r, err := c.CreateDrgAttachment(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -89,8 +110,7 @@ func TestVirtualNetworkClient_CreateDrgAttachment(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateIPSecConnection(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateIPSecConnectionRequest{}
 	r, err := c.CreateIPSecConnection(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -100,8 +120,7 @@ func TestVirtualNetworkClient_CreateIPSecConnection(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateInternetGateway(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateInternetGatewayRequest{}
 	r, err := c.CreateInternetGateway(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -109,10 +128,19 @@ func TestVirtualNetworkClient_CreateInternetGateway(t *testing.T) {
 	return
 }
 
+func TestVirtualNetworkClient_CreateLocalPeeringGateway(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
+	request := core.CreateLocalPeeringGatewayRequest{}
+	r, err := c.CreateLocalPeeringGateway(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
 func TestVirtualNetworkClient_CreatePrivateIp(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreatePrivateIpRequest{}
 	r, err := c.CreatePrivateIp(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -122,8 +150,7 @@ func TestVirtualNetworkClient_CreatePrivateIp(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateRouteTable(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateRouteTableRequest{}
 	r, err := c.CreateRouteTable(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -133,8 +160,7 @@ func TestVirtualNetworkClient_CreateRouteTable(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateSecurityList(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateSecurityListRequest{}
 	r, err := c.CreateSecurityList(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -144,8 +170,7 @@ func TestVirtualNetworkClient_CreateSecurityList(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateSubnet(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateSubnetRequest{}
 	r, err := c.CreateSubnet(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -155,8 +180,7 @@ func TestVirtualNetworkClient_CreateSubnet(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateVcn(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateVcnRequest{}
 	r, err := c.CreateVcn(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -166,8 +190,7 @@ func TestVirtualNetworkClient_CreateVcn(t *testing.T) {
 
 func TestVirtualNetworkClient_CreateVirtualCircuit(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.CreateVirtualCircuitRequest{}
 	r, err := c.CreateVirtualCircuit(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -177,8 +200,7 @@ func TestVirtualNetworkClient_CreateVirtualCircuit(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteCpe(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteCpeRequest{}
 	err := c.DeleteCpe(context.Background(), request)
 	assert.NoError(t, err)
@@ -187,8 +209,7 @@ func TestVirtualNetworkClient_DeleteCpe(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteCrossConnect(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteCrossConnectRequest{}
 	err := c.DeleteCrossConnect(context.Background(), request)
 	assert.NoError(t, err)
@@ -197,8 +218,7 @@ func TestVirtualNetworkClient_DeleteCrossConnect(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteCrossConnectGroup(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteCrossConnectGroupRequest{}
 	err := c.DeleteCrossConnectGroup(context.Background(), request)
 	assert.NoError(t, err)
@@ -207,8 +227,7 @@ func TestVirtualNetworkClient_DeleteCrossConnectGroup(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteDhcpOptions(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteDhcpOptionsRequest{}
 	err := c.DeleteDhcpOptions(context.Background(), request)
 	assert.NoError(t, err)
@@ -217,8 +236,7 @@ func TestVirtualNetworkClient_DeleteDhcpOptions(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteDrg(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteDrgRequest{}
 	err := c.DeleteDrg(context.Background(), request)
 	assert.NoError(t, err)
@@ -227,8 +245,7 @@ func TestVirtualNetworkClient_DeleteDrg(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteDrgAttachment(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteDrgAttachmentRequest{}
 	err := c.DeleteDrgAttachment(context.Background(), request)
 	assert.NoError(t, err)
@@ -237,8 +254,7 @@ func TestVirtualNetworkClient_DeleteDrgAttachment(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteIPSecConnection(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteIPSecConnectionRequest{}
 	err := c.DeleteIPSecConnection(context.Background(), request)
 	assert.NoError(t, err)
@@ -247,18 +263,25 @@ func TestVirtualNetworkClient_DeleteIPSecConnection(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteInternetGateway(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteInternetGatewayRequest{}
 	err := c.DeleteInternetGateway(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
 
+func TestVirtualNetworkClient_DeleteLocalPeeringGateway(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
+	request := core.DeleteLocalPeeringGatewayRequest{}
+	err := c.DeleteLocalPeeringGateway(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
 func TestVirtualNetworkClient_DeletePrivateIp(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeletePrivateIpRequest{}
 	err := c.DeletePrivateIp(context.Background(), request)
 	assert.NoError(t, err)
@@ -267,8 +290,7 @@ func TestVirtualNetworkClient_DeletePrivateIp(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteRouteTable(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteRouteTableRequest{}
 	err := c.DeleteRouteTable(context.Background(), request)
 	assert.NoError(t, err)
@@ -277,8 +299,7 @@ func TestVirtualNetworkClient_DeleteRouteTable(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteSecurityList(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteSecurityListRequest{}
 	err := c.DeleteSecurityList(context.Background(), request)
 	assert.NoError(t, err)
@@ -287,8 +308,7 @@ func TestVirtualNetworkClient_DeleteSecurityList(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteSubnet(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteSubnetRequest{}
 	err := c.DeleteSubnet(context.Background(), request)
 	assert.NoError(t, err)
@@ -297,8 +317,7 @@ func TestVirtualNetworkClient_DeleteSubnet(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteVcn(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteVcnRequest{}
 	err := c.DeleteVcn(context.Background(), request)
 	assert.NoError(t, err)
@@ -307,8 +326,7 @@ func TestVirtualNetworkClient_DeleteVcn(t *testing.T) {
 
 func TestVirtualNetworkClient_DeleteVirtualCircuit(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.DeleteVirtualCircuitRequest{}
 	err := c.DeleteVirtualCircuit(context.Background(), request)
 	assert.NoError(t, err)
@@ -317,8 +335,7 @@ func TestVirtualNetworkClient_DeleteVirtualCircuit(t *testing.T) {
 
 func TestVirtualNetworkClient_GetCpe(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetCpeRequest{}
 	r, err := c.GetCpe(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -328,8 +345,7 @@ func TestVirtualNetworkClient_GetCpe(t *testing.T) {
 
 func TestVirtualNetworkClient_GetCrossConnect(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetCrossConnectRequest{}
 	r, err := c.GetCrossConnect(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -339,8 +355,7 @@ func TestVirtualNetworkClient_GetCrossConnect(t *testing.T) {
 
 func TestVirtualNetworkClient_GetCrossConnectGroup(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetCrossConnectGroupRequest{}
 	r, err := c.GetCrossConnectGroup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -350,8 +365,7 @@ func TestVirtualNetworkClient_GetCrossConnectGroup(t *testing.T) {
 
 func TestVirtualNetworkClient_GetCrossConnectLetterOfAuthority(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetCrossConnectLetterOfAuthorityRequest{}
 	r, err := c.GetCrossConnectLetterOfAuthority(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -361,8 +375,7 @@ func TestVirtualNetworkClient_GetCrossConnectLetterOfAuthority(t *testing.T) {
 
 func TestVirtualNetworkClient_GetCrossConnectStatus(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetCrossConnectStatusRequest{}
 	r, err := c.GetCrossConnectStatus(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -372,8 +385,7 @@ func TestVirtualNetworkClient_GetCrossConnectStatus(t *testing.T) {
 
 func TestVirtualNetworkClient_GetDhcpOptions(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetDhcpOptionsRequest{}
 	r, err := c.GetDhcpOptions(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -383,8 +395,7 @@ func TestVirtualNetworkClient_GetDhcpOptions(t *testing.T) {
 
 func TestVirtualNetworkClient_GetDrg(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetDrgRequest{}
 	r, err := c.GetDrg(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -394,8 +405,7 @@ func TestVirtualNetworkClient_GetDrg(t *testing.T) {
 
 func TestVirtualNetworkClient_GetDrgAttachment(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetDrgAttachmentRequest{}
 	r, err := c.GetDrgAttachment(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -405,8 +415,7 @@ func TestVirtualNetworkClient_GetDrgAttachment(t *testing.T) {
 
 func TestVirtualNetworkClient_GetFastConnectProviderService(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetFastConnectProviderServiceRequest{}
 	r, err := c.GetFastConnectProviderService(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -416,8 +425,7 @@ func TestVirtualNetworkClient_GetFastConnectProviderService(t *testing.T) {
 
 func TestVirtualNetworkClient_GetIPSecConnection(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetIPSecConnectionRequest{}
 	r, err := c.GetIPSecConnection(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -427,8 +435,7 @@ func TestVirtualNetworkClient_GetIPSecConnection(t *testing.T) {
 
 func TestVirtualNetworkClient_GetIPSecConnectionDeviceConfig(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetIPSecConnectionDeviceConfigRequest{}
 	r, err := c.GetIPSecConnectionDeviceConfig(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -438,8 +445,7 @@ func TestVirtualNetworkClient_GetIPSecConnectionDeviceConfig(t *testing.T) {
 
 func TestVirtualNetworkClient_GetIPSecConnectionDeviceStatus(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetIPSecConnectionDeviceStatusRequest{}
 	r, err := c.GetIPSecConnectionDeviceStatus(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -449,8 +455,7 @@ func TestVirtualNetworkClient_GetIPSecConnectionDeviceStatus(t *testing.T) {
 
 func TestVirtualNetworkClient_GetInternetGateway(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetInternetGatewayRequest{}
 	r, err := c.GetInternetGateway(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -458,10 +463,19 @@ func TestVirtualNetworkClient_GetInternetGateway(t *testing.T) {
 	return
 }
 
+func TestVirtualNetworkClient_GetLocalPeeringGateway(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
+	request := core.GetLocalPeeringGatewayRequest{}
+	r, err := c.GetLocalPeeringGateway(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
 func TestVirtualNetworkClient_GetPrivateIp(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetPrivateIpRequest{}
 	r, err := c.GetPrivateIp(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -471,8 +485,7 @@ func TestVirtualNetworkClient_GetPrivateIp(t *testing.T) {
 
 func TestVirtualNetworkClient_GetRouteTable(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetRouteTableRequest{}
 	r, err := c.GetRouteTable(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -482,8 +495,7 @@ func TestVirtualNetworkClient_GetRouteTable(t *testing.T) {
 
 func TestVirtualNetworkClient_GetSecurityList(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetSecurityListRequest{}
 	r, err := c.GetSecurityList(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -493,8 +505,7 @@ func TestVirtualNetworkClient_GetSecurityList(t *testing.T) {
 
 func TestVirtualNetworkClient_GetSubnet(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetSubnetRequest{}
 	r, err := c.GetSubnet(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -504,8 +515,7 @@ func TestVirtualNetworkClient_GetSubnet(t *testing.T) {
 
 func TestVirtualNetworkClient_GetVcn(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetVcnRequest{}
 	r, err := c.GetVcn(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -515,8 +525,7 @@ func TestVirtualNetworkClient_GetVcn(t *testing.T) {
 
 func TestVirtualNetworkClient_GetVirtualCircuit(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetVirtualCircuitRequest{}
 	r, err := c.GetVirtualCircuit(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -526,8 +535,7 @@ func TestVirtualNetworkClient_GetVirtualCircuit(t *testing.T) {
 
 func TestVirtualNetworkClient_GetVnic(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.GetVnicRequest{}
 	r, err := c.GetVnic(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -537,8 +545,7 @@ func TestVirtualNetworkClient_GetVnic(t *testing.T) {
 
 func TestVirtualNetworkClient_ListCpes(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListCpesRequest{}
 	r, err := c.ListCpes(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -548,8 +555,7 @@ func TestVirtualNetworkClient_ListCpes(t *testing.T) {
 
 func TestVirtualNetworkClient_ListCrossConnectGroups(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListCrossConnectGroupsRequest{}
 	r, err := c.ListCrossConnectGroups(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -559,8 +565,7 @@ func TestVirtualNetworkClient_ListCrossConnectGroups(t *testing.T) {
 
 func TestVirtualNetworkClient_ListCrossConnectLocations(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListCrossConnectLocationsRequest{}
 	r, err := c.ListCrossConnectLocations(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -570,8 +575,7 @@ func TestVirtualNetworkClient_ListCrossConnectLocations(t *testing.T) {
 
 func TestVirtualNetworkClient_ListCrossConnects(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListCrossConnectsRequest{}
 	r, err := c.ListCrossConnects(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -581,8 +585,7 @@ func TestVirtualNetworkClient_ListCrossConnects(t *testing.T) {
 
 func TestVirtualNetworkClient_ListCrossconnectPortSpeedShapes(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListCrossconnectPortSpeedShapesRequest{}
 	r, err := c.ListCrossconnectPortSpeedShapes(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -592,8 +595,7 @@ func TestVirtualNetworkClient_ListCrossconnectPortSpeedShapes(t *testing.T) {
 
 func TestVirtualNetworkClient_ListDhcpOptions(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListDhcpOptionsRequest{}
 	r, err := c.ListDhcpOptions(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -603,8 +605,7 @@ func TestVirtualNetworkClient_ListDhcpOptions(t *testing.T) {
 
 func TestVirtualNetworkClient_ListDrgAttachments(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListDrgAttachmentsRequest{}
 	r, err := c.ListDrgAttachments(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -614,8 +615,7 @@ func TestVirtualNetworkClient_ListDrgAttachments(t *testing.T) {
 
 func TestVirtualNetworkClient_ListDrgs(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListDrgsRequest{}
 	r, err := c.ListDrgs(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -625,8 +625,7 @@ func TestVirtualNetworkClient_ListDrgs(t *testing.T) {
 
 func TestVirtualNetworkClient_ListFastConnectProviderServices(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListFastConnectProviderServicesRequest{}
 	r, err := c.ListFastConnectProviderServices(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -636,8 +635,7 @@ func TestVirtualNetworkClient_ListFastConnectProviderServices(t *testing.T) {
 
 func TestVirtualNetworkClient_ListFastConnectProviderVirtualCircuitBandwidthShapes(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListFastConnectProviderVirtualCircuitBandwidthShapesRequest{}
 	r, err := c.ListFastConnectProviderVirtualCircuitBandwidthShapes(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -647,8 +645,7 @@ func TestVirtualNetworkClient_ListFastConnectProviderVirtualCircuitBandwidthShap
 
 func TestVirtualNetworkClient_ListIPSecConnections(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListIPSecConnectionsRequest{}
 	r, err := c.ListIPSecConnections(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -658,8 +655,7 @@ func TestVirtualNetworkClient_ListIPSecConnections(t *testing.T) {
 
 func TestVirtualNetworkClient_ListInternetGateways(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListInternetGatewaysRequest{}
 	r, err := c.ListInternetGateways(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -667,10 +663,19 @@ func TestVirtualNetworkClient_ListInternetGateways(t *testing.T) {
 	return
 }
 
+func TestVirtualNetworkClient_ListLocalPeeringGateways(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
+	request := core.ListLocalPeeringGatewaysRequest{}
+	r, err := c.ListLocalPeeringGateways(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
 func TestVirtualNetworkClient_ListPrivateIps(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListPrivateIpsRequest{}
 	r, err := c.ListPrivateIps(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -680,8 +685,7 @@ func TestVirtualNetworkClient_ListPrivateIps(t *testing.T) {
 
 func TestVirtualNetworkClient_ListRouteTables(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListRouteTablesRequest{}
 	r, err := c.ListRouteTables(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -691,8 +695,7 @@ func TestVirtualNetworkClient_ListRouteTables(t *testing.T) {
 
 func TestVirtualNetworkClient_ListSecurityLists(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListSecurityListsRequest{}
 	r, err := c.ListSecurityLists(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -702,8 +705,7 @@ func TestVirtualNetworkClient_ListSecurityLists(t *testing.T) {
 
 func TestVirtualNetworkClient_ListSubnets(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListSubnetsRequest{}
 	r, err := c.ListSubnets(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -713,8 +715,7 @@ func TestVirtualNetworkClient_ListSubnets(t *testing.T) {
 
 func TestVirtualNetworkClient_ListVcns(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListVcnsRequest{}
 	r, err := c.ListVcns(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -724,8 +725,7 @@ func TestVirtualNetworkClient_ListVcns(t *testing.T) {
 
 func TestVirtualNetworkClient_ListVirtualCircuitBandwidthShapes(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListVirtualCircuitBandwidthShapesRequest{}
 	r, err := c.ListVirtualCircuitBandwidthShapes(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -733,10 +733,19 @@ func TestVirtualNetworkClient_ListVirtualCircuitBandwidthShapes(t *testing.T) {
 	return
 }
 
+func TestVirtualNetworkClient_ListVirtualCircuitPublicPrefixes(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
+	request := core.ListVirtualCircuitPublicPrefixesRequest{}
+	r, err := c.ListVirtualCircuitPublicPrefixes(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
 func TestVirtualNetworkClient_ListVirtualCircuits(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.ListVirtualCircuitsRequest{}
 	r, err := c.ListVirtualCircuits(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -746,8 +755,7 @@ func TestVirtualNetworkClient_ListVirtualCircuits(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateCpe(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateCpeRequest{}
 	r, err := c.UpdateCpe(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -757,8 +765,7 @@ func TestVirtualNetworkClient_UpdateCpe(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateCrossConnect(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateCrossConnectRequest{}
 	r, err := c.UpdateCrossConnect(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -768,8 +775,7 @@ func TestVirtualNetworkClient_UpdateCrossConnect(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateCrossConnectGroup(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateCrossConnectGroupRequest{}
 	r, err := c.UpdateCrossConnectGroup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -779,8 +785,7 @@ func TestVirtualNetworkClient_UpdateCrossConnectGroup(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateDhcpOptions(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateDhcpOptionsRequest{}
 	r, err := c.UpdateDhcpOptions(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -790,8 +795,7 @@ func TestVirtualNetworkClient_UpdateDhcpOptions(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateDrg(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateDrgRequest{}
 	r, err := c.UpdateDrg(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -801,8 +805,7 @@ func TestVirtualNetworkClient_UpdateDrg(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateDrgAttachment(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateDrgAttachmentRequest{}
 	r, err := c.UpdateDrgAttachment(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -812,8 +815,7 @@ func TestVirtualNetworkClient_UpdateDrgAttachment(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateIPSecConnection(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateIPSecConnectionRequest{}
 	r, err := c.UpdateIPSecConnection(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -823,8 +825,7 @@ func TestVirtualNetworkClient_UpdateIPSecConnection(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateInternetGateway(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateInternetGatewayRequest{}
 	r, err := c.UpdateInternetGateway(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -832,10 +833,19 @@ func TestVirtualNetworkClient_UpdateInternetGateway(t *testing.T) {
 	return
 }
 
+func TestVirtualNetworkClient_UpdateLocalPeeringGateway(t *testing.T) {
+	t.Skip("Not implemented")
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
+	request := core.UpdateLocalPeeringGatewayRequest{}
+	r, err := c.UpdateLocalPeeringGateway(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
 func TestVirtualNetworkClient_UpdatePrivateIp(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdatePrivateIpRequest{}
 	r, err := c.UpdatePrivateIp(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -845,8 +855,7 @@ func TestVirtualNetworkClient_UpdatePrivateIp(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateRouteTable(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateRouteTableRequest{}
 	r, err := c.UpdateRouteTable(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -856,8 +865,7 @@ func TestVirtualNetworkClient_UpdateRouteTable(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateSecurityList(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateSecurityListRequest{}
 	r, err := c.UpdateSecurityList(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -867,8 +875,7 @@ func TestVirtualNetworkClient_UpdateSecurityList(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateSubnet(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateSubnetRequest{}
 	r, err := c.UpdateSubnet(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -878,8 +885,7 @@ func TestVirtualNetworkClient_UpdateSubnet(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateVcn(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateVcnRequest{}
 	r, err := c.UpdateVcn(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -889,8 +895,7 @@ func TestVirtualNetworkClient_UpdateVcn(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateVirtualCircuit(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateVirtualCircuitRequest{}
 	r, err := c.UpdateVirtualCircuit(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -900,8 +905,7 @@ func TestVirtualNetworkClient_UpdateVirtualCircuit(t *testing.T) {
 
 func TestVirtualNetworkClient_UpdateVnic(t *testing.T) {
 	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	c := core.NewVirtualNetworkClientForRegion(testRegionForVirtualNetwork)
 	request := core.UpdateVnicRequest{}
 	r, err := c.UpdateVnic(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))

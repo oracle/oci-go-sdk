@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// SwitchoverDataGuardAssociationDetails. The Data Guard association switchover parameters.
+// SwitchoverDataGuardAssociationDetails The Data Guard association switchover parameters.
 type SwitchoverDataGuardAssociationDetails struct {
 
 	// The DB System administrator password.

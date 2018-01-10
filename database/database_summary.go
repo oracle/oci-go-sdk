@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// DatabaseSummary. An Oracle database on a DB System. For more information, see [Managing Oracle Databases]({{DOC_SERVER_URL}}/Content/Database/Concepts/overview.htm).
+// DatabaseSummary An Oracle database on a DB System. For more information, see [Managing Oracle Databases]({{DOC_SERVER_URL}}/Content/Database/Concepts/overview.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type DatabaseSummary struct {
 
@@ -59,36 +59,39 @@ func (model DatabaseSummary) String() string {
 	return common.PointerString(model)
 }
 
+// DatabaseSummaryLifecycleStateEnum Enum with underlying type: string
 type DatabaseSummaryLifecycleStateEnum string
 
+// Set of constants representing the allowable values for DatabaseSummaryLifecycleState
 const (
-	DATABASE_SUMMARY_LIFECYCLE_STATE_PROVISIONING       DatabaseSummaryLifecycleStateEnum = "PROVISIONING"
-	DATABASE_SUMMARY_LIFECYCLE_STATE_AVAILABLE          DatabaseSummaryLifecycleStateEnum = "AVAILABLE"
-	DATABASE_SUMMARY_LIFECYCLE_STATE_UPDATING           DatabaseSummaryLifecycleStateEnum = "UPDATING"
-	DATABASE_SUMMARY_LIFECYCLE_STATE_BACKUP_IN_PROGRESS DatabaseSummaryLifecycleStateEnum = "BACKUP_IN_PROGRESS"
-	DATABASE_SUMMARY_LIFECYCLE_STATE_TERMINATING        DatabaseSummaryLifecycleStateEnum = "TERMINATING"
-	DATABASE_SUMMARY_LIFECYCLE_STATE_TERMINATED         DatabaseSummaryLifecycleStateEnum = "TERMINATED"
-	DATABASE_SUMMARY_LIFECYCLE_STATE_RESTORE_FAILED     DatabaseSummaryLifecycleStateEnum = "RESTORE_FAILED"
-	DATABASE_SUMMARY_LIFECYCLE_STATE_FAILED             DatabaseSummaryLifecycleStateEnum = "FAILED"
-	DATABASE_SUMMARY_LIFECYCLE_STATE_UNKNOWN            DatabaseSummaryLifecycleStateEnum = "UNKNOWN"
+	DatabaseSummaryLifecycleStateProvisioning     DatabaseSummaryLifecycleStateEnum = "PROVISIONING"
+	DatabaseSummaryLifecycleStateAvailable        DatabaseSummaryLifecycleStateEnum = "AVAILABLE"
+	DatabaseSummaryLifecycleStateUpdating         DatabaseSummaryLifecycleStateEnum = "UPDATING"
+	DatabaseSummaryLifecycleStateBackupInProgress DatabaseSummaryLifecycleStateEnum = "BACKUP_IN_PROGRESS"
+	DatabaseSummaryLifecycleStateTerminating      DatabaseSummaryLifecycleStateEnum = "TERMINATING"
+	DatabaseSummaryLifecycleStateTerminated       DatabaseSummaryLifecycleStateEnum = "TERMINATED"
+	DatabaseSummaryLifecycleStateRestoreFailed    DatabaseSummaryLifecycleStateEnum = "RESTORE_FAILED"
+	DatabaseSummaryLifecycleStateFailed           DatabaseSummaryLifecycleStateEnum = "FAILED"
+	DatabaseSummaryLifecycleStateUnknown          DatabaseSummaryLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_databasesummary_lifecycleState = map[string]DatabaseSummaryLifecycleStateEnum{
-	"PROVISIONING":       DATABASE_SUMMARY_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":          DATABASE_SUMMARY_LIFECYCLE_STATE_AVAILABLE,
-	"UPDATING":           DATABASE_SUMMARY_LIFECYCLE_STATE_UPDATING,
-	"BACKUP_IN_PROGRESS": DATABASE_SUMMARY_LIFECYCLE_STATE_BACKUP_IN_PROGRESS,
-	"TERMINATING":        DATABASE_SUMMARY_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":         DATABASE_SUMMARY_LIFECYCLE_STATE_TERMINATED,
-	"RESTORE_FAILED":     DATABASE_SUMMARY_LIFECYCLE_STATE_RESTORE_FAILED,
-	"FAILED":             DATABASE_SUMMARY_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":            DATABASE_SUMMARY_LIFECYCLE_STATE_UNKNOWN,
+var mappingDatabaseSummaryLifecycleState = map[string]DatabaseSummaryLifecycleStateEnum{
+	"PROVISIONING":       DatabaseSummaryLifecycleStateProvisioning,
+	"AVAILABLE":          DatabaseSummaryLifecycleStateAvailable,
+	"UPDATING":           DatabaseSummaryLifecycleStateUpdating,
+	"BACKUP_IN_PROGRESS": DatabaseSummaryLifecycleStateBackupInProgress,
+	"TERMINATING":        DatabaseSummaryLifecycleStateTerminating,
+	"TERMINATED":         DatabaseSummaryLifecycleStateTerminated,
+	"RESTORE_FAILED":     DatabaseSummaryLifecycleStateRestoreFailed,
+	"FAILED":             DatabaseSummaryLifecycleStateFailed,
+	"UNKNOWN":            DatabaseSummaryLifecycleStateUnknown,
 }
 
+// GetDatabaseSummaryLifecycleStateEnumValues Enumerates the set of values for DatabaseSummaryLifecycleState
 func GetDatabaseSummaryLifecycleStateEnumValues() []DatabaseSummaryLifecycleStateEnum {
 	values := make([]DatabaseSummaryLifecycleStateEnum, 0)
-	for _, v := range mapping_databasesummary_lifecycleState {
-		if v != DATABASE_SUMMARY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingDatabaseSummaryLifecycleState {
+		if v != DatabaseSummaryLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

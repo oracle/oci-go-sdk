@@ -1,4 +1,5 @@
 // Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Code generated. DO NOT EDIT.
 
 // Identity and Access Management Service API
 //
@@ -10,830 +11,522 @@ package integtest
 import (
 	"context"
 	"fmt"
-	"testing"
-
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
-// Group operations CRUD
-func TestIdentityClient_GroupCRUD(t *testing.T) {
-	// test should not fail if a previous run failed to clean up
-	groupName := getUniqueName("Group_CRUD")
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.CreateGroupRequest{}
-	request.CompartmentID = common.String(getTenancyID())
-	request.Name = common.String(groupName)
-	request.Description = common.String("GoSDK_someGroupDesc")
-	r, err := c.CreateGroup(context.Background(), request)
+var (
+	testRegionForIdentity = common.REGION_PHX
+)
+
+func TestIdentityClient_AddUserToGroup(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.AddUserToGroupRequest{}
+	r, err := c.AddUserToGroup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	failIfError(t, err)
-
-	// if we've successfully created a group during testing, make sure that we delete it
-	defer func() {
-		//Delete
-		rDel := identity.DeleteGroupRequest{GroupID: r.ID}
-		err = c.DeleteGroup(context.Background(), rDel)
-		assert.NoError(t, err)
-	}()
-
-	// validate group lifecycle state enum value after create
-	assert.Equal(t, identity.GROUP_LIFECYCLE_STATE_ACTIVE, r.Group.LifecycleState)
-
-	//Get
-	rRead := identity.GetGroupRequest{GroupID: r.ID}
-	resRead, err := c.GetGroup(context.Background(), rRead)
-	assert.NotEmpty(t, r, fmt.Sprint(resRead.ID))
-	failIfError(t, err)
-
-	// validate group lifecycle state enum value after read
-	assert.Equal(t, identity.GROUP_LIFECYCLE_STATE_ACTIVE, resRead.LifecycleState)
-
-	//Update
-	rUpdate := identity.UpdateGroupRequest{GroupID: r.ID}
-	rUpdate.Description = common.String("New description")
-	resUpdate, err := c.UpdateGroup(context.Background(), rUpdate)
-	failIfError(t, err)
-	assert.NotNil(t, resUpdate.ID)
-}
-
-func TestIdentityClient_ListGroups(t *testing.T) {
-
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.ListGroupsRequest{CompartmentID: common.String(getTenancyID())}
-	r, err := c.ListGroups(context.Background(), request)
-	failIfError(t, err)
-
-	items := r.Items
-
-	nextRequest := identity.ListGroupsRequest{CompartmentID: request.CompartmentID}
-	nextRequest.Page = r.OpcNextPage
-
-	for nextRequest.Page != nil {
-		if r, err = c.ListGroups(context.Background(), nextRequest); err == nil {
-			items = append(items, r.Items...)
-			nextRequest.Page = r.OpcNextPage
-		} else {
-			failIfError(t, err)
-			break
-		}
-	}
-
-	assert.NotEmpty(t, items)
-
+	assert.NoError(t, err)
 	return
 }
-
-// Compartment operations
-//Can not delete compartments right now! Careful!
 
 func TestIdentityClient_CreateCompartment(t *testing.T) {
-	t.Skip("Compartment Creation cannot be undone. Remove Skip and manual execute test to verify")
-	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, cfgErr)
-
-	request:= identity.CreateCompartmentRequest{CreateCompartmentDetails:identity.CreateCompartmentDetails{
-		Name: common.String("Compartment_Test"),
-		Description: common.String("Go SDK Comparment Test"),
-		CompartmentID: common.String(getTenancyID()),
-	}}
-
-	r, err:= c.CreateCompartment(context.Background(), request)
-	verifyResponseIsValid(t, r, err)
-	assert.NotEmpty(t, r.ID)
-	assert.Equal(t, request.Name, r.Name)
-	assert.Equal(t, request.Description, r.Description)
-	return
-}
-
-
-//Comparment RU
-func TestIdentityClient_UpdateCompartment(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	//Update
-	request := identity.UpdateCompartmentRequest{UpdateCompartmentDetails: identity.UpdateCompartmentDetails{
-		Name:        common.String(GoSDK2_Test_Prefix + "UpdComp"),
-		Description: common.String("GOSDK2 description2"),
-	},
-		CompartmentID: common.String(getCompartmentID()),
-	}
-	r, err := c.UpdateCompartment(context.Background(), request)
-	failIfError(t, err)
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.CreateCompartmentRequest{}
+	r, err := c.CreateCompartment(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-
-	rRead := identity.GetCompartmentRequest{CompartmentID: common.String(getTenancyID())}
-	resRead, err := c.GetCompartment(context.Background(), rRead)
-	failIfError(t, err)
-	assert.NotEmpty(t, r, fmt.Sprint(resRead))
-	return
-}
-
-//User Operations
-func TestIdentityClient_ListUsers(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.ListUsersRequest{CompartmentID: common.String(getTenancyID())}
-	r, err := c.ListUsers(context.Background(), request)
-	failIfError(t, err)
-
-	items := r.Items
-
-	nextRequest := identity.ListUsersRequest{CompartmentID: request.CompartmentID}
-	nextRequest.Page = r.OpcNextPage
-	for nextRequest.Page != nil {
-		if r, err = c.ListUsers(context.Background(), nextRequest); err == nil {
-			items = append(items, r.Items...)
-			nextRequest.Page = r.OpcNextPage
-		} else {
-			failIfError(t, err)
-			break
-		}
-	}
-
-	// Add verification for items array
-	assert.NotEmpty(t, items)
-
-	return
-}
-
-func TestIdentityClient_UserCRUD(t *testing.T) {
-	// test should not fail if a previous run failed to clean up
-	userName := getUniqueName("User_")
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.CreateUserRequest{}
-	request.CompartmentID = common.String(getTenancyID())
-	request.Name = common.String(userName)
-	request.Description = common.String("Test user for golang sdk2")
-	resCreate, err := c.CreateUser(context.Background(), request)
-	fmt.Println(resCreate)
-	assert.NotEmpty(t, resCreate, fmt.Sprint(resCreate))
 	assert.NoError(t, err)
-
-	// if we've successfully created a user during testing, make sure that we delete it
-	defer func() {
-		//remove
-		rDelete := identity.DeleteUserRequest{}
-		rDelete.UserID = resCreate.ID
-		err = c.DeleteUser(context.Background(), rDelete)
-		assert.NoError(t, err)
-	}()
-
-	// validate user lifecycle state enum value after read
-	assert.Equal(t, identity.USER_LIFECYCLE_STATE_ACTIVE, resCreate.LifecycleState)
-
-	//Read
-	rRead := identity.GetUserRequest{UserID: resCreate.ID}
-	resRead, err := c.GetUser(context.Background(), rRead)
-	assert.NotEmpty(t, resRead, fmt.Sprint(resRead))
-	assert.NoError(t, err)
-
-	// validate user lifecycle state enum value after read
-	assert.Equal(t, identity.USER_LIFECYCLE_STATE_ACTIVE, resRead.LifecycleState)
-
-	//Update
-	rUpdate := identity.UpdateUserRequest{}
-	rUpdate.UserID = resCreate.ID
-	rUpdate.Description = common.String("This is a new description")
-	resUpdate, err := c.UpdateUser(context.Background(), rUpdate)
-	assert.NotEmpty(t, resUpdate, fmt.Sprint(resUpdate))
-	assert.NoError(t, err)
-
 	return
 }
 
-//User-Group operations
-func TestIdentityClient_AddUserToGroup(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	// for robustness, create a user and group to use for this test. delete it at the end
-	reqAddUser := identity.CreateUserRequest{}
-	reqAddUser.CompartmentID = common.String(getTenancyID())
-	reqAddUser.Name = common.String(getUniqueName("AUTG_User"))
-	reqAddUser.Description = common.String("AddUserToGroup Test User")
-	rspAddUser, err1 := c.CreateUser(context.Background(), reqAddUser)
-
-	failIfError(t, err1)
-
-	defer func() {
-		// Delete the user
-		reqUserDelete := identity.DeleteUserRequest{UserID: rspAddUser.ID}
-		delUserErr := c.DeleteUser(context.Background(), reqUserDelete)
-		assert.NoError(t, delUserErr)
-	}()
-
-	reqAddGroup := identity.CreateGroupRequest{}
-	reqAddGroup.CompartmentID = common.String(getTenancyID())
-	reqAddGroup.Name = common.String(getUniqueName("AUTG_Group_"))
-	reqAddGroup.Description = common.String("AddUserToGroup Test Group")
-	rspAddGroup, err2 := c.CreateGroup(context.Background(), reqAddGroup)
-
-	failIfError(t, err2)
-
-	defer func() {
-		// Delete the group
-		reqGroupDelete := identity.DeleteGroupRequest{GroupID: rspAddGroup.ID}
-		delGrpErr := c.DeleteGroup(context.Background(), reqGroupDelete)
-		assert.NoError(t, delGrpErr)
-	}()
-
-	//add
-	reqAdd := identity.AddUserToGroupRequest{}
-	reqAdd.UserID = rspAddUser.ID
-	reqAdd.GroupID = rspAddGroup.ID
-	rspAdd, err := c.AddUserToGroup(context.Background(), reqAdd)
-	failIfError(t, err)
-	assert.NotEmpty(t, rspAdd, fmt.Sprint(rspAdd))
-
-	defer func() {
-		//remove
-		requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipID: rspAdd.UserGroupMembership.ID}
-		err = c.RemoveUserFromGroup(context.Background(), requestRemove)
-		failIfError(t, err)
-	}()
-
-	// validate user membership lifecycle state enum value after create
-	assert.Equal(t, identity.USER_GROUP_MEMBERSHIP_LIFECYCLE_STATE_ACTIVE, rspAdd.LifecycleState)
-
-	// Read
-	reqRead := identity.GetUserGroupMembershipRequest{}
-	reqRead.UserGroupMembershipID = rspAdd.ID
-	rspRead, readErr := c.GetUserGroupMembership(context.Background(), reqRead)
-	verifyResponseIsValid(t, rspRead, readErr)
-	assert.Equal(t, rspAdd.ID, rspRead.ID)
+func TestIdentityClient_CreateCustomerSecretKey(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.CreateCustomerSecretKeyRequest{}
+	r, err := c.CreateCustomerSecretKey(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
 	return
-
 }
 
-func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.ListUserGroupMembershipsRequest{}
-	request.UserID = common.String(getUserID())
-	request.CompartmentID = common.String(getTenancyID())
-	r, err := c.ListUserGroupMemberships(context.Background(), request)
-	failIfError(t, err)
+func TestIdentityClient_CreateGroup(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.CreateGroupRequest{}
+	r, err := c.CreateGroup(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
 
-	items := r.Items
+func TestIdentityClient_CreateIdentityProvider(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.CreateIdentityProviderRequest{}
+	r, err := c.CreateIdentityProvider(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
 
-	nextRequest := identity.ListUserGroupMembershipsRequest{CompartmentID: request.CompartmentID, UserID: request.UserID}
-	nextRequest.Page = r.OpcNextPage
-
-	for nextRequest.Page != nil {
-		if r, err := c.ListUserGroupMemberships(context.Background(), nextRequest); err == nil {
-			items = append(items, r.Items...)
-			nextRequest.Page = r.OpcNextPage
-		} else {
-			failIfError(t, err)
-			break
-		}
-	}
-
-	assert.NotEmpty(t, items)
-
+func TestIdentityClient_CreateIdpGroupMapping(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.CreateIdpGroupMappingRequest{}
+	r, err := c.CreateIdpGroupMapping(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
 	return
 }
 
 func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	//create the user
-	u, err := createTestUser(c)
-	failIfError(t, err)
-	defer func() {
-		failIfError(t, deleteTestUser(c, u.ID))
-	}()
-
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
 	request := identity.CreateOrResetUIPasswordRequest{}
-	request.UserID = u.ID
-	rspCreate, err := c.CreateOrResetUIPassword(context.Background(), request)
-	failIfError(t, err)
-	verifyResponseIsValid(t, rspCreate, err)
-
-	assert.NotEmpty(t, rspCreate.OpcRequestID)
-	assert.Equal(t, u.ID, rspCreate.UserID)
-	assert.NotEmpty(t, rspCreate.Password)
-	assert.Equal(t, identity.UI_PASSWORD_LIFECYCLE_STATE_ACTIVE, rspCreate.LifecycleState)
-
-	// make the request again and ensure that we get a different password
-	rspReset, err := c.CreateOrResetUIPassword(context.Background(), request)
-	failIfError(t, err)
-	verifyResponseIsValid(t, rspReset, err)
-
-	assert.Equal(t, rspCreate.UserID, rspReset.UserID)
-	assert.NotEqual(t, rspCreate.Password, rspReset.Password)
-	assert.Equal(t, identity.UI_PASSWORD_LIFECYCLE_STATE_ACTIVE, rspCreate.LifecycleState)
-
-	return
-}
-
-func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
-
-	createDesc := "Go SDK Test Swift Password - CREATED"
-	updateDesc := "Go SDK Test Swift Password - UPDATED"
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	usr, usrErr := createTestUser(c)
-	failIfError(t, usrErr)
-
-	defer deleteTestUser(c, usr.ID)
-
-	// Create Swift Password
-	addReq := identity.CreateSwiftPasswordRequest{UserID: usr.ID}
-	addReq.Description = &createDesc
-	rspPwd, err := c.CreateSwiftPassword(context.Background(), addReq)
-	verifyResponseIsValid(t, rspPwd, err)
-
-	//Delete Swift Password
-	defer func() {
-		delReq := identity.DeleteSwiftPasswordRequest{}
-		delReq.UserID = usr.ID
-		delReq.SwiftPasswordID = rspPwd.ID
-	}()
-
-	assert.NotEmpty(t, rspPwd.ID)
-	assert.Equal(t, usr.ID, rspPwd.UserID)
-	assert.NotEmpty(t, rspPwd.Password)
-	assert.Equal(t, identity.SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE, rspPwd.LifecycleState)
-	assert.Equal(t, createDesc, *rspPwd.Description)
-
-	// Update Swift Password
-	updReq := identity.UpdateSwiftPasswordRequest{UserID: usr.ID}
-	updReq.SwiftPasswordID = rspPwd.ID
-	updReq.Description = &updateDesc
-	updRsp, err := c.UpdateSwiftPassword(context.Background(), updReq)
-	verifyResponseIsValid(t, updRsp, err)
-
-	assert.NotEqual(t, rspPwd.Password, updRsp.Password)
-	assert.Equal(t, identity.SWIFT_PASSWORD_LIFECYCLE_STATE_ACTIVE, updRsp.LifecycleState)
-	assert.Equal(t, updateDesc, *updRsp.Description)
-
-	//assert.NotEmpty(t, updRsp.ExpiresOn)
-
-	return
-}
-
-func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	usr, usrErr := createTestUser(c)
-	failIfError(t, usrErr)
-	defer deleteTestUser(c, usr.ID)
-
-	pwdReq := identity.CreateSwiftPasswordRequest{UserID: usr.ID}
-	pwdReq.Description = common.String("Test Swift Password 1")
-	pwdRsp1, err := c.CreateSwiftPassword(context.Background(), pwdReq)
-	verifyResponseIsValid(t, pwdRsp1, err)
-
-	pwdReq.Description = common.String("Test Swift Password 2")
-	pwdRsp2, err := c.CreateSwiftPassword(context.Background(), pwdReq)
-	verifyResponseIsValid(t, pwdRsp2, err)
-
-	request := identity.ListSwiftPasswordsRequest{UserID: usr.ID}
-	r, err := c.ListSwiftPasswords(context.Background(), request)
-	verifyResponseIsValid(t, r, err)
-
-	assert.Equal(t, 2, len(r.Items))
-	assert.NotEqual(t, r.Items[0].ID, r.Items[1].ID)
-	assert.NotEqual(t, r.Items[0].Description, r.Items[1].Description)
-
-	return
-}
-
-//Policy Operations see DEX-1945
-func TestIdentityClient_PolicyCRUD(t *testing.T) {
-	t.Skip("Policy Operations issue. See DEX-1945 ")
-
-	//Create
-	//client := identity.NewIdentityClientForRegion(getRegion())
-	client, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, cfgErr)
-
-	createRequest := identity.CreatePolicyRequest{}
-	createRequest.CompartmentID = common.String(getTenancyID())
-	createRequest.Name = common.String("goSDK2Policy2")
-	createRequest.Description = common.String("some policy")
-	createRequest.Statements = []string{"Allow group goSDK2CreateGroup read all-resources on compartment egineztest"}
-	createRequest.VersionDate = common.Now()
-	createResponse, err := client.CreatePolicy(context.Background(), createRequest)
-	verifyResponseIsValid(t, createResponse, err)
-
-	defer func() {
-		// Delete
-		request := identity.DeletePolicyRequest{PolicyID:createResponse.ID}
-		err = client.DeletePolicy(context.Background(), request)
-		assert.NoError(t, err)
-	}()
-
-	//Read
-	readRequest := identity.GetPolicyRequest{}
-	readRequest.PolicyID = createResponse.ID
-	readResponse, err := client.GetPolicy(context.Background(), readRequest)
-	verifyResponseIsValid(t, readResponse, err)
-
-	//Update
-
-	updateRequest := identity.UpdatePolicyRequest{}
-	updateRequest.PolicyID = createResponse.ID
-	updateRequest.Description = common.String("new description")
-	updateResponse, err := client.UpdatePolicy(context.Background(), updateRequest)
-	assert.NotEmpty(t, updateResponse, fmt.Sprint(updateResponse))
-	assert.NoError(t, err)
-
-	return
-}
-
-func TestIdentityClient_ListPolicies(t *testing.T) {
-	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, cfgErr)
-	listRequest := identity.ListPoliciesRequest{}
-	listRequest.CompartmentID = common.String(getTenancyID())
-	listResponse, err := c.ListPolicies(context.Background(), listRequest)
-	failIfError(t, err)
-
-	items := listResponse.Items
-
-	nextRequest := identity.ListPoliciesRequest{CompartmentID: listRequest.CompartmentID}
-	nextRequest.Page = listResponse.OpcNextPage
-
-	for nextRequest.Page != nil {
-		if r, err := c.ListPolicies(context.Background(), nextRequest); err == nil {
-			items = append(items, r.Items...)
-			nextRequest.Page = r.OpcNextPage
-		} else {
-			failIfError(t, err)
-		}
-	}
-
-	assert.NotEmpty(t, items)
-
-	return
-}
-
-
-//SecretKey operations
-func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.CreateCustomerSecretKeyRequest{}
-	request.UserID = common.String(getUserID())
-	request.DisplayName = common.String("GolangSDK2TestSecretKey")
-	resCreate, err := c.CreateCustomerSecretKey(context.Background(), request)
-	failIfError(t, err)
-	assert.NotEmpty(t, resCreate, fmt.Sprint(resCreate))
-	assert.NoError(t, err)
-
-	defer func() {
-		//remove
-		rDelete := identity.DeleteCustomerSecretKeyRequest{}
-		rDelete.CustomerSecretKeyID = resCreate.ID
-		rDelete.UserID = common.String(getUserID())
-		err = c.DeleteCustomerSecretKey(context.Background(), rDelete)
-		failIfError(t, err)
-	}()
-
-	// validate user membership lifecycle state enum value after create
-	assert.Equal(t, identity.CUSTOMER_SECRET_KEY_LIFECYCLE_STATE_ACTIVE, resCreate.LifecycleState)
-
-	//Update
-	rUpdate := identity.UpdateCustomerSecretKeyRequest{}
-	rUpdate.CustomerSecretKeyID = resCreate.ID
-	rUpdate.UserID = common.String(getUserID())
-	rUpdate.DisplayName = common.String("This is a new description")
-	resUpdate, err := c.UpdateCustomerSecretKey(context.Background(), rUpdate)
-	assert.NotEmpty(t, resUpdate, fmt.Sprint(resUpdate))
-	failIfError(t, err)
-
-	return
-}
-
-func TestIdentityClient_ListCustomerSecretKeys(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.ListCustomerSecretKeysRequest{}
-	request.UserID = common.String(getUserID())
-	r, err := c.ListCustomerSecretKeys(context.Background(), request)
+	r, err := c.CreateOrResetUIPassword(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	failIfError(t, err)
+	assert.NoError(t, err)
 	return
 }
 
-//Apikeys
-func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
-	userID := ""
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.UploadApiKeyRequest{}
-	request.UserID = common.String(userID)
-	request.Key = common.String("some key")
-	resCreate, err := c.UploadApiKey(context.Background(), request)
-	assert.Error(t, err)
-	ser, ok := common.IsServiceError(err)
-	assert.True(t, ok)
-	assert.NotEmpty(t, ser.GetMessage())
-
-	defer func() {
-		//remove
-		rDelete := identity.DeleteApiKeyRequest{}
-		rDelete.Fingerprint = resCreate.Fingerprint
-		rDelete.UserID = common.String(userID)
-		err = c.DeleteApiKey(context.Background(), rDelete)
-		ser, ok = common.IsServiceError(err)
-		assert.False(t, ok)
-		assert.NotEmpty(t, err.Error())
-	}()
-
-	// TODO: [2017-Nov-07::shalka] presently LifecycleState isn't being set on ApiKey struct in the Response => merits
-	//  further investigation
-	// validate api key lifecycle state enum value after create
-	// assert.Equal(t, identity.API_KEY_LIFECYCLE_STATE_ACTIVE, resCreate.LifecycleState)
-
-	return
-}
-func TestIdentityClient_ListApiKeys(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.ListApiKeysRequest{}
-	request.UserID = common.String(getUserID())
-	r, err := c.ListApiKeys(context.Background(), request)
+func TestIdentityClient_CreatePolicy(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.CreatePolicyRequest{}
+	r, err := c.CreatePolicy(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	failIfError(t, err)
+	assert.NoError(t, err)
 	return
 }
 
-func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	// Create the Identity Provider Request
-	rCreate := identity.CreateIdentityProviderRequest{}
-	details := identity.CreateSaml2IdentityProviderDetails{}
-	details.CompartmentID = common.String(getTenancyID())
-	details.Name = common.String(getUniqueName("Ident_Provider_"))
-	details.Description = common.String("CRUD Test Identity Provider")
-	details.ProductType = identity.CREATE_IDENTITY_PROVIDER_DETAILS_PRODUCT_TYPE_ADFS
-	details.Metadata = common.String(readSampleFederationMetadata(t))
-	rCreate.CreateIdentityProviderDetails = details
-
-	// Create
-	rspCreate, createErr := c.CreateIdentityProvider(context.Background(), rCreate)
-
-	failIfError(t, createErr)
-	verifyResponseIsValid(t, rspCreate, createErr)
-
-	defer func() {
-		//remove
-		fmt.Println("Deleting Identity Provider")
-		if rspCreate.GetID() != nil {
-			rDelete := identity.DeleteIdentityProviderRequest{}
-			rDelete.IdentityProviderID = rspCreate.GetID()
-			err := c.DeleteIdentityProvider(context.Background(), rDelete)
-			failIfError(t, err)
-		}
-	}()
-
-	// Verify requested values are correct
-	assert.NotEmpty(t, rspCreate.GetID())
-	assert.NotEmpty(t, rspCreate.OpcRequestID)
-	assert.Equal(t, *rCreate.GetCompartmentID(), *rspCreate.GetCompartmentID())
-	assert.NotEmpty(t, *rspCreate.GetName())
-
-	// Read
-	rRead := identity.GetIdentityProviderRequest{}
-	rRead.IdentityProviderID = rspCreate.GetID()
-	rspRead, readErr := c.GetIdentityProvider(context.Background(), rRead)
-	failIfError(t, readErr)
-	verifyResponseIsValid(t, rspRead, readErr)
-	assert.Equal(t, *rRead.IdentityProviderID, *rspRead.GetID())
-
-	// Update
-	rUpdate := identity.UpdateIdentityProviderRequest{}
-	updateDetails := identity.UpdateSaml2IdentityProviderDetails{}
-	updateDetails.Description = common.String("New description")
-	rUpdate.IdentityProviderID = rspCreate.GetID()
-	rUpdate.UpdateIdentityProviderDetails = updateDetails
-	rspUpdate, updErr := c.UpdateIdentityProvider(context.Background(), rUpdate)
-
-	failIfError(t, updErr)
-	verifyResponseIsValid(t, rspUpdate, updErr)
-	assert.Equal(t, *rspCreate.GetID(), *rspUpdate.GetID())
-	assert.Equal(t, "New description", *rspUpdate.GetDescription())
-
-	// Create the group mapping
-	u, uErr := createTestUser(c)
-	failIfError(t, uErr)
-	defer deleteTestUser(c, u.ID)
-
-	g, gErr := createTestGroup(c)
-	failIfError(t, gErr)
-	defer deleteTestGroup(c, g.ID)
-
-	reqCreateMapping := identity.CreateIdpGroupMappingRequest{}
-	reqCreateMapping.IdentityProviderID = rspCreate.GetID()
-	reqCreateMapping.GroupID = g.ID
-	idpGrpName := *rspCreate.GetName()
-	groupName := *g.Name
-	reqCreateMapping.IdpGroupName = common.String(idpGrpName + "_TO_" + groupName)
-
-	rspCreateMapping, createMapErr := c.CreateIdpGroupMapping(context.Background(), reqCreateMapping)
-	failIfError(t, createMapErr)
-
-	// Delete mapping
-	defer func() {
-		fmt.Println("Deleting Identity Provider Group Mapping")
-		reqDelete := identity.DeleteIdpGroupMappingRequest{MappingID: rspCreateMapping.ID, IdentityProviderID: rspCreateMapping.IdpID}
-		delErr := c.DeleteIdpGroupMapping(context.Background(), reqDelete)
-		failIfError(t, delErr)
-	}()
-
-	verifyResponseIsValid(t, rspCreateMapping, createMapErr)
-
-	assert.NotEmpty(t, *rspCreateMapping.ID)
-	assert.NotEmpty(t, *rspCreateMapping.GroupID)
-	assert.NotEmpty(t, *rspCreateMapping.OpcRequestID)
-	assert.NotEmpty(t, *rspCreateMapping.IdpGroupName)
-	assert.Equal(t, *rspCreate.GetID(), *rspCreateMapping.IdpID)
-	assert.NotEmpty(t, rspCreateMapping.TimeCreated)
-	assert.Equal(t, identity.IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE, rspCreateMapping.LifecycleState)
-
-	//Read group mapping
-	reqReadMapping := identity.GetIdpGroupMappingRequest{IdentityProviderID: rspCreateMapping.IdpID, MappingID: rspCreateMapping.ID}
-	rspReadMapping, readMapErr := c.GetIdpGroupMapping(context.Background(), reqReadMapping)
-	verifyResponseIsValid(t, rspReadMapping, readMapErr)
-
-	assert.Equal(t, rspCreateMapping.ID, rspReadMapping.ID)
-	assert.Equal(t, rspCreateMapping.IdpID, rspReadMapping.IdpID)
-	assert.Equal(t, identity.IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE, rspReadMapping.LifecycleState)
-
-	//update group mapping
-	reqUpdMapping := identity.UpdateIdpGroupMappingRequest{}
-	reqUpdMapping.MappingID = rspReadMapping.ID
-	reqUpdMapping.IdentityProviderID = rspReadMapping.IdpID
-	reqUpdMapping.GroupID = rspReadMapping.GroupID
-	updatedName := *rspReadMapping.IdpGroupName + " - Updated"
-	reqUpdMapping.IdpGroupName = common.String(updatedName)
-	rspUpdMapping, updMapErr := c.UpdateIdpGroupMapping(context.Background(), reqUpdMapping)
-	verifyResponseIsValid(t, rspUpdMapping, updMapErr)
-
-	assert.NotEmpty(t, *rspUpdMapping.ID)
-	assert.NotEmpty(t, *rspUpdMapping.GroupID)
-	assert.NotEmpty(t, *rspUpdMapping.OpcRequestID)
-	assert.Equal(t, *rspReadMapping.ID, *rspUpdMapping.ID)
-	assert.Equal(t, *rspReadMapping.IdpID, *rspUpdMapping.IdpID)
-	assert.NotEqual(t, *rspReadMapping.IdpGroupName, *rspUpdMapping.IdpGroupName)
-	assert.NotEmpty(t, rspUpdMapping.TimeCreated)
-	assert.Equal(t, identity.IDP_GROUP_MAPPING_LIFECYCLE_STATE_ACTIVE, rspUpdMapping.LifecycleState)
-
-	return
-}
-
-func TestIdentityClient_ListIdentityProviders(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.ListIdentityProvidersRequest{}
-	request.CompartmentID = common.String(getCompartmentID())
-	request.Protocol = identity.LIST_IDENTITY_PROVIDERS_PROTOCOL_SAML2
-	response, err := c.ListIdentityProviders(context.Background(), request)
-	failIfError(t, err)
-
-	items := response.Items
-
-	nextRequest := identity.ListIdentityProvidersRequest{CompartmentID: request.CompartmentID}
-	nextRequest.Page = response.OpcNextPage
-
-	for nextRequest.Page != nil {
-		if r, err := c.ListIdentityProviders(context.Background(), nextRequest); err == nil {
-			items = append(items, r.Items...)
-			nextRequest.Page = r.OpcNextPage
-		} else {
-			failIfError(t, err)
-			break
-		}
-	}
-
-	return
-}
-
-func TestIdentityClient_GetTenancy(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.GetTenancyRequest{TenancyID: common.String(getTenancyID())}
-	r, err := c.GetTenancy(context.Background(), request)
-	verifyResponseIsValid(t, r, err)
-
-	assert.Equal(t, request.TenancyID, r.ID)
-	assert.NotEmpty(t, r.OpcRequestID)
-
-	return
-}
-
-func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.ListAvailabilityDomainsRequest{CompartmentID: common.String(getCompartmentID())}
-	r, err := c.ListAvailabilityDomains(context.Background(), request)
-	failIfError(t, err)
-
-	items := r.Items
-
-	assert.NotEmpty(t, items)
-
-	return
-}
-
-func TestIdentityClient_ListCompartments(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.ListCompartmentsRequest{CompartmentID: common.String(getTenancyID())}
-	r, err := c.ListCompartments(context.Background(), request)
-	failIfError(t, err)
-
-	items := r.Items
-
-	nextRequest := identity.ListCompartmentsRequest{CompartmentID: request.CompartmentID}
-	nextRequest.Page = r.OpcNextPage
-
-	for nextRequest.Page != nil {
-		if r, err := c.ListCompartments(context.Background(), nextRequest); err == nil {
-			items = append(items, r.Items...)
-			nextRequest.Page = r.OpcNextPage
-		} else {
-			failIfError(t, err)
-			break
-		}
-	}
-
-	assert.NotEmpty(t, items)
-
-	return
-}
-
-func TestIdentityClient_ListRegions(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	r, err := c.ListRegions(context.Background())
-	verifyResponseIsValid(t, r, err)
-	assert.NotEmpty(t, r.Items)
-	return
-}
-
-func TestIdentityClient_UpdateUserState(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	usr, usrErr := createTestUser(c)
-	failIfError(t, usrErr)
-	defer deleteTestUser(c, usr.ID)
-
-	request := identity.UpdateUserStateRequest{}
-	request.UserID = usr.ID
-	request.Blocked = common.Bool(false)
-
-	r, err := c.UpdateUserState(context.Background(), request)
-	verifyResponseIsValid(t, r, err)
-
-	assert.Equal(t, identity.USER_LIFECYCLE_STATE_ACTIVE, r.LifecycleState)
-	return
-}
-
-// This test can only realistically be run once since once a region is subscribed to, there is no
-// mechanism to unsubscribe to it. For now we will skip
 func TestIdentityClient_CreateRegionSubscription(t *testing.T) {
-	t.Skip("SKIPPING: Region Subscriptions cannot be undone.")
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
 	request := identity.CreateRegionSubscriptionRequest{}
-	request.TenancyID = common.String(getTenancyID())
-	request.RegionKey = common.String("FRA")
 	r, err := c.CreateRegionSubscription(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	return
 }
 
-func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := identity.ListRegionSubscriptionsRequest{TenancyID: common.String(getTenancyID())}
-	r, err := c.ListRegionSubscriptions(context.Background(), request)
-	failIfError(t, err)
-	items := r.Items
-	assert.NotEmpty(t, items)
+func TestIdentityClient_CreateSwiftPassword(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.CreateSwiftPasswordRequest{}
+	r, err := c.CreateSwiftPassword(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
 	return
 }
 
-func TestBadHost(t *testing.T) {
-	client, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	client.Host = "badhostname"
-	response, err := client.ListRegions(context.Background())
-	assert.Nil(t, response.RawResponse)
-	assert.Error(t, err)
+func TestIdentityClient_CreateUser(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.CreateUserRequest{}
+	r, err := c.CreateUser(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_DeleteApiKey(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.DeleteApiKeyRequest{}
+	err := c.DeleteApiKey(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_DeleteCustomerSecretKey(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.DeleteCustomerSecretKeyRequest{}
+	err := c.DeleteCustomerSecretKey(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_DeleteGroup(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.DeleteGroupRequest{}
+	err := c.DeleteGroup(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_DeleteIdentityProvider(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.DeleteIdentityProviderRequest{}
+	err := c.DeleteIdentityProvider(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_DeleteIdpGroupMapping(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.DeleteIdpGroupMappingRequest{}
+	err := c.DeleteIdpGroupMapping(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_DeletePolicy(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.DeletePolicyRequest{}
+	err := c.DeletePolicy(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_DeleteSwiftPassword(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.DeleteSwiftPasswordRequest{}
+	err := c.DeleteSwiftPassword(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_DeleteUser(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.DeleteUserRequest{}
+	err := c.DeleteUser(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_GetCompartment(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.GetCompartmentRequest{}
+	r, err := c.GetCompartment(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_GetGroup(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.GetGroupRequest{}
+	r, err := c.GetGroup(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_GetIdentityProvider(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.GetIdentityProviderRequest{}
+	r, err := c.GetIdentityProvider(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_GetIdpGroupMapping(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.GetIdpGroupMappingRequest{}
+	r, err := c.GetIdpGroupMapping(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_GetPolicy(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.GetPolicyRequest{}
+	r, err := c.GetPolicy(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_GetTenancy(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.GetTenancyRequest{}
+	r, err := c.GetTenancy(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_GetUser(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.GetUserRequest{}
+	r, err := c.GetUser(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_GetUserGroupMembership(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.GetUserGroupMembershipRequest{}
+	r, err := c.GetUserGroupMembership(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListApiKeys(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListApiKeysRequest{}
+	r, err := c.ListApiKeys(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListAvailabilityDomainsRequest{}
+	r, err := c.ListAvailabilityDomains(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListCompartments(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListCompartmentsRequest{}
+	r, err := c.ListCompartments(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListCustomerSecretKeys(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListCustomerSecretKeysRequest{}
+	r, err := c.ListCustomerSecretKeys(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListFaultDomains(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListFaultDomainsRequest{}
+	r, err := c.ListFaultDomains(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListGroups(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListGroupsRequest{}
+	r, err := c.ListGroups(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListIdentityProviders(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListIdentityProvidersRequest{}
+	r, err := c.ListIdentityProviders(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListIdpGroupMappings(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListIdpGroupMappingsRequest{}
+	r, err := c.ListIdpGroupMappings(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListPolicies(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListPoliciesRequest{}
+	r, err := c.ListPolicies(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListRegionSubscriptionsRequest{}
+	r, err := c.ListRegionSubscriptions(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListRegions(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	r, err := c.ListRegions(context.Background())
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListSwiftPasswordsRequest{}
+	r, err := c.ListSwiftPasswords(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListUserGroupMembershipsRequest{}
+	r, err := c.ListUserGroupMemberships(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_ListUsers(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.ListUsersRequest{}
+	r, err := c.ListUsers(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_RemoveUserFromGroup(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.RemoveUserFromGroupRequest{}
+	err := c.RemoveUserFromGroup(context.Background(), request)
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_UpdateCompartment(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.UpdateCompartmentRequest{}
+	r, err := c.UpdateCompartment(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_UpdateCustomerSecretKey(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.UpdateCustomerSecretKeyRequest{}
+	r, err := c.UpdateCustomerSecretKey(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_UpdateGroup(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.UpdateGroupRequest{}
+	r, err := c.UpdateGroup(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_UpdateIdentityProvider(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.UpdateIdentityProviderRequest{}
+	r, err := c.UpdateIdentityProvider(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_UpdateIdpGroupMapping(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.UpdateIdpGroupMappingRequest{}
+	r, err := c.UpdateIdpGroupMapping(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_UpdatePolicy(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.UpdatePolicyRequest{}
+	r, err := c.UpdatePolicy(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_UpdateSwiftPassword(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.UpdateSwiftPasswordRequest{}
+	r, err := c.UpdateSwiftPassword(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_UpdateUser(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.UpdateUserRequest{}
+	r, err := c.UpdateUser(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_UpdateUserState(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.UpdateUserStateRequest{}
+	r, err := c.UpdateUserState(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
+}
+
+func TestIdentityClient_UploadApiKey(t *testing.T) {
+	t.Skip("Not implemented")
+	c := identity.NewIdentityClientForRegion(testRegionForIdentity)
+	request := identity.UploadApiKeyRequest{}
+	r, err := c.UploadApiKey(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)
+	return
 }

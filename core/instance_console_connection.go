@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// InstanceConsoleConnection. The `InstanceConsoleConnection` API provides you with console access to virtual machine (VM) instances,
+// InstanceConsoleConnection The `InstanceConsoleConnection` API provides you with console access to virtual machine (VM) instances,
 // enabling you to troubleshoot malfunctioning instances remotely.
 // For more information about console access, see
 // [Accessing the Console]({{DOC_SERVER_URL}}/Content/Compute/References/serialconsole.htm).
@@ -45,30 +45,33 @@ func (model InstanceConsoleConnection) String() string {
 	return common.PointerString(model)
 }
 
+// InstanceConsoleConnectionLifecycleStateEnum Enum with underlying type: string
 type InstanceConsoleConnectionLifecycleStateEnum string
 
+// Set of constants representing the allowable values for InstanceConsoleConnectionLifecycleState
 const (
-	INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_ACTIVE   InstanceConsoleConnectionLifecycleStateEnum = "ACTIVE"
-	INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_CREATING InstanceConsoleConnectionLifecycleStateEnum = "CREATING"
-	INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_DELETED  InstanceConsoleConnectionLifecycleStateEnum = "DELETED"
-	INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_DELETING InstanceConsoleConnectionLifecycleStateEnum = "DELETING"
-	INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_FAILED   InstanceConsoleConnectionLifecycleStateEnum = "FAILED"
-	INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_UNKNOWN  InstanceConsoleConnectionLifecycleStateEnum = "UNKNOWN"
+	InstanceConsoleConnectionLifecycleStateActive   InstanceConsoleConnectionLifecycleStateEnum = "ACTIVE"
+	InstanceConsoleConnectionLifecycleStateCreating InstanceConsoleConnectionLifecycleStateEnum = "CREATING"
+	InstanceConsoleConnectionLifecycleStateDeleted  InstanceConsoleConnectionLifecycleStateEnum = "DELETED"
+	InstanceConsoleConnectionLifecycleStateDeleting InstanceConsoleConnectionLifecycleStateEnum = "DELETING"
+	InstanceConsoleConnectionLifecycleStateFailed   InstanceConsoleConnectionLifecycleStateEnum = "FAILED"
+	InstanceConsoleConnectionLifecycleStateUnknown  InstanceConsoleConnectionLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_instanceconsoleconnection_lifecycleState = map[string]InstanceConsoleConnectionLifecycleStateEnum{
-	"ACTIVE":   INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_ACTIVE,
-	"CREATING": INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_CREATING,
-	"DELETED":  INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_DELETED,
-	"DELETING": INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_DELETING,
-	"FAILED":   INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":  INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_UNKNOWN,
+var mappingInstanceConsoleConnectionLifecycleState = map[string]InstanceConsoleConnectionLifecycleStateEnum{
+	"ACTIVE":   InstanceConsoleConnectionLifecycleStateActive,
+	"CREATING": InstanceConsoleConnectionLifecycleStateCreating,
+	"DELETED":  InstanceConsoleConnectionLifecycleStateDeleted,
+	"DELETING": InstanceConsoleConnectionLifecycleStateDeleting,
+	"FAILED":   InstanceConsoleConnectionLifecycleStateFailed,
+	"UNKNOWN":  InstanceConsoleConnectionLifecycleStateUnknown,
 }
 
+// GetInstanceConsoleConnectionLifecycleStateEnumValues Enumerates the set of values for InstanceConsoleConnectionLifecycleState
 func GetInstanceConsoleConnectionLifecycleStateEnumValues() []InstanceConsoleConnectionLifecycleStateEnum {
 	values := make([]InstanceConsoleConnectionLifecycleStateEnum, 0)
-	for _, v := range mapping_instanceconsoleconnection_lifecycleState {
-		if v != INSTANCE_CONSOLE_CONNECTION_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingInstanceConsoleConnectionLifecycleState {
+		if v != InstanceConsoleConnectionLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

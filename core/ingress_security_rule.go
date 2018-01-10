@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IngressSecurityRule. A rule for allowing inbound IP packets.
+// IngressSecurityRule A rule for allowing inbound IP packets.
 type IngressSecurityRule struct {
 
 	// The transport protocol. Specify either `all` or an IPv4 protocol number as

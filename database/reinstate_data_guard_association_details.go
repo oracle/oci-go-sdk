@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ReinstateDataGuardAssociationDetails. The Data Guard association reinstate parameters.
+// ReinstateDataGuardAssociationDetails The Data Guard association reinstate parameters.
 type ReinstateDataGuardAssociationDetails struct {
 
 	// The DB System administrator password.

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CustomerSecretKeySummary. As the name suggests, a `CustomerSecretKeySummary` object contains information about a `CustomerSecretKey`.
+// CustomerSecretKeySummary As the name suggests, a `CustomerSecretKeySummary` object contains information about a `CustomerSecretKey`.
 // A `CustomerSecretKey` is an Oracle-provided key for using the Object Storage Service's Amazon S3 compatible API.
 type CustomerSecretKeySummary struct {
 
@@ -46,30 +46,33 @@ func (model CustomerSecretKeySummary) String() string {
 	return common.PointerString(model)
 }
 
+// CustomerSecretKeySummaryLifecycleStateEnum Enum with underlying type: string
 type CustomerSecretKeySummaryLifecycleStateEnum string
 
+// Set of constants representing the allowable values for CustomerSecretKeySummaryLifecycleState
 const (
-	CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_CREATING CustomerSecretKeySummaryLifecycleStateEnum = "CREATING"
-	CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_ACTIVE   CustomerSecretKeySummaryLifecycleStateEnum = "ACTIVE"
-	CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_INACTIVE CustomerSecretKeySummaryLifecycleStateEnum = "INACTIVE"
-	CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_DELETING CustomerSecretKeySummaryLifecycleStateEnum = "DELETING"
-	CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_DELETED  CustomerSecretKeySummaryLifecycleStateEnum = "DELETED"
-	CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_UNKNOWN  CustomerSecretKeySummaryLifecycleStateEnum = "UNKNOWN"
+	CustomerSecretKeySummaryLifecycleStateCreating CustomerSecretKeySummaryLifecycleStateEnum = "CREATING"
+	CustomerSecretKeySummaryLifecycleStateActive   CustomerSecretKeySummaryLifecycleStateEnum = "ACTIVE"
+	CustomerSecretKeySummaryLifecycleStateInactive CustomerSecretKeySummaryLifecycleStateEnum = "INACTIVE"
+	CustomerSecretKeySummaryLifecycleStateDeleting CustomerSecretKeySummaryLifecycleStateEnum = "DELETING"
+	CustomerSecretKeySummaryLifecycleStateDeleted  CustomerSecretKeySummaryLifecycleStateEnum = "DELETED"
+	CustomerSecretKeySummaryLifecycleStateUnknown  CustomerSecretKeySummaryLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_customersecretkeysummary_lifecycleState = map[string]CustomerSecretKeySummaryLifecycleStateEnum{
-	"CREATING": CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_DELETING,
-	"DELETED":  CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_UNKNOWN,
+var mappingCustomerSecretKeySummaryLifecycleState = map[string]CustomerSecretKeySummaryLifecycleStateEnum{
+	"CREATING": CustomerSecretKeySummaryLifecycleStateCreating,
+	"ACTIVE":   CustomerSecretKeySummaryLifecycleStateActive,
+	"INACTIVE": CustomerSecretKeySummaryLifecycleStateInactive,
+	"DELETING": CustomerSecretKeySummaryLifecycleStateDeleting,
+	"DELETED":  CustomerSecretKeySummaryLifecycleStateDeleted,
+	"UNKNOWN":  CustomerSecretKeySummaryLifecycleStateUnknown,
 }
 
+// GetCustomerSecretKeySummaryLifecycleStateEnumValues Enumerates the set of values for CustomerSecretKeySummaryLifecycleState
 func GetCustomerSecretKeySummaryLifecycleStateEnumValues() []CustomerSecretKeySummaryLifecycleStateEnum {
 	values := make([]CustomerSecretKeySummaryLifecycleStateEnum, 0)
-	for _, v := range mapping_customersecretkeysummary_lifecycleState {
-		if v != CUSTOMER_SECRET_KEY_SUMMARY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingCustomerSecretKeySummaryLifecycleState {
+		if v != CustomerSecretKeySummaryLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

@@ -71,48 +71,54 @@ func (response ListVolumeBackupsResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListVolumeBackupsSortByEnum Enum with underlying type: string
 type ListVolumeBackupsSortByEnum string
 
+// Set of constants representing the allowable values for ListVolumeBackupsSortBy
 const (
-	LIST_VOLUME_BACKUPS_SORT_BY_TIMECREATED ListVolumeBackupsSortByEnum = "TIMECREATED"
-	LIST_VOLUME_BACKUPS_SORT_BY_DISPLAYNAME ListVolumeBackupsSortByEnum = "DISPLAYNAME"
-	LIST_VOLUME_BACKUPS_SORT_BY_UNKNOWN     ListVolumeBackupsSortByEnum = "UNKNOWN"
+	ListVolumeBackupsSortByTimecreated ListVolumeBackupsSortByEnum = "TIMECREATED"
+	ListVolumeBackupsSortByDisplayname ListVolumeBackupsSortByEnum = "DISPLAYNAME"
+	ListVolumeBackupsSortByUnknown     ListVolumeBackupsSortByEnum = "UNKNOWN"
 )
 
-var mapping_listvolumebackupssortby = map[string]ListVolumeBackupsSortByEnum{
-	"TIMECREATED": LIST_VOLUME_BACKUPS_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_VOLUME_BACKUPS_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_VOLUME_BACKUPS_SORT_BY_UNKNOWN,
+var mappingListVolumeBackupsSortBy = map[string]ListVolumeBackupsSortByEnum{
+	"TIMECREATED": ListVolumeBackupsSortByTimecreated,
+	"DISPLAYNAME": ListVolumeBackupsSortByDisplayname,
+	"UNKNOWN":     ListVolumeBackupsSortByUnknown,
 }
 
+// GetListVolumeBackupsSortByEnumValues Enumerates the set of values for ListVolumeBackupsSortBy
 func GetListVolumeBackupsSortByEnumValues() []ListVolumeBackupsSortByEnum {
 	values := make([]ListVolumeBackupsSortByEnum, 0)
-	for _, v := range mapping_listvolumebackupssortby {
-		if v != LIST_VOLUME_BACKUPS_SORT_BY_UNKNOWN {
+	for _, v := range mappingListVolumeBackupsSortBy {
+		if v != ListVolumeBackupsSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListVolumeBackupsSortOrderEnum Enum with underlying type: string
 type ListVolumeBackupsSortOrderEnum string
 
+// Set of constants representing the allowable values for ListVolumeBackupsSortOrder
 const (
-	LIST_VOLUME_BACKUPS_SORT_ORDER_ASC     ListVolumeBackupsSortOrderEnum = "ASC"
-	LIST_VOLUME_BACKUPS_SORT_ORDER_DESC    ListVolumeBackupsSortOrderEnum = "DESC"
-	LIST_VOLUME_BACKUPS_SORT_ORDER_UNKNOWN ListVolumeBackupsSortOrderEnum = "UNKNOWN"
+	ListVolumeBackupsSortOrderAsc     ListVolumeBackupsSortOrderEnum = "ASC"
+	ListVolumeBackupsSortOrderDesc    ListVolumeBackupsSortOrderEnum = "DESC"
+	ListVolumeBackupsSortOrderUnknown ListVolumeBackupsSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listvolumebackupssortorder = map[string]ListVolumeBackupsSortOrderEnum{
-	"ASC":     LIST_VOLUME_BACKUPS_SORT_ORDER_ASC,
-	"DESC":    LIST_VOLUME_BACKUPS_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_VOLUME_BACKUPS_SORT_ORDER_UNKNOWN,
+var mappingListVolumeBackupsSortOrder = map[string]ListVolumeBackupsSortOrderEnum{
+	"ASC":     ListVolumeBackupsSortOrderAsc,
+	"DESC":    ListVolumeBackupsSortOrderDesc,
+	"UNKNOWN": ListVolumeBackupsSortOrderUnknown,
 }
 
+// GetListVolumeBackupsSortOrderEnumValues Enumerates the set of values for ListVolumeBackupsSortOrder
 func GetListVolumeBackupsSortOrderEnumValues() []ListVolumeBackupsSortOrderEnum {
 	values := make([]ListVolumeBackupsSortOrderEnum, 0)
-	for _, v := range mapping_listvolumebackupssortorder {
-		if v != LIST_VOLUME_BACKUPS_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListVolumeBackupsSortOrder {
+		if v != ListVolumeBackupsSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ConsoleHistory. An instance's serial console data. It includes configuration messages that occur when the
+// ConsoleHistory An instance's serial console data. It includes configuration messages that occur when the
 // instance boots, such as kernel and BIOS messages, and is useful for checking the status of
 // the instance or diagnosing problems. The console data is minimally formatted ASCII text.
 type ConsoleHistory struct {
@@ -47,28 +47,31 @@ func (model ConsoleHistory) String() string {
 	return common.PointerString(model)
 }
 
+// ConsoleHistoryLifecycleStateEnum Enum with underlying type: string
 type ConsoleHistoryLifecycleStateEnum string
 
+// Set of constants representing the allowable values for ConsoleHistoryLifecycleState
 const (
-	CONSOLE_HISTORY_LIFECYCLE_STATE_REQUESTED       ConsoleHistoryLifecycleStateEnum = "REQUESTED"
-	CONSOLE_HISTORY_LIFECYCLE_STATE_GETTING_HISTORY ConsoleHistoryLifecycleStateEnum = "GETTING-HISTORY"
-	CONSOLE_HISTORY_LIFECYCLE_STATE_SUCCEEDED       ConsoleHistoryLifecycleStateEnum = "SUCCEEDED"
-	CONSOLE_HISTORY_LIFECYCLE_STATE_FAILED          ConsoleHistoryLifecycleStateEnum = "FAILED"
-	CONSOLE_HISTORY_LIFECYCLE_STATE_UNKNOWN         ConsoleHistoryLifecycleStateEnum = "UNKNOWN"
+	ConsoleHistoryLifecycleStateRequested      ConsoleHistoryLifecycleStateEnum = "REQUESTED"
+	ConsoleHistoryLifecycleStateGettingHistory ConsoleHistoryLifecycleStateEnum = "GETTING-HISTORY"
+	ConsoleHistoryLifecycleStateSucceeded      ConsoleHistoryLifecycleStateEnum = "SUCCEEDED"
+	ConsoleHistoryLifecycleStateFailed         ConsoleHistoryLifecycleStateEnum = "FAILED"
+	ConsoleHistoryLifecycleStateUnknown        ConsoleHistoryLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_consolehistory_lifecycleState = map[string]ConsoleHistoryLifecycleStateEnum{
-	"REQUESTED":       CONSOLE_HISTORY_LIFECYCLE_STATE_REQUESTED,
-	"GETTING-HISTORY": CONSOLE_HISTORY_LIFECYCLE_STATE_GETTING_HISTORY,
-	"SUCCEEDED":       CONSOLE_HISTORY_LIFECYCLE_STATE_SUCCEEDED,
-	"FAILED":          CONSOLE_HISTORY_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":         CONSOLE_HISTORY_LIFECYCLE_STATE_UNKNOWN,
+var mappingConsoleHistoryLifecycleState = map[string]ConsoleHistoryLifecycleStateEnum{
+	"REQUESTED":       ConsoleHistoryLifecycleStateRequested,
+	"GETTING-HISTORY": ConsoleHistoryLifecycleStateGettingHistory,
+	"SUCCEEDED":       ConsoleHistoryLifecycleStateSucceeded,
+	"FAILED":          ConsoleHistoryLifecycleStateFailed,
+	"UNKNOWN":         ConsoleHistoryLifecycleStateUnknown,
 }
 
+// GetConsoleHistoryLifecycleStateEnumValues Enumerates the set of values for ConsoleHistoryLifecycleState
 func GetConsoleHistoryLifecycleStateEnumValues() []ConsoleHistoryLifecycleStateEnum {
 	values := make([]ConsoleHistoryLifecycleStateEnum, 0)
-	for _, v := range mapping_consolehistory_lifecycleState {
-		if v != CONSOLE_HISTORY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingConsoleHistoryLifecycleState {
+		if v != ConsoleHistoryLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

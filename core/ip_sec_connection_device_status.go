@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IpSecConnectionDeviceStatus. Status of the IPSec connection.
+// IpSecConnectionDeviceStatus Status of the IPSec connection.
 type IpSecConnectionDeviceStatus struct {
 
 	// The OCID of the compartment containing the IPSec connection.

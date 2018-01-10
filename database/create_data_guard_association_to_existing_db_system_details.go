@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateDataGuardAssociationToExistingDbSystemDetails. The configuration details for creating a Data Guard association to an existing database.
+// CreateDataGuardAssociationToExistingDbSystemDetails The configuration details for creating a Data Guard association to an existing database.
 type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 
 	// A strong password for the `SYS`, `SYSTEM`, and `PDB Admin` users to apply during standby creation.

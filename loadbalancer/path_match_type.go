@@ -22,28 +22,31 @@ func (model PathMatchType) String() string {
 	return common.PointerString(model)
 }
 
+// PathMatchTypeMatchTypeEnum Enum with underlying type: string
 type PathMatchTypeMatchTypeEnum string
 
+// Set of constants representing the allowable values for PathMatchTypeMatchType
 const (
-	PATH_MATCH_TYPE_MATCH_TYPE_EXACT_MATCH                PathMatchTypeMatchTypeEnum = "EXACT_MATCH"
-	PATH_MATCH_TYPE_MATCH_TYPE_FORCE_LONGEST_PREFIX_MATCH PathMatchTypeMatchTypeEnum = "FORCE_LONGEST_PREFIX_MATCH"
-	PATH_MATCH_TYPE_MATCH_TYPE_PREFIX_MATCH               PathMatchTypeMatchTypeEnum = "PREFIX_MATCH"
-	PATH_MATCH_TYPE_MATCH_TYPE_SUFFIX_MATCH               PathMatchTypeMatchTypeEnum = "SUFFIX_MATCH"
-	PATH_MATCH_TYPE_MATCH_TYPE_UNKNOWN                    PathMatchTypeMatchTypeEnum = "UNKNOWN"
+	PathMatchTypeMatchTypeExactMatch              PathMatchTypeMatchTypeEnum = "EXACT_MATCH"
+	PathMatchTypeMatchTypeForceLongestPrefixMatch PathMatchTypeMatchTypeEnum = "FORCE_LONGEST_PREFIX_MATCH"
+	PathMatchTypeMatchTypePrefixMatch             PathMatchTypeMatchTypeEnum = "PREFIX_MATCH"
+	PathMatchTypeMatchTypeSuffixMatch             PathMatchTypeMatchTypeEnum = "SUFFIX_MATCH"
+	PathMatchTypeMatchTypeUnknown                 PathMatchTypeMatchTypeEnum = "UNKNOWN"
 )
 
-var mapping_pathmatchtype_matchType = map[string]PathMatchTypeMatchTypeEnum{
-	"EXACT_MATCH":                PATH_MATCH_TYPE_MATCH_TYPE_EXACT_MATCH,
-	"FORCE_LONGEST_PREFIX_MATCH": PATH_MATCH_TYPE_MATCH_TYPE_FORCE_LONGEST_PREFIX_MATCH,
-	"PREFIX_MATCH":               PATH_MATCH_TYPE_MATCH_TYPE_PREFIX_MATCH,
-	"SUFFIX_MATCH":               PATH_MATCH_TYPE_MATCH_TYPE_SUFFIX_MATCH,
-	"UNKNOWN":                    PATH_MATCH_TYPE_MATCH_TYPE_UNKNOWN,
+var mappingPathMatchTypeMatchType = map[string]PathMatchTypeMatchTypeEnum{
+	"EXACT_MATCH":                PathMatchTypeMatchTypeExactMatch,
+	"FORCE_LONGEST_PREFIX_MATCH": PathMatchTypeMatchTypeForceLongestPrefixMatch,
+	"PREFIX_MATCH":               PathMatchTypeMatchTypePrefixMatch,
+	"SUFFIX_MATCH":               PathMatchTypeMatchTypeSuffixMatch,
+	"UNKNOWN":                    PathMatchTypeMatchTypeUnknown,
 }
 
+// GetPathMatchTypeMatchTypeEnumValues Enumerates the set of values for PathMatchTypeMatchType
 func GetPathMatchTypeMatchTypeEnumValues() []PathMatchTypeMatchTypeEnum {
 	values := make([]PathMatchTypeMatchTypeEnum, 0)
-	for _, v := range mapping_pathmatchtype_matchType {
-		if v != PATH_MATCH_TYPE_MATCH_TYPE_UNKNOWN {
+	for _, v := range mappingPathMatchTypeMatchType {
+		if v != PathMatchTypeMatchTypeUnknown {
 			values = append(values, v)
 		}
 	}

@@ -76,48 +76,54 @@ func (response ListImagesResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListImagesSortByEnum Enum with underlying type: string
 type ListImagesSortByEnum string
 
+// Set of constants representing the allowable values for ListImagesSortBy
 const (
-	LIST_IMAGES_SORT_BY_TIMECREATED ListImagesSortByEnum = "TIMECREATED"
-	LIST_IMAGES_SORT_BY_DISPLAYNAME ListImagesSortByEnum = "DISPLAYNAME"
-	LIST_IMAGES_SORT_BY_UNKNOWN     ListImagesSortByEnum = "UNKNOWN"
+	ListImagesSortByTimecreated ListImagesSortByEnum = "TIMECREATED"
+	ListImagesSortByDisplayname ListImagesSortByEnum = "DISPLAYNAME"
+	ListImagesSortByUnknown     ListImagesSortByEnum = "UNKNOWN"
 )
 
-var mapping_listimagessortby = map[string]ListImagesSortByEnum{
-	"TIMECREATED": LIST_IMAGES_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_IMAGES_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_IMAGES_SORT_BY_UNKNOWN,
+var mappingListImagesSortBy = map[string]ListImagesSortByEnum{
+	"TIMECREATED": ListImagesSortByTimecreated,
+	"DISPLAYNAME": ListImagesSortByDisplayname,
+	"UNKNOWN":     ListImagesSortByUnknown,
 }
 
+// GetListImagesSortByEnumValues Enumerates the set of values for ListImagesSortBy
 func GetListImagesSortByEnumValues() []ListImagesSortByEnum {
 	values := make([]ListImagesSortByEnum, 0)
-	for _, v := range mapping_listimagessortby {
-		if v != LIST_IMAGES_SORT_BY_UNKNOWN {
+	for _, v := range mappingListImagesSortBy {
+		if v != ListImagesSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListImagesSortOrderEnum Enum with underlying type: string
 type ListImagesSortOrderEnum string
 
+// Set of constants representing the allowable values for ListImagesSortOrder
 const (
-	LIST_IMAGES_SORT_ORDER_ASC     ListImagesSortOrderEnum = "ASC"
-	LIST_IMAGES_SORT_ORDER_DESC    ListImagesSortOrderEnum = "DESC"
-	LIST_IMAGES_SORT_ORDER_UNKNOWN ListImagesSortOrderEnum = "UNKNOWN"
+	ListImagesSortOrderAsc     ListImagesSortOrderEnum = "ASC"
+	ListImagesSortOrderDesc    ListImagesSortOrderEnum = "DESC"
+	ListImagesSortOrderUnknown ListImagesSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listimagessortorder = map[string]ListImagesSortOrderEnum{
-	"ASC":     LIST_IMAGES_SORT_ORDER_ASC,
-	"DESC":    LIST_IMAGES_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_IMAGES_SORT_ORDER_UNKNOWN,
+var mappingListImagesSortOrder = map[string]ListImagesSortOrderEnum{
+	"ASC":     ListImagesSortOrderAsc,
+	"DESC":    ListImagesSortOrderDesc,
+	"UNKNOWN": ListImagesSortOrderUnknown,
 }
 
+// GetListImagesSortOrderEnumValues Enumerates the set of values for ListImagesSortOrder
 func GetListImagesSortOrderEnumValues() []ListImagesSortOrderEnum {
 	values := make([]ListImagesSortOrderEnum, 0)
-	for _, v := range mapping_listimagessortorder {
-		if v != LIST_IMAGES_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListImagesSortOrder {
+		if v != ListImagesSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CrossConnectStatus. The status of the cross-connect.
+// CrossConnectStatus The status of the cross-connect.
 type CrossConnectStatus struct {
 
 	// The OCID of the cross-connect.
@@ -38,54 +38,60 @@ func (model CrossConnectStatus) String() string {
 	return common.PointerString(model)
 }
 
+// CrossConnectStatusInterfaceStateEnum Enum with underlying type: string
 type CrossConnectStatusInterfaceStateEnum string
 
+// Set of constants representing the allowable values for CrossConnectStatusInterfaceState
 const (
-	CROSS_CONNECT_STATUS_INTERFACE_STATE_UP      CrossConnectStatusInterfaceStateEnum = "UP"
-	CROSS_CONNECT_STATUS_INTERFACE_STATE_DOWN    CrossConnectStatusInterfaceStateEnum = "DOWN"
-	CROSS_CONNECT_STATUS_INTERFACE_STATE_UNKNOWN CrossConnectStatusInterfaceStateEnum = "UNKNOWN"
+	CrossConnectStatusInterfaceStateUp      CrossConnectStatusInterfaceStateEnum = "UP"
+	CrossConnectStatusInterfaceStateDown    CrossConnectStatusInterfaceStateEnum = "DOWN"
+	CrossConnectStatusInterfaceStateUnknown CrossConnectStatusInterfaceStateEnum = "UNKNOWN"
 )
 
-var mapping_crossconnectstatus_interfaceState = map[string]CrossConnectStatusInterfaceStateEnum{
-	"UP":      CROSS_CONNECT_STATUS_INTERFACE_STATE_UP,
-	"DOWN":    CROSS_CONNECT_STATUS_INTERFACE_STATE_DOWN,
-	"UNKNOWN": CROSS_CONNECT_STATUS_INTERFACE_STATE_UNKNOWN,
+var mappingCrossConnectStatusInterfaceState = map[string]CrossConnectStatusInterfaceStateEnum{
+	"UP":      CrossConnectStatusInterfaceStateUp,
+	"DOWN":    CrossConnectStatusInterfaceStateDown,
+	"UNKNOWN": CrossConnectStatusInterfaceStateUnknown,
 }
 
+// GetCrossConnectStatusInterfaceStateEnumValues Enumerates the set of values for CrossConnectStatusInterfaceState
 func GetCrossConnectStatusInterfaceStateEnumValues() []CrossConnectStatusInterfaceStateEnum {
 	values := make([]CrossConnectStatusInterfaceStateEnum, 0)
-	for _, v := range mapping_crossconnectstatus_interfaceState {
-		if v != CROSS_CONNECT_STATUS_INTERFACE_STATE_UNKNOWN {
+	for _, v := range mappingCrossConnectStatusInterfaceState {
+		if v != CrossConnectStatusInterfaceStateUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// CrossConnectStatusLightLevelIndicatorEnum Enum with underlying type: string
 type CrossConnectStatusLightLevelIndicatorEnum string
 
+// Set of constants representing the allowable values for CrossConnectStatusLightLevelIndicator
 const (
-	CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_NO_LIGHT  CrossConnectStatusLightLevelIndicatorEnum = "NO_LIGHT"
-	CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_LOW_WARN  CrossConnectStatusLightLevelIndicatorEnum = "LOW_WARN"
-	CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_HIGH_WARN CrossConnectStatusLightLevelIndicatorEnum = "HIGH_WARN"
-	CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_BAD       CrossConnectStatusLightLevelIndicatorEnum = "BAD"
-	CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_GOOD      CrossConnectStatusLightLevelIndicatorEnum = "GOOD"
-	CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_UNKNOWN   CrossConnectStatusLightLevelIndicatorEnum = "UNKNOWN"
+	CrossConnectStatusLightLevelIndicatorNoLight  CrossConnectStatusLightLevelIndicatorEnum = "NO_LIGHT"
+	CrossConnectStatusLightLevelIndicatorLowWarn  CrossConnectStatusLightLevelIndicatorEnum = "LOW_WARN"
+	CrossConnectStatusLightLevelIndicatorHighWarn CrossConnectStatusLightLevelIndicatorEnum = "HIGH_WARN"
+	CrossConnectStatusLightLevelIndicatorBad      CrossConnectStatusLightLevelIndicatorEnum = "BAD"
+	CrossConnectStatusLightLevelIndicatorGood     CrossConnectStatusLightLevelIndicatorEnum = "GOOD"
+	CrossConnectStatusLightLevelIndicatorUnknown  CrossConnectStatusLightLevelIndicatorEnum = "UNKNOWN"
 )
 
-var mapping_crossconnectstatus_lightLevelIndicator = map[string]CrossConnectStatusLightLevelIndicatorEnum{
-	"NO_LIGHT":  CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_NO_LIGHT,
-	"LOW_WARN":  CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_LOW_WARN,
-	"HIGH_WARN": CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_HIGH_WARN,
-	"BAD":       CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_BAD,
-	"GOOD":      CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_GOOD,
-	"UNKNOWN":   CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_UNKNOWN,
+var mappingCrossConnectStatusLightLevelIndicator = map[string]CrossConnectStatusLightLevelIndicatorEnum{
+	"NO_LIGHT":  CrossConnectStatusLightLevelIndicatorNoLight,
+	"LOW_WARN":  CrossConnectStatusLightLevelIndicatorLowWarn,
+	"HIGH_WARN": CrossConnectStatusLightLevelIndicatorHighWarn,
+	"BAD":       CrossConnectStatusLightLevelIndicatorBad,
+	"GOOD":      CrossConnectStatusLightLevelIndicatorGood,
+	"UNKNOWN":   CrossConnectStatusLightLevelIndicatorUnknown,
 }
 
+// GetCrossConnectStatusLightLevelIndicatorEnumValues Enumerates the set of values for CrossConnectStatusLightLevelIndicator
 func GetCrossConnectStatusLightLevelIndicatorEnumValues() []CrossConnectStatusLightLevelIndicatorEnum {
 	values := make([]CrossConnectStatusLightLevelIndicatorEnum, 0)
-	for _, v := range mapping_crossconnectstatus_lightLevelIndicator {
-		if v != CROSS_CONNECT_STATUS_LIGHT_LEVEL_INDICATOR_UNKNOWN {
+	for _, v := range mappingCrossConnectStatusLightLevelIndicator {
+		if v != CrossConnectStatusLightLevelIndicatorUnknown {
 			values = append(values, v)
 		}
 	}

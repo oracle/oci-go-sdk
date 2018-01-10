@@ -32,28 +32,31 @@ func (model CreatePreauthenticatedRequestDetails) String() string {
 	return common.PointerString(model)
 }
 
+// CreatePreauthenticatedRequestDetailsAccessTypeEnum Enum with underlying type: string
 type CreatePreauthenticatedRequestDetailsAccessTypeEnum string
 
+// Set of constants representing the allowable values for CreatePreauthenticatedRequestDetailsAccessType
 const (
-	CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_OBJECTREAD      CreatePreauthenticatedRequestDetailsAccessTypeEnum = "ObjectRead"
-	CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_OBJECTWRITE     CreatePreauthenticatedRequestDetailsAccessTypeEnum = "ObjectWrite"
-	CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_OBJECTREADWRITE CreatePreauthenticatedRequestDetailsAccessTypeEnum = "ObjectReadWrite"
-	CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_ANYOBJECTWRITE  CreatePreauthenticatedRequestDetailsAccessTypeEnum = "AnyObjectWrite"
-	CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_UNKNOWN         CreatePreauthenticatedRequestDetailsAccessTypeEnum = "UNKNOWN"
+	CreatePreauthenticatedRequestDetailsAccessTypeObjectread      CreatePreauthenticatedRequestDetailsAccessTypeEnum = "ObjectRead"
+	CreatePreauthenticatedRequestDetailsAccessTypeObjectwrite     CreatePreauthenticatedRequestDetailsAccessTypeEnum = "ObjectWrite"
+	CreatePreauthenticatedRequestDetailsAccessTypeObjectreadwrite CreatePreauthenticatedRequestDetailsAccessTypeEnum = "ObjectReadWrite"
+	CreatePreauthenticatedRequestDetailsAccessTypeAnyobjectwrite  CreatePreauthenticatedRequestDetailsAccessTypeEnum = "AnyObjectWrite"
+	CreatePreauthenticatedRequestDetailsAccessTypeUnknown         CreatePreauthenticatedRequestDetailsAccessTypeEnum = "UNKNOWN"
 )
 
-var mapping_createpreauthenticatedrequestdetails_accessType = map[string]CreatePreauthenticatedRequestDetailsAccessTypeEnum{
-	"ObjectRead":      CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_OBJECTREAD,
-	"ObjectWrite":     CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_OBJECTWRITE,
-	"ObjectReadWrite": CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_OBJECTREADWRITE,
-	"AnyObjectWrite":  CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_ANYOBJECTWRITE,
-	"UNKNOWN":         CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_UNKNOWN,
+var mappingCreatePreauthenticatedRequestDetailsAccessType = map[string]CreatePreauthenticatedRequestDetailsAccessTypeEnum{
+	"ObjectRead":      CreatePreauthenticatedRequestDetailsAccessTypeObjectread,
+	"ObjectWrite":     CreatePreauthenticatedRequestDetailsAccessTypeObjectwrite,
+	"ObjectReadWrite": CreatePreauthenticatedRequestDetailsAccessTypeObjectreadwrite,
+	"AnyObjectWrite":  CreatePreauthenticatedRequestDetailsAccessTypeAnyobjectwrite,
+	"UNKNOWN":         CreatePreauthenticatedRequestDetailsAccessTypeUnknown,
 }
 
+// GetCreatePreauthenticatedRequestDetailsAccessTypeEnumValues Enumerates the set of values for CreatePreauthenticatedRequestDetailsAccessType
 func GetCreatePreauthenticatedRequestDetailsAccessTypeEnumValues() []CreatePreauthenticatedRequestDetailsAccessTypeEnum {
 	values := make([]CreatePreauthenticatedRequestDetailsAccessTypeEnum, 0)
-	for _, v := range mapping_createpreauthenticatedrequestdetails_accessType {
-		if v != CREATE_PREAUTHENTICATED_REQUEST_DETAILS_ACCESS_TYPE_UNKNOWN {
+	for _, v := range mappingCreatePreauthenticatedRequestDetailsAccessType {
+		if v != CreatePreauthenticatedRequestDetailsAccessTypeUnknown {
 			values = append(values, v)
 		}
 	}

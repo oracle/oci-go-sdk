@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IpAddress. A load balancer IP address.
+// IpAddress A load balancer IP address.
 type IpAddress struct {
 
 	// An IP address.

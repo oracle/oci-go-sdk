@@ -68,48 +68,54 @@ func (response ListVcnsResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListVcnsSortByEnum Enum with underlying type: string
 type ListVcnsSortByEnum string
 
+// Set of constants representing the allowable values for ListVcnsSortBy
 const (
-	LIST_VCNS_SORT_BY_TIMECREATED ListVcnsSortByEnum = "TIMECREATED"
-	LIST_VCNS_SORT_BY_DISPLAYNAME ListVcnsSortByEnum = "DISPLAYNAME"
-	LIST_VCNS_SORT_BY_UNKNOWN     ListVcnsSortByEnum = "UNKNOWN"
+	ListVcnsSortByTimecreated ListVcnsSortByEnum = "TIMECREATED"
+	ListVcnsSortByDisplayname ListVcnsSortByEnum = "DISPLAYNAME"
+	ListVcnsSortByUnknown     ListVcnsSortByEnum = "UNKNOWN"
 )
 
-var mapping_listvcnssortby = map[string]ListVcnsSortByEnum{
-	"TIMECREATED": LIST_VCNS_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_VCNS_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_VCNS_SORT_BY_UNKNOWN,
+var mappingListVcnsSortBy = map[string]ListVcnsSortByEnum{
+	"TIMECREATED": ListVcnsSortByTimecreated,
+	"DISPLAYNAME": ListVcnsSortByDisplayname,
+	"UNKNOWN":     ListVcnsSortByUnknown,
 }
 
+// GetListVcnsSortByEnumValues Enumerates the set of values for ListVcnsSortBy
 func GetListVcnsSortByEnumValues() []ListVcnsSortByEnum {
 	values := make([]ListVcnsSortByEnum, 0)
-	for _, v := range mapping_listvcnssortby {
-		if v != LIST_VCNS_SORT_BY_UNKNOWN {
+	for _, v := range mappingListVcnsSortBy {
+		if v != ListVcnsSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListVcnsSortOrderEnum Enum with underlying type: string
 type ListVcnsSortOrderEnum string
 
+// Set of constants representing the allowable values for ListVcnsSortOrder
 const (
-	LIST_VCNS_SORT_ORDER_ASC     ListVcnsSortOrderEnum = "ASC"
-	LIST_VCNS_SORT_ORDER_DESC    ListVcnsSortOrderEnum = "DESC"
-	LIST_VCNS_SORT_ORDER_UNKNOWN ListVcnsSortOrderEnum = "UNKNOWN"
+	ListVcnsSortOrderAsc     ListVcnsSortOrderEnum = "ASC"
+	ListVcnsSortOrderDesc    ListVcnsSortOrderEnum = "DESC"
+	ListVcnsSortOrderUnknown ListVcnsSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listvcnssortorder = map[string]ListVcnsSortOrderEnum{
-	"ASC":     LIST_VCNS_SORT_ORDER_ASC,
-	"DESC":    LIST_VCNS_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_VCNS_SORT_ORDER_UNKNOWN,
+var mappingListVcnsSortOrder = map[string]ListVcnsSortOrderEnum{
+	"ASC":     ListVcnsSortOrderAsc,
+	"DESC":    ListVcnsSortOrderDesc,
+	"UNKNOWN": ListVcnsSortOrderUnknown,
 }
 
+// GetListVcnsSortOrderEnumValues Enumerates the set of values for ListVcnsSortOrder
 func GetListVcnsSortOrderEnumValues() []ListVcnsSortOrderEnum {
 	values := make([]ListVcnsSortOrderEnum, 0)
-	for _, v := range mapping_listvcnssortorder {
-		if v != LIST_VCNS_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListVcnsSortOrder {
+		if v != ListVcnsSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

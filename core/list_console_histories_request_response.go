@@ -72,48 +72,54 @@ func (response ListConsoleHistoriesResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListConsoleHistoriesSortByEnum Enum with underlying type: string
 type ListConsoleHistoriesSortByEnum string
 
+// Set of constants representing the allowable values for ListConsoleHistoriesSortBy
 const (
-	LIST_CONSOLE_HISTORIES_SORT_BY_TIMECREATED ListConsoleHistoriesSortByEnum = "TIMECREATED"
-	LIST_CONSOLE_HISTORIES_SORT_BY_DISPLAYNAME ListConsoleHistoriesSortByEnum = "DISPLAYNAME"
-	LIST_CONSOLE_HISTORIES_SORT_BY_UNKNOWN     ListConsoleHistoriesSortByEnum = "UNKNOWN"
+	ListConsoleHistoriesSortByTimecreated ListConsoleHistoriesSortByEnum = "TIMECREATED"
+	ListConsoleHistoriesSortByDisplayname ListConsoleHistoriesSortByEnum = "DISPLAYNAME"
+	ListConsoleHistoriesSortByUnknown     ListConsoleHistoriesSortByEnum = "UNKNOWN"
 )
 
-var mapping_listconsolehistoriessortby = map[string]ListConsoleHistoriesSortByEnum{
-	"TIMECREATED": LIST_CONSOLE_HISTORIES_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_CONSOLE_HISTORIES_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_CONSOLE_HISTORIES_SORT_BY_UNKNOWN,
+var mappingListConsoleHistoriesSortBy = map[string]ListConsoleHistoriesSortByEnum{
+	"TIMECREATED": ListConsoleHistoriesSortByTimecreated,
+	"DISPLAYNAME": ListConsoleHistoriesSortByDisplayname,
+	"UNKNOWN":     ListConsoleHistoriesSortByUnknown,
 }
 
+// GetListConsoleHistoriesSortByEnumValues Enumerates the set of values for ListConsoleHistoriesSortBy
 func GetListConsoleHistoriesSortByEnumValues() []ListConsoleHistoriesSortByEnum {
 	values := make([]ListConsoleHistoriesSortByEnum, 0)
-	for _, v := range mapping_listconsolehistoriessortby {
-		if v != LIST_CONSOLE_HISTORIES_SORT_BY_UNKNOWN {
+	for _, v := range mappingListConsoleHistoriesSortBy {
+		if v != ListConsoleHistoriesSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListConsoleHistoriesSortOrderEnum Enum with underlying type: string
 type ListConsoleHistoriesSortOrderEnum string
 
+// Set of constants representing the allowable values for ListConsoleHistoriesSortOrder
 const (
-	LIST_CONSOLE_HISTORIES_SORT_ORDER_ASC     ListConsoleHistoriesSortOrderEnum = "ASC"
-	LIST_CONSOLE_HISTORIES_SORT_ORDER_DESC    ListConsoleHistoriesSortOrderEnum = "DESC"
-	LIST_CONSOLE_HISTORIES_SORT_ORDER_UNKNOWN ListConsoleHistoriesSortOrderEnum = "UNKNOWN"
+	ListConsoleHistoriesSortOrderAsc     ListConsoleHistoriesSortOrderEnum = "ASC"
+	ListConsoleHistoriesSortOrderDesc    ListConsoleHistoriesSortOrderEnum = "DESC"
+	ListConsoleHistoriesSortOrderUnknown ListConsoleHistoriesSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listconsolehistoriessortorder = map[string]ListConsoleHistoriesSortOrderEnum{
-	"ASC":     LIST_CONSOLE_HISTORIES_SORT_ORDER_ASC,
-	"DESC":    LIST_CONSOLE_HISTORIES_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_CONSOLE_HISTORIES_SORT_ORDER_UNKNOWN,
+var mappingListConsoleHistoriesSortOrder = map[string]ListConsoleHistoriesSortOrderEnum{
+	"ASC":     ListConsoleHistoriesSortOrderAsc,
+	"DESC":    ListConsoleHistoriesSortOrderDesc,
+	"UNKNOWN": ListConsoleHistoriesSortOrderUnknown,
 }
 
+// GetListConsoleHistoriesSortOrderEnumValues Enumerates the set of values for ListConsoleHistoriesSortOrder
 func GetListConsoleHistoriesSortOrderEnumValues() []ListConsoleHistoriesSortOrderEnum {
 	values := make([]ListConsoleHistoriesSortOrderEnum, 0)
-	for _, v := range mapping_listconsolehistoriessortorder {
-		if v != LIST_CONSOLE_HISTORIES_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListConsoleHistoriesSortOrder {
+		if v != ListConsoleHistoriesSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

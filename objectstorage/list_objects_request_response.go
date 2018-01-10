@@ -72,28 +72,31 @@ func (response ListObjectsResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListObjectsFieldsEnum Enum with underlying type: string
 type ListObjectsFieldsEnum string
 
+// Set of constants representing the allowable values for ListObjectsFields
 const (
-	LIST_OBJECTS_FIELDS_NAME        ListObjectsFieldsEnum = "name"
-	LIST_OBJECTS_FIELDS_SIZE        ListObjectsFieldsEnum = "size"
-	LIST_OBJECTS_FIELDS_TIMECREATED ListObjectsFieldsEnum = "timeCreated"
-	LIST_OBJECTS_FIELDS_MD5         ListObjectsFieldsEnum = "md5"
-	LIST_OBJECTS_FIELDS_UNKNOWN     ListObjectsFieldsEnum = "UNKNOWN"
+	ListObjectsFieldsName        ListObjectsFieldsEnum = "name"
+	ListObjectsFieldsSize        ListObjectsFieldsEnum = "size"
+	ListObjectsFieldsTimecreated ListObjectsFieldsEnum = "timeCreated"
+	ListObjectsFieldsMd5         ListObjectsFieldsEnum = "md5"
+	ListObjectsFieldsUnknown     ListObjectsFieldsEnum = "UNKNOWN"
 )
 
-var mapping_listobjectsfields = map[string]ListObjectsFieldsEnum{
-	"name":        LIST_OBJECTS_FIELDS_NAME,
-	"size":        LIST_OBJECTS_FIELDS_SIZE,
-	"timeCreated": LIST_OBJECTS_FIELDS_TIMECREATED,
-	"md5":         LIST_OBJECTS_FIELDS_MD5,
-	"UNKNOWN":     LIST_OBJECTS_FIELDS_UNKNOWN,
+var mappingListObjectsFields = map[string]ListObjectsFieldsEnum{
+	"name":        ListObjectsFieldsName,
+	"size":        ListObjectsFieldsSize,
+	"timeCreated": ListObjectsFieldsTimecreated,
+	"md5":         ListObjectsFieldsMd5,
+	"UNKNOWN":     ListObjectsFieldsUnknown,
 }
 
+// GetListObjectsFieldsEnumValues Enumerates the set of values for ListObjectsFields
 func GetListObjectsFieldsEnumValues() []ListObjectsFieldsEnum {
 	values := make([]ListObjectsFieldsEnum, 0)
-	for _, v := range mapping_listobjectsfields {
-		if v != LIST_OBJECTS_FIELDS_UNKNOWN {
+	for _, v := range mappingListObjectsFields {
+		if v != ListObjectsFieldsUnknown {
 			values = append(values, v)
 		}
 	}

@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// InstanceSourceViaBootVolumeDetails.
+// InstanceSourceViaBootVolumeDetails
 type InstanceSourceViaBootVolumeDetails struct {
 
 	// The OCID of the boot volume used to boot the instance.

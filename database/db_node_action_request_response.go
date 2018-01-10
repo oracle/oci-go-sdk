@@ -55,28 +55,31 @@ func (response DbNodeActionResponse) String() string {
 	return common.PointerString(response)
 }
 
+// DbNodeActionActionEnum Enum with underlying type: string
 type DbNodeActionActionEnum string
 
+// Set of constants representing the allowable values for DbNodeActionAction
 const (
-	DB_NODE_ACTION_ACTION_STOP      DbNodeActionActionEnum = "STOP"
-	DB_NODE_ACTION_ACTION_START     DbNodeActionActionEnum = "START"
-	DB_NODE_ACTION_ACTION_SOFTRESET DbNodeActionActionEnum = "SOFTRESET"
-	DB_NODE_ACTION_ACTION_RESET     DbNodeActionActionEnum = "RESET"
-	DB_NODE_ACTION_ACTION_UNKNOWN   DbNodeActionActionEnum = "UNKNOWN"
+	DbNodeActionActionStop      DbNodeActionActionEnum = "STOP"
+	DbNodeActionActionStart     DbNodeActionActionEnum = "START"
+	DbNodeActionActionSoftreset DbNodeActionActionEnum = "SOFTRESET"
+	DbNodeActionActionReset     DbNodeActionActionEnum = "RESET"
+	DbNodeActionActionUnknown   DbNodeActionActionEnum = "UNKNOWN"
 )
 
-var mapping_dbnodeactionaction = map[string]DbNodeActionActionEnum{
-	"STOP":      DB_NODE_ACTION_ACTION_STOP,
-	"START":     DB_NODE_ACTION_ACTION_START,
-	"SOFTRESET": DB_NODE_ACTION_ACTION_SOFTRESET,
-	"RESET":     DB_NODE_ACTION_ACTION_RESET,
-	"UNKNOWN":   DB_NODE_ACTION_ACTION_UNKNOWN,
+var mappingDbNodeActionAction = map[string]DbNodeActionActionEnum{
+	"STOP":      DbNodeActionActionStop,
+	"START":     DbNodeActionActionStart,
+	"SOFTRESET": DbNodeActionActionSoftreset,
+	"RESET":     DbNodeActionActionReset,
+	"UNKNOWN":   DbNodeActionActionUnknown,
 }
 
+// GetDbNodeActionActionEnumValues Enumerates the set of values for DbNodeActionAction
 func GetDbNodeActionActionEnumValues() []DbNodeActionActionEnum {
 	values := make([]DbNodeActionActionEnum, 0)
-	for _, v := range mapping_dbnodeactionaction {
-		if v != DB_NODE_ACTION_ACTION_UNKNOWN {
+	for _, v := range mappingDbNodeActionAction {
+		if v != DbNodeActionActionUnknown {
 			values = append(values, v)
 		}
 	}

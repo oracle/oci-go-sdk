@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// InternetGateway. Represents a router that connects the edge of a VCN with the Internet. For an example scenario
+// InternetGateway Represents a router that connects the edge of a VCN with the Internet. For an example scenario
 // that uses an Internet Gateway, see
 // [Typical Networking Service Scenarios]({{DOC_SERVER_URL}}/Content/Network/Concepts/overview.htm#scenarios).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
@@ -49,28 +49,31 @@ func (model InternetGateway) String() string {
 	return common.PointerString(model)
 }
 
+// InternetGatewayLifecycleStateEnum Enum with underlying type: string
 type InternetGatewayLifecycleStateEnum string
 
+// Set of constants representing the allowable values for InternetGatewayLifecycleState
 const (
-	INTERNET_GATEWAY_LIFECYCLE_STATE_PROVISIONING InternetGatewayLifecycleStateEnum = "PROVISIONING"
-	INTERNET_GATEWAY_LIFECYCLE_STATE_AVAILABLE    InternetGatewayLifecycleStateEnum = "AVAILABLE"
-	INTERNET_GATEWAY_LIFECYCLE_STATE_TERMINATING  InternetGatewayLifecycleStateEnum = "TERMINATING"
-	INTERNET_GATEWAY_LIFECYCLE_STATE_TERMINATED   InternetGatewayLifecycleStateEnum = "TERMINATED"
-	INTERNET_GATEWAY_LIFECYCLE_STATE_UNKNOWN      InternetGatewayLifecycleStateEnum = "UNKNOWN"
+	InternetGatewayLifecycleStateProvisioning InternetGatewayLifecycleStateEnum = "PROVISIONING"
+	InternetGatewayLifecycleStateAvailable    InternetGatewayLifecycleStateEnum = "AVAILABLE"
+	InternetGatewayLifecycleStateTerminating  InternetGatewayLifecycleStateEnum = "TERMINATING"
+	InternetGatewayLifecycleStateTerminated   InternetGatewayLifecycleStateEnum = "TERMINATED"
+	InternetGatewayLifecycleStateUnknown      InternetGatewayLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_internetgateway_lifecycleState = map[string]InternetGatewayLifecycleStateEnum{
-	"PROVISIONING": INTERNET_GATEWAY_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    INTERNET_GATEWAY_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":  INTERNET_GATEWAY_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   INTERNET_GATEWAY_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":      INTERNET_GATEWAY_LIFECYCLE_STATE_UNKNOWN,
+var mappingInternetGatewayLifecycleState = map[string]InternetGatewayLifecycleStateEnum{
+	"PROVISIONING": InternetGatewayLifecycleStateProvisioning,
+	"AVAILABLE":    InternetGatewayLifecycleStateAvailable,
+	"TERMINATING":  InternetGatewayLifecycleStateTerminating,
+	"TERMINATED":   InternetGatewayLifecycleStateTerminated,
+	"UNKNOWN":      InternetGatewayLifecycleStateUnknown,
 }
 
+// GetInternetGatewayLifecycleStateEnumValues Enumerates the set of values for InternetGatewayLifecycleState
 func GetInternetGatewayLifecycleStateEnumValues() []InternetGatewayLifecycleStateEnum {
 	values := make([]InternetGatewayLifecycleStateEnum, 0)
-	for _, v := range mapping_internetgateway_lifecycleState {
-		if v != INTERNET_GATEWAY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingInternetGatewayLifecycleState {
+		if v != InternetGatewayLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

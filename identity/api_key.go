@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ApiKey. A PEM-format RSA credential for securing requests to the Oracle Cloud Infrastructure REST API. Also known
+// ApiKey A PEM-format RSA credential for securing requests to the Oracle Cloud Infrastructure REST API. Also known
 // as an *API signing key*. Specifically, this is the public key from the key pair. The private key remains with
 // the user calling the API. For information about generating a key pair
 // in the required PEM format, see [Required Keys and OCIDs]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm).
@@ -50,30 +50,33 @@ func (model ApiKey) String() string {
 	return common.PointerString(model)
 }
 
+// ApiKeyLifecycleStateEnum Enum with underlying type: string
 type ApiKeyLifecycleStateEnum string
 
+// Set of constants representing the allowable values for ApiKeyLifecycleState
 const (
-	API_KEY_LIFECYCLE_STATE_CREATING ApiKeyLifecycleStateEnum = "CREATING"
-	API_KEY_LIFECYCLE_STATE_ACTIVE   ApiKeyLifecycleStateEnum = "ACTIVE"
-	API_KEY_LIFECYCLE_STATE_INACTIVE ApiKeyLifecycleStateEnum = "INACTIVE"
-	API_KEY_LIFECYCLE_STATE_DELETING ApiKeyLifecycleStateEnum = "DELETING"
-	API_KEY_LIFECYCLE_STATE_DELETED  ApiKeyLifecycleStateEnum = "DELETED"
-	API_KEY_LIFECYCLE_STATE_UNKNOWN  ApiKeyLifecycleStateEnum = "UNKNOWN"
+	ApiKeyLifecycleStateCreating ApiKeyLifecycleStateEnum = "CREATING"
+	ApiKeyLifecycleStateActive   ApiKeyLifecycleStateEnum = "ACTIVE"
+	ApiKeyLifecycleStateInactive ApiKeyLifecycleStateEnum = "INACTIVE"
+	ApiKeyLifecycleStateDeleting ApiKeyLifecycleStateEnum = "DELETING"
+	ApiKeyLifecycleStateDeleted  ApiKeyLifecycleStateEnum = "DELETED"
+	ApiKeyLifecycleStateUnknown  ApiKeyLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_apikey_lifecycleState = map[string]ApiKeyLifecycleStateEnum{
-	"CREATING": API_KEY_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   API_KEY_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": API_KEY_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": API_KEY_LIFECYCLE_STATE_DELETING,
-	"DELETED":  API_KEY_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  API_KEY_LIFECYCLE_STATE_UNKNOWN,
+var mappingApiKeyLifecycleState = map[string]ApiKeyLifecycleStateEnum{
+	"CREATING": ApiKeyLifecycleStateCreating,
+	"ACTIVE":   ApiKeyLifecycleStateActive,
+	"INACTIVE": ApiKeyLifecycleStateInactive,
+	"DELETING": ApiKeyLifecycleStateDeleting,
+	"DELETED":  ApiKeyLifecycleStateDeleted,
+	"UNKNOWN":  ApiKeyLifecycleStateUnknown,
 }
 
+// GetApiKeyLifecycleStateEnumValues Enumerates the set of values for ApiKeyLifecycleState
 func GetApiKeyLifecycleStateEnumValues() []ApiKeyLifecycleStateEnum {
 	values := make([]ApiKeyLifecycleStateEnum, 0)
-	for _, v := range mapping_apikey_lifecycleState {
-		if v != API_KEY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingApiKeyLifecycleState {
+		if v != ApiKeyLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

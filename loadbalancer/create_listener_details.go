@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateListenerDetails. The configuration details for adding a listener to a backend set.
+// CreateListenerDetails The configuration details for adding a listener to a backend set.
 // For more information on listener configuration, see
 // [Managing Load Balancer Listeners]({{DOC_SERVER_URL}}/Content/Balance/tasks/managinglisteners.htm).
 type CreateListenerDetails struct {

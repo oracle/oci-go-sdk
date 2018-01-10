@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// FailoverDataGuardAssociationDetails. The Data Guard association failover parameters.
+// FailoverDataGuardAssociationDetails The Data Guard association failover parameters.
 type FailoverDataGuardAssociationDetails struct {
 
 	// The DB System administrator password.

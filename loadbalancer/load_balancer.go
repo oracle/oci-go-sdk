@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// LoadBalancer. The properties that define a load balancer. For more information, see
+// LoadBalancer The properties that define a load balancer. For more information, see
 // [Managing a Load Balancer]({{DOC_SERVER_URL}}/Content/Balance/Tasks/managingloadbalancer.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
@@ -76,30 +76,33 @@ func (model LoadBalancer) String() string {
 	return common.PointerString(model)
 }
 
+// LoadBalancerLifecycleStateEnum Enum with underlying type: string
 type LoadBalancerLifecycleStateEnum string
 
+// Set of constants representing the allowable values for LoadBalancerLifecycleState
 const (
-	LOAD_BALANCER_LIFECYCLE_STATE_CREATING LoadBalancerLifecycleStateEnum = "CREATING"
-	LOAD_BALANCER_LIFECYCLE_STATE_FAILED   LoadBalancerLifecycleStateEnum = "FAILED"
-	LOAD_BALANCER_LIFECYCLE_STATE_ACTIVE   LoadBalancerLifecycleStateEnum = "ACTIVE"
-	LOAD_BALANCER_LIFECYCLE_STATE_DELETING LoadBalancerLifecycleStateEnum = "DELETING"
-	LOAD_BALANCER_LIFECYCLE_STATE_DELETED  LoadBalancerLifecycleStateEnum = "DELETED"
-	LOAD_BALANCER_LIFECYCLE_STATE_UNKNOWN  LoadBalancerLifecycleStateEnum = "UNKNOWN"
+	LoadBalancerLifecycleStateCreating LoadBalancerLifecycleStateEnum = "CREATING"
+	LoadBalancerLifecycleStateFailed   LoadBalancerLifecycleStateEnum = "FAILED"
+	LoadBalancerLifecycleStateActive   LoadBalancerLifecycleStateEnum = "ACTIVE"
+	LoadBalancerLifecycleStateDeleting LoadBalancerLifecycleStateEnum = "DELETING"
+	LoadBalancerLifecycleStateDeleted  LoadBalancerLifecycleStateEnum = "DELETED"
+	LoadBalancerLifecycleStateUnknown  LoadBalancerLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_loadbalancer_lifecycleState = map[string]LoadBalancerLifecycleStateEnum{
-	"CREATING": LOAD_BALANCER_LIFECYCLE_STATE_CREATING,
-	"FAILED":   LOAD_BALANCER_LIFECYCLE_STATE_FAILED,
-	"ACTIVE":   LOAD_BALANCER_LIFECYCLE_STATE_ACTIVE,
-	"DELETING": LOAD_BALANCER_LIFECYCLE_STATE_DELETING,
-	"DELETED":  LOAD_BALANCER_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  LOAD_BALANCER_LIFECYCLE_STATE_UNKNOWN,
+var mappingLoadBalancerLifecycleState = map[string]LoadBalancerLifecycleStateEnum{
+	"CREATING": LoadBalancerLifecycleStateCreating,
+	"FAILED":   LoadBalancerLifecycleStateFailed,
+	"ACTIVE":   LoadBalancerLifecycleStateActive,
+	"DELETING": LoadBalancerLifecycleStateDeleting,
+	"DELETED":  LoadBalancerLifecycleStateDeleted,
+	"UNKNOWN":  LoadBalancerLifecycleStateUnknown,
 }
 
+// GetLoadBalancerLifecycleStateEnumValues Enumerates the set of values for LoadBalancerLifecycleState
 func GetLoadBalancerLifecycleStateEnumValues() []LoadBalancerLifecycleStateEnum {
 	values := make([]LoadBalancerLifecycleStateEnum, 0)
-	for _, v := range mapping_loadbalancer_lifecycleState {
-		if v != LOAD_BALANCER_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingLoadBalancerLifecycleState {
+		if v != LoadBalancerLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}
