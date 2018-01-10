@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// AttachIScsiVolumeDetails.
+// AttachIScsiVolumeDetails
 type AttachIScsiVolumeDetails struct {
 
 	// The OCID of the instance.

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Database. An Oracle database on a DB System. For more information, see [Managing Oracle Databases]({{DOC_SERVER_URL}}/Content/Database/Concepts/overview.htm).
+// Database An Oracle database on a DB System. For more information, see [Managing Oracle Databases]({{DOC_SERVER_URL}}/Content/Database/Concepts/overview.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type Database struct {
 
@@ -59,36 +59,39 @@ func (model Database) String() string {
 	return common.PointerString(model)
 }
 
+// DatabaseLifecycleStateEnum Enum with underlying type: string
 type DatabaseLifecycleStateEnum string
 
+// Set of constants representing the allowable values for DatabaseLifecycleState
 const (
-	DATABASE_LIFECYCLE_STATE_PROVISIONING       DatabaseLifecycleStateEnum = "PROVISIONING"
-	DATABASE_LIFECYCLE_STATE_AVAILABLE          DatabaseLifecycleStateEnum = "AVAILABLE"
-	DATABASE_LIFECYCLE_STATE_UPDATING           DatabaseLifecycleStateEnum = "UPDATING"
-	DATABASE_LIFECYCLE_STATE_BACKUP_IN_PROGRESS DatabaseLifecycleStateEnum = "BACKUP_IN_PROGRESS"
-	DATABASE_LIFECYCLE_STATE_TERMINATING        DatabaseLifecycleStateEnum = "TERMINATING"
-	DATABASE_LIFECYCLE_STATE_TERMINATED         DatabaseLifecycleStateEnum = "TERMINATED"
-	DATABASE_LIFECYCLE_STATE_RESTORE_FAILED     DatabaseLifecycleStateEnum = "RESTORE_FAILED"
-	DATABASE_LIFECYCLE_STATE_FAILED             DatabaseLifecycleStateEnum = "FAILED"
-	DATABASE_LIFECYCLE_STATE_UNKNOWN            DatabaseLifecycleStateEnum = "UNKNOWN"
+	DatabaseLifecycleStateProvisioning     DatabaseLifecycleStateEnum = "PROVISIONING"
+	DatabaseLifecycleStateAvailable        DatabaseLifecycleStateEnum = "AVAILABLE"
+	DatabaseLifecycleStateUpdating         DatabaseLifecycleStateEnum = "UPDATING"
+	DatabaseLifecycleStateBackupInProgress DatabaseLifecycleStateEnum = "BACKUP_IN_PROGRESS"
+	DatabaseLifecycleStateTerminating      DatabaseLifecycleStateEnum = "TERMINATING"
+	DatabaseLifecycleStateTerminated       DatabaseLifecycleStateEnum = "TERMINATED"
+	DatabaseLifecycleStateRestoreFailed    DatabaseLifecycleStateEnum = "RESTORE_FAILED"
+	DatabaseLifecycleStateFailed           DatabaseLifecycleStateEnum = "FAILED"
+	DatabaseLifecycleStateUnknown          DatabaseLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_database_lifecycleState = map[string]DatabaseLifecycleStateEnum{
-	"PROVISIONING":       DATABASE_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":          DATABASE_LIFECYCLE_STATE_AVAILABLE,
-	"UPDATING":           DATABASE_LIFECYCLE_STATE_UPDATING,
-	"BACKUP_IN_PROGRESS": DATABASE_LIFECYCLE_STATE_BACKUP_IN_PROGRESS,
-	"TERMINATING":        DATABASE_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":         DATABASE_LIFECYCLE_STATE_TERMINATED,
-	"RESTORE_FAILED":     DATABASE_LIFECYCLE_STATE_RESTORE_FAILED,
-	"FAILED":             DATABASE_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":            DATABASE_LIFECYCLE_STATE_UNKNOWN,
+var mappingDatabaseLifecycleState = map[string]DatabaseLifecycleStateEnum{
+	"PROVISIONING":       DatabaseLifecycleStateProvisioning,
+	"AVAILABLE":          DatabaseLifecycleStateAvailable,
+	"UPDATING":           DatabaseLifecycleStateUpdating,
+	"BACKUP_IN_PROGRESS": DatabaseLifecycleStateBackupInProgress,
+	"TERMINATING":        DatabaseLifecycleStateTerminating,
+	"TERMINATED":         DatabaseLifecycleStateTerminated,
+	"RESTORE_FAILED":     DatabaseLifecycleStateRestoreFailed,
+	"FAILED":             DatabaseLifecycleStateFailed,
+	"UNKNOWN":            DatabaseLifecycleStateUnknown,
 }
 
+// GetDatabaseLifecycleStateEnumValues Enumerates the set of values for DatabaseLifecycleState
 func GetDatabaseLifecycleStateEnumValues() []DatabaseLifecycleStateEnum {
 	values := make([]DatabaseLifecycleStateEnum, 0)
-	for _, v := range mapping_database_lifecycleState {
-		if v != DATABASE_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingDatabaseLifecycleState {
+		if v != DatabaseLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

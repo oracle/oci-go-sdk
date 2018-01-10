@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// LocalPeeringGateway. A local peering gateway (LPG) is an object on a VCN that lets that VCN peer
+// LocalPeeringGateway A local peering gateway (LPG) is an object on a VCN that lets that VCN peer
 // with another VCN in the same region. *Peering* means that the two VCNs can
 // communicate using private IP addresses, but without the traffic traversing the
 // internet or routing through your on-premises network. For more information,
@@ -66,58 +66,64 @@ func (model LocalPeeringGateway) String() string {
 	return common.PointerString(model)
 }
 
+// LocalPeeringGatewayLifecycleStateEnum Enum with underlying type: string
 type LocalPeeringGatewayLifecycleStateEnum string
 
+// Set of constants representing the allowable values for LocalPeeringGatewayLifecycleState
 const (
-	LOCAL_PEERING_GATEWAY_LIFECYCLE_STATE_PROVISIONING LocalPeeringGatewayLifecycleStateEnum = "PROVISIONING"
-	LOCAL_PEERING_GATEWAY_LIFECYCLE_STATE_AVAILABLE    LocalPeeringGatewayLifecycleStateEnum = "AVAILABLE"
-	LOCAL_PEERING_GATEWAY_LIFECYCLE_STATE_TERMINATING  LocalPeeringGatewayLifecycleStateEnum = "TERMINATING"
-	LOCAL_PEERING_GATEWAY_LIFECYCLE_STATE_TERMINATED   LocalPeeringGatewayLifecycleStateEnum = "TERMINATED"
-	LOCAL_PEERING_GATEWAY_LIFECYCLE_STATE_UNKNOWN      LocalPeeringGatewayLifecycleStateEnum = "UNKNOWN"
+	LocalPeeringGatewayLifecycleStateProvisioning LocalPeeringGatewayLifecycleStateEnum = "PROVISIONING"
+	LocalPeeringGatewayLifecycleStateAvailable    LocalPeeringGatewayLifecycleStateEnum = "AVAILABLE"
+	LocalPeeringGatewayLifecycleStateTerminating  LocalPeeringGatewayLifecycleStateEnum = "TERMINATING"
+	LocalPeeringGatewayLifecycleStateTerminated   LocalPeeringGatewayLifecycleStateEnum = "TERMINATED"
+	LocalPeeringGatewayLifecycleStateUnknown      LocalPeeringGatewayLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_localpeeringgateway_lifecycleState = map[string]LocalPeeringGatewayLifecycleStateEnum{
-	"PROVISIONING": LOCAL_PEERING_GATEWAY_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    LOCAL_PEERING_GATEWAY_LIFECYCLE_STATE_AVAILABLE,
-	"TERMINATING":  LOCAL_PEERING_GATEWAY_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   LOCAL_PEERING_GATEWAY_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":      LOCAL_PEERING_GATEWAY_LIFECYCLE_STATE_UNKNOWN,
+var mappingLocalPeeringGatewayLifecycleState = map[string]LocalPeeringGatewayLifecycleStateEnum{
+	"PROVISIONING": LocalPeeringGatewayLifecycleStateProvisioning,
+	"AVAILABLE":    LocalPeeringGatewayLifecycleStateAvailable,
+	"TERMINATING":  LocalPeeringGatewayLifecycleStateTerminating,
+	"TERMINATED":   LocalPeeringGatewayLifecycleStateTerminated,
+	"UNKNOWN":      LocalPeeringGatewayLifecycleStateUnknown,
 }
 
+// GetLocalPeeringGatewayLifecycleStateEnumValues Enumerates the set of values for LocalPeeringGatewayLifecycleState
 func GetLocalPeeringGatewayLifecycleStateEnumValues() []LocalPeeringGatewayLifecycleStateEnum {
 	values := make([]LocalPeeringGatewayLifecycleStateEnum, 0)
-	for _, v := range mapping_localpeeringgateway_lifecycleState {
-		if v != LOCAL_PEERING_GATEWAY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingLocalPeeringGatewayLifecycleState {
+		if v != LocalPeeringGatewayLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// LocalPeeringGatewayPeeringStatusEnum Enum with underlying type: string
 type LocalPeeringGatewayPeeringStatusEnum string
 
+// Set of constants representing the allowable values for LocalPeeringGatewayPeeringStatus
 const (
-	LOCAL_PEERING_GATEWAY_PEERING_STATUS_INVALID LocalPeeringGatewayPeeringStatusEnum = "INVALID"
-	LOCAL_PEERING_GATEWAY_PEERING_STATUS_NEW     LocalPeeringGatewayPeeringStatusEnum = "NEW"
-	LOCAL_PEERING_GATEWAY_PEERING_STATUS_PEERED  LocalPeeringGatewayPeeringStatusEnum = "PEERED"
-	LOCAL_PEERING_GATEWAY_PEERING_STATUS_PENDING LocalPeeringGatewayPeeringStatusEnum = "PENDING"
-	LOCAL_PEERING_GATEWAY_PEERING_STATUS_REVOKED LocalPeeringGatewayPeeringStatusEnum = "REVOKED"
-	LOCAL_PEERING_GATEWAY_PEERING_STATUS_UNKNOWN LocalPeeringGatewayPeeringStatusEnum = "UNKNOWN"
+	LocalPeeringGatewayPeeringStatusInvalid LocalPeeringGatewayPeeringStatusEnum = "INVALID"
+	LocalPeeringGatewayPeeringStatusNew     LocalPeeringGatewayPeeringStatusEnum = "NEW"
+	LocalPeeringGatewayPeeringStatusPeered  LocalPeeringGatewayPeeringStatusEnum = "PEERED"
+	LocalPeeringGatewayPeeringStatusPending LocalPeeringGatewayPeeringStatusEnum = "PENDING"
+	LocalPeeringGatewayPeeringStatusRevoked LocalPeeringGatewayPeeringStatusEnum = "REVOKED"
+	LocalPeeringGatewayPeeringStatusUnknown LocalPeeringGatewayPeeringStatusEnum = "UNKNOWN"
 )
 
-var mapping_localpeeringgateway_peeringStatus = map[string]LocalPeeringGatewayPeeringStatusEnum{
-	"INVALID": LOCAL_PEERING_GATEWAY_PEERING_STATUS_INVALID,
-	"NEW":     LOCAL_PEERING_GATEWAY_PEERING_STATUS_NEW,
-	"PEERED":  LOCAL_PEERING_GATEWAY_PEERING_STATUS_PEERED,
-	"PENDING": LOCAL_PEERING_GATEWAY_PEERING_STATUS_PENDING,
-	"REVOKED": LOCAL_PEERING_GATEWAY_PEERING_STATUS_REVOKED,
-	"UNKNOWN": LOCAL_PEERING_GATEWAY_PEERING_STATUS_UNKNOWN,
+var mappingLocalPeeringGatewayPeeringStatus = map[string]LocalPeeringGatewayPeeringStatusEnum{
+	"INVALID": LocalPeeringGatewayPeeringStatusInvalid,
+	"NEW":     LocalPeeringGatewayPeeringStatusNew,
+	"PEERED":  LocalPeeringGatewayPeeringStatusPeered,
+	"PENDING": LocalPeeringGatewayPeeringStatusPending,
+	"REVOKED": LocalPeeringGatewayPeeringStatusRevoked,
+	"UNKNOWN": LocalPeeringGatewayPeeringStatusUnknown,
 }
 
+// GetLocalPeeringGatewayPeeringStatusEnumValues Enumerates the set of values for LocalPeeringGatewayPeeringStatus
 func GetLocalPeeringGatewayPeeringStatusEnumValues() []LocalPeeringGatewayPeeringStatusEnum {
 	values := make([]LocalPeeringGatewayPeeringStatusEnum, 0)
-	for _, v := range mapping_localpeeringgateway_peeringStatus {
-		if v != LOCAL_PEERING_GATEWAY_PEERING_STATUS_UNKNOWN {
+	for _, v := range mappingLocalPeeringGatewayPeeringStatus {
+		if v != LocalPeeringGatewayPeeringStatusUnknown {
 			values = append(values, v)
 		}
 	}

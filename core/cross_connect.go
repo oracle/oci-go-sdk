@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CrossConnect. For use with Oracle Cloud Infrastructure FastConnect. A cross-connect represents a
+// CrossConnect For use with Oracle Cloud Infrastructure FastConnect. A cross-connect represents a
 // physical connection between an existing network and Oracle. Customers who are colocated
 // with Oracle in a FastConnect location create and use cross-connects. For more
 // information, see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
@@ -62,32 +62,35 @@ func (model CrossConnect) String() string {
 	return common.PointerString(model)
 }
 
+// CrossConnectLifecycleStateEnum Enum with underlying type: string
 type CrossConnectLifecycleStateEnum string
 
+// Set of constants representing the allowable values for CrossConnectLifecycleState
 const (
-	CROSS_CONNECT_LIFECYCLE_STATE_PENDING_CUSTOMER CrossConnectLifecycleStateEnum = "PENDING_CUSTOMER"
-	CROSS_CONNECT_LIFECYCLE_STATE_PROVISIONING     CrossConnectLifecycleStateEnum = "PROVISIONING"
-	CROSS_CONNECT_LIFECYCLE_STATE_PROVISIONED      CrossConnectLifecycleStateEnum = "PROVISIONED"
-	CROSS_CONNECT_LIFECYCLE_STATE_INACTIVE         CrossConnectLifecycleStateEnum = "INACTIVE"
-	CROSS_CONNECT_LIFECYCLE_STATE_TERMINATING      CrossConnectLifecycleStateEnum = "TERMINATING"
-	CROSS_CONNECT_LIFECYCLE_STATE_TERMINATED       CrossConnectLifecycleStateEnum = "TERMINATED"
-	CROSS_CONNECT_LIFECYCLE_STATE_UNKNOWN          CrossConnectLifecycleStateEnum = "UNKNOWN"
+	CrossConnectLifecycleStatePendingCustomer CrossConnectLifecycleStateEnum = "PENDING_CUSTOMER"
+	CrossConnectLifecycleStateProvisioning    CrossConnectLifecycleStateEnum = "PROVISIONING"
+	CrossConnectLifecycleStateProvisioned     CrossConnectLifecycleStateEnum = "PROVISIONED"
+	CrossConnectLifecycleStateInactive        CrossConnectLifecycleStateEnum = "INACTIVE"
+	CrossConnectLifecycleStateTerminating     CrossConnectLifecycleStateEnum = "TERMINATING"
+	CrossConnectLifecycleStateTerminated      CrossConnectLifecycleStateEnum = "TERMINATED"
+	CrossConnectLifecycleStateUnknown         CrossConnectLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_crossconnect_lifecycleState = map[string]CrossConnectLifecycleStateEnum{
-	"PENDING_CUSTOMER": CROSS_CONNECT_LIFECYCLE_STATE_PENDING_CUSTOMER,
-	"PROVISIONING":     CROSS_CONNECT_LIFECYCLE_STATE_PROVISIONING,
-	"PROVISIONED":      CROSS_CONNECT_LIFECYCLE_STATE_PROVISIONED,
-	"INACTIVE":         CROSS_CONNECT_LIFECYCLE_STATE_INACTIVE,
-	"TERMINATING":      CROSS_CONNECT_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":       CROSS_CONNECT_LIFECYCLE_STATE_TERMINATED,
-	"UNKNOWN":          CROSS_CONNECT_LIFECYCLE_STATE_UNKNOWN,
+var mappingCrossConnectLifecycleState = map[string]CrossConnectLifecycleStateEnum{
+	"PENDING_CUSTOMER": CrossConnectLifecycleStatePendingCustomer,
+	"PROVISIONING":     CrossConnectLifecycleStateProvisioning,
+	"PROVISIONED":      CrossConnectLifecycleStateProvisioned,
+	"INACTIVE":         CrossConnectLifecycleStateInactive,
+	"TERMINATING":      CrossConnectLifecycleStateTerminating,
+	"TERMINATED":       CrossConnectLifecycleStateTerminated,
+	"UNKNOWN":          CrossConnectLifecycleStateUnknown,
 }
 
+// GetCrossConnectLifecycleStateEnumValues Enumerates the set of values for CrossConnectLifecycleState
 func GetCrossConnectLifecycleStateEnumValues() []CrossConnectLifecycleStateEnum {
 	values := make([]CrossConnectLifecycleStateEnum, 0)
-	for _, v := range mapping_crossconnect_lifecycleState {
-		if v != CROSS_CONNECT_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingCrossConnectLifecycleState {
+		if v != CrossConnectLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

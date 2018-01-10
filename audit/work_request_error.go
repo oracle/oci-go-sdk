@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// WorkRequestError. The error entity.
+// WorkRequestError The error entity.
 type WorkRequestError struct {
 
 	// A machine-usable code for the error that occured.

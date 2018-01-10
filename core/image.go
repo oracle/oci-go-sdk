@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Image. A boot disk image for launching an instance. For more information, see
+// Image A boot disk image for launching an instance. For more information, see
 // [Overview of the Compute Service]({{DOC_SERVER_URL}}/Content/Compute/Concepts/computeoverview.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
@@ -58,32 +58,35 @@ func (model Image) String() string {
 	return common.PointerString(model)
 }
 
+// ImageLifecycleStateEnum Enum with underlying type: string
 type ImageLifecycleStateEnum string
 
+// Set of constants representing the allowable values for ImageLifecycleState
 const (
-	IMAGE_LIFECYCLE_STATE_PROVISIONING ImageLifecycleStateEnum = "PROVISIONING"
-	IMAGE_LIFECYCLE_STATE_IMPORTING    ImageLifecycleStateEnum = "IMPORTING"
-	IMAGE_LIFECYCLE_STATE_AVAILABLE    ImageLifecycleStateEnum = "AVAILABLE"
-	IMAGE_LIFECYCLE_STATE_EXPORTING    ImageLifecycleStateEnum = "EXPORTING"
-	IMAGE_LIFECYCLE_STATE_DISABLED     ImageLifecycleStateEnum = "DISABLED"
-	IMAGE_LIFECYCLE_STATE_DELETED      ImageLifecycleStateEnum = "DELETED"
-	IMAGE_LIFECYCLE_STATE_UNKNOWN      ImageLifecycleStateEnum = "UNKNOWN"
+	ImageLifecycleStateProvisioning ImageLifecycleStateEnum = "PROVISIONING"
+	ImageLifecycleStateImporting    ImageLifecycleStateEnum = "IMPORTING"
+	ImageLifecycleStateAvailable    ImageLifecycleStateEnum = "AVAILABLE"
+	ImageLifecycleStateExporting    ImageLifecycleStateEnum = "EXPORTING"
+	ImageLifecycleStateDisabled     ImageLifecycleStateEnum = "DISABLED"
+	ImageLifecycleStateDeleted      ImageLifecycleStateEnum = "DELETED"
+	ImageLifecycleStateUnknown      ImageLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_image_lifecycleState = map[string]ImageLifecycleStateEnum{
-	"PROVISIONING": IMAGE_LIFECYCLE_STATE_PROVISIONING,
-	"IMPORTING":    IMAGE_LIFECYCLE_STATE_IMPORTING,
-	"AVAILABLE":    IMAGE_LIFECYCLE_STATE_AVAILABLE,
-	"EXPORTING":    IMAGE_LIFECYCLE_STATE_EXPORTING,
-	"DISABLED":     IMAGE_LIFECYCLE_STATE_DISABLED,
-	"DELETED":      IMAGE_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":      IMAGE_LIFECYCLE_STATE_UNKNOWN,
+var mappingImageLifecycleState = map[string]ImageLifecycleStateEnum{
+	"PROVISIONING": ImageLifecycleStateProvisioning,
+	"IMPORTING":    ImageLifecycleStateImporting,
+	"AVAILABLE":    ImageLifecycleStateAvailable,
+	"EXPORTING":    ImageLifecycleStateExporting,
+	"DISABLED":     ImageLifecycleStateDisabled,
+	"DELETED":      ImageLifecycleStateDeleted,
+	"UNKNOWN":      ImageLifecycleStateUnknown,
 }
 
+// GetImageLifecycleStateEnumValues Enumerates the set of values for ImageLifecycleState
 func GetImageLifecycleStateEnumValues() []ImageLifecycleStateEnum {
 	values := make([]ImageLifecycleStateEnum, 0)
-	for _, v := range mapping_image_lifecycleState {
-		if v != IMAGE_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingImageLifecycleState {
+		if v != ImageLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

@@ -73,24 +73,27 @@ func (model CreateVirtualCircuitDetails) String() string {
 	return common.PointerString(model)
 }
 
+// CreateVirtualCircuitDetailsType_Enum Enum with underlying type: string
 type CreateVirtualCircuitDetailsType_Enum string
 
+// Set of constants representing the allowable values for CreateVirtualCircuitDetailsType_
 const (
-	CREATE_VIRTUAL_CIRCUIT_DETAILS_TYPE__PUBLIC  CreateVirtualCircuitDetailsType_Enum = "PUBLIC"
-	CREATE_VIRTUAL_CIRCUIT_DETAILS_TYPE__PRIVATE CreateVirtualCircuitDetailsType_Enum = "PRIVATE"
-	CREATE_VIRTUAL_CIRCUIT_DETAILS_TYPE__UNKNOWN CreateVirtualCircuitDetailsType_Enum = "UNKNOWN"
+	CreateVirtualCircuitDetailsType_Public  CreateVirtualCircuitDetailsType_Enum = "PUBLIC"
+	CreateVirtualCircuitDetailsType_Private CreateVirtualCircuitDetailsType_Enum = "PRIVATE"
+	CreateVirtualCircuitDetailsType_Unknown CreateVirtualCircuitDetailsType_Enum = "UNKNOWN"
 )
 
-var mapping_createvirtualcircuitdetails_type = map[string]CreateVirtualCircuitDetailsType_Enum{
-	"PUBLIC":  CREATE_VIRTUAL_CIRCUIT_DETAILS_TYPE__PUBLIC,
-	"PRIVATE": CREATE_VIRTUAL_CIRCUIT_DETAILS_TYPE__PRIVATE,
-	"UNKNOWN": CREATE_VIRTUAL_CIRCUIT_DETAILS_TYPE__UNKNOWN,
+var mappingCreateVirtualCircuitDetailsType_ = map[string]CreateVirtualCircuitDetailsType_Enum{
+	"PUBLIC":  CreateVirtualCircuitDetailsType_Public,
+	"PRIVATE": CreateVirtualCircuitDetailsType_Private,
+	"UNKNOWN": CreateVirtualCircuitDetailsType_Unknown,
 }
 
+// GetCreateVirtualCircuitDetailsType_EnumValues Enumerates the set of values for CreateVirtualCircuitDetailsType_
 func GetCreateVirtualCircuitDetailsType_EnumValues() []CreateVirtualCircuitDetailsType_Enum {
 	values := make([]CreateVirtualCircuitDetailsType_Enum, 0)
-	for _, v := range mapping_createvirtualcircuitdetails_type {
-		if v != CREATE_VIRTUAL_CIRCUIT_DETAILS_TYPE__UNKNOWN {
+	for _, v := range mappingCreateVirtualCircuitDetailsType_ {
+		if v != CreateVirtualCircuitDetailsType_Unknown {
 			values = append(values, v)
 		}
 	}

@@ -41,24 +41,27 @@ func (model CreateDatabaseDetails) String() string {
 	return common.PointerString(model)
 }
 
+// CreateDatabaseDetailsDbWorkloadEnum Enum with underlying type: string
 type CreateDatabaseDetailsDbWorkloadEnum string
 
+// Set of constants representing the allowable values for CreateDatabaseDetailsDbWorkload
 const (
-	CREATE_DATABASE_DETAILS_DB_WORKLOAD_OLTP    CreateDatabaseDetailsDbWorkloadEnum = "OLTP"
-	CREATE_DATABASE_DETAILS_DB_WORKLOAD_DSS     CreateDatabaseDetailsDbWorkloadEnum = "DSS"
-	CREATE_DATABASE_DETAILS_DB_WORKLOAD_UNKNOWN CreateDatabaseDetailsDbWorkloadEnum = "UNKNOWN"
+	CreateDatabaseDetailsDbWorkloadOltp    CreateDatabaseDetailsDbWorkloadEnum = "OLTP"
+	CreateDatabaseDetailsDbWorkloadDss     CreateDatabaseDetailsDbWorkloadEnum = "DSS"
+	CreateDatabaseDetailsDbWorkloadUnknown CreateDatabaseDetailsDbWorkloadEnum = "UNKNOWN"
 )
 
-var mapping_createdatabasedetails_dbWorkload = map[string]CreateDatabaseDetailsDbWorkloadEnum{
-	"OLTP":    CREATE_DATABASE_DETAILS_DB_WORKLOAD_OLTP,
-	"DSS":     CREATE_DATABASE_DETAILS_DB_WORKLOAD_DSS,
-	"UNKNOWN": CREATE_DATABASE_DETAILS_DB_WORKLOAD_UNKNOWN,
+var mappingCreateDatabaseDetailsDbWorkload = map[string]CreateDatabaseDetailsDbWorkloadEnum{
+	"OLTP":    CreateDatabaseDetailsDbWorkloadOltp,
+	"DSS":     CreateDatabaseDetailsDbWorkloadDss,
+	"UNKNOWN": CreateDatabaseDetailsDbWorkloadUnknown,
 }
 
+// GetCreateDatabaseDetailsDbWorkloadEnumValues Enumerates the set of values for CreateDatabaseDetailsDbWorkload
 func GetCreateDatabaseDetailsDbWorkloadEnumValues() []CreateDatabaseDetailsDbWorkloadEnum {
 	values := make([]CreateDatabaseDetailsDbWorkloadEnum, 0)
-	for _, v := range mapping_createdatabasedetails_dbWorkload {
-		if v != CREATE_DATABASE_DETAILS_DB_WORKLOAD_UNKNOWN {
+	for _, v := range mappingCreateDatabaseDetailsDbWorkload {
+		if v != CreateDatabaseDetailsDbWorkloadUnknown {
 			values = append(values, v)
 		}
 	}

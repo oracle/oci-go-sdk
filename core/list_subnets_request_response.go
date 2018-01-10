@@ -71,48 +71,54 @@ func (response ListSubnetsResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListSubnetsSortByEnum Enum with underlying type: string
 type ListSubnetsSortByEnum string
 
+// Set of constants representing the allowable values for ListSubnetsSortBy
 const (
-	LIST_SUBNETS_SORT_BY_TIMECREATED ListSubnetsSortByEnum = "TIMECREATED"
-	LIST_SUBNETS_SORT_BY_DISPLAYNAME ListSubnetsSortByEnum = "DISPLAYNAME"
-	LIST_SUBNETS_SORT_BY_UNKNOWN     ListSubnetsSortByEnum = "UNKNOWN"
+	ListSubnetsSortByTimecreated ListSubnetsSortByEnum = "TIMECREATED"
+	ListSubnetsSortByDisplayname ListSubnetsSortByEnum = "DISPLAYNAME"
+	ListSubnetsSortByUnknown     ListSubnetsSortByEnum = "UNKNOWN"
 )
 
-var mapping_listsubnetssortby = map[string]ListSubnetsSortByEnum{
-	"TIMECREATED": LIST_SUBNETS_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_SUBNETS_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_SUBNETS_SORT_BY_UNKNOWN,
+var mappingListSubnetsSortBy = map[string]ListSubnetsSortByEnum{
+	"TIMECREATED": ListSubnetsSortByTimecreated,
+	"DISPLAYNAME": ListSubnetsSortByDisplayname,
+	"UNKNOWN":     ListSubnetsSortByUnknown,
 }
 
+// GetListSubnetsSortByEnumValues Enumerates the set of values for ListSubnetsSortBy
 func GetListSubnetsSortByEnumValues() []ListSubnetsSortByEnum {
 	values := make([]ListSubnetsSortByEnum, 0)
-	for _, v := range mapping_listsubnetssortby {
-		if v != LIST_SUBNETS_SORT_BY_UNKNOWN {
+	for _, v := range mappingListSubnetsSortBy {
+		if v != ListSubnetsSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListSubnetsSortOrderEnum Enum with underlying type: string
 type ListSubnetsSortOrderEnum string
 
+// Set of constants representing the allowable values for ListSubnetsSortOrder
 const (
-	LIST_SUBNETS_SORT_ORDER_ASC     ListSubnetsSortOrderEnum = "ASC"
-	LIST_SUBNETS_SORT_ORDER_DESC    ListSubnetsSortOrderEnum = "DESC"
-	LIST_SUBNETS_SORT_ORDER_UNKNOWN ListSubnetsSortOrderEnum = "UNKNOWN"
+	ListSubnetsSortOrderAsc     ListSubnetsSortOrderEnum = "ASC"
+	ListSubnetsSortOrderDesc    ListSubnetsSortOrderEnum = "DESC"
+	ListSubnetsSortOrderUnknown ListSubnetsSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listsubnetssortorder = map[string]ListSubnetsSortOrderEnum{
-	"ASC":     LIST_SUBNETS_SORT_ORDER_ASC,
-	"DESC":    LIST_SUBNETS_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_SUBNETS_SORT_ORDER_UNKNOWN,
+var mappingListSubnetsSortOrder = map[string]ListSubnetsSortOrderEnum{
+	"ASC":     ListSubnetsSortOrderAsc,
+	"DESC":    ListSubnetsSortOrderDesc,
+	"UNKNOWN": ListSubnetsSortOrderUnknown,
 }
 
+// GetListSubnetsSortOrderEnumValues Enumerates the set of values for ListSubnetsSortOrder
 func GetListSubnetsSortOrderEnumValues() []ListSubnetsSortOrderEnum {
 	values := make([]ListSubnetsSortOrderEnum, 0)
-	for _, v := range mapping_listsubnetssortorder {
-		if v != LIST_SUBNETS_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListSubnetsSortOrder {
+		if v != ListSubnetsSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

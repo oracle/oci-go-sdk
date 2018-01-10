@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// WorkRequest. Many of the API requests you use to create and configure load balancing do not take effect immediately.
+// WorkRequest Many of the API requests you use to create and configure load balancing do not take effect immediately.
 // In these cases, the request spawns an asynchronous work flow to fulfill the request. WorkRequest objects provide visibility
 // for in-progress work flows.
 // For more information about work requests, see [Viewing the State of a Work Request]({{DOC_SERVER_URL}}/Content/Balance/Tasks/viewingworkrequest.htm).
@@ -54,28 +54,31 @@ func (model WorkRequest) String() string {
 	return common.PointerString(model)
 }
 
+// WorkRequestLifecycleStateEnum Enum with underlying type: string
 type WorkRequestLifecycleStateEnum string
 
+// Set of constants representing the allowable values for WorkRequestLifecycleState
 const (
-	WORK_REQUEST_LIFECYCLE_STATE_ACCEPTED    WorkRequestLifecycleStateEnum = "ACCEPTED"
-	WORK_REQUEST_LIFECYCLE_STATE_IN_PROGRESS WorkRequestLifecycleStateEnum = "IN_PROGRESS"
-	WORK_REQUEST_LIFECYCLE_STATE_FAILED      WorkRequestLifecycleStateEnum = "FAILED"
-	WORK_REQUEST_LIFECYCLE_STATE_SUCCEEDED   WorkRequestLifecycleStateEnum = "SUCCEEDED"
-	WORK_REQUEST_LIFECYCLE_STATE_UNKNOWN     WorkRequestLifecycleStateEnum = "UNKNOWN"
+	WorkRequestLifecycleStateAccepted   WorkRequestLifecycleStateEnum = "ACCEPTED"
+	WorkRequestLifecycleStateInProgress WorkRequestLifecycleStateEnum = "IN_PROGRESS"
+	WorkRequestLifecycleStateFailed     WorkRequestLifecycleStateEnum = "FAILED"
+	WorkRequestLifecycleStateSucceeded  WorkRequestLifecycleStateEnum = "SUCCEEDED"
+	WorkRequestLifecycleStateUnknown    WorkRequestLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_workrequest_lifecycleState = map[string]WorkRequestLifecycleStateEnum{
-	"ACCEPTED":    WORK_REQUEST_LIFECYCLE_STATE_ACCEPTED,
-	"IN_PROGRESS": WORK_REQUEST_LIFECYCLE_STATE_IN_PROGRESS,
-	"FAILED":      WORK_REQUEST_LIFECYCLE_STATE_FAILED,
-	"SUCCEEDED":   WORK_REQUEST_LIFECYCLE_STATE_SUCCEEDED,
-	"UNKNOWN":     WORK_REQUEST_LIFECYCLE_STATE_UNKNOWN,
+var mappingWorkRequestLifecycleState = map[string]WorkRequestLifecycleStateEnum{
+	"ACCEPTED":    WorkRequestLifecycleStateAccepted,
+	"IN_PROGRESS": WorkRequestLifecycleStateInProgress,
+	"FAILED":      WorkRequestLifecycleStateFailed,
+	"SUCCEEDED":   WorkRequestLifecycleStateSucceeded,
+	"UNKNOWN":     WorkRequestLifecycleStateUnknown,
 }
 
+// GetWorkRequestLifecycleStateEnumValues Enumerates the set of values for WorkRequestLifecycleState
 func GetWorkRequestLifecycleStateEnumValues() []WorkRequestLifecycleStateEnum {
 	values := make([]WorkRequestLifecycleStateEnum, 0)
-	for _, v := range mapping_workrequest_lifecycleState {
-		if v != WORK_REQUEST_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingWorkRequestLifecycleState {
+		if v != WorkRequestLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

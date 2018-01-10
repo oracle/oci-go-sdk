@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateInstanceConsoleConnectionDetails. The details for creating a instance console connection.
+// CreateInstanceConsoleConnectionDetails The details for creating a instance console connection.
 // The instance console connection is created in the same compartment as the instance.
 type CreateInstanceConsoleConnectionDetails struct {
 

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateBackendDetails. The configuration details for creating a backend server in a backend set.
+// CreateBackendDetails The configuration details for creating a backend server in a backend set.
 // For more information on backend server configuration, see
 // [Managing Backend Servers]({{DOC_SERVER_URL}}/Content/Balance/tasks/managingbackendservers.htm).
 type CreateBackendDetails struct {

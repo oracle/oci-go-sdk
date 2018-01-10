@@ -71,48 +71,54 @@ func (response ListInternetGatewaysResponse) String() string {
 	return common.PointerString(response)
 }
 
+// ListInternetGatewaysSortByEnum Enum with underlying type: string
 type ListInternetGatewaysSortByEnum string
 
+// Set of constants representing the allowable values for ListInternetGatewaysSortBy
 const (
-	LIST_INTERNET_GATEWAYS_SORT_BY_TIMECREATED ListInternetGatewaysSortByEnum = "TIMECREATED"
-	LIST_INTERNET_GATEWAYS_SORT_BY_DISPLAYNAME ListInternetGatewaysSortByEnum = "DISPLAYNAME"
-	LIST_INTERNET_GATEWAYS_SORT_BY_UNKNOWN     ListInternetGatewaysSortByEnum = "UNKNOWN"
+	ListInternetGatewaysSortByTimecreated ListInternetGatewaysSortByEnum = "TIMECREATED"
+	ListInternetGatewaysSortByDisplayname ListInternetGatewaysSortByEnum = "DISPLAYNAME"
+	ListInternetGatewaysSortByUnknown     ListInternetGatewaysSortByEnum = "UNKNOWN"
 )
 
-var mapping_listinternetgatewayssortby = map[string]ListInternetGatewaysSortByEnum{
-	"TIMECREATED": LIST_INTERNET_GATEWAYS_SORT_BY_TIMECREATED,
-	"DISPLAYNAME": LIST_INTERNET_GATEWAYS_SORT_BY_DISPLAYNAME,
-	"UNKNOWN":     LIST_INTERNET_GATEWAYS_SORT_BY_UNKNOWN,
+var mappingListInternetGatewaysSortBy = map[string]ListInternetGatewaysSortByEnum{
+	"TIMECREATED": ListInternetGatewaysSortByTimecreated,
+	"DISPLAYNAME": ListInternetGatewaysSortByDisplayname,
+	"UNKNOWN":     ListInternetGatewaysSortByUnknown,
 }
 
+// GetListInternetGatewaysSortByEnumValues Enumerates the set of values for ListInternetGatewaysSortBy
 func GetListInternetGatewaysSortByEnumValues() []ListInternetGatewaysSortByEnum {
 	values := make([]ListInternetGatewaysSortByEnum, 0)
-	for _, v := range mapping_listinternetgatewayssortby {
-		if v != LIST_INTERNET_GATEWAYS_SORT_BY_UNKNOWN {
+	for _, v := range mappingListInternetGatewaysSortBy {
+		if v != ListInternetGatewaysSortByUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// ListInternetGatewaysSortOrderEnum Enum with underlying type: string
 type ListInternetGatewaysSortOrderEnum string
 
+// Set of constants representing the allowable values for ListInternetGatewaysSortOrder
 const (
-	LIST_INTERNET_GATEWAYS_SORT_ORDER_ASC     ListInternetGatewaysSortOrderEnum = "ASC"
-	LIST_INTERNET_GATEWAYS_SORT_ORDER_DESC    ListInternetGatewaysSortOrderEnum = "DESC"
-	LIST_INTERNET_GATEWAYS_SORT_ORDER_UNKNOWN ListInternetGatewaysSortOrderEnum = "UNKNOWN"
+	ListInternetGatewaysSortOrderAsc     ListInternetGatewaysSortOrderEnum = "ASC"
+	ListInternetGatewaysSortOrderDesc    ListInternetGatewaysSortOrderEnum = "DESC"
+	ListInternetGatewaysSortOrderUnknown ListInternetGatewaysSortOrderEnum = "UNKNOWN"
 )
 
-var mapping_listinternetgatewayssortorder = map[string]ListInternetGatewaysSortOrderEnum{
-	"ASC":     LIST_INTERNET_GATEWAYS_SORT_ORDER_ASC,
-	"DESC":    LIST_INTERNET_GATEWAYS_SORT_ORDER_DESC,
-	"UNKNOWN": LIST_INTERNET_GATEWAYS_SORT_ORDER_UNKNOWN,
+var mappingListInternetGatewaysSortOrder = map[string]ListInternetGatewaysSortOrderEnum{
+	"ASC":     ListInternetGatewaysSortOrderAsc,
+	"DESC":    ListInternetGatewaysSortOrderDesc,
+	"UNKNOWN": ListInternetGatewaysSortOrderUnknown,
 }
 
+// GetListInternetGatewaysSortOrderEnumValues Enumerates the set of values for ListInternetGatewaysSortOrder
 func GetListInternetGatewaysSortOrderEnumValues() []ListInternetGatewaysSortOrderEnum {
 	values := make([]ListInternetGatewaysSortOrderEnum, 0)
-	for _, v := range mapping_listinternetgatewayssortorder {
-		if v != LIST_INTERNET_GATEWAYS_SORT_ORDER_UNKNOWN {
+	for _, v := range mappingListInternetGatewaysSortOrder {
+		if v != ListInternetGatewaysSortOrderUnknown {
 			values = append(values, v)
 		}
 	}

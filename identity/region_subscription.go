@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// RegionSubscription. An object that represents your tenancy's access to a particular region (i.e., a subscription), the status of that
+// RegionSubscription An object that represents your tenancy's access to a particular region (i.e., a subscription), the status of that
 // access, and whether that region is the home region. For more information, see [Managing Regions]({{DOC_SERVER_URL}}/Content/Identity/Tasks/managingregions.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
@@ -44,24 +44,27 @@ func (model RegionSubscription) String() string {
 	return common.PointerString(model)
 }
 
+// RegionSubscriptionStatusEnum Enum with underlying type: string
 type RegionSubscriptionStatusEnum string
 
+// Set of constants representing the allowable values for RegionSubscriptionStatus
 const (
-	REGION_SUBSCRIPTION_STATUS_READY       RegionSubscriptionStatusEnum = "READY"
-	REGION_SUBSCRIPTION_STATUS_IN_PROGRESS RegionSubscriptionStatusEnum = "IN_PROGRESS"
-	REGION_SUBSCRIPTION_STATUS_UNKNOWN     RegionSubscriptionStatusEnum = "UNKNOWN"
+	RegionSubscriptionStatusReady      RegionSubscriptionStatusEnum = "READY"
+	RegionSubscriptionStatusInProgress RegionSubscriptionStatusEnum = "IN_PROGRESS"
+	RegionSubscriptionStatusUnknown    RegionSubscriptionStatusEnum = "UNKNOWN"
 )
 
-var mapping_regionsubscription_status = map[string]RegionSubscriptionStatusEnum{
-	"READY":       REGION_SUBSCRIPTION_STATUS_READY,
-	"IN_PROGRESS": REGION_SUBSCRIPTION_STATUS_IN_PROGRESS,
-	"UNKNOWN":     REGION_SUBSCRIPTION_STATUS_UNKNOWN,
+var mappingRegionSubscriptionStatus = map[string]RegionSubscriptionStatusEnum{
+	"READY":       RegionSubscriptionStatusReady,
+	"IN_PROGRESS": RegionSubscriptionStatusInProgress,
+	"UNKNOWN":     RegionSubscriptionStatusUnknown,
 }
 
+// GetRegionSubscriptionStatusEnumValues Enumerates the set of values for RegionSubscriptionStatus
 func GetRegionSubscriptionStatusEnumValues() []RegionSubscriptionStatusEnum {
 	values := make([]RegionSubscriptionStatusEnum, 0)
-	for _, v := range mapping_regionsubscription_status {
-		if v != REGION_SUBSCRIPTION_STATUS_UNKNOWN {
+	for _, v := range mappingRegionSubscriptionStatus {
+		if v != RegionSubscriptionStatusUnknown {
 			values = append(values, v)
 		}
 	}

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// HealthChecker. The health check policy configuration.
+// HealthChecker The health check policy configuration.
 // For more information, see [Editing Health Check Policies]({{DOC_SERVER_URL}}/Content/Balance/Tasks/editinghealthcheck.htm).
 type HealthChecker struct {
 

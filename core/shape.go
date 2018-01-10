@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Shape. A compute instance shape that can be used in LaunchInstance.
+// Shape A compute instance shape that can be used in LaunchInstance.
 // For more information, see [Overview of the Compute Service]({{DOC_SERVER_URL}}/Content/Compute/Concepts/computeoverview.htm).
 type Shape struct {
 

@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// DbSystem. The Database Service supports several types of DB Systems, ranging in size, price, and performance. For details about each type of system, see:
+// DbSystem The Database Service supports several types of DB Systems, ranging in size, price, and performance. For details about each type of system, see:
 // - [Exadata DB Systems]({{DOC_SERVER_URL}}/Content/Database/Concepts/exaoverview.htm)
 // - [Bare Metal or VM DB Systems]({{DOC_SERVER_URL}}/Content/Database/Concepts/overview.htm)
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
@@ -131,108 +131,120 @@ func (model DbSystem) String() string {
 	return common.PointerString(model)
 }
 
+// DbSystemDatabaseEditionEnum Enum with underlying type: string
 type DbSystemDatabaseEditionEnum string
 
+// Set of constants representing the allowable values for DbSystemDatabaseEdition
 const (
-	DB_SYSTEM_DATABASE_EDITION_STANDARD_EDITION                       DbSystemDatabaseEditionEnum = "STANDARD_EDITION"
-	DB_SYSTEM_DATABASE_EDITION_ENTERPRISE_EDITION                     DbSystemDatabaseEditionEnum = "ENTERPRISE_EDITION"
-	DB_SYSTEM_DATABASE_EDITION_ENTERPRISE_EDITION_EXTREME_PERFORMANCE DbSystemDatabaseEditionEnum = "ENTERPRISE_EDITION_EXTREME_PERFORMANCE"
-	DB_SYSTEM_DATABASE_EDITION_ENTERPRISE_EDITION_HIGH_PERFORMANCE    DbSystemDatabaseEditionEnum = "ENTERPRISE_EDITION_HIGH_PERFORMANCE"
-	DB_SYSTEM_DATABASE_EDITION_UNKNOWN                                DbSystemDatabaseEditionEnum = "UNKNOWN"
+	DbSystemDatabaseEditionStandardEdition                     DbSystemDatabaseEditionEnum = "STANDARD_EDITION"
+	DbSystemDatabaseEditionEnterpriseEdition                   DbSystemDatabaseEditionEnum = "ENTERPRISE_EDITION"
+	DbSystemDatabaseEditionEnterpriseEditionExtremePerformance DbSystemDatabaseEditionEnum = "ENTERPRISE_EDITION_EXTREME_PERFORMANCE"
+	DbSystemDatabaseEditionEnterpriseEditionHighPerformance    DbSystemDatabaseEditionEnum = "ENTERPRISE_EDITION_HIGH_PERFORMANCE"
+	DbSystemDatabaseEditionUnknown                             DbSystemDatabaseEditionEnum = "UNKNOWN"
 )
 
-var mapping_dbsystem_databaseEdition = map[string]DbSystemDatabaseEditionEnum{
-	"STANDARD_EDITION":                       DB_SYSTEM_DATABASE_EDITION_STANDARD_EDITION,
-	"ENTERPRISE_EDITION":                     DB_SYSTEM_DATABASE_EDITION_ENTERPRISE_EDITION,
-	"ENTERPRISE_EDITION_EXTREME_PERFORMANCE": DB_SYSTEM_DATABASE_EDITION_ENTERPRISE_EDITION_EXTREME_PERFORMANCE,
-	"ENTERPRISE_EDITION_HIGH_PERFORMANCE":    DB_SYSTEM_DATABASE_EDITION_ENTERPRISE_EDITION_HIGH_PERFORMANCE,
-	"UNKNOWN": DB_SYSTEM_DATABASE_EDITION_UNKNOWN,
+var mappingDbSystemDatabaseEdition = map[string]DbSystemDatabaseEditionEnum{
+	"STANDARD_EDITION":                       DbSystemDatabaseEditionStandardEdition,
+	"ENTERPRISE_EDITION":                     DbSystemDatabaseEditionEnterpriseEdition,
+	"ENTERPRISE_EDITION_EXTREME_PERFORMANCE": DbSystemDatabaseEditionEnterpriseEditionExtremePerformance,
+	"ENTERPRISE_EDITION_HIGH_PERFORMANCE":    DbSystemDatabaseEditionEnterpriseEditionHighPerformance,
+	"UNKNOWN": DbSystemDatabaseEditionUnknown,
 }
 
+// GetDbSystemDatabaseEditionEnumValues Enumerates the set of values for DbSystemDatabaseEdition
 func GetDbSystemDatabaseEditionEnumValues() []DbSystemDatabaseEditionEnum {
 	values := make([]DbSystemDatabaseEditionEnum, 0)
-	for _, v := range mapping_dbsystem_databaseEdition {
-		if v != DB_SYSTEM_DATABASE_EDITION_UNKNOWN {
+	for _, v := range mappingDbSystemDatabaseEdition {
+		if v != DbSystemDatabaseEditionUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// DbSystemDiskRedundancyEnum Enum with underlying type: string
 type DbSystemDiskRedundancyEnum string
 
+// Set of constants representing the allowable values for DbSystemDiskRedundancy
 const (
-	DB_SYSTEM_DISK_REDUNDANCY_HIGH    DbSystemDiskRedundancyEnum = "HIGH"
-	DB_SYSTEM_DISK_REDUNDANCY_NORMAL  DbSystemDiskRedundancyEnum = "NORMAL"
-	DB_SYSTEM_DISK_REDUNDANCY_UNKNOWN DbSystemDiskRedundancyEnum = "UNKNOWN"
+	DbSystemDiskRedundancyHigh    DbSystemDiskRedundancyEnum = "HIGH"
+	DbSystemDiskRedundancyNormal  DbSystemDiskRedundancyEnum = "NORMAL"
+	DbSystemDiskRedundancyUnknown DbSystemDiskRedundancyEnum = "UNKNOWN"
 )
 
-var mapping_dbsystem_diskRedundancy = map[string]DbSystemDiskRedundancyEnum{
-	"HIGH":    DB_SYSTEM_DISK_REDUNDANCY_HIGH,
-	"NORMAL":  DB_SYSTEM_DISK_REDUNDANCY_NORMAL,
-	"UNKNOWN": DB_SYSTEM_DISK_REDUNDANCY_UNKNOWN,
+var mappingDbSystemDiskRedundancy = map[string]DbSystemDiskRedundancyEnum{
+	"HIGH":    DbSystemDiskRedundancyHigh,
+	"NORMAL":  DbSystemDiskRedundancyNormal,
+	"UNKNOWN": DbSystemDiskRedundancyUnknown,
 }
 
+// GetDbSystemDiskRedundancyEnumValues Enumerates the set of values for DbSystemDiskRedundancy
 func GetDbSystemDiskRedundancyEnumValues() []DbSystemDiskRedundancyEnum {
 	values := make([]DbSystemDiskRedundancyEnum, 0)
-	for _, v := range mapping_dbsystem_diskRedundancy {
-		if v != DB_SYSTEM_DISK_REDUNDANCY_UNKNOWN {
+	for _, v := range mappingDbSystemDiskRedundancy {
+		if v != DbSystemDiskRedundancyUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// DbSystemLicenseModelEnum Enum with underlying type: string
 type DbSystemLicenseModelEnum string
 
+// Set of constants representing the allowable values for DbSystemLicenseModel
 const (
-	DB_SYSTEM_LICENSE_MODEL_LICENSE_INCLUDED       DbSystemLicenseModelEnum = "LICENSE_INCLUDED"
-	DB_SYSTEM_LICENSE_MODEL_BRING_YOUR_OWN_LICENSE DbSystemLicenseModelEnum = "BRING_YOUR_OWN_LICENSE"
-	DB_SYSTEM_LICENSE_MODEL_UNKNOWN                DbSystemLicenseModelEnum = "UNKNOWN"
+	DbSystemLicenseModelLicenseIncluded     DbSystemLicenseModelEnum = "LICENSE_INCLUDED"
+	DbSystemLicenseModelBringYourOwnLicense DbSystemLicenseModelEnum = "BRING_YOUR_OWN_LICENSE"
+	DbSystemLicenseModelUnknown             DbSystemLicenseModelEnum = "UNKNOWN"
 )
 
-var mapping_dbsystem_licenseModel = map[string]DbSystemLicenseModelEnum{
-	"LICENSE_INCLUDED":       DB_SYSTEM_LICENSE_MODEL_LICENSE_INCLUDED,
-	"BRING_YOUR_OWN_LICENSE": DB_SYSTEM_LICENSE_MODEL_BRING_YOUR_OWN_LICENSE,
-	"UNKNOWN":                DB_SYSTEM_LICENSE_MODEL_UNKNOWN,
+var mappingDbSystemLicenseModel = map[string]DbSystemLicenseModelEnum{
+	"LICENSE_INCLUDED":       DbSystemLicenseModelLicenseIncluded,
+	"BRING_YOUR_OWN_LICENSE": DbSystemLicenseModelBringYourOwnLicense,
+	"UNKNOWN":                DbSystemLicenseModelUnknown,
 }
 
+// GetDbSystemLicenseModelEnumValues Enumerates the set of values for DbSystemLicenseModel
 func GetDbSystemLicenseModelEnumValues() []DbSystemLicenseModelEnum {
 	values := make([]DbSystemLicenseModelEnum, 0)
-	for _, v := range mapping_dbsystem_licenseModel {
-		if v != DB_SYSTEM_LICENSE_MODEL_UNKNOWN {
+	for _, v := range mappingDbSystemLicenseModel {
+		if v != DbSystemLicenseModelUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// DbSystemLifecycleStateEnum Enum with underlying type: string
 type DbSystemLifecycleStateEnum string
 
+// Set of constants representing the allowable values for DbSystemLifecycleState
 const (
-	DB_SYSTEM_LIFECYCLE_STATE_PROVISIONING DbSystemLifecycleStateEnum = "PROVISIONING"
-	DB_SYSTEM_LIFECYCLE_STATE_AVAILABLE    DbSystemLifecycleStateEnum = "AVAILABLE"
-	DB_SYSTEM_LIFECYCLE_STATE_UPDATING     DbSystemLifecycleStateEnum = "UPDATING"
-	DB_SYSTEM_LIFECYCLE_STATE_TERMINATING  DbSystemLifecycleStateEnum = "TERMINATING"
-	DB_SYSTEM_LIFECYCLE_STATE_TERMINATED   DbSystemLifecycleStateEnum = "TERMINATED"
-	DB_SYSTEM_LIFECYCLE_STATE_FAILED       DbSystemLifecycleStateEnum = "FAILED"
-	DB_SYSTEM_LIFECYCLE_STATE_UNKNOWN      DbSystemLifecycleStateEnum = "UNKNOWN"
+	DbSystemLifecycleStateProvisioning DbSystemLifecycleStateEnum = "PROVISIONING"
+	DbSystemLifecycleStateAvailable    DbSystemLifecycleStateEnum = "AVAILABLE"
+	DbSystemLifecycleStateUpdating     DbSystemLifecycleStateEnum = "UPDATING"
+	DbSystemLifecycleStateTerminating  DbSystemLifecycleStateEnum = "TERMINATING"
+	DbSystemLifecycleStateTerminated   DbSystemLifecycleStateEnum = "TERMINATED"
+	DbSystemLifecycleStateFailed       DbSystemLifecycleStateEnum = "FAILED"
+	DbSystemLifecycleStateUnknown      DbSystemLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_dbsystem_lifecycleState = map[string]DbSystemLifecycleStateEnum{
-	"PROVISIONING": DB_SYSTEM_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    DB_SYSTEM_LIFECYCLE_STATE_AVAILABLE,
-	"UPDATING":     DB_SYSTEM_LIFECYCLE_STATE_UPDATING,
-	"TERMINATING":  DB_SYSTEM_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   DB_SYSTEM_LIFECYCLE_STATE_TERMINATED,
-	"FAILED":       DB_SYSTEM_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":      DB_SYSTEM_LIFECYCLE_STATE_UNKNOWN,
+var mappingDbSystemLifecycleState = map[string]DbSystemLifecycleStateEnum{
+	"PROVISIONING": DbSystemLifecycleStateProvisioning,
+	"AVAILABLE":    DbSystemLifecycleStateAvailable,
+	"UPDATING":     DbSystemLifecycleStateUpdating,
+	"TERMINATING":  DbSystemLifecycleStateTerminating,
+	"TERMINATED":   DbSystemLifecycleStateTerminated,
+	"FAILED":       DbSystemLifecycleStateFailed,
+	"UNKNOWN":      DbSystemLifecycleStateUnknown,
 }
 
+// GetDbSystemLifecycleStateEnumValues Enumerates the set of values for DbSystemLifecycleState
 func GetDbSystemLifecycleStateEnumValues() []DbSystemLifecycleStateEnum {
 	values := make([]DbSystemLifecycleStateEnum, 0)
-	for _, v := range mapping_dbsystem_lifecycleState {
-		if v != DB_SYSTEM_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingDbSystemLifecycleState {
+		if v != DbSystemLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

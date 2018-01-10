@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Backup. A database backup
+// Backup A database backup
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type Backup struct {
 
@@ -51,56 +51,62 @@ func (model Backup) String() string {
 	return common.PointerString(model)
 }
 
+// BackupLifecycleStateEnum Enum with underlying type: string
 type BackupLifecycleStateEnum string
 
+// Set of constants representing the allowable values for BackupLifecycleState
 const (
-	BACKUP_LIFECYCLE_STATE_CREATING  BackupLifecycleStateEnum = "CREATING"
-	BACKUP_LIFECYCLE_STATE_ACTIVE    BackupLifecycleStateEnum = "ACTIVE"
-	BACKUP_LIFECYCLE_STATE_DELETING  BackupLifecycleStateEnum = "DELETING"
-	BACKUP_LIFECYCLE_STATE_DELETED   BackupLifecycleStateEnum = "DELETED"
-	BACKUP_LIFECYCLE_STATE_FAILED    BackupLifecycleStateEnum = "FAILED"
-	BACKUP_LIFECYCLE_STATE_RESTORING BackupLifecycleStateEnum = "RESTORING"
-	BACKUP_LIFECYCLE_STATE_UNKNOWN   BackupLifecycleStateEnum = "UNKNOWN"
+	BackupLifecycleStateCreating  BackupLifecycleStateEnum = "CREATING"
+	BackupLifecycleStateActive    BackupLifecycleStateEnum = "ACTIVE"
+	BackupLifecycleStateDeleting  BackupLifecycleStateEnum = "DELETING"
+	BackupLifecycleStateDeleted   BackupLifecycleStateEnum = "DELETED"
+	BackupLifecycleStateFailed    BackupLifecycleStateEnum = "FAILED"
+	BackupLifecycleStateRestoring BackupLifecycleStateEnum = "RESTORING"
+	BackupLifecycleStateUnknown   BackupLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_backup_lifecycleState = map[string]BackupLifecycleStateEnum{
-	"CREATING":  BACKUP_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":    BACKUP_LIFECYCLE_STATE_ACTIVE,
-	"DELETING":  BACKUP_LIFECYCLE_STATE_DELETING,
-	"DELETED":   BACKUP_LIFECYCLE_STATE_DELETED,
-	"FAILED":    BACKUP_LIFECYCLE_STATE_FAILED,
-	"RESTORING": BACKUP_LIFECYCLE_STATE_RESTORING,
-	"UNKNOWN":   BACKUP_LIFECYCLE_STATE_UNKNOWN,
+var mappingBackupLifecycleState = map[string]BackupLifecycleStateEnum{
+	"CREATING":  BackupLifecycleStateCreating,
+	"ACTIVE":    BackupLifecycleStateActive,
+	"DELETING":  BackupLifecycleStateDeleting,
+	"DELETED":   BackupLifecycleStateDeleted,
+	"FAILED":    BackupLifecycleStateFailed,
+	"RESTORING": BackupLifecycleStateRestoring,
+	"UNKNOWN":   BackupLifecycleStateUnknown,
 }
 
+// GetBackupLifecycleStateEnumValues Enumerates the set of values for BackupLifecycleState
 func GetBackupLifecycleStateEnumValues() []BackupLifecycleStateEnum {
 	values := make([]BackupLifecycleStateEnum, 0)
-	for _, v := range mapping_backup_lifecycleState {
-		if v != BACKUP_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingBackupLifecycleState {
+		if v != BackupLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// BackupType_Enum Enum with underlying type: string
 type BackupType_Enum string
 
+// Set of constants representing the allowable values for BackupType_
 const (
-	BACKUP_TYPE__INCREMENTAL BackupType_Enum = "INCREMENTAL"
-	BACKUP_TYPE__FULL        BackupType_Enum = "FULL"
-	BACKUP_TYPE__UNKNOWN     BackupType_Enum = "UNKNOWN"
+	BackupType_Incremental BackupType_Enum = "INCREMENTAL"
+	BackupType_Full        BackupType_Enum = "FULL"
+	BackupType_Unknown     BackupType_Enum = "UNKNOWN"
 )
 
-var mapping_backup_type = map[string]BackupType_Enum{
-	"INCREMENTAL": BACKUP_TYPE__INCREMENTAL,
-	"FULL":        BACKUP_TYPE__FULL,
-	"UNKNOWN":     BACKUP_TYPE__UNKNOWN,
+var mappingBackupType_ = map[string]BackupType_Enum{
+	"INCREMENTAL": BackupType_Incremental,
+	"FULL":        BackupType_Full,
+	"UNKNOWN":     BackupType_Unknown,
 }
 
+// GetBackupType_EnumValues Enumerates the set of values for BackupType_
 func GetBackupType_EnumValues() []BackupType_Enum {
 	values := make([]BackupType_Enum, 0)
-	for _, v := range mapping_backup_type {
-		if v != BACKUP_TYPE__UNKNOWN {
+	for _, v := range mappingBackupType_ {
+		if v != BackupType_Unknown {
 			values = append(values, v)
 		}
 	}

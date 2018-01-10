@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// DbNode. A server where Oracle database software is running.
+// DbNode A server where Oracle database software is running.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type DbNode struct {
 
@@ -45,38 +45,41 @@ func (model DbNode) String() string {
 	return common.PointerString(model)
 }
 
+// DbNodeLifecycleStateEnum Enum with underlying type: string
 type DbNodeLifecycleStateEnum string
 
+// Set of constants representing the allowable values for DbNodeLifecycleState
 const (
-	DB_NODE_LIFECYCLE_STATE_PROVISIONING DbNodeLifecycleStateEnum = "PROVISIONING"
-	DB_NODE_LIFECYCLE_STATE_AVAILABLE    DbNodeLifecycleStateEnum = "AVAILABLE"
-	DB_NODE_LIFECYCLE_STATE_UPDATING     DbNodeLifecycleStateEnum = "UPDATING"
-	DB_NODE_LIFECYCLE_STATE_STOPPING     DbNodeLifecycleStateEnum = "STOPPING"
-	DB_NODE_LIFECYCLE_STATE_STOPPED      DbNodeLifecycleStateEnum = "STOPPED"
-	DB_NODE_LIFECYCLE_STATE_STARTING     DbNodeLifecycleStateEnum = "STARTING"
-	DB_NODE_LIFECYCLE_STATE_TERMINATING  DbNodeLifecycleStateEnum = "TERMINATING"
-	DB_NODE_LIFECYCLE_STATE_TERMINATED   DbNodeLifecycleStateEnum = "TERMINATED"
-	DB_NODE_LIFECYCLE_STATE_FAILED       DbNodeLifecycleStateEnum = "FAILED"
-	DB_NODE_LIFECYCLE_STATE_UNKNOWN      DbNodeLifecycleStateEnum = "UNKNOWN"
+	DbNodeLifecycleStateProvisioning DbNodeLifecycleStateEnum = "PROVISIONING"
+	DbNodeLifecycleStateAvailable    DbNodeLifecycleStateEnum = "AVAILABLE"
+	DbNodeLifecycleStateUpdating     DbNodeLifecycleStateEnum = "UPDATING"
+	DbNodeLifecycleStateStopping     DbNodeLifecycleStateEnum = "STOPPING"
+	DbNodeLifecycleStateStopped      DbNodeLifecycleStateEnum = "STOPPED"
+	DbNodeLifecycleStateStarting     DbNodeLifecycleStateEnum = "STARTING"
+	DbNodeLifecycleStateTerminating  DbNodeLifecycleStateEnum = "TERMINATING"
+	DbNodeLifecycleStateTerminated   DbNodeLifecycleStateEnum = "TERMINATED"
+	DbNodeLifecycleStateFailed       DbNodeLifecycleStateEnum = "FAILED"
+	DbNodeLifecycleStateUnknown      DbNodeLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_dbnode_lifecycleState = map[string]DbNodeLifecycleStateEnum{
-	"PROVISIONING": DB_NODE_LIFECYCLE_STATE_PROVISIONING,
-	"AVAILABLE":    DB_NODE_LIFECYCLE_STATE_AVAILABLE,
-	"UPDATING":     DB_NODE_LIFECYCLE_STATE_UPDATING,
-	"STOPPING":     DB_NODE_LIFECYCLE_STATE_STOPPING,
-	"STOPPED":      DB_NODE_LIFECYCLE_STATE_STOPPED,
-	"STARTING":     DB_NODE_LIFECYCLE_STATE_STARTING,
-	"TERMINATING":  DB_NODE_LIFECYCLE_STATE_TERMINATING,
-	"TERMINATED":   DB_NODE_LIFECYCLE_STATE_TERMINATED,
-	"FAILED":       DB_NODE_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":      DB_NODE_LIFECYCLE_STATE_UNKNOWN,
+var mappingDbNodeLifecycleState = map[string]DbNodeLifecycleStateEnum{
+	"PROVISIONING": DbNodeLifecycleStateProvisioning,
+	"AVAILABLE":    DbNodeLifecycleStateAvailable,
+	"UPDATING":     DbNodeLifecycleStateUpdating,
+	"STOPPING":     DbNodeLifecycleStateStopping,
+	"STOPPED":      DbNodeLifecycleStateStopped,
+	"STARTING":     DbNodeLifecycleStateStarting,
+	"TERMINATING":  DbNodeLifecycleStateTerminating,
+	"TERMINATED":   DbNodeLifecycleStateTerminated,
+	"FAILED":       DbNodeLifecycleStateFailed,
+	"UNKNOWN":      DbNodeLifecycleStateUnknown,
 }
 
+// GetDbNodeLifecycleStateEnumValues Enumerates the set of values for DbNodeLifecycleState
 func GetDbNodeLifecycleStateEnumValues() []DbNodeLifecycleStateEnum {
 	values := make([]DbNodeLifecycleStateEnum, 0)
-	for _, v := range mapping_dbnode_lifecycleState {
-		if v != DB_NODE_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingDbNodeLifecycleState {
+		if v != DbNodeLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

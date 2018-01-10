@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// RouteRule. A mapping between a destination IP address range and a virtual device to route matching
+// RouteRule A mapping between a destination IP address range and a virtual device to route matching
 // packets to (a target).
 type RouteRule struct {
 

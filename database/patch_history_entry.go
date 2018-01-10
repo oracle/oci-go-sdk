@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// PatchHistoryEntry. The record of a patch action on a specified target.
+// PatchHistoryEntry The record of a patch action on a specified target.
 type PatchHistoryEntry struct {
 
 	// The OCID of the patch history entry.
@@ -42,50 +42,56 @@ func (model PatchHistoryEntry) String() string {
 	return common.PointerString(model)
 }
 
+// PatchHistoryEntryActionEnum Enum with underlying type: string
 type PatchHistoryEntryActionEnum string
 
+// Set of constants representing the allowable values for PatchHistoryEntryAction
 const (
-	PATCH_HISTORY_ENTRY_ACTION_APPLY    PatchHistoryEntryActionEnum = "APPLY"
-	PATCH_HISTORY_ENTRY_ACTION_PRECHECK PatchHistoryEntryActionEnum = "PRECHECK"
-	PATCH_HISTORY_ENTRY_ACTION_UNKNOWN  PatchHistoryEntryActionEnum = "UNKNOWN"
+	PatchHistoryEntryActionApply    PatchHistoryEntryActionEnum = "APPLY"
+	PatchHistoryEntryActionPrecheck PatchHistoryEntryActionEnum = "PRECHECK"
+	PatchHistoryEntryActionUnknown  PatchHistoryEntryActionEnum = "UNKNOWN"
 )
 
-var mapping_patchhistoryentry_action = map[string]PatchHistoryEntryActionEnum{
-	"APPLY":    PATCH_HISTORY_ENTRY_ACTION_APPLY,
-	"PRECHECK": PATCH_HISTORY_ENTRY_ACTION_PRECHECK,
-	"UNKNOWN":  PATCH_HISTORY_ENTRY_ACTION_UNKNOWN,
+var mappingPatchHistoryEntryAction = map[string]PatchHistoryEntryActionEnum{
+	"APPLY":    PatchHistoryEntryActionApply,
+	"PRECHECK": PatchHistoryEntryActionPrecheck,
+	"UNKNOWN":  PatchHistoryEntryActionUnknown,
 }
 
+// GetPatchHistoryEntryActionEnumValues Enumerates the set of values for PatchHistoryEntryAction
 func GetPatchHistoryEntryActionEnumValues() []PatchHistoryEntryActionEnum {
 	values := make([]PatchHistoryEntryActionEnum, 0)
-	for _, v := range mapping_patchhistoryentry_action {
-		if v != PATCH_HISTORY_ENTRY_ACTION_UNKNOWN {
+	for _, v := range mappingPatchHistoryEntryAction {
+		if v != PatchHistoryEntryActionUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// PatchHistoryEntryLifecycleStateEnum Enum with underlying type: string
 type PatchHistoryEntryLifecycleStateEnum string
 
+// Set of constants representing the allowable values for PatchHistoryEntryLifecycleState
 const (
-	PATCH_HISTORY_ENTRY_LIFECYCLE_STATE_IN_PROGRESS PatchHistoryEntryLifecycleStateEnum = "IN_PROGRESS"
-	PATCH_HISTORY_ENTRY_LIFECYCLE_STATE_SUCCEEDED   PatchHistoryEntryLifecycleStateEnum = "SUCCEEDED"
-	PATCH_HISTORY_ENTRY_LIFECYCLE_STATE_FAILED      PatchHistoryEntryLifecycleStateEnum = "FAILED"
-	PATCH_HISTORY_ENTRY_LIFECYCLE_STATE_UNKNOWN     PatchHistoryEntryLifecycleStateEnum = "UNKNOWN"
+	PatchHistoryEntryLifecycleStateInProgress PatchHistoryEntryLifecycleStateEnum = "IN_PROGRESS"
+	PatchHistoryEntryLifecycleStateSucceeded  PatchHistoryEntryLifecycleStateEnum = "SUCCEEDED"
+	PatchHistoryEntryLifecycleStateFailed     PatchHistoryEntryLifecycleStateEnum = "FAILED"
+	PatchHistoryEntryLifecycleStateUnknown    PatchHistoryEntryLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_patchhistoryentry_lifecycleState = map[string]PatchHistoryEntryLifecycleStateEnum{
-	"IN_PROGRESS": PATCH_HISTORY_ENTRY_LIFECYCLE_STATE_IN_PROGRESS,
-	"SUCCEEDED":   PATCH_HISTORY_ENTRY_LIFECYCLE_STATE_SUCCEEDED,
-	"FAILED":      PATCH_HISTORY_ENTRY_LIFECYCLE_STATE_FAILED,
-	"UNKNOWN":     PATCH_HISTORY_ENTRY_LIFECYCLE_STATE_UNKNOWN,
+var mappingPatchHistoryEntryLifecycleState = map[string]PatchHistoryEntryLifecycleStateEnum{
+	"IN_PROGRESS": PatchHistoryEntryLifecycleStateInProgress,
+	"SUCCEEDED":   PatchHistoryEntryLifecycleStateSucceeded,
+	"FAILED":      PatchHistoryEntryLifecycleStateFailed,
+	"UNKNOWN":     PatchHistoryEntryLifecycleStateUnknown,
 }
 
+// GetPatchHistoryEntryLifecycleStateEnumValues Enumerates the set of values for PatchHistoryEntryLifecycleState
 func GetPatchHistoryEntryLifecycleStateEnumValues() []PatchHistoryEntryLifecycleStateEnum {
 	values := make([]PatchHistoryEntryLifecycleStateEnum, 0)
-	for _, v := range mapping_patchhistoryentry_lifecycleState {
-		if v != PATCH_HISTORY_ENTRY_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingPatchHistoryEntryLifecycleState {
+		if v != PatchHistoryEntryLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}

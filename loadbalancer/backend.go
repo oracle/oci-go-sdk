@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Backend. The configuration of a backend server that is a member of a load balancer backend set.
+// Backend The configuration of a backend server that is a member of a load balancer backend set.
 // For more information, see [Managing Backend Servers]({{DOC_SERVER_URL}}/Content/Balance/Tasks/managingbackendservers.htm).
 type Backend struct {
 

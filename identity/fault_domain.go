@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// FaultDomain. A Fault Domain is a logical grouping of hardware and infrastructure within an Availability Domain that can become
+// FaultDomain A Fault Domain is a logical grouping of hardware and infrastructure within an Availability Domain that can become
 // unavailable in its entirety either due to hardware failure such as Top-of-rack (TOR) switch failure or due to
 // planned software maintenance such as security updates that reboot your instances.
 type FaultDomain struct {

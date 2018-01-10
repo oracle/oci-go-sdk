@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// BackendDetails. The load balancing configuration details of a backend server.
+// BackendDetails The load balancing configuration details of a backend server.
 type BackendDetails struct {
 
 	// The IP address of the backend server.

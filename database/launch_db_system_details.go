@@ -96,76 +96,85 @@ func (model LaunchDbSystemDetails) String() string {
 	return common.PointerString(model)
 }
 
+// LaunchDbSystemDetailsDatabaseEditionEnum Enum with underlying type: string
 type LaunchDbSystemDetailsDatabaseEditionEnum string
 
+// Set of constants representing the allowable values for LaunchDbSystemDetailsDatabaseEdition
 const (
-	LAUNCH_DB_SYSTEM_DETAILS_DATABASE_EDITION_STANDARD_EDITION                       LaunchDbSystemDetailsDatabaseEditionEnum = "STANDARD_EDITION"
-	LAUNCH_DB_SYSTEM_DETAILS_DATABASE_EDITION_ENTERPRISE_EDITION                     LaunchDbSystemDetailsDatabaseEditionEnum = "ENTERPRISE_EDITION"
-	LAUNCH_DB_SYSTEM_DETAILS_DATABASE_EDITION_ENTERPRISE_EDITION_EXTREME_PERFORMANCE LaunchDbSystemDetailsDatabaseEditionEnum = "ENTERPRISE_EDITION_EXTREME_PERFORMANCE"
-	LAUNCH_DB_SYSTEM_DETAILS_DATABASE_EDITION_ENTERPRISE_EDITION_HIGH_PERFORMANCE    LaunchDbSystemDetailsDatabaseEditionEnum = "ENTERPRISE_EDITION_HIGH_PERFORMANCE"
-	LAUNCH_DB_SYSTEM_DETAILS_DATABASE_EDITION_UNKNOWN                                LaunchDbSystemDetailsDatabaseEditionEnum = "UNKNOWN"
+	LaunchDbSystemDetailsDatabaseEditionStandardEdition                     LaunchDbSystemDetailsDatabaseEditionEnum = "STANDARD_EDITION"
+	LaunchDbSystemDetailsDatabaseEditionEnterpriseEdition                   LaunchDbSystemDetailsDatabaseEditionEnum = "ENTERPRISE_EDITION"
+	LaunchDbSystemDetailsDatabaseEditionEnterpriseEditionExtremePerformance LaunchDbSystemDetailsDatabaseEditionEnum = "ENTERPRISE_EDITION_EXTREME_PERFORMANCE"
+	LaunchDbSystemDetailsDatabaseEditionEnterpriseEditionHighPerformance    LaunchDbSystemDetailsDatabaseEditionEnum = "ENTERPRISE_EDITION_HIGH_PERFORMANCE"
+	LaunchDbSystemDetailsDatabaseEditionUnknown                             LaunchDbSystemDetailsDatabaseEditionEnum = "UNKNOWN"
 )
 
-var mapping_launchdbsystemdetails_databaseEdition = map[string]LaunchDbSystemDetailsDatabaseEditionEnum{
-	"STANDARD_EDITION":                       LAUNCH_DB_SYSTEM_DETAILS_DATABASE_EDITION_STANDARD_EDITION,
-	"ENTERPRISE_EDITION":                     LAUNCH_DB_SYSTEM_DETAILS_DATABASE_EDITION_ENTERPRISE_EDITION,
-	"ENTERPRISE_EDITION_EXTREME_PERFORMANCE": LAUNCH_DB_SYSTEM_DETAILS_DATABASE_EDITION_ENTERPRISE_EDITION_EXTREME_PERFORMANCE,
-	"ENTERPRISE_EDITION_HIGH_PERFORMANCE":    LAUNCH_DB_SYSTEM_DETAILS_DATABASE_EDITION_ENTERPRISE_EDITION_HIGH_PERFORMANCE,
-	"UNKNOWN": LAUNCH_DB_SYSTEM_DETAILS_DATABASE_EDITION_UNKNOWN,
+var mappingLaunchDbSystemDetailsDatabaseEdition = map[string]LaunchDbSystemDetailsDatabaseEditionEnum{
+	"STANDARD_EDITION":                       LaunchDbSystemDetailsDatabaseEditionStandardEdition,
+	"ENTERPRISE_EDITION":                     LaunchDbSystemDetailsDatabaseEditionEnterpriseEdition,
+	"ENTERPRISE_EDITION_EXTREME_PERFORMANCE": LaunchDbSystemDetailsDatabaseEditionEnterpriseEditionExtremePerformance,
+	"ENTERPRISE_EDITION_HIGH_PERFORMANCE":    LaunchDbSystemDetailsDatabaseEditionEnterpriseEditionHighPerformance,
+	"UNKNOWN": LaunchDbSystemDetailsDatabaseEditionUnknown,
 }
 
+// GetLaunchDbSystemDetailsDatabaseEditionEnumValues Enumerates the set of values for LaunchDbSystemDetailsDatabaseEdition
 func GetLaunchDbSystemDetailsDatabaseEditionEnumValues() []LaunchDbSystemDetailsDatabaseEditionEnum {
 	values := make([]LaunchDbSystemDetailsDatabaseEditionEnum, 0)
-	for _, v := range mapping_launchdbsystemdetails_databaseEdition {
-		if v != LAUNCH_DB_SYSTEM_DETAILS_DATABASE_EDITION_UNKNOWN {
+	for _, v := range mappingLaunchDbSystemDetailsDatabaseEdition {
+		if v != LaunchDbSystemDetailsDatabaseEditionUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// LaunchDbSystemDetailsDiskRedundancyEnum Enum with underlying type: string
 type LaunchDbSystemDetailsDiskRedundancyEnum string
 
+// Set of constants representing the allowable values for LaunchDbSystemDetailsDiskRedundancy
 const (
-	LAUNCH_DB_SYSTEM_DETAILS_DISK_REDUNDANCY_HIGH    LaunchDbSystemDetailsDiskRedundancyEnum = "HIGH"
-	LAUNCH_DB_SYSTEM_DETAILS_DISK_REDUNDANCY_NORMAL  LaunchDbSystemDetailsDiskRedundancyEnum = "NORMAL"
-	LAUNCH_DB_SYSTEM_DETAILS_DISK_REDUNDANCY_UNKNOWN LaunchDbSystemDetailsDiskRedundancyEnum = "UNKNOWN"
+	LaunchDbSystemDetailsDiskRedundancyHigh    LaunchDbSystemDetailsDiskRedundancyEnum = "HIGH"
+	LaunchDbSystemDetailsDiskRedundancyNormal  LaunchDbSystemDetailsDiskRedundancyEnum = "NORMAL"
+	LaunchDbSystemDetailsDiskRedundancyUnknown LaunchDbSystemDetailsDiskRedundancyEnum = "UNKNOWN"
 )
 
-var mapping_launchdbsystemdetails_diskRedundancy = map[string]LaunchDbSystemDetailsDiskRedundancyEnum{
-	"HIGH":    LAUNCH_DB_SYSTEM_DETAILS_DISK_REDUNDANCY_HIGH,
-	"NORMAL":  LAUNCH_DB_SYSTEM_DETAILS_DISK_REDUNDANCY_NORMAL,
-	"UNKNOWN": LAUNCH_DB_SYSTEM_DETAILS_DISK_REDUNDANCY_UNKNOWN,
+var mappingLaunchDbSystemDetailsDiskRedundancy = map[string]LaunchDbSystemDetailsDiskRedundancyEnum{
+	"HIGH":    LaunchDbSystemDetailsDiskRedundancyHigh,
+	"NORMAL":  LaunchDbSystemDetailsDiskRedundancyNormal,
+	"UNKNOWN": LaunchDbSystemDetailsDiskRedundancyUnknown,
 }
 
+// GetLaunchDbSystemDetailsDiskRedundancyEnumValues Enumerates the set of values for LaunchDbSystemDetailsDiskRedundancy
 func GetLaunchDbSystemDetailsDiskRedundancyEnumValues() []LaunchDbSystemDetailsDiskRedundancyEnum {
 	values := make([]LaunchDbSystemDetailsDiskRedundancyEnum, 0)
-	for _, v := range mapping_launchdbsystemdetails_diskRedundancy {
-		if v != LAUNCH_DB_SYSTEM_DETAILS_DISK_REDUNDANCY_UNKNOWN {
+	for _, v := range mappingLaunchDbSystemDetailsDiskRedundancy {
+		if v != LaunchDbSystemDetailsDiskRedundancyUnknown {
 			values = append(values, v)
 		}
 	}
 	return values
 }
 
+// LaunchDbSystemDetailsLicenseModelEnum Enum with underlying type: string
 type LaunchDbSystemDetailsLicenseModelEnum string
 
+// Set of constants representing the allowable values for LaunchDbSystemDetailsLicenseModel
 const (
-	LAUNCH_DB_SYSTEM_DETAILS_LICENSE_MODEL_LICENSE_INCLUDED       LaunchDbSystemDetailsLicenseModelEnum = "LICENSE_INCLUDED"
-	LAUNCH_DB_SYSTEM_DETAILS_LICENSE_MODEL_BRING_YOUR_OWN_LICENSE LaunchDbSystemDetailsLicenseModelEnum = "BRING_YOUR_OWN_LICENSE"
-	LAUNCH_DB_SYSTEM_DETAILS_LICENSE_MODEL_UNKNOWN                LaunchDbSystemDetailsLicenseModelEnum = "UNKNOWN"
+	LaunchDbSystemDetailsLicenseModelLicenseIncluded     LaunchDbSystemDetailsLicenseModelEnum = "LICENSE_INCLUDED"
+	LaunchDbSystemDetailsLicenseModelBringYourOwnLicense LaunchDbSystemDetailsLicenseModelEnum = "BRING_YOUR_OWN_LICENSE"
+	LaunchDbSystemDetailsLicenseModelUnknown             LaunchDbSystemDetailsLicenseModelEnum = "UNKNOWN"
 )
 
-var mapping_launchdbsystemdetails_licenseModel = map[string]LaunchDbSystemDetailsLicenseModelEnum{
-	"LICENSE_INCLUDED":       LAUNCH_DB_SYSTEM_DETAILS_LICENSE_MODEL_LICENSE_INCLUDED,
-	"BRING_YOUR_OWN_LICENSE": LAUNCH_DB_SYSTEM_DETAILS_LICENSE_MODEL_BRING_YOUR_OWN_LICENSE,
-	"UNKNOWN":                LAUNCH_DB_SYSTEM_DETAILS_LICENSE_MODEL_UNKNOWN,
+var mappingLaunchDbSystemDetailsLicenseModel = map[string]LaunchDbSystemDetailsLicenseModelEnum{
+	"LICENSE_INCLUDED":       LaunchDbSystemDetailsLicenseModelLicenseIncluded,
+	"BRING_YOUR_OWN_LICENSE": LaunchDbSystemDetailsLicenseModelBringYourOwnLicense,
+	"UNKNOWN":                LaunchDbSystemDetailsLicenseModelUnknown,
 }
 
+// GetLaunchDbSystemDetailsLicenseModelEnumValues Enumerates the set of values for LaunchDbSystemDetailsLicenseModel
 func GetLaunchDbSystemDetailsLicenseModelEnumValues() []LaunchDbSystemDetailsLicenseModelEnum {
 	values := make([]LaunchDbSystemDetailsLicenseModelEnum, 0)
-	for _, v := range mapping_launchdbsystemdetails_licenseModel {
-		if v != LAUNCH_DB_SYSTEM_DETAILS_LICENSE_MODEL_UNKNOWN {
+	for _, v := range mappingLaunchDbSystemDetailsLicenseModel {
+		if v != LaunchDbSystemDetailsLicenseModelUnknown {
 			values = append(values, v)
 		}
 	}

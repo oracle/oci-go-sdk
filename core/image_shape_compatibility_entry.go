@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ImageShapeCompatibilityEntry. An image and shape that are compatible.
+// ImageShapeCompatibilityEntry An image and shape that are compatible.
 type ImageShapeCompatibilityEntry struct {
 
 	// The image OCID.

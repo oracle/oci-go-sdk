@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IdentityProvider. The resulting base object when you add an identity provider to your tenancy. A
+// IdentityProvider The resulting base object when you add an identity provider to your tenancy. A
 // Saml2IdentityProvider
 // is a specific type of `IdentityProvider` that supports the SAML 2.0 protocol. Each
 // `IdentityProvider` object has its own OCID. For more information, see
@@ -138,30 +138,33 @@ func (model identityprovider) String() string {
 	return common.PointerString(model)
 }
 
+// IdentityProviderLifecycleStateEnum Enum with underlying type: string
 type IdentityProviderLifecycleStateEnum string
 
+// Set of constants representing the allowable values for IdentityProviderLifecycleState
 const (
-	IDENTITY_PROVIDER_LIFECYCLE_STATE_CREATING IdentityProviderLifecycleStateEnum = "CREATING"
-	IDENTITY_PROVIDER_LIFECYCLE_STATE_ACTIVE   IdentityProviderLifecycleStateEnum = "ACTIVE"
-	IDENTITY_PROVIDER_LIFECYCLE_STATE_INACTIVE IdentityProviderLifecycleStateEnum = "INACTIVE"
-	IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETING IdentityProviderLifecycleStateEnum = "DELETING"
-	IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETED  IdentityProviderLifecycleStateEnum = "DELETED"
-	IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN  IdentityProviderLifecycleStateEnum = "UNKNOWN"
+	IdentityProviderLifecycleStateCreating IdentityProviderLifecycleStateEnum = "CREATING"
+	IdentityProviderLifecycleStateActive   IdentityProviderLifecycleStateEnum = "ACTIVE"
+	IdentityProviderLifecycleStateInactive IdentityProviderLifecycleStateEnum = "INACTIVE"
+	IdentityProviderLifecycleStateDeleting IdentityProviderLifecycleStateEnum = "DELETING"
+	IdentityProviderLifecycleStateDeleted  IdentityProviderLifecycleStateEnum = "DELETED"
+	IdentityProviderLifecycleStateUnknown  IdentityProviderLifecycleStateEnum = "UNKNOWN"
 )
 
-var mapping_identityprovider_lifecycleState = map[string]IdentityProviderLifecycleStateEnum{
-	"CREATING": IDENTITY_PROVIDER_LIFECYCLE_STATE_CREATING,
-	"ACTIVE":   IDENTITY_PROVIDER_LIFECYCLE_STATE_ACTIVE,
-	"INACTIVE": IDENTITY_PROVIDER_LIFECYCLE_STATE_INACTIVE,
-	"DELETING": IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETING,
-	"DELETED":  IDENTITY_PROVIDER_LIFECYCLE_STATE_DELETED,
-	"UNKNOWN":  IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN,
+var mappingIdentityProviderLifecycleState = map[string]IdentityProviderLifecycleStateEnum{
+	"CREATING": IdentityProviderLifecycleStateCreating,
+	"ACTIVE":   IdentityProviderLifecycleStateActive,
+	"INACTIVE": IdentityProviderLifecycleStateInactive,
+	"DELETING": IdentityProviderLifecycleStateDeleting,
+	"DELETED":  IdentityProviderLifecycleStateDeleted,
+	"UNKNOWN":  IdentityProviderLifecycleStateUnknown,
 }
 
+// GetIdentityProviderLifecycleStateEnumValues Enumerates the set of values for IdentityProviderLifecycleState
 func GetIdentityProviderLifecycleStateEnumValues() []IdentityProviderLifecycleStateEnum {
 	values := make([]IdentityProviderLifecycleStateEnum, 0)
-	for _, v := range mapping_identityprovider_lifecycleState {
-		if v != IDENTITY_PROVIDER_LIFECYCLE_STATE_UNKNOWN {
+	for _, v := range mappingIdentityProviderLifecycleState {
+		if v != IdentityProviderLifecycleStateUnknown {
 			values = append(values, v)
 		}
 	}
