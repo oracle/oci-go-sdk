@@ -40,8 +40,8 @@ type UserGroupMembership struct {
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
-func (model UserGroupMembership) String() string {
-	return common.PointerString(model)
+func (m UserGroupMembership) String() string {
+	return common.PointerString(m)
 }
 
 // UserGroupMembershipLifecycleStateEnum Enum with underlying type: string

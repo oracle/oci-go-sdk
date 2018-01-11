@@ -20,6 +20,6 @@ type UpdateInstanceDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model UpdateInstanceDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateInstanceDetails) String() string {
+	return common.PointerString(m)
 }

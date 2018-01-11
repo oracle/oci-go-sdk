@@ -43,8 +43,8 @@ type CrossConnectGroup struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 }
 
-func (model CrossConnectGroup) String() string {
-	return common.PointerString(model)
+func (m CrossConnectGroup) String() string {
+	return common.PointerString(m)
 }
 
 // CrossConnectGroupLifecycleStateEnum Enum with underlying type: string

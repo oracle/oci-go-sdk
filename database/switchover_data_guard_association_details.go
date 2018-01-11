@@ -19,6 +19,6 @@ type SwitchoverDataGuardAssociationDetails struct {
 	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword,omitempty"`
 }
 
-func (model SwitchoverDataGuardAssociationDetails) String() string {
-	return common.PointerString(model)
+func (m SwitchoverDataGuardAssociationDetails) String() string {
+	return common.PointerString(m)
 }

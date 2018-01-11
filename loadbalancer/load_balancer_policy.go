@@ -21,6 +21,6 @@ type LoadBalancerPolicy struct {
 	Name *string `mandatory:"true" json:"name,omitempty"`
 }
 
-func (model LoadBalancerPolicy) String() string {
-	return common.PointerString(model)
+func (m LoadBalancerPolicy) String() string {
+	return common.PointerString(m)
 }

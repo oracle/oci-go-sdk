@@ -19,6 +19,6 @@ type ConnectLocalPeeringGatewaysDetails struct {
 	PeerID *string `mandatory:"true" json:"peerId,omitempty"`
 }
 
-func (model ConnectLocalPeeringGatewaysDetails) String() string {
-	return common.PointerString(model)
+func (m ConnectLocalPeeringGatewaysDetails) String() string {
+	return common.PointerString(m)
 }

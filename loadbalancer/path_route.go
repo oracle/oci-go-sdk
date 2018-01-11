@@ -24,6 +24,6 @@ type PathRoute struct {
 	PathMatchType *PathMatchType `mandatory:"true" json:"pathMatchType,omitempty"`
 }
 
-func (model PathRoute) String() string {
-	return common.PointerString(model)
+func (m PathRoute) String() string {
+	return common.PointerString(m)
 }

@@ -99,8 +99,8 @@ type Subnet struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 }
 
-func (model Subnet) String() string {
-	return common.PointerString(model)
+func (m Subnet) String() string {
+	return common.PointerString(m)
 }
 
 // SubnetLifecycleStateEnum Enum with underlying type: string

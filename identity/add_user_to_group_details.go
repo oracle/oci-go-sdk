@@ -21,6 +21,6 @@ type AddUserToGroupDetails struct {
 	GroupID *string `mandatory:"true" json:"groupId,omitempty"`
 }
 
-func (model AddUserToGroupDetails) String() string {
-	return common.PointerString(model)
+func (m AddUserToGroupDetails) String() string {
+	return common.PointerString(m)
 }

@@ -72,6 +72,6 @@ type AuditEvent struct {
 	ResponsePayload map[string]interface{} `mandatory:"false" json:"responsePayload,omitempty"`
 }
 
-func (model AuditEvent) String() string {
-	return common.PointerString(model)
+func (m AuditEvent) String() string {
+	return common.PointerString(m)
 }

@@ -62,8 +62,8 @@ type LocalPeeringGateway struct {
 	PeeringStatusDetails *string `mandatory:"false" json:"peeringStatusDetails,omitempty"`
 }
 
-func (model LocalPeeringGateway) String() string {
-	return common.PointerString(model)
+func (m LocalPeeringGateway) String() string {
+	return common.PointerString(m)
 }
 
 // LocalPeeringGatewayLifecycleStateEnum Enum with underlying type: string

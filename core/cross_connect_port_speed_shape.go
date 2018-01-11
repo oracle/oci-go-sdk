@@ -24,6 +24,6 @@ type CrossConnectPortSpeedShape struct {
 	PortSpeedInGbps *int `mandatory:"true" json:"portSpeedInGbps,omitempty"`
 }
 
-func (model CrossConnectPortSpeedShape) String() string {
-	return common.PointerString(model)
+func (m CrossConnectPortSpeedShape) String() string {
+	return common.PointerString(m)
 }

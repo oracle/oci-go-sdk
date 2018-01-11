@@ -92,8 +92,8 @@ type LaunchDbSystemDetails struct {
 	NodeCount *int `mandatory:"false" json:"nodeCount,omitempty"`
 }
 
-func (model LaunchDbSystemDetails) String() string {
-	return common.PointerString(model)
+func (m LaunchDbSystemDetails) String() string {
+	return common.PointerString(m)
 }
 
 // LaunchDbSystemDetailsDatabaseEditionEnum Enum with underlying type: string

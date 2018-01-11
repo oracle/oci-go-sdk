@@ -72,8 +72,8 @@ type LoadBalancer struct {
 	SubnetIds []string `mandatory:"false" json:"subnetIds,omitempty"`
 }
 
-func (model LoadBalancer) String() string {
-	return common.PointerString(model)
+func (m LoadBalancer) String() string {
+	return common.PointerString(m)
 }
 
 // LoadBalancerLifecycleStateEnum Enum with underlying type: string

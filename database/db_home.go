@@ -46,8 +46,8 @@ type DbHome struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 }
 
-func (model DbHome) String() string {
-	return common.PointerString(model)
+func (m DbHome) String() string {
+	return common.PointerString(m)
 }
 
 // DbHomeLifecycleStateEnum Enum with underlying type: string

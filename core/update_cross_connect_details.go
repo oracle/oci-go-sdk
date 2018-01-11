@@ -26,6 +26,6 @@ type UpdateCrossConnectDetails struct {
 	IsActive *bool `mandatory:"false" json:"isActive,omitempty"`
 }
 
-func (model UpdateCrossConnectDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateCrossConnectDetails) String() string {
+	return common.PointerString(m)
 }

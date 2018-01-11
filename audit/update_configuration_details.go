@@ -18,6 +18,6 @@ type UpdateConfigurationDetails struct {
 	RetentionPeriodDays *int `mandatory:"false" json:"retentionPeriodDays,omitempty"`
 }
 
-func (model UpdateConfigurationDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateConfigurationDetails) String() string {
+	return common.PointerString(m)
 }

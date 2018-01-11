@@ -41,8 +41,8 @@ type InstanceConsoleConnection struct {
 	VncConnectionString *string `mandatory:"false" json:"vncConnectionString,omitempty"`
 }
 
-func (model InstanceConsoleConnection) String() string {
-	return common.PointerString(model)
+func (m InstanceConsoleConnection) String() string {
+	return common.PointerString(m)
 }
 
 // InstanceConsoleConnectionLifecycleStateEnum Enum with underlying type: string

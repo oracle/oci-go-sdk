@@ -19,6 +19,6 @@ type CreateVirtualCircuitPublicPrefixDetails struct {
 	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
 }
 
-func (model CreateVirtualCircuitPublicPrefixDetails) String() string {
-	return common.PointerString(model)
+func (m CreateVirtualCircuitPublicPrefixDetails) String() string {
+	return common.PointerString(m)
 }

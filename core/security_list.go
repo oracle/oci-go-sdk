@@ -52,8 +52,8 @@ type SecurityList struct {
 	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`
 }
 
-func (model SecurityList) String() string {
-	return common.PointerString(model)
+func (m SecurityList) String() string {
+	return common.PointerString(m)
 }
 
 // SecurityListLifecycleStateEnum Enum with underlying type: string

@@ -21,6 +21,6 @@ type CaptureConsoleHistoryDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model CaptureConsoleHistoryDetails) String() string {
-	return common.PointerString(model)
+func (m CaptureConsoleHistoryDetails) String() string {
+	return common.PointerString(m)
 }

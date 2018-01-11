@@ -44,8 +44,8 @@ type RouteTable struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 }
 
-func (model RouteTable) String() string {
-	return common.PointerString(model)
+func (m RouteTable) String() string {
+	return common.PointerString(m)
 }
 
 // RouteTableLifecycleStateEnum Enum with underlying type: string

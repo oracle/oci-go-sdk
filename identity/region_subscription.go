@@ -40,8 +40,8 @@ type RegionSubscription struct {
 	IsHomeRegion *bool `mandatory:"true" json:"isHomeRegion,omitempty"`
 }
 
-func (model RegionSubscription) String() string {
-	return common.PointerString(model)
+func (m RegionSubscription) String() string {
+	return common.PointerString(m)
 }
 
 // RegionSubscriptionStatusEnum Enum with underlying type: string

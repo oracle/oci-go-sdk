@@ -22,6 +22,6 @@ type LoadBalancerShape struct {
 	Name *string `mandatory:"true" json:"name,omitempty"`
 }
 
-func (model LoadBalancerShape) String() string {
-	return common.PointerString(model)
+func (m LoadBalancerShape) String() string {
+	return common.PointerString(m)
 }

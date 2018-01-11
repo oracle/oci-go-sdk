@@ -44,11 +44,11 @@ type BackupSummary struct {
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted,omitempty"`
 
 	// The type of backup.
-	Type_ BackupSummaryType_Enum `mandatory:"false" json:"type,omitempty"`
+	Type BackupSummaryType_Enum `mandatory:"false" json:"type,omitempty"`
 }
 
-func (model BackupSummary) String() string {
-	return common.PointerString(model)
+func (m BackupSummary) String() string {
+	return common.PointerString(m)
 }
 
 // BackupSummaryLifecycleStateEnum Enum with underlying type: string

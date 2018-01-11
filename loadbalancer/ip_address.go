@@ -25,6 +25,6 @@ type IpAddress struct {
 	IsPublic *bool `mandatory:"false" json:"isPublic,omitempty"`
 }
 
-func (model IpAddress) String() string {
-	return common.PointerString(model)
+func (m IpAddress) String() string {
+	return common.PointerString(m)
 }

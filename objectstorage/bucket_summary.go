@@ -36,6 +36,6 @@ type BucketSummary struct {
 	Etag *string `mandatory:"true" json:"etag,omitempty"`
 }
 
-func (model BucketSummary) String() string {
-	return common.PointerString(model)
+func (m BucketSummary) String() string {
+	return common.PointerString(m)
 }

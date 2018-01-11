@@ -28,6 +28,6 @@ type TunnelConfig struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 }
 
-func (model TunnelConfig) String() string {
-	return common.PointerString(model)
+func (m TunnelConfig) String() string {
+	return common.PointerString(m)
 }

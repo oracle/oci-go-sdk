@@ -40,8 +40,8 @@ type Drg struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 }
 
-func (model Drg) String() string {
-	return common.PointerString(model)
+func (m Drg) String() string {
+	return common.PointerString(m)
 }
 
 // DrgLifecycleStateEnum Enum with underlying type: string

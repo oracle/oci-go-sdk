@@ -19,6 +19,6 @@ type UpdateCrossConnectGroupDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model UpdateCrossConnectGroupDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateCrossConnectGroupDetails) String() string {
+	return common.PointerString(m)
 }

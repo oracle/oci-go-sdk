@@ -16,6 +16,6 @@ type UpdatePathRouteSetDetails struct {
 	PathRoutes []PathRoute `mandatory:"true" json:"pathRoutes,omitempty"`
 }
 
-func (model UpdatePathRouteSetDetails) String() string {
-	return common.PointerString(model)
+func (m UpdatePathRouteSetDetails) String() string {
+	return common.PointerString(m)
 }

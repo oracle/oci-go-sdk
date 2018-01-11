@@ -45,6 +45,6 @@ type CreateListenerDetails struct {
 	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration,omitempty"`
 }
 
-func (model CreateListenerDetails) String() string {
-	return common.PointerString(model)
+func (m CreateListenerDetails) String() string {
+	return common.PointerString(m)
 }

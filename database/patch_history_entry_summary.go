@@ -38,8 +38,8 @@ type PatchHistoryEntrySummary struct {
 	TimeEnded *common.SDKTime `mandatory:"false" json:"timeEnded,omitempty"`
 }
 
-func (model PatchHistoryEntrySummary) String() string {
-	return common.PointerString(model)
+func (m PatchHistoryEntrySummary) String() string {
+	return common.PointerString(m)
 }
 
 // PatchHistoryEntrySummaryActionEnum Enum with underlying type: string

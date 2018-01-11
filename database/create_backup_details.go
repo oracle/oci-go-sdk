@@ -21,6 +21,6 @@ type CreateBackupDetails struct {
 	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
 }
 
-func (model CreateBackupDetails) String() string {
-	return common.PointerString(model)
+func (m CreateBackupDetails) String() string {
+	return common.PointerString(m)
 }

@@ -52,8 +52,8 @@ type WorkRequest struct {
 	PercentComplete *float32 `mandatory:"false" json:"percentComplete,omitempty"`
 }
 
-func (model WorkRequest) String() string {
-	return common.PointerString(model)
+func (m WorkRequest) String() string {
+	return common.PointerString(m)
 }
 
 // WorkRequestOperationTypeEnum Enum with underlying type: string

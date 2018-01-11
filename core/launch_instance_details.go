@@ -127,8 +127,8 @@ type LaunchInstanceDetails struct {
 	SubnetID *string `mandatory:"false" json:"subnetId,omitempty"`
 }
 
-func (model LaunchInstanceDetails) String() string {
-	return common.PointerString(model)
+func (m LaunchInstanceDetails) String() string {
+	return common.PointerString(m)
 }
 
 func (model *LaunchInstanceDetails) UnmarshalJSON(data []byte) (e error) {

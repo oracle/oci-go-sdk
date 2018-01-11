@@ -24,6 +24,6 @@ type CreateDrgAttachmentDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model CreateDrgAttachmentDetails) String() string {
-	return common.PointerString(model)
+func (m CreateDrgAttachmentDetails) String() string {
+	return common.PointerString(m)
 }

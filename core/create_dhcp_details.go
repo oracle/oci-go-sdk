@@ -28,8 +28,8 @@ type CreateDhcpDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model CreateDhcpDetails) String() string {
-	return common.PointerString(model)
+func (m CreateDhcpDetails) String() string {
+	return common.PointerString(m)
 }
 
 func (model *CreateDhcpDetails) UnmarshalJSON(data []byte) (e error) {

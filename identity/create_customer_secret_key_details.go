@@ -18,6 +18,6 @@ type CreateCustomerSecretKeyDetails struct {
 	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
 }
 
-func (model CreateCustomerSecretKeyDetails) String() string {
-	return common.PointerString(model)
+func (m CreateCustomerSecretKeyDetails) String() string {
+	return common.PointerString(m)
 }

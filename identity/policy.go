@@ -57,8 +57,8 @@ type Policy struct {
 	VersionDate *common.SDKTime `mandatory:"false" json:"versionDate,omitempty"`
 }
 
-func (model Policy) String() string {
-	return common.PointerString(model)
+func (m Policy) String() string {
+	return common.PointerString(m)
 }
 
 // PolicyLifecycleStateEnum Enum with underlying type: string

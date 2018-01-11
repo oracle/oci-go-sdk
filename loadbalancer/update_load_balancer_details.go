@@ -21,6 +21,6 @@ type UpdateLoadBalancerDetails struct {
 	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
 }
 
-func (model UpdateLoadBalancerDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateLoadBalancerDetails) String() string {
+	return common.PointerString(m)
 }

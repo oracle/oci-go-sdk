@@ -19,6 +19,6 @@ type UpdateLocalPeeringGatewayDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model UpdateLocalPeeringGatewayDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateLocalPeeringGatewayDetails) String() string {
+	return common.PointerString(m)
 }

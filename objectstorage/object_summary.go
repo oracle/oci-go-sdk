@@ -30,6 +30,6 @@ type ObjectSummary struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 }
 
-func (model ObjectSummary) String() string {
-	return common.PointerString(model)
+func (m ObjectSummary) String() string {
+	return common.PointerString(m)
 }

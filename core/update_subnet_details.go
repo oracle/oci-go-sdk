@@ -19,6 +19,6 @@ type UpdateSubnetDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model UpdateSubnetDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateSubnetDetails) String() string {
+	return common.PointerString(m)
 }

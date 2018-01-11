@@ -18,6 +18,6 @@ type UpdateConsoleHistoryDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model UpdateConsoleHistoryDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateConsoleHistoryDetails) String() string {
+	return common.PointerString(m)
 }

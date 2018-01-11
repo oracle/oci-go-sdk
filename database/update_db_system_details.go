@@ -27,6 +27,6 @@ type UpdateDbSystemDetails struct {
 	Version *PatchDetails `mandatory:"false" json:"version,omitempty"`
 }
 
-func (model UpdateDbSystemDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateDbSystemDetails) String() string {
+	return common.PointerString(m)
 }

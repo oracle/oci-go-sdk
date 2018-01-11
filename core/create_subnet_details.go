@@ -70,6 +70,6 @@ type CreateSubnetDetails struct {
 	SecurityListIds []string `mandatory:"false" json:"securityListIds,omitempty"`
 }
 
-func (model CreateSubnetDetails) String() string {
-	return common.PointerString(model)
+func (m CreateSubnetDetails) String() string {
+	return common.PointerString(m)
 }

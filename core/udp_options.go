@@ -25,6 +25,6 @@ type UdpOptions struct {
 	SourcePortRange *PortRange `mandatory:"false" json:"sourcePortRange,omitempty"`
 }
 
-func (model UdpOptions) String() string {
-	return common.PointerString(model)
+func (m UdpOptions) String() string {
+	return common.PointerString(m)
 }
