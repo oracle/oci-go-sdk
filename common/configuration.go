@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"regexp"
 	"strings"
 )
 
@@ -61,7 +62,7 @@ func (p environmentConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, 
 	var ok bool
 	var value string
 	if value, ok = os.LookupEnv(environmentVariable); !ok {
-		return nil, fmt.Errorf("Can not read PrivateKey from env variable: %s", environmentVariable)
+		return nil, fmt.Errorf("can not read PrivateKey from env variable: %s", environmentVariable)
 	}
 
 	pemFileContent, err := ioutil.ReadFile(value)
@@ -97,7 +98,7 @@ func (p environmentConfigurationProvider) TenancyOCID() (value string, err error
 	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "tenancy_ocid")
 	var ok bool
 	if value, ok = os.LookupEnv(environmentVariable); !ok {
-		err = fmt.Errorf("Can not read Tenancy from environment variable %s", environmentVariable)
+		err = fmt.Errorf("can not read Tenancy from environment variable %s", environmentVariable)
 	}
 	return
 }
@@ -106,7 +107,7 @@ func (p environmentConfigurationProvider) UserOCID() (value string, err error) {
 	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "user_ocid")
 	var ok bool
 	if value, ok = os.LookupEnv(environmentVariable); !ok {
-		err = fmt.Errorf("Can not read user id from environment variable %s", environmentVariable)
+		err = fmt.Errorf("can not read user id from environment variable %s", environmentVariable)
 	}
 	return
 }
@@ -115,7 +116,7 @@ func (p environmentConfigurationProvider) KeyFingerprint() (value string, err er
 	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "fingerprint")
 	var ok bool
 	if value, ok = os.LookupEnv(environmentVariable); !ok {
-		err = fmt.Errorf("Can not read fingerprint from environment variable %s", environmentVariable)
+		err = fmt.Errorf("can not read fingerprint from environment variable %s", environmentVariable)
 	}
 	return
 }
@@ -124,7 +125,7 @@ func (p environmentConfigurationProvider) Region() (value string, err error) {
 	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "region")
 	var ok bool
 	if value, ok = os.LookupEnv(environmentVariable); !ok {
-		err = fmt.Errorf("Can not read region from environment variable %s", environmentVariable)
+		err = fmt.Errorf("can not read region from environment variable %s", environmentVariable)
 	}
 	return
 }
@@ -132,22 +133,41 @@ func (p environmentConfigurationProvider) Region() (value string, err error) {
 var configurationFileInfo *configFileInfo
 
 // fileConfigurationProvider reads configuration information from a file
-// Does not support multiple profiles
 type fileConfigurationProvider struct { // TODO: Support Instance Principal
 	//The path to the configuration file
 	ConfigPath string
 
 	//The password for the private key
 	PrivateKeyPassword string
+
+	//The profile for the configuration
+	Profile string
 }
 
-// Creates a ConfigurationProvider from a file
+// ConfigurationProviderFromFile creates a configuration provider from a configuration file
+// and the "DEFAULT" profile
 func ConfigurationProviderFromFile(configFilePath, privateKeyPassword string) (ConfigurationProvider, error) {
 	if configFilePath == "" {
 		return nil, fmt.Errorf("config file path can not be empty")
 	}
 
-	return fileConfigurationProvider{ConfigPath: configFilePath, PrivateKeyPassword: privateKeyPassword}, nil
+	return fileConfigurationProvider{
+		ConfigPath:         configFilePath,
+		PrivateKeyPassword: privateKeyPassword,
+		Profile:            "DEFAULT"}, nil
+}
+
+// ConfigurationProviderFromFile creates a configuration provider from a configuration file
+// and the given profile
+func ConfigurationProviderFromFileWithProfile(configFilePath, profile, privateKeyPassword string) (ConfigurationProvider, error) {
+	if configFilePath == "" {
+		return nil, fmt.Errorf("config file path can not be empty")
+	}
+
+	return fileConfigurationProvider{
+		ConfigPath:         configFilePath,
+		PrivateKeyPassword: privateKeyPassword,
+		Profile:            profile}, nil
 }
 
 type configFileInfo struct {
@@ -164,16 +184,37 @@ const (
 	none
 )
 
-func parseConfigFile(data []byte) (info *configFileInfo, err error) {
-	var configurationPresent byte
+var profileRegex = regexp.MustCompile(`^\[(.*)\]`)
+
+func parseConfigFile(data []byte, profile string) (info *configFileInfo, err error) {
 
 	if len(data) == 0 {
 		return nil, fmt.Errorf("configuration file content is empty")
 	}
 
-	info = &configFileInfo{}
 	content := string(data)
-	for _, line := range strings.Split(content, "\n") {
+	splitContent := strings.Split(content, "\n")
+
+	//Look for profile
+	for i, line := range splitContent {
+		if match := profileRegex.FindStringSubmatch(line); match != nil && match[1] == profile {
+			start := i + 1
+			return parseConfigAtLine(start, splitContent)
+		}
+	}
+
+	return nil, fmt.Errorf("configuration file did not contain profile: %s", profile)
+}
+
+func parseConfigAtLine(start int, content []string) (info *configFileInfo, err error) {
+	var configurationPresent byte
+	info = &configFileInfo{}
+	for i := start; i < len(content); i++ {
+		line := content[i]
+		if profileRegex.MatchString(line) {
+			break
+		}
+
 		if !strings.Contains(line, "=") {
 			continue
 		}
@@ -199,6 +240,7 @@ func parseConfigFile(data []byte) (info *configFileInfo, err error) {
 	}
 	info.PresentConfiguration = configurationPresent
 	return
+
 }
 
 func openConfigFile(configFilePath string) (data []byte, err error) {
@@ -229,7 +271,7 @@ func (p fileConfigurationProvider) readAndParseConfigFile() (info *configFileInf
 		return
 	}
 
-	return parseConfigFile(data)
+	return parseConfigFile(data, p.Profile)
 }
 
 func presentOrError(value string, expectedConf, presentConf byte, confMissing string) (string, error) {

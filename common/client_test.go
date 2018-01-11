@@ -242,7 +242,7 @@ region=us-ashburn-1
 	defer removeFileFn(tmpConfFile)
 	defer removeFileFn(keyFile)
 
-	configurationProvider := fileConfigurationProvider{ConfigPath: tmpConfFile}
+	configurationProvider, _ := ConfigurationProviderFromFile(tmpConfFile, "")
 
 	_, err := NewClientWithConfig(configurationProvider)
 	assert.Error(t, err)
@@ -264,7 +264,8 @@ region=us-ashburn-1
 	defer removeFileFn(tmpConfFile)
 	defer removeFileFn(keyFile)
 
-	configurationProvider := fileConfigurationProvider{ConfigPath: tmpConfFile}
+	configurationProvider, errConf := ConfigurationProviderFromFile(tmpConfFile, "")
+	assert.NoError(t, errConf)
 
 	client, err := NewClientWithConfig(configurationProvider)
 	assert.NotNil(t, client)
@@ -287,7 +288,8 @@ region=noregion
 	defer removeFileFn(tmpConfFile)
 	defer removeFileFn(keyFile)
 
-	configurationProvider := fileConfigurationProvider{ConfigPath: tmpConfFile}
+	configurationProvider, errConf := ConfigurationProviderFromFile(tmpConfFile, "")
+	assert.NoError(t, errConf)
 
 	_, err := NewClientWithConfig(configurationProvider)
 	assert.Error(t, err)
