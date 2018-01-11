@@ -32,28 +32,29 @@ func (m CreateDhcpDetails) String() string {
 	return common.PointerString(m)
 }
 
-func (model *CreateDhcpDetails) UnmarshalJSON(data []byte) (e error) {
-	m := struct {
-		DisplayName   *string      `mandatory:"true" json:"displayName,omitempty"`
-		CompartmentID *string      `mandatory:"true" json:"compartmentId,omitempty"`
-		Options       []dhcpoption `mandatory:"true" json:"options,omitempty"`
-		VcnID         *string      `mandatory:"true" json:"vcnId,omitempty"`
+// UnmarshalJSON unmarshals from json
+func (m *CreateDhcpDetails) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		DisplayName   *string      `json:"displayName,omitempty"`
+		CompartmentID *string      `json:"compartmentId,omitempty"`
+		Options       []dhcpoption `json:"options,omitempty"`
+		VcnID         *string      `json:"vcnId,omitempty"`
 	}{}
 
-	e = json.Unmarshal(data, &m)
+	e = json.Unmarshal(data, &model)
 	if e != nil {
 		return
 	}
-	model.DisplayName = m.DisplayName
-	model.CompartmentID = m.CompartmentID
-	model.Options = make([]DhcpOption, len(m.Options))
-	for i, n := range m.Options {
+	m.DisplayName = model.DisplayName
+	m.CompartmentID = model.CompartmentID
+	m.Options = make([]DhcpOption, len(model.Options))
+	for i, n := range model.Options {
 		nn, err := n.UnmarshalPolymorphicJSON(n.JsonData)
 		if err != nil {
 			return err
 		}
-		model.Options[i] = nn
+		m.Options[i] = nn
 	}
-	model.VcnID = m.VcnID
+	m.VcnID = model.VcnID
 	return
 }

@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateIdentityProviderDetails is an interface representing the polymorphic json shape of this model
 type CreateIdentityProviderDetails interface {
 
 	// The OCID of your tenancy.
@@ -43,6 +44,7 @@ type createidentityproviderdetails struct {
 	Protocol      string                                       `json:"protocol"`
 }
 
+//UnmarshalJSON unmarshals json
 func (m *createidentityproviderdetails) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalercreateidentityproviderdetails createidentityproviderdetails
@@ -62,6 +64,7 @@ func (m *createidentityproviderdetails) UnmarshalJSON(data []byte) error {
 	return err
 }
 
+//UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *createidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.Protocol {
@@ -87,8 +90,8 @@ func (m createidentityproviderdetails) GetProductType() CreateIdentityProviderDe
 	return m.ProductType
 }
 
-func (model createidentityproviderdetails) String() string {
-	return common.PointerString(model)
+func (m createidentityproviderdetails) String() string {
+	return common.PointerString(m)
 }
 
 // CreateIdentityProviderDetailsProductTypeEnum Enum with underlying type: string

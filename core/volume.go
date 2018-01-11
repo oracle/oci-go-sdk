@@ -59,38 +59,39 @@ func (m Volume) String() string {
 	return common.PointerString(m)
 }
 
-func (model *Volume) UnmarshalJSON(data []byte) (e error) {
-	m := struct {
-		IsHydrated         *bool                    `mandatory:"true" json:"isHydrated,omitempty"`
-		SizeInGBs          *int                     `mandatory:"true" json:"sizeInGBs,omitempty"`
-		SourceDetails      volumesourcedetails      `mandatory:"true" json:"sourceDetails,omitempty"`
-		AvailabilityDomain *string                  `mandatory:"true" json:"availabilityDomain,omitempty"`
-		CompartmentID      *string                  `mandatory:"true" json:"compartmentId,omitempty"`
-		DisplayName        *string                  `mandatory:"true" json:"displayName,omitempty"`
-		ID                 *string                  `mandatory:"true" json:"id,omitempty"`
-		LifecycleState     VolumeLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
-		SizeInMBs          *int                     `mandatory:"true" json:"sizeInMBs,omitempty"`
-		TimeCreated        *common.SDKTime          `mandatory:"true" json:"timeCreated,omitempty"`
+// UnmarshalJSON unmarshals from json
+func (m *Volume) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		IsHydrated         *bool                    `json:"isHydrated,omitempty"`
+		SizeInGBs          *int                     `json:"sizeInGBs,omitempty"`
+		SourceDetails      volumesourcedetails      `json:"sourceDetails,omitempty"`
+		AvailabilityDomain *string                  `json:"availabilityDomain,omitempty"`
+		CompartmentID      *string                  `json:"compartmentId,omitempty"`
+		DisplayName        *string                  `json:"displayName,omitempty"`
+		ID                 *string                  `json:"id,omitempty"`
+		LifecycleState     VolumeLifecycleStateEnum `json:"lifecycleState,omitempty"`
+		SizeInMBs          *int                     `json:"sizeInMBs,omitempty"`
+		TimeCreated        *common.SDKTime          `json:"timeCreated,omitempty"`
 	}{}
 
-	e = json.Unmarshal(data, &m)
+	e = json.Unmarshal(data, &model)
 	if e != nil {
 		return
 	}
-	model.IsHydrated = m.IsHydrated
-	model.SizeInGBs = m.SizeInGBs
-	nn, e := m.SourceDetails.UnmarshalPolymorphicJSON(m.SourceDetails.JsonData)
+	m.IsHydrated = model.IsHydrated
+	m.SizeInGBs = model.SizeInGBs
+	nn, e := model.SourceDetails.UnmarshalPolymorphicJSON(model.SourceDetails.JsonData)
 	if e != nil {
 		return
 	}
-	model.SourceDetails = nn
-	model.AvailabilityDomain = m.AvailabilityDomain
-	model.CompartmentID = m.CompartmentID
-	model.DisplayName = m.DisplayName
-	model.ID = m.ID
-	model.LifecycleState = m.LifecycleState
-	model.SizeInMBs = m.SizeInMBs
-	model.TimeCreated = m.TimeCreated
+	m.SourceDetails = nn
+	m.AvailabilityDomain = model.AvailabilityDomain
+	m.CompartmentID = model.CompartmentID
+	m.DisplayName = model.DisplayName
+	m.ID = model.ID
+	m.LifecycleState = model.LifecycleState
+	m.SizeInMBs = model.SizeInMBs
+	m.TimeCreated = model.TimeCreated
 	return
 }
 

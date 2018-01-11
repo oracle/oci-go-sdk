@@ -20,6 +20,7 @@ import (
 // requests must include the `peerDbSystemId` parameter found in the
 // CreateDataGuardAssociationToExistingDbSystemDetails
 // object.
+// CreateDataGuardAssociationDetails is an interface representing the polymorphic json shape of this model
 type CreateDataGuardAssociationDetails interface {
 
 	// A strong password for the `SYS`, `SYSTEM`, and `PDB Admin` users to apply during standby creation.
@@ -56,6 +57,7 @@ type createdataguardassociationdetails struct {
 	CreationType          string                                              `json:"creationType"`
 }
 
+//UnmarshalJSON unmarshals json
 func (m *createdataguardassociationdetails) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalercreatedataguardassociationdetails createdataguardassociationdetails
@@ -74,6 +76,7 @@ func (m *createdataguardassociationdetails) UnmarshalJSON(data []byte) error {
 	return err
 }
 
+//UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *createdataguardassociationdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.CreationType {
@@ -96,8 +99,8 @@ func (m createdataguardassociationdetails) GetTransportType() CreateDataGuardAss
 	return m.TransportType
 }
 
-func (model createdataguardassociationdetails) String() string {
-	return common.PointerString(model)
+func (m createdataguardassociationdetails) String() string {
+	return common.PointerString(m)
 }
 
 // CreateDataGuardAssociationDetailsProtectionModeEnum Enum with underlying type: string

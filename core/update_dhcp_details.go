@@ -26,24 +26,25 @@ func (m UpdateDhcpDetails) String() string {
 	return common.PointerString(m)
 }
 
-func (model *UpdateDhcpDetails) UnmarshalJSON(data []byte) (e error) {
-	m := struct {
-		DisplayName *string      `mandatory:"true" json:"displayName,omitempty"`
-		Options     []dhcpoption `mandatory:"true" json:"options,omitempty"`
+// UnmarshalJSON unmarshals from json
+func (m *UpdateDhcpDetails) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		DisplayName *string      `json:"displayName,omitempty"`
+		Options     []dhcpoption `json:"options,omitempty"`
 	}{}
 
-	e = json.Unmarshal(data, &m)
+	e = json.Unmarshal(data, &model)
 	if e != nil {
 		return
 	}
-	model.DisplayName = m.DisplayName
-	model.Options = make([]DhcpOption, len(m.Options))
-	for i, n := range m.Options {
+	m.DisplayName = model.DisplayName
+	m.Options = make([]DhcpOption, len(model.Options))
+	for i, n := range model.Options {
 		nn, err := n.UnmarshalPolymorphicJSON(n.JsonData)
 		if err != nil {
 			return err
 		}
-		model.Options[i] = nn
+		m.Options[i] = nn
 	}
 	return
 }

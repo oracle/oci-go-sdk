@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// InstanceSourceDetails is an interface representing the polymorphic json shape of this model
 type InstanceSourceDetails interface {
 }
 
@@ -21,6 +22,7 @@ type instancesourcedetails struct {
 	SourceType string `json:"sourceType"`
 }
 
+//UnmarshalJSON unmarshals json
 func (m *instancesourcedetails) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalerinstancesourcedetails instancesourcedetails
@@ -36,6 +38,7 @@ func (m *instancesourcedetails) UnmarshalJSON(data []byte) error {
 	return err
 }
 
+//UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *instancesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.SourceType {
@@ -52,6 +55,6 @@ func (m *instancesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface
 	}
 }
 
-func (model instancesourcedetails) String() string {
-	return common.PointerString(model)
+func (m instancesourcedetails) String() string {
+	return common.PointerString(m)
 }

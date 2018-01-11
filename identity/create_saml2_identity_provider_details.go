@@ -13,7 +13,6 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateSaml2IdentityProviderDetails
 type CreateSaml2IdentityProviderDetails struct {
 
 	// The OCID of your tenancy.
@@ -59,6 +58,7 @@ func (m CreateSaml2IdentityProviderDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m CreateSaml2IdentityProviderDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeCreateSaml2IdentityProviderDetails CreateSaml2IdentityProviderDetails
 	s := struct {

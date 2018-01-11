@@ -97,6 +97,7 @@ func (m Saml2IdentityProvider) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m Saml2IdentityProvider) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeSaml2IdentityProvider Saml2IdentityProvider
 	s := struct {

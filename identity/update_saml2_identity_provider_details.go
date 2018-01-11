@@ -13,7 +13,6 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateSaml2IdentityProviderDetails
 type UpdateSaml2IdentityProviderDetails struct {
 
 	// The description you assign to the `IdentityProvider`. Does not have to
@@ -36,6 +35,7 @@ func (m UpdateSaml2IdentityProviderDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m UpdateSaml2IdentityProviderDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeUpdateSaml2IdentityProviderDetails UpdateSaml2IdentityProviderDetails
 	s := struct {

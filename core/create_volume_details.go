@@ -48,31 +48,32 @@ func (m CreateVolumeDetails) String() string {
 	return common.PointerString(m)
 }
 
-func (model *CreateVolumeDetails) UnmarshalJSON(data []byte) (e error) {
-	m := struct {
-		DisplayName        *string             `mandatory:"true" json:"displayName,omitempty"`
-		SizeInGBs          *int                `mandatory:"true" json:"sizeInGBs,omitempty"`
-		SizeInMBs          *int                `mandatory:"true" json:"sizeInMBs,omitempty"`
-		SourceDetails      volumesourcedetails `mandatory:"true" json:"sourceDetails,omitempty"`
-		VolumeBackupID     *string             `mandatory:"true" json:"volumeBackupId,omitempty"`
-		AvailabilityDomain *string             `mandatory:"true" json:"availabilityDomain,omitempty"`
-		CompartmentID      *string             `mandatory:"true" json:"compartmentId,omitempty"`
+// UnmarshalJSON unmarshals from json
+func (m *CreateVolumeDetails) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		DisplayName        *string             `json:"displayName,omitempty"`
+		SizeInGBs          *int                `json:"sizeInGBs,omitempty"`
+		SizeInMBs          *int                `json:"sizeInMBs,omitempty"`
+		SourceDetails      volumesourcedetails `json:"sourceDetails,omitempty"`
+		VolumeBackupID     *string             `json:"volumeBackupId,omitempty"`
+		AvailabilityDomain *string             `json:"availabilityDomain,omitempty"`
+		CompartmentID      *string             `json:"compartmentId,omitempty"`
 	}{}
 
-	e = json.Unmarshal(data, &m)
+	e = json.Unmarshal(data, &model)
 	if e != nil {
 		return
 	}
-	model.DisplayName = m.DisplayName
-	model.SizeInGBs = m.SizeInGBs
-	model.SizeInMBs = m.SizeInMBs
-	nn, e := m.SourceDetails.UnmarshalPolymorphicJSON(m.SourceDetails.JsonData)
+	m.DisplayName = model.DisplayName
+	m.SizeInGBs = model.SizeInGBs
+	m.SizeInMBs = model.SizeInMBs
+	nn, e := model.SourceDetails.UnmarshalPolymorphicJSON(model.SourceDetails.JsonData)
 	if e != nil {
 		return
 	}
-	model.SourceDetails = nn
-	model.VolumeBackupID = m.VolumeBackupID
-	model.AvailabilityDomain = m.AvailabilityDomain
-	model.CompartmentID = m.CompartmentID
+	m.SourceDetails = nn
+	m.VolumeBackupID = model.VolumeBackupID
+	m.AvailabilityDomain = model.AvailabilityDomain
+	m.CompartmentID = model.CompartmentID
 	return
 }

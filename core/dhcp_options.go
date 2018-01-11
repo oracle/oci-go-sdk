@@ -54,35 +54,36 @@ func (m DhcpOptions) String() string {
 	return common.PointerString(m)
 }
 
-func (model *DhcpOptions) UnmarshalJSON(data []byte) (e error) {
-	m := struct {
-		DisplayName    *string                       `mandatory:"true" json:"displayName,omitempty"`
-		CompartmentID  *string                       `mandatory:"true" json:"compartmentId,omitempty"`
-		ID             *string                       `mandatory:"true" json:"id,omitempty"`
-		LifecycleState DhcpOptionsLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
-		Options        []dhcpoption                  `mandatory:"true" json:"options,omitempty"`
-		TimeCreated    *common.SDKTime               `mandatory:"true" json:"timeCreated,omitempty"`
-		VcnID          *string                       `mandatory:"true" json:"vcnId,omitempty"`
+// UnmarshalJSON unmarshals from json
+func (m *DhcpOptions) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		DisplayName    *string                       `json:"displayName,omitempty"`
+		CompartmentID  *string                       `json:"compartmentId,omitempty"`
+		ID             *string                       `json:"id,omitempty"`
+		LifecycleState DhcpOptionsLifecycleStateEnum `json:"lifecycleState,omitempty"`
+		Options        []dhcpoption                  `json:"options,omitempty"`
+		TimeCreated    *common.SDKTime               `json:"timeCreated,omitempty"`
+		VcnID          *string                       `json:"vcnId,omitempty"`
 	}{}
 
-	e = json.Unmarshal(data, &m)
+	e = json.Unmarshal(data, &model)
 	if e != nil {
 		return
 	}
-	model.DisplayName = m.DisplayName
-	model.CompartmentID = m.CompartmentID
-	model.ID = m.ID
-	model.LifecycleState = m.LifecycleState
-	model.Options = make([]DhcpOption, len(m.Options))
-	for i, n := range m.Options {
+	m.DisplayName = model.DisplayName
+	m.CompartmentID = model.CompartmentID
+	m.ID = model.ID
+	m.LifecycleState = model.LifecycleState
+	m.Options = make([]DhcpOption, len(model.Options))
+	for i, n := range model.Options {
 		nn, err := n.UnmarshalPolymorphicJSON(n.JsonData)
 		if err != nil {
 			return err
 		}
-		model.Options[i] = nn
+		m.Options[i] = nn
 	}
-	model.TimeCreated = m.TimeCreated
-	model.VcnID = m.VcnID
+	m.TimeCreated = model.TimeCreated
+	m.VcnID = model.VcnID
 	return
 }
 

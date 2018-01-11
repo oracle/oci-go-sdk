@@ -95,6 +95,7 @@ func (m IScsiVolumeAttachment) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m IScsiVolumeAttachment) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeIScsiVolumeAttachment IScsiVolumeAttachment
 	s := struct {

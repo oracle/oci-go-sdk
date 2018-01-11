@@ -131,41 +131,42 @@ func (m LaunchInstanceDetails) String() string {
 	return common.PointerString(m)
 }
 
-func (model *LaunchInstanceDetails) UnmarshalJSON(data []byte) (e error) {
-	m := struct {
-		CreateVnicDetails  *CreateVnicDetails     `mandatory:"true" json:"createVnicDetails,omitempty"`
-		DisplayName        *string                `mandatory:"true" json:"displayName,omitempty"`
-		ExtendedMetadata   map[string]interface{} `mandatory:"true" json:"extendedMetadata,omitempty"`
-		HostnameLabel      *string                `mandatory:"true" json:"hostnameLabel,omitempty"`
-		ImageID            *string                `mandatory:"true" json:"imageId,omitempty"`
-		IpxeScript         *string                `mandatory:"true" json:"ipxeScript,omitempty"`
-		Metadata           map[string]string      `mandatory:"true" json:"metadata,omitempty"`
-		SourceDetails      instancesourcedetails  `mandatory:"true" json:"sourceDetails,omitempty"`
-		SubnetID           *string                `mandatory:"true" json:"subnetId,omitempty"`
-		AvailabilityDomain *string                `mandatory:"true" json:"availabilityDomain,omitempty"`
-		CompartmentID      *string                `mandatory:"true" json:"compartmentId,omitempty"`
-		Shape              *string                `mandatory:"true" json:"shape,omitempty"`
+// UnmarshalJSON unmarshals from json
+func (m *LaunchInstanceDetails) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		CreateVnicDetails  *CreateVnicDetails     `json:"createVnicDetails,omitempty"`
+		DisplayName        *string                `json:"displayName,omitempty"`
+		ExtendedMetadata   map[string]interface{} `json:"extendedMetadata,omitempty"`
+		HostnameLabel      *string                `json:"hostnameLabel,omitempty"`
+		ImageID            *string                `json:"imageId,omitempty"`
+		IpxeScript         *string                `json:"ipxeScript,omitempty"`
+		Metadata           map[string]string      `json:"metadata,omitempty"`
+		SourceDetails      instancesourcedetails  `json:"sourceDetails,omitempty"`
+		SubnetID           *string                `json:"subnetId,omitempty"`
+		AvailabilityDomain *string                `json:"availabilityDomain,omitempty"`
+		CompartmentID      *string                `json:"compartmentId,omitempty"`
+		Shape              *string                `json:"shape,omitempty"`
 	}{}
 
-	e = json.Unmarshal(data, &m)
+	e = json.Unmarshal(data, &model)
 	if e != nil {
 		return
 	}
-	model.CreateVnicDetails = m.CreateVnicDetails
-	model.DisplayName = m.DisplayName
-	model.ExtendedMetadata = m.ExtendedMetadata
-	model.HostnameLabel = m.HostnameLabel
-	model.ImageID = m.ImageID
-	model.IpxeScript = m.IpxeScript
-	model.Metadata = m.Metadata
-	nn, e := m.SourceDetails.UnmarshalPolymorphicJSON(m.SourceDetails.JsonData)
+	m.CreateVnicDetails = model.CreateVnicDetails
+	m.DisplayName = model.DisplayName
+	m.ExtendedMetadata = model.ExtendedMetadata
+	m.HostnameLabel = model.HostnameLabel
+	m.ImageID = model.ImageID
+	m.IpxeScript = model.IpxeScript
+	m.Metadata = model.Metadata
+	nn, e := model.SourceDetails.UnmarshalPolymorphicJSON(model.SourceDetails.JsonData)
 	if e != nil {
 		return
 	}
-	model.SourceDetails = nn
-	model.SubnetID = m.SubnetID
-	model.AvailabilityDomain = m.AvailabilityDomain
-	model.CompartmentID = m.CompartmentID
-	model.Shape = m.Shape
+	m.SourceDetails = nn
+	m.SubnetID = model.SubnetID
+	m.AvailabilityDomain = model.AvailabilityDomain
+	m.CompartmentID = model.CompartmentID
+	m.Shape = model.Shape
 	return
 }

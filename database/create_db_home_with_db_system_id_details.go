@@ -13,7 +13,6 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateDbHomeWithDbSystemIdDetails
 type CreateDbHomeWithDbSystemIdDetails struct {
 
 	// The OCID of the DB System.
@@ -39,6 +38,7 @@ func (m CreateDbHomeWithDbSystemIdDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m CreateDbHomeWithDbSystemIdDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeCreateDbHomeWithDbSystemIdDetails CreateDbHomeWithDbSystemIdDetails
 	s := struct {

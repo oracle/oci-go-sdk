@@ -13,7 +13,6 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ExportImageViaObjectStorageTupleDetails
 type ExportImageViaObjectStorageTupleDetails struct {
 
 	// The Object Storage bucket to export the image to.
@@ -30,6 +29,7 @@ func (m ExportImageViaObjectStorageTupleDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m ExportImageViaObjectStorageTupleDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeExportImageViaObjectStorageTupleDetails ExportImageViaObjectStorageTupleDetails
 	s := struct {

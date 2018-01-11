@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// VolumeSourceDetails is an interface representing the polymorphic json shape of this model
 type VolumeSourceDetails interface {
 }
 
@@ -21,6 +22,7 @@ type volumesourcedetails struct {
 	Type     string `json:"type"`
 }
 
+//UnmarshalJSON unmarshals json
 func (m *volumesourcedetails) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalervolumesourcedetails volumesourcedetails
@@ -36,6 +38,7 @@ func (m *volumesourcedetails) UnmarshalJSON(data []byte) error {
 	return err
 }
 
+//UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *volumesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.Type {
@@ -52,6 +55,6 @@ func (m *volumesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}
 	}
 }
 
-func (model volumesourcedetails) String() string {
-	return common.PointerString(model)
+func (m volumesourcedetails) String() string {
+	return common.PointerString(m)
 }
