@@ -32,7 +32,7 @@ type FastConnectProviderService struct {
 	PublicPeeringBgpManagement FastConnectProviderServicePublicPeeringBgpManagementEnum `mandatory:"true" json:"publicPeeringBgpManagement,omitempty"`
 
 	// Provider service type.
-	Type_ FastConnectProviderServiceType_Enum `mandatory:"true" json:"type,omitempty"`
+	Type FastConnectProviderServiceType_Enum `mandatory:"true" json:"type,omitempty"`
 
 	// A description of the service offered by the provider.
 	Description *string `mandatory:"false" json:"description,omitempty"`

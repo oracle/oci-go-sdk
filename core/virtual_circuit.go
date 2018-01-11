@@ -111,7 +111,7 @@ type VirtualCircuit struct {
 
 	// Whether the virtual circuit supports private or public peering. For more information,
 	// see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
-	Type_ VirtualCircuitType_Enum `mandatory:"false" json:"type,omitempty"`
+	Type VirtualCircuitType_Enum `mandatory:"false" json:"type,omitempty"`
 }
 
 func (model VirtualCircuit) String() string {

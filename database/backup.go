@@ -44,7 +44,7 @@ type Backup struct {
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted,omitempty"`
 
 	// The type of backup.
-	Type_ BackupType_Enum `mandatory:"false" json:"type,omitempty"`
+	Type BackupType_Enum `mandatory:"false" json:"type,omitempty"`
 }
 
 func (model Backup) String() string {
