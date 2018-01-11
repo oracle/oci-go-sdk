@@ -127,8 +127,8 @@ type DbSystemSummary struct {
 	VipIds []string `mandatory:"false" json:"vipIds,omitempty"`
 }
 
-func (model DbSystemSummary) String() string {
-	return common.PointerString(model)
+func (m DbSystemSummary) String() string {
+	return common.PointerString(m)
 }
 
 // DbSystemSummaryDatabaseEditionEnum Enum with underlying type: string

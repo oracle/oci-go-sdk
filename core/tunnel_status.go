@@ -31,8 +31,8 @@ type TunnelStatus struct {
 	TimeStateModified *common.SDKTime `mandatory:"false" json:"timeStateModified,omitempty"`
 }
 
-func (model TunnelStatus) String() string {
-	return common.PointerString(model)
+func (m TunnelStatus) String() string {
+	return common.PointerString(m)
 }
 
 // TunnelStatusLifecycleStateEnum Enum with underlying type: string

@@ -50,8 +50,8 @@ type DhcpOptions struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model DhcpOptions) String() string {
-	return common.PointerString(model)
+func (m DhcpOptions) String() string {
+	return common.PointerString(m)
 }
 
 func (model *DhcpOptions) UnmarshalJSON(data []byte) (e error) {

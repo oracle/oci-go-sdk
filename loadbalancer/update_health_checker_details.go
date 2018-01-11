@@ -49,6 +49,6 @@ type UpdateHealthCheckerDetails struct {
 	UrlPath *string `mandatory:"false" json:"urlPath,omitempty"`
 }
 
-func (model UpdateHealthCheckerDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateHealthCheckerDetails) String() string {
+	return common.PointerString(m)
 }

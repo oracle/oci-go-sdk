@@ -18,6 +18,6 @@ type CreateSwiftPasswordDetails struct {
 	Description *string `mandatory:"true" json:"description,omitempty"`
 }
 
-func (model CreateSwiftPasswordDetails) String() string {
-	return common.PointerString(model)
+func (m CreateSwiftPasswordDetails) String() string {
+	return common.PointerString(m)
 }

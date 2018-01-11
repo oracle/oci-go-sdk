@@ -41,8 +41,8 @@ type DbNodeSummary struct {
 	SoftwareStorageSizeInGB *int `mandatory:"false" json:"softwareStorageSizeInGB,omitempty"`
 }
 
-func (model DbNodeSummary) String() string {
-	return common.PointerString(model)
+func (m DbNodeSummary) String() string {
+	return common.PointerString(m)
 }
 
 // DbNodeSummaryLifecycleStateEnum Enum with underlying type: string

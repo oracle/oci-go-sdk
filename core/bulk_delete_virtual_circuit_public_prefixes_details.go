@@ -18,6 +18,6 @@ type BulkDeleteVirtualCircuitPublicPrefixesDetails struct {
 	PublicPrefixes []DeleteVirtualCircuitPublicPrefixDetails `mandatory:"true" json:"publicPrefixes,omitempty"`
 }
 
-func (model BulkDeleteVirtualCircuitPublicPrefixesDetails) String() string {
-	return common.PointerString(model)
+func (m BulkDeleteVirtualCircuitPublicPrefixesDetails) String() string {
+	return common.PointerString(m)
 }

@@ -55,8 +55,8 @@ type Volume struct {
 	SourceDetails VolumeSourceDetails `mandatory:"false" json:"sourceDetails,omitempty"`
 }
 
-func (model Volume) String() string {
-	return common.PointerString(model)
+func (m Volume) String() string {
+	return common.PointerString(m)
 }
 
 func (model *Volume) UnmarshalJSON(data []byte) (e error) {

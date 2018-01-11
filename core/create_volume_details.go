@@ -44,8 +44,8 @@ type CreateVolumeDetails struct {
 	VolumeBackupID *string `mandatory:"false" json:"volumeBackupId,omitempty"`
 }
 
-func (model CreateVolumeDetails) String() string {
-	return common.PointerString(model)
+func (m CreateVolumeDetails) String() string {
+	return common.PointerString(m)
 }
 
 func (model *CreateVolumeDetails) UnmarshalJSON(data []byte) (e error) {

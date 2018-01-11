@@ -23,6 +23,6 @@ type CrossConnectLocation struct {
 	Name *string `mandatory:"true" json:"name,omitempty"`
 }
 
-func (model CrossConnectLocation) String() string {
-	return common.PointerString(model)
+func (m CrossConnectLocation) String() string {
+	return common.PointerString(m)
 }

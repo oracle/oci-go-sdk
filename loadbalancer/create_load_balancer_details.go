@@ -55,6 +55,6 @@ type CreateLoadBalancerDetails struct {
 	PathRouteSets map[string]PathRouteSetDetails `mandatory:"false" json:"pathRouteSets,omitempty"`
 }
 
-func (model CreateLoadBalancerDetails) String() string {
-	return common.PointerString(model)
+func (m CreateLoadBalancerDetails) String() string {
+	return common.PointerString(m)
 }

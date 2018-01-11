@@ -23,6 +23,6 @@ type DbVersionSummary struct {
 	SupportsPdb *bool `mandatory:"false" json:"supportsPdb,omitempty"`
 }
 
-func (model DbVersionSummary) String() string {
-	return common.PointerString(model)
+func (m DbVersionSummary) String() string {
+	return common.PointerString(m)
 }

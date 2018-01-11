@@ -22,6 +22,6 @@ type PortRange struct {
 	Min *int `mandatory:"true" json:"min,omitempty"`
 }
 
-func (model PortRange) String() string {
-	return common.PointerString(model)
+func (m PortRange) String() string {
+	return common.PointerString(m)
 }

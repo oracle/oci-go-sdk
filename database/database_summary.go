@@ -55,8 +55,8 @@ type DatabaseSummary struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 }
 
-func (model DatabaseSummary) String() string {
-	return common.PointerString(model)
+func (m DatabaseSummary) String() string {
+	return common.PointerString(m)
 }
 
 // DatabaseSummaryLifecycleStateEnum Enum with underlying type: string

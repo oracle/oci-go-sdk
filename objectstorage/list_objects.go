@@ -28,6 +28,6 @@ type ListObjects struct {
 	NextStartWith *string `mandatory:"false" json:"nextStartWith,omitempty"`
 }
 
-func (model ListObjects) String() string {
-	return common.PointerString(model)
+func (m ListObjects) String() string {
+	return common.PointerString(m)
 }

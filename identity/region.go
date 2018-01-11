@@ -35,6 +35,6 @@ type Region struct {
 	Name *string `mandatory:"false" json:"name,omitempty"`
 }
 
-func (model Region) String() string {
-	return common.PointerString(model)
+func (m Region) String() string {
+	return common.PointerString(m)
 }

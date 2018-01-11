@@ -32,8 +32,8 @@ type CreateImageDetails struct {
 	InstanceID *string `mandatory:"false" json:"instanceId,omitempty"`
 }
 
-func (model CreateImageDetails) String() string {
-	return common.PointerString(model)
+func (m CreateImageDetails) String() string {
+	return common.PointerString(m)
 }
 
 func (model *CreateImageDetails) UnmarshalJSON(data []byte) (e error) {

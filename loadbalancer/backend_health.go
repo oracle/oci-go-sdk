@@ -26,8 +26,8 @@ type BackendHealth struct {
 	Status BackendHealthStatusEnum `mandatory:"true" json:"status,omitempty"`
 }
 
-func (model BackendHealth) String() string {
-	return common.PointerString(model)
+func (m BackendHealth) String() string {
+	return common.PointerString(m)
 }
 
 // BackendHealthStatusEnum Enum with underlying type: string

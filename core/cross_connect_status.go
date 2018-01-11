@@ -34,8 +34,8 @@ type CrossConnectStatus struct {
 	LightLevelIndicator CrossConnectStatusLightLevelIndicatorEnum `mandatory:"false" json:"lightLevelIndicator,omitempty"`
 }
 
-func (model CrossConnectStatus) String() string {
-	return common.PointerString(model)
+func (m CrossConnectStatus) String() string {
+	return common.PointerString(m)
 }
 
 // CrossConnectStatusInterfaceStateEnum Enum with underlying type: string

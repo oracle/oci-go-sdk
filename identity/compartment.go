@@ -54,8 +54,8 @@ type Compartment struct {
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
-func (model Compartment) String() string {
-	return common.PointerString(model)
+func (m Compartment) String() string {
+	return common.PointerString(m)
 }
 
 // CompartmentLifecycleStateEnum Enum with underlying type: string

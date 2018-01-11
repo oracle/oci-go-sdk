@@ -18,8 +18,8 @@ type PathMatchType struct {
 	MatchType PathMatchTypeMatchTypeEnum `mandatory:"true" json:"matchType,omitempty"`
 }
 
-func (model PathMatchType) String() string {
-	return common.PointerString(model)
+func (m PathMatchType) String() string {
+	return common.PointerString(m)
 }
 
 // PathMatchTypeMatchTypeEnum Enum with underlying type: string

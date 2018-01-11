@@ -80,6 +80,6 @@ type CreateVnicDetails struct {
 	SkipSourceDestCheck *bool `mandatory:"false" json:"skipSourceDestCheck,omitempty"`
 }
 
-func (model CreateVnicDetails) String() string {
-	return common.PointerString(model)
+func (m CreateVnicDetails) String() string {
+	return common.PointerString(m)
 }

@@ -51,6 +51,6 @@ type EgressSecurityRule struct {
 	UdpOptions *UdpOptions `mandatory:"false" json:"udpOptions,omitempty"`
 }
 
-func (model EgressSecurityRule) String() string {
-	return common.PointerString(model)
+func (m EgressSecurityRule) String() string {
+	return common.PointerString(m)
 }

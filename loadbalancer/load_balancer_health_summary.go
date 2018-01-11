@@ -32,8 +32,8 @@ type LoadBalancerHealthSummary struct {
 	Status LoadBalancerHealthSummaryStatusEnum `mandatory:"true" json:"status,omitempty"`
 }
 
-func (model LoadBalancerHealthSummary) String() string {
-	return common.PointerString(model)
+func (m LoadBalancerHealthSummary) String() string {
+	return common.PointerString(m)
 }
 
 // LoadBalancerHealthSummaryStatusEnum Enum with underlying type: string

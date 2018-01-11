@@ -61,8 +61,8 @@ type UpdateVirtualCircuitDetails struct {
 	ReferenceComment *string `mandatory:"false" json:"referenceComment,omitempty"`
 }
 
-func (model UpdateVirtualCircuitDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateVirtualCircuitDetails) String() string {
+	return common.PointerString(m)
 }
 
 // UpdateVirtualCircuitDetailsProviderStateEnum Enum with underlying type: string

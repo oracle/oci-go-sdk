@@ -57,8 +57,8 @@ type User struct {
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
-func (model User) String() string {
-	return common.PointerString(model)
+func (m User) String() string {
+	return common.PointerString(m)
 }
 
 // UserLifecycleStateEnum Enum with underlying type: string

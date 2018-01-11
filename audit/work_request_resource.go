@@ -28,8 +28,8 @@ type WorkRequestResource struct {
 	EntityUri *string `mandatory:"false" json:"entityUri,omitempty"`
 }
 
-func (model WorkRequestResource) String() string {
-	return common.PointerString(model)
+func (m WorkRequestResource) String() string {
+	return common.PointerString(m)
 }
 
 // WorkRequestResourceActionTypeEnum Enum with underlying type: string

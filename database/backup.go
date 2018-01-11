@@ -47,8 +47,8 @@ type Backup struct {
 	Type BackupType_Enum `mandatory:"false" json:"type,omitempty"`
 }
 
-func (model Backup) String() string {
-	return common.PointerString(model)
+func (m Backup) String() string {
+	return common.PointerString(m)
 }
 
 // BackupLifecycleStateEnum Enum with underlying type: string

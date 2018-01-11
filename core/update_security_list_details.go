@@ -25,6 +25,6 @@ type UpdateSecurityListDetails struct {
 	IngressSecurityRules []IngressSecurityRule `mandatory:"false" json:"ingressSecurityRules,omitempty"`
 }
 
-func (model UpdateSecurityListDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateSecurityListDetails) String() string {
+	return common.PointerString(m)
 }

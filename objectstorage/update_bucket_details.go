@@ -33,8 +33,8 @@ type UpdateBucketDetails struct {
 	PublicAccessType UpdateBucketDetailsPublicAccessTypeEnum `mandatory:"false" json:"publicAccessType,omitempty"`
 }
 
-func (model UpdateBucketDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateBucketDetails) String() string {
+	return common.PointerString(m)
 }
 
 // UpdateBucketDetailsPublicAccessTypeEnum Enum with underlying type: string

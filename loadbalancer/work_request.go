@@ -50,8 +50,8 @@ type WorkRequest struct {
 	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished,omitempty"`
 }
 
-func (model WorkRequest) String() string {
-	return common.PointerString(model)
+func (m WorkRequest) String() string {
+	return common.PointerString(m)
 }
 
 // WorkRequestLifecycleStateEnum Enum with underlying type: string

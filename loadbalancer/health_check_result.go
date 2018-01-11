@@ -31,8 +31,8 @@ type HealthCheckResult struct {
 	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp,omitempty"`
 }
 
-func (model HealthCheckResult) String() string {
-	return common.PointerString(model)
+func (m HealthCheckResult) String() string {
+	return common.PointerString(m)
 }
 
 // HealthCheckResultHealthCheckStatusEnum Enum with underlying type: string

@@ -41,8 +41,8 @@ type FastConnectProviderService struct {
 	SupportedVirtualCircuitTypes []FastConnectProviderServiceSupportedVirtualCircuitTypesEnum `mandatory:"false" json:"supportedVirtualCircuitTypes,omitempty"`
 }
 
-func (model FastConnectProviderService) String() string {
-	return common.PointerString(model)
+func (m FastConnectProviderService) String() string {
+	return common.PointerString(m)
 }
 
 // FastConnectProviderServicePrivatePeeringBgpManagementEnum Enum with underlying type: string

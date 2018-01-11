@@ -84,6 +84,6 @@ type PrivateIp struct {
 	VnicID *string `mandatory:"false" json:"vnicId,omitempty"`
 }
 
-func (model PrivateIp) String() string {
-	return common.PointerString(model)
+func (m PrivateIp) String() string {
+	return common.PointerString(m)
 }

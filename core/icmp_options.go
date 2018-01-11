@@ -28,6 +28,6 @@ type IcmpOptions struct {
 	Code *int `mandatory:"false" json:"code,omitempty"`
 }
 
-func (model IcmpOptions) String() string {
-	return common.PointerString(model)
+func (m IcmpOptions) String() string {
+	return common.PointerString(m)
 }

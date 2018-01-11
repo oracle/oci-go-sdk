@@ -60,8 +60,8 @@ type VolumeBackup struct {
 	VolumeID *string `mandatory:"false" json:"volumeId,omitempty"`
 }
 
-func (model VolumeBackup) String() string {
-	return common.PointerString(model)
+func (m VolumeBackup) String() string {
+	return common.PointerString(m)
 }
 
 // VolumeBackupLifecycleStateEnum Enum with underlying type: string

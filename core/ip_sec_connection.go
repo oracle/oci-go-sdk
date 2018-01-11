@@ -50,8 +50,8 @@ type IpSecConnection struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 }
 
-func (model IpSecConnection) String() string {
-	return common.PointerString(model)
+func (m IpSecConnection) String() string {
+	return common.PointerString(m)
 }
 
 // IpSecConnectionLifecycleStateEnum Enum with underlying type: string

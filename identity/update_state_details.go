@@ -18,6 +18,6 @@ type UpdateStateDetails struct {
 	Blocked *bool `mandatory:"false" json:"blocked,omitempty"`
 }
 
-func (model UpdateStateDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateStateDetails) String() string {
+	return common.PointerString(m)
 }

@@ -69,8 +69,8 @@ type CreateVirtualCircuitDetails struct {
 	Region *string `mandatory:"false" json:"region,omitempty"`
 }
 
-func (model CreateVirtualCircuitDetails) String() string {
-	return common.PointerString(model)
+func (m CreateVirtualCircuitDetails) String() string {
+	return common.PointerString(m)
 }
 
 // CreateVirtualCircuitDetailsType_Enum Enum with underlying type: string

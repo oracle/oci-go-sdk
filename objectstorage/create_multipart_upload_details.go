@@ -34,6 +34,6 @@ type CreateMultipartUploadDetails struct {
 	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
 }
 
-func (model CreateMultipartUploadDetails) String() string {
-	return common.PointerString(model)
+func (m CreateMultipartUploadDetails) String() string {
+	return common.PointerString(m)
 }

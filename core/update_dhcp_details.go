@@ -22,8 +22,8 @@ type UpdateDhcpDetails struct {
 	Options []DhcpOption `mandatory:"false" json:"options,omitempty"`
 }
 
-func (model UpdateDhcpDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateDhcpDetails) String() string {
+	return common.PointerString(m)
 }
 
 func (model *UpdateDhcpDetails) UnmarshalJSON(data []byte) (e error) {

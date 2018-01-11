@@ -35,8 +35,8 @@ type PreauthenticatedRequestSummary struct {
 	ObjectName *string `mandatory:"false" json:"objectName,omitempty"`
 }
 
-func (model PreauthenticatedRequestSummary) String() string {
-	return common.PointerString(model)
+func (m PreauthenticatedRequestSummary) String() string {
+	return common.PointerString(m)
 }
 
 // PreauthenticatedRequestSummaryAccessTypeEnum Enum with underlying type: string

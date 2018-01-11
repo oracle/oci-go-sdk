@@ -27,6 +27,6 @@ type CreateInternetGatewayDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model CreateInternetGatewayDetails) String() string {
-	return common.PointerString(model)
+func (m CreateInternetGatewayDetails) String() string {
+	return common.PointerString(m)
 }

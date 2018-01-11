@@ -88,8 +88,8 @@ type Instance struct {
 	SourceDetails InstanceSourceDetails `mandatory:"false" json:"sourceDetails,omitempty"`
 }
 
-func (model Instance) String() string {
-	return common.PointerString(model)
+func (m Instance) String() string {
+	return common.PointerString(m)
 }
 
 func (model *Instance) UnmarshalJSON(data []byte) (e error) {

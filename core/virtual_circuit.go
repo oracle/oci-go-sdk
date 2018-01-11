@@ -114,8 +114,8 @@ type VirtualCircuit struct {
 	Type VirtualCircuitType_Enum `mandatory:"false" json:"type,omitempty"`
 }
 
-func (model VirtualCircuit) String() string {
-	return common.PointerString(model)
+func (m VirtualCircuit) String() string {
+	return common.PointerString(m)
 }
 
 // VirtualCircuitBgpManagementEnum Enum with underlying type: string

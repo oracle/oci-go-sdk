@@ -28,6 +28,6 @@ type IpSecConnectionDeviceConfig struct {
 	Tunnels []TunnelConfig `mandatory:"false" json:"tunnels,omitempty"`
 }
 
-func (model IpSecConnectionDeviceConfig) String() string {
-	return common.PointerString(model)
+func (m IpSecConnectionDeviceConfig) String() string {
+	return common.PointerString(m)
 }

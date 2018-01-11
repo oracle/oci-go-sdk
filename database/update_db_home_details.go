@@ -17,6 +17,6 @@ type UpdateDbHomeDetails struct {
 	DbVersion *PatchDetails `mandatory:"false" json:"dbVersion,omitempty"`
 }
 
-func (model UpdateDbHomeDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateDbHomeDetails) String() string {
+	return common.PointerString(m)
 }

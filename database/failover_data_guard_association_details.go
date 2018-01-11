@@ -19,6 +19,6 @@ type FailoverDataGuardAssociationDetails struct {
 	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword,omitempty"`
 }
 
-func (model FailoverDataGuardAssociationDetails) String() string {
-	return common.PointerString(model)
+func (m FailoverDataGuardAssociationDetails) String() string {
+	return common.PointerString(m)
 }

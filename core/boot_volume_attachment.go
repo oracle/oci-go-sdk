@@ -44,8 +44,8 @@ type BootVolumeAttachment struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model BootVolumeAttachment) String() string {
-	return common.PointerString(model)
+func (m BootVolumeAttachment) String() string {
+	return common.PointerString(m)
 }
 
 // BootVolumeAttachmentLifecycleStateEnum Enum with underlying type: string
