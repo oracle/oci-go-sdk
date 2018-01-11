@@ -130,7 +130,6 @@ func (p environmentConfigurationProvider) Region() (value string, err error) {
 	return
 }
 
-
 // fileConfigurationProvider. reads configuration information from a file
 type fileConfigurationProvider struct { // TODO: Support Instance Principal
 	//The path to the configuration file
@@ -199,7 +198,7 @@ func parseConfigFile(data []byte, profile string) (info *configFileInfo, err err
 
 	//Look for profile
 	for i, line := range splitContent {
-		if match := profileRegex.FindStringSubmatch(line); match != nil && match[1] == profile {
+		if match := profileRegex.FindStringSubmatch(line); match != nil && len(match) > 1 && match[1] == profile {
 			start := i + 1
 			return parseConfigAtLine(start, splitContent)
 		}
