@@ -91,6 +91,99 @@ region=someregion
 	}
 }
 
+func TestFileConfigurationProvider_FromFileEmptyProfile(t *testing.T) {
+	expected := []string{ttenancy, tuser, tfingerprint, tkeyfile}
+	data := `
+[DEFAULT]
+user=a
+fingerprint=a
+key_file=a
+tenancy=a
+compartment = b
+region=b
+
+[]
+user=someuser
+fingerprint=somefingerprint
+key_file=somelocation
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+`
+	filename := writeTempFile(data)
+	defer removeFileFn(filename)
+
+	c := fileConfigurationProvider{ConfigPath: filename, Profile: ""}
+	fns := []func() (string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerprint}
+
+	for i, fn := range fns {
+		val, e := fn()
+		assert.NoError(t, e)
+		assert.Equal(t, expected[i], val)
+	}
+}
+
+func TestFileConfigurationProvider_FromFileBadConfig(t *testing.T) {
+	data := `
+user=someuser
+fingerprint=somefingerprint
+key_file=somelocation
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+`
+	filename := writeTempFile(data)
+	defer removeFileFn(filename)
+
+	c := fileConfigurationProvider{ConfigPath: filename, Profile: "PROFILE"}
+	fns := []func() (string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerprint}
+
+	for _, fn := range fns {
+		_, e := fn()
+		assert.Error(t, e)
+	}
+}
+
+func TestFileConfigurationProvider_FromFileMultipleProfiles(t *testing.T) {
+	expected := []string{ttenancy, tuser, tfingerprint, tkeyfile}
+	data := `
+[DEFAULT]
+user=a
+fingerprint=a
+key_file=a
+tenancy=a
+compartment = b
+region=b
+
+[PROFILE]
+user=someuser
+fingerprint=somefingerprint
+key_file=somelocation
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+
+[PROFILE2]
+user=someuser
+fingerprint=somefingerprint
+key_file=somelocation
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+`
+	filename := writeTempFile(data)
+	defer removeFileFn(filename)
+
+	c := fileConfigurationProvider{ConfigPath: filename, Profile: "PROFILE"}
+	fns := []func() (string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerprint}
+
+	for i, fn := range fns {
+		val, e := fn()
+		assert.NoError(t, e)
+		assert.Equal(t, expected[i], val)
+	}
+}
+
 func TestFileConfigurationProvider_NoFile(t *testing.T) {
 	c := fileConfigurationProvider{ConfigPath: "/no/file"}
 	fns := []func() (string, error){c.TenancyOCID, c.UserOCID, c.KeyFingerprint}
@@ -152,6 +245,53 @@ region=someregion
 	assert.NotEmpty(t, rskey)
 	assert.NoError(t, e1)
 	assert.NotEmpty(t, keyId)
+}
+
+func TestFileConfigurationProvider_FromFileAndProfile(t *testing.T) {
+	dataTpl := `[DEFAULT]
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+
+[PROFILE2]
+user=user2
+fingerprint=f2
+key_file=%s
+tenancy=tenancy2
+compartment = compartment2
+region=region2
+
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	c, e0 := ConfigurationProviderFromFile(tmpConfFile, "")
+	assert.NoError(t, e0)
+	rskey, e := c.PrivateRSAKey()
+	keyId, e1 := c.KeyID()
+	assert.NoError(t, e)
+	assert.NotEmpty(t, rskey)
+	assert.NoError(t, e1)
+	assert.NotEmpty(t, keyId)
+
+	c, e0 = ConfigurationProviderFromFileWithProfile(tmpConfFile,"PROFILE2", "")
+	assert.NoError(t, e0)
+	rskey, e = c.PrivateRSAKey()
+	keyId, e1 = c.KeyID()
+	assert.NoError(t, e)
+	assert.NotEmpty(t, rskey)
+	assert.NoError(t, e1)
+	assert.NotEmpty(t, keyId)
+
+
 }
 
 func TestFileConfigurationProvider_FromFileIncomplete(t *testing.T) {

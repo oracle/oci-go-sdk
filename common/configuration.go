@@ -130,9 +130,8 @@ func (p environmentConfigurationProvider) Region() (value string, err error) {
 	return
 }
 
-var configurationFileInfo *configFileInfo
 
-// fileConfigurationProvider reads configuration information from a file
+// fileConfigurationProvider. reads configuration information from a file
 type fileConfigurationProvider struct { // TODO: Support Instance Principal
 	//The path to the configuration file
 	ConfigPath string
@@ -142,9 +141,12 @@ type fileConfigurationProvider struct { // TODO: Support Instance Principal
 
 	//The profile for the configuration
 	Profile string
+
+	//ConfigFileInfo
+	FileInfo *configFileInfo
 }
 
-// ConfigurationProviderFromFile creates a configuration provider from a configuration file
+// ConfigurationProviderFromFile. creates a configuration provider from a configuration file
 // and the "DEFAULT" profile
 func ConfigurationProviderFromFile(configFilePath, privateKeyPassword string) (ConfigurationProvider, error) {
 	if configFilePath == "" {
@@ -257,8 +259,8 @@ func (p fileConfigurationProvider) String() string {
 }
 
 func (p fileConfigurationProvider) readAndParseConfigFile() (info *configFileInfo, err error) {
-	if configurationFileInfo != nil {
-		return configurationFileInfo, nil
+	if p.FileInfo != nil {
+		return p.FileInfo, nil
 	}
 
 	if p.ConfigPath == "" {
@@ -271,7 +273,8 @@ func (p fileConfigurationProvider) readAndParseConfigFile() (info *configFileInf
 		return
 	}
 
-	return parseConfigFile(data, p.Profile)
+	p.FileInfo, err = parseConfigFile(data, p.Profile)
+	return p.FileInfo, err
 }
 
 func presentOrError(value string, expectedConf, presentConf byte, confMissing string) (string, error) {
