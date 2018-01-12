@@ -59,6 +59,7 @@ func (m CreateDataGuardAssociationToExistingDbSystemDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m CreateDataGuardAssociationToExistingDbSystemDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeCreateDataGuardAssociationToExistingDbSystemDetails CreateDataGuardAssociationToExistingDbSystemDetails
 	s := struct {

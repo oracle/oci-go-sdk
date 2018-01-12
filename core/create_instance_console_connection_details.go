@@ -23,6 +23,6 @@ type CreateInstanceConsoleConnectionDetails struct {
 	PublicKey *string `mandatory:"true" json:"publicKey,omitempty"`
 }
 
-func (model CreateInstanceConsoleConnectionDetails) String() string {
-	return common.PointerString(model)
+func (m CreateInstanceConsoleConnectionDetails) String() string {
+	return common.PointerString(m)
 }

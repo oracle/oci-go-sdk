@@ -30,6 +30,6 @@ type CreateSecurityListDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model CreateSecurityListDetails) String() string {
-	return common.PointerString(model)
+func (m CreateSecurityListDetails) String() string {
+	return common.PointerString(m)
 }

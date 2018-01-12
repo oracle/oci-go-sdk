@@ -39,8 +39,8 @@ type LetterOfAuthority struct {
 	TimeIssued *common.SDKTime `mandatory:"false" json:"timeIssued,omitempty"`
 }
 
-func (model LetterOfAuthority) String() string {
-	return common.PointerString(model)
+func (m LetterOfAuthority) String() string {
+	return common.PointerString(m)
 }
 
 // LetterOfAuthorityCircuitTypeEnum Enum with underlying type: string

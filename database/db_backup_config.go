@@ -20,6 +20,6 @@ type DbBackupConfig struct {
 	AutoBackupEnabled *bool `mandatory:"false" json:"autoBackupEnabled,omitempty"`
 }
 
-func (model DbBackupConfig) String() string {
-	return common.PointerString(model)
+func (m DbBackupConfig) String() string {
+	return common.PointerString(m)
 }

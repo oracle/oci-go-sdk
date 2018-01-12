@@ -21,6 +21,6 @@ type Shape struct {
 	Shape *string `mandatory:"true" json:"shape,omitempty"`
 }
 
-func (model Shape) String() string {
-	return common.PointerString(model)
+func (m Shape) String() string {
+	return common.PointerString(m)
 }

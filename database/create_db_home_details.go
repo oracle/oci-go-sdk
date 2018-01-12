@@ -22,6 +22,6 @@ type CreateDbHomeDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model CreateDbHomeDetails) String() string {
-	return common.PointerString(model)
+func (m CreateDbHomeDetails) String() string {
+	return common.PointerString(m)
 }

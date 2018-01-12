@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// AttachVolumeDetails is an interface representing the polymorphic json shape of this model
 type AttachVolumeDetails interface {
 
 	// The OCID of the instance.
@@ -33,6 +34,7 @@ type attachvolumedetails struct {
 	Type        string  `json:"type"`
 }
 
+//UnmarshalJSON unmarshals json
 func (m *attachvolumedetails) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalerattachvolumedetails attachvolumedetails
@@ -51,6 +53,7 @@ func (m *attachvolumedetails) UnmarshalJSON(data []byte) error {
 	return err
 }
 
+//UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *attachvolumedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.Type {
@@ -63,16 +66,21 @@ func (m *attachvolumedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}
 	}
 }
 
+//GetInstanceID returns InstanceID
 func (m attachvolumedetails) GetInstanceID() *string {
 	return m.InstanceID
 }
+
+//GetVolumeID returns VolumeID
 func (m attachvolumedetails) GetVolumeID() *string {
 	return m.VolumeID
 }
+
+//GetDisplayName returns DisplayName
 func (m attachvolumedetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-func (model attachvolumedetails) String() string {
-	return common.PointerString(model)
+func (m attachvolumedetails) String() string {
+	return common.PointerString(m)
 }

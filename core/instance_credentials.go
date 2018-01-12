@@ -22,6 +22,6 @@ type InstanceCredentials struct {
 	Username *string `mandatory:"true" json:"username,omitempty"`
 }
 
-func (model InstanceCredentials) String() string {
-	return common.PointerString(model)
+func (m InstanceCredentials) String() string {
+	return common.PointerString(m)
 }

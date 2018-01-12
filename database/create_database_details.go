@@ -37,8 +37,8 @@ type CreateDatabaseDetails struct {
 	PdbName *string `mandatory:"false" json:"pdbName,omitempty"`
 }
 
-func (model CreateDatabaseDetails) String() string {
-	return common.PointerString(model)
+func (m CreateDatabaseDetails) String() string {
+	return common.PointerString(m)
 }
 
 // CreateDatabaseDetailsDbWorkloadEnum Enum with underlying type: string

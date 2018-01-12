@@ -43,8 +43,8 @@ type ConsoleHistory struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model ConsoleHistory) String() string {
-	return common.PointerString(model)
+func (m ConsoleHistory) String() string {
+	return common.PointerString(m)
 }
 
 // ConsoleHistoryLifecycleStateEnum Enum with underlying type: string

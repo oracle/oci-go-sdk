@@ -19,6 +19,6 @@ type ReinstateDataGuardAssociationDetails struct {
 	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword,omitempty"`
 }
 
-func (model ReinstateDataGuardAssociationDetails) String() string {
-	return common.PointerString(model)
+func (m ReinstateDataGuardAssociationDetails) String() string {
+	return common.PointerString(m)
 }

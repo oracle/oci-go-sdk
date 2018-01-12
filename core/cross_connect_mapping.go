@@ -71,6 +71,6 @@ type CrossConnectMapping struct {
 	Vlan *int `mandatory:"false" json:"vlan,omitempty"`
 }
 
-func (model CrossConnectMapping) String() string {
-	return common.PointerString(model)
+func (m CrossConnectMapping) String() string {
+	return common.PointerString(m)
 }

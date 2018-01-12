@@ -23,6 +23,6 @@ type WorkRequestLogEntry struct {
 	Timestamp *common.SDKTime `mandatory:"false" json:"timestamp,omitempty"`
 }
 
-func (model WorkRequestLogEntry) String() string {
-	return common.PointerString(model)
+func (m WorkRequestLogEntry) String() string {
+	return common.PointerString(m)
 }

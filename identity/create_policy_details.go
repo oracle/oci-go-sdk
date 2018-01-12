@@ -35,6 +35,6 @@ type CreatePolicyDetails struct {
 	VersionDate *common.SDKTime `mandatory:"false" json:"versionDate,omitempty"`
 }
 
-func (model CreatePolicyDetails) String() string {
-	return common.PointerString(model)
+func (m CreatePolicyDetails) String() string {
+	return common.PointerString(m)
 }

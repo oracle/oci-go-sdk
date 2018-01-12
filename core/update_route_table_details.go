@@ -22,6 +22,6 @@ type UpdateRouteTableDetails struct {
 	RouteRules []RouteRule `mandatory:"false" json:"routeRules,omitempty"`
 }
 
-func (model UpdateRouteTableDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateRouteTableDetails) String() string {
+	return common.PointerString(m)
 }

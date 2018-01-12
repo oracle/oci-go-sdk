@@ -29,6 +29,6 @@ type DbSystemShapeSummary struct {
 	Shape *string `mandatory:"false" json:"shape,omitempty"`
 }
 
-func (model DbSystemShapeSummary) String() string {
-	return common.PointerString(model)
+func (m DbSystemShapeSummary) String() string {
+	return common.PointerString(m)
 }

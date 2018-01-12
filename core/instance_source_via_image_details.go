@@ -13,7 +13,6 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// InstanceSourceViaImageDetails
 type InstanceSourceViaImageDetails struct {
 
 	// The OCID of the image used to boot the instance.
@@ -24,6 +23,7 @@ func (m InstanceSourceViaImageDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m InstanceSourceViaImageDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeInstanceSourceViaImageDetails InstanceSourceViaImageDetails
 	s := struct {

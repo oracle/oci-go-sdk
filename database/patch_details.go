@@ -24,8 +24,8 @@ type PatchDetails struct {
 	PatchID *string `mandatory:"false" json:"patchId,omitempty"`
 }
 
-func (model PatchDetails) String() string {
-	return common.PointerString(model)
+func (m PatchDetails) String() string {
+	return common.PointerString(m)
 }
 
 // PatchDetailsActionEnum Enum with underlying type: string

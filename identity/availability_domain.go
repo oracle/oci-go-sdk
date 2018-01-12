@@ -24,6 +24,6 @@ type AvailabilityDomain struct {
 	CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
 }
 
-func (model AvailabilityDomain) String() string {
-	return common.PointerString(model)
+func (m AvailabilityDomain) String() string {
+	return common.PointerString(m)
 }

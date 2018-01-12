@@ -18,6 +18,6 @@ type CreateApiKeyDetails struct {
 	Key *string `mandatory:"true" json:"key,omitempty"`
 }
 
-func (model CreateApiKeyDetails) String() string {
-	return common.PointerString(model)
+func (m CreateApiKeyDetails) String() string {
+	return common.PointerString(m)
 }

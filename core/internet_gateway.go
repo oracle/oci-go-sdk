@@ -45,8 +45,8 @@ type InternetGateway struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 }
 
-func (model InternetGateway) String() string {
-	return common.PointerString(model)
+func (m InternetGateway) String() string {
+	return common.PointerString(m)
 }
 
 // InternetGatewayLifecycleStateEnum Enum with underlying type: string

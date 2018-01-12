@@ -35,8 +35,8 @@ type UiPassword struct {
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
-func (model UiPassword) String() string {
-	return common.PointerString(model)
+func (m UiPassword) String() string {
+	return common.PointerString(m)
 }
 
 // UiPasswordLifecycleStateEnum Enum with underlying type: string

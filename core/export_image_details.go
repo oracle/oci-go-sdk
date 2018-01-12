@@ -20,6 +20,7 @@ import (
 // Set `destinationType` to `objectStorageUri` and
 // use ExportImageViaObjectStorageUriDetails
 // when specifying the Object Storage URL.
+// ExportImageDetails is an interface representing the polymorphic json shape of this model
 type ExportImageDetails interface {
 }
 
@@ -28,6 +29,7 @@ type exportimagedetails struct {
 	DestinationType string `json:"destinationType"`
 }
 
+//UnmarshalJSON unmarshals json
 func (m *exportimagedetails) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalerexportimagedetails exportimagedetails
@@ -43,6 +45,7 @@ func (m *exportimagedetails) UnmarshalJSON(data []byte) error {
 	return err
 }
 
+//UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *exportimagedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.DestinationType {
@@ -59,6 +62,6 @@ func (m *exportimagedetails) UnmarshalPolymorphicJSON(data []byte) (interface{},
 	}
 }
 
-func (model exportimagedetails) String() string {
-	return common.PointerString(model)
+func (m exportimagedetails) String() string {
+	return common.PointerString(m)
 }

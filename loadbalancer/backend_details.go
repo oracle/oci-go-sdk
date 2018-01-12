@@ -47,6 +47,6 @@ type BackendDetails struct {
 	Weight *int `mandatory:"false" json:"weight,omitempty"`
 }
 
-func (model BackendDetails) String() string {
-	return common.PointerString(model)
+func (m BackendDetails) String() string {
+	return common.PointerString(m)
 }

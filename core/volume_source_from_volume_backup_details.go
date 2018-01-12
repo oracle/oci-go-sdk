@@ -24,6 +24,7 @@ func (m VolumeSourceFromVolumeBackupDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m VolumeSourceFromVolumeBackupDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeVolumeSourceFromVolumeBackupDetails VolumeSourceFromVolumeBackupDetails
 	s := struct {

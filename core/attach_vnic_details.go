@@ -31,6 +31,6 @@ type AttachVnicDetails struct {
 	NicIndex *int `mandatory:"false" json:"nicIndex,omitempty"`
 }
 
-func (model AttachVnicDetails) String() string {
-	return common.PointerString(model)
+func (m AttachVnicDetails) String() string {
+	return common.PointerString(m)
 }

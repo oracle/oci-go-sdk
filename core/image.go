@@ -54,8 +54,8 @@ type Image struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model Image) String() string {
-	return common.PointerString(model)
+func (m Image) String() string {
+	return common.PointerString(m)
 }
 
 // ImageLifecycleStateEnum Enum with underlying type: string

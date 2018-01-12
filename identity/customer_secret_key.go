@@ -48,8 +48,8 @@ type CustomerSecretKey struct {
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
-func (model CustomerSecretKey) String() string {
-	return common.PointerString(model)
+func (m CustomerSecretKey) String() string {
+	return common.PointerString(m)
 }
 
 // CustomerSecretKeyLifecycleStateEnum Enum with underlying type: string

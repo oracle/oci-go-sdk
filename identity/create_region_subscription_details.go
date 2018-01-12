@@ -23,6 +23,6 @@ type CreateRegionSubscriptionDetails struct {
 	RegionKey *string `mandatory:"true" json:"regionKey,omitempty"`
 }
 
-func (model CreateRegionSubscriptionDetails) String() string {
-	return common.PointerString(model)
+func (m CreateRegionSubscriptionDetails) String() string {
+	return common.PointerString(m)
 }

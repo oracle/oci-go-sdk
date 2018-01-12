@@ -22,6 +22,6 @@ type CreateVolumeBackupDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model CreateVolumeBackupDetails) String() string {
-	return common.PointerString(model)
+func (m CreateVolumeBackupDetails) String() string {
+	return common.PointerString(m)
 }

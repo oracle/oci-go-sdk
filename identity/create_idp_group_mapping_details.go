@@ -22,6 +22,6 @@ type CreateIdpGroupMappingDetails struct {
 	GroupID *string `mandatory:"true" json:"groupId,omitempty"`
 }
 
-func (model CreateIdpGroupMappingDetails) String() string {
-	return common.PointerString(model)
+func (m CreateIdpGroupMappingDetails) String() string {
+	return common.PointerString(m)
 }

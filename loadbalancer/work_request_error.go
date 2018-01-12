@@ -20,8 +20,8 @@ type WorkRequestError struct {
 	Message *string `mandatory:"true" json:"message,omitempty"`
 }
 
-func (model WorkRequestError) String() string {
-	return common.PointerString(model)
+func (m WorkRequestError) String() string {
+	return common.PointerString(m)
 }
 
 // WorkRequestErrorErrorCodeEnum Enum with underlying type: string

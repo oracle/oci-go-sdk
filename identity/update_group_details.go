@@ -18,6 +18,6 @@ type UpdateGroupDetails struct {
 	Description *string `mandatory:"false" json:"description,omitempty"`
 }
 
-func (model UpdateGroupDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateGroupDetails) String() string {
+	return common.PointerString(m)
 }

@@ -19,6 +19,6 @@ type LoadBalancerProtocol struct {
 	Name *string `mandatory:"true" json:"name,omitempty"`
 }
 
-func (model LoadBalancerProtocol) String() string {
-	return common.PointerString(model)
+func (m LoadBalancerProtocol) String() string {
+	return common.PointerString(m)
 }

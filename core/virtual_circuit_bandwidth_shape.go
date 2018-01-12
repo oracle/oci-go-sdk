@@ -24,6 +24,6 @@ type VirtualCircuitBandwidthShape struct {
 	BandwidthInMbps *int `mandatory:"false" json:"bandwidthInMbps,omitempty"`
 }
 
-func (model VirtualCircuitBandwidthShape) String() string {
-	return common.PointerString(model)
+func (m VirtualCircuitBandwidthShape) String() string {
+	return common.PointerString(m)
 }

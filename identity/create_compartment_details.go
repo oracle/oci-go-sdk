@@ -25,6 +25,6 @@ type CreateCompartmentDetails struct {
 	Description *string `mandatory:"true" json:"description,omitempty"`
 }
 
-func (model CreateCompartmentDetails) String() string {
-	return common.PointerString(model)
+func (m CreateCompartmentDetails) String() string {
+	return common.PointerString(m)
 }

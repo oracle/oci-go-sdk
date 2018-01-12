@@ -34,8 +34,8 @@ type CreateBucketDetails struct {
 	PublicAccessType CreateBucketDetailsPublicAccessTypeEnum `mandatory:"false" json:"publicAccessType,omitempty"`
 }
 
-func (model CreateBucketDetails) String() string {
-	return common.PointerString(model)
+func (m CreateBucketDetails) String() string {
+	return common.PointerString(m)
 }
 
 // CreateBucketDetailsPublicAccessTypeEnum Enum with underlying type: string

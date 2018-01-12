@@ -28,8 +28,8 @@ type VirtualCircuitPublicPrefix struct {
 	VerificationState VirtualCircuitPublicPrefixVerificationStateEnum `mandatory:"true" json:"verificationState,omitempty"`
 }
 
-func (model VirtualCircuitPublicPrefix) String() string {
-	return common.PointerString(model)
+func (m VirtualCircuitPublicPrefix) String() string {
+	return common.PointerString(m)
 }
 
 // VirtualCircuitPublicPrefixVerificationStateEnum Enum with underlying type: string

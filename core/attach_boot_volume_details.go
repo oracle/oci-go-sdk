@@ -24,6 +24,6 @@ type AttachBootVolumeDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model AttachBootVolumeDetails) String() string {
-	return common.PointerString(model)
+func (m AttachBootVolumeDetails) String() string {
+	return common.PointerString(m)
 }

@@ -28,6 +28,6 @@ type UpdatePolicyDetails struct {
 	VersionDate *common.SDKTime `mandatory:"false" json:"versionDate,omitempty"`
 }
 
-func (model UpdatePolicyDetails) String() string {
-	return common.PointerString(model)
+func (m UpdatePolicyDetails) String() string {
+	return common.PointerString(m)
 }

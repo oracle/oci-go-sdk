@@ -46,8 +46,8 @@ type ApiKey struct {
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
-func (model ApiKey) String() string {
-	return common.PointerString(model)
+func (m ApiKey) String() string {
+	return common.PointerString(m)
 }
 
 // ApiKeyLifecycleStateEnum Enum with underlying type: string

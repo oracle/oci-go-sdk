@@ -39,6 +39,6 @@ type CreateVcnDetails struct {
 	DnsLabel *string `mandatory:"false" json:"dnsLabel,omitempty"`
 }
 
-func (model CreateVcnDetails) String() string {
-	return common.PointerString(model)
+func (m CreateVcnDetails) String() string {
+	return common.PointerString(m)
 }

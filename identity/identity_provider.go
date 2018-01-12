@@ -21,6 +21,7 @@ import (
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
 // see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
+// IdentityProvider is an interface representing the polymorphic json shape of this model
 type IdentityProvider interface {
 
 	// The OCID of the `IdentityProvider`.
@@ -74,6 +75,7 @@ type identityprovider struct {
 	Protocol       string                             `json:"protocol"`
 }
 
+//UnmarshalJSON unmarshals json
 func (m *identityprovider) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshaleridentityprovider identityprovider
@@ -97,6 +99,7 @@ func (m *identityprovider) UnmarshalJSON(data []byte) error {
 	return err
 }
 
+//UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *identityprovider) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.Protocol {
@@ -109,33 +112,48 @@ func (m *identityprovider) UnmarshalPolymorphicJSON(data []byte) (interface{}, e
 	}
 }
 
+//GetID returns ID
 func (m identityprovider) GetID() *string {
 	return m.ID
 }
+
+//GetCompartmentID returns CompartmentID
 func (m identityprovider) GetCompartmentID() *string {
 	return m.CompartmentID
 }
+
+//GetName returns Name
 func (m identityprovider) GetName() *string {
 	return m.Name
 }
+
+//GetDescription returns Description
 func (m identityprovider) GetDescription() *string {
 	return m.Description
 }
+
+//GetProductType returns ProductType
 func (m identityprovider) GetProductType() *string {
 	return m.ProductType
 }
+
+//GetTimeCreated returns TimeCreated
 func (m identityprovider) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
+
+//GetLifecycleState returns LifecycleState
 func (m identityprovider) GetLifecycleState() IdentityProviderLifecycleStateEnum {
 	return m.LifecycleState
 }
+
+//GetInactiveStatus returns InactiveStatus
 func (m identityprovider) GetInactiveStatus() *int {
 	return m.InactiveStatus
 }
 
-func (model identityprovider) String() string {
-	return common.PointerString(model)
+func (m identityprovider) String() string {
+	return common.PointerString(m)
 }
 
 // IdentityProviderLifecycleStateEnum Enum with underlying type: string

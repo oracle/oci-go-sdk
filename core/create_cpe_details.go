@@ -25,6 +25,6 @@ type CreateCpeDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model CreateCpeDetails) String() string {
-	return common.PointerString(model)
+func (m CreateCpeDetails) String() string {
+	return common.PointerString(m)
 }

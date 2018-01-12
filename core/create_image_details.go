@@ -32,29 +32,30 @@ type CreateImageDetails struct {
 	InstanceID *string `mandatory:"false" json:"instanceId,omitempty"`
 }
 
-func (model CreateImageDetails) String() string {
-	return common.PointerString(model)
+func (m CreateImageDetails) String() string {
+	return common.PointerString(m)
 }
 
-func (model *CreateImageDetails) UnmarshalJSON(data []byte) (e error) {
-	m := struct {
-		DisplayName        *string            `mandatory:"true" json:"displayName,omitempty"`
-		ImageSourceDetails imagesourcedetails `mandatory:"true" json:"imageSourceDetails,omitempty"`
-		InstanceID         *string            `mandatory:"true" json:"instanceId,omitempty"`
-		CompartmentID      *string            `mandatory:"true" json:"compartmentId,omitempty"`
+// UnmarshalJSON unmarshals from json
+func (m *CreateImageDetails) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		DisplayName        *string            `json:"displayName,omitempty"`
+		ImageSourceDetails imagesourcedetails `json:"imageSourceDetails,omitempty"`
+		InstanceID         *string            `json:"instanceId,omitempty"`
+		CompartmentID      *string            `json:"compartmentId,omitempty"`
 	}{}
 
-	e = json.Unmarshal(data, &m)
+	e = json.Unmarshal(data, &model)
 	if e != nil {
 		return
 	}
-	model.DisplayName = m.DisplayName
-	nn, e := m.ImageSourceDetails.UnmarshalPolymorphicJSON(m.ImageSourceDetails.JsonData)
+	m.DisplayName = model.DisplayName
+	nn, e := model.ImageSourceDetails.UnmarshalPolymorphicJSON(model.ImageSourceDetails.JsonData)
 	if e != nil {
 		return
 	}
-	model.ImageSourceDetails = nn
-	model.InstanceID = m.InstanceID
-	model.CompartmentID = m.CompartmentID
+	m.ImageSourceDetails = nn
+	m.InstanceID = model.InstanceID
+	m.CompartmentID = model.CompartmentID
 	return
 }

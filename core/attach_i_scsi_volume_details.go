@@ -13,7 +13,6 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// AttachIScsiVolumeDetails
 type AttachIScsiVolumeDetails struct {
 
 	// The OCID of the instance.
@@ -43,6 +42,7 @@ func (m AttachIScsiVolumeDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m AttachIScsiVolumeDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeAttachIScsiVolumeDetails AttachIScsiVolumeDetails
 	s := struct {

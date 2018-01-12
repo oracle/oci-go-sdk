@@ -18,6 +18,7 @@ import (
 // IScsiVolumeAttachment.
 // For general information about volume attachments, see
 // [Overview of Block Volume Storage]({{DOC_SERVER_URL}}/Content/Block/Concepts/overview.htm).
+// VolumeAttachment is an interface representing the polymorphic json shape of this model
 type VolumeAttachment interface {
 
 	// The Availability Domain of an instance.
@@ -62,6 +63,7 @@ type volumeattachment struct {
 	AttachmentType     string                             `json:"attachmentType"`
 }
 
+//UnmarshalJSON unmarshals json
 func (m *volumeattachment) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalervolumeattachment volumeattachment
@@ -85,6 +87,7 @@ func (m *volumeattachment) UnmarshalJSON(data []byte) error {
 	return err
 }
 
+//UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *volumeattachment) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.AttachmentType {
@@ -97,33 +100,48 @@ func (m *volumeattachment) UnmarshalPolymorphicJSON(data []byte) (interface{}, e
 	}
 }
 
+//GetAvailabilityDomain returns AvailabilityDomain
 func (m volumeattachment) GetAvailabilityDomain() *string {
 	return m.AvailabilityDomain
 }
+
+//GetCompartmentID returns CompartmentID
 func (m volumeattachment) GetCompartmentID() *string {
 	return m.CompartmentID
 }
+
+//GetID returns ID
 func (m volumeattachment) GetID() *string {
 	return m.ID
 }
+
+//GetInstanceID returns InstanceID
 func (m volumeattachment) GetInstanceID() *string {
 	return m.InstanceID
 }
+
+//GetLifecycleState returns LifecycleState
 func (m volumeattachment) GetLifecycleState() VolumeAttachmentLifecycleStateEnum {
 	return m.LifecycleState
 }
+
+//GetTimeCreated returns TimeCreated
 func (m volumeattachment) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
+
+//GetVolumeID returns VolumeID
 func (m volumeattachment) GetVolumeID() *string {
 	return m.VolumeID
 }
+
+//GetDisplayName returns DisplayName
 func (m volumeattachment) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-func (model volumeattachment) String() string {
-	return common.PointerString(model)
+func (m volumeattachment) String() string {
+	return common.PointerString(m)
 }
 
 // VolumeAttachmentLifecycleStateEnum Enum with underlying type: string

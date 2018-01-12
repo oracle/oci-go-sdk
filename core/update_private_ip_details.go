@@ -34,6 +34,6 @@ type UpdatePrivateIpDetails struct {
 	VnicID *string `mandatory:"false" json:"vnicId,omitempty"`
 }
 
-func (model UpdatePrivateIpDetails) String() string {
-	return common.PointerString(model)
+func (m UpdatePrivateIpDetails) String() string {
+	return common.PointerString(m)
 }

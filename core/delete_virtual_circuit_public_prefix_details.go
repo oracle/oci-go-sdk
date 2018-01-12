@@ -18,6 +18,6 @@ type DeleteVirtualCircuitPublicPrefixDetails struct {
 	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
 }
 
-func (model DeleteVirtualCircuitPublicPrefixDetails) String() string {
-	return common.PointerString(model)
+func (m DeleteVirtualCircuitPublicPrefixDetails) String() string {
+	return common.PointerString(m)
 }
