@@ -66,29 +66,44 @@ type IScsiVolumeAttachment struct {
 	LifecycleState VolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 }
 
-func (model IScsiVolumeAttachment) GetAvailabilityDomain() *string {
-	return model.AvailabilityDomain
+//GetAvailabilityDomain returns AvailabilityDomain
+func (m IScsiVolumeAttachment) GetAvailabilityDomain() *string {
+	return m.AvailabilityDomain
 }
-func (model IScsiVolumeAttachment) GetCompartmentID() *string {
-	return model.CompartmentID
+
+//GetCompartmentID returns CompartmentID
+func (m IScsiVolumeAttachment) GetCompartmentID() *string {
+	return m.CompartmentID
 }
-func (model IScsiVolumeAttachment) GetDisplayName() *string {
-	return model.DisplayName
+
+//GetDisplayName returns DisplayName
+func (m IScsiVolumeAttachment) GetDisplayName() *string {
+	return m.DisplayName
 }
-func (model IScsiVolumeAttachment) GetID() *string {
-	return model.ID
+
+//GetID returns ID
+func (m IScsiVolumeAttachment) GetID() *string {
+	return m.ID
 }
-func (model IScsiVolumeAttachment) GetInstanceID() *string {
-	return model.InstanceID
+
+//GetInstanceID returns InstanceID
+func (m IScsiVolumeAttachment) GetInstanceID() *string {
+	return m.InstanceID
 }
-func (model IScsiVolumeAttachment) GetLifecycleState() VolumeAttachmentLifecycleStateEnum {
-	return model.LifecycleState
+
+//GetLifecycleState returns LifecycleState
+func (m IScsiVolumeAttachment) GetLifecycleState() VolumeAttachmentLifecycleStateEnum {
+	return m.LifecycleState
 }
-func (model IScsiVolumeAttachment) GetTimeCreated() *common.SDKTime {
-	return model.TimeCreated
+
+//GetTimeCreated returns TimeCreated
+func (m IScsiVolumeAttachment) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
 }
-func (model IScsiVolumeAttachment) GetVolumeID() *string {
-	return model.VolumeID
+
+//GetVolumeID returns VolumeID
+func (m IScsiVolumeAttachment) GetVolumeID() *string {
+	return m.VolumeID
 }
 
 func (m IScsiVolumeAttachment) String() string {

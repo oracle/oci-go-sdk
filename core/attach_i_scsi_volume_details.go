@@ -28,14 +28,19 @@ type AttachIScsiVolumeDetails struct {
 	UseChap *bool `mandatory:"false" json:"useChap,omitempty"`
 }
 
-func (model AttachIScsiVolumeDetails) GetDisplayName() *string {
-	return model.DisplayName
+//GetDisplayName returns DisplayName
+func (m AttachIScsiVolumeDetails) GetDisplayName() *string {
+	return m.DisplayName
 }
-func (model AttachIScsiVolumeDetails) GetInstanceID() *string {
-	return model.InstanceID
+
+//GetInstanceID returns InstanceID
+func (m AttachIScsiVolumeDetails) GetInstanceID() *string {
+	return m.InstanceID
 }
-func (model AttachIScsiVolumeDetails) GetVolumeID() *string {
-	return model.VolumeID
+
+//GetVolumeID returns VolumeID
+func (m AttachIScsiVolumeDetails) GetVolumeID() *string {
+	return m.VolumeID
 }
 
 func (m AttachIScsiVolumeDetails) String() string {

@@ -27,8 +27,9 @@ type UpdateSaml2IdentityProviderDetails struct {
 	Metadata *string `mandatory:"false" json:"metadata,omitempty"`
 }
 
-func (model UpdateSaml2IdentityProviderDetails) GetDescription() *string {
-	return model.Description
+//GetDescription returns Description
+func (m UpdateSaml2IdentityProviderDetails) GetDescription() *string {
+	return m.Description
 }
 
 func (m UpdateSaml2IdentityProviderDetails) String() string {

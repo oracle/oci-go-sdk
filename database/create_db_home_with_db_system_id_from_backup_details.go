@@ -24,11 +24,14 @@ type CreateDbHomeWithDbSystemIdFromBackupDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model CreateDbHomeWithDbSystemIdFromBackupDetails) GetDbSystemID() *string {
-	return model.DbSystemID
+//GetDbSystemID returns DbSystemID
+func (m CreateDbHomeWithDbSystemIdFromBackupDetails) GetDbSystemID() *string {
+	return m.DbSystemID
 }
-func (model CreateDbHomeWithDbSystemIdFromBackupDetails) GetDisplayName() *string {
-	return model.DisplayName
+
+//GetDisplayName returns DisplayName
+func (m CreateDbHomeWithDbSystemIdFromBackupDetails) GetDisplayName() *string {
+	return m.DisplayName
 }
 
 func (m CreateDbHomeWithDbSystemIdFromBackupDetails) String() string {

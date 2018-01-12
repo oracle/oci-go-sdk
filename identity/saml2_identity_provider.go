@@ -68,29 +68,44 @@ type Saml2IdentityProvider struct {
 	LifecycleState IdentityProviderLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 }
 
-func (model Saml2IdentityProvider) GetID() *string {
-	return model.ID
+//GetID returns ID
+func (m Saml2IdentityProvider) GetID() *string {
+	return m.ID
 }
-func (model Saml2IdentityProvider) GetCompartmentID() *string {
-	return model.CompartmentID
+
+//GetCompartmentID returns CompartmentID
+func (m Saml2IdentityProvider) GetCompartmentID() *string {
+	return m.CompartmentID
 }
-func (model Saml2IdentityProvider) GetName() *string {
-	return model.Name
+
+//GetName returns Name
+func (m Saml2IdentityProvider) GetName() *string {
+	return m.Name
 }
-func (model Saml2IdentityProvider) GetDescription() *string {
-	return model.Description
+
+//GetDescription returns Description
+func (m Saml2IdentityProvider) GetDescription() *string {
+	return m.Description
 }
-func (model Saml2IdentityProvider) GetProductType() *string {
-	return model.ProductType
+
+//GetProductType returns ProductType
+func (m Saml2IdentityProvider) GetProductType() *string {
+	return m.ProductType
 }
-func (model Saml2IdentityProvider) GetTimeCreated() *common.SDKTime {
-	return model.TimeCreated
+
+//GetTimeCreated returns TimeCreated
+func (m Saml2IdentityProvider) GetTimeCreated() *common.SDKTime {
+	return m.TimeCreated
 }
-func (model Saml2IdentityProvider) GetLifecycleState() IdentityProviderLifecycleStateEnum {
-	return model.LifecycleState
+
+//GetLifecycleState returns LifecycleState
+func (m Saml2IdentityProvider) GetLifecycleState() IdentityProviderLifecycleStateEnum {
+	return m.LifecycleState
 }
-func (model Saml2IdentityProvider) GetInactiveStatus() *int {
-	return model.InactiveStatus
+
+//GetInactiveStatus returns InactiveStatus
+func (m Saml2IdentityProvider) GetInactiveStatus() *int {
+	return m.InactiveStatus
 }
 
 func (m Saml2IdentityProvider) String() string {

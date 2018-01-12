@@ -45,14 +45,19 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	TransportType CreateDataGuardAssociationDetailsTransportTypeEnum `mandatory:"true" json:"transportType,omitempty"`
 }
 
-func (model CreateDataGuardAssociationToExistingDbSystemDetails) GetDatabaseAdminPassword() *string {
-	return model.DatabaseAdminPassword
+//GetDatabaseAdminPassword returns DatabaseAdminPassword
+func (m CreateDataGuardAssociationToExistingDbSystemDetails) GetDatabaseAdminPassword() *string {
+	return m.DatabaseAdminPassword
 }
-func (model CreateDataGuardAssociationToExistingDbSystemDetails) GetProtectionMode() CreateDataGuardAssociationDetailsProtectionModeEnum {
-	return model.ProtectionMode
+
+//GetProtectionMode returns ProtectionMode
+func (m CreateDataGuardAssociationToExistingDbSystemDetails) GetProtectionMode() CreateDataGuardAssociationDetailsProtectionModeEnum {
+	return m.ProtectionMode
 }
-func (model CreateDataGuardAssociationToExistingDbSystemDetails) GetTransportType() CreateDataGuardAssociationDetailsTransportTypeEnum {
-	return model.TransportType
+
+//GetTransportType returns TransportType
+func (m CreateDataGuardAssociationToExistingDbSystemDetails) GetTransportType() CreateDataGuardAssociationDetailsTransportTypeEnum {
+	return m.TransportType
 }
 
 func (m CreateDataGuardAssociationToExistingDbSystemDetails) String() string {
