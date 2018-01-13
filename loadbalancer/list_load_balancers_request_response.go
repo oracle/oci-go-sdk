@@ -40,7 +40,7 @@ type ListLoadBalancersRequest struct {
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
 
 	// A filter to only return resources that match the given lifecycle state.
-	LifecycleState LoadBalancerLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState"`
+	LifecycleState LoadBalancerLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 }
 
 func (request ListLoadBalancersRequest) String() string {

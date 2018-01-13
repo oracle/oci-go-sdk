@@ -16,7 +16,7 @@ type ListVirtualCircuitPublicPrefixesRequest struct {
 
 	// A filter to only return resources that match the given verification state.
 	// The state value is case-insensitive.
-	VerificationState VirtualCircuitPublicPrefixVerificationStateEnum `mandatory:"false" contributesTo:"query" name:"verificationState"`
+	VerificationState VirtualCircuitPublicPrefixVerificationStateEnum `mandatory:"false" contributesTo:"query" name:"verificationState" omitEmpty:"true"`
 }
 
 func (request ListVirtualCircuitPublicPrefixesRequest) String() string {
