@@ -19,6 +19,6 @@ type UpdateVolumeDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model UpdateVolumeDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateVolumeDetails) String() string {
+	return common.PointerString(m)
 }

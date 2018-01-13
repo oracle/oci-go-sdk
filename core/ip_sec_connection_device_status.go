@@ -29,6 +29,6 @@ type IpSecConnectionDeviceStatus struct {
 	Tunnels []TunnelStatus `mandatory:"false" json:"tunnels,omitempty"`
 }
 
-func (model IpSecConnectionDeviceStatus) String() string {
-	return common.PointerString(model)
+func (m IpSecConnectionDeviceStatus) String() string {
+	return common.PointerString(m)
 }

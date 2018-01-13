@@ -50,8 +50,8 @@ type LoadBalancerHealth struct {
 	WarningStateBackendSetNames []string `mandatory:"true" json:"warningStateBackendSetNames,omitempty"`
 }
 
-func (model LoadBalancerHealth) String() string {
-	return common.PointerString(model)
+func (m LoadBalancerHealth) String() string {
+	return common.PointerString(m)
 }
 
 // LoadBalancerHealthStatusEnum Enum with underlying type: string

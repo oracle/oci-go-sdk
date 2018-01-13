@@ -15,11 +15,12 @@ import (
 	"net/http"
 )
 
+//ComputeClient a client for Compute
 type ComputeClient struct {
 	common.BaseClient
 }
 
-// Create a new default Compute client with the given configuration provider.
+// NewComputeClientWithConfigurationProvider Creates a new default Compute client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewComputeClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ComputeClient, err error) {
 	baseClient, err := common.NewClientWithConfig(configProvider)
@@ -38,7 +39,7 @@ func NewComputeClientWithConfigurationProvider(configProvider common.Configurati
 	return
 }
 
-// Adds a shape to the compatible shapes list for the image.
+// AddImageShapeCompatibilityEntry Adds a shape to the compatible shapes list for the image.
 func (client ComputeClient) AddImageShapeCompatibilityEntry(ctx context.Context, request AddImageShapeCompatibilityEntryRequest) (response AddImageShapeCompatibilityEntryResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/images/{imageId}/shapes/{shapeName}", request)
 	if err != nil {
@@ -56,7 +57,7 @@ func (client ComputeClient) AddImageShapeCompatibilityEntry(ctx context.Context,
 	return
 }
 
-// Attaches the specified boot volume to the specified instance.
+// AttachBootVolume Attaches the specified boot volume to the specified instance.
 func (client ComputeClient) AttachBootVolume(ctx context.Context, request AttachBootVolumeRequest) (response AttachBootVolumeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/bootVolumeAttachments/", request)
 	if err != nil {
@@ -74,7 +75,7 @@ func (client ComputeClient) AttachBootVolume(ctx context.Context, request Attach
 	return
 }
 
-// Creates a secondary VNIC and attaches it to the specified instance.
+// AttachVnic Creates a secondary VNIC and attaches it to the specified instance.
 // For more information about secondary VNICs, see
 // [Virtual Network Interface Cards (VNICs)]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingVNICs.htm).
 func (client ComputeClient) AttachVnic(ctx context.Context, request AttachVnicRequest) (response AttachVnicResponse, err error) {
@@ -94,7 +95,7 @@ func (client ComputeClient) AttachVnic(ctx context.Context, request AttachVnicRe
 	return
 }
 
-// Attaches the specified storage volume to the specified instance.
+// AttachVolume Attaches the specified storage volume to the specified instance.
 func (client ComputeClient) AttachVolume(ctx context.Context, request AttachVolumeRequest) (response AttachVolumeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/volumeAttachments/", request)
 	if err != nil {
@@ -112,7 +113,7 @@ func (client ComputeClient) AttachVolume(ctx context.Context, request AttachVolu
 	return
 }
 
-// Captures the most recent serial console data (up to a megabyte) for the
+// CaptureConsoleHistory Captures the most recent serial console data (up to a megabyte) for the
 // specified instance.
 // The `CaptureConsoleHistory` operation works with the other console history operations
 // as described below.
@@ -144,7 +145,7 @@ func (client ComputeClient) CaptureConsoleHistory(ctx context.Context, request C
 	return
 }
 
-// Creates a boot disk image for the specified instance or imports an exported image from the Oracle Cloud Infrastructure Object Storage service.
+// CreateImage Creates a boot disk image for the specified instance or imports an exported image from the Oracle Cloud Infrastructure Object Storage service.
 // When creating a new image, you must provide the OCID of the instance you want to use as the basis for the image, and
 // the OCID of the compartment containing that instance. For more information about images,
 // see [Managing Custom Images]({{DOC_SERVER_URL}}/Content/Compute/Tasks/managingcustomimages.htm).
@@ -178,7 +179,7 @@ func (client ComputeClient) CreateImage(ctx context.Context, request CreateImage
 	return
 }
 
-// Creates a new console connection to the specified instance.
+// CreateInstanceConsoleConnection Creates a new console connection to the specified instance.
 // Once the console connection has been created and is available,
 // you connect to the console using SSH.
 // For more information about console access, see [Accessing the Console]({{DOC_SERVER_URL}}/Content/Compute/References/serialconsole.htm).
@@ -199,7 +200,7 @@ func (client ComputeClient) CreateInstanceConsoleConnection(ctx context.Context,
 	return
 }
 
-// Deletes the specified console history metadata and the console history data.
+// DeleteConsoleHistory Deletes the specified console history metadata and the console history data.
 func (client ComputeClient) DeleteConsoleHistory(ctx context.Context, request DeleteConsoleHistoryRequest) (err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodDelete, "/instanceConsoleHistories/{instanceConsoleHistoryId}", request)
 	if err != nil {
@@ -210,7 +211,7 @@ func (client ComputeClient) DeleteConsoleHistory(ctx context.Context, request De
 	return
 }
 
-// Deletes an image.
+// DeleteImage Deletes an image.
 func (client ComputeClient) DeleteImage(ctx context.Context, request DeleteImageRequest) (err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodDelete, "/images/{imageId}", request)
 	if err != nil {
@@ -221,7 +222,7 @@ func (client ComputeClient) DeleteImage(ctx context.Context, request DeleteImage
 	return
 }
 
-// Deletes the specified instance console connection.
+// DeleteInstanceConsoleConnection Deletes the specified instance console connection.
 func (client ComputeClient) DeleteInstanceConsoleConnection(ctx context.Context, request DeleteInstanceConsoleConnectionRequest) (err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodDelete, "/instanceConsoleConnections/{instanceConsoleConnectionId}", request)
 	if err != nil {
@@ -232,7 +233,7 @@ func (client ComputeClient) DeleteInstanceConsoleConnection(ctx context.Context,
 	return
 }
 
-// Detaches a boot volume from an instance. You must specify the OCID of the boot volume attachment.
+// DetachBootVolume Detaches a boot volume from an instance. You must specify the OCID of the boot volume attachment.
 // This is an asynchronous operation. The attachment's `lifecycleState` will change to DETACHING temporarily
 // until the attachment is completely removed.
 func (client ComputeClient) DetachBootVolume(ctx context.Context, request DetachBootVolumeRequest) (err error) {
@@ -245,7 +246,7 @@ func (client ComputeClient) DetachBootVolume(ctx context.Context, request Detach
 	return
 }
 
-// Detaches and deletes the specified secondary VNIC.
+// DetachVnic Detaches and deletes the specified secondary VNIC.
 // This operation cannot be used on the instance's primary VNIC.
 // When you terminate an instance, all attached VNICs (primary
 // and secondary) are automatically detached and deleted.
@@ -264,7 +265,7 @@ func (client ComputeClient) DetachVnic(ctx context.Context, request DetachVnicRe
 	return
 }
 
-// Detaches a storage volume from an instance. You must specify the OCID of the volume attachment.
+// DetachVolume Detaches a storage volume from an instance. You must specify the OCID of the volume attachment.
 // This is an asynchronous operation. The attachment's `lifecycleState` will change to DETACHING temporarily
 // until the attachment is completely removed.
 func (client ComputeClient) DetachVolume(ctx context.Context, request DetachVolumeRequest) (err error) {
@@ -277,7 +278,7 @@ func (client ComputeClient) DetachVolume(ctx context.Context, request DetachVolu
 	return
 }
 
-// Exports the specified image to the Oracle Cloud Infrastructure Object Storage service. You can use the Object Storage URL,
+// ExportImage Exports the specified image to the Oracle Cloud Infrastructure Object Storage service. You can use the Object Storage URL,
 // or the namespace, bucket name, and object name when specifying the location to export to.
 // For more information about exporting images, see [Image Import/Export]({{DOC_SERVER_URL}}/Content/Compute/Tasks/imageimportexport.htm).
 // To perform an image export, you need write access to the Object Storage bucket for the image,
@@ -301,7 +302,7 @@ func (client ComputeClient) ExportImage(ctx context.Context, request ExportImage
 	return
 }
 
-// Gets information about the specified boot volume attachment.
+// GetBootVolumeAttachment Gets information about the specified boot volume attachment.
 func (client ComputeClient) GetBootVolumeAttachment(ctx context.Context, request GetBootVolumeAttachmentRequest) (response GetBootVolumeAttachmentResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/bootVolumeAttachments/{bootVolumeAttachmentId}", request)
 	if err != nil {
@@ -319,7 +320,7 @@ func (client ComputeClient) GetBootVolumeAttachment(ctx context.Context, request
 	return
 }
 
-// Shows the metadata for the specified console history.
+// GetConsoleHistory Shows the metadata for the specified console history.
 // See CaptureConsoleHistory
 // for details about using the console history operations.
 func (client ComputeClient) GetConsoleHistory(ctx context.Context, request GetConsoleHistoryRequest) (response GetConsoleHistoryResponse, err error) {
@@ -339,7 +340,7 @@ func (client ComputeClient) GetConsoleHistory(ctx context.Context, request GetCo
 	return
 }
 
-// Gets the actual console history data (not the metadata).
+// GetConsoleHistoryContent Gets the actual console history data (not the metadata).
 // See CaptureConsoleHistory
 // for details about using the console history operations.
 func (client ComputeClient) GetConsoleHistoryContent(ctx context.Context, request GetConsoleHistoryContentRequest) (response GetConsoleHistoryContentResponse, err error) {
@@ -359,7 +360,7 @@ func (client ComputeClient) GetConsoleHistoryContent(ctx context.Context, reques
 	return
 }
 
-// Gets the specified image.
+// GetImage Gets the specified image.
 func (client ComputeClient) GetImage(ctx context.Context, request GetImageRequest) (response GetImageResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/images/{imageId}", request)
 	if err != nil {
@@ -377,7 +378,7 @@ func (client ComputeClient) GetImage(ctx context.Context, request GetImageReques
 	return
 }
 
-// Gets information about the specified instance.
+// GetInstance Gets information about the specified instance.
 func (client ComputeClient) GetInstance(ctx context.Context, request GetInstanceRequest) (response GetInstanceResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/instances/{instanceId}", request)
 	if err != nil {
@@ -395,7 +396,7 @@ func (client ComputeClient) GetInstance(ctx context.Context, request GetInstance
 	return
 }
 
-// Gets the specified instance console connection's information.
+// GetInstanceConsoleConnection Gets the specified instance console connection's information.
 func (client ComputeClient) GetInstanceConsoleConnection(ctx context.Context, request GetInstanceConsoleConnectionRequest) (response GetInstanceConsoleConnectionResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleConnections/{instanceConsoleConnectionId}", request)
 	if err != nil {
@@ -413,7 +414,7 @@ func (client ComputeClient) GetInstanceConsoleConnection(ctx context.Context, re
 	return
 }
 
-// Gets the information for the specified VNIC attachment.
+// GetVnicAttachment Gets the information for the specified VNIC attachment.
 func (client ComputeClient) GetVnicAttachment(ctx context.Context, request GetVnicAttachmentRequest) (response GetVnicAttachmentResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/vnicAttachments/{vnicAttachmentId}", request)
 	if err != nil {
@@ -431,7 +432,7 @@ func (client ComputeClient) GetVnicAttachment(ctx context.Context, request GetVn
 	return
 }
 
-// Gets information about the specified volume attachment.
+// GetVolumeAttachment Gets information about the specified volume attachment.
 func (client ComputeClient) GetVolumeAttachment(ctx context.Context, request GetVolumeAttachmentRequest) (response GetVolumeAttachmentResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/volumeAttachments/{volumeAttachmentId}", request)
 	if err != nil {
@@ -449,7 +450,7 @@ func (client ComputeClient) GetVolumeAttachment(ctx context.Context, request Get
 	return
 }
 
-// Gets the generated credentials for the instance. Only works for Windows instances. The returned credentials
+// GetWindowsInstanceInitialCredentials Gets the generated credentials for the instance. Only works for Windows instances. The returned credentials
 // are only valid for the initial login.
 func (client ComputeClient) GetWindowsInstanceInitialCredentials(ctx context.Context, request GetWindowsInstanceInitialCredentialsRequest) (response GetWindowsInstanceInitialCredentialsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/instances/{instanceId}/initialCredentials", request)
@@ -468,7 +469,7 @@ func (client ComputeClient) GetWindowsInstanceInitialCredentials(ctx context.Con
 	return
 }
 
-// Performs one of the power actions (start, stop, softreset, or reset)
+// InstanceAction Performs one of the power actions (start, stop, softreset, or reset)
 // on the specified instance.
 // **start** - power on
 // **stop** - power off
@@ -496,7 +497,7 @@ func (client ComputeClient) InstanceAction(ctx context.Context, request Instance
 	return
 }
 
-// Creates a new instance in the specified compartment and the specified Availability Domain.
+// LaunchInstance Creates a new instance in the specified compartment and the specified Availability Domain.
 // For general information about instances, see
 // [Overview of the Compute Service]({{DOC_SERVER_URL}}/Content/Compute/Concepts/computeoverview.htm).
 // For information about access control and compartments, see
@@ -537,7 +538,7 @@ func (client ComputeClient) LaunchInstance(ctx context.Context, request LaunchIn
 	return
 }
 
-// Lists the boot volume attachments in the specified compartment. You can filter the
+// ListBootVolumeAttachments Lists the boot volume attachments in the specified compartment. You can filter the
 // list by specifying an instance OCID, boot volume OCID, or both.
 func (client ComputeClient) ListBootVolumeAttachments(ctx context.Context, request ListBootVolumeAttachmentsRequest) (response ListBootVolumeAttachmentsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/bootVolumeAttachments/", request)
@@ -556,7 +557,7 @@ func (client ComputeClient) ListBootVolumeAttachments(ctx context.Context, reque
 	return
 }
 
-// Lists the console history metadata for the specified compartment or instance.
+// ListConsoleHistories Lists the console history metadata for the specified compartment or instance.
 func (client ComputeClient) ListConsoleHistories(ctx context.Context, request ListConsoleHistoriesRequest) (response ListConsoleHistoriesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleHistories/", request)
 	if err != nil {
@@ -574,7 +575,7 @@ func (client ComputeClient) ListConsoleHistories(ctx context.Context, request Li
 	return
 }
 
-// Lists the available images in the specified compartment.
+// ListImages Lists the available images in the specified compartment.
 // If you specify a value for the `sortBy` parameter, Oracle-provided images appear first in the list, followed by custom images.
 // For more
 // information about images, see
@@ -596,7 +597,7 @@ func (client ComputeClient) ListImages(ctx context.Context, request ListImagesRe
 	return
 }
 
-// Lists the console connections for the specified compartment or instance.
+// ListInstanceConsoleConnections Lists the console connections for the specified compartment or instance.
 // For more information about console access, see [Accessing the Instance Console]({{DOC_SERVER_URL}}/Content/Compute/References/serialconsole.htm).
 func (client ComputeClient) ListInstanceConsoleConnections(ctx context.Context, request ListInstanceConsoleConnectionsRequest) (response ListInstanceConsoleConnectionsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleConnections", request)
@@ -615,7 +616,7 @@ func (client ComputeClient) ListInstanceConsoleConnections(ctx context.Context, 
 	return
 }
 
-// Lists the instances in the specified compartment and the specified Availability Domain.
+// ListInstances Lists the instances in the specified compartment and the specified Availability Domain.
 // You can filter the results by specifying an instance name (the list will include all the identically-named
 // instances in the compartment).
 func (client ComputeClient) ListInstances(ctx context.Context, request ListInstancesRequest) (response ListInstancesResponse, err error) {
@@ -635,7 +636,7 @@ func (client ComputeClient) ListInstances(ctx context.Context, request ListInsta
 	return
 }
 
-// Lists the shapes that can be used to launch an instance within the specified compartment. You can
+// ListShapes Lists the shapes that can be used to launch an instance within the specified compartment. You can
 // filter the list by compatibility with a specific image.
 func (client ComputeClient) ListShapes(ctx context.Context, request ListShapesRequest) (response ListShapesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/shapes", request)
@@ -654,7 +655,7 @@ func (client ComputeClient) ListShapes(ctx context.Context, request ListShapesRe
 	return
 }
 
-// Lists the VNIC attachments in the specified compartment. A VNIC attachment
+// ListVnicAttachments Lists the VNIC attachments in the specified compartment. A VNIC attachment
 // resides in the same compartment as the attached instance. The list can be
 // filtered by instance, VNIC, or Availability Domain.
 func (client ComputeClient) ListVnicAttachments(ctx context.Context, request ListVnicAttachmentsRequest) (response ListVnicAttachmentsResponse, err error) {
@@ -674,7 +675,7 @@ func (client ComputeClient) ListVnicAttachments(ctx context.Context, request Lis
 	return
 }
 
-// Lists the volume attachments in the specified compartment. You can filter the
+// ListVolumeAttachments Lists the volume attachments in the specified compartment. You can filter the
 // list by specifying an instance OCID, volume OCID, or both.
 // Currently, the only supported volume attachment type is IScsiVolumeAttachment.
 func (client ComputeClient) ListVolumeAttachments(ctx context.Context, request ListVolumeAttachmentsRequest) (response ListVolumeAttachmentsResponse, err error) {
@@ -694,7 +695,7 @@ func (client ComputeClient) ListVolumeAttachments(ctx context.Context, request L
 	return
 }
 
-// Removes a shape from the compatible shapes list for the image.
+// RemoveImageShapeCompatibilityEntry Removes a shape from the compatible shapes list for the image.
 func (client ComputeClient) RemoveImageShapeCompatibilityEntry(ctx context.Context, request RemoveImageShapeCompatibilityEntryRequest) (err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodDelete, "/images/{imageId}/shapes/{shapeName}", request)
 	if err != nil {
@@ -705,7 +706,7 @@ func (client ComputeClient) RemoveImageShapeCompatibilityEntry(ctx context.Conte
 	return
 }
 
-// Terminates the specified instance. Any attached VNICs and volumes are automatically detached
+// TerminateInstance Terminates the specified instance. Any attached VNICs and volumes are automatically detached
 // when the instance terminates.
 // To preserve the boot volume associated with the instance, specify `true` for `PreserveBootVolumeQueryParam`.
 // To delete the boot volume when the instance is deleted, specify `false` or do not specify a value for `PreserveBootVolumeQueryParam`.
@@ -721,7 +722,7 @@ func (client ComputeClient) TerminateInstance(ctx context.Context, request Termi
 	return
 }
 
-// Updates the specified console history metadata.
+// UpdateConsoleHistory Updates the specified console history metadata.
 func (client ComputeClient) UpdateConsoleHistory(ctx context.Context, request UpdateConsoleHistoryRequest) (response UpdateConsoleHistoryResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/instanceConsoleHistories/{instanceConsoleHistoryId}", request)
 	if err != nil {
@@ -739,7 +740,7 @@ func (client ComputeClient) UpdateConsoleHistory(ctx context.Context, request Up
 	return
 }
 
-// Updates the display name of the image. Avoid entering confidential information.
+// UpdateImage Updates the display name of the image. Avoid entering confidential information.
 func (client ComputeClient) UpdateImage(ctx context.Context, request UpdateImageRequest) (response UpdateImageResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/images/{imageId}", request)
 	if err != nil {
@@ -757,7 +758,7 @@ func (client ComputeClient) UpdateImage(ctx context.Context, request UpdateImage
 	return
 }
 
-// Updates the display name of the specified instance. Avoid entering confidential information.
+// UpdateInstance Updates the display name of the specified instance. Avoid entering confidential information.
 // The OCID of the instance remains the same.
 func (client ComputeClient) UpdateInstance(ctx context.Context, request UpdateInstanceRequest) (response UpdateInstanceResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/instances/{instanceId}", request)

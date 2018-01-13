@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateIdentityProviderDetails is an interface representing the polymorphic json shape of this model
 type UpdateIdentityProviderDetails interface {
 
 	// The description you assign to the `IdentityProvider`. Does not have to
@@ -26,6 +27,7 @@ type updateidentityproviderdetails struct {
 	Protocol    string  `json:"protocol"`
 }
 
+//UnmarshalJSON unmarshals json
 func (m *updateidentityproviderdetails) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalerupdateidentityproviderdetails updateidentityproviderdetails
@@ -42,6 +44,7 @@ func (m *updateidentityproviderdetails) UnmarshalJSON(data []byte) error {
 	return err
 }
 
+//UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *updateidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.Protocol {
@@ -54,10 +57,11 @@ func (m *updateidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (i
 	}
 }
 
+//GetDescription returns Description
 func (m updateidentityproviderdetails) GetDescription() *string {
 	return m.Description
 }
 
-func (model updateidentityproviderdetails) String() string {
-	return common.PointerString(model)
+func (m updateidentityproviderdetails) String() string {
+	return common.PointerString(m)
 }

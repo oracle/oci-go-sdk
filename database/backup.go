@@ -44,11 +44,11 @@ type Backup struct {
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted,omitempty"`
 
 	// The type of backup.
-	Type_ BackupType_Enum `mandatory:"false" json:"type,omitempty"`
+	Type BackupTypeEnum `mandatory:"false" json:"type,omitempty"`
 }
 
-func (model Backup) String() string {
-	return common.PointerString(model)
+func (m Backup) String() string {
+	return common.PointerString(m)
 }
 
 // BackupLifecycleStateEnum Enum with underlying type: string
@@ -86,27 +86,27 @@ func GetBackupLifecycleStateEnumValues() []BackupLifecycleStateEnum {
 	return values
 }
 
-// BackupType_Enum Enum with underlying type: string
-type BackupType_Enum string
+// BackupTypeEnum Enum with underlying type: string
+type BackupTypeEnum string
 
-// Set of constants representing the allowable values for BackupType_
+// Set of constants representing the allowable values for BackupType
 const (
-	BackupType_Incremental BackupType_Enum = "INCREMENTAL"
-	BackupType_Full        BackupType_Enum = "FULL"
-	BackupType_Unknown     BackupType_Enum = "UNKNOWN"
+	BackupTypeIncremental BackupTypeEnum = "INCREMENTAL"
+	BackupTypeFull        BackupTypeEnum = "FULL"
+	BackupTypeUnknown     BackupTypeEnum = "UNKNOWN"
 )
 
-var mappingBackupType_ = map[string]BackupType_Enum{
-	"INCREMENTAL": BackupType_Incremental,
-	"FULL":        BackupType_Full,
-	"UNKNOWN":     BackupType_Unknown,
+var mappingBackupType = map[string]BackupTypeEnum{
+	"INCREMENTAL": BackupTypeIncremental,
+	"FULL":        BackupTypeFull,
+	"UNKNOWN":     BackupTypeUnknown,
 }
 
-// GetBackupType_EnumValues Enumerates the set of values for BackupType_
-func GetBackupType_EnumValues() []BackupType_Enum {
-	values := make([]BackupType_Enum, 0)
-	for _, v := range mappingBackupType_ {
-		if v != BackupType_Unknown {
+// GetBackupTypeEnumValues Enumerates the set of values for BackupType
+func GetBackupTypeEnumValues() []BackupTypeEnum {
+	values := make([]BackupTypeEnum, 0)
+	for _, v := range mappingBackupType {
+		if v != BackupTypeUnknown {
 			values = append(values, v)
 		}
 	}

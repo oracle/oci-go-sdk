@@ -44,8 +44,8 @@ type PatchSummary struct {
 	LifecycleState PatchSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 
-func (model PatchSummary) String() string {
-	return common.PointerString(model)
+func (m PatchSummary) String() string {
+	return common.PointerString(m)
 }
 
 // PatchSummaryAvailableActionsEnum Enum with underlying type: string

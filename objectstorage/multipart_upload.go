@@ -33,6 +33,6 @@ type MultipartUpload struct {
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 }
 
-func (model MultipartUpload) String() string {
-	return common.PointerString(model)
+func (m MultipartUpload) String() string {
+	return common.PointerString(m)
 }

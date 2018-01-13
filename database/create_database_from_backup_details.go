@@ -24,6 +24,6 @@ type CreateDatabaseFromBackupDetails struct {
 	BackupTDEPassword *string `mandatory:"true" json:"backupTDEPassword,omitempty"`
 }
 
-func (model CreateDatabaseFromBackupDetails) String() string {
-	return common.PointerString(model)
+func (m CreateDatabaseFromBackupDetails) String() string {
+	return common.PointerString(m)
 }

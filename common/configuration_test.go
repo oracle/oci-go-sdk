@@ -282,7 +282,7 @@ region=region2
 	assert.NoError(t, e1)
 	assert.NotEmpty(t, keyId)
 
-	c, e0 = ConfigurationProviderFromFileWithProfile(tmpConfFile,"PROFILE2", "")
+	c, e0 = ConfigurationProviderFromFileWithProfile(tmpConfFile, "PROFILE2", "")
 	assert.NoError(t, e0)
 	rskey, e = c.PrivateRSAKey()
 	keyId, e1 = c.KeyID()
@@ -290,7 +290,6 @@ region=region2
 	assert.NotEmpty(t, rskey)
 	assert.NoError(t, e1)
 	assert.NotEmpty(t, keyId)
-
 
 }
 

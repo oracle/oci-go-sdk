@@ -32,6 +32,6 @@ type SessionPersistenceConfigurationDetails struct {
 	DisableFallback *bool `mandatory:"false" json:"disableFallback,omitempty"`
 }
 
-func (model SessionPersistenceConfigurationDetails) String() string {
-	return common.PointerString(model)
+func (m SessionPersistenceConfigurationDetails) String() string {
+	return common.PointerString(m)
 }

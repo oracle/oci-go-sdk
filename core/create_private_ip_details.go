@@ -40,6 +40,6 @@ type CreatePrivateIpDetails struct {
 	IpAddress *string `mandatory:"false" json:"ipAddress,omitempty"`
 }
 
-func (model CreatePrivateIpDetails) String() string {
-	return common.PointerString(model)
+func (m CreatePrivateIpDetails) String() string {
+	return common.PointerString(m)
 }

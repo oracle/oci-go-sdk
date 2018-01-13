@@ -9,15 +9,22 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+    "github.com/oracle/oci-go-sdk/common"
 )
 
+
+    
 type CreateCustomerSecretKeyDetails struct {
-
-	// The name you assign to the secret key during creation. Does not have to be unique, and it's changeable.
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+    
+ // The name you assign to the secret key during creation. Does not have to be unique, and it's changeable.
+    DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
 }
 
-func (model CreateCustomerSecretKeyDetails) String() string {
-	return common.PointerString(model)
+func (m CreateCustomerSecretKeyDetails) String() string {
+    return common.PointerString(m)
 }
+
+
+
+
+

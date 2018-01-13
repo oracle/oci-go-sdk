@@ -25,6 +25,6 @@ type TcpOptions struct {
 	SourcePortRange *PortRange `mandatory:"false" json:"sourcePortRange,omitempty"`
 }
 
-func (model TcpOptions) String() string {
-	return common.PointerString(model)
+func (m TcpOptions) String() string {
+	return common.PointerString(m)
 }

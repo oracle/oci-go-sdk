@@ -16,6 +16,6 @@ type UpdateDatabaseDetails struct {
 	DbBackupConfig *DbBackupConfig `mandatory:"false" json:"dbBackupConfig,omitempty"`
 }
 
-func (model UpdateDatabaseDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateDatabaseDetails) String() string {
+	return common.PointerString(m)
 }

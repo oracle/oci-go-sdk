@@ -20,6 +20,6 @@ type UpdateImageDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model UpdateImageDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateImageDetails) String() string {
+	return common.PointerString(m)
 }

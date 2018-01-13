@@ -38,6 +38,6 @@ type Tenancy struct {
 	HomeRegionKey *string `mandatory:"false" json:"homeRegionKey,omitempty"`
 }
 
-func (model Tenancy) String() string {
-	return common.PointerString(model)
+func (m Tenancy) String() string {
+	return common.PointerString(m)
 }

@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateDbHomeWithDbSystemIdBase is an interface representing the polymorphic json shape of this model
 type CreateDbHomeWithDbSystemIdBase interface {
 
 	// The OCID of the DB System.
@@ -29,6 +30,7 @@ type createdbhomewithdbsystemidbase struct {
 	Source      string  `json:"source"`
 }
 
+//UnmarshalJSON unmarshals json
 func (m *createdbhomewithdbsystemidbase) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalercreatedbhomewithdbsystemidbase createdbhomewithdbsystemidbase
@@ -46,6 +48,7 @@ func (m *createdbhomewithdbsystemidbase) UnmarshalJSON(data []byte) error {
 	return err
 }
 
+//UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *createdbhomewithdbsystemidbase) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.Source {
@@ -62,13 +65,16 @@ func (m *createdbhomewithdbsystemidbase) UnmarshalPolymorphicJSON(data []byte) (
 	}
 }
 
+//GetDbSystemID returns DbSystemID
 func (m createdbhomewithdbsystemidbase) GetDbSystemID() *string {
 	return m.DbSystemID
 }
+
+//GetDisplayName returns DisplayName
 func (m createdbhomewithdbsystemidbase) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-func (model createdbhomewithdbsystemidbase) String() string {
-	return common.PointerString(model)
+func (m createdbhomewithdbsystemidbase) String() string {
+	return common.PointerString(m)
 }

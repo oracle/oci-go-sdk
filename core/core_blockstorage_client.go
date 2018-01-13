@@ -15,11 +15,12 @@ import (
 	"net/http"
 )
 
+//BlockstorageClient a client for Blockstorage
 type BlockstorageClient struct {
 	common.BaseClient
 }
 
-// Create a new default Blockstorage client with the given configuration provider.
+// NewBlockstorageClientWithConfigurationProvider Creates a new default Blockstorage client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewBlockstorageClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client BlockstorageClient, err error) {
 	baseClient, err := common.NewClientWithConfig(configProvider)
@@ -38,7 +39,7 @@ func NewBlockstorageClientWithConfigurationProvider(configProvider common.Config
 	return
 }
 
-// Creates a new volume in the specified compartment. Volumes can be created in sizes ranging from
+// CreateVolume Creates a new volume in the specified compartment. Volumes can be created in sizes ranging from
 // 50 GB (51200 MB) to 16 TB (16777216 MB), in 1 GB (1024 MB) increments. By default, volumes are 1 TB (1048576 MB).
 // For general information about block volumes, see
 // [Overview of Block Volume Service]({{DOC_SERVER_URL}}/Content/Block/Concepts/overview.htm).
@@ -67,7 +68,7 @@ func (client BlockstorageClient) CreateVolume(ctx context.Context, request Creat
 	return
 }
 
-// Creates a new backup of the specified volume. For general information about volume backups,
+// CreateVolumeBackup Creates a new backup of the specified volume. For general information about volume backups,
 // see [Overview of Block Volume Service Backups]({{DOC_SERVER_URL}}/Content/Block/Concepts/blockvolumebackups.htm)
 // When the request is received, the backup object is in a REQUEST_RECEIVED state.
 // When the data is imaged, it goes into a CREATING state.
@@ -89,7 +90,7 @@ func (client BlockstorageClient) CreateVolumeBackup(ctx context.Context, request
 	return
 }
 
-// Deletes the specified boot volume. The volume cannot have an active connection to an instance.
+// DeleteBootVolume Deletes the specified boot volume. The volume cannot have an active connection to an instance.
 // To disconnect the boot volume from a connected instance, see
 // [Disconnecting From a Boot Volume]({{DOC_SERVER_URL}}/Content/Block/Tasks/deletingbootvolume.htm).
 // **Warning:** All data on the boot volume will be permanently lost when the boot volume is deleted.
@@ -103,7 +104,7 @@ func (client BlockstorageClient) DeleteBootVolume(ctx context.Context, request D
 	return
 }
 
-// Deletes the specified volume. The volume cannot have an active connection to an instance.
+// DeleteVolume Deletes the specified volume. The volume cannot have an active connection to an instance.
 // To disconnect the volume from a connected instance, see
 // [Disconnecting From a Volume]({{DOC_SERVER_URL}}/Content/Block/Tasks/disconnectingfromavolume.htm).
 // **Warning:** All data on the volume will be permanently lost when the volume is deleted.
@@ -117,7 +118,7 @@ func (client BlockstorageClient) DeleteVolume(ctx context.Context, request Delet
 	return
 }
 
-// Deletes a volume backup.
+// DeleteVolumeBackup Deletes a volume backup.
 func (client BlockstorageClient) DeleteVolumeBackup(ctx context.Context, request DeleteVolumeBackupRequest) (err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodDelete, "/volumeBackups/{volumeBackupId}", request)
 	if err != nil {
@@ -128,7 +129,7 @@ func (client BlockstorageClient) DeleteVolumeBackup(ctx context.Context, request
 	return
 }
 
-// Gets information for the specified boot volume.
+// GetBootVolume Gets information for the specified boot volume.
 func (client BlockstorageClient) GetBootVolume(ctx context.Context, request GetBootVolumeRequest) (response GetBootVolumeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/bootVolumes/{bootVolumeId}", request)
 	if err != nil {
@@ -146,7 +147,7 @@ func (client BlockstorageClient) GetBootVolume(ctx context.Context, request GetB
 	return
 }
 
-// Gets information for the specified volume.
+// GetVolume Gets information for the specified volume.
 func (client BlockstorageClient) GetVolume(ctx context.Context, request GetVolumeRequest) (response GetVolumeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/volumes/{volumeId}", request)
 	if err != nil {
@@ -164,7 +165,7 @@ func (client BlockstorageClient) GetVolume(ctx context.Context, request GetVolum
 	return
 }
 
-// Gets information for the specified volume backup.
+// GetVolumeBackup Gets information for the specified volume backup.
 func (client BlockstorageClient) GetVolumeBackup(ctx context.Context, request GetVolumeBackupRequest) (response GetVolumeBackupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/volumeBackups/{volumeBackupId}", request)
 	if err != nil {
@@ -182,7 +183,7 @@ func (client BlockstorageClient) GetVolumeBackup(ctx context.Context, request Ge
 	return
 }
 
-// Lists the boot volumes in the specified compartment and Availability Domain.
+// ListBootVolumes Lists the boot volumes in the specified compartment and Availability Domain.
 func (client BlockstorageClient) ListBootVolumes(ctx context.Context, request ListBootVolumesRequest) (response ListBootVolumesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/bootVolumes", request)
 	if err != nil {
@@ -200,7 +201,7 @@ func (client BlockstorageClient) ListBootVolumes(ctx context.Context, request Li
 	return
 }
 
-// Lists the volume backups in the specified compartment. You can filter the results by volume.
+// ListVolumeBackups Lists the volume backups in the specified compartment. You can filter the results by volume.
 func (client BlockstorageClient) ListVolumeBackups(ctx context.Context, request ListVolumeBackupsRequest) (response ListVolumeBackupsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/volumeBackups", request)
 	if err != nil {
@@ -218,7 +219,7 @@ func (client BlockstorageClient) ListVolumeBackups(ctx context.Context, request 
 	return
 }
 
-// Lists the volumes in the specified compartment and Availability Domain.
+// ListVolumes Lists the volumes in the specified compartment and Availability Domain.
 func (client BlockstorageClient) ListVolumes(ctx context.Context, request ListVolumesRequest) (response ListVolumesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/volumes", request)
 	if err != nil {
@@ -236,7 +237,7 @@ func (client BlockstorageClient) ListVolumes(ctx context.Context, request ListVo
 	return
 }
 
-// Updates the specified boot volume's display name.
+// UpdateBootVolume Updates the specified boot volume's display name.
 func (client BlockstorageClient) UpdateBootVolume(ctx context.Context, request UpdateBootVolumeRequest) (response UpdateBootVolumeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/bootVolumes/{bootVolumeId}", request)
 	if err != nil {
@@ -254,7 +255,7 @@ func (client BlockstorageClient) UpdateBootVolume(ctx context.Context, request U
 	return
 }
 
-// Updates the specified volume's display name.
+// UpdateVolume Updates the specified volume's display name.
 // Avoid entering confidential information.
 func (client BlockstorageClient) UpdateVolume(ctx context.Context, request UpdateVolumeRequest) (response UpdateVolumeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/volumes/{volumeId}", request)
@@ -273,7 +274,7 @@ func (client BlockstorageClient) UpdateVolume(ctx context.Context, request Updat
 	return
 }
 
-// Updates the display name for the specified volume backup.
+// UpdateVolumeBackup Updates the display name for the specified volume backup.
 // Avoid entering confidential information.
 func (client BlockstorageClient) UpdateVolumeBackup(ctx context.Context, request UpdateVolumeBackupRequest) (response UpdateVolumeBackupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/volumeBackups/{volumeBackupId}", request)

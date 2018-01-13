@@ -43,15 +43,15 @@ type WorkRequest struct {
 	TimeAccepted *common.SDKTime `mandatory:"true" json:"timeAccepted,omitempty"`
 
 	// The type of action the work request represents.
-	Type_ *string `mandatory:"true" json:"type,omitempty"`
+	Type *string `mandatory:"true" json:"type,omitempty"`
 
 	// The date and time the work request was completed, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
 	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished,omitempty"`
 }
 
-func (model WorkRequest) String() string {
-	return common.PointerString(model)
+func (m WorkRequest) String() string {
+	return common.PointerString(m)
 }
 
 // WorkRequestLifecycleStateEnum Enum with underlying type: string

@@ -27,6 +27,6 @@ type CreateRouteTableDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model CreateRouteTableDetails) String() string {
-	return common.PointerString(model)
+func (m CreateRouteTableDetails) String() string {
+	return common.PointerString(m)
 }

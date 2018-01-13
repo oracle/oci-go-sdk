@@ -20,7 +20,7 @@ type CreateVirtualCircuitDetails struct {
 	// The type of IP addresses used in this virtual circuit. PRIVATE
 	// means [RFC 1918](https://tools.ietf.org/html/rfc1918) addresses
 	// (10.0.0.0/8, 172.16/12, and 192.168/16). Only PRIVATE is supported.
-	Type_ CreateVirtualCircuitDetailsType_Enum `mandatory:"true" json:"type,omitempty"`
+	Type CreateVirtualCircuitDetailsTypeEnum `mandatory:"true" json:"type,omitempty"`
 
 	// The provisioned data rate of the connection.  To get a list of the
 	// available bandwidth levels (that is, shapes), see
@@ -69,31 +69,31 @@ type CreateVirtualCircuitDetails struct {
 	Region *string `mandatory:"false" json:"region,omitempty"`
 }
 
-func (model CreateVirtualCircuitDetails) String() string {
-	return common.PointerString(model)
+func (m CreateVirtualCircuitDetails) String() string {
+	return common.PointerString(m)
 }
 
-// CreateVirtualCircuitDetailsType_Enum Enum with underlying type: string
-type CreateVirtualCircuitDetailsType_Enum string
+// CreateVirtualCircuitDetailsTypeEnum Enum with underlying type: string
+type CreateVirtualCircuitDetailsTypeEnum string
 
-// Set of constants representing the allowable values for CreateVirtualCircuitDetailsType_
+// Set of constants representing the allowable values for CreateVirtualCircuitDetailsType
 const (
-	CreateVirtualCircuitDetailsType_Public  CreateVirtualCircuitDetailsType_Enum = "PUBLIC"
-	CreateVirtualCircuitDetailsType_Private CreateVirtualCircuitDetailsType_Enum = "PRIVATE"
-	CreateVirtualCircuitDetailsType_Unknown CreateVirtualCircuitDetailsType_Enum = "UNKNOWN"
+	CreateVirtualCircuitDetailsTypePublic  CreateVirtualCircuitDetailsTypeEnum = "PUBLIC"
+	CreateVirtualCircuitDetailsTypePrivate CreateVirtualCircuitDetailsTypeEnum = "PRIVATE"
+	CreateVirtualCircuitDetailsTypeUnknown CreateVirtualCircuitDetailsTypeEnum = "UNKNOWN"
 )
 
-var mappingCreateVirtualCircuitDetailsType_ = map[string]CreateVirtualCircuitDetailsType_Enum{
-	"PUBLIC":  CreateVirtualCircuitDetailsType_Public,
-	"PRIVATE": CreateVirtualCircuitDetailsType_Private,
-	"UNKNOWN": CreateVirtualCircuitDetailsType_Unknown,
+var mappingCreateVirtualCircuitDetailsType = map[string]CreateVirtualCircuitDetailsTypeEnum{
+	"PUBLIC":  CreateVirtualCircuitDetailsTypePublic,
+	"PRIVATE": CreateVirtualCircuitDetailsTypePrivate,
+	"UNKNOWN": CreateVirtualCircuitDetailsTypeUnknown,
 }
 
-// GetCreateVirtualCircuitDetailsType_EnumValues Enumerates the set of values for CreateVirtualCircuitDetailsType_
-func GetCreateVirtualCircuitDetailsType_EnumValues() []CreateVirtualCircuitDetailsType_Enum {
-	values := make([]CreateVirtualCircuitDetailsType_Enum, 0)
-	for _, v := range mappingCreateVirtualCircuitDetailsType_ {
-		if v != CreateVirtualCircuitDetailsType_Unknown {
+// GetCreateVirtualCircuitDetailsTypeEnumValues Enumerates the set of values for CreateVirtualCircuitDetailsType
+func GetCreateVirtualCircuitDetailsTypeEnumValues() []CreateVirtualCircuitDetailsTypeEnum {
+	values := make([]CreateVirtualCircuitDetailsTypeEnum, 0)
+	for _, v := range mappingCreateVirtualCircuitDetailsType {
+		if v != CreateVirtualCircuitDetailsTypeUnknown {
 			values = append(values, v)
 		}
 	}

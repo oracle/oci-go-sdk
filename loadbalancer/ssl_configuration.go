@@ -31,6 +31,6 @@ type SslConfiguration struct {
 	VerifyPeerCertificate *bool `mandatory:"true" json:"verifyPeerCertificate,omitempty"`
 }
 
-func (model SslConfiguration) String() string {
-	return common.PointerString(model)
+func (m SslConfiguration) String() string {
+	return common.PointerString(m)
 }

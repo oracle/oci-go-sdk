@@ -13,7 +13,6 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateSaml2IdentityProviderDetails
 type UpdateSaml2IdentityProviderDetails struct {
 
 	// The description you assign to the `IdentityProvider`. Does not have to
@@ -28,14 +27,16 @@ type UpdateSaml2IdentityProviderDetails struct {
 	Metadata *string `mandatory:"false" json:"metadata,omitempty"`
 }
 
-func (model UpdateSaml2IdentityProviderDetails) GetDescription() *string {
-	return model.Description
+//GetDescription returns Description
+func (m UpdateSaml2IdentityProviderDetails) GetDescription() *string {
+	return m.Description
 }
 
 func (m UpdateSaml2IdentityProviderDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m UpdateSaml2IdentityProviderDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeUpdateSaml2IdentityProviderDetails UpdateSaml2IdentityProviderDetails
 	s := struct {

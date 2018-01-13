@@ -30,6 +30,6 @@ type BackendSetDetails struct {
 	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration,omitempty"`
 }
 
-func (model BackendSetDetails) String() string {
-	return common.PointerString(model)
+func (m BackendSetDetails) String() string {
+	return common.PointerString(m)
 }

@@ -39,6 +39,6 @@ type UpdateBackendDetails struct {
 	Weight *int `mandatory:"true" json:"weight,omitempty"`
 }
 
-func (model UpdateBackendDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateBackendDetails) String() string {
+	return common.PointerString(m)
 }

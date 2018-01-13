@@ -22,12 +22,12 @@ import (
 type IcmpOptions struct {
 
 	// The ICMP type.
-	Type_ *int `mandatory:"true" json:"type,omitempty"`
+	Type *int `mandatory:"true" json:"type,omitempty"`
 
 	// The ICMP code (optional).
 	Code *int `mandatory:"false" json:"code,omitempty"`
 }
 
-func (model IcmpOptions) String() string {
-	return common.PointerString(model)
+func (m IcmpOptions) String() string {
+	return common.PointerString(m)
 }

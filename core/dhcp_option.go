@@ -18,6 +18,7 @@ import (
 // and DhcpSearchDomainOption. For more
 // information, see [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm)
 // and [DHCP Options]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingDHCP.htm).
+// DhcpOption is an interface representing the polymorphic json shape of this model
 type DhcpOption interface {
 }
 
@@ -26,6 +27,7 @@ type dhcpoption struct {
 	Type     string `json:"type"`
 }
 
+//UnmarshalJSON unmarshals json
 func (m *dhcpoption) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalerdhcpoption dhcpoption
@@ -41,6 +43,7 @@ func (m *dhcpoption) UnmarshalJSON(data []byte) error {
 	return err
 }
 
+//UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *dhcpoption) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.Type {
@@ -57,6 +60,6 @@ func (m *dhcpoption) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) 
 	}
 }
 
-func (model dhcpoption) String() string {
-	return common.PointerString(model)
+func (m dhcpoption) String() string {
+	return common.PointerString(m)
 }

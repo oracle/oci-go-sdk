@@ -46,8 +46,8 @@ type BackendSetHealth struct {
 	WarningStateBackendNames []string `mandatory:"true" json:"warningStateBackendNames,omitempty"`
 }
 
-func (model BackendSetHealth) String() string {
-	return common.PointerString(model)
+func (m BackendSetHealth) String() string {
+	return common.PointerString(m)
 }
 
 // BackendSetHealthStatusEnum Enum with underlying type: string

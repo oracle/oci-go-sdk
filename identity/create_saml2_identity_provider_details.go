@@ -13,7 +13,6 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateSaml2IdentityProviderDetails
 type CreateSaml2IdentityProviderDetails struct {
 
 	// The OCID of your tenancy.
@@ -42,23 +41,31 @@ type CreateSaml2IdentityProviderDetails struct {
 	ProductType CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType,omitempty"`
 }
 
-func (model CreateSaml2IdentityProviderDetails) GetCompartmentID() *string {
-	return model.CompartmentID
+//GetCompartmentID returns CompartmentID
+func (m CreateSaml2IdentityProviderDetails) GetCompartmentID() *string {
+	return m.CompartmentID
 }
-func (model CreateSaml2IdentityProviderDetails) GetName() *string {
-	return model.Name
+
+//GetName returns Name
+func (m CreateSaml2IdentityProviderDetails) GetName() *string {
+	return m.Name
 }
-func (model CreateSaml2IdentityProviderDetails) GetDescription() *string {
-	return model.Description
+
+//GetDescription returns Description
+func (m CreateSaml2IdentityProviderDetails) GetDescription() *string {
+	return m.Description
 }
-func (model CreateSaml2IdentityProviderDetails) GetProductType() CreateIdentityProviderDetailsProductTypeEnum {
-	return model.ProductType
+
+//GetProductType returns ProductType
+func (m CreateSaml2IdentityProviderDetails) GetProductType() CreateIdentityProviderDetailsProductTypeEnum {
+	return m.ProductType
 }
 
 func (m CreateSaml2IdentityProviderDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m CreateSaml2IdentityProviderDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeCreateSaml2IdentityProviderDetails CreateSaml2IdentityProviderDetails
 	s := struct {

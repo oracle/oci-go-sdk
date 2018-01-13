@@ -86,8 +86,8 @@ type Vnic struct {
 	SkipSourceDestCheck *bool `mandatory:"false" json:"skipSourceDestCheck,omitempty"`
 }
 
-func (model Vnic) String() string {
-	return common.PointerString(model)
+func (m Vnic) String() string {
+	return common.PointerString(m)
 }
 
 // VnicLifecycleStateEnum Enum with underlying type: string

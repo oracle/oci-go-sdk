@@ -42,8 +42,8 @@ type CustomerSecretKeySummary struct {
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
-func (model CustomerSecretKeySummary) String() string {
-	return common.PointerString(model)
+func (m CustomerSecretKeySummary) String() string {
+	return common.PointerString(m)
 }
 
 // CustomerSecretKeySummaryLifecycleStateEnum Enum with underlying type: string

@@ -22,6 +22,6 @@ type ImageShapeCompatibilityEntry struct {
 	Shape *string `mandatory:"true" json:"shape,omitempty"`
 }
 
-func (model ImageShapeCompatibilityEntry) String() string {
-	return common.PointerString(model)
+func (m ImageShapeCompatibilityEntry) String() string {
+	return common.PointerString(m)
 }

@@ -24,6 +24,6 @@ type RestoreDatabaseDetails struct {
 	Timestamp *common.SDKTime `mandatory:"false" json:"timestamp,omitempty"`
 }
 
-func (model RestoreDatabaseDetails) String() string {
-	return common.PointerString(model)
+func (m RestoreDatabaseDetails) String() string {
+	return common.PointerString(m)
 }

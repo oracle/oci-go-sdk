@@ -46,6 +46,6 @@ type Certificate struct {
 	PublicCertificate *string `mandatory:"true" json:"publicCertificate,omitempty"`
 }
 
-func (model Certificate) String() string {
-	return common.PointerString(model)
+func (m Certificate) String() string {
+	return common.PointerString(m)
 }

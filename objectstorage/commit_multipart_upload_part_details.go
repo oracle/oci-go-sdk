@@ -24,6 +24,6 @@ type CommitMultipartUploadPartDetails struct {
 	Etag *string `mandatory:"true" json:"etag,omitempty"`
 }
 
-func (model CommitMultipartUploadPartDetails) String() string {
-	return common.PointerString(model)
+func (m CommitMultipartUploadPartDetails) String() string {
+	return common.PointerString(m)
 }

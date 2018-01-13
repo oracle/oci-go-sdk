@@ -25,6 +25,6 @@ type CommitMultipartUploadDetails struct {
 	PartsToExclude []int `mandatory:"false" json:"partsToExclude,omitempty"`
 }
 
-func (model CommitMultipartUploadDetails) String() string {
-	return common.PointerString(model)
+func (m CommitMultipartUploadDetails) String() string {
+	return common.PointerString(m)
 }

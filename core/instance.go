@@ -88,48 +88,49 @@ type Instance struct {
 	SourceDetails InstanceSourceDetails `mandatory:"false" json:"sourceDetails,omitempty"`
 }
 
-func (model Instance) String() string {
-	return common.PointerString(model)
+func (m Instance) String() string {
+	return common.PointerString(m)
 }
 
-func (model *Instance) UnmarshalJSON(data []byte) (e error) {
-	m := struct {
-		DisplayName        *string                    `mandatory:"true" json:"displayName,omitempty"`
-		ExtendedMetadata   map[string]interface{}     `mandatory:"true" json:"extendedMetadata,omitempty"`
-		ImageID            *string                    `mandatory:"true" json:"imageId,omitempty"`
-		IpxeScript         *string                    `mandatory:"true" json:"ipxeScript,omitempty"`
-		Metadata           map[string]string          `mandatory:"true" json:"metadata,omitempty"`
-		SourceDetails      instancesourcedetails      `mandatory:"true" json:"sourceDetails,omitempty"`
-		AvailabilityDomain *string                    `mandatory:"true" json:"availabilityDomain,omitempty"`
-		CompartmentID      *string                    `mandatory:"true" json:"compartmentId,omitempty"`
-		ID                 *string                    `mandatory:"true" json:"id,omitempty"`
-		LifecycleState     InstanceLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
-		Region             *string                    `mandatory:"true" json:"region,omitempty"`
-		Shape              *string                    `mandatory:"true" json:"shape,omitempty"`
-		TimeCreated        *common.SDKTime            `mandatory:"true" json:"timeCreated,omitempty"`
+// UnmarshalJSON unmarshals from json
+func (m *Instance) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		DisplayName        *string                    `json:"displayName,omitempty"`
+		ExtendedMetadata   map[string]interface{}     `json:"extendedMetadata,omitempty"`
+		ImageID            *string                    `json:"imageId,omitempty"`
+		IpxeScript         *string                    `json:"ipxeScript,omitempty"`
+		Metadata           map[string]string          `json:"metadata,omitempty"`
+		SourceDetails      instancesourcedetails      `json:"sourceDetails,omitempty"`
+		AvailabilityDomain *string                    `json:"availabilityDomain,omitempty"`
+		CompartmentID      *string                    `json:"compartmentId,omitempty"`
+		ID                 *string                    `json:"id,omitempty"`
+		LifecycleState     InstanceLifecycleStateEnum `json:"lifecycleState,omitempty"`
+		Region             *string                    `json:"region,omitempty"`
+		Shape              *string                    `json:"shape,omitempty"`
+		TimeCreated        *common.SDKTime            `json:"timeCreated,omitempty"`
 	}{}
 
-	e = json.Unmarshal(data, &m)
+	e = json.Unmarshal(data, &model)
 	if e != nil {
 		return
 	}
-	model.DisplayName = m.DisplayName
-	model.ExtendedMetadata = m.ExtendedMetadata
-	model.ImageID = m.ImageID
-	model.IpxeScript = m.IpxeScript
-	model.Metadata = m.Metadata
-	nn, e := m.SourceDetails.UnmarshalPolymorphicJSON(m.SourceDetails.JsonData)
+	m.DisplayName = model.DisplayName
+	m.ExtendedMetadata = model.ExtendedMetadata
+	m.ImageID = model.ImageID
+	m.IpxeScript = model.IpxeScript
+	m.Metadata = model.Metadata
+	nn, e := model.SourceDetails.UnmarshalPolymorphicJSON(model.SourceDetails.JsonData)
 	if e != nil {
 		return
 	}
-	model.SourceDetails = nn
-	model.AvailabilityDomain = m.AvailabilityDomain
-	model.CompartmentID = m.CompartmentID
-	model.ID = m.ID
-	model.LifecycleState = m.LifecycleState
-	model.Region = m.Region
-	model.Shape = m.Shape
-	model.TimeCreated = m.TimeCreated
+	m.SourceDetails = nn
+	m.AvailabilityDomain = model.AvailabilityDomain
+	m.CompartmentID = model.CompartmentID
+	m.ID = model.ID
+	m.LifecycleState = model.LifecycleState
+	m.Region = model.Region
+	m.Shape = model.Shape
+	m.TimeCreated = model.TimeCreated
 	return
 }
 

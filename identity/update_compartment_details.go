@@ -21,6 +21,6 @@ type UpdateCompartmentDetails struct {
 	Name *string `mandatory:"false" json:"name,omitempty"`
 }
 
-func (model UpdateCompartmentDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateCompartmentDetails) String() string {
+	return common.PointerString(m)
 }

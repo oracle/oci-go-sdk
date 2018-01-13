@@ -27,6 +27,6 @@ type RouteRule struct {
 	NetworkEntityID *string `mandatory:"true" json:"networkEntityId,omitempty"`
 }
 
-func (model RouteRule) String() string {
-	return common.PointerString(model)
+func (m RouteRule) String() string {
+	return common.PointerString(m)
 }

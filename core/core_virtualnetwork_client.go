@@ -15,11 +15,12 @@ import (
 	"net/http"
 )
 
+//VirtualNetworkClient a client for VirtualNetwork
 type VirtualNetworkClient struct {
 	common.BaseClient
 }
 
-// Create a new default VirtualNetwork client with the given configuration provider.
+// NewVirtualNetworkClientWithConfigurationProvider Creates a new default VirtualNetwork client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewVirtualNetworkClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client VirtualNetworkClient, err error) {
 	baseClient, err := common.NewClientWithConfig(configProvider)
@@ -38,7 +39,7 @@ func NewVirtualNetworkClientWithConfigurationProvider(configProvider common.Conf
 	return
 }
 
-// Adds one or more customer public IP prefixes to the specified public virtual circuit.
+// BulkAddVirtualCircuitPublicPrefixes Adds one or more customer public IP prefixes to the specified public virtual circuit.
 // Use this operation (and not UpdateVirtualCircuit)
 // to add prefixes to the virtual circuit. Oracle must verify the customer's ownership
 // of each prefix before traffic for that prefix will flow across the virtual circuit.
@@ -52,7 +53,7 @@ func (client VirtualNetworkClient) BulkAddVirtualCircuitPublicPrefixes(ctx conte
 	return
 }
 
-// Removes one or more customer public IP prefixes from the specified public virtual circuit.
+// BulkDeleteVirtualCircuitPublicPrefixes Removes one or more customer public IP prefixes from the specified public virtual circuit.
 // Use this operation (and not UpdateVirtualCircuit)
 // to remove prefixes from the virtual circuit. When the virtual circuit's state switches
 // back to PROVISIONED, Oracle stops advertising the specified prefixes across the connection.
@@ -66,7 +67,7 @@ func (client VirtualNetworkClient) BulkDeleteVirtualCircuitPublicPrefixes(ctx co
 	return
 }
 
-// Connects this local peering gateway (LPG) to another one in the same region.
+// ConnectLocalPeeringGateways Connects this local peering gateway (LPG) to another one in the same region.
 // This operation must be called by the VCN administrator who is designated as
 // the *requestor* in the peering relationship. The *acceptor* must implement
 // an Identity and Access Management (IAM) policy that gives the requestor permission
@@ -83,7 +84,7 @@ func (client VirtualNetworkClient) ConnectLocalPeeringGateways(ctx context.Conte
 	return
 }
 
-// Creates a new virtual Customer-Premises Equipment (CPE) object in the specified compartment. For
+// CreateCpe Creates a new virtual Customer-Premises Equipment (CPE) object in the specified compartment. For
 // more information, see [IPSec VPNs]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingIPsec.htm).
 // For the purposes of access control, you must provide the OCID of the compartment where you want
 // the CPE to reside. Notice that the CPE doesn't have to be in the same compartment as the IPSec
@@ -112,7 +113,7 @@ func (client VirtualNetworkClient) CreateCpe(ctx context.Context, request Create
 	return
 }
 
-// Creates a new cross-connect. Oracle recommends you create each cross-connect in a
+// CreateCrossConnect Creates a new cross-connect. Oracle recommends you create each cross-connect in a
 // CrossConnectGroup so you can use link aggregation
 // with the connection.
 // After creating the `CrossConnect` object, you need to go the FastConnect location
@@ -145,7 +146,7 @@ func (client VirtualNetworkClient) CreateCrossConnect(ctx context.Context, reque
 	return
 }
 
-// Creates a new cross-connect group to use with Oracle Cloud Infrastructure
+// CreateCrossConnectGroup Creates a new cross-connect group to use with Oracle Cloud Infrastructure
 // FastConnect. For more information, see
 // [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
 // For the purposes of access control, you must provide the OCID of the
@@ -175,7 +176,7 @@ func (client VirtualNetworkClient) CreateCrossConnectGroup(ctx context.Context, 
 	return
 }
 
-// Creates a new set of DHCP options for the specified VCN. For more information, see
+// CreateDhcpOptions Creates a new set of DHCP options for the specified VCN. For more information, see
 // DhcpOptions.
 // For the purposes of access control, you must provide the OCID of the compartment where you want the set of
 // DHCP options to reside. Notice that the set of options doesn't have to be in the same compartment as the VCN,
@@ -202,7 +203,7 @@ func (client VirtualNetworkClient) CreateDhcpOptions(ctx context.Context, reques
 	return
 }
 
-// Creates a new Dynamic Routing Gateway (DRG) in the specified compartment. For more information,
+// CreateDrg Creates a new Dynamic Routing Gateway (DRG) in the specified compartment. For more information,
 // see [Dynamic Routing Gateways (DRGs)]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingDRGs.htm).
 // For the purposes of access control, you must provide the OCID of the compartment where you want
 // the DRG to reside. Notice that the DRG doesn't have to be in the same compartment as the VCN,
@@ -229,7 +230,7 @@ func (client VirtualNetworkClient) CreateDrg(ctx context.Context, request Create
 	return
 }
 
-// Attaches the specified DRG to the specified VCN. A VCN can be attached to only one DRG at a time,
+// CreateDrgAttachment Attaches the specified DRG to the specified VCN. A VCN can be attached to only one DRG at a time,
 // and vice versa. The response includes a `DrgAttachment` object with its own OCID. For more
 // information about DRGs, see
 // [Dynamic Routing Gateways (DRGs)]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingDRGs.htm).
@@ -255,7 +256,7 @@ func (client VirtualNetworkClient) CreateDrgAttachment(ctx context.Context, requ
 	return
 }
 
-// Creates a new IPSec connection between the specified DRG and CPE. For more information, see
+// CreateIPSecConnection Creates a new IPSec connection between the specified DRG and CPE. For more information, see
 // [IPSec VPNs]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingIPsec.htm).
 // In the request, you must include at least one static route to the CPE object (you're allowed a maximum
 // of 10). For example: 10.0.8.0/16.
@@ -293,7 +294,7 @@ func (client VirtualNetworkClient) CreateIPSecConnection(ctx context.Context, re
 	return
 }
 
-// Creates a new Internet Gateway for the specified VCN. For more information, see
+// CreateInternetGateway Creates a new Internet Gateway for the specified VCN. For more information, see
 // [Connectivity to the Internet]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingIGs.htm).
 // For the purposes of access control, you must provide the OCID of the compartment where you want the Internet
 // Gateway to reside. Notice that the Internet Gateway doesn't have to be in the same compartment as the VCN or
@@ -327,7 +328,7 @@ func (client VirtualNetworkClient) CreateInternetGateway(ctx context.Context, re
 	return
 }
 
-// Creates a new local peering gateway (LPG) for the specified VCN.
+// CreateLocalPeeringGateway Creates a new local peering gateway (LPG) for the specified VCN.
 func (client VirtualNetworkClient) CreateLocalPeeringGateway(ctx context.Context, request CreateLocalPeeringGatewayRequest) (response CreateLocalPeeringGatewayResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "/localPeeringGateways", request)
 	if err != nil {
@@ -345,7 +346,7 @@ func (client VirtualNetworkClient) CreateLocalPeeringGateway(ctx context.Context
 	return
 }
 
-// Creates a secondary private IP for the specified VNIC.
+// CreatePrivateIp Creates a secondary private IP for the specified VNIC.
 // For more information about secondary private IPs, see
 // [IP Addresses]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingIPaddresses.htm).
 func (client VirtualNetworkClient) CreatePrivateIp(ctx context.Context, request CreatePrivateIpRequest) (response CreatePrivateIpResponse, err error) {
@@ -365,7 +366,7 @@ func (client VirtualNetworkClient) CreatePrivateIp(ctx context.Context, request 
 	return
 }
 
-// Creates a new route table for the specified VCN. In the request you must also include at least one route
+// CreateRouteTable Creates a new route table for the specified VCN. In the request you must also include at least one route
 // rule for the new route table. For information on the number of rules you can have in a route table, see
 // [Service Limits]({{DOC_SERVER_URL}}/Content/General/Concepts/servicelimits.htm). For general information about route
 // tables in your VCN and the types of targets you can use in route rules,
@@ -395,7 +396,7 @@ func (client VirtualNetworkClient) CreateRouteTable(ctx context.Context, request
 	return
 }
 
-// Creates a new security list for the specified VCN. For more information
+// CreateSecurityList Creates a new security list for the specified VCN. For more information
 // about security lists, see [Security Lists]({{DOC_SERVER_URL}}/Content/Network/Concepts/securitylists.htm).
 // For information on the number of rules you can have in a security list, see
 // [Service Limits]({{DOC_SERVER_URL}}/Content/General/Concepts/servicelimits.htm).
@@ -424,7 +425,7 @@ func (client VirtualNetworkClient) CreateSecurityList(ctx context.Context, reque
 	return
 }
 
-// Creates a new subnet in the specified VCN. You can't change the size of the subnet after creation,
+// CreateSubnet Creates a new subnet in the specified VCN. You can't change the size of the subnet after creation,
 // so it's important to think about the size of subnets you need before creating them.
 // For more information, see [VCNs and Subnets]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingVCNs.htm).
 // For information on the number of subnets you can have in a VCN, see
@@ -466,7 +467,7 @@ func (client VirtualNetworkClient) CreateSubnet(ctx context.Context, request Cre
 	return
 }
 
-// Creates a new Virtual Cloud Network (VCN). For more information, see
+// CreateVcn Creates a new Virtual Cloud Network (VCN). For more information, see
 // [VCNs and Subnets]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingVCNs.htm).
 // For the VCN you must specify a single, contiguous IPv4 CIDR block. Oracle recommends using one of the
 // private IP address ranges specified in [RFC 1918](https://tools.ietf.org/html/rfc1918) (10.0.0.0/8,
@@ -506,7 +507,7 @@ func (client VirtualNetworkClient) CreateVcn(ctx context.Context, request Create
 	return
 }
 
-// Creates a new virtual circuit to use with Oracle Cloud
+// CreateVirtualCircuit Creates a new virtual circuit to use with Oracle Cloud
 // Infrastructure FastConnect. For more information, see
 // [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
 // For the purposes of access control, you must provide the OCID of the
@@ -541,7 +542,7 @@ func (client VirtualNetworkClient) CreateVirtualCircuit(ctx context.Context, req
 	return
 }
 
-// Deletes the specified CPE object. The CPE must not be connected to a DRG. This is an asynchronous
+// DeleteCpe Deletes the specified CPE object. The CPE must not be connected to a DRG. This is an asynchronous
 // operation. The CPE's `lifecycleState` will change to TERMINATING temporarily until the CPE is completely
 // removed.
 func (client VirtualNetworkClient) DeleteCpe(ctx context.Context, request DeleteCpeRequest) (err error) {
@@ -554,7 +555,7 @@ func (client VirtualNetworkClient) DeleteCpe(ctx context.Context, request Delete
 	return
 }
 
-// Deletes the specified cross-connect. It must not be mapped to a
+// DeleteCrossConnect Deletes the specified cross-connect. It must not be mapped to a
 // VirtualCircuit.
 func (client VirtualNetworkClient) DeleteCrossConnect(ctx context.Context, request DeleteCrossConnectRequest) (err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodDelete, "/crossConnects/{crossConnectId}", request)
@@ -566,7 +567,7 @@ func (client VirtualNetworkClient) DeleteCrossConnect(ctx context.Context, reque
 	return
 }
 
-// Deletes the specified cross-connect group. It must not contain any
+// DeleteCrossConnectGroup Deletes the specified cross-connect group. It must not contain any
 // cross-connects, and it cannot be mapped to a
 // VirtualCircuit.
 func (client VirtualNetworkClient) DeleteCrossConnectGroup(ctx context.Context, request DeleteCrossConnectGroupRequest) (err error) {
@@ -579,7 +580,7 @@ func (client VirtualNetworkClient) DeleteCrossConnectGroup(ctx context.Context, 
 	return
 }
 
-// Deletes the specified set of DHCP options, but only if it's not associated with a subnet. You can't delete a
+// DeleteDhcpOptions Deletes the specified set of DHCP options, but only if it's not associated with a subnet. You can't delete a
 // VCN's default set of DHCP options.
 // This is an asynchronous operation. The state of the set of options will switch to TERMINATING temporarily
 // until the set is completely removed.
@@ -593,7 +594,7 @@ func (client VirtualNetworkClient) DeleteDhcpOptions(ctx context.Context, reques
 	return
 }
 
-// Deletes the specified DRG. The DRG must not be attached to a VCN or be connected to your on-premise
+// DeleteDrg Deletes the specified DRG. The DRG must not be attached to a VCN or be connected to your on-premise
 // network. Also, there must not be a route table that lists the DRG as a target. This is an asynchronous
 // operation. The DRG's `lifecycleState` will change to TERMINATING temporarily until the DRG is completely
 // removed.
@@ -607,7 +608,7 @@ func (client VirtualNetworkClient) DeleteDrg(ctx context.Context, request Delete
 	return
 }
 
-// Detaches a DRG from a VCN by deleting the corresponding `DrgAttachment`. This is an asynchronous
+// DeleteDrgAttachment Detaches a DRG from a VCN by deleting the corresponding `DrgAttachment`. This is an asynchronous
 // operation. The attachment's `lifecycleState` will change to DETACHING temporarily until the attachment
 // is completely removed.
 func (client VirtualNetworkClient) DeleteDrgAttachment(ctx context.Context, request DeleteDrgAttachmentRequest) (err error) {
@@ -620,7 +621,7 @@ func (client VirtualNetworkClient) DeleteDrgAttachment(ctx context.Context, requ
 	return
 }
 
-// Deletes the specified IPSec connection. If your goal is to disable the IPSec VPN between your VCN and
+// DeleteIPSecConnection Deletes the specified IPSec connection. If your goal is to disable the IPSec VPN between your VCN and
 // on-premises network, it's easiest to simply detach the DRG but keep all the IPSec VPN components intact.
 // If you were to delete all the components and then later need to create an IPSec VPN again, you would
 // need to configure your on-premises router again with the new information returned from
@@ -637,7 +638,7 @@ func (client VirtualNetworkClient) DeleteIPSecConnection(ctx context.Context, re
 	return
 }
 
-// Deletes the specified Internet Gateway. The Internet Gateway does not have to be disabled, but
+// DeleteInternetGateway Deletes the specified Internet Gateway. The Internet Gateway does not have to be disabled, but
 // there must not be a route table that lists it as a target.
 // This is an asynchronous operation. The gateway's `lifecycleState` will change to TERMINATING temporarily
 // until the gateway is completely removed.
@@ -651,7 +652,7 @@ func (client VirtualNetworkClient) DeleteInternetGateway(ctx context.Context, re
 	return
 }
 
-// Deletes the specified local peering gateway (LPG).
+// DeleteLocalPeeringGateway Deletes the specified local peering gateway (LPG).
 // This is an asynchronous operation; the local peering gateway's `lifecycleState` changes to TERMINATING temporarily
 // until the local peering gateway is completely removed.
 func (client VirtualNetworkClient) DeleteLocalPeeringGateway(ctx context.Context, request DeleteLocalPeeringGatewayRequest) (err error) {
@@ -664,7 +665,7 @@ func (client VirtualNetworkClient) DeleteLocalPeeringGateway(ctx context.Context
 	return
 }
 
-// Unassigns and deletes the specified private IP. You must
+// DeletePrivateIp Unassigns and deletes the specified private IP. You must
 // specify the object's OCID. The private IP address is returned to
 // the subnet's pool of available addresses.
 // This operation cannot be used with primary private IPs, which are
@@ -683,7 +684,7 @@ func (client VirtualNetworkClient) DeletePrivateIp(ctx context.Context, request 
 	return
 }
 
-// Deletes the specified route table, but only if it's not associated with a subnet. You can't delete a
+// DeleteRouteTable Deletes the specified route table, but only if it's not associated with a subnet. You can't delete a
 // VCN's default route table.
 // This is an asynchronous operation. The route table's `lifecycleState` will change to TERMINATING temporarily
 // until the route table is completely removed.
@@ -697,7 +698,7 @@ func (client VirtualNetworkClient) DeleteRouteTable(ctx context.Context, request
 	return
 }
 
-// Deletes the specified security list, but only if it's not associated with a subnet. You can't delete
+// DeleteSecurityList Deletes the specified security list, but only if it's not associated with a subnet. You can't delete
 // a VCN's default security list.
 // This is an asynchronous operation. The security list's `lifecycleState` will change to TERMINATING temporarily
 // until the security list is completely removed.
@@ -711,7 +712,7 @@ func (client VirtualNetworkClient) DeleteSecurityList(ctx context.Context, reque
 	return
 }
 
-// Deletes the specified subnet, but only if there are no instances in the subnet. This is an asynchronous
+// DeleteSubnet Deletes the specified subnet, but only if there are no instances in the subnet. This is an asynchronous
 // operation. The subnet's `lifecycleState` will change to TERMINATING temporarily. If there are any
 // instances in the subnet, the state will instead change back to AVAILABLE.
 func (client VirtualNetworkClient) DeleteSubnet(ctx context.Context, request DeleteSubnetRequest) (err error) {
@@ -724,7 +725,7 @@ func (client VirtualNetworkClient) DeleteSubnet(ctx context.Context, request Del
 	return
 }
 
-// Deletes the specified VCN. The VCN must be empty and have no attached gateways. This is an asynchronous
+// DeleteVcn Deletes the specified VCN. The VCN must be empty and have no attached gateways. This is an asynchronous
 // operation. The VCN's `lifecycleState` will change to TERMINATING temporarily until the VCN is completely
 // removed.
 func (client VirtualNetworkClient) DeleteVcn(ctx context.Context, request DeleteVcnRequest) (err error) {
@@ -737,7 +738,7 @@ func (client VirtualNetworkClient) DeleteVcn(ctx context.Context, request Delete
 	return
 }
 
-// Deletes the specified virtual circuit.
+// DeleteVirtualCircuit Deletes the specified virtual circuit.
 // **Important:** If you're using FastConnect via a provider,
 // make sure to also terminate the connection with
 // the provider, or else the provider may continue to bill you.
@@ -751,7 +752,7 @@ func (client VirtualNetworkClient) DeleteVirtualCircuit(ctx context.Context, req
 	return
 }
 
-// Gets the specified CPE's information.
+// GetCpe Gets the specified CPE's information.
 func (client VirtualNetworkClient) GetCpe(ctx context.Context, request GetCpeRequest) (response GetCpeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/cpes/{cpeId}", request)
 	if err != nil {
@@ -769,7 +770,7 @@ func (client VirtualNetworkClient) GetCpe(ctx context.Context, request GetCpeReq
 	return
 }
 
-// Gets the specified cross-connect's information.
+// GetCrossConnect Gets the specified cross-connect's information.
 func (client VirtualNetworkClient) GetCrossConnect(ctx context.Context, request GetCrossConnectRequest) (response GetCrossConnectResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/crossConnects/{crossConnectId}", request)
 	if err != nil {
@@ -787,7 +788,7 @@ func (client VirtualNetworkClient) GetCrossConnect(ctx context.Context, request 
 	return
 }
 
-// Gets the specified cross-connect group's information.
+// GetCrossConnectGroup Gets the specified cross-connect group's information.
 func (client VirtualNetworkClient) GetCrossConnectGroup(ctx context.Context, request GetCrossConnectGroupRequest) (response GetCrossConnectGroupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/crossConnectGroups/{crossConnectGroupId}", request)
 	if err != nil {
@@ -805,7 +806,7 @@ func (client VirtualNetworkClient) GetCrossConnectGroup(ctx context.Context, req
 	return
 }
 
-// Gets the Letter of Authority for the specified cross-connect.
+// GetCrossConnectLetterOfAuthority Gets the Letter of Authority for the specified cross-connect.
 func (client VirtualNetworkClient) GetCrossConnectLetterOfAuthority(ctx context.Context, request GetCrossConnectLetterOfAuthorityRequest) (response GetCrossConnectLetterOfAuthorityResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/crossConnects/{crossConnectId}/letterOfAuthority", request)
 	if err != nil {
@@ -823,7 +824,7 @@ func (client VirtualNetworkClient) GetCrossConnectLetterOfAuthority(ctx context.
 	return
 }
 
-// Gets the status of the specified cross-connect.
+// GetCrossConnectStatus Gets the status of the specified cross-connect.
 func (client VirtualNetworkClient) GetCrossConnectStatus(ctx context.Context, request GetCrossConnectStatusRequest) (response GetCrossConnectStatusResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/crossConnects/{crossConnectId}/status", request)
 	if err != nil {
@@ -841,7 +842,7 @@ func (client VirtualNetworkClient) GetCrossConnectStatus(ctx context.Context, re
 	return
 }
 
-// Gets the specified set of DHCP options.
+// GetDhcpOptions Gets the specified set of DHCP options.
 func (client VirtualNetworkClient) GetDhcpOptions(ctx context.Context, request GetDhcpOptionsRequest) (response GetDhcpOptionsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/dhcps/{dhcpId}", request)
 	if err != nil {
@@ -859,7 +860,7 @@ func (client VirtualNetworkClient) GetDhcpOptions(ctx context.Context, request G
 	return
 }
 
-// Gets the specified DRG's information.
+// GetDrg Gets the specified DRG's information.
 func (client VirtualNetworkClient) GetDrg(ctx context.Context, request GetDrgRequest) (response GetDrgResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/drgs/{drgId}", request)
 	if err != nil {
@@ -877,7 +878,7 @@ func (client VirtualNetworkClient) GetDrg(ctx context.Context, request GetDrgReq
 	return
 }
 
-// Gets the information for the specified `DrgAttachment`.
+// GetDrgAttachment Gets the information for the specified `DrgAttachment`.
 func (client VirtualNetworkClient) GetDrgAttachment(ctx context.Context, request GetDrgAttachmentRequest) (response GetDrgAttachmentResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/drgAttachments/{drgAttachmentId}", request)
 	if err != nil {
@@ -895,7 +896,7 @@ func (client VirtualNetworkClient) GetDrgAttachment(ctx context.Context, request
 	return
 }
 
-// Gets the specified provider service.
+// GetFastConnectProviderService Gets the specified provider service.
 // For more information, see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
 func (client VirtualNetworkClient) GetFastConnectProviderService(ctx context.Context, request GetFastConnectProviderServiceRequest) (response GetFastConnectProviderServiceResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/fastConnectProviderServices/{providerServiceId}", request)
@@ -914,7 +915,7 @@ func (client VirtualNetworkClient) GetFastConnectProviderService(ctx context.Con
 	return
 }
 
-// Gets the specified IPSec connection's basic information, including the static routes for the
+// GetIPSecConnection Gets the specified IPSec connection's basic information, including the static routes for the
 // on-premises router. If you want the status of the connection (whether it's up or down), use
 // GetIPSecConnectionDeviceStatus.
 func (client VirtualNetworkClient) GetIPSecConnection(ctx context.Context, request GetIPSecConnectionRequest) (response GetIPSecConnectionResponse, err error) {
@@ -934,7 +935,7 @@ func (client VirtualNetworkClient) GetIPSecConnection(ctx context.Context, reque
 	return
 }
 
-// Gets the configuration information for the specified IPSec connection. For each tunnel, the
+// GetIPSecConnectionDeviceConfig Gets the configuration information for the specified IPSec connection. For each tunnel, the
 // response includes the IP address of Oracle's VPN headend and the shared secret.
 func (client VirtualNetworkClient) GetIPSecConnectionDeviceConfig(ctx context.Context, request GetIPSecConnectionDeviceConfigRequest) (response GetIPSecConnectionDeviceConfigResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/ipsecConnections/{ipscId}/deviceConfig", request)
@@ -953,7 +954,7 @@ func (client VirtualNetworkClient) GetIPSecConnectionDeviceConfig(ctx context.Co
 	return
 }
 
-// Gets the status of the specified IPSec connection (whether it's up or down).
+// GetIPSecConnectionDeviceStatus Gets the status of the specified IPSec connection (whether it's up or down).
 func (client VirtualNetworkClient) GetIPSecConnectionDeviceStatus(ctx context.Context, request GetIPSecConnectionDeviceStatusRequest) (response GetIPSecConnectionDeviceStatusResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/ipsecConnections/{ipscId}/deviceStatus", request)
 	if err != nil {
@@ -971,7 +972,7 @@ func (client VirtualNetworkClient) GetIPSecConnectionDeviceStatus(ctx context.Co
 	return
 }
 
-// Gets the specified Internet Gateway's information.
+// GetInternetGateway Gets the specified Internet Gateway's information.
 func (client VirtualNetworkClient) GetInternetGateway(ctx context.Context, request GetInternetGatewayRequest) (response GetInternetGatewayResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/internetGateways/{igId}", request)
 	if err != nil {
@@ -989,7 +990,7 @@ func (client VirtualNetworkClient) GetInternetGateway(ctx context.Context, reque
 	return
 }
 
-// Gets the specified local peering gateway's information.
+// GetLocalPeeringGateway Gets the specified local peering gateway's information.
 func (client VirtualNetworkClient) GetLocalPeeringGateway(ctx context.Context, request GetLocalPeeringGatewayRequest) (response GetLocalPeeringGatewayResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/localPeeringGateways/{localPeeringGatewayId}", request)
 	if err != nil {
@@ -1007,7 +1008,7 @@ func (client VirtualNetworkClient) GetLocalPeeringGateway(ctx context.Context, r
 	return
 }
 
-// Gets the specified private IP. You must specify the object's OCID.
+// GetPrivateIp Gets the specified private IP. You must specify the object's OCID.
 // Alternatively, you can get the object by using
 // ListPrivateIps
 // with the private IP address (for example, 10.0.3.3) and subnet OCID.
@@ -1028,7 +1029,7 @@ func (client VirtualNetworkClient) GetPrivateIp(ctx context.Context, request Get
 	return
 }
 
-// Gets the specified route table's information.
+// GetRouteTable Gets the specified route table's information.
 func (client VirtualNetworkClient) GetRouteTable(ctx context.Context, request GetRouteTableRequest) (response GetRouteTableResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/routeTables/{rtId}", request)
 	if err != nil {
@@ -1046,7 +1047,7 @@ func (client VirtualNetworkClient) GetRouteTable(ctx context.Context, request Ge
 	return
 }
 
-// Gets the specified security list's information.
+// GetSecurityList Gets the specified security list's information.
 func (client VirtualNetworkClient) GetSecurityList(ctx context.Context, request GetSecurityListRequest) (response GetSecurityListResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/securityLists/{securityListId}", request)
 	if err != nil {
@@ -1064,7 +1065,7 @@ func (client VirtualNetworkClient) GetSecurityList(ctx context.Context, request 
 	return
 }
 
-// Gets the specified subnet's information.
+// GetSubnet Gets the specified subnet's information.
 func (client VirtualNetworkClient) GetSubnet(ctx context.Context, request GetSubnetRequest) (response GetSubnetResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/subnets/{subnetId}", request)
 	if err != nil {
@@ -1082,7 +1083,7 @@ func (client VirtualNetworkClient) GetSubnet(ctx context.Context, request GetSub
 	return
 }
 
-// Gets the specified VCN's information.
+// GetVcn Gets the specified VCN's information.
 func (client VirtualNetworkClient) GetVcn(ctx context.Context, request GetVcnRequest) (response GetVcnResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/vcns/{vcnId}", request)
 	if err != nil {
@@ -1100,7 +1101,7 @@ func (client VirtualNetworkClient) GetVcn(ctx context.Context, request GetVcnReq
 	return
 }
 
-// Gets the specified virtual circuit's information.
+// GetVirtualCircuit Gets the specified virtual circuit's information.
 func (client VirtualNetworkClient) GetVirtualCircuit(ctx context.Context, request GetVirtualCircuitRequest) (response GetVirtualCircuitResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/virtualCircuits/{virtualCircuitId}", request)
 	if err != nil {
@@ -1118,7 +1119,7 @@ func (client VirtualNetworkClient) GetVirtualCircuit(ctx context.Context, reques
 	return
 }
 
-// Gets the information for the specified virtual network interface card (VNIC).
+// GetVnic Gets the information for the specified virtual network interface card (VNIC).
 // You can get the VNIC OCID from the
 // ListVnicAttachments
 // operation.
@@ -1139,7 +1140,7 @@ func (client VirtualNetworkClient) GetVnic(ctx context.Context, request GetVnicR
 	return
 }
 
-// Lists the Customer-Premises Equipment objects (CPEs) in the specified compartment.
+// ListCpes Lists the Customer-Premises Equipment objects (CPEs) in the specified compartment.
 func (client VirtualNetworkClient) ListCpes(ctx context.Context, request ListCpesRequest) (response ListCpesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/cpes", request)
 	if err != nil {
@@ -1157,7 +1158,7 @@ func (client VirtualNetworkClient) ListCpes(ctx context.Context, request ListCpe
 	return
 }
 
-// Lists the cross-connect groups in the specified compartment.
+// ListCrossConnectGroups Lists the cross-connect groups in the specified compartment.
 func (client VirtualNetworkClient) ListCrossConnectGroups(ctx context.Context, request ListCrossConnectGroupsRequest) (response ListCrossConnectGroupsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/crossConnectGroups", request)
 	if err != nil {
@@ -1175,7 +1176,7 @@ func (client VirtualNetworkClient) ListCrossConnectGroups(ctx context.Context, r
 	return
 }
 
-// Lists the available FastConnect locations for cross-connect installation. You need
+// ListCrossConnectLocations Lists the available FastConnect locations for cross-connect installation. You need
 // this information so you can specify your desired location when you create a cross-connect.
 func (client VirtualNetworkClient) ListCrossConnectLocations(ctx context.Context, request ListCrossConnectLocationsRequest) (response ListCrossConnectLocationsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/crossConnectLocations", request)
@@ -1194,7 +1195,7 @@ func (client VirtualNetworkClient) ListCrossConnectLocations(ctx context.Context
 	return
 }
 
-// Lists the cross-connects in the specified compartment. You can filter the list
+// ListCrossConnects Lists the cross-connects in the specified compartment. You can filter the list
 // by specifying the OCID of a cross-connect group.
 func (client VirtualNetworkClient) ListCrossConnects(ctx context.Context, request ListCrossConnectsRequest) (response ListCrossConnectsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/crossConnects", request)
@@ -1213,7 +1214,7 @@ func (client VirtualNetworkClient) ListCrossConnects(ctx context.Context, reques
 	return
 }
 
-// Lists the available port speeds for cross-connects. You need this information
+// ListCrossconnectPortSpeedShapes Lists the available port speeds for cross-connects. You need this information
 // so you can specify your desired port speed (that is, shape) when you create a
 // cross-connect.
 func (client VirtualNetworkClient) ListCrossconnectPortSpeedShapes(ctx context.Context, request ListCrossconnectPortSpeedShapesRequest) (response ListCrossconnectPortSpeedShapesResponse, err error) {
@@ -1233,7 +1234,7 @@ func (client VirtualNetworkClient) ListCrossconnectPortSpeedShapes(ctx context.C
 	return
 }
 
-// Lists the sets of DHCP options in the specified VCN and specified compartment.
+// ListDhcpOptions Lists the sets of DHCP options in the specified VCN and specified compartment.
 // The response includes the default set of options that automatically comes with each VCN,
 // plus any other sets you've created.
 func (client VirtualNetworkClient) ListDhcpOptions(ctx context.Context, request ListDhcpOptionsRequest) (response ListDhcpOptionsResponse, err error) {
@@ -1253,7 +1254,7 @@ func (client VirtualNetworkClient) ListDhcpOptions(ctx context.Context, request 
 	return
 }
 
-// Lists the `DrgAttachment` objects for the specified compartment. You can filter the
+// ListDrgAttachments Lists the `DrgAttachment` objects for the specified compartment. You can filter the
 // results by VCN or DRG.
 func (client VirtualNetworkClient) ListDrgAttachments(ctx context.Context, request ListDrgAttachmentsRequest) (response ListDrgAttachmentsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/drgAttachments", request)
@@ -1272,7 +1273,7 @@ func (client VirtualNetworkClient) ListDrgAttachments(ctx context.Context, reque
 	return
 }
 
-// Lists the DRGs in the specified compartment.
+// ListDrgs Lists the DRGs in the specified compartment.
 func (client VirtualNetworkClient) ListDrgs(ctx context.Context, request ListDrgsRequest) (response ListDrgsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/drgs", request)
 	if err != nil {
@@ -1290,7 +1291,7 @@ func (client VirtualNetworkClient) ListDrgs(ctx context.Context, request ListDrg
 	return
 }
 
-// Lists the service offerings from supported providers. You need this
+// ListFastConnectProviderServices Lists the service offerings from supported providers. You need this
 // information so you can specify your desired provider and service
 // offering when you create a virtual circuit.
 // For the compartment ID, provide the OCID of your tenancy (the root compartment).
@@ -1312,7 +1313,7 @@ func (client VirtualNetworkClient) ListFastConnectProviderServices(ctx context.C
 	return
 }
 
-// Gets the list of available virtual circuit bandwidth levels for a provider.
+// ListFastConnectProviderVirtualCircuitBandwidthShapes Gets the list of available virtual circuit bandwidth levels for a provider.
 // You need this information so you can specify your desired bandwidth level (shape) when you create a virtual circuit.
 // For more information about virtual circuits, see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
 func (client VirtualNetworkClient) ListFastConnectProviderVirtualCircuitBandwidthShapes(ctx context.Context, request ListFastConnectProviderVirtualCircuitBandwidthShapesRequest) (response ListFastConnectProviderVirtualCircuitBandwidthShapesResponse, err error) {
@@ -1332,7 +1333,7 @@ func (client VirtualNetworkClient) ListFastConnectProviderVirtualCircuitBandwidt
 	return
 }
 
-// Lists the IPSec connections for the specified compartment. You can filter the
+// ListIPSecConnections Lists the IPSec connections for the specified compartment. You can filter the
 // results by DRG or CPE.
 func (client VirtualNetworkClient) ListIPSecConnections(ctx context.Context, request ListIPSecConnectionsRequest) (response ListIPSecConnectionsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/ipsecConnections", request)
@@ -1351,7 +1352,7 @@ func (client VirtualNetworkClient) ListIPSecConnections(ctx context.Context, req
 	return
 }
 
-// Lists the Internet Gateways in the specified VCN and the specified compartment.
+// ListInternetGateways Lists the Internet Gateways in the specified VCN and the specified compartment.
 func (client VirtualNetworkClient) ListInternetGateways(ctx context.Context, request ListInternetGatewaysRequest) (response ListInternetGatewaysResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/internetGateways", request)
 	if err != nil {
@@ -1369,7 +1370,7 @@ func (client VirtualNetworkClient) ListInternetGateways(ctx context.Context, req
 	return
 }
 
-// Lists the local peering gateways (LPGs) for the specified VCN and compartment
+// ListLocalPeeringGateways Lists the local peering gateways (LPGs) for the specified VCN and compartment
 // (the LPG's compartment).
 func (client VirtualNetworkClient) ListLocalPeeringGateways(ctx context.Context, request ListLocalPeeringGatewaysRequest) (response ListLocalPeeringGatewaysResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/localPeeringGateways", request)
@@ -1388,7 +1389,7 @@ func (client VirtualNetworkClient) ListLocalPeeringGateways(ctx context.Context,
 	return
 }
 
-// Lists the PrivateIp objects based
+// ListPrivateIps Lists the PrivateIp objects based
 // on one of these filters:
 //   - Subnet OCID.
 //   - VNIC OCID.
@@ -1416,7 +1417,7 @@ func (client VirtualNetworkClient) ListPrivateIps(ctx context.Context, request L
 	return
 }
 
-// Lists the route tables in the specified VCN and specified compartment. The response
+// ListRouteTables Lists the route tables in the specified VCN and specified compartment. The response
 // includes the default route table that automatically comes with each VCN, plus any route tables
 // you've created.
 func (client VirtualNetworkClient) ListRouteTables(ctx context.Context, request ListRouteTablesRequest) (response ListRouteTablesResponse, err error) {
@@ -1436,7 +1437,7 @@ func (client VirtualNetworkClient) ListRouteTables(ctx context.Context, request 
 	return
 }
 
-// Lists the security lists in the specified VCN and compartment.
+// ListSecurityLists Lists the security lists in the specified VCN and compartment.
 func (client VirtualNetworkClient) ListSecurityLists(ctx context.Context, request ListSecurityListsRequest) (response ListSecurityListsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/securityLists", request)
 	if err != nil {
@@ -1454,7 +1455,7 @@ func (client VirtualNetworkClient) ListSecurityLists(ctx context.Context, reques
 	return
 }
 
-// Lists the subnets in the specified VCN and the specified compartment.
+// ListSubnets Lists the subnets in the specified VCN and the specified compartment.
 func (client VirtualNetworkClient) ListSubnets(ctx context.Context, request ListSubnetsRequest) (response ListSubnetsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/subnets", request)
 	if err != nil {
@@ -1472,7 +1473,7 @@ func (client VirtualNetworkClient) ListSubnets(ctx context.Context, request List
 	return
 }
 
-// Lists the Virtual Cloud Networks (VCNs) in the specified compartment.
+// ListVcns Lists the Virtual Cloud Networks (VCNs) in the specified compartment.
 func (client VirtualNetworkClient) ListVcns(ctx context.Context, request ListVcnsRequest) (response ListVcnsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/vcns", request)
 	if err != nil {
@@ -1490,7 +1491,7 @@ func (client VirtualNetworkClient) ListVcns(ctx context.Context, request ListVcn
 	return
 }
 
-// The deprecated operation lists available bandwidth levels for virtual circuits. For the compartment ID, provide the OCID of your tenancy (the root compartment).
+// ListVirtualCircuitBandwidthShapes The deprecated operation lists available bandwidth levels for virtual circuits. For the compartment ID, provide the OCID of your tenancy (the root compartment).
 func (client VirtualNetworkClient) ListVirtualCircuitBandwidthShapes(ctx context.Context, request ListVirtualCircuitBandwidthShapesRequest) (response ListVirtualCircuitBandwidthShapesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/virtualCircuitBandwidthShapes", request)
 	if err != nil {
@@ -1508,7 +1509,7 @@ func (client VirtualNetworkClient) ListVirtualCircuitBandwidthShapes(ctx context
 	return
 }
 
-// Lists the public IP prefixes and their details for the specified
+// ListVirtualCircuitPublicPrefixes Lists the public IP prefixes and their details for the specified
 // public virtual circuit.
 func (client VirtualNetworkClient) ListVirtualCircuitPublicPrefixes(ctx context.Context, request ListVirtualCircuitPublicPrefixesRequest) (response ListVirtualCircuitPublicPrefixesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/virtualCircuits/{virtualCircuitId}/publicPrefixes", request)
@@ -1527,7 +1528,7 @@ func (client VirtualNetworkClient) ListVirtualCircuitPublicPrefixes(ctx context.
 	return
 }
 
-// Lists the virtual circuits in the specified compartment.
+// ListVirtualCircuits Lists the virtual circuits in the specified compartment.
 func (client VirtualNetworkClient) ListVirtualCircuits(ctx context.Context, request ListVirtualCircuitsRequest) (response ListVirtualCircuitsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/virtualCircuits", request)
 	if err != nil {
@@ -1545,7 +1546,7 @@ func (client VirtualNetworkClient) ListVirtualCircuits(ctx context.Context, requ
 	return
 }
 
-// Updates the specified CPE's display name.
+// UpdateCpe Updates the specified CPE's display name.
 // Avoid entering confidential information.
 func (client VirtualNetworkClient) UpdateCpe(ctx context.Context, request UpdateCpeRequest) (response UpdateCpeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/cpes/{cpeId}", request)
@@ -1564,7 +1565,7 @@ func (client VirtualNetworkClient) UpdateCpe(ctx context.Context, request Update
 	return
 }
 
-// Updates the specified cross-connect.
+// UpdateCrossConnect Updates the specified cross-connect.
 func (client VirtualNetworkClient) UpdateCrossConnect(ctx context.Context, request UpdateCrossConnectRequest) (response UpdateCrossConnectResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/crossConnects/{crossConnectId}", request)
 	if err != nil {
@@ -1582,7 +1583,7 @@ func (client VirtualNetworkClient) UpdateCrossConnect(ctx context.Context, reque
 	return
 }
 
-// Updates the specified cross-connect group's display name.
+// UpdateCrossConnectGroup Updates the specified cross-connect group's display name.
 // Avoid entering confidential information.
 func (client VirtualNetworkClient) UpdateCrossConnectGroup(ctx context.Context, request UpdateCrossConnectGroupRequest) (response UpdateCrossConnectGroupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/crossConnectGroups/{crossConnectGroupId}", request)
@@ -1601,7 +1602,7 @@ func (client VirtualNetworkClient) UpdateCrossConnectGroup(ctx context.Context, 
 	return
 }
 
-// Updates the specified set of DHCP options. You can update the display name or the options
+// UpdateDhcpOptions Updates the specified set of DHCP options. You can update the display name or the options
 // themselves. Avoid entering confidential information.
 // Note that the `options` object you provide replaces the entire existing set of options.
 func (client VirtualNetworkClient) UpdateDhcpOptions(ctx context.Context, request UpdateDhcpOptionsRequest) (response UpdateDhcpOptionsResponse, err error) {
@@ -1621,7 +1622,7 @@ func (client VirtualNetworkClient) UpdateDhcpOptions(ctx context.Context, reques
 	return
 }
 
-// Updates the specified DRG's display name. Avoid entering confidential information.
+// UpdateDrg Updates the specified DRG's display name. Avoid entering confidential information.
 func (client VirtualNetworkClient) UpdateDrg(ctx context.Context, request UpdateDrgRequest) (response UpdateDrgResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/drgs/{drgId}", request)
 	if err != nil {
@@ -1639,7 +1640,7 @@ func (client VirtualNetworkClient) UpdateDrg(ctx context.Context, request Update
 	return
 }
 
-// Updates the display name for the specified `DrgAttachment`.
+// UpdateDrgAttachment Updates the display name for the specified `DrgAttachment`.
 // Avoid entering confidential information.
 func (client VirtualNetworkClient) UpdateDrgAttachment(ctx context.Context, request UpdateDrgAttachmentRequest) (response UpdateDrgAttachmentResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/drgAttachments/{drgAttachmentId}", request)
@@ -1658,7 +1659,7 @@ func (client VirtualNetworkClient) UpdateDrgAttachment(ctx context.Context, requ
 	return
 }
 
-// Updates the display name for the specified IPSec connection.
+// UpdateIPSecConnection Updates the display name for the specified IPSec connection.
 // Avoid entering confidential information.
 func (client VirtualNetworkClient) UpdateIPSecConnection(ctx context.Context, request UpdateIPSecConnectionRequest) (response UpdateIPSecConnectionResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/ipsecConnections/{ipscId}", request)
@@ -1677,7 +1678,7 @@ func (client VirtualNetworkClient) UpdateIPSecConnection(ctx context.Context, re
 	return
 }
 
-// Updates the specified Internet Gateway. You can disable/enable it, or change its display name.
+// UpdateInternetGateway Updates the specified Internet Gateway. You can disable/enable it, or change its display name.
 // Avoid entering confidential information.
 // If the gateway is disabled, that means no traffic will flow to/from the internet even if there's
 // a route rule that enables that traffic.
@@ -1698,7 +1699,7 @@ func (client VirtualNetworkClient) UpdateInternetGateway(ctx context.Context, re
 	return
 }
 
-// Updates the specified local peering gateway (LPG).
+// UpdateLocalPeeringGateway Updates the specified local peering gateway (LPG).
 func (client VirtualNetworkClient) UpdateLocalPeeringGateway(ctx context.Context, request UpdateLocalPeeringGatewayRequest) (response UpdateLocalPeeringGatewayResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/localPeeringGateways/{localPeeringGatewayId}", request)
 	if err != nil {
@@ -1716,7 +1717,7 @@ func (client VirtualNetworkClient) UpdateLocalPeeringGateway(ctx context.Context
 	return
 }
 
-// Updates the specified private IP. You must specify the object's OCID.
+// UpdatePrivateIp Updates the specified private IP. You must specify the object's OCID.
 // Use this operation if you want to:
 //   - Move a secondary private IP to a different VNIC in the same subnet.
 //   - Change the display name for a secondary private IP.
@@ -1741,7 +1742,7 @@ func (client VirtualNetworkClient) UpdatePrivateIp(ctx context.Context, request 
 	return
 }
 
-// Updates the specified route table's display name or route rules.
+// UpdateRouteTable Updates the specified route table's display name or route rules.
 // Avoid entering confidential information.
 // Note that the `routeRules` object you provide replaces the entire existing set of rules.
 func (client VirtualNetworkClient) UpdateRouteTable(ctx context.Context, request UpdateRouteTableRequest) (response UpdateRouteTableResponse, err error) {
@@ -1761,7 +1762,7 @@ func (client VirtualNetworkClient) UpdateRouteTable(ctx context.Context, request
 	return
 }
 
-// Updates the specified security list's display name or rules.
+// UpdateSecurityList Updates the specified security list's display name or rules.
 // Avoid entering confidential information.
 // Note that the `egressSecurityRules` or `ingressSecurityRules` objects you provide replace the entire
 // existing objects.
@@ -1782,7 +1783,7 @@ func (client VirtualNetworkClient) UpdateSecurityList(ctx context.Context, reque
 	return
 }
 
-// Updates the specified subnet's display name. Avoid entering confidential information.
+// UpdateSubnet Updates the specified subnet's display name. Avoid entering confidential information.
 func (client VirtualNetworkClient) UpdateSubnet(ctx context.Context, request UpdateSubnetRequest) (response UpdateSubnetResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/subnets/{subnetId}", request)
 	if err != nil {
@@ -1800,7 +1801,7 @@ func (client VirtualNetworkClient) UpdateSubnet(ctx context.Context, request Upd
 	return
 }
 
-// Updates the specified VCN's display name.
+// UpdateVcn Updates the specified VCN's display name.
 // Avoid entering confidential information.
 func (client VirtualNetworkClient) UpdateVcn(ctx context.Context, request UpdateVcnRequest) (response UpdateVcnResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/vcns/{vcnId}", request)
@@ -1819,7 +1820,7 @@ func (client VirtualNetworkClient) UpdateVcn(ctx context.Context, request Update
 	return
 }
 
-// Updates the specified virtual circuit. This can be called by
+// UpdateVirtualCircuit Updates the specified virtual circuit. This can be called by
 // either the customer who owns the virtual circuit, or the
 // provider (when provisioning or de-provisioning the virtual
 // circuit from their end). The documentation for
@@ -1858,7 +1859,7 @@ func (client VirtualNetworkClient) UpdateVirtualCircuit(ctx context.Context, req
 	return
 }
 
-// Updates the specified VNIC.
+// UpdateVnic Updates the specified VNIC.
 func (client VirtualNetworkClient) UpdateVnic(ctx context.Context, request UpdateVnicRequest) (response UpdateVnicResponse, err error) {
 	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/vnics/{vnicId}", request)
 	if err != nil {

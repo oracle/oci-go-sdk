@@ -111,11 +111,11 @@ type VirtualCircuit struct {
 
 	// Whether the virtual circuit supports private or public peering. For more information,
 	// see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
-	Type_ VirtualCircuitType_Enum `mandatory:"false" json:"type,omitempty"`
+	Type VirtualCircuitTypeEnum `mandatory:"false" json:"type,omitempty"`
 }
 
-func (model VirtualCircuit) String() string {
-	return common.PointerString(model)
+func (m VirtualCircuit) String() string {
+	return common.PointerString(m)
 }
 
 // VirtualCircuitBgpManagementEnum Enum with underlying type: string
@@ -269,27 +269,27 @@ func GetVirtualCircuitServiceTypeEnumValues() []VirtualCircuitServiceTypeEnum {
 	return values
 }
 
-// VirtualCircuitType_Enum Enum with underlying type: string
-type VirtualCircuitType_Enum string
+// VirtualCircuitTypeEnum Enum with underlying type: string
+type VirtualCircuitTypeEnum string
 
-// Set of constants representing the allowable values for VirtualCircuitType_
+// Set of constants representing the allowable values for VirtualCircuitType
 const (
-	VirtualCircuitType_Public  VirtualCircuitType_Enum = "PUBLIC"
-	VirtualCircuitType_Private VirtualCircuitType_Enum = "PRIVATE"
-	VirtualCircuitType_Unknown VirtualCircuitType_Enum = "UNKNOWN"
+	VirtualCircuitTypePublic  VirtualCircuitTypeEnum = "PUBLIC"
+	VirtualCircuitTypePrivate VirtualCircuitTypeEnum = "PRIVATE"
+	VirtualCircuitTypeUnknown VirtualCircuitTypeEnum = "UNKNOWN"
 )
 
-var mappingVirtualCircuitType_ = map[string]VirtualCircuitType_Enum{
-	"PUBLIC":  VirtualCircuitType_Public,
-	"PRIVATE": VirtualCircuitType_Private,
-	"UNKNOWN": VirtualCircuitType_Unknown,
+var mappingVirtualCircuitType = map[string]VirtualCircuitTypeEnum{
+	"PUBLIC":  VirtualCircuitTypePublic,
+	"PRIVATE": VirtualCircuitTypePrivate,
+	"UNKNOWN": VirtualCircuitTypeUnknown,
 }
 
-// GetVirtualCircuitType_EnumValues Enumerates the set of values for VirtualCircuitType_
-func GetVirtualCircuitType_EnumValues() []VirtualCircuitType_Enum {
-	values := make([]VirtualCircuitType_Enum, 0)
-	for _, v := range mappingVirtualCircuitType_ {
-		if v != VirtualCircuitType_Unknown {
+// GetVirtualCircuitTypeEnumValues Enumerates the set of values for VirtualCircuitType
+func GetVirtualCircuitTypeEnumValues() []VirtualCircuitTypeEnum {
+	values := make([]VirtualCircuitTypeEnum, 0)
+	for _, v := range mappingVirtualCircuitType {
+		if v != VirtualCircuitTypeUnknown {
 			values = append(values, v)
 		}
 	}

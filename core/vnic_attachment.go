@@ -60,8 +60,8 @@ type VnicAttachment struct {
 	VnicID *string `mandatory:"false" json:"vnicId,omitempty"`
 }
 
-func (model VnicAttachment) String() string {
-	return common.PointerString(model)
+func (m VnicAttachment) String() string {
+	return common.PointerString(m)
 }
 
 // VnicAttachmentLifecycleStateEnum Enum with underlying type: string

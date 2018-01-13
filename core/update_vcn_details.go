@@ -19,6 +19,6 @@ type UpdateVcnDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model UpdateVcnDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateVcnDetails) String() string {
+	return common.PointerString(m)
 }

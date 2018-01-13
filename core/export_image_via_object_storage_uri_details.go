@@ -13,7 +13,6 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ExportImageViaObjectStorageUriDetails
 type ExportImageViaObjectStorageUriDetails struct {
 
 	// The Object Storage URL to export the image to. See [Object Storage URLs]({{DOC_SERVER_URL}}/Content/Compute/Tasks/imageimportexport.htm#URLs)
@@ -25,6 +24,7 @@ func (m ExportImageViaObjectStorageUriDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m ExportImageViaObjectStorageUriDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeExportImageViaObjectStorageUriDetails ExportImageViaObjectStorageUriDetails
 	s := struct {

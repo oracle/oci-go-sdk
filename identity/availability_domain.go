@@ -9,21 +9,28 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+    "github.com/oracle/oci-go-sdk/common"
 )
 
-// AvailabilityDomain One or more isolated, fault-tolerant Oracle data centers that host cloud resources such as instances, volumes,
-// and subnets. A region contains several Availability Domains. For more information, see
-// [Regions and Availability Domains]({{DOC_SERVER_URL}}/Content/General/Concepts/regions.htm).
+
+    
+ // AvailabilityDomain One or more isolated, fault-tolerant Oracle data centers that host cloud resources such as instances, volumes, 
+ // and subnets. A region contains several Availability Domains. For more information, see
+ // [Regions and Availability Domains]({{DOC_SERVER_URL}}/Content/General/Concepts/regions.htm).
 type AvailabilityDomain struct {
-
-	// The name of the Availability Domain.
-	Name *string `mandatory:"false" json:"name,omitempty"`
-
-	// The OCID of the tenancy.
-	CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
+    
+ // The name of the Availability Domain.
+    Name *string `mandatory:"false" json:"name,omitempty"`
+    
+ // The OCID of the tenancy.
+    CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
 }
 
-func (model AvailabilityDomain) String() string {
-	return common.PointerString(model)
+func (m AvailabilityDomain) String() string {
+    return common.PointerString(m)
 }
+
+
+
+
+

@@ -47,6 +47,6 @@ type CreateCrossConnectDetails struct {
 	NearCrossConnectOrCrossConnectGroupID *string `mandatory:"false" json:"nearCrossConnectOrCrossConnectGroupId,omitempty"`
 }
 
-func (model CreateCrossConnectDetails) String() string {
-	return common.PointerString(model)
+func (m CreateCrossConnectDetails) String() string {
+	return common.PointerString(m)
 }

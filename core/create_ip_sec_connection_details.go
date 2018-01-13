@@ -32,6 +32,6 @@ type CreateIpSecConnectionDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-func (model CreateIpSecConnectionDetails) String() string {
-	return common.PointerString(model)
+func (m CreateIpSecConnectionDetails) String() string {
+	return common.PointerString(m)
 }

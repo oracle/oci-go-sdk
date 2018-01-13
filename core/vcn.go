@@ -69,8 +69,8 @@ type Vcn struct {
 	VcnDomainName *string `mandatory:"false" json:"vcnDomainName,omitempty"`
 }
 
-func (model Vcn) String() string {
-	return common.PointerString(model)
+func (m Vcn) String() string {
+	return common.PointerString(m)
 }
 
 // VcnLifecycleStateEnum Enum with underlying type: string

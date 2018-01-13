@@ -50,8 +50,8 @@ type IdpGroupMapping struct {
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
-func (model IdpGroupMapping) String() string {
-	return common.PointerString(model)
+func (m IdpGroupMapping) String() string {
+	return common.PointerString(m)
 }
 
 // IdpGroupMappingLifecycleStateEnum Enum with underlying type: string

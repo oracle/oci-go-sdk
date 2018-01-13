@@ -18,6 +18,6 @@ type BulkAddVirtualCircuitPublicPrefixesDetails struct {
 	PublicPrefixes []CreateVirtualCircuitPublicPrefixDetails `mandatory:"true" json:"publicPrefixes,omitempty"`
 }
 
-func (model BulkAddVirtualCircuitPublicPrefixesDetails) String() string {
-	return common.PointerString(model)
+func (m BulkAddVirtualCircuitPublicPrefixesDetails) String() string {
+	return common.PointerString(m)
 }

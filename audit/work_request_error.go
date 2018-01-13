@@ -26,6 +26,6 @@ type WorkRequestError struct {
 	Timestamp *common.SDKTime `mandatory:"false" json:"timestamp,omitempty"`
 }
 
-func (model WorkRequestError) String() string {
-	return common.PointerString(model)
+func (m WorkRequestError) String() string {
+	return common.PointerString(m)
 }

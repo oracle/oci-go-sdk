@@ -30,6 +30,6 @@ type MultipartUploadPartSummary struct {
 	PartNumber *int `mandatory:"true" json:"partNumber,omitempty"`
 }
 
-func (model MultipartUploadPartSummary) String() string {
-	return common.PointerString(model)
+func (m MultipartUploadPartSummary) String() string {
+	return common.PointerString(m)
 }

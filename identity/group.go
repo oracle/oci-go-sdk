@@ -50,8 +50,8 @@ type Group struct {
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
 }
 
-func (model Group) String() string {
-	return common.PointerString(model)
+func (m Group) String() string {
+	return common.PointerString(m)
 }
 
 // GroupLifecycleStateEnum Enum with underlying type: string

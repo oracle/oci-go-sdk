@@ -32,7 +32,7 @@ type FastConnectProviderService struct {
 	PublicPeeringBgpManagement FastConnectProviderServicePublicPeeringBgpManagementEnum `mandatory:"true" json:"publicPeeringBgpManagement,omitempty"`
 
 	// Provider service type.
-	Type_ FastConnectProviderServiceType_Enum `mandatory:"true" json:"type,omitempty"`
+	Type FastConnectProviderServiceTypeEnum `mandatory:"true" json:"type,omitempty"`
 
 	// A description of the service offered by the provider.
 	Description *string `mandatory:"false" json:"description,omitempty"`
@@ -41,8 +41,8 @@ type FastConnectProviderService struct {
 	SupportedVirtualCircuitTypes []FastConnectProviderServiceSupportedVirtualCircuitTypesEnum `mandatory:"false" json:"supportedVirtualCircuitTypes,omitempty"`
 }
 
-func (model FastConnectProviderService) String() string {
-	return common.PointerString(model)
+func (m FastConnectProviderService) String() string {
+	return common.PointerString(m)
 }
 
 // FastConnectProviderServicePrivatePeeringBgpManagementEnum Enum with underlying type: string
@@ -130,27 +130,27 @@ func GetFastConnectProviderServiceSupportedVirtualCircuitTypesEnumValues() []Fas
 	return values
 }
 
-// FastConnectProviderServiceType_Enum Enum with underlying type: string
-type FastConnectProviderServiceType_Enum string
+// FastConnectProviderServiceTypeEnum Enum with underlying type: string
+type FastConnectProviderServiceTypeEnum string
 
-// Set of constants representing the allowable values for FastConnectProviderServiceType_
+// Set of constants representing the allowable values for FastConnectProviderServiceType
 const (
-	FastConnectProviderServiceType_Layer2  FastConnectProviderServiceType_Enum = "LAYER2"
-	FastConnectProviderServiceType_Layer3  FastConnectProviderServiceType_Enum = "LAYER3"
-	FastConnectProviderServiceType_Unknown FastConnectProviderServiceType_Enum = "UNKNOWN"
+	FastConnectProviderServiceTypeLayer2  FastConnectProviderServiceTypeEnum = "LAYER2"
+	FastConnectProviderServiceTypeLayer3  FastConnectProviderServiceTypeEnum = "LAYER3"
+	FastConnectProviderServiceTypeUnknown FastConnectProviderServiceTypeEnum = "UNKNOWN"
 )
 
-var mappingFastConnectProviderServiceType_ = map[string]FastConnectProviderServiceType_Enum{
-	"LAYER2":  FastConnectProviderServiceType_Layer2,
-	"LAYER3":  FastConnectProviderServiceType_Layer3,
-	"UNKNOWN": FastConnectProviderServiceType_Unknown,
+var mappingFastConnectProviderServiceType = map[string]FastConnectProviderServiceTypeEnum{
+	"LAYER2":  FastConnectProviderServiceTypeLayer2,
+	"LAYER3":  FastConnectProviderServiceTypeLayer3,
+	"UNKNOWN": FastConnectProviderServiceTypeUnknown,
 }
 
-// GetFastConnectProviderServiceType_EnumValues Enumerates the set of values for FastConnectProviderServiceType_
-func GetFastConnectProviderServiceType_EnumValues() []FastConnectProviderServiceType_Enum {
-	values := make([]FastConnectProviderServiceType_Enum, 0)
-	for _, v := range mappingFastConnectProviderServiceType_ {
-		if v != FastConnectProviderServiceType_Unknown {
+// GetFastConnectProviderServiceTypeEnumValues Enumerates the set of values for FastConnectProviderServiceType
+func GetFastConnectProviderServiceTypeEnumValues() []FastConnectProviderServiceTypeEnum {
+	values := make([]FastConnectProviderServiceTypeEnum, 0)
+	for _, v := range mappingFastConnectProviderServiceType {
+		if v != FastConnectProviderServiceTypeUnknown {
 			values = append(values, v)
 		}
 	}

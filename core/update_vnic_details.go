@@ -39,6 +39,6 @@ type UpdateVnicDetails struct {
 	SkipSourceDestCheck *bool `mandatory:"false" json:"skipSourceDestCheck,omitempty"`
 }
 
-func (model UpdateVnicDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateVnicDetails) String() string {
+	return common.PointerString(m)
 }

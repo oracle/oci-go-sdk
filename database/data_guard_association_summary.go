@@ -75,8 +75,8 @@ type DataGuardAssociationSummary struct {
 	TransportType DataGuardAssociationSummaryTransportTypeEnum `mandatory:"false" json:"transportType,omitempty"`
 }
 
-func (model DataGuardAssociationSummary) String() string {
-	return common.PointerString(model)
+func (m DataGuardAssociationSummary) String() string {
+	return common.PointerString(m)
 }
 
 // DataGuardAssociationSummaryLifecycleStateEnum Enum with underlying type: string

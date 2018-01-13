@@ -44,11 +44,11 @@ type BackupSummary struct {
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted,omitempty"`
 
 	// The type of backup.
-	Type_ BackupSummaryType_Enum `mandatory:"false" json:"type,omitempty"`
+	Type BackupSummaryTypeEnum `mandatory:"false" json:"type,omitempty"`
 }
 
-func (model BackupSummary) String() string {
-	return common.PointerString(model)
+func (m BackupSummary) String() string {
+	return common.PointerString(m)
 }
 
 // BackupSummaryLifecycleStateEnum Enum with underlying type: string
@@ -86,27 +86,27 @@ func GetBackupSummaryLifecycleStateEnumValues() []BackupSummaryLifecycleStateEnu
 	return values
 }
 
-// BackupSummaryType_Enum Enum with underlying type: string
-type BackupSummaryType_Enum string
+// BackupSummaryTypeEnum Enum with underlying type: string
+type BackupSummaryTypeEnum string
 
-// Set of constants representing the allowable values for BackupSummaryType_
+// Set of constants representing the allowable values for BackupSummaryType
 const (
-	BackupSummaryType_Incremental BackupSummaryType_Enum = "INCREMENTAL"
-	BackupSummaryType_Full        BackupSummaryType_Enum = "FULL"
-	BackupSummaryType_Unknown     BackupSummaryType_Enum = "UNKNOWN"
+	BackupSummaryTypeIncremental BackupSummaryTypeEnum = "INCREMENTAL"
+	BackupSummaryTypeFull        BackupSummaryTypeEnum = "FULL"
+	BackupSummaryTypeUnknown     BackupSummaryTypeEnum = "UNKNOWN"
 )
 
-var mappingBackupSummaryType_ = map[string]BackupSummaryType_Enum{
-	"INCREMENTAL": BackupSummaryType_Incremental,
-	"FULL":        BackupSummaryType_Full,
-	"UNKNOWN":     BackupSummaryType_Unknown,
+var mappingBackupSummaryType = map[string]BackupSummaryTypeEnum{
+	"INCREMENTAL": BackupSummaryTypeIncremental,
+	"FULL":        BackupSummaryTypeFull,
+	"UNKNOWN":     BackupSummaryTypeUnknown,
 }
 
-// GetBackupSummaryType_EnumValues Enumerates the set of values for BackupSummaryType_
-func GetBackupSummaryType_EnumValues() []BackupSummaryType_Enum {
-	values := make([]BackupSummaryType_Enum, 0)
-	for _, v := range mappingBackupSummaryType_ {
-		if v != BackupSummaryType_Unknown {
+// GetBackupSummaryTypeEnumValues Enumerates the set of values for BackupSummaryType
+func GetBackupSummaryTypeEnumValues() []BackupSummaryTypeEnum {
+	values := make([]BackupSummaryTypeEnum, 0)
+	for _, v := range mappingBackupSummaryType {
+		if v != BackupSummaryTypeUnknown {
 			values = append(values, v)
 		}
 	}

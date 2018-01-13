@@ -50,8 +50,8 @@ type BootVolume struct {
 	SizeInGBs *int `mandatory:"false" json:"sizeInGBs,omitempty"`
 }
 
-func (model BootVolume) String() string {
-	return common.PointerString(model)
+func (m BootVolume) String() string {
+	return common.PointerString(m)
 }
 
 // BootVolumeLifecycleStateEnum Enum with underlying type: string

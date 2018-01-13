@@ -13,7 +13,6 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// InstanceSourceViaBootVolumeDetails
 type InstanceSourceViaBootVolumeDetails struct {
 
 	// The OCID of the boot volume used to boot the instance.
@@ -24,6 +23,7 @@ func (m InstanceSourceViaBootVolumeDetails) String() string {
 	return common.PointerString(m)
 }
 
+//MarshalJSON marshals to json representation
 func (m InstanceSourceViaBootVolumeDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeInstanceSourceViaBootVolumeDetails InstanceSourceViaBootVolumeDetails
 	s := struct {

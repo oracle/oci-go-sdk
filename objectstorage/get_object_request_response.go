@@ -37,7 +37,7 @@ type GetObjectRequest struct {
 
 	// Optional byte range to fetch, as described in [RFC 7233](https://tools.ietf.org/rfc/rfc7233), section 2.1.
 	// Note, only a single range of bytes is supported.
-	Range_ *string `mandatory:"false" contributesTo:"header" name:"range"`
+	Range *string `mandatory:"false" contributesTo:"header" name:"range"`
 }
 
 func (request GetObjectRequest) String() string {

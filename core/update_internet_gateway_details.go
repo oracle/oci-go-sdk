@@ -22,6 +22,6 @@ type UpdateInternetGatewayDetails struct {
 	IsEnabled *bool `mandatory:"false" json:"isEnabled,omitempty"`
 }
 
-func (model UpdateInternetGatewayDetails) String() string {
-	return common.PointerString(model)
+func (m UpdateInternetGatewayDetails) String() string {
+	return common.PointerString(m)
 }

@@ -27,6 +27,6 @@ type FaultDomain struct {
 	AvailabilityDomain *string `mandatory:"false" json:"availabilityDomain,omitempty"`
 }
 
-func (model FaultDomain) String() string {
-	return common.PointerString(model)
+func (m FaultDomain) String() string {
+	return common.PointerString(m)
 }
