@@ -27,7 +27,7 @@ type dhcpoption struct {
 	Type     string `json:"type"`
 }
 
-//UnmarshalJSON unmarshals json
+// UnmarshalJSON unmarshals json
 func (m *dhcpoption) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalerdhcpoption dhcpoption
@@ -43,7 +43,7 @@ func (m *dhcpoption) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-//UnmarshalPolymorphicJSON unmarshals polymorphic json
+// UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *dhcpoption) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.Type {

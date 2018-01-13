@@ -29,7 +29,7 @@ func (m ExportImageViaObjectStorageTupleDetails) String() string {
 	return common.PointerString(m)
 }
 
-//MarshalJSON marshals to json representation
+// MarshalJSON marshals to json representation
 func (m ExportImageViaObjectStorageTupleDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeExportImageViaObjectStorageTupleDetails ExportImageViaObjectStorageTupleDetails
 	s := struct {

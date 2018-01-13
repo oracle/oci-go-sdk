@@ -30,7 +30,7 @@ type createdbhomewithdbsystemidbase struct {
 	Source      string  `json:"source"`
 }
 
-//UnmarshalJSON unmarshals json
+// UnmarshalJSON unmarshals json
 func (m *createdbhomewithdbsystemidbase) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalercreatedbhomewithdbsystemidbase createdbhomewithdbsystemidbase
@@ -48,7 +48,7 @@ func (m *createdbhomewithdbsystemidbase) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-//UnmarshalPolymorphicJSON unmarshals polymorphic json
+// UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *createdbhomewithdbsystemidbase) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.Source {

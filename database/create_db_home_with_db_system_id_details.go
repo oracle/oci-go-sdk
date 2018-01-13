@@ -41,7 +41,7 @@ func (m CreateDbHomeWithDbSystemIdDetails) String() string {
 	return common.PointerString(m)
 }
 
-//MarshalJSON marshals to json representation
+// MarshalJSON marshals to json representation
 func (m CreateDbHomeWithDbSystemIdDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeCreateDbHomeWithDbSystemIdDetails CreateDbHomeWithDbSystemIdDetails
 	s := struct {

@@ -75,7 +75,7 @@ type identityprovider struct {
 	Protocol       string                             `json:"protocol"`
 }
 
-//UnmarshalJSON unmarshals json
+// UnmarshalJSON unmarshals json
 func (m *identityprovider) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshaleridentityprovider identityprovider
@@ -99,7 +99,7 @@ func (m *identityprovider) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-//UnmarshalPolymorphicJSON unmarshals polymorphic json
+// UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *identityprovider) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.Protocol {

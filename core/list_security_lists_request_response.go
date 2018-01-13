@@ -41,7 +41,7 @@ type ListSecurityListsRequest struct {
 	SortOrder ListSecurityListsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
-	LifecycleState *string `mandatory:"false" contributesTo:"query" name:"lifecycleState"`
+	LifecycleState SecurityListLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState"`
 }
 
 func (request ListSecurityListsRequest) String() string {

@@ -41,7 +41,7 @@ func (m DhcpDnsOption) String() string {
 	return common.PointerString(m)
 }
 
-//MarshalJSON marshals to json representation
+// MarshalJSON marshals to json representation
 func (m DhcpDnsOption) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeDhcpDnsOption DhcpDnsOption
 	s := struct {

@@ -23,7 +23,7 @@ func (m InstanceSourceViaBootVolumeDetails) String() string {
 	return common.PointerString(m)
 }
 
-//MarshalJSON marshals to json representation
+// MarshalJSON marshals to json representation
 func (m InstanceSourceViaBootVolumeDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeInstanceSourceViaBootVolumeDetails InstanceSourceViaBootVolumeDetails
 	s := struct {

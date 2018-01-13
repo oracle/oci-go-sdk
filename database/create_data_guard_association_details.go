@@ -57,7 +57,7 @@ type createdataguardassociationdetails struct {
 	CreationType          string                                              `json:"creationType"`
 }
 
-//UnmarshalJSON unmarshals json
+// UnmarshalJSON unmarshals json
 func (m *createdataguardassociationdetails) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalercreatedataguardassociationdetails createdataguardassociationdetails
@@ -76,7 +76,7 @@ func (m *createdataguardassociationdetails) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-//UnmarshalPolymorphicJSON unmarshals polymorphic json
+// UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *createdataguardassociationdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.CreationType {
