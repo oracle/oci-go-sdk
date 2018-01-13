@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// LaunchDbSystemDetails The representation of LaunchDbSystemDetails
 type LaunchDbSystemDetails struct {
 
 	// The Availability Domain where the DB System is located.

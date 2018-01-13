@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// PortRange The representation of PortRange
 type PortRange struct {
 
 	// The maximum port number. Must not be lower than the minimum port number. To specify

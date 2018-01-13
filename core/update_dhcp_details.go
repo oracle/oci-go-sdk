@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateDhcpDetails The representation of UpdateDhcpDetails
 type UpdateDhcpDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.

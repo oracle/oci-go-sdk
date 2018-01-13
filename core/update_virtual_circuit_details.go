@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateVirtualCircuitDetails The representation of UpdateVirtualCircuitDetails
 type UpdateVirtualCircuitDetails struct {
 
 	// The provisioned data rate of the connection. To get a list of the

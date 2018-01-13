@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateVcnDetails The representation of CreateVcnDetails
 type CreateVcnDetails struct {
 
 	// The CIDR IP address block of the VCN.

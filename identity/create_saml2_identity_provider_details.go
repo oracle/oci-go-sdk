@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateSaml2IdentityProviderDetails The representation of CreateSaml2IdentityProviderDetails
 type CreateSaml2IdentityProviderDetails struct {
 
 	// The OCID of your tenancy.

@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// PreauthenticatedRequestSummary The representation of PreauthenticatedRequestSummary
 type PreauthenticatedRequestSummary struct {
 
 	// the unique identifier to use when directly addressing the pre-authenticated request

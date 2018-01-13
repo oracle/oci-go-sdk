@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// AttachVolumeDetails is an interface representing the polymorphic json shape of this model
+// AttachVolumeDetails The representation of AttachVolumeDetails
 type AttachVolumeDetails interface {
 
 	// The OCID of the instance.

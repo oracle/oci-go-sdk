@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// AttachBootVolumeDetails The representation of AttachBootVolumeDetails
 type AttachBootVolumeDetails struct {
 
 	// The OCID of the  boot volume.

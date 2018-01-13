@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// ImageSourceViaObjectStorageUriDetails The representation of ImageSourceViaObjectStorageUriDetails
 type ImageSourceViaObjectStorageUriDetails struct {
 
 	// The Object Storage URL for the image.

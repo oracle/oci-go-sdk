@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateIdentityProviderDetails is an interface representing the polymorphic json shape of this model
+// UpdateIdentityProviderDetails The representation of UpdateIdentityProviderDetails
 type UpdateIdentityProviderDetails interface {
 
 	// The description you assign to the `IdentityProvider`. Does not have to

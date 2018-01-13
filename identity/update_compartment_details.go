@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateCompartmentDetails The representation of UpdateCompartmentDetails
 type UpdateCompartmentDetails struct {
 
 	// The description you assign to the compartment. Does not have to be unique, and it's changeable.

@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdatePolicyDetails The representation of UpdatePolicyDetails
 type UpdatePolicyDetails struct {
 
 	// The description you assign to the policy. Does not have to be unique, and it's changeable.

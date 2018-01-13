@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateSubnetDetails The representation of CreateSubnetDetails
 type CreateSubnetDetails struct {
 
 	// The Availability Domain to contain the subnet.

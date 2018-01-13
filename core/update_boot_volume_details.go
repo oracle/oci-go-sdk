@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateBootVolumeDetails The representation of UpdateBootVolumeDetails
 type UpdateBootVolumeDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.

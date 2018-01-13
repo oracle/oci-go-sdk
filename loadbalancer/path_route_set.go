@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// PathRouteSet The representation of PathRouteSet
 type PathRouteSet struct {
 
 	// A unique name for this set of path routes.

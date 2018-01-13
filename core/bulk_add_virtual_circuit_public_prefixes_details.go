@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// BulkAddVirtualCircuitPublicPrefixesDetails The representation of BulkAddVirtualCircuitPublicPrefixesDetails
 type BulkAddVirtualCircuitPublicPrefixesDetails struct {
 
 	// The public IP prefixes (CIDRs) to add to the public virtual circuit.

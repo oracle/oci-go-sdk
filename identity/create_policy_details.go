@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreatePolicyDetails The representation of CreatePolicyDetails
 type CreatePolicyDetails struct {
 
 	// The OCID of the compartment containing the policy (either the tenancy or another compartment).

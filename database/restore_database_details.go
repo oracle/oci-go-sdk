@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// RestoreDatabaseDetails The representation of RestoreDatabaseDetails
 type RestoreDatabaseDetails struct {
 
 	// Restores using the backup with the System Change Number (SCN) specified.

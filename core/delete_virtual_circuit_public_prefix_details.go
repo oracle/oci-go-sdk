@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// DeleteVirtualCircuitPublicPrefixDetails The representation of DeleteVirtualCircuitPublicPrefixDetails
 type DeleteVirtualCircuitPublicPrefixDetails struct {
 
 	// An individual public IP prefix (CIDR) to remove from the public virtual circuit.

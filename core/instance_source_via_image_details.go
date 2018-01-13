@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// InstanceSourceViaImageDetails The representation of InstanceSourceViaImageDetails
 type InstanceSourceViaImageDetails struct {
 
 	// The OCID of the image used to boot the instance.

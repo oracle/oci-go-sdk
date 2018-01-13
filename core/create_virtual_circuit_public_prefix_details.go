@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateVirtualCircuitPublicPrefixDetails The representation of CreateVirtualCircuitPublicPrefixDetails
 type CreateVirtualCircuitPublicPrefixDetails struct {
 
 	// An individual public IP prefix (CIDR) to add to the public virtual circuit.

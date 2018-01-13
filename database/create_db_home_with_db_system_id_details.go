@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateDbHomeWithDbSystemIdDetails The representation of CreateDbHomeWithDbSystemIdDetails
 type CreateDbHomeWithDbSystemIdDetails struct {
 
 	// The OCID of the DB System.

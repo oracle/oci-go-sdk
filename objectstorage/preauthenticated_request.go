@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// PreauthenticatedRequest The representation of PreauthenticatedRequest
 type PreauthenticatedRequest struct {
 
 	// the unique identifier to use when directly addressing the pre-authenticated request

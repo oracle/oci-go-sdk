@@ -21,7 +21,6 @@ import (
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
 // see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
-// IdentityProvider is an interface representing the polymorphic json shape of this model
 type IdentityProvider interface {
 
 	// The OCID of the `IdentityProvider`.

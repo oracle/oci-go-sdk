@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// AttachVnicDetails The representation of AttachVnicDetails
 type AttachVnicDetails struct {
 
 	// Details for creating a new VNIC.

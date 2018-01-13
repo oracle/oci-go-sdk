@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateSaml2IdentityProviderDetails The representation of UpdateSaml2IdentityProviderDetails
 type UpdateSaml2IdentityProviderDetails struct {
 
 	// The description you assign to the `IdentityProvider`. Does not have to

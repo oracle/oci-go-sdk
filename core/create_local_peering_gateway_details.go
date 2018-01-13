@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateLocalPeeringGatewayDetails The representation of CreateLocalPeeringGatewayDetails
 type CreateLocalPeeringGatewayDetails struct {
 
 	// The OCID of the compartment containing the local peering gateway (LPG).

@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateDrgDetails The representation of CreateDrgDetails
 type CreateDrgDetails struct {
 
 	// The OCID of the compartment to contain the DRG.

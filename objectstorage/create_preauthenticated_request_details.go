@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreatePreauthenticatedRequestDetails The representation of CreatePreauthenticatedRequestDetails
 type CreatePreauthenticatedRequestDetails struct {
 
 	// user specified name for pre-authenticated request. Helpful for management purposes.

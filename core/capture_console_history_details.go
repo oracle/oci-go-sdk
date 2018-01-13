@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CaptureConsoleHistoryDetails The representation of CaptureConsoleHistoryDetails
 type CaptureConsoleHistoryDetails struct {
 
 	// The OCID of the instance to get the console history from.

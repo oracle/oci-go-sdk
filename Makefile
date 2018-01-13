@@ -2,19 +2,27 @@ DOC_SERVER_URL=http:\/\/lgl-bybliothece-01.virt.lgl.grungy.us
 TARGETS = common common/auth identity core objectstorage loadbalancer database audit
 TARGETS_WITH_TESTS = common common/auth integtest
 TARGETS_BUILD = $(patsubst %,build-%, $(TARGETS))
+TARGETS_LINT = $(patsubst %,lint-%, $(TARGETS))
 TARGETS_TEST = $(patsubst %,test-%, $(TARGETS_WITH_TESTS))
 TARGETS_RELEASE= $(patsubst %,release-%, $(TARGETS))
+LINT_FLAGS=-min_confidence 0.9
 
 
 .PHONY: $(TARGETS_BUILD) $(TARGET_TEST)
 
-build: $(TARGETS_BUILD)
+build: lint $(TARGETS_BUILD)
 
 test: build $(TARGETS_TEST)
 
+lint: $(TARGETS_LINT)
+
+$(TARGETS_LINT): lint-%:%
+	@echo "linting: $<"
+	@(cd $< && gofmt -s -w .)
+	(cd $< && golint $(LINT_FLAGS) .)
+
 $(TARGETS_BUILD): build-%:%
 	@echo "\nbuilding: $<"
-	@(cd $< && gofmt -s -w .)
 	@(cd $< && find . -name '*_integ_test.go' | xargs -I{} mv {} ../integtest)
 	@(cd $< && go build -v)
 

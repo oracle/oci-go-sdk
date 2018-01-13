@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// InstanceSourceDetails is an interface representing the polymorphic json shape of this model
+// InstanceSourceDetails The representation of InstanceSourceDetails
 type InstanceSourceDetails interface {
 }
 

@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateSwiftPasswordDetails The representation of UpdateSwiftPasswordDetails
 type UpdateSwiftPasswordDetails struct {
 
 	// The description you assign to the Swift password. Does not have to be unique, and it's changeable.

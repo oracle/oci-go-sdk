@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreatePathRouteSetDetails The representation of CreatePathRouteSetDetails
 type CreatePathRouteSetDetails struct {
 
 	// A unique name for this set of path routes.

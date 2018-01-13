@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateCustomerSecretKeyDetails The representation of CreateCustomerSecretKeyDetails
 type CreateCustomerSecretKeyDetails struct {
 
 	// The name you assign to the secret key during creation. Does not have to be unique, and it's changeable.

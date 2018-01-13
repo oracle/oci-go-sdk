@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateUserDetails The representation of UpdateUserDetails
 type UpdateUserDetails struct {
 
 	// The description you assign to the user. Does not have to be unique, and it's changeable.

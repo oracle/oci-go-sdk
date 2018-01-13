@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateVolumeDetails The representation of CreateVolumeDetails
 type CreateVolumeDetails struct {
 
 	// The Availability Domain of the volume.

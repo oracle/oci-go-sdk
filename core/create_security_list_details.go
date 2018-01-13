@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateSecurityListDetails The representation of CreateSecurityListDetails
 type CreateSecurityListDetails struct {
 
 	// The OCID of the compartment to contain the security list.

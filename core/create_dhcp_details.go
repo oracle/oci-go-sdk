@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateDhcpDetails The representation of CreateDhcpDetails
 type CreateDhcpDetails struct {
 
 	// The OCID of the compartment to contain the set of DHCP options.

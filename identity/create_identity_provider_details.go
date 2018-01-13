@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateIdentityProviderDetails is an interface representing the polymorphic json shape of this model
+// CreateIdentityProviderDetails The representation of CreateIdentityProviderDetails
 type CreateIdentityProviderDetails interface {
 
 	// The OCID of your tenancy.

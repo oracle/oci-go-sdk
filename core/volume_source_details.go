@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// VolumeSourceDetails is an interface representing the polymorphic json shape of this model
+// VolumeSourceDetails The representation of VolumeSourceDetails
 type VolumeSourceDetails interface {
 }
 

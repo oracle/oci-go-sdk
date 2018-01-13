@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// AddUserToGroupDetails The representation of AddUserToGroupDetails
 type AddUserToGroupDetails struct {
 
 	// The OCID of the user.

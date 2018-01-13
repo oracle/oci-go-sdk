@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateVolumeBackupDetails The representation of UpdateVolumeBackupDetails
 type UpdateVolumeBackupDetails struct {
 
 	// A friendly user-specified name for the volume backup.

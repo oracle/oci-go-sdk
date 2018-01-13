@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdatePathRouteSetDetails The representation of UpdatePathRouteSetDetails
 type UpdatePathRouteSetDetails struct {
 	PathRoutes []PathRoute `mandatory:"true" json:"pathRoutes,omitempty"`
 }

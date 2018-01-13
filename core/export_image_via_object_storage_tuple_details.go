@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// ExportImageViaObjectStorageTupleDetails The representation of ExportImageViaObjectStorageTupleDetails
 type ExportImageViaObjectStorageTupleDetails struct {
 
 	// The Object Storage bucket to export the image to.

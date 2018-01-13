@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateVirtualCircuitDetails The representation of CreateVirtualCircuitDetails
 type CreateVirtualCircuitDetails struct {
 
 	// The OCID of the compartment to contain the virtual circuit.

@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateCompartmentDetails The representation of CreateCompartmentDetails
 type CreateCompartmentDetails struct {
 
 	// The OCID of the tenancy containing the compartment.

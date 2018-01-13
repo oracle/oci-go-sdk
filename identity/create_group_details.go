@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateGroupDetails The representation of CreateGroupDetails
 type CreateGroupDetails struct {
 
 	// The OCID of the tenancy containing the group.

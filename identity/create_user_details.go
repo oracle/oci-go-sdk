@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateUserDetails The representation of CreateUserDetails
 type CreateUserDetails struct {
 
 	// The OCID of the tenancy containing the user.

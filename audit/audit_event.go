@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// AuditEvent The representation of AuditEvent
 type AuditEvent struct {
 
 	// The OCID of the tenant.

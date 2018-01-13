@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateCrossConnectGroupDetails The representation of CreateCrossConnectGroupDetails
 type CreateCrossConnectGroupDetails struct {
 
 	// The OCID of the compartment to contain the cross-connect group.

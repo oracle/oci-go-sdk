@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateIdpGroupMappingDetails The representation of CreateIdpGroupMappingDetails
 type CreateIdpGroupMappingDetails struct {
 
 	// The name of the IdP group you want to map.

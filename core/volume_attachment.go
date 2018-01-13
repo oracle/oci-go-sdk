@@ -18,7 +18,6 @@ import (
 // IScsiVolumeAttachment.
 // For general information about volume attachments, see
 // [Overview of Block Volume Storage]({{DOC_SERVER_URL}}/Content/Block/Concepts/overview.htm).
-// VolumeAttachment is an interface representing the polymorphic json shape of this model
 type VolumeAttachment interface {
 
 	// The Availability Domain of an instance.

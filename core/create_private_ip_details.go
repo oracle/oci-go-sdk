@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreatePrivateIpDetails The representation of CreatePrivateIpDetails
 type CreatePrivateIpDetails struct {
 
 	// The OCID of the VNIC to assign the private IP to. The VNIC and private IP

@@ -20,7 +20,6 @@ import (
 // Set `destinationType` to `objectStorageUri` and
 // use ExportImageViaObjectStorageUriDetails
 // when specifying the Object Storage URL.
-// ExportImageDetails is an interface representing the polymorphic json shape of this model
 type ExportImageDetails interface {
 }
 

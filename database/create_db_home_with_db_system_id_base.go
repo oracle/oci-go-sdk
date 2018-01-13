@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateDbHomeWithDbSystemIdBase is an interface representing the polymorphic json shape of this model
+// CreateDbHomeWithDbSystemIdBase The representation of CreateDbHomeWithDbSystemIdBase
 type CreateDbHomeWithDbSystemIdBase interface {
 
 	// The OCID of the DB System.

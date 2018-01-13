@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateVolumeBackupDetails The representation of CreateVolumeBackupDetails
 type CreateVolumeBackupDetails struct {
 
 	// The OCID of the volume that needs to be backed up.

@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateBackupDetails The representation of CreateBackupDetails
 type CreateBackupDetails struct {
 
 	// The OCID of the database.

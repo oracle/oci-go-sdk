@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateStateDetails The representation of UpdateStateDetails
 type UpdateStateDetails struct {
 
 	// Update state to blocked or unblocked. Only "false" is supported (for changing the state to unblocked).

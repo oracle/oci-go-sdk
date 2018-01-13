@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateRouteTableDetails The representation of CreateRouteTableDetails
 type CreateRouteTableDetails struct {
 
 	// The OCID of the compartment to contain the route table.

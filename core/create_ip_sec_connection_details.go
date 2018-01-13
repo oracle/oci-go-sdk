@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateIpSecConnectionDetails The representation of CreateIpSecConnectionDetails
 type CreateIpSecConnectionDetails struct {
 
 	// The OCID of the compartment to contain the IPSec connection.

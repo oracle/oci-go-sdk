@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateCpeDetails The representation of CreateCpeDetails
 type CreateCpeDetails struct {
 
 	// The OCID of the compartment to contain the CPE.

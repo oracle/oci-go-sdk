@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateDrgAttachmentDetails The representation of CreateDrgAttachmentDetails
 type CreateDrgAttachmentDetails struct {
 
 	// The OCID of the DRG.

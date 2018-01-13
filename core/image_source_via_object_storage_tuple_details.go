@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// ImageSourceViaObjectStorageTupleDetails The representation of ImageSourceViaObjectStorageTupleDetails
 type ImageSourceViaObjectStorageTupleDetails struct {
 
 	// The Object Storage bucket for the image.

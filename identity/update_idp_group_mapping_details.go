@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateIdpGroupMappingDetails The representation of UpdateIdpGroupMappingDetails
 type UpdateIdpGroupMappingDetails struct {
 
 	// The idp group name.
