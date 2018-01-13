@@ -22,7 +22,7 @@ const (
 var once sync.Once
 var version string
 
-// Returns semantic version
+// Version returns semantic version of the sdk
 func Version() string {
 	once.Do(func() {
 		ver := fmt.Sprintf("%s.%s.%s", major, minor, patch)

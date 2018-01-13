@@ -20,7 +20,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClient(t *testing.T)
 	actualRegion, err := getRegionForFederationClient(regionServer.URL)
 
 	assert.NoError(t, err)
-	assert.Equal(t, common.REGION_PHX, actualRegion)
+	assert.Equal(t, common.RegionPHX, actualRegion)
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFound(t *testing.T) {

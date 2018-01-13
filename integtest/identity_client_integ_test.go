@@ -422,7 +422,7 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 	createRequest.Name = common.String("goSDK2Policy2")
 	createRequest.Description = common.String("some policy")
 	createRequest.Statements = []string{"Allow group goSDK2CreateGroup read all-resources on compartment egineztest"}
-	createRequest.VersionDate = common.Now()
+	createRequest.VersionDate = common.now()
 	createResponse, err := client.CreatePolicy(context.Background(), createRequest)
 	verifyResponseIsValid(t, createResponse, err)
 

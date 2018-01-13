@@ -1,3 +1,4 @@
+// Package common Copyright (c) 2016, 2017, 2018 Oracle and/or its affiliates. All rights reserved.
 package common
 
 import (
@@ -19,8 +20,7 @@ type ConfigurationProvider interface {
 	Region() (string, error)
 }
 
-// Test to each part of the configration provider does not return an error
-// If it does the function return false and the first error that caused the failure
+// IsConfigurationProviderValid Tests all parts of the configuration provider do not return an error
 func IsConfigurationProviderValid(conf ConfigurationProvider) (ok bool, err error) {
 	baseFn := []func() (string, error){conf.TenancyOCID, conf.UserOCID, conf.KeyFingerprint, conf.Region, conf.KeyID}
 	for _, fn := range baseFn {
@@ -45,9 +45,9 @@ type environmentConfigurationProvider struct { // TODO: Support Instance Princip
 	EnvironmentVariablePrefix string
 }
 
-// Create a ConfigurationProvider from a uniform set of environment variables starting with a prefix
-// The env variables should look like: prefix_private_key_path, prefix_tenancy_ocid, prefix_user_ocid, prefix_fingerprint
-// prefix_region
+// ConfigurationProviderEnvironmentVariables creates a ConfigurationProvider from a uniform set of environment variables starting with a prefix
+// The env variables should look like: [prefix]_private_key_path, [prefix]_tenancy_ocid, [prefix]_user_ocid, [prefix]_fingerprint
+// [prefix]_region
 func ConfigurationProviderEnvironmentVariables(environmentVariablePrefix, privateKeyPassword string) ConfigurationProvider {
 	return environmentConfigurationProvider{EnvironmentVariablePrefix: environmentVariablePrefix,
 		PrivateKeyPassword: privateKeyPassword}
@@ -145,8 +145,8 @@ type fileConfigurationProvider struct { // TODO: Support Instance Principal
 	FileInfo *configFileInfo
 }
 
-// ConfigurationProviderFromFile. creates a configuration provider from a configuration file
-// and the "DEFAULT" profile
+// ConfigurationProviderFromFile creates a configuration provider from a configuration file
+// by reading the "DEFAULT" profile
 func ConfigurationProviderFromFile(configFilePath, privateKeyPassword string) (ConfigurationProvider, error) {
 	if configFilePath == "" {
 		return nil, fmt.Errorf("config file path can not be empty")
@@ -158,7 +158,7 @@ func ConfigurationProviderFromFile(configFilePath, privateKeyPassword string) (C
 		Profile:            "DEFAULT"}, nil
 }
 
-// ConfigurationProviderFromFile creates a configuration provider from a configuration file
+// ConfigurationProviderFromFileWithProfile creates a configuration provider from a configuration file
 // and the given profile
 func ConfigurationProviderFromFileWithProfile(configFilePath, profile, privateKeyPassword string) (ConfigurationProvider, error) {
 	if configFilePath == "" {
@@ -279,9 +279,8 @@ func (p fileConfigurationProvider) readAndParseConfigFile() (info *configFileInf
 func presentOrError(value string, expectedConf, presentConf byte, confMissing string) (string, error) {
 	if presentConf&expectedConf == expectedConf {
 		return value, nil
-	} else {
-		return "", errors.New(confMissing + " configuration is missing from file")
 	}
+	return "", errors.New(confMissing + " configuration is missing from file")
 }
 
 func (p fileConfigurationProvider) TenancyOCID() (value string, err error) {
@@ -363,9 +362,9 @@ type composingConfigurationProvider struct {
 	Providers []ConfigurationProvider
 }
 
-// Creates a composing configuration provider with the given slice of configuration providers
-// A composing provider will return the configuration of the first provider that has the configuration
-// if no provider has the configuration it will return an error.
+// ComposingConfigurationProvider creates a composing configuration provider with the given slice of configuration providers
+// A composing provider will return the configuration of the first provider that has the required property
+// if no provider has the property it will return an error.
 func ComposingConfigurationProvider(providers []ConfigurationProvider) (ConfigurationProvider, error) {
 	if len(providers) == 0 {
 		return nil, fmt.Errorf("providers can not be an empty slice")

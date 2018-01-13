@@ -45,7 +45,7 @@ func NewObjectStorageClientWithConfigurationProvider(configProvider common.Confi
 		return
 	}
 
-	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "objectstorage", string(region))
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "objectstorage", string(region))
 	return
 }
 

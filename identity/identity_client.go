@@ -34,7 +34,7 @@ func NewIdentityClientWithConfigurationProvider(configProvider common.Configurat
 		return
 	}
 
-	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "identity", string(region))
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", string(region))
 	client.BasePath = "20160918"
 	return
 }

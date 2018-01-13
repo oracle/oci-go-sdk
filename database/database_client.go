@@ -34,7 +34,7 @@ func NewDatabaseClientWithConfigurationProvider(configProvider common.Configurat
 		return
 	}
 
-	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "database", string(region))
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "database", string(region))
 	client.BasePath = "20160918"
 	return
 }

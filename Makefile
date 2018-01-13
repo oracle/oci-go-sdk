@@ -5,7 +5,7 @@ TARGETS_BUILD = $(patsubst %,build-%, $(TARGETS))
 TARGETS_LINT = $(patsubst %,lint-%, $(TARGETS))
 TARGETS_TEST = $(patsubst %,test-%, $(TARGETS_WITH_TESTS))
 TARGETS_RELEASE= $(patsubst %,release-%, $(TARGETS))
-LINT_FLAGS=-min_confidence 0.9
+LINT_FLAGS=-min_confidence 0.9 -set_exit_status
 
 
 .PHONY: $(TARGETS_BUILD) $(TARGET_TEST)
@@ -17,12 +17,12 @@ test: build $(TARGETS_TEST)
 lint: $(TARGETS_LINT)
 
 $(TARGETS_LINT): lint-%:%
-	@echo "linting: $<"
+	@echo "linting and formatting: $<"
 	@(cd $< && gofmt -s -w .)
-	(cd $< && golint $(LINT_FLAGS) .)
+	@(cd $< && golint $(LINT_FLAGS) .)
 
 $(TARGETS_BUILD): build-%:%
-	@echo "\nbuilding: $<"
+	@echo "building: $<"
 	@(cd $< && find . -name '*_integ_test.go' | xargs -I{} mv {} ../integtest)
 	@(cd $< && go build -v)
 

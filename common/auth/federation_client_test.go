@@ -371,7 +371,7 @@ ysvMnQwaC0432ceRJ3r6vPAI2EPRd9KOE7Va1IFNJNmOuIkmRx8t`
 	//func generateLeafCertificate() (privateKeyPem, certPem []byte) {
 	//	serialNumberLimit := new(big.Int).Lsh(big.NewInt(1), 128)
 	//	serialNumber, _ := rand.Int(rand.Reader, serialNumberLimit)
-	//	notBefore := time.Now()
+	//	notBefore := time.now()
 	//	notAfter := notBefore.Add(365 * 24 * time.Hour)
 	//
 	//	template := x509.Certificate{
@@ -423,7 +423,7 @@ gAv8TMjAPcdnYRUXgs3UAxJQSgtB`
 	//func generateIntermediateCertificate() (privateKeyPem, certPem []byte) {
 	//	serialNumberLimit := new(big.Int).Lsh(big.NewInt(1), 128)
 	//	serialNumber, _ := rand.Int(rand.Reader, serialNumberLimit)
-	//	notBefore := time.Now()
+	//	notBefore := time.now()
 	//	notAfter := notBefore.Add(365 * 24 * time.Hour)
 	//
 	//	template := x509.Certificate{
@@ -468,7 +468,7 @@ var (
 	sessionPublicKeyBodyNoNewLine = strings.Replace(sessionPublicKeyBody, "\n", "", -1)
 )
 
-const whateverRegion = common.REGION_PHX
+const whateverRegion = common.RegionPHX
 
 type mockSessionKeySupplier struct {
 	mock.Mock

@@ -1,3 +1,4 @@
+// Package common Copyright (c) 2016, 2017, 2018 Oracle and/or its affiliates. All rights reserved.
 package common
 
 import (
@@ -15,7 +16,8 @@ import (
 )
 
 const (
-	DefaultHostUrlTemplate   = "%s.%s.oraclecloud.com"
+	// DefaultHostURLTemplate The default url template for service hosts
+	DefaultHostURLTemplate   = "%s.%s.oraclecloud.com"
 	defaultScheme            = "https"
 	defaultSDKMarker         = "Oracle-GoSDK"
 	defaultUserAgentTemplate = "%s/%s (%s/%s; go/%s)" //SDK/SDKVersion (OS/OSVersion; Lang/LangVersion)
@@ -26,15 +28,16 @@ const (
 	maxBodyLenForDebug       = 1024 * 1000
 )
 
+// RequestInterceptor function used to customize the request before calling the underlying service
 type RequestInterceptor func(*http.Request) error
 
-// HttpRequestor wraps the execution of a http request, it is generally implemented by
+// HttpRequestDispatcher wraps the execution of a http request, it is generally implemented by
 // http.Client.Do, but can be customized for testing
 type HttpRequestDispatcher interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
-//BaseClient struct implements all basic operations to call oci web services.
+// BaseClient struct implements all basic operations to call oci web services.
 type BaseClient struct {
 	//HttpClient performs the http network operations
 	HttpClient HttpRequestDispatcher
@@ -44,9 +47,6 @@ type BaseClient struct {
 
 	//A request interceptor can be used to customize the request before signing and dispatching
 	Interceptor RequestInterceptor
-
-	//The region of the client
-	Region Region
 
 	//The host of the service
 	Host string
@@ -63,10 +63,9 @@ func defaultUserAgent() string {
 	return userAgent
 }
 
-func newBaseClient(signer HttpRequestSigner, dispatcher HttpRequestDispatcher, region Region) BaseClient {
+func newBaseClient(signer HttpRequestSigner, dispatcher HttpRequestDispatcher) BaseClient {
 	return BaseClient{
 		UserAgent:   defaultUserAgent(),
-		Region:      region,
 		Interceptor: nil,
 		Signer:      signer,
 		HttpClient:  dispatcher,
@@ -81,23 +80,19 @@ func defaultHttpDispatcher() http.Client {
 	return httpClient
 }
 
-func defaultBaseClient(region Region, provider KeyProvider) BaseClient {
+func defaultBaseClient(provider KeyProvider) BaseClient {
 	dispatcher := defaultHttpDispatcher()
 	signer := defaultRequestSigner(provider)
-	return newBaseClient(signer, &dispatcher, region)
+	return newBaseClient(signer, &dispatcher)
 }
 
-func DefaultBaseClientWithDispatcher(dispatcher HttpRequestDispatcher, region Region, provider KeyProvider) BaseClient {
-	signer := defaultRequestSigner(provider)
-	return newBaseClient(signer, dispatcher, region)
-}
-
-func DefaultBaseClientWithSigner(signer HttpRequestSigner, region Region) BaseClient {
+//DefaultBaseClientWithSigner creates a default base client with a given signer
+func DefaultBaseClientWithSigner(signer HttpRequestSigner) BaseClient {
 	dispatcher := defaultHttpDispatcher()
-	return newBaseClient(signer, &dispatcher, region)
+	return newBaseClient(signer, &dispatcher)
 }
 
-// Create a new client with a configuration provider, the configuration provider
+// NewClientWithConfig Create a new client with a configuration provider, the configuration provider
 // will be used for the default signer as well as reading the region
 func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClient, err error) {
 	var ok bool
@@ -107,13 +102,13 @@ func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClien
 	}
 
 	regionstr, _ := configProvider.Region()
-	region, err := StringToRegion(regionstr)
+	_, err = StringToRegion(regionstr)
 	if err != nil {
 		err = fmt.Errorf("can not create client, bad region configuration: %s", err.Error())
 		return
 	}
 
-	client = defaultBaseClient(region, configProvider)
+	client = defaultBaseClient(configProvider)
 	return
 }
 
@@ -130,6 +125,10 @@ func getHomeFolder() string {
 	return current.HomeDir
 }
 
+// DefaultConfigProvider returns the default config provider. The default config provider
+// will look for configurations in 3 places: file in $HOME/.oci/config, HOME/.obmcs/config and
+// variables names starting with the string TF_VAR. If the same configuration are found in multiple
+// places the provider will prefer the first one.
 func DefaultConfigProvider() ConfigurationProvider {
 	homeFolder := getHomeFolder()
 	defaultConfigFile := path.Join(homeFolder, defaultConfigDirName, defaultConfigFileName)
@@ -186,6 +185,7 @@ func checkForSuccessfulResponse(res *http.Response) error {
 
 }
 
+//Call executes the underlying http requrest with the given context
 func (client BaseClient) Call(ctx context.Context, request *http.Request) (response *http.Response, err error) {
 	Debugln("Atempting to call downstream service")
 	request = request.WithContext(ctx)
@@ -250,7 +250,7 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 	return
 }
 
-//Closes the body of an http reponse if the response and the body are valid
+//CloseBodyIfValid closes the body of an http response if the response and the body are valid
 func CloseBodyIfValid(httpResponse *http.Response) {
 	if httpResponse != nil && httpResponse.Body != nil {
 		httpResponse.Body.Close()

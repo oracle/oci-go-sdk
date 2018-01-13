@@ -117,7 +117,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 		Male    bool                  `contributesTo:"header" name:"male"`
 		Details TestupdateUserDetails `contributesTo:"body"`
 	}{
-		"101", "tapir", Now(), 3.23, true, TestupdateUserDetails{Description: desc},
+		"101", "tapir", now(), 3.23, true, TestupdateUserDetails{Description: desc},
 	}
 	request := MakeDefaultHttpRequest(http.MethodPost, "/")
 	e := HttpRequestMarshaller(s, &request)
@@ -333,14 +333,14 @@ func TestUnmarshalResponse_MixHeader(t *testing.T) {
 	nextPage := int(333)
 	someuint := uint(12)
 	somebool := true
-	sometime := Now()
+	sometime := now()
 	somefloat := 2.556
 
 	header.Set("OpcrequestId", opcId)
 	header.Set("opcnextpage", strconv.FormatInt(int64(nextPage), 10))
 	header.Set("someuint", strconv.FormatUint(uint64(someuint), 10))
 	header.Set("somebool", strconv.FormatBool(somebool))
-	header.Set("sometime", FormatTime(*sometime))
+	header.Set("sometime", formatTime(*sometime))
 	header.Set("somefloat", strconv.FormatFloat(somefloat, 'f', 3, 64))
 
 	r := http.Response{Header: header}
@@ -361,7 +361,7 @@ type rgn struct {
 }
 
 func TestUnmarshalResponse_SimpleBody(t *testing.T) {
-	sampleResponse := `{"key" : "REGION_FRA","name" : "eu-frankfurt-1"}`
+	sampleResponse := `{"key" : "RegionFRA","name" : "eu-frankfurt-1"}`
 	header := http.Header{}
 	opcId := "111"
 	header.Set("OpcrequestId", opcId)
@@ -377,7 +377,7 @@ func TestUnmarshalResponse_SimpleBody(t *testing.T) {
 }
 
 func TestUnmarshalResponse_SimpleBodyList(t *testing.T) {
-	sampleResponse := `[{"key" : "REGION_FRA","name" : "eu-frankfurt-1"},{"key" : "REGION_IAD","name" : "us-ashburn-1"}]`
+	sampleResponse := `[{"key" : "RegionFRA","name" : "eu-frankfurt-1"},{"key" : "RegionIAD","name" : "us-ashburn-1"}]`
 	header := http.Header{}
 	opcId := "111"
 	header.Set("OpcrequestId", opcId)
@@ -391,11 +391,11 @@ func TestUnmarshalResponse_SimpleBodyList(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotEmpty(t, s.Items)
 	assert.Equal(t, "eu-frankfurt-1", s.Items[0].Name)
-	assert.Equal(t, "REGION_IAD", s.Items[1].Key)
+	assert.Equal(t, "RegionIAD", s.Items[1].Key)
 }
 
 func TestUnmarshalResponse_SimpleBodyPtr(t *testing.T) {
-	sampleResponse := `{"key" : "REGION_FRA","name" : "eu-frankfurt-1"}`
+	sampleResponse := `{"key" : "RegionFRA","name" : "eu-frankfurt-1"}`
 	header := http.Header{}
 	opcId := "111"
 	header.Set("OpcrequestId", opcId)
@@ -441,7 +441,7 @@ type listRgResPtr struct {
 }
 
 func TestUnmarshalResponse_BodyAndHeaderUnex(t *testing.T) {
-	sampleResponse := `{"key" : "REGION_FRA","name" : "eu-frankfurt-1"}`
+	sampleResponse := `{"key" : "RegionFRA","name" : "eu-frankfurt-1"}`
 	header := http.Header{}
 	opcId := "111"
 	header.Set("OpcrequestId", opcId)
@@ -457,7 +457,7 @@ func TestUnmarshalResponse_BodyAndHeaderUnex(t *testing.T) {
 }
 
 func TestUnmarshalResponse_BodyAndHeader(t *testing.T) {
-	sampleResponse := `{"key" : "REGION_FRA","name" : "eu-frankfurt-1"}`
+	sampleResponse := `{"key" : "RegionFRA","name" : "eu-frankfurt-1"}`
 	header := http.Header{}
 	opcId := "111"
 	header.Set("OpcrequestId", opcId)
@@ -469,7 +469,7 @@ func TestUnmarshalResponse_BodyAndHeader(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, opcId, s.OpcRequestID)
 	assert.Equal(t, "eu-frankfurt-1", s.Name)
-	assert.Equal(t, "REGION_FRA", s.Key)
+	assert.Equal(t, "RegionFRA", s.Key)
 }
 
 func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {
@@ -480,7 +480,7 @@ func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {
 	someUint := uint(33)
 	theTime := SDKTime{time.Now()}
 	theTimeStr := theTime.Format(sdkTimeFormat)
-	sampleResponse := fmt.Sprintf(`{"key" : "REGION_FRA","theTime" : "%s"}`, theTimeStr)
+	sampleResponse := fmt.Sprintf(`{"key" : "RegionFRA","theTime" : "%s"}`, theTimeStr)
 	header.Set("OpcrequestId", opcId)
 	header.Set("numeric", numericHeader)
 	header.Set("theTime", theTimeStr)
@@ -500,7 +500,7 @@ func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {
 	assert.Equal(t, someFloat, *s.SomeFloat)
 	assert.Equal(t, someUint, *s.SomeUint)
 	assert.WithinDuration(t, theTime.Time, s.TheTime.Time, delta)
-	assert.Equal(t, "REGION_FRA", *s.Key)
+	assert.Equal(t, "RegionFRA", *s.Key)
 }
 
 type reqWithBinaryFiled struct {

@@ -1,3 +1,4 @@
+// Package common Copyright (c) 2016, 2017, 2018 Oracle and/or its affiliates. All rights reserved.
 package common
 
 import (
@@ -10,26 +11,32 @@ import (
 	"time"
 )
 
+// String returns a pointer to the provided string
 func String(value string) *string {
 	return &value
 }
 
+// Int returns a pointer to the provided int
 func Int(value int) *int {
 	return &value
 }
 
+// Uint returns a pointer to the provided uint
 func Uint(value uint) *uint {
 	return &value
 }
 
+//Float32 returns a pointer to the provided float32
 func Float32(value float32) *float32 {
 	return &value
 }
 
+//Float64 returns a pointer to the provided float64
 func Float64(value float64) *float64 {
 	return &value
 }
 
+//Bool returns a pointer to the provided bool
 func Bool(value bool) *bool {
 	return &value
 }
@@ -67,18 +74,16 @@ func PointerString(datastruct interface{}) (representation string) {
 	return
 }
 
-// A time struct, which renders to/from json using RFC339
+// SDKTime a time struct, which renders to/from json using RFC339
 type SDKTime struct {
 	time.Time
 }
 
-//Returns a SDKTime from a time.Time struct
-func SDKTimeFromTime(t time.Time) SDKTime {
+func sdkTimeFromTime(t time.Time) SDKTime {
 	return SDKTime{t}
 }
 
-//Returns the time.Now() as a SDKTime pointer
-func Now() *SDKTime {
+func now() *SDKTime {
 	t := SDKTime{time.Now()}
 	return &t
 }
@@ -86,28 +91,18 @@ func Now() *SDKTime {
 var timeType = reflect.TypeOf(SDKTime{})
 
 const sdkTimeFormat = time.RFC3339
-const RFC1123OptionalLeadingDigitsInDay = "Mon, _2 Jan 2006 15:04:05 MST"
 
-func FormatTime(t SDKTime) string {
+const rfc1123OptionalLeadingDigitsInDay = "Mon, _2 Jan 2006 15:04:05 MST"
+
+func formatTime(t SDKTime) string {
 	return t.Format(sdkTimeFormat)
-}
-
-func (t *SDKTime) UnmarshalJSON(data []byte) (e error) {
-	s := string(data)
-	if s == "null" {
-		t.Time = time.Time{}
-	} else {
-		//Try parsing with RFC3339
-		t.Time, e = time.Parse(`"`+sdkTimeFormat+`"`, string(data))
-	}
-	return
 }
 
 func tryParsingTimeWithValidFormatsForHeaders(data []byte, headerName string) (t time.Time, err error) {
 	header := strings.ToLower(headerName)
 	switch header {
 	case "lastmodified", "date":
-		t, err = tryParsing(data, time.RFC3339, time.RFC1123, RFC1123OptionalLeadingDigitsInDay, time.RFC850, time.ANSIC)
+		t, err = tryParsing(data, time.RFC3339, time.RFC1123, rfc1123OptionalLeadingDigitsInDay, time.RFC850, time.ANSIC)
 		return
 	default: //By default we parse with RFC3339
 		t, err = time.Parse(sdkTimeFormat, string(data))
@@ -127,6 +122,19 @@ func tryParsing(data []byte, layouts ...string) (tm time.Time, err error) {
 	return
 }
 
+// UnmarshalJSON unmarshals from json
+func (t *SDKTime) UnmarshalJSON(data []byte) (e error) {
+	s := string(data)
+	if s == "null" {
+		t.Time = time.Time{}
+	} else {
+		//Try parsing with RFC3339
+		t.Time, e = time.Parse(`"`+sdkTimeFormat+`"`, string(data))
+	}
+	return
+}
+
+// MarshalJSON marshals to JSON
 func (t *SDKTime) MarshalJSON() (buff []byte, e error) {
 	s := t.Format(sdkTimeFormat)
 	buff = []byte(`"` + s + `"`)

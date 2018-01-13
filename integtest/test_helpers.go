@@ -31,7 +31,7 @@ const (
 	DEF_USER_ID             = "ocid1.user.oc1..aaaaaaaav6gsclr6pd4yjqengmriylyck55lvon5ujjnhkok5gyxii34lvra"
 	DEF_COMPARTMENT_ID      = "ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma"
 	DEF_GROUP_ID            = "ocid1.group.oc1..aaaaaaaayvxomawkk23wkp32cgdufufgqvx62qanmbn6vs3lv65xuc42r5sq"
-	DEF_REGION              = common.REGION_PHX
+	DEF_REGION              = common.RegionPHX
 )
 
 func getEnvSetting(s string, defaultValue string) string {

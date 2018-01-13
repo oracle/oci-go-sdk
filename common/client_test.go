@@ -111,11 +111,10 @@ func TestClient_userAgentBlank(t *testing.T) {
 }
 
 func TestClient_clientForRegion(t *testing.T) {
-	region := REGION_PHX
+	region := RegionPHX
 	c := testClientWithRegion(region)
 	assert.Equal(t, defaultUserAgent(), c.UserAgent)
 	assert.NotNil(t, c.HttpClient)
-	assert.Equal(t, region, c.Region)
 	assert.Nil(t, c.Interceptor)
 	assert.NotNil(t, c.Signer)
 
@@ -127,12 +126,11 @@ func TestClient_customClientForRegion(t *testing.T) {
 	restPath := "somepath"
 	userAgent := "suseragent"
 
-	region := REGION_PHX
+	region := RegionPHX
 	c := testClientWithRegion(region)
 	c.Host = host
 	c.UserAgent = userAgent
 	c.BasePath = basePath
-	c.Region = REGION_IAD
 
 	request := http.Request{}
 	request.URL = &url.URL{Path: restPath}
@@ -140,7 +138,6 @@ func TestClient_customClientForRegion(t *testing.T) {
 
 	assert.Equal(t, userAgent, c.UserAgent)
 	assert.NotNil(t, c.HttpClient)
-	assert.Equal(t, REGION_IAD, c.Region)
 	assert.Nil(t, c.Interceptor)
 	assert.NotNil(t, c.Signer)
 	assert.Equal(t, "http", request.URL.Scheme)
@@ -164,8 +161,8 @@ func TestBaseClient_Call(t *testing.T) {
 		Header:     http.Header{},
 		StatusCode: 200,
 	}
-	body := `{"key" : "REGION_FRA","name" : "eu-frankfurt-1"}`
-	c := testClientWithRegion(REGION_IAD)
+	body := `{"key" : "RegionFRA","name" : "eu-frankfurt-1"}`
+	c := testClientWithRegion(RegionIAD)
 	host := "http://somehost:9000"
 	basePath := "basePath/"
 	restPath := "/somepath"
@@ -199,7 +196,7 @@ func TestBaseClient_CallError(t *testing.T) {
 		StatusCode: 400,
 	}
 	body := `{"code" : "some fake error","message" : "fake error not here"}`
-	c := testClientWithRegion(REGION_IAD)
+	c := testClientWithRegion(RegionIAD)
 	host := "http://somehost:9000"
 	basePath := "basePath/"
 	restPath := "/somepath"
