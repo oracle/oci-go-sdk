@@ -36,7 +36,7 @@ func (m UpdateSaml2IdentityProviderDetails) String() string {
 	return common.PointerString(m)
 }
 
-//MarshalJSON marshals to json representation
+// MarshalJSON marshals to json representation
 func (m UpdateSaml2IdentityProviderDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeUpdateSaml2IdentityProviderDetails UpdateSaml2IdentityProviderDetails
 	s := struct {

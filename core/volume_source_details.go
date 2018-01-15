@@ -22,7 +22,7 @@ type volumesourcedetails struct {
 	Type     string `json:"type"`
 }
 
-//UnmarshalJSON unmarshals json
+// UnmarshalJSON unmarshals json
 func (m *volumesourcedetails) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalervolumesourcedetails volumesourcedetails
@@ -38,7 +38,7 @@ func (m *volumesourcedetails) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-//UnmarshalPolymorphicJSON unmarshals polymorphic json
+// UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *volumesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.Type {

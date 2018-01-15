@@ -22,7 +22,7 @@ type instancesourcedetails struct {
 	SourceType string `json:"sourceType"`
 }
 
-//UnmarshalJSON unmarshals json
+// UnmarshalJSON unmarshals json
 func (m *instancesourcedetails) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalerinstancesourcedetails instancesourcedetails
@@ -38,7 +38,7 @@ func (m *instancesourcedetails) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-//UnmarshalPolymorphicJSON unmarshals polymorphic json
+// UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *instancesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.SourceType {

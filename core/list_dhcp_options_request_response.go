@@ -41,7 +41,7 @@ type ListDhcpOptionsRequest struct {
 	SortOrder ListDhcpOptionsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
-	LifecycleState *string `mandatory:"false" contributesTo:"query" name:"lifecycleState"`
+	LifecycleState DhcpOptionsLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 }
 
 func (request ListDhcpOptionsRequest) String() string {

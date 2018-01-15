@@ -23,7 +23,7 @@ func (m InstanceSourceViaImageDetails) String() string {
 	return common.PointerString(m)
 }
 
-//MarshalJSON marshals to json representation
+// MarshalJSON marshals to json representation
 func (m InstanceSourceViaImageDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeInstanceSourceViaImageDetails InstanceSourceViaImageDetails
 	s := struct {

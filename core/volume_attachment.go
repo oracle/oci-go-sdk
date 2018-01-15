@@ -63,7 +63,7 @@ type volumeattachment struct {
 	AttachmentType     string                             `json:"attachmentType"`
 }
 
-//UnmarshalJSON unmarshals json
+// UnmarshalJSON unmarshals json
 func (m *volumeattachment) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalervolumeattachment volumeattachment
@@ -87,7 +87,7 @@ func (m *volumeattachment) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-//UnmarshalPolymorphicJSON unmarshals polymorphic json
+// UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *volumeattachment) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.AttachmentType {

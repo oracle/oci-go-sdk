@@ -9,27 +9,20 @@
 package identity
 
 import (
-    "github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
-
-    
 type CreateRegionSubscriptionDetails struct {
-    
- // The regions's key.
- // Allowed values are:
- // - `PHX`
- // - `IAD`
- // - `FRA`
- // Example: `PHX`
-    RegionKey *string `mandatory:"true" json:"regionKey,omitempty"`
+
+	// The regions's key.
+	// Allowed values are:
+	// - `PHX`
+	// - `IAD`
+	// - `FRA`
+	// Example: `PHX`
+	RegionKey *string `mandatory:"true" json:"regionKey,omitempty"`
 }
 
 func (m CreateRegionSubscriptionDetails) String() string {
-    return common.PointerString(m)
+	return common.PointerString(m)
 }
-
-
-
-
-

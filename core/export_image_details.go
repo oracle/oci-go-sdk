@@ -29,7 +29,7 @@ type exportimagedetails struct {
 	DestinationType string `json:"destinationType"`
 }
 
-//UnmarshalJSON unmarshals json
+// UnmarshalJSON unmarshals json
 func (m *exportimagedetails) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
 	type Unmarshalerexportimagedetails exportimagedetails
@@ -45,7 +45,7 @@ func (m *exportimagedetails) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-//UnmarshalPolymorphicJSON unmarshals polymorphic json
+// UnmarshalPolymorphicJSON unmarshals polymorphic json
 func (m *exportimagedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 	var err error
 	switch m.DestinationType {
