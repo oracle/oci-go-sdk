@@ -29,10 +29,10 @@ import (
 type User struct {
 
 	// The OCID of the user.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the tenancy containing the user.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the user during creation. This is the user's login for the Console.
 	// The name must be unique across all users in the tenancy and cannot be changed.

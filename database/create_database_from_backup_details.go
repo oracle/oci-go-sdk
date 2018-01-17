@@ -19,7 +19,7 @@ type CreateDatabaseFromBackupDetails struct {
 	AdminPassword *string `mandatory:"true" json:"adminPassword,omitempty"`
 
 	// The backup OCID.
-	BackupID *string `mandatory:"true" json:"backupId,omitempty"`
+	BackupId *string `mandatory:"true" json:"backupId,omitempty"`
 
 	// The password to open the TDE wallet.
 	BackupTDEPassword *string `mandatory:"true" json:"backupTDEPassword,omitempty"`

@@ -17,10 +17,10 @@ import (
 type AttachVolumeDetails interface {
 
 	// The OCID of the instance.
-	GetInstanceID() *string
+	GetInstanceId() *string
 
 	// The OCID of the volume.
-	GetVolumeID() *string
+	GetVolumeId() *string
 
 	// A user-friendly name. Does not have to be unique, and it cannot be changed. Avoid entering confidential information.
 	GetDisplayName() *string
@@ -28,8 +28,8 @@ type AttachVolumeDetails interface {
 
 type attachvolumedetails struct {
 	JsonData    []byte
-	InstanceID  *string `mandatory:"true" json:"instanceId,omitempty"`
-	VolumeID    *string `mandatory:"true" json:"volumeId,omitempty"`
+	InstanceId  *string `mandatory:"true" json:"instanceId,omitempty"`
+	VolumeId    *string `mandatory:"true" json:"volumeId,omitempty"`
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 	Type        string  `json:"type"`
 }
@@ -45,8 +45,8 @@ func (m *attachvolumedetails) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
-	m.InstanceID = s.Model.InstanceID
-	m.VolumeID = s.Model.VolumeID
+	m.InstanceId = s.Model.InstanceId
+	m.VolumeId = s.Model.VolumeId
 	m.DisplayName = s.Model.DisplayName
 	m.Type = s.Model.Type
 
@@ -66,14 +66,14 @@ func (m *attachvolumedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}
 	}
 }
 
-//GetInstanceID returns InstanceID
-func (m attachvolumedetails) GetInstanceID() *string {
-	return m.InstanceID
+//GetInstanceId returns InstanceId
+func (m attachvolumedetails) GetInstanceId() *string {
+	return m.InstanceId
 }
 
-//GetVolumeID returns VolumeID
-func (m attachvolumedetails) GetVolumeID() *string {
-	return m.VolumeID
+//GetVolumeId returns VolumeId
+func (m attachvolumedetails) GetVolumeId() *string {
+	return m.VolumeId
 }
 
 //GetDisplayName returns DisplayName

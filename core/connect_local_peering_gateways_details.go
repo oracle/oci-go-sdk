@@ -16,7 +16,7 @@ import (
 type ConnectLocalPeeringGatewaysDetails struct {
 
 	// The OCID of the LPG you want to peer with.
-	PeerID *string `mandatory:"true" json:"peerId,omitempty"`
+	PeerId *string `mandatory:"true" json:"peerId,omitempty"`
 }
 
 func (m ConnectLocalPeeringGatewaysDetails) String() string {

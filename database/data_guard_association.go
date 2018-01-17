@@ -22,17 +22,17 @@ import (
 type DataGuardAssociation struct {
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the reporting database.
-	DatabaseID *string `mandatory:"true" json:"databaseId,omitempty"`
+	DatabaseId *string `mandatory:"true" json:"databaseId,omitempty"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the Data Guard association.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the Data Guard association.
 	LifecycleState DataGuardAssociationLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the DB System containing the associated
 	// peer database.
-	PeerDbSystemID *string `mandatory:"true" json:"peerDbSystemId,omitempty"`
+	PeerDbSystemId *string `mandatory:"true" json:"peerDbSystemId,omitempty"`
 
 	// The role of the peer database in this Data Guard association.
 	PeerRole DataGuardAssociationPeerRoleEnum `mandatory:"true" json:"peerRole,omitempty"`
@@ -58,13 +58,13 @@ type DataGuardAssociation struct {
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the peer database's Data Guard association.
-	PeerDataGuardAssociationID *string `mandatory:"false" json:"peerDataGuardAssociationId,omitempty"`
+	PeerDataGuardAssociationId *string `mandatory:"false" json:"peerDataGuardAssociationId,omitempty"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the associated peer database.
-	PeerDatabaseID *string `mandatory:"false" json:"peerDatabaseId,omitempty"`
+	PeerDatabaseId *string `mandatory:"false" json:"peerDatabaseId,omitempty"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the database home containing the associated peer database.
-	PeerDbHomeID *string `mandatory:"false" json:"peerDbHomeId,omitempty"`
+	PeerDbHomeId *string `mandatory:"false" json:"peerDbHomeId,omitempty"`
 
 	// The date and time the Data Guard Association was created.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`

@@ -12,7 +12,7 @@ import (
 type GetNamespaceRequest struct {
 
 	// The client request ID for tracing.
-	OpcClientRequestID *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
+	OpcClientRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
 }
 
 func (request GetNamespaceRequest) String() string {

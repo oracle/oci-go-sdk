@@ -12,7 +12,7 @@ import (
 type GetCompartmentRequest struct {
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" contributesTo:"path" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"path" name:"compartmentId"`
 }
 
 func (request GetCompartmentRequest) String() string {
@@ -30,7 +30,7 @@ type GetCompartmentResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`

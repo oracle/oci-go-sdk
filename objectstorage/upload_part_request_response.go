@@ -24,7 +24,7 @@ type UploadPartRequest struct {
 	ObjectName *string `mandatory:"true" contributesTo:"path" name:"objectName"`
 
 	// The upload ID for a multipart upload.
-	UploadID *string `mandatory:"true" contributesTo:"query" name:"uploadId"`
+	UploadId *string `mandatory:"true" contributesTo:"query" name:"uploadId"`
 
 	// The part number that identifies the object part currently being uploaded.
 	UploadPartNum *int `mandatory:"true" contributesTo:"query" name:"uploadPartNum"`
@@ -36,7 +36,7 @@ type UploadPartRequest struct {
 	UploadPartBody io.ReadCloser `mandatory:"true" contributesTo:"body" encoding:"binary"`
 
 	// The client request ID for tracing.
-	OpcClientRequestID *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
+	OpcClientRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
 
 	// The entity tag to match. For creating and committing a multipart upload to an object, this is the entity tag of the target object.
 	// For uploading a part, this is the entity tag of the target part.
@@ -65,11 +65,11 @@ type UploadPartResponse struct {
 	RawResponse *http.Response
 
 	// Echoes back the value passed in the opc-client-request-id header, for use by clients when debugging.
-	OpcClientRequestID *string `presentIn:"header" name:"opc-client-request-id"`
+	OpcClientRequestId *string `presentIn:"header" name:"opc-client-request-id"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular
 	// request, please provide this request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// The base64-encoded MD5 hash of the request body, as computed by the server.
 	OpcContentMd5 *string `presentIn:"header" name:"opc-content-md5"`

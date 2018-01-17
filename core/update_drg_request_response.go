@@ -12,7 +12,7 @@ import (
 type UpdateDrgRequest struct {
 
 	// The OCID of the DRG.
-	DrgID *string `mandatory:"true" contributesTo:"path" name:"drgId"`
+	DrgId *string `mandatory:"true" contributesTo:"path" name:"drgId"`
 
 	// Details object for updating a DRG.
 	UpdateDrgDetails `contributesTo:"body"`
@@ -41,7 +41,7 @@ type UpdateDrgResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response UpdateDrgResponse) String() string {

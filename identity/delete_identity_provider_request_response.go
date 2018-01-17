@@ -12,7 +12,7 @@ import (
 type DeleteIdentityProviderRequest struct {
 
 	// The OCID of the identity provider.
-	IdentityProviderID *string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
+	IdentityProviderId *string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
@@ -32,7 +32,7 @@ type DeleteIdentityProviderResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response DeleteIdentityProviderResponse) String() string {

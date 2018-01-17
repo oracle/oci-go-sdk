@@ -44,7 +44,7 @@ type CrossConnectMapping struct {
 	// Specified by the owner of the cross-connect or cross-connect group (the
 	// customer if the customer is colocated with Oracle, or the provider if the
 	// customer is connecting via provider).
-	CrossConnectOrCrossConnectGroupID *string `mandatory:"false" json:"crossConnectOrCrossConnectGroupId,omitempty"`
+	CrossConnectOrCrossConnectGroupId *string `mandatory:"false" json:"crossConnectOrCrossConnectGroupId,omitempty"`
 
 	// The BGP IP address for the router on the other end of the BGP session from
 	// Oracle. Specified by the owner of that router. If the session goes from Oracle

@@ -12,7 +12,7 @@ import (
 type GetBackendRequest struct {
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer associated with the backend set and server.
-	LoadBalancerID *string `mandatory:"true" contributesTo:"path" name:"loadBalancerId"`
+	LoadBalancerId *string `mandatory:"true" contributesTo:"path" name:"loadBalancerId"`
 
 	// The name of the backend set that includes the backend server.
 	// Example: `My_backend_set`
@@ -24,7 +24,7 @@ type GetBackendRequest struct {
 
 	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 }
 
 func (request GetBackendRequest) String() string {
@@ -42,7 +42,7 @@ type GetBackendResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response GetBackendResponse) String() string {

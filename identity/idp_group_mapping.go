@@ -24,19 +24,19 @@ import (
 type IdpGroupMapping struct {
 
 	// The OCID of the `IdpGroupMapping`.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the `IdentityProvider` this mapping belongs to.
-	IdpID *string `mandatory:"true" json:"idpId,omitempty"`
+	IdpId *string `mandatory:"true" json:"idpId,omitempty"`
 
 	// The name of the IdP group that is mapped to the IAM Service group.
 	IdpGroupName *string `mandatory:"true" json:"idpGroupName,omitempty"`
 
 	// The OCID of the IAM Service group that is mapped to the IdP group.
-	GroupID *string `mandatory:"true" json:"groupId,omitempty"`
+	GroupId *string `mandatory:"true" json:"groupId,omitempty"`
 
 	// The OCID of the tenancy containing the `IdentityProvider`.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// Date and time the mapping was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`

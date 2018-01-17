@@ -16,7 +16,7 @@ type ListBootVolumeAttachmentsRequest struct {
 	AvailabilityDomain *string `mandatory:"true" contributesTo:"query" name:"availabilityDomain"`
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The maximum number of items to return in a paginated "List" call.
 	// Example: `500`
@@ -26,10 +26,10 @@ type ListBootVolumeAttachmentsRequest struct {
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
 	// The OCID of the instance.
-	InstanceID *string `mandatory:"false" contributesTo:"query" name:"instanceId"`
+	InstanceId *string `mandatory:"false" contributesTo:"query" name:"instanceId"`
 
 	// The OCID of the boot volume.
-	BootVolumeID *string `mandatory:"false" contributesTo:"query" name:"bootVolumeId"`
+	BootVolumeId *string `mandatory:"false" contributesTo:"query" name:"bootVolumeId"`
 }
 
 func (request ListBootVolumeAttachmentsRequest) String() string {
@@ -52,7 +52,7 @@ type ListBootVolumeAttachmentsResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListBootVolumeAttachmentsResponse) String() string {

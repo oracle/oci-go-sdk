@@ -32,7 +32,7 @@ type UpdatePrivateIpDetails struct {
 
 	// The OCID of the VNIC to reassign the private IP to. The VNIC must
 	// be in the same subnet as the current VNIC.
-	VnicID *string `mandatory:"false" json:"vnicId,omitempty"`
+	VnicId *string `mandatory:"false" json:"vnicId,omitempty"`
 }
 
 func (m UpdatePrivateIpDetails) String() string {

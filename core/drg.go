@@ -23,10 +23,10 @@ import (
 type Drg struct {
 
 	// The OCID of the compartment containing the DRG.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The DRG's Oracle ID (OCID).
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The DRG's current state.
 	LifecycleState DrgLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`

@@ -25,13 +25,13 @@ type VolumeAttachment interface {
 	GetAvailabilityDomain() *string
 
 	// The OCID of the compartment.
-	GetCompartmentID() *string
+	GetCompartmentId() *string
 
 	// The OCID of the volume attachment.
-	GetID() *string
+	GetId() *string
 
 	// The OCID of the instance the volume is attached to.
-	GetInstanceID() *string
+	GetInstanceId() *string
 
 	// The current state of the volume attachment.
 	GetLifecycleState() VolumeAttachmentLifecycleStateEnum
@@ -41,7 +41,7 @@ type VolumeAttachment interface {
 	GetTimeCreated() *common.SDKTime
 
 	// The OCID of the volume.
-	GetVolumeID() *string
+	GetVolumeId() *string
 
 	// A user-friendly name. Does not have to be unique, and it cannot be changed.
 	// Avoid entering confidential information.
@@ -52,12 +52,12 @@ type VolumeAttachment interface {
 type volumeattachment struct {
 	JsonData           []byte
 	AvailabilityDomain *string                            `mandatory:"true" json:"availabilityDomain,omitempty"`
-	CompartmentID      *string                            `mandatory:"true" json:"compartmentId,omitempty"`
-	ID                 *string                            `mandatory:"true" json:"id,omitempty"`
-	InstanceID         *string                            `mandatory:"true" json:"instanceId,omitempty"`
+	CompartmentId      *string                            `mandatory:"true" json:"compartmentId,omitempty"`
+	Id                 *string                            `mandatory:"true" json:"id,omitempty"`
+	InstanceId         *string                            `mandatory:"true" json:"instanceId,omitempty"`
 	LifecycleState     VolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 	TimeCreated        *common.SDKTime                    `mandatory:"true" json:"timeCreated,omitempty"`
-	VolumeID           *string                            `mandatory:"true" json:"volumeId,omitempty"`
+	VolumeId           *string                            `mandatory:"true" json:"volumeId,omitempty"`
 	DisplayName        *string                            `mandatory:"false" json:"displayName,omitempty"`
 	AttachmentType     string                             `json:"attachmentType"`
 }
@@ -74,12 +74,12 @@ func (m *volumeattachment) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	m.AvailabilityDomain = s.Model.AvailabilityDomain
-	m.CompartmentID = s.Model.CompartmentID
-	m.ID = s.Model.ID
-	m.InstanceID = s.Model.InstanceID
+	m.CompartmentId = s.Model.CompartmentId
+	m.Id = s.Model.Id
+	m.InstanceId = s.Model.InstanceId
 	m.LifecycleState = s.Model.LifecycleState
 	m.TimeCreated = s.Model.TimeCreated
-	m.VolumeID = s.Model.VolumeID
+	m.VolumeId = s.Model.VolumeId
 	m.DisplayName = s.Model.DisplayName
 	m.AttachmentType = s.Model.AttachmentType
 
@@ -104,19 +104,19 @@ func (m volumeattachment) GetAvailabilityDomain() *string {
 	return m.AvailabilityDomain
 }
 
-//GetCompartmentID returns CompartmentID
-func (m volumeattachment) GetCompartmentID() *string {
-	return m.CompartmentID
+//GetCompartmentId returns CompartmentId
+func (m volumeattachment) GetCompartmentId() *string {
+	return m.CompartmentId
 }
 
-//GetID returns ID
-func (m volumeattachment) GetID() *string {
-	return m.ID
+//GetId returns Id
+func (m volumeattachment) GetId() *string {
+	return m.Id
 }
 
-//GetInstanceID returns InstanceID
-func (m volumeattachment) GetInstanceID() *string {
-	return m.InstanceID
+//GetInstanceId returns InstanceId
+func (m volumeattachment) GetInstanceId() *string {
+	return m.InstanceId
 }
 
 //GetLifecycleState returns LifecycleState
@@ -129,9 +129,9 @@ func (m volumeattachment) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetVolumeID returns VolumeID
-func (m volumeattachment) GetVolumeID() *string {
-	return m.VolumeID
+//GetVolumeId returns VolumeId
+func (m volumeattachment) GetVolumeId() *string {
+	return m.VolumeId
 }
 
 //GetDisplayName returns DisplayName

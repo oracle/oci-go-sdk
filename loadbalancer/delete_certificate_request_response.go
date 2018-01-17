@@ -12,7 +12,7 @@ import (
 type DeleteCertificateRequest struct {
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer associated with the certificate to be deleted.
-	LoadBalancerID *string `mandatory:"true" contributesTo:"path" name:"loadBalancerId"`
+	LoadBalancerId *string `mandatory:"true" contributesTo:"path" name:"loadBalancerId"`
 
 	// The name of the certificate to delete.
 	// Example: `My_certificate_bundle`
@@ -20,7 +20,7 @@ type DeleteCertificateRequest struct {
 
 	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 }
 
 func (request DeleteCertificateRequest) String() string {
@@ -35,10 +35,10 @@ type DeleteCertificateResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the work request.
-	OpcWorkRequestID *string `presentIn:"header" name:"opc-work-request-id"`
+	OpcWorkRequestId *string `presentIn:"header" name:"opc-work-request-id"`
 }
 
 func (response DeleteCertificateResponse) String() string {

@@ -16,13 +16,13 @@ import (
 type CreateIpSecConnectionDetails struct {
 
 	// The OCID of the compartment to contain the IPSec connection.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The OCID of the CPE.
-	CpeID *string `mandatory:"true" json:"cpeId,omitempty"`
+	CpeId *string `mandatory:"true" json:"cpeId,omitempty"`
 
 	// The OCID of the DRG.
-	DrgID *string `mandatory:"true" json:"drgId,omitempty"`
+	DrgId *string `mandatory:"true" json:"drgId,omitempty"`
 
 	// Static routes to the CPE. At least one route must be included. The CIDR must not be a
 	// multicast address or class E address.

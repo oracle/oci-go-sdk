@@ -17,10 +17,10 @@ import (
 type AttachIScsiVolumeDetails struct {
 
 	// The OCID of the instance.
-	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
 
 	// The OCID of the volume.
-	VolumeID *string `mandatory:"true" json:"volumeId,omitempty"`
+	VolumeId *string `mandatory:"true" json:"volumeId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it cannot be changed. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
@@ -34,14 +34,14 @@ func (m AttachIScsiVolumeDetails) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetInstanceID returns InstanceID
-func (m AttachIScsiVolumeDetails) GetInstanceID() *string {
-	return m.InstanceID
+//GetInstanceId returns InstanceId
+func (m AttachIScsiVolumeDetails) GetInstanceId() *string {
+	return m.InstanceId
 }
 
-//GetVolumeID returns VolumeID
-func (m AttachIScsiVolumeDetails) GetVolumeID() *string {
-	return m.VolumeID
+//GetVolumeId returns VolumeId
+func (m AttachIScsiVolumeDetails) GetVolumeId() *string {
+	return m.VolumeId
 }
 
 func (m AttachIScsiVolumeDetails) String() string {

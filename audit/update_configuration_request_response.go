@@ -12,7 +12,7 @@ import (
 type UpdateConfigurationRequest struct {
 
 	// ID of the root compartment (tenancy)
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The configuration properties
 	UpdateConfigurationDetails `contributesTo:"body"`
@@ -30,10 +30,10 @@ type UpdateConfigurationResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the work request.
-	OpcWorkRequestID *string `presentIn:"header" name:"opc-work-request-id"`
+	OpcWorkRequestId *string `presentIn:"header" name:"opc-work-request-id"`
 }
 
 func (response UpdateConfigurationResponse) String() string {

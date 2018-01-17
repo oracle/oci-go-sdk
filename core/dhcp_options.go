@@ -27,10 +27,10 @@ import (
 type DhcpOptions struct {
 
 	// The OCID of the compartment containing the set of DHCP options.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// Oracle ID (OCID) for the set of DHCP options.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the set of DHCP options.
 	LifecycleState DhcpOptionsLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
@@ -43,7 +43,7 @@ type DhcpOptions struct {
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
 	// The OCID of the VCN the set of DHCP options belongs to.
-	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
@@ -58,12 +58,12 @@ func (m DhcpOptions) String() string {
 func (m *DhcpOptions) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
 		DisplayName    *string                       `json:"displayName,omitempty"`
-		CompartmentID  *string                       `json:"compartmentId,omitempty"`
-		ID             *string                       `json:"id,omitempty"`
+		CompartmentId  *string                       `json:"compartmentId,omitempty"`
+		Id             *string                       `json:"id,omitempty"`
 		LifecycleState DhcpOptionsLifecycleStateEnum `json:"lifecycleState,omitempty"`
 		Options        []dhcpoption                  `json:"options,omitempty"`
 		TimeCreated    *common.SDKTime               `json:"timeCreated,omitempty"`
-		VcnID          *string                       `json:"vcnId,omitempty"`
+		VcnId          *string                       `json:"vcnId,omitempty"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -71,8 +71,8 @@ func (m *DhcpOptions) UnmarshalJSON(data []byte) (e error) {
 		return
 	}
 	m.DisplayName = model.DisplayName
-	m.CompartmentID = model.CompartmentID
-	m.ID = model.ID
+	m.CompartmentId = model.CompartmentId
+	m.Id = model.Id
 	m.LifecycleState = model.LifecycleState
 	m.Options = make([]DhcpOption, len(model.Options))
 	for i, n := range model.Options {
@@ -83,7 +83,7 @@ func (m *DhcpOptions) UnmarshalJSON(data []byte) (e error) {
 		m.Options[i] = nn
 	}
 	m.TimeCreated = model.TimeCreated
-	m.VcnID = model.VcnID
+	m.VcnId = model.VcnId
 	return
 }
 

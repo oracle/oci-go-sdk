@@ -46,7 +46,7 @@ type UpdateVirtualCircuitDetails struct {
 	// The OCID of the Drg
 	// that this private virtual circuit uses.
 	// To be updated only by the customer who owns the virtual circuit.
-	GatewayID *string `mandatory:"false" json:"gatewayId,omitempty"`
+	GatewayId *string `mandatory:"false" json:"gatewayId,omitempty"`
 
 	// The provider's state in relation to this virtual circuit. Relevant only
 	// if the customer is using FastConnect via a provider.  ACTIVE

@@ -15,6 +15,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
+	"time"
 )
 
 // Group operations CRUD
@@ -24,7 +25,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := identity.CreateGroupRequest{}
-	request.CompartmentID = common.String(getTenancyID())
+	request.CompartmentId = common.String(getTenancyID())
 	request.Name = common.String(groupName)
 	request.Description = common.String("GoSDK_someGroupDesc")
 	r, err := c.CreateGroup(context.Background(), request)
@@ -34,7 +35,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	// if we've successfully created a group during testing, make sure that we delete it
 	defer func() {
 		//Delete
-		rDel := identity.DeleteGroupRequest{GroupID: r.ID}
+		rDel := identity.DeleteGroupRequest{GroupId: r.Id}
 		err = c.DeleteGroup(context.Background(), rDel)
 		assert.NoError(t, err)
 	}()
@@ -43,33 +44,33 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	assert.Equal(t, identity.GroupLifecycleStateActive, r.Group.LifecycleState)
 
 	//Get
-	rRead := identity.GetGroupRequest{GroupID: r.ID}
+	rRead := identity.GetGroupRequest{GroupId: r.Id}
 	resRead, err := c.GetGroup(context.Background(), rRead)
-	assert.NotEmpty(t, r, fmt.Sprint(resRead.ID))
+	assert.NotEmpty(t, r, fmt.Sprint(resRead.Id))
 	failIfError(t, err)
 
 	// validate group lifecycle state enum value after read
 	assert.Equal(t, identity.GroupLifecycleStateActive, resRead.LifecycleState)
 
 	//Update
-	rUpdate := identity.UpdateGroupRequest{GroupID: r.ID}
+	rUpdate := identity.UpdateGroupRequest{GroupId: r.Id}
 	rUpdate.Description = common.String("New description")
 	resUpdate, err := c.UpdateGroup(context.Background(), rUpdate)
 	failIfError(t, err)
-	assert.NotNil(t, resUpdate.ID)
+	assert.NotNil(t, resUpdate.Id)
 }
 
 func TestIdentityClient_ListGroups(t *testing.T) {
 
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	request := identity.ListGroupsRequest{CompartmentID: common.String(getTenancyID())}
+	request := identity.ListGroupsRequest{CompartmentId: common.String(getTenancyID())}
 	r, err := c.ListGroups(context.Background(), request)
 	failIfError(t, err)
 
 	items := r.Items
 
-	nextRequest := identity.ListGroupsRequest{CompartmentID: request.CompartmentID}
+	nextRequest := identity.ListGroupsRequest{CompartmentId: request.CompartmentId}
 	nextRequest.Page = r.OpcNextPage
 
 	for nextRequest.Page != nil {
@@ -98,12 +99,12 @@ func TestIdentityClient_CreateCompartment(t *testing.T) {
 	request:= identity.CreateCompartmentRequest{CreateCompartmentDetails:identity.CreateCompartmentDetails{
 		Name: common.String("Compartment_Test"),
 		Description: common.String("Go SDK Comparment Test"),
-		CompartmentID: common.String(getTenancyID()),
+		CompartmentId: common.String(getTenancyID()),
 	}}
 
 	r, err:= c.CreateCompartment(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
-	assert.NotEmpty(t, r.ID)
+	assert.NotEmpty(t, r.Id)
 	assert.Equal(t, request.Name, r.Name)
 	assert.Equal(t, request.Description, r.Description)
 	return
@@ -119,13 +120,13 @@ func TestIdentityClient_UpdateCompartment(t *testing.T) {
 		Name:        common.String(GoSDK2_Test_Prefix + "UpdComp"),
 		Description: common.String("GOSDK2 description2"),
 	},
-		CompartmentID: common.String(getCompartmentID()),
+		CompartmentId: common.String(getCompartmentID()),
 	}
 	r, err := c.UpdateCompartment(context.Background(), request)
 	failIfError(t, err)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 
-	rRead := identity.GetCompartmentRequest{CompartmentID: common.String(getTenancyID())}
+	rRead := identity.GetCompartmentRequest{CompartmentId: common.String(getTenancyID())}
 	resRead, err := c.GetCompartment(context.Background(), rRead)
 	failIfError(t, err)
 	assert.NotEmpty(t, r, fmt.Sprint(resRead))
@@ -136,13 +137,13 @@ func TestIdentityClient_UpdateCompartment(t *testing.T) {
 func TestIdentityClient_ListUsers(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	request := identity.ListUsersRequest{CompartmentID: common.String(getTenancyID())}
+	request := identity.ListUsersRequest{CompartmentId: common.String(getTenancyID())}
 	r, err := c.ListUsers(context.Background(), request)
 	failIfError(t, err)
 
 	items := r.Items
 
-	nextRequest := identity.ListUsersRequest{CompartmentID: request.CompartmentID}
+	nextRequest := identity.ListUsersRequest{CompartmentId: request.CompartmentId}
 	nextRequest.Page = r.OpcNextPage
 	for nextRequest.Page != nil {
 		if r, err = c.ListUsers(context.Background(), nextRequest); err == nil {
@@ -166,7 +167,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := identity.CreateUserRequest{}
-	request.CompartmentID = common.String(getTenancyID())
+	request.CompartmentId = common.String(getTenancyID())
 	request.Name = common.String(userName)
 	request.Description = common.String("Test user for golang sdk2")
 	resCreate, err := c.CreateUser(context.Background(), request)
@@ -178,7 +179,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 	defer func() {
 		//remove
 		rDelete := identity.DeleteUserRequest{}
-		rDelete.UserID = resCreate.ID
+		rDelete.UserId = resCreate.Id
 		err = c.DeleteUser(context.Background(), rDelete)
 		assert.NoError(t, err)
 	}()
@@ -187,7 +188,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 	assert.Equal(t, identity.UserLifecycleStateActive, resCreate.LifecycleState)
 
 	//Read
-	rRead := identity.GetUserRequest{UserID: resCreate.ID}
+	rRead := identity.GetUserRequest{UserId: resCreate.Id}
 	resRead, err := c.GetUser(context.Background(), rRead)
 	assert.NotEmpty(t, resRead, fmt.Sprint(resRead))
 	assert.NoError(t, err)
@@ -197,7 +198,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 
 	//Update
 	rUpdate := identity.UpdateUserRequest{}
-	rUpdate.UserID = resCreate.ID
+	rUpdate.UserId = resCreate.Id
 	rUpdate.Description = common.String("This is a new description")
 	resUpdate, err := c.UpdateUser(context.Background(), rUpdate)
 	assert.NotEmpty(t, resUpdate, fmt.Sprint(resUpdate))
@@ -213,7 +214,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 
 	// for robustness, create a user and group to use for this test. delete it at the end
 	reqAddUser := identity.CreateUserRequest{}
-	reqAddUser.CompartmentID = common.String(getTenancyID())
+	reqAddUser.CompartmentId = common.String(getTenancyID())
 	reqAddUser.Name = common.String(getUniqueName("AUTG_User"))
 	reqAddUser.Description = common.String("AddUserToGroup Test User")
 	rspAddUser, err1 := c.CreateUser(context.Background(), reqAddUser)
@@ -222,13 +223,13 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 
 	defer func() {
 		// Delete the user
-		reqUserDelete := identity.DeleteUserRequest{UserID: rspAddUser.ID}
+		reqUserDelete := identity.DeleteUserRequest{UserId: rspAddUser.Id}
 		delUserErr := c.DeleteUser(context.Background(), reqUserDelete)
 		assert.NoError(t, delUserErr)
 	}()
 
 	reqAddGroup := identity.CreateGroupRequest{}
-	reqAddGroup.CompartmentID = common.String(getTenancyID())
+	reqAddGroup.CompartmentId = common.String(getTenancyID())
 	reqAddGroup.Name = common.String(getUniqueName("AUTG_Group_"))
 	reqAddGroup.Description = common.String("AddUserToGroup Test Group")
 	rspAddGroup, err2 := c.CreateGroup(context.Background(), reqAddGroup)
@@ -237,22 +238,22 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 
 	defer func() {
 		// Delete the group
-		reqGroupDelete := identity.DeleteGroupRequest{GroupID: rspAddGroup.ID}
+		reqGroupDelete := identity.DeleteGroupRequest{GroupId: rspAddGroup.Id}
 		delGrpErr := c.DeleteGroup(context.Background(), reqGroupDelete)
 		assert.NoError(t, delGrpErr)
 	}()
 
 	//add
 	reqAdd := identity.AddUserToGroupRequest{}
-	reqAdd.UserID = rspAddUser.ID
-	reqAdd.GroupID = rspAddGroup.ID
+	reqAdd.UserId = rspAddUser.Id
+	reqAdd.GroupId = rspAddGroup.Id
 	rspAdd, err := c.AddUserToGroup(context.Background(), reqAdd)
 	failIfError(t, err)
 	assert.NotEmpty(t, rspAdd, fmt.Sprint(rspAdd))
 
 	defer func() {
 		//remove
-		requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipID: rspAdd.UserGroupMembership.ID}
+		requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipId: rspAdd.UserGroupMembership.Id}
 		err = c.RemoveUserFromGroup(context.Background(), requestRemove)
 		failIfError(t, err)
 	}()
@@ -262,10 +263,10 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 
 	// Read
 	reqRead := identity.GetUserGroupMembershipRequest{}
-	reqRead.UserGroupMembershipID = rspAdd.ID
+	reqRead.UserGroupMembershipId = rspAdd.Id
 	rspRead, readErr := c.GetUserGroupMembership(context.Background(), reqRead)
 	verifyResponseIsValid(t, rspRead, readErr)
-	assert.Equal(t, rspAdd.ID, rspRead.ID)
+	assert.Equal(t, rspAdd.Id, rspRead.Id)
 	return
 
 }
@@ -274,14 +275,14 @@ func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := identity.ListUserGroupMembershipsRequest{}
-	request.UserID = common.String(getUserID())
-	request.CompartmentID = common.String(getTenancyID())
+	request.UserId = common.String(getUserID())
+	request.CompartmentId = common.String(getTenancyID())
 	r, err := c.ListUserGroupMemberships(context.Background(), request)
 	failIfError(t, err)
 
 	items := r.Items
 
-	nextRequest := identity.ListUserGroupMembershipsRequest{CompartmentID: request.CompartmentID, UserID: request.UserID}
+	nextRequest := identity.ListUserGroupMembershipsRequest{CompartmentId: request.CompartmentId, UserId: request.UserId}
 	nextRequest.Page = r.OpcNextPage
 
 	for nextRequest.Page != nil {
@@ -307,17 +308,17 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 	u, err := createTestUser(c)
 	failIfError(t, err)
 	defer func() {
-		failIfError(t, deleteTestUser(c, u.ID))
+		failIfError(t, deleteTestUser(c, u.Id))
 	}()
 
 	request := identity.CreateOrResetUIPasswordRequest{}
-	request.UserID = u.ID
+	request.UserId = u.Id
 	rspCreate, err := c.CreateOrResetUIPassword(context.Background(), request)
 	failIfError(t, err)
 	verifyResponseIsValid(t, rspCreate, err)
 
-	assert.NotEmpty(t, rspCreate.OpcRequestID)
-	assert.Equal(t, u.ID, rspCreate.UserID)
+	assert.NotEmpty(t, rspCreate.OpcRequestId)
+	assert.Equal(t, u.Id, rspCreate.UserId)
 	assert.NotEmpty(t, rspCreate.Password)
 	assert.Equal(t, identity.UiPasswordLifecycleStateActive, rspCreate.LifecycleState)
 
@@ -326,7 +327,7 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 	failIfError(t, err)
 	verifyResponseIsValid(t, rspReset, err)
 
-	assert.Equal(t, rspCreate.UserID, rspReset.UserID)
+	assert.Equal(t, rspCreate.UserId, rspReset.UserId)
 	assert.NotEqual(t, rspCreate.Password, rspReset.Password)
 	assert.Equal(t, identity.UiPasswordLifecycleStateActive, rspCreate.LifecycleState)
 
@@ -343,10 +344,10 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 	usr, usrErr := createTestUser(c)
 	failIfError(t, usrErr)
 
-	defer deleteTestUser(c, usr.ID)
+	defer deleteTestUser(c, usr.Id)
 
 	// Create Swift Password
-	addReq := identity.CreateSwiftPasswordRequest{UserID: usr.ID}
+	addReq := identity.CreateSwiftPasswordRequest{UserId: usr.Id}
 	addReq.Description = &createDesc
 	rspPwd, err := c.CreateSwiftPassword(context.Background(), addReq)
 	verifyResponseIsValid(t, rspPwd, err)
@@ -354,19 +355,19 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 	//Delete Swift Password
 	defer func() {
 		delReq := identity.DeleteSwiftPasswordRequest{}
-		delReq.UserID = usr.ID
-		delReq.SwiftPasswordID = rspPwd.ID
+		delReq.UserId = usr.Id
+		delReq.SwiftPasswordId = rspPwd.Id
 	}()
 
-	assert.NotEmpty(t, rspPwd.ID)
-	assert.Equal(t, usr.ID, rspPwd.UserID)
+	assert.NotEmpty(t, rspPwd.Id)
+	assert.Equal(t, usr.Id, rspPwd.UserId)
 	assert.NotEmpty(t, rspPwd.Password)
 	assert.Equal(t, identity.SwiftPasswordLifecycleStateActive, rspPwd.LifecycleState)
 	assert.Equal(t, createDesc, *rspPwd.Description)
 
 	// Update Swift Password
-	updReq := identity.UpdateSwiftPasswordRequest{UserID: usr.ID}
-	updReq.SwiftPasswordID = rspPwd.ID
+	updReq := identity.UpdateSwiftPasswordRequest{UserId: usr.Id}
+	updReq.SwiftPasswordId = rspPwd.Id
 	updReq.Description = &updateDesc
 	updRsp, err := c.UpdateSwiftPassword(context.Background(), updReq)
 	verifyResponseIsValid(t, updRsp, err)
@@ -386,9 +387,9 @@ func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 
 	usr, usrErr := createTestUser(c)
 	failIfError(t, usrErr)
-	defer deleteTestUser(c, usr.ID)
+	defer deleteTestUser(c, usr.Id)
 
-	pwdReq := identity.CreateSwiftPasswordRequest{UserID: usr.ID}
+	pwdReq := identity.CreateSwiftPasswordRequest{UserId: usr.Id}
 	pwdReq.Description = common.String("Test Swift Password 1")
 	pwdRsp1, err := c.CreateSwiftPassword(context.Background(), pwdReq)
 	verifyResponseIsValid(t, pwdRsp1, err)
@@ -397,12 +398,12 @@ func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 	pwdRsp2, err := c.CreateSwiftPassword(context.Background(), pwdReq)
 	verifyResponseIsValid(t, pwdRsp2, err)
 
-	request := identity.ListSwiftPasswordsRequest{UserID: usr.ID}
+	request := identity.ListSwiftPasswordsRequest{UserId: usr.Id}
 	r, err := c.ListSwiftPasswords(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
 
 	assert.Equal(t, 2, len(r.Items))
-	assert.NotEqual(t, r.Items[0].ID, r.Items[1].ID)
+	assert.NotEqual(t, r.Items[0].Id, r.Items[1].Id)
 	assert.NotEqual(t, r.Items[0].Description, r.Items[1].Description)
 
 	return
@@ -418,31 +419,31 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 	failIfError(t, cfgErr)
 
 	createRequest := identity.CreatePolicyRequest{}
-	createRequest.CompartmentID = common.String(getTenancyID())
+	createRequest.CompartmentId = common.String(getTenancyID())
 	createRequest.Name = common.String("goSDK2Policy2")
 	createRequest.Description = common.String("some policy")
 	createRequest.Statements = []string{"Allow group goSDK2CreateGroup read all-resources on compartment egineztest"}
-	createRequest.VersionDate = common.now()
+	createRequest.VersionDate = &common.SDKTime{time.Now()}
 	createResponse, err := client.CreatePolicy(context.Background(), createRequest)
 	verifyResponseIsValid(t, createResponse, err)
 
 	defer func() {
 		// Delete
-		request := identity.DeletePolicyRequest{PolicyID:createResponse.ID}
+		request := identity.DeletePolicyRequest{PolicyId:createResponse.Id}
 		err = client.DeletePolicy(context.Background(), request)
 		assert.NoError(t, err)
 	}()
 
 	//Read
 	readRequest := identity.GetPolicyRequest{}
-	readRequest.PolicyID = createResponse.ID
+	readRequest.PolicyId = createResponse.Id
 	readResponse, err := client.GetPolicy(context.Background(), readRequest)
 	verifyResponseIsValid(t, readResponse, err)
 
 	//Update
 
 	updateRequest := identity.UpdatePolicyRequest{}
-	updateRequest.PolicyID = createResponse.ID
+	updateRequest.PolicyId = createResponse.Id
 	updateRequest.Description = common.String("new description")
 	updateResponse, err := client.UpdatePolicy(context.Background(), updateRequest)
 	assert.NotEmpty(t, updateResponse, fmt.Sprint(updateResponse))
@@ -455,13 +456,13 @@ func TestIdentityClient_ListPolicies(t *testing.T) {
 	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, cfgErr)
 	listRequest := identity.ListPoliciesRequest{}
-	listRequest.CompartmentID = common.String(getTenancyID())
+	listRequest.CompartmentId = common.String(getTenancyID())
 	listResponse, err := c.ListPolicies(context.Background(), listRequest)
 	failIfError(t, err)
 
 	items := listResponse.Items
 
-	nextRequest := identity.ListPoliciesRequest{CompartmentID: listRequest.CompartmentID}
+	nextRequest := identity.ListPoliciesRequest{CompartmentId: listRequest.CompartmentId}
 	nextRequest.Page = listResponse.OpcNextPage
 
 	for nextRequest.Page != nil {
@@ -484,7 +485,7 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := identity.CreateCustomerSecretKeyRequest{}
-	request.UserID = common.String(getUserID())
+	request.UserId = common.String(getUserID())
 	request.DisplayName = common.String("GolangSDK2TestSecretKey")
 	resCreate, err := c.CreateCustomerSecretKey(context.Background(), request)
 	failIfError(t, err)
@@ -494,8 +495,8 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	defer func() {
 		//remove
 		rDelete := identity.DeleteCustomerSecretKeyRequest{}
-		rDelete.CustomerSecretKeyID = resCreate.ID
-		rDelete.UserID = common.String(getUserID())
+		rDelete.CustomerSecretKeyId = resCreate.Id
+		rDelete.UserId = common.String(getUserID())
 		err = c.DeleteCustomerSecretKey(context.Background(), rDelete)
 		failIfError(t, err)
 	}()
@@ -505,8 +506,8 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 
 	//Update
 	rUpdate := identity.UpdateCustomerSecretKeyRequest{}
-	rUpdate.CustomerSecretKeyID = resCreate.ID
-	rUpdate.UserID = common.String(getUserID())
+	rUpdate.CustomerSecretKeyId = resCreate.Id
+	rUpdate.UserId = common.String(getUserID())
 	rUpdate.DisplayName = common.String("This is a new description")
 	resUpdate, err := c.UpdateCustomerSecretKey(context.Background(), rUpdate)
 	assert.NotEmpty(t, resUpdate, fmt.Sprint(resUpdate))
@@ -519,7 +520,7 @@ func TestIdentityClient_ListCustomerSecretKeys(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := identity.ListCustomerSecretKeysRequest{}
-	request.UserID = common.String(getUserID())
+	request.UserId = common.String(getUserID())
 	r, err := c.ListCustomerSecretKeys(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	failIfError(t, err)
@@ -528,11 +529,11 @@ func TestIdentityClient_ListCustomerSecretKeys(t *testing.T) {
 
 //Apikeys
 func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
-	userID := ""
+	userId := ""
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := identity.UploadApiKeyRequest{}
-	request.UserID = common.String(userID)
+	request.UserId = common.String(userId)
 	request.Key = common.String("some key")
 	resCreate, err := c.UploadApiKey(context.Background(), request)
 	assert.Error(t, err)
@@ -544,7 +545,7 @@ func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 		//remove
 		rDelete := identity.DeleteApiKeyRequest{}
 		rDelete.Fingerprint = resCreate.Fingerprint
-		rDelete.UserID = common.String(userID)
+		rDelete.UserId = common.String(userId)
 		err = c.DeleteApiKey(context.Background(), rDelete)
 		ser, ok = common.IsServiceError(err)
 		assert.False(t, ok)
@@ -562,7 +563,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := identity.ListApiKeysRequest{}
-	request.UserID = common.String(getUserID())
+	request.UserId = common.String(getUserID())
 	r, err := c.ListApiKeys(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	failIfError(t, err)
@@ -576,7 +577,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	// Create the Identity Provider Request
 	rCreate := identity.CreateIdentityProviderRequest{}
 	details := identity.CreateSaml2IdentityProviderDetails{}
-	details.CompartmentID = common.String(getTenancyID())
+	details.CompartmentId = common.String(getTenancyID())
 	details.Name = common.String(getUniqueName("Ident_Provider_"))
 	details.Description = common.String("CRUD Test Identity Provider")
 	details.ProductType = identity.CreateIdentityProviderDetailsProductTypeAdfs
@@ -592,53 +593,53 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	defer func() {
 		//remove
 		fmt.Println("Deleting Identity Provider")
-		if rspCreate.GetID() != nil {
+		if rspCreate.GetId() != nil {
 			rDelete := identity.DeleteIdentityProviderRequest{}
-			rDelete.IdentityProviderID = rspCreate.GetID()
+			rDelete.IdentityProviderId = rspCreate.GetId()
 			err := c.DeleteIdentityProvider(context.Background(), rDelete)
 			failIfError(t, err)
 		}
 	}()
 
 	// Verify requested values are correct
-	assert.NotEmpty(t, rspCreate.GetID())
-	assert.NotEmpty(t, rspCreate.OpcRequestID)
-	assert.Equal(t, *rCreate.GetCompartmentID(), *rspCreate.GetCompartmentID())
+	assert.NotEmpty(t, rspCreate.GetId())
+	assert.NotEmpty(t, rspCreate.OpcRequestId)
+	assert.Equal(t, *rCreate.GetCompartmentId(), *rspCreate.GetCompartmentId())
 	assert.NotEmpty(t, *rspCreate.GetName())
 
 	// Read
 	rRead := identity.GetIdentityProviderRequest{}
-	rRead.IdentityProviderID = rspCreate.GetID()
+	rRead.IdentityProviderId = rspCreate.GetId()
 	rspRead, readErr := c.GetIdentityProvider(context.Background(), rRead)
 	failIfError(t, readErr)
 	verifyResponseIsValid(t, rspRead, readErr)
-	assert.Equal(t, *rRead.IdentityProviderID, *rspRead.GetID())
+	assert.Equal(t, *rRead.IdentityProviderId, *rspRead.GetId())
 
 	// Update
 	rUpdate := identity.UpdateIdentityProviderRequest{}
 	updateDetails := identity.UpdateSaml2IdentityProviderDetails{}
 	updateDetails.Description = common.String("New description")
-	rUpdate.IdentityProviderID = rspCreate.GetID()
+	rUpdate.IdentityProviderId = rspCreate.GetId()
 	rUpdate.UpdateIdentityProviderDetails = updateDetails
 	rspUpdate, updErr := c.UpdateIdentityProvider(context.Background(), rUpdate)
 
 	failIfError(t, updErr)
 	verifyResponseIsValid(t, rspUpdate, updErr)
-	assert.Equal(t, *rspCreate.GetID(), *rspUpdate.GetID())
+	assert.Equal(t, *rspCreate.GetId(), *rspUpdate.GetId())
 	assert.Equal(t, "New description", *rspUpdate.GetDescription())
 
 	// Create the group mapping
 	u, uErr := createTestUser(c)
 	failIfError(t, uErr)
-	defer deleteTestUser(c, u.ID)
+	defer deleteTestUser(c, u.Id)
 
 	g, gErr := createTestGroup(c)
 	failIfError(t, gErr)
-	defer deleteTestGroup(c, g.ID)
+	defer deleteTestGroup(c, g.Id)
 
 	reqCreateMapping := identity.CreateIdpGroupMappingRequest{}
-	reqCreateMapping.IdentityProviderID = rspCreate.GetID()
-	reqCreateMapping.GroupID = g.ID
+	reqCreateMapping.IdentityProviderId = rspCreate.GetId()
+	reqCreateMapping.GroupId = g.Id
 	idpGrpName := *rspCreate.GetName()
 	groupName := *g.Name
 	reqCreateMapping.IdpGroupName = common.String(idpGrpName + "_TO_" + groupName)
@@ -649,45 +650,45 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	// Delete mapping
 	defer func() {
 		fmt.Println("Deleting Identity Provider Group Mapping")
-		reqDelete := identity.DeleteIdpGroupMappingRequest{MappingID: rspCreateMapping.ID, IdentityProviderID: rspCreateMapping.IdpID}
+		reqDelete := identity.DeleteIdpGroupMappingRequest{MappingId: rspCreateMapping.Id, IdentityProviderId: rspCreateMapping.IdpId}
 		delErr := c.DeleteIdpGroupMapping(context.Background(), reqDelete)
 		failIfError(t, delErr)
 	}()
 
 	verifyResponseIsValid(t, rspCreateMapping, createMapErr)
 
-	assert.NotEmpty(t, *rspCreateMapping.ID)
-	assert.NotEmpty(t, *rspCreateMapping.GroupID)
-	assert.NotEmpty(t, *rspCreateMapping.OpcRequestID)
+	assert.NotEmpty(t, *rspCreateMapping.Id)
+	assert.NotEmpty(t, *rspCreateMapping.GroupId)
+	assert.NotEmpty(t, *rspCreateMapping.OpcRequestId)
 	assert.NotEmpty(t, *rspCreateMapping.IdpGroupName)
-	assert.Equal(t, *rspCreate.GetID(), *rspCreateMapping.IdpID)
+	assert.Equal(t, *rspCreate.GetId(), *rspCreateMapping.IdpId)
 	assert.NotEmpty(t, rspCreateMapping.TimeCreated)
 	assert.Equal(t, identity.IdpGroupMappingLifecycleStateActive, rspCreateMapping.LifecycleState)
 
 	//Read group mapping
-	reqReadMapping := identity.GetIdpGroupMappingRequest{IdentityProviderID: rspCreateMapping.IdpID, MappingID: rspCreateMapping.ID}
+	reqReadMapping := identity.GetIdpGroupMappingRequest{IdentityProviderId: rspCreateMapping.IdpId, MappingId: rspCreateMapping.Id}
 	rspReadMapping, readMapErr := c.GetIdpGroupMapping(context.Background(), reqReadMapping)
 	verifyResponseIsValid(t, rspReadMapping, readMapErr)
 
-	assert.Equal(t, rspCreateMapping.ID, rspReadMapping.ID)
-	assert.Equal(t, rspCreateMapping.IdpID, rspReadMapping.IdpID)
+	assert.Equal(t, rspCreateMapping.Id, rspReadMapping.Id)
+	assert.Equal(t, rspCreateMapping.IdpId, rspReadMapping.IdpId)
 	assert.Equal(t, identity.IdpGroupMappingLifecycleStateActive, rspReadMapping.LifecycleState)
 
 	//update group mapping
 	reqUpdMapping := identity.UpdateIdpGroupMappingRequest{}
-	reqUpdMapping.MappingID = rspReadMapping.ID
-	reqUpdMapping.IdentityProviderID = rspReadMapping.IdpID
-	reqUpdMapping.GroupID = rspReadMapping.GroupID
+	reqUpdMapping.MappingId = rspReadMapping.Id
+	reqUpdMapping.IdentityProviderId = rspReadMapping.IdpId
+	reqUpdMapping.GroupId = rspReadMapping.GroupId
 	updatedName := *rspReadMapping.IdpGroupName + " - Updated"
 	reqUpdMapping.IdpGroupName = common.String(updatedName)
 	rspUpdMapping, updMapErr := c.UpdateIdpGroupMapping(context.Background(), reqUpdMapping)
 	verifyResponseIsValid(t, rspUpdMapping, updMapErr)
 
-	assert.NotEmpty(t, *rspUpdMapping.ID)
-	assert.NotEmpty(t, *rspUpdMapping.GroupID)
-	assert.NotEmpty(t, *rspUpdMapping.OpcRequestID)
-	assert.Equal(t, *rspReadMapping.ID, *rspUpdMapping.ID)
-	assert.Equal(t, *rspReadMapping.IdpID, *rspUpdMapping.IdpID)
+	assert.NotEmpty(t, *rspUpdMapping.Id)
+	assert.NotEmpty(t, *rspUpdMapping.GroupId)
+	assert.NotEmpty(t, *rspUpdMapping.OpcRequestId)
+	assert.Equal(t, *rspReadMapping.Id, *rspUpdMapping.Id)
+	assert.Equal(t, *rspReadMapping.IdpId, *rspUpdMapping.IdpId)
 	assert.NotEqual(t, *rspReadMapping.IdpGroupName, *rspUpdMapping.IdpGroupName)
 	assert.NotEmpty(t, rspUpdMapping.TimeCreated)
 	assert.Equal(t, identity.IdpGroupMappingLifecycleStateActive, rspUpdMapping.LifecycleState)
@@ -699,14 +700,14 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := identity.ListIdentityProvidersRequest{}
-	request.CompartmentID = common.String(getCompartmentID())
+	request.CompartmentId = common.String(getCompartmentID())
 	request.Protocol = identity.ListIdentityProvidersProtocolSaml2
 	response, err := c.ListIdentityProviders(context.Background(), request)
 	failIfError(t, err)
 
 	items := response.Items
 
-	nextRequest := identity.ListIdentityProvidersRequest{CompartmentID: request.CompartmentID}
+	nextRequest := identity.ListIdentityProvidersRequest{CompartmentId: request.CompartmentId}
 	nextRequest.Page = response.OpcNextPage
 
 	for nextRequest.Page != nil {
@@ -725,12 +726,12 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 func TestIdentityClient_GetTenancy(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	request := identity.GetTenancyRequest{TenancyID: common.String(getTenancyID())}
+	request := identity.GetTenancyRequest{TenancyId: common.String(getTenancyID())}
 	r, err := c.GetTenancy(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
 
-	assert.Equal(t, request.TenancyID, r.ID)
-	assert.NotEmpty(t, r.OpcRequestID)
+	assert.Equal(t, request.TenancyId, r.Id)
+	assert.NotEmpty(t, r.OpcRequestId)
 
 	return
 }
@@ -738,7 +739,7 @@ func TestIdentityClient_GetTenancy(t *testing.T) {
 func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	request := identity.ListAvailabilityDomainsRequest{CompartmentID: common.String(getCompartmentID())}
+	request := identity.ListAvailabilityDomainsRequest{CompartmentId: common.String(getCompartmentID())}
 	r, err := c.ListAvailabilityDomains(context.Background(), request)
 	failIfError(t, err)
 
@@ -752,13 +753,13 @@ func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
 func TestIdentityClient_ListCompartments(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	request := identity.ListCompartmentsRequest{CompartmentID: common.String(getTenancyID())}
+	request := identity.ListCompartmentsRequest{CompartmentId: common.String(getTenancyID())}
 	r, err := c.ListCompartments(context.Background(), request)
 	failIfError(t, err)
 
 	items := r.Items
 
-	nextRequest := identity.ListCompartmentsRequest{CompartmentID: request.CompartmentID}
+	nextRequest := identity.ListCompartmentsRequest{CompartmentId: request.CompartmentId}
 	nextRequest.Page = r.OpcNextPage
 
 	for nextRequest.Page != nil {
@@ -790,10 +791,10 @@ func TestIdentityClient_UpdateUserState(t *testing.T) {
 	failIfError(t, clerr)
 	usr, usrErr := createTestUser(c)
 	failIfError(t, usrErr)
-	defer deleteTestUser(c, usr.ID)
+	defer deleteTestUser(c, usr.Id)
 
 	request := identity.UpdateUserStateRequest{}
-	request.UserID = usr.ID
+	request.UserId = usr.Id
 	request.Blocked = common.Bool(false)
 
 	r, err := c.UpdateUserState(context.Background(), request)
@@ -810,7 +811,7 @@ func TestIdentityClient_CreateRegionSubscription(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := identity.CreateRegionSubscriptionRequest{}
-	request.TenancyID = common.String(getTenancyID())
+	request.TenancyId = common.String(getTenancyID())
 	request.RegionKey = common.String("FRA")
 	r, err := c.CreateRegionSubscription(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -821,7 +822,7 @@ func TestIdentityClient_CreateRegionSubscription(t *testing.T) {
 func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	request := identity.ListRegionSubscriptionsRequest{TenancyID: common.String(getTenancyID())}
+	request := identity.ListRegionSubscriptionsRequest{TenancyId: common.String(getTenancyID())}
 	r, err := c.ListRegionSubscriptions(context.Background(), request)
 	failIfError(t, err)
 	items := r.Items

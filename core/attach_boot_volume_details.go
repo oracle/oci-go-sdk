@@ -16,10 +16,10 @@ import (
 type AttachBootVolumeDetails struct {
 
 	// The OCID of the  boot volume.
-	BootVolumeID *string `mandatory:"true" json:"bootVolumeId,omitempty"`
+	BootVolumeId *string `mandatory:"true" json:"bootVolumeId,omitempty"`
 
 	// The OCID of the instance.
-	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it cannot be changed. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

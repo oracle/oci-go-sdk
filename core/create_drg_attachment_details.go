@@ -16,10 +16,10 @@ import (
 type CreateDrgAttachmentDetails struct {
 
 	// The OCID of the DRG.
-	DrgID *string `mandatory:"true" json:"drgId,omitempty"`
+	DrgId *string `mandatory:"true" json:"drgId,omitempty"`
 
 	// The OCID of the VCN.
-	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

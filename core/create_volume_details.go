@@ -21,7 +21,7 @@ type CreateVolumeDetails struct {
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the compartment that contains the volume.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
@@ -42,7 +42,7 @@ type CreateVolumeDetails struct {
 	// The OCID of the volume backup from which the data should be restored on the newly created volume.
 	// This field is deprecated. Use the sourceDetails field instead to specify the
 	// backup for the volume.
-	VolumeBackupID *string `mandatory:"false" json:"volumeBackupId,omitempty"`
+	VolumeBackupId *string `mandatory:"false" json:"volumeBackupId,omitempty"`
 }
 
 func (m CreateVolumeDetails) String() string {
@@ -56,9 +56,9 @@ func (m *CreateVolumeDetails) UnmarshalJSON(data []byte) (e error) {
 		SizeInGBs          *int                `json:"sizeInGBs,omitempty"`
 		SizeInMBs          *int                `json:"sizeInMBs,omitempty"`
 		SourceDetails      volumesourcedetails `json:"sourceDetails,omitempty"`
-		VolumeBackupID     *string             `json:"volumeBackupId,omitempty"`
+		VolumeBackupId     *string             `json:"volumeBackupId,omitempty"`
 		AvailabilityDomain *string             `json:"availabilityDomain,omitempty"`
-		CompartmentID      *string             `json:"compartmentId,omitempty"`
+		CompartmentId      *string             `json:"compartmentId,omitempty"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -73,8 +73,8 @@ func (m *CreateVolumeDetails) UnmarshalJSON(data []byte) (e error) {
 		return
 	}
 	m.SourceDetails = nn
-	m.VolumeBackupID = model.VolumeBackupID
+	m.VolumeBackupId = model.VolumeBackupId
 	m.AvailabilityDomain = model.AvailabilityDomain
-	m.CompartmentID = model.CompartmentID
+	m.CompartmentId = model.CompartmentId
 	return
 }

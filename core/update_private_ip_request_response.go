@@ -12,7 +12,7 @@ import (
 type UpdatePrivateIpRequest struct {
 
 	// The private IP's OCID.
-	PrivateIpID *string `mandatory:"true" contributesTo:"path" name:"privateIpId"`
+	PrivateIpId *string `mandatory:"true" contributesTo:"path" name:"privateIpId"`
 
 	// Private IP details.
 	UpdatePrivateIpDetails `contributesTo:"body"`
@@ -41,7 +41,7 @@ type UpdatePrivateIpResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response UpdatePrivateIpResponse) String() string {

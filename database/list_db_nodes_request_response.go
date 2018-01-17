@@ -12,10 +12,10 @@ import (
 type ListDbNodesRequest struct {
 
 	// The compartment [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the DB System.
-	DbSystemID *string `mandatory:"true" contributesTo:"query" name:"dbSystemId"`
+	DbSystemId *string `mandatory:"true" contributesTo:"query" name:"dbSystemId"`
 
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
@@ -45,7 +45,7 @@ type ListDbNodesResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListDbNodesResponse) String() string {

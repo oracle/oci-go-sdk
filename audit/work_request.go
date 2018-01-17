@@ -16,7 +16,7 @@ import (
 type WorkRequest struct {
 
 	// The id of the work request.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// An enum-like description of the type of work the work request is doing.
 	OperationType WorkRequestOperationTypeEnum `mandatory:"true" json:"operationType,omitempty"`
@@ -25,7 +25,7 @@ type WorkRequest struct {
 	Status WorkRequestStatusEnum `mandatory:"true" json:"status,omitempty"`
 
 	// The OCID of the compartment that contains the work request.
-	CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
 
 	// The resources this work request affects.
 	Resources []WorkRequestResource `mandatory:"false" json:"resources,omitempty"`

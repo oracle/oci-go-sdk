@@ -20,16 +20,16 @@ type BootVolumeAttachment struct {
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the boot volume.
-	BootVolumeID *string `mandatory:"true" json:"bootVolumeId,omitempty"`
+	BootVolumeId *string `mandatory:"true" json:"bootVolumeId,omitempty"`
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The OCID of the boot volume attachment.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the instance the boot volume is attached to.
-	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
 
 	// The current state of the boot volume attachment.
 	LifecycleState BootVolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`

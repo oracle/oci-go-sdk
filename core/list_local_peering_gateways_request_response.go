@@ -12,10 +12,10 @@ import (
 type ListLocalPeeringGatewaysRequest struct {
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The OCID of the VCN.
-	VcnID *string `mandatory:"true" contributesTo:"query" name:"vcnId"`
+	VcnId *string `mandatory:"true" contributesTo:"query" name:"vcnId"`
 
 	// The maximum number of items to return in a paginated "List" call.
 	// Example: `500`
@@ -45,7 +45,7 @@ type ListLocalPeeringGatewaysResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListLocalPeeringGatewaysResponse) String() string {

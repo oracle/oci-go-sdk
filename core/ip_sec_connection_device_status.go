@@ -16,10 +16,10 @@ import (
 type IpSecConnectionDeviceStatus struct {
 
 	// The OCID of the compartment containing the IPSec connection.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The IPSec connection's Oracle ID (OCID).
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The date and time the IPSec connection was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`

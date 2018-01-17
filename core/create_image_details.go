@@ -17,7 +17,7 @@ import (
 type CreateImageDetails struct {
 
 	// The OCID of the compartment containing the instance you want to use as the basis for the image.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// A user-friendly name for the image. It does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
@@ -29,7 +29,7 @@ type CreateImageDetails struct {
 	ImageSourceDetails ImageSourceDetails `mandatory:"false" json:"imageSourceDetails,omitempty"`
 
 	// The OCID of the instance you want to use as the basis for the image.
-	InstanceID *string `mandatory:"false" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"false" json:"instanceId,omitempty"`
 }
 
 func (m CreateImageDetails) String() string {
@@ -41,8 +41,8 @@ func (m *CreateImageDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
 		DisplayName        *string            `json:"displayName,omitempty"`
 		ImageSourceDetails imagesourcedetails `json:"imageSourceDetails,omitempty"`
-		InstanceID         *string            `json:"instanceId,omitempty"`
-		CompartmentID      *string            `json:"compartmentId,omitempty"`
+		InstanceId         *string            `json:"instanceId,omitempty"`
+		CompartmentId      *string            `json:"compartmentId,omitempty"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -55,7 +55,7 @@ func (m *CreateImageDetails) UnmarshalJSON(data []byte) (e error) {
 		return
 	}
 	m.ImageSourceDetails = nn
-	m.InstanceID = model.InstanceID
-	m.CompartmentID = model.CompartmentID
+	m.InstanceId = model.InstanceId
+	m.CompartmentId = model.CompartmentId
 	return
 }

@@ -19,7 +19,7 @@ type UpdateIdpGroupMappingDetails struct {
 	IdpGroupName *string `mandatory:"false" json:"idpGroupName,omitempty"`
 
 	// The OCID of the group.
-	GroupID *string `mandatory:"false" json:"groupId,omitempty"`
+	GroupId *string `mandatory:"false" json:"groupId,omitempty"`
 }
 
 func (m UpdateIdpGroupMappingDetails) String() string {

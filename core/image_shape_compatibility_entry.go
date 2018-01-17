@@ -16,7 +16,7 @@ import (
 type ImageShapeCompatibilityEntry struct {
 
 	// The image OCID.
-	ImageID *string `mandatory:"true" json:"imageId,omitempty"`
+	ImageId *string `mandatory:"true" json:"imageId,omitempty"`
 
 	// The shape name.
 	Shape *string `mandatory:"true" json:"shape,omitempty"`

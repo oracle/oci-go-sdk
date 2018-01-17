@@ -27,10 +27,10 @@ type Instance struct {
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the compartment that contains the instance.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The OCID of the instance.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the instance.
 	LifecycleState InstanceLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
@@ -59,7 +59,7 @@ type Instance struct {
 	ExtendedMetadata map[string]interface{} `mandatory:"false" json:"extendedMetadata,omitempty"`
 
 	// Deprecated. Use `sourceDetails` instead.
-	ImageID *string `mandatory:"false" json:"imageId,omitempty"`
+	ImageId *string `mandatory:"false" json:"imageId,omitempty"`
 
 	// When a bare metal or virtual machine
 	// instance boots, the iPXE firmware that runs on the instance is
@@ -97,13 +97,13 @@ func (m *Instance) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
 		DisplayName        *string                    `json:"displayName,omitempty"`
 		ExtendedMetadata   map[string]interface{}     `json:"extendedMetadata,omitempty"`
-		ImageID            *string                    `json:"imageId,omitempty"`
+		ImageId            *string                    `json:"imageId,omitempty"`
 		IpxeScript         *string                    `json:"ipxeScript,omitempty"`
 		Metadata           map[string]string          `json:"metadata,omitempty"`
 		SourceDetails      instancesourcedetails      `json:"sourceDetails,omitempty"`
 		AvailabilityDomain *string                    `json:"availabilityDomain,omitempty"`
-		CompartmentID      *string                    `json:"compartmentId,omitempty"`
-		ID                 *string                    `json:"id,omitempty"`
+		CompartmentId      *string                    `json:"compartmentId,omitempty"`
+		Id                 *string                    `json:"id,omitempty"`
 		LifecycleState     InstanceLifecycleStateEnum `json:"lifecycleState,omitempty"`
 		Region             *string                    `json:"region,omitempty"`
 		Shape              *string                    `json:"shape,omitempty"`
@@ -116,7 +116,7 @@ func (m *Instance) UnmarshalJSON(data []byte) (e error) {
 	}
 	m.DisplayName = model.DisplayName
 	m.ExtendedMetadata = model.ExtendedMetadata
-	m.ImageID = model.ImageID
+	m.ImageId = model.ImageId
 	m.IpxeScript = model.IpxeScript
 	m.Metadata = model.Metadata
 	nn, e := model.SourceDetails.UnmarshalPolymorphicJSON(model.SourceDetails.JsonData)
@@ -125,8 +125,8 @@ func (m *Instance) UnmarshalJSON(data []byte) (e error) {
 	}
 	m.SourceDetails = nn
 	m.AvailabilityDomain = model.AvailabilityDomain
-	m.CompartmentID = model.CompartmentID
-	m.ID = model.ID
+	m.CompartmentId = model.CompartmentId
+	m.Id = model.Id
 	m.LifecycleState = model.LifecycleState
 	m.Region = model.Region
 	m.Shape = model.Shape

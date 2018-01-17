@@ -12,7 +12,7 @@ import (
 type GetTenancyRequest struct {
 
 	// The OCID of the tenancy.
-	TenancyID *string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
+	TenancyId *string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
 }
 
 func (request GetTenancyRequest) String() string {
@@ -30,7 +30,7 @@ type GetTenancyResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response GetTenancyResponse) String() string {

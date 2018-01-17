@@ -19,7 +19,7 @@ type AttachVnicDetails struct {
 	CreateVnicDetails *CreateVnicDetails `mandatory:"true" json:"createVnicDetails,omitempty"`
 
 	// The OCID of the instance.
-	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
 
 	// A user-friendly name for the attachment. Does not have to be unique, and it cannot be changed.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

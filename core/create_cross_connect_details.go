@@ -16,7 +16,7 @@ import (
 type CreateCrossConnectDetails struct {
 
 	// The OCID of the compartment to contain the cross-connect.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name of the FastConnect location where this cross-connect will be installed.
 	// To get a list of the available locations, see
@@ -30,7 +30,7 @@ type CreateCrossConnectDetails struct {
 	PortSpeedShapeName *string `mandatory:"true" json:"portSpeedShapeName,omitempty"`
 
 	// The OCID of the cross-connect group to put this cross-connect in.
-	CrossConnectGroupID *string `mandatory:"false" json:"crossConnectGroupId,omitempty"`
+	CrossConnectGroupId *string `mandatory:"false" json:"crossConnectGroupId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
@@ -40,12 +40,12 @@ type CreateCrossConnectDetails struct {
 	// location, and you want this new cross-connect to be on a different router (for the
 	// purposes of redundancy), provide the OCID of that existing cross-connect or
 	// cross-connect group.
-	FarCrossConnectOrCrossConnectGroupID *string `mandatory:"false" json:"farCrossConnectOrCrossConnectGroupId,omitempty"`
+	FarCrossConnectOrCrossConnectGroupId *string `mandatory:"false" json:"farCrossConnectOrCrossConnectGroupId,omitempty"`
 
 	// If you already have an existing cross-connect or cross-connect group at this FastConnect
 	// location, and you want this new cross-connect to be on the same router, provide the
 	// OCID of that existing cross-connect or cross-connect group.
-	NearCrossConnectOrCrossConnectGroupID *string `mandatory:"false" json:"nearCrossConnectOrCrossConnectGroupId,omitempty"`
+	NearCrossConnectOrCrossConnectGroupId *string `mandatory:"false" json:"nearCrossConnectOrCrossConnectGroupId,omitempty"`
 }
 
 func (m CreateCrossConnectDetails) String() string {

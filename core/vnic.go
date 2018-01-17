@@ -32,10 +32,10 @@ type Vnic struct {
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the compartment containing the VNIC.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The OCID of the VNIC.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the VNIC.
 	LifecycleState VnicLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
@@ -46,7 +46,7 @@ type Vnic struct {
 	PrivateIp *string `mandatory:"true" json:"privateIp,omitempty"`
 
 	// The OCID of the subnet the VNIC is in.
-	SubnetID *string `mandatory:"true" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"true" json:"subnetId,omitempty"`
 
 	// The date and time the VNIC was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`

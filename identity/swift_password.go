@@ -24,10 +24,10 @@ type SwiftPassword struct {
 	Password *string `mandatory:"false" json:"password,omitempty"`
 
 	// The OCID of the Swift password.
-	ID *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id,omitempty"`
 
 	// The OCID of the user the password belongs to.
-	UserID *string `mandatory:"false" json:"userId,omitempty"`
+	UserId *string `mandatory:"false" json:"userId,omitempty"`
 
 	// The description you assign to the Swift password. Does not have to be unique, and it's changeable.
 	Description *string `mandatory:"false" json:"description,omitempty"`

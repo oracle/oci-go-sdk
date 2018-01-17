@@ -15,7 +15,7 @@ type ListBucketsRequest struct {
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
 	// The ID of the compartment in which to create the bucket.
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
@@ -24,7 +24,7 @@ type ListBucketsRequest struct {
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
 	// The client request ID for tracing.
-	OpcClientRequestID *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
+	OpcClientRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
 }
 
 func (request ListBucketsRequest) String() string {
@@ -41,11 +41,11 @@ type ListBucketsResponse struct {
 	Items []BucketSummary `presentIn:"body"`
 
 	// Echoes back the value passed in the opc-client-request-id header, for use by clients when debugging.
-	OpcClientRequestID *string `presentIn:"header" name:"opc-client-request-id"`
+	OpcClientRequestId *string `presentIn:"header" name:"opc-client-request-id"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular
 	// request, please provide this request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For pagination of a list of `Bucket`s. If this header appears in the response, then this
 	// is a partial list of buckets. Include this value as the `page` parameter in a subsequent

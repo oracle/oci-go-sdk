@@ -24,10 +24,10 @@ type BootVolume struct {
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the compartment that contains the boot volume.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The boot volume's Oracle ID (OCID).
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of a boot volume.
 	LifecycleState BootVolumeLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
@@ -44,7 +44,7 @@ type BootVolume struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
 	// The image OCID used to create the boot volume.
-	ImageID *string `mandatory:"false" json:"imageId,omitempty"`
+	ImageId *string `mandatory:"false" json:"imageId,omitempty"`
 
 	// The size of the boot volume in GBs.
 	SizeInGBs *int `mandatory:"false" json:"sizeInGBs,omitempty"`

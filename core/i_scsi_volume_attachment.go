@@ -21,20 +21,20 @@ type IScsiVolumeAttachment struct {
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The OCID of the volume attachment.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the instance the volume is attached to.
-	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
 
 	// The date and time the volume was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
 	// The OCID of the volume.
-	VolumeID *string `mandatory:"true" json:"volumeId,omitempty"`
+	VolumeId *string `mandatory:"true" json:"volumeId,omitempty"`
 
 	// The volume's iSCSI IP address.
 	// Example: `169.254.0.2`
@@ -71,9 +71,9 @@ func (m IScsiVolumeAttachment) GetAvailabilityDomain() *string {
 	return m.AvailabilityDomain
 }
 
-//GetCompartmentID returns CompartmentID
-func (m IScsiVolumeAttachment) GetCompartmentID() *string {
-	return m.CompartmentID
+//GetCompartmentId returns CompartmentId
+func (m IScsiVolumeAttachment) GetCompartmentId() *string {
+	return m.CompartmentId
 }
 
 //GetDisplayName returns DisplayName
@@ -81,14 +81,14 @@ func (m IScsiVolumeAttachment) GetDisplayName() *string {
 	return m.DisplayName
 }
 
-//GetID returns ID
-func (m IScsiVolumeAttachment) GetID() *string {
-	return m.ID
+//GetId returns Id
+func (m IScsiVolumeAttachment) GetId() *string {
+	return m.Id
 }
 
-//GetInstanceID returns InstanceID
-func (m IScsiVolumeAttachment) GetInstanceID() *string {
-	return m.InstanceID
+//GetInstanceId returns InstanceId
+func (m IScsiVolumeAttachment) GetInstanceId() *string {
+	return m.InstanceId
 }
 
 //GetLifecycleState returns LifecycleState
@@ -101,9 +101,9 @@ func (m IScsiVolumeAttachment) GetTimeCreated() *common.SDKTime {
 	return m.TimeCreated
 }
 
-//GetVolumeID returns VolumeID
-func (m IScsiVolumeAttachment) GetVolumeID() *string {
-	return m.VolumeID
+//GetVolumeId returns VolumeId
+func (m IScsiVolumeAttachment) GetVolumeId() *string {
+	return m.VolumeId
 }
 
 func (m IScsiVolumeAttachment) String() string {

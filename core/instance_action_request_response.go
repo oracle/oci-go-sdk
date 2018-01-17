@@ -12,7 +12,7 @@ import (
 type InstanceActionRequest struct {
 
 	// The OCID of the instance.
-	InstanceID *string `mandatory:"true" contributesTo:"path" name:"instanceId"`
+	InstanceId *string `mandatory:"true" contributesTo:"path" name:"instanceId"`
 
 	// The action to perform on the instance.
 	Action InstanceActionActionEnum `mandatory:"true" contributesTo:"query" name:"action" omitEmpty:"true"`
@@ -48,7 +48,7 @@ type InstanceActionResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response InstanceActionResponse) String() string {

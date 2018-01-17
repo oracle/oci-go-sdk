@@ -40,7 +40,7 @@ type VirtualCircuit struct {
 	BgpSessionState VirtualCircuitBgpSessionStateEnum `mandatory:"false" json:"bgpSessionState,omitempty"`
 
 	// The OCID of the compartment containing the virtual circuit.
-	CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
 
 	// An array of mappings, each containing properties for a
 	// cross-connect or cross-connect group that is associated with this
@@ -60,10 +60,10 @@ type VirtualCircuit struct {
 
 	// The OCID of the customer's Drg
 	// that this virtual circuit uses. Applicable only to private virtual circuits.
-	GatewayID *string `mandatory:"false" json:"gatewayId,omitempty"`
+	GatewayId *string `mandatory:"false" json:"gatewayId,omitempty"`
 
 	// The virtual circuit's Oracle ID (OCID).
-	ID *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id,omitempty"`
 
 	// The virtual circuit's current state. For information about
 	// the different states, see
@@ -77,7 +77,7 @@ type VirtualCircuit struct {
 	ProviderName *string `mandatory:"false" json:"providerName,omitempty"`
 
 	// The OCID of the service offered by the provider (if the customer is connecting via a provider).
-	ProviderServiceID *string `mandatory:"false" json:"providerServiceId,omitempty"`
+	ProviderServiceId *string `mandatory:"false" json:"providerServiceId,omitempty"`
 
 	// Deprecated. Instead use `providerServiceId`.
 	ProviderServiceName *string `mandatory:"false" json:"providerServiceName,omitempty"`

@@ -22,7 +22,7 @@ import (
 type Tenancy struct {
 
 	// The OCID of the tenancy.
-	ID *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id,omitempty"`
 
 	// The name of the tenancy.
 	Name *string `mandatory:"false" json:"name,omitempty"`

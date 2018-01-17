@@ -22,7 +22,7 @@ type PatchSummary struct {
 	Description *string `mandatory:"true" json:"description,omitempty"`
 
 	// The OCID of the patch.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The date and time that the patch was released.
 	TimeReleased *common.SDKTime `mandatory:"true" json:"timeReleased,omitempty"`

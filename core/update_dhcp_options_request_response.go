@@ -12,7 +12,7 @@ import (
 type UpdateDhcpOptionsRequest struct {
 
 	// The OCID for the set of DHCP options.
-	DhcpID *string `mandatory:"true" contributesTo:"path" name:"dhcpId"`
+	DhcpId *string `mandatory:"true" contributesTo:"path" name:"dhcpId"`
 
 	// Request object for updating a set of DHCP options.
 	UpdateDhcpDetails `contributesTo:"body"`
@@ -41,7 +41,7 @@ type UpdateDhcpOptionsResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response UpdateDhcpOptionsResponse) String() string {

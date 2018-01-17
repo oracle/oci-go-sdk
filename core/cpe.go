@@ -23,10 +23,10 @@ import (
 type Cpe struct {
 
 	// The OCID of the compartment containing the CPE.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The CPE's Oracle ID (OCID).
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The public IP address of the on-premises router.
 	IpAddress *string `mandatory:"true" json:"ipAddress,omitempty"`

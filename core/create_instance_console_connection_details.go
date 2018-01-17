@@ -17,7 +17,7 @@ import (
 type CreateInstanceConsoleConnectionDetails struct {
 
 	// The OCID of the instance to create the console connection to.
-	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
 
 	// The SSH public key used to authenticate the console connection.
 	PublicKey *string `mandatory:"true" json:"publicKey,omitempty"`

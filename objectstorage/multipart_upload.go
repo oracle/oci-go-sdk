@@ -27,7 +27,7 @@ type MultipartUpload struct {
 	Object *string `mandatory:"true" json:"object,omitempty"`
 
 	// The unique identifier for the in-progress multipart upload.
-	UploadID *string `mandatory:"true" json:"uploadId,omitempty"`
+	UploadId *string `mandatory:"true" json:"uploadId,omitempty"`
 
 	// The date and time when the upload was created.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`

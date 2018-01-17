@@ -17,7 +17,7 @@ import (
 type CreateIdentityProviderDetails interface {
 
 	// The OCID of your tenancy.
-	GetCompartmentID() *string
+	GetCompartmentId() *string
 
 	// The name you assign to the `IdentityProvider` during creation.
 	// The name must be unique across all `IdentityProvider` objects in the
@@ -37,7 +37,7 @@ type CreateIdentityProviderDetails interface {
 
 type createidentityproviderdetails struct {
 	JsonData      []byte
-	CompartmentID *string                                      `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string                                      `mandatory:"true" json:"compartmentId,omitempty"`
 	Name          *string                                      `mandatory:"true" json:"name,omitempty"`
 	Description   *string                                      `mandatory:"true" json:"description,omitempty"`
 	ProductType   CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType,omitempty"`
@@ -55,7 +55,7 @@ func (m *createidentityproviderdetails) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
-	m.CompartmentID = s.Model.CompartmentID
+	m.CompartmentId = s.Model.CompartmentId
 	m.Name = s.Model.Name
 	m.Description = s.Model.Description
 	m.ProductType = s.Model.ProductType
@@ -77,9 +77,9 @@ func (m *createidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (i
 	}
 }
 
-//GetCompartmentID returns CompartmentID
-func (m createidentityproviderdetails) GetCompartmentID() *string {
-	return m.CompartmentID
+//GetCompartmentId returns CompartmentId
+func (m createidentityproviderdetails) GetCompartmentId() *string {
+	return m.CompartmentId
 }
 
 //GetName returns Name

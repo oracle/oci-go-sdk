@@ -668,26 +668,6 @@ func (client IdentityClient) ListCustomerSecretKeys(ctx context.Context, request
 	return
 }
 
-// ListFaultDomains Lists the Fault Domains in your tenancy. Specify the OCID of either the tenancy or another
-// of your compartments as the value for the compartment ID (remember that the tenancy is simply the root compartment).
-// See [Where to Get the Tenancy's OCID and User's OCID]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListFaultDomains(ctx context.Context, request ListFaultDomainsRequest) (response ListFaultDomainsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/faultDomains/", request)
-	if err != nil {
-		return
-	}
-
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
-
-	err = common.UnmarshalResponse(httpResponse, &response)
-	return
-}
-
 // ListGroups Lists the groups in your tenancy. You must specify your tenancy's OCID as the value for
 // the compartment ID (remember that the tenancy is simply the root compartment).
 // See [Where to Get the Tenancy's OCID and User's OCID]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).

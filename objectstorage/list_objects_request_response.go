@@ -44,7 +44,7 @@ type ListObjectsRequest struct {
 	Fields ListObjectsFieldsEnum `mandatory:"false" contributesTo:"query" name:"fields" omitEmpty:"true"`
 
 	// The client request ID for tracing.
-	OpcClientRequestID *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
+	OpcClientRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
 }
 
 func (request ListObjectsRequest) String() string {
@@ -61,11 +61,11 @@ type ListObjectsResponse struct {
 	ListObjects `presentIn:"body"`
 
 	// Echoes back the value passed in the opc-client-request-id header, for use by clients when debugging.
-	OpcClientRequestID *string `presentIn:"header" name:"opc-client-request-id"`
+	OpcClientRequestId *string `presentIn:"header" name:"opc-client-request-id"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular
 	// request, please provide this request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListObjectsResponse) String() string {

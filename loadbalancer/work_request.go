@@ -20,14 +20,14 @@ type WorkRequest struct {
 	ErrorDetails []WorkRequestError `mandatory:"true" json:"errorDetails,omitempty"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the work request.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the work request.
 	LifecycleState WorkRequestLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer with which the work request
 	// is associated.
-	LoadBalancerID *string `mandatory:"true" json:"loadBalancerId,omitempty"`
+	LoadBalancerId *string `mandatory:"true" json:"loadBalancerId,omitempty"`
 
 	// A collection of data, related to the load balancer provisioning process, that helps with debugging in the event of failure.
 	// Possible data elements include:

@@ -12,10 +12,10 @@ import (
 type DeleteCustomerSecretKeyRequest struct {
 
 	// The OCID of the user.
-	UserID *string `mandatory:"true" contributesTo:"path" name:"userId"`
+	UserId *string `mandatory:"true" contributesTo:"path" name:"userId"`
 
 	// The OCID of the secret key.
-	CustomerSecretKeyID *string `mandatory:"true" contributesTo:"path" name:"customerSecretKeyId"`
+	CustomerSecretKeyId *string `mandatory:"true" contributesTo:"path" name:"customerSecretKeyId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
@@ -35,7 +35,7 @@ type DeleteCustomerSecretKeyResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response DeleteCustomerSecretKeyResponse) String() string {

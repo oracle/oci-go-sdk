@@ -20,16 +20,16 @@ type Backup struct {
 	AvailabilityDomain *string `mandatory:"false" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
 
 	// The OCID of the database.
-	DatabaseID *string `mandatory:"false" json:"databaseId,omitempty"`
+	DatabaseId *string `mandatory:"false" json:"databaseId,omitempty"`
 
 	// The user-friendly name for the backup. It does not have to be unique.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
 	// The OCID of the backup.
-	ID *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id,omitempty"`
 
 	// Additional information about the current lifecycleState.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`

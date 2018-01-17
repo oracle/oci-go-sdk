@@ -17,7 +17,7 @@ import (
 type VolumeSourceFromVolumeDetails struct {
 
 	// The OCID of the volume.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 }
 
 func (m VolumeSourceFromVolumeDetails) String() string {

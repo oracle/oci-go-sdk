@@ -16,7 +16,7 @@ import (
 type CaptureConsoleHistoryDetails struct {
 
 	// The OCID of the instance to get the console history from.
-	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

@@ -12,7 +12,7 @@ import (
 type GetVolumeBackupRequest struct {
 
 	// The OCID of the volume backup.
-	VolumeBackupID *string `mandatory:"true" contributesTo:"path" name:"volumeBackupId"`
+	VolumeBackupId *string `mandatory:"true" contributesTo:"path" name:"volumeBackupId"`
 }
 
 func (request GetVolumeBackupRequest) String() string {
@@ -33,7 +33,7 @@ type GetVolumeBackupResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response GetVolumeBackupResponse) String() string {

@@ -12,7 +12,7 @@ import (
 type ListShapesRequest struct {
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The name of the Availability Domain.
 	// Example: `Uocm:PHX-AD-1`
@@ -26,7 +26,7 @@ type ListShapesRequest struct {
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
 	// The OCID of an image.
-	ImageID *string `mandatory:"false" contributesTo:"query" name:"imageId"`
+	ImageId *string `mandatory:"false" contributesTo:"query" name:"imageId"`
 }
 
 func (request ListShapesRequest) String() string {
@@ -49,7 +49,7 @@ type ListShapesResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListShapesResponse) String() string {

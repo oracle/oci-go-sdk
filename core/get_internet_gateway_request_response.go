@@ -12,7 +12,7 @@ import (
 type GetInternetGatewayRequest struct {
 
 	// The OCID of the Internet Gateway.
-	IgID *string `mandatory:"true" contributesTo:"path" name:"igId"`
+	IgId *string `mandatory:"true" contributesTo:"path" name:"igId"`
 }
 
 func (request GetInternetGatewayRequest) String() string {
@@ -33,7 +33,7 @@ type GetInternetGatewayResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response GetInternetGatewayResponse) String() string {

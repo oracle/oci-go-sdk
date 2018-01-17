@@ -12,7 +12,7 @@ import (
 type GetVnicRequest struct {
 
 	// The OCID of the VNIC.
-	VnicID *string `mandatory:"true" contributesTo:"path" name:"vnicId"`
+	VnicId *string `mandatory:"true" contributesTo:"path" name:"vnicId"`
 }
 
 func (request GetVnicRequest) String() string {
@@ -33,7 +33,7 @@ type GetVnicResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response GetVnicResponse) String() string {

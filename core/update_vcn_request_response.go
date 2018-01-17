@@ -12,7 +12,7 @@ import (
 type UpdateVcnRequest struct {
 
 	// The OCID of the VCN.
-	VcnID *string `mandatory:"true" contributesTo:"path" name:"vcnId"`
+	VcnId *string `mandatory:"true" contributesTo:"path" name:"vcnId"`
 
 	// Details object for updating a VCN.
 	UpdateVcnDetails `contributesTo:"body"`
@@ -41,7 +41,7 @@ type UpdateVcnResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response UpdateVcnResponse) String() string {

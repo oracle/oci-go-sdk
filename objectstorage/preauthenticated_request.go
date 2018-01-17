@@ -16,7 +16,7 @@ import (
 type PreauthenticatedRequest struct {
 
 	// the unique identifier to use when directly addressing the pre-authenticated request
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// the user supplied name of the pre-authenticated request.
 	Name *string `mandatory:"true" json:"name,omitempty"`

@@ -12,7 +12,7 @@ import (
 type UpdateVolumeBackupRequest struct {
 
 	// The OCID of the volume backup.
-	VolumeBackupID *string `mandatory:"true" contributesTo:"path" name:"volumeBackupId"`
+	VolumeBackupId *string `mandatory:"true" contributesTo:"path" name:"volumeBackupId"`
 
 	// Update volume backup fields
 	UpdateVolumeBackupDetails `contributesTo:"body"`

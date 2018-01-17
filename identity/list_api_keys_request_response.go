@@ -12,7 +12,7 @@ import (
 type ListApiKeysRequest struct {
 
 	// The OCID of the user.
-	UserID *string `mandatory:"true" contributesTo:"path" name:"userId"`
+	UserId *string `mandatory:"true" contributesTo:"path" name:"userId"`
 }
 
 func (request ListApiKeysRequest) String() string {
@@ -30,7 +30,7 @@ type ListApiKeysResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,
 	// then a partial list might have been returned. Include this value as the `page` parameter for the

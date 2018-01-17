@@ -12,7 +12,7 @@ import (
 type GetLocalPeeringGatewayRequest struct {
 
 	// The OCID of the local peering gateway.
-	LocalPeeringGatewayID *string `mandatory:"true" contributesTo:"path" name:"localPeeringGatewayId"`
+	LocalPeeringGatewayId *string `mandatory:"true" contributesTo:"path" name:"localPeeringGatewayId"`
 }
 
 func (request GetLocalPeeringGatewayRequest) String() string {
@@ -33,7 +33,7 @@ type GetLocalPeeringGatewayResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response GetLocalPeeringGatewayResponse) String() string {

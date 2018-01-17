@@ -12,7 +12,7 @@ import (
 type ListVolumeAttachmentsRequest struct {
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The name of the Availability Domain.
 	// Example: `Uocm:PHX-AD-1`
@@ -26,10 +26,10 @@ type ListVolumeAttachmentsRequest struct {
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
 	// The OCID of the instance.
-	InstanceID *string `mandatory:"false" contributesTo:"query" name:"instanceId"`
+	InstanceId *string `mandatory:"false" contributesTo:"query" name:"instanceId"`
 
 	// The OCID of the volume.
-	VolumeID *string `mandatory:"false" contributesTo:"query" name:"volumeId"`
+	VolumeId *string `mandatory:"false" contributesTo:"query" name:"volumeId"`
 }
 
 func (request ListVolumeAttachmentsRequest) String() string {
@@ -52,7 +52,7 @@ type ListVolumeAttachmentsResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListVolumeAttachmentsResponse) String() string {

@@ -21,14 +21,14 @@ import (
 type VolumeBackup struct {
 
 	// The OCID of the compartment that contains the volume backup.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// A user-friendly name for the volume backup. Does not have to be unique and it's changeable.
 	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
 
 	// The OCID of the volume backup.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of a volume backup.
 	LifecycleState VolumeBackupLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
@@ -57,7 +57,7 @@ type VolumeBackup struct {
 	UniqueSizeInMbs *int `mandatory:"false" json:"uniqueSizeInMbs,omitempty"`
 
 	// The OCID of the volume.
-	VolumeID *string `mandatory:"false" json:"volumeId,omitempty"`
+	VolumeId *string `mandatory:"false" json:"volumeId,omitempty"`
 }
 
 func (m VolumeBackup) String() string {

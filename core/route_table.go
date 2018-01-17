@@ -21,10 +21,10 @@ import (
 type RouteTable struct {
 
 	// The OCID of the compartment containing the route table.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The route table's Oracle ID (OCID).
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The route table's current state.
 	LifecycleState RouteTableLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
@@ -33,7 +33,7 @@ type RouteTable struct {
 	RouteRules []RouteRule `mandatory:"true" json:"routeRules,omitempty"`
 
 	// The OCID of the VCN the route table list belongs to.
-	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.

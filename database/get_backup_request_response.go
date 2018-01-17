@@ -12,7 +12,7 @@ import (
 type GetBackupRequest struct {
 
 	// The backup OCID.
-	BackupID *string `mandatory:"true" contributesTo:"path" name:"backupId"`
+	BackupId *string `mandatory:"true" contributesTo:"path" name:"backupId"`
 }
 
 func (request GetBackupRequest) String() string {
@@ -33,7 +33,7 @@ type GetBackupResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response GetBackupResponse) String() string {
