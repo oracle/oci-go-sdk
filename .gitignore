@@ -6,4 +6,5 @@
 *.out
 .glide/
 .idea/
+*.swp
 
