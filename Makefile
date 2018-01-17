@@ -5,6 +5,7 @@ TARGETS_BUILD = $(patsubst %,build-%, $(TARGETS))
 TARGETS_LINT = $(patsubst %,lint-%, $(TARGETS))
 TARGETS_TEST = $(patsubst %,test-%, $(TARGETS_WITH_TESTS))
 TARGETS_RELEASE= $(patsubst %,release-%, $(TARGETS))
+GOLINT=$(GOPATH)/bin/golint
 LINT_FLAGS=-min_confidence 0.9 -set_exit_status
 
 
@@ -19,7 +20,7 @@ lint: $(TARGETS_LINT)
 $(TARGETS_LINT): lint-%:%
 	@echo "linting and formatting: $<"
 	@(cd $< && gofmt -s -w .)
-	@(cd $< && golint $(LINT_FLAGS) .)
+	@(cd $< && $(GOLINT) $(LINT_FLAGS) .)
 
 $(TARGETS_BUILD): build-%:%
 	@echo "building: $<"
