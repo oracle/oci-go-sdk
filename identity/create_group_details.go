@@ -12,10 +12,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateGroupDetails The representation of CreateGroupDetails
 type CreateGroupDetails struct {
 
 	// The OCID of the tenancy containing the group.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the group during creation. The name must be unique across all groups
 	// in the tenancy and cannot be changed.

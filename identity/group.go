@@ -26,10 +26,10 @@ import (
 type Group struct {
 
 	// The OCID of the group.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the tenancy containing the group.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the group during creation. The name must be unique across all groups in
 	// the tenancy and cannot be changed.

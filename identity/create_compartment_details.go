@@ -12,10 +12,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateCompartmentDetails The representation of CreateCompartmentDetails
 type CreateCompartmentDetails struct {
 
 	// The OCID of the tenancy containing the compartment.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the compartment during creation. The name must be unique across all compartments
 	// in the tenancy.

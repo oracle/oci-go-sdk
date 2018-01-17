@@ -20,7 +20,6 @@ import (
 // requests must include the `peerDbSystemId` parameter found in the
 // CreateDataGuardAssociationToExistingDbSystemDetails
 // object.
-// CreateDataGuardAssociationDetails is an interface representing the polymorphic json shape of this model
 type CreateDataGuardAssociationDetails interface {
 
 	// A strong password for the `SYS`, `SYSTEM`, and `PDB Admin` users to apply during standby creation.

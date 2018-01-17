@@ -12,7 +12,7 @@ import (
 type ListAvailabilityDomainsRequest struct {
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 }
 
 func (request ListAvailabilityDomainsRequest) String() string {
@@ -30,7 +30,7 @@ type ListAvailabilityDomainsResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,
 	// then a partial list might have been returned. Include this value as the `page` parameter for the

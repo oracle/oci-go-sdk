@@ -12,13 +12,14 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// AddUserToGroupDetails The representation of AddUserToGroupDetails
 type AddUserToGroupDetails struct {
 
 	// The OCID of the user.
-	UserID *string `mandatory:"true" json:"userId,omitempty"`
+	UserId *string `mandatory:"true" json:"userId,omitempty"`
 
 	// The OCID of the group.
-	GroupID *string `mandatory:"true" json:"groupId,omitempty"`
+	GroupId *string `mandatory:"true" json:"groupId,omitempty"`
 }
 
 func (m AddUserToGroupDetails) String() string {

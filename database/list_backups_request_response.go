@@ -12,10 +12,10 @@ import (
 type ListBackupsRequest struct {
 
 	// The OCID of the database.
-	DatabaseID *string `mandatory:"false" contributesTo:"query" name:"databaseId"`
+	DatabaseId *string `mandatory:"false" contributesTo:"query" name:"databaseId"`
 
 	// The compartment OCID.
-	CompartmentID *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
 
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
@@ -45,7 +45,7 @@ type ListBackupsResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListBackupsResponse) String() string {

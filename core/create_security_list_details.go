@@ -12,10 +12,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateSecurityListDetails The representation of CreateSecurityListDetails
 type CreateSecurityListDetails struct {
 
 	// The OCID of the compartment to contain the security list.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// Rules for allowing egress IP packets.
 	EgressSecurityRules []EgressSecurityRule `mandatory:"true" json:"egressSecurityRules,omitempty"`
@@ -24,7 +25,7 @@ type CreateSecurityListDetails struct {
 	IngressSecurityRules []IngressSecurityRule `mandatory:"true" json:"ingressSecurityRules,omitempty"`
 
 	// The OCID of the VCN the security list belongs to.
-	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

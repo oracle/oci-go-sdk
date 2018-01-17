@@ -42,7 +42,7 @@ type PrivateIp struct {
 	AvailabilityDomain *string `mandatory:"false" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the compartment containing the private IP.
-	CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid
 	// entering confidential information.
@@ -60,7 +60,7 @@ type PrivateIp struct {
 	HostnameLabel *string `mandatory:"false" json:"hostnameLabel,omitempty"`
 
 	// The private IP's Oracle ID (OCID).
-	ID *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id,omitempty"`
 
 	// The private IP address of the `privateIp` object. The address is within the CIDR
 	// of the VNIC's subnet.
@@ -73,7 +73,7 @@ type PrivateIp struct {
 	IsPrimary *bool `mandatory:"false" json:"isPrimary,omitempty"`
 
 	// The OCID of the subnet the VNIC is in.
-	SubnetID *string `mandatory:"false" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"false" json:"subnetId,omitempty"`
 
 	// The date and time the private IP was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
@@ -81,7 +81,7 @@ type PrivateIp struct {
 
 	// The OCID of the VNIC the private IP is assigned to. The VNIC and private IP
 	// must be in the same subnet.
-	VnicID *string `mandatory:"false" json:"vnicId,omitempty"`
+	VnicId *string `mandatory:"false" json:"vnicId,omitempty"`
 }
 
 func (m PrivateIp) String() string {

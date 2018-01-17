@@ -12,10 +12,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateCrossConnectGroupDetails The representation of CreateCrossConnectGroupDetails
 type CreateCrossConnectGroupDetails struct {
 
 	// The OCID of the compartment to contain the cross-connect group.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.

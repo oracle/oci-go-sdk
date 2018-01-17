@@ -1,3 +1,4 @@
+// Package common Copyright (c) 2016, 2017, 2018 Oracle and/or its affiliates. All rights reserved.
 package common
 
 import (
@@ -14,12 +15,12 @@ import (
 	"strings"
 )
 
-//HttpRequestSigner the interface to sign a request
+// HttpRequestSigner the interface to sign a request
 type HttpRequestSigner interface {
 	Sign(r *http.Request) error
 }
 
-//KeyProvider interface that wraps information about the key's account owner
+// KeyProvider interface that wraps information about the key's account owner
 type KeyProvider interface {
 	PrivateRSAKey() (*rsa.PrivateKey, error)
 	KeyID() (string, error)
@@ -27,11 +28,12 @@ type KeyProvider interface {
 
 const signerVersion = "1"
 
-//A function that allows to disable/enable body hashing of requests and headers associated with body content
+// SignerBodyHashPredicate a function that allows to disable/enable body hashing
+// of requests and headers associated with body content
 type SignerBodyHashPredicate func(r *http.Request) bool
 
-//ociRequestSigner implements the http-signatures-draft spec
-//as described in https://tools.ietf.org/html/draft-cavage-http-signatures-08
+// ociRequestSigner implements the http-signatures-draft spec
+// as described in https://tools.ietf.org/html/draft-cavage-http-signatures-08
 type ociRequestSigner struct {
 	KeyProvider    KeyProvider
 	GenericHeaders []string
@@ -51,7 +53,7 @@ func defaultRequestSigner(provider KeyProvider) HttpRequestSigner {
 	return RequestSigner(provider, defaultGenericHeaders, defaultBodyHeaders)
 }
 
-// Creates a signer that utilizes the specified headers for signing
+// RequestSigner creates a signer that utilizes the specified headers for signing
 // and the default predicate for using the body of the request as part of the signature
 func RequestSigner(provider KeyProvider, genericHeaders, bodyHeaders []string) HttpRequestSigner {
 	return ociRequestSigner{
@@ -61,7 +63,7 @@ func RequestSigner(provider KeyProvider, genericHeaders, bodyHeaders []string) H
 		ShouldHashBody: defaultBodyHashPredicate}
 }
 
-// Creates a signer that utilizes the specified header for signing, as well as a predicate for using
+// RequestSignerWithBodyHashingPredicate creates a signer that utilizes the specified header for signing, as well as a predicate for using
 // the body of the request as part of the signature
 func RequestSignerWithBodyHashingPredicate(provider KeyProvider, genericHeaders, bodyHeaders []string, shouldHashBody SignerBodyHashPredicate) HttpRequestSigner {
 	return ociRequestSigner{
@@ -148,7 +150,7 @@ func hashAndEncode(data []byte) string {
 	return hash
 }
 
-// Creates a base64 string from the hash of body the request
+// GetBodyHash creates a base64 string from the hash of body the request
 func GetBodyHash(request *http.Request) (hashString string, err error) {
 	if request.Body == nil {
 		return "", fmt.Errorf("can not read body of request while calculating body hash, nil body?")
@@ -191,7 +193,7 @@ func (signer ociRequestSigner) computeSignature(request *http.Request) (signatur
 	return
 }
 
-// Signs the http request, by inspecting the necessary headers. Once signed
+// Sign signs the http request, by inspecting the necessary headers. Once signed
 // the request will have the proper 'Authorization' header set, otherwise
 // and error is returned
 func (signer ociRequestSigner) Sign(request *http.Request) (err error) {

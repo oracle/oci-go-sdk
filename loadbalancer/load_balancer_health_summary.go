@@ -16,7 +16,7 @@ import (
 type LoadBalancerHealthSummary struct {
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer the health status is associated with.
-	LoadBalancerID *string `mandatory:"true" json:"loadBalancerId,omitempty"`
+	LoadBalancerId *string `mandatory:"true" json:"loadBalancerId,omitempty"`
 
 	// The overall health status of the load balancer.
 	// *  **OK:** All backend sets associated with the load balancer return a status of `OK`.

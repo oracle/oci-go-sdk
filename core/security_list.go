@@ -26,7 +26,7 @@ import (
 type SecurityList struct {
 
 	// The OCID of the compartment containing the security list.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
@@ -36,7 +36,7 @@ type SecurityList struct {
 	EgressSecurityRules []EgressSecurityRule `mandatory:"true" json:"egressSecurityRules,omitempty"`
 
 	// The security list's Oracle Cloud ID (OCID).
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// Rules for allowing ingress IP packets.
 	IngressSecurityRules []IngressSecurityRule `mandatory:"true" json:"ingressSecurityRules,omitempty"`
@@ -49,7 +49,7 @@ type SecurityList struct {
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
 	// The OCID of the VCN the security list belongs to.
-	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
 }
 
 func (m SecurityList) String() string {

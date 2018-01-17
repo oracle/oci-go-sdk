@@ -12,10 +12,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateCpeDetails The representation of CreateCpeDetails
 type CreateCpeDetails struct {
 
 	// The OCID of the compartment to contain the CPE.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The public IP address of the on-premises router.
 	// Example: `143.19.23.16`

@@ -12,7 +12,7 @@ import (
 type ListEventsRequest struct {
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// Returns events that were processed at or after this start date and time, expressed in [RFC 3339](https://tools.ietf.org/html/rfc3339) timestamp format.
 	// For example, a start value of `2017-01-15T11:30:00Z` will retrieve a list of all events processed since 30 minutes after the 11th hour of January 15, 2017, in Coordinated Universal Time (UTC).
@@ -29,7 +29,7 @@ type ListEventsRequest struct {
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.
-	OpcRequestID *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 }
 
 func (request ListEventsRequest) String() string {
@@ -52,7 +52,7 @@ type ListEventsResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListEventsResponse) String() string {

@@ -21,7 +21,7 @@ type AvailabilityDomain struct {
 	Name *string `mandatory:"false" json:"name,omitempty"`
 
 	// The OCID of the tenancy.
-	CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
 }
 
 func (m AvailabilityDomain) String() string {

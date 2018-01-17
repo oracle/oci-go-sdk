@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateDatabaseDetails The representation of CreateDatabaseDetails
 type CreateDatabaseDetails struct {
 
 	// A strong password for SYS, SYSTEM, and PDB Admin. The password must be at least nine characters and contain at least two uppercase, two lowercase, two numbers, and two special characters. The special characters must be _, \#, or -.

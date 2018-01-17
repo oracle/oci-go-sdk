@@ -22,16 +22,16 @@ import (
 type IpSecConnection struct {
 
 	// The OCID of the compartment containing the IPSec connection.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The OCID of the CPE.
-	CpeID *string `mandatory:"true" json:"cpeId,omitempty"`
+	CpeId *string `mandatory:"true" json:"cpeId,omitempty"`
 
 	// The OCID of the DRG.
-	DrgID *string `mandatory:"true" json:"drgId,omitempty"`
+	DrgId *string `mandatory:"true" json:"drgId,omitempty"`
 
 	// The IPSec connection's Oracle ID (OCID).
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The IPSec connection's current state.
 	LifecycleState IpSecConnectionLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`

@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateDbHomeDetails The representation of CreateDbHomeDetails
 type CreateDbHomeDetails struct {
 	Database *CreateDatabaseDetails `mandatory:"true" json:"database,omitempty"`
 

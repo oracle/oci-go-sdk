@@ -17,16 +17,16 @@ import (
 type UserGroupMembership struct {
 
 	// The OCID of the membership.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the tenancy containing the user, group, and membership object.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The OCID of the group.
-	GroupID *string `mandatory:"true" json:"groupId,omitempty"`
+	GroupId *string `mandatory:"true" json:"groupId,omitempty"`
 
 	// The OCID of the user.
-	UserID *string `mandatory:"true" json:"userId,omitempty"`
+	UserId *string `mandatory:"true" json:"userId,omitempty"`
 
 	// Date and time the membership was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`

@@ -12,7 +12,7 @@ import (
 type GetIdentityProviderRequest struct {
 
 	// The OCID of the identity provider.
-	IdentityProviderID *string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
+	IdentityProviderId *string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
 }
 
 func (request GetIdentityProviderRequest) String() string {
@@ -30,7 +30,7 @@ type GetIdentityProviderResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`

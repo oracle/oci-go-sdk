@@ -12,10 +12,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateUserDetails The representation of CreateUserDetails
 type CreateUserDetails struct {
 
 	// The OCID of the tenancy containing the user.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the user during creation. This is the user's login for the Console.
 	// The name must be unique across all users in the tenancy and cannot be changed.

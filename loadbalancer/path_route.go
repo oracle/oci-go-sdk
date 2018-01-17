@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// PathRoute The representation of PathRoute
 type PathRoute struct {
 
 	// The name of the associated backend set.

@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateIpSecConnectionDetails The representation of UpdateIpSecConnectionDetails
 type UpdateIpSecConnectionDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.

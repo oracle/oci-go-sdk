@@ -19,10 +19,10 @@ import (
 type Saml2IdentityProvider struct {
 
 	// The OCID of the `IdentityProvider`.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the tenancy containing the `IdentityProvider`.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the `IdentityProvider` during creation. The name
 	// must be unique across all `IdentityProvider` objects in the tenancy and
@@ -50,7 +50,7 @@ type Saml2IdentityProvider struct {
 
 	// The URL for retrieving the identity provider's metadata, which
 	// contains information required for federating.
-	MetadataURL *string `mandatory:"true" json:"metadataUrl,omitempty"`
+	MetadataUrl *string `mandatory:"true" json:"metadataUrl,omitempty"`
 
 	// The identity provider's signing certificate used by the IAM Service
 	// to validate the SAML2 token.
@@ -58,7 +58,7 @@ type Saml2IdentityProvider struct {
 
 	// The URL to redirect federated users to for authentication with the
 	// identity provider.
-	RedirectURL *string `mandatory:"true" json:"redirectUrl,omitempty"`
+	RedirectUrl *string `mandatory:"true" json:"redirectUrl,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
@@ -68,14 +68,14 @@ type Saml2IdentityProvider struct {
 	LifecycleState IdentityProviderLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 }
 
-//GetID returns ID
-func (m Saml2IdentityProvider) GetID() *string {
-	return m.ID
+//GetId returns Id
+func (m Saml2IdentityProvider) GetId() *string {
+	return m.Id
 }
 
-//GetCompartmentID returns CompartmentID
-func (m Saml2IdentityProvider) GetCompartmentID() *string {
-	return m.CompartmentID
+//GetCompartmentId returns CompartmentId
+func (m Saml2IdentityProvider) GetCompartmentId() *string {
+	return m.CompartmentId
 }
 
 //GetName returns Name

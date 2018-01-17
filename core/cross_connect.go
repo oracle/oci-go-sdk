@@ -28,17 +28,17 @@ import (
 type CrossConnect struct {
 
 	// The OCID of the compartment containing the cross-connect group.
-	CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
 
 	// The OCID of the cross-connect group this cross-connect belongs to (if any).
-	CrossConnectGroupID *string `mandatory:"false" json:"crossConnectGroupId,omitempty"`
+	CrossConnectGroupId *string `mandatory:"false" json:"crossConnectGroupId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 
 	// The cross-connect's Oracle ID (OCID).
-	ID *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id,omitempty"`
 
 	// The cross-connect's current state.
 	LifecycleState CrossConnectLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`

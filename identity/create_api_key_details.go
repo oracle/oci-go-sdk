@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateApiKeyDetails The representation of CreateApiKeyDetails
 type CreateApiKeyDetails struct {
 
 	// The public key.  Must be an RSA key in PEM format.

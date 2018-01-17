@@ -24,7 +24,7 @@ type Bucket struct {
 	Name *string `mandatory:"true" json:"name,omitempty"`
 
 	// The compartment ID in which the bucket is authorized.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// Arbitrary string keys and values for user-defined metadata.
 	Metadata map[string]string `mandatory:"true" json:"metadata,omitempty"`

@@ -17,7 +17,7 @@ import (
 type FastConnectProviderService struct {
 
 	// The OCID of the service offered by the provider.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// Private peering BGP management.
 	PrivatePeeringBgpManagement FastConnectProviderServicePrivatePeeringBgpManagementEnum `mandatory:"true" json:"privatePeeringBgpManagement,omitempty"`

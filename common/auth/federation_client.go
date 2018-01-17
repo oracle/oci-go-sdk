@@ -49,8 +49,8 @@ var (
 
 func newAuthClient(region common.Region, provider common.KeyProvider) *common.BaseClient {
 	signer := common.RequestSigner(provider, genericHeaders, bodyHeaders)
-	client := common.DefaultBaseClientWithSigner(signer, "")
-	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "auth", string(region))
+	client := common.DefaultBaseClientWithSigner(signer)
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "auth", string(region))
 	client.BasePath = "v1/x509"
 	return &client
 }
@@ -151,6 +151,7 @@ type x509FederationRequest struct {
 	X509FederationDetails `contributesTo:"body"`
 }
 
+// X509FederationDetails x509 federation details
 type X509FederationDetails struct {
 	Certificate              string   `mandatory:"true" json:"certificate,omitempty"`
 	PublicKey                string   `mandatory:"true" json:"publicKey,omitempty"`
@@ -161,6 +162,7 @@ type x509FederationResponse struct {
 	Token `presentIn:"body"`
 }
 
+// Token token
 type Token struct {
 	Token string `mandatory:"true" json:"token,omitempty"`
 }

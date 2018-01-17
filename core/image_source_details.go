@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ImageSourceDetails is an interface representing the polymorphic json shape of this model
+// ImageSourceDetails The representation of ImageSourceDetails
 type ImageSourceDetails interface {
 }
 

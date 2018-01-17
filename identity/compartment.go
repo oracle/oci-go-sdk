@@ -30,10 +30,10 @@ import (
 type Compartment struct {
 
 	// The OCID of the compartment.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the tenancy containing the compartment.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the compartment during creation. The name must be unique across all
 	// compartments in the tenancy.

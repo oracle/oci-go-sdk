@@ -12,7 +12,7 @@ import (
 type UpdateRouteTableRequest struct {
 
 	// The OCID of the route table.
-	RtID *string `mandatory:"true" contributesTo:"path" name:"rtId"`
+	RtId *string `mandatory:"true" contributesTo:"path" name:"rtId"`
 
 	// Details object for updating a route table.
 	UpdateRouteTableDetails `contributesTo:"body"`
@@ -41,7 +41,7 @@ type UpdateRouteTableResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response UpdateRouteTableResponse) String() string {

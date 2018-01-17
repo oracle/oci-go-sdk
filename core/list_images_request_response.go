@@ -12,7 +12,7 @@ import (
 type ListImagesRequest struct {
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// A filter to return only resources that match the given display name exactly.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
@@ -69,7 +69,7 @@ type ListImagesResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListImagesResponse) String() string {

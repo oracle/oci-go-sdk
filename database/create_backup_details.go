@@ -12,10 +12,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateBackupDetails The representation of CreateBackupDetails
 type CreateBackupDetails struct {
 
 	// The OCID of the database.
-	DatabaseID *string `mandatory:"true" json:"databaseId,omitempty"`
+	DatabaseId *string `mandatory:"true" json:"databaseId,omitempty"`
 
 	// The user-friendly name for the backup. It does not have to be unique.
 	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`

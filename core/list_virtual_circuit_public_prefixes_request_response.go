@@ -12,7 +12,7 @@ import (
 type ListVirtualCircuitPublicPrefixesRequest struct {
 
 	// The OCID of the virtual circuit.
-	VirtualCircuitID *string `mandatory:"true" contributesTo:"path" name:"virtualCircuitId"`
+	VirtualCircuitId *string `mandatory:"true" contributesTo:"path" name:"virtualCircuitId"`
 
 	// A filter to only return resources that match the given verification state.
 	// The state value is case-insensitive.
@@ -34,7 +34,7 @@ type ListVirtualCircuitPublicPrefixesResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListVirtualCircuitPublicPrefixesResponse) String() string {

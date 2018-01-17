@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateCustomerSecretKeyDetails The representation of UpdateCustomerSecretKeyDetails
 type UpdateCustomerSecretKeyDetails struct {
 
 	// The description you assign to the secret key. Does not have to be unique, and it's changeable.

@@ -12,7 +12,7 @@ import (
 type UpdateBootVolumeRequest struct {
 
 	// The OCID of the boot volume.
-	BootVolumeID *string `mandatory:"true" contributesTo:"path" name:"bootVolumeId"`
+	BootVolumeId *string `mandatory:"true" contributesTo:"path" name:"bootVolumeId"`
 
 	// Update boot volume's display name.
 	UpdateBootVolumeDetails `contributesTo:"body"`
@@ -41,7 +41,7 @@ type UpdateBootVolumeResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response UpdateBootVolumeResponse) String() string {

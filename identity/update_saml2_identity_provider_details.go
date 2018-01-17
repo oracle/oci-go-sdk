@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateSaml2IdentityProviderDetails The representation of UpdateSaml2IdentityProviderDetails
 type UpdateSaml2IdentityProviderDetails struct {
 
 	// The description you assign to the `IdentityProvider`. Does not have to
@@ -21,7 +22,7 @@ type UpdateSaml2IdentityProviderDetails struct {
 
 	// The URL for retrieving the identity provider's metadata,
 	// which contains information required for federating.
-	MetadataURL *string `mandatory:"false" json:"metadataUrl,omitempty"`
+	MetadataUrl *string `mandatory:"false" json:"metadataUrl,omitempty"`
 
 	// The XML that contains the information required for federating.
 	Metadata *string `mandatory:"false" json:"metadata,omitempty"`

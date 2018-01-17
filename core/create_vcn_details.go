@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateVcnDetails The representation of CreateVcnDetails
 type CreateVcnDetails struct {
 
 	// The CIDR IP address block of the VCN.
@@ -19,7 +20,7 @@ type CreateVcnDetails struct {
 	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
 
 	// The OCID of the compartment to contain the VCN.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

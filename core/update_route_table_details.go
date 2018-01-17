@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateRouteTableDetails The representation of UpdateRouteTableDetails
 type UpdateRouteTableDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.

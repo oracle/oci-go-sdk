@@ -12,7 +12,7 @@ import (
 type GetConfigurationRequest struct {
 
 	// ID of the root compartment (tenancy)
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 }
 
 func (request GetConfigurationRequest) String() string {

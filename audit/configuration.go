@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// Configuration The representation of Configuration
 type Configuration struct {
 
 	// The retention period days

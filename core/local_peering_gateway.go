@@ -23,14 +23,14 @@ import (
 type LocalPeeringGateway struct {
 
 	// The OCID of the compartment containing the LPG.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid
 	// entering confidential information.
 	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
 
 	// The LPG's Oracle ID (OCID).
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// Whether the VCN at the other end of the peering is in a different tenancy.
 	// Example: `false`
@@ -49,7 +49,7 @@ type LocalPeeringGateway struct {
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
 	// The OCID of the VCN the LPG belongs to.
-	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
 
 	// The range of IP addresses available on the VCN at the other
 	// end of the peering from this LPG. The value is `null` if the LPG is not peered.

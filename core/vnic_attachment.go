@@ -22,19 +22,19 @@ type VnicAttachment struct {
 
 	// The OCID of the compartment the VNIC attachment is in, which is the same
 	// compartment the instance is in.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The OCID of the VNIC attachment.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the instance.
-	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
 
 	// The current state of the VNIC attachment.
 	LifecycleState VnicAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The OCID of the VNIC's subnet.
-	SubnetID *string `mandatory:"true" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"true" json:"subnetId,omitempty"`
 
 	// The date and time the VNIC attachment was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
@@ -57,7 +57,7 @@ type VnicAttachment struct {
 	VlanTag *int `mandatory:"false" json:"vlanTag,omitempty"`
 
 	// The OCID of the VNIC. Available after the attachment process is complete.
-	VnicID *string `mandatory:"false" json:"vnicId,omitempty"`
+	VnicId *string `mandatory:"false" json:"vnicId,omitempty"`
 }
 
 func (m VnicAttachment) String() string {

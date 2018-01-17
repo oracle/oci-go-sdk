@@ -20,7 +20,7 @@ import (
 type Image struct {
 
 	// The OCID of the compartment containing the instance you want to use as the basis for the image.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// Whether instances launched with this image can be used to create new images.
 	// For example, you cannot create an image of an Oracle Database instance.
@@ -28,7 +28,7 @@ type Image struct {
 	CreateImageAllowed *bool `mandatory:"true" json:"createImageAllowed,omitempty"`
 
 	// The OCID of the image.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	LifecycleState ImageLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
@@ -45,7 +45,7 @@ type Image struct {
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
 	// The OCID of the image originally used to launch the instance.
-	BaseImageID *string `mandatory:"false" json:"baseImageId,omitempty"`
+	BaseImageId *string `mandatory:"false" json:"baseImageId,omitempty"`
 
 	// A user-friendly name for the image. It does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.

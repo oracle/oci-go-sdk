@@ -12,16 +12,17 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// AuditEvent The representation of AuditEvent
 type AuditEvent struct {
 
 	// The OCID of the tenant.
-	TenantID *string `mandatory:"false" json:"tenantId,omitempty"`
+	TenantId *string `mandatory:"false" json:"tenantId,omitempty"`
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
 
 	// The GUID of the event.
-	EventID *string `mandatory:"false" json:"eventId,omitempty"`
+	EventId *string `mandatory:"false" json:"eventId,omitempty"`
 
 	// The source of the event.
 	EventSource *string `mandatory:"false" json:"eventSource,omitempty"`
@@ -33,16 +34,16 @@ type AuditEvent struct {
 	EventTime *common.SDKTime `mandatory:"false" json:"eventTime,omitempty"`
 
 	// The OCID of the user whose action triggered the event.
-	PrincipalID *string `mandatory:"false" json:"principalId,omitempty"`
+	PrincipalId *string `mandatory:"false" json:"principalId,omitempty"`
 
 	// The credential ID of the user. This value is extracted from the HTTP 'Authorization' request header. It consists of the tenantId, userId, and user fingerprint, all delimited by a slash (/).
-	CredentialID *string `mandatory:"false" json:"credentialId,omitempty"`
+	CredentialId *string `mandatory:"false" json:"credentialId,omitempty"`
 
 	// The HTTP method of the request.
 	RequestAction *string `mandatory:"false" json:"requestAction,omitempty"`
 
 	// The opc-request-id of the request.
-	RequestID *string `mandatory:"false" json:"requestId,omitempty"`
+	RequestId *string `mandatory:"false" json:"requestId,omitempty"`
 
 	// The user agent of the client that made the request.
 	RequestAgent *string `mandatory:"false" json:"requestAgent,omitempty"`

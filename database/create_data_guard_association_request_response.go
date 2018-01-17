@@ -12,7 +12,7 @@ import (
 type CreateDataGuardAssociationRequest struct {
 
 	// The database [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
-	DatabaseID *string `mandatory:"true" contributesTo:"path" name:"databaseId"`
+	DatabaseId *string `mandatory:"true" contributesTo:"path" name:"databaseId"`
 
 	// A request to create a Data Guard association.
 	CreateDataGuardAssociationDetails `contributesTo:"body"`
@@ -43,7 +43,7 @@ type CreateDataGuardAssociationResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response CreateDataGuardAssociationResponse) String() string {

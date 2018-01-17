@@ -1,0 +1,13 @@
+box:
+    id: golang
+    ports:
+        - "5000"
+
+build:
+    steps:
+        - script:
+             name: make-build
+             code: |
+                 make build
+
+

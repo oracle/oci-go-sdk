@@ -15,7 +15,7 @@ type CreateRegionSubscriptionRequest struct {
 	CreateRegionSubscriptionDetails `contributesTo:"body"`
 
 	// The OCID of the tenancy.
-	TenancyID *string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
+	TenancyId *string `mandatory:"true" contributesTo:"path" name:"tenancyId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
@@ -40,7 +40,7 @@ type CreateRegionSubscriptionResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response CreateRegionSubscriptionResponse) String() string {

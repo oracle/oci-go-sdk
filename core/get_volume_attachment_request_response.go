@@ -12,7 +12,7 @@ import (
 type GetVolumeAttachmentRequest struct {
 
 	// The OCID of the volume attachment.
-	VolumeAttachmentID *string `mandatory:"true" contributesTo:"path" name:"volumeAttachmentId"`
+	VolumeAttachmentId *string `mandatory:"true" contributesTo:"path" name:"volumeAttachmentId"`
 }
 
 func (request GetVolumeAttachmentRequest) String() string {
@@ -33,7 +33,7 @@ type GetVolumeAttachmentResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response GetVolumeAttachmentResponse) String() string {

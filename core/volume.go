@@ -26,14 +26,14 @@ type Volume struct {
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the compartment that contains the volume.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
 
 	// The OCID of the volume.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of a volume.
 	LifecycleState VolumeLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
@@ -66,9 +66,9 @@ func (m *Volume) UnmarshalJSON(data []byte) (e error) {
 		SizeInGBs          *int                     `json:"sizeInGBs,omitempty"`
 		SourceDetails      volumesourcedetails      `json:"sourceDetails,omitempty"`
 		AvailabilityDomain *string                  `json:"availabilityDomain,omitempty"`
-		CompartmentID      *string                  `json:"compartmentId,omitempty"`
+		CompartmentId      *string                  `json:"compartmentId,omitempty"`
 		DisplayName        *string                  `json:"displayName,omitempty"`
-		ID                 *string                  `json:"id,omitempty"`
+		Id                 *string                  `json:"id,omitempty"`
 		LifecycleState     VolumeLifecycleStateEnum `json:"lifecycleState,omitempty"`
 		SizeInMBs          *int                     `json:"sizeInMBs,omitempty"`
 		TimeCreated        *common.SDKTime          `json:"timeCreated,omitempty"`
@@ -86,9 +86,9 @@ func (m *Volume) UnmarshalJSON(data []byte) (e error) {
 	}
 	m.SourceDetails = nn
 	m.AvailabilityDomain = model.AvailabilityDomain
-	m.CompartmentID = model.CompartmentID
+	m.CompartmentId = model.CompartmentId
 	m.DisplayName = model.DisplayName
-	m.ID = model.ID
+	m.Id = model.Id
 	m.LifecycleState = model.LifecycleState
 	m.SizeInMBs = model.SizeInMBs
 	m.TimeCreated = model.TimeCreated

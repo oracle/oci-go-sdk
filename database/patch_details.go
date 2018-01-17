@@ -21,7 +21,7 @@ type PatchDetails struct {
 	Action PatchDetailsActionEnum `mandatory:"false" json:"action,omitempty"`
 
 	// The OCID of the patch.
-	PatchID *string `mandatory:"false" json:"patchId,omitempty"`
+	PatchId *string `mandatory:"false" json:"patchId,omitempty"`
 }
 
 func (m PatchDetails) String() string {

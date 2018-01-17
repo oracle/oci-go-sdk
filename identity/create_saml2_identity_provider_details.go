@@ -13,10 +13,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateSaml2IdentityProviderDetails The representation of CreateSaml2IdentityProviderDetails
 type CreateSaml2IdentityProviderDetails struct {
 
 	// The OCID of your tenancy.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the `IdentityProvider` during creation.
 	// The name must be unique across all `IdentityProvider` objects in the
@@ -29,7 +30,7 @@ type CreateSaml2IdentityProviderDetails struct {
 
 	// The URL for retrieving the identity provider's metadata,
 	// which contains information required for federating.
-	MetadataURL *string `mandatory:"true" json:"metadataUrl,omitempty"`
+	MetadataUrl *string `mandatory:"true" json:"metadataUrl,omitempty"`
 
 	// The XML that contains the information required for federating.
 	Metadata *string `mandatory:"true" json:"metadata,omitempty"`
@@ -41,9 +42,9 @@ type CreateSaml2IdentityProviderDetails struct {
 	ProductType CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType,omitempty"`
 }
 
-//GetCompartmentID returns CompartmentID
-func (m CreateSaml2IdentityProviderDetails) GetCompartmentID() *string {
-	return m.CompartmentID
+//GetCompartmentId returns CompartmentId
+func (m CreateSaml2IdentityProviderDetails) GetCompartmentId() *string {
+	return m.CompartmentId
 }
 
 //GetName returns Name

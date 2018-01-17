@@ -18,7 +18,6 @@ import (
 // and DhcpSearchDomainOption. For more
 // information, see [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm)
 // and [DHCP Options]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingDHCP.htm).
-// DhcpOption is an interface representing the polymorphic json shape of this model
 type DhcpOption interface {
 }
 

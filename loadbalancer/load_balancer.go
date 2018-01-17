@@ -23,14 +23,14 @@ import (
 type LoadBalancer struct {
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the compartment containing the load balancer.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// A user-friendly name. It does not have to be unique, and it is changeable.
 	// Example: `My load balancer`
 	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the load balancer.
 	LifecycleState LoadBalancerLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`

@@ -23,7 +23,7 @@ type LetterOfAuthority struct {
 	CircuitType LetterOfAuthorityCircuitTypeEnum `mandatory:"false" json:"circuitType,omitempty"`
 
 	// The OCID of the cross-connect.
-	CrossConnectID *string `mandatory:"false" json:"crossConnectId,omitempty"`
+	CrossConnectId *string `mandatory:"false" json:"crossConnectId,omitempty"`
 
 	// The address of the FastConnect location.
 	FacilityLocation *string `mandatory:"false" json:"facilityLocation,omitempty"`

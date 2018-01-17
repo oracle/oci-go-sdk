@@ -18,7 +18,7 @@ import (
 )
 
 var (
-	testRegionForVirtualNetwork = common.REGION_PHX
+	testRegionForVirtualNetwork = common.RegionPHX
 )
 
 func TestVirtualNetworkClient_CreateCpe(t *testing.T) {

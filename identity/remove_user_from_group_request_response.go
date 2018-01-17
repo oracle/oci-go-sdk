@@ -12,7 +12,7 @@ import (
 type RemoveUserFromGroupRequest struct {
 
 	// The OCID of the userGroupMembership.
-	UserGroupMembershipID *string `mandatory:"true" contributesTo:"path" name:"userGroupMembershipId"`
+	UserGroupMembershipId *string `mandatory:"true" contributesTo:"path" name:"userGroupMembershipId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
@@ -32,7 +32,7 @@ type RemoveUserFromGroupResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response RemoveUserFromGroupResponse) String() string {

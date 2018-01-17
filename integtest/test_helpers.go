@@ -31,7 +31,7 @@ const (
 	DEF_USER_ID             = "ocid1.user.oc1..aaaaaaaav6gsclr6pd4yjqengmriylyck55lvon5ujjnhkok5gyxii34lvra"
 	DEF_COMPARTMENT_ID      = "ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma"
 	DEF_GROUP_ID            = "ocid1.group.oc1..aaaaaaaayvxomawkk23wkp32cgdufufgqvx62qanmbn6vs3lv65xuc42r5sq"
-	DEF_REGION              = common.REGION_PHX
+	DEF_REGION              = common.RegionPHX
 )
 
 func getEnvSetting(s string, defaultValue string) string {
@@ -233,7 +233,7 @@ func verifyResponseIsValid(t *testing.T, response interface{}, err error) {
 
 func createTestUser(client identity.IdentityClient) (identity.User, error) {
 	req := identity.CreateUserRequest{}
-	req.CompartmentID = common.String(getTenancyID())
+	req.CompartmentId = common.String(getTenancyID())
 	req.Name = common.String(getUniqueName("AUTG_User_"))
 	req.Description = common.String("GoSDK Test User")
 	rsp, err := client.CreateUser(context.Background(), req)
@@ -241,14 +241,14 @@ func createTestUser(client identity.IdentityClient) (identity.User, error) {
 }
 
 func deleteTestUser(client identity.IdentityClient, userID *string) error {
-	req := identity.DeleteUserRequest{UserID: userID}
+	req := identity.DeleteUserRequest{UserId: userID}
 	return client.DeleteUser(context.Background(), req)
 }
 
 func validAD() string {
 	c, _ := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	req := identity.ListAvailabilityDomainsRequest{}
-	req.CompartmentID = common.String(getCompartmentID())
+	req.CompartmentId = common.String(getCompartmentID())
 	response, _ := c.ListAvailabilityDomains(context.Background(), req)
 	return *response.Items[0].Name
 }
@@ -261,7 +261,7 @@ func readSampleFederationMetadata(t *testing.T) string {
 
 func createTestGroup(client identity.IdentityClient) (identity.Group, error) {
 	req := identity.CreateGroupRequest{}
-	req.CompartmentID = common.String(getTenancyID())
+	req.CompartmentId = common.String(getTenancyID())
 	req.Name = common.String(getUniqueName("Test_Group_"))
 	req.Description = common.String("Go SDK Test Group")
 	rsp, err := client.CreateGroup(context.Background(), req)
@@ -269,7 +269,7 @@ func createTestGroup(client identity.IdentityClient) (identity.Group, error) {
 }
 
 func deleteTestGroup(client identity.IdentityClient, groupId *string) error {
-	req := identity.DeleteGroupRequest{GroupID: groupId}
+	req := identity.DeleteGroupRequest{GroupId: groupId}
 	return client.DeleteGroup(context.Background(), req)
 }
 

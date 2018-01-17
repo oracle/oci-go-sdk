@@ -12,7 +12,7 @@ import (
 type GetVirtualCircuitRequest struct {
 
 	// The OCID of the virtual circuit.
-	VirtualCircuitID *string `mandatory:"true" contributesTo:"path" name:"virtualCircuitId"`
+	VirtualCircuitId *string `mandatory:"true" contributesTo:"path" name:"virtualCircuitId"`
 }
 
 func (request GetVirtualCircuitRequest) String() string {
@@ -33,7 +33,7 @@ type GetVirtualCircuitResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response GetVirtualCircuitResponse) String() string {

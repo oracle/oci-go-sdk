@@ -17,10 +17,10 @@ import (
 type CustomerSecretKeySummary struct {
 
 	// The OCID of the secret key.
-	ID *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id,omitempty"`
 
 	// The OCID of the user the password belongs to.
-	UserID *string `mandatory:"false" json:"userId,omitempty"`
+	UserId *string `mandatory:"false" json:"userId,omitempty"`
 
 	// The displayName you assign to the secret key. Does not have to be unique, and it's changeable.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

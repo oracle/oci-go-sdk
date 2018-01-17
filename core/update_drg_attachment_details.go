@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateDrgAttachmentDetails The representation of UpdateDrgAttachmentDetails
 type UpdateDrgAttachmentDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.

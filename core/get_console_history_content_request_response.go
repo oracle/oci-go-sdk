@@ -12,7 +12,7 @@ import (
 type GetConsoleHistoryContentRequest struct {
 
 	// The OCID of the console history.
-	InstanceConsoleHistoryID *string `mandatory:"true" contributesTo:"path" name:"instanceConsoleHistoryId"`
+	InstanceConsoleHistoryId *string `mandatory:"true" contributesTo:"path" name:"instanceConsoleHistoryId"`
 
 	// Offset of the snapshot data to retrieve.
 	Offset *int `mandatory:"false" contributesTo:"query" name:"offset"`
@@ -39,7 +39,7 @@ type GetConsoleHistoryContentResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response GetConsoleHistoryContentResponse) String() string {

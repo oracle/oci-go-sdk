@@ -64,7 +64,7 @@ func createBucket(t *testing.T, namespace, compartment, name string){
 		NamespaceName:&namespace,
 
 	}
-	request.CompartmentID = &compartment
+	request.CompartmentId = &compartment
 	request.Name = &name
 	_, err := c.CreateBucket(context.Background(), request)
 	failIfError(t, err)

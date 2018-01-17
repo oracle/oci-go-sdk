@@ -31,19 +31,19 @@ type Subnet struct {
 	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
 
 	// The OCID of the compartment containing the subnet.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The subnet's Oracle ID (OCID).
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The subnet's current state.
 	LifecycleState SubnetLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The OCID of the route table the subnet is using.
-	RouteTableID *string `mandatory:"true" json:"routeTableId,omitempty"`
+	RouteTableId *string `mandatory:"true" json:"routeTableId,omitempty"`
 
 	// The OCID of the VCN the subnet is in.
-	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
 
 	// The IP address of the virtual router.
 	// Example: `10.0.14.1`
@@ -54,7 +54,7 @@ type Subnet struct {
 	VirtualRouterMac *string `mandatory:"true" json:"virtualRouterMac,omitempty"`
 
 	// The OCID of the set of DHCP options associated with the subnet.
-	DhcpOptionsID *string `mandatory:"false" json:"dhcpOptionsId,omitempty"`
+	DhcpOptionsId *string `mandatory:"false" json:"dhcpOptionsId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.

@@ -12,10 +12,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreatePolicyDetails The representation of CreatePolicyDetails
 type CreatePolicyDetails struct {
 
 	// The OCID of the compartment containing the policy (either the tenancy or another compartment).
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The name you assign to the policy during creation. The name must be unique across all policies
 	// in the tenancy and cannot be changed.

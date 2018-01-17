@@ -24,7 +24,7 @@ type HealthCheckResult struct {
 	SourceIpAddress *string `mandatory:"true" json:"sourceIpAddress,omitempty"`
 
 	// The OCID of the subnet hosting the load balancer that reported this health check status.
-	SubnetID *string `mandatory:"true" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"true" json:"subnetId,omitempty"`
 
 	// The date and time the data was retrieved, in the format defined by RFC3339.
 	// Example: `2017-06-02T18:28:11+00:00`

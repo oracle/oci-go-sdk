@@ -16,13 +16,13 @@ import (
 type PatchHistoryEntrySummary struct {
 
 	// The OCID of the patch history entry.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the action.
 	LifecycleState PatchHistoryEntrySummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The OCID of the patch.
-	PatchID *string `mandatory:"true" json:"patchId,omitempty"`
+	PatchId *string `mandatory:"true" json:"patchId,omitempty"`
 
 	// The date and time when the patch action started.
 	TimeStarted *common.SDKTime `mandatory:"true" json:"timeStarted,omitempty"`

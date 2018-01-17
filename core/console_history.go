@@ -22,13 +22,13 @@ type ConsoleHistory struct {
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The OCID of the console history metadata object.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The OCID of the instance this console history was fetched from.
-	InstanceID *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
 
 	// The current state of the console history.
 	LifecycleState ConsoleHistoryLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`

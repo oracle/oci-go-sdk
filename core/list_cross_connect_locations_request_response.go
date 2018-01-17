@@ -12,7 +12,7 @@ import (
 type ListCrossConnectLocationsRequest struct {
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The maximum number of items to return in a paginated "List" call.
 	// Example: `500`
@@ -42,7 +42,7 @@ type ListCrossConnectLocationsResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListCrossConnectLocationsResponse) String() string {

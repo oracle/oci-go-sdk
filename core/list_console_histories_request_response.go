@@ -12,7 +12,7 @@ import (
 type ListConsoleHistoriesRequest struct {
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The name of the Availability Domain.
 	// Example: `Uocm:PHX-AD-1`
@@ -26,7 +26,7 @@ type ListConsoleHistoriesRequest struct {
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
 	// The OCID of the instance.
-	InstanceID *string `mandatory:"false" contributesTo:"query" name:"instanceId"`
+	InstanceId *string `mandatory:"false" contributesTo:"query" name:"instanceId"`
 
 	// The field to sort by. You can provide one sort order (`sortOrder`). Default order for
 	// TIMECREATED is descending. Default order for DISPLAYNAME is ascending. The DISPLAYNAME
@@ -65,7 +65,7 @@ type ListConsoleHistoriesResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListConsoleHistoriesResponse) String() string {

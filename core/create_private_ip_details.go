@@ -12,11 +12,12 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreatePrivateIpDetails The representation of CreatePrivateIpDetails
 type CreatePrivateIpDetails struct {
 
 	// The OCID of the VNIC to assign the private IP to. The VNIC and private IP
 	// must be in the same subnet.
-	VnicID *string `mandatory:"true" json:"vnicId,omitempty"`
+	VnicId *string `mandatory:"true" json:"vnicId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid
 	// entering confidential information.

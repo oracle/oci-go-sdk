@@ -12,7 +12,7 @@ import (
 type DbNodeActionRequest struct {
 
 	// The database node [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
-	DbNodeID *string `mandatory:"true" contributesTo:"path" name:"dbNodeId"`
+	DbNodeId *string `mandatory:"true" contributesTo:"path" name:"dbNodeId"`
 
 	// The action to perform on the DB Node.
 	Action DbNodeActionActionEnum `mandatory:"true" contributesTo:"query" name:"action" omitEmpty:"true"`
@@ -48,7 +48,7 @@ type DbNodeActionResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response DbNodeActionResponse) String() string {

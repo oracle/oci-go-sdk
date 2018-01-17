@@ -17,10 +17,10 @@ import (
 type DbNode struct {
 
 	// The OCID of the DB System.
-	DbSystemID *string `mandatory:"true" json:"dbSystemId,omitempty"`
+	DbSystemId *string `mandatory:"true" json:"dbSystemId,omitempty"`
 
 	// The OCID of the DB Node.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the database node.
 	LifecycleState DbNodeLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
@@ -29,10 +29,10 @@ type DbNode struct {
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
 
 	// The OCID of the VNIC.
-	VnicID *string `mandatory:"true" json:"vnicId,omitempty"`
+	VnicId *string `mandatory:"true" json:"vnicId,omitempty"`
 
 	// The OCID of the backup VNIC.
-	BackupVnicID *string `mandatory:"false" json:"backupVnicId,omitempty"`
+	BackupVnicId *string `mandatory:"false" json:"backupVnicId,omitempty"`
 
 	// The host name for the DB Node.
 	Hostname *string `mandatory:"false" json:"hostname,omitempty"`

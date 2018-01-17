@@ -11,6 +11,7 @@ type instancePrincipalConfigurationProvider struct {
 	region      *common.Region
 }
 
+//InstancePrincipalConfigurationProvider returns a configuration for instance principals
 func InstancePrincipalConfigurationProvider() (common.ConfigurationProvider, error) {
 	var err error
 	var keyProvider *instancePrincipalKeyProvider
@@ -20,6 +21,7 @@ func InstancePrincipalConfigurationProvider() (common.ConfigurationProvider, err
 	return instancePrincipalConfigurationProvider{keyProvider: keyProvider, region: nil}, nil
 }
 
+//InstancePrincipalConfigurationProviderForRegion returns a configuration for instance principals with a given region
 func InstancePrincipalConfigurationProviderForRegion(region common.Region) (common.ConfigurationProvider, error) {
 	var err error
 	var keyProvider *instancePrincipalKeyProvider

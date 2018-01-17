@@ -12,7 +12,7 @@ import (
 type ExportImageRequest struct {
 
 	// The OCID of the image.
-	ImageID *string `mandatory:"true" contributesTo:"path" name:"imageId"`
+	ImageId *string `mandatory:"true" contributesTo:"path" name:"imageId"`
 
 	// Details for the image export.
 	ExportImageDetails `contributesTo:"body"`
@@ -48,7 +48,7 @@ type ExportImageResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ExportImageResponse) String() string {

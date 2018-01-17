@@ -12,7 +12,7 @@ import (
 type BulkAddVirtualCircuitPublicPrefixesRequest struct {
 
 	// The OCID of the virtual circuit.
-	VirtualCircuitID *string `mandatory:"true" contributesTo:"path" name:"virtualCircuitId"`
+	VirtualCircuitId *string `mandatory:"true" contributesTo:"path" name:"virtualCircuitId"`
 
 	// Request with publix prefixes to be added to the virtual circuit
 	BulkAddVirtualCircuitPublicPrefixesDetails `contributesTo:"body"`

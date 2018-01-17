@@ -12,10 +12,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateVolumeBackupDetails The representation of CreateVolumeBackupDetails
 type CreateVolumeBackupDetails struct {
 
 	// The OCID of the volume that needs to be backed up.
-	VolumeID *string `mandatory:"true" json:"volumeId,omitempty"`
+	VolumeId *string `mandatory:"true" json:"volumeId,omitempty"`
 
 	// A user-friendly name for the volume backup. Does not have to be unique and it's changeable.
 	// Avoid entering confidential information.

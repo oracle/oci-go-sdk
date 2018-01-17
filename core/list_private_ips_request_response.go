@@ -23,10 +23,10 @@ type ListPrivateIpsRequest struct {
 	IpAddress *string `mandatory:"false" contributesTo:"query" name:"ipAddress"`
 
 	// The OCID of the subnet.
-	SubnetID *string `mandatory:"false" contributesTo:"query" name:"subnetId"`
+	SubnetId *string `mandatory:"false" contributesTo:"query" name:"subnetId"`
 
 	// The OCID of the VNIC.
-	VnicID *string `mandatory:"false" contributesTo:"query" name:"vnicId"`
+	VnicId *string `mandatory:"false" contributesTo:"query" name:"vnicId"`
 }
 
 func (request ListPrivateIpsRequest) String() string {
@@ -49,7 +49,7 @@ type ListPrivateIpsResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListPrivateIpsResponse) String() string {

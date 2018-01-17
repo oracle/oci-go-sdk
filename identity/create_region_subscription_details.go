@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateRegionSubscriptionDetails The representation of CreateRegionSubscriptionDetails
 type CreateRegionSubscriptionDetails struct {
 
 	// The regions's key.

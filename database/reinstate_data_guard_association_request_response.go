@@ -12,10 +12,10 @@ import (
 type ReinstateDataGuardAssociationRequest struct {
 
 	// The database [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
-	DatabaseID *string `mandatory:"true" contributesTo:"path" name:"databaseId"`
+	DatabaseId *string `mandatory:"true" contributesTo:"path" name:"databaseId"`
 
 	// The Data Guard association's [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
-	DataGuardAssociationID *string `mandatory:"true" contributesTo:"path" name:"dataGuardAssociationId"`
+	DataGuardAssociationId *string `mandatory:"true" contributesTo:"path" name:"dataGuardAssociationId"`
 
 	// A request to reinstate a database in a standby role.
 	ReinstateDataGuardAssociationDetails `contributesTo:"body"`
@@ -44,7 +44,7 @@ type ReinstateDataGuardAssociationResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ReinstateDataGuardAssociationResponse) String() string {

@@ -26,7 +26,7 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword,omitempty"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the DB System to create the standby database on.
-	PeerDbSystemID *string `mandatory:"false" json:"peerDbSystemId,omitempty"`
+	PeerDbSystemId *string `mandatory:"false" json:"peerDbSystemId,omitempty"`
 
 	// The protection mode to set up between the primary and standby databases. For more information, see
 	// [Oracle Data Guard Protection Modes](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)

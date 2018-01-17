@@ -12,13 +12,14 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateIdpGroupMappingDetails The representation of UpdateIdpGroupMappingDetails
 type UpdateIdpGroupMappingDetails struct {
 
 	// The idp group name.
 	IdpGroupName *string `mandatory:"false" json:"idpGroupName,omitempty"`
 
 	// The OCID of the group.
-	GroupID *string `mandatory:"false" json:"groupId,omitempty"`
+	GroupId *string `mandatory:"false" json:"groupId,omitempty"`
 }
 
 func (m UpdateIdpGroupMappingDetails) String() string {

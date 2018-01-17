@@ -1,3 +1,4 @@
+// Package common Copyright (c) 2016, 2017, 2018 Oracle and/or its affiliates. All rights reserved.
 package common
 
 import (
@@ -29,35 +30,37 @@ func getOutputForEnv() (writer io.Writer) {
 	return
 }
 
-// Arguments are handled in the manner of fmt.Printf.
+// Debugf logs v with the provided format if debug mode is set
 func Debugf(format string, v ...interface{}) {
 	debugLog.SetOutput(getOutputForEnv())
 	debugLog.Output(3, fmt.Sprintf(format, v...))
 }
 
-// Arguments are handled in the manner of fmt.Print.
+// Debug  logs v if debug mode is set
 func Debug(v ...interface{}) {
 	debugLog.SetOutput(getOutputForEnv())
 	debugLog.Output(3, fmt.Sprint(v...))
 }
 
-// Arguments are handled in the manner of fmt.Println.
+// Debugln logs v appending a new line if debug mode is set
 func Debugln(v ...interface{}) {
 	debugLog.SetOutput(getOutputForEnv())
 	debugLog.Output(3, fmt.Sprintln(v...))
 }
 
-// Executes closure if we have the debug log enabled
+// IfDebug executes closure if debug is enabled
 func IfDebug(fn func()) {
 	if isDebugLogEnabled {
 		fn()
 	}
 }
 
+// Logln logs v appending a new line at the end
 func Logln(v ...interface{}) {
 	mainLog.Output(3, fmt.Sprintln(v...))
 }
 
+// Logf logs v with the provided format
 func Logf(format string, v ...interface{}) {
 	mainLog.Output(3, fmt.Sprintf(format, v...))
 }

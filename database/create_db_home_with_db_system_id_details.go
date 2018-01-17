@@ -13,10 +13,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateDbHomeWithDbSystemIdDetails The representation of CreateDbHomeWithDbSystemIdDetails
 type CreateDbHomeWithDbSystemIdDetails struct {
 
 	// The OCID of the DB System.
-	DbSystemID *string `mandatory:"true" json:"dbSystemId,omitempty"`
+	DbSystemId *string `mandatory:"true" json:"dbSystemId,omitempty"`
 
 	Database *CreateDatabaseDetails `mandatory:"true" json:"database,omitempty"`
 
@@ -27,9 +28,9 @@ type CreateDbHomeWithDbSystemIdDetails struct {
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 }
 
-//GetDbSystemID returns DbSystemID
-func (m CreateDbHomeWithDbSystemIdDetails) GetDbSystemID() *string {
-	return m.DbSystemID
+//GetDbSystemId returns DbSystemId
+func (m CreateDbHomeWithDbSystemIdDetails) GetDbSystemId() *string {
+	return m.DbSystemId
 }
 
 //GetDisplayName returns DisplayName

@@ -1,3 +1,4 @@
+// Package common Copyright (c) 2016, 2017, 2018 Oracle and/or its affiliates. All rights reserved.
 package common
 
 import (
@@ -26,8 +27,8 @@ func isNil(v reflect.Value) bool {
 	return v.Kind() == reflect.Ptr && v.IsNil()
 }
 
-//Returns the string representation of a reflect.Value
-//Only transforms primitive values
+// Returns the string representation of a reflect.Value
+// Only transforms primitive values
 func toStringValue(v reflect.Value, field reflect.StructField) (string, error) {
 	if v.Kind() == reflect.Ptr {
 		if v.IsNil() {
@@ -38,7 +39,7 @@ func toStringValue(v reflect.Value, field reflect.StructField) (string, error) {
 
 	if v.Type() == timeType {
 		t := v.Interface().(SDKTime)
-		return FormatTime(t), nil
+		return formatTime(t), nil
 	}
 
 	switch v.Kind() {
@@ -150,7 +151,7 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 	return
 }
 
-//Adds to the path of the url in the order they appear in the structure
+// Adds to the path of the url in the order they appear in the structure
 func addToPath(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
 	var additionalUrlPathPart string
 	if additionalUrlPathPart, e = toStringValue(value, field); e != nil {
@@ -169,7 +170,6 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 		allPath := []string{currentUrlPath, additionalUrlPathPart}
 		newPath := strings.Join(allPath, "/")
 		request.URL.Path = path.Clean(newPath)
-		return
 	} else {
 		var fieldName string
 		if fieldName = field.Tag.Get("name"); fieldName == "" {
@@ -179,8 +179,8 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 		urlTemplate := currentUrlPath
 		Debugln("Marshaling to path from field:", field.Name, "in template:", urlTemplate)
 		request.URL.Path = path.Clean(strings.Replace(urlTemplate, "{"+fieldName+"}", additionalUrlPathPart, -1))
-		return
 	}
+	return
 }
 
 func setWellKnownHeaders(request *http.Request, headerName, headerValue string) (e error) {
@@ -270,8 +270,8 @@ func addToHeaderCollection(request *http.Request, value reflect.Value, field ref
 	return
 }
 
-//Makes sure the incoming structure is able to be marshalled
-//to a request
+// Makes sure the incoming structure is able to be marshalled
+// to a request
 func checkForValidRequestStruct(s interface{}) (*reflect.Value, error) {
 	val := reflect.ValueOf(s)
 	for val.Kind() == reflect.Ptr {
@@ -335,7 +335,7 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 	return
 }
 
-// Marshals a structure to an http request using tag values in the struct
+// HttpRequestMarshaller marshals a structure to an http request using tag values in the struct
 // The marshaller tag should like the following
 // type A struct {
 // 		 ANumber string `contributesTo="query" name="number"`
@@ -391,8 +391,8 @@ func MakeDefaultHttpRequestWithTaggedStruct(method, path string, requestStruct i
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Makes sure the incoming structure is able to be unmarshaled
-//to a request
+// Makes sure the incoming structure is able to be unmarshaled
+// to a request
 func checkForValidResponseStruct(s interface{}) (*reflect.Value, error) {
 	val := reflect.ValueOf(s)
 	for val.Kind() == reflect.Ptr {
@@ -440,7 +440,7 @@ func analyzeValue(stringValue string, kind reflect.Kind, field reflect.StructFie
 		if err != nil {
 			return
 		}
-		sdkTime := SDKTimeFromTime(t)
+		sdkTime := sdkTimeFromTime(t)
 		val = reflect.ValueOf(sdkTime)
 		valPointer = reflect.ValueOf(&sdkTime)
 		return
@@ -510,8 +510,8 @@ func analyzeValue(stringValue string, kind reflect.Kind, field reflect.StructFie
 	return
 }
 
-//Sets the field of a struct, with the appropiate value of the string
-//Only sets basic types
+// Sets the field of a struct, with the appropiate value of the string
+// Only sets basic types
 func fromStringValue(newValue string, val *reflect.Value, field reflect.StructField) (err error) {
 
 	if !val.CanSet() {
@@ -538,7 +538,7 @@ func fromStringValue(newValue string, val *reflect.Value, field reflect.StructFi
 	return
 }
 
-//PolymorphicJSONUnmarshaler is the interface to unmarshal polymorphic json payloads
+// PolymorphicJSONUnmarshaler is the interface to unmarshal polymorphic json payloads
 type PolymorphicJSONUnmarshaler interface {
 	UnmarshalPolymorphicJSON(data []byte) (interface{}, error)
 }
@@ -675,7 +675,7 @@ func responseToStruct(response *http.Response, val *reflect.Value, unmarshaler P
 	return
 }
 
-// UnmarshalResponse hydrates the fileds of a struct with the values of a http response, guided
+// UnmarshalResponse hydrates the fields of a struct with the values of a http response, guided
 // by the field tags. The directive tag is "presentIn" and it can be either
 //  - "header": Will look for the header tagged as "name" in the headers of the struct and set it value to that
 //  - "body": It will try to marshal the body from a json string to a struct tagged with 'presentIn: "body"'.
@@ -695,12 +695,8 @@ func UnmarshalResponse(httpResponse *http.Response, responseStruct interface{}) 
 	return nil
 }
 
-// UnmarshalResponse hydrates the fileds of a struct with the values of a http response, guided
-// by the field tags. The directive tag is "presentIn" and it can be either
-//  - "header": Will look for the header tagged as "name" in the headers of the struct and set it value to that
-//  - "body": The filed tagged with 'presentIn:"body" will be marshaled with the unmarshaler interface
-// Further this method will consume the body it should be safe to close it after this function
-// Notice the current implementation only supports native types:int, strings, floats, bool as the field types
+// UnmarshalResponseWithPolymorphicBody similar to UnmarshalResponse but assumes the body of the response
+// contains polymorphic json. This function will use the unmarshaler argument to unmarshal json content
 func UnmarshalResponseWithPolymorphicBody(httpResponse *http.Response, responseStruct interface{}, unmarshaler PolymorphicJSONUnmarshaler) (err error) {
 
 	var val *reflect.Value

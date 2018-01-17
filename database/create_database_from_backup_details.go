@@ -12,13 +12,14 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateDatabaseFromBackupDetails The representation of CreateDatabaseFromBackupDetails
 type CreateDatabaseFromBackupDetails struct {
 
 	// A strong password for SYS, SYSTEM, PDB Admin and TDE Wallet. The password must be at least nine characters and contain at least two uppercase, two lowercase, two numbers, and two special characters. The special characters must be _, \#, or -.
 	AdminPassword *string `mandatory:"true" json:"adminPassword,omitempty"`
 
 	// The backup OCID.
-	BackupID *string `mandatory:"true" json:"backupId,omitempty"`
+	BackupId *string `mandatory:"true" json:"backupId,omitempty"`
 
 	// The password to open the TDE wallet.
 	BackupTDEPassword *string `mandatory:"true" json:"backupTDEPassword,omitempty"`

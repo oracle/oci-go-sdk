@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateSubnetDetails The representation of CreateSubnetDetails
 type CreateSubnetDetails struct {
 
 	// The Availability Domain to contain the subnet.
@@ -23,14 +24,14 @@ type CreateSubnetDetails struct {
 	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
 
 	// The OCID of the compartment to contain the subnet.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The OCID of the VCN to contain the subnet.
-	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
 
 	// The OCID of the set of DHCP options the subnet will use. If you don't
 	// provide a value, the subnet will use the VCN's default set of DHCP options.
-	DhcpOptionsID *string `mandatory:"false" json:"dhcpOptionsId,omitempty"`
+	DhcpOptionsId *string `mandatory:"false" json:"dhcpOptionsId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
@@ -61,7 +62,7 @@ type CreateSubnetDetails struct {
 
 	// The OCID of the route table the subnet will use. If you don't provide a value,
 	// the subnet will use the VCN's default route table.
-	RouteTableID *string `mandatory:"false" json:"routeTableId,omitempty"`
+	RouteTableId *string `mandatory:"false" json:"routeTableId,omitempty"`
 
 	// OCIDs for the security lists to associate with the subnet. If you don't
 	// provide a value, the VCN's default security list will be associated with

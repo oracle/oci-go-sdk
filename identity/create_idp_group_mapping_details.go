@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateIdpGroupMappingDetails The representation of CreateIdpGroupMappingDetails
 type CreateIdpGroupMappingDetails struct {
 
 	// The name of the IdP group you want to map.
@@ -19,7 +20,7 @@ type CreateIdpGroupMappingDetails struct {
 
 	// The OCID of the IAM Service Group
 	// you want to map to the IdP group.
-	GroupID *string `mandatory:"true" json:"groupId,omitempty"`
+	GroupId *string `mandatory:"true" json:"groupId,omitempty"`
 }
 
 func (m CreateIdpGroupMappingDetails) String() string {

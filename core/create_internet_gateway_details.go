@@ -12,16 +12,17 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateInternetGatewayDetails The representation of CreateInternetGatewayDetails
 type CreateInternetGatewayDetails struct {
 
 	// The OCID of the compartment to contain the Internet Gateway.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// Whether the gateway is enabled upon creation.
 	IsEnabled *bool `mandatory:"true" json:"isEnabled,omitempty"`
 
 	// The OCID of the VCN the Internet Gateway is attached to.
-	VcnID *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

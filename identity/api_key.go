@@ -23,7 +23,7 @@ type ApiKey struct {
 
 	// An Oracle-assigned identifier for the key, in this format:
 	// TENANCY_OCID/USER_OCID/KEY_FINGERPRINT.
-	KeyID *string `mandatory:"false" json:"keyId,omitempty"`
+	KeyId *string `mandatory:"false" json:"keyId,omitempty"`
 
 	// The key's value.
 	KeyValue *string `mandatory:"false" json:"keyValue,omitempty"`
@@ -32,7 +32,7 @@ type ApiKey struct {
 	Fingerprint *string `mandatory:"false" json:"fingerprint,omitempty"`
 
 	// The OCID of the user the key belongs to.
-	UserID *string `mandatory:"false" json:"userId,omitempty"`
+	UserId *string `mandatory:"false" json:"userId,omitempty"`
 
 	// Date and time the `ApiKey` object was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`

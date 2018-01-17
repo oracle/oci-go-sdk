@@ -17,7 +17,7 @@ import (
 type DatabaseSummary struct {
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The database name.
 	DbName *string `mandatory:"true" json:"dbName,omitempty"`
@@ -26,7 +26,7 @@ type DatabaseSummary struct {
 	DbUniqueName *string `mandatory:"true" json:"dbUniqueName,omitempty"`
 
 	// The OCID of the database.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the database.
 	LifecycleState DatabaseSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
@@ -37,7 +37,7 @@ type DatabaseSummary struct {
 	DbBackupConfig *DbBackupConfig `mandatory:"false" json:"dbBackupConfig,omitempty"`
 
 	// The OCID of the database home.
-	DbHomeID *string `mandatory:"false" json:"dbHomeId,omitempty"`
+	DbHomeId *string `mandatory:"false" json:"dbHomeId,omitempty"`
 
 	// Database workload type.
 	DbWorkload *string `mandatory:"false" json:"dbWorkload,omitempty"`

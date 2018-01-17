@@ -12,13 +12,13 @@ import (
 type ListDrgAttachmentsRequest struct {
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The OCID of the VCN.
-	VcnID *string `mandatory:"false" contributesTo:"query" name:"vcnId"`
+	VcnId *string `mandatory:"false" contributesTo:"query" name:"vcnId"`
 
 	// The OCID of the DRG.
-	DrgID *string `mandatory:"false" contributesTo:"query" name:"drgId"`
+	DrgId *string `mandatory:"false" contributesTo:"query" name:"drgId"`
 
 	// The maximum number of items to return in a paginated "List" call.
 	// Example: `500`
@@ -48,7 +48,7 @@ type ListDrgAttachmentsResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response ListDrgAttachmentsResponse) String() string {

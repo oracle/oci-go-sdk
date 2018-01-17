@@ -22,7 +22,7 @@ type CreateBucketDetails struct {
 	Name *string `mandatory:"true" json:"name,omitempty"`
 
 	// The ID of the compartment in which to create the bucket.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// Arbitrary string, up to 4KB, of keys and values for user-defined metadata.
 	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`

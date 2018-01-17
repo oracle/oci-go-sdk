@@ -29,7 +29,7 @@ type DbSystem struct {
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The number of CPU cores enabled on the DB System.
 	CpuCoreCount *int `mandatory:"true" json:"cpuCoreCount,omitempty"`
@@ -47,7 +47,7 @@ type DbSystem struct {
 	Hostname *string `mandatory:"true" json:"hostname,omitempty"`
 
 	// The OCID of the DB System.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the DB System.
 	LifecycleState DbSystemLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
@@ -65,12 +65,12 @@ type DbSystem struct {
 	// These subnets are used by the Oracle Clusterware private interconnect on the database instance.
 	// Specifying an overlapping subnet will cause the private interconnect to malfunction.
 	// This restriction applies to both the client subnet and backup subnet.
-	SubnetID *string `mandatory:"true" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"true" json:"subnetId,omitempty"`
 
 	// The OCID of the backup network subnet the DB System is associated with. Applicable only to Exadata.
 	// **Subnet Restriction:** See above subnetId's 'Subnet Restriction'.
 	// to malfunction.
-	BackupSubnetID *string `mandatory:"false" json:"backupSubnetId,omitempty"`
+	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId,omitempty"`
 
 	// Cluster name for Exadata and 2-node RAC DB Systems. The cluster name must begin with an an alphabetic character, and may contain hyphens (-). Underscores (_) are not permitted. The cluster name can be no longer than 11 characters and is not case sensitive.
 	ClusterName *string `mandatory:"false" json:"clusterName,omitempty"`
@@ -88,7 +88,7 @@ type DbSystem struct {
 	DiskRedundancy DbSystemDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy,omitempty"`
 
 	// The OCID of the last patch history. This is updated as soon as a patch operation is started.
-	LastPatchHistoryEntryID *string `mandatory:"false" json:"lastPatchHistoryEntryId,omitempty"`
+	LastPatchHistoryEntryId *string `mandatory:"false" json:"lastPatchHistoryEntryId,omitempty"`
 
 	// The Oracle license model that applies to all the databases on the DB System. The default is LICENSE_INCLUDED.
 	LicenseModel DbSystemLicenseModelEnum `mandatory:"false" json:"licenseModel,omitempty"`
@@ -106,7 +106,7 @@ type DbSystem struct {
 	RecoStorageSizeInGB *int `mandatory:"false" json:"recoStorageSizeInGB,omitempty"`
 
 	// The OCID of the DNS record for the SCAN IP addresses that are associated with the DB System.
-	ScanDnsRecordID *string `mandatory:"false" json:"scanDnsRecordId,omitempty"`
+	ScanDnsRecordId *string `mandatory:"false" json:"scanDnsRecordId,omitempty"`
 
 	// The OCID of the Single Client Access Name (SCAN) IP addresses associated with the DB System.
 	// SCAN IP addresses are typically used for load balancing and are not assigned to any interface.

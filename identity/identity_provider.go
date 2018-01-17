@@ -21,14 +21,13 @@ import (
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
 // see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
-// IdentityProvider is an interface representing the polymorphic json shape of this model
 type IdentityProvider interface {
 
 	// The OCID of the `IdentityProvider`.
-	GetID() *string
+	GetId() *string
 
 	// The OCID of the tenancy containing the `IdentityProvider`.
-	GetCompartmentID() *string
+	GetCompartmentId() *string
 
 	// The name you assign to the `IdentityProvider` during creation. The name
 	// must be unique across all `IdentityProvider` objects in the tenancy and
@@ -64,8 +63,8 @@ type IdentityProvider interface {
 
 type identityprovider struct {
 	JsonData       []byte
-	ID             *string                            `mandatory:"true" json:"id,omitempty"`
-	CompartmentID  *string                            `mandatory:"true" json:"compartmentId,omitempty"`
+	Id             *string                            `mandatory:"true" json:"id,omitempty"`
+	CompartmentId  *string                            `mandatory:"true" json:"compartmentId,omitempty"`
 	Name           *string                            `mandatory:"true" json:"name,omitempty"`
 	Description    *string                            `mandatory:"true" json:"description,omitempty"`
 	ProductType    *string                            `mandatory:"true" json:"productType,omitempty"`
@@ -86,8 +85,8 @@ func (m *identityprovider) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
-	m.ID = s.Model.ID
-	m.CompartmentID = s.Model.CompartmentID
+	m.Id = s.Model.Id
+	m.CompartmentId = s.Model.CompartmentId
 	m.Name = s.Model.Name
 	m.Description = s.Model.Description
 	m.ProductType = s.Model.ProductType
@@ -112,14 +111,14 @@ func (m *identityprovider) UnmarshalPolymorphicJSON(data []byte) (interface{}, e
 	}
 }
 
-//GetID returns ID
-func (m identityprovider) GetID() *string {
-	return m.ID
+//GetId returns Id
+func (m identityprovider) GetId() *string {
+	return m.Id
 }
 
-//GetCompartmentID returns CompartmentID
-func (m identityprovider) GetCompartmentID() *string {
-	return m.CompartmentID
+//GetCompartmentId returns CompartmentId
+func (m identityprovider) GetCompartmentId() *string {
+	return m.CompartmentId
 }
 
 //GetName returns Name

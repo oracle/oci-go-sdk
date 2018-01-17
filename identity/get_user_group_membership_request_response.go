@@ -12,7 +12,7 @@ import (
 type GetUserGroupMembershipRequest struct {
 
 	// The OCID of the userGroupMembership.
-	UserGroupMembershipID *string `mandatory:"true" contributesTo:"path" name:"userGroupMembershipId"`
+	UserGroupMembershipId *string `mandatory:"true" contributesTo:"path" name:"userGroupMembershipId"`
 }
 
 func (request GetUserGroupMembershipRequest) String() string {
@@ -30,7 +30,7 @@ type GetUserGroupMembershipResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`

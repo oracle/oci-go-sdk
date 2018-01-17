@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// ExportImageViaObjectStorageUriDetails The representation of ExportImageViaObjectStorageUriDetails
 type ExportImageViaObjectStorageUriDetails struct {
 
 	// The Object Storage URL to export the image to. See [Object Storage URLs]({{DOC_SERVER_URL}}/Content/Compute/Tasks/imageimportexport.htm#URLs)

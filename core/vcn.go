@@ -24,22 +24,22 @@ type Vcn struct {
 	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
 
 	// The OCID of the compartment containing the VCN.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The VCN's Oracle ID (OCID).
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The VCN's current state.
 	LifecycleState VcnLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The OCID for the VCN's default set of DHCP options.
-	DefaultDhcpOptionsID *string `mandatory:"false" json:"defaultDhcpOptionsId,omitempty"`
+	DefaultDhcpOptionsId *string `mandatory:"false" json:"defaultDhcpOptionsId,omitempty"`
 
 	// The OCID for the VCN's default route table.
-	DefaultRouteTableID *string `mandatory:"false" json:"defaultRouteTableId,omitempty"`
+	DefaultRouteTableId *string `mandatory:"false" json:"defaultRouteTableId,omitempty"`
 
 	// The OCID for the VCN's default security list.
-	DefaultSecurityListID *string `mandatory:"false" json:"defaultSecurityListId,omitempty"`
+	DefaultSecurityListId *string `mandatory:"false" json:"defaultSecurityListId,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.

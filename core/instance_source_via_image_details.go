@@ -13,10 +13,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// InstanceSourceViaImageDetails The representation of InstanceSourceViaImageDetails
 type InstanceSourceViaImageDetails struct {
 
 	// The OCID of the image used to boot the instance.
-	ImageID *string `mandatory:"true" json:"imageId,omitempty"`
+	ImageId *string `mandatory:"true" json:"imageId,omitempty"`
 }
 
 func (m InstanceSourceViaImageDetails) String() string {

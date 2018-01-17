@@ -12,7 +12,7 @@ import (
 type UpdateIPSecConnectionRequest struct {
 
 	// The OCID of the IPSec connection.
-	IpscID *string `mandatory:"true" contributesTo:"path" name:"ipscId"`
+	IpscId *string `mandatory:"true" contributesTo:"path" name:"ipscId"`
 
 	// Details object for updating a IPSec connection.
 	UpdateIpSecConnectionDetails `contributesTo:"body"`
@@ -41,7 +41,7 @@ type UpdateIPSecConnectionResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response UpdateIPSecConnectionResponse) String() string {

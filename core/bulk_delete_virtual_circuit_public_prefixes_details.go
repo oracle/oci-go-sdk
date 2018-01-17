@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// BulkDeleteVirtualCircuitPublicPrefixesDetails The representation of BulkDeleteVirtualCircuitPublicPrefixesDetails
 type BulkDeleteVirtualCircuitPublicPrefixesDetails struct {
 
 	// The public IP prefixes (CIDRs) to remove from the public virtual circuit.

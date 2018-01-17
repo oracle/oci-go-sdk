@@ -21,7 +21,7 @@ type UiPassword struct {
 	Password *string `mandatory:"false" json:"password,omitempty"`
 
 	// The OCID of the user.
-	UserID *string `mandatory:"false" json:"userId,omitempty"`
+	UserId *string `mandatory:"false" json:"userId,omitempty"`
 
 	// Date and time the password was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`

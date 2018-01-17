@@ -34,7 +34,7 @@ func NewBlockstorageClientWithConfigurationProvider(configProvider common.Config
 		return
 	}
 
-	client.Host = fmt.Sprintf(common.DefaultHostUrlTemplate, "iaas", string(region))
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", string(region))
 	client.BasePath = "20160918"
 	return
 }

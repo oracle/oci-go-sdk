@@ -12,7 +12,7 @@ import (
 type DeletePrivateIpRequest struct {
 
 	// The private IP's OCID.
-	PrivateIpID *string `mandatory:"true" contributesTo:"path" name:"privateIpId"`
+	PrivateIpId *string `mandatory:"true" contributesTo:"path" name:"privateIpId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
@@ -32,7 +32,7 @@ type DeletePrivateIpResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response DeletePrivateIpResponse) String() string {

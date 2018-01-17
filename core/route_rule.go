@@ -24,7 +24,7 @@ type RouteRule struct {
 	// The OCID for the route rule's target. For information about the type of
 	// targets you can specify, see
 	// [Route Tables]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingroutetables.htm).
-	NetworkEntityID *string `mandatory:"true" json:"networkEntityId,omitempty"`
+	NetworkEntityId *string `mandatory:"true" json:"networkEntityId,omitempty"`
 }
 
 func (m RouteRule) String() string {

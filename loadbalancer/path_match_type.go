@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// PathMatchType The representation of PathMatchType
 type PathMatchType struct {
 
 	// The type of matching for the associated path route.

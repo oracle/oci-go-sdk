@@ -12,6 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// UpdateLocalPeeringGatewayDetails The representation of UpdateLocalPeeringGatewayDetails
 type UpdateLocalPeeringGatewayDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid

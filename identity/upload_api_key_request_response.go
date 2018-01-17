@@ -12,7 +12,7 @@ import (
 type UploadApiKeyRequest struct {
 
 	// The OCID of the user.
-	UserID *string `mandatory:"true" contributesTo:"path" name:"userId"`
+	UserId *string `mandatory:"true" contributesTo:"path" name:"userId"`
 
 	// Request object for uploading an API key for a user.
 	CreateApiKeyDetails `contributesTo:"body"`
@@ -40,7 +40,7 @@ type UploadApiKeyResponse struct {
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
-	OpcRequestID *string `presentIn:"header" name:"opc-request-id"`
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`

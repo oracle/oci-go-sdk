@@ -12,10 +12,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// CreateVirtualCircuitDetails The representation of CreateVirtualCircuitDetails
 type CreateVirtualCircuitDetails struct {
 
 	// The OCID of the compartment to contain the virtual circuit.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The type of IP addresses used in this virtual circuit. PRIVATE
 	// means [RFC 1918](https://tools.ietf.org/html/rfc1918) addresses
@@ -42,7 +43,7 @@ type CreateVirtualCircuitDetails struct {
 
 	// For private virtual circuits only. The OCID of the Drg
 	// that this virtual circuit uses.
-	GatewayID *string `mandatory:"false" json:"gatewayId,omitempty"`
+	GatewayId *string `mandatory:"false" json:"gatewayId,omitempty"`
 
 	// Deprecated. Instead use `providerServiceId`.
 	// To get a list of the provider names, see
@@ -52,7 +53,7 @@ type CreateVirtualCircuitDetails struct {
 	// The OCID of the service offered by the provider (if you're connecting
 	// via a provider). To get a list of the available service offerings, see
 	// ListFastConnectProviderServices.
-	ProviderServiceID *string `mandatory:"false" json:"providerServiceId,omitempty"`
+	ProviderServiceId *string `mandatory:"false" json:"providerServiceId,omitempty"`
 
 	// Deprecated. Instead use `providerServiceId`.
 	// To get a list of the provider names, see

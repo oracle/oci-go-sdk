@@ -24,7 +24,7 @@ type BucketSummary struct {
 	Name *string `mandatory:"true" json:"name,omitempty"`
 
 	// The compartment ID in which the bucket is authorized.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The OCID of the user who created the bucket.
 	CreatedBy *string `mandatory:"true" json:"createdBy,omitempty"`

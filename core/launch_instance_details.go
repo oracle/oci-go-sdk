@@ -22,7 +22,7 @@ type LaunchInstanceDetails struct {
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The shape of an instance. The shape determines the number of CPUs, amount of memory,
 	// and other resources allocated to the instance.
@@ -50,7 +50,7 @@ type LaunchInstanceDetails struct {
 
 	// Deprecated. Use `sourceDetails` with InstanceSourceViaImageDetails
 	// source type instead. If you specify values for both, the values must match.
-	ImageID *string `mandatory:"false" json:"imageId,omitempty"`
+	ImageId *string `mandatory:"false" json:"imageId,omitempty"`
 
 	// This is an advanced option.
 	// When a bare metal or virtual machine
@@ -124,7 +124,7 @@ type LaunchInstanceDetails struct {
 	// Deprecated. Instead use `subnetId` in
 	// CreateVnicDetails.
 	// At least one of them is required; if you provide both, the values must match.
-	SubnetID *string `mandatory:"false" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"false" json:"subnetId,omitempty"`
 }
 
 func (m LaunchInstanceDetails) String() string {
@@ -138,13 +138,13 @@ func (m *LaunchInstanceDetails) UnmarshalJSON(data []byte) (e error) {
 		DisplayName        *string                `json:"displayName,omitempty"`
 		ExtendedMetadata   map[string]interface{} `json:"extendedMetadata,omitempty"`
 		HostnameLabel      *string                `json:"hostnameLabel,omitempty"`
-		ImageID            *string                `json:"imageId,omitempty"`
+		ImageId            *string                `json:"imageId,omitempty"`
 		IpxeScript         *string                `json:"ipxeScript,omitempty"`
 		Metadata           map[string]string      `json:"metadata,omitempty"`
 		SourceDetails      instancesourcedetails  `json:"sourceDetails,omitempty"`
-		SubnetID           *string                `json:"subnetId,omitempty"`
+		SubnetId           *string                `json:"subnetId,omitempty"`
 		AvailabilityDomain *string                `json:"availabilityDomain,omitempty"`
-		CompartmentID      *string                `json:"compartmentId,omitempty"`
+		CompartmentId      *string                `json:"compartmentId,omitempty"`
 		Shape              *string                `json:"shape,omitempty"`
 	}{}
 
@@ -156,7 +156,7 @@ func (m *LaunchInstanceDetails) UnmarshalJSON(data []byte) (e error) {
 	m.DisplayName = model.DisplayName
 	m.ExtendedMetadata = model.ExtendedMetadata
 	m.HostnameLabel = model.HostnameLabel
-	m.ImageID = model.ImageID
+	m.ImageId = model.ImageId
 	m.IpxeScript = model.IpxeScript
 	m.Metadata = model.Metadata
 	nn, e := model.SourceDetails.UnmarshalPolymorphicJSON(model.SourceDetails.JsonData)
@@ -164,9 +164,9 @@ func (m *LaunchInstanceDetails) UnmarshalJSON(data []byte) (e error) {
 		return
 	}
 	m.SourceDetails = nn
-	m.SubnetID = model.SubnetID
+	m.SubnetId = model.SubnetId
 	m.AvailabilityDomain = model.AvailabilityDomain
-	m.CompartmentID = model.CompartmentID
+	m.CompartmentId = model.CompartmentId
 	m.Shape = model.Shape
 	return
 }

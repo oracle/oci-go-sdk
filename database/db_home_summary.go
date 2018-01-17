@@ -22,7 +22,7 @@ import (
 type DbHomeSummary struct {
 
 	// The OCID of the compartment.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The Oracle database version.
 	DbVersion *string `mandatory:"true" json:"dbVersion,omitempty"`
@@ -31,16 +31,16 @@ type DbHomeSummary struct {
 	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
 
 	// The OCID of the database home.
-	ID *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the database home.
 	LifecycleState DbHomeSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
 	// The OCID of the DB System.
-	DbSystemID *string `mandatory:"false" json:"dbSystemId,omitempty"`
+	DbSystemId *string `mandatory:"false" json:"dbSystemId,omitempty"`
 
 	// The OCID of the last patch history. This is updated as soon as a patch operation is started.
-	LastPatchHistoryEntryID *string `mandatory:"false" json:"lastPatchHistoryEntryId,omitempty"`
+	LastPatchHistoryEntryId *string `mandatory:"false" json:"lastPatchHistoryEntryId,omitempty"`
 
 	// The date and time the database home was created.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`

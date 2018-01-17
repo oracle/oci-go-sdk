@@ -12,13 +12,14 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
+// LaunchDbSystemDetails The representation of LaunchDbSystemDetails
 type LaunchDbSystemDetails struct {
 
 	// The Availability Domain where the DB System is located.
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
 
 	// The Oracle Cloud ID (OCID) of the compartment the DB System  belongs in.
-	CompartmentID *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
 
 	// The number of CPU cores to enable. The valid values depend on the specified shape:
 	// - BM.DenseIO1.36 and BM.HighIO1.36 - Specify a multiple of 2, from 2 to 36.
@@ -55,11 +56,11 @@ type LaunchDbSystemDetails struct {
 	// These subnets are used by the Oracle Clusterware private interconnect on the database instance.
 	// Specifying an overlapping subnet will cause the private interconnect to malfunction.
 	// This restriction applies to both the client subnet and backup subnet.
-	SubnetID *string `mandatory:"true" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"true" json:"subnetId,omitempty"`
 
 	// The OCID of the backup network subnet the DB System is associated with. Applicable only to Exadata.
 	// **Subnet Restrictions:** See above subnetId's **Subnet Restriction**.
-	BackupSubnetID *string `mandatory:"false" json:"backupSubnetId,omitempty"`
+	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId,omitempty"`
 
 	// Cluster name for Exadata and 2-node RAC DB Systems. The cluster name must begin with an an alphabetic character, and may contain hyphens (-). Underscores (_) are not permitted. The cluster name can be no longer than 11 characters and is not case sensitive.
 	ClusterName *string `mandatory:"false" json:"clusterName,omitempty"`
