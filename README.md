@@ -1,16 +1,34 @@
-# Oracle Cloud Infrastructure Golang SDK
-This is the official go sdk for oracle cloud infrastructure
+# Oracle Cloud Infrastructure Golang SDK Preview
+[![wercker status](https://app.wercker.com/status/09bc4818e7b1d70b04285331a9bdbc41/s/master "wercker status")](https://app.wercker.com/project/byKey/09bc4818e7b1d70b04285331a9bdbc41)
+
+This is a *preview* for the official go sdk for oracle cloud infrastructure.
+> ***WARNING:***: To avoid breaking changes please consider using [go dep](https://github.com/golang/dep), or vendoring this sdk
+
+
+## Dependencies
+- Install [Golang](https://golang.org/dl/)
+- Install [make](https://www.gnu.org/software/make/), through your favorite package manager or binary 
+distribution of choice
+
+Additionally, if you are planning to do build or develop the sdk you need the following dependencies
+- Install [github.com/stretchr/testify](https://github.com/stretchr/testify)
+```sh
+go get github.com/stretchr/testify
+```
+
+
+- Install [go lint](https://github.com/golang/lint)
+```
+go get -u github.com/golang/lint/golint
+```
+ 
+
 
 ## Installing
 Simply clone this repo into your go sdk you can use the following command
 
 ```
 git clone git@github.com:oracle/oci-go-sdk.git  $GOPATH/src/github.com/oracle
-```
-
-In addition you'll need to download a testing dependency before you can build or test the sdk
-```
-go get github.com/stretchr/testify
 ```
 
 ## Configuring the SDK
