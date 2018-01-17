@@ -153,8 +153,8 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 
 // Adds to the path of the url in the order they appear in the structure
 func addToPath(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
-	var additionalUrlPathPart string
-	if additionalUrlPathPart, e = toStringValue(value, field); e != nil {
+	var additionalURLPathPart string
+	if additionalURLPathPart, e = toStringValue(value, field); e != nil {
 		return fmt.Errorf("can not marshal to path in request for field %s. Due to %s", field.Name, e.Error())
 	}
 
@@ -162,12 +162,12 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 		request.URL = &url.URL{}
 		request.URL.Path = ""
 	}
-	var currentUrlPath = request.URL.Path
+	var currentURLPath = request.URL.Path
 
 	var templatedPathRegex, _ = regexp.Compile(".*{.+}.*")
-	if !templatedPathRegex.MatchString(currentUrlPath) {
+	if !templatedPathRegex.MatchString(currentURLPath) {
 		Debugln("Marshaling request to path by appending field:", field.Name)
-		allPath := []string{currentUrlPath, additionalUrlPathPart}
+		allPath := []string{currentURLPath, additionalURLPathPart}
 		newPath := strings.Join(allPath, "/")
 		request.URL.Path = path.Clean(newPath)
 	} else {
@@ -176,9 +176,9 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 			e = fmt.Errorf("marshaling request to path name and template requires a 'name' tag for field: %s", field.Name)
 			return
 		}
-		urlTemplate := currentUrlPath
+		urlTemplate := currentURLPath
 		Debugln("Marshaling to path from field:", field.Name, "in template:", urlTemplate)
-		request.URL.Path = path.Clean(strings.Replace(urlTemplate, "{"+fieldName+"}", additionalUrlPathPart, -1))
+		request.URL.Path = path.Clean(strings.Replace(urlTemplate, "{"+fieldName+"}", additionalURLPathPart, -1))
 	}
 	return
 }
@@ -335,7 +335,7 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 	return
 }
 
-// HttpRequestMarshaller marshals a structure to an http request using tag values in the struct
+// HTTPRequestMarshaller marshals a structure to an http request using tag values in the struct
 // The marshaller tag should like the following
 // type A struct {
 // 		 ANumber string `contributesTo="query" name="number"`
@@ -347,7 +347,7 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 // in the order they appear in the structure
 // The current implementation only supports primitive types, except for the body tag, which needs a struct type.
 // The body of a request will be marshaled using the tags of the structure
-func HttpRequestMarshaller(requestStruct interface{}, httpRequest *http.Request) (err error) {
+func HTTPRequestMarshaller(requestStruct interface{}, httpRequest *http.Request) (err error) {
 	var val *reflect.Value
 	if val, err = checkForValidRequestStruct(requestStruct); err != nil {
 		return
@@ -358,8 +358,8 @@ func HttpRequestMarshaller(requestStruct interface{}, httpRequest *http.Request)
 	return
 }
 
-// MakeDefaultHttpRequest creates the basic http request with the necessary headers set
-func MakeDefaultHttpRequest(method, path string) (httpRequest http.Request) {
+// MakeDefaultHTTPRequest creates the basic http request with the necessary headers set
+func MakeDefaultHTTPRequest(method, path string) (httpRequest http.Request) {
 	httpRequest = http.Request{
 		Proto:      "HTTP/1.1",
 		ProtoMajor: 1,
@@ -377,11 +377,11 @@ func MakeDefaultHttpRequest(method, path string) (httpRequest http.Request) {
 	return
 }
 
-// MakeDefaultHttpRequestWithTaggedStruct creates an http request from an struct with tagged fields, see HttpRequestMarshaller
+// MakeDefaultHTTPRequestWithTaggedStruct creates an http request from an struct with tagged fields, see HTTPRequestMarshaller
 // for more information
-func MakeDefaultHttpRequestWithTaggedStruct(method, path string, requestStruct interface{}) (httpRequest http.Request, err error) {
-	httpRequest = MakeDefaultHttpRequest(method, path)
-	err = HttpRequestMarshaller(requestStruct, &httpRequest)
+func MakeDefaultHTTPRequestWithTaggedStruct(method, path string, requestStruct interface{}) (httpRequest http.Request, err error) {
+	httpRequest = MakeDefaultHTTPRequest(method, path)
+	err = HTTPRequestMarshaller(requestStruct, &httpRequest)
 	return
 }
 

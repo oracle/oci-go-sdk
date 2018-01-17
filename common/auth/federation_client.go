@@ -22,7 +22,7 @@ type federationClient interface {
 
 // x509FederationClient retrieves a security token from Auth service.
 type x509FederationClient struct {
-	tenancyId                         string
+	tenancyID                         string
 	sessionKeySupplier                sessionKeySupplier
 	leafCertificateRetriever          x509CertificateRetriever
 	intermediateCertificateRetrievers []x509CertificateRetriever
@@ -31,9 +31,9 @@ type x509FederationClient struct {
 	mux                               sync.Mutex
 }
 
-func newX509FederationClient(region common.Region, tenancyId string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever) federationClient {
+func newX509FederationClient(region common.Region, tenancyID string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever) federationClient {
 	client := &x509FederationClient{
-		tenancyId:                         tenancyId,
+		tenancyID:                         tenancyID,
 		leafCertificateRetriever:          leafCertificateRetriever,
 		intermediateCertificateRetrievers: intermediateCertificateRetrievers,
 	}
@@ -57,7 +57,7 @@ func newAuthClient(region common.Region, provider common.KeyProvider) *common.Ba
 
 // For authClient to sign requests to X509 Federation Endpoint
 func (c *x509FederationClient) KeyID() (string, error) {
-	tenancy := c.tenancyId
+	tenancy := c.tenancyID
 	fingerprint := fingerprint(c.leafCertificateRetriever.Certificate())
 	return fmt.Sprintf("%s/fed-x509/%s", tenancy, fingerprint), nil
 }
@@ -105,9 +105,9 @@ func (c *x509FederationClient) renewSecurityToken() (err error) {
 		return fmt.Errorf("failed to refresh leaf certificate: %s", err.Error())
 	}
 
-	updatedTenancyId := extractTenancyIdFromCertificate(c.leafCertificateRetriever.Certificate())
-	if c.tenancyId != updatedTenancyId {
-		err = fmt.Errorf("unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", c.tenancyId, updatedTenancyId)
+	updatedTenancyID := extractTenancyIDFromCertificate(c.leafCertificateRetriever.Certificate())
+	if c.tenancyID != updatedTenancyID {
+		err = fmt.Errorf("unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", c.tenancyID, updatedTenancyID)
 		return
 	}
 
@@ -129,7 +129,7 @@ func (c *x509FederationClient) getSecurityToken() (securityToken, error) {
 
 	var err error
 	var httpRequest http.Request
-	if httpRequest, err = common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPost, "", request); err != nil {
+	if httpRequest, err = common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "", request); err != nil {
 		return nil, fmt.Errorf("failed to make http request: %s", err.Error())
 	}
 

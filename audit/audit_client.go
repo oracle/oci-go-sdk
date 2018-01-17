@@ -41,7 +41,7 @@ func NewAuditClientWithConfigurationProvider(configProvider common.Configuration
 
 // GetConfiguration Get the configuration
 func (client AuditClient) GetConfiguration(ctx context.Context, request GetConfigurationRequest) (response GetConfigurationResponse, err error) {
-	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/configuration", request)
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/configuration", request)
 	if err != nil {
 		return
 	}
@@ -60,7 +60,7 @@ func (client AuditClient) GetConfiguration(ctx context.Context, request GetConfi
 // GetWorkRequest Gets details on a specified work request. The workRequestId is returned in opc-workrequest-id
 // header for any asynchronous operation on Identity control plane service.
 func (client AuditClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
-	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/workRequests/{workRequestId}", request)
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/workRequests/{workRequestId}", request)
 	if err != nil {
 		return
 	}
@@ -78,7 +78,7 @@ func (client AuditClient) GetWorkRequest(ctx context.Context, request GetWorkReq
 
 // ListEvents Returns all audit events for the specified compartment that were processed within the specified time range.
 func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequest) (response ListEventsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodGet, "/auditEvents", request)
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/auditEvents", request)
 	if err != nil {
 		return
 	}
@@ -96,7 +96,7 @@ func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequ
 
 // UpdateConfiguration Update the configuration
 func (client AuditClient) UpdateConfiguration(ctx context.Context, request UpdateConfigurationRequest) (err error) {
-	httpRequest, err := common.MakeDefaultHttpRequestWithTaggedStruct(http.MethodPut, "/configuration", request)
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/configuration", request)
 	if err != nil {
 		return
 	}
