@@ -11,7 +11,7 @@ import (
 // ServiceError models all potential errors generated the service call
 type ServiceError interface {
 	// The http status code of the error
-	GetHttpStatusCode() int
+	GetHTTPStatusCode() int
 
 	// The human-readable error string as sent by the service
 	GetMessage() string
@@ -57,7 +57,7 @@ func (se servicefailure) Error() string {
 		se.Code, se.Message, se.StatusCode)
 }
 
-func (se servicefailure) GetHttpStatusCode() int {
+func (se servicefailure) GetHTTPStatusCode() int {
 	return se.StatusCode
 
 }
@@ -70,7 +70,7 @@ func (se servicefailure) GetCode() string {
 	return se.Code
 }
 
-// IsServiceError returns false if the error is not service side, othwerise true
+// IsServiceError returns false if the error is not service side, otherwise true
 // additionally it returns an interface representing the ServiceError
 func IsServiceError(err error) (failure ServiceError, ok bool) {
 	failure, ok = err.(servicefailure)

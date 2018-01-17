@@ -8,12 +8,12 @@ import (
 )
 
 const (
-	regionUrl                            = `http://169.254.169.254/opc/v1/instance/region`
-	leafCertificateUrl                   = `http://169.254.169.254/opc/v1/identity/cert.pem`
-	leafCertificateKeyUrl                = `http://169.254.169.254/opc/v1/identity/key.pem`
+	regionURL                            = `http://169.254.169.254/opc/v1/instance/region`
+	leafCertificateURL                   = `http://169.254.169.254/opc/v1/identity/cert.pem`
+	leafCertificateKeyURL                = `http://169.254.169.254/opc/v1/identity/key.pem`
 	leafCertificateKeyPassphrase         = `` // No passphrase for the private key for Compute instances
-	intermediateCertificateUrl           = `http://169.254.169.254/opc/v1/identity/intermediate.pem`
-	intermediateCertificateKeyUrl        = ``
+	intermediateCertificateURL           = `http://169.254.169.254/opc/v1/identity/intermediate.pem`
+	intermediateCertificateKeyURL        = ``
 	intermediateCertificateKeyPassphrase = `` // No passphrase for the private key for Compute instances
 )
 
@@ -37,27 +37,27 @@ type instancePrincipalKeyProvider struct {
 // invalid because the KeyID could be already expired.
 func newInstancePrincipalKeyProvider() (provider *instancePrincipalKeyProvider, err error) {
 	var region common.Region
-	if region, err = getRegionForFederationClient(regionUrl); err != nil {
-		err = fmt.Errorf("failed to get the region name from %s: %s", regionUrl, err.Error())
+	if region, err = getRegionForFederationClient(regionURL); err != nil {
+		err = fmt.Errorf("failed to get the region name from %s: %s", regionURL, err.Error())
 		common.Logln(err)
 		return nil, err
 	}
 
-	leafCertificateRetriever := newUrlBasedX509CertificateRetriever(
-		leafCertificateUrl, leafCertificateKeyUrl, leafCertificateKeyPassphrase)
+	leafCertificateRetriever := newURLBasedX509CertificateRetriever(
+		leafCertificateURL, leafCertificateKeyURL, leafCertificateKeyPassphrase)
 	intermediateCertificateRetrievers := []x509CertificateRetriever{
-		newUrlBasedX509CertificateRetriever(
-			intermediateCertificateUrl, intermediateCertificateKeyUrl, intermediateCertificateKeyPassphrase),
+		newURLBasedX509CertificateRetriever(
+			intermediateCertificateURL, intermediateCertificateKeyURL, intermediateCertificateKeyPassphrase),
 	}
 
 	if err = leafCertificateRetriever.Refresh(); err != nil {
 		err = fmt.Errorf("failed to refresh the leaf certificate: %s", err.Error())
 		return nil, err
 	}
-	tenancyId := extractTenancyIdFromCertificate(leafCertificateRetriever.Certificate())
+	tenancyID := extractTenancyIDFromCertificate(leafCertificateRetriever.Certificate())
 
 	federationClient := newX509FederationClient(
-		region, tenancyId, leafCertificateRetriever, intermediateCertificateRetrievers)
+		region, tenancyID, leafCertificateRetriever, intermediateCertificateRetrievers)
 
 	provider = &instancePrincipalKeyProvider{regionForFederationClient: region, federationClient: federationClient}
 	return
