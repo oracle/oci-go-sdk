@@ -1,8 +1,10 @@
 # Oracle Cloud Infrastructure Golang SDK Preview
 [![wercker status](https://app.wercker.com/status/09bc4818e7b1d70b04285331a9bdbc41/s/master "wercker status")](https://app.wercker.com/project/byKey/09bc4818e7b1d70b04285331a9bdbc41)
 
-This is a *preview* for the official go sdk for oracle cloud infrastructure.
-> ***WARNING:***: To avoid breaking changes please consider using [go dep](https://github.com/golang/dep), or vendoring this sdk
+This is a ***preview*** of the official go sdk for Oracle Cloud Infrastructure
+> ***WARNING:***: To avoid breaking changes please consider using [go dep](https://github.com/golang/dep), or vendoring this sdk.
+Although we make a conscious effort to not push breaking changes, sometimes they are needed. This is particularly true at the current stage 
+of development.
 
 
 ## Dependencies
@@ -10,7 +12,7 @@ This is a *preview* for the official go sdk for oracle cloud infrastructure.
 - Install [make](https://www.gnu.org/software/make/), through your favorite package manager or binary 
 distribution of choice
 
-Additionally, if you are planning to do build or develop the sdk you need the following dependencies
+Additionally, if you are planning to  build or develop the sdk you need the following dependencies
 - Install [github.com/stretchr/testify](https://github.com/stretchr/testify)
 ```sh
 go get github.com/stretchr/testify
