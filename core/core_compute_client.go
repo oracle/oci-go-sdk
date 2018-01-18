@@ -39,24 +39,6 @@ func NewComputeClientWithConfigurationProvider(configProvider common.Configurati
 	return
 }
 
-// AddImageShapeCompatibilityEntry Adds a shape to the compatible shapes list for the image.
-func (client ComputeClient) AddImageShapeCompatibilityEntry(ctx context.Context, request AddImageShapeCompatibilityEntryRequest) (response AddImageShapeCompatibilityEntryResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/images/{imageId}/shapes/{shapeName}", request)
-	if err != nil {
-		return
-	}
-
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
-
-	err = common.UnmarshalResponse(httpResponse, &response)
-	return
-}
-
 // AttachBootVolume Attaches the specified boot volume to the specified instance.
 func (client ComputeClient) AttachBootVolume(ctx context.Context, request AttachBootVolumeRequest) (response AttachBootVolumeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/bootVolumeAttachments/", request)
@@ -692,17 +674,6 @@ func (client ComputeClient) ListVolumeAttachments(ctx context.Context, request L
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
-}
-
-// RemoveImageShapeCompatibilityEntry Removes a shape from the compatible shapes list for the image.
-func (client ComputeClient) RemoveImageShapeCompatibilityEntry(ctx context.Context, request RemoveImageShapeCompatibilityEntryRequest) (err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/images/{imageId}/shapes/{shapeName}", request)
-	if err != nil {
-		return
-	}
-
-	_, err = client.Call(ctx, &httpRequest)
 	return
 }
 

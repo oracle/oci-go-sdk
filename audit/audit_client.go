@@ -57,25 +57,6 @@ func (client AuditClient) GetConfiguration(ctx context.Context, request GetConfi
 	return
 }
 
-// GetWorkRequest Gets details on a specified work request. The workRequestId is returned in opc-workrequest-id
-// header for any asynchronous operation on Identity control plane service.
-func (client AuditClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/workRequests/{workRequestId}", request)
-	if err != nil {
-		return
-	}
-
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
-
-	err = common.UnmarshalResponse(httpResponse, &response)
-	return
-}
-
 // ListEvents Returns all audit events for the specified compartment that were processed within the specified time range.
 func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequest) (response ListEventsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/auditEvents", request)

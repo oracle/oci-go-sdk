@@ -114,17 +114,6 @@ func (client LoadBalancerClient) CreateLoadBalancer(ctx context.Context, request
 	return
 }
 
-// CreatePathRouteSet Adds a path route set on a load balancer.
-func (client LoadBalancerClient) CreatePathRouteSet(ctx context.Context, request CreatePathRouteSetRequest) (err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/loadBalancers/{loadBalancerId}/pathRouteSets", request)
-	if err != nil {
-		return
-	}
-
-	_, err = client.Call(ctx, &httpRequest)
-	return
-}
-
 // DeleteBackend Removes a backend server from a given load balancer and backend set.
 func (client LoadBalancerClient) DeleteBackend(ctx context.Context, request DeleteBackendRequest) (err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends/{backendName}", request)
@@ -173,17 +162,6 @@ func (client LoadBalancerClient) DeleteListener(ctx context.Context, request Del
 // DeleteLoadBalancer Stops a load balancer and removes it from service.
 func (client LoadBalancerClient) DeleteLoadBalancer(ctx context.Context, request DeleteLoadBalancerRequest) (err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/loadBalancers/{loadBalancerId}", request)
-	if err != nil {
-		return
-	}
-
-	_, err = client.Call(ctx, &httpRequest)
-	return
-}
-
-// DeletePathRouteSet Deletes a Path Route Set from a Load Balancer.
-func (client LoadBalancerClient) DeletePathRouteSet(ctx context.Context, request DeletePathRouteSetRequest) (err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/loadBalancers/{loadBalancerId}/pathRouteSets/{pathRouteSetName}", request)
 	if err != nil {
 		return
 	}
@@ -318,24 +296,6 @@ func (client LoadBalancerClient) GetLoadBalancerHealth(ctx context.Context, requ
 	return
 }
 
-// GetPathRouteSet Gets the specified path route set's configuration information.
-func (client LoadBalancerClient) GetPathRouteSet(ctx context.Context, request GetPathRouteSetRequest) (response GetPathRouteSetResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/loadBalancers/{loadBalancerId}/pathRouteSets/{pathRouteSetName}", request)
-	if err != nil {
-		return
-	}
-
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
-
-	err = common.UnmarshalResponse(httpResponse, &response)
-	return
-}
-
 // GetWorkRequest Gets the details of a work request.
 func (client LoadBalancerClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/loadBalancerWorkRequests/{workRequestId}", request)
@@ -429,24 +389,6 @@ func (client LoadBalancerClient) ListLoadBalancerHealths(ctx context.Context, re
 // ListLoadBalancers Lists all load balancers in the specified compartment.
 func (client LoadBalancerClient) ListLoadBalancers(ctx context.Context, request ListLoadBalancersRequest) (response ListLoadBalancersResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/loadBalancers", request)
-	if err != nil {
-		return
-	}
-
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
-
-	err = common.UnmarshalResponse(httpResponse, &response)
-	return
-}
-
-// ListPathRouteSets Lists all Path Route sets associated with a given load balancer.
-func (client LoadBalancerClient) ListPathRouteSets(ctx context.Context, request ListPathRouteSetsRequest) (response ListPathRouteSetsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/loadBalancers/{loadBalancerId}/pathRouteSets", request)
 	if err != nil {
 		return
 	}
@@ -581,17 +523,6 @@ func (client LoadBalancerClient) UpdateListener(ctx context.Context, request Upd
 // UpdateLoadBalancer Updates a load balancer's configuration.
 func (client LoadBalancerClient) UpdateLoadBalancer(ctx context.Context, request UpdateLoadBalancerRequest) (err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/loadBalancers/{loadBalancerId}", request)
-	if err != nil {
-		return
-	}
-
-	_, err = client.Call(ctx, &httpRequest)
-	return
-}
-
-// UpdatePathRouteSet Updates and overwrite a path route set on a load balancer.
-func (client LoadBalancerClient) UpdatePathRouteSet(ctx context.Context, request UpdatePathRouteSetRequest) (err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/loadBalancers/{loadBalancerId}/pathRouteSets/{pathRouteSetName}", request)
 	if err != nil {
 		return
 	}
