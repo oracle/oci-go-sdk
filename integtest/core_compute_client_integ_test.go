@@ -18,17 +18,6 @@ import (
 )
 
 
-func TestComputeClient_AddImageShapeCompatibilityEntry(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.AddImageShapeCompatibilityEntryRequest{}
-	r, err := c.AddImageShapeCompatibilityEntry(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
 func TestComputeClient_AttachVnic(t *testing.T) {
 	t.Skip("Not implemented")
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
@@ -328,16 +317,6 @@ func TestComputeClient_ListVolumeAttachments(t *testing.T) {
 	request := core.ListVolumeAttachmentsRequest{}
 	r, err := c.ListVolumeAttachments(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
-	return
-}
-
-func TestComputeClient_RemoveImageShapeCompatibilityEntry(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.RemoveImageShapeCompatibilityEntryRequest{}
-	err := c.RemoveImageShapeCompatibilityEntry(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
