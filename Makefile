@@ -20,7 +20,11 @@ lint: $(TARGETS_LINT)
 $(TARGETS_LINT): lint-%:%
 	@echo "linting and formatting: $<"
 	@(cd $< && gofmt -s -w .)
-	@(cd $< && $(GOLINT) $(LINT_FLAGS) .)
+	@if [ \( $< = common \) -o \( $< = common/auth \) ]; then\
+		(cd $< && $(GOLINT) -set_exit_status .);\
+	else\
+		(cd $< && $(GOLINT) $(LINT_FLAGS) .);\
+	fi
 
 $(TARGETS_BUILD): build-%:%
 	@echo "building: $<"
