@@ -42,4 +42,4 @@ pre-doc:
 gen-version:
 	go generate -x
 
-release: gen-version $(TARGETS_BUILD)
+release: gen-version build
