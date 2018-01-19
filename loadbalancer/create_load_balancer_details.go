@@ -50,9 +50,6 @@ type CreateLoadBalancerDetails struct {
 	IsPrivate *bool `mandatory:"false" json:"isPrivate,omitempty"`
 
 	Listeners map[string]ListenerDetails `mandatory:"false" json:"listeners,omitempty"`
-
-	// An mapping of strings to PathRouteSetDetails.
-	PathRouteSets map[string]PathRouteSetDetails `mandatory:"false" json:"pathRouteSets,omitempty"`
 }
 
 func (m CreateLoadBalancerDetails) String() string {
