@@ -15,8 +15,8 @@ import (
 	"strings"
 )
 
-// HttpRequestSigner the interface to sign a request
-type HttpRequestSigner interface {
+// HTTPRequestSigner the interface to sign a request
+type HTTPRequestSigner interface {
 	Sign(r *http.Request) error
 }
 
@@ -49,13 +49,13 @@ var (
 	}
 )
 
-func defaultRequestSigner(provider KeyProvider) HttpRequestSigner {
+func defaultRequestSigner(provider KeyProvider) HTTPRequestSigner {
 	return RequestSigner(provider, defaultGenericHeaders, defaultBodyHeaders)
 }
 
 // RequestSigner creates a signer that utilizes the specified headers for signing
 // and the default predicate for using the body of the request as part of the signature
-func RequestSigner(provider KeyProvider, genericHeaders, bodyHeaders []string) HttpRequestSigner {
+func RequestSigner(provider KeyProvider, genericHeaders, bodyHeaders []string) HTTPRequestSigner {
 	return ociRequestSigner{
 		KeyProvider:    provider,
 		GenericHeaders: genericHeaders,
@@ -65,7 +65,7 @@ func RequestSigner(provider KeyProvider, genericHeaders, bodyHeaders []string) H
 
 // RequestSignerWithBodyHashingPredicate creates a signer that utilizes the specified header for signing, as well as a predicate for using
 // the body of the request as part of the signature
-func RequestSignerWithBodyHashingPredicate(provider KeyProvider, genericHeaders, bodyHeaders []string, shouldHashBody SignerBodyHashPredicate) HttpRequestSigner {
+func RequestSignerWithBodyHashingPredicate(provider KeyProvider, genericHeaders, bodyHeaders []string, shouldHashBody SignerBodyHashPredicate) HTTPRequestSigner {
 	return ociRequestSigner{
 		KeyProvider:    provider,
 		GenericHeaders: genericHeaders,

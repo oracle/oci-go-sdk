@@ -31,19 +31,19 @@ const (
 // RequestInterceptor function used to customize the request before calling the underlying service
 type RequestInterceptor func(*http.Request) error
 
-// HttpRequestDispatcher wraps the execution of a http request, it is generally implemented by
+// HTTPRequestDispatcher wraps the execution of a http request, it is generally implemented by
 // http.Client.Do, but can be customized for testing
-type HttpRequestDispatcher interface {
+type HTTPRequestDispatcher interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
 // BaseClient struct implements all basic operations to call oci web services.
 type BaseClient struct {
-	//HttpClient performs the http network operations
-	HttpClient HttpRequestDispatcher
+	//HTTPClient performs the http network operations
+	HTTPClient HTTPRequestDispatcher
 
 	//Signer performs auth operation
-	Signer HttpRequestSigner
+	Signer HTTPRequestSigner
 
 	//A request interceptor can be used to customize the request before signing and dispatching
 	Interceptor RequestInterceptor
@@ -63,16 +63,16 @@ func defaultUserAgent() string {
 	return userAgent
 }
 
-func newBaseClient(signer HttpRequestSigner, dispatcher HttpRequestDispatcher) BaseClient {
+func newBaseClient(signer HTTPRequestSigner, dispatcher HTTPRequestDispatcher) BaseClient {
 	return BaseClient{
 		UserAgent:   defaultUserAgent(),
 		Interceptor: nil,
 		Signer:      signer,
-		HttpClient:  dispatcher,
+		HTTPClient:  dispatcher,
 	}
 }
 
-func defaultHttpDispatcher() http.Client {
+func defaultHTTPDispatcher() http.Client {
 	httpClient := http.Client{
 		Timeout:   defaultTimeout,
 		Transport: &http.Transport{},
@@ -81,14 +81,14 @@ func defaultHttpDispatcher() http.Client {
 }
 
 func defaultBaseClient(provider KeyProvider) BaseClient {
-	dispatcher := defaultHttpDispatcher()
+	dispatcher := defaultHTTPDispatcher()
 	signer := defaultRequestSigner(provider)
 	return newBaseClient(signer, &dispatcher)
 }
 
 //DefaultBaseClientWithSigner creates a default base client with a given signer
-func DefaultBaseClientWithSigner(signer HttpRequestSigner) BaseClient {
-	dispatcher := defaultHttpDispatcher()
+func DefaultBaseClientWithSigner(signer HTTPRequestSigner) BaseClient {
+	dispatcher := defaultHTTPDispatcher()
 	return newBaseClient(signer, &dispatcher)
 }
 
@@ -158,12 +158,12 @@ func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
 		client.Host = fmt.Sprintf("%s://%s", defaultScheme, client.Host)
 	}
 
-	clientUrl, err := url.Parse(client.Host)
+	clientURL, err := url.Parse(client.Host)
 	if err != nil {
 		return fmt.Errorf("host is invalid. %s", err.Error())
 	}
-	request.URL.Host = clientUrl.Host
-	request.URL.Scheme = clientUrl.Scheme
+	request.URL.Host = clientURL.Host
+	request.URL.Scheme = clientURL.Scheme
 	currentPath := request.URL.Path
 	request.URL.Path = path.Clean(fmt.Sprintf("/%s/%s", client.BasePath, currentPath))
 	return
@@ -221,7 +221,7 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 	})
 
 	//Execute the http request
-	response, err = client.HttpClient.Do(request)
+	response, err = client.HTTPClient.Do(request)
 
 	IfDebug(func() {
 		if err != nil {

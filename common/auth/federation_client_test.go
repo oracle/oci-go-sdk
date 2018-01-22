@@ -18,8 +18,8 @@ import (
 func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
 	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Verify request
-		expectedKeyId := fmt.Sprintf("%s/fed-x509/%s", tenancyId, leafCertFingerprint)
-		assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf(`Signature version="1",headers="date (request-target) content-length content-type x-content-sha256",keyId="%s",algorithm="rsa-sha256",signature=`, expectedKeyId)))
+		expectedKeyID := fmt.Sprintf("%s/fed-x509/%s", tenancyID, leafCertFingerprint)
+		assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf(`Signature version="1",headers="date (request-target) content-length content-type x-content-sha256",keyId="%s",algorithm="rsa-sha256",signature=`, expectedKeyID)))
 
 		expectedBody := fmt.Sprintf(`{"certificate":"%s","publicKey":"%s","intermediateCertificates":["%s"]}`,
 			leafCertBodyNoNewLine, sessionPublicKeyBodyNoNewLine, intermediateCertBodyNoNewLine)
@@ -47,7 +47,7 @@ func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
 	mockIntermediateCertificateRetriever.On("CertificatePemRaw").Return([]byte(intermediateCertPem))
 
 	federationClient := &x509FederationClient{
-		tenancyId:                         tenancyId,
+		tenancyID:                         tenancyID,
 		sessionKeySupplier:                mockSessionKeySupplier,
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
@@ -69,8 +69,8 @@ func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
 func TestX509FederationClient_RenewSecurityToken(t *testing.T) {
 	authServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Verify request
-		expectedKeyId := fmt.Sprintf("%s/fed-x509/%s", tenancyId, leafCertFingerprint)
-		assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf(`Signature version="1",headers="date (request-target) content-length content-type x-content-sha256",keyId="%s",algorithm="rsa-sha256",signature=`, expectedKeyId)))
+		expectedKeyID := fmt.Sprintf("%s/fed-x509/%s", tenancyID, leafCertFingerprint)
+		assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf(`Signature version="1",headers="date (request-target) content-length content-type x-content-sha256",keyId="%s",algorithm="rsa-sha256",signature=`, expectedKeyID)))
 
 		expectedBody := fmt.Sprintf(`{"certificate":"%s","publicKey":"%s","intermediateCertificates":["%s"]}`,
 			leafCertBodyNoNewLine, sessionPublicKeyBodyNoNewLine, intermediateCertBodyNoNewLine)
@@ -101,7 +101,7 @@ func TestX509FederationClient_RenewSecurityToken(t *testing.T) {
 	mockSecurityToken.On("Valid").Return(false)
 
 	federationClient := &x509FederationClient{
-		tenancyId:                         tenancyId,
+		tenancyID:                         tenancyID,
 		sessionKeySupplier:                mockSessionKeySupplier,
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
@@ -131,7 +131,7 @@ func TestX509FederationClient_GetCachedSecurityToken(t *testing.T) {
 	mockSecurityToken.On("String").Return(expectedSecurityToken)
 
 	federationClient := &x509FederationClient{
-		tenancyId:                         tenancyId,
+		tenancyID:                         tenancyID,
 		sessionKeySupplier:                mockSessionKeySupplier,
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
@@ -166,7 +166,7 @@ func TestX509FederationClient_RenewSecurityTokenSessionKeySupplierError(t *testi
 	mockSecurityToken.On("Valid").Return(false)
 
 	federationClient := &x509FederationClient{
-		tenancyId:                         tenancyId,
+		tenancyID:                         tenancyID,
 		sessionKeySupplier:                mockSessionKeySupplier,
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
@@ -194,7 +194,7 @@ func TestX509FederationClient_RenewSecurityTokenLeafCertificateRetrieverError(t 
 	mockSecurityToken.On("Valid").Return(false)
 
 	federationClient := &x509FederationClient{
-		tenancyId:                         tenancyId,
+		tenancyID:                         tenancyID,
 		sessionKeySupplier:                mockSessionKeySupplier,
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
@@ -224,7 +224,7 @@ func TestX509FederationClient_RenewSecurityTokenIntermediateCertificateRetriever
 	mockSecurityToken.On("Valid").Return(false)
 
 	federationClient := &x509FederationClient{
-		tenancyId:                         tenancyId,
+		tenancyID:                         tenancyID,
 		sessionKeySupplier:                mockSessionKeySupplier,
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
@@ -251,10 +251,10 @@ func TestX509FederationClient_RenewSecurityTokenUnexpectedTenancyIdUpdateError(t
 	mockSecurityToken := new(mockSecurityToken)
 	mockSecurityToken.On("Valid").Return(false)
 
-	previousTenancyId := "ocidv1:tenancy:oc1:phx:1234567890:foobarfoobar"
+	previousTenancyID := "ocidv1:tenancy:oc1:phx:1234567890:foobarfoobar"
 
 	federationClient := &x509FederationClient{
-		tenancyId:                         previousTenancyId,
+		tenancyID:                         previousTenancyID,
 		sessionKeySupplier:                mockSessionKeySupplier,
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
@@ -265,7 +265,7 @@ func TestX509FederationClient_RenewSecurityTokenUnexpectedTenancyIdUpdateError(t
 	actualSecurityToken, actualError := federationClient.SecurityToken()
 
 	assert.Empty(t, actualSecurityToken)
-	assert.EqualError(t, actualError, fmt.Sprintf("failed to renew security token: unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", previousTenancyId, tenancyId))
+	assert.EqualError(t, actualError, fmt.Sprintf("failed to renew security token: unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", previousTenancyID, tenancyID))
 }
 
 func TestX509FederationClient_AuthServerInternalError(t *testing.T) {
@@ -287,7 +287,7 @@ func TestX509FederationClient_AuthServerInternalError(t *testing.T) {
 	mockIntermediateCertificateRetriever.On("CertificatePemRaw").Return([]byte(intermediateCertPem))
 
 	federationClient := &x509FederationClient{
-		tenancyId:                         tenancyId,
+		tenancyID:                         tenancyID,
 		sessionKeySupplier:                mockSessionKeySupplier,
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
@@ -385,7 +385,7 @@ ysvMnQwaC0432ceRJ3r6vPAI2EPRd9KOE7Va1IFNJNmOuIkmRx8t`
 	//				"opc-certtype:instance",
 	//				"opc-instance.ocid1.phx.bluhbluhbluh",
 	//				"opc-compartment:ocid1.compartment.oc1.bluhbluhbluh",
-	//				fmt.Sprintf("opc-tenant:%s", tenancyId),
+	//				fmt.Sprintf("opc-tenant:%s", tenancyID),
 	//			},
 	//		},
 	//		NotBefore:          notBefore,
@@ -454,7 +454,7 @@ tPcwQqt7CYTxL77YFy0Z+s9WUmZaOJakgrCLSokeQBWdi0JibYp1mZPZv6pqsIm9
 X86ef1hXyNjvEQRxuf1Bx96Y32m7FjsD251XeOEzzdESCa90Z+bHN6k7wsTRrU79
 dYZF0puZUEmHID4xIF5AprOHVarrhawiddwayMQWH7GZuVzhJ2Z/Q4CK2DneR8Lr
 fwIDAQAB`
-	tenancyId             = `ocidv1:tenancy:oc1:phx:1234567890:bluhbluhbluh`
+	tenancyID             = `ocidv1:tenancy:oc1:phx:1234567890:bluhbluhbluh`
 	expectedSecurityToken = `eyJhbGciOiJSUzI1NiIsImtpZCI6ImFzdyIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJvcGMub3JhY2xlLmNvbSIsImV4cCI6MTUxMTgzODc5MywiaWF0IjoxNTExODE3MTkzLCJpc3MiOiJhdXRoU2VydmljZS5vcmFjbGUuY29tIiwib3BjLWNlcnR0eXBlIjoiaW5zdGFuY2UiLCJvcGMtY29tcGFydG1lbnQiOiJvY2lkMS5jb21wYXJ0bWVudC5vYzEuLmJsdWhibHVoYmx1aCIsIm9wYy1pbnN0YW5jZSI6Im9jaWQxLmluc3RhbmNlLm9jMS5waHguYmx1aGJsdWhibHVoIiwib3BjLXRlbmFudCI6Im9jaWR2MTp0ZW5hbmN5Om9jMTpwaHg6MTIzNDU2Nzg5MDpibHVoYmx1aGJsdWgiLCJwdHlwZSI6Imluc3RhbmNlIiwic3ViIjoib2NpZDEuaW5zdGFuY2Uub2MxLnBoeC5ibHVoYmx1aGJsdWgiLCJ0ZW5hbnQiOiJvY2lkdjE6dGVuYW5jeTpvYzE6cGh4OjEyMzQ1Njc4OTA6Ymx1aGJsdWhibHVoIiwidHR5cGUiOiJ4NTA5In0.zen7q2yJSpMjzH4ym_H7VEwZA0-vTT4Wcild-HRfLxX6A1ej4tlpACa7A24j5JoZYI4mHooZVJ8e7ZezFenK0zZx5j8RbIjsqJKwroYXExOiBXLCUwMWOLXIndEsUzzGLqnPfKHXd80vrhMLmtkVTCJqBMzvPUSYkH_ciWgmjP9m0YETdQ9ifghkADhZGt9IlnOswg0s3Bx9ASwxFZEtom0BmU9GwEuITTTZfKvndk785BlNeZMOjhovaD97-LYpv5B_PiWEz8zialK5zxjijLCw06zyA8CQRQqmVCagNUPilfz_BcPyImzvFDuzQcPyDkTcsB7weX35tafHmA_Ulg`
 )
 

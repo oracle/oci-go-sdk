@@ -41,7 +41,7 @@ func httpGet(url string) (body bytes.Buffer, err error) {
 	return
 }
 
-func extractTenancyIdFromCertificate(cert *x509.Certificate) string {
+func extractTenancyIDFromCertificate(cert *x509.Certificate) string {
 	for _, nameAttr := range cert.Subject.Names {
 		value := nameAttr.Value.(string)
 		if strings.HasPrefix(value, "opc-tenant:") {

@@ -22,7 +22,7 @@ func TestUrlBasedX509CertificateRetriever_RefreshWithoutPrivateKeyUrl(t *testing
 	}))
 	defer certServer.Close()
 
-	retriever := newUrlBasedX509CertificateRetriever(certServer.URL, "", "")
+	retriever := newURLBasedX509CertificateRetriever(certServer.URL, "", "")
 	err := retriever.Refresh()
 
 	assert.NoError(t, err)
@@ -47,7 +47,7 @@ func TestUrlBasedX509CertificateRetriever_RefreshWithPrivateKeyUrl(t *testing.T)
 	}))
 	defer privateKeyServer.Close()
 
-	retriever := newUrlBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
+	retriever := newURLBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
 	err := retriever.Refresh()
 
 	assert.NoError(t, err)
@@ -67,7 +67,7 @@ func TestUrlBasedX509CertificateRetriever_RefreshCertNotFound(t *testing.T) {
 	certServer := httptest.NewServer(http.NotFoundHandler())
 	defer certServer.Close()
 
-	retriever := newUrlBasedX509CertificateRetriever(certServer.URL, "", "")
+	retriever := newURLBasedX509CertificateRetriever(certServer.URL, "", "")
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
@@ -86,7 +86,7 @@ func TestUrlBasedX509CertificateRetriever_RefreshPrivateKeyNotFound(t *testing.T
 	privateKeyServer := httptest.NewServer(http.NotFoundHandler())
 	defer privateKeyServer.Close()
 
-	retriever := newUrlBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
+	retriever := newURLBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
@@ -104,7 +104,7 @@ func TestUrlBasedX509CertificateRetriever_RefreshCertInternalServerError(t *test
 	certServer := httptest.NewServer(http.HandlerFunc(internalServerError))
 	defer certServer.Close()
 
-	retriever := newUrlBasedX509CertificateRetriever(certServer.URL, "", "")
+	retriever := newURLBasedX509CertificateRetriever(certServer.URL, "", "")
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
@@ -123,7 +123,7 @@ func TestUrlBasedX509CertificateRetriever_RefreshPrivateKeyInternalServerError(t
 	privateKeyServer := httptest.NewServer(http.HandlerFunc(internalServerError))
 	defer privateKeyServer.Close()
 
-	retriever := newUrlBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
+	retriever := newURLBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
@@ -158,7 +158,7 @@ func TestUrlBasedX509CertificateRetriever_FailureAtomicity(t *testing.T) {
 	}))
 	defer privateKeyServer.Close()
 
-	retriever := newUrlBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
+	retriever := newURLBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
 	err := retriever.Refresh()
 
 	assert.NoError(t, err)

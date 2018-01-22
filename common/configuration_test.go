@@ -213,11 +213,11 @@ region=someregion
 
 	c := fileConfigurationProvider{ConfigPath: tmpConfFile, Profile: "DEFAULT"}
 	rskey, e := c.PrivateRSAKey()
-	keyId, e1 := c.KeyID()
+	keyID, e1 := c.KeyID()
 	assert.NoError(t, e)
 	assert.NotEmpty(t, rskey)
 	assert.NoError(t, e1)
-	assert.NotEmpty(t, keyId)
+	assert.NotEmpty(t, keyID)
 }
 
 func TestFileConfigurationProvider_FromFileFn(t *testing.T) {
@@ -240,11 +240,11 @@ region=someregion
 	c, e0 := ConfigurationProviderFromFile(tmpConfFile, "")
 	assert.NoError(t, e0)
 	rskey, e := c.PrivateRSAKey()
-	keyId, e1 := c.KeyID()
+	keyID, e1 := c.KeyID()
 	assert.NoError(t, e)
 	assert.NotEmpty(t, rskey)
 	assert.NoError(t, e1)
-	assert.NotEmpty(t, keyId)
+	assert.NotEmpty(t, keyID)
 }
 
 func TestFileConfigurationProvider_FromFileAndProfile(t *testing.T) {
@@ -276,20 +276,20 @@ region=region2
 	c, e0 := ConfigurationProviderFromFile(tmpConfFile, "")
 	assert.NoError(t, e0)
 	rskey, e := c.PrivateRSAKey()
-	keyId, e1 := c.KeyID()
+	keyID, e1 := c.KeyID()
 	assert.NoError(t, e)
 	assert.NotEmpty(t, rskey)
 	assert.NoError(t, e1)
-	assert.NotEmpty(t, keyId)
+	assert.NotEmpty(t, keyID)
 
 	c, e0 = ConfigurationProviderFromFileWithProfile(tmpConfFile, "PROFILE2", "")
 	assert.NoError(t, e0)
 	rskey, e = c.PrivateRSAKey()
-	keyId, e1 = c.KeyID()
+	keyID, e1 = c.KeyID()
 	assert.NoError(t, e)
 	assert.NotEmpty(t, rskey)
 	assert.NoError(t, e1)
-	assert.NotEmpty(t, keyId)
+	assert.NotEmpty(t, keyID)
 
 }
 

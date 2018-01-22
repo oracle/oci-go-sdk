@@ -21,8 +21,8 @@ type x509CertificateRetriever interface {
 
 // urlBasedX509CertificateRetriever retrieves PEM-encoded X509 certificates from the given URLs.
 type urlBasedX509CertificateRetriever struct {
-	certUrl           string
-	privateKeyUrl     string
+	certURL           string
+	privateKeyURL     string
 	passphrase        string
 	certificatePemRaw []byte
 	certificate       *x509.Certificate
@@ -31,10 +31,10 @@ type urlBasedX509CertificateRetriever struct {
 	mux               sync.Mutex
 }
 
-func newUrlBasedX509CertificateRetriever(certUrl, privateKeyUrl, passphrase string) x509CertificateRetriever {
+func newURLBasedX509CertificateRetriever(certURL, privateKeyURL, passphrase string) x509CertificateRetriever {
 	return &urlBasedX509CertificateRetriever{
-		certUrl:       certUrl,
-		privateKeyUrl: privateKeyUrl,
+		certURL:       certURL,
+		privateKeyURL: privateKeyURL,
 		passphrase:    passphrase,
 		mux:           sync.Mutex{},
 	}
@@ -52,14 +52,14 @@ func (r *urlBasedX509CertificateRetriever) Refresh() error {
 
 	var certificatePemRaw []byte
 	var certificate *x509.Certificate
-	if certificatePemRaw, certificate, err = r.renewCertificate(r.certUrl); err != nil {
+	if certificatePemRaw, certificate, err = r.renewCertificate(r.certURL); err != nil {
 		return fmt.Errorf("failed to renew certificate: %s", err.Error())
 	}
 
 	var privateKeyPemRaw []byte
 	var privateKey *rsa.PrivateKey
-	if r.privateKeyUrl != "" {
-		if privateKeyPemRaw, privateKey, err = r.renewPrivateKey(r.privateKeyUrl, r.passphrase); err != nil {
+	if r.privateKeyURL != "" {
+		if privateKeyPemRaw, privateKey, err = r.renewPrivateKey(r.privateKeyURL, r.passphrase); err != nil {
 			return fmt.Errorf("failed to renew private key: %s", err.Error())
 		}
 	}

@@ -114,7 +114,7 @@ func TestClient_clientForRegion(t *testing.T) {
 	region := RegionPHX
 	c := testClientWithRegion(region)
 	assert.Equal(t, defaultUserAgent(), c.UserAgent)
-	assert.NotNil(t, c.HttpClient)
+	assert.NotNil(t, c.HTTPClient)
 	assert.Nil(t, c.Interceptor)
 	assert.NotNil(t, c.Signer)
 
@@ -137,7 +137,7 @@ func TestClient_customClientForRegion(t *testing.T) {
 	c.prepareRequest(&request)
 
 	assert.Equal(t, userAgent, c.UserAgent)
-	assert.NotNil(t, c.HttpClient)
+	assert.NotNil(t, c.HTTPClient)
 	assert.Nil(t, c.Interceptor)
 	assert.NotNil(t, c.Signer)
 	assert.Equal(t, "http", request.URL.Scheme)
@@ -180,7 +180,7 @@ func TestBaseClient_Call(t *testing.T) {
 
 	c.Host = host
 	c.BasePath = basePath
-	c.HttpClient = caller
+	c.HTTPClient = caller
 
 	request := http.Request{}
 	request.URL = &url.URL{Path: restPath}
@@ -214,7 +214,7 @@ func TestBaseClient_CallError(t *testing.T) {
 
 	c.Host = host
 	c.BasePath = basePath
-	c.HttpClient = caller
+	c.HTTPClient = caller
 
 	request := http.Request{}
 	request.URL = &url.URL{Path: restPath}
