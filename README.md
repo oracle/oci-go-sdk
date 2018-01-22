@@ -34,11 +34,11 @@ git clone git@github.com:oracle/oci-go-sdk.git  $GOPATH/src/github.com/oracle
 
 ## Working with the SDK
 Generally speaking, you can start working with the sdk by importing the service package, creating a client, 
-and make calls with client.
+and making calls with client.
 
 ### Configuring 
 You can configure the sdk with your credentials by creating a settings file in:
- `$HOME/.oci/config` that looks like the following
+ `$HOME/.oci/config` that looks like the following:
  ```
  [DEFAULT]
  user=[user ocid]
@@ -72,7 +72,7 @@ type ConfigurationProvider interface {
 ```
 
 ### Making a request
-Making request can be achieved by: create a client for the service that you wish to work with, followed by calling
+Making request can be achieved by: creating a client for the service that you wish to work with, followed by calling
 the a function in the above client 
 - *Creating a client*: all packages provide a function to create clients. It is of the form `NewXXXClientWithConfigurationProvider`.
 You can create a new client by passing a struct that conforms to the `ConfigurationProvider` interface.
@@ -99,7 +99,7 @@ fmt.Println("Group's name is:", response.Name)
 ```
 
 ## Organization of the SDK
-The `oci-go-sdk` can be broken down into 2 big parts:
+The `oci-go-sdk` can be broken down into:
 - **service packages**: all packages except `common` and any other package found inside `cmd`. They represent Oracle Cloud Infrastructure services supported by the go sdk. 
 Each package represents a service. These packages include methods to interact with the service, structs that model 
 input and output parameters and a client struct that acts as receiver for the above methods. All code in these packages
@@ -138,7 +138,7 @@ make test
 ## Contributing
 See [CONTRIBUTING](/CONTRIBUTING.md) for details
 
-##License
+## License
 Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 
 This SDK and sample is dual licensed under the Universal Permissive License 1.0 and the Apache License 2.0.
