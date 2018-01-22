@@ -1,7 +1,12 @@
 DOC_SERVER_URL=http:\/\/lgl-bybliothece-01.virt.lgl.grungy.us
-TARGETS = common common/auth identity core objectstorage loadbalancer database audit
+
+GEN_TARGETS = identity core objectstorage loadbalancer database audit
+NON_GEN_TARGET = common common/auth
+TARGETS = $(NON_GEN_TARGETS) $(GEN_TARGETS)
+
 TARGETS_WITH_TESTS = common common/auth integtest
 TARGETS_BUILD = $(patsubst %,build-%, $(TARGETS))
+TARGETS_CLEAN = $(patsubst %,clean-%, $(GEN_TARGETS))
 TARGETS_LINT = $(patsubst %,lint-%, $(TARGETS))
 TARGETS_TEST = $(patsubst %,test-%, $(TARGETS_WITH_TESTS))
 TARGETS_RELEASE= $(patsubst %,release-%, $(TARGETS))
@@ -16,6 +21,8 @@ build: lint $(TARGETS_BUILD)
 test: build $(TARGETS_TEST)
 
 lint: $(TARGETS_LINT)
+
+clean: $(TARGETS_CLEAN)
 
 $(TARGETS_LINT): lint-%:%
 	@echo "linting and formatting: $<"
@@ -34,12 +41,14 @@ $(TARGETS_BUILD): build-%:%
 $(TARGETS_TEST): test-%:%
 	@(cd $< && OCI_GO_SDK_DEBUG=1 go test -v)
 
-clean:
-	git clean -dfn
+$(TARGETS_CLEAN): clean-%:%
+	@echo "cleaning $<"
+	@-rm -rf $<
+
 pre-doc:
 	find . -name \*.go |xargs sed -i '' 's/{{DOC_SERVER_URL}}/${DOC_SERVER_URL}/g'
 
 gen-version:
 	go generate -x
 
-release: gen-version $(TARGETS_BUILD)
+release: gen-version build
