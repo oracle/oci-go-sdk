@@ -99,7 +99,7 @@ fmt.Println("Group's name is:", response.Name)
 ```
 
 ## Organization of the SDK
-The `oci-go-sdk` can be broken down into:
+The `oci-go-sdk` is broken down into:
 - **service packages**: all packages except `common` and any other package found inside `cmd`. They represent Oracle Cloud Infrastructure services supported by the go sdk. 
 Each package represents a service. These packages include methods to interact with the service, structs that model 
 input and output parameters and a client struct that acts as receiver for the above methods. All code in these packages
