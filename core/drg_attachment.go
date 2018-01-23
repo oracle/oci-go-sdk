@@ -13,7 +13,7 @@ import (
 )
 
 // DrgAttachment A link between a DRG and VCN. For more information, see
-// [Overview of the Networking Service]({{DOC_SERVER_URL}}/Content/Network/Concepts/overview.htm).
+// https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/overview.htm.
 type DrgAttachment struct {
 
 	// The OCID of the compartment containing the DRG attachment.

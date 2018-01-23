@@ -14,7 +14,7 @@ type CreateBackendSetRequest struct {
 	// The details for adding a backend set.
 	CreateBackendSetDetails `contributesTo:"body"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer on which to add a backend set.
+	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the load balancer on which to add a backend set.
 	LoadBalancerId *string `mandatory:"true" contributesTo:"path" name:"loadBalancerId"`
 
 	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
@@ -43,7 +43,7 @@ type CreateBackendSetResponse struct {
 	// a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the work request.
+	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the work request.
 	OpcWorkRequestId *string `presentIn:"header" name:"opc-work-request-id"`
 }
 

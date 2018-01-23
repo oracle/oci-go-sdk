@@ -14,10 +14,10 @@ import (
 
 // RouteTable A collection of `RouteRule` objects, which are used to route packets
 // based on destination IP to a particular network entity. For more information, see
-// [Overview of the Networking Service]({{DOC_SERVER_URL}}/Content/Network/Concepts/overview.htm).
+// https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/overview.htm.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
+// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
 type RouteTable struct {
 
 	// The OCID of the compartment containing the route table.

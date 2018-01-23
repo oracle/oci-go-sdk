@@ -14,7 +14,7 @@ import (
 
 // Listener The listener's configuration.
 // For more information on backend set configuration, see
-// [Managing Load Balancer Listeners]({{DOC_SERVER_URL}}/Content/Balance/tasks/managinglisteners.htm).
+// https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/tasks/managinglisteners.htm.
 type Listener struct {
 
 	// The name of the associated backend set.

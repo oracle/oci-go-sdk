@@ -13,10 +13,10 @@ import (
 )
 
 // CustomerSecretKey A `CustomerSecretKey` is an Oracle-provided key for using the Object Storage Service's
-// [Amazon S3 compatible API]({{DOC_SERVER_URL}}/Content/Object/Tasks/s3compatibleapi.htm).
+// https://docs.us-phoenix-1.oraclecloud.com/Content/Object/Tasks/s3compatibleapi.htm.
 // A user can have up to two secret keys at a time.
 // **Note:** The secret key is always an Oracle-generated string; you can't change it to a string of your choice.
-// For more information, see [Managing User Credentials]({{DOC_SERVER_URL}}/Content/Identity/Tasks/managingcredentials.htm).
+// For more information, see https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Tasks/managingcredentials.htm.
 type CustomerSecretKey struct {
 
 	// The secret key.

@@ -30,7 +30,7 @@ type AuditEvent struct {
 	// The type of the event.
 	EventType *string `mandatory:"false" json:"eventType,omitempty"`
 
-	// The time the event occurred, expressed in [RFC 3339](https://tools.ietf.org/html/rfc3339) timestamp format.
+	// The time the event occurred, expressed in (https://tools.ietf.org/html/rfc3339) timestamp format.
 	EventTime *common.SDKTime `mandatory:"false" json:"eventTime,omitempty"`
 
 	// The OCID of the user whose action triggered the event.
@@ -66,7 +66,7 @@ type AuditEvent struct {
 	// The status code of the response.
 	ResponseStatus *string `mandatory:"false" json:"responseStatus,omitempty"`
 
-	// The time of the response to the audited request, expressed in [RFC 3339](https://tools.ietf.org/html/rfc3339) timestamp format.
+	// The time of the response to the audited request, expressed in (https://tools.ietf.org/html/rfc3339) timestamp format.
 	ResponseTime *common.SDKTime `mandatory:"false" json:"responseTime,omitempty"`
 
 	// Metadata of interest from the response payload. For example, the OCID of a resource.

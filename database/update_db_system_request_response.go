@@ -11,7 +11,7 @@ import (
 // UpdateDbSystemRequest wrapper for the UpdateDbSystem operation
 type UpdateDbSystemRequest struct {
 
-	// The DB System [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
+	// The DB System https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm.
 	DbSystemId *string `mandatory:"true" contributesTo:"path" name:"dbSystemId"`
 
 	// Request to update the properties of a DB System.

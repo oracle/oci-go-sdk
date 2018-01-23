@@ -17,7 +17,7 @@ import (
 // For specific details about iSCSI attachments, see
 // IScsiVolumeAttachment.
 // For general information about volume attachments, see
-// [Overview of Block Volume Storage]({{DOC_SERVER_URL}}/Content/Block/Concepts/overview.htm).
+// https://docs.us-phoenix-1.oraclecloud.com/Content/Block/Concepts/overview.htm.
 type VolumeAttachment interface {
 
 	// The Availability Domain of an instance.

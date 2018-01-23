@@ -14,7 +14,7 @@ import (
 
 // BackendSet The configuration of a load balancer backend set.
 // For more information on backend set configuration, see
-// [Managing Backend Sets]({{DOC_SERVER_URL}}/Content/Balance/tasks/managingbackendsets.htm).
+// https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/tasks/managingbackendsets.htm.
 type BackendSet struct {
 	Backends []Backend `mandatory:"true" json:"backends,omitempty"`
 

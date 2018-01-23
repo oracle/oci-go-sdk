@@ -11,7 +11,7 @@ import (
 // CreateDataGuardAssociationRequest wrapper for the CreateDataGuardAssociation operation
 type CreateDataGuardAssociationRequest struct {
 
-	// The database [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
+	// The database https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm.
 	DatabaseId *string `mandatory:"true" contributesTo:"path" name:"databaseId"`
 
 	// A request to create a Data Guard association.

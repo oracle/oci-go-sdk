@@ -11,7 +11,7 @@ import (
 // DeleteLoadBalancerRequest wrapper for the DeleteLoadBalancer operation
 type DeleteLoadBalancerRequest struct {
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer to delete.
+	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the load balancer to delete.
 	LoadBalancerId *string `mandatory:"true" contributesTo:"path" name:"loadBalancerId"`
 
 	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
@@ -33,7 +33,7 @@ type DeleteLoadBalancerResponse struct {
 	// a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the work request.
+	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the work request.
 	OpcWorkRequestId *string `presentIn:"header" name:"opc-work-request-id"`
 }
 

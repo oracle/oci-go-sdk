@@ -11,7 +11,7 @@ import (
 // ListCertificatesRequest wrapper for the ListCertificates operation
 type ListCertificatesRequest struct {
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer associated with the certificates to be listed.
+	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the load balancer associated with the certificates to be listed.
 	LoadBalancerId *string `mandatory:"true" contributesTo:"path" name:"loadBalancerId"`
 
 	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

@@ -11,7 +11,7 @@ import (
 // GetDbNodeRequest wrapper for the GetDbNode operation
 type GetDbNodeRequest struct {
 
-	// The database node [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
+	// The database node https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm.
 	DbNodeId *string `mandatory:"true" contributesTo:"path" name:"dbNodeId"`
 }
 

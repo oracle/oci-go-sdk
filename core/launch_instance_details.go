@@ -69,7 +69,7 @@ type LaunchInstanceDetails struct {
 	// iqn.2015-02.oracle.boot.
 	// For more information about the Bring Your Own Image feature of
 	// Oracle Cloud Infrastructure, see
-	// [Bring Your Own Image]({{DOC_SERVER_URL}}/Content/Compute/References/bringyourownimage.htm).
+	// https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/References/bringyourownimage.htm.
 	// For more information about iPXE, see http://ipxe.org.
 	IpxeScript *string `mandatory:"false" json:"ipxeScript,omitempty"`
 
@@ -77,7 +77,7 @@ type LaunchInstanceDetails struct {
 	// required to connect to the instance.
 	// A metadata service runs on every launched instance. The service is an HTTP
 	// endpoint listening on 169.254.169.254. You can use the service to:
-	// * Provide information to [Cloud-Init](https://cloudinit.readthedocs.org/en/latest/)
+	// * Provide information to (https://cloudinit.readthedocs.org/en/latest/)
 	//   to be used for various system initialization tasks.
 	// * Get information about the instance, including the custom metadata that you
 	//   provide when you launch the instance.
@@ -92,7 +92,7 @@ type LaunchInstanceDetails struct {
 	//  **"user_data"** - Provide your own base64-encoded data to be used by
 	//  Cloud-Init to run custom scripts or provide custom Cloud-Init configuration. For
 	//  information about how to take advantage of user data, see the
-	//  [Cloud-Init Documentation](http://cloudinit.readthedocs.org/en/latest/topics/format.html).
+	//  (http://cloudinit.readthedocs.org/en/latest/topics/format.html).
 	//  **Note:** Cloud-Init does not pull this data from the `http://169.254.169.254/opc/v1/instance/metadata/`
 	//  path. When the instance launches and either of these keys are provided, the key values are formatted as
 	//  OpenStack metadata and copied to the following locations, which are recognized by Cloud-Init:

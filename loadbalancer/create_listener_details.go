@@ -14,7 +14,7 @@ import (
 
 // CreateListenerDetails The configuration details for adding a listener to a backend set.
 // For more information on listener configuration, see
-// [Managing Load Balancer Listeners]({{DOC_SERVER_URL}}/Content/Balance/tasks/managinglisteners.htm).
+// https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/tasks/managinglisteners.htm.
 type CreateListenerDetails struct {
 
 	// The name of the associated backend set.

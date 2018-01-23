@@ -15,22 +15,22 @@ import (
 // DataGuardAssociation The properties that define a Data Guard association.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an
 // administrator. If you're an administrator who needs to write policies to give users access, see
-// [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
+// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
 // For information about endpoints and signing API requests, see
-// [About the API]({{DOC_SERVER_URL}}/Content/API/Concepts/usingapi.htm). For information about available SDKs and tools, see
-// [SDKS and Other Tools]({{DOC_SERVER_URL}}/Content/API/Concepts/sdks.htm).
+// https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/usingapi.htm. For information about available SDKs and tools, see
+// https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdks.htm.
 type DataGuardAssociation struct {
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the reporting database.
+	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the reporting database.
 	DatabaseId *string `mandatory:"true" json:"databaseId,omitempty"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the Data Guard association.
+	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the Data Guard association.
 	Id *string `mandatory:"true" json:"id,omitempty"`
 
 	// The current state of the Data Guard association.
 	LifecycleState DataGuardAssociationLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the DB System containing the associated
+	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the DB System containing the associated
 	// peer database.
 	PeerDbSystemId *string `mandatory:"true" json:"peerDbSystemId,omitempty"`
 
@@ -38,7 +38,7 @@ type DataGuardAssociation struct {
 	PeerRole DataGuardAssociationPeerRoleEnum `mandatory:"true" json:"peerRole,omitempty"`
 
 	// The protection mode of this Data Guard association. For more information, see
-	// [Oracle Data Guard Protection Modes](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)
+	// (http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)
 	// in the Oracle Data Guard documentation.
 	ProtectionMode DataGuardAssociationProtectionModeEnum `mandatory:"true" json:"protectionMode,omitempty"`
 
@@ -57,20 +57,20 @@ type DataGuardAssociation struct {
 	// Additional information about the current lifecycleState, if available.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the peer database's Data Guard association.
+	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the peer database's Data Guard association.
 	PeerDataGuardAssociationId *string `mandatory:"false" json:"peerDataGuardAssociationId,omitempty"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the associated peer database.
+	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the associated peer database.
 	PeerDatabaseId *string `mandatory:"false" json:"peerDatabaseId,omitempty"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the database home containing the associated peer database.
+	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the database home containing the associated peer database.
 	PeerDbHomeId *string `mandatory:"false" json:"peerDbHomeId,omitempty"`
 
 	// The date and time the Data Guard Association was created.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
 
 	// The redo transport type used by this Data Guard association.  For more information, see
-	// [Redo Transport Services](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400)
+	// (http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400)
 	// in the Oracle Data Guard documentation.
 	TransportType DataGuardAssociationTransportTypeEnum `mandatory:"false" json:"transportType,omitempty"`
 }

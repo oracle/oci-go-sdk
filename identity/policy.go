@@ -14,8 +14,8 @@ import (
 
 // Policy A document that specifies the type of access a group has to the resources in a compartment. For information about
 // policies and other IAM Service components, see
-// [Overview of the IAM Service]({{DOC_SERVER_URL}}/Content/Identity/Concepts/overview.htm). If you're new to policies, see
-// [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
+// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/overview.htm. If you're new to policies, see
+// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
 // The word "policy" is used by people in different ways:
 //   * An individual statement written in the policy language
 //   * A collection of statements in a single, named "policy" document (which has an Oracle Cloud ID (OCID) assigned to it)
