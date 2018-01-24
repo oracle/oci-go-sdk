@@ -18,7 +18,7 @@ import (
 //IdentityClient a client for Identity
 type IdentityClient struct {
 	common.BaseClient
-	provider *common.ConfigurationProvider
+	config *common.ConfigurationProvider
 }
 
 // NewIdentityClientWithConfigurationProvider Creates a new default Identity client with the given configuration provider.
@@ -36,7 +36,7 @@ func NewIdentityClientWithConfigurationProvider(configProvider common.Configurat
 }
 
 // SetConfigurationProvider sets the configuration provider, returns an error if is not valid
-func (client IdentityClient) SetConfigurationProvider(configProvider common.ConfigurationProvider) error {
+func (client *IdentityClient) SetConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err
 	}
@@ -45,14 +45,14 @@ func (client IdentityClient) SetConfigurationProvider(configProvider common.Conf
 	if err != nil {
 		return err
 	}
-	client.provider = &configProvider
+	client.config = &configProvider
 	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", string(region))
 	return nil
 }
 
 // ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
-func (client IdentityClient) ConfigurationProvider() *common.ConfigurationProvider {
-	return client.provider
+func (client *IdentityClient) ConfigurationProvider() *common.ConfigurationProvider {
+	return client.config
 }
 
 // AddUserToGroup Adds the specified user to the specified group and returns a `UserGroupMembership` object with its own OCID.

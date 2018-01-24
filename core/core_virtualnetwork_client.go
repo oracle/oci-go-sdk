@@ -18,6 +18,7 @@ import (
 //VirtualNetworkClient a client for VirtualNetwork
 type VirtualNetworkClient struct {
 	common.BaseClient
+	config *common.ConfigurationProvider
 }
 
 // NewVirtualNetworkClientWithConfigurationProvider Creates a new default VirtualNetwork client with the given configuration provider.
@@ -29,14 +30,29 @@ func NewVirtualNetworkClientWithConfigurationProvider(configProvider common.Conf
 	}
 
 	client = VirtualNetworkClient{BaseClient: baseClient}
-	region, err := configProvider.Region()
-	if err != nil {
-		return
+	client.BasePath = "20160918"
+	err = client.SetConfigurationProvider(configProvider)
+	return
+}
+
+// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+func (client *VirtualNetworkClient) SetConfigurationProvider(configProvider common.ConfigurationProvider) error {
+	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
+		return err
 	}
 
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", string(region))
-	client.BasePath = "20160918"
-	return
+	region, err := configProvider.Region()
+	if err != nil {
+		return err
+	}
+	client.config = &configProvider
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", string(region))
+	return nil
+}
+
+// ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
+func (client *VirtualNetworkClient) ConfigurationProvider() *common.ConfigurationProvider {
+	return client.config
 }
 
 // BulkAddVirtualCircuitPublicPrefixes Adds one or more customer public IP prefixes to the specified public virtual circuit.

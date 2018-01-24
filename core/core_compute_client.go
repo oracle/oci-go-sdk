@@ -18,6 +18,7 @@ import (
 //ComputeClient a client for Compute
 type ComputeClient struct {
 	common.BaseClient
+	config *common.ConfigurationProvider
 }
 
 // NewComputeClientWithConfigurationProvider Creates a new default Compute client with the given configuration provider.
@@ -29,14 +30,29 @@ func NewComputeClientWithConfigurationProvider(configProvider common.Configurati
 	}
 
 	client = ComputeClient{BaseClient: baseClient}
-	region, err := configProvider.Region()
-	if err != nil {
-		return
+	client.BasePath = "20160918"
+	err = client.SetConfigurationProvider(configProvider)
+	return
+}
+
+// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+func (client *ComputeClient) SetConfigurationProvider(configProvider common.ConfigurationProvider) error {
+	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
+		return err
 	}
 
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", string(region))
-	client.BasePath = "20160918"
-	return
+	region, err := configProvider.Region()
+	if err != nil {
+		return err
+	}
+	client.config = &configProvider
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", string(region))
+	return nil
+}
+
+// ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
+func (client *ComputeClient) ConfigurationProvider() *common.ConfigurationProvider {
+	return client.config
 }
 
 // AttachBootVolume Attaches the specified boot volume to the specified instance.
