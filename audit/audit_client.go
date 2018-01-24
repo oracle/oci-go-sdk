@@ -31,12 +31,12 @@ func NewAuditClientWithConfigurationProvider(configProvider common.Configuration
 
 	client = AuditClient{BaseClient: baseClient}
 	client.BasePath = "20160918"
-	err = client.SetConfigurationProvider(configProvider)
+	err = client.setConfigurationProvider(configProvider)
 	return
 }
 
 // SetConfigurationProvider sets the configuration provider, returns an error if is not valid
-func (client *AuditClient) SetConfigurationProvider(configProvider common.ConfigurationProvider) error {
+func (client *AuditClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err
 	}

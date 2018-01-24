@@ -31,12 +31,12 @@ func NewLoadBalancerClientWithConfigurationProvider(configProvider common.Config
 
 	client = LoadBalancerClient{BaseClient: baseClient}
 	client.BasePath = "20170115"
-	err = client.SetConfigurationProvider(configProvider)
+	err = client.setConfigurationProvider(configProvider)
 	return
 }
 
 // SetConfigurationProvider sets the configuration provider, returns an error if is not valid
-func (client *LoadBalancerClient) SetConfigurationProvider(configProvider common.ConfigurationProvider) error {
+func (client *LoadBalancerClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err
 	}

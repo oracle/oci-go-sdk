@@ -31,12 +31,12 @@ func NewComputeClientWithConfigurationProvider(configProvider common.Configurati
 
 	client = ComputeClient{BaseClient: baseClient}
 	client.BasePath = "20160918"
-	err = client.SetConfigurationProvider(configProvider)
+	err = client.setConfigurationProvider(configProvider)
 	return
 }
 
 // SetConfigurationProvider sets the configuration provider, returns an error if is not valid
-func (client *ComputeClient) SetConfigurationProvider(configProvider common.ConfigurationProvider) error {
+func (client *ComputeClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err
 	}
