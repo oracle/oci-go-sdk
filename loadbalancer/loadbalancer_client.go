@@ -18,6 +18,7 @@ import (
 //LoadBalancerClient a client for LoadBalancer
 type LoadBalancerClient struct {
 	common.BaseClient
+	config *common.ConfigurationProvider
 }
 
 // NewLoadBalancerClientWithConfigurationProvider Creates a new default LoadBalancer client with the given configuration provider.
@@ -29,14 +30,29 @@ func NewLoadBalancerClientWithConfigurationProvider(configProvider common.Config
 	}
 
 	client = LoadBalancerClient{BaseClient: baseClient}
-	region, err := configProvider.Region()
-	if err != nil {
-		return
+	client.BasePath = "20170115"
+	err = client.setConfigurationProvider(configProvider)
+	return
+}
+
+// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+func (client *LoadBalancerClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
+	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
+		return err
 	}
 
+	region, err := configProvider.Region()
+	if err != nil {
+		return err
+	}
+	client.config = &configProvider
 	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", string(region))
-	client.BasePath = "20170115"
-	return
+	return nil
+}
+
+// ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
+func (client *LoadBalancerClient) ConfigurationProvider() *common.ConfigurationProvider {
+	return client.config
 }
 
 // CreateBackend Adds a backend server to a backend set.

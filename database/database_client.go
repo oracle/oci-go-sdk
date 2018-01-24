@@ -18,6 +18,7 @@ import (
 //DatabaseClient a client for Database
 type DatabaseClient struct {
 	common.BaseClient
+	config *common.ConfigurationProvider
 }
 
 // NewDatabaseClientWithConfigurationProvider Creates a new default Database client with the given configuration provider.
@@ -29,14 +30,29 @@ func NewDatabaseClientWithConfigurationProvider(configProvider common.Configurat
 	}
 
 	client = DatabaseClient{BaseClient: baseClient}
-	region, err := configProvider.Region()
-	if err != nil {
-		return
+	client.BasePath = "20160918"
+	err = client.setConfigurationProvider(configProvider)
+	return
+}
+
+// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+func (client *DatabaseClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
+	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
+		return err
 	}
 
+	region, err := configProvider.Region()
+	if err != nil {
+		return err
+	}
+	client.config = &configProvider
 	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "database", string(region))
-	client.BasePath = "20160918"
-	return
+	return nil
+}
+
+// ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
+func (client *DatabaseClient) ConfigurationProvider() *common.ConfigurationProvider {
+	return client.config
 }
 
 // CreateBackup Creates a new backup in the specified database based on the request parameters you provide. If you previously used RMAN or dbcli to configure backups and then you switch to using the Console or the API for backups, a new backup configuration is created and associated with your database. This means that you can no longer rely on your previously configured unmanaged backups to work.
