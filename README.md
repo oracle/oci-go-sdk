@@ -1,17 +1,14 @@
 # Oracle Cloud Infrastructure Golang SDK ***Preview***
 [![wercker status](https://app.wercker.com/status/09bc4818e7b1d70b04285331a9bdbc41/s/master "wercker status")](https://app.wercker.com/project/byKey/09bc4818e7b1d70b04285331a9bdbc41)
 
-This is a ***preview*** of the official go sdk for Oracle Cloud Infrastructure
-> ***WARNING:***: To avoid breaking changes please consider using [go dep](https://github.com/golang/dep), or vendoring this sdk.
-Although we make a conscious effort to not push breaking changes, sometimes they are needed. This is particularly true at the current stage 
-of development.
+This is a ***preview*** of the official Go SDK for Oracle Cloud Infrastructure. During this stage of development, we need to push breaking changes <--- come back to this
+> ***WARNING:***: To avoid breaking changes please consider using the [Go depenendency management tool](https://github.com/golang/dep), or vendoring this SDK.
 
 ## Dependencies
 - Install [Golang](https://golang.org/dl/)
-- Install [make](https://www.gnu.org/software/make/), through your favorite package manager or binary 
-distribution of choice
+- Install [GNU Make](https://www.gnu.org/software/make/), using the package manager or binary distribution tool appropiate for your platform
 
-Additionally, if you are planning to  build or develop the sdk you need the following dependencies
+Additionally, if you are planning to  build or develop the SDK you need to install the following dependencies:
 - Install [github.com/stretchr/testify](https://github.com/stretchr/testify)
 ```sh
 go get github.com/stretchr/testify
@@ -26,19 +23,19 @@ go get -u github.com/golang/lint/golint
 
 
 ## Installing
-Simply clone this repo into your go sdk you can use the following command
+Use the following command to install this SDK.
 
 ```
 git clone git@github.com:oracle/oci-go-sdk.git  $GOPATH/src/github.com/oracle
 ```
 
-## Working with the SDK
-Generally speaking, you can start working with the sdk by importing the service package, creating a client, 
-and making calls with client.
+## Working with the Go SDK
+To start working with the Go SDK you import the service package, create a client, and then use that client to make calls
 
 ### Configuring 
-You can configure the sdk with your credentials by creating a settings file in:
- `$HOME/.oci/config` that looks like the following:
+To configure the Go SDK with your credentials, create the settings file: `$HOME/.oci/config`.
+Add the following to the settings file
+
  ```
  [DEFAULT]
  user=[user ocid]
@@ -47,9 +44,10 @@ You can configure the sdk with your credentials by creating a settings file in:
  tenancy=[tenancy ocid]
  region=[region for your tenancy]
  ```
- and calling the `common.DefaultConfigProvider()` function like so:
+Call the `common.DefaultConfigProvider()` function as follows:
+
  ```go
- // Do not forget to import the necessary packages
+ // Import necessary packages
  import (
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/identity" // Identity or any other service you wish to call
@@ -59,7 +57,8 @@ You can configure the sdk with your credentials by creating a settings file in:
  
 configProvider := common.DefaultConfigProvider()
 ```
- You can also configure the sdk programmatically by implementing the `ConfigurationProvider` interface
+
+ To configure the SDK programmatically, implement the `ConfigurationProvider` interface
  ```go
 // ConfigurationProvider wraps information about the account owner
 type ConfigurationProvider interface {
@@ -72,11 +71,13 @@ type ConfigurationProvider interface {
 ```
 
 ### Making a request
-Making request can be achieved by: creating a client for the service that you wish to work with, followed by calling
-the a function in the above client 
-- *Creating a client*: all packages provide a function to create clients. It is of the form `NewXXXClientWithConfigurationProvider`.
-You can create a new client by passing a struct that conforms to the `ConfigurationProvider` interface.
-Here is a quick example that shows how to create a client
+To make a request, create a client for the service and then call a function from that client.
+
+- *Creating a client*: All packages provide a function to create clients. It is of the form `New<ServiceName>ClientWithConfigurationProvider`,
+such as `NewVirtualNetworkClientWithConfigurationProvider` or `NewIdentityClientWithConfigurationProvider`. To create a new client, 
+pass a struct that conforms to the `ConfigurationProvider` interface, or use the `DefaultConfigProvider()` function in the common package.
+
+For example: 
 ```go
 config := common.DefaultConfigProvider()
 client, err := identity.NewIdentityClientWithConfigurationProvider(config)
@@ -85,9 +86,11 @@ if err != nil {
 }
 ```
 
-- *Making calls*: after successfully creating client, you can now make calls to the service. Generally all operations
-functions take in  a [`context.Context`](https://golang.org/pkg/context/) and a struct that wraps all input parameters. The return is usually a response struct
-containing the desired data,  and an error struct describing the error if there was one, eg:
+- *Making calls*: After successfully creating client, you can now make calls to the service. Generally all functions associated with an operation
+accept [`context.Context`](https://golang.org/pkg/context/) and a struct that wraps all input parameters. The functions then return a response struct
+that contains the desired data, and an error struct that describes the error if an error ocurrs.
+
+For example:
 ```go
 response, err := client.GetGroup(context.Background(), identity.GetGroupRequest{GroupId:id})
 if err != nil {
@@ -99,22 +102,22 @@ fmt.Println("Group's name is:", response.Name)
 ```
 
 ## Organization of the SDK
-The `oci-go-sdk` is broken down into:
-- **service packages**: all packages except `common` and any other package found inside `cmd`. They represent Oracle Cloud Infrastructure services supported by the go sdk. 
-Each package represents a service. These packages include methods to interact with the service, structs that model 
-input and output parameters and a client struct that acts as receiver for the above methods. All code in these packages
-is machine generated.
+The `oci-go-sdk` contains the following:
+- **Service packages**: All packages except `common` and any other package found inside `cmd`. These packages represent 
+the Oracle Cloud Infrastructure services supported by the Go SDK. Each package represents a service. 
+These packages include methods to interact with the service, structs that model 
+input and output parameters and a client struct that acts as receiver for the above methods. All code in these packages is machine generated.
 
-- **common package**: found in the `common` directory. The common package provides supporting functions and structs used by service packages, 
-including: http request/response (de)serialization, request signing, json parsing, pointer to reference and other helper functions. Thought
-there are some functions in this package that are meant for user consumption, most of them are meant to be used by the service packages.
+- **Common package**: Found in the `common` directory. The common package provides supporting functions and structs used by service packages, 
+including: HTTP request/response (de)serialization, request signing, json parsing, pointer to reference and other helper functions. Most of the functions
+in this package are meant are meant to be used by the service packages.
 
-- **cmd**: internal tools used by the `oci-go-sdk`
+- **cmd**: Internal tools used by the `oci-go-sdk`
 
 ## Examples
 
 ## Documentation
-You can find the documetation of this sdk in the [godocs site]()
+See [godocs site]() for the Go SDK documentation
 
 
 ## Building and testing
@@ -124,7 +127,7 @@ Building is provided by the make file at the root of the project. To build the p
 make build
 ```
 
-To execute the tests:
+To run the tests:
 ```
 make test
 ```
