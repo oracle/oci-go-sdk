@@ -26,8 +26,9 @@ go get -u github.com/golang/lint/golint
 Use the following command to install this SDK.
 
 ```
-git clone git@github.com:oracle/oci-go-sdk.git  $GOPATH/src/github.com/oracle
+go get -u github.com/oracle/oci-go-sdk
 ```
+Alternatively you can git clone this repo
 
 ## Working with the Go SDK
 To start working with the Go SDK you import the service package, create a client, and then use that client to make calls
