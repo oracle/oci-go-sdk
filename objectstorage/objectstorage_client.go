@@ -56,7 +56,7 @@ func (client *ObjectStorageClient) SetConfigurationProvider(configProvider commo
 		return err
 	}
 	client.config = &configProvider
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", string(region))
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "objectstorage", string(region))
 	return nil
 }
 

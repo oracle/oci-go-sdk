@@ -46,7 +46,7 @@ func (client *AuditClient) SetConfigurationProvider(configProvider common.Config
 		return err
 	}
 	client.config = &configProvider
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", string(region))
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "audit", string(region))
 	return nil
 }
 

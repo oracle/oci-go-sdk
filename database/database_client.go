@@ -46,7 +46,7 @@ func (client *DatabaseClient) SetConfigurationProvider(configProvider common.Con
 		return err
 	}
 	client.config = &configProvider
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", string(region))
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "database", string(region))
 	return nil
 }
 

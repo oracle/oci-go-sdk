@@ -46,7 +46,7 @@ func (client *ComputeClient) SetConfigurationProvider(configProvider common.Conf
 		return err
 	}
 	client.config = &configProvider
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", string(region))
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", string(region))
 	return nil
 }
 
