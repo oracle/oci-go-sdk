@@ -1,7 +1,7 @@
 # Oracle Cloud Infrastructure Golang SDK ***Preview***
 [![wercker status](https://app.wercker.com/status/09bc4818e7b1d70b04285331a9bdbc41/s/master "wercker status")](https://app.wercker.com/project/byKey/09bc4818e7b1d70b04285331a9bdbc41)
 
-This is a ***preview*** of the official Go SDK for Oracle Cloud Infrastructure. During this stage of development, we need to push breaking changes <--- come back to this
+This is a ***preview*** of the official Go SDK for Oracle Cloud Infrastructure. During this stage of development, we might need to push breaking changes
 > ***WARNING:***: To avoid breaking changes please consider using the [Go depenendency management tool](https://github.com/golang/dep), or vendoring this SDK.
 
 ## Dependencies
