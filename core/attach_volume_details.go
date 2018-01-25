@@ -30,7 +30,7 @@ type attachvolumedetails struct {
 	JsonData    []byte
 	InstanceId  *string `mandatory:"true" json:"instanceId"`
 	VolumeId    *string `mandatory:"true" json:"volumeId"`
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 	Type        string  `json:"type"`
 }
 

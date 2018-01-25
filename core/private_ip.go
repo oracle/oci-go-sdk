@@ -39,14 +39,14 @@ type PrivateIp struct {
 
 	// The private IP's Availability Domain.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"false" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"false" json:"availabilityDomain"`
 
 	// The OCID of the compartment containing the private IP.
-	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid
 	// entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The hostname for the private IP. Used for DNS. The value is the hostname
 	// portion of the private IP's fully qualified domain name (FQDN)
@@ -57,31 +57,31 @@ type PrivateIp struct {
 	// For more information, see
 	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// Example: `bminstance-1`
-	HostnameLabel *string `mandatory:"false" json:"hostnameLabel,omitempty"`
+	HostnameLabel *string `mandatory:"false" json:"hostnameLabel"`
 
 	// The private IP's Oracle ID (OCID).
-	Id *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id"`
 
 	// The private IP address of the `privateIp` object. The address is within the CIDR
 	// of the VNIC's subnet.
 	// Example: `10.0.3.3`
-	IpAddress *string `mandatory:"false" json:"ipAddress,omitempty"`
+	IpAddress *string `mandatory:"false" json:"ipAddress"`
 
 	// Whether this private IP is the primary one on the VNIC. Primary private IPs
 	// are unassigned and deleted automatically when the VNIC is terminated.
 	// Example: `true`
-	IsPrimary *bool `mandatory:"false" json:"isPrimary,omitempty"`
+	IsPrimary *bool `mandatory:"false" json:"isPrimary"`
 
 	// The OCID of the subnet the VNIC is in.
-	SubnetId *string `mandatory:"false" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"false" json:"subnetId"`
 
 	// The date and time the private IP was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// The OCID of the VNIC the private IP is assigned to. The VNIC and private IP
 	// must be in the same subnet.
-	VnicId *string `mandatory:"false" json:"vnicId,omitempty"`
+	VnicId *string `mandatory:"false" json:"vnicId"`
 }
 
 func (m PrivateIp) String() string {

@@ -14,7 +14,7 @@ import (
 
 // UpdateDbHomeDetails Describes the modification parameters for the DB Home.
 type UpdateDbHomeDetails struct {
-	DbVersion *PatchDetails `mandatory:"false" json:"dbVersion,omitempty"`
+	DbVersion *PatchDetails `mandatory:"false" json:"dbVersion"`
 }
 
 func (m UpdateDbHomeDetails) String() string {

@@ -29,7 +29,7 @@ type SessionPersistenceConfigurationDetails struct {
 	// Whether the load balancer is prevented from directing traffic from a persistent session client to
 	// a different backend server if the original server is unavailable. Defaults to false.
 	// Example: `true`
-	DisableFallback *bool `mandatory:"false" json:"disableFallback,omitempty"`
+	DisableFallback *bool `mandatory:"false" json:"disableFallback"`
 }
 
 func (m SessionPersistenceConfigurationDetails) String() string {

@@ -18,14 +18,14 @@ type UpdateSaml2IdentityProviderDetails struct {
 
 	// The description you assign to the `IdentityProvider`. Does not have to
 	// be unique, and it's changeable.
-	Description *string `mandatory:"false" json:"description,omitempty"`
+	Description *string `mandatory:"false" json:"description"`
 
 	// The URL for retrieving the identity provider's metadata,
 	// which contains information required for federating.
-	MetadataUrl *string `mandatory:"false" json:"metadataUrl,omitempty"`
+	MetadataUrl *string `mandatory:"false" json:"metadataUrl"`
 
 	// The XML that contains the information required for federating.
-	Metadata *string `mandatory:"false" json:"metadata,omitempty"`
+	Metadata *string `mandatory:"false" json:"metadata"`
 }
 
 //GetDescription returns Description

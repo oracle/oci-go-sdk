@@ -32,11 +32,11 @@ type CreateCertificateDetails struct {
 	//     aXR5MRQwEgYDVQQDEwtCZXN0IENBIEx0ZDAeFw0wMD..TUwMTZaFw0wMTAy
 	//     ...
 	//     -----END CERTIFICATE-----
-	CaCertificate *string `mandatory:"false" json:"caCertificate,omitempty"`
+	CaCertificate *string `mandatory:"false" json:"caCertificate"`
 
 	// A passphrase for encrypted private keys. This is needed only if you created your certificate with a passphrase.
 	// Example: `Mysecretunlockingcode42!1!`
-	Passphrase *string `mandatory:"false" json:"passphrase,omitempty"`
+	Passphrase *string `mandatory:"false" json:"passphrase"`
 
 	// The SSL private key for your certificate, in PEM format.
 	// Example:
@@ -47,7 +47,7 @@ type CreateCertificateDetails struct {
 	//     /Umr7wJzVrMqK5sDiSu4WuaaBdqMGfL5hLsTjcBFD..Da2iyQmSKuVD4lIZ
 	//     ...
 	//     -----END RSA PRIVATE KEY-----
-	PrivateKey *string `mandatory:"false" json:"privateKey,omitempty"`
+	PrivateKey *string `mandatory:"false" json:"privateKey"`
 
 	// The public certificate, in PEM format, that you received from your SSL certificate provider.
 	// Example:
@@ -58,7 +58,7 @@ type CreateCertificateDetails struct {
 	//     YiBDQTEjMCEGCSqGSIb3DQEJARYUc3VwcG9ydEBmcmFuazRkZC5jb20wHhcNMTIw
 	//     ...
 	//     -----END CERTIFICATE-----
-	PublicCertificate *string `mandatory:"false" json:"publicCertificate,omitempty"`
+	PublicCertificate *string `mandatory:"false" json:"publicCertificate"`
 }
 
 func (m CreateCertificateDetails) String() string {

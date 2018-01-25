@@ -51,7 +51,7 @@ type Compartment struct {
 	LifecycleState CompartmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
 }
 
 func (m Compartment) String() string {

@@ -19,7 +19,7 @@ type CaptureConsoleHistoryDetails struct {
 	InstanceId *string `mandatory:"true" json:"instanceId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m CaptureConsoleHistoryDetails) String() string {

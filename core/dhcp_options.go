@@ -47,7 +47,7 @@ type DhcpOptions struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m DhcpOptions) String() string {
@@ -57,13 +57,13 @@ func (m DhcpOptions) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *DhcpOptions) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		DisplayName    *string                       `json:"displayName,omitempty"`
-		CompartmentId  *string                       `json:"compartmentId,omitempty"`
-		Id             *string                       `json:"id,omitempty"`
-		LifecycleState DhcpOptionsLifecycleStateEnum `json:"lifecycleState,omitempty"`
-		Options        []dhcpoption                  `json:"options,omitempty"`
-		TimeCreated    *common.SDKTime               `json:"timeCreated,omitempty"`
-		VcnId          *string                       `json:"vcnId,omitempty"`
+		DisplayName    *string                       `json:"displayName"`
+		CompartmentId  *string                       `json:"compartmentId"`
+		Id             *string                       `json:"id"`
+		LifecycleState DhcpOptionsLifecycleStateEnum `json:"lifecycleState"`
+		Options        []dhcpoption                  `json:"options"`
+		TimeCreated    *common.SDKTime               `json:"timeCreated"`
+		VcnId          *string                       `json:"vcnId"`
 	}{}
 
 	e = json.Unmarshal(data, &model)

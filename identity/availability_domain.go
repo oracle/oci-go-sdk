@@ -18,10 +18,10 @@ import (
 type AvailabilityDomain struct {
 
 	// The name of the Availability Domain.
-	Name *string `mandatory:"false" json:"name,omitempty"`
+	Name *string `mandatory:"false" json:"name"`
 
 	// The OCID of the tenancy.
-	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 }
 
 func (m AvailabilityDomain) String() string {

@@ -54,7 +54,7 @@ type Vnic struct {
 
 	// A user-friendly name. Does not have to be unique.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname
 	// portion of the primary private IP's fully qualified domain name (FQDN)
@@ -65,25 +65,25 @@ type Vnic struct {
 	// For more information, see
 	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// Example: `bminstance-1`
-	HostnameLabel *string `mandatory:"false" json:"hostnameLabel,omitempty"`
+	HostnameLabel *string `mandatory:"false" json:"hostnameLabel"`
 
 	// Whether the VNIC is the primary VNIC (the VNIC that is automatically created
 	// and attached during instance launch).
-	IsPrimary *bool `mandatory:"false" json:"isPrimary,omitempty"`
+	IsPrimary *bool `mandatory:"false" json:"isPrimary"`
 
 	// The MAC address of the VNIC.
 	// Example: `00:00:17:B6:4D:DD`
-	MacAddress *string `mandatory:"false" json:"macAddress,omitempty"`
+	MacAddress *string `mandatory:"false" json:"macAddress"`
 
 	// The public IP address of the VNIC, if one is assigned.
-	PublicIp *string `mandatory:"false" json:"publicIp,omitempty"`
+	PublicIp *string `mandatory:"false" json:"publicIp"`
 
 	// Whether the source/destination check is disabled on the VNIC.
 	// Defaults to `false`, which means the check is performed. For information
 	// about why you would skip the source/destination check, see
 	// [Using a Private IP as a Route Target]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingroutetables.htm#privateip).
 	// Example: `true`
-	SkipSourceDestCheck *bool `mandatory:"false" json:"skipSourceDestCheck,omitempty"`
+	SkipSourceDestCheck *bool `mandatory:"false" json:"skipSourceDestCheck"`
 }
 
 func (m Vnic) String() string {

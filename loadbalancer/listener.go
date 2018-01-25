@@ -34,7 +34,7 @@ type Listener struct {
 	// Example: `HTTP`
 	Protocol *string `mandatory:"true" json:"protocol"`
 
-	SslConfiguration *SslConfiguration `mandatory:"false" json:"sslConfiguration,omitempty"`
+	SslConfiguration *SslConfiguration `mandatory:"false" json:"sslConfiguration"`
 }
 
 func (m Listener) String() string {

@@ -17,29 +17,29 @@ import (
 type CustomerSecretKeySummary struct {
 
 	// The OCID of the secret key.
-	Id *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id"`
 
 	// The OCID of the user the password belongs to.
-	UserId *string `mandatory:"false" json:"userId,omitempty"`
+	UserId *string `mandatory:"false" json:"userId"`
 
 	// The displayName you assign to the secret key. Does not have to be unique, and it's changeable.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// Date and time the `CustomerSecretKey` object was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// Date and time when this password will expire, in the format defined by RFC3339.
 	// Null if it never expires.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeExpires *common.SDKTime `mandatory:"false" json:"timeExpires,omitempty"`
+	TimeExpires *common.SDKTime `mandatory:"false" json:"timeExpires"`
 
 	// The secret key's current state. After creating a secret key, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState CustomerSecretKeySummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState CustomerSecretKeySummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
 }
 
 func (m CustomerSecretKeySummary) String() string {

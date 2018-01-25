@@ -45,12 +45,12 @@ type LoadBalancer struct {
 	// Example: `2016-08-25T21:10:29.600Z`
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	BackendSets map[string]BackendSet `mandatory:"false" json:"backendSets,omitempty"`
+	BackendSets map[string]BackendSet `mandatory:"false" json:"backendSets"`
 
-	Certificates map[string]Certificate `mandatory:"false" json:"certificates,omitempty"`
+	Certificates map[string]Certificate `mandatory:"false" json:"certificates"`
 
 	// An array of IP addresses.
-	IpAddresses []IpAddress `mandatory:"false" json:"ipAddresses,omitempty"`
+	IpAddresses []IpAddress `mandatory:"false" json:"ipAddresses"`
 
 	// Whether the load balancer has a VCN-local (private) IP address.
 	// If "true", the service assigns a private IP address to the load balancer. The load balancer requires only one subnet
@@ -62,12 +62,12 @@ type LoadBalancer struct {
 	// requires two subnets, each in a different Availability Domain. One subnet hosts the primary load balancer and the other
 	// hosts the secondary (standby) load balancer. A public load balancer is accessible from the internet, depending on your
 	// VCN's [security list rules]({{DOC_SERVER_URL}}/Content/Network/Concepts/securitylists.htm).
-	IsPrivate *bool `mandatory:"false" json:"isPrivate,omitempty"`
+	IsPrivate *bool `mandatory:"false" json:"isPrivate"`
 
-	Listeners map[string]Listener `mandatory:"false" json:"listeners,omitempty"`
+	Listeners map[string]Listener `mandatory:"false" json:"listeners"`
 
 	// An array of subnet [OCIDs]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
-	SubnetIds []string `mandatory:"false" json:"subnetIds,omitempty"`
+	SubnetIds []string `mandatory:"false" json:"subnetIds"`
 }
 
 func (m LoadBalancer) String() string {

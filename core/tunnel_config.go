@@ -25,7 +25,7 @@ type TunnelConfig struct {
 
 	// The date and time the IPSec connection was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m TunnelConfig) String() string {

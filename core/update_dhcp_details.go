@@ -18,9 +18,9 @@ type UpdateDhcpDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	Options []DhcpOption `mandatory:"false" json:"options,omitempty"`
+	Options []DhcpOption `mandatory:"false" json:"options"`
 }
 
 func (m UpdateDhcpDetails) String() string {
@@ -30,8 +30,8 @@ func (m UpdateDhcpDetails) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *UpdateDhcpDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		DisplayName *string      `json:"displayName,omitempty"`
-		Options     []dhcpoption `json:"options,omitempty"`
+		DisplayName *string      `json:"displayName"`
+		Options     []dhcpoption `json:"options"`
 	}{}
 
 	e = json.Unmarshal(data, &model)

@@ -47,7 +47,7 @@ type IdpGroupMapping struct {
 	LifecycleState IdpGroupMappingLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
 }
 
 func (m IdpGroupMapping) String() string {

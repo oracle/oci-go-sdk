@@ -20,7 +20,7 @@ type CreateVolumeBackupDetails struct {
 
 	// A user-friendly name for the volume backup. Does not have to be unique and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m CreateVolumeBackupDetails) String() string {

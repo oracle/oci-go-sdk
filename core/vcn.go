@@ -33,17 +33,17 @@ type Vcn struct {
 	LifecycleState VcnLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The OCID for the VCN's default set of DHCP options.
-	DefaultDhcpOptionsId *string `mandatory:"false" json:"defaultDhcpOptionsId,omitempty"`
+	DefaultDhcpOptionsId *string `mandatory:"false" json:"defaultDhcpOptionsId"`
 
 	// The OCID for the VCN's default route table.
-	DefaultRouteTableId *string `mandatory:"false" json:"defaultRouteTableId,omitempty"`
+	DefaultRouteTableId *string `mandatory:"false" json:"defaultRouteTableId"`
 
 	// The OCID for the VCN's default security list.
-	DefaultSecurityListId *string `mandatory:"false" json:"defaultSecurityListId,omitempty"`
+	DefaultSecurityListId *string `mandatory:"false" json:"defaultSecurityListId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// A DNS label for the VCN, used in conjunction with the VNIC's hostname and
 	// subnet's DNS label to form a fully qualified domain name (FQDN) for each VNIC
@@ -55,18 +55,18 @@ type Vcn struct {
 	// For more information, see
 	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// Example: `vcn1`
-	DnsLabel *string `mandatory:"false" json:"dnsLabel,omitempty"`
+	DnsLabel *string `mandatory:"false" json:"dnsLabel"`
 
 	// The date and time the VCN was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// The VCN's domain name, which consists of the VCN's DNS label, and the
 	// `oraclevcn.com` domain.
 	// For more information, see
 	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// Example: `vcn1.oraclevcn.com`
-	VcnDomainName *string `mandatory:"false" json:"vcnDomainName,omitempty"`
+	VcnDomainName *string `mandatory:"false" json:"vcnDomainName"`
 }
 
 func (m Vcn) String() string {

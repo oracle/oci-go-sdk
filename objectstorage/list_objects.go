@@ -21,11 +21,11 @@ type ListObjects struct {
 	Objects []ObjectSummary `mandatory:"true" json:"objects"`
 
 	// Prefixes that are common to the results returned by the request if the request specified a delimiter.
-	Prefixes []string `mandatory:"false" json:"prefixes,omitempty"`
+	Prefixes []string `mandatory:"false" json:"prefixes"`
 
 	// The name of the object to use in the 'startWith' parameter to obtain the next page of
 	// a truncated ListObjects response.
-	NextStartWith *string `mandatory:"false" json:"nextStartWith,omitempty"`
+	NextStartWith *string `mandatory:"false" json:"nextStartWith"`
 }
 
 func (m ListObjects) String() string {

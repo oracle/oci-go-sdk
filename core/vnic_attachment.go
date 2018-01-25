@@ -42,22 +42,22 @@ type VnicAttachment struct {
 
 	// A user-friendly name. Does not have to be unique.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// Which physical network interface card (NIC) the VNIC uses.
 	// Certain bare metal instance shapes have two active physical NICs (0 and 1). If
 	// you add a secondary VNIC to one of these instances, you can specify which NIC
 	// the VNIC will use. For more information, see
 	// [Virtual Network Interface Cards (VNICs)]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingVNICs.htm).
-	NicIndex *int `mandatory:"false" json:"nicIndex,omitempty"`
+	NicIndex *int `mandatory:"false" json:"nicIndex"`
 
 	// The Oracle-assigned VLAN tag of the attached VNIC. Available after the
 	// attachment process is complete.
 	// Example: `0`
-	VlanTag *int `mandatory:"false" json:"vlanTag,omitempty"`
+	VlanTag *int `mandatory:"false" json:"vlanTag"`
 
 	// The OCID of the VNIC. Available after the attachment process is complete.
-	VnicId *string `mandatory:"false" json:"vnicId,omitempty"`
+	VnicId *string `mandatory:"false" json:"vnicId"`
 }
 
 func (m VnicAttachment) String() string {

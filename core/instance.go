@@ -51,15 +51,15 @@ type Instance struct {
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
 	// Example: `My bare metal instance`
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// Additional metadata key/value pairs that you provide.  They serve a similar purpose and functionality from fields in the 'metadata' object.
 	// They are distinguished from 'metadata' fields in that these can be nested JSON objects (whereas 'metadata' fields are string/string maps only).
 	// If you don't need nested metadata values, it is strongly advised to avoid using this object and use the Metadata object instead.
-	ExtendedMetadata map[string]interface{} `mandatory:"false" json:"extendedMetadata,omitempty"`
+	ExtendedMetadata map[string]interface{} `mandatory:"false" json:"extendedMetadata"`
 
 	// Deprecated. Use `sourceDetails` instead.
-	ImageId *string `mandatory:"false" json:"imageId,omitempty"`
+	ImageId *string `mandatory:"false" json:"imageId"`
 
 	// When a bare metal or virtual machine
 	// instance boots, the iPXE firmware that runs on the instance is
@@ -79,13 +79,13 @@ type Instance struct {
 	// Oracle Cloud Infrastructure, see
 	// [Bring Your Own Image]({{DOC_SERVER_URL}}/Content/Compute/References/bringyourownimage.htm).
 	// For more information about iPXE, see http://ipxe.org.
-	IpxeScript *string `mandatory:"false" json:"ipxeScript,omitempty"`
+	IpxeScript *string `mandatory:"false" json:"ipxeScript"`
 
 	// Custom metadata that you provide.
-	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
+	Metadata map[string]string `mandatory:"false" json:"metadata"`
 
 	// Details for creating an instance
-	SourceDetails InstanceSourceDetails `mandatory:"false" json:"sourceDetails,omitempty"`
+	SourceDetails InstanceSourceDetails `mandatory:"false" json:"sourceDetails"`
 }
 
 func (m Instance) String() string {
@@ -95,19 +95,19 @@ func (m Instance) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *Instance) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		DisplayName        *string                    `json:"displayName,omitempty"`
-		ExtendedMetadata   map[string]interface{}     `json:"extendedMetadata,omitempty"`
-		ImageId            *string                    `json:"imageId,omitempty"`
-		IpxeScript         *string                    `json:"ipxeScript,omitempty"`
-		Metadata           map[string]string          `json:"metadata,omitempty"`
-		SourceDetails      instancesourcedetails      `json:"sourceDetails,omitempty"`
-		AvailabilityDomain *string                    `json:"availabilityDomain,omitempty"`
-		CompartmentId      *string                    `json:"compartmentId,omitempty"`
-		Id                 *string                    `json:"id,omitempty"`
-		LifecycleState     InstanceLifecycleStateEnum `json:"lifecycleState,omitempty"`
-		Region             *string                    `json:"region,omitempty"`
-		Shape              *string                    `json:"shape,omitempty"`
-		TimeCreated        *common.SDKTime            `json:"timeCreated,omitempty"`
+		DisplayName        *string                    `json:"displayName"`
+		ExtendedMetadata   map[string]interface{}     `json:"extendedMetadata"`
+		ImageId            *string                    `json:"imageId"`
+		IpxeScript         *string                    `json:"ipxeScript"`
+		Metadata           map[string]string          `json:"metadata"`
+		SourceDetails      instancesourcedetails      `json:"sourceDetails"`
+		AvailabilityDomain *string                    `json:"availabilityDomain"`
+		CompartmentId      *string                    `json:"compartmentId"`
+		Id                 *string                    `json:"id"`
+		LifecycleState     InstanceLifecycleStateEnum `json:"lifecycleState"`
+		Region             *string                    `json:"region"`
+		Shape              *string                    `json:"shape"`
+		TimeCreated        *common.SDKTime            `json:"timeCreated"`
 	}{}
 
 	e = json.Unmarshal(data, &model)

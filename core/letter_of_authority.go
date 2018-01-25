@@ -17,26 +17,26 @@ import (
 type LetterOfAuthority struct {
 
 	// The name of the entity authorized by this Letter of Authority.
-	AuthorizedEntityName *string `mandatory:"false" json:"authorizedEntityName,omitempty"`
+	AuthorizedEntityName *string `mandatory:"false" json:"authorizedEntityName"`
 
 	// The type of cross-connect fiber, termination, and optical specification.
-	CircuitType LetterOfAuthorityCircuitTypeEnum `mandatory:"false" json:"circuitType,omitempty"`
+	CircuitType LetterOfAuthorityCircuitTypeEnum `mandatory:"false" json:"circuitType"`
 
 	// The OCID of the cross-connect.
-	CrossConnectId *string `mandatory:"false" json:"crossConnectId,omitempty"`
+	CrossConnectId *string `mandatory:"false" json:"crossConnectId"`
 
 	// The address of the FastConnect location.
-	FacilityLocation *string `mandatory:"false" json:"facilityLocation,omitempty"`
+	FacilityLocation *string `mandatory:"false" json:"facilityLocation"`
 
 	// The meet-me room port for this cross-connect.
-	PortName *string `mandatory:"false" json:"portName,omitempty"`
+	PortName *string `mandatory:"false" json:"portName"`
 
 	// The date and time when the Letter of Authority expires, in the format defined by RFC3339.
-	TimeExpires *common.SDKTime `mandatory:"false" json:"timeExpires,omitempty"`
+	TimeExpires *common.SDKTime `mandatory:"false" json:"timeExpires"`
 
 	// The date and time the Letter of Authority was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeIssued *common.SDKTime `mandatory:"false" json:"timeIssued,omitempty"`
+	TimeIssued *common.SDKTime `mandatory:"false" json:"timeIssued"`
 }
 
 func (m LetterOfAuthority) String() string {

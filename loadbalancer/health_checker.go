@@ -36,20 +36,20 @@ type HealthChecker struct {
 
 	// The interval between health checks, in milliseconds. The default is 10000 (10 seconds).
 	// Example: `30000`
-	IntervalInMillis *int `mandatory:"false" json:"intervalInMillis,omitempty"`
+	IntervalInMillis *int `mandatory:"false" json:"intervalInMillis"`
 
 	// The number of retries to attempt before a backend server is considered "unhealthy". Defaults to 3.
 	// Example: `3`
-	Retries *int `mandatory:"false" json:"retries,omitempty"`
+	Retries *int `mandatory:"false" json:"retries"`
 
 	// The maximum time, in milliseconds, to wait for a reply to a health check. A health check is successful only if a reply
 	// returns within this timeout period. Defaults to 3000 (3 seconds).
 	// Example: `6000`
-	TimeoutInMillis *int `mandatory:"false" json:"timeoutInMillis,omitempty"`
+	TimeoutInMillis *int `mandatory:"false" json:"timeoutInMillis"`
 
 	// The path against which to run the health check.
 	// Example: `/healthcheck`
-	UrlPath *string `mandatory:"false" json:"urlPath,omitempty"`
+	UrlPath *string `mandatory:"false" json:"urlPath"`
 }
 
 func (m HealthChecker) String() string {

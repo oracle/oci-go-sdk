@@ -16,7 +16,7 @@ import (
 type UpdateCustomerSecretKeyDetails struct {
 
 	// The description you assign to the secret key. Does not have to be unique, and it's changeable.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m UpdateCustomerSecretKeyDetails) String() string {

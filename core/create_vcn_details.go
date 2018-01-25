@@ -23,7 +23,7 @@ type CreateVcnDetails struct {
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// A DNS label for the VCN, used in conjunction with the VNIC's hostname and
 	// subnet's DNS label to form a fully qualified domain name (FQDN) for each VNIC
@@ -37,7 +37,7 @@ type CreateVcnDetails struct {
 	// For more information, see
 	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// Example: `vcn1`
-	DnsLabel *string `mandatory:"false" json:"dnsLabel,omitempty"`
+	DnsLabel *string `mandatory:"false" json:"dnsLabel"`
 }
 
 func (m CreateVcnDetails) String() string {

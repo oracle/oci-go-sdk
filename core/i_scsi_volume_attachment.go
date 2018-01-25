@@ -51,16 +51,16 @@ type IScsiVolumeAttachment struct {
 	// A user-friendly name. Does not have to be unique, and it cannot be changed.
 	// Avoid entering confidential information.
 	// Example: `My volume attachment`
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The Challenge-Handshake-Authentication-Protocol (CHAP) secret valid for the associated CHAP user name.
 	// (Also called the "CHAP password".)
 	// Example: `d6866c0d-298b-48ba-95af-309b4faux45e`
-	ChapSecret *string `mandatory:"false" json:"chapSecret,omitempty"`
+	ChapSecret *string `mandatory:"false" json:"chapSecret"`
 
 	// The volume's system-generated Challenge-Handshake-Authentication-Protocol (CHAP) user name.
 	// Example: `ocid1.volume.oc1.phx.abyhqljrgvttnlx73nmrwfaux7kcvzfs3s66izvxf2h4lgvyndsdsnoiwr5q`
-	ChapUsername *string `mandatory:"false" json:"chapUsername,omitempty"`
+	ChapUsername *string `mandatory:"false" json:"chapUsername"`
 
 	// The current state of the volume attachment.
 	LifecycleState VolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`

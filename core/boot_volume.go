@@ -41,13 +41,13 @@ type BootVolume struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The image OCID used to create the boot volume.
-	ImageId *string `mandatory:"false" json:"imageId,omitempty"`
+	ImageId *string `mandatory:"false" json:"imageId"`
 
 	// The size of the boot volume in GBs.
-	SizeInGBs *int `mandatory:"false" json:"sizeInGBs,omitempty"`
+	SizeInGBs *int `mandatory:"false" json:"sizeInGBs"`
 }
 
 func (m BootVolume) String() string {

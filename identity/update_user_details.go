@@ -16,7 +16,7 @@ import (
 type UpdateUserDetails struct {
 
 	// The description you assign to the user. Does not have to be unique, and it's changeable.
-	Description *string `mandatory:"false" json:"description,omitempty"`
+	Description *string `mandatory:"false" json:"description"`
 }
 
 func (m UpdateUserDetails) String() string {

@@ -17,10 +17,10 @@ type UpdateRouteTableDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The collection of rules used for routing destination IPs to network devices.
-	RouteRules []RouteRule `mandatory:"false" json:"routeRules,omitempty"`
+	RouteRules []RouteRule `mandatory:"false" json:"routeRules"`
 }
 
 func (m UpdateRouteTableDetails) String() string {

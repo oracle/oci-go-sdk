@@ -17,13 +17,13 @@ type UpdateSecurityListDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// Rules for allowing egress IP packets.
-	EgressSecurityRules []EgressSecurityRule `mandatory:"false" json:"egressSecurityRules,omitempty"`
+	EgressSecurityRules []EgressSecurityRule `mandatory:"false" json:"egressSecurityRules"`
 
 	// Rules for allowing ingress IP packets.
-	IngressSecurityRules []IngressSecurityRule `mandatory:"false" json:"ingressSecurityRules,omitempty"`
+	IngressSecurityRules []IngressSecurityRule `mandatory:"false" json:"ingressSecurityRules"`
 }
 
 func (m UpdateSecurityListDetails) String() string {

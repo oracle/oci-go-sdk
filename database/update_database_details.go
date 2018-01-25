@@ -14,7 +14,7 @@ import (
 
 // UpdateDatabaseDetails The representation of UpdateDatabaseDetails
 type UpdateDatabaseDetails struct {
-	DbBackupConfig *DbBackupConfig `mandatory:"false" json:"dbBackupConfig,omitempty"`
+	DbBackupConfig *DbBackupConfig `mandatory:"false" json:"dbBackupConfig"`
 }
 
 func (m UpdateDatabaseDetails) String() string {

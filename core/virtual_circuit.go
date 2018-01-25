@@ -31,87 +31,87 @@ import (
 type VirtualCircuit struct {
 
 	// The provisioned data rate of the connection.
-	BandwidthShapeName *string `mandatory:"false" json:"bandwidthShapeName,omitempty"`
+	BandwidthShapeName *string `mandatory:"false" json:"bandwidthShapeName"`
 
 	// BGP management option.
-	BgpManagement VirtualCircuitBgpManagementEnum `mandatory:"false" json:"bgpManagement,omitempty"`
+	BgpManagement VirtualCircuitBgpManagementEnum `mandatory:"false" json:"bgpManagement"`
 
 	// The state of the BGP session associated with the virtual circuit.
-	BgpSessionState VirtualCircuitBgpSessionStateEnum `mandatory:"false" json:"bgpSessionState,omitempty"`
+	BgpSessionState VirtualCircuitBgpSessionStateEnum `mandatory:"false" json:"bgpSessionState"`
 
 	// The OCID of the compartment containing the virtual circuit.
-	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// An array of mappings, each containing properties for a
 	// cross-connect or cross-connect group that is associated with this
 	// virtual circuit.
-	CrossConnectMappings []CrossConnectMapping `mandatory:"false" json:"crossConnectMappings,omitempty"`
+	CrossConnectMappings []CrossConnectMapping `mandatory:"false" json:"crossConnectMappings"`
 
 	// The BGP ASN of the network at the other end of the BGP
 	// session from Oracle. If the session is between the customer's
 	// edge router and Oracle, the value is the customer's ASN. If the BGP
 	// session is between the provider's edge router and Oracle, the value
 	// is the provider's ASN.
-	CustomerBgpAsn *int `mandatory:"false" json:"customerBgpAsn,omitempty"`
+	CustomerBgpAsn *int `mandatory:"false" json:"customerBgpAsn"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The OCID of the customer's Drg
 	// that this virtual circuit uses. Applicable only to private virtual circuits.
-	GatewayId *string `mandatory:"false" json:"gatewayId,omitempty"`
+	GatewayId *string `mandatory:"false" json:"gatewayId"`
 
 	// The virtual circuit's Oracle ID (OCID).
-	Id *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id"`
 
 	// The virtual circuit's current state. For information about
 	// the different states, see
 	// [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
-	LifecycleState VirtualCircuitLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState VirtualCircuitLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
 
 	// The Oracle BGP ASN.
-	OracleBgpAsn *int `mandatory:"false" json:"oracleBgpAsn,omitempty"`
+	OracleBgpAsn *int `mandatory:"false" json:"oracleBgpAsn"`
 
 	// Deprecated. Instead use `providerServiceId`.
-	ProviderName *string `mandatory:"false" json:"providerName,omitempty"`
+	ProviderName *string `mandatory:"false" json:"providerName"`
 
 	// The OCID of the service offered by the provider (if the customer is connecting via a provider).
-	ProviderServiceId *string `mandatory:"false" json:"providerServiceId,omitempty"`
+	ProviderServiceId *string `mandatory:"false" json:"providerServiceId"`
 
 	// Deprecated. Instead use `providerServiceId`.
-	ProviderServiceName *string `mandatory:"false" json:"providerServiceName,omitempty"`
+	ProviderServiceName *string `mandatory:"false" json:"providerServiceName"`
 
 	// The provider's state in relation to this virtual circuit (if the
 	// customer is connecting via a provider). ACTIVE means
 	// the provider has provisioned the virtual circuit from their end.
 	// INACTIVE means the provider has not yet provisioned the virtual
 	// circuit, or has de-provisioned it.
-	ProviderState VirtualCircuitProviderStateEnum `mandatory:"false" json:"providerState,omitempty"`
+	ProviderState VirtualCircuitProviderStateEnum `mandatory:"false" json:"providerState"`
 
 	// For a public virtual circuit. The public IP prefixes (CIDRs) the customer wants to
 	// advertise across the connection. Each prefix must be /24 or less specific.
-	PublicPrefixes []string `mandatory:"false" json:"publicPrefixes,omitempty"`
+	PublicPrefixes []string `mandatory:"false" json:"publicPrefixes"`
 
 	// Provider-supplied reference information about this virtual circuit
 	// (if the customer is connecting via a provider).
-	ReferenceComment *string `mandatory:"false" json:"referenceComment,omitempty"`
+	ReferenceComment *string `mandatory:"false" json:"referenceComment"`
 
 	// The Oracle Cloud Infrastructure region where this virtual
 	// circuit is located.
-	Region *string `mandatory:"false" json:"region,omitempty"`
+	Region *string `mandatory:"false" json:"region"`
 
 	// Provider service type.
-	ServiceType VirtualCircuitServiceTypeEnum `mandatory:"false" json:"serviceType,omitempty"`
+	ServiceType VirtualCircuitServiceTypeEnum `mandatory:"false" json:"serviceType"`
 
 	// The date and time the virtual circuit was created,
 	// in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// Whether the virtual circuit supports private or public peering. For more information,
 	// see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
-	Type VirtualCircuitTypeEnum `mandatory:"false" json:"type,omitempty"`
+	Type VirtualCircuitTypeEnum `mandatory:"false" json:"type"`
 }
 
 func (m VirtualCircuit) String() string {

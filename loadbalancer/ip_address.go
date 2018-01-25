@@ -22,7 +22,7 @@ type IpAddress struct {
 	// Whether the IP address is public or private.
 	// If "true", the IP address is public and accessible from the internet.
 	// If "false", the IP address is private and accessible only from within the associated VCN.
-	IsPublic *bool `mandatory:"false" json:"isPublic,omitempty"`
+	IsPublic *bool `mandatory:"false" json:"isPublic"`
 }
 
 func (m IpAddress) String() string {

@@ -28,14 +28,14 @@ type PatchHistoryEntry struct {
 	TimeStarted *common.SDKTime `mandatory:"true" json:"timeStarted"`
 
 	// The action being performed or was completed.
-	Action PatchHistoryEntryActionEnum `mandatory:"false" json:"action,omitempty"`
+	Action PatchHistoryEntryActionEnum `mandatory:"false" json:"action"`
 
 	// A descriptive text associated with the lifecycleState.
 	// Typically contains additional displayable text.
-	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
+	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The date and time when the patch action completed.
-	TimeEnded *common.SDKTime `mandatory:"false" json:"timeEnded,omitempty"`
+	TimeEnded *common.SDKTime `mandatory:"false" json:"timeEnded"`
 }
 
 func (m PatchHistoryEntry) String() string {

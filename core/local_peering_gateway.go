@@ -56,10 +56,10 @@ type LocalPeeringGateway struct {
 	// You can use this as the destination CIDR for a route rule to route a subnet's
 	// traffic to this LPG.
 	// Example: `192.168.0.0/16`
-	PeerAdvertisedCidr *string `mandatory:"false" json:"peerAdvertisedCidr,omitempty"`
+	PeerAdvertisedCidr *string `mandatory:"false" json:"peerAdvertisedCidr"`
 
 	// Additional information regarding the peering status, if applicable.
-	PeeringStatusDetails *string `mandatory:"false" json:"peeringStatusDetails,omitempty"`
+	PeeringStatusDetails *string `mandatory:"false" json:"peeringStatusDetails"`
 }
 
 func (m LocalPeeringGateway) String() string {

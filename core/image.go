@@ -45,13 +45,13 @@ type Image struct {
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The OCID of the image originally used to launch the instance.
-	BaseImageId *string `mandatory:"false" json:"baseImageId,omitempty"`
+	BaseImageId *string `mandatory:"false" json:"baseImageId"`
 
 	// A user-friendly name for the image. It does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
 	// You cannot use an Oracle-provided image name as a custom image name.
 	// Example: `My custom Oracle Linux image`
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m Image) String() string {

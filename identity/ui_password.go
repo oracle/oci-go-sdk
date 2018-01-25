@@ -18,21 +18,21 @@ import (
 type UiPassword struct {
 
 	// The user's password for the Console.
-	Password *string `mandatory:"false" json:"password,omitempty"`
+	Password *string `mandatory:"false" json:"password"`
 
 	// The OCID of the user.
-	UserId *string `mandatory:"false" json:"userId,omitempty"`
+	UserId *string `mandatory:"false" json:"userId"`
 
 	// Date and time the password was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// The password's current state. After creating a password, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState UiPasswordLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState UiPasswordLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
 }
 
 func (m UiPassword) String() string {

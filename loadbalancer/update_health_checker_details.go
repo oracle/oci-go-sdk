@@ -46,7 +46,7 @@ type UpdateHealthCheckerDetails struct {
 
 	// The path against which to run the health check.
 	// Example: `/healthcheck`
-	UrlPath *string `mandatory:"false" json:"urlPath,omitempty"`
+	UrlPath *string `mandatory:"false" json:"urlPath"`
 }
 
 func (m UpdateHealthCheckerDetails) String() string {

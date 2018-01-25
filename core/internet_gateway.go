@@ -34,15 +34,15 @@ type InternetGateway struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// Whether the gateway is enabled. When the gateway is disabled, traffic is not
 	// routed to/from the Internet, regardless of route rules.
-	IsEnabled *bool `mandatory:"false" json:"isEnabled,omitempty"`
+	IsEnabled *bool `mandatory:"false" json:"isEnabled"`
 
 	// The date and time the Internet Gateway was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m InternetGateway) String() string {

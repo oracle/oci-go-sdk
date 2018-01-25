@@ -25,9 +25,9 @@ type UpdateBackendSetDetails struct {
 	// Example: `LEAST_CONNECTIONS`
 	Policy *string `mandatory:"true" json:"policy"`
 
-	SessionPersistenceConfiguration *SessionPersistenceConfigurationDetails `mandatory:"false" json:"sessionPersistenceConfiguration,omitempty"`
+	SessionPersistenceConfiguration *SessionPersistenceConfigurationDetails `mandatory:"false" json:"sessionPersistenceConfiguration"`
 
-	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration,omitempty"`
+	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration"`
 }
 
 func (m UpdateBackendSetDetails) String() string {

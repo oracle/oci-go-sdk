@@ -70,61 +70,61 @@ type DbSystem struct {
 	// The OCID of the backup network subnet the DB System is associated with. Applicable only to Exadata.
 	// **Subnet Restriction:** See above subnetId's 'Subnet Restriction'.
 	// to malfunction.
-	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId,omitempty"`
+	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId"`
 
 	// Cluster name for Exadata and 2-node RAC DB Systems. The cluster name must begin with an an alphabetic character, and may contain hyphens (-). Underscores (_) are not permitted. The cluster name can be no longer than 11 characters and is not case sensitive.
-	ClusterName *string `mandatory:"false" json:"clusterName,omitempty"`
+	ClusterName *string `mandatory:"false" json:"clusterName"`
 
 	// The percentage assigned to DATA storage (user data and database files).
 	// The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Accepted values are 40 and 80.
-	DataStoragePercentage *int `mandatory:"false" json:"dataStoragePercentage,omitempty"`
+	DataStoragePercentage *int `mandatory:"false" json:"dataStoragePercentage"`
 
 	// Data storage size, in GBs, that is currently available to the DB system. This is applicable only for VM-based DBs.
-	DataStorageSizeInGBs *int `mandatory:"false" json:"dataStorageSizeInGBs,omitempty"`
+	DataStorageSizeInGBs *int `mandatory:"false" json:"dataStorageSizeInGBs"`
 
 	// The type of redundancy configured for the DB System.
 	// Normal is 2-way redundancy.
 	// High is 3-way redundancy.
-	DiskRedundancy DbSystemDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy,omitempty"`
+	DiskRedundancy DbSystemDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy"`
 
 	// The OCID of the last patch history. This is updated as soon as a patch operation is started.
-	LastPatchHistoryEntryId *string `mandatory:"false" json:"lastPatchHistoryEntryId,omitempty"`
+	LastPatchHistoryEntryId *string `mandatory:"false" json:"lastPatchHistoryEntryId"`
 
 	// The Oracle license model that applies to all the databases on the DB System. The default is LICENSE_INCLUDED.
-	LicenseModel DbSystemLicenseModelEnum `mandatory:"false" json:"licenseModel,omitempty"`
+	LicenseModel DbSystemLicenseModelEnum `mandatory:"false" json:"licenseModel"`
 
 	// Additional information about the current lifecycleState.
-	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
+	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The port number configured for the listener on the DB System.
-	ListenerPort *int `mandatory:"false" json:"listenerPort,omitempty"`
+	ListenerPort *int `mandatory:"false" json:"listenerPort"`
 
 	// Number of nodes in this DB system. For RAC DBs, this will be greater than 1.
-	NodeCount *int `mandatory:"false" json:"nodeCount,omitempty"`
+	NodeCount *int `mandatory:"false" json:"nodeCount"`
 
 	// RECO/REDO storage size, in GBs, that is currently allocated to the DB system. This is applicable only for VM-based DBs.
-	RecoStorageSizeInGB *int `mandatory:"false" json:"recoStorageSizeInGB,omitempty"`
+	RecoStorageSizeInGB *int `mandatory:"false" json:"recoStorageSizeInGB"`
 
 	// The OCID of the DNS record for the SCAN IP addresses that are associated with the DB System.
-	ScanDnsRecordId *string `mandatory:"false" json:"scanDnsRecordId,omitempty"`
+	ScanDnsRecordId *string `mandatory:"false" json:"scanDnsRecordId"`
 
 	// The OCID of the Single Client Access Name (SCAN) IP addresses associated with the DB System.
 	// SCAN IP addresses are typically used for load balancing and are not assigned to any interface.
 	// Clusterware directs the requests to the appropriate nodes in the cluster.
 	// - For a single-node DB System, this list is empty.
-	ScanIpIds []string `mandatory:"false" json:"scanIpIds,omitempty"`
+	ScanIpIds []string `mandatory:"false" json:"scanIpIds"`
 
 	// The date and time the DB System was created.
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// The version of the DB System.
-	Version *string `mandatory:"false" json:"version,omitempty"`
+	Version *string `mandatory:"false" json:"version"`
 
 	// The OCID of the virtual IP (VIP) addresses associated with the DB System.
 	// The Cluster Ready Services (CRS) creates and maintains one VIP address for each node in the DB System to
 	// enable failover. If one node fails, the VIP is reassigned to another active node in the cluster.
 	// - For a single-node DB System, this list is empty.
-	VipIds []string `mandatory:"false" json:"vipIds,omitempty"`
+	VipIds []string `mandatory:"false" json:"vipIds"`
 }
 
 func (m DbSystem) String() string {

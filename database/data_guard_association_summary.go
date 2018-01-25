@@ -48,31 +48,31 @@ type DataGuardAssociationSummary struct {
 	// The lag time between updates to the primary database and application of the redo data on the standby database,
 	// as computed by the reporting database.
 	// Example: `9 seconds`
-	ApplyLag *string `mandatory:"false" json:"applyLag,omitempty"`
+	ApplyLag *string `mandatory:"false" json:"applyLag"`
 
 	// The rate at which redo logs are synced between the associated databases.
 	// Example: `180 Mb per second`
-	ApplyRate *string `mandatory:"false" json:"applyRate,omitempty"`
+	ApplyRate *string `mandatory:"false" json:"applyRate"`
 
 	// Additional information about the current lifecycleState, if available.
-	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
+	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the peer database's Data Guard association.
-	PeerDataGuardAssociationId *string `mandatory:"false" json:"peerDataGuardAssociationId,omitempty"`
+	PeerDataGuardAssociationId *string `mandatory:"false" json:"peerDataGuardAssociationId"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the associated peer database.
-	PeerDatabaseId *string `mandatory:"false" json:"peerDatabaseId,omitempty"`
+	PeerDatabaseId *string `mandatory:"false" json:"peerDatabaseId"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the database home containing the associated peer database.
-	PeerDbHomeId *string `mandatory:"false" json:"peerDbHomeId,omitempty"`
+	PeerDbHomeId *string `mandatory:"false" json:"peerDbHomeId"`
 
 	// The date and time the Data Guard Association was created.
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// The redo transport type used by this Data Guard association.  For more information, see
 	// [Redo Transport Services](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400)
 	// in the Oracle Data Guard documentation.
-	TransportType DataGuardAssociationSummaryTransportTypeEnum `mandatory:"false" json:"transportType,omitempty"`
+	TransportType DataGuardAssociationSummaryTransportTypeEnum `mandatory:"false" json:"transportType"`
 }
 
 func (m DataGuardAssociationSummary) String() string {

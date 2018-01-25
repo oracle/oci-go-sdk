@@ -22,7 +22,7 @@ type AttachBootVolumeDetails struct {
 	InstanceId *string `mandatory:"true" json:"instanceId"`
 
 	// A user-friendly name. Does not have to be unique, and it cannot be changed. Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m AttachBootVolumeDetails) String() string {

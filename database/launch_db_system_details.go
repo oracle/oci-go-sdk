@@ -60,37 +60,37 @@ type LaunchDbSystemDetails struct {
 
 	// The OCID of the backup network subnet the DB System is associated with. Applicable only to Exadata.
 	// **Subnet Restrictions:** See above subnetId's **Subnet Restriction**.
-	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId,omitempty"`
+	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId"`
 
 	// Cluster name for Exadata and 2-node RAC DB Systems. The cluster name must begin with an an alphabetic character, and may contain hyphens (-). Underscores (_) are not permitted. The cluster name can be no longer than 11 characters and is not case sensitive.
-	ClusterName *string `mandatory:"false" json:"clusterName,omitempty"`
+	ClusterName *string `mandatory:"false" json:"clusterName"`
 
 	// The percentage assigned to DATA storage (user data and database files).
 	// The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups).
 	// Specify 80 or 40. The default is 80 percent assigned to DATA storage. This is not applicable for VM based DB systems.
-	DataStoragePercentage *int `mandatory:"false" json:"dataStoragePercentage,omitempty"`
+	DataStoragePercentage *int `mandatory:"false" json:"dataStoragePercentage"`
 
 	// The type of redundancy configured for the DB System.
 	// Normal is 2-way redundancy, recommended for test and development systems.
 	// High is 3-way redundancy, recommended for production systems.
-	DiskRedundancy LaunchDbSystemDetailsDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy,omitempty"`
+	DiskRedundancy LaunchDbSystemDetailsDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy"`
 
 	// The user-friendly name for the DB System. It does not have to be unique.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// A domain name used for the DB System. If the Oracle-provided Internet and VCN
 	// Resolver is enabled for the specified subnet, the domain name for the subnet is used
 	// (don't provide one). Otherwise, provide a valid DNS domain name. Hyphens (-) are not permitted.
-	Domain *string `mandatory:"false" json:"domain,omitempty"`
+	Domain *string `mandatory:"false" json:"domain"`
 
 	// Size, in GBs, of the initial data volume that will be created and attached to VM-shape based DB system. This storage can later be scaled up if needed. Note that the total storage size attached will be more than what is requested, to account for REDO/RECO space and software volume.
-	InitialDataStorageSizeInGB *int `mandatory:"false" json:"initialDataStorageSizeInGB,omitempty"`
+	InitialDataStorageSizeInGB *int `mandatory:"false" json:"initialDataStorageSizeInGB"`
 
 	// The Oracle license model that applies to all the databases on the DB System. The default is LICENSE_INCLUDED.
-	LicenseModel LaunchDbSystemDetailsLicenseModelEnum `mandatory:"false" json:"licenseModel,omitempty"`
+	LicenseModel LaunchDbSystemDetailsLicenseModelEnum `mandatory:"false" json:"licenseModel"`
 
 	// Number of nodes to launch for a VM-shape based RAC DB system.
-	NodeCount *int `mandatory:"false" json:"nodeCount,omitempty"`
+	NodeCount *int `mandatory:"false" json:"nodeCount"`
 }
 
 func (m LaunchDbSystemDetails) String() string {
