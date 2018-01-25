@@ -20,10 +20,10 @@ import (
 type DbSystemShapeSummary struct {
 
 	// The maximum number of CPU cores that can be enabled on the DB System.
-	AvailableCoreCount *int `mandatory:"true" json:"availableCoreCount,omitempty"`
+	AvailableCoreCount *int `mandatory:"true" json:"availableCoreCount"`
 
 	// The name of the shape used for the DB System.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// Deprecated. Use `name` instead of `shape`.
 	Shape *string `mandatory:"false" json:"shape,omitempty"`

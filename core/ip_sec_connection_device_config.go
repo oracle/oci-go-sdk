@@ -16,10 +16,10 @@ import (
 type IpSecConnectionDeviceConfig struct {
 
 	// The OCID of the compartment containing the IPSec connection.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The IPSec connection's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The date and time the IPSec connection was created.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`

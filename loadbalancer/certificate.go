@@ -26,13 +26,13 @@ type Certificate struct {
 	//     aXR5MRQwEgYDVQQDEwtCZXN0IENBIEx0ZDAeFw0wMD..TUwMTZaFw0wMTAy
 	//     ...
 	//     -----END CERTIFICATE-----
-	CaCertificate *string `mandatory:"true" json:"caCertificate,omitempty"`
+	CaCertificate *string `mandatory:"true" json:"caCertificate"`
 
 	// A friendly name for the certificate bundle. It must be unique and it cannot be changed.
 	// Valid certificate bundle names include only alphanumeric characters, dashes, and underscores.
 	// Certificate bundle names cannot contain spaces. Avoid entering confidential information.
 	// Example: `My_certificate_bundle`
-	CertificateName *string `mandatory:"true" json:"certificateName,omitempty"`
+	CertificateName *string `mandatory:"true" json:"certificateName"`
 
 	// The public certificate, in PEM format, that you received from your SSL certificate provider.
 	// Example:
@@ -43,7 +43,7 @@ type Certificate struct {
 	//     YiBDQTEjMCEGCSqGSIb3DQEJARYUc3VwcG9ydEBmcmFuazRkZC5jb20wHhcNMTIw
 	//     ...
 	//     -----END CERTIFICATE-----
-	PublicCertificate *string `mandatory:"true" json:"publicCertificate,omitempty"`
+	PublicCertificate *string `mandatory:"true" json:"publicCertificate"`
 }
 
 func (m Certificate) String() string {

@@ -24,20 +24,20 @@ type RegionSubscription struct {
 	// - `PHX`
 	// - `IAD`
 	// - `FRA`
-	RegionKey *string `mandatory:"true" json:"regionKey,omitempty"`
+	RegionKey *string `mandatory:"true" json:"regionKey"`
 
 	// The region's name.
 	// Allowed values are:
 	// - `us-phoenix-1`
 	// - `us-ashburn-1`
 	// - `eu-frankurt-1`
-	RegionName *string `mandatory:"true" json:"regionName,omitempty"`
+	RegionName *string `mandatory:"true" json:"regionName"`
 
 	// The region subscription status.
-	Status RegionSubscriptionStatusEnum `mandatory:"true" json:"status,omitempty"`
+	Status RegionSubscriptionStatusEnum `mandatory:"true" json:"status"`
 
 	// Indicates if the region is the home region or not.
-	IsHomeRegion *bool `mandatory:"true" json:"isHomeRegion,omitempty"`
+	IsHomeRegion *bool `mandatory:"true" json:"isHomeRegion"`
 }
 
 func (m RegionSubscription) String() string {

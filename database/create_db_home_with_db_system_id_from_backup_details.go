@@ -17,9 +17,9 @@ import (
 type CreateDbHomeWithDbSystemIdFromBackupDetails struct {
 
 	// The OCID of the DB System.
-	DbSystemId *string `mandatory:"true" json:"dbSystemId,omitempty"`
+	DbSystemId *string `mandatory:"true" json:"dbSystemId"`
 
-	Database *CreateDatabaseFromBackupDetails `mandatory:"true" json:"database,omitempty"`
+	Database *CreateDatabaseFromBackupDetails `mandatory:"true" json:"database"`
 
 	// The user-provided name of the database home.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

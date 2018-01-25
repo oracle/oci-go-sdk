@@ -18,10 +18,10 @@ import (
 type CommitMultipartUploadPartDetails struct {
 
 	// The part number for this part.
-	PartNum *int `mandatory:"true" json:"partNum,omitempty"`
+	PartNum *int `mandatory:"true" json:"partNum"`
 
 	// The ETag returned when this part was uploaded.
-	Etag *string `mandatory:"true" json:"etag,omitempty"`
+	Etag *string `mandatory:"true" json:"etag"`
 }
 
 func (m CommitMultipartUploadPartDetails) String() string {

@@ -22,28 +22,28 @@ import (
 type DataGuardAssociation struct {
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the reporting database.
-	DatabaseId *string `mandatory:"true" json:"databaseId,omitempty"`
+	DatabaseId *string `mandatory:"true" json:"databaseId"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the Data Guard association.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the Data Guard association.
-	LifecycleState DataGuardAssociationLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState DataGuardAssociationLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the DB System containing the associated
 	// peer database.
-	PeerDbSystemId *string `mandatory:"true" json:"peerDbSystemId,omitempty"`
+	PeerDbSystemId *string `mandatory:"true" json:"peerDbSystemId"`
 
 	// The role of the peer database in this Data Guard association.
-	PeerRole DataGuardAssociationPeerRoleEnum `mandatory:"true" json:"peerRole,omitempty"`
+	PeerRole DataGuardAssociationPeerRoleEnum `mandatory:"true" json:"peerRole"`
 
 	// The protection mode of this Data Guard association. For more information, see
 	// [Oracle Data Guard Protection Modes](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)
 	// in the Oracle Data Guard documentation.
-	ProtectionMode DataGuardAssociationProtectionModeEnum `mandatory:"true" json:"protectionMode,omitempty"`
+	ProtectionMode DataGuardAssociationProtectionModeEnum `mandatory:"true" json:"protectionMode"`
 
 	// The role of the reporting database in this Data Guard association.
-	Role DataGuardAssociationRoleEnum `mandatory:"true" json:"role,omitempty"`
+	Role DataGuardAssociationRoleEnum `mandatory:"true" json:"role"`
 
 	// The lag time between updates to the primary database and application of the redo data on the standby database,
 	// as computed by the reporting database.

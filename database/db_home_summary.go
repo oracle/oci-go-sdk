@@ -22,19 +22,19 @@ import (
 type DbHomeSummary struct {
 
 	// The OCID of the compartment.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The Oracle database version.
-	DbVersion *string `mandatory:"true" json:"dbVersion,omitempty"`
+	DbVersion *string `mandatory:"true" json:"dbVersion"`
 
 	// The user-provided name for the database home. It does not need to be unique.
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// The OCID of the database home.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the database home.
-	LifecycleState DbHomeSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState DbHomeSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The OCID of the DB System.
 	DbSystemId *string `mandatory:"false" json:"dbSystemId,omitempty"`

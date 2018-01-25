@@ -17,10 +17,10 @@ type PortRange struct {
 
 	// The maximum port number. Must not be lower than the minimum port number. To specify
 	// a single port number, set both the min and max to the same value.
-	Max *int `mandatory:"true" json:"max,omitempty"`
+	Max *int `mandatory:"true" json:"max"`
 
 	// The minimum port number. Must not be greater than the maximum port number.
-	Min *int `mandatory:"true" json:"min,omitempty"`
+	Min *int `mandatory:"true" json:"min"`
 }
 
 func (m PortRange) String() string {

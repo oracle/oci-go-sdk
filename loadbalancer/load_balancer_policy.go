@@ -18,7 +18,7 @@ import (
 type LoadBalancerPolicy struct {
 
 	// The name of the load balancing policy.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 }
 
 func (m LoadBalancerPolicy) String() string {

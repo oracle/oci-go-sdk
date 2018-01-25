@@ -16,10 +16,10 @@ import (
 type AttachVnicDetails struct {
 
 	// Details for creating a new VNIC.
-	CreateVnicDetails *CreateVnicDetails `mandatory:"true" json:"createVnicDetails,omitempty"`
+	CreateVnicDetails *CreateVnicDetails `mandatory:"true" json:"createVnicDetails"`
 
 	// The OCID of the instance.
-	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId"`
 
 	// A user-friendly name for the attachment. Does not have to be unique, and it cannot be changed.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

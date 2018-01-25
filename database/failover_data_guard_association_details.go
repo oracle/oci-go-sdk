@@ -16,7 +16,7 @@ import (
 type FailoverDataGuardAssociationDetails struct {
 
 	// The DB System administrator password.
-	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword,omitempty"`
+	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword"`
 }
 
 func (m FailoverDataGuardAssociationDetails) String() string {

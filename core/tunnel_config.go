@@ -17,11 +17,11 @@ type TunnelConfig struct {
 
 	// The IP address of Oracle's VPN headend.
 	// Example: `129.146.17.50`
-	IpAddress *string `mandatory:"true" json:"ipAddress,omitempty"`
+	IpAddress *string `mandatory:"true" json:"ipAddress"`
 
 	// The shared secret of the IPSec tunnel.
 	// Example: `vFG2IF6TWq4UToUiLSRDoJEUs6j1c.p8G.dVQxiMfMO0yXMLi.lZTbYIWhGu4V8o`
-	SharedSecret *string `mandatory:"true" json:"sharedSecret,omitempty"`
+	SharedSecret *string `mandatory:"true" json:"sharedSecret"`
 
 	// The date and time the IPSec connection was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`

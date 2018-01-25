@@ -16,10 +16,10 @@ import (
 type CreateBackupDetails struct {
 
 	// The OCID of the database.
-	DatabaseId *string `mandatory:"true" json:"databaseId,omitempty"`
+	DatabaseId *string `mandatory:"true" json:"databaseId"`
 
 	// The user-friendly name for the backup. It does not have to be unique.
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"true" json:"displayName"`
 }
 
 func (m CreateBackupDetails) String() string {

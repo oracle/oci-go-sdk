@@ -24,27 +24,27 @@ import (
 type IdpGroupMapping struct {
 
 	// The OCID of the `IdpGroupMapping`.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID of the `IdentityProvider` this mapping belongs to.
-	IdpId *string `mandatory:"true" json:"idpId,omitempty"`
+	IdpId *string `mandatory:"true" json:"idpId"`
 
 	// The name of the IdP group that is mapped to the IAM Service group.
-	IdpGroupName *string `mandatory:"true" json:"idpGroupName,omitempty"`
+	IdpGroupName *string `mandatory:"true" json:"idpGroupName"`
 
 	// The OCID of the IAM Service group that is mapped to the IdP group.
-	GroupId *string `mandatory:"true" json:"groupId,omitempty"`
+	GroupId *string `mandatory:"true" json:"groupId"`
 
 	// The OCID of the tenancy containing the `IdentityProvider`.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Date and time the mapping was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The mapping's current state.  After creating a mapping object, make sure its `lifecycleState` changes
 	// from CREATING to ACTIVE before using it.
-	LifecycleState IdpGroupMappingLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState IdpGroupMappingLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`

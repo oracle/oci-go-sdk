@@ -17,13 +17,13 @@ type EgressSecurityRule struct {
 
 	// The destination CIDR block for the egress rule. This is the range of IP addresses that a
 	// packet originating from the instance can go to.
-	Destination *string `mandatory:"true" json:"destination,omitempty"`
+	Destination *string `mandatory:"true" json:"destination"`
 
 	// The transport protocol. Specify either `all` or an IPv4 protocol number as
 	// defined in
 	// [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	// Options are supported only for ICMP ("1"), TCP ("6"), and UDP ("17").
-	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
+	Protocol *string `mandatory:"true" json:"protocol"`
 
 	// Optional and valid only for ICMP. Use to specify a particular ICMP type and code
 	// as defined in

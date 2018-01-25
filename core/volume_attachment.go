@@ -51,13 +51,13 @@ type VolumeAttachment interface {
 
 type volumeattachment struct {
 	JsonData           []byte
-	AvailabilityDomain *string                            `mandatory:"true" json:"availabilityDomain,omitempty"`
-	CompartmentId      *string                            `mandatory:"true" json:"compartmentId,omitempty"`
-	Id                 *string                            `mandatory:"true" json:"id,omitempty"`
-	InstanceId         *string                            `mandatory:"true" json:"instanceId,omitempty"`
-	LifecycleState     VolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
-	TimeCreated        *common.SDKTime                    `mandatory:"true" json:"timeCreated,omitempty"`
-	VolumeId           *string                            `mandatory:"true" json:"volumeId,omitempty"`
+	AvailabilityDomain *string                            `mandatory:"true" json:"availabilityDomain"`
+	CompartmentId      *string                            `mandatory:"true" json:"compartmentId"`
+	Id                 *string                            `mandatory:"true" json:"id"`
+	InstanceId         *string                            `mandatory:"true" json:"instanceId"`
+	LifecycleState     VolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
+	TimeCreated        *common.SDKTime                    `mandatory:"true" json:"timeCreated"`
+	VolumeId           *string                            `mandatory:"true" json:"volumeId"`
 	DisplayName        *string                            `mandatory:"false" json:"displayName,omitempty"`
 	AttachmentType     string                             `json:"attachmentType"`
 }

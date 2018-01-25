@@ -17,7 +17,7 @@ type HealthCheckerDetails struct {
 
 	// The protocol the health check must use; either HTTP or TCP.
 	// Example: `HTTP`
-	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
+	Protocol *string `mandatory:"true" json:"protocol"`
 
 	// The interval between health checks, in milliseconds.
 	// Example: `30000`

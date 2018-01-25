@@ -16,10 +16,10 @@ import (
 type AddUserToGroupDetails struct {
 
 	// The OCID of the user.
-	UserId *string `mandatory:"true" json:"userId,omitempty"`
+	UserId *string `mandatory:"true" json:"userId"`
 
 	// The OCID of the group.
-	GroupId *string `mandatory:"true" json:"groupId,omitempty"`
+	GroupId *string `mandatory:"true" json:"groupId"`
 }
 
 func (m AddUserToGroupDetails) String() string {

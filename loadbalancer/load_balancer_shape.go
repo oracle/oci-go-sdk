@@ -19,7 +19,7 @@ import (
 type LoadBalancerShape struct {
 
 	// The name of the shape.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 }
 
 func (m LoadBalancerShape) String() string {

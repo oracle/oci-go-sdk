@@ -21,16 +21,16 @@ type Vcn struct {
 
 	// The CIDR IP address block of the VCN.
 	// Example: `172.16.0.0/16`
-	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
+	CidrBlock *string `mandatory:"true" json:"cidrBlock"`
 
 	// The OCID of the compartment containing the VCN.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The VCN's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The VCN's current state.
-	LifecycleState VcnLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState VcnLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The OCID for the VCN's default set of DHCP options.
 	DefaultDhcpOptionsId *string `mandatory:"false" json:"defaultDhcpOptionsId,omitempty"`

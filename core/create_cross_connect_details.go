@@ -16,18 +16,18 @@ import (
 type CreateCrossConnectDetails struct {
 
 	// The OCID of the compartment to contain the cross-connect.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The name of the FastConnect location where this cross-connect will be installed.
 	// To get a list of the available locations, see
 	// ListCrossConnectLocations.
 	// Example: `CyrusOne, Chandler, AZ`
-	LocationName *string `mandatory:"true" json:"locationName,omitempty"`
+	LocationName *string `mandatory:"true" json:"locationName"`
 
 	// The port speed for this cross-connect. To get a list of the available port speeds, see
 	// ListCrossconnectPortSpeedShapes.
 	// Example: `10 Gbps`
-	PortSpeedShapeName *string `mandatory:"true" json:"portSpeedShapeName,omitempty"`
+	PortSpeedShapeName *string `mandatory:"true" json:"portSpeedShapeName"`
 
 	// The OCID of the cross-connect group to put this cross-connect in.
 	CrossConnectGroupId *string `mandatory:"false" json:"crossConnectGroupId,omitempty"`

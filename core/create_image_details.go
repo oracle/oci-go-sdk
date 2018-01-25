@@ -17,7 +17,7 @@ import (
 type CreateImageDetails struct {
 
 	// The OCID of the compartment containing the instance you want to use as the basis for the image.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name for the image. It does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.

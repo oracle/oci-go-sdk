@@ -23,26 +23,26 @@ type Volume struct {
 
 	// The Availability Domain of the volume.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The OCID of the compartment that contains the volume.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// The OCID of the volume.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of a volume.
-	LifecycleState VolumeLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState VolumeLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The size of the volume in MBs. This field is deprecated. Use sizeInGBs instead.
-	SizeInMBs *int `mandatory:"true" json:"sizeInMBs,omitempty"`
+	SizeInMBs *int `mandatory:"true" json:"sizeInMBs"`
 
 	// The date and time the volume was created. Format defined by RFC3339.
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// Specifies whether the cloned volume's data has finished copying from the source volume or backup.
 	IsHydrated *bool `mandatory:"false" json:"isHydrated,omitempty"`

@@ -17,10 +17,10 @@ import (
 type AttachIScsiVolumeDetails struct {
 
 	// The OCID of the instance.
-	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId"`
 
 	// The OCID of the volume.
-	VolumeId *string `mandatory:"true" json:"volumeId,omitempty"`
+	VolumeId *string `mandatory:"true" json:"volumeId"`
 
 	// A user-friendly name. Does not have to be unique, and it cannot be changed. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

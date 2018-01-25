@@ -23,33 +23,33 @@ import (
 type LocalPeeringGateway struct {
 
 	// The OCID of the compartment containing the LPG.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid
 	// entering confidential information.
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// The LPG's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// Whether the VCN at the other end of the peering is in a different tenancy.
 	// Example: `false`
-	IsCrossTenancyPeering *bool `mandatory:"true" json:"isCrossTenancyPeering,omitempty"`
+	IsCrossTenancyPeering *bool `mandatory:"true" json:"isCrossTenancyPeering"`
 
 	// The LPG's current lifecycle state.
-	LifecycleState LocalPeeringGatewayLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState LocalPeeringGatewayLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// Whether the LPG is peered with another LPG. `NEW` means the LPG has not yet been
 	// peered. `PENDING` means the peering is being established. `REVOKED` means the
 	// LPG at the other end of the peering has been deleted.
-	PeeringStatus LocalPeeringGatewayPeeringStatusEnum `mandatory:"true" json:"peeringStatus,omitempty"`
+	PeeringStatus LocalPeeringGatewayPeeringStatusEnum `mandatory:"true" json:"peeringStatus"`
 
 	// The date and time the LPG was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The OCID of the VCN the LPG belongs to.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// The range of IP addresses available on the VCN at the other
 	// end of the peering from this LPG. The value is `null` if the LPG is not peered.

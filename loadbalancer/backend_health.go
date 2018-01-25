@@ -16,14 +16,14 @@ import (
 type BackendHealth struct {
 
 	// A list of the most recent health check results returned for the specified backend server.
-	HealthCheckResults []HealthCheckResult `mandatory:"true" json:"healthCheckResults,omitempty"`
+	HealthCheckResults []HealthCheckResult `mandatory:"true" json:"healthCheckResults"`
 
 	// The general health status of the specified backend server as reported by the primary and standby load balancers.
 	// *   **OK:** Both health checks returned `OK`.
 	// *   **WARNING:** One health check returned `OK` and one did not.
 	// *   **CRITICAL:** Neither health check returned `OK`.
 	// *   **UNKNOWN:** One or both health checks returned `UNKNOWN`, or the system was unable to retrieve metrics at this time.
-	Status BackendHealthStatusEnum `mandatory:"true" json:"status,omitempty"`
+	Status BackendHealthStatusEnum `mandatory:"true" json:"status"`
 }
 
 func (m BackendHealth) String() string {

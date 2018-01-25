@@ -18,22 +18,22 @@ import (
 type BucketSummary struct {
 
 	// The namespace in which the bucket lives.
-	Namespace *string `mandatory:"true" json:"namespace,omitempty"`
+	Namespace *string `mandatory:"true" json:"namespace"`
 
 	// The name of the bucket.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// The compartment ID in which the bucket is authorized.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The OCID of the user who created the bucket.
-	CreatedBy *string `mandatory:"true" json:"createdBy,omitempty"`
+	CreatedBy *string `mandatory:"true" json:"createdBy"`
 
 	// The date and time at which the bucket was created.
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The entity tag for the bucket.
-	Etag *string `mandatory:"true" json:"etag,omitempty"`
+	Etag *string `mandatory:"true" json:"etag"`
 }
 
 func (m BucketSummary) String() string {

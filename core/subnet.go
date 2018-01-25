@@ -24,34 +24,34 @@ type Subnet struct {
 
 	// The subnet's Availability Domain.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The subnet's CIDR block.
 	// Example: `172.16.1.0/24`
-	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
+	CidrBlock *string `mandatory:"true" json:"cidrBlock"`
 
 	// The OCID of the compartment containing the subnet.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The subnet's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The subnet's current state.
-	LifecycleState SubnetLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState SubnetLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The OCID of the route table the subnet is using.
-	RouteTableId *string `mandatory:"true" json:"routeTableId,omitempty"`
+	RouteTableId *string `mandatory:"true" json:"routeTableId"`
 
 	// The OCID of the VCN the subnet is in.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// The IP address of the virtual router.
 	// Example: `10.0.14.1`
-	VirtualRouterIp *string `mandatory:"true" json:"virtualRouterIp,omitempty"`
+	VirtualRouterIp *string `mandatory:"true" json:"virtualRouterIp"`
 
 	// The MAC address of the virtual router.
 	// Example: `00:00:17:B6:4D:DD`
-	VirtualRouterMac *string `mandatory:"true" json:"virtualRouterMac,omitempty"`
+	VirtualRouterMac *string `mandatory:"true" json:"virtualRouterMac"`
 
 	// The OCID of the set of DHCP options associated with the subnet.
 	DhcpOptionsId *string `mandatory:"false" json:"dhcpOptionsId,omitempty"`

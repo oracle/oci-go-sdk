@@ -16,14 +16,14 @@ import (
 type CreateGroupDetails struct {
 
 	// The OCID of the tenancy containing the group.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The name you assign to the group during creation. The name must be unique across all groups
 	// in the tenancy and cannot be changed.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// The description you assign to the group during creation. Does not have to be unique, and it's changeable.
-	Description *string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description"`
 }
 
 func (m CreateGroupDetails) String() string {

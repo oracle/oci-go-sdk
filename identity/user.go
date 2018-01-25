@@ -29,25 +29,25 @@ import (
 type User struct {
 
 	// The OCID of the user.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID of the tenancy containing the user.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The name you assign to the user during creation. This is the user's login for the Console.
 	// The name must be unique across all users in the tenancy and cannot be changed.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// The description you assign to the user. Does not have to be unique, and it's changeable.
-	Description *string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description"`
 
 	// Date and time the user was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The user's current state. After creating a user, make sure its `lifecycleState` changes from CREATING to
 	// ACTIVE before using it.
-	LifecycleState UserLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState UserLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// Returned only if the user's `lifecycleState` is INACTIVE. A 16-bit value showing the reason why the user
 	// is inactive:

@@ -17,7 +17,7 @@ type IpAddress struct {
 
 	// An IP address.
 	// Example: `128.148.10.20`
-	IpAddress *string `mandatory:"true" json:"ipAddress,omitempty"`
+	IpAddress *string `mandatory:"true" json:"ipAddress"`
 
 	// Whether the IP address is public or private.
 	// If "true", the IP address is public and accessible from the internet.

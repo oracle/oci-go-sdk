@@ -22,7 +22,7 @@ type CreateVnicDetails struct {
 	// use this `subnetId` instead of the deprecated `subnetId` in
 	// LaunchInstanceDetails.
 	// At least one of them is required; if you provide both, the values must match.
-	SubnetId *string `mandatory:"true" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"true" json:"subnetId"`
 
 	// Whether the VNIC should be assigned a public IP address. Defaults to whether
 	// the subnet is public or private. If not set and the VNIC is being created

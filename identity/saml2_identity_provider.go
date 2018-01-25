@@ -19,21 +19,21 @@ import (
 type Saml2IdentityProvider struct {
 
 	// The OCID of the `IdentityProvider`.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID of the tenancy containing the `IdentityProvider`.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The name you assign to the `IdentityProvider` during creation. The name
 	// must be unique across all `IdentityProvider` objects in the tenancy and
 	// cannot be changed. This is the name federated users see when choosing
 	// which identity provider to use when signing in to the Oracle Cloud Infrastructure
 	// Console.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// The description you assign to the `IdentityProvider` during creation. Does
 	// not have to be unique, and it's changeable.
-	Description *string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description"`
 
 	// The identity provider service or product.
 	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
@@ -42,23 +42,23 @@ type Saml2IdentityProvider struct {
 	// - `ADFS`
 	// - `IDCS`
 	// Example: `IDCS`
-	ProductType *string `mandatory:"true" json:"productType,omitempty"`
+	ProductType *string `mandatory:"true" json:"productType"`
 
 	// Date and time the `IdentityProvider` was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The URL for retrieving the identity provider's metadata, which
 	// contains information required for federating.
-	MetadataUrl *string `mandatory:"true" json:"metadataUrl,omitempty"`
+	MetadataUrl *string `mandatory:"true" json:"metadataUrl"`
 
 	// The identity provider's signing certificate used by the IAM Service
 	// to validate the SAML2 token.
-	SigningCertificate *string `mandatory:"true" json:"signingCertificate,omitempty"`
+	SigningCertificate *string `mandatory:"true" json:"signingCertificate"`
 
 	// The URL to redirect federated users to for authentication with the
 	// identity provider.
-	RedirectUrl *string `mandatory:"true" json:"redirectUrl,omitempty"`
+	RedirectUrl *string `mandatory:"true" json:"redirectUrl"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`

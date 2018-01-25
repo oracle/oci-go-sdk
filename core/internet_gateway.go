@@ -21,16 +21,16 @@ import (
 type InternetGateway struct {
 
 	// The OCID of the compartment containing the Internet Gateway.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The Internet Gateway's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The Internet Gateway's current state.
-	LifecycleState InternetGatewayLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState InternetGatewayLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The OCID of the VCN the Internet Gateway belongs to.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.

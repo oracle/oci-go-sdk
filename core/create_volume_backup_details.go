@@ -16,7 +16,7 @@ import (
 type CreateVolumeBackupDetails struct {
 
 	// The OCID of the volume that needs to be backed up.
-	VolumeId *string `mandatory:"true" json:"volumeId,omitempty"`
+	VolumeId *string `mandatory:"true" json:"volumeId"`
 
 	// A user-friendly name for the volume backup. Does not have to be unique and it's changeable.
 	// Avoid entering confidential information.

@@ -19,10 +19,10 @@ type CreateBucketDetails struct {
 
 	// The name of the bucket. Valid characters are uppercase or lowercase letters,
 	// numbers, and dashes. Bucket names must be unique within the namespace.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// The ID of the compartment in which to create the bucket.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Arbitrary string, up to 4KB, of keys and values for user-defined metadata.
 	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
