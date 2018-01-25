@@ -18,7 +18,7 @@ type ExportImageViaObjectStorageUriDetails struct {
 
 	// The Object Storage URL to export the image to. See [Object Storage URLs]({{DOC_SERVER_URL}}/Content/Compute/Tasks/imageimportexport.htm#URLs)
 	// and [pre-authenticated requests]({{DOC_SERVER_URL}}/Content/Object/Tasks/managingaccess.htm#pre-auth) for constructing URLs for image import/export.
-	DestinationUri *string `mandatory:"true" json:"destinationUri,omitempty"`
+	DestinationUri *string `mandatory:"true" json:"destinationUri"`
 }
 
 func (m ExportImageViaObjectStorageUriDetails) String() string {

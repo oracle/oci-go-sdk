@@ -23,7 +23,7 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	// * At least two numeric characters.
 	// * At least two special characters. Valid special characters include "_", "#", and "-" only.
 	// **The password MUST be the same as the primary admin password.**
-	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword,omitempty"`
+	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the DB System to create the standby database on.
 	PeerDbSystemId *string `mandatory:"false" json:"peerDbSystemId,omitempty"`

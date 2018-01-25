@@ -17,13 +17,13 @@ import (
 type CreateDhcpDetails struct {
 
 	// The OCID of the compartment to contain the set of DHCP options.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A set of DHCP options.
-	Options []DhcpOption `mandatory:"true" json:"options,omitempty"`
+	Options []DhcpOption `mandatory:"true" json:"options"`
 
 	// The OCID of the VCN the set of DHCP options belongs to.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

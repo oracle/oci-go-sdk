@@ -19,11 +19,11 @@ type IngressSecurityRule struct {
 	// defined in
 	// [Protocol Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	// Options are supported only for ICMP ("1"), TCP ("6"), and UDP ("17").
-	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
+	Protocol *string `mandatory:"true" json:"protocol"`
 
 	// The source CIDR block for the ingress rule. This is the range of IP addresses that a
 	// packet coming into the instance can come from.
-	Source *string `mandatory:"true" json:"source,omitempty"`
+	Source *string `mandatory:"true" json:"source"`
 
 	// Optional and valid only for ICMP. Use to specify a particular ICMP type and code
 	// as defined in

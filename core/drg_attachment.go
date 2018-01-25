@@ -17,19 +17,19 @@ import (
 type DrgAttachment struct {
 
 	// The OCID of the compartment containing the DRG attachment.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The OCID of the DRG.
-	DrgId *string `mandatory:"true" json:"drgId,omitempty"`
+	DrgId *string `mandatory:"true" json:"drgId"`
 
 	// The DRG attachment's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The DRG attachment's current state.
-	LifecycleState DrgAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState DrgAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The OCID of the VCN.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.

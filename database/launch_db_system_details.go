@@ -16,10 +16,10 @@ import (
 type LaunchDbSystemDetails struct {
 
 	// The Availability Domain where the DB System is located.
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The Oracle Cloud ID (OCID) of the compartment the DB System  belongs in.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The number of CPU cores to enable. The valid values depend on the specified shape:
 	// - BM.DenseIO1.36 and BM.HighIO1.36 - Specify a multiple of 2, from 2 to 36.
@@ -28,26 +28,26 @@ type LaunchDbSystemDetails struct {
 	// - Exadata.Half1.168 - Specify a multiple of 4, from 44 to 168.
 	// - Exadata.Full1.336 - Specify a multiple of 8, from 88 to 336.
 	// For VM DB systems, the core count is inferred from the specific VM shape chosen, so this parameter is not used.
-	CpuCoreCount *int `mandatory:"true" json:"cpuCoreCount,omitempty"`
+	CpuCoreCount *int `mandatory:"true" json:"cpuCoreCount"`
 
 	// The Oracle Database Edition that applies to all the databases on the DB System.
 	// Exadata DB Systems and 2-node RAC DB Systems require ENTERPRISE_EDITION_EXTREME_PERFORMANCE.
-	DatabaseEdition LaunchDbSystemDetailsDatabaseEditionEnum `mandatory:"true" json:"databaseEdition,omitempty"`
+	DatabaseEdition LaunchDbSystemDetailsDatabaseEditionEnum `mandatory:"true" json:"databaseEdition"`
 
-	DbHome *CreateDbHomeDetails `mandatory:"true" json:"dbHome,omitempty"`
+	DbHome *CreateDbHomeDetails `mandatory:"true" json:"dbHome"`
 
 	// The host name for the DB System. The host name must begin with an alphabetic character and
 	// can contain a maximum of 30 alphanumeric characters, including hyphens (-).
 	// The maximum length of the combined hostname and domain is 63 characters.
 	// **Note:** The hostname must be unique within the subnet. If it is not unique,
 	// the DB System will fail to provision.
-	Hostname *string `mandatory:"true" json:"hostname,omitempty"`
+	Hostname *string `mandatory:"true" json:"hostname"`
 
 	// The shape of the DB System. The shape determines resources allocated to the DB System - CPU cores and memory for VM shapes; CPU cores, memory and storage for non-VM (or bare metal) shapes. To get a list of shapes, use the ListDbSystemShapes operation.
-	Shape *string `mandatory:"true" json:"shape,omitempty"`
+	Shape *string `mandatory:"true" json:"shape"`
 
 	// The public key portion of the key pair to use for SSH access to the DB System. Multiple public keys can be provided. The length of the combined keys cannot exceed 10,000 characters.
-	SshPublicKeys []string `mandatory:"true" json:"sshPublicKeys,omitempty"`
+	SshPublicKeys []string `mandatory:"true" json:"sshPublicKeys"`
 
 	// The OCID of the subnet the DB System is associated with.
 	// **Subnet Restrictions:**
@@ -56,7 +56,7 @@ type LaunchDbSystemDetails struct {
 	// These subnets are used by the Oracle Clusterware private interconnect on the database instance.
 	// Specifying an overlapping subnet will cause the private interconnect to malfunction.
 	// This restriction applies to both the client subnet and backup subnet.
-	SubnetId *string `mandatory:"true" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"true" json:"subnetId"`
 
 	// The OCID of the backup network subnet the DB System is associated with. Applicable only to Exadata.
 	// **Subnet Restrictions:** See above subnetId's **Subnet Restriction**.

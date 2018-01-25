@@ -16,7 +16,7 @@ import (
 type BulkDeleteVirtualCircuitPublicPrefixesDetails struct {
 
 	// The public IP prefixes (CIDRs) to remove from the public virtual circuit.
-	PublicPrefixes []DeleteVirtualCircuitPublicPrefixDetails `mandatory:"true" json:"publicPrefixes,omitempty"`
+	PublicPrefixes []DeleteVirtualCircuitPublicPrefixDetails `mandatory:"true" json:"publicPrefixes"`
 }
 
 func (m BulkDeleteVirtualCircuitPublicPrefixesDetails) String() string {

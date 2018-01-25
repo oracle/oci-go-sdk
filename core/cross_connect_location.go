@@ -16,11 +16,11 @@ import (
 type CrossConnectLocation struct {
 
 	// A description of the location.
-	Description *string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description"`
 
 	// The name of the location.
 	// Example: `CyrusOne, Chandler, AZ`
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 }
 
 func (m CrossConnectLocation) String() string {

@@ -17,17 +17,17 @@ import (
 // for in-progress work flows.
 // For more information about work requests, see [Viewing the State of a Work Request]({{DOC_SERVER_URL}}/Content/Balance/Tasks/viewingworkrequest.htm).
 type WorkRequest struct {
-	ErrorDetails []WorkRequestError `mandatory:"true" json:"errorDetails,omitempty"`
+	ErrorDetails []WorkRequestError `mandatory:"true" json:"errorDetails"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the work request.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the work request.
-	LifecycleState WorkRequestLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState WorkRequestLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer with which the work request
 	// is associated.
-	LoadBalancerId *string `mandatory:"true" json:"loadBalancerId,omitempty"`
+	LoadBalancerId *string `mandatory:"true" json:"loadBalancerId"`
 
 	// A collection of data, related to the load balancer provisioning process, that helps with debugging in the event of failure.
 	// Possible data elements include:
@@ -36,14 +36,14 @@ type WorkRequest struct {
 	// - work request ID
 	// - load balancer ID
 	// - workflow completion message
-	Message *string `mandatory:"true" json:"message,omitempty"`
+	Message *string `mandatory:"true" json:"message"`
 
 	// The date and time the work request was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeAccepted *common.SDKTime `mandatory:"true" json:"timeAccepted,omitempty"`
+	TimeAccepted *common.SDKTime `mandatory:"true" json:"timeAccepted"`
 
 	// The type of action the work request represents.
-	Type *string `mandatory:"true" json:"type,omitempty"`
+	Type *string `mandatory:"true" json:"type"`
 
 	// The date and time the work request was completed, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`

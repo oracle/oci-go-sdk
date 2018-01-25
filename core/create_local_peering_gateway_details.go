@@ -16,10 +16,10 @@ import (
 type CreateLocalPeeringGatewayDetails struct {
 
 	// The OCID of the compartment containing the local peering gateway (LPG).
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The OCID of the VCN the LPG belongs to.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid
 	// entering confidential information.

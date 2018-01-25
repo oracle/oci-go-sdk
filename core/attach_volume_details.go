@@ -28,8 +28,8 @@ type AttachVolumeDetails interface {
 
 type attachvolumedetails struct {
 	JsonData    []byte
-	InstanceId  *string `mandatory:"true" json:"instanceId,omitempty"`
-	VolumeId    *string `mandatory:"true" json:"volumeId,omitempty"`
+	InstanceId  *string `mandatory:"true" json:"instanceId"`
+	VolumeId    *string `mandatory:"true" json:"volumeId"`
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 	Type        string  `json:"type"`
 }

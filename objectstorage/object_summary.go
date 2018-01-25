@@ -18,7 +18,7 @@ import (
 type ObjectSummary struct {
 
 	// The name of the object.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// Size of the object in bytes.
 	Size *int `mandatory:"false" json:"size,omitempty"`

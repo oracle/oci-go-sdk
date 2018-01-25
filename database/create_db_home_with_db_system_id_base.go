@@ -25,7 +25,7 @@ type CreateDbHomeWithDbSystemIdBase interface {
 
 type createdbhomewithdbsystemidbase struct {
 	JsonData    []byte
-	DbSystemId  *string `mandatory:"true" json:"dbSystemId,omitempty"`
+	DbSystemId  *string `mandatory:"true" json:"dbSystemId"`
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
 	Source      string  `json:"source"`
 }

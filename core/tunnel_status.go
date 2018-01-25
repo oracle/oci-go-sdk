@@ -17,7 +17,7 @@ type TunnelStatus struct {
 
 	// The IP address of Oracle's VPN headend.
 	// Example: `129.146.17.50`
-	IpAddress *string `mandatory:"true" json:"ipAddress,omitempty"`
+	IpAddress *string `mandatory:"true" json:"ipAddress"`
 
 	// The tunnel's current state.
 	LifecycleState TunnelStatusLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`

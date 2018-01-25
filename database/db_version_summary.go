@@ -17,7 +17,7 @@ import (
 type DbVersionSummary struct {
 
 	// A valid Oracle database version.
-	Version *string `mandatory:"true" json:"version,omitempty"`
+	Version *string `mandatory:"true" json:"version"`
 
 	// True if this version of the Oracle database software supports pluggable dbs.
 	SupportsPdb *bool `mandatory:"false" json:"supportsPdb,omitempty"`

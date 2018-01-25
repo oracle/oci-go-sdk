@@ -19,15 +19,15 @@ type LaunchInstanceDetails struct {
 
 	// The Availability Domain of the instance.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The OCID of the compartment.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The shape of an instance. The shape determines the number of CPUs, amount of memory,
 	// and other resources allocated to the instance.
 	// You can enumerate all available shapes by calling ListShapes.
-	Shape *string `mandatory:"true" json:"shape,omitempty"`
+	Shape *string `mandatory:"true" json:"shape"`
 
 	// Details for the primary VNIC, which is automatically created and attached when
 	// the instance is launched.

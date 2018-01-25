@@ -21,21 +21,21 @@ import (
 type VolumeBackup struct {
 
 	// The OCID of the compartment that contains the volume backup.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name for the volume backup. Does not have to be unique and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// The OCID of the volume backup.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of a volume backup.
-	LifecycleState VolumeBackupLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState VolumeBackupLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The date and time the volume backup was created. This is the time the actual point-in-time image
 	// of the volume data was taken. Format defined by RFC3339.
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The size of the volume, in GBs.
 	SizeInGBs *int `mandatory:"false" json:"sizeInGBs,omitempty"`

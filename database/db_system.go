@@ -26,37 +26,37 @@ import (
 type DbSystem struct {
 
 	// The name of the Availability Domain that the DB System is located in.
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The OCID of the compartment.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The number of CPU cores enabled on the DB System.
-	CpuCoreCount *int `mandatory:"true" json:"cpuCoreCount,omitempty"`
+	CpuCoreCount *int `mandatory:"true" json:"cpuCoreCount"`
 
 	// The Oracle Database Edition that applies to all the databases on the DB System.
-	DatabaseEdition DbSystemDatabaseEditionEnum `mandatory:"true" json:"databaseEdition,omitempty"`
+	DatabaseEdition DbSystemDatabaseEditionEnum `mandatory:"true" json:"databaseEdition"`
 
 	// The user-friendly name for the DB System. It does not have to be unique.
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// The domain name for the DB System.
-	Domain *string `mandatory:"true" json:"domain,omitempty"`
+	Domain *string `mandatory:"true" json:"domain"`
 
 	// The host name for the DB Node.
-	Hostname *string `mandatory:"true" json:"hostname,omitempty"`
+	Hostname *string `mandatory:"true" json:"hostname"`
 
 	// The OCID of the DB System.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the DB System.
-	LifecycleState DbSystemLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState DbSystemLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The shape of the DB System. The shape determines resources to allocate to the DB system - CPU cores and memory for VM shapes; CPU cores, memory and storage for non-VM (or bare metal) shapes.
-	Shape *string `mandatory:"true" json:"shape,omitempty"`
+	Shape *string `mandatory:"true" json:"shape"`
 
 	// The public key portion of one or more key pairs used for SSH access to the DB System.
-	SshPublicKeys []string `mandatory:"true" json:"sshPublicKeys,omitempty"`
+	SshPublicKeys []string `mandatory:"true" json:"sshPublicKeys"`
 
 	// The OCID of the subnet the DB System is associated with.
 	// **Subnet Restrictions:**
@@ -65,7 +65,7 @@ type DbSystem struct {
 	// These subnets are used by the Oracle Clusterware private interconnect on the database instance.
 	// Specifying an overlapping subnet will cause the private interconnect to malfunction.
 	// This restriction applies to both the client subnet and backup subnet.
-	SubnetId *string `mandatory:"true" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"true" json:"subnetId"`
 
 	// The OCID of the backup network subnet the DB System is associated with. Applicable only to Exadata.
 	// **Subnet Restriction:** See above subnetId's 'Subnet Restriction'.

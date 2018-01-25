@@ -18,7 +18,7 @@ import (
 type CreateMultipartUploadDetails struct {
 
 	// the name of the object to which this multi-part upload is targetted.
-	Object *string `mandatory:"true" json:"object,omitempty"`
+	Object *string `mandatory:"true" json:"object"`
 
 	// the content type of the object to upload.
 	ContentType *string `mandatory:"false" json:"contentType,omitempty"`

@@ -19,11 +19,11 @@ type CreateBackendDetails struct {
 
 	// The IP address of the backend server.
 	// Example: `10.10.10.4`
-	IpAddress *string `mandatory:"true" json:"ipAddress,omitempty"`
+	IpAddress *string `mandatory:"true" json:"ipAddress"`
 
 	// The communication port for the backend server.
 	// Example: `8080`
-	Port *int `mandatory:"true" json:"port,omitempty"`
+	Port *int `mandatory:"true" json:"port"`
 
 	// Whether the load balancer should treat this server as a backup unit. If `true`, the load balancer forwards no ingress
 	// traffic to this backend server unless all other backend servers not marked as "backup" fail the health check policy.

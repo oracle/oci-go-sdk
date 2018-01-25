@@ -24,29 +24,29 @@ type Instance struct {
 
 	// The Availability Domain the instance is running in.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The OCID of the compartment that contains the instance.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The OCID of the instance.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the instance.
-	LifecycleState InstanceLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState InstanceLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The region that contains the Availability Domain the instance is running in.
 	// Example: `phx`
-	Region *string `mandatory:"true" json:"region,omitempty"`
+	Region *string `mandatory:"true" json:"region"`
 
 	// The shape of the instance. The shape determines the number of CPUs and the amount of memory
 	// allocated to the instance. You can enumerate all available shapes by calling
 	// ListShapes.
-	Shape *string `mandatory:"true" json:"shape,omitempty"`
+	Shape *string `mandatory:"true" json:"shape"`
 
 	// The date and time the instance was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.

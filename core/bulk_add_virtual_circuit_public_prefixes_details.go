@@ -16,7 +16,7 @@ import (
 type BulkAddVirtualCircuitPublicPrefixesDetails struct {
 
 	// The public IP prefixes (CIDRs) to add to the public virtual circuit.
-	PublicPrefixes []CreateVirtualCircuitPublicPrefixDetails `mandatory:"true" json:"publicPrefixes,omitempty"`
+	PublicPrefixes []CreateVirtualCircuitPublicPrefixDetails `mandatory:"true" json:"publicPrefixes"`
 }
 
 func (m BulkAddVirtualCircuitPublicPrefixesDetails) String() string {

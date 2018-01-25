@@ -16,21 +16,21 @@ import (
 type CreateLoadBalancerDetails struct {
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the compartment in which to create the load balancer.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name. It does not have to be unique, and it is changeable.
 	// Avoid entering confidential information.
 	// Example: `My load balancer`
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// A template that determines the total pre-provisioned bandwidth (ingress plus egress).
 	// To get a list of available shapes, use the ListShapes
 	// operation.
 	// Example: `100Mbps`
-	ShapeName *string `mandatory:"true" json:"shapeName,omitempty"`
+	ShapeName *string `mandatory:"true" json:"shapeName"`
 
 	// An array of subnet [OCIDs]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
-	SubnetIds []string `mandatory:"true" json:"subnetIds,omitempty"`
+	SubnetIds []string `mandatory:"true" json:"subnetIds"`
 
 	BackendSets map[string]BackendSetDetails `mandatory:"false" json:"backendSets,omitempty"`
 

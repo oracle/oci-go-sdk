@@ -17,7 +17,7 @@ type VirtualCircuitBandwidthShape struct {
 
 	// The name of the bandwidth shape.
 	// Example: `10 Gbps`
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// The bandwidth in Mbps.
 	// Example: `10000`

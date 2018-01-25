@@ -16,12 +16,12 @@ import (
 type CreateVirtualCircuitDetails struct {
 
 	// The OCID of the compartment to contain the virtual circuit.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The type of IP addresses used in this virtual circuit. PRIVATE
 	// means [RFC 1918](https://tools.ietf.org/html/rfc1918) addresses
 	// (10.0.0.0/8, 172.16/12, and 192.168/16). Only PRIVATE is supported.
-	Type CreateVirtualCircuitDetailsTypeEnum `mandatory:"true" json:"type,omitempty"`
+	Type CreateVirtualCircuitDetailsTypeEnum `mandatory:"true" json:"type"`
 
 	// The provisioned data rate of the connection.  To get a list of the
 	// available bandwidth levels (that is, shapes), see

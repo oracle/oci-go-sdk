@@ -27,23 +27,23 @@ import (
 type DhcpOptions struct {
 
 	// The OCID of the compartment containing the set of DHCP options.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Oracle ID (OCID) for the set of DHCP options.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the set of DHCP options.
-	LifecycleState DhcpOptionsLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState DhcpOptionsLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The collection of individual DHCP options.
-	Options []DhcpOption `mandatory:"true" json:"options,omitempty"`
+	Options []DhcpOption `mandatory:"true" json:"options"`
 
 	// Date and time the set of DHCP options was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The OCID of the VCN the set of DHCP options belongs to.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.

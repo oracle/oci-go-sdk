@@ -16,7 +16,7 @@ import (
 type ReinstateDataGuardAssociationDetails struct {
 
 	// The DB System administrator password.
-	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword,omitempty"`
+	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword"`
 }
 
 func (m ReinstateDataGuardAssociationDetails) String() string {

@@ -19,20 +19,20 @@ type HealthChecker struct {
 	// The backend server port against which to run the health check. If the port is not specified, the load balancer uses the
 	// port information from the `Backend` object.
 	// Example: `8080`
-	Port *int `mandatory:"true" json:"port,omitempty"`
+	Port *int `mandatory:"true" json:"port"`
 
 	// The protocol the health check must use; either HTTP or TCP.
 	// Example: `HTTP`
-	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
+	Protocol *string `mandatory:"true" json:"protocol"`
 
 	// A regular expression for parsing the response body from the backend server.
 	// Example: `^(500|40[1348])$`
-	ResponseBodyRegex *string `mandatory:"true" json:"responseBodyRegex,omitempty"`
+	ResponseBodyRegex *string `mandatory:"true" json:"responseBodyRegex"`
 
 	// The status code a healthy backend server should return. If you configure the health check policy to use the HTTP protocol,
 	// you can use common HTTP status codes such as "200".
 	// Example: `200`
-	ReturnCode *int `mandatory:"true" json:"returnCode,omitempty"`
+	ReturnCode *int `mandatory:"true" json:"returnCode"`
 
 	// The interval between health checks, in milliseconds. The default is 10000 (10 seconds).
 	// Example: `30000`

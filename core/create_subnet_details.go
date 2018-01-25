@@ -17,17 +17,17 @@ type CreateSubnetDetails struct {
 
 	// The Availability Domain to contain the subnet.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The CIDR IP address range of the subnet.
 	// Example: `172.16.1.0/24`
-	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
+	CidrBlock *string `mandatory:"true" json:"cidrBlock"`
 
 	// The OCID of the compartment to contain the subnet.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The OCID of the VCN to contain the subnet.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// The OCID of the set of DHCP options the subnet will use. If you don't
 	// provide a value, the subnet will use the VCN's default set of DHCP options.

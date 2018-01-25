@@ -18,35 +18,35 @@ type IScsiVolumeAttachment struct {
 
 	// The Availability Domain of an instance.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The OCID of the compartment.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The OCID of the volume attachment.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID of the instance the volume is attached to.
-	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId"`
 
 	// The date and time the volume was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The OCID of the volume.
-	VolumeId *string `mandatory:"true" json:"volumeId,omitempty"`
+	VolumeId *string `mandatory:"true" json:"volumeId"`
 
 	// The volume's iSCSI IP address.
 	// Example: `169.254.0.2`
-	Ipv4 *string `mandatory:"true" json:"ipv4,omitempty"`
+	Ipv4 *string `mandatory:"true" json:"ipv4"`
 
 	// The target volume's iSCSI Qualified Name in the format defined by RFC 3720.
 	// Example: `iqn.2015-12.us.oracle.com:456b0391-17b8-4122-bbf1-f85fc0bb97d9`
-	Iqn *string `mandatory:"true" json:"iqn,omitempty"`
+	Iqn *string `mandatory:"true" json:"iqn"`
 
 	// The volume's iSCSI port.
 	// Example: `3260`
-	Port *int `mandatory:"true" json:"port,omitempty"`
+	Port *int `mandatory:"true" json:"port"`
 
 	// A user-friendly name. Does not have to be unique, and it cannot be changed.
 	// Avoid entering confidential information.

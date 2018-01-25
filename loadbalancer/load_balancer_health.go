@@ -20,7 +20,7 @@ type LoadBalancerHealth struct {
 	// A list of backend sets that are currently in the `CRITICAL` health state. The list identifies each backend set by the
 	// friendly name you assigned when you created it.
 	// Example: `My_backend_set`
-	CriticalStateBackendSetNames []string `mandatory:"true" json:"criticalStateBackendSetNames,omitempty"`
+	CriticalStateBackendSetNames []string `mandatory:"true" json:"criticalStateBackendSetNames"`
 
 	// The overall health status of the load balancer.
 	// *  **OK:** All backend sets associated with the load balancer return a status of `OK`.
@@ -33,21 +33,21 @@ type LoadBalancerHealth struct {
 	//     *  More than half of the backend sets associated with the load balancer return a status of `UNKNOWN`, none of the backend
 	//        sets return a status of `WARNING` or `CRITICAL`, and the load balancer life cycle state is `ACTIVE`.
 	//     *  The system could not retrieve metrics for any reason.
-	Status LoadBalancerHealthStatusEnum `mandatory:"true" json:"status,omitempty"`
+	Status LoadBalancerHealthStatusEnum `mandatory:"true" json:"status"`
 
 	// The total number of backend sets associated with this load balancer.
 	// Example: `4`
-	TotalBackendSetCount *int `mandatory:"true" json:"totalBackendSetCount,omitempty"`
+	TotalBackendSetCount *int `mandatory:"true" json:"totalBackendSetCount"`
 
 	// A list of backend sets that are currently in the `UNKNOWN` health state. The list identifies each backend set by the
 	// friendly name you assigned when you created it.
 	// Example: `Backend_set2`
-	UnknownStateBackendSetNames []string `mandatory:"true" json:"unknownStateBackendSetNames,omitempty"`
+	UnknownStateBackendSetNames []string `mandatory:"true" json:"unknownStateBackendSetNames"`
 
 	// A list of backend sets that are currently in the `WARNING` health state. The list identifies each backend set by the
 	// friendly name you assigned when you created it.
 	// Example: `Backend_set3`
-	WarningStateBackendSetNames []string `mandatory:"true" json:"warningStateBackendSetNames,omitempty"`
+	WarningStateBackendSetNames []string `mandatory:"true" json:"warningStateBackendSetNames"`
 }
 
 func (m LoadBalancerHealth) String() string {

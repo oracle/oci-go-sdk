@@ -17,19 +17,19 @@ import (
 type DatabaseSummary struct {
 
 	// The OCID of the compartment.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The database name.
-	DbName *string `mandatory:"true" json:"dbName,omitempty"`
+	DbName *string `mandatory:"true" json:"dbName"`
 
 	// A system-generated name for the database to ensure uniqueness within an Oracle Data Guard group (a primary database and its standby databases). The unique name cannot be changed.
-	DbUniqueName *string `mandatory:"true" json:"dbUniqueName,omitempty"`
+	DbUniqueName *string `mandatory:"true" json:"dbUniqueName"`
 
 	// The OCID of the database.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the database.
-	LifecycleState DatabaseSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState DatabaseSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The character set for the database.
 	CharacterSet *string `mandatory:"false" json:"characterSet,omitempty"`

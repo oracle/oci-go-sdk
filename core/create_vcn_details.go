@@ -17,10 +17,10 @@ type CreateVcnDetails struct {
 
 	// The CIDR IP address block of the VCN.
 	// Example: `172.16.0.0/16`
-	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
+	CidrBlock *string `mandatory:"true" json:"cidrBlock"`
 
 	// The OCID of the compartment to contain the VCN.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

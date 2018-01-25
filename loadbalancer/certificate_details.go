@@ -21,7 +21,7 @@ type CertificateDetails struct {
 	// Valid certificate bundle names include only alphanumeric characters, dashes, and underscores.
 	// Certificate bundle names cannot contain spaces. Avoid entering confidential information.
 	// Example: `My_certificate_bundle`
-	CertificateName *string `mandatory:"true" json:"certificateName,omitempty"`
+	CertificateName *string `mandatory:"true" json:"certificateName"`
 
 	// The Certificate Authority certificate, or any interim certificate, that you received from your SSL certificate provider.
 	// Example:

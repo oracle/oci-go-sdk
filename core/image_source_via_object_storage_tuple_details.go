@@ -17,13 +17,13 @@ import (
 type ImageSourceViaObjectStorageTupleDetails struct {
 
 	// The Object Storage bucket for the image.
-	BucketName *string `mandatory:"true" json:"bucketName,omitempty"`
+	BucketName *string `mandatory:"true" json:"bucketName"`
 
 	// The Object Storage namespace for the image.
-	NamespaceName *string `mandatory:"true" json:"namespaceName,omitempty"`
+	NamespaceName *string `mandatory:"true" json:"namespaceName"`
 
 	// The Object Storage name for the image.
-	ObjectName *string `mandatory:"true" json:"objectName,omitempty"`
+	ObjectName *string `mandatory:"true" json:"objectName"`
 }
 
 func (m ImageSourceViaObjectStorageTupleDetails) String() string {

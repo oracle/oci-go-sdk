@@ -16,16 +16,16 @@ import (
 type CreateSecurityListDetails struct {
 
 	// The OCID of the compartment to contain the security list.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Rules for allowing egress IP packets.
-	EgressSecurityRules []EgressSecurityRule `mandatory:"true" json:"egressSecurityRules,omitempty"`
+	EgressSecurityRules []EgressSecurityRule `mandatory:"true" json:"egressSecurityRules"`
 
 	// Rules for allowing ingress IP packets.
-	IngressSecurityRules []IngressSecurityRule `mandatory:"true" json:"ingressSecurityRules,omitempty"`
+	IngressSecurityRules []IngressSecurityRule `mandatory:"true" json:"ingressSecurityRules"`
 
 	// The OCID of the VCN the security list belongs to.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`

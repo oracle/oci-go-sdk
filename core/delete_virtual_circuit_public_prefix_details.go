@@ -16,7 +16,7 @@ import (
 type DeleteVirtualCircuitPublicPrefixDetails struct {
 
 	// An individual public IP prefix (CIDR) to remove from the public virtual circuit.
-	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
+	CidrBlock *string `mandatory:"true" json:"cidrBlock"`
 }
 
 func (m DeleteVirtualCircuitPublicPrefixDetails) String() string {

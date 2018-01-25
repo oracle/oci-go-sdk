@@ -22,24 +22,24 @@ import (
 type IpSecConnection struct {
 
 	// The OCID of the compartment containing the IPSec connection.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The OCID of the CPE.
-	CpeId *string `mandatory:"true" json:"cpeId,omitempty"`
+	CpeId *string `mandatory:"true" json:"cpeId"`
 
 	// The OCID of the DRG.
-	DrgId *string `mandatory:"true" json:"drgId,omitempty"`
+	DrgId *string `mandatory:"true" json:"drgId"`
 
 	// The IPSec connection's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The IPSec connection's current state.
-	LifecycleState IpSecConnectionLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState IpSecConnectionLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// Static routes to the CPE. At least one route must be included. The CIDR must not be a
 	// multicast address or class E address.
 	// Example: `10.0.1.0/24`
-	StaticRoutes []string `mandatory:"true" json:"staticRoutes,omitempty"`
+	StaticRoutes []string `mandatory:"true" json:"staticRoutes"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.

@@ -17,7 +17,7 @@ import (
 type InstanceSourceViaBootVolumeDetails struct {
 
 	// The OCID of the boot volume used to boot the instance.
-	BootVolumeId *string `mandatory:"true" json:"bootVolumeId,omitempty"`
+	BootVolumeId *string `mandatory:"true" json:"bootVolumeId"`
 }
 
 func (m InstanceSourceViaBootVolumeDetails) String() string {

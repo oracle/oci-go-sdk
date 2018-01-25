@@ -16,7 +16,7 @@ import (
 type CrossConnectStatus struct {
 
 	// The OCID of the cross-connect.
-	CrossConnectId *string `mandatory:"true" json:"crossConnectId,omitempty"`
+	CrossConnectId *string `mandatory:"true" json:"crossConnectId"`
 
 	// Whether Oracle's side of the interface is up or down.
 	InterfaceState CrossConnectStatusInterfaceStateEnum `mandatory:"false" json:"interfaceState,omitempty"`

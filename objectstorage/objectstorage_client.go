@@ -18,6 +18,7 @@ import (
 //ObjectStorageClient a client for ObjectStorage
 type ObjectStorageClient struct {
 	common.BaseClient
+	config *common.ConfigurationProvider
 }
 
 func buildSigner(configProvider common.ConfigurationProvider) common.HTTPRequestSigner {
@@ -40,13 +41,28 @@ func NewObjectStorageClientWithConfigurationProvider(configProvider common.Confi
 	baseClient.Signer = buildSigner(configProvider)
 
 	client = ObjectStorageClient{BaseClient: baseClient}
-	region, err := configProvider.Region()
-	if err != nil {
-		return
+	err = client.setConfigurationProvider(configProvider)
+	return
+}
+
+// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+func (client *ObjectStorageClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
+	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
+		return err
 	}
 
+	region, err := configProvider.Region()
+	if err != nil {
+		return err
+	}
+	client.config = &configProvider
 	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "objectstorage", string(region))
-	return
+	return nil
+}
+
+// ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
+func (client *ObjectStorageClient) ConfigurationProvider() *common.ConfigurationProvider {
+	return client.config
 }
 
 // AbortMultipartUpload Aborts an in-progress multipart upload and deletes all parts that have been uploaded.
