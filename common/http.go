@@ -77,6 +77,130 @@ func addBinaryBody(request *http.Request, value reflect.Value) (e error) {
 	return nil
 }
 
+// shouldFieldValueBeRemoved, evaluates if a field with json and  non mandatory tags is nil
+// returns the json tag name, or an error if the tags are incorrectly present
+func shouldFieldValueBeRemoved(field reflect.StructField, fieldValue reflect.Value) (bool, string, error) {
+	currentTag := field.Tag
+	jsonTag := currentTag.Get("json")
+
+	if jsonTag == "" {
+		return false, "", fmt.Errorf("json tag is not valid for field %s", field.Name)
+	}
+
+	partsJSONTag := strings.Split(jsonTag, ",")
+	nameJSONField := partsJSONTag[0]
+
+	if _, ok := currentTag.Lookup("mandatory"); !ok {
+		//No mandatory field set, no-op
+		return false, nameJSONField, nil
+	}
+	isMandatory, err := strconv.ParseBool(currentTag.Get("mandatory"))
+	if err != nil {
+		return false, "", fmt.Errorf("mandatory tag is not valid for field %s", field.Name)
+	}
+
+	// If the field is marked as mandatory, no-op
+	if isMandatory {
+		return false, nameJSONField, nil
+	}
+
+	Debugf("Adjusting tag: mandatory is false and json tag is valid on field: %s", field.Name)
+
+	//If the field can not be nil, then no-op
+	if !isNillableType(&fieldValue) {
+		Debugf("WARNING json field is tagged with mandatory flags, but the type can not be nil, field name: %s", field.Name)
+		return false, nameJSONField, nil
+	}
+
+	//If filed value is nil, tag it as omitEmpty
+	if fieldValue.IsNil() {
+		return true, nameJSONField, nil
+	}
+	return false, nameJSONField, nil
+
+}
+
+//isNillableType returns true if the filed can be nil
+func isNillableType(value *reflect.Value) bool {
+	k := value.Kind()
+	switch k {
+	case reflect.Func, reflect.Map, reflect.Ptr, reflect.Interface, reflect.Slice:
+		return true
+	default:
+		return false
+	}
+}
+
+// omitNilFieldsInJSON, removes json keys whose struct value is nil, and the field is tag as *non-mandatory*
+func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, error) {
+	switch value.Kind() {
+	case reflect.Struct:
+		jsonMap := data.(map[string]interface{})
+		fieldType := value.Type()
+		for i := 0; i < fieldType.NumField(); i++ {
+			currentField := fieldType.Field(i)
+			//unexported skip
+			if currentField.PkgPath != "" {
+				continue
+			}
+
+			//Does not have json tag, no-op
+			if _, ok := currentField.Tag.Lookup("json"); !ok {
+				continue
+			}
+
+			currentFieldValue := value.Field(i)
+			ok, jsonFieldName, err := shouldFieldValueBeRemoved(currentField, currentFieldValue)
+			if err != nil {
+				return nil, fmt.Errorf("can not omit nil fields for field: %s, due to: %s",
+					currentField.Name, err.Error())
+			}
+
+			//Delete the struct field from the json representation
+			if ok {
+				delete(jsonMap, jsonFieldName)
+				continue
+			}
+
+			// does it need to be adjusted?
+			jsonMap[jsonFieldName], err = omitNilFieldsInJSON(jsonMap[jsonFieldName], currentFieldValue)
+			if err != nil {
+				return nil, fmt.Errorf("can not omit nil fields for field: %s, due to: %s",
+					currentField.Name, err.Error())
+			}
+		}
+		return jsonMap, nil
+	case reflect.Slice, reflect.Array:
+		jsonList := data.([]interface{})
+		newList := make([]interface{}, len(jsonList))
+		var err error
+		for i, val := range jsonList {
+			newList[i], err = omitNilFieldsInJSON(val, value.Index(i))
+			if err != nil {
+				return nil, err
+			}
+		}
+		return newList, nil
+	case reflect.Map:
+		jsonMap := data.(map[string]interface{})
+		newMap := make(map[string]interface{}, len(jsonMap))
+		var err error
+		for key, val := range jsonMap {
+			newMap[key], err = omitNilFieldsInJSON(val, value.MapIndex(reflect.ValueOf(key)))
+			if err != nil {
+				return nil, err
+			}
+		}
+		return newMap, nil
+	case reflect.Ptr, reflect.Interface:
+		valPtr := value.Elem()
+		return omitNilFieldsInJSON(data, valPtr)
+	default:
+		//Otherwise no-op
+		return data, nil
+	}
+}
+
 func addToBody(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
 	Debugln("Marshaling to body from field:", field.Name)
 	if request.Body != nil {
@@ -89,6 +213,13 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 		return addBinaryBody(request, value)
 	}
 
+	/*
+		rawJson, e := json.Marshal(value.Interface())
+		if e != nil {
+			return
+		}
+		marshaled, e := omitNilFieldsInJSON(rawJson, value.Interface())
+	*/
 	marshaled, e := json.Marshal(value.Interface())
 	if e != nil {
 		return

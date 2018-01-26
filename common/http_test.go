@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"reflect"
 	"strconv"
 	"strings"
 	"testing"
@@ -603,4 +604,163 @@ func TestEmptyQueryParam(t *testing.T) {
 	assert.Contains(t, r.URL.RawQuery, "qp")
 	assert.NotContains(t, r.URL.RawQuery, "meta")
 
+}
+
+func TestOmitFieldsInJson_SimpleStruct(t *testing.T) {
+	type Nested struct {
+		N   *string `mandatory:"false" json:"n"`
+		NN  *string `mandatory:"false" json:"nn"`
+		NNN string  `json:"nnn"`
+	}
+	val := ""
+	s := Nested{NN: &val}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"nn":"","nnn":""}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithSlice(t *testing.T) {
+	type Nested struct {
+		N            *string `mandatory:"false" json:"n"`
+		NN           *string `mandatory:"false" json:"nn"`
+		NNN          string  `json:"nnn"`
+		Numbers      []int   `mandatory:"false" json:"numbers"`
+		EmptyNumbers []int   `mandatory:"false" json:"enumbers"`
+		NilNumbers   []int   `mandatory:"false" json:"nilnumbers"`
+	}
+	val := ""
+	numbers := []int{1, 3}
+	s := Nested{NN: &val, Numbers: numbers, EmptyNumbers: []int{}}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NotContains(t, "nilnumbers", mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"enumbers":[],"nn":"","nnn":"","numbers":[1,3]}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithStruct(t *testing.T) {
+	type InSstruct struct {
+		AString      *string `mandatory:"false" json:"a"`
+		ANilString   *string `mandatory:"false" json:"anil"`
+		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
+	}
+
+	type Nested struct {
+		N        *string   `mandatory:"false" json:"n"`
+		Numbers  []int     `mandatory:"false" json:"numbers"`
+		ZComplex InSstruct `mandatory:"false" json:"complex"`
+	}
+	val := ""
+	numbers := []int{1, 3}
+	s := Nested{N: &val, Numbers: numbers, ZComplex: InSstruct{AString: &val, EmptyNumbers: []int{}}}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NotContains(t, "nilnumbers", mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"complex":{"a":"","aempty":[]},"n":"","numbers":[1,3]}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithStructPtr(t *testing.T) {
+	type InSstruct struct {
+		AString      *string `mandatory:"false" json:"a"`
+		ANilString   *string `mandatory:"false" json:"anil"`
+		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
+	}
+
+	type Nested struct {
+		N        *string    `mandatory:"false" json:"n"`
+		Numbers  []int      `mandatory:"false" json:"numbers"`
+		ZComplex *InSstruct `mandatory:"false" json:"complex"`
+	}
+	val := ""
+	numbers := []int{1, 3}
+	s := Nested{N: &val, Numbers: numbers, ZComplex: &InSstruct{AString: &val, EmptyNumbers: []int{}}}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NotContains(t, "nilnumbers", mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"complex":{"a":"","aempty":[]},"n":"","numbers":[1,3]}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithSliceStruct(t *testing.T) {
+	type InSstruct struct {
+		AString      *string `mandatory:"false" json:"a"`
+		ANilString   *string `mandatory:"false" json:"anil"`
+		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
+	}
+
+	type Nested struct {
+		//N *string `mandatory:"false" json:"n"`
+		//Numbers []int `mandatory:"false" json:"numbers"`
+		ZComplex []InSstruct `mandatory:"false" json:"complex"`
+	}
+	val := ""
+	//numbers := []int{1, 3}
+	//s := Nested{N:&val, Numbers: numbers, ZComplex:InSstruct{AString:&val, EmptyNumbers:[]int{}}}
+	s := Nested{ZComplex: []InSstruct{{AString: &val, EmptyNumbers: []int{}}}}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NotContains(t, "nilnumbers", mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"complex":[{"a":"","aempty":[]}]}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithMapStruct(t *testing.T) {
+	type InSstruct struct {
+		AString      *string `mandatory:"false" json:"a"`
+		ANilString   *string `mandatory:"false" json:"anil"`
+		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
+	}
+
+	type Nested struct {
+		//N *string `mandatory:"false" json:"n"`
+		//Numbers []int `mandatory:"false" json:"numbers"`
+		ZComplex map[string]InSstruct `mandatory:"false" json:"complex"`
+	}
+	val := ""
+	val2 := "two"
+	//numbers := []int{1, 3}
+	//s := Nested{N:&val, Numbers: numbers, ZComplex:InSstruct{AString:&val, EmptyNumbers:[]int{}}}
+	data := make(map[string]InSstruct)
+	data["one"] = InSstruct{AString: &val, EmptyNumbers:[]int{}}
+	data["two"] = InSstruct{AString: &val2, EmptyNumbers:[]int{1}}
+	data["ten"] = InSstruct{AString: &val2}
+
+	s := Nested{ZComplex: data}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NotContains(t, "nilnumbers", mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"complex":{"one":{"a":"","aempty":[]},"ten":{"a":"two"},"two":{"a":"two","aempty":[1]}}}`, string(jsonRet))
 }
