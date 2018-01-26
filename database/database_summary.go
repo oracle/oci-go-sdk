@@ -32,27 +32,27 @@ type DatabaseSummary struct {
 	LifecycleState DatabaseSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The character set for the database.
-	CharacterSet *string `mandatory:"false" json:"characterSet,omitempty"`
+	CharacterSet *string `mandatory:"false" json:"characterSet"`
 
-	DbBackupConfig *DbBackupConfig `mandatory:"false" json:"dbBackupConfig,omitempty"`
+	DbBackupConfig *DbBackupConfig `mandatory:"false" json:"dbBackupConfig"`
 
 	// The OCID of the database home.
-	DbHomeId *string `mandatory:"false" json:"dbHomeId,omitempty"`
+	DbHomeId *string `mandatory:"false" json:"dbHomeId"`
 
 	// Database workload type.
-	DbWorkload *string `mandatory:"false" json:"dbWorkload,omitempty"`
+	DbWorkload *string `mandatory:"false" json:"dbWorkload"`
 
 	// Additional information about the current lifecycleState.
-	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
+	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The national character set for the database.
-	NcharacterSet *string `mandatory:"false" json:"ncharacterSet,omitempty"`
+	NcharacterSet *string `mandatory:"false" json:"ncharacterSet"`
 
 	// Pluggable database name. It must begin with an alphabetic character and can contain a maximum of eight alphanumeric characters. Special characters are not permitted. Pluggable database should not be same as database name.
-	PdbName *string `mandatory:"false" json:"pdbName,omitempty"`
+	PdbName *string `mandatory:"false" json:"pdbName"`
 
 	// The date and time the database was created.
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m DatabaseSummary) String() string {

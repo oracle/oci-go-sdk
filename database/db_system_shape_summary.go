@@ -26,7 +26,7 @@ type DbSystemShapeSummary struct {
 	Name *string `mandatory:"true" json:"name"`
 
 	// Deprecated. Use `name` instead of `shape`.
-	Shape *string `mandatory:"false" json:"shape,omitempty"`
+	Shape *string `mandatory:"false" json:"shape"`
 }
 
 func (m DbSystemShapeSummary) String() string {

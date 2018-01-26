@@ -58,7 +58,7 @@ type volumeattachment struct {
 	LifecycleState     VolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 	TimeCreated        *common.SDKTime                    `mandatory:"true" json:"timeCreated"`
 	VolumeId           *string                            `mandatory:"true" json:"volumeId"`
-	DisplayName        *string                            `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName        *string                            `mandatory:"false" json:"displayName"`
 	AttachmentType     string                             `json:"attachmentType"`
 }
 

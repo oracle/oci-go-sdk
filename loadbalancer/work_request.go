@@ -47,7 +47,7 @@ type WorkRequest struct {
 
 	// The date and time the work request was completed, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished,omitempty"`
+	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished"`
 }
 
 func (m WorkRequest) String() string {

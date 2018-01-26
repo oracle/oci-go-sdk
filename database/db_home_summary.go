@@ -37,13 +37,13 @@ type DbHomeSummary struct {
 	LifecycleState DbHomeSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The OCID of the DB System.
-	DbSystemId *string `mandatory:"false" json:"dbSystemId,omitempty"`
+	DbSystemId *string `mandatory:"false" json:"dbSystemId"`
 
 	// The OCID of the last patch history. This is updated as soon as a patch operation is started.
-	LastPatchHistoryEntryId *string `mandatory:"false" json:"lastPatchHistoryEntryId,omitempty"`
+	LastPatchHistoryEntryId *string `mandatory:"false" json:"lastPatchHistoryEntryId"`
 
 	// The date and time the database home was created.
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m DbHomeSummary) String() string {

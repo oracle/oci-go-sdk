@@ -23,11 +23,11 @@ type SslConfigurationDetails struct {
 
 	// The maximum depth for peer certificate chain verification.
 	// Example: `3`
-	VerifyDepth *int `mandatory:"false" json:"verifyDepth,omitempty"`
+	VerifyDepth *int `mandatory:"false" json:"verifyDepth"`
 
 	// Whether the load balancer listener should verify peer certificates.
 	// Example: `true`
-	VerifyPeerCertificate *bool `mandatory:"false" json:"verifyPeerCertificate,omitempty"`
+	VerifyPeerCertificate *bool `mandatory:"false" json:"verifyPeerCertificate"`
 }
 
 func (m SslConfigurationDetails) String() string {

@@ -38,13 +38,13 @@ type CrossConnectMapping struct {
 	// The key for BGP MD5 authentication. Only applicable if your system
 	// requires MD5 authentication. If empty or not set (null), that
 	// means you don't use BGP MD5 authentication.
-	BgpMd5AuthKey *string `mandatory:"false" json:"bgpMd5AuthKey,omitempty"`
+	BgpMd5AuthKey *string `mandatory:"false" json:"bgpMd5AuthKey"`
 
 	// The OCID of the cross-connect or cross-connect group for this mapping.
 	// Specified by the owner of the cross-connect or cross-connect group (the
 	// customer if the customer is colocated with Oracle, or the provider if the
 	// customer is connecting via provider).
-	CrossConnectOrCrossConnectGroupId *string `mandatory:"false" json:"crossConnectOrCrossConnectGroupId,omitempty"`
+	CrossConnectOrCrossConnectGroupId *string `mandatory:"false" json:"crossConnectOrCrossConnectGroupId"`
 
 	// The BGP IP address for the router on the other end of the BGP session from
 	// Oracle. Specified by the owner of that router. If the session goes from Oracle
@@ -53,7 +53,7 @@ type CrossConnectMapping struct {
 	// provider's edge router. Must use a /30 or /31 subnet mask.
 	// There's one exception: for a public virtual circuit, Oracle specifies the BGP IP addresses.
 	// Example: `10.0.0.18/31`
-	CustomerBgpPeeringIp *string `mandatory:"false" json:"customerBgpPeeringIp,omitempty"`
+	CustomerBgpPeeringIp *string `mandatory:"false" json:"customerBgpPeeringIp"`
 
 	// The IP address for Oracle's end of the BGP session. Must use a /30 or /31
 	// subnet mask. If the session goes from Oracle to a customer's edge router,
@@ -61,14 +61,14 @@ type CrossConnectMapping struct {
 	// a provider's edge router, the provider specifies this.
 	// There's one exception: for a public virtual circuit, Oracle specifies the BGP IP addresses.
 	// Example: `10.0.0.19/31`
-	OracleBgpPeeringIp *string `mandatory:"false" json:"oracleBgpPeeringIp,omitempty"`
+	OracleBgpPeeringIp *string `mandatory:"false" json:"oracleBgpPeeringIp"`
 
 	// The number of the specific VLAN (on the cross-connect or cross-connect group)
 	// that is assigned to this virtual circuit. Specified by the owner of the cross-connect
 	// or cross-connect group (the customer if the customer is colocated with Oracle, or
 	// the provider if the customer is connecting via provider).
 	// Example: `200`
-	Vlan *int `mandatory:"false" json:"vlan,omitempty"`
+	Vlan *int `mandatory:"false" json:"vlan"`
 }
 
 func (m CrossConnectMapping) String() string {

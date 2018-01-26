@@ -22,7 +22,7 @@ type CreateDbHomeWithDbSystemIdFromBackupDetails struct {
 	Database *CreateDatabaseFromBackupDetails `mandatory:"true" json:"database"`
 
 	// The user-provided name of the database home.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 //GetDbSystemId returns DbSystemId

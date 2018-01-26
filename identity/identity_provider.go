@@ -70,7 +70,7 @@ type identityprovider struct {
 	ProductType    *string                            `mandatory:"true" json:"productType"`
 	TimeCreated    *common.SDKTime                    `mandatory:"true" json:"timeCreated"`
 	LifecycleState IdentityProviderLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
-	InactiveStatus *int                               `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int                               `mandatory:"false" json:"inactiveStatus"`
 	Protocol       string                             `json:"protocol"`
 }
 

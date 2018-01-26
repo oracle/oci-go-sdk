@@ -20,7 +20,7 @@ type DbVersionSummary struct {
 	Version *string `mandatory:"true" json:"version"`
 
 	// True if this version of the Oracle database software supports pluggable dbs.
-	SupportsPdb *bool `mandatory:"false" json:"supportsPdb,omitempty"`
+	SupportsPdb *bool `mandatory:"false" json:"supportsPdb"`
 }
 
 func (m DbVersionSummary) String() string {

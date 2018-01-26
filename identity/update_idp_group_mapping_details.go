@@ -16,10 +16,10 @@ import (
 type UpdateIdpGroupMappingDetails struct {
 
 	// The idp group name.
-	IdpGroupName *string `mandatory:"false" json:"idpGroupName,omitempty"`
+	IdpGroupName *string `mandatory:"false" json:"idpGroupName"`
 
 	// The OCID of the group.
-	GroupId *string `mandatory:"false" json:"groupId,omitempty"`
+	GroupId *string `mandatory:"false" json:"groupId"`
 }
 
 func (m UpdateIdpGroupMappingDetails) String() string {

@@ -25,7 +25,7 @@ type CreateDbHomeWithDbSystemIdDetails struct {
 	DbVersion *string `mandatory:"true" json:"dbVersion"`
 
 	// The user-provided name of the database home.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 //GetDbSystemId returns DbSystemId

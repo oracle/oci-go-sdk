@@ -20,15 +20,15 @@ type TunnelStatus struct {
 	IpAddress *string `mandatory:"true" json:"ipAddress"`
 
 	// The tunnel's current state.
-	LifecycleState TunnelStatusLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState TunnelStatusLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
 
 	// The date and time the IPSec connection was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// When the state of the tunnel last changed, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeStateModified *common.SDKTime `mandatory:"false" json:"timeStateModified,omitempty"`
+	TimeStateModified *common.SDKTime `mandatory:"false" json:"timeStateModified"`
 }
 
 func (m TunnelStatus) String() string {

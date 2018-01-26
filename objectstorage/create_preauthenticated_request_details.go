@@ -26,7 +26,7 @@ type CreatePreauthenticatedRequestDetails struct {
 	TimeExpires *common.SDKTime `mandatory:"true" json:"timeExpires"`
 
 	// Name of object that is being granted access to by the pre-authenticated request. This can be null and that would mean that the pre-authenticated request is granting access to the entire bucket
-	ObjectName *string `mandatory:"false" json:"objectName,omitempty"`
+	ObjectName *string `mandatory:"false" json:"objectName"`
 }
 
 func (m CreatePreauthenticatedRequestDetails) String() string {

@@ -23,27 +23,27 @@ type ApiKey struct {
 
 	// An Oracle-assigned identifier for the key, in this format:
 	// TENANCY_OCID/USER_OCID/KEY_FINGERPRINT.
-	KeyId *string `mandatory:"false" json:"keyId,omitempty"`
+	KeyId *string `mandatory:"false" json:"keyId"`
 
 	// The key's value.
-	KeyValue *string `mandatory:"false" json:"keyValue,omitempty"`
+	KeyValue *string `mandatory:"false" json:"keyValue"`
 
 	// The key's fingerprint (e.g., 12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef).
-	Fingerprint *string `mandatory:"false" json:"fingerprint,omitempty"`
+	Fingerprint *string `mandatory:"false" json:"fingerprint"`
 
 	// The OCID of the user the key belongs to.
-	UserId *string `mandatory:"false" json:"userId,omitempty"`
+	UserId *string `mandatory:"false" json:"userId"`
 
 	// Date and time the `ApiKey` object was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// The API key's current state. After creating an `ApiKey` object, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState ApiKeyLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState ApiKeyLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
 }
 
 func (m ApiKey) String() string {

@@ -32,13 +32,13 @@ type DbNode struct {
 	VnicId *string `mandatory:"true" json:"vnicId"`
 
 	// The OCID of the backup VNIC.
-	BackupVnicId *string `mandatory:"false" json:"backupVnicId,omitempty"`
+	BackupVnicId *string `mandatory:"false" json:"backupVnicId"`
 
 	// The host name for the DB Node.
-	Hostname *string `mandatory:"false" json:"hostname,omitempty"`
+	Hostname *string `mandatory:"false" json:"hostname"`
 
 	// Storage size, in GBs, of the software volume that is allocated to the DB system. This is applicable only for VM-based DBs.
-	SoftwareStorageSizeInGB *int `mandatory:"false" json:"softwareStorageSizeInGB,omitempty"`
+	SoftwareStorageSizeInGB *int `mandatory:"false" json:"softwareStorageSizeInGB"`
 }
 
 func (m DbNode) String() string {

@@ -22,7 +22,7 @@ type CommitMultipartUploadDetails struct {
 
 	// The part numbers for the parts to be excluded from the completed object.
 	// Each part created for this upload must be in either partsToExclude or partsToCommit, but cannot be in both.
-	PartsToExclude []int `mandatory:"false" json:"partsToExclude,omitempty"`
+	PartsToExclude []int `mandatory:"false" json:"partsToExclude"`
 }
 
 func (m CommitMultipartUploadDetails) String() string {

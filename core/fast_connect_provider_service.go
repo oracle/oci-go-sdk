@@ -35,10 +35,10 @@ type FastConnectProviderService struct {
 	Type FastConnectProviderServiceTypeEnum `mandatory:"true" json:"type"`
 
 	// A description of the service offered by the provider.
-	Description *string `mandatory:"false" json:"description,omitempty"`
+	Description *string `mandatory:"false" json:"description"`
 
 	// An array of virtual circuit types supported by this service.
-	SupportedVirtualCircuitTypes []FastConnectProviderServiceSupportedVirtualCircuitTypesEnum `mandatory:"false" json:"supportedVirtualCircuitTypes,omitempty"`
+	SupportedVirtualCircuitTypes []FastConnectProviderServiceSupportedVirtualCircuitTypesEnum `mandatory:"false" json:"supportedVirtualCircuitTypes"`
 }
 
 func (m FastConnectProviderService) String() string {

@@ -45,14 +45,14 @@ type Volume struct {
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// Specifies whether the cloned volume's data has finished copying from the source volume or backup.
-	IsHydrated *bool `mandatory:"false" json:"isHydrated,omitempty"`
+	IsHydrated *bool `mandatory:"false" json:"isHydrated"`
 
 	// The size of the volume in GBs.
-	SizeInGBs *int `mandatory:"false" json:"sizeInGBs,omitempty"`
+	SizeInGBs *int `mandatory:"false" json:"sizeInGBs"`
 
 	// The volume source, either an existing volume in the same Availability Domain or a volume backup.
 	// If null, an empty volume is created.
-	SourceDetails VolumeSourceDetails `mandatory:"false" json:"sourceDetails,omitempty"`
+	SourceDetails VolumeSourceDetails `mandatory:"false" json:"sourceDetails"`
 }
 
 func (m Volume) String() string {
@@ -62,16 +62,16 @@ func (m Volume) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *Volume) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		IsHydrated         *bool                    `json:"isHydrated,omitempty"`
-		SizeInGBs          *int                     `json:"sizeInGBs,omitempty"`
-		SourceDetails      volumesourcedetails      `json:"sourceDetails,omitempty"`
-		AvailabilityDomain *string                  `json:"availabilityDomain,omitempty"`
-		CompartmentId      *string                  `json:"compartmentId,omitempty"`
-		DisplayName        *string                  `json:"displayName,omitempty"`
-		Id                 *string                  `json:"id,omitempty"`
-		LifecycleState     VolumeLifecycleStateEnum `json:"lifecycleState,omitempty"`
-		SizeInMBs          *int                     `json:"sizeInMBs,omitempty"`
-		TimeCreated        *common.SDKTime          `json:"timeCreated,omitempty"`
+		IsHydrated         *bool                    `json:"isHydrated"`
+		SizeInGBs          *int                     `json:"sizeInGBs"`
+		SourceDetails      volumesourcedetails      `json:"sourceDetails"`
+		AvailabilityDomain *string                  `json:"availabilityDomain"`
+		CompartmentId      *string                  `json:"compartmentId"`
+		DisplayName        *string                  `json:"displayName"`
+		Id                 *string                  `json:"id"`
+		LifecycleState     VolumeLifecycleStateEnum `json:"lifecycleState"`
+		SizeInMBs          *int                     `json:"sizeInMBs"`
+		TimeCreated        *common.SDKTime          `json:"timeCreated"`
 	}{}
 
 	e = json.Unmarshal(data, &model)

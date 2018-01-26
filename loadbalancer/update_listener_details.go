@@ -28,7 +28,7 @@ type UpdateListenerDetails struct {
 	// Example: `HTTP`
 	Protocol *string `mandatory:"true" json:"protocol"`
 
-	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration,omitempty"`
+	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration"`
 }
 
 func (m UpdateListenerDetails) String() string {

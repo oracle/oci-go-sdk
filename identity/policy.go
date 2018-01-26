@@ -49,12 +49,12 @@ type Policy struct {
 	LifecycleState PolicyLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
 
 	// The version of the policy. If null or set to an empty string, when a request comes in for authorization, the
 	// policy will be evaluated according to the current behavior of the services at that moment. If set to a particular
 	// date (YYYY-MM-DD), the policy will be evaluated according to the behavior of the services on that date.
-	VersionDate *common.SDKTime `mandatory:"false" json:"versionDate,omitempty"`
+	VersionDate *common.SDKTime `mandatory:"false" json:"versionDate"`
 }
 
 func (m Policy) String() string {

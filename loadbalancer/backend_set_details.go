@@ -23,11 +23,11 @@ type BackendSetDetails struct {
 	// Example: `LEAST_CONNECTIONS`
 	Policy *string `mandatory:"true" json:"policy"`
 
-	Backends []BackendDetails `mandatory:"false" json:"backends,omitempty"`
+	Backends []BackendDetails `mandatory:"false" json:"backends"`
 
-	SessionPersistenceConfiguration *SessionPersistenceConfigurationDetails `mandatory:"false" json:"sessionPersistenceConfiguration,omitempty"`
+	SessionPersistenceConfiguration *SessionPersistenceConfigurationDetails `mandatory:"false" json:"sessionPersistenceConfiguration"`
 
-	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration,omitempty"`
+	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration"`
 }
 
 func (m BackendSetDetails) String() string {

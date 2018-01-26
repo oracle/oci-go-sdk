@@ -23,13 +23,13 @@ type CreateImageDetails struct {
 	// Avoid entering confidential information.
 	// You cannot use an Oracle-provided image name as a custom image name.
 	// Example: `My Oracle Linux image`
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// Details for creating an image through import
-	ImageSourceDetails ImageSourceDetails `mandatory:"false" json:"imageSourceDetails,omitempty"`
+	ImageSourceDetails ImageSourceDetails `mandatory:"false" json:"imageSourceDetails"`
 
 	// The OCID of the instance you want to use as the basis for the image.
-	InstanceId *string `mandatory:"false" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"false" json:"instanceId"`
 }
 
 func (m CreateImageDetails) String() string {
@@ -39,10 +39,10 @@ func (m CreateImageDetails) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *CreateImageDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		DisplayName        *string            `json:"displayName,omitempty"`
-		ImageSourceDetails imagesourcedetails `json:"imageSourceDetails,omitempty"`
-		InstanceId         *string            `json:"instanceId,omitempty"`
-		CompartmentId      *string            `json:"compartmentId,omitempty"`
+		DisplayName        *string            `json:"displayName"`
+		ImageSourceDetails imagesourcedetails `json:"imageSourceDetails"`
+		InstanceId         *string            `json:"instanceId"`
+		CompartmentId      *string            `json:"compartmentId"`
 	}{}
 
 	e = json.Unmarshal(data, &model)

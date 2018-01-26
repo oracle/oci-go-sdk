@@ -16,7 +16,7 @@ import (
 type UpdateConsoleHistoryDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m UpdateConsoleHistoryDetails) String() string {

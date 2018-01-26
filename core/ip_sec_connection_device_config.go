@@ -22,10 +22,10 @@ type IpSecConnectionDeviceConfig struct {
 	Id *string `mandatory:"true" json:"id"`
 
 	// The date and time the IPSec connection was created.
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// Two TunnelConfig objects.
-	Tunnels []TunnelConfig `mandatory:"false" json:"tunnels,omitempty"`
+	Tunnels []TunnelConfig `mandatory:"false" json:"tunnels"`
 }
 
 func (m IpSecConnectionDeviceConfig) String() string {

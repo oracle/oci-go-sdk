@@ -21,7 +21,7 @@ type VirtualCircuitBandwidthShape struct {
 
 	// The bandwidth in Mbps.
 	// Example: `10000`
-	BandwidthInMbps *int `mandatory:"false" json:"bandwidthInMbps,omitempty"`
+	BandwidthInMbps *int `mandatory:"false" json:"bandwidthInMbps"`
 }
 
 func (m VirtualCircuitBandwidthShape) String() string {

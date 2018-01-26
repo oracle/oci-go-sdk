@@ -22,7 +22,7 @@ type CreateDrgAttachmentDetails struct {
 	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// A user-friendly name. Does not have to be unique. Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m CreateDrgAttachmentDetails) String() string {
