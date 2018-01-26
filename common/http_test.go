@@ -18,9 +18,9 @@ import (
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Test data structures, avoid import cycle
 type TestupdateUserDetails struct {
-	Description string `mandatory:"false" json:"description,omitempty"`
-	Name *string `mandatory:"false" json:"name"`
-	SomeNumbers []int `mandatory:"false" json:"numbers"`
+	Description string  `mandatory:"false" json:"description,omitempty"`
+	Name        *string `mandatory:"false" json:"name"`
+	SomeNumbers []int   `mandatory:"false" json:"numbers"`
 }
 
 type listCompartmentsRequest struct {
