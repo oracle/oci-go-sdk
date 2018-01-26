@@ -17,21 +17,25 @@ func LaunchInstance() core.Instance {
 	compartmentID, err := identity.CreateCompartment()
 	helper.LogIfError(err)
 
-	// get all the shapes from current compartment
-	shapes := listShapes(compartmentID)
-
-	availabilityDomains := identity.ListAvailabilityDomains()
 	request := core.LaunchInstanceRequest{}
-	request.AvailabilityDomain = availabilityDomains[0].Name
 	request.CompartmentId = compartmentID
-	request.Shape = shapes[0].Shape
 	request.DisplayName = common.String("OCI_GOSDK_Sample_Instance")
 
+	// get the availability domain
+	availabilityDomains := identity.ListAvailabilityDomains()
+	request.AvailabilityDomain = availabilityDomains[0].Name
+
+	// create a subnet
 	subnet := CreateSubnet()
 	request.SubnetId = subnet.Id
 
+	// get the image
 	image := ListImages()[0]
 	request.ImageId = image.Id
+
+	// get all the shapes and filter the list by compatibility with the image
+	shapes := listShapes(compartmentID, request.ImageId)
+	request.Shape = shapes[0].Shape
 
 	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helper.LogIfError(err)
@@ -42,12 +46,14 @@ func LaunchInstance() core.Instance {
 	return r.Instance
 }
 
-func listShapes(compartmentID *string) []core.Shape {
+// ListShapes Lists the shapes that can be used to launch an instance within the specified compartment.
+func listShapes(compartmentID *string, imageID *string) []core.Shape {
 	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helper.LogIfError(err)
 
 	request := core.ListShapesRequest{
 		CompartmentId: compartmentID,
+		ImageId:       imageID,
 	}
 
 	r, err := c.ListShapes(context.Background(), request)
