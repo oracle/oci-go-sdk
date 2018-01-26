@@ -66,6 +66,8 @@ func createBucket(t *testing.T, namespace, compartment, name string){
 	}
 	request.CompartmentId = &compartment
 	request.Name = &name
+	request.Metadata = make(map[string]string)
+	request.PublicAccessType = objectstorage.CreateBucketDetailsPublicAccessTypeNopublicaccess
 	_, err := c.CreateBucket(context.Background(), request)
 	failIfError(t, err)
 	return
