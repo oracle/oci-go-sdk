@@ -32,7 +32,7 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	// [Oracle Data Guard Protection Modes](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)
 	// in the Oracle Data Guard documentation.
 	// **IMPORTANT** - The only protection mode currently supported by the Database Service is MAXIMUM_PERFORMANCE.
-	ProtectionMode CreateDataGuardAssociationDetailsProtectionModeEnum `mandatory:"true" json:"protectionMode,omitempty"`
+	ProtectionMode CreateDataGuardAssociationDetailsProtectionModeEnum `mandatory:"true" json:"protectionMode"`
 
 	// The redo transport type to use for this Data Guard association.  Valid values depend on the specified `protectionMode`:
 	// * MAXIMUM_AVAILABILITY - SYNC or FASTSYNC
@@ -42,7 +42,7 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	// [Redo Transport Services](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400)
 	// in the Oracle Data Guard documentation.
 	// **IMPORTANT** - The only transport type currently supported by the Database Service is ASYNC.
-	TransportType CreateDataGuardAssociationDetailsTransportTypeEnum `mandatory:"true" json:"transportType,omitempty"`
+	TransportType CreateDataGuardAssociationDetailsTransportTypeEnum `mandatory:"true" json:"transportType"`
 }
 
 //GetDatabaseAdminPassword returns DatabaseAdminPassword

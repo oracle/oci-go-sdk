@@ -39,7 +39,7 @@ type CreateSaml2IdentityProviderDetails struct {
 	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
 	// Active Directory Federation Services (ADFS).
 	// Example: `IDCS`
-	ProductType CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType,omitempty"`
+	ProductType CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType"`
 }
 
 //GetCompartmentId returns CompartmentId

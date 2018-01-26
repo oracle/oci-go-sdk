@@ -34,7 +34,7 @@ type DhcpDnsOption struct {
 	// information, see
 	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// - **CustomDnsServer:** Instances use a DNS server of your choice (three maximum).
-	ServerType DhcpDnsOptionServerTypeEnum `mandatory:"true" json:"serverType,omitempty"`
+	ServerType DhcpDnsOptionServerTypeEnum `mandatory:"true" json:"serverType"`
 }
 
 func (m DhcpDnsOption) String() string {
