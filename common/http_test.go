@@ -37,12 +37,12 @@ type updateUserRequest struct {
 }
 
 type TestcreateAPIKeyDetails struct {
-	Key string `mandatory:"true" json:"key,omitempty"`
+	Key string `mandatory:"true" json:"key"`
 }
 
 type TestcreateAPIKeyDetailsPtr struct {
-	Key     *string  `mandatory:"true" json:"key,omitempty"`
-	TheTime *SDKTime `mandatory:"true" json:"theTime,omitempty"`
+	Key     *string  `mandatory:"true" json:"key"`
+	TheTime *SDKTime `mandatory:"true" json:"theTime"`
 }
 
 type uploadAPIKeyRequest struct {
@@ -98,7 +98,8 @@ func TestHttpMarshallerSimpleStruct(t *testing.T) {
 
 func TestHttpMarshallerSimpleBody(t *testing.T) {
 	desc := "theDescription"
-	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", TestupdateUserDetails: TestupdateUserDetails{Description: desc}}
+	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", TestupdateUserDetails: TestupdateUserDetails{
+		Description: desc, SomeNumbers:[]int{}}}
 	request := MakeDefaultHTTPRequest(http.MethodPost, "/random")
 	HTTPRequestMarshaller(s, &request)
 	body, _ := ioutil.ReadAll(request.Body)
@@ -106,8 +107,7 @@ func TestHttpMarshallerSimpleBody(t *testing.T) {
 	json.Unmarshal(body, &content)
 	assert.Contains(t, content, "description")
 	assert.Contains(t, content, "numbers")
-	assert.Contains(t, content, "name")
-	assert.Equal(t, "", content["name"])
+	assert.NotContains(t, content, "name")
 	assert.Equal(t, "", content["numbers"])
 
 	if val, ok := content["description"]; !ok || val != desc {
@@ -764,3 +764,55 @@ func TestOmitFieldsInJson_SimpleStructWithMapStruct(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, `{"complex":{"one":{"a":"","aempty":[]},"ten":{"a":"two"},"two":{"a":"two","aempty":[1]}}}`, string(jsonRet))
 }
+
+func TestOmitFieldsInJson_removeFields(t *testing.T) {
+	type InSstruct struct {
+		AString      *string `mandatory:"false" json:"a"`
+		ANilString   *string `mandatory:"false" json:"anil"`
+		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
+	}
+	type Nested struct {
+		N *string `mandatory:"false" json:"n"`
+		//Numbers []int `mandatory:"false" json:"numbers"`
+		ZComplex map[string]InSstruct `mandatory:"false" json:"complex"`
+	}
+	val := ""
+	val2 := "two"
+	//numbers := []int{1, 3}
+	//s := Nested{N:&val, Numbers: numbers, ZComplex:InSstruct{AString:&val, EmptyNumbers:[]int{}}}
+	data := make(map[string]InSstruct)
+	data["one"] = InSstruct{AString: &val, EmptyNumbers:[]int{}}
+	data["two"] = InSstruct{AString: &val2, EmptyNumbers:[]int{1}}
+	data["ten"] = InSstruct{AString: &val2}
+
+	s := Nested{ZComplex: data}
+	jsonIn, _ := json.Marshal(s)
+	sVal := reflect.ValueOf(s)
+	jsonRet, err := removeNilFieldsInJsonAndTaggedStruct(jsonIn, sVal)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"complex":{"one":{"a":"","aempty":[]},"ten":{"a":"two"},"two":{"a":"two","aempty":[1]}}}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithTime(t *testing.T) {
+	type Nested struct {
+		N            *string `mandatory:"false" json:"n"`
+		TheTime *SDKTime `mandatory:"true" json:"theTime"`
+		NilTime *SDKTime `mandatory:"false" json:"nilTime"`
+	}
+	val := ""
+	now := SDKTime{time.Now()}
+	s := Nested{N: &val, TheTime: &now}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	theTime := m["theTime"]
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	assert.NotContains(t,mapRet, "nilTime")
+	assert.Contains(t, mapRet, "n")
+	assert.Contains(t, mapRet, "theTime")
+	assert.Equal(t, theTime, mapRet.(map[string]interface{})["theTime"])
+}
+
+

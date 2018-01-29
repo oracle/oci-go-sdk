@@ -162,6 +162,9 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, er
 				continue
 			}
 
+			if currentFieldValue.Type() == timeType || currentFieldValue.Type() == timeTypePtr {
+				continue
+			}
 			// does it need to be adjusted?
 			jsonMap[jsonFieldName], err = omitNilFieldsInJSON(jsonMap[jsonFieldName], currentFieldValue)
 			if err != nil {
@@ -201,6 +204,15 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, er
 	}
 }
 
+func removeNilFieldsInJsonAndTaggedStruct(rawJson []byte, value reflect.Value)([]byte, error) {
+	rawMap := make(map[string]interface{})
+	json.Unmarshal(rawJson, &rawMap)
+	fixedMap, err := omitNilFieldsInJSON(rawMap, value)
+	if err != nil {
+		return nil, err
+	}
+	return json.Marshal(fixedMap)
+}
 func addToBody(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
 	Debugln("Marshaling to body from field:", field.Name)
 	if request.Body != nil {
@@ -213,14 +225,12 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 		return addBinaryBody(request, value)
 	}
 
-	/*
-		rawJson, e := json.Marshal(value.Interface())
-		if e != nil {
-			return
-		}
-		marshaled, e := omitNilFieldsInJSON(rawJson, value.Interface())
-	*/
-	marshaled, e := json.Marshal(value.Interface())
+	rawJson, e := json.Marshal(value.Interface())
+	if e != nil {
+		return
+	}
+	marshaled, e := removeNilFieldsInJsonAndTaggedStruct(rawJson, value)
+	//marshaled, e := json.Marshal(value.Interface())
 	if e != nil {
 		return
 	}
