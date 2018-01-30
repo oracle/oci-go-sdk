@@ -124,7 +124,7 @@ func shouldFieldValueBeRemoved(field reflect.StructField, fieldValue reflect.Val
 func isNillableType(value *reflect.Value) bool {
 	k := value.Kind()
 	switch k {
-	case reflect.Func, reflect.Map, reflect.Ptr, reflect.Interface, reflect.Slice:
+	case reflect.Chan, reflect.Func, reflect.Map, reflect.Ptr, reflect.Interface, reflect.Slice:
 		return true
 	default:
 		return false
