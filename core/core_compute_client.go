@@ -689,7 +689,7 @@ func (client ComputeClient) ListVolumeAttachments(ctx context.Context, request L
 		return
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listvolumeattachment{})
 	return
 }
 
