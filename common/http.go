@@ -204,9 +204,11 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, er
 	}
 }
 
-func removeNilFieldsInJsonAndTaggedStruct(rawJson []byte, value reflect.Value)([]byte, error) {
+// removeNilFieldsInJSONWithTaggedStruct remove struct fields tagged with json and mandatory false
+// that are nil
+func removeNilFieldsInJSONWithTaggedStruct(rawJSON []byte, value reflect.Value) ([]byte, error) {
 	rawMap := make(map[string]interface{})
-	json.Unmarshal(rawJson, &rawMap)
+	json.Unmarshal(rawJSON, &rawMap)
 	fixedMap, err := omitNilFieldsInJSON(rawMap, value)
 	if err != nil {
 		return nil, err
@@ -225,11 +227,11 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 		return addBinaryBody(request, value)
 	}
 
-	rawJson, e := json.Marshal(value.Interface())
+	rawJSON, e := json.Marshal(value.Interface())
 	if e != nil {
 		return
 	}
-	marshaled, e := removeNilFieldsInJsonAndTaggedStruct(rawJson, value)
+	marshaled, e := removeNilFieldsInJSONWithTaggedStruct(rawJSON, value)
 	//marshaled, e := json.Marshal(value.Interface())
 	if e != nil {
 		return

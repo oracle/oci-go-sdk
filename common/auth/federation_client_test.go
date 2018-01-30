@@ -21,7 +21,7 @@ func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
 		expectedKeyID := fmt.Sprintf("%s/fed-x509/%s", tenancyID, leafCertFingerprint)
 		assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf(`Signature version="1",headers="date (request-target) content-length content-type x-content-sha256",keyId="%s",algorithm="rsa-sha256",signature=`, expectedKeyID)))
 		expectedBody := fmt.Sprintf(`{"certificate":"%s","intermediateCertificates":["%s"],"publicKey":"%s"}`,
-			leafCertBodyNoNewLine, intermediateCertBodyNoNewLine,sessionPublicKeyBodyNoNewLine)
+			leafCertBodyNoNewLine, intermediateCertBodyNoNewLine, sessionPublicKeyBodyNoNewLine)
 
 		var buf bytes.Buffer
 		buf.ReadFrom(r.Body)
@@ -73,7 +73,7 @@ func TestX509FederationClient_RenewSecurityToken(t *testing.T) {
 		assert.True(t, strings.HasPrefix(r.Header.Get("Authorization"), fmt.Sprintf(`Signature version="1",headers="date (request-target) content-length content-type x-content-sha256",keyId="%s",algorithm="rsa-sha256",signature=`, expectedKeyID)))
 
 		expectedBody := fmt.Sprintf(`{"certificate":"%s","intermediateCertificates":["%s"],"publicKey":"%s"}`,
-			leafCertBodyNoNewLine, intermediateCertBodyNoNewLine,sessionPublicKeyBodyNoNewLine)
+			leafCertBodyNoNewLine, intermediateCertBodyNoNewLine, sessionPublicKeyBodyNoNewLine)
 		var buf bytes.Buffer
 		buf.ReadFrom(r.Body)
 		assert.Equal(t, expectedBody, buf.String())
