@@ -20,6 +20,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/core"
 	"github.com/oracle/oci-go-sdk/database"
+	"github.com/oracle/oci-go-sdk/loadbalancer"
 )
 
 const (
@@ -33,6 +34,7 @@ const (
 	virtualCircuitDisplayName    = "GOSDK2_Test_Deps_VirtualCircuits"
 	dbSystemDisplayName          = "GOSDK2_Test_Deps_DatabaseSystem"
 	dbHomeDisplayName            = "GOSDK2_Test_Deps_DatabaseHome"
+	loadbalancerDisplayName      = "GOSDK2_Test_Deps_Loadbalancer"
 )
 
 /*
@@ -765,4 +767,80 @@ func listVirtualCircuits(t *testing.T) []core.VirtualCircuit {
 	failIfError(t, err)
 	assert.NotEmpty(t, resp)
 	return resp.Items
+}
+
+func createLoadBalancerIfNotExist(t *testing.T) *loadbalancer.LoadBalancer {
+	loadbalancers := listLoadBalancers(t, loadbalancer.LoadBalancerLifecycleStateActive)
+
+	for _, element := range loadbalancers {
+		assert.NotEmpty(t, element)
+		if *element.DisplayName == loadbalancerDisplayName {
+			// found it, return
+			return &element
+		}
+	}
+
+	// create new load balancer
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+	request := loadbalancer.CreateLoadBalancerRequest{}
+	request.CompartmentId = common.String(getCompartmentID())
+	request.DisplayName = common.String(loadbalancerDisplayName)
+
+	subnet := createOrGetSubnet(t)
+	request.SubnetIds = []string{*subnet.Id}
+
+	shapes := listLoadBalancerShapes(t)
+	request.ShapeName = shapes[0].Name
+
+	err := c.CreateLoadBalancer(context.Background(), request)
+	assert.NoError(t, err)
+
+	loadbalancers = listLoadBalancers(t, "")
+	for _, element := range loadbalancers {
+		assert.NotEmpty(t, element)
+		if *element.DisplayName == loadbalancerDisplayName {
+			// found it, return
+			// TODO: wati for state change to Active and return
+			return &element
+		}
+	}
+
+	t.Error("create loadbalancer failed")
+	t.Fail()
+	return nil
+}
+
+func listLoadBalancers(t *testing.T, lifecycleState loadbalancer.LoadBalancerLifecycleStateEnum) []loadbalancer.LoadBalancer {
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+
+	request := loadbalancer.ListLoadBalancersRequest{
+		CompartmentId: common.String(getCompartmentID()),
+		DisplayName:   common.String(loadbalancerDisplayName),
+	}
+
+	if lifecycleState != "" {
+		request.LifecycleState = lifecycleState
+	}
+
+	r, err := c.ListLoadBalancers(context.Background(), request)
+	assert.NoError(t, err)
+	assert.NotEmpty(t, r)
+	return r.Items
+}
+
+func listLoadBalancerShapes(t *testing.T) []loadbalancer.LoadBalancerShape {
+	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+	request := loadbalancer.ListShapesRequest{
+		CompartmentId: common.String(getCompartmentID()),
+	}
+
+	r, err := c.ListShapes(context.Background(), request)
+	assert.NoError(t, err)
+	assert.NotEmpty(t, r)
+	assert.NotEmpty(t, r.Items)
+	assert.NotEqual(t, len(r.Items), 0)
+	return r.Items
 }
