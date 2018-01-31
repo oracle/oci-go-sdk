@@ -11,11 +11,12 @@ package integtest
 import (
 	"context"
 	"fmt"
+	"testing"
+	"time"
+
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/core"
 	"github.com/stretchr/testify/assert"
-	"testing"
-	"time"
 )
 
 var (
@@ -197,5 +198,31 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 	}
 
 	deleteTest(t)
+	return
+}
+
+func TestBlockstorageClient_ListBootVolumes(t *testing.T) {
+	bootVolumes := listBootVolumes(t)
+
+	assert.NotEmpty(t, bootVolumes)
+	assert.NotEqual(t, len(bootVolumes), 0)
+	return
+}
+
+func TestBlockstorageClient_GetBootVolume(t *testing.T) {
+	// get list of boot volumns and make sure it's not empty
+	bootVolumes := listBootVolumes(t)
+	assert.NotEmpty(t, bootVolumes)
+	assert.NotEqual(t, len(bootVolumes), 0)
+
+	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+	request := core.GetBootVolumeRequest{
+		BootVolumeId: bootVolumes[0].Id,
+	}
+
+	r, err := c.GetBootVolume(context.Background(), request)
+	assert.NoError(t, err)
+	assert.NotEmpty(t, r.Id)
 	return
 }

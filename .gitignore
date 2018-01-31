@@ -7,4 +7,5 @@
 .glide/
 .idea/
 *.swp
+.vscode/*
 

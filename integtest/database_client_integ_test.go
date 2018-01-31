@@ -11,12 +11,20 @@ package integtest
 import (
 	"context"
 	"fmt"
+	"testing"
+
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/database"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
+// tests for create list get and delete backup
+func TestDatabaseClient_Backup(t *testing.T) {
+	//CreateOrGetDatabase(t)
+	//assert.NotEmpty(t, r, fmt.Sprint(r))
+	//assert.NoError(t, err)
+	return
+}
 
 func TestDatabaseClient_CreateBackup(t *testing.T) {
 	t.Skip("Not implemented")
