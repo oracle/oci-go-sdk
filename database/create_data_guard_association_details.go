@@ -107,22 +107,6 @@ func (m createdataguardassociationdetails) String() string {
 	return common.PointerString(m)
 }
 
-//listcreatedataguardassociationdetails allows to unmarshal list of polymorphic CreateDataGuardAssociationDetails
-type listcreatedataguardassociationdetails []createdataguardassociationdetails
-
-//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
-func (m *listcreatedataguardassociationdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	res := make([]CreateDataGuardAssociationDetails, len(*m))
-	for i, v := range *m {
-		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
-		if err != nil {
-			return nil, err
-		}
-		res[i] = nn.(CreateDataGuardAssociationDetails)
-	}
-	return res, nil
-}
-
 // CreateDataGuardAssociationDetailsProtectionModeEnum Enum with underlying type: string
 type CreateDataGuardAssociationDetailsProtectionModeEnum string
 

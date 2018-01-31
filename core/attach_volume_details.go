@@ -84,19 +84,3 @@ func (m attachvolumedetails) GetDisplayName() *string {
 func (m attachvolumedetails) String() string {
 	return common.PointerString(m)
 }
-
-//listattachvolumedetails allows to unmarshal list of polymorphic AttachVolumeDetails
-type listattachvolumedetails []attachvolumedetails
-
-//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
-func (m *listattachvolumedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	res := make([]AttachVolumeDetails, len(*m))
-	for i, v := range *m {
-		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
-		if err != nil {
-			return nil, err
-		}
-		res[i] = nn.(AttachVolumeDetails)
-	}
-	return res, nil
-}

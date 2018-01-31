@@ -155,22 +155,6 @@ func (m identityprovider) String() string {
 	return common.PointerString(m)
 }
 
-//listidentityprovider allows to unmarshal list of polymorphic IdentityProvider
-type listidentityprovider []identityprovider
-
-//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
-func (m *listidentityprovider) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	res := make([]IdentityProvider, len(*m))
-	for i, v := range *m {
-		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
-		if err != nil {
-			return nil, err
-		}
-		res[i] = nn.(IdentityProvider)
-	}
-	return res, nil
-}
-
 // IdentityProviderLifecycleStateEnum Enum with underlying type: string
 type IdentityProviderLifecycleStateEnum string
 

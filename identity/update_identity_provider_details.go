@@ -65,19 +65,3 @@ func (m updateidentityproviderdetails) GetDescription() *string {
 func (m updateidentityproviderdetails) String() string {
 	return common.PointerString(m)
 }
-
-//listupdateidentityproviderdetails allows to unmarshal list of polymorphic UpdateIdentityProviderDetails
-type listupdateidentityproviderdetails []updateidentityproviderdetails
-
-//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
-func (m *listupdateidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	res := make([]UpdateIdentityProviderDetails, len(*m))
-	for i, v := range *m {
-		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
-		if err != nil {
-			return nil, err
-		}
-		res[i] = nn.(UpdateIdentityProviderDetails)
-	}
-	return res, nil
-}

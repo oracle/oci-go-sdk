@@ -58,19 +58,3 @@ func (m *imagesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{},
 func (m imagesourcedetails) String() string {
 	return common.PointerString(m)
 }
-
-//listimagesourcedetails allows to unmarshal list of polymorphic ImageSourceDetails
-type listimagesourcedetails []imagesourcedetails
-
-//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
-func (m *listimagesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	res := make([]ImageSourceDetails, len(*m))
-	for i, v := range *m {
-		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
-		if err != nil {
-			return nil, err
-		}
-		res[i] = nn.(ImageSourceDetails)
-	}
-	return res, nil
-}
