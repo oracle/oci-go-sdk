@@ -743,11 +743,13 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	response, err := c.ListIdentityProviders(context.Background(), request)
 	failIfError(t, err)
 	assert.NotEmpty(t, response.Items)
+	presentAndEqual := false
 	for _, val := range response.Items {
-		if val.GetId() == rspCreate.GetId() {
-			assert.Equal(t, reflect.TypeOf(identity.Saml2IdentityProvider{}), reflect.TypeOf(val))
+		if *val.GetId() == *rspCreate.GetId() {
+			presentAndEqual = reflect.TypeOf(identity.Saml2IdentityProvider{}) ==  reflect.TypeOf(val)
 		}
 	}
+	assert.True(t, presentAndEqual)
 
 	items := response.Items
 
