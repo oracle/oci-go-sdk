@@ -62,7 +62,6 @@ type volumeattachment struct {
 	AttachmentType     string                             `json:"attachmentType"`
 }
 
-
 // UnmarshalJSON unmarshals json
 func (m *volumeattachment) UnmarshalJSON(data []byte) error {
 	m.JsonData = data
@@ -142,6 +141,26 @@ func (m volumeattachment) GetDisplayName() *string {
 
 func (m volumeattachment) String() string {
 	return common.PointerString(m)
+}
+
+//listvolumeattachment allows to unmarshal list of polymorphic VolumeAttachment
+type listvolumeattachment []VolumeAttachment
+
+//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
+func (m *listvolumeattachment) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	type listMarshalHelper []volumeattachment
+	n := make(listMarshalHelper, 0)
+
+	json.Unmarshal(data, &n)
+	res := make([]VolumeAttachment, len(n))
+	for i, v := range n {
+		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
+		if err != nil {
+			return nil, err
+		}
+		res[i] = nn.(VolumeAttachment)
+	}
+	return res, nil
 }
 
 // VolumeAttachmentLifecycleStateEnum Enum with underlying type: string

@@ -101,6 +101,26 @@ func (m createidentityproviderdetails) String() string {
 	return common.PointerString(m)
 }
 
+//listcreateidentityproviderdetails allows to unmarshal list of polymorphic CreateIdentityProviderDetails
+type listcreateidentityproviderdetails []CreateIdentityProviderDetails
+
+//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
+func (m *listcreateidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	type listMarshalHelper []createidentityproviderdetails
+	n := make(listMarshalHelper, 0)
+
+	json.Unmarshal(data, &n)
+	res := make([]CreateIdentityProviderDetails, len(n))
+	for i, v := range n {
+		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
+		if err != nil {
+			return nil, err
+		}
+		res[i] = nn.(CreateIdentityProviderDetails)
+	}
+	return res, nil
+}
+
 // CreateIdentityProviderDetailsProductTypeEnum Enum with underlying type: string
 type CreateIdentityProviderDetailsProductTypeEnum string
 

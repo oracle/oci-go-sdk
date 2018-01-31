@@ -78,3 +78,23 @@ func (m createdbhomewithdbsystemidbase) GetDisplayName() *string {
 func (m createdbhomewithdbsystemidbase) String() string {
 	return common.PointerString(m)
 }
+
+//listcreatedbhomewithdbsystemidbase allows to unmarshal list of polymorphic CreateDbHomeWithDbSystemIdBase
+type listcreatedbhomewithdbsystemidbase []CreateDbHomeWithDbSystemIdBase
+
+//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
+func (m *listcreatedbhomewithdbsystemidbase) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	type listMarshalHelper []createdbhomewithdbsystemidbase
+	n := make(listMarshalHelper, 0)
+
+	json.Unmarshal(data, &n)
+	res := make([]CreateDbHomeWithDbSystemIdBase, len(n))
+	for i, v := range n {
+		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
+		if err != nil {
+			return nil, err
+		}
+		res[i] = nn.(CreateDbHomeWithDbSystemIdBase)
+	}
+	return res, nil
+}

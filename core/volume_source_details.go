@@ -58,3 +58,23 @@ func (m *volumesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}
 func (m volumesourcedetails) String() string {
 	return common.PointerString(m)
 }
+
+//listvolumesourcedetails allows to unmarshal list of polymorphic VolumeSourceDetails
+type listvolumesourcedetails []VolumeSourceDetails
+
+//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
+func (m *listvolumesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	type listMarshalHelper []volumesourcedetails
+	n := make(listMarshalHelper, 0)
+
+	json.Unmarshal(data, &n)
+	res := make([]VolumeSourceDetails, len(n))
+	for i, v := range n {
+		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
+		if err != nil {
+			return nil, err
+		}
+		res[i] = nn.(VolumeSourceDetails)
+	}
+	return res, nil
+}

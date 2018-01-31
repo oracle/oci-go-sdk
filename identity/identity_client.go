@@ -741,7 +741,7 @@ func (client IdentityClient) ListIdentityProviders(ctx context.Context, request 
 		return
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listidentityprovider{})
 	return
 }
 

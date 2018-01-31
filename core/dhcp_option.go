@@ -62,3 +62,23 @@ func (m *dhcpoption) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) 
 func (m dhcpoption) String() string {
 	return common.PointerString(m)
 }
+
+//listdhcpoption allows to unmarshal list of polymorphic DhcpOption
+type listdhcpoption []DhcpOption
+
+//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
+func (m *listdhcpoption) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	type listMarshalHelper []dhcpoption
+	n := make(listMarshalHelper, 0)
+
+	json.Unmarshal(data, &n)
+	res := make([]DhcpOption, len(n))
+	for i, v := range n {
+		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
+		if err != nil {
+			return nil, err
+		}
+		res[i] = nn.(DhcpOption)
+	}
+	return res, nil
+}

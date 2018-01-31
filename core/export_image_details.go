@@ -64,3 +64,23 @@ func (m *exportimagedetails) UnmarshalPolymorphicJSON(data []byte) (interface{},
 func (m exportimagedetails) String() string {
 	return common.PointerString(m)
 }
+
+//listexportimagedetails allows to unmarshal list of polymorphic ExportImageDetails
+type listexportimagedetails []ExportImageDetails
+
+//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
+func (m *listexportimagedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	type listMarshalHelper []exportimagedetails
+	n := make(listMarshalHelper, 0)
+
+	json.Unmarshal(data, &n)
+	res := make([]ExportImageDetails, len(n))
+	for i, v := range n {
+		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
+		if err != nil {
+			return nil, err
+		}
+		res[i] = nn.(ExportImageDetails)
+	}
+	return res, nil
+}
