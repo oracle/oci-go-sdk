@@ -86,16 +86,12 @@ func (m attachvolumedetails) String() string {
 }
 
 //listattachvolumedetails allows to unmarshal list of polymorphic AttachVolumeDetails
-type listattachvolumedetails []AttachVolumeDetails
+type listattachvolumedetails []attachvolumedetails
 
 //UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
 func (m *listattachvolumedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	type listMarshalHelper []attachvolumedetails
-	n := make(listMarshalHelper, 0)
-
-	json.Unmarshal(data, &n)
-	res := make([]AttachVolumeDetails, len(n))
-	for i, v := range n {
+	res := make([]AttachVolumeDetails, len(*m))
+	for i, v := range *m {
 		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
 		if err != nil {
 			return nil, err

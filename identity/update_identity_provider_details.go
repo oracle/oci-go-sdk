@@ -67,16 +67,12 @@ func (m updateidentityproviderdetails) String() string {
 }
 
 //listupdateidentityproviderdetails allows to unmarshal list of polymorphic UpdateIdentityProviderDetails
-type listupdateidentityproviderdetails []UpdateIdentityProviderDetails
+type listupdateidentityproviderdetails []updateidentityproviderdetails
 
 //UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
 func (m *listupdateidentityproviderdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	type listMarshalHelper []updateidentityproviderdetails
-	n := make(listMarshalHelper, 0)
-
-	json.Unmarshal(data, &n)
-	res := make([]UpdateIdentityProviderDetails, len(n))
-	for i, v := range n {
+	res := make([]UpdateIdentityProviderDetails, len(*m))
+	for i, v := range *m {
 		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
 		if err != nil {
 			return nil, err

@@ -60,16 +60,12 @@ func (m instancesourcedetails) String() string {
 }
 
 //listinstancesourcedetails allows to unmarshal list of polymorphic InstanceSourceDetails
-type listinstancesourcedetails []InstanceSourceDetails
+type listinstancesourcedetails []instancesourcedetails
 
 //UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
 func (m *listinstancesourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	type listMarshalHelper []instancesourcedetails
-	n := make(listMarshalHelper, 0)
-
-	json.Unmarshal(data, &n)
-	res := make([]InstanceSourceDetails, len(n))
-	for i, v := range n {
+	res := make([]InstanceSourceDetails, len(*m))
+	for i, v := range *m {
 		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
 		if err != nil {
 			return nil, err

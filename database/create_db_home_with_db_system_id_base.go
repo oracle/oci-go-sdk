@@ -80,16 +80,12 @@ func (m createdbhomewithdbsystemidbase) String() string {
 }
 
 //listcreatedbhomewithdbsystemidbase allows to unmarshal list of polymorphic CreateDbHomeWithDbSystemIdBase
-type listcreatedbhomewithdbsystemidbase []CreateDbHomeWithDbSystemIdBase
+type listcreatedbhomewithdbsystemidbase []createdbhomewithdbsystemidbase
 
 //UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
 func (m *listcreatedbhomewithdbsystemidbase) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
-	type listMarshalHelper []createdbhomewithdbsystemidbase
-	n := make(listMarshalHelper, 0)
-
-	json.Unmarshal(data, &n)
-	res := make([]CreateDbHomeWithDbSystemIdBase, len(n))
-	for i, v := range n {
+	res := make([]CreateDbHomeWithDbSystemIdBase, len(*m))
+	for i, v := range *m {
 		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
 		if err != nil {
 			return nil, err
