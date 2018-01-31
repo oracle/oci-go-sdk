@@ -2,10 +2,11 @@ package common
 
 import (
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 var (
@@ -44,6 +45,40 @@ func writeTempFile(data string) (filename string) {
 	return
 }
 
+func TestRawConfigurationProvider(t *testing.T) {
+	var (
+		testTenancy     = "ocid1.tenancy.oc1..aaaaaaaaxf3fuazos"
+		testUser        = "ocid1.user.oc1..aaaaaaaa3p67n2kmpxnbcnff"
+		testRegion      = "us-ashburn-1"
+		testFingerprint = "af:81:71:8e:d2"
+	)
+
+	c := NewRawConfigurationProvider(testTenancy, testUser, testRegion, testFingerprint, testPrivateKeyConf, nil)
+
+	user, err := c.UserOCID()
+	assert.NoError(t, err)
+	assert.Equal(t, user, testUser)
+
+	fingerprint, err := c.KeyFingerprint()
+	assert.NoError(t, err)
+	assert.Equal(t, fingerprint, testFingerprint)
+
+	region, err := c.Region()
+	assert.NoError(t, err)
+	assert.Equal(t, region, testRegion)
+
+	rsaKey, err := c.PrivateRSAKey()
+	assert.NoError(t, err)
+	assert.NotEmpty(t, rsaKey)
+
+	keyID, err := c.KeyID()
+	assert.NoError(t, err)
+	assert.NotEmpty(t, keyID)
+
+	assert.Equal(t, keyID, "ocid1.tenancy.oc1..aaaaaaaaxf3fuazos/ocid1.user.oc1..aaaaaaaa3p67n2kmpxnbcnff/af:81:71:8e:d2")
+
+}
+
 func TestFileConfigurationProvider_parseConfigFileData(t *testing.T) {
 	data := `[DEFAULT]
 user=someuser
@@ -54,6 +89,7 @@ compartment = somecompartment
 region=someregion
 `
 	c, e := parseConfigFile([]byte(data), "DEFAULT")
+
 	assert.NoError(t, e)
 	assert.Equal(t, c.UserOcid, tuser)
 	assert.Equal(t, c.Fingerprint, tfingerprint)
