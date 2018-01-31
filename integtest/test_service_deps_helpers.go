@@ -32,8 +32,10 @@ const (
 	peeringGatewaysDisplayName   = "GOSDK2_Test_Deps_LocalPeeringGateway"
 	virtualCircuitDisplayName    = "GOSDK2_Test_Deps_VirtualCircuits"
 	dbSystemDisplayName          = "GOSDK2_Test_Deps_DatabaseSystem"
+	dbHomeDisplayName            = "GOSDK2_Test_Deps_DatabaseHome"
 )
 
+/*
 // CreateOrGetDatabase creates a new database or return the existing one
 // this can be used for tests that depends on a database which can save
 // time to run integration test.
@@ -71,7 +73,7 @@ func listDatabases(t *testing.T) []database.DatabaseSummary {
 	return r.Items
 }
 
-func createOrGetDBHome(t *testing.T) database.DbHome {}
+func createOrGetDBHome(t *testing.T) database.CreateDbHomeDetails {}
 
 func listDBHome(t *testing.T) []database.DbHome {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
@@ -88,18 +90,18 @@ func listDBHome(t *testing.T) []database.DbHome {
 	assert.NotEmpty(t, r.Items)
 
 	return r.Items
-}
+}*/
 
-func createOrGetDBSystem(t *testing.T) database.DbSystemSummary {
-	dbSystems := listDBSystems(t)
+func createOrGetDBSystem(t *testing.T) database.DbSystem {
+	/*dbSystems := listDBSystems(t)
 
 	for _, element := range dbSystems {
 		assert.NotEmpty(t, element)
 		if *element.DisplayName == dbSystemDisplayName {
 			// got the result, return it
-			return element
+			return
 		}
-	}
+	}*/
 
 	// create a new database system
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
@@ -108,13 +110,32 @@ func createOrGetDBSystem(t *testing.T) database.DbSystemSummary {
 	request := database.LaunchDbSystemRequest{}
 	request.AvailabilityDomain = common.String(validAD())
 	request.CompartmentId = common.String(getCompartmentID())
-	request.CpuCoreCount = 2
+	request.CpuCoreCount = common.Int(4)
 	request.DatabaseEdition = "STANDARD_EDITION"
+	request.Hostname = common.String("GOSDK2_Test_Deps_HostName")
+	request.DisplayName = common.String(dbSystemDisplayName)
+	request.Shape = common.String("VM.Standard1.2") // TODO get it via ListDbSystemShapes API
 
-	r, err := c.ListDbSystems(context.Background(), request)
+	pwd, err := os.Getwd()
+	failIfError(t, err)
+	buffer, err := ioutil.ReadFile(pwd + "/../resources/test_rsa.pub")
+	failIfError(t, err)
+	request.SshPublicKeys = []string{string(buffer)}
+
+	subnet := createOrGetSubnet(t)
+	request.SubnetId = subnet.Id
+
+	request.DbHome.DisplayName = common.String(dbHomeDisplayName)
+	request.DbHome.DbVersion = common.String("11.2.0.4") // TODO get it via ListDbVersions
+
+	request.DbHome.Database.AdminPassword = common.String("OraclE12--")
+	request.DbHome.Database.DbName = common.String("GOSDK2_Test_Deps_Database_Name")
+
+	r, err := c.LaunchDbSystem(context.Background(), request)
 	failIfError(t, err)
 	assert.NotEmpty(t, r)
-	assert.NotEmpty(t, r.Items)
+
+	return r.DbSystem
 }
 
 func listDBSystems(t *testing.T) []database.DbSystemSummary {
@@ -155,6 +176,7 @@ func createOrGetVcn(t *testing.T) (vcn core.Vcn) {
 	request.CidrBlock = common.String("10.0.0.0/16")
 	request.CompartmentId = common.String(getCompartmentID())
 	request.DisplayName = common.String(vcnDisplayName)
+	request.DnsLabel = common.String("DNSLabel")
 
 	r, err := c.CreateVcn(context.Background(), request)
 	failIfError(t, err)
@@ -164,7 +186,7 @@ func createOrGetVcn(t *testing.T) (vcn core.Vcn) {
 	return
 }
 
-func listVcns(t *testing.T) (vcns []core.Vcn) {
+func listVcns(t *testing.T) []core.Vcn {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.ListVcnsRequest{
@@ -173,9 +195,8 @@ func listVcns(t *testing.T) (vcns []core.Vcn) {
 
 	r, err := c.ListVcns(context.Background(), request)
 	failIfError(t, err)
-	assert.NotEmpty(t, r.Items)
-	vcns = r.Items
-	return
+	assert.NotEmpty(t, r)
+	return r.Items
 }
 
 func createOrGetSubnet(t *testing.T) (subnet core.Subnet) {
@@ -196,10 +217,11 @@ func createOrGetSubnet(t *testing.T) (subnet core.Subnet) {
 	vcn := createOrGetVcn(t)
 	request := core.CreateSubnetRequest{}
 	request.CompartmentId = common.String(getCompartmentID())
-	request.CidrBlock = vcn.CidrBlock
+	request.CidrBlock = common.String("10.0.0.0/24")
 	request.VcnId = vcn.Id
 	request.DisplayName = common.String(subnetDisplayName)
 	request.AvailabilityDomain = common.String(validAD())
+	request.DnsLabel = common.String("DNSLabel")
 
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
