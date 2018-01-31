@@ -699,11 +699,49 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
+	// Create the Identity Provider Request
+	rCreate := identity.CreateIdentityProviderRequest{}
+	details := identity.CreateSaml2IdentityProviderDetails{}
+	details.CompartmentId = common.String(getTenancyID())
+	details.Name = common.String(getUniqueName("Ident_Provider_"))
+	details.Description = common.String("CRUD Test Identity Provider")
+	details.ProductType = identity.CreateIdentityProviderDetailsProductTypeIdcs
+	details.Metadata = common.String(readSampleFederationMetadata(t))
+	rCreate.CreateIdentityProviderDetails = details
+
+	// Create
+	rspCreate, createErr := c.CreateIdentityProvider(context.Background(), rCreate)
+	failIfError(t, createErr)
+	verifyResponseIsValid(t, rspCreate, createErr)
+
+	//Delete
+	deleteFn := func() {
+		//remove
+		fmt.Println("Deleting Identity Provider")
+		if rspCreate.GetId() != nil {
+			rDelete := identity.DeleteIdentityProviderRequest{}
+			rDelete.IdentityProviderId = rspCreate.GetId()
+			err := c.DeleteIdentityProvider(context.Background(), rDelete)
+			failIfError(t, err)
+		}
+	}
+	defer deleteFn()
+
+	rRead := identity.GetIdentityProviderRequest{}
+	rRead.IdentityProviderId = rspCreate.GetId()
+	rspRead, readErr := c.GetIdentityProvider(context.Background(), rRead)
+	failIfError(t, readErr)
+	verifyResponseIsValid(t, rspRead, readErr)
+	assert.Equal(t, *rRead.IdentityProviderId, *rspRead.GetId())
+
+
+	//Listing
 	request := identity.ListIdentityProvidersRequest{}
 	request.CompartmentId = common.String(getCompartmentID())
 	request.Protocol = identity.ListIdentityProvidersProtocolSaml2
 	response, err := c.ListIdentityProviders(context.Background(), request)
 	failIfError(t, err)
+	//assert.NotEmpty(t, response.Items)
 
 	items := response.Items
 
