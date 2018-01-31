@@ -16,6 +16,7 @@ import (
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
 	"time"
+	"reflect"
 )
 
 // Group operations CRUD
@@ -737,15 +738,21 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 
 	//Listing
 	request := identity.ListIdentityProvidersRequest{}
-	request.CompartmentId = common.String(getCompartmentID())
+	request.CompartmentId = common.String(getTenancyID())
 	request.Protocol = identity.ListIdentityProvidersProtocolSaml2
 	response, err := c.ListIdentityProviders(context.Background(), request)
 	failIfError(t, err)
-	//assert.NotEmpty(t, response.Items)
+	assert.NotEmpty(t, response.Items)
+	for _, val := range response.Items {
+		if val.GetId() == rspCreate.GetId() {
+			assert.Equal(t, reflect.TypeOf(identity.Saml2IdentityProvider{}), reflect.TypeOf(val))
+		}
+	}
 
 	items := response.Items
 
-	nextRequest := identity.ListIdentityProvidersRequest{CompartmentId: request.CompartmentId}
+	nextRequest := identity.ListIdentityProvidersRequest{CompartmentId: request.CompartmentId,
+		Protocol:identity.ListIdentityProvidersProtocolSaml2}
 	nextRequest.Page = response.OpcNextPage
 
 	for nextRequest.Page != nil {
