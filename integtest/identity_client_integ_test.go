@@ -725,7 +725,7 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 		if rspCreate.GetId() != nil {
 			rDelete := identity.DeleteIdentityProviderRequest{}
 			rDelete.IdentityProviderId = rspCreate.GetId()
-			err := c.DeleteIdentityProvider(context.Background(), rDelete)
+			_, err := c.DeleteIdentityProvider(context.Background(), rDelete)
 			failIfError(t, err)
 		}
 	}
