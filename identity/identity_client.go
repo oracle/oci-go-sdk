@@ -724,6 +724,22 @@ func (client IdentityClient) ListGroups(ctx context.Context, request ListGroupsR
 	return
 }
 
+//listidentityprovider allows to unmarshal list of polymorphic IdentityProvider
+type listidentityprovider []identityprovider
+
+//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
+func (m *listidentityprovider) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	res := make([]IdentityProvider, len(*m))
+	for i, v := range *m {
+		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
+		if err != nil {
+			return nil, err
+		}
+		res[i] = nn.(IdentityProvider)
+	}
+	return res, nil
+}
+
 // ListIdentityProviders Lists all the identity providers in your tenancy. You must specify the identity provider type (e.g., `SAML2` for
 // identity providers using the SAML2.0 protocol). You must specify your tenancy's OCID as the value for the
 // compartment ID (remember that the tenancy is simply the root compartment).
@@ -741,7 +757,7 @@ func (client IdentityClient) ListIdentityProviders(ctx context.Context, request 
 		return
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listidentityprovider{})
 	return
 }
 

@@ -673,6 +673,22 @@ func (client ComputeClient) ListVnicAttachments(ctx context.Context, request Lis
 	return
 }
 
+//listvolumeattachment allows to unmarshal list of polymorphic VolumeAttachment
+type listvolumeattachment []volumeattachment
+
+//UnmarshalPolymorphicJSON unmarshals polymorphic json list of items
+func (m *listvolumeattachment) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+	res := make([]VolumeAttachment, len(*m))
+	for i, v := range *m {
+		nn, err := v.UnmarshalPolymorphicJSON(v.JsonData)
+		if err != nil {
+			return nil, err
+		}
+		res[i] = nn.(VolumeAttachment)
+	}
+	return res, nil
+}
+
 // ListVolumeAttachments Lists the volume attachments in the specified compartment. You can filter the
 // list by specifying an instance OCID, volume OCID, or both.
 // Currently, the only supported volume attachment type is IScsiVolumeAttachment.
@@ -689,7 +705,7 @@ func (client ComputeClient) ListVolumeAttachments(ctx context.Context, request L
 		return
 	}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listvolumeattachment{})
 	return
 }
 
