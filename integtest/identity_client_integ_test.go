@@ -710,15 +710,13 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	details.Metadata = common.String(readSampleFederationMetadata(t))
 	rCreate.CreateIdentityProviderDetails = details
 
-	// Create
+	//Create
 	rspCreate, createErr := c.CreateIdentityProvider(context.Background(), rCreate)
 	failIfError(t, createErr)
 	verifyResponseIsValid(t, rspCreate, createErr)
 
 	//Delete
 	deleteFn := func() {
-		//remove
-		fmt.Println("Deleting Identity Provider")
 		if rspCreate.GetId() != nil {
 			rDelete := identity.DeleteIdentityProviderRequest{}
 			rDelete.IdentityProviderId = rspCreate.GetId()
