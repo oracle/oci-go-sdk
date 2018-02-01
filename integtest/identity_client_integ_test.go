@@ -700,7 +700,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	// Create the Identity Provider Request
+	//Create the Identity Provider Request
 	rCreate := identity.CreateIdentityProviderRequest{}
 	details := identity.CreateSaml2IdentityProviderDetails{}
 	details.CompartmentId = common.String(getTenancyID())
