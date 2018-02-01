@@ -77,9 +77,9 @@ func addBinaryBody(request *http.Request, value reflect.Value) (e error) {
 	return nil
 }
 
-// shouldFieldValueBeRemoved, evaluates if a field with json and  non mandatory tags is nil
+// getTaggedNilFieldNameOrError, evaluates if a field with json and  non mandatory tags is nil
 // returns the json tag name, or an error if the tags are incorrectly present
-func shouldFieldValueBeRemoved(field reflect.StructField, fieldValue reflect.Value) (bool, string, error) {
+func getTaggedNilFieldNameOrError(field reflect.StructField, fieldValue reflect.Value) (bool, string, error) {
 	currentTag := field.Tag
 	jsonTag := currentTag.Get("json")
 
@@ -112,26 +112,23 @@ func shouldFieldValueBeRemoved(field reflect.StructField, fieldValue reflect.Val
 		return false, nameJSONField, nil
 	}
 
-	//If filed value is nil, tag it as omitEmpty
-	if fieldValue.IsNil() {
-		return true, nameJSONField, nil
-	}
-	return false, nameJSONField, nil
+	//If field value is nil, tag it as omitEmpty
+	return fieldValue.IsNil(), nameJSONField, nil
 
 }
 
-//isNillableType returns true if the filed can be nil
+// isNillableType returns true if the filed can be nil
 func isNillableType(value *reflect.Value) bool {
 	k := value.Kind()
 	switch k {
 	case reflect.Chan, reflect.Func, reflect.Map, reflect.Ptr, reflect.Interface, reflect.Slice:
 		return true
-	default:
-		return false
 	}
+	return false
 }
 
-// omitNilFieldsInJSON, removes json keys whose struct value is nil, and the field is tag as *non-mandatory*
+// omitNilFieldsInJSON, removes json keys whose struct value is nil, and the field is tag with the json and
+// mandatory:false tags
 func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, error) {
 	switch value.Kind() {
 	case reflect.Struct:
@@ -150,7 +147,7 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, er
 			}
 
 			currentFieldValue := value.Field(i)
-			ok, jsonFieldName, err := shouldFieldValueBeRemoved(currentField, currentFieldValue)
+			ok, jsonFieldName, err := getTaggedNilFieldNameOrError(currentField, currentFieldValue)
 			if err != nil {
 				return nil, fmt.Errorf("can not omit nil fields for field: %s, due to: %s",
 					currentField.Name, err.Error())
@@ -166,11 +163,13 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, er
 				continue
 			}
 			// does it need to be adjusted?
-			jsonMap[jsonFieldName], err = omitNilFieldsInJSON(jsonMap[jsonFieldName], currentFieldValue)
+			var adjustedValue interface{}
+			adjustedValue, err = omitNilFieldsInJSON(jsonMap[jsonFieldName], currentFieldValue)
 			if err != nil {
 				return nil, fmt.Errorf("can not omit nil fields for field: %s, due to: %s",
 					currentField.Name, err.Error())
 			}
+			jsonMap[jsonFieldName] = adjustedValue
 		}
 		return jsonMap, nil
 	case reflect.Slice, reflect.Array:
@@ -215,6 +214,7 @@ func removeNilFieldsInJSONWithTaggedStruct(rawJSON []byte, value reflect.Value) 
 	}
 	return json.Marshal(fixedMap)
 }
+
 func addToBody(request *http.Request, value reflect.Value, field reflect.StructField) (e error) {
 	Debugln("Marshaling to body from field:", field.Name)
 	if request.Body != nil {
@@ -232,7 +232,6 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 		return
 	}
 	marshaled, e := removeNilFieldsInJSONWithTaggedStruct(rawJSON, value)
-	//marshaled, e := json.Marshal(value.Interface())
 	if e != nil {
 		return
 	}
