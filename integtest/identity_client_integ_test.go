@@ -37,7 +37,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	defer func() {
 		//Delete
 		rDel := identity.DeleteGroupRequest{GroupId: r.Id}
-		err = c.DeleteGroup(context.Background(), rDel)
+		_, err = c.DeleteGroup(context.Background(), rDel)
 		assert.NoError(t, err)
 	}()
 
@@ -181,7 +181,8 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 		//remove
 		rDelete := identity.DeleteUserRequest{}
 		rDelete.UserId = resCreate.Id
-		err = c.DeleteUser(context.Background(), rDelete)
+		resDelete, err := c.DeleteUser(context.Background(), rDelete)
+		assert.NotEmpty(t, resDelete.OpcRequestId)
 		assert.NoError(t, err)
 	}()
 
@@ -225,7 +226,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	defer func() {
 		// Delete the user
 		reqUserDelete := identity.DeleteUserRequest{UserId: rspAddUser.Id}
-		delUserErr := c.DeleteUser(context.Background(), reqUserDelete)
+		_, delUserErr := c.DeleteUser(context.Background(), reqUserDelete)
 		assert.NoError(t, delUserErr)
 	}()
 
@@ -240,8 +241,9 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	defer func() {
 		// Delete the group
 		reqGroupDelete := identity.DeleteGroupRequest{GroupId: rspAddGroup.Id}
-		delGrpErr := c.DeleteGroup(context.Background(), reqGroupDelete)
+		delRes, delGrpErr := c.DeleteGroup(context.Background(), reqGroupDelete)
 		assert.NoError(t, delGrpErr)
+		assert.NotEmpty(t, delRes.OpcRequestId)
 	}()
 
 	//add
@@ -255,7 +257,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	defer func() {
 		//remove
 		requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipId: rspAdd.UserGroupMembership.Id}
-		err = c.RemoveUserFromGroup(context.Background(), requestRemove)
+		_, err = c.RemoveUserFromGroup(context.Background(), requestRemove)
 		failIfError(t, err)
 	}()
 
@@ -431,8 +433,9 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 	defer func() {
 		// Delete
 		request := identity.DeletePolicyRequest{PolicyId:createResponse.Id}
-		err = client.DeletePolicy(context.Background(), request)
+		delRes, err := client.DeletePolicy(context.Background(), request)
 		assert.NoError(t, err)
+		assert.NotEmpty(t, delRes.OpcRequestId)
 	}()
 
 	//Read
@@ -498,8 +501,9 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 		rDelete := identity.DeleteCustomerSecretKeyRequest{}
 		rDelete.CustomerSecretKeyId = resCreate.Id
 		rDelete.UserId = common.String(getUserID())
-		err = c.DeleteCustomerSecretKey(context.Background(), rDelete)
+		delRes, err := c.DeleteCustomerSecretKey(context.Background(), rDelete)
 		failIfError(t, err)
+		assert.NotEmpty(t, delRes.OpcRequestId)
 	}()
 
 	// validate user membership lifecycle state enum value after create
@@ -547,7 +551,7 @@ func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 		rDelete := identity.DeleteApiKeyRequest{}
 		rDelete.Fingerprint = resCreate.Fingerprint
 		rDelete.UserId = common.String(userId)
-		err = c.DeleteApiKey(context.Background(), rDelete)
+		_, err := c.DeleteApiKey(context.Background(), rDelete)
 		ser, ok = common.IsServiceError(err)
 		assert.False(t, ok)
 		assert.NotEmpty(t, err.Error())
@@ -597,8 +601,9 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 		if rspCreate.GetId() != nil {
 			rDelete := identity.DeleteIdentityProviderRequest{}
 			rDelete.IdentityProviderId = rspCreate.GetId()
-			err := c.DeleteIdentityProvider(context.Background(), rDelete)
+			delRes, err := c.DeleteIdentityProvider(context.Background(), rDelete)
 			failIfError(t, err)
+			assert.NotEmpty(t, delRes.OpcRequestId)
 		}
 	}()
 
@@ -652,7 +657,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	defer func() {
 		fmt.Println("Deleting Identity Provider Group Mapping")
 		reqDelete := identity.DeleteIdpGroupMappingRequest{MappingId: rspCreateMapping.Id, IdentityProviderId: rspCreateMapping.IdpId}
-		delErr := c.DeleteIdpGroupMapping(context.Background(), reqDelete)
+		_, delErr := c.DeleteIdpGroupMapping(context.Background(), reqDelete)
 		failIfError(t, delErr)
 	}()
 
@@ -720,7 +725,7 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 		if rspCreate.GetId() != nil {
 			rDelete := identity.DeleteIdentityProviderRequest{}
 			rDelete.IdentityProviderId = rspCreate.GetId()
-			err := c.DeleteIdentityProvider(context.Background(), rDelete)
+			_, err := c.DeleteIdentityProvider(context.Background(), rDelete)
 			failIfError(t, err)
 		}
 	}

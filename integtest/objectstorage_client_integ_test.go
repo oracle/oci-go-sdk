@@ -55,7 +55,8 @@ func putObject(t *testing.T, namespace, bucketname, objectname string, contentLe
 		ContentLength:&contentLen,
 		PutObjectBody:content,
 	}
-	return c.PutObject(context.Background(), request)
+	_, err := c.PutObject(context.Background(), request)
+	return err
 }
 
 func createBucket(t *testing.T, namespace, compartment, name string){
@@ -79,7 +80,7 @@ func deleteBucket(t *testing.T, namespace, name string)(err error){
 		NamespaceName:&namespace,
 		BucketName:&name,
 	}
-	err = c.DeleteBucket(context.Background(), request)
+	_, err = c.DeleteBucket(context.Background(), request)
 	failIfError(t, err)
 	return
 }
@@ -91,7 +92,7 @@ func deleteObject(t *testing.T, namespace, bucketname, objectname string)(err er
 		BucketName: &bucketname,
 		ObjectName:&objectname,
 	}
-	err = c.DeleteObject(context.Background(), request)
+	_, err = c.DeleteObject(context.Background(), request)
 	failIfError(t, err)
 	return
 }
@@ -160,7 +161,7 @@ func TestObjectStorage_GzipFileEncoding(t *testing.T) {
 		ContentType:common.String("text/plain"),
 		ContentEncoding:common.String("gzip"),
 	}
-	e := c.PutObject(context.Background(), request)
+	_, e := c.PutObject(context.Background(), request)
 	defer deleteObject(t, namespace, bname, objname)
 	failIfError(t, e)
 
@@ -228,7 +229,7 @@ func TestObjectStorageClient_AbortUpload(t *testing.T) {
 	}
 	ctx, cancelFn := context.WithTimeout(context.Background(), 10*time.Millisecond)
 	defer cancelFn()
-	e = c.PutObject(ctx, request)
+	_, e = c.PutObject(ctx, request)
 	assert.Error(t, e)
 }
 
@@ -237,7 +238,7 @@ func TestObjectStorageClient_AbortMultipartUpload(t *testing.T) {
 	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, e)
 	request := objectstorage.AbortMultipartUploadRequest{}
-	err := c.AbortMultipartUpload(context.Background(), request)
+	_, err := c.AbortMultipartUpload(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -247,7 +248,7 @@ func TestObjectStorageClient_CommitMultipartUpload(t *testing.T) {
 	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, e)
 	request := objectstorage.CommitMultipartUploadRequest{}
-	err := c.CommitMultipartUpload(context.Background(), request)
+	_, err := c.CommitMultipartUpload(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -280,7 +281,7 @@ func TestObjectStorageClient_DeletePreauthenticatedRequest(t *testing.T) {
 	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, e)
 	request := objectstorage.DeletePreauthenticatedRequestRequest{}
-	err := c.DeletePreauthenticatedRequest(context.Background(), request)
+	_, err := c.DeletePreauthenticatedRequest(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -302,7 +303,7 @@ func TestObjectStorageClient_HeadBucket(t *testing.T) {
 	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, e)
 	request := objectstorage.HeadBucketRequest{}
-	err := c.HeadBucket(context.Background(), request)
+	_, 	err := c.HeadBucket(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -312,7 +313,7 @@ func TestObjectStorageClient_HeadObject(t *testing.T) {
 	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, e)
 	request := objectstorage.HeadObjectRequest{}
-	err := c.HeadObject(context.Background(), request)
+	_, err := c.HeadObject(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -389,7 +390,7 @@ func TestObjectStorageClient_UploadPart(t *testing.T) {
 	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, e)
 	request := objectstorage.UploadPartRequest{}
-	err := c.UploadPart(context.Background(), request)
+	_, err := c.UploadPart(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
