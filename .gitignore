@@ -9,4 +9,4 @@
 *.swp
 .vscode/*
 .swagger-codegen-ignore
-
+*.iml
