@@ -212,11 +212,48 @@ func TestDatabaseClient_GetDbSystemPatchHistoryEntry(t *testing.T) {
 }
 
 func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
-	t.Skip("Not implemented")
+	t.Skip("long operation, run manually")
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
+
 	request := database.LaunchDbSystemRequest{}
+	request.AvailabilityDomain = common.String(validAD())
+	request.CompartmentId = common.String(getCompartmentID())
+	request.CpuCoreCount = common.Int(2)
+	request.DatabaseEdition = "STANDARD_EDITION"
+	request.DisplayName = common.String(dbSystemDisplayName)
+	request.Shape = common.String("BM.DenseIO1.36") // this shape will not get service limit error for now
+
+	buffer, err := getPubKeyPath()
+	failIfError(t, err)
+	request.SshPublicKeys = []string{string(buffer)}
+
+	subnet := createOrGetSubnet(t)
+	request.SubnetId = subnet.Id
+	request.Hostname = common.String("test")
+	request.LicenseModel = "LICENSE_INCLUDED"
+	request.DiskRedundancy = "NORMAL"
+
+	request.DbHome = &database.CreateDbHomeDetails{
+		DbVersion: common.String("11.2.0.4"),
+		Database: &database.CreateDatabaseDetails{
+			DbName:        common.String("Name"),
+			AdminPassword: common.String("OraclE12--"),
+			DbWorkload:    "OLTP",
+		},
+	}
+
 	r, err := c.LaunchDbSystem(context.Background(), request)
+	failIfError(t, err)
+
+	// if we've successfully created a group during testing, make sure that we delete it
+	defer func() {
+		//Delete
+		rDel := database.TerminateDbSystemRequest{DbSystemId: r.DbSystem.Id}
+		err = c.TerminateDbSystem(context.Background(), rDel)
+		assert.NoError(t, err)
+	}()
+	assert.NotEmpty(t, r)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	return

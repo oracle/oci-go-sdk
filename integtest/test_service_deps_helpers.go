@@ -14,18 +14,20 @@ import (
 	"io/ioutil"
 	"os"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/core"
-	"github.com/oracle/oci-go-sdk/database"
+	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/oracle/oci-go-sdk/loadbalancer"
 )
 
 const (
 	vcnDisplayName               = "GOSDK2_Test_Deps_VCN"
-	subnetDisplayName            = "GOSDK2_Test_Deps_Subnet"
+	subnetDisplayName1           = "GOSDK2_Test_Deps_Subnet1"
+	subnetDisplayName2           = "GOSDK2_Test_Deps_Subnet2"
 	instanceDisplayName          = "GOSDK2_Test_Deps_Instance"
 	consoleHistoryDisplayName    = "GOSDK2_Test_Deps_ConsoleHistory"
 	crossConnectDisplayName      = "GOSDK2_Test_Deps_CrossConnect"
@@ -37,135 +39,16 @@ const (
 	loadbalancerDisplayName      = "GOSDK2_Test_Deps_Loadbalancer"
 )
 
-/*
-// CreateOrGetDatabase creates a new database or return the existing one
-// this can be used for tests that depends on a database which can save
-// time to run integration test.
-// Notes: the database created within this method will not be deleted
-// so next time, same tests can run much faster. CreateDatabase API will
-// be covered in different test cases which will be deleted
-func createOrGetDatabase(t *testing.T) database.DbSystemSummary {
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	request := database.ListDbSystemsRequest{CompartmentId: common.String(getTenancyID())}
-
-	r, err := c.ListDbSystems(context.Background(), request)
-	failIfError(t, err)
-
-	return r.Items[0]
-}
-
-func listDatabases(t *testing.T) []database.DatabaseSummary {
-	dbHome := createOrGetDBHome(t)
-
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	request := database.ListDatabasesRequest{
-		CompartmentId: common.String(getTenancyID()),
-		DbHomeId:      dbHome.Id,
-	}
-
-	r, err := c.ListDatabases(context.Background(), request)
-	failIfError(t, err)
-	assert.NotEmpty(t, r)
-	assert.NotEmpty(t, r.Items)
-
-	return r.Items
-}
-
-func createOrGetDBHome(t *testing.T) database.CreateDbHomeDetails {}
-
-func listDBHome(t *testing.T) []database.DbHome {
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	request := database.ListDbHomesRequest{
-		CompartmentId: common.String(getTenancyID()),
-		DbHomeId:      dbHome.Id,
-	}
-
-	r, err := c.ListDatabases(context.Background(), request)
-	failIfError(t, err)
-	assert.NotEmpty(t, r)
-	assert.NotEmpty(t, r.Items)
-
-	return r.Items
-}*/
-
-func createOrGetDBSystem(t *testing.T) database.DbSystem {
-	/*dbSystems := listDBSystems(t)
-
-	for _, element := range dbSystems {
-		assert.NotEmpty(t, element)
-		if *element.DisplayName == dbSystemDisplayName {
-			// got the result, return it
-			return
-		}
-	}*/
-
-	// create a new database system
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	request := database.LaunchDbSystemRequest{}
-	request.AvailabilityDomain = common.String(validAD())
-	request.CompartmentId = common.String(getCompartmentID())
-	request.CpuCoreCount = common.Int(4)
-	request.DatabaseEdition = "STANDARD_EDITION"
-	request.Hostname = common.String("GOSDK2_Test_Deps_HostName")
-	request.DisplayName = common.String(dbSystemDisplayName)
-	request.Shape = common.String("VM.Standard1.2") // TODO get it via ListDbSystemShapes API
-
-	pwd, err := os.Getwd()
-	failIfError(t, err)
-	buffer, err := ioutil.ReadFile(pwd + "/../resources/test_rsa.pub")
-	failIfError(t, err)
-	request.SshPublicKeys = []string{string(buffer)}
-
-	subnet := createOrGetSubnet(t)
-	request.SubnetId = subnet.Id
-
-	request.DbHome.DisplayName = common.String(dbHomeDisplayName)
-	request.DbHome.DbVersion = common.String("11.2.0.4") // TODO get it via ListDbVersions
-
-	request.DbHome.Database.AdminPassword = common.String("OraclE12--")
-	request.DbHome.Database.DbName = common.String("GOSDK2_Test_Deps_Database_Name")
-
-	r, err := c.LaunchDbSystem(context.Background(), request)
-	failIfError(t, err)
-	assert.NotEmpty(t, r)
-
-	return r.DbSystem
-}
-
-func listDBSystems(t *testing.T) []database.DbSystemSummary {
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	request := database.ListDbSystemsRequest{
-		CompartmentId: common.String(getTenancyID()),
-	}
-
-	r, err := c.ListDbSystems(context.Background(), request)
-	failIfError(t, err)
-	assert.NotEmpty(t, r)
-	assert.NotEmpty(t, r.Items)
-
-	return r.Items
-}
-
-func createOrGetVcn(t *testing.T) (vcn core.Vcn) {
+// a helper method to either create a new vcn or get the one already exist
+func createOrGetVcn(t *testing.T) core.Vcn {
 	vcnItems := listVcns(t)
 
 	for _, element := range vcnItems {
 		if *element.DisplayName == vcnDisplayName {
-			vcn = element
-			assert.NotEmpty(t, vcn.Id)
+			assert.NotEmpty(t, element.Id)
 
 			// VCN already created, return it
-			return
+			return element
 		}
 	}
 
@@ -178,14 +61,12 @@ func createOrGetVcn(t *testing.T) (vcn core.Vcn) {
 	request.CidrBlock = common.String("10.0.0.0/16")
 	request.CompartmentId = common.String(getCompartmentID())
 	request.DisplayName = common.String(vcnDisplayName)
-	request.DnsLabel = common.String("DNSLabel")
+	request.DnsLabel = common.String("vcndns")
 
 	r, err := c.CreateVcn(context.Background(), request)
 	failIfError(t, err)
-	vcn = r.Vcn
-
-	assert.NotEmpty(t, vcn.Id)
-	return
+	assert.NotEmpty(t, r.Vcn)
+	return r.Vcn
 }
 
 func listVcns(t *testing.T) []core.Vcn {
@@ -201,29 +82,40 @@ func listVcns(t *testing.T) []core.Vcn {
 	return r.Items
 }
 
-func createOrGetSubnet(t *testing.T) (subnet core.Subnet) {
+func createOrGetSubnet(t *testing.T) core.Subnet {
+	return createOrGetSubnetWithDetails(
+		t,
+		common.String(subnetDisplayName1),
+		common.String("10.0.0.0/24"),
+		common.String("subnetdns1"),
+		common.String(validAD()))
+}
+
+func createOrGetSubnetWithDetails(t *testing.T, displayName *string, cidrBlock *string, dnsLabel *string, availableDomain *string) core.Subnet {
 	subnets := listSubnets(t)
+
+	if displayName == nil {
+		displayName = common.String(subnetDisplayName1)
+	}
 
 	// check if the subnet has already been created
 	for _, element := range subnets {
-		if *element.DisplayName == subnetDisplayName {
+		if *element.DisplayName == *displayName {
 			// find the subnet, return it
-			subnet = element
-			assert.NotEmpty(t, subnet)
-			assert.NotEmpty(t, subnet.Id)
-			return
+			assert.NotEmpty(t, element)
+			return element
 		}
 	}
 
 	// create a new subnet
 	vcn := createOrGetVcn(t)
 	request := core.CreateSubnetRequest{}
+	request.AvailabilityDomain = availableDomain
 	request.CompartmentId = common.String(getCompartmentID())
-	request.CidrBlock = common.String("10.0.0.0/24")
+	request.CidrBlock = cidrBlock
 	request.VcnId = vcn.Id
-	request.DisplayName = common.String(subnetDisplayName)
-	request.AvailabilityDomain = common.String(validAD())
-	request.DnsLabel = common.String("DNSLabel")
+	request.DisplayName = displayName
+	request.DnsLabel = dnsLabel
 
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
@@ -232,10 +124,7 @@ func createOrGetSubnet(t *testing.T) (subnet core.Subnet) {
 	failIfError(t, err)
 	assert.NotEmpty(t, r)
 	assert.NotEmpty(t, r.Subnet)
-
-	subnet = r.Subnet
-	assert.NotEmpty(t, subnet.Id)
-	return
+	return r.Subnet
 }
 
 func listSubnets(t *testing.T) []core.Subnet {
@@ -247,6 +136,7 @@ func listSubnets(t *testing.T) []core.Subnet {
 		CompartmentId: common.String(getCompartmentID()),
 		VcnId:         vcn.Id,
 	}
+
 	r, err := c.ListSubnets(context.Background(), request)
 	failIfError(t, err)
 	assert.NotEmpty(t, r)
@@ -344,10 +234,10 @@ func listShapesForImage(t *testing.T, imageID *string) []core.Shape {
 func createOrGetInstance(t *testing.T) core.Instance {
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-
 	listRequest := core.ListInstancesRequest{}
 	listRequest.CompartmentId = common.String(getCompartmentID())
 	listRequest.AvailabilityDomain = common.String(validAD())
+	listRequest.LifecycleState = core.InstanceLifecycleStateRunning
 
 	listResp, err := c.ListInstances(context.Background(), listRequest)
 	failIfError(t, err)
@@ -371,39 +261,60 @@ func createOrGetInstance(t *testing.T) core.Instance {
 	// i.e. ServiceLimitExeceed error etc...
 	images := listImagesByDisplayName(t, common.String("Oracle-Linux-7.4-2018.01.20-0"))
 	assert.NotEmpty(t, images)
-	assert.NotEqual(t, len(images), 0)
 	createRequest.ImageId = images[0].Id
 
 	shapes := listShapesForImage(t, createRequest.ImageId)
-	assert.NotEqual(t, len(shapes), 0)
+	assert.NotEmpty(t, shapes)
 	createRequest.Shape = shapes[0].Shape
 
 	createResp, err := c.LaunchInstance(context.Background(), createRequest)
 	assert.NotEmpty(t, createResp, fmt.Sprint(createResp))
-	assert.NoError(t, err)
+	failIfError(t, err)
 
-	// TODO wait for instance states
+	//Read
+	readTest := func() (interface{}, error) {
+		c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
+		if clerr != nil {
+			return nil, clerr
+		}
+
+		request := core.GetInstanceRequest{
+			InstanceId: createResp.Instance.Id,
+		}
+
+		readResp, err := c.GetInstance(context.Background(), request)
+
+		if err != nil {
+			return nil, clerr
+		}
+
+		return readResp, err
+	}
+
+	// wait for instance lifecyle become running
+	assert.NoError(
+		t,
+		retryUntilTrueOrError(
+			readTest,
+			checkLifecycleState(string(core.InstanceLifecycleStateRunning)),
+			time.Tick(10*time.Second),
+			time.After((5*time.Minute))))
+
 	return createResp.Instance
 }
 
 func createOrGetCrossConnectGroup(t *testing.T) core.CrossConnectGroup {
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	listRequest := core.ListCrossConnectGroupsRequest{}
-	listRequest.CompartmentId = common.String(getCompartmentID())
-	listRequest.DisplayName = common.String(crossConnectGroupDisplayName)
-
-	listResp, err := c.ListCrossConnectGroups(context.Background(), listRequest)
-	failIfError(t, err)
-	assert.NotEmpty(t, listResp)
+	crossConnectGrpups := listCrossConnectGroups(t)
 
 	// if connect group exist, return it
-	for _, element := range listResp.Items {
+	for _, element := range crossConnectGrpups {
 		if *element.DisplayName == crossConnectGroupDisplayName {
 			return element
 		}
 	}
+
+	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
 
 	// create a new one
 	createRequest := core.CreateCrossConnectGroupRequest{}
@@ -415,6 +326,20 @@ func createOrGetCrossConnectGroup(t *testing.T) core.CrossConnectGroup {
 
 	assert.NotEmpty(t, createResp)
 	return createResp.CrossConnectGroup
+}
+
+func listCrossConnectGroups(t *testing.T) []core.CrossConnectGroup {
+	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+
+	request := core.ListCrossConnectGroupsRequest{}
+	request.CompartmentId = common.String(getCompartmentID())
+	request.DisplayName = common.String(crossConnectGroupDisplayName)
+
+	r, err := c.ListCrossConnectGroups(context.Background(), request)
+	failIfError(t, err)
+	assert.NotEmpty(t, r)
+	return r.Items
 }
 
 func createOrGetCrossConnect(t *testing.T) core.CrossConnect {
@@ -597,7 +522,9 @@ func createOrGetInstanceConsoleConnection(t *testing.T) core.InstanceConsoleConn
 	assert.NotEmpty(t, listResp)
 
 	if listResp.Items != nil && len(listResp.Items) != 0 {
-		return listResp.Items[0]
+		if listResp.Items[0].LifecycleState == core.InstanceConsoleConnectionLifecycleStateActive {
+			return listResp.Items[0]
+		}
 	}
 
 	// create a new one
@@ -787,13 +714,23 @@ func createLoadBalancerIfNotExist(t *testing.T) *loadbalancer.LoadBalancer {
 	request.CompartmentId = common.String(getCompartmentID())
 	request.DisplayName = common.String(loadbalancerDisplayName)
 
-	subnet := createOrGetSubnet(t)
-	request.SubnetIds = []string{*subnet.Id}
+	subnet1 := createOrGetSubnet(t)
+
+	identityClient, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, err)
+	req := identity.ListAvailabilityDomainsRequest{}
+	req.CompartmentId = common.String(getCompartmentID())
+	response, err := identityClient.ListAvailabilityDomains(context.Background(), req)
+	failIfError(t, err)
+	availableDomain := response.Items[1].Name
+
+	subnet2 := createOrGetSubnetWithDetails(t, common.String(subnetDisplayName2), common.String("10.0.1.0/24"), common.String("subnetdns2"), availableDomain)
+	request.SubnetIds = []string{*subnet1.Id, *subnet2.Id}
 
 	shapes := listLoadBalancerShapes(t)
 	request.ShapeName = shapes[0].Name
 
-	err := c.CreateLoadBalancer(context.Background(), request)
+	err = c.CreateLoadBalancer(context.Background(), request)
 	assert.NoError(t, err)
 
 	loadbalancers = listLoadBalancers(t, "")

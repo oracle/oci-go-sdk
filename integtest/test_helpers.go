@@ -1,22 +1,23 @@
 package integtest
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
-	"github.com/oracle/oci-go-sdk/identity"
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
-	"github.com/stretchr/testify/assert"
+	"io"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"os/exec"
 	"reflect"
 	"strings"
 	"testing"
 	"time"
-	"math/rand"
-	"io"
-	"crypto/sha256"
-	"encoding/hex"
+
+	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/identity"
+	"github.com/stretchr/testify/assert"
 )
 
 const (
@@ -211,8 +212,6 @@ func writeTempFileOfSize(filesize int64) (fileName string, fileSize int64, conte
 	return
 }
 
-
-
 func getUuid() string {
 	output, err := exec.Command("uuidgen").Output()
 	if err != nil {
@@ -273,3 +272,11 @@ func deleteTestGroup(client identity.IdentityClient, groupId *string) error {
 	return client.DeleteGroup(context.Background(), req)
 }
 
+func getPubKeyPath() ([]byte, error) {
+	pwd, err := os.Getwd()
+	if err != nil {
+		return nil, err
+	}
+
+	return ioutil.ReadFile(pwd + "/resources/test_rsa.pub")
+}

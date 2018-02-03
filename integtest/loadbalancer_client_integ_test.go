@@ -11,10 +11,11 @@ package integtest
 import (
 	"context"
 	"fmt"
+	"testing"
+
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/loadbalancer"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestLoadBalancerClient_CreateBackend(t *testing.T) {
@@ -250,13 +251,10 @@ func TestLoadBalancerClient_ListLoadBalancerHealths(t *testing.T) {
 }
 
 func TestLoadBalancerClient_ListLoadBalancers(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := loadbalancer.ListLoadBalancersRequest{}
-	r, err := c.ListLoadBalancers(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
+	// make sure the list API will return at least one item
+	createLoadBalancerIfNotExist(t)
+	loadbalancers := listLoadBalancers(t, "")
+	assert.NotEmpty(t, loadbalancers, fmt.Sprint(loadbalancers))
 	return
 }
 

@@ -10,11 +10,8 @@ package integtest
 import (
 	"context"
 	"fmt"
-	"testing"
-
-	"time"
-
 	"reflect"
+	"testing"
 	"time"
 
 	"github.com/oracle/oci-go-sdk/common"
