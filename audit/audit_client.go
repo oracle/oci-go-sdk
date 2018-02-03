@@ -92,12 +92,19 @@ func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequ
 }
 
 // UpdateConfiguration Update the configuration
-func (client AuditClient) UpdateConfiguration(ctx context.Context, request UpdateConfigurationRequest) (err error) {
+func (client AuditClient) UpdateConfiguration(ctx context.Context, request UpdateConfigurationRequest) (response UpdateConfigurationResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/configuration", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }

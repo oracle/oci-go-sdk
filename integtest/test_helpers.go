@@ -241,7 +241,8 @@ func createTestUser(client identity.IdentityClient) (identity.User, error) {
 
 func deleteTestUser(client identity.IdentityClient, userID *string) error {
 	req := identity.DeleteUserRequest{UserId: userID}
-	return client.DeleteUser(context.Background(), req)
+	_, err := client.DeleteUser(context.Background(), req)
+	return err
 }
 
 func validAD() string {
@@ -269,7 +270,8 @@ func createTestGroup(client identity.IdentityClient) (identity.Group, error) {
 
 func deleteTestGroup(client identity.IdentityClient, groupId *string) error {
 	req := identity.DeleteGroupRequest{GroupId: groupId}
-	return client.DeleteGroup(context.Background(), req)
+	_, err := client.DeleteGroup(context.Background(), req)
+	return err
 }
 
 func getPubKeyPath() ([]byte, error) {

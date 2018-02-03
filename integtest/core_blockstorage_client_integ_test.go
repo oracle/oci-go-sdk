@@ -85,7 +85,7 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 		failIfError(t, clerr)
 		request := core.DeleteVolumeRequest{}
 		request.VolumeId = resCreate.Id
-		err := c.DeleteVolume(context.Background(), request)
+		_, err := c.DeleteVolume(context.Background(), request)
 		assert.NoError(t, err)
 		return
 	}
@@ -192,7 +192,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 		failIfError(t, clerr)
 		request := core.DeleteVolumeBackupRequest{}
 		request.VolumeBackupId = r.Id
-		err := c.DeleteVolumeBackup(context.Background(), request)
+		_, err := c.DeleteVolumeBackup(context.Background(), request)
 		failIfError(t, err)
 		return
 	}

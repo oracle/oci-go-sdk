@@ -23,7 +23,7 @@ func TestLoadBalancerClient_CreateBackend(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.CreateBackendRequest{}
-	err := c.CreateBackend(context.Background(), request)
+	_, err := c.CreateBackend(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -33,7 +33,7 @@ func TestLoadBalancerClient_CreateBackendSet(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.CreateBackendSetRequest{}
-	err := c.CreateBackendSet(context.Background(), request)
+	_, err := c.CreateBackendSet(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -43,7 +43,7 @@ func TestLoadBalancerClient_CreateCertificate(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.CreateCertificateRequest{}
-	err := c.CreateCertificate(context.Background(), request)
+	_, err := c.CreateCertificate(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -53,7 +53,7 @@ func TestLoadBalancerClient_CreateListener(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.CreateListenerRequest{}
-	err := c.CreateListener(context.Background(), request)
+	_, err := c.CreateListener(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -63,7 +63,7 @@ func TestLoadBalancerClient_CreateLoadBalancer(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.CreateLoadBalancerRequest{}
-	err := c.CreateLoadBalancer(context.Background(), request)
+	_, err := c.CreateLoadBalancer(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -73,7 +73,7 @@ func TestLoadBalancerClient_DeleteBackend(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.DeleteBackendRequest{}
-	err := c.DeleteBackend(context.Background(), request)
+	_, err := c.DeleteBackend(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -83,7 +83,7 @@ func TestLoadBalancerClient_DeleteBackendSet(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.DeleteBackendSetRequest{}
-	err := c.DeleteBackendSet(context.Background(), request)
+	_, err := c.DeleteBackendSet(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -93,7 +93,7 @@ func TestLoadBalancerClient_DeleteCertificate(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.DeleteCertificateRequest{}
-	err := c.DeleteCertificate(context.Background(), request)
+	_, err := c.DeleteCertificate(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -103,7 +103,7 @@ func TestLoadBalancerClient_DeleteListener(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.DeleteListenerRequest{}
-	err := c.DeleteListener(context.Background(), request)
+	_, err := c.DeleteListener(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -113,7 +113,7 @@ func TestLoadBalancerClient_DeleteLoadBalancer(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.DeleteLoadBalancerRequest{}
-	err := c.DeleteLoadBalancer(context.Background(), request)
+	_, err := c.DeleteLoadBalancer(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -307,7 +307,7 @@ func TestLoadBalancerClient_UpdateBackend(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.UpdateBackendRequest{}
-	err := c.UpdateBackend(context.Background(), request)
+	_, err := c.UpdateBackend(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -317,7 +317,7 @@ func TestLoadBalancerClient_UpdateBackendSet(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.UpdateBackendSetRequest{}
-	err := c.UpdateBackendSet(context.Background(), request)
+	_, err := c.UpdateBackendSet(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -327,7 +327,7 @@ func TestLoadBalancerClient_UpdateHealthChecker(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.UpdateHealthCheckerRequest{}
-	err := c.UpdateHealthChecker(context.Background(), request)
+	_,err := c.UpdateHealthChecker(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -337,7 +337,7 @@ func TestLoadBalancerClient_UpdateListener(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.UpdateListenerRequest{}
-	err := c.UpdateListener(context.Background(), request)
+	_, err := c.UpdateListener(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -347,7 +347,7 @@ func TestLoadBalancerClient_UpdateLoadBalancer(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.UpdateLoadBalancerRequest{}
-	err := c.UpdateLoadBalancer(context.Background(), request)
+	_,err := c.UpdateLoadBalancer(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }

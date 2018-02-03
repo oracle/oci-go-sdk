@@ -78,7 +78,7 @@ func TestComputeClient_DeleteConsoleHistory(t *testing.T) {
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteConsoleHistoryRequest{}
-	err := c.DeleteConsoleHistory(context.Background(), request)
+	_, err := c.DeleteConsoleHistory(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -88,7 +88,7 @@ func TestComputeClient_DeleteImage(t *testing.T) {
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteImageRequest{}
-	err := c.DeleteImage(context.Background(), request)
+	_, err := c.DeleteImage(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -98,7 +98,7 @@ func TestComputeClient_DeleteInstanceConsoleConnection(t *testing.T) {
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteInstanceConsoleConnectionRequest{}
-	err := c.DeleteInstanceConsoleConnection(context.Background(), request)
+	_, err := c.DeleteInstanceConsoleConnection(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -108,7 +108,7 @@ func TestComputeClient_DetachVnic(t *testing.T) {
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DetachVnicRequest{}
-	err := c.DetachVnic(context.Background(), request)
+	_, err := c.DetachVnic(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -118,7 +118,7 @@ func TestComputeClient_DetachVolume(t *testing.T) {
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DetachVolumeRequest{}
-	err := c.DetachVolume(context.Background(), request)
+	_, err := c.DetachVolume(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -373,7 +373,7 @@ func TestComputeClient_TerminateInstance(t *testing.T) {
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.TerminateInstanceRequest{}
-	err := c.TerminateInstance(context.Background(), request)
+	_, err := c.TerminateInstance(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }

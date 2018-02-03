@@ -181,7 +181,7 @@ func TestVirtualNetworkClient_DeleteCpe(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteCpeRequest{}
-	err := c.DeleteCpe(context.Background(), request)
+	_,err := c.DeleteCpe(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -191,7 +191,7 @@ func TestVirtualNetworkClient_DeleteCrossConnect(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteCrossConnectRequest{}
-	err := c.DeleteCrossConnect(context.Background(), request)
+	_, err := c.DeleteCrossConnect(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -201,7 +201,7 @@ func TestVirtualNetworkClient_DeleteCrossConnectGroup(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteCrossConnectGroupRequest{}
-	err := c.DeleteCrossConnectGroup(context.Background(), request)
+	_, err := c.DeleteCrossConnectGroup(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -211,7 +211,7 @@ func TestVirtualNetworkClient_DeleteDhcpOptions(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteDhcpOptionsRequest{}
-	err := c.DeleteDhcpOptions(context.Background(), request)
+	_, err := c.DeleteDhcpOptions(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -221,7 +221,7 @@ func TestVirtualNetworkClient_DeleteDrg(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteDrgRequest{}
-	err := c.DeleteDrg(context.Background(), request)
+	_, err := c.DeleteDrg(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -231,7 +231,7 @@ func TestVirtualNetworkClient_DeleteDrgAttachment(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteDrgAttachmentRequest{}
-	err := c.DeleteDrgAttachment(context.Background(), request)
+	_, err := c.DeleteDrgAttachment(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -241,7 +241,7 @@ func TestVirtualNetworkClient_DeleteIPSecConnection(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteIPSecConnectionRequest{}
-	err := c.DeleteIPSecConnection(context.Background(), request)
+	_, err := c.DeleteIPSecConnection(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -251,7 +251,7 @@ func TestVirtualNetworkClient_DeleteInternetGateway(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteInternetGatewayRequest{}
-	err := c.DeleteInternetGateway(context.Background(), request)
+	_, err := c.DeleteInternetGateway(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -261,7 +261,7 @@ func TestVirtualNetworkClient_DeletePrivateIp(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeletePrivateIpRequest{}
-	err := c.DeletePrivateIp(context.Background(), request)
+	_, err := c.DeletePrivateIp(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -271,7 +271,7 @@ func TestVirtualNetworkClient_DeleteRouteTable(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteRouteTableRequest{}
-	err := c.DeleteRouteTable(context.Background(), request)
+	_, err := c.DeleteRouteTable(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -281,7 +281,7 @@ func TestVirtualNetworkClient_DeleteSecurityList(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteSecurityListRequest{}
-	err := c.DeleteSecurityList(context.Background(), request)
+	_, err := c.DeleteSecurityList(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -291,7 +291,7 @@ func TestVirtualNetworkClient_DeleteSubnet(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteSubnetRequest{}
-	err := c.DeleteSubnet(context.Background(), request)
+	_, err := c.DeleteSubnet(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -301,7 +301,7 @@ func TestVirtualNetworkClient_DeleteVcn(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteVcnRequest{}
-	err := c.DeleteVcn(context.Background(), request)
+	_, err := c.DeleteVcn(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -311,7 +311,7 @@ func TestVirtualNetworkClient_DeleteVirtualCircuit(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteVirtualCircuitRequest{}
-	err := c.DeleteVirtualCircuit(context.Background(), request)
+	_, err := c.DeleteVirtualCircuit(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
