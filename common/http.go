@@ -106,13 +106,25 @@ func getTaggedNilFieldNameOrError(field reflect.StructField, fieldValue reflect.
 
 	Debugf("Adjusting tag: mandatory is false and json tag is valid on field: %s", field.Name)
 
-	//If the field can not be nil, then no-op
+	// non-mandatory enum with empty value should be removed
+	// this is a temp fix to unblock integration test, new task created to fix it by
+	// adding omitempty tag in code gen
+	if strings.HasSuffix(strings.ToLower(field.Type.Name()), "enum") &&
+		(&fieldValue).Kind() == reflect.String &&
+		fieldValue.Len() == 0 {
+		// remove the property if it's string type with empty string
+		// also type name ends with enum
+		Debugf("empty enum, field name: %s", field.Name)
+		return true, nameJSONField, nil
+	}
+
+	// If the field can not be nil, then no-op
 	if !isNillableType(&fieldValue) {
 		Debugf("WARNING json field is tagged with mandatory flags, but the type can not be nil, field name: %s", field.Name)
 		return false, nameJSONField, nil
 	}
 
-	//If field value is nil, tag it as omitEmpty
+	// If field value is nil, tag it as omitEmpty
 	return fieldValue.IsNil(), nameJSONField, nil
 
 }

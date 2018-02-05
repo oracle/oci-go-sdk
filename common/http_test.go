@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -14,6 +13,8 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -729,6 +730,31 @@ func TestOmitFieldsInJson_SimpleStructWithSliceStruct(t *testing.T) {
 	assert.NotContains(t, "nilnumbers", mapRet)
 	assert.NoError(t, err)
 	assert.Equal(t, `{"complex":[{"a":"","aempty":[]}]}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithEnum(t *testing.T) {
+	type TestEnum string
+
+	const (
+		TestEnumActive  TestEnum = "ACTIVE"
+		TestEnumUnknown TestEnum = "UNKNOWN"
+	)
+	type TestStruct struct {
+		MandatoryEnum TestEnum `mandatory:"true" json:"mandatoryenum"`
+		OptionalEnum  TestEnum `mandatory:"false" json:"optionalenum"`
+		TestString    *string  `mandatory:"false" json:"teststring"`
+	}
+
+	s := TestStruct{MandatoryEnum: TestEnumActive, TestString: String("teststring")}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"mandatoryenum":"ACTIVE","teststring":"teststring"}`, string(jsonRet))
 }
 
 func TestOmitFieldsInJson_SimpleStructWithMapStruct(t *testing.T) {
