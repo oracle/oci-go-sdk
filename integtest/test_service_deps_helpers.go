@@ -40,6 +40,7 @@ const (
 )
 
 // a helper method to either create a new vcn or get the one already exist
+// this will be used by the test cases which depends on vcn
 func createOrGetVcn(t *testing.T) core.Vcn {
 	vcnItems := listVcns(t)
 
