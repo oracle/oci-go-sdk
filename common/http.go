@@ -774,12 +774,14 @@ func addFromHeaderCollection(response *http.Response, value *reflect.Value, fiel
 
 	mapCollection := make(map[string]string)
 	for name, value := range response.Header {
-		if strings.HasPrefix(name, headerPrefix) {
-			headerNoPrefix := strings.TrimPrefix(name, headerPrefix)
+		nameLowerCase := strings.ToLower(name)
+		if strings.HasPrefix(nameLowerCase, headerPrefix) {
+			headerNoPrefix := strings.TrimPrefix(nameLowerCase, headerPrefix)
 			mapCollection[headerNoPrefix] = value[0]
 		}
 	}
 
+	Debugln("Marshalled header collection is:", mapCollection)
 	value.Set(reflect.ValueOf(mapCollection))
 	return nil
 }
