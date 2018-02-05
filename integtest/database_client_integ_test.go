@@ -20,7 +20,7 @@ import (
 
 // tests for create list get and delete backup
 func TestDatabaseClient_Backup(t *testing.T) {
-	//CreateOrGetDatabase(t)
+	CreateOrGetDatabase(t)
 	//assert.NotEmpty(t, r, fmt.Sprint(r))
 	//assert.NoError(t, err)
 	return
@@ -212,7 +212,11 @@ func TestDatabaseClient_GetDbSystemPatchHistoryEntry(t *testing.T) {
 }
 
 func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
-	t.Skip("long operation, run manually")
+
+	if testEnabled := getEnvSetting("", ""); !testEnabled {
+		t.Skip("long operation, run manually")
+	}
+
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 
@@ -250,8 +254,9 @@ func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
 	defer func() {
 		//Delete
 		rDel := database.TerminateDbSystemRequest{DbSystemId: r.DbSystem.Id}
-		err = c.TerminateDbSystem(context.Background(), rDel)
-		assert.NoError(t, err)
+		resp, err := c.TerminateDbSystem(context.Background(), rDel)
+		failIfError(t, err)
+		assert.NotEmpty(t, resp.OpcRequestId)
 	}()
 	assert.NotEmpty(t, r)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
@@ -429,7 +434,7 @@ func TestDatabaseClient_TerminateDbSystem(t *testing.T) {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := database.TerminateDbSystemRequest{}
-	_,err := c.TerminateDbSystem(context.Background(), request)
+	_, err := c.TerminateDbSystem(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }

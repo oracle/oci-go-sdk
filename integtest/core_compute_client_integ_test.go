@@ -251,28 +251,26 @@ func TestComputeClient_LaunchInstance(t *testing.T) {
 	// i.e. ServiceLimitExeceed error etc...
 	images := listImagesByDisplayName(t, common.String("Oracle-Linux-7.4-2018.01.20-0"))
 	assert.NotEmpty(t, images)
-	assert.NotEqual(t, len(images), 0)
 	request.ImageId = images[0].Id
 
 	shapes := listShapesForImage(t, request.ImageId)
-	assert.NotEqual(t, len(shapes), 0)
+	assert.NotEmpty(t, shapes)
 	request.Shape = shapes[0].Shape
 
 	r, err := c.LaunchInstance(context.Background(), request)
+	failIfError(t, err)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
 
 	// if we've successfully created a instance during testing, make sure that we delete it
 	defer func(client core.ComputeClient, r core.Instance) {
 		// delete instance
-		t.Log("clearn up instance")
-
 		request := core.TerminateInstanceRequest{
 			InstanceId: r.Id,
 		}
 
-		err := client.TerminateInstance(context.Background(), request)
+		resp, err := client.TerminateInstance(context.Background(), request)
 		failIfError(t, err)
+		assert.NotEmpty(t, resp.OpcRequestId)
 	}(c, r.Instance)
 
 	return
@@ -363,7 +361,7 @@ func TestBlockstorageClient_GetBootVolumeAttachment(t *testing.T) {
 	}
 
 	r, err := c.GetBootVolumeAttachment(context.Background(), request)
-	assert.NoError(t, err)
+	failIfError(t, err)
 	assert.NotEmpty(t, r.Id)
 	return
 }

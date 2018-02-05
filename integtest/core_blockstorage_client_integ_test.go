@@ -203,9 +203,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 func TestBlockstorageClient_ListBootVolumes(t *testing.T) {
 	bootVolumes := listBootVolumes(t)
-
 	assert.NotEmpty(t, bootVolumes)
-	assert.NotEqual(t, len(bootVolumes), 0)
 	return
 }
 
@@ -213,7 +211,6 @@ func TestBlockstorageClient_GetBootVolume(t *testing.T) {
 	// get list of boot volumns and make sure it's not empty
 	bootVolumes := listBootVolumes(t)
 	assert.NotEmpty(t, bootVolumes)
-	assert.NotEqual(t, len(bootVolumes), 0)
 
 	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)

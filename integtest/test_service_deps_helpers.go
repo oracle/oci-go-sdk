@@ -271,8 +271,8 @@ func createOrGetInstance(t *testing.T) core.Instance {
 	assert.NotEmpty(t, createResp, fmt.Sprint(createResp))
 	failIfError(t, err)
 
-	//Read
-	readTest := func() (interface{}, error) {
+	// get new created instance
+	getInstance := func() (interface{}, error) {
 		c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 		if clerr != nil {
 			return nil, clerr
@@ -292,10 +292,10 @@ func createOrGetInstance(t *testing.T) core.Instance {
 	}
 
 	// wait for instance lifecyle become running
-	assert.NoError(
+	failIfError(
 		t,
 		retryUntilTrueOrError(
-			readTest,
+			getInstance,
 			checkLifecycleState(string(core.InstanceLifecycleStateRunning)),
 			time.Tick(10*time.Second),
 			time.After((5*time.Minute))))
@@ -365,7 +365,6 @@ func createOrGetCrossConnect(t *testing.T) core.CrossConnect {
 
 	locations := listCrossConnectLocations(t)
 	assert.NotEmpty(t, locations)
-	assert.NotEqual(t, len(locations), 0)
 	request.LocationName = locations[0].Name
 	request.PortSpeedShapeName = common.String("10 Gbps")
 
@@ -696,8 +695,8 @@ func listVirtualCircuits(t *testing.T) []core.VirtualCircuit {
 	return resp.Items
 }
 
-func createLoadBalancerIfNotExist(t *testing.T) *loadbalancer.LoadBalancer {
-	loadbalancers := listLoadBalancers(t, loadbalancer.LoadBalancerLifecycleStateActive)
+func getOrCreateLoadBalancer(t *testing.T) *loadbalancer.LoadBalancer {
+	loadbalancers := listActiveLoadBalancers(t)
 
 	for _, element := range loadbalancers {
 		assert.NotEmpty(t, element)
@@ -730,15 +729,15 @@ func createLoadBalancerIfNotExist(t *testing.T) *loadbalancer.LoadBalancer {
 	shapes := listLoadBalancerShapes(t)
 	request.ShapeName = shapes[0].Name
 
-	err = c.CreateLoadBalancer(context.Background(), request)
-	assert.NoError(t, err)
+	resp, err := c.CreateLoadBalancer(context.Background(), request)
+	failIfError(t, err)
+	assert.NotEmpty(t, resp.OpcRequestId)
 
-	loadbalancers = listLoadBalancers(t, "")
+	loadbalancers = listActiveLoadBalancers(t)
 	for _, element := range loadbalancers {
 		assert.NotEmpty(t, element)
 		if *element.DisplayName == loadbalancerDisplayName {
 			// found it, return
-			// TODO: wati for state change to Active and return
 			return &element
 		}
 	}
@@ -748,17 +747,14 @@ func createLoadBalancerIfNotExist(t *testing.T) *loadbalancer.LoadBalancer {
 	return nil
 }
 
-func listLoadBalancers(t *testing.T, lifecycleState loadbalancer.LoadBalancerLifecycleStateEnum) []loadbalancer.LoadBalancer {
+func listActiveLoadBalancers(t *testing.T) []loadbalancer.LoadBalancer {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 
 	request := loadbalancer.ListLoadBalancersRequest{
-		CompartmentId: common.String(getCompartmentID()),
-		DisplayName:   common.String(loadbalancerDisplayName),
-	}
-
-	if lifecycleState != "" {
-		request.LifecycleState = lifecycleState
+		CompartmentId:  common.String(getCompartmentID()),
+		DisplayName:    common.String(loadbalancerDisplayName),
+		LifecycleState: loadbalancer.LoadBalancerLifecycleStateActive,
 	}
 
 	r, err := c.ListLoadBalancers(context.Background(), request)

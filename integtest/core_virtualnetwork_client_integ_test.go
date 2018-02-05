@@ -181,7 +181,7 @@ func TestVirtualNetworkClient_DeleteCpe(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteCpeRequest{}
-	_,err := c.DeleteCpe(context.Background(), request)
+	_, err := c.DeleteCpe(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -556,8 +556,8 @@ func TestVirtualNetworkClient_ListCrossConnectLocations(t *testing.T) {
 	request := core.ListCrossConnectLocationsRequest{}
 	request.CompartmentId = common.String(getCompartmentID())
 	r, err := c.ListCrossConnectLocations(context.Background(), request)
+	failIfError(t, err)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
 	return
 }
 
@@ -712,7 +712,7 @@ func TestVirtualNetworkClient_ListVirtualCircuitBandwidthShapes(t *testing.T) {
 }
 
 func TestVirtualNetworkClient_ListVirtualCircuits(t *testing.T) {
-	t.Skip("Service return 500")
+	t.Skip("Service return 500, service api bug")
 	// make sure the list operation at least return one item
 	createOrGetVirtualCircuit(t)
 	r := listVirtualCircuits(t)
@@ -887,8 +887,9 @@ func TestVirtualNetworkClient_UpdateVnic(t *testing.T) {
 }
 
 func TestVirtualNetworkClient_GetLocalPeeringGateway(t *testing.T) {
-	createOrGetSubnet(t)
-	/*gateway := createOrGetLocalPeeringGateway(t)
+	t.Skip("Not in current version of service spec, update later")
+	/*createOrGetSubnet(t)
+	gateway := createOrGetLocalPeeringGateway(t)
 	assert.NotEmpty(t, gateway)
 
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
