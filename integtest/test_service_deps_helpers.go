@@ -695,14 +695,14 @@ func listVirtualCircuits(t *testing.T) []core.VirtualCircuit {
 	return resp.Items
 }
 
-func getOrCreateLoadBalancer(t *testing.T) *loadbalancer.LoadBalancer {
+func createOrGetLoadBalancer(t *testing.T) *string {
 	loadbalancers := listActiveLoadBalancers(t)
 
 	for _, element := range loadbalancers {
 		assert.NotEmpty(t, element)
 		if *element.DisplayName == loadbalancerDisplayName {
 			// found it, return
-			return &element
+			return element.Id
 		}
 	}
 
@@ -733,18 +733,43 @@ func getOrCreateLoadBalancer(t *testing.T) *loadbalancer.LoadBalancer {
 	failIfError(t, err)
 	assert.NotEmpty(t, resp.OpcRequestId)
 
-	loadbalancers = listActiveLoadBalancers(t)
-	for _, element := range loadbalancers {
-		assert.NotEmpty(t, element)
-		if *element.DisplayName == loadbalancerDisplayName {
-			// found it, return
-			return &element
+	// get new created loadbalancer
+	getTestLoadBalancer := func() *loadbalancer.LoadBalancer {
+		loadbalancers = listActiveLoadBalancers(t)
+		for _, element := range loadbalancers {
+			assert.NotEmpty(t, element)
+			if *element.DisplayName == loadbalancerDisplayName {
+				// found it, return
+				return &element
+			}
 		}
+
+		return nil
 	}
 
-	t.Error("create loadbalancer failed")
-	t.Fail()
-	return nil
+	// use to check the lifecycle of new load balancer
+	getLoadBalancerCheck := func() (interface{}, error) {
+		testLoadBalancer := getTestLoadBalancer()
+		if testLoadBalancer != nil {
+			return testLoadBalancer, nil
+		}
+
+		return loadbalancer.LoadBalancer{}, nil
+	}
+
+	// wait for instance lifecyle become running
+	failIfError(
+		t,
+		retryUntilTrueOrError(
+			getLoadBalancerCheck,
+			checkLifecycleState(string(loadbalancer.LoadBalancerLifecycleStateActive)),
+			time.Tick(10*time.Second),
+			time.After((5*time.Minute))))
+
+	newCreatedLoadBalancer := getTestLoadBalancer()
+	assert.NotEmpty(t, newCreatedLoadBalancer)
+	assert.NotEmpty(t, newCreatedLoadBalancer.Id)
+	return newCreatedLoadBalancer.Id
 }
 
 func listActiveLoadBalancers(t *testing.T) []loadbalancer.LoadBalancer {

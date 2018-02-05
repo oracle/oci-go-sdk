@@ -20,7 +20,7 @@ import (
 
 // tests for create list get and delete backup
 func TestDatabaseClient_Backup(t *testing.T) {
-	CreateOrGetDatabase(t)
+	//CreateOrGetDatabase(t)
 	//assert.NotEmpty(t, r, fmt.Sprint(r))
 	//assert.NoError(t, err)
 	return
@@ -213,9 +213,9 @@ func TestDatabaseClient_GetDbSystemPatchHistoryEntry(t *testing.T) {
 
 func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
 
-	if testEnabled := getEnvSetting("", ""); !testEnabled {
+	/*if testEnabled := getEnvSetting("", ""); !testEnabled {
 		t.Skip("long operation, run manually")
-	}
+	}*/
 
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
