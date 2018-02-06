@@ -221,7 +221,7 @@ func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
 	request.DisplayName = common.String(dbSystemDisplayName)
 	request.Shape = common.String("BM.DenseIO1.36") // this shape will not get service limit error for now
 
-	buffer, err := getPubKeyPath()
+	buffer, err := readTestPubKey()
 	failIfError(t, err)
 	request.SshPublicKeys = []string{string(buffer)}
 

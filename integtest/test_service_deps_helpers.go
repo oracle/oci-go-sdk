@@ -11,8 +11,6 @@ package integtest
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
-	"os"
 	"testing"
 	"time"
 
@@ -559,7 +557,7 @@ func createOrGetInstanceConsoleConnection(t *testing.T) core.InstanceConsoleConn
 	createRequest.InstanceId = instance.Id
 
 	// get the public key
-	buffer, err := ioutil.ReadFile(os.Getenv("HOME") + "/.ssh/id_rsa.pub")
+	buffer, err := readTestPubKey()
 	failIfError(t, err)
 	createRequest.PublicKey = common.String(string(buffer))
 

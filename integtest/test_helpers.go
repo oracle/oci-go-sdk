@@ -289,7 +289,7 @@ func deleteTestGroup(client identity.IdentityClient, groupId *string) error {
 	return err
 }
 
-func getPubKeyPath() ([]byte, error) {
+func readTestPubKey() ([]byte, error) {
 	pwd, err := os.Getwd()
 	if err != nil {
 		return nil, err
