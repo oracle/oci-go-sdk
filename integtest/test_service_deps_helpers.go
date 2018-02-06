@@ -899,6 +899,30 @@ func createOrGetVolumn(t *testing.T) core.Volume {
 
 	assert.NotEmpty(t, r)
 	assert.NotEmpty(t, r.Volume)
+
+	getVolumn := func() (interface{}, error) {
+		getReq := core.GetVolumeRequest{
+			VolumeId: r.Volume.Id,
+		}
+
+		getResp, err := c.GetVolume(context.Background(), getReq)
+
+		if err != nil {
+			return nil, err
+		}
+
+		return getResp, nil
+	}
+
+	// wait for lifecyle become running
+	failIfError(
+		t,
+		retryUntilTrueOrError(
+			getVolumn,
+			checkLifecycleState(string(core.VolumeLifecycleStateAvailable)),
+			time.Tick(10*time.Second),
+			time.After((5*time.Minute))))
+
 	return r.Volume
 }
 
