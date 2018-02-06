@@ -205,7 +205,7 @@ func TestDatabaseClient_GetDbSystemPatchHistoryEntry(t *testing.T) {
 
 func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
 
-	if !getRunTestSuite() {
+	if !getRunExpensiveTests() {
 		t.Skip("expensive test 'TestDatabaseClient_LaunchDbSystem' excluded")
 		return
 	}

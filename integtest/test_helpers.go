@@ -22,20 +22,20 @@ import (
 )
 
 const (
-	GoSDK2_Test_Prefix   = "GOSDK2_Test_"
-	ENV_TENANCY_OCID     = "tenancy_ocid"
-	ENV_USER_OCID        = "user_ocid"
-	ENV_COMPARTMENT_OCID = "compartment_ocid"
-	ENV_GROUP_OCID       = "group_ocid"
-	ENV_REGION           = "region"
-	ENV_RUN_TEST_SUITE   = "gosdk_run_test_suite"
+	GoSDK2_Test_Prefix      = "GOSDK2_Test_"
+	ENV_TENANCY_OCID        = "tenancy_ocid"
+	ENV_USER_OCID           = "user_ocid"
+	ENV_COMPARTMENT_OCID    = "compartment_ocid"
+	ENV_GROUP_OCID          = "group_ocid"
+	ENV_REGION              = "region"
+	ENV_RUN_EXPENSIVE_TESTS = "gosdk_run_expensive_tests"
 
 	DEF_ROOT_COMPARTMENT_ID = "ocidv1:tenancy:oc1:phx:1460406592660:aaaaaaaab4faofrfkxecohhjuivjq262pu"
 	DEF_USER_ID             = "ocid1.user.oc1..aaaaaaaav6gsclr6pd4yjqengmriylyck55lvon5ujjnhkok5gyxii34lvra"
 	DEF_COMPARTMENT_ID      = "ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma"
 	DEF_GROUP_ID            = "ocid1.group.oc1..aaaaaaaayvxomawkk23wkp32cgdufufgqvx62qanmbn6vs3lv65xuc42r5sq"
 	DEF_REGION              = common.RegionPHX
-	DEF_RUN_TEST_SUITE      = "false"
+	DEF_RUN_EXPENSIVE_TESTS = "false"
 )
 
 func getEnvSetting(s string, defaultValue string) string {
@@ -96,15 +96,15 @@ func getRegion() common.Region {
 }
 
 // if return true, make test command will include all tests (including the expensive ones. i.e. launch database)
-func getRunTestSuite() bool {
-	config := getEnvSetting(ENV_RUN_TEST_SUITE, DEF_RUN_TEST_SUITE)
-	includeAllTests, err := strconv.ParseBool(config)
+func getRunExpensiveTests() bool {
+	config := getEnvSetting(ENV_RUN_EXPENSIVE_TESTS, DEF_RUN_EXPENSIVE_TESTS)
+	includeExpensiveTests, err := strconv.ParseBool(config)
 
 	if err != nil {
 		return false
 	}
 
-	return includeAllTests
+	return includeExpensiveTests
 }
 
 //Panics on error

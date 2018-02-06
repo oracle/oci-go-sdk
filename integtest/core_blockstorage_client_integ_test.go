@@ -219,7 +219,7 @@ func TestBlockstorageClient_GetBootVolume(t *testing.T) {
 	}
 
 	r, err := c.GetBootVolume(context.Background(), request)
-	assert.NoError(t, err)
+	failIfError(t, err)
 	assert.NotEmpty(t, r.Id)
 	return
 }

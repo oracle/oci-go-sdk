@@ -255,7 +255,13 @@ func TestComputeClient_LaunchInstance(t *testing.T) {
 
 	shapes := listShapesForImage(t, request.ImageId)
 	assert.NotEmpty(t, shapes)
-	request.Shape = shapes[0].Shape
+
+	// if more shapes return, use different one to avoid getting service limited error
+	if len(shapes) > 0 {
+		request.Shape = shapes[1].Shape
+	} else {
+		request.Shape = shapes[0].Shape
+	}
 
 	r, err := c.LaunchInstance(context.Background(), request)
 	failIfError(t, err)
@@ -335,13 +341,41 @@ func TestComputeClient_ListVnicAttachments(t *testing.T) {
 func TestComputeClient_ListVolumeAttachments(t *testing.T) {
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	request := core.ListVolumeAttachmentsRequest{
-		CompartmentId: common.String(getCompartmentID()),
+
+	// make sure volumn is created
+	volumn := createOrGetVolumn(t)
+	instance := createOrGetInstance(t)
+
+	listAttachedVolumes := func() []core.VolumeAttachment {
+		request := core.ListVolumeAttachmentsRequest{
+			CompartmentId: common.String(getCompartmentID()),
+			InstanceId:    instance.Id,
+		}
+		r, err := c.ListVolumeAttachments(context.Background(), request)
+		assert.NotEmpty(t, r, fmt.Sprint(r))
+		assert.NoError(t, err)
+		return r.Items
 	}
-	r, err := c.ListVolumeAttachments(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NotEmpty(t, r.Items, fmt.Sprint(r.Items))
-	assert.NoError(t, err)
+
+	// get list of attached volumes for current instance
+	attachedVolumes := listAttachedVolumes()
+
+	// if no volumn attached, attach one
+	if attachedVolumes == nil ||
+		len(attachedVolumes) == 0 {
+		// attach volumn to instance
+		attachRequest := core.AttachVolumeRequest{}
+		attachRequest.AttachVolumeDetails = core.AttachIScsiVolumeDetails{
+			InstanceId: instance.Id,
+			VolumeId:   volumn.Id,
+		}
+
+		_, err := c.AttachVolume(context.Background(), attachRequest)
+		failIfError(t, err)
+		attachedVolumes = listAttachedVolumes()
+	}
+
+	assert.NotEmpty(t, attachedVolumes, fmt.Sprint(attachedVolumes))
 	return
 }
 

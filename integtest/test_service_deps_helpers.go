@@ -37,6 +37,7 @@ const (
 	dbSystemDisplayName          = "GOSDK2_Test_Deps_DatabaseSystem"
 	dbHomeDisplayName            = "GOSDK2_Test_Deps_DatabaseHome"
 	loadbalancerDisplayName      = "GOSDK2_Test_Deps_Loadbalancer"
+	volumnDisplayName            = "GOSDK2_Test_Deps_Volumn"
 )
 
 // a helper method to either create a new vcn or get the one already exist
@@ -125,6 +126,30 @@ func createOrGetSubnetWithDetails(t *testing.T, displayName *string, cidrBlock *
 	failIfError(t, err)
 	assert.NotEmpty(t, r)
 	assert.NotEmpty(t, r.Subnet)
+
+	getSubnet := func() (interface{}, error) {
+		getReq := core.GetSubnetRequest{
+			SubnetId: r.Id,
+		}
+
+		getResp, err := c.GetSubnet(context.Background(), getReq)
+
+		if err != nil {
+			return nil, err
+		}
+
+		return getResp, nil
+	}
+
+	// wait for lifecyle become running
+	failIfError(
+		t,
+		retryUntilTrueOrError(
+			getSubnet,
+			checkLifecycleState(string(core.SubnetLifecycleStateAvailable)),
+			time.Tick(10*time.Second),
+			time.After((5*time.Minute))))
+
 	return r.Subnet
 }
 
@@ -199,7 +224,7 @@ func listBootVolumeAttachments(t *testing.T) []core.BootVolumeAttachment {
 	}
 
 	r, err := c.ListBootVolumeAttachments(context.Background(), request)
-	assert.NoError(t, err)
+	failIfError(t, err)
 	assert.NotEmpty(t, r.Items)
 	return r.Items
 }
@@ -513,9 +538,11 @@ func listVirtualCircuitBandwidthShapes(t *testing.T) []core.VirtualCircuitBandwi
 func createOrGetInstanceConsoleConnection(t *testing.T) core.InstanceConsoleConnection {
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
+	instance := createOrGetInstance(t)
 
 	listRequest := core.ListInstanceConsoleConnectionsRequest{}
 	listRequest.CompartmentId = common.String(getCompartmentID())
+	listRequest.InstanceId = instance.Id
 
 	listResp, err := c.ListInstanceConsoleConnections(context.Background(), listRequest)
 	failIfError(t, err)
@@ -528,7 +555,6 @@ func createOrGetInstanceConsoleConnection(t *testing.T) core.InstanceConsoleConn
 	}
 
 	// create a new one
-	instance := createOrGetInstance(t)
 	createRequest := core.CreateInstanceConsoleConnectionRequest{}
 	createRequest.InstanceId = instance.Id
 
@@ -539,8 +565,31 @@ func createOrGetInstanceConsoleConnection(t *testing.T) core.InstanceConsoleConn
 
 	createResp, err := c.CreateInstanceConsoleConnection(context.Background(), createRequest)
 	failIfError(t, err)
-
 	assert.NotEmpty(t, createResp)
+
+	getInstanceConsoleConnection := func() (interface{}, error) {
+		getReq := core.GetInstanceConsoleConnectionRequest{
+			InstanceConsoleConnectionId: createResp.Id,
+		}
+
+		getResp, err := c.GetInstanceConsoleConnection(context.Background(), getReq)
+
+		if err != nil {
+			return nil, err
+		}
+
+		return getResp, nil
+	}
+
+	// wait for instance lifecyle become running
+	failIfError(
+		t,
+		retryUntilTrueOrError(
+			getInstanceConsoleConnection,
+			checkLifecycleState(string(core.InstanceConsoleConnectionLifecycleStateActive)),
+			time.Tick(10*time.Second),
+			time.After((5*time.Minute))))
+
 	return createResp.InstanceConsoleConnection
 }
 
@@ -568,7 +617,8 @@ func captureOrGetConsoleHistory(t *testing.T) core.ConsoleHistory {
 
 	for _, element := range consoleHistories {
 		assert.NotEmpty(t, element)
-		if *element.DisplayName == consoleHistoryDisplayName {
+		if *element.DisplayName == consoleHistoryDisplayName &&
+			element.LifecycleState == core.ConsoleHistoryLifecycleStateSucceeded {
 			// find it, return
 			return element
 		}
@@ -585,6 +635,29 @@ func captureOrGetConsoleHistory(t *testing.T) core.ConsoleHistory {
 
 	resp, err := c.CaptureConsoleHistory(context.Background(), request)
 	failIfError(t, err)
+
+	getConsoleHistory := func() (interface{}, error) {
+		getReq := core.GetConsoleHistoryRequest{
+			InstanceConsoleHistoryId: resp.Id,
+		}
+
+		getResp, err := c.GetConsoleHistory(context.Background(), getReq)
+
+		if err != nil {
+			return nil, err
+		}
+
+		return getResp, nil
+	}
+
+	// wait for instance lifecyle become running
+	failIfError(
+		t,
+		retryUntilTrueOrError(
+			getConsoleHistory,
+			checkLifecycleState(string(core.ConsoleHistoryLifecycleStateSucceeded)),
+			time.Tick(10*time.Second),
+			time.After((5*time.Minute))))
 
 	assert.NotEmpty(t, resp)
 	assert.NotEmpty(t, resp.ConsoleHistory)
@@ -607,7 +680,6 @@ func listConsoleHistories(t *testing.T) []core.ConsoleHistory {
 	failIfError(t, err)
 
 	assert.NotEmpty(t, resp)
-	assert.NotEmpty(t, resp.Items)
 	return resp.Items
 }
 
@@ -784,7 +856,7 @@ func listActiveLoadBalancers(t *testing.T) []loadbalancer.LoadBalancer {
 	}
 
 	r, err := c.ListLoadBalancers(context.Background(), request)
-	assert.NoError(t, err)
+	failIfError(t, err)
 	assert.NotEmpty(t, r)
 	return r.Items
 }
@@ -797,9 +869,52 @@ func listLoadBalancerShapes(t *testing.T) []loadbalancer.LoadBalancerShape {
 	}
 
 	r, err := c.ListShapes(context.Background(), request)
-	assert.NoError(t, err)
+	failIfError(t, err)
 	assert.NotEmpty(t, r)
 	assert.NotEmpty(t, r.Items)
 	assert.NotEqual(t, len(r.Items), 0)
+	return r.Items
+}
+
+func createOrGetVolumn(t *testing.T) core.Volume {
+	volumns := listVolumns(t)
+
+	for _, element := range volumns {
+		assert.NotEmpty(t, element)
+		if *element.DisplayName == volumnDisplayName &&
+			element.LifecycleState == core.VolumeLifecycleStateAvailable {
+			// found it, return
+			return element
+		}
+	}
+
+	// create a new one
+	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+	request := core.CreateVolumeRequest{}
+	request.AvailabilityDomain = common.String(validAD())
+	request.CompartmentId = common.String(getCompartmentID())
+	request.DisplayName = common.String(volumnDisplayName)
+
+	r, err := c.CreateVolume(context.Background(), request)
+	failIfError(t, err)
+
+	assert.NotEmpty(t, r)
+	assert.NotEmpty(t, r.Volume)
+	return r.Volume
+}
+
+func listVolumns(t *testing.T) []core.Volume {
+	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+
+	request := core.ListVolumesRequest{
+		CompartmentId: common.String(getCompartmentID()),
+	}
+
+	r, err := c.ListVolumes(context.Background(), request)
+	failIfError(t, err)
+
+	assert.NotEmpty(t, r)
 	return r.Items
 }
