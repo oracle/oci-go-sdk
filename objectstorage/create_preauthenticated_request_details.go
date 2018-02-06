@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Object Storage Service API
@@ -22,7 +22,7 @@ type CreatePreauthenticatedRequestDetails struct {
 	AccessType CreatePreauthenticatedRequestDetailsAccessTypeEnum `mandatory:"true" json:"accessType"`
 
 	// The expiration date after which the pre-authenticated request will no longer be valid per spec
-	// [RFC 3339](https://tools.ietf.org/rfc/rfc3339)
+	// (https://tools.ietf.org/rfc/rfc3339)
 	TimeExpires *common.SDKTime `mandatory:"true" json:"timeExpires"`
 
 	// Name of object that is being granted access to by the pre-authenticated request. This can be null and that would mean that the pre-authenticated request is granting access to the entire bucket
