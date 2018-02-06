@@ -561,7 +561,7 @@ func TestMarshalWithHeaderCollections(t *testing.T) {
 	request, err := MakeDefaultHTTPRequestWithTaggedStruct("GET", "/", s)
 	assert.NoError(t, err)
 	assert.Equal(t, s.Meta["key1"], request.Header.Get("meta-prefix-key1"))
-	assert.Equal(t, s.Meta["key2"], request.Header.Get("meta-prefix-key2"))
+	assert.Equal(t, s.Meta["key2"], request.Header.Get("Meta-prefix-key2"))
 }
 
 func TestMarshalWithHeaderCollections_BadCollectionType(t *testing.T) {
@@ -587,8 +587,8 @@ func TestUnMarshalWithHeaderCollections(t *testing.T) {
 	r := http.Response{Header: header}
 	err := UnmarshalResponse(&r, &s)
 	assert.NoError(t, err)
-	assert.Equal(t, s.Meta["key1"], r.Header.Get("val1"))
-	assert.Equal(t, s.Meta["key2"], r.Header.Get("val2"))
+	assert.Equal(t, s.Meta["key1"], r.Header.Get("Meta-Prefix-Key1"))
+	assert.Equal(t, s.Meta["key2"], r.Header.Get("Meta-Prefix-Key2"))
 }
 
 type responseWithEmptyQP struct {
