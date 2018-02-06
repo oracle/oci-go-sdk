@@ -19,12 +19,12 @@ type RouteRule struct {
 	// A destination IP address range in CIDR notation. Matching packets will
 	// be routed to the indicated network entity (the target).
 	// Example: `0.0.0.0/0`
-	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
+	CidrBlock *string `mandatory:"true" json:"cidrBlock"`
 
 	// The OCID for the route rule's target. For information about the type of
 	// targets you can specify, see
-	// https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/managingroutetables.htm.
-	NetworkEntityId *string `mandatory:"true" json:"networkEntityId,omitempty"`
+	// [Route Tables]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingroutetables.htm).
+	NetworkEntityId *string `mandatory:"true" json:"networkEntityId"`
 }
 
 func (m RouteRule) String() string {

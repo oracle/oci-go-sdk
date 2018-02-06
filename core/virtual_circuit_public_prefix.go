@@ -18,14 +18,14 @@ import (
 type VirtualCircuitPublicPrefix struct {
 
 	// Publix IP prefix (CIDR) that the customer specified.
-	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
+	CidrBlock *string `mandatory:"true" json:"cidrBlock"`
 
 	// Oracle must verify that the customer owns the public IP prefix before traffic
 	// for that prefix can flow across the virtual circuit. Verification can take a
 	// few business days. `IN_PROGRESS` means Oracle is verifying the prefix. `COMPLETED`
 	// means verification succeeded. `FAILED` means verification failed and traffic for
 	// this prefix will not flow across the connection.
-	VerificationState VirtualCircuitPublicPrefixVerificationStateEnum `mandatory:"true" json:"verificationState,omitempty"`
+	VerificationState VirtualCircuitPublicPrefixVerificationStateEnum `mandatory:"true" json:"verificationState"`
 }
 
 func (m VirtualCircuitPublicPrefix) String() string {

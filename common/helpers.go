@@ -90,6 +90,7 @@ func now() *SDKTime {
 }
 
 var timeType = reflect.TypeOf(SDKTime{})
+var timeTypePtr = reflect.TypeOf(&SDKTime{})
 
 const sdkTimeFormat = time.RFC3339
 

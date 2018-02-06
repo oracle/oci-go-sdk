@@ -16,7 +16,7 @@ import (
 type SwitchoverDataGuardAssociationDetails struct {
 
 	// The DB System administrator password.
-	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword,omitempty"`
+	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword"`
 }
 
 func (m SwitchoverDataGuardAssociationDetails) String() string {

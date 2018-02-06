@@ -18,6 +18,7 @@ import (
 //ObjectStorageClient a client for ObjectStorage
 type ObjectStorageClient struct {
 	common.BaseClient
+	config *common.ConfigurationProvider
 }
 
 func buildSigner(configProvider common.ConfigurationProvider) common.HTTPRequestSigner {
@@ -40,41 +41,70 @@ func NewObjectStorageClientWithConfigurationProvider(configProvider common.Confi
 	baseClient.Signer = buildSigner(configProvider)
 
 	client = ObjectStorageClient{BaseClient: baseClient}
-	region, err := configProvider.Region()
-	if err != nil {
-		return
-	}
-
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "objectstorage", string(region))
+	err = client.setConfigurationProvider(configProvider)
 	return
 }
 
+// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+func (client *ObjectStorageClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
+	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
+		return err
+	}
+
+	region, err := configProvider.Region()
+	if err != nil {
+		return err
+	}
+	client.config = &configProvider
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "objectstorage", string(region))
+	return nil
+}
+
+// ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
+func (client *ObjectStorageClient) ConfigurationProvider() *common.ConfigurationProvider {
+	return client.config
+}
+
 // AbortMultipartUpload Aborts an in-progress multipart upload and deletes all parts that have been uploaded.
-func (client ObjectStorageClient) AbortMultipartUpload(ctx context.Context, request AbortMultipartUploadRequest) (err error) {
+func (client ObjectStorageClient) AbortMultipartUpload(ctx context.Context, request AbortMultipartUploadRequest) (response AbortMultipartUploadResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/n/{namespaceName}/b/{bucketName}/u/{objectName}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
 // CommitMultipartUpload Commits a multipart upload, which involves checking part numbers and ETags of the parts, to create an aggregate object.
-func (client ObjectStorageClient) CommitMultipartUpload(ctx context.Context, request CommitMultipartUploadRequest) (err error) {
+func (client ObjectStorageClient) CommitMultipartUpload(ctx context.Context, request CommitMultipartUploadRequest) (response CommitMultipartUploadResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/n/{namespaceName}/b/{bucketName}/u/{objectName}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
 // CreateBucket Creates a bucket in the given namespace with a bucket name and optional user-defined metadata.
 // To use this and other API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
+// [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 func (client ObjectStorageClient) CreateBucket(ctx context.Context, request CreateBucketRequest) (response CreateBucketResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/n/{namespaceName}/b/", request)
 	if err != nil {
@@ -129,35 +159,56 @@ func (client ObjectStorageClient) CreatePreauthenticatedRequest(ctx context.Cont
 }
 
 // DeleteBucket Deletes a bucket if it is already empty. If the bucket is not empty, use DeleteObject first.
-func (client ObjectStorageClient) DeleteBucket(ctx context.Context, request DeleteBucketRequest) (err error) {
+func (client ObjectStorageClient) DeleteBucket(ctx context.Context, request DeleteBucketRequest) (response DeleteBucketResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/n/{namespaceName}/b/{bucketName}/", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
 // DeleteObject Deletes an object.
-func (client ObjectStorageClient) DeleteObject(ctx context.Context, request DeleteObjectRequest) (err error) {
+func (client ObjectStorageClient) DeleteObject(ctx context.Context, request DeleteObjectRequest) (response DeleteObjectResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/n/{namespaceName}/b/{bucketName}/o/{objectName}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
 // DeletePreauthenticatedRequest Deletes the bucket level pre-authenticateted request
-func (client ObjectStorageClient) DeletePreauthenticatedRequest(ctx context.Context, request DeletePreauthenticatedRequestRequest) (err error) {
+func (client ObjectStorageClient) DeletePreauthenticatedRequest(ctx context.Context, request DeletePreauthenticatedRequestRequest) (response DeletePreauthenticatedRequestResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/n/{namespaceName}/b/{bucketName}/p/{parId}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
@@ -234,24 +285,38 @@ func (client ObjectStorageClient) GetPreauthenticatedRequest(ctx context.Context
 }
 
 // HeadBucket Efficiently checks if a bucket exists and gets the current ETag for the bucket.
-func (client ObjectStorageClient) HeadBucket(ctx context.Context, request HeadBucketRequest) (err error) {
+func (client ObjectStorageClient) HeadBucket(ctx context.Context, request HeadBucketRequest) (response HeadBucketResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodHead, "/n/{namespaceName}/b/{bucketName}/", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
 // HeadObject Gets the user-defined metadata and entity tag for an object.
-func (client ObjectStorageClient) HeadObject(ctx context.Context, request HeadObjectRequest) (err error) {
+func (client ObjectStorageClient) HeadObject(ctx context.Context, request HeadObjectRequest) (response HeadObjectResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodHead, "/n/{namespaceName}/b/{bucketName}/o/{objectName}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
@@ -259,7 +324,7 @@ func (client ObjectStorageClient) HeadObject(ctx context.Context, request HeadOb
 // and does not contain fields like the user-defined metadata.
 // To use this and other API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
+// [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 func (client ObjectStorageClient) ListBuckets(ctx context.Context, request ListBucketsRequest) (response ListBucketsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/n/{namespaceName}/b/", request)
 	if err != nil {
@@ -316,7 +381,7 @@ func (client ObjectStorageClient) ListMultipartUploads(ctx context.Context, requ
 // ListObjects Lists the objects in a bucket.
 // To use this and other API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
+// [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 func (client ObjectStorageClient) ListObjects(ctx context.Context, request ListObjectsRequest) (response ListObjectsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/n/{namespaceName}/b/{bucketName}/o", request)
 	if err != nil {
@@ -355,14 +420,21 @@ func (client ObjectStorageClient) ListPreauthenticatedRequests(ctx context.Conte
 // PutObject Creates a new object or overwrites an existing one.
 // To use this and other API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
-func (client ObjectStorageClient) PutObject(ctx context.Context, request PutObjectRequest) (err error) {
+// [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
+func (client ObjectStorageClient) PutObject(ctx context.Context, request PutObjectRequest) (response PutObjectResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/n/{namespaceName}/b/{bucketName}/o/{objectName}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
@@ -385,12 +457,19 @@ func (client ObjectStorageClient) UpdateBucket(ctx context.Context, request Upda
 }
 
 // UploadPart Uploads a single part of a multipart upload.
-func (client ObjectStorageClient) UploadPart(ctx context.Context, request UploadPartRequest) (err error) {
+func (client ObjectStorageClient) UploadPart(ctx context.Context, request UploadPartRequest) (response UploadPartResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/n/{namespaceName}/b/{bucketName}/u/{objectName}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }

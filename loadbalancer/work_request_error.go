@@ -14,10 +14,10 @@ import (
 
 // WorkRequestError An object returned in the event of a work request error.
 type WorkRequestError struct {
-	ErrorCode WorkRequestErrorErrorCodeEnum `mandatory:"true" json:"errorCode,omitempty"`
+	ErrorCode WorkRequestErrorErrorCodeEnum `mandatory:"true" json:"errorCode"`
 
 	// A human-readable error string.
-	Message *string `mandatory:"true" json:"message,omitempty"`
+	Message *string `mandatory:"true" json:"message"`
 }
 
 func (m WorkRequestError) String() string {

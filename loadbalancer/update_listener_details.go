@@ -16,19 +16,19 @@ import (
 type UpdateListenerDetails struct {
 
 	// The name of the associated backend set.
-	DefaultBackendSetName *string `mandatory:"true" json:"defaultBackendSetName,omitempty"`
+	DefaultBackendSetName *string `mandatory:"true" json:"defaultBackendSetName"`
 
 	// The communication port for the listener.
 	// Example: `80`
-	Port *int `mandatory:"true" json:"port,omitempty"`
+	Port *int `mandatory:"true" json:"port"`
 
 	// The protocol on which the listener accepts connection requests.
 	// To get a list of valid protocols, use the ListProtocols
 	// operation.
 	// Example: `HTTP`
-	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
+	Protocol *string `mandatory:"true" json:"protocol"`
 
-	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration,omitempty"`
+	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration"`
 }
 
 func (m UpdateListenerDetails) String() string {

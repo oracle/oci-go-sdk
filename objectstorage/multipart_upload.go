@@ -18,19 +18,19 @@ import (
 type MultipartUpload struct {
 
 	// The namespace in which the in-progress multipart upload is stored.
-	Namespace *string `mandatory:"true" json:"namespace,omitempty"`
+	Namespace *string `mandatory:"true" json:"namespace"`
 
 	// The bucket in which the in-progress multipart upload is stored.
-	Bucket *string `mandatory:"true" json:"bucket,omitempty"`
+	Bucket *string `mandatory:"true" json:"bucket"`
 
 	// The object name of the in-progress multipart upload.
-	Object *string `mandatory:"true" json:"object,omitempty"`
+	Object *string `mandatory:"true" json:"object"`
 
 	// The unique identifier for the in-progress multipart upload.
-	UploadId *string `mandatory:"true" json:"uploadId,omitempty"`
+	UploadId *string `mandatory:"true" json:"uploadId"`
 
 	// The date and time when the upload was created.
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 }
 
 func (m MultipartUpload) String() string {

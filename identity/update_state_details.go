@@ -16,7 +16,7 @@ import (
 type UpdateStateDetails struct {
 
 	// Update state to blocked or unblocked. Only "false" is supported (for changing the state to unblocked).
-	Blocked *bool `mandatory:"false" json:"blocked,omitempty"`
+	Blocked *bool `mandatory:"false" json:"blocked"`
 }
 
 func (m UpdateStateDetails) String() string {

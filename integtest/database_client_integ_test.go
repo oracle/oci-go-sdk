@@ -67,7 +67,7 @@ func TestDatabaseClient_DeleteBackup(t *testing.T) {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := database.DeleteBackupRequest{}
-	err := c.DeleteBackup(context.Background(), request)
+	_, err := c.DeleteBackup(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -77,7 +77,7 @@ func TestDatabaseClient_DeleteDbHome(t *testing.T) {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := database.DeleteDbHomeRequest{}
-	err := c.DeleteDbHome(context.Background(), request)
+	_, err := c.DeleteDbHome(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -384,7 +384,7 @@ func TestDatabaseClient_TerminateDbSystem(t *testing.T) {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := database.TerminateDbSystemRequest{}
-	err := c.TerminateDbSystem(context.Background(), request)
+	_,err := c.TerminateDbSystem(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }

@@ -17,10 +17,10 @@ import (
 type CreateInstanceConsoleConnectionDetails struct {
 
 	// The OCID of the instance to create the console connection to.
-	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId"`
 
 	// The SSH public key used to authenticate the console connection.
-	PublicKey *string `mandatory:"true" json:"publicKey,omitempty"`
+	PublicKey *string `mandatory:"true" json:"publicKey"`
 }
 
 func (m CreateInstanceConsoleConnectionDetails) String() string {

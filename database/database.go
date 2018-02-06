@@ -17,42 +17,42 @@ import (
 type Database struct {
 
 	// The OCID of the compartment.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The database name.
-	DbName *string `mandatory:"true" json:"dbName,omitempty"`
+	DbName *string `mandatory:"true" json:"dbName"`
 
 	// A system-generated name for the database to ensure uniqueness within an Oracle Data Guard group (a primary database and its standby databases). The unique name cannot be changed.
-	DbUniqueName *string `mandatory:"true" json:"dbUniqueName,omitempty"`
+	DbUniqueName *string `mandatory:"true" json:"dbUniqueName"`
 
 	// The OCID of the database.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the database.
-	LifecycleState DatabaseLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState DatabaseLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The character set for the database.
-	CharacterSet *string `mandatory:"false" json:"characterSet,omitempty"`
+	CharacterSet *string `mandatory:"false" json:"characterSet"`
 
-	DbBackupConfig *DbBackupConfig `mandatory:"false" json:"dbBackupConfig,omitempty"`
+	DbBackupConfig *DbBackupConfig `mandatory:"false" json:"dbBackupConfig"`
 
 	// The OCID of the database home.
-	DbHomeId *string `mandatory:"false" json:"dbHomeId,omitempty"`
+	DbHomeId *string `mandatory:"false" json:"dbHomeId"`
 
 	// Database workload type.
-	DbWorkload *string `mandatory:"false" json:"dbWorkload,omitempty"`
+	DbWorkload *string `mandatory:"false" json:"dbWorkload"`
 
 	// Additional information about the current lifecycleState.
-	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
+	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The national character set for the database.
-	NcharacterSet *string `mandatory:"false" json:"ncharacterSet,omitempty"`
+	NcharacterSet *string `mandatory:"false" json:"ncharacterSet"`
 
 	// Pluggable database name. It must begin with an alphabetic character and can contain a maximum of eight alphanumeric characters. Special characters are not permitted. Pluggable database should not be same as database name.
-	PdbName *string `mandatory:"false" json:"pdbName,omitempty"`
+	PdbName *string `mandatory:"false" json:"pdbName"`
 
 	// The date and time the database was created.
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m Database) String() string {

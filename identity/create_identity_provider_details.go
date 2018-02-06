@@ -37,10 +37,10 @@ type CreateIdentityProviderDetails interface {
 
 type createidentityproviderdetails struct {
 	JsonData      []byte
-	CompartmentId *string                                      `mandatory:"true" json:"compartmentId,omitempty"`
-	Name          *string                                      `mandatory:"true" json:"name,omitempty"`
-	Description   *string                                      `mandatory:"true" json:"description,omitempty"`
-	ProductType   CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType,omitempty"`
+	CompartmentId *string                                      `mandatory:"true" json:"compartmentId"`
+	Name          *string                                      `mandatory:"true" json:"name"`
+	Description   *string                                      `mandatory:"true" json:"description"`
+	ProductType   CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType"`
 	Protocol      string                                       `json:"protocol"`
 }
 

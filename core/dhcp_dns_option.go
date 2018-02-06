@@ -20,7 +20,7 @@ type DhcpDnsOption struct {
 
 	// If you set `serverType` to `CustomDnsServer`, specify the IP address
 	// of at least one DNS server of your choice (three maximum).
-	CustomDnsServers []string `mandatory:"false" json:"customDnsServers,omitempty"`
+	CustomDnsServers []string `mandatory:"false" json:"customDnsServers"`
 
 	// - **VcnLocal:** Reserved for future use.
 	// - **VcnLocalPlusInternet:** Also referred to as "Internet and VCN Resolver".
@@ -34,7 +34,7 @@ type DhcpDnsOption struct {
 	// information, see
 	// https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/dns.htm.
 	// - **CustomDnsServer:** Instances use a DNS server of your choice (three maximum).
-	ServerType DhcpDnsOptionServerTypeEnum `mandatory:"true" json:"serverType,omitempty"`
+	ServerType DhcpDnsOptionServerTypeEnum `mandatory:"true" json:"serverType"`
 }
 
 func (m DhcpDnsOption) String() string {

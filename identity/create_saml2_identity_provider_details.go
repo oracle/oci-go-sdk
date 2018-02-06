@@ -17,29 +17,29 @@ import (
 type CreateSaml2IdentityProviderDetails struct {
 
 	// The OCID of your tenancy.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The name you assign to the `IdentityProvider` during creation.
 	// The name must be unique across all `IdentityProvider` objects in the
 	// tenancy and cannot be changed.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// The description you assign to the `IdentityProvider` during creation.
 	// Does not have to be unique, and it's changeable.
-	Description *string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description"`
 
 	// The URL for retrieving the identity provider's metadata,
 	// which contains information required for federating.
-	MetadataUrl *string `mandatory:"true" json:"metadataUrl,omitempty"`
+	MetadataUrl *string `mandatory:"true" json:"metadataUrl"`
 
 	// The XML that contains the information required for federating.
-	Metadata *string `mandatory:"true" json:"metadata,omitempty"`
+	Metadata *string `mandatory:"true" json:"metadata"`
 
 	// The identity provider service or product.
 	// Supported identity providers are Oracle Identity Cloud Service (IDCS) and Microsoft
 	// Active Directory Federation Services (ADFS).
 	// Example: `IDCS`
-	ProductType CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType,omitempty"`
+	ProductType CreateIdentityProviderDetailsProductTypeEnum `mandatory:"true" json:"productType"`
 }
 
 //GetCompartmentId returns CompartmentId

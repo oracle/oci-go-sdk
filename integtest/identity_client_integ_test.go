@@ -16,6 +16,7 @@ import (
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
 	"time"
+	"reflect"
 )
 
 // Group operations CRUD
@@ -36,7 +37,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	defer func() {
 		//Delete
 		rDel := identity.DeleteGroupRequest{GroupId: r.Id}
-		err = c.DeleteGroup(context.Background(), rDel)
+		_, err = c.DeleteGroup(context.Background(), rDel)
 		assert.NoError(t, err)
 	}()
 
@@ -180,7 +181,8 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 		//remove
 		rDelete := identity.DeleteUserRequest{}
 		rDelete.UserId = resCreate.Id
-		err = c.DeleteUser(context.Background(), rDelete)
+		resDelete, err := c.DeleteUser(context.Background(), rDelete)
+		assert.NotEmpty(t, resDelete.OpcRequestId)
 		assert.NoError(t, err)
 	}()
 
@@ -224,7 +226,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	defer func() {
 		// Delete the user
 		reqUserDelete := identity.DeleteUserRequest{UserId: rspAddUser.Id}
-		delUserErr := c.DeleteUser(context.Background(), reqUserDelete)
+		_, delUserErr := c.DeleteUser(context.Background(), reqUserDelete)
 		assert.NoError(t, delUserErr)
 	}()
 
@@ -239,8 +241,9 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	defer func() {
 		// Delete the group
 		reqGroupDelete := identity.DeleteGroupRequest{GroupId: rspAddGroup.Id}
-		delGrpErr := c.DeleteGroup(context.Background(), reqGroupDelete)
+		delRes, delGrpErr := c.DeleteGroup(context.Background(), reqGroupDelete)
 		assert.NoError(t, delGrpErr)
+		assert.NotEmpty(t, delRes.OpcRequestId)
 	}()
 
 	//add
@@ -254,7 +257,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	defer func() {
 		//remove
 		requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipId: rspAdd.UserGroupMembership.Id}
-		err = c.RemoveUserFromGroup(context.Background(), requestRemove)
+		_, err = c.RemoveUserFromGroup(context.Background(), requestRemove)
 		failIfError(t, err)
 	}()
 
@@ -430,8 +433,9 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 	defer func() {
 		// Delete
 		request := identity.DeletePolicyRequest{PolicyId:createResponse.Id}
-		err = client.DeletePolicy(context.Background(), request)
+		delRes, err := client.DeletePolicy(context.Background(), request)
 		assert.NoError(t, err)
+		assert.NotEmpty(t, delRes.OpcRequestId)
 	}()
 
 	//Read
@@ -497,8 +501,9 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 		rDelete := identity.DeleteCustomerSecretKeyRequest{}
 		rDelete.CustomerSecretKeyId = resCreate.Id
 		rDelete.UserId = common.String(getUserID())
-		err = c.DeleteCustomerSecretKey(context.Background(), rDelete)
+		delRes, err := c.DeleteCustomerSecretKey(context.Background(), rDelete)
 		failIfError(t, err)
+		assert.NotEmpty(t, delRes.OpcRequestId)
 	}()
 
 	// validate user membership lifecycle state enum value after create
@@ -546,7 +551,7 @@ func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 		rDelete := identity.DeleteApiKeyRequest{}
 		rDelete.Fingerprint = resCreate.Fingerprint
 		rDelete.UserId = common.String(userId)
-		err = c.DeleteApiKey(context.Background(), rDelete)
+		_, err := c.DeleteApiKey(context.Background(), rDelete)
 		ser, ok = common.IsServiceError(err)
 		assert.False(t, ok)
 		assert.NotEmpty(t, err.Error())
@@ -596,8 +601,9 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 		if rspCreate.GetId() != nil {
 			rDelete := identity.DeleteIdentityProviderRequest{}
 			rDelete.IdentityProviderId = rspCreate.GetId()
-			err := c.DeleteIdentityProvider(context.Background(), rDelete)
+			delRes, err := c.DeleteIdentityProvider(context.Background(), rDelete)
 			failIfError(t, err)
+			assert.NotEmpty(t, delRes.OpcRequestId)
 		}
 	}()
 
@@ -651,7 +657,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	defer func() {
 		fmt.Println("Deleting Identity Provider Group Mapping")
 		reqDelete := identity.DeleteIdpGroupMappingRequest{MappingId: rspCreateMapping.Id, IdentityProviderId: rspCreateMapping.IdpId}
-		delErr := c.DeleteIdpGroupMapping(context.Background(), reqDelete)
+		_, delErr := c.DeleteIdpGroupMapping(context.Background(), reqDelete)
 		failIfError(t, delErr)
 	}()
 
@@ -699,15 +705,59 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
+	//Create the Identity Provider Request
+	rCreate := identity.CreateIdentityProviderRequest{}
+	details := identity.CreateSaml2IdentityProviderDetails{}
+	details.CompartmentId = common.String(getTenancyID())
+	details.Name = common.String(getUniqueName("Ident_Provider_"))
+	details.Description = common.String("CRUD Test Identity Provider")
+	details.ProductType = identity.CreateIdentityProviderDetailsProductTypeIdcs
+	details.Metadata = common.String(readSampleFederationMetadata(t))
+	rCreate.CreateIdentityProviderDetails = details
+
+	//Create
+	rspCreate, createErr := c.CreateIdentityProvider(context.Background(), rCreate)
+	failIfError(t, createErr)
+	verifyResponseIsValid(t, rspCreate, createErr)
+
+	//Delete
+	deleteFn := func() {
+		if rspCreate.GetId() != nil {
+			rDelete := identity.DeleteIdentityProviderRequest{}
+			rDelete.IdentityProviderId = rspCreate.GetId()
+			_, err := c.DeleteIdentityProvider(context.Background(), rDelete)
+			failIfError(t, err)
+		}
+	}
+	defer deleteFn()
+
+	rRead := identity.GetIdentityProviderRequest{}
+	rRead.IdentityProviderId = rspCreate.GetId()
+	rspRead, readErr := c.GetIdentityProvider(context.Background(), rRead)
+	failIfError(t, readErr)
+	verifyResponseIsValid(t, rspRead, readErr)
+	assert.Equal(t, *rRead.IdentityProviderId, *rspRead.GetId())
+
+
+	//Listing
 	request := identity.ListIdentityProvidersRequest{}
-	request.CompartmentId = common.String(getCompartmentID())
+	request.CompartmentId = common.String(getTenancyID())
 	request.Protocol = identity.ListIdentityProvidersProtocolSaml2
 	response, err := c.ListIdentityProviders(context.Background(), request)
 	failIfError(t, err)
+	assert.NotEmpty(t, response.Items)
+	presentAndEqual := false
+	for _, val := range response.Items {
+		if *val.GetId() == *rspCreate.GetId() {
+			presentAndEqual = reflect.TypeOf(identity.Saml2IdentityProvider{}) ==  reflect.TypeOf(val)
+		}
+	}
+	assert.True(t, presentAndEqual)
 
 	items := response.Items
 
-	nextRequest := identity.ListIdentityProvidersRequest{CompartmentId: request.CompartmentId}
+	nextRequest := identity.ListIdentityProvidersRequest{CompartmentId: request.CompartmentId,
+		Protocol:identity.ListIdentityProvidersProtocolSaml2}
 	nextRequest.Page = response.OpcNextPage
 
 	for nextRequest.Page != nil {

@@ -15,64 +15,64 @@ import (
 // DataGuardAssociationSummary The properties that define a Data Guard association.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an
 // administrator. If you're an administrator who needs to write policies to give users access, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
+// [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 // For information about endpoints and signing API requests, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/usingapi.htm. For information about available SDKs and tools, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdks.htm.
+// [About the API]({{DOC_SERVER_URL}}/Content/API/Concepts/usingapi.htm). For information about available SDKs and tools, see
+// [SDKS and Other Tools]({{DOC_SERVER_URL}}/Content/API/Concepts/sdks.htm).
 type DataGuardAssociationSummary struct {
 
-	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the reporting database.
-	DatabaseId *string `mandatory:"true" json:"databaseId,omitempty"`
+	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the reporting database.
+	DatabaseId *string `mandatory:"true" json:"databaseId"`
 
-	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the Data Guard association.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the Data Guard association.
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the Data Guard association.
-	LifecycleState DataGuardAssociationSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState DataGuardAssociationSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the DB System containing the associated
+	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the DB System containing the associated
 	// peer database.
-	PeerDbSystemId *string `mandatory:"true" json:"peerDbSystemId,omitempty"`
+	PeerDbSystemId *string `mandatory:"true" json:"peerDbSystemId"`
 
 	// The role of the peer database in this Data Guard association.
-	PeerRole DataGuardAssociationSummaryPeerRoleEnum `mandatory:"true" json:"peerRole,omitempty"`
+	PeerRole DataGuardAssociationSummaryPeerRoleEnum `mandatory:"true" json:"peerRole"`
 
 	// The protection mode of this Data Guard association. For more information, see
-	// (http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)
+	// [Oracle Data Guard Protection Modes](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)
 	// in the Oracle Data Guard documentation.
-	ProtectionMode DataGuardAssociationSummaryProtectionModeEnum `mandatory:"true" json:"protectionMode,omitempty"`
+	ProtectionMode DataGuardAssociationSummaryProtectionModeEnum `mandatory:"true" json:"protectionMode"`
 
 	// The role of the reporting database in this Data Guard association.
-	Role DataGuardAssociationSummaryRoleEnum `mandatory:"true" json:"role,omitempty"`
+	Role DataGuardAssociationSummaryRoleEnum `mandatory:"true" json:"role"`
 
 	// The lag time between updates to the primary database and application of the redo data on the standby database,
 	// as computed by the reporting database.
 	// Example: `9 seconds`
-	ApplyLag *string `mandatory:"false" json:"applyLag,omitempty"`
+	ApplyLag *string `mandatory:"false" json:"applyLag"`
 
 	// The rate at which redo logs are synced between the associated databases.
 	// Example: `180 Mb per second`
-	ApplyRate *string `mandatory:"false" json:"applyRate,omitempty"`
+	ApplyRate *string `mandatory:"false" json:"applyRate"`
 
 	// Additional information about the current lifecycleState, if available.
-	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
+	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
-	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the peer database's Data Guard association.
-	PeerDataGuardAssociationId *string `mandatory:"false" json:"peerDataGuardAssociationId,omitempty"`
+	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the peer database's Data Guard association.
+	PeerDataGuardAssociationId *string `mandatory:"false" json:"peerDataGuardAssociationId"`
 
-	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the associated peer database.
-	PeerDatabaseId *string `mandatory:"false" json:"peerDatabaseId,omitempty"`
+	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the associated peer database.
+	PeerDatabaseId *string `mandatory:"false" json:"peerDatabaseId"`
 
-	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the database home containing the associated peer database.
-	PeerDbHomeId *string `mandatory:"false" json:"peerDbHomeId,omitempty"`
+	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the database home containing the associated peer database.
+	PeerDbHomeId *string `mandatory:"false" json:"peerDbHomeId"`
 
 	// The date and time the Data Guard Association was created.
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// The redo transport type used by this Data Guard association.  For more information, see
-	// (http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400)
+	// [Redo Transport Services](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400)
 	// in the Oracle Data Guard documentation.
-	TransportType DataGuardAssociationSummaryTransportTypeEnum `mandatory:"false" json:"transportType,omitempty"`
+	TransportType DataGuardAssociationSummaryTransportTypeEnum `mandatory:"false" json:"transportType"`
 }
 
 func (m DataGuardAssociationSummary) String() string {

@@ -16,24 +16,24 @@ import (
 type CreatePolicyDetails struct {
 
 	// The OCID of the compartment containing the policy (either the tenancy or another compartment).
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The name you assign to the policy during creation. The name must be unique across all policies
 	// in the tenancy and cannot be changed.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// An array of policy statements written in the policy language. See
-	// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policies.htm and
-	// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/commonpolicies.htm.
-	Statements []string `mandatory:"true" json:"statements,omitempty"`
+	// [How Policies Work]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policies.htm) and
+	// [Common Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/commonpolicies.htm).
+	Statements []string `mandatory:"true" json:"statements"`
 
 	// The description you assign to the policy during creation. Does not have to be unique, and it's changeable.
-	Description *string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description"`
 
 	// The version of the policy. If null or set to an empty string, when a request comes in for authorization, the
 	// policy will be evaluated according to the current behavior of the services at that moment. If set to a particular
 	// date (YYYY-MM-DD), the policy will be evaluated according to the behavior of the services on that date.
-	VersionDate *common.SDKTime `mandatory:"false" json:"versionDate,omitempty"`
+	VersionDate *common.SDKTime `mandatory:"false" json:"versionDate"`
 }
 
 func (m CreatePolicyDetails) String() string {

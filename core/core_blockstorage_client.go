@@ -18,6 +18,7 @@ import (
 //BlockstorageClient a client for Blockstorage
 type BlockstorageClient struct {
 	common.BaseClient
+	config *common.ConfigurationProvider
 }
 
 // NewBlockstorageClientWithConfigurationProvider Creates a new default Blockstorage client with the given configuration provider.
@@ -29,14 +30,29 @@ func NewBlockstorageClientWithConfigurationProvider(configProvider common.Config
 	}
 
 	client = BlockstorageClient{BaseClient: baseClient}
-	region, err := configProvider.Region()
-	if err != nil {
-		return
+	client.BasePath = "20160918"
+	err = client.setConfigurationProvider(configProvider)
+	return
+}
+
+// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+func (client *BlockstorageClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
+	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
+		return err
 	}
 
+	region, err := configProvider.Region()
+	if err != nil {
+		return err
+	}
+	client.config = &configProvider
 	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", string(region))
-	client.BasePath = "20160918"
-	return
+	return nil
+}
+
+// ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
+func (client *BlockstorageClient) ConfigurationProvider() *common.ConfigurationProvider {
+	return client.config
 }
 
 // CreateVolume Creates a new volume in the specified compartment. Volumes can be created in sizes ranging from
@@ -94,13 +110,20 @@ func (client BlockstorageClient) CreateVolumeBackup(ctx context.Context, request
 // To disconnect the boot volume from a connected instance, see
 // https://docs.us-phoenix-1.oraclecloud.com/Content/Block/Tasks/deletingbootvolume.htm.
 // **Warning:** All data on the boot volume will be permanently lost when the boot volume is deleted.
-func (client BlockstorageClient) DeleteBootVolume(ctx context.Context, request DeleteBootVolumeRequest) (err error) {
+func (client BlockstorageClient) DeleteBootVolume(ctx context.Context, request DeleteBootVolumeRequest) (response DeleteBootVolumeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/bootVolumes/{bootVolumeId}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
@@ -108,24 +131,38 @@ func (client BlockstorageClient) DeleteBootVolume(ctx context.Context, request D
 // To disconnect the volume from a connected instance, see
 // https://docs.us-phoenix-1.oraclecloud.com/Content/Block/Tasks/disconnectingfromavolume.htm.
 // **Warning:** All data on the volume will be permanently lost when the volume is deleted.
-func (client BlockstorageClient) DeleteVolume(ctx context.Context, request DeleteVolumeRequest) (err error) {
+func (client BlockstorageClient) DeleteVolume(ctx context.Context, request DeleteVolumeRequest) (response DeleteVolumeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/volumes/{volumeId}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
 // DeleteVolumeBackup Deletes a volume backup.
-func (client BlockstorageClient) DeleteVolumeBackup(ctx context.Context, request DeleteVolumeBackupRequest) (err error) {
+func (client BlockstorageClient) DeleteVolumeBackup(ctx context.Context, request DeleteVolumeBackupRequest) (response DeleteVolumeBackupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/volumeBackups/{volumeBackupId}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 

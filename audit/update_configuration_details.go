@@ -16,7 +16,7 @@ import (
 type UpdateConfigurationDetails struct {
 
 	// The retention period days
-	RetentionPeriodDays *int `mandatory:"false" json:"retentionPeriodDays,omitempty"`
+	RetentionPeriodDays *int `mandatory:"false" json:"retentionPeriodDays"`
 }
 
 func (m UpdateConfigurationDetails) String() string {

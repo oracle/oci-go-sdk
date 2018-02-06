@@ -17,7 +17,7 @@ import (
 type InstanceSourceViaImageDetails struct {
 
 	// The OCID of the image used to boot the instance.
-	ImageId *string `mandatory:"true" json:"imageId,omitempty"`
+	ImageId *string `mandatory:"true" json:"imageId"`
 }
 
 func (m InstanceSourceViaImageDetails) String() string {

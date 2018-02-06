@@ -16,16 +16,16 @@ import (
 type CreateRouteTableDetails struct {
 
 	// The OCID of the compartment to contain the route table.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The collection of rules used for routing destination IPs to network devices.
-	RouteRules []RouteRule `mandatory:"true" json:"routeRules,omitempty"`
+	RouteRules []RouteRule `mandatory:"true" json:"routeRules"`
 
 	// The OCID of the VCN the route table belongs to.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m CreateRouteTableDetails) String() string {

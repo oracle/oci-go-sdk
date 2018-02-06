@@ -16,10 +16,10 @@ import (
 type InstanceCredentials struct {
 
 	// The password for the username.
-	Password *string `mandatory:"true" json:"password,omitempty"`
+	Password *string `mandatory:"true" json:"password"`
 
 	// The username.
-	Username *string `mandatory:"true" json:"username,omitempty"`
+	Username *string `mandatory:"true" json:"username"`
 }
 
 func (m InstanceCredentials) String() string {

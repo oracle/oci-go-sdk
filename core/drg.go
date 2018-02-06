@@ -23,21 +23,21 @@ import (
 type Drg struct {
 
 	// The OCID of the compartment containing the DRG.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The DRG's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The DRG's current state.
-	LifecycleState DrgLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState DrgLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The date and time the DRG was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m Drg) String() string {

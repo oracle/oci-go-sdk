@@ -19,19 +19,19 @@ type CreateBucketDetails struct {
 
 	// The name of the bucket. Valid characters are uppercase or lowercase letters,
 	// numbers, and dashes. Bucket names must be unique within the namespace.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// The ID of the compartment in which to create the bucket.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Arbitrary string, up to 4KB, of keys and values for user-defined metadata.
-	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
+	Metadata map[string]string `mandatory:"false" json:"metadata"`
 
 	// The type of public access available on this bucket. Allows authenticated caller to access the bucket or
 	// contents of this bucket. By default a bucket is set to NoPublicAccess. It is treated as NoPublicAccess
 	// when this value is not specified. When the type is NoPublicAccess the bucket does not allow any public access.
 	// When the type is ObjectRead the bucket allows public access to the GetObject, HeadObject, ListObjects.
-	PublicAccessType CreateBucketDetailsPublicAccessTypeEnum `mandatory:"false" json:"publicAccessType,omitempty"`
+	PublicAccessType CreateBucketDetailsPublicAccessTypeEnum `mandatory:"false" json:"publicAccessType"`
 }
 
 func (m CreateBucketDetails) String() string {

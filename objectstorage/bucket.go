@@ -18,31 +18,31 @@ import (
 type Bucket struct {
 
 	// The namespace in which the bucket lives.
-	Namespace *string `mandatory:"true" json:"namespace,omitempty"`
+	Namespace *string `mandatory:"true" json:"namespace"`
 
 	// The name of the bucket.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// The compartment ID in which the bucket is authorized.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Arbitrary string keys and values for user-defined metadata.
-	Metadata map[string]string `mandatory:"true" json:"metadata,omitempty"`
+	Metadata map[string]string `mandatory:"true" json:"metadata"`
 
 	// The OCID of the user who created the bucket.
-	CreatedBy *string `mandatory:"true" json:"createdBy,omitempty"`
+	CreatedBy *string `mandatory:"true" json:"createdBy"`
 
 	// The date and time at which the bucket was created.
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The entity tag for the bucket.
-	Etag *string `mandatory:"true" json:"etag,omitempty"`
+	Etag *string `mandatory:"true" json:"etag"`
 
 	// The type of public access available on this bucket. Allows authenticated caller to access the bucket or
 	// contents of this bucket. By default a bucket is set to NoPublicAccess. It is treated as NoPublicAccess
 	// when this value is not specified. When the type is NoPublicAccess the bucket does not allow any public access.
 	// When the type is ObjectRead the bucket allows public access to the GetObject, HeadObject, ListObjects.
-	PublicAccessType BucketPublicAccessTypeEnum `mandatory:"false" json:"publicAccessType,omitempty"`
+	PublicAccessType BucketPublicAccessTypeEnum `mandatory:"false" json:"publicAccessType"`
 }
 
 func (m Bucket) String() string {

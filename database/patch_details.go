@@ -18,10 +18,10 @@ import (
 type PatchDetails struct {
 
 	// The action to perform on the patch.
-	Action PatchDetailsActionEnum `mandatory:"false" json:"action,omitempty"`
+	Action PatchDetailsActionEnum `mandatory:"false" json:"action"`
 
 	// The OCID of the patch.
-	PatchId *string `mandatory:"false" json:"patchId,omitempty"`
+	PatchId *string `mandatory:"false" json:"patchId"`
 }
 
 func (m PatchDetails) String() string {

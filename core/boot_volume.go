@@ -21,33 +21,33 @@ type BootVolume struct {
 
 	// The Availability Domain of the boot volume.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The OCID of the compartment that contains the boot volume.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The boot volume's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of a boot volume.
-	LifecycleState BootVolumeLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState BootVolumeLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The size of the volume in MBs. The value must be a multiple of 1024.
 	// This field is deprecated. Please use sizeInGBs.
-	SizeInMBs *int `mandatory:"true" json:"sizeInMBs,omitempty"`
+	SizeInMBs *int `mandatory:"true" json:"sizeInMBs"`
 
 	// The date and time the boot volume was created. Format defined by RFC3339.
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The image OCID used to create the boot volume.
-	ImageId *string `mandatory:"false" json:"imageId,omitempty"`
+	ImageId *string `mandatory:"false" json:"imageId"`
 
 	// The size of the boot volume in GBs.
-	SizeInGBs *int `mandatory:"false" json:"sizeInGBs,omitempty"`
+	SizeInGBs *int `mandatory:"false" json:"sizeInGBs"`
 }
 
 func (m BootVolume) String() string {

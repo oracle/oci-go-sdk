@@ -17,7 +17,7 @@ import (
 type DbBackupConfig struct {
 
 	// If set to true, configures automatic backups. If you previously used RMAN or dbcli to configure backups and then you switch to using the Console or the API for backups, a new backup configuration is created and associated with your database. This means that you can no longer rely on your previously configured unmanaged backups to work.
-	AutoBackupEnabled *bool `mandatory:"false" json:"autoBackupEnabled,omitempty"`
+	AutoBackupEnabled *bool `mandatory:"false" json:"autoBackupEnabled"`
 }
 
 func (m DbBackupConfig) String() string {

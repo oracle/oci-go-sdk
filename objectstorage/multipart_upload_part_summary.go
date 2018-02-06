@@ -18,16 +18,16 @@ import (
 type MultipartUploadPartSummary struct {
 
 	// the current entity tag for the part.
-	Etag *string `mandatory:"true" json:"etag,omitempty"`
+	Etag *string `mandatory:"true" json:"etag"`
 
 	// the MD5 hash of the bytes of the part.
-	Md5 *string `mandatory:"true" json:"md5,omitempty"`
+	Md5 *string `mandatory:"true" json:"md5"`
 
 	// the size of the part in bytes.
-	Size *int `mandatory:"true" json:"size,omitempty"`
+	Size *int `mandatory:"true" json:"size"`
 
 	// the part number for this part.
-	PartNumber *int `mandatory:"true" json:"partNumber,omitempty"`
+	PartNumber *int `mandatory:"true" json:"partNumber"`
 }
 
 func (m MultipartUploadPartSummary) String() string {

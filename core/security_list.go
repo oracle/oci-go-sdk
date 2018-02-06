@@ -26,30 +26,30 @@ import (
 type SecurityList struct {
 
 	// The OCID of the compartment containing the security list.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// Rules for allowing egress IP packets.
-	EgressSecurityRules []EgressSecurityRule `mandatory:"true" json:"egressSecurityRules,omitempty"`
+	EgressSecurityRules []EgressSecurityRule `mandatory:"true" json:"egressSecurityRules"`
 
 	// The security list's Oracle Cloud ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// Rules for allowing ingress IP packets.
-	IngressSecurityRules []IngressSecurityRule `mandatory:"true" json:"ingressSecurityRules,omitempty"`
+	IngressSecurityRules []IngressSecurityRule `mandatory:"true" json:"ingressSecurityRules"`
 
 	// The security list's current state.
-	LifecycleState SecurityListLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState SecurityListLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The date and time the security list was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The OCID of the VCN the security list belongs to.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 }
 
 func (m SecurityList) String() string {

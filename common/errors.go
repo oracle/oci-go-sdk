@@ -44,10 +44,11 @@ func newServiceFailureFromResponse(response *http.Response) error {
 	se := servicefailure{StatusCode: response.StatusCode}
 	err = json.Unmarshal(body, &se)
 	if err != nil {
+		Debugf("Error response could not be parsed due to: %s", err.Error())
 		return servicefailure{
 			StatusCode: response.StatusCode,
 			Code:       "BadErrorResponse",
-			Message:    fmt.Sprintf("Error while parsing failure from response: %s", err.Error()),
+			Message:    fmt.Sprintf("Error while parsing failure from response"),
 		}
 	}
 	return se

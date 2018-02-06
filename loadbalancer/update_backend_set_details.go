@@ -16,18 +16,18 @@ import (
 // For more information on backend set configuration, see
 // https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/tasks/managingbackendsets.htm.
 type UpdateBackendSetDetails struct {
-	Backends []BackendDetails `mandatory:"true" json:"backends,omitempty"`
+	Backends []BackendDetails `mandatory:"true" json:"backends"`
 
-	HealthChecker *HealthCheckerDetails `mandatory:"true" json:"healthChecker,omitempty"`
+	HealthChecker *HealthCheckerDetails `mandatory:"true" json:"healthChecker"`
 
 	// The load balancer policy for the backend set. To get a list of available policies, use the
 	// ListPolicies operation.
 	// Example: `LEAST_CONNECTIONS`
-	Policy *string `mandatory:"true" json:"policy,omitempty"`
+	Policy *string `mandatory:"true" json:"policy"`
 
-	SessionPersistenceConfiguration *SessionPersistenceConfigurationDetails `mandatory:"false" json:"sessionPersistenceConfiguration,omitempty"`
+	SessionPersistenceConfiguration *SessionPersistenceConfigurationDetails `mandatory:"false" json:"sessionPersistenceConfiguration"`
 
-	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration,omitempty"`
+	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration"`
 }
 
 func (m UpdateBackendSetDetails) String() string {

@@ -15,8 +15,8 @@ import (
 // LoadBalancerHealthSummary A health status summary for the specified load balancer.
 type LoadBalancerHealthSummary struct {
 
-	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the load balancer the health status is associated with.
-	LoadBalancerId *string `mandatory:"true" json:"loadBalancerId,omitempty"`
+	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer the health status is associated with.
+	LoadBalancerId *string `mandatory:"true" json:"loadBalancerId"`
 
 	// The overall health status of the load balancer.
 	// *  **OK:** All backend sets associated with the load balancer return a status of `OK`.
@@ -29,7 +29,7 @@ type LoadBalancerHealthSummary struct {
 	//     *  More than half of the backend sets associated with the load balancer return a status of `UNKNOWN`, none of the backend
 	//        sets return a status of `WARNING` or `CRITICAL`, and the load balancer life cycle state is `ACTIVE`.
 	//     *  The system could not retrieve metrics for any reason.
-	Status LoadBalancerHealthSummaryStatusEnum `mandatory:"true" json:"status,omitempty"`
+	Status LoadBalancerHealthSummaryStatusEnum `mandatory:"true" json:"status"`
 }
 
 func (m LoadBalancerHealthSummary) String() string {

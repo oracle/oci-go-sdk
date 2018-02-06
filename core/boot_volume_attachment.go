@@ -17,31 +17,31 @@ type BootVolumeAttachment struct {
 
 	// The Availability Domain of an instance.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The OCID of the boot volume.
-	BootVolumeId *string `mandatory:"true" json:"bootVolumeId,omitempty"`
+	BootVolumeId *string `mandatory:"true" json:"bootVolumeId"`
 
 	// The OCID of the compartment.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The OCID of the boot volume attachment.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID of the instance the boot volume is attached to.
-	InstanceId *string `mandatory:"true" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"true" json:"instanceId"`
 
 	// The current state of the boot volume attachment.
-	LifecycleState BootVolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState BootVolumeAttachmentLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The date and time the boot volume was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// A user-friendly name. Does not have to be unique, and it cannot be changed.
 	// Avoid entering confidential information.
 	// Example: `My boot volume`
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m BootVolumeAttachment) String() string {

@@ -18,6 +18,7 @@ import (
 //AuditClient a client for Audit
 type AuditClient struct {
 	common.BaseClient
+	config *common.ConfigurationProvider
 }
 
 // NewAuditClientWithConfigurationProvider Creates a new default Audit client with the given configuration provider.
@@ -29,14 +30,29 @@ func NewAuditClientWithConfigurationProvider(configProvider common.Configuration
 	}
 
 	client = AuditClient{BaseClient: baseClient}
-	region, err := configProvider.Region()
-	if err != nil {
-		return
+	client.BasePath = "20160918"
+	err = client.setConfigurationProvider(configProvider)
+	return
+}
+
+// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+func (client *AuditClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
+	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
+		return err
 	}
 
+	region, err := configProvider.Region()
+	if err != nil {
+		return err
+	}
+	client.config = &configProvider
 	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "audit", string(region))
-	client.BasePath = "20160918"
-	return
+	return nil
+}
+
+// ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
+func (client *AuditClient) ConfigurationProvider() *common.ConfigurationProvider {
+	return client.config
 }
 
 // GetConfiguration Get the configuration
@@ -76,12 +92,19 @@ func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequ
 }
 
 // UpdateConfiguration Update the configuration
-func (client AuditClient) UpdateConfiguration(ctx context.Context, request UpdateConfigurationRequest) (err error) {
+func (client AuditClient) UpdateConfiguration(ctx context.Context, request UpdateConfigurationRequest) (response UpdateConfigurationResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/configuration", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }

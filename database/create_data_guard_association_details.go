@@ -50,9 +50,9 @@ type CreateDataGuardAssociationDetails interface {
 
 type createdataguardassociationdetails struct {
 	JsonData              []byte
-	DatabaseAdminPassword *string                                             `mandatory:"true" json:"databaseAdminPassword,omitempty"`
-	ProtectionMode        CreateDataGuardAssociationDetailsProtectionModeEnum `mandatory:"true" json:"protectionMode,omitempty"`
-	TransportType         CreateDataGuardAssociationDetailsTransportTypeEnum  `mandatory:"true" json:"transportType,omitempty"`
+	DatabaseAdminPassword *string                                             `mandatory:"true" json:"databaseAdminPassword"`
+	ProtectionMode        CreateDataGuardAssociationDetailsProtectionModeEnum `mandatory:"true" json:"protectionMode"`
+	TransportType         CreateDataGuardAssociationDetailsTransportTypeEnum  `mandatory:"true" json:"transportType"`
 	CreationType          string                                              `json:"creationType"`
 }
 

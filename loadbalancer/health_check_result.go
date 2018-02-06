@@ -16,19 +16,19 @@ import (
 type HealthCheckResult struct {
 
 	// The result of the most recent health check.
-	HealthCheckStatus HealthCheckResultHealthCheckStatusEnum `mandatory:"true" json:"healthCheckStatus,omitempty"`
+	HealthCheckStatus HealthCheckResultHealthCheckStatusEnum `mandatory:"true" json:"healthCheckStatus"`
 
 	// The IP address of the health check status report provider. This identifier helps you differentiate same-subnet
 	// (private) load balancers that report health check status.
 	// Example: `10.2.0.1`
-	SourceIpAddress *string `mandatory:"true" json:"sourceIpAddress,omitempty"`
+	SourceIpAddress *string `mandatory:"true" json:"sourceIpAddress"`
 
 	// The OCID of the subnet hosting the load balancer that reported this health check status.
-	SubnetId *string `mandatory:"true" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"true" json:"subnetId"`
 
 	// The date and time the data was retrieved, in the format defined by RFC3339.
 	// Example: `2017-06-02T18:28:11+00:00`
-	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp,omitempty"`
+	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp"`
 }
 
 func (m HealthCheckResult) String() string {

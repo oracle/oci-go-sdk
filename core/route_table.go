@@ -21,27 +21,27 @@ import (
 type RouteTable struct {
 
 	// The OCID of the compartment containing the route table.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The route table's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The route table's current state.
-	LifecycleState RouteTableLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState RouteTableLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The collection of rules for routing destination IPs to network devices.
-	RouteRules []RouteRule `mandatory:"true" json:"routeRules,omitempty"`
+	RouteRules []RouteRule `mandatory:"true" json:"routeRules"`
 
 	// The OCID of the VCN the route table list belongs to.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The date and time the route table was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m RouteTable) String() string {

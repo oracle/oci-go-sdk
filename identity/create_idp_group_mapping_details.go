@@ -16,11 +16,11 @@ import (
 type CreateIdpGroupMappingDetails struct {
 
 	// The name of the IdP group you want to map.
-	IdpGroupName *string `mandatory:"true" json:"idpGroupName,omitempty"`
+	IdpGroupName *string `mandatory:"true" json:"idpGroupName"`
 
 	// The OCID of the IAM Service Group
 	// you want to map to the IdP group.
-	GroupId *string `mandatory:"true" json:"groupId,omitempty"`
+	GroupId *string `mandatory:"true" json:"groupId"`
 }
 
 func (m CreateIdpGroupMappingDetails) String() string {

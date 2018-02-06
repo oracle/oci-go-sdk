@@ -18,20 +18,20 @@ import (
 type CreateMultipartUploadDetails struct {
 
 	// the name of the object to which this multi-part upload is targetted.
-	Object *string `mandatory:"true" json:"object,omitempty"`
+	Object *string `mandatory:"true" json:"object"`
 
 	// the content type of the object to upload.
-	ContentType *string `mandatory:"false" json:"contentType,omitempty"`
+	ContentType *string `mandatory:"false" json:"contentType"`
 
 	// the content language of the object to upload.
-	ContentLanguage *string `mandatory:"false" json:"contentLanguage,omitempty"`
+	ContentLanguage *string `mandatory:"false" json:"contentLanguage"`
 
 	// the content encoding of the object to upload.
-	ContentEncoding *string `mandatory:"false" json:"contentEncoding,omitempty"`
+	ContentEncoding *string `mandatory:"false" json:"contentEncoding"`
 
 	// Arbitrary string keys and values for the user-defined metadata for the object.
 	// Keys must be in "opc-meta-*" format.
-	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
+	Metadata map[string]string `mandatory:"false" json:"metadata"`
 }
 
 func (m CreateMultipartUploadDetails) String() string {

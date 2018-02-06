@@ -18,7 +18,7 @@ type Shape struct {
 
 	// The name of the shape. You can enumerate all available shapes by calling
 	// ListShapes.
-	Shape *string `mandatory:"true" json:"shape,omitempty"`
+	Shape *string `mandatory:"true" json:"shape"`
 }
 
 func (m Shape) String() string {

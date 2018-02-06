@@ -17,7 +17,7 @@ import (
 type ImageSourceViaObjectStorageUriDetails struct {
 
 	// The Object Storage URL for the image.
-	SourceUri *string `mandatory:"true" json:"sourceUri,omitempty"`
+	SourceUri *string `mandatory:"true" json:"sourceUri"`
 }
 
 func (m ImageSourceViaObjectStorageUriDetails) String() string {

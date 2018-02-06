@@ -23,21 +23,21 @@ import (
 type Cpe struct {
 
 	// The OCID of the compartment containing the CPE.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The CPE's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The public IP address of the on-premises router.
-	IpAddress *string `mandatory:"true" json:"ipAddress,omitempty"`
+	IpAddress *string `mandatory:"true" json:"ipAddress"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The date and time the CPE was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m Cpe) String() string {

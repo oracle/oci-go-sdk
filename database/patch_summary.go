@@ -19,29 +19,29 @@ import (
 type PatchSummary struct {
 
 	// The text describing this patch package.
-	Description *string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description"`
 
 	// The OCID of the patch.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The date and time that the patch was released.
-	TimeReleased *common.SDKTime `mandatory:"true" json:"timeReleased,omitempty"`
+	TimeReleased *common.SDKTime `mandatory:"true" json:"timeReleased"`
 
 	// The version of this patch package.
-	Version *string `mandatory:"true" json:"version,omitempty"`
+	Version *string `mandatory:"true" json:"version"`
 
 	// Actions that can possibly be performed using this patch.
-	AvailableActions []PatchSummaryAvailableActionsEnum `mandatory:"false" json:"availableActions,omitempty"`
+	AvailableActions []PatchSummaryAvailableActionsEnum `mandatory:"false" json:"availableActions"`
 
 	// Action that is currently being performed or was completed last.
-	LastAction PatchSummaryLastActionEnum `mandatory:"false" json:"lastAction,omitempty"`
+	LastAction PatchSummaryLastActionEnum `mandatory:"false" json:"lastAction"`
 
 	// A descriptive text associated with the lifecycleState.
 	// Typically can contain additional displayable text.
-	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
+	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The current state of the patch as a result of lastAction.
-	LifecycleState PatchSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState PatchSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
 }
 
 func (m PatchSummary) String() string {
