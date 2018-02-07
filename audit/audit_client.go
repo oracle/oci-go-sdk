@@ -61,13 +61,13 @@ func (client *AuditClient) ConfigurationProvider() *common.ConfigurationProvider
 }
 
 // GetConfiguration Get the configuration
-func (client AuditClient) GetConfiguration(ctx context.Context, request GetConfigurationRequest) (response GetConfigurationResponse, err error) {
+func (client AuditClient) GetConfiguration(ctx context.Context, request GetConfigurationRequest, options ...common.Option) (response GetConfigurationResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/configuration", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -79,13 +79,13 @@ func (client AuditClient) GetConfiguration(ctx context.Context, request GetConfi
 }
 
 // ListEvents Returns all audit events for the specified compartment that were processed within the specified time range.
-func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequest) (response ListEventsResponse, err error) {
+func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequest, options ...common.Option) (response ListEventsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/auditEvents", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -97,13 +97,13 @@ func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequ
 }
 
 // UpdateConfiguration Update the configuration
-func (client AuditClient) UpdateConfiguration(ctx context.Context, request UpdateConfigurationRequest) (response UpdateConfigurationResponse, err error) {
+func (client AuditClient) UpdateConfiguration(ctx context.Context, request UpdateConfigurationRequest, options ...common.Option) (response UpdateConfigurationResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/configuration", request)
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest, options...)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
