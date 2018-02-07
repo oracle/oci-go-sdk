@@ -431,13 +431,8 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 
 	defer func() {
 		// Delete
-<<<<<<< HEAD
-		request := identity.DeletePolicyRequest{PolicyId:createResponse.Id}
-		delRes, err := client.DeletePolicy(context.Background(), request)
-=======
 		request := identity.DeletePolicyRequest{PolicyId: createResponse.Id}
-		err = client.DeletePolicy(context.Background(), request)
->>>>>>> introduce retry logic and polling in support of terraform migration
+		delRes, err := client.DeletePolicy(context.Background(), request)
 		assert.NoError(t, err)
 		assert.NotEmpty(t, delRes.OpcRequestId)
 	}()
