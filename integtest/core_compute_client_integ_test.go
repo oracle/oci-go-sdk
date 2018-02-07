@@ -342,8 +342,8 @@ func TestComputeClient_ListVolumeAttachments(t *testing.T) {
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 
-	// make sure volumn is created
-	volumn := createOrGetVolumn(t)
+	// make sure volume is created
+	volume := createOrGetVolume(t)
 	instance := createOrGetInstance(t)
 
 	listAttachedVolumes := func() []core.VolumeAttachment {
@@ -360,14 +360,14 @@ func TestComputeClient_ListVolumeAttachments(t *testing.T) {
 	// get list of attached volumes for current instance
 	attachedVolumes := listAttachedVolumes()
 
-	// if no volumn attached, attach one
+	// if no volume attached, attach one
 	if attachedVolumes == nil ||
 		len(attachedVolumes) == 0 {
-		// attach volumn to instance
+		// attach volume to instance
 		attachRequest := core.AttachVolumeRequest{}
 		attachRequest.AttachVolumeDetails = core.AttachIScsiVolumeDetails{
 			InstanceId: instance.Id,
-			VolumeId:   volumn.Id,
+			VolumeId:   volume.Id,
 		}
 
 		_, err := c.AttachVolume(context.Background(), attachRequest)

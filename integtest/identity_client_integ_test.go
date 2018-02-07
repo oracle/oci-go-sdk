@@ -10,7 +10,6 @@ package integtest
 import (
 	"context"
 	"fmt"
-	"math/rand"
 	"reflect"
 	"testing"
 	"time"
@@ -117,19 +116,9 @@ func TestIdentityClient_UpdateCompartment(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 
-	// cannot use same name to update compartment, generate a random one via this function
-	getRandomString := func(n int) string {
-		letters := []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-
-		b := make([]rune, n)
-		for i := range b {
-			b[i] = letters[rand.Intn(len(letters))]
-		}
-		return string(b)
-	}
-
 	//Update
 	request := identity.UpdateCompartmentRequest{UpdateCompartmentDetails: identity.UpdateCompartmentDetails{
+		// cannot use same name to update compartment, generate a random one via this function
 		Name:        common.String(GoSDK2_Test_Prefix + "UpdComp" + getRandomString(10)),
 		Description: common.String("GOSDK2 description2"),
 	},

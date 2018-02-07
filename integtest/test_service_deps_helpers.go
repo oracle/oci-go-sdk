@@ -35,7 +35,7 @@ const (
 	dbSystemDisplayName          = "GOSDK2_Test_Deps_DatabaseSystem"
 	dbHomeDisplayName            = "GOSDK2_Test_Deps_DatabaseHome"
 	loadbalancerDisplayName      = "GOSDK2_Test_Deps_Loadbalancer"
-	volumnDisplayName            = "GOSDK2_Test_Deps_Volumn"
+	volumeDisplayName            = "GOSDK2_Test_Deps_Volume"
 )
 
 // a helper method to either create a new vcn or get the one already exist
@@ -874,12 +874,12 @@ func listLoadBalancerShapes(t *testing.T) []loadbalancer.LoadBalancerShape {
 	return r.Items
 }
 
-func createOrGetVolumn(t *testing.T) core.Volume {
-	volumns := listVolumns(t)
+func createOrGetVolume(t *testing.T) core.Volume {
+	volumes := listVolumes(t)
 
-	for _, element := range volumns {
+	for _, element := range volumes {
 		assert.NotEmpty(t, element)
-		if *element.DisplayName == volumnDisplayName &&
+		if *element.DisplayName == volumeDisplayName &&
 			element.LifecycleState == core.VolumeLifecycleStateAvailable {
 			// found it, return
 			return element
@@ -892,7 +892,7 @@ func createOrGetVolumn(t *testing.T) core.Volume {
 	request := core.CreateVolumeRequest{}
 	request.AvailabilityDomain = common.String(validAD())
 	request.CompartmentId = common.String(getCompartmentID())
-	request.DisplayName = common.String(volumnDisplayName)
+	request.DisplayName = common.String(volumeDisplayName)
 
 	r, err := c.CreateVolume(context.Background(), request)
 	failIfError(t, err)
@@ -900,7 +900,7 @@ func createOrGetVolumn(t *testing.T) core.Volume {
 	assert.NotEmpty(t, r)
 	assert.NotEmpty(t, r.Volume)
 
-	getVolumn := func() (interface{}, error) {
+	getVolume := func() (interface{}, error) {
 		getReq := core.GetVolumeRequest{
 			VolumeId: r.Volume.Id,
 		}
@@ -918,7 +918,7 @@ func createOrGetVolumn(t *testing.T) core.Volume {
 	failIfError(
 		t,
 		retryUntilTrueOrError(
-			getVolumn,
+			getVolume,
 			checkLifecycleState(string(core.VolumeLifecycleStateAvailable)),
 			time.Tick(10*time.Second),
 			time.After((5*time.Minute))))
@@ -926,7 +926,7 @@ func createOrGetVolumn(t *testing.T) core.Volume {
 	return r.Volume
 }
 
-func listVolumns(t *testing.T) []core.Volume {
+func listVolumes(t *testing.T) []core.Volume {
 	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 

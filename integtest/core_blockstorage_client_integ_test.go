@@ -208,7 +208,7 @@ func TestBlockstorageClient_ListBootVolumes(t *testing.T) {
 }
 
 func TestBlockstorageClient_GetBootVolume(t *testing.T) {
-	// get list of boot volumns and make sure it's not empty
+	// get list of boot volumes and make sure it's not empty
 	bootVolumes := listBootVolumes(t)
 	assert.NotEmpty(t, bootVolumes)
 
