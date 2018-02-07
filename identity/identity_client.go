@@ -36,7 +36,12 @@ func NewIdentityClientWithConfigurationProvider(configProvider common.Configurat
 	return
 }
 
-// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+// SetRegion overrides the region of this client.
+func (client *IdentityClient) SetRegion(region common.Region) {
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", string(region))
+}
+
+// SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
 func (client *IdentityClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err

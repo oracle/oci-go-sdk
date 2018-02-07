@@ -10,13 +10,15 @@ package integtest
 import (
 	"context"
 	"fmt"
-	"reflect"
 	"testing"
-	"time"
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
+	"time"
+	"reflect"
+	"net/http"
+	"strings"
 )
 
 // Group operations CRUD
@@ -59,6 +61,26 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	resUpdate, err := c.UpdateGroup(context.Background(), rUpdate)
 	failIfError(t, err)
 	assert.NotNil(t, resUpdate.Id)
+}
+
+type fakeDispatcher struct {
+	Reg string
+	Valid bool
+}
+func (f *fakeDispatcher) Do(r *http.Request)(*http.Response, error) {
+	f.Valid = strings.Contains(r.URL.Host, f.Reg)
+	return nil, fmt.Errorf("Fake dispatcher")
+}
+
+func TestIdentityClient_OverrideRegion(t *testing.T) {
+	c, _ := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c.SetRegion(common.RegionIAD)
+	f := fakeDispatcher{Reg: string(common.RegionIAD)}
+	// Avoid calling the service as we do no know if we have access to that region
+	c.HTTPClient =  &f
+	rList := identity.ListGroupsRequest{CompartmentId: common.String(getTenancyID())}
+	c.ListGroups(context.Background(), rList)
+	assert.True(t, f.Valid)
 }
 
 func TestIdentityClient_ListGroups(t *testing.T) {
