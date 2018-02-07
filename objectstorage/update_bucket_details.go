@@ -30,7 +30,7 @@ type UpdateBucketDetails struct {
 	// contents of this bucket. By default a bucket is set to NoPublicAccess. It is treated as NoPublicAccess
 	// when this value is not specified. When the type is NoPublicAccess the bucket does not allow any public access.
 	// When the type is ObjectRead the bucket allows public access to the GetObject, HeadObject, ListObjects.
-	PublicAccessType UpdateBucketDetailsPublicAccessTypeEnum `mandatory:"false" json:"publicAccessType" omitEmpty:"true"`
+	PublicAccessType UpdateBucketDetailsPublicAccessTypeEnum `mandatory:"false" json:"publicAccessType,omitempty"`
 }
 
 func (m UpdateBucketDetails) String() string {

@@ -31,17 +31,17 @@ type PatchSummary struct {
 	Version *string `mandatory:"true" json:"version"`
 
 	// Actions that can possibly be performed using this patch.
-	AvailableActions []PatchSummaryAvailableActionsEnum `mandatory:"false" json:"availableActions" omitEmpty:"true"`
+	AvailableActions []PatchSummaryAvailableActionsEnum `mandatory:"false" json:"availableActions,omitempty"`
 
 	// Action that is currently being performed or was completed last.
-	LastAction PatchSummaryLastActionEnum `mandatory:"false" json:"lastAction" omitEmpty:"true"`
+	LastAction PatchSummaryLastActionEnum `mandatory:"false" json:"lastAction,omitempty"`
 
 	// A descriptive text associated with the lifecycleState.
 	// Typically can contain additional displayable text.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The current state of the patch as a result of lastAction.
-	LifecycleState PatchSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState" omitEmpty:"true"`
+	LifecycleState PatchSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 
 func (m PatchSummary) String() string {

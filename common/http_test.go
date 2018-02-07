@@ -732,7 +732,7 @@ func TestOmitFieldsInJson_SimpleStructWithSliceStruct(t *testing.T) {
 	assert.Equal(t, `{"complex":[{"a":"","aempty":[]}]}`, string(jsonRet))
 }
 
-func TestOmitFieldsInJson_SimpleStructWithEnum(t *testing.T) {
+func TestOmitEmptyEnumInJson_SimpleStructWithEnum(t *testing.T) {
 	type TestEnum string
 
 	const (
@@ -766,15 +766,9 @@ func TestOmitFieldsInJson_SimpleStructWithEnum(t *testing.T) {
 	}
 
 	for _, tt := range enumTests {
-		sVal := reflect.ValueOf(tt.in)
-		jsonIn, _ := json.Marshal(tt.in)
-		m := make(map[string]interface{})
-		json.Unmarshal(jsonIn, &m)
-		mapRet, err := omitNilFieldsInJSON(m, sVal)
+		b, err := json.Marshal(tt.in)
 		assert.NoError(t, err)
-		jsonRet, err := json.Marshal(mapRet)
-		assert.NoError(t, err)
-		assert.Equal(t, tt.out, string(jsonRet))
+		assert.Equal(t, tt.out, string(b))
 	}
 }
 

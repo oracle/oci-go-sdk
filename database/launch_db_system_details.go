@@ -73,7 +73,7 @@ type LaunchDbSystemDetails struct {
 	// The type of redundancy configured for the DB System.
 	// Normal is 2-way redundancy, recommended for test and development systems.
 	// High is 3-way redundancy, recommended for production systems.
-	DiskRedundancy LaunchDbSystemDetailsDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy" omitEmpty:"true"`
+	DiskRedundancy LaunchDbSystemDetailsDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy,omitempty"`
 
 	// The user-friendly name for the DB System. It does not have to be unique.
 	DisplayName *string `mandatory:"false" json:"displayName"`
@@ -87,7 +87,7 @@ type LaunchDbSystemDetails struct {
 	InitialDataStorageSizeInGB *int `mandatory:"false" json:"initialDataStorageSizeInGB"`
 
 	// The Oracle license model that applies to all the databases on the DB System. The default is LICENSE_INCLUDED.
-	LicenseModel LaunchDbSystemDetailsLicenseModelEnum `mandatory:"false" json:"licenseModel" omitEmpty:"true"`
+	LicenseModel LaunchDbSystemDetailsLicenseModelEnum `mandatory:"false" json:"licenseModel,omitempty"`
 
 	// Number of nodes to launch for a VM-shape based RAC DB system.
 	NodeCount *int `mandatory:"false" json:"nodeCount"`

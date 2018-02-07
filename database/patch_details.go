@@ -18,7 +18,7 @@ import (
 type PatchDetails struct {
 
 	// The action to perform on the patch.
-	Action PatchDetailsActionEnum `mandatory:"false" json:"action" omitEmpty:"true"`
+	Action PatchDetailsActionEnum `mandatory:"false" json:"action,omitempty"`
 
 	// The OCID of the patch.
 	PatchId *string `mandatory:"false" json:"patchId"`
