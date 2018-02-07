@@ -61,6 +61,14 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	assert.NotNil(t, resUpdate.Id)
 }
 
+func TestIdentityClient_OverrideRegion(t *testing.T) {
+	c, _ := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c.SetRegion(common.RegionIAD)
+	rList := identity.ListGroupsRequest{CompartmentId: common.String(getTenancyID())}
+	_, err := c.ListGroups(context.Background(), rList)
+	assert.NoError(t, err)
+}
+
 func TestIdentityClient_ListGroups(t *testing.T) {
 
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
