@@ -741,20 +741,41 @@ func TestOmitFieldsInJson_SimpleStructWithEnum(t *testing.T) {
 	)
 	type TestStruct struct {
 		MandatoryEnum TestEnum `mandatory:"true" json:"mandatoryenum"`
+		OptionalEnum  TestEnum `mandatory:"false" json:"optionalenum" omitEmpty:"true"`
+		TestString    *string  `mandatory:"false" json:"teststring"`
+	}
+
+	type TestStruct2 struct {
+		MandatoryEnum TestEnum `mandatory:"true" json:"mandatoryenum" omitEmpty:"true"`
 		OptionalEnum  TestEnum `mandatory:"false" json:"optionalenum"`
 		TestString    *string  `mandatory:"false" json:"teststring"`
 	}
 
-	s := TestStruct{MandatoryEnum: TestEnumActive, TestString: String("teststring")}
-	sVal := reflect.ValueOf(s)
-	jsonIn, _ := json.Marshal(s)
-	m := make(map[string]interface{})
-	json.Unmarshal(jsonIn, &m)
-	mapRet, err := omitNilFieldsInJSON(m, sVal)
-	assert.NoError(t, err)
-	jsonRet, err := json.Marshal(mapRet)
-	assert.NoError(t, err)
-	assert.Equal(t, `{"mandatoryenum":"ACTIVE","teststring":"teststring"}`, string(jsonRet))
+	var enumTests = []struct {
+		in  interface{} // input
+		out string      // expected result
+	}{
+		{
+			TestStruct{MandatoryEnum: TestEnumActive, TestString: String("teststring")},
+			`{"mandatoryenum":"ACTIVE","teststring":"teststring"}`,
+		},
+		{
+			TestStruct2{MandatoryEnum: TestEnumActive, TestString: String("teststring")},
+			`{"mandatoryenum":"ACTIVE","optionalenum":"","teststring":"teststring"}`,
+		},
+	}
+
+	for _, tt := range enumTests {
+		sVal := reflect.ValueOf(tt.in)
+		jsonIn, _ := json.Marshal(tt.in)
+		m := make(map[string]interface{})
+		json.Unmarshal(jsonIn, &m)
+		mapRet, err := omitNilFieldsInJSON(m, sVal)
+		assert.NoError(t, err)
+		jsonRet, err := json.Marshal(mapRet)
+		assert.NoError(t, err)
+		assert.Equal(t, tt.out, string(jsonRet))
+	}
 }
 
 func TestOmitFieldsInJson_SimpleStructWithMapStruct(t *testing.T) {
