@@ -41,7 +41,7 @@ type CrossConnect struct {
 	Id *string `mandatory:"false" json:"id"`
 
 	// The cross-connect's current state.
-	LifecycleState CrossConnectLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState CrossConnectLifecycleStateEnum `mandatory:"false" json:"lifecycleState" omitEmpty:"true"`
 
 	// The name of the FastConnect location where this cross-connect is installed.
 	LocationName *string `mandatory:"false" json:"locationName"`

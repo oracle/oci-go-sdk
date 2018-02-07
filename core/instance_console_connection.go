@@ -34,7 +34,7 @@ type InstanceConsoleConnection struct {
 	InstanceId *string `mandatory:"false" json:"instanceId"`
 
 	// The current state of the console connection.
-	LifecycleState InstanceConsoleConnectionLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState InstanceConsoleConnectionLifecycleStateEnum `mandatory:"false" json:"lifecycleState" omitEmpty:"true"`
 }
 
 func (m InstanceConsoleConnection) String() string {

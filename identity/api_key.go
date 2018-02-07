@@ -40,7 +40,7 @@ type ApiKey struct {
 
 	// The API key's current state. After creating an `ApiKey` object, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState ApiKeyLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState ApiKeyLifecycleStateEnum `mandatory:"false" json:"lifecycleState" omitEmpty:"true"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`

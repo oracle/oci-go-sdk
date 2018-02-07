@@ -85,13 +85,13 @@ type DbSystemSummary struct {
 	// The type of redundancy configured for the DB System.
 	// Normal is 2-way redundancy.
 	// High is 3-way redundancy.
-	DiskRedundancy DbSystemSummaryDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy"`
+	DiskRedundancy DbSystemSummaryDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy" omitEmpty:"true"`
 
 	// The OCID of the last patch history. This is updated as soon as a patch operation is started.
 	LastPatchHistoryEntryId *string `mandatory:"false" json:"lastPatchHistoryEntryId"`
 
 	// The Oracle license model that applies to all the databases on the DB System. The default is LICENSE_INCLUDED.
-	LicenseModel DbSystemSummaryLicenseModelEnum `mandatory:"false" json:"licenseModel"`
+	LicenseModel DbSystemSummaryLicenseModelEnum `mandatory:"false" json:"licenseModel" omitEmpty:"true"`
 
 	// Additional information about the current lifecycleState.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`

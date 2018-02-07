@@ -20,7 +20,7 @@ type LetterOfAuthority struct {
 	AuthorizedEntityName *string `mandatory:"false" json:"authorizedEntityName"`
 
 	// The type of cross-connect fiber, termination, and optical specification.
-	CircuitType LetterOfAuthorityCircuitTypeEnum `mandatory:"false" json:"circuitType"`
+	CircuitType LetterOfAuthorityCircuitTypeEnum `mandatory:"false" json:"circuitType" omitEmpty:"true"`
 
 	// The OCID of the cross-connect.
 	CrossConnectId *string `mandatory:"false" json:"crossConnectId"`

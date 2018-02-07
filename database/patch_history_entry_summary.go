@@ -28,7 +28,7 @@ type PatchHistoryEntrySummary struct {
 	TimeStarted *common.SDKTime `mandatory:"true" json:"timeStarted"`
 
 	// The action being performed or was completed.
-	Action PatchHistoryEntrySummaryActionEnum `mandatory:"false" json:"action"`
+	Action PatchHistoryEntrySummaryActionEnum `mandatory:"false" json:"action" omitEmpty:"true"`
 
 	// A descriptive text associated with the lifecycleState.
 	// Typically contains additional displayable text.

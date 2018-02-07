@@ -34,10 +34,10 @@ type VirtualCircuit struct {
 	BandwidthShapeName *string `mandatory:"false" json:"bandwidthShapeName"`
 
 	// BGP management option.
-	BgpManagement VirtualCircuitBgpManagementEnum `mandatory:"false" json:"bgpManagement"`
+	BgpManagement VirtualCircuitBgpManagementEnum `mandatory:"false" json:"bgpManagement" omitEmpty:"true"`
 
 	// The state of the BGP session associated with the virtual circuit.
-	BgpSessionState VirtualCircuitBgpSessionStateEnum `mandatory:"false" json:"bgpSessionState"`
+	BgpSessionState VirtualCircuitBgpSessionStateEnum `mandatory:"false" json:"bgpSessionState" omitEmpty:"true"`
 
 	// The OCID of the compartment containing the virtual circuit.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
@@ -68,7 +68,7 @@ type VirtualCircuit struct {
 	// The virtual circuit's current state. For information about
 	// the different states, see
 	// [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
-	LifecycleState VirtualCircuitLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState VirtualCircuitLifecycleStateEnum `mandatory:"false" json:"lifecycleState" omitEmpty:"true"`
 
 	// The Oracle BGP ASN.
 	OracleBgpAsn *int `mandatory:"false" json:"oracleBgpAsn"`
@@ -87,7 +87,7 @@ type VirtualCircuit struct {
 	// the provider has provisioned the virtual circuit from their end.
 	// INACTIVE means the provider has not yet provisioned the virtual
 	// circuit, or has de-provisioned it.
-	ProviderState VirtualCircuitProviderStateEnum `mandatory:"false" json:"providerState"`
+	ProviderState VirtualCircuitProviderStateEnum `mandatory:"false" json:"providerState" omitEmpty:"true"`
 
 	// For a public virtual circuit. The public IP prefixes (CIDRs) the customer wants to
 	// advertise across the connection. Each prefix must be /24 or less specific.
@@ -102,7 +102,7 @@ type VirtualCircuit struct {
 	Region *string `mandatory:"false" json:"region"`
 
 	// Provider service type.
-	ServiceType VirtualCircuitServiceTypeEnum `mandatory:"false" json:"serviceType"`
+	ServiceType VirtualCircuitServiceTypeEnum `mandatory:"false" json:"serviceType" omitEmpty:"true"`
 
 	// The date and time the virtual circuit was created,
 	// in the format defined by RFC3339.
@@ -111,7 +111,7 @@ type VirtualCircuit struct {
 
 	// Whether the virtual circuit supports private or public peering. For more information,
 	// see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
-	Type VirtualCircuitTypeEnum `mandatory:"false" json:"type"`
+	Type VirtualCircuitTypeEnum `mandatory:"false" json:"type" omitEmpty:"true"`
 }
 
 func (m VirtualCircuit) String() string {

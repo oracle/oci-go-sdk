@@ -19,7 +19,7 @@ type CrossConnectStatus struct {
 	CrossConnectId *string `mandatory:"true" json:"crossConnectId"`
 
 	// Whether Oracle's side of the interface is up or down.
-	InterfaceState CrossConnectStatusInterfaceStateEnum `mandatory:"false" json:"interfaceState"`
+	InterfaceState CrossConnectStatusInterfaceStateEnum `mandatory:"false" json:"interfaceState" omitEmpty:"true"`
 
 	// The light level of the cross-connect (in dBm).
 	// Example: `14.0`
@@ -31,7 +31,7 @@ type CrossConnectStatus struct {
 	//   * **HIGH_WARN:** Light level is too high
 	//   * **BAD:** There's measurable light but the signal-to-noise ratio is bad
 	//   * **GOOD:** Good light level
-	LightLevelIndicator CrossConnectStatusLightLevelIndicatorEnum `mandatory:"false" json:"lightLevelIndicator"`
+	LightLevelIndicator CrossConnectStatusLightLevelIndicatorEnum `mandatory:"false" json:"lightLevelIndicator" omitEmpty:"true"`
 }
 
 func (m CrossConnectStatus) String() string {

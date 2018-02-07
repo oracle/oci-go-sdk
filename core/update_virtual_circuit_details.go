@@ -54,7 +54,7 @@ type UpdateVirtualCircuitDetails struct {
 	// end. INACTIVE means the provider has not yet provisioned the virtual
 	// circuit, or has de-provisioned it.
 	// To be updated only by the provider.
-	ProviderState UpdateVirtualCircuitDetailsProviderStateEnum `mandatory:"false" json:"providerState"`
+	ProviderState UpdateVirtualCircuitDetailsProviderStateEnum `mandatory:"false" json:"providerState" omitEmpty:"true"`
 
 	// Provider-supplied reference information about this virtual circuit.
 	// Relevant only if the customer is using FastConnect via a provider.
