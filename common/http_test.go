@@ -482,6 +482,28 @@ func TestUnmarshalResponse_BodyAndHeader(t *testing.T) {
 	assert.Equal(t, "RegionFRA", s.Key)
 }
 
+func TestUnmarshalResponse_PlainTextBody(t *testing.T) {
+	sampleResponse := `some data not in json
+
+isn\u0027t
+some more data
+and..$#04""234:: " 世界, 你好好好,  é,
+ B=µH *`
+	header := http.Header{}
+	opcID := "111"
+	header.Set("OpcrequestId", opcID)
+	s := struct {
+		Data *string `presentIn:"body" encoding:"plain-text"`
+	}{}
+	r := http.Response{Header: header}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.Equal(t, sampleResponse, *(s.Data))
+	assert.NotContains(t, sampleResponse, "isn't")
+}
+
 func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {
 	header := http.Header{}
 	opcID := "111"
@@ -604,7 +626,6 @@ func TestEmptyQueryParam(t *testing.T) {
 	assert.Contains(t, r.URL.RawQuery, "qp2")
 	assert.Contains(t, r.URL.RawQuery, "qp")
 	assert.NotContains(t, r.URL.RawQuery, "meta")
-
 }
 
 func TestOmitFieldsInJson_SimpleStruct(t *testing.T) {
