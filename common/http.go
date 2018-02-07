@@ -739,7 +739,15 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 	case "binary":
 		value.Set(reflect.ValueOf(response.Body))
 		return
-	case "": //If the encoding is not set. we'll decode with json
+	case "plain-text":
+		byteArr, e := ioutil.ReadAll(response.Body)
+		if e != nil {
+			return e
+		}
+		str := string(byteArr)
+		value.Set(reflect.ValueOf(&str))
+		return
+	default: //If the encoding is not set. we'll decode with json
 		iVal, err = valueFromJSONBody(response, value, unmarshaler)
 		if err != nil {
 			return
@@ -750,9 +758,6 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 			newVal = newVal.Elem()
 		}
 		value.Set(newVal)
-		return
-	default:
-		err = fmt.Errorf("Encoding: %s is invalid. Can not unmarshal body", encoding)
 		return
 	}
 }
