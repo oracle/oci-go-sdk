@@ -741,12 +741,12 @@ func TestOmitFieldsInJson_SimpleStructWithEnum(t *testing.T) {
 	)
 	type TestStruct struct {
 		MandatoryEnum TestEnum `mandatory:"true" json:"mandatoryenum"`
-		OptionalEnum  TestEnum `mandatory:"false" json:"optionalenum" omitEmpty:"true"`
+		OptionalEnum  TestEnum `mandatory:"false" json:"optionalenum,omitempty"`
 		TestString    *string  `mandatory:"false" json:"teststring"`
 	}
 
 	type TestStruct2 struct {
-		MandatoryEnum TestEnum `mandatory:"true" json:"mandatoryenum" omitEmpty:"true"`
+		MandatoryEnum TestEnum `mandatory:"true" json:"mandatoryenum,omitempty"`
 		OptionalEnum  TestEnum `mandatory:"false" json:"optionalenum"`
 		TestString    *string  `mandatory:"false" json:"teststring"`
 	}

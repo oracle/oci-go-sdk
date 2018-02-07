@@ -108,13 +108,6 @@ func getTaggedNilFieldNameOrError(field reflect.StructField, fieldValue reflect.
 
 	// If the field can not be nil, then no-op
 	if !isNillableType(&fieldValue) {
-		if parameterValue, e := toStringValue(fieldValue, field); e == nil &&
-			shouldOmitEmpty(field, parameterValue) {
-
-			// check for tag "omitEmpty", and mark it need to be removed
-			return true, nameJSONField, nil
-		}
-
 		Debugf("WARNING json field is tagged with mandatory flags, but the type can not be nil, field name: %s", field.Name)
 		return false, nameJSONField, nil
 	}
@@ -283,28 +276,21 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 		return
 	}
 
-	if !shouldOmitEmpty(field, queryParameterValue) {
+	//check for tag "omitEmpty", this is done to accomodate unset fields that do not
+	//support an empty string: enums in query params
+	if omitEmpty, present := field.Tag.Lookup("omitEmpty"); present {
+		omitEmptyBool, _ := strconv.ParseBool(strings.ToLower(omitEmpty))
+		if queryParameterValue != "" || !omitEmptyBool {
+			query.Set(queryParameterName, queryParameterValue)
+		} else {
+			Debugf("Omitting %s, is empty and omitEmpty tag is set", field.Name)
+		}
+	} else {
 		query.Set(queryParameterName, queryParameterValue)
 	}
 
 	request.URL.RawQuery = query.Encode()
 	return
-}
-
-func shouldOmitEmpty(field reflect.StructField, parameterValue string) bool {
-	//check for tag "omitEmpty", this is done to accomodate unset fields that do not
-	//support an empty string: enums in query params
-	if omitEmpty, present := field.Tag.Lookup("omitEmpty"); present {
-		omitEmptyBool, _ := strconv.ParseBool(strings.ToLower(omitEmpty))
-		if parameterValue != "" || !omitEmptyBool {
-			return false
-		}
-
-		Debugf("Omitting %s, is empty and omitEmpty tag is set", field.Name)
-		return true
-	}
-
-	return false
 }
 
 // Adds to the path of the url in the order they appear in the structure
