@@ -485,8 +485,10 @@ func TestUnmarshalResponse_BodyAndHeader(t *testing.T) {
 func TestUnmarshalResponse_PlainTextBody(t *testing.T) {
 	sampleResponse := `some data not in json
 
+isn\u0027t
 some more data
-and..$#04""234::`
+and..$#04""234:: " 世界, 你好好好,  é,
+ B=µH *`
 	header := http.Header{}
 	opcID := "111"
 	header.Set("OpcrequestId", opcID)
@@ -499,6 +501,7 @@ and..$#04""234::`
 	err := UnmarshalResponse(&r, &s)
 	assert.NoError(t, err)
 	assert.Equal(t, sampleResponse, *(s.Data))
+	assert.NotContains(t, sampleResponse, "isn't")
 }
 
 func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {

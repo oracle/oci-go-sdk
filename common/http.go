@@ -740,6 +740,7 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 		value.Set(reflect.ValueOf(response.Body))
 		return
 	case "plain-text":
+		//Expects UTF-8
 		byteArr, e := ioutil.ReadAll(response.Body)
 		if e != nil {
 			return e
