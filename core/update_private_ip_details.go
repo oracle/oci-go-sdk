@@ -17,7 +17,7 @@ type UpdatePrivateIpDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid
 	// entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The hostname for the private IP. Used for DNS. The value
 	// is the hostname portion of the private IP's fully qualified domain name (FQDN)
@@ -28,11 +28,11 @@ type UpdatePrivateIpDetails struct {
 	// For more information, see
 	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// Example: `bminstance-1`
-	HostnameLabel *string `mandatory:"false" json:"hostnameLabel,omitempty"`
+	HostnameLabel *string `mandatory:"false" json:"hostnameLabel"`
 
 	// The OCID of the VNIC to reassign the private IP to. The VNIC must
 	// be in the same subnet as the current VNIC.
-	VnicId *string `mandatory:"false" json:"vnicId,omitempty"`
+	VnicId *string `mandatory:"false" json:"vnicId"`
 }
 
 func (m UpdatePrivateIpDetails) String() string {

@@ -22,7 +22,7 @@ type CreateVnicDetails struct {
 	// use this `subnetId` instead of the deprecated `subnetId` in
 	// LaunchInstanceDetails.
 	// At least one of them is required; if you provide both, the values must match.
-	SubnetId *string `mandatory:"true" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"true" json:"subnetId"`
 
 	// Whether the VNIC should be assigned a public IP address. Defaults to whether
 	// the subnet is public or private. If not set and the VNIC is being created
@@ -36,11 +36,11 @@ type CreateVnicDetails struct {
 	// addresses associated with them. For more information, see
 	// [IP Addresses]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingIPaddresses.htm).
 	// Example: `false`
-	AssignPublicIp *bool `mandatory:"false" json:"assignPublicIp,omitempty"`
+	AssignPublicIp *bool `mandatory:"false" json:"assignPublicIp"`
 
 	// A user-friendly name for the VNIC. Does not have to be unique.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname
 	// portion of the primary private IP's fully qualified domain name (FQDN)
@@ -59,7 +59,7 @@ type CreateVnicDetails struct {
 	// LaunchInstanceDetails.
 	// If you provide both, the values must match.
 	// Example: `bminstance-1`
-	HostnameLabel *string `mandatory:"false" json:"hostnameLabel,omitempty"`
+	HostnameLabel *string `mandatory:"false" json:"hostnameLabel"`
 
 	// A private IP address of your choice to assign to the VNIC. Must be an
 	// available IP address within the subnet's CIDR. If you don't specify a
@@ -70,14 +70,14 @@ type CreateVnicDetails struct {
 	// ListPrivateIps and
 	// GetPrivateIp.
 	// Example: `10.0.3.3`
-	PrivateIp *string `mandatory:"false" json:"privateIp,omitempty"`
+	PrivateIp *string `mandatory:"false" json:"privateIp"`
 
 	// Whether the source/destination check is disabled on the VNIC.
 	// Defaults to `false`, which means the check is performed. For information
 	// about why you would skip the source/destination check, see
 	// [Using a Private IP as a Route Target]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingroutetables.htm#privateip).
 	// Example: `true`
-	SkipSourceDestCheck *bool `mandatory:"false" json:"skipSourceDestCheck,omitempty"`
+	SkipSourceDestCheck *bool `mandatory:"false" json:"skipSourceDestCheck"`
 }
 
 func (m CreateVnicDetails) String() string {

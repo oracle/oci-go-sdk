@@ -26,37 +26,37 @@ import (
 type DbSystemSummary struct {
 
 	// The name of the Availability Domain that the DB System is located in.
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The OCID of the compartment.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The number of CPU cores enabled on the DB System.
-	CpuCoreCount *int `mandatory:"true" json:"cpuCoreCount,omitempty"`
+	CpuCoreCount *int `mandatory:"true" json:"cpuCoreCount"`
 
 	// The Oracle Database Edition that applies to all the databases on the DB System.
-	DatabaseEdition DbSystemSummaryDatabaseEditionEnum `mandatory:"true" json:"databaseEdition,omitempty"`
+	DatabaseEdition DbSystemSummaryDatabaseEditionEnum `mandatory:"true" json:"databaseEdition"`
 
 	// The user-friendly name for the DB System. It does not have to be unique.
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// The domain name for the DB System.
-	Domain *string `mandatory:"true" json:"domain,omitempty"`
+	Domain *string `mandatory:"true" json:"domain"`
 
 	// The host name for the DB Node.
-	Hostname *string `mandatory:"true" json:"hostname,omitempty"`
+	Hostname *string `mandatory:"true" json:"hostname"`
 
 	// The OCID of the DB System.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the DB System.
-	LifecycleState DbSystemSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState DbSystemSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The shape of the DB System. The shape determines resources to allocate to the DB system - CPU cores and memory for VM shapes; CPU cores, memory and storage for non-VM (or bare metal) shapes.
-	Shape *string `mandatory:"true" json:"shape,omitempty"`
+	Shape *string `mandatory:"true" json:"shape"`
 
 	// The public key portion of one or more key pairs used for SSH access to the DB System.
-	SshPublicKeys []string `mandatory:"true" json:"sshPublicKeys,omitempty"`
+	SshPublicKeys []string `mandatory:"true" json:"sshPublicKeys"`
 
 	// The OCID of the subnet the DB System is associated with.
 	// **Subnet Restrictions:**
@@ -65,22 +65,22 @@ type DbSystemSummary struct {
 	// These subnets are used by the Oracle Clusterware private interconnect on the database instance.
 	// Specifying an overlapping subnet will cause the private interconnect to malfunction.
 	// This restriction applies to both the client subnet and backup subnet.
-	SubnetId *string `mandatory:"true" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"true" json:"subnetId"`
 
 	// The OCID of the backup network subnet the DB System is associated with. Applicable only to Exadata.
 	// **Subnet Restriction:** See above subnetId's 'Subnet Restriction'.
 	// to malfunction.
-	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId,omitempty"`
+	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId"`
 
 	// Cluster name for Exadata and 2-node RAC DB Systems. The cluster name must begin with an an alphabetic character, and may contain hyphens (-). Underscores (_) are not permitted. The cluster name can be no longer than 11 characters and is not case sensitive.
-	ClusterName *string `mandatory:"false" json:"clusterName,omitempty"`
+	ClusterName *string `mandatory:"false" json:"clusterName"`
 
 	// The percentage assigned to DATA storage (user data and database files).
 	// The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Accepted values are 40 and 80.
-	DataStoragePercentage *int `mandatory:"false" json:"dataStoragePercentage,omitempty"`
+	DataStoragePercentage *int `mandatory:"false" json:"dataStoragePercentage"`
 
 	// Data storage size, in GBs, that is currently available to the DB system. This is applicable only for VM-based DBs.
-	DataStorageSizeInGBs *int `mandatory:"false" json:"dataStorageSizeInGBs,omitempty"`
+	DataStorageSizeInGBs *int `mandatory:"false" json:"dataStorageSizeInGBs"`
 
 	// The type of redundancy configured for the DB System.
 	// Normal is 2-way redundancy.
@@ -88,43 +88,43 @@ type DbSystemSummary struct {
 	DiskRedundancy DbSystemSummaryDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy,omitempty"`
 
 	// The OCID of the last patch history. This is updated as soon as a patch operation is started.
-	LastPatchHistoryEntryId *string `mandatory:"false" json:"lastPatchHistoryEntryId,omitempty"`
+	LastPatchHistoryEntryId *string `mandatory:"false" json:"lastPatchHistoryEntryId"`
 
 	// The Oracle license model that applies to all the databases on the DB System. The default is LICENSE_INCLUDED.
 	LicenseModel DbSystemSummaryLicenseModelEnum `mandatory:"false" json:"licenseModel,omitempty"`
 
 	// Additional information about the current lifecycleState.
-	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
+	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The port number configured for the listener on the DB System.
-	ListenerPort *int `mandatory:"false" json:"listenerPort,omitempty"`
+	ListenerPort *int `mandatory:"false" json:"listenerPort"`
 
 	// Number of nodes in this DB system. For RAC DBs, this will be greater than 1.
-	NodeCount *int `mandatory:"false" json:"nodeCount,omitempty"`
+	NodeCount *int `mandatory:"false" json:"nodeCount"`
 
 	// RECO/REDO storage size, in GBs, that is currently allocated to the DB system. This is applicable only for VM-based DBs.
-	RecoStorageSizeInGB *int `mandatory:"false" json:"recoStorageSizeInGB,omitempty"`
+	RecoStorageSizeInGB *int `mandatory:"false" json:"recoStorageSizeInGB"`
 
 	// The OCID of the DNS record for the SCAN IP addresses that are associated with the DB System.
-	ScanDnsRecordId *string `mandatory:"false" json:"scanDnsRecordId,omitempty"`
+	ScanDnsRecordId *string `mandatory:"false" json:"scanDnsRecordId"`
 
 	// The OCID of the Single Client Access Name (SCAN) IP addresses associated with the DB System.
 	// SCAN IP addresses are typically used for load balancing and are not assigned to any interface.
 	// Clusterware directs the requests to the appropriate nodes in the cluster.
 	// - For a single-node DB System, this list is empty.
-	ScanIpIds []string `mandatory:"false" json:"scanIpIds,omitempty"`
+	ScanIpIds []string `mandatory:"false" json:"scanIpIds"`
 
 	// The date and time the DB System was created.
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// The version of the DB System.
-	Version *string `mandatory:"false" json:"version,omitempty"`
+	Version *string `mandatory:"false" json:"version"`
 
 	// The OCID of the virtual IP (VIP) addresses associated with the DB System.
 	// The Cluster Ready Services (CRS) creates and maintains one VIP address for each node in the DB System to
 	// enable failover. If one node fails, the VIP is reassigned to another active node in the cluster.
 	// - For a single-node DB System, this list is empty.
-	VipIds []string `mandatory:"false" json:"vipIds,omitempty"`
+	VipIds []string `mandatory:"false" json:"vipIds"`
 }
 
 func (m DbSystemSummary) String() string {

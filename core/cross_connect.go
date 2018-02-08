@@ -28,34 +28,34 @@ import (
 type CrossConnect struct {
 
 	// The OCID of the compartment containing the cross-connect group.
-	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// The OCID of the cross-connect group this cross-connect belongs to (if any).
-	CrossConnectGroupId *string `mandatory:"false" json:"crossConnectGroupId,omitempty"`
+	CrossConnectGroupId *string `mandatory:"false" json:"crossConnectGroupId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The cross-connect's Oracle ID (OCID).
-	Id *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id"`
 
 	// The cross-connect's current state.
 	LifecycleState CrossConnectLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The name of the FastConnect location where this cross-connect is installed.
-	LocationName *string `mandatory:"false" json:"locationName,omitempty"`
+	LocationName *string `mandatory:"false" json:"locationName"`
 
 	// A string identifying the meet-me room port for this cross-connect.
-	PortName *string `mandatory:"false" json:"portName,omitempty"`
+	PortName *string `mandatory:"false" json:"portName"`
 
 	// The port speed for this cross-connect.
 	// Example: `10 Gbps`
-	PortSpeedShapeName *string `mandatory:"false" json:"portSpeedShapeName,omitempty"`
+	PortSpeedShapeName *string `mandatory:"false" json:"portSpeedShapeName"`
 
 	// The date and time the cross-connect was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m CrossConnect) String() string {

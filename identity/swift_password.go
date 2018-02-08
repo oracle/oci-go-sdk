@@ -21,32 +21,32 @@ type SwiftPassword struct {
 
 	// The Swift password. The value is available only in the response for `CreateSwiftPassword`, and not
 	// for `ListSwiftPasswords` or `UpdateSwiftPassword`.
-	Password *string `mandatory:"false" json:"password,omitempty"`
+	Password *string `mandatory:"false" json:"password"`
 
 	// The OCID of the Swift password.
-	Id *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id"`
 
 	// The OCID of the user the password belongs to.
-	UserId *string `mandatory:"false" json:"userId,omitempty"`
+	UserId *string `mandatory:"false" json:"userId"`
 
 	// The description you assign to the Swift password. Does not have to be unique, and it's changeable.
-	Description *string `mandatory:"false" json:"description,omitempty"`
+	Description *string `mandatory:"false" json:"description"`
 
 	// Date and time the `SwiftPassword` object was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// Date and time when this password will expire, in the format defined by RFC3339.
 	// Null if it never expires.
 	// Example: `2016-08-25T21:10:29.600Z`
-	ExpiresOn *common.SDKTime `mandatory:"false" json:"expiresOn,omitempty"`
+	ExpiresOn *common.SDKTime `mandatory:"false" json:"expiresOn"`
 
 	// The password's current state. After creating a password, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
 	LifecycleState SwiftPasswordLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
 }
 
 func (m SwiftPassword) String() string {

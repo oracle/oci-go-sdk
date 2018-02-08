@@ -23,16 +23,16 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	// * At least two numeric characters.
 	// * At least two special characters. Valid special characters include "_", "#", and "-" only.
 	// **The password MUST be the same as the primary admin password.**
-	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword,omitempty"`
+	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the DB System to create the standby database on.
-	PeerDbSystemId *string `mandatory:"false" json:"peerDbSystemId,omitempty"`
+	PeerDbSystemId *string `mandatory:"false" json:"peerDbSystemId"`
 
 	// The protection mode to set up between the primary and standby databases. For more information, see
 	// [Oracle Data Guard Protection Modes](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)
 	// in the Oracle Data Guard documentation.
 	// **IMPORTANT** - The only protection mode currently supported by the Database Service is MAXIMUM_PERFORMANCE.
-	ProtectionMode CreateDataGuardAssociationDetailsProtectionModeEnum `mandatory:"true" json:"protectionMode,omitempty"`
+	ProtectionMode CreateDataGuardAssociationDetailsProtectionModeEnum `mandatory:"true" json:"protectionMode"`
 
 	// The redo transport type to use for this Data Guard association.  Valid values depend on the specified `protectionMode`:
 	// * MAXIMUM_AVAILABILITY - SYNC or FASTSYNC
@@ -42,7 +42,7 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	// [Redo Transport Services](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400)
 	// in the Oracle Data Guard documentation.
 	// **IMPORTANT** - The only transport type currently supported by the Database Service is ASYNC.
-	TransportType CreateDataGuardAssociationDetailsTransportTypeEnum `mandatory:"true" json:"transportType,omitempty"`
+	TransportType CreateDataGuardAssociationDetailsTransportTypeEnum `mandatory:"true" json:"transportType"`
 }
 
 //GetDatabaseAdminPassword returns DatabaseAdminPassword

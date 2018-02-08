@@ -17,25 +17,25 @@ import (
 type FastConnectProviderService struct {
 
 	// The OCID of the service offered by the provider.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// Private peering BGP management.
-	PrivatePeeringBgpManagement FastConnectProviderServicePrivatePeeringBgpManagementEnum `mandatory:"true" json:"privatePeeringBgpManagement,omitempty"`
+	PrivatePeeringBgpManagement FastConnectProviderServicePrivatePeeringBgpManagementEnum `mandatory:"true" json:"privatePeeringBgpManagement"`
 
 	// The name of the provider.
-	ProviderName *string `mandatory:"true" json:"providerName,omitempty"`
+	ProviderName *string `mandatory:"true" json:"providerName"`
 
 	// The name of the service offered by the provider.
-	ProviderServiceName *string `mandatory:"true" json:"providerServiceName,omitempty"`
+	ProviderServiceName *string `mandatory:"true" json:"providerServiceName"`
 
 	// Public peering BGP management.
-	PublicPeeringBgpManagement FastConnectProviderServicePublicPeeringBgpManagementEnum `mandatory:"true" json:"publicPeeringBgpManagement,omitempty"`
+	PublicPeeringBgpManagement FastConnectProviderServicePublicPeeringBgpManagementEnum `mandatory:"true" json:"publicPeeringBgpManagement"`
 
 	// Provider service type.
-	Type FastConnectProviderServiceTypeEnum `mandatory:"true" json:"type,omitempty"`
+	Type FastConnectProviderServiceTypeEnum `mandatory:"true" json:"type"`
 
 	// A description of the service offered by the provider.
-	Description *string `mandatory:"false" json:"description,omitempty"`
+	Description *string `mandatory:"false" json:"description"`
 
 	// An array of virtual circuit types supported by this service.
 	SupportedVirtualCircuitTypes []FastConnectProviderServiceSupportedVirtualCircuitTypesEnum `mandatory:"false" json:"supportedVirtualCircuitTypes,omitempty"`

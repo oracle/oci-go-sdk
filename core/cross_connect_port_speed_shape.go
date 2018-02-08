@@ -17,11 +17,11 @@ type CrossConnectPortSpeedShape struct {
 
 	// The name of the port speed shape.
 	// Example: `10 Gbps`
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// The port speed in Gbps.
 	// Example: `10`
-	PortSpeedInGbps *int `mandatory:"true" json:"portSpeedInGbps,omitempty"`
+	PortSpeedInGbps *int `mandatory:"true" json:"portSpeedInGbps"`
 }
 
 func (m CrossConnectPortSpeedShape) String() string {

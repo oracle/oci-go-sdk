@@ -24,41 +24,41 @@ type Subnet struct {
 
 	// The subnet's Availability Domain.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The subnet's CIDR block.
 	// Example: `172.16.1.0/24`
-	CidrBlock *string `mandatory:"true" json:"cidrBlock,omitempty"`
+	CidrBlock *string `mandatory:"true" json:"cidrBlock"`
 
 	// The OCID of the compartment containing the subnet.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The subnet's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The subnet's current state.
-	LifecycleState SubnetLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState SubnetLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The OCID of the route table the subnet is using.
-	RouteTableId *string `mandatory:"true" json:"routeTableId,omitempty"`
+	RouteTableId *string `mandatory:"true" json:"routeTableId"`
 
 	// The OCID of the VCN the subnet is in.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// The IP address of the virtual router.
 	// Example: `10.0.14.1`
-	VirtualRouterIp *string `mandatory:"true" json:"virtualRouterIp,omitempty"`
+	VirtualRouterIp *string `mandatory:"true" json:"virtualRouterIp"`
 
 	// The MAC address of the virtual router.
 	// Example: `00:00:17:B6:4D:DD`
-	VirtualRouterMac *string `mandatory:"true" json:"virtualRouterMac,omitempty"`
+	VirtualRouterMac *string `mandatory:"true" json:"virtualRouterMac"`
 
 	// The OCID of the set of DHCP options associated with the subnet.
-	DhcpOptionsId *string `mandatory:"false" json:"dhcpOptionsId,omitempty"`
+	DhcpOptionsId *string `mandatory:"false" json:"dhcpOptionsId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// A DNS label for the subnet, used in conjunction with the VNIC's hostname and
 	// VCN's DNS label to form a fully qualified domain name (FQDN) for each VNIC
@@ -70,7 +70,7 @@ type Subnet struct {
 	// For more information, see
 	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// Example: `subnet123`
-	DnsLabel *string `mandatory:"false" json:"dnsLabel,omitempty"`
+	DnsLabel *string `mandatory:"false" json:"dnsLabel"`
 
 	// Whether VNICs within this subnet can have public IP addresses.
 	// Defaults to false, which means VNICs created in this subnet will
@@ -82,21 +82,21 @@ type Subnet struct {
 	// subnet cannot have public IP addresses (that is, it's a private
 	// subnet).
 	// Example: `true`
-	ProhibitPublicIpOnVnic *bool `mandatory:"false" json:"prohibitPublicIpOnVnic,omitempty"`
+	ProhibitPublicIpOnVnic *bool `mandatory:"false" json:"prohibitPublicIpOnVnic"`
 
 	// OCIDs for the security lists to use for VNICs in this subnet.
-	SecurityListIds []string `mandatory:"false" json:"securityListIds,omitempty"`
+	SecurityListIds []string `mandatory:"false" json:"securityListIds"`
 
 	// The subnet's domain name, which consists of the subnet's DNS label,
 	// the VCN's DNS label, and the `oraclevcn.com` domain.
 	// For more information, see
 	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// Example: `subnet123.vcn1.oraclevcn.com`
-	SubnetDomainName *string `mandatory:"false" json:"subnetDomainName,omitempty"`
+	SubnetDomainName *string `mandatory:"false" json:"subnetDomainName"`
 
 	// The date and time the subnet was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m Subnet) String() string {

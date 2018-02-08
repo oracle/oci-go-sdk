@@ -17,28 +17,28 @@ import (
 type DbNode struct {
 
 	// The OCID of the DB System.
-	DbSystemId *string `mandatory:"true" json:"dbSystemId,omitempty"`
+	DbSystemId *string `mandatory:"true" json:"dbSystemId"`
 
 	// The OCID of the DB Node.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the database node.
-	LifecycleState DbNodeLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState DbNodeLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The date and time that the DB Node was created.
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The OCID of the VNIC.
-	VnicId *string `mandatory:"true" json:"vnicId,omitempty"`
+	VnicId *string `mandatory:"true" json:"vnicId"`
 
 	// The OCID of the backup VNIC.
-	BackupVnicId *string `mandatory:"false" json:"backupVnicId,omitempty"`
+	BackupVnicId *string `mandatory:"false" json:"backupVnicId"`
 
 	// The host name for the DB Node.
-	Hostname *string `mandatory:"false" json:"hostname,omitempty"`
+	Hostname *string `mandatory:"false" json:"hostname"`
 
 	// Storage size, in GBs, of the software volume that is allocated to the DB system. This is applicable only for VM-based DBs.
-	SoftwareStorageSizeInGB *int `mandatory:"false" json:"softwareStorageSizeInGB,omitempty"`
+	SoftwareStorageSizeInGB *int `mandatory:"false" json:"softwareStorageSizeInGB"`
 }
 
 func (m DbNode) String() string {

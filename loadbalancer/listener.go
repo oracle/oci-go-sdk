@@ -18,23 +18,23 @@ import (
 type Listener struct {
 
 	// The name of the associated backend set.
-	DefaultBackendSetName *string `mandatory:"true" json:"defaultBackendSetName,omitempty"`
+	DefaultBackendSetName *string `mandatory:"true" json:"defaultBackendSetName"`
 
 	// A friendly name for the listener. It must be unique and it cannot be changed.
 	// Example: `My listener`
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// The communication port for the listener.
 	// Example: `80`
-	Port *int `mandatory:"true" json:"port,omitempty"`
+	Port *int `mandatory:"true" json:"port"`
 
 	// The protocol on which the listener accepts connection requests.
 	// To get a list of valid protocols, use the ListProtocols
 	// operation.
 	// Example: `HTTP`
-	Protocol *string `mandatory:"true" json:"protocol,omitempty"`
+	Protocol *string `mandatory:"true" json:"protocol"`
 
-	SslConfiguration *SslConfiguration `mandatory:"false" json:"sslConfiguration,omitempty"`
+	SslConfiguration *SslConfiguration `mandatory:"false" json:"sslConfiguration"`
 }
 
 func (m Listener) String() string {

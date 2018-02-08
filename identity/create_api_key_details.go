@@ -16,7 +16,7 @@ import (
 type CreateApiKeyDetails struct {
 
 	// The public key.  Must be an RSA key in PEM format.
-	Key *string `mandatory:"true" json:"key,omitempty"`
+	Key *string `mandatory:"true" json:"key"`
 }
 
 func (m CreateApiKeyDetails) String() string {

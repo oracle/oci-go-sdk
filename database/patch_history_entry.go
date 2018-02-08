@@ -16,26 +16,26 @@ import (
 type PatchHistoryEntry struct {
 
 	// The OCID of the patch history entry.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the action.
-	LifecycleState PatchHistoryEntryLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState PatchHistoryEntryLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The OCID of the patch.
-	PatchId *string `mandatory:"true" json:"patchId,omitempty"`
+	PatchId *string `mandatory:"true" json:"patchId"`
 
 	// The date and time when the patch action started.
-	TimeStarted *common.SDKTime `mandatory:"true" json:"timeStarted,omitempty"`
+	TimeStarted *common.SDKTime `mandatory:"true" json:"timeStarted"`
 
 	// The action being performed or was completed.
 	Action PatchHistoryEntryActionEnum `mandatory:"false" json:"action,omitempty"`
 
 	// A descriptive text associated with the lifecycleState.
 	// Typically contains additional displayable text.
-	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
+	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The date and time when the patch action completed.
-	TimeEnded *common.SDKTime `mandatory:"false" json:"timeEnded,omitempty"`
+	TimeEnded *common.SDKTime `mandatory:"false" json:"timeEnded"`
 }
 
 func (m PatchHistoryEntry) String() string {

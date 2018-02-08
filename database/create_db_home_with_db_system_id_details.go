@@ -17,15 +17,15 @@ import (
 type CreateDbHomeWithDbSystemIdDetails struct {
 
 	// The OCID of the DB System.
-	DbSystemId *string `mandatory:"true" json:"dbSystemId,omitempty"`
+	DbSystemId *string `mandatory:"true" json:"dbSystemId"`
 
-	Database *CreateDatabaseDetails `mandatory:"true" json:"database,omitempty"`
+	Database *CreateDatabaseDetails `mandatory:"true" json:"database"`
 
 	// A valid Oracle database version. To get a list of supported versions, use the ListDbVersions operation.
-	DbVersion *string `mandatory:"true" json:"dbVersion,omitempty"`
+	DbVersion *string `mandatory:"true" json:"dbVersion"`
 
 	// The user-provided name of the database home.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 //GetDbSystemId returns DbSystemId

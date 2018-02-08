@@ -19,38 +19,38 @@ type LaunchInstanceDetails struct {
 
 	// The Availability Domain of the instance.
 	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
 	// The OCID of the compartment.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The shape of an instance. The shape determines the number of CPUs, amount of memory,
 	// and other resources allocated to the instance.
 	// You can enumerate all available shapes by calling ListShapes.
-	Shape *string `mandatory:"true" json:"shape,omitempty"`
+	Shape *string `mandatory:"true" json:"shape"`
 
 	// Details for the primary VNIC, which is automatically created and attached when
 	// the instance is launched.
-	CreateVnicDetails *CreateVnicDetails `mandatory:"false" json:"createVnicDetails,omitempty"`
+	CreateVnicDetails *CreateVnicDetails `mandatory:"false" json:"createVnicDetails"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
 	// Example: `My bare metal instance`
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// Additional metadata key/value pairs that you provide.  They serve a similar purpose and functionality from fields in the 'metadata' object.
 	// They are distinguished from 'metadata' fields in that these can be nested JSON objects (whereas 'metadata' fields are string/string maps only).
 	// If you don't need nested metadata values, it is strongly advised to avoid using this object and use the Metadata object instead.
-	ExtendedMetadata map[string]interface{} `mandatory:"false" json:"extendedMetadata,omitempty"`
+	ExtendedMetadata map[string]interface{} `mandatory:"false" json:"extendedMetadata"`
 
 	// Deprecated. Instead Use `hostnameLabel` in
 	// CreateVnicDetails.
 	// If you provide both, the values must match.
-	HostnameLabel *string `mandatory:"false" json:"hostnameLabel,omitempty"`
+	HostnameLabel *string `mandatory:"false" json:"hostnameLabel"`
 
 	// Deprecated. Use `sourceDetails` with InstanceSourceViaImageDetails
 	// source type instead. If you specify values for both, the values must match.
-	ImageId *string `mandatory:"false" json:"imageId,omitempty"`
+	ImageId *string `mandatory:"false" json:"imageId"`
 
 	// This is an advanced option.
 	// When a bare metal or virtual machine
@@ -71,7 +71,7 @@ type LaunchInstanceDetails struct {
 	// Oracle Cloud Infrastructure, see
 	// [Bring Your Own Image]({{DOC_SERVER_URL}}/Content/Compute/References/bringyourownimage.htm).
 	// For more information about iPXE, see http://ipxe.org.
-	IpxeScript *string `mandatory:"false" json:"ipxeScript,omitempty"`
+	IpxeScript *string `mandatory:"false" json:"ipxeScript"`
 
 	// Custom metadata key/value pairs that you provide, such as the SSH public key
 	// required to connect to the instance.
@@ -116,15 +116,15 @@ type LaunchInstanceDetails struct {
 	//      curl http://169.254.169.254/opc/v1/instance/metadata/<any-key-name>
 	//  You'll get back a response that includes all the instance information; only the metadata information; or
 	//  the metadata information for the specified key name, respectively.
-	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
+	Metadata map[string]string `mandatory:"false" json:"metadata"`
 
 	// Details for creating an instance.
-	SourceDetails InstanceSourceDetails `mandatory:"false" json:"sourceDetails,omitempty"`
+	SourceDetails InstanceSourceDetails `mandatory:"false" json:"sourceDetails"`
 
 	// Deprecated. Instead use `subnetId` in
 	// CreateVnicDetails.
 	// At least one of them is required; if you provide both, the values must match.
-	SubnetId *string `mandatory:"false" json:"subnetId,omitempty"`
+	SubnetId *string `mandatory:"false" json:"subnetId"`
 }
 
 func (m LaunchInstanceDetails) String() string {
@@ -134,18 +134,18 @@ func (m LaunchInstanceDetails) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *LaunchInstanceDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		CreateVnicDetails  *CreateVnicDetails     `json:"createVnicDetails,omitempty"`
-		DisplayName        *string                `json:"displayName,omitempty"`
-		ExtendedMetadata   map[string]interface{} `json:"extendedMetadata,omitempty"`
-		HostnameLabel      *string                `json:"hostnameLabel,omitempty"`
-		ImageId            *string                `json:"imageId,omitempty"`
-		IpxeScript         *string                `json:"ipxeScript,omitempty"`
-		Metadata           map[string]string      `json:"metadata,omitempty"`
-		SourceDetails      instancesourcedetails  `json:"sourceDetails,omitempty"`
-		SubnetId           *string                `json:"subnetId,omitempty"`
-		AvailabilityDomain *string                `json:"availabilityDomain,omitempty"`
-		CompartmentId      *string                `json:"compartmentId,omitempty"`
-		Shape              *string                `json:"shape,omitempty"`
+		CreateVnicDetails  *CreateVnicDetails     `json:"createVnicDetails"`
+		DisplayName        *string                `json:"displayName"`
+		ExtendedMetadata   map[string]interface{} `json:"extendedMetadata"`
+		HostnameLabel      *string                `json:"hostnameLabel"`
+		ImageId            *string                `json:"imageId"`
+		IpxeScript         *string                `json:"ipxeScript"`
+		Metadata           map[string]string      `json:"metadata"`
+		SourceDetails      instancesourcedetails  `json:"sourceDetails"`
+		SubnetId           *string                `json:"subnetId"`
+		AvailabilityDomain *string                `json:"availabilityDomain"`
+		CompartmentId      *string                `json:"compartmentId"`
+		Shape              *string                `json:"shape"`
 	}{}
 
 	e = json.Unmarshal(data, &model)

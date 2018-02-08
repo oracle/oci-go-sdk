@@ -19,19 +19,19 @@ import (
 type InstanceConsoleConnection struct {
 
 	// The OCID of the compartment to contain the console connection.
-	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// The SSH connection string for the console connection.
-	ConnectionString *string `mandatory:"false" json:"connectionString,omitempty"`
+	ConnectionString *string `mandatory:"false" json:"connectionString"`
 
 	// The SSH public key fingerprint for the console connection.
-	Fingerprint *string `mandatory:"false" json:"fingerprint,omitempty"`
+	Fingerprint *string `mandatory:"false" json:"fingerprint"`
 
 	// The OCID of the console connection.
-	Id *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id"`
 
 	// The OCID of the instance the console connection connects to.
-	InstanceId *string `mandatory:"false" json:"instanceId,omitempty"`
+	InstanceId *string `mandatory:"false" json:"instanceId"`
 
 	// The current state of the console connection.
 	LifecycleState InstanceConsoleConnectionLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`

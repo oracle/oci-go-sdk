@@ -18,13 +18,13 @@ import (
 type UpdateBucketDetails struct {
 
 	// The namespace in which the bucket lives.
-	Namespace *string `mandatory:"false" json:"namespace,omitempty"`
+	Namespace *string `mandatory:"false" json:"namespace"`
 
 	// The name of the bucket.
-	Name *string `mandatory:"false" json:"name,omitempty"`
+	Name *string `mandatory:"false" json:"name"`
 
 	// Arbitrary string, up to 4KB, of keys and values for user-defined metadata.
-	Metadata map[string]string `mandatory:"false" json:"metadata,omitempty"`
+	Metadata map[string]string `mandatory:"false" json:"metadata"`
 
 	// The type of public access available on this bucket. Allows authenticated caller to access the bucket or
 	// contents of this bucket. By default a bucket is set to NoPublicAccess. It is treated as NoPublicAccess

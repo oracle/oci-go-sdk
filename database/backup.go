@@ -17,31 +17,31 @@ import (
 type Backup struct {
 
 	// The name of the Availability Domain that the backup is located in.
-	AvailabilityDomain *string `mandatory:"false" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"false" json:"availabilityDomain"`
 
 	// The OCID of the compartment.
-	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// The OCID of the database.
-	DatabaseId *string `mandatory:"false" json:"databaseId,omitempty"`
+	DatabaseId *string `mandatory:"false" json:"databaseId"`
 
 	// The user-friendly name for the backup. It does not have to be unique.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The OCID of the backup.
-	Id *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id"`
 
 	// Additional information about the current lifecycleState.
-	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails,omitempty"`
+	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The current state of the backup.
 	LifecycleState BackupLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The date and time the backup was completed.
-	TimeEnded *common.SDKTime `mandatory:"false" json:"timeEnded,omitempty"`
+	TimeEnded *common.SDKTime `mandatory:"false" json:"timeEnded"`
 
 	// The date and time the backup starts.
-	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted,omitempty"`
+	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 
 	// The type of backup.
 	Type BackupTypeEnum `mandatory:"false" json:"type,omitempty"`

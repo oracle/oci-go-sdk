@@ -20,38 +20,38 @@ import (
 type Image struct {
 
 	// The OCID of the compartment containing the instance you want to use as the basis for the image.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Whether instances launched with this image can be used to create new images.
 	// For example, you cannot create an image of an Oracle Database instance.
 	// Example: `true`
-	CreateImageAllowed *bool `mandatory:"true" json:"createImageAllowed,omitempty"`
+	CreateImageAllowed *bool `mandatory:"true" json:"createImageAllowed"`
 
 	// The OCID of the image.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
-	LifecycleState ImageLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState ImageLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The image's operating system.
 	// Example: `Oracle Linux`
-	OperatingSystem *string `mandatory:"true" json:"operatingSystem,omitempty"`
+	OperatingSystem *string `mandatory:"true" json:"operatingSystem"`
 
 	// The image's operating system version.
 	// Example: `7.2`
-	OperatingSystemVersion *string `mandatory:"true" json:"operatingSystemVersion,omitempty"`
+	OperatingSystemVersion *string `mandatory:"true" json:"operatingSystemVersion"`
 
 	// The date and time the image was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The OCID of the image originally used to launch the instance.
-	BaseImageId *string `mandatory:"false" json:"baseImageId,omitempty"`
+	BaseImageId *string `mandatory:"false" json:"baseImageId"`
 
 	// A user-friendly name for the image. It does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
 	// You cannot use an Oracle-provided image name as a custom image name.
 	// Example: `My custom Oracle Linux image`
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m Image) String() string {

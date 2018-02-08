@@ -23,34 +23,34 @@ import (
 type LoadBalancer struct {
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the compartment containing the load balancer.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name. It does not have to be unique, and it is changeable.
 	// Example: `My load balancer`
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the load balancer.
-	LifecycleState LoadBalancerLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState LoadBalancerLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// A template that determines the total pre-provisioned bandwidth (ingress plus egress).
 	// To get a list of available shapes, use the ListShapes
 	// operation.
 	// Example: `100Mbps`
-	ShapeName *string `mandatory:"true" json:"shapeName,omitempty"`
+	ShapeName *string `mandatory:"true" json:"shapeName"`
 
 	// The date and time the load balancer was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	BackendSets map[string]BackendSet `mandatory:"false" json:"backendSets,omitempty"`
+	BackendSets map[string]BackendSet `mandatory:"false" json:"backendSets"`
 
-	Certificates map[string]Certificate `mandatory:"false" json:"certificates,omitempty"`
+	Certificates map[string]Certificate `mandatory:"false" json:"certificates"`
 
 	// An array of IP addresses.
-	IpAddresses []IpAddress `mandatory:"false" json:"ipAddresses,omitempty"`
+	IpAddresses []IpAddress `mandatory:"false" json:"ipAddresses"`
 
 	// Whether the load balancer has a VCN-local (private) IP address.
 	// If "true", the service assigns a private IP address to the load balancer. The load balancer requires only one subnet
@@ -62,12 +62,12 @@ type LoadBalancer struct {
 	// requires two subnets, each in a different Availability Domain. One subnet hosts the primary load balancer and the other
 	// hosts the secondary (standby) load balancer. A public load balancer is accessible from the internet, depending on your
 	// VCN's [security list rules]({{DOC_SERVER_URL}}/Content/Network/Concepts/securitylists.htm).
-	IsPrivate *bool `mandatory:"false" json:"isPrivate,omitempty"`
+	IsPrivate *bool `mandatory:"false" json:"isPrivate"`
 
-	Listeners map[string]Listener `mandatory:"false" json:"listeners,omitempty"`
+	Listeners map[string]Listener `mandatory:"false" json:"listeners"`
 
 	// An array of subnet [OCIDs]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
-	SubnetIds []string `mandatory:"false" json:"subnetIds,omitempty"`
+	SubnetIds []string `mandatory:"false" json:"subnetIds"`
 }
 
 func (m LoadBalancer) String() string {

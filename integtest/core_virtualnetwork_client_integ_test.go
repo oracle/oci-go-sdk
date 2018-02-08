@@ -11,10 +11,11 @@ package integtest
 import (
 	"context"
 	"fmt"
+	"testing"
+
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/core"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 var (
@@ -180,7 +181,7 @@ func TestVirtualNetworkClient_DeleteCpe(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteCpeRequest{}
-	err := c.DeleteCpe(context.Background(), request)
+	_, err := c.DeleteCpe(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -190,7 +191,7 @@ func TestVirtualNetworkClient_DeleteCrossConnect(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteCrossConnectRequest{}
-	err := c.DeleteCrossConnect(context.Background(), request)
+	_, err := c.DeleteCrossConnect(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -200,7 +201,7 @@ func TestVirtualNetworkClient_DeleteCrossConnectGroup(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteCrossConnectGroupRequest{}
-	err := c.DeleteCrossConnectGroup(context.Background(), request)
+	_, err := c.DeleteCrossConnectGroup(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -210,7 +211,7 @@ func TestVirtualNetworkClient_DeleteDhcpOptions(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteDhcpOptionsRequest{}
-	err := c.DeleteDhcpOptions(context.Background(), request)
+	_, err := c.DeleteDhcpOptions(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -220,7 +221,7 @@ func TestVirtualNetworkClient_DeleteDrg(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteDrgRequest{}
-	err := c.DeleteDrg(context.Background(), request)
+	_, err := c.DeleteDrg(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -230,7 +231,7 @@ func TestVirtualNetworkClient_DeleteDrgAttachment(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteDrgAttachmentRequest{}
-	err := c.DeleteDrgAttachment(context.Background(), request)
+	_, err := c.DeleteDrgAttachment(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -240,7 +241,7 @@ func TestVirtualNetworkClient_DeleteIPSecConnection(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteIPSecConnectionRequest{}
-	err := c.DeleteIPSecConnection(context.Background(), request)
+	_, err := c.DeleteIPSecConnection(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -250,7 +251,7 @@ func TestVirtualNetworkClient_DeleteInternetGateway(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteInternetGatewayRequest{}
-	err := c.DeleteInternetGateway(context.Background(), request)
+	_, err := c.DeleteInternetGateway(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -260,7 +261,7 @@ func TestVirtualNetworkClient_DeletePrivateIp(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeletePrivateIpRequest{}
-	err := c.DeletePrivateIp(context.Background(), request)
+	_, err := c.DeletePrivateIp(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -270,7 +271,7 @@ func TestVirtualNetworkClient_DeleteRouteTable(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteRouteTableRequest{}
-	err := c.DeleteRouteTable(context.Background(), request)
+	_, err := c.DeleteRouteTable(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -280,7 +281,7 @@ func TestVirtualNetworkClient_DeleteSecurityList(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteSecurityListRequest{}
-	err := c.DeleteSecurityList(context.Background(), request)
+	_, err := c.DeleteSecurityList(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -290,7 +291,7 @@ func TestVirtualNetworkClient_DeleteSubnet(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteSubnetRequest{}
-	err := c.DeleteSubnet(context.Background(), request)
+	_, err := c.DeleteSubnet(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -300,7 +301,7 @@ func TestVirtualNetworkClient_DeleteVcn(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteVcnRequest{}
-	err := c.DeleteVcn(context.Background(), request)
+	_, err := c.DeleteVcn(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -310,7 +311,7 @@ func TestVirtualNetworkClient_DeleteVirtualCircuit(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteVirtualCircuitRequest{}
-	err := c.DeleteVirtualCircuit(context.Background(), request)
+	_, err := c.DeleteVirtualCircuit(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -327,10 +328,11 @@ func TestVirtualNetworkClient_GetCpe(t *testing.T) {
 }
 
 func TestVirtualNetworkClient_GetCrossConnect(t *testing.T) {
-	t.Skip("Not implemented")
+	crossConnect := createOrGetCrossConnect(t)
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.GetCrossConnectRequest{}
+	request.CrossConnectId = crossConnect.Id
 	r, err := c.GetCrossConnect(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
@@ -338,10 +340,15 @@ func TestVirtualNetworkClient_GetCrossConnect(t *testing.T) {
 }
 
 func TestVirtualNetworkClient_GetCrossConnectGroup(t *testing.T) {
-	t.Skip("Not implemented")
+	connectGroup := createOrGetCrossConnectGroup(t)
+	assert.NotEmpty(t, connectGroup)
+
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	request := core.GetCrossConnectGroupRequest{}
+	request := core.GetCrossConnectGroupRequest{
+		CrossConnectGroupId: connectGroup.Id,
+	}
+
 	r, err := c.GetCrossConnectGroup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
@@ -349,24 +356,15 @@ func TestVirtualNetworkClient_GetCrossConnectGroup(t *testing.T) {
 }
 
 func TestVirtualNetworkClient_GetCrossConnectLetterOfAuthority(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.GetCrossConnectLetterOfAuthorityRequest{}
-	r, err := c.GetCrossConnectLetterOfAuthority(context.Background(), request)
+	r := getCrossConnectLetterOfAuthority(t)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
 	return
 }
 
 func TestVirtualNetworkClient_GetCrossConnectStatus(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.GetCrossConnectStatusRequest{}
-	r, err := c.GetCrossConnectStatus(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
+	crossConnectStatus := getCrossConnectStatus(t)
+	assert.NotEmpty(t, crossConnectStatus, fmt.Sprint(crossConnectStatus))
+	assert.NotEmpty(t, crossConnectStatus.CrossConnectId, fmt.Sprint(crossConnectStatus.CrossConnectId))
 	return
 }
 
@@ -404,13 +402,8 @@ func TestVirtualNetworkClient_GetDrgAttachment(t *testing.T) {
 }
 
 func TestVirtualNetworkClient_GetFastConnectProviderService(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.GetFastConnectProviderServiceRequest{}
-	r, err := c.GetFastConnectProviderService(context.Background(), request)
+	r := getFastConnectProviderServices(t)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
 	return
 }
 
@@ -558,13 +551,13 @@ func TestVirtualNetworkClient_ListCrossConnectGroups(t *testing.T) {
 }
 
 func TestVirtualNetworkClient_ListCrossConnectLocations(t *testing.T) {
-	t.Skip("Not implemented")
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.ListCrossConnectLocationsRequest{}
+	request.CompartmentId = common.String(getCompartmentID())
 	r, err := c.ListCrossConnectLocations(context.Background(), request)
+	failIfError(t, err)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
 	return
 }
 
@@ -580,13 +573,8 @@ func TestVirtualNetworkClient_ListCrossConnects(t *testing.T) {
 }
 
 func TestVirtualNetworkClient_ListCrossconnectPortSpeedShapes(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.ListCrossconnectPortSpeedShapesRequest{}
-	r, err := c.ListCrossconnectPortSpeedShapes(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
+	shapes := listCrossConnectPortSpeedShapes(t)
+	assert.NotEmpty(t, shapes, fmt.Sprint(shapes))
 	return
 }
 
@@ -635,13 +623,8 @@ func TestVirtualNetworkClient_ListFastConnectProviderServices(t *testing.T) {
 }
 
 func TestVirtualNetworkClient_ListFastConnectProviderVirtualCircuitBandwidthShapes(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.ListFastConnectProviderVirtualCircuitBandwidthShapesRequest{}
-	r, err := c.ListFastConnectProviderVirtualCircuitBandwidthShapes(context.Background(), request)
+	r := listFastConnectProviderVirtualCircuitBandwidthShapes(t)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
 	return
 }
 
@@ -723,24 +706,18 @@ func TestVirtualNetworkClient_ListVcns(t *testing.T) {
 }
 
 func TestVirtualNetworkClient_ListVirtualCircuitBandwidthShapes(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.ListVirtualCircuitBandwidthShapesRequest{}
-	r, err := c.ListVirtualCircuitBandwidthShapes(context.Background(), request)
+	r := listVirtualCircuitBandwidthShapes(t)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
 	return
 }
 
 func TestVirtualNetworkClient_ListVirtualCircuits(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.ListVirtualCircuitsRequest{}
-	r, err := c.ListVirtualCircuits(context.Background(), request)
+	t.Skip("Service return 500, service api bug")
+	// make sure the list operation at least return one item
+	createOrGetVirtualCircuit(t)
+	r := listVirtualCircuits(t)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
+	assert.NotEqual(t, len(r), 0)
 	return
 }
 
@@ -906,5 +883,23 @@ func TestVirtualNetworkClient_UpdateVnic(t *testing.T) {
 	r, err := c.UpdateVnic(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
+	return
+}
+
+func TestVirtualNetworkClient_GetLocalPeeringGateway(t *testing.T) {
+	t.Skip("Not in current version of service spec, update later")
+	/*createOrGetSubnet(t)
+	gateway := createOrGetLocalPeeringGateway(t)
+	assert.NotEmpty(t, gateway)
+
+	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+	request := core.GetLocalPeeringGatewayRequest{
+		LocalPeeringGatewayId: gateway.Id,
+	}
+
+	r, err := c.GetLocalPeeringGateway(context.Background(), request)
+	assert.NotEmpty(t, r, fmt.Sprint(r))
+	assert.NoError(t, err)*/
 	return
 }

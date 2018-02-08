@@ -19,14 +19,14 @@ type UpdateVirtualCircuitDetails struct {
 	// available bandwidth levels (that is, shapes), see
 	// ListFastConnectProviderVirtualCircuitBandwidthShapes.
 	// To be updated only by the customer who owns the virtual circuit.
-	BandwidthShapeName *string `mandatory:"false" json:"bandwidthShapeName,omitempty"`
+	BandwidthShapeName *string `mandatory:"false" json:"bandwidthShapeName"`
 
 	// An array of mappings, each containing properties for a cross-connect or
 	// cross-connect group associated with this virtual circuit.
 	// The customer and provider can update different properties in the mapping
 	// depending on the situation. See the description of the
 	// CrossConnectMapping.
-	CrossConnectMappings []CrossConnectMapping `mandatory:"false" json:"crossConnectMappings,omitempty"`
+	CrossConnectMappings []CrossConnectMapping `mandatory:"false" json:"crossConnectMappings"`
 
 	// The BGP ASN of the network at the other end of the BGP
 	// session from Oracle.
@@ -36,17 +36,17 @@ type UpdateVirtualCircuitDetails struct {
 	// If the BGP session is from the provider's edge router to Oracle, the
 	// required value is the provider's ASN, and it can be updated only
 	// by the provider.
-	CustomerBgpAsn *int `mandatory:"false" json:"customerBgpAsn,omitempty"`
+	CustomerBgpAsn *int `mandatory:"false" json:"customerBgpAsn"`
 
 	// A user-friendly name. Does not have to be unique.
 	// Avoid entering confidential information.
 	// To be updated only by the customer who owns the virtual circuit.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The OCID of the Drg
 	// that this private virtual circuit uses.
 	// To be updated only by the customer who owns the virtual circuit.
-	GatewayId *string `mandatory:"false" json:"gatewayId,omitempty"`
+	GatewayId *string `mandatory:"false" json:"gatewayId"`
 
 	// The provider's state in relation to this virtual circuit. Relevant only
 	// if the customer is using FastConnect via a provider.  ACTIVE
@@ -59,7 +59,7 @@ type UpdateVirtualCircuitDetails struct {
 	// Provider-supplied reference information about this virtual circuit.
 	// Relevant only if the customer is using FastConnect via a provider.
 	// To be updated only by the provider.
-	ReferenceComment *string `mandatory:"false" json:"referenceComment,omitempty"`
+	ReferenceComment *string `mandatory:"false" json:"referenceComment"`
 }
 
 func (m UpdateVirtualCircuitDetails) String() string {

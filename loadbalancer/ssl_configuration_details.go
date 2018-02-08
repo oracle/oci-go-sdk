@@ -19,15 +19,15 @@ type SslConfigurationDetails struct {
 	// Valid certificate bundle names include only alphanumeric characters, dashes, and underscores.
 	// Certificate bundle names cannot contain spaces. Avoid entering confidential information.
 	// Example: `My_certificate_bundle`
-	CertificateName *string `mandatory:"true" json:"certificateName,omitempty"`
+	CertificateName *string `mandatory:"true" json:"certificateName"`
 
 	// The maximum depth for peer certificate chain verification.
 	// Example: `3`
-	VerifyDepth *int `mandatory:"false" json:"verifyDepth,omitempty"`
+	VerifyDepth *int `mandatory:"false" json:"verifyDepth"`
 
 	// Whether the load balancer listener should verify peer certificates.
 	// Example: `true`
-	VerifyPeerCertificate *bool `mandatory:"false" json:"verifyPeerCertificate,omitempty"`
+	VerifyPeerCertificate *bool `mandatory:"false" json:"verifyPeerCertificate"`
 }
 
 func (m SslConfigurationDetails) String() string {

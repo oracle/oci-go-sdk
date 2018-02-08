@@ -17,11 +17,11 @@ type CreatePrivateIpDetails struct {
 
 	// The OCID of the VNIC to assign the private IP to. The VNIC and private IP
 	// must be in the same subnet.
-	VnicId *string `mandatory:"true" json:"vnicId,omitempty"`
+	VnicId *string `mandatory:"true" json:"vnicId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid
 	// entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The hostname for the private IP. Used for DNS. The value
 	// is the hostname portion of the private IP's fully qualified domain name (FQDN)
@@ -32,13 +32,13 @@ type CreatePrivateIpDetails struct {
 	// For more information, see
 	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// Example: `bminstance-1`
-	HostnameLabel *string `mandatory:"false" json:"hostnameLabel,omitempty"`
+	HostnameLabel *string `mandatory:"false" json:"hostnameLabel"`
 
 	// A private IP address of your choice. Must be an available IP address within
 	// the subnet's CIDR. If you don't specify a value, Oracle automatically
 	// assigns a private IP address from the subnet.
 	// Example: `10.0.3.3`
-	IpAddress *string `mandatory:"false" json:"ipAddress,omitempty"`
+	IpAddress *string `mandatory:"false" json:"ipAddress"`
 }
 
 func (m CreatePrivateIpDetails) String() string {

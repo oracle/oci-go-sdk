@@ -17,7 +17,7 @@ type UpdateVolumeBackupDetails struct {
 
 	// A friendly user-specified name for the volume backup.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m UpdateVolumeBackupDetails) String() string {

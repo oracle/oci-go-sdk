@@ -18,13 +18,13 @@ import (
 type FaultDomain struct {
 
 	// The name of the Fault Domain.
-	Name *string `mandatory:"false" json:"name,omitempty"`
+	Name *string `mandatory:"false" json:"name"`
 
 	// The OCID of the of the compartment. Currently only tenancy (root) compartment can be provided.
-	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// The name of the availabilityDomain where the Fault Domain belongs.
-	AvailabilityDomain *string `mandatory:"false" json:"availabilityDomain,omitempty"`
+	AvailabilityDomain *string `mandatory:"false" json:"availabilityDomain"`
 }
 
 func (m FaultDomain) String() string {

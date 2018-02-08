@@ -18,6 +18,7 @@ import (
 //DatabaseClient a client for Database
 type DatabaseClient struct {
 	common.BaseClient
+	config *common.ConfigurationProvider
 }
 
 // NewDatabaseClientWithConfigurationProvider Creates a new default Database client with the given configuration provider.
@@ -29,14 +30,34 @@ func NewDatabaseClientWithConfigurationProvider(configProvider common.Configurat
 	}
 
 	client = DatabaseClient{BaseClient: baseClient}
-	region, err := configProvider.Region()
-	if err != nil {
-		return
+	client.BasePath = "20160918"
+	err = client.setConfigurationProvider(configProvider)
+	return
+}
+
+// SetRegion overrides the region of this client.
+func (client *DatabaseClient) SetRegion(region common.Region) {
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "database", string(region))
+}
+
+// SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
+func (client *DatabaseClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
+	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
+		return err
 	}
 
+	region, err := configProvider.Region()
+	if err != nil {
+		return err
+	}
+	client.config = &configProvider
 	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "database", string(region))
-	client.BasePath = "20160918"
-	return
+	return nil
+}
+
+// ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
+func (client *DatabaseClient) ConfigurationProvider() *common.ConfigurationProvider {
+	return client.config
 }
 
 // CreateBackup Creates a new backup in the specified database based on the request parameters you provide. If you previously used RMAN or dbcli to configure backups and then you switch to using the Console or the API for backups, a new backup configuration is created and associated with your database. This means that you can no longer rely on your previously configured unmanaged backups to work.
@@ -127,24 +148,38 @@ func (client DatabaseClient) DbNodeAction(ctx context.Context, request DbNodeAct
 }
 
 // DeleteBackup Deletes a full backup. You cannot delete automatic backups using this API.
-func (client DatabaseClient) DeleteBackup(ctx context.Context, request DeleteBackupRequest) (err error) {
+func (client DatabaseClient) DeleteBackup(ctx context.Context, request DeleteBackupRequest) (response DeleteBackupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/backups/{backupId}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
 // DeleteDbHome Deletes a DB Home. The DB Home and its database data are local to the DB System and will be lost when it is deleted. Oracle recommends that you back up any data in the DB System prior to deleting it.
-func (client DatabaseClient) DeleteDbHome(ctx context.Context, request DeleteDbHomeRequest) (err error) {
+func (client DatabaseClient) DeleteDbHome(ctx context.Context, request DeleteDbHomeRequest) (response DeleteDbHomeResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/dbHomes/{dbHomeId}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 
@@ -648,13 +683,20 @@ func (client DatabaseClient) SwitchoverDataGuardAssociation(ctx context.Context,
 }
 
 // TerminateDbSystem Terminates a DB System and permanently deletes it and any databases running on it, and any storage volumes attached to it. The database data is local to the DB System and will be lost when the system is terminated. Oracle recommends that you back up any data in the DB System prior to terminating it.
-func (client DatabaseClient) TerminateDbSystem(ctx context.Context, request TerminateDbSystemRequest) (err error) {
+func (client DatabaseClient) TerminateDbSystem(ctx context.Context, request TerminateDbSystemRequest) (response TerminateDbSystemResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/dbSystems/{dbSystemId}", request)
 	if err != nil {
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
 	return
 }
 

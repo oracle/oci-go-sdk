@@ -16,25 +16,25 @@ import (
 type CreateLoadBalancerDetails struct {
 
 	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the compartment in which to create the load balancer.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name. It does not have to be unique, and it is changeable.
 	// Avoid entering confidential information.
 	// Example: `My load balancer`
-	DisplayName *string `mandatory:"true" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// A template that determines the total pre-provisioned bandwidth (ingress plus egress).
 	// To get a list of available shapes, use the ListShapes
 	// operation.
 	// Example: `100Mbps`
-	ShapeName *string `mandatory:"true" json:"shapeName,omitempty"`
+	ShapeName *string `mandatory:"true" json:"shapeName"`
 
 	// An array of subnet [OCIDs]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
-	SubnetIds []string `mandatory:"true" json:"subnetIds,omitempty"`
+	SubnetIds []string `mandatory:"true" json:"subnetIds"`
 
-	BackendSets map[string]BackendSetDetails `mandatory:"false" json:"backendSets,omitempty"`
+	BackendSets map[string]BackendSetDetails `mandatory:"false" json:"backendSets"`
 
-	Certificates map[string]CertificateDetails `mandatory:"false" json:"certificates,omitempty"`
+	Certificates map[string]CertificateDetails `mandatory:"false" json:"certificates"`
 
 	// Whether the load balancer has a VCN-local (private) IP address.
 	// If "true", the service assigns a private IP address to the load balancer. The load balancer requires only one subnet
@@ -47,9 +47,9 @@ type CreateLoadBalancerDetails struct {
 	// hosts the secondary (standby) load balancer. A public load balancer is accessible from the internet, depending on your
 	// VCN's [security list rules]({{DOC_SERVER_URL}}/Content/Network/Concepts/securitylists.htm).
 	// Example: `false`
-	IsPrivate *bool `mandatory:"false" json:"isPrivate,omitempty"`
+	IsPrivate *bool `mandatory:"false" json:"isPrivate"`
 
-	Listeners map[string]ListenerDetails `mandatory:"false" json:"listeners,omitempty"`
+	Listeners map[string]ListenerDetails `mandatory:"false" json:"listeners"`
 }
 
 func (m CreateLoadBalancerDetails) String() string {

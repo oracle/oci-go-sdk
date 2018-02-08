@@ -18,11 +18,11 @@ type TcpOptions struct {
 
 	// An inclusive range of allowed destination ports. Use the same number for the min and max
 	// to indicate a single port. Defaults to all ports if not specified.
-	DestinationPortRange *PortRange `mandatory:"false" json:"destinationPortRange,omitempty"`
+	DestinationPortRange *PortRange `mandatory:"false" json:"destinationPortRange"`
 
 	// An inclusive range of allowed source ports. Use the same number for the min and max to
 	// indicate a single port. Defaults to all ports if not specified.
-	SourcePortRange *PortRange `mandatory:"false" json:"sourcePortRange,omitempty"`
+	SourcePortRange *PortRange `mandatory:"false" json:"sourcePortRange"`
 }
 
 func (m TcpOptions) String() string {

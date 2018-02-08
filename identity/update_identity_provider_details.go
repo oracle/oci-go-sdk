@@ -23,7 +23,7 @@ type UpdateIdentityProviderDetails interface {
 
 type updateidentityproviderdetails struct {
 	JsonData    []byte
-	Description *string `mandatory:"false" json:"description,omitempty"`
+	Description *string `mandatory:"false" json:"description"`
 	Protocol    string  `json:"protocol"`
 }
 

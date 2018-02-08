@@ -22,10 +22,10 @@ import (
 type IcmpOptions struct {
 
 	// The ICMP type.
-	Type *int `mandatory:"true" json:"type,omitempty"`
+	Type *int `mandatory:"true" json:"type"`
 
 	// The ICMP code (optional).
-	Code *int `mandatory:"false" json:"code,omitempty"`
+	Code *int `mandatory:"false" json:"code"`
 }
 
 func (m IcmpOptions) String() string {

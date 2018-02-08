@@ -21,28 +21,28 @@ import (
 type InternetGateway struct {
 
 	// The OCID of the compartment containing the Internet Gateway.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The Internet Gateway's Oracle ID (OCID).
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The Internet Gateway's current state.
-	LifecycleState InternetGatewayLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState InternetGatewayLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The OCID of the VCN the Internet Gateway belongs to.
-	VcnId *string `mandatory:"true" json:"vcnId,omitempty"`
+	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// Whether the gateway is enabled. When the gateway is disabled, traffic is not
 	// routed to/from the Internet, regardless of route rules.
-	IsEnabled *bool `mandatory:"false" json:"isEnabled,omitempty"`
+	IsEnabled *bool `mandatory:"false" json:"isEnabled"`
 
 	// The date and time the Internet Gateway was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m InternetGateway) String() string {

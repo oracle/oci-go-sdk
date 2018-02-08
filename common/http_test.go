@@ -4,21 +4,25 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
+	"reflect"
 	"strconv"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Test data structures, avoid import cycle
 type TestupdateUserDetails struct {
-	Description string `mandatory:"false" json:"description,omitempty"`
+	Description string  `mandatory:"false" json:"description,omitempty"`
+	Name        *string `mandatory:"false" json:"name"`
+	SomeNumbers []int   `mandatory:"false" json:"numbers"`
 }
 
 type listCompartmentsRequest struct {
@@ -34,12 +38,12 @@ type updateUserRequest struct {
 }
 
 type TestcreateAPIKeyDetails struct {
-	Key string `mandatory:"true" json:"key,omitempty"`
+	Key string `mandatory:"true" json:"key"`
 }
 
 type TestcreateAPIKeyDetailsPtr struct {
-	Key     *string  `mandatory:"true" json:"key,omitempty"`
-	TheTime *SDKTime `mandatory:"true" json:"theTime,omitempty"`
+	Key     *string  `mandatory:"true" json:"key"`
+	TheTime *SDKTime `mandatory:"true" json:"theTime"`
 }
 
 type uploadAPIKeyRequest struct {
@@ -95,16 +99,22 @@ func TestHttpMarshallerSimpleStruct(t *testing.T) {
 
 func TestHttpMarshallerSimpleBody(t *testing.T) {
 	desc := "theDescription"
-	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", TestupdateUserDetails: TestupdateUserDetails{Description: desc}}
+	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", TestupdateUserDetails: TestupdateUserDetails{
+		Description: desc, SomeNumbers: []int{}}}
 	request := MakeDefaultHTTPRequest(http.MethodPost, "/random")
 	HTTPRequestMarshaller(s, &request)
 	body, _ := ioutil.ReadAll(request.Body)
 	var content map[string]string
 	json.Unmarshal(body, &content)
 	assert.Contains(t, content, "description")
+	assert.Contains(t, content, "numbers")
+	assert.NotContains(t, content, "name")
+	assert.Equal(t, "", content["numbers"])
+
 	if val, ok := content["description"]; !ok || val != desc {
 		assert.Fail(t, "Should contain: "+desc)
 	}
+
 }
 
 func TestHttpMarshalerAll(t *testing.T) {
@@ -472,6 +482,28 @@ func TestUnmarshalResponse_BodyAndHeader(t *testing.T) {
 	assert.Equal(t, "RegionFRA", s.Key)
 }
 
+func TestUnmarshalResponse_PlainTextBody(t *testing.T) {
+	sampleResponse := `some data not in json
+
+isn\u0027t
+some more data
+and..$#04""234:: " 世界, 你好好好,  é,
+ B=µH *`
+	header := http.Header{}
+	opcID := "111"
+	header.Set("OpcrequestId", opcID)
+	s := struct {
+		Data *string `presentIn:"body" encoding:"plain-text"`
+	}{}
+	r := http.Response{Header: header}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.Equal(t, sampleResponse, *(s.Data))
+	assert.NotContains(t, sampleResponse, "isn't")
+}
+
 func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {
 	header := http.Header{}
 	opcID := "111"
@@ -551,7 +583,7 @@ func TestMarshalWithHeaderCollections(t *testing.T) {
 	request, err := MakeDefaultHTTPRequestWithTaggedStruct("GET", "/", s)
 	assert.NoError(t, err)
 	assert.Equal(t, s.Meta["key1"], request.Header.Get("meta-prefix-key1"))
-	assert.Equal(t, s.Meta["key2"], request.Header.Get("meta-prefix-key2"))
+	assert.Equal(t, s.Meta["key2"], request.Header.Get("Meta-prefix-key2"))
 }
 
 func TestMarshalWithHeaderCollections_BadCollectionType(t *testing.T) {
@@ -577,8 +609,8 @@ func TestUnMarshalWithHeaderCollections(t *testing.T) {
 	r := http.Response{Header: header}
 	err := UnmarshalResponse(&r, &s)
 	assert.NoError(t, err)
-	assert.Equal(t, s.Meta["key1"], r.Header.Get("val1"))
-	assert.Equal(t, s.Meta["key2"], r.Header.Get("val2"))
+	assert.Equal(t, s.Meta["key1"], r.Header.Get("Meta-Prefix-Key1"))
+	assert.Equal(t, s.Meta["key2"], r.Header.Get("Meta-Prefix-Key2"))
 }
 
 type responseWithEmptyQP struct {
@@ -594,5 +626,253 @@ func TestEmptyQueryParam(t *testing.T) {
 	assert.Contains(t, r.URL.RawQuery, "qp2")
 	assert.Contains(t, r.URL.RawQuery, "qp")
 	assert.NotContains(t, r.URL.RawQuery, "meta")
+}
 
+func TestOmitFieldsInJson_SimpleStruct(t *testing.T) {
+	type Nested struct {
+		N   *string `mandatory:"false" json:"n"`
+		NN  *string `mandatory:"false" json:"nn"`
+		NNN string  `json:"nnn"`
+	}
+	val := ""
+	s := Nested{NN: &val}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"nn":"","nnn":""}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithSlice(t *testing.T) {
+	type Nested struct {
+		N            *string `mandatory:"false" json:"n"`
+		NN           *string `mandatory:"false" json:"nn"`
+		NNN          string  `json:"nnn"`
+		Numbers      []int   `mandatory:"false" json:"numbers"`
+		EmptyNumbers []int   `mandatory:"false" json:"enumbers"`
+		NilNumbers   []int   `mandatory:"false" json:"nilnumbers"`
+	}
+	val := ""
+	numbers := []int{1, 3}
+	s := Nested{NN: &val, Numbers: numbers, EmptyNumbers: []int{}}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NotContains(t, "nilnumbers", mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"enumbers":[],"nn":"","nnn":"","numbers":[1,3]}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithStruct(t *testing.T) {
+	type InSstruct struct {
+		AString      *string `mandatory:"false" json:"a"`
+		ANilString   *string `mandatory:"false" json:"anil"`
+		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
+	}
+
+	type Nested struct {
+		N        *string   `mandatory:"false" json:"n"`
+		Numbers  []int     `mandatory:"false" json:"numbers"`
+		ZComplex InSstruct `mandatory:"false" json:"complex"`
+	}
+	val := ""
+	numbers := []int{1, 3}
+	s := Nested{N: &val, Numbers: numbers, ZComplex: InSstruct{AString: &val, EmptyNumbers: []int{}}}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NotContains(t, "nilnumbers", mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"complex":{"a":"","aempty":[]},"n":"","numbers":[1,3]}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithStructPtr(t *testing.T) {
+	type InSstruct struct {
+		AString      *string `mandatory:"false" json:"a"`
+		ANilString   *string `mandatory:"false" json:"anil"`
+		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
+	}
+
+	type Nested struct {
+		N        *string    `mandatory:"false" json:"n"`
+		Numbers  []int      `mandatory:"false" json:"numbers"`
+		ZComplex *InSstruct `mandatory:"false" json:"complex"`
+	}
+	val := ""
+	numbers := []int{1, 3}
+	s := Nested{N: &val, Numbers: numbers, ZComplex: &InSstruct{AString: &val, EmptyNumbers: []int{}}}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NotContains(t, "nilnumbers", mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"complex":{"a":"","aempty":[]},"n":"","numbers":[1,3]}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithSliceStruct(t *testing.T) {
+	type InSstruct struct {
+		AString      *string `mandatory:"false" json:"a"`
+		ANilString   *string `mandatory:"false" json:"anil"`
+		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
+	}
+
+	type Nested struct {
+		//N *string `mandatory:"false" json:"n"`
+		//Numbers []int `mandatory:"false" json:"numbers"`
+		ZComplex []InSstruct `mandatory:"false" json:"complex"`
+	}
+	val := ""
+	//numbers := []int{1, 3}
+	//s := Nested{N:&val, Numbers: numbers, ZComplex:InSstruct{AString:&val, EmptyNumbers:[]int{}}}
+	s := Nested{ZComplex: []InSstruct{{AString: &val, EmptyNumbers: []int{}}}}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NotContains(t, "nilnumbers", mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"complex":[{"a":"","aempty":[]}]}`, string(jsonRet))
+}
+
+func TestOmitEmptyEnumInJson_SimpleStructWithEnum(t *testing.T) {
+	type TestEnum string
+
+	const (
+		TestEnumActive  TestEnum = "ACTIVE"
+		TestEnumUnknown TestEnum = "UNKNOWN"
+	)
+	type TestStruct struct {
+		MandatoryEnum TestEnum `mandatory:"true" json:"mandatoryenum"`
+		OptionalEnum  TestEnum `mandatory:"false" json:"optionalenum,omitempty"`
+		TestString    *string  `mandatory:"false" json:"teststring"`
+	}
+
+	type TestStruct2 struct {
+		MandatoryEnum TestEnum `mandatory:"true" json:"mandatoryenum,omitempty"`
+		OptionalEnum  TestEnum `mandatory:"false" json:"optionalenum"`
+		TestString    *string  `mandatory:"false" json:"teststring"`
+	}
+
+	var enumTests = []struct {
+		in  interface{} // input
+		out string      // expected result
+	}{
+		{
+			TestStruct{MandatoryEnum: TestEnumActive, TestString: String("teststring")},
+			`{"mandatoryenum":"ACTIVE","teststring":"teststring"}`,
+		},
+		{
+			TestStruct2{MandatoryEnum: TestEnumActive, TestString: String("teststring")},
+			`{"mandatoryenum":"ACTIVE","optionalenum":"","teststring":"teststring"}`,
+		},
+	}
+
+	for _, tt := range enumTests {
+		b, err := json.Marshal(tt.in)
+		assert.NoError(t, err)
+		assert.Equal(t, tt.out, string(b))
+	}
+}
+
+func TestOmitFieldsInJson_SimpleStructWithMapStruct(t *testing.T) {
+	type InSstruct struct {
+		AString      *string `mandatory:"false" json:"a"`
+		ANilString   *string `mandatory:"false" json:"anil"`
+		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
+	}
+
+	type Nested struct {
+		//N *string `mandatory:"false" json:"n"`
+		//Numbers []int `mandatory:"false" json:"numbers"`
+		ZComplex map[string]InSstruct `mandatory:"false" json:"complex"`
+	}
+	val := ""
+	val2 := "two"
+	//numbers := []int{1, 3}
+	//s := Nested{N:&val, Numbers: numbers, ZComplex:InSstruct{AString:&val, EmptyNumbers:[]int{}}}
+	data := make(map[string]InSstruct)
+	data["one"] = InSstruct{AString: &val, EmptyNumbers: []int{}}
+	data["two"] = InSstruct{AString: &val2, EmptyNumbers: []int{1}}
+	data["ten"] = InSstruct{AString: &val2}
+
+	s := Nested{ZComplex: data}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	jsonRet, err := json.Marshal(mapRet)
+	assert.NotContains(t, "nilnumbers", mapRet)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"complex":{"one":{"a":"","aempty":[]},"ten":{"a":"two"},"two":{"a":"two","aempty":[1]}}}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_removeFields(t *testing.T) {
+	type InSstruct struct {
+		AString      *string `mandatory:"false" json:"a"`
+		ANilString   *string `mandatory:"false" json:"anil"`
+		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
+	}
+	type Nested struct {
+		N *string `mandatory:"false" json:"n"`
+		//Numbers []int `mandatory:"false" json:"numbers"`
+		ZComplex map[string]InSstruct `mandatory:"false" json:"complex"`
+	}
+	val := ""
+	val2 := "two"
+	//numbers := []int{1, 3}
+	//s := Nested{N:&val, Numbers: numbers, ZComplex:InSstruct{AString:&val, EmptyNumbers:[]int{}}}
+	data := make(map[string]InSstruct)
+	data["one"] = InSstruct{AString: &val, EmptyNumbers: []int{}}
+	data["two"] = InSstruct{AString: &val2, EmptyNumbers: []int{1}}
+	data["ten"] = InSstruct{AString: &val2}
+
+	s := Nested{ZComplex: data}
+	jsonIn, _ := json.Marshal(s)
+	sVal := reflect.ValueOf(s)
+	jsonRet, err := removeNilFieldsInJSONWithTaggedStruct(jsonIn, sVal)
+	assert.NoError(t, err)
+	assert.Equal(t, `{"complex":{"one":{"a":"","aempty":[]},"ten":{"a":"two"},"two":{"a":"two","aempty":[1]}}}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithTime(t *testing.T) {
+	type Nested struct {
+		N       *string  `mandatory:"false" json:"n"`
+		TheTime *SDKTime `mandatory:"true" json:"theTime"`
+		NilTime *SDKTime `mandatory:"false" json:"nilTime"`
+	}
+	val := ""
+	now := SDKTime{time.Now()}
+	s := Nested{N: &val, TheTime: &now}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	theTime := m["theTime"]
+	mapRet, err := omitNilFieldsInJSON(m, sVal)
+	assert.NoError(t, err)
+	assert.NotContains(t, mapRet, "nilTime")
+	assert.Contains(t, mapRet, "n")
+	assert.Contains(t, mapRet, "theTime")
+	assert.Equal(t, theTime, mapRet.(map[string]interface{})["theTime"])
 }

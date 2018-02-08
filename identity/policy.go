@@ -25,36 +25,36 @@ import (
 type Policy struct {
 
 	// The OCID of the policy.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID of the compartment containing the policy (either the tenancy or another compartment).
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The name you assign to the policy during creation. The name must be unique across all policies
 	// in the tenancy and cannot be changed.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 
 	// An array of one or more policy statements written in the policy language.
-	Statements []string `mandatory:"true" json:"statements,omitempty"`
+	Statements []string `mandatory:"true" json:"statements"`
 
 	// The description you assign to the policy. Does not have to be unique, and it's changeable.
-	Description *string `mandatory:"true" json:"description,omitempty"`
+	Description *string `mandatory:"true" json:"description"`
 
 	// Date and time the policy was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The policy's current state. After creating a policy, make sure its `lifecycleState` changes from CREATING to
 	// ACTIVE before using it.
-	LifecycleState PolicyLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState PolicyLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
 
 	// The version of the policy. If null or set to an empty string, when a request comes in for authorization, the
 	// policy will be evaluated according to the current behavior of the services at that moment. If set to a particular
 	// date (YYYY-MM-DD), the policy will be evaluated according to the behavior of the services on that date.
-	VersionDate *common.SDKTime `mandatory:"false" json:"versionDate,omitempty"`
+	VersionDate *common.SDKTime `mandatory:"false" json:"versionDate"`
 }
 
 func (m Policy) String() string {

@@ -17,10 +17,10 @@ type UpdateInternetGatewayDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// Whether the gateway is enabled.
-	IsEnabled *bool `mandatory:"false" json:"isEnabled,omitempty"`
+	IsEnabled *bool `mandatory:"false" json:"isEnabled"`
 }
 
 func (m UpdateInternetGatewayDetails) String() string {

@@ -16,7 +16,7 @@ import (
 type LoadBalancerProtocol struct {
 
 	// The name of the protocol.
-	Name *string `mandatory:"true" json:"name,omitempty"`
+	Name *string `mandatory:"true" json:"name"`
 }
 
 func (m LoadBalancerProtocol) String() string {

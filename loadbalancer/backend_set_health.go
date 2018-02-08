@@ -20,7 +20,7 @@ type BackendSetHealth struct {
 	// A list of backend servers that are currently in the `CRITICAL` health state. The list identifies each backend server by
 	// IP address and port.
 	// Example: `1.1.1.1:80`
-	CriticalStateBackendNames []string `mandatory:"true" json:"criticalStateBackendNames,omitempty"`
+	CriticalStateBackendNames []string `mandatory:"true" json:"criticalStateBackendNames"`
 
 	// Overall health status of the backend set.
 	// *  **OK:** All backend servers in the backend set return a status of `OK`.
@@ -29,21 +29,21 @@ type BackendSetHealth struct {
 	// *  **CRITICAL:** Fewer than half of the backend set's backend servers return a status of `OK`.
 	// *  **UNKNOWN:** More than half of the backend set's backend servers return a status of `UNKNOWN`, the system was
 	// unable to retrieve metrics, or the backend set does not have a listener attached.
-	Status BackendSetHealthStatusEnum `mandatory:"true" json:"status,omitempty"`
+	Status BackendSetHealthStatusEnum `mandatory:"true" json:"status"`
 
 	// The total number of backend servers in this backend set.
 	// Example: `5`
-	TotalBackendCount *int `mandatory:"true" json:"totalBackendCount,omitempty"`
+	TotalBackendCount *int `mandatory:"true" json:"totalBackendCount"`
 
 	// A list of backend servers that are currently in the `UNKNOWN` health state. The list identifies each backend server by
 	// IP address and port.
 	// Example: `1.1.1.5:80`
-	UnknownStateBackendNames []string `mandatory:"true" json:"unknownStateBackendNames,omitempty"`
+	UnknownStateBackendNames []string `mandatory:"true" json:"unknownStateBackendNames"`
 
 	// A list of backend servers that are currently in the `WARNING` health state. The list identifies each backend server by
 	// IP address and port.
 	// Example: `1.1.1.7:42`
-	WarningStateBackendNames []string `mandatory:"true" json:"warningStateBackendNames,omitempty"`
+	WarningStateBackendNames []string `mandatory:"true" json:"warningStateBackendNames"`
 }
 
 func (m BackendSetHealth) String() string {

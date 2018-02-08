@@ -26,21 +26,21 @@ import (
 type CrossConnectGroup struct {
 
 	// The OCID of the compartment containing the cross-connect group.
-	CompartmentId *string `mandatory:"false" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// The display name of A user-friendly name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// The cross-connect group's Oracle ID (OCID).
-	Id *string `mandatory:"false" json:"id,omitempty"`
+	Id *string `mandatory:"false" json:"id"`
 
 	// The cross-connect group's current state.
 	LifecycleState CrossConnectGroupLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The date and time the cross-connect group was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 
 func (m CrossConnectGroup) String() string {

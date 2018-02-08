@@ -14,13 +14,13 @@ import (
 
 // CreateDbHomeDetails The representation of CreateDbHomeDetails
 type CreateDbHomeDetails struct {
-	Database *CreateDatabaseDetails `mandatory:"true" json:"database,omitempty"`
+	Database *CreateDatabaseDetails `mandatory:"true" json:"database"`
 
 	// A valid Oracle database version. To get a list of supported versions, use the ListDbVersions operation.
-	DbVersion *string `mandatory:"true" json:"dbVersion,omitempty"`
+	DbVersion *string `mandatory:"true" json:"dbVersion"`
 
 	// The user-provided name of the database home.
-	DisplayName *string `mandatory:"false" json:"displayName,omitempty"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 
 func (m CreateDbHomeDetails) String() string {

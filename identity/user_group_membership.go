@@ -17,27 +17,27 @@ import (
 type UserGroupMembership struct {
 
 	// The OCID of the membership.
-	Id *string `mandatory:"true" json:"id,omitempty"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID of the tenancy containing the user, group, and membership object.
-	CompartmentId *string `mandatory:"true" json:"compartmentId,omitempty"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The OCID of the group.
-	GroupId *string `mandatory:"true" json:"groupId,omitempty"`
+	GroupId *string `mandatory:"true" json:"groupId"`
 
 	// The OCID of the user.
-	UserId *string `mandatory:"true" json:"userId,omitempty"`
+	UserId *string `mandatory:"true" json:"userId"`
 
 	// Date and time the membership was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
-	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated,omitempty"`
+	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The membership's current state.  After creating a membership object, make sure its `lifecycleState` changes
 	// from CREATING to ACTIVE before using it.
-	LifecycleState UserGroupMembershipLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
+	LifecycleState UserGroupMembershipLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
 	// The detailed status of INACTIVE lifecycleState.
-	InactiveStatus *int `mandatory:"false" json:"inactiveStatus,omitempty"`
+	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
 }
 
 func (m UserGroupMembership) String() string {

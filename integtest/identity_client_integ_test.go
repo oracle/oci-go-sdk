@@ -10,12 +10,16 @@ package integtest
 import (
 	"context"
 	"fmt"
+
+	"net/http"
+	"reflect"
+	"strings"
 	"testing"
+	"time"
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
-	"time"
 )
 
 // Group operations CRUD
@@ -36,7 +40,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	defer func() {
 		//Delete
 		rDel := identity.DeleteGroupRequest{GroupId: r.Id}
-		err = c.DeleteGroup(context.Background(), rDel)
+		_, err = c.DeleteGroup(context.Background(), rDel)
 		assert.NoError(t, err)
 	}()
 
@@ -58,6 +62,27 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	resUpdate, err := c.UpdateGroup(context.Background(), rUpdate)
 	failIfError(t, err)
 	assert.NotNil(t, resUpdate.Id)
+}
+
+type fakeDispatcher struct {
+	Reg   string
+	Valid bool
+}
+
+func (f *fakeDispatcher) Do(r *http.Request) (*http.Response, error) {
+	f.Valid = strings.Contains(r.URL.Host, f.Reg)
+	return nil, fmt.Errorf("Fake dispatcher")
+}
+
+func TestIdentityClient_OverrideRegion(t *testing.T) {
+	c, _ := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c.SetRegion(common.RegionIAD)
+	f := fakeDispatcher{Reg: string(common.RegionIAD)}
+	// Avoid calling the service as we do no know if we have access to that region
+	c.HTTPClient = &f
+	rList := identity.ListGroupsRequest{CompartmentId: common.String(getTenancyID())}
+	c.ListGroups(context.Background(), rList)
+	assert.True(t, f.Valid)
 }
 
 func TestIdentityClient_ListGroups(t *testing.T) {
@@ -96,13 +121,13 @@ func TestIdentityClient_CreateCompartment(t *testing.T) {
 	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, cfgErr)
 
-	request:= identity.CreateCompartmentRequest{CreateCompartmentDetails:identity.CreateCompartmentDetails{
-		Name: common.String("Compartment_Test"),
-		Description: common.String("Go SDK Comparment Test"),
+	request := identity.CreateCompartmentRequest{CreateCompartmentDetails: identity.CreateCompartmentDetails{
+		Name:          common.String("Compartment_Test"),
+		Description:   common.String("Go SDK Comparment Test"),
 		CompartmentId: common.String(getTenancyID()),
 	}}
 
-	r, err:= c.CreateCompartment(context.Background(), request)
+	r, err := c.CreateCompartment(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
 	assert.NotEmpty(t, r.Id)
 	assert.Equal(t, request.Name, r.Name)
@@ -110,14 +135,15 @@ func TestIdentityClient_CreateCompartment(t *testing.T) {
 	return
 }
 
-
 //Comparment RU
 func TestIdentityClient_UpdateCompartment(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
+
 	//Update
 	request := identity.UpdateCompartmentRequest{UpdateCompartmentDetails: identity.UpdateCompartmentDetails{
-		Name:        common.String(GoSDK2_Test_Prefix + "UpdComp"),
+		// cannot use same name to update compartment, generate a random one via this function
+		Name:        common.String(GoSDK2_Test_Prefix + "UpdComp" + getRandomString(10)),
 		Description: common.String("GOSDK2 description2"),
 	},
 		CompartmentId: common.String(getCompartmentID()),
@@ -180,7 +206,8 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 		//remove
 		rDelete := identity.DeleteUserRequest{}
 		rDelete.UserId = resCreate.Id
-		err = c.DeleteUser(context.Background(), rDelete)
+		resDelete, err := c.DeleteUser(context.Background(), rDelete)
+		assert.NotEmpty(t, resDelete.OpcRequestId)
 		assert.NoError(t, err)
 	}()
 
@@ -224,7 +251,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	defer func() {
 		// Delete the user
 		reqUserDelete := identity.DeleteUserRequest{UserId: rspAddUser.Id}
-		delUserErr := c.DeleteUser(context.Background(), reqUserDelete)
+		_, delUserErr := c.DeleteUser(context.Background(), reqUserDelete)
 		assert.NoError(t, delUserErr)
 	}()
 
@@ -239,8 +266,9 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	defer func() {
 		// Delete the group
 		reqGroupDelete := identity.DeleteGroupRequest{GroupId: rspAddGroup.Id}
-		delGrpErr := c.DeleteGroup(context.Background(), reqGroupDelete)
+		delRes, delGrpErr := c.DeleteGroup(context.Background(), reqGroupDelete)
 		assert.NoError(t, delGrpErr)
+		assert.NotEmpty(t, delRes.OpcRequestId)
 	}()
 
 	//add
@@ -254,7 +282,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 	defer func() {
 		//remove
 		requestRemove := identity.RemoveUserFromGroupRequest{UserGroupMembershipId: rspAdd.UserGroupMembership.Id}
-		err = c.RemoveUserFromGroup(context.Background(), requestRemove)
+		_, err = c.RemoveUserFromGroup(context.Background(), requestRemove)
 		failIfError(t, err)
 	}()
 
@@ -429,9 +457,10 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 
 	defer func() {
 		// Delete
-		request := identity.DeletePolicyRequest{PolicyId:createResponse.Id}
-		err = client.DeletePolicy(context.Background(), request)
+		request := identity.DeletePolicyRequest{PolicyId: createResponse.Id}
+		delRes, err := client.DeletePolicy(context.Background(), request)
 		assert.NoError(t, err)
+		assert.NotEmpty(t, delRes.OpcRequestId)
 	}()
 
 	//Read
@@ -479,7 +508,6 @@ func TestIdentityClient_ListPolicies(t *testing.T) {
 	return
 }
 
-
 //SecretKey operations
 func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
@@ -497,8 +525,9 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 		rDelete := identity.DeleteCustomerSecretKeyRequest{}
 		rDelete.CustomerSecretKeyId = resCreate.Id
 		rDelete.UserId = common.String(getUserID())
-		err = c.DeleteCustomerSecretKey(context.Background(), rDelete)
+		delRes, err := c.DeleteCustomerSecretKey(context.Background(), rDelete)
 		failIfError(t, err)
+		assert.NotEmpty(t, delRes.OpcRequestId)
 	}()
 
 	// validate user membership lifecycle state enum value after create
@@ -546,7 +575,7 @@ func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 		rDelete := identity.DeleteApiKeyRequest{}
 		rDelete.Fingerprint = resCreate.Fingerprint
 		rDelete.UserId = common.String(userId)
-		err = c.DeleteApiKey(context.Background(), rDelete)
+		_, err := c.DeleteApiKey(context.Background(), rDelete)
 		ser, ok = common.IsServiceError(err)
 		assert.False(t, ok)
 		assert.NotEmpty(t, err.Error())
@@ -596,8 +625,9 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 		if rspCreate.GetId() != nil {
 			rDelete := identity.DeleteIdentityProviderRequest{}
 			rDelete.IdentityProviderId = rspCreate.GetId()
-			err := c.DeleteIdentityProvider(context.Background(), rDelete)
+			delRes, err := c.DeleteIdentityProvider(context.Background(), rDelete)
 			failIfError(t, err)
+			assert.NotEmpty(t, delRes.OpcRequestId)
 		}
 	}()
 
@@ -651,7 +681,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	defer func() {
 		fmt.Println("Deleting Identity Provider Group Mapping")
 		reqDelete := identity.DeleteIdpGroupMappingRequest{MappingId: rspCreateMapping.Id, IdentityProviderId: rspCreateMapping.IdpId}
-		delErr := c.DeleteIdpGroupMapping(context.Background(), reqDelete)
+		_, delErr := c.DeleteIdpGroupMapping(context.Background(), reqDelete)
 		failIfError(t, delErr)
 	}()
 
@@ -699,15 +729,58 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
+	//Create the Identity Provider Request
+	rCreate := identity.CreateIdentityProviderRequest{}
+	details := identity.CreateSaml2IdentityProviderDetails{}
+	details.CompartmentId = common.String(getTenancyID())
+	details.Name = common.String(getUniqueName("Ident_Provider_"))
+	details.Description = common.String("CRUD Test Identity Provider")
+	details.ProductType = identity.CreateIdentityProviderDetailsProductTypeIdcs
+	details.Metadata = common.String(readSampleFederationMetadata(t))
+	rCreate.CreateIdentityProviderDetails = details
+
+	//Create
+	rspCreate, createErr := c.CreateIdentityProvider(context.Background(), rCreate)
+	failIfError(t, createErr)
+	verifyResponseIsValid(t, rspCreate, createErr)
+
+	//Delete
+	deleteFn := func() {
+		if rspCreate.GetId() != nil {
+			rDelete := identity.DeleteIdentityProviderRequest{}
+			rDelete.IdentityProviderId = rspCreate.GetId()
+			_, err := c.DeleteIdentityProvider(context.Background(), rDelete)
+			failIfError(t, err)
+		}
+	}
+	defer deleteFn()
+
+	rRead := identity.GetIdentityProviderRequest{}
+	rRead.IdentityProviderId = rspCreate.GetId()
+	rspRead, readErr := c.GetIdentityProvider(context.Background(), rRead)
+	failIfError(t, readErr)
+	verifyResponseIsValid(t, rspRead, readErr)
+	assert.Equal(t, *rRead.IdentityProviderId, *rspRead.GetId())
+
+	//Listing
 	request := identity.ListIdentityProvidersRequest{}
-	request.CompartmentId = common.String(getCompartmentID())
+	request.CompartmentId = common.String(getTenancyID())
 	request.Protocol = identity.ListIdentityProvidersProtocolSaml2
 	response, err := c.ListIdentityProviders(context.Background(), request)
 	failIfError(t, err)
+	assert.NotEmpty(t, response.Items)
+	presentAndEqual := false
+	for _, val := range response.Items {
+		if *val.GetId() == *rspCreate.GetId() {
+			presentAndEqual = reflect.TypeOf(identity.Saml2IdentityProvider{}) == reflect.TypeOf(val)
+		}
+	}
+	assert.True(t, presentAndEqual)
 
 	items := response.Items
 
-	nextRequest := identity.ListIdentityProvidersRequest{CompartmentId: request.CompartmentId}
+	nextRequest := identity.ListIdentityProvidersRequest{CompartmentId: request.CompartmentId,
+		Protocol: identity.ListIdentityProvidersProtocolSaml2}
 	nextRequest.Page = response.OpcNextPage
 
 	for nextRequest.Page != nil {
@@ -827,6 +900,21 @@ func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
 	failIfError(t, err)
 	items := r.Items
 	assert.NotEmpty(t, items)
+	return
+}
+
+func TestIdentityClient_ListFaultDomains(t *testing.T) {
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+	availabilityDomain := validAD()
+	request := identity.ListFaultDomainsRequest{
+		CompartmentId:      common.String(getTenancyID()),
+		AvailabilityDomain: &availabilityDomain,
+	}
+
+	r, err := c.ListFaultDomains(context.Background(), request)
+	failIfError(t, err)
+	assert.NotEmpty(t, r.Items)
 	return
 }
 

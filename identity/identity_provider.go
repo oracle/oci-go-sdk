@@ -63,14 +63,14 @@ type IdentityProvider interface {
 
 type identityprovider struct {
 	JsonData       []byte
-	Id             *string                            `mandatory:"true" json:"id,omitempty"`
-	CompartmentId  *string                            `mandatory:"true" json:"compartmentId,omitempty"`
-	Name           *string                            `mandatory:"true" json:"name,omitempty"`
-	Description    *string                            `mandatory:"true" json:"description,omitempty"`
-	ProductType    *string                            `mandatory:"true" json:"productType,omitempty"`
-	TimeCreated    *common.SDKTime                    `mandatory:"true" json:"timeCreated,omitempty"`
-	LifecycleState IdentityProviderLifecycleStateEnum `mandatory:"true" json:"lifecycleState,omitempty"`
-	InactiveStatus *int                               `mandatory:"false" json:"inactiveStatus,omitempty"`
+	Id             *string                            `mandatory:"true" json:"id"`
+	CompartmentId  *string                            `mandatory:"true" json:"compartmentId"`
+	Name           *string                            `mandatory:"true" json:"name"`
+	Description    *string                            `mandatory:"true" json:"description"`
+	ProductType    *string                            `mandatory:"true" json:"productType"`
+	TimeCreated    *common.SDKTime                    `mandatory:"true" json:"timeCreated"`
+	LifecycleState IdentityProviderLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
+	InactiveStatus *int                               `mandatory:"false" json:"inactiveStatus"`
 	Protocol       string                             `json:"protocol"`
 }
 
