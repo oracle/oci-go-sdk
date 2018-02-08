@@ -462,7 +462,7 @@ func (c composingConfigurationProvider) Region() (string, error) {
 			return val, nil
 		}
 	}
-	return "", fmt.Errorf("did not find a proper configuration for keyFingerprint")
+	return "", fmt.Errorf("did not find a proper configuration for region")
 }
 
 func (c composingConfigurationProvider) KeyID() (string, error) {
