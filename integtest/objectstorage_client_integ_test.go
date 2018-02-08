@@ -49,18 +49,11 @@ func putObject(t *testing.T, namespace, bucketname, objectname string, contentLe
 	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	request := objectstorage.PutObjectRequest{
 		NamespaceName: &namespace,
-<<<<<<< HEAD
-		BucketName: &bucketname,
-		ObjectName: &objectname,
-		ContentLength:&contentLen,
-		PutObjectBody:content,
-		OpcMeta:metadata,
-=======
 		BucketName:    &bucketname,
 		ObjectName:    &objectname,
 		ContentLength: &contentLen,
 		PutObjectBody: content,
->>>>>>> introduce retry logic and polling in support of terraform migration
+		OpcMeta:       metadata,
 	}
 	_, err := c.PutObject(context.Background(), request)
 	return err
@@ -125,11 +118,7 @@ func TestObjectStorageClient_BigFile(t *testing.T) {
 	defer file.Close()
 	failIfError(t, e)
 
-<<<<<<< HEAD
 	e = putObject(t, namespace , bname, filename, int(filesize), file, nil)
-=======
-	e = putObject(t, namespace, bname, filename, int(filesize), file)
->>>>>>> introduce retry logic and polling in support of terraform migration
 	failIfError(t, e)
 	fmt.Println(expectedHash)
 	rGet, e := getObject(t, namespace, bname, filename)
@@ -197,13 +186,9 @@ func TestObjectStorageClient_Object(t *testing.T) {
 	file, e := os.Open(filepath)
 	defer file.Close()
 	failIfError(t, e)
-<<<<<<< HEAD
 	metadata := make(map[string]string)
 	metadata["Test-VERSION"] = "TestOne"
 	e = putObject(t, namespace , bname, filename, contentlen, file, metadata)
-=======
-	e = putObject(t, namespace, bname, filename, contentlen, file)
->>>>>>> introduce retry logic and polling in support of terraform migration
 	failIfError(t, e)
 
 	r, e := getObject(t, namespace, bname, filename)
