@@ -72,7 +72,7 @@ type DataGuardAssociationSummary struct {
 	// The redo transport type used by this Data Guard association.  For more information, see
 	// [Redo Transport Services](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400)
 	// in the Oracle Data Guard documentation.
-	TransportType DataGuardAssociationSummaryTransportTypeEnum `mandatory:"false" json:"transportType"`
+	TransportType DataGuardAssociationSummaryTransportTypeEnum `mandatory:"false" json:"transportType,omitempty"`
 }
 
 func (m DataGuardAssociationSummary) String() string {
