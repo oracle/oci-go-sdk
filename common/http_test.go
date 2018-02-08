@@ -482,6 +482,28 @@ func TestUnmarshalResponse_BodyAndHeader(t *testing.T) {
 	assert.Equal(t, "RegionFRA", s.Key)
 }
 
+func TestUnmarshalResponse_PlainTextBody(t *testing.T) {
+	sampleResponse := `some data not in json
+
+isn\u0027t
+some more data
+and..$#04""234:: " 世界, 你好好好,  é,
+ B=µH *`
+	header := http.Header{}
+	opcID := "111"
+	header.Set("OpcrequestId", opcID)
+	s := struct {
+		Data *string `presentIn:"body" encoding:"plain-text"`
+	}{}
+	r := http.Response{Header: header}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.Equal(t, sampleResponse, *(s.Data))
+	assert.NotContains(t, sampleResponse, "isn't")
+}
+
 func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {
 	header := http.Header{}
 	opcID := "111"
@@ -561,7 +583,7 @@ func TestMarshalWithHeaderCollections(t *testing.T) {
 	request, err := MakeDefaultHTTPRequestWithTaggedStruct("GET", "/", s)
 	assert.NoError(t, err)
 	assert.Equal(t, s.Meta["key1"], request.Header.Get("meta-prefix-key1"))
-	assert.Equal(t, s.Meta["key2"], request.Header.Get("meta-prefix-key2"))
+	assert.Equal(t, s.Meta["key2"], request.Header.Get("Meta-prefix-key2"))
 }
 
 func TestMarshalWithHeaderCollections_BadCollectionType(t *testing.T) {
@@ -587,8 +609,8 @@ func TestUnMarshalWithHeaderCollections(t *testing.T) {
 	r := http.Response{Header: header}
 	err := UnmarshalResponse(&r, &s)
 	assert.NoError(t, err)
-	assert.Equal(t, s.Meta["key1"], r.Header.Get("val1"))
-	assert.Equal(t, s.Meta["key2"], r.Header.Get("val2"))
+	assert.Equal(t, s.Meta["key1"], r.Header.Get("Meta-Prefix-Key1"))
+	assert.Equal(t, s.Meta["key2"], r.Header.Get("Meta-Prefix-Key2"))
 }
 
 type responseWithEmptyQP struct {
@@ -604,7 +626,6 @@ func TestEmptyQueryParam(t *testing.T) {
 	assert.Contains(t, r.URL.RawQuery, "qp2")
 	assert.Contains(t, r.URL.RawQuery, "qp")
 	assert.NotContains(t, r.URL.RawQuery, "meta")
-
 }
 
 func TestOmitFieldsInJson_SimpleStruct(t *testing.T) {
@@ -732,7 +753,7 @@ func TestOmitFieldsInJson_SimpleStructWithSliceStruct(t *testing.T) {
 	assert.Equal(t, `{"complex":[{"a":"","aempty":[]}]}`, string(jsonRet))
 }
 
-func TestOmitFieldsInJson_SimpleStructWithEnum(t *testing.T) {
+func TestOmitEmptyEnumInJson_SimpleStructWithEnum(t *testing.T) {
 	type TestEnum string
 
 	const (
@@ -741,20 +762,35 @@ func TestOmitFieldsInJson_SimpleStructWithEnum(t *testing.T) {
 	)
 	type TestStruct struct {
 		MandatoryEnum TestEnum `mandatory:"true" json:"mandatoryenum"`
+		OptionalEnum  TestEnum `mandatory:"false" json:"optionalenum,omitempty"`
+		TestString    *string  `mandatory:"false" json:"teststring"`
+	}
+
+	type TestStruct2 struct {
+		MandatoryEnum TestEnum `mandatory:"true" json:"mandatoryenum,omitempty"`
 		OptionalEnum  TestEnum `mandatory:"false" json:"optionalenum"`
 		TestString    *string  `mandatory:"false" json:"teststring"`
 	}
 
-	s := TestStruct{MandatoryEnum: TestEnumActive, TestString: String("teststring")}
-	sVal := reflect.ValueOf(s)
-	jsonIn, _ := json.Marshal(s)
-	m := make(map[string]interface{})
-	json.Unmarshal(jsonIn, &m)
-	mapRet, err := omitNilFieldsInJSON(m, sVal)
-	assert.NoError(t, err)
-	jsonRet, err := json.Marshal(mapRet)
-	assert.NoError(t, err)
-	assert.Equal(t, `{"mandatoryenum":"ACTIVE","teststring":"teststring"}`, string(jsonRet))
+	var enumTests = []struct {
+		in  interface{} // input
+		out string      // expected result
+	}{
+		{
+			TestStruct{MandatoryEnum: TestEnumActive, TestString: String("teststring")},
+			`{"mandatoryenum":"ACTIVE","teststring":"teststring"}`,
+		},
+		{
+			TestStruct2{MandatoryEnum: TestEnumActive, TestString: String("teststring")},
+			`{"mandatoryenum":"ACTIVE","optionalenum":"","teststring":"teststring"}`,
+		},
+	}
+
+	for _, tt := range enumTests {
+		b, err := json.Marshal(tt.in)
+		assert.NoError(t, err)
+		assert.Equal(t, tt.out, string(b))
+	}
 }
 
 func TestOmitFieldsInJson_SimpleStructWithMapStruct(t *testing.T) {

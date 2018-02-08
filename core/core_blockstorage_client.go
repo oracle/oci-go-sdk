@@ -35,7 +35,12 @@ func NewBlockstorageClientWithConfigurationProvider(configProvider common.Config
 	return
 }
 
-// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+// SetRegion overrides the region of this client.
+func (client *BlockstorageClient) SetRegion(region common.Region) {
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", string(region))
+}
+
+// SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
 func (client *BlockstorageClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err
