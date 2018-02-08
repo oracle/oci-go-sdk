@@ -11,10 +11,11 @@ package integtest
 import (
 	"context"
 	"fmt"
+	"testing"
+
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/loadbalancer"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestLoadBalancerClient_CreateBackend(t *testing.T) {
@@ -250,13 +251,10 @@ func TestLoadBalancerClient_ListLoadBalancerHealths(t *testing.T) {
 }
 
 func TestLoadBalancerClient_ListLoadBalancers(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := loadbalancer.ListLoadBalancersRequest{}
-	r, err := c.ListLoadBalancers(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
+	// make sure the list API will return at least one item
+	createOrGetLoadBalancer(t)
+	loadbalancers := listActiveLoadBalancers(t)
+	assert.NotEmpty(t, loadbalancers, fmt.Sprint(loadbalancers))
 	return
 }
 
@@ -329,7 +327,7 @@ func TestLoadBalancerClient_UpdateHealthChecker(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.UpdateHealthCheckerRequest{}
-	_,err := c.UpdateHealthChecker(context.Background(), request)
+	_, err := c.UpdateHealthChecker(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
@@ -349,7 +347,7 @@ func TestLoadBalancerClient_UpdateLoadBalancer(t *testing.T) {
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := loadbalancer.UpdateLoadBalancerRequest{}
-	_,err := c.UpdateLoadBalancer(context.Background(), request)
+	_, err := c.UpdateLoadBalancer(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }

@@ -10,15 +10,16 @@ package integtest
 import (
 	"context"
 	"fmt"
+
+	"net/http"
+	"reflect"
+	"strings"
 	"testing"
+	"time"
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
-	"time"
-	"reflect"
-	"net/http"
-	"strings"
 )
 
 // Group operations CRUD
@@ -64,10 +65,11 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 }
 
 type fakeDispatcher struct {
-	Reg string
+	Reg   string
 	Valid bool
 }
-func (f *fakeDispatcher) Do(r *http.Request)(*http.Response, error) {
+
+func (f *fakeDispatcher) Do(r *http.Request) (*http.Response, error) {
 	f.Valid = strings.Contains(r.URL.Host, f.Reg)
 	return nil, fmt.Errorf("Fake dispatcher")
 }
@@ -77,7 +79,7 @@ func TestIdentityClient_OverrideRegion(t *testing.T) {
 	c.SetRegion(common.RegionIAD)
 	f := fakeDispatcher{Reg: string(common.RegionIAD)}
 	// Avoid calling the service as we do no know if we have access to that region
-	c.HTTPClient =  &f
+	c.HTTPClient = &f
 	rList := identity.ListGroupsRequest{CompartmentId: common.String(getTenancyID())}
 	c.ListGroups(context.Background(), rList)
 	assert.True(t, f.Valid)
@@ -119,13 +121,13 @@ func TestIdentityClient_CreateCompartment(t *testing.T) {
 	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, cfgErr)
 
-	request:= identity.CreateCompartmentRequest{CreateCompartmentDetails:identity.CreateCompartmentDetails{
-		Name: common.String("Compartment_Test"),
-		Description: common.String("Go SDK Comparment Test"),
+	request := identity.CreateCompartmentRequest{CreateCompartmentDetails: identity.CreateCompartmentDetails{
+		Name:          common.String("Compartment_Test"),
+		Description:   common.String("Go SDK Comparment Test"),
 		CompartmentId: common.String(getTenancyID()),
 	}}
 
-	r, err:= c.CreateCompartment(context.Background(), request)
+	r, err := c.CreateCompartment(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
 	assert.NotEmpty(t, r.Id)
 	assert.Equal(t, request.Name, r.Name)
@@ -133,14 +135,15 @@ func TestIdentityClient_CreateCompartment(t *testing.T) {
 	return
 }
 
-
 //Comparment RU
 func TestIdentityClient_UpdateCompartment(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
+
 	//Update
 	request := identity.UpdateCompartmentRequest{UpdateCompartmentDetails: identity.UpdateCompartmentDetails{
-		Name:        common.String(GoSDK2_Test_Prefix + "UpdComp"),
+		// cannot use same name to update compartment, generate a random one via this function
+		Name:        common.String(GoSDK2_Test_Prefix + "UpdComp" + getRandomString(10)),
 		Description: common.String("GOSDK2 description2"),
 	},
 		CompartmentId: common.String(getCompartmentID()),
@@ -454,7 +457,7 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 
 	defer func() {
 		// Delete
-		request := identity.DeletePolicyRequest{PolicyId:createResponse.Id}
+		request := identity.DeletePolicyRequest{PolicyId: createResponse.Id}
 		delRes, err := client.DeletePolicy(context.Background(), request)
 		assert.NoError(t, err)
 		assert.NotEmpty(t, delRes.OpcRequestId)
@@ -504,7 +507,6 @@ func TestIdentityClient_ListPolicies(t *testing.T) {
 
 	return
 }
-
 
 //SecretKey operations
 func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
@@ -760,7 +762,6 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	verifyResponseIsValid(t, rspRead, readErr)
 	assert.Equal(t, *rRead.IdentityProviderId, *rspRead.GetId())
 
-
 	//Listing
 	request := identity.ListIdentityProvidersRequest{}
 	request.CompartmentId = common.String(getTenancyID())
@@ -771,7 +772,7 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	presentAndEqual := false
 	for _, val := range response.Items {
 		if *val.GetId() == *rspCreate.GetId() {
-			presentAndEqual = reflect.TypeOf(identity.Saml2IdentityProvider{}) ==  reflect.TypeOf(val)
+			presentAndEqual = reflect.TypeOf(identity.Saml2IdentityProvider{}) == reflect.TypeOf(val)
 		}
 	}
 	assert.True(t, presentAndEqual)
@@ -779,7 +780,7 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	items := response.Items
 
 	nextRequest := identity.ListIdentityProvidersRequest{CompartmentId: request.CompartmentId,
-		Protocol:identity.ListIdentityProvidersProtocolSaml2}
+		Protocol: identity.ListIdentityProvidersProtocolSaml2}
 	nextRequest.Page = response.OpcNextPage
 
 	for nextRequest.Page != nil {
@@ -899,6 +900,21 @@ func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
 	failIfError(t, err)
 	items := r.Items
 	assert.NotEmpty(t, items)
+	return
+}
+
+func TestIdentityClient_ListFaultDomains(t *testing.T) {
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+	availabilityDomain := validAD()
+	request := identity.ListFaultDomainsRequest{
+		CompartmentId:      common.String(getTenancyID()),
+		AvailabilityDomain: &availabilityDomain,
+	}
+
+	r, err := c.ListFaultDomains(context.Background(), request)
+	failIfError(t, err)
+	assert.NotEmpty(t, r.Items)
 	return
 }
 
