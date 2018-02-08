@@ -289,6 +289,28 @@ region=noregion
 	assert.NoError(t, errConf)
 
 	_, err := NewClientWithConfig(configurationProvider)
+	assert.NoError(t, err)
+}
+
+func TestBaseClient_CreateWithoutRegion(t *testing.T) {
+	dataTpl := `[DEFAULT]
+tenancy=sometenancy
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	configurationProvider, errConf := ConfigurationProviderFromFile(tmpConfFile, "")
+	assert.NoError(t, errConf)
+
+	_, err := NewClientWithConfig(configurationProvider)
 	assert.Error(t, err)
 }
 
