@@ -36,8 +36,8 @@ func NewAuditClientWithConfigurationProvider(configProvider common.Configuration
 }
 
 // SetRegion overrides the region of this client.
-func (client *AuditClient) SetRegion(region common.Region) {
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "audit", string(region))
+func (client *AuditClient) SetRegion(region string) {
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "audit", region)
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
@@ -46,12 +46,10 @@ func (client *AuditClient) setConfigurationProvider(configProvider common.Config
 		return err
 	}
 
-	region, err := configProvider.Region()
-	if err != nil {
-		return err
-	}
+	// Error has been checked already
+	region, _ := configProvider.Region()
 	client.config = &configProvider
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "audit", string(region))
+	client.SetRegion(region)
 	return nil
 }
 
