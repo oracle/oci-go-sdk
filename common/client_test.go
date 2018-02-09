@@ -190,7 +190,7 @@ func TestBaseClient_Call(t *testing.T) {
 
 }
 
-func TestBaseClient_CallWithInterceptor (t *testing.T) {
+func TestBaseClient_CallWithInterceptor(t *testing.T) {
 	response := http.Response{
 		Header:     http.Header{},
 		StatusCode: 200,
@@ -228,7 +228,6 @@ func TestBaseClient_CallWithInterceptor (t *testing.T) {
 	assert.NoError(t, err)
 
 }
-
 
 func TestBaseClient_CallError(t *testing.T) {
 	response := http.Response{
