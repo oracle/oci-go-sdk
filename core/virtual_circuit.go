@@ -110,13 +110,8 @@ type VirtualCircuit struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// Whether the virtual circuit supports private or public peering. For more information,
-<<<<<<< HEAD
 	// see https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/fastconnect.htm.
-	Type VirtualCircuitTypeEnum `mandatory:"false" json:"type"`
-=======
-	// see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
 	Type VirtualCircuitTypeEnum `mandatory:"false" json:"type,omitempty"`
->>>>>>> master
 }
 
 func (m VirtualCircuit) String() string {
