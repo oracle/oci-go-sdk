@@ -22,15 +22,17 @@ const (
 )
 
 func TestCoreSamples_LaunchInstance(t *testing.T) {
-	// NOTE: please make sure you will delete the instance after execute this sample code
-	// it will create a new instance and VNC. You will be charged if you keep them running
+	// NOTE: launch instance will create a new instance and VNC. please make sure delete the instance
+	// after execute this sample code, otherwise, you will be charged for the running instance
 	LaunchInstance(common.String(availabilityDomain), common.String(compartmentID), common.String(instanceDisplayName))
 }
 
 func TestCoreSamples_ListShapesWithPagination(t *testing.T) {
+	// sample shows how pagination works in list API
 	ListShapesWithPagination(common.String(compartmentID))
 }
 
 func TestCoreSamples_CreateImageDetailsPolymorphic(t *testing.T) {
+	// sample about polymorphic types
 	CreateImageDetailsPolymorphic(common.String(compartmentID), common.String(objectStorageURIWtihImage))
 }

@@ -37,13 +37,13 @@ func ListShapesWithPagination(compartmentID *string) {
 	for r, err := listShapesFunc(request); ; r, err = listShapesFunc(request) {
 		example.LogIfError(err)
 
-		fmt.Printf("list shapes result: %v", r.Items)
+		fmt.Printf("list shapes returns: %v", r.Items)
 
 		if r.OpcNextPage != nil {
 			// if there are more items in next page, fetch items from next page
 			request.Page = r.OpcNextPage
 		} else {
-			// no next page, break the loop
+			// no more result, break the loop
 			break
 		}
 	}

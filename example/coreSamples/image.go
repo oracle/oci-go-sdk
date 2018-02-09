@@ -39,13 +39,11 @@ func CreateImageDetailsPolymorphic(compartmentID *string, imageSourceURI *string
 
 	// you can import an image based on the Object Storage URL 'core.ImageSourceViaObjectStorageUriDetails'
 	// or based on the namespace, bucket name and object name 'core.ImageSourceViaObjectStorageTupleDetails'
-	// following example shows how to import image from object storage uri, you can use another one, i.e.
+	// following example shows how to import image from object storage uri, you can use another one:
 	// request.ImageSourceDetails = core.ImageSourceViaObjectStorageTupleDetails
-	// this shows how polymorphic json works in SDK
 	sourceDetails := core.ImageSourceViaObjectStorageUriDetails{}
 	sourceDetails.SourceUri = imageSourceURI
 
-	// request.ImageSourceDetails = core.ImageSourceViaObjectStorageTupleDetails
 	request.ImageSourceDetails = sourceDetails
 
 	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())

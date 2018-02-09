@@ -27,7 +27,9 @@ func LaunchInstance(availabilityDomain *string, compartmentID *string, displayNa
 	request.DisplayName = displayName
 	request.AvailabilityDomain = availabilityDomain
 
+	// create a virtual network
 	vnc := CreateVcn(compartmentID)
+
 	// create a subnet
 	subnet := CreateSubnet(vnc, availabilityDomain, compartmentID)
 	request.SubnetId = subnet.Id
