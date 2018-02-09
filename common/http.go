@@ -107,18 +107,6 @@ func getTaggedNilFieldNameOrError(field reflect.StructField, fieldValue reflect.
 
 	Debugf("Adjusting tag: mandatory is false and json tag is valid on field: %s", field.Name)
 
-	// non-mandatory enum with empty value should be removed
-	// this is a temp fix to unblock integration test, new task created to fix it by
-	// adding omitempty tag in code gen
-	if strings.HasSuffix(strings.ToLower(field.Type.Name()), "enum") &&
-		(&fieldValue).Kind() == reflect.String &&
-		fieldValue.Len() == 0 {
-		// remove the property if it's string type with empty string
-		// also type name ends with enum
-		Debugf("empty enum, field name: %s", field.Name)
-		return true, nameJSONField, nil
-	}
-
 	// If the field can not be nil, then no-op
 	if !isNillableType(&fieldValue) {
 		Debugf("WARNING json field is tagged with mandatory flags, but the type can not be nil, field name: %s", field.Name)
@@ -740,7 +728,16 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 	case "binary":
 		value.Set(reflect.ValueOf(response.Body))
 		return
-	case "": //If the encoding is not set. we'll decode with json
+	case "plain-text":
+		//Expects UTF-8
+		byteArr, e := ioutil.ReadAll(response.Body)
+		if e != nil {
+			return e
+		}
+		str := string(byteArr)
+		value.Set(reflect.ValueOf(&str))
+		return
+	default: //If the encoding is not set. we'll decode with json
 		iVal, err = valueFromJSONBody(response, value, unmarshaler)
 		if err != nil {
 			return
@@ -751,9 +748,6 @@ func addFromBody(response *http.Response, value *reflect.Value, field reflect.St
 			newVal = newVal.Elem()
 		}
 		value.Set(newVal)
-		return
-	default:
-		err = fmt.Errorf("Encoding: %s is invalid. Can not unmarshal body", encoding)
 		return
 	}
 }

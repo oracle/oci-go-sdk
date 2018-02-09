@@ -32,7 +32,7 @@ type GetConsoleHistoryContentResponse struct {
 	RawResponse *http.Response
 
 	// The string instance
-	Value *string `presentIn:"body"`
+	Value *string `presentIn:"body" encoding:"plain-text"`
 
 	// The number of bytes remaining in the snapshot.
 	OpcBytesRemaining *int `presentIn:"header" name:"opc-bytes-remaining"`

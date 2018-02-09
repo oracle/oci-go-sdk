@@ -35,7 +35,7 @@ type BackupSummary struct {
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The current state of the backup.
-	LifecycleState BackupSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState BackupSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The date and time the backup was completed.
 	TimeEnded *common.SDKTime `mandatory:"false" json:"timeEnded"`
@@ -44,7 +44,7 @@ type BackupSummary struct {
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 
 	// The type of backup.
-	Type BackupSummaryTypeEnum `mandatory:"false" json:"type"`
+	Type BackupSummaryTypeEnum `mandatory:"false" json:"type,omitempty"`
 }
 
 func (m BackupSummary) String() string {

@@ -42,7 +42,7 @@ type CustomerSecretKey struct {
 
 	// The secret key's current state. After creating a secret key, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState CustomerSecretKeyLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState CustomerSecretKeyLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`

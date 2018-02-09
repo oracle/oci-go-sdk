@@ -43,7 +43,7 @@ type SwiftPassword struct {
 
 	// The password's current state. After creating a password, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState SwiftPasswordLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState SwiftPasswordLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
