@@ -11,7 +11,7 @@ import (
 // ListPoliciesRequest wrapper for the ListPolicies operation
 type ListPoliciesRequest struct {
 
-	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the compartment containing the load balancer policies to list.
+	// The OCID https://docs.us-phoenix-1.oraclecloud.com//Content/General/Concepts/identifiers.htm of the compartment containing the load balancer policies to list.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

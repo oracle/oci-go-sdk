@@ -78,7 +78,7 @@ func (client ComputeClient) AttachBootVolume(ctx context.Context, request Attach
 
 // AttachVnic Creates a secondary VNIC and attaches it to the specified instance.
 // For more information about secondary VNICs, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/managingVNICs.htm.
+// Virtual Network Interface Cards (VNICs) https://docs.us-phoenix-1.oraclecloud.com//Content/Network/Tasks/managingVNICs.htm.
 func (client ComputeClient) AttachVnic(ctx context.Context, request AttachVnicRequest) (response AttachVnicResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/vnicAttachments/", request)
 	if err != nil {
@@ -149,17 +149,17 @@ func (client ComputeClient) CaptureConsoleHistory(ctx context.Context, request C
 // CreateImage Creates a boot disk image for the specified instance or imports an exported image from the Oracle Cloud Infrastructure Object Storage service.
 // When creating a new image, you must provide the OCID of the instance you want to use as the basis for the image, and
 // the OCID of the compartment containing that instance. For more information about images,
-// see https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Tasks/managingcustomimages.htm.
+// see Managing Custom Images https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/Tasks/managingcustomimages.htm.
 // When importing an exported image from Object Storage, you specify the source information
 // in ImageSourceDetails.
 // When importing an image based on the namespace, bucket name, and object name,
 // use ImageSourceViaObjectStorageTupleDetails.
 // When importing an image based on the Object Storage URL, use
 // ImageSourceViaObjectStorageUriDetails.
-// See https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Tasks/imageimportexport.htm#URLs and https://docs.us-phoenix-1.oraclecloud.com/Content/Object/Tasks/managingaccess.htm#pre-auth
+// See Object Storage URLs https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/Tasks/imageimportexport.htm#URLs and pre-authenticated requests https://docs.us-phoenix-1.oraclecloud.com//Content/Object/Tasks/managingaccess.htm#pre-auth
 // for constructing URLs for image import/export.
 // For more information about importing exported images, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Tasks/imageimportexport.htm.
+// Image Import/Export https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/Tasks/imageimportexport.htm.
 // You may optionally specify a *display name* for the image, which is simply a friendly name or description.
 // It does not have to be unique, and you can change it. See UpdateImage.
 // Avoid entering confidential information.
@@ -183,7 +183,7 @@ func (client ComputeClient) CreateImage(ctx context.Context, request CreateImage
 // CreateInstanceConsoleConnection Creates a new console connection to the specified instance.
 // Once the console connection has been created and is available,
 // you connect to the console using SSH.
-// For more information about console access, see https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/References/serialconsole.htm.
+// For more information about console access, see Accessing the Console https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/References/serialconsole.htm.
 func (client ComputeClient) CreateInstanceConsoleConnection(ctx context.Context, request CreateInstanceConsoleConnectionRequest) (response CreateInstanceConsoleConnectionResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/instanceConsoleConnections", request)
 	if err != nil {
@@ -281,7 +281,7 @@ func (client ComputeClient) DetachBootVolume(ctx context.Context, request Detach
 // and secondary) are automatically detached and deleted.
 // **Important:** If the VNIC has a
 // PrivateIp that is the
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/managingroutetables.htm#privateip,
+// target of a route rule https://docs.us-phoenix-1.oraclecloud.com//Content/Network/Tasks/managingroutetables.htm#privateip,
 // deleting the VNIC causes that route rule to blackhole and the traffic
 // will be dropped.
 func (client ComputeClient) DetachVnic(ctx context.Context, request DetachVnicRequest) (response DetachVnicResponse, err error) {
@@ -323,10 +323,10 @@ func (client ComputeClient) DetachVolume(ctx context.Context, request DetachVolu
 
 // ExportImage Exports the specified image to the Oracle Cloud Infrastructure Object Storage service. You can use the Object Storage URL,
 // or the namespace, bucket name, and object name when specifying the location to export to.
-// For more information about exporting images, see https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Tasks/imageimportexport.htm.
+// For more information about exporting images, see Image Import/Export https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/Tasks/imageimportexport.htm.
 // To perform an image export, you need write access to the Object Storage bucket for the image,
-// see https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/commonpolicies.htm#Let4.
-// See https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Tasks/imageimportexport.htm#URLs and https://docs.us-phoenix-1.oraclecloud.com/Content/Object/Tasks/managingaccess.htm#pre-auth
+// see Let Users Write Objects to Object Storage Buckets https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/commonpolicies.htm#Let4.
+// See Object Storage URLs https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/Tasks/imageimportexport.htm#URLs and pre-authenticated requests https://docs.us-phoenix-1.oraclecloud.com//Content/Object/Tasks/managingaccess.htm#pre-auth
 // for constructing URLs for image import/export.
 func (client ComputeClient) ExportImage(ctx context.Context, request ExportImageRequest) (response ExportImageResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/images/{imageId}/actions/export", request)
@@ -542,11 +542,11 @@ func (client ComputeClient) InstanceAction(ctx context.Context, request Instance
 
 // LaunchInstance Creates a new instance in the specified compartment and the specified Availability Domain.
 // For general information about instances, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Concepts/computeoverview.htm.
+// Overview of the Compute Service https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/Concepts/computeoverview.htm.
 // For information about access control and compartments, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/overview.htm.
+// Overview of the IAM Service https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/overview.htm.
 // For information about Availability Domains, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/regions.htm.
+// Regions and Availability Domains https://docs.us-phoenix-1.oraclecloud.com//Content/General/Concepts/regions.htm.
 // To get a list of Availability Domains, use the `ListAvailabilityDomains` operation
 // in the Identity and Access Management Service API.
 // All Oracle Cloud Infrastructure resources, including instances, get an Oracle-assigned,
@@ -563,7 +563,7 @@ func (client ComputeClient) InstanceAction(ctx context.Context, request Instance
 // operation to get the VNIC ID for the instance, and then call
 // GetVnic with the VNIC ID.
 // You can later add secondary VNICs to an instance. For more information, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/managingVNICs.htm.
+// Virtual Network Interface Cards (VNICs) https://docs.us-phoenix-1.oraclecloud.com//Content/Network/Tasks/managingVNICs.htm.
 func (client ComputeClient) LaunchInstance(ctx context.Context, request LaunchInstanceRequest) (response LaunchInstanceResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/instances/", request)
 	if err != nil {
@@ -622,7 +622,7 @@ func (client ComputeClient) ListConsoleHistories(ctx context.Context, request Li
 // If you specify a value for the `sortBy` parameter, Oracle-provided images appear first in the list, followed by custom images.
 // For more
 // information about images, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Tasks/managingcustomimages.htm.
+// Managing Custom Images https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/Tasks/managingcustomimages.htm.
 func (client ComputeClient) ListImages(ctx context.Context, request ListImagesRequest) (response ListImagesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/images/", request)
 	if err != nil {
@@ -641,7 +641,7 @@ func (client ComputeClient) ListImages(ctx context.Context, request ListImagesRe
 }
 
 // ListInstanceConsoleConnections Lists the console connections for the specified compartment or instance.
-// For more information about console access, see https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/References/serialconsole.htm.
+// For more information about console access, see Accessing the Instance Console https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/References/serialconsole.htm.
 func (client ComputeClient) ListInstanceConsoleConnections(ctx context.Context, request ListInstanceConsoleConnectionsRequest) (response ListInstanceConsoleConnectionsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleConnections", request)
 	if err != nil {

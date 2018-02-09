@@ -15,7 +15,7 @@ import (
 // InstanceConsoleConnection The `InstanceConsoleConnection` API provides you with console access to virtual machine (VM) instances,
 // enabling you to troubleshoot malfunctioning instances remotely.
 // For more information about console access, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/References/serialconsole.htm.
+// Accessing the Console https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/References/serialconsole.htm.
 type InstanceConsoleConnection struct {
 
 	// The OCID of the compartment to contain the console connection.

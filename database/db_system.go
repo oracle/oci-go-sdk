@@ -13,14 +13,14 @@ import (
 )
 
 // DbSystem The Database Service supports several types of DB Systems, ranging in size, price, and performance. For details about each type of system, see:
-// - https://docs.us-phoenix-1.oraclecloud.com/Content/Database/Concepts/exaoverview.htm
-// - https://docs.us-phoenix-1.oraclecloud.com/Content/Database/Concepts/overview.htm
-// To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
+// - Exadata DB Systems https://docs.us-phoenix-1.oraclecloud.com//Content/Database/Concepts/exaoverview.htm
+// - Bare Metal or VM DB Systems https://docs.us-phoenix-1.oraclecloud.com//Content/Database/Concepts/overview.htm
+// To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/policygetstarted.htm.
 //
 // For information about access control and compartments, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/overview.htm.
+// Overview of the Identity Service https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/overview.htm.
 // For information about Availability Domains, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/regions.htm.
+// Regions and Availability Domains https://docs.us-phoenix-1.oraclecloud.com//Content/General/Concepts/regions.htm.
 // To get a list of Availability Domains, use the `ListAvailabilityDomains` operation
 // in the Identity Service API.
 type DbSystem struct {

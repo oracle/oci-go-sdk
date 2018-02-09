@@ -14,7 +14,7 @@ type UpdateLoadBalancerRequest struct {
 	// The details for updating a load balancer's configuration.
 	UpdateLoadBalancerDetails `contributesTo:"body"`
 
-	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the load balancer to update.
+	// The OCID https://docs.us-phoenix-1.oraclecloud.com//Content/General/Concepts/identifiers.htm of the load balancer to update.
 	LoadBalancerId *string `mandatory:"true" contributesTo:"path" name:"loadBalancerId"`
 
 	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
@@ -43,7 +43,7 @@ type UpdateLoadBalancerResponse struct {
 	// a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the work request.
+	// The OCID https://docs.us-phoenix-1.oraclecloud.com//Content/General/Concepts/identifiers.htm of the work request.
 	OpcWorkRequestId *string `presentIn:"header" name:"opc-work-request-id"`
 }
 

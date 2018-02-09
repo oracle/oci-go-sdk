@@ -15,7 +15,7 @@ import (
 // LoadBalancerHealthSummary A health status summary for the specified load balancer.
 type LoadBalancerHealthSummary struct {
 
-	// The https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the load balancer the health status is associated with.
+	// The OCID https://docs.us-phoenix-1.oraclecloud.com//Content/General/Concepts/identifiers.htm of the load balancer the health status is associated with.
 	LoadBalancerId *string `mandatory:"true" json:"loadBalancerId"`
 
 	// The overall health status of the load balancer.

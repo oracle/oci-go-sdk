@@ -16,16 +16,16 @@ import (
 // resources. Users might need to launch instances, manage remote disks, work with your cloud network, etc. Users
 // have one or more IAM Service credentials (ApiKey,
 // UIPassword, and SwiftPassword).
-// For more information, see https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/usercredentials.htm). End users of your
+// For more information, see User Credentials https://docs.us-phoenix-1.oraclecloud.com//Content/API/Concepts/usercredentials.htm). End users of your
 // application are not typically IAM Service users. For conceptual information about users and other IAM Service
-// components, see https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/overview.htm.
+// components, see Overview of the IAM Service https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/overview.htm.
 // These users are created directly within the Oracle Cloud Infrastructure system, via the IAM service.
 // They are different from *federated users*, who authenticate themselves to the Oracle Cloud Infrastructure
 // Console via an identity provider. For more information, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/federation.htm.
+// Identity Providers and Federation https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/federation.htm.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
-// see https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
+// see Getting Started with Policies https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/policygetstarted.htm.
 type User struct {
 
 	// The OCID of the user.

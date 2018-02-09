@@ -14,11 +14,11 @@ import (
 )
 
 // DhcpSearchDomainOption DHCP option for specifying a search domain name for DNS queries. For more information, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/dns.htm.
+// DNS in Your Virtual Cloud Network https://docs.us-phoenix-1.oraclecloud.com//Content/Network/Concepts/dns.htm.
 type DhcpSearchDomainOption struct {
 
-	// A single search domain name according to (https://tools.ietf.org/html/rfc952)
-	// and (https://tools.ietf.org/html/rfc1123). During a DNS query,
+	// A single search domain name according to https://tools.ietf.org/html/rfc952
+	// and https://tools.ietf.org/html/rfc1123. During a DNS query,
 	// the OS will append this search domain name to the value being queried.
 	// If you set DhcpDnsOption to `VcnLocalPlusInternet`,
 	// and you assign a DNS label to the VCN during creation, the search domain name in the

@@ -16,10 +16,10 @@ import (
 // Instance A compute host. The image used to launch the instance determines its operating system and other
 // software. The shape specified during the launch process determines the number of CPUs and memory
 // allocated to the instance. For more information, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Concepts/computeoverview.htm.
+// Overview of the Compute Service https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/Concepts/computeoverview.htm.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
+// Getting Started with Policies https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/policygetstarted.htm.
 type Instance struct {
 
 	// The Availability Domain the instance is running in.
@@ -77,7 +77,7 @@ type Instance struct {
 	// iqn.2015-02.oracle.boot.
 	// For more information about the Bring Your Own Image feature of
 	// Oracle Cloud Infrastructure, see
-	// https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/References/bringyourownimage.htm.
+	// Bring Your Own Image https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/References/bringyourownimage.htm.
 	// For more information about iPXE, see http://ipxe.org.
 	IpxeScript *string `mandatory:"false" json:"ipxeScript"`
 

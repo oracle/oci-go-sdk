@@ -13,10 +13,10 @@ import (
 )
 
 // Image A boot disk image for launching an instance. For more information, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Concepts/computeoverview.htm.
+// Overview of the Compute Service https://docs.us-phoenix-1.oraclecloud.com//Content/Compute/Concepts/computeoverview.htm.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
+// Getting Started with Policies https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/policygetstarted.htm.
 type Image struct {
 
 	// The OCID of the compartment containing the instance you want to use as the basis for the image.

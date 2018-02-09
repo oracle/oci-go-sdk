@@ -14,7 +14,7 @@ import (
 
 // BackendSetDetails The configuration details for a load balancer backend set.
 // For more information on backend set configuration, see
-// https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/tasks/managingbackendsets.htm.
+// Managing Backend Sets https://docs.us-phoenix-1.oraclecloud.com//Content/Balance/tasks/managingbackendsets.htm.
 type BackendSetDetails struct {
 	HealthChecker *HealthCheckerDetails `mandatory:"true" json:"healthChecker"`
 

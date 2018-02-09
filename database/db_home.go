@@ -15,10 +15,10 @@ import (
 // DbHome A directory where Oracle database software is installed. Each DB System can have multiple database homes,
 // and each database home can have multiple databases within it. All the databases within a single database home
 // must be the same database version, but different database homes can run different versions. For more information,
-// see https://docs.us-phoenix-1.oraclecloud.com/Content/Database/Concepts/overview.htm.
+// see Managing Oracle Databases https://docs.us-phoenix-1.oraclecloud.com//Content/Database/Concepts/overview.htm.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an
 // administrator. If you're an administrator who needs to write policies to give users access,
-// see https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
+// see Getting Started with Policies https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/policygetstarted.htm.
 type DbHome struct {
 
 	// The OCID of the compartment.

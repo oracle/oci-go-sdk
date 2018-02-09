@@ -47,7 +47,7 @@ type DeleteObjectResponse struct {
 	// request, please provide this request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// The time the object was deleted, as described in (https://tools.ietf.org/rfc/rfc2616), section 14.29.
+	// The time the object was deleted, as described in https://tools.ietf.org/rfc/rfc2616, section 14.29.
 	LastModified *common.SDKTime `presentIn:"header" name:"last-modified"`
 }
 
