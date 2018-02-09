@@ -30,7 +30,7 @@ Alternatively you can git clone this repo.
 To start working with the Go SDK, you import the service package, create a client, and then use that client to make calls.
 
 ### Configuring 
-Configure the Go SDK with your credentials, see [SDK and Tool Configuration](https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdkconfig.htm) for instructions
+Configure the Go SDK with your credentials, see [SDK and Tool Configuration](https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdkconfig.htm) for instructions.
 
 Once you have configured the Go SDK with your credentials, call `common.DefaultConfigProvider()` function as follows:
 
@@ -131,7 +131,7 @@ See [LICENSE](/LICENSE.txt) for more details.
 See [CHANGELOG](/CONTRIBUTING.md).
 
 ## Known Issues
-You can find information on any known issues with the SDK here and under the [“Issues”](https://github.com/oracle/oci-go-sdk/issues) tab of this project's GitHub repository.
+You can find information on any known issues with the SDK here and under the [Issues](https://github.com/oracle/oci-go-sdk/issues) tab of this project's GitHub repository.
 
 ## Building and testing
 Building is provided by the make file at the root of the project. To build the project execute.
