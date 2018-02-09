@@ -5,13 +5,13 @@ This is a ***preview*** of the official Go SDK for Oracle Cloud Infrastructure. 
 > ***WARNING:***: To avoid breaking changes please consider using the [Go dependency management tool](https://github.com/golang/dep), or vendoring this SDK.
 
 ## Dependencies
-- Install [Golang](https://golang.org/dl/)
-- Install [GNU Make](https://www.gnu.org/software/make/), using the package manager or binary distribution tool appropriate for your platform
-- Install [github.com/stretchr/testify](https://github.com/stretchr/testify)
+- Install [Go programming language](https://golang.org/dl/).
+- Install [GNU Make](https://www.gnu.org/software/make/), using the package manager or binary distribution tool appropriate for your platform.
+- Install [Testify](https://github.com/stretchr/testify) with the command:
 ```sh
 go get github.com/stretchr/testify
 ```
-- Install [go lint](https://github.com/golang/lint)
+- Install [go lint](https://github.com/golang/lint) with the command:
 ```
 go get -u github.com/golang/lint/golint
 ```
@@ -19,7 +19,7 @@ go get -u github.com/golang/lint/golint
 
 
 ## Installing
-Use the following command to install this SDK.
+Use the following command to install this SDK:
 
 ```
 go get -u github.com/oracle/oci-go-sdk
@@ -27,12 +27,12 @@ go get -u github.com/oracle/oci-go-sdk
 Alternatively you can git clone this repo.
 
 ## Working with the Go SDK
-To start working with the Go SDK you import the service package, create a client, and then use that client to make calls
+To start working with the Go SDK, you import the service package, create a client, and then use that client to make calls.
 
 ### Configuring 
-To configure the Go SDK with your credentials. For instructions see: [SDK and Tool Configuration](https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdkconfig.htm)
+Configure the Go SDK with your credentials, see [SDK and Tool Configuration](https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdkconfig.htm) for instructions
 
-Then call `common.DefaultConfigProvider()` function as follows:
+Once you have configured the Go SDK with your credentials, call `common.DefaultConfigProvider()` function as follows:
 
  ```go
  // Import necessary packages
@@ -46,7 +46,7 @@ Then call `common.DefaultConfigProvider()` function as follows:
 configProvider := common.DefaultConfigProvider()
 ```
 
- To configure the SDK programmatically, implement the `ConfigurationProvider` interface
+ To configure the SDK programmatically, implement the `ConfigurationProvider` interface shown below:
  ```go
 // ConfigurationProvider wraps information about the account owner
 type ConfigurationProvider interface {
@@ -59,9 +59,9 @@ type ConfigurationProvider interface {
 ```
 
 ### Making a request
-To make a request to an OCI service, create a client for the service and then call a function from that client.
+To make a request to an OCI service, create a client for the service and then use the client to call a function from the service.
 
-- *Creating a client*: All packages provide a function to create clients. It is of the form `New<ServiceName>ClientWithConfigurationProvider`,
+- *Creating a client*: All packages provide a function to create clients, using the naming convention `New<ServiceName>ClientWithConfigurationProvider`,
 such as `NewVirtualNetworkClientWithConfigurationProvider` or `NewIdentityClientWithConfigurationProvider`. To create a new client, 
 pass a struct that conforms to the `ConfigurationProvider` interface, or use the `DefaultConfigProvider()` function in the common package.
 
@@ -74,9 +74,9 @@ if err != nil {
 }
 ```
 
-- *Making calls*: After successfully creating a client, request can now be made to the service. Generally all functions associated with an operation
+- *Making calls*: After successfully creating a client, requests can now be made to the service. Generally all functions associated with an operation
 accept [`context.Context`](https://golang.org/pkg/context/) and a struct that wraps all input parameters. The functions then return a response struct
-that contains the desired data, and an error struct that describes the error if an error ocurrs.
+that contains the desired data, and an error struct that describes the error if an error occurs.
 
 For example:
 ```go
@@ -95,23 +95,23 @@ The `oci-go-sdk` contains the following:
 - **Service packages**: All packages except `common` and any other package found inside `cmd`. These packages represent 
 the Oracle Cloud Infrastructure services supported by the Go SDK. Each package represents a service. 
 These packages include methods to interact with the service, structs that model 
-input and output parameters and a client struct that acts as receiver for the above methods.
+input and output parameters, and a client struct that acts as receiver for the above methods.
 
-- **Common package**: Found in the `common` directory. The common package provides supporting functions and structs used by service packages, 
-including: HTTP request/response (de)serialization, request signing, json parsing, pointer to reference and other helper functions. Most of the functions
+- **Common package**: Found in the `common` directory. The common package provides supporting functions and structs used by service packages.
+Includes HTTP request/response (de)serialization, request signing, JSON parsing, pointer to reference and other helper functions. Most of the functions
 in this package are meant to be used by the service packages.
 
-- **cmd**: Internal tools used by the `oci-go-sdk`
+- **cmd**: Internal tools used by the `oci-go-sdk`.
 
 ## Examples
 
 ## Documentation
-Full documentation can be found [godocs site]()
+Full documentation can be found [godocs site]().
 
 ## Help
-* [Stack Overflow](https://stackoverflow.com/): Please use the [oracle-cloud-infrastructure](https://stackoverflow.com/questions/tagged/oracle-cloud-infrastructure) and [oci-go-sdk](https://stackoverflow.com/questions/tagged/oci-go-sdk) tags in your post
-* [Developer Tools section](https://community.oracle.com/community/cloud_computing/bare-metal/content?filterID=contentstatus%5Bpublished%5D~category%5Bdeveloper-tools%5D&filterID=contentstatus%5Bpublished%5D~objecttype~objecttype%5Bthread%5D) of the Oracle Cloud forums
-* [My Oracle Support](https://support.oracle.com)
+* [Stack Overflow](https://stackoverflow.com/), use the [oracle-cloud-infrastructure](https://stackoverflow.com/questions/tagged/oracle-cloud-infrastructure) and [oci-go-sdk](https://stackoverflow.com/questions/tagged/oci-go-sdk) tags in your post.
+* [Developer Tools](https://community.oracle.com/community/cloud_computing/bare-metal/content?filterID=contentstatus%5Bpublished%5D~category%5Bdeveloper-tools%5D&filterID=contentstatus%5Bpublished%5D~objecttype~objecttype%5Bthread%5D) of the Oracle Cloud forums.
+* [My Oracle Support](https://support.oracle.com).
 
 
 ## Contributing
@@ -131,10 +131,10 @@ See [LICENSE](/LICENSE.txt) for more details.
 See [CHANGELOG](/CONTRIBUTING.md).
 
 ## Known Issues
-You can find information on any known issues with the SDK here and under the [“Issues”](https://github.com/oracle/oci-go-sdk/issues) tab of this project's GitHub repository
+You can find information on any known issues with the SDK here and under the [“Issues”](https://github.com/oracle/oci-go-sdk/issues) tab of this project's GitHub repository.
 
 ## Building and testing
-Building is provided by the make file at the root of the project. To build the project execute
+Building is provided by the make file at the root of the project. To build the project execute.
 
 ```
 make build
@@ -144,4 +144,3 @@ To run the tests:
 ```
 make test
 ```
-
