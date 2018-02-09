@@ -190,6 +190,46 @@ func TestBaseClient_Call(t *testing.T) {
 
 }
 
+func TestBaseClient_CallWithInterceptor (t *testing.T) {
+	response := http.Response{
+		Header:     http.Header{},
+		StatusCode: 200,
+	}
+	body := `{"key" : "RegionFRA","name" : "eu-frankfurt-1"}`
+	c := testClientWithRegion(RegionIAD)
+	c.Interceptor = func(request *http.Request) error {
+		request.Header.Set("Custom-Header", "CustomValue")
+		return nil
+	}
+	host := "http://somehost:9000"
+	basePath := "basePath/"
+	restPath := "/somepath"
+	caller := fakeCaller{
+		Customcall: func(r *http.Request) (*http.Response, error) {
+			assert.Equal(t, "somehost:9000", r.URL.Host)
+			assert.Equal(t, defaultUserAgent(), r.UserAgent())
+			assert.Contains(t, r.Header.Get("Authorization"), "signature")
+			assert.Contains(t, r.URL.Path, "basePath/somepath")
+			assert.Equal(t, "CustomValue", r.Header.Get("Custom-Header"))
+			bodyBuffer := bytes.NewBufferString(body)
+			response.Body = ioutil.NopCloser(bodyBuffer)
+			return &response, nil
+		},
+	}
+
+	c.Host = host
+	c.BasePath = basePath
+	c.HTTPClient = caller
+
+	request := http.Request{}
+	request.URL = &url.URL{Path: restPath}
+	retRes, err := c.Call(context.Background(), &request)
+	assert.Equal(t, &response, retRes)
+	assert.NoError(t, err)
+
+}
+
+
 func TestBaseClient_CallError(t *testing.T) {
 	response := http.Response{
 		Header:     http.Header{},
