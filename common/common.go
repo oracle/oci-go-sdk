@@ -33,7 +33,7 @@ func StringToRegion(stringRegion string) (r Region) {
 		r = RegionFRA
 	default:
 		r = Region(stringRegion)
-		Debugf("region named: %s, is not recognized", stringRegion))
+		Debugf("region named: %s, is not recognized", stringRegion)
 	}
 	return
 }
