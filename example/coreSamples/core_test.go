@@ -5,7 +5,7 @@
 //
 // The API for the Database Service.
 //
-package coreSample
+package coreSamples
 
 import (
 	"testing"
@@ -15,9 +15,10 @@ import (
 
 // replace following variables with your instance info
 const (
-	availabilityDomain  = "[The Availability Domain of the instance. Example: Uocm:PHX-AD-1]"
-	compartmentID       = "[The OCID of the compartment.]"
-	instanceDisplayName = "[A user-friendly name. Does not have to be unique, and it's changeable.]"
+	availabilityDomain        = "[The Availability Domain of the instance. Example: Uocm:PHX-AD-1]"
+	compartmentID             = "[The OCID of the compartment.]"
+	instanceDisplayName       = "[A user-friendly name. Does not have to be unique, and it's changeable.]"
+	objectStorageURIWtihImage = "[The Object Storage URL for the image which will be used to create an image.]"
 )
 
 func TestCoreSamples_LaunchInstance(t *testing.T) {
@@ -28,4 +29,8 @@ func TestCoreSamples_LaunchInstance(t *testing.T) {
 
 func TestCoreSamples_ListShapesWithPagination(t *testing.T) {
 	ListShapesWithPagination(common.String(compartmentID))
+}
+
+func TestCoreSamples_CreateImageDetailsPolymorphic(t *testing.T) {
+	CreateImageDetailsPolymorphic(common.String(compartmentID), common.String(objectStorageURIWtihImage))
 }

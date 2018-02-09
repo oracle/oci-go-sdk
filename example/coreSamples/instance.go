@@ -6,7 +6,7 @@
 // The API for the Database Service.
 //
 
-package coreSample
+package coreSamples
 
 import (
 	"context"

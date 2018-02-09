@@ -5,7 +5,7 @@
 //
 // The API for the Database Service.
 //
-package identitySample
+package identitySamples
 
 import (
 	"testing"
