@@ -80,12 +80,7 @@ func getRegion() common.Region {
 	region := getEnvSetting(ENV_REGION, "")
 
 	if region != "" {
-
-		r, err := common.StringToRegion(region)
-		if err != nil {
-			panic(err)
-		}
-		return r
+		return common.StringToRegion(region)
 	}
 
 	return DEF_REGION

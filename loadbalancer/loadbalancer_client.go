@@ -37,8 +37,8 @@ func NewLoadBalancerClientWithConfigurationProvider(configProvider common.Config
 }
 
 // SetRegion overrides the region of this client.
-func (client *LoadBalancerClient) SetRegion(region common.Region) {
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", string(region))
+func (client *LoadBalancerClient) SetRegion(region string) {
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", region)
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
@@ -47,12 +47,10 @@ func (client *LoadBalancerClient) setConfigurationProvider(configProvider common
 		return err
 	}
 
-	region, err := configProvider.Region()
-	if err != nil {
-		return err
-	}
+	// Error has been checked already
+	region, _ := configProvider.Region()
 	client.config = &configProvider
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", string(region))
+	client.SetRegion(region)
 	return nil
 }
 

@@ -68,7 +68,7 @@ func getRegionForFederationClient(url string) (r common.Region, err error) {
 	if body, err = httpGet(url); err != nil {
 		return
 	}
-	return common.StringToRegion(body.String())
+	return common.StringToRegion(body.String()), nil
 }
 
 func (p *instancePrincipalKeyProvider) RegionForFederationClient() common.Region {

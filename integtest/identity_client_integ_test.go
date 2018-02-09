@@ -74,8 +74,9 @@ func (f *fakeDispatcher) Do(r *http.Request)(*http.Response, error) {
 
 func TestIdentityClient_OverrideRegion(t *testing.T) {
 	c, _ := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	c.SetRegion(common.RegionIAD)
-	f := fakeDispatcher{Reg: string(common.RegionIAD)}
+	region := "newRegion"
+	c.SetRegion(region)
+	f := fakeDispatcher{Reg: region}
 	// Avoid calling the service as we do no know if we have access to that region
 	c.HTTPClient =  &f
 	rList := identity.ListGroupsRequest{CompartmentId: common.String(getTenancyID())}
