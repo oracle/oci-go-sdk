@@ -37,6 +37,7 @@ const (
 	dbSystemDisplayName          = "GOSDK2_Test_Deps_DatabaseSystem"
 	dbHomeDisplayName            = "GOSDK2_Test_Deps_DatabaseHome"
 	databaseDisplayName          = "GOSDKDB"
+	databasePassword             = "OraclE12--"
 	dbBackupDisplayName          = "GOSDK2_Test_Deps_DatabaseBackup"
 	loadbalancerDisplayName      = "GOSDK2_Test_Deps_Loadbalancer"
 	volumeDisplayName            = "GOSDK2_Test_Deps_Volume"
@@ -151,6 +152,28 @@ func createOrGetSubnetWithDetails(t *testing.T, displayName *string, cidrBlock *
 			checkLifecycleState(string(core.SubnetLifecycleStateAvailable)),
 			time.Tick(10*time.Second),
 			time.After((5*time.Minute))))
+
+	// update the security rules
+	getReq := core.GetSecurityListRequest{
+		SecurityListId: common.String(r.SecurityListIds[0]),
+	}
+
+	getResp, err := c.GetSecurityList(context.Background(), getReq)
+	failIfError(t, err)
+
+	newRules := append(getResp.IngressSecurityRules, core.IngressSecurityRule{
+		Protocol: common.String("all"),
+		Source:   common.String("0.0.0.0/0"),
+	})
+
+	updateReq := core.UpdateSecurityListRequest{
+		SecurityListId: common.String(r.SecurityListIds[0]),
+	}
+
+	updateReq.IngressSecurityRules = newRules
+
+	_, err = c.UpdateSecurityList(context.Background(), updateReq)
+	failIfError(t, err)
 
 	return r.Subnet
 }
@@ -988,13 +1011,19 @@ func createOrGetDBSystem(t *testing.T) *string {
 		}
 	}
 
+	return createDBSystem(t, dbSystemDisplayName, databaseDisplayName)
+}
+
+func createDBSystem(t *testing.T, dbSystemName string, databaseName string) *string {
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
 	// create a new db system
 	request := database.LaunchDbSystemRequest{}
 	request.AvailabilityDomain = common.String(validAD())
 	request.CompartmentId = common.String(getCompartmentID())
 	request.CpuCoreCount = common.Int(2)
-	request.DatabaseEdition = "STANDARD_EDITION"
-	request.DisplayName = common.String(dbSystemDisplayName)
+	request.DatabaseEdition = "ENTERPRISE_EDITION"
+	request.DisplayName = common.String(dbSystemName)
 	request.Shape = common.String("BM.DenseIO1.36") // this shape will not get service limit error for now
 
 	buffer, err := readTestPubKey()
@@ -1009,8 +1038,8 @@ func createOrGetDBSystem(t *testing.T) *string {
 		DbVersion:   common.String("11.2.0.4"),
 		DisplayName: common.String(dbHomeDisplayName),
 		Database: &database.CreateDatabaseDetails{
-			DbName:        common.String(databaseDisplayName),
-			AdminPassword: common.String("OraclE12--"),
+			DbName:        common.String(databaseName),
+			AdminPassword: common.String(databasePassword),
 		},
 	}
 
@@ -1068,8 +1097,6 @@ func getDbHome(t *testing.T) (*database.DbHomeSummary, error) {
 }
 
 func createOrGetDatabaseBackup(t *testing.T) *string {
-	//db, err := getDatabase(t)
-	//failIfError(t, err)
 	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
 
@@ -1125,5 +1152,59 @@ func createDBBackup(t *testing.T) *string {
 			time.Tick(10*time.Second),
 			time.After((5*time.Minute))))
 
+	return r.Id
+}
+
+func createOrGetDataGuardAssociation(t *testing.T) *string {
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+	db, err := getDatabase(t)
+	failIfError(t, err)
+
+	dbsystemID := createDBSystem(t, "GOSDK2_Test_Deps_PeerDbSystem", "DB2")
+
+	defer func() {
+		// clean up
+		fmt.Println("Deleting DBSystem")
+		if dbsystemID != nil {
+			rDelete := database.TerminateDbSystemRequest{
+				DbSystemId: dbsystemID,
+			}
+
+			delRes, err := c.TerminateDbSystem(context.Background(), rDelete)
+			failIfError(t, err)
+			assert.NotEmpty(t, delRes.OpcRequestId)
+		}
+	}()
+
+	listReq := database.ListDataGuardAssociationsRequest{
+		DatabaseId: db.Id,
+	}
+
+	listResp, err := c.ListDataGuardAssociations(context.Background(), listReq)
+	failIfError(t, err)
+
+	for _, element := range listResp.Items {
+		if element.LifecycleState == database.DataGuardAssociationSummaryLifecycleStateAvailable {
+			return element.Id
+		}
+	}
+
+	// create a new one
+	req := database.CreateDataGuardAssociationRequest{
+		DatabaseId: db.Id,
+	}
+
+	details := database.CreateDataGuardAssociationToExistingDbSystemDetails{
+		ProtectionMode:        database.CreateDataGuardAssociationDetailsProtectionModePerformance,
+		TransportType:         database.CreateDataGuardAssociationDetailsTransportTypeAsync,
+		DatabaseAdminPassword: common.String(databasePassword),
+		PeerDbSystemId:        dbsystemID,
+	}
+
+	req.CreateDataGuardAssociationDetails = details
+
+	r, err := c.CreateDataGuardAssociation(context.Background(), req)
+	failIfError(t, err)
 	return r.Id
 }

@@ -107,10 +107,17 @@ func TestDatabaseClient_GetBackup(t *testing.T) {
 }
 
 func TestDatabaseClient_GetDataGuardAssociation(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	db, err := getDatabase(t)
+	failIfError(t, err)
+
+	dataGuardAssociationID := createOrGetDataGuardAssociation(t)
+
+	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
-	request := database.GetDataGuardAssociationRequest{}
+	request := database.GetDataGuardAssociationRequest{
+		DatabaseId:             db.Id,
+		DataGuardAssociationId: dataGuardAssociationID,
+	}
 	r, err := c.GetDataGuardAssociation(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
