@@ -10,6 +10,7 @@ package integtest
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"testing"
 	"time"
@@ -18,6 +19,7 @@ import (
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/core"
+	"github.com/oracle/oci-go-sdk/database"
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/oracle/oci-go-sdk/loadbalancer"
 )
@@ -34,6 +36,7 @@ const (
 	virtualCircuitDisplayName    = "GOSDK2_Test_Deps_VirtualCircuits"
 	dbSystemDisplayName          = "GOSDK2_Test_Deps_DatabaseSystem"
 	dbHomeDisplayName            = "GOSDK2_Test_Deps_DatabaseHome"
+	databaseDisplayName          = "GOSDK2_Test_Deps_Database"
 	loadbalancerDisplayName      = "GOSDK2_Test_Deps_Loadbalancer"
 	volumeDisplayName            = "GOSDK2_Test_Deps_Volume"
 )
@@ -939,4 +942,103 @@ func listVolumes(t *testing.T) []core.Volume {
 
 	assert.NotEmpty(t, r)
 	return r.Items
+}
+
+func getDatabase(t *testing.T) (*database.DatabaseSummary, error) {
+	dbHome, err := getDbHome(t)
+	failIfError(t, err)
+
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+
+	listReq := database.ListDatabasesRequest{
+		CompartmentId: common.String(getCompartmentID()),
+		DbHomeId:      dbHome.Id,
+	}
+
+	resp, err := c.ListDatabases(context.Background(), listReq)
+	failIfError(t, err)
+
+	for _, element := range resp.Items {
+		if *element.DbName == databaseDisplayName &&
+			element.LifecycleState == database.DatabaseSummaryLifecycleStateAvailable {
+			return &element, nil
+		}
+	}
+
+	return nil, errors.New("cannot find the dbhome")
+}
+
+func createOrGetDBSystem(t *testing.T) *string {
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+
+	listReq := database.ListDbSystemsRequest{
+		CompartmentId: common.String(getCompartmentID()),
+	}
+
+	r, err := c.ListDbSystems(context.Background(), listReq)
+	failIfError(t, err)
+
+	for _, dbSystem := range r.Items {
+		if dbSystem.DisplayName == common.String(dbSystemDisplayName) &&
+			dbSystem.LifecycleState == database.DbSystemSummaryLifecycleStateAvailable {
+			return dbSystem.Id
+		}
+	}
+
+	// create a new db system
+	request := database.LaunchDbSystemRequest{}
+	request.AvailabilityDomain = common.String(validAD())
+	request.CompartmentId = common.String(getCompartmentID())
+	request.CpuCoreCount = common.Int(2)
+	request.DatabaseEdition = "STANDARD_EDITION"
+	request.DisplayName = common.String(dbSystemDisplayName)
+	request.Shape = common.String("BM.DenseIO1.36") // this shape will not get service limit error for now
+
+	buffer, err := readTestPubKey()
+	failIfError(t, err)
+	request.SshPublicKeys = []string{string(buffer)}
+
+	subnet := createOrGetSubnet(t)
+	request.SubnetId = subnet.Id
+	request.Hostname = common.String("test")
+
+	request.DbHome = &database.CreateDbHomeDetails{
+		DbVersion:   common.String("11.2.0.4"),
+		DisplayName: common.String(dbHomeDisplayName),
+		Database: &database.CreateDatabaseDetails{
+			DbName:        common.String(databaseDisplayName),
+			AdminPassword: common.String("OraclE12--"),
+		},
+	}
+
+	resp, err := c.LaunchDbSystem(context.Background(), request)
+	failIfError(t, err)
+
+	return resp.DbSystem.Id
+}
+
+func getDbHome(t *testing.T) (*database.DbHomeSummary, error) {
+	dbSystemID := createOrGetDBSystem(t)
+
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+
+	listDbHomeReq := database.ListDbHomesRequest{
+		CompartmentId: common.String(getCompartmentID()),
+		DbSystemId:    dbSystemID,
+	}
+
+	r, err := c.ListDbHomes(context.Background(), listDbHomeReq)
+	failIfError(t, err)
+
+	for _, element := range r.Items {
+		if *element.DisplayName == dbHomeDisplayName &&
+			element.LifecycleState == database.DbHomeSummaryLifecycleStateAvailable {
+			return &element, nil
+		}
+	}
+
+	return nil, errors.New("cannot find the dbhome")
 }

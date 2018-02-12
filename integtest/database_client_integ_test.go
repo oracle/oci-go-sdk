@@ -204,13 +204,7 @@ func TestDatabaseClient_GetDbSystemPatchHistoryEntry(t *testing.T) {
 }
 
 func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
-
-	if !getRunExpensiveTests() {
-		t.Skip("expensive test excluded")
-		return
-	}
-
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
 
 	request := database.LaunchDbSystemRequest{}
@@ -218,7 +212,7 @@ func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
 	request.CompartmentId = common.String(getCompartmentID())
 	request.CpuCoreCount = common.Int(2)
 	request.DatabaseEdition = "STANDARD_EDITION"
-	request.DisplayName = common.String(dbSystemDisplayName)
+	request.DisplayName = common.String("GOSDK_TestDBSystem")
 	request.Shape = common.String("BM.DenseIO1.36") // this shape will not get service limit error for now
 
 	buffer, err := readTestPubKey()
