@@ -5,12 +5,13 @@ import (
 	"context"
 	"crypto/rsa"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type customConfig struct {
@@ -58,6 +59,14 @@ func TestClient_prepareRequestDefScheme(t *testing.T) {
 	c.prepareRequest(&request)
 	assert.Equal(t, "https", request.URL.Scheme)
 	assert.Equal(t, host, request.URL.Host)
+}
+
+func TestDefaultHTTPDispatcher_transportNotSet(t *testing.T) {
+	client := defaultHTTPDispatcher()
+
+	if client.Transport != nil {
+		t.Errorf("Expecting default http transport to be nil")
+	}
 }
 
 func TestClient_prepareRequestSetScheme(t *testing.T) {
