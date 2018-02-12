@@ -76,8 +76,7 @@ func newBaseClient(signer HTTPRequestSigner, dispatcher HTTPRequestDispatcher) B
 
 func defaultHTTPDispatcher() http.Client {
 	httpClient := http.Client{
-		Timeout:   defaultTimeout,
-		Transport: &http.Transport{},
+		Timeout: defaultTimeout,
 	}
 	return httpClient
 }
