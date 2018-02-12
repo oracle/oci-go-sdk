@@ -41,6 +41,8 @@ const (
 	dbBackupDisplayName          = "GOSDK2_Test_Deps_DatabaseBackup"
 	loadbalancerDisplayName      = "GOSDK2_Test_Deps_Loadbalancer"
 	volumeDisplayName            = "GOSDK2_Test_Deps_Volume"
+	testUserDisplayName          = "GOSDK2_Test_Deps_TestUser"
+	testGroupDisplayName         = "GOSDK2_Test_Deps_TestGroup"
 )
 
 // a helper method to either create a new vcn or get the one already exist
@@ -975,6 +977,53 @@ func listVolumes(t *testing.T) []core.Volume {
 	return r.Items
 }
 
+func createTestUser(t *testing.T, name *string) identity.User {
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+	req := identity.CreateUserRequest{}
+	req.CompartmentId = common.String(getTenancyID())
+	req.Name = name
+	req.Description = common.String("GoSDK Test User")
+	rsp, err := c.CreateUser(context.Background(), req)
+	failIfError(t, err)
+	return rsp.User
+}
+
+func createOrGetTestGroup(t *testing.T) identity.Group {
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+
+	listReq := identity.ListGroupsRequest{
+		CompartmentId: common.String(getTenancyID()),
+		Limit:         common.Int(500),
+	}
+
+	listResp, err := c.ListGroups(context.Background(), listReq)
+	failIfError(t, err)
+
+	for _, group := range listResp.Items {
+		if *group.Name == testGroupDisplayName {
+			// found test group, return it
+			return group
+		}
+	}
+
+	group := createTestGroup(t, common.String(testGroupDisplayName))
+	return group
+}
+
+func createTestGroup(t *testing.T, name *string) identity.Group {
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+	req := identity.CreateGroupRequest{}
+	req.CompartmentId = common.String(getTenancyID())
+	req.Name = name
+	req.Description = common.String("Go SDK Test Group")
+	rsp, err := c.CreateGroup(context.Background(), req)
+	failIfError(t, err)
+	return rsp.Group
+}
+
 func getDatabase(t *testing.T) (*database.DatabaseSummary, error) {
 	dbHome, err := getDbHome(t)
 	failIfError(t, err)
@@ -1214,4 +1263,26 @@ func createOrGetDataGuardAssociation(t *testing.T) *string {
 	r, err := c.CreateDataGuardAssociation(context.Background(), req)
 	failIfError(t, err)
 	return r.Id
+
+	func createOrGetUser(t *testing.T) identity.User {
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+
+	listReq := identity.ListUsersRequest{
+		CompartmentId: common.String(getTenancyID()),
+		Limit:         common.Int(500), // not ideal here, but easy and reduce number of requests
+	}
+
+	listResp, err := c.ListUsers(context.Background(), listReq)
+	failIfError(t, err)
+
+	for _, user := range listResp.Items {
+		if *user.Name == testUserDisplayName {
+			// found test user, return it
+			return user
+		}
+	}
+
+	user := createTestUser(t, common.String(testUserDisplayName))
+	return user
 }
