@@ -177,7 +177,7 @@ func findLifecycleFieldValue(request interface{}) (string, error) {
 				return lif, nil
 			}
 		}
-		if !strings.Contains(strings.ToLower(sf.Name), "lifecycle") {
+		if !strings.Contains(strings.ToLower(sf.Name), "lifecyclestate") {
 			continue
 		}
 		return sv.String(), nil

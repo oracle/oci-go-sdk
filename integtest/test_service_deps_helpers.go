@@ -982,7 +982,7 @@ func createOrGetDBSystem(t *testing.T) *string {
 	failIfError(t, err)
 
 	for _, dbSystem := range r.Items {
-		if dbSystem.DisplayName == common.String(dbSystemDisplayName) &&
+		if *dbSystem.DisplayName == dbSystemDisplayName &&
 			dbSystem.LifecycleState == database.DbSystemSummaryLifecycleStateAvailable {
 			return dbSystem.Id
 		}
@@ -1068,17 +1068,17 @@ func getDbHome(t *testing.T) (*database.DbHomeSummary, error) {
 }
 
 func createOrGetDatabaseBackup(t *testing.T) *string {
-	db, err := getDatabase(t)
-	failIfError(t, err)
+	//db, err := getDatabase(t)
+	//failIfError(t, err)
 	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
 
 	listReq := database.ListBackupsRequest{
-		DatabaseId:    db.Id,
 		CompartmentId: common.String(getCompartmentID()),
 	}
 
 	listResp, err := c.ListBackups(context.Background(), listReq)
+	failIfError(t, err)
 
 	for _, element := range listResp.Items {
 		if *element.DisplayName == dbBackupDisplayName &&

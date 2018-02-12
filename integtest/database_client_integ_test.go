@@ -94,7 +94,7 @@ func TestDatabaseClient_FailoverDataGuardAssociation(t *testing.T) {
 }
 
 func TestDatabaseClient_GetBackup(t *testing.T) {
-	backupID := createDBBackup(t)
+	backupID := createOrGetDatabaseBackup(t)
 	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
 	request := database.GetBackupRequest{
