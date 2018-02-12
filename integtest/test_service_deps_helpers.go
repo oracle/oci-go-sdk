@@ -36,7 +36,8 @@ const (
 	virtualCircuitDisplayName    = "GOSDK2_Test_Deps_VirtualCircuits"
 	dbSystemDisplayName          = "GOSDK2_Test_Deps_DatabaseSystem"
 	dbHomeDisplayName            = "GOSDK2_Test_Deps_DatabaseHome"
-	databaseDisplayName          = "GOSDK2_Test_Deps_Database"
+	databaseDisplayName          = "GOSDKDB"
+	dbBackupDisplayName          = "GOSDK2_Test_Deps_DatabaseBackup"
 	loadbalancerDisplayName      = "GOSDK2_Test_Deps_Loadbalancer"
 	volumeDisplayName            = "GOSDK2_Test_Deps_Volume"
 )
@@ -1016,6 +1017,29 @@ func createOrGetDBSystem(t *testing.T) *string {
 	resp, err := c.LaunchDbSystem(context.Background(), request)
 	failIfError(t, err)
 
+	getDBSystem := func() (interface{}, error) {
+		getReq := database.GetDbSystemRequest{
+			DbSystemId: resp.Id,
+		}
+
+		getResp, err := c.GetDbSystem(context.Background(), getReq)
+
+		if err != nil {
+			return nil, err
+		}
+
+		return getResp, nil
+	}
+
+	// wait for lifecyle become running
+	failIfError(
+		t,
+		retryUntilTrueOrError(
+			getDBSystem,
+			checkLifecycleState(string(database.DbSystemSummaryLifecycleStateAvailable)),
+			time.Tick(10*time.Second),
+			time.After((5*time.Minute))))
+
 	return resp.DbSystem.Id
 }
 
@@ -1041,4 +1065,65 @@ func getDbHome(t *testing.T) (*database.DbHomeSummary, error) {
 	}
 
 	return nil, errors.New("cannot find the dbhome")
+}
+
+func createOrGetDatabaseBackup(t *testing.T) *string {
+	db, err := getDatabase(t)
+	failIfError(t, err)
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+
+	listReq := database.ListBackupsRequest{
+		DatabaseId:    db.Id,
+		CompartmentId: common.String(getCompartmentID()),
+	}
+
+	listResp, err := c.ListBackups(context.Background(), listReq)
+
+	for _, element := range listResp.Items {
+		if *element.DisplayName == dbBackupDisplayName &&
+			element.LifecycleState == database.BackupSummaryLifecycleStateActive {
+			return element.Id
+		}
+	}
+
+	return createDBBackup(t)
+}
+
+func createDBBackup(t *testing.T) *string {
+	db, err := getDatabase(t)
+	failIfError(t, err)
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+
+	// create a backup
+	req := database.CreateBackupRequest{}
+	req.DatabaseId = db.Id
+	req.DisplayName = common.String(dbBackupDisplayName)
+	r, err := c.CreateBackup(context.Background(), req)
+	failIfError(t, err)
+	getBackup := func() (interface{}, error) {
+		getReq := database.GetBackupRequest{
+			BackupId: r.Id,
+		}
+
+		getResp, err := c.GetBackup(context.Background(), getReq)
+
+		if err != nil {
+			return nil, err
+		}
+
+		return getResp, nil
+	}
+
+	// wait for lifecyle become running
+	failIfError(
+		t,
+		retryUntilTrueOrError(
+			getBackup,
+			checkLifecycleState(string(database.BackupSummaryLifecycleStateActive)),
+			time.Tick(10*time.Second),
+			time.After((5*time.Minute))))
+
+	return r.Id
 }

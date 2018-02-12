@@ -94,10 +94,12 @@ func TestDatabaseClient_FailoverDataGuardAssociation(t *testing.T) {
 }
 
 func TestDatabaseClient_GetBackup(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	backupID := createDBBackup(t)
+	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
-	request := database.GetBackupRequest{}
+	request := database.GetBackupRequest{
+		BackupId: backupID,
+	}
 	r, err := c.GetBackup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
