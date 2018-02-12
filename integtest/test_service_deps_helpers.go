@@ -161,9 +161,16 @@ func createOrGetSubnetWithDetails(t *testing.T, displayName *string, cidrBlock *
 	getResp, err := c.GetSecurityList(context.Background(), getReq)
 	failIfError(t, err)
 
+	portRange := core.PortRange{
+		Max: common.Int(1521),
+		Min: common.Int(1521),
+	}
 	newRules := append(getResp.IngressSecurityRules, core.IngressSecurityRule{
-		Protocol: common.String("all"),
+		Protocol: common.String("6"), // TCP
 		Source:   common.String("0.0.0.0/0"),
+		TcpOptions: &core.TcpOptions{
+			DestinationPortRange: &portRange,
+		},
 	})
 
 	updateReq := core.UpdateSecurityListRequest{
