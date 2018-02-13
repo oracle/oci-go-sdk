@@ -496,7 +496,7 @@ func (client VirtualNetworkClient) CreateSubnet(ctx context.Context, request Cre
 // CreateVcn Creates a new Virtual Cloud Network (VCN). For more information, see
 // VCNs and Subnets https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/managingVCNs.htm.
 // For the VCN you must specify a single, contiguous IPv4 CIDR block. Oracle recommends using one of the
-// private IP address ranges specified in https://tools.ietf.org/html/rfc1918 (10.0.0.0/8,
+// private IP address ranges specified in RFC 1918 (https://tools.ietf.org/html/rfc1918) (10.0.0.0/8,
 // 172.16/12, and 192.168/16). Example: 172.16.0.0/16. The CIDR block can range from /16 to /30, and it
 // must not overlap with your on-premises network. You can't change the size of the VCN after creation.
 // For the purposes of access control, you must provide the OCID of the compartment where you want the VCN to

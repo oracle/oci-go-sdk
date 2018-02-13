@@ -46,8 +46,8 @@ type CreateVnicDetails struct {
 	// portion of the primary private IP's fully qualified domain name (FQDN)
 	// (for example, `bminstance-1` in FQDN `bminstance-1.subnet123.vcn1.oraclevcn.com`).
 	// Must be unique across all VNICs in the subnet and comply with
-	// https://tools.ietf.org/html/rfc952 and
-	// https://tools.ietf.org/html/rfc1123.
+	// RFC 952 (https://tools.ietf.org/html/rfc952) and
+	// RFC 1123 (https://tools.ietf.org/html/rfc1123).
 	// The value appears in the Vnic object and also the
 	// PrivateIp object returned by
 	// ListPrivateIps and

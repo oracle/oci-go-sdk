@@ -29,7 +29,7 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	PeerDbSystemId *string `mandatory:"false" json:"peerDbSystemId"`
 
 	// The protection mode to set up between the primary and standby databases. For more information, see
-	// http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000
+	// Oracle Data Guard Protection Modes (http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)
 	// in the Oracle Data Guard documentation.
 	// **IMPORTANT** - The only protection mode currently supported by the Database Service is MAXIMUM_PERFORMANCE.
 	ProtectionMode CreateDataGuardAssociationDetailsProtectionModeEnum `mandatory:"true" json:"protectionMode"`
@@ -39,7 +39,7 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	// * MAXIMUM_PERFORMANCE - ASYNC
 	// * MAXIMUM_PROTECTION - SYNC
 	// For more information, see
-	// http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400
+	// Redo Transport Services (http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400)
 	// in the Oracle Data Guard documentation.
 	// **IMPORTANT** - The only transport type currently supported by the Database Service is ASYNC.
 	TransportType CreateDataGuardAssociationDetailsTransportTypeEnum `mandatory:"true" json:"transportType"`

@@ -82,7 +82,7 @@ func (client DatabaseClient) CreateBackup(ctx context.Context, request CreateBac
 // called an Oracle Cloud Identifier (OCID). When you create a resource, you can find its OCID in the response.
 // You can also retrieve a resource's OCID by using a List API operation on that resource type, or by viewing the
 // resource in the Console. Fore more information, see
-// http://localhost:8000/Content/General/Concepts/identifiers.htm.
+// Resource Identifiers (http://localhost:8000/Content/General/Concepts/identifiers.htm).
 func (client DatabaseClient) CreateDataGuardAssociation(ctx context.Context, request CreateDataGuardAssociationRequest) (response CreateDataGuardAssociationResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/databases/{databaseId}/dataGuardAssociations", request)
 	if err != nil {

@@ -77,7 +77,7 @@ type LaunchInstanceDetails struct {
 	// required to connect to the instance.
 	// A metadata service runs on every launched instance. The service is an HTTP
 	// endpoint listening on 169.254.169.254. You can use the service to:
-	// * Provide information to https://cloudinit.readthedocs.org/en/latest/
+	// * Provide information to Cloud-Init (https://cloudinit.readthedocs.org/en/latest/)
 	//   to be used for various system initialization tasks.
 	// * Get information about the instance, including the custom metadata that you
 	//   provide when you launch the instance.
@@ -92,7 +92,7 @@ type LaunchInstanceDetails struct {
 	//  **"user_data"** - Provide your own base64-encoded data to be used by
 	//  Cloud-Init to run custom scripts or provide custom Cloud-Init configuration. For
 	//  information about how to take advantage of user data, see the
-	//  http://cloudinit.readthedocs.org/en/latest/topics/format.html.
+	//  Cloud-Init Documentation (http://cloudinit.readthedocs.org/en/latest/topics/format.html).
 	//  **Note:** Cloud-Init does not pull this data from the `http://169.254.169.254/opc/v1/instance/metadata/`
 	//  path. When the instance launches and either of these keys are provided, the key values are formatted as
 	//  OpenStack metadata and copied to the following locations, which are recognized by Cloud-Init:
