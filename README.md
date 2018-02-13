@@ -22,9 +22,9 @@ Alternatively you can git clone this repo.
 To start working with the Go SDK, you import the service package, create a client, and then use that client to make calls.
 
 ### Configuring 
-Configure the Go SDK with your credentials, see [SDK and Tool Configuration](https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdkconfig.htm) for instructions.
+Before using the SDK, set up a config file with the required credential, see [SDK and Tool Configuration](https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdkconfig.htm) for instructions.
 
-Once you have configured the Go SDK with your credentials, call `common.DefaultConfigProvider()` function as follows:
+Once credentials have been configured, call `common.DefaultConfigProvider()` function as follows:
 
  ```go
  // Import necessary packages
