@@ -57,6 +57,13 @@ type ConfigurationProvider interface {
 	Region() (string, error)
 }
 ```
+Or you can use the `NewRawConfigurationProvider` function that accepts all mandatory fields of the ConfigurationProvider interface
+as input
+
+```go
+passphrase := "password"
+myConfigProvider := NewRawConfigurationProvider("tenencyOcid", "userOcid", "someRegion", "fingerprintOfKey", &passphrase)
+```
 
 ### Making a request
 To make a request to an OCI service, create a client for the service and then use the client to call a function from the service.
