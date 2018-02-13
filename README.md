@@ -99,7 +99,7 @@ in this package are meant to be used by the service packages.
 Examples can be found [here](https://github.com/oracle/oci-go-sdk/tree/master/example)
 
 ## Documentation
-Full documentation can be found [on the godocs site]().
+Full documentation can be found [on the godocs site](https://godoc.org/github.com/oracle/oci-go-sdk/).
 
 ## Help
 * [Stack Overflow](https://stackoverflow.com/), use the [oracle-cloud-infrastructure](https://stackoverflow.com/questions/tagged/oracle-cloud-infrastructure) and [oci-go-sdk](https://stackoverflow.com/questions/tagged/oci-go-sdk) tags in your post.
