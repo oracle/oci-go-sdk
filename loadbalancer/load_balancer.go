@@ -13,23 +13,23 @@ import (
 )
 
 // LoadBalancer The properties that define a load balancer. For more information, see
-// Managing a Load Balancer https://docs.us-phoenix-1.oraclecloud.com//Content/Balance/Tasks/managingloadbalancer.htm.
+// Managing a Load Balancer https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/Tasks/managingloadbalancer.htm.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/policygetstarted.htm.
+// Getting Started with Policies https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
 // For information about endpoints and signing API requests, see
-// About the API https://docs.us-phoenix-1.oraclecloud.com//Content/API/Concepts/usingapi.htm. For information about available SDKs and tools, see
-// SDKS and Other Tools https://docs.us-phoenix-1.oraclecloud.com//Content/API/Concepts/sdks.htm.
+// About the API https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/usingapi.htm. For information about available SDKs and tools, see
+// SDKS and Other Tools https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdks.htm.
 type LoadBalancer struct {
 
-	// The OCID https://docs.us-phoenix-1.oraclecloud.com//Content/General/Concepts/identifiers.htm of the compartment containing the load balancer.
+	// The OCID https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the compartment containing the load balancer.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name. It does not have to be unique, and it is changeable.
 	// Example: `My load balancer`
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
-	// The OCID https://docs.us-phoenix-1.oraclecloud.com//Content/General/Concepts/identifiers.htm of the load balancer.
+	// The OCID https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the load balancer.
 	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the load balancer.
@@ -61,12 +61,12 @@ type LoadBalancer struct {
 	// If "false", the service assigns a public IP address to the load balancer. A load balancer with a public IP address
 	// requires two subnets, each in a different Availability Domain. One subnet hosts the primary load balancer and the other
 	// hosts the secondary (standby) load balancer. A public load balancer is accessible from the internet, depending on your
-	// VCN's security list rules https://docs.us-phoenix-1.oraclecloud.com//Content/Network/Concepts/securitylists.htm.
+	// VCN's security list rules https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/securitylists.htm.
 	IsPrivate *bool `mandatory:"false" json:"isPrivate"`
 
 	Listeners map[string]Listener `mandatory:"false" json:"listeners"`
 
-	// An array of subnet OCIDs https://docs.us-phoenix-1.oraclecloud.com//Content/General/Concepts/identifiers.htm.
+	// An array of subnet OCIDs https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm.
 	SubnetIds []string `mandatory:"false" json:"subnetIds"`
 }
 

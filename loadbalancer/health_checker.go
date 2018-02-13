@@ -13,7 +13,7 @@ import (
 )
 
 // HealthChecker The health check policy configuration.
-// For more information, see Editing Health Check Policies https://docs.us-phoenix-1.oraclecloud.com//Content/Balance/Tasks/editinghealthcheck.htm.
+// For more information, see Editing Health Check Policies https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/Tasks/editinghealthcheck.htm.
 type HealthChecker struct {
 
 	// The backend server port against which to run the health check. If the port is not specified, the load balancer uses the

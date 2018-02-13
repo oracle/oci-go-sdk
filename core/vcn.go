@@ -13,10 +13,10 @@ import (
 )
 
 // Vcn A Virtual Cloud Network (VCN). For more information, see
-// Overview of the Networking Service https://docs.us-phoenix-1.oraclecloud.com//Content/Network/Concepts/overview.htm.
+// Overview of the Networking Service https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/overview.htm.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies https://docs.us-phoenix-1.oraclecloud.com//Content/Identity/Concepts/policygetstarted.htm.
+// Getting Started with Policies https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
 type Vcn struct {
 
 	// The CIDR IP address block of the VCN.
@@ -53,7 +53,7 @@ type Vcn struct {
 	// The absence of this parameter means the Internet and VCN Resolver will
 	// not work for this VCN.
 	// For more information, see
-	// DNS in Your Virtual Cloud Network https://docs.us-phoenix-1.oraclecloud.com//Content/Network/Concepts/dns.htm.
+	// DNS in Your Virtual Cloud Network https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/dns.htm.
 	// Example: `vcn1`
 	DnsLabel *string `mandatory:"false" json:"dnsLabel"`
 
@@ -64,7 +64,7 @@ type Vcn struct {
 	// The VCN's domain name, which consists of the VCN's DNS label, and the
 	// `oraclevcn.com` domain.
 	// For more information, see
-	// DNS in Your Virtual Cloud Network https://docs.us-phoenix-1.oraclecloud.com//Content/Network/Concepts/dns.htm.
+	// DNS in Your Virtual Cloud Network https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/dns.htm.
 	// Example: `vcn1.oraclevcn.com`
 	VcnDomainName *string `mandatory:"false" json:"vcnDomainName"`
 }
