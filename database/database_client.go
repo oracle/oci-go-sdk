@@ -77,12 +77,12 @@ func (client DatabaseClient) CreateBackup(ctx context.Context, request CreateBac
 }
 
 // CreateDataGuardAssociation Creates a new Data Guard association.  A Data Guard association represents the replication relationship between the
-// specified database and a peer database. For more information, see Using Oracle Data Guard https://docs.us-phoenix-1.oraclecloud.com//Content/Database/Tasks/usingdataguard.htm.
+// specified database and a peer database. For more information, see Using Oracle Data Guard https://docs.us-phoenix-1.oraclecloud.com/Content/Database/Tasks/usingdataguard.htm.
 // All Oracle Cloud Infrastructure resources, including Data Guard associations, get an Oracle-assigned, unique ID
 // called an Oracle Cloud Identifier (OCID). When you create a resource, you can find its OCID in the response.
 // You can also retrieve a resource's OCID by using a List API operation on that resource type, or by viewing the
 // resource in the Console. Fore more information, see
-// http://localhost:8000/Content/General/Concepts/identifiers.htm.
+// Resource Identifiers (http://localhost:8000/Content/General/Concepts/identifiers.htm).
 func (client DatabaseClient) CreateDataGuardAssociation(ctx context.Context, request CreateDataGuardAssociationRequest) (response CreateDataGuardAssociationResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/databases/{databaseId}/dataGuardAssociations", request)
 	if err != nil {
@@ -386,10 +386,10 @@ func (client DatabaseClient) GetDbSystemPatchHistoryEntry(ctx context.Context, r
 // Database Edition that applies to all the databases on that DB System. The selected edition cannot be changed.
 // An initial database is created on the DB System based on the request parameters you provide and some default
 // options. For more information,
-// see Default Options for the Initial Database https://docs.us-phoenix-1.oraclecloud.com//Content/Database/Tasks/launchingDB.htm#Default_Options_for_the_Initial_Database.
+// see Default Options for the Initial Database https://docs.us-phoenix-1.oraclecloud.com/Content/Database/Tasks/launchingDB.htm#Default_Options_for_the_Initial_Database.
 // The DB System will include a command line interface (CLI) that you can use to create additional databases and
 // manage existing databases. For more information, see the
-// Oracle Database CLI Reference https://docs.us-phoenix-1.oraclecloud.com//Content/Database/References/odacli.htm#Oracle_Database_CLI_Reference.
+// Oracle Database CLI Reference https://docs.us-phoenix-1.oraclecloud.com/Content/Database/References/odacli.htm#Oracle_Database_CLI_Reference.
 func (client DatabaseClient) LaunchDbSystem(ctx context.Context, request LaunchDbSystemRequest) (response LaunchDbSystemResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/dbSystems", request)
 	if err != nil {

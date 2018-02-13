@@ -189,34 +189,27 @@ func TestIdentityClient_ListUsers(t *testing.T) {
 }
 
 func TestIdentityClient_UserCRUD(t *testing.T) {
-	// test should not fail if a previous run failed to clean up
-	userName := getUniqueName("User_")
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	request := identity.CreateUserRequest{}
-	request.CompartmentId = common.String(getTenancyID())
-	request.Name = common.String(userName)
-	request.Description = common.String("Test user for golang sdk2")
-	resCreate, err := c.CreateUser(context.Background(), request)
-	fmt.Println(resCreate)
-	assert.NotEmpty(t, resCreate, fmt.Sprint(resCreate))
-	assert.NoError(t, err)
+	user := createTestUser(t, common.String(getUniqueName("User_")))
+	assert.NotEmpty(t, user)
+	assert.NotEmpty(t, user.Id)
 
 	// if we've successfully created a user during testing, make sure that we delete it
 	defer func() {
 		//remove
 		rDelete := identity.DeleteUserRequest{}
-		rDelete.UserId = resCreate.Id
+		rDelete.UserId = user.Id
 		resDelete, err := c.DeleteUser(context.Background(), rDelete)
 		assert.NotEmpty(t, resDelete.OpcRequestId)
 		assert.NoError(t, err)
 	}()
 
 	// validate user lifecycle state enum value after read
-	assert.Equal(t, identity.UserLifecycleStateActive, resCreate.LifecycleState)
+	assert.Equal(t, identity.UserLifecycleStateActive, user.LifecycleState)
 
 	//Read
-	rRead := identity.GetUserRequest{UserId: resCreate.Id}
+	rRead := identity.GetUserRequest{UserId: user.Id}
 	resRead, err := c.GetUser(context.Background(), rRead)
 	assert.NotEmpty(t, resRead, fmt.Sprint(resRead))
 	assert.NoError(t, err)
@@ -226,7 +219,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 
 	//Update
 	rUpdate := identity.UpdateUserRequest{}
-	rUpdate.UserId = resCreate.Id
+	rUpdate.UserId = user.Id
 	rUpdate.Description = common.String("This is a new description")
 	resUpdate, err := c.UpdateUser(context.Background(), rUpdate)
 	assert.NotEmpty(t, resUpdate, fmt.Sprint(resUpdate))
@@ -333,21 +326,16 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 
-	//create the user
-	u, err := createTestUser(c)
-	failIfError(t, err)
-	defer func() {
-		failIfError(t, deleteTestUser(c, u.Id))
-	}()
-
+	// create or get the test user
+	user := createOrGetUser(t)
 	request := identity.CreateOrResetUIPasswordRequest{}
-	request.UserId = u.Id
+	request.UserId = user.Id
 	rspCreate, err := c.CreateOrResetUIPassword(context.Background(), request)
 	failIfError(t, err)
 	verifyResponseIsValid(t, rspCreate, err)
 
 	assert.NotEmpty(t, rspCreate.OpcRequestId)
-	assert.Equal(t, u.Id, rspCreate.UserId)
+	assert.Equal(t, user.Id, rspCreate.UserId)
 	assert.NotEmpty(t, rspCreate.Password)
 	assert.Equal(t, identity.UiPasswordLifecycleStateActive, rspCreate.LifecycleState)
 
@@ -370,10 +358,7 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 
-	usr, usrErr := createTestUser(c)
-	failIfError(t, usrErr)
-
-	defer deleteTestUser(c, usr.Id)
+	usr := createOrGetUser(t)
 
 	// Create Swift Password
 	addReq := identity.CreateSwiftPasswordRequest{UserId: usr.Id}
@@ -381,11 +366,13 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 	rspPwd, err := c.CreateSwiftPassword(context.Background(), addReq)
 	verifyResponseIsValid(t, rspPwd, err)
 
-	//Delete Swift Password
+	// Delete Swift Password
 	defer func() {
 		delReq := identity.DeleteSwiftPasswordRequest{}
 		delReq.UserId = usr.Id
 		delReq.SwiftPasswordId = rspPwd.Id
+		_, err := c.DeleteSwiftPassword(context.Background(), delReq)
+		failIfError(t, err)
 	}()
 
 	assert.NotEmpty(t, rspPwd.Id)
@@ -414,9 +401,26 @@ func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 
-	usr, usrErr := createTestUser(c)
-	failIfError(t, usrErr)
-	defer deleteTestUser(c, usr.Id)
+	usr := createOrGetUser(t)
+
+	request := identity.ListSwiftPasswordsRequest{UserId: usr.Id}
+	r, err := c.ListSwiftPasswords(context.Background(), request)
+	verifyResponseIsValid(t, r, err)
+
+	deletePwd := func(pwdId *string) {
+		delReq := identity.DeleteSwiftPasswordRequest{}
+		delReq.UserId = usr.Id
+		delReq.SwiftPasswordId = pwdId
+		_, err := c.DeleteSwiftPassword(context.Background(), delReq)
+		failIfError(t, err)
+	}
+
+	// delete password if already there
+	if len(r.Items) != 0 {
+		for _, item := range r.Items {
+			deletePwd(item.Id)
+		}
+	}
 
 	pwdReq := identity.CreateSwiftPasswordRequest{UserId: usr.Id}
 	pwdReq.Description = common.String("Test Swift Password 1")
@@ -427,13 +431,20 @@ func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 	pwdRsp2, err := c.CreateSwiftPassword(context.Background(), pwdReq)
 	verifyResponseIsValid(t, pwdRsp2, err)
 
-	request := identity.ListSwiftPasswordsRequest{UserId: usr.Id}
-	r, err := c.ListSwiftPasswords(context.Background(), request)
+	request = identity.ListSwiftPasswordsRequest{UserId: usr.Id}
+	r, err = c.ListSwiftPasswords(context.Background(), request)
 	verifyResponseIsValid(t, r, err)
-
 	assert.Equal(t, 2, len(r.Items))
 	assert.NotEqual(t, r.Items[0].Id, r.Items[1].Id)
 	assert.NotEqual(t, r.Items[0].Description, r.Items[1].Description)
+
+	// Delete Swift Password just created
+	defer func() {
+		pwdIDs := []*string{pwdRsp1.Id, pwdRsp2.Id}
+		for _, pwdID := range pwdIDs {
+			deletePwd(pwdID)
+		}
+	}()
 
 	return
 }
@@ -659,14 +670,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 	assert.Equal(t, *rspCreate.GetId(), *rspUpdate.GetId())
 	assert.Equal(t, "New description", *rspUpdate.GetDescription())
 
-	// Create the group mapping
-	u, uErr := createTestUser(c)
-	failIfError(t, uErr)
-	defer deleteTestUser(c, u.Id)
-
-	g, gErr := createTestGroup(c)
-	failIfError(t, gErr)
-	defer deleteTestGroup(c, g.Id)
+	g := createOrGetTestGroup(t)
 
 	reqCreateMapping := identity.CreateIdpGroupMappingRequest{}
 	reqCreateMapping.IdentityProviderId = rspCreate.GetId()
@@ -863,9 +867,7 @@ func TestIdentityClient_ListRegions(t *testing.T) {
 func TestIdentityClient_UpdateUserState(t *testing.T) {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	usr, usrErr := createTestUser(c)
-	failIfError(t, usrErr)
-	defer deleteTestUser(c, usr.Id)
+	usr := createOrGetUser(t)
 
 	request := identity.UpdateUserStateRequest{}
 	request.UserId = usr.Id

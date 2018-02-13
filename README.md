@@ -7,14 +7,6 @@ This is a ***preview*** of the official Go SDK for Oracle Cloud Infrastructure. 
 ## Dependencies
 - Install [Go programming language](https://golang.org/dl/).
 - Install [GNU Make](https://www.gnu.org/software/make/), using the package manager or binary distribution tool appropriate for your platform.
-- Install [Testify](https://github.com/stretchr/testify) with the command:
-```sh
-go get github.com/stretchr/testify
-```
-- Install [go lint](https://github.com/golang/lint) with the command:
-```
-go get -u github.com/golang/lint/golint
-```
  
 
 
@@ -30,9 +22,9 @@ Alternatively you can git clone this repo.
 To start working with the Go SDK, you import the service package, create a client, and then use that client to make calls.
 
 ### Configuring 
-Configure the Go SDK with your credentials, see [SDK and Tool Configuration](https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdkconfig.htm) for instructions.
+Before using the SDK, set up a config file with the required credential, see [SDK and Tool Configuration](https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdkconfig.htm) for instructions.
 
-Once you have configured the Go SDK with your credentials, call `common.DefaultConfigProvider()` function as follows:
+Once credentials have been configured, call `common.DefaultConfigProvider()` function as follows:
 
  ```go
  // Import necessary packages
@@ -46,7 +38,7 @@ Once you have configured the Go SDK with your credentials, call `common.DefaultC
 configProvider := common.DefaultConfigProvider()
 ```
 
- To configure the SDK programmatically, implement the `ConfigurationProvider` interface shown below:
+ Or, to configure the SDK programmatically instead, implement the `ConfigurationProvider` interface shown below:
  ```go
 // ConfigurationProvider wraps information about the account owner
 type ConfigurationProvider interface {
@@ -111,9 +103,10 @@ in this package are meant to be used by the service packages.
 - **cmd**: Internal tools used by the `oci-go-sdk`.
 
 ## Examples
+Examples can be found [here](https://github.com/oracle/oci-go-sdk/tree/master/example)
 
 ## Documentation
-Full documentation can be found [godocs site]().
+Full documentation can be found [on the godocs site](https://godoc.org/github.com/oracle/oci-go-sdk/).
 
 ## Help
 * [Stack Overflow](https://stackoverflow.com/), use the [oracle-cloud-infrastructure](https://stackoverflow.com/questions/tagged/oracle-cloud-infrastructure) and [oci-go-sdk](https://stackoverflow.com/questions/tagged/oci-go-sdk) tags in your post.
@@ -135,12 +128,22 @@ This SDK and sample is dual licensed under the Universal Permissive License 1.0 
 See [LICENSE](/LICENSE.txt) for more details.
 
 ## Changes
-See [CHANGELOG](/CONTRIBUTING.md).
+See [CHANGELOG](/CHANGELOG.md).
 
 ## Known Issues
 You can find information on any known issues with the SDK here and under the [Issues](https://github.com/oracle/oci-go-sdk/issues) tab of this project's GitHub repository.
 
 ## Building and testing
+### Dev dependencies
+- Install [Testify](https://github.com/stretchr/testify) with the command:
+```sh
+go get github.com/stretchr/testify
+```
+- Install [go lint](https://github.com/golang/lint) with the command:
+```
+go get -u github.com/golang/lint/golint
+```
+### Build
 Building is provided by the make file at the root of the project. To build the project execute.
 
 ```

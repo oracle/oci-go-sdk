@@ -14,7 +14,7 @@ import (
 
 // Certificate The configuration details of a listener certificate bundle.
 // For more information on SSL certficate configuration, see
-// Managing SSL Certificates https://docs.us-phoenix-1.oraclecloud.com//Content/Balance/Tasks/managingcertificates.htm.
+// Managing SSL Certificates https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/Tasks/managingcertificates.htm.
 type Certificate struct {
 
 	// The Certificate Authority certificate, or any interim certificate, that you received from your SSL certificate provider.
