@@ -121,7 +121,7 @@ This SDK and sample is dual licensed under the Universal Permissive License 1.0 
 See [LICENSE](/LICENSE.txt) for more details.
 
 ## Changes
-See [CHANGELOG](/CONTRIBUTING.md).
+See [CHANGELOG](/CHANGELOG.md).
 
 ## Known Issues
 You can find information on any known issues with the SDK here and under the [Issues](https://github.com/oracle/oci-go-sdk/issues) tab of this project's GitHub repository.
