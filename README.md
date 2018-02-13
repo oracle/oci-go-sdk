@@ -7,14 +7,6 @@ This is a ***preview*** of the official Go SDK for Oracle Cloud Infrastructure. 
 ## Dependencies
 - Install [Go programming language](https://golang.org/dl/).
 - Install [GNU Make](https://www.gnu.org/software/make/), using the package manager or binary distribution tool appropriate for your platform.
-- Install [Testify](https://github.com/stretchr/testify) with the command:
-```sh
-go get github.com/stretchr/testify
-```
-- Install [go lint](https://github.com/golang/lint) with the command:
-```
-go get -u github.com/golang/lint/golint
-```
  
 
 
@@ -134,6 +126,16 @@ See [CHANGELOG](/CONTRIBUTING.md).
 You can find information on any known issues with the SDK here and under the [Issues](https://github.com/oracle/oci-go-sdk/issues) tab of this project's GitHub repository.
 
 ## Building and testing
+### Dev dependencies
+- Install [Testify](https://github.com/stretchr/testify) with the command:
+```sh
+go get github.com/stretchr/testify
+```
+- Install [go lint](https://github.com/golang/lint) with the command:
+```
+go get -u github.com/golang/lint/golint
+```
+### Build
 Building is provided by the make file at the root of the project. To build the project execute.
 
 ```
