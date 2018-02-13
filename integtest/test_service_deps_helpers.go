@@ -1263,8 +1263,9 @@ func createOrGetDataGuardAssociation(t *testing.T) *string {
 	r, err := c.CreateDataGuardAssociation(context.Background(), req)
 	failIfError(t, err)
 	return r.Id
+}
 
-	func createOrGetUser(t *testing.T) identity.User {
+func createOrGetUser(t *testing.T) identity.User {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 
