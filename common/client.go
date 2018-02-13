@@ -264,10 +264,26 @@ func (durationExceedsDeadlineError) Error() string { return "now() + duration ex
 // we cannot succeed based on the configured retry policy.
 var DurationExceedsDeadline error = durationExceedsDeadlineError{}
 
-//Call executes the http requrest with the given context according to the specified retry policy (if present)
-func (client BaseClient) Call(ctx context.Context, request *http.Request, options ...RetryPolicyOption) (*http.Response, error) {
-	if len(options) == 0 {
-		return client.doRequest(ctx, request)
+// CallConfig is an encapsulation of the arguments needed to configure the Call function.
+type CallConfig struct {
+	KeepResponseBodyOpen bool                              // Whether not to close the response body. Defaults to false (always close).
+	ResponseCallback     func(*http.Response, error) error // Callback to process the response & error.
+	RetryPolicyOptions   []RetryPolicyOption               // Retry policy options.
+}
+
+// Call executes the http request with the given context according to the specified retry policy (if present)
+func (client BaseClient) Call(ctx context.Context, request *http.Request, config CallConfig) error {
+	responseCallback := config.ResponseCallback
+	// Define a no-op/passthrough callback if a callback wasn't supplied.
+	if responseCallback == nil {
+		responseCallback = func(response *http.Response, err error) error {
+			return err
+		}
+	}
+
+	if len(config.RetryPolicyOptions) == 0 {
+		response, err := client.doRequest(ctx, request)
+		return responseCallback(response, err)
 	}
 
 	// the request Body is closed by the underlying http.Transport
@@ -278,27 +294,31 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request, option
 		requestBodyAsByteSlice, err = ioutil.ReadAll(request.Body)
 		if err != nil {
 			// error reading the body of the request
-			return nil, err
+			return err
 		}
 	}
 
-	policy := getRetryPolicy(request, options...)
+	policy := getRetryPolicy(request, config.RetryPolicyOptions...)
 	addRetryTokenToRequestIfNeeded(request, client.generator)
-	deadlineContext, deadlineCancel := context.WithTimeout(ctx, GetMaximumTimeout(policy))
-	defer deadlineCancel()
 
 	for currentOperationAttempt := uint(1); ShouldContinueIssuingRequests(currentOperationAttempt, policy.MaximumNumberAttempts); currentOperationAttempt++ {
 		// reset the request body on each operation attempt
 		request.Body = ioutil.NopCloser(bytes.NewBuffer(requestBodyAsByteSlice))
 
 		Debugln(fmt.Sprintf("operation attempt #%v", currentOperationAttempt))
+
+		deadlineContext, deadlineCancel := context.WithTimeout(ctx, GetMaximumTimeout(policy))
 		response, err := client.doRequest(deadlineContext, request)
+		if !config.KeepResponseBodyOpen {
+			defer closeBodyIfValid(response)
+		}
+		defer deadlineCancel()
 
 		select {
 		case <-deadlineContext.Done():
 			// return why the request was aborted (could be user interrupted or deadline exceeded)
 			// => include last received response for information (user may choose to re-issue request)
-			return response, deadlineContext.Err()
+			return responseCallback(response, deadlineContext.Err())
 		default:
 			// non-blocking select
 		}
@@ -315,17 +335,17 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request, option
 					// we want to retry the operation, but the policy is telling us to wait for a duration that exceeds
 					// the specified overall deadline for the operation => instead of waiting for however long that
 					// time period is and then aborting, abort now and save the cycles
-					return response, DurationExceedsDeadline
+					return responseCallback(response, DurationExceedsDeadline)
 				}
 				Debugln(fmt.Sprintf("waiting %v before retrying operation", duration))
 				time.Sleep(duration)
 			}
 		} else {
 			// we should NOT retry operation based on response and/or error => return
-			return response, err
+			return responseCallback(response, err)
 		}
 	}
-	return nil, fmt.Errorf("maximum number of attempts exceeded (%v)", policy.MaximumNumberAttempts)
+	return responseCallback(nil, fmt.Errorf("maximum number of attempts exceeded (%v)", policy.MaximumNumberAttempts))
 }
 
 //doRequest executes the http request with the given context
@@ -393,8 +413,8 @@ func (client BaseClient) doRequest(ctx context.Context, request *http.Request) (
 	return
 }
 
-//CloseBodyIfValid closes the body of an http response if the response and the body are valid
-func CloseBodyIfValid(httpResponse *http.Response) {
+// closeBodyIfValid closes the body of an http response if the response and the body are valid
+func closeBodyIfValid(httpResponse *http.Response) {
 	if httpResponse != nil && httpResponse.Body != nil {
 		httpResponse.Body.Close()
 	}

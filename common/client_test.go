@@ -5,12 +5,13 @@ import (
 	"context"
 	"crypto/rsa"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type customConfig struct {
@@ -184,8 +185,12 @@ func TestBaseClient_Call(t *testing.T) {
 
 	request := http.Request{}
 	request.URL = &url.URL{Path: restPath}
-	retRes, err := c.Call(context.Background(), &request)
-	assert.Equal(t, &response, retRes)
+	err := c.Call(context.Background(), &request, CallConfig{
+		ResponseCallback: func(retRes *http.Response, e error) error {
+			assert.Equal(t, &response, retRes)
+			return e
+		},
+	})
 	assert.NoError(t, err)
 
 }
@@ -218,9 +223,13 @@ func TestBaseClient_CallError(t *testing.T) {
 
 	request := http.Request{}
 	request.URL = &url.URL{Path: restPath}
-	retRes, err := c.Call(context.Background(), &request)
+	err := c.Call(context.Background(), &request, CallConfig{
+		ResponseCallback: func(retRes *http.Response, e error) error {
+			assert.Equal(t, &response, retRes)
+			return e
+		},
+	})
 	assert.Error(t, err)
-	assert.Equal(t, &response, retRes)
 
 }
 
