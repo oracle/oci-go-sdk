@@ -38,7 +38,7 @@ Once credentials have been configured, call `common.DefaultConfigProvider()` fun
 configProvider := common.DefaultConfigProvider()
 ```
 
- To configure the SDK programmatically, implement the `ConfigurationProvider` interface shown below:
+ Or, to configure the SDK programmatically instead, implement the `ConfigurationProvider` interface shown below:
  ```go
 // ConfigurationProvider wraps information about the account owner
 type ConfigurationProvider interface {
