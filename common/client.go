@@ -283,6 +283,9 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request, config
 
 	if len(config.RetryPolicyOptions) == 0 {
 		response, err := client.doRequest(ctx, request)
+		if !config.KeepResponseBodyOpen {
+			defer closeBodyIfValid(response)
+		}
 		return responseCallback(response, err)
 	}
 
@@ -301,26 +304,26 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request, config
 	policy := getRetryPolicy(request, config.RetryPolicyOptions...)
 	addRetryTokenToRequestIfNeeded(request, client.generator)
 
+	deadlineContext, deadlineCancel := context.WithTimeout(ctx, GetMaximumTimeout(policy))
+	defer deadlineCancel()
+
+	select {
+	case <-deadlineContext.Done():
+		// return why the request was aborted (could be user interrupted or deadline exceeded)
+		return responseCallback(nil, deadlineContext.Err())
+	default:
+		// non-blocking select
+	}
+
 	for currentOperationAttempt := uint(1); ShouldContinueIssuingRequests(currentOperationAttempt, policy.MaximumNumberAttempts); currentOperationAttempt++ {
 		// reset the request body on each operation attempt
 		request.Body = ioutil.NopCloser(bytes.NewBuffer(requestBodyAsByteSlice))
 
 		Debugln(fmt.Sprintf("operation attempt #%v", currentOperationAttempt))
 
-		deadlineContext, deadlineCancel := context.WithTimeout(ctx, GetMaximumTimeout(policy))
 		response, err := client.doRequest(deadlineContext, request)
 		if !config.KeepResponseBodyOpen {
 			defer closeBodyIfValid(response)
-		}
-		defer deadlineCancel()
-
-		select {
-		case <-deadlineContext.Done():
-			// return why the request was aborted (could be user interrupted or deadline exceeded)
-			// => include last received response for information (user may choose to re-issue request)
-			return responseCallback(response, deadlineContext.Err())
-		default:
-			// non-blocking select
 		}
 
 		if policy.ShouldRetryOperation(response, err, currentOperationAttempt) {
