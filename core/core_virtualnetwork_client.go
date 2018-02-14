@@ -11,8 +11,9 @@ package core
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
 	"net/http"
+
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 //VirtualNetworkClient a client for VirtualNetwork
@@ -68,8 +69,7 @@ func (client VirtualNetworkClient) BulkAddVirtualCircuitPublicPrefixes(ctx conte
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
-	return
+	return client.Call(ctx, &httpRequest, common.CallConfig{})
 }
 
 // BulkDeleteVirtualCircuitPublicPrefixes Removes one or more customer public IP prefixes from the specified public virtual circuit.
@@ -82,8 +82,7 @@ func (client VirtualNetworkClient) BulkDeleteVirtualCircuitPublicPrefixes(ctx co
 		return
 	}
 
-	_, err = client.Call(ctx, &httpRequest)
-	return
+	return client.Call(ctx, &httpRequest, common.CallConfig{})
 }
 
 // ConnectLocalPeeringGateways Connects this local peering gateway (LPG) to another one in the same region.
@@ -99,14 +98,16 @@ func (client VirtualNetworkClient) ConnectLocalPeeringGateways(ctx context.Conte
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -128,14 +129,17 @@ func (client VirtualNetworkClient) CreateCpe(ctx context.Context, request Create
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -161,14 +165,17 @@ func (client VirtualNetworkClient) CreateCrossConnect(ctx context.Context, reque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -191,14 +198,17 @@ func (client VirtualNetworkClient) CreateCrossConnectGroup(ctx context.Context, 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -218,14 +228,17 @@ func (client VirtualNetworkClient) CreateDhcpOptions(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -245,14 +258,17 @@ func (client VirtualNetworkClient) CreateDrg(ctx context.Context, request Create
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -271,14 +287,17 @@ func (client VirtualNetworkClient) CreateDrgAttachment(ctx context.Context, requ
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -309,14 +328,17 @@ func (client VirtualNetworkClient) CreateIPSecConnection(ctx context.Context, re
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -343,14 +365,17 @@ func (client VirtualNetworkClient) CreateInternetGateway(ctx context.Context, re
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -361,14 +386,17 @@ func (client VirtualNetworkClient) CreateLocalPeeringGateway(ctx context.Context
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -381,14 +409,17 @@ func (client VirtualNetworkClient) CreatePrivateIp(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -411,14 +442,17 @@ func (client VirtualNetworkClient) CreateRouteTable(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -440,14 +474,17 @@ func (client VirtualNetworkClient) CreateSecurityList(ctx context.Context, reque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -482,14 +519,17 @@ func (client VirtualNetworkClient) CreateSubnet(ctx context.Context, request Cre
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -522,14 +562,17 @@ func (client VirtualNetworkClient) CreateVcn(ctx context.Context, request Create
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -557,14 +600,17 @@ func (client VirtualNetworkClient) CreateVirtualCircuit(ctx context.Context, req
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -577,14 +623,16 @@ func (client VirtualNetworkClient) DeleteCpe(ctx context.Context, request Delete
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -596,14 +644,16 @@ func (client VirtualNetworkClient) DeleteCrossConnect(ctx context.Context, reque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -616,14 +666,16 @@ func (client VirtualNetworkClient) DeleteCrossConnectGroup(ctx context.Context, 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -637,14 +689,16 @@ func (client VirtualNetworkClient) DeleteDhcpOptions(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -658,14 +712,16 @@ func (client VirtualNetworkClient) DeleteDrg(ctx context.Context, request Delete
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -678,14 +734,16 @@ func (client VirtualNetworkClient) DeleteDrgAttachment(ctx context.Context, requ
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -702,14 +760,16 @@ func (client VirtualNetworkClient) DeleteIPSecConnection(ctx context.Context, re
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -723,14 +783,16 @@ func (client VirtualNetworkClient) DeleteInternetGateway(ctx context.Context, re
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -743,14 +805,16 @@ func (client VirtualNetworkClient) DeleteLocalPeeringGateway(ctx context.Context
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -769,14 +833,16 @@ func (client VirtualNetworkClient) DeletePrivateIp(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -790,14 +856,16 @@ func (client VirtualNetworkClient) DeleteRouteTable(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -811,14 +879,16 @@ func (client VirtualNetworkClient) DeleteSecurityList(ctx context.Context, reque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -831,14 +901,16 @@ func (client VirtualNetworkClient) DeleteSubnet(ctx context.Context, request Del
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -851,14 +923,16 @@ func (client VirtualNetworkClient) DeleteVcn(ctx context.Context, request Delete
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -872,14 +946,16 @@ func (client VirtualNetworkClient) DeleteVirtualCircuit(ctx context.Context, req
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -890,14 +966,17 @@ func (client VirtualNetworkClient) GetCpe(ctx context.Context, request GetCpeReq
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -908,14 +987,17 @@ func (client VirtualNetworkClient) GetCrossConnect(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -926,14 +1008,17 @@ func (client VirtualNetworkClient) GetCrossConnectGroup(ctx context.Context, req
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -944,14 +1029,17 @@ func (client VirtualNetworkClient) GetCrossConnectLetterOfAuthority(ctx context.
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -962,14 +1050,17 @@ func (client VirtualNetworkClient) GetCrossConnectStatus(ctx context.Context, re
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -980,14 +1071,17 @@ func (client VirtualNetworkClient) GetDhcpOptions(ctx context.Context, request G
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -998,14 +1092,17 @@ func (client VirtualNetworkClient) GetDrg(ctx context.Context, request GetDrgReq
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1016,14 +1113,17 @@ func (client VirtualNetworkClient) GetDrgAttachment(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1035,14 +1135,17 @@ func (client VirtualNetworkClient) GetFastConnectProviderService(ctx context.Con
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1055,14 +1158,17 @@ func (client VirtualNetworkClient) GetIPSecConnection(ctx context.Context, reque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1074,14 +1180,17 @@ func (client VirtualNetworkClient) GetIPSecConnectionDeviceConfig(ctx context.Co
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1092,14 +1201,17 @@ func (client VirtualNetworkClient) GetIPSecConnectionDeviceStatus(ctx context.Co
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1110,14 +1222,17 @@ func (client VirtualNetworkClient) GetInternetGateway(ctx context.Context, reque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1128,14 +1243,17 @@ func (client VirtualNetworkClient) GetLocalPeeringGateway(ctx context.Context, r
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1149,14 +1267,17 @@ func (client VirtualNetworkClient) GetPrivateIp(ctx context.Context, request Get
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1167,14 +1288,17 @@ func (client VirtualNetworkClient) GetRouteTable(ctx context.Context, request Ge
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1185,14 +1309,17 @@ func (client VirtualNetworkClient) GetSecurityList(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1203,14 +1330,17 @@ func (client VirtualNetworkClient) GetSubnet(ctx context.Context, request GetSub
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1221,14 +1351,17 @@ func (client VirtualNetworkClient) GetVcn(ctx context.Context, request GetVcnReq
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1239,14 +1372,17 @@ func (client VirtualNetworkClient) GetVirtualCircuit(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1260,14 +1396,17 @@ func (client VirtualNetworkClient) GetVnic(ctx context.Context, request GetVnicR
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1278,14 +1417,17 @@ func (client VirtualNetworkClient) ListCpes(ctx context.Context, request ListCpe
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1296,14 +1438,17 @@ func (client VirtualNetworkClient) ListCrossConnectGroups(ctx context.Context, r
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1315,14 +1460,17 @@ func (client VirtualNetworkClient) ListCrossConnectLocations(ctx context.Context
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1334,14 +1482,17 @@ func (client VirtualNetworkClient) ListCrossConnects(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1354,14 +1505,17 @@ func (client VirtualNetworkClient) ListCrossconnectPortSpeedShapes(ctx context.C
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1374,14 +1528,17 @@ func (client VirtualNetworkClient) ListDhcpOptions(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1393,14 +1550,17 @@ func (client VirtualNetworkClient) ListDrgAttachments(ctx context.Context, reque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1411,14 +1571,17 @@ func (client VirtualNetworkClient) ListDrgs(ctx context.Context, request ListDrg
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1433,14 +1596,17 @@ func (client VirtualNetworkClient) ListFastConnectProviderServices(ctx context.C
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1453,14 +1619,17 @@ func (client VirtualNetworkClient) ListFastConnectProviderVirtualCircuitBandwidt
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1472,14 +1641,17 @@ func (client VirtualNetworkClient) ListIPSecConnections(ctx context.Context, req
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1490,14 +1662,17 @@ func (client VirtualNetworkClient) ListInternetGateways(ctx context.Context, req
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1509,14 +1684,17 @@ func (client VirtualNetworkClient) ListLocalPeeringGateways(ctx context.Context,
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1537,14 +1715,17 @@ func (client VirtualNetworkClient) ListPrivateIps(ctx context.Context, request L
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1557,14 +1738,17 @@ func (client VirtualNetworkClient) ListRouteTables(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1575,14 +1759,17 @@ func (client VirtualNetworkClient) ListSecurityLists(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1593,14 +1780,17 @@ func (client VirtualNetworkClient) ListSubnets(ctx context.Context, request List
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1611,14 +1801,17 @@ func (client VirtualNetworkClient) ListVcns(ctx context.Context, request ListVcn
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1629,14 +1822,17 @@ func (client VirtualNetworkClient) ListVirtualCircuitBandwidthShapes(ctx context
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1648,14 +1844,17 @@ func (client VirtualNetworkClient) ListVirtualCircuitPublicPrefixes(ctx context.
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1666,14 +1865,17 @@ func (client VirtualNetworkClient) ListVirtualCircuits(ctx context.Context, requ
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1685,14 +1887,17 @@ func (client VirtualNetworkClient) UpdateCpe(ctx context.Context, request Update
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1703,14 +1908,17 @@ func (client VirtualNetworkClient) UpdateCrossConnect(ctx context.Context, reque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1722,14 +1930,17 @@ func (client VirtualNetworkClient) UpdateCrossConnectGroup(ctx context.Context, 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1742,14 +1953,17 @@ func (client VirtualNetworkClient) UpdateDhcpOptions(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1760,14 +1974,17 @@ func (client VirtualNetworkClient) UpdateDrg(ctx context.Context, request Update
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1779,14 +1996,17 @@ func (client VirtualNetworkClient) UpdateDrgAttachment(ctx context.Context, requ
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1798,14 +2018,17 @@ func (client VirtualNetworkClient) UpdateIPSecConnection(ctx context.Context, re
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1819,14 +2042,17 @@ func (client VirtualNetworkClient) UpdateInternetGateway(ctx context.Context, re
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1837,14 +2063,17 @@ func (client VirtualNetworkClient) UpdateLocalPeeringGateway(ctx context.Context
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1862,14 +2091,17 @@ func (client VirtualNetworkClient) UpdatePrivateIp(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1882,14 +2114,17 @@ func (client VirtualNetworkClient) UpdateRouteTable(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1903,14 +2138,17 @@ func (client VirtualNetworkClient) UpdateSecurityList(ctx context.Context, reque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1921,14 +2159,17 @@ func (client VirtualNetworkClient) UpdateSubnet(ctx context.Context, request Upd
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1940,14 +2181,17 @@ func (client VirtualNetworkClient) UpdateVcn(ctx context.Context, request Update
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1979,14 +2223,17 @@ func (client VirtualNetworkClient) UpdateVirtualCircuit(ctx context.Context, req
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1997,13 +2244,16 @@ func (client VirtualNetworkClient) UpdateVnic(ctx context.Context, request Updat
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }

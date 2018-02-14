@@ -11,8 +11,9 @@ package loadbalancer
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
 	"net/http"
+
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 //LoadBalancerClient a client for LoadBalancer
@@ -65,14 +66,16 @@ func (client LoadBalancerClient) CreateBackend(ctx context.Context, request Crea
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -83,14 +86,16 @@ func (client LoadBalancerClient) CreateBackendSet(ctx context.Context, request C
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -101,14 +106,16 @@ func (client LoadBalancerClient) CreateCertificate(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -119,14 +126,16 @@ func (client LoadBalancerClient) CreateListener(ctx context.Context, request Cre
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -157,14 +166,16 @@ func (client LoadBalancerClient) CreateLoadBalancer(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -175,14 +186,16 @@ func (client LoadBalancerClient) DeleteBackend(ctx context.Context, request Dele
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -194,14 +207,16 @@ func (client LoadBalancerClient) DeleteBackendSet(ctx context.Context, request D
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -212,14 +227,16 @@ func (client LoadBalancerClient) DeleteCertificate(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -230,14 +247,16 @@ func (client LoadBalancerClient) DeleteListener(ctx context.Context, request Del
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -248,14 +267,16 @@ func (client LoadBalancerClient) DeleteLoadBalancer(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -266,14 +287,17 @@ func (client LoadBalancerClient) GetBackend(ctx context.Context, request GetBack
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -284,14 +308,17 @@ func (client LoadBalancerClient) GetBackendHealth(ctx context.Context, request G
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -302,14 +329,17 @@ func (client LoadBalancerClient) GetBackendSet(ctx context.Context, request GetB
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -320,14 +350,17 @@ func (client LoadBalancerClient) GetBackendSetHealth(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -338,14 +371,17 @@ func (client LoadBalancerClient) GetHealthChecker(ctx context.Context, request G
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -356,14 +392,17 @@ func (client LoadBalancerClient) GetLoadBalancer(ctx context.Context, request Ge
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -374,14 +413,17 @@ func (client LoadBalancerClient) GetLoadBalancerHealth(ctx context.Context, requ
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -392,14 +434,17 @@ func (client LoadBalancerClient) GetWorkRequest(ctx context.Context, request Get
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -410,14 +455,17 @@ func (client LoadBalancerClient) ListBackendSets(ctx context.Context, request Li
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -428,14 +476,17 @@ func (client LoadBalancerClient) ListBackends(ctx context.Context, request ListB
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -446,14 +497,17 @@ func (client LoadBalancerClient) ListCertificates(ctx context.Context, request L
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -464,14 +518,17 @@ func (client LoadBalancerClient) ListLoadBalancerHealths(ctx context.Context, re
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -482,14 +539,17 @@ func (client LoadBalancerClient) ListLoadBalancers(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -500,14 +560,17 @@ func (client LoadBalancerClient) ListPolicies(ctx context.Context, request ListP
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -518,14 +581,17 @@ func (client LoadBalancerClient) ListProtocols(ctx context.Context, request List
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -536,14 +602,17 @@ func (client LoadBalancerClient) ListShapes(ctx context.Context, request ListSha
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -554,14 +623,17 @@ func (client LoadBalancerClient) ListWorkRequests(ctx context.Context, request L
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -572,14 +644,16 @@ func (client LoadBalancerClient) UpdateBackend(ctx context.Context, request Upda
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -590,14 +664,16 @@ func (client LoadBalancerClient) UpdateBackendSet(ctx context.Context, request U
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -608,14 +684,16 @@ func (client LoadBalancerClient) UpdateHealthChecker(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -626,14 +704,16 @@ func (client LoadBalancerClient) UpdateListener(ctx context.Context, request Upd
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -644,13 +724,15 @@ func (client LoadBalancerClient) UpdateLoadBalancer(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
