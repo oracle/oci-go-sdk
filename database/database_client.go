@@ -11,8 +11,9 @@ package database
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
 	"net/http"
+
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 //DatabaseClient a client for Database
@@ -62,14 +63,17 @@ func (client DatabaseClient) CreateBackup(ctx context.Context, request CreateBac
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -86,14 +90,17 @@ func (client DatabaseClient) CreateDataGuardAssociation(ctx context.Context, req
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -104,14 +111,17 @@ func (client DatabaseClient) CreateDbHome(ctx context.Context, request CreateDbH
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -131,14 +141,17 @@ func (client DatabaseClient) DbNodeAction(ctx context.Context, request DbNodeAct
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -149,14 +162,16 @@ func (client DatabaseClient) DeleteBackup(ctx context.Context, request DeleteBac
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -167,14 +182,16 @@ func (client DatabaseClient) DeleteDbHome(ctx context.Context, request DeleteDbH
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -188,14 +205,17 @@ func (client DatabaseClient) FailoverDataGuardAssociation(ctx context.Context, r
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -206,14 +226,17 @@ func (client DatabaseClient) GetBackup(ctx context.Context, request GetBackupReq
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -224,14 +247,17 @@ func (client DatabaseClient) GetDataGuardAssociation(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -242,14 +268,17 @@ func (client DatabaseClient) GetDatabase(ctx context.Context, request GetDatabas
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -260,14 +289,17 @@ func (client DatabaseClient) GetDbHome(ctx context.Context, request GetDbHomeReq
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -278,14 +310,17 @@ func (client DatabaseClient) GetDbHomePatch(ctx context.Context, request GetDbHo
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -296,14 +331,17 @@ func (client DatabaseClient) GetDbHomePatchHistoryEntry(ctx context.Context, req
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -314,14 +352,17 @@ func (client DatabaseClient) GetDbNode(ctx context.Context, request GetDbNodeReq
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -332,14 +373,17 @@ func (client DatabaseClient) GetDbSystem(ctx context.Context, request GetDbSyste
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -350,14 +394,17 @@ func (client DatabaseClient) GetDbSystemPatch(ctx context.Context, request GetDb
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -368,14 +415,17 @@ func (client DatabaseClient) GetDbSystemPatchHistoryEntry(ctx context.Context, r
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -393,14 +443,17 @@ func (client DatabaseClient) LaunchDbSystem(ctx context.Context, request LaunchD
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -411,14 +464,17 @@ func (client DatabaseClient) ListBackups(ctx context.Context, request ListBackup
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -429,14 +485,17 @@ func (client DatabaseClient) ListDataGuardAssociations(ctx context.Context, requ
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -447,14 +506,17 @@ func (client DatabaseClient) ListDatabases(ctx context.Context, request ListData
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -465,14 +527,17 @@ func (client DatabaseClient) ListDbHomePatchHistoryEntries(ctx context.Context, 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -483,14 +548,17 @@ func (client DatabaseClient) ListDbHomePatches(ctx context.Context, request List
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -501,14 +569,17 @@ func (client DatabaseClient) ListDbHomes(ctx context.Context, request ListDbHome
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -519,14 +590,17 @@ func (client DatabaseClient) ListDbNodes(ctx context.Context, request ListDbNode
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -537,14 +611,17 @@ func (client DatabaseClient) ListDbSystemPatchHistoryEntries(ctx context.Context
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -555,14 +632,17 @@ func (client DatabaseClient) ListDbSystemPatches(ctx context.Context, request Li
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -573,14 +653,17 @@ func (client DatabaseClient) ListDbSystemShapes(ctx context.Context, request Lis
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -592,14 +675,17 @@ func (client DatabaseClient) ListDbSystems(ctx context.Context, request ListDbSy
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -610,14 +696,17 @@ func (client DatabaseClient) ListDbVersions(ctx context.Context, request ListDbV
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -628,14 +717,17 @@ func (client DatabaseClient) ReinstateDataGuardAssociation(ctx context.Context, 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -646,14 +738,17 @@ func (client DatabaseClient) RestoreDatabase(ctx context.Context, request Restor
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -666,14 +761,17 @@ func (client DatabaseClient) SwitchoverDataGuardAssociation(ctx context.Context,
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -684,14 +782,16 @@ func (client DatabaseClient) TerminateDbSystem(ctx context.Context, request Term
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -702,14 +802,17 @@ func (client DatabaseClient) UpdateDatabase(ctx context.Context, request UpdateD
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -720,14 +823,17 @@ func (client DatabaseClient) UpdateDbHome(ctx context.Context, request UpdateDbH
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -738,13 +844,16 @@ func (client DatabaseClient) UpdateDbSystem(ctx context.Context, request UpdateD
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }

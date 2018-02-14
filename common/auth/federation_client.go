@@ -7,10 +7,11 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
 	"net/http"
 	"strings"
 	"sync"
+
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // federationClient is a client to retrieve the security token for an instance principal necessary to sign a request.
@@ -133,15 +134,16 @@ func (c *x509FederationClient) getSecurityToken() (securityToken, error) {
 		return nil, fmt.Errorf("failed to make http request: %s", err.Error())
 	}
 
-	var httpResponse *http.Response
-	defer common.CloseBodyIfValid(httpResponse)
-	if httpResponse, err = c.authClient.Call(context.Background(), &httpRequest); err != nil {
-		return nil, fmt.Errorf("failed to call: %s", err.Error())
-	}
-
 	response := x509FederationResponse{}
-	if err = common.UnmarshalResponse(httpResponse, &response); err != nil {
-		return nil, fmt.Errorf("failed to unmarshal the response: %s", err.Error())
+	if err = c.authClient.Call(context.Background(), &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			if err = common.UnmarshalResponse(httpResponse, &response); err != nil {
+				return fmt.Errorf("failed to unmarshal the response: %s", err.Error())
+			}
+			return e
+		},
+	}); err != nil {
+		return nil, fmt.Errorf("failed to call: %s", err.Error())
 	}
 
 	return newInstancePrincipalToken(response.Token.Token)

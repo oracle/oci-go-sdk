@@ -11,8 +11,9 @@ package core
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
 	"net/http"
+
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 //BlockstorageClient a client for Blockstorage
@@ -73,14 +74,17 @@ func (client BlockstorageClient) CreateVolume(ctx context.Context, request Creat
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -95,14 +99,17 @@ func (client BlockstorageClient) CreateVolumeBackup(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -116,14 +123,16 @@ func (client BlockstorageClient) DeleteBootVolume(ctx context.Context, request D
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -137,14 +146,16 @@ func (client BlockstorageClient) DeleteVolume(ctx context.Context, request Delet
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -155,14 +166,16 @@ func (client BlockstorageClient) DeleteVolumeBackup(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -173,14 +186,17 @@ func (client BlockstorageClient) GetBootVolume(ctx context.Context, request GetB
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -191,14 +207,17 @@ func (client BlockstorageClient) GetVolume(ctx context.Context, request GetVolum
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -209,14 +228,17 @@ func (client BlockstorageClient) GetVolumeBackup(ctx context.Context, request Ge
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -227,14 +249,17 @@ func (client BlockstorageClient) ListBootVolumes(ctx context.Context, request Li
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -245,14 +270,17 @@ func (client BlockstorageClient) ListVolumeBackups(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -263,14 +291,17 @@ func (client BlockstorageClient) ListVolumes(ctx context.Context, request ListVo
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -281,14 +312,17 @@ func (client BlockstorageClient) UpdateBootVolume(ctx context.Context, request U
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -300,14 +334,17 @@ func (client BlockstorageClient) UpdateVolume(ctx context.Context, request Updat
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -319,13 +356,16 @@ func (client BlockstorageClient) UpdateVolumeBackup(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
