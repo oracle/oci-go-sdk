@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Database Service API
@@ -18,7 +18,7 @@ import (
 type PatchDetails struct {
 
 	// The action to perform on the patch.
-	Action PatchDetailsActionEnum `mandatory:"false" json:"action"`
+	Action PatchDetailsActionEnum `mandatory:"false" json:"action,omitempty"`
 
 	// The OCID of the patch.
 	PatchId *string `mandatory:"false" json:"patchId"`

@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Core Services API
@@ -20,7 +20,7 @@ type LetterOfAuthority struct {
 	AuthorizedEntityName *string `mandatory:"false" json:"authorizedEntityName"`
 
 	// The type of cross-connect fiber, termination, and optical specification.
-	CircuitType LetterOfAuthorityCircuitTypeEnum `mandatory:"false" json:"circuitType"`
+	CircuitType LetterOfAuthorityCircuitTypeEnum `mandatory:"false" json:"circuitType,omitempty"`
 
 	// The OCID of the cross-connect.
 	CrossConnectId *string `mandatory:"false" json:"crossConnectId"`

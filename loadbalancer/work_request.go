@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Load Balancing Service API
@@ -15,17 +15,17 @@ import (
 // WorkRequest Many of the API requests you use to create and configure load balancing do not take effect immediately.
 // In these cases, the request spawns an asynchronous work flow to fulfill the request. WorkRequest objects provide visibility
 // for in-progress work flows.
-// For more information about work requests, see [Viewing the State of a Work Request]({{DOC_SERVER_URL}}/Content/Balance/Tasks/viewingworkrequest.htm).
+// For more information about work requests, see Viewing the State of a Work Request (https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/Tasks/viewingworkrequest.htm).
 type WorkRequest struct {
 	ErrorDetails []WorkRequestError `mandatory:"true" json:"errorDetails"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the work request.
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the work request.
 	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the work request.
 	LifecycleState WorkRequestLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the load balancer with which the work request
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the load balancer with which the work request
 	// is associated.
 	LoadBalancerId *string `mandatory:"true" json:"loadBalancerId"`
 

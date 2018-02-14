@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Core Services API
@@ -13,7 +13,7 @@ import (
 )
 
 // FastConnectProviderService A service offering from a supported provider. For more information,
-// see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
+// see FastConnect Overview (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/fastconnect.htm).
 type FastConnectProviderService struct {
 
 	// The OCID of the service offered by the provider.
@@ -38,7 +38,7 @@ type FastConnectProviderService struct {
 	Description *string `mandatory:"false" json:"description"`
 
 	// An array of virtual circuit types supported by this service.
-	SupportedVirtualCircuitTypes []FastConnectProviderServiceSupportedVirtualCircuitTypesEnum `mandatory:"false" json:"supportedVirtualCircuitTypes"`
+	SupportedVirtualCircuitTypes []FastConnectProviderServiceSupportedVirtualCircuitTypesEnum `mandatory:"false" json:"supportedVirtualCircuitTypes,omitempty"`
 }
 
 func (m FastConnectProviderService) String() string {

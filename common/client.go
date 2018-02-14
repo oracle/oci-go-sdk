@@ -1,4 +1,6 @@
-// Package common Copyright (c) 2016, 2017, 2018 Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
+
+// Package common provides supporting functions and structs used by service packages
 package common
 
 import (
@@ -120,17 +122,11 @@ func DefaultBaseClientWithSigner(signer HTTPRequestSigner) BaseClient {
 
 // NewClientWithConfig Create a new client with a configuration provider, the configuration provider
 // will be used for the default signer as well as reading the region
+// This function does not check for valid regions to implement forward compatibility
 func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClient, err error) {
 	var ok bool
 	if ok, err = IsConfigurationProviderValid(configProvider); !ok {
 		err = fmt.Errorf("can not create client, bad configuration: %s", err.Error())
-		return
-	}
-
-	regionstr, _ := configProvider.Region()
-	_, err = StringToRegion(regionstr)
-	if err != nil {
-		err = fmt.Errorf("can not create client, bad region configuration: %s", err.Error())
 		return
 	}
 
@@ -153,7 +149,7 @@ func getHomeFolder() string {
 
 // DefaultConfigProvider returns the default config provider. The default config provider
 // will look for configurations in 3 places: file in $HOME/.oci/config, HOME/.obmcs/config and
-// variables names starting with the string TF_VAR. If the same configuration are found in multiple
+// variables names starting with the string TF_VAR. If the same configuration is found in multiple
 // places the provider will prefer the first one.
 func DefaultConfigProvider() ConfigurationProvider {
 	homeFolder := getHomeFolder()

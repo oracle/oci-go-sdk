@@ -11,10 +11,11 @@ package integtest
 import (
 	"context"
 	"fmt"
+	"testing"
+
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/core"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestComputeClient_AttachVnic(t *testing.T) {
@@ -134,13 +135,11 @@ func TestComputeClient_ExportImage(t *testing.T) {
 }
 
 func TestComputeClient_GetConsoleHistory(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.GetConsoleHistoryRequest{}
-	r, err := c.GetConsoleHistory(context.Background(), request)
+	history := captureOrGetConsoleHistory(t)
+	assert.NotEmpty(t, history, fmt.Sprint(history))
+
+	r := getConsoleHistory(t, history.Id)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
 	return
 }
 
@@ -178,10 +177,16 @@ func TestComputeClient_GetInstance(t *testing.T) {
 }
 
 func TestComputeClient_GetInstanceConsoleConnection(t *testing.T) {
-	t.Skip("Not implemented")
+	consoleConnection := createOrGetInstanceConsoleConnection(t)
+	assert.NotEmpty(t, consoleConnection)
+	assert.NotEmpty(t, consoleConnection.Id)
+
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
+
 	request := core.GetInstanceConsoleConnectionRequest{}
+	request.InstanceConsoleConnectionId = consoleConnection.Id
+
 	r, err := c.GetInstanceConsoleConnection(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
@@ -233,13 +238,47 @@ func TestComputeClient_InstanceAction(t *testing.T) {
 }
 
 func TestComputeClient_LaunchInstance(t *testing.T) {
-	t.Skip("Not implemented")
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
+
 	request := core.LaunchInstanceRequest{}
+	request.CompartmentId = common.String(getCompartmentID())
+	request.DisplayName = common.String("GOSDK2_Test_Instance")
+	request.AvailabilityDomain = common.String(validAD())
+	request.SubnetId = createOrGetSubnet(t).Id
+
+	// search image by display name to make integration test running more relaible
+	// i.e. ServiceLimitExeceed error etc...
+	images := listImagesByDisplayName(t, common.String("Oracle-Linux-7.4-2018.01.20-0"))
+	assert.NotEmpty(t, images)
+	request.ImageId = images[0].Id
+
+	shapes := listShapesForImage(t, request.ImageId)
+	assert.NotEmpty(t, shapes)
+
+	// if more shapes return, use different one to avoid getting service limited error
+	if len(shapes) > 0 {
+		request.Shape = shapes[1].Shape
+	} else {
+		request.Shape = shapes[0].Shape
+	}
+
 	r, err := c.LaunchInstance(context.Background(), request)
+	failIfError(t, err)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
+
+	// if we've successfully created a instance during testing, make sure that we delete it
+	defer func(client core.ComputeClient, r core.Instance) {
+		// delete instance
+		request := core.TerminateInstanceRequest{
+			InstanceId: r.Id,
+		}
+
+		resp, err := client.TerminateInstance(context.Background(), request)
+		failIfError(t, err)
+		assert.NotEmpty(t, resp.OpcRequestId)
+	}(c, r.Instance)
+
 	return
 }
 
@@ -255,13 +294,8 @@ func TestComputeClient_ListConsoleHistories(t *testing.T) {
 }
 
 func TestComputeClient_ListImages(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.ListImagesRequest{}
-	r, err := c.ListImages(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
+	images := listImages(t)
+	assert.NotEmpty(t, images, fmt.Sprint(images))
 	return
 }
 
@@ -288,13 +322,8 @@ func TestComputeClient_ListInstances(t *testing.T) {
 }
 
 func TestComputeClient_ListShapes(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	request := core.ListShapesRequest{}
-	r, err := c.ListShapes(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
+	shapes := listShapes(t)
+	assert.NotEmpty(t, shapes, fmt.Sprint(shapes))
 	return
 }
 
@@ -310,13 +339,64 @@ func TestComputeClient_ListVnicAttachments(t *testing.T) {
 }
 
 func TestComputeClient_ListVolumeAttachments(t *testing.T) {
-	t.Skip("Not implemented")
 	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
-	request := core.ListVolumeAttachmentsRequest{}
-	r, err := c.ListVolumeAttachments(context.Background(), request)
-	assert.NotEmpty(t, r, fmt.Sprint(r))
-	assert.NoError(t, err)
+
+	// make sure volume is created
+	volume := createOrGetVolume(t)
+	instance := createOrGetInstance(t)
+
+	listAttachedVolumes := func() []core.VolumeAttachment {
+		request := core.ListVolumeAttachmentsRequest{
+			CompartmentId: common.String(getCompartmentID()),
+			InstanceId:    instance.Id,
+		}
+		r, err := c.ListVolumeAttachments(context.Background(), request)
+		assert.NotEmpty(t, r, fmt.Sprint(r))
+		assert.NoError(t, err)
+		return r.Items
+	}
+
+	// get list of attached volumes for current instance
+	attachedVolumes := listAttachedVolumes()
+
+	// if no volume attached, attach one
+	if attachedVolumes == nil ||
+		len(attachedVolumes) == 0 {
+		// attach volume to instance
+		attachRequest := core.AttachVolumeRequest{}
+		attachRequest.AttachVolumeDetails = core.AttachIScsiVolumeDetails{
+			InstanceId: instance.Id,
+			VolumeId:   volume.Id,
+		}
+
+		_, err := c.AttachVolume(context.Background(), attachRequest)
+		failIfError(t, err)
+		attachedVolumes = listAttachedVolumes()
+	}
+
+	assert.NotEmpty(t, attachedVolumes, fmt.Sprint(attachedVolumes))
+	return
+}
+
+func TestComputeClient_ListBootVolumeAttachments(t *testing.T) {
+	bootVolumeAttachments := listBootVolumeAttachments(t)
+	assert.NotEmpty(t, bootVolumeAttachments)
+	return
+}
+
+func TestBlockstorageClient_GetBootVolumeAttachment(t *testing.T) {
+	bootVolumeAttachments := listBootVolumeAttachments(t)
+
+	c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+	request := core.GetBootVolumeAttachmentRequest{
+		BootVolumeAttachmentId: bootVolumeAttachments[0].Id,
+	}
+
+	r, err := c.GetBootVolumeAttachment(context.Background(), request)
+	failIfError(t, err)
+	assert.NotEmpty(t, r.Id)
 	return
 }
 

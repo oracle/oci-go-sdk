@@ -1,4 +1,4 @@
-DOC_SERVER_URL=http:\/\/lgl-bybliothece-01.virt.lgl.grungy.us
+DOC_SERVER_URL=https:\/\/docs.us-phoenix-1.oraclecloud.com
 
 GEN_TARGETS = identity core objectstorage loadbalancer database audit
 NON_GEN_TARGETS = common common/auth
@@ -46,9 +46,10 @@ $(TARGETS_CLEAN): clean-%:%
 	@-rm -rf $<
 
 pre-doc:
+	@echo "Rendering doc server to ${DOC_SERVER_URL}"
 	find . -name \*.go |xargs sed -i '' 's/{{DOC_SERVER_URL}}/${DOC_SERVER_URL}/g'
 
 gen-version:
 	go generate -x
 
-release: gen-version build
+release: gen-version build pre-doc

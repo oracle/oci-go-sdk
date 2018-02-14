@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Database Service API
@@ -15,22 +15,22 @@ import (
 // DataGuardAssociationSummary The properties that define a Data Guard association.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an
 // administrator. If you're an administrator who needs to write policies to give users access, see
-// [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
+// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
 // For information about endpoints and signing API requests, see
-// [About the API]({{DOC_SERVER_URL}}/Content/API/Concepts/usingapi.htm). For information about available SDKs and tools, see
-// [SDKS and Other Tools]({{DOC_SERVER_URL}}/Content/API/Concepts/sdks.htm).
+// About the API (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/usingapi.htm). For information about available SDKs and tools, see
+// SDKS and Other Tools (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdks.htm).
 type DataGuardAssociationSummary struct {
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the reporting database.
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the reporting database.
 	DatabaseId *string `mandatory:"true" json:"databaseId"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the Data Guard association.
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the Data Guard association.
 	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the Data Guard association.
 	LifecycleState DataGuardAssociationSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the DB System containing the associated
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the DB System containing the associated
 	// peer database.
 	PeerDbSystemId *string `mandatory:"true" json:"peerDbSystemId"`
 
@@ -38,7 +38,7 @@ type DataGuardAssociationSummary struct {
 	PeerRole DataGuardAssociationSummaryPeerRoleEnum `mandatory:"true" json:"peerRole"`
 
 	// The protection mode of this Data Guard association. For more information, see
-	// [Oracle Data Guard Protection Modes](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)
+	// Oracle Data Guard Protection Modes (http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)
 	// in the Oracle Data Guard documentation.
 	ProtectionMode DataGuardAssociationSummaryProtectionModeEnum `mandatory:"true" json:"protectionMode"`
 
@@ -57,22 +57,22 @@ type DataGuardAssociationSummary struct {
 	// Additional information about the current lifecycleState, if available.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the peer database's Data Guard association.
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the peer database's Data Guard association.
 	PeerDataGuardAssociationId *string `mandatory:"false" json:"peerDataGuardAssociationId"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the associated peer database.
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the associated peer database.
 	PeerDatabaseId *string `mandatory:"false" json:"peerDatabaseId"`
 
-	// The [OCID]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the database home containing the associated peer database.
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the database home containing the associated peer database.
 	PeerDbHomeId *string `mandatory:"false" json:"peerDbHomeId"`
 
 	// The date and time the Data Guard Association was created.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// The redo transport type used by this Data Guard association.  For more information, see
-	// [Redo Transport Services](http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400)
+	// Redo Transport Services (http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-redo-transport-services.htm#SBYDB00400)
 	// in the Oracle Data Guard documentation.
-	TransportType DataGuardAssociationSummaryTransportTypeEnum `mandatory:"false" json:"transportType"`
+	TransportType DataGuardAssociationSummaryTransportTypeEnum `mandatory:"false" json:"transportType,omitempty"`
 }
 
 func (m DataGuardAssociationSummary) String() string {

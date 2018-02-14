@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 package objectstorage
@@ -41,7 +41,7 @@ type ListObjectsRequest struct {
 	// (object size in bytes), 'md5', and 'timeCreated' (object creation date and time) fields.
 	// Value of this parameter should be a comma-separated, case-insensitive list of those field names.
 	// For example 'name,timeCreated,md5'.
-	Fields ListObjectsFieldsEnum `mandatory:"false" contributesTo:"query" name:"fields" omitEmpty:"true"`
+	Fields *string `mandatory:"false" contributesTo:"query" name:"fields" omitEmpty:"true"`
 
 	// The client request ID for tracing.
 	OpcClientRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
@@ -70,35 +70,4 @@ type ListObjectsResponse struct {
 
 func (response ListObjectsResponse) String() string {
 	return common.PointerString(response)
-}
-
-// ListObjectsFieldsEnum Enum with underlying type: string
-type ListObjectsFieldsEnum string
-
-// Set of constants representing the allowable values for ListObjectsFields
-const (
-	ListObjectsFieldsName        ListObjectsFieldsEnum = "name"
-	ListObjectsFieldsSize        ListObjectsFieldsEnum = "size"
-	ListObjectsFieldsTimecreated ListObjectsFieldsEnum = "timeCreated"
-	ListObjectsFieldsMd5         ListObjectsFieldsEnum = "md5"
-	ListObjectsFieldsUnknown     ListObjectsFieldsEnum = "UNKNOWN"
-)
-
-var mappingListObjectsFields = map[string]ListObjectsFieldsEnum{
-	"name":        ListObjectsFieldsName,
-	"size":        ListObjectsFieldsSize,
-	"timeCreated": ListObjectsFieldsTimecreated,
-	"md5":         ListObjectsFieldsMd5,
-	"UNKNOWN":     ListObjectsFieldsUnknown,
-}
-
-// GetListObjectsFieldsEnumValues Enumerates the set of values for ListObjectsFields
-func GetListObjectsFieldsEnumValues() []ListObjectsFieldsEnum {
-	values := make([]ListObjectsFieldsEnum, 0)
-	for _, v := range mappingListObjectsFields {
-		if v != ListObjectsFieldsUnknown {
-			values = append(values, v)
-		}
-	}
-	return values
 }

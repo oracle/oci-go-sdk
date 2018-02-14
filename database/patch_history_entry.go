@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Database Service API
@@ -28,7 +28,7 @@ type PatchHistoryEntry struct {
 	TimeStarted *common.SDKTime `mandatory:"true" json:"timeStarted"`
 
 	// The action being performed or was completed.
-	Action PatchHistoryEntryActionEnum `mandatory:"false" json:"action"`
+	Action PatchHistoryEntryActionEnum `mandatory:"false" json:"action,omitempty"`
 
 	// A descriptive text associated with the lifecycleState.
 	// Typically contains additional displayable text.

@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Identity and Access Management Service API
@@ -36,18 +36,21 @@ func NewIdentityClientWithConfigurationProvider(configProvider common.Configurat
 	return
 }
 
-// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+// SetRegion overrides the region of this client.
+func (client *IdentityClient) SetRegion(region string) {
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", region)
+}
+
+// SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
 func (client *IdentityClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err
 	}
 
-	region, err := configProvider.Region()
-	if err != nil {
-		return err
-	}
+	// Error has been checked already
+	region, _ := configProvider.Region()
 	client.config = &configProvider
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", string(region))
+	client.SetRegion(region)
 	return nil
 }
 
@@ -83,11 +86,11 @@ func (client IdentityClient) AddUserToGroup(ctx context.Context, request AddUser
 // **Important:** Compartments cannot be deleted.
 // You must specify your tenancy's OCID as the compartment ID in the request object. Remember that the tenancy
 // is simply the root compartment. For information about OCIDs, see
-// [Resource Identifiers]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
+// Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the compartment, which must be unique across all compartments in
 // your tenancy. You can use this name or the OCID when writing policies that apply
 // to the compartment. For more information about policies, see
-// [How Policies Work]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policies.htm).
+// How Policies Work (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policies.htm).
 // You must also specify a *description* for the compartment (although it can be an empty string). It does
 // not have to be unique, and you can change it anytime with
 // UpdateCompartment.
@@ -115,7 +118,7 @@ func (client IdentityClient) CreateCompartment(ctx context.Context, request Crea
 
 // CreateCustomerSecretKey Creates a new secret key for the specified user. Secret keys are used for authentication with the Object Storage Service's Amazon S3
 // compatible API. For information, see
-// [Managing User Credentials]({{DOC_SERVER_URL}}/Content/Identity/Tasks/managingcredentials.htm).
+// Managing User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Tasks/managingcredentials.htm).
 // You must specify a *description* for the secret key (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with
 // UpdateCustomerSecretKey.
@@ -147,10 +150,10 @@ func (client IdentityClient) CreateCustomerSecretKey(ctx context.Context, reques
 // is simply the root compartment). Notice that IAM resources (users, groups, compartments, and some policies)
 // reside within the tenancy itself, unlike cloud resources such as compute instances, which typically
 // reside within compartments inside the tenancy. For information about OCIDs, see
-// [Resource Identifiers]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
+// Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the group, which must be unique across all groups in your tenancy and
 // cannot be changed. You can use this name or the OCID when writing policies that apply to the group. For more
-// information about policies, see [How Policies Work]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policies.htm).
+// information about policies, see How Policies Work (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policies.htm).
 // You must also specify a *description* for the group (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with UpdateGroup.
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
@@ -179,10 +182,10 @@ func (client IdentityClient) CreateGroup(ctx context.Context, request CreateGrou
 }
 
 // CreateIdentityProvider Creates a new identity provider in your tenancy. For more information, see
-// [Identity Providers and Federation]({{DOC_SERVER_URL}}/Content/Identity/Concepts/federation.htm).
+// Identity Providers and Federation (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/federation.htm).
 // You must specify your tenancy's OCID as the compartment ID in the request object.
 // Remember that the tenancy is simply the root compartment. For information about
-// OCIDs, see [Resource Identifiers]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
+// OCIDs, see Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the `IdentityProvider`, which must be unique
 // across all `IdentityProvider` objects in your tenancy and cannot be changed.
 // You must also specify a *description* for the `IdentityProvider` (although
@@ -235,7 +238,7 @@ func (client IdentityClient) CreateIdpGroupMapping(ctx context.Context, request 
 }
 
 // CreateOrResetUIPassword Creates a new Console one-time password for the specified user. For more information about user
-// credentials, see [User Credentials]({{DOC_SERVER_URL}}/Content/Identity/Concepts/usercredentials.htm).
+// credentials, see User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/usercredentials.htm).
 // Use this operation after creating a new user, or if a user forgets their password. The new one-time
 // password is returned to you in the response, and you must securely deliver it to the user. They'll
 // be prompted to change this password the next time they sign in to the Console. If they don't change
@@ -264,14 +267,14 @@ func (client IdentityClient) CreateOrResetUIPassword(ctx context.Context, reques
 }
 
 // CreatePolicy Creates a new policy in the specified compartment (either the tenancy or another of your compartments).
-// If you're new to policies, see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
+// If you're new to policies, see Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
 // You must specify a *name* for the policy, which must be unique across all policies in your tenancy
 // and cannot be changed.
 // You must also specify a *description* for the policy (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with UpdatePolicy.
 // You must specify one or more policy statements in the statements array. For information about writing
-// policies, see [How Policies Work]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policies.htm) and
-// [Common Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/commonpolicies.htm).
+// policies, see How Policies Work (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policies.htm) and
+// Common Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/commonpolicies.htm).
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
 // object, first make sure its `lifecycleState` has changed to ACTIVE.
 // New policies take effect typically within 10 seconds.
@@ -317,7 +320,7 @@ func (client IdentityClient) CreateRegionSubscription(ctx context.Context, reque
 }
 
 // CreateSwiftPassword Creates a new Swift password for the specified user. For information about what Swift passwords are for, see
-// [Managing User Credentials]({{DOC_SERVER_URL}}/Content/Identity/Tasks/managingcredentials.htm).
+// Managing User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Tasks/managingcredentials.htm).
 // You must specify a *description* for the Swift password (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with
 // UpdateSwiftPassword.
@@ -345,12 +348,12 @@ func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request Cr
 }
 
 // CreateUser Creates a new user in your tenancy. For conceptual information about users, your tenancy, and other
-// IAM Service components, see [Overview of the IAM Service]({{DOC_SERVER_URL}}/Content/Identity/Concepts/overview.htm).
+// IAM Service components, see Overview of the IAM Service (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/overview.htm).
 // You must specify your tenancy's OCID as the compartment ID in the request object (remember that the
 // tenancy is simply the root compartment). Notice that IAM resources (users, groups, compartments, and
 // some policies) reside within the tenancy itself, unlike cloud resources such as compute instances,
 // which typically reside within compartments inside the tenancy. For information about OCIDs, see
-// [Resource Identifiers]({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
+// Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the user, which must be unique across all users in your tenancy
 // and cannot be changed. Allowed characters: No spaces. Only letters, numerals, hyphens, periods,
 // underscores, +, and @. If you specify a name that's already in use, you'll get a 409 error.
@@ -370,7 +373,7 @@ func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request Cr
 // CreateOrResetUIPassword).
 // If the user needs to access the Oracle Cloud Infrastructure REST API, you need to upload a
 // public API signing key for that user (see
-// [Required Keys and OCIDs]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm) and also
+// Required Keys and OCIDs (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm) and also
 // UploadApiKey).
 // **Important:** Make sure to inform the new user which compartment(s) they have access to.
 func (client IdentityClient) CreateUser(ctx context.Context, request CreateUserRequest, options ...common.RetryPolicyOption) (response CreateUserResponse, err error) {
@@ -934,7 +937,7 @@ func (client IdentityClient) ListIdpGroupMappings(ctx context.Context, request L
 }
 
 // ListPolicies Lists the policies in the specified compartment (either the tenancy or another of your compartments).
-// See [Where to Get the Tenancy's OCID and User's OCID]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
+// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
 // To determine which policies apply to a particular group or compartment, you must view the individual
 // statements inside all your policies. There isn't a way to automatically obtain that information via the API.
 func (client IdentityClient) ListPolicies(ctx context.Context, request ListPoliciesRequest, options ...common.RetryPolicyOption) (response ListPoliciesResponse, err error) {
@@ -1020,7 +1023,7 @@ func (client IdentityClient) ListSwiftPasswords(ctx context.Context, request Lis
 
 // ListUserGroupMemberships Lists the `UserGroupMembership` objects in your tenancy. You must specify your tenancy's OCID
 // as the value for the compartment ID
-// (see [Where to Get the Tenancy's OCID and User's OCID]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five)).
+// (see Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five)).
 // You must also then filter the list in one of these ways:
 // - You can limit the results to just the memberships for a given user by specifying a `userId`.
 // - Similarly, you can limit the results to just the memberships for a given group by specifying a `groupId`.

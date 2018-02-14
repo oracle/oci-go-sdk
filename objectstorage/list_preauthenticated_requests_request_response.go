@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 package objectstorage
@@ -54,7 +54,7 @@ type ListPreauthenticatedRequestsResponse struct {
 	// For pagination of a list of pre-authenticated requests, if this header appears in the response,
 	// then this is a partial list. Include this value as the `page` parameter in a subsequent
 	// GET request to get the next batch of pre-authenticated requests.
-	// For information about pagination, see [List Pagination]({{DOC_SERVER_URL}}/Content/API/Concepts/usingapi.htm#nine).
+	// For information about pagination, see List Pagination (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/usingapi.htm#nine).
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
 }
 

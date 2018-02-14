@@ -11,10 +11,11 @@ package integtest
 import (
 	"context"
 	"fmt"
+	"testing"
+
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/database"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestDatabaseClient_CreateBackup(t *testing.T) {
@@ -93,10 +94,13 @@ func TestDatabaseClient_FailoverDataGuardAssociation(t *testing.T) {
 }
 
 func TestDatabaseClient_GetBackup(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	t.Skip("skip for teamcity tenant service limit reason, pass locally")
+	backupID := createOrGetDatabaseBackup(t)
+	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
-	request := database.GetBackupRequest{}
+	request := database.GetBackupRequest{
+		BackupId: backupID,
+	}
 	r, err := c.GetBackup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
@@ -104,10 +108,18 @@ func TestDatabaseClient_GetBackup(t *testing.T) {
 }
 
 func TestDatabaseClient_GetDataGuardAssociation(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	t.Skip("skip for teamcity tenant service limit reason, pass locally")
+	db, err := getDatabase(t)
+	failIfError(t, err)
+
+	dataGuardAssociationID := createOrGetDataGuardAssociation(t)
+
+	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
-	request := database.GetDataGuardAssociationRequest{}
+	request := database.GetDataGuardAssociationRequest{
+		DatabaseId:             db.Id,
+		DataGuardAssociationId: dataGuardAssociationID,
+	}
 	r, err := c.GetDataGuardAssociation(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
@@ -203,11 +215,49 @@ func TestDatabaseClient_GetDbSystemPatchHistoryEntry(t *testing.T) {
 }
 
 func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	t.Skip("skip for teamcity tenant service limit reason, pass locally")
+	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
+
 	request := database.LaunchDbSystemRequest{}
+	request.AvailabilityDomain = common.String(validAD())
+	request.CompartmentId = common.String(getCompartmentID())
+	request.CpuCoreCount = common.Int(2)
+	request.DatabaseEdition = "STANDARD_EDITION"
+	request.DisplayName = common.String("GOSDK_TestDBSystem")
+	request.Shape = common.String("BM.DenseIO1.36") // this shape will not get service limit error for now
+
+	buffer, err := readTestPubKey()
+	failIfError(t, err)
+	request.SshPublicKeys = []string{string(buffer)}
+
+	subnet := createOrGetSubnet(t)
+	request.SubnetId = subnet.Id
+	request.Hostname = common.String("test")
+	request.LicenseModel = "LICENSE_INCLUDED"
+	request.DiskRedundancy = "NORMAL"
+
+	request.DbHome = &database.CreateDbHomeDetails{
+		DbVersion: common.String("11.2.0.4"),
+		Database: &database.CreateDatabaseDetails{
+			DbName:        common.String("Name"),
+			AdminPassword: common.String("OraclE12--"),
+			DbWorkload:    "OLTP",
+		},
+	}
+
 	r, err := c.LaunchDbSystem(context.Background(), request)
+	failIfError(t, err)
+
+	// if we've successfully created a group during testing, make sure that we delete it
+	defer func() {
+		//Delete
+		rDel := database.TerminateDbSystemRequest{DbSystemId: r.DbSystem.Id}
+		resp, err := c.TerminateDbSystem(context.Background(), rDel)
+		failIfError(t, err)
+		assert.NotEmpty(t, resp.OpcRequestId)
+	}()
+	assert.NotEmpty(t, r)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	return
@@ -383,7 +433,7 @@ func TestDatabaseClient_TerminateDbSystem(t *testing.T) {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := database.TerminateDbSystemRequest{}
-	_,err := c.TerminateDbSystem(context.Background(), request)
+	_, err := c.TerminateDbSystem(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }

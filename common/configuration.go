@@ -1,4 +1,5 @@
-// Package common Copyright (c) 2016, 2017, 2018 Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
+
 package common
 
 import (
@@ -462,7 +463,7 @@ func (c composingConfigurationProvider) Region() (string, error) {
 			return val, nil
 		}
 	}
-	return "", fmt.Errorf("did not find a proper configuration for keyFingerprint")
+	return "", fmt.Errorf("did not find a proper configuration for region")
 }
 
 func (c composingConfigurationProvider) KeyID() (string, error) {

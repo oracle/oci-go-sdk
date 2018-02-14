@@ -1,6 +1,8 @@
-// The following code is used to generate the version of the go sdk
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 
+// Package main The following code is used to generate the version of the go sdk
 // +build ignore
+
 package main
 
 import (

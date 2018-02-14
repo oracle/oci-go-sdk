@@ -15,15 +15,16 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
-	"github.com/oracle/oci-go-sdk/objectstorage"
-	"github.com/stretchr/testify/assert"
 	"io"
 	"io/ioutil"
 	"os"
 	"path"
 	"testing"
 	"time"
+
+	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/objectstorage"
+	"github.com/stretchr/testify/assert"
 )
 
 func getNamespace(t *testing.T) string {
@@ -45,7 +46,7 @@ func getObject(t *testing.T, namespace, bucketname, objectname string) (objectst
 	return c.GetObject(context.Background(), request)
 }
 
-func putObject(t *testing.T, namespace, bucketname, objectname string, contentLen int, content io.ReadCloser) error {
+func putObject(t *testing.T, namespace, bucketname, objectname string, contentLen int, content io.ReadCloser, metadata map[string]string) error {
 	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	request := objectstorage.PutObjectRequest{
 		NamespaceName: &namespace,
@@ -53,6 +54,7 @@ func putObject(t *testing.T, namespace, bucketname, objectname string, contentLe
 		ObjectName:    &objectname,
 		ContentLength: &contentLen,
 		PutObjectBody: content,
+		OpcMeta:       metadata,
 	}
 	_, err := c.PutObject(context.Background(), request)
 	return err
@@ -117,7 +119,7 @@ func TestObjectStorageClient_BigFile(t *testing.T) {
 	defer file.Close()
 	failIfError(t, e)
 
-	e = putObject(t, namespace, bname, filename, int(filesize), file)
+	e = putObject(t, namespace, bname, filename, int(filesize), file, nil)
 	failIfError(t, e)
 	fmt.Println(expectedHash)
 	rGet, e := getObject(t, namespace, bname, filename)
@@ -185,11 +187,15 @@ func TestObjectStorageClient_Object(t *testing.T) {
 	file, e := os.Open(filepath)
 	defer file.Close()
 	failIfError(t, e)
-	e = putObject(t, namespace, bname, filename, contentlen, file)
+	metadata := make(map[string]string)
+	metadata["Test-VERSION"] = "TestOne"
+	e = putObject(t, namespace, bname, filename, contentlen, file, metadata)
 	failIfError(t, e)
 
 	r, e := getObject(t, namespace, bname, filename)
+
 	failIfError(t, e)
+	assert.Equal(t, "TestOne", r.OpcMeta["test-version"])
 	defer deleteObject(t, namespace, bname, filename)
 	defer r.Content.Close()
 	bytes, e := ioutil.ReadAll(r.Content)
@@ -206,7 +212,7 @@ func TestObjectStorageClient_AbortUpload(t *testing.T) {
 	createBucket(t, getNamespace(t), getTenancyID(), bname)
 	defer deleteBucket(t, namespace, bname)
 
-	contentlen := 1024 * 100
+	contentlen := 1024 * 1000
 	filepath, filesize, _ := writeTempFileOfSize(int64(contentlen))
 	filename := path.Base(filepath)
 	defer removeFileFn(filepath)
@@ -222,7 +228,7 @@ func TestObjectStorageClient_AbortUpload(t *testing.T) {
 		ContentLength: common.Int(int(filesize)),
 		PutObjectBody: file,
 	}
-	ctx, cancelFn := context.WithTimeout(context.Background(), 10*time.Millisecond)
+	ctx, cancelFn := context.WithTimeout(context.Background(), 5*time.Millisecond)
 	defer cancelFn()
 	_, e = c.PutObject(ctx, request)
 	assert.Error(t, e)
@@ -296,7 +302,7 @@ func TestObjectStorageClient_HeadBucket(t *testing.T) {
 	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, e)
 	request := objectstorage.HeadBucketRequest{}
-	_, 	err := c.HeadBucket(context.Background(), request)
+	_, err := c.HeadBucket(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }

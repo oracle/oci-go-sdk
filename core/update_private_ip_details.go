@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Core Services API
@@ -23,10 +23,10 @@ type UpdatePrivateIpDetails struct {
 	// is the hostname portion of the private IP's fully qualified domain name (FQDN)
 	// (for example, `bminstance-1` in FQDN `bminstance-1.subnet123.vcn1.oraclevcn.com`).
 	// Must be unique across all VNICs in the subnet and comply with
-	// [RFC 952](https://tools.ietf.org/html/rfc952) and
-	// [RFC 1123](https://tools.ietf.org/html/rfc1123).
+	// RFC 952 (https://tools.ietf.org/html/rfc952) and
+	// RFC 1123 (https://tools.ietf.org/html/rfc1123).
 	// For more information, see
-	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
+	// DNS in Your Virtual Cloud Network (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/dns.htm).
 	// Example: `bminstance-1`
 	HostnameLabel *string `mandatory:"false" json:"hostnameLabel"`
 

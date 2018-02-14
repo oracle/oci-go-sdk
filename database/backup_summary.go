@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Database Service API
@@ -13,7 +13,7 @@ import (
 )
 
 // BackupSummary A database backup
-// To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
+// To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
 type BackupSummary struct {
 
 	// The name of the Availability Domain that the backup is located in.
@@ -35,7 +35,7 @@ type BackupSummary struct {
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The current state of the backup.
-	LifecycleState BackupSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState BackupSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The date and time the backup was completed.
 	TimeEnded *common.SDKTime `mandatory:"false" json:"timeEnded"`
@@ -44,7 +44,7 @@ type BackupSummary struct {
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 
 	// The type of backup.
-	Type BackupSummaryTypeEnum `mandatory:"false" json:"type"`
+	Type BackupSummaryTypeEnum `mandatory:"false" json:"type,omitempty"`
 }
 
 func (m BackupSummary) String() string {

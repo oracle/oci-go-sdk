@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 package objectstorage
@@ -47,7 +47,7 @@ type DeleteObjectResponse struct {
 	// request, please provide this request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// The time the object was deleted, as described in [RFC 2616](https://tools.ietf.org/rfc/rfc2616), section 14.29.
+	// The time the object was deleted, as described in RFC 2616 (https://tools.ietf.org/rfc/rfc2616), section 14.29.
 	LastModified *common.SDKTime `presentIn:"header" name:"last-modified"`
 }
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Database Service API
@@ -15,7 +15,7 @@ import (
 // PatchSummary A Patch for a DB System or DB Home.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
-// see [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
+// see Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
 type PatchSummary struct {
 
 	// The text describing this patch package.
@@ -31,17 +31,17 @@ type PatchSummary struct {
 	Version *string `mandatory:"true" json:"version"`
 
 	// Actions that can possibly be performed using this patch.
-	AvailableActions []PatchSummaryAvailableActionsEnum `mandatory:"false" json:"availableActions"`
+	AvailableActions []PatchSummaryAvailableActionsEnum `mandatory:"false" json:"availableActions,omitempty"`
 
 	// Action that is currently being performed or was completed last.
-	LastAction PatchSummaryLastActionEnum `mandatory:"false" json:"lastAction"`
+	LastAction PatchSummaryLastActionEnum `mandatory:"false" json:"lastAction,omitempty"`
 
 	// A descriptive text associated with the lifecycleState.
 	// Typically can contain additional displayable text.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The current state of the patch as a result of lastAction.
-	LifecycleState PatchSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState PatchSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 
 func (m PatchSummary) String() string {

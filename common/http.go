@@ -1,4 +1,5 @@
-// Package common Copyright (c) 2016, 2017, 2018 Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
+
 package common
 
 import (
@@ -106,13 +107,13 @@ func getTaggedNilFieldNameOrError(field reflect.StructField, fieldValue reflect.
 
 	Debugf("Adjusting tag: mandatory is false and json tag is valid on field: %s", field.Name)
 
-	//If the field can not be nil, then no-op
+	// If the field can not be nil, then no-op
 	if !isNillableType(&fieldValue) {
 		Debugf("WARNING json field is tagged with mandatory flags, but the type can not be nil, field name: %s", field.Name)
 		return false, nameJSONField, nil
 	}
 
-	//If field value is nil, tag it as omitEmpty
+	// If field value is nil, tag it as omitEmpty
 	return fieldValue.IsNil(), nameJSONField, nil
 
 }
@@ -780,12 +781,14 @@ func addFromHeaderCollection(response *http.Response, value *reflect.Value, fiel
 
 	mapCollection := make(map[string]string)
 	for name, value := range response.Header {
-		if strings.HasPrefix(name, headerPrefix) {
-			headerNoPrefix := strings.TrimPrefix(name, headerPrefix)
+		nameLowerCase := strings.ToLower(name)
+		if strings.HasPrefix(nameLowerCase, headerPrefix) {
+			headerNoPrefix := strings.TrimPrefix(nameLowerCase, headerPrefix)
 			mapCollection[headerNoPrefix] = value[0]
 		}
 	}
 
+	Debugln("Marshalled header collection is:", mapCollection)
 	value.Set(reflect.ValueOf(mapCollection))
 	return nil
 }

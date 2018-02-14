@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Core Services API
@@ -17,7 +17,7 @@ import (
 // network connections to provide a single, logical connection between the edge router
 // on the customer's existing network and Oracle Cloud Infrastructure. *Private*
 // virtual circuits support private peering, and *public* virtual circuits support
-// public peering. For more information, see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
+// public peering. For more information, see FastConnect Overview (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/fastconnect.htm).
 // Each virtual circuit is made up of information shared between a customer, Oracle,
 // and a provider (if the customer is using FastConnect via a provider). Who fills in
 // a given property of a virtual circuit depends on whether the BGP session related to
@@ -27,17 +27,17 @@ import (
 // provider and Oracle each do their part to provision the virtual circuit.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
+// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
 type VirtualCircuit struct {
 
 	// The provisioned data rate of the connection.
 	BandwidthShapeName *string `mandatory:"false" json:"bandwidthShapeName"`
 
 	// BGP management option.
-	BgpManagement VirtualCircuitBgpManagementEnum `mandatory:"false" json:"bgpManagement"`
+	BgpManagement VirtualCircuitBgpManagementEnum `mandatory:"false" json:"bgpManagement,omitempty"`
 
 	// The state of the BGP session associated with the virtual circuit.
-	BgpSessionState VirtualCircuitBgpSessionStateEnum `mandatory:"false" json:"bgpSessionState"`
+	BgpSessionState VirtualCircuitBgpSessionStateEnum `mandatory:"false" json:"bgpSessionState,omitempty"`
 
 	// The OCID of the compartment containing the virtual circuit.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
@@ -67,8 +67,8 @@ type VirtualCircuit struct {
 
 	// The virtual circuit's current state. For information about
 	// the different states, see
-	// [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
-	LifecycleState VirtualCircuitLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	// FastConnect Overview (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/fastconnect.htm).
+	LifecycleState VirtualCircuitLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The Oracle BGP ASN.
 	OracleBgpAsn *int `mandatory:"false" json:"oracleBgpAsn"`
@@ -87,7 +87,7 @@ type VirtualCircuit struct {
 	// the provider has provisioned the virtual circuit from their end.
 	// INACTIVE means the provider has not yet provisioned the virtual
 	// circuit, or has de-provisioned it.
-	ProviderState VirtualCircuitProviderStateEnum `mandatory:"false" json:"providerState"`
+	ProviderState VirtualCircuitProviderStateEnum `mandatory:"false" json:"providerState,omitempty"`
 
 	// For a public virtual circuit. The public IP prefixes (CIDRs) the customer wants to
 	// advertise across the connection. Each prefix must be /24 or less specific.
@@ -102,7 +102,7 @@ type VirtualCircuit struct {
 	Region *string `mandatory:"false" json:"region"`
 
 	// Provider service type.
-	ServiceType VirtualCircuitServiceTypeEnum `mandatory:"false" json:"serviceType"`
+	ServiceType VirtualCircuitServiceTypeEnum `mandatory:"false" json:"serviceType,omitempty"`
 
 	// The date and time the virtual circuit was created,
 	// in the format defined by RFC3339.
@@ -110,8 +110,8 @@ type VirtualCircuit struct {
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// Whether the virtual circuit supports private or public peering. For more information,
-	// see [FastConnect Overview]({{DOC_SERVER_URL}}/Content/Network/Concepts/fastconnect.htm).
-	Type VirtualCircuitTypeEnum `mandatory:"false" json:"type"`
+	// see FastConnect Overview (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/fastconnect.htm).
+	Type VirtualCircuitTypeEnum `mandatory:"false" json:"type,omitempty"`
 }
 
 func (m VirtualCircuit) String() string {

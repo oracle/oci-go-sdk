@@ -1,8 +1,8 @@
-// Package common Copyright (c) 2016, 2017, 2018 Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
+
 package common
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -21,7 +21,7 @@ const (
 )
 
 //StringToRegion convert a string to Region type
-func StringToRegion(stringRegion string) (r Region, err error) {
+func StringToRegion(stringRegion string) (r Region) {
 	switch strings.ToLower(stringRegion) {
 	case "sea":
 		r = RegionSEA
@@ -32,7 +32,8 @@ func StringToRegion(stringRegion string) (r Region, err error) {
 	case "fra", "eu-frankfurt-1":
 		r = RegionFRA
 	default:
-		err = fmt.Errorf("region named: %s, not valid", stringRegion)
+		r = Region(stringRegion)
+		Debugf("region named: %s, is not recognized", stringRegion)
 	}
 	return
 }

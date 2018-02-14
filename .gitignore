@@ -7,5 +7,6 @@
 .glide/
 .idea/
 *.swp
+.vscode/*
 .swagger-codegen-ignore
 *.iml
