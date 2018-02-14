@@ -41,7 +41,7 @@ The following example shows how to get started with the sdk
 		return
 	}
 
-More examples can be found in the oci-go-sdk repo: https://github.com/oracle/oci-go-sdk/tree/master/example
+More examples can be found in the SDK Github repo: https://github.com/oracle/oci-go-sdk/tree/master/example
 
 Optional fields in the SDK
 
@@ -104,10 +104,10 @@ The oci-go-sdk exposes a stand-alone signer that can be used to sign custom requ
 
 For more information on the signing algorithm refer to:  https://tools.ietf.org/html/draft-cavage-http-signatures-08
 
-Polymorphic json request and responses
+Polymorphic json requests and responses
 
 Some operations accept or return polymorphic json objects. The SDK models such objects as an interface. Further the SDK provides
-structs that implement such interfaces. Thus for all operations that expect interfaces, pass the struct in the SDK that satisfies
+structs that implement such interfaces. Thus for all operations that expect interfaces as input, pass the struct in the SDK that satisfies
 such interface. For example:
 
 	c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
@@ -129,7 +129,7 @@ such interface. For example:
 	// Make the call
 	rspCreate, createErr := c.CreateIdentityProvider(context.Background(), rCreate)
 
-In the case of a response you can type assert the interface to the expected type. For example:
+In the case of a polymorphic response you can type assert the interface to the expected type. For example:
 
 	rRead := identity.GetIdentityProviderRequest{}
 	rRead.IdentityProviderId = common.String("aValidId")
@@ -138,9 +138,15 @@ In the case of a response you can type assert the interface to the expected type
 	provider := response.IdentityProvider.(identity.Saml2IdentityProvider)
 
 
+Pagination
+
+When calling a list operation, the operation will retrieve a page of results. To retrieve more data, call the list operation again
+passing in the value of the most recent response's OpcNextPage as the value of Page in the next list operation call.
+When there is no more data the OpcNextPage field will be nil. For example: https://github.com/oracle/oci-go-sdk/blob/master/example/example_core_test.go#L86
+
 Logging and Debugging
 
-The oci-go-sdk has a built-in logging mechanism used internally. The internal logging logic is used to record the raw http
+The SDK has a built-in logging mechanism used internally. The internal logging logic is used to record the raw http
 requests, responses and potential errors when (un)marshalling request and responses.
 
 To expose debugging logs set the environment variable "OCI_GO_SDK_DEBUG" to "1", or some other non emtpy string.
@@ -150,7 +156,17 @@ Forward and Backwards Compatibility
 
 Some response fields are enum-typed. In the future, individual services may return values not covered by existing enums
 for that field. To address this possibility, every enum-type response field is a model as a type that supports any string.
-Thus if service returns a value that is not recognized by your version of the SDK, then the response field will be set to this value.
+Thus if a service returns a value that is not recognized by your version of the SDK, then the response field will be set to this value.
+
+Contributions
+
+Got a fix for a bug, or a new feature you'd like to contribute? The SDK is open source and accepting pull requests on GitHub
+https://github.com/oracle/oci-go-sdk
+
+License
+
+Licensing information available at: https://github.com/oracle/oci-go-sdk/blob/master/LICENSE.txt
+
 
  */
 package oci
