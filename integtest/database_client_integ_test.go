@@ -215,6 +215,7 @@ func TestDatabaseClient_GetDbSystemPatchHistoryEntry(t *testing.T) {
 }
 
 func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
+	t.Skip("skip for teamcity tenant service limit reason, pass locally")
 	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
 
