@@ -15,7 +15,7 @@ import (
 // CreateLoadBalancerDetails The configuration details for creating a load balancer.
 type CreateLoadBalancerDetails struct {
 
-	// The OCID https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the compartment in which to create the load balancer.
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the compartment in which to create the load balancer.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// A user-friendly name. It does not have to be unique, and it is changeable.
@@ -29,7 +29,7 @@ type CreateLoadBalancerDetails struct {
 	// Example: `100Mbps`
 	ShapeName *string `mandatory:"true" json:"shapeName"`
 
-	// An array of subnet OCIDs https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm.
+	// An array of subnet OCIDs (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
 	SubnetIds []string `mandatory:"true" json:"subnetIds"`
 
 	BackendSets map[string]BackendSetDetails `mandatory:"false" json:"backendSets"`
@@ -45,7 +45,7 @@ type CreateLoadBalancerDetails struct {
 	// If "false", the service assigns a public IP address to the load balancer. A load balancer with a public IP address
 	// requires two subnets, each in a different Availability Domain. One subnet hosts the primary load balancer and the other
 	// hosts the secondary (standby) load balancer. A public load balancer is accessible from the internet, depending on your
-	// VCN's security list rules https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/securitylists.htm.
+	// VCN's security list rules (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/securitylists.htm).
 	// Example: `false`
 	IsPrivate *bool `mandatory:"false" json:"isPrivate"`
 

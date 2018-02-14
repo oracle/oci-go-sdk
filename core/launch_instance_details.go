@@ -69,7 +69,7 @@ type LaunchInstanceDetails struct {
 	// iqn.2015-02.oracle.boot.
 	// For more information about the Bring Your Own Image feature of
 	// Oracle Cloud Infrastructure, see
-	// Bring Your Own Image https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/References/bringyourownimage.htm.
+	// Bring Your Own Image (https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/References/bringyourownimage.htm).
 	// For more information about iPXE, see http://ipxe.org.
 	IpxeScript *string `mandatory:"false" json:"ipxeScript"`
 
