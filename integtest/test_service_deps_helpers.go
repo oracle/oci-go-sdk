@@ -10,6 +10,7 @@ package integtest
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"testing"
 	"time"
@@ -18,6 +19,7 @@ import (
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/core"
+	"github.com/oracle/oci-go-sdk/database"
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/oracle/oci-go-sdk/loadbalancer"
 )
@@ -34,6 +36,9 @@ const (
 	virtualCircuitDisplayName    = "GOSDK2_Test_Deps_VirtualCircuits"
 	dbSystemDisplayName          = "GOSDK2_Test_Deps_DatabaseSystem"
 	dbHomeDisplayName            = "GOSDK2_Test_Deps_DatabaseHome"
+	databaseDisplayName          = "GOSDKDB"
+	databasePassword             = "OraclE12--"
+	dbBackupDisplayName          = "GOSDK2_Test_Deps_DatabaseBackup"
 	loadbalancerDisplayName      = "GOSDK2_Test_Deps_Loadbalancer"
 	volumeDisplayName            = "GOSDK2_Test_Deps_Volume"
 	testUserDisplayName          = "GOSDK2_Test_Deps_TestUser"
@@ -149,6 +154,35 @@ func createOrGetSubnetWithDetails(t *testing.T, displayName *string, cidrBlock *
 			checkLifecycleState(string(core.SubnetLifecycleStateAvailable)),
 			time.Tick(10*time.Second),
 			time.After((5*time.Minute))))
+
+	// update the security rules
+	getReq := core.GetSecurityListRequest{
+		SecurityListId: common.String(r.SecurityListIds[0]),
+	}
+
+	getResp, err := c.GetSecurityList(context.Background(), getReq)
+	failIfError(t, err)
+
+	portRange := core.PortRange{
+		Max: common.Int(1521),
+		Min: common.Int(1521),
+	}
+	newRules := append(getResp.IngressSecurityRules, core.IngressSecurityRule{
+		Protocol: common.String("6"), // TCP
+		Source:   common.String("0.0.0.0/0"),
+		TcpOptions: &core.TcpOptions{
+			DestinationPortRange: &portRange,
+		},
+	})
+
+	updateReq := core.UpdateSecurityListRequest{
+		SecurityListId: common.String(r.SecurityListIds[0]),
+	}
+
+	updateReq.IngressSecurityRules = newRules
+
+	_, err = c.UpdateSecurityList(context.Background(), updateReq)
+	failIfError(t, err)
 
 	return r.Subnet
 }
@@ -943,29 +977,6 @@ func listVolumes(t *testing.T) []core.Volume {
 	return r.Items
 }
 
-func createOrGetUser(t *testing.T) identity.User {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-
-	listReq := identity.ListUsersRequest{
-		CompartmentId: common.String(getTenancyID()),
-		Limit:         common.Int(500), // not ideal here, but easy and reduce number of requests
-	}
-
-	listResp, err := c.ListUsers(context.Background(), listReq)
-	failIfError(t, err)
-
-	for _, user := range listResp.Items {
-		if *user.Name == testUserDisplayName {
-			// found test user, return it
-			return user
-		}
-	}
-
-	user := createTestUser(t, common.String(testUserDisplayName))
-	return user
-}
-
 func createTestUser(t *testing.T, name *string) identity.User {
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
@@ -1011,4 +1022,268 @@ func createTestGroup(t *testing.T, name *string) identity.Group {
 	rsp, err := c.CreateGroup(context.Background(), req)
 	failIfError(t, err)
 	return rsp.Group
+}
+
+func getDatabase(t *testing.T) (*database.DatabaseSummary, error) {
+	dbHome, err := getDbHome(t)
+	failIfError(t, err)
+
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+
+	listReq := database.ListDatabasesRequest{
+		CompartmentId: common.String(getCompartmentID()),
+		DbHomeId:      dbHome.Id,
+	}
+
+	resp, err := c.ListDatabases(context.Background(), listReq)
+	failIfError(t, err)
+
+	for _, element := range resp.Items {
+		if *element.DbName == databaseDisplayName &&
+			element.LifecycleState == database.DatabaseSummaryLifecycleStateAvailable {
+			return &element, nil
+		}
+	}
+
+	return nil, errors.New("cannot find the dbhome")
+}
+
+func createOrGetDBSystem(t *testing.T) *string {
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+
+	listReq := database.ListDbSystemsRequest{
+		CompartmentId: common.String(getCompartmentID()),
+	}
+
+	r, err := c.ListDbSystems(context.Background(), listReq)
+	failIfError(t, err)
+
+	for _, dbSystem := range r.Items {
+		if *dbSystem.DisplayName == dbSystemDisplayName &&
+			dbSystem.LifecycleState == database.DbSystemSummaryLifecycleStateAvailable {
+			return dbSystem.Id
+		}
+	}
+
+	return createDBSystem(t, dbSystemDisplayName, databaseDisplayName)
+}
+
+func createDBSystem(t *testing.T, dbSystemName string, databaseName string) *string {
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+	// create a new db system
+	request := database.LaunchDbSystemRequest{}
+	request.AvailabilityDomain = common.String(validAD())
+	request.CompartmentId = common.String(getCompartmentID())
+	request.CpuCoreCount = common.Int(2)
+	request.DatabaseEdition = "ENTERPRISE_EDITION"
+	request.DisplayName = common.String(dbSystemName)
+	request.Shape = common.String("BM.DenseIO1.36") // this shape will not get service limit error for now
+
+	buffer, err := readTestPubKey()
+	failIfError(t, err)
+	request.SshPublicKeys = []string{string(buffer)}
+
+	subnet := createOrGetSubnet(t)
+	request.SubnetId = subnet.Id
+	request.Hostname = common.String("test")
+
+	request.DbHome = &database.CreateDbHomeDetails{
+		DbVersion:   common.String("11.2.0.4"),
+		DisplayName: common.String(dbHomeDisplayName),
+		Database: &database.CreateDatabaseDetails{
+			DbName:        common.String(databaseName),
+			AdminPassword: common.String(databasePassword),
+		},
+	}
+
+	resp, err := c.LaunchDbSystem(context.Background(), request)
+	failIfError(t, err)
+
+	getDBSystem := func() (interface{}, error) {
+		getReq := database.GetDbSystemRequest{
+			DbSystemId: resp.Id,
+		}
+
+		getResp, err := c.GetDbSystem(context.Background(), getReq)
+
+		if err != nil {
+			return nil, err
+		}
+
+		return getResp, nil
+	}
+
+	// wait for lifecyle become running
+	failIfError(
+		t,
+		retryUntilTrueOrError(
+			getDBSystem,
+			checkLifecycleState(string(database.DbSystemSummaryLifecycleStateAvailable)),
+			time.Tick(10*time.Second),
+			time.After((5*time.Minute))))
+
+	return resp.DbSystem.Id
+}
+
+func getDbHome(t *testing.T) (*database.DbHomeSummary, error) {
+	dbSystemID := createOrGetDBSystem(t)
+
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+
+	listDbHomeReq := database.ListDbHomesRequest{
+		CompartmentId: common.String(getCompartmentID()),
+		DbSystemId:    dbSystemID,
+	}
+
+	r, err := c.ListDbHomes(context.Background(), listDbHomeReq)
+	failIfError(t, err)
+
+	for _, element := range r.Items {
+		if *element.DisplayName == dbHomeDisplayName &&
+			element.LifecycleState == database.DbHomeSummaryLifecycleStateAvailable {
+			return &element, nil
+		}
+	}
+
+	return nil, errors.New("cannot find the dbhome")
+}
+
+func createOrGetDatabaseBackup(t *testing.T) *string {
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+
+	listReq := database.ListBackupsRequest{
+		CompartmentId: common.String(getCompartmentID()),
+	}
+
+	listResp, err := c.ListBackups(context.Background(), listReq)
+	failIfError(t, err)
+
+	for _, element := range listResp.Items {
+		if *element.DisplayName == dbBackupDisplayName &&
+			element.LifecycleState == database.BackupSummaryLifecycleStateActive {
+			return element.Id
+		}
+	}
+
+	return createDBBackup(t)
+}
+
+func createDBBackup(t *testing.T) *string {
+	db, err := getDatabase(t)
+	failIfError(t, err)
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+
+	// create a backup
+	req := database.CreateBackupRequest{}
+	req.DatabaseId = db.Id
+	req.DisplayName = common.String(dbBackupDisplayName)
+	r, err := c.CreateBackup(context.Background(), req)
+	failIfError(t, err)
+	getBackup := func() (interface{}, error) {
+		getReq := database.GetBackupRequest{
+			BackupId: r.Id,
+		}
+
+		getResp, err := c.GetBackup(context.Background(), getReq)
+
+		if err != nil {
+			return nil, err
+		}
+
+		return getResp, nil
+	}
+
+	// wait for lifecyle become running
+	failIfError(
+		t,
+		retryUntilTrueOrError(
+			getBackup,
+			checkLifecycleState(string(database.BackupSummaryLifecycleStateActive)),
+			time.Tick(10*time.Second),
+			time.After((5*time.Minute))))
+
+	return r.Id
+}
+
+func createOrGetDataGuardAssociation(t *testing.T) *string {
+	c, clerr := getDatabaseClient()
+	failIfError(t, clerr)
+	db, err := getDatabase(t)
+	failIfError(t, err)
+
+	dbsystemID := createDBSystem(t, "GOSDK2_Test_Deps_PeerDbSystem", "DB2")
+
+	defer func() {
+		// clean up
+		fmt.Println("Deleting DBSystem")
+		if dbsystemID != nil {
+			rDelete := database.TerminateDbSystemRequest{
+				DbSystemId: dbsystemID,
+			}
+
+			delRes, err := c.TerminateDbSystem(context.Background(), rDelete)
+			failIfError(t, err)
+			assert.NotEmpty(t, delRes.OpcRequestId)
+		}
+	}()
+
+	listReq := database.ListDataGuardAssociationsRequest{
+		DatabaseId: db.Id,
+	}
+
+	listResp, err := c.ListDataGuardAssociations(context.Background(), listReq)
+	failIfError(t, err)
+
+	for _, element := range listResp.Items {
+		if element.LifecycleState == database.DataGuardAssociationSummaryLifecycleStateAvailable {
+			return element.Id
+		}
+	}
+
+	// create a new one
+	req := database.CreateDataGuardAssociationRequest{
+		DatabaseId: db.Id,
+	}
+
+	details := database.CreateDataGuardAssociationToExistingDbSystemDetails{
+		ProtectionMode:        database.CreateDataGuardAssociationDetailsProtectionModePerformance,
+		TransportType:         database.CreateDataGuardAssociationDetailsTransportTypeAsync,
+		DatabaseAdminPassword: common.String(databasePassword),
+		PeerDbSystemId:        dbsystemID,
+	}
+
+	req.CreateDataGuardAssociationDetails = details
+
+	r, err := c.CreateDataGuardAssociation(context.Background(), req)
+	failIfError(t, err)
+	return r.Id
+}
+
+func createOrGetUser(t *testing.T) identity.User {
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	failIfError(t, clerr)
+
+	listReq := identity.ListUsersRequest{
+		CompartmentId: common.String(getTenancyID()),
+		Limit:         common.Int(500), // not ideal here, but easy and reduce number of requests
+	}
+
+	listResp, err := c.ListUsers(context.Background(), listReq)
+	failIfError(t, err)
+
+	for _, user := range listResp.Items {
+		if *user.Name == testUserDisplayName {
+			// found test user, return it
+			return user
+		}
+	}
+
+	user := createTestUser(t, common.String(testUserDisplayName))
+	return user
 }
