@@ -10,13 +10,13 @@ package integtest
 import (
 	"context"
 	"fmt"
+	"reflect"
 	"testing"
+	"time"
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
-	"time"
-	"reflect"
 )
 
 // Group operations CRUD
@@ -431,7 +431,7 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 
 	defer func() {
 		// Delete
-		request := identity.DeletePolicyRequest{PolicyId:createResponse.Id}
+		request := identity.DeletePolicyRequest{PolicyId: createResponse.Id}
 		delRes, err := client.DeletePolicy(context.Background(), request)
 		assert.NoError(t, err)
 		assert.NotEmpty(t, delRes.OpcRequestId)
@@ -736,7 +736,6 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	verifyResponseIsValid(t, rspRead, readErr)
 	assert.Equal(t, *rRead.IdentityProviderId, *rspRead.GetId())
 
-
 	//Listing
 	request := identity.ListIdentityProvidersRequest{}
 	request.CompartmentId = common.String(getTenancyID())
@@ -747,7 +746,7 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	presentAndEqual := false
 	for _, val := range response.Items {
 		if *val.GetId() == *rspCreate.GetId() {
-			presentAndEqual = reflect.TypeOf(identity.Saml2IdentityProvider{}) ==  reflect.TypeOf(val)
+			presentAndEqual = reflect.TypeOf(identity.Saml2IdentityProvider{}) == reflect.TypeOf(val)
 		}
 	}
 	assert.True(t, presentAndEqual)
@@ -755,7 +754,7 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 	items := response.Items
 
 	nextRequest := identity.ListIdentityProvidersRequest{CompartmentId: request.CompartmentId,
-		Protocol:identity.ListIdentityProvidersProtocolSaml2}
+		Protocol: identity.ListIdentityProvidersProtocolSaml2}
 	nextRequest.Page = response.OpcNextPage
 
 	for nextRequest.Page != nil {

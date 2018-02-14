@@ -11,8 +11,9 @@ package identity
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
 	"net/http"
+
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 //IdentityClient a client for Identity
@@ -64,14 +65,17 @@ func (client IdentityClient) AddUserToGroup(ctx context.Context, request AddUser
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -95,14 +99,17 @@ func (client IdentityClient) CreateCompartment(ctx context.Context, request Crea
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -121,14 +128,17 @@ func (client IdentityClient) CreateCustomerSecretKey(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -154,14 +164,17 @@ func (client IdentityClient) CreateGroup(ctx context.Context, request CreateGrou
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -185,14 +198,17 @@ func (client IdentityClient) CreateIdentityProvider(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &identityprovider{})
+			return common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &identityprovider{})
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -204,14 +220,17 @@ func (client IdentityClient) CreateIdpGroupMapping(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -230,14 +249,17 @@ func (client IdentityClient) CreateOrResetUIPassword(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -259,14 +281,17 @@ func (client IdentityClient) CreatePolicy(ctx context.Context, request CreatePol
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -277,14 +302,17 @@ func (client IdentityClient) CreateRegionSubscription(ctx context.Context, reque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -302,14 +330,17 @@ func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request Cr
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -348,14 +379,17 @@ func (client IdentityClient) CreateUser(ctx context.Context, request CreateUserR
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -370,14 +404,16 @@ func (client IdentityClient) DeleteApiKey(ctx context.Context, request DeleteApi
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -388,14 +424,16 @@ func (client IdentityClient) DeleteCustomerSecretKey(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -406,14 +444,16 @@ func (client IdentityClient) DeleteGroup(ctx context.Context, request DeleteGrou
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -425,14 +465,16 @@ func (client IdentityClient) DeleteIdentityProvider(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -443,14 +485,16 @@ func (client IdentityClient) DeleteIdpGroupMapping(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -461,14 +505,16 @@ func (client IdentityClient) DeletePolicy(ctx context.Context, request DeletePol
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -479,14 +525,16 @@ func (client IdentityClient) DeleteSwiftPassword(ctx context.Context, request De
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -497,14 +545,16 @@ func (client IdentityClient) DeleteUser(ctx context.Context, request DeleteUserR
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -521,14 +571,17 @@ func (client IdentityClient) GetCompartment(ctx context.Context, request GetComp
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -542,14 +595,17 @@ func (client IdentityClient) GetGroup(ctx context.Context, request GetGroupReque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -560,14 +616,17 @@ func (client IdentityClient) GetIdentityProvider(ctx context.Context, request Ge
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &identityprovider{})
+			return common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &identityprovider{})
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -578,14 +637,17 @@ func (client IdentityClient) GetIdpGroupMapping(ctx context.Context, request Get
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -596,14 +658,17 @@ func (client IdentityClient) GetPolicy(ctx context.Context, request GetPolicyReq
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -614,14 +679,17 @@ func (client IdentityClient) GetTenancy(ctx context.Context, request GetTenancyR
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -632,14 +700,17 @@ func (client IdentityClient) GetUser(ctx context.Context, request GetUserRequest
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -650,14 +721,17 @@ func (client IdentityClient) GetUserGroupMembership(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -670,14 +744,17 @@ func (client IdentityClient) ListApiKeys(ctx context.Context, request ListApiKey
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -690,14 +767,17 @@ func (client IdentityClient) ListAvailabilityDomains(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -710,14 +790,17 @@ func (client IdentityClient) ListCompartments(ctx context.Context, request ListC
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -729,14 +812,17 @@ func (client IdentityClient) ListCustomerSecretKeys(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -749,14 +835,17 @@ func (client IdentityClient) ListFaultDomains(ctx context.Context, request ListF
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -769,14 +858,17 @@ func (client IdentityClient) ListGroups(ctx context.Context, request ListGroupsR
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -806,14 +898,17 @@ func (client IdentityClient) ListIdentityProviders(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listidentityprovider{})
+			return common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &listidentityprovider{})
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -824,14 +919,17 @@ func (client IdentityClient) ListIdpGroupMappings(ctx context.Context, request L
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -845,14 +943,17 @@ func (client IdentityClient) ListPolicies(ctx context.Context, request ListPolic
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -863,14 +964,17 @@ func (client IdentityClient) ListRegionSubscriptions(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -878,14 +982,17 @@ func (client IdentityClient) ListRegionSubscriptions(ctx context.Context, reques
 func (client IdentityClient) ListRegions(ctx context.Context, options ...common.RetryPolicyOption) (response ListRegionsResponse, err error) {
 	httpRequest := common.MakeDefaultHTTPRequest(http.MethodGet, "/regions")
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -897,14 +1004,17 @@ func (client IdentityClient) ListSwiftPasswords(ctx context.Context, request Lis
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -922,14 +1032,17 @@ func (client IdentityClient) ListUserGroupMemberships(ctx context.Context, reque
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -942,14 +1055,17 @@ func (client IdentityClient) ListUsers(ctx context.Context, request ListUsersReq
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -960,14 +1076,16 @@ func (client IdentityClient) RemoveUserFromGroup(ctx context.Context, request Re
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+	})
 	return
 }
 
@@ -978,14 +1096,17 @@ func (client IdentityClient) UpdateCompartment(ctx context.Context, request Upda
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -996,14 +1117,17 @@ func (client IdentityClient) UpdateCustomerSecretKey(ctx context.Context, reques
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1014,14 +1138,17 @@ func (client IdentityClient) UpdateGroup(ctx context.Context, request UpdateGrou
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1032,14 +1159,17 @@ func (client IdentityClient) UpdateIdentityProvider(ctx context.Context, request
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &identityprovider{})
+			return common.UnmarshalResponseWithPolymorphicBody(httpResponse, &response, &identityprovider{})
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1050,14 +1180,17 @@ func (client IdentityClient) UpdateIdpGroupMapping(ctx context.Context, request 
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1069,14 +1202,17 @@ func (client IdentityClient) UpdatePolicy(ctx context.Context, request UpdatePol
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1087,14 +1223,17 @@ func (client IdentityClient) UpdateSwiftPassword(ctx context.Context, request Up
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1105,14 +1244,17 @@ func (client IdentityClient) UpdateUser(ctx context.Context, request UpdateUserR
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1123,14 +1265,17 @@ func (client IdentityClient) UpdateUserState(ctx context.Context, request Update
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
 
@@ -1152,13 +1297,16 @@ func (client IdentityClient) UploadApiKey(ctx context.Context, request UploadApi
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return
-	}
+	err = client.Call(ctx, &httpRequest, common.CallConfig{
+		ResponseCallback: func(httpResponse *http.Response, e error) error {
+			response.RawResponse = httpResponse
+			if e != nil {
+				return e
+			}
 
-	err = common.UnmarshalResponse(httpResponse, &response)
+			return common.UnmarshalResponse(httpResponse, &response)
+		},
+		RetryPolicyOptions: options,
+	})
 	return
 }
