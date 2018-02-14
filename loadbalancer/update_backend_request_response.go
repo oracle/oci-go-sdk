@@ -14,7 +14,7 @@ type UpdateBackendRequest struct {
 	// Details for updating a backend server.
 	UpdateBackendDetails `contributesTo:"body"`
 
-	// The OCID https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the load balancer associated with the backend set and server.
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the load balancer associated with the backend set and server.
 	LoadBalancerId *string `mandatory:"true" contributesTo:"path" name:"loadBalancerId"`
 
 	// The name of the backend set associated with the backend server.
@@ -51,7 +51,7 @@ type UpdateBackendResponse struct {
 	// a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// The OCID https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm of the work request.
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the work request.
 	OpcWorkRequestId *string `presentIn:"header" name:"opc-work-request-id"`
 }
 

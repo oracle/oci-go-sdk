@@ -14,10 +14,10 @@ import (
 
 // InternetGateway Represents a router that connects the edge of a VCN with the Internet. For an example scenario
 // that uses an Internet Gateway, see
-// Typical Networking Service Scenarios https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/overview.htm#scenarios.
+// Typical Networking Service Scenarios (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/overview.htm#scenarios).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm.
+// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
 type InternetGateway struct {
 
 	// The OCID of the compartment containing the Internet Gateway.

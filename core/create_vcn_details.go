@@ -35,7 +35,7 @@ type CreateVcnDetails struct {
 	// resolve other instances in the VCN. Otherwise the Internet and VCN Resolver
 	// will not work.
 	// For more information, see
-	// DNS in Your Virtual Cloud Network https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/dns.htm.
+	// DNS in Your Virtual Cloud Network (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/dns.htm).
 	// Example: `vcn1`
 	DnsLabel *string `mandatory:"false" json:"dnsLabel"`
 }

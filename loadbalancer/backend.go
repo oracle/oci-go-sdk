@@ -13,7 +13,7 @@ import (
 )
 
 // Backend The configuration of a backend server that is a member of a load balancer backend set.
-// For more information, see Managing Backend Servers https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/Tasks/managingbackendservers.htm.
+// For more information, see Managing Backend Servers (https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/Tasks/managingbackendservers.htm).
 type Backend struct {
 
 	// Whether the load balancer should treat this server as a backup unit. If `true`, the load balancer forwards no ingress
@@ -47,7 +47,7 @@ type Backend struct {
 	// proportion of incoming traffic. For example, a server weighted '3' receives 3 times the number of new connections
 	// as a server weighted '1'.
 	// For more information on load balancing policies, see
-	// How Load Balancing Policies Work https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/Reference/lbpolicies.htm.
+	// How Load Balancing Policies Work (https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/Reference/lbpolicies.htm).
 	// Example: `3`
 	Weight *int `mandatory:"true" json:"weight"`
 }
