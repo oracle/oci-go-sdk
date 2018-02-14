@@ -71,7 +71,7 @@ functions that returns a pointer for a given value. For example:
 		CidrBlock:     common.String("172.16.0.0/16"),
 		CompartmentId: common.String("someOcid"),
 		DisplayName:   common.String("myVcn"),
-		DisplayNumber: common.String(1),
+		DisplayNumber: common.Int(1),
 	}
 
 
