@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 package objectstorage
@@ -35,7 +35,7 @@ type GetObjectRequest struct {
 	// The client request ID for tracing.
 	OpcClientRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
 
-	// Optional byte range to fetch, as described in [RFC 7233](https://tools.ietf.org/rfc/rfc7233), section 2.1.
+	// Optional byte range to fetch, as described in RFC 7233 (https://tools.ietf.org/rfc/rfc7233), section 2.1.
 	// Note, only a single range of bytes is supported.
 	Range *string `mandatory:"false" contributesTo:"header" name:"range"`
 }
@@ -69,10 +69,10 @@ type GetObjectResponse struct {
 	// The object size in bytes.
 	ContentLength *int `presentIn:"header" name:"content-length"`
 
-	// Content-Range header for range requests, per [RFC 7233](https://tools.ietf.org/rfc/rfc7233), section 4.2.
+	// Content-Range header for range requests, per RFC 7233 (https://tools.ietf.org/rfc/rfc7233), section 4.2.
 	ContentRange *string `presentIn:"header" name:"content-range"`
 
-	// Content-MD5 header, as described in [RFC 2616](https://tools.ietf.org/rfc/rfc2616), section 14.15.
+	// Content-MD5 header, as described in RFC 2616 (https://tools.ietf.org/rfc/rfc2616), section 14.15.
 	// Unavailable for objects uploaded using multipart upload.
 	ContentMd5 *string `presentIn:"header" name:"content-md5"`
 
@@ -83,16 +83,16 @@ type GetObjectResponse struct {
 	// and then calculating the MD5 hash of the concatenated values.
 	OpcMultipartMd5 *string `presentIn:"header" name:"opc-multipart-md5"`
 
-	// Content-Type header, as described in [RFC 2616](https://tools.ietf.org/rfc/rfc2616), section 14.17.
+	// Content-Type header, as described in RFC 2616 (https://tools.ietf.org/rfc/rfc2616), section 14.17.
 	ContentType *string `presentIn:"header" name:"content-type"`
 
-	// Content-Language header, as described in [RFC 2616](https://tools.ietf.org/rfc/rfc2616), section 14.12.
+	// Content-Language header, as described in RFC 2616 (https://tools.ietf.org/rfc/rfc2616), section 14.12.
 	ContentLanguage *string `presentIn:"header" name:"content-language"`
 
-	// Content-Encoding header, as described in [RFC 2616](https://tools.ietf.org/rfc/rfc2616), section 14.11.
+	// Content-Encoding header, as described in RFC 2616 (https://tools.ietf.org/rfc/rfc2616), section 14.11.
 	ContentEncoding *string `presentIn:"header" name:"content-encoding"`
 
-	// The object modification time, as described in [RFC 2616](https://tools.ietf.org/rfc/rfc2616), section 14.29.
+	// The object modification time, as described in RFC 2616 (https://tools.ietf.org/rfc/rfc2616), section 14.29.
 	LastModified *common.SDKTime `presentIn:"header" name:"last-modified"`
 
 	// Flag to indicate whether or not the object was modified.  If this is true,

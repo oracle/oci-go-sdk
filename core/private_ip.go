@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Core Services API
@@ -21,7 +21,7 @@ import (
 // automatically deleted when the VNIC is terminated.
 // You can add *secondary private IPs* to a VNIC after it's created. For more
 // information, see the `privateIp` operations and also
-// [IP Addresses]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingIPaddresses.htm).
+// IP Addresses (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/managingIPaddresses.htm).
 // **Note:** Only
 // ListPrivateIps and
 // GetPrivateIp work with
@@ -34,7 +34,7 @@ import (
 // for a primary private IP, you use UpdateVnic.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// [Getting Started with Policies]({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
+// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
 type PrivateIp struct {
 
 	// The private IP's Availability Domain.
@@ -52,10 +52,10 @@ type PrivateIp struct {
 	// portion of the private IP's fully qualified domain name (FQDN)
 	// (for example, `bminstance-1` in FQDN `bminstance-1.subnet123.vcn1.oraclevcn.com`).
 	// Must be unique across all VNICs in the subnet and comply with
-	// [RFC 952](https://tools.ietf.org/html/rfc952) and
-	// [RFC 1123](https://tools.ietf.org/html/rfc1123).
+	// RFC 952 (https://tools.ietf.org/html/rfc952) and
+	// RFC 1123 (https://tools.ietf.org/html/rfc1123).
 	// For more information, see
-	// [DNS in Your Virtual Cloud Network]({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
+	// DNS in Your Virtual Cloud Network (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/dns.htm).
 	// Example: `bminstance-1`
 	HostnameLabel *string `mandatory:"false" json:"hostnameLabel"`
 

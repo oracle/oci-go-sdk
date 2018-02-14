@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
 // Identity and Access Management Service API
@@ -15,10 +15,10 @@ import (
 // ApiKey A PEM-format RSA credential for securing requests to the Oracle Cloud Infrastructure REST API. Also known
 // as an *API signing key*. Specifically, this is the public key from the key pair. The private key remains with
 // the user calling the API. For information about generating a key pair
-// in the required PEM format, see [Required Keys and OCIDs]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm).
+// in the required PEM format, see Required Keys and OCIDs (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm).
 // **Important:** This is **not** the SSH key for accessing compute instances.
 // Each user can have a maximum of three API signing keys.
-// For more information about user credentials, see [User Credentials]({{DOC_SERVER_URL}}/Content/Identity/Concepts/usercredentials.htm).
+// For more information about user credentials, see User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/usercredentials.htm).
 type ApiKey struct {
 
 	// An Oracle-assigned identifier for the key, in this format:
