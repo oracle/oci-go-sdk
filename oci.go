@@ -48,6 +48,33 @@ Optional fields in the SDK
 Optional fields are represented with the `mandatory:"false"` tag on input structs. The sdk will omit all optional fields that are nil.
 In the case of enum-type fields, the sdk will omit fields whose value is the empty string.
 
+Helper functions
+
+The SDK uses pointers for primitive types in many input structs. To aid in the construction of such structs, the SDK provides
+functions that returns a pointer for a given value. For example:
+
+	//Given the struct
+	type CreateVcnDetails struct {
+
+		// Example: `172.16.0.0/16`
+		CidrBlock *string `mandatory:"true" json:"cidrBlock"`
+
+		CompartmentId *string `mandatory:"true" json:"compartmentId"`
+
+		DisplayName *string `mandatory:"false" json:"displayName"`
+
+		DisplayNumber *int `mandatory:"false" json:"dnsNumber"`
+	}
+
+	//We can use the helper functions to build the struct
+	details := core.CreateVcnDetails{
+		CidrBlock:     common.String("172.16.0.0/16"),
+		CompartmentId: common.String("someOcid"),
+		DisplayName:   common.String("myVcn"),
+		DisplayNumber: common.String(1),
+	}
+
+
 Signing custom requests
 
 The oci-go-sdk exposes a stand-alone signer that can be used to sign custom requests. For example:
