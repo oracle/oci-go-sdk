@@ -8,6 +8,7 @@ import (
 	"io"
 	"io/ioutil"
 	"math/rand"
+	"net/http"
 	"os"
 	"os/exec"
 	"reflect"
@@ -17,6 +18,7 @@ import (
 	"time"
 
 	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/database"
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
 )
@@ -175,7 +177,7 @@ func findLifecycleFieldValue(request interface{}) (string, error) {
 				return lif, nil
 			}
 		}
-		if !strings.Contains(strings.ToLower(sf.Name), "lifecycle") {
+		if !strings.Contains(strings.ToLower(sf.Name), "lifecyclestate") {
 			continue
 		}
 		return sv.String(), nil
@@ -283,4 +285,19 @@ func getRandomString(n int) string {
 		b[i] = letters[rand.Intn(len(letters))]
 	}
 	return string(b)
+}
+
+// get database client for either real or mock service
+func getDatabaseClient() (database.DatabaseClient, error) {
+	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+
+	if !getRunExpensiveTests() {
+		// use mock service
+		c.Interceptor = func(request *http.Request) error {
+			request.Header.Set("opc-host-serial", "FakeHostSerial")
+			return nil
+		}
+	}
+
+	return c, clerr
 }

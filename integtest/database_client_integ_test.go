@@ -94,10 +94,13 @@ func TestDatabaseClient_FailoverDataGuardAssociation(t *testing.T) {
 }
 
 func TestDatabaseClient_GetBackup(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	t.Skip("skip for teamcity tenant service limit reason, pass locally")
+	backupID := createOrGetDatabaseBackup(t)
+	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
-	request := database.GetBackupRequest{}
+	request := database.GetBackupRequest{
+		BackupId: backupID,
+	}
 	r, err := c.GetBackup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
@@ -105,10 +108,18 @@ func TestDatabaseClient_GetBackup(t *testing.T) {
 }
 
 func TestDatabaseClient_GetDataGuardAssociation(t *testing.T) {
-	t.Skip("Not implemented")
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	t.Skip("skip for teamcity tenant service limit reason, pass locally")
+	db, err := getDatabase(t)
+	failIfError(t, err)
+
+	dataGuardAssociationID := createOrGetDataGuardAssociation(t)
+
+	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
-	request := database.GetDataGuardAssociationRequest{}
+	request := database.GetDataGuardAssociationRequest{
+		DatabaseId:             db.Id,
+		DataGuardAssociationId: dataGuardAssociationID,
+	}
 	r, err := c.GetDataGuardAssociation(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
@@ -204,13 +215,8 @@ func TestDatabaseClient_GetDbSystemPatchHistoryEntry(t *testing.T) {
 }
 
 func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
-
-	if !getRunExpensiveTests() {
-		t.Skip("expensive test excluded")
-		return
-	}
-
-	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	t.Skip("skip for teamcity tenant service limit reason, pass locally")
+	c, clerr := getDatabaseClient()
 	failIfError(t, clerr)
 
 	request := database.LaunchDbSystemRequest{}
@@ -218,7 +224,7 @@ func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
 	request.CompartmentId = common.String(getCompartmentID())
 	request.CpuCoreCount = common.Int(2)
 	request.DatabaseEdition = "STANDARD_EDITION"
-	request.DisplayName = common.String(dbSystemDisplayName)
+	request.DisplayName = common.String("GOSDK_TestDBSystem")
 	request.Shape = common.String("BM.DenseIO1.36") // this shape will not get service limit error for now
 
 	buffer, err := readTestPubKey()
