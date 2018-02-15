@@ -45,14 +45,15 @@ func getObject(t *testing.T, namespace, bucketname, objectname string) (objectst
 	return c.GetObject(context.Background(), request)
 }
 
-func putObject(t *testing.T, namespace, bucketname, objectname string, contentLen int, content io.ReadCloser) error {
+func putObject(t *testing.T, namespace, bucketname, objectname string, contentLen int, content io.ReadCloser, metadata map[string]string) error {
 	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	request := objectstorage.PutObjectRequest{
 		NamespaceName: &namespace,
-		BucketName:    &bucketname,
-		ObjectName:    &objectname,
-		ContentLength: &contentLen,
-		PutObjectBody: content,
+		BucketName: &bucketname,
+		ObjectName: &objectname,
+		ContentLength:&contentLen,
+		PutObjectBody:content,
+		OpcMeta:metadata,
 	}
 	_, err := c.PutObject(context.Background(), request)
 	return err
@@ -117,7 +118,7 @@ func TestObjectStorageClient_BigFile(t *testing.T) {
 	defer file.Close()
 	failIfError(t, e)
 
-	e = putObject(t, namespace, bname, filename, int(filesize), file)
+	e = putObject(t, namespace , bname, filename, int(filesize), file, nil)
 	failIfError(t, e)
 	fmt.Println(expectedHash)
 	rGet, e := getObject(t, namespace, bname, filename)
@@ -185,11 +186,15 @@ func TestObjectStorageClient_Object(t *testing.T) {
 	file, e := os.Open(filepath)
 	defer file.Close()
 	failIfError(t, e)
-	e = putObject(t, namespace, bname, filename, contentlen, file)
+	metadata := make(map[string]string)
+	metadata["Test-VERSION"] = "TestOne"
+	e = putObject(t, namespace , bname, filename, contentlen, file, metadata)
 	failIfError(t, e)
 
 	r, e := getObject(t, namespace, bname, filename)
+
 	failIfError(t, e)
+	assert.Equal(t, "TestOne", r.OpcMeta["test-version"])
 	defer deleteObject(t, namespace, bname, filename)
 	defer r.Content.Close()
 	bytes, e := ioutil.ReadAll(r.Content)
