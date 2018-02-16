@@ -416,6 +416,7 @@ func (client IdentityClient) DeleteApiKey(ctx context.Context, request DeleteApi
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -436,6 +437,7 @@ func (client IdentityClient) DeleteCustomerSecretKey(ctx context.Context, reques
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -456,6 +458,7 @@ func (client IdentityClient) DeleteGroup(ctx context.Context, request DeleteGrou
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -477,6 +480,7 @@ func (client IdentityClient) DeleteIdentityProvider(ctx context.Context, request
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -497,6 +501,7 @@ func (client IdentityClient) DeleteIdpGroupMapping(ctx context.Context, request 
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -517,6 +522,7 @@ func (client IdentityClient) DeletePolicy(ctx context.Context, request DeletePol
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -537,6 +543,7 @@ func (client IdentityClient) DeleteSwiftPassword(ctx context.Context, request De
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -557,6 +564,7 @@ func (client IdentityClient) DeleteUser(ctx context.Context, request DeleteUserR
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -1088,6 +1096,7 @@ func (client IdentityClient) RemoveUserFromGroup(ctx context.Context, request Re
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }

@@ -107,6 +107,7 @@ func (client VirtualNetworkClient) ConnectLocalPeeringGateways(ctx context.Conte
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -632,6 +633,7 @@ func (client VirtualNetworkClient) DeleteCpe(ctx context.Context, request Delete
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -653,6 +655,7 @@ func (client VirtualNetworkClient) DeleteCrossConnect(ctx context.Context, reque
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -675,6 +678,7 @@ func (client VirtualNetworkClient) DeleteCrossConnectGroup(ctx context.Context, 
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -698,6 +702,7 @@ func (client VirtualNetworkClient) DeleteDhcpOptions(ctx context.Context, reques
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -721,6 +726,7 @@ func (client VirtualNetworkClient) DeleteDrg(ctx context.Context, request Delete
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -743,6 +749,7 @@ func (client VirtualNetworkClient) DeleteDrgAttachment(ctx context.Context, requ
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -769,6 +776,7 @@ func (client VirtualNetworkClient) DeleteIPSecConnection(ctx context.Context, re
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -792,6 +800,7 @@ func (client VirtualNetworkClient) DeleteInternetGateway(ctx context.Context, re
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -814,6 +823,7 @@ func (client VirtualNetworkClient) DeleteLocalPeeringGateway(ctx context.Context
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -842,6 +852,7 @@ func (client VirtualNetworkClient) DeletePrivateIp(ctx context.Context, request 
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -865,6 +876,7 @@ func (client VirtualNetworkClient) DeleteRouteTable(ctx context.Context, request
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -888,6 +900,7 @@ func (client VirtualNetworkClient) DeleteSecurityList(ctx context.Context, reque
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -910,6 +923,7 @@ func (client VirtualNetworkClient) DeleteSubnet(ctx context.Context, request Del
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -932,6 +946,7 @@ func (client VirtualNetworkClient) DeleteVcn(ctx context.Context, request Delete
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -955,6 +970,7 @@ func (client VirtualNetworkClient) DeleteVirtualCircuit(ctx context.Context, req
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }

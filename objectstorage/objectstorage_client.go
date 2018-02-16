@@ -85,6 +85,7 @@ func (client ObjectStorageClient) AbortMultipartUpload(ctx context.Context, requ
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -105,6 +106,7 @@ func (client ObjectStorageClient) CommitMultipartUpload(ctx context.Context, req
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -191,6 +193,7 @@ func (client ObjectStorageClient) DeleteBucket(ctx context.Context, request Dele
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -211,6 +214,7 @@ func (client ObjectStorageClient) DeleteObject(ctx context.Context, request Dele
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -231,6 +235,7 @@ func (client ObjectStorageClient) DeletePreauthenticatedRequest(ctx context.Cont
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -337,6 +342,7 @@ func (client ObjectStorageClient) HeadBucket(ctx context.Context, request HeadBu
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -357,6 +363,7 @@ func (client ObjectStorageClient) HeadObject(ctx context.Context, request HeadOb
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -492,6 +499,7 @@ func (client ObjectStorageClient) PutObject(ctx context.Context, request PutObje
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -533,6 +541,7 @@ func (client ObjectStorageClient) UploadPart(ctx context.Context, request Upload
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }

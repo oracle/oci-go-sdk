@@ -174,6 +174,7 @@ func (client DatabaseClient) DeleteBackup(ctx context.Context, request DeleteBac
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -194,6 +195,7 @@ func (client DatabaseClient) DeleteDbHome(ctx context.Context, request DeleteDbH
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -794,6 +796,7 @@ func (client DatabaseClient) TerminateDbSystem(ctx context.Context, request Term
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
