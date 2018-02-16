@@ -117,6 +117,7 @@ func (client AuditClient) UpdateConfiguration(ctx context.Context, request Updat
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }

@@ -75,6 +75,7 @@ func (client LoadBalancerClient) CreateBackend(ctx context.Context, request Crea
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -95,6 +96,7 @@ func (client LoadBalancerClient) CreateBackendSet(ctx context.Context, request C
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -115,6 +117,7 @@ func (client LoadBalancerClient) CreateCertificate(ctx context.Context, request 
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -135,6 +138,7 @@ func (client LoadBalancerClient) CreateListener(ctx context.Context, request Cre
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -175,6 +179,7 @@ func (client LoadBalancerClient) CreateLoadBalancer(ctx context.Context, request
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -195,6 +200,7 @@ func (client LoadBalancerClient) DeleteBackend(ctx context.Context, request Dele
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -216,6 +222,7 @@ func (client LoadBalancerClient) DeleteBackendSet(ctx context.Context, request D
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -236,6 +243,7 @@ func (client LoadBalancerClient) DeleteCertificate(ctx context.Context, request 
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -256,6 +264,7 @@ func (client LoadBalancerClient) DeleteListener(ctx context.Context, request Del
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -276,6 +285,7 @@ func (client LoadBalancerClient) DeleteLoadBalancer(ctx context.Context, request
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -653,6 +663,7 @@ func (client LoadBalancerClient) UpdateBackend(ctx context.Context, request Upda
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -673,6 +684,7 @@ func (client LoadBalancerClient) UpdateBackendSet(ctx context.Context, request U
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -693,6 +705,7 @@ func (client LoadBalancerClient) UpdateHealthChecker(ctx context.Context, reques
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -713,6 +726,7 @@ func (client LoadBalancerClient) UpdateListener(ctx context.Context, request Upd
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -733,6 +747,7 @@ func (client LoadBalancerClient) UpdateLoadBalancer(ctx context.Context, request
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }

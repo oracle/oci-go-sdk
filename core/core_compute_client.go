@@ -236,6 +236,7 @@ func (client ComputeClient) DeleteConsoleHistory(ctx context.Context, request De
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -256,6 +257,7 @@ func (client ComputeClient) DeleteImage(ctx context.Context, request DeleteImage
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -276,6 +278,7 @@ func (client ComputeClient) DeleteInstanceConsoleConnection(ctx context.Context,
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -298,6 +301,7 @@ func (client ComputeClient) DetachBootVolume(ctx context.Context, request Detach
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -326,6 +330,7 @@ func (client ComputeClient) DetachVnic(ctx context.Context, request DetachVnicRe
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -348,6 +353,7 @@ func (client ComputeClient) DetachVolume(ctx context.Context, request DetachVolu
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -866,6 +872,7 @@ func (client ComputeClient) TerminateInstance(ctx context.Context, request Termi
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }

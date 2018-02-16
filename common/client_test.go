@@ -228,8 +228,12 @@ func TestBaseClient_CallWithInterceptor(t *testing.T) {
 
 	request := http.Request{}
 	request.URL = &url.URL{Path: restPath}
-	retRes, err := c.Call(context.Background(), &request)
-	assert.Equal(t, &response, retRes)
+	err := c.Call(context.Background(), &request, CallConfig{
+		ResponseCallback: func(retRes *http.Response, e error) error {
+			assert.Equal(t, &response, retRes)
+			return e
+		},
+	})
 	assert.NoError(t, err)
 
 }

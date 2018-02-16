@@ -135,6 +135,7 @@ func (client BlockstorageClient) DeleteBootVolume(ctx context.Context, request D
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -158,6 +159,7 @@ func (client BlockstorageClient) DeleteVolume(ctx context.Context, request Delet
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
@@ -178,6 +180,7 @@ func (client BlockstorageClient) DeleteVolumeBackup(ctx context.Context, request
 
 			return common.UnmarshalResponse(httpResponse, &response)
 		},
+		RetryPolicyOptions: options,
 	})
 	return
 }
