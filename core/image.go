@@ -58,6 +58,11 @@ func (m Image) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m Image) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // ImageLifecycleStateEnum Enum with underlying type: string
 type ImageLifecycleStateEnum string
 

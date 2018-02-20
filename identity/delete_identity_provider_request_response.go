@@ -24,6 +24,20 @@ func (request DeleteIdentityProviderRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DeleteIdentityProviderRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DeleteIdentityProviderRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DeleteIdentityProviderResponse wrapper for the DeleteIdentityProvider operation
 type DeleteIdentityProviderResponse struct {
 
@@ -37,4 +51,9 @@ type DeleteIdentityProviderResponse struct {
 
 func (response DeleteIdentityProviderResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DeleteIdentityProviderResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

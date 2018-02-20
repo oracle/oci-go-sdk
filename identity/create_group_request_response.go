@@ -26,6 +26,20 @@ func (request CreateGroupRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request CreateGroupRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request CreateGroupRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // CreateGroupResponse wrapper for the CreateGroup operation
 type CreateGroupResponse struct {
 
@@ -45,4 +59,14 @@ type CreateGroupResponse struct {
 
 func (response CreateGroupResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response CreateGroupResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response CreateGroupResponse) GetStatefulEntity() common.OciPollable {
+	return response.Group
 }

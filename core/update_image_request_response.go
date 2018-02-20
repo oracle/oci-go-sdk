@@ -34,6 +34,20 @@ func (request UpdateImageRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request UpdateImageRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request UpdateImageRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // UpdateImageResponse wrapper for the UpdateImage operation
 type UpdateImageResponse struct {
 
@@ -53,4 +67,14 @@ type UpdateImageResponse struct {
 
 func (response UpdateImageResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response UpdateImageResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response UpdateImageResponse) GetStatefulEntity() common.OciPollable {
+	return response.Image
 }

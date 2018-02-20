@@ -26,6 +26,20 @@ func (request LaunchInstanceRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request LaunchInstanceRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request LaunchInstanceRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // LaunchInstanceResponse wrapper for the LaunchInstance operation
 type LaunchInstanceResponse struct {
 
@@ -45,4 +59,14 @@ type LaunchInstanceResponse struct {
 
 func (response LaunchInstanceResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response LaunchInstanceResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response LaunchInstanceResponse) GetStatefulEntity() common.OciPollable {
+	return response.Instance
 }

@@ -19,6 +19,20 @@ func (request GetIPSecConnectionDeviceConfigRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request GetIPSecConnectionDeviceConfigRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request GetIPSecConnectionDeviceConfigRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // GetIPSecConnectionDeviceConfigResponse wrapper for the GetIPSecConnectionDeviceConfig operation
 type GetIPSecConnectionDeviceConfigResponse struct {
 
@@ -38,4 +52,9 @@ type GetIPSecConnectionDeviceConfigResponse struct {
 
 func (response GetIPSecConnectionDeviceConfigResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response GetIPSecConnectionDeviceConfigResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

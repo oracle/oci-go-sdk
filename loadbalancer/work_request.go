@@ -54,6 +54,11 @@ func (m WorkRequest) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m WorkRequest) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // WorkRequestLifecycleStateEnum Enum with underlying type: string
 type WorkRequestLifecycleStateEnum string
 

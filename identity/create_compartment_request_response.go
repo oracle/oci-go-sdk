@@ -26,6 +26,20 @@ func (request CreateCompartmentRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request CreateCompartmentRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request CreateCompartmentRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // CreateCompartmentResponse wrapper for the CreateCompartment operation
 type CreateCompartmentResponse struct {
 
@@ -45,4 +59,14 @@ type CreateCompartmentResponse struct {
 
 func (response CreateCompartmentResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response CreateCompartmentResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response CreateCompartmentResponse) GetStatefulEntity() common.OciPollable {
+	return response.Compartment
 }

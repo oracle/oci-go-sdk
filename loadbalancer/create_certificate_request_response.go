@@ -33,6 +33,20 @@ func (request CreateCertificateRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request CreateCertificateRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request CreateCertificateRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // CreateCertificateResponse wrapper for the CreateCertificate operation
 type CreateCertificateResponse struct {
 
@@ -49,4 +63,9 @@ type CreateCertificateResponse struct {
 
 func (response CreateCertificateResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response CreateCertificateResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

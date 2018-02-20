@@ -22,6 +22,20 @@ func (request BulkAddVirtualCircuitPublicPrefixesRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request BulkAddVirtualCircuitPublicPrefixesRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request BulkAddVirtualCircuitPublicPrefixesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // BulkAddVirtualCircuitPublicPrefixesResponse wrapper for the BulkAddVirtualCircuitPublicPrefixes operation
 type BulkAddVirtualCircuitPublicPrefixesResponse struct {
 
@@ -31,4 +45,9 @@ type BulkAddVirtualCircuitPublicPrefixesResponse struct {
 
 func (response BulkAddVirtualCircuitPublicPrefixesResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response BulkAddVirtualCircuitPublicPrefixesResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

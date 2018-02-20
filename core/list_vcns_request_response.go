@@ -45,6 +45,20 @@ func (request ListVcnsRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListVcnsRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListVcnsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListVcnsResponse wrapper for the ListVcns operation
 type ListVcnsResponse struct {
 
@@ -66,6 +80,11 @@ type ListVcnsResponse struct {
 
 func (response ListVcnsResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListVcnsResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }
 
 // ListVcnsSortByEnum Enum with underlying type: string

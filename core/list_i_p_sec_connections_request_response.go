@@ -32,6 +32,20 @@ func (request ListIPSecConnectionsRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListIPSecConnectionsRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListIPSecConnectionsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListIPSecConnectionsResponse wrapper for the ListIPSecConnections operation
 type ListIPSecConnectionsResponse struct {
 
@@ -53,4 +67,9 @@ type ListIPSecConnectionsResponse struct {
 
 func (response ListIPSecConnectionsResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListIPSecConnectionsResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

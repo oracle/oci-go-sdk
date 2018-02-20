@@ -73,6 +73,11 @@ func (m Vcn) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m Vcn) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // VcnLifecycleStateEnum Enum with underlying type: string
 type VcnLifecycleStateEnum string
 

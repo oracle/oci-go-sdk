@@ -48,6 +48,20 @@ func (request ListDhcpOptionsRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListDhcpOptionsRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListDhcpOptionsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListDhcpOptionsResponse wrapper for the ListDhcpOptions operation
 type ListDhcpOptionsResponse struct {
 
@@ -69,6 +83,11 @@ type ListDhcpOptionsResponse struct {
 
 func (response ListDhcpOptionsResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListDhcpOptionsResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }
 
 // ListDhcpOptionsSortByEnum Enum with underlying type: string

@@ -33,6 +33,20 @@ func (request AbortMultipartUploadRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request AbortMultipartUploadRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request AbortMultipartUploadRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // AbortMultipartUploadResponse wrapper for the AbortMultipartUpload operation
 type AbortMultipartUploadResponse struct {
 
@@ -49,4 +63,9 @@ type AbortMultipartUploadResponse struct {
 
 func (response AbortMultipartUploadResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response AbortMultipartUploadResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

@@ -26,6 +26,20 @@ func (request LaunchDbSystemRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request LaunchDbSystemRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request LaunchDbSystemRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // LaunchDbSystemResponse wrapper for the LaunchDbSystem operation
 type LaunchDbSystemResponse struct {
 
@@ -45,4 +59,14 @@ type LaunchDbSystemResponse struct {
 
 func (response LaunchDbSystemResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response LaunchDbSystemResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response LaunchDbSystemResponse) GetStatefulEntity() common.OciPollable {
+	return response.DbSystem
 }

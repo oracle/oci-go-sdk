@@ -26,6 +26,20 @@ func (request CreateDhcpOptionsRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request CreateDhcpOptionsRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request CreateDhcpOptionsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // CreateDhcpOptionsResponse wrapper for the CreateDhcpOptions operation
 type CreateDhcpOptionsResponse struct {
 
@@ -45,4 +59,14 @@ type CreateDhcpOptionsResponse struct {
 
 func (response CreateDhcpOptionsResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response CreateDhcpOptionsResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response CreateDhcpOptionsResponse) GetStatefulEntity() common.OciPollable {
+	return response.DhcpOptions
 }

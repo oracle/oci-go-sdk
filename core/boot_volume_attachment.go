@@ -48,6 +48,11 @@ func (m BootVolumeAttachment) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m BootVolumeAttachment) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // BootVolumeAttachmentLifecycleStateEnum Enum with underlying type: string
 type BootVolumeAttachmentLifecycleStateEnum string
 

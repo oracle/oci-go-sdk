@@ -30,6 +30,20 @@ func (request UpdateCustomerSecretKeyRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request UpdateCustomerSecretKeyRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request UpdateCustomerSecretKeyRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // UpdateCustomerSecretKeyResponse wrapper for the UpdateCustomerSecretKey operation
 type UpdateCustomerSecretKeyResponse struct {
 
@@ -49,4 +63,14 @@ type UpdateCustomerSecretKeyResponse struct {
 
 func (response UpdateCustomerSecretKeyResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response UpdateCustomerSecretKeyResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response UpdateCustomerSecretKeyResponse) GetStatefulEntity() common.OciPollable {
+	return response.CustomerSecretKeySummary
 }

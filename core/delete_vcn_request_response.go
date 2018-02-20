@@ -24,6 +24,20 @@ func (request DeleteVcnRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DeleteVcnRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DeleteVcnRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DeleteVcnResponse wrapper for the DeleteVcn operation
 type DeleteVcnResponse struct {
 
@@ -37,4 +51,9 @@ type DeleteVcnResponse struct {
 
 func (response DeleteVcnResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DeleteVcnResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

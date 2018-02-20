@@ -27,6 +27,20 @@ func (request UpdateInternetGatewayRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request UpdateInternetGatewayRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request UpdateInternetGatewayRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // UpdateInternetGatewayResponse wrapper for the UpdateInternetGateway operation
 type UpdateInternetGatewayResponse struct {
 
@@ -46,4 +60,14 @@ type UpdateInternetGatewayResponse struct {
 
 func (response UpdateInternetGatewayResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response UpdateInternetGatewayResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response UpdateInternetGatewayResponse) GetStatefulEntity() common.OciPollable {
+	return response.InternetGateway
 }

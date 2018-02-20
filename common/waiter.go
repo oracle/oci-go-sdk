@@ -2,8 +2,8 @@ package common
 
 import (
 	"context"
-	"time"
 	"fmt"
+	"time"
 )
 
 // OciPollable interface is implemented by models and allows users to inspect the state of a

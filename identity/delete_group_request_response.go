@@ -24,6 +24,20 @@ func (request DeleteGroupRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DeleteGroupRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DeleteGroupRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DeleteGroupResponse wrapper for the DeleteGroup operation
 type DeleteGroupResponse struct {
 
@@ -37,4 +51,9 @@ type DeleteGroupResponse struct {
 
 func (response DeleteGroupResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DeleteGroupResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

@@ -54,6 +54,11 @@ func (m IpSecConnection) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m IpSecConnection) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // IpSecConnectionLifecycleStateEnum Enum with underlying type: string
 type IpSecConnectionLifecycleStateEnum string
 

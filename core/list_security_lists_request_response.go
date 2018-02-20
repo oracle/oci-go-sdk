@@ -48,6 +48,20 @@ func (request ListSecurityListsRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListSecurityListsRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListSecurityListsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListSecurityListsResponse wrapper for the ListSecurityLists operation
 type ListSecurityListsResponse struct {
 
@@ -69,6 +83,11 @@ type ListSecurityListsResponse struct {
 
 func (response ListSecurityListsResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListSecurityListsResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }
 
 // ListSecurityListsSortByEnum Enum with underlying type: string

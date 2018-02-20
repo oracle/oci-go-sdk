@@ -27,6 +27,20 @@ func (request GetBackendSetHealthRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request GetBackendSetHealthRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request GetBackendSetHealthRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // GetBackendSetHealthResponse wrapper for the GetBackendSetHealth operation
 type GetBackendSetHealthResponse struct {
 
@@ -43,4 +57,14 @@ type GetBackendSetHealthResponse struct {
 
 func (response GetBackendSetHealthResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response GetBackendSetHealthResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response GetBackendSetHealthResponse) GetStatefulEntity() common.OciPollable {
+	return response.BackendSetHealth
 }

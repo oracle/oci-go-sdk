@@ -19,6 +19,20 @@ func (request GetDbNodeRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request GetDbNodeRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request GetDbNodeRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // GetDbNodeResponse wrapper for the GetDbNode operation
 type GetDbNodeResponse struct {
 
@@ -38,4 +52,14 @@ type GetDbNodeResponse struct {
 
 func (response GetDbNodeResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response GetDbNodeResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response GetDbNodeResponse) GetStatefulEntity() common.OciPollable {
+	return response.DbNode
 }

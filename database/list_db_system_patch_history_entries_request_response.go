@@ -25,6 +25,20 @@ func (request ListDbSystemPatchHistoryEntriesRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListDbSystemPatchHistoryEntriesRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListDbSystemPatchHistoryEntriesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListDbSystemPatchHistoryEntriesResponse wrapper for the ListDbSystemPatchHistoryEntries operation
 type ListDbSystemPatchHistoryEntriesResponse struct {
 
@@ -47,4 +61,9 @@ type ListDbSystemPatchHistoryEntriesResponse struct {
 
 func (response ListDbSystemPatchHistoryEntriesResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListDbSystemPatchHistoryEntriesResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

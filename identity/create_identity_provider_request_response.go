@@ -26,6 +26,20 @@ func (request CreateIdentityProviderRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request CreateIdentityProviderRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request CreateIdentityProviderRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // CreateIdentityProviderResponse wrapper for the CreateIdentityProvider operation
 type CreateIdentityProviderResponse struct {
 
@@ -45,4 +59,14 @@ type CreateIdentityProviderResponse struct {
 
 func (response CreateIdentityProviderResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response CreateIdentityProviderResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response CreateIdentityProviderResponse) GetStatefulEntity() common.OciPollable {
+	return response.IdentityProvider
 }

@@ -35,18 +35,21 @@ func NewComputeClientWithConfigurationProvider(configProvider common.Configurati
 	return
 }
 
-// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+// SetRegion overrides the region of this client.
+func (client *ComputeClient) SetRegion(region string) {
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", region)
+}
+
+// SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
 func (client *ComputeClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err
 	}
 
-	region, err := configProvider.Region()
-	if err != nil {
-		return err
-	}
+	// Error has been checked already
+	region, _ := configProvider.Region()
 	client.config = &configProvider
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", string(region))
+	client.SetRegion(region)
 	return nil
 }
 
@@ -56,13 +59,13 @@ func (client *ComputeClient) ConfigurationProvider() *common.ConfigurationProvid
 }
 
 // AttachBootVolume Attaches the specified boot volume to the specified instance.
-func (client ComputeClient) AttachBootVolume(ctx context.Context, request AttachBootVolumeRequest, options ...common.Option) (response AttachBootVolumeResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/bootVolumeAttachments/", request)
+func (client ComputeClient) AttachBootVolume(ctx context.Context, request AttachBootVolumeRequest) (response AttachBootVolumeResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/bootVolumeAttachments/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -76,13 +79,13 @@ func (client ComputeClient) AttachBootVolume(ctx context.Context, request Attach
 // AttachVnic Creates a secondary VNIC and attaches it to the specified instance.
 // For more information about secondary VNICs, see
 // [Virtual Network Interface Cards (VNICs)]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingVNICs.htm).
-func (client ComputeClient) AttachVnic(ctx context.Context, request AttachVnicRequest, options ...common.Option) (response AttachVnicResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/vnicAttachments/", request)
+func (client ComputeClient) AttachVnic(ctx context.Context, request AttachVnicRequest) (response AttachVnicResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/vnicAttachments/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -94,13 +97,13 @@ func (client ComputeClient) AttachVnic(ctx context.Context, request AttachVnicRe
 }
 
 // AttachVolume Attaches the specified storage volume to the specified instance.
-func (client ComputeClient) AttachVolume(ctx context.Context, request AttachVolumeRequest, options ...common.Option) (response AttachVolumeResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/volumeAttachments/", request)
+func (client ComputeClient) AttachVolume(ctx context.Context, request AttachVolumeRequest) (response AttachVolumeResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/volumeAttachments/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -126,13 +129,13 @@ func (client ComputeClient) AttachVolume(ctx context.Context, request AttachVolu
 // metadata).
 // 4. Optionally, use `DeleteConsoleHistory` to delete the console history metadata
 // and the console history data.
-func (client ComputeClient) CaptureConsoleHistory(ctx context.Context, request CaptureConsoleHistoryRequest, options ...common.Option) (response CaptureConsoleHistoryResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/instanceConsoleHistories/", request)
+func (client ComputeClient) CaptureConsoleHistory(ctx context.Context, request CaptureConsoleHistoryRequest) (response CaptureConsoleHistoryResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/instanceConsoleHistories/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -160,13 +163,13 @@ func (client ComputeClient) CaptureConsoleHistory(ctx context.Context, request C
 // You may optionally specify a *display name* for the image, which is simply a friendly name or description.
 // It does not have to be unique, and you can change it. See UpdateImage.
 // Avoid entering confidential information.
-func (client ComputeClient) CreateImage(ctx context.Context, request CreateImageRequest, options ...common.Option) (response CreateImageResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/images/", request)
+func (client ComputeClient) CreateImage(ctx context.Context, request CreateImageRequest) (response CreateImageResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/images/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -181,13 +184,13 @@ func (client ComputeClient) CreateImage(ctx context.Context, request CreateImage
 // Once the console connection has been created and is available,
 // you connect to the console using SSH.
 // For more information about console access, see [Accessing the Console]({{DOC_SERVER_URL}}/Content/Compute/References/serialconsole.htm).
-func (client ComputeClient) CreateInstanceConsoleConnection(ctx context.Context, request CreateInstanceConsoleConnectionRequest, options ...common.Option) (response CreateInstanceConsoleConnectionResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/instanceConsoleConnections", request)
+func (client ComputeClient) CreateInstanceConsoleConnection(ctx context.Context, request CreateInstanceConsoleConnectionRequest) (response CreateInstanceConsoleConnectionResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/instanceConsoleConnections")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -199,13 +202,13 @@ func (client ComputeClient) CreateInstanceConsoleConnection(ctx context.Context,
 }
 
 // DeleteConsoleHistory Deletes the specified console history metadata and the console history data.
-func (client ComputeClient) DeleteConsoleHistory(ctx context.Context, request DeleteConsoleHistoryRequest, options ...common.Option) (response DeleteConsoleHistoryResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/instanceConsoleHistories/{instanceConsoleHistoryId}", request)
+func (client ComputeClient) DeleteConsoleHistory(ctx context.Context, request DeleteConsoleHistoryRequest) (response DeleteConsoleHistoryResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/instanceConsoleHistories/{instanceConsoleHistoryId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -217,13 +220,13 @@ func (client ComputeClient) DeleteConsoleHistory(ctx context.Context, request De
 }
 
 // DeleteImage Deletes an image.
-func (client ComputeClient) DeleteImage(ctx context.Context, request DeleteImageRequest, options ...common.Option) (response DeleteImageResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/images/{imageId}", request)
+func (client ComputeClient) DeleteImage(ctx context.Context, request DeleteImageRequest) (response DeleteImageResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/images/{imageId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -235,13 +238,13 @@ func (client ComputeClient) DeleteImage(ctx context.Context, request DeleteImage
 }
 
 // DeleteInstanceConsoleConnection Deletes the specified instance console connection.
-func (client ComputeClient) DeleteInstanceConsoleConnection(ctx context.Context, request DeleteInstanceConsoleConnectionRequest, options ...common.Option) (response DeleteInstanceConsoleConnectionResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/instanceConsoleConnections/{instanceConsoleConnectionId}", request)
+func (client ComputeClient) DeleteInstanceConsoleConnection(ctx context.Context, request DeleteInstanceConsoleConnectionRequest) (response DeleteInstanceConsoleConnectionResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/instanceConsoleConnections/{instanceConsoleConnectionId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -255,13 +258,13 @@ func (client ComputeClient) DeleteInstanceConsoleConnection(ctx context.Context,
 // DetachBootVolume Detaches a boot volume from an instance. You must specify the OCID of the boot volume attachment.
 // This is an asynchronous operation. The attachment's `lifecycleState` will change to DETACHING temporarily
 // until the attachment is completely removed.
-func (client ComputeClient) DetachBootVolume(ctx context.Context, request DetachBootVolumeRequest, options ...common.Option) (response DetachBootVolumeResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/bootVolumeAttachments/{bootVolumeAttachmentId}", request)
+func (client ComputeClient) DetachBootVolume(ctx context.Context, request DetachBootVolumeRequest) (response DetachBootVolumeResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/bootVolumeAttachments/{bootVolumeAttachmentId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -281,13 +284,13 @@ func (client ComputeClient) DetachBootVolume(ctx context.Context, request Detach
 // [target of a route rule]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingroutetables.htm#privateip),
 // deleting the VNIC causes that route rule to blackhole and the traffic
 // will be dropped.
-func (client ComputeClient) DetachVnic(ctx context.Context, request DetachVnicRequest, options ...common.Option) (response DetachVnicResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/vnicAttachments/{vnicAttachmentId}", request)
+func (client ComputeClient) DetachVnic(ctx context.Context, request DetachVnicRequest) (response DetachVnicResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/vnicAttachments/{vnicAttachmentId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -301,13 +304,13 @@ func (client ComputeClient) DetachVnic(ctx context.Context, request DetachVnicRe
 // DetachVolume Detaches a storage volume from an instance. You must specify the OCID of the volume attachment.
 // This is an asynchronous operation. The attachment's `lifecycleState` will change to DETACHING temporarily
 // until the attachment is completely removed.
-func (client ComputeClient) DetachVolume(ctx context.Context, request DetachVolumeRequest, options ...common.Option) (response DetachVolumeResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/volumeAttachments/{volumeAttachmentId}", request)
+func (client ComputeClient) DetachVolume(ctx context.Context, request DetachVolumeRequest) (response DetachVolumeResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/volumeAttachments/{volumeAttachmentId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -325,13 +328,13 @@ func (client ComputeClient) DetachVolume(ctx context.Context, request DetachVolu
 // see [Let Users Write Objects to Object Storage Buckets]({{DOC_SERVER_URL}}/Content/Identity/Concepts/commonpolicies.htm#Let4).
 // See [Object Storage URLs]({{DOC_SERVER_URL}}/Content/Compute/Tasks/imageimportexport.htm#URLs) and [pre-authenticated requests]({{DOC_SERVER_URL}}/Content/Object/Tasks/managingaccess.htm#pre-auth)
 // for constructing URLs for image import/export.
-func (client ComputeClient) ExportImage(ctx context.Context, request ExportImageRequest, options ...common.Option) (response ExportImageResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/images/{imageId}/actions/export", request)
+func (client ComputeClient) ExportImage(ctx context.Context, request ExportImageRequest) (response ExportImageResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/images/{imageId}/actions/export")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -343,13 +346,13 @@ func (client ComputeClient) ExportImage(ctx context.Context, request ExportImage
 }
 
 // GetBootVolumeAttachment Gets information about the specified boot volume attachment.
-func (client ComputeClient) GetBootVolumeAttachment(ctx context.Context, request GetBootVolumeAttachmentRequest, options ...common.Option) (response GetBootVolumeAttachmentResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/bootVolumeAttachments/{bootVolumeAttachmentId}", request)
+func (client ComputeClient) GetBootVolumeAttachment(ctx context.Context, request GetBootVolumeAttachmentRequest) (response GetBootVolumeAttachmentResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/bootVolumeAttachments/{bootVolumeAttachmentId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -363,13 +366,13 @@ func (client ComputeClient) GetBootVolumeAttachment(ctx context.Context, request
 // GetConsoleHistory Shows the metadata for the specified console history.
 // See CaptureConsoleHistory
 // for details about using the console history operations.
-func (client ComputeClient) GetConsoleHistory(ctx context.Context, request GetConsoleHistoryRequest, options ...common.Option) (response GetConsoleHistoryResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleHistories/{instanceConsoleHistoryId}", request)
+func (client ComputeClient) GetConsoleHistory(ctx context.Context, request GetConsoleHistoryRequest) (response GetConsoleHistoryResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/instanceConsoleHistories/{instanceConsoleHistoryId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -383,13 +386,13 @@ func (client ComputeClient) GetConsoleHistory(ctx context.Context, request GetCo
 // GetConsoleHistoryContent Gets the actual console history data (not the metadata).
 // See CaptureConsoleHistory
 // for details about using the console history operations.
-func (client ComputeClient) GetConsoleHistoryContent(ctx context.Context, request GetConsoleHistoryContentRequest, options ...common.Option) (response GetConsoleHistoryContentResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleHistories/{instanceConsoleHistoryId}/data", request)
+func (client ComputeClient) GetConsoleHistoryContent(ctx context.Context, request GetConsoleHistoryContentRequest) (response GetConsoleHistoryContentResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/instanceConsoleHistories/{instanceConsoleHistoryId}/data")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -401,13 +404,13 @@ func (client ComputeClient) GetConsoleHistoryContent(ctx context.Context, reques
 }
 
 // GetImage Gets the specified image.
-func (client ComputeClient) GetImage(ctx context.Context, request GetImageRequest, options ...common.Option) (response GetImageResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/images/{imageId}", request)
+func (client ComputeClient) GetImage(ctx context.Context, request GetImageRequest) (response GetImageResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/images/{imageId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -419,13 +422,13 @@ func (client ComputeClient) GetImage(ctx context.Context, request GetImageReques
 }
 
 // GetInstance Gets information about the specified instance.
-func (client ComputeClient) GetInstance(ctx context.Context, request GetInstanceRequest, options ...common.Option) (response GetInstanceResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/instances/{instanceId}", request)
+func (client ComputeClient) GetInstance(ctx context.Context, request GetInstanceRequest) (response GetInstanceResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/instances/{instanceId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -437,13 +440,13 @@ func (client ComputeClient) GetInstance(ctx context.Context, request GetInstance
 }
 
 // GetInstanceConsoleConnection Gets the specified instance console connection's information.
-func (client ComputeClient) GetInstanceConsoleConnection(ctx context.Context, request GetInstanceConsoleConnectionRequest, options ...common.Option) (response GetInstanceConsoleConnectionResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleConnections/{instanceConsoleConnectionId}", request)
+func (client ComputeClient) GetInstanceConsoleConnection(ctx context.Context, request GetInstanceConsoleConnectionRequest) (response GetInstanceConsoleConnectionResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/instanceConsoleConnections/{instanceConsoleConnectionId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -455,13 +458,13 @@ func (client ComputeClient) GetInstanceConsoleConnection(ctx context.Context, re
 }
 
 // GetVnicAttachment Gets the information for the specified VNIC attachment.
-func (client ComputeClient) GetVnicAttachment(ctx context.Context, request GetVnicAttachmentRequest, options ...common.Option) (response GetVnicAttachmentResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/vnicAttachments/{vnicAttachmentId}", request)
+func (client ComputeClient) GetVnicAttachment(ctx context.Context, request GetVnicAttachmentRequest) (response GetVnicAttachmentResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/vnicAttachments/{vnicAttachmentId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -473,13 +476,13 @@ func (client ComputeClient) GetVnicAttachment(ctx context.Context, request GetVn
 }
 
 // GetVolumeAttachment Gets information about the specified volume attachment.
-func (client ComputeClient) GetVolumeAttachment(ctx context.Context, request GetVolumeAttachmentRequest, options ...common.Option) (response GetVolumeAttachmentResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/volumeAttachments/{volumeAttachmentId}", request)
+func (client ComputeClient) GetVolumeAttachment(ctx context.Context, request GetVolumeAttachmentRequest) (response GetVolumeAttachmentResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumeAttachments/{volumeAttachmentId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -492,13 +495,13 @@ func (client ComputeClient) GetVolumeAttachment(ctx context.Context, request Get
 
 // GetWindowsInstanceInitialCredentials Gets the generated credentials for the instance. Only works for Windows instances. The returned credentials
 // are only valid for the initial login.
-func (client ComputeClient) GetWindowsInstanceInitialCredentials(ctx context.Context, request GetWindowsInstanceInitialCredentialsRequest, options ...common.Option) (response GetWindowsInstanceInitialCredentialsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/instances/{instanceId}/initialCredentials", request)
+func (client ComputeClient) GetWindowsInstanceInitialCredentials(ctx context.Context, request GetWindowsInstanceInitialCredentialsRequest) (response GetWindowsInstanceInitialCredentialsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/instances/{instanceId}/initialCredentials")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -520,13 +523,13 @@ func (client ComputeClient) GetWindowsInstanceInitialCredentials(ctx context.Con
 // to apply against any relevant quotas. You must terminate an instance
 // (TerminateInstance)
 // to remove its resources from billing and quotas.
-func (client ComputeClient) InstanceAction(ctx context.Context, request InstanceActionRequest, options ...common.Option) (response InstanceActionResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/instances/{instanceId}", request)
+func (client ComputeClient) InstanceAction(ctx context.Context, request InstanceActionRequest) (response InstanceActionResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/instances/{instanceId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -561,13 +564,13 @@ func (client ComputeClient) InstanceAction(ctx context.Context, request Instance
 // GetVnic with the VNIC ID.
 // You can later add secondary VNICs to an instance. For more information, see
 // [Virtual Network Interface Cards (VNICs)]({{DOC_SERVER_URL}}/Content/Network/Tasks/managingVNICs.htm).
-func (client ComputeClient) LaunchInstance(ctx context.Context, request LaunchInstanceRequest, options ...common.Option) (response LaunchInstanceResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/instances/", request)
+func (client ComputeClient) LaunchInstance(ctx context.Context, request LaunchInstanceRequest) (response LaunchInstanceResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/instances/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -580,13 +583,13 @@ func (client ComputeClient) LaunchInstance(ctx context.Context, request LaunchIn
 
 // ListBootVolumeAttachments Lists the boot volume attachments in the specified compartment. You can filter the
 // list by specifying an instance OCID, boot volume OCID, or both.
-func (client ComputeClient) ListBootVolumeAttachments(ctx context.Context, request ListBootVolumeAttachmentsRequest, options ...common.Option) (response ListBootVolumeAttachmentsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/bootVolumeAttachments/", request)
+func (client ComputeClient) ListBootVolumeAttachments(ctx context.Context, request ListBootVolumeAttachmentsRequest) (response ListBootVolumeAttachmentsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/bootVolumeAttachments/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -598,13 +601,13 @@ func (client ComputeClient) ListBootVolumeAttachments(ctx context.Context, reque
 }
 
 // ListConsoleHistories Lists the console history metadata for the specified compartment or instance.
-func (client ComputeClient) ListConsoleHistories(ctx context.Context, request ListConsoleHistoriesRequest, options ...common.Option) (response ListConsoleHistoriesResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleHistories/", request)
+func (client ComputeClient) ListConsoleHistories(ctx context.Context, request ListConsoleHistoriesRequest) (response ListConsoleHistoriesResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/instanceConsoleHistories/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -620,13 +623,13 @@ func (client ComputeClient) ListConsoleHistories(ctx context.Context, request Li
 // For more
 // information about images, see
 // [Managing Custom Images]({{DOC_SERVER_URL}}/Content/Compute/Tasks/managingcustomimages.htm).
-func (client ComputeClient) ListImages(ctx context.Context, request ListImagesRequest, options ...common.Option) (response ListImagesResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/images/", request)
+func (client ComputeClient) ListImages(ctx context.Context, request ListImagesRequest) (response ListImagesResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/images/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -639,13 +642,13 @@ func (client ComputeClient) ListImages(ctx context.Context, request ListImagesRe
 
 // ListInstanceConsoleConnections Lists the console connections for the specified compartment or instance.
 // For more information about console access, see [Accessing the Instance Console]({{DOC_SERVER_URL}}/Content/Compute/References/serialconsole.htm).
-func (client ComputeClient) ListInstanceConsoleConnections(ctx context.Context, request ListInstanceConsoleConnectionsRequest, options ...common.Option) (response ListInstanceConsoleConnectionsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/instanceConsoleConnections", request)
+func (client ComputeClient) ListInstanceConsoleConnections(ctx context.Context, request ListInstanceConsoleConnectionsRequest) (response ListInstanceConsoleConnectionsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/instanceConsoleConnections")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -659,13 +662,13 @@ func (client ComputeClient) ListInstanceConsoleConnections(ctx context.Context, 
 // ListInstances Lists the instances in the specified compartment and the specified Availability Domain.
 // You can filter the results by specifying an instance name (the list will include all the identically-named
 // instances in the compartment).
-func (client ComputeClient) ListInstances(ctx context.Context, request ListInstancesRequest, options ...common.Option) (response ListInstancesResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/instances/", request)
+func (client ComputeClient) ListInstances(ctx context.Context, request ListInstancesRequest) (response ListInstancesResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/instances/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -678,13 +681,13 @@ func (client ComputeClient) ListInstances(ctx context.Context, request ListInsta
 
 // ListShapes Lists the shapes that can be used to launch an instance within the specified compartment. You can
 // filter the list by compatibility with a specific image.
-func (client ComputeClient) ListShapes(ctx context.Context, request ListShapesRequest, options ...common.Option) (response ListShapesResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/shapes", request)
+func (client ComputeClient) ListShapes(ctx context.Context, request ListShapesRequest) (response ListShapesResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/shapes")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -698,13 +701,13 @@ func (client ComputeClient) ListShapes(ctx context.Context, request ListShapesRe
 // ListVnicAttachments Lists the VNIC attachments in the specified compartment. A VNIC attachment
 // resides in the same compartment as the attached instance. The list can be
 // filtered by instance, VNIC, or Availability Domain.
-func (client ComputeClient) ListVnicAttachments(ctx context.Context, request ListVnicAttachmentsRequest, options ...common.Option) (response ListVnicAttachmentsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/vnicAttachments/", request)
+func (client ComputeClient) ListVnicAttachments(ctx context.Context, request ListVnicAttachmentsRequest) (response ListVnicAttachmentsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/vnicAttachments/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -734,13 +737,13 @@ func (m *listvolumeattachment) UnmarshalPolymorphicJSON(data []byte) (interface{
 // ListVolumeAttachments Lists the volume attachments in the specified compartment. You can filter the
 // list by specifying an instance OCID, volume OCID, or both.
 // Currently, the only supported volume attachment type is IScsiVolumeAttachment.
-func (client ComputeClient) ListVolumeAttachments(ctx context.Context, request ListVolumeAttachmentsRequest, options ...common.Option) (response ListVolumeAttachmentsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/volumeAttachments/", request)
+func (client ComputeClient) ListVolumeAttachments(ctx context.Context, request ListVolumeAttachmentsRequest) (response ListVolumeAttachmentsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumeAttachments/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -757,13 +760,13 @@ func (client ComputeClient) ListVolumeAttachments(ctx context.Context, request L
 // To delete the boot volume when the instance is deleted, specify `false` or do not specify a value for `PreserveBootVolumeQueryParam`.
 // This is an asynchronous operation. The instance's `lifecycleState` will change to TERMINATING temporarily
 // until the instance is completely removed.
-func (client ComputeClient) TerminateInstance(ctx context.Context, request TerminateInstanceRequest, options ...common.Option) (response TerminateInstanceResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/instances/{instanceId}", request)
+func (client ComputeClient) TerminateInstance(ctx context.Context, request TerminateInstanceRequest) (response TerminateInstanceResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/instances/{instanceId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -775,13 +778,13 @@ func (client ComputeClient) TerminateInstance(ctx context.Context, request Termi
 }
 
 // UpdateConsoleHistory Updates the specified console history metadata.
-func (client ComputeClient) UpdateConsoleHistory(ctx context.Context, request UpdateConsoleHistoryRequest, options ...common.Option) (response UpdateConsoleHistoryResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/instanceConsoleHistories/{instanceConsoleHistoryId}", request)
+func (client ComputeClient) UpdateConsoleHistory(ctx context.Context, request UpdateConsoleHistoryRequest) (response UpdateConsoleHistoryResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/instanceConsoleHistories/{instanceConsoleHistoryId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -793,13 +796,13 @@ func (client ComputeClient) UpdateConsoleHistory(ctx context.Context, request Up
 }
 
 // UpdateImage Updates the display name of the image. Avoid entering confidential information.
-func (client ComputeClient) UpdateImage(ctx context.Context, request UpdateImageRequest, options ...common.Option) (response UpdateImageResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/images/{imageId}", request)
+func (client ComputeClient) UpdateImage(ctx context.Context, request UpdateImageRequest) (response UpdateImageResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/images/{imageId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -812,13 +815,13 @@ func (client ComputeClient) UpdateImage(ctx context.Context, request UpdateImage
 
 // UpdateInstance Updates the display name of the specified instance. Avoid entering confidential information.
 // The OCID of the instance remains the same.
-func (client ComputeClient) UpdateInstance(ctx context.Context, request UpdateInstanceRequest, options ...common.Option) (response UpdateInstanceResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/instances/{instanceId}", request)
+func (client ComputeClient) UpdateInstance(ctx context.Context, request UpdateInstanceRequest) (response UpdateInstanceResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/instances/{instanceId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

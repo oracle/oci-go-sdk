@@ -33,6 +33,20 @@ func (request ListPrivateIpsRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListPrivateIpsRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListPrivateIpsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListPrivateIpsResponse wrapper for the ListPrivateIps operation
 type ListPrivateIpsResponse struct {
 
@@ -54,4 +68,9 @@ type ListPrivateIpsResponse struct {
 
 func (response ListPrivateIpsResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListPrivateIpsResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

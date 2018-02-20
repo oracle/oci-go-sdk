@@ -30,6 +30,20 @@ func (request ReinstateDataGuardAssociationRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ReinstateDataGuardAssociationRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ReinstateDataGuardAssociationRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ReinstateDataGuardAssociationResponse wrapper for the ReinstateDataGuardAssociation operation
 type ReinstateDataGuardAssociationResponse struct {
 
@@ -49,4 +63,14 @@ type ReinstateDataGuardAssociationResponse struct {
 
 func (response ReinstateDataGuardAssociationResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ReinstateDataGuardAssociationResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response ReinstateDataGuardAssociationResponse) GetStatefulEntity() common.OciPollable {
+	return response.DataGuardAssociation
 }

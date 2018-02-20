@@ -35,18 +35,21 @@ func NewBlockstorageClientWithConfigurationProvider(configProvider common.Config
 	return
 }
 
-// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+// SetRegion overrides the region of this client.
+func (client *BlockstorageClient) SetRegion(region string) {
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", region)
+}
+
+// SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
 func (client *BlockstorageClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err
 	}
 
-	region, err := configProvider.Region()
-	if err != nil {
-		return err
-	}
+	// Error has been checked already
+	region, _ := configProvider.Region()
 	client.config = &configProvider
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "iaas", string(region))
+	client.SetRegion(region)
 	return nil
 }
 
@@ -67,13 +70,13 @@ func (client *BlockstorageClient) ConfigurationProvider() *common.ConfigurationP
 // in the Identity and Access Management Service API.
 // You may optionally specify a *display name* for the volume, which is simply a friendly name or
 // description. It does not have to be unique, and you can change it. Avoid entering confidential information.
-func (client BlockstorageClient) CreateVolume(ctx context.Context, request CreateVolumeRequest, options ...common.Option) (response CreateVolumeResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/volumes", request)
+func (client BlockstorageClient) CreateVolume(ctx context.Context, request CreateVolumeRequest) (response CreateVolumeResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/volumes")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -89,13 +92,13 @@ func (client BlockstorageClient) CreateVolume(ctx context.Context, request Creat
 // When the request is received, the backup object is in a REQUEST_RECEIVED state.
 // When the data is imaged, it goes into a CREATING state.
 // After the backup is fully uploaded to the cloud, it goes into an AVAILABLE state.
-func (client BlockstorageClient) CreateVolumeBackup(ctx context.Context, request CreateVolumeBackupRequest, options ...common.Option) (response CreateVolumeBackupResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/volumeBackups", request)
+func (client BlockstorageClient) CreateVolumeBackup(ctx context.Context, request CreateVolumeBackupRequest) (response CreateVolumeBackupResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/volumeBackups")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -110,13 +113,13 @@ func (client BlockstorageClient) CreateVolumeBackup(ctx context.Context, request
 // To disconnect the boot volume from a connected instance, see
 // [Disconnecting From a Boot Volume]({{DOC_SERVER_URL}}/Content/Block/Tasks/deletingbootvolume.htm).
 // **Warning:** All data on the boot volume will be permanently lost when the boot volume is deleted.
-func (client BlockstorageClient) DeleteBootVolume(ctx context.Context, request DeleteBootVolumeRequest, options ...common.Option) (response DeleteBootVolumeResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/bootVolumes/{bootVolumeId}", request)
+func (client BlockstorageClient) DeleteBootVolume(ctx context.Context, request DeleteBootVolumeRequest) (response DeleteBootVolumeResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/bootVolumes/{bootVolumeId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -131,13 +134,13 @@ func (client BlockstorageClient) DeleteBootVolume(ctx context.Context, request D
 // To disconnect the volume from a connected instance, see
 // [Disconnecting From a Volume]({{DOC_SERVER_URL}}/Content/Block/Tasks/disconnectingfromavolume.htm).
 // **Warning:** All data on the volume will be permanently lost when the volume is deleted.
-func (client BlockstorageClient) DeleteVolume(ctx context.Context, request DeleteVolumeRequest, options ...common.Option) (response DeleteVolumeResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/volumes/{volumeId}", request)
+func (client BlockstorageClient) DeleteVolume(ctx context.Context, request DeleteVolumeRequest) (response DeleteVolumeResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/volumes/{volumeId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -149,13 +152,13 @@ func (client BlockstorageClient) DeleteVolume(ctx context.Context, request Delet
 }
 
 // DeleteVolumeBackup Deletes a volume backup.
-func (client BlockstorageClient) DeleteVolumeBackup(ctx context.Context, request DeleteVolumeBackupRequest, options ...common.Option) (response DeleteVolumeBackupResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/volumeBackups/{volumeBackupId}", request)
+func (client BlockstorageClient) DeleteVolumeBackup(ctx context.Context, request DeleteVolumeBackupRequest) (response DeleteVolumeBackupResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/volumeBackups/{volumeBackupId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -167,13 +170,13 @@ func (client BlockstorageClient) DeleteVolumeBackup(ctx context.Context, request
 }
 
 // GetBootVolume Gets information for the specified boot volume.
-func (client BlockstorageClient) GetBootVolume(ctx context.Context, request GetBootVolumeRequest, options ...common.Option) (response GetBootVolumeResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/bootVolumes/{bootVolumeId}", request)
+func (client BlockstorageClient) GetBootVolume(ctx context.Context, request GetBootVolumeRequest) (response GetBootVolumeResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/bootVolumes/{bootVolumeId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -185,13 +188,13 @@ func (client BlockstorageClient) GetBootVolume(ctx context.Context, request GetB
 }
 
 // GetVolume Gets information for the specified volume.
-func (client BlockstorageClient) GetVolume(ctx context.Context, request GetVolumeRequest, options ...common.Option) (response GetVolumeResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/volumes/{volumeId}", request)
+func (client BlockstorageClient) GetVolume(ctx context.Context, request GetVolumeRequest) (response GetVolumeResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumes/{volumeId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -203,13 +206,13 @@ func (client BlockstorageClient) GetVolume(ctx context.Context, request GetVolum
 }
 
 // GetVolumeBackup Gets information for the specified volume backup.
-func (client BlockstorageClient) GetVolumeBackup(ctx context.Context, request GetVolumeBackupRequest, options ...common.Option) (response GetVolumeBackupResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/volumeBackups/{volumeBackupId}", request)
+func (client BlockstorageClient) GetVolumeBackup(ctx context.Context, request GetVolumeBackupRequest) (response GetVolumeBackupResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumeBackups/{volumeBackupId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -221,13 +224,13 @@ func (client BlockstorageClient) GetVolumeBackup(ctx context.Context, request Ge
 }
 
 // ListBootVolumes Lists the boot volumes in the specified compartment and Availability Domain.
-func (client BlockstorageClient) ListBootVolumes(ctx context.Context, request ListBootVolumesRequest, options ...common.Option) (response ListBootVolumesResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/bootVolumes", request)
+func (client BlockstorageClient) ListBootVolumes(ctx context.Context, request ListBootVolumesRequest) (response ListBootVolumesResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/bootVolumes")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -239,13 +242,13 @@ func (client BlockstorageClient) ListBootVolumes(ctx context.Context, request Li
 }
 
 // ListVolumeBackups Lists the volume backups in the specified compartment. You can filter the results by volume.
-func (client BlockstorageClient) ListVolumeBackups(ctx context.Context, request ListVolumeBackupsRequest, options ...common.Option) (response ListVolumeBackupsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/volumeBackups", request)
+func (client BlockstorageClient) ListVolumeBackups(ctx context.Context, request ListVolumeBackupsRequest) (response ListVolumeBackupsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumeBackups")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -257,13 +260,13 @@ func (client BlockstorageClient) ListVolumeBackups(ctx context.Context, request 
 }
 
 // ListVolumes Lists the volumes in the specified compartment and Availability Domain.
-func (client BlockstorageClient) ListVolumes(ctx context.Context, request ListVolumesRequest, options ...common.Option) (response ListVolumesResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/volumes", request)
+func (client BlockstorageClient) ListVolumes(ctx context.Context, request ListVolumesRequest) (response ListVolumesResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumes")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -275,13 +278,13 @@ func (client BlockstorageClient) ListVolumes(ctx context.Context, request ListVo
 }
 
 // UpdateBootVolume Updates the specified boot volume's display name.
-func (client BlockstorageClient) UpdateBootVolume(ctx context.Context, request UpdateBootVolumeRequest, options ...common.Option) (response UpdateBootVolumeResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/bootVolumes/{bootVolumeId}", request)
+func (client BlockstorageClient) UpdateBootVolume(ctx context.Context, request UpdateBootVolumeRequest) (response UpdateBootVolumeResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/bootVolumes/{bootVolumeId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -294,13 +297,13 @@ func (client BlockstorageClient) UpdateBootVolume(ctx context.Context, request U
 
 // UpdateVolume Updates the specified volume's display name.
 // Avoid entering confidential information.
-func (client BlockstorageClient) UpdateVolume(ctx context.Context, request UpdateVolumeRequest, options ...common.Option) (response UpdateVolumeResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/volumes/{volumeId}", request)
+func (client BlockstorageClient) UpdateVolume(ctx context.Context, request UpdateVolumeRequest) (response UpdateVolumeResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/volumes/{volumeId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -313,13 +316,13 @@ func (client BlockstorageClient) UpdateVolume(ctx context.Context, request Updat
 
 // UpdateVolumeBackup Updates the display name for the specified volume backup.
 // Avoid entering confidential information.
-func (client BlockstorageClient) UpdateVolumeBackup(ctx context.Context, request UpdateVolumeBackupRequest, options ...common.Option) (response UpdateVolumeBackupResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/volumeBackups/{volumeBackupId}", request)
+func (client BlockstorageClient) UpdateVolumeBackup(ctx context.Context, request UpdateVolumeBackupRequest) (response UpdateVolumeBackupResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/volumeBackups/{volumeBackupId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

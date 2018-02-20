@@ -25,6 +25,20 @@ func (request GetConsoleHistoryContentRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request GetConsoleHistoryContentRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request GetConsoleHistoryContentRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // GetConsoleHistoryContentResponse wrapper for the GetConsoleHistoryContent operation
 type GetConsoleHistoryContentResponse struct {
 
@@ -32,7 +46,7 @@ type GetConsoleHistoryContentResponse struct {
 	RawResponse *http.Response
 
 	// The string instance
-	Value *string `presentIn:"body"`
+	Value *string `presentIn:"body" encoding:"plain-text"`
 
 	// The number of bytes remaining in the snapshot.
 	OpcBytesRemaining *int `presentIn:"header" name:"opc-bytes-remaining"`
@@ -44,4 +58,9 @@ type GetConsoleHistoryContentResponse struct {
 
 func (response GetConsoleHistoryContentResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response GetConsoleHistoryContentResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

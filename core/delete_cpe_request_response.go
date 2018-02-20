@@ -24,6 +24,20 @@ func (request DeleteCpeRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DeleteCpeRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DeleteCpeRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DeleteCpeResponse wrapper for the DeleteCpe operation
 type DeleteCpeResponse struct {
 
@@ -37,4 +51,9 @@ type DeleteCpeResponse struct {
 
 func (response DeleteCpeResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DeleteCpeResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

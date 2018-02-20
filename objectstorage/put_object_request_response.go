@@ -64,6 +64,20 @@ func (request PutObjectRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request PutObjectRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request PutObjectRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // PutObjectResponse wrapper for the PutObject operation
 type PutObjectResponse struct {
 
@@ -89,4 +103,9 @@ type PutObjectResponse struct {
 
 func (response PutObjectResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response PutObjectResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

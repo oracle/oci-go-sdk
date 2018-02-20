@@ -19,6 +19,20 @@ func (request GetLocalPeeringGatewayRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request GetLocalPeeringGatewayRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request GetLocalPeeringGatewayRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // GetLocalPeeringGatewayResponse wrapper for the GetLocalPeeringGateway operation
 type GetLocalPeeringGatewayResponse struct {
 
@@ -38,4 +52,14 @@ type GetLocalPeeringGatewayResponse struct {
 
 func (response GetLocalPeeringGatewayResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response GetLocalPeeringGatewayResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response GetLocalPeeringGatewayResponse) GetStatefulEntity() common.OciPollable {
+	return response.LocalPeeringGateway
 }

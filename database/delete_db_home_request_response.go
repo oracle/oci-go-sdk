@@ -27,6 +27,20 @@ func (request DeleteDbHomeRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DeleteDbHomeRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DeleteDbHomeRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DeleteDbHomeResponse wrapper for the DeleteDbHome operation
 type DeleteDbHomeResponse struct {
 
@@ -40,4 +54,9 @@ type DeleteDbHomeResponse struct {
 
 func (response DeleteDbHomeResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DeleteDbHomeResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

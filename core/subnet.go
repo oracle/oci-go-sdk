@@ -103,6 +103,11 @@ func (m Subnet) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m Subnet) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // SubnetLifecycleStateEnum Enum with underlying type: string
 type SubnetLifecycleStateEnum string
 

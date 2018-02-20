@@ -24,6 +24,20 @@ func (request DeleteDrgAttachmentRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DeleteDrgAttachmentRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DeleteDrgAttachmentRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DeleteDrgAttachmentResponse wrapper for the DeleteDrgAttachment operation
 type DeleteDrgAttachmentResponse struct {
 
@@ -37,4 +51,9 @@ type DeleteDrgAttachmentResponse struct {
 
 func (response DeleteDrgAttachmentResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DeleteDrgAttachmentResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

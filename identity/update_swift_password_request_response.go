@@ -30,6 +30,20 @@ func (request UpdateSwiftPasswordRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request UpdateSwiftPasswordRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request UpdateSwiftPasswordRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // UpdateSwiftPasswordResponse wrapper for the UpdateSwiftPassword operation
 type UpdateSwiftPasswordResponse struct {
 
@@ -49,4 +63,14 @@ type UpdateSwiftPasswordResponse struct {
 
 func (response UpdateSwiftPasswordResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response UpdateSwiftPasswordResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response UpdateSwiftPasswordResponse) GetStatefulEntity() common.OciPollable {
+	return response.SwiftPassword
 }

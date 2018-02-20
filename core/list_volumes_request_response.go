@@ -49,6 +49,20 @@ func (request ListVolumesRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListVolumesRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListVolumesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListVolumesResponse wrapper for the ListVolumes operation
 type ListVolumesResponse struct {
 
@@ -70,6 +84,11 @@ type ListVolumesResponse struct {
 
 func (response ListVolumesResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListVolumesResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }
 
 // ListVolumesSortByEnum Enum with underlying type: string

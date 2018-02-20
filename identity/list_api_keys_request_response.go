@@ -19,6 +19,20 @@ func (request ListApiKeysRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListApiKeysRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListApiKeysRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListApiKeysResponse wrapper for the ListApiKeys operation
 type ListApiKeysResponse struct {
 
@@ -40,4 +54,9 @@ type ListApiKeysResponse struct {
 
 func (response ListApiKeysResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListApiKeysResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

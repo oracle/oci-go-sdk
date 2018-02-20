@@ -85,13 +85,13 @@ type DbSystem struct {
 	// The type of redundancy configured for the DB System.
 	// Normal is 2-way redundancy.
 	// High is 3-way redundancy.
-	DiskRedundancy DbSystemDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy"`
+	DiskRedundancy DbSystemDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy,omitempty"`
 
 	// The OCID of the last patch history. This is updated as soon as a patch operation is started.
 	LastPatchHistoryEntryId *string `mandatory:"false" json:"lastPatchHistoryEntryId"`
 
 	// The Oracle license model that applies to all the databases on the DB System. The default is LICENSE_INCLUDED.
-	LicenseModel DbSystemLicenseModelEnum `mandatory:"false" json:"licenseModel"`
+	LicenseModel DbSystemLicenseModelEnum `mandatory:"false" json:"licenseModel,omitempty"`
 
 	// Additional information about the current lifecycleState.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
@@ -129,6 +129,11 @@ type DbSystem struct {
 
 func (m DbSystem) String() string {
 	return common.PointerString(m)
+}
+
+// GetStatefulIndicator implements the OciPollable interface
+func (m DbSystem) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
 }
 
 // DbSystemDatabaseEditionEnum Enum with underlying type: string

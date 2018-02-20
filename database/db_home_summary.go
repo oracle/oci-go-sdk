@@ -50,6 +50,11 @@ func (m DbHomeSummary) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m DbHomeSummary) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // DbHomeSummaryLifecycleStateEnum Enum with underlying type: string
 type DbHomeSummaryLifecycleStateEnum string
 

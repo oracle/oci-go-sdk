@@ -26,6 +26,20 @@ func (request CreateRouteTableRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request CreateRouteTableRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request CreateRouteTableRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // CreateRouteTableResponse wrapper for the CreateRouteTable operation
 type CreateRouteTableResponse struct {
 
@@ -45,4 +59,14 @@ type CreateRouteTableResponse struct {
 
 func (response CreateRouteTableResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response CreateRouteTableResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response CreateRouteTableResponse) GetStatefulEntity() common.OciPollable {
+	return response.RouteTable
 }

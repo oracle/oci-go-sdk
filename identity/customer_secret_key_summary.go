@@ -36,7 +36,7 @@ type CustomerSecretKeySummary struct {
 
 	// The secret key's current state. After creating a secret key, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState CustomerSecretKeySummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState CustomerSecretKeySummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
@@ -44,6 +44,11 @@ type CustomerSecretKeySummary struct {
 
 func (m CustomerSecretKeySummary) String() string {
 	return common.PointerString(m)
+}
+
+// GetStatefulIndicator implements the OciPollable interface
+func (m CustomerSecretKeySummary) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
 }
 
 // CustomerSecretKeySummaryLifecycleStateEnum Enum with underlying type: string

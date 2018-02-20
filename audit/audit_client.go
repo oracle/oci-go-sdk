@@ -35,18 +35,21 @@ func NewAuditClientWithConfigurationProvider(configProvider common.Configuration
 	return
 }
 
-// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+// SetRegion overrides the region of this client.
+func (client *AuditClient) SetRegion(region string) {
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "audit", region)
+}
+
+// SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
 func (client *AuditClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err
 	}
 
-	region, err := configProvider.Region()
-	if err != nil {
-		return err
-	}
+	// Error has been checked already
+	region, _ := configProvider.Region()
 	client.config = &configProvider
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "audit", string(region))
+	client.SetRegion(region)
 	return nil
 }
 
@@ -56,13 +59,13 @@ func (client *AuditClient) ConfigurationProvider() *common.ConfigurationProvider
 }
 
 // GetConfiguration Get the configuration
-func (client AuditClient) GetConfiguration(ctx context.Context, request GetConfigurationRequest, options ...common.Option) (response GetConfigurationResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/configuration", request)
+func (client AuditClient) GetConfiguration(ctx context.Context, request GetConfigurationRequest) (response GetConfigurationResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/configuration")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -74,13 +77,13 @@ func (client AuditClient) GetConfiguration(ctx context.Context, request GetConfi
 }
 
 // ListEvents Returns all audit events for the specified compartment that were processed within the specified time range.
-func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequest, options ...common.Option) (response ListEventsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/auditEvents", request)
+func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequest) (response ListEventsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/auditEvents")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -92,13 +95,13 @@ func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequ
 }
 
 // UpdateConfiguration Update the configuration
-func (client AuditClient) UpdateConfiguration(ctx context.Context, request UpdateConfigurationRequest, options ...common.Option) (response UpdateConfigurationResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/configuration", request)
+func (client AuditClient) UpdateConfiguration(ctx context.Context, request UpdateConfigurationRequest) (response UpdateConfigurationResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/configuration")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

@@ -41,7 +41,7 @@ type CrossConnect struct {
 	Id *string `mandatory:"false" json:"id"`
 
 	// The cross-connect's current state.
-	LifecycleState CrossConnectLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState CrossConnectLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The name of the FastConnect location where this cross-connect is installed.
 	LocationName *string `mandatory:"false" json:"locationName"`
@@ -60,6 +60,11 @@ type CrossConnect struct {
 
 func (m CrossConnect) String() string {
 	return common.PointerString(m)
+}
+
+// GetStatefulIndicator implements the OciPollable interface
+func (m CrossConnect) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
 }
 
 // CrossConnectLifecycleStateEnum Enum with underlying type: string

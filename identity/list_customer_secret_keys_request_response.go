@@ -19,6 +19,20 @@ func (request ListCustomerSecretKeysRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListCustomerSecretKeysRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListCustomerSecretKeysRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListCustomerSecretKeysResponse wrapper for the ListCustomerSecretKeys operation
 type ListCustomerSecretKeysResponse struct {
 
@@ -40,4 +54,9 @@ type ListCustomerSecretKeysResponse struct {
 
 func (response ListCustomerSecretKeysResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListCustomerSecretKeysResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

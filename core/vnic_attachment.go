@@ -64,6 +64,11 @@ func (m VnicAttachment) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m VnicAttachment) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // VnicAttachmentLifecycleStateEnum Enum with underlying type: string
 type VnicAttachmentLifecycleStateEnum string
 

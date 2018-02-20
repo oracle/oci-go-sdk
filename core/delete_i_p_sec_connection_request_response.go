@@ -24,6 +24,20 @@ func (request DeleteIPSecConnectionRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DeleteIPSecConnectionRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DeleteIPSecConnectionRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DeleteIPSecConnectionResponse wrapper for the DeleteIPSecConnection operation
 type DeleteIPSecConnectionResponse struct {
 
@@ -37,4 +51,9 @@ type DeleteIPSecConnectionResponse struct {
 
 func (response DeleteIPSecConnectionResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DeleteIPSecConnectionResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

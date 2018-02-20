@@ -24,6 +24,20 @@ func (request TerminateDbSystemRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request TerminateDbSystemRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request TerminateDbSystemRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // TerminateDbSystemResponse wrapper for the TerminateDbSystem operation
 type TerminateDbSystemResponse struct {
 
@@ -37,4 +51,9 @@ type TerminateDbSystemResponse struct {
 
 func (response TerminateDbSystemResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response TerminateDbSystemResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

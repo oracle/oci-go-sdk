@@ -41,6 +41,20 @@ func (request UpdateBackendRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request UpdateBackendRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request UpdateBackendRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // UpdateBackendResponse wrapper for the UpdateBackend operation
 type UpdateBackendResponse struct {
 
@@ -57,4 +71,9 @@ type UpdateBackendResponse struct {
 
 func (response UpdateBackendResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response UpdateBackendResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

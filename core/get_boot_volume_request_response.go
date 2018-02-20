@@ -19,6 +19,20 @@ func (request GetBootVolumeRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request GetBootVolumeRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request GetBootVolumeRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // GetBootVolumeResponse wrapper for the GetBootVolume operation
 type GetBootVolumeResponse struct {
 
@@ -38,4 +52,14 @@ type GetBootVolumeResponse struct {
 
 func (response GetBootVolumeResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response GetBootVolumeResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response GetBootVolumeResponse) GetStatefulEntity() common.OciPollable {
+	return response.BootVolume
 }

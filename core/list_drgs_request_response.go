@@ -26,6 +26,20 @@ func (request ListDrgsRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListDrgsRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListDrgsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListDrgsResponse wrapper for the ListDrgs operation
 type ListDrgsResponse struct {
 
@@ -47,4 +61,9 @@ type ListDrgsResponse struct {
 
 func (response ListDrgsResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListDrgsResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

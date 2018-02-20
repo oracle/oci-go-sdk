@@ -19,6 +19,20 @@ func (request GetConsoleHistoryRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request GetConsoleHistoryRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request GetConsoleHistoryRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // GetConsoleHistoryResponse wrapper for the GetConsoleHistory operation
 type GetConsoleHistoryResponse struct {
 
@@ -38,4 +52,14 @@ type GetConsoleHistoryResponse struct {
 
 func (response GetConsoleHistoryResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response GetConsoleHistoryResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response GetConsoleHistoryResponse) GetStatefulEntity() common.OciPollable {
+	return response.ConsoleHistory
 }

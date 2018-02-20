@@ -48,6 +48,11 @@ func (m RouteTable) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m RouteTable) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // RouteTableLifecycleStateEnum Enum with underlying type: string
 type RouteTableLifecycleStateEnum string
 

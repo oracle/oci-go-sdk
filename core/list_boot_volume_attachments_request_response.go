@@ -36,6 +36,20 @@ func (request ListBootVolumeAttachmentsRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListBootVolumeAttachmentsRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListBootVolumeAttachmentsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListBootVolumeAttachmentsResponse wrapper for the ListBootVolumeAttachments operation
 type ListBootVolumeAttachmentsResponse struct {
 
@@ -57,4 +71,9 @@ type ListBootVolumeAttachmentsResponse struct {
 
 func (response ListBootVolumeAttachmentsResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListBootVolumeAttachmentsResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

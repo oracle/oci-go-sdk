@@ -24,6 +24,20 @@ func (request DetachBootVolumeRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DetachBootVolumeRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DetachBootVolumeRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DetachBootVolumeResponse wrapper for the DetachBootVolume operation
 type DetachBootVolumeResponse struct {
 
@@ -37,4 +51,9 @@ type DetachBootVolumeResponse struct {
 
 func (response DetachBootVolumeResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DetachBootVolumeResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

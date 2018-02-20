@@ -22,6 +22,20 @@ func (request GetIdpGroupMappingRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request GetIdpGroupMappingRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request GetIdpGroupMappingRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // GetIdpGroupMappingResponse wrapper for the GetIdpGroupMapping operation
 type GetIdpGroupMappingResponse struct {
 
@@ -41,4 +55,14 @@ type GetIdpGroupMappingResponse struct {
 
 func (response GetIdpGroupMappingResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response GetIdpGroupMappingResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response GetIdpGroupMappingResponse) GetStatefulEntity() common.OciPollable {
+	return response.IdpGroupMapping
 }

@@ -40,7 +40,7 @@ type ApiKey struct {
 
 	// The API key's current state. After creating an `ApiKey` object, make sure its `lifecycleState` changes from
 	// CREATING to ACTIVE before using it.
-	LifecycleState ApiKeyLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState ApiKeyLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The detailed status of INACTIVE lifecycleState.
 	InactiveStatus *int `mandatory:"false" json:"inactiveStatus"`
@@ -48,6 +48,11 @@ type ApiKey struct {
 
 func (m ApiKey) String() string {
 	return common.PointerString(m)
+}
+
+// GetStatefulIndicator implements the OciPollable interface
+func (m ApiKey) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
 }
 
 // ApiKeyLifecycleStateEnum Enum with underlying type: string

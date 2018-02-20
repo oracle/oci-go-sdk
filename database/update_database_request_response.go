@@ -27,6 +27,20 @@ func (request UpdateDatabaseRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request UpdateDatabaseRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request UpdateDatabaseRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // UpdateDatabaseResponse wrapper for the UpdateDatabase operation
 type UpdateDatabaseResponse struct {
 
@@ -46,4 +60,14 @@ type UpdateDatabaseResponse struct {
 
 func (response UpdateDatabaseResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response UpdateDatabaseResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response UpdateDatabaseResponse) GetStatefulEntity() common.OciPollable {
+	return response.Database
 }

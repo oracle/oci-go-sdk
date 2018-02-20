@@ -26,6 +26,20 @@ func (request ListCpesRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListCpesRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListCpesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListCpesResponse wrapper for the ListCpes operation
 type ListCpesResponse struct {
 
@@ -47,4 +61,9 @@ type ListCpesResponse struct {
 
 func (response ListCpesResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListCpesResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

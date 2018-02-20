@@ -49,6 +49,11 @@ func (m InternetGateway) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m InternetGateway) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // InternetGatewayLifecycleStateEnum Enum with underlying type: string
 type InternetGatewayLifecycleStateEnum string
 

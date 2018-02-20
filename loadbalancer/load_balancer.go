@@ -74,6 +74,11 @@ func (m LoadBalancer) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m LoadBalancer) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // LoadBalancerLifecycleStateEnum Enum with underlying type: string
 type LoadBalancerLifecycleStateEnum string
 

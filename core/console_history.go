@@ -47,6 +47,11 @@ func (m ConsoleHistory) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m ConsoleHistory) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // ConsoleHistoryLifecycleStateEnum Enum with underlying type: string
 type ConsoleHistoryLifecycleStateEnum string
 

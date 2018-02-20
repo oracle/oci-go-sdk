@@ -59,6 +59,11 @@ func (m Database) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m Database) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // DatabaseLifecycleStateEnum Enum with underlying type: string
 type DatabaseLifecycleStateEnum string
 

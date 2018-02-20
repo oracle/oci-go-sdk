@@ -25,6 +25,20 @@ func (request ListDbHomePatchHistoryEntriesRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListDbHomePatchHistoryEntriesRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListDbHomePatchHistoryEntriesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListDbHomePatchHistoryEntriesResponse wrapper for the ListDbHomePatchHistoryEntries operation
 type ListDbHomePatchHistoryEntriesResponse struct {
 
@@ -47,4 +61,9 @@ type ListDbHomePatchHistoryEntriesResponse struct {
 
 func (response ListDbHomePatchHistoryEntriesResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListDbHomePatchHistoryEntriesResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

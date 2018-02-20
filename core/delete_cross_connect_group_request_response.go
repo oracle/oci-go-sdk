@@ -24,6 +24,20 @@ func (request DeleteCrossConnectGroupRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DeleteCrossConnectGroupRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DeleteCrossConnectGroupRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DeleteCrossConnectGroupResponse wrapper for the DeleteCrossConnectGroup operation
 type DeleteCrossConnectGroupResponse struct {
 
@@ -37,4 +51,9 @@ type DeleteCrossConnectGroupResponse struct {
 
 func (response DeleteCrossConnectGroupResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DeleteCrossConnectGroupResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

@@ -92,6 +92,11 @@ func (m Instance) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m Instance) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // UnmarshalJSON unmarshals from json
 func (m *Instance) UnmarshalJSON(data []byte) (e error) {
 	model := struct {

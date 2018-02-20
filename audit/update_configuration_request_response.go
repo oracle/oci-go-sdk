@@ -22,6 +22,20 @@ func (request UpdateConfigurationRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request UpdateConfigurationRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request UpdateConfigurationRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // UpdateConfigurationResponse wrapper for the UpdateConfiguration operation
 type UpdateConfigurationResponse struct {
 
@@ -38,4 +52,9 @@ type UpdateConfigurationResponse struct {
 
 func (response UpdateConfigurationResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response UpdateConfigurationResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

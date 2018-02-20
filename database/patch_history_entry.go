@@ -28,7 +28,7 @@ type PatchHistoryEntry struct {
 	TimeStarted *common.SDKTime `mandatory:"true" json:"timeStarted"`
 
 	// The action being performed or was completed.
-	Action PatchHistoryEntryActionEnum `mandatory:"false" json:"action"`
+	Action PatchHistoryEntryActionEnum `mandatory:"false" json:"action,omitempty"`
 
 	// A descriptive text associated with the lifecycleState.
 	// Typically contains additional displayable text.
@@ -40,6 +40,11 @@ type PatchHistoryEntry struct {
 
 func (m PatchHistoryEntry) String() string {
 	return common.PointerString(m)
+}
+
+// GetStatefulIndicator implements the OciPollable interface
+func (m PatchHistoryEntry) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
 }
 
 // PatchHistoryEntryActionEnum Enum with underlying type: string

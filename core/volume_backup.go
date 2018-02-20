@@ -64,6 +64,11 @@ func (m VolumeBackup) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m VolumeBackup) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // VolumeBackupLifecycleStateEnum Enum with underlying type: string
 type VolumeBackupLifecycleStateEnum string
 

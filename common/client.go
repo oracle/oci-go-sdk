@@ -254,6 +254,7 @@ type OciResponse interface {
 // OciOperation is the generalization of a request-response cycle undergone by an OCI service.
 type OciOperation func(context.Context, OciRequest) (OciResponse, error)
 
+// Retry executes the retryable request using the specified operation and retry policy options
 func (client BaseClient) Retry(ctx context.Context, request OciRetryableRequest, operation OciOperation, options ...RetryPolicyOption) (OciResponse, error) {
 	// Each operation defines the default retry behavior for a given request
 	// Users can modify the default retry behavior by passing through a variadic number of retry policy options
@@ -300,7 +301,7 @@ func (client BaseClient) Retry(ctx context.Context, request OciRetryableRequest,
 	return nil, fmt.Errorf("maximum number of attempts exceeded (%v)", policy.MaximumNumberAttempts)
 }
 
-//doRequest executes the http request with the given context
+// Call executes the http request with the given context
 func (client BaseClient) Call(ctx context.Context, request *http.Request) (response *http.Response, err error) {
 	Debugln("Atempting to call downstream service")
 	request = request.WithContext(ctx)

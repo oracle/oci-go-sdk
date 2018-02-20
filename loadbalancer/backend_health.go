@@ -30,6 +30,11 @@ func (m BackendHealth) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m BackendHealth) GetStatefulIndicator() string {
+	return string(m.Status)
+}
+
 // BackendHealthStatusEnum Enum with underlying type: string
 type BackendHealthStatusEnum string
 

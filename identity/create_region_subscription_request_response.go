@@ -29,6 +29,20 @@ func (request CreateRegionSubscriptionRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request CreateRegionSubscriptionRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request CreateRegionSubscriptionRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // CreateRegionSubscriptionResponse wrapper for the CreateRegionSubscription operation
 type CreateRegionSubscriptionResponse struct {
 
@@ -45,4 +59,14 @@ type CreateRegionSubscriptionResponse struct {
 
 func (response CreateRegionSubscriptionResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response CreateRegionSubscriptionResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response CreateRegionSubscriptionResponse) GetStatefulEntity() common.OciPollable {
+	return response.RegionSubscription
 }

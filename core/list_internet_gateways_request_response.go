@@ -48,6 +48,20 @@ func (request ListInternetGatewaysRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListInternetGatewaysRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListInternetGatewaysRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListInternetGatewaysResponse wrapper for the ListInternetGateways operation
 type ListInternetGatewaysResponse struct {
 
@@ -69,6 +83,11 @@ type ListInternetGatewaysResponse struct {
 
 func (response ListInternetGatewaysResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListInternetGatewaysResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }
 
 // ListInternetGatewaysSortByEnum Enum with underlying type: string

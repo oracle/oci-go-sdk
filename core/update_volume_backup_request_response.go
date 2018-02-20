@@ -27,6 +27,20 @@ func (request UpdateVolumeBackupRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request UpdateVolumeBackupRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request UpdateVolumeBackupRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // UpdateVolumeBackupResponse wrapper for the UpdateVolumeBackup operation
 type UpdateVolumeBackupResponse struct {
 
@@ -42,4 +56,14 @@ type UpdateVolumeBackupResponse struct {
 
 func (response UpdateVolumeBackupResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response UpdateVolumeBackupResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response UpdateVolumeBackupResponse) GetStatefulEntity() common.OciPollable {
+	return response.VolumeBackup
 }

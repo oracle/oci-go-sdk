@@ -26,6 +26,20 @@ func (request CreateDrgAttachmentRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request CreateDrgAttachmentRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request CreateDrgAttachmentRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // CreateDrgAttachmentResponse wrapper for the CreateDrgAttachment operation
 type CreateDrgAttachmentResponse struct {
 
@@ -45,4 +59,14 @@ type CreateDrgAttachmentResponse struct {
 
 func (response CreateDrgAttachmentResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response CreateDrgAttachmentResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response CreateDrgAttachmentResponse) GetStatefulEntity() common.OciPollable {
+	return response.DrgAttachment
 }

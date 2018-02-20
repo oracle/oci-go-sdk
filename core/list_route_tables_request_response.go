@@ -48,6 +48,20 @@ func (request ListRouteTablesRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListRouteTablesRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListRouteTablesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListRouteTablesResponse wrapper for the ListRouteTables operation
 type ListRouteTablesResponse struct {
 
@@ -69,6 +83,11 @@ type ListRouteTablesResponse struct {
 
 func (response ListRouteTablesResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListRouteTablesResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }
 
 // ListRouteTablesSortByEnum Enum with underlying type: string

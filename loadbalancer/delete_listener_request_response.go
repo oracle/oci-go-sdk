@@ -27,6 +27,20 @@ func (request DeleteListenerRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DeleteListenerRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DeleteListenerRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DeleteListenerResponse wrapper for the DeleteListener operation
 type DeleteListenerResponse struct {
 
@@ -43,4 +57,9 @@ type DeleteListenerResponse struct {
 
 func (response DeleteListenerResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DeleteListenerResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

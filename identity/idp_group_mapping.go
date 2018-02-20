@@ -54,6 +54,11 @@ func (m IdpGroupMapping) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m IdpGroupMapping) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // IdpGroupMappingLifecycleStateEnum Enum with underlying type: string
 type IdpGroupMappingLifecycleStateEnum string
 

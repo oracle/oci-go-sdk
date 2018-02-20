@@ -59,6 +59,8 @@ type IdentityProvider interface {
 
 	// The detailed status of INACTIVE lifecycleState.
 	GetInactiveStatus() *int
+	// This interface represents a pollable OCI resource
+	common.OciPollable
 }
 
 type identityprovider struct {
@@ -153,6 +155,11 @@ func (m identityprovider) GetInactiveStatus() *int {
 
 func (m identityprovider) String() string {
 	return common.PointerString(m)
+}
+
+// GetStatefulIndicator implements the OciPollable interface
+func (m identityprovider) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
 }
 
 // IdentityProviderLifecycleStateEnum Enum with underlying type: string

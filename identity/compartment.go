@@ -58,6 +58,11 @@ func (m Compartment) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m Compartment) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // CompartmentLifecycleStateEnum Enum with underlying type: string
 type CompartmentLifecycleStateEnum string
 

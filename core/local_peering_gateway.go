@@ -66,6 +66,11 @@ func (m LocalPeeringGateway) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m LocalPeeringGateway) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // LocalPeeringGatewayLifecycleStateEnum Enum with underlying type: string
 type LocalPeeringGatewayLifecycleStateEnum string
 

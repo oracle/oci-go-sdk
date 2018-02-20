@@ -44,6 +44,11 @@ func (m Drg) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m Drg) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // DrgLifecycleStateEnum Enum with underlying type: string
 type DrgLifecycleStateEnum string
 

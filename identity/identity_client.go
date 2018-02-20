@@ -35,18 +35,21 @@ func NewIdentityClientWithConfigurationProvider(configProvider common.Configurat
 	return
 }
 
-// SetConfigurationProvider sets the configuration provider, returns an error if is not valid
+// SetRegion overrides the region of this client.
+func (client *IdentityClient) SetRegion(region string) {
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", region)
+}
+
+// SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
 func (client *IdentityClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err
 	}
 
-	region, err := configProvider.Region()
-	if err != nil {
-		return err
-	}
+	// Error has been checked already
+	region, _ := configProvider.Region()
 	client.config = &configProvider
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", string(region))
+	client.SetRegion(region)
 	return nil
 }
 
@@ -58,13 +61,13 @@ func (client *IdentityClient) ConfigurationProvider() *common.ConfigurationProvi
 // AddUserToGroup Adds the specified user to the specified group and returns a `UserGroupMembership` object with its own OCID.
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
 // object, first make sure its `lifecycleState` has changed to ACTIVE.
-func (client IdentityClient) AddUserToGroup(ctx context.Context, request AddUserToGroupRequest, options ...common.Option) (response AddUserToGroupResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/userGroupMemberships/", request)
+func (client IdentityClient) AddUserToGroup(ctx context.Context, request AddUserToGroupRequest) (response AddUserToGroupResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/userGroupMemberships/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -89,13 +92,13 @@ func (client IdentityClient) AddUserToGroup(ctx context.Context, request AddUser
 // UpdateCompartment.
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
 // object, first make sure its `lifecycleState` has changed to ACTIVE.
-func (client IdentityClient) CreateCompartment(ctx context.Context, request CreateCompartmentRequest, options ...common.Option) (response CreateCompartmentResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/compartments/", request)
+func (client IdentityClient) CreateCompartment(ctx context.Context, request CreateCompartmentRequest) (response CreateCompartmentResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/compartments/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -115,13 +118,13 @@ func (client IdentityClient) CreateCompartment(ctx context.Context, request Crea
 // Every user has permission to create a secret key for *their own user ID*. An administrator in your organization
 // does not need to write a policy to give users this ability. To compare, administrators who have permission to the
 // tenancy can use this operation to create a secret key for any user, including themselves.
-func (client IdentityClient) CreateCustomerSecretKey(ctx context.Context, request CreateCustomerSecretKeyRequest, options ...common.Option) (response CreateCustomerSecretKeyResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/users/{userId}/customerSecretKeys/", request)
+func (client IdentityClient) CreateCustomerSecretKey(ctx context.Context, request CreateCustomerSecretKeyRequest) (response CreateCustomerSecretKeyResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/users/{userId}/customerSecretKeys/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -148,13 +151,13 @@ func (client IdentityClient) CreateCustomerSecretKey(ctx context.Context, reques
 // After creating the group, you need to put users in it and write policies for it.
 // See AddUserToGroup and
 // CreatePolicy.
-func (client IdentityClient) CreateGroup(ctx context.Context, request CreateGroupRequest, options ...common.Option) (response CreateGroupResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/groups/", request)
+func (client IdentityClient) CreateGroup(ctx context.Context, request CreateGroupRequest) (response CreateGroupResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/groups/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -179,13 +182,13 @@ func (client IdentityClient) CreateGroup(ctx context.Context, request CreateGrou
 // After you send your request, the new object's `lifecycleState` will temporarily
 // be CREATING. Before using the object, first make sure its `lifecycleState` has
 // changed to ACTIVE.
-func (client IdentityClient) CreateIdentityProvider(ctx context.Context, request CreateIdentityProviderRequest, options ...common.Option) (response CreateIdentityProviderResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/identityProviders/", request)
+func (client IdentityClient) CreateIdentityProvider(ctx context.Context, request CreateIdentityProviderRequest) (response CreateIdentityProviderResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/identityProviders/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -198,13 +201,13 @@ func (client IdentityClient) CreateIdentityProvider(ctx context.Context, request
 
 // CreateIdpGroupMapping Creates a single mapping between an IdP group and an IAM Service
 // Group.
-func (client IdentityClient) CreateIdpGroupMapping(ctx context.Context, request CreateIdpGroupMappingRequest, options ...common.Option) (response CreateIdpGroupMappingResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/identityProviders/{identityProviderId}/groupMappings/", request)
+func (client IdentityClient) CreateIdpGroupMapping(ctx context.Context, request CreateIdpGroupMappingRequest) (response CreateIdpGroupMappingResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/identityProviders/{identityProviderId}/groupMappings/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -224,13 +227,13 @@ func (client IdentityClient) CreateIdpGroupMapping(ctx context.Context, request 
 // user.
 // **Note:** The user's Console login is the unique name you specified when you created the user
 // (see CreateUser).
-func (client IdentityClient) CreateOrResetUIPassword(ctx context.Context, request CreateOrResetUIPasswordRequest, options ...common.Option) (response CreateOrResetUIPasswordResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/users/{userId}/uiPassword", request)
+func (client IdentityClient) CreateOrResetUIPassword(ctx context.Context, request CreateOrResetUIPasswordRequest) (response CreateOrResetUIPasswordResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/users/{userId}/uiPassword")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -253,13 +256,13 @@ func (client IdentityClient) CreateOrResetUIPassword(ctx context.Context, reques
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
 // object, first make sure its `lifecycleState` has changed to ACTIVE.
 // New policies take effect typically within 10 seconds.
-func (client IdentityClient) CreatePolicy(ctx context.Context, request CreatePolicyRequest, options ...common.Option) (response CreatePolicyResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/policies/", request)
+func (client IdentityClient) CreatePolicy(ctx context.Context, request CreatePolicyRequest) (response CreatePolicyResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/policies/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -271,13 +274,13 @@ func (client IdentityClient) CreatePolicy(ctx context.Context, request CreatePol
 }
 
 // CreateRegionSubscription Creates a subscription to a region for a tenancy.
-func (client IdentityClient) CreateRegionSubscription(ctx context.Context, request CreateRegionSubscriptionRequest, options ...common.Option) (response CreateRegionSubscriptionResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/tenancies/{tenancyId}/regionSubscriptions", request)
+func (client IdentityClient) CreateRegionSubscription(ctx context.Context, request CreateRegionSubscriptionRequest) (response CreateRegionSubscriptionResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/tenancies/{tenancyId}/regionSubscriptions")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -296,13 +299,13 @@ func (client IdentityClient) CreateRegionSubscription(ctx context.Context, reque
 // Every user has permission to create a Swift password for *their own user ID*. An administrator in your organization
 // does not need to write a policy to give users this ability. To compare, administrators who have permission to the
 // tenancy can use this operation to create a Swift password for any user, including themselves.
-func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request CreateSwiftPasswordRequest, options ...common.Option) (response CreateSwiftPasswordResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/users/{userId}/swiftPasswords/", request)
+func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request CreateSwiftPasswordRequest) (response CreateSwiftPasswordResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/users/{userId}/swiftPasswords/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -342,13 +345,13 @@ func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request Cr
 // [Required Keys and OCIDs]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm) and also
 // UploadApiKey).
 // **Important:** Make sure to inform the new user which compartment(s) they have access to.
-func (client IdentityClient) CreateUser(ctx context.Context, request CreateUserRequest, options ...common.Option) (response CreateUserResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/users/", request)
+func (client IdentityClient) CreateUser(ctx context.Context, request CreateUserRequest) (response CreateUserResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/users/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -364,13 +367,13 @@ func (client IdentityClient) CreateUser(ctx context.Context, request CreateUserR
 // administrator in your organization does not need to write a policy to give users this ability.
 // To compare, administrators who have permission to the tenancy can use this operation to delete
 // a key for any user, including themselves.
-func (client IdentityClient) DeleteApiKey(ctx context.Context, request DeleteApiKeyRequest, options ...common.Option) (response DeleteApiKeyResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/users/{userId}/apiKeys/{fingerprint}", request)
+func (client IdentityClient) DeleteApiKey(ctx context.Context, request DeleteApiKeyRequest) (response DeleteApiKeyResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/users/{userId}/apiKeys/{fingerprint}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -382,13 +385,13 @@ func (client IdentityClient) DeleteApiKey(ctx context.Context, request DeleteApi
 }
 
 // DeleteCustomerSecretKey Deletes the specified secret key for the specified user.
-func (client IdentityClient) DeleteCustomerSecretKey(ctx context.Context, request DeleteCustomerSecretKeyRequest, options ...common.Option) (response DeleteCustomerSecretKeyResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/users/{userId}/customerSecretKeys/{customerSecretKeyId}", request)
+func (client IdentityClient) DeleteCustomerSecretKey(ctx context.Context, request DeleteCustomerSecretKeyRequest) (response DeleteCustomerSecretKeyResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/users/{userId}/customerSecretKeys/{customerSecretKeyId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -400,13 +403,13 @@ func (client IdentityClient) DeleteCustomerSecretKey(ctx context.Context, reques
 }
 
 // DeleteGroup Deletes the specified group. The group must be empty.
-func (client IdentityClient) DeleteGroup(ctx context.Context, request DeleteGroupRequest, options ...common.Option) (response DeleteGroupResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/groups/{groupId}", request)
+func (client IdentityClient) DeleteGroup(ctx context.Context, request DeleteGroupRequest) (response DeleteGroupResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/groups/{groupId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -419,13 +422,13 @@ func (client IdentityClient) DeleteGroup(ctx context.Context, request DeleteGrou
 
 // DeleteIdentityProvider Deletes the specified identity provider. The identity provider must not have
 // any group mappings (see IdpGroupMapping).
-func (client IdentityClient) DeleteIdentityProvider(ctx context.Context, request DeleteIdentityProviderRequest, options ...common.Option) (response DeleteIdentityProviderResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/identityProviders/{identityProviderId}", request)
+func (client IdentityClient) DeleteIdentityProvider(ctx context.Context, request DeleteIdentityProviderRequest) (response DeleteIdentityProviderResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/identityProviders/{identityProviderId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -437,13 +440,13 @@ func (client IdentityClient) DeleteIdentityProvider(ctx context.Context, request
 }
 
 // DeleteIdpGroupMapping Deletes the specified group mapping.
-func (client IdentityClient) DeleteIdpGroupMapping(ctx context.Context, request DeleteIdpGroupMappingRequest, options ...common.Option) (response DeleteIdpGroupMappingResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/identityProviders/{identityProviderId}/groupMappings/{mappingId}", request)
+func (client IdentityClient) DeleteIdpGroupMapping(ctx context.Context, request DeleteIdpGroupMappingRequest) (response DeleteIdpGroupMappingResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/identityProviders/{identityProviderId}/groupMappings/{mappingId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -455,13 +458,13 @@ func (client IdentityClient) DeleteIdpGroupMapping(ctx context.Context, request 
 }
 
 // DeletePolicy Deletes the specified policy. The deletion takes effect typically within 10 seconds.
-func (client IdentityClient) DeletePolicy(ctx context.Context, request DeletePolicyRequest, options ...common.Option) (response DeletePolicyResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/policies/{policyId}", request)
+func (client IdentityClient) DeletePolicy(ctx context.Context, request DeletePolicyRequest) (response DeletePolicyResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/policies/{policyId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -473,13 +476,13 @@ func (client IdentityClient) DeletePolicy(ctx context.Context, request DeletePol
 }
 
 // DeleteSwiftPassword Deletes the specified Swift password for the specified user.
-func (client IdentityClient) DeleteSwiftPassword(ctx context.Context, request DeleteSwiftPasswordRequest, options ...common.Option) (response DeleteSwiftPasswordResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/users/{userId}/swiftPasswords/{swiftPasswordId}", request)
+func (client IdentityClient) DeleteSwiftPassword(ctx context.Context, request DeleteSwiftPasswordRequest) (response DeleteSwiftPasswordResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/users/{userId}/swiftPasswords/{swiftPasswordId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -491,13 +494,13 @@ func (client IdentityClient) DeleteSwiftPassword(ctx context.Context, request De
 }
 
 // DeleteUser Deletes the specified user. The user must not be in any groups.
-func (client IdentityClient) DeleteUser(ctx context.Context, request DeleteUserRequest, options ...common.Option) (response DeleteUserResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/users/{userId}", request)
+func (client IdentityClient) DeleteUser(ctx context.Context, request DeleteUserRequest) (response DeleteUserResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/users/{userId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -515,13 +518,13 @@ func (client IdentityClient) DeleteUser(ctx context.Context, request DeleteUserR
 // each resource type and specify the compartment's OCID as a query parameter in the request. For example,
 // call the ListInstances operation in the Cloud Compute
 // Service or the ListVolumes operation in Cloud Block Storage.
-func (client IdentityClient) GetCompartment(ctx context.Context, request GetCompartmentRequest, options ...common.Option) (response GetCompartmentResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/compartments/{compartmentId}", request)
+func (client IdentityClient) GetCompartment(ctx context.Context, request GetCompartmentRequest) (response GetCompartmentResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/compartments/{compartmentId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -536,13 +539,13 @@ func (client IdentityClient) GetCompartment(ctx context.Context, request GetComp
 // This operation does not return a list of all the users in the group. To do that, use
 // ListUserGroupMemberships and
 // provide the group's OCID as a query parameter in the request.
-func (client IdentityClient) GetGroup(ctx context.Context, request GetGroupRequest, options ...common.Option) (response GetGroupResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/groups/{groupId}", request)
+func (client IdentityClient) GetGroup(ctx context.Context, request GetGroupRequest) (response GetGroupResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/groups/{groupId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -554,13 +557,13 @@ func (client IdentityClient) GetGroup(ctx context.Context, request GetGroupReque
 }
 
 // GetIdentityProvider Gets the specified identity provider's information.
-func (client IdentityClient) GetIdentityProvider(ctx context.Context, request GetIdentityProviderRequest, options ...common.Option) (response GetIdentityProviderResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/identityProviders/{identityProviderId}", request)
+func (client IdentityClient) GetIdentityProvider(ctx context.Context, request GetIdentityProviderRequest) (response GetIdentityProviderResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/identityProviders/{identityProviderId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -572,13 +575,13 @@ func (client IdentityClient) GetIdentityProvider(ctx context.Context, request Ge
 }
 
 // GetIdpGroupMapping Gets the specified group mapping.
-func (client IdentityClient) GetIdpGroupMapping(ctx context.Context, request GetIdpGroupMappingRequest, options ...common.Option) (response GetIdpGroupMappingResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/identityProviders/{identityProviderId}/groupMappings/{mappingId}", request)
+func (client IdentityClient) GetIdpGroupMapping(ctx context.Context, request GetIdpGroupMappingRequest) (response GetIdpGroupMappingResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/identityProviders/{identityProviderId}/groupMappings/{mappingId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -590,13 +593,13 @@ func (client IdentityClient) GetIdpGroupMapping(ctx context.Context, request Get
 }
 
 // GetPolicy Gets the specified policy's information.
-func (client IdentityClient) GetPolicy(ctx context.Context, request GetPolicyRequest, options ...common.Option) (response GetPolicyResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/policies/{policyId}", request)
+func (client IdentityClient) GetPolicy(ctx context.Context, request GetPolicyRequest) (response GetPolicyResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/policies/{policyId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -608,13 +611,13 @@ func (client IdentityClient) GetPolicy(ctx context.Context, request GetPolicyReq
 }
 
 // GetTenancy Get the specified tenancy's information.
-func (client IdentityClient) GetTenancy(ctx context.Context, request GetTenancyRequest, options ...common.Option) (response GetTenancyResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/tenancies/{tenancyId}", request)
+func (client IdentityClient) GetTenancy(ctx context.Context, request GetTenancyRequest) (response GetTenancyResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/tenancies/{tenancyId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -626,13 +629,13 @@ func (client IdentityClient) GetTenancy(ctx context.Context, request GetTenancyR
 }
 
 // GetUser Gets the specified user's information.
-func (client IdentityClient) GetUser(ctx context.Context, request GetUserRequest, options ...common.Option) (response GetUserResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/users/{userId}", request)
+func (client IdentityClient) GetUser(ctx context.Context, request GetUserRequest) (response GetUserResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/users/{userId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -644,13 +647,13 @@ func (client IdentityClient) GetUser(ctx context.Context, request GetUserRequest
 }
 
 // GetUserGroupMembership Gets the specified UserGroupMembership's information.
-func (client IdentityClient) GetUserGroupMembership(ctx context.Context, request GetUserGroupMembershipRequest, options ...common.Option) (response GetUserGroupMembershipResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/userGroupMemberships/{userGroupMembershipId}", request)
+func (client IdentityClient) GetUserGroupMembership(ctx context.Context, request GetUserGroupMembershipRequest) (response GetUserGroupMembershipResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/userGroupMemberships/{userGroupMembershipId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -664,13 +667,13 @@ func (client IdentityClient) GetUserGroupMembership(ctx context.Context, request
 // ListApiKeys Lists the API signing keys for the specified user. A user can have a maximum of three keys.
 // Every user has permission to use this API call for *their own user ID*.  An administrator in your
 // organization does not need to write a policy to give users this ability.
-func (client IdentityClient) ListApiKeys(ctx context.Context, request ListApiKeysRequest, options ...common.Option) (response ListApiKeysResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/users/{userId}/apiKeys/", request)
+func (client IdentityClient) ListApiKeys(ctx context.Context, request ListApiKeysRequest) (response ListApiKeysResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/users/{userId}/apiKeys/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -684,13 +687,13 @@ func (client IdentityClient) ListApiKeys(ctx context.Context, request ListApiKey
 // ListAvailabilityDomains Lists the Availability Domains in your tenancy. Specify the OCID of either the tenancy or another
 // of your compartments as the value for the compartment ID (remember that the tenancy is simply the root compartment).
 // See [Where to Get the Tenancy's OCID and User's OCID]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListAvailabilityDomains(ctx context.Context, request ListAvailabilityDomainsRequest, options ...common.Option) (response ListAvailabilityDomainsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/availabilityDomains/", request)
+func (client IdentityClient) ListAvailabilityDomains(ctx context.Context, request ListAvailabilityDomainsRequest) (response ListAvailabilityDomainsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/availabilityDomains/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -704,13 +707,13 @@ func (client IdentityClient) ListAvailabilityDomains(ctx context.Context, reques
 // ListCompartments Lists the compartments in your tenancy. You must specify your tenancy's OCID as the value
 // for the compartment ID (remember that the tenancy is simply the root compartment).
 // See [Where to Get the Tenancy's OCID and User's OCID]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListCompartments(ctx context.Context, request ListCompartmentsRequest, options ...common.Option) (response ListCompartmentsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/compartments/", request)
+func (client IdentityClient) ListCompartments(ctx context.Context, request ListCompartmentsRequest) (response ListCompartmentsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/compartments/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -723,13 +726,13 @@ func (client IdentityClient) ListCompartments(ctx context.Context, request ListC
 
 // ListCustomerSecretKeys Lists the secret keys for the specified user. The returned object contains the secret key's OCID, but not
 // the secret key itself. The actual secret key is returned only upon creation.
-func (client IdentityClient) ListCustomerSecretKeys(ctx context.Context, request ListCustomerSecretKeysRequest, options ...common.Option) (response ListCustomerSecretKeysResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/users/{userId}/customerSecretKeys/", request)
+func (client IdentityClient) ListCustomerSecretKeys(ctx context.Context, request ListCustomerSecretKeysRequest) (response ListCustomerSecretKeysResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/users/{userId}/customerSecretKeys/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -743,13 +746,13 @@ func (client IdentityClient) ListCustomerSecretKeys(ctx context.Context, request
 // ListFaultDomains Lists the Fault Domains in your tenancy. Specify the OCID of either the tenancy or another
 // of your compartments as the value for the compartment ID (remember that the tenancy is simply the root compartment).
 // See [Where to Get the Tenancy's OCID and User's OCID]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListFaultDomains(ctx context.Context, request ListFaultDomainsRequest, options ...common.Option) (response ListFaultDomainsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/faultDomains/", request)
+func (client IdentityClient) ListFaultDomains(ctx context.Context, request ListFaultDomainsRequest) (response ListFaultDomainsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/faultDomains/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -763,13 +766,13 @@ func (client IdentityClient) ListFaultDomains(ctx context.Context, request ListF
 // ListGroups Lists the groups in your tenancy. You must specify your tenancy's OCID as the value for
 // the compartment ID (remember that the tenancy is simply the root compartment).
 // See [Where to Get the Tenancy's OCID and User's OCID]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListGroups(ctx context.Context, request ListGroupsRequest, options ...common.Option) (response ListGroupsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/groups/", request)
+func (client IdentityClient) ListGroups(ctx context.Context, request ListGroupsRequest) (response ListGroupsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/groups/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -800,13 +803,13 @@ func (m *listidentityprovider) UnmarshalPolymorphicJSON(data []byte) (interface{
 // identity providers using the SAML2.0 protocol). You must specify your tenancy's OCID as the value for the
 // compartment ID (remember that the tenancy is simply the root compartment).
 // See [Where to Get the Tenancy's OCID and User's OCID]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListIdentityProviders(ctx context.Context, request ListIdentityProvidersRequest, options ...common.Option) (response ListIdentityProvidersResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/identityProviders/", request)
+func (client IdentityClient) ListIdentityProviders(ctx context.Context, request ListIdentityProvidersRequest) (response ListIdentityProvidersResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/identityProviders/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -818,13 +821,13 @@ func (client IdentityClient) ListIdentityProviders(ctx context.Context, request 
 }
 
 // ListIdpGroupMappings Lists the group mappings for the specified identity provider.
-func (client IdentityClient) ListIdpGroupMappings(ctx context.Context, request ListIdpGroupMappingsRequest, options ...common.Option) (response ListIdpGroupMappingsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/identityProviders/{identityProviderId}/groupMappings/", request)
+func (client IdentityClient) ListIdpGroupMappings(ctx context.Context, request ListIdpGroupMappingsRequest) (response ListIdpGroupMappingsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/identityProviders/{identityProviderId}/groupMappings/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -839,13 +842,13 @@ func (client IdentityClient) ListIdpGroupMappings(ctx context.Context, request L
 // See [Where to Get the Tenancy's OCID and User's OCID]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
 // To determine which policies apply to a particular group or compartment, you must view the individual
 // statements inside all your policies. There isn't a way to automatically obtain that information via the API.
-func (client IdentityClient) ListPolicies(ctx context.Context, request ListPoliciesRequest, options ...common.Option) (response ListPoliciesResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/policies/", request)
+func (client IdentityClient) ListPolicies(ctx context.Context, request ListPoliciesRequest) (response ListPoliciesResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/policies/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -857,13 +860,13 @@ func (client IdentityClient) ListPolicies(ctx context.Context, request ListPolic
 }
 
 // ListRegionSubscriptions Lists the region subscriptions for the specified tenancy.
-func (client IdentityClient) ListRegionSubscriptions(ctx context.Context, request ListRegionSubscriptionsRequest, options ...common.Option) (response ListRegionSubscriptionsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/tenancies/{tenancyId}/regionSubscriptions", request)
+func (client IdentityClient) ListRegionSubscriptions(ctx context.Context, request ListRegionSubscriptionsRequest) (response ListRegionSubscriptionsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/tenancies/{tenancyId}/regionSubscriptions")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -875,10 +878,10 @@ func (client IdentityClient) ListRegionSubscriptions(ctx context.Context, reques
 }
 
 // ListRegions Lists all the regions offered by Oracle Cloud Infrastructure.
-func (client IdentityClient) ListRegions(ctx context.Context, options ...common.Option) (response ListRegionsResponse, err error) {
+func (client IdentityClient) ListRegions(ctx context.Context) (response ListRegionsResponse, err error) {
 	httpRequest := common.MakeDefaultHTTPRequest(http.MethodGet, "/regions")
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -891,13 +894,13 @@ func (client IdentityClient) ListRegions(ctx context.Context, options ...common.
 
 // ListSwiftPasswords Lists the Swift passwords for the specified user. The returned object contains the password's OCID, but not
 // the password itself. The actual password is returned only upon creation.
-func (client IdentityClient) ListSwiftPasswords(ctx context.Context, request ListSwiftPasswordsRequest, options ...common.Option) (response ListSwiftPasswordsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/users/{userId}/swiftPasswords/", request)
+func (client IdentityClient) ListSwiftPasswords(ctx context.Context, request ListSwiftPasswordsRequest) (response ListSwiftPasswordsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/users/{userId}/swiftPasswords/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -916,13 +919,13 @@ func (client IdentityClient) ListSwiftPasswords(ctx context.Context, request Lis
 // - Similarly, you can limit the results to just the memberships for a given group by specifying a `groupId`.
 // - You can set both the `userId` and `groupId` to determine if the specified user is in the specified group.
 // If the answer is no, the response is an empty list.
-func (client IdentityClient) ListUserGroupMemberships(ctx context.Context, request ListUserGroupMembershipsRequest, options ...common.Option) (response ListUserGroupMembershipsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/userGroupMemberships/", request)
+func (client IdentityClient) ListUserGroupMemberships(ctx context.Context, request ListUserGroupMembershipsRequest) (response ListUserGroupMembershipsResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/userGroupMemberships/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -936,13 +939,13 @@ func (client IdentityClient) ListUserGroupMemberships(ctx context.Context, reque
 // ListUsers Lists the users in your tenancy. You must specify your tenancy's OCID as the value for the
 // compartment ID (remember that the tenancy is simply the root compartment).
 // See [Where to Get the Tenancy's OCID and User's OCID]({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListUsers(ctx context.Context, request ListUsersRequest, options ...common.Option) (response ListUsersResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/users/", request)
+func (client IdentityClient) ListUsers(ctx context.Context, request ListUsersRequest) (response ListUsersResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/users/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -954,13 +957,13 @@ func (client IdentityClient) ListUsers(ctx context.Context, request ListUsersReq
 }
 
 // RemoveUserFromGroup Removes a user from a group by deleting the corresponding `UserGroupMembership`.
-func (client IdentityClient) RemoveUserFromGroup(ctx context.Context, request RemoveUserFromGroupRequest, options ...common.Option) (response RemoveUserFromGroupResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/userGroupMemberships/{userGroupMembershipId}", request)
+func (client IdentityClient) RemoveUserFromGroup(ctx context.Context, request RemoveUserFromGroupRequest) (response RemoveUserFromGroupResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/userGroupMemberships/{userGroupMembershipId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -972,13 +975,13 @@ func (client IdentityClient) RemoveUserFromGroup(ctx context.Context, request Re
 }
 
 // UpdateCompartment Updates the specified compartment's description or name. You can't update the root compartment.
-func (client IdentityClient) UpdateCompartment(ctx context.Context, request UpdateCompartmentRequest, options ...common.Option) (response UpdateCompartmentResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/compartments/{compartmentId}", request)
+func (client IdentityClient) UpdateCompartment(ctx context.Context, request UpdateCompartmentRequest) (response UpdateCompartmentResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/compartments/{compartmentId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -990,13 +993,13 @@ func (client IdentityClient) UpdateCompartment(ctx context.Context, request Upda
 }
 
 // UpdateCustomerSecretKey Updates the specified secret key's description.
-func (client IdentityClient) UpdateCustomerSecretKey(ctx context.Context, request UpdateCustomerSecretKeyRequest, options ...common.Option) (response UpdateCustomerSecretKeyResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/users/{userId}/customerSecretKeys/{customerSecretKeyId}", request)
+func (client IdentityClient) UpdateCustomerSecretKey(ctx context.Context, request UpdateCustomerSecretKeyRequest) (response UpdateCustomerSecretKeyResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/users/{userId}/customerSecretKeys/{customerSecretKeyId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1008,13 +1011,13 @@ func (client IdentityClient) UpdateCustomerSecretKey(ctx context.Context, reques
 }
 
 // UpdateGroup Updates the specified group.
-func (client IdentityClient) UpdateGroup(ctx context.Context, request UpdateGroupRequest, options ...common.Option) (response UpdateGroupResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/groups/{groupId}", request)
+func (client IdentityClient) UpdateGroup(ctx context.Context, request UpdateGroupRequest) (response UpdateGroupResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/groups/{groupId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1026,13 +1029,13 @@ func (client IdentityClient) UpdateGroup(ctx context.Context, request UpdateGrou
 }
 
 // UpdateIdentityProvider Updates the specified identity provider.
-func (client IdentityClient) UpdateIdentityProvider(ctx context.Context, request UpdateIdentityProviderRequest, options ...common.Option) (response UpdateIdentityProviderResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/identityProviders/{identityProviderId}", request)
+func (client IdentityClient) UpdateIdentityProvider(ctx context.Context, request UpdateIdentityProviderRequest) (response UpdateIdentityProviderResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/identityProviders/{identityProviderId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1044,13 +1047,13 @@ func (client IdentityClient) UpdateIdentityProvider(ctx context.Context, request
 }
 
 // UpdateIdpGroupMapping Updates the specified group mapping.
-func (client IdentityClient) UpdateIdpGroupMapping(ctx context.Context, request UpdateIdpGroupMappingRequest, options ...common.Option) (response UpdateIdpGroupMappingResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/identityProviders/{identityProviderId}/groupMappings/{mappingId}", request)
+func (client IdentityClient) UpdateIdpGroupMapping(ctx context.Context, request UpdateIdpGroupMappingRequest) (response UpdateIdpGroupMappingResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/identityProviders/{identityProviderId}/groupMappings/{mappingId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1063,13 +1066,13 @@ func (client IdentityClient) UpdateIdpGroupMapping(ctx context.Context, request 
 
 // UpdatePolicy Updates the specified policy. You can update the description or the policy statements themselves.
 // Policy changes take effect typically within 10 seconds.
-func (client IdentityClient) UpdatePolicy(ctx context.Context, request UpdatePolicyRequest, options ...common.Option) (response UpdatePolicyResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/policies/{policyId}", request)
+func (client IdentityClient) UpdatePolicy(ctx context.Context, request UpdatePolicyRequest) (response UpdatePolicyResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/policies/{policyId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1081,13 +1084,13 @@ func (client IdentityClient) UpdatePolicy(ctx context.Context, request UpdatePol
 }
 
 // UpdateSwiftPassword Updates the specified Swift password's description.
-func (client IdentityClient) UpdateSwiftPassword(ctx context.Context, request UpdateSwiftPasswordRequest, options ...common.Option) (response UpdateSwiftPasswordResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/users/{userId}/swiftPasswords/{swiftPasswordId}", request)
+func (client IdentityClient) UpdateSwiftPassword(ctx context.Context, request UpdateSwiftPasswordRequest) (response UpdateSwiftPasswordResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/users/{userId}/swiftPasswords/{swiftPasswordId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1099,13 +1102,13 @@ func (client IdentityClient) UpdateSwiftPassword(ctx context.Context, request Up
 }
 
 // UpdateUser Updates the description of the specified user.
-func (client IdentityClient) UpdateUser(ctx context.Context, request UpdateUserRequest, options ...common.Option) (response UpdateUserResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/users/{userId}", request)
+func (client IdentityClient) UpdateUser(ctx context.Context, request UpdateUserRequest) (response UpdateUserResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/users/{userId}")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1117,13 +1120,13 @@ func (client IdentityClient) UpdateUser(ctx context.Context, request UpdateUserR
 }
 
 // UpdateUserState Updates the state of the specified user.
-func (client IdentityClient) UpdateUserState(ctx context.Context, request UpdateUserStateRequest, options ...common.Option) (response UpdateUserStateResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/users/{userId}/state/", request)
+func (client IdentityClient) UpdateUserState(ctx context.Context, request UpdateUserStateRequest) (response UpdateUserStateResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/users/{userId}/state/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
@@ -1146,13 +1149,13 @@ func (client IdentityClient) UpdateUserState(ctx context.Context, request Update
 // you have. Also confirm you're working in the correct compartment.
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using
 // the object, first make sure its `lifecycleState` has changed to ACTIVE.
-func (client IdentityClient) UploadApiKey(ctx context.Context, request UploadApiKeyRequest, options ...common.Option) (response UploadApiKeyResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/users/{userId}/apiKeys/", request)
+func (client IdentityClient) UploadApiKey(ctx context.Context, request UploadApiKeyRequest) (response UploadApiKeyResponse, err error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/users/{userId}/apiKeys/")
 	if err != nil {
 		return
 	}
 
-	httpResponse, err := client.Call(ctx, &httpRequest, options...)
+	httpResponse, err := client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {

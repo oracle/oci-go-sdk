@@ -30,6 +30,20 @@ func (request GetPreauthenticatedRequestRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request GetPreauthenticatedRequestRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request GetPreauthenticatedRequestRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // GetPreauthenticatedRequestResponse wrapper for the GetPreauthenticatedRequest operation
 type GetPreauthenticatedRequestResponse struct {
 
@@ -49,4 +63,9 @@ type GetPreauthenticatedRequestResponse struct {
 
 func (response GetPreauthenticatedRequestResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response GetPreauthenticatedRequestResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

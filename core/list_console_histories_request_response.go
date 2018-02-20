@@ -49,6 +49,20 @@ func (request ListConsoleHistoriesRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListConsoleHistoriesRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListConsoleHistoriesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListConsoleHistoriesResponse wrapper for the ListConsoleHistories operation
 type ListConsoleHistoriesResponse struct {
 
@@ -70,6 +84,11 @@ type ListConsoleHistoriesResponse struct {
 
 func (response ListConsoleHistoriesResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListConsoleHistoriesResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }
 
 // ListConsoleHistoriesSortByEnum Enum with underlying type: string

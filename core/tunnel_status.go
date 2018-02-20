@@ -20,7 +20,7 @@ type TunnelStatus struct {
 	IpAddress *string `mandatory:"true" json:"ipAddress"`
 
 	// The tunnel's current state.
-	LifecycleState TunnelStatusLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState TunnelStatusLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The date and time the IPSec connection was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
@@ -33,6 +33,11 @@ type TunnelStatus struct {
 
 func (m TunnelStatus) String() string {
 	return common.PointerString(m)
+}
+
+// GetStatefulIndicator implements the OciPollable interface
+func (m TunnelStatus) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
 }
 
 // TunnelStatusLifecycleStateEnum Enum with underlying type: string

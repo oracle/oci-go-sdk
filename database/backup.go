@@ -35,7 +35,7 @@ type Backup struct {
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The current state of the backup.
-	LifecycleState BackupLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState BackupLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// The date and time the backup was completed.
 	TimeEnded *common.SDKTime `mandatory:"false" json:"timeEnded"`
@@ -44,11 +44,16 @@ type Backup struct {
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 
 	// The type of backup.
-	Type BackupTypeEnum `mandatory:"false" json:"type"`
+	Type BackupTypeEnum `mandatory:"false" json:"type,omitempty"`
 }
 
 func (m Backup) String() string {
 	return common.PointerString(m)
+}
+
+// GetStatefulIndicator implements the OciPollable interface
+func (m Backup) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
 }
 
 // BackupLifecycleStateEnum Enum with underlying type: string

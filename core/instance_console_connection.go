@@ -34,11 +34,16 @@ type InstanceConsoleConnection struct {
 	InstanceId *string `mandatory:"false" json:"instanceId"`
 
 	// The current state of the console connection.
-	LifecycleState InstanceConsoleConnectionLifecycleStateEnum `mandatory:"false" json:"lifecycleState"`
+	LifecycleState InstanceConsoleConnectionLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 
 func (m InstanceConsoleConnection) String() string {
 	return common.PointerString(m)
+}
+
+// GetStatefulIndicator implements the OciPollable interface
+func (m InstanceConsoleConnection) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
 }
 
 // InstanceConsoleConnectionLifecycleStateEnum Enum with underlying type: string

@@ -54,6 +54,11 @@ func (m DhcpOptions) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m DhcpOptions) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // UnmarshalJSON unmarshals from json
 func (m *DhcpOptions) UnmarshalJSON(data []byte) (e error) {
 	model := struct {

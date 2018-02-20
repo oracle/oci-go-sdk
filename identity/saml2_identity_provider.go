@@ -112,6 +112,11 @@ func (m Saml2IdentityProvider) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m Saml2IdentityProvider) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // MarshalJSON marshals to json representation
 func (m Saml2IdentityProvider) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeSaml2IdentityProvider Saml2IdentityProvider

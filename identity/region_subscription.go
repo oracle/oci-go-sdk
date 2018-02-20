@@ -44,6 +44,11 @@ func (m RegionSubscription) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m RegionSubscription) GetStatefulIndicator() string {
+	return string(m.Status)
+}
+
 // RegionSubscriptionStatusEnum Enum with underlying type: string
 type RegionSubscriptionStatusEnum string
 

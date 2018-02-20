@@ -24,6 +24,20 @@ func (request DetachVnicRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DetachVnicRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DetachVnicRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DetachVnicResponse wrapper for the DetachVnic operation
 type DetachVnicResponse struct {
 
@@ -37,4 +51,9 @@ type DetachVnicResponse struct {
 
 func (response DetachVnicResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DetachVnicResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

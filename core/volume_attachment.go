@@ -47,6 +47,8 @@ type VolumeAttachment interface {
 	// Avoid entering confidential information.
 	// Example: `My volume attachment`
 	GetDisplayName() *string
+	// This interface represents a pollable OCI resource
+	common.OciPollable
 }
 
 type volumeattachment struct {
@@ -141,6 +143,11 @@ func (m volumeattachment) GetDisplayName() *string {
 
 func (m volumeattachment) String() string {
 	return common.PointerString(m)
+}
+
+// GetStatefulIndicator implements the OciPollable interface
+func (m volumeattachment) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
 }
 
 // VolumeAttachmentLifecycleStateEnum Enum with underlying type: string

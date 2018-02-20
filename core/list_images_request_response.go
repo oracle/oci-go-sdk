@@ -53,6 +53,20 @@ func (request ListImagesRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListImagesRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListImagesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListImagesResponse wrapper for the ListImages operation
 type ListImagesResponse struct {
 
@@ -74,6 +88,11 @@ type ListImagesResponse struct {
 
 func (response ListImagesResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListImagesResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }
 
 // ListImagesSortByEnum Enum with underlying type: string

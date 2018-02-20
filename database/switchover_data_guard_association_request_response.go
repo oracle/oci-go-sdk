@@ -30,6 +30,20 @@ func (request SwitchoverDataGuardAssociationRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request SwitchoverDataGuardAssociationRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request SwitchoverDataGuardAssociationRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // SwitchoverDataGuardAssociationResponse wrapper for the SwitchoverDataGuardAssociation operation
 type SwitchoverDataGuardAssociationResponse struct {
 
@@ -49,4 +63,14 @@ type SwitchoverDataGuardAssociationResponse struct {
 
 func (response SwitchoverDataGuardAssociationResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response SwitchoverDataGuardAssociationResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
+}
+
+// GetStatefulEntity implements the OciStatefulResponse interface
+func (response SwitchoverDataGuardAssociationResponse) GetStatefulEntity() common.OciPollable {
+	return response.DataGuardAssociation
 }

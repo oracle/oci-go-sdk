@@ -44,6 +44,11 @@ func (m DrgAttachment) String() string {
 	return common.PointerString(m)
 }
 
+// GetStatefulIndicator implements the OciPollable interface
+func (m DrgAttachment) GetStatefulIndicator() string {
+	return string(m.LifecycleState)
+}
+
 // DrgAttachmentLifecycleStateEnum Enum with underlying type: string
 type DrgAttachmentLifecycleStateEnum string
 

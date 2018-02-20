@@ -30,6 +30,20 @@ func (request CreateLoadBalancerRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request CreateLoadBalancerRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request CreateLoadBalancerRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // CreateLoadBalancerResponse wrapper for the CreateLoadBalancer operation
 type CreateLoadBalancerResponse struct {
 
@@ -46,4 +60,9 @@ type CreateLoadBalancerResponse struct {
 
 func (response CreateLoadBalancerResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response CreateLoadBalancerResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

@@ -24,6 +24,20 @@ func (request DeleteBootVolumeRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request DeleteBootVolumeRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request DeleteBootVolumeRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // DeleteBootVolumeResponse wrapper for the DeleteBootVolume operation
 type DeleteBootVolumeResponse struct {
 
@@ -37,4 +51,9 @@ type DeleteBootVolumeResponse struct {
 
 func (response DeleteBootVolumeResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response DeleteBootVolumeResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

@@ -58,6 +58,20 @@ func (request UploadPartRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request UploadPartRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request UploadPartRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // UploadPartResponse wrapper for the UploadPart operation
 type UploadPartResponse struct {
 
@@ -80,4 +94,9 @@ type UploadPartResponse struct {
 
 func (response UploadPartResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response UploadPartResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

@@ -35,6 +35,20 @@ func (request HeadBucketRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request HeadBucketRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request HeadBucketRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // HeadBucketResponse wrapper for the HeadBucket operation
 type HeadBucketResponse struct {
 
@@ -60,4 +74,9 @@ type HeadBucketResponse struct {
 
 func (response HeadBucketResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response HeadBucketResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }

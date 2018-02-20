@@ -48,6 +48,20 @@ func (request ListCrossConnectsRequest) String() string {
 	return common.PointerString(request)
 }
 
+// GetHttpRequest implements the OciRequest interface
+func (request ListCrossConnectsRequest) GetHttpRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// GetRetryPolicy implements the OciRetryableRequest interface
+// => assembles retry policy based on specified options and default behavior
+func (request ListCrossConnectsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
+	if len(options) == 0 {
+		return common.NoRetryPolicy()
+	}
+	return common.BuildRetryPolicy(options...)
+}
+
 // ListCrossConnectsResponse wrapper for the ListCrossConnects operation
 type ListCrossConnectsResponse struct {
 
@@ -69,6 +83,11 @@ type ListCrossConnectsResponse struct {
 
 func (response ListCrossConnectsResponse) String() string {
 	return common.PointerString(response)
+}
+
+// GetRawResponse implements the OciResponse interface
+func (response ListCrossConnectsResponse) GetRawResponse() *http.Response {
+	return response.RawResponse
 }
 
 // ListCrossConnectsSortByEnum Enum with underlying type: string
