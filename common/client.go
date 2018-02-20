@@ -2,10 +2,8 @@
 package common
 
 import (
-	"bytes"
 	"context"
 	"fmt"
-	"io/ioutil"
 	"math/rand"
 	"net"
 	"net/http"
@@ -35,7 +33,6 @@ const (
 	secondaryConfigDirName        = ".oraclebmc"
 	maxBodyLenForDebug            = 1024 * 1000
 	generatedRetryTokenLength     = 30
-	retryTokenKey                 = "opc-retry-token"
 	absoluteMaximumRequestTimeout = 7 * 24 * time.Hour
 )
 
@@ -211,7 +208,8 @@ func checkForSuccessfulResponse(res *http.Response) error {
 
 }
 
-func generateRetryToken() string {
+// GenerateRetryToken generates a retry token that must be included on any request passed to the Retry method.
+func GenerateRetryToken() string {
 	alphanumericChars := []rune("abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 	retryToken := make([]rune, generatedRetryTokenLength)
 	for i := range retryToken {
@@ -220,34 +218,9 @@ func generateRetryToken() string {
 	return string(retryToken)
 }
 
-func addRetryTokenToRequestIfNeeded(request *http.Request) {
-	// ensure request.Header exists
-	if request.Header == nil {
-		request.Header = http.Header{}
-	}
-
-	if _, present := request.Header[retryTokenKey]; !present {
-		generatedRetryToken := generateRetryToken()
-		request.Header[retryTokenKey] = []string{generatedRetryToken}
-	}
-}
-
-// getRetryPolicy assembles a retry policy using the specified retry policy options, and information about the request.
-// The retry policy options decorate the default retry policy for any given request (defined by services). If no options
-// are present, then the default behavior will be No Retry. This behavior will change in the future, as teams evolve
-// the default retry behavior per supported operation. If any options are present, then the default behavior is assumed
-// to be an Exponential Backoff retry policy, and the specified options override that policy.
-func getRetryPolicy(request *http.Request, options ...Option) RetryPolicy {
-	if len(options) == 0 {
-		return NoRetryPolicy()
-	}
-
-	return BuildRetryPolicy(options...)
-}
-
 // GetMaximumTimeout ensures that the policy MaximumTimeout (which can be set to 'unlimited') is still bounded by
 // the OCI absolute maximum (currently set to 1 week).
-func GetMaximumTimeout(policy RetryPolicy) time.Duration {
+func GetMaximumTimeout(policy *RetryPolicy) time.Duration {
 	// even if a user says poll forever by specifying zero for the maximum timeout, we're going to stop them
 	if policy.MaximumTimeout == 0 {
 		return absoluteMaximumRequestTimeout
@@ -266,35 +239,32 @@ func (deadlineExceededByBackoffError) Error() string {
 // we cannot succeed based on the configured retry policy.
 var DeadlineExceededByBackoff error = deadlineExceededByBackoffError{}
 
-//Call executes the http request with the given context according to the specified retry policy (if present)
-func (client BaseClient) Call(ctx context.Context, request *http.Request, options ...Option) (*http.Response, error) {
-	if len(options) == 0 {
-		return client.doRequest(ctx, request)
-	}
+// OciRequest is any request made to an OCI service.
+type OciRequest interface {
+	// GetHttpRequest assembles an HTTP request.
+	GetHttpRequest(method, path string) (http.Request, error)
+}
 
-	// the request Body is closed by the underlying http.Transport
-	// => store off the request body as a byte array for reconstituting the body on each retry attempt
-	requestBodyAsByteSlice := []byte{}
-	if request.Body != nil {
-		var err error
-		requestBodyAsByteSlice, err = ioutil.ReadAll(request.Body)
-		if err != nil {
-			// error reading the body of the request
-			return nil, err
-		}
-	}
+// OciResponse is the response from issuing a request to an OCI service.
+type OciResponse interface {
+	// GetRawResponse returns the raw HTTP response.
+	GetRawResponse() *http.Response
+}
 
-	policy := getRetryPolicy(request, options...)
-	addRetryTokenToRequestIfNeeded(request)
-	deadlineContext, deadlineCancel := context.WithTimeout(ctx, GetMaximumTimeout(policy))
+// OciOperation is the generalization of a request-response cycle undergone by an OCI service.
+type OciOperation func(context.Context, OciRequest) (OciResponse, error)
+
+func (client BaseClient) Retry(ctx context.Context, request OciRetryableRequest, operation OciOperation, options ...RetryPolicyOption) (OciResponse, error) {
+	// Each operation defines the default retry behavior for a given request
+	// Users can modify the default retry behavior by passing through a variadic number of retry policy options
+	policy := request.GetRetryPolicy(options...)
+
+	deadlineContext, deadlineCancel := context.WithTimeout(ctx, GetMaximumTimeout(&policy))
 	defer deadlineCancel()
 
 	for currentOperationAttempt := uint(1); ShouldContinueIssuingRequests(currentOperationAttempt, policy.MaximumNumberAttempts); currentOperationAttempt++ {
-		// reset the request body on each operation attempt
-		request.Body = ioutil.NopCloser(bytes.NewBuffer(requestBodyAsByteSlice))
-
 		Debugln(fmt.Sprintf("operation attempt #%v", currentOperationAttempt))
-		response, err := client.doRequest(deadlineContext, request)
+		response, err := operation(deadlineContext, request)
 
 		select {
 		case <-deadlineContext.Done():
@@ -331,7 +301,7 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request, option
 }
 
 //doRequest executes the http request with the given context
-func (client BaseClient) doRequest(ctx context.Context, request *http.Request) (response *http.Response, err error) {
+func (client BaseClient) Call(ctx context.Context, request *http.Request) (response *http.Response, err error) {
 	Debugln("Atempting to call downstream service")
 	request = request.WithContext(ctx)
 

@@ -1,10 +1,7 @@
 package common
 
 import (
-	"context"
 	"math"
-	"net/http"
-	"reflect"
 	"time"
 )
 
@@ -38,9 +35,15 @@ const (
 	MaximumTimeoutDefault = 20 * time.Minute
 )
 
-// Retrier interface is implemented at the HTTP request level, allowing for operation-level retry policies.
-type Retrier interface {
-	Call(ctx context.Context, request *http.Request, options ...Option) (response *http.Response, err error)
+// OciRetryableRequest represents a request that can be reissued according to the specified policy.
+type OciRetryableRequest interface {
+	// Any retryable request must have an underlying request
+	OciRequest
+
+	// Each operation specifies default retry behavior. By passing no arguments to this method, the default retry
+	// behavior, as determined on a per-operation-basis, will be honored. Variadic retry policy option arguments
+	// passed to this method will override the default behavior.
+	GetRetryPolicy(options ...RetryPolicyOption) RetryPolicy
 }
 
 // RetryPolicy is the class that holds all relevant information for retrying operations.
@@ -55,71 +58,52 @@ type RetryPolicy struct {
 	// ShouldRetryOperation inspects the http response, error, and operation attempt number, and
 	// - returns true if we should retry the operation
 	// - returns false otherwise
-	ShouldRetryOperation func(*http.Response, error, uint) bool
+	ShouldRetryOperation func(OciResponse, error, uint) bool
 
 	// GetNextDuration computes the duration to pause between operation retries.
-	GetNextDuration func(attempts uint) time.Duration
+	GetNextDuration func(uint) time.Duration
 }
 
-const (
-	retryPolicyOptionIdentifier            string = "RETRY"
-	retryPolicyOptionMaximumNumberAttempts string = "MaximumNumberAttempts"
-	retryPolicyOptionMaximumTimeout        string = "MaximumTimeout"
-	retryPolicyOptionShouldRetryOperation  string = "ShouldRetryOperation"
-	retryPolicyOptionGetNextDuration       string = "GetNextDuration"
-)
-
-type requestOption struct {
-	optionType  string
-	optionName  string
-	optionValue interface{}
-}
-
-// Option exposes a function that allows us to set options associated with the request.
-// Currently the only supported functionality surrounds Retry Policy options.
-type Option func(options *[]requestOption)
+// RetryPolicyOption exposes a function that allows us to set values on the underlying RetryPolicy.
+type RetryPolicyOption func(policy *RetryPolicy)
 
 // MaximumNumberAttempts sets the value for the corresponding retry policy option.
-func MaximumNumberAttempts(value uint) Option {
-	return func(options *[]requestOption) {
-		option := requestOption{
-			optionType:  retryPolicyOptionIdentifier,
-			optionName:  retryPolicyOptionMaximumNumberAttempts,
-			optionValue: value,
+func MaximumNumberAttempts(value uint) RetryPolicyOption {
+	return func(policy *RetryPolicy) {
+		validated := value
+
+		if value < MaximumNumAttemptsMinimum {
+			validated = MaximumNumAttemptsMinimum
 		}
-		*options = append(*options, option)
+
+		policy.MaximumNumberAttempts = validated
 	}
 }
 
 // MaximumTimeout sets the value for the corresponding retry policy option.
-func MaximumTimeout(value time.Duration) Option {
-	return func(options *[]requestOption) {
+func MaximumTimeout(value time.Duration) RetryPolicyOption {
+	return func(policy *RetryPolicy) {
 		validated := value
 
 		if value < MaximumTimeoutMinimum {
 			validated = MaximumTimeoutMinimum
 		}
 
-		option := requestOption{
-			optionType:  retryPolicyOptionIdentifier,
-			optionName:  retryPolicyOptionMaximumTimeout,
-			optionValue: validated,
-		}
-		*options = append(*options, option)
+		policy.MaximumTimeout = validated
 	}
 }
 
 // DefaultShouldRetryOperation is the default function for ShouldRetryOperation, if one is not specified.
-func DefaultShouldRetryOperation(response *http.Response, e error, currentAttempt uint) bool {
+func DefaultShouldRetryOperation(response OciResponse, e error, currentAttempt uint) bool {
 	if e != nil {
 		return true
 	}
 
-	if response.StatusCode < 405 {
-		return false
+	if response.GetRawResponse().StatusCode > 404 {
+		return true
 	}
 
-	return true
+	return false
 }
 
 // DefaultGetNextDuration is the default function for GetNextDuration, if one is not specified.
@@ -129,51 +113,28 @@ func DefaultGetNextDuration(attempts uint) time.Duration {
 }
 
 // ShouldRetryOperation sets the value for the corresponding retry policy option.
-func ShouldRetryOperation(value func(*http.Response, error, uint) bool) Option {
-	return func(options *[]requestOption) {
-		if value == nil {
-			value = DefaultShouldRetryOperation
-		}
-
-		option := requestOption{
-			optionType:  retryPolicyOptionIdentifier,
-			optionName:  retryPolicyOptionShouldRetryOperation,
-			optionValue: value,
-		}
-		*options = append(*options, option)
+func ShouldRetryOperation(value func(OciResponse, error, uint) bool) RetryPolicyOption {
+	if value == nil {
+		value = DefaultShouldRetryOperation
+	}
+	return func(policy *RetryPolicy) {
+		policy.ShouldRetryOperation = value
 	}
 }
 
 // GetNextDuration sets the value for the corresponding retry policy option.
-func GetNextDuration(value func(attempts uint) time.Duration) Option {
-	return func(options *[]requestOption) {
-		if value == nil {
-			value = DefaultGetNextDuration
-		}
-
-		option := requestOption{
-			optionType:  retryPolicyOptionIdentifier,
-			optionName:  retryPolicyOptionGetNextDuration,
-			optionValue: value,
-		}
-		*options = append(*options, option)
+func GetNextDuration(value func(attempts uint) time.Duration) RetryPolicyOption {
+	if value == nil {
+		value = DefaultGetNextDuration
 	}
-}
-
-func updateRetryPolicyWithOptions(validated []requestOption, policy *RetryPolicy) {
-	for _, option := range validated {
-		if option.optionType == retryPolicyOptionIdentifier {
-			policyField := reflect.ValueOf(policy).Elem().FieldByName(option.optionName)
-			if policyField.IsValid() && policyField.CanSet() {
-				policyField.Set(reflect.ValueOf(option.optionValue))
-			}
-		}
+	return func(policy *RetryPolicy) {
+		policy.GetNextDuration = value
 	}
 }
 
 // BuildRetryPolicy accepts a variadic number of retry policy option values and assembles a retry policy. If any
 // policy option is not specified, the default is used.
-func BuildRetryPolicy(options ...Option) RetryPolicy {
+func BuildRetryPolicy(options ...RetryPolicyOption) RetryPolicy {
 	policy := RetryPolicy{
 		MaximumTimeout:        MaximumTimeoutDefault,
 		MaximumNumberAttempts: MaximumNumAttemptsDefault,
@@ -181,12 +142,9 @@ func BuildRetryPolicy(options ...Option) RetryPolicy {
 		GetNextDuration:       DefaultGetNextDuration,
 	}
 
-	validatedOptions := []requestOption{}
 	for _, option := range options {
-		option(&validatedOptions)
+		option(&policy)
 	}
-
-	updateRetryPolicyWithOptions(validatedOptions, &policy)
 
 	return policy
 }
@@ -196,6 +154,6 @@ func BuildRetryPolicy(options ...Option) RetryPolicy {
 func NoRetryPolicy() RetryPolicy {
 	return BuildRetryPolicy(
 		MaximumNumberAttempts(1),
-		ShouldRetryOperation(func(*http.Response, error, uint) bool { return false }),
+		ShouldRetryOperation(func(OciResponse, error, uint) bool { return false }),
 	)
 }
