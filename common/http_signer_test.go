@@ -80,6 +80,26 @@ func (kp testKeyProvider) KeyID() (string, error) {
 	return keyID, nil
 }
 
+func TestOCIRequestSigner_HTTPRequest(t *testing.T) {
+	s := ociRequestSigner{
+		KeyProvider:    testKeyProvider{},
+		GenericHeaders: defaultGenericHeaders,
+		ShouldHashBody: defaultBodyHashPredicate,
+		BodyHeaders:    defaultBodyHeaders,
+	}
+
+	r, err := http.NewRequest("GET", "http://localhost:7000/api", nil)
+	assert.NoError(t, err)
+
+	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
+
+	err = s.Sign(r)
+	assert.NoError(t, err)
+
+	signature := s.getSigningString(r)
+	assert.Equal(t, "date: Thu, 05 Jan 2014 21:31:40 GMT\n(request-target): get /api\nhost: localhost:7000", signature)
+}
+
 func TestOCIRequestSigner_SigningString(t *testing.T) {
 	s := ociRequestSigner{
 		KeyProvider:    testKeyProvider{},
