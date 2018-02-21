@@ -45,6 +45,12 @@ func testClientWithRegion(r Region) BaseClient {
 	return c
 }
 
+type testOboProvider struct{}
+
+func (o testOboProvider) OboToken() (string, error) {
+	return "someOboToken", nil
+}
+
 func TestClient_prepareRequestDefScheme(t *testing.T) {
 	host := "somehost:9000"
 	basePath := "basePath"
@@ -171,6 +177,7 @@ func TestBaseClient_Call(t *testing.T) {
 		Customcall: func(r *http.Request) (*http.Response, error) {
 			assert.Equal(t, "somehost:9000", r.URL.Host)
 			assert.Equal(t, defaultUserAgent(), r.UserAgent())
+			assert.Equal(t, "", r.Header.Get("Opc-Obo-Token"))
 			assert.Contains(t, r.Header.Get("Authorization"), "signature")
 			assert.Contains(t, r.URL.Path, "basePath/somepath")
 			bodyBuffer := bytes.NewBufferString(body)
@@ -195,6 +202,66 @@ func TestBaseClient_Call(t *testing.T) {
 
 }
 
+func TestBaseClient_CallWithObo(t *testing.T) {
+	response := http.Response{
+		Header:     http.Header{},
+		StatusCode: 200,
+	}
+	body := `{"key" : "RegionFRA","name" : "eu-frankfurt-1"}`
+
+	dataTpl := `[DEFAULT]
+tenancy=sometenancy
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+region=us-ashburn-1
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	configurationProvider, errConf := ConfigurationProviderFromFile(tmpConfFile, "")
+	assert.NoError(t, errConf)
+
+	c, err := NewClientWithConfigAndObo(configurationProvider, testOboProvider{})
+	assert.NotNil(t, c)
+	assert.NoError(t, err)
+
+	host := "http://somehost:9000"
+	basePath := "basePath/"
+	restPath := "/somepath"
+	caller := fakeCaller{
+		Customcall: func(r *http.Request) (*http.Response, error) {
+			assert.Equal(t, "somehost:9000", r.URL.Host)
+			assert.Equal(t, defaultUserAgent(), r.UserAgent())
+			assert.Equal(t, "someOboToken", r.Header.Get("Opc-Obo-Token"))
+			assert.Contains(t, r.Header.Get("Authorization"), "signature")
+			assert.Contains(t, r.URL.Path, "basePath/somepath")
+			bodyBuffer := bytes.NewBufferString(body)
+			response.Body = ioutil.NopCloser(bodyBuffer)
+			return &response, nil
+		},
+	}
+
+	c.Host = host
+	c.BasePath = basePath
+	c.HTTPClient = caller
+
+	request := http.Request{}
+	request.URL = &url.URL{Path: restPath}
+	err = c.Call(context.Background(), &request, CallConfig{
+		ResponseCallback: func(retRes *http.Response, e error) error {
+			assert.Equal(t, &response, retRes)
+			return e
+		},
+	})
+	assert.NoError(t, err)
+}
+
 func TestBaseClient_CallWithInterceptor(t *testing.T) {
 	response := http.Response{
 		Header:     http.Header{},
@@ -213,6 +280,7 @@ func TestBaseClient_CallWithInterceptor(t *testing.T) {
 		Customcall: func(r *http.Request) (*http.Response, error) {
 			assert.Equal(t, "somehost:9000", r.URL.Host)
 			assert.Equal(t, defaultUserAgent(), r.UserAgent())
+			assert.Equal(t, "", r.Header.Get("Opc-Obo-Token"))
 			assert.Contains(t, r.Header.Get("Authorization"), "signature")
 			assert.Contains(t, r.URL.Path, "basePath/somepath")
 			assert.Equal(t, "CustomValue", r.Header.Get("Custom-Header"))
@@ -252,6 +320,7 @@ func TestBaseClient_CallError(t *testing.T) {
 		Customcall: func(r *http.Request) (*http.Response, error) {
 			assert.Equal(t, "somehost:9000", r.URL.Host)
 			assert.Equal(t, defaultUserAgent(), r.UserAgent())
+			assert.Equal(t, "", r.Header.Get("Opc-Obo-Token"))
 			assert.Contains(t, r.Header.Get("Authorization"), "signature")
 			assert.Contains(t, r.URL.Path, "basePath/somepath")
 			bodyBuffer := bytes.NewBufferString(body)

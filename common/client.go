@@ -55,6 +55,9 @@ type BaseClient struct {
 	//Signer performs auth operation
 	Signer HTTPRequestSigner
 
+	//Provides an obo token
+	Obo OboTokenProvider
+
 	//A request interceptor can be used to customize the request before signing and dispatching
 	Interceptor RequestInterceptor
 
@@ -83,11 +86,12 @@ func getNextSeed() int64 {
 	return newCounterValue + time.Now().UnixNano()
 }
 
-func newBaseClient(signer HTTPRequestSigner, dispatcher HTTPRequestDispatcher) BaseClient {
+func newBaseClient(signer HTTPRequestSigner, oboTokenProvider OboTokenProvider, dispatcher HTTPRequestDispatcher) BaseClient {
 	return BaseClient{
 		UserAgent:   defaultUserAgent(),
 		Interceptor: nil,
 		Signer:      signer,
+		Obo:         oboTokenProvider,
 		HTTPClient:  dispatcher,
 		generator:   rand.New(rand.NewSource(getNextSeed())),
 	}
@@ -106,29 +110,37 @@ func defaultHTTPDispatcher() http.Client {
 	return httpClient
 }
 
-func defaultBaseClient(provider KeyProvider) BaseClient {
+func defaultBaseClient(provider KeyProvider, oboTokenProvider OboTokenProvider) BaseClient {
 	dispatcher := defaultHTTPDispatcher()
 	signer := defaultRequestSigner(provider)
-	return newBaseClient(signer, &dispatcher)
+	return newBaseClient(signer, oboTokenProvider, &dispatcher)
 }
 
 //DefaultBaseClientWithSigner creates a default base client with a given signer
 func DefaultBaseClientWithSigner(signer HTTPRequestSigner) BaseClient {
 	dispatcher := defaultHTTPDispatcher()
-	return newBaseClient(signer, &dispatcher)
+	return newBaseClient(signer, NewEmptyOboTokenProvider(), &dispatcher)
 }
 
 // NewClientWithConfig Create a new client with a configuration provider, the configuration provider
 // will be used for the default signer as well as reading the region
 // This function does not check for valid regions to implement forward compatibility
 func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClient, err error) {
+	client, err = NewClientWithConfigAndObo(configProvider, NewEmptyOboTokenProvider())
+	return
+}
+
+// NewClientWithConfigAndObo Create a new client with a configuration provider and obo token provider,
+// The configuration provider will be used for the default signer as well as reading the region
+// This function does not check for valid regions to implement forward compatibility
+func NewClientWithConfigAndObo(configProvider ConfigurationProvider, oboProvider OboTokenProvider) (client BaseClient, err error) {
 	var ok bool
 	if ok, err = IsConfigurationProviderValid(configProvider); !ok {
 		err = fmt.Errorf("can not create client, bad configuration: %s", err.Error())
 		return
 	}
 
-	client = defaultBaseClient(configProvider)
+	client = defaultBaseClient(configProvider, oboProvider)
 	return
 }
 
@@ -353,6 +365,14 @@ func (client BaseClient) doRequest(ctx context.Context, request *http.Request) (
 	err = client.prepareRequest(request)
 	if err != nil {
 		return
+	}
+
+	oboToken, err := client.Obo.OboToken()
+	if err != nil {
+		return
+	}
+	if oboToken != "" {
+		request.Header.Set("Opc-Obo-Token", oboToken)
 	}
 
 	//Intercept

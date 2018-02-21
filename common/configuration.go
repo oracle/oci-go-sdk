@@ -20,6 +20,11 @@ type ConfigurationProvider interface {
 	Region() (string, error)
 }
 
+//OboTokenProvider interface that wraps information about auth tokens
+type OboTokenProvider interface {
+	OboToken() (string, error)
+}
+
 // IsConfigurationProviderValid Tests all parts of the configuration provider do not return an error
 func IsConfigurationProviderValid(conf ConfigurationProvider) (ok bool, err error) {
 	baseFn := []func() (string, error){conf.TenancyOCID, conf.UserOCID, conf.KeyFingerprint, conf.Region, conf.KeyID}
@@ -37,6 +42,19 @@ func IsConfigurationProviderValid(conf ConfigurationProvider) (ok bool, err erro
 		return
 	}
 	return true, nil
+}
+
+//EmptyOboTokenProvider always provides an empty obo token
+type emptyOboTokenProvider struct{}
+
+//OboToken provides the obo token
+func (provider emptyOboTokenProvider) OboToken() (string, error) {
+	return "", nil
+}
+
+// NewEmptyOboTokenProvider will create a provider that provides an empty obo token
+func NewEmptyOboTokenProvider() OboTokenProvider {
+	return emptyOboTokenProvider{}
 }
 
 // rawConfigurationProvider allows a user to simply construct a configuration provider from raw values.
@@ -91,6 +109,20 @@ func (p rawConfigurationProvider) KeyFingerprint() (string, error) {
 
 func (p rawConfigurationProvider) Region() (string, error) {
 	return p.region, nil
+}
+
+// rawOboTokenProvider allows a user to simply construct an obo provider from a raw value.
+type rawOboTokenProvider struct {
+	oboToken string
+}
+
+// NewRawOboTokenProvider will create a rawConfigurationProvider
+func NewRawOboTokenProvider(oboToken string) OboTokenProvider {
+	return rawOboTokenProvider{oboToken}
+}
+
+func (p rawOboTokenProvider) OboToken() (oboToken string, err error) {
+	return p.oboToken, nil
 }
 
 // environmentConfigurationProvider reads configuration from environment variables
@@ -184,6 +216,15 @@ func (p environmentConfigurationProvider) Region() (value string, err error) {
 	return
 }
 
+func (p environmentConfigurationProvider) OboToken() (value string, err error) {
+	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "obo_token")
+	var ok bool
+	if value, ok = os.LookupEnv(environmentVariable); !ok {
+		value = "" // If no obo token is set in the environment then use the empty string
+	}
+	return
+}
+
 // fileConfigurationProvider. reads configuration information from a file
 type fileConfigurationProvider struct { // TODO: Support Instance Principal
 	//The path to the configuration file
@@ -226,8 +267,8 @@ func ConfigurationProviderFromFileWithProfile(configFilePath, profile, privateKe
 }
 
 type configFileInfo struct {
-	UserOcid, Fingerprint, KeyFilePath, TenancyOcid, Region string
-	PresentConfiguration                                    byte
+	UserOcid, Fingerprint, KeyFilePath, TenancyOcid, Region, OboToken string
+	PresentConfiguration                                              byte
 }
 
 const (
@@ -236,6 +277,7 @@ const (
 	hasFingerprint
 	hasRegion
 	hasKeyFile
+	hasOboToken
 	none
 )
 
@@ -291,6 +333,9 @@ func parseConfigAtLine(start int, content []string) (info *configFileInfo, err e
 		case "region":
 			configurationPresent = configurationPresent | hasRegion
 			info.Region = value
+		case "obo_token":
+			configurationPresent = configurationPresent | hasOboToken
+			info.OboToken = value
 		}
 	}
 	info.PresentConfiguration = configurationPresent
@@ -411,6 +456,21 @@ func (p fileConfigurationProvider) Region() (value string, err error) {
 	return
 }
 
+func (p fileConfigurationProvider) OboToken() (value string, err error) {
+	info, err := p.readAndParseConfigFile()
+	if err != nil {
+		err = fmt.Errorf("can not read region configuration due to: %s", err.Error())
+		return
+	}
+
+	value, err = presentOrError(info.OboToken, hasOboToken, info.PresentConfiguration, "obo_token")
+	if err != nil {
+		value = ""
+		err = nil
+	}
+	return
+}
+
 // A configuration provider that look for information in  multiple configuration providers
 type composingConfigurationProvider struct {
 	Providers []ConfigurationProvider
@@ -483,4 +543,29 @@ func (c composingConfigurationProvider) PrivateRSAKey() (*rsa.PrivateKey, error)
 		}
 	}
 	return nil, fmt.Errorf("did not find a proper configuration for private key")
+}
+
+type composingOboTokenProvider struct {
+	Providers []OboTokenProvider
+}
+
+// ComposingOboTokenProvider creates a composing obo token provider with the given slice of obo token providers
+// A composing provider will return the first provider that has the required property
+// if no provider has the property it will return an error.
+// The empty string is considered a valid token if no error is returned.
+func ComposingOboTokenProvider(providers []OboTokenProvider) (OboTokenProvider, error) {
+	if len(providers) == 0 {
+		return nil, fmt.Errorf("providers can not be an empty slice")
+	}
+	return composingOboTokenProvider{Providers: providers}, nil
+}
+
+func (c composingOboTokenProvider) OboToken() (string, error) {
+	for _, p := range c.Providers {
+		val, err := p.OboToken()
+		if err == nil {
+			return val, nil
+		}
+	}
+	return "", fmt.Errorf("did not find a proper configuration for obo token")
 }
