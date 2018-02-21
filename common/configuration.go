@@ -20,7 +20,8 @@ type ConfigurationProvider interface {
 	Region() (string, error)
 }
 
-//OboTokenProvider interface that wraps information about auth tokens
+//OboTokenProvider interface that wraps information about auth tokens so the sdk client can make calls
+// on behalf of a different authorized user
 type OboTokenProvider interface {
 	OboToken() (string, error)
 }
@@ -121,7 +122,7 @@ func NewRawOboTokenProvider(oboToken string) OboTokenProvider {
 	return rawOboTokenProvider{oboToken}
 }
 
-func (p rawOboTokenProvider) OboToken() (oboToken string, err error) {
+func (p rawOboTokenProvider) OboToken() (string, error) {
 	return p.oboToken, nil
 }
 
@@ -216,13 +217,10 @@ func (p environmentConfigurationProvider) Region() (value string, err error) {
 	return
 }
 
-func (p environmentConfigurationProvider) OboToken() (value string, err error) {
+func (p environmentConfigurationProvider) OboToken() (string, error) {
 	environmentVariable := fmt.Sprintf("%s_%s", p.EnvironmentVariablePrefix, "obo_token")
-	var ok bool
-	if value, ok = os.LookupEnv(environmentVariable); !ok {
-		value = "" // If no obo token is set in the environment then use the empty string
-	}
-	return
+	value, _ := os.LookupEnv(environmentVariable)
+	return value, nil
 }
 
 // fileConfigurationProvider. reads configuration information from a file

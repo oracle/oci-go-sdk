@@ -55,7 +55,7 @@ type BaseClient struct {
 	//Signer performs auth operation
 	Signer HTTPRequestSigner
 
-	//Provides an obo token
+	//Provides an on-behalf-of token
 	Obo OboTokenProvider
 
 	//A request interceptor can be used to customize the request before signing and dispatching
