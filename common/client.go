@@ -275,6 +275,11 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request, config
 		}
 	}
 
+	err := client.prepareRequest(request)
+	if err != nil {
+		return err
+	}
+
 	if len(config.RetryPolicyOptions) == 0 {
 		response, err := client.doRequest(ctx, request)
 		if !config.KeepResponseBodyOpen {
@@ -349,11 +354,6 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request, config
 func (client BaseClient) doRequest(ctx context.Context, request *http.Request) (response *http.Response, err error) {
 	Debugln("Atempting to call downstream service")
 	request = request.WithContext(ctx)
-
-	err = client.prepareRequest(request)
-	if err != nil {
-		return
-	}
 
 	//Intercept
 	err = client.intercept(request)
