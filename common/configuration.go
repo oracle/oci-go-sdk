@@ -20,7 +20,7 @@ type ConfigurationProvider interface {
 	Region() (string, error)
 }
 
-//OboTokenProvider interface that wraps information about auth tokens so the sdk client can make calls
+// OboTokenProvider interface that wraps information about auth tokens so the sdk client can make calls
 // on behalf of a different authorized user
 type OboTokenProvider interface {
 	OboToken() (string, error)
@@ -541,29 +541,4 @@ func (c composingConfigurationProvider) PrivateRSAKey() (*rsa.PrivateKey, error)
 		}
 	}
 	return nil, fmt.Errorf("did not find a proper configuration for private key")
-}
-
-type composingOboTokenProvider struct {
-	Providers []OboTokenProvider
-}
-
-// ComposingOboTokenProvider creates a composing obo token provider with the given slice of obo token providers
-// A composing provider will return the first provider that has the required property
-// if no provider has the property it will return an error.
-// The empty string is considered a valid token if no error is returned.
-func ComposingOboTokenProvider(providers []OboTokenProvider) (OboTokenProvider, error) {
-	if len(providers) == 0 {
-		return nil, fmt.Errorf("providers can not be an empty slice")
-	}
-	return composingOboTokenProvider{Providers: providers}, nil
-}
-
-func (c composingOboTokenProvider) OboToken() (string, error) {
-	for _, p := range c.Providers {
-		val, err := p.OboToken()
-		if err == nil {
-			return val, nil
-		}
-	}
-	return "", fmt.Errorf("did not find a proper configuration for obo token")
 }

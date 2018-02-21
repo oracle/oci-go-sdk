@@ -227,7 +227,8 @@ region=us-ashburn-1
 	configurationProvider, errConf := ConfigurationProviderFromFile(tmpConfFile, "")
 	assert.NoError(t, errConf)
 
-	c, err := NewClientWithConfigAndObo(configurationProvider, testOboProvider{})
+	c, err := NewClientWithConfig(configurationProvider)
+	c.Obo = testOboProvider{}
 	assert.NotNil(t, c)
 	assert.NoError(t, err)
 
