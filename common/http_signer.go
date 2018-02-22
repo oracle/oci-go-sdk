@@ -95,6 +95,9 @@ func (signer ociRequestSigner) getSigningString(request *http.Request) string {
 			value = getRequestTarget(request)
 		case "host":
 			value = request.URL.Host
+			if len(value) == 0 {
+				value = request.Host
+			}
 		default:
 			value = request.Header.Get(part)
 		}
