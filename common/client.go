@@ -87,6 +87,9 @@ type BaseClient struct {
 	//Signer performs auth operation
 	Signer HTTPRequestSigner
 
+	//Provides an on-behalf-of token
+	Obo OboTokenProvider
+
 	//A request interceptor can be used to customize the request before signing and dispatching
 	Interceptor RequestInterceptor
 
@@ -118,6 +121,7 @@ func newBaseClient(signer HTTPRequestSigner, dispatcher HTTPRequestDispatcher) B
 		UserAgent:   defaultUserAgent(),
 		Interceptor: nil,
 		Signer:      signer,
+		Obo:         NewEmptyOboTokenProvider(),
 		HTTPClient:  dispatcher,
 	}
 }
@@ -265,6 +269,15 @@ func (client BaseClient) Call(ctx context.Context, request *http.Request) (respo
 	err = client.prepareRequest(request)
 	if err != nil {
 		return
+	}
+
+	//Fetch an obo token from the provider, and if one is returned put it into the request headers
+	oboToken, err := client.Obo.OboToken()
+	if err != nil {
+		return
+	}
+	if oboToken != "" {
+		request.Header.Set("Opc-Obo-Token", oboToken)
 	}
 
 	//Intercept
