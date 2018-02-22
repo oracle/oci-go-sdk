@@ -50,7 +50,7 @@ var (
 	}
 )
 
-// DefaultRequestSinger creates a signer with default parameters.
+// DefaultRequestSigner creates a signer with default parameters.
 func DefaultRequestSigner(provider KeyProvider) HTTPRequestSigner {
 	return RequestSigner(provider, defaultGenericHeaders, defaultBodyHeaders)
 }
