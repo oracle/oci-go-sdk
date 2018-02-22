@@ -106,24 +106,20 @@ type CreateIdentityProviderDetailsProductTypeEnum string
 
 // Set of constants representing the allowable values for CreateIdentityProviderDetailsProductType
 const (
-	CreateIdentityProviderDetailsProductTypeIdcs    CreateIdentityProviderDetailsProductTypeEnum = "IDCS"
-	CreateIdentityProviderDetailsProductTypeAdfs    CreateIdentityProviderDetailsProductTypeEnum = "ADFS"
-	CreateIdentityProviderDetailsProductTypeUnknown CreateIdentityProviderDetailsProductTypeEnum = "UNKNOWN"
+	CreateIdentityProviderDetailsProductTypeIdcs CreateIdentityProviderDetailsProductTypeEnum = "IDCS"
+	CreateIdentityProviderDetailsProductTypeAdfs CreateIdentityProviderDetailsProductTypeEnum = "ADFS"
 )
 
 var mappingCreateIdentityProviderDetailsProductType = map[string]CreateIdentityProviderDetailsProductTypeEnum{
-	"IDCS":    CreateIdentityProviderDetailsProductTypeIdcs,
-	"ADFS":    CreateIdentityProviderDetailsProductTypeAdfs,
-	"UNKNOWN": CreateIdentityProviderDetailsProductTypeUnknown,
+	"IDCS": CreateIdentityProviderDetailsProductTypeIdcs,
+	"ADFS": CreateIdentityProviderDetailsProductTypeAdfs,
 }
 
 // GetCreateIdentityProviderDetailsProductTypeEnumValues Enumerates the set of values for CreateIdentityProviderDetailsProductType
 func GetCreateIdentityProviderDetailsProductTypeEnumValues() []CreateIdentityProviderDetailsProductTypeEnum {
 	values := make([]CreateIdentityProviderDetailsProductTypeEnum, 0)
 	for _, v := range mappingCreateIdentityProviderDetailsProductType {
-		if v != CreateIdentityProviderDetailsProductTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

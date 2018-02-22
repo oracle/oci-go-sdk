@@ -58,7 +58,6 @@ const (
 	InternetGatewayLifecycleStateAvailable    InternetGatewayLifecycleStateEnum = "AVAILABLE"
 	InternetGatewayLifecycleStateTerminating  InternetGatewayLifecycleStateEnum = "TERMINATING"
 	InternetGatewayLifecycleStateTerminated   InternetGatewayLifecycleStateEnum = "TERMINATED"
-	InternetGatewayLifecycleStateUnknown      InternetGatewayLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingInternetGatewayLifecycleState = map[string]InternetGatewayLifecycleStateEnum{
@@ -66,16 +65,13 @@ var mappingInternetGatewayLifecycleState = map[string]InternetGatewayLifecycleSt
 	"AVAILABLE":    InternetGatewayLifecycleStateAvailable,
 	"TERMINATING":  InternetGatewayLifecycleStateTerminating,
 	"TERMINATED":   InternetGatewayLifecycleStateTerminated,
-	"UNKNOWN":      InternetGatewayLifecycleStateUnknown,
 }
 
 // GetInternetGatewayLifecycleStateEnumValues Enumerates the set of values for InternetGatewayLifecycleState
 func GetInternetGatewayLifecycleStateEnumValues() []InternetGatewayLifecycleStateEnum {
 	values := make([]InternetGatewayLifecycleStateEnum, 0)
 	for _, v := range mappingInternetGatewayLifecycleState {
-		if v != InternetGatewayLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

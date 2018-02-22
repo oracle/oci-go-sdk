@@ -49,7 +49,6 @@ const (
 	PreauthenticatedRequestSummaryAccessTypeObjectwrite     PreauthenticatedRequestSummaryAccessTypeEnum = "ObjectWrite"
 	PreauthenticatedRequestSummaryAccessTypeObjectreadwrite PreauthenticatedRequestSummaryAccessTypeEnum = "ObjectReadWrite"
 	PreauthenticatedRequestSummaryAccessTypeAnyobjectwrite  PreauthenticatedRequestSummaryAccessTypeEnum = "AnyObjectWrite"
-	PreauthenticatedRequestSummaryAccessTypeUnknown         PreauthenticatedRequestSummaryAccessTypeEnum = "UNKNOWN"
 )
 
 var mappingPreauthenticatedRequestSummaryAccessType = map[string]PreauthenticatedRequestSummaryAccessTypeEnum{
@@ -57,16 +56,13 @@ var mappingPreauthenticatedRequestSummaryAccessType = map[string]Preauthenticate
 	"ObjectWrite":     PreauthenticatedRequestSummaryAccessTypeObjectwrite,
 	"ObjectReadWrite": PreauthenticatedRequestSummaryAccessTypeObjectreadwrite,
 	"AnyObjectWrite":  PreauthenticatedRequestSummaryAccessTypeAnyobjectwrite,
-	"UNKNOWN":         PreauthenticatedRequestSummaryAccessTypeUnknown,
 }
 
 // GetPreauthenticatedRequestSummaryAccessTypeEnumValues Enumerates the set of values for PreauthenticatedRequestSummaryAccessType
 func GetPreauthenticatedRequestSummaryAccessTypeEnumValues() []PreauthenticatedRequestSummaryAccessTypeEnum {
 	values := make([]PreauthenticatedRequestSummaryAccessTypeEnum, 0)
 	for _, v := range mappingPreauthenticatedRequestSummaryAccessType {
-		if v != PreauthenticatedRequestSummaryAccessTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

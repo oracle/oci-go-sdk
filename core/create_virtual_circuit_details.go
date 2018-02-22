@@ -81,22 +81,18 @@ type CreateVirtualCircuitDetailsTypeEnum string
 const (
 	CreateVirtualCircuitDetailsTypePublic  CreateVirtualCircuitDetailsTypeEnum = "PUBLIC"
 	CreateVirtualCircuitDetailsTypePrivate CreateVirtualCircuitDetailsTypeEnum = "PRIVATE"
-	CreateVirtualCircuitDetailsTypeUnknown CreateVirtualCircuitDetailsTypeEnum = "UNKNOWN"
 )
 
 var mappingCreateVirtualCircuitDetailsType = map[string]CreateVirtualCircuitDetailsTypeEnum{
 	"PUBLIC":  CreateVirtualCircuitDetailsTypePublic,
 	"PRIVATE": CreateVirtualCircuitDetailsTypePrivate,
-	"UNKNOWN": CreateVirtualCircuitDetailsTypeUnknown,
 }
 
 // GetCreateVirtualCircuitDetailsTypeEnumValues Enumerates the set of values for CreateVirtualCircuitDetailsType
 func GetCreateVirtualCircuitDetailsTypeEnumValues() []CreateVirtualCircuitDetailsTypeEnum {
 	values := make([]CreateVirtualCircuitDetailsTypeEnum, 0)
 	for _, v := range mappingCreateVirtualCircuitDetailsType {
-		if v != CreateVirtualCircuitDetailsTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

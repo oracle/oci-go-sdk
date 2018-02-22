@@ -73,7 +73,6 @@ const (
 	VnicAttachmentLifecycleStateAttached  VnicAttachmentLifecycleStateEnum = "ATTACHED"
 	VnicAttachmentLifecycleStateDetaching VnicAttachmentLifecycleStateEnum = "DETACHING"
 	VnicAttachmentLifecycleStateDetached  VnicAttachmentLifecycleStateEnum = "DETACHED"
-	VnicAttachmentLifecycleStateUnknown   VnicAttachmentLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingVnicAttachmentLifecycleState = map[string]VnicAttachmentLifecycleStateEnum{
@@ -81,16 +80,13 @@ var mappingVnicAttachmentLifecycleState = map[string]VnicAttachmentLifecycleStat
 	"ATTACHED":  VnicAttachmentLifecycleStateAttached,
 	"DETACHING": VnicAttachmentLifecycleStateDetaching,
 	"DETACHED":  VnicAttachmentLifecycleStateDetached,
-	"UNKNOWN":   VnicAttachmentLifecycleStateUnknown,
 }
 
 // GetVnicAttachmentLifecycleStateEnumValues Enumerates the set of values for VnicAttachmentLifecycleState
 func GetVnicAttachmentLifecycleStateEnumValues() []VnicAttachmentLifecycleStateEnum {
 	values := make([]VnicAttachmentLifecycleStateEnum, 0)
 	for _, v := range mappingVnicAttachmentLifecycleState {
-		if v != VnicAttachmentLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

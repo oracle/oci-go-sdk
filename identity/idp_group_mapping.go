@@ -64,7 +64,6 @@ const (
 	IdpGroupMappingLifecycleStateInactive IdpGroupMappingLifecycleStateEnum = "INACTIVE"
 	IdpGroupMappingLifecycleStateDeleting IdpGroupMappingLifecycleStateEnum = "DELETING"
 	IdpGroupMappingLifecycleStateDeleted  IdpGroupMappingLifecycleStateEnum = "DELETED"
-	IdpGroupMappingLifecycleStateUnknown  IdpGroupMappingLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingIdpGroupMappingLifecycleState = map[string]IdpGroupMappingLifecycleStateEnum{
@@ -73,16 +72,13 @@ var mappingIdpGroupMappingLifecycleState = map[string]IdpGroupMappingLifecycleSt
 	"INACTIVE": IdpGroupMappingLifecycleStateInactive,
 	"DELETING": IdpGroupMappingLifecycleStateDeleting,
 	"DELETED":  IdpGroupMappingLifecycleStateDeleted,
-	"UNKNOWN":  IdpGroupMappingLifecycleStateUnknown,
 }
 
 // GetIdpGroupMappingLifecycleStateEnumValues Enumerates the set of values for IdpGroupMappingLifecycleState
 func GetIdpGroupMappingLifecycleStateEnumValues() []IdpGroupMappingLifecycleStateEnum {
 	values := make([]IdpGroupMappingLifecycleStateEnum, 0)
 	for _, v := range mappingIdpGroupMappingLifecycleState {
-		if v != IdpGroupMappingLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

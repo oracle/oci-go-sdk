@@ -61,7 +61,6 @@ const (
 	DbHomeLifecycleStateTerminating  DbHomeLifecycleStateEnum = "TERMINATING"
 	DbHomeLifecycleStateTerminated   DbHomeLifecycleStateEnum = "TERMINATED"
 	DbHomeLifecycleStateFailed       DbHomeLifecycleStateEnum = "FAILED"
-	DbHomeLifecycleStateUnknown      DbHomeLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingDbHomeLifecycleState = map[string]DbHomeLifecycleStateEnum{
@@ -71,16 +70,13 @@ var mappingDbHomeLifecycleState = map[string]DbHomeLifecycleStateEnum{
 	"TERMINATING":  DbHomeLifecycleStateTerminating,
 	"TERMINATED":   DbHomeLifecycleStateTerminated,
 	"FAILED":       DbHomeLifecycleStateFailed,
-	"UNKNOWN":      DbHomeLifecycleStateUnknown,
 }
 
 // GetDbHomeLifecycleStateEnumValues Enumerates the set of values for DbHomeLifecycleState
 func GetDbHomeLifecycleStateEnumValues() []DbHomeLifecycleStateEnum {
 	values := make([]DbHomeLifecycleStateEnum, 0)
 	for _, v := range mappingDbHomeLifecycleState {
-		if v != DbHomeLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

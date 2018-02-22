@@ -49,7 +49,6 @@ const (
 	UiPasswordLifecycleStateInactive UiPasswordLifecycleStateEnum = "INACTIVE"
 	UiPasswordLifecycleStateDeleting UiPasswordLifecycleStateEnum = "DELETING"
 	UiPasswordLifecycleStateDeleted  UiPasswordLifecycleStateEnum = "DELETED"
-	UiPasswordLifecycleStateUnknown  UiPasswordLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingUiPasswordLifecycleState = map[string]UiPasswordLifecycleStateEnum{
@@ -58,16 +57,13 @@ var mappingUiPasswordLifecycleState = map[string]UiPasswordLifecycleStateEnum{
 	"INACTIVE": UiPasswordLifecycleStateInactive,
 	"DELETING": UiPasswordLifecycleStateDeleting,
 	"DELETED":  UiPasswordLifecycleStateDeleted,
-	"UNKNOWN":  UiPasswordLifecycleStateUnknown,
 }
 
 // GetUiPasswordLifecycleStateEnumValues Enumerates the set of values for UiPasswordLifecycleState
 func GetUiPasswordLifecycleStateEnumValues() []UiPasswordLifecycleStateEnum {
 	values := make([]UiPasswordLifecycleStateEnum, 0)
 	for _, v := range mappingUiPasswordLifecycleState {
-		if v != UiPasswordLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

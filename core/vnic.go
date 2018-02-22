@@ -99,7 +99,6 @@ const (
 	VnicLifecycleStateAvailable    VnicLifecycleStateEnum = "AVAILABLE"
 	VnicLifecycleStateTerminating  VnicLifecycleStateEnum = "TERMINATING"
 	VnicLifecycleStateTerminated   VnicLifecycleStateEnum = "TERMINATED"
-	VnicLifecycleStateUnknown      VnicLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingVnicLifecycleState = map[string]VnicLifecycleStateEnum{
@@ -107,16 +106,13 @@ var mappingVnicLifecycleState = map[string]VnicLifecycleStateEnum{
 	"AVAILABLE":    VnicLifecycleStateAvailable,
 	"TERMINATING":  VnicLifecycleStateTerminating,
 	"TERMINATED":   VnicLifecycleStateTerminated,
-	"UNKNOWN":      VnicLifecycleStateUnknown,
 }
 
 // GetVnicLifecycleStateEnumValues Enumerates the set of values for VnicLifecycleState
 func GetVnicLifecycleStateEnumValues() []VnicLifecycleStateEnum {
 	values := make([]VnicLifecycleStateEnum, 0)
 	for _, v := range mappingVnicLifecycleState {
-		if v != VnicLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

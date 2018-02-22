@@ -56,7 +56,6 @@ const (
 	ConsoleHistoryLifecycleStateGettingHistory ConsoleHistoryLifecycleStateEnum = "GETTING-HISTORY"
 	ConsoleHistoryLifecycleStateSucceeded      ConsoleHistoryLifecycleStateEnum = "SUCCEEDED"
 	ConsoleHistoryLifecycleStateFailed         ConsoleHistoryLifecycleStateEnum = "FAILED"
-	ConsoleHistoryLifecycleStateUnknown        ConsoleHistoryLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingConsoleHistoryLifecycleState = map[string]ConsoleHistoryLifecycleStateEnum{
@@ -64,16 +63,13 @@ var mappingConsoleHistoryLifecycleState = map[string]ConsoleHistoryLifecycleStat
 	"GETTING-HISTORY": ConsoleHistoryLifecycleStateGettingHistory,
 	"SUCCEEDED":       ConsoleHistoryLifecycleStateSucceeded,
 	"FAILED":          ConsoleHistoryLifecycleStateFailed,
-	"UNKNOWN":         ConsoleHistoryLifecycleStateUnknown,
 }
 
 // GetConsoleHistoryLifecycleStateEnumValues Enumerates the set of values for ConsoleHistoryLifecycleState
 func GetConsoleHistoryLifecycleStateEnumValues() []ConsoleHistoryLifecycleStateEnum {
 	values := make([]ConsoleHistoryLifecycleStateEnum, 0)
 	for _, v := range mappingConsoleHistoryLifecycleState {
-		if v != ConsoleHistoryLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

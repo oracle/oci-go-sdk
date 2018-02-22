@@ -71,7 +71,6 @@ const (
 	UserLifecycleStateInactive UserLifecycleStateEnum = "INACTIVE"
 	UserLifecycleStateDeleting UserLifecycleStateEnum = "DELETING"
 	UserLifecycleStateDeleted  UserLifecycleStateEnum = "DELETED"
-	UserLifecycleStateUnknown  UserLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingUserLifecycleState = map[string]UserLifecycleStateEnum{
@@ -80,16 +79,13 @@ var mappingUserLifecycleState = map[string]UserLifecycleStateEnum{
 	"INACTIVE": UserLifecycleStateInactive,
 	"DELETING": UserLifecycleStateDeleting,
 	"DELETED":  UserLifecycleStateDeleted,
-	"UNKNOWN":  UserLifecycleStateUnknown,
 }
 
 // GetUserLifecycleStateEnumValues Enumerates the set of values for UserLifecycleState
 func GetUserLifecycleStateEnumValues() []UserLifecycleStateEnum {
 	values := make([]UserLifecycleStateEnum, 0)
 	for _, v := range mappingUserLifecycleState {
-		if v != UserLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

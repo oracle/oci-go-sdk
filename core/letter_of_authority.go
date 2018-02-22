@@ -48,24 +48,20 @@ type LetterOfAuthorityCircuitTypeEnum string
 
 // Set of constants representing the allowable values for LetterOfAuthorityCircuitType
 const (
-	LetterOfAuthorityCircuitTypeLc      LetterOfAuthorityCircuitTypeEnum = "Single_mode_LC"
-	LetterOfAuthorityCircuitTypeSc      LetterOfAuthorityCircuitTypeEnum = "Single_mode_SC"
-	LetterOfAuthorityCircuitTypeUnknown LetterOfAuthorityCircuitTypeEnum = "UNKNOWN"
+	LetterOfAuthorityCircuitTypeLc LetterOfAuthorityCircuitTypeEnum = "Single_mode_LC"
+	LetterOfAuthorityCircuitTypeSc LetterOfAuthorityCircuitTypeEnum = "Single_mode_SC"
 )
 
 var mappingLetterOfAuthorityCircuitType = map[string]LetterOfAuthorityCircuitTypeEnum{
 	"Single_mode_LC": LetterOfAuthorityCircuitTypeLc,
 	"Single_mode_SC": LetterOfAuthorityCircuitTypeSc,
-	"UNKNOWN":        LetterOfAuthorityCircuitTypeUnknown,
 }
 
 // GetLetterOfAuthorityCircuitTypeEnumValues Enumerates the set of values for LetterOfAuthorityCircuitType
 func GetLetterOfAuthorityCircuitTypeEnumValues() []LetterOfAuthorityCircuitTypeEnum {
 	values := make([]LetterOfAuthorityCircuitTypeEnum, 0)
 	for _, v := range mappingLetterOfAuthorityCircuitType {
-		if v != LetterOfAuthorityCircuitTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

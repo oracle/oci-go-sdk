@@ -77,22 +77,18 @@ type ListLoadBalancersSortByEnum string
 const (
 	ListLoadBalancersSortByTimecreated ListLoadBalancersSortByEnum = "TIMECREATED"
 	ListLoadBalancersSortByDisplayname ListLoadBalancersSortByEnum = "DISPLAYNAME"
-	ListLoadBalancersSortByUnknown     ListLoadBalancersSortByEnum = "UNKNOWN"
 )
 
 var mappingListLoadBalancersSortBy = map[string]ListLoadBalancersSortByEnum{
 	"TIMECREATED": ListLoadBalancersSortByTimecreated,
 	"DISPLAYNAME": ListLoadBalancersSortByDisplayname,
-	"UNKNOWN":     ListLoadBalancersSortByUnknown,
 }
 
 // GetListLoadBalancersSortByEnumValues Enumerates the set of values for ListLoadBalancersSortBy
 func GetListLoadBalancersSortByEnumValues() []ListLoadBalancersSortByEnum {
 	values := make([]ListLoadBalancersSortByEnum, 0)
 	for _, v := range mappingListLoadBalancersSortBy {
-		if v != ListLoadBalancersSortByUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -102,24 +98,20 @@ type ListLoadBalancersSortOrderEnum string
 
 // Set of constants representing the allowable values for ListLoadBalancersSortOrder
 const (
-	ListLoadBalancersSortOrderAsc     ListLoadBalancersSortOrderEnum = "ASC"
-	ListLoadBalancersSortOrderDesc    ListLoadBalancersSortOrderEnum = "DESC"
-	ListLoadBalancersSortOrderUnknown ListLoadBalancersSortOrderEnum = "UNKNOWN"
+	ListLoadBalancersSortOrderAsc  ListLoadBalancersSortOrderEnum = "ASC"
+	ListLoadBalancersSortOrderDesc ListLoadBalancersSortOrderEnum = "DESC"
 )
 
 var mappingListLoadBalancersSortOrder = map[string]ListLoadBalancersSortOrderEnum{
-	"ASC":     ListLoadBalancersSortOrderAsc,
-	"DESC":    ListLoadBalancersSortOrderDesc,
-	"UNKNOWN": ListLoadBalancersSortOrderUnknown,
+	"ASC":  ListLoadBalancersSortOrderAsc,
+	"DESC": ListLoadBalancersSortOrderDesc,
 }
 
 // GetListLoadBalancersSortOrderEnumValues Enumerates the set of values for ListLoadBalancersSortOrder
 func GetListLoadBalancersSortOrderEnumValues() []ListLoadBalancersSortOrderEnum {
 	values := make([]ListLoadBalancersSortOrderEnum, 0)
 	for _, v := range mappingListLoadBalancersSortOrder {
-		if v != ListLoadBalancersSortOrderUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

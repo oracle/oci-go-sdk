@@ -31,22 +31,18 @@ type WorkRequestErrorErrorCodeEnum string
 const (
 	WorkRequestErrorErrorCodeBadInput      WorkRequestErrorErrorCodeEnum = "BAD_INPUT"
 	WorkRequestErrorErrorCodeInternalError WorkRequestErrorErrorCodeEnum = "INTERNAL_ERROR"
-	WorkRequestErrorErrorCodeUnknown       WorkRequestErrorErrorCodeEnum = "UNKNOWN"
 )
 
 var mappingWorkRequestErrorErrorCode = map[string]WorkRequestErrorErrorCodeEnum{
 	"BAD_INPUT":      WorkRequestErrorErrorCodeBadInput,
 	"INTERNAL_ERROR": WorkRequestErrorErrorCodeInternalError,
-	"UNKNOWN":        WorkRequestErrorErrorCodeUnknown,
 }
 
 // GetWorkRequestErrorErrorCodeEnumValues Enumerates the set of values for WorkRequestErrorErrorCode
 func GetWorkRequestErrorErrorCodeEnumValues() []WorkRequestErrorErrorCodeEnum {
 	values := make([]WorkRequestErrorErrorCodeEnum, 0)
 	for _, v := range mappingWorkRequestErrorErrorCode {
-		if v != WorkRequestErrorErrorCodeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

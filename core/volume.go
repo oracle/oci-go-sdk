@@ -106,7 +106,6 @@ const (
 	VolumeLifecycleStateTerminating  VolumeLifecycleStateEnum = "TERMINATING"
 	VolumeLifecycleStateTerminated   VolumeLifecycleStateEnum = "TERMINATED"
 	VolumeLifecycleStateFaulty       VolumeLifecycleStateEnum = "FAULTY"
-	VolumeLifecycleStateUnknown      VolumeLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingVolumeLifecycleState = map[string]VolumeLifecycleStateEnum{
@@ -116,16 +115,13 @@ var mappingVolumeLifecycleState = map[string]VolumeLifecycleStateEnum{
 	"TERMINATING":  VolumeLifecycleStateTerminating,
 	"TERMINATED":   VolumeLifecycleStateTerminated,
 	"FAULTY":       VolumeLifecycleStateFaulty,
-	"UNKNOWN":      VolumeLifecycleStateUnknown,
 }
 
 // GetVolumeLifecycleStateEnumValues Enumerates the set of values for VolumeLifecycleState
 func GetVolumeLifecycleStateEnumValues() []VolumeLifecycleStateEnum {
 	values := make([]VolumeLifecycleStateEnum, 0)
 	for _, v := range mappingVolumeLifecycleState {
-		if v != VolumeLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

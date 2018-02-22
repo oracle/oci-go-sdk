@@ -60,7 +60,6 @@ const (
 	ApiKeyLifecycleStateInactive ApiKeyLifecycleStateEnum = "INACTIVE"
 	ApiKeyLifecycleStateDeleting ApiKeyLifecycleStateEnum = "DELETING"
 	ApiKeyLifecycleStateDeleted  ApiKeyLifecycleStateEnum = "DELETED"
-	ApiKeyLifecycleStateUnknown  ApiKeyLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingApiKeyLifecycleState = map[string]ApiKeyLifecycleStateEnum{
@@ -69,16 +68,13 @@ var mappingApiKeyLifecycleState = map[string]ApiKeyLifecycleStateEnum{
 	"INACTIVE": ApiKeyLifecycleStateInactive,
 	"DELETING": ApiKeyLifecycleStateDeleting,
 	"DELETED":  ApiKeyLifecycleStateDeleted,
-	"UNKNOWN":  ApiKeyLifecycleStateUnknown,
 }
 
 // GetApiKeyLifecycleStateEnumValues Enumerates the set of values for ApiKeyLifecycleState
 func GetApiKeyLifecycleStateEnumValues() []ApiKeyLifecycleStateEnum {
 	values := make([]ApiKeyLifecycleStateEnum, 0)
 	for _, v := range mappingApiKeyLifecycleState {
-		if v != ApiKeyLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

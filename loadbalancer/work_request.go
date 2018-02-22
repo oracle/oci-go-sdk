@@ -63,7 +63,6 @@ const (
 	WorkRequestLifecycleStateInProgress WorkRequestLifecycleStateEnum = "IN_PROGRESS"
 	WorkRequestLifecycleStateFailed     WorkRequestLifecycleStateEnum = "FAILED"
 	WorkRequestLifecycleStateSucceeded  WorkRequestLifecycleStateEnum = "SUCCEEDED"
-	WorkRequestLifecycleStateUnknown    WorkRequestLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingWorkRequestLifecycleState = map[string]WorkRequestLifecycleStateEnum{
@@ -71,16 +70,13 @@ var mappingWorkRequestLifecycleState = map[string]WorkRequestLifecycleStateEnum{
 	"IN_PROGRESS": WorkRequestLifecycleStateInProgress,
 	"FAILED":      WorkRequestLifecycleStateFailed,
 	"SUCCEEDED":   WorkRequestLifecycleStateSucceeded,
-	"UNKNOWN":     WorkRequestLifecycleStateUnknown,
 }
 
 // GetWorkRequestLifecycleStateEnumValues Enumerates the set of values for WorkRequestLifecycleState
 func GetWorkRequestLifecycleStateEnumValues() []WorkRequestLifecycleStateEnum {
 	values := make([]WorkRequestLifecycleStateEnum, 0)
 	for _, v := range mappingWorkRequestLifecycleState {
-		if v != WorkRequestLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

@@ -16,7 +16,7 @@ LINT_FLAGS=-min_confidence 0.9 -set_exit_status
 
 .PHONY: $(TARGETS_BUILD) $(TARGET_TEST)
 
-build: lint $(TARGETS_BUILD)
+build: lint $(TARGETS_BUILD) pre-doc
 
 test: build $(TARGETS_TEST)
 
@@ -52,4 +52,4 @@ pre-doc:
 gen-version:
 	go generate -x
 
-release: gen-version build pre-doc
+release: gen-version build
