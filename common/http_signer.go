@@ -50,7 +50,8 @@ var (
 	}
 )
 
-func defaultRequestSigner(provider KeyProvider) HTTPRequestSigner {
+// DefaultRequestSinger creates a signer with default parameters.
+func DefaultRequestSigner(provider KeyProvider) HTTPRequestSigner {
 	return RequestSigner(provider, defaultGenericHeaders, defaultBodyHeaders)
 }
 
