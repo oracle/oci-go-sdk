@@ -15,10 +15,10 @@ import (
 
 // Volume A detachable block volume device that allows you to dynamically expand
 // the storage capacity of an instance. For more information, see
-// Overview of Cloud Volume Storage (https://docs.us-phoenix-1.oraclecloud.com/Content/Block/Concepts/overview.htm).
+// Overview of Cloud Volume Storage ({{DOC_SERVER_URL}}/Content/Block/Concepts/overview.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+// Getting Started with Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type Volume struct {
 
 	// The Availability Domain of the volume.
@@ -106,7 +106,6 @@ const (
 	VolumeLifecycleStateTerminating  VolumeLifecycleStateEnum = "TERMINATING"
 	VolumeLifecycleStateTerminated   VolumeLifecycleStateEnum = "TERMINATED"
 	VolumeLifecycleStateFaulty       VolumeLifecycleStateEnum = "FAULTY"
-	VolumeLifecycleStateUnknown      VolumeLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingVolumeLifecycleState = map[string]VolumeLifecycleStateEnum{
@@ -116,16 +115,13 @@ var mappingVolumeLifecycleState = map[string]VolumeLifecycleStateEnum{
 	"TERMINATING":  VolumeLifecycleStateTerminating,
 	"TERMINATED":   VolumeLifecycleStateTerminated,
 	"FAULTY":       VolumeLifecycleStateFaulty,
-	"UNKNOWN":      VolumeLifecycleStateUnknown,
 }
 
 // GetVolumeLifecycleStateEnumValues Enumerates the set of values for VolumeLifecycleState
 func GetVolumeLifecycleStateEnumValues() []VolumeLifecycleStateEnum {
 	values := make([]VolumeLifecycleStateEnum, 0)
 	for _, v := range mappingVolumeLifecycleState {
-		if v != VolumeLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

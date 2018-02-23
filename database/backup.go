@@ -13,7 +13,7 @@ import (
 )
 
 // Backup A database backup
-// To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+// To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type Backup struct {
 
 	// The name of the Availability Domain that the backup is located in.
@@ -62,7 +62,6 @@ const (
 	BackupLifecycleStateDeleted   BackupLifecycleStateEnum = "DELETED"
 	BackupLifecycleStateFailed    BackupLifecycleStateEnum = "FAILED"
 	BackupLifecycleStateRestoring BackupLifecycleStateEnum = "RESTORING"
-	BackupLifecycleStateUnknown   BackupLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingBackupLifecycleState = map[string]BackupLifecycleStateEnum{
@@ -72,16 +71,13 @@ var mappingBackupLifecycleState = map[string]BackupLifecycleStateEnum{
 	"DELETED":   BackupLifecycleStateDeleted,
 	"FAILED":    BackupLifecycleStateFailed,
 	"RESTORING": BackupLifecycleStateRestoring,
-	"UNKNOWN":   BackupLifecycleStateUnknown,
 }
 
 // GetBackupLifecycleStateEnumValues Enumerates the set of values for BackupLifecycleState
 func GetBackupLifecycleStateEnumValues() []BackupLifecycleStateEnum {
 	values := make([]BackupLifecycleStateEnum, 0)
 	for _, v := range mappingBackupLifecycleState {
-		if v != BackupLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -93,22 +89,18 @@ type BackupTypeEnum string
 const (
 	BackupTypeIncremental BackupTypeEnum = "INCREMENTAL"
 	BackupTypeFull        BackupTypeEnum = "FULL"
-	BackupTypeUnknown     BackupTypeEnum = "UNKNOWN"
 )
 
 var mappingBackupType = map[string]BackupTypeEnum{
 	"INCREMENTAL": BackupTypeIncremental,
 	"FULL":        BackupTypeFull,
-	"UNKNOWN":     BackupTypeUnknown,
 }
 
 // GetBackupTypeEnumValues Enumerates the set of values for BackupType
 func GetBackupTypeEnumValues() []BackupTypeEnum {
 	values := make([]BackupTypeEnum, 0)
 	for _, v := range mappingBackupType {
-		if v != BackupTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

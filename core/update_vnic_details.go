@@ -29,13 +29,13 @@ type UpdateVnicDetails struct {
 	// ListPrivateIps and
 	// GetPrivateIp.
 	// For more information, see
-	// DNS in Your Virtual Cloud Network (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/dns.htm).
+	// DNS in Your Virtual Cloud Network ({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	HostnameLabel *string `mandatory:"false" json:"hostnameLabel"`
 
 	// Whether the source/destination check is disabled on the VNIC.
 	// Defaults to `false`, which means the check is performed. For information
 	// about why you would skip the source/destination check, see
-	// Using a Private IP as a Route Target (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/managingroutetables.htm#privateip).
+	// Using a Private IP as a Route Target ({{DOC_SERVER_URL}}/Content/Network/Tasks/managingroutetables.htm#privateip).
 	// Example: `true`
 	SkipSourceDestCheck *bool `mandatory:"false" json:"skipSourceDestCheck"`
 }

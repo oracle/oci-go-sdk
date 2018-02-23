@@ -14,10 +14,10 @@ import (
 
 // RouteTable A collection of `RouteRule` objects, which are used to route packets
 // based on destination IP to a particular network entity. For more information, see
-// Overview of the Networking Service (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/overview.htm).
+// Overview of the Networking Service ({{DOC_SERVER_URL}}/Content/Network/Concepts/overview.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+// Getting Started with Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type RouteTable struct {
 
 	// The OCID of the compartment containing the route table.
@@ -57,7 +57,6 @@ const (
 	RouteTableLifecycleStateAvailable    RouteTableLifecycleStateEnum = "AVAILABLE"
 	RouteTableLifecycleStateTerminating  RouteTableLifecycleStateEnum = "TERMINATING"
 	RouteTableLifecycleStateTerminated   RouteTableLifecycleStateEnum = "TERMINATED"
-	RouteTableLifecycleStateUnknown      RouteTableLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingRouteTableLifecycleState = map[string]RouteTableLifecycleStateEnum{
@@ -65,16 +64,13 @@ var mappingRouteTableLifecycleState = map[string]RouteTableLifecycleStateEnum{
 	"AVAILABLE":    RouteTableLifecycleStateAvailable,
 	"TERMINATING":  RouteTableLifecycleStateTerminating,
 	"TERMINATED":   RouteTableLifecycleStateTerminated,
-	"UNKNOWN":      RouteTableLifecycleStateUnknown,
 }
 
 // GetRouteTableLifecycleStateEnumValues Enumerates the set of values for RouteTableLifecycleState
 func GetRouteTableLifecycleStateEnumValues() []RouteTableLifecycleStateEnum {
 	values := make([]RouteTableLifecycleStateEnum, 0)
 	for _, v := range mappingRouteTableLifecycleState {
-		if v != RouteTableLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

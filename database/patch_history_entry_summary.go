@@ -49,22 +49,18 @@ type PatchHistoryEntrySummaryActionEnum string
 const (
 	PatchHistoryEntrySummaryActionApply    PatchHistoryEntrySummaryActionEnum = "APPLY"
 	PatchHistoryEntrySummaryActionPrecheck PatchHistoryEntrySummaryActionEnum = "PRECHECK"
-	PatchHistoryEntrySummaryActionUnknown  PatchHistoryEntrySummaryActionEnum = "UNKNOWN"
 )
 
 var mappingPatchHistoryEntrySummaryAction = map[string]PatchHistoryEntrySummaryActionEnum{
 	"APPLY":    PatchHistoryEntrySummaryActionApply,
 	"PRECHECK": PatchHistoryEntrySummaryActionPrecheck,
-	"UNKNOWN":  PatchHistoryEntrySummaryActionUnknown,
 }
 
 // GetPatchHistoryEntrySummaryActionEnumValues Enumerates the set of values for PatchHistoryEntrySummaryAction
 func GetPatchHistoryEntrySummaryActionEnumValues() []PatchHistoryEntrySummaryActionEnum {
 	values := make([]PatchHistoryEntrySummaryActionEnum, 0)
 	for _, v := range mappingPatchHistoryEntrySummaryAction {
-		if v != PatchHistoryEntrySummaryActionUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -77,23 +73,19 @@ const (
 	PatchHistoryEntrySummaryLifecycleStateInProgress PatchHistoryEntrySummaryLifecycleStateEnum = "IN_PROGRESS"
 	PatchHistoryEntrySummaryLifecycleStateSucceeded  PatchHistoryEntrySummaryLifecycleStateEnum = "SUCCEEDED"
 	PatchHistoryEntrySummaryLifecycleStateFailed     PatchHistoryEntrySummaryLifecycleStateEnum = "FAILED"
-	PatchHistoryEntrySummaryLifecycleStateUnknown    PatchHistoryEntrySummaryLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingPatchHistoryEntrySummaryLifecycleState = map[string]PatchHistoryEntrySummaryLifecycleStateEnum{
 	"IN_PROGRESS": PatchHistoryEntrySummaryLifecycleStateInProgress,
 	"SUCCEEDED":   PatchHistoryEntrySummaryLifecycleStateSucceeded,
 	"FAILED":      PatchHistoryEntrySummaryLifecycleStateFailed,
-	"UNKNOWN":     PatchHistoryEntrySummaryLifecycleStateUnknown,
 }
 
 // GetPatchHistoryEntrySummaryLifecycleStateEnumValues Enumerates the set of values for PatchHistoryEntrySummaryLifecycleState
 func GetPatchHistoryEntrySummaryLifecycleStateEnumValues() []PatchHistoryEntrySummaryLifecycleStateEnum {
 	values := make([]PatchHistoryEntrySummaryLifecycleStateEnum, 0)
 	for _, v := range mappingPatchHistoryEntrySummaryLifecycleState {
-		if v != PatchHistoryEntrySummaryLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

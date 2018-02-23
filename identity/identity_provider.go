@@ -17,10 +17,10 @@ import (
 // Saml2IdentityProvider
 // is a specific type of `IdentityProvider` that supports the SAML 2.0 protocol. Each
 // `IdentityProvider` object has its own OCID. For more information, see
-// Identity Providers and Federation (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/federation.htm).
+// Identity Providers and Federation ({{DOC_SERVER_URL}}/Content/Identity/Concepts/federation.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access,
-// see Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+// see Getting Started with Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type IdentityProvider interface {
 
 	// The OCID of the `IdentityProvider`.
@@ -165,7 +165,6 @@ const (
 	IdentityProviderLifecycleStateInactive IdentityProviderLifecycleStateEnum = "INACTIVE"
 	IdentityProviderLifecycleStateDeleting IdentityProviderLifecycleStateEnum = "DELETING"
 	IdentityProviderLifecycleStateDeleted  IdentityProviderLifecycleStateEnum = "DELETED"
-	IdentityProviderLifecycleStateUnknown  IdentityProviderLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingIdentityProviderLifecycleState = map[string]IdentityProviderLifecycleStateEnum{
@@ -174,16 +173,13 @@ var mappingIdentityProviderLifecycleState = map[string]IdentityProviderLifecycle
 	"INACTIVE": IdentityProviderLifecycleStateInactive,
 	"DELETING": IdentityProviderLifecycleStateDeleting,
 	"DELETED":  IdentityProviderLifecycleStateDeleted,
-	"UNKNOWN":  IdentityProviderLifecycleStateUnknown,
 }
 
 // GetIdentityProviderLifecycleStateEnumValues Enumerates the set of values for IdentityProviderLifecycleState
 func GetIdentityProviderLifecycleStateEnumValues() []IdentityProviderLifecycleStateEnum {
 	values := make([]IdentityProviderLifecycleStateEnum, 0)
 	for _, v := range mappingIdentityProviderLifecycleState {
-		if v != IdentityProviderLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

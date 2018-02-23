@@ -14,7 +14,7 @@ import (
 
 // Listener The listener's configuration.
 // For more information on backend set configuration, see
-// Managing Load Balancer Listeners (https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/tasks/managinglisteners.htm).
+// Managing Load Balancer Listeners ({{DOC_SERVER_URL}}/Content/Balance/tasks/managinglisteners.htm).
 type Listener struct {
 
 	// The name of the associated backend set.
@@ -33,6 +33,13 @@ type Listener struct {
 	// operation.
 	// Example: `HTTP`
 	Protocol *string `mandatory:"true" json:"protocol"`
+
+	// The name of the associated path-based routes applied to this listener's traffic.
+	PathRouteSetName *string `mandatory:"false" json:"pathRouteSetName"`
+
+	// A HTTP hostname for this listener. TODO: This description needs work.
+	// Example: `app.example.com`
+	ServerName *string `mandatory:"false" json:"serverName"`
 
 	SslConfiguration *SslConfiguration `mandatory:"false" json:"sslConfiguration"`
 }

@@ -14,7 +14,7 @@ import (
 
 // Bucket To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+// Getting Started with Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type Bucket struct {
 
 	// The namespace in which the bucket lives.
@@ -56,22 +56,18 @@ type BucketPublicAccessTypeEnum string
 const (
 	BucketPublicAccessTypeNopublicaccess BucketPublicAccessTypeEnum = "NoPublicAccess"
 	BucketPublicAccessTypeObjectread     BucketPublicAccessTypeEnum = "ObjectRead"
-	BucketPublicAccessTypeUnknown        BucketPublicAccessTypeEnum = "UNKNOWN"
 )
 
 var mappingBucketPublicAccessType = map[string]BucketPublicAccessTypeEnum{
 	"NoPublicAccess": BucketPublicAccessTypeNopublicaccess,
 	"ObjectRead":     BucketPublicAccessTypeObjectread,
-	"UNKNOWN":        BucketPublicAccessTypeUnknown,
 }
 
 // GetBucketPublicAccessTypeEnumValues Enumerates the set of values for BucketPublicAccessType
 func GetBucketPublicAccessTypeEnumValues() []BucketPublicAccessTypeEnum {
 	values := make([]BucketPublicAccessTypeEnum, 0)
 	for _, v := range mappingBucketPublicAccessType {
-		if v != BucketPublicAccessTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

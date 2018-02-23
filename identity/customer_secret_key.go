@@ -13,10 +13,10 @@ import (
 )
 
 // CustomerSecretKey A `CustomerSecretKey` is an Oracle-provided key for using the Object Storage Service's
-// Amazon S3 compatible API (https://docs.us-phoenix-1.oraclecloud.com/Content/Object/Tasks/s3compatibleapi.htm).
+// Amazon S3 compatible API ({{DOC_SERVER_URL}}/Content/Object/Tasks/s3compatibleapi.htm).
 // A user can have up to two secret keys at a time.
 // **Note:** The secret key is always an Oracle-generated string; you can't change it to a string of your choice.
-// For more information, see Managing User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Tasks/managingcredentials.htm).
+// For more information, see Managing User Credentials ({{DOC_SERVER_URL}}/Content/Identity/Tasks/managingcredentials.htm).
 type CustomerSecretKey struct {
 
 	// The secret key.
@@ -62,7 +62,6 @@ const (
 	CustomerSecretKeyLifecycleStateInactive CustomerSecretKeyLifecycleStateEnum = "INACTIVE"
 	CustomerSecretKeyLifecycleStateDeleting CustomerSecretKeyLifecycleStateEnum = "DELETING"
 	CustomerSecretKeyLifecycleStateDeleted  CustomerSecretKeyLifecycleStateEnum = "DELETED"
-	CustomerSecretKeyLifecycleStateUnknown  CustomerSecretKeyLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingCustomerSecretKeyLifecycleState = map[string]CustomerSecretKeyLifecycleStateEnum{
@@ -71,16 +70,13 @@ var mappingCustomerSecretKeyLifecycleState = map[string]CustomerSecretKeyLifecyc
 	"INACTIVE": CustomerSecretKeyLifecycleStateInactive,
 	"DELETING": CustomerSecretKeyLifecycleStateDeleting,
 	"DELETED":  CustomerSecretKeyLifecycleStateDeleted,
-	"UNKNOWN":  CustomerSecretKeyLifecycleStateUnknown,
 }
 
 // GetCustomerSecretKeyLifecycleStateEnumValues Enumerates the set of values for CustomerSecretKeyLifecycleState
 func GetCustomerSecretKeyLifecycleStateEnumValues() []CustomerSecretKeyLifecycleStateEnum {
 	values := make([]CustomerSecretKeyLifecycleStateEnum, 0)
 	for _, v := range mappingCustomerSecretKeyLifecycleState {
-		if v != CustomerSecretKeyLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

@@ -14,7 +14,7 @@ import (
 
 // UpdateBucketDetails To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+// Getting Started with Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type UpdateBucketDetails struct {
 
 	// The namespace in which the bucket lives.
@@ -44,22 +44,18 @@ type UpdateBucketDetailsPublicAccessTypeEnum string
 const (
 	UpdateBucketDetailsPublicAccessTypeNopublicaccess UpdateBucketDetailsPublicAccessTypeEnum = "NoPublicAccess"
 	UpdateBucketDetailsPublicAccessTypeObjectread     UpdateBucketDetailsPublicAccessTypeEnum = "ObjectRead"
-	UpdateBucketDetailsPublicAccessTypeUnknown        UpdateBucketDetailsPublicAccessTypeEnum = "UNKNOWN"
 )
 
 var mappingUpdateBucketDetailsPublicAccessType = map[string]UpdateBucketDetailsPublicAccessTypeEnum{
 	"NoPublicAccess": UpdateBucketDetailsPublicAccessTypeNopublicaccess,
 	"ObjectRead":     UpdateBucketDetailsPublicAccessTypeObjectread,
-	"UNKNOWN":        UpdateBucketDetailsPublicAccessTypeUnknown,
 }
 
 // GetUpdateBucketDetailsPublicAccessTypeEnumValues Enumerates the set of values for UpdateBucketDetailsPublicAccessType
 func GetUpdateBucketDetailsPublicAccessTypeEnumValues() []UpdateBucketDetailsPublicAccessTypeEnum {
 	values := make([]UpdateBucketDetailsPublicAccessTypeEnum, 0)
 	for _, v := range mappingUpdateBucketDetailsPublicAccessType {
-		if v != UpdateBucketDetailsPublicAccessTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

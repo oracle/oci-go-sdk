@@ -20,6 +20,9 @@ type LaunchInstanceRequest struct {
 	// has been deleted and purged from the system, then a retry of the original creation request
 	// may be rejected).
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
+
+	// Name of the pool in which to launch an instance. This feature is currently in preview and may change before public release. Do not use it for production workloads.
+	OpcPoolName *string `mandatory:"false" contributesTo:"query" name:"opc-pool-name"`
 }
 
 func (request LaunchInstanceRequest) String() string {

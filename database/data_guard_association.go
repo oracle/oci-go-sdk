@@ -15,22 +15,22 @@ import (
 // DataGuardAssociation The properties that define a Data Guard association.
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an
 // administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+// Getting Started with Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 // For information about endpoints and signing API requests, see
-// About the API (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/usingapi.htm). For information about available SDKs and tools, see
-// SDKS and Other Tools (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdks.htm).
+// About the API ({{DOC_SERVER_URL}}/Content/API/Concepts/usingapi.htm). For information about available SDKs and tools, see
+// SDKS and Other Tools ({{DOC_SERVER_URL}}/Content/API/Concepts/sdks.htm).
 type DataGuardAssociation struct {
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the reporting database.
+	// The OCID ({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the reporting database.
 	DatabaseId *string `mandatory:"true" json:"databaseId"`
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the Data Guard association.
+	// The OCID ({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the Data Guard association.
 	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of the Data Guard association.
 	LifecycleState DataGuardAssociationLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the DB System containing the associated
+	// The OCID ({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the DB System containing the associated
 	// peer database.
 	PeerDbSystemId *string `mandatory:"true" json:"peerDbSystemId"`
 
@@ -57,13 +57,13 @@ type DataGuardAssociation struct {
 	// Additional information about the current lifecycleState, if available.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the peer database's Data Guard association.
+	// The OCID ({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the peer database's Data Guard association.
 	PeerDataGuardAssociationId *string `mandatory:"false" json:"peerDataGuardAssociationId"`
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the associated peer database.
+	// The OCID ({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the associated peer database.
 	PeerDatabaseId *string `mandatory:"false" json:"peerDatabaseId"`
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the database home containing the associated peer database.
+	// The OCID ({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm) of the database home containing the associated peer database.
 	PeerDbHomeId *string `mandatory:"false" json:"peerDbHomeId"`
 
 	// The date and time the Data Guard Association was created.
@@ -90,7 +90,6 @@ const (
 	DataGuardAssociationLifecycleStateTerminating  DataGuardAssociationLifecycleStateEnum = "TERMINATING"
 	DataGuardAssociationLifecycleStateTerminated   DataGuardAssociationLifecycleStateEnum = "TERMINATED"
 	DataGuardAssociationLifecycleStateFailed       DataGuardAssociationLifecycleStateEnum = "FAILED"
-	DataGuardAssociationLifecycleStateUnknown      DataGuardAssociationLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingDataGuardAssociationLifecycleState = map[string]DataGuardAssociationLifecycleStateEnum{
@@ -100,16 +99,13 @@ var mappingDataGuardAssociationLifecycleState = map[string]DataGuardAssociationL
 	"TERMINATING":  DataGuardAssociationLifecycleStateTerminating,
 	"TERMINATED":   DataGuardAssociationLifecycleStateTerminated,
 	"FAILED":       DataGuardAssociationLifecycleStateFailed,
-	"UNKNOWN":      DataGuardAssociationLifecycleStateUnknown,
 }
 
 // GetDataGuardAssociationLifecycleStateEnumValues Enumerates the set of values for DataGuardAssociationLifecycleState
 func GetDataGuardAssociationLifecycleStateEnumValues() []DataGuardAssociationLifecycleStateEnum {
 	values := make([]DataGuardAssociationLifecycleStateEnum, 0)
 	for _, v := range mappingDataGuardAssociationLifecycleState {
-		if v != DataGuardAssociationLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -122,23 +118,19 @@ const (
 	DataGuardAssociationPeerRolePrimary         DataGuardAssociationPeerRoleEnum = "PRIMARY"
 	DataGuardAssociationPeerRoleStandby         DataGuardAssociationPeerRoleEnum = "STANDBY"
 	DataGuardAssociationPeerRoleDisabledStandby DataGuardAssociationPeerRoleEnum = "DISABLED_STANDBY"
-	DataGuardAssociationPeerRoleUnknown         DataGuardAssociationPeerRoleEnum = "UNKNOWN"
 )
 
 var mappingDataGuardAssociationPeerRole = map[string]DataGuardAssociationPeerRoleEnum{
 	"PRIMARY":          DataGuardAssociationPeerRolePrimary,
 	"STANDBY":          DataGuardAssociationPeerRoleStandby,
 	"DISABLED_STANDBY": DataGuardAssociationPeerRoleDisabledStandby,
-	"UNKNOWN":          DataGuardAssociationPeerRoleUnknown,
 }
 
 // GetDataGuardAssociationPeerRoleEnumValues Enumerates the set of values for DataGuardAssociationPeerRole
 func GetDataGuardAssociationPeerRoleEnumValues() []DataGuardAssociationPeerRoleEnum {
 	values := make([]DataGuardAssociationPeerRoleEnum, 0)
 	for _, v := range mappingDataGuardAssociationPeerRole {
-		if v != DataGuardAssociationPeerRoleUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -151,23 +143,19 @@ const (
 	DataGuardAssociationProtectionModeAvailability DataGuardAssociationProtectionModeEnum = "MAXIMUM_AVAILABILITY"
 	DataGuardAssociationProtectionModePerformance  DataGuardAssociationProtectionModeEnum = "MAXIMUM_PERFORMANCE"
 	DataGuardAssociationProtectionModeProtection   DataGuardAssociationProtectionModeEnum = "MAXIMUM_PROTECTION"
-	DataGuardAssociationProtectionModeUnknown      DataGuardAssociationProtectionModeEnum = "UNKNOWN"
 )
 
 var mappingDataGuardAssociationProtectionMode = map[string]DataGuardAssociationProtectionModeEnum{
 	"MAXIMUM_AVAILABILITY": DataGuardAssociationProtectionModeAvailability,
 	"MAXIMUM_PERFORMANCE":  DataGuardAssociationProtectionModePerformance,
 	"MAXIMUM_PROTECTION":   DataGuardAssociationProtectionModeProtection,
-	"UNKNOWN":              DataGuardAssociationProtectionModeUnknown,
 }
 
 // GetDataGuardAssociationProtectionModeEnumValues Enumerates the set of values for DataGuardAssociationProtectionMode
 func GetDataGuardAssociationProtectionModeEnumValues() []DataGuardAssociationProtectionModeEnum {
 	values := make([]DataGuardAssociationProtectionModeEnum, 0)
 	for _, v := range mappingDataGuardAssociationProtectionMode {
-		if v != DataGuardAssociationProtectionModeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -180,23 +168,19 @@ const (
 	DataGuardAssociationRolePrimary         DataGuardAssociationRoleEnum = "PRIMARY"
 	DataGuardAssociationRoleStandby         DataGuardAssociationRoleEnum = "STANDBY"
 	DataGuardAssociationRoleDisabledStandby DataGuardAssociationRoleEnum = "DISABLED_STANDBY"
-	DataGuardAssociationRoleUnknown         DataGuardAssociationRoleEnum = "UNKNOWN"
 )
 
 var mappingDataGuardAssociationRole = map[string]DataGuardAssociationRoleEnum{
 	"PRIMARY":          DataGuardAssociationRolePrimary,
 	"STANDBY":          DataGuardAssociationRoleStandby,
 	"DISABLED_STANDBY": DataGuardAssociationRoleDisabledStandby,
-	"UNKNOWN":          DataGuardAssociationRoleUnknown,
 }
 
 // GetDataGuardAssociationRoleEnumValues Enumerates the set of values for DataGuardAssociationRole
 func GetDataGuardAssociationRoleEnumValues() []DataGuardAssociationRoleEnum {
 	values := make([]DataGuardAssociationRoleEnum, 0)
 	for _, v := range mappingDataGuardAssociationRole {
-		if v != DataGuardAssociationRoleUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -209,23 +193,19 @@ const (
 	DataGuardAssociationTransportTypeSync     DataGuardAssociationTransportTypeEnum = "SYNC"
 	DataGuardAssociationTransportTypeAsync    DataGuardAssociationTransportTypeEnum = "ASYNC"
 	DataGuardAssociationTransportTypeFastsync DataGuardAssociationTransportTypeEnum = "FASTSYNC"
-	DataGuardAssociationTransportTypeUnknown  DataGuardAssociationTransportTypeEnum = "UNKNOWN"
 )
 
 var mappingDataGuardAssociationTransportType = map[string]DataGuardAssociationTransportTypeEnum{
 	"SYNC":     DataGuardAssociationTransportTypeSync,
 	"ASYNC":    DataGuardAssociationTransportTypeAsync,
 	"FASTSYNC": DataGuardAssociationTransportTypeFastsync,
-	"UNKNOWN":  DataGuardAssociationTransportTypeUnknown,
 }
 
 // GetDataGuardAssociationTransportTypeEnumValues Enumerates the set of values for DataGuardAssociationTransportType
 func GetDataGuardAssociationTransportTypeEnumValues() []DataGuardAssociationTransportTypeEnum {
 	values := make([]DataGuardAssociationTransportTypeEnum, 0)
 	for _, v := range mappingDataGuardAssociationTransportType {
-		if v != DataGuardAssociationTransportTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

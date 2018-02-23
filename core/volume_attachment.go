@@ -17,7 +17,7 @@ import (
 // For specific details about iSCSI attachments, see
 // IScsiVolumeAttachment.
 // For general information about volume attachments, see
-// Overview of Block Volume Storage (https://docs.us-phoenix-1.oraclecloud.com/Content/Block/Concepts/overview.htm).
+// Overview of Block Volume Storage ({{DOC_SERVER_URL}}/Content/Block/Concepts/overview.htm).
 type VolumeAttachment interface {
 
 	// The Availability Domain of an instance.
@@ -152,7 +152,6 @@ const (
 	VolumeAttachmentLifecycleStateAttached  VolumeAttachmentLifecycleStateEnum = "ATTACHED"
 	VolumeAttachmentLifecycleStateDetaching VolumeAttachmentLifecycleStateEnum = "DETACHING"
 	VolumeAttachmentLifecycleStateDetached  VolumeAttachmentLifecycleStateEnum = "DETACHED"
-	VolumeAttachmentLifecycleStateUnknown   VolumeAttachmentLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingVolumeAttachmentLifecycleState = map[string]VolumeAttachmentLifecycleStateEnum{
@@ -160,16 +159,13 @@ var mappingVolumeAttachmentLifecycleState = map[string]VolumeAttachmentLifecycle
 	"ATTACHED":  VolumeAttachmentLifecycleStateAttached,
 	"DETACHING": VolumeAttachmentLifecycleStateDetaching,
 	"DETACHED":  VolumeAttachmentLifecycleStateDetached,
-	"UNKNOWN":   VolumeAttachmentLifecycleStateUnknown,
 }
 
 // GetVolumeAttachmentLifecycleStateEnumValues Enumerates the set of values for VolumeAttachmentLifecycleState
 func GetVolumeAttachmentLifecycleStateEnumValues() []VolumeAttachmentLifecycleStateEnum {
 	values := make([]VolumeAttachmentLifecycleStateEnum, 0)
 	for _, v := range mappingVolumeAttachmentLifecycleState {
-		if v != VolumeAttachmentLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

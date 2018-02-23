@@ -43,23 +43,19 @@ const (
 	TunnelStatusLifecycleStateUp                 TunnelStatusLifecycleStateEnum = "UP"
 	TunnelStatusLifecycleStateDown               TunnelStatusLifecycleStateEnum = "DOWN"
 	TunnelStatusLifecycleStateDownForMaintenance TunnelStatusLifecycleStateEnum = "DOWN_FOR_MAINTENANCE"
-	TunnelStatusLifecycleStateUnknown            TunnelStatusLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingTunnelStatusLifecycleState = map[string]TunnelStatusLifecycleStateEnum{
 	"UP":                   TunnelStatusLifecycleStateUp,
 	"DOWN":                 TunnelStatusLifecycleStateDown,
 	"DOWN_FOR_MAINTENANCE": TunnelStatusLifecycleStateDownForMaintenance,
-	"UNKNOWN":              TunnelStatusLifecycleStateUnknown,
 }
 
 // GetTunnelStatusLifecycleStateEnumValues Enumerates the set of values for TunnelStatusLifecycleState
 func GetTunnelStatusLifecycleStateEnumValues() []TunnelStatusLifecycleStateEnum {
 	values := make([]TunnelStatusLifecycleStateEnum, 0)
 	for _, v := range mappingTunnelStatusLifecycleState {
-		if v != TunnelStatusLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

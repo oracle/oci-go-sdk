@@ -16,7 +16,7 @@ import (
 // Swift client with the Oracle Cloud Infrastructure Object Storage Service. This password is associated with
 // the user's Console login. Swift passwords never expire. A user can have up to two Swift passwords at a time.
 // **Note:** The password is always an Oracle-generated string; you can't change it to a string of your choice.
-// For more information, see Managing User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Tasks/managingcredentials.htm).
+// For more information, see Managing User Credentials ({{DOC_SERVER_URL}}/Content/Identity/Tasks/managingcredentials.htm).
 type SwiftPassword struct {
 
 	// The Swift password. The value is available only in the response for `CreateSwiftPassword`, and not
@@ -63,7 +63,6 @@ const (
 	SwiftPasswordLifecycleStateInactive SwiftPasswordLifecycleStateEnum = "INACTIVE"
 	SwiftPasswordLifecycleStateDeleting SwiftPasswordLifecycleStateEnum = "DELETING"
 	SwiftPasswordLifecycleStateDeleted  SwiftPasswordLifecycleStateEnum = "DELETED"
-	SwiftPasswordLifecycleStateUnknown  SwiftPasswordLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingSwiftPasswordLifecycleState = map[string]SwiftPasswordLifecycleStateEnum{
@@ -72,16 +71,13 @@ var mappingSwiftPasswordLifecycleState = map[string]SwiftPasswordLifecycleStateE
 	"INACTIVE": SwiftPasswordLifecycleStateInactive,
 	"DELETING": SwiftPasswordLifecycleStateDeleting,
 	"DELETED":  SwiftPasswordLifecycleStateDeleted,
-	"UNKNOWN":  SwiftPasswordLifecycleStateUnknown,
 }
 
 // GetSwiftPasswordLifecycleStateEnumValues Enumerates the set of values for SwiftPasswordLifecycleState
 func GetSwiftPasswordLifecycleStateEnumValues() []SwiftPasswordLifecycleStateEnum {
 	values := make([]SwiftPasswordLifecycleStateEnum, 0)
 	for _, v := range mappingSwiftPasswordLifecycleState {
-		if v != SwiftPasswordLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

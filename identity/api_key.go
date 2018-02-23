@@ -15,10 +15,10 @@ import (
 // ApiKey A PEM-format RSA credential for securing requests to the Oracle Cloud Infrastructure REST API. Also known
 // as an *API signing key*. Specifically, this is the public key from the key pair. The private key remains with
 // the user calling the API. For information about generating a key pair
-// in the required PEM format, see Required Keys and OCIDs (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm).
+// in the required PEM format, see Required Keys and OCIDs ({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm).
 // **Important:** This is **not** the SSH key for accessing compute instances.
 // Each user can have a maximum of three API signing keys.
-// For more information about user credentials, see User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/usercredentials.htm).
+// For more information about user credentials, see User Credentials ({{DOC_SERVER_URL}}/Content/Identity/Concepts/usercredentials.htm).
 type ApiKey struct {
 
 	// An Oracle-assigned identifier for the key, in this format:
@@ -60,7 +60,6 @@ const (
 	ApiKeyLifecycleStateInactive ApiKeyLifecycleStateEnum = "INACTIVE"
 	ApiKeyLifecycleStateDeleting ApiKeyLifecycleStateEnum = "DELETING"
 	ApiKeyLifecycleStateDeleted  ApiKeyLifecycleStateEnum = "DELETED"
-	ApiKeyLifecycleStateUnknown  ApiKeyLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingApiKeyLifecycleState = map[string]ApiKeyLifecycleStateEnum{
@@ -69,16 +68,13 @@ var mappingApiKeyLifecycleState = map[string]ApiKeyLifecycleStateEnum{
 	"INACTIVE": ApiKeyLifecycleStateInactive,
 	"DELETING": ApiKeyLifecycleStateDeleting,
 	"DELETED":  ApiKeyLifecycleStateDeleted,
-	"UNKNOWN":  ApiKeyLifecycleStateUnknown,
 }
 
 // GetApiKeyLifecycleStateEnumValues Enumerates the set of values for ApiKeyLifecycleState
 func GetApiKeyLifecycleStateEnumValues() []ApiKeyLifecycleStateEnum {
 	values := make([]ApiKeyLifecycleStateEnum, 0)
 	for _, v := range mappingApiKeyLifecycleState {
-		if v != ApiKeyLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

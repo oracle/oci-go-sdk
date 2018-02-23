@@ -11,7 +11,7 @@ import (
 // GetDbSystemPatchRequest wrapper for the GetDbSystemPatch operation
 type GetDbSystemPatchRequest struct {
 
-	// The DB System OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
+	// The DB System OCID ({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
 	DbSystemId *string `mandatory:"true" contributesTo:"path" name:"dbSystemId"`
 
 	// The OCID of the patch.

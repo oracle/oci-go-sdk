@@ -19,11 +19,11 @@ import (
 // handled in the subnets in your VCN.
 // - DhcpSearchDomainOption: Lets you specify
 // a search domain name to use for DNS queries.
-// For more information, see  DNS in Your Virtual Cloud Network (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/dns.htm)
-// and DHCP Options (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/managingDHCP.htm).
+// For more information, see  DNS in Your Virtual Cloud Network ({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm)
+// and DHCP Options ({{DOC_SERVER_URL}}/Content/Network/Tasks/managingDHCP.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+// Getting Started with Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type DhcpOptions struct {
 
 	// The OCID of the compartment containing the set of DHCP options.
@@ -96,7 +96,6 @@ const (
 	DhcpOptionsLifecycleStateAvailable    DhcpOptionsLifecycleStateEnum = "AVAILABLE"
 	DhcpOptionsLifecycleStateTerminating  DhcpOptionsLifecycleStateEnum = "TERMINATING"
 	DhcpOptionsLifecycleStateTerminated   DhcpOptionsLifecycleStateEnum = "TERMINATED"
-	DhcpOptionsLifecycleStateUnknown      DhcpOptionsLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingDhcpOptionsLifecycleState = map[string]DhcpOptionsLifecycleStateEnum{
@@ -104,16 +103,13 @@ var mappingDhcpOptionsLifecycleState = map[string]DhcpOptionsLifecycleStateEnum{
 	"AVAILABLE":    DhcpOptionsLifecycleStateAvailable,
 	"TERMINATING":  DhcpOptionsLifecycleStateTerminating,
 	"TERMINATED":   DhcpOptionsLifecycleStateTerminated,
-	"UNKNOWN":      DhcpOptionsLifecycleStateUnknown,
 }
 
 // GetDhcpOptionsLifecycleStateEnumValues Enumerates the set of values for DhcpOptionsLifecycleState
 func GetDhcpOptionsLifecycleStateEnumValues() []DhcpOptionsLifecycleStateEnum {
 	values := make([]DhcpOptionsLifecycleStateEnum, 0)
 	for _, v := range mappingDhcpOptionsLifecycleState {
-		if v != DhcpOptionsLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

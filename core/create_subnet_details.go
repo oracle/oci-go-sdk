@@ -45,7 +45,7 @@ type CreateSubnetDetails struct {
 	// hostnames of instances in the subnet. It can only be set if the VCN itself
 	// was created with a DNS label.
 	// For more information, see
-	// DNS in Your Virtual Cloud Network (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/dns.htm).
+	// DNS in Your Virtual Cloud Network ({{DOC_SERVER_URL}}/Content/Network/Concepts/dns.htm).
 	// Example: `subnet123`
 	DnsLabel *string `mandatory:"false" json:"dnsLabel"`
 

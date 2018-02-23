@@ -14,7 +14,7 @@ import (
 
 // UiPassword A text password that enables a user to sign in to the Console, the user interface for interacting with Oracle
 // Cloud Infrastructure.
-// For more information about user credentials, see User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/usercredentials.htm).
+// For more information about user credentials, see User Credentials ({{DOC_SERVER_URL}}/Content/Identity/Concepts/usercredentials.htm).
 type UiPassword struct {
 
 	// The user's password for the Console.
@@ -49,7 +49,6 @@ const (
 	UiPasswordLifecycleStateInactive UiPasswordLifecycleStateEnum = "INACTIVE"
 	UiPasswordLifecycleStateDeleting UiPasswordLifecycleStateEnum = "DELETING"
 	UiPasswordLifecycleStateDeleted  UiPasswordLifecycleStateEnum = "DELETED"
-	UiPasswordLifecycleStateUnknown  UiPasswordLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingUiPasswordLifecycleState = map[string]UiPasswordLifecycleStateEnum{
@@ -58,16 +57,13 @@ var mappingUiPasswordLifecycleState = map[string]UiPasswordLifecycleStateEnum{
 	"INACTIVE": UiPasswordLifecycleStateInactive,
 	"DELETING": UiPasswordLifecycleStateDeleting,
 	"DELETED":  UiPasswordLifecycleStateDeleted,
-	"UNKNOWN":  UiPasswordLifecycleStateUnknown,
 }
 
 // GetUiPasswordLifecycleStateEnumValues Enumerates the set of values for UiPasswordLifecycleState
 func GetUiPasswordLifecycleStateEnumValues() []UiPasswordLifecycleStateEnum {
 	values := make([]UiPasswordLifecycleStateEnum, 0)
 	for _, v := range mappingUiPasswordLifecycleState {
-		if v != UiPasswordLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

@@ -14,7 +14,7 @@ import (
 
 // CreateBucketDetails To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+// Getting Started with Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type CreateBucketDetails struct {
 
 	// The name of the bucket. Valid characters are uppercase or lowercase letters,
@@ -45,22 +45,18 @@ type CreateBucketDetailsPublicAccessTypeEnum string
 const (
 	CreateBucketDetailsPublicAccessTypeNopublicaccess CreateBucketDetailsPublicAccessTypeEnum = "NoPublicAccess"
 	CreateBucketDetailsPublicAccessTypeObjectread     CreateBucketDetailsPublicAccessTypeEnum = "ObjectRead"
-	CreateBucketDetailsPublicAccessTypeUnknown        CreateBucketDetailsPublicAccessTypeEnum = "UNKNOWN"
 )
 
 var mappingCreateBucketDetailsPublicAccessType = map[string]CreateBucketDetailsPublicAccessTypeEnum{
 	"NoPublicAccess": CreateBucketDetailsPublicAccessTypeNopublicaccess,
 	"ObjectRead":     CreateBucketDetailsPublicAccessTypeObjectread,
-	"UNKNOWN":        CreateBucketDetailsPublicAccessTypeUnknown,
 }
 
 // GetCreateBucketDetailsPublicAccessTypeEnumValues Enumerates the set of values for CreateBucketDetailsPublicAccessType
 func GetCreateBucketDetailsPublicAccessTypeEnumValues() []CreateBucketDetailsPublicAccessTypeEnum {
 	values := make([]CreateBucketDetailsPublicAccessTypeEnum, 0)
 	for _, v := range mappingCreateBucketDetailsPublicAccessType {
-		if v != CreateBucketDetailsPublicAccessTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
