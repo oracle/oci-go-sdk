@@ -1,11 +1,9 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
-// Code generated. DO NOT EDIT.
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
+//
+// Example code for Core Services API
+//
 
-// Database Service API
-//
-// The API for the Database Service.
-//
-package example
+package core_test
 
 import (
 	"context"
@@ -14,6 +12,7 @@ import (
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/core"
+	"github.com/oracle/oci-go-sdk/example/helper"
 )
 
 // replace following variables with your instance info
@@ -25,11 +24,11 @@ const (
 )
 
 // ExampleLaunchInstance does create an instance
-// NOTE: launch instance will create a new instance and VNC. please make sure delete the instance
+// NOTE: launch instance will create a new instance and VCN. please make sure delete the instance
 // after execute this sample code, otherwise, you will be charged for the running instance
 func ExampleLaunchInstance() {
 	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	LogIfError(err)
+	helper.LogIfError(err)
 
 	// create the launch instance request
 	request := core.LaunchInstanceRequest{}
@@ -38,10 +37,10 @@ func ExampleLaunchInstance() {
 	request.AvailabilityDomain = common.String(availabilityDomain)
 
 	// create a virtual network
-	vnc := createVcn()
+	vcn := createVcn()
 
 	// create a subnet
-	subnet := createSubnet(vnc.Id)
+	subnet := createSubnet(vcn.Id)
 	request.SubnetId = subnet.Id
 
 	// get a image
@@ -53,7 +52,7 @@ func ExampleLaunchInstance() {
 	request.Shape = shapes[0].Shape
 
 	_, err = c.LaunchInstance(context.Background(), request)
-	LogIfError(err)
+	helper.LogIfError(err)
 
 	return
 }

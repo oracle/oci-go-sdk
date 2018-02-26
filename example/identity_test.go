@@ -1,18 +1,16 @@
-// Copyright (c) 2016, 2017, Oracle and/or its affiliates. All rights reserved.
-// Code generated. DO NOT EDIT.
-
-// Database Service API
+// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 //
-// The API for the Database Service.
+// Example code for Identity and Access Management Service API
 //
 
-package example
+package identity_test
 
 import (
 	"context"
 	"fmt"
 
 	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/example/helper"
 	"github.com/oracle/oci-go-sdk/identity"
 )
 
@@ -21,18 +19,18 @@ import (
 // the value for the compartment ID (remember that the tenancy is simply the root compartment).
 func ExampleListAvailabilityDomains() {
 	c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	LogIfError(err)
+	helper.LogIfError(err)
 
 	// The OCID of the tenancy containing the compartment.
 	tenancyID, err := common.DefaultConfigProvider().TenancyOCID()
-	LogIfError(err)
+	helper.LogIfError(err)
 
 	request := identity.ListAvailabilityDomainsRequest{
 		CompartmentId: &tenancyID,
 	}
 
 	r, err := c.ListAvailabilityDomains(context.Background(), request)
-	LogIfError(err)
+	helper.LogIfError(err)
 
 	fmt.Printf("List of available domains: %v", r.Items)
 	return
