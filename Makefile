@@ -39,7 +39,7 @@ $(TARGETS_BUILD): build-%:%
 	@(cd $< && go build -v)
 
 $(TARGETS_TEST): test-%:%
-	@(cd $< && OCI_GO_SDK_DEBUG=1 go test -v)
+	@(cd $< && go test -v)
 
 $(TARGETS_CLEAN): clean-%:%
 	@echo "cleaning $<"
