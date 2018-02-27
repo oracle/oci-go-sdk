@@ -117,6 +117,7 @@ func ExampleCreateLoadbalancer() {
 	// subnet deleted
 	// deleteing subnet
 	// subnet deleted
+	// deleteing VCN
 	// VCN deleted
 }
 

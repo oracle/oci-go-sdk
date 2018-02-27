@@ -7,7 +7,6 @@ package example
 import (
 	"context"
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/oracle/oci-go-sdk/audit"
@@ -26,10 +25,10 @@ func ExampleListEvents() {
 		EndTime:       &common.SDKTime{time.Now()},
 	}
 
-	resp, err := c.ListEvents(context.Background(), req)
+	_, err := c.ListEvents(context.Background(), req)
 	helpers.LogIfError(err)
 
-	log.Printf("events returned back: %v", resp.Items)
+	//log.Printf("events returned back: %v", resp.Items)
 	fmt.Println("list events completed")
 
 	// Output:

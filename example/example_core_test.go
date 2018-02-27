@@ -102,6 +102,7 @@ func ExampleLaunchInstance() {
 	// instance terminated
 	// deleteing subnet
 	// subnet deleted
+	// deleteing VCN
 	// VCN deleted
 }
 
@@ -126,9 +127,6 @@ func ExampleCreateImageDetails_Polymorphic() {
 	_, err = c.CreateImage(context.Background(), request)
 	helpers.LogIfError(err)
 	fmt.Println("image created")
-
-	// Output:
-	// image created
 }
 
 // CreateOrGetVcn either creates a new Virtual Cloud Network (VCN) or get the one already exist
@@ -356,8 +354,37 @@ func deleteVcn(ctx context.Context, c core.VirtualNetworkClient, id *string) {
 		VcnId: id,
 	}
 
+	fmt.Println("deleteing VCN")
 	_, err := c.DeleteVcn(ctx, request)
 	helpers.LogIfError(err)
+
+	getVcn := func() (interface{}, error) {
+		getReq := core.GetVcnRequest{
+			VcnId: id,
+		}
+
+		getResp, err := c.GetVcn(ctx, getReq)
+
+		if err != nil {
+			if getResp.RawResponse.StatusCode == 404 {
+				// resource cannot found which means it's been deleted in this case
+				return core.Vcn{LifecycleState: core.VcnLifecycleStateTerminated}, nil
+			}
+
+			return nil, err
+		}
+
+		return getResp, nil
+	}
+
+	// wait for lifecyle become terminated
+	helpers.LogIfError(
+		helpers.RetryUntilTrueOrError(
+			getVcn,
+			helpers.CheckLifecycleState(string(core.VcnLifecycleStateTerminated)),
+			time.Tick(10*time.Second),
+			time.After((5 * time.Minute))))
+
 	fmt.Println("VCN deleted")
 }
 

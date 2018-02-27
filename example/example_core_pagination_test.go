@@ -7,6 +7,7 @@ package example
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/core"
@@ -32,7 +33,7 @@ func ExampleListShapes_Pagination() {
 	for r, err := listShapesFunc(request); ; r, err = listShapesFunc(request) {
 		helpers.LogIfError(err)
 
-		fmt.Printf("list shapes returns: %v", r.Items)
+		log.Printf("list shapes returns: %v", r.Items)
 
 		if r.OpcNextPage != nil {
 			// if there are more items in next page, fetch items from next page
