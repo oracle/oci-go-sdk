@@ -16,7 +16,6 @@ import (
 var (
 	availabilityDomain string
 	compartmentID      string
-	rootCompartmentID  string
 )
 
 // ParseAgrs parse shared variables from environment variables, other samples should define their own
@@ -27,23 +26,14 @@ func ParseAgrs() {
 
 	availabilityDomain = os.Getenv("OCI_AVAILABILITY_DOMAIN")
 	compartmentID = os.Getenv("OCI_COMPARTMENT_ID")
-	rootCompartmentID = os.Getenv("OCI_ROOT_COMPARTMENT_ID")
 }
 
 // AvailabilityDomain return the aviailability domain defined in .env.sample file
 func AvailabilityDomain() *string {
-	return common.String("kIdk:PHX-AD-1")
-	//return common.String(availabilityDomain)
+	return common.String(availabilityDomain)
 }
 
 // CompartmentID return the compartment ID defined in .env.sample file
 func CompartmentID() *string {
-	return common.String("ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma")
-	//return common.String(compartmentID)
-}
-
-// RootCompartmentID return the root compartment ID defined in .env.sample file
-func RootCompartmentID() *string {
-	return common.String("ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma")
-	//return common.String(rootCompartmentID)
+	return common.String(compartmentID)
 }

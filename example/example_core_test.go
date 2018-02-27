@@ -16,13 +16,14 @@ import (
 	"github.com/oracle/oci-go-sdk/example/helpers"
 )
 
-// replace following variables with your instance info
 const (
+	vcnDisplayName     = "OCI-GOSDK-Sample-VCN"
+	subnetDisplayName1 = "OCI-GOSDK-Sample-Subnet1"
+	subnetDisplayName2 = "OCI-GOSDK-Sample-Subnet2"
+
+	// replace following variables with your instance info
 	// this is used by ExampleCreateImageDetails_Polymorphic
 	objectStorageURIWtihImage = "[The Object Storage URL for the image which will be used to create an image.]"
-	vcnDisplayName            = "OCI-GOSDK-Sample-VCN"
-	subnetDisplayName1        = "OCI-GOSDK-Sample-Subnet1"
-	subnetDisplayName2        = "OCI-GOSDK-Sample-Subnet2"
 )
 
 // ExampleLaunchInstance does create an instance
@@ -87,8 +88,9 @@ func ExampleLaunchInstance() {
 		client, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 		helpers.LogIfError(clerr)
 
-		deleteVcn(ctx, client, subnet.VcnId)
+		vcnID := subnet.VcnId
 		deleteSubnet(ctx, client, subnet.Id)
+		deleteVcn(ctx, client, vcnID)
 	}()
 
 	// Output:
@@ -98,9 +100,10 @@ func ExampleLaunchInstance() {
 	// list shapes
 	// instance created
 	// terminating instance
-	// VCN deleted
+	// instance terminated
 	// deleteing subnet
 	// subnet deleted
+	// VCN deleted
 }
 
 // ExampleCreateImageDetails_Polymorphic creates a boot disk image for the specified instance or
@@ -127,42 +130,6 @@ func ExampleCreateImageDetails_Polymorphic() {
 
 	// Output:
 	// image created
-}
-
-// ExampleListShapes_Pagination demostrate how to use page parameter
-func ExampleListShapes_Pagination() {
-	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(err)
-
-	request := core.ListShapesRequest{
-		CompartmentId: helpers.CompartmentID(),
-	}
-
-	// to show how pagination works, reduce number of items to return in a paginated "List" call
-	request.Limit = common.Int(2)
-
-	listShapesFunc := func(request core.ListShapesRequest) (core.ListShapesResponse, error) {
-		return c.ListShapes(context.Background(), request)
-	}
-
-	for r, err := listShapesFunc(request); ; r, err = listShapesFunc(request) {
-		helpers.LogIfError(err)
-
-		fmt.Printf("list shapes returns: %v", r.Items)
-
-		if r.OpcNextPage != nil {
-			// if there are more items in next page, fetch items from next page
-			request.Page = r.OpcNextPage
-		} else {
-			// no more result, break the loop
-			break
-		}
-	}
-
-	fmt.Println("list shapes completed")
-
-	// Output:
-	// list shapes completed
 }
 
 // CreateOrGetVcn either creates a new Virtual Cloud Network (VCN) or get the one already exist
@@ -380,6 +347,9 @@ func terminateInstance(ctx context.Context, c core.ComputeClient, id *string) {
 			helpers.CheckLifecycleState(string(core.InstanceLifecycleStateTerminated)),
 			time.Tick(10*time.Second),
 			time.After((5 * time.Minute))))
+
+	fmt.Println("instance terminated")
+
 }
 
 func deleteVcn(ctx context.Context, c core.VirtualNetworkClient, id *string) {
