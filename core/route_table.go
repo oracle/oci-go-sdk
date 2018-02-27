@@ -57,7 +57,6 @@ const (
 	RouteTableLifecycleStateAvailable    RouteTableLifecycleStateEnum = "AVAILABLE"
 	RouteTableLifecycleStateTerminating  RouteTableLifecycleStateEnum = "TERMINATING"
 	RouteTableLifecycleStateTerminated   RouteTableLifecycleStateEnum = "TERMINATED"
-	RouteTableLifecycleStateUnknown      RouteTableLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingRouteTableLifecycleState = map[string]RouteTableLifecycleStateEnum{
@@ -65,16 +64,13 @@ var mappingRouteTableLifecycleState = map[string]RouteTableLifecycleStateEnum{
 	"AVAILABLE":    RouteTableLifecycleStateAvailable,
 	"TERMINATING":  RouteTableLifecycleStateTerminating,
 	"TERMINATED":   RouteTableLifecycleStateTerminated,
-	"UNKNOWN":      RouteTableLifecycleStateUnknown,
 }
 
 // GetRouteTableLifecycleStateEnumValues Enumerates the set of values for RouteTableLifecycleState
 func GetRouteTableLifecycleStateEnumValues() []RouteTableLifecycleStateEnum {
 	values := make([]RouteTableLifecycleStateEnum, 0)
 	for _, v := range mappingRouteTableLifecycleState {
-		if v != RouteTableLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

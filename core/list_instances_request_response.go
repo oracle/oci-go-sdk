@@ -79,22 +79,18 @@ type ListInstancesSortByEnum string
 const (
 	ListInstancesSortByTimecreated ListInstancesSortByEnum = "TIMECREATED"
 	ListInstancesSortByDisplayname ListInstancesSortByEnum = "DISPLAYNAME"
-	ListInstancesSortByUnknown     ListInstancesSortByEnum = "UNKNOWN"
 )
 
 var mappingListInstancesSortBy = map[string]ListInstancesSortByEnum{
 	"TIMECREATED": ListInstancesSortByTimecreated,
 	"DISPLAYNAME": ListInstancesSortByDisplayname,
-	"UNKNOWN":     ListInstancesSortByUnknown,
 }
 
 // GetListInstancesSortByEnumValues Enumerates the set of values for ListInstancesSortBy
 func GetListInstancesSortByEnumValues() []ListInstancesSortByEnum {
 	values := make([]ListInstancesSortByEnum, 0)
 	for _, v := range mappingListInstancesSortBy {
-		if v != ListInstancesSortByUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -104,24 +100,20 @@ type ListInstancesSortOrderEnum string
 
 // Set of constants representing the allowable values for ListInstancesSortOrder
 const (
-	ListInstancesSortOrderAsc     ListInstancesSortOrderEnum = "ASC"
-	ListInstancesSortOrderDesc    ListInstancesSortOrderEnum = "DESC"
-	ListInstancesSortOrderUnknown ListInstancesSortOrderEnum = "UNKNOWN"
+	ListInstancesSortOrderAsc  ListInstancesSortOrderEnum = "ASC"
+	ListInstancesSortOrderDesc ListInstancesSortOrderEnum = "DESC"
 )
 
 var mappingListInstancesSortOrder = map[string]ListInstancesSortOrderEnum{
-	"ASC":     ListInstancesSortOrderAsc,
-	"DESC":    ListInstancesSortOrderDesc,
-	"UNKNOWN": ListInstancesSortOrderUnknown,
+	"ASC":  ListInstancesSortOrderAsc,
+	"DESC": ListInstancesSortOrderDesc,
 }
 
 // GetListInstancesSortOrderEnumValues Enumerates the set of values for ListInstancesSortOrder
 func GetListInstancesSortOrderEnumValues() []ListInstancesSortOrderEnum {
 	values := make([]ListInstancesSortOrderEnum, 0)
 	for _, v := range mappingListInstancesSortOrder {
-		if v != ListInstancesSortOrderUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

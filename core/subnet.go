@@ -112,7 +112,6 @@ const (
 	SubnetLifecycleStateAvailable    SubnetLifecycleStateEnum = "AVAILABLE"
 	SubnetLifecycleStateTerminating  SubnetLifecycleStateEnum = "TERMINATING"
 	SubnetLifecycleStateTerminated   SubnetLifecycleStateEnum = "TERMINATED"
-	SubnetLifecycleStateUnknown      SubnetLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingSubnetLifecycleState = map[string]SubnetLifecycleStateEnum{
@@ -120,16 +119,13 @@ var mappingSubnetLifecycleState = map[string]SubnetLifecycleStateEnum{
 	"AVAILABLE":    SubnetLifecycleStateAvailable,
 	"TERMINATING":  SubnetLifecycleStateTerminating,
 	"TERMINATED":   SubnetLifecycleStateTerminated,
-	"UNKNOWN":      SubnetLifecycleStateUnknown,
 }
 
 // GetSubnetLifecycleStateEnumValues Enumerates the set of values for SubnetLifecycleState
 func GetSubnetLifecycleStateEnumValues() []SubnetLifecycleStateEnum {
 	values := make([]SubnetLifecycleStateEnum, 0)
 	for _, v := range mappingSubnetLifecycleState {
-		if v != SubnetLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

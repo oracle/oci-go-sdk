@@ -62,7 +62,6 @@ const (
 	CustomerSecretKeyLifecycleStateInactive CustomerSecretKeyLifecycleStateEnum = "INACTIVE"
 	CustomerSecretKeyLifecycleStateDeleting CustomerSecretKeyLifecycleStateEnum = "DELETING"
 	CustomerSecretKeyLifecycleStateDeleted  CustomerSecretKeyLifecycleStateEnum = "DELETED"
-	CustomerSecretKeyLifecycleStateUnknown  CustomerSecretKeyLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingCustomerSecretKeyLifecycleState = map[string]CustomerSecretKeyLifecycleStateEnum{
@@ -71,16 +70,13 @@ var mappingCustomerSecretKeyLifecycleState = map[string]CustomerSecretKeyLifecyc
 	"INACTIVE": CustomerSecretKeyLifecycleStateInactive,
 	"DELETING": CustomerSecretKeyLifecycleStateDeleting,
 	"DELETED":  CustomerSecretKeyLifecycleStateDeleted,
-	"UNKNOWN":  CustomerSecretKeyLifecycleStateUnknown,
 }
 
 // GetCustomerSecretKeyLifecycleStateEnumValues Enumerates the set of values for CustomerSecretKeyLifecycleState
 func GetCustomerSecretKeyLifecycleStateEnumValues() []CustomerSecretKeyLifecycleStateEnum {
 	values := make([]CustomerSecretKeyLifecycleStateEnum, 0)
 	for _, v := range mappingCustomerSecretKeyLifecycleState {
-		if v != CustomerSecretKeyLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

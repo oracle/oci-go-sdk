@@ -59,7 +59,6 @@ const (
 	DbNodeLifecycleStateTerminating  DbNodeLifecycleStateEnum = "TERMINATING"
 	DbNodeLifecycleStateTerminated   DbNodeLifecycleStateEnum = "TERMINATED"
 	DbNodeLifecycleStateFailed       DbNodeLifecycleStateEnum = "FAILED"
-	DbNodeLifecycleStateUnknown      DbNodeLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingDbNodeLifecycleState = map[string]DbNodeLifecycleStateEnum{
@@ -72,16 +71,13 @@ var mappingDbNodeLifecycleState = map[string]DbNodeLifecycleStateEnum{
 	"TERMINATING":  DbNodeLifecycleStateTerminating,
 	"TERMINATED":   DbNodeLifecycleStateTerminated,
 	"FAILED":       DbNodeLifecycleStateFailed,
-	"UNKNOWN":      DbNodeLifecycleStateUnknown,
 }
 
 // GetDbNodeLifecycleStateEnumValues Enumerates the set of values for DbNodeLifecycleState
 func GetDbNodeLifecycleStateEnumValues() []DbNodeLifecycleStateEnum {
 	values := make([]DbNodeLifecycleStateEnum, 0)
 	for _, v := range mappingDbNodeLifecycleState {
-		if v != DbNodeLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

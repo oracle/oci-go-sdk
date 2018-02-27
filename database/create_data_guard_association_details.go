@@ -115,23 +115,19 @@ const (
 	CreateDataGuardAssociationDetailsProtectionModeAvailability CreateDataGuardAssociationDetailsProtectionModeEnum = "MAXIMUM_AVAILABILITY"
 	CreateDataGuardAssociationDetailsProtectionModePerformance  CreateDataGuardAssociationDetailsProtectionModeEnum = "MAXIMUM_PERFORMANCE"
 	CreateDataGuardAssociationDetailsProtectionModeProtection   CreateDataGuardAssociationDetailsProtectionModeEnum = "MAXIMUM_PROTECTION"
-	CreateDataGuardAssociationDetailsProtectionModeUnknown      CreateDataGuardAssociationDetailsProtectionModeEnum = "UNKNOWN"
 )
 
 var mappingCreateDataGuardAssociationDetailsProtectionMode = map[string]CreateDataGuardAssociationDetailsProtectionModeEnum{
 	"MAXIMUM_AVAILABILITY": CreateDataGuardAssociationDetailsProtectionModeAvailability,
 	"MAXIMUM_PERFORMANCE":  CreateDataGuardAssociationDetailsProtectionModePerformance,
 	"MAXIMUM_PROTECTION":   CreateDataGuardAssociationDetailsProtectionModeProtection,
-	"UNKNOWN":              CreateDataGuardAssociationDetailsProtectionModeUnknown,
 }
 
 // GetCreateDataGuardAssociationDetailsProtectionModeEnumValues Enumerates the set of values for CreateDataGuardAssociationDetailsProtectionMode
 func GetCreateDataGuardAssociationDetailsProtectionModeEnumValues() []CreateDataGuardAssociationDetailsProtectionModeEnum {
 	values := make([]CreateDataGuardAssociationDetailsProtectionModeEnum, 0)
 	for _, v := range mappingCreateDataGuardAssociationDetailsProtectionMode {
-		if v != CreateDataGuardAssociationDetailsProtectionModeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -144,23 +140,19 @@ const (
 	CreateDataGuardAssociationDetailsTransportTypeSync     CreateDataGuardAssociationDetailsTransportTypeEnum = "SYNC"
 	CreateDataGuardAssociationDetailsTransportTypeAsync    CreateDataGuardAssociationDetailsTransportTypeEnum = "ASYNC"
 	CreateDataGuardAssociationDetailsTransportTypeFastsync CreateDataGuardAssociationDetailsTransportTypeEnum = "FASTSYNC"
-	CreateDataGuardAssociationDetailsTransportTypeUnknown  CreateDataGuardAssociationDetailsTransportTypeEnum = "UNKNOWN"
 )
 
 var mappingCreateDataGuardAssociationDetailsTransportType = map[string]CreateDataGuardAssociationDetailsTransportTypeEnum{
 	"SYNC":     CreateDataGuardAssociationDetailsTransportTypeSync,
 	"ASYNC":    CreateDataGuardAssociationDetailsTransportTypeAsync,
 	"FASTSYNC": CreateDataGuardAssociationDetailsTransportTypeFastsync,
-	"UNKNOWN":  CreateDataGuardAssociationDetailsTransportTypeUnknown,
 }
 
 // GetCreateDataGuardAssociationDetailsTransportTypeEnumValues Enumerates the set of values for CreateDataGuardAssociationDetailsTransportType
 func GetCreateDataGuardAssociationDetailsTransportTypeEnumValues() []CreateDataGuardAssociationDetailsTransportTypeEnum {
 	values := make([]CreateDataGuardAssociationDetailsTransportTypeEnum, 0)
 	for _, v := range mappingCreateDataGuardAssociationDetailsTransportType {
-		if v != CreateDataGuardAssociationDetailsTransportTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

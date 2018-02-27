@@ -56,22 +56,18 @@ type BucketPublicAccessTypeEnum string
 const (
 	BucketPublicAccessTypeNopublicaccess BucketPublicAccessTypeEnum = "NoPublicAccess"
 	BucketPublicAccessTypeObjectread     BucketPublicAccessTypeEnum = "ObjectRead"
-	BucketPublicAccessTypeUnknown        BucketPublicAccessTypeEnum = "UNKNOWN"
 )
 
 var mappingBucketPublicAccessType = map[string]BucketPublicAccessTypeEnum{
 	"NoPublicAccess": BucketPublicAccessTypeNopublicaccess,
 	"ObjectRead":     BucketPublicAccessTypeObjectread,
-	"UNKNOWN":        BucketPublicAccessTypeUnknown,
 }
 
 // GetBucketPublicAccessTypeEnumValues Enumerates the set of values for BucketPublicAccessType
 func GetBucketPublicAccessTypeEnumValues() []BucketPublicAccessTypeEnum {
 	values := make([]BucketPublicAccessTypeEnum, 0)
 	for _, v := range mappingBucketPublicAccessType {
-		if v != BucketPublicAccessTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

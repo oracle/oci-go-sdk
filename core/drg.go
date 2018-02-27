@@ -53,7 +53,6 @@ const (
 	DrgLifecycleStateAvailable    DrgLifecycleStateEnum = "AVAILABLE"
 	DrgLifecycleStateTerminating  DrgLifecycleStateEnum = "TERMINATING"
 	DrgLifecycleStateTerminated   DrgLifecycleStateEnum = "TERMINATED"
-	DrgLifecycleStateUnknown      DrgLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingDrgLifecycleState = map[string]DrgLifecycleStateEnum{
@@ -61,16 +60,13 @@ var mappingDrgLifecycleState = map[string]DrgLifecycleStateEnum{
 	"AVAILABLE":    DrgLifecycleStateAvailable,
 	"TERMINATING":  DrgLifecycleStateTerminating,
 	"TERMINATED":   DrgLifecycleStateTerminated,
-	"UNKNOWN":      DrgLifecycleStateUnknown,
 }
 
 // GetDrgLifecycleStateEnumValues Enumerates the set of values for DrgLifecycleState
 func GetDrgLifecycleStateEnumValues() []DrgLifecycleStateEnum {
 	values := make([]DrgLifecycleStateEnum, 0)
 	for _, v := range mappingDrgLifecycleState {
-		if v != DrgLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

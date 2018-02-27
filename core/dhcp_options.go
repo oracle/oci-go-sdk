@@ -96,7 +96,6 @@ const (
 	DhcpOptionsLifecycleStateAvailable    DhcpOptionsLifecycleStateEnum = "AVAILABLE"
 	DhcpOptionsLifecycleStateTerminating  DhcpOptionsLifecycleStateEnum = "TERMINATING"
 	DhcpOptionsLifecycleStateTerminated   DhcpOptionsLifecycleStateEnum = "TERMINATED"
-	DhcpOptionsLifecycleStateUnknown      DhcpOptionsLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingDhcpOptionsLifecycleState = map[string]DhcpOptionsLifecycleStateEnum{
@@ -104,16 +103,13 @@ var mappingDhcpOptionsLifecycleState = map[string]DhcpOptionsLifecycleStateEnum{
 	"AVAILABLE":    DhcpOptionsLifecycleStateAvailable,
 	"TERMINATING":  DhcpOptionsLifecycleStateTerminating,
 	"TERMINATED":   DhcpOptionsLifecycleStateTerminated,
-	"UNKNOWN":      DhcpOptionsLifecycleStateUnknown,
 }
 
 // GetDhcpOptionsLifecycleStateEnumValues Enumerates the set of values for DhcpOptionsLifecycleState
 func GetDhcpOptionsLifecycleStateEnumValues() []DhcpOptionsLifecycleStateEnum {
 	values := make([]DhcpOptionsLifecycleStateEnum, 0)
 	for _, v := range mappingDhcpOptionsLifecycleState {
-		if v != DhcpOptionsLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

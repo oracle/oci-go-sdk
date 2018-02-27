@@ -82,7 +82,6 @@ const (
 	VcnLifecycleStateAvailable    VcnLifecycleStateEnum = "AVAILABLE"
 	VcnLifecycleStateTerminating  VcnLifecycleStateEnum = "TERMINATING"
 	VcnLifecycleStateTerminated   VcnLifecycleStateEnum = "TERMINATED"
-	VcnLifecycleStateUnknown      VcnLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingVcnLifecycleState = map[string]VcnLifecycleStateEnum{
@@ -90,16 +89,13 @@ var mappingVcnLifecycleState = map[string]VcnLifecycleStateEnum{
 	"AVAILABLE":    VcnLifecycleStateAvailable,
 	"TERMINATING":  VcnLifecycleStateTerminating,
 	"TERMINATED":   VcnLifecycleStateTerminated,
-	"UNKNOWN":      VcnLifecycleStateUnknown,
 }
 
 // GetVcnLifecycleStateEnumValues Enumerates the set of values for VcnLifecycleState
 func GetVcnLifecycleStateEnumValues() []VcnLifecycleStateEnum {
 	values := make([]VcnLifecycleStateEnum, 0)
 	for _, v := range mappingVcnLifecycleState {
-		if v != VcnLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

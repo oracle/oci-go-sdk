@@ -72,7 +72,6 @@ const (
 	DatabaseSummaryLifecycleStateTerminated       DatabaseSummaryLifecycleStateEnum = "TERMINATED"
 	DatabaseSummaryLifecycleStateRestoreFailed    DatabaseSummaryLifecycleStateEnum = "RESTORE_FAILED"
 	DatabaseSummaryLifecycleStateFailed           DatabaseSummaryLifecycleStateEnum = "FAILED"
-	DatabaseSummaryLifecycleStateUnknown          DatabaseSummaryLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingDatabaseSummaryLifecycleState = map[string]DatabaseSummaryLifecycleStateEnum{
@@ -84,16 +83,13 @@ var mappingDatabaseSummaryLifecycleState = map[string]DatabaseSummaryLifecycleSt
 	"TERMINATED":         DatabaseSummaryLifecycleStateTerminated,
 	"RESTORE_FAILED":     DatabaseSummaryLifecycleStateRestoreFailed,
 	"FAILED":             DatabaseSummaryLifecycleStateFailed,
-	"UNKNOWN":            DatabaseSummaryLifecycleStateUnknown,
 }
 
 // GetDatabaseSummaryLifecycleStateEnumValues Enumerates the set of values for DatabaseSummaryLifecycleState
 func GetDatabaseSummaryLifecycleStateEnumValues() []DatabaseSummaryLifecycleStateEnum {
 	values := make([]DatabaseSummaryLifecycleStateEnum, 0)
 	for _, v := range mappingDatabaseSummaryLifecycleState {
-		if v != DatabaseSummaryLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

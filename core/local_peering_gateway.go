@@ -75,7 +75,6 @@ const (
 	LocalPeeringGatewayLifecycleStateAvailable    LocalPeeringGatewayLifecycleStateEnum = "AVAILABLE"
 	LocalPeeringGatewayLifecycleStateTerminating  LocalPeeringGatewayLifecycleStateEnum = "TERMINATING"
 	LocalPeeringGatewayLifecycleStateTerminated   LocalPeeringGatewayLifecycleStateEnum = "TERMINATED"
-	LocalPeeringGatewayLifecycleStateUnknown      LocalPeeringGatewayLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingLocalPeeringGatewayLifecycleState = map[string]LocalPeeringGatewayLifecycleStateEnum{
@@ -83,16 +82,13 @@ var mappingLocalPeeringGatewayLifecycleState = map[string]LocalPeeringGatewayLif
 	"AVAILABLE":    LocalPeeringGatewayLifecycleStateAvailable,
 	"TERMINATING":  LocalPeeringGatewayLifecycleStateTerminating,
 	"TERMINATED":   LocalPeeringGatewayLifecycleStateTerminated,
-	"UNKNOWN":      LocalPeeringGatewayLifecycleStateUnknown,
 }
 
 // GetLocalPeeringGatewayLifecycleStateEnumValues Enumerates the set of values for LocalPeeringGatewayLifecycleState
 func GetLocalPeeringGatewayLifecycleStateEnumValues() []LocalPeeringGatewayLifecycleStateEnum {
 	values := make([]LocalPeeringGatewayLifecycleStateEnum, 0)
 	for _, v := range mappingLocalPeeringGatewayLifecycleState {
-		if v != LocalPeeringGatewayLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -107,7 +103,6 @@ const (
 	LocalPeeringGatewayPeeringStatusPeered  LocalPeeringGatewayPeeringStatusEnum = "PEERED"
 	LocalPeeringGatewayPeeringStatusPending LocalPeeringGatewayPeeringStatusEnum = "PENDING"
 	LocalPeeringGatewayPeeringStatusRevoked LocalPeeringGatewayPeeringStatusEnum = "REVOKED"
-	LocalPeeringGatewayPeeringStatusUnknown LocalPeeringGatewayPeeringStatusEnum = "UNKNOWN"
 )
 
 var mappingLocalPeeringGatewayPeeringStatus = map[string]LocalPeeringGatewayPeeringStatusEnum{
@@ -116,16 +111,13 @@ var mappingLocalPeeringGatewayPeeringStatus = map[string]LocalPeeringGatewayPeer
 	"PEERED":  LocalPeeringGatewayPeeringStatusPeered,
 	"PENDING": LocalPeeringGatewayPeeringStatusPending,
 	"REVOKED": LocalPeeringGatewayPeeringStatusRevoked,
-	"UNKNOWN": LocalPeeringGatewayPeeringStatusUnknown,
 }
 
 // GetLocalPeeringGatewayPeeringStatusEnumValues Enumerates the set of values for LocalPeeringGatewayPeeringStatus
 func GetLocalPeeringGatewayPeeringStatusEnumValues() []LocalPeeringGatewayPeeringStatusEnum {
 	values := make([]LocalPeeringGatewayPeeringStatusEnum, 0)
 	for _, v := range mappingLocalPeeringGatewayPeeringStatus {
-		if v != LocalPeeringGatewayPeeringStatusUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

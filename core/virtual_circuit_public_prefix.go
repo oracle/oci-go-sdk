@@ -40,23 +40,19 @@ const (
 	VirtualCircuitPublicPrefixVerificationStateInProgress VirtualCircuitPublicPrefixVerificationStateEnum = "IN_PROGRESS"
 	VirtualCircuitPublicPrefixVerificationStateCompleted  VirtualCircuitPublicPrefixVerificationStateEnum = "COMPLETED"
 	VirtualCircuitPublicPrefixVerificationStateFailed     VirtualCircuitPublicPrefixVerificationStateEnum = "FAILED"
-	VirtualCircuitPublicPrefixVerificationStateUnknown    VirtualCircuitPublicPrefixVerificationStateEnum = "UNKNOWN"
 )
 
 var mappingVirtualCircuitPublicPrefixVerificationState = map[string]VirtualCircuitPublicPrefixVerificationStateEnum{
 	"IN_PROGRESS": VirtualCircuitPublicPrefixVerificationStateInProgress,
 	"COMPLETED":   VirtualCircuitPublicPrefixVerificationStateCompleted,
 	"FAILED":      VirtualCircuitPublicPrefixVerificationStateFailed,
-	"UNKNOWN":     VirtualCircuitPublicPrefixVerificationStateUnknown,
 }
 
 // GetVirtualCircuitPublicPrefixVerificationStateEnumValues Enumerates the set of values for VirtualCircuitPublicPrefixVerificationState
 func GetVirtualCircuitPublicPrefixVerificationStateEnumValues() []VirtualCircuitPublicPrefixVerificationStateEnum {
 	values := make([]VirtualCircuitPublicPrefixVerificationStateEnum, 0)
 	for _, v := range mappingVirtualCircuitPublicPrefixVerificationState {
-		if v != VirtualCircuitPublicPrefixVerificationStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

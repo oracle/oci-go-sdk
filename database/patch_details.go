@@ -35,22 +35,18 @@ type PatchDetailsActionEnum string
 const (
 	PatchDetailsActionApply    PatchDetailsActionEnum = "APPLY"
 	PatchDetailsActionPrecheck PatchDetailsActionEnum = "PRECHECK"
-	PatchDetailsActionUnknown  PatchDetailsActionEnum = "UNKNOWN"
 )
 
 var mappingPatchDetailsAction = map[string]PatchDetailsActionEnum{
 	"APPLY":    PatchDetailsActionApply,
 	"PRECHECK": PatchDetailsActionPrecheck,
-	"UNKNOWN":  PatchDetailsActionUnknown,
 }
 
 // GetPatchDetailsActionEnumValues Enumerates the set of values for PatchDetailsAction
 func GetPatchDetailsActionEnumValues() []PatchDetailsActionEnum {
 	values := make([]PatchDetailsActionEnum, 0)
 	for _, v := range mappingPatchDetailsAction {
-		if v != PatchDetailsActionUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

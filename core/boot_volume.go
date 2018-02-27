@@ -65,7 +65,6 @@ const (
 	BootVolumeLifecycleStateTerminating  BootVolumeLifecycleStateEnum = "TERMINATING"
 	BootVolumeLifecycleStateTerminated   BootVolumeLifecycleStateEnum = "TERMINATED"
 	BootVolumeLifecycleStateFaulty       BootVolumeLifecycleStateEnum = "FAULTY"
-	BootVolumeLifecycleStateUnknown      BootVolumeLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingBootVolumeLifecycleState = map[string]BootVolumeLifecycleStateEnum{
@@ -75,16 +74,13 @@ var mappingBootVolumeLifecycleState = map[string]BootVolumeLifecycleStateEnum{
 	"TERMINATING":  BootVolumeLifecycleStateTerminating,
 	"TERMINATED":   BootVolumeLifecycleStateTerminated,
 	"FAULTY":       BootVolumeLifecycleStateFaulty,
-	"UNKNOWN":      BootVolumeLifecycleStateUnknown,
 }
 
 // GetBootVolumeLifecycleStateEnumValues Enumerates the set of values for BootVolumeLifecycleState
 func GetBootVolumeLifecycleStateEnumValues() []BootVolumeLifecycleStateEnum {
 	values := make([]BootVolumeLifecycleStateEnum, 0)
 	for _, v := range mappingBootVolumeLifecycleState {
-		if v != BootVolumeLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

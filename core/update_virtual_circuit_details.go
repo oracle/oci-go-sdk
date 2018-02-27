@@ -73,22 +73,18 @@ type UpdateVirtualCircuitDetailsProviderStateEnum string
 const (
 	UpdateVirtualCircuitDetailsProviderStateActive   UpdateVirtualCircuitDetailsProviderStateEnum = "ACTIVE"
 	UpdateVirtualCircuitDetailsProviderStateInactive UpdateVirtualCircuitDetailsProviderStateEnum = "INACTIVE"
-	UpdateVirtualCircuitDetailsProviderStateUnknown  UpdateVirtualCircuitDetailsProviderStateEnum = "UNKNOWN"
 )
 
 var mappingUpdateVirtualCircuitDetailsProviderState = map[string]UpdateVirtualCircuitDetailsProviderStateEnum{
 	"ACTIVE":   UpdateVirtualCircuitDetailsProviderStateActive,
 	"INACTIVE": UpdateVirtualCircuitDetailsProviderStateInactive,
-	"UNKNOWN":  UpdateVirtualCircuitDetailsProviderStateUnknown,
 }
 
 // GetUpdateVirtualCircuitDetailsProviderStateEnumValues Enumerates the set of values for UpdateVirtualCircuitDetailsProviderState
 func GetUpdateVirtualCircuitDetailsProviderStateEnumValues() []UpdateVirtualCircuitDetailsProviderStateEnum {
 	values := make([]UpdateVirtualCircuitDetailsProviderStateEnum, 0)
 	for _, v := range mappingUpdateVirtualCircuitDetailsProviderState {
-		if v != UpdateVirtualCircuitDetailsProviderStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

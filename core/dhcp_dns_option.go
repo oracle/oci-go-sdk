@@ -63,23 +63,19 @@ const (
 	DhcpDnsOptionServerTypeVcnlocal             DhcpDnsOptionServerTypeEnum = "VcnLocal"
 	DhcpDnsOptionServerTypeVcnlocalplusinternet DhcpDnsOptionServerTypeEnum = "VcnLocalPlusInternet"
 	DhcpDnsOptionServerTypeCustomdnsserver      DhcpDnsOptionServerTypeEnum = "CustomDnsServer"
-	DhcpDnsOptionServerTypeUnknown              DhcpDnsOptionServerTypeEnum = "UNKNOWN"
 )
 
 var mappingDhcpDnsOptionServerType = map[string]DhcpDnsOptionServerTypeEnum{
 	"VcnLocal":             DhcpDnsOptionServerTypeVcnlocal,
 	"VcnLocalPlusInternet": DhcpDnsOptionServerTypeVcnlocalplusinternet,
 	"CustomDnsServer":      DhcpDnsOptionServerTypeCustomdnsserver,
-	"UNKNOWN":              DhcpDnsOptionServerTypeUnknown,
 }
 
 // GetDhcpDnsOptionServerTypeEnumValues Enumerates the set of values for DhcpDnsOptionServerType
 func GetDhcpDnsOptionServerTypeEnumValues() []DhcpDnsOptionServerTypeEnum {
 	values := make([]DhcpDnsOptionServerTypeEnum, 0)
 	for _, v := range mappingDhcpDnsOptionServerType {
-		if v != DhcpDnsOptionServerTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

@@ -63,7 +63,6 @@ const (
 	IpSecConnectionLifecycleStateAvailable    IpSecConnectionLifecycleStateEnum = "AVAILABLE"
 	IpSecConnectionLifecycleStateTerminating  IpSecConnectionLifecycleStateEnum = "TERMINATING"
 	IpSecConnectionLifecycleStateTerminated   IpSecConnectionLifecycleStateEnum = "TERMINATED"
-	IpSecConnectionLifecycleStateUnknown      IpSecConnectionLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingIpSecConnectionLifecycleState = map[string]IpSecConnectionLifecycleStateEnum{
@@ -71,16 +70,13 @@ var mappingIpSecConnectionLifecycleState = map[string]IpSecConnectionLifecycleSt
 	"AVAILABLE":    IpSecConnectionLifecycleStateAvailable,
 	"TERMINATING":  IpSecConnectionLifecycleStateTerminating,
 	"TERMINATED":   IpSecConnectionLifecycleStateTerminated,
-	"UNKNOWN":      IpSecConnectionLifecycleStateUnknown,
 }
 
 // GetIpSecConnectionLifecycleStateEnumValues Enumerates the set of values for IpSecConnectionLifecycleState
 func GetIpSecConnectionLifecycleStateEnumValues() []IpSecConnectionLifecycleStateEnum {
 	values := make([]IpSecConnectionLifecycleStateEnum, 0)
 	for _, v := range mappingIpSecConnectionLifecycleState {
-		if v != IpSecConnectionLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

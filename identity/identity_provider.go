@@ -165,7 +165,6 @@ const (
 	IdentityProviderLifecycleStateInactive IdentityProviderLifecycleStateEnum = "INACTIVE"
 	IdentityProviderLifecycleStateDeleting IdentityProviderLifecycleStateEnum = "DELETING"
 	IdentityProviderLifecycleStateDeleted  IdentityProviderLifecycleStateEnum = "DELETED"
-	IdentityProviderLifecycleStateUnknown  IdentityProviderLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingIdentityProviderLifecycleState = map[string]IdentityProviderLifecycleStateEnum{
@@ -174,16 +173,13 @@ var mappingIdentityProviderLifecycleState = map[string]IdentityProviderLifecycle
 	"INACTIVE": IdentityProviderLifecycleStateInactive,
 	"DELETING": IdentityProviderLifecycleStateDeleting,
 	"DELETED":  IdentityProviderLifecycleStateDeleted,
-	"UNKNOWN":  IdentityProviderLifecycleStateUnknown,
 }
 
 // GetIdentityProviderLifecycleStateEnumValues Enumerates the set of values for IdentityProviderLifecycleState
 func GetIdentityProviderLifecycleStateEnumValues() []IdentityProviderLifecycleStateEnum {
 	values := make([]IdentityProviderLifecycleStateEnum, 0)
 	for _, v := range mappingIdentityProviderLifecycleState {
-		if v != IdentityProviderLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

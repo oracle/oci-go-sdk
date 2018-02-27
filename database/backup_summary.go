@@ -62,7 +62,6 @@ const (
 	BackupSummaryLifecycleStateDeleted   BackupSummaryLifecycleStateEnum = "DELETED"
 	BackupSummaryLifecycleStateFailed    BackupSummaryLifecycleStateEnum = "FAILED"
 	BackupSummaryLifecycleStateRestoring BackupSummaryLifecycleStateEnum = "RESTORING"
-	BackupSummaryLifecycleStateUnknown   BackupSummaryLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingBackupSummaryLifecycleState = map[string]BackupSummaryLifecycleStateEnum{
@@ -72,16 +71,13 @@ var mappingBackupSummaryLifecycleState = map[string]BackupSummaryLifecycleStateE
 	"DELETED":   BackupSummaryLifecycleStateDeleted,
 	"FAILED":    BackupSummaryLifecycleStateFailed,
 	"RESTORING": BackupSummaryLifecycleStateRestoring,
-	"UNKNOWN":   BackupSummaryLifecycleStateUnknown,
 }
 
 // GetBackupSummaryLifecycleStateEnumValues Enumerates the set of values for BackupSummaryLifecycleState
 func GetBackupSummaryLifecycleStateEnumValues() []BackupSummaryLifecycleStateEnum {
 	values := make([]BackupSummaryLifecycleStateEnum, 0)
 	for _, v := range mappingBackupSummaryLifecycleState {
-		if v != BackupSummaryLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -93,22 +89,18 @@ type BackupSummaryTypeEnum string
 const (
 	BackupSummaryTypeIncremental BackupSummaryTypeEnum = "INCREMENTAL"
 	BackupSummaryTypeFull        BackupSummaryTypeEnum = "FULL"
-	BackupSummaryTypeUnknown     BackupSummaryTypeEnum = "UNKNOWN"
 )
 
 var mappingBackupSummaryType = map[string]BackupSummaryTypeEnum{
 	"INCREMENTAL": BackupSummaryTypeIncremental,
 	"FULL":        BackupSummaryTypeFull,
-	"UNKNOWN":     BackupSummaryTypeUnknown,
 }
 
 // GetBackupSummaryTypeEnumValues Enumerates the set of values for BackupSummaryType
 func GetBackupSummaryTypeEnumValues() []BackupSummaryTypeEnum {
 	values := make([]BackupSummaryTypeEnum, 0)
 	for _, v := range mappingBackupSummaryType {
-		if v != BackupSummaryTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

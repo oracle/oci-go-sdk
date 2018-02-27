@@ -64,7 +64,6 @@ const (
 	DbNodeActionActionStart     DbNodeActionActionEnum = "START"
 	DbNodeActionActionSoftreset DbNodeActionActionEnum = "SOFTRESET"
 	DbNodeActionActionReset     DbNodeActionActionEnum = "RESET"
-	DbNodeActionActionUnknown   DbNodeActionActionEnum = "UNKNOWN"
 )
 
 var mappingDbNodeActionAction = map[string]DbNodeActionActionEnum{
@@ -72,16 +71,13 @@ var mappingDbNodeActionAction = map[string]DbNodeActionActionEnum{
 	"START":     DbNodeActionActionStart,
 	"SOFTRESET": DbNodeActionActionSoftreset,
 	"RESET":     DbNodeActionActionReset,
-	"UNKNOWN":   DbNodeActionActionUnknown,
 }
 
 // GetDbNodeActionActionEnumValues Enumerates the set of values for DbNodeActionAction
 func GetDbNodeActionActionEnumValues() []DbNodeActionActionEnum {
 	values := make([]DbNodeActionActionEnum, 0)
 	for _, v := range mappingDbNodeActionAction {
-		if v != DbNodeActionActionUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
