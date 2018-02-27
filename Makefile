@@ -4,7 +4,7 @@ GEN_TARGETS = identity core objectstorage loadbalancer database audit
 NON_GEN_TARGETS = common common/auth
 TARGETS = $(NON_GEN_TARGETS) $(GEN_TARGETS)
 
-TARGETS_WITH_TESTS = common common/auth integtest
+TARGETS_WITH_TESTS = common common/auth
 TARGETS_BUILD = $(patsubst %,build-%, $(TARGETS))
 TARGETS_CLEAN = $(patsubst %,clean-%, $(GEN_TARGETS))
 TARGETS_LINT = $(patsubst %,lint-%, $(TARGETS))
