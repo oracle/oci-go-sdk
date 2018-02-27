@@ -1,85 +1,231 @@
 
 /*
-Package oci This is a preview of the official go sdk for Oracle Cloud Infrastructure
+This is the official Go SDK for Oracle Cloud Infrastructure
 
-	To avoid breaking changes please consider using https://github.com/golang/dep, or vendoring this sdk.
-	Although we make a conscious effort to not push breaking changes, sometimes they are needed. This is particularly true at the current stage
-	of development.
+Installation
 
-Working with the SDK
+Refer to https://github.com/oracle/oci-go-sdk/blob/master/README.md#installing for installation instructions.
 
-Generally speaking, you can start working with the sdk by importing the service package, creating a client,
-and making calls with client.
+Configuration
 
-Configuring
+Refer to https://github.com/oracle/oci-go-sdk/blob/master/README.md#configuring for configuration instructions.
 
-You can configure the sdk with your credentials by creating a settings file in: $HOME/.oci/config that looks like the following:
-	 [DEFAULT]
-	 user=[user ocid]
-	 fingerprint=[fingerprint]
-	 key_file=[path to pem file containing private key]
-	 tenancy=[tenancy ocid]
-	 region=[region for your tenancy]
+Quickstart
 
-and calling the common.DefaultConfigProvider() function like so:
+The following example shows how to get started with the SDK. The example belows creates an identityClient
+struct with the default configuration. It then utilizes the identityClient to list availability domains and prints
+them out to stdout
 
-	 // Do not forget to import the necessary packages
-	 import (
+	import (
+		"context"
+		"fmt"
+
 		"github.com/oracle/oci-go-sdk/common"
-		"github.com/oracle/oci-go-sdk/identity" // Identity or any other service you wish to call
+		"github.com/oracle/oci-go-sdk/identity"
 	)
 
-	configProvider := common.DefaultConfigProvider()
+	func main() {
+		c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+		if err != nil {
+			fmt.Println("Error:", err)
+			return
+		}
 
-You can also configure the sdk programmatically by implementing the `ConfigurationProvider` interface
-	// ConfigurationProvider wraps information about the account owner
-	type ConfigurationProvider interface {
-		KeyProvider
-		TenancyOCID() (string, error)
-		UserOCID() (string, error)
-		KeyFingerprint() (string, error)
-		Region() (string, error)
+		// The OCID of the tenancy containing the compartment.
+		tenancyID, err := common.DefaultConfigProvider().TenancyOCID()
+		if err != nil {
+			fmt.Println("Error:", err)
+			return
+		}
+
+		request := identity.ListAvailabilityDomainsRequest{
+			CompartmentId: &tenancyID,
+		}
+
+		r, err := c.ListAvailabilityDomains(context.Background(), request)
+		if err != nil {
+			fmt.Println("Error:", err)
+			return
+		}
+
+		fmt.Printf("List of available domains: %v", r.Items)
+		return
+	}
+
+More examples can be found in the SDK Github repo: https://github.com/oracle/oci-go-sdk/tree/master/example
+
+Optional fields in the SDK
+
+Optional fields are represented with the `mandatory:"false"` tag on input structs. The SDK will omit all optional fields that are nil when making requests.
+In the case of enum-type fields, the SDK will omit fields whose value is an empty string.
+
+Helper functions
+
+The SDK uses pointers for primitive types in many input structs. To aid in the construction of such structs, the SDK provides
+functions that return a pointer for a given value. For example:
+
+	// Given the struct
+	type CreateVcnDetails struct {
+
+		// Example: `172.16.0.0/16`
+		CidrBlock *string `mandatory:"true" json:"cidrBlock"`
+
+		CompartmentId *string `mandatory:"true" json:"compartmentId"`
+
+		DisplayName *string `mandatory:"false" json:"displayName"`
+
+	}
+
+	// We can use the helper functions to build the struct
+	details := core.CreateVcnDetails{
+		CidrBlock:     common.String("172.16.0.0/16"),
+		CompartmentId: common.String("someOcid"),
+		DisplayName:   common.String("myVcn"),
 	}
 
 
-Making a request
+Signing custom requests
 
-Making request can be achieved by: creating a client for the service that you wish to work with, followed by calling
-the a function in the above client
-- Creating a client: all packages provide a function to create clients. It is of the form `NewXXXClientWithConfigurationProvider`.
-You can create a new client by passing a struct that conforms to the `ConfigurationProvider` interface.
-Here is a quick example that shows how to create a client
-	config := common.DefaultConfigProvider()
-	client, err := identity.NewIdentityClientWithConfigurationProvider(config)
-	if err != nil {
-		 panic(err)
+The SDK exposes a stand-alone signer that can be used to signing custom requests. Related code can be found here:
+https://github.com/oracle/oci-go-sdk/blob/master/common/http_signer.go.
+
+The example below shows how to create a default signer.
+
+	client := http.Client{}
+	var request http.Request
+	request = ... // some custom request
+
+	// Set the Date header
+	request.Header.Set("Date", time.Now().UTC().Format(http.TimeFormat))
+
+	// And a provider of cryptographic keys
+	provider := common.DefaultConfigProvider()
+
+	// Build the signer
+	signer := common.DefaultSigner(provider)
+
+	// Sign the request
+	signer.Sign(&request)
+
+	// Execute the request
+	client.Do(request)
+
+
+
+The signer also allows more granular control on the headers used for signing. For example:
+
+	client := http.Client{}
+	var request http.Request
+	request = ... // some custom request
+
+	// Set the Date header
+	request.Header.Set("Date", time.Now().UTC().Format(http.TimeFormat))
+
+	// Mandatory headers to be used in the sign process
+	defaultGenericHeaders    = []string{"date", "(request-target)", "host"}
+
+	// Optional headers
+	optionalHeaders = []string{"content-length", "content-type", "x-content-sha256"}
+
+	// A predicate that specifies when to use the optional signing headers
+	optionalHeadersPredicate := func (r *http.Request) bool {
+		return r.Method == http.MethodPost
 	}
 
-- Making calls: after successfully creating client, you can now make calls to the service. Generally all operations
-functions take in  a context.Context (https://golang.org/pkg/context/) and a struct that wraps all input parameters. The return is usually a response struct
-containing the desired data,  and an error struct describing the error if there was one, eg:
-	response, err := client.GetGroup(context.Background(), identity.GetGroupRequest{GroupId:id})
+	// And a provider of cryptographic keys
+	provider := common.DefaultConfigProvider()
+
+	// Build the signer
+	signer := common.RequestSigner(provider, defaultGenericHeaders, optionalHeaders, optionalHeadersPredicate)
+
+	// Sign the request
+	signer.Sign(&request)
+
+	// Execute the request
+	c.Do(request)
+
+For more information on the signing algorithm refer to: https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/signingrequests.htm
+
+Polymorphic json requests and responses
+
+Some operations accept or return polymorphic json objects. The SDK models such objects as interfaces. Further the SDK provides
+structs that implement such interfaces. Thus, for all operations that expect interfaces as input, pass the struct in the SDK that satisfies
+such interface. For example:
+
+	c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	if err != nil {
-		//Something happened
 		panic(err)
 	}
-	//Process the data in response struct
-	fmt.Println("Group's name is:", response.Name)
 
-Organization of the SDK
+	// The CreateIdentityProviderRequest takes a CreateIdentityProviderDetails interface as input
+	rCreate := identity.CreateIdentityProviderRequest{}
 
-The oci-go-sdk is broken down into:
+	// The CreateSaml2IdentityProviderDetails struct implements the CreateIdentityProviderDetails interface
+	details := identity.CreateSaml2IdentityProviderDetails{}
+	details.CompartmentId = common.String(getTenancyID())
+	details.Name = common.String("someName")
+	//... more setup if needed
+	// Use the above struct
+	rCreate.CreateIdentityProviderDetails = details
 
-- service packages: all packages except `common` and any other package found inside `cmd`. They represent Oracle Cloud Infrastructure services supported by the go sdk.
-Each package represents a service. These packages include methods to interact with the service, structs that model
-input and output parameters and a client struct that acts as receiver for the above methods. All code in these packages
-is machine generated.
+	// Make the call
+	rspCreate, createErr := c.CreateIdentityProvider(context.Background(), rCreate)
 
-- common package: found in the `common` directory. The common package provides supporting functions and structs used by service packages,
-including: http request/response (de)serialization, request signing, json parsing, pointer to reference and other helper functions. Thought
-there are some functions in this package that are meant for user consumption, most of them are meant to be used by the service packages.
+In the case of a polymorphic response you can type assert the interface to the expected type. For example:
 
-- cmd: internal tools used by the `oci-go-sdk`
+	rRead := identity.GetIdentityProviderRequest{}
+	rRead.IdentityProviderId = common.String("aValidId")
+	response, err := c.GetIdentityProvider(context.Background(), rRead)
+
+	provider := response.IdentityProvider.(identity.Saml2IdentityProvider)
+
+An example of polymorphic json request handling can be found here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_core_test.go#L63
+
+
+Pagination
+
+When calling a list operation, the operation will retrieve a page of results. To retrieve more data, call the list operation again,
+passing in the value of the most recent response's OpcNextPage as the value of Page in the next list operation call.
+When there is no more data the OpcNextPage field will be nil. An example of pagination using this logic can be found here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_core_test.go#L86
+
+Logging and Debugging
+
+The SDK has a built-in logging mechanism used internally. The internal logging logic is used to record the raw http
+requests, responses and potential errors when (un)marshalling request and responses.
+
+To expose debugging logs, set the environment variable "OCI_GO_SDK_DEBUG" to "1", or some other non empty string.
+
+
+Forward Compatibility
+
+Some response fields are enum-typed. In the future, individual services may return values not covered by existing enums
+for that field. To address this possibility, every enum-type response field is a modeled as a type that supports any string.
+Thus if a service returns a value that is not recognized by your version of the SDK, then the response field will be set to this value.
+
+When individual services return a polymorphic json response not available as a concrete struct, the SDK will return an implementation that only satisfies
+the interface modeling the polymorphic json response.
+
+
+Contributions
+
+Got a fix for a bug, or a new feature you'd like to contribute? The SDK is open source and accepting pull requests on GitHub
+https://github.com/oracle/oci-go-sdk
+
+License
+
+Licensing information available at: https://github.com/oracle/oci-go-sdk/blob/master/LICENSE.txt
+
+Notifications
+
+To be notified when a new version of the Go SDK is released, subscribe to the following feed: https://github.com/oracle/oci-go-sdk/releases.atom
+
+Questions or Feedback
+
+Please refer to this link: https://github.com/oracle/oci-go-sdk#help
+
+
+
+
  */
 package oci
 

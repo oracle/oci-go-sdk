@@ -65,8 +65,8 @@ func RequestSigner(provider KeyProvider, genericHeaders, bodyHeaders []string) H
 		ShouldHashBody: defaultBodyHashPredicate}
 }
 
-// RequestSignerWithBodyHashingPredicate creates a signer that utilizes the specified header for signing, as well as a predicate for using
-// the body of the request as part of the signature
+// RequestSignerWithBodyHashingPredicate creates a signer that utilizes the specified headers for signing, as well as a predicate for using
+// the body of the request and bodyHeaders parameter as part of the signature
 func RequestSignerWithBodyHashingPredicate(provider KeyProvider, genericHeaders, bodyHeaders []string, shouldHashBody SignerBodyHashPredicate) HTTPRequestSigner {
 	return ociRequestSigner{
 		KeyProvider:    provider,
