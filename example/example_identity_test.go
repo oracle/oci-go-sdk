@@ -3,14 +3,15 @@
 // Example code for Identity and Access Management Service API
 //
 
-package identity_test
+package example
 
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"github.com/oracle/oci-go-sdk/common"
-	"github.com/oracle/oci-go-sdk/example/helper"
+	"github.com/oracle/oci-go-sdk/example/helpers"
 	"github.com/oracle/oci-go-sdk/identity"
 )
 
@@ -19,19 +20,22 @@ import (
 // the value for the compartment ID (remember that the tenancy is simply the root compartment).
 func ExampleListAvailabilityDomains() {
 	c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helper.LogIfError(err)
+	helpers.LogIfError(err)
 
 	// The OCID of the tenancy containing the compartment.
 	tenancyID, err := common.DefaultConfigProvider().TenancyOCID()
-	helper.LogIfError(err)
+	helpers.LogIfError(err)
 
 	request := identity.ListAvailabilityDomainsRequest{
 		CompartmentId: &tenancyID,
 	}
 
 	r, err := c.ListAvailabilityDomains(context.Background(), request)
-	helper.LogIfError(err)
+	helpers.LogIfError(err)
 
-	fmt.Printf("List of available domains: %v", r.Items)
-	return
+	log.Printf("list of available domains: %v", r.Items)
+	fmt.Println("list available domains completed")
+
+	// Output:
+	// list available domains completed
 }
