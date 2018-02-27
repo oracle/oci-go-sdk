@@ -83,7 +83,7 @@ func defaultHTTPDispatcher() http.Client {
 
 func defaultBaseClient(provider KeyProvider) BaseClient {
 	dispatcher := defaultHTTPDispatcher()
-	signer := defaultRequestSigner(provider)
+	signer := DefaultRequestSigner(provider)
 	return newBaseClient(signer, &dispatcher)
 }
 
