@@ -11,6 +11,11 @@ import (
 	"github.com/oracle/oci-go-sdk/example/helpers"
 )
 
+// Update the .env.sampe file with your tenancy info.
+// To run individual samples:
+//   go test github.com/oracle/oci-go-sdk/example -run ^ExampleLaunchInstance$
+// To run all samples:
+//   go test github.com/oracle/oci-go-sdk/example
 func TestMain(m *testing.M) {
 	// parse the arguments defined in .env.sample file
 	helpers.ParseAgrs()
