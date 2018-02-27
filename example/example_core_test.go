@@ -94,7 +94,6 @@ func ExampleLaunchInstance() {
 	}()
 
 	// Output:
-	// VCN created
 	// subnet created
 	// list images
 	// list shapes
