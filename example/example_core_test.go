@@ -31,6 +31,7 @@ const (
 func ExampleLaunchInstance() {
 	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.LogIfError(err)
+	ctx := context.Background()
 
 	// create the launch instance request
 	request := core.LaunchInstanceRequest{}
@@ -40,41 +41,33 @@ func ExampleLaunchInstance() {
 
 	// create a subnet or get the one already created
 	subnet := CreateOrGetSubnet()
-	fmt.Println("Subnet created")
+	fmt.Println("subnet created")
 	request.SubnetId = subnet.Id
-	helpers.AddResource(*subnet.Id, "ExampleLaunchInstance_Subnet")
-	helpers.AddResource(*subnet.VcnId, "ExampleLaunchInstance_VCN")
 
 	// get a image
-	image := listImages()[0]
+	image := listImages(ctx, c)[0]
 	fmt.Println("list images")
 	request.ImageId = image.Id
 
 	// get all the shapes and filter the list by compatibility with the image
-	shapes := listShapes(request.ImageId)
+	shapes := listShapes(ctx, c, request.ImageId)
 	fmt.Println("list shapes")
 	request.Shape = shapes[0].Shape
 
-	createResp, err := c.LaunchInstance(context.Background(), request)
+	createResp, err := c.LaunchInstance(ctx, request)
 	helpers.LogIfError(err)
 	fmt.Println("instance created")
-	helpers.AddResource(*createResp.Id, "ExampleLaunchInstance_Instance")
 
 	// get new created instance
 	getInstance := func() (interface{}, error) {
-		c, clerr := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-		if clerr != nil {
-			return nil, clerr
-		}
-
 		request := core.GetInstanceRequest{
 			InstanceId: createResp.Instance.Id,
 		}
 
-		readResp, err := c.GetInstance(context.Background(), request)
+		readResp, err := c.GetInstance(ctx, request)
 
 		if err != nil {
-			return nil, clerr
+			return nil, err
 		}
 
 		return readResp, err
@@ -88,12 +81,26 @@ func ExampleLaunchInstance() {
 			time.Tick(10*time.Second),
 			time.After((5 * time.Minute))))
 
+	defer func() {
+		terminateInstance(ctx, c, createResp.Id)
+
+		client, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
+		helpers.LogIfError(clerr)
+
+		deleteVcn(ctx, client, subnet.VcnId)
+		deleteSubnet(ctx, client, subnet.Id)
+	}()
+
 	// Output:
 	// VCN created
-	// Subnet created
+	// subnet created
 	// list images
 	// list shapes
 	// instance created
+	// terminating instance
+	// VCN deleted
+	// deleteing subnet
+	// subnet deleted
 }
 
 // ExampleCreateImageDetails_Polymorphic creates a boot disk image for the specified instance or
@@ -160,7 +167,11 @@ func ExampleListShapes_Pagination() {
 
 // CreateOrGetVcn either creates a new Virtual Cloud Network (VCN) or get the one already exist
 func CreateOrGetVcn() core.Vcn {
-	vcnItems := listVcns()
+	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.LogIfError(clerr)
+	ctx := context.Background()
+
+	vcnItems := listVcns(ctx, c)
 
 	for _, element := range vcnItems {
 		if *element.DisplayName == vcnDisplayName {
@@ -170,16 +181,13 @@ func CreateOrGetVcn() core.Vcn {
 	}
 
 	// create a new VCN
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(clerr)
-
 	request := core.CreateVcnRequest{}
 	request.CidrBlock = common.String("10.0.0.0/16")
 	request.CompartmentId = helpers.CompartmentID()
 	request.DisplayName = common.String(vcnDisplayName)
 	request.DnsLabel = common.String("vcndns")
 
-	r, err := c.CreateVcn(context.Background(), request)
+	r, err := c.CreateVcn(ctx, request)
 	helpers.LogIfError(err)
 	return r.Vcn
 }
@@ -196,7 +204,11 @@ func CreateOrGetSubnet() core.Subnet {
 // CreateOrGetSubnetWithDetails either creates a new Virtual Cloud Network (VCN) or get the one already exist
 // with detail info
 func CreateOrGetSubnetWithDetails(displayName *string, cidrBlock *string, dnsLabel *string, availableDomain *string) core.Subnet {
-	subnets := listSubnets()
+	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.LogIfError(clerr)
+	ctx := context.Background()
+
+	subnets := listSubnets(ctx, c)
 
 	if displayName == nil {
 		displayName = common.String(subnetDisplayName1)
@@ -211,19 +223,17 @@ func CreateOrGetSubnetWithDetails(displayName *string, cidrBlock *string, dnsLab
 	}
 
 	// create a new subnet
-	vcn := CreateOrGetVcn()
 	request := core.CreateSubnetRequest{}
 	request.AvailabilityDomain = availableDomain
 	request.CompartmentId = helpers.CompartmentID()
 	request.CidrBlock = cidrBlock
-	request.VcnId = vcn.Id
 	request.DisplayName = displayName
 	request.DnsLabel = dnsLabel
 
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(clerr)
+	vcn := CreateOrGetVcn()
+	request.VcnId = vcn.Id
 
-	r, err := c.CreateSubnet(context.Background(), request)
+	r, err := c.CreateSubnet(ctx, request)
 	helpers.LogIfError(err)
 
 	getSubnet := func() (interface{}, error) {
@@ -231,7 +241,7 @@ func CreateOrGetSubnetWithDetails(displayName *string, cidrBlock *string, dnsLab
 			SubnetId: r.Id,
 		}
 
-		getResp, err := c.GetSubnet(context.Background(), getReq)
+		getResp, err := c.GetSubnet(ctx, getReq)
 
 		if err != nil {
 			return nil, err
@@ -253,7 +263,7 @@ func CreateOrGetSubnetWithDetails(displayName *string, cidrBlock *string, dnsLab
 		SecurityListId: common.String(r.SecurityListIds[0]),
 	}
 
-	getResp, err := c.GetSecurityList(context.Background(), getReq)
+	getResp, err := c.GetSecurityList(ctx, getReq)
 	helpers.LogIfError(err)
 
 	// this security rule allows remote control the instance
@@ -276,65 +286,55 @@ func CreateOrGetSubnetWithDetails(displayName *string, cidrBlock *string, dnsLab
 
 	updateReq.IngressSecurityRules = newRules
 
-	_, err = c.UpdateSecurityList(context.Background(), updateReq)
+	_, err = c.UpdateSecurityList(ctx, updateReq)
 	helpers.LogIfError(err)
 
 	return r.Subnet
 }
 
-func listVcns() []core.Vcn {
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(clerr)
+func listVcns(ctx context.Context, c core.VirtualNetworkClient) []core.Vcn {
 	request := core.ListVcnsRequest{
 		CompartmentId: helpers.CompartmentID(),
 	}
 
-	r, err := c.ListVcns(context.Background(), request)
+	r, err := c.ListVcns(ctx, request)
 	helpers.LogIfError(err)
 	return r.Items
 }
 
-func listSubnets() []core.Subnet {
+func listSubnets(ctx context.Context, c core.VirtualNetworkClient) []core.Subnet {
 	vcn := CreateOrGetVcn()
 
-	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(clerr)
 	request := core.ListSubnetsRequest{
 		CompartmentId: helpers.CompartmentID(),
 		VcnId:         vcn.Id,
 	}
 
-	r, err := c.ListSubnets(context.Background(), request)
+	r, err := c.ListSubnets(ctx, request)
 	helpers.LogIfError(err)
 	return r.Items
 }
 
 // ListImages lists the available images in the specified compartment.
-func listImages() []core.Image {
+func listImages(ctx context.Context, c core.ComputeClient) []core.Image {
 	request := core.ListImagesRequest{
 		CompartmentId: helpers.CompartmentID(),
 	}
 
-	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(err)
-
-	r, err := c.ListImages(context.Background(), request)
+	r, err := c.ListImages(ctx, request)
 	helpers.LogIfError(err)
 
 	return r.Items
 }
 
 // ListShapes Lists the shapes that can be used to launch an instance within the specified compartment.
-func listShapes(imageID *string) []core.Shape {
-	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(err)
-
+func listShapes(ctx context.Context, c core.ComputeClient, imageID *string) []core.Shape {
 	request := core.ListShapesRequest{
 		CompartmentId: helpers.CompartmentID(),
 		ImageId:       imageID,
 	}
 
-	r, err := c.ListShapes(context.Background(), request)
+	r, err := c.ListShapes(ctx, request)
 	helpers.LogIfError(err)
 
 	if r.Items == nil || len(r.Items) == 0 {
@@ -344,10 +344,90 @@ func listShapes(imageID *string) []core.Shape {
 	return r.Items
 }
 
-func terminateInstance(id *string) {
+func terminateInstance(ctx context.Context, c core.ComputeClient, id *string) {
+	request := core.TerminateInstanceRequest{
+		InstanceId: id,
+	}
 
+	_, err := c.TerminateInstance(ctx, request)
+	helpers.LogIfError(err)
+
+	fmt.Println("terminating instance")
+
+	// get new created instance
+	getInstance := func() (interface{}, error) {
+		request := core.GetInstanceRequest{
+			InstanceId: id,
+		}
+
+		readResp, err := c.GetInstance(ctx, request)
+
+		if err != nil {
+			if readResp.RawResponse.StatusCode == 404 {
+				// cannot find resources which means it's been deleted
+				return core.Instance{LifecycleState: core.InstanceLifecycleStateTerminated}, nil
+			}
+			return nil, err
+		}
+
+		return readResp, err
+	}
+
+	// wait for instance lifecyle become terminated
+	helpers.LogIfError(
+		helpers.RetryUntilTrueOrError(
+			getInstance,
+			helpers.CheckLifecycleState(string(core.InstanceLifecycleStateTerminated)),
+			time.Tick(10*time.Second),
+			time.After((5 * time.Minute))))
 }
 
-func deleteVcn(id *string) {}
+func deleteVcn(ctx context.Context, c core.VirtualNetworkClient, id *string) {
+	request := core.DeleteVcnRequest{
+		VcnId: id,
+	}
 
-func deleteSubnet(id *string) {}
+	_, err := c.DeleteVcn(ctx, request)
+	helpers.LogIfError(err)
+	fmt.Println("VCN deleted")
+}
+
+func deleteSubnet(ctx context.Context, c core.VirtualNetworkClient, id *string) {
+	request := core.DeleteSubnetRequest{
+		SubnetId: id,
+	}
+
+	_, err := c.DeleteSubnet(context.Background(), request)
+	helpers.LogIfError(err)
+
+	fmt.Println("deleteing subnet")
+
+	getSubnet := func() (interface{}, error) {
+		getReq := core.GetSubnetRequest{
+			SubnetId: id,
+		}
+
+		getResp, err := c.GetSubnet(ctx, getReq)
+
+		if err != nil {
+			if getResp.RawResponse.StatusCode == 404 {
+				// resource cannot found which means it's been deleted in this case
+				return core.Subnet{LifecycleState: core.SubnetLifecycleStateTerminated}, nil
+			}
+
+			return nil, err
+		}
+
+		return getResp, nil
+	}
+
+	// wait for lifecyle become terminated
+	helpers.LogIfError(
+		helpers.RetryUntilTrueOrError(
+			getSubnet,
+			helpers.CheckLifecycleState(string(core.SubnetLifecycleStateTerminated)),
+			time.Tick(10*time.Second),
+			time.After((5 * time.Minute))))
+
+	fmt.Println("subnet deleted")
+}

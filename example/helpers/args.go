@@ -7,7 +7,6 @@ package helpers
 
 import (
 	"os"
-	"strconv"
 
 	"github.com/oracle/oci-go-sdk/common"
 
@@ -17,7 +16,7 @@ import (
 var (
 	availabilityDomain string
 	compartmentID      string
-	cleanUpResources   bool
+	rootCompartmentID  string
 )
 
 // ParseAgrs parse shared variables from environment variables, other samples should define their own
@@ -28,23 +27,23 @@ func ParseAgrs() {
 
 	availabilityDomain = os.Getenv("OCI_AVAILABILITY_DOMAIN")
 	compartmentID = os.Getenv("OCI_COMPARTMENT_ID")
-	cleanUpResources, err = strconv.ParseBool(os.Getenv("OCI_CLEAN_RESOURCES"))
-	LogIfError(err)
+	rootCompartmentID = os.Getenv("OCI_ROOT_COMPARTMENT_ID")
 }
 
-// AvailabilityDomain return the aviailability domain defined in .env.sample file or from command line
+// AvailabilityDomain return the aviailability domain defined in .env.sample file
 func AvailabilityDomain() *string {
 	return common.String("kIdk:PHX-AD-1")
 	//return common.String(availabilityDomain)
 }
 
-// CompartmentID return the compartment ID defined in .env.sample file or from command line
+// CompartmentID return the compartment ID defined in .env.sample file
 func CompartmentID() *string {
 	return common.String("ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma")
 	//return common.String(compartmentID)
 }
 
-// ShouldCleanupResources return a flag indicates clean up the resources or not
-func ShouldCleanupResources() bool {
-	return cleanUpResources
+// RootCompartmentID return the root compartment ID defined in .env.sample file
+func RootCompartmentID() *string {
+	return common.String("ocid1.compartment.oc1..aaaaaaaa5dvrjzvfn3rub24nczhih3zb3a673b6tmbvpng3j5apobtxshlma")
+	//return common.String(rootCompartmentID)
 }

@@ -8,6 +8,7 @@ package helpers
 import (
 	"fmt"
 	"log"
+	"math/rand"
 	"reflect"
 	"strings"
 	"time"
@@ -93,6 +94,18 @@ func CheckLifecycleState(lifecycleState string) func(interface{}) (bool, error) 
 			return false, err
 		}
 		isEqual := fieldLifecycle == lifecycleState
+		log.Printf("Current lifecycle state is: %s, waiting for it becomes to: %s", fieldLifecycle, lifecycleState)
 		return isEqual, nil
 	}
+}
+
+// GetRandomString returns a random string with length equals to n
+func GetRandomString(n int) string {
+	letters := []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+	b := make([]rune, n)
+	for i := range b {
+		b[i] = letters[rand.Intn(len(letters))]
+	}
+	return string(b)
 }
