@@ -49,22 +49,18 @@ type PatchHistoryEntryActionEnum string
 const (
 	PatchHistoryEntryActionApply    PatchHistoryEntryActionEnum = "APPLY"
 	PatchHistoryEntryActionPrecheck PatchHistoryEntryActionEnum = "PRECHECK"
-	PatchHistoryEntryActionUnknown  PatchHistoryEntryActionEnum = "UNKNOWN"
 )
 
 var mappingPatchHistoryEntryAction = map[string]PatchHistoryEntryActionEnum{
 	"APPLY":    PatchHistoryEntryActionApply,
 	"PRECHECK": PatchHistoryEntryActionPrecheck,
-	"UNKNOWN":  PatchHistoryEntryActionUnknown,
 }
 
 // GetPatchHistoryEntryActionEnumValues Enumerates the set of values for PatchHistoryEntryAction
 func GetPatchHistoryEntryActionEnumValues() []PatchHistoryEntryActionEnum {
 	values := make([]PatchHistoryEntryActionEnum, 0)
 	for _, v := range mappingPatchHistoryEntryAction {
-		if v != PatchHistoryEntryActionUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -77,23 +73,19 @@ const (
 	PatchHistoryEntryLifecycleStateInProgress PatchHistoryEntryLifecycleStateEnum = "IN_PROGRESS"
 	PatchHistoryEntryLifecycleStateSucceeded  PatchHistoryEntryLifecycleStateEnum = "SUCCEEDED"
 	PatchHistoryEntryLifecycleStateFailed     PatchHistoryEntryLifecycleStateEnum = "FAILED"
-	PatchHistoryEntryLifecycleStateUnknown    PatchHistoryEntryLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingPatchHistoryEntryLifecycleState = map[string]PatchHistoryEntryLifecycleStateEnum{
 	"IN_PROGRESS": PatchHistoryEntryLifecycleStateInProgress,
 	"SUCCEEDED":   PatchHistoryEntryLifecycleStateSucceeded,
 	"FAILED":      PatchHistoryEntryLifecycleStateFailed,
-	"UNKNOWN":     PatchHistoryEntryLifecycleStateUnknown,
 }
 
 // GetPatchHistoryEntryLifecycleStateEnumValues Enumerates the set of values for PatchHistoryEntryLifecycleState
 func GetPatchHistoryEntryLifecycleStateEnumValues() []PatchHistoryEntryLifecycleStateEnum {
 	values := make([]PatchHistoryEntryLifecycleStateEnum, 0)
 	for _, v := range mappingPatchHistoryEntryLifecycleState {
-		if v != PatchHistoryEntryLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

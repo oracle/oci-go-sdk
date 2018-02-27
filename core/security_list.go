@@ -65,7 +65,6 @@ const (
 	SecurityListLifecycleStateAvailable    SecurityListLifecycleStateEnum = "AVAILABLE"
 	SecurityListLifecycleStateTerminating  SecurityListLifecycleStateEnum = "TERMINATING"
 	SecurityListLifecycleStateTerminated   SecurityListLifecycleStateEnum = "TERMINATED"
-	SecurityListLifecycleStateUnknown      SecurityListLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingSecurityListLifecycleState = map[string]SecurityListLifecycleStateEnum{
@@ -73,16 +72,13 @@ var mappingSecurityListLifecycleState = map[string]SecurityListLifecycleStateEnu
 	"AVAILABLE":    SecurityListLifecycleStateAvailable,
 	"TERMINATING":  SecurityListLifecycleStateTerminating,
 	"TERMINATED":   SecurityListLifecycleStateTerminated,
-	"UNKNOWN":      SecurityListLifecycleStateUnknown,
 }
 
 // GetSecurityListLifecycleStateEnumValues Enumerates the set of values for SecurityListLifecycleState
 func GetSecurityListLifecycleStateEnumValues() []SecurityListLifecycleStateEnum {
 	values := make([]SecurityListLifecycleStateEnum, 0)
 	for _, v := range mappingSecurityListLifecycleState {
-		if v != SecurityListLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

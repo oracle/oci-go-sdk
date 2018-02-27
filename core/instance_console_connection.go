@@ -51,7 +51,6 @@ const (
 	InstanceConsoleConnectionLifecycleStateDeleted  InstanceConsoleConnectionLifecycleStateEnum = "DELETED"
 	InstanceConsoleConnectionLifecycleStateDeleting InstanceConsoleConnectionLifecycleStateEnum = "DELETING"
 	InstanceConsoleConnectionLifecycleStateFailed   InstanceConsoleConnectionLifecycleStateEnum = "FAILED"
-	InstanceConsoleConnectionLifecycleStateUnknown  InstanceConsoleConnectionLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingInstanceConsoleConnectionLifecycleState = map[string]InstanceConsoleConnectionLifecycleStateEnum{
@@ -60,16 +59,13 @@ var mappingInstanceConsoleConnectionLifecycleState = map[string]InstanceConsoleC
 	"DELETED":  InstanceConsoleConnectionLifecycleStateDeleted,
 	"DELETING": InstanceConsoleConnectionLifecycleStateDeleting,
 	"FAILED":   InstanceConsoleConnectionLifecycleStateFailed,
-	"UNKNOWN":  InstanceConsoleConnectionLifecycleStateUnknown,
 }
 
 // GetInstanceConsoleConnectionLifecycleStateEnumValues Enumerates the set of values for InstanceConsoleConnectionLifecycleState
 func GetInstanceConsoleConnectionLifecycleStateEnumValues() []InstanceConsoleConnectionLifecycleStateEnum {
 	values := make([]InstanceConsoleConnectionLifecycleStateEnum, 0)
 	for _, v := range mappingInstanceConsoleConnectionLifecycleState {
-		if v != InstanceConsoleConnectionLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

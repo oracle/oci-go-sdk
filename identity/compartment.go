@@ -68,7 +68,6 @@ const (
 	CompartmentLifecycleStateInactive CompartmentLifecycleStateEnum = "INACTIVE"
 	CompartmentLifecycleStateDeleting CompartmentLifecycleStateEnum = "DELETING"
 	CompartmentLifecycleStateDeleted  CompartmentLifecycleStateEnum = "DELETED"
-	CompartmentLifecycleStateUnknown  CompartmentLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingCompartmentLifecycleState = map[string]CompartmentLifecycleStateEnum{
@@ -77,16 +76,13 @@ var mappingCompartmentLifecycleState = map[string]CompartmentLifecycleStateEnum{
 	"INACTIVE": CompartmentLifecycleStateInactive,
 	"DELETING": CompartmentLifecycleStateDeleting,
 	"DELETED":  CompartmentLifecycleStateDeleted,
-	"UNKNOWN":  CompartmentLifecycleStateUnknown,
 }
 
 // GetCompartmentLifecycleStateEnumValues Enumerates the set of values for CompartmentLifecycleState
 func GetCompartmentLifecycleStateEnumValues() []CompartmentLifecycleStateEnum {
 	values := make([]CompartmentLifecycleStateEnum, 0)
 	for _, v := range mappingCompartmentLifecycleState {
-		if v != CompartmentLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

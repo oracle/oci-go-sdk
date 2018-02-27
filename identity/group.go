@@ -64,7 +64,6 @@ const (
 	GroupLifecycleStateInactive GroupLifecycleStateEnum = "INACTIVE"
 	GroupLifecycleStateDeleting GroupLifecycleStateEnum = "DELETING"
 	GroupLifecycleStateDeleted  GroupLifecycleStateEnum = "DELETED"
-	GroupLifecycleStateUnknown  GroupLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingGroupLifecycleState = map[string]GroupLifecycleStateEnum{
@@ -73,16 +72,13 @@ var mappingGroupLifecycleState = map[string]GroupLifecycleStateEnum{
 	"INACTIVE": GroupLifecycleStateInactive,
 	"DELETING": GroupLifecycleStateDeleting,
 	"DELETED":  GroupLifecycleStateDeleted,
-	"UNKNOWN":  GroupLifecycleStateUnknown,
 }
 
 // GetGroupLifecycleStateEnumValues Enumerates the set of values for GroupLifecycleState
 func GetGroupLifecycleStateEnumValues() []GroupLifecycleStateEnum {
 	values := make([]GroupLifecycleStateEnum, 0)
 	for _, v := range mappingGroupLifecycleState {
-		if v != GroupLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

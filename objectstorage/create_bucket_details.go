@@ -45,22 +45,18 @@ type CreateBucketDetailsPublicAccessTypeEnum string
 const (
 	CreateBucketDetailsPublicAccessTypeNopublicaccess CreateBucketDetailsPublicAccessTypeEnum = "NoPublicAccess"
 	CreateBucketDetailsPublicAccessTypeObjectread     CreateBucketDetailsPublicAccessTypeEnum = "ObjectRead"
-	CreateBucketDetailsPublicAccessTypeUnknown        CreateBucketDetailsPublicAccessTypeEnum = "UNKNOWN"
 )
 
 var mappingCreateBucketDetailsPublicAccessType = map[string]CreateBucketDetailsPublicAccessTypeEnum{
 	"NoPublicAccess": CreateBucketDetailsPublicAccessTypeNopublicaccess,
 	"ObjectRead":     CreateBucketDetailsPublicAccessTypeObjectread,
-	"UNKNOWN":        CreateBucketDetailsPublicAccessTypeUnknown,
 }
 
 // GetCreateBucketDetailsPublicAccessTypeEnumValues Enumerates the set of values for CreateBucketDetailsPublicAccessType
 func GetCreateBucketDetailsPublicAccessTypeEnumValues() []CreateBucketDetailsPublicAccessTypeEnum {
 	values := make([]CreateBucketDetailsPublicAccessTypeEnum, 0)
 	for _, v := range mappingCreateBucketDetailsPublicAccessType {
-		if v != CreateBucketDetailsPublicAccessTypeUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

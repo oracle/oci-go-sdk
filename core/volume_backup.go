@@ -75,7 +75,6 @@ const (
 	VolumeBackupLifecycleStateTerminated      VolumeBackupLifecycleStateEnum = "TERMINATED"
 	VolumeBackupLifecycleStateFaulty          VolumeBackupLifecycleStateEnum = "FAULTY"
 	VolumeBackupLifecycleStateRequestReceived VolumeBackupLifecycleStateEnum = "REQUEST_RECEIVED"
-	VolumeBackupLifecycleStateUnknown         VolumeBackupLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingVolumeBackupLifecycleState = map[string]VolumeBackupLifecycleStateEnum{
@@ -85,16 +84,13 @@ var mappingVolumeBackupLifecycleState = map[string]VolumeBackupLifecycleStateEnu
 	"TERMINATED":       VolumeBackupLifecycleStateTerminated,
 	"FAULTY":           VolumeBackupLifecycleStateFaulty,
 	"REQUEST_RECEIVED": VolumeBackupLifecycleStateRequestReceived,
-	"UNKNOWN":          VolumeBackupLifecycleStateUnknown,
 }
 
 // GetVolumeBackupLifecycleStateEnumValues Enumerates the set of values for VolumeBackupLifecycleState
 func GetVolumeBackupLifecycleStateEnumValues() []VolumeBackupLifecycleStateEnum {
 	values := make([]VolumeBackupLifecycleStateEnum, 0)
 	for _, v := range mappingVolumeBackupLifecycleState {
-		if v != VolumeBackupLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

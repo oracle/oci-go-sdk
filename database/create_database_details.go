@@ -47,24 +47,20 @@ type CreateDatabaseDetailsDbWorkloadEnum string
 
 // Set of constants representing the allowable values for CreateDatabaseDetailsDbWorkload
 const (
-	CreateDatabaseDetailsDbWorkloadOltp    CreateDatabaseDetailsDbWorkloadEnum = "OLTP"
-	CreateDatabaseDetailsDbWorkloadDss     CreateDatabaseDetailsDbWorkloadEnum = "DSS"
-	CreateDatabaseDetailsDbWorkloadUnknown CreateDatabaseDetailsDbWorkloadEnum = "UNKNOWN"
+	CreateDatabaseDetailsDbWorkloadOltp CreateDatabaseDetailsDbWorkloadEnum = "OLTP"
+	CreateDatabaseDetailsDbWorkloadDss  CreateDatabaseDetailsDbWorkloadEnum = "DSS"
 )
 
 var mappingCreateDatabaseDetailsDbWorkload = map[string]CreateDatabaseDetailsDbWorkloadEnum{
-	"OLTP":    CreateDatabaseDetailsDbWorkloadOltp,
-	"DSS":     CreateDatabaseDetailsDbWorkloadDss,
-	"UNKNOWN": CreateDatabaseDetailsDbWorkloadUnknown,
+	"OLTP": CreateDatabaseDetailsDbWorkloadOltp,
+	"DSS":  CreateDatabaseDetailsDbWorkloadDss,
 }
 
 // GetCreateDatabaseDetailsDbWorkloadEnumValues Enumerates the set of values for CreateDatabaseDetailsDbWorkload
 func GetCreateDatabaseDetailsDbWorkloadEnumValues() []CreateDatabaseDetailsDbWorkloadEnum {
 	values := make([]CreateDatabaseDetailsDbWorkloadEnum, 0)
 	for _, v := range mappingCreateDatabaseDetailsDbWorkload {
-		if v != CreateDatabaseDetailsDbWorkloadUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

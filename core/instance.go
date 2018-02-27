@@ -147,7 +147,6 @@ const (
 	InstanceLifecycleStateCreatingImage InstanceLifecycleStateEnum = "CREATING_IMAGE"
 	InstanceLifecycleStateTerminating   InstanceLifecycleStateEnum = "TERMINATING"
 	InstanceLifecycleStateTerminated    InstanceLifecycleStateEnum = "TERMINATED"
-	InstanceLifecycleStateUnknown       InstanceLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingInstanceLifecycleState = map[string]InstanceLifecycleStateEnum{
@@ -159,16 +158,13 @@ var mappingInstanceLifecycleState = map[string]InstanceLifecycleStateEnum{
 	"CREATING_IMAGE": InstanceLifecycleStateCreatingImage,
 	"TERMINATING":    InstanceLifecycleStateTerminating,
 	"TERMINATED":     InstanceLifecycleStateTerminated,
-	"UNKNOWN":        InstanceLifecycleStateUnknown,
 }
 
 // GetInstanceLifecycleStateEnumValues Enumerates the set of values for InstanceLifecycleState
 func GetInstanceLifecycleStateEnumValues() []InstanceLifecycleStateEnum {
 	values := make([]InstanceLifecycleStateEnum, 0)
 	for _, v := range mappingInstanceLifecycleState {
-		if v != InstanceLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

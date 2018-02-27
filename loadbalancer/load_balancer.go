@@ -84,7 +84,6 @@ const (
 	LoadBalancerLifecycleStateActive   LoadBalancerLifecycleStateEnum = "ACTIVE"
 	LoadBalancerLifecycleStateDeleting LoadBalancerLifecycleStateEnum = "DELETING"
 	LoadBalancerLifecycleStateDeleted  LoadBalancerLifecycleStateEnum = "DELETED"
-	LoadBalancerLifecycleStateUnknown  LoadBalancerLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingLoadBalancerLifecycleState = map[string]LoadBalancerLifecycleStateEnum{
@@ -93,16 +92,13 @@ var mappingLoadBalancerLifecycleState = map[string]LoadBalancerLifecycleStateEnu
 	"ACTIVE":   LoadBalancerLifecycleStateActive,
 	"DELETING": LoadBalancerLifecycleStateDeleting,
 	"DELETED":  LoadBalancerLifecycleStateDeleted,
-	"UNKNOWN":  LoadBalancerLifecycleStateUnknown,
 }
 
 // GetLoadBalancerLifecycleStateEnumValues Enumerates the set of values for LoadBalancerLifecycleState
 func GetLoadBalancerLifecycleStateEnumValues() []LoadBalancerLifecycleStateEnum {
 	values := make([]LoadBalancerLifecycleStateEnum, 0)
 	for _, v := range mappingLoadBalancerLifecycleState {
-		if v != LoadBalancerLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

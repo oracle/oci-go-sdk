@@ -51,22 +51,18 @@ type RegionSubscriptionStatusEnum string
 const (
 	RegionSubscriptionStatusReady      RegionSubscriptionStatusEnum = "READY"
 	RegionSubscriptionStatusInProgress RegionSubscriptionStatusEnum = "IN_PROGRESS"
-	RegionSubscriptionStatusUnknown    RegionSubscriptionStatusEnum = "UNKNOWN"
 )
 
 var mappingRegionSubscriptionStatus = map[string]RegionSubscriptionStatusEnum{
 	"READY":       RegionSubscriptionStatusReady,
 	"IN_PROGRESS": RegionSubscriptionStatusInProgress,
-	"UNKNOWN":     RegionSubscriptionStatusUnknown,
 }
 
 // GetRegionSubscriptionStatusEnumValues Enumerates the set of values for RegionSubscriptionStatus
 func GetRegionSubscriptionStatusEnumValues() []RegionSubscriptionStatusEnum {
 	values := make([]RegionSubscriptionStatusEnum, 0)
 	for _, v := range mappingRegionSubscriptionStatus {
-		if v != RegionSubscriptionStatusUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

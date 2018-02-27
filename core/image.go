@@ -69,7 +69,6 @@ const (
 	ImageLifecycleStateExporting    ImageLifecycleStateEnum = "EXPORTING"
 	ImageLifecycleStateDisabled     ImageLifecycleStateEnum = "DISABLED"
 	ImageLifecycleStateDeleted      ImageLifecycleStateEnum = "DELETED"
-	ImageLifecycleStateUnknown      ImageLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingImageLifecycleState = map[string]ImageLifecycleStateEnum{
@@ -79,16 +78,13 @@ var mappingImageLifecycleState = map[string]ImageLifecycleStateEnum{
 	"EXPORTING":    ImageLifecycleStateExporting,
 	"DISABLED":     ImageLifecycleStateDisabled,
 	"DELETED":      ImageLifecycleStateDeleted,
-	"UNKNOWN":      ImageLifecycleStateUnknown,
 }
 
 // GetImageLifecycleStateEnumValues Enumerates the set of values for ImageLifecycleState
 func GetImageLifecycleStateEnumValues() []ImageLifecycleStateEnum {
 	values := make([]ImageLifecycleStateEnum, 0)
 	for _, v := range mappingImageLifecycleState {
-		if v != ImageLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

@@ -53,7 +53,6 @@ const (
 	DrgAttachmentLifecycleStateAttached  DrgAttachmentLifecycleStateEnum = "ATTACHED"
 	DrgAttachmentLifecycleStateDetaching DrgAttachmentLifecycleStateEnum = "DETACHING"
 	DrgAttachmentLifecycleStateDetached  DrgAttachmentLifecycleStateEnum = "DETACHED"
-	DrgAttachmentLifecycleStateUnknown   DrgAttachmentLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingDrgAttachmentLifecycleState = map[string]DrgAttachmentLifecycleStateEnum{
@@ -61,16 +60,13 @@ var mappingDrgAttachmentLifecycleState = map[string]DrgAttachmentLifecycleStateE
 	"ATTACHED":  DrgAttachmentLifecycleStateAttached,
 	"DETACHING": DrgAttachmentLifecycleStateDetaching,
 	"DETACHED":  DrgAttachmentLifecycleStateDetached,
-	"UNKNOWN":   DrgAttachmentLifecycleStateUnknown,
 }
 
 // GetDrgAttachmentLifecycleStateEnumValues Enumerates the set of values for DrgAttachmentLifecycleState
 func GetDrgAttachmentLifecycleStateEnumValues() []DrgAttachmentLifecycleStateEnum {
 	values := make([]DrgAttachmentLifecycleStateEnum, 0)
 	for _, v := range mappingDrgAttachmentLifecycleState {
-		if v != DrgAttachmentLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

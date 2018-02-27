@@ -57,7 +57,6 @@ const (
 	CrossConnectGroupLifecycleStateInactive     CrossConnectGroupLifecycleStateEnum = "INACTIVE"
 	CrossConnectGroupLifecycleStateTerminating  CrossConnectGroupLifecycleStateEnum = "TERMINATING"
 	CrossConnectGroupLifecycleStateTerminated   CrossConnectGroupLifecycleStateEnum = "TERMINATED"
-	CrossConnectGroupLifecycleStateUnknown      CrossConnectGroupLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingCrossConnectGroupLifecycleState = map[string]CrossConnectGroupLifecycleStateEnum{
@@ -66,16 +65,13 @@ var mappingCrossConnectGroupLifecycleState = map[string]CrossConnectGroupLifecyc
 	"INACTIVE":     CrossConnectGroupLifecycleStateInactive,
 	"TERMINATING":  CrossConnectGroupLifecycleStateTerminating,
 	"TERMINATED":   CrossConnectGroupLifecycleStateTerminated,
-	"UNKNOWN":      CrossConnectGroupLifecycleStateUnknown,
 }
 
 // GetCrossConnectGroupLifecycleStateEnumValues Enumerates the set of values for CrossConnectGroupLifecycleState
 func GetCrossConnectGroupLifecycleStateEnumValues() []CrossConnectGroupLifecycleStateEnum {
 	values := make([]CrossConnectGroupLifecycleStateEnum, 0)
 	for _, v := range mappingCrossConnectGroupLifecycleState {
-		if v != CrossConnectGroupLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

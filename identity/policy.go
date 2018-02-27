@@ -71,7 +71,6 @@ const (
 	PolicyLifecycleStateInactive PolicyLifecycleStateEnum = "INACTIVE"
 	PolicyLifecycleStateDeleting PolicyLifecycleStateEnum = "DELETING"
 	PolicyLifecycleStateDeleted  PolicyLifecycleStateEnum = "DELETED"
-	PolicyLifecycleStateUnknown  PolicyLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingPolicyLifecycleState = map[string]PolicyLifecycleStateEnum{
@@ -80,16 +79,13 @@ var mappingPolicyLifecycleState = map[string]PolicyLifecycleStateEnum{
 	"INACTIVE": PolicyLifecycleStateInactive,
 	"DELETING": PolicyLifecycleStateDeleting,
 	"DELETED":  PolicyLifecycleStateDeleted,
-	"UNKNOWN":  PolicyLifecycleStateUnknown,
 }
 
 // GetPolicyLifecycleStateEnumValues Enumerates the set of values for PolicyLifecycleState
 func GetPolicyLifecycleStateEnumValues() []PolicyLifecycleStateEnum {
 	values := make([]PolicyLifecycleStateEnum, 0)
 	for _, v := range mappingPolicyLifecycleState {
-		if v != PolicyLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

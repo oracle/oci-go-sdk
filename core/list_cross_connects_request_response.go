@@ -78,22 +78,18 @@ type ListCrossConnectsSortByEnum string
 const (
 	ListCrossConnectsSortByTimecreated ListCrossConnectsSortByEnum = "TIMECREATED"
 	ListCrossConnectsSortByDisplayname ListCrossConnectsSortByEnum = "DISPLAYNAME"
-	ListCrossConnectsSortByUnknown     ListCrossConnectsSortByEnum = "UNKNOWN"
 )
 
 var mappingListCrossConnectsSortBy = map[string]ListCrossConnectsSortByEnum{
 	"TIMECREATED": ListCrossConnectsSortByTimecreated,
 	"DISPLAYNAME": ListCrossConnectsSortByDisplayname,
-	"UNKNOWN":     ListCrossConnectsSortByUnknown,
 }
 
 // GetListCrossConnectsSortByEnumValues Enumerates the set of values for ListCrossConnectsSortBy
 func GetListCrossConnectsSortByEnumValues() []ListCrossConnectsSortByEnum {
 	values := make([]ListCrossConnectsSortByEnum, 0)
 	for _, v := range mappingListCrossConnectsSortBy {
-		if v != ListCrossConnectsSortByUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -103,24 +99,20 @@ type ListCrossConnectsSortOrderEnum string
 
 // Set of constants representing the allowable values for ListCrossConnectsSortOrder
 const (
-	ListCrossConnectsSortOrderAsc     ListCrossConnectsSortOrderEnum = "ASC"
-	ListCrossConnectsSortOrderDesc    ListCrossConnectsSortOrderEnum = "DESC"
-	ListCrossConnectsSortOrderUnknown ListCrossConnectsSortOrderEnum = "UNKNOWN"
+	ListCrossConnectsSortOrderAsc  ListCrossConnectsSortOrderEnum = "ASC"
+	ListCrossConnectsSortOrderDesc ListCrossConnectsSortOrderEnum = "DESC"
 )
 
 var mappingListCrossConnectsSortOrder = map[string]ListCrossConnectsSortOrderEnum{
-	"ASC":     ListCrossConnectsSortOrderAsc,
-	"DESC":    ListCrossConnectsSortOrderDesc,
-	"UNKNOWN": ListCrossConnectsSortOrderUnknown,
+	"ASC":  ListCrossConnectsSortOrderAsc,
+	"DESC": ListCrossConnectsSortOrderDesc,
 }
 
 // GetListCrossConnectsSortOrderEnumValues Enumerates the set of values for ListCrossConnectsSortOrder
 func GetListCrossConnectsSortOrderEnumValues() []ListCrossConnectsSortOrderEnum {
 	values := make([]ListCrossConnectsSortOrderEnum, 0)
 	for _, v := range mappingListCrossConnectsSortOrder {
-		if v != ListCrossConnectsSortOrderUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }

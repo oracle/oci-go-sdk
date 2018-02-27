@@ -55,22 +55,18 @@ type PatchSummaryAvailableActionsEnum string
 const (
 	PatchSummaryAvailableActionsApply    PatchSummaryAvailableActionsEnum = "APPLY"
 	PatchSummaryAvailableActionsPrecheck PatchSummaryAvailableActionsEnum = "PRECHECK"
-	PatchSummaryAvailableActionsUnknown  PatchSummaryAvailableActionsEnum = "UNKNOWN"
 )
 
 var mappingPatchSummaryAvailableActions = map[string]PatchSummaryAvailableActionsEnum{
 	"APPLY":    PatchSummaryAvailableActionsApply,
 	"PRECHECK": PatchSummaryAvailableActionsPrecheck,
-	"UNKNOWN":  PatchSummaryAvailableActionsUnknown,
 }
 
 // GetPatchSummaryAvailableActionsEnumValues Enumerates the set of values for PatchSummaryAvailableActions
 func GetPatchSummaryAvailableActionsEnumValues() []PatchSummaryAvailableActionsEnum {
 	values := make([]PatchSummaryAvailableActionsEnum, 0)
 	for _, v := range mappingPatchSummaryAvailableActions {
-		if v != PatchSummaryAvailableActionsUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -82,22 +78,18 @@ type PatchSummaryLastActionEnum string
 const (
 	PatchSummaryLastActionApply    PatchSummaryLastActionEnum = "APPLY"
 	PatchSummaryLastActionPrecheck PatchSummaryLastActionEnum = "PRECHECK"
-	PatchSummaryLastActionUnknown  PatchSummaryLastActionEnum = "UNKNOWN"
 )
 
 var mappingPatchSummaryLastAction = map[string]PatchSummaryLastActionEnum{
 	"APPLY":    PatchSummaryLastActionApply,
 	"PRECHECK": PatchSummaryLastActionPrecheck,
-	"UNKNOWN":  PatchSummaryLastActionUnknown,
 }
 
 // GetPatchSummaryLastActionEnumValues Enumerates the set of values for PatchSummaryLastAction
 func GetPatchSummaryLastActionEnumValues() []PatchSummaryLastActionEnum {
 	values := make([]PatchSummaryLastActionEnum, 0)
 	for _, v := range mappingPatchSummaryLastAction {
-		if v != PatchSummaryLastActionUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
@@ -111,7 +103,6 @@ const (
 	PatchSummaryLifecycleStateSuccess    PatchSummaryLifecycleStateEnum = "SUCCESS"
 	PatchSummaryLifecycleStateInProgress PatchSummaryLifecycleStateEnum = "IN_PROGRESS"
 	PatchSummaryLifecycleStateFailed     PatchSummaryLifecycleStateEnum = "FAILED"
-	PatchSummaryLifecycleStateUnknown    PatchSummaryLifecycleStateEnum = "UNKNOWN"
 )
 
 var mappingPatchSummaryLifecycleState = map[string]PatchSummaryLifecycleStateEnum{
@@ -119,16 +110,13 @@ var mappingPatchSummaryLifecycleState = map[string]PatchSummaryLifecycleStateEnu
 	"SUCCESS":     PatchSummaryLifecycleStateSuccess,
 	"IN_PROGRESS": PatchSummaryLifecycleStateInProgress,
 	"FAILED":      PatchSummaryLifecycleStateFailed,
-	"UNKNOWN":     PatchSummaryLifecycleStateUnknown,
 }
 
 // GetPatchSummaryLifecycleStateEnumValues Enumerates the set of values for PatchSummaryLifecycleState
 func GetPatchSummaryLifecycleStateEnumValues() []PatchSummaryLifecycleStateEnum {
 	values := make([]PatchSummaryLifecycleStateEnum, 0)
 	for _, v := range mappingPatchSummaryLifecycleState {
-		if v != PatchSummaryLifecycleStateUnknown {
-			values = append(values, v)
-		}
+		values = append(values, v)
 	}
 	return values
 }
