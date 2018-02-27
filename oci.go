@@ -108,7 +108,7 @@ The example below shows how to create a default signer.
 	signer.Sign(&request)
 
 	// Execute the request
-	c.Do(request)
+	client.Do(request)
 
 
 
