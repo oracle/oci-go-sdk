@@ -11,8 +11,8 @@ import (
 	"github.com/oracle/oci-go-sdk/example/helpers"
 )
 
-// Update the .env.sampe file with your tenancy info.
-// To run individual samples:
+// Before run the samples, update the .env.sample file with your tenancy info.
+// To run individual sample:
 //   go test github.com/oracle/oci-go-sdk/example -run ^ExampleLaunchInstance$
 // To run all samples:
 //   go test github.com/oracle/oci-go-sdk/example
