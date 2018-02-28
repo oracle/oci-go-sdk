@@ -31,9 +31,9 @@ type OciPollableOperation func(context.Context, OciRetryableRequest) (OciStatefu
 type OciPredicate func(OciStatefulResponse, error) bool
 
 // Poll polls a resource until the specified predicate returns true
-func (client BaseClient) Poll(ctx context.Context, request OciRetryableRequest, operation OciPollableOperation, predicate OciPredicate, options ...RetryPolicyOption) error {
-	policy := request.GetRetryPolicy(options...)
-	deadlineContext, deadlineCancel := context.WithTimeout(ctx, GetMaximumTimeout(&policy))
+func (client BaseClient) Poll(ctx context.Context, request OciRetryableRequest, operation OciPollableOperation, predicate OciPredicate) error {
+	policy := request.GetRetryPolicy()
+	deadlineContext, deadlineCancel := context.WithTimeout(ctx, GetMaximumTimeout(policy))
 	defer deadlineCancel()
 
 	var response OciStatefulResponse

@@ -43,7 +43,7 @@ type OciRetryableRequest interface {
 	// Each operation specifies default retry behavior. By passing no arguments to this method, the default retry
 	// behavior, as determined on a per-operation-basis, will be honored. Variadic retry policy option arguments
 	// passed to this method will override the default behavior.
-	GetRetryPolicy(options ...RetryPolicyOption) RetryPolicy
+	GetRetryPolicy() *RetryPolicy
 }
 
 // RetryPolicy is the class that holds all relevant information for retrying operations.
@@ -151,8 +151,8 @@ func BuildRetryPolicy(options ...RetryPolicyOption) RetryPolicy {
 
 // NoRetryPolicy is a helper method that assembles and returns a return policy that indicates an operation should
 // never be retried.
-func NoRetryPolicy() RetryPolicy {
-	return BuildRetryPolicy(
+func NoRetryPolicy() *RetryPolicy {
+	return &BuildRetryPolicy(
 		MaximumNumberAttempts(1),
 		ShouldRetryOperation(func(OciResponse, error, uint) bool { return false }),
 	)

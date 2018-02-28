@@ -16,6 +16,7 @@ import (
 	"strings"
 	"sync/atomic"
 	"time"
+	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 )
 
 const (
@@ -245,6 +246,14 @@ type OciRequest interface {
 	GetHttpRequest(method, path string) (http.Request, error)
 }
 
+// RequestMetadata is metadata about an OciRequest. This structure represents the behavior exhibited by the SDK when
+// issuing (or reissuing) a request.
+type RequestMetadata struct {
+	// RetryPolicy is the policy for reissuing the request. If no retry policy is set on the request,
+	// then the request will be issued exactly once.
+	RetryPolicy *RetryPolicy
+}
+
 // OciResponse is the response from issuing a request to an OCI service.
 type OciResponse interface {
 	// GetRawResponse returns the raw HTTP response.
@@ -255,12 +264,8 @@ type OciResponse interface {
 type OciOperation func(context.Context, OciRequest) (OciResponse, error)
 
 // Retry executes the retryable request using the specified operation and retry policy options
-func (client BaseClient) Retry(ctx context.Context, request OciRetryableRequest, operation OciOperation, options ...RetryPolicyOption) (OciResponse, error) {
-	// Each operation defines the default retry behavior for a given request
-	// Users can modify the default retry behavior by passing through a variadic number of retry policy options
-	policy := request.GetRetryPolicy(options...)
-
-	deadlineContext, deadlineCancel := context.WithTimeout(ctx, GetMaximumTimeout(&policy))
+func (client BaseClient) Retry(ctx context.Context, request OciRetryableRequest, operation OciOperation, policy *RetryPolicy) (OciResponse, error) {
+	deadlineContext, deadlineCancel := context.WithTimeout(ctx, GetMaximumTimeout(policy))
 	defer deadlineCancel()
 
 	for currentOperationAttempt := uint(1); ShouldContinueIssuingRequests(currentOperationAttempt, policy.MaximumNumberAttempts); currentOperationAttempt++ {
