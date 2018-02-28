@@ -2,7 +2,7 @@
 [![wercker status](https://app.wercker.com/status/09bc4818e7b1d70b04285331a9bdbc41/s/master "wercker status")](https://app.wercker.com/project/byKey/09bc4818e7b1d70b04285331a9bdbc41)
 
 This is the official Go SDK for Oracle Cloud Infrastructure.
-> ***WARNING:***: To avoid breaking changes please consider using the [Go dependency management tool](https://github.com/golang/dep), or vendoring this SDK.
+> Consider using the [Go dependency management tool](https://github.com/golang/dep), or vendoring this SDK.
 
 ## Dependencies
 - Install [Go programming language](https://golang.org/dl/).
