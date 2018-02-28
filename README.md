@@ -4,7 +4,7 @@
 This is the Go SDK for Oracle Cloud Infrastructure. This project is open source and maintained by Oracle Corp. 
 The home page for the project is [here](https://godoc.org/github.com/oracle/oci-go-sdk/).
 >***WARNING:***: To avoid automatically consuming breaking changes if we have to rev the major version of the Go SDK, 
-please consider using the Go dependency management tool, or vendoring the SDK. 
+please consider using the  [Go dependency management tool](https://github.com/golang/dep), or vendoring the SDK. 
 This will allow you to pin to a specific version of the Go SDK in your project, letting you control how and when you move to the next major version.
 
 ## Dependencies
