@@ -25,6 +25,10 @@ type ListUserGroupMembershipsRequest struct {
 
 	// The maximum number of items to return in a paginated "List" call.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request ListUserGroupMembershipsRequest) String() string {
@@ -38,11 +42,8 @@ func (request ListUserGroupMembershipsRequest) GetHttpRequest(method, path strin
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request ListUserGroupMembershipsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request ListUserGroupMembershipsRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // ListUserGroupMembershipsResponse wrapper for the ListUserGroupMemberships operation

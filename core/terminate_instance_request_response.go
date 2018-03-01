@@ -22,6 +22,10 @@ type TerminateInstanceRequest struct {
 	// Specifies whether to delete or preserve the boot volume when terminating an instance.
 	// The default value is false.
 	PreserveBootVolume *bool `mandatory:"false" contributesTo:"query" name:"preserveBootVolume"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request TerminateInstanceRequest) String() string {
@@ -35,11 +39,8 @@ func (request TerminateInstanceRequest) GetHttpRequest(method, path string) (htt
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request TerminateInstanceRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request TerminateInstanceRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // TerminateInstanceResponse wrapper for the TerminateInstance operation

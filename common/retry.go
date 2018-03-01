@@ -134,7 +134,7 @@ func GetNextDuration(value func(attempts uint) time.Duration) RetryPolicyOption 
 
 // BuildRetryPolicy accepts a variadic number of retry policy option values and assembles a retry policy. If any
 // policy option is not specified, the default is used.
-func BuildRetryPolicy(options ...RetryPolicyOption) RetryPolicy {
+func BuildRetryPolicy(options ...RetryPolicyOption) *RetryPolicy {
 	policy := RetryPolicy{
 		MaximumTimeout:        MaximumTimeoutDefault,
 		MaximumNumberAttempts: MaximumNumAttemptsDefault,
@@ -146,13 +146,13 @@ func BuildRetryPolicy(options ...RetryPolicyOption) RetryPolicy {
 		option(&policy)
 	}
 
-	return policy
+	return &policy
 }
 
 // NoRetryPolicy is a helper method that assembles and returns a return policy that indicates an operation should
 // never be retried.
 func NoRetryPolicy() *RetryPolicy {
-	return &BuildRetryPolicy(
+	return BuildRetryPolicy(
 		MaximumNumberAttempts(1),
 		ShouldRetryOperation(func(OciResponse, error, uint) bool { return false }),
 	)

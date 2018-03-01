@@ -24,6 +24,10 @@ type FailoverDataGuardAssociationRequest struct {
 	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
 	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request FailoverDataGuardAssociationRequest) String() string {
@@ -37,11 +41,8 @@ func (request FailoverDataGuardAssociationRequest) GetHttpRequest(method, path s
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request FailoverDataGuardAssociationRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request FailoverDataGuardAssociationRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // FailoverDataGuardAssociationResponse wrapper for the FailoverDataGuardAssociation operation

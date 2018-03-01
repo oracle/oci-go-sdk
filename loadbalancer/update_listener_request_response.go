@@ -31,6 +31,10 @@ type UpdateListenerRequest struct {
 	// has been deleted and purged from the system, then a retry of the original creation request
 	// may be rejected).
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request UpdateListenerRequest) String() string {
@@ -44,11 +48,8 @@ func (request UpdateListenerRequest) GetHttpRequest(method, path string) (http.R
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request UpdateListenerRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request UpdateListenerRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // UpdateListenerResponse wrapper for the UpdateListener operation

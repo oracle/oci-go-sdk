@@ -383,7 +383,7 @@ func TestDatabaseClient_TerminateDbSystem(t *testing.T) {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := database.TerminateDbSystemRequest{}
-	_,err := c.TerminateDbSystem(context.Background(), request)
+	_, err := c.TerminateDbSystem(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }

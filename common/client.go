@@ -16,7 +16,6 @@ import (
 	"strings"
 	"sync/atomic"
 	"time"
-	"bitbucket.aka.lgl.grungy.us/golang-sdk2/common"
 )
 
 const (

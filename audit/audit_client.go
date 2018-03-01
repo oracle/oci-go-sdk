@@ -60,54 +60,99 @@ func (client *AuditClient) ConfigurationProvider() *common.ConfigurationProvider
 
 // GetConfiguration Get the configuration
 func (client AuditClient) GetConfiguration(ctx context.Context, request GetConfigurationRequest) (response GetConfigurationResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/configuration")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getConfiguration, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetConfigurationResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client AuditClient) getConfiguration(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/configuration")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetConfigurationResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListEvents Returns all audit events for the specified compartment that were processed within the specified time range.
 func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequest) (response ListEventsResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/auditEvents")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listEvents, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListEventsResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client AuditClient) listEvents(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/auditEvents")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListEventsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // UpdateConfiguration Update the configuration
 func (client AuditClient) UpdateConfiguration(ctx context.Context, request UpdateConfigurationRequest) (response UpdateConfigurationResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/configuration")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.updateConfiguration, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(UpdateConfigurationResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client AuditClient) updateConfiguration(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/configuration")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateConfigurationResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }

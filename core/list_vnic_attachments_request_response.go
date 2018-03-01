@@ -30,6 +30,10 @@ type ListVnicAttachmentsRequest struct {
 
 	// The OCID of the VNIC.
 	VnicId *string `mandatory:"false" contributesTo:"query" name:"vnicId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request ListVnicAttachmentsRequest) String() string {
@@ -43,11 +47,8 @@ func (request ListVnicAttachmentsRequest) GetHttpRequest(method, path string) (h
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request ListVnicAttachmentsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request ListVnicAttachmentsRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // ListVnicAttachmentsResponse wrapper for the ListVnicAttachments operation

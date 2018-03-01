@@ -13,6 +13,10 @@ type GetVcnRequest struct {
 
 	// The OCID of the VCN.
 	VcnId *string `mandatory:"true" contributesTo:"path" name:"vcnId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetVcnRequest) String() string {
@@ -26,11 +30,8 @@ func (request GetVcnRequest) GetHttpRequest(method, path string) (http.Request, 
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetVcnRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetVcnRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetVcnResponse wrapper for the GetVcn operation

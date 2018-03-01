@@ -29,6 +29,10 @@ type ListPreauthenticatedRequestsRequest struct {
 
 	// The client request ID for tracing.
 	OpcClientRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-client-request-id"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request ListPreauthenticatedRequestsRequest) String() string {
@@ -42,11 +46,8 @@ func (request ListPreauthenticatedRequestsRequest) GetHttpRequest(method, path s
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request ListPreauthenticatedRequestsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request ListPreauthenticatedRequestsRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // ListPreauthenticatedRequestsResponse wrapper for the ListPreauthenticatedRequests operation

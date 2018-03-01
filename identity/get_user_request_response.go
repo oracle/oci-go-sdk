@@ -13,6 +13,10 @@ type GetUserRequest struct {
 
 	// The OCID of the user.
 	UserId *string `mandatory:"true" contributesTo:"path" name:"userId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetUserRequest) String() string {
@@ -26,11 +30,8 @@ func (request GetUserRequest) GetHttpRequest(method, path string) (http.Request,
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetUserRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetUserRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetUserResponse wrapper for the GetUser operation

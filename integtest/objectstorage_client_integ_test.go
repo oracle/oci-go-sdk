@@ -118,7 +118,7 @@ func TestObjectStorageClient_BigFile(t *testing.T) {
 	defer file.Close()
 	failIfError(t, e)
 
-	e = putObject(t, namespace , bname, filename, int(filesize), file, nil)
+	e = putObject(t, namespace, bname, filename, int(filesize), file, nil)
 	failIfError(t, e)
 	fmt.Println(expectedHash)
 	rGet, e := getObject(t, namespace, bname, filename)
@@ -188,7 +188,7 @@ func TestObjectStorageClient_Object(t *testing.T) {
 	failIfError(t, e)
 	metadata := make(map[string]string)
 	metadata["Test-VERSION"] = "TestOne"
-	e = putObject(t, namespace , bname, filename, contentlen, file, metadata)
+	e = putObject(t, namespace, bname, filename, contentlen, file, metadata)
 	failIfError(t, e)
 
 	r, e := getObject(t, namespace, bname, filename)
@@ -301,7 +301,7 @@ func TestObjectStorageClient_HeadBucket(t *testing.T) {
 	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, e)
 	request := objectstorage.HeadBucketRequest{}
-	_, 	err := c.HeadBucket(context.Background(), request)
+	_, err := c.HeadBucket(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }

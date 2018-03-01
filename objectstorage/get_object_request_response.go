@@ -38,6 +38,10 @@ type GetObjectRequest struct {
 	// Optional byte range to fetch, as described in [RFC 7233](https://tools.ietf.org/rfc/rfc7233), section 2.1.
 	// Note, only a single range of bytes is supported.
 	Range *string `mandatory:"false" contributesTo:"header" name:"range"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetObjectRequest) String() string {
@@ -51,11 +55,8 @@ func (request GetObjectRequest) GetHttpRequest(method, path string) (http.Reques
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetObjectRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetObjectRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetObjectResponse wrapper for the GetObject operation

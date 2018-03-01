@@ -16,6 +16,10 @@ type BulkDeleteVirtualCircuitPublicPrefixesRequest struct {
 
 	// Request with publix prefixes to be deleted from the virtual circuit
 	BulkDeleteVirtualCircuitPublicPrefixesDetails `contributesTo:"body"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request BulkDeleteVirtualCircuitPublicPrefixesRequest) String() string {
@@ -29,11 +33,8 @@ func (request BulkDeleteVirtualCircuitPublicPrefixesRequest) GetHttpRequest(meth
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request BulkDeleteVirtualCircuitPublicPrefixesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request BulkDeleteVirtualCircuitPublicPrefixesRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // BulkDeleteVirtualCircuitPublicPrefixesResponse wrapper for the BulkDeleteVirtualCircuitPublicPrefixes operation

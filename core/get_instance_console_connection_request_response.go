@@ -13,6 +13,10 @@ type GetInstanceConsoleConnectionRequest struct {
 
 	// The OCID of the intance console connection
 	InstanceConsoleConnectionId *string `mandatory:"true" contributesTo:"path" name:"instanceConsoleConnectionId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetInstanceConsoleConnectionRequest) String() string {
@@ -26,11 +30,8 @@ func (request GetInstanceConsoleConnectionRequest) GetHttpRequest(method, path s
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetInstanceConsoleConnectionRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetInstanceConsoleConnectionRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetInstanceConsoleConnectionResponse wrapper for the GetInstanceConsoleConnection operation

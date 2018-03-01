@@ -23,6 +23,10 @@ type ListLocalPeeringGatewaysRequest struct {
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request ListLocalPeeringGatewaysRequest) String() string {
@@ -36,11 +40,8 @@ func (request ListLocalPeeringGatewaysRequest) GetHttpRequest(method, path strin
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request ListLocalPeeringGatewaysRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request ListLocalPeeringGatewaysRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // ListLocalPeeringGatewaysResponse wrapper for the ListLocalPeeringGateways operation

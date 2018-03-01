@@ -13,6 +13,10 @@ type GetPrivateIpRequest struct {
 
 	// The private IP's OCID.
 	PrivateIpId *string `mandatory:"true" contributesTo:"path" name:"privateIpId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetPrivateIpRequest) String() string {
@@ -26,11 +30,8 @@ func (request GetPrivateIpRequest) GetHttpRequest(method, path string) (http.Req
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetPrivateIpRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetPrivateIpRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetPrivateIpResponse wrapper for the GetPrivateIp operation

@@ -22,6 +22,10 @@ type ListDbVersionsRequest struct {
 
 	// If provided, filters the results to the set of database versions which are supported for the given shape.
 	DbSystemShape *string `mandatory:"false" contributesTo:"query" name:"dbSystemShape"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request ListDbVersionsRequest) String() string {
@@ -35,11 +39,8 @@ func (request ListDbVersionsRequest) GetHttpRequest(method, path string) (http.R
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request ListDbVersionsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request ListDbVersionsRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // ListDbVersionsResponse wrapper for the ListDbVersions operation

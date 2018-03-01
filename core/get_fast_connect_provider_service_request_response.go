@@ -13,6 +13,10 @@ type GetFastConnectProviderServiceRequest struct {
 
 	// The OCID of the provider service.
 	ProviderServiceId *string `mandatory:"true" contributesTo:"path" name:"providerServiceId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetFastConnectProviderServiceRequest) String() string {
@@ -26,11 +30,8 @@ func (request GetFastConnectProviderServiceRequest) GetHttpRequest(method, path 
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetFastConnectProviderServiceRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetFastConnectProviderServiceRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetFastConnectProviderServiceResponse wrapper for the GetFastConnectProviderService operation

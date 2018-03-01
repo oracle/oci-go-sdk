@@ -60,74 +60,134 @@ func (client *LoadBalancerClient) ConfigurationProvider() *common.ConfigurationP
 
 // CreateBackend Adds a backend server to a backend set.
 func (client LoadBalancerClient) CreateBackend(ctx context.Context, request CreateBackendRequest) (response CreateBackendResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.createBackend, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(CreateBackendResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) createBackend(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateBackendResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // CreateBackendSet Adds a backend set to a load balancer.
 func (client LoadBalancerClient) CreateBackendSet(ctx context.Context, request CreateBackendSetRequest) (response CreateBackendSetResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/loadBalancers/{loadBalancerId}/backendSets")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.createBackendSet, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(CreateBackendSetResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) createBackendSet(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/loadBalancers/{loadBalancerId}/backendSets")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateBackendSetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // CreateCertificate Creates an asynchronous request to add an SSL certificate.
 func (client LoadBalancerClient) CreateCertificate(ctx context.Context, request CreateCertificateRequest) (response CreateCertificateResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/loadBalancers/{loadBalancerId}/certificates")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.createCertificate, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(CreateCertificateResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) createCertificate(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/loadBalancers/{loadBalancerId}/certificates")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateCertificateResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // CreateListener Adds a listener to a load balancer.
 func (client LoadBalancerClient) CreateListener(ctx context.Context, request CreateListenerRequest) (response CreateListenerResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/loadBalancers/{loadBalancerId}/listeners")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.createListener, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(CreateListenerResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) createListener(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/loadBalancers/{loadBalancerId}/listeners")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateListenerResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // CreateLoadBalancer Creates a new load balancer in the specified compartment. For general information about load balancers,
@@ -152,505 +212,925 @@ func (client LoadBalancerClient) CreateListener(ctx context.Context, request Cre
 // When you create a load balancer, the system assigns an IP address.
 // To get the IP address, use the GetLoadBalancer operation.
 func (client LoadBalancerClient) CreateLoadBalancer(ctx context.Context, request CreateLoadBalancerRequest) (response CreateLoadBalancerResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/loadBalancers")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.createLoadBalancer, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(CreateLoadBalancerResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) createLoadBalancer(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/loadBalancers")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateLoadBalancerResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // DeleteBackend Removes a backend server from a given load balancer and backend set.
 func (client LoadBalancerClient) DeleteBackend(ctx context.Context, request DeleteBackendRequest) (response DeleteBackendResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends/{backendName}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.deleteBackend, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(DeleteBackendResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) deleteBackend(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends/{backendName}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteBackendResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // DeleteBackendSet Deletes the specified backend set. Note that deleting a backend set removes its backend servers from the load balancer.
 // Before you can delete a backend set, you must remove it from any active listeners.
 func (client LoadBalancerClient) DeleteBackendSet(ctx context.Context, request DeleteBackendSetRequest) (response DeleteBackendSetResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.deleteBackendSet, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(DeleteBackendSetResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) deleteBackendSet(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteBackendSetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // DeleteCertificate Deletes an SSL certificate from a load balancer.
 func (client LoadBalancerClient) DeleteCertificate(ctx context.Context, request DeleteCertificateRequest) (response DeleteCertificateResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/loadBalancers/{loadBalancerId}/certificates/{certificateName}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.deleteCertificate, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(DeleteCertificateResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) deleteCertificate(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/loadBalancers/{loadBalancerId}/certificates/{certificateName}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteCertificateResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // DeleteListener Deletes a listener from a load balancer.
 func (client LoadBalancerClient) DeleteListener(ctx context.Context, request DeleteListenerRequest) (response DeleteListenerResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/loadBalancers/{loadBalancerId}/listeners/{listenerName}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.deleteListener, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(DeleteListenerResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) deleteListener(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/loadBalancers/{loadBalancerId}/listeners/{listenerName}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteListenerResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // DeleteLoadBalancer Stops a load balancer and removes it from service.
 func (client LoadBalancerClient) DeleteLoadBalancer(ctx context.Context, request DeleteLoadBalancerRequest) (response DeleteLoadBalancerResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/loadBalancers/{loadBalancerId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.deleteLoadBalancer, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(DeleteLoadBalancerResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) deleteLoadBalancer(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/loadBalancers/{loadBalancerId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteLoadBalancerResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // GetBackend Gets the specified backend server's configuration information.
 func (client LoadBalancerClient) GetBackend(ctx context.Context, request GetBackendRequest) (response GetBackendResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends/{backendName}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getBackend, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetBackendResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) getBackend(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends/{backendName}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetBackendResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // GetBackendHealth Gets the current health status of the specified backend server.
 func (client LoadBalancerClient) GetBackendHealth(ctx context.Context, request GetBackendHealthRequest) (response GetBackendHealthResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends/{backendName}/health")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getBackendHealth, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetBackendHealthResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) getBackendHealth(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends/{backendName}/health")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetBackendHealthResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // GetBackendSet Gets the specified backend set's configuration information.
 func (client LoadBalancerClient) GetBackendSet(ctx context.Context, request GetBackendSetRequest) (response GetBackendSetResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getBackendSet, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetBackendSetResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) getBackendSet(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetBackendSetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // GetBackendSetHealth Gets the health status for the specified backend set.
 func (client LoadBalancerClient) GetBackendSetHealth(ctx context.Context, request GetBackendSetHealthRequest) (response GetBackendSetHealthResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/health")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getBackendSetHealth, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetBackendSetHealthResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) getBackendSetHealth(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/health")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetBackendSetHealthResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // GetHealthChecker Gets the health check policy information for a given load balancer and backend set.
 func (client LoadBalancerClient) GetHealthChecker(ctx context.Context, request GetHealthCheckerRequest) (response GetHealthCheckerResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/healthChecker")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getHealthChecker, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetHealthCheckerResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) getHealthChecker(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/healthChecker")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetHealthCheckerResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // GetLoadBalancer Gets the specified load balancer's configuration information.
 func (client LoadBalancerClient) GetLoadBalancer(ctx context.Context, request GetLoadBalancerRequest) (response GetLoadBalancerResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getLoadBalancer, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetLoadBalancerResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) getLoadBalancer(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetLoadBalancerResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // GetLoadBalancerHealth Gets the health status for the specified load balancer.
 func (client LoadBalancerClient) GetLoadBalancerHealth(ctx context.Context, request GetLoadBalancerHealthRequest) (response GetLoadBalancerHealthResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/health")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getLoadBalancerHealth, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetLoadBalancerHealthResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) getLoadBalancerHealth(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/health")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetLoadBalancerHealthResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // GetWorkRequest Gets the details of a work request.
 func (client LoadBalancerClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancerWorkRequests/{workRequestId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getWorkRequest, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetWorkRequestResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) getWorkRequest(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancerWorkRequests/{workRequestId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetWorkRequestResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListBackendSets Lists all backend sets associated with a given load balancer.
 func (client LoadBalancerClient) ListBackendSets(ctx context.Context, request ListBackendSetsRequest) (response ListBackendSetsResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listBackendSets, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListBackendSetsResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) listBackendSets(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListBackendSetsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListBackends Lists the backend servers for a given load balancer and backend set.
 func (client LoadBalancerClient) ListBackends(ctx context.Context, request ListBackendsRequest) (response ListBackendsResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listBackends, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListBackendsResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) listBackends(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListBackendsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListCertificates Lists all SSL certificates associated with a given load balancer.
 func (client LoadBalancerClient) ListCertificates(ctx context.Context, request ListCertificatesRequest) (response ListCertificatesResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/certificates")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listCertificates, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListCertificatesResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) listCertificates(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/certificates")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListCertificatesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListLoadBalancerHealths Lists the summary health statuses for all load balancers in the specified compartment.
 func (client LoadBalancerClient) ListLoadBalancerHealths(ctx context.Context, request ListLoadBalancerHealthsRequest) (response ListLoadBalancerHealthsResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancerHealths")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listLoadBalancerHealths, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListLoadBalancerHealthsResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) listLoadBalancerHealths(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancerHealths")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListLoadBalancerHealthsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListLoadBalancers Lists all load balancers in the specified compartment.
 func (client LoadBalancerClient) ListLoadBalancers(ctx context.Context, request ListLoadBalancersRequest) (response ListLoadBalancersResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listLoadBalancers, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListLoadBalancersResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) listLoadBalancers(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListLoadBalancersResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListPolicies Lists the available load balancer policies.
 func (client LoadBalancerClient) ListPolicies(ctx context.Context, request ListPoliciesRequest) (response ListPoliciesResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancerPolicies")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listPolicies, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListPoliciesResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) listPolicies(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancerPolicies")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListPoliciesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListProtocols Lists all supported traffic protocols.
 func (client LoadBalancerClient) ListProtocols(ctx context.Context, request ListProtocolsRequest) (response ListProtocolsResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancerProtocols")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listProtocols, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListProtocolsResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) listProtocols(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancerProtocols")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListProtocolsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListShapes Lists the valid load balancer shapes.
 func (client LoadBalancerClient) ListShapes(ctx context.Context, request ListShapesRequest) (response ListShapesResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancerShapes")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listShapes, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListShapesResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) listShapes(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancerShapes")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListShapesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListWorkRequests Lists the work requests for a given load balancer.
 func (client LoadBalancerClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/workRequests")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listWorkRequests, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListWorkRequestsResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) listWorkRequests(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/loadBalancers/{loadBalancerId}/workRequests")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListWorkRequestsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // UpdateBackend Updates the configuration of a backend server within the specified backend set.
 func (client LoadBalancerClient) UpdateBackend(ctx context.Context, request UpdateBackendRequest) (response UpdateBackendResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends/{backendName}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.updateBackend, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(UpdateBackendResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) updateBackend(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends/{backendName}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateBackendResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // UpdateBackendSet Updates a backend set.
 func (client LoadBalancerClient) UpdateBackendSet(ctx context.Context, request UpdateBackendSetRequest) (response UpdateBackendSetResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.updateBackendSet, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(UpdateBackendSetResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) updateBackendSet(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateBackendSetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // UpdateHealthChecker Updates the health check policy for a given load balancer and backend set.
 func (client LoadBalancerClient) UpdateHealthChecker(ctx context.Context, request UpdateHealthCheckerRequest) (response UpdateHealthCheckerResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/healthChecker")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.updateHealthChecker, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(UpdateHealthCheckerResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) updateHealthChecker(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/healthChecker")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateHealthCheckerResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // UpdateListener Updates a listener for a given load balancer.
 func (client LoadBalancerClient) UpdateListener(ctx context.Context, request UpdateListenerRequest) (response UpdateListenerResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/loadBalancers/{loadBalancerId}/listeners/{listenerName}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.updateListener, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(UpdateListenerResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) updateListener(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/loadBalancers/{loadBalancerId}/listeners/{listenerName}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateListenerResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // UpdateLoadBalancer Updates a load balancer's configuration.
 func (client LoadBalancerClient) UpdateLoadBalancer(ctx context.Context, request UpdateLoadBalancerRequest) (response UpdateLoadBalancerResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/loadBalancers/{loadBalancerId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.updateLoadBalancer, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(UpdateLoadBalancerResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client LoadBalancerClient) updateLoadBalancer(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/loadBalancers/{loadBalancerId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateLoadBalancerResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }

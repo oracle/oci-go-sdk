@@ -17,6 +17,10 @@ type ListVirtualCircuitPublicPrefixesRequest struct {
 	// A filter to only return resources that match the given verification state.
 	// The state value is case-insensitive.
 	VerificationState VirtualCircuitPublicPrefixVerificationStateEnum `mandatory:"false" contributesTo:"query" name:"verificationState" omitEmpty:"true"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request ListVirtualCircuitPublicPrefixesRequest) String() string {
@@ -30,11 +34,8 @@ func (request ListVirtualCircuitPublicPrefixesRequest) GetHttpRequest(method, pa
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request ListVirtualCircuitPublicPrefixesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request ListVirtualCircuitPublicPrefixesRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // ListVirtualCircuitPublicPrefixesResponse wrapper for the ListVirtualCircuitPublicPrefixes operation

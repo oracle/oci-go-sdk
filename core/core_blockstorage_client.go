@@ -71,20 +71,35 @@ func (client *BlockstorageClient) ConfigurationProvider() *common.ConfigurationP
 // You may optionally specify a *display name* for the volume, which is simply a friendly name or
 // description. It does not have to be unique, and you can change it. Avoid entering confidential information.
 func (client BlockstorageClient) CreateVolume(ctx context.Context, request CreateVolumeRequest) (response CreateVolumeResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/volumes")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.createVolume, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(CreateVolumeResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) createVolume(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/volumes")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateVolumeResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // CreateVolumeBackup Creates a new backup of the specified volume. For general information about volume backups,
@@ -93,20 +108,35 @@ func (client BlockstorageClient) CreateVolume(ctx context.Context, request Creat
 // When the data is imaged, it goes into a CREATING state.
 // After the backup is fully uploaded to the cloud, it goes into an AVAILABLE state.
 func (client BlockstorageClient) CreateVolumeBackup(ctx context.Context, request CreateVolumeBackupRequest) (response CreateVolumeBackupResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/volumeBackups")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.createVolumeBackup, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(CreateVolumeBackupResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) createVolumeBackup(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPost, "/volumeBackups")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateVolumeBackupResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // DeleteBootVolume Deletes the specified boot volume. The volume cannot have an active connection to an instance.
@@ -114,20 +144,35 @@ func (client BlockstorageClient) CreateVolumeBackup(ctx context.Context, request
 // [Disconnecting From a Boot Volume]({{DOC_SERVER_URL}}/Content/Block/Tasks/deletingbootvolume.htm).
 // **Warning:** All data on the boot volume will be permanently lost when the boot volume is deleted.
 func (client BlockstorageClient) DeleteBootVolume(ctx context.Context, request DeleteBootVolumeRequest) (response DeleteBootVolumeResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/bootVolumes/{bootVolumeId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.deleteBootVolume, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(DeleteBootVolumeResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) deleteBootVolume(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/bootVolumes/{bootVolumeId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteBootVolumeResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // DeleteVolume Deletes the specified volume. The volume cannot have an active connection to an instance.
@@ -135,200 +180,365 @@ func (client BlockstorageClient) DeleteBootVolume(ctx context.Context, request D
 // [Disconnecting From a Volume]({{DOC_SERVER_URL}}/Content/Block/Tasks/disconnectingfromavolume.htm).
 // **Warning:** All data on the volume will be permanently lost when the volume is deleted.
 func (client BlockstorageClient) DeleteVolume(ctx context.Context, request DeleteVolumeRequest) (response DeleteVolumeResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/volumes/{volumeId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.deleteVolume, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(DeleteVolumeResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) deleteVolume(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/volumes/{volumeId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteVolumeResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // DeleteVolumeBackup Deletes a volume backup.
 func (client BlockstorageClient) DeleteVolumeBackup(ctx context.Context, request DeleteVolumeBackupRequest) (response DeleteVolumeBackupResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/volumeBackups/{volumeBackupId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.deleteVolumeBackup, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(DeleteVolumeBackupResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) deleteVolumeBackup(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodDelete, "/volumeBackups/{volumeBackupId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteVolumeBackupResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // GetBootVolume Gets information for the specified boot volume.
 func (client BlockstorageClient) GetBootVolume(ctx context.Context, request GetBootVolumeRequest) (response GetBootVolumeResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/bootVolumes/{bootVolumeId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getBootVolume, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetBootVolumeResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) getBootVolume(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/bootVolumes/{bootVolumeId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetBootVolumeResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // GetVolume Gets information for the specified volume.
 func (client BlockstorageClient) GetVolume(ctx context.Context, request GetVolumeRequest) (response GetVolumeResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumes/{volumeId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getVolume, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetVolumeResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) getVolume(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumes/{volumeId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetVolumeResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // GetVolumeBackup Gets information for the specified volume backup.
 func (client BlockstorageClient) GetVolumeBackup(ctx context.Context, request GetVolumeBackupRequest) (response GetVolumeBackupResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumeBackups/{volumeBackupId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.getVolumeBackup, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(GetVolumeBackupResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) getVolumeBackup(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumeBackups/{volumeBackupId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetVolumeBackupResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListBootVolumes Lists the boot volumes in the specified compartment and Availability Domain.
 func (client BlockstorageClient) ListBootVolumes(ctx context.Context, request ListBootVolumesRequest) (response ListBootVolumesResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/bootVolumes")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listBootVolumes, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListBootVolumesResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) listBootVolumes(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/bootVolumes")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListBootVolumesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListVolumeBackups Lists the volume backups in the specified compartment. You can filter the results by volume.
 func (client BlockstorageClient) ListVolumeBackups(ctx context.Context, request ListVolumeBackupsRequest) (response ListVolumeBackupsResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumeBackups")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listVolumeBackups, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListVolumeBackupsResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) listVolumeBackups(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumeBackups")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListVolumeBackupsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // ListVolumes Lists the volumes in the specified compartment and Availability Domain.
 func (client BlockstorageClient) ListVolumes(ctx context.Context, request ListVolumesRequest) (response ListVolumesResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumes")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.listVolumes, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(ListVolumesResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) listVolumes(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodGet, "/volumes")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListVolumesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // UpdateBootVolume Updates the specified boot volume's display name.
 func (client BlockstorageClient) UpdateBootVolume(ctx context.Context, request UpdateBootVolumeRequest) (response UpdateBootVolumeResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/bootVolumes/{bootVolumeId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.updateBootVolume, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(UpdateBootVolumeResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) updateBootVolume(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/bootVolumes/{bootVolumeId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateBootVolumeResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // UpdateVolume Updates the specified volume's display name.
 // Avoid entering confidential information.
 func (client BlockstorageClient) UpdateVolume(ctx context.Context, request UpdateVolumeRequest) (response UpdateVolumeResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/volumes/{volumeId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.updateVolume, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(UpdateVolumeResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) updateVolume(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/volumes/{volumeId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateVolumeResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }
 
 // UpdateVolumeBackup Updates the display name for the specified volume backup.
 // Avoid entering confidential information.
 func (client BlockstorageClient) UpdateVolumeBackup(ctx context.Context, request UpdateVolumeBackupRequest) (response UpdateVolumeBackupResponse, err error) {
-	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/volumeBackups/{volumeBackupId}")
-	if err != nil {
+	ociResponse, e := client.Retry(ctx, request, client.updateVolumeBackup, request.GetRetryPolicy())
+	if e != nil {
+		err = e
 		return
 	}
+	if convertedResponse, convertedResponseOk := ociResponse.(UpdateVolumeBackupResponse); convertedResponseOk {
+		response = convertedResponse
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// lower camel case request => not exported
+func (client BlockstorageClient) updateVolumeBackup(ctx context.Context, request common.OciRequest) (common.OciResponse, error) {
+	httpRequest, err := request.GetHttpRequest(http.MethodPut, "/volumeBackups/{volumeBackupId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateVolumeBackupResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, nil
 }

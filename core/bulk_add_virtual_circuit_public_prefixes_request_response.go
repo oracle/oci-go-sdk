@@ -16,6 +16,10 @@ type BulkAddVirtualCircuitPublicPrefixesRequest struct {
 
 	// Request with publix prefixes to be added to the virtual circuit
 	BulkAddVirtualCircuitPublicPrefixesDetails `contributesTo:"body"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request BulkAddVirtualCircuitPublicPrefixesRequest) String() string {
@@ -29,11 +33,8 @@ func (request BulkAddVirtualCircuitPublicPrefixesRequest) GetHttpRequest(method,
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request BulkAddVirtualCircuitPublicPrefixesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request BulkAddVirtualCircuitPublicPrefixesRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // BulkAddVirtualCircuitPublicPrefixesResponse wrapper for the BulkAddVirtualCircuitPublicPrefixes operation

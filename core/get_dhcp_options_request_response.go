@@ -13,6 +13,10 @@ type GetDhcpOptionsRequest struct {
 
 	// The OCID for the set of DHCP options.
 	DhcpId *string `mandatory:"true" contributesTo:"path" name:"dhcpId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetDhcpOptionsRequest) String() string {
@@ -26,11 +30,8 @@ func (request GetDhcpOptionsRequest) GetHttpRequest(method, path string) (http.R
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetDhcpOptionsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetDhcpOptionsRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetDhcpOptionsResponse wrapper for the GetDhcpOptions operation

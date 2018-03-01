@@ -13,6 +13,10 @@ type GetCrossConnectStatusRequest struct {
 
 	// The OCID of the cross-connect.
 	CrossConnectId *string `mandatory:"true" contributesTo:"path" name:"crossConnectId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetCrossConnectStatusRequest) String() string {
@@ -26,11 +30,8 @@ func (request GetCrossConnectStatusRequest) GetHttpRequest(method, path string) 
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetCrossConnectStatusRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetCrossConnectStatusRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetCrossConnectStatusResponse wrapper for the GetCrossConnectStatus operation

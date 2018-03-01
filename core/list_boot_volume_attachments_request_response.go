@@ -30,6 +30,10 @@ type ListBootVolumeAttachmentsRequest struct {
 
 	// The OCID of the boot volume.
 	BootVolumeId *string `mandatory:"false" contributesTo:"query" name:"bootVolumeId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request ListBootVolumeAttachmentsRequest) String() string {
@@ -43,11 +47,8 @@ func (request ListBootVolumeAttachmentsRequest) GetHttpRequest(method, path stri
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request ListBootVolumeAttachmentsRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request ListBootVolumeAttachmentsRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // ListBootVolumeAttachmentsResponse wrapper for the ListBootVolumeAttachments operation

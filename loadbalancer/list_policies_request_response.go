@@ -25,6 +25,10 @@ type ListPoliciesRequest struct {
 	// The value of the `opc-next-page` response header from the previous "List" call.
 	// Example: `3`
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request ListPoliciesRequest) String() string {
@@ -38,11 +42,8 @@ func (request ListPoliciesRequest) GetHttpRequest(method, path string) (http.Req
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request ListPoliciesRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request ListPoliciesRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // ListPoliciesResponse wrapper for the ListPolicies operation

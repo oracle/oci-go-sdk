@@ -13,6 +13,10 @@ type GetSubnetRequest struct {
 
 	// The OCID of the subnet.
 	SubnetId *string `mandatory:"true" contributesTo:"path" name:"subnetId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetSubnetRequest) String() string {
@@ -26,11 +30,8 @@ func (request GetSubnetRequest) GetHttpRequest(method, path string) (http.Reques
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetSubnetRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetSubnetRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetSubnetResponse wrapper for the GetSubnet operation

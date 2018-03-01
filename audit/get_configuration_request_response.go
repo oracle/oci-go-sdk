@@ -13,6 +13,10 @@ type GetConfigurationRequest struct {
 
 	// ID of the root compartment (tenancy)
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetConfigurationRequest) String() string {
@@ -26,11 +30,8 @@ func (request GetConfigurationRequest) GetHttpRequest(method, path string) (http
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetConfigurationRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetConfigurationRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetConfigurationResponse wrapper for the GetConfiguration operation

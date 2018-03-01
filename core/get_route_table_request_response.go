@@ -13,6 +13,10 @@ type GetRouteTableRequest struct {
 
 	// The OCID of the route table.
 	RtId *string `mandatory:"true" contributesTo:"path" name:"rtId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetRouteTableRequest) String() string {
@@ -26,11 +30,8 @@ func (request GetRouteTableRequest) GetHttpRequest(method, path string) (http.Re
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetRouteTableRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetRouteTableRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetRouteTableResponse wrapper for the GetRouteTable operation

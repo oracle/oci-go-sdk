@@ -21,6 +21,10 @@ type DeleteDbHomeRequest struct {
 
 	// Whether to perform a final backup of the database or not. Default is false. If you previously used RMAN or dbcli to configure backups and then you switch to using the Console or the API for backups, a new backup configuration is created and associated with your database. This means that you can no longer rely on your previously configured unmanaged backups to work.
 	PerformFinalBackup *bool `mandatory:"false" contributesTo:"query" name:"performFinalBackup"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request DeleteDbHomeRequest) String() string {
@@ -34,11 +38,8 @@ func (request DeleteDbHomeRequest) GetHttpRequest(method, path string) (http.Req
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request DeleteDbHomeRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request DeleteDbHomeRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // DeleteDbHomeResponse wrapper for the DeleteDbHome operation

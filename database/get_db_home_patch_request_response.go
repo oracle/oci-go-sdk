@@ -16,6 +16,10 @@ type GetDbHomePatchRequest struct {
 
 	// The OCID of the patch.
 	PatchId *string `mandatory:"true" contributesTo:"path" name:"patchId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request GetDbHomePatchRequest) String() string {
@@ -29,11 +33,8 @@ func (request GetDbHomePatchRequest) GetHttpRequest(method, path string) (http.R
 
 // GetRetryPolicy implements the OciRetryableRequest interface
 // => assembles retry policy based on specified options and default behavior
-func (request GetDbHomePatchRequest) GetRetryPolicy(options ...common.RetryPolicyOption) common.RetryPolicy {
-	if len(options) == 0 {
-		return common.NoRetryPolicy()
-	}
-	return common.BuildRetryPolicy(options...)
+func (request GetDbHomePatchRequest) GetRetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // GetDbHomePatchResponse wrapper for the GetDbHomePatch operation

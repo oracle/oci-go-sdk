@@ -180,7 +180,7 @@ func TestVirtualNetworkClient_DeleteCpe(t *testing.T) {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
 	request := core.DeleteCpeRequest{}
-	_,err := c.DeleteCpe(context.Background(), request)
+	_, err := c.DeleteCpe(context.Background(), request)
 	assert.NoError(t, err)
 	return
 }
