@@ -105,6 +105,7 @@ Examples can be found [here](https://github.com/oracle/oci-go-sdk/tree/master/ex
 Full documentation can be found [on the godocs site](https://godoc.org/github.com/oracle/oci-go-sdk/).
 
 ## Help
+* The [Issues](https://github.com/oracle/oci-go-sdk/issues) page of this GitHub repository.
 * [Stack Overflow](https://stackoverflow.com/), use the [oracle-cloud-infrastructure](https://stackoverflow.com/questions/tagged/oracle-cloud-infrastructure) and [oci-go-sdk](https://stackoverflow.com/questions/tagged/oci-go-sdk) tags in your post.
 * [Developer Tools](https://community.oracle.com/community/cloud_computing/bare-metal/content?filterID=contentstatus%5Bpublished%5D~category%5Bdeveloper-tools%5D&filterID=contentstatus%5Bpublished%5D~objecttype~objecttype%5Bthread%5D) of the Oracle Cloud forums.
 * [My Oracle Support](https://support.oracle.com).
