@@ -14,10 +14,10 @@ import (
 
 // VolumeBackup A point-in-time copy of a volume that can then be used to create a new block volume
 // or recover a block volume. For more information, see
-// Overview of Cloud Volume Storage (https://docs.us-phoenix-1.oraclecloud.com/Content/Block/Concepts/overview.htm).
+// Overview of Cloud Volume Storage ({{DOC_SERVER_URL}}/Content/Block/Concepts/overview.htm).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+// Getting Started with Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 type VolumeBackup struct {
 
 	// The OCID of the compartment that contains the volume backup.

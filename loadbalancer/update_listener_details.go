@@ -28,6 +28,13 @@ type UpdateListenerDetails struct {
 	// Example: `HTTP`
 	Protocol *string `mandatory:"true" json:"protocol"`
 
+	// The name of the associated path-based routes applied to this listener's traffic.
+	PathRouteSetName *string `mandatory:"false" json:"pathRouteSetName"`
+
+	// A HTTP hostname for this listener. TODO: This description needs work.
+	// Example: `app.example.com`
+	ServerName *string `mandatory:"false" json:"serverName"`
+
 	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration"`
 }
 

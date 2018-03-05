@@ -15,33 +15,41 @@ import (
 	"net/http"
 )
 
-//IdentityClient a client for Identity
-type IdentityClient struct {
+//IdentityClientData a client for Identity
+type IdentityClientData struct {
 	common.BaseClient
 	config *common.ConfigurationProvider
 }
 
 // NewIdentityClientWithConfigurationProvider Creates a new default Identity client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
-func NewIdentityClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client IdentityClient, err error) {
+func NewIdentityClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (IdentityClient, error) {
 	baseClient, err := common.NewClientWithConfig(configProvider)
 	if err != nil {
-		return
+		return nil, err
 	}
 
-	client = IdentityClient{BaseClient: baseClient}
+	client := IdentityClientData{BaseClient: baseClient}
 	client.BasePath = "20160918"
 	err = client.setConfigurationProvider(configProvider)
-	return
+	if err != nil {
+		return nil, err
+	}
+	return &client, err
+}
+
+// GetBaseClient get the BaseClient object of this client
+func (client *IdentityClientData) GetBaseClient() *common.BaseClient {
+	return &client.BaseClient
 }
 
 // SetRegion overrides the region of this client.
-func (client *IdentityClient) SetRegion(region string) {
+func (client *IdentityClientData) SetRegion(region string) {
 	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "identity", region)
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
-func (client *IdentityClient) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
+func (client *IdentityClientData) setConfigurationProvider(configProvider common.ConfigurationProvider) error {
 	if ok, err := common.IsConfigurationProviderValid(configProvider); !ok {
 		return err
 	}
@@ -54,14 +62,14 @@ func (client *IdentityClient) setConfigurationProvider(configProvider common.Con
 }
 
 // ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
-func (client *IdentityClient) ConfigurationProvider() *common.ConfigurationProvider {
+func (client *IdentityClientData) ConfigurationProvider() *common.ConfigurationProvider {
 	return client.config
 }
 
 // AddUserToGroup Adds the specified user to the specified group and returns a `UserGroupMembership` object with its own OCID.
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
 // object, first make sure its `lifecycleState` has changed to ACTIVE.
-func (client IdentityClient) AddUserToGroup(ctx context.Context, request AddUserToGroupRequest) (response AddUserToGroupResponse, err error) {
+func (client IdentityClientData) AddUserToGroup(ctx context.Context, request AddUserToGroupRequest) (response AddUserToGroupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/userGroupMemberships/", request)
 	if err != nil {
 		return
@@ -82,17 +90,17 @@ func (client IdentityClient) AddUserToGroup(ctx context.Context, request AddUser
 // **Important:** Compartments cannot be deleted.
 // You must specify your tenancy's OCID as the compartment ID in the request object. Remember that the tenancy
 // is simply the root compartment. For information about OCIDs, see
-// Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
+// Resource Identifiers ({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the compartment, which must be unique across all compartments in
 // your tenancy. You can use this name or the OCID when writing policies that apply
 // to the compartment. For more information about policies, see
-// How Policies Work (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policies.htm).
+// How Policies Work ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policies.htm).
 // You must also specify a *description* for the compartment (although it can be an empty string). It does
 // not have to be unique, and you can change it anytime with
 // UpdateCompartment.
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
 // object, first make sure its `lifecycleState` has changed to ACTIVE.
-func (client IdentityClient) CreateCompartment(ctx context.Context, request CreateCompartmentRequest) (response CreateCompartmentResponse, err error) {
+func (client IdentityClientData) CreateCompartment(ctx context.Context, request CreateCompartmentRequest) (response CreateCompartmentResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/compartments/", request)
 	if err != nil {
 		return
@@ -111,14 +119,14 @@ func (client IdentityClient) CreateCompartment(ctx context.Context, request Crea
 
 // CreateCustomerSecretKey Creates a new secret key for the specified user. Secret keys are used for authentication with the Object Storage Service's Amazon S3
 // compatible API. For information, see
-// Managing User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Tasks/managingcredentials.htm).
+// Managing User Credentials ({{DOC_SERVER_URL}}/Content/Identity/Tasks/managingcredentials.htm).
 // You must specify a *description* for the secret key (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with
 // UpdateCustomerSecretKey.
 // Every user has permission to create a secret key for *their own user ID*. An administrator in your organization
 // does not need to write a policy to give users this ability. To compare, administrators who have permission to the
 // tenancy can use this operation to create a secret key for any user, including themselves.
-func (client IdentityClient) CreateCustomerSecretKey(ctx context.Context, request CreateCustomerSecretKeyRequest) (response CreateCustomerSecretKeyResponse, err error) {
+func (client IdentityClientData) CreateCustomerSecretKey(ctx context.Context, request CreateCustomerSecretKeyRequest) (response CreateCustomerSecretKeyResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/users/{userId}/customerSecretKeys/", request)
 	if err != nil {
 		return
@@ -140,10 +148,10 @@ func (client IdentityClient) CreateCustomerSecretKey(ctx context.Context, reques
 // is simply the root compartment). Notice that IAM resources (users, groups, compartments, and some policies)
 // reside within the tenancy itself, unlike cloud resources such as compute instances, which typically
 // reside within compartments inside the tenancy. For information about OCIDs, see
-// Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
+// Resource Identifiers ({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the group, which must be unique across all groups in your tenancy and
 // cannot be changed. You can use this name or the OCID when writing policies that apply to the group. For more
-// information about policies, see How Policies Work (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policies.htm).
+// information about policies, see How Policies Work ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policies.htm).
 // You must also specify a *description* for the group (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with UpdateGroup.
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
@@ -151,7 +159,7 @@ func (client IdentityClient) CreateCustomerSecretKey(ctx context.Context, reques
 // After creating the group, you need to put users in it and write policies for it.
 // See AddUserToGroup and
 // CreatePolicy.
-func (client IdentityClient) CreateGroup(ctx context.Context, request CreateGroupRequest) (response CreateGroupResponse, err error) {
+func (client IdentityClientData) CreateGroup(ctx context.Context, request CreateGroupRequest) (response CreateGroupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/groups/", request)
 	if err != nil {
 		return
@@ -169,10 +177,10 @@ func (client IdentityClient) CreateGroup(ctx context.Context, request CreateGrou
 }
 
 // CreateIdentityProvider Creates a new identity provider in your tenancy. For more information, see
-// Identity Providers and Federation (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/federation.htm).
+// Identity Providers and Federation ({{DOC_SERVER_URL}}/Content/Identity/Concepts/federation.htm).
 // You must specify your tenancy's OCID as the compartment ID in the request object.
 // Remember that the tenancy is simply the root compartment. For information about
-// OCIDs, see Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
+// OCIDs, see Resource Identifiers ({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the `IdentityProvider`, which must be unique
 // across all `IdentityProvider` objects in your tenancy and cannot be changed.
 // You must also specify a *description* for the `IdentityProvider` (although
@@ -182,7 +190,7 @@ func (client IdentityClient) CreateGroup(ctx context.Context, request CreateGrou
 // After you send your request, the new object's `lifecycleState` will temporarily
 // be CREATING. Before using the object, first make sure its `lifecycleState` has
 // changed to ACTIVE.
-func (client IdentityClient) CreateIdentityProvider(ctx context.Context, request CreateIdentityProviderRequest) (response CreateIdentityProviderResponse, err error) {
+func (client IdentityClientData) CreateIdentityProvider(ctx context.Context, request CreateIdentityProviderRequest) (response CreateIdentityProviderResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/identityProviders/", request)
 	if err != nil {
 		return
@@ -201,7 +209,7 @@ func (client IdentityClient) CreateIdentityProvider(ctx context.Context, request
 
 // CreateIdpGroupMapping Creates a single mapping between an IdP group and an IAM Service
 // Group.
-func (client IdentityClient) CreateIdpGroupMapping(ctx context.Context, request CreateIdpGroupMappingRequest) (response CreateIdpGroupMappingResponse, err error) {
+func (client IdentityClientData) CreateIdpGroupMapping(ctx context.Context, request CreateIdpGroupMappingRequest) (response CreateIdpGroupMappingResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/identityProviders/{identityProviderId}/groupMappings/", request)
 	if err != nil {
 		return
@@ -219,7 +227,7 @@ func (client IdentityClient) CreateIdpGroupMapping(ctx context.Context, request 
 }
 
 // CreateOrResetUIPassword Creates a new Console one-time password for the specified user. For more information about user
-// credentials, see User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/usercredentials.htm).
+// credentials, see User Credentials ({{DOC_SERVER_URL}}/Content/Identity/Concepts/usercredentials.htm).
 // Use this operation after creating a new user, or if a user forgets their password. The new one-time
 // password is returned to you in the response, and you must securely deliver it to the user. They'll
 // be prompted to change this password the next time they sign in to the Console. If they don't change
@@ -227,7 +235,7 @@ func (client IdentityClient) CreateIdpGroupMapping(ctx context.Context, request 
 // user.
 // **Note:** The user's Console login is the unique name you specified when you created the user
 // (see CreateUser).
-func (client IdentityClient) CreateOrResetUIPassword(ctx context.Context, request CreateOrResetUIPasswordRequest) (response CreateOrResetUIPasswordResponse, err error) {
+func (client IdentityClientData) CreateOrResetUIPassword(ctx context.Context, request CreateOrResetUIPasswordRequest) (response CreateOrResetUIPasswordResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/users/{userId}/uiPassword", request)
 	if err != nil {
 		return
@@ -245,18 +253,18 @@ func (client IdentityClient) CreateOrResetUIPassword(ctx context.Context, reques
 }
 
 // CreatePolicy Creates a new policy in the specified compartment (either the tenancy or another of your compartments).
-// If you're new to policies, see Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+// If you're new to policies, see Getting Started with Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policygetstarted.htm).
 // You must specify a *name* for the policy, which must be unique across all policies in your tenancy
 // and cannot be changed.
 // You must also specify a *description* for the policy (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with UpdatePolicy.
 // You must specify one or more policy statements in the statements array. For information about writing
-// policies, see How Policies Work (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policies.htm) and
-// Common Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/commonpolicies.htm).
+// policies, see How Policies Work ({{DOC_SERVER_URL}}/Content/Identity/Concepts/policies.htm) and
+// Common Policies ({{DOC_SERVER_URL}}/Content/Identity/Concepts/commonpolicies.htm).
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
 // object, first make sure its `lifecycleState` has changed to ACTIVE.
 // New policies take effect typically within 10 seconds.
-func (client IdentityClient) CreatePolicy(ctx context.Context, request CreatePolicyRequest) (response CreatePolicyResponse, err error) {
+func (client IdentityClientData) CreatePolicy(ctx context.Context, request CreatePolicyRequest) (response CreatePolicyResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/policies/", request)
 	if err != nil {
 		return
@@ -274,7 +282,7 @@ func (client IdentityClient) CreatePolicy(ctx context.Context, request CreatePol
 }
 
 // CreateRegionSubscription Creates a subscription to a region for a tenancy.
-func (client IdentityClient) CreateRegionSubscription(ctx context.Context, request CreateRegionSubscriptionRequest) (response CreateRegionSubscriptionResponse, err error) {
+func (client IdentityClientData) CreateRegionSubscription(ctx context.Context, request CreateRegionSubscriptionRequest) (response CreateRegionSubscriptionResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/tenancies/{tenancyId}/regionSubscriptions", request)
 	if err != nil {
 		return
@@ -292,14 +300,14 @@ func (client IdentityClient) CreateRegionSubscription(ctx context.Context, reque
 }
 
 // CreateSwiftPassword Creates a new Swift password for the specified user. For information about what Swift passwords are for, see
-// Managing User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Tasks/managingcredentials.htm).
+// Managing User Credentials ({{DOC_SERVER_URL}}/Content/Identity/Tasks/managingcredentials.htm).
 // You must specify a *description* for the Swift password (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with
 // UpdateSwiftPassword.
 // Every user has permission to create a Swift password for *their own user ID*. An administrator in your organization
 // does not need to write a policy to give users this ability. To compare, administrators who have permission to the
 // tenancy can use this operation to create a Swift password for any user, including themselves.
-func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request CreateSwiftPasswordRequest) (response CreateSwiftPasswordResponse, err error) {
+func (client IdentityClientData) CreateSwiftPassword(ctx context.Context, request CreateSwiftPasswordRequest) (response CreateSwiftPasswordResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/users/{userId}/swiftPasswords/", request)
 	if err != nil {
 		return
@@ -317,12 +325,12 @@ func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request Cr
 }
 
 // CreateUser Creates a new user in your tenancy. For conceptual information about users, your tenancy, and other
-// IAM Service components, see Overview of the IAM Service (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/overview.htm).
+// IAM Service components, see Overview of the IAM Service ({{DOC_SERVER_URL}}/Content/Identity/Concepts/overview.htm).
 // You must specify your tenancy's OCID as the compartment ID in the request object (remember that the
 // tenancy is simply the root compartment). Notice that IAM resources (users, groups, compartments, and
 // some policies) reside within the tenancy itself, unlike cloud resources such as compute instances,
 // which typically reside within compartments inside the tenancy. For information about OCIDs, see
-// Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
+// Resource Identifiers ({{DOC_SERVER_URL}}/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the user, which must be unique across all users in your tenancy
 // and cannot be changed. Allowed characters: No spaces. Only letters, numerals, hyphens, periods,
 // underscores, +, and @. If you specify a name that's already in use, you'll get a 409 error.
@@ -342,10 +350,10 @@ func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request Cr
 // CreateOrResetUIPassword).
 // If the user needs to access the Oracle Cloud Infrastructure REST API, you need to upload a
 // public API signing key for that user (see
-// Required Keys and OCIDs (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm) and also
+// Required Keys and OCIDs ({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm) and also
 // UploadApiKey).
 // **Important:** Make sure to inform the new user which compartment(s) they have access to.
-func (client IdentityClient) CreateUser(ctx context.Context, request CreateUserRequest) (response CreateUserResponse, err error) {
+func (client IdentityClientData) CreateUser(ctx context.Context, request CreateUserRequest) (response CreateUserResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/users/", request)
 	if err != nil {
 		return
@@ -367,7 +375,7 @@ func (client IdentityClient) CreateUser(ctx context.Context, request CreateUserR
 // administrator in your organization does not need to write a policy to give users this ability.
 // To compare, administrators who have permission to the tenancy can use this operation to delete
 // a key for any user, including themselves.
-func (client IdentityClient) DeleteApiKey(ctx context.Context, request DeleteApiKeyRequest) (response DeleteApiKeyResponse, err error) {
+func (client IdentityClientData) DeleteApiKey(ctx context.Context, request DeleteApiKeyRequest) (response DeleteApiKeyResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/users/{userId}/apiKeys/{fingerprint}", request)
 	if err != nil {
 		return
@@ -385,7 +393,7 @@ func (client IdentityClient) DeleteApiKey(ctx context.Context, request DeleteApi
 }
 
 // DeleteCustomerSecretKey Deletes the specified secret key for the specified user.
-func (client IdentityClient) DeleteCustomerSecretKey(ctx context.Context, request DeleteCustomerSecretKeyRequest) (response DeleteCustomerSecretKeyResponse, err error) {
+func (client IdentityClientData) DeleteCustomerSecretKey(ctx context.Context, request DeleteCustomerSecretKeyRequest) (response DeleteCustomerSecretKeyResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/users/{userId}/customerSecretKeys/{customerSecretKeyId}", request)
 	if err != nil {
 		return
@@ -403,7 +411,7 @@ func (client IdentityClient) DeleteCustomerSecretKey(ctx context.Context, reques
 }
 
 // DeleteGroup Deletes the specified group. The group must be empty.
-func (client IdentityClient) DeleteGroup(ctx context.Context, request DeleteGroupRequest) (response DeleteGroupResponse, err error) {
+func (client IdentityClientData) DeleteGroup(ctx context.Context, request DeleteGroupRequest) (response DeleteGroupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/groups/{groupId}", request)
 	if err != nil {
 		return
@@ -422,7 +430,7 @@ func (client IdentityClient) DeleteGroup(ctx context.Context, request DeleteGrou
 
 // DeleteIdentityProvider Deletes the specified identity provider. The identity provider must not have
 // any group mappings (see IdpGroupMapping).
-func (client IdentityClient) DeleteIdentityProvider(ctx context.Context, request DeleteIdentityProviderRequest) (response DeleteIdentityProviderResponse, err error) {
+func (client IdentityClientData) DeleteIdentityProvider(ctx context.Context, request DeleteIdentityProviderRequest) (response DeleteIdentityProviderResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/identityProviders/{identityProviderId}", request)
 	if err != nil {
 		return
@@ -440,7 +448,7 @@ func (client IdentityClient) DeleteIdentityProvider(ctx context.Context, request
 }
 
 // DeleteIdpGroupMapping Deletes the specified group mapping.
-func (client IdentityClient) DeleteIdpGroupMapping(ctx context.Context, request DeleteIdpGroupMappingRequest) (response DeleteIdpGroupMappingResponse, err error) {
+func (client IdentityClientData) DeleteIdpGroupMapping(ctx context.Context, request DeleteIdpGroupMappingRequest) (response DeleteIdpGroupMappingResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/identityProviders/{identityProviderId}/groupMappings/{mappingId}", request)
 	if err != nil {
 		return
@@ -458,7 +466,7 @@ func (client IdentityClient) DeleteIdpGroupMapping(ctx context.Context, request 
 }
 
 // DeletePolicy Deletes the specified policy. The deletion takes effect typically within 10 seconds.
-func (client IdentityClient) DeletePolicy(ctx context.Context, request DeletePolicyRequest) (response DeletePolicyResponse, err error) {
+func (client IdentityClientData) DeletePolicy(ctx context.Context, request DeletePolicyRequest) (response DeletePolicyResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/policies/{policyId}", request)
 	if err != nil {
 		return
@@ -476,7 +484,7 @@ func (client IdentityClient) DeletePolicy(ctx context.Context, request DeletePol
 }
 
 // DeleteSwiftPassword Deletes the specified Swift password for the specified user.
-func (client IdentityClient) DeleteSwiftPassword(ctx context.Context, request DeleteSwiftPasswordRequest) (response DeleteSwiftPasswordResponse, err error) {
+func (client IdentityClientData) DeleteSwiftPassword(ctx context.Context, request DeleteSwiftPasswordRequest) (response DeleteSwiftPasswordResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/users/{userId}/swiftPasswords/{swiftPasswordId}", request)
 	if err != nil {
 		return
@@ -494,7 +502,7 @@ func (client IdentityClient) DeleteSwiftPassword(ctx context.Context, request De
 }
 
 // DeleteUser Deletes the specified user. The user must not be in any groups.
-func (client IdentityClient) DeleteUser(ctx context.Context, request DeleteUserRequest) (response DeleteUserResponse, err error) {
+func (client IdentityClientData) DeleteUser(ctx context.Context, request DeleteUserRequest) (response DeleteUserResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/users/{userId}", request)
 	if err != nil {
 		return
@@ -518,7 +526,7 @@ func (client IdentityClient) DeleteUser(ctx context.Context, request DeleteUserR
 // each resource type and specify the compartment's OCID as a query parameter in the request. For example,
 // call the ListInstances operation in the Cloud Compute
 // Service or the ListVolumes operation in Cloud Block Storage.
-func (client IdentityClient) GetCompartment(ctx context.Context, request GetCompartmentRequest) (response GetCompartmentResponse, err error) {
+func (client IdentityClientData) GetCompartment(ctx context.Context, request GetCompartmentRequest) (response GetCompartmentResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/compartments/{compartmentId}", request)
 	if err != nil {
 		return
@@ -539,7 +547,7 @@ func (client IdentityClient) GetCompartment(ctx context.Context, request GetComp
 // This operation does not return a list of all the users in the group. To do that, use
 // ListUserGroupMemberships and
 // provide the group's OCID as a query parameter in the request.
-func (client IdentityClient) GetGroup(ctx context.Context, request GetGroupRequest) (response GetGroupResponse, err error) {
+func (client IdentityClientData) GetGroup(ctx context.Context, request GetGroupRequest) (response GetGroupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/groups/{groupId}", request)
 	if err != nil {
 		return
@@ -557,7 +565,7 @@ func (client IdentityClient) GetGroup(ctx context.Context, request GetGroupReque
 }
 
 // GetIdentityProvider Gets the specified identity provider's information.
-func (client IdentityClient) GetIdentityProvider(ctx context.Context, request GetIdentityProviderRequest) (response GetIdentityProviderResponse, err error) {
+func (client IdentityClientData) GetIdentityProvider(ctx context.Context, request GetIdentityProviderRequest) (response GetIdentityProviderResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/identityProviders/{identityProviderId}", request)
 	if err != nil {
 		return
@@ -575,7 +583,7 @@ func (client IdentityClient) GetIdentityProvider(ctx context.Context, request Ge
 }
 
 // GetIdpGroupMapping Gets the specified group mapping.
-func (client IdentityClient) GetIdpGroupMapping(ctx context.Context, request GetIdpGroupMappingRequest) (response GetIdpGroupMappingResponse, err error) {
+func (client IdentityClientData) GetIdpGroupMapping(ctx context.Context, request GetIdpGroupMappingRequest) (response GetIdpGroupMappingResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/identityProviders/{identityProviderId}/groupMappings/{mappingId}", request)
 	if err != nil {
 		return
@@ -593,7 +601,7 @@ func (client IdentityClient) GetIdpGroupMapping(ctx context.Context, request Get
 }
 
 // GetPolicy Gets the specified policy's information.
-func (client IdentityClient) GetPolicy(ctx context.Context, request GetPolicyRequest) (response GetPolicyResponse, err error) {
+func (client IdentityClientData) GetPolicy(ctx context.Context, request GetPolicyRequest) (response GetPolicyResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/policies/{policyId}", request)
 	if err != nil {
 		return
@@ -611,7 +619,7 @@ func (client IdentityClient) GetPolicy(ctx context.Context, request GetPolicyReq
 }
 
 // GetTenancy Get the specified tenancy's information.
-func (client IdentityClient) GetTenancy(ctx context.Context, request GetTenancyRequest) (response GetTenancyResponse, err error) {
+func (client IdentityClientData) GetTenancy(ctx context.Context, request GetTenancyRequest) (response GetTenancyResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/tenancies/{tenancyId}", request)
 	if err != nil {
 		return
@@ -629,7 +637,7 @@ func (client IdentityClient) GetTenancy(ctx context.Context, request GetTenancyR
 }
 
 // GetUser Gets the specified user's information.
-func (client IdentityClient) GetUser(ctx context.Context, request GetUserRequest) (response GetUserResponse, err error) {
+func (client IdentityClientData) GetUser(ctx context.Context, request GetUserRequest) (response GetUserResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/users/{userId}", request)
 	if err != nil {
 		return
@@ -647,7 +655,7 @@ func (client IdentityClient) GetUser(ctx context.Context, request GetUserRequest
 }
 
 // GetUserGroupMembership Gets the specified UserGroupMembership's information.
-func (client IdentityClient) GetUserGroupMembership(ctx context.Context, request GetUserGroupMembershipRequest) (response GetUserGroupMembershipResponse, err error) {
+func (client IdentityClientData) GetUserGroupMembership(ctx context.Context, request GetUserGroupMembershipRequest) (response GetUserGroupMembershipResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/userGroupMemberships/{userGroupMembershipId}", request)
 	if err != nil {
 		return
@@ -667,7 +675,7 @@ func (client IdentityClient) GetUserGroupMembership(ctx context.Context, request
 // ListApiKeys Lists the API signing keys for the specified user. A user can have a maximum of three keys.
 // Every user has permission to use this API call for *their own user ID*.  An administrator in your
 // organization does not need to write a policy to give users this ability.
-func (client IdentityClient) ListApiKeys(ctx context.Context, request ListApiKeysRequest) (response ListApiKeysResponse, err error) {
+func (client IdentityClientData) ListApiKeys(ctx context.Context, request ListApiKeysRequest) (response ListApiKeysResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/users/{userId}/apiKeys/", request)
 	if err != nil {
 		return
@@ -686,8 +694,8 @@ func (client IdentityClient) ListApiKeys(ctx context.Context, request ListApiKey
 
 // ListAvailabilityDomains Lists the Availability Domains in your tenancy. Specify the OCID of either the tenancy or another
 // of your compartments as the value for the compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListAvailabilityDomains(ctx context.Context, request ListAvailabilityDomainsRequest) (response ListAvailabilityDomainsResponse, err error) {
+// See Where to Get the Tenancy's OCID and User's OCID ({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
+func (client IdentityClientData) ListAvailabilityDomains(ctx context.Context, request ListAvailabilityDomainsRequest) (response ListAvailabilityDomainsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/availabilityDomains/", request)
 	if err != nil {
 		return
@@ -706,8 +714,8 @@ func (client IdentityClient) ListAvailabilityDomains(ctx context.Context, reques
 
 // ListCompartments Lists the compartments in your tenancy. You must specify your tenancy's OCID as the value
 // for the compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListCompartments(ctx context.Context, request ListCompartmentsRequest) (response ListCompartmentsResponse, err error) {
+// See Where to Get the Tenancy's OCID and User's OCID ({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
+func (client IdentityClientData) ListCompartments(ctx context.Context, request ListCompartmentsRequest) (response ListCompartmentsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/compartments/", request)
 	if err != nil {
 		return
@@ -726,7 +734,7 @@ func (client IdentityClient) ListCompartments(ctx context.Context, request ListC
 
 // ListCustomerSecretKeys Lists the secret keys for the specified user. The returned object contains the secret key's OCID, but not
 // the secret key itself. The actual secret key is returned only upon creation.
-func (client IdentityClient) ListCustomerSecretKeys(ctx context.Context, request ListCustomerSecretKeysRequest) (response ListCustomerSecretKeysResponse, err error) {
+func (client IdentityClientData) ListCustomerSecretKeys(ctx context.Context, request ListCustomerSecretKeysRequest) (response ListCustomerSecretKeysResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/users/{userId}/customerSecretKeys/", request)
 	if err != nil {
 		return
@@ -745,8 +753,8 @@ func (client IdentityClient) ListCustomerSecretKeys(ctx context.Context, request
 
 // ListFaultDomains Lists the Fault Domains in your tenancy. Specify the OCID of either the tenancy or another
 // of your compartments as the value for the compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListFaultDomains(ctx context.Context, request ListFaultDomainsRequest) (response ListFaultDomainsResponse, err error) {
+// See Where to Get the Tenancy's OCID and User's OCID ({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
+func (client IdentityClientData) ListFaultDomains(ctx context.Context, request ListFaultDomainsRequest) (response ListFaultDomainsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/faultDomains/", request)
 	if err != nil {
 		return
@@ -765,8 +773,8 @@ func (client IdentityClient) ListFaultDomains(ctx context.Context, request ListF
 
 // ListGroups Lists the groups in your tenancy. You must specify your tenancy's OCID as the value for
 // the compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListGroups(ctx context.Context, request ListGroupsRequest) (response ListGroupsResponse, err error) {
+// See Where to Get the Tenancy's OCID and User's OCID ({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
+func (client IdentityClientData) ListGroups(ctx context.Context, request ListGroupsRequest) (response ListGroupsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/groups/", request)
 	if err != nil {
 		return
@@ -802,8 +810,8 @@ func (m *listidentityprovider) UnmarshalPolymorphicJSON(data []byte) (interface{
 // ListIdentityProviders Lists all the identity providers in your tenancy. You must specify the identity provider type (e.g., `SAML2` for
 // identity providers using the SAML2.0 protocol). You must specify your tenancy's OCID as the value for the
 // compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListIdentityProviders(ctx context.Context, request ListIdentityProvidersRequest) (response ListIdentityProvidersResponse, err error) {
+// See Where to Get the Tenancy's OCID and User's OCID ({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
+func (client IdentityClientData) ListIdentityProviders(ctx context.Context, request ListIdentityProvidersRequest) (response ListIdentityProvidersResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/identityProviders/", request)
 	if err != nil {
 		return
@@ -821,7 +829,7 @@ func (client IdentityClient) ListIdentityProviders(ctx context.Context, request 
 }
 
 // ListIdpGroupMappings Lists the group mappings for the specified identity provider.
-func (client IdentityClient) ListIdpGroupMappings(ctx context.Context, request ListIdpGroupMappingsRequest) (response ListIdpGroupMappingsResponse, err error) {
+func (client IdentityClientData) ListIdpGroupMappings(ctx context.Context, request ListIdpGroupMappingsRequest) (response ListIdpGroupMappingsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/identityProviders/{identityProviderId}/groupMappings/", request)
 	if err != nil {
 		return
@@ -839,10 +847,10 @@ func (client IdentityClient) ListIdpGroupMappings(ctx context.Context, request L
 }
 
 // ListPolicies Lists the policies in the specified compartment (either the tenancy or another of your compartments).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
+// See Where to Get the Tenancy's OCID and User's OCID ({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
 // To determine which policies apply to a particular group or compartment, you must view the individual
 // statements inside all your policies. There isn't a way to automatically obtain that information via the API.
-func (client IdentityClient) ListPolicies(ctx context.Context, request ListPoliciesRequest) (response ListPoliciesResponse, err error) {
+func (client IdentityClientData) ListPolicies(ctx context.Context, request ListPoliciesRequest) (response ListPoliciesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/policies/", request)
 	if err != nil {
 		return
@@ -860,7 +868,7 @@ func (client IdentityClient) ListPolicies(ctx context.Context, request ListPolic
 }
 
 // ListRegionSubscriptions Lists the region subscriptions for the specified tenancy.
-func (client IdentityClient) ListRegionSubscriptions(ctx context.Context, request ListRegionSubscriptionsRequest) (response ListRegionSubscriptionsResponse, err error) {
+func (client IdentityClientData) ListRegionSubscriptions(ctx context.Context, request ListRegionSubscriptionsRequest) (response ListRegionSubscriptionsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/tenancies/{tenancyId}/regionSubscriptions", request)
 	if err != nil {
 		return
@@ -878,7 +886,7 @@ func (client IdentityClient) ListRegionSubscriptions(ctx context.Context, reques
 }
 
 // ListRegions Lists all the regions offered by Oracle Cloud Infrastructure.
-func (client IdentityClient) ListRegions(ctx context.Context) (response ListRegionsResponse, err error) {
+func (client IdentityClientData) ListRegions(ctx context.Context) (response ListRegionsResponse, err error) {
 	httpRequest := common.MakeDefaultHTTPRequest(http.MethodGet, "/regions")
 
 	httpResponse, err := client.Call(ctx, &httpRequest)
@@ -894,7 +902,7 @@ func (client IdentityClient) ListRegions(ctx context.Context) (response ListRegi
 
 // ListSwiftPasswords Lists the Swift passwords for the specified user. The returned object contains the password's OCID, but not
 // the password itself. The actual password is returned only upon creation.
-func (client IdentityClient) ListSwiftPasswords(ctx context.Context, request ListSwiftPasswordsRequest) (response ListSwiftPasswordsResponse, err error) {
+func (client IdentityClientData) ListSwiftPasswords(ctx context.Context, request ListSwiftPasswordsRequest) (response ListSwiftPasswordsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/users/{userId}/swiftPasswords/", request)
 	if err != nil {
 		return
@@ -913,13 +921,13 @@ func (client IdentityClient) ListSwiftPasswords(ctx context.Context, request Lis
 
 // ListUserGroupMemberships Lists the `UserGroupMembership` objects in your tenancy. You must specify your tenancy's OCID
 // as the value for the compartment ID
-// (see Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five)).
+// (see Where to Get the Tenancy's OCID and User's OCID ({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five)).
 // You must also then filter the list in one of these ways:
 // - You can limit the results to just the memberships for a given user by specifying a `userId`.
 // - Similarly, you can limit the results to just the memberships for a given group by specifying a `groupId`.
 // - You can set both the `userId` and `groupId` to determine if the specified user is in the specified group.
 // If the answer is no, the response is an empty list.
-func (client IdentityClient) ListUserGroupMemberships(ctx context.Context, request ListUserGroupMembershipsRequest) (response ListUserGroupMembershipsResponse, err error) {
+func (client IdentityClientData) ListUserGroupMemberships(ctx context.Context, request ListUserGroupMembershipsRequest) (response ListUserGroupMembershipsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/userGroupMemberships/", request)
 	if err != nil {
 		return
@@ -938,8 +946,8 @@ func (client IdentityClient) ListUserGroupMemberships(ctx context.Context, reque
 
 // ListUsers Lists the users in your tenancy. You must specify your tenancy's OCID as the value for the
 // compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
-func (client IdentityClient) ListUsers(ctx context.Context, request ListUsersRequest) (response ListUsersResponse, err error) {
+// See Where to Get the Tenancy's OCID and User's OCID ({{DOC_SERVER_URL}}/Content/API/Concepts/apisigningkey.htm#five).
+func (client IdentityClientData) ListUsers(ctx context.Context, request ListUsersRequest) (response ListUsersResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/users/", request)
 	if err != nil {
 		return
@@ -957,7 +965,7 @@ func (client IdentityClient) ListUsers(ctx context.Context, request ListUsersReq
 }
 
 // RemoveUserFromGroup Removes a user from a group by deleting the corresponding `UserGroupMembership`.
-func (client IdentityClient) RemoveUserFromGroup(ctx context.Context, request RemoveUserFromGroupRequest) (response RemoveUserFromGroupResponse, err error) {
+func (client IdentityClientData) RemoveUserFromGroup(ctx context.Context, request RemoveUserFromGroupRequest) (response RemoveUserFromGroupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/userGroupMemberships/{userGroupMembershipId}", request)
 	if err != nil {
 		return
@@ -975,7 +983,7 @@ func (client IdentityClient) RemoveUserFromGroup(ctx context.Context, request Re
 }
 
 // UpdateCompartment Updates the specified compartment's description or name. You can't update the root compartment.
-func (client IdentityClient) UpdateCompartment(ctx context.Context, request UpdateCompartmentRequest) (response UpdateCompartmentResponse, err error) {
+func (client IdentityClientData) UpdateCompartment(ctx context.Context, request UpdateCompartmentRequest) (response UpdateCompartmentResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/compartments/{compartmentId}", request)
 	if err != nil {
 		return
@@ -993,7 +1001,7 @@ func (client IdentityClient) UpdateCompartment(ctx context.Context, request Upda
 }
 
 // UpdateCustomerSecretKey Updates the specified secret key's description.
-func (client IdentityClient) UpdateCustomerSecretKey(ctx context.Context, request UpdateCustomerSecretKeyRequest) (response UpdateCustomerSecretKeyResponse, err error) {
+func (client IdentityClientData) UpdateCustomerSecretKey(ctx context.Context, request UpdateCustomerSecretKeyRequest) (response UpdateCustomerSecretKeyResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/users/{userId}/customerSecretKeys/{customerSecretKeyId}", request)
 	if err != nil {
 		return
@@ -1011,7 +1019,7 @@ func (client IdentityClient) UpdateCustomerSecretKey(ctx context.Context, reques
 }
 
 // UpdateGroup Updates the specified group.
-func (client IdentityClient) UpdateGroup(ctx context.Context, request UpdateGroupRequest) (response UpdateGroupResponse, err error) {
+func (client IdentityClientData) UpdateGroup(ctx context.Context, request UpdateGroupRequest) (response UpdateGroupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/groups/{groupId}", request)
 	if err != nil {
 		return
@@ -1029,7 +1037,7 @@ func (client IdentityClient) UpdateGroup(ctx context.Context, request UpdateGrou
 }
 
 // UpdateIdentityProvider Updates the specified identity provider.
-func (client IdentityClient) UpdateIdentityProvider(ctx context.Context, request UpdateIdentityProviderRequest) (response UpdateIdentityProviderResponse, err error) {
+func (client IdentityClientData) UpdateIdentityProvider(ctx context.Context, request UpdateIdentityProviderRequest) (response UpdateIdentityProviderResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/identityProviders/{identityProviderId}", request)
 	if err != nil {
 		return
@@ -1047,7 +1055,7 @@ func (client IdentityClient) UpdateIdentityProvider(ctx context.Context, request
 }
 
 // UpdateIdpGroupMapping Updates the specified group mapping.
-func (client IdentityClient) UpdateIdpGroupMapping(ctx context.Context, request UpdateIdpGroupMappingRequest) (response UpdateIdpGroupMappingResponse, err error) {
+func (client IdentityClientData) UpdateIdpGroupMapping(ctx context.Context, request UpdateIdpGroupMappingRequest) (response UpdateIdpGroupMappingResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/identityProviders/{identityProviderId}/groupMappings/{mappingId}", request)
 	if err != nil {
 		return
@@ -1066,7 +1074,7 @@ func (client IdentityClient) UpdateIdpGroupMapping(ctx context.Context, request 
 
 // UpdatePolicy Updates the specified policy. You can update the description or the policy statements themselves.
 // Policy changes take effect typically within 10 seconds.
-func (client IdentityClient) UpdatePolicy(ctx context.Context, request UpdatePolicyRequest) (response UpdatePolicyResponse, err error) {
+func (client IdentityClientData) UpdatePolicy(ctx context.Context, request UpdatePolicyRequest) (response UpdatePolicyResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/policies/{policyId}", request)
 	if err != nil {
 		return
@@ -1084,7 +1092,7 @@ func (client IdentityClient) UpdatePolicy(ctx context.Context, request UpdatePol
 }
 
 // UpdateSwiftPassword Updates the specified Swift password's description.
-func (client IdentityClient) UpdateSwiftPassword(ctx context.Context, request UpdateSwiftPasswordRequest) (response UpdateSwiftPasswordResponse, err error) {
+func (client IdentityClientData) UpdateSwiftPassword(ctx context.Context, request UpdateSwiftPasswordRequest) (response UpdateSwiftPasswordResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/users/{userId}/swiftPasswords/{swiftPasswordId}", request)
 	if err != nil {
 		return
@@ -1102,7 +1110,7 @@ func (client IdentityClient) UpdateSwiftPassword(ctx context.Context, request Up
 }
 
 // UpdateUser Updates the description of the specified user.
-func (client IdentityClient) UpdateUser(ctx context.Context, request UpdateUserRequest) (response UpdateUserResponse, err error) {
+func (client IdentityClientData) UpdateUser(ctx context.Context, request UpdateUserRequest) (response UpdateUserResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/users/{userId}", request)
 	if err != nil {
 		return
@@ -1120,7 +1128,7 @@ func (client IdentityClient) UpdateUser(ctx context.Context, request UpdateUserR
 }
 
 // UpdateUserState Updates the state of the specified user.
-func (client IdentityClient) UpdateUserState(ctx context.Context, request UpdateUserStateRequest) (response UpdateUserStateResponse, err error) {
+func (client IdentityClientData) UpdateUserState(ctx context.Context, request UpdateUserStateRequest) (response UpdateUserStateResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/users/{userId}/state/", request)
 	if err != nil {
 		return
@@ -1149,7 +1157,7 @@ func (client IdentityClient) UpdateUserState(ctx context.Context, request Update
 // you have. Also confirm you're working in the correct compartment.
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using
 // the object, first make sure its `lifecycleState` has changed to ACTIVE.
-func (client IdentityClient) UploadApiKey(ctx context.Context, request UploadApiKeyRequest) (response UploadApiKeyResponse, err error) {
+func (client IdentityClientData) UploadApiKey(ctx context.Context, request UploadApiKeyRequest) (response UploadApiKeyResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/users/{userId}/apiKeys/", request)
 	if err != nil {
 		return
@@ -1164,4 +1172,62 @@ func (client IdentityClient) UploadApiKey(ctx context.Context, request UploadApi
 
 	err = common.UnmarshalResponse(httpResponse, &response)
 	return
+}
+
+// IdentityClient is client interface for Identity
+type IdentityClient interface {
+	GetBaseClient() *common.BaseClient
+	ConfigurationProvider() *common.ConfigurationProvider
+	AddUserToGroup(ctx context.Context, request AddUserToGroupRequest) (response AddUserToGroupResponse, err error)
+	CreateCompartment(ctx context.Context, request CreateCompartmentRequest) (response CreateCompartmentResponse, err error)
+	CreateCustomerSecretKey(ctx context.Context, request CreateCustomerSecretKeyRequest) (response CreateCustomerSecretKeyResponse, err error)
+	CreateGroup(ctx context.Context, request CreateGroupRequest) (response CreateGroupResponse, err error)
+	CreateIdentityProvider(ctx context.Context, request CreateIdentityProviderRequest) (response CreateIdentityProviderResponse, err error)
+	CreateIdpGroupMapping(ctx context.Context, request CreateIdpGroupMappingRequest) (response CreateIdpGroupMappingResponse, err error)
+	CreateOrResetUIPassword(ctx context.Context, request CreateOrResetUIPasswordRequest) (response CreateOrResetUIPasswordResponse, err error)
+	CreatePolicy(ctx context.Context, request CreatePolicyRequest) (response CreatePolicyResponse, err error)
+	CreateRegionSubscription(ctx context.Context, request CreateRegionSubscriptionRequest) (response CreateRegionSubscriptionResponse, err error)
+	CreateSwiftPassword(ctx context.Context, request CreateSwiftPasswordRequest) (response CreateSwiftPasswordResponse, err error)
+	CreateUser(ctx context.Context, request CreateUserRequest) (response CreateUserResponse, err error)
+	DeleteApiKey(ctx context.Context, request DeleteApiKeyRequest) (response DeleteApiKeyResponse, err error)
+	DeleteCustomerSecretKey(ctx context.Context, request DeleteCustomerSecretKeyRequest) (response DeleteCustomerSecretKeyResponse, err error)
+	DeleteGroup(ctx context.Context, request DeleteGroupRequest) (response DeleteGroupResponse, err error)
+	DeleteIdentityProvider(ctx context.Context, request DeleteIdentityProviderRequest) (response DeleteIdentityProviderResponse, err error)
+	DeleteIdpGroupMapping(ctx context.Context, request DeleteIdpGroupMappingRequest) (response DeleteIdpGroupMappingResponse, err error)
+	DeletePolicy(ctx context.Context, request DeletePolicyRequest) (response DeletePolicyResponse, err error)
+	DeleteSwiftPassword(ctx context.Context, request DeleteSwiftPasswordRequest) (response DeleteSwiftPasswordResponse, err error)
+	DeleteUser(ctx context.Context, request DeleteUserRequest) (response DeleteUserResponse, err error)
+	GetCompartment(ctx context.Context, request GetCompartmentRequest) (response GetCompartmentResponse, err error)
+	GetGroup(ctx context.Context, request GetGroupRequest) (response GetGroupResponse, err error)
+	GetIdentityProvider(ctx context.Context, request GetIdentityProviderRequest) (response GetIdentityProviderResponse, err error)
+	GetIdpGroupMapping(ctx context.Context, request GetIdpGroupMappingRequest) (response GetIdpGroupMappingResponse, err error)
+	GetPolicy(ctx context.Context, request GetPolicyRequest) (response GetPolicyResponse, err error)
+	GetTenancy(ctx context.Context, request GetTenancyRequest) (response GetTenancyResponse, err error)
+	GetUser(ctx context.Context, request GetUserRequest) (response GetUserResponse, err error)
+	GetUserGroupMembership(ctx context.Context, request GetUserGroupMembershipRequest) (response GetUserGroupMembershipResponse, err error)
+	ListApiKeys(ctx context.Context, request ListApiKeysRequest) (response ListApiKeysResponse, err error)
+	ListAvailabilityDomains(ctx context.Context, request ListAvailabilityDomainsRequest) (response ListAvailabilityDomainsResponse, err error)
+	ListCompartments(ctx context.Context, request ListCompartmentsRequest) (response ListCompartmentsResponse, err error)
+	ListCustomerSecretKeys(ctx context.Context, request ListCustomerSecretKeysRequest) (response ListCustomerSecretKeysResponse, err error)
+	ListFaultDomains(ctx context.Context, request ListFaultDomainsRequest) (response ListFaultDomainsResponse, err error)
+	ListGroups(ctx context.Context, request ListGroupsRequest) (response ListGroupsResponse, err error)
+	ListIdentityProviders(ctx context.Context, request ListIdentityProvidersRequest) (response ListIdentityProvidersResponse, err error)
+	ListIdpGroupMappings(ctx context.Context, request ListIdpGroupMappingsRequest) (response ListIdpGroupMappingsResponse, err error)
+	ListPolicies(ctx context.Context, request ListPoliciesRequest) (response ListPoliciesResponse, err error)
+	ListRegionSubscriptions(ctx context.Context, request ListRegionSubscriptionsRequest) (response ListRegionSubscriptionsResponse, err error)
+	ListRegions(ctx context.Context) (response ListRegionsResponse, err error)
+	ListSwiftPasswords(ctx context.Context, request ListSwiftPasswordsRequest) (response ListSwiftPasswordsResponse, err error)
+	ListUserGroupMemberships(ctx context.Context, request ListUserGroupMembershipsRequest) (response ListUserGroupMembershipsResponse, err error)
+	ListUsers(ctx context.Context, request ListUsersRequest) (response ListUsersResponse, err error)
+	RemoveUserFromGroup(ctx context.Context, request RemoveUserFromGroupRequest) (response RemoveUserFromGroupResponse, err error)
+	UpdateCompartment(ctx context.Context, request UpdateCompartmentRequest) (response UpdateCompartmentResponse, err error)
+	UpdateCustomerSecretKey(ctx context.Context, request UpdateCustomerSecretKeyRequest) (response UpdateCustomerSecretKeyResponse, err error)
+	UpdateGroup(ctx context.Context, request UpdateGroupRequest) (response UpdateGroupResponse, err error)
+	UpdateIdentityProvider(ctx context.Context, request UpdateIdentityProviderRequest) (response UpdateIdentityProviderResponse, err error)
+	UpdateIdpGroupMapping(ctx context.Context, request UpdateIdpGroupMappingRequest) (response UpdateIdpGroupMappingResponse, err error)
+	UpdatePolicy(ctx context.Context, request UpdatePolicyRequest) (response UpdatePolicyResponse, err error)
+	UpdateSwiftPassword(ctx context.Context, request UpdateSwiftPasswordRequest) (response UpdateSwiftPasswordResponse, err error)
+	UpdateUser(ctx context.Context, request UpdateUserRequest) (response UpdateUserResponse, err error)
+	UpdateUserState(ctx context.Context, request UpdateUserStateRequest) (response UpdateUserStateResponse, err error)
+	UploadApiKey(ctx context.Context, request UploadApiKeyRequest) (response UploadApiKeyResponse, err error)
 }
