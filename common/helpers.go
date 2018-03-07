@@ -17,9 +17,26 @@ func String(value string) *string {
 	return &value
 }
 
+// GetString returns the zero value for string if the value is nil
+func GetString(value *string) string {
+	if value != nil {
+		return *value
+	}
+
+	return ""
+}
+
 // Int returns a pointer to the provided int
 func Int(value int) *int {
 	return &value
+}
+
+// GetInt returns the zero value for int if the value is nil
+func GetInt(value *int) int {
+	if value != nil {
+		return *value
+	}
+	return 0
 }
 
 // Uint returns a pointer to the provided uint
@@ -27,24 +44,48 @@ func Uint(value uint) *uint {
 	return &value
 }
 
-//Float32 returns a pointer to the provided float32
+// Float32 returns a pointer to the provided float32
 func Float32(value float32) *float32 {
 	return &value
 }
 
-//Float64 returns a pointer to the provided float64
+// GetFloat32 returns the zero value for float32 if the value is nil
+func GetFloat32(value *float32) float32 {
+	if value != nil {
+		return *value
+	}
+	return 0
+}
+
+// Float64 returns a pointer to the provided float64
 func Float64(value float64) *float64 {
 	return &value
 }
 
-//Bool returns a pointer to the provided bool
+// GetFloat64 returns the zero value for float64 if the value is nil
+func GetFloat64(value *float64) float64 {
+	if value != nil {
+		return *value
+	}
+	return 0
+}
+
+// Bool returns a pointer to the provided bool
 func Bool(value bool) *bool {
 	return &value
 }
 
-//PointerString prints the values of pointers in a struct
-//Producing a human friendly string for an struct with pointers.
-//useful when debugging the values of a struct
+// GetBool returns the zero value for bool if the value is nil
+func GetBool(value *bool) bool {
+	if value != nil {
+		return *value
+	}
+	return false
+}
+
+// PointerString prints the values of pointers in a struct
+// Producing a human friendly string for an struct with pointers.
+// useful when debugging the values of a struct
 func PointerString(datastruct interface{}) (representation string) {
 	val := reflect.ValueOf(datastruct)
 	typ := reflect.TypeOf(datastruct)
