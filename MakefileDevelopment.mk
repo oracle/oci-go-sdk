@@ -32,7 +32,7 @@ help:
 list-test:
 	@echo $(TEST_TARGETS)
 
-test-all: $(TEST_TARGETS)
+test-all: build-sdk test-sdk-only $(TEST_TARGETS)
 
 $(TEST_TARGETS): test-%:%
 	@echo Testing $(INTEGTEST_DIR)/$<_client_integ_test.go
@@ -49,6 +49,10 @@ generate:
 build-sdk:
 	@echo "Building sdk"
 	@(cd $(PROJECT_PATH) && make build)
+
+test-sdk-only:
+	@echo "Testing sdk common"
+	@(cd $(PROJECT_PATH) && make test)
 
 
 release-sdk:
