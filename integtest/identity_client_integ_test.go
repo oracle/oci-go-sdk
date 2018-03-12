@@ -25,6 +25,7 @@ import (
 // Group operations CRUD
 func TestIdentityClient_GroupCRUD(t *testing.T) {
 	// test should not fail if a previous run failed to clean up
+	freeformTags := createOrGetFreeformTags(t)
 	groupName := getUniqueName("Group_CRUD")
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, clerr)
@@ -32,6 +33,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	request.CompartmentId = common.String(getTenancyID())
 	request.Name = common.String(groupName)
 	request.Description = common.String("GoSDK_someGroupDesc")
+	request.FreeformTags = freeformTags
 	r, err := c.CreateGroup(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	failIfError(t, err)
@@ -51,6 +53,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	rRead := identity.GetGroupRequest{GroupId: r.Id}
 	resRead, err := c.GetGroup(context.Background(), rRead)
 	assert.NotEmpty(t, r, fmt.Sprint(resRead.Id))
+	assert.Equal(t, freeformTags, resRead.FreeformTags)
 	failIfError(t, err)
 
 	// validate group lifecycle state enum value after read
@@ -903,21 +906,6 @@ func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
 	failIfError(t, err)
 	items := r.Items
 	assert.NotEmpty(t, items)
-	return
-}
-
-func TestIdentityClient_ListFaultDomains(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	failIfError(t, clerr)
-	availabilityDomain := validAD()
-	request := identity.ListFaultDomainsRequest{
-		CompartmentId:      common.String(getTenancyID()),
-		AvailabilityDomain: &availabilityDomain,
-	}
-
-	r, err := c.ListFaultDomains(context.Background(), request)
-	failIfError(t, err)
-	assert.NotEmpty(t, r.Items)
 	return
 }
 

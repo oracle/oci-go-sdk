@@ -19,6 +19,9 @@ type ListDbSystemsRequest struct {
 
 	// The pagination token to continue listing from.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
+
+	// The OCID of the backup. Specify a backupId to list only the DB Systems that support creating a database using this backup in this compartment.
+	BackupId *string `mandatory:"false" contributesTo:"query" name:"backupId"`
 }
 
 func (request ListDbSystemsRequest) String() string {

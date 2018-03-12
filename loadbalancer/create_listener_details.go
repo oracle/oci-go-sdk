@@ -18,6 +18,7 @@ import (
 type CreateListenerDetails struct {
 
 	// The name of the associated backend set.
+	// Example: `My_backend_set`
 	DefaultBackendSetName *string `mandatory:"true" json:"defaultBackendSetName"`
 
 	// A friendly name for the listener. It must be unique and it cannot be changed.
@@ -34,6 +35,13 @@ type CreateListenerDetails struct {
 	// operation.
 	// Example: `HTTP`
 	Protocol *string `mandatory:"true" json:"protocol"`
+
+	ConnectionConfiguration *ConnectionConfiguration `mandatory:"false" json:"connectionConfiguration"`
+
+	// The name of the set of path-based routing rules, PathRouteSet,
+	// applied to this listener's traffic.
+	// Example: `path-route-set-001`
+	PathRouteSetName *string `mandatory:"false" json:"pathRouteSetName"`
 
 	SslConfiguration *SslConfigurationDetails `mandatory:"false" json:"sslConfiguration"`
 }

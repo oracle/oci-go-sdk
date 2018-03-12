@@ -3,7 +3,7 @@
 
 // Object Storage Service API
 //
-// APIs for managing buckets and objects.
+// Common set of Object and Archive Storage APIs for managing buckets and objects.
 //
 
 package objectstorage
@@ -20,7 +20,8 @@ type BucketSummary struct {
 	// The namespace in which the bucket lives.
 	Namespace *string `mandatory:"true" json:"namespace"`
 
-	// The name of the bucket.
+	// The name of the bucket. Avoid entering confidential information.
+	// Example: my-new-bucket1
 	Name *string `mandatory:"true" json:"name"`
 
 	// The compartment ID in which the bucket is authorized.
@@ -29,7 +30,7 @@ type BucketSummary struct {
 	// The OCID of the user who created the bucket.
 	CreatedBy *string `mandatory:"true" json:"createdBy"`
 
-	// The date and time at which the bucket was created.
+	// The date and time the bucket was created, as described in RFC 2616 (https://tools.ietf.org/rfc/rfc2616), section 14.29.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The entity tag for the bucket.

@@ -30,16 +30,17 @@ type ListLoadBalancersRequest struct {
 	// Example: `full`
 	Detail *string `mandatory:"false" contributesTo:"query" name:"detail"`
 
-	// The field to sort by.  Only one sort order may be provided.  Time created is default ordered as descending.  Display name is default ordered as ascending.
+	// The field to sort by.  You can provide one sort order (`sortOrder`). Default order for TIMECREATED is descending.
+	// Default order for DISPLAYNAME is ascending. The DISPLAYNAME sort order is case sensitive.
 	SortBy ListLoadBalancersSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// The sort order to use, either 'asc' or 'desc'
+	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order is case sensitive.
 	SortOrder ListLoadBalancersSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
-	// A filter to only return resources that match the given display name exactly.
+	// A filter to return only resources that match the given display name exactly.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
 
-	// A filter to only return resources that match the given lifecycle state.
+	// A filter to return only resources that match the given lifecycle state.
 	LifecycleState LoadBalancerLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 }
 
