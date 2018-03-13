@@ -4,44 +4,39 @@
 package filestorage
 
 import (
-    "github.com/oracle/oci-go-sdk/common"
-    "net/http"
+	"github.com/oracle/oci-go-sdk/common"
+	"net/http"
 )
 
 // GetMountTargetRequest wrapper for the GetMountTarget operation
 type GetMountTargetRequest struct {
-        
- // The OCID of the mount target. 
-        MountTargetId *string `mandatory:"true" contributesTo:"path" name:"mountTargetId"`
+
+	// The OCID of the mount target.
+	MountTargetId *string `mandatory:"true" contributesTo:"path" name:"mountTargetId"`
 }
 
 func (request GetMountTargetRequest) String() string {
-    return common.PointerString(request)
+	return common.PointerString(request)
 }
 
 // GetMountTargetResponse wrapper for the GetMountTarget operation
 type GetMountTargetResponse struct {
 
-    // The underlying http response
-    RawResponse *http.Response
-    
- // The MountTarget instance
-     MountTarget `presentIn:"body"`
+	// The underlying http response
+	RawResponse *http.Response
 
-    
- // For optimistic concurrency control. See `if-match`.
-    Etag *string `presentIn:"header" name:"etag"`
-    
- // Unique Oracle-assigned identifier for the request. If
- // you need to contact Oracle about a particular request,
- // please provide the request ID.
-    OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
+	// The MountTarget instance
+	MountTarget `presentIn:"body"`
 
+	// For optimistic concurrency control. See `if-match`.
+	Etag *string `presentIn:"header" name:"etag"`
 
+	// Unique Oracle-assigned identifier for the request. If
+	// you need to contact Oracle about a particular request,
+	// please provide the request ID.
+	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
 func (response GetMountTargetResponse) String() string {
-    return common.PointerString(response)
+	return common.PointerString(response)
 }
-
-

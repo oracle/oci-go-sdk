@@ -2,29 +2,21 @@
 // Code generated. DO NOT EDIT.
 
 // Public DNS Service
-// 
- // API for managing DNS zones, records, and policies.
+//
+// API for managing DNS zones, records, and policies.
 //
 
 package dns
 
 import (
-    "github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common"
 )
 
-
-    
- // UpdateRrSetDetails The representation of UpdateRrSetDetails
+// UpdateRrSetDetails The representation of UpdateRrSetDetails
 type UpdateRrSetDetails struct {
-    
-    Items []RecordDetails `mandatory:"false" json:"items"`
+	Items []RecordDetails `mandatory:"false" json:"items"`
 }
 
 func (m UpdateRrSetDetails) String() string {
-    return common.PointerString(m)
+	return common.PointerString(m)
 }
-
-
-
-
-
