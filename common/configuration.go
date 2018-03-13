@@ -384,7 +384,6 @@ func (p fileConfigurationProvider) KeyID() (keyID string, err error) {
 	return fmt.Sprintf("%s/%s/%s", info.TenancyOcid, info.UserOcid, info.Fingerprint), nil
 }
 
-
 func (p fileConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, err error) {
 	info, err := p.readAndParseConfigFile()
 	if err != nil {
