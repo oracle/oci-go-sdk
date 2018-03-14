@@ -986,7 +986,9 @@ func createTestUser(t *testing.T, name *string) identity.User {
 	req.CompartmentId = common.String(getTenancyID())
 	req.Name = name
 	req.Description = common.String("GoSDK Test User")
+	req.RequestMetadata = getRequestMetadataWithDefaultRetryPolicy()
 	rsp, err := c.CreateUser(context.Background(), req)
+	verifyResponseIsValid(t, rsp, err)
 	failIfError(t, err)
 	return rsp.User
 }
@@ -998,9 +1000,11 @@ func createOrGetTestGroup(t *testing.T) identity.Group {
 	listReq := identity.ListGroupsRequest{
 		CompartmentId: common.String(getTenancyID()),
 		Limit:         common.Int(500),
+		RequestMetadata: getRequestMetadataWithDefaultRetryPolicy(),
 	}
 
 	listResp, err := c.ListGroups(context.Background(), listReq)
+	verifyResponseIsValid(t, listResp, err)
 	failIfError(t, err)
 
 	for _, group := range listResp.Items {
@@ -1021,7 +1025,9 @@ func createTestGroup(t *testing.T, name *string) identity.Group {
 	req.CompartmentId = common.String(getTenancyID())
 	req.Name = name
 	req.Description = common.String("Go SDK Test Group")
+	req.RequestMetadata = getRequestMetadataWithDefaultRetryPolicy()
 	rsp, err := c.CreateGroup(context.Background(), req)
+	verifyResponseIsValid(t, rsp, err)
 	failIfError(t, err)
 	return rsp.Group
 }
@@ -1277,6 +1283,7 @@ func createOrGetUser(t *testing.T) identity.User {
 	}
 
 	listResp, err := c.ListUsers(context.Background(), listReq)
+	verifyResponseIsValid(t, listResp, err)
 	failIfError(t, err)
 
 	for _, user := range listResp.Items {

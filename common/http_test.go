@@ -80,8 +80,8 @@ func TestHttpRequestMarshallerQuery(t *testing.T) {
 
 func TestMakeDefault(t *testing.T) {
 	r := MakeDefaultHTTPRequest(http.MethodPost, "/one/two")
-	assert.NotEmpty(t, r.Header.Get("Date"))
-	assert.NotEmpty(t, r.Header.Get("Opc-Client-Info"))
+	assert.NotEmpty(t, r.Header.Get(requestHeaderDate))
+	assert.NotEmpty(t, r.Header.Get(requestHeaderOpcClientInfo))
 }
 
 func TestHttpMarshallerSimpleHeader(t *testing.T) {
@@ -89,7 +89,7 @@ func TestHttpMarshallerSimpleHeader(t *testing.T) {
 	request := MakeDefaultHTTPRequest(http.MethodPost, "/random")
 	HTTPRequestMarshaller(s, &request)
 	header := request.Header
-	assert.True(t, header.Get("if-match") == "n=as")
+	assert.True(t, header.Get(requestHeaderIfMatch) == "n=as")
 }
 
 func TestHttpMarshallerSimpleStruct(t *testing.T) {
@@ -143,7 +143,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 	assert.True(t, request.URL.Query().Get("income") == strconv.FormatFloat(float64(s.Income), 'f', 6, 32))
 	assert.True(t, request.URL.Query().Get("when") == when)
 	assert.Contains(t, content, "description")
-	assert.Equal(t, request.Header.Get("Content-Type"), "application/json")
+	assert.Equal(t, request.Header.Get(requestHeaderContentType), "application/json")
 	if val, ok := content["description"]; !ok || val != desc {
 		assert.Fail(t, "Should contain: "+desc)
 	}
@@ -205,7 +205,7 @@ func TestHttpMarshallerSimpleStructPointers(t *testing.T) {
 	HTTPRequestMarshaller(s, &request)
 	all, _ := ioutil.ReadAll(request.Body)
 	assert.True(t, len(all) > 2)
-	assert.Equal(t, "", request.Header.Get("opc-retry-token"))
+	assert.Equal(t, "", request.Header.Get(requestHeaderOpcRetryToken))
 	assert.True(t, strings.Contains(request.URL.Path, "111"))
 	assert.True(t, strings.Contains(string(all), "thekey"))
 	assert.Contains(t, string(all), now.Format(time.RFC3339))
@@ -218,7 +218,7 @@ func TestHttpMarshallerSimpleStructPointersFilled(t *testing.T) {
 		TestcreateAPIKeyDetailsPtr: TestcreateAPIKeyDetailsPtr{Key: String("thekey")}}
 	request := MakeDefaultHTTPRequest(http.MethodPost, "/random")
 	HTTPRequestMarshaller(s, &request)
-	assert.Equal(t, "token", request.Header.Get("opc-retry-token"))
+	assert.Equal(t, "token", request.Header.Get(requestHeaderOpcRetryToken))
 	assert.True(t, strings.Contains(request.URL.Path, "111"))
 
 }

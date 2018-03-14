@@ -72,8 +72,8 @@ func addBinaryBody(request *http.Request, value reflect.Value) (e error) {
 	request.Body = readCloser
 
 	//Set the default content type to application/octet-stream if not set
-	if request.Header.Get("Content-Type") == "" {
-		request.Header.Set("Content-Type", "application/octet-stream")
+	if request.Header.Get(requestHeaderContentType) == "" {
+		request.Header.Set(requestHeaderContentType, "application/octet-stream")
 	}
 	return nil
 }
@@ -239,8 +239,8 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 	Debugf("Marshaled body is: %s", string(marshaled))
 	bodyBytes := bytes.NewReader(marshaled)
 	request.ContentLength = int64(bodyBytes.Len())
-	request.Header.Set("Content-Length", strconv.FormatInt(request.ContentLength, 10))
-	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set(requestHeaderContentLength, strconv.FormatInt(request.ContentLength, 10))
+	request.Header.Set(requestHeaderContentType, "application/json")
 	request.Body = ioutil.NopCloser(bodyBytes)
 	request.GetBody = func() (io.ReadCloser, error) {
 		return ioutil.NopCloser(bodyBytes), nil
@@ -471,8 +471,8 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 	}
 
 	//If headers are and the content type was not set, we default to application/json
-	if request.Header != nil && request.Header.Get("Content-Type") == "" {
-		request.Header.Set("Content-Type", "application/json")
+	if request.Header != nil && request.Header.Get(requestHeaderContentType) == "" {
+		request.Header.Set(requestHeaderContentType, "application/json")
 	}
 
 	return
@@ -511,10 +511,10 @@ func MakeDefaultHTTPRequest(method, path string) (httpRequest http.Request) {
 		URL:        &url.URL{},
 	}
 
-	httpRequest.Header.Set("Content-Length", "0")
-	httpRequest.Header.Set("Date", time.Now().UTC().Format(http.TimeFormat))
-	httpRequest.Header.Set("Opc-Client-Info", strings.Join([]string{defaultSDKMarker, Version()}, "/"))
-	httpRequest.Header.Set("Accept", "*/*")
+	httpRequest.Header.Set(requestHeaderContentLength, "0")
+	httpRequest.Header.Set(requestHeaderDate, time.Now().UTC().Format(http.TimeFormat))
+	httpRequest.Header.Set(requestHeaderOpcClientInfo, strings.Join([]string{defaultSDKMarker, Version()}, "/"))
+	httpRequest.Header.Set(requestHeaderAccept, "*/*")
 	httpRequest.Method = method
 	httpRequest.URL.Path = path
 	return

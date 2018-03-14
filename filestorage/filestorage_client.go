@@ -62,20 +62,41 @@ func (client *FileStorageClient) ConfigurationProvider() *common.ConfigurationPr
 // CreateExport Creates a new export in the specified export set, path, and
 // file system.
 func (client FileStorageClient) CreateExport(ctx context.Context, request CreateExportRequest) (response CreateExportResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/exports", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.createExport, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(CreateExportResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into CreateExportResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// createExport implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) createExport(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/exports")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateExportResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // CreateFileSystem Creates a new file system in the specified compartment and
@@ -101,20 +122,41 @@ func (client FileStorageClient) CreateExport(ctx context.Context, request Create
 // resource's OCID by using a List API operation on that resource
 // type or by viewing the resource in the Console.
 func (client FileStorageClient) CreateFileSystem(ctx context.Context, request CreateFileSystemRequest) (response CreateFileSystemResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/fileSystems", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.createFileSystem, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(CreateFileSystemResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into CreateFileSystemResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// createFileSystem implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) createFileSystem(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/fileSystems")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateFileSystemResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // CreateMountTarget Creates a new mount target in the specified compartment and
@@ -143,348 +185,747 @@ func (client FileStorageClient) CreateFileSystem(ctx context.Context, request Cr
 // resource's OCID by using a List API operation on that resource
 // type, or by viewing the resource in the Console.
 func (client FileStorageClient) CreateMountTarget(ctx context.Context, request CreateMountTargetRequest) (response CreateMountTargetResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/mountTargets", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.createMountTarget, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(CreateMountTargetResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into CreateMountTargetResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// createMountTarget implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) createMountTarget(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/mountTargets")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateMountTargetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // CreateSnapshot Creates a new snapshot of the specified file system. You
 // can access the snapshot at `.snapshot/<name>`.
 func (client FileStorageClient) CreateSnapshot(ctx context.Context, request CreateSnapshotRequest) (response CreateSnapshotResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/snapshots", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.createSnapshot, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(CreateSnapshotResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into CreateSnapshotResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// createSnapshot implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) createSnapshot(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/snapshots")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateSnapshotResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // DeleteExport Deletes the specified export.
 func (client FileStorageClient) DeleteExport(ctx context.Context, request DeleteExportRequest) (response DeleteExportResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/exports/{exportId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteExport, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(DeleteExportResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteExportResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// deleteExport implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) deleteExport(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/exports/{exportId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteExportResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // DeleteFileSystem Deletes the specified file system. Before you delete the file system,
 // verify that no remaining export resources still reference it. Deleting a
 // file system also deletes all of its snapshots.
 func (client FileStorageClient) DeleteFileSystem(ctx context.Context, request DeleteFileSystemRequest) (response DeleteFileSystemResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/fileSystems/{fileSystemId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteFileSystem, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(DeleteFileSystemResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteFileSystemResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// deleteFileSystem implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) deleteFileSystem(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/fileSystems/{fileSystemId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteFileSystemResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // DeleteMountTarget Deletes the specified mount target. This operation also deletes the
 // mount target's VNICs.
 func (client FileStorageClient) DeleteMountTarget(ctx context.Context, request DeleteMountTargetRequest) (response DeleteMountTargetResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/mountTargets/{mountTargetId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteMountTarget, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(DeleteMountTargetResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteMountTargetResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// deleteMountTarget implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) deleteMountTarget(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/mountTargets/{mountTargetId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteMountTargetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // DeleteSnapshot Deletes the specified snapshot.
 func (client FileStorageClient) DeleteSnapshot(ctx context.Context, request DeleteSnapshotRequest) (response DeleteSnapshotResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/snapshots/{snapshotId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteSnapshot, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(DeleteSnapshotResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteSnapshotResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// deleteSnapshot implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) deleteSnapshot(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/snapshots/{snapshotId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteSnapshotResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // GetExport Gets the specified export's information.
 func (client FileStorageClient) GetExport(ctx context.Context, request GetExportRequest) (response GetExportResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/exports/{exportId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getExport, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(GetExportResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetExportResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// getExport implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) getExport(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/exports/{exportId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetExportResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // GetExportSet Gets the specified export set's information.
 func (client FileStorageClient) GetExportSet(ctx context.Context, request GetExportSetRequest) (response GetExportSetResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/exportSets/{exportSetId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getExportSet, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(GetExportSetResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetExportSetResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// getExportSet implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) getExportSet(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/exportSets/{exportSetId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetExportSetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // GetFileSystem Gets the specified file system's information.
 func (client FileStorageClient) GetFileSystem(ctx context.Context, request GetFileSystemRequest) (response GetFileSystemResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/fileSystems/{fileSystemId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getFileSystem, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(GetFileSystemResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetFileSystemResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// getFileSystem implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) getFileSystem(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/fileSystems/{fileSystemId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetFileSystemResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // GetMountTarget Gets the specified mount target's information.
 func (client FileStorageClient) GetMountTarget(ctx context.Context, request GetMountTargetRequest) (response GetMountTargetResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/mountTargets/{mountTargetId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getMountTarget, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(GetMountTargetResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetMountTargetResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// getMountTarget implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) getMountTarget(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/mountTargets/{mountTargetId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetMountTargetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // GetSnapshot Gets the specified snapshot's information.
 func (client FileStorageClient) GetSnapshot(ctx context.Context, request GetSnapshotRequest) (response GetSnapshotResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/snapshots/{snapshotId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getSnapshot, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(GetSnapshotResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetSnapshotResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// getSnapshot implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) getSnapshot(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/snapshots/{snapshotId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetSnapshotResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // ListExportSets Lists the export set resources in the specified compartment.
 func (client FileStorageClient) ListExportSets(ctx context.Context, request ListExportSetsRequest) (response ListExportSetsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/exportSets", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listExportSets, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(ListExportSetsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListExportSetsResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// listExportSets implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) listExportSets(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/exportSets")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListExportSetsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // ListExports Lists the export resources in the specified compartment. You must
 // also specify an export set, a file system, or both.
 func (client FileStorageClient) ListExports(ctx context.Context, request ListExportsRequest) (response ListExportsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/exports", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listExports, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(ListExportsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListExportsResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// listExports implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) listExports(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/exports")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListExportsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // ListFileSystems Lists the file system resources in the specified compartment.
 func (client FileStorageClient) ListFileSystems(ctx context.Context, request ListFileSystemsRequest) (response ListFileSystemsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/fileSystems", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listFileSystems, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(ListFileSystemsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListFileSystemsResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// listFileSystems implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) listFileSystems(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/fileSystems")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListFileSystemsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // ListMountTargets Lists the mount target resources in the specified compartment.
 func (client FileStorageClient) ListMountTargets(ctx context.Context, request ListMountTargetsRequest) (response ListMountTargetsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/mountTargets", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listMountTargets, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(ListMountTargetsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListMountTargetsResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// listMountTargets implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) listMountTargets(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/mountTargets")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListMountTargetsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // ListSnapshots Lists snapshots of the specified file system.
 func (client FileStorageClient) ListSnapshots(ctx context.Context, request ListSnapshotsRequest) (response ListSnapshotsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/snapshots", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listSnapshots, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(ListSnapshotsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListSnapshotsResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// listSnapshots implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) listSnapshots(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/snapshots")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListSnapshotsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // UpdateExportSet Updates the specified export set's information.
 func (client FileStorageClient) UpdateExportSet(ctx context.Context, request UpdateExportSetRequest) (response UpdateExportSetResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/exportSets/{exportSetId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.updateExportSet, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(UpdateExportSetResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into UpdateExportSetResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// updateExportSet implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) updateExportSet(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/exportSets/{exportSetId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateExportSetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // UpdateFileSystem Updates the specified file system's information.
 // You can use this operation to rename a file system.
 func (client FileStorageClient) UpdateFileSystem(ctx context.Context, request UpdateFileSystemRequest) (response UpdateFileSystemResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/fileSystems/{fileSystemId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.updateFileSystem, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(UpdateFileSystemResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into UpdateFileSystemResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// updateFileSystem implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) updateFileSystem(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/fileSystems/{fileSystemId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateFileSystemResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // UpdateMountTarget Updates the specified mount target's information.
 func (client FileStorageClient) UpdateMountTarget(ctx context.Context, request UpdateMountTargetRequest) (response UpdateMountTargetResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/mountTargets/{mountTargetId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.updateMountTarget, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(UpdateMountTargetResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into UpdateMountTargetResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// updateMountTarget implements the OCIOperation interface (enables retrying operations)
+func (client FileStorageClient) updateMountTarget(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/mountTargets/{mountTargetId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateMountTargetResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }

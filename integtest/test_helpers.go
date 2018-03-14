@@ -21,6 +21,7 @@ import (
 	"github.com/oracle/oci-go-sdk/database"
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
+	"math"
 )
 
 const (
@@ -288,4 +289,26 @@ func getDatabaseClient() (database.DatabaseClient, error) {
 	}
 
 	return c, clerr
+}
+
+func getRequestMetadataWithDefaultRetryPolicy() common.RequestMetadata {
+	return common.RequestMetadata{
+		RetryPolicy: getDefaultRetryPolicy(),
+	}
+}
+
+func getDefaultRetryPolicy() *common.RetryPolicy {
+	attempts := uint(10)
+	retryOnAllNon200ResponseCodes := func(r common.OCIOperationResponse) bool {
+		return !(r.Error == nil && 199 < r.Response.HTTPResponse().StatusCode && r.Response.HTTPResponse().StatusCode < 300)
+	}
+	return getExponentialBackoffRetryPolicy(attempts, retryOnAllNon200ResponseCodes)
+}
+
+func getExponentialBackoffRetryPolicy(n uint, fn func(r common.OCIOperationResponse) bool) *common.RetryPolicy {
+	exponentialBackoff := func(r common.OCIOperationResponse) time.Duration {
+		return time.Duration(math.Pow(float64(2), float64(r.AttemptNumber - 1))) * time.Second
+	}
+	policy := common.NewRetryPolicy(n, fn, exponentialBackoff)
+	return &policy
 }
