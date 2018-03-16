@@ -20,7 +20,7 @@ import (
 
 // sanity test for dns service as the current plan is rely on Java test for other APIs
 func TestDNSClient_ListZones(t *testing.T) {
-	c, clerr := dns.NewDnsClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := dns.NewDnsClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	req := dns.ListZonesRequest{

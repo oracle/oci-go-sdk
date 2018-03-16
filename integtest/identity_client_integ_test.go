@@ -27,7 +27,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 	// test should not fail if a previous run failed to clean up
 	freeformTags := createOrGetFreeformTags(t)
 	groupName := getUniqueName("Group_CRUD")
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.CreateGroupRequest{}
 	request.CompartmentId = common.String(getTenancyID())
@@ -78,7 +78,7 @@ func (f *fakeDispatcher) Do(r *http.Request) (*http.Response, error) {
 }
 
 func TestIdentityClient_OverrideRegion(t *testing.T) {
-	c, _ := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, _ := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	region := "newRegion"
 	c.SetRegion(region)
 	f := fakeDispatcher{Reg: region}
@@ -91,7 +91,7 @@ func TestIdentityClient_OverrideRegion(t *testing.T) {
 
 func TestIdentityClient_ListGroups(t *testing.T) {
 
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.ListGroupsRequest{CompartmentId: common.String(getTenancyID())}
 	r, err := c.ListGroups(context.Background(), request)
@@ -122,7 +122,7 @@ func TestIdentityClient_ListGroups(t *testing.T) {
 
 func TestIdentityClient_CreateCompartment(t *testing.T) {
 	t.Skip("Compartment Creation cannot be undone. Remove Skip and manual execute test to verify")
-	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, cfgErr)
 
 	request := identity.CreateCompartmentRequest{CreateCompartmentDetails: identity.CreateCompartmentDetails{
@@ -141,7 +141,7 @@ func TestIdentityClient_CreateCompartment(t *testing.T) {
 
 //Comparment RU
 func TestIdentityClient_UpdateCompartment(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	//Update
@@ -165,7 +165,7 @@ func TestIdentityClient_UpdateCompartment(t *testing.T) {
 
 //User Operations
 func TestIdentityClient_ListUsers(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.ListUsersRequest{CompartmentId: common.String(getTenancyID())}
 	r, err := c.ListUsers(context.Background(), request)
@@ -192,7 +192,7 @@ func TestIdentityClient_ListUsers(t *testing.T) {
 }
 
 func TestIdentityClient_UserCRUD(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	user := createTestUser(t, common.String(getUniqueName("User_")))
 	assert.NotEmpty(t, user)
@@ -233,7 +233,7 @@ func TestIdentityClient_UserCRUD(t *testing.T) {
 
 //User-Group operations
 func TestIdentityClient_AddUserToGroup(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	// for robustness, create a user and group to use for this test. delete it at the end
@@ -297,7 +297,7 @@ func TestIdentityClient_AddUserToGroup(t *testing.T) {
 }
 
 func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.ListUserGroupMembershipsRequest{}
 	request.UserId = common.String(getUserID())
@@ -326,7 +326,7 @@ func TestIdentityClient_ListUserGroupMemberships(t *testing.T) {
 }
 
 func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	// create or get the test user
@@ -358,7 +358,7 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 
 	createDesc := "Go SDK Test Swift Password - CREATED"
 	updateDesc := "Go SDK Test Swift Password - UPDATED"
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	usr := createOrGetUser(t)
@@ -401,7 +401,7 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 }
 
 func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	usr := createOrGetUser(t)
@@ -458,7 +458,7 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 
 	//Create
 	//client := identity.NewIdentityClientForRegion(getRegion())
-	client, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	client, cfgErr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, cfgErr)
 
 	createRequest := identity.CreatePolicyRequest{}
@@ -497,7 +497,7 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 }
 
 func TestIdentityClient_ListPolicies(t *testing.T) {
-	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, cfgErr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, cfgErr)
 	listRequest := identity.ListPoliciesRequest{}
 	listRequest.CompartmentId = common.String(getTenancyID())
@@ -525,7 +525,7 @@ func TestIdentityClient_ListPolicies(t *testing.T) {
 
 //SecretKey operations
 func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.CreateCustomerSecretKeyRequest{}
 	request.UserId = common.String(getUserID())
@@ -561,7 +561,7 @@ func TestIdentityClient_SecretKeyCRUD(t *testing.T) {
 }
 
 func TestIdentityClient_ListCustomerSecretKeys(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.ListCustomerSecretKeysRequest{}
 	request.UserId = common.String(getUserID())
@@ -574,7 +574,7 @@ func TestIdentityClient_ListCustomerSecretKeys(t *testing.T) {
 //Apikeys
 func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 	userId := ""
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.UploadApiKeyRequest{}
 	request.UserId = common.String(userId)
@@ -604,7 +604,7 @@ func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 	return
 }
 func TestIdentityClient_ListApiKeys(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.ListApiKeysRequest{}
 	request.UserId = common.String(getUserID())
@@ -615,7 +615,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 }
 
 func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	// Create the Identity Provider Request
@@ -735,7 +735,7 @@ func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
 }
 
 func TestIdentityClient_ListIdentityProviders(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	//Create the Identity Provider Request
 	rCreate := identity.CreateIdentityProviderRequest{}
@@ -805,7 +805,7 @@ func TestIdentityClient_ListIdentityProviders(t *testing.T) {
 }
 
 func TestIdentityClient_GetTenancy(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.GetTenancyRequest{TenancyId: common.String(getTenancyID())}
 	r, err := c.GetTenancy(context.Background(), request)
@@ -818,7 +818,7 @@ func TestIdentityClient_GetTenancy(t *testing.T) {
 }
 
 func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.ListAvailabilityDomainsRequest{CompartmentId: common.String(getCompartmentID())}
 	r, err := c.ListAvailabilityDomains(context.Background(), request)
@@ -832,7 +832,7 @@ func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
 }
 
 func TestIdentityClient_ListCompartments(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.ListCompartmentsRequest{CompartmentId: common.String(getTenancyID())}
 	r, err := c.ListCompartments(context.Background(), request)
@@ -859,7 +859,7 @@ func TestIdentityClient_ListCompartments(t *testing.T) {
 }
 
 func TestIdentityClient_ListRegions(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	r, err := c.ListRegions(context.Background())
 	verifyResponseIsValid(t, r, err)
@@ -868,7 +868,7 @@ func TestIdentityClient_ListRegions(t *testing.T) {
 }
 
 func TestIdentityClient_UpdateUserState(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	usr := createOrGetUser(t)
 
@@ -887,7 +887,7 @@ func TestIdentityClient_UpdateUserState(t *testing.T) {
 // mechanism to unsubscribe to it. For now we will skip
 func TestIdentityClient_CreateRegionSubscription(t *testing.T) {
 	t.Skip("SKIPPING: Region Subscriptions cannot be undone.")
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.CreateRegionSubscriptionRequest{}
 	request.TenancyId = common.String(getTenancyID())
@@ -899,7 +899,7 @@ func TestIdentityClient_CreateRegionSubscription(t *testing.T) {
 }
 
 func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
-	c, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := identity.ListRegionSubscriptionsRequest{TenancyId: common.String(getTenancyID())}
 	r, err := c.ListRegionSubscriptions(context.Background(), request)
@@ -910,7 +910,7 @@ func TestIdentityClient_ListRegionSubscriptions(t *testing.T) {
 }
 
 func TestBadHost(t *testing.T) {
-	client, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	client, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	client.Host = "badhostname"
 	response, err := client.ListRegions(context.Background())
