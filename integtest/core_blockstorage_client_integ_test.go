@@ -27,7 +27,7 @@ var (
 //Volumes CRUDL
 func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
-	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := core.CreateVolumeRequest{}
 
@@ -41,7 +41,7 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//Read
 	readTest := func() (interface{}, error) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 		failIfError(t, clerr)
 		request := core.GetVolumeRequest{}
 		request.VolumeId = resCreate.Id
@@ -54,7 +54,7 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//update
 	updateTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 		failIfError(t, clerr)
 		request := core.UpdateVolumeRequest{}
 		request.VolumeId = resCreate.Id
@@ -68,7 +68,7 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//list
 	listTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 		failIfError(t, clerr)
 		request := core.ListVolumesRequest{}
 		request.CompartmentId = common.String(getTenancyID())
@@ -81,7 +81,7 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 	//delete
 	deleteTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 		failIfError(t, clerr)
 		request := core.DeleteVolumeRequest{}
 		request.VolumeId = resCreate.Id
@@ -96,7 +96,7 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 
 func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
-	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	var volumeId *string
@@ -112,7 +112,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 	}
 
 	deleteVol := func() {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 		failIfError(t, clerr)
 		request := core.DeleteVolumeRequest{}
 		request.VolumeId = volumeId
@@ -121,7 +121,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 	}
 
 	readVol := func() (interface{}, error) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 		failIfError(t, clerr)
 		request := core.GetVolumeRequest{}
 		request.VolumeId = volumeId
@@ -146,7 +146,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//Read
 	readTest := func() (interface{}, error) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 		failIfError(t, clerr)
 		request := core.GetVolumeBackupRequest{}
 		request.VolumeBackupId = r.Id
@@ -160,7 +160,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//List
 	listTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 		failIfError(t, clerr)
 		request := core.ListVolumeBackupsRequest{}
 		request.CompartmentId = common.String(getTenancyID())
@@ -174,7 +174,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//Update
 	updateTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 		failIfError(t, clerr)
 		request := core.UpdateVolumeBackupRequest{}
 		request.VolumeBackupId = r.Id
@@ -188,7 +188,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 
 	//Delete
 	deleteTest := func(t *testing.T) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 		failIfError(t, clerr)
 		request := core.DeleteVolumeBackupRequest{}
 		request.VolumeBackupId = r.Id
@@ -212,7 +212,7 @@ func TestBlockstorageClient_GetBootVolume(t *testing.T) {
 	bootVolumes := listBootVolumes(t)
 	assert.NotEmpty(t, bootVolumes)
 
-	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := core.GetBootVolumeRequest{
 		BootVolumeId: bootVolumes[0].Id,

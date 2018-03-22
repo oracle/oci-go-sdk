@@ -9,4 +9,4 @@
 *.swp
 .vscode/*
 target/
-
+bin/

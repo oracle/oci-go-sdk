@@ -20,7 +20,7 @@ import (
 
 // sanity test for file storage service as the current plan is rely on Java test for other APIs
 func TestFileStorageClient_ListFileSystems(t *testing.T) {
-	c, clerr := filestorage.NewFileStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := filestorage.NewFileStorageClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	req := filestorage.ListFileSystemsRequest{

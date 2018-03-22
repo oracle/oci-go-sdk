@@ -20,7 +20,7 @@ import (
 
 // GetConfiguration test
 func TestAuditClient_GetConfiguration(t *testing.T) {
-	c, clerr := audit.NewAuditClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := audit.NewAuditClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	req := audit.GetConfigurationRequest{
@@ -34,7 +34,7 @@ func TestAuditClient_GetConfiguration(t *testing.T) {
 
 // UpdateConfiguration test
 func TestAuditClient_UpdateConfiguration(t *testing.T) {
-	c, clerr := audit.NewAuditClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := audit.NewAuditClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	req := audit.GetConfigurationRequest{
@@ -73,7 +73,7 @@ func TestAuditClient_UpdateConfiguration(t *testing.T) {
 
 // ListEvents test
 func TestAuditClient_ListEvents(t *testing.T) {
-	c, clerr := audit.NewAuditClientWithConfigurationProvider(common.DefaultConfigProvider())
+	c, clerr := audit.NewAuditClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
 	// list events for last 5 hour
