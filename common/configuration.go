@@ -95,7 +95,7 @@ func (p rawConfigurationProvider) Region() (string, error) {
 }
 
 // environmentConfigurationProvider reads configuration from environment variables
-type environmentConfigurationProvider struct { // TODO: Support Instance Principal
+type environmentConfigurationProvider struct {
 	PrivateKeyPassword        string
 	EnvironmentVariablePrefix string
 }
@@ -186,7 +186,7 @@ func (p environmentConfigurationProvider) Region() (value string, err error) {
 }
 
 // fileConfigurationProvider. reads configuration information from a file
-type fileConfigurationProvider struct { // TODO: Support Instance Principal
+type fileConfigurationProvider struct {
 	//The path to the configuration file
 	ConfigPath string
 
