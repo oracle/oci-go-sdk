@@ -17,9 +17,9 @@ var (
 	rootCompartmentID  string
 )
 
-// ParseAgrs parse shared variables from environment variables, other samples should define their own
+// ParseEnvironmentVariables parse shared variables from environment variables, other samples should define their own
 // viariables and call this function to initialize shared variables
-func ParseAgrs() {
+func ParseEnvironmentVariables() {
 	availabilityDomain = os.Getenv("OCI_AVAILABILITY_DOMAIN")
 	compartmentID = os.Getenv("OCI_COMPARTMENT_ID")
 	rootCompartmentID = os.Getenv("OCI_ROOT_COMPARTMENT_ID")

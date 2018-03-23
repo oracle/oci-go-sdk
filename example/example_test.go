@@ -18,11 +18,11 @@ import (
 // To run all samples:
 //   go test github.com/oracle/oci-go-sdk/example
 func TestMain(m *testing.M) {
-	// ParseAgrs assumes that you have configured your environment variables with following configs
+	// ParseEnvironmentVariables assumes that you have configured your environment variables with following configs
 	// Required configs are:
 	//  OCI_AVAILABILITY_DOMAIN -- The Availability Domain of the instance. Example: Uocm:PHX-AD-1
 	//  OCI_COMPARTMENT_ID      -- The OCID of the compartment
 	//  OCI_ROOT_COMPARTMENT_ID -- The OCID of the root compartment
-	helpers.ParseAgrs()
+	helpers.ParseEnvironmentVariables()
 	os.Exit(m.Run())
 }

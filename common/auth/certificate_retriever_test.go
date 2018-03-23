@@ -17,6 +17,19 @@ import (
 	"time"
 )
 
+func TestUrlBasedX509CertificateRetriever_BadCertificate(t *testing.T) {
+	expectedCert := make([]byte, 100)
+	rand.Read(expectedCert)
+	certServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, string(expectedCert))
+	}))
+	defer certServer.Close()
+
+	retriever := newURLBasedX509CertificateRetriever(certServer.URL, "", "")
+	err := retriever.Refresh()
+
+	assert.Error(t, err)
+}
 func TestUrlBasedX509CertificateRetriever_RefreshWithoutPrivateKeyUrl(t *testing.T) {
 	_, expectedCert := generateRandomCertificate()
 	certServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -37,6 +50,7 @@ func TestUrlBasedX509CertificateRetriever_RefreshWithoutPrivateKeyUrl(t *testing
 	assert.Nil(t, retriever.PrivateKeyPemRaw())
 	assert.Nil(t, retriever.PrivateKey())
 }
+
 
 func TestUrlBasedX509CertificateRetriever_RefreshWithPrivateKeyUrl(t *testing.T) {
 	expectedPrivateKey, expectedCert := generateRandomCertificate()
