@@ -116,7 +116,55 @@ func TestHttpMarshallerSimpleBody(t *testing.T) {
 	if val, ok := content["description"]; !ok || val != desc {
 		assert.Fail(t, "Should contain: "+desc)
 	}
+}
 
+func TestHttpMarshallerEmptyPath(t *testing.T) {
+	type testData struct {
+		userID      string
+		httpMethod  string
+		expectError bool
+	}
+
+	testDataSet := []testData{
+		{
+			userID:      "id1",
+			httpMethod:  http.MethodGet,
+			expectError: false,
+		},
+		{
+			userID:      "",
+			httpMethod:  http.MethodGet,
+			expectError: true,
+		},
+		{
+			userID:      "",
+			httpMethod:  http.MethodPut,
+			expectError: true,
+		},
+		{
+			userID:      "",
+			httpMethod:  http.MethodHead,
+			expectError: true,
+		},
+		{
+			userID:      "",
+			httpMethod:  http.MethodDelete,
+			expectError: true,
+		},
+		{
+			userID:      "",
+			httpMethod:  http.MethodPost,
+			expectError: true,
+		},
+	}
+
+	for _, testData := range testDataSet {
+		// user id contributes to path
+		s := updateUserRequest{UserID: testData.userID}
+		request := MakeDefaultHTTPRequest(testData.httpMethod, "/")
+		err := HTTPRequestMarshaller(s, &request)
+		assert.Equal(t, testData.expectError, err != nil)
+	}
 }
 
 func TestHttpMarshalerAll(t *testing.T) {
