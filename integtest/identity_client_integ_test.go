@@ -581,9 +581,6 @@ func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 	request.Key = common.String("some key")
 	resCreate, err := c.UploadApiKey(context.Background(), request)
 	assert.Error(t, err)
-	ser, ok := common.IsServiceError(err)
-	assert.True(t, ok)
-	assert.NotEmpty(t, ser.GetMessage())
 
 	defer func() {
 		//remove
@@ -591,9 +588,7 @@ func TestIdentityClient_ApiKeyCRUD(t *testing.T) {
 		rDelete.Fingerprint = resCreate.Fingerprint
 		rDelete.UserId = common.String(userId)
 		_, err := c.DeleteApiKey(context.Background(), rDelete)
-		ser, ok = common.IsServiceError(err)
-		assert.False(t, ok)
-		assert.NotEmpty(t, err.Error())
+		assert.Error(t, err)
 	}()
 
 	// TODO: [2017-Nov-07::shalka] presently LifecycleState isn't being set on ApiKey struct in the Response => merits
@@ -815,6 +810,19 @@ func TestIdentityClient_GetTenancy(t *testing.T) {
 	assert.NotEmpty(t, r.OpcRequestId)
 
 	return
+}
+
+func TestIdentityClient_GetTenancy_EmptyTenancyID(t *testing.T) {
+	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
+	failIfError(t, clerr)
+
+	// use empty string for tenancyID which is in path
+	request := identity.GetTenancyRequest{TenancyId: common.String("")}
+	r, err := c.GetTenancy(context.Background(), request)
+
+	assert.Error(t, err)
+	assert.Equal(t, "value cannot be empty for field TenancyId in path", err.Error())
+	assert.Empty(t, r.OpcRequestId)
 }
 
 func TestIdentityClient_ListAvailabilityDomains(t *testing.T) {
