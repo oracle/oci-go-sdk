@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"crypto/rsa"
 	"fmt"
+
 	"github.com/oracle/oci-go-sdk/common"
 )
 
@@ -59,7 +60,7 @@ func newInstancePrincipalKeyProvider() (provider *instancePrincipalKeyProvider, 
 	tenancyID := extractTenancyIDFromCertificate(leafCertificateRetriever.Certificate())
 
 	federationClient := newX509FederationClient(
-		region, tenancyID, leafCertificateRetriever, intermediateCertificateRetrievers)
+		region, tenancyID, leafCertificateRetriever, intermediateCertificateRetrievers, true)
 
 	provider = &instancePrincipalKeyProvider{regionForFederationClient: region, federationClient: federationClient}
 	return
