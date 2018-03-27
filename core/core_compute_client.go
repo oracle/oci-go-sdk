@@ -164,7 +164,7 @@ func (client ComputeClient) CaptureConsoleHistory(ctx context.Context, request C
 // It does not have to be unique, and you can change it. See UpdateImage.
 // Avoid entering confidential information.
 func (client ComputeClient) CreateImage(ctx context.Context, request CreateImageRequest) (response CreateImageResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/images/", request)
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/images", request)
 	if err != nil {
 		return
 	}
@@ -554,6 +554,7 @@ func (client ComputeClient) InstanceAction(ctx context.Context, request Instance
 // When you create a resource, you can find its OCID in the response. You can
 // also retrieve a resource's OCID by using a List API operation
 // on that resource type, or by viewing the resource in the Console.
+// To launch an instance using an image or a boot volume use the `sourceDetails` parameter in LaunchInstanceDetails.
 // When you launch an instance, it is automatically attached to a virtual
 // network interface card (VNIC), called the *primary VNIC*. The VNIC
 // has a private IP address from the subnet's CIDR. You can either assign a
@@ -624,7 +625,7 @@ func (client ComputeClient) ListConsoleHistories(ctx context.Context, request Li
 // information about images, see
 // Managing Custom Images (https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Tasks/managingcustomimages.htm).
 func (client ComputeClient) ListImages(ctx context.Context, request ListImagesRequest) (response ListImagesResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/images/", request)
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/images", request)
 	if err != nil {
 		return
 	}

@@ -8,4 +8,5 @@
 .idea/
 *.swp
 .vscode/*
-
+target/
+bin/

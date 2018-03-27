@@ -32,6 +32,37 @@ gIT7aFOYBFwGgQAQkWNKLvySgKbAZRTeLBacpHMuQdl1DfdntvAyqpAZ0lY0RKmW
 G6aFKaqQfOXKCyWoUiVknQJAXrlgySFci/2ueKlIE1QqIiLSZ8V8OlpFLRnb1pzI
 7U1yQXnTAEFYM560yJlzUpOb1V4cScGd365tiSMvxLOvTA==
 -----END RSA PRIVATE KEY-----`
+	testEncryptedPrivateKeyConf = `-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: DES-EDE3-CBC,05B7ACED45203763
+
+bKbv8X2oyfxwp55w3MVKj1bfWnhvQgyqJ/1dER53STao3qRS26epRoBc0BoLtrNj
+L+Wfa3NeuEinetDYKRwWGHZqvbs/3PD5OKIXW1y/EAlg1vr6JWX8KxhQ0PzGJOdQ
+KPcB2duDtlNJ4awoGEsSp/qYyJLKOKpcz893OWTe3Oi9aQpzuL+kgH6VboCUdwdl
+Ub7YyTMFBkGzzjOXV/iSJDaxvVUIZt7CQS/DkBq4IHXX8iFUDzh6L297/BuRp3Q8
+hDL4yQacl2F2yCWpUoNNkbPpe6oOmL8JHrxXxo+u0pSJELXx0sjWMn7bSRfgFFIE
+k08y4wXZeoxHiQDhHmQI+YTikgqnxEWtDYhHYvWudVQY6Wcf1Fdypa1v4I3gv4S9
+QwjDRbRcrnPxMkxWmQEM6xGCwWBj8wmFyIQoEA5MJuQZxWdyptEKVtwwI1TB9etn
+SlXPUl125dYYBu2ynmR96nBVEZd6BWl+iFeeZnqxDHABOB0AvpI61vt/6c7tIimC
+YciZs74XZH/ERs55p0Ng/G23XNu+UGQQptrr2kyRR5JrS0UGKVjivydIK5Lus4c4
+NTaKyEJNMbvSUGY5SLfxyp6HZnlbr4aCDAk62+2ZUotr+sVXplCpuxoSc2Qlw0en
+y+plCvd2RdQ/EzIFkpi9V/snIvbMvH3Sp/HqFDG8GehFTRvwpCIVqWC+BZYeaERX
+n2P4jODz2M8Ns7txv1nB4CyxWgu19398Zit0K0QmG24kCJtLg9spEOmKtoIuVTnU
+9ydxmHQjNNtyH+RceZFn07IkWvPveo2BXpK4K9DXE39Z/g1nQzwTqgN8diXxwRuN
+Ge97lBWup4vP1TV8nyHW2AppgFVuPynO+XWfZUuCUzxNseB+XOyeqitoM4uvSNax
+DQmokjIf4qXC/46EnJ/fd9Ydz4GVQ4TYyxwNCBJK39RdUOcUtyI+A3IbZ+vt2HIV
+eiIN2BhdnwbvNTbPs9nc9McM2NtACqDGQsIzRdXcQ8SFDP2DnTVjGu5E8H9dnVrd
+FcuUnA9TIbfBkRHOS7yoDHOo4j28g6xePDV5tK0L5C2yyDh+bwWnO5AIg/gdpnuH
+wxIZUxFwkD4GvOVtj5Y4W5L+Uy3c94stMPbHE+zGN75DdQRy5aVbDjWqXRB9AEQN
++NSb526oqhv0JyYlZmCqz2ydBxkT4FsShZv/34pkRr3qL5FSTAQTXQAZdiQQbMTe
+H3zKyu4GbEUV9WsyriqSq27ptMwFfIqN1NdsWeVWN1mXf2KZDn61EgleeQXmdSZu
+XM4Z1n98xjYDwdCkF738j+oRAlSUThBeU/hYbH6Ysff6ON9MPBAAKy3ZxM5tF86e
+l0x20lpND2QLLDZbsg/LrCrE6ZzpWkXn4w4PG4lWMAqph0BebSkFqXvUvuds3c39
+yptNH3FsyqeyM9kDwbDpBQAvpsDIQJfwAbQPLAiQJhpbixZyG9lqhkKOhYTZhU3l
+ufFtnLEj/5G9a8A//MFrXsXePUeBDEzjtEcjPGNxe0ZkuOgYx11Zc0R4oLI7LoHO
+07vtw4qCH4hztCJ5+JOUac6sGcILFRc4vSQQ15Cg5QEdBiSbQ/yo1P0hbNtSvnwO
+-----END RSA PRIVATE KEY-----`
+	testKeyPassphrase = "goisfun"
 )
 
 func removeFileFn(filename string) func() {
@@ -442,4 +473,181 @@ func TestComposingConfigurationProvider_MultipleFilesNoConf(t *testing.T) {
 		_, e := fn()
 		assert.Error(t, e)
 	}
+}
+
+func TestComposingConfigurationProvider_FirstConfigWrong(t *testing.T) {
+	dataTpl0 := ``
+	dataTpl := `[DEFAULT]
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile0 := writeTempFile(dataTpl0)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(tmpConfFile0)
+	defer removeFileFn(keyFile)
+
+	c0, _ := ConfigurationProviderFromFile(tmpConfFile0, "")
+	c1, _ := ConfigurationProviderFromFile("/dev/nowhere", "")
+	p0 := ConfigurationProviderEnvironmentVariables("OCI", os.Getenv("BLAH"))
+	c, _ := ConfigurationProviderFromFile(tmpConfFile, "")
+
+	provider, ec := ComposingConfigurationProvider([]ConfigurationProvider{p0, c0, c1, c})
+	assert.NoError(t, ec)
+	ok, err := IsConfigurationProviderValid(provider)
+	assert.NoError(t, err)
+	assert.True(t, ok)
+
+	fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerprint}
+
+	for _, fn := range fns {
+		val, e := fn()
+		assert.NoError(t, e)
+		assert.NotEmpty(t, val)
+	}
+	key, _ := provider.PrivateRSAKey()
+	assert.NotNil(t, key)
+}
+
+func TestComposingConfigurationProvider_NilConfiguration(t *testing.T) {
+	dataTpl := `[DEFAULT]
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	c1, _ := ConfigurationProviderFromFile("/dev/nowhere", "")
+	p0 := ConfigurationProviderEnvironmentVariables("OCI", os.Getenv("BLAH"))
+	c, _ := ConfigurationProviderFromFile(tmpConfFile, "")
+
+	_, ec := ComposingConfigurationProvider([]ConfigurationProvider{p0, nil, c1, c})
+	assert.Error(t, ec)
+}
+
+func TestComposingConfigurationProvider_WithEncryptedKeyPassphraseInConfig(t *testing.T) {
+	dataTpl := `[DEFAULT]
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+passphrase=%s
+`
+
+	keyFile := writeTempFile(testEncryptedPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile, testKeyPassphrase)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	provider, err := ConfigurationProviderFromFile(tmpConfFile, "")
+	assert.NoError(t, err)
+	ok, err := IsConfigurationProviderValid(provider)
+	assert.NoError(t, err)
+	assert.True(t, ok)
+
+	fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerprint}
+
+	for _, fn := range fns {
+		val, e := fn()
+		assert.NoError(t, e)
+		assert.NotEmpty(t, val)
+	}
+
+	key, err := provider.PrivateRSAKey()
+	assert.NoError(t, err)
+	assert.NotNil(t, key)
+}
+
+func TestComposingConfigurationProvider_WithEncryptedKeyOverridePassphrase(t *testing.T) {
+	dataTpl := `[DEFAULT]
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+passphrase=%s
+`
+
+	keyFile := writeTempFile(testEncryptedPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile, "thewrongpassphrase")
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	provider, err := ConfigurationProviderFromFile(tmpConfFile, testKeyPassphrase)
+	assert.NoError(t, err)
+	ok, err := IsConfigurationProviderValid(provider)
+	assert.NoError(t, err)
+	assert.True(t, ok)
+
+	fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerprint}
+
+	for _, fn := range fns {
+		val, e := fn()
+		assert.NoError(t, e)
+		assert.NotEmpty(t, val)
+	}
+
+	key, err := provider.PrivateRSAKey()
+	assert.NoError(t, err)
+	assert.NotNil(t, key)
+}
+
+func TestComposingConfigurationProvider_WithEncryptedKeyNoConfig(t *testing.T) {
+	dataTpl := `[DEFAULT]
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+`
+
+	keyFile := writeTempFile(testEncryptedPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	provider, err := ConfigurationProviderFromFile(tmpConfFile, testKeyPassphrase)
+	assert.NoError(t, err)
+	ok, err := IsConfigurationProviderValid(provider)
+	assert.NoError(t, err)
+	assert.True(t, ok)
+
+	fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerprint}
+
+	for _, fn := range fns {
+		val, e := fn()
+		assert.NoError(t, e)
+		assert.NotEmpty(t, val)
+	}
+
+	key, err := provider.PrivateRSAKey()
+	assert.NoError(t, err)
+	assert.NotNil(t, key)
 }

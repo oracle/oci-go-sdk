@@ -11,7 +11,7 @@ import (
 // GetPrivateIpRequest wrapper for the GetPrivateIp operation
 type GetPrivateIpRequest struct {
 
-	// The private IP's OCID.
+	// The OCID of the private IP.
 	PrivateIpId *string `mandatory:"true" contributesTo:"path" name:"privateIpId"`
 }
 

@@ -66,6 +66,8 @@ type LoadBalancer struct {
 
 	Listeners map[string]Listener `mandatory:"false" json:"listeners"`
 
+	PathRouteSets map[string]PathRouteSet `mandatory:"false" json:"pathRouteSets"`
+
 	// An array of subnet OCIDs (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
 	SubnetIds []string `mandatory:"false" json:"subnetIds"`
 }

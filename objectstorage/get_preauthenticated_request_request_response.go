@@ -14,12 +14,12 @@ type GetPreauthenticatedRequestRequest struct {
 	// The top-level namespace used for the request.
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
-	// The name of the bucket.
+	// The name of the bucket. Avoid entering confidential information.
 	// Example: `my-new-bucket1`
 	BucketName *string `mandatory:"true" contributesTo:"path" name:"bucketName"`
 
-	// The unique identifier for the pre-authenticated request (PAR). This can be used to manage the PAR
-	// such as GET or DELETE the PAR
+	// The unique identifier for the pre-authenticated request. This can be used to manage operations against
+	// the pre-authenticated request, such as GET or DELETE.
 	ParId *string `mandatory:"true" contributesTo:"path" name:"parId"`
 
 	// The client request ID for tracing.
@@ -43,7 +43,7 @@ type GetPreauthenticatedRequestResponse struct {
 	OpcClientRequestId *string `presentIn:"header" name:"opc-client-request-id"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular
-	// request, please provide this request ID.
+	// request, provide this request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
