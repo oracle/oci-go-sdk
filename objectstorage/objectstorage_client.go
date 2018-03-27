@@ -3,7 +3,7 @@
 
 // Object Storage Service API
 //
-// APIs for managing buckets and objects.
+// Common set of Object and Archive Storage APIs for managing buckets and objects.
 //
 
 package objectstorage
@@ -105,9 +105,6 @@ func (client ObjectStorageClient) CommitMultipartUpload(ctx context.Context, req
 }
 
 // CreateBucket Creates a bucket in the given namespace with a bucket name and optional user-defined metadata.
-// To use this and other API operations, you must be authorized in an IAM policy. If you're not authorized,
-// talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
 func (client ObjectStorageClient) CreateBucket(ctx context.Context, request CreateBucketRequest) (response CreateBucketResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/n/{namespaceName}/b/", request)
 	if err != nil {
@@ -143,7 +140,7 @@ func (client ObjectStorageClient) CreateMultipartUpload(ctx context.Context, req
 	return
 }
 
-// CreatePreauthenticatedRequest Create a pre-authenticated request specific to the bucket
+// CreatePreauthenticatedRequest Creates a pre-authenticated request specific to the bucket.
 func (client ObjectStorageClient) CreatePreauthenticatedRequest(ctx context.Context, request CreatePreauthenticatedRequestRequest) (response CreatePreauthenticatedRequestResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/n/{namespaceName}/b/{bucketName}/p/", request)
 	if err != nil {
@@ -197,7 +194,7 @@ func (client ObjectStorageClient) DeleteObject(ctx context.Context, request Dele
 	return
 }
 
-// DeletePreauthenticatedRequest Deletes the bucket level pre-authenticateted request
+// DeletePreauthenticatedRequest Deletes the pre-authenticated request for the bucket.
 func (client ObjectStorageClient) DeletePreauthenticatedRequest(ctx context.Context, request DeletePreauthenticatedRequestRequest) (response DeletePreauthenticatedRequestResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/n/{namespaceName}/b/{bucketName}/p/{parId}", request)
 	if err != nil {
@@ -233,10 +230,31 @@ func (client ObjectStorageClient) GetBucket(ctx context.Context, request GetBuck
 	return
 }
 
-// GetNamespace Gets the name of the namespace for the user making the request. An account name must be unique, must start with a
-// letter, and can have up to 15 lowercase letters and numbers. You cannot use spaces or special characters.
+// GetNamespace Namespaces are unique. Namespaces are either the tenancy name or a random string automatically generated during
+// account creation. You cannot edit a namespace.
 func (client ObjectStorageClient) GetNamespace(ctx context.Context, request GetNamespaceRequest) (response GetNamespaceResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/n/", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// GetNamespaceMetadata Get the metadata for the namespace, which contains defaultS3CompartmentId and defaultSwiftCompartmentId.
+// Any user with the NAMESPACE_READ permission will be able to see the current metadata. If you're not authorized,
+// talk to an administrator. If you're an administrator who needs to write
+// policies to give users access, see Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
+func (client ObjectStorageClient) GetNamespaceMetadata(ctx context.Context, request GetNamespaceMetadataRequest) (response GetNamespaceMetadataResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/n/{namespaceName}", request)
 	if err != nil {
 		return
 	}
@@ -269,7 +287,7 @@ func (client ObjectStorageClient) GetObject(ctx context.Context, request GetObje
 	return
 }
 
-// GetPreauthenticatedRequest Get the bucket level pre-authenticateted request
+// GetPreauthenticatedRequest Gets the pre-authenticated request for the bucket.
 func (client ObjectStorageClient) GetPreauthenticatedRequest(ctx context.Context, request GetPreauthenticatedRequestRequest) (response GetPreauthenticatedRequestResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/n/{namespaceName}/b/{bucketName}/p/{parId}", request)
 	if err != nil {
@@ -287,7 +305,7 @@ func (client ObjectStorageClient) GetPreauthenticatedRequest(ctx context.Context
 	return
 }
 
-// HeadBucket Efficiently checks if a bucket exists and gets the current ETag for the bucket.
+// HeadBucket Efficiently checks to see if a bucket exists and gets the current ETag for the bucket.
 func (client ObjectStorageClient) HeadBucket(ctx context.Context, request HeadBucketRequest) (response HeadBucketResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodHead, "/n/{namespaceName}/b/{bucketName}/", request)
 	if err != nil {
@@ -402,7 +420,7 @@ func (client ObjectStorageClient) ListObjects(ctx context.Context, request ListO
 	return
 }
 
-// ListPreauthenticatedRequests List pre-authenticated requests for the bucket
+// ListPreauthenticatedRequests Lists pre-authenticated requests for the bucket.
 func (client ObjectStorageClient) ListPreauthenticatedRequests(ctx context.Context, request ListPreauthenticatedRequestsRequest) (response ListPreauthenticatedRequestsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/n/{namespaceName}/b/{bucketName}/p/", request)
 	if err != nil {
@@ -421,11 +439,44 @@ func (client ObjectStorageClient) ListPreauthenticatedRequests(ctx context.Conte
 }
 
 // PutObject Creates a new object or overwrites an existing one.
-// To use this and other API operations, you must be authorized in an IAM policy. If you're not authorized,
-// talk to an administrator. If you're an administrator who needs to write policies to give users access, see
-// Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
 func (client ObjectStorageClient) PutObject(ctx context.Context, request PutObjectRequest) (response PutObjectResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/n/{namespaceName}/b/{bucketName}/o/{objectName}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// RenameObject Rename an object from source key to target key in the given namespace.
+func (client ObjectStorageClient) RenameObject(ctx context.Context, request RenameObjectRequest) (response RenameObjectResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/n/{namespaceName}/b/{bucketName}/actions/renameObject", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// RestoreObjects Restore one or more objects specified by objectName parameter.
+func (client ObjectStorageClient) RestoreObjects(ctx context.Context, request RestoreObjectsRequest) (response RestoreObjectsResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/n/{namespaceName}/b/{bucketName}/actions/restoreObjects", request)
 	if err != nil {
 		return
 	}
@@ -444,6 +495,27 @@ func (client ObjectStorageClient) PutObject(ctx context.Context, request PutObje
 // UpdateBucket Performs a partial or full update of a bucket's user-defined metadata.
 func (client ObjectStorageClient) UpdateBucket(ctx context.Context, request UpdateBucketRequest) (response UpdateBucketResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/n/{namespaceName}/b/{bucketName}/", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// UpdateNamespaceMetadata Change the default Swift/S3 compartmentId of user's namespace into the user-defined compartmentId. Upon doing
+// this, all subsequent bucket creations will use the new default compartment, but no previously created
+// buckets will be modified. A user must have the NAMESPACE_UPDATE permission to make changes to the default
+// compartments for S3 and Swift.
+func (client ObjectStorageClient) UpdateNamespaceMetadata(ctx context.Context, request UpdateNamespaceMetadataRequest) (response UpdateNamespaceMetadataResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/n/{namespaceName}", request)
 	if err != nil {
 		return
 	}

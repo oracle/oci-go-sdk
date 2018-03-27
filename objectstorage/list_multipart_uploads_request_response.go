@@ -14,7 +14,7 @@ type ListMultipartUploadsRequest struct {
 	// The top-level namespace used for the request.
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
-	// The name of the bucket.
+	// The name of the bucket. Avoid entering confidential information.
 	// Example: `my-new-bucket1`
 	BucketName *string `mandatory:"true" contributesTo:"path" name:"bucketName"`
 
@@ -45,13 +45,12 @@ type ListMultipartUploadsResponse struct {
 	OpcClientRequestId *string `presentIn:"header" name:"opc-client-request-id"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular
-	// request, please provide this request ID.
+	// request, provide this request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For pagination of a list of `MultipartUpload`s. If this header appears in the response, then
 	// this is a partial list of multipart uploads. Include this value as the `page` parameter in a subsequent
-	// GET request. For information about pagination, see
-	// List Pagination (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/usingapi.htm).
+	// GET request. For information about pagination, see List Pagination (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/usingapi.htm).
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
 }
 

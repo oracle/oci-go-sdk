@@ -95,7 +95,7 @@ func (p rawConfigurationProvider) Region() (string, error) {
 }
 
 // environmentConfigurationProvider reads configuration from environment variables
-type environmentConfigurationProvider struct { // TODO: Support Instance Principal
+type environmentConfigurationProvider struct {
 	PrivateKeyPassword        string
 	EnvironmentVariablePrefix string
 }
@@ -186,7 +186,7 @@ func (p environmentConfigurationProvider) Region() (value string, err error) {
 }
 
 // fileConfigurationProvider. reads configuration information from a file
-type fileConfigurationProvider struct { // TODO: Support Instance Principal
+type fileConfigurationProvider struct {
 	//The path to the configuration file
 	ConfigPath string
 
@@ -227,8 +227,8 @@ func ConfigurationProviderFromFileWithProfile(configFilePath, profile, privateKe
 }
 
 type configFileInfo struct {
-	UserOcid, Fingerprint, KeyFilePath, TenancyOcid, Region string
-	PresentConfiguration                                    byte
+	UserOcid, Fingerprint, KeyFilePath, TenancyOcid, Region, Passphrase string
+	PresentConfiguration                                                byte
 }
 
 const (
@@ -237,6 +237,7 @@ const (
 	hasFingerprint
 	hasRegion
 	hasKeyFile
+	hasPassphrase
 	none
 )
 
@@ -277,6 +278,9 @@ func parseConfigAtLine(start int, content []string) (info *configFileInfo, err e
 
 		splits := strings.Split(line, "=")
 		switch key, value := strings.TrimSpace(splits[0]), strings.TrimSpace(splits[1]); strings.ToLower(key) {
+		case "passphrase":
+			configurationPresent = configurationPresent | hasPassphrase
+			info.Passphrase = value
 		case "user":
 			configurationPresent = configurationPresent | hasUser
 			info.UserOcid = value
@@ -397,7 +401,13 @@ func (p fileConfigurationProvider) PrivateRSAKey() (key *rsa.PrivateKey, err err
 		return
 	}
 
-	key, err = PrivateKeyFromBytes(pemFileContent, &p.PrivateKeyPassword)
+	password := p.PrivateKeyPassword
+
+	if password == "" && ((info.PresentConfiguration & hasPassphrase) == hasPassphrase) {
+		password = info.Passphrase
+	}
+
+	key, err = PrivateKeyFromBytes(pemFileContent, &password)
 	return
 }
 
@@ -423,6 +433,12 @@ type composingConfigurationProvider struct {
 func ComposingConfigurationProvider(providers []ConfigurationProvider) (ConfigurationProvider, error) {
 	if len(providers) == 0 {
 		return nil, fmt.Errorf("providers can not be an empty slice")
+	}
+
+	for i, p := range providers {
+		if p == nil {
+			return nil, fmt.Errorf("provider in position: %d is nil. ComposingConfiurationProvider does not support nil values", i)
+		}
 	}
 	return composingConfigurationProvider{Providers: providers}, nil
 }

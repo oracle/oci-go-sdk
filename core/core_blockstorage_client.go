@@ -109,6 +109,26 @@ func (client BlockstorageClient) CreateVolumeBackup(ctx context.Context, request
 	return
 }
 
+// CreateVolumeBackupPolicyAssignment Assigns a policy to the specified asset, such as a volume. Note that a given asset can
+// only have one policy assigned to it; if this method is called for an asset that previously
+// has a different policy assigned, the prior assignment will be silently deleted.
+func (client BlockstorageClient) CreateVolumeBackupPolicyAssignment(ctx context.Context, request CreateVolumeBackupPolicyAssignmentRequest) (response CreateVolumeBackupPolicyAssignmentResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/volumeBackupPolicyAssignments", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
 // DeleteBootVolume Deletes the specified boot volume. The volume cannot have an active connection to an instance.
 // To disconnect the boot volume from a connected instance, see
 // Disconnecting From a Boot Volume (https://docs.us-phoenix-1.oraclecloud.com/Content/Block/Tasks/deletingbootvolume.htm).
@@ -154,6 +174,24 @@ func (client BlockstorageClient) DeleteVolume(ctx context.Context, request Delet
 // DeleteVolumeBackup Deletes a volume backup.
 func (client BlockstorageClient) DeleteVolumeBackup(ctx context.Context, request DeleteVolumeBackupRequest) (response DeleteVolumeBackupResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/volumeBackups/{volumeBackupId}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// DeleteVolumeBackupPolicyAssignment Deletes a volume backup policy assignment (i.e. unassigns the policy from an asset).
+func (client BlockstorageClient) DeleteVolumeBackupPolicyAssignment(ctx context.Context, request DeleteVolumeBackupPolicyAssignmentRequest) (response DeleteVolumeBackupPolicyAssignmentResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/volumeBackupPolicyAssignments/{policyAssignmentId}", request)
 	if err != nil {
 		return
 	}
@@ -223,9 +261,83 @@ func (client BlockstorageClient) GetVolumeBackup(ctx context.Context, request Ge
 	return
 }
 
+// GetVolumeBackupPolicy Gets information for the specified volume backup policy.
+func (client BlockstorageClient) GetVolumeBackupPolicy(ctx context.Context, request GetVolumeBackupPolicyRequest) (response GetVolumeBackupPolicyResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/volumeBackupPolicies/{policyId}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// GetVolumeBackupPolicyAssetAssignment Gets the volume backup policy assignment for the specified asset. Note that the
+// assetId query parameter is required, and that the returned list will contain at most
+// one item (since any given asset can only have one policy assigned to it).
+func (client BlockstorageClient) GetVolumeBackupPolicyAssetAssignment(ctx context.Context, request GetVolumeBackupPolicyAssetAssignmentRequest) (response GetVolumeBackupPolicyAssetAssignmentResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/volumeBackupPolicyAssignments", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// GetVolumeBackupPolicyAssignment Gets information for the specified volume backup policy assignment.
+func (client BlockstorageClient) GetVolumeBackupPolicyAssignment(ctx context.Context, request GetVolumeBackupPolicyAssignmentRequest) (response GetVolumeBackupPolicyAssignmentResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/volumeBackupPolicyAssignments/{policyAssignmentId}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
 // ListBootVolumes Lists the boot volumes in the specified compartment and Availability Domain.
 func (client BlockstorageClient) ListBootVolumes(ctx context.Context, request ListBootVolumesRequest) (response ListBootVolumesResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/bootVolumes", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// ListVolumeBackupPolicies Lists all volume backup policies available to the caller.
+func (client BlockstorageClient) ListVolumeBackupPolicies(ctx context.Context, request ListVolumeBackupPoliciesRequest) (response ListVolumeBackupPoliciesResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/volumeBackupPolicies", request)
 	if err != nil {
 		return
 	}

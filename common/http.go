@@ -301,6 +301,11 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 		return fmt.Errorf("can not marshal to path in request for field %s. Due to %s", field.Name, e.Error())
 	}
 
+	// path should not be empty for any operations
+	if len(additionalURLPathPart) == 0 {
+		return fmt.Errorf("value cannot be empty for field %s in path", field.Name)
+	}
+
 	if request.URL == nil {
 		request.URL = &url.URL{}
 		request.URL.Path = ""

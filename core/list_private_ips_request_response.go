@@ -18,7 +18,7 @@ type ListPrivateIpsRequest struct {
 	// The value of the `opc-next-page` response header from the previous "List" call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
-	// The private IP address of the `privateIp` object.
+	// An IP address.
 	// Example: `10.0.3.3`
 	IpAddress *string `mandatory:"false" contributesTo:"query" name:"ipAddress"`
 

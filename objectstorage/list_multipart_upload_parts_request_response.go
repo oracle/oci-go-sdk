@@ -14,11 +14,11 @@ type ListMultipartUploadPartsRequest struct {
 	// The top-level namespace used for the request.
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
-	// The name of the bucket.
+	// The name of the bucket. Avoid entering confidential information.
 	// Example: `my-new-bucket1`
 	BucketName *string `mandatory:"true" contributesTo:"path" name:"bucketName"`
 
-	// The name of the object.
+	// The name of the object. Avoid entering confidential information.
 	// Example: `test/object1.log`
 	ObjectName *string `mandatory:"true" contributesTo:"path" name:"objectName"`
 
@@ -52,7 +52,7 @@ type ListMultipartUploadPartsResponse struct {
 	OpcClientRequestId *string `presentIn:"header" name:"opc-client-request-id"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular
-	// request, please provide this request ID.
+	// request, provide this request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For pagination of a list of `MultipartUploadPartSummary`s. If this header appears in the response,

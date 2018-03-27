@@ -11,7 +11,7 @@ import (
 // DeletePrivateIpRequest wrapper for the DeletePrivateIp operation
 type DeletePrivateIpRequest struct {
 
-	// The private IP's OCID.
+	// The OCID of the private IP.
 	PrivateIpId *string `mandatory:"true" contributesTo:"path" name:"privateIpId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`

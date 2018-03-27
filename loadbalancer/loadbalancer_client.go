@@ -168,6 +168,25 @@ func (client LoadBalancerClient) CreateLoadBalancer(ctx context.Context, request
 	return
 }
 
+// CreatePathRouteSet Adds a path route set to a load balancer. For more information, see
+// Managing Request Routing (https://docs.us-phoenix-1.oraclecloud.com/Content/Balance/Tasks/managingrequest.htm).
+func (client LoadBalancerClient) CreatePathRouteSet(ctx context.Context, request CreatePathRouteSetRequest) (response CreatePathRouteSetResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/loadBalancers/{loadBalancerId}/pathRouteSets", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
 // DeleteBackend Removes a backend server from a given load balancer and backend set.
 func (client LoadBalancerClient) DeleteBackend(ctx context.Context, request DeleteBackendRequest) (response DeleteBackendResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/loadBalancers/{loadBalancerId}/backendSets/{backendSetName}/backends/{backendName}", request)
@@ -244,6 +263,26 @@ func (client LoadBalancerClient) DeleteListener(ctx context.Context, request Del
 // DeleteLoadBalancer Stops a load balancer and removes it from service.
 func (client LoadBalancerClient) DeleteLoadBalancer(ctx context.Context, request DeleteLoadBalancerRequest) (response DeleteLoadBalancerResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/loadBalancers/{loadBalancerId}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// DeletePathRouteSet Deletes a path route set from the specified load balancer.
+// To delete a path route rule from a path route set, use the
+// UpdatePathRouteSet operation.
+func (client LoadBalancerClient) DeletePathRouteSet(ctx context.Context, request DeletePathRouteSetRequest) (response DeletePathRouteSetResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/loadBalancers/{loadBalancerId}/pathRouteSets/{pathRouteSetName}", request)
 	if err != nil {
 		return
 	}
@@ -385,6 +424,24 @@ func (client LoadBalancerClient) GetLoadBalancerHealth(ctx context.Context, requ
 	return
 }
 
+// GetPathRouteSet Gets the specified path route set's configuration information.
+func (client LoadBalancerClient) GetPathRouteSet(ctx context.Context, request GetPathRouteSetRequest) (response GetPathRouteSetResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/loadBalancers/{loadBalancerId}/pathRouteSets/{pathRouteSetName}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
 // GetWorkRequest Gets the details of a work request.
 func (client LoadBalancerClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/loadBalancerWorkRequests/{workRequestId}", request)
@@ -478,6 +535,24 @@ func (client LoadBalancerClient) ListLoadBalancerHealths(ctx context.Context, re
 // ListLoadBalancers Lists all load balancers in the specified compartment.
 func (client LoadBalancerClient) ListLoadBalancers(ctx context.Context, request ListLoadBalancersRequest) (response ListLoadBalancersResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/loadBalancers", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// ListPathRouteSets Lists all path route sets associated with the specified load balancer.
+func (client LoadBalancerClient) ListPathRouteSets(ctx context.Context, request ListPathRouteSetsRequest) (response ListPathRouteSetsResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/loadBalancers/{loadBalancerId}/pathRouteSets", request)
 	if err != nil {
 		return
 	}
@@ -640,6 +715,28 @@ func (client LoadBalancerClient) UpdateListener(ctx context.Context, request Upd
 // UpdateLoadBalancer Updates a load balancer's configuration.
 func (client LoadBalancerClient) UpdateLoadBalancer(ctx context.Context, request UpdateLoadBalancerRequest) (response UpdateLoadBalancerResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/loadBalancers/{loadBalancerId}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// UpdatePathRouteSet Overwrites an existing path route set on the specified load balancer. Use this operation to add, delete, or alter
+// path route rules in a path route set.
+// To add a new path route rule to a path route set, the `pathRoutes` in the
+// UpdatePathRouteSetDetails object must include
+// both the new path route rule to add and the existing path route rules to retain.
+func (client LoadBalancerClient) UpdatePathRouteSet(ctx context.Context, request UpdatePathRouteSetRequest) (response UpdatePathRouteSetResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/loadBalancers/{loadBalancerId}/pathRouteSets/{pathRouteSetName}", request)
 	if err != nil {
 		return
 	}
