@@ -51,7 +51,6 @@ func TestUrlBasedX509CertificateRetriever_RefreshWithoutPrivateKeyUrl(t *testing
 	assert.Nil(t, retriever.PrivateKey())
 }
 
-
 func TestUrlBasedX509CertificateRetriever_RefreshWithPrivateKeyUrl(t *testing.T) {
 	expectedPrivateKey, expectedCert := generateRandomCertificate()
 	certServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
