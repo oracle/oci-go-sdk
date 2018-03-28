@@ -33,15 +33,15 @@ type x509FederationClient struct {
 	securityToken                     securityToken
 	authClient                        *common.BaseClient
 	mux                               sync.Mutex
-	refresh                           bool
+	validateTenancyID                 bool
 }
 
-func newX509FederationClient(region common.Region, tenancyID string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever, refresh bool) federationClient {
+func newX509FederationClient(region common.Region, tenancyID string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever, validateTenancyID bool) federationClient {
 	client := &x509FederationClient{
 		tenancyID:                         tenancyID,
 		leafCertificateRetriever:          leafCertificateRetriever,
 		intermediateCertificateRetrievers: intermediateCertificateRetrievers,
-		refresh: refresh,
+		validateTenancyID:                 validateTenancyID,
 	}
 	client.sessionKeySupplier = newSessionKeySupplier()
 	client.authClient = newAuthClient(region, client)
@@ -112,7 +112,7 @@ func (c *x509FederationClient) renewSecurityToken() (err error) {
 		return fmt.Errorf("failed to refresh leaf certificate: %s", err.Error())
 	}
 
-	if c.refresh {
+	if c.validateTenancyID {
 		updatedTenancyID := extractTenancyIDFromCertificate(c.leafCertificateRetriever.Certificate())
 		if c.tenancyID != updatedTenancyID {
 			err = fmt.Errorf("unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", c.tenancyID, updatedTenancyID)
