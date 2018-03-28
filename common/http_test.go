@@ -28,9 +28,10 @@ type TestupdateUserDetails struct {
 }
 
 type listCompartmentsRequest struct {
-	CompartmentID string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
-	Page          string `mandatory:"false" contributesTo:"query" name:"page"`
-	Limit         int32  `mandatory:"false" contributesTo:"query" name:"limit"`
+	CompartmentID string   `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	Page          string   `mandatory:"false" contributesTo:"query" name:"page"`
+	Limit         int32    `mandatory:"false" contributesTo:"query" name:"limit"`
+	Fields        []string `mandatory:"true" contributesTo:"query" name:"fields" encoding:"csv"`
 }
 
 type updateUserRequest struct {
@@ -69,13 +70,15 @@ func TestHttpMarshallerInvalidStruct(t *testing.T) {
 }
 
 func TestHttpRequestMarshallerQuery(t *testing.T) {
-	s := listCompartmentsRequest{CompartmentID: "ocid1", Page: "p", Limit: 23}
+	s := listCompartmentsRequest{CompartmentID: "ocid1", Page: "p", Limit: 23, Fields: []string{"one", "two", "three"}}
 	request := MakeDefaultHTTPRequest(http.MethodPost, "/")
-	HTTPRequestMarshaller(s, &request)
+	e := HTTPRequestMarshaller(s, &request)
 	query := request.URL.Query()
+	assert.NoError(t, e)
 	assert.True(t, query.Get("compartmentId") == "ocid1")
 	assert.True(t, query.Get("page") == "p")
 	assert.True(t, query.Get("limit") == "23")
+	assert.True(t, query.Get("fields") == "one,two,three")
 }
 
 func TestMakeDefault(t *testing.T) {
@@ -169,15 +172,19 @@ func TestHttpMarshallerEmptyPath(t *testing.T) {
 
 func TestHttpMarshalerAll(t *testing.T) {
 	desc := "theDescription"
+	type inc string
+	includes := []inc{inc("One"), inc("Two")}
+
 	s := struct {
 		ID      string                `contributesTo:"path"`
 		Name    string                `contributesTo:"query" name:"name"`
 		When    *SDKTime              `contributesTo:"query" name:"when"`
 		Income  float32               `contributesTo:"query" name:"income"`
+		Include []inc                 `contributesTo:"query" name:"includes" encoding:"csv"`
 		Male    bool                  `contributesTo:"header" name:"male"`
 		Details TestupdateUserDetails `contributesTo:"body"`
 	}{
-		"101", "tapir", now(), 3.23, true, TestupdateUserDetails{Description: desc},
+		"101", "tapir", now(), 3.23, includes, true, TestupdateUserDetails{Description: desc},
 	}
 	request := MakeDefaultHTTPRequest(http.MethodPost, "/")
 	e := HTTPRequestMarshaller(s, &request)
@@ -190,6 +197,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 	assert.True(t, request.URL.Query().Get("name") == s.Name)
 	assert.True(t, request.URL.Query().Get("income") == strconv.FormatFloat(float64(s.Income), 'f', 6, 32))
 	assert.True(t, request.URL.Query().Get("when") == when)
+	assert.True(t, request.URL.Query().Get("includes") == "One,Two")
 	assert.Contains(t, content, "description")
 	assert.Equal(t, request.Header.Get(requestHeaderContentType), "application/json")
 	if val, ok := content["description"]; !ok || val != desc {
@@ -676,6 +684,34 @@ func TestEmptyQueryParam(t *testing.T) {
 	assert.Contains(t, r.URL.RawQuery, "qp2")
 	assert.Contains(t, r.URL.RawQuery, "qp")
 	assert.NotContains(t, r.URL.RawQuery, "meta")
+}
+
+type responseWithWrongCsvType struct {
+	Meta    string            `contributesTo:"query" omitEmpty:"true" name:"meta"`
+	QParam  string            `contributesTo:"query" omitEmpty:"false" name:"qp"`
+	QParam2 string            `contributesTo:"query" name:"qp2"`
+	QParam3 map[string]string `contributesTo:"query" name:"qp2" encoding:"csv"`
+}
+
+func TestWrongTypeQueryParamEncodingWrongType(t *testing.T) {
+	m := make(map[string]string)
+	m["one"] = "one"
+	s := responseWithWrongCsvType{QParam3: m}
+	_, err := MakeDefaultHTTPRequestWithTaggedStruct("GET", "/", s)
+	assert.Error(t, err)
+}
+
+type responseUnsupportedQueryEncoding struct {
+	Meta    string   `contributesTo:"query" omitEmpty:"true" name:"meta"`
+	QParam  string   `contributesTo:"query" omitEmpty:"false" name:"qp"`
+	QParam2 string   `contributesTo:"query" name:"qp2"`
+	QParam3 []string `contributesTo:"query" name:"qp2" encoding:"xml"`
+}
+
+func TestWrongTypeQueryParamWrongEncoding(t *testing.T) {
+	s := responseUnsupportedQueryEncoding{QParam3: []string{"one ", "two"}}
+	_, err := MakeDefaultHTTPRequestWithTaggedStruct("GET", "/", s)
+	assert.Error(t, err)
 }
 
 func TestOmitFieldsInJson_SimpleStruct(t *testing.T) {
