@@ -31,7 +31,7 @@ type listCompartmentsRequest struct {
 	CompartmentID string   `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 	Page          string   `mandatory:"false" contributesTo:"query" name:"page"`
 	Limit         int32    `mandatory:"false" contributesTo:"query" name:"limit"`
-	Fields        []string `mandatory:"true" contributesTo:"query" name:"fields" encoding:"csv"`
+	Fields        []string `mandatory:"true" contributesTo:"query" name:"fields" collectionFormat:"csv"`
 }
 
 type updateUserRequest struct {
@@ -180,7 +180,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 		Name    string                `contributesTo:"query" name:"name"`
 		When    *SDKTime              `contributesTo:"query" name:"when"`
 		Income  float32               `contributesTo:"query" name:"income"`
-		Include []inc                 `contributesTo:"query" name:"includes" encoding:"csv"`
+		Include []inc                 `contributesTo:"query" name:"includes" collectionFormat:"csv"`
 		Male    bool                  `contributesTo:"header" name:"male"`
 		Details TestupdateUserDetails `contributesTo:"body"`
 	}{
@@ -690,7 +690,7 @@ type responseWithWrongCsvType struct {
 	Meta    string            `contributesTo:"query" omitEmpty:"true" name:"meta"`
 	QParam  string            `contributesTo:"query" omitEmpty:"false" name:"qp"`
 	QParam2 string            `contributesTo:"query" name:"qp2"`
-	QParam3 map[string]string `contributesTo:"query" name:"qp2" encoding:"csv"`
+	QParam3 map[string]string `contributesTo:"query" name:"qp2" collectionFormat:"csv"`
 }
 
 func TestWrongTypeQueryParamEncodingWrongType(t *testing.T) {
@@ -705,7 +705,7 @@ type responseUnsupportedQueryEncoding struct {
 	Meta    string   `contributesTo:"query" omitEmpty:"true" name:"meta"`
 	QParam  string   `contributesTo:"query" omitEmpty:"false" name:"qp"`
 	QParam2 string   `contributesTo:"query" name:"qp2"`
-	QParam3 []string `contributesTo:"query" name:"qp2" encoding:"xml"`
+	QParam3 []string `contributesTo:"query" name:"qp2" collectionFormat:"xml"`
 }
 
 func TestWrongTypeQueryParamWrongEncoding(t *testing.T) {
