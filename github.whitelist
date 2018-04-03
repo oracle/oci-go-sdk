@@ -4,6 +4,7 @@
 ^core/
 ^database/
 ^dns/
+^email/
 ^example/
 ^filestorage/
 ^identity/

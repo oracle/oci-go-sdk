@@ -318,14 +318,16 @@ func TestObjectStorageClient_HeadObject(t *testing.T) {
 }
 
 func TestObjectStorageClient_ListBuckets(t *testing.T) {
-	t.Skip("Not implemented")
 	c, e := objectstorage.NewObjectStorageClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, e)
-	request := objectstorage.ListBucketsRequest{}
+	request := objectstorage.ListBucketsRequest{
+		NamespaceName: common.String(getNamespace(t)),
+		CompartmentId: common.String(getCompartmentID()),
+		Fields:        []objectstorage.ListBucketsFieldsEnum{objectstorage.ListBucketsFieldsTags},
+	}
 	r, err := c.ListBuckets(context.Background(), request)
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
-	return
 }
 
 func TestObjectStorageClient_ListMultipartUploadParts(t *testing.T) {
