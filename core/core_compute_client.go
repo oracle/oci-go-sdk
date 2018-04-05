@@ -737,7 +737,8 @@ func (m *listvolumeattachment) UnmarshalPolymorphicJSON(data []byte) (interface{
 
 // ListVolumeAttachments Lists the volume attachments in the specified compartment. You can filter the
 // list by specifying an instance OCID, volume OCID, or both.
-// Currently, the only supported volume attachment type is IScsiVolumeAttachment.
+// Currently, the only supported volume attachment type are IScsiVolumeAttachment and
+// ParavirtualizedVolumeAttachment.
 func (client ComputeClient) ListVolumeAttachments(ctx context.Context, request ListVolumeAttachmentsRequest) (response ListVolumeAttachmentsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/volumeAttachments/", request)
 	if err != nil {

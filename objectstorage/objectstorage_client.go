@@ -475,6 +475,7 @@ func (client ObjectStorageClient) RenameObject(ctx context.Context, request Rena
 }
 
 // RestoreObjects Restore one or more objects specified by objectName parameter.
+// By default object will be restored for 24 hours.Duration can be configured using hours parameter.
 func (client ObjectStorageClient) RestoreObjects(ctx context.Context, request RestoreObjectsRequest) (response RestoreObjectsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/n/{namespaceName}/b/{bucketName}/actions/restoreObjects", request)
 	if err != nil {
