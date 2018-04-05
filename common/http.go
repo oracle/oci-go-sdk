@@ -269,11 +269,34 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 
 	//if not mandatory and nil. Omit
 	if !mandatory && isNil(value) {
-		Debugf("Query parameter value is not mandatory and is nil pointer in field: %s. Skipping header", field.Name)
+		Debugf("Query parameter value is not mandatory and is nil pointer in field: %s. Skipping query", field.Name)
 		return
 	}
 
-	if queryParameterValue, e = toStringValue(value, field); e != nil {
+	encoding := strings.ToLower(field.Tag.Get("collectionFormat"))
+	switch encoding {
+	case "csv":
+		if value.Kind() != reflect.Slice && value.Kind() != reflect.Array {
+			e = fmt.Errorf("query paramater is tagged as csv yet its type is neither an Array nor a Slice: %s", field.Name)
+			break
+		}
+
+		numOfElements := value.Len()
+		stringValues := make([]string, numOfElements)
+		for i := 0; i < numOfElements; i++ {
+			stringValues[i], e = toStringValue(value.Index(i), field)
+			if e != nil {
+				break
+			}
+		}
+		queryParameterValue = strings.Join(stringValues, ",")
+	case "":
+		queryParameterValue, e = toStringValue(value, field)
+	default:
+		e = fmt.Errorf("encoding of type %s is not supported for query param: %s", encoding, field.Name)
+	}
+
+	if e != nil {
 		return
 	}
 

@@ -110,6 +110,30 @@ func (client VirtualNetworkClient) ConnectLocalPeeringGateways(ctx context.Conte
 	return
 }
 
+// ConnectRemotePeeringConnections Connects this RPC to another one in a different region.
+// This operation must be called by the VCN administrator who is designated as
+// the *requestor* in the peering relationship. The *acceptor* must implement
+// an Identity and Access Management (IAM) policy that gives the requestor permission
+// to connect to RPCs in the acceptor's compartment. Without that permission, this
+// operation will fail. For more information, see
+// VCN Peering (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/VCNpeering.htm).
+func (client VirtualNetworkClient) ConnectRemotePeeringConnections(ctx context.Context, request ConnectRemotePeeringConnectionsRequest) (response ConnectRemotePeeringConnectionsResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/remotePeeringConnections/{remotePeeringConnectionId}/actions/connect", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
 // CreateCpe Creates a new virtual Customer-Premises Equipment (CPE) object in the specified compartment. For
 // more information, see IPSec VPNs (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/managingIPsec.htm).
 // For the purposes of access control, you must provide the OCID of the compartment where you want
@@ -410,6 +434,24 @@ func (client VirtualNetworkClient) CreatePrivateIp(ctx context.Context, request 
 // succeeded.
 func (client VirtualNetworkClient) CreatePublicIp(ctx context.Context, request CreatePublicIpRequest) (response CreatePublicIpResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/publicIps", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// CreateRemotePeeringConnection Creates a new remote peering connection (RPC) for the specified DRG.
+func (client VirtualNetworkClient) CreateRemotePeeringConnection(ctx context.Context, request CreateRemotePeeringConnectionRequest) (response CreateRemotePeeringConnectionResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/remotePeeringConnections", request)
 	if err != nil {
 		return
 	}
@@ -824,6 +866,26 @@ func (client VirtualNetworkClient) DeletePrivateIp(ctx context.Context, request 
 // UpdatePublicIp.
 func (client VirtualNetworkClient) DeletePublicIp(ctx context.Context, request DeletePublicIpRequest) (response DeletePublicIpResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/publicIps/{publicIpId}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// DeleteRemotePeeringConnection Deletes the remote peering connection (RPC).
+// This is an asynchronous operation; the RPC's `lifecycleState` changes to TERMINATING temporarily
+// until the RPC is completely removed.
+func (client VirtualNetworkClient) DeleteRemotePeeringConnection(ctx context.Context, request DeleteRemotePeeringConnectionRequest) (response DeleteRemotePeeringConnectionResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/remotePeeringConnections/{remotePeeringConnectionId}", request)
 	if err != nil {
 		return
 	}
@@ -1292,6 +1354,24 @@ func (client VirtualNetworkClient) GetPublicIpByPrivateIpId(ctx context.Context,
 	return
 }
 
+// GetRemotePeeringConnection Get the specified remote peering connection's information.
+func (client VirtualNetworkClient) GetRemotePeeringConnection(ctx context.Context, request GetRemotePeeringConnectionRequest) (response GetRemotePeeringConnectionResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/remotePeeringConnections/{remotePeeringConnectionId}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
 // GetRouteTable Gets the specified route table's information.
 func (client VirtualNetworkClient) GetRouteTable(ctx context.Context, request GetRouteTableRequest) (response GetRouteTableResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/routeTables/{rtId}", request)
@@ -1388,6 +1468,25 @@ func (client VirtualNetworkClient) GetVirtualCircuit(ctx context.Context, reques
 // operation.
 func (client VirtualNetworkClient) GetVnic(ctx context.Context, request GetVnicRequest) (response GetVnicResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/vnics/{vnicId}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// ListAllowedPeerRegionsForRemotePeering Lists the regions that support remote VCN peering (which is peering across regions).
+// For more information, see VCN Peering (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/VCNpeering.htm).
+func (client VirtualNetworkClient) ListAllowedPeerRegionsForRemotePeering(ctx context.Context, request ListAllowedPeerRegionsForRemotePeeringRequest) (response ListAllowedPeerRegionsForRemotePeeringResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/allowedPeerRegionsForRemotePeering", request)
 	if err != nil {
 		return
 	}
@@ -1689,6 +1788,25 @@ func (client VirtualNetworkClient) ListPrivateIps(ctx context.Context, request L
 // is always in the same Availability Domain and compartment as the private IP it's assigned to.
 func (client VirtualNetworkClient) ListPublicIps(ctx context.Context, request ListPublicIpsRequest) (response ListPublicIpsResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/publicIps", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// ListRemotePeeringConnections Lists the remote peering connections (RPCs) for the specified DRG and compartment
+// (the RPC's compartment).
+func (client VirtualNetworkClient) ListRemotePeeringConnections(ctx context.Context, request ListRemotePeeringConnectionsRequest) (response ListRemotePeeringConnectionsResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/remotePeeringConnections", request)
 	if err != nil {
 		return
 	}
@@ -2063,6 +2181,24 @@ func (client VirtualNetworkClient) UpdatePrivateIp(ctx context.Context, request 
 // Public IP Addresses (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Tasks/managingpublicIPs.htm).
 func (client VirtualNetworkClient) UpdatePublicIp(ctx context.Context, request UpdatePublicIpRequest) (response UpdatePublicIpResponse, err error) {
 	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/publicIps/{publicIpId}", request)
+	if err != nil {
+		return
+	}
+
+	httpResponse, err := client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return
+}
+
+// UpdateRemotePeeringConnection Updates the specified remote peering connection (RPC).
+func (client VirtualNetworkClient) UpdateRemotePeeringConnection(ctx context.Context, request UpdateRemotePeeringConnectionRequest) (response UpdateRemotePeeringConnectionResponse, err error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPut, "/remotePeeringConnections/{remotePeeringConnectionId}", request)
 	if err != nil {
 		return
 	}
