@@ -19,7 +19,7 @@ import (
 // ExampleTagging shows the sample for tag and tagNamespace operations: create, update, get, list etc...
 func ExampleTagging() {
 	c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	ctx := context.Background()
 	tagNamespaceID := createTagNamespace(ctx, c, common.String("GOSDKSampleTagNamespaceName"))
@@ -35,7 +35,7 @@ func ExampleTagging() {
 		TagName:        tagName,
 	}
 	_, err = c.GetTag(ctx, getTagReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("get tag")
 
 	// list tags, list operations are paginated and take a "page" parameter
@@ -45,7 +45,7 @@ func ExampleTagging() {
 		TagNamespaceId: tagNamespaceID,
 	}
 	_, err = c.ListTags(ctx, listTagReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("list tag")
 
 	// get tag namespace
@@ -53,7 +53,7 @@ func ExampleTagging() {
 		TagNamespaceId: tagNamespaceID,
 	}
 	_, err = c.GetTagNamespace(ctx, getTagNamespaceReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("get tag namespace")
 
 	// list tag namespaces
@@ -61,7 +61,7 @@ func ExampleTagging() {
 		CompartmentId: helpers.CompartmentID(),
 	}
 	_, err = c.ListTagNamespaces(ctx, listTagNamespaceReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("list tag namespace")
 
 	// retire a tag namespace by using the update tag namespace operation
@@ -73,7 +73,7 @@ func ExampleTagging() {
 	}
 
 	_, err = c.UpdateTagNamespace(ctx, updateTagNamespaceReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("tag namespace retired")
 
 	// retire a tag by using the update tag operation
@@ -85,7 +85,7 @@ func ExampleTagging() {
 		},
 	}
 	_, err = c.UpdateTag(ctx, updateTagReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("tag retired")
 
 	// reactivate a tag namespace
@@ -98,7 +98,7 @@ func ExampleTagging() {
 	}
 
 	_, err = c.UpdateTagNamespace(ctx, updateTagNamespaceReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("tag namespace reactivated")
 
 	// Output:
@@ -117,7 +117,7 @@ func ExampleTagging() {
 func ExampleFreeformAndDefinedTag() {
 	// create a tag namespace and two tags
 	identityClient, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	ctx := context.Background()
 
@@ -148,7 +148,7 @@ func ExampleFreeformAndDefinedTag() {
 	}
 
 	coreClient, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(clerr)
+	helpers.FatalIfError(clerr)
 
 	// create a new VCN with tags
 	createVCNReq := core.CreateVcnRequest{
@@ -171,7 +171,7 @@ func ExampleFreeformAndDefinedTag() {
 		resp, err = coreClient.CreateVcn(ctx, createVCNReq)
 	}
 
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("VCN created with tags")
 
 	// replace the tag
@@ -189,14 +189,14 @@ func ExampleFreeformAndDefinedTag() {
 		},
 	}
 	_, err = coreClient.UpdateVcn(ctx, updateVCNReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("VCN tag updated")
 
 	// remove the tag from VCN
 	updateVCNReq.FreeformTags = nil
 	updateVCNReq.DefinedTags = nil
 	_, err = coreClient.UpdateVcn(ctx, updateVCNReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("VCN tag removed")
 
 	defer func() {
@@ -205,7 +205,7 @@ func ExampleFreeformAndDefinedTag() {
 		}
 
 		_, err = coreClient.DeleteVcn(ctx, request)
-		helpers.LogIfError(err)
+		helpers.FatalIfError(err)
 		fmt.Println("VCN deleted")
 	}()
 
@@ -226,7 +226,7 @@ func createTagNamespace(ctx context.Context, client identity.IdentityClient, nam
 	req.Description = common.String("GOSDK Sample TagNamespace Description")
 
 	resp, err := client.CreateTagNamespace(context.Background(), req)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	return resp.Id
 }
@@ -241,7 +241,7 @@ func createTag(ctx context.Context, client identity.IdentityClient, tagNamespace
 	req.FreeformTags = map[string]string{"GOSDKSampleTagKey": "GOSDKSampleTagValue"}
 
 	resp, err := client.CreateTag(context.Background(), req)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	return resp.Id
 }

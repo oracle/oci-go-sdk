@@ -23,7 +23,7 @@ func ExampleListUsers_RawRequest() {
 
 	// create request
 	request, err := http.NewRequest("GET", url, nil)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	// Set the Date header
 	request.Header.Set("Date", time.Now().UTC().Format(http.TimeFormat))
@@ -43,7 +43,7 @@ func ExampleListUsers_RawRequest() {
 
 	// Execute the request
 	resp, err := client.Do(request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	defer resp.Body.Close()
 

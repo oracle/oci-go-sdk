@@ -24,7 +24,7 @@ import (
 // ExampleObjectStorage_UploadFile shows how to create a bucket and upload a file
 func ExampleObjectStorage_UploadFile() {
 	c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(clerr)
+	helpers.FatalIfError(clerr)
 
 	ctx := context.Background()
 	bname := helpers.GetRandomString(8)
@@ -42,10 +42,10 @@ func ExampleObjectStorage_UploadFile() {
 
 	file, e := os.Open(filepath)
 	defer file.Close()
-	helpers.LogIfError(e)
+	helpers.FatalIfError(e)
 
 	e = putObject(ctx, c, namespace, bname, filename, int(filesize), file, nil)
-	helpers.LogIfError(e)
+	helpers.FatalIfError(e)
 	defer deleteObject(ctx, c, namespace, bname, filename)
 
 	// Output:
@@ -59,7 +59,7 @@ func ExampleObjectStorage_UploadFile() {
 func getNamespace(ctx context.Context, c objectstorage.ObjectStorageClient) string {
 	request := objectstorage.GetNamespaceRequest{}
 	r, err := c.GetNamespace(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("get namespace")
 	return *r.Value
 }
@@ -85,7 +85,7 @@ func deleteObject(ctx context.Context, c objectstorage.ObjectStorageClient, name
 		ObjectName:    &objectname,
 	}
 	_, err = c.DeleteObject(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("delete object")
 	return
 }
@@ -99,7 +99,7 @@ func createBucket(ctx context.Context, c objectstorage.ObjectStorageClient, name
 	request.Metadata = make(map[string]string)
 	request.PublicAccessType = objectstorage.CreateBucketDetailsPublicAccessTypeNopublicaccess
 	_, err := c.CreateBucket(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	fmt.Println("create bucket")
 }
@@ -110,7 +110,7 @@ func deleteBucket(ctx context.Context, c objectstorage.ObjectStorageClient, name
 		BucketName:    &name,
 	}
 	_, err = c.DeleteBucket(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	fmt.Println("delete bucket")
 	return
