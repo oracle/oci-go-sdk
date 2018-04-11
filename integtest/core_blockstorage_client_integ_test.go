@@ -39,18 +39,29 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotEmpty(t, resCreate.Id)
 
-	//Read
-	readTest := func() (interface{}, error) {
-		c, clerr := core.NewBlockstorageClientWithConfigurationProvider(configurationProvider())
-		failIfError(t, clerr)
-		request := core.GetVolumeRequest{}
-		request.VolumeId = resCreate.Id
-		resRead, err := c.GetVolume(context.Background(), request)
-		return resRead, err
+	requestGet := core.GetVolumeRequest{}
+	requestGet.VolumeId = resCreate.Id
+	requestGet.RequestMetadata = common.RequestMetadata{
+		RetryPolicy: &common.RetryPolicy{
+			MaximumNumberAttempts: 10,
+			ShouldRetryOperation: func(response common.OCIOperationResponse) bool {
+				if response.Error != nil {
+					return false
+				}
+				volResponse, ok := response.Response.(core.GetVolumeResponse)
+				if !ok {
+					return false
+				}
+				return !(volResponse.LifecycleState == core.VolumeLifecycleStateAvailable)
+			},
+			NextDuration: func(response common.OCIOperationResponse) time.Duration {
+				return 10 *time.Second
+			},
+		},
 	}
-	assert.NoError(t,
-		retryUntilTrueOrError(readTest,
-			checkLifecycleState(string(core.VolumeLifecycleStateAvailable)), tick, timeout))
+
+	c.GetVolume(context.Background(), requestGet)
+
 
 	//update
 	updateTest := func(t *testing.T) {
@@ -143,6 +154,7 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	failIfError(t, err)
+
 
 	//Read
 	readTest := func() (interface{}, error) {

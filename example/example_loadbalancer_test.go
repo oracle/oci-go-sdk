@@ -25,7 +25,7 @@ func ExampleCreateLoadbalancer() {
 
 	c, clerr := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(common.DefaultConfigProvider())
 	ctx := context.Background()
-	helpers.LogIfError(clerr)
+	helpers.FatalIfError(clerr)
 
 	request := loadbalancer.CreateLoadBalancerRequest{}
 	request.CompartmentId = helpers.CompartmentID()
@@ -36,11 +36,11 @@ func ExampleCreateLoadbalancer() {
 
 	// create a subnet in different availability domain
 	identityClient, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	req := identity.ListAvailabilityDomainsRequest{}
 	req.CompartmentId = helpers.CompartmentID()
 	response, err := identityClient.ListAvailabilityDomains(ctx, req)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	availableDomain := response.Items[1].Name
 
 	subnet2 := CreateOrGetSubnetWithDetails(common.String(subnetDisplayName2), common.String("10.0.1.0/24"), common.String("subnetdns2"), availableDomain)
@@ -54,7 +54,7 @@ func ExampleCreateLoadbalancer() {
 	request.ShapeName = shapes[0].Name
 
 	_, err = c.CreateLoadBalancer(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	fmt.Println("create load balancer complete")
 
@@ -82,7 +82,7 @@ func ExampleCreateLoadbalancer() {
 	}
 
 	// wait for instance lifecyle state become running
-	helpers.LogIfError(
+	helpers.FatalIfError(
 		helpers.RetryUntilTrueOrError(
 			loadBalancerLifecycleStateCheck,
 			helpers.CheckLifecycleState(string(loadbalancer.LoadBalancerLifecycleStateActive)),
@@ -97,7 +97,7 @@ func ExampleCreateLoadbalancer() {
 		deleteLoadbalancer(ctx, c, newCreatedLoadBalancer.Id)
 
 		client, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-		helpers.LogIfError(clerr)
+		helpers.FatalIfError(clerr)
 
 		vcnID := subnet1.VcnId
 		deleteSubnet(ctx, client, subnet1.Id)
@@ -127,7 +127,7 @@ func listLoadBalancerShapes(ctx context.Context, client loadbalancer.LoadBalance
 	}
 
 	r, err := client.ListShapes(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	return r.Items
 }
 
@@ -139,7 +139,7 @@ func listLoadBalancers(ctx context.Context, client loadbalancer.LoadBalancerClie
 	}
 
 	r, err := client.ListLoadBalancers(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	return r.Items
 }
 
@@ -149,7 +149,7 @@ func deleteLoadbalancer(ctx context.Context, client loadbalancer.LoadBalancerCli
 	}
 
 	_, err := client.DeleteLoadBalancer(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("deleting load balancer")
 
 	// get loadbalancer
@@ -177,7 +177,7 @@ func deleteLoadbalancer(ctx context.Context, client loadbalancer.LoadBalancerCli
 	}
 
 	// wait for load balancer been deleted
-	helpers.LogIfError(
+	helpers.FatalIfError(
 		helpers.RetryUntilTrueOrError(
 			loadBalancerLifecycleStateCheck,
 			helpers.CheckLifecycleState(string(loadbalancer.LoadBalancerLifecycleStateDeleted)),

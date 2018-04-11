@@ -60,149 +60,317 @@ func (client *EmailClient) ConfigurationProvider() *common.ConfigurationProvider
 
 // CreateSender Creates a sender for a tenancy in a given compartment.
 func (client EmailClient) CreateSender(ctx context.Context, request CreateSenderRequest) (response CreateSenderResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/senders", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.createSender, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(CreateSenderResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into CreateSenderResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// createSender implements the OCIOperation interface (enables retrying operations)
+func (client EmailClient) createSender(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/senders")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateSenderResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // CreateSuppression Adds recipient email addresses to the suppression list for a tenancy.
 func (client EmailClient) CreateSuppression(ctx context.Context, request CreateSuppressionRequest) (response CreateSuppressionResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodPost, "/suppressions", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.createSuppression, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(CreateSuppressionResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into CreateSuppressionResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// createSuppression implements the OCIOperation interface (enables retrying operations)
+func (client EmailClient) createSuppression(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/suppressions")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateSuppressionResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // DeleteSender Deletes an approved sender for a tenancy in a given compartment for a
 // provided `senderId`.
 func (client EmailClient) DeleteSender(ctx context.Context, request DeleteSenderRequest) (response DeleteSenderResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/senders/{senderId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteSender, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(DeleteSenderResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteSenderResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// deleteSender implements the OCIOperation interface (enables retrying operations)
+func (client EmailClient) deleteSender(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/senders/{senderId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteSenderResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // DeleteSuppression Removes a suppressed recipient email address from the suppression list
 // for a tenancy in a given compartment for a provided `suppressionId`.
 func (client EmailClient) DeleteSuppression(ctx context.Context, request DeleteSuppressionRequest) (response DeleteSuppressionResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodDelete, "/suppressions/{suppressionId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteSuppression, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(DeleteSuppressionResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteSuppressionResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// deleteSuppression implements the OCIOperation interface (enables retrying operations)
+func (client EmailClient) deleteSuppression(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/suppressions/{suppressionId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteSuppressionResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // GetSender Gets an approved sender for a given `senderId`.
 func (client EmailClient) GetSender(ctx context.Context, request GetSenderRequest) (response GetSenderResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/senders/{senderId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getSender, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(GetSenderResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetSenderResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// getSender implements the OCIOperation interface (enables retrying operations)
+func (client EmailClient) getSender(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/senders/{senderId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetSenderResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // GetSuppression Gets the details of a suppressed recipient email address for a given
 // `suppressionId`. Each suppression is given a unique OCID.
 func (client EmailClient) GetSuppression(ctx context.Context, request GetSuppressionRequest) (response GetSuppressionResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/suppressions/{suppressionId}", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getSuppression, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(GetSuppressionResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetSuppressionResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// getSuppression implements the OCIOperation interface (enables retrying operations)
+func (client EmailClient) getSuppression(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/suppressions/{suppressionId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetSuppressionResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // ListSenders Gets a collection of approved sender email addresses and sender IDs.
 func (client EmailClient) ListSenders(ctx context.Context, request ListSendersRequest) (response ListSendersResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/senders", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listSenders, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(ListSendersResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListSendersResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// listSenders implements the OCIOperation interface (enables retrying operations)
+func (client EmailClient) listSenders(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/senders")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListSendersResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }
 
 // ListSuppressions Gets a list of suppressed recipient email addresses for a user. The
 // `compartmentId` for suppressions must be a tenancy OCID. The returned list
 // is sorted by creation time in descending order.
 func (client EmailClient) ListSuppressions(ctx context.Context, request ListSuppressionsRequest) (response ListSuppressionsResponse, err error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(http.MethodGet, "/suppressions", request)
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listSuppressions, policy)
 	if err != nil {
 		return
 	}
+	if convertedResponse, ok := ociResponse.(ListSuppressionsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListSuppressionsResponse")
+	}
+	return
+}
 
-	httpResponse, err := client.Call(ctx, &httpRequest)
+// listSuppressions implements the OCIOperation interface (enables retrying operations)
+func (client EmailClient) listSuppressions(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/suppressions")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListSuppressionsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
-		return
+		return response, err
 	}
 
 	err = common.UnmarshalResponse(httpResponse, &response)
-	return
+	return response, err
 }

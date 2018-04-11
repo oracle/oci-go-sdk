@@ -1,4 +1,3 @@
-
 /*
 This is the official Go SDK for Oracle Cloud Infrastructure
 
@@ -249,7 +248,7 @@ Please refer to this link: https://github.com/oracle/oci-go-sdk#help
 
 
 
- */
+*/
 package oci
 
 //go:generate go run cmd/genver/main.go cmd/genver/version_template.go --output common/version.go
