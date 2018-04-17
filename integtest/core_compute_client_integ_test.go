@@ -249,7 +249,7 @@ func TestComputeClient_LaunchInstance(t *testing.T) {
 
 	// search image by display name to make integration test running more relaible
 	// i.e. ServiceLimitExeceed error etc...
-	images := listImagesByDisplayName(t, common.String("Oracle-Linux-7.4-2018.01.20-0"))
+	images := listImagesByDisplayName(t, common.String(testImageDisplayName))
 	assert.NotEmpty(t, images)
 	request.ImageId = images[0].Id
 
