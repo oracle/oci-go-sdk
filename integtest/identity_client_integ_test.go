@@ -454,7 +454,6 @@ func TestIdentityClient_CreateOrResetUIPassword(t *testing.T) {
 }
 
 func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
-	t.Skip("disable this test case which is not stable until we move to new tenant")
 	createDesc := "Go SDK Test Swift Password - CREATED"
 	updateDesc := "Go SDK Test Swift Password - UPDATED"
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
