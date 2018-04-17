@@ -62,21 +62,12 @@ func (client *VirtualNetworkClient) ConfigurationProvider() *common.Configuratio
 // Use this operation (and not UpdateVirtualCircuit)
 // to add prefixes to the virtual circuit. Oracle must verify the customer's ownership
 // of each prefix before traffic for that prefix will flow across the virtual circuit.
-func (client VirtualNetworkClient) BulkAddVirtualCircuitPublicPrefixes(ctx context.Context, request BulkAddVirtualCircuitPublicPrefixesRequest) (response BulkAddVirtualCircuitPublicPrefixesResponse, err error) {
-	var ociResponse common.OCIResponse
+func (client VirtualNetworkClient) BulkAddVirtualCircuitPublicPrefixes(ctx context.Context, request BulkAddVirtualCircuitPublicPrefixesRequest) (err error) {
 	policy := common.NoRetryPolicy()
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
-	ociResponse, err = common.Retry(ctx, request, client.bulkAddVirtualCircuitPublicPrefixes, policy)
-	if err != nil {
-		return
-	}
-	if convertedResponse, ok := ociResponse.(BulkAddVirtualCircuitPublicPrefixesResponse); ok {
-		response = convertedResponse
-	} else {
-		err = fmt.Errorf("failed to convert OCIResponse into BulkAddVirtualCircuitPublicPrefixesResponse")
-	}
+	_, err = common.Retry(ctx, request, client.bulkAddVirtualCircuitPublicPrefixes, policy)
 	return
 }
 
@@ -104,21 +95,12 @@ func (client VirtualNetworkClient) bulkAddVirtualCircuitPublicPrefixes(ctx conte
 // Use this operation (and not UpdateVirtualCircuit)
 // to remove prefixes from the virtual circuit. When the virtual circuit's state switches
 // back to PROVISIONED, Oracle stops advertising the specified prefixes across the connection.
-func (client VirtualNetworkClient) BulkDeleteVirtualCircuitPublicPrefixes(ctx context.Context, request BulkDeleteVirtualCircuitPublicPrefixesRequest) (response BulkDeleteVirtualCircuitPublicPrefixesResponse, err error) {
-	var ociResponse common.OCIResponse
+func (client VirtualNetworkClient) BulkDeleteVirtualCircuitPublicPrefixes(ctx context.Context, request BulkDeleteVirtualCircuitPublicPrefixesRequest) (err error) {
 	policy := common.NoRetryPolicy()
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
-	ociResponse, err = common.Retry(ctx, request, client.bulkDeleteVirtualCircuitPublicPrefixes, policy)
-	if err != nil {
-		return
-	}
-	if convertedResponse, ok := ociResponse.(BulkDeleteVirtualCircuitPublicPrefixesResponse); ok {
-		response = convertedResponse
-	} else {
-		err = fmt.Errorf("failed to convert OCIResponse into BulkDeleteVirtualCircuitPublicPrefixesResponse")
-	}
+	_, err = common.Retry(ctx, request, client.bulkDeleteVirtualCircuitPublicPrefixes, policy)
 	return
 }
 
