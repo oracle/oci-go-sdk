@@ -23,6 +23,9 @@ type ListDbVersionsRequest struct {
 	// If provided, filters the results to the set of database versions which are supported for the given shape.
 	DbSystemShape *string `mandatory:"false" contributesTo:"query" name:"dbSystemShape"`
 
+	// The DB system OCID. If provided, filters the results to the set of database versions which are supported for the DB system.
+	DbSystemId *string `mandatory:"false" contributesTo:"query" name:"dbSystemId"`
+
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
 	RequestMetadata common.RequestMetadata
