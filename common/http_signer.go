@@ -46,7 +46,7 @@ var (
 	defaultGenericHeaders    = []string{"date", "(request-target)", "host"}
 	defaultBodyHeaders       = []string{"content-length", "content-type", "x-content-sha256"}
 	defaultBodyHashPredicate = func(r *http.Request) bool {
-		return r.Method == http.MethodPost || r.Method == http.MethodPut
+		return r.Method == http.MethodPost || r.Method == http.MethodPut || r.Method == http.MethodPatch
 	}
 )
 
