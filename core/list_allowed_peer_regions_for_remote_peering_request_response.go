@@ -10,10 +10,24 @@ import (
 
 // ListAllowedPeerRegionsForRemotePeeringRequest wrapper for the ListAllowedPeerRegionsForRemotePeering operation
 type ListAllowedPeerRegionsForRemotePeeringRequest struct {
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request ListAllowedPeerRegionsForRemotePeeringRequest) String() string {
 	return common.PointerString(request)
+}
+
+// HTTPRequest implements the OCIRequest interface
+func (request ListAllowedPeerRegionsForRemotePeeringRequest) HTTPRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
+func (request ListAllowedPeerRegionsForRemotePeeringRequest) RetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // ListAllowedPeerRegionsForRemotePeeringResponse wrapper for the ListAllowedPeerRegionsForRemotePeering operation
@@ -32,4 +46,9 @@ type ListAllowedPeerRegionsForRemotePeeringResponse struct {
 
 func (response ListAllowedPeerRegionsForRemotePeeringResponse) String() string {
 	return common.PointerString(response)
+}
+
+// HTTPResponse implements the OCIResponse interface
+func (response ListAllowedPeerRegionsForRemotePeeringResponse) HTTPResponse() *http.Response {
+	return response.RawResponse
 }

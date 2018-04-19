@@ -17,7 +17,7 @@ import (
 // ExampleListShapes_Pagination demostrate how to use page parameter
 func ExampleListShapes_Pagination() {
 	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	request := core.ListShapesRequest{
 		CompartmentId: helpers.CompartmentID(),
@@ -31,7 +31,7 @@ func ExampleListShapes_Pagination() {
 	}
 
 	for r, err := listShapesFunc(request); ; r, err = listShapesFunc(request) {
-		helpers.LogIfError(err)
+		helpers.FatalIfError(err)
 
 		log.Printf("list shapes returns: %v", r.Items)
 

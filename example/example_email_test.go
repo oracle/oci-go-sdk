@@ -22,7 +22,7 @@ const (
 
 func ExampleEmailSender() {
 	client, err := email.NewEmailClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	ctx := context.Background()
 
@@ -34,7 +34,7 @@ func ExampleEmailSender() {
 	}
 
 	createResp, err := client.CreateSender(ctx, createReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("email sender created")
 
 	getReq := email.GetSenderRequest{
@@ -42,7 +42,7 @@ func ExampleEmailSender() {
 	}
 
 	getResp, err := client.GetSender(ctx, getReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("get email sender")
 	log.Printf("get email sender with email address %s\n", *getResp.EmailAddress)
 
@@ -55,7 +55,7 @@ func ExampleEmailSender() {
 	}
 
 	listResp, err := client.ListSenders(ctx, listReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	log.Printf("list email senders return %v results\n", len(listResp.Items))
 	fmt.Println("list email senders")
 
@@ -65,7 +65,7 @@ func ExampleEmailSender() {
 		}
 
 		_, err = client.DeleteSender(ctx, deleteReq)
-		helpers.LogIfError(err)
+		helpers.FatalIfError(err)
 		fmt.Println("email sender deleted")
 	}()
 

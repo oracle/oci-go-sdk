@@ -9,7 +9,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"time"
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/core"
@@ -31,7 +30,7 @@ const (
 // after execute this sample code, otherwise, you will be charged for the running instance
 func ExampleLaunchInstance() {
 	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	ctx := context.Background()
 
 	// create the launch instance request
@@ -46,47 +45,49 @@ func ExampleLaunchInstance() {
 	request.SubnetId = subnet.Id
 
 	// get a image
-	image := listImages(ctx, c)[0]
+	image := listImages(ctx, c)[30]
 	fmt.Println("list images")
 	request.ImageId = image.Id
 
 	// get all the shapes and filter the list by compatibility with the image
 	shapes := listShapes(ctx, c, request.ImageId)
 	fmt.Println("list shapes")
-	request.Shape = shapes[0].Shape
+	request.Shape = shapes[1].Shape
+
+	// default retry policy will retry on non-200 response
+	request.RequestMetadata = helpers.GetRequestMetadataWithDefaultRetryPolicy()
 
 	createResp, err := c.LaunchInstance(ctx, request)
-	helpers.LogIfError(err)
-	fmt.Println("instance created")
+	helpers.FatalIfError(err)
 
-	// get new created instance
-	getInstance := func() (interface{}, error) {
-		request := core.GetInstanceRequest{
-			InstanceId: createResp.Instance.Id,
+	fmt.Println("launching instance")
+
+	// should retry condition check which returns a bool value indicating whether to do retry or not
+	// it checks the lifecycle status equals to Running or not for this case
+	shouldRetryFunc := func(r common.OCIOperationResponse) bool {
+		if converted, ok := r.Response.(core.GetInstanceResponse); ok {
+			return converted.LifecycleState != core.InstanceLifecycleStateRunning
 		}
-
-		readResp, err := c.GetInstance(ctx, request)
-
-		if err != nil {
-			return nil, err
-		}
-
-		return readResp, err
+		return true
 	}
 
-	// wait for instance lifecyle become running
-	helpers.LogIfError(
-		helpers.RetryUntilTrueOrError(
-			getInstance,
-			helpers.CheckLifecycleState(string(core.InstanceLifecycleStateRunning)),
-			time.Tick(10*time.Second),
-			time.After((5 * time.Minute))))
+	// create get instance request with a retry policy which takes a function
+	// to determine shouldRetry or not
+	pollingGetRequest := core.GetInstanceRequest{
+		InstanceId:      createResp.Instance.Id,
+		RequestMetadata: helpers.GetRequestMetadataWithCustomizedRetryPolicy(shouldRetryFunc),
+	}
+
+	_, pollError := c.GetInstance(ctx, pollingGetRequest)
+	helpers.FatalIfError(pollError)
+
+	fmt.Println("instance launched")
 
 	defer func() {
 		terminateInstance(ctx, c, createResp.Id)
 
 		client, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-		helpers.LogIfError(clerr)
+		helpers.FatalIfError(clerr)
 
 		vcnID := subnet.VcnId
 		deleteSubnet(ctx, client, subnet.Id)
@@ -97,7 +98,8 @@ func ExampleLaunchInstance() {
 	// subnet created
 	// list images
 	// list shapes
-	// instance created
+	// launching instance
+	// instance launched
 	// terminating instance
 	// instance terminated
 	// deleteing subnet
@@ -122,17 +124,17 @@ func ExampleCreateImageDetails_Polymorphic() {
 	request.ImageSourceDetails = sourceDetails
 
 	c, err := core.NewComputeClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	_, err = c.CreateImage(context.Background(), request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	fmt.Println("image created")
 }
 
 // CreateOrGetVcn either creates a new Virtual Cloud Network (VCN) or get the one already exist
 func CreateOrGetVcn() core.Vcn {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(clerr)
+	helpers.FatalIfError(clerr)
 	ctx := context.Background()
 
 	vcnItems := listVcns(ctx, c)
@@ -152,7 +154,7 @@ func CreateOrGetVcn() core.Vcn {
 	request.DnsLabel = common.String("vcndns")
 
 	r, err := c.CreateVcn(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	return r.Vcn
 }
 
@@ -169,7 +171,7 @@ func CreateOrGetSubnet() core.Subnet {
 // with detail info
 func CreateOrGetSubnetWithDetails(displayName *string, cidrBlock *string, dnsLabel *string, availableDomain *string) core.Subnet {
 	c, clerr := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(clerr)
+	helpers.FatalIfError(clerr)
 	ctx := context.Background()
 
 	subnets := listSubnets(ctx, c)
@@ -193,34 +195,30 @@ func CreateOrGetSubnetWithDetails(displayName *string, cidrBlock *string, dnsLab
 	request.CidrBlock = cidrBlock
 	request.DisplayName = displayName
 	request.DnsLabel = dnsLabel
+	request.RequestMetadata = helpers.GetRequestMetadataWithDefaultRetryPolicy()
 
 	vcn := CreateOrGetVcn()
 	request.VcnId = vcn.Id
 
 	r, err := c.CreateSubnet(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
-	getSubnet := func() (interface{}, error) {
-		getReq := core.GetSubnetRequest{
-			SubnetId: r.Id,
+	// retry condition check, stop unitl return true
+	pollUntilAvailable := func(r common.OCIOperationResponse) bool {
+		if converted, ok := r.Response.(core.CreateSubnetResponse); ok {
+			return converted.LifecycleState != core.SubnetLifecycleStateAvailable
 		}
+		return true
+	}
 
-		getResp, err := c.GetSubnet(ctx, getReq)
-
-		if err != nil {
-			return nil, err
-		}
-
-		return getResp, nil
+	pollGetRequest := core.GetSubnetRequest{
+		SubnetId:        r.Id,
+		RequestMetadata: helpers.GetRequestMetadataWithCustomizedRetryPolicy(pollUntilAvailable),
 	}
 
 	// wait for lifecyle become running
-	helpers.LogIfError(
-		helpers.RetryUntilTrueOrError(
-			getSubnet,
-			helpers.CheckLifecycleState(string(core.SubnetLifecycleStateAvailable)),
-			time.Tick(10*time.Second),
-			time.After((5 * time.Minute))))
+	_, pollErr := c.GetSubnet(ctx, pollGetRequest)
+	helpers.FatalIfError(pollErr)
 
 	// update the security rules
 	getReq := core.GetSecurityListRequest{
@@ -228,7 +226,7 @@ func CreateOrGetSubnetWithDetails(displayName *string, cidrBlock *string, dnsLab
 	}
 
 	getResp, err := c.GetSecurityList(ctx, getReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	// this security rule allows remote control the instance
 	portRange := core.PortRange{
@@ -251,7 +249,7 @@ func CreateOrGetSubnetWithDetails(displayName *string, cidrBlock *string, dnsLab
 	updateReq.IngressSecurityRules = newRules
 
 	_, err = c.UpdateSecurityList(ctx, updateReq)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	return r.Subnet
 }
@@ -262,7 +260,7 @@ func listVcns(ctx context.Context, c core.VirtualNetworkClient) []core.Vcn {
 	}
 
 	r, err := c.ListVcns(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	return r.Items
 }
 
@@ -275,7 +273,7 @@ func listSubnets(ctx context.Context, c core.VirtualNetworkClient) []core.Subnet
 	}
 
 	r, err := c.ListSubnets(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 	return r.Items
 }
 
@@ -286,7 +284,7 @@ func listImages(ctx context.Context, c core.ComputeClient) []core.Image {
 	}
 
 	r, err := c.ListImages(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	return r.Items
 }
@@ -299,7 +297,7 @@ func listShapes(ctx context.Context, c core.ComputeClient, imageID *string) []co
 	}
 
 	r, err := c.ListShapes(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	if r.Items == nil || len(r.Items) == 0 {
 		log.Fatalln("Invalid response from ListShapes")
@@ -310,120 +308,110 @@ func listShapes(ctx context.Context, c core.ComputeClient, imageID *string) []co
 
 func terminateInstance(ctx context.Context, c core.ComputeClient, id *string) {
 	request := core.TerminateInstanceRequest{
-		InstanceId: id,
+		InstanceId:      id,
+		RequestMetadata: helpers.GetRequestMetadataWithDefaultRetryPolicy(),
 	}
 
 	_, err := c.TerminateInstance(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	fmt.Println("terminating instance")
 
-	// get new created instance
-	getInstance := func() (interface{}, error) {
-		request := core.GetInstanceRequest{
-			InstanceId: id,
+	// should retry condition check which returns a bool value indicating whether to do retry or not
+	// it checks the lifecycle status equals to Terminated or not for this case
+	shouldRetryFunc := func(r common.OCIOperationResponse) bool {
+		if converted, ok := r.Response.(core.GetInstanceResponse); ok {
+			return converted.LifecycleState != core.InstanceLifecycleStateTerminated
 		}
-
-		readResp, err := c.GetInstance(ctx, request)
-
-		if err != nil {
-			if readResp.RawResponse.StatusCode == 404 {
-				// cannot find resources which means it's been deleted
-				return core.Instance{LifecycleState: core.InstanceLifecycleStateTerminated}, nil
-			}
-			return nil, err
-		}
-
-		return readResp, err
+		return true
 	}
 
-	// wait for instance lifecyle become terminated
-	helpers.LogIfError(
-		helpers.RetryUntilTrueOrError(
-			getInstance,
-			helpers.CheckLifecycleState(string(core.InstanceLifecycleStateTerminated)),
-			time.Tick(10*time.Second),
-			time.After((5 * time.Minute))))
+	pollGetRequest := core.GetInstanceRequest{
+		InstanceId:      id,
+		RequestMetadata: helpers.GetRequestMetadataWithCustomizedRetryPolicy(shouldRetryFunc),
+	}
 
+	_, pollErr := c.GetInstance(ctx, pollGetRequest)
+	helpers.FatalIfError(pollErr)
 	fmt.Println("instance terminated")
-
 }
 
 func deleteVcn(ctx context.Context, c core.VirtualNetworkClient, id *string) {
 	request := core.DeleteVcnRequest{
-		VcnId: id,
+		VcnId:           id,
+		RequestMetadata: helpers.GetRequestMetadataWithDefaultRetryPolicy(),
 	}
 
 	fmt.Println("deleteing VCN")
 	_, err := c.DeleteVcn(ctx, request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
-	getVcn := func() (interface{}, error) {
-		getReq := core.GetVcnRequest{
-			VcnId: id,
+	// should retry condition check which returns a bool value indicating whether to do retry or not
+	// it checks the lifecycle status equals to Terminated or not for this case
+	shouldRetryFunc := func(r common.OCIOperationResponse) bool {
+		if serviceError, ok := common.IsServiceError(r.Error); ok && serviceError.GetHTTPStatusCode() == 404 {
+			// resource been deleted, stop retry
+			return false
 		}
 
-		getResp, err := c.GetVcn(ctx, getReq)
-
-		if err != nil {
-			if getResp.RawResponse.StatusCode == 404 {
-				// resource cannot found which means it's been deleted in this case
-				return core.Vcn{LifecycleState: core.VcnLifecycleStateTerminated}, nil
-			}
-
-			return nil, err
+		if converted, ok := r.Response.(core.GetVcnResponse); ok {
+			return converted.LifecycleState != core.VcnLifecycleStateTerminated
 		}
-
-		return getResp, nil
+		return true
 	}
 
-	// wait for lifecyle become terminated
-	helpers.LogIfError(
-		helpers.RetryUntilTrueOrError(
-			getVcn,
-			helpers.CheckLifecycleState(string(core.VcnLifecycleStateTerminated)),
-			time.Tick(10*time.Second),
-			time.After((5 * time.Minute))))
+	pollGetRequest := core.GetVcnRequest{
+		VcnId:           id,
+		RequestMetadata: helpers.GetRequestMetadataWithCustomizedRetryPolicy(shouldRetryFunc),
+	}
 
+	_, pollErr := c.GetVcn(ctx, pollGetRequest)
+	if serviceError, ok := common.IsServiceError(pollErr); !ok ||
+		(ok && serviceError.GetHTTPStatusCode() != 404) {
+		// fail if the error is not service error or
+		// if the error is service error and status code not equals to 404
+		helpers.FatalIfError(pollErr)
+	}
 	fmt.Println("VCN deleted")
 }
 
 func deleteSubnet(ctx context.Context, c core.VirtualNetworkClient, id *string) {
 	request := core.DeleteSubnetRequest{
-		SubnetId: id,
+		SubnetId:        id,
+		RequestMetadata: helpers.GetRequestMetadataWithDefaultRetryPolicy(),
 	}
 
 	_, err := c.DeleteSubnet(context.Background(), request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	fmt.Println("deleteing subnet")
 
-	getSubnet := func() (interface{}, error) {
-		getReq := core.GetSubnetRequest{
-			SubnetId: id,
+	// should retry condition check which returns a bool value indicating whether to do retry or not
+	// it checks the lifecycle status equals to Terminated or not for this case
+	shouldRetryFunc := func(r common.OCIOperationResponse) bool {
+		if serviceError, ok := common.IsServiceError(r.Error); ok && serviceError.GetHTTPStatusCode() == 404 {
+			// resource been deleted
+			return false
 		}
 
-		getResp, err := c.GetSubnet(ctx, getReq)
-
-		if err != nil {
-			if getResp.RawResponse.StatusCode == 404 {
-				// resource cannot found which means it's been deleted in this case
-				return core.Subnet{LifecycleState: core.SubnetLifecycleStateTerminated}, nil
-			}
-
-			return nil, err
+		if converted, ok := r.Response.(core.GetSubnetResponse); ok {
+			return converted.LifecycleState != core.SubnetLifecycleStateTerminated
 		}
-
-		return getResp, nil
+		return true
 	}
 
-	// wait for lifecyle become terminated
-	helpers.LogIfError(
-		helpers.RetryUntilTrueOrError(
-			getSubnet,
-			helpers.CheckLifecycleState(string(core.SubnetLifecycleStateTerminated)),
-			time.Tick(10*time.Second),
-			time.After((5 * time.Minute))))
+	pollGetRequest := core.GetSubnetRequest{
+		SubnetId:        id,
+		RequestMetadata: helpers.GetRequestMetadataWithCustomizedRetryPolicy(shouldRetryFunc),
+	}
+
+	_, pollErr := c.GetSubnet(ctx, pollGetRequest)
+	if serviceError, ok := common.IsServiceError(pollErr); !ok ||
+		(ok && serviceError.GetHTTPStatusCode() != 404) {
+		// fail if the error is not service error or
+		// if the error is service error and status code not equals to 404
+		helpers.FatalIfError(pollErr)
+	}
 
 	fmt.Println("subnet deleted")
 }

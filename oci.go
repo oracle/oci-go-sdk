@@ -1,4 +1,3 @@
-
 /*
 This is the official Go SDK for Oracle Cloud Infrastructure
 
@@ -195,6 +194,12 @@ requests, responses and potential errors when (un)marshalling request and respon
 
 To expose debugging logs, set the environment variable "OCI_GO_SDK_DEBUG" to "1", or some other non empty string.
 
+Retry
+
+Sometimes you may need to wait until an attribute of a resource, such as an instance or a VCN, reaches a certain state.
+An example of this would be launching an instance and then waiting for the instance to become available, or waiting until a subnet in a VCN has been terminated.
+You might also want to retry the same operation again if there's network issue etc...
+This can be accomplished by using the RequestMetadata.RetryPolicy. You can find the examples here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_retry_test.go
 
 Using the SDK with a proxy server
 
@@ -249,7 +254,7 @@ Please refer to this link: https://github.com/oracle/oci-go-sdk#help
 
 
 
- */
+*/
 package oci
 
 //go:generate go run cmd/genver/main.go cmd/genver/version_template.go --output common/version.go
