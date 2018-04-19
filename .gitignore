@@ -10,3 +10,4 @@
 .vscode/*
 target/
 bin/
+temp/

@@ -91,7 +91,7 @@ func TestOCIRequestSigner_HTTPRequest(t *testing.T) {
 	r, err := http.NewRequest("GET", "http://localhost:7000/api", nil)
 	assert.NoError(t, err)
 
-	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
 
 	err = s.Sign(r)
 	assert.NoError(t, err)
@@ -115,7 +115,7 @@ func TestOCIRequestSigner_SigningString(t *testing.T) {
 		Header:     make(http.Header),
 		URL:        url,
 	}
-	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
 	r.Method = http.MethodGet
 	signature := s.getSigningString(&r)
 
@@ -136,7 +136,7 @@ func TestOCIRequestSigner_ComputeSignature(t *testing.T) {
 		Header:     make(http.Header),
 		URL:        url,
 	}
-	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
 	r.Method = http.MethodGet
 	signature, err := s.computeSignature(&r)
 
@@ -158,7 +158,7 @@ func TestOCIRequestSigner_Sign(t *testing.T) {
 		Header:     make(http.Header),
 		URL:        url,
 	}
-	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
 	r.Method = http.MethodGet
 	err := s.Sign(&r)
 
@@ -169,7 +169,7 @@ DUhxkFIWtTtLBj3sUzaFj34XE6YZAHc9r2DmE4pMwOAy/kiITcZxa1oHPOeRheC0jP2dqbTll
 8fmTZVwKZOKHYPtrLJIJQHJjNvxFWeHQjMaR7M="`, "\n", "", -1)
 
 	assert.NoError(t, err)
-	assert.Equal(t, expectedAuthHeader, r.Header.Get("Authorization"))
+	assert.Equal(t, expectedAuthHeader, r.Header.Get(requestHeaderAuthorization))
 
 }
 
@@ -190,9 +190,9 @@ func TestOCIRequestSigner_SignString2(t *testing.T) {
 	bodyBuffer := bytes.NewBufferString(testBody)
 	r.Body = ioutil.NopCloser(bodyBuffer)
 	r.ContentLength = int64(bodyBuffer.Len())
-	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
-	r.Header.Set("Content-Type", "application/json")
-	r.Header.Set("Content-Length", strconv.FormatInt(r.ContentLength, 10))
+	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Header.Set(requestHeaderContentType, "application/json")
+	r.Header.Set(requestHeaderContentLength, strconv.FormatInt(r.ContentLength, 10))
 	r.Method = http.MethodPost
 	calculateHashOfBody(&r)
 	signingString := s.getSigningString(&r)
@@ -218,9 +218,9 @@ func TestOCIRequestSigner_ComputeSignature2(t *testing.T) {
 	bodyBuffer := bytes.NewBufferString(testBody)
 	r.Body = ioutil.NopCloser(bodyBuffer)
 	r.ContentLength = int64(bodyBuffer.Len())
-	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
-	r.Header.Set("Content-Type", "application/json")
-	r.Header.Set("Content-Length", strconv.FormatInt(r.ContentLength, 10))
+	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Header.Set(requestHeaderContentType, "application/json")
+	r.Header.Set(requestHeaderContentLength, strconv.FormatInt(r.ContentLength, 10))
 	r.Method = http.MethodPost
 	calculateHashOfBody(&r)
 	signature, err := s.computeSignature(&r)
@@ -247,16 +247,16 @@ func TestOCIRequestSigner_Sign2(t *testing.T) {
 	bodyBuffer := bytes.NewBufferString(testBody)
 	r.Body = ioutil.NopCloser(bodyBuffer)
 	r.ContentLength = int64(bodyBuffer.Len())
-	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
-	r.Header.Set("Content-Type", "application/json")
-	r.Header.Set("Content-Length", strconv.FormatInt(r.ContentLength, 10))
+	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Header.Set(requestHeaderContentType, "application/json")
+	r.Header.Set(requestHeaderContentLength, strconv.FormatInt(r.ContentLength, 10))
 	r.Method = http.MethodPost
 	err := s.Sign(&r)
 
 	expectedAuthHeader := `Signature version="1",headers="date (request-target) host content-length content-type x-content-sha256",keyId="ocid1.tenancy.oc1..aaaaaaaaba3pv6wkcr4jqae5f15p2b2m2yt2j6rx32uzr4h25vqstifsfdsq/ocid1.user.oc1..aaaaaaaat5nvwcna5j6aqzjcaty5eqbb6qt2jvpkanghtgdaqedqw3rynjq/20:3b:97:13:55:1c:5b:0d:d3:37:d8:50:4e:c5:3a:34",algorithm="rsa-sha256",signature="Mje8vIDPlwIHmD/cTDwRxE7HaAvBg16JnVcsuqaNRim23fFPgQfLoOOxae6WqKb1uPjYEl0qIdazWaBy/Ml8DRhqlocMwoSXv0fbukP8J5N80LCmzT/FFBvIvTB91XuXI3hYfP9Zt1l7S6ieVadHUfqBedWH0itrtPJBgKmrWso="`
 	assert.NoError(t, err)
 	assert.Equal(t, r.ContentLength, int64(316))
-	assert.Equal(t, expectedAuthHeader, r.Header.Get("Authorization"))
+	assert.Equal(t, expectedAuthHeader, r.Header.Get(requestHeaderAuthorization))
 }
 
 func TestOCIRequestSigner_SignEmptyBody(t *testing.T) {
@@ -274,14 +274,14 @@ func TestOCIRequestSigner_SignEmptyBody(t *testing.T) {
 	bodyBuffer := bytes.NewBufferString("")
 	r.Body = ioutil.NopCloser(bodyBuffer)
 	r.ContentLength = int64(bodyBuffer.Len())
-	r.Header.Set("Date", "Thu, 05 Jan 2014 21:31:40 GMT")
-	r.Header.Set("Content-Type", "application/json")
-	r.Header.Set("Content-Length", strconv.FormatInt(r.ContentLength, 10))
+	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Header.Set(requestHeaderContentType, "application/json")
+	r.Header.Set(requestHeaderContentLength, strconv.FormatInt(r.ContentLength, 10))
 	r.Method = http.MethodPost
 	err := s.Sign(&r)
 
 	assert.NoError(t, err)
 	assert.Equal(t, r.ContentLength, int64(0))
-	assert.NotEmpty(t, r.Header.Get("Authorization"))
-	assert.NotEmpty(t, r.Header.Get("x-content-sha256"))
+	assert.NotEmpty(t, r.Header.Get(requestHeaderAuthorization))
+	assert.NotEmpty(t, r.Header.Get(requestHeaderXContentSHA256))
 }

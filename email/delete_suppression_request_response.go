@@ -13,10 +13,24 @@ type DeleteSuppressionRequest struct {
 
 	// The unique OCID of the suppression.
 	SuppressionId *string `mandatory:"true" contributesTo:"path" name:"suppressionId"`
+
+	// Metadata about the request. This information will not be transmitted to the service, but
+	// represents information that the SDK will consume to drive retry behavior.
+	RequestMetadata common.RequestMetadata
 }
 
 func (request DeleteSuppressionRequest) String() string {
 	return common.PointerString(request)
+}
+
+// HTTPRequest implements the OCIRequest interface
+func (request DeleteSuppressionRequest) HTTPRequest(method, path string) (http.Request, error) {
+	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
+func (request DeleteSuppressionRequest) RetryPolicy() *common.RetryPolicy {
+	return request.RequestMetadata.RetryPolicy
 }
 
 // DeleteSuppressionResponse wrapper for the DeleteSuppression operation
@@ -33,4 +47,9 @@ type DeleteSuppressionResponse struct {
 
 func (response DeleteSuppressionResponse) String() string {
 	return common.PointerString(response)
+}
+
+// HTTPResponse implements the OCIResponse interface
+func (response DeleteSuppressionResponse) HTTPResponse() *http.Response {
+	return response.RawResponse
 }

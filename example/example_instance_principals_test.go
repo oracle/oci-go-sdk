@@ -3,11 +3,12 @@ package example
 import (
 	"context"
 	"fmt"
+	"log"
+
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/common/auth"
 	"github.com/oracle/oci-go-sdk/example/helpers"
 	"github.com/oracle/oci-go-sdk/identity"
-	"log"
 )
 
 // ExampleInstancePrincipals lists the availability domains in your tenancy.
@@ -17,7 +18,7 @@ import (
 func ExampleInstancePrincipals() {
 
 	provider, err := auth.InstancePrincipalConfigurationProvider()
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	tenancyID := helpers.RootCompartmentID()
 	request := identity.ListAvailabilityDomainsRequest{
@@ -31,7 +32,7 @@ func ExampleInstancePrincipals() {
 	client.SetRegion(string(common.RegionLHR))
 
 	r, err := client.ListAvailabilityDomains(context.Background(), request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	log.Printf("list of available domains: %v", r.Items)
 	fmt.Println("Done")

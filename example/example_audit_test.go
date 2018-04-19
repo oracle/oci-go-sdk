@@ -16,7 +16,7 @@ import (
 
 func ExampleListEvents() {
 	c, clerr := audit.NewAuditClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(clerr)
+	helpers.FatalIfError(clerr)
 
 	// list events for last 5 hour
 	req := audit.ListEventsRequest{
@@ -26,7 +26,7 @@ func ExampleListEvents() {
 	}
 
 	_, err := c.ListEvents(context.Background(), req)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	//log.Printf("events returned back: %v", resp.Items)
 	fmt.Println("list events completed")

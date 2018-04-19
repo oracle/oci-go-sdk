@@ -14,6 +14,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"time"
 )
 
 type customConfig struct {
@@ -61,6 +62,66 @@ func TestClient_prepareRequestDefScheme(t *testing.T) {
 	c.prepareRequest(&request)
 	assert.Equal(t, "https", request.URL.Scheme)
 	assert.Equal(t, host, request.URL.Host)
+}
+
+func TestClient_prepareRequestCanBeCalledMultipleTimes(t *testing.T) {
+	host := "somehost:9000"
+	basePath := "basePath"
+	restPath := "somepath"
+
+	c := BaseClient{UserAgent: "asdf"}
+	c.Host = host
+	c.BasePath = basePath
+
+	request := http.Request{}
+	request.URL = &url.URL{Path: restPath}
+	c.prepareRequest(&request)
+	assert.Equal(t, "https", request.URL.Scheme)
+	assert.Equal(t, "/basePath/somepath", request.URL.Path)
+	assert.Equal(t, host, request.URL.Host)
+	c.prepareRequest(&request)
+	assert.Equal(t, "https", request.URL.Scheme)
+	assert.Equal(t, "/basePath/somepath", request.URL.Path)
+}
+
+func TestClient_prepareRequestUpdatesDateHeader(t *testing.T) {
+	host := "somehost:9000"
+	basePath := "basePath"
+	restPath := "somepath"
+
+	c := BaseClient{UserAgent: "asdf"}
+	c.Host = host
+	c.BasePath = basePath
+
+	request := http.Request{}
+	request.URL = &url.URL{Path: restPath}
+	c.prepareRequest(&request)
+	d1 := request.Header.Get(requestHeaderDate)
+	// make sure we wait some time to see that d1 and d2 have different times (set at second-level granularity)
+	time.Sleep(2 * time.Second)
+	c.prepareRequest(&request)
+	d2 := request.Header.Get(requestHeaderDate)
+	assert.NotEqual(t, d1, d2)
+}
+
+func TestClient_prepareRequestOnlySetsRetryTokenOnce(t *testing.T) {
+	host := "somehost:9000"
+	basePath := "basePath"
+	restPath := "somepath"
+
+	c := BaseClient{UserAgent: "asdf"}
+	c.Host = host
+	c.BasePath = basePath
+
+	request := http.Request{}
+	request.URL = &url.URL{Path: restPath}
+	c.prepareRequest(&request)
+	token1 := request.Header.Get(requestHeaderOpcRetryToken)
+	assert.NotEmpty(t, token1)
+	c.prepareRequest(&request)
+	token2 := request.Header.Get(requestHeaderOpcRetryToken)
+	assert.NotEmpty(t, token2)
+	assert.Equal(t, token1, token2)
 }
 
 func TestDefaultHTTPDispatcher_transportNotSet(t *testing.T) {
@@ -181,7 +242,7 @@ func TestBaseClient_Call(t *testing.T) {
 		Customcall: func(r *http.Request) (*http.Response, error) {
 			assert.Equal(t, "somehost:9000", r.URL.Host)
 			assert.Equal(t, defaultUserAgent(), r.UserAgent())
-			assert.Contains(t, r.Header.Get("Authorization"), "signature")
+			assert.Contains(t, r.Header.Get(requestHeaderAuthorization), "signature")
 			assert.Contains(t, r.URL.Path, "basePath/somepath")
 			bodyBuffer := bytes.NewBufferString(body)
 			response.Body = ioutil.NopCloser(bodyBuffer)
@@ -219,7 +280,7 @@ func TestBaseClient_CallWithInterceptor(t *testing.T) {
 		Customcall: func(r *http.Request) (*http.Response, error) {
 			assert.Equal(t, "somehost:9000", r.URL.Host)
 			assert.Equal(t, defaultUserAgent(), r.UserAgent())
-			assert.Contains(t, r.Header.Get("Authorization"), "signature")
+			assert.Contains(t, r.Header.Get(requestHeaderAuthorization), "signature")
 			assert.Contains(t, r.URL.Path, "basePath/somepath")
 			assert.Equal(t, "CustomValue", r.Header.Get("Custom-Header"))
 			bodyBuffer := bytes.NewBufferString(body)
@@ -240,38 +301,181 @@ func TestBaseClient_CallWithInterceptor(t *testing.T) {
 
 }
 
-func TestBaseClient_CallError(t *testing.T) {
-	response := http.Response{
-		Header:     http.Header{},
-		StatusCode: 400,
-	}
-	body := `{"code" : "some fake error","message" : "fake error not here"}`
-	c := testClientWithRegion(RegionIAD)
-	host := "http://somehost:9000"
-	basePath := "basePath/"
-	restPath := "/somepath"
-	caller := fakeCaller{
-		Customcall: func(r *http.Request) (*http.Response, error) {
-			assert.Equal(t, "somehost:9000", r.URL.Host)
-			assert.Equal(t, defaultUserAgent(), r.UserAgent())
-			assert.Contains(t, r.Header.Get("Authorization"), "signature")
-			assert.Contains(t, r.URL.Path, "basePath/somepath")
-			bodyBuffer := bytes.NewBufferString(body)
-			response.Body = ioutil.NopCloser(bodyBuffer)
-			return &response, nil
+type genericOCIResponse struct {
+	RawResponse *http.Response
+}
+
+type retryableOCIRequest struct {
+	retryPolicy *RetryPolicy
+}
+
+func (request retryableOCIRequest) HTTPRequest(method, path string) (http.Request, error) {
+	r := http.Request{}
+	r.Method = method
+	r.URL = &url.URL{Path: path}
+	return r, nil
+}
+
+func (request retryableOCIRequest) RetryPolicy() *RetryPolicy {
+	return request.retryPolicy
+}
+
+// HTTPResponse implements the OCIResponse interface
+func (response genericOCIResponse) HTTPResponse() *http.Response {
+	return response.RawResponse
+}
+
+func TestRetry_NeverGetSuccessfulResponse(t *testing.T) {
+	errorResponse := genericOCIResponse{
+		RawResponse: &http.Response{
+			Header:     http.Header{},
+			StatusCode: 400,
 		},
 	}
+	totalNumberAttempts := uint(5)
+	numberOfTimesWeEnterShouldRetry := uint(0)
+	numberOfTimesWeEnterGetNextDuration := uint(0)
+	shouldRetryOperation := func(operationResponse OCIOperationResponse) bool {
+		numberOfTimesWeEnterShouldRetry = numberOfTimesWeEnterShouldRetry + 1
+		return true
+	}
+	getNextDuration := func(operationResponse OCIOperationResponse) time.Duration {
+		numberOfTimesWeEnterGetNextDuration = numberOfTimesWeEnterGetNextDuration + 1
+		return 0
+	}
+	retryPolicy := NewRetryPolicy(totalNumberAttempts, shouldRetryOperation, getNextDuration)
+	retryableRequest := retryableOCIRequest{
+		retryPolicy: &retryPolicy,
+	}
+	// type OCIOperation func(context.Context, OCIRequest) (OCIResponse, error)
+	fakeOperation := func(context.Context, OCIRequest) (OCIResponse, error) {
+		return errorResponse, nil
+	}
 
-	c.Host = host
-	c.BasePath = basePath
-	c.HTTPClient = caller
+	response, err := Retry(context.Background(), retryableRequest, fakeOperation, retryPolicy)
+	assert.Equal(t, totalNumberAttempts, numberOfTimesWeEnterShouldRetry)
+	assert.Equal(t, totalNumberAttempts-1, numberOfTimesWeEnterGetNextDuration)
+	assert.Nil(t, response)
+	assert.Equal(t, err.Error(), "maximum number of attempts exceeded (5)")
+}
 
-	request := http.Request{}
-	request.URL = &url.URL{Path: restPath}
-	retRes, err := c.Call(context.Background(), &request)
-	assert.Error(t, err)
-	assert.Equal(t, &response, retRes)
+func TestRetry_ImmediatelyGetsSuccessfulResponse(t *testing.T) {
+	successResponse := genericOCIResponse{
+		RawResponse: &http.Response{
+			Header:     http.Header{},
+			StatusCode: 200,
+		},
+	}
+	totalNumberAttempts := uint(5)
+	numberOfTimesWeEnterShouldRetry := uint(0)
+	numberOfTimesWeEnterGetNextDuration := uint(0)
+	shouldRetryOperation := func(operationResponse OCIOperationResponse) bool {
+		numberOfTimesWeEnterShouldRetry = numberOfTimesWeEnterShouldRetry + 1
+		return false
+	}
+	getNextDuration := func(operationResponse OCIOperationResponse) time.Duration {
+		numberOfTimesWeEnterGetNextDuration = numberOfTimesWeEnterGetNextDuration + 1
+		return 0
+	}
+	retryPolicy := NewRetryPolicy(totalNumberAttempts, shouldRetryOperation, getNextDuration)
+	retryableRequest := retryableOCIRequest{
+		retryPolicy: &retryPolicy,
+	}
+	// type OCIOperation func(context.Context, OCIRequest) (OCIResponse, error)
+	fakeOperation := func(context.Context, OCIRequest) (OCIResponse, error) {
+		return successResponse, nil
+	}
 
+	response, err := Retry(context.Background(), retryableRequest, fakeOperation, retryPolicy)
+	assert.Equal(t, uint(1), numberOfTimesWeEnterShouldRetry)
+	assert.Equal(t, uint(0), numberOfTimesWeEnterGetNextDuration)
+	assert.Equal(t, response, successResponse)
+	assert.Nil(t, err)
+}
+
+func TestRetry_RaisesDeadlineExceededException(t *testing.T) {
+	errorResponse := genericOCIResponse{
+		RawResponse: &http.Response{
+			Header:     http.Header{},
+			StatusCode: 400,
+		},
+	}
+	totalNumberAttempts := uint(5)
+	numberOfTimesWeEnterShouldRetry := uint(0)
+	numberOfTimesWeEnterGetNextDuration := uint(0)
+	shouldRetryOperation := func(operationResponse OCIOperationResponse) bool {
+		numberOfTimesWeEnterShouldRetry = numberOfTimesWeEnterShouldRetry + 1
+		return true
+	}
+	getNextDuration := func(operationResponse OCIOperationResponse) time.Duration {
+		numberOfTimesWeEnterGetNextDuration = numberOfTimesWeEnterGetNextDuration + 1
+		return 10 * time.Second
+	}
+	retryPolicy := NewRetryPolicy(totalNumberAttempts, shouldRetryOperation, getNextDuration)
+	retryableRequest := retryableOCIRequest{
+		retryPolicy: &retryPolicy,
+	}
+	// type OCIOperation func(context.Context, OCIRequest) (OCIResponse, error)
+	fakeOperation := func(context.Context, OCIRequest) (OCIResponse, error) {
+		return errorResponse, nil
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	response, err := Retry(ctx, retryableRequest, fakeOperation, retryPolicy)
+	assert.Equal(t, uint(1), numberOfTimesWeEnterShouldRetry)
+	assert.Equal(t, uint(1), numberOfTimesWeEnterGetNextDuration)
+	assert.Equal(t, response, errorResponse)
+	assert.Equal(t, err, DeadlineExceededByBackoff)
+}
+
+func TestRetry_GetsSuccessfulResponseAfterMultipleAttempts(t *testing.T) {
+	errorResponse := genericOCIResponse{
+		RawResponse: &http.Response{
+			Header:     http.Header{},
+			StatusCode: 400,
+		},
+	}
+	successResponse := genericOCIResponse{
+		RawResponse: &http.Response{
+			Header:     http.Header{},
+			StatusCode: 200,
+		},
+	}
+	totalNumberAttempts := uint(10)
+	numberOfTimesWeEnterShouldRetry := uint(0)
+	numberOfTimesWeEnterGetNextDuration := uint(0)
+	shouldRetryOperation := func(operationResponse OCIOperationResponse) bool {
+		numberOfTimesWeEnterShouldRetry = numberOfTimesWeEnterShouldRetry + 1
+		return operationResponse.Response.HTTPResponse().StatusCode == 400
+	}
+	getNextDuration := func(operationResponse OCIOperationResponse) time.Duration {
+		numberOfTimesWeEnterGetNextDuration = numberOfTimesWeEnterGetNextDuration + 1
+		return 0 * time.Second
+	}
+	retryPolicy := NewRetryPolicy(totalNumberAttempts, shouldRetryOperation, getNextDuration)
+	retryableRequest := retryableOCIRequest{
+		retryPolicy: &retryPolicy,
+	}
+	// type OCIOperation func(context.Context, OCIRequest) (OCIResponse, error)
+	fakeOperation := func(context.Context, OCIRequest) (OCIResponse, error) {
+		if numberOfTimesWeEnterShouldRetry < 7 {
+			return errorResponse, nil
+		}
+		return successResponse, nil
+	}
+
+	response, err := Retry(context.Background(), retryableRequest, fakeOperation, retryPolicy)
+	assert.Equal(t, uint(8), numberOfTimesWeEnterShouldRetry)
+	assert.Equal(t, uint(7), numberOfTimesWeEnterGetNextDuration)
+	assert.Equal(t, response, successResponse)
+	assert.Nil(t, err)
+}
+
+func TestRetryToken_GenerateMultipleTimes(t *testing.T) {
+	token1 := generateRetryToken()
+	token2 := generateRetryToken()
+	assert.NotEqual(t, token1, token2)
 }
 
 func TestBaseClient_CreateWithInvalidConfig(t *testing.T) {

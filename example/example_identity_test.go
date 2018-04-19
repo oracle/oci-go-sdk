@@ -20,18 +20,18 @@ import (
 // the value for the compartment ID (remember that the tenancy is simply the root compartment).
 func ExampleListAvailabilityDomains() {
 	c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	// The OCID of the tenancy containing the compartment.
 	tenancyID, err := common.DefaultConfigProvider().TenancyOCID()
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	request := identity.ListAvailabilityDomainsRequest{
 		CompartmentId: &tenancyID,
 	}
 
 	r, err := c.ListAvailabilityDomains(context.Background(), request)
-	helpers.LogIfError(err)
+	helpers.FatalIfError(err)
 
 	log.Printf("list of available domains: %v", r.Items)
 	fmt.Println("list available domains completed")

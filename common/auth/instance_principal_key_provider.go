@@ -95,7 +95,6 @@ func (p *instancePrincipalKeyProvider) KeyID() (string, error) {
 	return fmt.Sprintf("ST$%s", securityToken), nil
 }
 
-
 func (p *instancePrincipalKeyProvider) TenancyOCID() (string, error) {
 	return p.tenancyID, nil
 }
