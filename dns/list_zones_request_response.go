@@ -74,7 +74,7 @@ type ListZonesResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []ZoneSummary instance
+	// A list of []ZoneSummary instances
 	Items []ZoneSummary `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if

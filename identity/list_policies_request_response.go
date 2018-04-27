@@ -45,7 +45,7 @@ type ListPoliciesResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []Policy instance
+	// A list of []Policy instances
 	Items []Policy `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

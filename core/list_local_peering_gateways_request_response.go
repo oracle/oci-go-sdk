@@ -49,7 +49,7 @@ type ListLocalPeeringGatewaysResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []LocalPeeringGateway instance
+	// A list of []LocalPeeringGateway instances
 	Items []LocalPeeringGateway `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

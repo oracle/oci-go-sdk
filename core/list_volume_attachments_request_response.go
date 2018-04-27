@@ -56,7 +56,7 @@ type ListVolumeAttachmentsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []VolumeAttachment instance
+	// A list of []VolumeAttachment instances
 	Items []VolumeAttachment `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

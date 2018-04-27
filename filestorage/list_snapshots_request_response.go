@@ -58,7 +58,7 @@ type ListSnapshotsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []SnapshotSummary instance
+	// A list of []SnapshotSummary instances
 	Items []SnapshotSummary `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through

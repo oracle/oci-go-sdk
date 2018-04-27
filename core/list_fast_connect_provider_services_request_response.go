@@ -46,7 +46,7 @@ type ListFastConnectProviderServicesResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []FastConnectProviderService instance
+	// A list of []FastConnectProviderService instances
 	Items []FastConnectProviderService `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

@@ -46,7 +46,7 @@ type ListCrossConnectLocationsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []CrossConnectLocation instance
+	// A list of []CrossConnectLocation instances
 	Items []CrossConnectLocation `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

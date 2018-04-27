@@ -45,7 +45,7 @@ type ListTagsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []TagSummary instance
+	// A list of []TagSummary instances
 	Items []TagSummary `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

@@ -46,7 +46,7 @@ type ListDrgsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []Drg instance
+	// A list of []Drg instances
 	Items []Drg `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

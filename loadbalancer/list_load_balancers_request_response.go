@@ -68,7 +68,7 @@ type ListLoadBalancersResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []LoadBalancer instance
+	// A list of []LoadBalancer instances
 	Items []LoadBalancer `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

@@ -65,7 +65,7 @@ type ListVirtualCircuitsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []VirtualCircuit instance
+	// A list of []VirtualCircuit instances
 	Items []VirtualCircuit `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

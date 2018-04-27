@@ -69,7 +69,7 @@ type ListConsoleHistoriesResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []ConsoleHistory instance
+	// A list of []ConsoleHistory instances
 	Items []ConsoleHistory `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,
