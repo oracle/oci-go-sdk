@@ -68,7 +68,7 @@ type ListVolumeBackupsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []VolumeBackup instance
+	// A list of []VolumeBackup instances
 	Items []VolumeBackup `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

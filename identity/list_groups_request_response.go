@@ -45,7 +45,7 @@ type ListGroupsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []Group instance
+	// A list of []Group instances
 	Items []Group `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

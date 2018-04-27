@@ -45,7 +45,7 @@ type ListIdpGroupMappingsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []IdpGroupMapping instance
+	// A list of []IdpGroupMapping instances
 	Items []IdpGroupMapping `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

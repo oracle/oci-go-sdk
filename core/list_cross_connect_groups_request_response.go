@@ -65,7 +65,7 @@ type ListCrossConnectGroupsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []CrossConnectGroup instance
+	// A list of []CrossConnectGroup instances
 	Items []CrossConnectGroup `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

@@ -48,7 +48,7 @@ type ListDbSystemShapesResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []DbSystemShapeSummary instance
+	// A list of []DbSystemShapeSummary instances
 	Items []DbSystemShapeSummary `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

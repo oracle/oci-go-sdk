@@ -65,7 +65,7 @@ type ListVcnsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []Vcn instance
+	// A list of []Vcn instances
 	Items []Vcn `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

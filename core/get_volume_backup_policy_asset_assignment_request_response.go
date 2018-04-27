@@ -46,7 +46,7 @@ type GetVolumeBackupPolicyAssetAssignmentResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []VolumeBackupPolicyAssignment instance
+	// A list of []VolumeBackupPolicyAssignment instances
 	Items []VolumeBackupPolicyAssignment `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

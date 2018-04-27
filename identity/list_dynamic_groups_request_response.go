@@ -45,7 +45,7 @@ type ListDynamicGroupsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []DynamicGroup instance
+	// A list of []DynamicGroup instances
 	Items []DynamicGroup `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

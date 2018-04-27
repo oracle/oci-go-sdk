@@ -38,7 +38,7 @@
     <lb.artifact.id>oralb-api-spec</lb.artifact.id>
     <lb.spec.name>spec-20170115.yaml</lb.spec.name>
 
-    <objectstorage.artifact.version>1.1.15</objectstorage.artifact.version>
+    <objectstorage.artifact.version>1.1.16</objectstorage.artifact.version>
     <objectstorage.artifact.id>casper-api-spec</objectstorage.artifact.id>
     <objectstorage.spec.name>casper-api.yaml</objectstorage.spec.name>
 
@@ -641,7 +641,7 @@
       <plugin>
         <groupId>com.oracle.bmc.sdk</groupId>
         <artifactId>bmc-sdk-swagger-maven-plugin</artifactId>
-        <version>1.20-SNAPSHOT</version>
+        <version>1.23-SNAPSHOT</version>
         <executions>
           <execution>
             <id>go-public-sdk-identity</id>

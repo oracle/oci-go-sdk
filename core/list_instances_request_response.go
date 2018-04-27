@@ -69,7 +69,7 @@ type ListInstancesResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []Instance instance
+	// A list of []Instance instances
 	Items []Instance `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

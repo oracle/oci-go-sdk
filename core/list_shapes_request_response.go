@@ -53,7 +53,7 @@ type ListShapesResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []Shape instance
+	// A list of []Shape instances
 	Items []Shape `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

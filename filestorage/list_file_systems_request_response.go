@@ -72,7 +72,7 @@ type ListFileSystemsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []FileSystemSummary instance
+	// A list of []FileSystemSummary instances
 	Items []FileSystemSummary `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through

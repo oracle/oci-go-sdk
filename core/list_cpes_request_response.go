@@ -46,7 +46,7 @@ type ListCpesResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []Cpe instance
+	// A list of []Cpe instances
 	Items []Cpe `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

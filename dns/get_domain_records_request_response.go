@@ -76,7 +76,7 @@ type GetDomainRecordsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The RecordCollection instance
+	// A list of RecordCollection instances
 	RecordCollection `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if

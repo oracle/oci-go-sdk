@@ -46,7 +46,7 @@ type ListCrossconnectPortSpeedShapesResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []CrossConnectPortSpeedShape instance
+	// A list of []CrossConnectPortSpeedShape instances
 	Items []CrossConnectPortSpeedShape `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

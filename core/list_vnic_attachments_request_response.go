@@ -56,7 +56,7 @@ type ListVnicAttachmentsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []VnicAttachment instance
+	// A list of []VnicAttachment instances
 	Items []VnicAttachment `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

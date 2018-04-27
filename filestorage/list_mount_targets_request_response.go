@@ -75,7 +75,7 @@ type ListMountTargetsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []MountTargetSummary instance
+	// A list of []MountTargetSummary instances
 	Items []MountTargetSummary `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through

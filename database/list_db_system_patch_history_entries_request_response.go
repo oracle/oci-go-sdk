@@ -45,7 +45,7 @@ type ListDbSystemPatchHistoryEntriesResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []PatchHistoryEntrySummary instance
+	// A list of []PatchHistoryEntrySummary instances
 	Items []PatchHistoryEntrySummary `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

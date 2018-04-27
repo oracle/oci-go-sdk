@@ -68,7 +68,7 @@ type ListSecurityListsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []SecurityList instance
+	// A list of []SecurityList instances
 	Items []SecurityList `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

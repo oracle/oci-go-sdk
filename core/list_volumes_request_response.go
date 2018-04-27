@@ -69,7 +69,7 @@ type ListVolumesResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []Volume instance
+	// A list of []Volume instances
 	Items []Volume `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

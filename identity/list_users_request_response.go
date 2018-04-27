@@ -45,7 +45,7 @@ type ListUsersResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []User instance
+	// A list of []User instances
 	Items []User `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

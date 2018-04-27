@@ -48,8 +48,8 @@ func (client *ComputeClient) setConfigurationProvider(configProvider common.Conf
 
 	// Error has been checked already
 	region, _ := configProvider.Region()
-	client.config = &configProvider
 	client.SetRegion(region)
+	client.config = &configProvider
 	return nil
 }
 

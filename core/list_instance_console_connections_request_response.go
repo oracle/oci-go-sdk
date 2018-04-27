@@ -49,7 +49,7 @@ type ListInstanceConsoleConnectionsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []InstanceConsoleConnection instance
+	// A list of []InstanceConsoleConnection instances
 	Items []InstanceConsoleConnection `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

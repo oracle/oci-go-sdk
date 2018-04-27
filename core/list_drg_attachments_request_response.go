@@ -52,7 +52,7 @@ type ListDrgAttachmentsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []DrgAttachment instance
+	// A list of []DrgAttachment instances
 	Items []DrgAttachment `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

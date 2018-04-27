@@ -49,7 +49,7 @@ type ListRemotePeeringConnectionsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []RemotePeeringConnection instance
+	// A list of []RemotePeeringConnection instances
 	Items []RemotePeeringConnection `presentIn:"body"`
 
 	// A pagination token to the start of the next page, if one exist.

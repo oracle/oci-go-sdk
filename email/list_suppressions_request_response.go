@@ -76,7 +76,7 @@ type ListSuppressionsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []SuppressionSummary instance
+	// A list of []SuppressionSummary instances
 	Items []SuppressionSummary `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need

@@ -52,7 +52,7 @@ type ListIPSecConnectionsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []IpSecConnection instance
+	// A list of []IpSecConnection instances
 	Items []IpSecConnection `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

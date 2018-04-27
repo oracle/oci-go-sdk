@@ -69,7 +69,7 @@ type GetRRSetResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The RrSet instance
+	// A list of RrSet instances
 	RrSet `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if

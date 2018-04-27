@@ -70,7 +70,7 @@ type ListExportsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []ExportSummary instance
+	// A list of []ExportSummary instances
 	Items []ExportSummary `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through

@@ -61,7 +61,7 @@ type ListSendersResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []SenderSummary instance
+	// A list of []SenderSummary instances
 	Items []SenderSummary `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need
