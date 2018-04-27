@@ -55,13 +55,12 @@ func TestBlockstorageClient_CreateVolume(t *testing.T) {
 				return !(volResponse.LifecycleState == core.VolumeLifecycleStateAvailable)
 			},
 			NextDuration: func(response common.OCIOperationResponse) time.Duration {
-				return 10 *time.Second
+				return 10 * time.Second
 			},
 		},
 	}
 
 	c.GetVolume(context.Background(), requestGet)
-
 
 	//update
 	updateTest := func(t *testing.T) {
@@ -154,7 +153,6 @@ func TestBlockstorageClient_CreateVolumeBackup(t *testing.T) {
 	assert.NotEmpty(t, r, fmt.Sprint(r))
 	assert.NoError(t, err)
 	failIfError(t, err)
-
 
 	//Read
 	readTest := func() (interface{}, error) {
