@@ -141,7 +141,7 @@ func ExampleFreeformAndDefinedTag() {
 	// correspond to the name of a tag within the specified namespace (and the namespace must exist).
 	freeformTags := map[string]string{"free": "form", "another": "item"}
 	definedTags := map[string]map[string]interface{}{
-		tagNamespaceName: map[string]interface{}{
+		tagNamespaceName: {
 			tagName:  "hello",
 			tagName2: "world",
 		},
