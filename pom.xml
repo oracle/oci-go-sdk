@@ -30,7 +30,7 @@
     <identity.artifact.id>identity-control-plane-api-spec</identity.artifact.id>
     <identity.spec.name>identity-control-plane-api-spec-20160918.yaml</identity.spec.name>
 
-    <lb.artifact.version>1.0.15</lb.artifact.version>
+    <lb.artifact.version>1.0.16</lb.artifact.version>
     <lb.artifact.id>oralb-api-spec</lb.artifact.id>
     <lb.spec.name>spec-20170115.yaml</lb.spec.name>
 
@@ -42,7 +42,7 @@
     <database.artifact.id>dbaas-api-spec</database.artifact.id>
     <database.spec.name>dbaas-api-spec-20160918.yaml</database.spec.name>
 
-    <audit.artifact.version>0.1.7</audit.artifact.version>
+    <audit.artifact.version>0.1.8</audit.artifact.version>
     <audit.artifact.id>hemlock-spec</audit.artifact.id>
     <audit.spec.name>hemlock-api-20160918.yaml</audit.spec.name>
 
@@ -524,7 +524,7 @@
       <plugin>
         <groupId>com.oracle.bmc.sdk</groupId>
         <artifactId>bmc-sdk-swagger-maven-plugin</artifactId>
-        <version>1.23-SNAPSHOT</version>
+        <version>1.25-SNAPSHOT</version>
         <executions>
           <execution>
             <id>go-public-sdk-identity</id>
