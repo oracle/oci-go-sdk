@@ -8,19 +8,15 @@ import (
 	"net/http"
 )
 
-// GetBackendRequest wrapper for the GetBackend operation
-type GetBackendRequest struct {
+// GetHostnameRequest wrapper for the GetHostname operation
+type GetHostnameRequest struct {
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the load balancer associated with the backend set and server.
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the specified load balancer.
 	LoadBalancerId *string `mandatory:"true" contributesTo:"path" name:"loadBalancerId"`
 
-	// The name of the backend set that includes the backend server.
-	// Example: `example_backend_set`
-	BackendSetName *string `mandatory:"true" contributesTo:"path" name:"backendSetName"`
-
-	// The IP address and port of the backend server to retrieve.
-	// Example: `10.0.0.3:8080`
-	BackendName *string `mandatory:"true" contributesTo:"path" name:"backendName"`
+	// The name of the hostname resource to retrieve.
+	// Example: `example_hostname_001`
+	Name *string `mandatory:"true" contributesTo:"path" name:"name"`
 
 	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
@@ -31,39 +27,39 @@ type GetBackendRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request GetBackendRequest) String() string {
+func (request GetHostnameRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request GetBackendRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request GetHostnameRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request GetBackendRequest) RetryPolicy() *common.RetryPolicy {
+func (request GetHostnameRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// GetBackendResponse wrapper for the GetBackend operation
-type GetBackendResponse struct {
+// GetHostnameResponse wrapper for the GetHostname operation
+type GetHostnameResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The Backend instance
-	Backend `presentIn:"body"`
+	// The Hostname instance
+	Hostname `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
-func (response GetBackendResponse) String() string {
+func (response GetHostnameResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response GetBackendResponse) HTTPResponse() *http.Response {
+func (response GetHostnameResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }
