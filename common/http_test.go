@@ -962,3 +962,25 @@ func TestOmitFieldsInJson_SimpleStructWithTime(t *testing.T) {
 	assert.Contains(t, mapRet, "theTime")
 	assert.Equal(t, theTime, mapRet.(map[string]interface{})["theTime"])
 }
+
+func TestAddRequestID(t *testing.T) {
+	type testStructType struct {
+		OpcRequestID *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+	}
+
+	inputTestDataSet := []testStructType{
+		{},
+		{OpcRequestID: String("testid")},
+	}
+
+	for _, testData := range inputTestDataSet {
+		request := MakeDefaultHTTPRequest(http.MethodPost, "/random")
+		HTTPRequestMarshaller(testData, &request)
+		assert.NotEmpty(t, request.Header["Opc-Request-Id"])
+		assert.Equal(t, 1, len(request.Header["Opc-Request-Id"]))
+
+		if testData.OpcRequestID != nil {
+			assert.Equal(t, "testid", request.Header["Opc-Request-Id"][0])
+		}
+	}
+}
