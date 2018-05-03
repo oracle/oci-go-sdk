@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 1.4.0 - 2018-05-03
+### Added
+- Support for ``event_name`` in Audit Service
+- Support for multiple ``hostnames`` for loadbalancer listener in LoadBalance service
+- Support for auto-generating opc-request-id for all operations
+- Add opc-request-id property for all requests except for Object Storage which use opc-client-request-id
 
 ## 1.3.0 - 2018-04-19
 ### Added

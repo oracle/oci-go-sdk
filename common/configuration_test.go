@@ -550,7 +550,7 @@ key_file=%s
 tenancy=sometenancy
 compartment = somecompartment
 region=someregion
-passphrase=%s
+pass_phrase=%s
 `
 
 	keyFile := writeTempFile(testEncryptedPrivateKeyConf)
