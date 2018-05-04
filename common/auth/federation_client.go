@@ -10,13 +10,14 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
 	"net/http"
 	"strings"
 	"sync"
+
+	"github.com/oracle/oci-go-sdk/common"
 )
 
-// federationClient is a client to retrieve the security token for an instance principal necessary to sign a request.
+// federationClient is a client to retrieve the security token necessary to sign a request.
 // It also provides the private key whose corresponding public key is used to retrieve the security token.
 type federationClient interface {
 	PrivateKey() (*rsa.PrivateKey, error)
@@ -32,16 +33,19 @@ type x509FederationClient struct {
 	securityToken                     securityToken
 	authClient                        *common.BaseClient
 	mux                               sync.Mutex
+	validateTenancyID                 bool
 }
 
-func newX509FederationClient(region common.Region, tenancyID string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever) federationClient {
+func newX509FederationClient(region common.Region, tenancyID string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever, validateTenancyID bool) federationClient {
 	client := &x509FederationClient{
 		tenancyID:                         tenancyID,
 		leafCertificateRetriever:          leafCertificateRetriever,
 		intermediateCertificateRetrievers: intermediateCertificateRetrievers,
+		validateTenancyID:                 validateTenancyID,
 	}
 	client.sessionKeySupplier = newSessionKeySupplier()
 	client.authClient = newAuthClient(region, client)
+
 	return client
 }
 
@@ -108,10 +112,12 @@ func (c *x509FederationClient) renewSecurityToken() (err error) {
 		return fmt.Errorf("failed to refresh leaf certificate: %s", err.Error())
 	}
 
-	updatedTenancyID := extractTenancyIDFromCertificate(c.leafCertificateRetriever.Certificate())
-	if c.tenancyID != updatedTenancyID {
-		err = fmt.Errorf("unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", c.tenancyID, updatedTenancyID)
-		return
+	if c.validateTenancyID {
+		updatedTenancyID := extractTenancyIDFromCertificate(c.leafCertificateRetriever.Certificate())
+		if c.tenancyID != updatedTenancyID {
+			err = fmt.Errorf("unexpected update of tenancy OCID in the leaf certificate. Previous tenancy: %s, Updated: %s", c.tenancyID, updatedTenancyID)
+			return
+		}
 	}
 
 	for _, retriever := range c.intermediateCertificateRetrievers {
@@ -147,7 +153,7 @@ func (c *x509FederationClient) getSecurityToken() (securityToken, error) {
 		return nil, fmt.Errorf("failed to unmarshal the response: %s", err.Error())
 	}
 
-	return newInstancePrincipalToken(response.Token.Token)
+	return newToken(response.Token.Token)
 }
 
 type x509FederationRequest struct {
@@ -266,23 +272,23 @@ type securityToken interface {
 	Valid() bool
 }
 
-type instancePrincipalToken struct {
+type token struct {
 	tokenString string
 	jwtToken    *jwtToken
 }
 
-func newInstancePrincipalToken(tokenString string) (newToken securityToken, err error) {
+func newToken(tokenString string) (newToken securityToken, err error) {
 	var jwtToken *jwtToken
 	if jwtToken, err = parseJwt(tokenString); err != nil {
 		return nil, fmt.Errorf("failed to parse the token string \"%s\": %s", tokenString, err.Error())
 	}
-	return &instancePrincipalToken{tokenString, jwtToken}, nil
+	return &token{tokenString, jwtToken}, nil
 }
 
-func (t *instancePrincipalToken) String() string {
+func (t *token) String() string {
 	return t.tokenString
 }
 
-func (t *instancePrincipalToken) Valid() bool {
+func (t *token) Valid() bool {
 	return !t.jwtToken.expired()
 }
