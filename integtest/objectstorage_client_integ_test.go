@@ -208,11 +208,12 @@ func TestObjectStorageClient_Object(t *testing.T) {
 func TestObjectStorageClient_AbortUpload(t *testing.T) {
 	bname := getUniqueName("abortUpload")
 	namespace := getNamespace(t)
+	bgCtx := context.Background()
 
-	createBucket(t, getNamespace(t), getTenancyID(), bname)
+	createBucket(t, namespace, getTenancyID(), bname)
 	defer deleteBucket(t, namespace, bname)
 
-	contentlen := 1024 * 1000
+	contentlen := 1024 * 1024 * 10
 	filepath, filesize, _ := writeTempFileOfSize(int64(contentlen))
 	filename := path.Base(filepath)
 	defer removeFileFn(filepath)
@@ -221,6 +222,17 @@ func TestObjectStorageClient_AbortUpload(t *testing.T) {
 	failIfError(t, e)
 
 	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(configurationProvider())
+
+	// Clean up the object incase it does get writen to the bucket
+	deleteObjectFunc := func() {
+		request := objectstorage.DeleteObjectRequest{
+			NamespaceName: &namespace,
+			BucketName:    &bname,
+			ObjectName:    &filename,
+		}
+		_, _ = c.DeleteObject(bgCtx, request)
+	}
+
 	request := objectstorage.PutObjectRequest{
 		NamespaceName: &namespace,
 		BucketName:    &bname,
@@ -228,8 +240,10 @@ func TestObjectStorageClient_AbortUpload(t *testing.T) {
 		ContentLength: common.Int(int(filesize)),
 		PutObjectBody: file,
 	}
-	ctx, cancelFn := context.WithTimeout(context.Background(), 5*time.Millisecond)
+	ctx, cancelFn := context.WithTimeout(bgCtx, 5*time.Millisecond)
 	defer cancelFn()
+	defer deleteObjectFunc()
+
 	_, e = c.PutObject(ctx, request)
 	assert.Error(t, e)
 }
