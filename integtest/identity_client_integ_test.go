@@ -460,24 +460,34 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 	failIfError(t, clerr)
 
 	usr := createOrGetUser(t)
+	ctx := context.Background()
+
+	deletePasswordFunc := func(userID *string, passwordID *string) {
+		delReq := identity.DeleteSwiftPasswordRequest{}
+		delReq.UserId = userID
+		delReq.SwiftPasswordId = passwordID
+		delReq.RequestMetadata = getRequestMetadataWithDefaultRetryPolicy()
+		delRes, err := c.DeleteSwiftPassword(ctx, delReq)
+		verifyResponseIsValid(t, delRes, err)
+		failIfError(t, err)
+	}
+
+	// delete all swift password for the user in case the previouse test failed and didn't clean it up
+	listResp, err := c.ListSwiftPasswords(ctx, identity.ListSwiftPasswordsRequest{UserId: usr.Id})
+	failIfError(t, err)
+	for _, pwd := range listResp.Items {
+		deletePasswordFunc(usr.Id, pwd.Id)
+	}
 
 	// Create Swift Password
 	addReq := identity.CreateSwiftPasswordRequest{UserId: usr.Id}
 	addReq.Description = &createDesc
 	addReq.RequestMetadata = getRequestMetadataWithDefaultRetryPolicy()
-	rspPwd, err := c.CreateSwiftPassword(context.Background(), addReq)
+	rspPwd, err := c.CreateSwiftPassword(ctx, addReq)
 	verifyResponseIsValid(t, rspPwd, err)
 
 	// Delete Swift Password
-	defer func() {
-		delReq := identity.DeleteSwiftPasswordRequest{}
-		delReq.UserId = usr.Id
-		delReq.SwiftPasswordId = rspPwd.Id
-		delReq.RequestMetadata = getRequestMetadataWithDefaultRetryPolicy()
-		delRes, err := c.DeleteSwiftPassword(context.Background(), delReq)
-		verifyResponseIsValid(t, delRes, err)
-		failIfError(t, err)
-	}()
+	defer deletePasswordFunc(usr.Id, rspPwd.Id)
 
 	assert.NotEmpty(t, rspPwd.Id)
 	assert.Equal(t, usr.Id, rspPwd.UserId)
@@ -490,7 +500,7 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 	updReq.SwiftPasswordId = rspPwd.Id
 	updReq.Description = &updateDesc
 	updReq.RequestMetadata = getRequestMetadataWithDefaultRetryPolicy()
-	updRsp, err := c.UpdateSwiftPassword(context.Background(), updReq)
+	updRsp, err := c.UpdateSwiftPassword(ctx, updReq)
 	verifyResponseIsValid(t, updRsp, err)
 
 	assert.NotEqual(t, rspPwd.Password, updRsp.Password)
