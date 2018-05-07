@@ -42,7 +42,7 @@ $(TARGETS): %:integtest/%_client_integ_test.go
 
 generate:
 	@echo "Cleaning and generating sdk"
-	@(cd $(PROJECT_PATH) && make clean)
+	@(cd $(PROJECT_PATH) && make clean-generate)
 	PROJECT_NAME=$(PROJECT_NAME) mvn clean install
 	@(cd $(PROJECT_PATH) && rm -f $(REMOVE_AFTER_GENERATE))
 
