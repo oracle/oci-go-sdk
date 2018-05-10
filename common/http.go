@@ -274,22 +274,23 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 	}
 
 	encoding := strings.ToLower(field.Tag.Get("collectionFormat"))
+	var collectionFormatStringValues []string
 	switch encoding {
-	case "csv":
+	case "csv", "multi":
 		if value.Kind() != reflect.Slice && value.Kind() != reflect.Array {
-			e = fmt.Errorf("query paramater is tagged as csv yet its type is neither an Array nor a Slice: %s", field.Name)
+			e = fmt.Errorf("query parameter is tagged as csv or multi yet its type is neither an Array nor a Slice: %s", field.Name)
 			break
 		}
 
 		numOfElements := value.Len()
-		stringValues := make([]string, numOfElements)
+		collectionFormatStringValues = make([]string, numOfElements)
 		for i := 0; i < numOfElements; i++ {
-			stringValues[i], e = toStringValue(value.Index(i), field)
+			collectionFormatStringValues[i], e = toStringValue(value.Index(i), field)
 			if e != nil {
 				break
 			}
 		}
-		queryParameterValue = strings.Join(stringValues, ",")
+		queryParameterValue = strings.Join(collectionFormatStringValues, ",")
 	case "":
 		queryParameterValue, e = toStringValue(value, field)
 	default:
@@ -305,16 +306,26 @@ func addToQuery(request *http.Request, value reflect.Value, field reflect.Struct
 	if omitEmpty, present := field.Tag.Lookup("omitEmpty"); present {
 		omitEmptyBool, _ := strconv.ParseBool(strings.ToLower(omitEmpty))
 		if queryParameterValue != "" || !omitEmptyBool {
-			query.Set(queryParameterName, queryParameterValue)
+			addToQueryForEncoding(&query, encoding, queryParameterName, queryParameterValue, collectionFormatStringValues)
 		} else {
 			Debugf("Omitting %s, is empty and omitEmpty tag is set", field.Name)
 		}
 	} else {
-		query.Set(queryParameterName, queryParameterValue)
+		addToQueryForEncoding(&query, encoding, queryParameterName, queryParameterValue, collectionFormatStringValues)
 	}
 
 	request.URL.RawQuery = query.Encode()
 	return
+}
+
+func addToQueryForEncoding(query *url.Values, encoding string, queryParameterName string, queryParameterValue string, collectionFormatStringValues []string) {
+	if encoding == "multi" {
+		for _, stringValue := range collectionFormatStringValues {
+			query.Add(queryParameterName, stringValue)
+		}
+	} else {
+		query.Set(queryParameterName, queryParameterValue)
+	}
 }
 
 // Adds to the path of the url in the order they appear in the structure
