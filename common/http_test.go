@@ -176,15 +176,16 @@ func TestHttpMarshalerAll(t *testing.T) {
 	includes := []inc{inc("One"), inc("Two")}
 
 	s := struct {
-		ID      string                `contributesTo:"path"`
-		Name    string                `contributesTo:"query" name:"name"`
-		When    *SDKTime              `contributesTo:"query" name:"when"`
-		Income  float32               `contributesTo:"query" name:"income"`
-		Include []inc                 `contributesTo:"query" name:"includes" collectionFormat:"csv"`
-		Male    bool                  `contributesTo:"header" name:"male"`
-		Details TestupdateUserDetails `contributesTo:"body"`
+		ID           string                `contributesTo:"path"`
+		Name         string                `contributesTo:"query" name:"name"`
+		When         *SDKTime              `contributesTo:"query" name:"when"`
+		Income       float32               `contributesTo:"query" name:"income"`
+		Include      []inc                 `contributesTo:"query" name:"includes" collectionFormat:"csv"`
+		IncludeMulti []inc                 `contributesTo:"query" name:"includesMulti" collectionFormat:"multi"`
+		Male         bool                  `contributesTo:"header" name:"male"`
+		Details      TestupdateUserDetails `contributesTo:"body"`
 	}{
-		"101", "tapir", now(), 3.23, includes, true, TestupdateUserDetails{Description: desc},
+		"101", "tapir", now(), 3.23, includes, includes, true, TestupdateUserDetails{Description: desc},
 	}
 	request := MakeDefaultHTTPRequest(http.MethodPost, "/")
 	e := HTTPRequestMarshaller(s, &request)
@@ -198,6 +199,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 	assert.True(t, request.URL.Query().Get("income") == strconv.FormatFloat(float64(s.Income), 'f', 6, 32))
 	assert.True(t, request.URL.Query().Get("when") == when)
 	assert.True(t, request.URL.Query().Get("includes") == "One,Two")
+	assert.True(t, reflect.DeepEqual(request.URL.Query()["includesMulti"], []string{"One", "Two"}))
 	assert.Contains(t, content, "description")
 	assert.Equal(t, request.Header.Get(requestHeaderContentType), "application/json")
 	if val, ok := content["description"]; !ok || val != desc {

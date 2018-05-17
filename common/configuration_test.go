@@ -9,6 +9,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"path"
+	"strings"
 )
 
 var (
@@ -65,10 +67,8 @@ ufFtnLEj/5G9a8A//MFrXsXePUeBDEzjtEcjPGNxe0ZkuOgYx11Zc0R4oLI7LoHO
 	testKeyPassphrase = "goisfun"
 )
 
-func removeFileFn(filename string) func() {
-	return func() {
-		os.Remove(filename)
-	}
+func removeFileFn(filename string) {
+	os.Remove(filename)
 }
 
 func writeTempFile(data string) (filename string) {
@@ -650,4 +650,75 @@ region=someregion
 	key, err := provider.PrivateRSAKey()
 	assert.NoError(t, err)
 	assert.NotNil(t, key)
+}
+
+func TestConfigurationWithTilde(t *testing.T) {
+	dataTpl := `[DEFAULT]
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+compartment = somecompartment
+region=someregion
+`
+
+	tmpKeyLocation := path.Join(getHomeFolder(), "testKey")
+	e := ioutil.WriteFile(tmpKeyLocation, []byte(testEncryptedPrivateKeyConf), 777)
+	if e != nil {
+		assert.FailNow(t, e.Error())
+	}
+
+	newlocation := strings.Replace(tmpKeyLocation, getHomeFolder(), "~/", 1)
+	data := fmt.Sprintf(dataTpl, newlocation)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(tmpKeyLocation)
+
+	provider, err := ConfigurationProviderFromFile(tmpConfFile, testKeyPassphrase)
+	assert.NoError(t, err)
+	ok, err := IsConfigurationProviderValid(provider)
+	assert.NoError(t, err)
+	assert.True(t, ok)
+
+	fns := []func() (string, error){provider.TenancyOCID, provider.UserOCID, provider.KeyFingerprint}
+
+	for _, fn := range fns {
+		val, e := fn()
+		assert.NoError(t, e)
+		assert.NotEmpty(t, val)
+	}
+
+	key, err := provider.PrivateRSAKey()
+	assert.NoError(t, err)
+	assert.NotNil(t, key)
+}
+
+func TestExpandPath(t *testing.T) {
+	home := getHomeFolder()
+	testIO := []struct {
+		name, inPath, expectedPath string
+	}{
+		{
+			name:         "should expand tilde and return appended home dir",
+			inPath:       "~/somepath",
+			expectedPath: path.Join(home, "somepath"),
+		},
+		{
+			name:         "should not do anything",
+			inPath:       "/somepath/some/dir/~/file",
+			expectedPath: "/somepath/some/dir/~/file",
+		},
+		{
+			name:         "should replace one tilde only",
+			inPath:       "~/~/some/path",
+			expectedPath: path.Join(home, "~/some/path"),
+		},
+	}
+	for _, tio := range testIO {
+		t.Run(tio.name, func(t *testing.T) {
+			p := expandPath(tio.inPath)
+			assert.Equal(t, tio.expectedPath, p)
+		})
+	}
 }
