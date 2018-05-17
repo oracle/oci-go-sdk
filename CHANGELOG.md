@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 1.5.0 - 2018-05-17
+### Added
+- Support for backup or clone of multiple volumes at once using volume groups in the Block Storage service
+- Support for the ability to optionally specify a compartment filter when listing exports in the File Storage service
+- Support for tagging virtual cloud network resources in the Networking service
+- Support for specifying the PARAVIRTUALIZED remote volume type when creating a virtual image or launching a new instance in the Compute service
+- Support for tilde in private key path in configuration files
+
 ## 1.4.0 - 2018-05-03
 ### Added
 - Support for ``event_name`` in Audit Service

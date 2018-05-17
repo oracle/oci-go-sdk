@@ -22,7 +22,7 @@
     <preferred.temp.dir>${project.build.directory}/preferred</preferred.temp.dir>
     <preprocessed.temp.dir>${project.build.directory}/preprocessed</preprocessed.temp.dir>
 
-    <core.artifact.version>0.2.26</core.artifact.version>
+    <core.artifact.version>0.2.64</core.artifact.version>
     <core.artifact.id>coreservices-api-spec</core.artifact.id>
     <core.spec.name>coreservices-api-spec-20160918.cond.yaml</core.spec.name>
 
@@ -46,7 +46,7 @@
     <audit.artifact.id>hemlock-spec</audit.artifact.id>
     <audit.spec.name>hemlock-api-20160918.yaml</audit.spec.name>
 
-    <filestorage.artifact.version>0.0.10</filestorage.artifact.version>
+    <filestorage.artifact.version>0.0.11</filestorage.artifact.version>
     <filestorage.artifact.id>fss-api-spec</filestorage.artifact.id>
     <filestorage.spec.name>fss-api-spec-20171215.yaml</filestorage.spec.name>
 
@@ -524,7 +524,7 @@
       <plugin>
         <groupId>com.oracle.bmc.sdk</groupId>
         <artifactId>bmc-sdk-swagger-maven-plugin</artifactId>
-        <version>1.25-SNAPSHOT</version>
+        <version>1.26-SNAPSHOT</version>
         <executions>
           <execution>
             <id>go-public-sdk-identity</id>
