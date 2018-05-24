@@ -38,7 +38,7 @@
     <objectstorage.artifact.id>casper-api-spec</objectstorage.artifact.id>
     <objectstorage.spec.name>casper-api.yaml</objectstorage.spec.name>
 
-    <database.artifact.version>0.0.137</database.artifact.version>
+    <database.artifact.version>0.0.139</database.artifact.version>
     <database.artifact.id>dbaas-api-spec</database.artifact.id>
     <database.spec.name>dbaas-api-spec-20160918.yaml</database.spec.name>
 

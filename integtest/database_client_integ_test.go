@@ -220,24 +220,25 @@ func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
 	failIfError(t, clerr)
 
 	request := database.LaunchDbSystemRequest{}
-	request.AvailabilityDomain = common.String(validAD())
-	request.CompartmentId = common.String(getCompartmentID())
-	request.CpuCoreCount = common.Int(2)
-	request.DatabaseEdition = "STANDARD_EDITION"
-	request.DisplayName = common.String("GOSDK_TestDBSystem")
-	request.Shape = common.String("BM.DenseIO1.36") // this shape will not get service limit error for now
+	details := database.LaunchDbSystemDetails{}
+	details.AvailabilityDomain = common.String(validAD())
+	details.CompartmentId = common.String(getCompartmentID())
+	details.CpuCoreCount = common.Int(2)
+	details.DatabaseEdition = "STANDARD_EDITION"
+	details.DisplayName = common.String("GOSDK_TestDBSystem")
+	details.Shape = common.String("BM.DenseIO1.36") // this shape will not get service limit error for now
 
 	buffer, err := readTestPubKey()
 	failIfError(t, err)
-	request.SshPublicKeys = []string{string(buffer)}
+	details.SshPublicKeys = []string{string(buffer)}
 
 	subnet := createOrGetSubnet(t)
-	request.SubnetId = subnet.Id
-	request.Hostname = common.String("test")
-	request.LicenseModel = "LICENSE_INCLUDED"
-	request.DiskRedundancy = "NORMAL"
+	details.SubnetId = subnet.Id
+	details.Hostname = common.String("test")
+	details.LicenseModel = "LICENSE_INCLUDED"
+	details.DiskRedundancy = "NORMAL"
 
-	request.DbHome = &database.CreateDbHomeDetails{
+	details.DbHome = &database.CreateDbHomeDetails{
 		DbVersion: common.String("11.2.0.4"),
 		Database: &database.CreateDatabaseDetails{
 			DbName:        common.String("Name"),
@@ -246,6 +247,7 @@ func TestDatabaseClient_LaunchDbSystem(t *testing.T) {
 		},
 	}
 
+	request.LaunchDbSystemDetails = details
 	r, err := c.LaunchDbSystem(context.Background(), request)
 	failIfError(t, err)
 
