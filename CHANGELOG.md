@@ -6,8 +6,49 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 ## 1.6.0 - 2018-05-31
 ### Added
-- Support for launching a database system from a backup in the Database service
+- Support for the "soft shutdown" instance action in the Compute service
+- Support for Auth Token management in the Identity service
 - Support for backup or clone of multiple volumes at once using volume groups in the Block Storage service
+- Support for launching a database system from a backup in the Database service
+
+### Breaking changes
+- ``LaunchDbSystemDetails`` is renamed to ``LaunchDbSystemBase`` and the type changed from struct to interface in ``LaunchDbSystemRequest``. Here is sample code that shows how to update your code to incorporate this change. 
+
+    - Before
+
+    ```golang
+    // create a LaunchDbSystemRequest
+    // There were two ways to initialize the LaunchDbSystemRequest struct.
+    // This breaking change only impact option #2
+    request := database.LaunchDbSystemRequest{}
+
+    // #1. explicity create LaunchDbSystemDetails struct (No impact)
+    details := database.LaunchDbSystemDetails{}
+    details.AvailabilityDomain = common.String(validAD())
+    details.CompartmentId = common.String(getCompartmentID())
+    // ... other properties
+    request.LaunchDbSystemDetails = details
+
+    // #2. use anonymous fields (Will break)
+    request.AvailabilityDomain = common.String(validAD())
+    request.CompartmentId = common.String(getCompartmentID())
+    // ...
+    ```
+
+    - After
+
+    ```golang
+    // create a LaunchDbSystemRequest
+    request := database.LaunchDbSystemRequest{}
+    details := database.LaunchDbSystemDetails{}
+    details.AvailabilityDomain = common.String(validAD())
+    details.CompartmentId = common.String(getCompartmentID())
+    // ... other properties
+
+    // set the details to LaunchDbSystemBase
+    request.LaunchDbSystemBase = details
+    // ...
+    ```
 
 ## 1.5.0 - 2018-05-17
 ### Added

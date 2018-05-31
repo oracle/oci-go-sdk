@@ -26,7 +26,7 @@
     <core.artifact.id>coreservices-api-spec</core.artifact.id>
     <core.spec.name>coreservices-api-spec-20160918.cond.yaml</core.spec.name>
 
-    <identity.artifact.version>0.2.97</identity.artifact.version>
+    <identity.artifact.version>0.2.101</identity.artifact.version>
     <identity.artifact.id>identity-control-plane-api-spec</identity.artifact.id>
     <identity.spec.name>identity-control-plane-api-spec-20160918.yaml</identity.spec.name>
 
@@ -524,7 +524,7 @@
       <plugin>
         <groupId>com.oracle.bmc.sdk</groupId>
         <artifactId>bmc-sdk-swagger-maven-plugin</artifactId>
-        <version>1.26-SNAPSHOT</version>
+        <version>1.27-SNAPSHOT</version>
         <executions>
           <execution>
             <id>go-public-sdk-identity</id>
