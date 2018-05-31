@@ -8,8 +8,8 @@ import (
 	"net/http"
 )
 
-// ListVolumesRequest wrapper for the ListVolumes operation
-type ListVolumesRequest struct {
+// ListVolumeGroupsRequest wrapper for the ListVolumeGroups operation
+type ListVolumeGroupsRequest struct {
 
 	// The OCID of the compartment.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
@@ -35,17 +35,14 @@ type ListVolumesRequest struct {
 	// optionally filter by Availability Domain if the scope of the resource type is within a
 	// single Availability Domain. If you call one of these "List" operations without specifying
 	// an Availability Domain, the resources are grouped by Availability Domain, then sorted.
-	SortBy ListVolumesSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
+	SortBy ListVolumeGroupsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order
 	// is case sensitive.
-	SortOrder ListVolumesSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
-
-	// The OCID of the volume group.
-	VolumeGroupId *string `mandatory:"false" contributesTo:"query" name:"volumeGroupId"`
+	SortOrder ListVolumeGroupsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
-	LifecycleState VolumeLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
+	LifecycleState VolumeGroupLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.
@@ -56,28 +53,28 @@ type ListVolumesRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request ListVolumesRequest) String() string {
+func (request ListVolumeGroupsRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request ListVolumesRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request ListVolumeGroupsRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request ListVolumesRequest) RetryPolicy() *common.RetryPolicy {
+func (request ListVolumeGroupsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// ListVolumesResponse wrapper for the ListVolumes operation
-type ListVolumesResponse struct {
+// ListVolumeGroupsResponse wrapper for the ListVolumeGroups operation
+type ListVolumeGroupsResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// A list of []Volume instances
-	Items []Volume `presentIn:"body"`
+	// A list of []VolumeGroup instances
+	Items []VolumeGroup `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
@@ -89,56 +86,56 @@ type ListVolumesResponse struct {
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
-func (response ListVolumesResponse) String() string {
+func (response ListVolumeGroupsResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response ListVolumesResponse) HTTPResponse() *http.Response {
+func (response ListVolumeGroupsResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }
 
-// ListVolumesSortByEnum Enum with underlying type: string
-type ListVolumesSortByEnum string
+// ListVolumeGroupsSortByEnum Enum with underlying type: string
+type ListVolumeGroupsSortByEnum string
 
-// Set of constants representing the allowable values for ListVolumesSortBy
+// Set of constants representing the allowable values for ListVolumeGroupsSortBy
 const (
-	ListVolumesSortByTimecreated ListVolumesSortByEnum = "TIMECREATED"
-	ListVolumesSortByDisplayname ListVolumesSortByEnum = "DISPLAYNAME"
+	ListVolumeGroupsSortByTimecreated ListVolumeGroupsSortByEnum = "TIMECREATED"
+	ListVolumeGroupsSortByDisplayname ListVolumeGroupsSortByEnum = "DISPLAYNAME"
 )
 
-var mappingListVolumesSortBy = map[string]ListVolumesSortByEnum{
-	"TIMECREATED": ListVolumesSortByTimecreated,
-	"DISPLAYNAME": ListVolumesSortByDisplayname,
+var mappingListVolumeGroupsSortBy = map[string]ListVolumeGroupsSortByEnum{
+	"TIMECREATED": ListVolumeGroupsSortByTimecreated,
+	"DISPLAYNAME": ListVolumeGroupsSortByDisplayname,
 }
 
-// GetListVolumesSortByEnumValues Enumerates the set of values for ListVolumesSortBy
-func GetListVolumesSortByEnumValues() []ListVolumesSortByEnum {
-	values := make([]ListVolumesSortByEnum, 0)
-	for _, v := range mappingListVolumesSortBy {
+// GetListVolumeGroupsSortByEnumValues Enumerates the set of values for ListVolumeGroupsSortBy
+func GetListVolumeGroupsSortByEnumValues() []ListVolumeGroupsSortByEnum {
+	values := make([]ListVolumeGroupsSortByEnum, 0)
+	for _, v := range mappingListVolumeGroupsSortBy {
 		values = append(values, v)
 	}
 	return values
 }
 
-// ListVolumesSortOrderEnum Enum with underlying type: string
-type ListVolumesSortOrderEnum string
+// ListVolumeGroupsSortOrderEnum Enum with underlying type: string
+type ListVolumeGroupsSortOrderEnum string
 
-// Set of constants representing the allowable values for ListVolumesSortOrder
+// Set of constants representing the allowable values for ListVolumeGroupsSortOrder
 const (
-	ListVolumesSortOrderAsc  ListVolumesSortOrderEnum = "ASC"
-	ListVolumesSortOrderDesc ListVolumesSortOrderEnum = "DESC"
+	ListVolumeGroupsSortOrderAsc  ListVolumeGroupsSortOrderEnum = "ASC"
+	ListVolumeGroupsSortOrderDesc ListVolumeGroupsSortOrderEnum = "DESC"
 )
 
-var mappingListVolumesSortOrder = map[string]ListVolumesSortOrderEnum{
-	"ASC":  ListVolumesSortOrderAsc,
-	"DESC": ListVolumesSortOrderDesc,
+var mappingListVolumeGroupsSortOrder = map[string]ListVolumeGroupsSortOrderEnum{
+	"ASC":  ListVolumeGroupsSortOrderAsc,
+	"DESC": ListVolumeGroupsSortOrderDesc,
 }
 
-// GetListVolumesSortOrderEnumValues Enumerates the set of values for ListVolumesSortOrder
-func GetListVolumesSortOrderEnumValues() []ListVolumesSortOrderEnum {
-	values := make([]ListVolumesSortOrderEnum, 0)
-	for _, v := range mappingListVolumesSortOrder {
+// GetListVolumeGroupsSortOrderEnumValues Enumerates the set of values for ListVolumeGroupsSortOrder
+func GetListVolumeGroupsSortOrderEnumValues() []ListVolumeGroupsSortOrderEnum {
+	values := make([]ListVolumeGroupsSortOrderEnum, 0)
+	for _, v := range mappingListVolumeGroupsSortOrder {
 		values = append(values, v)
 	}
 	return values

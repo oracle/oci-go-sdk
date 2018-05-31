@@ -8,15 +8,14 @@ import (
 	"net/http"
 )
 
-// ListVolumesRequest wrapper for the ListVolumes operation
-type ListVolumesRequest struct {
+// ListVolumeGroupBackupsRequest wrapper for the ListVolumeGroupBackups operation
+type ListVolumeGroupBackupsRequest struct {
 
 	// The OCID of the compartment.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// The name of the Availability Domain.
-	// Example: `Uocm:PHX-AD-1`
-	AvailabilityDomain *string `mandatory:"false" contributesTo:"query" name:"availabilityDomain"`
+	// The OCID of the volume group.
+	VolumeGroupId *string `mandatory:"false" contributesTo:"query" name:"volumeGroupId"`
 
 	// The maximum number of items to return in a paginated "List" call.
 	// Example: `500`
@@ -35,17 +34,11 @@ type ListVolumesRequest struct {
 	// optionally filter by Availability Domain if the scope of the resource type is within a
 	// single Availability Domain. If you call one of these "List" operations without specifying
 	// an Availability Domain, the resources are grouped by Availability Domain, then sorted.
-	SortBy ListVolumesSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
+	SortBy ListVolumeGroupBackupsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order
 	// is case sensitive.
-	SortOrder ListVolumesSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
-
-	// The OCID of the volume group.
-	VolumeGroupId *string `mandatory:"false" contributesTo:"query" name:"volumeGroupId"`
-
-	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
-	LifecycleState VolumeLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
+	SortOrder ListVolumeGroupBackupsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.
@@ -56,28 +49,28 @@ type ListVolumesRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request ListVolumesRequest) String() string {
+func (request ListVolumeGroupBackupsRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request ListVolumesRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request ListVolumeGroupBackupsRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request ListVolumesRequest) RetryPolicy() *common.RetryPolicy {
+func (request ListVolumeGroupBackupsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// ListVolumesResponse wrapper for the ListVolumes operation
-type ListVolumesResponse struct {
+// ListVolumeGroupBackupsResponse wrapper for the ListVolumeGroupBackups operation
+type ListVolumeGroupBackupsResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// A list of []Volume instances
-	Items []Volume `presentIn:"body"`
+	// A list of []VolumeGroupBackup instances
+	Items []VolumeGroupBackup `presentIn:"body"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
@@ -89,56 +82,56 @@ type ListVolumesResponse struct {
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
-func (response ListVolumesResponse) String() string {
+func (response ListVolumeGroupBackupsResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response ListVolumesResponse) HTTPResponse() *http.Response {
+func (response ListVolumeGroupBackupsResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }
 
-// ListVolumesSortByEnum Enum with underlying type: string
-type ListVolumesSortByEnum string
+// ListVolumeGroupBackupsSortByEnum Enum with underlying type: string
+type ListVolumeGroupBackupsSortByEnum string
 
-// Set of constants representing the allowable values for ListVolumesSortBy
+// Set of constants representing the allowable values for ListVolumeGroupBackupsSortBy
 const (
-	ListVolumesSortByTimecreated ListVolumesSortByEnum = "TIMECREATED"
-	ListVolumesSortByDisplayname ListVolumesSortByEnum = "DISPLAYNAME"
+	ListVolumeGroupBackupsSortByTimecreated ListVolumeGroupBackupsSortByEnum = "TIMECREATED"
+	ListVolumeGroupBackupsSortByDisplayname ListVolumeGroupBackupsSortByEnum = "DISPLAYNAME"
 )
 
-var mappingListVolumesSortBy = map[string]ListVolumesSortByEnum{
-	"TIMECREATED": ListVolumesSortByTimecreated,
-	"DISPLAYNAME": ListVolumesSortByDisplayname,
+var mappingListVolumeGroupBackupsSortBy = map[string]ListVolumeGroupBackupsSortByEnum{
+	"TIMECREATED": ListVolumeGroupBackupsSortByTimecreated,
+	"DISPLAYNAME": ListVolumeGroupBackupsSortByDisplayname,
 }
 
-// GetListVolumesSortByEnumValues Enumerates the set of values for ListVolumesSortBy
-func GetListVolumesSortByEnumValues() []ListVolumesSortByEnum {
-	values := make([]ListVolumesSortByEnum, 0)
-	for _, v := range mappingListVolumesSortBy {
+// GetListVolumeGroupBackupsSortByEnumValues Enumerates the set of values for ListVolumeGroupBackupsSortBy
+func GetListVolumeGroupBackupsSortByEnumValues() []ListVolumeGroupBackupsSortByEnum {
+	values := make([]ListVolumeGroupBackupsSortByEnum, 0)
+	for _, v := range mappingListVolumeGroupBackupsSortBy {
 		values = append(values, v)
 	}
 	return values
 }
 
-// ListVolumesSortOrderEnum Enum with underlying type: string
-type ListVolumesSortOrderEnum string
+// ListVolumeGroupBackupsSortOrderEnum Enum with underlying type: string
+type ListVolumeGroupBackupsSortOrderEnum string
 
-// Set of constants representing the allowable values for ListVolumesSortOrder
+// Set of constants representing the allowable values for ListVolumeGroupBackupsSortOrder
 const (
-	ListVolumesSortOrderAsc  ListVolumesSortOrderEnum = "ASC"
-	ListVolumesSortOrderDesc ListVolumesSortOrderEnum = "DESC"
+	ListVolumeGroupBackupsSortOrderAsc  ListVolumeGroupBackupsSortOrderEnum = "ASC"
+	ListVolumeGroupBackupsSortOrderDesc ListVolumeGroupBackupsSortOrderEnum = "DESC"
 )
 
-var mappingListVolumesSortOrder = map[string]ListVolumesSortOrderEnum{
-	"ASC":  ListVolumesSortOrderAsc,
-	"DESC": ListVolumesSortOrderDesc,
+var mappingListVolumeGroupBackupsSortOrder = map[string]ListVolumeGroupBackupsSortOrderEnum{
+	"ASC":  ListVolumeGroupBackupsSortOrderAsc,
+	"DESC": ListVolumeGroupBackupsSortOrderDesc,
 }
 
-// GetListVolumesSortOrderEnumValues Enumerates the set of values for ListVolumesSortOrder
-func GetListVolumesSortOrderEnumValues() []ListVolumesSortOrderEnum {
-	values := make([]ListVolumesSortOrderEnum, 0)
-	for _, v := range mappingListVolumesSortOrder {
+// GetListVolumeGroupBackupsSortOrderEnumValues Enumerates the set of values for ListVolumeGroupBackupsSortOrder
+func GetListVolumeGroupBackupsSortOrderEnumValues() []ListVolumeGroupBackupsSortOrderEnum {
+	values := make([]ListVolumeGroupBackupsSortOrderEnum, 0)
+	for _, v := range mappingListVolumeGroupBackupsSortOrder {
 		values = append(values, v)
 	}
 	return values
