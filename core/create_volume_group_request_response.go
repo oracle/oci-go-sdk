@@ -1,18 +1,18 @@
 // Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
-package database
+package core
 
 import (
 	"github.com/oracle/oci-go-sdk/common"
 	"net/http"
 )
 
-// LaunchDbSystemRequest wrapper for the LaunchDbSystem operation
-type LaunchDbSystemRequest struct {
+// CreateVolumeGroupRequest wrapper for the CreateVolumeGroup operation
+type CreateVolumeGroupRequest struct {
 
-	// Request to launch a DB System.
-	LaunchDbSystemDetails LaunchDbSystemBase `contributesTo:"body"`
+	// Request to create a new volume group.
+	CreateVolumeGroupDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
@@ -30,28 +30,28 @@ type LaunchDbSystemRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request LaunchDbSystemRequest) String() string {
+func (request CreateVolumeGroupRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request LaunchDbSystemRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request CreateVolumeGroupRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request LaunchDbSystemRequest) RetryPolicy() *common.RetryPolicy {
+func (request CreateVolumeGroupRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// LaunchDbSystemResponse wrapper for the LaunchDbSystem operation
-type LaunchDbSystemResponse struct {
+// CreateVolumeGroupResponse wrapper for the CreateVolumeGroup operation
+type CreateVolumeGroupResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The DbSystem instance
-	DbSystem `presentIn:"body"`
+	// The VolumeGroup instance
+	VolumeGroup `presentIn:"body"`
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
@@ -61,11 +61,11 @@ type LaunchDbSystemResponse struct {
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
-func (response LaunchDbSystemResponse) String() string {
+func (response CreateVolumeGroupResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response LaunchDbSystemResponse) HTTPResponse() *http.Response {
+func (response CreateVolumeGroupResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }
