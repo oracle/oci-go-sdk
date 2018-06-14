@@ -916,14 +916,18 @@ func TestOmitFieldsInJson_SimpleStructWithMapStruct(t *testing.T) {
 }
 
 func TestOmitFieldsInJson_removeFields(t *testing.T) {
+	type MyEnum string
 	type InSstruct struct {
 		AString      *string `mandatory:"false" json:"a"`
 		ANilString   *string `mandatory:"false" json:"anil"`
+		ASecondEnum  MyEnum  `mandatory:"false" json:"secenum,omitempty"`
+		ThirdEnum    MyEnum  `mandatory:"false" json:"tnum,omitempty"`
 		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
 	}
 	type Nested struct {
-		N *string `mandatory:"false" json:"n"`
-		//Numbers []int `mandatory:"false" json:"numbers"`
+		N        *string              `mandatory:"false" json:"n"`
+		AnEnum   MyEnum               `mandatory:"false" json:"anenum,omitempty"`
+		AnEnum2  MyEnum               `mandatory:"false" json:"anenum2,omitempty"`
 		ZComplex map[string]InSstruct `mandatory:"false" json:"complex"`
 	}
 	val := ""
@@ -931,16 +935,16 @@ func TestOmitFieldsInJson_removeFields(t *testing.T) {
 	//numbers := []int{1, 3}
 	//s := Nested{N:&val, Numbers: numbers, ZComplex:InSstruct{AString:&val, EmptyNumbers:[]int{}}}
 	data := make(map[string]InSstruct)
-	data["one"] = InSstruct{AString: &val, EmptyNumbers: []int{}}
+	data["one"] = InSstruct{AString: &val, EmptyNumbers: []int{}, ThirdEnum: MyEnum("enum")}
 	data["two"] = InSstruct{AString: &val2, EmptyNumbers: []int{1}}
 	data["ten"] = InSstruct{AString: &val2}
 
-	s := Nested{ZComplex: data}
+	s := Nested{ZComplex: data, AnEnum2: MyEnum("hello")}
 	jsonIn, _ := json.Marshal(s)
 	sVal := reflect.ValueOf(s)
 	jsonRet, err := removeNilFieldsInJSONWithTaggedStruct(jsonIn, sVal)
 	assert.NoError(t, err)
-	assert.Equal(t, `{"complex":{"one":{"a":"","aempty":[]},"ten":{"a":"two"},"two":{"a":"two","aempty":[1]}}}`, string(jsonRet))
+	assert.Equal(t, `{"anenum2":"hello","complex":{"one":{"a":"","aempty":[],"tnum":"enum"},"ten":{"a":"two"},"two":{"a":"two","aempty":[1]}}}`, string(jsonRet))
 }
 
 func TestOmitFieldsInJson_SimpleStructWithTime(t *testing.T) {

@@ -128,7 +128,7 @@ func isNillableType(value *reflect.Value) bool {
 	return false
 }
 
-// omitNilFieldsInJSON, removes json keys whose struct value is nil, and the field is tag with the json and
+// omitNilFieldsInJSON, removes json keys whose struct value is nil, and the field is tagged with the json and
 // mandatory:false tags
 func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, error) {
 	switch value.Kind() {
@@ -157,6 +157,12 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, er
 			//Delete the struct field from the json representation
 			if ok {
 				delete(jsonMap, jsonFieldName)
+				continue
+			}
+
+			// Check to make sure the field is part of the json representation of the value
+			if _, contains := jsonMap[jsonFieldName]; !contains {
+				Debugf("Field %s is not present in json, omitting", jsonFieldName)
 				continue
 			}
 

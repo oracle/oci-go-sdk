@@ -19,6 +19,7 @@ const (
 	vcnDisplayName     = "OCI-GOSDK-Sample-VCN"
 	subnetDisplayName1 = "OCI-GOSDK-Sample-Subnet1"
 	subnetDisplayName2 = "OCI-GOSDK-Sample-Subnet2"
+	subnetDisplayName3 = "OCI-GOSDK-Sample-Subnet3"
 
 	// replace following variables with your instance info
 	// this is used by ExampleCreateImageDetails_Polymorphic
@@ -205,7 +206,7 @@ func CreateOrGetSubnetWithDetails(displayName *string, cidrBlock *string, dnsLab
 
 	// retry condition check, stop unitl return true
 	pollUntilAvailable := func(r common.OCIOperationResponse) bool {
-		if converted, ok := r.Response.(core.CreateSubnetResponse); ok {
+		if converted, ok := r.Response.(core.GetSubnetResponse); ok {
 			return converted.LifecycleState != core.SubnetLifecycleStateAvailable
 		}
 		return true
