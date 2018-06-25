@@ -45,7 +45,6 @@ const (
 	testGroupDisplayName         = "GOSDK2_Test_Deps_TestGroup"
 	tagDisplayName               = "GOSDK2_Test_Deps_Tag"
 	tagNamespaceDisplayName      = "GOSDK2_Test_Deps_TagNamespcae"
-	testImageDisplayName         = "Oracle-Linux-7.4-2018.02.21-1"
 )
 
 // a helper method to either create a new vcn or get the one already exist
@@ -206,20 +205,15 @@ func listSubnets(t *testing.T) []core.Subnet {
 	return r.Items
 }
 
-// list the available images in the test compartment
-func listImages(t *testing.T) []core.Image {
-	return listImagesByDisplayName(t, nil)
-}
-
-func listImagesByDisplayName(t *testing.T, displayName *string) []core.Image {
+func listOracleImages(t *testing.T) []core.Image {
 	c, clerr := core.NewComputeClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 	request := core.ListImagesRequest{
-		CompartmentId: common.String(getCompartmentID()),
-	}
-
-	if displayName != nil {
-		request.DisplayName = displayName
+		CompartmentId:   common.String(getCompartmentID()),
+		OperatingSystem: common.String("Oracle Linux"),
+		SortBy:          core.ListImagesSortByTimecreated,
+		SortOrder:       core.ListImagesSortOrderDesc,
+		Shape:           common.String("VM.Standard1.1"),
 	}
 
 	r, err := c.ListImages(context.Background(), request)
@@ -275,7 +269,7 @@ func listShapesForImage(t *testing.T, imageID *string) []core.Shape {
 	failIfError(t, clerr)
 
 	if imageID == nil {
-		images := listImages(t)
+		images := listOracleImages(t)
 
 		assert.NotEmpty(t, images)
 		assert.NotEqual(t, len(images), 0)
@@ -322,7 +316,7 @@ func createOrGetInstance(t *testing.T) core.Instance {
 
 	// search image by display name to make integration test running more relaible
 	// i.e. ServiceLimitExeceed error etc...
-	images := listImagesByDisplayName(t, common.String(testImageDisplayName))
+	images := listOracleImages(t)
 	assert.NotEmpty(t, images)
 	createRequest.ImageId = images[0].Id
 

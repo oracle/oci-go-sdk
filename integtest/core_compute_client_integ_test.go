@@ -249,7 +249,7 @@ func TestComputeClient_LaunchInstance(t *testing.T) {
 
 	// search image by display name to make integration test running more relaible
 	// i.e. ServiceLimitExeceed error etc...
-	images := listImagesByDisplayName(t, common.String(testImageDisplayName))
+	images := listOracleImages(t)
 	assert.NotEmpty(t, images)
 	request.ImageId = images[0].Id
 
@@ -294,7 +294,7 @@ func TestComputeClient_ListConsoleHistories(t *testing.T) {
 }
 
 func TestComputeClient_ListImages(t *testing.T) {
-	images := listImages(t)
+	images := listOracleImages(t)
 	assert.NotEmpty(t, images, fmt.Sprint(images))
 	return
 }
