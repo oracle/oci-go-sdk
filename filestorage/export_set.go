@@ -54,7 +54,7 @@ type ExportSet struct {
 	// then `fbytes` and `abytes` will both be '0'.
 	MaxFsStatBytes *int64 `mandatory:"false" json:"maxFsStatBytes"`
 
-	// Controls the maximum `ffiles`, `ffiles`, and `afiles`
+	// Controls the maximum `tfiles`, `ffiles`, and `afiles`
 	// values reported by `NFS FSSTAT` calls through any associated
 	// mount targets. This is an advanced feature. For most
 	// applications, use the default value. The
