@@ -180,6 +180,10 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, er
 		}
 		return jsonMap, nil
 	case reflect.Slice, reflect.Array:
+		// Special case: a []byte may have been marshalled as a string
+		if reflect.TypeOf(data).Kind() == reflect.String && value.Type().Elem().Kind() == reflect.Uint8 {
+			return data, nil
+		}
 		jsonList := data.([]interface{})
 		newList := make([]interface{}, len(jsonList))
 		var err error
