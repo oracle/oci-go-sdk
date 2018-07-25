@@ -6,10 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 ## 2.1.0 - 2018-07-26
 ### Added
-- 
+- Support for the OCI Search service
+- Support for specifying a backup policy when creating a boot volume in the Block Storage service
 
 ### Fixed
 - OCI error is missing opc-request-id value [Github Issue 120](https://github.com/oracle/oci-go-sdk/issues/120)
+- Include raw http response when service error occurred
 
 ## 2.0.0 - 2018-07-12
 ### Added
