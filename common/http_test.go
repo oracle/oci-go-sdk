@@ -63,7 +63,7 @@ type uploadAPIKeyRequestPtr struct {
 
 type EmbeddedByteSlice struct {
 	Key   *[]byte `mandatory:"false" json:"key"`
-	Value *[]byte `mandatory:"true" json:"value"`
+	Value []byte  `mandatory:"true" json:"value"`
 }
 
 type KVList struct {
@@ -376,9 +376,9 @@ func TestHttpMarshallerEmbeddedBytes(t *testing.T) {
 	s := KVRequest{
 		KVList{
 			KVs: []EmbeddedByteSlice{
-				{Value: &[]byte{1, 2, 3, 4}},
-				{Key: &[]byte{6, 7, 8, 9}, Value: &[]byte{1, 2, 3, 4}},
-				{Value: &[]byte{}},
+				{Value: []byte{1, 2, 3, 4}},
+				{Key: &[]byte{6, 7, 8, 9}, Value: []byte{1, 2, 3, 4}},
+				{Value: []byte{}},
 			},
 		}}
 	request := MakeDefaultHTTPRequest(http.MethodPost, "/random")

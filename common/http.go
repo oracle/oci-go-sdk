@@ -184,7 +184,10 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, er
 		if reflect.TypeOf(data).Kind() == reflect.String && value.Type().Elem().Kind() == reflect.Uint8 {
 			return data, nil
 		}
-		jsonList := data.([]interface{})
+		jsonList, ok := data.([]interface{})
+		if !ok {
+			return nil, fmt.Errorf("can not omit nil fields, data was expected to be a list")
+		}
 		newList := make([]interface{}, len(jsonList))
 		var err error
 		for i, val := range jsonList {
@@ -195,7 +198,10 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, er
 		}
 		return newList, nil
 	case reflect.Map:
-		jsonMap := data.(map[string]interface{})
+		jsonMap, ok := data.(map[string]interface{})
+		if !ok {
+			return nil, fmt.Errorf("can not omit nil fields, data was expected to be a map")
+		}
 		newMap := make(map[string]interface{}, len(jsonMap))
 		var err error
 		for key, val := range jsonMap {
