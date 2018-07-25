@@ -22,7 +22,7 @@
     <preferred.temp.dir>${project.build.directory}/preferred</preferred.temp.dir>
     <preprocessed.temp.dir>${project.build.directory}/preprocessed</preprocessed.temp.dir>
 
-    <core.artifact.version>0.2.180</core.artifact.version>
+    <core.artifact.version>0.2.202</core.artifact.version>
     <core.artifact.id>coreservices-api-spec</core.artifact.id>
     <core.spec.name>coreservices-api-spec-20160918.cond.yaml</core.spec.name>
 
@@ -61,6 +61,10 @@
     <containerengine.artifact.version>1.0.11</containerengine.artifact.version>
     <containerengine.artifact.id>clusters-api-spec</containerengine.artifact.id>
     <containerengine.spec.name>clusters-api-spec.yaml</containerengine.spec.name>
+
+    <resourcesearch.artifact.version>0.0.8</resourcesearch.artifact.version>
+    <resourcesearch.artifact.id>resource-query-service-spec</resourcesearch.artifact.id>
+    <resourcesearch.spec.name>rqs.yaml</resourcesearch.spec.name>
     <!-- remove when upgrading to pic-pom:0.4.4 -->
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -253,6 +257,24 @@
                           <type>jar</type>
                           <includes>**/*</includes>
                           <outputDirectory>${spec.temp.dir}/containerengine</outputDirectory>
+                      </artifactItem>
+                  </artifactItems>
+              </configuration>
+          </execution>
+          <execution>
+              <id>unpack-resourcesearch</id>
+              <phase>initialize</phase>
+              <goals>
+                  <goal>unpack</goal>
+              </goals>
+              <configuration>
+                  <artifactItems>
+                      <artifactItem>
+                          <groupId>com.oracle.pic.query</groupId>
+                          <artifactId>${resourcesearch.artifact.id}</artifactId>
+                          <type>jar</type>
+                          <includes>**/*</includes>
+                          <outputDirectory>${spec.temp.dir}/resourcesearch</outputDirectory>
                       </artifactItem>
                   </artifactItems>
               </configuration>
@@ -565,6 +587,34 @@
                   <groupFile>${enabled.groups.file}</groupFile>
               </configuration>
           </execution>
+
+          <!--RQS-->
+          <execution>
+              <id>spec-conditionals-prefer-resourcesearch</id>
+              <phase>initialize</phase>
+              <goals>
+                  <goal>prefer</goal>
+              </goals>
+              <configuration>
+                  <inputFiles>
+                      <inputFile>${spec.temp.dir}/resourcesearch/source/${resourcesearch.spec.name}</inputFile>
+                      <inputFile>${spec.temp.dir}/resourcesearch/${resourcesearch.spec.name}</inputFile>
+                  </inputFiles>
+                  <outputFile>${preferred.temp.dir}/${resourcesearch.spec.name}</outputFile>
+              </configuration>
+          </execution>
+          <execution>
+              <id>spec-conditionals-preprocess-resourcesearch</id>
+              <phase>initialize</phase>
+              <goals>
+                  <goal>preprocess</goal>
+              </goals>
+              <configuration>
+                  <inputFile>${preferred.temp.dir}/${resourcesearch.spec.name}</inputFile>
+                  <outputFile>${preprocessed.temp.dir}/${resourcesearch.spec.name}</outputFile>
+                  <groupFile>${enabled.groups.file}</groupFile>
+              </configuration>
+          </execution>
         </executions>
       </plugin>
 
@@ -769,6 +819,25 @@
                   <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
               </configuration>
           </execution>
+          <execution>
+              <id>go-public-sdk-resourcesearch</id>
+              <phase>compile</phase>
+              <goals>
+                  <goal>generate</goal>
+              </goals>
+              <configuration>
+                  <language>oracle-go-sdk</language>
+                  <specPath>${preprocessed.temp.dir}/${resourcesearch.spec.name}</specPath>
+                  <outputDir>${env.GOPATH}/src/${fullyQualifiedProjectName}</outputDir>
+                  <specGenerationType>${generationType}</specGenerationType>
+                  <basePackage>resourcesearch</basePackage>
+                  <additionalProperties>
+                      <specName>resourcesearch</specName>
+                      <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
+                      <serviceHostName>query</serviceHostName>
+                  </additionalProperties>
+              </configuration>
+          </execution>
         </executions>
       </plugin>
       <plugin>
@@ -864,6 +933,15 @@
               </includes>
             </fileset>
             <fileset>
+                <directory>lib/oci/resourcesearch</directory>
+                <excludes>
+                    <exclude>util.rb</exclude>
+                </excludes>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </fileset>
+            <fileset>
               <directory>.yardoc</directory>
               <includes>
                 <include>**/*</include>
@@ -938,6 +1016,11 @@
         <groupId>com.oracle.pic.lb</groupId>
         <artifactId>${lb.artifact.id}</artifactId>
         <version>${lb.artifact.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>com.oracle.pic.query</groupId>
+          <artifactId>${resourcesearch.artifact.id}</artifactId>
+          <version>${resourcesearch.artifact.version}</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>

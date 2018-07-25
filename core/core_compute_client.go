@@ -1239,11 +1239,12 @@ func (client ComputeClient) listConsoleHistories(ctx context.Context, request co
 	return response, err
 }
 
-// ListImages Lists the available images in the specified compartment.
-// If you specify a value for the `sortBy` parameter, Oracle-provided images appear first in the list, followed by custom images.
-// For more
-// information about images, see
-// Managing Custom Images (https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Tasks/managingcustomimages.htm).
+// ListImages Lists the available images in the specified compartment, including both
+// Oracle-provided images (https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/References/images.htm) and
+// custom images (https://docs.us-phoenix-1.oraclecloud.com/Content/Compute/Tasks/managingcustomimages.htm) that have
+// been created. The list of images returned is ordered to first show all
+// Oracle-provided images, then all custom images.
+// The order of images returned may change when new images are released.
 func (client ComputeClient) ListImages(ctx context.Context, request ListImagesRequest) (response ListImagesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
