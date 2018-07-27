@@ -296,8 +296,8 @@ def isNewService(pom, artifact_id):
     return False
 
 def add_or_update_spec(artifact_id=None, group_id=None, spec_name=None, relative_spec_path=None, subdomain=None, version=None, spec_generation_type=None, regional_sub_service_overrides=None, non_regional_sub_service_overrides=None, pom_location=None, github_whitelist_location=None):
-    if not version:
-        raise click.exceptions.MissingParameter(message='Version parameter is required')
+    if not artifact_id:
+        raise click.exceptions.MissingParameter(param_type='option', param_hint='--artifact-id')
 
     if spec_generation_type:
         print('Note: --spec-generation-type is ignored for the GO SDK, since it is set in the ../pom.xml file for all modules')
@@ -311,13 +311,15 @@ def add_or_update_spec(artifact_id=None, group_id=None, spec_name=None, relative
     # determine if this artifact is already in the spec
     if isNewService(pom, artifact_id):
         print('Artifact {} already exists in pom.xml. Updating specified fields...'.format(artifact_id))
-        update_version_of_existing_spec(pom, artifact_id, version)
+
+        if version:
+            update_version_of_existing_spec(pom, artifact_id, version)
 
         if relative_spec_path:
             update_relative_spec_path(pom, artifact_id, relative_spec_path)
     else:
-        if not artifact_id:
-            raise UsageError('Must specify --artifact-id for a new spec')
+        if not version:
+            raise UsageError('Must specify --version for a new spec')
 
         if not subdomain:
             raise UsageError('Must specify --subdomain for a new spec')
