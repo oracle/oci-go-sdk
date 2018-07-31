@@ -10,7 +10,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"path"
 	"reflect"
 	"regexp"
 	"strconv"
@@ -366,8 +365,7 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 	if !templatedPathRegex.MatchString(currentURLPath) {
 		Debugln("Marshaling request to path by appending field:", field.Name)
 		allPath := []string{currentURLPath, additionalURLPathPart}
-		newPath := strings.Join(allPath, "/")
-		request.URL.Path = path.Clean(newPath)
+		request.URL.Path = strings.Join(allPath, "/")
 	} else {
 		var fieldName string
 		if fieldName = field.Tag.Get("name"); fieldName == "" {
@@ -376,7 +374,7 @@ func addToPath(request *http.Request, value reflect.Value, field reflect.StructF
 		}
 		urlTemplate := currentURLPath
 		Debugln("Marshaling to path from field:", field.Name, "in template:", urlTemplate)
-		request.URL.Path = path.Clean(strings.Replace(urlTemplate, "{"+fieldName+"}", additionalURLPathPart, -1))
+		request.URL.Path = strings.Replace(urlTemplate, "{"+fieldName+"}", additionalURLPathPart, -1)
 	}
 	return
 }
