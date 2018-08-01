@@ -61,6 +61,19 @@ type uploadAPIKeyRequestPtr struct {
 	OpcRetryToken              *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 }
 
+type EmbeddedByteSlice struct {
+	Key   *[]byte `mandatory:"false" json:"key"`
+	Value []byte  `mandatory:"true" json:"value"`
+}
+
+type KVList struct {
+	KVs []EmbeddedByteSlice `mandatory:"true" json:"kvs"`
+}
+
+type KVRequest struct {
+	KVList `contributesTo:"body"`
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 func TestHttpMarshallerInvalidStruct(t *testing.T) {
@@ -194,7 +207,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 	body, _ := ioutil.ReadAll(request.Body)
 	json.Unmarshal(body, &content)
 	when := s.When.Format(time.RFC3339)
-	assert.True(t, request.URL.Path == "/101")
+	assert.True(t, request.URL.Path == "//101")
 	assert.True(t, request.URL.Query().Get("name") == s.Name)
 	assert.True(t, request.URL.Query().Get("income") == strconv.FormatFloat(float64(s.Income), 'f', 6, 32))
 	assert.True(t, request.URL.Query().Get("when") == when)
@@ -357,6 +370,22 @@ func TestHttpMarshalerUnsupportedTypes(t *testing.T) {
 		Debugln(e)
 		assert.Error(t, e)
 	}
+}
+
+func TestHttpMarshallerEmbeddedBytes(t *testing.T) {
+	s := KVRequest{
+		KVList{
+			KVs: []EmbeddedByteSlice{
+				{Value: []byte{1, 2, 3, 4}},
+				{Key: &[]byte{6, 7, 8, 9}, Value: []byte{1, 2, 3, 4}},
+				{Value: []byte{}},
+			},
+		}}
+	request := MakeDefaultHTTPRequest(http.MethodPost, "/random")
+	HTTPRequestMarshaller(s, &request)
+	b, _ := ioutil.ReadAll(request.Body)
+	st := string(b)
+	assert.Equal(t, `{"kvs":[{"value":"AQIDBA=="},{"key":"BgcICQ==","value":"AQIDBA=="},{"value":""}]}`, st)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

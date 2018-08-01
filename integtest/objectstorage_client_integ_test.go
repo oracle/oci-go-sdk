@@ -46,7 +46,7 @@ func getObject(t *testing.T, namespace, bucketname, objectname string) (objectst
 	return c.GetObject(context.Background(), request)
 }
 
-func putObject(t *testing.T, namespace, bucketname, objectname string, contentLen int, content io.ReadCloser, metadata map[string]string) error {
+func putObject(t *testing.T, namespace, bucketname, objectname string, contentLen int64, content io.ReadCloser, metadata map[string]string) error {
 	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(configurationProvider())
 	request := objectstorage.PutObjectRequest{
 		NamespaceName: &namespace,
@@ -119,7 +119,7 @@ func TestObjectStorageClient_BigFile(t *testing.T) {
 	defer file.Close()
 	failIfError(t, e)
 
-	e = putObject(t, namespace, bname, filename, int(filesize), file, nil)
+	e = putObject(t, namespace, bname, filename, filesize, file, nil)
 	failIfError(t, e)
 	fmt.Println(expectedHash)
 	rGet, e := getObject(t, namespace, bname, filename)
@@ -154,7 +154,7 @@ func TestObjectStorage_GzipFileEncoding(t *testing.T) {
 		NamespaceName:   &namespace,
 		BucketName:      &bname,
 		ObjectName:      &objname,
-		ContentLength:   common.Int(zBytes.Len()),
+		ContentLength:   common.Int64(int64(zBytes.Len())),
 		PutObjectBody:   ioutil.NopCloser(&zBytes),
 		ContentType:     common.String("text/plain"),
 		ContentEncoding: common.String("gzip"),
@@ -180,7 +180,7 @@ func TestObjectStorageClient_Object(t *testing.T) {
 	createBucket(t, getNamespace(t), getTenancyID(), bname)
 	defer deleteBucket(t, namespace, bname)
 
-	contentlen := len([]byte(data))
+	contentlen := int64(len([]byte(data)))
 	filepath := writeTempFile(data)
 	filename := path.Base(filepath)
 	defer removeFileFn(filepath)
@@ -237,7 +237,7 @@ func TestObjectStorageClient_AbortUpload(t *testing.T) {
 		NamespaceName: &namespace,
 		BucketName:    &bname,
 		ObjectName:    &filename,
-		ContentLength: common.Int(int(filesize)),
+		ContentLength: common.Int64(filesize),
 		PutObjectBody: file,
 	}
 	ctx, cancelFn := context.WithTimeout(bgCtx, 5*time.Millisecond)

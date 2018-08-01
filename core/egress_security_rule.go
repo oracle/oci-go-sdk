@@ -15,8 +15,13 @@ import (
 // EgressSecurityRule A rule for allowing outbound IP packets.
 type EgressSecurityRule struct {
 
-	// The destination CIDR block for the egress rule. This is the range of IP addresses that a
-	// packet originating from the instance can go to.
+	// Conceptually, this is the range of IP addresses that a packet originating from the instance
+	// can go to.
+	// Allowed values:
+	//   * IP address range in CIDR notation. For example: `192.168.1.0/24`
+	//   * The `cidrBlock` value for a Service, if you're
+	//     setting up a security list rule for traffic destined for a particular service through
+	//     a service gateway. For example: `oci-phx-objectstorage`
 	Destination *string `mandatory:"true" json:"destination"`
 
 	// The transport protocol. Specify either `all` or an IPv4 protocol number as
@@ -24,6 +29,14 @@ type EgressSecurityRule struct {
 	// Protocol Numbers (http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	// Options are supported only for ICMP ("1"), TCP ("6"), and UDP ("17").
 	Protocol *string `mandatory:"true" json:"protocol"`
+
+	// Type of destination for the rule. The default is `CIDR_BLOCK`.
+	// Allowed values:
+	//   * `CIDR_BLOCK`: If the rule's `destination` is an IP address range in CIDR notation.
+	//   * `SERVICE_CIDR_BLOCK`: If the rule's `destination` is the `cidrBlock` value for a
+	//     Service (the rule is for traffic destined for a
+	//     particular service through a service gateway).
+	DestinationType EgressSecurityRuleDestinationTypeEnum `mandatory:"false" json:"destinationType,omitempty"`
 
 	// Optional and valid only for ICMP. Use to specify a particular ICMP type and code
 	// as defined in
@@ -53,4 +66,27 @@ type EgressSecurityRule struct {
 
 func (m EgressSecurityRule) String() string {
 	return common.PointerString(m)
+}
+
+// EgressSecurityRuleDestinationTypeEnum Enum with underlying type: string
+type EgressSecurityRuleDestinationTypeEnum string
+
+// Set of constants representing the allowable values for EgressSecurityRuleDestinationType
+const (
+	EgressSecurityRuleDestinationTypeCidrBlock        EgressSecurityRuleDestinationTypeEnum = "CIDR_BLOCK"
+	EgressSecurityRuleDestinationTypeServiceCidrBlock EgressSecurityRuleDestinationTypeEnum = "SERVICE_CIDR_BLOCK"
+)
+
+var mappingEgressSecurityRuleDestinationType = map[string]EgressSecurityRuleDestinationTypeEnum{
+	"CIDR_BLOCK":         EgressSecurityRuleDestinationTypeCidrBlock,
+	"SERVICE_CIDR_BLOCK": EgressSecurityRuleDestinationTypeServiceCidrBlock,
+}
+
+// GetEgressSecurityRuleDestinationTypeEnumValues Enumerates the set of values for EgressSecurityRuleDestinationType
+func GetEgressSecurityRuleDestinationTypeEnumValues() []EgressSecurityRuleDestinationTypeEnum {
+	values := make([]EgressSecurityRuleDestinationTypeEnum, 0)
+	for _, v := range mappingEgressSecurityRuleDestinationType {
+		values = append(values, v)
+	}
+	return values
 }
