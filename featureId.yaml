@@ -57,3 +57,5 @@ whitelisted:
   - udx-775
   # Service Gateway Launch
   - udx-677
+  # Block Storage: Set Schedule Backup policy on Boot Volume creation
+  - udx-1192
