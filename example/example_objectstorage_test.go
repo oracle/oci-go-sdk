@@ -44,7 +44,7 @@ func ExampleObjectStorage_UploadFile() {
 	defer file.Close()
 	helpers.FatalIfError(e)
 
-	e = putObject(ctx, c, namespace, bname, filename, int(filesize), file, nil)
+	e = putObject(ctx, c, namespace, bname, filename, filesize, file, nil)
 	helpers.FatalIfError(e)
 	defer deleteObject(ctx, c, namespace, bname, filename)
 
@@ -64,7 +64,7 @@ func getNamespace(ctx context.Context, c objectstorage.ObjectStorageClient) stri
 	return *r.Value
 }
 
-func putObject(ctx context.Context, c objectstorage.ObjectStorageClient, namespace, bucketname, objectname string, contentLen int, content io.ReadCloser, metadata map[string]string) error {
+func putObject(ctx context.Context, c objectstorage.ObjectStorageClient, namespace, bucketname, objectname string, contentLen int64, content io.ReadCloser, metadata map[string]string) error {
 	request := objectstorage.PutObjectRequest{
 		NamespaceName: &namespace,
 		BucketName:    &bucketname,
