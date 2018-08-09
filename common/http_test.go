@@ -207,7 +207,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 	body, _ := ioutil.ReadAll(request.Body)
 	json.Unmarshal(body, &content)
 	when := s.When.Format(time.RFC3339)
-	assert.True(t, request.URL.Path == "/101")
+	assert.True(t, request.URL.Path == "//101")
 	assert.True(t, request.URL.Query().Get("name") == s.Name)
 	assert.True(t, request.URL.Query().Get("income") == strconv.FormatFloat(float64(s.Income), 'f', 6, 32))
 	assert.True(t, request.URL.Query().Get("when") == when)
