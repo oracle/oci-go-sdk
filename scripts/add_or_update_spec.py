@@ -9,6 +9,13 @@ import re
 import click
 from click.exceptions import UsageError
 
+try:
+    # when run locally
+    from auto_gen_utils.shared.version_utils import is_version_increasing
+except ImportError:
+    # when run from the self-service pipeline
+    from shared.version_utils import is_version_increasing
+
 DEFAULT_POM_LOCATION = "../pom.xml"
 DEFAULT_GITHUB_WHITELIST_LOCATION = "../github.whitelist"
 DEFAULT_MAKE_FILE_LOCATION = "../Makefile"
@@ -251,8 +258,14 @@ def generate_and_add_dependency_management_section(pom, spec_name, group_id, art
 def update_version_of_existing_spec(pom, artifact_id, version):
     xpath = ".//ns:properties//ns:{artifact_id}.artifact.version".format(artifact_id=artifact_id)
     dependency = pom.findall(xpath, ns)[0]
-    dependency.text = version
 
+    old_version = dependency.text
+
+    if not is_version_increasing(old_version, version):
+        return old_version
+
+    dependency.text = version
+    return None # the old version was lower
 
 def indent(elem, level=0):
     indent_str = "    "
@@ -313,7 +326,9 @@ def add_or_update_spec(artifact_id=None, group_id=None, spec_name=None, relative
         print('Artifact {} already exists in pom.xml. Updating specified fields...'.format(artifact_id))
 
         if version:
-            update_version_of_existing_spec(pom, artifact_id, version)
+            newer_version = update_version_of_existing_spec(pom, artifact_id, version)
+            if newer_version:
+                print('The version was not updated to {}, because it was already at {}.'.format(version, newer_version))
 
         if relative_spec_path:
             update_relative_spec_path(pom, artifact_id, relative_spec_path)
