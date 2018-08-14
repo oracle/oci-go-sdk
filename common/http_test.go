@@ -1019,3 +1019,133 @@ func TestAddRequestID(t *testing.T) {
 		}
 	}
 }
+
+type shape interface {
+}
+
+type square struct {
+	Color string `json:"color"`
+}
+
+type triangle struct {
+	Texture string `json:"texture"`
+}
+
+type unknown struct {
+	JSONData []byte
+	Type     string `json:"type"`
+}
+
+func (p *unknown) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
+
+	if data == nil || string(data) == "null" {
+		return nil, nil
+	}
+
+	switch p.Type {
+	case "square":
+		n := square{}
+		err := json.Unmarshal(data, &n)
+		return n, err
+	case "triangle":
+		n := triangle{}
+		err := json.Unmarshal(data, &n)
+		return n, err
+	default:
+		return *p, nil
+	}
+}
+func (p *unknown) UnmarshalJSON(data []byte) error {
+	p.JSONData = data
+	type mm unknown
+	s := mm{}
+	err := json.Unmarshal(data, &s)
+	if err != nil {
+		return err
+	}
+	p.Type = s.Type
+	return nil
+}
+
+type bodyWithPolymorphicField struct {
+	Name  string `json:"name"`
+	Shape shape  `json:"shape"`
+}
+
+func (p *bodyWithPolymorphicField) UnmarshalJSON(data []byte) error {
+	model := struct {
+		Name  string  `json:"name"`
+		Shape unknown `json:"shape"`
+	}{}
+
+	e := json.Unmarshal(data, &model)
+	if e != nil {
+		return e
+	}
+
+	p.Name = model.Name
+	ss, e := model.Shape.UnmarshalPolymorphicJSON(model.Shape.JSONData)
+	if e != nil {
+		return e
+	}
+	if ss != nil {
+		p.Shape = ss.(shape)
+	} else {
+		p.Shape = nil
+	}
+	return nil
+}
+
+func TestUnmarshalPolymorphic(t *testing.T) {
+	testIO := []struct {
+		name          string
+		jsonBody      string
+		expectedName  string
+		expectedShape interface{}
+	}{
+		{
+
+			name:          "Nil polymorphic type",
+			jsonBody:      `{"name": "hello", "shape": null }`,
+			expectedShape: nil,
+			expectedName:  "hello",
+		},
+		{
+
+			name:          "polymorphic type set to square",
+			jsonBody:      `{"name": "hello", "shape": {"type": "square", "color": "red" }}`,
+			expectedShape: square{Color: "red"},
+			expectedName:  "hello",
+		},
+		{
+
+			name:          "polymorphic type set to triangle",
+			jsonBody:      `{"name": "hello", "shape": {"type": "triangle", "texture": "soft" }}`,
+			expectedShape: triangle{Texture: "soft"},
+			expectedName:  "hello",
+		},
+		{
+
+			name:          "polymorphic type set to unknown",
+			jsonBody:      `{"name": "hello", "shape": {"type": "random", "value": "one" }}`,
+			expectedShape: unknown{Type: "random", JSONData: []byte(`{"type": "random", "value": "one" }`)},
+			expectedName:  "hello",
+		},
+	}
+	for _, td := range testIO {
+		t.Run(td.name, func(t *testing.T) {
+			type response struct {
+				Content bodyWithPolymorphicField `presentIn:"body"`
+			}
+			r := http.Response{}
+			bodyBuffer := bytes.NewBufferString(td.jsonBody)
+			r.Body = ioutil.NopCloser(bodyBuffer)
+
+			res := response{}
+			err := UnmarshalResponse(&r, &res)
+			assert.Equal(t, td.expectedShape, res.Content.Shape)
+			assert.Equal(t, td.expectedName, res.Content.Name)
+			assert.NoError(t, err)
+		})
+	}
+}
