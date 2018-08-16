@@ -577,19 +577,18 @@ func TestIdentityClient_ListSwiftPasswords(t *testing.T) {
 
 //Policy Operations see DEX-1945
 func TestIdentityClient_PolicyCRUD(t *testing.T) {
-	t.Skip("Policy Operations issue. See DEX-1945 ")
 
 	//Create
-	//client := identity.NewIdentityClientForRegion(getRegion())
 	client, cfgErr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, cfgErr)
 
+	versionDate := time.Now()
 	createRequest := identity.CreatePolicyRequest{}
 	createRequest.CompartmentId = common.String(getTenancyID())
 	createRequest.Name = common.String("goSDK2Policy2")
 	createRequest.Description = common.String("some policy")
-	createRequest.Statements = []string{"Allow group goSDK2CreateGroup read all-resources on compartment egineztest"}
-	createRequest.VersionDate = &common.SDKTime{time.Now()}
+	createRequest.Statements = []string{"ALLOW GROUP Administrators to manage all-resources IN TENANCY"}
+	createRequest.VersionDate = &common.SDKDate{Date: versionDate}
 	createRequest.RequestMetadata = getRequestMetadataWithDefaultRetryPolicy()
 	createResponse, err := client.CreatePolicy(context.Background(), createRequest)
 	verifyResponseIsValid(t, createResponse, err)
@@ -611,6 +610,9 @@ func TestIdentityClient_PolicyCRUD(t *testing.T) {
 	readRequest.RequestMetadata = getRequestMetadataWithDefaultRetryPolicy()
 	readResponse, err := client.GetPolicy(context.Background(), readRequest)
 	verifyResponseIsValid(t, readResponse, err)
+	assert.Equal(t, versionDate.Year(), readResponse.VersionDate.Date.Year())
+	assert.Equal(t, versionDate.Month(), readResponse.VersionDate.Date.Month())
+	assert.Equal(t, versionDate.Day(), readResponse.VersionDate.Date.Day())
 
 	//Update
 
