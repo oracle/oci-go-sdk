@@ -61,4 +61,5 @@ whitelisted:
   - udx-1192
   # Compute: Adding Fault Domain
   - udx-588
+  - 1240
   - udx-834
