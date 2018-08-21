@@ -97,9 +97,10 @@ func TestIdentityClient_OverrideRegion(t *testing.T) {
 	f := fakeDispatcher{Reg: region}
 	// Avoid calling the service as we do no know if we have access to that region
 	c.HTTPClient = &f
+	noRetry := common.NoRetryPolicy()
 	rList := identity.ListGroupsRequest{
 		CompartmentId:   common.String(getTenancyID()),
-		RequestMetadata: getRequestMetadataWithDefaultRetryPolicy(),
+		RequestMetadata: common.RequestMetadata{RetryPolicy:&noRetry},
 	}
 	c.ListGroups(context.Background(), rList)
 	assert.True(t, f.Valid)
