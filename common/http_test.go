@@ -998,6 +998,118 @@ func TestOmitFieldsInJson_SimpleStructWithTime(t *testing.T) {
 	assert.Equal(t, theTime, mapRet.(map[string]interface{})["theTime"])
 }
 
+func TestSDKDate_Unmarshal(t *testing.T) {
+	type structWithTime struct {
+		Name         string   `json:"name"`
+		Date         *SDKDate `json:"date"`
+		DateOptional *SDKDate `json:"optdate" mandatory:"false"`
+	}
+
+	type req struct {
+		Body structWithTime `presentIn:"body"`
+	}
+
+	sampleDate, _ := time.Parse(time.UnixDate, "Mon Jan 02 15:04:05 MST 2006")
+	sampleDateStr := sampleDate.Format(sdkDateFormat)
+
+	testIO := []struct {
+		name        string
+		expectedReq req
+		jsonRes     string
+		err         error
+	}{
+		{
+			name:        "sdk date with simple date",
+			expectedReq: req{structWithTime{Name: "hello", Date: &SDKDate{Date: sampleDate}}},
+			jsonRes:     fmt.Sprintf(`{"date":"%s","name":"hello"}`, sampleDateStr),
+			err:         nil,
+		},
+		{
+			name:        "sdk date with nil date",
+			expectedReq: req{structWithTime{Name: "hello", Date: nil}},
+			jsonRes:     fmt.Sprintf(`{"date":%s,"name":"hello"}`, "null"),
+			err:         nil,
+		},
+		{
+			name:        "sdk date with nil date with mandatory date field set",
+			expectedReq: req{structWithTime{Name: "hello", Date: nil, DateOptional: &SDKDate{Date: sampleDate}}},
+			jsonRes:     fmt.Sprintf(`{"date":%s,"name":"hello","optdate":"%s"}`, "null", sampleDateStr),
+			err:         nil,
+		},
+	}
+
+	for _, tc := range testIO {
+		response := http.Response{
+			Body: ioutil.NopCloser(bytes.NewBuffer([]byte(tc.jsonRes))),
+		}
+		req := req{}
+		err := UnmarshalResponse(&response, &req)
+		assert.NoError(t, err)
+		assert.Equal(t, tc.expectedReq.Body.Name, req.Body.Name)
+		if tc.expectedReq.Body.Date == nil {
+			assert.Nil(t, req.Body.Date)
+
+		} else {
+			assert.Equal(t, tc.expectedReq.Body.Date.Date.Format(sdkDateFormat), req.Body.Date.Date.Format(sdkDateFormat))
+		}
+		if tc.expectedReq.Body.DateOptional == nil {
+			assert.Nil(t, req.Body.DateOptional)
+
+		} else {
+			assert.Equal(t, tc.expectedReq.Body.DateOptional.Date.Format(sdkDateFormat), req.Body.DateOptional.Date.Format(sdkDateFormat))
+		}
+	}
+
+}
+func TestSDKDate_Marshal(t *testing.T) {
+	type structWithTime struct {
+		Name         string   `json:"name"`
+		Date         *SDKDate `json:"date"`
+		DateOptional *SDKDate `json:"optdate" mandatory:"false"`
+	}
+
+	type req struct {
+		Body structWithTime `contributesTo:"body"`
+	}
+
+	sampleDate, _ := time.Parse(time.UnixDate, "Mon Jan 02 15:04:05 MST 2006")
+	sampleDateStr := sampleDate.Format(sdkDateFormat)
+
+	testIO := []struct {
+		name         string
+		req          req
+		expectedJSON string
+		err          error
+	}{
+		{
+			name:         "sdk date with simple date",
+			req:          req{structWithTime{Name: "hello", Date: &SDKDate{Date: sampleDate}}},
+			expectedJSON: fmt.Sprintf(`{"date":"%s","name":"hello"}`, sampleDateStr),
+			err:          nil,
+		},
+		{
+			name:         "sdk date with nil date",
+			req:          req{structWithTime{Name: "hello", Date: nil}},
+			expectedJSON: fmt.Sprintf(`{"date":%s,"name":"hello"}`, "null"),
+			err:          nil,
+		},
+		{
+			name:         "sdk date with nil date with mandatory date field set",
+			req:          req{structWithTime{Name: "hello", Date: nil, DateOptional: &SDKDate{Date: sampleDate}}},
+			expectedJSON: fmt.Sprintf(`{"date":%s,"name":"hello","optdate":"%s"}`, "null", sampleDateStr),
+			err:          nil,
+		},
+	}
+
+	for _, tc := range testIO {
+		httpRequest, errM := MakeDefaultHTTPRequestWithTaggedStruct("GET", "/", tc.req)
+		assert.NoError(t, errM)
+		all, _ := ioutil.ReadAll(httpRequest.Body)
+		assert.Equal(t, tc.expectedJSON, string(all))
+	}
+
+}
+
 func TestAddRequestID(t *testing.T) {
 	type testStructType struct {
 		OpcRequestID *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
