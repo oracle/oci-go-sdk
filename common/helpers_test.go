@@ -3,9 +3,12 @@
 package common
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/stretchr/testify/assert"
+	"reflect"
 	"testing"
+	"time"
 )
 
 func TestStructToString(t *testing.T) {
@@ -81,4 +84,78 @@ func TestDateParsing_LastModifiedHeaderDate(t *testing.T) {
 		assert.NoError(t, err)
 		assert.Equal(t, tt.Day(), 2)
 	}
+}
+
+func TestFormattedTimeMarshaling(t *testing.T) {
+	sampleTime, _ := time.Parse(time.UnixDate, "Mon Jan 02 15:04:05 MST 2006")
+	testIO := []struct {
+		name          string
+		t             *SDKDate
+		expectedJSON  string
+		expectedError error
+	}{
+		{
+			name:          "formatting time to simple date format",
+			t:             &SDKDate{Date: sampleTime},
+			expectedJSON:  `"2006-01-02"`,
+			expectedError: nil,
+		},
+		{
+			name:          "formatting nil",
+			t:             nil,
+			expectedJSON:  `null`,
+			expectedError: nil,
+		},
+	}
+
+	for _, tc := range testIO {
+		t.Run(tc.name, func(t *testing.T) {
+			bytes, e := json.Marshal(&tc.t)
+			assert.Equal(t, tc.expectedError, e)
+			assert.Equal(t, tc.expectedJSON, string(bytes))
+		})
+	}
+
+}
+
+func TestFormattedTimeUnMarshaling(t *testing.T) {
+	sampleTime, _ := time.Parse(time.UnixDate, "Mon Jan 02 15:04:05 MST 2006")
+	testIO := []struct {
+		name          string
+		json          string
+		expectedTime  *SDKDate
+		expectedError error
+	}{
+		{
+			name:          "unmarshaling time to simple date format",
+			expectedTime:  &SDKDate{Date: sampleTime},
+			json:          `"2006-01-02"`,
+			expectedError: nil,
+		},
+		{
+			name:          "unmarshaling time to simple RFC3339 format",
+			expectedTime:  &SDKDate{Date: sampleTime},
+			json:          `"2006-01-02T15:04:05Z"`,
+			expectedError: &time.ParseError{},
+		},
+		{
+			name:          "unmarshaling null",
+			expectedTime:  &SDKDate{},
+			json:          `"null"`,
+			expectedError: nil,
+		},
+	}
+
+	for _, tc := range testIO {
+		t.Run(tc.name, func(t *testing.T) {
+			newTime := SDKDate{}
+			e := json.Unmarshal([]byte(tc.json), &newTime)
+			assert.IsType(t, reflect.TypeOf(tc.expectedError), reflect.TypeOf(e))
+			if tc.expectedError != nil {
+				return
+			}
+			assert.Equal(t, tc.expectedTime.Date.Format(sdkDateFormat), newTime.Date.Format(sdkDateFormat))
+		})
+	}
+
 }
