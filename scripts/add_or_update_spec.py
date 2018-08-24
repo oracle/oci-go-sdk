@@ -75,6 +75,7 @@ PREPROCESS_EXECUTION_TEMPLATE = """
         <inputFile>${{preferred.temp.dir}}/{spec_name}/${{{artifact_id}.spec.name}}</inputFile>
         <outputFile>${{preprocessed.temp.dir}}/{spec_name}/${{{artifact_id}.spec.name}}</outputFile>
         <groupFile>${{enabled.groups.file}}</groupFile>
+        <groupFileCollectionDir>${{enabled.groups.dir}}</groupFileCollectionDir>
     </configuration>
 </execution>
 """
@@ -99,6 +100,7 @@ GENERATE_EXECUTION_TEMPLATE = """
             {regional_non_regional_service_overrides}
         </additionalProperties>
         <featureIdConfigFile>${{project.basedir}}/featureId.yaml</featureIdConfigFile>
+        <featureIdConfigDir>${{project.basedir}}/codegenConfig/featureIds</featureIdConfigDir>
     </configuration>
 </execution>
 """

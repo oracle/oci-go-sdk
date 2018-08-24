@@ -52,6 +52,7 @@
         <resource-query-service-spec.spec.name>rqs.yaml</resource-query-service-spec.spec.name>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <enabled.groups.file>${project.basedir}/release-sdk.txt</enabled.groups.file>
+        <enabled.groups.dir>${project.basedir}/codegenConfig/enabledGroups</enabled.groups.dir>
     </properties>
     <build>
         <plugins>
@@ -263,7 +264,7 @@
             <plugin>
                 <groupId>com.oracle.oci.sdk.utilities</groupId>
                 <artifactId>spec-conditionals-preprocessor-plugin</artifactId>
-                <version>1.0.1-SNAPSHOT</version>
+                <version>1.0.6-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <id>spec-conditionals-prefer-core</id>
@@ -289,6 +290,7 @@
                             <inputFile>${preferred.temp.dir}/core/${coreservices-api-spec.spec.name}</inputFile>
                             <outputFile>${preprocessed.temp.dir}/core/${coreservices-api-spec.spec.name}</outputFile>
                             <groupFile>${enabled.groups.file}</groupFile>
+                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -315,6 +317,7 @@
                             <inputFile>${preferred.temp.dir}/identity/${identity-control-plane-api-spec.spec.name}</inputFile>
                             <outputFile>${preprocessed.temp.dir}/identity/${identity-control-plane-api-spec.spec.name}</outputFile>
                             <groupFile>${enabled.groups.file}</groupFile>
+                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -341,6 +344,7 @@
                             <inputFile>${preferred.temp.dir}/objectstorage/${casper-api-spec.spec.name}</inputFile>
                             <outputFile>${preprocessed.temp.dir}/objectstorage/${casper-api-spec.spec.name}</outputFile>
                             <groupFile>${enabled.groups.file}</groupFile>
+                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -367,6 +371,7 @@
                             <inputFile>${preferred.temp.dir}/lb/${oralb-api-spec.spec.name}</inputFile>
                             <outputFile>${preprocessed.temp.dir}/lb/${oralb-api-spec.spec.name}</outputFile>
                             <groupFile>${enabled.groups.file}</groupFile>
+                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -393,6 +398,7 @@
                             <inputFile>${preferred.temp.dir}/database/${dbaas-api-spec.spec.name}</inputFile>
                             <outputFile>${preprocessed.temp.dir}/database/${dbaas-api-spec.spec.name}</outputFile>
                             <groupFile>${enabled.groups.file}</groupFile>
+                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -419,6 +425,7 @@
                             <inputFile>${preferred.temp.dir}/audit/${hemlock-spec.spec.name}</inputFile>
                             <outputFile>${preprocessed.temp.dir}/audit/${hemlock-spec.spec.name}</outputFile>
                             <groupFile>${enabled.groups.file}</groupFile>
+                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -445,6 +452,7 @@
                             <inputFile>${preferred.temp.dir}/filestorage/${fss-api-spec.spec.name}</inputFile>
                             <outputFile>${preprocessed.temp.dir}/filestorage/${fss-api-spec.spec.name}</outputFile>
                             <groupFile>${enabled.groups.file}</groupFile>
+                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -471,6 +479,7 @@
                             <inputFile>${preferred.temp.dir}/dns/${public-dns-api-spec.spec.name}</inputFile>
                             <outputFile>${preprocessed.temp.dir}/dns/${public-dns-api-spec.spec.name}</outputFile>
                             <groupFile>${enabled.groups.file}</groupFile>
+                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -497,6 +506,7 @@
                             <inputFile>${preferred.temp.dir}/email/${email-api-spec.spec.name}</inputFile>
                             <outputFile>${preprocessed.temp.dir}/email/${email-api-spec.spec.name}</outputFile>
                             <groupFile>${enabled.groups.file}</groupFile>
+                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -523,6 +533,7 @@
                             <inputFile>${preferred.temp.dir}/containerengine/${clusters-api-spec.spec.name}</inputFile>
                             <outputFile>${preprocessed.temp.dir}/containerengine/${clusters-api-spec.spec.name}</outputFile>
                             <groupFile>${enabled.groups.file}</groupFile>
+                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -549,6 +560,7 @@
                             <inputFile>${preferred.temp.dir}/resourcesearch/${resource-query-service-spec.spec.name}</inputFile>
                             <outputFile>${preprocessed.temp.dir}/resourcesearch/${resource-query-service-spec.spec.name}</outputFile>
                             <groupFile>${enabled.groups.file}</groupFile>
+                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
                 </executions>
@@ -575,6 +587,7 @@
                                 <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
                             </additionalProperties>
                             <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
+                            <featureIdConfigDir>${project.basedir}/codegenConfig/featureIds</featureIdConfigDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -595,6 +608,7 @@
                                 <serviceHostName>iaas</serviceHostName>
                             </additionalProperties>
                             <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
+                            <featureIdConfigDir>${project.basedir}/codegenConfig/featureIds</featureIdConfigDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -615,6 +629,7 @@
                                 <serviceHostName>iaas</serviceHostName>
                             </additionalProperties>
                             <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
+                            <featureIdConfigDir>${project.basedir}/codegenConfig/featureIds</featureIdConfigDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -634,6 +649,7 @@
                                 <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
                             </additionalProperties>
                             <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
+                            <featureIdConfigDir>${project.basedir}/codegenConfig/featureIds</featureIdConfigDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -653,6 +669,7 @@
                                 <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
                             </additionalProperties>
                             <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
+                            <featureIdConfigDir>${project.basedir}/codegenConfig/featureIds</featureIdConfigDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -672,6 +689,7 @@
                                 <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
                             </additionalProperties>
                             <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
+                            <featureIdConfigDir>${project.basedir}/codegenConfig/featureIds</featureIdConfigDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -691,6 +709,7 @@
                                 <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
                             </additionalProperties>
                             <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
+                            <featureIdConfigDir>${project.basedir}/codegenConfig/featureIds</featureIdConfigDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -710,6 +729,7 @@
                                 <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
                             </additionalProperties>
                             <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
+                            <featureIdConfigDir>${project.basedir}/codegenConfig/featureIds</featureIdConfigDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -729,6 +749,7 @@
                                 <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
                             </additionalProperties>
                             <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
+                            <featureIdConfigDir>${project.basedir}/codegenConfig/featureIds</featureIdConfigDir>
                         </configuration>
                     </execution>
                     <execution>
@@ -749,6 +770,7 @@
                                 <serviceHostName>containerengine</serviceHostName>
                             </additionalProperties>
                             <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
+                            <featureIdConfigDir>${project.basedir}/codegenConfig/featureIds</featureIdConfigDir>
                         </configuration>
                     </execution>
                     <execution>
