@@ -52,9 +52,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <enabled.groups.file>${project.basedir}/release-sdk.txt</enabled.groups.file>
         <enabled.groups.dir>${project.basedir}/codegenConfig/enabledGroups</enabled.groups.dir>
-        <kms-api-spec.artifact.version>0.1.68</kms-api-spec.artifact.version>
-        <kms-api-spec.artifact.id>kms-api-spec</kms-api-spec.artifact.id>
-        <kms-api-spec.spec.name>kms-api-spec-20180608.yaml</kms-api-spec.spec.name>
     </properties>
     <build>
         <plugins>
@@ -257,24 +254,6 @@
                                     <type>jar</type>
                                     <includes>**/*</includes>
                                     <outputDirectory>${spec.temp.dir}/resourcesearch</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>unpack-keymanagement</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>com.oracle.pic.kms</groupId>
-                                    <artifactId>${kms-api-spec.artifact.id}</artifactId>
-                                    <type>jar</type>
-                                    <includes>**/*</includes>
-                                    <outputDirectory>${spec.temp.dir}/keymanagement</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
@@ -583,33 +562,6 @@
                             <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>spec-conditionals-prefer-keymanagement</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>prefer</goal>
-                        </goals>
-                        <configuration>
-                            <inputFiles>
-                                <inputFile>${spec.temp.dir}/keymanagement/source/${kms-api-spec.spec.name}</inputFile>
-                                <inputFile>${spec.temp.dir}/keymanagement/${kms-api-spec.spec.name}</inputFile>
-                            </inputFiles>
-                            <outputFile>${preferred.temp.dir}/keymanagement/${kms-api-spec.spec.name}</outputFile>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>spec-conditionals-preprocess-keymanagement</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>preprocess</goal>
-                        </goals>
-                        <configuration>
-                            <inputFile>${preferred.temp.dir}/keymanagement/${kms-api-spec.spec.name}</inputFile>
-                            <outputFile>${preprocessed.temp.dir}/keymanagement/${kms-api-spec.spec.name}</outputFile>
-                            <groupFile>${enabled.groups.file}</groupFile>
-                            <groupFileCollectionDir>${enabled.groups.dir}</groupFileCollectionDir>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -839,29 +791,6 @@
                             </additionalProperties>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>go-public-sdk-keymanagement</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <language>oracle-go-sdk</language>
-                            <specPath>${preprocessed.temp.dir}/keymanagement/${kms-api-spec.spec.name}</specPath>
-                            <outputDir>${env.GOPATH}/src/${fullyQualifiedProjectName}</outputDir>
-                            <basePackage>keymanagement</basePackage>
-                            <specGenerationType>${generationType}</specGenerationType>
-                            <additionalProperties>
-                                <specName>keymanagement</specName>
-                                <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
-                                <serviceHostName>kms</serviceHostName>
-                                <isRegionalClient.kmscrypto>false</isRegionalClient.kmscrypto>
-                                <isRegionalClient.kmsvault>false</isRegionalClient.kmsvault>
-                            </additionalProperties>
-                            <featureIdConfigFile>${project.basedir}/featureId.yaml</featureIdConfigFile>
-                            <featureIdConfigDir>${project.basedir}/codegenConfig/featureIds</featureIdConfigDir>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -982,15 +911,6 @@
                             <includes>
                                 <include>**/*</include>
                             </includes>
-                        </fileset>
-                        <fileset>
-                            <directory>lib/oci/keymanagement</directory>
-                            <includes>
-                                <include>**/*</include>
-                            </includes>
-                            <excludes>
-                                <exclude>util.rb</exclude>
-                            </excludes>
                         </fileset>
                     </filesets>
                 </configuration>
@@ -1193,11 +1113,6 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>1.7.12</version>
-            </dependency>
-            <dependency>
-                <groupId>com.oracle.pic.kms</groupId>
-                <artifactId>${kms-api-spec.artifact.id}</artifactId>
-                <version>${kms-api-spec.artifact.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
