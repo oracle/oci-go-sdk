@@ -28,7 +28,7 @@
         <casper-api-spec.artifact.version>1.1.16</casper-api-spec.artifact.version>
         <casper-api-spec.artifact.id>casper-api-spec</casper-api-spec.artifact.id>
         <casper-api-spec.spec.name>casper-api.yaml</casper-api-spec.spec.name>
-        <dbaas-api-spec.artifact.version>0.0.146</dbaas-api-spec.artifact.version>
+        <dbaas-api-spec.artifact.version>0.0.151</dbaas-api-spec.artifact.version>
         <dbaas-api-spec.artifact.id>dbaas-api-spec</dbaas-api-spec.artifact.id>
         <dbaas-api-spec.spec.name>dbaas-api-spec-20160918.yaml</dbaas-api-spec.spec.name>
         <hemlock-spec.artifact.version>0.1.9</hemlock-spec.artifact.version>
