@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
-## 2.3.0 - 2018-09-06
+## 2.4.0 - 2018-09-06
 ### Added
 - Added support for updating metadata fields on an instance in the Compute service
 
