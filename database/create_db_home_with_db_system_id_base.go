@@ -13,11 +13,10 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateDbHomeWithDbSystemIdBase Details for creating a database home.
-// **Warning:** Oracle recommends that you avoid using any confidential information when you supply string values using the API.
+// CreateDbHomeWithDbSystemIdBase The representation of CreateDbHomeWithDbSystemIdBase
 type CreateDbHomeWithDbSystemIdBase interface {
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the DB system.
+	// The OCID of the DB System.
 	GetDbSystemId() *string
 
 	// The user-provided name of the database home.

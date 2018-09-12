@@ -15,7 +15,7 @@ import (
 // ReinstateDataGuardAssociationDetails The Data Guard association reinstate parameters.
 type ReinstateDataGuardAssociationDetails struct {
 
-	// The DB system administrator password.
+	// The DB System administrator password.
 	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword"`
 }
 

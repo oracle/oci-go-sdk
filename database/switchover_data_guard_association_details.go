@@ -15,7 +15,7 @@ import (
 // SwitchoverDataGuardAssociationDetails The Data Guard association switchover parameters.
 type SwitchoverDataGuardAssociationDetails struct {
 
-	// The DB system administrator password.
+	// The DB System administrator password.
 	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword"`
 }
 

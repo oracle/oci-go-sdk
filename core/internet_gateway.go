@@ -13,25 +13,23 @@ import (
 )
 
 // InternetGateway Represents a router that connects the edge of a VCN with the Internet. For an example scenario
-// that uses an internet gateway, see
+// that uses an Internet Gateway, see
 // Typical Networking Service Scenarios (https://docs.us-phoenix-1.oraclecloud.com/Content/Network/Concepts/overview.htm#scenarios).
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
 // Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
-// **Warning:** Oracle recommends that you avoid using any confidential information when you
-// supply string values using the API.
 type InternetGateway struct {
 
-	// The OCID of the compartment containing the internet gateway.
+	// The OCID of the compartment containing the Internet Gateway.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The internet gateway's Oracle ID (OCID).
+	// The Internet Gateway's Oracle ID (OCID).
 	Id *string `mandatory:"true" json:"id"`
 
-	// The internet gateway's current state.
+	// The Internet Gateway's current state.
 	LifecycleState InternetGatewayLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// The OCID of the VCN the internet gateway belongs to.
+	// The OCID of the VCN the Internet Gateway belongs to.
 	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
@@ -53,7 +51,7 @@ type InternetGateway struct {
 	// routed to/from the Internet, regardless of route rules.
 	IsEnabled *bool `mandatory:"false" json:"isEnabled"`
 
-	// The date and time the internet gateway was created, in the format defined by RFC3339.
+	// The date and time the Internet Gateway was created, in the format defined by RFC3339.
 	// Example: `2016-08-25T21:10:29.600Z`
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }

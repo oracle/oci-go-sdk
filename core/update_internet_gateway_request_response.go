@@ -11,10 +11,10 @@ import (
 // UpdateInternetGatewayRequest wrapper for the UpdateInternetGateway operation
 type UpdateInternetGatewayRequest struct {
 
-	// The OCID of the internet gateway.
+	// The OCID of the Internet Gateway.
 	IgId *string `mandatory:"true" contributesTo:"path" name:"igId"`
 
-	// Details for updating the internet gateway.
+	// Details for updating the Internet Gateway.
 	UpdateInternetGatewayDetails `contributesTo:"body"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`

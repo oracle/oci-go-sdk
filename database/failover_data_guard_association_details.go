@@ -15,7 +15,7 @@ import (
 // FailoverDataGuardAssociationDetails The Data Guard association failover parameters.
 type FailoverDataGuardAssociationDetails struct {
 
-	// The DB system administrator password.
+	// The DB System administrator password.
 	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword"`
 }
 
