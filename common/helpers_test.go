@@ -159,3 +159,22 @@ func TestFormattedTimeUnMarshaling(t *testing.T) {
 	}
 
 }
+
+func TestSDKDateToAndFromString(t *testing.T) {
+	_, err := NewSDKDateFromString("InvalidFormat")
+	s, _ := NewSDKDateFromString("2018-09-13")
+	str := fmt.Sprintf("%s", s)
+
+	assert.Equal(t, "2018-09-13", str)
+	assert.IsType(t, &time.ParseError{}, err)
+}
+
+func TestMakeACopy(t *testing.T)  {
+	original := []string{"a", "b", "c"}
+
+	copy := makeACopy(original)
+
+	assert.Equal(t, original, copy)
+	copy[0] = "mutate"
+	assert.NotEqual(t, original, copy)
+}
