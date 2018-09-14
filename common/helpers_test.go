@@ -169,7 +169,7 @@ func TestSDKDateToAndFromString(t *testing.T) {
 	assert.IsType(t, &time.ParseError{}, err)
 }
 
-func TestMakeACopy(t *testing.T)  {
+func TestMakeACopy(t *testing.T) {
 	original := []string{"a", "b", "c"}
 
 	copy := makeACopy(original)
