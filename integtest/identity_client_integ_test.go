@@ -81,20 +81,23 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 }
 
 type fakeDispatcher struct {
-	Reg   string
-	Valid bool
+	DoReq func(r *http.Request)(*http.Response, error)
 }
 
 func (f *fakeDispatcher) Do(r *http.Request) (*http.Response, error) {
-	f.Valid = strings.Contains(r.URL.Host, f.Reg)
-	return nil, fmt.Errorf("Fake dispatcher")
+	return f.DoReq(r)
 }
 
 func TestIdentityClient_OverrideRegion(t *testing.T) {
 	c, _ := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
+	valid := false
 	region := "newRegion"
 	c.SetRegion(region)
-	f := fakeDispatcher{Reg: region}
+
+	f := fakeDispatcher{DoReq: func(r *http.Request) (*http.Response, error) {
+		valid = strings.Contains(r.URL.Host, region)
+		return nil, fmt.Errorf("Fake dispatcher")
+	}}
 	// Avoid calling the service as we do no know if we have access to that region
 	c.HTTPClient = &f
 	noRetry := common.NoRetryPolicy()
@@ -103,7 +106,40 @@ func TestIdentityClient_OverrideRegion(t *testing.T) {
 		RequestMetadata: common.RequestMetadata{RetryPolicy:&noRetry},
 	}
 	c.ListGroups(context.Background(), rList)
-	assert.True(t, f.Valid)
+	assert.True(t, valid)
+}
+
+func TestIdentityClient_RetryPersists(t *testing.T) {
+	times := 0
+	retryHeaders := make([]string, 0)
+	c, _ := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
+
+	f := fakeDispatcher{DoReq: func(r *http.Request) (*http.Response, error) {
+		times++
+		retryHeaders = append(retryHeaders, r.Header.Get("opc-retry-token") )
+		return nil, fmt.Errorf("Fake dispatcher")
+	}}
+
+	c.HTTPClient = &f
+	retry := common.NewRetryPolicy(5, func(response common.OCIOperationResponse) bool {
+		return true
+	}, func(response common.OCIOperationResponse) time.Duration {
+		return 50 * time.Millisecond
+	})
+
+	rCreate := identity.CreateGroupRequest{
+		CreateGroupDetails: identity.CreateGroupDetails{
+			CompartmentId:common.String("SomeTenancyId"),
+			Name: common.String("SomeName"),
+		},
+		RequestMetadata: common.RequestMetadata{RetryPolicy:&retry},
+	}
+	c.CreateGroup(context.Background(), rCreate)
+
+	assert.Equal(t, 5, times)
+	for i := range retryHeaders {
+		assert.Equal(t, retryHeaders[0], retryHeaders[i], "Retry headers did not persist")
+	}
 }
 
 func TestIdentityClient_ListGroups(t *testing.T) {

@@ -60,5 +60,7 @@ release-sdk:
 	@(cd $(PROJECT_PATH) && VER_MAJOR=$(VER_MAJOR) VER_MINOR=$(VER_MINOR) VER_PATCH=$(VER_PATCH) VER_TAG=$(VER_TAG) make release)
 
 build: generate build-sdk
+	@(cd $(PROJECT_PATH) && make pre-doc)
+
 
 release: generate release-sdk

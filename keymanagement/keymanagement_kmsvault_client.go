@@ -60,6 +60,11 @@ func (client KmsVaultClient) CancelVaultDeletion(ctx context.Context, request Ca
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.cancelVaultDeletion, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -105,6 +110,11 @@ func (client KmsVaultClient) CreateVault(ctx context.Context, request CreateVaul
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.createVault, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -232,6 +242,11 @@ func (client KmsVaultClient) ScheduleVaultDeletion(ctx context.Context, request 
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.scheduleVaultDeletion, policy)
 	if err != nil {
 		if ociResponse != nil {

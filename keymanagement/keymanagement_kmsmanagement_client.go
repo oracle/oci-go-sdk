@@ -65,6 +65,11 @@ func (client KmsManagementClient) CreateKey(ctx context.Context, request CreateK
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.createKey, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -108,6 +113,11 @@ func (client KmsManagementClient) CreateKeyVersion(ctx context.Context, request 
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.createKeyVersion, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -151,6 +161,11 @@ func (client KmsManagementClient) DisableKey(ctx context.Context, request Disabl
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.disableKey, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -194,6 +209,11 @@ func (client KmsManagementClient) EnableKey(ctx context.Context, request EnableK
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.enableKey, policy)
 	if err != nil {
 		if ociResponse != nil {
