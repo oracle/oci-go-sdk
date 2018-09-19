@@ -19,7 +19,6 @@ var (
 	tkeyfile           = "somelocation"
 	ttenancy           = "sometenancy"
 	tregion            = "someregion"
-	tobo               = "someobotoken"
 	testPrivateKeyConf = `-----BEGIN RSA PRIVATE KEY-----
 MIICXgIBAAKBgQDCFENGw33yGihy92pDjZQhl0C36rPJj+CvfSC8+q28hxA161QF
 NUd13wuCTUcq0Qd2qsBe/2hFyc2DCJJg0h1L78+6Z4UMR7EOcpfdUE9Hf3m/hs+F
@@ -79,13 +78,6 @@ func writeTempFile(data string) (filename string) {
 	return
 }
 
-func TestEmptyOboTokenProvider(t *testing.T) {
-	c := NewEmptyOboTokenProvider()
-	token, err := c.OboToken()
-	assert.NoError(t, err)
-	assert.Equal(t, "", token)
-}
-
 func TestRawConfigurationProvider(t *testing.T) {
 	var (
 		testTenancy     = "ocid1.tenancy.oc1..aaaaaaaaxf3fuazos"
@@ -117,13 +109,7 @@ func TestRawConfigurationProvider(t *testing.T) {
 	assert.NotEmpty(t, keyID)
 
 	assert.Equal(t, keyID, "ocid1.tenancy.oc1..aaaaaaaaxf3fuazos/ocid1.user.oc1..aaaaaaaa3p67n2kmpxnbcnff/af:81:71:8e:d2")
-}
 
-func TestRawOboTokenProvider(t *testing.T) {
-	c := NewRawOboTokenProvider("rawOboToken")
-	token, err := c.OboToken()
-	assert.NoError(t, err)
-	assert.Equal(t, "rawOboToken", token)
 }
 
 func TestFileConfigurationProvider_parseConfigFileData(t *testing.T) {
@@ -143,28 +129,6 @@ region=someregion
 	assert.Equal(t, c.KeyFilePath, tkeyfile)
 	assert.Equal(t, c.TenancyOcid, ttenancy)
 	assert.Equal(t, c.Region, tregion)
-	assert.Equal(t, c.OboToken, "")
-}
-
-func TestFileConfigurationProvider_parseConfigFileDataWithObo(t *testing.T) {
-	data := `[DEFAULT]
-user=someuser
-fingerprint=somefingerprint
-key_file=somelocation
-tenancy=sometenancy
-compartment = somecompartment
-region=someregion
-obo_token=someobotoken
-`
-	c, e := parseConfigFile([]byte(data), "DEFAULT")
-
-	assert.NoError(t, e)
-	assert.Equal(t, c.UserOcid, tuser)
-	assert.Equal(t, c.Fingerprint, tfingerprint)
-	assert.Equal(t, c.KeyFilePath, tkeyfile)
-	assert.Equal(t, c.TenancyOcid, ttenancy)
-	assert.Equal(t, c.Region, tregion)
-	assert.Equal(t, c.OboToken, tobo)
 }
 
 func TestFileConfigurationProvider_ParseEmptyFile(t *testing.T) {

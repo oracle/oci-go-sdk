@@ -96,7 +96,7 @@ func TestOCIRequestSigner_HTTPRequest(t *testing.T) {
 	err = s.Sign(r)
 	assert.NoError(t, err)
 
-	signature, _ := s.getSigningStringAndHeaders(r)
+	signature := s.getSigningString(r)
 	assert.Equal(t, "date: Thu, 05 Jan 2014 21:31:40 GMT\n(request-target): get /api\nhost: localhost:7000", signature)
 }
 
@@ -117,7 +117,7 @@ func TestOCIRequestSigner_SigningString(t *testing.T) {
 	}
 	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
 	r.Method = http.MethodGet
-	signature, _ := s.getSigningStringAndHeaders(&r)
+	signature := s.getSigningString(&r)
 
 	assert.Equal(t, expectedSigningString, signature)
 }
@@ -138,7 +138,7 @@ func TestOCIRequestSigner_ComputeSignature(t *testing.T) {
 	}
 	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
 	r.Method = http.MethodGet
-	signature, _, err := s.computeSignature(&r)
+	signature, err := s.computeSignature(&r)
 
 	assert.NoError(t, err)
 	assert.Equal(t, expectedSignature, signature)
@@ -195,7 +195,7 @@ func TestOCIRequestSigner_SignString2(t *testing.T) {
 	r.Header.Set(requestHeaderContentLength, strconv.FormatInt(r.ContentLength, 10))
 	r.Method = http.MethodPost
 	calculateHashOfBody(&r)
-	signingString, _ := s.getSigningStringAndHeaders(&r)
+	signingString := s.getSigningString(&r)
 
 	assert.Equal(t, r.ContentLength, int64(316))
 	assert.Equal(t, expectedSigningString2, signingString)
@@ -223,7 +223,7 @@ func TestOCIRequestSigner_ComputeSignature2(t *testing.T) {
 	r.Header.Set(requestHeaderContentLength, strconv.FormatInt(r.ContentLength, 10))
 	r.Method = http.MethodPost
 	calculateHashOfBody(&r)
-	signature, _, err := s.computeSignature(&r)
+	signature, err := s.computeSignature(&r)
 
 	assert.NoError(t, err)
 	assert.Equal(t, r.ContentLength, int64(316))
@@ -250,11 +250,10 @@ func TestOCIRequestSigner_Sign2(t *testing.T) {
 	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
 	r.Header.Set(requestHeaderContentType, "application/json")
 	r.Header.Set(requestHeaderContentLength, strconv.FormatInt(r.ContentLength, 10))
-	r.Header.Set(requestHeaderOpcOboToken, "someOboToken")
 	r.Method = http.MethodPost
 	err := s.Sign(&r)
 
-	expectedAuthHeader := `Signature version="1",headers="date (request-target) host opc-obo-token content-length content-type x-content-sha256",keyId="ocid1.tenancy.oc1..aaaaaaaaba3pv6wkcr4jqae5f15p2b2m2yt2j6rx32uzr4h25vqstifsfdsq/ocid1.user.oc1..aaaaaaaat5nvwcna5j6aqzjcaty5eqbb6qt2jvpkanghtgdaqedqw3rynjq/20:3b:97:13:55:1c:5b:0d:d3:37:d8:50:4e:c5:3a:34",algorithm="rsa-sha256",signature="fpLXpkPIFOH1MDlSRLkI3qfH/KOSPE/oqEoJwRbixeG8FEJwCWXgIZgWyhtdI8AY+F05TBv9RLU6eDDBudLbclfIYpck7/Vj3uhMylGt34Xl5RbIPB4GOFJ47DWw6cz4GGBpVWdbNpKQzbMTmfgkdlSc3rlQ5fECuVU35WXloYM="`
+	expectedAuthHeader := `Signature version="1",headers="date (request-target) host content-length content-type x-content-sha256",keyId="ocid1.tenancy.oc1..aaaaaaaaba3pv6wkcr4jqae5f15p2b2m2yt2j6rx32uzr4h25vqstifsfdsq/ocid1.user.oc1..aaaaaaaat5nvwcna5j6aqzjcaty5eqbb6qt2jvpkanghtgdaqedqw3rynjq/20:3b:97:13:55:1c:5b:0d:d3:37:d8:50:4e:c5:3a:34",algorithm="rsa-sha256",signature="Mje8vIDPlwIHmD/cTDwRxE7HaAvBg16JnVcsuqaNRim23fFPgQfLoOOxae6WqKb1uPjYEl0qIdazWaBy/Ml8DRhqlocMwoSXv0fbukP8J5N80LCmzT/FFBvIvTB91XuXI3hYfP9Zt1l7S6ieVadHUfqBedWH0itrtPJBgKmrWso="`
 	assert.NoError(t, err)
 	assert.Equal(t, r.ContentLength, int64(316))
 	assert.Equal(t, expectedAuthHeader, r.Header.Get(requestHeaderAuthorization))
@@ -285,4 +284,18 @@ func TestOCIRequestSigner_SignEmptyBody(t *testing.T) {
 	assert.Equal(t, r.ContentLength, int64(0))
 	assert.NotEmpty(t, r.Header.Get(requestHeaderAuthorization))
 	assert.NotEmpty(t, r.Header.Get(requestHeaderXContentSHA256))
+}
+
+func TestDefaultHeadersReturnsCopy(t *testing.T) {
+	genericHeaders := DefaultGenericHeaders()
+	bodyHeaders := DefaultBodyHeaders()
+
+	assert.Equal(t, defaultGenericHeaders, genericHeaders)
+	assert.Equal(t, defaultBodyHeaders, bodyHeaders)
+
+	genericHeaders[0] = "mutate"
+	bodyHeaders[0] = "mutate"
+
+	assert.NotEqual(t, defaultGenericHeaders, genericHeaders)
+	assert.NotEqual(t, defaultBodyHeaders, bodyHeaders)
 }
