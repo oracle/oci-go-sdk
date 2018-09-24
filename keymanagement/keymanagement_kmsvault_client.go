@@ -22,8 +22,8 @@ type KmsVaultClient struct {
 }
 
 // NewKmsVaultClientWithConfigurationProvider Creates a new default KmsVault client with the given configuration provider.
-// the configuration provider will be used for the default signer
-func NewKmsVaultClientWithConfigurationProvider(configProvider common.ConfigurationProvider, endpoint string) (client KmsVaultClient, err error) {
+// the configuration provider will be used for the default signer as well as reading the region
+func NewKmsVaultClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client KmsVaultClient, err error) {
 	baseClient, err := common.NewClientWithConfig(configProvider)
 	if err != nil {
 		return
@@ -31,9 +31,13 @@ func NewKmsVaultClientWithConfigurationProvider(configProvider common.Configurat
 
 	client = KmsVaultClient{BaseClient: baseClient}
 	client.BasePath = "20180608"
-	client.Host = endpoint
 	err = client.setConfigurationProvider(configProvider)
 	return
+}
+
+// SetRegion overrides the region of this client.
+func (client *KmsVaultClient) SetRegion(region string) {
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "kms", region)
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
@@ -42,6 +46,9 @@ func (client *KmsVaultClient) setConfigurationProvider(configProvider common.Con
 		return err
 	}
 
+	// Error has been checked already
+	region, _ := configProvider.Region()
+	client.SetRegion(region)
 	client.config = &configProvider
 	return nil
 }

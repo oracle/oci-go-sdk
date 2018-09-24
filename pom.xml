@@ -920,7 +920,7 @@
                 <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
                 <serviceHostName>kms</serviceHostName>
                 <isRegionalClient.kmscrypto>false</isRegionalClient.kmscrypto>
-                <isRegionalClient.kmsvault>false</isRegionalClient.kmsvault>
+                <isRegionalClient.kmsmanagement>false</isRegionalClient.kmsmanagement>
               </additionalProperties>
               <featureIdConfigFile>${feature-id-file}</featureIdConfigFile>
               <featureIdConfigDir>${feature-id-dir}</featureIdConfigDir>

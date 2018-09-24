@@ -22,8 +22,8 @@ type KmsManagementClient struct {
 }
 
 // NewKmsManagementClientWithConfigurationProvider Creates a new default KmsManagement client with the given configuration provider.
-// the configuration provider will be used for the default signer as well as reading the region
-func NewKmsManagementClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client KmsManagementClient, err error) {
+// the configuration provider will be used for the default signer
+func NewKmsManagementClientWithConfigurationProvider(configProvider common.ConfigurationProvider, endpoint string) (client KmsManagementClient, err error) {
 	baseClient, err := common.NewClientWithConfig(configProvider)
 	if err != nil {
 		return
@@ -31,13 +31,9 @@ func NewKmsManagementClientWithConfigurationProvider(configProvider common.Confi
 
 	client = KmsManagementClient{BaseClient: baseClient}
 	client.BasePath = "20180608"
+	client.Host = endpoint
 	err = client.setConfigurationProvider(configProvider)
 	return
-}
-
-// SetRegion overrides the region of this client.
-func (client *KmsManagementClient) SetRegion(region string) {
-	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "kms", region)
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
@@ -46,9 +42,6 @@ func (client *KmsManagementClient) setConfigurationProvider(configProvider commo
 		return err
 	}
 
-	// Error has been checked already
-	region, _ := configProvider.Region()
-	client.SetRegion(region)
 	client.config = &configProvider
 	return nil
 }
