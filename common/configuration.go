@@ -91,11 +91,9 @@ func (p rawConfigurationProvider) KeyFingerprint() (string, error) {
 	return p.fingerprint, nil
 }
 
-
 func (p rawConfigurationProvider) Region() (string, error) {
 	return canStringBeRegion(p.region)
 }
-
 
 // environmentConfigurationProvider reads configuration from environment variables
 type environmentConfigurationProvider struct {

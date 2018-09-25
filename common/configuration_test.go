@@ -146,35 +146,34 @@ func TestRawConfigurationProvider_BadRegion(t *testing.T) {
 }
 
 func TestEnvironmentConfigurationProvider(t *testing.T) {
-	envVars :=[]string{"region","fingerprint", "user_ocid", "tenancy_ocid"}
+	envVars := []string{"region", "fingerprint", "user_ocid", "tenancy_ocid"}
 	keyFile := writeTempFile(testPrivateKeyConf)
 	defer removeFileFn(keyFile)
 
 	for _, v := range envVars {
-		os.Setenv(fmt.Sprintf("OCI_TEST_%s",v), "someval")
+		os.Setenv(fmt.Sprintf("OCI_TEST_%s", v), "someval")
 	}
 	os.Setenv("OCI_TEST_private_key_path", keyFile)
 
 	conf := ConfigurationProviderEnvironmentVariables("OCI_TEST", "")
 	b, _ := IsConfigurationProviderValid(conf)
-	assert.True(t,b)
+	assert.True(t, b)
 }
 
 func TestEnvironmentConfigurationProvider_BadRegion(t *testing.T) {
-	envVars :=[]string{"fingerprint", "user_ocid", "tenancy_ocid"}
+	envVars := []string{"fingerprint", "user_ocid", "tenancy_ocid"}
 	keyFile := writeTempFile(testPrivateKeyConf)
 	defer removeFileFn(keyFile)
 
 	for _, v := range envVars {
-		os.Setenv(fmt.Sprintf("OCI_TEST_%s",v), "someval")
+		os.Setenv(fmt.Sprintf("OCI_TEST_%s", v), "someval")
 	}
 	os.Setenv("OCI_TEST_private_key_path", keyFile)
 	os.Setenv("OCI_TEST_region", "asdfas ")
 
-
 	conf := ConfigurationProviderEnvironmentVariables("OCI_TEST", "")
 	b, _ := IsConfigurationProviderValid(conf)
-	assert.False(t,b)
+	assert.False(t, b)
 	_, e := conf.Region()
 	assert.Error(t, e)
 }
@@ -813,19 +812,19 @@ func TestExpandPath(t *testing.T) {
 
 func TestIsRegionValid(t *testing.T) {
 	testIO := []struct {
-		name string
-		input string
+		name     string
+		input    string
 		expected bool
-	} {
+	}{
 		{"valid", "aasb asdf", true},
 		{"valid", "aasb-asdf", false},
 		{"empty", "", true},
 		{"leading strings", "    aasb", true},
 		{"single leading string", " aasb", true},
-		{"single trailing string", "aasb ",  true},
-		{"trailing string", "aasb      ",  true},
-		{"single trailing and leading", " aasb ",  true},
-		{"trailing and leading", " aasb   ",  true},
+		{"single trailing string", "aasb ", true},
+		{"trailing string", "aasb      ", true},
+		{"single trailing and leading", " aasb ", true},
+		{"trailing and leading", " aasb   ", true},
 	}
 
 	for _, tIO := range testIO {

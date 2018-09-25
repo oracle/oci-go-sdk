@@ -3,8 +3,8 @@
 package common
 
 import (
-	"strings"
 	"fmt"
+	"strings"
 )
 
 //Region type for regions
