@@ -38,6 +38,8 @@ type updateUserRequest struct {
 	UserID                string `mandatory:"true" contributesTo:"path" name:"userId"`
 	TestupdateUserDetails `contributesTo:"body"`
 	IfMatch               string `mandatory:"false" contributesTo:"header" name:"if-match"`
+	HeaderValueOne        string `mandatory:"false" contributesTo:"header" name:"listInHeader"`
+	HeaderValueTwo        string `mandatory:"false" contributesTo:"header" name:"listInHeader"`
 }
 
 type TestcreateAPIKeyDetails struct {
@@ -101,11 +103,21 @@ func TestMakeDefault(t *testing.T) {
 }
 
 func TestHttpMarshallerSimpleHeader(t *testing.T) {
-	s := updateUserRequest{UserID: "id1", IfMatch: "n=as", TestupdateUserDetails: TestupdateUserDetails{Description: "name of"}}
+	s := updateUserRequest{
+		UserID:                "id1",
+		IfMatch:               "n=as",
+		TestupdateUserDetails: TestupdateUserDetails{Description: "name of"},
+		HeaderValueOne:        "1",
+		HeaderValueTwo:        "2",
+	}
 	request := MakeDefaultHTTPRequest(http.MethodPost, "/random")
 	HTTPRequestMarshaller(s, &request)
 	header := request.Header
 	assert.True(t, header.Get(requestHeaderIfMatch) == "n=as")
+	listInHeader := header["Listinheader"]
+	assert.True(t, len(listInHeader) == 2)
+	hone, htwo := listInHeader[0], listInHeader[1]
+	assert.True(t, hone == "1" && htwo == "2")
 }
 
 func TestHttpMarshallerSimpleStruct(t *testing.T) {
