@@ -50,6 +50,16 @@ var (
 	}
 )
 
+// DefaultGenericHeaders list of default generic headers that is used in signing
+func DefaultGenericHeaders() []string {
+	return makeACopy(defaultGenericHeaders)
+}
+
+// DefaultBodyHeaders list of default body headers that is used in signing
+func DefaultBodyHeaders() []string {
+	return makeACopy(defaultBodyHeaders)
+}
+
 // DefaultRequestSigner creates a signer with default parameters.
 func DefaultRequestSigner(provider KeyProvider) HTTPRequestSigner {
 	return RequestSigner(provider, defaultGenericHeaders, defaultBodyHeaders)

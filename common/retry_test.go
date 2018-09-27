@@ -1,6 +1,8 @@
 package common
 
 import (
+	"bytes"
+	"context"
 	"github.com/stretchr/testify/assert"
 	"math"
 	"net/http"
@@ -84,4 +86,39 @@ func TestRetryPolicyExponentialBackoffNextDurationUnrolled(t *testing.T) {
 	assert.Equal(t, 16*time.Second, policy.NextDuration(responses[4]))
 	// done
 	assert.False(t, shouldContinueIssuingRequests(6, policy.MaximumNumberAttempts))
+}
+
+type mockedRequest struct {
+	Request http.Request
+	Policy  *RetryPolicy
+}
+
+func (m mockedRequest) HTTPRequest(method, path string) (http.Request, error) {
+	return m.Request, nil
+}
+
+func (m mockedRequest) RetryPolicy() *RetryPolicy {
+	return m.Policy
+}
+
+func TestRetryTokenPersists(t *testing.T) {
+	body := bytes.NewBufferString("YES")
+	req, _ := http.NewRequest("POST", "/some", body)
+	token := RetryToken()
+	req.Header.Set(requestHeaderOpcRetryToken, token)
+	policy := getExponentialBackoffRetryPolicy(2)
+	r := mockedRequest{Request: *req, Policy: &policy}
+	operation := func(i context.Context, request OCIRequest) (OCIResponse, error) {
+		httpResponse := http.Response{
+			Header:     http.Header{},
+			StatusCode: 200,
+		}
+		httpReq, _ := request.HTTPRequest("POST", "/some")
+		headerToken := httpReq.Header.Get(requestHeaderOpcRetryToken)
+
+		assert.Equal(t, token, headerToken)
+		return mockedResponse{RawResponse: &httpResponse}, nil
+	}
+
+	Retry(context.Background(), r, operation, *r.Policy)
 }

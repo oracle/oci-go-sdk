@@ -104,26 +104,6 @@ func TestClient_prepareRequestUpdatesDateHeader(t *testing.T) {
 	assert.NotEqual(t, d1, d2)
 }
 
-func TestClient_prepareRequestOnlySetsRetryTokenOnce(t *testing.T) {
-	host := "somehost:9000"
-	basePath := "basePath"
-	restPath := "somepath"
-
-	c := BaseClient{UserAgent: "asdf"}
-	c.Host = host
-	c.BasePath = basePath
-
-	request := http.Request{}
-	request.URL = &url.URL{Path: restPath}
-	c.prepareRequest(&request)
-	token1 := request.Header.Get(requestHeaderOpcRetryToken)
-	assert.NotEmpty(t, token1)
-	c.prepareRequest(&request)
-	token2 := request.Header.Get(requestHeaderOpcRetryToken)
-	assert.NotEmpty(t, token2)
-	assert.Equal(t, token1, token2)
-}
-
 func TestDefaultHTTPDispatcher_transportNotSet(t *testing.T) {
 	client := defaultHTTPDispatcher()
 
@@ -473,8 +453,8 @@ func TestRetry_GetsSuccessfulResponseAfterMultipleAttempts(t *testing.T) {
 }
 
 func TestRetryToken_GenerateMultipleTimes(t *testing.T) {
-	token1 := generateRetryToken()
-	token2 := generateRetryToken()
+	token1 := RetryToken()
+	token2 := RetryToken()
 	assert.NotEqual(t, token1, token2)
 }
 

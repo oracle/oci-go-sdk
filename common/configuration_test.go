@@ -112,6 +112,72 @@ func TestRawConfigurationProvider(t *testing.T) {
 
 }
 
+func TestRawConfigurationProvider_BadRegion(t *testing.T) {
+	var (
+		testTenancy     = "ocid1.tenancy.oc1..aaaaaaaaxf3fuazos"
+		testUser        = "ocid1.user.oc1..aaaaaaaa3p67n2kmpxnbcnff"
+		testRegion      = "us-ashburn-1  "
+		testFingerprint = "af:81:71:8e:d2"
+	)
+
+	c := NewRawConfigurationProvider(testTenancy, testUser, testRegion, testFingerprint, testPrivateKeyConf, nil)
+
+	user, err := c.UserOCID()
+	assert.NoError(t, err)
+	assert.Equal(t, user, testUser)
+
+	fingerprint, err := c.KeyFingerprint()
+	assert.NoError(t, err)
+	assert.Equal(t, fingerprint, testFingerprint)
+
+	_, err = c.Region()
+	assert.Error(t, err)
+
+	rsaKey, err := c.PrivateRSAKey()
+	assert.NoError(t, err)
+	assert.NotEmpty(t, rsaKey)
+
+	keyID, err := c.KeyID()
+	assert.NoError(t, err)
+	assert.NotEmpty(t, keyID)
+
+	assert.Equal(t, keyID, "ocid1.tenancy.oc1..aaaaaaaaxf3fuazos/ocid1.user.oc1..aaaaaaaa3p67n2kmpxnbcnff/af:81:71:8e:d2")
+
+}
+
+func TestEnvironmentConfigurationProvider(t *testing.T) {
+	envVars := []string{"region", "fingerprint", "user_ocid", "tenancy_ocid"}
+	keyFile := writeTempFile(testPrivateKeyConf)
+	defer removeFileFn(keyFile)
+
+	for _, v := range envVars {
+		os.Setenv(fmt.Sprintf("OCI_TEST_%s", v), "someval")
+	}
+	os.Setenv("OCI_TEST_private_key_path", keyFile)
+
+	conf := ConfigurationProviderEnvironmentVariables("OCI_TEST", "")
+	b, _ := IsConfigurationProviderValid(conf)
+	assert.True(t, b)
+}
+
+func TestEnvironmentConfigurationProvider_BadRegion(t *testing.T) {
+	envVars := []string{"fingerprint", "user_ocid", "tenancy_ocid"}
+	keyFile := writeTempFile(testPrivateKeyConf)
+	defer removeFileFn(keyFile)
+
+	for _, v := range envVars {
+		os.Setenv(fmt.Sprintf("OCI_TEST_%s", v), "someval")
+	}
+	os.Setenv("OCI_TEST_private_key_path", keyFile)
+	os.Setenv("OCI_TEST_region", "asdfas ")
+
+	conf := ConfigurationProviderEnvironmentVariables("OCI_TEST", "")
+	b, _ := IsConfigurationProviderValid(conf)
+	assert.False(t, b)
+	_, e := conf.Region()
+	assert.Error(t, e)
+}
+
 func TestFileConfigurationProvider_parseConfigFileData(t *testing.T) {
 	data := `[DEFAULT]
 user=someuser
@@ -157,6 +223,27 @@ region=someregion
 		val, e := fn()
 		assert.NoError(t, e)
 		assert.Equal(t, expected[i], val)
+	}
+}
+
+func TestFileConfigurationProvider_FromFileBadRegion(t *testing.T) {
+	data := `[DEFAULT]
+user=someuser
+fingerprint=somefingerprint
+key_file=somelocation
+tenancy=sometenancy
+compartment = somecompartment
+region= asdf   asdf
+`
+	filename := writeTempFile(data)
+	defer removeFileFn(filename)
+
+	c := fileConfigurationProvider{ConfigPath: filename, Profile: "DEFAULT"}
+	fns := []func() (string, error){c.Region}
+
+	for _, fn := range fns {
+		_, e := fn()
+		assert.Error(t, e)
 	}
 }
 
@@ -719,6 +806,35 @@ func TestExpandPath(t *testing.T) {
 		t.Run(tio.name, func(t *testing.T) {
 			p := expandPath(tio.inPath)
 			assert.Equal(t, tio.expectedPath, p)
+		})
+	}
+}
+
+func TestIsRegionValid(t *testing.T) {
+	testIO := []struct {
+		name     string
+		input    string
+		expected bool
+	}{
+		{"valid", "aasb asdf", true},
+		{"valid", "aasb-asdf", false},
+		{"empty", "", true},
+		{"leading strings", "    aasb", true},
+		{"single leading string", " aasb", true},
+		{"single trailing string", "aasb ", true},
+		{"trailing string", "aasb      ", true},
+		{"single trailing and leading", " aasb ", true},
+		{"trailing and leading", " aasb   ", true},
+	}
+
+	for _, tIO := range testIO {
+		t.Run(tIO.name, func(t *testing.T) {
+			_, err := canStringBeRegion(tIO.input)
+			if tIO.expected {
+				assert.Error(t, err)
+			} else {
+				assert.NoError(t, err)
+			}
 		})
 	}
 }

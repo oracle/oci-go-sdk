@@ -285,3 +285,17 @@ func TestOCIRequestSigner_SignEmptyBody(t *testing.T) {
 	assert.NotEmpty(t, r.Header.Get(requestHeaderAuthorization))
 	assert.NotEmpty(t, r.Header.Get(requestHeaderXContentSHA256))
 }
+
+func TestDefaultHeadersReturnsCopy(t *testing.T) {
+	genericHeaders := DefaultGenericHeaders()
+	bodyHeaders := DefaultBodyHeaders()
+
+	assert.Equal(t, defaultGenericHeaders, genericHeaders)
+	assert.Equal(t, defaultBodyHeaders, bodyHeaders)
+
+	genericHeaders[0] = "mutate"
+	bodyHeaders[0] = "mutate"
+
+	assert.NotEqual(t, defaultGenericHeaders, genericHeaders)
+	assert.NotEqual(t, defaultBodyHeaders, bodyHeaders)
+}
