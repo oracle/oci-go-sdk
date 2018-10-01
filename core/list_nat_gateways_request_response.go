@@ -8,8 +8,8 @@ import (
 	"net/http"
 )
 
-// ListServiceGatewaysRequest wrapper for the ListServiceGateways operation
-type ListServiceGatewaysRequest struct {
+// ListNatGatewaysRequest wrapper for the ListNatGateways operation
+type ListNatGatewaysRequest struct {
 
 	// The OCID of the compartment.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
@@ -28,6 +28,9 @@ type ListServiceGatewaysRequest struct {
 	// List Pagination (https://docs.us-phoenix-1.oraclecloud.com/iaas/Content/API/Concepts/usingapi.htm#nine).
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
+	// A filter to return only resources that match the given display name exactly.
+	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
+
 	// The field to sort by. You can provide one sort order (`sortOrder`). Default order for
 	// TIMECREATED is descending. Default order for DISPLAYNAME is ascending. The DISPLAYNAME
 	// sort order is case sensitive.
@@ -35,14 +38,14 @@ type ListServiceGatewaysRequest struct {
 	// optionally filter by availability domain if the scope of the resource type is within a
 	// single availability domain. If you call one of these "List" operations without specifying
 	// an availability domain, the resources are grouped by availability domain, then sorted.
-	SortBy ListServiceGatewaysSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
+	SortBy ListNatGatewaysSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order
 	// is case sensitive.
-	SortOrder ListServiceGatewaysSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
+	SortOrder ListNatGatewaysSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
-	// A filter to return only resources that match the given lifecycle state.  The state value is case-insensitive.
-	LifecycleState ServiceGatewayLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
+	// A filter to return only resources that match the specified lifecycle state. The value is case insensitive.
+	LifecycleState NatGatewayLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.
@@ -53,28 +56,28 @@ type ListServiceGatewaysRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request ListServiceGatewaysRequest) String() string {
+func (request ListNatGatewaysRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request ListServiceGatewaysRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request ListNatGatewaysRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request ListServiceGatewaysRequest) RetryPolicy() *common.RetryPolicy {
+func (request ListNatGatewaysRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// ListServiceGatewaysResponse wrapper for the ListServiceGateways operation
-type ListServiceGatewaysResponse struct {
+// ListNatGatewaysResponse wrapper for the ListNatGateways operation
+type ListNatGatewaysResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// A list of []ServiceGateway instances
-	Items []ServiceGateway `presentIn:"body"`
+	// A list of []NatGateway instances
+	Items []NatGateway `presentIn:"body"`
 
 	// For list pagination. When this header appears in the response, additional pages of
 	// results remain. For important details about how pagination works, see
@@ -86,56 +89,56 @@ type ListServiceGatewaysResponse struct {
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
-func (response ListServiceGatewaysResponse) String() string {
+func (response ListNatGatewaysResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response ListServiceGatewaysResponse) HTTPResponse() *http.Response {
+func (response ListNatGatewaysResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }
 
-// ListServiceGatewaysSortByEnum Enum with underlying type: string
-type ListServiceGatewaysSortByEnum string
+// ListNatGatewaysSortByEnum Enum with underlying type: string
+type ListNatGatewaysSortByEnum string
 
-// Set of constants representing the allowable values for ListServiceGatewaysSortBy
+// Set of constants representing the allowable values for ListNatGatewaysSortBy
 const (
-	ListServiceGatewaysSortByTimecreated ListServiceGatewaysSortByEnum = "TIMECREATED"
-	ListServiceGatewaysSortByDisplayname ListServiceGatewaysSortByEnum = "DISPLAYNAME"
+	ListNatGatewaysSortByTimecreated ListNatGatewaysSortByEnum = "TIMECREATED"
+	ListNatGatewaysSortByDisplayname ListNatGatewaysSortByEnum = "DISPLAYNAME"
 )
 
-var mappingListServiceGatewaysSortBy = map[string]ListServiceGatewaysSortByEnum{
-	"TIMECREATED": ListServiceGatewaysSortByTimecreated,
-	"DISPLAYNAME": ListServiceGatewaysSortByDisplayname,
+var mappingListNatGatewaysSortBy = map[string]ListNatGatewaysSortByEnum{
+	"TIMECREATED": ListNatGatewaysSortByTimecreated,
+	"DISPLAYNAME": ListNatGatewaysSortByDisplayname,
 }
 
-// GetListServiceGatewaysSortByEnumValues Enumerates the set of values for ListServiceGatewaysSortBy
-func GetListServiceGatewaysSortByEnumValues() []ListServiceGatewaysSortByEnum {
-	values := make([]ListServiceGatewaysSortByEnum, 0)
-	for _, v := range mappingListServiceGatewaysSortBy {
+// GetListNatGatewaysSortByEnumValues Enumerates the set of values for ListNatGatewaysSortBy
+func GetListNatGatewaysSortByEnumValues() []ListNatGatewaysSortByEnum {
+	values := make([]ListNatGatewaysSortByEnum, 0)
+	for _, v := range mappingListNatGatewaysSortBy {
 		values = append(values, v)
 	}
 	return values
 }
 
-// ListServiceGatewaysSortOrderEnum Enum with underlying type: string
-type ListServiceGatewaysSortOrderEnum string
+// ListNatGatewaysSortOrderEnum Enum with underlying type: string
+type ListNatGatewaysSortOrderEnum string
 
-// Set of constants representing the allowable values for ListServiceGatewaysSortOrder
+// Set of constants representing the allowable values for ListNatGatewaysSortOrder
 const (
-	ListServiceGatewaysSortOrderAsc  ListServiceGatewaysSortOrderEnum = "ASC"
-	ListServiceGatewaysSortOrderDesc ListServiceGatewaysSortOrderEnum = "DESC"
+	ListNatGatewaysSortOrderAsc  ListNatGatewaysSortOrderEnum = "ASC"
+	ListNatGatewaysSortOrderDesc ListNatGatewaysSortOrderEnum = "DESC"
 )
 
-var mappingListServiceGatewaysSortOrder = map[string]ListServiceGatewaysSortOrderEnum{
-	"ASC":  ListServiceGatewaysSortOrderAsc,
-	"DESC": ListServiceGatewaysSortOrderDesc,
+var mappingListNatGatewaysSortOrder = map[string]ListNatGatewaysSortOrderEnum{
+	"ASC":  ListNatGatewaysSortOrderAsc,
+	"DESC": ListNatGatewaysSortOrderDesc,
 }
 
-// GetListServiceGatewaysSortOrderEnumValues Enumerates the set of values for ListServiceGatewaysSortOrder
-func GetListServiceGatewaysSortOrderEnumValues() []ListServiceGatewaysSortOrderEnum {
-	values := make([]ListServiceGatewaysSortOrderEnum, 0)
-	for _, v := range mappingListServiceGatewaysSortOrder {
+// GetListNatGatewaysSortOrderEnumValues Enumerates the set of values for ListNatGatewaysSortOrder
+func GetListNatGatewaysSortOrderEnumValues() []ListNatGatewaysSortOrderEnum {
+	values := make([]ListNatGatewaysSortOrderEnum, 0)
+	for _, v := range mappingListNatGatewaysSortOrder {
 		values = append(values, v)
 	}
 	return values
