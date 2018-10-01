@@ -3,7 +3,7 @@
 
 // Object Storage Service API
 //
-// Common set of Object and Archive Storage APIs for managing buckets and objects.
+// The Object and Archive Storage APIs for managing buckets and objects.
 //
 
 package objectstorage
@@ -141,8 +141,7 @@ func (client ObjectStorageClient) commitMultipartUpload(ctx context.Context, req
 	return response, err
 }
 
-// CreateBucket Creates a bucket in the given namespace with a bucket name and optional user-defined metadata. Avoid entering confidential
-// information in bucket names.
+// CreateBucket Creates a bucket in the given namespace with a bucket name and optional user-defined metadata.
 func (client ObjectStorageClient) CreateBucket(ctx context.Context, request CreateBucketRequest) (response CreateBucketResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -352,6 +351,48 @@ func (client ObjectStorageClient) deleteObject(ctx context.Context, request comm
 	return response, err
 }
 
+// DeleteObjectLifecyclePolicy Deletes the object lifecycle policy for the bucket.
+func (client ObjectStorageClient) DeleteObjectLifecyclePolicy(ctx context.Context, request DeleteObjectLifecyclePolicyRequest) (response DeleteObjectLifecyclePolicyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteObjectLifecyclePolicy, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = DeleteObjectLifecyclePolicyResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(DeleteObjectLifecyclePolicyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteObjectLifecyclePolicyResponse")
+	}
+	return
+}
+
+// deleteObjectLifecyclePolicy implements the OCIOperation interface (enables retrying operations)
+func (client ObjectStorageClient) deleteObjectLifecyclePolicy(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/n/{namespaceName}/b/{bucketName}/l")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteObjectLifecyclePolicyResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // DeletePreauthenticatedRequest Deletes the pre-authenticated request for the bucket.
 func (client ObjectStorageClient) DeletePreauthenticatedRequest(ctx context.Context, request DeletePreauthenticatedRequestRequest) (response DeletePreauthenticatedRequestResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -436,8 +477,7 @@ func (client ObjectStorageClient) getBucket(ctx context.Context, request common.
 	return response, err
 }
 
-// GetNamespace Namespaces are unique. Namespaces are either the tenancy name or a random string automatically generated during
-// account creation. You cannot edit a namespace.
+// GetNamespace Gets the name of the namespace for the user making the request.
 func (client ObjectStorageClient) GetNamespace(ctx context.Context, request GetNamespaceRequest) (response GetNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -556,6 +596,48 @@ func (client ObjectStorageClient) getObject(ctx context.Context, request common.
 	var response GetObjectResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetObjectLifecyclePolicy Gets the object lifecycle policy for the bucket.
+func (client ObjectStorageClient) GetObjectLifecyclePolicy(ctx context.Context, request GetObjectLifecyclePolicyRequest) (response GetObjectLifecyclePolicyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getObjectLifecyclePolicy, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = GetObjectLifecyclePolicyResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetObjectLifecyclePolicyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetObjectLifecyclePolicyResponse")
+	}
+	return
+}
+
+// getObjectLifecyclePolicy implements the OCIOperation interface (enables retrying operations)
+func (client ObjectStorageClient) getObjectLifecyclePolicy(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/n/{namespaceName}/b/{bucketName}/l")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetObjectLifecyclePolicyResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
 	response.RawResponse = httpResponse
 	if err != nil {
 		return response, err
@@ -908,7 +990,7 @@ func (client ObjectStorageClient) listPreauthenticatedRequests(ctx context.Conte
 	return response, err
 }
 
-// PutObject Creates a new object or overwrites an existing one. See Special Instructions for Object Storage PUT (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/signingrequests.htm#ObjectStoragePut) for request signature requirements.
+// PutObject Creates a new object or overwrites an existing one.
 func (client ObjectStorageClient) PutObject(ctx context.Context, request PutObjectRequest) (response PutObjectResponse, err error) {
 	client.Signer = common.RequestSignerExcludeBody(*client.config)
 	var ociResponse common.OCIResponse
@@ -939,6 +1021,48 @@ func (client ObjectStorageClient) putObject(ctx context.Context, request common.
 	}
 
 	var response PutObjectResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// PutObjectLifecyclePolicy Creates or replaces the object lifecycle policy for the bucket.
+func (client ObjectStorageClient) PutObjectLifecyclePolicy(ctx context.Context, request PutObjectLifecyclePolicyRequest) (response PutObjectLifecyclePolicyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.putObjectLifecyclePolicy, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = PutObjectLifecyclePolicyResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(PutObjectLifecyclePolicyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into PutObjectLifecyclePolicyResponse")
+	}
+	return
+}
+
+// putObjectLifecyclePolicy implements the OCIOperation interface (enables retrying operations)
+func (client ObjectStorageClient) putObjectLifecyclePolicy(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/n/{namespaceName}/b/{bucketName}/l")
+	if err != nil {
+		return nil, err
+	}
+
+	var response PutObjectLifecyclePolicyResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
@@ -993,8 +1117,8 @@ func (client ObjectStorageClient) renameObject(ctx context.Context, request comm
 	return response, err
 }
 
-// RestoreObjects Restore one or more objects specified by objectName parameter.
-// By default object will be restored for 24 hours.Duration can be configured using hours parameter.
+// RestoreObjects Restore one or more objects specified by the objectName parameter.
+// By default objects will be restored for 24 hours. Duration can be configured using the hours parameter.
 func (client ObjectStorageClient) RestoreObjects(ctx context.Context, request RestoreObjectsRequest) (response RestoreObjectsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -1123,7 +1247,7 @@ func (client ObjectStorageClient) updateNamespaceMetadata(ctx context.Context, r
 	return response, err
 }
 
-// UploadPart Uploads a single part of a multipart upload. See Special Instructions for Object Storage PUT (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/signingrequests.htm#ObjectStoragePut) for request signature requirements.
+// UploadPart Uploads a single part of a multipart upload.
 func (client ObjectStorageClient) UploadPart(ctx context.Context, request UploadPartRequest) (response UploadPartResponse, err error) {
 	client.Signer = common.RequestSignerExcludeBody(*client.config)
 	var ociResponse common.OCIResponse
