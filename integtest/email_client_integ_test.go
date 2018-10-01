@@ -19,6 +19,7 @@ import (
 
 // sanity test for email service
 func TestEmailClient_EmailSender(t *testing.T) {
+	t.Skip("Skipping test")
 	client, err := email.NewEmailClientWithConfigurationProvider(common.DefaultConfigProvider())
 	failIfError(t, err)
 
