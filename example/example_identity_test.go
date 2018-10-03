@@ -13,6 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/example/helpers"
 	"github.com/oracle/oci-go-sdk/identity"
+	"net/http"
 )
 
 // ExampleListAvailabilityDomains Lists the Availability Domains in your tenancy.
@@ -38,4 +39,36 @@ func ExampleListAvailabilityDomains() {
 
 	// Output:
 	// list available domains completed
+}
+
+// ExampleListGroupsWithCustomSignedHeader Lists groups by passing a custom signed header in the request
+func ExampleListGroupsWithCustomSignedHeader() {
+	provider := common.DefaultConfigProvider()
+	c, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.FatalIfError(err)
+
+	//Bear in mind that services expect well known headers to be signed. Signing arbitrary headers
+	//might lead to authentication errors
+	customHeader := "opc-my-token"
+	allHeaders := append(common.DefaultGenericHeaders(), customHeader)
+	c.Signer = common.RequestSigner(provider, allHeaders, common.DefaultBodyHeaders())
+	c.Interceptor = func(request *http.Request) error {
+		request.Header.Add(customHeader, "customvalue")
+		return nil
+	}
+
+
+	// The OCID of the tenancy containing the compartment.
+	tenancyID, _ := provider.TenancyOCID()
+	request := identity.ListGroupsRequest{
+		CompartmentId:   common.String(tenancyID),
+	}
+	r, err := c.ListGroups(context.Background(), request)
+	helpers.FatalIfError(err)
+
+	log.Printf("list groups completed: %v", r.Items)
+	fmt.Println("list groups completed")
+
+	// Output:
+	// list groups completed
 }
