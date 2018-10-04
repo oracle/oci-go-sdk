@@ -169,7 +169,7 @@ This allows you to add custom signed headers to the request. Following is an exa
 	c.ListGroups(..)
 
 Bear in mind that some services have a white list of headers that it expects to be signed.
-Therefore, adding an arbitrary [header ??] can result in authentications errors.
+Therefore, adding an arbitrary header can result in authentications errors.
 To see a runnable example, see https://github.com/oracle/oci-go-sdk/blob/master/example/example_identity_test.go
 
 
