@@ -101,7 +101,7 @@ func (response ListVolumeBackupsResponse) HTTPResponse() *http.Response {
 // ListVolumeBackupsSortByEnum Enum with underlying type: string
 type ListVolumeBackupsSortByEnum string
 
-// Set of constants representing the allowable values for ListVolumeBackupsSortBy
+// Set of constants representing the allowable values for ListVolumeBackupsSortByEnum
 const (
 	ListVolumeBackupsSortByTimecreated ListVolumeBackupsSortByEnum = "TIMECREATED"
 	ListVolumeBackupsSortByDisplayname ListVolumeBackupsSortByEnum = "DISPLAYNAME"
@@ -112,7 +112,7 @@ var mappingListVolumeBackupsSortBy = map[string]ListVolumeBackupsSortByEnum{
 	"DISPLAYNAME": ListVolumeBackupsSortByDisplayname,
 }
 
-// GetListVolumeBackupsSortByEnumValues Enumerates the set of values for ListVolumeBackupsSortBy
+// GetListVolumeBackupsSortByEnumValues Enumerates the set of values for ListVolumeBackupsSortByEnum
 func GetListVolumeBackupsSortByEnumValues() []ListVolumeBackupsSortByEnum {
 	values := make([]ListVolumeBackupsSortByEnum, 0)
 	for _, v := range mappingListVolumeBackupsSortBy {
@@ -124,7 +124,7 @@ func GetListVolumeBackupsSortByEnumValues() []ListVolumeBackupsSortByEnum {
 // ListVolumeBackupsSortOrderEnum Enum with underlying type: string
 type ListVolumeBackupsSortOrderEnum string
 
-// Set of constants representing the allowable values for ListVolumeBackupsSortOrder
+// Set of constants representing the allowable values for ListVolumeBackupsSortOrderEnum
 const (
 	ListVolumeBackupsSortOrderAsc  ListVolumeBackupsSortOrderEnum = "ASC"
 	ListVolumeBackupsSortOrderDesc ListVolumeBackupsSortOrderEnum = "DESC"
@@ -135,7 +135,7 @@ var mappingListVolumeBackupsSortOrder = map[string]ListVolumeBackupsSortOrderEnu
 	"DESC": ListVolumeBackupsSortOrderDesc,
 }
 
-// GetListVolumeBackupsSortOrderEnumValues Enumerates the set of values for ListVolumeBackupsSortOrder
+// GetListVolumeBackupsSortOrderEnumValues Enumerates the set of values for ListVolumeBackupsSortOrderEnum
 func GetListVolumeBackupsSortOrderEnumValues() []ListVolumeBackupsSortOrderEnum {
 	values := make([]ListVolumeBackupsSortOrderEnum, 0)
 	for _, v := range mappingListVolumeBackupsSortOrder {

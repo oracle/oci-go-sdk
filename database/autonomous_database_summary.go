@@ -70,7 +70,7 @@ func (m AutonomousDatabaseSummary) String() string {
 // AutonomousDatabaseSummaryLicenseModelEnum Enum with underlying type: string
 type AutonomousDatabaseSummaryLicenseModelEnum string
 
-// Set of constants representing the allowable values for AutonomousDatabaseSummaryLicenseModel
+// Set of constants representing the allowable values for AutonomousDatabaseSummaryLicenseModelEnum
 const (
 	AutonomousDatabaseSummaryLicenseModelLicenseIncluded     AutonomousDatabaseSummaryLicenseModelEnum = "LICENSE_INCLUDED"
 	AutonomousDatabaseSummaryLicenseModelBringYourOwnLicense AutonomousDatabaseSummaryLicenseModelEnum = "BRING_YOUR_OWN_LICENSE"
@@ -81,7 +81,7 @@ var mappingAutonomousDatabaseSummaryLicenseModel = map[string]AutonomousDatabase
 	"BRING_YOUR_OWN_LICENSE": AutonomousDatabaseSummaryLicenseModelBringYourOwnLicense,
 }
 
-// GetAutonomousDatabaseSummaryLicenseModelEnumValues Enumerates the set of values for AutonomousDatabaseSummaryLicenseModel
+// GetAutonomousDatabaseSummaryLicenseModelEnumValues Enumerates the set of values for AutonomousDatabaseSummaryLicenseModelEnum
 func GetAutonomousDatabaseSummaryLicenseModelEnumValues() []AutonomousDatabaseSummaryLicenseModelEnum {
 	values := make([]AutonomousDatabaseSummaryLicenseModelEnum, 0)
 	for _, v := range mappingAutonomousDatabaseSummaryLicenseModel {
@@ -93,7 +93,7 @@ func GetAutonomousDatabaseSummaryLicenseModelEnumValues() []AutonomousDatabaseSu
 // AutonomousDatabaseSummaryLifecycleStateEnum Enum with underlying type: string
 type AutonomousDatabaseSummaryLifecycleStateEnum string
 
-// Set of constants representing the allowable values for AutonomousDatabaseSummaryLifecycleState
+// Set of constants representing the allowable values for AutonomousDatabaseSummaryLifecycleStateEnum
 const (
 	AutonomousDatabaseSummaryLifecycleStateProvisioning            AutonomousDatabaseSummaryLifecycleStateEnum = "PROVISIONING"
 	AutonomousDatabaseSummaryLifecycleStateAvailable               AutonomousDatabaseSummaryLifecycleStateEnum = "AVAILABLE"
@@ -124,7 +124,7 @@ var mappingAutonomousDatabaseSummaryLifecycleState = map[string]AutonomousDataba
 	"AVAILABLE_NEEDS_ATTENTION": AutonomousDatabaseSummaryLifecycleStateAvailableNeedsAttention,
 }
 
-// GetAutonomousDatabaseSummaryLifecycleStateEnumValues Enumerates the set of values for AutonomousDatabaseSummaryLifecycleState
+// GetAutonomousDatabaseSummaryLifecycleStateEnumValues Enumerates the set of values for AutonomousDatabaseSummaryLifecycleStateEnum
 func GetAutonomousDatabaseSummaryLifecycleStateEnumValues() []AutonomousDatabaseSummaryLifecycleStateEnum {
 	values := make([]AutonomousDatabaseSummaryLifecycleStateEnum, 0)
 	for _, v := range mappingAutonomousDatabaseSummaryLifecycleState {

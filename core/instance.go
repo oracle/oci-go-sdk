@@ -183,7 +183,7 @@ func (m *Instance) UnmarshalJSON(data []byte) (e error) {
 // InstanceLaunchModeEnum Enum with underlying type: string
 type InstanceLaunchModeEnum string
 
-// Set of constants representing the allowable values for InstanceLaunchMode
+// Set of constants representing the allowable values for InstanceLaunchModeEnum
 const (
 	InstanceLaunchModeNative          InstanceLaunchModeEnum = "NATIVE"
 	InstanceLaunchModeEmulated        InstanceLaunchModeEnum = "EMULATED"
@@ -198,7 +198,7 @@ var mappingInstanceLaunchMode = map[string]InstanceLaunchModeEnum{
 	"CUSTOM":          InstanceLaunchModeCustom,
 }
 
-// GetInstanceLaunchModeEnumValues Enumerates the set of values for InstanceLaunchMode
+// GetInstanceLaunchModeEnumValues Enumerates the set of values for InstanceLaunchModeEnum
 func GetInstanceLaunchModeEnumValues() []InstanceLaunchModeEnum {
 	values := make([]InstanceLaunchModeEnum, 0)
 	for _, v := range mappingInstanceLaunchMode {
@@ -210,7 +210,7 @@ func GetInstanceLaunchModeEnumValues() []InstanceLaunchModeEnum {
 // InstanceLifecycleStateEnum Enum with underlying type: string
 type InstanceLifecycleStateEnum string
 
-// Set of constants representing the allowable values for InstanceLifecycleState
+// Set of constants representing the allowable values for InstanceLifecycleStateEnum
 const (
 	InstanceLifecycleStateProvisioning  InstanceLifecycleStateEnum = "PROVISIONING"
 	InstanceLifecycleStateRunning       InstanceLifecycleStateEnum = "RUNNING"
@@ -233,7 +233,7 @@ var mappingInstanceLifecycleState = map[string]InstanceLifecycleStateEnum{
 	"TERMINATED":     InstanceLifecycleStateTerminated,
 }
 
-// GetInstanceLifecycleStateEnumValues Enumerates the set of values for InstanceLifecycleState
+// GetInstanceLifecycleStateEnumValues Enumerates the set of values for InstanceLifecycleStateEnum
 func GetInstanceLifecycleStateEnumValues() []InstanceLifecycleStateEnum {
 	values := make([]InstanceLifecycleStateEnum, 0)
 	for _, v := range mappingInstanceLifecycleState {

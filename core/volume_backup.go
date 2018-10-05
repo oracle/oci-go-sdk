@@ -93,7 +93,7 @@ func (m VolumeBackup) String() string {
 // VolumeBackupLifecycleStateEnum Enum with underlying type: string
 type VolumeBackupLifecycleStateEnum string
 
-// Set of constants representing the allowable values for VolumeBackupLifecycleState
+// Set of constants representing the allowable values for VolumeBackupLifecycleStateEnum
 const (
 	VolumeBackupLifecycleStateCreating        VolumeBackupLifecycleStateEnum = "CREATING"
 	VolumeBackupLifecycleStateAvailable       VolumeBackupLifecycleStateEnum = "AVAILABLE"
@@ -112,7 +112,7 @@ var mappingVolumeBackupLifecycleState = map[string]VolumeBackupLifecycleStateEnu
 	"REQUEST_RECEIVED": VolumeBackupLifecycleStateRequestReceived,
 }
 
-// GetVolumeBackupLifecycleStateEnumValues Enumerates the set of values for VolumeBackupLifecycleState
+// GetVolumeBackupLifecycleStateEnumValues Enumerates the set of values for VolumeBackupLifecycleStateEnum
 func GetVolumeBackupLifecycleStateEnumValues() []VolumeBackupLifecycleStateEnum {
 	values := make([]VolumeBackupLifecycleStateEnum, 0)
 	for _, v := range mappingVolumeBackupLifecycleState {
@@ -124,7 +124,7 @@ func GetVolumeBackupLifecycleStateEnumValues() []VolumeBackupLifecycleStateEnum 
 // VolumeBackupSourceTypeEnum Enum with underlying type: string
 type VolumeBackupSourceTypeEnum string
 
-// Set of constants representing the allowable values for VolumeBackupSourceType
+// Set of constants representing the allowable values for VolumeBackupSourceTypeEnum
 const (
 	VolumeBackupSourceTypeManual    VolumeBackupSourceTypeEnum = "MANUAL"
 	VolumeBackupSourceTypeScheduled VolumeBackupSourceTypeEnum = "SCHEDULED"
@@ -135,7 +135,7 @@ var mappingVolumeBackupSourceType = map[string]VolumeBackupSourceTypeEnum{
 	"SCHEDULED": VolumeBackupSourceTypeScheduled,
 }
 
-// GetVolumeBackupSourceTypeEnumValues Enumerates the set of values for VolumeBackupSourceType
+// GetVolumeBackupSourceTypeEnumValues Enumerates the set of values for VolumeBackupSourceTypeEnum
 func GetVolumeBackupSourceTypeEnumValues() []VolumeBackupSourceTypeEnum {
 	values := make([]VolumeBackupSourceTypeEnum, 0)
 	for _, v := range mappingVolumeBackupSourceType {
@@ -147,7 +147,7 @@ func GetVolumeBackupSourceTypeEnumValues() []VolumeBackupSourceTypeEnum {
 // VolumeBackupTypeEnum Enum with underlying type: string
 type VolumeBackupTypeEnum string
 
-// Set of constants representing the allowable values for VolumeBackupType
+// Set of constants representing the allowable values for VolumeBackupTypeEnum
 const (
 	VolumeBackupTypeFull        VolumeBackupTypeEnum = "FULL"
 	VolumeBackupTypeIncremental VolumeBackupTypeEnum = "INCREMENTAL"
@@ -158,7 +158,7 @@ var mappingVolumeBackupType = map[string]VolumeBackupTypeEnum{
 	"INCREMENTAL": VolumeBackupTypeIncremental,
 }
 
-// GetVolumeBackupTypeEnumValues Enumerates the set of values for VolumeBackupType
+// GetVolumeBackupTypeEnumValues Enumerates the set of values for VolumeBackupTypeEnum
 func GetVolumeBackupTypeEnumValues() []VolumeBackupTypeEnum {
 	values := make([]VolumeBackupTypeEnum, 0)
 	for _, v := range mappingVolumeBackupType {

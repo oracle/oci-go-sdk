@@ -70,7 +70,7 @@ func (m Compartment) String() string {
 // CompartmentLifecycleStateEnum Enum with underlying type: string
 type CompartmentLifecycleStateEnum string
 
-// Set of constants representing the allowable values for CompartmentLifecycleState
+// Set of constants representing the allowable values for CompartmentLifecycleStateEnum
 const (
 	CompartmentLifecycleStateCreating CompartmentLifecycleStateEnum = "CREATING"
 	CompartmentLifecycleStateActive   CompartmentLifecycleStateEnum = "ACTIVE"
@@ -87,7 +87,7 @@ var mappingCompartmentLifecycleState = map[string]CompartmentLifecycleStateEnum{
 	"DELETED":  CompartmentLifecycleStateDeleted,
 }
 
-// GetCompartmentLifecycleStateEnumValues Enumerates the set of values for CompartmentLifecycleState
+// GetCompartmentLifecycleStateEnumValues Enumerates the set of values for CompartmentLifecycleStateEnum
 func GetCompartmentLifecycleStateEnumValues() []CompartmentLifecycleStateEnum {
 	values := make([]CompartmentLifecycleStateEnum, 0)
 	for _, v := range mappingCompartmentLifecycleState {

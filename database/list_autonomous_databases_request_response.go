@@ -88,7 +88,7 @@ func (response ListAutonomousDatabasesResponse) HTTPResponse() *http.Response {
 // ListAutonomousDatabasesSortByEnum Enum with underlying type: string
 type ListAutonomousDatabasesSortByEnum string
 
-// Set of constants representing the allowable values for ListAutonomousDatabasesSortBy
+// Set of constants representing the allowable values for ListAutonomousDatabasesSortByEnum
 const (
 	ListAutonomousDatabasesSortByTimecreated ListAutonomousDatabasesSortByEnum = "TIMECREATED"
 	ListAutonomousDatabasesSortByDisplayname ListAutonomousDatabasesSortByEnum = "DISPLAYNAME"
@@ -99,7 +99,7 @@ var mappingListAutonomousDatabasesSortBy = map[string]ListAutonomousDatabasesSor
 	"DISPLAYNAME": ListAutonomousDatabasesSortByDisplayname,
 }
 
-// GetListAutonomousDatabasesSortByEnumValues Enumerates the set of values for ListAutonomousDatabasesSortBy
+// GetListAutonomousDatabasesSortByEnumValues Enumerates the set of values for ListAutonomousDatabasesSortByEnum
 func GetListAutonomousDatabasesSortByEnumValues() []ListAutonomousDatabasesSortByEnum {
 	values := make([]ListAutonomousDatabasesSortByEnum, 0)
 	for _, v := range mappingListAutonomousDatabasesSortBy {
@@ -111,7 +111,7 @@ func GetListAutonomousDatabasesSortByEnumValues() []ListAutonomousDatabasesSortB
 // ListAutonomousDatabasesSortOrderEnum Enum with underlying type: string
 type ListAutonomousDatabasesSortOrderEnum string
 
-// Set of constants representing the allowable values for ListAutonomousDatabasesSortOrder
+// Set of constants representing the allowable values for ListAutonomousDatabasesSortOrderEnum
 const (
 	ListAutonomousDatabasesSortOrderAsc  ListAutonomousDatabasesSortOrderEnum = "ASC"
 	ListAutonomousDatabasesSortOrderDesc ListAutonomousDatabasesSortOrderEnum = "DESC"
@@ -122,7 +122,7 @@ var mappingListAutonomousDatabasesSortOrder = map[string]ListAutonomousDatabases
 	"DESC": ListAutonomousDatabasesSortOrderDesc,
 }
 
-// GetListAutonomousDatabasesSortOrderEnumValues Enumerates the set of values for ListAutonomousDatabasesSortOrder
+// GetListAutonomousDatabasesSortOrderEnumValues Enumerates the set of values for ListAutonomousDatabasesSortOrderEnum
 func GetListAutonomousDatabasesSortOrderEnumValues() []ListAutonomousDatabasesSortOrderEnum {
 	values := make([]ListAutonomousDatabasesSortOrderEnum, 0)
 	for _, v := range mappingListAutonomousDatabasesSortOrder {

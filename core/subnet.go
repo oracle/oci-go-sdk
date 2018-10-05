@@ -119,7 +119,7 @@ func (m Subnet) String() string {
 // SubnetLifecycleStateEnum Enum with underlying type: string
 type SubnetLifecycleStateEnum string
 
-// Set of constants representing the allowable values for SubnetLifecycleState
+// Set of constants representing the allowable values for SubnetLifecycleStateEnum
 const (
 	SubnetLifecycleStateProvisioning SubnetLifecycleStateEnum = "PROVISIONING"
 	SubnetLifecycleStateAvailable    SubnetLifecycleStateEnum = "AVAILABLE"
@@ -134,7 +134,7 @@ var mappingSubnetLifecycleState = map[string]SubnetLifecycleStateEnum{
 	"TERMINATED":   SubnetLifecycleStateTerminated,
 }
 
-// GetSubnetLifecycleStateEnumValues Enumerates the set of values for SubnetLifecycleState
+// GetSubnetLifecycleStateEnumValues Enumerates the set of values for SubnetLifecycleStateEnum
 func GetSubnetLifecycleStateEnumValues() []SubnetLifecycleStateEnum {
 	values := make([]SubnetLifecycleStateEnum, 0)
 	for _, v := range mappingSubnetLifecycleState {

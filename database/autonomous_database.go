@@ -70,7 +70,7 @@ func (m AutonomousDatabase) String() string {
 // AutonomousDatabaseLicenseModelEnum Enum with underlying type: string
 type AutonomousDatabaseLicenseModelEnum string
 
-// Set of constants representing the allowable values for AutonomousDatabaseLicenseModel
+// Set of constants representing the allowable values for AutonomousDatabaseLicenseModelEnum
 const (
 	AutonomousDatabaseLicenseModelLicenseIncluded     AutonomousDatabaseLicenseModelEnum = "LICENSE_INCLUDED"
 	AutonomousDatabaseLicenseModelBringYourOwnLicense AutonomousDatabaseLicenseModelEnum = "BRING_YOUR_OWN_LICENSE"
@@ -81,7 +81,7 @@ var mappingAutonomousDatabaseLicenseModel = map[string]AutonomousDatabaseLicense
 	"BRING_YOUR_OWN_LICENSE": AutonomousDatabaseLicenseModelBringYourOwnLicense,
 }
 
-// GetAutonomousDatabaseLicenseModelEnumValues Enumerates the set of values for AutonomousDatabaseLicenseModel
+// GetAutonomousDatabaseLicenseModelEnumValues Enumerates the set of values for AutonomousDatabaseLicenseModelEnum
 func GetAutonomousDatabaseLicenseModelEnumValues() []AutonomousDatabaseLicenseModelEnum {
 	values := make([]AutonomousDatabaseLicenseModelEnum, 0)
 	for _, v := range mappingAutonomousDatabaseLicenseModel {
@@ -93,7 +93,7 @@ func GetAutonomousDatabaseLicenseModelEnumValues() []AutonomousDatabaseLicenseMo
 // AutonomousDatabaseLifecycleStateEnum Enum with underlying type: string
 type AutonomousDatabaseLifecycleStateEnum string
 
-// Set of constants representing the allowable values for AutonomousDatabaseLifecycleState
+// Set of constants representing the allowable values for AutonomousDatabaseLifecycleStateEnum
 const (
 	AutonomousDatabaseLifecycleStateProvisioning            AutonomousDatabaseLifecycleStateEnum = "PROVISIONING"
 	AutonomousDatabaseLifecycleStateAvailable               AutonomousDatabaseLifecycleStateEnum = "AVAILABLE"
@@ -124,7 +124,7 @@ var mappingAutonomousDatabaseLifecycleState = map[string]AutonomousDatabaseLifec
 	"AVAILABLE_NEEDS_ATTENTION": AutonomousDatabaseLifecycleStateAvailableNeedsAttention,
 }
 
-// GetAutonomousDatabaseLifecycleStateEnumValues Enumerates the set of values for AutonomousDatabaseLifecycleState
+// GetAutonomousDatabaseLifecycleStateEnumValues Enumerates the set of values for AutonomousDatabaseLifecycleStateEnum
 func GetAutonomousDatabaseLifecycleStateEnumValues() []AutonomousDatabaseLifecycleStateEnum {
 	values := make([]AutonomousDatabaseLifecycleStateEnum, 0)
 	for _, v := range mappingAutonomousDatabaseLifecycleState {

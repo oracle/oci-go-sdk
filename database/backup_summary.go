@@ -61,7 +61,7 @@ func (m BackupSummary) String() string {
 // BackupSummaryLifecycleStateEnum Enum with underlying type: string
 type BackupSummaryLifecycleStateEnum string
 
-// Set of constants representing the allowable values for BackupSummaryLifecycleState
+// Set of constants representing the allowable values for BackupSummaryLifecycleStateEnum
 const (
 	BackupSummaryLifecycleStateCreating  BackupSummaryLifecycleStateEnum = "CREATING"
 	BackupSummaryLifecycleStateActive    BackupSummaryLifecycleStateEnum = "ACTIVE"
@@ -80,7 +80,7 @@ var mappingBackupSummaryLifecycleState = map[string]BackupSummaryLifecycleStateE
 	"RESTORING": BackupSummaryLifecycleStateRestoring,
 }
 
-// GetBackupSummaryLifecycleStateEnumValues Enumerates the set of values for BackupSummaryLifecycleState
+// GetBackupSummaryLifecycleStateEnumValues Enumerates the set of values for BackupSummaryLifecycleStateEnum
 func GetBackupSummaryLifecycleStateEnumValues() []BackupSummaryLifecycleStateEnum {
 	values := make([]BackupSummaryLifecycleStateEnum, 0)
 	for _, v := range mappingBackupSummaryLifecycleState {
@@ -92,7 +92,7 @@ func GetBackupSummaryLifecycleStateEnumValues() []BackupSummaryLifecycleStateEnu
 // BackupSummaryTypeEnum Enum with underlying type: string
 type BackupSummaryTypeEnum string
 
-// Set of constants representing the allowable values for BackupSummaryType
+// Set of constants representing the allowable values for BackupSummaryTypeEnum
 const (
 	BackupSummaryTypeIncremental BackupSummaryTypeEnum = "INCREMENTAL"
 	BackupSummaryTypeFull        BackupSummaryTypeEnum = "FULL"
@@ -103,7 +103,7 @@ var mappingBackupSummaryType = map[string]BackupSummaryTypeEnum{
 	"FULL":        BackupSummaryTypeFull,
 }
 
-// GetBackupSummaryTypeEnumValues Enumerates the set of values for BackupSummaryType
+// GetBackupSummaryTypeEnumValues Enumerates the set of values for BackupSummaryTypeEnum
 func GetBackupSummaryTypeEnumValues() []BackupSummaryTypeEnum {
 	values := make([]BackupSummaryTypeEnum, 0)
 	for _, v := range mappingBackupSummaryType {

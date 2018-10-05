@@ -70,7 +70,7 @@ func (m AutonomousDataWarehouse) String() string {
 // AutonomousDataWarehouseLicenseModelEnum Enum with underlying type: string
 type AutonomousDataWarehouseLicenseModelEnum string
 
-// Set of constants representing the allowable values for AutonomousDataWarehouseLicenseModel
+// Set of constants representing the allowable values for AutonomousDataWarehouseLicenseModelEnum
 const (
 	AutonomousDataWarehouseLicenseModelLicenseIncluded     AutonomousDataWarehouseLicenseModelEnum = "LICENSE_INCLUDED"
 	AutonomousDataWarehouseLicenseModelBringYourOwnLicense AutonomousDataWarehouseLicenseModelEnum = "BRING_YOUR_OWN_LICENSE"
@@ -81,7 +81,7 @@ var mappingAutonomousDataWarehouseLicenseModel = map[string]AutonomousDataWareho
 	"BRING_YOUR_OWN_LICENSE": AutonomousDataWarehouseLicenseModelBringYourOwnLicense,
 }
 
-// GetAutonomousDataWarehouseLicenseModelEnumValues Enumerates the set of values for AutonomousDataWarehouseLicenseModel
+// GetAutonomousDataWarehouseLicenseModelEnumValues Enumerates the set of values for AutonomousDataWarehouseLicenseModelEnum
 func GetAutonomousDataWarehouseLicenseModelEnumValues() []AutonomousDataWarehouseLicenseModelEnum {
 	values := make([]AutonomousDataWarehouseLicenseModelEnum, 0)
 	for _, v := range mappingAutonomousDataWarehouseLicenseModel {
@@ -93,7 +93,7 @@ func GetAutonomousDataWarehouseLicenseModelEnumValues() []AutonomousDataWarehous
 // AutonomousDataWarehouseLifecycleStateEnum Enum with underlying type: string
 type AutonomousDataWarehouseLifecycleStateEnum string
 
-// Set of constants representing the allowable values for AutonomousDataWarehouseLifecycleState
+// Set of constants representing the allowable values for AutonomousDataWarehouseLifecycleStateEnum
 const (
 	AutonomousDataWarehouseLifecycleStateProvisioning            AutonomousDataWarehouseLifecycleStateEnum = "PROVISIONING"
 	AutonomousDataWarehouseLifecycleStateAvailable               AutonomousDataWarehouseLifecycleStateEnum = "AVAILABLE"
@@ -124,7 +124,7 @@ var mappingAutonomousDataWarehouseLifecycleState = map[string]AutonomousDataWare
 	"AVAILABLE_NEEDS_ATTENTION": AutonomousDataWarehouseLifecycleStateAvailableNeedsAttention,
 }
 
-// GetAutonomousDataWarehouseLifecycleStateEnumValues Enumerates the set of values for AutonomousDataWarehouseLifecycleState
+// GetAutonomousDataWarehouseLifecycleStateEnumValues Enumerates the set of values for AutonomousDataWarehouseLifecycleStateEnum
 func GetAutonomousDataWarehouseLifecycleStateEnumValues() []AutonomousDataWarehouseLifecycleStateEnum {
 	values := make([]AutonomousDataWarehouseLifecycleStateEnum, 0)
 	for _, v := range mappingAutonomousDataWarehouseLifecycleState {
