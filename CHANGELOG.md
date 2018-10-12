@@ -37,7 +37,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 ## 2.1.0 - 2018-07-26
 ### Added
-- Support for the OCI Search service
+- Support for the Search service
 - Support for specifying a backup policy when creating a boot volume in the Block Storage service
 
 ### Fixed
@@ -207,7 +207,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 ## 1.3.0 - 2018-04-19
 ### Added
-- Support for retry on OCI service APIs. Example can be found on [Github](https://github.com/oracle/oci-go-sdk/tree/master/example/example_retry_test.go)
+- Support for retry on Oracle Cloud Infrastructure service APIs. Example can be found on [Github](https://github.com/oracle/oci-go-sdk/tree/master/example/example_retry_test.go)
 - Support for tagging DbSystem and Database resources in the Database Service
 - Support for filtering by DbSystemId in ListDbVersions operation in Database Service
 
