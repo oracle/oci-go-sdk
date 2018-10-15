@@ -1557,7 +1557,7 @@ func (client BlockstorageClient) listVolumes(ctx context.Context, request common
 	return response, err
 }
 
-// UpdateBootVolume Updates the specified boot volume's display name.
+// UpdateBootVolume Updates the specified boot volume's display name, defined tags, and free-form tags.
 func (client BlockstorageClient) UpdateBootVolume(ctx context.Context, request UpdateBootVolumeRequest) (response UpdateBootVolumeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
