@@ -70,6 +70,9 @@ type VolumeBackup struct {
 	// Specifies whether the backup was created manually, or via scheduled backup policy.
 	SourceType VolumeBackupSourceTypeEnum `mandatory:"false" json:"sourceType,omitempty"`
 
+	// The OCID of the source volume backup.
+	SourceVolumeBackupId *string `mandatory:"false" json:"sourceVolumeBackupId"`
+
 	// The date and time the request to create the volume backup was received. Format defined by RFC3339.
 	TimeRequestReceived *common.SDKTime `mandatory:"false" json:"timeRequestReceived"`
 
