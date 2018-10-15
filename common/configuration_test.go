@@ -112,6 +112,33 @@ func TestRawConfigurationProvider(t *testing.T) {
 
 }
 
+func TestBadRawConfigurationProvider(t *testing.T) {
+	var (
+		testTenancy     = ""
+		testUser        = ""
+		testRegion      = ""
+		testFingerprint = ""
+	)
+
+	c := NewRawConfigurationProvider(testTenancy, testUser, testRegion, testFingerprint, "", nil)
+
+	_, err := c.UserOCID()
+	assert.Error(t, err)
+
+	_, err = c.KeyFingerprint()
+	assert.Error(t, err)
+
+	_, err = c.Region()
+	assert.Error(t, err)
+
+	_, err = c.PrivateRSAKey()
+	assert.Error(t, err)
+
+	_, err = c.KeyID()
+	assert.Error(t, err)
+
+}
+
 func TestRawConfigurationProvider_BadRegion(t *testing.T) {
 	var (
 		testTenancy     = "ocid1.tenancy.oc1..aaaaaaaaxf3fuazos"
