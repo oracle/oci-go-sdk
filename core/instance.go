@@ -118,6 +118,12 @@ type Instance struct {
 
 	// Details for creating an instance
 	SourceDetails InstanceSourceDetails `mandatory:"false" json:"sourceDetails"`
+
+	// The date and time the instance is expected to be stopped / started,  in the format defined by RFC3339.
+	// After that time if instance hasn't been rebooted, Oracle will reboot the instance within 24 hours of the due time.
+	// Regardless of how the instance was stopped, the flag will be reset to empty as soon as instance reaches Stopped state.
+	// Example: `2018-05-25T21:10:29.600Z`
+	TimeMaintenanceRebootDue *common.SDKTime `mandatory:"false" json:"timeMaintenanceRebootDue"`
 }
 
 func (m Instance) String() string {
@@ -127,24 +133,25 @@ func (m Instance) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *Instance) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		DefinedTags        map[string]map[string]interface{} `json:"definedTags"`
-		DisplayName        *string                           `json:"displayName"`
-		ExtendedMetadata   map[string]interface{}            `json:"extendedMetadata"`
-		FaultDomain        *string                           `json:"faultDomain"`
-		FreeformTags       map[string]string                 `json:"freeformTags"`
-		ImageId            *string                           `json:"imageId"`
-		IpxeScript         *string                           `json:"ipxeScript"`
-		LaunchMode         InstanceLaunchModeEnum            `json:"launchMode"`
-		LaunchOptions      *LaunchOptions                    `json:"launchOptions"`
-		Metadata           map[string]string                 `json:"metadata"`
-		SourceDetails      instancesourcedetails             `json:"sourceDetails"`
-		AvailabilityDomain *string                           `json:"availabilityDomain"`
-		CompartmentId      *string                           `json:"compartmentId"`
-		Id                 *string                           `json:"id"`
-		LifecycleState     InstanceLifecycleStateEnum        `json:"lifecycleState"`
-		Region             *string                           `json:"region"`
-		Shape              *string                           `json:"shape"`
-		TimeCreated        *common.SDKTime                   `json:"timeCreated"`
+		DefinedTags              map[string]map[string]interface{} `json:"definedTags"`
+		DisplayName              *string                           `json:"displayName"`
+		ExtendedMetadata         map[string]interface{}            `json:"extendedMetadata"`
+		FaultDomain              *string                           `json:"faultDomain"`
+		FreeformTags             map[string]string                 `json:"freeformTags"`
+		ImageId                  *string                           `json:"imageId"`
+		IpxeScript               *string                           `json:"ipxeScript"`
+		LaunchMode               InstanceLaunchModeEnum            `json:"launchMode"`
+		LaunchOptions            *LaunchOptions                    `json:"launchOptions"`
+		Metadata                 map[string]string                 `json:"metadata"`
+		SourceDetails            instancesourcedetails             `json:"sourceDetails"`
+		TimeMaintenanceRebootDue *common.SDKTime                   `json:"timeMaintenanceRebootDue"`
+		AvailabilityDomain       *string                           `json:"availabilityDomain"`
+		CompartmentId            *string                           `json:"compartmentId"`
+		Id                       *string                           `json:"id"`
+		LifecycleState           InstanceLifecycleStateEnum        `json:"lifecycleState"`
+		Region                   *string                           `json:"region"`
+		Shape                    *string                           `json:"shape"`
+		TimeCreated              *common.SDKTime                   `json:"timeCreated"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -170,6 +177,7 @@ func (m *Instance) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.SourceDetails = nil
 	}
+	m.TimeMaintenanceRebootDue = model.TimeMaintenanceRebootDue
 	m.AvailabilityDomain = model.AvailabilityDomain
 	m.CompartmentId = model.CompartmentId
 	m.Id = model.Id
