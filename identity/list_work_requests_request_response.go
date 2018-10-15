@@ -8,23 +8,20 @@ import (
 	"net/http"
 )
 
-// ListUserGroupMembershipsRequest wrapper for the ListUserGroupMemberships operation
-type ListUserGroupMembershipsRequest struct {
+// ListWorkRequestsRequest wrapper for the ListWorkRequests operation
+type ListWorkRequestsRequest struct {
 
 	// The OCID of the parent compartment (remember that the tenancy is simply the root compartment).
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
-
-	// The OCID of the user.
-	UserId *string `mandatory:"false" contributesTo:"query" name:"userId"`
-
-	// The OCID of the group.
-	GroupId *string `mandatory:"false" contributesTo:"query" name:"groupId"`
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
 	// The maximum number of items to return in a paginated "List" call.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
+
+	// The identifier of the resource the work request affects.
+	ResourceIdentifier *string `mandatory:"false" contributesTo:"query" name:"resourceIdentifier"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.
@@ -35,28 +32,28 @@ type ListUserGroupMembershipsRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request ListUserGroupMembershipsRequest) String() string {
+func (request ListWorkRequestsRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request ListUserGroupMembershipsRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request ListWorkRequestsRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request ListUserGroupMembershipsRequest) RetryPolicy() *common.RetryPolicy {
+func (request ListWorkRequestsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// ListUserGroupMembershipsResponse wrapper for the ListUserGroupMemberships operation
-type ListUserGroupMembershipsResponse struct {
+// ListWorkRequestsResponse wrapper for the ListWorkRequests operation
+type ListWorkRequestsResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// A list of []UserGroupMembership instances
-	Items []UserGroupMembership `presentIn:"body"`
+	// A list of []WorkRequestSummary instances
+	Items []WorkRequestSummary `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
@@ -68,11 +65,11 @@ type ListUserGroupMembershipsResponse struct {
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
 }
 
-func (response ListUserGroupMembershipsResponse) String() string {
+func (response ListWorkRequestsResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response ListUserGroupMembershipsResponse) HTTPResponse() *http.Response {
+func (response ListWorkRequestsResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }

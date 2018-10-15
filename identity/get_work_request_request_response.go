@@ -8,11 +8,11 @@ import (
 	"net/http"
 )
 
-// ListAvailabilityDomainsRequest wrapper for the ListAvailabilityDomains operation
-type ListAvailabilityDomainsRequest struct {
+// GetWorkRequestRequest wrapper for the GetWorkRequest operation
+type GetWorkRequestRequest struct {
 
-	// The OCID of the parent compartment (remember that the tenancy is simply the root compartment).
-	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	// The OCID of the work request.
+	WorkRequestId *string `mandatory:"true" contributesTo:"path" name:"workRequestId"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.
@@ -23,44 +23,42 @@ type ListAvailabilityDomainsRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request ListAvailabilityDomainsRequest) String() string {
+func (request GetWorkRequestRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request ListAvailabilityDomainsRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request GetWorkRequestRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request ListAvailabilityDomainsRequest) RetryPolicy() *common.RetryPolicy {
+func (request GetWorkRequestRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// ListAvailabilityDomainsResponse wrapper for the ListAvailabilityDomains operation
-type ListAvailabilityDomainsResponse struct {
+// GetWorkRequestResponse wrapper for the GetWorkRequest operation
+type GetWorkRequestResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []AvailabilityDomain instance
-	Items []AvailabilityDomain `presentIn:"body"`
+	// The WorkRequest instance
+	WorkRequest `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// For pagination of a list of items. When paging through a list, if this header appears in the response,
-	// then a partial list might have been returned. Include this value as the `page` parameter for the
-	// subsequent GET request to get the next batch of items.
-	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+	// The number of seconds that the client should wait before polling again.
+	RetryAfter *float32 `presentIn:"header" name:"retry-after"`
 }
 
-func (response ListAvailabilityDomainsResponse) String() string {
+func (response GetWorkRequestResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response ListAvailabilityDomainsResponse) HTTPResponse() *http.Response {
+func (response GetWorkRequestResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }

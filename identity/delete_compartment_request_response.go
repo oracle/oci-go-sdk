@@ -8,11 +8,16 @@ import (
 	"net/http"
 )
 
-// ListAvailabilityDomainsRequest wrapper for the ListAvailabilityDomains operation
-type ListAvailabilityDomainsRequest struct {
+// DeleteCompartmentRequest wrapper for the DeleteCompartment operation
+type DeleteCompartmentRequest struct {
 
-	// The OCID of the parent compartment (remember that the tenancy is simply the root compartment).
-	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	// The OCID of the compartment.
+	CompartmentId *string `mandatory:"true" contributesTo:"path" name:"compartmentId"`
+
+	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
+	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
+	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
+	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.
@@ -23,44 +28,39 @@ type ListAvailabilityDomainsRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request ListAvailabilityDomainsRequest) String() string {
+func (request DeleteCompartmentRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request ListAvailabilityDomainsRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request DeleteCompartmentRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request ListAvailabilityDomainsRequest) RetryPolicy() *common.RetryPolicy {
+func (request DeleteCompartmentRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// ListAvailabilityDomainsResponse wrapper for the ListAvailabilityDomains operation
-type ListAvailabilityDomainsResponse struct {
+// DeleteCompartmentResponse wrapper for the DeleteCompartment operation
+type DeleteCompartmentResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
-
-	// The []AvailabilityDomain instance
-	Items []AvailabilityDomain `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// For pagination of a list of items. When paging through a list, if this header appears in the response,
-	// then a partial list might have been returned. Include this value as the `page` parameter for the
-	// subsequent GET request to get the next batch of items.
-	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the work request.
+	OpcWorkRequestId *string `presentIn:"header" name:"opc-work-request-id"`
 }
 
-func (response ListAvailabilityDomainsResponse) String() string {
+func (response DeleteCompartmentResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response ListAvailabilityDomainsResponse) HTTPResponse() *http.Response {
+func (response DeleteCompartmentResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }
