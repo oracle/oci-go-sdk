@@ -8,13 +8,14 @@ import (
 	"net/http"
 )
 
-// GetAutonomousDatabaseBackupRequest wrapper for the GetAutonomousDatabaseBackup operation
-type GetAutonomousDatabaseBackupRequest struct {
+// GetExternalBackupJobRequest wrapper for the GetExternalBackupJob operation
+type GetExternalBackupJobRequest struct {
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the Autonomous Database backup.
-	AutonomousDatabaseBackupId *string `mandatory:"true" contributesTo:"path" name:"autonomousDatabaseBackupId"`
+	// The backup OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
+	BackupId *string `mandatory:"true" contributesTo:"path" name:"backupId"`
 
-	// Unique identifier for the request.
+	// Unique Oracle-assigned identifier for the request.
+	// If you need to contact Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
@@ -22,28 +23,28 @@ type GetAutonomousDatabaseBackupRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request GetAutonomousDatabaseBackupRequest) String() string {
+func (request GetExternalBackupJobRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request GetAutonomousDatabaseBackupRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request GetExternalBackupJobRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request GetAutonomousDatabaseBackupRequest) RetryPolicy() *common.RetryPolicy {
+func (request GetExternalBackupJobRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// GetAutonomousDatabaseBackupResponse wrapper for the GetAutonomousDatabaseBackup operation
-type GetAutonomousDatabaseBackupResponse struct {
+// GetExternalBackupJobResponse wrapper for the GetExternalBackupJob operation
+type GetExternalBackupJobResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The AutonomousDatabaseBackup instance
-	AutonomousDatabaseBackup `presentIn:"body"`
+	// The ExternalBackupJob instance
+	ExternalBackupJob `presentIn:"body"`
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
@@ -53,11 +54,11 @@ type GetAutonomousDatabaseBackupResponse struct {
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
-func (response GetAutonomousDatabaseBackupResponse) String() string {
+func (response GetExternalBackupJobResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response GetAutonomousDatabaseBackupResponse) HTTPResponse() *http.Response {
+func (response GetExternalBackupJobResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }

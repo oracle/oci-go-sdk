@@ -24,13 +24,13 @@ type Backup struct {
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// The Oracle Database edition of the DB system from which the database backup was taken.
-	DatabaseEdition *string `mandatory:"false" json:"databaseEdition"`
+	DatabaseEdition BackupDatabaseEditionEnum `mandatory:"false" json:"databaseEdition,omitempty"`
 
 	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the database.
 	DatabaseId *string `mandatory:"false" json:"databaseId"`
 
-	// Size of the database in megabytes (MB) at the time the backup was taken.
-	DbDataSizeInMBs *int `mandatory:"false" json:"dbDataSizeInMBs"`
+	// The size of the database in gigabytes at the time the backup was taken.
+	DatabaseSizeInGBs *float64 `mandatory:"false" json:"databaseSizeInGBs"`
 
 	// The user-friendly name for the backup. The name does not have to be unique.
 	DisplayName *string `mandatory:"false" json:"displayName"`
@@ -56,6 +56,33 @@ type Backup struct {
 
 func (m Backup) String() string {
 	return common.PointerString(m)
+}
+
+// BackupDatabaseEditionEnum Enum with underlying type: string
+type BackupDatabaseEditionEnum string
+
+// Set of constants representing the allowable values for BackupDatabaseEditionEnum
+const (
+	BackupDatabaseEditionStandardEdition                     BackupDatabaseEditionEnum = "STANDARD_EDITION"
+	BackupDatabaseEditionEnterpriseEdition                   BackupDatabaseEditionEnum = "ENTERPRISE_EDITION"
+	BackupDatabaseEditionEnterpriseEditionHighPerformance    BackupDatabaseEditionEnum = "ENTERPRISE_EDITION_HIGH_PERFORMANCE"
+	BackupDatabaseEditionEnterpriseEditionExtremePerformance BackupDatabaseEditionEnum = "ENTERPRISE_EDITION_EXTREME_PERFORMANCE"
+)
+
+var mappingBackupDatabaseEdition = map[string]BackupDatabaseEditionEnum{
+	"STANDARD_EDITION":                       BackupDatabaseEditionStandardEdition,
+	"ENTERPRISE_EDITION":                     BackupDatabaseEditionEnterpriseEdition,
+	"ENTERPRISE_EDITION_HIGH_PERFORMANCE":    BackupDatabaseEditionEnterpriseEditionHighPerformance,
+	"ENTERPRISE_EDITION_EXTREME_PERFORMANCE": BackupDatabaseEditionEnterpriseEditionExtremePerformance,
+}
+
+// GetBackupDatabaseEditionEnumValues Enumerates the set of values for BackupDatabaseEditionEnum
+func GetBackupDatabaseEditionEnumValues() []BackupDatabaseEditionEnum {
+	values := make([]BackupDatabaseEditionEnum, 0)
+	for _, v := range mappingBackupDatabaseEdition {
+		values = append(values, v)
+	}
+	return values
 }
 
 // BackupLifecycleStateEnum Enum with underlying type: string

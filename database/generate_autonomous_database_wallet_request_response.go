@@ -5,14 +5,21 @@ package database
 
 import (
 	"github.com/oracle/oci-go-sdk/common"
+	"io"
 	"net/http"
 )
 
-// CreateAutonomousDatabaseRequest wrapper for the CreateAutonomousDatabase operation
-type CreateAutonomousDatabaseRequest struct {
+// GenerateAutonomousDatabaseWalletRequest wrapper for the GenerateAutonomousDatabaseWallet operation
+type GenerateAutonomousDatabaseWalletRequest struct {
 
-	// Request to create a new Autonomous Database.
-	CreateAutonomousDatabaseDetails `contributesTo:"body"`
+	// The database OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
+	AutonomousDatabaseId *string `mandatory:"true" contributesTo:"path" name:"autonomousDatabaseId"`
+
+	// Request to create a new Autonomous Transaction Processing database wallet.
+	GenerateAutonomousDatabaseWalletDetails `contributesTo:"body"`
+
+	// Unique identifier for the request.
+	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
 	// server error without risk of executing that same action again. Retry tokens expire after 24
@@ -21,50 +28,53 @@ type CreateAutonomousDatabaseRequest struct {
 	// may be rejected).
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 
-	// Unique identifier for the request.
-	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
-
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
 	RequestMetadata common.RequestMetadata
 }
 
-func (request CreateAutonomousDatabaseRequest) String() string {
+func (request GenerateAutonomousDatabaseWalletRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request CreateAutonomousDatabaseRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request GenerateAutonomousDatabaseWalletRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request CreateAutonomousDatabaseRequest) RetryPolicy() *common.RetryPolicy {
+func (request GenerateAutonomousDatabaseWalletRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// CreateAutonomousDatabaseResponse wrapper for the CreateAutonomousDatabase operation
-type CreateAutonomousDatabaseResponse struct {
+// GenerateAutonomousDatabaseWalletResponse wrapper for the GenerateAutonomousDatabaseWallet operation
+type GenerateAutonomousDatabaseWalletResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The AutonomousDatabase instance
-	AutonomousDatabase `presentIn:"body"`
+	// The io.ReadCloser instance
+	Content io.ReadCloser `presentIn:"body" encoding:"binary"`
+
+	// Size of the file.
+	ContentLength *int64 `presentIn:"header" name:"content-length"`
 
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
+
+	// The date and time the wallet was created, as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339), section 14.29.
+	LastModified *common.SDKTime `presentIn:"header" name:"last-modified"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
 	// a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
-func (response CreateAutonomousDatabaseResponse) String() string {
+func (response GenerateAutonomousDatabaseWalletResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response CreateAutonomousDatabaseResponse) HTTPResponse() *http.Response {
+func (response GenerateAutonomousDatabaseWalletResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }

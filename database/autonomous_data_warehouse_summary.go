@@ -37,6 +37,9 @@ type AutonomousDataWarehouseSummary struct {
 	// The connection string used to connect to the Data Warehouse. The username for the Service Console is ADMIN. Use the password you entered when creating the Autonomous Data Warehouse for the password value.
 	ConnectionStrings *AutonomousDataWarehouseConnectionStrings `mandatory:"false" json:"connectionStrings"`
 
+	// A valid Oracle Database version for Autonomous Data Warehouse.
+	DbVersion *string `mandatory:"false" json:"dbVersion"`
+
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// For more information, see Resource Tags (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/resourcetags.htm).
 	// Example: `{"Operations": {"CostCenter": "42"}}`
@@ -53,7 +56,7 @@ type AutonomousDataWarehouseSummary struct {
 	// The Oracle license model that applies to the Oracle Autonomous Data Warehouse. The default is BRING_YOUR_OWN_LICENSE.
 	LicenseModel AutonomousDataWarehouseSummaryLicenseModelEnum `mandatory:"false" json:"licenseModel,omitempty"`
 
-	// Additional information about the current lifecycle state.
+	// Information about the current lifecycle state.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The URL of the Service Console for the Data Warehouse.
