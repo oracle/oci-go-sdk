@@ -218,7 +218,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 	var content map[string]string
 	body, _ := ioutil.ReadAll(request.Body)
 	json.Unmarshal(body, &content)
-	when := s.When.Format(time.RFC3339)
+	when := s.When.Format(time.RFC3339Nano)
 	assert.True(t, request.URL.Path == "//101")
 	assert.True(t, request.URL.Query().Get("name") == s.Name)
 	assert.True(t, request.URL.Query().Get("income") == strconv.FormatFloat(float64(s.Income), 'f', 6, 32))
@@ -291,7 +291,7 @@ func TestHttpMarshallerSimpleStructPointers(t *testing.T) {
 	assert.Equal(t, "", request.Header.Get(requestHeaderOpcRetryToken))
 	assert.True(t, strings.Contains(request.URL.Path, "111"))
 	assert.True(t, strings.Contains(string(all), "thekey"))
-	assert.Contains(t, string(all), now.Format(time.RFC3339))
+	assert.Contains(t, string(all), now.Format(time.RFC3339Nano))
 }
 
 func TestHttpMarshallerSimpleStructPointersFilled(t *testing.T) {
@@ -1008,6 +1008,37 @@ func TestOmitFieldsInJson_SimpleStructWithTime(t *testing.T) {
 	assert.Contains(t, mapRet, "n")
 	assert.Contains(t, mapRet, "theTime")
 	assert.Equal(t, theTime, mapRet.(map[string]interface{})["theTime"])
+}
+
+func TestToStringValue_TimeFormat(t *testing.T) {
+	testingData := []struct {
+		TheTime  *SDKTime `mandatory:"true" json:"theTime"`
+		Input    string
+		Expected string
+	}{
+		{
+			Input:    "2018-10-15T19:43:05.080Z",
+			Expected: "2018-10-15T19:43:05.08Z",
+		},
+		{
+			Input:    "2018-10-15T19:43:05Z",
+			Expected: "2018-10-15T19:43:05Z",
+		},
+	}
+
+	for _, item := range testingData {
+		time, err := time.Parse(time.RFC3339, item.Input)
+		assert.NoError(t, err)
+		item.TheTime = &SDKTime{time}
+
+		reflectValue := reflect.ValueOf(item)
+		reflectType := reflectValue.Type()
+
+		str, err := toStringValue(reflectValue.Field(0), reflectType.Field(0))
+		assert.NoError(t, err)
+
+		assert.Equal(t, item.Expected, str)
+	}
 }
 
 func TestSDKDate_Unmarshal(t *testing.T) {
