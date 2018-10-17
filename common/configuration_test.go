@@ -851,7 +851,12 @@ func TestIsRegionValid(t *testing.T) {
 		{"single trailing string", "aasb ", true},
 		{"trailing string", "aasb      ", true},
 		{"single trailing and leading", " aasb ", true},
+		{"tab", "aasb	", true},
+		{"carriage return", "\raasb", true},
+		{"new line", "aasb\n", true},
+		{"feed", "aa\fsb", true},
 		{"trailing and leading", " aasb   ", true},
+
 	}
 
 	for _, tIO := range testIO {
