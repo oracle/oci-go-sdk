@@ -12,6 +12,42 @@ import (
 )
 
 // IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+func TestBlockstorageClientCopyVolumeBackup(t *testing.T) {
+    enabled, err := testClient.isApiEnabled("core", "CopyVolumeBackup")
+    assert.NoError(t, err)
+    if !enabled {
+        t.Skip("CopyVolumeBackup is not enabled by the testing service")
+    }
+    c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+    assert.NoError(t, err)
+
+    body, err := testClient.getRequests("core", "CopyVolumeBackup")
+    assert.NoError(t, err)
+
+    type CopyVolumeBackupRequestInfo struct {
+        ContainerId string
+        Request core.CopyVolumeBackupRequest
+    }
+
+    var requests []CopyVolumeBackupRequestInfo
+    err = json.Unmarshal([]byte(body), &requests)
+    assert.NoError(t, err)
+
+    var retryPolicy  *common.RetryPolicy
+    for i, req := range requests {
+        t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+            retryPolicy = retryPolicyForTests()
+            req.Request.RequestMetadata.RetryPolicy =  retryPolicy
+
+            response, err := c.CopyVolumeBackup(context.Background(), req.Request)
+            message, err := testClient.validateResult(req.ContainerId, req.Request, response, err)
+            assert.NoError(t, err)
+            assert.Empty(t, message, message)
+        })
+    }
+}
+
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestBlockstorageClientCreateBootVolume(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateBootVolume")
     assert.NoError(t, err)
