@@ -122,6 +122,28 @@ func TestOCIRequestSigner_SigningString(t *testing.T) {
 	assert.Equal(t, expectedSigningString, signature)
 }
 
+func TestOCIRequestSigner_SigningString_Uppercase(t *testing.T) {
+	s := ociRequestSigner{
+		KeyProvider:    testKeyProvider{},
+		GenericHeaders: []string{"Date", "(Request-target)", "host"},
+		ShouldHashBody: defaultBodyHashPredicate,
+		BodyHeaders:    defaultBodyHeaders}
+
+	url, _ := url.Parse(testURL)
+	r := http.Request{
+		Proto:      "HTTP/1.1",
+		ProtoMajor: 1,
+		ProtoMinor: 1,
+		Header:     make(http.Header),
+		URL:        url,
+	}
+	r.Header.Set(requestHeaderDate, "Thu, 05 Jan 2014 21:31:40 GMT")
+	r.Method = http.MethodGet
+	signature := s.getSigningString(&r)
+
+	assert.Equal(t, expectedSigningString, signature)
+}
+
 func TestOCIRequestSigner_ComputeSignature(t *testing.T) {
 	s := ociRequestSigner{
 		KeyProvider:    testKeyProvider{},
