@@ -19,13 +19,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 - The signing algorithm does not lower case the header fields [Github issue 132](https://github.com/oracle/oci-go-sdk/issues/132)
 - Raw configuration provider does not check for empty strings [Github issue 134](https://github.com/oracle/oci-go-sdk/issues/134)
 
-## 2.6.0 - 2018-10-04
-### Added
-- Support for trusted partner images through application listings and subscriptions in the Compute service
-- Support for object lifecycle policies in the Object Storage service
-- Support for copying objects across regions in the Object Storage service
-- Support for network address translation (NAT) gateways in the Networking service
-
 ### Known issue
 -  Block Storage service for copying volume backups across regions is not enabled
 
@@ -57,6 +50,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
     ```golang
      // The Oracle Database edition of the DB system from which the database backup was taken.
      DatabaseEdition BackupDatabaseEditionEnum `mandatory:"false" json:"databaseEdition,omitempty"`
+
+## 2.6.0 - 2018-10-04
+### Added
+- Support for trusted partner images through application listings and subscriptions in the Compute service
+- Support for object lifecycle policies in the Object Storage service
+- Support for copying objects across regions in the Object Storage service
+- Support for network address translation (NAT) gateways in the Networking service
+
+
     ```
 
 ## 2.5.0 - 2018-09-27
