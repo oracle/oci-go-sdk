@@ -23,8 +23,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 -  Block Storage service for copying volume backups across regions is not enabled
 
 ### Breaking change
-- DbDataSizeInMBs field in Backup struct is renamed to DatabaseSizeInGBs and type changed from *int to *float64 (SDK owners pls update this based on the language)
-    - Before
+- DbDataSizeInMBs field in Backup struct is renamed to DatabaseSizeInGBs and type changed from *int to *float64 
 
     ```golang
     // Size of the database in megabytes (MB) at the time the backup was taken.
