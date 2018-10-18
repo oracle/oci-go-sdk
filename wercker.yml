@@ -20,8 +20,8 @@ build:
                  ls -al $GOPATH/src/github.com/oracle/oci-go-sdk
 
         - script:
-             name: make-test
+             name: make-build
              code: |
-                 make test
+                 make build
 
 
