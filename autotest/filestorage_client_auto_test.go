@@ -847,3 +847,39 @@ func TestFileStorageClientUpdateMountTarget(t *testing.T) {
         })
     }
 }
+
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+func TestFileStorageClientUpdateSnapshot(t *testing.T) {
+    enabled, err := testClient.isApiEnabled("filestorage", "UpdateSnapshot")
+    assert.NoError(t, err)
+    if !enabled {
+        t.Skip("UpdateSnapshot is not enabled by the testing service")
+    }
+    c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+    assert.NoError(t, err)
+
+    body, err := testClient.getRequests("filestorage", "UpdateSnapshot")
+    assert.NoError(t, err)
+
+    type UpdateSnapshotRequestInfo struct {
+        ContainerId string
+        Request filestorage.UpdateSnapshotRequest
+    }
+
+    var requests []UpdateSnapshotRequestInfo
+    err = json.Unmarshal([]byte(body), &requests)
+    assert.NoError(t, err)
+
+    var retryPolicy  *common.RetryPolicy
+    for i, req := range requests {
+        t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+            retryPolicy = retryPolicyForTests()
+            req.Request.RequestMetadata.RetryPolicy =  retryPolicy
+
+            response, err := c.UpdateSnapshot(context.Background(), req.Request)
+            message, err := testClient.validateResult(req.ContainerId, req.Request, response, err)
+            assert.NoError(t, err)
+            assert.Empty(t, message, message)
+        })
+    }
+}
