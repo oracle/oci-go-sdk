@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 3.0.0 - 2018-11-01
+### Added
+- Support for modifying the route table, DHCP options and security lists associated with a subnet in the Networking service.
+- Support for tagging of File Systems, Mount Targets and Snapshots in the File Storage service.
+- Support for nested compartments in the Identity service
+
+### Notes
+- The version is bumped due to breaking changes in previous release.
+
 ## 2.7.0 - 2018-10-18
 ### Added
 - Support for cost tracking tags in the Identity service
@@ -24,7 +33,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 ### Breaking change
 - DbDataSizeInMBs field in Backup and BackupSummary struct was renamed to DatabaseSizeInGBs and type changed from *int to *float64 
-
+    - Before
     ```golang
     // Size of the database in megabytes (MB) at the time the backup was taken.
     DbDataSizeInMBs *int `mandatory:"false" json:"dbDataSizeInMBs"`
@@ -49,6 +58,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
     ```golang
      // The Oracle Database edition of the DB system from which the database backup was taken.
      DatabaseEdition BackupDatabaseEditionEnum `mandatory:"false" json:"databaseEdition,omitempty"`
+    ```
 
 ## 2.6.0 - 2018-10-04
 ### Added
@@ -56,9 +66,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 - Support for object lifecycle policies in the Object Storage service
 - Support for copying objects across regions in the Object Storage service
 - Support for network address translation (NAT) gateways in the Networking service
-
-
-    ```
 
 ## 2.5.0 - 2018-09-27
 ### Added

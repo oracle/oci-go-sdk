@@ -856,7 +856,6 @@ func TestIsRegionValid(t *testing.T) {
 		{"new line", "aasb\n", true},
 		{"feed", "aa\fsb", true},
 		{"trailing and leading", " aasb   ", true},
-
 	}
 
 	for _, tIO := range testIO {
