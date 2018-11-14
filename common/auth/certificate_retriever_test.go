@@ -221,3 +221,36 @@ func generateRandomCertificate() (privateKeyPem, certPem []byte) {
 	certPem = pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE", Bytes: newCertBytes})
 	return
 }
+
+func TestStaticCertificateRetriever(t *testing.T) {
+	retriever := staticCertificateRetriever{
+		Passphrase:     []byte(""),
+		CertificatePem: []byte(leafCertPem),
+		PrivateKeyPem:  []byte(leafCertPrivateKeyPem),
+	}
+
+	err := retriever.Refresh()
+	assert.NoError(t, err)
+	key := retriever.PrivateKey()
+	assert.NotNil(t, key)
+	cert := retriever.Certificate()
+	assert.NotNil(t, cert)
+}
+
+func TestBadStaticCertificateRetriever(t *testing.T) {
+	retriever := staticCertificateRetriever{
+		Passphrase:     []byte(""),
+		CertificatePem: []byte(""),
+		PrivateKeyPem:  []byte(""),
+	}
+
+	err := retriever.Refresh()
+	assert.Error(t, err)
+
+	c := retriever.Certificate()
+	assert.Nil(t, c)
+
+	k := retriever.PrivateKey()
+	assert.Nil(t, k)
+}
+

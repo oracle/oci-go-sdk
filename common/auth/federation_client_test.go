@@ -413,7 +413,7 @@ ysvMnQwaC0432ceRJ3r6vPAI2EPRd9KOE7Va1IFNJNmOuIkmRx8t`
 	//				"opc-certtype:instance",
 	//				"opc-instance.ocid1.phx.bluhbluhbluh",
 	//				"opc-compartment:ocid1.compartment.oc1.bluhbluhbluh",
-	//				fmt.Sprintf("opc-tenant:%s", tenancyID),
+	//				fmt.Sprintf("opc-tenant:%s", TenancyID),
 	//			},
 	//		},
 	//		NotBefore:          notBefore,
