@@ -57,7 +57,7 @@ func newAuthClient(region common.Region, provider common.KeyProvider) *common.Ba
 	if regionURL, ok := os.LookupEnv("OCI_SDK_AUTH_CLIENT_REGION_URL"); ok {
 		client.Host = regionURL
 	} else {
-		client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "auth", string(region))
+		client.Host = region.Endpoint("auth")
 	}
 	client.BasePath = "v1/x509"
 	return &client
