@@ -11,7 +11,7 @@ import (
     "testing"
 )
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestResourceSearchClientGetResourceType(t *testing.T) {
     enabled, err := testClient.isApiEnabled("resourcesearch", "GetResourceType")
     assert.NoError(t, err)
@@ -47,7 +47,7 @@ func TestResourceSearchClientGetResourceType(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestResourceSearchClientListResourceTypes(t *testing.T) {
     enabled, err := testClient.isApiEnabled("resourcesearch", "ListResourceTypes")
     assert.NoError(t, err)
@@ -92,7 +92,7 @@ func TestResourceSearchClientListResourceTypes(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestResourceSearchClientSearchResources(t *testing.T) {
     enabled, err := testClient.isApiEnabled("resourcesearch", "SearchResources")
     assert.NoError(t, err)

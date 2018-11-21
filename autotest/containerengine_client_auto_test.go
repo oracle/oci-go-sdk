@@ -11,7 +11,7 @@ import (
     "testing"
 )
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientCreateCluster(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "CreateCluster")
     assert.NoError(t, err)
@@ -47,7 +47,7 @@ func TestContainerEngineClientCreateCluster(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientCreateKubeconfig(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "CreateKubeconfig")
     assert.NoError(t, err)
@@ -83,7 +83,7 @@ func TestContainerEngineClientCreateKubeconfig(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientCreateNodePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "CreateNodePool")
     assert.NoError(t, err)
@@ -119,7 +119,7 @@ func TestContainerEngineClientCreateNodePool(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientDeleteCluster(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "DeleteCluster")
     assert.NoError(t, err)
@@ -155,7 +155,7 @@ func TestContainerEngineClientDeleteCluster(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientDeleteNodePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "DeleteNodePool")
     assert.NoError(t, err)
@@ -191,7 +191,7 @@ func TestContainerEngineClientDeleteNodePool(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientDeleteWorkRequest(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "DeleteWorkRequest")
     assert.NoError(t, err)
@@ -227,7 +227,7 @@ func TestContainerEngineClientDeleteWorkRequest(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientGetCluster(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "GetCluster")
     assert.NoError(t, err)
@@ -263,7 +263,7 @@ func TestContainerEngineClientGetCluster(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientGetClusterOptions(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "GetClusterOptions")
     assert.NoError(t, err)
@@ -299,7 +299,7 @@ func TestContainerEngineClientGetClusterOptions(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientGetNodePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "GetNodePool")
     assert.NoError(t, err)
@@ -335,7 +335,7 @@ func TestContainerEngineClientGetNodePool(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientGetNodePoolOptions(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "GetNodePoolOptions")
     assert.NoError(t, err)
@@ -371,7 +371,7 @@ func TestContainerEngineClientGetNodePoolOptions(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientGetWorkRequest(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "GetWorkRequest")
     assert.NoError(t, err)
@@ -407,7 +407,7 @@ func TestContainerEngineClientGetWorkRequest(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientListClusters(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "ListClusters")
     assert.NoError(t, err)
@@ -452,7 +452,7 @@ func TestContainerEngineClientListClusters(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientListNodePools(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "ListNodePools")
     assert.NoError(t, err)
@@ -497,7 +497,7 @@ func TestContainerEngineClientListNodePools(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientListWorkRequestErrors(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "ListWorkRequestErrors")
     assert.NoError(t, err)
@@ -533,7 +533,7 @@ func TestContainerEngineClientListWorkRequestErrors(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientListWorkRequestLogs(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "ListWorkRequestLogs")
     assert.NoError(t, err)
@@ -569,7 +569,7 @@ func TestContainerEngineClientListWorkRequestLogs(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientListWorkRequests(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "ListWorkRequests")
     assert.NoError(t, err)
@@ -614,7 +614,7 @@ func TestContainerEngineClientListWorkRequests(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientUpdateCluster(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "UpdateCluster")
     assert.NoError(t, err)
@@ -650,7 +650,7 @@ func TestContainerEngineClientUpdateCluster(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestContainerEngineClientUpdateNodePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("containerengine", "UpdateNodePool")
     assert.NoError(t, err)

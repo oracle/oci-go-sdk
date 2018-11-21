@@ -11,7 +11,7 @@ import (
     "testing"
 )
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestEmailClientCreateSender(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "CreateSender")
     assert.NoError(t, err)
@@ -47,7 +47,7 @@ func TestEmailClientCreateSender(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestEmailClientCreateSuppression(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "CreateSuppression")
     assert.NoError(t, err)
@@ -83,7 +83,7 @@ func TestEmailClientCreateSuppression(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestEmailClientDeleteSender(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "DeleteSender")
     assert.NoError(t, err)
@@ -119,7 +119,7 @@ func TestEmailClientDeleteSender(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestEmailClientDeleteSuppression(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "DeleteSuppression")
     assert.NoError(t, err)
@@ -155,7 +155,7 @@ func TestEmailClientDeleteSuppression(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestEmailClientGetSender(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "GetSender")
     assert.NoError(t, err)
@@ -191,7 +191,7 @@ func TestEmailClientGetSender(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestEmailClientGetSuppression(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "GetSuppression")
     assert.NoError(t, err)
@@ -227,7 +227,7 @@ func TestEmailClientGetSuppression(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestEmailClientListSenders(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "ListSenders")
     assert.NoError(t, err)
@@ -272,7 +272,7 @@ func TestEmailClientListSenders(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
 func TestEmailClientListSuppressions(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "ListSuppressions")
     assert.NoError(t, err)
