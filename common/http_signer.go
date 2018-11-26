@@ -42,6 +42,8 @@ type ociRequestSigner struct {
 	ShouldHashBody SignerBodyHashPredicate
 }
 
+type noopSigner struct{}
+
 var (
 	defaultGenericHeaders    = []string{"date", "(request-target)", "host"}
 	defaultBodyHeaders       = []string{"content-length", "content-type", "x-content-sha256"}
@@ -72,6 +74,11 @@ func RequestSignerExcludeBody(provider KeyProvider) HTTPRequestSigner {
 		return false
 	}
 	return RequestSignerWithBodyHashingPredicate(provider, defaultGenericHeaders, defaultBodyHeaders, bodyHashPredicate)
+}
+
+// NewNOOPSigner creates a new HTTPRequestSigner when signing is not needed
+func NewNOOPSigner() HTTPRequestSigner {
+	return noopSigner{}
 }
 
 // NewSignerFromOCIRequestSigner creates a copy of the request signer and attaches the new SignerBodyHashPredicate
@@ -232,6 +239,10 @@ func (signer ociRequestSigner) computeSignature(request *http.Request) (signatur
 
 	signature = base64.StdEncoding.EncodeToString(unencodedSig)
 	return
+}
+
+func (signer noopSigner) Sign(request *http.Request) (err error) {
+	return nil
 }
 
 // Sign signs the http request, by inspecting the necessary headers. Once signed

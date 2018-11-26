@@ -9,6 +9,7 @@ import (
 	"crypto/x509/pkix"
 	"encoding/pem"
 	"fmt"
+	"github.com/oracle/oci-go-sdk/common"
 	"github.com/stretchr/testify/assert"
 	"math/big"
 	"net/http"
@@ -25,7 +26,8 @@ func TestUrlBasedX509CertificateRetriever_BadCertificate(t *testing.T) {
 	}))
 	defer certServer.Close()
 
-	retriever := newURLBasedX509CertificateRetriever(certServer.URL, "", "")
+	client := common.DefaultBaseClientWithSigner(common.NewNOOPSigner())
+	retriever := newURLBasedX509CertificateRetriever(&client, certServer.URL, "", "")
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
@@ -37,7 +39,8 @@ func TestUrlBasedX509CertificateRetriever_RefreshWithoutPrivateKeyUrl(t *testing
 	}))
 	defer certServer.Close()
 
-	retriever := newURLBasedX509CertificateRetriever(certServer.URL, "", "")
+	client := common.DefaultBaseClientWithSigner(common.NewNOOPSigner())
+	retriever := newURLBasedX509CertificateRetriever(&client, certServer.URL, "", "")
 	err := retriever.Refresh()
 
 	assert.NoError(t, err)
@@ -62,7 +65,8 @@ func TestUrlBasedX509CertificateRetriever_RefreshWithPrivateKeyUrl(t *testing.T)
 	}))
 	defer privateKeyServer.Close()
 
-	retriever := newURLBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
+	client := common.DefaultBaseClientWithSigner(common.NewNOOPSigner())
+	retriever := newURLBasedX509CertificateRetriever(&client, certServer.URL, privateKeyServer.URL, "")
 	err := retriever.Refresh()
 
 	assert.NoError(t, err)
@@ -82,7 +86,8 @@ func TestUrlBasedX509CertificateRetriever_RefreshCertNotFound(t *testing.T) {
 	certServer := httptest.NewServer(http.NotFoundHandler())
 	defer certServer.Close()
 
-	retriever := newURLBasedX509CertificateRetriever(certServer.URL, "", "")
+	client := common.DefaultBaseClientWithSigner(common.NewNOOPSigner())
+	retriever := newURLBasedX509CertificateRetriever(&client, certServer.URL, "", "")
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
@@ -101,7 +106,8 @@ func TestUrlBasedX509CertificateRetriever_RefreshPrivateKeyNotFound(t *testing.T
 	privateKeyServer := httptest.NewServer(http.NotFoundHandler())
 	defer privateKeyServer.Close()
 
-	retriever := newURLBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
+	client := common.DefaultBaseClientWithSigner(common.NewNOOPSigner())
+	retriever := newURLBasedX509CertificateRetriever(&client, certServer.URL, privateKeyServer.URL, "")
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
@@ -119,7 +125,8 @@ func TestUrlBasedX509CertificateRetriever_RefreshCertInternalServerError(t *test
 	certServer := httptest.NewServer(http.HandlerFunc(internalServerError))
 	defer certServer.Close()
 
-	retriever := newURLBasedX509CertificateRetriever(certServer.URL, "", "")
+	client := common.DefaultBaseClientWithSigner(common.NewNOOPSigner())
+	retriever := newURLBasedX509CertificateRetriever(&client, certServer.URL, "", "")
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
@@ -138,7 +145,8 @@ func TestUrlBasedX509CertificateRetriever_RefreshPrivateKeyInternalServerError(t
 	privateKeyServer := httptest.NewServer(http.HandlerFunc(internalServerError))
 	defer privateKeyServer.Close()
 
-	retriever := newURLBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
+	client := common.DefaultBaseClientWithSigner(common.NewNOOPSigner())
+	retriever := newURLBasedX509CertificateRetriever(&client, certServer.URL, privateKeyServer.URL, "")
 	err := retriever.Refresh()
 
 	assert.Error(t, err)
@@ -173,7 +181,8 @@ func TestUrlBasedX509CertificateRetriever_FailureAtomicity(t *testing.T) {
 	}))
 	defer privateKeyServer.Close()
 
-	retriever := newURLBasedX509CertificateRetriever(certServer.URL, privateKeyServer.URL, "")
+	client := common.DefaultBaseClientWithSigner(common.NewNOOPSigner())
+	retriever := newURLBasedX509CertificateRetriever(&client, certServer.URL, privateKeyServer.URL, "")
 	err := retriever.Refresh()
 
 	assert.NoError(t, err)

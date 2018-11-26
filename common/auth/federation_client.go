@@ -4,6 +4,7 @@
 package auth
 
 import (
+	"bytes"
 	"context"
 	"crypto/rand"
 	"crypto/rsa"
@@ -35,31 +36,42 @@ type x509FederationClient struct {
 	mux                               sync.Mutex
 }
 
-func newX509FederationClient(region common.Region, tenancyID string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever) federationClient {
+func newX509FederationClient(tenancyID string, leafCertificateRetriever x509CertificateRetriever, intermediateCertificateRetrievers []x509CertificateRetriever, modifier *common.ClientModifier) (federationClient, error) {
 	client := &x509FederationClient{
 		tenancyID:                         tenancyID,
 		leafCertificateRetriever:          leafCertificateRetriever,
 		intermediateCertificateRetrievers: intermediateCertificateRetrievers,
 	}
 	client.sessionKeySupplier = newSessionKeySupplier()
-	client.authClient = newAuthClient(region, client)
-	return client
+	modifier.QueueModifier(setRegionHostOnFederationClient)
+	authClient, err := modifier.Modify(newAuthClient(client))
+	if err != nil {
+		return nil, fmt.Errorf("failed to create x509 federation client: %s", err.Error())
+	}
+	client.authClient = authClient
+
+	return client, nil
 }
 
-func newX509FederationClientWithCerts(region common.Region, tenancyID string, leafCertificate, leafPassphrase, leafPrivateKey []byte, intermediateCertificates [][]byte) (federationClient, error) {
+func newX509FederationClientWithCerts(tenancyID string, leafCertificate, leafPassphrase, leafPrivateKey []byte, intermediateCertificates [][]byte, modifier *common.ClientModifier) (federationClient, error) {
 	intermediateRetrievers := make([]x509CertificateRetriever, len(intermediateCertificates))
 	for i, c := range intermediateCertificates {
 		intermediateRetrievers[i] = &staticCertificateRetriever{Passphrase: []byte(""), CertificatePem: c, PrivateKeyPem: nil}
 	}
 
-	client := x509FederationClient{
+	client := &x509FederationClient{
 		tenancyID:                         tenancyID,
 		leafCertificateRetriever:          &staticCertificateRetriever{Passphrase: leafPassphrase, CertificatePem: leafCertificate, PrivateKeyPem: leafPrivateKey},
 		intermediateCertificateRetrievers: intermediateRetrievers,
 	}
 	client.sessionKeySupplier = newSessionKeySupplier()
-	client.authClient = newAuthClient(region, &client)
-	return &client, nil
+	modifier.QueueModifier(setRegionHostOnFederationClient)
+	authClient, err := modifier.Modify(newAuthClient(client))
+	if err != nil {
+		return nil, fmt.Errorf("failed to create x509 federation client: %s", err.Error())
+	}
+	client.authClient = authClient
+	return client, nil
 }
 
 var (
@@ -67,15 +79,24 @@ var (
 	bodyHeaders    = []string{"content-length", "content-type", "x-content-sha256"}
 )
 
-func newAuthClient(region common.Region, provider common.KeyProvider) *common.BaseClient {
-	signer := common.RequestSigner(provider, genericHeaders, bodyHeaders)
-	client := common.DefaultBaseClientWithSigner(signer)
+func setRegionHostOnFederationClient(client *common.BaseClient) (rclient *common.BaseClient, err error) {
+	client.BasePath = "v1/x509"
 	if regionURL, ok := os.LookupEnv("OCI_SDK_AUTH_CLIENT_REGION_URL"); ok {
 		client.Host = regionURL
-	} else {
-		client.Host = region.Endpoint("auth")
+		return client, nil
 	}
-	client.BasePath = "v1/x509"
+	var body bytes.Buffer
+	if body, err = httpGet(client, regionURL); err != nil {
+		return
+	}
+	region := common.StringToRegion(body.String())
+	client.Host = fmt.Sprintf(common.DefaultHostURLTemplate, "auth", string(region))
+	return client, nil
+}
+
+func newAuthClient(provider common.KeyProvider) *common.BaseClient {
+	signer := common.RequestSigner(provider, genericHeaders, bodyHeaders)
+	client := common.DefaultBaseClientWithSigner(signer)
 	return &client
 }
 

@@ -55,7 +55,7 @@ func TestX509FederationClient_VeryFirstSecurityToken(t *testing.T) {
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(federationClient)
 	// Overwrite with the authServer's URL
 	federationClient.authClient.Host = authServer.URL
 	federationClient.authClient.BasePath = ""
@@ -109,7 +109,7 @@ func TestX509FederationClient_RenewSecurityToken(t *testing.T) {
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(federationClient)
 	// Overwrite with the authServer's URL
 	federationClient.authClient.Host = authServer.URL
 	federationClient.authClient.BasePath = ""
@@ -139,7 +139,7 @@ func TestX509FederationClient_GetCachedSecurityToken(t *testing.T) {
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(federationClient)
 	federationClient.securityToken = mockSecurityToken
 
 	actualSecurityToken, err := federationClient.SecurityToken()
@@ -174,7 +174,7 @@ func TestX509FederationClient_RenewSecurityTokenSessionKeySupplierError(t *testi
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(federationClient)
 	federationClient.securityToken = mockSecurityToken
 
 	actualSecurityToken, actualError := federationClient.SecurityToken()
@@ -202,7 +202,7 @@ func TestX509FederationClient_RenewSecurityTokenLeafCertificateRetrieverError(t 
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(federationClient)
 	federationClient.securityToken = mockSecurityToken
 
 	actualSecurityToken, actualError := federationClient.SecurityToken()
@@ -232,7 +232,7 @@ func TestX509FederationClient_RenewSecurityTokenIntermediateCertificateRetriever
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(federationClient)
 	federationClient.securityToken = mockSecurityToken
 
 	actualSecurityToken, actualError := federationClient.SecurityToken()
@@ -262,7 +262,7 @@ func TestX509FederationClient_RenewSecurityTokenUnexpectedTenancyIdUpdateError(t
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(federationClient)
 	federationClient.securityToken = mockSecurityToken
 
 	actualSecurityToken, actualError := federationClient.SecurityToken()
@@ -295,7 +295,7 @@ func TestX509FederationClient_AuthServerInternalError(t *testing.T) {
 		leafCertificateRetriever:          mockLeafCertificateRetriever,
 		intermediateCertificateRetrievers: []x509CertificateRetriever{mockIntermediateCertificateRetriever},
 	}
-	federationClient.authClient = newAuthClient(whateverRegion, federationClient)
+	federationClient.authClient = newAuthClient(federationClient)
 	// Overwrite with the authServer's URL
 	federationClient.authClient.Host = authServer.URL
 	federationClient.authClient.BasePath = ""
@@ -303,31 +303,6 @@ func TestX509FederationClient_AuthServerInternalError(t *testing.T) {
 	_, err := federationClient.SecurityToken()
 
 	assert.Error(t, err)
-}
-
-func TestX509FederationClient_ClientHost(t *testing.T) {
-	type testData struct {
-		region   common.Region
-		expected string
-	}
-	testDataSet := []testData{
-		{
-			// OC1
-			region:   common.StringToRegion("us-phoenix-1"),
-			expected: "auth.us-phoenix-1.oraclecloud.com",
-		},
-		{
-			// unknown
-			region:   common.StringToRegion("test"),
-			expected: "auth.test.oraclecloud.com",
-		},
-	}
-
-	for _, testData := range testDataSet {
-		federationClient := &x509FederationClient{}
-		federationClient.authClient = newAuthClient(testData.region, federationClient)
-		assert.Equal(t, testData.expected, federationClient.authClient.Host)
-	}
 }
 
 func parseCertificate(certPem string) *x509.Certificate {

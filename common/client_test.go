@@ -104,14 +104,6 @@ func TestClient_prepareRequestUpdatesDateHeader(t *testing.T) {
 	assert.NotEqual(t, d1, d2)
 }
 
-func TestDefaultHTTPDispatcher_transportNotSet(t *testing.T) {
-	client := defaultHTTPDispatcher()
-
-	if client.Transport != nil {
-		t.Errorf("Expecting default http transport to be nil")
-	}
-}
-
 func TestClient_prepareRequestSetScheme(t *testing.T) {
 	host := "http://somehost:9000"
 	basePath := "basePath"

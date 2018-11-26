@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"math/rand"
+	"net"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -70,6 +71,19 @@ const (
 	maxBodyLenForDebug       = 1024 * 1000
 )
 
+var defaultTransport = http.Transport{
+	Proxy: http.ProxyFromEnvironment,
+	DialContext: (&net.Dialer{
+		Timeout:   30 * time.Second,
+		KeepAlive: 30 * time.Second,
+		DualStack: true,
+	}).DialContext,
+	MaxIdleConns:          100,
+	IdleConnTimeout:       90 * time.Second,
+	TLSHandshakeTimeout:   10 * time.Second,
+	ExpectContinueTimeout: 1 * time.Second,
+}
+
 // RequestInterceptor function used to customize the request before calling the underlying service
 type RequestInterceptor func(*http.Request) error
 
@@ -98,6 +112,9 @@ type BaseClient struct {
 
 	//Base path for all operations of this client
 	BasePath string
+
+	//Transport settings of this HTTPRequestDispatcher
+	Transport *http.Transport
 }
 
 func defaultUserAgent() string {
@@ -112,33 +129,36 @@ func getNextSeed() int64 {
 	return newCounterValue + time.Now().UnixNano()
 }
 
-func newBaseClient(signer HTTPRequestSigner, dispatcher HTTPRequestDispatcher) BaseClient {
+func newBaseClient(signer HTTPRequestSigner, dispatcher HTTPRequestDispatcher, transport *http.Transport) BaseClient {
 	rand.Seed(getNextSeed())
 	return BaseClient{
 		UserAgent:   defaultUserAgent(),
 		Interceptor: nil,
 		Signer:      signer,
 		HTTPClient:  dispatcher,
+		Transport:   transport,
 	}
 }
 
-func defaultHTTPDispatcher() http.Client {
+func defaultHTTPDispatcher() (http.Client, *http.Transport) {
+	transport := defaultTransport
 	httpClient := http.Client{
-		Timeout: defaultTimeout,
+		Timeout:   defaultTimeout,
+		Transport: &transport,
 	}
-	return httpClient
+	return httpClient, &transport
 }
 
 func defaultBaseClient(provider KeyProvider) BaseClient {
-	dispatcher := defaultHTTPDispatcher()
+	dispatcher, transport := defaultHTTPDispatcher()
 	signer := DefaultRequestSigner(provider)
-	return newBaseClient(signer, &dispatcher)
+	return newBaseClient(signer, &dispatcher, transport)
 }
 
 //DefaultBaseClientWithSigner creates a default base client with a given signer
 func DefaultBaseClientWithSigner(signer HTTPRequestSigner) BaseClient {
-	dispatcher := defaultHTTPDispatcher()
-	return newBaseClient(signer, &dispatcher)
+	dispatcher, transport := defaultHTTPDispatcher()
+	return newBaseClient(signer, &dispatcher, transport)
 }
 
 // NewClientWithConfig Create a new client with a configuration provider, the configuration provider
@@ -206,8 +226,12 @@ func (client *BaseClient) prepareRequest(request *http.Request) (err error) {
 	if err != nil {
 		return fmt.Errorf("host is invalid. %s", err.Error())
 	}
-	request.URL.Host = clientURL.Host
-	request.URL.Scheme = clientURL.Scheme
+	if len(request.URL.Host) == 0 {
+		request.URL.Host = clientURL.Host
+	}
+	if len(request.URL.Scheme) == 0 {
+		request.URL.Scheme = clientURL.Scheme
+	}
 	currentPath := request.URL.Path
 	if !strings.Contains(currentPath, fmt.Sprintf("/%s", client.BasePath)) {
 		request.URL.Path = path.Clean(fmt.Sprintf("/%s/%s", client.BasePath, currentPath))
