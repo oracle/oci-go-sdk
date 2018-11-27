@@ -11,7 +11,7 @@ import (
     "testing"
 )
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateBackend(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "CreateBackend")
     assert.NoError(t, err)
@@ -47,7 +47,7 @@ func TestLoadBalancerClientCreateBackend(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateBackendSet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "CreateBackendSet")
     assert.NoError(t, err)
@@ -83,7 +83,7 @@ func TestLoadBalancerClientCreateBackendSet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateCertificate(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "CreateCertificate")
     assert.NoError(t, err)
@@ -119,7 +119,7 @@ func TestLoadBalancerClientCreateCertificate(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateHostname(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "CreateHostname")
     assert.NoError(t, err)
@@ -155,7 +155,7 @@ func TestLoadBalancerClientCreateHostname(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateListener(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "CreateListener")
     assert.NoError(t, err)
@@ -191,7 +191,7 @@ func TestLoadBalancerClientCreateListener(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateLoadBalancer(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "CreateLoadBalancer")
     assert.NoError(t, err)
@@ -227,7 +227,7 @@ func TestLoadBalancerClientCreateLoadBalancer(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreatePathRouteSet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "CreatePathRouteSet")
     assert.NoError(t, err)
@@ -263,7 +263,7 @@ func TestLoadBalancerClientCreatePathRouteSet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteBackend(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteBackend")
     assert.NoError(t, err)
@@ -299,7 +299,7 @@ func TestLoadBalancerClientDeleteBackend(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteBackendSet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteBackendSet")
     assert.NoError(t, err)
@@ -335,7 +335,7 @@ func TestLoadBalancerClientDeleteBackendSet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteCertificate(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteCertificate")
     assert.NoError(t, err)
@@ -371,7 +371,7 @@ func TestLoadBalancerClientDeleteCertificate(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteHostname(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteHostname")
     assert.NoError(t, err)
@@ -407,7 +407,7 @@ func TestLoadBalancerClientDeleteHostname(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteListener(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteListener")
     assert.NoError(t, err)
@@ -443,7 +443,7 @@ func TestLoadBalancerClientDeleteListener(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteLoadBalancer(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteLoadBalancer")
     assert.NoError(t, err)
@@ -479,7 +479,7 @@ func TestLoadBalancerClientDeleteLoadBalancer(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeletePathRouteSet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "DeletePathRouteSet")
     assert.NoError(t, err)
@@ -515,7 +515,7 @@ func TestLoadBalancerClientDeletePathRouteSet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetBackend(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "GetBackend")
     assert.NoError(t, err)
@@ -551,7 +551,7 @@ func TestLoadBalancerClientGetBackend(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetBackendHealth(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "GetBackendHealth")
     assert.NoError(t, err)
@@ -587,7 +587,7 @@ func TestLoadBalancerClientGetBackendHealth(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetBackendSet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "GetBackendSet")
     assert.NoError(t, err)
@@ -623,7 +623,7 @@ func TestLoadBalancerClientGetBackendSet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetBackendSetHealth(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "GetBackendSetHealth")
     assert.NoError(t, err)
@@ -659,7 +659,7 @@ func TestLoadBalancerClientGetBackendSetHealth(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetHealthChecker(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "GetHealthChecker")
     assert.NoError(t, err)
@@ -695,7 +695,7 @@ func TestLoadBalancerClientGetHealthChecker(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetHostname(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "GetHostname")
     assert.NoError(t, err)
@@ -731,7 +731,7 @@ func TestLoadBalancerClientGetHostname(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetLoadBalancer(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "GetLoadBalancer")
     assert.NoError(t, err)
@@ -767,7 +767,7 @@ func TestLoadBalancerClientGetLoadBalancer(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetLoadBalancerHealth(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "GetLoadBalancerHealth")
     assert.NoError(t, err)
@@ -803,7 +803,7 @@ func TestLoadBalancerClientGetLoadBalancerHealth(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetPathRouteSet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "GetPathRouteSet")
     assert.NoError(t, err)
@@ -839,7 +839,7 @@ func TestLoadBalancerClientGetPathRouteSet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetWorkRequest(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "GetWorkRequest")
     assert.NoError(t, err)
@@ -875,7 +875,7 @@ func TestLoadBalancerClientGetWorkRequest(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListBackendSets(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "ListBackendSets")
     assert.NoError(t, err)
@@ -911,7 +911,7 @@ func TestLoadBalancerClientListBackendSets(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListBackends(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "ListBackends")
     assert.NoError(t, err)
@@ -947,7 +947,7 @@ func TestLoadBalancerClientListBackends(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListCertificates(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "ListCertificates")
     assert.NoError(t, err)
@@ -983,7 +983,7 @@ func TestLoadBalancerClientListCertificates(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListHostnames(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "ListHostnames")
     assert.NoError(t, err)
@@ -1019,7 +1019,7 @@ func TestLoadBalancerClientListHostnames(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListLoadBalancerHealths(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "ListLoadBalancerHealths")
     assert.NoError(t, err)
@@ -1064,7 +1064,7 @@ func TestLoadBalancerClientListLoadBalancerHealths(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListLoadBalancers(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "ListLoadBalancers")
     assert.NoError(t, err)
@@ -1109,7 +1109,7 @@ func TestLoadBalancerClientListLoadBalancers(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListPathRouteSets(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "ListPathRouteSets")
     assert.NoError(t, err)
@@ -1145,7 +1145,7 @@ func TestLoadBalancerClientListPathRouteSets(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListPolicies(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "ListPolicies")
     assert.NoError(t, err)
@@ -1190,7 +1190,7 @@ func TestLoadBalancerClientListPolicies(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListProtocols(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "ListProtocols")
     assert.NoError(t, err)
@@ -1235,7 +1235,7 @@ func TestLoadBalancerClientListProtocols(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListShapes(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "ListShapes")
     assert.NoError(t, err)
@@ -1280,7 +1280,7 @@ func TestLoadBalancerClientListShapes(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListWorkRequests(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "ListWorkRequests")
     assert.NoError(t, err)
@@ -1325,7 +1325,7 @@ func TestLoadBalancerClientListWorkRequests(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateBackend(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateBackend")
     assert.NoError(t, err)
@@ -1361,7 +1361,7 @@ func TestLoadBalancerClientUpdateBackend(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateBackendSet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateBackendSet")
     assert.NoError(t, err)
@@ -1397,7 +1397,7 @@ func TestLoadBalancerClientUpdateBackendSet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateHealthChecker(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateHealthChecker")
     assert.NoError(t, err)
@@ -1433,7 +1433,7 @@ func TestLoadBalancerClientUpdateHealthChecker(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateHostname(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateHostname")
     assert.NoError(t, err)
@@ -1469,7 +1469,7 @@ func TestLoadBalancerClientUpdateHostname(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateListener(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateListener")
     assert.NoError(t, err)
@@ -1505,7 +1505,7 @@ func TestLoadBalancerClientUpdateListener(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateLoadBalancer(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateLoadBalancer")
     assert.NoError(t, err)
@@ -1541,7 +1541,7 @@ func TestLoadBalancerClientUpdateLoadBalancer(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdatePathRouteSet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("loadbalancer", "UpdatePathRouteSet")
     assert.NoError(t, err)

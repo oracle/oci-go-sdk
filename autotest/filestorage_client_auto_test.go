@@ -11,7 +11,7 @@ import (
     "testing"
 )
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientCreateExport(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "CreateExport")
     assert.NoError(t, err)
@@ -47,7 +47,7 @@ func TestFileStorageClientCreateExport(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientCreateFileSystem(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "CreateFileSystem")
     assert.NoError(t, err)
@@ -83,7 +83,7 @@ func TestFileStorageClientCreateFileSystem(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientCreateMountTarget(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "CreateMountTarget")
     assert.NoError(t, err)
@@ -119,7 +119,7 @@ func TestFileStorageClientCreateMountTarget(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientCreateSnapshot(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "CreateSnapshot")
     assert.NoError(t, err)
@@ -155,7 +155,7 @@ func TestFileStorageClientCreateSnapshot(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientDeleteExport(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "DeleteExport")
     assert.NoError(t, err)
@@ -191,7 +191,7 @@ func TestFileStorageClientDeleteExport(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientDeleteFileSystem(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "DeleteFileSystem")
     assert.NoError(t, err)
@@ -227,7 +227,7 @@ func TestFileStorageClientDeleteFileSystem(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientDeleteMountTarget(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "DeleteMountTarget")
     assert.NoError(t, err)
@@ -263,7 +263,7 @@ func TestFileStorageClientDeleteMountTarget(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientDeleteSnapshot(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "DeleteSnapshot")
     assert.NoError(t, err)
@@ -299,7 +299,7 @@ func TestFileStorageClientDeleteSnapshot(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientGetExport(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "GetExport")
     assert.NoError(t, err)
@@ -335,7 +335,7 @@ func TestFileStorageClientGetExport(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientGetExportSet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "GetExportSet")
     assert.NoError(t, err)
@@ -371,7 +371,7 @@ func TestFileStorageClientGetExportSet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientGetFileSystem(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "GetFileSystem")
     assert.NoError(t, err)
@@ -407,7 +407,7 @@ func TestFileStorageClientGetFileSystem(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientGetMountTarget(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "GetMountTarget")
     assert.NoError(t, err)
@@ -443,7 +443,7 @@ func TestFileStorageClientGetMountTarget(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientGetSnapshot(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "GetSnapshot")
     assert.NoError(t, err)
@@ -479,7 +479,7 @@ func TestFileStorageClientGetSnapshot(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientListExportSets(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "ListExportSets")
     assert.NoError(t, err)
@@ -524,7 +524,7 @@ func TestFileStorageClientListExportSets(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientListExports(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "ListExports")
     assert.NoError(t, err)
@@ -569,7 +569,7 @@ func TestFileStorageClientListExports(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientListFileSystems(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "ListFileSystems")
     assert.NoError(t, err)
@@ -614,7 +614,7 @@ func TestFileStorageClientListFileSystems(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientListMountTargets(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "ListMountTargets")
     assert.NoError(t, err)
@@ -659,7 +659,7 @@ func TestFileStorageClientListMountTargets(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientListSnapshots(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "ListSnapshots")
     assert.NoError(t, err)
@@ -704,7 +704,7 @@ func TestFileStorageClientListSnapshots(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientUpdateExport(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "UpdateExport")
     assert.NoError(t, err)
@@ -740,7 +740,7 @@ func TestFileStorageClientUpdateExport(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientUpdateExportSet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "UpdateExportSet")
     assert.NoError(t, err)
@@ -776,7 +776,7 @@ func TestFileStorageClientUpdateExportSet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientUpdateFileSystem(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "UpdateFileSystem")
     assert.NoError(t, err)
@@ -812,7 +812,7 @@ func TestFileStorageClientUpdateFileSystem(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientUpdateMountTarget(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "UpdateMountTarget")
     assert.NoError(t, err)
@@ -848,7 +848,7 @@ func TestFileStorageClientUpdateMountTarget(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="opc_casper_us_grp@oracle.com" jiraProject="CASPER" opsJiraProject="IOS"
+// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientUpdateSnapshot(t *testing.T) {
     enabled, err := testClient.isApiEnabled("filestorage", "UpdateSnapshot")
     assert.NoError(t, err)
