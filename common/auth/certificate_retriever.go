@@ -149,7 +149,6 @@ func (r *urlBasedX509CertificateRetriever) PrivateKey() *rsa.PrivateKey {
 	r.mux.Lock()
 	defer r.mux.Unlock()
 
-
 	//Nil Private keys are supported as part of a certificate
 	if r.privateKey == nil {
 		return nil
@@ -164,9 +163,9 @@ type staticCertificateRetriever struct {
 	Passphrase     []byte
 	CertificatePem []byte
 	PrivateKeyPem  []byte
-	certificate *x509.Certificate
-	privateKey *rsa.PrivateKey
-	mux sync.Mutex
+	certificate    *x509.Certificate
+	privateKey     *rsa.PrivateKey
+	mux            sync.Mutex
 }
 
 //Refresh proccess the inputs into appropiate keys and certificates
@@ -231,7 +230,6 @@ func (r *staticCertificateRetriever) PrivateKeyPemRaw() []byte {
 	return c
 }
 
-
 func (r *staticCertificateRetriever) readCertificate() (certificate *x509.Certificate, err error) {
 	block, _ := pem.Decode(r.CertificatePem)
 	if block == nil {
@@ -243,7 +241,6 @@ func (r *staticCertificateRetriever) readCertificate() (certificate *x509.Certif
 	}
 	return certificate, nil
 }
-
 
 func (r *staticCertificateRetriever) readPrivateKey() (*rsa.PrivateKey, error) {
 	if r.PrivateKeyPem == nil {

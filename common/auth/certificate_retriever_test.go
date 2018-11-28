@@ -253,4 +253,3 @@ func TestBadStaticCertificateRetriever(t *testing.T) {
 	k := retriever.PrivateKey()
 	assert.Nil(t, k)
 }
-
