@@ -48,7 +48,7 @@ func TestInstancePrincipalKeyProvider_PrivateRSAKey(t *testing.T) {
 	expectedPrivateKey := new(rsa.PrivateKey)
 	mockFederationClient.On("PrivateKey").Return(expectedPrivateKey, nil).Once()
 
-	keyProvider := &instancePrincipalKeyProvider{federationClient: mockFederationClient}
+	keyProvider := &instancePrincipalKeyProvider{FederationClient: mockFederationClient}
 
 	actualPrivateKey, err := keyProvider.PrivateRSAKey()
 
@@ -63,7 +63,7 @@ func TestInstancePrincipalKeyProvider_PrivateRSAKeyError(t *testing.T) {
 	expectedErrorMessage := "TestPrivateRSAKeyError"
 	mockFederationClient.On("PrivateKey").Return(nilPtr, fmt.Errorf(expectedErrorMessage)).Once()
 
-	keyProvider := &instancePrincipalKeyProvider{federationClient: mockFederationClient}
+	keyProvider := &instancePrincipalKeyProvider{FederationClient: mockFederationClient}
 
 	actualPrivateKey, actualError := keyProvider.PrivateRSAKey()
 
@@ -76,7 +76,7 @@ func TestInstancePrincipalKeyProvider_KeyID(t *testing.T) {
 	mockFederationClient := new(mockFederationClient)
 	mockFederationClient.On("SecurityToken").Return("TestSecurityTokenString", nil).Once()
 
-	keyProvider := &instancePrincipalKeyProvider{federationClient: mockFederationClient}
+	keyProvider := &instancePrincipalKeyProvider{FederationClient: mockFederationClient}
 
 	actualKeyID, err := keyProvider.KeyID()
 
@@ -89,7 +89,7 @@ func TestInstancePrincipalKeyProvider_KeyIDError(t *testing.T) {
 	expectedErrorMessage := "TestSecurityTokenError"
 	mockFederationClient.On("SecurityToken").Return("", fmt.Errorf(expectedErrorMessage)).Once()
 
-	keyProvider := &instancePrincipalKeyProvider{federationClient: mockFederationClient}
+	keyProvider := &instancePrincipalKeyProvider{FederationClient: mockFederationClient}
 
 	actualKeyID, actualError := keyProvider.KeyID()
 
