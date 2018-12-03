@@ -18,6 +18,7 @@ import (
 	"time"
 
 	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/common/auth"
 	"github.com/oracle/oci-go-sdk/database"
 	"github.com/oracle/oci-go-sdk/identity"
 	"github.com/stretchr/testify/assert"
@@ -72,6 +73,14 @@ func getCompartmentID() string {
 }
 
 func configurationProvider() common.ConfigurationProvider {
+	if useInstancePrincipals := os.Getenv("OCI_SDK_CONFIG_USE_INSTANCE_PRINCIPAL"); useInstancePrincipals != "" {
+		prov, err := auth.InstancePrincipalConfigurationProvider()
+		if err != nil {
+			panic(err)
+		}
+		return prov
+	}
+
 	fileConfig := os.Getenv("SDK_FILE_CONFIG")
 	if fileConfig == "" {
 		return common.DefaultConfigProvider()
@@ -187,7 +196,7 @@ func checkLifecycleState(lifecycleState string) func(interface{}) (bool, error) 
 }
 
 func removeFileFn(filename string) {
-		os.Remove(filename)
+	os.Remove(filename)
 }
 
 func writeTempFile(data string) (filename string) {

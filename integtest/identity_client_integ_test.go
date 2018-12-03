@@ -81,7 +81,7 @@ func TestIdentityClient_GroupCRUD(t *testing.T) {
 }
 
 type fakeDispatcher struct {
-	DoReq func(r *http.Request)(*http.Response, error)
+	DoReq func(r *http.Request) (*http.Response, error)
 }
 
 func (f *fakeDispatcher) Do(r *http.Request) (*http.Response, error) {
@@ -103,7 +103,7 @@ func TestIdentityClient_OverrideRegion(t *testing.T) {
 	noRetry := common.NoRetryPolicy()
 	rList := identity.ListGroupsRequest{
 		CompartmentId:   common.String(getTenancyID()),
-		RequestMetadata: common.RequestMetadata{RetryPolicy:&noRetry},
+		RequestMetadata: common.RequestMetadata{RetryPolicy: &noRetry},
 	}
 	c.ListGroups(context.Background(), rList)
 	assert.True(t, valid)
@@ -116,7 +116,7 @@ func TestIdentityClient_RetryPersists(t *testing.T) {
 
 	f := fakeDispatcher{DoReq: func(r *http.Request) (*http.Response, error) {
 		times++
-		retryHeaders = append(retryHeaders, r.Header.Get("opc-retry-token") )
+		retryHeaders = append(retryHeaders, r.Header.Get("opc-retry-token"))
 		return nil, fmt.Errorf("Fake dispatcher")
 	}}
 
@@ -129,10 +129,10 @@ func TestIdentityClient_RetryPersists(t *testing.T) {
 
 	rCreate := identity.CreateGroupRequest{
 		CreateGroupDetails: identity.CreateGroupDetails{
-			CompartmentId:common.String("SomeTenancyId"),
-			Name: common.String("SomeName"),
+			CompartmentId: common.String("SomeTenancyId"),
+			Name:          common.String("SomeName"),
 		},
-		RequestMetadata: common.RequestMetadata{RetryPolicy:&retry},
+		RequestMetadata: common.RequestMetadata{RetryPolicy: &retry},
 	}
 	c.CreateGroup(context.Background(), rCreate)
 
