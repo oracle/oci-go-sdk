@@ -28,6 +28,7 @@ func (c *ClientModifier) Modify(client *BaseClient) (*BaseClient, error) {
 		for _, modifier := range c.modifiers {
 			var err error
 			if client, err = modifier(client); err != nil {
+				Debugf("An error occurred when attempting to modify the base client. Error was: %s", err.Error())
 				return nil, err
 			}
 		}
