@@ -2,8 +2,11 @@ package example
 
 import (
 	"context"
+	"crypto/tls"
+	"crypto/x509"
 	"fmt"
 	"log"
+	"net/http"
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/common/auth"
@@ -39,4 +42,36 @@ func ExampleInstancePrincipals() {
 
 	// Output:
 	// Done
+}
+
+// ExampleInstancePrincipalsWithCustomClient lists the availability domains in your tenancy.
+// Similar to the example above, this example shows how to customize the client.
+func ExampleInstancePrincipalsWithCustomClient() {
+
+	// Just load the system cert pool for demonstration purposes.
+	rootCaPool, err := x509.SystemCertPool()
+
+	helpers.FatalIfError(err)
+
+	provider, err := auth.InstancePrincipalConfigurationProviderWithCustomClient(func(client *common.BaseClient) (*common.BaseClient, error) {
+		client.Transport = &http.Transport{
+			TLSClientConfig: &tls.Config{
+				RootCAs: rootCaPool,
+			},
+		}
+		return client, nil
+	})
+
+	tenancyID := helpers.RootCompartmentID()
+	request := identity.ListAvailabilityDomainsRequest{
+		CompartmentId: tenancyID,
+	}
+
+	client, err := identity.NewIdentityClientWithConfigurationProvider(provider)
+
+	r, err := client.ListAvailabilityDomains(context.Background(), request)
+	helpers.FatalIfError(err)
+
+	log.Printf("list of available domains: %v", r.Items)
+	fmt.Println("Done")
 }
