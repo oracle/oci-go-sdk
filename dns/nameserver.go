@@ -13,12 +13,13 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// RrSet A collection of DNS records of the same domain and type. For more
-// information about record types, see Resource Record (RR) TYPEs (https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4).
-type RrSet struct {
-	Items []Record `mandatory:"false" json:"items"`
+// Nameserver A server that has been set up to answer DNS queries for a zone.
+type Nameserver struct {
+
+	// The hostname of the nameserver.
+	Hostname *string `mandatory:"true" json:"hostname"`
 }
 
-func (m RrSet) String() string {
+func (m Nameserver) String() string {
 	return common.PointerString(m)
 }
