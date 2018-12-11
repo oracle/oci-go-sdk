@@ -11,7 +11,7 @@ import (
     "testing"
 )
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientAttachServiceId(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "AttachServiceId")
     assert.NoError(t, err)
@@ -47,7 +47,7 @@ func TestVirtualNetworkClientAttachServiceId(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientBulkAddVirtualCircuitPublicPrefixes(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "BulkAddVirtualCircuitPublicPrefixes")
     assert.NoError(t, err)
@@ -83,7 +83,7 @@ func TestVirtualNetworkClientBulkAddVirtualCircuitPublicPrefixes(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientBulkDeleteVirtualCircuitPublicPrefixes(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "BulkDeleteVirtualCircuitPublicPrefixes")
     assert.NoError(t, err)
@@ -119,7 +119,7 @@ func TestVirtualNetworkClientBulkDeleteVirtualCircuitPublicPrefixes(t *testing.T
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientConnectLocalPeeringGateways(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ConnectLocalPeeringGateways")
     assert.NoError(t, err)
@@ -155,7 +155,7 @@ func TestVirtualNetworkClientConnectLocalPeeringGateways(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientConnectRemotePeeringConnections(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ConnectRemotePeeringConnections")
     assert.NoError(t, err)
@@ -191,7 +191,7 @@ func TestVirtualNetworkClientConnectRemotePeeringConnections(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateCpe(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateCpe")
     assert.NoError(t, err)
@@ -227,7 +227,7 @@ func TestVirtualNetworkClientCreateCpe(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateCrossConnect(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateCrossConnect")
     assert.NoError(t, err)
@@ -263,7 +263,7 @@ func TestVirtualNetworkClientCreateCrossConnect(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateCrossConnectGroup(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateCrossConnectGroup")
     assert.NoError(t, err)
@@ -299,7 +299,7 @@ func TestVirtualNetworkClientCreateCrossConnectGroup(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateDhcpOptions(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateDhcpOptions")
     assert.NoError(t, err)
@@ -335,7 +335,7 @@ func TestVirtualNetworkClientCreateDhcpOptions(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateDrg(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateDrg")
     assert.NoError(t, err)
@@ -371,7 +371,7 @@ func TestVirtualNetworkClientCreateDrg(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateDrgAttachment(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateDrgAttachment")
     assert.NoError(t, err)
@@ -407,7 +407,7 @@ func TestVirtualNetworkClientCreateDrgAttachment(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateIPSecConnection(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateIPSecConnection")
     assert.NoError(t, err)
@@ -443,7 +443,7 @@ func TestVirtualNetworkClientCreateIPSecConnection(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateInternetGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateInternetGateway")
     assert.NoError(t, err)
@@ -479,7 +479,7 @@ func TestVirtualNetworkClientCreateInternetGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateLocalPeeringGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateLocalPeeringGateway")
     assert.NoError(t, err)
@@ -515,7 +515,7 @@ func TestVirtualNetworkClientCreateLocalPeeringGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateNatGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateNatGateway")
     assert.NoError(t, err)
@@ -551,7 +551,7 @@ func TestVirtualNetworkClientCreateNatGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreatePrivateIp(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreatePrivateIp")
     assert.NoError(t, err)
@@ -587,7 +587,7 @@ func TestVirtualNetworkClientCreatePrivateIp(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreatePublicIp(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreatePublicIp")
     assert.NoError(t, err)
@@ -623,7 +623,7 @@ func TestVirtualNetworkClientCreatePublicIp(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateRemotePeeringConnection(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateRemotePeeringConnection")
     assert.NoError(t, err)
@@ -659,7 +659,7 @@ func TestVirtualNetworkClientCreateRemotePeeringConnection(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateRouteTable(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateRouteTable")
     assert.NoError(t, err)
@@ -695,7 +695,7 @@ func TestVirtualNetworkClientCreateRouteTable(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateSecurityList(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateSecurityList")
     assert.NoError(t, err)
@@ -731,7 +731,7 @@ func TestVirtualNetworkClientCreateSecurityList(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateServiceGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateServiceGateway")
     assert.NoError(t, err)
@@ -767,7 +767,7 @@ func TestVirtualNetworkClientCreateServiceGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateSubnet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateSubnet")
     assert.NoError(t, err)
@@ -803,7 +803,7 @@ func TestVirtualNetworkClientCreateSubnet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateVcn(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateVcn")
     assert.NoError(t, err)
@@ -839,7 +839,7 @@ func TestVirtualNetworkClientCreateVcn(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateVirtualCircuit(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateVirtualCircuit")
     assert.NoError(t, err)
@@ -875,7 +875,7 @@ func TestVirtualNetworkClientCreateVirtualCircuit(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteCpe(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteCpe")
     assert.NoError(t, err)
@@ -911,7 +911,7 @@ func TestVirtualNetworkClientDeleteCpe(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteCrossConnect(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteCrossConnect")
     assert.NoError(t, err)
@@ -947,7 +947,7 @@ func TestVirtualNetworkClientDeleteCrossConnect(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteCrossConnectGroup(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteCrossConnectGroup")
     assert.NoError(t, err)
@@ -983,7 +983,7 @@ func TestVirtualNetworkClientDeleteCrossConnectGroup(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteDhcpOptions(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteDhcpOptions")
     assert.NoError(t, err)
@@ -1019,7 +1019,7 @@ func TestVirtualNetworkClientDeleteDhcpOptions(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteDrg(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteDrg")
     assert.NoError(t, err)
@@ -1055,7 +1055,7 @@ func TestVirtualNetworkClientDeleteDrg(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteDrgAttachment(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteDrgAttachment")
     assert.NoError(t, err)
@@ -1091,7 +1091,7 @@ func TestVirtualNetworkClientDeleteDrgAttachment(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteIPSecConnection(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteIPSecConnection")
     assert.NoError(t, err)
@@ -1127,7 +1127,7 @@ func TestVirtualNetworkClientDeleteIPSecConnection(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteInternetGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteInternetGateway")
     assert.NoError(t, err)
@@ -1163,7 +1163,7 @@ func TestVirtualNetworkClientDeleteInternetGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteLocalPeeringGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteLocalPeeringGateway")
     assert.NoError(t, err)
@@ -1199,7 +1199,7 @@ func TestVirtualNetworkClientDeleteLocalPeeringGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteNatGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteNatGateway")
     assert.NoError(t, err)
@@ -1235,7 +1235,7 @@ func TestVirtualNetworkClientDeleteNatGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeletePrivateIp(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeletePrivateIp")
     assert.NoError(t, err)
@@ -1271,7 +1271,7 @@ func TestVirtualNetworkClientDeletePrivateIp(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeletePublicIp(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeletePublicIp")
     assert.NoError(t, err)
@@ -1307,7 +1307,7 @@ func TestVirtualNetworkClientDeletePublicIp(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteRemotePeeringConnection(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteRemotePeeringConnection")
     assert.NoError(t, err)
@@ -1343,7 +1343,7 @@ func TestVirtualNetworkClientDeleteRemotePeeringConnection(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteRouteTable(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteRouteTable")
     assert.NoError(t, err)
@@ -1379,7 +1379,7 @@ func TestVirtualNetworkClientDeleteRouteTable(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteSecurityList(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteSecurityList")
     assert.NoError(t, err)
@@ -1415,7 +1415,7 @@ func TestVirtualNetworkClientDeleteSecurityList(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteServiceGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteServiceGateway")
     assert.NoError(t, err)
@@ -1451,7 +1451,7 @@ func TestVirtualNetworkClientDeleteServiceGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteSubnet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteSubnet")
     assert.NoError(t, err)
@@ -1487,7 +1487,7 @@ func TestVirtualNetworkClientDeleteSubnet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteVcn(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteVcn")
     assert.NoError(t, err)
@@ -1523,7 +1523,7 @@ func TestVirtualNetworkClientDeleteVcn(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteVirtualCircuit(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteVirtualCircuit")
     assert.NoError(t, err)
@@ -1559,7 +1559,7 @@ func TestVirtualNetworkClientDeleteVirtualCircuit(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDetachServiceId(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DetachServiceId")
     assert.NoError(t, err)
@@ -1595,7 +1595,7 @@ func TestVirtualNetworkClientDetachServiceId(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetCpe(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetCpe")
     assert.NoError(t, err)
@@ -1631,7 +1631,7 @@ func TestVirtualNetworkClientGetCpe(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetCrossConnect(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetCrossConnect")
     assert.NoError(t, err)
@@ -1667,7 +1667,7 @@ func TestVirtualNetworkClientGetCrossConnect(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetCrossConnectGroup(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetCrossConnectGroup")
     assert.NoError(t, err)
@@ -1703,7 +1703,7 @@ func TestVirtualNetworkClientGetCrossConnectGroup(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetCrossConnectLetterOfAuthority(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetCrossConnectLetterOfAuthority")
     assert.NoError(t, err)
@@ -1739,7 +1739,7 @@ func TestVirtualNetworkClientGetCrossConnectLetterOfAuthority(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetCrossConnectStatus(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetCrossConnectStatus")
     assert.NoError(t, err)
@@ -1775,7 +1775,7 @@ func TestVirtualNetworkClientGetCrossConnectStatus(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetDhcpOptions(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetDhcpOptions")
     assert.NoError(t, err)
@@ -1811,7 +1811,7 @@ func TestVirtualNetworkClientGetDhcpOptions(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetDrg(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetDrg")
     assert.NoError(t, err)
@@ -1847,7 +1847,7 @@ func TestVirtualNetworkClientGetDrg(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetDrgAttachment(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetDrgAttachment")
     assert.NoError(t, err)
@@ -1883,7 +1883,7 @@ func TestVirtualNetworkClientGetDrgAttachment(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetFastConnectProviderService(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetFastConnectProviderService")
     assert.NoError(t, err)
@@ -1919,7 +1919,7 @@ func TestVirtualNetworkClientGetFastConnectProviderService(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetIPSecConnection(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetIPSecConnection")
     assert.NoError(t, err)
@@ -1955,7 +1955,7 @@ func TestVirtualNetworkClientGetIPSecConnection(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetIPSecConnectionDeviceConfig(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetIPSecConnectionDeviceConfig")
     assert.NoError(t, err)
@@ -1991,7 +1991,7 @@ func TestVirtualNetworkClientGetIPSecConnectionDeviceConfig(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetIPSecConnectionDeviceStatus(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetIPSecConnectionDeviceStatus")
     assert.NoError(t, err)
@@ -2027,7 +2027,7 @@ func TestVirtualNetworkClientGetIPSecConnectionDeviceStatus(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetInternetGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetInternetGateway")
     assert.NoError(t, err)
@@ -2063,7 +2063,7 @@ func TestVirtualNetworkClientGetInternetGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetLocalPeeringGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetLocalPeeringGateway")
     assert.NoError(t, err)
@@ -2099,7 +2099,7 @@ func TestVirtualNetworkClientGetLocalPeeringGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetNatGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetNatGateway")
     assert.NoError(t, err)
@@ -2135,7 +2135,7 @@ func TestVirtualNetworkClientGetNatGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetPrivateIp(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetPrivateIp")
     assert.NoError(t, err)
@@ -2171,7 +2171,7 @@ func TestVirtualNetworkClientGetPrivateIp(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetPublicIp(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetPublicIp")
     assert.NoError(t, err)
@@ -2207,7 +2207,7 @@ func TestVirtualNetworkClientGetPublicIp(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetPublicIpByIpAddress(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetPublicIpByIpAddress")
     assert.NoError(t, err)
@@ -2243,7 +2243,7 @@ func TestVirtualNetworkClientGetPublicIpByIpAddress(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetPublicIpByPrivateIpId(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetPublicIpByPrivateIpId")
     assert.NoError(t, err)
@@ -2279,7 +2279,7 @@ func TestVirtualNetworkClientGetPublicIpByPrivateIpId(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetRemotePeeringConnection(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetRemotePeeringConnection")
     assert.NoError(t, err)
@@ -2315,7 +2315,7 @@ func TestVirtualNetworkClientGetRemotePeeringConnection(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetRouteTable(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetRouteTable")
     assert.NoError(t, err)
@@ -2351,7 +2351,7 @@ func TestVirtualNetworkClientGetRouteTable(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetSecurityList(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetSecurityList")
     assert.NoError(t, err)
@@ -2387,7 +2387,7 @@ func TestVirtualNetworkClientGetSecurityList(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetService(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetService")
     assert.NoError(t, err)
@@ -2423,7 +2423,7 @@ func TestVirtualNetworkClientGetService(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetServiceGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetServiceGateway")
     assert.NoError(t, err)
@@ -2459,7 +2459,7 @@ func TestVirtualNetworkClientGetServiceGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetSubnet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetSubnet")
     assert.NoError(t, err)
@@ -2495,7 +2495,7 @@ func TestVirtualNetworkClientGetSubnet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetVcn(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetVcn")
     assert.NoError(t, err)
@@ -2531,7 +2531,7 @@ func TestVirtualNetworkClientGetVcn(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetVirtualCircuit(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetVirtualCircuit")
     assert.NoError(t, err)
@@ -2567,7 +2567,7 @@ func TestVirtualNetworkClientGetVirtualCircuit(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetVnic(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetVnic")
     assert.NoError(t, err)
@@ -2603,7 +2603,7 @@ func TestVirtualNetworkClientGetVnic(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListAllowedPeerRegionsForRemotePeering(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListAllowedPeerRegionsForRemotePeering")
     assert.NoError(t, err)
@@ -2639,7 +2639,7 @@ func TestVirtualNetworkClientListAllowedPeerRegionsForRemotePeering(t *testing.T
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListCpes(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListCpes")
     assert.NoError(t, err)
@@ -2684,7 +2684,7 @@ func TestVirtualNetworkClientListCpes(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListCrossConnectGroups(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListCrossConnectGroups")
     assert.NoError(t, err)
@@ -2729,7 +2729,7 @@ func TestVirtualNetworkClientListCrossConnectGroups(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListCrossConnectLocations(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListCrossConnectLocations")
     assert.NoError(t, err)
@@ -2774,7 +2774,7 @@ func TestVirtualNetworkClientListCrossConnectLocations(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListCrossConnects(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListCrossConnects")
     assert.NoError(t, err)
@@ -2819,7 +2819,7 @@ func TestVirtualNetworkClientListCrossConnects(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListCrossconnectPortSpeedShapes(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListCrossconnectPortSpeedShapes")
     assert.NoError(t, err)
@@ -2864,7 +2864,7 @@ func TestVirtualNetworkClientListCrossconnectPortSpeedShapes(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListDhcpOptions(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListDhcpOptions")
     assert.NoError(t, err)
@@ -2909,7 +2909,7 @@ func TestVirtualNetworkClientListDhcpOptions(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListDrgAttachments(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListDrgAttachments")
     assert.NoError(t, err)
@@ -2954,7 +2954,7 @@ func TestVirtualNetworkClientListDrgAttachments(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListDrgs(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListDrgs")
     assert.NoError(t, err)
@@ -2999,7 +2999,7 @@ func TestVirtualNetworkClientListDrgs(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListFastConnectProviderServices(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListFastConnectProviderServices")
     assert.NoError(t, err)
@@ -3044,7 +3044,7 @@ func TestVirtualNetworkClientListFastConnectProviderServices(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListFastConnectProviderVirtualCircuitBandwidthShapes(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListFastConnectProviderVirtualCircuitBandwidthShapes")
     assert.NoError(t, err)
@@ -3089,7 +3089,7 @@ func TestVirtualNetworkClientListFastConnectProviderVirtualCircuitBandwidthShape
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListIPSecConnections(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListIPSecConnections")
     assert.NoError(t, err)
@@ -3134,7 +3134,7 @@ func TestVirtualNetworkClientListIPSecConnections(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListInternetGateways(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListInternetGateways")
     assert.NoError(t, err)
@@ -3179,7 +3179,7 @@ func TestVirtualNetworkClientListInternetGateways(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListLocalPeeringGateways(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListLocalPeeringGateways")
     assert.NoError(t, err)
@@ -3224,7 +3224,7 @@ func TestVirtualNetworkClientListLocalPeeringGateways(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListNatGateways(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListNatGateways")
     assert.NoError(t, err)
@@ -3269,7 +3269,7 @@ func TestVirtualNetworkClientListNatGateways(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListPrivateIps(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListPrivateIps")
     assert.NoError(t, err)
@@ -3314,7 +3314,7 @@ func TestVirtualNetworkClientListPrivateIps(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListPublicIps(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListPublicIps")
     assert.NoError(t, err)
@@ -3359,7 +3359,7 @@ func TestVirtualNetworkClientListPublicIps(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListRemotePeeringConnections(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListRemotePeeringConnections")
     assert.NoError(t, err)
@@ -3404,7 +3404,7 @@ func TestVirtualNetworkClientListRemotePeeringConnections(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListRouteTables(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListRouteTables")
     assert.NoError(t, err)
@@ -3449,7 +3449,7 @@ func TestVirtualNetworkClientListRouteTables(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListSecurityLists(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListSecurityLists")
     assert.NoError(t, err)
@@ -3494,7 +3494,7 @@ func TestVirtualNetworkClientListSecurityLists(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListServiceGateways(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListServiceGateways")
     assert.NoError(t, err)
@@ -3539,7 +3539,7 @@ func TestVirtualNetworkClientListServiceGateways(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListServices(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListServices")
     assert.NoError(t, err)
@@ -3584,7 +3584,7 @@ func TestVirtualNetworkClientListServices(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListSubnets(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListSubnets")
     assert.NoError(t, err)
@@ -3629,7 +3629,7 @@ func TestVirtualNetworkClientListSubnets(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListVcns(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListVcns")
     assert.NoError(t, err)
@@ -3674,7 +3674,7 @@ func TestVirtualNetworkClientListVcns(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListVirtualCircuitBandwidthShapes(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListVirtualCircuitBandwidthShapes")
     assert.NoError(t, err)
@@ -3719,7 +3719,7 @@ func TestVirtualNetworkClientListVirtualCircuitBandwidthShapes(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListVirtualCircuitPublicPrefixes(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListVirtualCircuitPublicPrefixes")
     assert.NoError(t, err)
@@ -3755,7 +3755,7 @@ func TestVirtualNetworkClientListVirtualCircuitPublicPrefixes(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListVirtualCircuits(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListVirtualCircuits")
     assert.NoError(t, err)
@@ -3800,7 +3800,7 @@ func TestVirtualNetworkClientListVirtualCircuits(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateCpe(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateCpe")
     assert.NoError(t, err)
@@ -3836,7 +3836,7 @@ func TestVirtualNetworkClientUpdateCpe(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateCrossConnect(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateCrossConnect")
     assert.NoError(t, err)
@@ -3872,7 +3872,7 @@ func TestVirtualNetworkClientUpdateCrossConnect(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateCrossConnectGroup(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateCrossConnectGroup")
     assert.NoError(t, err)
@@ -3908,7 +3908,7 @@ func TestVirtualNetworkClientUpdateCrossConnectGroup(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateDhcpOptions(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateDhcpOptions")
     assert.NoError(t, err)
@@ -3944,7 +3944,7 @@ func TestVirtualNetworkClientUpdateDhcpOptions(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateDrg(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateDrg")
     assert.NoError(t, err)
@@ -3980,7 +3980,7 @@ func TestVirtualNetworkClientUpdateDrg(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateDrgAttachment(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateDrgAttachment")
     assert.NoError(t, err)
@@ -4016,7 +4016,7 @@ func TestVirtualNetworkClientUpdateDrgAttachment(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateIPSecConnection(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateIPSecConnection")
     assert.NoError(t, err)
@@ -4052,7 +4052,7 @@ func TestVirtualNetworkClientUpdateIPSecConnection(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateInternetGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateInternetGateway")
     assert.NoError(t, err)
@@ -4088,7 +4088,7 @@ func TestVirtualNetworkClientUpdateInternetGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateLocalPeeringGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateLocalPeeringGateway")
     assert.NoError(t, err)
@@ -4124,7 +4124,7 @@ func TestVirtualNetworkClientUpdateLocalPeeringGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateNatGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateNatGateway")
     assert.NoError(t, err)
@@ -4160,7 +4160,7 @@ func TestVirtualNetworkClientUpdateNatGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdatePrivateIp(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdatePrivateIp")
     assert.NoError(t, err)
@@ -4196,7 +4196,7 @@ func TestVirtualNetworkClientUpdatePrivateIp(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdatePublicIp(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdatePublicIp")
     assert.NoError(t, err)
@@ -4232,7 +4232,7 @@ func TestVirtualNetworkClientUpdatePublicIp(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateRemotePeeringConnection(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateRemotePeeringConnection")
     assert.NoError(t, err)
@@ -4268,7 +4268,7 @@ func TestVirtualNetworkClientUpdateRemotePeeringConnection(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateRouteTable(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateRouteTable")
     assert.NoError(t, err)
@@ -4304,7 +4304,7 @@ func TestVirtualNetworkClientUpdateRouteTable(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateSecurityList(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateSecurityList")
     assert.NoError(t, err)
@@ -4340,7 +4340,7 @@ func TestVirtualNetworkClientUpdateSecurityList(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateServiceGateway(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateServiceGateway")
     assert.NoError(t, err)
@@ -4376,7 +4376,7 @@ func TestVirtualNetworkClientUpdateServiceGateway(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateSubnet(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateSubnet")
     assert.NoError(t, err)
@@ -4412,7 +4412,7 @@ func TestVirtualNetworkClientUpdateSubnet(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateVcn(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateVcn")
     assert.NoError(t, err)
@@ -4448,7 +4448,7 @@ func TestVirtualNetworkClientUpdateVcn(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateVirtualCircuit(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateVirtualCircuit")
     assert.NoError(t, err)
@@ -4484,7 +4484,7 @@ func TestVirtualNetworkClientUpdateVirtualCircuit(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateVnic(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateVnic")
     assert.NoError(t, err)

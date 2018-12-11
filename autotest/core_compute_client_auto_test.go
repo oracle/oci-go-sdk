@@ -11,7 +11,7 @@ import (
     "testing"
 )
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientAttachBootVolume(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "AttachBootVolume")
     assert.NoError(t, err)
@@ -47,7 +47,7 @@ func TestComputeClientAttachBootVolume(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientAttachVnic(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "AttachVnic")
     assert.NoError(t, err)
@@ -83,7 +83,7 @@ func TestComputeClientAttachVnic(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientAttachVolume(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "AttachVolume")
     assert.NoError(t, err)
@@ -119,7 +119,7 @@ func TestComputeClientAttachVolume(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientCaptureConsoleHistory(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CaptureConsoleHistory")
     assert.NoError(t, err)
@@ -155,7 +155,7 @@ func TestComputeClientCaptureConsoleHistory(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientCreateAppCatalogSubscription(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateAppCatalogSubscription")
     assert.NoError(t, err)
@@ -191,7 +191,7 @@ func TestComputeClientCreateAppCatalogSubscription(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientCreateImage(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateImage")
     assert.NoError(t, err)
@@ -227,7 +227,7 @@ func TestComputeClientCreateImage(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientCreateInstanceConsoleConnection(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateInstanceConsoleConnection")
     assert.NoError(t, err)
@@ -263,7 +263,7 @@ func TestComputeClientCreateInstanceConsoleConnection(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientDeleteAppCatalogSubscription(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteAppCatalogSubscription")
     assert.NoError(t, err)
@@ -299,7 +299,7 @@ func TestComputeClientDeleteAppCatalogSubscription(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientDeleteConsoleHistory(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteConsoleHistory")
     assert.NoError(t, err)
@@ -335,7 +335,7 @@ func TestComputeClientDeleteConsoleHistory(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientDeleteImage(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteImage")
     assert.NoError(t, err)
@@ -371,7 +371,7 @@ func TestComputeClientDeleteImage(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientDeleteInstanceConsoleConnection(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteInstanceConsoleConnection")
     assert.NoError(t, err)
@@ -407,7 +407,7 @@ func TestComputeClientDeleteInstanceConsoleConnection(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientDetachBootVolume(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DetachBootVolume")
     assert.NoError(t, err)
@@ -443,7 +443,7 @@ func TestComputeClientDetachBootVolume(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientDetachVnic(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DetachVnic")
     assert.NoError(t, err)
@@ -479,7 +479,7 @@ func TestComputeClientDetachVnic(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientDetachVolume(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DetachVolume")
     assert.NoError(t, err)
@@ -515,7 +515,7 @@ func TestComputeClientDetachVolume(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientExportImage(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ExportImage")
     assert.NoError(t, err)
@@ -551,7 +551,7 @@ func TestComputeClientExportImage(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetAppCatalogListing(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetAppCatalogListing")
     assert.NoError(t, err)
@@ -587,7 +587,7 @@ func TestComputeClientGetAppCatalogListing(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetAppCatalogListingAgreements(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetAppCatalogListingAgreements")
     assert.NoError(t, err)
@@ -623,7 +623,7 @@ func TestComputeClientGetAppCatalogListingAgreements(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetAppCatalogListingResourceVersion(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetAppCatalogListingResourceVersion")
     assert.NoError(t, err)
@@ -659,7 +659,7 @@ func TestComputeClientGetAppCatalogListingResourceVersion(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetBootVolumeAttachment(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetBootVolumeAttachment")
     assert.NoError(t, err)
@@ -695,7 +695,7 @@ func TestComputeClientGetBootVolumeAttachment(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetConsoleHistory(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetConsoleHistory")
     assert.NoError(t, err)
@@ -731,7 +731,7 @@ func TestComputeClientGetConsoleHistory(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetConsoleHistoryContent(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetConsoleHistoryContent")
     assert.NoError(t, err)
@@ -767,7 +767,7 @@ func TestComputeClientGetConsoleHistoryContent(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetImage(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetImage")
     assert.NoError(t, err)
@@ -803,7 +803,7 @@ func TestComputeClientGetImage(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetInstance(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetInstance")
     assert.NoError(t, err)
@@ -839,7 +839,7 @@ func TestComputeClientGetInstance(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetInstanceConsoleConnection(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetInstanceConsoleConnection")
     assert.NoError(t, err)
@@ -875,7 +875,7 @@ func TestComputeClientGetInstanceConsoleConnection(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetVnicAttachment(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetVnicAttachment")
     assert.NoError(t, err)
@@ -911,7 +911,7 @@ func TestComputeClientGetVnicAttachment(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetVolumeAttachment(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetVolumeAttachment")
     assert.NoError(t, err)
@@ -947,7 +947,7 @@ func TestComputeClientGetVolumeAttachment(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientGetWindowsInstanceInitialCredentials(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetWindowsInstanceInitialCredentials")
     assert.NoError(t, err)
@@ -983,7 +983,7 @@ func TestComputeClientGetWindowsInstanceInitialCredentials(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientInstanceAction(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "InstanceAction")
     assert.NoError(t, err)
@@ -1019,7 +1019,7 @@ func TestComputeClientInstanceAction(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientLaunchInstance(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "LaunchInstance")
     assert.NoError(t, err)
@@ -1055,7 +1055,7 @@ func TestComputeClientLaunchInstance(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListAppCatalogListingResourceVersions(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListAppCatalogListingResourceVersions")
     assert.NoError(t, err)
@@ -1100,7 +1100,7 @@ func TestComputeClientListAppCatalogListingResourceVersions(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListAppCatalogListings(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListAppCatalogListings")
     assert.NoError(t, err)
@@ -1145,7 +1145,7 @@ func TestComputeClientListAppCatalogListings(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListAppCatalogSubscriptions(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListAppCatalogSubscriptions")
     assert.NoError(t, err)
@@ -1190,7 +1190,7 @@ func TestComputeClientListAppCatalogSubscriptions(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListBootVolumeAttachments(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListBootVolumeAttachments")
     assert.NoError(t, err)
@@ -1235,7 +1235,7 @@ func TestComputeClientListBootVolumeAttachments(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListConsoleHistories(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListConsoleHistories")
     assert.NoError(t, err)
@@ -1280,7 +1280,7 @@ func TestComputeClientListConsoleHistories(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListImages(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListImages")
     assert.NoError(t, err)
@@ -1325,7 +1325,7 @@ func TestComputeClientListImages(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListInstanceConsoleConnections(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListInstanceConsoleConnections")
     assert.NoError(t, err)
@@ -1370,7 +1370,7 @@ func TestComputeClientListInstanceConsoleConnections(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListInstances(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListInstances")
     assert.NoError(t, err)
@@ -1415,7 +1415,7 @@ func TestComputeClientListInstances(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListShapes(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListShapes")
     assert.NoError(t, err)
@@ -1460,7 +1460,7 @@ func TestComputeClientListShapes(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListVnicAttachments(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListVnicAttachments")
     assert.NoError(t, err)
@@ -1505,7 +1505,7 @@ func TestComputeClientListVnicAttachments(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListVolumeAttachments(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListVolumeAttachments")
     assert.NoError(t, err)
@@ -1550,7 +1550,7 @@ func TestComputeClientListVolumeAttachments(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientTerminateInstance(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "TerminateInstance")
     assert.NoError(t, err)
@@ -1586,7 +1586,7 @@ func TestComputeClientTerminateInstance(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientUpdateConsoleHistory(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateConsoleHistory")
     assert.NoError(t, err)
@@ -1622,7 +1622,7 @@ func TestComputeClientUpdateConsoleHistory(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientUpdateImage(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateImage")
     assert.NoError(t, err)
@@ -1658,7 +1658,7 @@ func TestComputeClientUpdateImage(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientUpdateInstance(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateInstance")
     assert.NoError(t, err)

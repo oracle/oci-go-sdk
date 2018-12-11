@@ -11,7 +11,7 @@ import (
     "testing"
 )
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientCreateInstanceConfiguration(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateInstanceConfiguration")
     assert.NoError(t, err)
@@ -47,7 +47,7 @@ func TestComputeManagementClientCreateInstanceConfiguration(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientCreateInstancePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "CreateInstancePool")
     assert.NoError(t, err)
@@ -83,7 +83,7 @@ func TestComputeManagementClientCreateInstancePool(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientDeleteInstanceConfiguration(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "DeleteInstanceConfiguration")
     assert.NoError(t, err)
@@ -119,7 +119,7 @@ func TestComputeManagementClientDeleteInstanceConfiguration(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientGetInstanceConfiguration(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetInstanceConfiguration")
     assert.NoError(t, err)
@@ -155,7 +155,7 @@ func TestComputeManagementClientGetInstanceConfiguration(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientGetInstancePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "GetInstancePool")
     assert.NoError(t, err)
@@ -191,7 +191,7 @@ func TestComputeManagementClientGetInstancePool(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientLaunchInstanceConfiguration(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "LaunchInstanceConfiguration")
     assert.NoError(t, err)
@@ -227,7 +227,7 @@ func TestComputeManagementClientLaunchInstanceConfiguration(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientListInstanceConfigurations(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListInstanceConfigurations")
     assert.NoError(t, err)
@@ -272,7 +272,7 @@ func TestComputeManagementClientListInstanceConfigurations(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientListInstancePoolInstances(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListInstancePoolInstances")
     assert.NoError(t, err)
@@ -317,7 +317,7 @@ func TestComputeManagementClientListInstancePoolInstances(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientListInstancePools(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ListInstancePools")
     assert.NoError(t, err)
@@ -362,7 +362,7 @@ func TestComputeManagementClientListInstancePools(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientResetInstancePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "ResetInstancePool")
     assert.NoError(t, err)
@@ -398,7 +398,7 @@ func TestComputeManagementClientResetInstancePool(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientSoftresetInstancePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "SoftresetInstancePool")
     assert.NoError(t, err)
@@ -434,7 +434,7 @@ func TestComputeManagementClientSoftresetInstancePool(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientStartInstancePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "StartInstancePool")
     assert.NoError(t, err)
@@ -470,7 +470,7 @@ func TestComputeManagementClientStartInstancePool(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientStopInstancePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "StopInstancePool")
     assert.NoError(t, err)
@@ -506,7 +506,7 @@ func TestComputeManagementClientStopInstancePool(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientTerminateInstancePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "TerminateInstancePool")
     assert.NoError(t, err)
@@ -542,7 +542,7 @@ func TestComputeManagementClientTerminateInstancePool(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientUpdateInstanceConfiguration(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateInstanceConfiguration")
     assert.NoError(t, err)
@@ -578,7 +578,7 @@ func TestComputeManagementClientUpdateInstanceConfiguration(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientUpdateInstancePool(t *testing.T) {
     enabled, err := testClient.isApiEnabled("core", "UpdateInstancePool")
     assert.NoError(t, err)
