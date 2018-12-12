@@ -84,6 +84,10 @@ func (m *createdataguardassociationdetails) UnmarshalPolymorphicJSON(data []byte
 
 	var err error
 	switch m.CreationType {
+	case "NewDbSystem":
+		mm := CreateDataGuardAssociationWithNewDbSystemDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "ExistingDbSystem":
 		mm := CreateDataGuardAssociationToExistingDbSystemDetails{}
 		err = json.Unmarshal(data, &mm)
