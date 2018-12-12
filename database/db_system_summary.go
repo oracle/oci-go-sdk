@@ -101,6 +101,9 @@ type DbSystemSummary struct {
 	// HIGH is 3-way redundancy.
 	DiskRedundancy DbSystemSummaryDiskRedundancyEnum `mandatory:"false" json:"diskRedundancy,omitempty"`
 
+	// True, if Sparse Diskgroup is configured for Exadata dbsystem, False, if Sparse diskgroup was not configured.
+	SparseDiskgroup *bool `mandatory:"false" json:"sparseDiskgroup"`
+
 	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the Single Client Access Name (SCAN) IP addresses associated with the DB system.
 	// SCAN IP addresses are typically used for load balancing and are not assigned to any interface.
 	// Oracle Clusterware directs the requests to the appropriate nodes in the cluster.

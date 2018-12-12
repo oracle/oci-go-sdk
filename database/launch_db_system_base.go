@@ -68,6 +68,9 @@ type LaunchDbSystemBase interface {
 	// **Subnet Restrictions:** See the subnet restrictions information for **subnetId**.
 	GetBackupSubnetId() *string
 
+	// If true, Sparse Diskgroup is configured for Exadata dbsystem. If False, Sparse diskgroup is not configured.
+	GetSparseDiskgroup() *bool
+
 	// A domain name used for the DB system. If the Oracle-provided Internet and VCN
 	// Resolver is enabled for the specified subnet, the domain name for the subnet is used
 	// (do not provide one). Otherwise, provide a valid DNS domain name. Hyphens (-) are not permitted.
@@ -109,6 +112,7 @@ type launchdbsystembase struct {
 	CpuCoreCount               *int                              `mandatory:"true" json:"cpuCoreCount"`
 	DisplayName                *string                           `mandatory:"false" json:"displayName"`
 	BackupSubnetId             *string                           `mandatory:"false" json:"backupSubnetId"`
+	SparseDiskgroup            *bool                             `mandatory:"false" json:"sparseDiskgroup"`
 	Domain                     *string                           `mandatory:"false" json:"domain"`
 	ClusterName                *string                           `mandatory:"false" json:"clusterName"`
 	DataStoragePercentage      *int                              `mandatory:"false" json:"dataStoragePercentage"`
@@ -139,6 +143,7 @@ func (m *launchdbsystembase) UnmarshalJSON(data []byte) error {
 	m.CpuCoreCount = s.Model.CpuCoreCount
 	m.DisplayName = s.Model.DisplayName
 	m.BackupSubnetId = s.Model.BackupSubnetId
+	m.SparseDiskgroup = s.Model.SparseDiskgroup
 	m.Domain = s.Model.Domain
 	m.ClusterName = s.Model.ClusterName
 	m.DataStoragePercentage = s.Model.DataStoragePercentage
@@ -216,6 +221,11 @@ func (m launchdbsystembase) GetDisplayName() *string {
 //GetBackupSubnetId returns BackupSubnetId
 func (m launchdbsystembase) GetBackupSubnetId() *string {
 	return m.BackupSubnetId
+}
+
+//GetSparseDiskgroup returns SparseDiskgroup
+func (m launchdbsystembase) GetSparseDiskgroup() *bool {
+	return m.SparseDiskgroup
 }
 
 //GetDomain returns Domain

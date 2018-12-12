@@ -71,7 +71,7 @@ type DataGuardAssociationSummary struct {
 	// in the Oracle Data Guard documentation.
 	TransportType DataGuardAssociationSummaryTransportTypeEnum `mandatory:"false" json:"transportType,omitempty"`
 
-	// The date and time the Data Guard Association was created.
+	// The date and time the Data Guard association was created.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 }
 

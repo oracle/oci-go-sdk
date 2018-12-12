@@ -69,6 +69,9 @@ type LaunchDbSystemDetails struct {
 	// **Subnet Restrictions:** See the subnet restrictions information for **subnetId**.
 	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId"`
 
+	// If true, Sparse Diskgroup is configured for Exadata dbsystem. If False, Sparse diskgroup is not configured.
+	SparseDiskgroup *bool `mandatory:"false" json:"sparseDiskgroup"`
+
 	// A domain name used for the DB system. If the Oracle-provided Internet and VCN
 	// Resolver is enabled for the specified subnet, the domain name for the subnet is used
 	// (do not provide one). Otherwise, provide a valid DNS domain name. Hyphens (-) are not permitted.
@@ -139,6 +142,11 @@ func (m LaunchDbSystemDetails) GetBackupSubnetId() *string {
 //GetShape returns Shape
 func (m LaunchDbSystemDetails) GetShape() *string {
 	return m.Shape
+}
+
+//GetSparseDiskgroup returns SparseDiskgroup
+func (m LaunchDbSystemDetails) GetSparseDiskgroup() *bool {
+	return m.SparseDiskgroup
 }
 
 //GetSshPublicKeys returns SshPublicKeys
