@@ -8,23 +8,17 @@ import (
 	"net/http"
 )
 
-// ListUsersRequest wrapper for the ListUsers operation
-type ListUsersRequest struct {
+// ListIdentityProviderGroupsRequest wrapper for the ListIdentityProviderGroups operation
+type ListIdentityProviderGroupsRequest struct {
 
-	// The OCID of the parent compartment (remember that the tenancy is simply the root compartment).
-	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	// The OCID of the identity provider.
+	IdentityProviderId *string `mandatory:"true" contributesTo:"path" name:"identityProviderId"`
 
 	// The value of the `opc-next-page` response header from the previous "List" call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
 	// The maximum number of items to return in a paginated "List" call.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
-
-	// The id of the identity provider.
-	IdentityProviderId *string `mandatory:"false" contributesTo:"query" name:"identityProviderId"`
-
-	// The id of a user in the identity provider.
-	ExternalIdentifier *string `mandatory:"false" contributesTo:"query" name:"externalIdentifier"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.
@@ -35,28 +29,28 @@ type ListUsersRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request ListUsersRequest) String() string {
+func (request ListIdentityProviderGroupsRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request ListUsersRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request ListIdentityProviderGroupsRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request ListUsersRequest) RetryPolicy() *common.RetryPolicy {
+func (request ListIdentityProviderGroupsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// ListUsersResponse wrapper for the ListUsers operation
-type ListUsersResponse struct {
+// ListIdentityProviderGroupsResponse wrapper for the ListIdentityProviderGroups operation
+type ListIdentityProviderGroupsResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// A list of []User instances
-	Items []User `presentIn:"body"`
+	// A list of []IdentityProviderGroupSummary instances
+	Items []IdentityProviderGroupSummary `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
@@ -68,11 +62,11 @@ type ListUsersResponse struct {
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
 }
 
-func (response ListUsersResponse) String() string {
+func (response ListIdentityProviderGroupsResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response ListUsersResponse) HTTPResponse() *http.Response {
+func (response ListIdentityProviderGroupsResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }
