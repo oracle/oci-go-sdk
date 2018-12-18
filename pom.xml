@@ -661,7 +661,7 @@
       <plugin>
         <groupId>com.oracle.bmc.sdk</groupId>
         <artifactId>bmc-sdk-swagger-maven-plugin</artifactId>
-        <version>1.54-SNAPSHOT</version>
+        <version>1.58-SNAPSHOT</version>
         <configuration>
           <isTestGenerationEnabled>false</isTestGenerationEnabled>
         </configuration>
@@ -677,6 +677,7 @@
               <specPath>${preprocessed-temp-dir}/identity-control-plane-api-spec/${identity-control-plane-api-spec-spec-file}</specPath>
               <outputDir>${env.GOPATH}/src/${fullyQualifiedProjectName}</outputDir>
               <specGenerationType>${generationType}</specGenerationType>
+              <isTestGenerationEnabled>true</isTestGenerationEnabled>
               <basePackage>identity</basePackage>
               <additionalProperties>
                 <specName>identity</specName>
@@ -814,6 +815,7 @@
               </additionalProperties>
               <featureIdConfigFile>${feature-id-file}</featureIdConfigFile>
               <featureIdConfigDir>${feature-id-dir}</featureIdConfigDir>
+              <isTestGenerationEnabled>true</isTestGenerationEnabled>
             </configuration>
           </execution>
           <execution>
@@ -924,6 +926,7 @@
               </additionalProperties>
               <featureIdConfigFile>${feature-id-file}</featureIdConfigFile>
               <featureIdConfigDir>${feature-id-dir}</featureIdConfigDir>
+              <isTestGenerationEnabled>true</isTestGenerationEnabled>
             </configuration>
           </execution>
         </executions>
