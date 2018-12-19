@@ -11,6 +11,17 @@ import (
 	"testing"
 )
 
+func createKmsVaultClientWithProvider(p common.ConfigurationProvider, testConfig TestingConfig) (interface{}, error) {
+
+	client, err := keymanagement.NewKmsVaultClientWithConfigurationProvider(p)
+	if testConfig.Endpoint != "" {
+		client.Host = testConfig.Endpoint
+	} else {
+		client.SetRegion(testConfig.Region)
+	}
+	return client, err
+}
+
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsVaultClientCancelVaultDeletion(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("keymanagement", "CancelVaultDeletion")
@@ -126,8 +137,10 @@ func TestKmsVaultClientListVaults(t *testing.T) {
 	if !enabled {
 		t.Skip("ListVaults is not enabled by the testing service")
 	}
-	c, err := keymanagement.NewKmsVaultClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsVault", "ListVaults", createKmsVaultClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsVaultClient)
 
 	body, err := testClient.getRequests("keymanagement", "ListVaults")
 	assert.NoError(t, err)

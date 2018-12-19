@@ -11,6 +11,17 @@ import (
 	"testing"
 )
 
+func createResourceSearchClientWithProvider(p common.ConfigurationProvider, testConfig TestingConfig) (interface{}, error) {
+
+	client, err := resourcesearch.NewResourceSearchClientWithConfigurationProvider(p)
+	if testConfig.Endpoint != "" {
+		client.Host = testConfig.Endpoint
+	} else {
+		client.SetRegion(testConfig.Region)
+	}
+	return client, err
+}
+
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestResourceSearchClientGetResourceType(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("resourcesearch", "GetResourceType")
@@ -54,8 +65,10 @@ func TestResourceSearchClientListResourceTypes(t *testing.T) {
 	if !enabled {
 		t.Skip("ListResourceTypes is not enabled by the testing service")
 	}
-	c, err := resourcesearch.NewResourceSearchClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("resourcesearch", "ResourceSearch", "ListResourceTypes", createResourceSearchClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(resourcesearch.ResourceSearchClient)
 
 	body, err := testClient.getRequests("resourcesearch", "ListResourceTypes")
 	assert.NoError(t, err)
@@ -99,8 +112,10 @@ func TestResourceSearchClientSearchResources(t *testing.T) {
 	if !enabled {
 		t.Skip("SearchResources is not enabled by the testing service")
 	}
-	c, err := resourcesearch.NewResourceSearchClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("resourcesearch", "ResourceSearch", "SearchResources", createResourceSearchClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(resourcesearch.ResourceSearchClient)
 
 	body, err := testClient.getRequests("resourcesearch", "SearchResources")
 	assert.NoError(t, err)

@@ -11,6 +11,11 @@ import (
 	"testing"
 )
 
+func createKmsCryptoClientWithProvider(p common.ConfigurationProvider, testConfig TestingConfig) (interface{}, error) {
+	client, err := keymanagement.NewKmsCryptoClientWithConfigurationProvider(p, testConfig.Endpoint)
+	return client, err
+}
+
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsCryptoClientDecrypt(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("keymanagement", "Decrypt")
@@ -18,7 +23,7 @@ func TestKmsCryptoClientDecrypt(t *testing.T) {
 	if !enabled {
 		t.Skip("Decrypt is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsCrypto")
+	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsCrypto", "Decrypt")
 	assert.NoError(t, err)
 	c, err := keymanagement.NewKmsCryptoClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
 	assert.NoError(t, err)
@@ -56,7 +61,7 @@ func TestKmsCryptoClientEncrypt(t *testing.T) {
 	if !enabled {
 		t.Skip("Encrypt is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsCrypto")
+	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsCrypto", "Encrypt")
 	assert.NoError(t, err)
 	c, err := keymanagement.NewKmsCryptoClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
 	assert.NoError(t, err)
@@ -94,7 +99,7 @@ func TestKmsCryptoClientGenerateDataEncryptionKey(t *testing.T) {
 	if !enabled {
 		t.Skip("GenerateDataEncryptionKey is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsCrypto")
+	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsCrypto", "GenerateDataEncryptionKey")
 	assert.NoError(t, err)
 	c, err := keymanagement.NewKmsCryptoClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
 	assert.NoError(t, err)

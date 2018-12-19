@@ -19,6 +19,7 @@ import (
 	"strings"
 	"testing"
 	"unicode"
+	"net/http/httputil"
 )
 
 // DataToValidate defines the data that needs to be sent back to oci testing service for validation in a successful scenario.
@@ -110,15 +111,31 @@ func NewOCITestClient() *OCITestClient {
 	if _, isDebugEnabled := os.LookupEnv("OCI_GO_AUTOTEST_DEBUG"); !isDebugEnabled {
 		testLog.SetOutput(ioutil.Discard)
 	}
+
+	testingServiceEndpoint := defaultOCITestingServiceEndpoint
+	if endpoint, ok := os.LookupEnv("OCI_GO_TESTING_SERVICE_ENDPOINT"); ok {
+		testingServiceEndpoint = endpoint
+	}
+
 	return &OCITestClient{
 		HTTPClient:      http.Client{},
-		ServiceEndpoint: defaultOCITestingServiceEndpoint,
+		ServiceEndpoint: testingServiceEndpoint,
 		Log:             testLog,
 	}
 }
 
-func (client OCITestClient) getEndpointForService(serviceName, clientName string) (string, error) {
-	endpoint := pathJoin(client.ServiceEndpoint, "request", "enable")
+func (client OCITestClient) createClientForOperation(serviceName, clientName, operation string,
+	constructor func(common.ConfigurationProvider, TestingConfig) (interface{}, error)) (interface{}, error) {
+	confProvider, testConfig, err := client.configurationProvider(serviceName, clientName, operation)
+	if err != nil {
+		return nil, err
+	}
+
+	return constructor(confProvider, testConfig)
+}
+
+func (client OCITestClient) getEndpointForService(serviceName, clientName, operationName string) (string, error) {
+	endpoint := pathJoin(client.ServiceEndpoint, "endpoint")
 	request, err := http.NewRequest("GET", endpoint, nil)
 	if err != nil {
 		return "", err
@@ -127,17 +144,78 @@ func (client OCITestClient) getEndpointForService(serviceName, clientName string
 	q.Add("sessionId", client.SessionID)
 	q.Add("serviceName", serviceName)
 	q.Add("clientName", clientName)
-
+	q.Add("apiName", operationName)
+	q.Add("lang", "Go")
 	request.URL.RawQuery = q.Encode()
-	response, err := client.HTTPClient.Do(request)
+
+	body, err := client.callService(request)
 	if err != nil {
 		return "", err
 	}
 
-	defer response.Body.Close()
-
-	body, err := ioutil.ReadAll(response.Body)
 	return string(body), err
+}
+
+type TestingConfig struct {
+	Region         string `json:"region"`
+	TenantID       string `json:"tenantId"`
+	CompartmentID  string `json:"compartmentId"`
+	UserID         string `json:"userId"`
+	Endpoint       string `json:"endpoint"`
+	Fingerprint    string `json:"fingerprint"`
+	PassPhrase     string `json:"passPhrase"`
+	KeyFile        string `json:"keyFile"`
+	KeyFileContent string `json:"keyFileContent"`
+}
+
+func (client OCITestClient) getConfiguration(serviceName, clientName, operationName string) (config TestingConfig, err error) {
+	endpoint := pathJoin(client.ServiceEndpoint, "config")
+	request, err := http.NewRequest("GET", endpoint, nil)
+	if err != nil {
+		return
+	}
+	q := url.Values{}
+	q.Add("serviceName", serviceName)
+	q.Add("clientName", clientName)
+	q.Add("apiName", operationName)
+	q.Add("lang", "Go")
+	request.URL.RawQuery = q.Encode()
+
+	body, err := client.callService(request)
+	if err != nil {
+		return
+	}
+
+
+	config = TestingConfig{}
+	err = json.Unmarshal(body, &config)
+
+	client.Log.Println("Server configuration acquired:", config.TenantID, config.UserID, config.Fingerprint)
+	return
+}
+
+func (client OCITestClient) configurationProvider(serviceName, clientName, operationName string) (provider common.ConfigurationProvider, testConfig TestingConfig, err error) {
+	testConfig, err = client.getConfiguration(serviceName, clientName, operationName)
+
+	if err != nil {
+		return
+	}
+
+	provider = common.NewRawConfigurationProvider(
+		testConfig.TenantID,
+		testConfig.UserID,
+		testConfig.Region,
+		testConfig.Fingerprint,
+		testConfig.KeyFileContent,
+		&testConfig.PassPhrase)
+
+	var ok bool
+	if ok, err = common.IsConfigurationProviderValid(provider); !ok {
+		err = fmt.Errorf("server configuration is not valid", err.Error())
+		return
+	}
+
+	return
 }
 
 func (client OCITestClient) isApiEnabled(serviceName, operationName string) (bool, error) {
@@ -152,14 +230,7 @@ func (client OCITestClient) isApiEnabled(serviceName, operationName string) (boo
 	q.Add("lang", "Go")
 	request.URL.RawQuery = q.Encode()
 
-	response, err := client.HTTPClient.Do(request)
-	if err != nil {
-		return false, err
-	}
-
-	defer response.Body.Close()
-
-	body, err := ioutil.ReadAll(response.Body)
+	body, err := client.callService(request)
 	if err != nil {
 		return false, err
 	}
@@ -204,16 +275,8 @@ func (client OCITestClient) validateError(containerId string, req interface{}, r
 		return "", err
 	}
 
-	response, err := client.HTTPClient.Do(request)
 
-	if err != nil {
-		return "", err
-	}
-
-	defer response.Body.Close()
-
-	body, err = ioutil.ReadAll(response.Body)
-
+	body, err = client.callService(request)
 	if err != nil {
 		return "", err
 	}
@@ -279,21 +342,12 @@ func (client *OCITestClient) callValidate(body []byte) (string, error) {
 		return "", err
 	}
 
-	response, err := client.HTTPClient.Do(request)
-
+	responseBody, err := client.callService(request)
 	if err != nil {
 		return "", err
 	}
 
-	defer response.Body.Close()
-
-	body, err = ioutil.ReadAll(response.Body)
-
-	if err != nil {
-		return "", err
-	}
-
-	return string(body), nil
+	return string(responseBody), nil
 }
 
 func (client *OCITestClient) startSession() error {
@@ -309,24 +363,13 @@ func (client *OCITestClient) startSession() error {
 	}
 
 	request.Header.Set("Content-Type", "application/json")
-	response, err := client.HTTPClient.Do(request)
+
+	responseBody, err := client.callService(request)
 	if err != nil {
 		return err
 	}
 
-	defer response.Body.Close()
-
-	err = checkHttpResponse(response)
-	if err != nil {
-		return err
-	}
-
-	body, err = ioutil.ReadAll(response.Body)
-	if err != nil {
-		return err
-	}
-
-	sessionId := string(body)
+	sessionId := string(responseBody)
 	client.SessionID = sessionId
 	client.Log.Println("SessionId:", client.SessionID)
 	return nil
@@ -343,14 +386,7 @@ func (client OCITestClient) endSession() error {
 		return err
 	}
 
-	response, err := client.HTTPClient.Do(request)
-	if err != nil {
-		return err
-	}
-
-	defer response.Body.Close()
-
-	err = checkHttpResponse(response)
+	_, err = client.callService(request)
 	if err != nil {
 		return err
 	}
@@ -373,19 +409,7 @@ func (client OCITestClient) getRequests(serviceName string, apiName string) (str
 	query.Add("lang", "Go")
 	request.URL.RawQuery = query.Encode()
 
-	response, err := client.HTTPClient.Do(request)
-	if err != nil {
-		return "", err
-	}
-
-	defer response.Body.Close()
-
-	err = checkHttpResponse(response)
-	if err != nil {
-		return "", err
-	}
-
-	body, err := ioutil.ReadAll(response.Body)
+	body, err := client.callService(request)
 	if err != nil {
 		return "", err
 	}
@@ -445,6 +469,32 @@ func (client OCITestClient) generateListResponses(request common.OCIRequest,
 
 	listResponses = append(listResponses, prevResponse)
 	return
+}
+
+func (client OCITestClient) callService(request *http.Request)(body []byte, err error ) {
+
+	response, err := client.HTTPClient.Do(request)
+	if err != nil {
+		return nil, err
+	}
+
+	requestLog, _ := httputil.DumpRequest(request, true)
+	client.Log.Println("Request: " + string(requestLog))
+
+	defer response.Body.Close()
+
+	responseLog, _ := httputil.DumpResponse(response, true)
+	client.Log.Println("Response: " + string(responseLog))
+
+
+	err = checkHttpResponse(response)
+	if err != nil {
+		return nil, err
+	}
+
+	body, err = ioutil.ReadAll(response.Body)
+	return
+
 }
 
 func checkHttpResponse(response *http.Response) error {

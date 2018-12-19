@@ -11,6 +11,17 @@ import (
 	"testing"
 )
 
+func createEmailClientWithProvider(p common.ConfigurationProvider, testConfig TestingConfig) (interface{}, error) {
+
+	client, err := email.NewEmailClientWithConfigurationProvider(p)
+	if testConfig.Endpoint != "" {
+		client.Host = testConfig.Endpoint
+	} else {
+		client.SetRegion(testConfig.Region)
+	}
+	return client, err
+}
+
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestEmailClientCreateSender(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("email", "CreateSender")
@@ -234,8 +245,10 @@ func TestEmailClientListSenders(t *testing.T) {
 	if !enabled {
 		t.Skip("ListSenders is not enabled by the testing service")
 	}
-	c, err := email.NewEmailClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("email", "Email", "ListSenders", createEmailClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(email.EmailClient)
 
 	body, err := testClient.getRequests("email", "ListSenders")
 	assert.NoError(t, err)
@@ -279,8 +292,10 @@ func TestEmailClientListSuppressions(t *testing.T) {
 	if !enabled {
 		t.Skip("ListSuppressions is not enabled by the testing service")
 	}
-	c, err := email.NewEmailClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("email", "Email", "ListSuppressions", createEmailClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(email.EmailClient)
 
 	body, err := testClient.getRequests("email", "ListSuppressions")
 	assert.NoError(t, err)

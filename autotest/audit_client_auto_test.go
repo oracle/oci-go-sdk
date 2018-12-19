@@ -11,6 +11,17 @@ import (
 	"testing"
 )
 
+func createAuditClientWithProvider(p common.ConfigurationProvider, testConfig TestingConfig) (interface{}, error) {
+
+	client, err := audit.NewAuditClientWithConfigurationProvider(p)
+	if testConfig.Endpoint != "" {
+		client.Host = testConfig.Endpoint
+	} else {
+		client.SetRegion(testConfig.Region)
+	}
+	return client, err
+}
+
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestAuditClientGetConfiguration(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("audit", "GetConfiguration")
@@ -54,8 +65,10 @@ func TestAuditClientListEvents(t *testing.T) {
 	if !enabled {
 		t.Skip("ListEvents is not enabled by the testing service")
 	}
-	c, err := audit.NewAuditClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("audit", "Audit", "ListEvents", createAuditClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(audit.AuditClient)
 
 	body, err := testClient.getRequests("audit", "ListEvents")
 	assert.NoError(t, err)

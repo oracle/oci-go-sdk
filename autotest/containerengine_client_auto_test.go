@@ -11,6 +11,17 @@ import (
 	"testing"
 )
 
+func createContainerEngineClientWithProvider(p common.ConfigurationProvider, testConfig TestingConfig) (interface{}, error) {
+
+	client, err := containerengine.NewContainerEngineClientWithConfigurationProvider(p)
+	if testConfig.Endpoint != "" {
+		client.Host = testConfig.Endpoint
+	} else {
+		client.SetRegion(testConfig.Region)
+	}
+	return client, err
+}
+
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientCreateCluster(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("containerengine", "CreateCluster")
@@ -414,8 +425,10 @@ func TestContainerEngineClientListClusters(t *testing.T) {
 	if !enabled {
 		t.Skip("ListClusters is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "ListClusters", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "ListClusters")
 	assert.NoError(t, err)
@@ -459,8 +472,10 @@ func TestContainerEngineClientListNodePools(t *testing.T) {
 	if !enabled {
 		t.Skip("ListNodePools is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "ListNodePools", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "ListNodePools")
 	assert.NoError(t, err)
@@ -576,8 +591,10 @@ func TestContainerEngineClientListWorkRequests(t *testing.T) {
 	if !enabled {
 		t.Skip("ListWorkRequests is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "ListWorkRequests", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "ListWorkRequests")
 	assert.NoError(t, err)

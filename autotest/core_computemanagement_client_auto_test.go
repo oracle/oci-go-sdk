@@ -11,6 +11,17 @@ import (
 	"testing"
 )
 
+func createComputeManagementClientWithProvider(p common.ConfigurationProvider, testConfig TestingConfig) (interface{}, error) {
+
+	client, err := core.NewComputeManagementClientWithConfigurationProvider(p)
+	if testConfig.Endpoint != "" {
+		client.Host = testConfig.Endpoint
+	} else {
+		client.SetRegion(testConfig.Region)
+	}
+	return client, err
+}
+
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientCreateInstanceConfiguration(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("core", "CreateInstanceConfiguration")
@@ -248,8 +259,10 @@ func TestComputeManagementClientListInstanceConfigurations(t *testing.T) {
 	if !enabled {
 		t.Skip("ListInstanceConfigurations is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "ListInstanceConfigurations", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "ListInstanceConfigurations")
 	assert.NoError(t, err)
@@ -293,8 +306,10 @@ func TestComputeManagementClientListInstancePoolInstances(t *testing.T) {
 	if !enabled {
 		t.Skip("ListInstancePoolInstances is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "ListInstancePoolInstances", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "ListInstancePoolInstances")
 	assert.NoError(t, err)
@@ -338,8 +353,10 @@ func TestComputeManagementClientListInstancePools(t *testing.T) {
 	if !enabled {
 		t.Skip("ListInstancePools is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "ListInstancePools", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "ListInstancePools")
 	assert.NoError(t, err)

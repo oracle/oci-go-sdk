@@ -11,6 +11,17 @@ import (
 	"testing"
 )
 
+func createLoadBalancerClientWithProvider(p common.ConfigurationProvider, testConfig TestingConfig) (interface{}, error) {
+
+	client, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(p)
+	if testConfig.Endpoint != "" {
+		client.Host = testConfig.Endpoint
+	} else {
+		client.SetRegion(testConfig.Region)
+	}
+	return client, err
+}
+
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateBackend(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("loadbalancer", "CreateBackend")
@@ -1026,8 +1037,10 @@ func TestLoadBalancerClientListLoadBalancerHealths(t *testing.T) {
 	if !enabled {
 		t.Skip("ListLoadBalancerHealths is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListLoadBalancerHealths", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListLoadBalancerHealths")
 	assert.NoError(t, err)
@@ -1071,8 +1084,10 @@ func TestLoadBalancerClientListLoadBalancers(t *testing.T) {
 	if !enabled {
 		t.Skip("ListLoadBalancers is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListLoadBalancers", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListLoadBalancers")
 	assert.NoError(t, err)
@@ -1152,8 +1167,10 @@ func TestLoadBalancerClientListPolicies(t *testing.T) {
 	if !enabled {
 		t.Skip("ListPolicies is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListPolicies", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListPolicies")
 	assert.NoError(t, err)
@@ -1197,8 +1214,10 @@ func TestLoadBalancerClientListProtocols(t *testing.T) {
 	if !enabled {
 		t.Skip("ListProtocols is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListProtocols", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListProtocols")
 	assert.NoError(t, err)
@@ -1242,8 +1261,10 @@ func TestLoadBalancerClientListShapes(t *testing.T) {
 	if !enabled {
 		t.Skip("ListShapes is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListShapes", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListShapes")
 	assert.NoError(t, err)
@@ -1287,8 +1308,10 @@ func TestLoadBalancerClientListWorkRequests(t *testing.T) {
 	if !enabled {
 		t.Skip("ListWorkRequests is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListWorkRequests", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListWorkRequests")
 	assert.NoError(t, err)
