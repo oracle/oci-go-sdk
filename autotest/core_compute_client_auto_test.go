@@ -1426,6 +1426,53 @@ func TestComputeClientListInstanceConsoleConnections(t *testing.T) {
 }
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
+func TestComputeClientListInstanceDevices(t *testing.T) {
+	enabled, err := testClient.isApiEnabled("core", "ListInstanceDevices")
+	assert.NoError(t, err)
+	if !enabled {
+		t.Skip("ListInstanceDevices is not enabled by the testing service")
+	}
+
+	cc, err := testClient.createClientForOperation("core", "Compute", "ListInstanceDevices", createComputeClientWithProvider)
+	assert.NoError(t, err)
+	c := cc.(core.ComputeClient)
+
+	body, err := testClient.getRequests("core", "ListInstanceDevices")
+	assert.NoError(t, err)
+
+	type ListInstanceDevicesRequestInfo struct {
+		ContainerId string
+		Request     core.ListInstanceDevicesRequest
+	}
+
+	var requests []ListInstanceDevicesRequestInfo
+	err = json.Unmarshal([]byte(body), &requests)
+	assert.NoError(t, err)
+
+	var retryPolicy *common.RetryPolicy
+	for i, request := range requests {
+		t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+			retryPolicy = retryPolicyForTests()
+			request.Request.RequestMetadata.RetryPolicy = retryPolicy
+			listFn := func(req common.OCIRequest) (common.OCIResponse, error) {
+				r := req.(*core.ListInstanceDevicesRequest)
+				return c.ListInstanceDevices(context.Background(), *r)
+			}
+
+			listResponses, err := testClient.generateListResponses(&request.Request, listFn)
+			typedListResponses := make([]core.ListInstanceDevicesResponse, len(listResponses))
+			for i, lr := range listResponses {
+				typedListResponses[i] = lr.(core.ListInstanceDevicesResponse)
+			}
+
+			message, err := testClient.validateResult(request.ContainerId, request.Request, typedListResponses, err)
+			assert.NoError(t, err)
+			assert.Empty(t, message, message)
+		})
+	}
+}
+
+// IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeClientListInstances(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("core", "ListInstances")
 	assert.NoError(t, err)

@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/http/httputil"
 	"net/url"
 	"os"
 	"path"
@@ -19,7 +20,6 @@ import (
 	"strings"
 	"testing"
 	"unicode"
-	"net/http/httputil"
 )
 
 // DataToValidate defines the data that needs to be sent back to oci testing service for validation in a successful scenario.
@@ -186,7 +186,6 @@ func (client OCITestClient) getConfiguration(serviceName, clientName, operationN
 		return
 	}
 
-
 	config = TestingConfig{}
 	err = json.Unmarshal(body, &config)
 
@@ -274,7 +273,6 @@ func (client OCITestClient) validateError(containerId string, req interface{}, r
 	if err != nil {
 		return "", err
 	}
-
 
 	body, err = client.callService(request)
 	if err != nil {
@@ -471,7 +469,7 @@ func (client OCITestClient) generateListResponses(request common.OCIRequest,
 	return
 }
 
-func (client OCITestClient) callService(request *http.Request)(body []byte, err error ) {
+func (client OCITestClient) callService(request *http.Request) (body []byte, err error) {
 
 	response, err := client.HTTPClient.Do(request)
 	if err != nil {
@@ -485,7 +483,6 @@ func (client OCITestClient) callService(request *http.Request)(body []byte, err 
 
 	responseLog, _ := httputil.DumpResponse(response, true)
 	client.Log.Println("Response: " + string(responseLog))
-
 
 	err = checkHttpResponse(response)
 	if err != nil {
