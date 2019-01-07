@@ -1308,19 +1308,18 @@ func TestUnmarshalPolymorphic(t *testing.T) {
 
 func TestMarshalStructsNumberLimits(t *testing.T) {
 	type numberLimits struct {
-		Integer64 *int64 `json:"integer64" mandatory:"true"`
-		Float64 *float64 `json:"float64" mandatory:"true"`
+		Integer64 *int64   `json:"integer64" mandatory:"true"`
+		Float64   *float64 `json:"float64" mandatory:"true"`
 	}
 
 	type req struct {
 		Body numberLimits `contributesTo:"body" presentIn:"body"`
 	}
-	
 
-	s := req{Body:numberLimits{Integer64:Int64(math.MaxInt64), Float64:Float64(math.MaxFloat64)}}
+	s := req{Body: numberLimits{Integer64: Int64(math.MaxInt64), Float64: Float64(math.MaxFloat64)}}
 	request, err := MakeDefaultHTTPRequestWithTaggedStruct("put", "/", &s)
 	assert.NoError(t, err)
-	response := http.Response{ Body: request.Body }
+	response := http.Response{Body: request.Body}
 
 	unmarshalledStruct := req{}
 	UnmarshalResponse(&response, &unmarshalledStruct)
@@ -1333,7 +1332,7 @@ func TestMarshalStructsNumberLimits(t *testing.T) {
 }
 func TestRemoveNilWithInt64Values(t *testing.T) {
 	type withInt64 struct {
-		Data *int64 `json:"data"`
+		Data   *int64 `json:"data"`
 		NoData *int64 `json:"nodata" mandatory:"false"`
 	}
 
