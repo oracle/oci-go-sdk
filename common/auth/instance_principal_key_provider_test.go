@@ -19,7 +19,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClient(t *testing.T)
 	}))
 	defer regionServer.Close()
 
-	actualRegion, err := getRegionForFederationClient(regionServer.URL)
+	actualRegion, err := getRegionForFederationClient(&http.Client{}, regionServer.URL)
 
 	assert.NoError(t, err)
 	assert.Equal(t, common.RegionPHX, actualRegion)
@@ -29,7 +29,7 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFound(t *te
 	regionServer := httptest.NewServer(http.NotFoundHandler())
 	defer regionServer.Close()
 
-	_, err := getRegionForFederationClient(regionServer.URL)
+	_, err := getRegionForFederationClient(&http.Client{}, regionServer.URL)
 
 	assert.Error(t, err)
 }
@@ -38,9 +38,16 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientInternalServer
 	regionServer := httptest.NewServer(http.HandlerFunc(internalServerError))
 	defer regionServer.Close()
 
-	_, err := getRegionForFederationClient(regionServer.URL)
+	_, err := getRegionForFederationClient(&http.Client{}, regionServer.URL)
 
 	assert.Error(t, err)
+}
+
+func TestInstancePrincipalKeyProvider_RegionForFederationClient(t *testing.T) {
+	expectedRegion := common.StringToRegion("sea")
+	keyProvider := &instancePrincipalKeyProvider{Region: expectedRegion}
+	returnedRegion := keyProvider.RegionForFederationClient()
+	assert.Equal(t, returnedRegion, expectedRegion)
 }
 
 func TestInstancePrincipalKeyProvider_PrivateRSAKey(t *testing.T) {

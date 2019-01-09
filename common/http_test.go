@@ -17,6 +17,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
+	"math"
 )
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1303,4 +1304,50 @@ func TestUnmarshalPolymorphic(t *testing.T) {
 			assert.NoError(t, err)
 		})
 	}
+}
+
+func TestMarshalStructsNumberLimits(t *testing.T) {
+	type numberLimits struct {
+		Integer64 *int64   `json:"integer64" mandatory:"true"`
+		Float64   *float64 `json:"float64" mandatory:"true"`
+	}
+
+	type req struct {
+		Body numberLimits `contributesTo:"body" presentIn:"body"`
+	}
+
+	s := req{Body: numberLimits{Integer64: Int64(math.MaxInt64), Float64: Float64(math.MaxFloat64)}}
+	request, err := MakeDefaultHTTPRequestWithTaggedStruct("put", "/", &s)
+	assert.NoError(t, err)
+	response := http.Response{Body: request.Body}
+
+	unmarshalledStruct := req{}
+	UnmarshalResponse(&response, &unmarshalledStruct)
+
+	assert.Equal(t, *s.Body.Integer64, *unmarshalledStruct.Body.Integer64)
+	assert.Equal(t, *s.Body.Float64, *unmarshalledStruct.Body.Float64)
+	assert.Equal(t, int64(math.MaxInt64), *unmarshalledStruct.Body.Integer64)
+	assert.Equal(t, float64(math.MaxFloat64), *unmarshalledStruct.Body.Float64)
+
+}
+func TestRemoveNilWithInt64Values(t *testing.T) {
+	type withInt64 struct {
+		Data   *int64 `json:"data"`
+		NoData *int64 `json:"nodata" mandatory:"false"`
+	}
+
+	s := withInt64{Data: Int64(math.MaxInt64)}
+	jsonIn, _ := json.Marshal(s)
+
+	sVal := reflect.ValueOf(s)
+	jsonRet, err := removeNilFieldsInJSONWithTaggedStruct(jsonIn, sVal)
+	assert.NoError(t, err)
+	assert.False(t, strings.Contains(string(jsonRet), "nodata"))
+
+	ss := withInt64{}
+	json.Unmarshal(jsonRet, &ss)
+
+	assert.True(t, strings.Contains(string(jsonRet), "9223372036854775807"))
+	assert.Equal(t, int64(9223372036854775807), *ss.Data)
+
 }
