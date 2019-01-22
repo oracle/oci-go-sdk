@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 ## 3.4.0 - 2019-01-10
 ### Added 
-- Support for device attributes on volumes in the Block Storage service
+- Support for device attributes on volume attachments in the Compute service
 - Support for custom header rulesets in the Load Balancing service
 
 
