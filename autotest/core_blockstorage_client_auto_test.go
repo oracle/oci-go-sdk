@@ -29,8 +29,10 @@ func TestBlockstorageClientCopyVolumeBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("CopyVolumeBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "CopyVolumeBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "CopyVolumeBackup")
 	assert.NoError(t, err)
@@ -65,8 +67,10 @@ func TestBlockstorageClientCreateBootVolume(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateBootVolume is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "CreateBootVolume", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "CreateBootVolume")
 	assert.NoError(t, err)
@@ -101,8 +105,10 @@ func TestBlockstorageClientCreateBootVolumeBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateBootVolumeBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "CreateBootVolumeBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "CreateBootVolumeBackup")
 	assert.NoError(t, err)
@@ -137,8 +143,10 @@ func TestBlockstorageClientCreateVolume(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateVolume is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "CreateVolume", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "CreateVolume")
 	assert.NoError(t, err)
@@ -173,8 +181,10 @@ func TestBlockstorageClientCreateVolumeBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateVolumeBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "CreateVolumeBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "CreateVolumeBackup")
 	assert.NoError(t, err)
@@ -209,8 +219,10 @@ func TestBlockstorageClientCreateVolumeBackupPolicyAssignment(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateVolumeBackupPolicyAssignment is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "CreateVolumeBackupPolicyAssignment", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "CreateVolumeBackupPolicyAssignment")
 	assert.NoError(t, err)
@@ -245,8 +257,10 @@ func TestBlockstorageClientCreateVolumeGroup(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateVolumeGroup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "CreateVolumeGroup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "CreateVolumeGroup")
 	assert.NoError(t, err)
@@ -281,8 +295,10 @@ func TestBlockstorageClientCreateVolumeGroupBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateVolumeGroupBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "CreateVolumeGroupBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "CreateVolumeGroupBackup")
 	assert.NoError(t, err)
@@ -317,8 +333,10 @@ func TestBlockstorageClientDeleteBootVolume(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteBootVolume is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "DeleteBootVolume", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "DeleteBootVolume")
 	assert.NoError(t, err)
@@ -353,8 +371,10 @@ func TestBlockstorageClientDeleteBootVolumeBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteBootVolumeBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "DeleteBootVolumeBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "DeleteBootVolumeBackup")
 	assert.NoError(t, err)
@@ -389,8 +409,10 @@ func TestBlockstorageClientDeleteBootVolumeKmsKey(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteBootVolumeKmsKey is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "DeleteBootVolumeKmsKey", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "DeleteBootVolumeKmsKey")
 	assert.NoError(t, err)
@@ -425,8 +447,10 @@ func TestBlockstorageClientDeleteVolume(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteVolume is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "DeleteVolume", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "DeleteVolume")
 	assert.NoError(t, err)
@@ -461,8 +485,10 @@ func TestBlockstorageClientDeleteVolumeBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteVolumeBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "DeleteVolumeBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "DeleteVolumeBackup")
 	assert.NoError(t, err)
@@ -497,8 +523,10 @@ func TestBlockstorageClientDeleteVolumeBackupPolicyAssignment(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteVolumeBackupPolicyAssignment is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "DeleteVolumeBackupPolicyAssignment", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "DeleteVolumeBackupPolicyAssignment")
 	assert.NoError(t, err)
@@ -533,8 +561,10 @@ func TestBlockstorageClientDeleteVolumeGroup(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteVolumeGroup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "DeleteVolumeGroup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "DeleteVolumeGroup")
 	assert.NoError(t, err)
@@ -569,8 +599,10 @@ func TestBlockstorageClientDeleteVolumeGroupBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteVolumeGroupBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "DeleteVolumeGroupBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "DeleteVolumeGroupBackup")
 	assert.NoError(t, err)
@@ -605,8 +637,10 @@ func TestBlockstorageClientDeleteVolumeKmsKey(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteVolumeKmsKey is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "DeleteVolumeKmsKey", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "DeleteVolumeKmsKey")
 	assert.NoError(t, err)
@@ -641,8 +675,10 @@ func TestBlockstorageClientGetBootVolume(t *testing.T) {
 	if !enabled {
 		t.Skip("GetBootVolume is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "GetBootVolume", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "GetBootVolume")
 	assert.NoError(t, err)
@@ -677,8 +713,10 @@ func TestBlockstorageClientGetBootVolumeBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("GetBootVolumeBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "GetBootVolumeBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "GetBootVolumeBackup")
 	assert.NoError(t, err)
@@ -713,8 +751,10 @@ func TestBlockstorageClientGetBootVolumeKmsKey(t *testing.T) {
 	if !enabled {
 		t.Skip("GetBootVolumeKmsKey is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "GetBootVolumeKmsKey", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "GetBootVolumeKmsKey")
 	assert.NoError(t, err)
@@ -749,8 +789,10 @@ func TestBlockstorageClientGetVolume(t *testing.T) {
 	if !enabled {
 		t.Skip("GetVolume is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "GetVolume", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "GetVolume")
 	assert.NoError(t, err)
@@ -785,8 +827,10 @@ func TestBlockstorageClientGetVolumeBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("GetVolumeBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "GetVolumeBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "GetVolumeBackup")
 	assert.NoError(t, err)
@@ -821,8 +865,10 @@ func TestBlockstorageClientGetVolumeBackupPolicy(t *testing.T) {
 	if !enabled {
 		t.Skip("GetVolumeBackupPolicy is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "GetVolumeBackupPolicy", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "GetVolumeBackupPolicy")
 	assert.NoError(t, err)
@@ -904,8 +950,10 @@ func TestBlockstorageClientGetVolumeBackupPolicyAssignment(t *testing.T) {
 	if !enabled {
 		t.Skip("GetVolumeBackupPolicyAssignment is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "GetVolumeBackupPolicyAssignment", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "GetVolumeBackupPolicyAssignment")
 	assert.NoError(t, err)
@@ -940,8 +988,10 @@ func TestBlockstorageClientGetVolumeGroup(t *testing.T) {
 	if !enabled {
 		t.Skip("GetVolumeGroup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "GetVolumeGroup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "GetVolumeGroup")
 	assert.NoError(t, err)
@@ -976,8 +1026,10 @@ func TestBlockstorageClientGetVolumeGroupBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("GetVolumeGroupBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "GetVolumeGroupBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "GetVolumeGroupBackup")
 	assert.NoError(t, err)
@@ -1012,8 +1064,10 @@ func TestBlockstorageClientGetVolumeKmsKey(t *testing.T) {
 	if !enabled {
 		t.Skip("GetVolumeKmsKey is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "GetVolumeKmsKey", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "GetVolumeKmsKey")
 	assert.NoError(t, err)
@@ -1377,8 +1431,10 @@ func TestBlockstorageClientUpdateBootVolume(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateBootVolume is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "UpdateBootVolume", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "UpdateBootVolume")
 	assert.NoError(t, err)
@@ -1413,8 +1469,10 @@ func TestBlockstorageClientUpdateBootVolumeBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateBootVolumeBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "UpdateBootVolumeBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "UpdateBootVolumeBackup")
 	assert.NoError(t, err)
@@ -1449,8 +1507,10 @@ func TestBlockstorageClientUpdateBootVolumeKmsKey(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateBootVolumeKmsKey is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "UpdateBootVolumeKmsKey", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "UpdateBootVolumeKmsKey")
 	assert.NoError(t, err)
@@ -1485,8 +1545,10 @@ func TestBlockstorageClientUpdateVolume(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateVolume is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "UpdateVolume", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "UpdateVolume")
 	assert.NoError(t, err)
@@ -1521,8 +1583,10 @@ func TestBlockstorageClientUpdateVolumeBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateVolumeBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "UpdateVolumeBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "UpdateVolumeBackup")
 	assert.NoError(t, err)
@@ -1557,8 +1621,10 @@ func TestBlockstorageClientUpdateVolumeGroup(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateVolumeGroup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "UpdateVolumeGroup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "UpdateVolumeGroup")
 	assert.NoError(t, err)
@@ -1593,8 +1659,10 @@ func TestBlockstorageClientUpdateVolumeGroupBackup(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateVolumeGroupBackup is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "UpdateVolumeGroupBackup", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "UpdateVolumeGroupBackup")
 	assert.NoError(t, err)
@@ -1629,8 +1697,10 @@ func TestBlockstorageClientUpdateVolumeKmsKey(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateVolumeKmsKey is not enabled by the testing service")
 	}
-	c, err := core.NewBlockstorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "Blockstorage", "UpdateVolumeKmsKey", createBlockstorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.BlockstorageClient)
 
 	body, err := testClient.getRequests("core", "UpdateVolumeKmsKey")
 	assert.NoError(t, err)

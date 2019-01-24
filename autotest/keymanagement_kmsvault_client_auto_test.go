@@ -29,8 +29,10 @@ func TestKmsVaultClientCancelVaultDeletion(t *testing.T) {
 	if !enabled {
 		t.Skip("CancelVaultDeletion is not enabled by the testing service")
 	}
-	c, err := keymanagement.NewKmsVaultClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsVault", "CancelVaultDeletion", createKmsVaultClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsVaultClient)
 
 	body, err := testClient.getRequests("keymanagement", "CancelVaultDeletion")
 	assert.NoError(t, err)
@@ -65,8 +67,10 @@ func TestKmsVaultClientCreateVault(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateVault is not enabled by the testing service")
 	}
-	c, err := keymanagement.NewKmsVaultClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsVault", "CreateVault", createKmsVaultClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsVaultClient)
 
 	body, err := testClient.getRequests("keymanagement", "CreateVault")
 	assert.NoError(t, err)
@@ -101,8 +105,10 @@ func TestKmsVaultClientGetVault(t *testing.T) {
 	if !enabled {
 		t.Skip("GetVault is not enabled by the testing service")
 	}
-	c, err := keymanagement.NewKmsVaultClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsVault", "GetVault", createKmsVaultClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsVaultClient)
 
 	body, err := testClient.getRequests("keymanagement", "GetVault")
 	assert.NoError(t, err)
@@ -184,8 +190,10 @@ func TestKmsVaultClientScheduleVaultDeletion(t *testing.T) {
 	if !enabled {
 		t.Skip("ScheduleVaultDeletion is not enabled by the testing service")
 	}
-	c, err := keymanagement.NewKmsVaultClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsVault", "ScheduleVaultDeletion", createKmsVaultClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsVaultClient)
 
 	body, err := testClient.getRequests("keymanagement", "ScheduleVaultDeletion")
 	assert.NoError(t, err)
@@ -220,8 +228,10 @@ func TestKmsVaultClientUpdateVault(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateVault is not enabled by the testing service")
 	}
-	c, err := keymanagement.NewKmsVaultClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsVault", "UpdateVault", createKmsVaultClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsVaultClient)
 
 	body, err := testClient.getRequests("keymanagement", "UpdateVault")
 	assert.NoError(t, err)

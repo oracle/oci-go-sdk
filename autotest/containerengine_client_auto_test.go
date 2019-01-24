@@ -29,8 +29,10 @@ func TestContainerEngineClientCreateCluster(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateCluster is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "CreateCluster", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "CreateCluster")
 	assert.NoError(t, err)
@@ -65,8 +67,10 @@ func TestContainerEngineClientCreateKubeconfig(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateKubeconfig is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "CreateKubeconfig", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "CreateKubeconfig")
 	assert.NoError(t, err)
@@ -101,8 +105,10 @@ func TestContainerEngineClientCreateNodePool(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateNodePool is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "CreateNodePool", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "CreateNodePool")
 	assert.NoError(t, err)
@@ -137,8 +143,10 @@ func TestContainerEngineClientDeleteCluster(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteCluster is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "DeleteCluster", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "DeleteCluster")
 	assert.NoError(t, err)
@@ -173,8 +181,10 @@ func TestContainerEngineClientDeleteNodePool(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteNodePool is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "DeleteNodePool", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "DeleteNodePool")
 	assert.NoError(t, err)
@@ -209,8 +219,10 @@ func TestContainerEngineClientDeleteWorkRequest(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteWorkRequest is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "DeleteWorkRequest", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "DeleteWorkRequest")
 	assert.NoError(t, err)
@@ -245,8 +257,10 @@ func TestContainerEngineClientGetCluster(t *testing.T) {
 	if !enabled {
 		t.Skip("GetCluster is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "GetCluster", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "GetCluster")
 	assert.NoError(t, err)
@@ -281,8 +295,10 @@ func TestContainerEngineClientGetClusterOptions(t *testing.T) {
 	if !enabled {
 		t.Skip("GetClusterOptions is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "GetClusterOptions", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "GetClusterOptions")
 	assert.NoError(t, err)
@@ -317,8 +333,10 @@ func TestContainerEngineClientGetNodePool(t *testing.T) {
 	if !enabled {
 		t.Skip("GetNodePool is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "GetNodePool", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "GetNodePool")
 	assert.NoError(t, err)
@@ -353,8 +371,10 @@ func TestContainerEngineClientGetNodePoolOptions(t *testing.T) {
 	if !enabled {
 		t.Skip("GetNodePoolOptions is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "GetNodePoolOptions", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "GetNodePoolOptions")
 	assert.NoError(t, err)
@@ -389,8 +409,10 @@ func TestContainerEngineClientGetWorkRequest(t *testing.T) {
 	if !enabled {
 		t.Skip("GetWorkRequest is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "GetWorkRequest", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "GetWorkRequest")
 	assert.NoError(t, err)
@@ -519,8 +541,10 @@ func TestContainerEngineClientListWorkRequestErrors(t *testing.T) {
 	if !enabled {
 		t.Skip("ListWorkRequestErrors is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "ListWorkRequestErrors", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "ListWorkRequestErrors")
 	assert.NoError(t, err)
@@ -555,8 +579,10 @@ func TestContainerEngineClientListWorkRequestLogs(t *testing.T) {
 	if !enabled {
 		t.Skip("ListWorkRequestLogs is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "ListWorkRequestLogs", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "ListWorkRequestLogs")
 	assert.NoError(t, err)
@@ -638,8 +664,10 @@ func TestContainerEngineClientUpdateCluster(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateCluster is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "UpdateCluster", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "UpdateCluster")
 	assert.NoError(t, err)
@@ -674,8 +702,10 @@ func TestContainerEngineClientUpdateNodePool(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateNodePool is not enabled by the testing service")
 	}
-	c, err := containerengine.NewContainerEngineClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("containerengine", "ContainerEngine", "UpdateNodePool", createContainerEngineClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(containerengine.ContainerEngineClient)
 
 	body, err := testClient.getRequests("containerengine", "UpdateNodePool")
 	assert.NoError(t, err)

@@ -29,8 +29,10 @@ func TestResourceSearchClientGetResourceType(t *testing.T) {
 	if !enabled {
 		t.Skip("GetResourceType is not enabled by the testing service")
 	}
-	c, err := resourcesearch.NewResourceSearchClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("resourcesearch", "ResourceSearch", "GetResourceType", createResourceSearchClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(resourcesearch.ResourceSearchClient)
 
 	body, err := testClient.getRequests("resourcesearch", "GetResourceType")
 	assert.NoError(t, err)

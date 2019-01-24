@@ -23,10 +23,10 @@ func TestKmsCryptoClientDecrypt(t *testing.T) {
 	if !enabled {
 		t.Skip("Decrypt is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsCrypto", "Decrypt")
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsCrypto", "Decrypt", createKmsCryptoClientWithProvider)
 	assert.NoError(t, err)
-	c, err := keymanagement.NewKmsCryptoClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
-	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsCryptoClient)
 
 	body, err := testClient.getRequests("keymanagement", "Decrypt")
 	assert.NoError(t, err)
@@ -61,10 +61,10 @@ func TestKmsCryptoClientEncrypt(t *testing.T) {
 	if !enabled {
 		t.Skip("Encrypt is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsCrypto", "Encrypt")
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsCrypto", "Encrypt", createKmsCryptoClientWithProvider)
 	assert.NoError(t, err)
-	c, err := keymanagement.NewKmsCryptoClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
-	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsCryptoClient)
 
 	body, err := testClient.getRequests("keymanagement", "Encrypt")
 	assert.NoError(t, err)
@@ -99,10 +99,10 @@ func TestKmsCryptoClientGenerateDataEncryptionKey(t *testing.T) {
 	if !enabled {
 		t.Skip("GenerateDataEncryptionKey is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsCrypto", "GenerateDataEncryptionKey")
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsCrypto", "GenerateDataEncryptionKey", createKmsCryptoClientWithProvider)
 	assert.NoError(t, err)
-	c, err := keymanagement.NewKmsCryptoClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
-	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsCryptoClient)
 
 	body, err := testClient.getRequests("keymanagement", "GenerateDataEncryptionKey")
 	assert.NoError(t, err)

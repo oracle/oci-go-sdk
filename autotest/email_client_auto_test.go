@@ -29,8 +29,10 @@ func TestEmailClientCreateSender(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateSender is not enabled by the testing service")
 	}
-	c, err := email.NewEmailClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("email", "Email", "CreateSender", createEmailClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(email.EmailClient)
 
 	body, err := testClient.getRequests("email", "CreateSender")
 	assert.NoError(t, err)
@@ -65,8 +67,10 @@ func TestEmailClientCreateSuppression(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateSuppression is not enabled by the testing service")
 	}
-	c, err := email.NewEmailClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("email", "Email", "CreateSuppression", createEmailClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(email.EmailClient)
 
 	body, err := testClient.getRequests("email", "CreateSuppression")
 	assert.NoError(t, err)
@@ -101,8 +105,10 @@ func TestEmailClientDeleteSender(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteSender is not enabled by the testing service")
 	}
-	c, err := email.NewEmailClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("email", "Email", "DeleteSender", createEmailClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(email.EmailClient)
 
 	body, err := testClient.getRequests("email", "DeleteSender")
 	assert.NoError(t, err)
@@ -137,8 +143,10 @@ func TestEmailClientDeleteSuppression(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteSuppression is not enabled by the testing service")
 	}
-	c, err := email.NewEmailClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("email", "Email", "DeleteSuppression", createEmailClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(email.EmailClient)
 
 	body, err := testClient.getRequests("email", "DeleteSuppression")
 	assert.NoError(t, err)
@@ -173,8 +181,10 @@ func TestEmailClientGetSender(t *testing.T) {
 	if !enabled {
 		t.Skip("GetSender is not enabled by the testing service")
 	}
-	c, err := email.NewEmailClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("email", "Email", "GetSender", createEmailClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(email.EmailClient)
 
 	body, err := testClient.getRequests("email", "GetSender")
 	assert.NoError(t, err)
@@ -209,8 +219,10 @@ func TestEmailClientGetSuppression(t *testing.T) {
 	if !enabled {
 		t.Skip("GetSuppression is not enabled by the testing service")
 	}
-	c, err := email.NewEmailClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("email", "Email", "GetSuppression", createEmailClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(email.EmailClient)
 
 	body, err := testClient.getRequests("email", "GetSuppression")
 	assert.NoError(t, err)

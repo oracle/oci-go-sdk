@@ -29,8 +29,10 @@ func TestFileStorageClientCreateExport(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateExport is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "CreateExport", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "CreateExport")
 	assert.NoError(t, err)
@@ -65,8 +67,10 @@ func TestFileStorageClientCreateFileSystem(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateFileSystem is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "CreateFileSystem", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "CreateFileSystem")
 	assert.NoError(t, err)
@@ -101,8 +105,10 @@ func TestFileStorageClientCreateMountTarget(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateMountTarget is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "CreateMountTarget", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "CreateMountTarget")
 	assert.NoError(t, err)
@@ -137,8 +143,10 @@ func TestFileStorageClientCreateSnapshot(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateSnapshot is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "CreateSnapshot", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "CreateSnapshot")
 	assert.NoError(t, err)
@@ -173,8 +181,10 @@ func TestFileStorageClientDeleteExport(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteExport is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "DeleteExport", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "DeleteExport")
 	assert.NoError(t, err)
@@ -209,8 +219,10 @@ func TestFileStorageClientDeleteFileSystem(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteFileSystem is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "DeleteFileSystem", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "DeleteFileSystem")
 	assert.NoError(t, err)
@@ -245,8 +257,10 @@ func TestFileStorageClientDeleteMountTarget(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteMountTarget is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "DeleteMountTarget", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "DeleteMountTarget")
 	assert.NoError(t, err)
@@ -281,8 +295,10 @@ func TestFileStorageClientDeleteSnapshot(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteSnapshot is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "DeleteSnapshot", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "DeleteSnapshot")
 	assert.NoError(t, err)
@@ -317,8 +333,10 @@ func TestFileStorageClientGetExport(t *testing.T) {
 	if !enabled {
 		t.Skip("GetExport is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "GetExport", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "GetExport")
 	assert.NoError(t, err)
@@ -353,8 +371,10 @@ func TestFileStorageClientGetExportSet(t *testing.T) {
 	if !enabled {
 		t.Skip("GetExportSet is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "GetExportSet", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "GetExportSet")
 	assert.NoError(t, err)
@@ -389,8 +409,10 @@ func TestFileStorageClientGetFileSystem(t *testing.T) {
 	if !enabled {
 		t.Skip("GetFileSystem is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "GetFileSystem", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "GetFileSystem")
 	assert.NoError(t, err)
@@ -425,8 +447,10 @@ func TestFileStorageClientGetMountTarget(t *testing.T) {
 	if !enabled {
 		t.Skip("GetMountTarget is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "GetMountTarget", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "GetMountTarget")
 	assert.NoError(t, err)
@@ -461,8 +485,10 @@ func TestFileStorageClientGetSnapshot(t *testing.T) {
 	if !enabled {
 		t.Skip("GetSnapshot is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "GetSnapshot", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "GetSnapshot")
 	assert.NoError(t, err)
@@ -732,8 +758,10 @@ func TestFileStorageClientUpdateExport(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateExport is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "UpdateExport", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "UpdateExport")
 	assert.NoError(t, err)
@@ -768,8 +796,10 @@ func TestFileStorageClientUpdateExportSet(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateExportSet is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "UpdateExportSet", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "UpdateExportSet")
 	assert.NoError(t, err)
@@ -804,8 +834,10 @@ func TestFileStorageClientUpdateFileSystem(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateFileSystem is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "UpdateFileSystem", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "UpdateFileSystem")
 	assert.NoError(t, err)
@@ -840,8 +872,10 @@ func TestFileStorageClientUpdateMountTarget(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateMountTarget is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "UpdateMountTarget", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "UpdateMountTarget")
 	assert.NoError(t, err)
@@ -876,8 +910,10 @@ func TestFileStorageClientUpdateSnapshot(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateSnapshot is not enabled by the testing service")
 	}
-	c, err := filestorage.NewFileStorageClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("filestorage", "FileStorage", "UpdateSnapshot", createFileStorageClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(filestorage.FileStorageClient)
 
 	body, err := testClient.getRequests("filestorage", "UpdateSnapshot")
 	assert.NoError(t, err)

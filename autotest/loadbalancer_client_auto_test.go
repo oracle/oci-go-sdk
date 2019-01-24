@@ -29,8 +29,10 @@ func TestLoadBalancerClientCreateBackend(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateBackend is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "CreateBackend", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "CreateBackend")
 	assert.NoError(t, err)
@@ -65,8 +67,10 @@ func TestLoadBalancerClientCreateBackendSet(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateBackendSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "CreateBackendSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "CreateBackendSet")
 	assert.NoError(t, err)
@@ -101,8 +105,10 @@ func TestLoadBalancerClientCreateCertificate(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateCertificate is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "CreateCertificate", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "CreateCertificate")
 	assert.NoError(t, err)
@@ -137,8 +143,10 @@ func TestLoadBalancerClientCreateHostname(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateHostname is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "CreateHostname", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "CreateHostname")
 	assert.NoError(t, err)
@@ -173,8 +181,10 @@ func TestLoadBalancerClientCreateListener(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateListener is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "CreateListener", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "CreateListener")
 	assert.NoError(t, err)
@@ -209,8 +219,10 @@ func TestLoadBalancerClientCreateLoadBalancer(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateLoadBalancer is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "CreateLoadBalancer", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "CreateLoadBalancer")
 	assert.NoError(t, err)
@@ -245,8 +257,10 @@ func TestLoadBalancerClientCreatePathRouteSet(t *testing.T) {
 	if !enabled {
 		t.Skip("CreatePathRouteSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "CreatePathRouteSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "CreatePathRouteSet")
 	assert.NoError(t, err)
@@ -281,8 +295,10 @@ func TestLoadBalancerClientCreateRuleSet(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateRuleSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "CreateRuleSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "CreateRuleSet")
 	assert.NoError(t, err)
@@ -317,8 +333,10 @@ func TestLoadBalancerClientDeleteBackend(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteBackend is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "DeleteBackend", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "DeleteBackend")
 	assert.NoError(t, err)
@@ -353,8 +371,10 @@ func TestLoadBalancerClientDeleteBackendSet(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteBackendSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "DeleteBackendSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "DeleteBackendSet")
 	assert.NoError(t, err)
@@ -389,8 +409,10 @@ func TestLoadBalancerClientDeleteCertificate(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteCertificate is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "DeleteCertificate", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "DeleteCertificate")
 	assert.NoError(t, err)
@@ -425,8 +447,10 @@ func TestLoadBalancerClientDeleteHostname(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteHostname is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "DeleteHostname", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "DeleteHostname")
 	assert.NoError(t, err)
@@ -461,8 +485,10 @@ func TestLoadBalancerClientDeleteListener(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteListener is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "DeleteListener", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "DeleteListener")
 	assert.NoError(t, err)
@@ -497,8 +523,10 @@ func TestLoadBalancerClientDeleteLoadBalancer(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteLoadBalancer is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "DeleteLoadBalancer", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "DeleteLoadBalancer")
 	assert.NoError(t, err)
@@ -533,8 +561,10 @@ func TestLoadBalancerClientDeletePathRouteSet(t *testing.T) {
 	if !enabled {
 		t.Skip("DeletePathRouteSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "DeletePathRouteSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "DeletePathRouteSet")
 	assert.NoError(t, err)
@@ -569,8 +599,10 @@ func TestLoadBalancerClientDeleteRuleSet(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteRuleSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "DeleteRuleSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "DeleteRuleSet")
 	assert.NoError(t, err)
@@ -605,8 +637,10 @@ func TestLoadBalancerClientGetBackend(t *testing.T) {
 	if !enabled {
 		t.Skip("GetBackend is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "GetBackend", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "GetBackend")
 	assert.NoError(t, err)
@@ -641,8 +675,10 @@ func TestLoadBalancerClientGetBackendHealth(t *testing.T) {
 	if !enabled {
 		t.Skip("GetBackendHealth is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "GetBackendHealth", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "GetBackendHealth")
 	assert.NoError(t, err)
@@ -677,8 +713,10 @@ func TestLoadBalancerClientGetBackendSet(t *testing.T) {
 	if !enabled {
 		t.Skip("GetBackendSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "GetBackendSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "GetBackendSet")
 	assert.NoError(t, err)
@@ -713,8 +751,10 @@ func TestLoadBalancerClientGetBackendSetHealth(t *testing.T) {
 	if !enabled {
 		t.Skip("GetBackendSetHealth is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "GetBackendSetHealth", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "GetBackendSetHealth")
 	assert.NoError(t, err)
@@ -749,8 +789,10 @@ func TestLoadBalancerClientGetHealthChecker(t *testing.T) {
 	if !enabled {
 		t.Skip("GetHealthChecker is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "GetHealthChecker", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "GetHealthChecker")
 	assert.NoError(t, err)
@@ -785,8 +827,10 @@ func TestLoadBalancerClientGetHostname(t *testing.T) {
 	if !enabled {
 		t.Skip("GetHostname is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "GetHostname", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "GetHostname")
 	assert.NoError(t, err)
@@ -821,8 +865,10 @@ func TestLoadBalancerClientGetLoadBalancer(t *testing.T) {
 	if !enabled {
 		t.Skip("GetLoadBalancer is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "GetLoadBalancer", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "GetLoadBalancer")
 	assert.NoError(t, err)
@@ -857,8 +903,10 @@ func TestLoadBalancerClientGetLoadBalancerHealth(t *testing.T) {
 	if !enabled {
 		t.Skip("GetLoadBalancerHealth is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "GetLoadBalancerHealth", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "GetLoadBalancerHealth")
 	assert.NoError(t, err)
@@ -893,8 +941,10 @@ func TestLoadBalancerClientGetPathRouteSet(t *testing.T) {
 	if !enabled {
 		t.Skip("GetPathRouteSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "GetPathRouteSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "GetPathRouteSet")
 	assert.NoError(t, err)
@@ -929,8 +979,10 @@ func TestLoadBalancerClientGetRuleSet(t *testing.T) {
 	if !enabled {
 		t.Skip("GetRuleSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "GetRuleSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "GetRuleSet")
 	assert.NoError(t, err)
@@ -965,8 +1017,10 @@ func TestLoadBalancerClientGetWorkRequest(t *testing.T) {
 	if !enabled {
 		t.Skip("GetWorkRequest is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "GetWorkRequest", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "GetWorkRequest")
 	assert.NoError(t, err)
@@ -1001,8 +1055,10 @@ func TestLoadBalancerClientListBackendSets(t *testing.T) {
 	if !enabled {
 		t.Skip("ListBackendSets is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListBackendSets", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListBackendSets")
 	assert.NoError(t, err)
@@ -1037,8 +1093,10 @@ func TestLoadBalancerClientListBackends(t *testing.T) {
 	if !enabled {
 		t.Skip("ListBackends is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListBackends", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListBackends")
 	assert.NoError(t, err)
@@ -1073,8 +1131,10 @@ func TestLoadBalancerClientListCertificates(t *testing.T) {
 	if !enabled {
 		t.Skip("ListCertificates is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListCertificates", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListCertificates")
 	assert.NoError(t, err)
@@ -1109,8 +1169,10 @@ func TestLoadBalancerClientListHostnames(t *testing.T) {
 	if !enabled {
 		t.Skip("ListHostnames is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListHostnames", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListHostnames")
 	assert.NoError(t, err)
@@ -1239,8 +1301,10 @@ func TestLoadBalancerClientListPathRouteSets(t *testing.T) {
 	if !enabled {
 		t.Skip("ListPathRouteSets is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListPathRouteSets", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListPathRouteSets")
 	assert.NoError(t, err)
@@ -1369,8 +1433,10 @@ func TestLoadBalancerClientListRuleSets(t *testing.T) {
 	if !enabled {
 		t.Skip("ListRuleSets is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "ListRuleSets", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "ListRuleSets")
 	assert.NoError(t, err)
@@ -1499,8 +1565,10 @@ func TestLoadBalancerClientUpdateBackend(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateBackend is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "UpdateBackend", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "UpdateBackend")
 	assert.NoError(t, err)
@@ -1535,8 +1603,10 @@ func TestLoadBalancerClientUpdateBackendSet(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateBackendSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "UpdateBackendSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "UpdateBackendSet")
 	assert.NoError(t, err)
@@ -1571,8 +1641,10 @@ func TestLoadBalancerClientUpdateHealthChecker(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateHealthChecker is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "UpdateHealthChecker", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "UpdateHealthChecker")
 	assert.NoError(t, err)
@@ -1607,8 +1679,10 @@ func TestLoadBalancerClientUpdateHostname(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateHostname is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "UpdateHostname", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "UpdateHostname")
 	assert.NoError(t, err)
@@ -1643,8 +1717,10 @@ func TestLoadBalancerClientUpdateListener(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateListener is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "UpdateListener", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "UpdateListener")
 	assert.NoError(t, err)
@@ -1679,8 +1755,10 @@ func TestLoadBalancerClientUpdateLoadBalancer(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateLoadBalancer is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "UpdateLoadBalancer", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "UpdateLoadBalancer")
 	assert.NoError(t, err)
@@ -1715,8 +1793,10 @@ func TestLoadBalancerClientUpdatePathRouteSet(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdatePathRouteSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "UpdatePathRouteSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "UpdatePathRouteSet")
 	assert.NoError(t, err)
@@ -1751,8 +1831,10 @@ func TestLoadBalancerClientUpdateRuleSet(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateRuleSet is not enabled by the testing service")
 	}
-	c, err := loadbalancer.NewLoadBalancerClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("loadbalancer", "LoadBalancer", "UpdateRuleSet", createLoadBalancerClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(loadbalancer.LoadBalancerClient)
 
 	body, err := testClient.getRequests("loadbalancer", "UpdateRuleSet")
 	assert.NoError(t, err)

@@ -29,8 +29,10 @@ func TestComputeManagementClientCreateInstanceConfiguration(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateInstanceConfiguration is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "CreateInstanceConfiguration", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "CreateInstanceConfiguration")
 	assert.NoError(t, err)
@@ -65,8 +67,10 @@ func TestComputeManagementClientCreateInstancePool(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateInstancePool is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "CreateInstancePool", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "CreateInstancePool")
 	assert.NoError(t, err)
@@ -101,8 +105,10 @@ func TestComputeManagementClientDeleteInstanceConfiguration(t *testing.T) {
 	if !enabled {
 		t.Skip("DeleteInstanceConfiguration is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "DeleteInstanceConfiguration", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "DeleteInstanceConfiguration")
 	assert.NoError(t, err)
@@ -137,8 +143,10 @@ func TestComputeManagementClientGetInstanceConfiguration(t *testing.T) {
 	if !enabled {
 		t.Skip("GetInstanceConfiguration is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "GetInstanceConfiguration", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "GetInstanceConfiguration")
 	assert.NoError(t, err)
@@ -173,8 +181,10 @@ func TestComputeManagementClientGetInstancePool(t *testing.T) {
 	if !enabled {
 		t.Skip("GetInstancePool is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "GetInstancePool", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "GetInstancePool")
 	assert.NoError(t, err)
@@ -209,8 +219,10 @@ func TestComputeManagementClientLaunchInstanceConfiguration(t *testing.T) {
 	if !enabled {
 		t.Skip("LaunchInstanceConfiguration is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "LaunchInstanceConfiguration", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "LaunchInstanceConfiguration")
 	assert.NoError(t, err)
@@ -400,8 +412,10 @@ func TestComputeManagementClientResetInstancePool(t *testing.T) {
 	if !enabled {
 		t.Skip("ResetInstancePool is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "ResetInstancePool", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "ResetInstancePool")
 	assert.NoError(t, err)
@@ -436,8 +450,10 @@ func TestComputeManagementClientSoftresetInstancePool(t *testing.T) {
 	if !enabled {
 		t.Skip("SoftresetInstancePool is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "SoftresetInstancePool", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "SoftresetInstancePool")
 	assert.NoError(t, err)
@@ -472,8 +488,10 @@ func TestComputeManagementClientStartInstancePool(t *testing.T) {
 	if !enabled {
 		t.Skip("StartInstancePool is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "StartInstancePool", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "StartInstancePool")
 	assert.NoError(t, err)
@@ -508,8 +526,10 @@ func TestComputeManagementClientStopInstancePool(t *testing.T) {
 	if !enabled {
 		t.Skip("StopInstancePool is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "StopInstancePool", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "StopInstancePool")
 	assert.NoError(t, err)
@@ -544,8 +564,10 @@ func TestComputeManagementClientTerminateInstancePool(t *testing.T) {
 	if !enabled {
 		t.Skip("TerminateInstancePool is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "TerminateInstancePool", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "TerminateInstancePool")
 	assert.NoError(t, err)
@@ -580,8 +602,10 @@ func TestComputeManagementClientUpdateInstanceConfiguration(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateInstanceConfiguration is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "UpdateInstanceConfiguration", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "UpdateInstanceConfiguration")
 	assert.NoError(t, err)
@@ -616,8 +640,10 @@ func TestComputeManagementClientUpdateInstancePool(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateInstancePool is not enabled by the testing service")
 	}
-	c, err := core.NewComputeManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("core", "ComputeManagement", "UpdateInstancePool", createComputeManagementClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(core.ComputeManagementClient)
 
 	body, err := testClient.getRequests("core", "UpdateInstancePool")
 	assert.NoError(t, err)

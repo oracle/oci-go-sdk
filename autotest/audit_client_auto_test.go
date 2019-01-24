@@ -29,8 +29,10 @@ func TestAuditClientGetConfiguration(t *testing.T) {
 	if !enabled {
 		t.Skip("GetConfiguration is not enabled by the testing service")
 	}
-	c, err := audit.NewAuditClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("audit", "Audit", "GetConfiguration", createAuditClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(audit.AuditClient)
 
 	body, err := testClient.getRequests("audit", "GetConfiguration")
 	assert.NoError(t, err)
@@ -112,8 +114,10 @@ func TestAuditClientUpdateConfiguration(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateConfiguration is not enabled by the testing service")
 	}
-	c, err := audit.NewAuditClientWithConfigurationProvider(testConfig.ConfigurationProvider)
+
+	cc, err := testClient.createClientForOperation("audit", "Audit", "UpdateConfiguration", createAuditClientWithProvider)
 	assert.NoError(t, err)
+	c := cc.(audit.AuditClient)
 
 	body, err := testClient.getRequests("audit", "UpdateConfiguration")
 	assert.NoError(t, err)

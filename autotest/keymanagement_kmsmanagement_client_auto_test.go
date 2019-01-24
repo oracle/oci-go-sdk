@@ -23,10 +23,10 @@ func TestKmsManagementClientCreateKey(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateKey is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsManagement", "CreateKey")
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsManagement", "CreateKey", createKmsManagementClientWithProvider)
 	assert.NoError(t, err)
-	c, err := keymanagement.NewKmsManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
-	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsManagementClient)
 
 	body, err := testClient.getRequests("keymanagement", "CreateKey")
 	assert.NoError(t, err)
@@ -61,10 +61,10 @@ func TestKmsManagementClientCreateKeyVersion(t *testing.T) {
 	if !enabled {
 		t.Skip("CreateKeyVersion is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsManagement", "CreateKeyVersion")
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsManagement", "CreateKeyVersion", createKmsManagementClientWithProvider)
 	assert.NoError(t, err)
-	c, err := keymanagement.NewKmsManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
-	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsManagementClient)
 
 	body, err := testClient.getRequests("keymanagement", "CreateKeyVersion")
 	assert.NoError(t, err)
@@ -99,10 +99,10 @@ func TestKmsManagementClientDisableKey(t *testing.T) {
 	if !enabled {
 		t.Skip("DisableKey is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsManagement", "DisableKey")
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsManagement", "DisableKey", createKmsManagementClientWithProvider)
 	assert.NoError(t, err)
-	c, err := keymanagement.NewKmsManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
-	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsManagementClient)
 
 	body, err := testClient.getRequests("keymanagement", "DisableKey")
 	assert.NoError(t, err)
@@ -137,10 +137,10 @@ func TestKmsManagementClientEnableKey(t *testing.T) {
 	if !enabled {
 		t.Skip("EnableKey is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsManagement", "EnableKey")
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsManagement", "EnableKey", createKmsManagementClientWithProvider)
 	assert.NoError(t, err)
-	c, err := keymanagement.NewKmsManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
-	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsManagementClient)
 
 	body, err := testClient.getRequests("keymanagement", "EnableKey")
 	assert.NoError(t, err)
@@ -175,10 +175,10 @@ func TestKmsManagementClientGetKey(t *testing.T) {
 	if !enabled {
 		t.Skip("GetKey is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsManagement", "GetKey")
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsManagement", "GetKey", createKmsManagementClientWithProvider)
 	assert.NoError(t, err)
-	c, err := keymanagement.NewKmsManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
-	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsManagementClient)
 
 	body, err := testClient.getRequests("keymanagement", "GetKey")
 	assert.NoError(t, err)
@@ -213,10 +213,10 @@ func TestKmsManagementClientGetKeyVersion(t *testing.T) {
 	if !enabled {
 		t.Skip("GetKeyVersion is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsManagement", "GetKeyVersion")
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsManagement", "GetKeyVersion", createKmsManagementClientWithProvider)
 	assert.NoError(t, err)
-	c, err := keymanagement.NewKmsManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
-	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsManagementClient)
 
 	body, err := testClient.getRequests("keymanagement", "GetKeyVersion")
 	assert.NoError(t, err)
@@ -345,10 +345,10 @@ func TestKmsManagementClientUpdateKey(t *testing.T) {
 	if !enabled {
 		t.Skip("UpdateKey is not enabled by the testing service")
 	}
-	endpoint, err := testClient.getEndpointForService("keymanagement", "KmsManagement", "UpdateKey")
+
+	cc, err := testClient.createClientForOperation("keymanagement", "KmsManagement", "UpdateKey", createKmsManagementClientWithProvider)
 	assert.NoError(t, err)
-	c, err := keymanagement.NewKmsManagementClientWithConfigurationProvider(testConfig.ConfigurationProvider, endpoint)
-	assert.NoError(t, err)
+	c := cc.(keymanagement.KmsManagementClient)
 
 	body, err := testClient.getRequests("keymanagement", "UpdateKey")
 	assert.NoError(t, err)
