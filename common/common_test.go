@@ -16,6 +16,10 @@ func TestEndpoint(t *testing.T) {
 	region = StringToRegion("us-ashburn-1")
 	endpoint = region.Endpoint("bar")
 	assert.Equal(t, "bar.us-ashburn-1.oraclecloud.com", endpoint)
+
+	region = StringToRegion("ca-toronto-1")
+	endpoint = region.Endpoint("bar")
+	assert.Equal(t, "bar.ca-toronto-1.oraclecloud.com", endpoint)
 }
 
 func TestEndpointForTemplate(t *testing.T) {
