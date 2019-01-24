@@ -45,7 +45,7 @@ list-test:
 list-autotest:
 	@echo $(AUTOTEST_TARGETS)
 
-test-all: build-sdk test-sdk-only $(TEST_TARGETS)
+test-all: build-sdk build-autotest test-sdk-only $(TEST_TARGETS)
 
 autotest-all: build-sdk test-sdk-only $(AUTOTEST_TARGETS)
 
