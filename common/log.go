@@ -98,9 +98,9 @@ func newSDKLogger() (defaultSDKLogger, error) {
 		default:
 			logger.currentLoggingLevel = infoLogging
 		}
+		logger.infoLogger.Println("logger level set to: ", logger.currentLoggingLevel)
 	}
 
-	logger.infoLogger.Println("logger level set to: ", logger.currentLoggingLevel)
 	return logger, nil
 }
 
