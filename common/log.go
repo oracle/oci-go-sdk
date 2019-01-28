@@ -88,11 +88,11 @@ func newSDKLogger() (defaultSDKLogger, error) {
 		case "i", "info":
 			logger.currentLoggingLevel = infoLogging
 			break
-		//1 here for backwards compatibility
-		case "d", "debug", "1":
+		case "d", "debug":
 			logger.currentLoggingLevel = debugLogging
 			break
-		case "v", "verbose":
+		//1 here for backwards compatibility
+		case "v", "verbose", "1":
 			logger.currentLoggingLevel = verboseLogging
 			break
 		default:
