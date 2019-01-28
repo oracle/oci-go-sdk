@@ -28,8 +28,8 @@ func newTestConfiguration() (*TestConfiguration, error) {
 	confProvider := configurationProvider()
 
 	compartmentID, err := getEnvOrError("INTEGRATION_TEST_COMPARTMENT")
-	if err != nil {
-		return nil, err
+	if err == nil {
+		fmt.Println("INTEGRATION_TEST_COMPARTMENT variable found, will be overriden by service side configurations")
 	}
 
 	return &TestConfiguration{

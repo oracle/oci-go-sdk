@@ -210,7 +210,7 @@ func (client OCITestClient) configurationProvider(serviceName, clientName, opera
 
 	var ok bool
 	if ok, err = common.IsConfigurationProviderValid(provider); !ok {
-		err = fmt.Errorf("server configuration is not valid", err.Error())
+		err = fmt.Errorf("server configuration is not valid %s", err.Error())
 		return
 	}
 
@@ -692,7 +692,7 @@ func shouldReplace(polymorhpicUnmarshallingInfo map[string]PolymorphicRequestUnm
 	discriminatorName := polymorphicInfo.DiscriminatorName
 	discriminatorValue, ok := rawMap[discriminatorName].(string)
 	if !ok {
-		err := fmt.Errorf("found unspecified polymorphic type", requestFieldValue)
+		err := fmt.Errorf("found unspecified polymorphic type %s", requestFieldValue)
 		return false, nil, err
 	}
 
