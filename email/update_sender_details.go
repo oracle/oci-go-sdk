@@ -13,14 +13,8 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateSenderDetails The details needed for creating a sender.
-type CreateSenderDetails struct {
-
-	// The OCID of the compartment that contains the sender.
-	CompartmentId *string `mandatory:"true" json:"compartmentId"`
-
-	// The email address of the sender.
-	EmailAddress *string `mandatory:"true" json:"emailAddress"`
+// UpdateSenderDetails The details allowed for updating a sender.
+type UpdateSenderDetails struct {
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
 	// For more information, see Resource Tags (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/resourcetags.htm).
@@ -33,6 +27,6 @@ type CreateSenderDetails struct {
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }
 
-func (m CreateSenderDetails) String() string {
+func (m UpdateSenderDetails) String() string {
 	return common.PointerString(m)
 }

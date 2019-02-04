@@ -8,11 +8,14 @@ import (
 	"net/http"
 )
 
-// CreateSenderRequest wrapper for the CreateSender operation
-type CreateSenderRequest struct {
+// UpdateSenderRequest wrapper for the UpdateSender operation
+type UpdateSenderRequest struct {
 
-	// Create a sender.
-	CreateSenderDetails `contributesTo:"body"`
+	// The unique OCID of the sender.
+	SenderId *string `mandatory:"true" contributesTo:"path" name:"senderId"`
+
+	// update details for sender.
+	UpdateSenderDetails `contributesTo:"body"`
 
 	// The request ID for tracing from the system
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
@@ -22,22 +25,22 @@ type CreateSenderRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request CreateSenderRequest) String() string {
+func (request UpdateSenderRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request CreateSenderRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request UpdateSenderRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request CreateSenderRequest) RetryPolicy() *common.RetryPolicy {
+func (request UpdateSenderRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// CreateSenderResponse wrapper for the CreateSender operation
-type CreateSenderResponse struct {
+// UpdateSenderResponse wrapper for the UpdateSender operation
+type UpdateSenderResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
@@ -51,11 +54,11 @@ type CreateSenderResponse struct {
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
-func (response CreateSenderResponse) String() string {
+func (response UpdateSenderResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response CreateSenderResponse) HTTPResponse() *http.Response {
+func (response UpdateSenderResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }

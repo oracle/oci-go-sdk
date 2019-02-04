@@ -24,7 +24,7 @@ func createEmailClientWithProvider(p common.ConfigurationProvider, testConfig Te
 
 
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientCreateSender(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "CreateSender")
     assert.NoError(t, err)
@@ -62,7 +62,7 @@ func TestEmailClientCreateSender(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientCreateSuppression(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "CreateSuppression")
     assert.NoError(t, err)
@@ -100,7 +100,7 @@ func TestEmailClientCreateSuppression(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientDeleteSender(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "DeleteSender")
     assert.NoError(t, err)
@@ -138,7 +138,7 @@ func TestEmailClientDeleteSender(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientDeleteSuppression(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "DeleteSuppression")
     assert.NoError(t, err)
@@ -176,7 +176,7 @@ func TestEmailClientDeleteSuppression(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientGetSender(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "GetSender")
     assert.NoError(t, err)
@@ -214,7 +214,7 @@ func TestEmailClientGetSender(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientGetSuppression(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "GetSuppression")
     assert.NoError(t, err)
@@ -252,7 +252,7 @@ func TestEmailClientGetSuppression(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientListSenders(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "ListSenders")
     assert.NoError(t, err)
@@ -300,7 +300,7 @@ func TestEmailClientListSenders(t *testing.T) {
     }
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientListSuppressions(t *testing.T) {
     enabled, err := testClient.isApiEnabled("email", "ListSuppressions")
     assert.NoError(t, err)
@@ -342,6 +342,44 @@ func TestEmailClientListSuppressions(t *testing.T) {
             }
 
             message, err := testClient.validateResult(request.ContainerId, request.Request, typedListResponses, err)
+            assert.NoError(t, err)
+            assert.Empty(t, message, message)
+        })
+    }
+}
+
+// IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
+func TestEmailClientUpdateSender(t *testing.T) {
+    enabled, err := testClient.isApiEnabled("email", "UpdateSender")
+    assert.NoError(t, err)
+    if !enabled {
+        t.Skip("UpdateSender is not enabled by the testing service")
+    }
+
+    cc, err := testClient.createClientForOperation("email", "Email", "UpdateSender", createEmailClientWithProvider)
+    assert.NoError(t, err)
+    c := cc.(email.EmailClient)
+
+    body, err := testClient.getRequests("email", "UpdateSender")
+    assert.NoError(t, err)
+
+    type UpdateSenderRequestInfo struct {
+        ContainerId string
+        Request email.UpdateSenderRequest
+    }
+
+    var requests []UpdateSenderRequestInfo
+    err = json.Unmarshal([]byte(body), &requests)
+    assert.NoError(t, err)
+
+    var retryPolicy  *common.RetryPolicy
+    for i, req := range requests {
+        t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+            retryPolicy = retryPolicyForTests()
+            req.Request.RequestMetadata.RetryPolicy =  retryPolicy
+
+            response, err := c.UpdateSender(context.Background(), req.Request)
+            message, err := testClient.validateResult(req.ContainerId, req.Request, response, err)
             assert.NoError(t, err)
             assert.Empty(t, message, message)
         })
