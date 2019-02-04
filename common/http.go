@@ -228,15 +228,15 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value) (interface{}, er
 // removeNilFieldsInJSONWithTaggedStruct remove struct fields tagged with json and mandatory false
 // that are nil
 func removeNilFieldsInJSONWithTaggedStruct(rawJSON []byte, value reflect.Value) ([]byte, error) {
-	rawMap := make(map[string]interface{})
+	var rawInterface interface{}
 	decoder := json.NewDecoder(bytes.NewBuffer(rawJSON))
 	decoder.UseNumber()
 	var err error
-	if err = decoder.Decode(&rawMap); err != nil {
+	if err = decoder.Decode(&rawInterface); err != nil {
 		return nil, err
 	}
 
-	fixedMap, err := omitNilFieldsInJSON(rawMap, value)
+	fixedMap, err := omitNilFieldsInJSON(rawInterface, value)
 	if err != nil {
 		return nil, err
 	}
