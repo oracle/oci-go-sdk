@@ -860,17 +860,15 @@ func TestOmitFieldsInJson_SimpleStructWithSliceStruct(t *testing.T) {
 		AString      *string `mandatory:"false" json:"a"`
 		ANilString   *string `mandatory:"false" json:"anil"`
 		EmptyNumbers []int   `mandatory:"false" json:"aempty"`
+		NilNumbers   []int   `mandatory:"false" json:"nilnumbers"`
+		Numbers      []int   `mandatory:"true" json:"numbers"`
 	}
 
 	type Nested struct {
-		//N *string `mandatory:"false" json:"n"`
-		//Numbers []int `mandatory:"false" json:"numbers"`
 		ZComplex []InSstruct `mandatory:"false" json:"complex"`
 	}
 	val := ""
-	//numbers := []int{1, 3}
-	//s := Nested{N:&val, Numbers: numbers, ZComplex:InSstruct{AString:&val, EmptyNumbers:[]int{}}}
-	s := Nested{ZComplex: []InSstruct{{AString: &val, EmptyNumbers: []int{}}}}
+	s := Nested{ZComplex: []InSstruct{{AString: &val, EmptyNumbers: []int{}, NilNumbers: nil, Numbers: []int{1, 2}}}}
 	sVal := reflect.ValueOf(s)
 	jsonIn, _ := json.Marshal(s)
 	m := make(map[string]interface{})
@@ -880,7 +878,28 @@ func TestOmitFieldsInJson_SimpleStructWithSliceStruct(t *testing.T) {
 	jsonRet, err := json.Marshal(mapRet)
 	assert.NotContains(t, "nilnumbers", mapRet)
 	assert.NoError(t, err)
-	assert.Equal(t, `{"complex":[{"a":"","aempty":[]}]}`, string(jsonRet))
+	assert.Equal(t, `{"complex":[{"a":"","aempty":[],"numbers":[1,2]}]}`, string(jsonRet))
+}
+
+func TestOmitFieldsInJson_SimpleStructWithMandatorySliceAndError(t *testing.T) {
+
+	type Nested struct {
+		Numbers []int    `mandatory:"true" json:"numbers"`
+		Letters []string `mandatory:"false" json:"letters"`
+	}
+
+	type Outer struct {
+		Nested Nested `mandatory:"false" json:"aempty"`
+	}
+
+	s := Outer{Nested: Nested{Numbers: nil}}
+	sVal := reflect.ValueOf(s)
+	jsonIn, _ := json.Marshal(s)
+
+	m := make(map[string]interface{})
+	json.Unmarshal(jsonIn, &m)
+	_, err := omitNilFieldsInJSON(m, sVal)
+	assert.Error(t, err)
 }
 
 func TestOmitEmptyEnumInJson_SimpleStructWithEnum(t *testing.T) {
