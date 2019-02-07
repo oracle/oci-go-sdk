@@ -334,7 +334,6 @@ func TestRetry_NeverGetSuccessfulResponse(t *testing.T) {
 
 	response, err := Retry(context.Background(), retryableRequest, fakeOperation, retryPolicy)
 	assert.Equal(t, totalNumberAttempts, numberOfTimesWeEnterShouldRetry)
-	assert.Equal(t, totalNumberAttempts-1, numberOfTimesWeEnterGetNextDuration)
 	assert.Nil(t, response)
 	assert.Equal(t, err.Error(), "maximum number of attempts exceeded (5)")
 }
@@ -406,7 +405,7 @@ func TestRetry_RaisesDeadlineExceededException(t *testing.T) {
 	assert.Equal(t, uint(1), numberOfTimesWeEnterShouldRetry)
 	assert.Equal(t, uint(1), numberOfTimesWeEnterGetNextDuration)
 	assert.Equal(t, response, errorResponse)
-	assert.Equal(t, err, DeadlineExceededByBackoff)
+	assert.Equal(t, DeadlineExceededByBackoff, err)
 }
 
 func TestRetry_GetsSuccessfulResponseAfterMultipleAttempts(t *testing.T) {
@@ -450,6 +449,34 @@ func TestRetry_GetsSuccessfulResponseAfterMultipleAttempts(t *testing.T) {
 	assert.Equal(t, uint(7), numberOfTimesWeEnterGetNextDuration)
 	assert.Equal(t, response, successResponse)
 	assert.Nil(t, err)
+}
+
+func TestRetry_CancelContextWhileSleeping(t *testing.T) {
+
+	shouldRetryOperation := func(res OCIOperationResponse) bool { return true }
+	getNextDuration := func(res OCIOperationResponse) time.Duration { return 4 * time.Second }
+
+	errorResponse := genericOCIResponse{
+		RawResponse: &http.Response{
+			Header:     http.Header{},
+			StatusCode: 400,
+		},
+	}
+	pol := NewRetryPolicy(uint(10), shouldRetryOperation, getNextDuration)
+	req := retryableOCIRequest{retryPolicy: &pol}
+	fakeOperation := func(context.Context, OCIRequest) (OCIResponse, error) { return errorResponse, nil }
+
+	ctx, cancelFn := context.WithDeadline(context.Background(), time.Now().Add(10*time.Second))
+
+	//cancel context while sleeping
+	go func() {
+		time.Sleep(1 * time.Second)
+		cancelFn()
+	}()
+
+	res, err := Retry(ctx, req, fakeOperation, pol)
+	assert.Equal(t, errorResponse, res)
+	assert.Equal(t, context.Canceled, err)
 }
 
 func TestRetryToken_GenerateMultipleTimes(t *testing.T) {

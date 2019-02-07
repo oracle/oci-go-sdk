@@ -57,11 +57,10 @@ func ExampleListGroupsWithCustomSignedHeader() {
 		return nil
 	}
 
-
 	// The OCID of the tenancy containing the compartment.
 	tenancyID, _ := provider.TenancyOCID()
 	request := identity.ListGroupsRequest{
-		CompartmentId:   common.String(tenancyID),
+		CompartmentId: common.String(tenancyID),
 	}
 	r, err := c.ListGroups(context.Background(), request)
 	helpers.FatalIfError(err)
