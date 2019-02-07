@@ -122,3 +122,28 @@ func TestRetryTokenPersists(t *testing.T) {
 
 	Retry(context.Background(), r, operation, *r.Policy)
 }
+func TestRetryWithPanicInOperation(t *testing.T) {
+	body := bytes.NewBufferString("YES")
+	req, _ := http.NewRequest("POST", "/some", body)
+	token := RetryToken()
+	req.Header.Set(requestHeaderOpcRetryToken, token)
+	policy := getExponentialBackoffRetryPolicy(3)
+	r := mockedRequest{Request: *req, Policy: &policy}
+	times := 0
+	operation := func(i context.Context, request OCIRequest) (OCIResponse, error) {
+		httpResponse := http.Response{
+			Header:     http.Header{},
+			StatusCode: 200,
+		}
+
+		if times <= 0 {
+			times++
+			return mockedResponse{RawResponse: &httpResponse}, nil
+		}
+		panic("test panic")
+	}
+
+	resp, err := Retry(context.Background(), r, operation, *r.Policy)
+	assert.Nil(t, resp)
+	assert.Error(t, err)
+}
