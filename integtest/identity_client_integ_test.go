@@ -788,6 +788,7 @@ func TestIdentityClient_ListApiKeys(t *testing.T) {
 }
 
 func TestIdentityClient_IdentityProviderCRUD(t *testing.T) {
+	t.Skip("skipping due to inabitlity to remove id provider mappings, possible related to DEX-5143")
 	c, clerr := identity.NewIdentityClientWithConfigurationProvider(configurationProvider())
 	failIfError(t, clerr)
 
