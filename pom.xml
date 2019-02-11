@@ -1334,13 +1334,13 @@
       <dependency>
         <groupId>com.oracle.pic.announcements</groupId>
         <artifactId>announcements-service-spec</artifactId>
-        <version>1.0.7</version>
+        <version>1.0.9</version>
       </dependency>
       <dependency>
         <groupId>com.oracle.oci</groupId>
         <artifactId>healthchecks-api-spec</artifactId>
         <version>0.0.1-20181210.154927-6</version>
-        </dependency>
+      </dependency>
       <dependency>
         <groupId>com.oracle.oci.waas</groupId>
         <artifactId>oci-waas-api-spec</artifactId>
