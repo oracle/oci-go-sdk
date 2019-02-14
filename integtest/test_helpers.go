@@ -305,7 +305,7 @@ func getRequestMetadataWithDefaultRetryPolicy() common.RequestMetadata {
 }
 
 func getDefaultRetryPolicy() *common.RetryPolicy {
-	attempts := uint(10)
+	attempts := uint(5)
 	retryOnAllNon200ResponseCodes := func(r common.OCIOperationResponse) bool {
 		return !(r.Error == nil && 199 < r.Response.HTTPResponse().StatusCode && r.Response.HTTPResponse().StatusCode < 300)
 	}

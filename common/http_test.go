@@ -652,6 +652,32 @@ func TestMarshalBinaryRequest(t *testing.T) {
 	assert.Equal(t, data, string(all))
 }
 
+func TestMarshalBinaryRequestIsSigned(t *testing.T) {
+	signer := ociRequestSigner{KeyProvider: testKeyProvider{},
+		ShouldHashBody: defaultBodyHashPredicate,
+		GenericHeaders: defaultGenericHeaders,
+		BodyHeaders:    defaultBodyHeaders,
+	}
+	data := "some data in a file"
+	buffer := bytes.NewBufferString(data)
+	r := reqWithBinaryFiled{Content: ioutil.NopCloser(buffer)}
+	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("POST", "/obj", r)
+	assert.NoError(t, err)
+	err = signer.Sign(&httpRequest)
+	assert.NoError(t, err)
+	all, err := ioutil.ReadAll(httpRequest.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, data, string(all))
+
+	assert.Equal(t, fmt.Sprintf("%v",len(data)), httpRequest.Header.Get(requestHeaderContentLength))
+	assert.NotEmpty(t, httpRequest.Header.Get(requestHeaderAuthorization))
+	assert.NotEmpty(t, httpRequest.Header.Get(requestHeaderXContentSHA256))
+	assert.Equal(t, "application/octet-stream", httpRequest.Header.Get(requestHeaderContentType))
+	assert.Contains(t, httpRequest.Header.Get(requestHeaderAuthorization), "content-length")
+	assert.Contains(t, httpRequest.Header.Get(requestHeaderAuthorization), "x-content-sha256")
+	assert.Contains(t, httpRequest.Header.Get(requestHeaderAuthorization), "content-type")
+}
+
 type structWithBinaryField struct {
 	Content io.Reader `presentIn:"body" encoding:"binary"`
 }
@@ -1368,5 +1394,4 @@ func TestRemoveNilWithInt64Values(t *testing.T) {
 
 	assert.True(t, strings.Contains(string(jsonRet), "9223372036854775807"))
 	assert.Equal(t, int64(9223372036854775807), *ss.Data)
-
 }
