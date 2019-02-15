@@ -669,7 +669,7 @@ func TestMarshalBinaryRequestIsSigned(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, data, string(all))
 
-	assert.Equal(t, fmt.Sprintf("%v",len(data)), httpRequest.Header.Get(requestHeaderContentLength))
+	assert.Equal(t, fmt.Sprintf("%v", len(data)), httpRequest.Header.Get(requestHeaderContentLength))
 	assert.NotEmpty(t, httpRequest.Header.Get(requestHeaderAuthorization))
 	assert.NotEmpty(t, httpRequest.Header.Get(requestHeaderXContentSHA256))
 	assert.Equal(t, "application/octet-stream", httpRequest.Header.Get(requestHeaderContentType))
