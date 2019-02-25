@@ -7,9 +7,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"testing"
-
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func createIdentityClientWithProvider(p common.ConfigurationProvider, testConfig TestingConfig) (interface{}, error) {

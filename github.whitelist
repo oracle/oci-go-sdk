@@ -29,6 +29,7 @@
 ^healthchecks/
 ^waas/
 
+^autoscaling/
 ^streaming/
 ^ons/
 ^monitoring/
