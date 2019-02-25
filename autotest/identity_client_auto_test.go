@@ -2184,10 +2184,10 @@ func TestIdentityClientListRegions(t *testing.T) {
 	err = json.Unmarshal([]byte(body), &requests)
 	assert.NoError(t, err)
 
-	var retryPolicy *common.RetryPolicy
-	for i, req := range requests {
-		t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
-			retryPolicy = retryPolicyForTests()
+    var retryPolicy  *common.RetryPolicy
+    for i, req := range requests {
+        t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+            retryPolicy = retryPolicyForTests()
 
 			response, err := c.ListRegions(context.Background())
 			message, err := testClient.validateResult(req.ContainerId, nil, response, err)
