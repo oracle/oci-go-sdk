@@ -30,4 +30,5 @@
 ^waas/
 
 ^streaming/
+^ons/
 ^monitoring/
