@@ -8,17 +8,19 @@ import (
 	"net/http"
 )
 
-// ListGroupsRequest wrapper for the ListGroups operation
-type ListGroupsRequest struct {
+// GenerateTotpSeedRequest wrapper for the GenerateTotpSeed operation
+type GenerateTotpSeedRequest struct {
 
-	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
-	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	// The OCID of the user.
+	UserId *string `mandatory:"true" contributesTo:"path" name:"userId"`
 
-	// The value of the `opc-next-page` response header from the previous "List" call.
-	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
+	// The OCID of the MFA TOTP device.
+	MfaTotpDeviceId *string `mandatory:"true" contributesTo:"path" name:"mfaTotpDeviceId"`
 
-	// The maximum number of items to return in a paginated "List" call.
-	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
+	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`
+	// parameter to the value of the etag from a previous GET or POST response for that resource.  The resource
+	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
+	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.
@@ -29,44 +31,42 @@ type ListGroupsRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request ListGroupsRequest) String() string {
+func (request GenerateTotpSeedRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request ListGroupsRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request GenerateTotpSeedRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request ListGroupsRequest) RetryPolicy() *common.RetryPolicy {
+func (request GenerateTotpSeedRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// ListGroupsResponse wrapper for the ListGroups operation
-type ListGroupsResponse struct {
+// GenerateTotpSeedResponse wrapper for the GenerateTotpSeed operation
+type GenerateTotpSeedResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// A list of []Group instances
-	Items []Group `presentIn:"body"`
+	// The MfaTotpDevice instance
+	MfaTotpDevice `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// For pagination of a list of items. When paging through a list, if this header appears in the response,
-	// then a partial list might have been returned. Include this value as the `page` parameter for the
-	// subsequent GET request to get the next batch of items.
-	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+	// For optimistic concurrency control. See `if-match`.
+	Etag *string `presentIn:"header" name:"etag"`
 }
 
-func (response ListGroupsResponse) String() string {
+func (response GenerateTotpSeedResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response ListGroupsResponse) HTTPResponse() *http.Response {
+func (response GenerateTotpSeedResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }

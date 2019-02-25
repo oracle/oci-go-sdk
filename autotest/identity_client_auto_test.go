@@ -7,8 +7,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func createIdentityClientWithProvider(p common.ConfigurationProvider, testConfig TestingConfig) (interface{}, error) {
@@ -22,7 +23,45 @@ func createIdentityClientWithProvider(p common.ConfigurationProvider, testConfig
 	return client, err
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
+func TestIdentityClientActivateMfaTotpDevice(t *testing.T) {
+	enabled, err := testClient.isApiEnabled("identity", "ActivateMfaTotpDevice")
+	assert.NoError(t, err)
+	if !enabled {
+		t.Skip("ActivateMfaTotpDevice is not enabled by the testing service")
+	}
+
+	cc, err := testClient.createClientForOperation("identity", "Identity", "ActivateMfaTotpDevice", createIdentityClientWithProvider)
+	assert.NoError(t, err)
+	c := cc.(identity.IdentityClient)
+
+	body, err := testClient.getRequests("identity", "ActivateMfaTotpDevice")
+	assert.NoError(t, err)
+
+	type ActivateMfaTotpDeviceRequestInfo struct {
+		ContainerId string
+		Request     identity.ActivateMfaTotpDeviceRequest
+	}
+
+	var requests []ActivateMfaTotpDeviceRequestInfo
+	err = json.Unmarshal([]byte(body), &requests)
+	assert.NoError(t, err)
+
+	var retryPolicy *common.RetryPolicy
+	for i, req := range requests {
+		t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+			retryPolicy = retryPolicyForTests()
+			req.Request.RequestMetadata.RetryPolicy = retryPolicy
+
+			response, err := c.ActivateMfaTotpDevice(context.Background(), req.Request)
+			message, err := testClient.validateResult(req.ContainerId, req.Request, response, err)
+			assert.NoError(t, err)
+			assert.Empty(t, message, message)
+		})
+	}
+}
+
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientAddUserToGroup(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "AddUserToGroup")
 	assert.NoError(t, err)
@@ -60,7 +99,7 @@ func TestIdentityClientAddUserToGroup(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateAuthToken(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateAuthToken")
 	assert.NoError(t, err)
@@ -98,7 +137,7 @@ func TestIdentityClientCreateAuthToken(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateCompartment(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateCompartment")
 	assert.NoError(t, err)
@@ -136,7 +175,7 @@ func TestIdentityClientCreateCompartment(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateCustomerSecretKey(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateCustomerSecretKey")
 	assert.NoError(t, err)
@@ -174,7 +213,7 @@ func TestIdentityClientCreateCustomerSecretKey(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateDynamicGroup(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateDynamicGroup")
 	assert.NoError(t, err)
@@ -212,7 +251,7 @@ func TestIdentityClientCreateDynamicGroup(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateGroup(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateGroup")
 	assert.NoError(t, err)
@@ -250,7 +289,7 @@ func TestIdentityClientCreateGroup(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateIdentityProvider(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateIdentityProvider")
 	assert.NoError(t, err)
@@ -302,7 +341,7 @@ func TestIdentityClientCreateIdentityProvider(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateIdpGroupMapping(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateIdpGroupMapping")
 	assert.NoError(t, err)
@@ -340,7 +379,45 @@ func TestIdentityClientCreateIdpGroupMapping(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
+func TestIdentityClientCreateMfaTotpDevice(t *testing.T) {
+	enabled, err := testClient.isApiEnabled("identity", "CreateMfaTotpDevice")
+	assert.NoError(t, err)
+	if !enabled {
+		t.Skip("CreateMfaTotpDevice is not enabled by the testing service")
+	}
+
+	cc, err := testClient.createClientForOperation("identity", "Identity", "CreateMfaTotpDevice", createIdentityClientWithProvider)
+	assert.NoError(t, err)
+	c := cc.(identity.IdentityClient)
+
+	body, err := testClient.getRequests("identity", "CreateMfaTotpDevice")
+	assert.NoError(t, err)
+
+	type CreateMfaTotpDeviceRequestInfo struct {
+		ContainerId string
+		Request     identity.CreateMfaTotpDeviceRequest
+	}
+
+	var requests []CreateMfaTotpDeviceRequestInfo
+	err = json.Unmarshal([]byte(body), &requests)
+	assert.NoError(t, err)
+
+	var retryPolicy *common.RetryPolicy
+	for i, req := range requests {
+		t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+			retryPolicy = retryPolicyForTests()
+			req.Request.RequestMetadata.RetryPolicy = retryPolicy
+
+			response, err := c.CreateMfaTotpDevice(context.Background(), req.Request)
+			message, err := testClient.validateResult(req.ContainerId, req.Request, response, err)
+			assert.NoError(t, err)
+			assert.Empty(t, message, message)
+		})
+	}
+}
+
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateOrResetUIPassword(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateOrResetUIPassword")
 	assert.NoError(t, err)
@@ -378,7 +455,7 @@ func TestIdentityClientCreateOrResetUIPassword(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreatePolicy(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreatePolicy")
 	assert.NoError(t, err)
@@ -416,7 +493,7 @@ func TestIdentityClientCreatePolicy(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateRegionSubscription(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateRegionSubscription")
 	assert.NoError(t, err)
@@ -454,7 +531,7 @@ func TestIdentityClientCreateRegionSubscription(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateSmtpCredential(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateSmtpCredential")
 	assert.NoError(t, err)
@@ -492,7 +569,7 @@ func TestIdentityClientCreateSmtpCredential(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateSwiftPassword(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateSwiftPassword")
 	assert.NoError(t, err)
@@ -530,7 +607,7 @@ func TestIdentityClientCreateSwiftPassword(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateTag(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateTag")
 	assert.NoError(t, err)
@@ -568,7 +645,7 @@ func TestIdentityClientCreateTag(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateTagNamespace(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateTagNamespace")
 	assert.NoError(t, err)
@@ -606,7 +683,7 @@ func TestIdentityClientCreateTagNamespace(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateUser(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "CreateUser")
 	assert.NoError(t, err)
@@ -644,7 +721,7 @@ func TestIdentityClientCreateUser(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteApiKey(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeleteApiKey")
 	assert.NoError(t, err)
@@ -682,7 +759,7 @@ func TestIdentityClientDeleteApiKey(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteAuthToken(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeleteAuthToken")
 	assert.NoError(t, err)
@@ -720,7 +797,7 @@ func TestIdentityClientDeleteAuthToken(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteCompartment(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeleteCompartment")
 	assert.NoError(t, err)
@@ -758,7 +835,7 @@ func TestIdentityClientDeleteCompartment(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteCustomerSecretKey(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeleteCustomerSecretKey")
 	assert.NoError(t, err)
@@ -796,7 +873,7 @@ func TestIdentityClientDeleteCustomerSecretKey(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteDynamicGroup(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeleteDynamicGroup")
 	assert.NoError(t, err)
@@ -834,7 +911,7 @@ func TestIdentityClientDeleteDynamicGroup(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteGroup(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeleteGroup")
 	assert.NoError(t, err)
@@ -872,7 +949,7 @@ func TestIdentityClientDeleteGroup(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteIdentityProvider(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeleteIdentityProvider")
 	assert.NoError(t, err)
@@ -910,7 +987,7 @@ func TestIdentityClientDeleteIdentityProvider(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteIdpGroupMapping(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeleteIdpGroupMapping")
 	assert.NoError(t, err)
@@ -948,7 +1025,45 @@ func TestIdentityClientDeleteIdpGroupMapping(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
+func TestIdentityClientDeleteMfaTotpDevice(t *testing.T) {
+	enabled, err := testClient.isApiEnabled("identity", "DeleteMfaTotpDevice")
+	assert.NoError(t, err)
+	if !enabled {
+		t.Skip("DeleteMfaTotpDevice is not enabled by the testing service")
+	}
+
+	cc, err := testClient.createClientForOperation("identity", "Identity", "DeleteMfaTotpDevice", createIdentityClientWithProvider)
+	assert.NoError(t, err)
+	c := cc.(identity.IdentityClient)
+
+	body, err := testClient.getRequests("identity", "DeleteMfaTotpDevice")
+	assert.NoError(t, err)
+
+	type DeleteMfaTotpDeviceRequestInfo struct {
+		ContainerId string
+		Request     identity.DeleteMfaTotpDeviceRequest
+	}
+
+	var requests []DeleteMfaTotpDeviceRequestInfo
+	err = json.Unmarshal([]byte(body), &requests)
+	assert.NoError(t, err)
+
+	var retryPolicy *common.RetryPolicy
+	for i, req := range requests {
+		t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+			retryPolicy = retryPolicyForTests()
+			req.Request.RequestMetadata.RetryPolicy = retryPolicy
+
+			response, err := c.DeleteMfaTotpDevice(context.Background(), req.Request)
+			message, err := testClient.validateResult(req.ContainerId, req.Request, response, err)
+			assert.NoError(t, err)
+			assert.Empty(t, message, message)
+		})
+	}
+}
+
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeletePolicy(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeletePolicy")
 	assert.NoError(t, err)
@@ -986,7 +1101,7 @@ func TestIdentityClientDeletePolicy(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteSmtpCredential(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeleteSmtpCredential")
 	assert.NoError(t, err)
@@ -1024,7 +1139,7 @@ func TestIdentityClientDeleteSmtpCredential(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteSwiftPassword(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeleteSwiftPassword")
 	assert.NoError(t, err)
@@ -1062,7 +1177,7 @@ func TestIdentityClientDeleteSwiftPassword(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteUser(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "DeleteUser")
 	assert.NoError(t, err)
@@ -1100,7 +1215,45 @@ func TestIdentityClientDeleteUser(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
+func TestIdentityClientGenerateTotpSeed(t *testing.T) {
+	enabled, err := testClient.isApiEnabled("identity", "GenerateTotpSeed")
+	assert.NoError(t, err)
+	if !enabled {
+		t.Skip("GenerateTotpSeed is not enabled by the testing service")
+	}
+
+	cc, err := testClient.createClientForOperation("identity", "Identity", "GenerateTotpSeed", createIdentityClientWithProvider)
+	assert.NoError(t, err)
+	c := cc.(identity.IdentityClient)
+
+	body, err := testClient.getRequests("identity", "GenerateTotpSeed")
+	assert.NoError(t, err)
+
+	type GenerateTotpSeedRequestInfo struct {
+		ContainerId string
+		Request     identity.GenerateTotpSeedRequest
+	}
+
+	var requests []GenerateTotpSeedRequestInfo
+	err = json.Unmarshal([]byte(body), &requests)
+	assert.NoError(t, err)
+
+	var retryPolicy *common.RetryPolicy
+	for i, req := range requests {
+		t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+			retryPolicy = retryPolicyForTests()
+			req.Request.RequestMetadata.RetryPolicy = retryPolicy
+
+			response, err := c.GenerateTotpSeed(context.Background(), req.Request)
+			message, err := testClient.validateResult(req.ContainerId, req.Request, response, err)
+			assert.NoError(t, err)
+			assert.Empty(t, message, message)
+		})
+	}
+}
+
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetCompartment(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetCompartment")
 	assert.NoError(t, err)
@@ -1138,7 +1291,7 @@ func TestIdentityClientGetCompartment(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetDynamicGroup(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetDynamicGroup")
 	assert.NoError(t, err)
@@ -1176,7 +1329,7 @@ func TestIdentityClientGetDynamicGroup(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetGroup(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetGroup")
 	assert.NoError(t, err)
@@ -1214,7 +1367,7 @@ func TestIdentityClientGetGroup(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetIdentityProvider(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetIdentityProvider")
 	assert.NoError(t, err)
@@ -1252,7 +1405,7 @@ func TestIdentityClientGetIdentityProvider(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetIdpGroupMapping(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetIdpGroupMapping")
 	assert.NoError(t, err)
@@ -1290,7 +1443,45 @@ func TestIdentityClientGetIdpGroupMapping(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
+func TestIdentityClientGetMfaTotpDevice(t *testing.T) {
+	enabled, err := testClient.isApiEnabled("identity", "GetMfaTotpDevice")
+	assert.NoError(t, err)
+	if !enabled {
+		t.Skip("GetMfaTotpDevice is not enabled by the testing service")
+	}
+
+	cc, err := testClient.createClientForOperation("identity", "Identity", "GetMfaTotpDevice", createIdentityClientWithProvider)
+	assert.NoError(t, err)
+	c := cc.(identity.IdentityClient)
+
+	body, err := testClient.getRequests("identity", "GetMfaTotpDevice")
+	assert.NoError(t, err)
+
+	type GetMfaTotpDeviceRequestInfo struct {
+		ContainerId string
+		Request     identity.GetMfaTotpDeviceRequest
+	}
+
+	var requests []GetMfaTotpDeviceRequestInfo
+	err = json.Unmarshal([]byte(body), &requests)
+	assert.NoError(t, err)
+
+	var retryPolicy *common.RetryPolicy
+	for i, req := range requests {
+		t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+			retryPolicy = retryPolicyForTests()
+			req.Request.RequestMetadata.RetryPolicy = retryPolicy
+
+			response, err := c.GetMfaTotpDevice(context.Background(), req.Request)
+			message, err := testClient.validateResult(req.ContainerId, req.Request, response, err)
+			assert.NoError(t, err)
+			assert.Empty(t, message, message)
+		})
+	}
+}
+
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetPolicy(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetPolicy")
 	assert.NoError(t, err)
@@ -1328,7 +1519,7 @@ func TestIdentityClientGetPolicy(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetTag(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetTag")
 	assert.NoError(t, err)
@@ -1366,7 +1557,7 @@ func TestIdentityClientGetTag(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetTagNamespace(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetTagNamespace")
 	assert.NoError(t, err)
@@ -1404,7 +1595,7 @@ func TestIdentityClientGetTagNamespace(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetTenancy(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetTenancy")
 	assert.NoError(t, err)
@@ -1442,7 +1633,7 @@ func TestIdentityClientGetTenancy(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetUser(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetUser")
 	assert.NoError(t, err)
@@ -1480,7 +1671,7 @@ func TestIdentityClientGetUser(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetUserGroupMembership(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetUserGroupMembership")
 	assert.NoError(t, err)
@@ -1518,7 +1709,7 @@ func TestIdentityClientGetUserGroupMembership(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetWorkRequest(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "GetWorkRequest")
 	assert.NoError(t, err)
@@ -1556,7 +1747,7 @@ func TestIdentityClientGetWorkRequest(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListApiKeys(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListApiKeys")
 	assert.NoError(t, err)
@@ -1594,7 +1785,7 @@ func TestIdentityClientListApiKeys(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListAuthTokens(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListAuthTokens")
 	assert.NoError(t, err)
@@ -1632,7 +1823,7 @@ func TestIdentityClientListAuthTokens(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListAvailabilityDomains(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListAvailabilityDomains")
 	assert.NoError(t, err)
@@ -1670,7 +1861,7 @@ func TestIdentityClientListAvailabilityDomains(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListCompartments(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListCompartments")
 	assert.NoError(t, err)
@@ -1717,7 +1908,7 @@ func TestIdentityClientListCompartments(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListCostTrackingTags(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListCostTrackingTags")
 	assert.NoError(t, err)
@@ -1764,7 +1955,7 @@ func TestIdentityClientListCostTrackingTags(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListCustomerSecretKeys(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListCustomerSecretKeys")
 	assert.NoError(t, err)
@@ -1802,7 +1993,7 @@ func TestIdentityClientListCustomerSecretKeys(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListDynamicGroups(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListDynamicGroups")
 	assert.NoError(t, err)
@@ -1849,7 +2040,7 @@ func TestIdentityClientListDynamicGroups(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListFaultDomains(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListFaultDomains")
 	assert.NoError(t, err)
@@ -1887,7 +2078,7 @@ func TestIdentityClientListFaultDomains(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListGroups(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListGroups")
 	assert.NoError(t, err)
@@ -1934,7 +2125,7 @@ func TestIdentityClientListGroups(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListIdentityProviderGroups(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListIdentityProviderGroups")
 	assert.NoError(t, err)
@@ -1981,7 +2172,7 @@ func TestIdentityClientListIdentityProviderGroups(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListIdentityProviders(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListIdentityProviders")
 	assert.NoError(t, err)
@@ -2028,7 +2219,7 @@ func TestIdentityClientListIdentityProviders(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListIdpGroupMappings(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListIdpGroupMappings")
 	assert.NoError(t, err)
@@ -2075,7 +2266,54 @@ func TestIdentityClientListIdpGroupMappings(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
+func TestIdentityClientListMfaTotpDevices(t *testing.T) {
+	enabled, err := testClient.isApiEnabled("identity", "ListMfaTotpDevices")
+	assert.NoError(t, err)
+	if !enabled {
+		t.Skip("ListMfaTotpDevices is not enabled by the testing service")
+	}
+
+	cc, err := testClient.createClientForOperation("identity", "Identity", "ListMfaTotpDevices", createIdentityClientWithProvider)
+	assert.NoError(t, err)
+	c := cc.(identity.IdentityClient)
+
+	body, err := testClient.getRequests("identity", "ListMfaTotpDevices")
+	assert.NoError(t, err)
+
+	type ListMfaTotpDevicesRequestInfo struct {
+		ContainerId string
+		Request     identity.ListMfaTotpDevicesRequest
+	}
+
+	var requests []ListMfaTotpDevicesRequestInfo
+	err = json.Unmarshal([]byte(body), &requests)
+	assert.NoError(t, err)
+
+	var retryPolicy *common.RetryPolicy
+	for i, request := range requests {
+		t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+			retryPolicy = retryPolicyForTests()
+			request.Request.RequestMetadata.RetryPolicy = retryPolicy
+			listFn := func(req common.OCIRequest) (common.OCIResponse, error) {
+				r := req.(*identity.ListMfaTotpDevicesRequest)
+				return c.ListMfaTotpDevices(context.Background(), *r)
+			}
+
+			listResponses, err := testClient.generateListResponses(&request.Request, listFn)
+			typedListResponses := make([]identity.ListMfaTotpDevicesResponse, len(listResponses))
+			for i, lr := range listResponses {
+				typedListResponses[i] = lr.(identity.ListMfaTotpDevicesResponse)
+			}
+
+			message, err := testClient.validateResult(request.ContainerId, request.Request, typedListResponses, err)
+			assert.NoError(t, err)
+			assert.Empty(t, message, message)
+		})
+	}
+}
+
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListPolicies(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListPolicies")
 	assert.NoError(t, err)
@@ -2122,7 +2360,7 @@ func TestIdentityClientListPolicies(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListRegionSubscriptions(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListRegionSubscriptions")
 	assert.NoError(t, err)
@@ -2160,7 +2398,7 @@ func TestIdentityClientListRegionSubscriptions(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListRegions(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListRegions")
 	assert.NoError(t, err)
@@ -2184,10 +2422,10 @@ func TestIdentityClientListRegions(t *testing.T) {
 	err = json.Unmarshal([]byte(body), &requests)
 	assert.NoError(t, err)
 
-    var retryPolicy  *common.RetryPolicy
-    for i, req := range requests {
-        t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
-            retryPolicy = retryPolicyForTests()
+	var retryPolicy *common.RetryPolicy
+	for i, req := range requests {
+		t.Run(fmt.Sprintf("request:%v", i), func(t *testing.T) {
+			retryPolicy = retryPolicyForTests()
 
 			response, err := c.ListRegions(context.Background())
 			message, err := testClient.validateResult(req.ContainerId, nil, response, err)
@@ -2197,7 +2435,7 @@ func TestIdentityClientListRegions(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListSmtpCredentials(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListSmtpCredentials")
 	assert.NoError(t, err)
@@ -2235,7 +2473,7 @@ func TestIdentityClientListSmtpCredentials(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListSwiftPasswords(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListSwiftPasswords")
 	assert.NoError(t, err)
@@ -2273,7 +2511,7 @@ func TestIdentityClientListSwiftPasswords(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListTagNamespaces(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListTagNamespaces")
 	assert.NoError(t, err)
@@ -2320,7 +2558,7 @@ func TestIdentityClientListTagNamespaces(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListTags(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListTags")
 	assert.NoError(t, err)
@@ -2367,7 +2605,7 @@ func TestIdentityClientListTags(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListUserGroupMemberships(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListUserGroupMemberships")
 	assert.NoError(t, err)
@@ -2414,7 +2652,7 @@ func TestIdentityClientListUserGroupMemberships(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListUsers(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListUsers")
 	assert.NoError(t, err)
@@ -2461,7 +2699,7 @@ func TestIdentityClientListUsers(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListWorkRequests(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ListWorkRequests")
 	assert.NoError(t, err)
@@ -2508,7 +2746,7 @@ func TestIdentityClientListWorkRequests(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientRemoveUserFromGroup(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "RemoveUserFromGroup")
 	assert.NoError(t, err)
@@ -2546,7 +2784,7 @@ func TestIdentityClientRemoveUserFromGroup(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientResetIdpScimClient(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "ResetIdpScimClient")
 	assert.NoError(t, err)
@@ -2584,7 +2822,7 @@ func TestIdentityClientResetIdpScimClient(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateAuthToken(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateAuthToken")
 	assert.NoError(t, err)
@@ -2622,7 +2860,7 @@ func TestIdentityClientUpdateAuthToken(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateCompartment(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateCompartment")
 	assert.NoError(t, err)
@@ -2660,7 +2898,7 @@ func TestIdentityClientUpdateCompartment(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateCustomerSecretKey(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateCustomerSecretKey")
 	assert.NoError(t, err)
@@ -2698,7 +2936,7 @@ func TestIdentityClientUpdateCustomerSecretKey(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateDynamicGroup(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateDynamicGroup")
 	assert.NoError(t, err)
@@ -2736,7 +2974,7 @@ func TestIdentityClientUpdateDynamicGroup(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateGroup(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateGroup")
 	assert.NoError(t, err)
@@ -2774,7 +3012,7 @@ func TestIdentityClientUpdateGroup(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateIdentityProvider(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateIdentityProvider")
 	assert.NoError(t, err)
@@ -2826,7 +3064,7 @@ func TestIdentityClientUpdateIdentityProvider(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateIdpGroupMapping(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateIdpGroupMapping")
 	assert.NoError(t, err)
@@ -2864,7 +3102,7 @@ func TestIdentityClientUpdateIdpGroupMapping(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdatePolicy(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdatePolicy")
 	assert.NoError(t, err)
@@ -2902,7 +3140,7 @@ func TestIdentityClientUpdatePolicy(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateSmtpCredential(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateSmtpCredential")
 	assert.NoError(t, err)
@@ -2940,7 +3178,7 @@ func TestIdentityClientUpdateSmtpCredential(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateSwiftPassword(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateSwiftPassword")
 	assert.NoError(t, err)
@@ -2978,7 +3216,7 @@ func TestIdentityClientUpdateSwiftPassword(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateTag(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateTag")
 	assert.NoError(t, err)
@@ -3016,7 +3254,7 @@ func TestIdentityClientUpdateTag(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateTagNamespace(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateTagNamespace")
 	assert.NoError(t, err)
@@ -3054,7 +3292,7 @@ func TestIdentityClientUpdateTagNamespace(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateUser(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateUser")
 	assert.NoError(t, err)
@@ -3092,7 +3330,7 @@ func TestIdentityClientUpdateUser(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateUserCapabilities(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateUserCapabilities")
 	assert.NoError(t, err)
@@ -3130,7 +3368,7 @@ func TestIdentityClientUpdateUserCapabilities(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateUserState(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UpdateUserState")
 	assert.NoError(t, err)
@@ -3168,7 +3406,7 @@ func TestIdentityClientUpdateUserState(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUploadApiKey(t *testing.T) {
 	enabled, err := testClient.isApiEnabled("identity", "UploadApiKey")
 	assert.NoError(t, err)

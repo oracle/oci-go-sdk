@@ -8,11 +8,18 @@ import (
 	"net/http"
 )
 
-// ListAvailabilityDomainsRequest wrapper for the ListAvailabilityDomains operation
-type ListAvailabilityDomainsRequest struct {
+// CreateMfaTotpDeviceRequest wrapper for the CreateMfaTotpDevice operation
+type CreateMfaTotpDeviceRequest struct {
 
-	// The OCID of the compartment (remember that the tenancy is simply the root compartment).
-	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	// The OCID of the user.
+	UserId *string `mandatory:"true" contributesTo:"path" name:"userId"`
+
+	// A token that uniquely identifies a request so it can be retried in case of a timeout or
+	// server error without risk of executing that same action again. Retry tokens expire after 24
+	// hours, but can be invalidated before then due to conflicting operations (e.g., if a resource
+	// has been deleted and purged from the system, then a retry of the original creation request
+	// may be rejected).
+	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.
@@ -23,44 +30,42 @@ type ListAvailabilityDomainsRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request ListAvailabilityDomainsRequest) String() string {
+func (request CreateMfaTotpDeviceRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request ListAvailabilityDomainsRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request CreateMfaTotpDeviceRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request ListAvailabilityDomainsRequest) RetryPolicy() *common.RetryPolicy {
+func (request CreateMfaTotpDeviceRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// ListAvailabilityDomainsResponse wrapper for the ListAvailabilityDomains operation
-type ListAvailabilityDomainsResponse struct {
+// CreateMfaTotpDeviceResponse wrapper for the CreateMfaTotpDevice operation
+type CreateMfaTotpDeviceResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []AvailabilityDomain instance
-	Items []AvailabilityDomain `presentIn:"body"`
+	// The MfaTotpDevice instance
+	MfaTotpDevice `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// For pagination of a list of items. When paging through a list, if this header appears in the response,
-	// then a partial list might have been returned. Include this value as the `page` parameter for the
-	// subsequent GET request to get the next batch of items.
-	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
+	// For optimistic concurrency control. See `if-match`.
+	Etag *string `presentIn:"header" name:"etag"`
 }
 
-func (response ListAvailabilityDomainsResponse) String() string {
+func (response CreateMfaTotpDeviceResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response ListAvailabilityDomainsResponse) HTTPResponse() *http.Response {
+func (response CreateMfaTotpDeviceResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }
