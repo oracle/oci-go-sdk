@@ -38,7 +38,7 @@ func NewNotificationControlPlaneClientWithConfigurationProvider(configProvider c
 
 // SetRegion overrides the region of this client.
 func (client *NotificationControlPlaneClient) SetRegion(region string) {
-	client.Host = common.StringToRegion(region).Endpoint("None")
+	client.Host = common.StringToRegion(region).Endpoint("notification")
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid

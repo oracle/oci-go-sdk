@@ -1449,7 +1449,7 @@
               <additionalProperties>
                 <specName>ons</specName>
                 <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
-                <serviceHostName>None</serviceHostName>
+                <serviceHostName>notification</serviceHostName>
               </additionalProperties>
               <featureIdConfigFile>${feature-id-file}</featureIdConfigFile>
               <featureIdConfigDir>${feature-id-dir}</featureIdConfigDir>
