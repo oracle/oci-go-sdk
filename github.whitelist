@@ -29,6 +29,8 @@
 ^healthchecks/
 ^waas/
 
+^streaming/
+^resourcemanager/
 ^autoscaling/
 ^streaming/
 ^ons/

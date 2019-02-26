@@ -40,6 +40,7 @@
     <telemetry-public-api-spec-spec-file>source/telemetry-api.cond.yaml</telemetry-public-api-spec-spec-file>
     <ons-gateway-spec-spec-file>api.yaml</ons-gateway-spec-spec-file>
     <autoscaling-public-api-spec-spec-file>release/autoscaling-api-spec.yaml</autoscaling-public-api-spec-spec-file>
+    <maestro-spec-spec-file>api.yaml</maestro-spec-spec-file>
   </properties>
   <dependencies>
     <dependency>
@@ -117,6 +118,10 @@
     <dependency>
       <groupId>com.oracle.pic.autoscaling.api</groupId>
       <artifactId>autoscaling-public-api-spec</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.pic.orchestration.orm</groupId>
+      <artifactId>maestro-spec</artifactId>
     </dependency>
   </dependencies>
   <build>
@@ -482,6 +487,24 @@
                   <type>jar</type>
                   <includes>**/*</includes>
                   <outputDirectory>${spec-temp-dir}/autoscaling-public-api-spec</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+          <execution>
+            <id>unpack-maestro-spec</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.oracle.pic.orchestration.orm</groupId>
+                  <artifactId>maestro-spec</artifactId>
+                  <type>jar</type>
+                  <includes>**/*</includes>
+                  <outputDirectory>${spec-temp-dir}/maestro-spec</outputDirectory>
                 </artifactItem>
               </artifactItems>
             </configuration>
@@ -1006,6 +1029,33 @@
               <groupFileCollectionDir>${enabled-groups-dir}</groupFileCollectionDir>
             </configuration>
           </execution>
+          <execution>
+            <id>spec-conditionals-prefer-maestro-spec</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>prefer</goal>
+            </goals>
+            <configuration>
+              <inputFiles>
+                <inputFile>${spec-temp-dir}/maestro-spec/source/${maestro-spec-spec-file}</inputFile>
+                <inputFile>${spec-temp-dir}/maestro-spec/${maestro-spec-spec-file}</inputFile>
+              </inputFiles>
+              <outputFile>${preferred-temp-dir}/maestro-spec/${maestro-spec-spec-file}</outputFile>
+            </configuration>
+          </execution>
+          <execution>
+            <id>spec-conditionals-preprocess-maestro-spec</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>preprocess</goal>
+            </goals>
+            <configuration>
+              <inputFile>${preferred-temp-dir}/maestro-spec/${maestro-spec-spec-file}</inputFile>
+              <outputFile>${preprocessed-temp-dir}/maestro-spec/${maestro-spec-spec-file}</outputFile>
+              <groupFile>${enabled-groups-file}</groupFile>
+              <groupFileCollectionDir>${enabled-groups-dir}</groupFileCollectionDir>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
       <plugin>
@@ -1426,6 +1476,27 @@
               <featureIdConfigDir>${feature-id-dir}</featureIdConfigDir>
             </configuration>
           </execution>
+          <execution>
+            <id>go-public-sdk-maestro-spec</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <language>oracle-go-sdk</language>
+              <specPath>${preprocessed-temp-dir}/maestro-spec/${maestro-spec-spec-file}</specPath>
+              <outputDir>${env.GOPATH}/src/${fullyQualifiedProjectName}</outputDir>
+              <basePackage>resourcemanager</basePackage>
+              <specGenerationType>${generationType}</specGenerationType>
+              <additionalProperties>
+                <specName>resourcemanager</specName>
+                <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>
+                <serviceHostName>resourcemanager</serviceHostName>
+              </additionalProperties>
+              <featureIdConfigFile>${feature-id-file}</featureIdConfigFile>
+              <featureIdConfigDir>${feature-id-dir}</featureIdConfigDir>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
       <plugin>
@@ -1572,6 +1643,12 @@
                 <include>**/*</include>
               </includes>
             </fileset>
+            <fileset>
+              <directory>lib/oci/resourcemanager</directory>
+              <includes>
+                <include>**/*</include>
+              </includes>
+            </fileset>
           </filesets>
         </configuration>
       </plugin>
@@ -1673,6 +1750,11 @@
         <groupId>com.oracle.pic.autoscaling.api</groupId>
         <artifactId>autoscaling-public-api-spec</artifactId>
         <version>0.0.25</version>
+      </dependency>
+      <dependency>
+        <groupId>com.oracle.pic.orchestration.orm</groupId>
+        <artifactId>maestro-spec</artifactId>
+        <version>0.0.8</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
