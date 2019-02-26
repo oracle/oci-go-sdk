@@ -154,6 +154,56 @@ func (client IdentityClient) addUserToGroup(ctx context.Context, request common.
 	return response, err
 }
 
+// ChangeTagNamespaceCompartment Moves the specified tag namespace to the specified compartment within the same tenancy.
+// To move the tag namespace, you must have the manage tag-namespaces permission on both compartments.
+// For more information about IAM policies, see Details for IAM (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Reference/iampolicyreference.htm).
+// Moving a tag namespace moves all the tag key definitions contained in the tag namespace.
+func (client IdentityClient) ChangeTagNamespaceCompartment(ctx context.Context, request ChangeTagNamespaceCompartmentRequest) (response ChangeTagNamespaceCompartmentResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.changeTagNamespaceCompartment, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = ChangeTagNamespaceCompartmentResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ChangeTagNamespaceCompartmentResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ChangeTagNamespaceCompartmentResponse")
+	}
+	return
+}
+
+// changeTagNamespaceCompartment implements the OCIOperation interface (enables retrying operations)
+func (client IdentityClient) changeTagNamespaceCompartment(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/tagNamespaces/{tagNamespaceId}/actions/changeCompartment")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ChangeTagNamespaceCompartmentResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // CreateAuthToken Creates a new auth token for the specified user. For information about what auth tokens are for, see
 // Managing User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Tasks/managingcredentials.htm).
 // You must specify a *description* for the auth token (although it can be an empty string). It does not
