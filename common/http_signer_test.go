@@ -22,11 +22,11 @@ var (
 	testFingerprint    = "20:3b:97:13:55:1c:5b:0d:d3:37:d8:50:4e:c5:3a:34"
 	testComparmentOCID = "ocid1.compartment.oc1..aaaaaaaam3we6vgnherjq5q2idnccdflvjsnog7mlr6rtdb25gilchfeyjxa"
 
-	testURL = "https://iaas.us-phoenix-1.oraclecloud.com/20160918/instances" +
+	testURL = "https://iaas.cloud.oracle.com/20160918/instances" +
 		"?availabilityDomain=Pjwf%3A%20PHX-AD-1&" +
 		"compartmentId=ocid1.compartment.oc1..aaaaaaaam3we6vgnherjq5q2idnccdflvjsnog7mlr6rtdb25gilchfeyjxa" +
 		"&displayName=TeamXInstances&volumeId=ocid1.volume.oc1.phx.abyhqljrgvttnlx73nmrwfaux7kcvzfs3s66izvxf2h4lgvyndsdsnoiwr5q"
-	testURL2 = "https://iaas.us-phoenix-1.oraclecloud.com/20160918/volumeAttachments"
+	testURL2 = "https://iaas.cloud.oracle.com/20160918/volumeAttachments"
 	testBody = `{
     "compartmentId": "ocid1.compartment.oc1..aaaaaaaam3we6vgnherjq5q2idnccdflvjsnog7mlr6rtdb25gilchfeyjxa",
     "instanceId": "ocid1.instance.oc1.phx.abuw4ljrlsfiqw6vzzxb43vyypt4pkodawglp3wqxjqofakrwvou52gb6s5a",
@@ -54,10 +54,10 @@ G6aFKaqQfOXKCyWoUiVknQJAXrlgySFci/2ueKlIE1QqIiLSZ8V8OlpFLRnb1pzI
 		"X-AD-1&compartmentId=ocid1.compartment.oc1..aaaaaaaam3we6vgnherjq5q2i" +
 		"dnccdflvjsnog7mlr6rtdb25gilchfeyjxa&displayName=TeamXInstances&" +
 		"volumeId=ocid1.volume.oc1.phx.abyhqljrgvttnlx73nmrwfaux7kcvzfs3s66izvxf2h4lgvyndsdsnoiwr5q\n" +
-		"host: iaas.us-phoenix-1.oraclecloud.com"
+		"host: iaas.cloud.oracle.com"
 	expectedSigningString2 = `date: Thu, 05 Jan 2014 21:31:40 GMT
 (request-target): post /20160918/volumeAttachments
-host: iaas.us-phoenix-1.oraclecloud.com
+host: iaas.cloud.oracle.com
 content-length: 316
 content-type: application/json
 x-content-sha256: V9Z20UJTvkvpJ50flBzKE32+6m2zJjweHpDMX/U4Uy0=`

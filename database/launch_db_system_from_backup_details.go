@@ -16,13 +16,13 @@ import (
 // LaunchDbSystemFromBackupDetails The representation of LaunchDbSystemFromBackupDetails
 type LaunchDbSystemFromBackupDetails struct {
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the compartment the DB system  belongs in.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment the DB system  belongs in.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The availability domain where the DB system is located.
 	AvailabilityDomain *string `mandatory:"true" json:"availabilityDomain"`
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the subnet the DB system is associated with.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the subnet the DB system is associated with.
 	// **Subnet Restrictions:**
 	// - For bare metal DB systems and for single node virtual machine DB systems, do not use a subnet that overlaps with 192.168.16.16/28.
 	// - For Exadata and virtual machine 2-node RAC DB systems, do not use a subnet that overlaps with 192.168.128.0/20.
@@ -57,7 +57,7 @@ type LaunchDbSystemFromBackupDetails struct {
 	// - Exadata.Half2.184 - Specify a multiple of 4, from 0 to 184.
 	// - Exadata.Full2.368 - Specify a multiple of 8, from 0 to 368.
 	// This parameter is not used for virtual machine DB systems because virtual machine DB systems have a set number of cores for each shape.
-	// For information about the number of cores for a virtual machine DB system shape, see Virtual Machine DB Systems (https://docs.us-phoenix-1.oraclecloud.com/Content/Database/Concepts/overview.htm#virtualmachine)
+	// For information about the number of cores for a virtual machine DB system shape, see Virtual Machine DB Systems (https://docs.cloud.oracle.com/Content/Database/Concepts/overview.htm#virtualmachine)
 	CpuCoreCount *int `mandatory:"true" json:"cpuCoreCount"`
 
 	DbHome *CreateDbHomeFromBackupDetails `mandatory:"true" json:"dbHome"`
@@ -80,7 +80,7 @@ type LaunchDbSystemFromBackupDetails struct {
 	// The user-friendly name for the DB system. The name does not have to be unique.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// The OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm) of the backup network subnet the DB system is associated with. Applicable only to Exadata DB systems.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the backup network subnet the DB system is associated with. Applicable only to Exadata DB systems.
 	// **Subnet Restrictions:** See the subnet restrictions information for **subnetId**.
 	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId"`
 
@@ -107,12 +107,12 @@ type LaunchDbSystemFromBackupDetails struct {
 	NodeCount *int `mandatory:"false" json:"nodeCount"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
-	// For more information, see Resource Tags (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/resourcetags.htm).
+	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).
 	// Example: `{"Department": "Finance"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
-	// For more information, see Resource Tags (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/resourcetags.htm).
+	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).
 	// Example: `{"Operations": {"CostCenter": "42"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 

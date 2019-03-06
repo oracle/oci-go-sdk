@@ -314,7 +314,7 @@ func TestX509FederationClient_ClientHost(t *testing.T) {
 		{
 			// OC1
 			region:   common.StringToRegion("us-phoenix-1"),
-			expected: "auth.us-phoenix-1.oraclecloud.com",
+			expected: "auth.cloud.oracle.com",
 		},
 		{
 			// unknown
