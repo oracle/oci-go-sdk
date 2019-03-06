@@ -12,7 +12,7 @@ func TestEndpoint(t *testing.T) {
 	// OC1
 	region := StringToRegion("us-phoenix-1")
 	endpoint := region.Endpoint("foo")
-	assert.Equal(t, "foo.cloud.oracle.com", endpoint)
+	assert.Equal(t, "foo.us-phoenix-1.oraclecloud.com", endpoint)
 
 	region = StringToRegion("us-ashburn-1")
 	endpoint = region.Endpoint("bar")

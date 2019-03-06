@@ -19,7 +19,7 @@ import (
 // ExampleRawRequest compose a request, sign it and send to server
 func ExampleListUsers_RawRequest() {
 	// build the url
-	url := "https://identity.cloud.oracle.com/20160918/users/?compartmentId=" + *helpers.RootCompartmentID()
+	url := "https://identity.us-phoenix-1.oraclecloud.com/20160918/users/?compartmentId=" + *helpers.RootCompartmentID()
 
 	// create request
 	request, err := http.NewRequest("GET", url, nil)
