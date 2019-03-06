@@ -58,7 +58,7 @@ func (client *IdentityClient) ConfigurationProvider() *common.ConfigurationProvi
 	return client.config
 }
 
-// ActivateMfaTotpDevice Activate the specified MFA TOTP device for the user.
+// ActivateMfaTotpDevice Activates the specified MFA TOTP device for the user. Activation requires manual interaction with the Console.
 func (client IdentityClient) ActivateMfaTotpDevice(ctx context.Context, request ActivateMfaTotpDeviceRequest) (response ActivateMfaTotpDeviceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -156,7 +156,7 @@ func (client IdentityClient) addUserToGroup(ctx context.Context, request common.
 
 // ChangeTagNamespaceCompartment Moves the specified tag namespace to the specified compartment within the same tenancy.
 // To move the tag namespace, you must have the manage tag-namespaces permission on both compartments.
-// For more information about IAM policies, see Details for IAM (https://docs.cloud.oracle.com/Content/Identity/Reference/iampolicyreference.htm).
+// For more information about IAM policies, see Details for IAM (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Reference/iampolicyreference.htm).
 // Moving a tag namespace moves all the tag key definitions contained in the tag namespace.
 func (client IdentityClient) ChangeTagNamespaceCompartment(ctx context.Context, request ChangeTagNamespaceCompartmentRequest) (response ChangeTagNamespaceCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -205,7 +205,7 @@ func (client IdentityClient) changeTagNamespaceCompartment(ctx context.Context, 
 }
 
 // CreateAuthToken Creates a new auth token for the specified user. For information about what auth tokens are for, see
-// Managing User Credentials (https://docs.cloud.oracle.com/Content/Identity/Tasks/managingcredentials.htm).
+// Managing User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Tasks/managingcredentials.htm).
 // You must specify a *description* for the auth token (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with
 // UpdateAuthToken.
@@ -262,11 +262,11 @@ func (client IdentityClient) createAuthToken(ctx context.Context, request common
 // **Important:** Compartments cannot be deleted.
 // Specify the parent compartment's OCID as the compartment ID in the request object. Remember that the tenancy
 // is simply the root compartment. For information about OCIDs, see
-// Resource Identifiers (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).
+// Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the compartment, which must be unique across all compartments in
 // your tenancy. You can use this name or the OCID when writing policies that apply
 // to the compartment. For more information about policies, see
-// How Policies Work (https://docs.cloud.oracle.com/Content/Identity/Concepts/policies.htm).
+// How Policies Work (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policies.htm).
 // You must also specify a *description* for the compartment (although it can be an empty string). It does
 // not have to be unique, and you can change it anytime with
 // UpdateCompartment.
@@ -320,7 +320,7 @@ func (client IdentityClient) createCompartment(ctx context.Context, request comm
 
 // CreateCustomerSecretKey Creates a new secret key for the specified user. Secret keys are used for authentication with the Object Storage Service's Amazon S3
 // compatible API. For information, see
-// Managing User Credentials (https://docs.cloud.oracle.com/Content/Identity/Tasks/managingcredentials.htm).
+// Managing User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Tasks/managingcredentials.htm).
 // You must specify a *description* for the secret key (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with
 // UpdateCustomerSecretKey.
@@ -378,11 +378,11 @@ func (client IdentityClient) createCustomerSecretKey(ctx context.Context, reques
 // is simply the root compartment). Notice that IAM resources (users, groups, compartments, and some policies)
 // reside within the tenancy itself, unlike cloud resources such as compute instances, which typically
 // reside within compartments inside the tenancy. For information about OCIDs, see
-// Resource Identifiers (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).
+// Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the dynamic group, which must be unique across all dynamic groups in your
 // tenancy, and cannot be changed. Note that this name has to be also unique accross all groups in your tenancy.
 // You can use this name or the OCID when writing policies that apply to the dynamic group. For more information
-// about policies, see How Policies Work (https://docs.cloud.oracle.com/Content/Identity/Concepts/policies.htm).
+// about policies, see How Policies Work (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policies.htm).
 // You must also specify a *description* for the dynamic group (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with UpdateDynamicGroup.
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
@@ -438,10 +438,10 @@ func (client IdentityClient) createDynamicGroup(ctx context.Context, request com
 // is simply the root compartment). Notice that IAM resources (users, groups, compartments, and some policies)
 // reside within the tenancy itself, unlike cloud resources such as compute instances, which typically
 // reside within compartments inside the tenancy. For information about OCIDs, see
-// Resource Identifiers (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).
+// Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the group, which must be unique across all groups in your tenancy and
 // cannot be changed. You can use this name or the OCID when writing policies that apply to the group. For more
-// information about policies, see How Policies Work (https://docs.cloud.oracle.com/Content/Identity/Concepts/policies.htm).
+// information about policies, see How Policies Work (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policies.htm).
 // You must also specify a *description* for the group (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with UpdateGroup.
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
@@ -496,10 +496,10 @@ func (client IdentityClient) createGroup(ctx context.Context, request common.OCI
 }
 
 // CreateIdentityProvider Creates a new identity provider in your tenancy. For more information, see
-// Identity Providers and Federation (https://docs.cloud.oracle.com/Content/Identity/Concepts/federation.htm).
+// Identity Providers and Federation (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/federation.htm).
 // You must specify your tenancy's OCID as the compartment ID in the request object.
 // Remember that the tenancy is simply the root compartment. For information about
-// OCIDs, see Resource Identifiers (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).
+// OCIDs, see Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the `IdentityProvider`, which must be unique
 // across all `IdentityProvider` objects in your tenancy and cannot be changed.
 // You must also specify a *description* for the `IdentityProvider` (although
@@ -603,7 +603,7 @@ func (client IdentityClient) createIdpGroupMapping(ctx context.Context, request 
 	return response, err
 }
 
-// CreateMfaTotpDevice Create a new MFA TOTP device for the user. A user can only create one MFA TOTP device.
+// CreateMfaTotpDevice Creates a new MFA TOTP device for the user. A user can have one MFA TOTP device.
 func (client IdentityClient) CreateMfaTotpDevice(ctx context.Context, request CreateMfaTotpDeviceRequest) (response CreateMfaTotpDeviceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -651,7 +651,7 @@ func (client IdentityClient) createMfaTotpDevice(ctx context.Context, request co
 }
 
 // CreateOrResetUIPassword Creates a new Console one-time password for the specified user. For more information about user
-// credentials, see User Credentials (https://docs.cloud.oracle.com/Content/Identity/Concepts/usercredentials.htm).
+// credentials, see User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/usercredentials.htm).
 // Use this operation after creating a new user, or if a user forgets their password. The new one-time
 // password is returned to you in the response, and you must securely deliver it to the user. They'll
 // be prompted to change this password the next time they sign in to the Console. If they don't change
@@ -706,14 +706,14 @@ func (client IdentityClient) createOrResetUIPassword(ctx context.Context, reques
 }
 
 // CreatePolicy Creates a new policy in the specified compartment (either the tenancy or another of your compartments).
-// If you're new to policies, see Getting Started with Policies (https://docs.cloud.oracle.com/Content/Identity/Concepts/policygetstarted.htm).
+// If you're new to policies, see Getting Started with Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policygetstarted.htm).
 // You must specify a *name* for the policy, which must be unique across all policies in your tenancy
 // and cannot be changed.
 // You must also specify a *description* for the policy (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with UpdatePolicy.
 // You must specify one or more policy statements in the statements array. For information about writing
-// policies, see How Policies Work (https://docs.cloud.oracle.com/Content/Identity/Concepts/policies.htm) and
-// Common Policies (https://docs.cloud.oracle.com/Content/Identity/Concepts/commonpolicies.htm).
+// policies, see How Policies Work (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/policies.htm) and
+// Common Policies (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/commonpolicies.htm).
 // After you send your request, the new object's `lifecycleState` will temporarily be CREATING. Before using the
 // object, first make sure its `lifecycleState` has changed to ACTIVE.
 // New policies take effect typically within 10 seconds.
@@ -862,7 +862,7 @@ func (client IdentityClient) createSmtpCredential(ctx context.Context, request c
 
 // CreateSwiftPassword **Deprecated. Use CreateAuthToken instead.**
 // Creates a new Swift password for the specified user. For information about what Swift passwords are for, see
-// Managing User Credentials (https://docs.cloud.oracle.com/Content/Identity/Tasks/managingcredentials.htm).
+// Managing User Credentials (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Tasks/managingcredentials.htm).
 // You must specify a *description* for the Swift password (although it can be an empty string). It does not
 // have to be unique, and you can change it anytime with
 // UpdateSwiftPassword.
@@ -982,7 +982,7 @@ func (client IdentityClient) createTag(ctx context.Context, request common.OCIRe
 // It does not have to be unique, and you can change it with
 // UpdateTagNamespace.
 // Tag namespaces cannot be deleted, but they can be retired.
-// See Retiring Key Definitions and Namespace Definitions (https://docs.cloud.oracle.com/Content/Identity/Concepts/taggingoverview.htm#Retiring) for more information.
+// See Retiring Key Definitions and Namespace Definitions (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/taggingoverview.htm#Retiring) for more information.
 func (client IdentityClient) CreateTagNamespace(ctx context.Context, request CreateTagNamespaceRequest) (response CreateTagNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -1030,12 +1030,12 @@ func (client IdentityClient) createTagNamespace(ctx context.Context, request com
 }
 
 // CreateUser Creates a new user in your tenancy. For conceptual information about users, your tenancy, and other
-// IAM Service components, see Overview of the IAM Service (https://docs.cloud.oracle.com/Content/Identity/Concepts/overview.htm).
+// IAM Service components, see Overview of the IAM Service (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/overview.htm).
 // You must specify your tenancy's OCID as the compartment ID in the request object (remember that the
 // tenancy is simply the root compartment). Notice that IAM resources (users, groups, compartments, and
 // some policies) reside within the tenancy itself, unlike cloud resources such as compute instances,
 // which typically reside within compartments inside the tenancy. For information about OCIDs, see
-// Resource Identifiers (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).
+// Resource Identifiers (https://docs.us-phoenix-1.oraclecloud.com/Content/General/Concepts/identifiers.htm).
 // You must also specify a *name* for the user, which must be unique across all users in your tenancy
 // and cannot be changed. Allowed characters: No spaces. Only letters, numerals, hyphens, periods,
 // underscores, +, and @. If you specify a name that's already in use, you'll get a 409 error.
@@ -1055,7 +1055,7 @@ func (client IdentityClient) createTagNamespace(ctx context.Context, request com
 // CreateOrResetUIPassword).
 // If the user needs to access the Oracle Cloud Infrastructure REST API, you need to upload a
 // public API signing key for that user (see
-// Required Keys and OCIDs (https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm) and also
+// Required Keys and OCIDs (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm) and also
 // UploadApiKey).
 // **Important:** Make sure to inform the new user which compartment(s) they have access to.
 func (client IdentityClient) CreateUser(ctx context.Context, request CreateUserRequest) (response CreateUserResponse, err error) {
@@ -1445,7 +1445,7 @@ func (client IdentityClient) deleteIdpGroupMapping(ctx context.Context, request 
 	return response, err
 }
 
-// DeleteMfaTotpDevice Delete the specified MFA TOTP device for the specified user.
+// DeleteMfaTotpDevice Deletes the specified MFA TOTP device for the specified user.
 func (client IdentityClient) DeleteMfaTotpDevice(ctx context.Context, request DeleteMfaTotpDeviceRequest) (response DeleteMfaTotpDeviceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -1656,7 +1656,7 @@ func (client IdentityClient) deleteUser(ctx context.Context, request common.OCIR
 	return response, err
 }
 
-// GenerateTotpSeed Generate seed for the MFA TOTP device
+// GenerateTotpSeed Generate seed for the MFA TOTP device.
 func (client IdentityClient) GenerateTotpSeed(ctx context.Context, request GenerateTotpSeedRequest) (response GenerateTotpSeedResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -2343,7 +2343,7 @@ func (client IdentityClient) listAuthTokens(ctx context.Context, request common.
 
 // ListAvailabilityDomains Lists the availability domains in your tenancy. Specify the OCID of either the tenancy or another
 // of your compartments as the value for the compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#five).
+// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
 // Note that the order of the results returned can change if availability domains are added or removed; therefore, do not
 // create a dependency on the list order.
 func (client IdentityClient) ListAvailabilityDomains(ctx context.Context, request ListAvailabilityDomainsRequest) (response ListAvailabilityDomainsResponse, err error) {
@@ -2400,7 +2400,7 @@ func (client IdentityClient) listAvailabilityDomains(ctx context.Context, reques
 // tenancy (root compartment). When set to true, the entire hierarchy of compartments can be returned.
 // To get a full list of all compartments and subcompartments in the tenancy (root compartment),
 // set the parameter `compartmentIdInSubtree` to true and `accessLevel` to ANY.
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#five).
+// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
 func (client IdentityClient) ListCompartments(ctx context.Context, request ListCompartmentsRequest) (response ListCompartmentsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -2443,7 +2443,7 @@ func (client IdentityClient) listCompartments(ctx context.Context, request commo
 }
 
 // ListCostTrackingTags Lists all the tags enabled for cost-tracking in the specified tenancy. For information about
-// cost-tracking tags, see Using Cost-tracking Tags (https://docs.cloud.oracle.com/Content/Identity/Concepts/taggingoverview.htm#costs).
+// cost-tracking tags, see Using Cost-tracking Tags (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/taggingoverview.htm#costs).
 func (client IdentityClient) ListCostTrackingTags(ctx context.Context, request ListCostTrackingTagsRequest) (response ListCostTrackingTagsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -2530,7 +2530,7 @@ func (client IdentityClient) listCustomerSecretKeys(ctx context.Context, request
 
 // ListDynamicGroups Lists the dynamic groups in your tenancy. You must specify your tenancy's OCID as the value for
 // the compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#five).
+// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
 func (client IdentityClient) ListDynamicGroups(ctx context.Context, request ListDynamicGroupsRequest) (response ListDynamicGroupsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -2574,7 +2574,7 @@ func (client IdentityClient) listDynamicGroups(ctx context.Context, request comm
 
 // ListFaultDomains Lists the Fault Domains in your tenancy. Specify the OCID of either the tenancy or another
 // of your compartments as the value for the compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#five).
+// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
 func (client IdentityClient) ListFaultDomains(ctx context.Context, request ListFaultDomainsRequest) (response ListFaultDomainsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -2618,7 +2618,7 @@ func (client IdentityClient) listFaultDomains(ctx context.Context, request commo
 
 // ListGroups Lists the groups in your tenancy. You must specify your tenancy's OCID as the value for
 // the compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#five).
+// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
 func (client IdentityClient) ListGroups(ctx context.Context, request ListGroupsRequest) (response ListGroupsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -2721,7 +2721,7 @@ func (m *listidentityprovider) UnmarshalPolymorphicJSON(data []byte) (interface{
 // ListIdentityProviders Lists all the identity providers in your tenancy. You must specify the identity provider type (e.g., `SAML2` for
 // identity providers using the SAML2.0 protocol). You must specify your tenancy's OCID as the value for the
 // compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#five).
+// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
 func (client IdentityClient) ListIdentityProviders(ctx context.Context, request ListIdentityProvidersRequest) (response ListIdentityProvidersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -2806,7 +2806,7 @@ func (client IdentityClient) listIdpGroupMappings(ctx context.Context, request c
 }
 
 // ListMfaTotpDevices Lists the MFA TOTP devices for the specified user. The returned object contains the device's OCID, but not
-// the seed. The seed is returned only upon creation or when we regenerate MFA seed for the device.
+// the seed. The seed is returned only upon creation or when the IAM service regenerates the MFA seed for the device.
 func (client IdentityClient) ListMfaTotpDevices(ctx context.Context, request ListMfaTotpDevicesRequest) (response ListMfaTotpDevicesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -2849,7 +2849,7 @@ func (client IdentityClient) listMfaTotpDevices(ctx context.Context, request com
 }
 
 // ListPolicies Lists the policies in the specified compartment (either the tenancy or another of your compartments).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#five).
+// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
 // To determine which policies apply to a particular group or compartment, you must view the individual
 // statements inside all your policies. There isn't a way to automatically obtain that information via the API.
 func (client IdentityClient) ListPolicies(ctx context.Context, request ListPoliciesRequest) (response ListPoliciesResponse, err error) {
@@ -3144,7 +3144,7 @@ func (client IdentityClient) listTags(ctx context.Context, request common.OCIReq
 
 // ListUserGroupMemberships Lists the `UserGroupMembership` objects in your tenancy. You must specify your tenancy's OCID
 // as the value for the compartment ID
-// (see Where to Get the Tenancy's OCID and User's OCID (https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#five)).
+// (see Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five)).
 // You must also then filter the list in one of these ways:
 // - You can limit the results to just the memberships for a given user by specifying a `userId`.
 // - Similarly, you can limit the results to just the memberships for a given group by specifying a `groupId`.
@@ -3194,7 +3194,7 @@ func (client IdentityClient) listUserGroupMemberships(ctx context.Context, reque
 
 // ListUsers Lists the users in your tenancy. You must specify your tenancy's OCID as the value for the
 // compartment ID (remember that the tenancy is simply the root compartment).
-// See Where to Get the Tenancy's OCID and User's OCID (https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#five).
+// See Where to Get the Tenancy's OCID and User's OCID (https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#five).
 func (client IdentityClient) ListUsers(ctx context.Context, request ListUsersRequest) (response ListUsersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -3831,7 +3831,7 @@ func (client IdentityClient) updateTag(ctx context.Context, request common.OCIRe
 // namespace (changing `isRetired` from 'true' to 'false') does not reactivate tag definitions.
 // To reactivate the tag definitions, you must reactivate each one indvidually *after* you reactivate the namespace,
 // using UpdateTag. For more information about retiring tag namespaces, see
-// Retiring Key Definitions and Namespace Definitions (https://docs.cloud.oracle.com/Content/Identity/Concepts/taggingoverview.htm#Retiring).
+// Retiring Key Definitions and Namespace Definitions (https://docs.us-phoenix-1.oraclecloud.com/Content/Identity/Concepts/taggingoverview.htm#Retiring).
 // You can't add a namespace with the same name as a retired namespace in the same tenancy.
 func (client IdentityClient) UpdateTagNamespace(ctx context.Context, request UpdateTagNamespaceRequest) (response UpdateTagNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
