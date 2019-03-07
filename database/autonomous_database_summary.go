@@ -64,6 +64,9 @@ type AutonomousDatabaseSummary struct {
 
 	// A valid Oracle Database version for Autonomous Database.
 	DbVersion *string `mandatory:"false" json:"dbVersion"`
+
+	// The Autonomous Database workload type.
+	DbWorkload AutonomousDatabaseSummaryDbWorkloadEnum `mandatory:"false" json:"dbWorkload,omitempty"`
 }
 
 func (m AutonomousDatabaseSummary) String() string {
@@ -133,6 +136,29 @@ var mappingAutonomousDatabaseSummaryLicenseModel = map[string]AutonomousDatabase
 func GetAutonomousDatabaseSummaryLicenseModelEnumValues() []AutonomousDatabaseSummaryLicenseModelEnum {
 	values := make([]AutonomousDatabaseSummaryLicenseModelEnum, 0)
 	for _, v := range mappingAutonomousDatabaseSummaryLicenseModel {
+		values = append(values, v)
+	}
+	return values
+}
+
+// AutonomousDatabaseSummaryDbWorkloadEnum Enum with underlying type: string
+type AutonomousDatabaseSummaryDbWorkloadEnum string
+
+// Set of constants representing the allowable values for AutonomousDatabaseSummaryDbWorkloadEnum
+const (
+	AutonomousDatabaseSummaryDbWorkloadOltp AutonomousDatabaseSummaryDbWorkloadEnum = "OLTP"
+	AutonomousDatabaseSummaryDbWorkloadDw   AutonomousDatabaseSummaryDbWorkloadEnum = "DW"
+)
+
+var mappingAutonomousDatabaseSummaryDbWorkload = map[string]AutonomousDatabaseSummaryDbWorkloadEnum{
+	"OLTP": AutonomousDatabaseSummaryDbWorkloadOltp,
+	"DW":   AutonomousDatabaseSummaryDbWorkloadDw,
+}
+
+// GetAutonomousDatabaseSummaryDbWorkloadEnumValues Enumerates the set of values for AutonomousDatabaseSummaryDbWorkloadEnum
+func GetAutonomousDatabaseSummaryDbWorkloadEnumValues() []AutonomousDatabaseSummaryDbWorkloadEnum {
+	values := make([]AutonomousDatabaseSummaryDbWorkloadEnum, 0)
+	for _, v := range mappingAutonomousDatabaseSummaryDbWorkload {
 		values = append(values, v)
 	}
 	return values

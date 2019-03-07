@@ -31,6 +31,9 @@ type CreateAutonomousDatabaseDetails struct {
 	// The password must be between 12 and 30 characters long, and must contain at least 1 uppercase, 1 lowercase, and 1 numeric character. It cannot contain the double quote symbol (") or the username "admin", regardless of casing.
 	AdminPassword *string `mandatory:"true" json:"adminPassword"`
 
+	// The autonomous database workload type.
+	DbWorkload CreateAutonomousDatabaseDetailsDbWorkloadEnum `mandatory:"false" json:"dbWorkload,omitempty"`
+
 	// The user-friendly name for the Autonomous Database. The name does not have to be unique.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
@@ -50,6 +53,29 @@ type CreateAutonomousDatabaseDetails struct {
 
 func (m CreateAutonomousDatabaseDetails) String() string {
 	return common.PointerString(m)
+}
+
+// CreateAutonomousDatabaseDetailsDbWorkloadEnum Enum with underlying type: string
+type CreateAutonomousDatabaseDetailsDbWorkloadEnum string
+
+// Set of constants representing the allowable values for CreateAutonomousDatabaseDetailsDbWorkloadEnum
+const (
+	CreateAutonomousDatabaseDetailsDbWorkloadOltp CreateAutonomousDatabaseDetailsDbWorkloadEnum = "OLTP"
+	CreateAutonomousDatabaseDetailsDbWorkloadDw   CreateAutonomousDatabaseDetailsDbWorkloadEnum = "DW"
+)
+
+var mappingCreateAutonomousDatabaseDetailsDbWorkload = map[string]CreateAutonomousDatabaseDetailsDbWorkloadEnum{
+	"OLTP": CreateAutonomousDatabaseDetailsDbWorkloadOltp,
+	"DW":   CreateAutonomousDatabaseDetailsDbWorkloadDw,
+}
+
+// GetCreateAutonomousDatabaseDetailsDbWorkloadEnumValues Enumerates the set of values for CreateAutonomousDatabaseDetailsDbWorkloadEnum
+func GetCreateAutonomousDatabaseDetailsDbWorkloadEnumValues() []CreateAutonomousDatabaseDetailsDbWorkloadEnum {
+	values := make([]CreateAutonomousDatabaseDetailsDbWorkloadEnum, 0)
+	for _, v := range mappingCreateAutonomousDatabaseDetailsDbWorkload {
+		values = append(values, v)
+	}
+	return values
 }
 
 // CreateAutonomousDatabaseDetailsLicenseModelEnum Enum with underlying type: string
