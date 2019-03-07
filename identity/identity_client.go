@@ -1698,6 +1698,49 @@ func (client IdentityClient) generateTotpSeed(ctx context.Context, request commo
 	return response, err
 }
 
+// GetAuthenticationPolicy Gets the authentication policy for the given tenancy. You must specify your tenant’s OCID as the value for
+// the compartment ID (remember that the tenancy is simply the root compartment).
+func (client IdentityClient) GetAuthenticationPolicy(ctx context.Context, request GetAuthenticationPolicyRequest) (response GetAuthenticationPolicyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getAuthenticationPolicy, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = GetAuthenticationPolicyResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetAuthenticationPolicyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetAuthenticationPolicyResponse")
+	}
+	return
+}
+
+// getAuthenticationPolicy implements the OCIOperation interface (enables retrying operations)
+func (client IdentityClient) getAuthenticationPolicy(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/authenticationPolicies/{compartmentId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetAuthenticationPolicyResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // GetCompartment Gets the specified compartment's information.
 // This operation does not return a list of all the resources inside the compartment. There is no single
 // API operation that does that. Compartments can contain multiple types of resources (instances, block
@@ -3392,6 +3435,48 @@ func (client IdentityClient) updateAuthToken(ctx context.Context, request common
 	}
 
 	var response UpdateAuthTokenResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// UpdateAuthenticationPolicy Updates authentication policy for the specified tenancy
+func (client IdentityClient) UpdateAuthenticationPolicy(ctx context.Context, request UpdateAuthenticationPolicyRequest) (response UpdateAuthenticationPolicyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.updateAuthenticationPolicy, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = UpdateAuthenticationPolicyResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(UpdateAuthenticationPolicyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into UpdateAuthenticationPolicyResponse")
+	}
+	return
+}
+
+// updateAuthenticationPolicy implements the OCIOperation interface (enables retrying operations)
+func (client IdentityClient) updateAuthenticationPolicy(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/authenticationPolicies/{compartmentId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateAuthenticationPolicyResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
