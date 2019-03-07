@@ -77,6 +77,9 @@ type DbSystemSummary struct {
 	// **Subnet Restriction:** See the subnet restrictions information for **subnetId**.
 	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId"`
 
+	// The time zone of the DB system. For details, see DB System Time Zones (https://docs.us-phoenix-1.oraclecloud.com/Content/Database/References/timezones.htm).
+	TimeZone *string `mandatory:"false" json:"timeZone"`
+
 	// The Oracle Database version of the DB system.
 	Version *string `mandatory:"false" json:"version"`
 

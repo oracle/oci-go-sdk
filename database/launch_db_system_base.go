@@ -83,6 +83,9 @@ type LaunchDbSystemBase interface {
 	// **Subnet Restrictions:** See the subnet restrictions information for **subnetId**.
 	GetBackupSubnetId() *string
 
+	// The time zone to use for the DB system. For details, see DB System Time Zones (https://docs.us-phoenix-1.oraclecloud.com/Content/Database/References/timezones.htm).
+	GetTimeZone() *string
+
 	// If true, Sparse Diskgroup is configured for Exadata dbsystem. If False, Sparse diskgroup is not configured.
 	GetSparseDiskgroup() *bool
 
@@ -128,6 +131,7 @@ type launchdbsystembase struct {
 	FaultDomains               []string                          `mandatory:"false" json:"faultDomains"`
 	DisplayName                *string                           `mandatory:"false" json:"displayName"`
 	BackupSubnetId             *string                           `mandatory:"false" json:"backupSubnetId"`
+	TimeZone                   *string                           `mandatory:"false" json:"timeZone"`
 	SparseDiskgroup            *bool                             `mandatory:"false" json:"sparseDiskgroup"`
 	Domain                     *string                           `mandatory:"false" json:"domain"`
 	ClusterName                *string                           `mandatory:"false" json:"clusterName"`
@@ -160,6 +164,7 @@ func (m *launchdbsystembase) UnmarshalJSON(data []byte) error {
 	m.FaultDomains = s.Model.FaultDomains
 	m.DisplayName = s.Model.DisplayName
 	m.BackupSubnetId = s.Model.BackupSubnetId
+	m.TimeZone = s.Model.TimeZone
 	m.SparseDiskgroup = s.Model.SparseDiskgroup
 	m.Domain = s.Model.Domain
 	m.ClusterName = s.Model.ClusterName
@@ -243,6 +248,11 @@ func (m launchdbsystembase) GetDisplayName() *string {
 //GetBackupSubnetId returns BackupSubnetId
 func (m launchdbsystembase) GetBackupSubnetId() *string {
 	return m.BackupSubnetId
+}
+
+//GetTimeZone returns TimeZone
+func (m launchdbsystembase) GetTimeZone() *string {
+	return m.TimeZone
 }
 
 //GetSparseDiskgroup returns SparseDiskgroup

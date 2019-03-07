@@ -84,6 +84,9 @@ type LaunchDbSystemDetails struct {
 	// **Subnet Restrictions:** See the subnet restrictions information for **subnetId**.
 	BackupSubnetId *string `mandatory:"false" json:"backupSubnetId"`
 
+	// The time zone to use for the DB system. For details, see DB System Time Zones (https://docs.us-phoenix-1.oraclecloud.com/Content/Database/References/timezones.htm).
+	TimeZone *string `mandatory:"false" json:"timeZone"`
+
 	// If true, Sparse Diskgroup is configured for Exadata dbsystem. If False, Sparse diskgroup is not configured.
 	SparseDiskgroup *bool `mandatory:"false" json:"sparseDiskgroup"`
 
@@ -162,6 +165,11 @@ func (m LaunchDbSystemDetails) GetBackupSubnetId() *string {
 //GetShape returns Shape
 func (m LaunchDbSystemDetails) GetShape() *string {
 	return m.Shape
+}
+
+//GetTimeZone returns TimeZone
+func (m LaunchDbSystemDetails) GetTimeZone() *string {
+	return m.TimeZone
 }
 
 //GetSparseDiskgroup returns SparseDiskgroup
