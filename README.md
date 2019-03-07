@@ -1,7 +1,8 @@
 # Oracle Cloud Infrastructure Golang SDK
 [![wercker status](https://app.wercker.com/status/09bc4818e7b1d70b04285331a9bdbc41/s/master "wercker status")](https://app.wercker.com/project/byKey/09bc4818e7b1d70b04285331a9bdbc41)
 
-This is the Go SDK for Oracle Cloud Infrastructure. This project is open source and maintained by Oracle Corp. 
+This is the Go SDK for Oracle Cloud Infrastructure. 
+This project is open source and maintained by Oracle Corp. 
 The home page for the project is [here](https://godoc.org/github.com/oracle/oci-go-sdk/).
 >***WARNING:***: To avoid automatically consuming breaking changes if we have to rev the major version of the Go SDK, 
 please consider using the  [Go dependency management tool](https://github.com/golang/dep), or vendoring the SDK. 
