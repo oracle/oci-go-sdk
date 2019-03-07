@@ -970,6 +970,53 @@ func (client IdentityClient) createTag(ctx context.Context, request common.OCIRe
 	return response, err
 }
 
+// CreateTagDefault Creates a new Tag Default in the specified Compartment for the specified Tag Definition.
+func (client IdentityClient) CreateTagDefault(ctx context.Context, request CreateTagDefaultRequest) (response CreateTagDefaultResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.createTagDefault, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = CreateTagDefaultResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(CreateTagDefaultResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into CreateTagDefaultResponse")
+	}
+	return
+}
+
+// createTagDefault implements the OCIOperation interface (enables retrying operations)
+func (client IdentityClient) createTagDefault(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/tagDefaults")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateTagDefaultResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // CreateTagNamespace Creates a new tag namespace in the specified compartment.
 // You must specify the compartment ID in the request object (remember that the tenancy is simply the root
 // compartment).
@@ -1614,6 +1661,48 @@ func (client IdentityClient) deleteSwiftPassword(ctx context.Context, request co
 	return response, err
 }
 
+// DeleteTagDefault Deletes the the specified Tag Default.
+func (client IdentityClient) DeleteTagDefault(ctx context.Context, request DeleteTagDefaultRequest) (response DeleteTagDefaultResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteTagDefault, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = DeleteTagDefaultResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(DeleteTagDefaultResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteTagDefaultResponse")
+	}
+	return
+}
+
+// deleteTagDefault implements the OCIOperation interface (enables retrying operations)
+func (client IdentityClient) deleteTagDefault(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/tagDefaults/{tagDefaultId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteTagDefaultResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // DeleteUser Deletes the specified user. The user must not be in any groups.
 func (client IdentityClient) DeleteUser(ctx context.Context, request DeleteUserRequest) (response DeleteUserResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -2074,6 +2163,48 @@ func (client IdentityClient) getTag(ctx context.Context, request common.OCIReque
 	}
 
 	var response GetTagResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetTagDefault Retrieves the specified Tag Default.
+func (client IdentityClient) GetTagDefault(ctx context.Context, request GetTagDefaultRequest) (response GetTagDefaultResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getTagDefault, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = GetTagDefaultResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetTagDefaultResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetTagDefaultResponse")
+	}
+	return
+}
+
+// getTagDefault implements the OCIOperation interface (enables retrying operations)
+func (client IdentityClient) getTagDefault(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/tagDefaults/{tagDefaultId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetTagDefaultResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
@@ -3101,6 +3232,48 @@ func (client IdentityClient) listSwiftPasswords(ctx context.Context, request com
 	return response, err
 }
 
+// ListTagDefaults Lists the Tag Defaults for Tag Definitions in the specified Compartment.
+func (client IdentityClient) ListTagDefaults(ctx context.Context, request ListTagDefaultsRequest) (response ListTagDefaultsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listTagDefaults, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = ListTagDefaultsResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListTagDefaultsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListTagDefaultsResponse")
+	}
+	return
+}
+
+// listTagDefaults implements the OCIOperation interface (enables retrying operations)
+func (client IdentityClient) listTagDefaults(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/tagDefaults")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListTagDefaultsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // ListTagNamespaces Lists the tag namespaces in the specified compartment.
 func (client IdentityClient) ListTagNamespaces(ctx context.Context, request ListTagNamespacesRequest) (response ListTagNamespacesResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -3899,6 +4072,48 @@ func (client IdentityClient) updateTag(ctx context.Context, request common.OCIRe
 	}
 
 	var response UpdateTagResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// UpdateTagDefault Updates the the specified Tag Default. You can presently update the following fields: `value`.
+func (client IdentityClient) UpdateTagDefault(ctx context.Context, request UpdateTagDefaultRequest) (response UpdateTagDefaultResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.updateTagDefault, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = UpdateTagDefaultResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(UpdateTagDefaultResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into UpdateTagDefaultResponse")
+	}
+	return
+}
+
+// updateTagDefault implements the OCIOperation interface (enables retrying operations)
+func (client IdentityClient) updateTagDefault(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/tagDefaults/{tagDefaultId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateTagDefaultResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
