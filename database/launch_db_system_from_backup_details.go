@@ -40,8 +40,8 @@ type LaunchDbSystemFromBackupDetails struct {
 	// The public key portion of the key pair to use for SSH access to the DB system. Multiple public keys can be provided. The length of the combined keys cannot exceed 40,000 characters.
 	SshPublicKeys []string `mandatory:"true" json:"sshPublicKeys"`
 
-	// The hostname for the DB system. The hostname must begin with an alphabetic character and
-	// can contain a maximum of 30 alphanumeric characters, including hyphens (-).
+	// The hostname for the DB system. The hostname must begin with an alphabetic character, and
+	// can contain alphanumeric characters and hyphens (-). The maximum length of the hostname is 16 characters for bare metal and virtual machine DB systems, and 12 characters for Exadata DB systems.
 	// The maximum length of the combined hostname and domain is 63 characters.
 	// **Note:** The hostname must be unique within the subnet. If it is not unique,
 	// the DB system will fail to provision.
@@ -63,7 +63,7 @@ type LaunchDbSystemFromBackupDetails struct {
 	DbHome *CreateDbHomeFromBackupDetails `mandatory:"true" json:"dbHome"`
 
 	// A fault domain is a grouping of hardware and infrastructure within an availability domain.
-	// fault domains let you distribute your instances so that they are not on the same physical
+	// Fault domains let you distribute your instances so that they are not on the same physical
 	// hardware within a single availability domain. A hardware failure or maintenance
 	// that affects one fault domain does not affect DB systems in other fault domains.
 	// If you do not specify the fault domain, the system selects one for you. To change the fault
