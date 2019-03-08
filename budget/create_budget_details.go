@@ -1,9 +1,9 @@
 // Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
-// BudgetsControlPlane API
+// Budgets API
 //
-// Use the BudgetsControlPlane API to manage budgets and budget alerts.
+// Use the Budgets API to manage budgets and budget alerts.
 //
 
 package budget
@@ -24,7 +24,7 @@ type CreateBudgetDetails struct {
 	// The amount of the budget expressed as a whole number in the currency of the customer's rate card.
 	Amount *float32 `mandatory:"true" json:"amount"`
 
-	// The reset period for the budget. We will start with MONTHLY and look into QUARTERLY and maybe ANNUAL post-MVP.
+	// The reset period for the budget.
 	ResetPeriod CreateBudgetDetailsResetPeriodEnum `mandatory:"true" json:"resetPeriod"`
 
 	// The displayName of the budget.
@@ -33,12 +33,14 @@ type CreateBudgetDetails struct {
 	// The description of the budget.
 	Description *string `mandatory:"false" json:"description"`
 
-	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// Example: `{"bar-key": "value"}`
+	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).
+	// Example: `{"Department": "Finance"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
-	// Usage of predefined tag keys. These predefined keys are scoped to namespaces.
-	// Example: `{"foo-namespace": {"bar-key": "value"}}`
+	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
+	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).
+	// Example: `{"Operations": {"CostCenter": "42"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }
 

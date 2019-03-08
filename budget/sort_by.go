@@ -1,9 +1,9 @@
 // Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
-// BudgetsControlPlane API
+// Budgets API
 //
-// Use the BudgetsControlPlane API to manage budgets and budget alerts.
+// Use the Budgets API to manage budgets and budget alerts.
 //
 
 package budget
