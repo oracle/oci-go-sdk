@@ -81,6 +81,7 @@ test-sdk-only:
 	@(cd $(PROJECT_PATH) && make test)
 
 
+
 release-sdk:
 	@echo "Building oci-go-sdk with major:$(VER_MAJOR) minor:$(VER_MINOR) patch:$(VER_PATCH) tag:$(VER_TAG)"
 	@(cd $(PROJECT_PATH) && VER_MAJOR=$(VER_MAJOR) VER_MINOR=$(VER_MINOR) VER_PATCH=$(VER_PATCH) VER_TAG=$(VER_TAG) make release)
@@ -89,3 +90,5 @@ build: generate build-sdk build-autotest
 	@(cd $(PROJECT_PATH) && make pre-doc)
 
 release: generate release-sdk build-autotest
+
+generate-pipeline: build test-sdk-only
