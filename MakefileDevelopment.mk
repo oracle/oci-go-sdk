@@ -92,4 +92,3 @@ build: generate build-sdk build-autotest
 release: generate release-sdk build-autotest
 
 generate-pipeline: build-sdk build-autotest test-sdk-only
-	@(cd $(PROJECT_PATH) && make pre-doc)
