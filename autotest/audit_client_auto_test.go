@@ -24,6 +24,8 @@ func createAuditClientWithProvider(p common.ConfigurationProvider, testConfig Te
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestAuditClientGetConfiguration(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("audit", "GetConfiguration")
 	assert.NoError(t, err)
 	if !enabled {
@@ -43,7 +45,10 @@ func TestAuditClientGetConfiguration(t *testing.T) {
 	}
 
 	var requests []GetConfigurationRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -62,6 +67,8 @@ func TestAuditClientGetConfiguration(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestAuditClientListEvents(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("audit", "ListEvents")
 	assert.NoError(t, err)
 	if !enabled {
@@ -81,7 +88,10 @@ func TestAuditClientListEvents(t *testing.T) {
 	}
 
 	var requests []ListEventsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -109,6 +119,8 @@ func TestAuditClientListEvents(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestAuditClientUpdateConfiguration(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("audit", "UpdateConfiguration")
 	assert.NoError(t, err)
 	if !enabled {
@@ -128,7 +140,10 @@ func TestAuditClientUpdateConfiguration(t *testing.T) {
 	}
 
 	var requests []UpdateConfigurationRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy

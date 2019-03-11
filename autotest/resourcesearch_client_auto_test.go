@@ -24,6 +24,8 @@ func createResourceSearchClientWithProvider(p common.ConfigurationProvider, test
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestResourceSearchClientGetResourceType(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("resourcesearch", "GetResourceType")
 	assert.NoError(t, err)
 	if !enabled {
@@ -43,7 +45,10 @@ func TestResourceSearchClientGetResourceType(t *testing.T) {
 	}
 
 	var requests []GetResourceTypeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -62,6 +67,8 @@ func TestResourceSearchClientGetResourceType(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestResourceSearchClientListResourceTypes(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("resourcesearch", "ListResourceTypes")
 	assert.NoError(t, err)
 	if !enabled {
@@ -81,7 +88,10 @@ func TestResourceSearchClientListResourceTypes(t *testing.T) {
 	}
 
 	var requests []ListResourceTypesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -109,6 +119,8 @@ func TestResourceSearchClientListResourceTypes(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestResourceSearchClientSearchResources(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("resourcesearch", "SearchResources")
 	assert.NoError(t, err)
 	if !enabled {

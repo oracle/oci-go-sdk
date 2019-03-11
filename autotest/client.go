@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/oracle/oci-go-sdk/common"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -16,6 +17,7 @@ import (
 	"os"
 	"path"
 	"reflect"
+	"runtime/debug"
 	"strconv"
 	"strings"
 	"testing"
@@ -99,10 +101,11 @@ func failIfError(t *testing.T, e error) {
 
 //OCITestClient a client for the oci-testing-service
 type OCITestClient struct {
-	HTTPClient      http.Client
-	ServiceEndpoint string
-	SessionID       string
-	Log             *log.Logger
+	HTTPClient       http.Client
+	ServiceEndpoint  string
+	SessionID        string
+	Log              *log.Logger
+	IgnoreHttpBodies bool
 }
 
 //NewOCITestClient creates a client for the oci-testing-service
@@ -247,6 +250,11 @@ func (client OCITestClient) validateResult(containerId string, request interface
 
 // validateError the result of SDK API call for failure case
 func (client OCITestClient) validateError(containerId string, req interface{}, responseError error) (string, error) {
+	client.Log.Println("Validating error")
+	if _, ok := common.IsServiceError(responseError); !ok {
+		return "", fmt.Errorf("client side error: %s", responseError.Error())
+	}
+
 	data := ErrorToValidate{ContainerID: containerId}
 
 	var err error
@@ -256,16 +264,15 @@ func (client OCITestClient) validateError(containerId string, req interface{}, r
 	if err != nil {
 		return "", err
 	}
+
 	data.ErrorJSON, err = marshal(reflect.ValueOf(responseError))
 	if err != nil {
 		return "", err
 	}
 
-	client.Log.Println("Error:" + data.ErrorJSON)
-
 	body, _ := json.Marshal(data)
 
-	client.Log.Println("ErrorToValidate:" + string(body))
+	client.Log.Println("ErrorToValidate:" + prettyJson(body))
 
 	endpoint := pathJoin(client.ServiceEndpoint, fmt.Sprintf("error?sessionId=%s", client.SessionID))
 	request, err := http.NewRequest("POST", endpoint, bytes.NewReader(body))
@@ -331,7 +338,7 @@ func (client *OCITestClient) marshalResponse(res interface{}) (isListResponse bo
 }
 
 func (client *OCITestClient) callValidate(body []byte) (string, error) {
-	client.Log.Println("DataToValidate:", string(body))
+	client.Log.Println("DataToValidate:", prettyJson(body))
 
 	endpoint := pathJoin(client.ServiceEndpoint, fmt.Sprintf("response?sessionId=%s", client.SessionID))
 	request, err := http.NewRequest("POST", endpoint, bytes.NewReader(body))
@@ -378,6 +385,7 @@ func (client OCITestClient) endSession() error {
 		return fmt.Errorf("can not end session if none has been started")
 	}
 
+	client.Log.Println("Terminating session: ", client.SessionID)
 	endpoint := pathJoin(client.ServiceEndpoint, "sessions", client.SessionID)
 	request, err := http.NewRequest("DELETE", endpoint, nil)
 	if err != nil {
@@ -412,7 +420,7 @@ func (client OCITestClient) getRequests(serviceName string, apiName string) (str
 		return "", err
 	}
 
-	client.Log.Println("Server sent requests:" + string(body))
+	client.Log.Println("Server sent requests:" + prettyJson(body))
 	return string(body), nil
 }
 
@@ -471,18 +479,18 @@ func (client OCITestClient) generateListResponses(request common.OCIRequest,
 
 func (client OCITestClient) callService(request *http.Request) (body []byte, err error) {
 
+	requestLog, _ := httputil.DumpRequestOut(request, !client.IgnoreHttpBodies)
 	response, err := client.HTTPClient.Do(request)
 	if err != nil {
+		client.Log.Printf("===HttpWiredata\nRequest %s\n===EndWireData", requestLog)
 		return nil, err
 	}
 
-	requestLog, _ := httputil.DumpRequest(request, true)
-	client.Log.Println("Request: " + string(requestLog))
-
 	defer response.Body.Close()
+	responseLog, _ := httputil.DumpResponse(response, !client.IgnoreHttpBodies)
 
-	responseLog, _ := httputil.DumpResponse(response, true)
-	client.Log.Println("Response: " + string(responseLog))
+	httpWireData := fmt.Sprintf("====HttpWiredata\nRequest: %s\nResponse: %s\nEndWireData=====", requestLog, responseLog)
+	client.Log.Println(httpWireData)
 
 	err = checkHttpResponse(response)
 	if err != nil {
@@ -558,12 +566,29 @@ func marshalStruct(val reflect.Value) (string, error) {
 				//	fmt.Println("ignoring: ", sf.Name, " is empty")
 				continue
 			}
-			bs, e := json.Marshal(sv.Interface())
+
+			var bs []byte
+			var e error
+			valToMarshal := sv.Interface()
+			fieldName := sf.Name
+			if rc, ok := valToMarshal.(io.ReadCloser); ok {
+				valToMarshal, e = ioutil.ReadAll(rc)
+				if e != nil {
+					return "", e
+				}
+
+				//https://jira.oci.oraclecorp.com/browse/DEX-5466
+				if fieldName == "Content" {
+					fieldName = "inputstream"
+				}
+			}
+
+			bs, e = json.Marshal(valToMarshal)
 			if e != nil {
 				return "", e
 			}
 			allFieldsMarshaled = append(allFieldsMarshaled,
-				fmt.Sprintf(`"%s":%s`, uncapitalize(sf.Name), string(bs)))
+				fmt.Sprintf(`"%s":%s`, uncapitalize(fieldName), string(bs)))
 		}
 	}
 
@@ -785,6 +810,167 @@ func recursiveStructCopy(srcData interface{}, dstValue reflect.Value, polymorphi
 	return nil
 }
 
+// unmarshalRequestInfo unmarshals request information type data structures, returns a list of requestInfo data structures unmarshalled or an error
+// a requestInfo type data structures are structures containing metadata information at the top level and a json object
+// representing a request. The json object representing the request usually contains the json values flattened in the body, see unmarshalRequestEmbeddedJson
+// Usually modeled as
+// type requestInfo  struct {
+// 		ContainerId string 				<=== First field Named "ContainerId"
+//		Request  *some request type* 	<==== Second field named "Request"
+//}
+func unmarshalRequestInfo(holder []map[string]interface{}, requestInfo interface{}, logger *log.Logger) error {
+	var err error
+	if holder == nil {
+		return fmt.Errorf("data to be unmarshaled can not be nil")
+	}
+
+	pointerSliceType := reflect.ValueOf(requestInfo).Type()
+	if pointerSliceType.Kind() != reflect.Ptr {
+		return fmt.Errorf("Type of requestInfo needs to be a pointer")
+	}
+
+	listRequest := reflect.ValueOf(requestInfo).Elem()
+	sliceType := pointerSliceType.Elem()
+	elemType := sliceType.Elem()
+
+	for _, val := range holder {
+		newRequestInfo := reflect.New(elemType)
+		containerId := findValWithKeys(val, "containerId", "ContainerId").(string)
+		newRequestInfo.Elem().FieldByName("ContainerId").SetString(containerId)
+
+		requestField := newRequestInfo.Elem().FieldByName("Request")
+		bts, _ := json.Marshal(findValWithKeys(val, "request", "Request"))
+		err = unmarshalRequestEmbeddedJson(requestField.Addr().Interface(), bts, true, logger)
+		if err != nil {
+			return err
+		}
+		listRequest.Set(reflect.Append(listRequest, newRequestInfo.Elem()))
+	}
+	return nil
+}
+
+//unmarshalRequestEmbeddedJson unmarshals a json payload that contain embedded values to an struct with matching embedded fields
+// Iterates over fields of the request,
+// if there is an anonymous body field collect all embedded json values in a map
+// marshal that map back to  to json
+// unmarshal the map to the proper field marked as body
+// for all other fields umarshal them from values whose keys match the field name
+func unmarshalRequestEmbeddedJson(request interface{}, data []byte, embeddedValues bool, logger *log.Logger) (err error) {
+	if embeddedValues == false {
+		return fmt.Errorf("only embedded or flatten json values are supported at this point")
+	}
+
+	if logger == nil {
+		logger = log.New(os.Stderr, "", 0)
+	}
+
+	//umarshal to map
+	var holder map[string]interface{}
+	err = json.Unmarshal(data, &holder)
+	if err != nil {
+		return
+	}
+
+	if len(holder) == 0 {
+		logger.Println("skipping unmarshaling, data is empty")
+		return
+	}
+
+	val := reflect.ValueOf(request).Elem()
+	typ := val.Type()
+	for i := 0; i < typ.NumField(); i++ {
+		structField := typ.Field(i)
+
+		//unexported
+		if structField.PkgPath != "" {
+			continue
+		}
+
+		tag := structField.Tag.Get("contributesTo")
+		fieldName := structField.Name
+		fieldValue := val.Field(i)
+
+		//If field is anonymous and contains body data
+		if structField.Anonymous && tag == "body" {
+			var exportedFieldNames []string
+			// Get all exported subfields names of this struct field
+			exportedFieldNames, err = getAllExportedFieldNamesOfStruct(fieldValue)
+			if err != nil {
+				return
+			}
+
+			//Find keys in the map that match the above field names. And put them in a map
+			structOnlyMap := filterKeyValues(holder, exportedFieldNames...)
+			if len(structOnlyMap) == 0 {
+				logger.Printf("did not find any values in json for fields: %v. Skipping", exportedFieldNames)
+				continue
+			}
+
+			//Marshal that map to json
+			var jsonStructOnly []byte
+			jsonStructOnly, err = json.Marshal(structOnlyMap)
+			logger.Printf("for field: %v will unmarshal data: %v", fieldName, string(jsonStructOnly))
+			if err != nil {
+				return fmt.Errorf("could not marshal: %v to json while unmarshaling field: %v, due to: %v", structOnlyMap, fieldName, err)
+			}
+
+			//Finally unmarshal json into proper field
+			err = json.Unmarshal(jsonStructOnly, fieldValue.Addr().Interface())
+			if err != nil {
+				return fmt.Errorf("could not unmarshal into field: %s with json: %v. Due to: %v", fieldName, string(jsonStructOnly), err)
+			}
+			continue
+		}
+
+		//Otherwise try to unmarshal into the field
+		if fieldVal := findValWithKeys(holder, fieldName, uncapitalize(fieldName)); fieldVal != nil {
+			fieldByteData, _ := json.Marshal(fieldVal)
+			logger.Printf("unmarshaling field: %s, with type: %s with data: %v\n", fieldName, fieldValue.Type().Name(), string(fieldByteData))
+			readCloserType := reflect.TypeOf((*io.ReadCloser)(nil)).Elem()
+			if fieldValue.Type() == readCloserType {
+				logger.Printf("unmarshaling binary content to a ReadCloser")
+				buffer := bytes.NewBuffer(fieldByteData)
+				fieldValue.Set(reflect.ValueOf(ioutil.NopCloser(buffer)))
+
+				//TODO the testing service is not passing content len here
+				if lenVal := val.FieldByName("ContentLength"); lenVal.IsValid() {
+					logger.Println("WARN-- forcing the Content Length to be set")
+					contentLen := int64(buffer.Len())
+					lenVal.Set(reflect.ValueOf(&contentLen))
+				}
+			} else {
+				err = json.Unmarshal(fieldByteData, fieldValue.Addr().Interface())
+			}
+		} else {
+			logger.Printf("not found data for field: %s.Skipping\n", fieldName)
+		}
+	}
+	return nil
+}
+
+func getAllExportedFieldNamesOfStruct(structValue reflect.Value) (allFieldNames []string, err error) {
+	structType := structValue.Type()
+	for i := 0; i < structType.NumField(); i++ {
+		structField := structType.Field(i)
+		//unexported
+		if structField.PkgPath != "" {
+			continue
+		}
+		allFieldNames = append(allFieldNames, structField.Name)
+	}
+	return
+}
+
+func filterKeyValues(src map[string]interface{}, fieldNames ...string) (dst map[string]interface{}) {
+	dst = make(map[string]interface{})
+	for _, fieldName := range fieldNames {
+		if val := findValWithKeys(src, fieldName, uncapitalize(fieldName)); val != nil {
+			dst[uncapitalize(fieldName)] = val
+		}
+	}
+	return
+}
+
 func findValWithKeys(data map[string]interface{}, keys ...string) interface{} {
 	for _, k := range keys {
 		if val, ok := data[k]; ok {
@@ -792,4 +978,20 @@ func findValWithKeys(data map[string]interface{}, keys ...string) interface{} {
 		}
 	}
 	return nil
+}
+
+func prettyJson(jsonstring []byte) string {
+	var buffer bytes.Buffer
+	err := json.Indent(&buffer, jsonstring, "", "\t")
+	if err != nil {
+		return string(jsonstring)
+	}
+	return string(buffer.Bytes())
+}
+
+func failTestOnPanic(t *testing.T) {
+	if r := recover(); r != nil {
+		e := fmt.Errorf("failed due to panic: %s %s", r, debug.Stack())
+		t.Error(e)
+	}
 }

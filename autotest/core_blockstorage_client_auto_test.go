@@ -24,6 +24,8 @@ func createBlockstorageClientWithProvider(p common.ConfigurationProvider, testCo
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientCopyVolumeBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CopyVolumeBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -43,7 +45,10 @@ func TestBlockstorageClientCopyVolumeBackup(t *testing.T) {
 	}
 
 	var requests []CopyVolumeBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -62,6 +67,8 @@ func TestBlockstorageClientCopyVolumeBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientCreateBootVolume(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateBootVolume")
 	assert.NoError(t, err)
 	if !enabled {
@@ -81,7 +88,10 @@ func TestBlockstorageClientCreateBootVolume(t *testing.T) {
 	}
 
 	var requests []CreateBootVolumeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -100,6 +110,8 @@ func TestBlockstorageClientCreateBootVolume(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientCreateBootVolumeBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateBootVolumeBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -119,7 +131,10 @@ func TestBlockstorageClientCreateBootVolumeBackup(t *testing.T) {
 	}
 
 	var requests []CreateBootVolumeBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -138,6 +153,8 @@ func TestBlockstorageClientCreateBootVolumeBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientCreateVolume(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateVolume")
 	assert.NoError(t, err)
 	if !enabled {
@@ -157,7 +174,10 @@ func TestBlockstorageClientCreateVolume(t *testing.T) {
 	}
 
 	var requests []CreateVolumeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -176,6 +196,8 @@ func TestBlockstorageClientCreateVolume(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientCreateVolumeBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateVolumeBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -195,7 +217,10 @@ func TestBlockstorageClientCreateVolumeBackup(t *testing.T) {
 	}
 
 	var requests []CreateVolumeBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -214,6 +239,8 @@ func TestBlockstorageClientCreateVolumeBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientCreateVolumeBackupPolicyAssignment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateVolumeBackupPolicyAssignment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -233,7 +260,10 @@ func TestBlockstorageClientCreateVolumeBackupPolicyAssignment(t *testing.T) {
 	}
 
 	var requests []CreateVolumeBackupPolicyAssignmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -252,6 +282,8 @@ func TestBlockstorageClientCreateVolumeBackupPolicyAssignment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientCreateVolumeGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateVolumeGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -271,7 +303,10 @@ func TestBlockstorageClientCreateVolumeGroup(t *testing.T) {
 	}
 
 	var requests []CreateVolumeGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -290,6 +325,8 @@ func TestBlockstorageClientCreateVolumeGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientCreateVolumeGroupBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateVolumeGroupBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -309,7 +346,10 @@ func TestBlockstorageClientCreateVolumeGroupBackup(t *testing.T) {
 	}
 
 	var requests []CreateVolumeGroupBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -328,6 +368,8 @@ func TestBlockstorageClientCreateVolumeGroupBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientDeleteBootVolume(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteBootVolume")
 	assert.NoError(t, err)
 	if !enabled {
@@ -347,7 +389,10 @@ func TestBlockstorageClientDeleteBootVolume(t *testing.T) {
 	}
 
 	var requests []DeleteBootVolumeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -366,6 +411,8 @@ func TestBlockstorageClientDeleteBootVolume(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientDeleteBootVolumeBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteBootVolumeBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -385,7 +432,10 @@ func TestBlockstorageClientDeleteBootVolumeBackup(t *testing.T) {
 	}
 
 	var requests []DeleteBootVolumeBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -404,6 +454,8 @@ func TestBlockstorageClientDeleteBootVolumeBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientDeleteBootVolumeKmsKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteBootVolumeKmsKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -423,7 +475,10 @@ func TestBlockstorageClientDeleteBootVolumeKmsKey(t *testing.T) {
 	}
 
 	var requests []DeleteBootVolumeKmsKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -442,6 +497,8 @@ func TestBlockstorageClientDeleteBootVolumeKmsKey(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientDeleteVolume(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteVolume")
 	assert.NoError(t, err)
 	if !enabled {
@@ -461,7 +518,10 @@ func TestBlockstorageClientDeleteVolume(t *testing.T) {
 	}
 
 	var requests []DeleteVolumeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -480,6 +540,8 @@ func TestBlockstorageClientDeleteVolume(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientDeleteVolumeBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteVolumeBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -499,7 +561,10 @@ func TestBlockstorageClientDeleteVolumeBackup(t *testing.T) {
 	}
 
 	var requests []DeleteVolumeBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -518,6 +583,8 @@ func TestBlockstorageClientDeleteVolumeBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientDeleteVolumeBackupPolicyAssignment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteVolumeBackupPolicyAssignment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -537,7 +604,10 @@ func TestBlockstorageClientDeleteVolumeBackupPolicyAssignment(t *testing.T) {
 	}
 
 	var requests []DeleteVolumeBackupPolicyAssignmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -556,6 +626,8 @@ func TestBlockstorageClientDeleteVolumeBackupPolicyAssignment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientDeleteVolumeGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteVolumeGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -575,7 +647,10 @@ func TestBlockstorageClientDeleteVolumeGroup(t *testing.T) {
 	}
 
 	var requests []DeleteVolumeGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -594,6 +669,8 @@ func TestBlockstorageClientDeleteVolumeGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientDeleteVolumeGroupBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteVolumeGroupBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -613,7 +690,10 @@ func TestBlockstorageClientDeleteVolumeGroupBackup(t *testing.T) {
 	}
 
 	var requests []DeleteVolumeGroupBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -632,6 +712,8 @@ func TestBlockstorageClientDeleteVolumeGroupBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientDeleteVolumeKmsKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteVolumeKmsKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -651,7 +733,10 @@ func TestBlockstorageClientDeleteVolumeKmsKey(t *testing.T) {
 	}
 
 	var requests []DeleteVolumeKmsKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -670,6 +755,8 @@ func TestBlockstorageClientDeleteVolumeKmsKey(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientGetBootVolume(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetBootVolume")
 	assert.NoError(t, err)
 	if !enabled {
@@ -689,7 +776,10 @@ func TestBlockstorageClientGetBootVolume(t *testing.T) {
 	}
 
 	var requests []GetBootVolumeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -708,6 +798,8 @@ func TestBlockstorageClientGetBootVolume(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientGetBootVolumeBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetBootVolumeBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -727,7 +819,10 @@ func TestBlockstorageClientGetBootVolumeBackup(t *testing.T) {
 	}
 
 	var requests []GetBootVolumeBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -746,6 +841,8 @@ func TestBlockstorageClientGetBootVolumeBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientGetBootVolumeKmsKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetBootVolumeKmsKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -765,7 +862,10 @@ func TestBlockstorageClientGetBootVolumeKmsKey(t *testing.T) {
 	}
 
 	var requests []GetBootVolumeKmsKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -784,6 +884,8 @@ func TestBlockstorageClientGetBootVolumeKmsKey(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientGetVolume(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetVolume")
 	assert.NoError(t, err)
 	if !enabled {
@@ -803,7 +905,10 @@ func TestBlockstorageClientGetVolume(t *testing.T) {
 	}
 
 	var requests []GetVolumeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -822,6 +927,8 @@ func TestBlockstorageClientGetVolume(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientGetVolumeBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetVolumeBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -841,7 +948,10 @@ func TestBlockstorageClientGetVolumeBackup(t *testing.T) {
 	}
 
 	var requests []GetVolumeBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -860,6 +970,8 @@ func TestBlockstorageClientGetVolumeBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientGetVolumeBackupPolicy(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetVolumeBackupPolicy")
 	assert.NoError(t, err)
 	if !enabled {
@@ -879,7 +991,10 @@ func TestBlockstorageClientGetVolumeBackupPolicy(t *testing.T) {
 	}
 
 	var requests []GetVolumeBackupPolicyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -898,6 +1013,8 @@ func TestBlockstorageClientGetVolumeBackupPolicy(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientGetVolumeBackupPolicyAssetAssignment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetVolumeBackupPolicyAssetAssignment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -917,7 +1034,10 @@ func TestBlockstorageClientGetVolumeBackupPolicyAssetAssignment(t *testing.T) {
 	}
 
 	var requests []GetVolumeBackupPolicyAssetAssignmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -945,6 +1065,8 @@ func TestBlockstorageClientGetVolumeBackupPolicyAssetAssignment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientGetVolumeBackupPolicyAssignment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetVolumeBackupPolicyAssignment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -964,7 +1086,10 @@ func TestBlockstorageClientGetVolumeBackupPolicyAssignment(t *testing.T) {
 	}
 
 	var requests []GetVolumeBackupPolicyAssignmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -983,6 +1108,8 @@ func TestBlockstorageClientGetVolumeBackupPolicyAssignment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientGetVolumeGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetVolumeGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1002,7 +1129,10 @@ func TestBlockstorageClientGetVolumeGroup(t *testing.T) {
 	}
 
 	var requests []GetVolumeGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1021,6 +1151,8 @@ func TestBlockstorageClientGetVolumeGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientGetVolumeGroupBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetVolumeGroupBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1040,7 +1172,10 @@ func TestBlockstorageClientGetVolumeGroupBackup(t *testing.T) {
 	}
 
 	var requests []GetVolumeGroupBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1059,6 +1194,8 @@ func TestBlockstorageClientGetVolumeGroupBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientGetVolumeKmsKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetVolumeKmsKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1078,7 +1215,10 @@ func TestBlockstorageClientGetVolumeKmsKey(t *testing.T) {
 	}
 
 	var requests []GetVolumeKmsKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1097,6 +1237,8 @@ func TestBlockstorageClientGetVolumeKmsKey(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientListBootVolumeBackups(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListBootVolumeBackups")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1116,7 +1258,10 @@ func TestBlockstorageClientListBootVolumeBackups(t *testing.T) {
 	}
 
 	var requests []ListBootVolumeBackupsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1144,6 +1289,8 @@ func TestBlockstorageClientListBootVolumeBackups(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientListBootVolumes(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListBootVolumes")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1163,7 +1310,10 @@ func TestBlockstorageClientListBootVolumes(t *testing.T) {
 	}
 
 	var requests []ListBootVolumesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1191,6 +1341,8 @@ func TestBlockstorageClientListBootVolumes(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientListVolumeBackupPolicies(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListVolumeBackupPolicies")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1210,7 +1362,10 @@ func TestBlockstorageClientListVolumeBackupPolicies(t *testing.T) {
 	}
 
 	var requests []ListVolumeBackupPoliciesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1238,6 +1393,8 @@ func TestBlockstorageClientListVolumeBackupPolicies(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientListVolumeBackups(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListVolumeBackups")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1257,7 +1414,10 @@ func TestBlockstorageClientListVolumeBackups(t *testing.T) {
 	}
 
 	var requests []ListVolumeBackupsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1285,6 +1445,8 @@ func TestBlockstorageClientListVolumeBackups(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientListVolumeGroupBackups(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListVolumeGroupBackups")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1304,7 +1466,10 @@ func TestBlockstorageClientListVolumeGroupBackups(t *testing.T) {
 	}
 
 	var requests []ListVolumeGroupBackupsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1332,6 +1497,8 @@ func TestBlockstorageClientListVolumeGroupBackups(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientListVolumeGroups(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListVolumeGroups")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1351,7 +1518,10 @@ func TestBlockstorageClientListVolumeGroups(t *testing.T) {
 	}
 
 	var requests []ListVolumeGroupsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1379,6 +1549,8 @@ func TestBlockstorageClientListVolumeGroups(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientListVolumes(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListVolumes")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1398,7 +1570,10 @@ func TestBlockstorageClientListVolumes(t *testing.T) {
 	}
 
 	var requests []ListVolumesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1426,6 +1601,8 @@ func TestBlockstorageClientListVolumes(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientUpdateBootVolume(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateBootVolume")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1445,7 +1622,10 @@ func TestBlockstorageClientUpdateBootVolume(t *testing.T) {
 	}
 
 	var requests []UpdateBootVolumeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1464,6 +1644,8 @@ func TestBlockstorageClientUpdateBootVolume(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientUpdateBootVolumeBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateBootVolumeBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1483,7 +1665,10 @@ func TestBlockstorageClientUpdateBootVolumeBackup(t *testing.T) {
 	}
 
 	var requests []UpdateBootVolumeBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1502,6 +1687,8 @@ func TestBlockstorageClientUpdateBootVolumeBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientUpdateBootVolumeKmsKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateBootVolumeKmsKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1521,7 +1708,10 @@ func TestBlockstorageClientUpdateBootVolumeKmsKey(t *testing.T) {
 	}
 
 	var requests []UpdateBootVolumeKmsKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1540,6 +1730,8 @@ func TestBlockstorageClientUpdateBootVolumeKmsKey(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientUpdateVolume(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateVolume")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1559,7 +1751,10 @@ func TestBlockstorageClientUpdateVolume(t *testing.T) {
 	}
 
 	var requests []UpdateVolumeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1578,6 +1773,8 @@ func TestBlockstorageClientUpdateVolume(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientUpdateVolumeBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateVolumeBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1597,7 +1794,10 @@ func TestBlockstorageClientUpdateVolumeBackup(t *testing.T) {
 	}
 
 	var requests []UpdateVolumeBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1616,6 +1816,8 @@ func TestBlockstorageClientUpdateVolumeBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientUpdateVolumeGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateVolumeGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1635,7 +1837,10 @@ func TestBlockstorageClientUpdateVolumeGroup(t *testing.T) {
 	}
 
 	var requests []UpdateVolumeGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1654,6 +1859,8 @@ func TestBlockstorageClientUpdateVolumeGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientUpdateVolumeGroupBackup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateVolumeGroupBackup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1673,7 +1880,10 @@ func TestBlockstorageClientUpdateVolumeGroupBackup(t *testing.T) {
 	}
 
 	var requests []UpdateVolumeGroupBackupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1692,6 +1902,8 @@ func TestBlockstorageClientUpdateVolumeGroupBackup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestBlockstorageClientUpdateVolumeKmsKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateVolumeKmsKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1711,7 +1923,10 @@ func TestBlockstorageClientUpdateVolumeKmsKey(t *testing.T) {
 	}
 
 	var requests []UpdateVolumeKmsKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy

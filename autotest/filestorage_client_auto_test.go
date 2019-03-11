@@ -24,6 +24,8 @@ func createFileStorageClientWithProvider(p common.ConfigurationProvider, testCon
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientCreateExport(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "CreateExport")
 	assert.NoError(t, err)
 	if !enabled {
@@ -43,7 +45,10 @@ func TestFileStorageClientCreateExport(t *testing.T) {
 	}
 
 	var requests []CreateExportRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -62,6 +67,8 @@ func TestFileStorageClientCreateExport(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientCreateFileSystem(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "CreateFileSystem")
 	assert.NoError(t, err)
 	if !enabled {
@@ -81,7 +88,10 @@ func TestFileStorageClientCreateFileSystem(t *testing.T) {
 	}
 
 	var requests []CreateFileSystemRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -100,6 +110,8 @@ func TestFileStorageClientCreateFileSystem(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientCreateMountTarget(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "CreateMountTarget")
 	assert.NoError(t, err)
 	if !enabled {
@@ -119,7 +131,10 @@ func TestFileStorageClientCreateMountTarget(t *testing.T) {
 	}
 
 	var requests []CreateMountTargetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -138,6 +153,8 @@ func TestFileStorageClientCreateMountTarget(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientCreateSnapshot(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "CreateSnapshot")
 	assert.NoError(t, err)
 	if !enabled {
@@ -157,7 +174,10 @@ func TestFileStorageClientCreateSnapshot(t *testing.T) {
 	}
 
 	var requests []CreateSnapshotRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -176,6 +196,8 @@ func TestFileStorageClientCreateSnapshot(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientDeleteExport(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "DeleteExport")
 	assert.NoError(t, err)
 	if !enabled {
@@ -195,7 +217,10 @@ func TestFileStorageClientDeleteExport(t *testing.T) {
 	}
 
 	var requests []DeleteExportRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -214,6 +239,8 @@ func TestFileStorageClientDeleteExport(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientDeleteFileSystem(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "DeleteFileSystem")
 	assert.NoError(t, err)
 	if !enabled {
@@ -233,7 +260,10 @@ func TestFileStorageClientDeleteFileSystem(t *testing.T) {
 	}
 
 	var requests []DeleteFileSystemRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -252,6 +282,8 @@ func TestFileStorageClientDeleteFileSystem(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientDeleteMountTarget(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "DeleteMountTarget")
 	assert.NoError(t, err)
 	if !enabled {
@@ -271,7 +303,10 @@ func TestFileStorageClientDeleteMountTarget(t *testing.T) {
 	}
 
 	var requests []DeleteMountTargetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -290,6 +325,8 @@ func TestFileStorageClientDeleteMountTarget(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientDeleteSnapshot(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "DeleteSnapshot")
 	assert.NoError(t, err)
 	if !enabled {
@@ -309,7 +346,10 @@ func TestFileStorageClientDeleteSnapshot(t *testing.T) {
 	}
 
 	var requests []DeleteSnapshotRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -328,6 +368,8 @@ func TestFileStorageClientDeleteSnapshot(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientGetExport(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "GetExport")
 	assert.NoError(t, err)
 	if !enabled {
@@ -347,7 +389,10 @@ func TestFileStorageClientGetExport(t *testing.T) {
 	}
 
 	var requests []GetExportRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -366,6 +411,8 @@ func TestFileStorageClientGetExport(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientGetExportSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "GetExportSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -385,7 +432,10 @@ func TestFileStorageClientGetExportSet(t *testing.T) {
 	}
 
 	var requests []GetExportSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -404,6 +454,8 @@ func TestFileStorageClientGetExportSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientGetFileSystem(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "GetFileSystem")
 	assert.NoError(t, err)
 	if !enabled {
@@ -423,7 +475,10 @@ func TestFileStorageClientGetFileSystem(t *testing.T) {
 	}
 
 	var requests []GetFileSystemRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -442,6 +497,8 @@ func TestFileStorageClientGetFileSystem(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientGetMountTarget(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "GetMountTarget")
 	assert.NoError(t, err)
 	if !enabled {
@@ -461,7 +518,10 @@ func TestFileStorageClientGetMountTarget(t *testing.T) {
 	}
 
 	var requests []GetMountTargetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -480,6 +540,8 @@ func TestFileStorageClientGetMountTarget(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientGetSnapshot(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "GetSnapshot")
 	assert.NoError(t, err)
 	if !enabled {
@@ -499,7 +561,10 @@ func TestFileStorageClientGetSnapshot(t *testing.T) {
 	}
 
 	var requests []GetSnapshotRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -518,6 +583,8 @@ func TestFileStorageClientGetSnapshot(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientListExportSets(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "ListExportSets")
 	assert.NoError(t, err)
 	if !enabled {
@@ -537,7 +604,10 @@ func TestFileStorageClientListExportSets(t *testing.T) {
 	}
 
 	var requests []ListExportSetsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -565,6 +635,8 @@ func TestFileStorageClientListExportSets(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientListExports(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "ListExports")
 	assert.NoError(t, err)
 	if !enabled {
@@ -584,7 +656,10 @@ func TestFileStorageClientListExports(t *testing.T) {
 	}
 
 	var requests []ListExportsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -612,6 +687,8 @@ func TestFileStorageClientListExports(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientListFileSystems(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "ListFileSystems")
 	assert.NoError(t, err)
 	if !enabled {
@@ -631,7 +708,10 @@ func TestFileStorageClientListFileSystems(t *testing.T) {
 	}
 
 	var requests []ListFileSystemsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -659,6 +739,8 @@ func TestFileStorageClientListFileSystems(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientListMountTargets(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "ListMountTargets")
 	assert.NoError(t, err)
 	if !enabled {
@@ -678,7 +760,10 @@ func TestFileStorageClientListMountTargets(t *testing.T) {
 	}
 
 	var requests []ListMountTargetsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -706,6 +791,8 @@ func TestFileStorageClientListMountTargets(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientListSnapshots(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "ListSnapshots")
 	assert.NoError(t, err)
 	if !enabled {
@@ -725,7 +812,10 @@ func TestFileStorageClientListSnapshots(t *testing.T) {
 	}
 
 	var requests []ListSnapshotsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -753,6 +843,8 @@ func TestFileStorageClientListSnapshots(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientUpdateExport(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "UpdateExport")
 	assert.NoError(t, err)
 	if !enabled {
@@ -772,7 +864,10 @@ func TestFileStorageClientUpdateExport(t *testing.T) {
 	}
 
 	var requests []UpdateExportRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -791,6 +886,8 @@ func TestFileStorageClientUpdateExport(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientUpdateExportSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "UpdateExportSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -810,7 +907,10 @@ func TestFileStorageClientUpdateExportSet(t *testing.T) {
 	}
 
 	var requests []UpdateExportSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -829,6 +929,8 @@ func TestFileStorageClientUpdateExportSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientUpdateFileSystem(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "UpdateFileSystem")
 	assert.NoError(t, err)
 	if !enabled {
@@ -848,7 +950,10 @@ func TestFileStorageClientUpdateFileSystem(t *testing.T) {
 	}
 
 	var requests []UpdateFileSystemRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -867,6 +972,8 @@ func TestFileStorageClientUpdateFileSystem(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientUpdateMountTarget(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "UpdateMountTarget")
 	assert.NoError(t, err)
 	if !enabled {
@@ -886,7 +993,10 @@ func TestFileStorageClientUpdateMountTarget(t *testing.T) {
 	}
 
 	var requests []UpdateMountTargetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -905,6 +1015,8 @@ func TestFileStorageClientUpdateMountTarget(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestFileStorageClientUpdateSnapshot(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("filestorage", "UpdateSnapshot")
 	assert.NoError(t, err)
 	if !enabled {
@@ -924,7 +1036,10 @@ func TestFileStorageClientUpdateSnapshot(t *testing.T) {
 	}
 
 	var requests []UpdateSnapshotRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy

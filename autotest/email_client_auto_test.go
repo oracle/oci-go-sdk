@@ -24,6 +24,8 @@ func createEmailClientWithProvider(p common.ConfigurationProvider, testConfig Te
 
 // IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientCreateSender(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("email", "CreateSender")
 	assert.NoError(t, err)
 	if !enabled {
@@ -43,7 +45,10 @@ func TestEmailClientCreateSender(t *testing.T) {
 	}
 
 	var requests []CreateSenderRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -62,6 +67,8 @@ func TestEmailClientCreateSender(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientCreateSuppression(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("email", "CreateSuppression")
 	assert.NoError(t, err)
 	if !enabled {
@@ -81,7 +88,10 @@ func TestEmailClientCreateSuppression(t *testing.T) {
 	}
 
 	var requests []CreateSuppressionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -100,6 +110,8 @@ func TestEmailClientCreateSuppression(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientDeleteSender(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("email", "DeleteSender")
 	assert.NoError(t, err)
 	if !enabled {
@@ -119,7 +131,10 @@ func TestEmailClientDeleteSender(t *testing.T) {
 	}
 
 	var requests []DeleteSenderRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -138,6 +153,8 @@ func TestEmailClientDeleteSender(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientDeleteSuppression(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("email", "DeleteSuppression")
 	assert.NoError(t, err)
 	if !enabled {
@@ -157,7 +174,10 @@ func TestEmailClientDeleteSuppression(t *testing.T) {
 	}
 
 	var requests []DeleteSuppressionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -176,6 +196,8 @@ func TestEmailClientDeleteSuppression(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientGetSender(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("email", "GetSender")
 	assert.NoError(t, err)
 	if !enabled {
@@ -195,7 +217,10 @@ func TestEmailClientGetSender(t *testing.T) {
 	}
 
 	var requests []GetSenderRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -214,6 +239,8 @@ func TestEmailClientGetSender(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientGetSuppression(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("email", "GetSuppression")
 	assert.NoError(t, err)
 	if !enabled {
@@ -233,7 +260,10 @@ func TestEmailClientGetSuppression(t *testing.T) {
 	}
 
 	var requests []GetSuppressionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -252,6 +282,8 @@ func TestEmailClientGetSuppression(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientListSenders(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("email", "ListSenders")
 	assert.NoError(t, err)
 	if !enabled {
@@ -271,7 +303,10 @@ func TestEmailClientListSenders(t *testing.T) {
 	}
 
 	var requests []ListSendersRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -299,6 +334,8 @@ func TestEmailClientListSenders(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientListSuppressions(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("email", "ListSuppressions")
 	assert.NoError(t, err)
 	if !enabled {
@@ -318,7 +355,10 @@ func TestEmailClientListSuppressions(t *testing.T) {
 	}
 
 	var requests []ListSuppressionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -346,6 +386,8 @@ func TestEmailClientListSuppressions(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="email-dev_us_grp@oracle.com" jiraProject="Email Delivery (ED)" opsJiraProject="Email Delivery"
 func TestEmailClientUpdateSender(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("email", "UpdateSender")
 	assert.NoError(t, err)
 	if !enabled {
@@ -365,7 +407,10 @@ func TestEmailClientUpdateSender(t *testing.T) {
 	}
 
 	var requests []UpdateSenderRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy

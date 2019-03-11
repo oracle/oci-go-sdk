@@ -24,6 +24,8 @@ func createContainerEngineClientWithProvider(p common.ConfigurationProvider, tes
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientCreateCluster(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "CreateCluster")
 	assert.NoError(t, err)
 	if !enabled {
@@ -43,7 +45,10 @@ func TestContainerEngineClientCreateCluster(t *testing.T) {
 	}
 
 	var requests []CreateClusterRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -62,6 +67,8 @@ func TestContainerEngineClientCreateCluster(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientCreateKubeconfig(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "CreateKubeconfig")
 	assert.NoError(t, err)
 	if !enabled {
@@ -81,7 +88,10 @@ func TestContainerEngineClientCreateKubeconfig(t *testing.T) {
 	}
 
 	var requests []CreateKubeconfigRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -100,6 +110,8 @@ func TestContainerEngineClientCreateKubeconfig(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientCreateNodePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "CreateNodePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -119,7 +131,10 @@ func TestContainerEngineClientCreateNodePool(t *testing.T) {
 	}
 
 	var requests []CreateNodePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -138,6 +153,8 @@ func TestContainerEngineClientCreateNodePool(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientDeleteCluster(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "DeleteCluster")
 	assert.NoError(t, err)
 	if !enabled {
@@ -157,7 +174,10 @@ func TestContainerEngineClientDeleteCluster(t *testing.T) {
 	}
 
 	var requests []DeleteClusterRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -176,6 +196,8 @@ func TestContainerEngineClientDeleteCluster(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientDeleteNodePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "DeleteNodePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -195,7 +217,10 @@ func TestContainerEngineClientDeleteNodePool(t *testing.T) {
 	}
 
 	var requests []DeleteNodePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -214,6 +239,8 @@ func TestContainerEngineClientDeleteNodePool(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientDeleteWorkRequest(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "DeleteWorkRequest")
 	assert.NoError(t, err)
 	if !enabled {
@@ -233,7 +260,10 @@ func TestContainerEngineClientDeleteWorkRequest(t *testing.T) {
 	}
 
 	var requests []DeleteWorkRequestRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -252,6 +282,8 @@ func TestContainerEngineClientDeleteWorkRequest(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientGetCluster(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "GetCluster")
 	assert.NoError(t, err)
 	if !enabled {
@@ -271,7 +303,10 @@ func TestContainerEngineClientGetCluster(t *testing.T) {
 	}
 
 	var requests []GetClusterRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -290,6 +325,8 @@ func TestContainerEngineClientGetCluster(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientGetClusterOptions(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "GetClusterOptions")
 	assert.NoError(t, err)
 	if !enabled {
@@ -309,7 +346,10 @@ func TestContainerEngineClientGetClusterOptions(t *testing.T) {
 	}
 
 	var requests []GetClusterOptionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -328,6 +368,8 @@ func TestContainerEngineClientGetClusterOptions(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientGetNodePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "GetNodePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -347,7 +389,10 @@ func TestContainerEngineClientGetNodePool(t *testing.T) {
 	}
 
 	var requests []GetNodePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -366,6 +411,8 @@ func TestContainerEngineClientGetNodePool(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientGetNodePoolOptions(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "GetNodePoolOptions")
 	assert.NoError(t, err)
 	if !enabled {
@@ -385,7 +432,10 @@ func TestContainerEngineClientGetNodePoolOptions(t *testing.T) {
 	}
 
 	var requests []GetNodePoolOptionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -404,6 +454,8 @@ func TestContainerEngineClientGetNodePoolOptions(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientGetWorkRequest(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "GetWorkRequest")
 	assert.NoError(t, err)
 	if !enabled {
@@ -423,7 +475,10 @@ func TestContainerEngineClientGetWorkRequest(t *testing.T) {
 	}
 
 	var requests []GetWorkRequestRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -442,6 +497,8 @@ func TestContainerEngineClientGetWorkRequest(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientListClusters(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "ListClusters")
 	assert.NoError(t, err)
 	if !enabled {
@@ -461,7 +518,10 @@ func TestContainerEngineClientListClusters(t *testing.T) {
 	}
 
 	var requests []ListClustersRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -489,6 +549,8 @@ func TestContainerEngineClientListClusters(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientListNodePools(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "ListNodePools")
 	assert.NoError(t, err)
 	if !enabled {
@@ -508,7 +570,10 @@ func TestContainerEngineClientListNodePools(t *testing.T) {
 	}
 
 	var requests []ListNodePoolsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -536,6 +601,8 @@ func TestContainerEngineClientListNodePools(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientListWorkRequestErrors(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "ListWorkRequestErrors")
 	assert.NoError(t, err)
 	if !enabled {
@@ -555,7 +622,10 @@ func TestContainerEngineClientListWorkRequestErrors(t *testing.T) {
 	}
 
 	var requests []ListWorkRequestErrorsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -574,6 +644,8 @@ func TestContainerEngineClientListWorkRequestErrors(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientListWorkRequestLogs(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "ListWorkRequestLogs")
 	assert.NoError(t, err)
 	if !enabled {
@@ -593,7 +665,10 @@ func TestContainerEngineClientListWorkRequestLogs(t *testing.T) {
 	}
 
 	var requests []ListWorkRequestLogsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -612,6 +687,8 @@ func TestContainerEngineClientListWorkRequestLogs(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientListWorkRequests(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "ListWorkRequests")
 	assert.NoError(t, err)
 	if !enabled {
@@ -631,7 +708,10 @@ func TestContainerEngineClientListWorkRequests(t *testing.T) {
 	}
 
 	var requests []ListWorkRequestsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -659,6 +739,8 @@ func TestContainerEngineClientListWorkRequests(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientUpdateCluster(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "UpdateCluster")
 	assert.NoError(t, err)
 	if !enabled {
@@ -678,7 +760,10 @@ func TestContainerEngineClientUpdateCluster(t *testing.T) {
 	}
 
 	var requests []UpdateClusterRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -697,6 +782,8 @@ func TestContainerEngineClientUpdateCluster(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestContainerEngineClientUpdateNodePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("containerengine", "UpdateNodePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -716,7 +803,10 @@ func TestContainerEngineClientUpdateNodePool(t *testing.T) {
 	}
 
 	var requests []UpdateNodePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy

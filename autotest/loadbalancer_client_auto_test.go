@@ -24,6 +24,8 @@ func createLoadBalancerClientWithProvider(p common.ConfigurationProvider, testCo
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateBackend(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "CreateBackend")
 	assert.NoError(t, err)
 	if !enabled {
@@ -43,7 +45,10 @@ func TestLoadBalancerClientCreateBackend(t *testing.T) {
 	}
 
 	var requests []CreateBackendRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -62,6 +67,8 @@ func TestLoadBalancerClientCreateBackend(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateBackendSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "CreateBackendSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -81,7 +88,10 @@ func TestLoadBalancerClientCreateBackendSet(t *testing.T) {
 	}
 
 	var requests []CreateBackendSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -100,6 +110,8 @@ func TestLoadBalancerClientCreateBackendSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateCertificate(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "CreateCertificate")
 	assert.NoError(t, err)
 	if !enabled {
@@ -119,7 +131,10 @@ func TestLoadBalancerClientCreateCertificate(t *testing.T) {
 	}
 
 	var requests []CreateCertificateRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -138,6 +153,8 @@ func TestLoadBalancerClientCreateCertificate(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateHostname(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "CreateHostname")
 	assert.NoError(t, err)
 	if !enabled {
@@ -157,7 +174,10 @@ func TestLoadBalancerClientCreateHostname(t *testing.T) {
 	}
 
 	var requests []CreateHostnameRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -176,6 +196,8 @@ func TestLoadBalancerClientCreateHostname(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateListener(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "CreateListener")
 	assert.NoError(t, err)
 	if !enabled {
@@ -195,7 +217,10 @@ func TestLoadBalancerClientCreateListener(t *testing.T) {
 	}
 
 	var requests []CreateListenerRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -214,6 +239,8 @@ func TestLoadBalancerClientCreateListener(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateLoadBalancer(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "CreateLoadBalancer")
 	assert.NoError(t, err)
 	if !enabled {
@@ -233,7 +260,10 @@ func TestLoadBalancerClientCreateLoadBalancer(t *testing.T) {
 	}
 
 	var requests []CreateLoadBalancerRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -252,6 +282,8 @@ func TestLoadBalancerClientCreateLoadBalancer(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreatePathRouteSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "CreatePathRouteSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -271,7 +303,10 @@ func TestLoadBalancerClientCreatePathRouteSet(t *testing.T) {
 	}
 
 	var requests []CreatePathRouteSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -290,6 +325,8 @@ func TestLoadBalancerClientCreatePathRouteSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientCreateRuleSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "CreateRuleSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -309,7 +346,10 @@ func TestLoadBalancerClientCreateRuleSet(t *testing.T) {
 	}
 
 	var requests []CreateRuleSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -328,6 +368,8 @@ func TestLoadBalancerClientCreateRuleSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteBackend(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteBackend")
 	assert.NoError(t, err)
 	if !enabled {
@@ -347,7 +389,10 @@ func TestLoadBalancerClientDeleteBackend(t *testing.T) {
 	}
 
 	var requests []DeleteBackendRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -366,6 +411,8 @@ func TestLoadBalancerClientDeleteBackend(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteBackendSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteBackendSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -385,7 +432,10 @@ func TestLoadBalancerClientDeleteBackendSet(t *testing.T) {
 	}
 
 	var requests []DeleteBackendSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -404,6 +454,8 @@ func TestLoadBalancerClientDeleteBackendSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteCertificate(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteCertificate")
 	assert.NoError(t, err)
 	if !enabled {
@@ -423,7 +475,10 @@ func TestLoadBalancerClientDeleteCertificate(t *testing.T) {
 	}
 
 	var requests []DeleteCertificateRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -442,6 +497,8 @@ func TestLoadBalancerClientDeleteCertificate(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteHostname(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteHostname")
 	assert.NoError(t, err)
 	if !enabled {
@@ -461,7 +518,10 @@ func TestLoadBalancerClientDeleteHostname(t *testing.T) {
 	}
 
 	var requests []DeleteHostnameRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -480,6 +540,8 @@ func TestLoadBalancerClientDeleteHostname(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteListener(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteListener")
 	assert.NoError(t, err)
 	if !enabled {
@@ -499,7 +561,10 @@ func TestLoadBalancerClientDeleteListener(t *testing.T) {
 	}
 
 	var requests []DeleteListenerRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -518,6 +583,8 @@ func TestLoadBalancerClientDeleteListener(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteLoadBalancer(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteLoadBalancer")
 	assert.NoError(t, err)
 	if !enabled {
@@ -537,7 +604,10 @@ func TestLoadBalancerClientDeleteLoadBalancer(t *testing.T) {
 	}
 
 	var requests []DeleteLoadBalancerRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -556,6 +626,8 @@ func TestLoadBalancerClientDeleteLoadBalancer(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeletePathRouteSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "DeletePathRouteSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -575,7 +647,10 @@ func TestLoadBalancerClientDeletePathRouteSet(t *testing.T) {
 	}
 
 	var requests []DeletePathRouteSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -594,6 +669,8 @@ func TestLoadBalancerClientDeletePathRouteSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientDeleteRuleSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "DeleteRuleSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -613,7 +690,10 @@ func TestLoadBalancerClientDeleteRuleSet(t *testing.T) {
 	}
 
 	var requests []DeleteRuleSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -632,6 +712,8 @@ func TestLoadBalancerClientDeleteRuleSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetBackend(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "GetBackend")
 	assert.NoError(t, err)
 	if !enabled {
@@ -651,7 +733,10 @@ func TestLoadBalancerClientGetBackend(t *testing.T) {
 	}
 
 	var requests []GetBackendRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -670,6 +755,8 @@ func TestLoadBalancerClientGetBackend(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetBackendHealth(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "GetBackendHealth")
 	assert.NoError(t, err)
 	if !enabled {
@@ -689,7 +776,10 @@ func TestLoadBalancerClientGetBackendHealth(t *testing.T) {
 	}
 
 	var requests []GetBackendHealthRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -708,6 +798,8 @@ func TestLoadBalancerClientGetBackendHealth(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetBackendSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "GetBackendSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -727,7 +819,10 @@ func TestLoadBalancerClientGetBackendSet(t *testing.T) {
 	}
 
 	var requests []GetBackendSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -746,6 +841,8 @@ func TestLoadBalancerClientGetBackendSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetBackendSetHealth(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "GetBackendSetHealth")
 	assert.NoError(t, err)
 	if !enabled {
@@ -765,7 +862,10 @@ func TestLoadBalancerClientGetBackendSetHealth(t *testing.T) {
 	}
 
 	var requests []GetBackendSetHealthRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -784,6 +884,8 @@ func TestLoadBalancerClientGetBackendSetHealth(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetHealthChecker(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "GetHealthChecker")
 	assert.NoError(t, err)
 	if !enabled {
@@ -803,7 +905,10 @@ func TestLoadBalancerClientGetHealthChecker(t *testing.T) {
 	}
 
 	var requests []GetHealthCheckerRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -822,6 +927,8 @@ func TestLoadBalancerClientGetHealthChecker(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetHostname(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "GetHostname")
 	assert.NoError(t, err)
 	if !enabled {
@@ -841,7 +948,10 @@ func TestLoadBalancerClientGetHostname(t *testing.T) {
 	}
 
 	var requests []GetHostnameRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -860,6 +970,8 @@ func TestLoadBalancerClientGetHostname(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetLoadBalancer(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "GetLoadBalancer")
 	assert.NoError(t, err)
 	if !enabled {
@@ -879,7 +991,10 @@ func TestLoadBalancerClientGetLoadBalancer(t *testing.T) {
 	}
 
 	var requests []GetLoadBalancerRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -898,6 +1013,8 @@ func TestLoadBalancerClientGetLoadBalancer(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetLoadBalancerHealth(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "GetLoadBalancerHealth")
 	assert.NoError(t, err)
 	if !enabled {
@@ -917,7 +1034,10 @@ func TestLoadBalancerClientGetLoadBalancerHealth(t *testing.T) {
 	}
 
 	var requests []GetLoadBalancerHealthRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -936,6 +1056,8 @@ func TestLoadBalancerClientGetLoadBalancerHealth(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetPathRouteSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "GetPathRouteSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -955,7 +1077,10 @@ func TestLoadBalancerClientGetPathRouteSet(t *testing.T) {
 	}
 
 	var requests []GetPathRouteSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -974,6 +1099,8 @@ func TestLoadBalancerClientGetPathRouteSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetRuleSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "GetRuleSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -993,7 +1120,10 @@ func TestLoadBalancerClientGetRuleSet(t *testing.T) {
 	}
 
 	var requests []GetRuleSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1012,6 +1142,8 @@ func TestLoadBalancerClientGetRuleSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientGetWorkRequest(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "GetWorkRequest")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1031,7 +1163,10 @@ func TestLoadBalancerClientGetWorkRequest(t *testing.T) {
 	}
 
 	var requests []GetWorkRequestRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1050,6 +1185,8 @@ func TestLoadBalancerClientGetWorkRequest(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListBackendSets(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListBackendSets")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1069,7 +1206,10 @@ func TestLoadBalancerClientListBackendSets(t *testing.T) {
 	}
 
 	var requests []ListBackendSetsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1088,6 +1228,8 @@ func TestLoadBalancerClientListBackendSets(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListBackends(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListBackends")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1107,7 +1249,10 @@ func TestLoadBalancerClientListBackends(t *testing.T) {
 	}
 
 	var requests []ListBackendsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1126,6 +1271,8 @@ func TestLoadBalancerClientListBackends(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListCertificates(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListCertificates")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1145,7 +1292,10 @@ func TestLoadBalancerClientListCertificates(t *testing.T) {
 	}
 
 	var requests []ListCertificatesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1164,6 +1314,8 @@ func TestLoadBalancerClientListCertificates(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListHostnames(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListHostnames")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1183,7 +1335,10 @@ func TestLoadBalancerClientListHostnames(t *testing.T) {
 	}
 
 	var requests []ListHostnamesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1202,6 +1357,8 @@ func TestLoadBalancerClientListHostnames(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListLoadBalancerHealths(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListLoadBalancerHealths")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1221,7 +1378,10 @@ func TestLoadBalancerClientListLoadBalancerHealths(t *testing.T) {
 	}
 
 	var requests []ListLoadBalancerHealthsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1249,6 +1409,8 @@ func TestLoadBalancerClientListLoadBalancerHealths(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListLoadBalancers(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListLoadBalancers")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1268,7 +1430,10 @@ func TestLoadBalancerClientListLoadBalancers(t *testing.T) {
 	}
 
 	var requests []ListLoadBalancersRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1296,6 +1461,8 @@ func TestLoadBalancerClientListLoadBalancers(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListPathRouteSets(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListPathRouteSets")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1315,7 +1482,10 @@ func TestLoadBalancerClientListPathRouteSets(t *testing.T) {
 	}
 
 	var requests []ListPathRouteSetsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1334,6 +1504,8 @@ func TestLoadBalancerClientListPathRouteSets(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListPolicies(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListPolicies")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1353,7 +1525,10 @@ func TestLoadBalancerClientListPolicies(t *testing.T) {
 	}
 
 	var requests []ListPoliciesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1381,6 +1556,8 @@ func TestLoadBalancerClientListPolicies(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListProtocols(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListProtocols")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1400,7 +1577,10 @@ func TestLoadBalancerClientListProtocols(t *testing.T) {
 	}
 
 	var requests []ListProtocolsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1428,6 +1608,8 @@ func TestLoadBalancerClientListProtocols(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListRuleSets(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListRuleSets")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1447,7 +1629,10 @@ func TestLoadBalancerClientListRuleSets(t *testing.T) {
 	}
 
 	var requests []ListRuleSetsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1466,6 +1651,8 @@ func TestLoadBalancerClientListRuleSets(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListShapes(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListShapes")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1485,7 +1672,10 @@ func TestLoadBalancerClientListShapes(t *testing.T) {
 	}
 
 	var requests []ListShapesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1513,6 +1703,8 @@ func TestLoadBalancerClientListShapes(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientListWorkRequests(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "ListWorkRequests")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1532,7 +1724,10 @@ func TestLoadBalancerClientListWorkRequests(t *testing.T) {
 	}
 
 	var requests []ListWorkRequestsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1560,6 +1755,8 @@ func TestLoadBalancerClientListWorkRequests(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateBackend(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateBackend")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1579,7 +1776,10 @@ func TestLoadBalancerClientUpdateBackend(t *testing.T) {
 	}
 
 	var requests []UpdateBackendRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1598,6 +1798,8 @@ func TestLoadBalancerClientUpdateBackend(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateBackendSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateBackendSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1617,7 +1819,10 @@ func TestLoadBalancerClientUpdateBackendSet(t *testing.T) {
 	}
 
 	var requests []UpdateBackendSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1636,6 +1841,8 @@ func TestLoadBalancerClientUpdateBackendSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateHealthChecker(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateHealthChecker")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1655,7 +1862,10 @@ func TestLoadBalancerClientUpdateHealthChecker(t *testing.T) {
 	}
 
 	var requests []UpdateHealthCheckerRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1674,6 +1884,8 @@ func TestLoadBalancerClientUpdateHealthChecker(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateHostname(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateHostname")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1693,7 +1905,10 @@ func TestLoadBalancerClientUpdateHostname(t *testing.T) {
 	}
 
 	var requests []UpdateHostnameRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1712,6 +1927,8 @@ func TestLoadBalancerClientUpdateHostname(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateListener(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateListener")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1731,7 +1948,10 @@ func TestLoadBalancerClientUpdateListener(t *testing.T) {
 	}
 
 	var requests []UpdateListenerRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1750,6 +1970,8 @@ func TestLoadBalancerClientUpdateListener(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateLoadBalancer(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateLoadBalancer")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1769,7 +1991,10 @@ func TestLoadBalancerClientUpdateLoadBalancer(t *testing.T) {
 	}
 
 	var requests []UpdateLoadBalancerRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1788,6 +2013,8 @@ func TestLoadBalancerClientUpdateLoadBalancer(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdatePathRouteSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "UpdatePathRouteSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1807,7 +2034,10 @@ func TestLoadBalancerClientUpdatePathRouteSet(t *testing.T) {
 	}
 
 	var requests []UpdatePathRouteSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1826,6 +2056,8 @@ func TestLoadBalancerClientUpdatePathRouteSet(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestLoadBalancerClientUpdateRuleSet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("loadbalancer", "UpdateRuleSet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1845,7 +2077,10 @@ func TestLoadBalancerClientUpdateRuleSet(t *testing.T) {
 	}
 
 	var requests []UpdateRuleSetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy

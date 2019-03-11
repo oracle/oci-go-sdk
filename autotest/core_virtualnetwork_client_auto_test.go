@@ -24,6 +24,8 @@ func createVirtualNetworkClientWithProvider(p common.ConfigurationProvider, test
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientAttachServiceId(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "AttachServiceId")
 	assert.NoError(t, err)
 	if !enabled {
@@ -43,7 +45,10 @@ func TestVirtualNetworkClientAttachServiceId(t *testing.T) {
 	}
 
 	var requests []AttachServiceIdRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -62,6 +67,8 @@ func TestVirtualNetworkClientAttachServiceId(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientBulkAddVirtualCircuitPublicPrefixes(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "BulkAddVirtualCircuitPublicPrefixes")
 	assert.NoError(t, err)
 	if !enabled {
@@ -81,7 +88,10 @@ func TestVirtualNetworkClientBulkAddVirtualCircuitPublicPrefixes(t *testing.T) {
 	}
 
 	var requests []BulkAddVirtualCircuitPublicPrefixesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -100,6 +110,8 @@ func TestVirtualNetworkClientBulkAddVirtualCircuitPublicPrefixes(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientBulkDeleteVirtualCircuitPublicPrefixes(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "BulkDeleteVirtualCircuitPublicPrefixes")
 	assert.NoError(t, err)
 	if !enabled {
@@ -119,7 +131,10 @@ func TestVirtualNetworkClientBulkDeleteVirtualCircuitPublicPrefixes(t *testing.T
 	}
 
 	var requests []BulkDeleteVirtualCircuitPublicPrefixesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -138,6 +153,8 @@ func TestVirtualNetworkClientBulkDeleteVirtualCircuitPublicPrefixes(t *testing.T
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientConnectLocalPeeringGateways(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ConnectLocalPeeringGateways")
 	assert.NoError(t, err)
 	if !enabled {
@@ -157,7 +174,10 @@ func TestVirtualNetworkClientConnectLocalPeeringGateways(t *testing.T) {
 	}
 
 	var requests []ConnectLocalPeeringGatewaysRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -176,6 +196,8 @@ func TestVirtualNetworkClientConnectLocalPeeringGateways(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientConnectRemotePeeringConnections(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ConnectRemotePeeringConnections")
 	assert.NoError(t, err)
 	if !enabled {
@@ -195,7 +217,10 @@ func TestVirtualNetworkClientConnectRemotePeeringConnections(t *testing.T) {
 	}
 
 	var requests []ConnectRemotePeeringConnectionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -214,6 +239,8 @@ func TestVirtualNetworkClientConnectRemotePeeringConnections(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateCpe(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateCpe")
 	assert.NoError(t, err)
 	if !enabled {
@@ -233,7 +260,10 @@ func TestVirtualNetworkClientCreateCpe(t *testing.T) {
 	}
 
 	var requests []CreateCpeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -252,6 +282,8 @@ func TestVirtualNetworkClientCreateCpe(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateCrossConnect(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateCrossConnect")
 	assert.NoError(t, err)
 	if !enabled {
@@ -271,7 +303,10 @@ func TestVirtualNetworkClientCreateCrossConnect(t *testing.T) {
 	}
 
 	var requests []CreateCrossConnectRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -290,6 +325,8 @@ func TestVirtualNetworkClientCreateCrossConnect(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateCrossConnectGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateCrossConnectGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -309,7 +346,10 @@ func TestVirtualNetworkClientCreateCrossConnectGroup(t *testing.T) {
 	}
 
 	var requests []CreateCrossConnectGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -328,6 +368,8 @@ func TestVirtualNetworkClientCreateCrossConnectGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateDhcpOptions(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateDhcpOptions")
 	assert.NoError(t, err)
 	if !enabled {
@@ -347,7 +389,10 @@ func TestVirtualNetworkClientCreateDhcpOptions(t *testing.T) {
 	}
 
 	var requests []CreateDhcpOptionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -366,6 +411,8 @@ func TestVirtualNetworkClientCreateDhcpOptions(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateDrg(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateDrg")
 	assert.NoError(t, err)
 	if !enabled {
@@ -385,7 +432,10 @@ func TestVirtualNetworkClientCreateDrg(t *testing.T) {
 	}
 
 	var requests []CreateDrgRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -404,6 +454,8 @@ func TestVirtualNetworkClientCreateDrg(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateDrgAttachment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateDrgAttachment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -423,7 +475,10 @@ func TestVirtualNetworkClientCreateDrgAttachment(t *testing.T) {
 	}
 
 	var requests []CreateDrgAttachmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -442,6 +497,8 @@ func TestVirtualNetworkClientCreateDrgAttachment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateIPSecConnection(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateIPSecConnection")
 	assert.NoError(t, err)
 	if !enabled {
@@ -461,7 +518,10 @@ func TestVirtualNetworkClientCreateIPSecConnection(t *testing.T) {
 	}
 
 	var requests []CreateIPSecConnectionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -480,6 +540,8 @@ func TestVirtualNetworkClientCreateIPSecConnection(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateInternetGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateInternetGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -499,7 +561,10 @@ func TestVirtualNetworkClientCreateInternetGateway(t *testing.T) {
 	}
 
 	var requests []CreateInternetGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -518,6 +583,8 @@ func TestVirtualNetworkClientCreateInternetGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateLocalPeeringGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateLocalPeeringGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -537,7 +604,10 @@ func TestVirtualNetworkClientCreateLocalPeeringGateway(t *testing.T) {
 	}
 
 	var requests []CreateLocalPeeringGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -556,6 +626,8 @@ func TestVirtualNetworkClientCreateLocalPeeringGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateNatGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateNatGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -575,7 +647,10 @@ func TestVirtualNetworkClientCreateNatGateway(t *testing.T) {
 	}
 
 	var requests []CreateNatGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -594,6 +669,8 @@ func TestVirtualNetworkClientCreateNatGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreatePrivateIp(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreatePrivateIp")
 	assert.NoError(t, err)
 	if !enabled {
@@ -613,7 +690,10 @@ func TestVirtualNetworkClientCreatePrivateIp(t *testing.T) {
 	}
 
 	var requests []CreatePrivateIpRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -632,6 +712,8 @@ func TestVirtualNetworkClientCreatePrivateIp(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreatePublicIp(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreatePublicIp")
 	assert.NoError(t, err)
 	if !enabled {
@@ -651,7 +733,10 @@ func TestVirtualNetworkClientCreatePublicIp(t *testing.T) {
 	}
 
 	var requests []CreatePublicIpRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -670,6 +755,8 @@ func TestVirtualNetworkClientCreatePublicIp(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateRemotePeeringConnection(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateRemotePeeringConnection")
 	assert.NoError(t, err)
 	if !enabled {
@@ -689,7 +776,10 @@ func TestVirtualNetworkClientCreateRemotePeeringConnection(t *testing.T) {
 	}
 
 	var requests []CreateRemotePeeringConnectionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -708,6 +798,8 @@ func TestVirtualNetworkClientCreateRemotePeeringConnection(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateRouteTable(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateRouteTable")
 	assert.NoError(t, err)
 	if !enabled {
@@ -727,7 +819,10 @@ func TestVirtualNetworkClientCreateRouteTable(t *testing.T) {
 	}
 
 	var requests []CreateRouteTableRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -746,6 +841,8 @@ func TestVirtualNetworkClientCreateRouteTable(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateSecurityList(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateSecurityList")
 	assert.NoError(t, err)
 	if !enabled {
@@ -765,7 +862,10 @@ func TestVirtualNetworkClientCreateSecurityList(t *testing.T) {
 	}
 
 	var requests []CreateSecurityListRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -784,6 +884,8 @@ func TestVirtualNetworkClientCreateSecurityList(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateServiceGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateServiceGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -803,7 +905,10 @@ func TestVirtualNetworkClientCreateServiceGateway(t *testing.T) {
 	}
 
 	var requests []CreateServiceGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -822,6 +927,8 @@ func TestVirtualNetworkClientCreateServiceGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateSubnet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateSubnet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -841,7 +948,10 @@ func TestVirtualNetworkClientCreateSubnet(t *testing.T) {
 	}
 
 	var requests []CreateSubnetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -860,6 +970,8 @@ func TestVirtualNetworkClientCreateSubnet(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateVcn(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateVcn")
 	assert.NoError(t, err)
 	if !enabled {
@@ -879,7 +991,10 @@ func TestVirtualNetworkClientCreateVcn(t *testing.T) {
 	}
 
 	var requests []CreateVcnRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -898,6 +1013,8 @@ func TestVirtualNetworkClientCreateVcn(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientCreateVirtualCircuit(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateVirtualCircuit")
 	assert.NoError(t, err)
 	if !enabled {
@@ -917,7 +1034,10 @@ func TestVirtualNetworkClientCreateVirtualCircuit(t *testing.T) {
 	}
 
 	var requests []CreateVirtualCircuitRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -936,6 +1056,8 @@ func TestVirtualNetworkClientCreateVirtualCircuit(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteCpe(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteCpe")
 	assert.NoError(t, err)
 	if !enabled {
@@ -955,7 +1077,10 @@ func TestVirtualNetworkClientDeleteCpe(t *testing.T) {
 	}
 
 	var requests []DeleteCpeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -974,6 +1099,8 @@ func TestVirtualNetworkClientDeleteCpe(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteCrossConnect(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteCrossConnect")
 	assert.NoError(t, err)
 	if !enabled {
@@ -993,7 +1120,10 @@ func TestVirtualNetworkClientDeleteCrossConnect(t *testing.T) {
 	}
 
 	var requests []DeleteCrossConnectRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1012,6 +1142,8 @@ func TestVirtualNetworkClientDeleteCrossConnect(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteCrossConnectGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteCrossConnectGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1031,7 +1163,10 @@ func TestVirtualNetworkClientDeleteCrossConnectGroup(t *testing.T) {
 	}
 
 	var requests []DeleteCrossConnectGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1050,6 +1185,8 @@ func TestVirtualNetworkClientDeleteCrossConnectGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteDhcpOptions(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteDhcpOptions")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1069,7 +1206,10 @@ func TestVirtualNetworkClientDeleteDhcpOptions(t *testing.T) {
 	}
 
 	var requests []DeleteDhcpOptionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1088,6 +1228,8 @@ func TestVirtualNetworkClientDeleteDhcpOptions(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteDrg(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteDrg")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1107,7 +1249,10 @@ func TestVirtualNetworkClientDeleteDrg(t *testing.T) {
 	}
 
 	var requests []DeleteDrgRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1126,6 +1271,8 @@ func TestVirtualNetworkClientDeleteDrg(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteDrgAttachment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteDrgAttachment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1145,7 +1292,10 @@ func TestVirtualNetworkClientDeleteDrgAttachment(t *testing.T) {
 	}
 
 	var requests []DeleteDrgAttachmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1164,6 +1314,8 @@ func TestVirtualNetworkClientDeleteDrgAttachment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteIPSecConnection(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteIPSecConnection")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1183,7 +1335,10 @@ func TestVirtualNetworkClientDeleteIPSecConnection(t *testing.T) {
 	}
 
 	var requests []DeleteIPSecConnectionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1202,6 +1357,8 @@ func TestVirtualNetworkClientDeleteIPSecConnection(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteInternetGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteInternetGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1221,7 +1378,10 @@ func TestVirtualNetworkClientDeleteInternetGateway(t *testing.T) {
 	}
 
 	var requests []DeleteInternetGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1240,6 +1400,8 @@ func TestVirtualNetworkClientDeleteInternetGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteLocalPeeringGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteLocalPeeringGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1259,7 +1421,10 @@ func TestVirtualNetworkClientDeleteLocalPeeringGateway(t *testing.T) {
 	}
 
 	var requests []DeleteLocalPeeringGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1278,6 +1443,8 @@ func TestVirtualNetworkClientDeleteLocalPeeringGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteNatGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteNatGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1297,7 +1464,10 @@ func TestVirtualNetworkClientDeleteNatGateway(t *testing.T) {
 	}
 
 	var requests []DeleteNatGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1316,6 +1486,8 @@ func TestVirtualNetworkClientDeleteNatGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeletePrivateIp(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeletePrivateIp")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1335,7 +1507,10 @@ func TestVirtualNetworkClientDeletePrivateIp(t *testing.T) {
 	}
 
 	var requests []DeletePrivateIpRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1354,6 +1529,8 @@ func TestVirtualNetworkClientDeletePrivateIp(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeletePublicIp(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeletePublicIp")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1373,7 +1550,10 @@ func TestVirtualNetworkClientDeletePublicIp(t *testing.T) {
 	}
 
 	var requests []DeletePublicIpRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1392,6 +1572,8 @@ func TestVirtualNetworkClientDeletePublicIp(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteRemotePeeringConnection(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteRemotePeeringConnection")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1411,7 +1593,10 @@ func TestVirtualNetworkClientDeleteRemotePeeringConnection(t *testing.T) {
 	}
 
 	var requests []DeleteRemotePeeringConnectionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1430,6 +1615,8 @@ func TestVirtualNetworkClientDeleteRemotePeeringConnection(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteRouteTable(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteRouteTable")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1449,7 +1636,10 @@ func TestVirtualNetworkClientDeleteRouteTable(t *testing.T) {
 	}
 
 	var requests []DeleteRouteTableRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1468,6 +1658,8 @@ func TestVirtualNetworkClientDeleteRouteTable(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteSecurityList(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteSecurityList")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1487,7 +1679,10 @@ func TestVirtualNetworkClientDeleteSecurityList(t *testing.T) {
 	}
 
 	var requests []DeleteSecurityListRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1506,6 +1701,8 @@ func TestVirtualNetworkClientDeleteSecurityList(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteServiceGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteServiceGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1525,7 +1722,10 @@ func TestVirtualNetworkClientDeleteServiceGateway(t *testing.T) {
 	}
 
 	var requests []DeleteServiceGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1544,6 +1744,8 @@ func TestVirtualNetworkClientDeleteServiceGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteSubnet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteSubnet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1563,7 +1765,10 @@ func TestVirtualNetworkClientDeleteSubnet(t *testing.T) {
 	}
 
 	var requests []DeleteSubnetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1582,6 +1787,8 @@ func TestVirtualNetworkClientDeleteSubnet(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteVcn(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteVcn")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1601,7 +1808,10 @@ func TestVirtualNetworkClientDeleteVcn(t *testing.T) {
 	}
 
 	var requests []DeleteVcnRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1620,6 +1830,8 @@ func TestVirtualNetworkClientDeleteVcn(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDeleteVirtualCircuit(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteVirtualCircuit")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1639,7 +1851,10 @@ func TestVirtualNetworkClientDeleteVirtualCircuit(t *testing.T) {
 	}
 
 	var requests []DeleteVirtualCircuitRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1658,6 +1873,8 @@ func TestVirtualNetworkClientDeleteVirtualCircuit(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientDetachServiceId(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DetachServiceId")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1677,7 +1894,10 @@ func TestVirtualNetworkClientDetachServiceId(t *testing.T) {
 	}
 
 	var requests []DetachServiceIdRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1696,6 +1916,8 @@ func TestVirtualNetworkClientDetachServiceId(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetCpe(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetCpe")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1715,7 +1937,10 @@ func TestVirtualNetworkClientGetCpe(t *testing.T) {
 	}
 
 	var requests []GetCpeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1734,6 +1959,8 @@ func TestVirtualNetworkClientGetCpe(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetCrossConnect(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetCrossConnect")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1753,7 +1980,10 @@ func TestVirtualNetworkClientGetCrossConnect(t *testing.T) {
 	}
 
 	var requests []GetCrossConnectRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1772,6 +2002,8 @@ func TestVirtualNetworkClientGetCrossConnect(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetCrossConnectGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetCrossConnectGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1791,7 +2023,10 @@ func TestVirtualNetworkClientGetCrossConnectGroup(t *testing.T) {
 	}
 
 	var requests []GetCrossConnectGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1810,6 +2045,8 @@ func TestVirtualNetworkClientGetCrossConnectGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetCrossConnectLetterOfAuthority(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetCrossConnectLetterOfAuthority")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1829,7 +2066,10 @@ func TestVirtualNetworkClientGetCrossConnectLetterOfAuthority(t *testing.T) {
 	}
 
 	var requests []GetCrossConnectLetterOfAuthorityRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1848,6 +2088,8 @@ func TestVirtualNetworkClientGetCrossConnectLetterOfAuthority(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetCrossConnectStatus(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetCrossConnectStatus")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1867,7 +2109,10 @@ func TestVirtualNetworkClientGetCrossConnectStatus(t *testing.T) {
 	}
 
 	var requests []GetCrossConnectStatusRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1886,6 +2131,8 @@ func TestVirtualNetworkClientGetCrossConnectStatus(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetDhcpOptions(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetDhcpOptions")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1905,7 +2152,10 @@ func TestVirtualNetworkClientGetDhcpOptions(t *testing.T) {
 	}
 
 	var requests []GetDhcpOptionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1924,6 +2174,8 @@ func TestVirtualNetworkClientGetDhcpOptions(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetDrg(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetDrg")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1943,7 +2195,10 @@ func TestVirtualNetworkClientGetDrg(t *testing.T) {
 	}
 
 	var requests []GetDrgRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1962,6 +2217,8 @@ func TestVirtualNetworkClientGetDrg(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetDrgAttachment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetDrgAttachment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1981,7 +2238,10 @@ func TestVirtualNetworkClientGetDrgAttachment(t *testing.T) {
 	}
 
 	var requests []GetDrgAttachmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2000,6 +2260,8 @@ func TestVirtualNetworkClientGetDrgAttachment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetFastConnectProviderService(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetFastConnectProviderService")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2019,7 +2281,10 @@ func TestVirtualNetworkClientGetFastConnectProviderService(t *testing.T) {
 	}
 
 	var requests []GetFastConnectProviderServiceRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2038,6 +2303,8 @@ func TestVirtualNetworkClientGetFastConnectProviderService(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetIPSecConnection(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetIPSecConnection")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2057,7 +2324,10 @@ func TestVirtualNetworkClientGetIPSecConnection(t *testing.T) {
 	}
 
 	var requests []GetIPSecConnectionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2076,6 +2346,8 @@ func TestVirtualNetworkClientGetIPSecConnection(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetIPSecConnectionDeviceConfig(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetIPSecConnectionDeviceConfig")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2095,7 +2367,10 @@ func TestVirtualNetworkClientGetIPSecConnectionDeviceConfig(t *testing.T) {
 	}
 
 	var requests []GetIPSecConnectionDeviceConfigRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2114,6 +2389,8 @@ func TestVirtualNetworkClientGetIPSecConnectionDeviceConfig(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetIPSecConnectionDeviceStatus(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetIPSecConnectionDeviceStatus")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2133,7 +2410,10 @@ func TestVirtualNetworkClientGetIPSecConnectionDeviceStatus(t *testing.T) {
 	}
 
 	var requests []GetIPSecConnectionDeviceStatusRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2152,6 +2432,8 @@ func TestVirtualNetworkClientGetIPSecConnectionDeviceStatus(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetInternetGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetInternetGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2171,7 +2453,10 @@ func TestVirtualNetworkClientGetInternetGateway(t *testing.T) {
 	}
 
 	var requests []GetInternetGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2190,6 +2475,8 @@ func TestVirtualNetworkClientGetInternetGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetLocalPeeringGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetLocalPeeringGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2209,7 +2496,10 @@ func TestVirtualNetworkClientGetLocalPeeringGateway(t *testing.T) {
 	}
 
 	var requests []GetLocalPeeringGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2228,6 +2518,8 @@ func TestVirtualNetworkClientGetLocalPeeringGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetNatGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetNatGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2247,7 +2539,10 @@ func TestVirtualNetworkClientGetNatGateway(t *testing.T) {
 	}
 
 	var requests []GetNatGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2266,6 +2561,8 @@ func TestVirtualNetworkClientGetNatGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetPrivateIp(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetPrivateIp")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2285,7 +2582,10 @@ func TestVirtualNetworkClientGetPrivateIp(t *testing.T) {
 	}
 
 	var requests []GetPrivateIpRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2304,6 +2604,8 @@ func TestVirtualNetworkClientGetPrivateIp(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetPublicIp(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetPublicIp")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2323,7 +2625,10 @@ func TestVirtualNetworkClientGetPublicIp(t *testing.T) {
 	}
 
 	var requests []GetPublicIpRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2342,6 +2647,8 @@ func TestVirtualNetworkClientGetPublicIp(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetPublicIpByIpAddress(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetPublicIpByIpAddress")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2361,7 +2668,10 @@ func TestVirtualNetworkClientGetPublicIpByIpAddress(t *testing.T) {
 	}
 
 	var requests []GetPublicIpByIpAddressRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2380,6 +2690,8 @@ func TestVirtualNetworkClientGetPublicIpByIpAddress(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetPublicIpByPrivateIpId(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetPublicIpByPrivateIpId")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2399,7 +2711,10 @@ func TestVirtualNetworkClientGetPublicIpByPrivateIpId(t *testing.T) {
 	}
 
 	var requests []GetPublicIpByPrivateIpIdRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2418,6 +2733,8 @@ func TestVirtualNetworkClientGetPublicIpByPrivateIpId(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetRemotePeeringConnection(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetRemotePeeringConnection")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2437,7 +2754,10 @@ func TestVirtualNetworkClientGetRemotePeeringConnection(t *testing.T) {
 	}
 
 	var requests []GetRemotePeeringConnectionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2456,6 +2776,8 @@ func TestVirtualNetworkClientGetRemotePeeringConnection(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetRouteTable(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetRouteTable")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2475,7 +2797,10 @@ func TestVirtualNetworkClientGetRouteTable(t *testing.T) {
 	}
 
 	var requests []GetRouteTableRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2494,6 +2819,8 @@ func TestVirtualNetworkClientGetRouteTable(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetSecurityList(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetSecurityList")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2513,7 +2840,10 @@ func TestVirtualNetworkClientGetSecurityList(t *testing.T) {
 	}
 
 	var requests []GetSecurityListRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2532,6 +2862,8 @@ func TestVirtualNetworkClientGetSecurityList(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetService(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetService")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2551,7 +2883,10 @@ func TestVirtualNetworkClientGetService(t *testing.T) {
 	}
 
 	var requests []GetServiceRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2570,6 +2905,8 @@ func TestVirtualNetworkClientGetService(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetServiceGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetServiceGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2589,7 +2926,10 @@ func TestVirtualNetworkClientGetServiceGateway(t *testing.T) {
 	}
 
 	var requests []GetServiceGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2608,6 +2948,8 @@ func TestVirtualNetworkClientGetServiceGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetSubnet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetSubnet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2627,7 +2969,10 @@ func TestVirtualNetworkClientGetSubnet(t *testing.T) {
 	}
 
 	var requests []GetSubnetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2646,6 +2991,8 @@ func TestVirtualNetworkClientGetSubnet(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetVcn(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetVcn")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2665,7 +3012,10 @@ func TestVirtualNetworkClientGetVcn(t *testing.T) {
 	}
 
 	var requests []GetVcnRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2684,6 +3034,8 @@ func TestVirtualNetworkClientGetVcn(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetVirtualCircuit(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetVirtualCircuit")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2703,7 +3055,10 @@ func TestVirtualNetworkClientGetVirtualCircuit(t *testing.T) {
 	}
 
 	var requests []GetVirtualCircuitRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2722,6 +3077,8 @@ func TestVirtualNetworkClientGetVirtualCircuit(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientGetVnic(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetVnic")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2741,7 +3098,10 @@ func TestVirtualNetworkClientGetVnic(t *testing.T) {
 	}
 
 	var requests []GetVnicRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2760,6 +3120,8 @@ func TestVirtualNetworkClientGetVnic(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListAllowedPeerRegionsForRemotePeering(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListAllowedPeerRegionsForRemotePeering")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2779,7 +3141,10 @@ func TestVirtualNetworkClientListAllowedPeerRegionsForRemotePeering(t *testing.T
 	}
 
 	var requests []ListAllowedPeerRegionsForRemotePeeringRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2798,6 +3163,8 @@ func TestVirtualNetworkClientListAllowedPeerRegionsForRemotePeering(t *testing.T
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListCpes(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListCpes")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2817,7 +3184,10 @@ func TestVirtualNetworkClientListCpes(t *testing.T) {
 	}
 
 	var requests []ListCpesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2845,6 +3215,8 @@ func TestVirtualNetworkClientListCpes(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListCrossConnectGroups(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListCrossConnectGroups")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2864,7 +3236,10 @@ func TestVirtualNetworkClientListCrossConnectGroups(t *testing.T) {
 	}
 
 	var requests []ListCrossConnectGroupsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2892,6 +3267,8 @@ func TestVirtualNetworkClientListCrossConnectGroups(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListCrossConnectLocations(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListCrossConnectLocations")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2911,7 +3288,10 @@ func TestVirtualNetworkClientListCrossConnectLocations(t *testing.T) {
 	}
 
 	var requests []ListCrossConnectLocationsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2939,6 +3319,8 @@ func TestVirtualNetworkClientListCrossConnectLocations(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListCrossConnects(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListCrossConnects")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2958,7 +3340,10 @@ func TestVirtualNetworkClientListCrossConnects(t *testing.T) {
 	}
 
 	var requests []ListCrossConnectsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2986,6 +3371,8 @@ func TestVirtualNetworkClientListCrossConnects(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListCrossconnectPortSpeedShapes(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListCrossconnectPortSpeedShapes")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3005,7 +3392,10 @@ func TestVirtualNetworkClientListCrossconnectPortSpeedShapes(t *testing.T) {
 	}
 
 	var requests []ListCrossconnectPortSpeedShapesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3033,6 +3423,8 @@ func TestVirtualNetworkClientListCrossconnectPortSpeedShapes(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListDhcpOptions(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListDhcpOptions")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3052,7 +3444,10 @@ func TestVirtualNetworkClientListDhcpOptions(t *testing.T) {
 	}
 
 	var requests []ListDhcpOptionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3080,6 +3475,8 @@ func TestVirtualNetworkClientListDhcpOptions(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListDrgAttachments(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListDrgAttachments")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3099,7 +3496,10 @@ func TestVirtualNetworkClientListDrgAttachments(t *testing.T) {
 	}
 
 	var requests []ListDrgAttachmentsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3127,6 +3527,8 @@ func TestVirtualNetworkClientListDrgAttachments(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListDrgs(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListDrgs")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3146,7 +3548,10 @@ func TestVirtualNetworkClientListDrgs(t *testing.T) {
 	}
 
 	var requests []ListDrgsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3174,6 +3579,8 @@ func TestVirtualNetworkClientListDrgs(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListFastConnectProviderServices(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListFastConnectProviderServices")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3193,7 +3600,10 @@ func TestVirtualNetworkClientListFastConnectProviderServices(t *testing.T) {
 	}
 
 	var requests []ListFastConnectProviderServicesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3221,6 +3631,8 @@ func TestVirtualNetworkClientListFastConnectProviderServices(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListFastConnectProviderVirtualCircuitBandwidthShapes(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListFastConnectProviderVirtualCircuitBandwidthShapes")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3240,7 +3652,10 @@ func TestVirtualNetworkClientListFastConnectProviderVirtualCircuitBandwidthShape
 	}
 
 	var requests []ListFastConnectProviderVirtualCircuitBandwidthShapesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3268,6 +3683,8 @@ func TestVirtualNetworkClientListFastConnectProviderVirtualCircuitBandwidthShape
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListIPSecConnections(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListIPSecConnections")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3287,7 +3704,10 @@ func TestVirtualNetworkClientListIPSecConnections(t *testing.T) {
 	}
 
 	var requests []ListIPSecConnectionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3315,6 +3735,8 @@ func TestVirtualNetworkClientListIPSecConnections(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListInternetGateways(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListInternetGateways")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3334,7 +3756,10 @@ func TestVirtualNetworkClientListInternetGateways(t *testing.T) {
 	}
 
 	var requests []ListInternetGatewaysRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3362,6 +3787,8 @@ func TestVirtualNetworkClientListInternetGateways(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListLocalPeeringGateways(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListLocalPeeringGateways")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3381,7 +3808,10 @@ func TestVirtualNetworkClientListLocalPeeringGateways(t *testing.T) {
 	}
 
 	var requests []ListLocalPeeringGatewaysRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3409,6 +3839,8 @@ func TestVirtualNetworkClientListLocalPeeringGateways(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListNatGateways(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListNatGateways")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3428,7 +3860,10 @@ func TestVirtualNetworkClientListNatGateways(t *testing.T) {
 	}
 
 	var requests []ListNatGatewaysRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3456,6 +3891,8 @@ func TestVirtualNetworkClientListNatGateways(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListPrivateIps(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListPrivateIps")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3475,7 +3912,10 @@ func TestVirtualNetworkClientListPrivateIps(t *testing.T) {
 	}
 
 	var requests []ListPrivateIpsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3503,6 +3943,8 @@ func TestVirtualNetworkClientListPrivateIps(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListPublicIps(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListPublicIps")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3522,7 +3964,10 @@ func TestVirtualNetworkClientListPublicIps(t *testing.T) {
 	}
 
 	var requests []ListPublicIpsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3550,6 +3995,8 @@ func TestVirtualNetworkClientListPublicIps(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListRemotePeeringConnections(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListRemotePeeringConnections")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3569,7 +4016,10 @@ func TestVirtualNetworkClientListRemotePeeringConnections(t *testing.T) {
 	}
 
 	var requests []ListRemotePeeringConnectionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3597,6 +4047,8 @@ func TestVirtualNetworkClientListRemotePeeringConnections(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListRouteTables(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListRouteTables")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3616,7 +4068,10 @@ func TestVirtualNetworkClientListRouteTables(t *testing.T) {
 	}
 
 	var requests []ListRouteTablesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3644,6 +4099,8 @@ func TestVirtualNetworkClientListRouteTables(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListSecurityLists(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListSecurityLists")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3663,7 +4120,10 @@ func TestVirtualNetworkClientListSecurityLists(t *testing.T) {
 	}
 
 	var requests []ListSecurityListsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3691,6 +4151,8 @@ func TestVirtualNetworkClientListSecurityLists(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListServiceGateways(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListServiceGateways")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3710,7 +4172,10 @@ func TestVirtualNetworkClientListServiceGateways(t *testing.T) {
 	}
 
 	var requests []ListServiceGatewaysRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3738,6 +4203,8 @@ func TestVirtualNetworkClientListServiceGateways(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListServices(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListServices")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3757,7 +4224,10 @@ func TestVirtualNetworkClientListServices(t *testing.T) {
 	}
 
 	var requests []ListServicesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3785,6 +4255,8 @@ func TestVirtualNetworkClientListServices(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListSubnets(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListSubnets")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3804,7 +4276,10 @@ func TestVirtualNetworkClientListSubnets(t *testing.T) {
 	}
 
 	var requests []ListSubnetsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3832,6 +4307,8 @@ func TestVirtualNetworkClientListSubnets(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListVcns(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListVcns")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3851,7 +4328,10 @@ func TestVirtualNetworkClientListVcns(t *testing.T) {
 	}
 
 	var requests []ListVcnsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3879,6 +4359,8 @@ func TestVirtualNetworkClientListVcns(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListVirtualCircuitBandwidthShapes(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListVirtualCircuitBandwidthShapes")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3898,7 +4380,10 @@ func TestVirtualNetworkClientListVirtualCircuitBandwidthShapes(t *testing.T) {
 	}
 
 	var requests []ListVirtualCircuitBandwidthShapesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3926,6 +4411,8 @@ func TestVirtualNetworkClientListVirtualCircuitBandwidthShapes(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListVirtualCircuitPublicPrefixes(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListVirtualCircuitPublicPrefixes")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3945,7 +4432,10 @@ func TestVirtualNetworkClientListVirtualCircuitPublicPrefixes(t *testing.T) {
 	}
 
 	var requests []ListVirtualCircuitPublicPrefixesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3964,6 +4454,8 @@ func TestVirtualNetworkClientListVirtualCircuitPublicPrefixes(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientListVirtualCircuits(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListVirtualCircuits")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3983,7 +4475,10 @@ func TestVirtualNetworkClientListVirtualCircuits(t *testing.T) {
 	}
 
 	var requests []ListVirtualCircuitsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4011,6 +4506,8 @@ func TestVirtualNetworkClientListVirtualCircuits(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateCpe(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateCpe")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4030,7 +4527,10 @@ func TestVirtualNetworkClientUpdateCpe(t *testing.T) {
 	}
 
 	var requests []UpdateCpeRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4049,6 +4549,8 @@ func TestVirtualNetworkClientUpdateCpe(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateCrossConnect(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateCrossConnect")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4068,7 +4570,10 @@ func TestVirtualNetworkClientUpdateCrossConnect(t *testing.T) {
 	}
 
 	var requests []UpdateCrossConnectRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4087,6 +4592,8 @@ func TestVirtualNetworkClientUpdateCrossConnect(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateCrossConnectGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateCrossConnectGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4106,7 +4613,10 @@ func TestVirtualNetworkClientUpdateCrossConnectGroup(t *testing.T) {
 	}
 
 	var requests []UpdateCrossConnectGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4125,6 +4635,8 @@ func TestVirtualNetworkClientUpdateCrossConnectGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateDhcpOptions(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateDhcpOptions")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4144,7 +4656,10 @@ func TestVirtualNetworkClientUpdateDhcpOptions(t *testing.T) {
 	}
 
 	var requests []UpdateDhcpOptionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4163,6 +4678,8 @@ func TestVirtualNetworkClientUpdateDhcpOptions(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateDrg(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateDrg")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4182,7 +4699,10 @@ func TestVirtualNetworkClientUpdateDrg(t *testing.T) {
 	}
 
 	var requests []UpdateDrgRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4201,6 +4721,8 @@ func TestVirtualNetworkClientUpdateDrg(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateDrgAttachment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateDrgAttachment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4220,7 +4742,10 @@ func TestVirtualNetworkClientUpdateDrgAttachment(t *testing.T) {
 	}
 
 	var requests []UpdateDrgAttachmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4239,6 +4764,8 @@ func TestVirtualNetworkClientUpdateDrgAttachment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateIPSecConnection(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateIPSecConnection")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4258,7 +4785,10 @@ func TestVirtualNetworkClientUpdateIPSecConnection(t *testing.T) {
 	}
 
 	var requests []UpdateIPSecConnectionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4277,6 +4807,8 @@ func TestVirtualNetworkClientUpdateIPSecConnection(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateInternetGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateInternetGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4296,7 +4828,10 @@ func TestVirtualNetworkClientUpdateInternetGateway(t *testing.T) {
 	}
 
 	var requests []UpdateInternetGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4315,6 +4850,8 @@ func TestVirtualNetworkClientUpdateInternetGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateLocalPeeringGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateLocalPeeringGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4334,7 +4871,10 @@ func TestVirtualNetworkClientUpdateLocalPeeringGateway(t *testing.T) {
 	}
 
 	var requests []UpdateLocalPeeringGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4353,6 +4893,8 @@ func TestVirtualNetworkClientUpdateLocalPeeringGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateNatGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateNatGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4372,7 +4914,10 @@ func TestVirtualNetworkClientUpdateNatGateway(t *testing.T) {
 	}
 
 	var requests []UpdateNatGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4391,6 +4936,8 @@ func TestVirtualNetworkClientUpdateNatGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdatePrivateIp(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdatePrivateIp")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4410,7 +4957,10 @@ func TestVirtualNetworkClientUpdatePrivateIp(t *testing.T) {
 	}
 
 	var requests []UpdatePrivateIpRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4429,6 +4979,8 @@ func TestVirtualNetworkClientUpdatePrivateIp(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdatePublicIp(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdatePublicIp")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4448,7 +5000,10 @@ func TestVirtualNetworkClientUpdatePublicIp(t *testing.T) {
 	}
 
 	var requests []UpdatePublicIpRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4467,6 +5022,8 @@ func TestVirtualNetworkClientUpdatePublicIp(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateRemotePeeringConnection(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateRemotePeeringConnection")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4486,7 +5043,10 @@ func TestVirtualNetworkClientUpdateRemotePeeringConnection(t *testing.T) {
 	}
 
 	var requests []UpdateRemotePeeringConnectionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4505,6 +5065,8 @@ func TestVirtualNetworkClientUpdateRemotePeeringConnection(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateRouteTable(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateRouteTable")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4524,7 +5086,10 @@ func TestVirtualNetworkClientUpdateRouteTable(t *testing.T) {
 	}
 
 	var requests []UpdateRouteTableRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4543,6 +5108,8 @@ func TestVirtualNetworkClientUpdateRouteTable(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateSecurityList(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateSecurityList")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4562,7 +5129,10 @@ func TestVirtualNetworkClientUpdateSecurityList(t *testing.T) {
 	}
 
 	var requests []UpdateSecurityListRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4581,6 +5151,8 @@ func TestVirtualNetworkClientUpdateSecurityList(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateServiceGateway(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateServiceGateway")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4600,7 +5172,10 @@ func TestVirtualNetworkClientUpdateServiceGateway(t *testing.T) {
 	}
 
 	var requests []UpdateServiceGatewayRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4619,6 +5194,8 @@ func TestVirtualNetworkClientUpdateServiceGateway(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateSubnet(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateSubnet")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4638,7 +5215,10 @@ func TestVirtualNetworkClientUpdateSubnet(t *testing.T) {
 	}
 
 	var requests []UpdateSubnetRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4657,6 +5237,8 @@ func TestVirtualNetworkClientUpdateSubnet(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateVcn(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateVcn")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4676,7 +5258,10 @@ func TestVirtualNetworkClientUpdateVcn(t *testing.T) {
 	}
 
 	var requests []UpdateVcnRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4695,6 +5280,8 @@ func TestVirtualNetworkClientUpdateVcn(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateVirtualCircuit(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateVirtualCircuit")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4714,7 +5301,10 @@ func TestVirtualNetworkClientUpdateVirtualCircuit(t *testing.T) {
 	}
 
 	var requests []UpdateVirtualCircuitRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -4733,6 +5323,8 @@ func TestVirtualNetworkClientUpdateVirtualCircuit(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestVirtualNetworkClientUpdateVnic(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateVnic")
 	assert.NoError(t, err)
 	if !enabled {
@@ -4752,7 +5344,10 @@ func TestVirtualNetworkClientUpdateVnic(t *testing.T) {
 	}
 
 	var requests []UpdateVnicRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy

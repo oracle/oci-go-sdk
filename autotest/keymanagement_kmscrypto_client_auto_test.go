@@ -18,6 +18,8 @@ func createKmsCryptoClientWithProvider(p common.ConfigurationProvider, testConfi
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsCryptoClientDecrypt(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "Decrypt")
 	assert.NoError(t, err)
 	if !enabled {
@@ -37,7 +39,10 @@ func TestKmsCryptoClientDecrypt(t *testing.T) {
 	}
 
 	var requests []DecryptRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -56,6 +61,8 @@ func TestKmsCryptoClientDecrypt(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsCryptoClientEncrypt(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "Encrypt")
 	assert.NoError(t, err)
 	if !enabled {
@@ -75,7 +82,10 @@ func TestKmsCryptoClientEncrypt(t *testing.T) {
 	}
 
 	var requests []EncryptRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -94,6 +104,8 @@ func TestKmsCryptoClientEncrypt(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsCryptoClientGenerateDataEncryptionKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "GenerateDataEncryptionKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -113,7 +125,10 @@ func TestKmsCryptoClientGenerateDataEncryptionKey(t *testing.T) {
 	}
 
 	var requests []GenerateDataEncryptionKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy

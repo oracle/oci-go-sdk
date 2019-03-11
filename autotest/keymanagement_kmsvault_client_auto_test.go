@@ -24,6 +24,8 @@ func createKmsVaultClientWithProvider(p common.ConfigurationProvider, testConfig
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsVaultClientCancelVaultDeletion(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "CancelVaultDeletion")
 	assert.NoError(t, err)
 	if !enabled {
@@ -43,7 +45,10 @@ func TestKmsVaultClientCancelVaultDeletion(t *testing.T) {
 	}
 
 	var requests []CancelVaultDeletionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -62,6 +67,8 @@ func TestKmsVaultClientCancelVaultDeletion(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsVaultClientCreateVault(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "CreateVault")
 	assert.NoError(t, err)
 	if !enabled {
@@ -81,7 +88,10 @@ func TestKmsVaultClientCreateVault(t *testing.T) {
 	}
 
 	var requests []CreateVaultRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -100,6 +110,8 @@ func TestKmsVaultClientCreateVault(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsVaultClientGetVault(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "GetVault")
 	assert.NoError(t, err)
 	if !enabled {
@@ -119,7 +131,10 @@ func TestKmsVaultClientGetVault(t *testing.T) {
 	}
 
 	var requests []GetVaultRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -138,6 +153,8 @@ func TestKmsVaultClientGetVault(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsVaultClientListVaults(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "ListVaults")
 	assert.NoError(t, err)
 	if !enabled {
@@ -157,7 +174,10 @@ func TestKmsVaultClientListVaults(t *testing.T) {
 	}
 
 	var requests []ListVaultsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -185,6 +205,8 @@ func TestKmsVaultClientListVaults(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsVaultClientScheduleVaultDeletion(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "ScheduleVaultDeletion")
 	assert.NoError(t, err)
 	if !enabled {
@@ -204,7 +226,10 @@ func TestKmsVaultClientScheduleVaultDeletion(t *testing.T) {
 	}
 
 	var requests []ScheduleVaultDeletionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -223,6 +248,8 @@ func TestKmsVaultClientScheduleVaultDeletion(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsVaultClientUpdateVault(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "UpdateVault")
 	assert.NoError(t, err)
 	if !enabled {
@@ -242,7 +269,10 @@ func TestKmsVaultClientUpdateVault(t *testing.T) {
 	}
 
 	var requests []UpdateVaultRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy

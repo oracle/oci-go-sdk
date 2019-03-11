@@ -18,6 +18,8 @@ func createKmsManagementClientWithProvider(p common.ConfigurationProvider, testC
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsManagementClientCreateKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "CreateKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -37,7 +39,10 @@ func TestKmsManagementClientCreateKey(t *testing.T) {
 	}
 
 	var requests []CreateKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -56,6 +61,8 @@ func TestKmsManagementClientCreateKey(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsManagementClientCreateKeyVersion(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "CreateKeyVersion")
 	assert.NoError(t, err)
 	if !enabled {
@@ -75,7 +82,10 @@ func TestKmsManagementClientCreateKeyVersion(t *testing.T) {
 	}
 
 	var requests []CreateKeyVersionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -94,6 +104,8 @@ func TestKmsManagementClientCreateKeyVersion(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsManagementClientDisableKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "DisableKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -113,7 +125,10 @@ func TestKmsManagementClientDisableKey(t *testing.T) {
 	}
 
 	var requests []DisableKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -132,6 +147,8 @@ func TestKmsManagementClientDisableKey(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsManagementClientEnableKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "EnableKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -151,7 +168,10 @@ func TestKmsManagementClientEnableKey(t *testing.T) {
 	}
 
 	var requests []EnableKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -170,6 +190,8 @@ func TestKmsManagementClientEnableKey(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsManagementClientGetKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "GetKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -189,7 +211,10 @@ func TestKmsManagementClientGetKey(t *testing.T) {
 	}
 
 	var requests []GetKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -208,6 +233,8 @@ func TestKmsManagementClientGetKey(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsManagementClientGetKeyVersion(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "GetKeyVersion")
 	assert.NoError(t, err)
 	if !enabled {
@@ -227,7 +254,10 @@ func TestKmsManagementClientGetKeyVersion(t *testing.T) {
 	}
 
 	var requests []GetKeyVersionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -246,6 +276,8 @@ func TestKmsManagementClientGetKeyVersion(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsManagementClientListKeyVersions(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "ListKeyVersions")
 	assert.NoError(t, err)
 	if !enabled {
@@ -265,7 +297,10 @@ func TestKmsManagementClientListKeyVersions(t *testing.T) {
 	}
 
 	var requests []ListKeyVersionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -293,6 +328,8 @@ func TestKmsManagementClientListKeyVersions(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsManagementClientListKeys(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "ListKeys")
 	assert.NoError(t, err)
 	if !enabled {
@@ -312,7 +349,10 @@ func TestKmsManagementClientListKeys(t *testing.T) {
 	}
 
 	var requests []ListKeysRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -340,6 +380,8 @@ func TestKmsManagementClientListKeys(t *testing.T) {
 
 // IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
 func TestKmsManagementClientUpdateKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("keymanagement", "UpdateKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -359,7 +401,10 @@ func TestKmsManagementClientUpdateKey(t *testing.T) {
 	}
 
 	var requests []UpdateKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy

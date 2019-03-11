@@ -24,6 +24,8 @@ func createIdentityClientWithProvider(p common.ConfigurationProvider, testConfig
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientActivateMfaTotpDevice(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ActivateMfaTotpDevice")
 	assert.NoError(t, err)
 	if !enabled {
@@ -43,7 +45,10 @@ func TestIdentityClientActivateMfaTotpDevice(t *testing.T) {
 	}
 
 	var requests []ActivateMfaTotpDeviceRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -62,6 +67,8 @@ func TestIdentityClientActivateMfaTotpDevice(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientAddUserToGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "AddUserToGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -81,7 +88,10 @@ func TestIdentityClientAddUserToGroup(t *testing.T) {
 	}
 
 	var requests []AddUserToGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -100,6 +110,8 @@ func TestIdentityClientAddUserToGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientChangeTagNamespaceCompartment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ChangeTagNamespaceCompartment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -119,7 +131,10 @@ func TestIdentityClientChangeTagNamespaceCompartment(t *testing.T) {
 	}
 
 	var requests []ChangeTagNamespaceCompartmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -138,6 +153,8 @@ func TestIdentityClientChangeTagNamespaceCompartment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateAuthToken(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateAuthToken")
 	assert.NoError(t, err)
 	if !enabled {
@@ -157,7 +174,10 @@ func TestIdentityClientCreateAuthToken(t *testing.T) {
 	}
 
 	var requests []CreateAuthTokenRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -176,6 +196,8 @@ func TestIdentityClientCreateAuthToken(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateCompartment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateCompartment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -195,7 +217,10 @@ func TestIdentityClientCreateCompartment(t *testing.T) {
 	}
 
 	var requests []CreateCompartmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -214,6 +239,8 @@ func TestIdentityClientCreateCompartment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateCustomerSecretKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateCustomerSecretKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -233,7 +260,10 @@ func TestIdentityClientCreateCustomerSecretKey(t *testing.T) {
 	}
 
 	var requests []CreateCustomerSecretKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -252,6 +282,8 @@ func TestIdentityClientCreateCustomerSecretKey(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateDynamicGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateDynamicGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -271,7 +303,10 @@ func TestIdentityClientCreateDynamicGroup(t *testing.T) {
 	}
 
 	var requests []CreateDynamicGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -290,6 +325,8 @@ func TestIdentityClientCreateDynamicGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -309,7 +346,10 @@ func TestIdentityClientCreateGroup(t *testing.T) {
 	}
 
 	var requests []CreateGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -328,6 +368,8 @@ func TestIdentityClientCreateGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateIdentityProvider(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateIdentityProvider")
 	assert.NoError(t, err)
 	if !enabled {
@@ -380,6 +422,8 @@ func TestIdentityClientCreateIdentityProvider(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateIdpGroupMapping(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateIdpGroupMapping")
 	assert.NoError(t, err)
 	if !enabled {
@@ -399,7 +443,10 @@ func TestIdentityClientCreateIdpGroupMapping(t *testing.T) {
 	}
 
 	var requests []CreateIdpGroupMappingRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -418,6 +465,8 @@ func TestIdentityClientCreateIdpGroupMapping(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateMfaTotpDevice(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateMfaTotpDevice")
 	assert.NoError(t, err)
 	if !enabled {
@@ -437,7 +486,10 @@ func TestIdentityClientCreateMfaTotpDevice(t *testing.T) {
 	}
 
 	var requests []CreateMfaTotpDeviceRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -456,6 +508,8 @@ func TestIdentityClientCreateMfaTotpDevice(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateOrResetUIPassword(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateOrResetUIPassword")
 	assert.NoError(t, err)
 	if !enabled {
@@ -475,7 +529,10 @@ func TestIdentityClientCreateOrResetUIPassword(t *testing.T) {
 	}
 
 	var requests []CreateOrResetUIPasswordRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -494,6 +551,8 @@ func TestIdentityClientCreateOrResetUIPassword(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreatePolicy(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreatePolicy")
 	assert.NoError(t, err)
 	if !enabled {
@@ -513,7 +572,10 @@ func TestIdentityClientCreatePolicy(t *testing.T) {
 	}
 
 	var requests []CreatePolicyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -532,6 +594,8 @@ func TestIdentityClientCreatePolicy(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateRegionSubscription(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateRegionSubscription")
 	assert.NoError(t, err)
 	if !enabled {
@@ -551,7 +615,10 @@ func TestIdentityClientCreateRegionSubscription(t *testing.T) {
 	}
 
 	var requests []CreateRegionSubscriptionRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -570,6 +637,8 @@ func TestIdentityClientCreateRegionSubscription(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateSmtpCredential(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateSmtpCredential")
 	assert.NoError(t, err)
 	if !enabled {
@@ -589,7 +658,10 @@ func TestIdentityClientCreateSmtpCredential(t *testing.T) {
 	}
 
 	var requests []CreateSmtpCredentialRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -608,6 +680,8 @@ func TestIdentityClientCreateSmtpCredential(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateSwiftPassword(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateSwiftPassword")
 	assert.NoError(t, err)
 	if !enabled {
@@ -627,7 +701,10 @@ func TestIdentityClientCreateSwiftPassword(t *testing.T) {
 	}
 
 	var requests []CreateSwiftPasswordRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -646,6 +723,8 @@ func TestIdentityClientCreateSwiftPassword(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateTag(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateTag")
 	assert.NoError(t, err)
 	if !enabled {
@@ -665,7 +744,10 @@ func TestIdentityClientCreateTag(t *testing.T) {
 	}
 
 	var requests []CreateTagRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -684,6 +766,8 @@ func TestIdentityClientCreateTag(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateTagDefault(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateTagDefault")
 	assert.NoError(t, err)
 	if !enabled {
@@ -703,7 +787,10 @@ func TestIdentityClientCreateTagDefault(t *testing.T) {
 	}
 
 	var requests []CreateTagDefaultRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -722,6 +809,8 @@ func TestIdentityClientCreateTagDefault(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateTagNamespace(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateTagNamespace")
 	assert.NoError(t, err)
 	if !enabled {
@@ -741,7 +830,10 @@ func TestIdentityClientCreateTagNamespace(t *testing.T) {
 	}
 
 	var requests []CreateTagNamespaceRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -760,6 +852,8 @@ func TestIdentityClientCreateTagNamespace(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientCreateUser(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "CreateUser")
 	assert.NoError(t, err)
 	if !enabled {
@@ -779,7 +873,10 @@ func TestIdentityClientCreateUser(t *testing.T) {
 	}
 
 	var requests []CreateUserRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -798,6 +895,8 @@ func TestIdentityClientCreateUser(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteApiKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteApiKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -817,7 +916,10 @@ func TestIdentityClientDeleteApiKey(t *testing.T) {
 	}
 
 	var requests []DeleteApiKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -836,6 +938,8 @@ func TestIdentityClientDeleteApiKey(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteAuthToken(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteAuthToken")
 	assert.NoError(t, err)
 	if !enabled {
@@ -855,7 +959,10 @@ func TestIdentityClientDeleteAuthToken(t *testing.T) {
 	}
 
 	var requests []DeleteAuthTokenRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -874,6 +981,8 @@ func TestIdentityClientDeleteAuthToken(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteCompartment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteCompartment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -893,7 +1002,10 @@ func TestIdentityClientDeleteCompartment(t *testing.T) {
 	}
 
 	var requests []DeleteCompartmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -912,6 +1024,8 @@ func TestIdentityClientDeleteCompartment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteCustomerSecretKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteCustomerSecretKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -931,7 +1045,10 @@ func TestIdentityClientDeleteCustomerSecretKey(t *testing.T) {
 	}
 
 	var requests []DeleteCustomerSecretKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -950,6 +1067,8 @@ func TestIdentityClientDeleteCustomerSecretKey(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteDynamicGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteDynamicGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -969,7 +1088,10 @@ func TestIdentityClientDeleteDynamicGroup(t *testing.T) {
 	}
 
 	var requests []DeleteDynamicGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -988,6 +1110,8 @@ func TestIdentityClientDeleteDynamicGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1007,7 +1131,10 @@ func TestIdentityClientDeleteGroup(t *testing.T) {
 	}
 
 	var requests []DeleteGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1026,6 +1153,8 @@ func TestIdentityClientDeleteGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteIdentityProvider(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteIdentityProvider")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1045,7 +1174,10 @@ func TestIdentityClientDeleteIdentityProvider(t *testing.T) {
 	}
 
 	var requests []DeleteIdentityProviderRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1064,6 +1196,8 @@ func TestIdentityClientDeleteIdentityProvider(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteIdpGroupMapping(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteIdpGroupMapping")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1083,7 +1217,10 @@ func TestIdentityClientDeleteIdpGroupMapping(t *testing.T) {
 	}
 
 	var requests []DeleteIdpGroupMappingRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1102,6 +1239,8 @@ func TestIdentityClientDeleteIdpGroupMapping(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteMfaTotpDevice(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteMfaTotpDevice")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1121,7 +1260,10 @@ func TestIdentityClientDeleteMfaTotpDevice(t *testing.T) {
 	}
 
 	var requests []DeleteMfaTotpDeviceRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1140,6 +1282,8 @@ func TestIdentityClientDeleteMfaTotpDevice(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeletePolicy(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeletePolicy")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1159,7 +1303,10 @@ func TestIdentityClientDeletePolicy(t *testing.T) {
 	}
 
 	var requests []DeletePolicyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1178,6 +1325,8 @@ func TestIdentityClientDeletePolicy(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteSmtpCredential(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteSmtpCredential")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1197,7 +1346,10 @@ func TestIdentityClientDeleteSmtpCredential(t *testing.T) {
 	}
 
 	var requests []DeleteSmtpCredentialRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1216,6 +1368,8 @@ func TestIdentityClientDeleteSmtpCredential(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteSwiftPassword(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteSwiftPassword")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1235,7 +1389,10 @@ func TestIdentityClientDeleteSwiftPassword(t *testing.T) {
 	}
 
 	var requests []DeleteSwiftPasswordRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1254,6 +1411,8 @@ func TestIdentityClientDeleteSwiftPassword(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteTagDefault(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteTagDefault")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1273,7 +1432,10 @@ func TestIdentityClientDeleteTagDefault(t *testing.T) {
 	}
 
 	var requests []DeleteTagDefaultRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1292,6 +1454,8 @@ func TestIdentityClientDeleteTagDefault(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientDeleteUser(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "DeleteUser")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1311,7 +1475,10 @@ func TestIdentityClientDeleteUser(t *testing.T) {
 	}
 
 	var requests []DeleteUserRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1330,6 +1497,8 @@ func TestIdentityClientDeleteUser(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGenerateTotpSeed(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GenerateTotpSeed")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1349,7 +1518,10 @@ func TestIdentityClientGenerateTotpSeed(t *testing.T) {
 	}
 
 	var requests []GenerateTotpSeedRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1368,6 +1540,8 @@ func TestIdentityClientGenerateTotpSeed(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetAuthenticationPolicy(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetAuthenticationPolicy")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1387,7 +1561,10 @@ func TestIdentityClientGetAuthenticationPolicy(t *testing.T) {
 	}
 
 	var requests []GetAuthenticationPolicyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1406,6 +1583,8 @@ func TestIdentityClientGetAuthenticationPolicy(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetCompartment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetCompartment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1425,7 +1604,10 @@ func TestIdentityClientGetCompartment(t *testing.T) {
 	}
 
 	var requests []GetCompartmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1444,6 +1626,8 @@ func TestIdentityClientGetCompartment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetDynamicGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetDynamicGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1463,7 +1647,10 @@ func TestIdentityClientGetDynamicGroup(t *testing.T) {
 	}
 
 	var requests []GetDynamicGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1482,6 +1669,8 @@ func TestIdentityClientGetDynamicGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1501,7 +1690,10 @@ func TestIdentityClientGetGroup(t *testing.T) {
 	}
 
 	var requests []GetGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1520,6 +1712,8 @@ func TestIdentityClientGetGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetIdentityProvider(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetIdentityProvider")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1539,7 +1733,10 @@ func TestIdentityClientGetIdentityProvider(t *testing.T) {
 	}
 
 	var requests []GetIdentityProviderRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1558,6 +1755,8 @@ func TestIdentityClientGetIdentityProvider(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetIdpGroupMapping(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetIdpGroupMapping")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1577,7 +1776,10 @@ func TestIdentityClientGetIdpGroupMapping(t *testing.T) {
 	}
 
 	var requests []GetIdpGroupMappingRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1596,6 +1798,8 @@ func TestIdentityClientGetIdpGroupMapping(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetMfaTotpDevice(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetMfaTotpDevice")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1615,7 +1819,10 @@ func TestIdentityClientGetMfaTotpDevice(t *testing.T) {
 	}
 
 	var requests []GetMfaTotpDeviceRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1634,6 +1841,8 @@ func TestIdentityClientGetMfaTotpDevice(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetPolicy(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetPolicy")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1653,7 +1862,10 @@ func TestIdentityClientGetPolicy(t *testing.T) {
 	}
 
 	var requests []GetPolicyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1672,6 +1884,8 @@ func TestIdentityClientGetPolicy(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetTag(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetTag")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1691,7 +1905,10 @@ func TestIdentityClientGetTag(t *testing.T) {
 	}
 
 	var requests []GetTagRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1710,6 +1927,8 @@ func TestIdentityClientGetTag(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetTagDefault(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetTagDefault")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1729,7 +1948,10 @@ func TestIdentityClientGetTagDefault(t *testing.T) {
 	}
 
 	var requests []GetTagDefaultRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1748,6 +1970,8 @@ func TestIdentityClientGetTagDefault(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetTagNamespace(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetTagNamespace")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1767,7 +1991,10 @@ func TestIdentityClientGetTagNamespace(t *testing.T) {
 	}
 
 	var requests []GetTagNamespaceRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1786,6 +2013,8 @@ func TestIdentityClientGetTagNamespace(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetTenancy(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetTenancy")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1805,7 +2034,10 @@ func TestIdentityClientGetTenancy(t *testing.T) {
 	}
 
 	var requests []GetTenancyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1824,6 +2056,8 @@ func TestIdentityClientGetTenancy(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetUser(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetUser")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1843,7 +2077,10 @@ func TestIdentityClientGetUser(t *testing.T) {
 	}
 
 	var requests []GetUserRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1862,6 +2099,8 @@ func TestIdentityClientGetUser(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetUserGroupMembership(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetUserGroupMembership")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1881,7 +2120,10 @@ func TestIdentityClientGetUserGroupMembership(t *testing.T) {
 	}
 
 	var requests []GetUserGroupMembershipRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1900,6 +2142,8 @@ func TestIdentityClientGetUserGroupMembership(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientGetWorkRequest(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "GetWorkRequest")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1919,7 +2163,10 @@ func TestIdentityClientGetWorkRequest(t *testing.T) {
 	}
 
 	var requests []GetWorkRequestRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1938,6 +2185,8 @@ func TestIdentityClientGetWorkRequest(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListApiKeys(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListApiKeys")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1957,7 +2206,10 @@ func TestIdentityClientListApiKeys(t *testing.T) {
 	}
 
 	var requests []ListApiKeysRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -1976,6 +2228,8 @@ func TestIdentityClientListApiKeys(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListAuthTokens(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListAuthTokens")
 	assert.NoError(t, err)
 	if !enabled {
@@ -1995,7 +2249,10 @@ func TestIdentityClientListAuthTokens(t *testing.T) {
 	}
 
 	var requests []ListAuthTokensRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2014,6 +2271,8 @@ func TestIdentityClientListAuthTokens(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListAvailabilityDomains(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListAvailabilityDomains")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2033,7 +2292,10 @@ func TestIdentityClientListAvailabilityDomains(t *testing.T) {
 	}
 
 	var requests []ListAvailabilityDomainsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2052,6 +2314,8 @@ func TestIdentityClientListAvailabilityDomains(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListCompartments(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListCompartments")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2071,7 +2335,10 @@ func TestIdentityClientListCompartments(t *testing.T) {
 	}
 
 	var requests []ListCompartmentsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2099,6 +2366,8 @@ func TestIdentityClientListCompartments(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListCostTrackingTags(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListCostTrackingTags")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2118,7 +2387,10 @@ func TestIdentityClientListCostTrackingTags(t *testing.T) {
 	}
 
 	var requests []ListCostTrackingTagsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2146,6 +2418,8 @@ func TestIdentityClientListCostTrackingTags(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListCustomerSecretKeys(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListCustomerSecretKeys")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2165,7 +2439,10 @@ func TestIdentityClientListCustomerSecretKeys(t *testing.T) {
 	}
 
 	var requests []ListCustomerSecretKeysRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2184,6 +2461,8 @@ func TestIdentityClientListCustomerSecretKeys(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListDynamicGroups(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListDynamicGroups")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2203,7 +2482,10 @@ func TestIdentityClientListDynamicGroups(t *testing.T) {
 	}
 
 	var requests []ListDynamicGroupsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2231,6 +2513,8 @@ func TestIdentityClientListDynamicGroups(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListFaultDomains(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListFaultDomains")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2250,7 +2534,10 @@ func TestIdentityClientListFaultDomains(t *testing.T) {
 	}
 
 	var requests []ListFaultDomainsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2269,6 +2556,8 @@ func TestIdentityClientListFaultDomains(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListGroups(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListGroups")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2288,7 +2577,10 @@ func TestIdentityClientListGroups(t *testing.T) {
 	}
 
 	var requests []ListGroupsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2316,6 +2608,8 @@ func TestIdentityClientListGroups(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListIdentityProviderGroups(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListIdentityProviderGroups")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2335,7 +2629,10 @@ func TestIdentityClientListIdentityProviderGroups(t *testing.T) {
 	}
 
 	var requests []ListIdentityProviderGroupsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2363,6 +2660,8 @@ func TestIdentityClientListIdentityProviderGroups(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListIdentityProviders(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListIdentityProviders")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2382,7 +2681,10 @@ func TestIdentityClientListIdentityProviders(t *testing.T) {
 	}
 
 	var requests []ListIdentityProvidersRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2410,6 +2712,8 @@ func TestIdentityClientListIdentityProviders(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListIdpGroupMappings(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListIdpGroupMappings")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2429,7 +2733,10 @@ func TestIdentityClientListIdpGroupMappings(t *testing.T) {
 	}
 
 	var requests []ListIdpGroupMappingsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2457,6 +2764,8 @@ func TestIdentityClientListIdpGroupMappings(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListMfaTotpDevices(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListMfaTotpDevices")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2476,7 +2785,10 @@ func TestIdentityClientListMfaTotpDevices(t *testing.T) {
 	}
 
 	var requests []ListMfaTotpDevicesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2504,6 +2816,8 @@ func TestIdentityClientListMfaTotpDevices(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListPolicies(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListPolicies")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2523,7 +2837,10 @@ func TestIdentityClientListPolicies(t *testing.T) {
 	}
 
 	var requests []ListPoliciesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2551,6 +2868,8 @@ func TestIdentityClientListPolicies(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListRegionSubscriptions(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListRegionSubscriptions")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2570,7 +2889,10 @@ func TestIdentityClientListRegionSubscriptions(t *testing.T) {
 	}
 
 	var requests []ListRegionSubscriptionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2589,6 +2911,8 @@ func TestIdentityClientListRegionSubscriptions(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListRegions(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListRegions")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2608,7 +2932,10 @@ func TestIdentityClientListRegions(t *testing.T) {
 	}
 
 	var requests []ListRegionsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	for i, req := range requests {
@@ -2624,6 +2951,8 @@ func TestIdentityClientListRegions(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListSmtpCredentials(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListSmtpCredentials")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2643,7 +2972,10 @@ func TestIdentityClientListSmtpCredentials(t *testing.T) {
 	}
 
 	var requests []ListSmtpCredentialsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2662,6 +2994,8 @@ func TestIdentityClientListSmtpCredentials(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListSwiftPasswords(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListSwiftPasswords")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2681,7 +3015,10 @@ func TestIdentityClientListSwiftPasswords(t *testing.T) {
 	}
 
 	var requests []ListSwiftPasswordsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2700,6 +3037,8 @@ func TestIdentityClientListSwiftPasswords(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListTagDefaults(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListTagDefaults")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2719,7 +3058,10 @@ func TestIdentityClientListTagDefaults(t *testing.T) {
 	}
 
 	var requests []ListTagDefaultsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2747,6 +3089,8 @@ func TestIdentityClientListTagDefaults(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListTagNamespaces(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListTagNamespaces")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2766,7 +3110,10 @@ func TestIdentityClientListTagNamespaces(t *testing.T) {
 	}
 
 	var requests []ListTagNamespacesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2794,6 +3141,8 @@ func TestIdentityClientListTagNamespaces(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListTags(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListTags")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2813,7 +3162,10 @@ func TestIdentityClientListTags(t *testing.T) {
 	}
 
 	var requests []ListTagsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2841,6 +3193,8 @@ func TestIdentityClientListTags(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListUserGroupMemberships(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListUserGroupMemberships")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2860,7 +3214,10 @@ func TestIdentityClientListUserGroupMemberships(t *testing.T) {
 	}
 
 	var requests []ListUserGroupMembershipsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2888,6 +3245,8 @@ func TestIdentityClientListUserGroupMemberships(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListUsers(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListUsers")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2907,7 +3266,10 @@ func TestIdentityClientListUsers(t *testing.T) {
 	}
 
 	var requests []ListUsersRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2935,6 +3297,8 @@ func TestIdentityClientListUsers(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientListWorkRequests(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ListWorkRequests")
 	assert.NoError(t, err)
 	if !enabled {
@@ -2954,7 +3318,10 @@ func TestIdentityClientListWorkRequests(t *testing.T) {
 	}
 
 	var requests []ListWorkRequestsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -2982,6 +3349,8 @@ func TestIdentityClientListWorkRequests(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientRemoveUserFromGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "RemoveUserFromGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3001,7 +3370,10 @@ func TestIdentityClientRemoveUserFromGroup(t *testing.T) {
 	}
 
 	var requests []RemoveUserFromGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3020,6 +3392,8 @@ func TestIdentityClientRemoveUserFromGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientResetIdpScimClient(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "ResetIdpScimClient")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3039,7 +3413,10 @@ func TestIdentityClientResetIdpScimClient(t *testing.T) {
 	}
 
 	var requests []ResetIdpScimClientRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3058,6 +3435,8 @@ func TestIdentityClientResetIdpScimClient(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateAuthToken(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateAuthToken")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3077,7 +3456,10 @@ func TestIdentityClientUpdateAuthToken(t *testing.T) {
 	}
 
 	var requests []UpdateAuthTokenRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3096,6 +3478,8 @@ func TestIdentityClientUpdateAuthToken(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateAuthenticationPolicy(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateAuthenticationPolicy")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3115,7 +3499,10 @@ func TestIdentityClientUpdateAuthenticationPolicy(t *testing.T) {
 	}
 
 	var requests []UpdateAuthenticationPolicyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3134,6 +3521,8 @@ func TestIdentityClientUpdateAuthenticationPolicy(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateCompartment(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateCompartment")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3153,7 +3542,10 @@ func TestIdentityClientUpdateCompartment(t *testing.T) {
 	}
 
 	var requests []UpdateCompartmentRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3172,6 +3564,8 @@ func TestIdentityClientUpdateCompartment(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateCustomerSecretKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateCustomerSecretKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3191,7 +3585,10 @@ func TestIdentityClientUpdateCustomerSecretKey(t *testing.T) {
 	}
 
 	var requests []UpdateCustomerSecretKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3210,6 +3607,8 @@ func TestIdentityClientUpdateCustomerSecretKey(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateDynamicGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateDynamicGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3229,7 +3628,10 @@ func TestIdentityClientUpdateDynamicGroup(t *testing.T) {
 	}
 
 	var requests []UpdateDynamicGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3248,6 +3650,8 @@ func TestIdentityClientUpdateDynamicGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateGroup(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateGroup")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3267,7 +3671,10 @@ func TestIdentityClientUpdateGroup(t *testing.T) {
 	}
 
 	var requests []UpdateGroupRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3286,6 +3693,8 @@ func TestIdentityClientUpdateGroup(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateIdentityProvider(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateIdentityProvider")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3338,6 +3747,8 @@ func TestIdentityClientUpdateIdentityProvider(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateIdpGroupMapping(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateIdpGroupMapping")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3357,7 +3768,10 @@ func TestIdentityClientUpdateIdpGroupMapping(t *testing.T) {
 	}
 
 	var requests []UpdateIdpGroupMappingRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3376,6 +3790,8 @@ func TestIdentityClientUpdateIdpGroupMapping(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdatePolicy(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdatePolicy")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3395,7 +3811,10 @@ func TestIdentityClientUpdatePolicy(t *testing.T) {
 	}
 
 	var requests []UpdatePolicyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3414,6 +3833,8 @@ func TestIdentityClientUpdatePolicy(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateSmtpCredential(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateSmtpCredential")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3433,7 +3854,10 @@ func TestIdentityClientUpdateSmtpCredential(t *testing.T) {
 	}
 
 	var requests []UpdateSmtpCredentialRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3452,6 +3876,8 @@ func TestIdentityClientUpdateSmtpCredential(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateSwiftPassword(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateSwiftPassword")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3471,7 +3897,10 @@ func TestIdentityClientUpdateSwiftPassword(t *testing.T) {
 	}
 
 	var requests []UpdateSwiftPasswordRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3490,6 +3919,8 @@ func TestIdentityClientUpdateSwiftPassword(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateTag(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateTag")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3509,7 +3940,10 @@ func TestIdentityClientUpdateTag(t *testing.T) {
 	}
 
 	var requests []UpdateTagRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3528,6 +3962,8 @@ func TestIdentityClientUpdateTag(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateTagDefault(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateTagDefault")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3547,7 +3983,10 @@ func TestIdentityClientUpdateTagDefault(t *testing.T) {
 	}
 
 	var requests []UpdateTagDefaultRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3566,6 +4005,8 @@ func TestIdentityClientUpdateTagDefault(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateTagNamespace(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateTagNamespace")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3585,7 +4026,10 @@ func TestIdentityClientUpdateTagNamespace(t *testing.T) {
 	}
 
 	var requests []UpdateTagNamespaceRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3604,6 +4048,8 @@ func TestIdentityClientUpdateTagNamespace(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateUser(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateUser")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3623,7 +4069,10 @@ func TestIdentityClientUpdateUser(t *testing.T) {
 	}
 
 	var requests []UpdateUserRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3642,6 +4091,8 @@ func TestIdentityClientUpdateUser(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateUserCapabilities(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateUserCapabilities")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3661,7 +4112,10 @@ func TestIdentityClientUpdateUserCapabilities(t *testing.T) {
 	}
 
 	var requests []UpdateUserCapabilitiesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3680,6 +4134,8 @@ func TestIdentityClientUpdateUserCapabilities(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUpdateUserState(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UpdateUserState")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3699,7 +4155,10 @@ func TestIdentityClientUpdateUserState(t *testing.T) {
 	}
 
 	var requests []UpdateUserStateRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -3718,6 +4177,8 @@ func TestIdentityClientUpdateUserState(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="oci_identity_team_us_grp@oracle.com" jiraProject="ID" opsJiraProject="ID"
 func TestIdentityClientUploadApiKey(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("identity", "UploadApiKey")
 	assert.NoError(t, err)
 	if !enabled {
@@ -3737,7 +4198,10 @@ func TestIdentityClientUploadApiKey(t *testing.T) {
 	}
 
 	var requests []UploadApiKeyRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy

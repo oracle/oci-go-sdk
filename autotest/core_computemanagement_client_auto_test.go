@@ -24,6 +24,8 @@ func createComputeManagementClientWithProvider(p common.ConfigurationProvider, t
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientAttachLoadBalancer(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "AttachLoadBalancer")
 	assert.NoError(t, err)
 	if !enabled {
@@ -43,7 +45,10 @@ func TestComputeManagementClientAttachLoadBalancer(t *testing.T) {
 	}
 
 	var requests []AttachLoadBalancerRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -62,6 +67,8 @@ func TestComputeManagementClientAttachLoadBalancer(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientCreateInstanceConfiguration(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateInstanceConfiguration")
 	assert.NoError(t, err)
 	if !enabled {
@@ -81,7 +88,10 @@ func TestComputeManagementClientCreateInstanceConfiguration(t *testing.T) {
 	}
 
 	var requests []CreateInstanceConfigurationRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -100,6 +110,8 @@ func TestComputeManagementClientCreateInstanceConfiguration(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientCreateInstancePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "CreateInstancePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -119,7 +131,10 @@ func TestComputeManagementClientCreateInstancePool(t *testing.T) {
 	}
 
 	var requests []CreateInstancePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -138,6 +153,8 @@ func TestComputeManagementClientCreateInstancePool(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientDeleteInstanceConfiguration(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DeleteInstanceConfiguration")
 	assert.NoError(t, err)
 	if !enabled {
@@ -157,7 +174,10 @@ func TestComputeManagementClientDeleteInstanceConfiguration(t *testing.T) {
 	}
 
 	var requests []DeleteInstanceConfigurationRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -176,6 +196,8 @@ func TestComputeManagementClientDeleteInstanceConfiguration(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientDetachLoadBalancer(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "DetachLoadBalancer")
 	assert.NoError(t, err)
 	if !enabled {
@@ -195,7 +217,10 @@ func TestComputeManagementClientDetachLoadBalancer(t *testing.T) {
 	}
 
 	var requests []DetachLoadBalancerRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -214,6 +239,8 @@ func TestComputeManagementClientDetachLoadBalancer(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientGetInstanceConfiguration(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetInstanceConfiguration")
 	assert.NoError(t, err)
 	if !enabled {
@@ -233,7 +260,10 @@ func TestComputeManagementClientGetInstanceConfiguration(t *testing.T) {
 	}
 
 	var requests []GetInstanceConfigurationRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -252,6 +282,8 @@ func TestComputeManagementClientGetInstanceConfiguration(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientGetInstancePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "GetInstancePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -271,7 +303,10 @@ func TestComputeManagementClientGetInstancePool(t *testing.T) {
 	}
 
 	var requests []GetInstancePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -290,6 +325,8 @@ func TestComputeManagementClientGetInstancePool(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientLaunchInstanceConfiguration(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "LaunchInstanceConfiguration")
 	assert.NoError(t, err)
 	if !enabled {
@@ -342,6 +379,8 @@ func TestComputeManagementClientLaunchInstanceConfiguration(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientListInstanceConfigurations(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListInstanceConfigurations")
 	assert.NoError(t, err)
 	if !enabled {
@@ -361,7 +400,10 @@ func TestComputeManagementClientListInstanceConfigurations(t *testing.T) {
 	}
 
 	var requests []ListInstanceConfigurationsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -389,6 +431,8 @@ func TestComputeManagementClientListInstanceConfigurations(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientListInstancePoolInstances(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListInstancePoolInstances")
 	assert.NoError(t, err)
 	if !enabled {
@@ -408,7 +452,10 @@ func TestComputeManagementClientListInstancePoolInstances(t *testing.T) {
 	}
 
 	var requests []ListInstancePoolInstancesRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -436,6 +483,8 @@ func TestComputeManagementClientListInstancePoolInstances(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientListInstancePools(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ListInstancePools")
 	assert.NoError(t, err)
 	if !enabled {
@@ -455,7 +504,10 @@ func TestComputeManagementClientListInstancePools(t *testing.T) {
 	}
 
 	var requests []ListInstancePoolsRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -483,6 +535,8 @@ func TestComputeManagementClientListInstancePools(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientResetInstancePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "ResetInstancePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -502,7 +556,10 @@ func TestComputeManagementClientResetInstancePool(t *testing.T) {
 	}
 
 	var requests []ResetInstancePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -521,6 +578,8 @@ func TestComputeManagementClientResetInstancePool(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientSoftresetInstancePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "SoftresetInstancePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -540,7 +599,10 @@ func TestComputeManagementClientSoftresetInstancePool(t *testing.T) {
 	}
 
 	var requests []SoftresetInstancePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -559,6 +621,8 @@ func TestComputeManagementClientSoftresetInstancePool(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientStartInstancePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "StartInstancePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -578,7 +642,10 @@ func TestComputeManagementClientStartInstancePool(t *testing.T) {
 	}
 
 	var requests []StartInstancePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -597,6 +664,8 @@ func TestComputeManagementClientStartInstancePool(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientStopInstancePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "StopInstancePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -616,7 +685,10 @@ func TestComputeManagementClientStopInstancePool(t *testing.T) {
 	}
 
 	var requests []StopInstancePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -635,6 +707,8 @@ func TestComputeManagementClientStopInstancePool(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientTerminateInstancePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "TerminateInstancePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -654,7 +728,10 @@ func TestComputeManagementClientTerminateInstancePool(t *testing.T) {
 	}
 
 	var requests []TerminateInstancePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -673,6 +750,8 @@ func TestComputeManagementClientTerminateInstancePool(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientUpdateInstanceConfiguration(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateInstanceConfiguration")
 	assert.NoError(t, err)
 	if !enabled {
@@ -692,7 +771,10 @@ func TestComputeManagementClientUpdateInstanceConfiguration(t *testing.T) {
 	}
 
 	var requests []UpdateInstanceConfigurationRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
@@ -711,6 +793,8 @@ func TestComputeManagementClientUpdateInstanceConfiguration(t *testing.T) {
 
 // IssueRoutingInfo tag="default" email="sic_block_storage_us_grp@oracle.com" jiraProject="BLOCK" opsJiraProject="BS"
 func TestComputeManagementClientUpdateInstancePool(t *testing.T) {
+	defer failTestOnPanic(t)
+
 	enabled, err := testClient.isApiEnabled("core", "UpdateInstancePool")
 	assert.NoError(t, err)
 	if !enabled {
@@ -730,7 +814,10 @@ func TestComputeManagementClientUpdateInstancePool(t *testing.T) {
 	}
 
 	var requests []UpdateInstancePoolRequestInfo
-	err = json.Unmarshal([]byte(body), &requests)
+	var dataHolder []map[string]interface{}
+	err = json.Unmarshal([]byte(body), &dataHolder)
+	assert.NoError(t, err)
+	err = unmarshalRequestInfo(dataHolder, &requests, testClient.Log)
 	assert.NoError(t, err)
 
 	var retryPolicy *common.RetryPolicy
