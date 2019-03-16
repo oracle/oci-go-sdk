@@ -274,7 +274,7 @@ func (client OCITestClient) validateError(containerId string, req interface{}, r
 
 	client.Log.Println("ErrorToValidate:" + prettyJson(body))
 
-	endpoint := pathJoin(client.ServiceEndpoint, fmt.Sprintf("error?sessionId=%s", client.SessionID))
+	endpoint := pathJoin(client.ServiceEndpoint, fmt.Sprintf("error?sessionId=%s&lang=Go", client.SessionID))
 	request, err := http.NewRequest("POST", endpoint, bytes.NewReader(body))
 
 	if err != nil {
@@ -340,7 +340,7 @@ func (client *OCITestClient) marshalResponse(res interface{}) (isListResponse bo
 func (client *OCITestClient) callValidate(body []byte) (string, error) {
 	client.Log.Println("DataToValidate:", prettyJson(body))
 
-	endpoint := pathJoin(client.ServiceEndpoint, fmt.Sprintf("response?sessionId=%s", client.SessionID))
+	endpoint := pathJoin(client.ServiceEndpoint, fmt.Sprintf("response?sessionId=%s&lang=Go", client.SessionID))
 	request, err := http.NewRequest("POST", endpoint, bytes.NewReader(body))
 
 	if err != nil {
