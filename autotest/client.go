@@ -146,7 +146,7 @@ func (client OCITestClient) getEndpointForService(serviceName, clientName, opera
 	q := url.Values{}
 	q.Add("sessionId", client.SessionID)
 	q.Add("serviceName", serviceName)
-	q.Add("clientName", clientName)
+	q.Add("clientName", clientName+"Client")
 	q.Add("apiName", operationName)
 	q.Add("lang", "Go")
 	request.URL.RawQuery = q.Encode()
@@ -192,7 +192,13 @@ func (client OCITestClient) getConfiguration(serviceName, clientName, operationN
 	config = TestingConfig{}
 	err = json.Unmarshal(body, &config)
 
-	client.Log.Println("Server configuration acquired:", config.TenantID, config.UserID, config.Fingerprint)
+	testEndpoint, err := client.getEndpointForService(serviceName, clientName, operationName)
+	if err != nil {
+		return
+	}
+	config.Endpoint = testEndpoint
+
+	client.Log.Printf("Server configuration acquired: %#v\n",config)
 	return
 }
 
@@ -248,11 +254,20 @@ func (client OCITestClient) validateResult(containerId string, request interface
 	return client.validateResponse(containerId, request, response)
 }
 
+//clientSideError represents an error in the client side of the sdk
+type clientSideError struct {
+	Message string `json:"message"`
+}
+
+func (ce clientSideError) Error() string {
+	return ce.Message
+}
+
 // validateError the result of SDK API call for failure case
 func (client OCITestClient) validateError(containerId string, req interface{}, responseError error) (string, error) {
 	client.Log.Println("Validating error")
 	if _, ok := common.IsServiceError(responseError); !ok {
-		return "", fmt.Errorf("client side error: %s", responseError.Error())
+		responseError = clientSideError{"client side error: " + responseError.Error()}
 	}
 
 	data := ErrorToValidate{ContainerID: containerId}
@@ -519,6 +534,9 @@ func marshal(val reflect.Value) (string, error) {
 		return marshalSlice(val)
 	case reflect.Struct:
 		return marshalStruct(val)
+	case reflect.String:
+		strval, e  := json.Marshal(val.Interface())
+		return string(strval), e
 	default:
 		return "", fmt.Errorf("marshaling of value %#v is not supported", val)
 	}
@@ -560,8 +578,10 @@ func marshalStruct(val reflect.Value) (string, error) {
 		sv := val.Field(i)
 		_, contributesToOk := sf.Tag.Lookup("contributesTo")
 		_, presentInOk := sf.Tag.Lookup("presentIn")
+		errorInterface  := reflect.TypeOf((*error)(nil)).Elem()
+		isError := valueType.Implements(errorInterface)
 
-		if contributesToOk || presentInOk || "servicefailure" == valueType.Name() {
+		if contributesToOk || presentInOk || isError {
 			if !isFieldMandatory(sf) && isFieldEmpty(sv) {
 				//	fmt.Println("ignoring: ", sf.Name, " is empty")
 				continue
