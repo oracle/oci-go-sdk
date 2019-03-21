@@ -198,7 +198,7 @@ func (client OCITestClient) getConfiguration(serviceName, clientName, operationN
 	}
 	config.Endpoint = testEndpoint
 
-	client.Log.Printf("Server configuration acquired: %#v\n",config)
+	client.Log.Printf("Server configuration acquired: %#v\n", config)
 	return
 }
 
@@ -537,7 +537,7 @@ func marshal(val reflect.Value) (string, error) {
 	case reflect.Struct:
 		return marshalStruct(val)
 	case reflect.String:
-		strval, e  := json.Marshal(val.Interface())
+		strval, e := json.Marshal(val.Interface())
 		return string(strval), e
 	default:
 		return "", fmt.Errorf("marshaling of value %#v is not supported", val)
@@ -580,7 +580,7 @@ func marshalStruct(val reflect.Value) (string, error) {
 		sv := val.Field(i)
 		_, contributesToOk := sf.Tag.Lookup("contributesTo")
 		_, presentInOk := sf.Tag.Lookup("presentIn")
-		errorInterface  := reflect.TypeOf((*error)(nil)).Elem()
+		errorInterface := reflect.TypeOf((*error)(nil)).Elem()
 		isError := valueType.Implements(errorInterface)
 
 		if contributesToOk || presentInOk || isError {
