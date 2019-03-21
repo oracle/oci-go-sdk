@@ -519,7 +519,9 @@ func (client OCITestClient) callService(request *http.Request) (body []byte, err
 
 func checkHttpResponse(response *http.Response) error {
 	if response.StatusCode < 200 || response.StatusCode > 299 {
-		return fmt.Errorf("response is not successful %d", response.StatusCode)
+		bodyContent := new(bytes.Buffer)
+		io.Copy(bodyContent, response.Body)
+		return fmt.Errorf("response is not successful status code: %d\n%v", response.StatusCode, bodyContent.String())
 	}
 	return nil
 }
