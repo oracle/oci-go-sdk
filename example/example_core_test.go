@@ -79,10 +79,30 @@ func ExampleLaunchInstance() {
 		RequestMetadata: helpers.GetRequestMetadataWithCustomizedRetryPolicy(shouldRetryFunc),
 	}
 
-	_, pollError := c.GetInstance(ctx, pollingGetRequest)
+	instance, pollError := c.GetInstance(ctx, pollingGetRequest)
 	helpers.FatalIfError(pollError)
 
 	fmt.Println("instance launched")
+
+	attachVnicResponse, err := c.AttachVnic(context.Background(), core.AttachVnicRequest{
+		AttachVnicDetails: core.AttachVnicDetails{
+			CreateVnicDetails: &core.CreateVnicDetails{
+				SubnetId:       subnet.Id,
+				AssignPublicIp: common.Bool(true),
+			},
+			InstanceId:instance.Id,
+		},
+	})
+
+	helpers.FatalIfError(err)
+	fmt.Println("vnic attached")
+
+	_, err = c.DetachVnic(context.Background(), core.DetachVnicRequest{
+		VnicAttachmentId: attachVnicResponse.Id,
+	})
+
+	helpers.FatalIfError(err)
+	fmt.Println("vnic dettached")
 
 	defer func() {
 		terminateInstance(ctx, c, createResp.Id)
@@ -101,6 +121,8 @@ func ExampleLaunchInstance() {
 	// list shapes
 	// launching instance
 	// instance launched
+	// vnic attached
+	// vnic dettached
 	// terminating instance
 	// instance terminated
 	// deleteing subnet
