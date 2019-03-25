@@ -756,12 +756,16 @@ func shouldReplace(polymorhpicUnmarshallingInfo map[string]PolymorphicRequestUnm
 		return false, nil, err
 	}
 
+	//create a new pointer of the type stored in our polymorphic information
+	//the objects in PolymorphicRequestUnmarshallInfo are pointers, thus we need
+	//a new pointer to the underlying type
+	newConcreteValue := reflect.New(reflect.TypeOf(concreteType).Elem())
 	//finally unmarshal the json value to the right type
-	err = json.Unmarshal(data, concreteType)
+	err = json.Unmarshal(data, newConcreteValue.Interface())
 	if err != nil {
 		return false, nil, err
 	}
-	return true, concreteType, nil
+	return true, newConcreteValue.Interface(), nil
 
 }
 
@@ -810,26 +814,58 @@ func recursiveStructCopy(srcData interface{}, dstValue reflect.Value, polymorphi
 			replacementVal := reflect.ValueOf(srcFieldVal)
 			action := "setting"
 			if ok, replacement, err := shouldReplace(polymorphicRequestInfo, dstField.Name, srcFieldVal); ok {
+				action = "replacing"
+				replacementVal = reflect.ValueOf(replacement)
+			} else {
 				if err != nil {
 					return err
 				}
-				action = "replacing"
-				replacementVal = reflect.ValueOf(replacement)
 			}
 
-			logger.Printf("%s field: %s --> val: %s", action, fieldName, replacementVal.String())
-
-			if dstFieldVal.Type().Kind() == reflect.Ptr {
+			logger.Printf("%s field name: %s, of %s --> val: %s", action, fieldName, dstFieldVal.String(), replacementVal.String())
+			switch dstFieldVal.Type().Kind() {
+			case reflect.Ptr:
+				newVal := getNumberFieldValueOrSame(dstFieldVal.Type().Elem(), replacementVal, logger)
 				//create a new pointer
 				dstFieldVal.Set(reflect.New(dstFieldVal.Type().Elem()))
 				//set the value of the pointer
-				dstFieldVal.Elem().Set(replacementVal)
-			} else {
+				dstFieldVal.Elem().Set(newVal)
+				break
+			case reflect.Interface:
+				logger.Printf("Setting interface of type: %s to type: %s", dstFieldVal.Type(), replacementVal.Elem().Type())
+				dstFieldVal.Set(reflect.New(replacementVal.Elem().Type()))
+				dstFieldVal.Set(replacementVal.Elem())
+				break
+			default:
 				dstFieldVal.Set(replacementVal)
+				break
 			}
 		}
 	}
 	return nil
+}
+
+// gets the json value casted to the appropiate number size if the the field type is a number
+// otherwise returns the value as is
+func getNumberFieldValueOrSame(fieldType reflect.Type, jsonValue reflect.Value, logger *log.Logger) reflect.Value {
+	// type of json number in raw marshalling is float64
+	if jsonValue.Kind() != reflect.Float64 {
+		return jsonValue
+	}
+
+	logger.Printf("Unmarshaling json number from float to integer type: %s", fieldType.Kind())
+	jsonNumber := jsonValue.Float()
+	// Convert float to the kind of the field
+	switch fieldType.Kind() {
+	case reflect.Int32:
+		return reflect.ValueOf(int32(jsonNumber))
+	case reflect.Int:
+		return reflect.ValueOf(int(jsonNumber))
+	case reflect.Int64:
+		return reflect.ValueOf(int64(jsonNumber))
+	default:
+		return reflect.ValueOf(jsonNumber)
+	}
 }
 
 // unmarshalRequestInfo unmarshals request information type data structures, returns a list of requestInfo data structures unmarshalled or an error
