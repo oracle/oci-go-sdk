@@ -3,6 +3,7 @@
 - Maven
 - Python (and tools, see below)
 - Go(make sure you set the GOPATH enviroment correctly)
+- Go tools see: https://github.com/oracle/oci-go-sdk#building-and-testing
 - oci-go-sdk commons go package
   - You can install the lastest version by installing pulling the current version of the go sdk
 - Make
@@ -24,17 +25,76 @@ Use ``virtualenv`` to create a virtual environment that runs Python 2.x (of cour
 The build functionality is driven by 2 make files
 
 - Makefile: Is public and exposed, builds the sdk and runs unittest
-- MakefileDevelopment: Private. generates new sdk, runs private integtests
- 
+- MakefileDevelopment: Private. builds, generates new sdk, runs private integtests and autotest. Most of the time this the one you want to work with
 
 
-## Generating
+## Layout
+The  organiztion of the public parts of  sdk is described here:  https://github.com/oracle/oci-go-sdk#organization-of-the-sdk .
+In addition in order to support generation, the following files are present:
+
+- featureId.yaml: legacy file where the different conditinal directives were getting saved, used by the generator to turn spec features on/off
+- codegenConfig: current directory where the feature flags are stored and read from
+- github.whitelist: our release process uses this file to copy/push all the files that match one or more of the regexes in this file
+- pom.xml: Controls the version of the generator as well as locations of the specs used to generate the different packages. For go in particular, this file contains configurations for a successful generation and it usually looks like this.
+
+            <configuration>
+              <language>oracle-go-sdk</language>
+              <specPath>${preprocessed-temp-dir}/announcements-service-spec/${announcements-service-spec-spec-file}</specPath>
+              <outputDir>${env.GOPATH}/src/${fullyQualifiedProjectName}</outputDir>  <-- The root of the sdk, notice it reads the env var $GOPATH
+              <basePackage>announcementsservice</basePackage>  <--- The name of the package, it will create a directory with that name and put all generated files in there
+              <specGenerationType>${generationType}</specGenerationType>
+              <additionalProperties>
+                <specName>announcementsservice</specName>
+                <fqProjectName>${fullyQualifiedProjectName}</fqProjectName>  <-- The name of the root packate usually github.com/oracle/oci-go-sdk
+                <serviceHostName>announcements</serviceHostName>
+              </additionalProperties>
+              <featureIdConfigFile>${feature-id-file}</featureIdConfigFile>
+              <featureIdConfigDir>${feature-id-dir}</featureIdConfigDir>
+            </configuration>
+            
+
+## Help
+The `MakefileDevelopment.mk` file contains a help command to help you nagivate its options. To bring out the help execute:
+
+    make -f MakefileDevelopment.mk help
+
+## Building and Generating
 The generation makefile is: ***MakefileDevelopment.mk***
 You run the code generator by executing. This will generate the code as well as build it
 
     make -f MakefileDevelopment.mk build
     
-After executing this command the source code will be placed under the canonical repository `$GOPATH/src/$PROJECT_NAME` where $PROJECT_NAME is the fully qualified project name: `github.com/oracle/oci-go-sdk`
+After executing this command the source code will be placed under the canonical repository `$GOPATH/src/$PROJECT_NAME` where $PROJECT_NAME is the fully qualified project name: `github.com/oracle/oci-go-sdk`.
+
+The above command executes the  `generation` and `build` target which generates the sdk. If you want to just build the sdk, issue:
+
+    make -f MakefileDevelopment.mk build-sdk
+    
+You can also build packages individually by issuing:
+    
+    make build-[package_name]
+
+## Testing
+The go sdk has 3 types of testing and they can all be executed through the make files
+
+### Unittest
+The unitest of the go-sdk cover functionality used internally by all the sdk packages, mostly present in the `common` and `common/auth` package. It can be executed by running
+
+    make test
+
+### Smoketests formmer integtest
+These are legacy manually written test that have low coverage of the sdk and mostly used to ensure nothing has broken. The make reall call to the underlying services. Execute the `test-` targets, like so:
+    
+    make -f MakefileDevelopment.mk test-audit  ## Will execute the integ tests for audit
+    
+    make -f MakefileDevelopment.mk test-all ## Will execute all integtest
+
+### Autotests
+Autotests have the highest coverage for the sdk api and are genereated automatically. These test work in conjunction with the testing service, so when running them, you need to have an instance of the testing service running. You can execute these tests by
+
+    make -f MakefileDevelopment.mk autotest-identity ## will execute the autotest for the identity service
+
+    make -f MakefileDevelopment.mk autotest-all ## will execute all autotest, be careful, this can take a long time
 
 ## Release
 Instead of the `build` target. Execute the release target like so:
@@ -46,14 +106,22 @@ Do not forget to setup major, minor versions by updating the variables in: `Make
     VER_MAJOR = x
     VER_MINOR = y
     
-## Testing
+    
+## Some tips
+Often when working on new feature of the sdk, you'll need to generate and build, most of the time you don't need to generate the whole sdk but only a subset. This is a bit challening since maven thougt it allows you to target a specific step, the names of the stepts in the maven file are not very intuitive. I find the following commands super helpful
 
-Execute the `test-` targets, like so:
-    
-    make -f MakefileDevelopment.mk test-audit  ## Will execute the integ tests for audit
-    
-    make -f MakefileDevelopment.mk test-all ## Will execute all integtest
-    
+- Targeting a specific package for generation, where `$1` is the execution `<id>` of the package you want to generate
 
+        PROJECT_NAME=github.com/oracle/oci-go-sdk mvn bmc-sdk-swagger:generate@$1
+        PROJECT_NAME=github.com/oracle/oci-go-sdk mvn bmc-sdk-swagger:generate@go-public-sdk-maestro-spec
+        
+- Linting and rebuilding sdk and tests for a specific package
+
+        make lint-$1 build-$1 pre-doc && make -f MakefileDevelopment.mk build-autotest
+        make lint-resourcemanager build-resourcemanager pre-doc && make -f MakefileDevelopment.mk build-autotest
+
+- Often you have to rebuild the generator and then execute this steps, so the whole command line ends up looking like this:
+    
+        (cd /Users/eginez/repos/bmc-sdk-swagger && mvn install -D=skipTests) && mvngen go-public-sdk-maestro-spec && make lint-resourcemanager build-resourcemanager pre-doc && make -f MakefileDevelopment.mk build-autotest
 
 
