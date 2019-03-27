@@ -451,7 +451,10 @@ func (client OCITestClient) generateListResponses(request common.OCIRequest,
 
 	nextPageToken, err := getFieldValue(firstListResponse, "OpcNextPage")
 	if err != nil {
-		//Report the error since all page-able responses need to have a nextPage
+		typeName := reflect.TypeOf(firstListResponse).Name()
+		client.Log.Printf("%s does not have OpcNextPage, eventhoug is a List API ", typeName)
+		// do not fail there are some apis that do not have OpcNextPage
+		err = nil
 		return
 	}
 
