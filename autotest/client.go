@@ -717,16 +717,26 @@ type PolymorphicRequestUnmarshallingInfo struct {
 	DiscriminatorValuesAndTypes map[string]interface{}
 }
 
-//shouldReplace returns true whena filed has been replaced, false otherwise. If field has been replaced it returns the new value of the field as a second paramater
+//shouldReplace returns true when a field has been replaced, false otherwise. If field has been replaced it returns the new value of the field as a second paramater
 // otherwise nil. The value is obtained by marshalling the current requestFieldValue into a type specified by the polymorphicUnmarshallingInfo struct.
 // The PolymorphicRequestUnmarshallingInfo struct contains a values of the discriminator fields to a concrete type describing such data.
-func shouldReplace(polymorhpicUnmarshallingInfo map[string]PolymorphicRequestUnmarshallingInfo, fieldName string, requestFieldValue interface{}) (bool, interface{}, error) {
+// fieldNames is an array due to testing service json objects not always match the field type, usually they either match the field name or the field type name
+func shouldReplace(polymorhpicUnmarshallingInfo map[string]PolymorphicRequestUnmarshallingInfo, fieldNames []string, requestFieldValue interface{}, logger *log.Logger) (bool, interface{}, error) {
 	var polymorphicInfo PolymorphicRequestUnmarshallingInfo
 	var ok bool
 
+	//Sigh transform polymorphicUnmarshallingInfo to map[string]interface{}
+	genericUnmarshalInfo := make(map[string]interface{})
+	for k, v := range polymorhpicUnmarshallingInfo {
+		genericUnmarshalInfo[k] = v
+	}
+
 	//Is the current field a polymorhpic field
-	if polymorphicInfo, ok = polymorhpicUnmarshallingInfo[fieldName]; !ok {
+	if polInfo := findValWithKeys(genericUnmarshalInfo, fieldNames...); polInfo == nil {
+		logger.Println("polymorphic field not found for fields name:", fieldNames)
 		return false, nil, nil
+	} else {
+		polymorphicInfo = polInfo.(PolymorphicRequestUnmarshallingInfo)
 	}
 
 	//the field value present in the request has been instially unmarshalled to a raw map
@@ -745,8 +755,9 @@ func shouldReplace(polymorhpicUnmarshallingInfo map[string]PolymorphicRequestUnm
 
 	//find the concrete type for the discriminator value
 	concreteType, ok := polymorphicInfo.DiscriminatorValuesAndTypes[discriminatorValue]
+	logger.Println("polymorphic field of type ", reflect.TypeOf(concreteType).String())
 	if !ok {
-		err := fmt.Errorf("did not find discrimantor value :%s in the set of possible values for field %s", discriminatorValue, fieldName)
+		err := fmt.Errorf("did not find discrimantor value :%s in the set of possible values for field %s", discriminatorValue, fieldNames)
 		return false, nil, err
 	}
 
@@ -813,7 +824,7 @@ func recursiveStructCopy(srcData interface{}, dstValue reflect.Value, polymorphi
 		} else {
 			replacementVal := reflect.ValueOf(srcFieldVal)
 			action := "setting"
-			if ok, replacement, err := shouldReplace(polymorphicRequestInfo, dstField.Name, srcFieldVal); ok {
+			if ok, replacement, err := shouldReplace(polymorphicRequestInfo, []string{dstField.Name, dstField.Type.Name()}, srcFieldVal, logger); ok {
 				action = "replacing"
 				replacementVal = reflect.ValueOf(replacement)
 			} else {

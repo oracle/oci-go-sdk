@@ -79,7 +79,7 @@ func TestConditionalStructCopy(t *testing.T) {
 					},
 				},
 			},
-			expectedType: &bird{},
+			expectedType: bird{},
 		},
 	}
 
