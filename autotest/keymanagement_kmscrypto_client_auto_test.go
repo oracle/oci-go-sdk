@@ -16,7 +16,7 @@ func createKmsCryptoClientWithProvider(p common.ConfigurationProvider, testConfi
 	return client, err
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsCryptoClientDecrypt(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -59,7 +59,7 @@ func TestKmsCryptoClientDecrypt(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsCryptoClientEncrypt(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -102,7 +102,7 @@ func TestKmsCryptoClientEncrypt(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsCryptoClientGenerateDataEncryptionKey(t *testing.T) {
 	defer failTestOnPanic(t)
 

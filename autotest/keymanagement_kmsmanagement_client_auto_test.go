@@ -16,7 +16,7 @@ func createKmsManagementClientWithProvider(p common.ConfigurationProvider, testC
 	return client, err
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsManagementClientCreateKey(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -59,7 +59,7 @@ func TestKmsManagementClientCreateKey(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsManagementClientCreateKeyVersion(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -102,7 +102,7 @@ func TestKmsManagementClientCreateKeyVersion(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsManagementClientDisableKey(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -145,7 +145,7 @@ func TestKmsManagementClientDisableKey(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsManagementClientEnableKey(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -188,7 +188,7 @@ func TestKmsManagementClientEnableKey(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsManagementClientGetKey(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -231,7 +231,7 @@ func TestKmsManagementClientGetKey(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsManagementClientGetKeyVersion(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -274,7 +274,7 @@ func TestKmsManagementClientGetKeyVersion(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsManagementClientListKeyVersions(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -326,7 +326,7 @@ func TestKmsManagementClientListKeyVersions(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsManagementClientListKeys(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -378,7 +378,7 @@ func TestKmsManagementClientListKeys(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="sparta_kms_us_grp@oracle.com" jiraProject="KMS" opsJiraProject="KMS"
 func TestKmsManagementClientUpdateKey(t *testing.T) {
 	defer failTestOnPanic(t)
 
