@@ -96,6 +96,14 @@ Autotests have the highest coverage for the sdk api and are genereated automatic
 
     make -f MakefileDevelopment.mk autotest-all ## will execute all autotest, be careful, this can take a long time
 
+### Running a single test
+A single test can be run with the following command. Notices `TEST_NAME` is the name of the test that you wish to run and can be a string or a regex, eg:
+
+    make -f MakefileDevelopment.mk autotest TEST_NAME=TestIdentityClientListUsers ## will execute *just* the TestIdentityClientListUsers test
+
+    make -f MakefileDevelopment.mk autotest TEST_NAME=^TestIdentity ## will execute all tests that start with "TestIdentity"
+
+
 ## Release
 Instead of the `build` target. Execute the release target like so:
 

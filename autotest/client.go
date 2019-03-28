@@ -744,6 +744,7 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logg
 		return data, nil
 	}
 }
+
 // getTaggedNilFieldNameOrError, evaluates if a field with json and  non mandatory tags is nil
 // returns the json tag name, or an error if the tags are incorrectly present
 func getTaggedNilFieldNameOrError(field reflect.StructField, fieldValue reflect.Value, logger *log.Logger) (bool, string, error) {
@@ -797,7 +798,6 @@ func isNillableType(value *reflect.Value) bool {
 	}
 	return false
 }
-
 
 func isFieldMandatory(field reflect.StructField) bool {
 	tagVal, ok := field.Tag.Lookup("mandatory")
