@@ -657,7 +657,11 @@ var sdkDateTypePtr = reflect.TypeOf(&common.SDKDate{})
 func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logger) (interface{}, error) {
 	switch value.Kind() {
 	case reflect.Struct:
-		jsonMap := data.(map[string]interface{})
+		jsonMap, ok := data.(map[string]interface{})
+		if !ok {
+			return nil, fmt.Errorf("can not read raw map from data for type: %s", value.Type().String())
+		}
+
 		fieldType := value.Type()
 		for i := 0; i < fieldType.NumField(); i++ {
 			currentField := fieldType.Field(i)
@@ -701,7 +705,12 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logg
 				return nil, fmt.Errorf("can not omit nil fields for field: %s, due to: %s",
 					currentField.Name, err.Error())
 			}
-			jsonMap[jsonFieldName] = adjustedValue
+			if adjustedValue != nil {
+				jsonMap[jsonFieldName] = adjustedValue
+			} else {
+				logger.Printf("Deleting field name: %s, since data is nil", jsonFieldName)
+				delete(jsonMap, jsonFieldName)
+			}
 		}
 		return jsonMap, nil
 	case reflect.Slice, reflect.Array:
@@ -711,7 +720,8 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logg
 		}
 		jsonList, ok := data.([]interface{})
 		if !ok {
-			return nil, fmt.Errorf("can not omit nil fields, data was expected to be a not-nil list")
+			logger.Printf("can not omit nil fields, data was expected to be a not-nil list")
+			return nil, nil
 		}
 		newList := make([]interface{}, len(jsonList))
 		var err error
@@ -725,7 +735,8 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logg
 	case reflect.Map:
 		jsonMap, ok := data.(map[string]interface{})
 		if !ok {
-			return nil, fmt.Errorf("can not omit nil fields, data was expected to be a not-nil map")
+			logger.Printf("can not omit nil fields, data was expected to be a not-nil map")
+			return nil, nil
 		}
 		newMap := make(map[string]interface{}, len(jsonMap))
 		var err error
@@ -736,7 +747,17 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logg
 			}
 		}
 		return newMap, nil
-	case reflect.Ptr, reflect.Interface:
+	case reflect.Ptr:
+		valPtr := value.Elem()
+		return omitNilFieldsInJSON(data, valPtr, logger)
+	case reflect.Interface:
+		if rc, ok := value.Interface().(io.ReadCloser);ok {
+			data, err := ioutil.ReadAll(rc)
+			if err != nil {
+				return nil, fmt.Errorf("can not omit field of type: %s of type ReadCloser", value.Type().String())
+			}
+			return data, nil
+		}
 		valPtr := value.Elem()
 		return omitNilFieldsInJSON(data, valPtr, logger)
 	default:
