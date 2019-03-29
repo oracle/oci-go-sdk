@@ -622,6 +622,194 @@ func marshalStruct(val reflect.Value) (string, error) {
 	return rs, nil
 }
 
+// removeNilFieldsInJSONWithTaggedStruct remove struct fields tagged with json and mandatory false
+// that are nil
+func removeNilFieldsInJSONWithTaggedStruct(rawJSON []byte, value reflect.Value, logger *log.Logger) ([]byte, error) {
+	var rawInterface interface{}
+	decoder := json.NewDecoder(bytes.NewBuffer(rawJSON))
+	decoder.UseNumber()
+	var err error
+	if err = decoder.Decode(&rawInterface); err != nil {
+		return nil, err
+	}
+
+	fixedMap, err := omitNilFieldsInJSON(rawInterface, value, logger)
+	if err != nil {
+		return nil, err
+	}
+	return json.Marshal(fixedMap)
+}
+
+var timeType = reflect.TypeOf(common.SDKTime{})
+var timeTypePtr = reflect.TypeOf(&common.SDKTime{})
+
+var sdkDateType = reflect.TypeOf(common.SDKDate{})
+var sdkDateTypePtr = reflect.TypeOf(&common.SDKDate{})
+
+// omitNilFieldsInJSON, removes json keys whose struct value is nil, and the field is tagged with the json and
+// mandatory:false tags
+func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logger) (interface{}, error) {
+	switch value.Kind() {
+	case reflect.Struct:
+		jsonMap, ok := data.(map[string]interface{})
+		if !ok {
+			return data, fmt.Errorf("can not read raw map from data for type: %s", value.Type().String())
+		}
+
+		fieldType := value.Type()
+		for i := 0; i < fieldType.NumField(); i++ {
+			currentField := fieldType.Field(i)
+			//unexported skip
+			if currentField.PkgPath != "" {
+				continue
+			}
+
+			//Does not have json tag, no-op
+			if _, ok := currentField.Tag.Lookup("json"); !ok {
+				continue
+			}
+
+			currentFieldValue := value.Field(i)
+			ok, jsonFieldName, err := getTaggedNilFieldNameOrError(currentField, currentFieldValue, logger)
+			if err != nil {
+				return nil, fmt.Errorf("can not omit nil fields for field: %s, due to: %s",
+					currentField.Name, err.Error())
+			}
+
+			//Delete the struct field from the json representation
+			if ok {
+				delete(jsonMap, jsonFieldName)
+				continue
+			}
+
+			// Check to make sure the field is part of the json representation of the value
+			if _, contains := jsonMap[jsonFieldName]; !contains {
+				logger.Printf("Field %s is not present in json, omitting", jsonFieldName)
+				continue
+			}
+
+			if currentFieldValue.Type() == timeType || currentFieldValue.Type() == timeTypePtr ||
+				currentField.Type == sdkDateType || currentField.Type == sdkDateTypePtr {
+				continue
+			}
+			// does it need to be adjusted?
+			var adjustedValue interface{}
+			adjustedValue, err = omitNilFieldsInJSON(jsonMap[jsonFieldName], currentFieldValue, logger)
+			if err != nil {
+				return nil, fmt.Errorf("can not omit nil fields for field: %s, due to: %s",
+					currentField.Name, err.Error())
+			}
+
+			jsonMap[jsonFieldName] = adjustedValue
+		}
+		return jsonMap, nil
+	case reflect.Slice, reflect.Array:
+		// Special case: a []byte may have been marshalled as a string
+		if data != nil && reflect.TypeOf(data).Kind() == reflect.String && value.Type().Elem().Kind() == reflect.Uint8 {
+			return data, nil
+		}
+		jsonList, ok := data.([]interface{})
+		if !ok {
+			logger.Printf("can not omit nil fields, data was expected to be a not-nil list")
+			return data, nil
+		}
+		newList := make([]interface{}, len(jsonList))
+		var err error
+		for i, val := range jsonList {
+			newList[i], err = omitNilFieldsInJSON(val, value.Index(i), logger)
+			if err != nil {
+				return nil, err
+			}
+		}
+		return newList, nil
+	case reflect.Map:
+		jsonMap, ok := data.(map[string]interface{})
+		if !ok {
+			logger.Printf("can not omit nil fields, data was expected to be a not-nil map")
+			return data, nil
+		}
+		newMap := make(map[string]interface{}, len(jsonMap))
+		var err error
+		for key, val := range jsonMap {
+			newMap[key], err = omitNilFieldsInJSON(val, value.MapIndex(reflect.ValueOf(key)), logger)
+			if err != nil {
+				return nil, err
+			}
+		}
+		return newMap, nil
+	case reflect.Ptr:
+		valPtr := value.Elem()
+		return omitNilFieldsInJSON(data, valPtr, logger)
+	case reflect.Interface:
+		if rc, ok := value.Interface().(io.ReadCloser);ok {
+			data, err := ioutil.ReadAll(rc)
+			if err != nil {
+				return nil, fmt.Errorf("can not omit field of type: %s of type ReadCloser", value.Type().String())
+			}
+			return data, nil
+		}
+		valPtr := value.Elem()
+		return omitNilFieldsInJSON(data, valPtr, logger)
+	default:
+		//Otherwise no-op
+		return data, nil
+	}
+}
+
+// getTaggedNilFieldNameOrError, evaluates if a field with json and  non mandatory tags is nil
+// returns the json tag name, or an error if the tags are incorrectly present
+func getTaggedNilFieldNameOrError(field reflect.StructField, fieldValue reflect.Value, logger *log.Logger) (bool, string, error) {
+	currentTag := field.Tag
+	jsonTag := currentTag.Get("json")
+
+	if jsonTag == "" {
+		return false, "", fmt.Errorf("json tag is not valid for field %s", field.Name)
+	}
+
+	partsJSONTag := strings.Split(jsonTag, ",")
+	nameJSONField := partsJSONTag[0]
+
+	if _, ok := currentTag.Lookup("mandatory"); !ok {
+		//No mandatory field set, no-op
+		return false, nameJSONField, nil
+	}
+	isMandatory, err := strconv.ParseBool(currentTag.Get("mandatory"))
+	if err != nil {
+		return false, "", fmt.Errorf("mandatory tag is not valid for field %s", field.Name)
+	}
+
+	// If the field is marked as mandatory, no-op
+	if isMandatory {
+		if strings.HasSuffix(field.Type.Name(), "Enum") && fieldValue.String() == "" {
+			logger.Printf("Enum Field: %s of type %s will be omitted because its value is empty despite being mandatory", field.Name, field.Type.String())
+			return true, nameJSONField, nil
+		}
+		return false, nameJSONField, nil
+	}
+
+	logger.Printf("Adjusting tag: mandatory is false and json tag is valid on field: %s", field.Name)
+
+	// If the field can not be nil, then no-op
+	if !isNillableType(&fieldValue) {
+		logger.Printf("WARNING json field is tagged with mandatory flags, but the type can not be nil, field name: %s", field.Name)
+		return false, nameJSONField, nil
+	}
+
+	// If field value is nil, tag it as omitEmpty
+	return fieldValue.IsNil(), nameJSONField, nil
+
+}
+
+// isNillableType returns true if the filed can be nil
+func isNillableType(value *reflect.Value) bool {
+	k := value.Kind()
+	switch k {
+	case reflect.Chan, reflect.Func, reflect.Map, reflect.Ptr, reflect.Interface, reflect.Slice:
+		return true
+	}
+	return false
+}
+
 func isFieldMandatory(field reflect.StructField) bool {
 	tagVal, ok := field.Tag.Lookup("mandatory")
 	if !ok {
