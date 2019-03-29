@@ -659,7 +659,7 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logg
 	case reflect.Struct:
 		jsonMap, ok := data.(map[string]interface{})
 		if !ok {
-			return nil, fmt.Errorf("can not read raw map from data for type: %s", value.Type().String())
+			return data, fmt.Errorf("can not read raw map from data for type: %s", value.Type().String())
 		}
 
 		fieldType := value.Type()
@@ -705,12 +705,8 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logg
 				return nil, fmt.Errorf("can not omit nil fields for field: %s, due to: %s",
 					currentField.Name, err.Error())
 			}
-			if adjustedValue != nil {
-				jsonMap[jsonFieldName] = adjustedValue
-			} else {
-				logger.Printf("Deleting field name: %s, since data is nil", jsonFieldName)
-				delete(jsonMap, jsonFieldName)
-			}
+
+			jsonMap[jsonFieldName] = adjustedValue
 		}
 		return jsonMap, nil
 	case reflect.Slice, reflect.Array:
@@ -721,7 +717,7 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logg
 		jsonList, ok := data.([]interface{})
 		if !ok {
 			logger.Printf("can not omit nil fields, data was expected to be a not-nil list")
-			return nil, nil
+			return data, nil
 		}
 		newList := make([]interface{}, len(jsonList))
 		var err error
@@ -736,7 +732,7 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logg
 		jsonMap, ok := data.(map[string]interface{})
 		if !ok {
 			logger.Printf("can not omit nil fields, data was expected to be a not-nil map")
-			return nil, nil
+			return data, nil
 		}
 		newMap := make(map[string]interface{}, len(jsonMap))
 		var err error
