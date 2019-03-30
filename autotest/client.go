@@ -651,6 +651,10 @@ var sdkDateTypePtr = reflect.TypeOf(&common.SDKDate{})
 func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logger) (interface{}, error) {
 	switch value.Kind() {
 	case reflect.Struct:
+		if value.Type() == timeType || value.Type() == timeTypePtr ||
+			value.Type() == sdkDateType || value.Type() == sdkDateTypePtr {
+			return data, nil
+		}
 		jsonMap, ok := data.(map[string]interface{})
 		if !ok {
 			return data, fmt.Errorf("can not read raw map from data for type: %s", value.Type().String())
@@ -741,7 +745,7 @@ func omitNilFieldsInJSON(data interface{}, value reflect.Value, logger *log.Logg
 		valPtr := value.Elem()
 		return omitNilFieldsInJSON(data, valPtr, logger)
 	case reflect.Interface:
-		if rc, ok := value.Interface().(io.ReadCloser);ok {
+		if rc, ok := value.Interface().(io.ReadCloser); ok {
 			data, err := ioutil.ReadAll(rc)
 			if err != nil {
 				return nil, fmt.Errorf("can not omit field of type: %s of type ReadCloser", value.Type().String())
