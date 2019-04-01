@@ -275,12 +275,12 @@ func (client OCITestClient) validateError(containerId string, req interface{}, r
 	var err error
 	reqType := reflect.TypeOf(req)
 	data.RequestClass = fmt.Sprintf(requestClassTemplate, path.Base(reqType.PkgPath()), reqType.Name())
-	data.RequestJSON, err = marshal(reflect.ValueOf(req))
+	data.RequestJSON, err = marshal(reflect.ValueOf(req), client.Log)
 	if err != nil {
 		return "", err
 	}
 
-	data.ErrorJSON, err = marshal(reflect.ValueOf(responseError))
+	data.ErrorJSON, err = marshal(reflect.ValueOf(responseError), client.Log)
 	if err != nil {
 		return "", err
 	}
@@ -319,7 +319,7 @@ func (client OCITestClient) validateResponse(containerId string, req interface{}
 	if req != nil {
 		reqType := reflect.TypeOf(req)
 		data.RequestClass = fmt.Sprintf(requestClassTemplate, path.Base(reqType.PkgPath()), reqType.Name())
-		data.RequestJSON, err = marshalStruct(reflect.ValueOf(req))
+		data.RequestJSON, err = marshalStruct(reflect.ValueOf(req), client.Log)
 		if err != nil {
 			return "", err
 		}
@@ -348,7 +348,7 @@ func (client *OCITestClient) marshalResponse(res interface{}) (isListResponse bo
 		resType = reflect.TypeOf(res).Elem()
 		responseClass = fmt.Sprintf(responseClassTemplate, path.Base(resType.PkgPath()), resType.Name())
 	}
-	responseJSON, err = marshal(reflect.ValueOf(res))
+	responseJSON, err = marshal(reflect.ValueOf(res), client.Log)
 	return
 }
 
@@ -529,16 +529,16 @@ func checkHttpResponse(response *http.Response) error {
 	return nil
 }
 
-func marshal(val reflect.Value) (string, error) {
+func marshal(val reflect.Value, logger *log.Logger) (string, error) {
 	if !val.IsValid() {
 		return "", fmt.Errorf("marshaling value %#v is not supported", val)
 	}
 
 	switch val.Kind() {
 	case reflect.Array, reflect.Slice:
-		return marshalSlice(val)
+		return marshalSlice(val, logger)
 	case reflect.Struct:
-		return marshalStruct(val)
+		return marshalStruct(val, logger)
 	case reflect.String:
 		strval, e := json.Marshal(val.Interface())
 		return string(strval), e
@@ -546,7 +546,7 @@ func marshal(val reflect.Value) (string, error) {
 		return "", fmt.Errorf("marshaling of value %#v is not supported", val)
 	}
 }
-func marshalSlice(val reflect.Value) (string, error) {
+func marshalSlice(val reflect.Value, logger *log.Logger) (string, error) {
 	if val.Kind() != reflect.Array && val.Kind() != reflect.Slice {
 		return "", fmt.Errorf("can not marshal a not slice as a slice")
 	}
@@ -554,7 +554,7 @@ func marshalSlice(val reflect.Value) (string, error) {
 	allFieldsMarshaled := make([]string, 0)
 	for i := 0; i < val.Len(); i++ {
 		v := val.Index(i)
-		m, e := marshal(v)
+		m, e := marshal(v, logger)
 		if e != nil {
 			return "", e
 		}
@@ -568,7 +568,7 @@ func marshalSlice(val reflect.Value) (string, error) {
 
 // marshalStruct A customized marshalStruct method for request and response objects. It
 // marshals each of the fields in the struct
-func marshalStruct(val reflect.Value) (string, error) {
+func marshalStruct(val reflect.Value, logger *log.Logger) (string, error) {
 	valueType := val.Type()
 	allFieldsMarshaled := make([]string, 0)
 
@@ -612,8 +612,13 @@ func marshalStruct(val reflect.Value) (string, error) {
 			if e != nil {
 				return "", e
 			}
+			adjustedJSON, e := removeNilFieldsInJSONWithTaggedStruct(bs, sv, logger)
+			if e != nil {
+				return "", e
+			}
+
 			allFieldsMarshaled = append(allFieldsMarshaled,
-				fmt.Sprintf(`"%s":%s`, uncapitalize(fieldName), string(bs)))
+				fmt.Sprintf(`"%s":%s`, uncapitalize(fieldName), string(adjustedJSON)))
 		}
 	}
 
