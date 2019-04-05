@@ -40,6 +40,9 @@ type UpdateAutonomousDatabaseDetails struct {
 
 	// The new Oracle license model that applies to the Oracle Autonomous Transaction Processing database.
 	LicenseModel UpdateAutonomousDatabaseDetailsLicenseModelEnum `mandatory:"false" json:"licenseModel,omitempty"`
+
+	// The client IP access control list (ACL). Only clients connecting from an IP address included in the ACL may access the Autonomous Database instance. This is an array of CIDR (Classless Inter-Domain Routing) notations for a subnet. To delete all the existing white listed IP’s, use an array with a single empty string entry.
+	WhitelistedIps []string `mandatory:"false" json:"whitelistedIps"`
 }
 
 func (m UpdateAutonomousDatabaseDetails) String() string {
