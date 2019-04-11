@@ -18,7 +18,7 @@ Use ``virtualenv`` to create a virtual environment that runs Python 2.x (of cour
     # Install packages
     pip install PyYAML
     pip install six
-    
+
 
 
 ## Start here!
@@ -51,7 +51,7 @@ In addition in order to support generation, the following files are present:
               <featureIdConfigFile>${feature-id-file}</featureIdConfigFile>
               <featureIdConfigDir>${feature-id-dir}</featureIdConfigDir>
             </configuration>
-            
+
 
 ## Help
 The `MakefileDevelopment.mk` file contains a help command to help you nagivate its options. To bring out the help execute:
@@ -63,15 +63,15 @@ The generation makefile is: ***MakefileDevelopment.mk***
 You run the code generator by executing. This will generate the code as well as build it
 
     make -f MakefileDevelopment.mk build
-    
+
 After executing this command the source code will be placed under the canonical repository `$GOPATH/src/$PROJECT_NAME` where $PROJECT_NAME is the fully qualified project name: `github.com/oracle/oci-go-sdk`.
 
 The above command executes the  `generation` and `build` target which generates the sdk. If you want to just build the sdk, issue:
 
     make -f MakefileDevelopment.mk build-sdk
-    
+
 You can also build packages individually by issuing:
-    
+
     make build-[package_name]
 
 ## Testing
@@ -84,9 +84,9 @@ The unitest of the go-sdk cover functionality used internally by all the sdk pac
 
 ### Smoketests formmer integtest
 These are legacy manually written test that have low coverage of the sdk and mostly used to ensure nothing has broken. The make reall call to the underlying services. Execute the `test-` targets, like so:
-    
+
     make -f MakefileDevelopment.mk test-audit  ## Will execute the integ tests for audit
-    
+
     make -f MakefileDevelopment.mk test-all ## Will execute all integtest
 
 ### Autotests
@@ -113,8 +113,8 @@ Do not forget to setup major, minor versions by updating the variables in: `Make
 
     VER_MAJOR = x
     VER_MINOR = y
-    
-    
+
+
 ## Some tips
 Often when working on new feature of the sdk, you'll need to generate and build, most of the time you don't need to generate the whole sdk but only a subset. This is a bit challening since maven thougt it allows you to target a specific step, the names of the stepts in the maven file are not very intuitive. I find the following commands super helpful
 
@@ -122,14 +122,25 @@ Often when working on new feature of the sdk, you'll need to generate and build,
 
         PROJECT_NAME=github.com/oracle/oci-go-sdk mvn bmc-sdk-swagger:generate@$1
         PROJECT_NAME=github.com/oracle/oci-go-sdk mvn bmc-sdk-swagger:generate@go-public-sdk-maestro-spec
-        
+
 - Linting and rebuilding sdk and tests for a specific package
 
         make lint-$1 build-$1 pre-doc && make -f MakefileDevelopment.mk build-autotest
         make lint-resourcemanager build-resourcemanager pre-doc && make -f MakefileDevelopment.mk build-autotest
 
 - Often you have to rebuild the generator and then execute this steps, so the whole command line ends up looking like this:
-    
+
         (cd /Users/eginez/repos/bmc-sdk-swagger && mvn install -D=skipTests) && mvngen go-public-sdk-maestro-spec && make lint-resourcemanager build-resourcemanager pre-doc && make -f MakefileDevelopment.mk build-autotest
 
 
+## Self-service for adding features and services
+
+[Requesting a preview SDK](<https://confluence.oci.oraclecorp.com/display/DEX/Requesting+a+preview+SDK+CLI>)
+
+[Requesting a public SDK](<https://confluence.oci.oraclecorp.com/pages/viewpage.action?pageId=43683000>)
+
+[Self-Service Testing and Development](<https://confluence.oci.oraclecorp.com/pages/viewpage.action?spaceKey=DEX&title=Self-Service+Testing+and+Development>)
+
+[SDK Testing with OCI Testing Service Overview](<https://confluence.oci.oraclecorp.com/display/DEX/SDK+Testing+with+OCI+Testing+Service+Overview>)
+
+[SDK / CLI Sample Requirements](<https://confluence.oci.oraclecorp.com/pages/viewpage.action?pageId=43687174>)
