@@ -75,19 +75,12 @@ You can also build packages individually by issuing:
     make build-[package_name]
 
 ## Testing
-The go sdk has 3 types of testing and they can all be executed through the make files
+The go sdk has 2 types of testing and they can all be executed through the make files
 
 ### Unittest
 The unitest of the go-sdk cover functionality used internally by all the sdk packages, mostly present in the `common` and `common/auth` package. It can be executed by running
 
     make test
-
-### Smoketests formmer integtest
-These are legacy manually written test that have low coverage of the sdk and mostly used to ensure nothing has broken. The make reall call to the underlying services. Execute the `test-` targets, like so:
-
-    make -f MakefileDevelopment.mk test-audit  ## Will execute the integ tests for audit
-
-    make -f MakefileDevelopment.mk test-all ## Will execute all integtest
 
 ### Autotests
 Autotests have the highest coverage for the sdk api and are genereated automatically. These test work in conjunction with the testing service, so when running them, you need to have an instance of the testing service running. You can execute these tests by
