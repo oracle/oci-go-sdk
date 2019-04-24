@@ -6,7 +6,7 @@ This README describes the various scripts and utilities included in this folder.
 This simplifies the process of updating a pom.xml file for a new service, or changing the spec version for an existing service (it is more useful in the case of the former, rather than the latter).
 
 ### Setup
-You should run this script in a Python virtual environment (see [here](https://bitbucket.aka.lgl.grungy.us/projects/SDK/repos/python-sdk/browse/Internal-README.rst) for more information on doing the basic setup for a virtual environment if you don't already have one).
+You should run this script in a Python virtual environment (see [here](https://bitbucket.oci.oraclecorp.com/projects/SDK/repos/python-sdk/browse/Internal-README.rst) for more information on doing the basic setup for a virtual environment if you don't already have one).
 
 Once you are in a virtual environment, you can run `pip install -r add_or_update_spec-requirements.txt` to install the dependencies for the script.
 
