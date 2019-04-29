@@ -38,7 +38,7 @@ func createStack(ctx context.Context, provider common.ConfigurationProvider, cli
 	tenancyOcid, _ := provider.TenancyOCID()
 
 	// create resource manager stack with type ZIP_UPLOAD by passing a base64 encoded Terraform zip string
-	// uer has multiple ways to create stack, details check https://docs.cloud.oracle.com/iaas/api/#/en/resourcemanager/20180917/datatypes/CreateConfigSourceDetails
+	// user has multiple ways to create stack, details check https://docs.cloud.oracle.com/iaas/api/#/en/resourcemanager/20180917/datatypes/CreateConfigSourceDetails
 	req := resourcemanager.CreateStackRequest{
 		CreateStackDetails: resourcemanager.CreateStackDetails{
 			CompartmentId: helpers.CompartmentID(),
