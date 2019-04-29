@@ -509,7 +509,7 @@ func TestIdentityClient_SwiftPasswordCRUD(t *testing.T) {
 		failIfError(t, err)
 	}
 
-	// delete all swift password for the user in case the previouse test failed and didn't clean it up
+	// delete all swift password for the user in case the previous test failed and didn't clean it up
 	listResp, err := c.ListSwiftPasswords(ctx, identity.ListSwiftPasswordsRequest{UserId: usr.Id})
 	failIfError(t, err)
 	for _, pwd := range listResp.Items {

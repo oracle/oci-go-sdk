@@ -38,7 +38,7 @@ func ExampleRetry() {
 	}
 
 	nextDuration := func(r common.OCIOperationResponse) time.Duration {
-		// you might want wait longer for next retry when your previouse one failed
+		// you might want wait longer for next retry when your previous one failed
 		// this function will return the duration as:
 		// 1s, 2s, 4s, 8s, 16s, 32s, 64s etc...
 		return time.Duration(math.Pow(float64(2), float64(r.AttemptNumber-1))) * time.Second

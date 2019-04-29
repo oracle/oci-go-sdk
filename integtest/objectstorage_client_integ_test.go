@@ -24,6 +24,7 @@ import (
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/objectstorage"
+	"github.com/oracle/oci-go-sdk/objectstorage/transfer"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -75,17 +76,28 @@ func createBucket(t *testing.T, namespace, compartment, name string) {
 }
 
 func deleteBucket(t *testing.T, namespace, name string) (err error) {
+	err = deleteBucketIgnoreError(t, namespace, name)
+	failIfError(t, err)
+	return
+}
+
+func deleteBucketIgnoreError(t *testing.T, namespace, name string) (err error) {
 	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(configurationProvider())
 	request := objectstorage.DeleteBucketRequest{
 		NamespaceName: &namespace,
 		BucketName:    &name,
 	}
 	_, err = c.DeleteBucket(context.Background(), request)
-	failIfError(t, err)
 	return
 }
 
 func deleteObject(t *testing.T, namespace, bucketname, objectname string) (err error) {
+	err = deleteObjectIgnoreError(t, namespace, bucketname, objectname)
+	failIfError(t, err)
+	return
+}
+
+func deleteObjectIgnoreError(t *testing.T, namespace, bucketname, objectname string) (err error) {
 	c, _ := objectstorage.NewObjectStorageClientWithConfigurationProvider(configurationProvider())
 	request := objectstorage.DeleteObjectRequest{
 		NamespaceName: &namespace,
@@ -93,7 +105,6 @@ func deleteObject(t *testing.T, namespace, bucketname, objectname string) (err e
 		ObjectName:    &objectname,
 	}
 	_, err = c.DeleteObject(context.Background(), request)
-	failIfError(t, err)
 	return
 }
 
@@ -407,4 +418,131 @@ func TestObjectStorageClient_UploadPart(t *testing.T) {
 	_, err := c.UploadPart(context.Background(), request)
 	assert.NoError(t, err)
 	return
+}
+
+func TestObjectStorage_UploadManager_UploadFile(t *testing.T) {
+	ctx := context.Background()
+	bname := "uploadManagerFileBucketName"
+	objectName := "sampleFileUploadObj"
+	namespace := getNamespace(t)
+
+	// clean up
+	deleteObjectIgnoreError(t, namespace, bname, objectName)
+	deleteBucketIgnoreError(t, namespace, bname)
+
+	createBucket(t, namespace, getCompartmentID(), bname)
+	defer deleteBucket(t, namespace, bname)
+
+	contentlen := 1024 * 1000 * 3 // 3MB
+	filepath, _, _ := writeTempFileOfSize(int64(contentlen))
+	filename := path.Base(filepath)
+	defer os.Remove(filename)
+
+	uploadManager := transfer.NewUploadManager()
+
+	req := transfer.UploadFileRequest{
+		UploadRequest: transfer.UploadRequest{
+			NamespaceName: common.String(namespace),
+			BucketName:    common.String(bname),
+			ObjectName:    common.String(objectName),
+			PartSize:      common.Int64(1024 * 1000 * 1), // 1MB
+		},
+		FilePath: filepath,
+	}
+
+	resp, err := uploadManager.UploadFile(ctx, req)
+
+	if err != nil && resp.IsResumable() {
+		resp, err = uploadManager.ResumeUploadFile(ctx, *resp.MultipartUploadResponse.UploadID)
+		failIfError(t, err)
+	}
+
+	defer deleteObject(t, namespace, bname, objectName)
+}
+
+func TestObjectStorage_UploadManager_ResumeUploadFile(t *testing.T) {
+	ctx := context.Background()
+	bname := "uploadManagerResumeFileBucketName"
+	objectName := "sampleFileUploadObj"
+	namespace := getNamespace(t)
+
+	// clean up
+	deleteObjectIgnoreError(t, namespace, bname, objectName)
+	deleteBucketIgnoreError(t, namespace, bname)
+
+	createBucket(t, namespace, getCompartmentID(), bname)
+	defer deleteBucket(t, namespace, bname)
+
+	contentlen := 1024 * 1000 * 50 // 50MB
+	filepath, _, _ := writeTempFileOfSize(int64(contentlen))
+	filename := path.Base(filepath)
+	defer os.Remove(filename)
+
+	uploadManager := transfer.NewUploadManager()
+
+	req := transfer.UploadFileRequest{
+		UploadRequest: transfer.UploadRequest{
+			NamespaceName: common.String(namespace),
+			BucketName:    common.String(bname),
+			ObjectName:    common.String(objectName),
+			PartSize:      common.Int64(1024 * 1000 * 10), // 10MB
+		},
+		FilePath: filepath,
+	}
+
+	// cancel the context after 500ms
+	cancelCtx, cancelFn := context.WithTimeout(ctx, 500*time.Millisecond)
+	defer cancelFn()
+	resp, err := uploadManager.UploadFile(cancelCtx, req)
+
+	select {
+	case <-cancelCtx.Done():
+		if err != nil && resp.IsResumable() {
+			fmt.Println("resuming file upload")
+			_, err = uploadManager.ResumeUploadFile(context.Background(), *resp.MultipartUploadResponse.UploadID)
+			failIfError(t, err)
+		}
+	default:
+		fmt.Println("upload file completed without resume")
+	}
+
+	defer deleteObject(t, namespace, bname, objectName)
+}
+
+func TestObjectStorage_UploadManager_Stream(t *testing.T) {
+	bname := "uploadManagerStreamBucketName"
+	objectName := "sampleStreamUploadObj"
+	namespace := getNamespace(t)
+
+	// clean up
+	deleteObjectIgnoreError(t, namespace, bname, objectName)
+	deleteBucketIgnoreError(t, namespace, bname)
+
+	createBucket(t, namespace, getCompartmentID(), bname)
+	defer deleteBucket(t, namespace, bname)
+
+	contentlen := 1024 * 1000 * 20 // 20MB
+	filepath, _, _ := writeTempFileOfSize(int64(contentlen))
+	filename := path.Base(filepath)
+	defer func() {
+		os.Remove(filename)
+	}()
+
+	uploadManager := transfer.NewUploadManager()
+
+	file, _ := os.Open(filepath)
+	defer file.Close()
+
+	req := transfer.UploadStreamRequest{
+		UploadRequest: transfer.UploadRequest{
+			NamespaceName: common.String(namespace),
+			BucketName:    common.String(bname),
+			ObjectName:    common.String(objectName),
+		},
+		StreamReader: file, // any struct implements the io.Reader interface
+	}
+
+	_, err := uploadManager.UploadStream(context.Background(), req)
+	failIfError(t, err)
+	defer deleteObject(t, namespace, bname, objectName)
 }

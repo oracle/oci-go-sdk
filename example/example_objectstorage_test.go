@@ -7,18 +7,15 @@ package example
 
 import (
 	"context"
-	"crypto/sha256"
 	"fmt"
 	"io"
-	"io/ioutil"
-	"math/rand"
 	"os"
 	"path"
-	"time"
 
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/example/helpers"
 	"github.com/oracle/oci-go-sdk/objectstorage"
+	"github.com/oracle/oci-go-sdk/objectstorage/transfer"
 )
 
 // ExampleObjectStorage_UploadFile shows how to create a bucket and upload a file
@@ -34,7 +31,7 @@ func ExampleObjectStorage_UploadFile() {
 	defer deleteBucket(ctx, c, namespace, bname)
 
 	contentlen := 1024 * 1000
-	filepath, filesize := writeTempFileOfSize(int64(contentlen))
+	filepath, filesize := helpers.WriteTempFileOfSize(int64(contentlen))
 	filename := path.Base(filepath)
 	defer func() {
 		os.Remove(filename)
@@ -52,6 +49,111 @@ func ExampleObjectStorage_UploadFile() {
 	// get namespace
 	// create bucket
 	// put object
+	// delete object
+	// delete bucket
+}
+
+func ExampleObjectStorage_UploadManager_UploadFile() {
+	c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.FatalIfError(clerr)
+
+	ctx := context.Background()
+	bname := "bname"
+	namespace := getNamespace(ctx, c)
+
+	createBucket(ctx, c, namespace, bname)
+	defer deleteBucket(ctx, c, namespace, bname)
+
+	contentlen := 1024 * 1000 * 300 // 300MB
+	filepath, _ := helpers.WriteTempFileOfSize(int64(contentlen))
+	filename := path.Base(filepath)
+	defer os.Remove(filename)
+
+	uploadManager := transfer.NewUploadManager()
+	objectName := "sampleFileUploadObj"
+
+	req := transfer.UploadFileRequest{
+		UploadRequest: transfer.UploadRequest{
+			NamespaceName: common.String(namespace),
+			BucketName:    common.String(bname),
+			ObjectName:    common.String(objectName),
+			//PartSize:      common.Int(10000000),
+		},
+		FilePath: filepath,
+	}
+
+	// if you want to overwrite default value, you can do it
+	// as: transfer.UploadRequest.AllowMultipartUploads = common.Bool(false) // default is true
+	// or: transfer.UploadRequest.AllowParrallelUploads = common.Bool(false) // default is true
+	resp, err := uploadManager.UploadFile(ctx, req)
+
+	if err != nil && resp.IsResumable() {
+		resp, err = uploadManager.ResumeUploadFile(ctx, *resp.MultipartUploadResponse.UploadID)
+		if err != nil {
+			fmt.Println(resp)
+		}
+	}
+
+	defer deleteObject(ctx, c, namespace, bname, objectName)
+	fmt.Println("file uploaded")
+
+	// Output:
+	// get namespace
+	// create bucket
+	// file uploaded
+	// delete object
+	// delete bucket
+}
+
+func ExampleObjectStorage_UploadManager_Stream() {
+	c, clerr := objectstorage.NewObjectStorageClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.FatalIfError(clerr)
+
+	ctx := context.Background()
+	bname := "bname"
+	namespace := getNamespace(ctx, c)
+
+	createBucket(ctx, c, namespace, bname)
+	defer deleteBucket(ctx, c, namespace, bname)
+
+	contentlen := 1024 * 1000 * 130 // 130MB
+	filepath, _ := helpers.WriteTempFileOfSize(int64(contentlen))
+	filename := path.Base(filepath)
+	defer func() {
+		os.Remove(filename)
+	}()
+
+	uploadManager := transfer.NewUploadManager()
+	objectName := "sampleStreamUploadObj"
+
+	file, _ := os.Open(filepath)
+	defer file.Close()
+
+	req := transfer.UploadStreamRequest{
+		UploadRequest: transfer.UploadRequest{
+			NamespaceName: common.String(namespace),
+			BucketName:    common.String(bname),
+			ObjectName:    common.String(objectName),
+		},
+		StreamReader: file, // any struct implements the io.Reader interface
+	}
+
+	// if you want to overwrite default value, you can do it
+	// as: transfer.UploadRequest.AllowMultipartUploads = common.Bool(false) // default is true
+	// or: transfer.UploadRequest.AllowParrallelUploads = common.Bool(false) // default is true
+	_, err := uploadManager.UploadStream(context.Background(), req)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	defer deleteObject(ctx, c, namespace, bname, objectName)
+	fmt.Println("stream uploaded")
+
+	// Output:
+	// get namespace
+	// create bucket
+	// stream uploaded
 	// delete object
 	// delete bucket
 }
@@ -113,17 +215,5 @@ func deleteBucket(ctx context.Context, c objectstorage.ObjectStorageClient, name
 	helpers.FatalIfError(err)
 
 	fmt.Println("delete bucket")
-	return
-}
-
-func writeTempFileOfSize(filesize int64) (fileName string, fileSize int64) {
-	hash := sha256.New()
-	f, _ := ioutil.TempFile("", "OCIGOSDKSampleFile")
-	ra := rand.New(rand.NewSource(time.Now().UnixNano()))
-	defer f.Close()
-	writer := io.MultiWriter(f, hash)
-	written, _ := io.CopyN(writer, ra, filesize)
-	fileName = f.Name()
-	fileSize = written
 	return
 }
