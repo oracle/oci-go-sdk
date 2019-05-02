@@ -22,7 +22,7 @@ func createResourceSearchClientWithProvider(p common.ConfigurationProvider, test
 	return client, err
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="rqs_engg_team_us_grp@oracle.com" jiraProject="RQS" opsJiraProject="RQS"
 func TestResourceSearchClientGetResourceType(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -65,7 +65,7 @@ func TestResourceSearchClientGetResourceType(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="rqs_engg_team_us_grp@oracle.com" jiraProject="RQS" opsJiraProject="RQS"
 func TestResourceSearchClientListResourceTypes(t *testing.T) {
 	defer failTestOnPanic(t)
 
@@ -117,7 +117,7 @@ func TestResourceSearchClientListResourceTypes(t *testing.T) {
 	}
 }
 
-// IssueRoutingInfo tag="" email="" jiraProject="" opsJiraProject=""
+// IssueRoutingInfo tag="default" email="rqs_engg_team_us_grp@oracle.com" jiraProject="RQS" opsJiraProject="RQS"
 func TestResourceSearchClientSearchResources(t *testing.T) {
 	defer failTestOnPanic(t)
 

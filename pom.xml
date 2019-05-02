@@ -30,7 +30,7 @@
     <hemlock-spec-spec-file>hemlock-api-20160918.yaml</hemlock-spec-spec-file>
     <email-api-spec-spec-file>source/email-api-spec.cond.yaml</email-api-spec-spec-file>
     <public-dns-api-spec-spec-file>source/public-dns-api-spec.cond.yaml</public-dns-api-spec-spec-file>
-    <resource-query-service-spec-spec-file>rqs.yaml</resource-query-service-spec-spec-file>
+    <resource-query-service-spec-spec-file>source/rqs.cond.yaml</resource-query-service-spec-spec-file>
     <clusters-api-spec-spec-file>source/clusters-api-spec.cond.yaml</clusters-api-spec-spec-file>
     <kms-api-spec-spec-file>kms-api-spec-20180608.yaml</kms-api-spec-spec-file>
     <announcements-service-spec-spec-file>source/announcement-service.cond.yaml</announcements-service-spec-spec-file>
@@ -1785,7 +1785,7 @@
       <dependency>
         <groupId>com.oracle.pic.query</groupId>
         <artifactId>resource-query-service-spec</artifactId>
-        <version>0.0.8</version>
+        <version>0.0.23</version>
       </dependency>
       <dependency>
         <groupId>com.oracle.pic.kms</groupId>
