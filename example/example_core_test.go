@@ -90,7 +90,7 @@ func ExampleLaunchInstance() {
 				SubnetId:       subnet.Id,
 				AssignPublicIp: common.Bool(true),
 			},
-			InstanceId:instance.Id,
+			InstanceId: instance.Id,
 		},
 	})
 
