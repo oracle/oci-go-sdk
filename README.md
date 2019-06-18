@@ -54,6 +54,7 @@ type ConfigurationProvider interface {
 	Region() (string, error)
 }
 ```
+Or simply use one of  structs exposed by the `oci-go-sdk` that already implement the above [interface](https://godoc.org/github.com/oracle/oci-go-sdk/common#ConfigurationProvider)
 
 ### Making a Request
 To make a request to an Oracle Cloud Infrastructure service, create a client for the service and then use the client to call a function from the service.
