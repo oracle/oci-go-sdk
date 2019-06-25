@@ -641,6 +641,10 @@ type reqWithBinaryFiled struct {
 	Content io.Reader `mandatory:"true" contributesTo:"body" encoding:"binary"`
 }
 
+type reqWithNonMandatoryBinaryField struct {
+	Content io.Reader `mandatory:"false" contributesTo:"body" encoding:"binary"`
+}
+
 func TestMarshalBinaryRequest(t *testing.T) {
 	data := "some data in a file"
 	buffer := bytes.NewBufferString(data)
@@ -650,6 +654,26 @@ func TestMarshalBinaryRequest(t *testing.T) {
 	all, err := ioutil.ReadAll(httpRequest.Body)
 	assert.NoError(t, err)
 	assert.Equal(t, data, string(all))
+}
+
+func TestMarshalBinaryRequestNonMandatoryBody(t *testing.T) {
+	signer := ociRequestSigner{KeyProvider: testKeyProvider{},
+		ShouldHashBody: defaultBodyHashPredicate,
+		GenericHeaders: defaultGenericHeaders,
+		BodyHeaders:    defaultBodyHeaders,
+	}
+	r := reqWithNonMandatoryBinaryField{}
+	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("POST", "/obj", r)
+	assert.Equal(t, nil, httpRequest.Body)
+	assert.NoError(t, err)
+	err = signer.Sign(&httpRequest)
+	assert.NoError(t, err)
+
+	assert.Equal(t, "0", httpRequest.Header.Get(requestHeaderContentLength))
+	assert.Equal(t, "application/octet-stream", httpRequest.Header.Get(requestHeaderContentType))
+	assert.NotEmpty(t, httpRequest.Header.Get(requestHeaderAuthorization))
+	assert.NotEmpty(t, httpRequest.Header.Get(requestHeaderXContentSHA256))
+
 }
 
 func TestMarshalBinaryRequestIsSigned(t *testing.T) {
