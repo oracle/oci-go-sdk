@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 5.13.0 - 2019-07-02
+### Added
+- Support for moving images, instance configurations, and instance pools across compartments in Core Services
+- Support for moving autoscaling configurations across compartments in the Compute Autoscaling service
+
+### Fixed
+- Fixed a bug where the Streaming service's endpoints in Tokyo, Seoul, and future regions were not reachable from the SDK
+
 ## 5.12.0 - 2019-06-25
 ### Added
 - Support for moving senders across compartments in the Email service
