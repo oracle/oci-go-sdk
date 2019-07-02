@@ -61,3 +61,45 @@ func ExampleUpdateAdb() {
 	// Output:
 	// update adb successful
 }
+
+func ExampleUpdateAdbAcl() {
+	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.FatalIfError(clerr)
+
+	updateDbDetails := database.UpdateAutonomousDatabaseDetails{
+		WhitelistedIps: []string{"1.1.1.1/28", "3.3.3.3"},
+	}
+
+	updateReq := database.UpdateAutonomousDatabaseRequest{
+		AutonomousDatabaseId:            common.String("replacewithvalidocid"),
+		UpdateAutonomousDatabaseDetails: updateDbDetails,
+	}
+	_, err := c.UpdateAutonomousDatabase(context.Background(), updateReq)
+	helpers.FatalIfError(err)
+
+	fmt.Println("update adb acl successful")
+
+	// Output:
+	// update adb acl successful
+}
+
+func ExampleUpdateAdbLisenceType() {
+	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.FatalIfError(clerr)
+
+	updateDbDetails := database.UpdateAutonomousDatabaseDetails{
+		LicenseModel: database.UpdateAutonomousDatabaseDetailsLicenseModelLicenseIncluded,
+	}
+
+	updateReq := database.UpdateAutonomousDatabaseRequest{
+		AutonomousDatabaseId:            common.String("replacewithvalidocid"),
+		UpdateAutonomousDatabaseDetails: updateDbDetails,
+	}
+	_, err := c.UpdateAutonomousDatabase(context.Background(), updateReq)
+	helpers.FatalIfError(err)
+
+	fmt.Println("update adb license type successful")
+
+	// Output:
+	// update adb license type successful
+}
