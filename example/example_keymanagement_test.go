@@ -42,11 +42,15 @@ func ExampleVaultOperations() {
 	helpers.FatalIfError(cvdErr)
 	waitForStateVaultClient(ctx, vault.Id, vaultClient, keymanagement.VaultLifecycleStateActive)
 
+	// Move to root compartment
+	changeVaultCompartment(ctx, vaultClient, helpers.RootCompartmentID(), vault.Id)
+	waitForStateVaultClient(ctx, vault.Id, vaultClient, keymanagement.VaultLifecycleStateActive)
 	// Output:
 	// create vault
 	// update vault
 	// schedule vault deletion
 	// cancel vault deletion
+	// change vault compartment
 	// schedule vault deletion
 }
 
@@ -139,6 +143,10 @@ func ExampleKeyOperations() {
 
 	fmt.Println("update key")
 
+	// Move to root compartment
+	changeKeyCompartment(ctx, vaultManagementClient, helpers.RootCompartmentID(), key.Id)
+	waitForStateVaultManagementClient(ctx, key.Id, vaultManagementClient, keymanagement.KeyLifecycleStateEnabled)
+
 	// Output:
 	// create vault
 	// create key
@@ -147,6 +155,7 @@ func ExampleKeyOperations() {
 	// schedule key deletion
 	// cancel scheduled key deletion
 	// update key
+	// change key compartment
 	// schedule vault deletion
 }
 
@@ -265,6 +274,23 @@ func updateVault(ctx context.Context, client keymanagement.KmsVaultClient, newNa
 	return response.Vault
 }
 
+func changeVaultCompartment(ctx context.Context, client keymanagement.KmsVaultClient, targetCompartment, vaultId *string) {
+
+	changeVaultCompartmentDetails := keymanagement.ChangeVaultCompartmentDetails{
+		CompartmentId: targetCompartment,
+	}
+
+	request := keymanagement.ChangeVaultCompartmentRequest{
+		VaultId: vaultId,
+		ChangeVaultCompartmentDetails: changeVaultCompartmentDetails,
+	}
+
+	_, err := client.ChangeVaultCompartment(ctx, request)
+	helpers.FatalIfError(err)
+
+	fmt.Println("change vault compartment")
+}
+
 func getKey(ctx context.Context, client keymanagement.KmsManagementClient, retryPolicy *common.RetryPolicy, keyId *string) keymanagement.Key {
 
 	request := keymanagement.GetKeyRequest{
@@ -276,6 +302,23 @@ func getKey(ctx context.Context, client keymanagement.KmsManagementClient, retry
 	response, err := client.GetKey(ctx, request)
 	helpers.FatalIfError(err)
 	return response.Key
+}
+
+func changeKeyCompartment(ctx context.Context, client keymanagement.KmsManagementClient, targetCompartment, keyId *string) {
+
+	changeKeyCompartmentDetails := keymanagement.ChangeKeyCompartmentDetails{
+		CompartmentId: targetCompartment,
+	}
+
+	request := keymanagement.ChangeKeyCompartmentRequest{
+		KeyId: keyId,
+		ChangeKeyCompartmentDetails: changeKeyCompartmentDetails,
+	}
+
+	_, err := client.ChangeKeyCompartment(ctx, request)
+	helpers.FatalIfError(err)
+
+	fmt.Println("change key compartment")
 }
 
 func createVault(ctx context.Context, c keymanagement.KmsVaultClient, vaultName string) (vault keymanagement.Vault) {
