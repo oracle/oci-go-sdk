@@ -171,4 +171,3 @@ func InstanceConfigsParseEnvironmentVariables() {
 	log.Printf("AD     : %s", ad)
 	log.Printf("SUBNET_ID  : %s", subnetId)
 }
-
