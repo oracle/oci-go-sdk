@@ -3,7 +3,11 @@
 
 // Work Requests API
 //
-// A description of the work requests API
+// Many of the API operations that you use to create and configure Compute resources do not take effect
+// immediately. In these cases, the operation spawns an asynchronous workflow to fulfill the request.
+// Work requests provide visibility into the status of these in-progress, long-running workflows.
+// For more information about work requests and the operations that spawn work requests, see
+// Viewing the State of a Compute Work Request (https://docs.cloud.oracle.com/iaas/Content/Compute/Tasks/viewingworkrequestcompute.htm).
 //
 
 package workrequests
@@ -12,16 +16,16 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// WorkRequestError An error encountered while executing a work request.
+// WorkRequestError An error encountered while executing an operation that is tracked by a work request.
 type WorkRequestError struct {
 
-	// A short error code that defines the error, meant for programmatic parsing.
+	// A machine-usable code for the error that occured.
 	Code *string `mandatory:"true" json:"code"`
 
 	// A human-readable error string.
 	Message *string `mandatory:"true" json:"message"`
 
-	// The time the error happened.
+	// The date and time the error occurred.
 	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp"`
 }
 
