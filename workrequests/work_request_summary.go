@@ -3,7 +3,11 @@
 
 // Work Requests API
 //
-// A description of the work requests API
+// Many of the API operations that you use to create and configure Compute resources do not take effect
+// immediately. In these cases, the operation spawns an asynchronous workflow to fulfill the request.
+// Work requests provide visibility into the status of these in-progress, long-running workflows.
+// For more information about work requests and the operations that spawn work requests, see
+// Viewing the State of a Compute Work Request (https://docs.cloud.oracle.com/iaas/Content/Compute/Tasks/viewingworkrequestcompute.htm).
 //
 
 package workrequests
@@ -21,22 +25,25 @@ type WorkRequestSummary struct {
 	// The status of the work request.
 	Status WorkRequestSummaryStatusEnum `mandatory:"true" json:"status"`
 
-	// OCID identifying this work request.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the work request.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The OCID of the compartment containing this work request.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment containing
+	// this work request.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The amount of work done relative to the total amount of work.
+	// The percentage complete of the operation tracked by this work request.
 	PercentComplete *float32 `mandatory:"true" json:"percentComplete"`
 
-	// When the work request was created.
+	// The date and time the work request was created, in the format defined by RFC3339.
 	TimeAccepted *common.SDKTime `mandatory:"true" json:"timeAccepted"`
 
-	// When the work request transitioned from ACCEPTED to IN_PROGRESS.
+	// The date and time the work request transitioned from `ACCEPTED` to `IN_PROGRESS`, in
+	// the format defined by RFC3339.
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 
-	// When the work request reached a terminal state (FAILED or SUCCEEDED).
+	// The date and time the work request reached a terminal state, either `FAILED` or `SUCCEEDED`.
+	// Format is defined by RFC3339.
 	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished"`
 }
 

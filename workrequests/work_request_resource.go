@@ -3,7 +3,11 @@
 
 // Work Requests API
 //
-// A description of the work requests API
+// Many of the API operations that you use to create and configure Compute resources do not take effect
+// immediately. In these cases, the operation spawns an asynchronous workflow to fulfill the request.
+// Work requests provide visibility into the status of these in-progress, long-running workflows.
+// For more information about work requests and the operations that spawn work requests, see
+// Viewing the State of a Compute Work Request (https://docs.cloud.oracle.com/iaas/Content/Compute/Tasks/viewingworkrequestcompute.htm).
 //
 
 package workrequests
@@ -12,22 +16,22 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// WorkRequestResource A resource created or operated on by a work request.
+// WorkRequestResource A resource that is created or operated on by an asynchronous operation that is tracked by
+// a work request.
 type WorkRequestResource struct {
 
-	// The way in which this resource is affected by the work tracked in the work request.
-	// A resource being created, updated, or deleted will remain in the IN_PROGRESS state until
-	// work is complete for that resource at which point it will transition to CREATED, UPDATED,
-	// or DELETED, respectively.
+	// The way in which this resource was affected by the operation that spawned the work
+	// request.
 	ActionType WorkRequestResourceActionTypeEnum `mandatory:"true" json:"actionType"`
 
 	// The resource type the work request affects.
 	EntityType *string `mandatory:"true" json:"entityType"`
 
-	// An OCID or other unique identifier for the resource.
+	// An OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) or other unique identifier for the
+	// resource.
 	Identifier *string `mandatory:"true" json:"identifier"`
 
-	// The URI path used to access the resource metadata.
+	// The URI path that you can use for a GET request to access the resource metadata.
 	EntityUri *string `mandatory:"false" json:"entityUri"`
 }
 
