@@ -4,6 +4,36 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 7.0.0 - 2019-08-13
+### Added
+- Support for the Data Transfer service
+- Support for the Zurich (ZRH) region
+
+### Breaking changes
+- Breaking changes were made in the Web Application Acceleration and Security (WAAS) service
+  - `WorkRequestSummaryOperationTypePurgeWaasPolicy` const removed from `waas/work_request_summary.go`
+  - `WorkRequestOperationTypesPurgeWaasPolicy` const removed from `waas/work_request_operation_types.go`
+  - `WorkRequestOperationTypesPurgeWaasPolicy` const removed from `waas/work_request.go`
+  - `IssuerName` in `Certificate` struct changed type from `*CertificateSubjectName` to `*CertificateIssuerName`
+  - `LifecycleState` changed from array of string to array of `ListCertificateLifeCycleStateEnum` in `waas/list_certificates_request_response.go` and `waas/list_waas_policies_request_response.go`
+  - `Etag` was removed from the following structs:
+     - `AcceptRecommendationsResponse`
+     - `DeleteWaasPolicyResponse`
+     - `UpdateAccessRulesResponse`
+     - `UpdateCaptchasResponse`
+     - `UpdateDeviceFingerprintChallengeResponse`
+     - `UpdateGoodBotsResponse`
+     - `UpdateHumanInteractionChallengeResponse`
+     - `UpdateJsChallengeResponse`
+     - `UpdatePolicyConfigResponse`
+     - `UpdateProtectionRulesResponse`
+     - `UpdateProtectionSettingsResponse`
+     - `UpdateThreatFeedsResponse`
+     - `UpdateWaasPolicyResponse`
+     - `UpdateWafAddressRateLimitingResponse`
+     - `UpdateWafConfigResponse`
+     - `UpdateWhitelistsResponse`
+
 ## 6.2.0 - 2019-08-06
 ### Added
 - Support for IPv6 load balancers in the Load Balancing service
