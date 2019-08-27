@@ -37,11 +37,11 @@ type LogEntryTypeEnum string
 
 // Set of constants representing the allowable values for LogEntryTypeEnum
 const (
-	LogEntryTypeConsole LogEntryTypeEnum = "TERRAFORM_CONSOLE"
+	LogEntryTypeTerraformConsole LogEntryTypeEnum = "TERRAFORM_CONSOLE"
 )
 
 var mappingLogEntryType = map[string]LogEntryTypeEnum{
-	"TERRAFORM_CONSOLE": LogEntryTypeConsole,
+	"TERRAFORM_CONSOLE": LogEntryTypeTerraformConsole,
 }
 
 // GetLogEntryTypeEnumValues Enumerates the set of values for LogEntryTypeEnum
