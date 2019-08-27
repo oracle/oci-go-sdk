@@ -4,6 +4,39 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 8.0.0 - 2019-08-27
+### Added
+- Support for the Sao Paulo (GRU) region
+- Support for dedicated virtual machine hosts in the Compute service
+- Support for resource groups in metrics and alarms in the Monitoring service
+- Support for resource principle auth. Example can be found on [Github](https://github.com/oracle/oci-go-sdk/tree/master/example/example_resource_principal_function/README.md)
+
+### Breaking changes
+- Breaking changes were made for following enum values
+    - Before
+    ```golang
+    autoscaling.ActionTypeEnum.ActionTypeBy
+    keymanagement.CreateVaultDetailsVaultTypeEnum.CreateVaultDetailsVaultTypePrivate
+    keymanagement.VaultSummaryVaultTypeEnum.VaultSummaryVaultTypePrivate
+    keymanagement.VaultVaultTypeEnum.VaultVaultTypePrivate
+    objectstorage.WorkRequestSummaryOperationTypeEnum.WorkRequestSummaryOperationTypeObject
+    objectstorage.WorkRequestOperationTypeEnum.WorkRequestOperationTypeObject
+    resourcemanager.LogEntryTypeEnum.LogEntryTypeConsole
+    resourcemanager.WorkRequestOperationTypeEnum.WorkRequestOperationTypeCompartment
+    ```
+
+    - After
+    ```golang
+    autoscaling.ActionTypeEnum.ActionTypeChangeCountBy
+    keymanagement.CreateVaultDetailsVaultTypeEnum.CreateVaultDetailsVaultTypeVirtualPrivate
+    keymanagement.VaultSummaryVaultTypeEnum.VaultSummaryVaultTypeVirtualPrivate
+    keymanagement.VaultVaultTypeEnum.VaultVaultTypeVirtualPrivate
+    objectstorage.WorkRequestSummaryOperationTypeEnum.WorkRequestSummaryOperationTypeCopyObject
+    objectstorage.WorkRequestOperationTypeEnum.WorkRequestOperationTypeCopyObject
+    resourcemanager.LogEntryTypeEnum.LogEntryTypeTerraformConsole
+    resourcemanager.WorkRequestOperationTypeEnum.WorkRequestOperationTypeChangeStackCompartment
+    ```
+
 ## 7.1.0 - 2019-08-20
 ### Added
 - Support for the Limits service

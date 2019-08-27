@@ -118,3 +118,8 @@ func (m *mockFederationClient) SecurityToken() (string, error) {
 	args := m.Called()
 	return args.String(0), args.Error(1)
 }
+
+func (m *mockFederationClient) GetClaim(key string) (interface{}, error) {
+	args := m.Called(key)
+	return args.Get(0), args.Error(1)
+}
