@@ -559,3 +559,8 @@ func (m *mockSecurityToken) Valid() bool {
 	args := m.Called()
 	return args.Bool(0)
 }
+
+func (m *mockSecurityToken) GetClaim(key string) (interface{}, error) {
+	args := m.Called(key)
+	return args.Get(0), args.Error(1)
+}

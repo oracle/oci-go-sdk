@@ -52,11 +52,11 @@ type WorkRequestOperationTypeEnum string
 
 // Set of constants representing the allowable values for WorkRequestOperationTypeEnum
 const (
-	WorkRequestOperationTypeCompartment WorkRequestOperationTypeEnum = "CHANGE_STACK_COMPARTMENT"
+	WorkRequestOperationTypeChangeStackCompartment WorkRequestOperationTypeEnum = "CHANGE_STACK_COMPARTMENT"
 )
 
 var mappingWorkRequestOperationType = map[string]WorkRequestOperationTypeEnum{
-	"CHANGE_STACK_COMPARTMENT": WorkRequestOperationTypeCompartment,
+	"CHANGE_STACK_COMPARTMENT": WorkRequestOperationTypeChangeStackCompartment,
 }
 
 // GetWorkRequestOperationTypeEnumValues Enumerates the set of values for WorkRequestOperationTypeEnum
