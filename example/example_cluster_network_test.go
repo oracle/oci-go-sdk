@@ -115,11 +115,11 @@ func createClusterNetwork(ctx context.Context, client core.ComputeManagementClie
 
 	req := core.CreateClusterNetworkRequest{
 		CreateClusterNetworkDetails: core.CreateClusterNetworkDetails{
-			CompartmentId:           &compartmentId,
-			DisplayName: 			 &displayName,
-			PlacementConfiguration:  &placementConfigurationDetails,
-			InstancePools: []core.CreateClusterNetworkInstancePoolDetails {
-				core.CreateClusterNetworkInstancePoolDetails {
+			CompartmentId:          &compartmentId,
+			DisplayName:            &displayName,
+			PlacementConfiguration: &placementConfigurationDetails,
+			InstancePools: []core.CreateClusterNetworkInstancePoolDetails{
+				{
 					Size: &size,
 					InstanceConfigurationId: &instanceConfigurationId,
 				},
@@ -170,7 +170,6 @@ func createInstanceConfigurationWithHpcShape(ctx context.Context, client core.Co
 	return
 }
 
-
 // helper method to terminate a cluster network
 func terminateClusterNetwork(ctx context.Context, client core.ComputeManagementClient,
 	clusterNetworkId string) (response core.TerminateClusterNetworkResponse, err error) {
@@ -199,8 +198,8 @@ func pollUntilClusterNetworkInDesiredState(ctx context.Context, computeMgmtClien
 	// create get cluster network request with a retry policy which takes a function
 	// to determine shouldRetry or not
 	pollingGetRequest := core.GetClusterNetworkRequest{
-		ClusterNetworkId:  clusterNetwork.Id,
-		RequestMetadata: helpers.GetRequestMetadataWithCustomizedRetryPolicy(shouldRetryFunc),
+		ClusterNetworkId: clusterNetwork.Id,
+		RequestMetadata:  helpers.GetRequestMetadataWithCustomizedRetryPolicy(shouldRetryFunc),
 	}
 	_, pollError := computeMgmtClient.GetClusterNetwork(ctx, pollingGetRequest)
 	helpers.FatalIfError(pollError)
