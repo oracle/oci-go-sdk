@@ -55,6 +55,32 @@ func ExampleCreateAdb() {
 	// create adb successful
 }
 
+func ExampleCreateFreeAdb() {
+	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.FatalIfError(clerr)
+
+	createDbDetails := database.CreateAutonomousDatabaseDetails{
+		CompartmentId:        helpers.CompartmentID(),
+		DbName:               common.String("freeadb"),
+		CpuCoreCount:         common.Int(1),
+		DataStorageSizeInTBs: common.Int(1),
+		AdminPassword:        common.String("DBaaS12345_#"),
+		IsFreeTier:           common.Bool(true),
+	}
+
+	createadbReq := database.CreateAutonomousDatabaseRequest{
+		CreateAutonomousDatabaseDetails: createDbDetails,
+	}
+
+	_, err := c.CreateAutonomousDatabase(context.Background(), createadbReq)
+	helpers.FatalIfError(err)
+
+	fmt.Println("create free adb successful")
+
+	// Output:
+	// create free adb successful
+}
+
 func ExampleCreateAdbPreview() {
 	c, clerr := database.NewDatabaseClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
