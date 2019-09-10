@@ -26,10 +26,10 @@ func ExampleClusterCRUD() {
 	// this sample is to demonstrate how to use cluster APIs
 	// for more configuration setup, please refer to the link here:
 	// https://docs.cloud.oracle.com/Content/ContEng/Concepts/contengnetworkconfig.htm
-	vcnID, subnet1ID, subnet2ID, _ := createVCNWithSubnets(ctx)
+	vcnID, subnet1ID, _ := createVCNWithSubnets(ctx)
 
 	defaulKubetVersion := getDefaultKubernetesVersion(c)
-	createClusterResp := createCluster(ctx, c, vcnID, defaulKubetVersion, subnet1ID, subnet2ID)
+	createClusterResp := createCluster(ctx, c, vcnID, defaulKubetVersion, subnet1ID)
 
 	// wait until work request complete
 	workReqResp := waitUntilWorkRequestComplete(c, createClusterResp.OpcWorkRequestId)
@@ -74,7 +74,6 @@ func ExampleClusterCRUD() {
 	// create VCN complete
 	// create subnet1 complete
 	// create subnet2 complete
-	// create subnet3 complete
 	// creating cluster
 	// cluster created
 	// updating cluster
@@ -89,12 +88,19 @@ func ExampleNodePoolCRUD() {
 	c, clerr := containerengine.NewContainerEngineClientWithConfigurationProvider(common.DefaultConfigProvider())
 	helpers.FatalIfError(clerr)
 
+	identityClient, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+	helpers.FatalIfError(err)
+	req := identity.ListAvailabilityDomainsRequest{}
+	req.CompartmentId = helpers.CompartmentID()
+	ads, err := identityClient.ListAvailabilityDomains(ctx, req)
+	helpers.FatalIfError(err)
+
 	// create network resources for cluster
-	vcnID, subnet1ID, subnet2ID, subnet3ID := createVCNWithSubnets(ctx)
+	vcnID, subnet1ID, subnet2ID := createVCNWithSubnets(ctx)
 
 	// create cluster
 	kubeVersion := getDefaultKubernetesVersion(c)
-	createClusterResp := createCluster(ctx, c, vcnID, kubeVersion, subnet1ID, subnet2ID)
+	createClusterResp := createCluster(ctx, c, vcnID, kubeVersion, subnet1ID)
 
 	// wait until work request complete
 	workReqResp := waitUntilWorkRequestComplete(c, createClusterResp.OpcWorkRequestId)
@@ -109,8 +115,19 @@ func ExampleNodePoolCRUD() {
 	createNodePoolReq.KubernetesVersion = common.String(kubeVersion)
 	createNodePoolReq.NodeImageName = common.String("Oracle-Linux-7.4")
 	createNodePoolReq.NodeShape = common.String("VM.Standard1.1")
-	createNodePoolReq.SubnetIds = []string{subnet3ID}
 	createNodePoolReq.InitialNodeLabels = []containerengine.KeyValue{{Key: common.String("foo"), Value: common.String("bar")}}
+	createNodePoolReq.NodeConfigDetails = &containerengine.CreateNodePoolNodeConfigDetails{
+		PlacementConfigs: make([]containerengine.NodePoolPlacementConfigDetails, 0, len(ads.Items)),
+		Size:             common.Int(len(ads.Items)),
+	}
+
+	for i := 0; i < len(ads.Items); i++ {
+		createNodePoolReq.NodeConfigDetails.PlacementConfigs = append(createNodePoolReq.NodeConfigDetails.PlacementConfigs,
+			containerengine.NodePoolPlacementConfigDetails{
+				AvailabilityDomain: ads.Items[i].Name,
+				SubnetId:           &subnet2ID,
+			})
+	}
 
 	createNodePoolResp, err := c.CreateNodePool(ctx, createNodePoolReq)
 	helpers.FatalIfError(err)
@@ -143,12 +160,11 @@ func ExampleNodePoolCRUD() {
 	// create VCN complete
 	// create subnet1 complete
 	// create subnet2 complete
-	// create subnet3 complete
 	// creating cluster
 	// cluster created
 	// creating nodepool
 	// nodepool created
-	// updating NodePool
+	// updating nodepool
 	// nodepool updated
 	// deleting nodepool
 	// deleting cluster
@@ -225,14 +241,14 @@ func waitUntilWorkRequestComplete(client containerengine.ContainerEngineClient, 
 func createCluster(
 	ctx context.Context,
 	client containerengine.ContainerEngineClient,
-	vcnID, kubernetesVersion, subnet1ID, subnet2ID string) containerengine.CreateClusterResponse {
+	vcnID, kubernetesVersion, subnet1ID string) containerengine.CreateClusterResponse {
 	req := containerengine.CreateClusterRequest{}
 	req.Name = common.String("GOSDK_Sample_CE")
 	req.CompartmentId = helpers.CompartmentID()
 	req.VcnId = common.String(vcnID)
 	req.KubernetesVersion = common.String(kubernetesVersion)
 	req.Options = &containerengine.ClusterCreateOptions{
-		ServiceLbSubnetIds: []string{subnet1ID, subnet2ID},
+		ServiceLbSubnetIds: []string{subnet1ID},
 	}
 
 	fmt.Println("creating cluster")
@@ -265,35 +281,18 @@ func deleteNodePool(ctx context.Context, client containerengine.ContainerEngineC
 }
 
 // create VCN and subnets, return id of these three resources
-func createVCNWithSubnets(ctx context.Context) (vcnID, subnet1ID, subnet2ID, subnet3ID string) {
+func createVCNWithSubnets(ctx context.Context) (vcnID, subnet1ID, subnet2ID string) {
 	// create a new VCN
 	vcn := CreateOrGetVcn()
 	fmt.Println("create VCN complete")
 
-	subnet1 := CreateOrGetSubnet()
+	subnet1 := CreateOrGetSubnetWithDetails(common.String(subnetDisplayName1), common.String("10.0.1.0/24"), common.String("subnetdns1"), nil)
 	fmt.Println("create subnet1 complete")
 
-	// create a subnet in different availability domain
-	identityClient, err := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
-	helpers.FatalIfError(err)
-	req := identity.ListAvailabilityDomainsRequest{}
-	req.CompartmentId = helpers.CompartmentID()
-	response, err := identityClient.ListAvailabilityDomains(ctx, req)
-	helpers.FatalIfError(err)
-	if len(response.Items) < 3 {
-		fmt.Println("require at least 3 avilability domains to create three subnets")
-	}
-
-	availableDomain := response.Items[1].Name
-
-	subnet2 := CreateOrGetSubnetWithDetails(common.String(subnetDisplayName2), common.String("10.0.1.0/24"), common.String("subnetdns2"), availableDomain)
+	subnet2 := CreateOrGetSubnetWithDetails(common.String(subnetDisplayName2), common.String("10.0.2.0/24"), common.String("subnetdns2"), nil)
 	fmt.Println("create subnet2 complete")
 
-	availableDomain = response.Items[2].Name
-	subnet3 := CreateOrGetSubnetWithDetails(common.String(subnetDisplayName3), common.String("10.0.2.0/24"), common.String("subnetdns3"), availableDomain)
-	fmt.Println("create subnet3 complete")
-
-	return *vcn.Id, *subnet1.Id, *subnet2.Id, *subnet3.Id
+	return *vcn.Id, *subnet1.Id, *subnet2.Id
 }
 
 func getDefaultKubernetesVersion(client containerengine.ContainerEngineClient) string {
