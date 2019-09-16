@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 10.0.0 - 2019-09-17
+### Added
+- Support for importing state files in the Resource Manager service
+- Support for Exadata Cloud at Customer in the Database service
+- Support for free tier resources and system tags in the Load Balancing service
+- Support for free tier resources and system tags in the Compute service
+- Support for free tier resources and system tags in the Block Storage service
+- Support for free tier and system tags on autonomous databases in the Database service
+
+### Breaking
+- Interface CreateDbHomeWithDbSystemIdBase is renamed to CreateDbHomeBase and dbSystemId property is removed from it
+- CreateDbHomeWithDbSystemIdBase in CreateDbHomeRequest is replaced with CreateDbHomeWithDbSystemIdDetails
+
 ## 9.0.0 - 2019-09-10
 ### Added
 - Support for specifying the autoBackupWindow field for scheduling backups in the Database service
