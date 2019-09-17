@@ -9,6 +9,7 @@
 package resourcemanager
 
 import (
+	"encoding/json"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
@@ -19,6 +20,8 @@ import (
 // - **Destroy job**. To clean up the infrastructure controlled by the stack, you run a destroy job.
 // A destroy job does not delete the stack or associated job resources,
 // but instead releases the resources managed by the stack.
+// - **Import_TF_State job**. An import Terraform state job takes a Terraform state file and sets it as the current
+// state of the stack. This is used to migrate local Terraform environments to Resource Manager.
 type Job struct {
 
 	// The job's OCID.
@@ -36,8 +39,13 @@ type Job struct {
 	// The type of job executing.
 	Operation JobOperationEnum `mandatory:"false" json:"operation,omitempty"`
 
+	// Job details that are specific to the operation type.
+	JobOperationDetails JobOperationDetails `mandatory:"false" json:"jobOperationDetails"`
+
+	// Deprecated. Use the property `executionPlanStrategy` in `jobOperationDetails` instead.
 	ApplyJobPlanResolution *ApplyJobPlanResolution `mandatory:"false" json:"applyJobPlanResolution"`
 
+	// Deprecated. Use the property `executionPlanJobId` in `jobOperationDetails` instead.
 	// The plan job OCID that was used (if this was an apply job and was not auto-approved).
 	ResolvedPlanJobId *string `mandatory:"false" json:"resolvedPlanJobId"`
 
@@ -75,20 +83,74 @@ func (m Job) String() string {
 	return common.PointerString(m)
 }
 
+// UnmarshalJSON unmarshals from json
+func (m *Job) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		Id                     *string                           `json:"id"`
+		StackId                *string                           `json:"stackId"`
+		CompartmentId          *string                           `json:"compartmentId"`
+		DisplayName            *string                           `json:"displayName"`
+		Operation              JobOperationEnum                  `json:"operation"`
+		JobOperationDetails    joboperationdetails               `json:"jobOperationDetails"`
+		ApplyJobPlanResolution *ApplyJobPlanResolution           `json:"applyJobPlanResolution"`
+		ResolvedPlanJobId      *string                           `json:"resolvedPlanJobId"`
+		TimeCreated            *common.SDKTime                   `json:"timeCreated"`
+		TimeFinished           *common.SDKTime                   `json:"timeFinished"`
+		LifecycleState         JobLifecycleStateEnum             `json:"lifecycleState"`
+		FailureDetails         *FailureDetails                   `json:"failureDetails"`
+		WorkingDirectory       *string                           `json:"workingDirectory"`
+		Variables              map[string]string                 `json:"variables"`
+		FreeformTags           map[string]string                 `json:"freeformTags"`
+		DefinedTags            map[string]map[string]interface{} `json:"definedTags"`
+	}{}
+
+	e = json.Unmarshal(data, &model)
+	if e != nil {
+		return
+	}
+	m.Id = model.Id
+	m.StackId = model.StackId
+	m.CompartmentId = model.CompartmentId
+	m.DisplayName = model.DisplayName
+	m.Operation = model.Operation
+	nn, e := model.JobOperationDetails.UnmarshalPolymorphicJSON(model.JobOperationDetails.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.JobOperationDetails = nn.(JobOperationDetails)
+	} else {
+		m.JobOperationDetails = nil
+	}
+	m.ApplyJobPlanResolution = model.ApplyJobPlanResolution
+	m.ResolvedPlanJobId = model.ResolvedPlanJobId
+	m.TimeCreated = model.TimeCreated
+	m.TimeFinished = model.TimeFinished
+	m.LifecycleState = model.LifecycleState
+	m.FailureDetails = model.FailureDetails
+	m.WorkingDirectory = model.WorkingDirectory
+	m.Variables = model.Variables
+	m.FreeformTags = model.FreeformTags
+	m.DefinedTags = model.DefinedTags
+	return
+}
+
 // JobOperationEnum Enum with underlying type: string
 type JobOperationEnum string
 
 // Set of constants representing the allowable values for JobOperationEnum
 const (
-	JobOperationPlan    JobOperationEnum = "PLAN"
-	JobOperationApply   JobOperationEnum = "APPLY"
-	JobOperationDestroy JobOperationEnum = "DESTROY"
+	JobOperationPlan          JobOperationEnum = "PLAN"
+	JobOperationApply         JobOperationEnum = "APPLY"
+	JobOperationDestroy       JobOperationEnum = "DESTROY"
+	JobOperationImportTfState JobOperationEnum = "IMPORT_TF_STATE"
 )
 
 var mappingJobOperation = map[string]JobOperationEnum{
-	"PLAN":    JobOperationPlan,
-	"APPLY":   JobOperationApply,
-	"DESTROY": JobOperationDestroy,
+	"PLAN":            JobOperationPlan,
+	"APPLY":           JobOperationApply,
+	"DESTROY":         JobOperationDestroy,
+	"IMPORT_TF_STATE": JobOperationImportTfState,
 }
 
 // GetJobOperationEnumValues Enumerates the set of values for JobOperationEnum

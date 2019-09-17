@@ -9,6 +9,7 @@
 package resourcemanager
 
 import (
+	"encoding/json"
 	"github.com/oracle/oci-go-sdk/common"
 )
 
@@ -30,9 +31,14 @@ type JobSummary struct {
 	// The type of job executing
 	Operation JobOperationEnum `mandatory:"false" json:"operation,omitempty"`
 
+	// Job details that are specific to the operation type.
+	JobOperationDetails JobOperationDetailsSummary `mandatory:"false" json:"jobOperationDetails"`
+
+	// Deprecated. Use the property `executionPlanStrategy` in `jobOperationDetails` instead.
 	ApplyJobPlanResolution *ApplyJobPlanResolution `mandatory:"false" json:"applyJobPlanResolution"`
 
-	// The plan job OCID that was used (if this was an APPLY job and not auto approved).
+	// Deprecated. Use the property `executionPlanJobId` in `jobOperationDetails` instead.
+	// The plan job OCID that was used (if this was an apply job and was not auto-approved).
 	ResolvedPlanJobId *string `mandatory:"false" json:"resolvedPlanJobId"`
 
 	// The date and time the job was created.
@@ -63,4 +69,50 @@ type JobSummary struct {
 
 func (m JobSummary) String() string {
 	return common.PointerString(m)
+}
+
+// UnmarshalJSON unmarshals from json
+func (m *JobSummary) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		Id                     *string                           `json:"id"`
+		StackId                *string                           `json:"stackId"`
+		CompartmentId          *string                           `json:"compartmentId"`
+		DisplayName            *string                           `json:"displayName"`
+		Operation              JobOperationEnum                  `json:"operation"`
+		JobOperationDetails    joboperationdetailssummary        `json:"jobOperationDetails"`
+		ApplyJobPlanResolution *ApplyJobPlanResolution           `json:"applyJobPlanResolution"`
+		ResolvedPlanJobId      *string                           `json:"resolvedPlanJobId"`
+		TimeCreated            *common.SDKTime                   `json:"timeCreated"`
+		TimeFinished           *common.SDKTime                   `json:"timeFinished"`
+		LifecycleState         JobLifecycleStateEnum             `json:"lifecycleState"`
+		FreeformTags           map[string]string                 `json:"freeformTags"`
+		DefinedTags            map[string]map[string]interface{} `json:"definedTags"`
+	}{}
+
+	e = json.Unmarshal(data, &model)
+	if e != nil {
+		return
+	}
+	m.Id = model.Id
+	m.StackId = model.StackId
+	m.CompartmentId = model.CompartmentId
+	m.DisplayName = model.DisplayName
+	m.Operation = model.Operation
+	nn, e := model.JobOperationDetails.UnmarshalPolymorphicJSON(model.JobOperationDetails.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.JobOperationDetails = nn.(JobOperationDetailsSummary)
+	} else {
+		m.JobOperationDetails = nil
+	}
+	m.ApplyJobPlanResolution = model.ApplyJobPlanResolution
+	m.ResolvedPlanJobId = model.ResolvedPlanJobId
+	m.TimeCreated = model.TimeCreated
+	m.TimeFinished = model.TimeFinished
+	m.LifecycleState = model.LifecycleState
+	m.FreeformTags = model.FreeformTags
+	m.DefinedTags = model.DefinedTags
+	return
 }
