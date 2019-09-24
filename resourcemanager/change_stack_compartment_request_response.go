@@ -14,6 +14,7 @@ type ChangeStackCompartmentRequest struct {
 	// The stack OCID.
 	StackId *string `mandatory:"true" contributesTo:"path" name:"stackId"`
 
+	// Defines the properties of changeStackCompartment operation.
 	ChangeStackCompartmentDetails `contributesTo:"body"`
 
 	// For optimistic concurrency control. In the `PUT` or `DELETE` call for a resource, set the `if-match`

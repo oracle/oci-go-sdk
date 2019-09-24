@@ -711,6 +711,48 @@ func (client ResourceManagerClient) listStacks(ctx context.Context, request comm
 	return response, err
 }
 
+// ListTerraformVersions Returns a list of supported Terraform versions in a compartment.
+func (client ResourceManagerClient) ListTerraformVersions(ctx context.Context, request ListTerraformVersionsRequest) (response ListTerraformVersionsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listTerraformVersions, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = ListTerraformVersionsResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListTerraformVersionsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListTerraformVersionsResponse")
+	}
+	return
+}
+
+// listTerraformVersions implements the OCIOperation interface (enables retrying operations)
+func (client ResourceManagerClient) listTerraformVersions(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/terraformVersions")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListTerraformVersionsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // ListWorkRequestErrors Return a (paginated) list of errors for a given work request.
 func (client ResourceManagerClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
