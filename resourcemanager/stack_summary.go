@@ -32,6 +32,9 @@ type StackSummary struct {
 
 	LifecycleState StackLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
+	// The Terraform version of the specified stack.
+	TerraformVersion *string `mandatory:"false" json:"terraformVersion"`
+
 	// Free-form tags associated with this resource. Each tag is a key-value pair with no predefined name, type, or namespace.
 	// For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).
 	// Example: `{"Department": "Finance"}`
