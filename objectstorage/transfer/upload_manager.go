@@ -19,6 +19,7 @@ import (
 	"time"
 
 	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/objectstorage"
 )
 
 // UploadManager is the interface that groups the upload methods
@@ -42,7 +43,7 @@ func NewUploadManager() *UploadManager {
 
 // UploadFile uploads an object to Object Storage. Depending on the options provided and the
 // size of the object, the object may be uploaded in multiple parts or just an signle object.
-func (uploadManager *UploadManager) UploadFile(ctx context.Context, request UploadFileRequest) (response UploadResponse, err error) {
+func (uploadManager *UploadManager) UploadFile(ctx context.Context, request UploadFileRequest, callBack objectstorage.UploadCallBack) (response UploadResponse, err error) {
 	if err = request.validate(); err != nil {
 		return
 	}
@@ -57,6 +58,7 @@ func (uploadManager *UploadManager) UploadFile(ctx context.Context, request Uplo
 	}
 
 	file, err := os.Open(request.FilePath)
+
 	defer file.Close()
 
 	if err != nil {
@@ -74,21 +76,22 @@ func (uploadManager *UploadManager) UploadFile(ctx context.Context, request Uplo
 	// use UploadFilePutObject
 	if !*request.AllowMultipartUploads ||
 		int64(fileSize) <= *request.PartSize {
+
 		response, err = uploadManager.FileUploader.UploadFilePutObject(ctx, request)
 		return
 	}
 
-	response, err = uploadManager.FileUploader.UploadFileMultiparts(ctx, request)
+	response, err = uploadManager.FileUploader.UploadFileMultiparts(ctx, request, callBack)
 	return
 }
 
 // ResumeUploadFile resumes a multipart file upload.
-func (uploadManager *UploadManager) ResumeUploadFile(ctx context.Context, uploadID string) (response UploadResponse, err error) {
+func (uploadManager *UploadManager) ResumeUploadFile(ctx context.Context, uploadID string, callBack objectstorage.UploadCallBack) (response UploadResponse, err error) {
 	if len(strings.TrimSpace(uploadID)) == 0 {
 		err = errors.New("uploadID is required to resume a multipart file upload")
 		return
 	}
-	response, err = uploadManager.FileUploader.ResumeUploadFile(ctx, uploadID)
+	response, err = uploadManager.FileUploader.ResumeUploadFile(ctx, uploadID, callBack)
 	return
 }
 

@@ -15,13 +15,13 @@ import (
 // FileUploader is an interface to upload a file
 type FileUploader interface {
 	// split file into multiple parts and uploads them to blob storage, then merge
-	UploadFileMultiparts(ctx context.Context, request UploadFileRequest) (response UploadResponse, err error)
+	UploadFileMultiparts(ctx context.Context, request UploadFileRequest, callBack objectstorage.UploadCallBack) (response UploadResponse, err error)
 
 	// uploads a file to blob storage via PutObject API
 	UploadFilePutObject(ctx context.Context, request UploadFileRequest) (response UploadResponse, err error)
 
 	// resume a file upload, use it when UploadFile failed
-	ResumeUploadFile(ctx context.Context, uploadID string) (response UploadResponse, err error)
+	ResumeUploadFile(ctx context.Context, uploadID string, callBack objectstorage.UploadCallBack) (response UploadResponse, err error)
 }
 
 type fileUpload struct {
@@ -31,7 +31,7 @@ type fileUpload struct {
 	fileUploadReqs    map[string]UploadFileRequest // save user input to resume
 }
 
-func (fileUpload *fileUpload) UploadFileMultiparts(ctx context.Context, request UploadFileRequest) (response UploadResponse, err error) {
+func (fileUpload *fileUpload) UploadFileMultiparts(ctx context.Context, request UploadFileRequest, callBack objectstorage.UploadCallBack) (response UploadResponse, err error) {
 	file, err := os.Open(request.FilePath)
 	defer file.Close()
 	if err != nil {
@@ -68,7 +68,7 @@ func (fileUpload *fileUpload) UploadFileMultiparts(ctx context.Context, request 
 	defer close(done)
 	parts := fileUpload.manifest.splitFileToParts(done, *request.PartSize, file, fileSize)
 
-	response, err = fileUpload.startConcurrentUpload(ctx, done, parts, request)
+	response, err = fileUpload.startConcurrentUpload(ctx, done, parts, request, callBack)
 	return
 }
 
@@ -115,7 +115,7 @@ func (fileUpload *fileUpload) UploadFilePutObject(ctx context.Context, request U
 	return response, nil
 }
 
-func (fileUpload *fileUpload) ResumeUploadFile(ctx context.Context, uploadID string) (UploadResponse, error) {
+func (fileUpload *fileUpload) ResumeUploadFile(ctx context.Context, uploadID string, callBack objectstorage.UploadCallBack) (UploadResponse, error) {
 	response := UploadResponse{Type: MultipartUpload}
 	if fileUpload.manifest == nil || fileUpload.manifest.parts == nil {
 		err := errors.New("cannot resume upload file, please call UploadFileMultiparts first")
@@ -154,11 +154,11 @@ func (fileUpload *fileUpload) ResumeUploadFile(ctx context.Context, uploadID str
 	done := make(chan struct{})
 	defer close(done)
 
-	response, err := fileUpload.startConcurrentUpload(ctx, done, failedPartsChannel, fileUpload.fileUploadReqs[uploadID])
+	response, err := fileUpload.startConcurrentUpload(ctx, done, failedPartsChannel, fileUpload.fileUploadReqs[uploadID], callBack)
 	return response, err
 }
 
-func (fileUpload *fileUpload) startConcurrentUpload(ctx context.Context, done <-chan struct{}, parts <-chan uploadPart, request UploadFileRequest) (response UploadResponse, err error) {
+func (fileUpload *fileUpload) startConcurrentUpload(ctx context.Context, done <-chan struct{}, parts <-chan uploadPart, request UploadFileRequest, callBack objectstorage.UploadCallBack) (response UploadResponse, err error) {
 	result := make(chan uploadPart)
 	numUploads := *request.NumberOfGoroutines
 	var wg sync.WaitGroup
@@ -167,7 +167,7 @@ func (fileUpload *fileUpload) startConcurrentUpload(ctx context.Context, done <-
 	// start fixed number of goroutines to upload parts
 	for i := 0; i < numUploads; i++ {
 		go func() {
-			fileUpload.multipartUploader.uploadParts(ctx, done, parts, result, request.UploadRequest, fileUpload.uploadID)
+			fileUpload.multipartUploader.uploadParts(ctx, done, parts, result, request.UploadRequest, fileUpload.uploadID, callBack)
 			wg.Done()
 		}()
 	}

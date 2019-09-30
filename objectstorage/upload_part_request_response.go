@@ -4,9 +4,10 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
 	"io"
 	"net/http"
+
+	"github.com/oracle/oci-go-sdk/common"
 )
 
 // UploadPartRequest wrapper for the UploadPart operation
@@ -94,6 +95,23 @@ type UploadPartResponse struct {
 	// The entity tag (ETag) for the object.
 	ETag *string `presentIn:"header" name:"etag"`
 }
+
+//
+// MultiPartUploadPart holds the details of Part that is uploaded
+//
+type MultiPartUploadPart struct {
+	PartNum    int
+	TotalParts int
+	Size       int64
+	Offset     int64
+	Hash       *string
+	OpcMD5     *string
+	Etag       *string
+	Err        error
+}
+
+// UploadCallBack API that gets invoked after a Part is successuly uploaded
+type UploadCallBack func(multiPartUploadPart MultiPartUploadPart)
 
 func (response UploadPartResponse) String() string {
 	return common.PointerString(response)

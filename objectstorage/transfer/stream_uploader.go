@@ -52,7 +52,7 @@ func (streamUpload *streamUpload) startConcurrentUpload(ctx context.Context, don
 	// start fixed number of goroutines to upload parts
 	for i := 0; i < numUploads; i++ {
 		go func() {
-			streamUpload.multipartUploader.uploadParts(ctx, done, parts, result, request.UploadRequest, streamUpload.uploadID)
+			streamUpload.multipartUploader.uploadParts(ctx, done, parts, result, request.UploadRequest, streamUpload.uploadID, nil)
 			wg.Done()
 		}()
 	}
