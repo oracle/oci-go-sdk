@@ -4,6 +4,52 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 11.0.0 - 2019-10-01
+### Added
+- Support for required tags in the Identity service
+- Support for work requests on tagging operations in the Identity service
+- Support for enumerated tag values in the Identity service
+- Support for moving dynamic routing gateway resources across compartments in the Networking service
+- Support for migrating zones from Dyn managed DNS to OCI in the DNS service
+- Support for fast provisioning for virtual machine databases in the Database service
+
+### Breaking changes
+- The field``CreateZoneDetails`` is no longer an anonymous field and the type changed from struct to interface in struct ``CreateZoneRequest``. Here is sample code that shows how to update your code to incorporate this change. 
+
+
+    - Before
+
+    ```golang
+    // There were two ways to initialize the CreateZoneRequest struct.
+    // This breaking change only impact option #2
+    request := dns.CreateZoneRequest{}
+
+    // #1. Instantiate CreateZoneDetails directly: no impact
+    details := dns.CreateZoneDetails{}
+    details.Name = common.String('some name')
+    // ... other properties
+    // Set it to the request class
+    request.CreateZoneDetails = details
+
+    // #2. Instantiate CreateZoneDetails through anonymous fields: will break
+    request.Name = common.String('some name')
+    // ... other properties
+    ```
+
+    - After
+
+    ```golang
+    // #2 no longer supported. Create CreateZoneDetails directly
+    details := dns.CreateZoneDetails{}
+    details.Name = common.String('some name')
+    // ... other properties
+
+    request := dns.CreateZoneRequest{
+        CreateZoneDetails: details
+    }
+    // ...
+    ```
+
 ## 10.1.0 - 2019-09-24
 ### Added
 - Support for selecting the Terraform version to use in the Resource Manager service
