@@ -79,6 +79,7 @@ func ExampleObjectStorage_UploadManager_UploadFile() {
 			BucketName:    common.String(bname),
 			ObjectName:    common.String(objectName),
 			//PartSize:      common.Int(10000000),
+			CallBack: callBack,
 		},
 		FilePath: filepath,
 	}
@@ -86,10 +87,10 @@ func ExampleObjectStorage_UploadManager_UploadFile() {
 	// if you want to overwrite default value, you can do it
 	// as: transfer.UploadRequest.AllowMultipartUploads = common.Bool(false) // default is true
 	// or: transfer.UploadRequest.AllowParrallelUploads = common.Bool(false) // default is true
-	resp, err := uploadManager.UploadFile(ctx, req, callBack)
+	resp, err := uploadManager.UploadFile(ctx, req)
 
 	if err != nil && resp.IsResumable() {
-		resp, err = uploadManager.ResumeUploadFile(ctx, *resp.MultipartUploadResponse.UploadID, callBack)
+		resp, err = uploadManager.ResumeUploadFile(ctx, *resp.MultipartUploadResponse.UploadID)
 		if err != nil {
 			fmt.Println(resp)
 		}
@@ -106,7 +107,7 @@ func ExampleObjectStorage_UploadManager_UploadFile() {
 	// delete bucket
 }
 
-func callBack(multiPartUploadPart objectstorage.MultiPartUploadPart) {
+func callBack(multiPartUploadPart transfer.MultiPartUploadPart) {
 	if nil == multiPartUploadPart.Err {
 		fmt.Printf("Part: %d / %d is uploaded", multiPartUploadPart.PartNum, multiPartUploadPart.TotalParts)
 	}

@@ -14,7 +14,7 @@ import (
 // multipartUploader is an interface wrap the methods talk to object storage service
 type multipartUploader interface {
 	createMultipartUpload(ctx context.Context, request UploadRequest) (string, error)
-	uploadParts(ctx context.Context, done <-chan struct{}, parts <-chan uploadPart, result chan<- uploadPart, request UploadRequest, uploadID string, callBack objectstorage.UploadCallBack)
+	uploadParts(ctx context.Context, done <-chan struct{}, parts <-chan uploadPart, result chan<- uploadPart, request UploadRequest, uploadID string)
 	uploadPart(ctx context.Context, request UploadRequest, part uploadPart, uploadID string) (objectstorage.UploadPartResponse, error)
 	commit(ctx context.Context, request UploadRequest, parts map[int]uploadPart, uploadID string) (resp objectstorage.CommitMultipartUploadResponse, err error)
 }
@@ -42,7 +42,7 @@ func (uploader *multipartUpload) createMultipartUpload(ctx context.Context, requ
 	return *resp.UploadId, err
 }
 
-func (uploader *multipartUpload) uploadParts(ctx context.Context, done <-chan struct{}, parts <-chan uploadPart, result chan<- uploadPart, request UploadRequest, uploadID string, callBack objectstorage.UploadCallBack) {
+func (uploader *multipartUpload) uploadParts(ctx context.Context, done <-chan struct{}, parts <-chan uploadPart, result chan<- uploadPart, request UploadRequest, uploadID string) {
 	// loop through the part from parts channel created by splitFileParts method
 
 	for part := range parts {
@@ -60,16 +60,19 @@ func (uploader *multipartUpload) uploadParts(ctx context.Context, done <-chan st
 		part.etag = resp.ETag
 		select {
 		case result <- part:
-			if nil != callBack {
-				uploadUnit := objectstorage.MultiPartUploadPart{
+
+			// Invoke the callBack after upload of each Part
+			if nil != request.CallBack {
+				uploadedPart := MultiPartUploadPart{
 					PartNum:    part.partNum,
 					TotalParts: part.totalParts,
 					Offset:     part.offset,
 					Hash:       part.hash,
 					Err:        part.err}
 
-				callBack(uploadUnit)
+				request.CallBack(uploadedPart)
 			}
+
 			common.Debugf("uploadParts resp %v, %v\n", part.partNum, resp.ETag)
 		case <-done:
 			common.Debugln("uploadParts received Done")

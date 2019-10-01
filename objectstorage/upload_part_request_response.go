@@ -96,23 +96,6 @@ type UploadPartResponse struct {
 	ETag *string `presentIn:"header" name:"etag"`
 }
 
-//
-// MultiPartUploadPart holds the details of Part that is uploaded
-//
-type MultiPartUploadPart struct {
-	PartNum    int
-	TotalParts int
-	Size       int64
-	Offset     int64
-	Hash       *string
-	OpcMD5     *string
-	Etag       *string
-	Err        error
-}
-
-// UploadCallBack API that gets invoked after a Part is successuly uploaded
-type UploadCallBack func(multiPartUploadPart MultiPartUploadPart)
-
 func (response UploadPartResponse) String() string {
 	return common.PointerString(response)
 }

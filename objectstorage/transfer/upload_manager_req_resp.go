@@ -80,6 +80,9 @@ type UploadRequest struct {
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
 	RequestMetadata common.RequestMetadata
+
+	// [Optional] Callback API that can be invoked during multiPartUploads
+	CallBack UploadCallBack `mandatory:"false"`
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
@@ -212,3 +215,20 @@ func getUploadManagerDefaultRetryPolicy() *common.RetryPolicy {
 
 	return &policy
 }
+
+//
+// MultiPartUploadPart holds the details of Part that is uploaded
+//
+type MultiPartUploadPart struct {
+	PartNum    int
+	TotalParts int
+	Size       int64
+	Offset     int64
+	Hash       *string
+	OpcMD5     *string
+	Etag       *string
+	Err        error
+}
+
+// UploadCallBack API that gets invoked after a Part is successuly uploaded
+type UploadCallBack func(multiPartUploadPart MultiPartUploadPart)

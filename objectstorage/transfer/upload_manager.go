@@ -19,7 +19,6 @@ import (
 	"time"
 
 	"github.com/oracle/oci-go-sdk/common"
-	"github.com/oracle/oci-go-sdk/objectstorage"
 )
 
 // UploadManager is the interface that groups the upload methods
@@ -43,7 +42,7 @@ func NewUploadManager() *UploadManager {
 
 // UploadFile uploads an object to Object Storage. Depending on the options provided and the
 // size of the object, the object may be uploaded in multiple parts or just an signle object.
-func (uploadManager *UploadManager) UploadFile(ctx context.Context, request UploadFileRequest, callBack objectstorage.UploadCallBack) (response UploadResponse, err error) {
+func (uploadManager *UploadManager) UploadFile(ctx context.Context, request UploadFileRequest) (response UploadResponse, err error) {
 	if err = request.validate(); err != nil {
 		return
 	}
@@ -81,17 +80,17 @@ func (uploadManager *UploadManager) UploadFile(ctx context.Context, request Uplo
 		return
 	}
 
-	response, err = uploadManager.FileUploader.UploadFileMultiparts(ctx, request, callBack)
+	response, err = uploadManager.FileUploader.UploadFileMultiparts(ctx, request)
 	return
 }
 
 // ResumeUploadFile resumes a multipart file upload.
-func (uploadManager *UploadManager) ResumeUploadFile(ctx context.Context, uploadID string, callBack objectstorage.UploadCallBack) (response UploadResponse, err error) {
+func (uploadManager *UploadManager) ResumeUploadFile(ctx context.Context, uploadID string) (response UploadResponse, err error) {
 	if len(strings.TrimSpace(uploadID)) == 0 {
 		err = errors.New("uploadID is required to resume a multipart file upload")
 		return
 	}
-	response, err = uploadManager.FileUploader.ResumeUploadFile(ctx, uploadID, callBack)
+	response, err = uploadManager.FileUploader.ResumeUploadFile(ctx, uploadID)
 	return
 }
 

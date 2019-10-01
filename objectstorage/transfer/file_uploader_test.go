@@ -26,7 +26,7 @@ func (fake *fake) createMultipartUpload(ctx context.Context, request UploadReque
 	return fake.upLoadID, nil
 }
 
-func (fake *fake) uploadParts(ctx context.Context, done <-chan struct{}, parts <-chan uploadPart, result chan<- uploadPart, request UploadRequest, uploadID string, callBack objectstorage.UploadCallBack) {
+func (fake *fake) uploadParts(ctx context.Context, done <-chan struct{}, parts <-chan uploadPart, result chan<- uploadPart, request UploadRequest, uploadID string) {
 	// loop through the part from parts channel created by splitFileParts method
 	for part := range parts {
 		resp, err := fake.uploadPart(ctx, request, part, uploadID)
@@ -35,15 +35,15 @@ func (fake *fake) uploadParts(ctx context.Context, done <-chan struct{}, parts <
 
 		select {
 		case result <- part:
-			if nil != callBack {
-				uploadUnit := objectstorage.MultiPartUploadPart{
+			if nil != request.CallBack {
+				uploadedPart := MultiPartUploadPart{
 					PartNum:    part.partNum,
 					TotalParts: part.totalParts,
 					Offset:     part.offset,
 					Hash:       part.hash,
 					Err:        part.err}
 
-				callBack(uploadUnit)
+				request.CallBack(uploadedPart)
 			}
 		case <-done:
 			return
@@ -123,7 +123,7 @@ func TestUploadFileMultiparts(t *testing.T) {
 		}
 
 		request.initDefaultValues()
-		resp, err := fileUpload.UploadFileMultiparts(ctx, request, nil)
+		resp, err := fileUpload.UploadFileMultiparts(ctx, request)
 		assert.Equal(t, testData.expectedUploadID, *resp.UploadID)
 		assert.NotEmpty(t, fileUpload.fileUploadReqs[testData.uploadID])
 		assert.Equal(t, testData.expectedCachedNumOfRequest, len(fileUpload.fileUploadReqs))
@@ -144,7 +144,7 @@ func TestUploadFileMultiparts(t *testing.T) {
 
 			// empty the failed part numbers array
 			fake.failedPartNumbers = []int{}
-			fileUpload.ResumeUploadFile(ctx, testData.uploadID, nil)
+			fileUpload.ResumeUploadFile(ctx, testData.uploadID)
 			assert.Equal(t, totalParts, *fake.numberOfCommitedParts)
 		}
 

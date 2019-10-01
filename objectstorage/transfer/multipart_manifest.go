@@ -17,15 +17,15 @@ type multipartManifest struct {
 }
 
 type uploadPart struct {
-	size       int64
-	offset     int64
-	partBody   []byte
-	partNum    int
-	hash       *string
-	opcMD5     *string
-	etag       *string
-	err        error
-	totalParts int
+	size     int64
+	offset   int64
+	partBody []byte
+	partNum  int
+	hash     *string
+	opcMD5   *string
+	etag     *string
+	err      error
+        totalParts int
 }
 
 // splitFileToParts starts a goroutine to read a file and break down to parts and send the parts to
@@ -54,12 +54,11 @@ func (manifest *multipartManifest) splitFileToParts(done <-chan struct{}, partSi
 			_, err := file.ReadAt(buffer, offset)
 
 			part := uploadPart{
-				partNum:    i + 1,
-				size:       partSize,
-				offset:     offset,
-				err:        err,
-				partBody:   buffer,
-				totalParts: numberOfParts,
+				partNum:  i + 1,
+				size:     partSize,
+				offset:   offset,
+				err:      err,
+				partBody: buffer,
 			}
 
 			select {
@@ -72,7 +71,7 @@ func (manifest *multipartManifest) splitFileToParts(done <-chan struct{}, partSi
 		// check for any left over bytes. Add the residual number of bytes as the
 		// the last chunk size.
 		if remainder := fileSize % int64(partSize); remainder != 0 {
-			part := uploadPart{offset: (int64(numberOfParts) * partSize), partNum: numberOfParts + 1, totalParts: numberOfParts}
+			part := uploadPart{offset: (int64(numberOfParts) * partSize), partNum: numberOfParts + 1}
 
 			part.partBody = make([]byte, remainder)
 			_, err := file.ReadAt(part.partBody, part.offset)
