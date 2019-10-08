@@ -12,15 +12,22 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateTransferApplianceEntitlementDetails The representation of CreateTransferApplianceEntitlementDetails
-type CreateTransferApplianceEntitlementDetails struct {
-	CompartmentId *string `mandatory:"false" json:"compartmentId"`
+// TransferApplianceEntitlementSummary The representation of TransferApplianceEntitlementSummary
+type TransferApplianceEntitlementSummary struct {
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
+
+	LifecycleState TransferApplianceEntitlementLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
+
+	Id *string `mandatory:"false" json:"id"`
 
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	RequestorName *string `mandatory:"false" json:"requestorName"`
 
 	RequestorEmail *string `mandatory:"false" json:"requestorEmail"`
+
+	// A property that can contain details on the lifecycle.
+	LifecycleStateDetails *string `mandatory:"false" json:"lifecycleStateDetails"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
@@ -31,6 +38,6 @@ type CreateTransferApplianceEntitlementDetails struct {
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }
 
-func (m CreateTransferApplianceEntitlementDetails) String() string {
+func (m TransferApplianceEntitlementSummary) String() string {
 	return common.PointerString(m)
 }

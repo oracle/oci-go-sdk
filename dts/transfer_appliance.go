@@ -1,9 +1,9 @@
 // Copyright (c) 2016, 2018, 2019, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
-// DTS API
+// Data Transfer Service API
 //
-// A description of the DTS API
+// Data Transfer Service API Specification
 //
 
 package dts
@@ -61,6 +61,8 @@ const (
 	TransferApplianceLifecycleStateShipping                TransferApplianceLifecycleStateEnum = "SHIPPING"
 	TransferApplianceLifecycleStateDelivered               TransferApplianceLifecycleStateEnum = "DELIVERED"
 	TransferApplianceLifecycleStatePreparing               TransferApplianceLifecycleStateEnum = "PREPARING"
+	TransferApplianceLifecycleStateFinalized               TransferApplianceLifecycleStateEnum = "FINALIZED"
+	TransferApplianceLifecycleStateReturnDelayed           TransferApplianceLifecycleStateEnum = "RETURN_DELAYED"
 	TransferApplianceLifecycleStateReturnShipped           TransferApplianceLifecycleStateEnum = "RETURN_SHIPPED"
 	TransferApplianceLifecycleStateReturnShippedCancelled  TransferApplianceLifecycleStateEnum = "RETURN_SHIPPED_CANCELLED"
 	TransferApplianceLifecycleStateOracleReceived          TransferApplianceLifecycleStateEnum = "ORACLE_RECEIVED"
@@ -82,6 +84,8 @@ var mappingTransferApplianceLifecycleState = map[string]TransferApplianceLifecyc
 	"SHIPPING":                  TransferApplianceLifecycleStateShipping,
 	"DELIVERED":                 TransferApplianceLifecycleStateDelivered,
 	"PREPARING":                 TransferApplianceLifecycleStatePreparing,
+	"FINALIZED":                 TransferApplianceLifecycleStateFinalized,
+	"RETURN_DELAYED":            TransferApplianceLifecycleStateReturnDelayed,
 	"RETURN_SHIPPED":            TransferApplianceLifecycleStateReturnShipped,
 	"RETURN_SHIPPED_CANCELLED":  TransferApplianceLifecycleStateReturnShippedCancelled,
 	"ORACLE_RECEIVED":           TransferApplianceLifecycleStateOracleReceived,

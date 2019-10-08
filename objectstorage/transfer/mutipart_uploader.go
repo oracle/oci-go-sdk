@@ -59,6 +59,17 @@ func (uploader *multipartUpload) uploadParts(ctx context.Context, done <-chan st
 		part.etag = resp.ETag
 		select {
 		case result <- part:
+			// Invoke the callBack after upload of each Part
+			if nil != request.CallBack {
+				uploadedPart := MultiPartUploadPart{
+					PartNum:    part.partNum,
+					TotalParts: part.totalParts,
+					Offset:     part.offset,
+					Hash:       part.hash,
+					Err:        part.err}
+
+				request.CallBack(uploadedPart)
+			}
 			common.Debugf("uploadParts resp %v, %v\n", part.partNum, resp.ETag)
 		case <-done:
 			common.Debugln("uploadParts received Done")
