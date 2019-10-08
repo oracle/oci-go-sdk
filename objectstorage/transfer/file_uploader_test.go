@@ -35,6 +35,16 @@ func (fake *fake) uploadParts(ctx context.Context, done <-chan struct{}, parts <
 
 		select {
 		case result <- part:
+			if nil != request.CallBack {
+				uploadedPart := MultiPartUploadPart{
+					PartNum:    part.partNum,
+					TotalParts: part.totalParts,
+					Offset:     part.offset,
+					Hash:       part.hash,
+					Err:        part.err}
+
+				request.CallBack(uploadedPart)
+			}
 		case <-done:
 			return
 		}

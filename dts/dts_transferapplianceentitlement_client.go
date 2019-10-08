@@ -1,9 +1,9 @@
 // Copyright (c) 2016, 2018, 2019, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
-// DTS API
+// Data Transfer Service API
 //
-// A description of the DTS API
+// Data Transfer Service API Specification
 //
 
 package dts
@@ -58,7 +58,7 @@ func (client *TransferApplianceEntitlementClient) ConfigurationProvider() *commo
 	return client.config
 }
 
-// CreateTransferApplianceEntitlement Create the Transfer Appliance Entitlement that allows customers to use Transfer Appliance
+// CreateTransferApplianceEntitlement Create the Entitlement to use a Transfer Appliance. It requires some offline process of review and signatures before request is granted.
 func (client TransferApplianceEntitlementClient) CreateTransferApplianceEntitlement(ctx context.Context, request CreateTransferApplianceEntitlementRequest) (response CreateTransferApplianceEntitlementResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -112,6 +112,11 @@ func (client TransferApplianceEntitlementClient) GetTransferApplianceEntitlement
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.getTransferApplianceEntitlement, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -129,12 +134,54 @@ func (client TransferApplianceEntitlementClient) GetTransferApplianceEntitlement
 
 // getTransferApplianceEntitlement implements the OCIOperation interface (enables retrying operations)
 func (client TransferApplianceEntitlementClient) getTransferApplianceEntitlement(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferApplianceEntitlement/{tenantId}")
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferApplianceEntitlement/{id}")
 	if err != nil {
 		return nil, err
 	}
 
 	var response GetTransferApplianceEntitlementResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListTransferApplianceEntitlement Lists Transfer Transfer Appliance Entitlement
+func (client TransferApplianceEntitlementClient) ListTransferApplianceEntitlement(ctx context.Context, request ListTransferApplianceEntitlementRequest) (response ListTransferApplianceEntitlementResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listTransferApplianceEntitlement, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = ListTransferApplianceEntitlementResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListTransferApplianceEntitlementResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListTransferApplianceEntitlementResponse")
+	}
+	return
+}
+
+// listTransferApplianceEntitlement implements the OCIOperation interface (enables retrying operations)
+func (client TransferApplianceEntitlementClient) listTransferApplianceEntitlement(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferApplianceEntitlement")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListTransferApplianceEntitlementResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)

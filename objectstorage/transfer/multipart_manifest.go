@@ -17,14 +17,15 @@ type multipartManifest struct {
 }
 
 type uploadPart struct {
-	size     int64
-	offset   int64
-	partBody []byte
-	partNum  int
-	hash     *string
-	opcMD5   *string
-	etag     *string
-	err      error
+	size       int64
+	offset     int64
+	partBody   []byte
+	partNum    int
+	hash       *string
+	opcMD5     *string
+	etag       *string
+	err        error
+	totalParts int
 }
 
 // splitFileToParts starts a goroutine to read a file and break down to parts and send the parts to

@@ -1,9 +1,9 @@
 // Copyright (c) 2016, 2018, 2019, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
-// DTS API
+// Data Transfer Service API
 //
-// A description of the DTS API
+// Data Transfer Service API Specification
 //
 
 package dts
@@ -29,6 +29,7 @@ type UpdateTransferApplianceDetailsLifecycleStateEnum string
 // Set of constants representing the allowable values for UpdateTransferApplianceDetailsLifecycleStateEnum
 const (
 	UpdateTransferApplianceDetailsLifecycleStatePreparing             UpdateTransferApplianceDetailsLifecycleStateEnum = "PREPARING"
+	UpdateTransferApplianceDetailsLifecycleStateFinalized             UpdateTransferApplianceDetailsLifecycleStateEnum = "FINALIZED"
 	UpdateTransferApplianceDetailsLifecycleStateDeleted               UpdateTransferApplianceDetailsLifecycleStateEnum = "DELETED"
 	UpdateTransferApplianceDetailsLifecycleStateCustomerNeverReceived UpdateTransferApplianceDetailsLifecycleStateEnum = "CUSTOMER_NEVER_RECEIVED"
 	UpdateTransferApplianceDetailsLifecycleStateCancelled             UpdateTransferApplianceDetailsLifecycleStateEnum = "CANCELLED"
@@ -36,6 +37,7 @@ const (
 
 var mappingUpdateTransferApplianceDetailsLifecycleState = map[string]UpdateTransferApplianceDetailsLifecycleStateEnum{
 	"PREPARING":               UpdateTransferApplianceDetailsLifecycleStatePreparing,
+	"FINALIZED":               UpdateTransferApplianceDetailsLifecycleStateFinalized,
 	"DELETED":                 UpdateTransferApplianceDetailsLifecycleStateDeleted,
 	"CUSTOMER_NEVER_RECEIVED": UpdateTransferApplianceDetailsLifecycleStateCustomerNeverReceived,
 	"CANCELLED":               UpdateTransferApplianceDetailsLifecycleStateCancelled,
