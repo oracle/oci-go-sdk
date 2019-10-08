@@ -1,9 +1,9 @@
 // Copyright (c) 2016, 2018, 2019, Oracle and/or its affiliates. All rights reserved.
 // Code generated. DO NOT EDIT.
 
-// DTS API
+// Data Transfer Service API
 //
-// A description of the DTS API
+// Data Transfer Service API Specification
 //
 
 package dts
@@ -16,17 +16,17 @@ import (
 type TransferJob struct {
 	Id *string `mandatory:"true" json:"id"`
 
-	CompartmentId *string `mandatory:"true" json:"compartmentId"`
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
-	UploadBucketName *string `mandatory:"true" json:"uploadBucketName"`
+	UploadBucketName *string `mandatory:"false" json:"uploadBucketName"`
 
-	DisplayName *string `mandatory:"true" json:"displayName"`
-
-	DeviceType TransferJobDeviceTypeEnum `mandatory:"true" json:"deviceType"`
+	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	Label *string `mandatory:"false" json:"label"`
 
 	CreationTime *common.SDKTime `mandatory:"false" json:"creationTime"`
+
+	DeviceType TransferJobDeviceTypeEnum `mandatory:"false" json:"deviceType,omitempty"`
 
 	LifecycleState TransferJobLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 

@@ -71,6 +71,8 @@ const (
 	ListTransferAppliancesLifecycleStateShipping                ListTransferAppliancesLifecycleStateEnum = "SHIPPING"
 	ListTransferAppliancesLifecycleStateDelivered               ListTransferAppliancesLifecycleStateEnum = "DELIVERED"
 	ListTransferAppliancesLifecycleStatePreparing               ListTransferAppliancesLifecycleStateEnum = "PREPARING"
+	ListTransferAppliancesLifecycleStateFinalized               ListTransferAppliancesLifecycleStateEnum = "FINALIZED"
+	ListTransferAppliancesLifecycleStateReturnDelayed           ListTransferAppliancesLifecycleStateEnum = "RETURN_DELAYED"
 	ListTransferAppliancesLifecycleStateReturnShipped           ListTransferAppliancesLifecycleStateEnum = "RETURN_SHIPPED"
 	ListTransferAppliancesLifecycleStateReturnShippedCancelled  ListTransferAppliancesLifecycleStateEnum = "RETURN_SHIPPED_CANCELLED"
 	ListTransferAppliancesLifecycleStateOracleReceived          ListTransferAppliancesLifecycleStateEnum = "ORACLE_RECEIVED"
@@ -92,6 +94,8 @@ var mappingListTransferAppliancesLifecycleState = map[string]ListTransferApplian
 	"SHIPPING":                  ListTransferAppliancesLifecycleStateShipping,
 	"DELIVERED":                 ListTransferAppliancesLifecycleStateDelivered,
 	"PREPARING":                 ListTransferAppliancesLifecycleStatePreparing,
+	"FINALIZED":                 ListTransferAppliancesLifecycleStateFinalized,
+	"RETURN_DELAYED":            ListTransferAppliancesLifecycleStateReturnDelayed,
 	"RETURN_SHIPPED":            ListTransferAppliancesLifecycleStateReturnShipped,
 	"RETURN_SHIPPED_CANCELLED":  ListTransferAppliancesLifecycleStateReturnShippedCancelled,
 	"ORACLE_RECEIVED":           ListTransferAppliancesLifecycleStateOracleReceived,

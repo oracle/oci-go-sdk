@@ -79,6 +79,7 @@ func ExampleObjectStorage_UploadManager_UploadFile() {
 			BucketName:    common.String(bname),
 			ObjectName:    common.String(objectName),
 			//PartSize:      common.Int(10000000),
+			CallBack: callBack,
 		},
 		FilePath: filepath,
 	}
@@ -104,6 +105,12 @@ func ExampleObjectStorage_UploadManager_UploadFile() {
 	// file uploaded
 	// delete object
 	// delete bucket
+}
+
+func callBack(multiPartUploadPart transfer.MultiPartUploadPart) {
+	if nil == multiPartUploadPart.Err {
+		fmt.Printf("Part: %d / %d is uploaded", multiPartUploadPart.PartNum, multiPartUploadPart.TotalParts)
+	}
 }
 
 func ExampleObjectStorage_UploadManager_Stream() {

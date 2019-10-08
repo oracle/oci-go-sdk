@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 12.0.0 - 2019-10-08
+### Added
+- Support for the new schema for events in the Audit service
+- Support for entitlements in the Data Transfer service
+- Support for custom scheduled backup policies on volumes in the Block Storage service
+- Support for specifying the network type when launching virtual machine instances in the Compute service
+- Support for Monitoring service integration in the Health Checks service
+
+### Fixed
+- OCI Golang SDK hook/callback to display progress bar for uploads [Github issue 187](https://github.com/oracle/oci-go-sdk/issues/187)
+
+### Breaking changes
+* The TenantId parameter is now Id (Id of the Transfer Application Entitlement) for GetTransferApplianceEntitlementRequest in TransferApplianceEntitlementClient
+* The Audit service version was bumped to 20190901, use older version of Go SDK for Audit service version 20160918 
+
 ## 11.0.0 - 2019-10-01
 ### Added
 - Support for required tags in the Identity service
