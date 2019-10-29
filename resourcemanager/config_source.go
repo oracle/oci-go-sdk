@@ -70,3 +70,24 @@ func (m configsource) GetWorkingDirectory() *string {
 func (m configsource) String() string {
 	return common.PointerString(m)
 }
+
+// ConfigSourceConfigSourceTypeEnum Enum with underlying type: string
+type ConfigSourceConfigSourceTypeEnum string
+
+// Set of constants representing the allowable values for ConfigSourceConfigSourceTypeEnum
+const (
+	ConfigSourceConfigSourceTypeZipUpload ConfigSourceConfigSourceTypeEnum = "ZIP_UPLOAD"
+)
+
+var mappingConfigSourceConfigSourceType = map[string]ConfigSourceConfigSourceTypeEnum{
+	"ZIP_UPLOAD": ConfigSourceConfigSourceTypeZipUpload,
+}
+
+// GetConfigSourceConfigSourceTypeEnumValues Enumerates the set of values for ConfigSourceConfigSourceTypeEnum
+func GetConfigSourceConfigSourceTypeEnumValues() []ConfigSourceConfigSourceTypeEnum {
+	values := make([]ConfigSourceConfigSourceTypeEnum, 0)
+	for _, v := range mappingConfigSourceConfigSourceType {
+		values = append(values, v)
+	}
+	return values
+}
