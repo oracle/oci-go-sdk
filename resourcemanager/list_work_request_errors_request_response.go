@@ -11,10 +11,10 @@ import (
 // ListWorkRequestErrorsRequest wrapper for the ListWorkRequestErrors operation
 type ListWorkRequestErrorsRequest struct {
 
-	// The OCID of the work request.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the work request.
 	WorkRequestId *string `mandatory:"true" contributesTo:"path" name:"workRequestId"`
 
-	// The compartment OCID on which to filter.
+	// The compartment OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) on which to filter.
 	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
 
 	// The number of items returned in a paginated `List` call. For information about pagination, see

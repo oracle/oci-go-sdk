@@ -32,7 +32,7 @@ type StackSummary struct {
 
 	LifecycleState StackLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
-	// The Terraform version of the specified stack.
+	// The version of Terraform specified for the stack. Example: `0.12.x`
 	TerraformVersion *string `mandatory:"false" json:"terraformVersion"`
 
 	// Free-form tags associated with this resource. Each tag is a key-value pair with no predefined name, type, or namespace.

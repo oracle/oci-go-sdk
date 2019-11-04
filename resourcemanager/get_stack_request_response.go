@@ -11,7 +11,7 @@ import (
 // GetStackRequest wrapper for the GetStack operation
 type GetStackRequest struct {
 
-	// The stack OCID.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the stack.
 	StackId *string `mandatory:"true" contributesTo:"path" name:"stackId"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

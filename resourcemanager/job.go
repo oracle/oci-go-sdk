@@ -24,13 +24,13 @@ import (
 // state of the stack. This is used to migrate local Terraform environments to Resource Manager.
 type Job struct {
 
-	// The job's OCID.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the job.
 	Id *string `mandatory:"false" json:"id"`
 
-	// The OCID of the stack that is associated with the job.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the stack that is associated with the job.
 	StackId *string `mandatory:"false" json:"stackId"`
 
-	// The OCID of the compartment in which the job's associated stack resides.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment in which the job's associated stack resides.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// The job's display name.
@@ -39,14 +39,12 @@ type Job struct {
 	// The type of job executing.
 	Operation JobOperationEnum `mandatory:"false" json:"operation,omitempty"`
 
-	// Job details that are specific to the operation type.
 	JobOperationDetails JobOperationDetails `mandatory:"false" json:"jobOperationDetails"`
 
-	// Deprecated. Use the property `executionPlanStrategy` in `jobOperationDetails` instead.
 	ApplyJobPlanResolution *ApplyJobPlanResolution `mandatory:"false" json:"applyJobPlanResolution"`
 
 	// Deprecated. Use the property `executionPlanJobId` in `jobOperationDetails` instead.
-	// The plan job OCID that was used (if this was an apply job and was not auto-approved).
+	// The plan job OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) that was used (if this was an apply job and was not auto-approved).
 	ResolvedPlanJobId *string `mandatory:"false" json:"resolvedPlanJobId"`
 
 	// The date and time at which the job was created.

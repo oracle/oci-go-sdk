@@ -17,10 +17,10 @@ import (
 // resources that you can act upon as a group. You take action on stacks by using jobs.
 type Stack struct {
 
-	// Unique identifier (OCID) for the stack.
+	// Unique identifier (OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) for the stack.
 	Id *string `mandatory:"false" json:"id"`
 
-	// Unique identifier (OCID) for the compartment where the stack is located.
+	// Unique identifier (OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) for the compartment where the stack is located.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// Human-readable name of the stack.
@@ -35,8 +35,6 @@ type Stack struct {
 	// The current lifecycle state of the stack.
 	LifecycleState StackLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
-	// Specifies the `configSourceType` for uploading the Terraform configuration.
-	// Presently, the .zip file type (`ZIP_UPLOAD`) is the only supported `configSourceType`.
 	ConfigSource ConfigSource `mandatory:"false" json:"configSource"`
 
 	// Terraform variables associated with this resource.
@@ -45,7 +43,7 @@ type Stack struct {
 	// Example: `{"CompartmentId": "compartment-id-value"}`
 	Variables map[string]string `mandatory:"false" json:"variables"`
 
-	// The Terraform version of the stack.
+	// The version of Terraform specified for the stack. Example: `0.12.x`
 	TerraformVersion *string `mandatory:"false" json:"terraformVersion"`
 
 	// Free-form tags associated with the resource. Each tag is a key-value pair with no predefined name, type, or namespace.
