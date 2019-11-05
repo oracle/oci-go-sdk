@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ConfigSource Location of the zip file that contains the Terraform configuration.
+// ConfigSource Location of the Terraform configuration.
 type ConfigSource interface {
 
 	// File path to the directory from which Terraform runs.

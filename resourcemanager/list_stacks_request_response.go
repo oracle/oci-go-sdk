@@ -15,10 +15,10 @@ type ListStacksRequest struct {
 	// particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// The compartment OCID on which to filter.
+	// The compartment OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) on which to filter.
 	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
 
-	// The OCID on which to query for a stack.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) on which to query for a stack.
 	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
 
 	// A filter that returns only those resources that match the specified
@@ -28,7 +28,6 @@ type ListStacksRequest struct {
 	// - ACTIVE
 	// - DELETING
 	// - DELETED
-	//
 	LifecycleState StackLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
 	// Display name on which to query.

@@ -16,7 +16,7 @@ import (
 // CreateApplyJobOperationDetails Job details that are specific to apply operations.
 type CreateApplyJobOperationDetails struct {
 
-	// The OCID of a plan job, for use when specifying `FROM_PLAN_JOB_ID` as the `executionPlanStrategy`.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of a plan job, for use when specifying `FROM_PLAN_JOB_ID` as the `executionPlanStrategy`.
 	ExecutionPlanJobId *string `mandatory:"false" json:"executionPlanJobId"`
 
 	// Specifies the source of the execution plan to apply.

@@ -21,10 +21,10 @@ type WorkRequestSummary struct {
 	// The status of the specified work request.
 	Status WorkRequestStatusEnum `mandatory:"true" json:"status"`
 
-	// OCID identifying this work request.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) identifying this work request.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Unique identifier (OCID) of the compartment that contains the work request.
+	// Unique identifier (OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the compartment that contains the work request.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The resources affected by this work request.
