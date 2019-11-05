@@ -16,7 +16,7 @@ import (
 // ApplyJobOperationDetailsSummary Job details that are specific to apply operations.
 type ApplyJobOperationDetailsSummary struct {
 
-	// The OCID of the plan job that contains the execution plan used for this job,
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the plan job that contains the execution plan used for this job,
 	// or `null` if no execution plan was used.
 	ExecutionPlanJobId *string `mandatory:"false" json:"executionPlanJobId"`
 

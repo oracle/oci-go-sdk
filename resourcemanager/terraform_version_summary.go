@@ -12,10 +12,10 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// TerraformVersionSummary Returns a listing of the specified Terraform version
+// TerraformVersionSummary A Terraform version supported for use with stacks.
 type TerraformVersionSummary struct {
 
-	// The Terraform version.
+	// A supported Terraform version. Example: `0.12.x`
 	Name *string `mandatory:"false" json:"name"`
 }
 

@@ -198,6 +198,7 @@ func (client ResourceManagerClient) createJob(ctx context.Context, request commo
 
 // CreateStack Creates a stack in the specified comparment.
 // Specify the compartment using the compartment ID.
+// For more information, see Create a Stack (https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Tasks/usingconsole.htm#CreateStack).
 func (client ResourceManagerClient) CreateStack(ctx context.Context, request CreateStackRequest) (response CreateStackResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -580,6 +581,47 @@ func (client ResourceManagerClient) getStackTfConfig(ctx context.Context, reques
 	return response, err
 }
 
+// GetStackTfState Returns the Terraform state for the specified stack.
+func (client ResourceManagerClient) GetStackTfState(ctx context.Context, request GetStackTfStateRequest) (response GetStackTfStateResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getStackTfState, policy)
+	if err != nil {
+		if ociResponse != nil {
+			response = GetStackTfStateResponse{RawResponse: ociResponse.HTTPResponse()}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetStackTfStateResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetStackTfStateResponse")
+	}
+	return
+}
+
+// getStackTfState implements the OCIOperation interface (enables retrying operations)
+func (client ResourceManagerClient) getStackTfState(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/stacks/{stackId}/tfState")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetStackTfStateResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // GetWorkRequest Return the given work request.
 func (client ResourceManagerClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
@@ -623,9 +665,9 @@ func (client ResourceManagerClient) getWorkRequest(ctx context.Context, request 
 }
 
 // ListJobs Returns a list of jobs in a stack or compartment, ordered by time created.
-// - To list all jobs in a stack, provide the stack OCID.
-// - To list all jobs in a compartment, provide the compartment OCID.
-// - To return a specific job, provide the job OCID.
+// - To list all jobs in a stack, provide the stack OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
+// - To list all jobs in a compartment, provide the compartment OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
+// - To return a specific job, provide the job OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
 func (client ResourceManagerClient) ListJobs(ctx context.Context, request ListJobsRequest) (response ListJobsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -711,7 +753,7 @@ func (client ResourceManagerClient) listStacks(ctx context.Context, request comm
 	return response, err
 }
 
-// ListTerraformVersions Returns a list of supported Terraform versions in a compartment.
+// ListTerraformVersions Returns a list of supported Terraform versions for use with stacks.
 func (client ResourceManagerClient) ListTerraformVersions(ctx context.Context, request ListTerraformVersionsRequest) (response ListTerraformVersionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -924,6 +966,8 @@ func (client ResourceManagerClient) updateJob(ctx context.Context, request commo
 // UpdateStack Updates the specified stack object.
 // Use `UpdateStack` when you update your Terraform configuration
 // and want your changes to be reflected in the execution plan.
+// For more information, see Update a Stack (https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Tasks/usingconsole.htm#UpdateStack) and
+// Edit or Delete a Stack (https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Tasks/usingconsole.htm#EditStack).
 func (client ResourceManagerClient) UpdateStack(ctx context.Context, request UpdateStackRequest) (response UpdateStackResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

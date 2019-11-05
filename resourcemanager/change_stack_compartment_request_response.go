@@ -11,7 +11,7 @@ import (
 // ChangeStackCompartmentRequest wrapper for the ChangeStackCompartment operation
 type ChangeStackCompartmentRequest struct {
 
-	// The stack OCID.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the stack.
 	StackId *string `mandatory:"true" contributesTo:"path" name:"stackId"`
 
 	// Defines the properties of changeStackCompartment operation.

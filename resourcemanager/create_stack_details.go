@@ -16,7 +16,7 @@ import (
 // CreateStackDetails Properties provided for creating a stack.
 type CreateStackDetails struct {
 
-	// Unique identifier (OCID) of the compartment in which the stack resides.
+	// Unique identifier (OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)) of the compartment in which the stack resides.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	ConfigSource CreateConfigSourceDetails `mandatory:"true" json:"configSource"`
@@ -33,7 +33,7 @@ type CreateStackDetails struct {
 	// Example: `{"CompartmentId": "compartment-id-value"}`
 	Variables map[string]string `mandatory:"false" json:"variables"`
 
-	// The stack's Terraform version
+	// The version of Terraform to use with the stack. Example: `0.12.x`
 	TerraformVersion *string `mandatory:"false" json:"terraformVersion"`
 
 	// Free-form tags associated with this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.

@@ -15,13 +15,13 @@ type ListJobsRequest struct {
 	// particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// The compartment OCID on which to filter.
+	// The compartment OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) on which to filter.
 	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
 
-	// The stack OCID on which to filter.
+	// The stack OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) on which to filter.
 	StackId *string `mandatory:"false" contributesTo:"query" name:"stackId"`
 
-	// The OCID on which to query for jobs.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) on which to query for jobs.
 	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
 
 	// A filter that returns all resources that match the specified lifecycle state.

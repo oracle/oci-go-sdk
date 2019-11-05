@@ -16,7 +16,7 @@ import (
 // CreateJobDetails Defines the requirements and properties of a job to create and run against the specified stack.
 type CreateJobDetails struct {
 
-	// OCID of the stack that is associated with the current job.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the stack that is associated with the current job.
 	StackId *string `mandatory:"true" json:"stackId"`
 
 	// Description of the job.
@@ -25,10 +25,8 @@ type CreateJobDetails struct {
 	// Terraform-specific operation to execute.
 	Operation JobOperationEnum `mandatory:"false" json:"operation,omitempty"`
 
-	// Job details that are specific to the operation type.
 	JobOperationDetails CreateJobOperationDetails `mandatory:"false" json:"jobOperationDetails"`
 
-	// Deprecated. Use the property `executionPlanStrategy` in `jobOperationDetails` instead.
 	ApplyJobPlanResolution *ApplyJobPlanResolution `mandatory:"false" json:"applyJobPlanResolution"`
 
 	// Free-form tags associated with this resource. Each tag is a key-value pair with no predefined name, type, or namespace.
