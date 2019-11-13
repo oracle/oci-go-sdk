@@ -5,7 +5,9 @@ package transfer
 import (
 	"context"
 	"errors"
+	"fmt"
 	"os"
+	"strings"
 	"sync"
 
 	"github.com/oracle/oci-go-sdk/common"
@@ -66,8 +68,7 @@ func (fileUpload *fileUpload) UploadFileMultiparts(ctx context.Context, request 
 	// UploadFileMultiparts closes the done channel when it returns
 	done := make(chan struct{})
 	defer close(done)
-	parts := fileUpload.manifest.splitFileToParts(done, *request.PartSize, file, fileSize)
-
+	parts := fileUpload.manifest.splitFileToParts(done, *request.PartSize, request.EnableMultipartChecksumVerification, file, fileSize)
 	response, err = fileUpload.startConcurrentUpload(ctx, done, parts, request)
 	return
 }
@@ -178,8 +179,15 @@ func (fileUpload *fileUpload) startConcurrentUpload(ctx context.Context, done <-
 	}()
 
 	fileUpload.manifest.updateManifest(result, fileUpload.uploadID)
+	// Calculate multipartMD5 once enabled multipart MD5 verification.
+	multipartMD5 := fileUpload.manifest.getMultipartMD5Checksum(request.EnableMultipartChecksumVerification, fileUpload.uploadID)
+
 	resp, err := fileUpload.multipartUploader.commit(ctx, request.UploadRequest, fileUpload.manifest.parts[fileUpload.uploadID], fileUpload.uploadID)
 
+	if multipartMD5 != nil && *request.EnableMultipartChecksumVerification && strings.Compare(*resp.OpcMultipartMd5, *multipartMD5) != 0 {
+
+		err = fmt.Errorf("multipart base64 MD5 checksum verification failure, the sending opcMD5 is %s, the reveived is %s", *resp.OpcMultipartMd5, *multipartMD5)
+	}
 	if err != nil {
 		common.Debugf("failed to commit with error: %v\n", err)
 		return UploadResponse{

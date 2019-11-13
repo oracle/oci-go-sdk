@@ -80,6 +80,7 @@ func ExampleObjectStorage_UploadManager_UploadFile() {
 			ObjectName:    common.String(objectName),
 			//PartSize:      common.Int(10000000),
 			CallBack: callBack,
+			EnableMultipartChecksumVerification: common.Bool(true),
 		},
 		FilePath: filepath,
 	}
@@ -115,6 +116,8 @@ func callBack(multiPartUploadPart transfer.MultiPartUploadPart) {
 		// Please refer this as the progress bar print content.
 		// fmt.Printf("Part: %d / %d is uploaded.\n", multiPartUploadPart.PartNum, multiPartUploadPart.TotalParts)
 		fmt.Printf("One example of progress bar could be the above comment content.\n")
+		// Please refer following fmt to get each part opc-md5 res.
+		// fmt.Printf("and this part opcMD5(64BasedEncoding) is: %s.\n", *multiPartUploadPart.OpcMD5 )
 	}
 }
 
@@ -144,9 +147,10 @@ func ExampleObjectStorage_UploadManager_Stream() {
 
 	req := transfer.UploadStreamRequest{
 		UploadRequest: transfer.UploadRequest{
-			NamespaceName: common.String(namespace),
-			BucketName:    common.String(bname),
-			ObjectName:    common.String(objectName),
+			NamespaceName:                       common.String(namespace),
+			BucketName:                          common.String(bname),
+			ObjectName:                          common.String(objectName),
+			EnableMultipartChecksumVerification: common.Bool(true),
 		},
 		StreamReader: file, // any struct implements the io.Reader interface
 	}

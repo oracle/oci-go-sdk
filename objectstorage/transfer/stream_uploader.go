@@ -4,9 +4,10 @@ package transfer
 
 import (
 	"context"
-	"sync"
-
+	"fmt"
 	"github.com/oracle/oci-go-sdk/common"
+	"strings"
+	"sync"
 )
 
 // StreamUploader is an interface for upload a stream
@@ -35,10 +36,10 @@ func (streamUpload *streamUpload) UploadStream(ctx context.Context, request Uplo
 		streamUpload.manifest = &multipartManifest{parts: make(map[string]map[int]uploadPart)}
 	}
 
-	// UploadFileMultiparts closes the done channel when it returns
+	// UploadFileMultipart closes the done channel when it returns
 	done := make(chan struct{})
 	defer close(done)
-	parts := streamUpload.manifest.splitStreamToParts(done, *request.PartSize, request.StreamReader)
+	parts := streamUpload.manifest.splitStreamToParts(done, *request.PartSize, request.EnableMultipartChecksumVerification, request.StreamReader)
 
 	return streamUpload.startConcurrentUpload(ctx, done, parts, request)
 }
@@ -63,8 +64,14 @@ func (streamUpload *streamUpload) startConcurrentUpload(ctx context.Context, don
 	}()
 
 	streamUpload.manifest.updateManifest(result, streamUpload.uploadID)
-	resp, err := streamUpload.multipartUploader.commit(ctx, request.UploadRequest, streamUpload.manifest.parts[streamUpload.uploadID], streamUpload.uploadID)
+	// Calculate multipartMD5 once enabled multipart MD5 verification.
+	multipartMD5 := streamUpload.manifest.getMultipartMD5Checksum(request.EnableMultipartChecksumVerification, streamUpload.uploadID)
 
+	resp, err := streamUpload.multipartUploader.commit(ctx, request.UploadRequest, streamUpload.manifest.parts[streamUpload.uploadID], streamUpload.uploadID)
+	if multipartMD5 != nil && *request.EnableMultipartChecksumVerification && strings.Compare(*resp.OpcMultipartMd5, *multipartMD5) != 0 {
+
+		err = fmt.Errorf("multipart base64 MD5 checksum verification failure, the sending opcMD5 is %s, the reveived is %s", *resp.OpcMultipartMd5, *multipartMD5)
+	}
 	if err != nil {
 		common.Debugf("failed to commit with error: %v\n", err)
 		return UploadResponse{
