@@ -45,7 +45,7 @@ func TestUploadStreamMultiparts(t *testing.T) {
 	for _, testData := range testDataSet {
 		fake := fake{upLoadID: testData.uploadID, failedPartNumbers: testData.failedPartNumbers, numberOfCommitedParts: common.Int(0), numberOfUploadedParts: common.Int(0)}
 		streamUpload.multipartUploader = &fake
-		filePath, _ := helpers.WriteTempFileOfSize(int64(fileSize))
+		filePath, _ := helpers.WriteTempFileOfSize(fileSize)
 
 		file, err := os.Open(filePath)
 		defer file.Close()

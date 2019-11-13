@@ -73,7 +73,7 @@ func (uploadManager *UploadManager) UploadFile(ctx context.Context, request Uplo
 	// parrallel upload disabled by user or the file size smaller than or equal to partSize
 	// use UploadFilePutObject
 	if !*request.AllowMultipartUploads ||
-		int64(fileSize) <= *request.PartSize {
+		fileSize <= *request.PartSize {
 		response, err = uploadManager.FileUploader.UploadFilePutObject(ctx, request)
 		return
 	}

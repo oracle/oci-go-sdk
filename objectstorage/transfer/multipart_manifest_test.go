@@ -19,6 +19,7 @@ func TestSplitFileParts(t *testing.T) {
 		expectedInitOffset   int64
 		expectedLastOffset   int64
 		expectedLastPartSize int64
+		enableCheckSum       bool
 	}
 
 	testDataSet := []splitFilePartsTest{
@@ -29,6 +30,7 @@ func TestSplitFileParts(t *testing.T) {
 			expectedInitOffset:   10,
 			expectedLastOffset:   90,
 			expectedLastPartSize: 10,
+			enableCheckSum:       false,
 		},
 		{
 			contentLen:           30,
@@ -37,6 +39,7 @@ func TestSplitFileParts(t *testing.T) {
 			expectedInitOffset:   14,
 			expectedLastOffset:   28,
 			expectedLastPartSize: 2,
+			enableCheckSum:       false,
 		},
 	}
 
@@ -50,7 +53,7 @@ func TestSplitFileParts(t *testing.T) {
 		// UploadFileMultiparts closes the done channel when it returns; it may do so before
 		// receiving all the values from result and errc channel
 		done := make(chan struct{})
-		partsChannel := manifest.splitFileToParts(done, testData.partSize, file, fileSize)
+		partsChannel := manifest.splitFileToParts(done, testData.partSize, &testData.enableCheckSum, file, fileSize)
 
 		// read through channel
 		parts := []uploadPart{}
