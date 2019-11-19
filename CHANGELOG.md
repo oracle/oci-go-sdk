@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 12.5.0 - 2019-11-19
+### Added
+- Support for four-byte autonomous system numbers (ASNs) on FastConnect resources in the Networking service
+- Support for choosing fault domains when creating instance pools in the Compute service
+- Support for allowing connections from only specific VCNs to autonomous data warehouse and autonomous transaction processing instances in the Database service
+- Support for Streaming Client Non-Regional
+
 ## 12.4.0 - 2019-11-12
 ### Added
 - Support for access to APEX and SQL Dev features on autonomous transaction processing and autonomous data warehouse resources in the Database service
