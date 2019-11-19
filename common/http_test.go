@@ -222,7 +222,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 	when := s.When.Format(time.RFC3339Nano)
 	assert.True(t, request.URL.Path == "//101")
 	assert.True(t, request.URL.Query().Get("name") == s.Name)
-	assert.True(t, request.URL.Query().Get("income") == strconv.FormatFloat(float64(s.Income), 'f', 6, 32))
+	assert.True(t, request.URL.Query().Get("income") == strconv.FormatFloat(float64(s.Income), 'f', 2, 32))
 	assert.True(t, request.URL.Query().Get("when") == when)
 	assert.True(t, request.URL.Query().Get("includes") == "One,Two")
 	assert.True(t, reflect.DeepEqual(request.URL.Query()["includesMulti"], []string{"One", "Two"}))
