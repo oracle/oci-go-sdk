@@ -4,6 +4,30 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 13.0.0 - 2019-11-26
+### Added
+- Support for maintenance windows on autonomous databases in the Database service
+- Support for getting the compute units (OCPUs) of an Exadata autonomous transaction processing - dedicated resource in the Database service
+
+### Breaking changes
+- Create database home from VM_CLUSTER_BACKUP is removed from Database Service
+- Response type is changed for following two APIs in Virtual Network Service 
+    - Before
+
+    ```golang
+    BulkAddVirtualCircuitPublicPrefixes (err error)
+
+    BulkDeleteVirtualCircuitPublicPrefixes (err error)
+    ```
+
+    - After
+
+    ```golang
+    BulkAddVirtualCircuitPublicPrefixes (response BulkAddVirtualCircuitPublicPrefixesResponse, err error)
+
+    BulkDeleteVirtualCircuitPublicPrefixes (response BulkDeleteVirtualCircuitPublicPrefixesResponse, err error)
+    ```
+
 ## 12.5.0 - 2019-11-19
 ### Added
 - Support for four-byte autonomous system numbers (ASNs) on FastConnect resources in the Networking service
