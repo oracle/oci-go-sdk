@@ -281,7 +281,7 @@ func changeVaultCompartment(ctx context.Context, client keymanagement.KmsVaultCl
 	}
 
 	request := keymanagement.ChangeVaultCompartmentRequest{
-		VaultId: vaultId,
+		VaultId:                       vaultId,
 		ChangeVaultCompartmentDetails: changeVaultCompartmentDetails,
 	}
 
@@ -311,7 +311,7 @@ func changeKeyCompartment(ctx context.Context, client keymanagement.KmsManagemen
 	}
 
 	request := keymanagement.ChangeKeyCompartmentRequest{
-		KeyId: keyId,
+		KeyId:                       keyId,
 		ChangeKeyCompartmentDetails: changeKeyCompartmentDetails,
 	}
 
