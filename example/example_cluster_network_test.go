@@ -120,7 +120,7 @@ func createClusterNetwork(ctx context.Context, client core.ComputeManagementClie
 			PlacementConfiguration: &placementConfigurationDetails,
 			InstancePools: []core.CreateClusterNetworkInstancePoolDetails{
 				{
-					Size: &size,
+					Size:                    &size,
 					InstanceConfigurationId: &instanceConfigurationId,
 				},
 			},
