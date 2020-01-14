@@ -22,8 +22,6 @@ type CreateDbHomeWithDbSystemIdDetails struct {
 	// A valid Oracle Database version. To get a list of supported versions, use the ListDbVersions operation.
 	DbVersion *string `mandatory:"true" json:"dbVersion"`
 
-	Database *CreateDatabaseDetails `mandatory:"true" json:"database"`
-
 	// The user-provided name of the Database Home.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
