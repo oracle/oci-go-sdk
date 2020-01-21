@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 15.2.0 - 2020-01-21
+## Added
+- Support for getting DRG redundancy status in the Networking service
+- Support for cloning autonomous databases from backups in the Database service
+
 ## 15.1.0 - 2020-01-14
 ### Added
 - Support for a description field on route rules and security rules in the Networking service
