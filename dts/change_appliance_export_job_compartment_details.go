@@ -1,0 +1,24 @@
+// Copyright (c) 2016, 2018, 2019, Oracle and/or its affiliates. All rights reserved.
+// Code generated. DO NOT EDIT.
+
+// Data Transfer Service API
+//
+// Data Transfer Service API Specification
+//
+
+package dts
+
+import (
+	"github.com/oracle/oci-go-sdk/common"
+)
+
+// ChangeApplianceExportJobCompartmentDetails The representation of ChangeApplianceExportJobCompartmentDetails
+type ChangeApplianceExportJobCompartmentDetails struct {
+
+	// The OCID  (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment into which the resources should be moved.
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
+}
+
+func (m ChangeApplianceExportJobCompartmentDetails) String() string {
+	return common.PointerString(m)
+}

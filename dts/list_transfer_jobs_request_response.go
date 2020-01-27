@@ -20,8 +20,19 @@ type ListTransferJobsRequest struct {
 	// filtering by displayName
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
 
-	// Unique Oracle-assigned identifier for the request.
-	// If you need to contact Oracle about a particular request, please provide the request ID.
+	// For list pagination. The maximum number of results per page, or items to return in a paginated
+	// "List" call. For important details about how pagination works, see
+	// List Pagination (https://docs.cloud.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
+	// Example: `50`
+	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
+
+	// For list pagination. The value of the `opc-next-page` response header from the previous "List"
+	// call. For important details about how pagination works, see
+	// List Pagination (https://docs.cloud.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
+	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
+
+	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about
+	// a particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
@@ -49,7 +60,7 @@ type ListTransferJobsResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The []TransferJobSummary instance
+	// A list of []TransferJobSummary instances
 	Items []TransferJobSummary `presentIn:"body"`
 
 	// For list pagination. When this header appears in the response, additional pages
