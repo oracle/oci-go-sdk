@@ -103,11 +103,17 @@ func TestStringToRegion(t *testing.T) {
 	region = StringToRegion("nrt")
 	assert.Equal(t, RegionAPTokyo1, region)
 
+	region = StringToRegion("kix")
+	assert.Equal(t, RegionAPOsaka1, region)
+
 	region = StringToRegion("gru")
 	assert.Equal(t, RegionSASaopaulo1, region)
 
 	region = StringToRegion("syd")
 	assert.Equal(t, RegionAPSydney1, region)
+
+	region = StringToRegion("mel")
+	assert.Equal(t, RegionAPMelbourne1, region)
 
 	region = StringToRegion("uk-gov-london-1")
 	assert.Equal(t, RegionUKGovLondon1, region)
