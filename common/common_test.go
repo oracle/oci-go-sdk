@@ -68,6 +68,20 @@ func TestEndpointForTemplate(t *testing.T) {
 			expected:         "https://foo.region.oraclecloud.com",
 		},
 		{
+			// template with second level domain
+			region:           StringToRegion("me-jeddah-1"),
+			service:          "test",
+			endpointTemplate: "https://foo.region.{secondLevelDomain}",
+			expected:         "https://foo.region.oraclecloud.com",
+		},
+		{
+			// template with second level domain
+			region:           StringToRegion("eu-amsterdam-1"),
+			service:          "test",
+			endpointTemplate: "https://foo.region.{secondLevelDomain}",
+			expected:         "https://foo.region.oraclecloud.com",
+		},
+		{
 			// template with everything for OC2
 			region:           StringToRegion("us-langley-1"),
 			service:          "test",
@@ -106,14 +120,23 @@ func TestStringToRegion(t *testing.T) {
 	region = StringToRegion("kix")
 	assert.Equal(t, RegionAPOsaka1, region)
 
-	region = StringToRegion("gru")
-	assert.Equal(t, RegionSASaopaulo1, region)
-
 	region = StringToRegion("syd")
 	assert.Equal(t, RegionAPSydney1, region)
 
 	region = StringToRegion("mel")
 	assert.Equal(t, RegionAPMelbourne1, region)
+
+	region = StringToRegion("jed")
+	assert.Equal(t, RegionMEJeddah1, region)
+
+	region = StringToRegion("zrh")
+	assert.Equal(t, RegionEUZurich1, region)
+
+	region = StringToRegion("ams")
+	assert.Equal(t, RegionEUAmsterdam1, region)
+
+	region = StringToRegion("gru")
+	assert.Equal(t, RegionSASaopaulo1, region)
 
 	region = StringToRegion("uk-gov-london-1")
 	assert.Equal(t, RegionUKGovLondon1, region)
