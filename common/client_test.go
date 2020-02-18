@@ -627,4 +627,3 @@ func TestHomeDir(t *testing.T) {
 	_, e := os.Stat(h)
 	assert.NoError(t, e)
 }
-
