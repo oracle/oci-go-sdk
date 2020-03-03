@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"context"
 	"crypto/rsa"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -312,6 +313,7 @@ func TestRetry_NeverGetSuccessfulResponse(t *testing.T) {
 			StatusCode: 400,
 		},
 	}
+	errorMessage := "TestRetryError"
 	totalNumberAttempts := uint(5)
 	numberOfTimesWeEnterShouldRetry := uint(0)
 	numberOfTimesWeEnterGetNextDuration := uint(0)
@@ -329,13 +331,14 @@ func TestRetry_NeverGetSuccessfulResponse(t *testing.T) {
 	}
 	// type OCIOperation func(context.Context, OCIRequest) (OCIResponse, error)
 	fakeOperation := func(context.Context, OCIRequest) (OCIResponse, error) {
-		return errorResponse, nil
+		return errorResponse, errors.New(errorMessage)
 	}
 
 	response, err := Retry(context.Background(), retryableRequest, fakeOperation, retryPolicy)
 	assert.Equal(t, totalNumberAttempts, numberOfTimesWeEnterShouldRetry)
-	assert.Nil(t, response)
-	assert.Equal(t, err.Error(), "maximum number of attempts exceeded (5)")
+	assert.NotNil(t, response)
+	assert.Equal(t, 400, response.HTTPResponse().StatusCode)
+	assert.Equal(t, err.Error(), errorMessage)
 }
 
 func TestRetry_ImmediatelyGetsSuccessfulResponse(t *testing.T) {
@@ -534,7 +537,6 @@ func TestCustomProfileClient_CreateWithConfig(t *testing.T) {
 	dataTpl := `[DEFAULT]
 tenancy=sometenancy
 [PROFILE1]
-tenancy=sometenancy
 user=someuser
 fingerprint=somefingerprint
 key_file=%s
@@ -578,7 +580,7 @@ region=noregion
 
 func TestCustomProfileClient_CreateWithBadRegion(t *testing.T) {
 	dataTpl := `[DEFAULT]
-region=noregion
+region=someregion
 [PROFILE1]
 tenancy=sometenancy
 user=someuser
@@ -597,6 +599,8 @@ region=noregion
 	configurationProvider := CustomProfileConfigProvider(tmpConfFile, "PROFILE1")
 
 	_, err := NewClientWithConfig(configurationProvider)
+	region, _ := configurationProvider.Region()
+	assert.Equal(t, "noregion", region)
 	assert.NoError(t, err)
 }
 
