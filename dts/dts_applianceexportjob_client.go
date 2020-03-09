@@ -29,6 +29,22 @@ func NewApplianceExportJobClientWithConfigurationProvider(configProvider common.
 		return
 	}
 
+	return newApplianceExportJobClientFromBaseClient(baseClient, configProvider)
+}
+
+// NewApplianceExportJobClientWithOboToken Creates a new default ApplianceExportJob client with the given configuration provider.
+// The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
+//  as well as reading the region
+func NewApplianceExportJobClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client ApplianceExportJobClient, err error) {
+	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
+	if err != nil {
+		return
+	}
+
+	return newApplianceExportJobClientFromBaseClient(baseClient, configProvider)
+}
+
+func newApplianceExportJobClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client ApplianceExportJobClient, err error) {
 	client = ApplianceExportJobClient{BaseClient: baseClient}
 	client.BasePath = "20171001"
 	err = client.setConfigurationProvider(configProvider)

@@ -29,6 +29,22 @@ func NewTransferPackageClientWithConfigurationProvider(configProvider common.Con
 		return
 	}
 
+	return newTransferPackageClientFromBaseClient(baseClient, configProvider)
+}
+
+// NewTransferPackageClientWithOboToken Creates a new default TransferPackage client with the given configuration provider.
+// The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
+//  as well as reading the region
+func NewTransferPackageClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client TransferPackageClient, err error) {
+	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
+	if err != nil {
+		return
+	}
+
+	return newTransferPackageClientFromBaseClient(baseClient, configProvider)
+}
+
+func newTransferPackageClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client TransferPackageClient, err error) {
 	client = TransferPackageClient{BaseClient: baseClient}
 	client.BasePath = "20171001"
 	err = client.setConfigurationProvider(configProvider)

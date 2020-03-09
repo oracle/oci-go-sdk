@@ -29,6 +29,22 @@ func NewShippingVendorsClientWithConfigurationProvider(configProvider common.Con
 		return
 	}
 
+	return newShippingVendorsClientFromBaseClient(baseClient, configProvider)
+}
+
+// NewShippingVendorsClientWithOboToken Creates a new default ShippingVendors client with the given configuration provider.
+// The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
+//  as well as reading the region
+func NewShippingVendorsClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client ShippingVendorsClient, err error) {
+	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
+	if err != nil {
+		return
+	}
+
+	return newShippingVendorsClientFromBaseClient(baseClient, configProvider)
+}
+
+func newShippingVendorsClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client ShippingVendorsClient, err error) {
 	client = ShippingVendorsClient{BaseClient: baseClient}
 	client.BasePath = "20171001"
 	err = client.setConfigurationProvider(configProvider)

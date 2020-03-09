@@ -29,6 +29,22 @@ func NewTransferJobClientWithConfigurationProvider(configProvider common.Configu
 		return
 	}
 
+	return newTransferJobClientFromBaseClient(baseClient, configProvider)
+}
+
+// NewTransferJobClientWithOboToken Creates a new default TransferJob client with the given configuration provider.
+// The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
+//  as well as reading the region
+func NewTransferJobClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client TransferJobClient, err error) {
+	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
+	if err != nil {
+		return
+	}
+
+	return newTransferJobClientFromBaseClient(baseClient, configProvider)
+}
+
+func newTransferJobClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client TransferJobClient, err error) {
 	client = TransferJobClient{BaseClient: baseClient}
 	client.BasePath = "20171001"
 	err = client.setConfigurationProvider(configProvider)
