@@ -29,6 +29,22 @@ func NewTransferDeviceClientWithConfigurationProvider(configProvider common.Conf
 		return
 	}
 
+	return newTransferDeviceClientFromBaseClient(baseClient, configProvider)
+}
+
+// NewTransferDeviceClientWithOboToken Creates a new default TransferDevice client with the given configuration provider.
+// The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
+//  as well as reading the region
+func NewTransferDeviceClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client TransferDeviceClient, err error) {
+	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
+	if err != nil {
+		return
+	}
+
+	return newTransferDeviceClientFromBaseClient(baseClient, configProvider)
+}
+
+func newTransferDeviceClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client TransferDeviceClient, err error) {
 	client = TransferDeviceClient{BaseClient: baseClient}
 	client.BasePath = "20171001"
 	err = client.setConfigurationProvider(configProvider)

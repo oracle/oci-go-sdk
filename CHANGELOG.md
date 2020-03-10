@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 16.0.0 - 2020-03-10
+### Added
+- Support for Events service integration with alerts in the Budgets service
+- Support delegation-token auth for all services
+
+### Breaking changes
+- The parameters sort_by and lifecycle_state type from Budget service are changed from str to enum
+
 ## 15.8.0 - 2020-03-03
 ### Added
 - Support for updating the shape of a Database System in the Database service
