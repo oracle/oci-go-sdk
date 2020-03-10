@@ -62,7 +62,9 @@ clean-generate:
 pre-doc:
 	@echo "Rendering doc server to ${DOC_SERVER_URL}"
 	find . -name \*.go |xargs sed -i '' 's/{{DOC_SERVER_URL}}/${DOC_SERVER_URL}/g'
-	find . -name \*.go |xargs sed -i '' 's/https:\/\/docs.cloud.oracle.com/${DOC_SERVER_URL}/g'
+	# Note: This should stay the old docs URL (with us-phoenix-1), because it
+	# processes go files and changes the old URL into the new URL
+	find . -name \*.go |xargs sed -i '' 's/https:\/\/docs.us-phoenix-1.oraclecloud.com/${DOC_SERVER_URL}/g'
 
 gen-version:
 	go generate -x

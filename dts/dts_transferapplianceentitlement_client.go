@@ -29,6 +29,22 @@ func NewTransferApplianceEntitlementClientWithConfigurationProvider(configProvid
 		return
 	}
 
+	return newTransferApplianceEntitlementClientFromBaseClient(baseClient, configProvider)
+}
+
+// NewTransferApplianceEntitlementClientWithOboToken Creates a new default TransferApplianceEntitlement client with the given configuration provider.
+// The obotoken will be added to default headers and signed; the configuration provider will be used for the signer
+//  as well as reading the region
+func NewTransferApplianceEntitlementClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client TransferApplianceEntitlementClient, err error) {
+	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
+	if err != nil {
+		return
+	}
+
+	return newTransferApplianceEntitlementClientFromBaseClient(baseClient, configProvider)
+}
+
+func newTransferApplianceEntitlementClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client TransferApplianceEntitlementClient, err error) {
 	client = TransferApplianceEntitlementClient{BaseClient: baseClient}
 	client.BasePath = "20171001"
 	err = client.setConfigurationProvider(configProvider)
