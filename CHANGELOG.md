@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 17.0.0 - 2020-03-17
+### Added
+- Support for serial console connections in the Database service
+- Support for preview database versions in the Database service
+- Support for node reboot migration maintenance status and maintenance windows in the Database service
+- Support for using instance metadata API v2 for instance principals authentication
+
+
+### Breaking changes
+- Removed the model of `AutonomousExadataInfrastructureMaintenanceWindow` from Database service
+
 ## 16.0.0 - 2020-03-10
 ### Added
 - Support for Events service integration with alerts in the Budgets service
