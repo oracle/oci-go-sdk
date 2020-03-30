@@ -89,7 +89,8 @@ func (client TransferApplianceClient) CreateTransferAppliance(ctx context.Contex
 	ociResponse, err = common.Retry(ctx, request, client.createTransferAppliance, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = CreateTransferApplianceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = CreateTransferApplianceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -131,7 +132,8 @@ func (client TransferApplianceClient) CreateTransferApplianceAdminCredentials(ct
 	ociResponse, err = common.Retry(ctx, request, client.createTransferApplianceAdminCredentials, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = CreateTransferApplianceAdminCredentialsResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = CreateTransferApplianceAdminCredentialsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -173,7 +175,8 @@ func (client TransferApplianceClient) DeleteTransferAppliance(ctx context.Contex
 	ociResponse, err = common.Retry(ctx, request, client.deleteTransferAppliance, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = DeleteTransferApplianceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = DeleteTransferApplianceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -215,7 +218,8 @@ func (client TransferApplianceClient) GetTransferAppliance(ctx context.Context, 
 	ociResponse, err = common.Retry(ctx, request, client.getTransferAppliance, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetTransferApplianceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetTransferApplianceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -257,7 +261,8 @@ func (client TransferApplianceClient) GetTransferApplianceCertificateAuthorityCe
 	ociResponse, err = common.Retry(ctx, request, client.getTransferApplianceCertificateAuthorityCertificate, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetTransferApplianceCertificateAuthorityCertificateResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetTransferApplianceCertificateAuthorityCertificateResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -299,7 +304,8 @@ func (client TransferApplianceClient) GetTransferApplianceEncryptionPassphrase(c
 	ociResponse, err = common.Retry(ctx, request, client.getTransferApplianceEncryptionPassphrase, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetTransferApplianceEncryptionPassphraseResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetTransferApplianceEncryptionPassphraseResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -341,7 +347,8 @@ func (client TransferApplianceClient) ListTransferAppliances(ctx context.Context
 	ociResponse, err = common.Retry(ctx, request, client.listTransferAppliances, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListTransferAppliancesResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListTransferAppliancesResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -383,7 +390,8 @@ func (client TransferApplianceClient) UpdateTransferAppliance(ctx context.Contex
 	ociResponse, err = common.Retry(ctx, request, client.updateTransferAppliance, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = UpdateTransferApplianceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = UpdateTransferApplianceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}

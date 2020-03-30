@@ -89,7 +89,8 @@ func (client TransferDeviceClient) CreateTransferDevice(ctx context.Context, req
 	ociResponse, err = common.Retry(ctx, request, client.createTransferDevice, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = CreateTransferDeviceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = CreateTransferDeviceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -131,7 +132,8 @@ func (client TransferDeviceClient) DeleteTransferDevice(ctx context.Context, req
 	ociResponse, err = common.Retry(ctx, request, client.deleteTransferDevice, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = DeleteTransferDeviceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = DeleteTransferDeviceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -173,7 +175,8 @@ func (client TransferDeviceClient) GetTransferDevice(ctx context.Context, reques
 	ociResponse, err = common.Retry(ctx, request, client.getTransferDevice, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetTransferDeviceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetTransferDeviceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -215,7 +218,8 @@ func (client TransferDeviceClient) ListTransferDevices(ctx context.Context, requ
 	ociResponse, err = common.Retry(ctx, request, client.listTransferDevices, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListTransferDevicesResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListTransferDevicesResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -257,7 +261,8 @@ func (client TransferDeviceClient) UpdateTransferDevice(ctx context.Context, req
 	ociResponse, err = common.Retry(ctx, request, client.updateTransferDevice, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = UpdateTransferDeviceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = UpdateTransferDeviceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}

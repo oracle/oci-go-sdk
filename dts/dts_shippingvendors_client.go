@@ -84,7 +84,8 @@ func (client ShippingVendorsClient) ListShippingVendors(ctx context.Context, req
 	ociResponse, err = common.Retry(ctx, request, client.listShippingVendors, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListShippingVendorsResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListShippingVendorsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
