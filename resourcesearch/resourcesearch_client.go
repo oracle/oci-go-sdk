@@ -84,7 +84,8 @@ func (client ResourceSearchClient) GetResourceType(ctx context.Context, request 
 	ociResponse, err = common.Retry(ctx, request, client.getResourceType, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetResourceTypeResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetResourceTypeResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -126,7 +127,8 @@ func (client ResourceSearchClient) ListResourceTypes(ctx context.Context, reques
 	ociResponse, err = common.Retry(ctx, request, client.listResourceTypes, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListResourceTypesResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListResourceTypesResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -170,7 +172,8 @@ func (client ResourceSearchClient) SearchResources(ctx context.Context, request 
 	ociResponse, err = common.Retry(ctx, request, client.searchResources, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = SearchResourcesResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = SearchResourcesResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}

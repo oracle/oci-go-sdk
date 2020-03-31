@@ -89,7 +89,8 @@ func (client TransferJobClient) ChangeTransferJobCompartment(ctx context.Context
 	ociResponse, err = common.Retry(ctx, request, client.changeTransferJobCompartment, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ChangeTransferJobCompartmentResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ChangeTransferJobCompartmentResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -136,7 +137,8 @@ func (client TransferJobClient) CreateTransferJob(ctx context.Context, request C
 	ociResponse, err = common.Retry(ctx, request, client.createTransferJob, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = CreateTransferJobResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = CreateTransferJobResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -178,7 +180,8 @@ func (client TransferJobClient) DeleteTransferJob(ctx context.Context, request D
 	ociResponse, err = common.Retry(ctx, request, client.deleteTransferJob, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = DeleteTransferJobResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = DeleteTransferJobResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -220,7 +223,8 @@ func (client TransferJobClient) GetTransferJob(ctx context.Context, request GetT
 	ociResponse, err = common.Retry(ctx, request, client.getTransferJob, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetTransferJobResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetTransferJobResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -262,7 +266,8 @@ func (client TransferJobClient) ListTransferJobs(ctx context.Context, request Li
 	ociResponse, err = common.Retry(ctx, request, client.listTransferJobs, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListTransferJobsResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListTransferJobsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -304,7 +309,8 @@ func (client TransferJobClient) UpdateTransferJob(ctx context.Context, request U
 	ociResponse, err = common.Retry(ctx, request, client.updateTransferJob, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = UpdateTransferJobResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = UpdateTransferJobResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}

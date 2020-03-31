@@ -89,7 +89,8 @@ func (client TransferApplianceEntitlementClient) CreateTransferApplianceEntitlem
 	ociResponse, err = common.Retry(ctx, request, client.createTransferApplianceEntitlement, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = CreateTransferApplianceEntitlementResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = CreateTransferApplianceEntitlementResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -136,7 +137,8 @@ func (client TransferApplianceEntitlementClient) GetTransferApplianceEntitlement
 	ociResponse, err = common.Retry(ctx, request, client.getTransferApplianceEntitlement, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetTransferApplianceEntitlementResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetTransferApplianceEntitlementResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -178,7 +180,8 @@ func (client TransferApplianceEntitlementClient) ListTransferApplianceEntitlemen
 	ociResponse, err = common.Retry(ctx, request, client.listTransferApplianceEntitlement, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListTransferApplianceEntitlementResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListTransferApplianceEntitlementResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
