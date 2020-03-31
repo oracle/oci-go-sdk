@@ -84,7 +84,8 @@ func (client AnnouncementClient) GetAnnouncement(ctx context.Context, request Ge
 	ociResponse, err = common.Retry(ctx, request, client.getAnnouncement, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetAnnouncementResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetAnnouncementResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -126,7 +127,8 @@ func (client AnnouncementClient) GetAnnouncementUserStatus(ctx context.Context, 
 	ociResponse, err = common.Retry(ctx, request, client.getAnnouncementUserStatus, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetAnnouncementUserStatusResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetAnnouncementUserStatusResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -168,7 +170,8 @@ func (client AnnouncementClient) ListAnnouncements(ctx context.Context, request 
 	ociResponse, err = common.Retry(ctx, request, client.listAnnouncements, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListAnnouncementsResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListAnnouncementsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -210,7 +213,8 @@ func (client AnnouncementClient) UpdateAnnouncementUserStatus(ctx context.Contex
 	ociResponse, err = common.Retry(ctx, request, client.updateAnnouncementUserStatus, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = UpdateAnnouncementUserStatusResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = UpdateAnnouncementUserStatusResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}

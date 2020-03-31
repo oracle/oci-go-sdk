@@ -84,7 +84,8 @@ func (client ApplicationMigrationClient) CancelWorkRequest(ctx context.Context, 
 	ociResponse, err = common.Retry(ctx, request, client.cancelWorkRequest, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = CancelWorkRequestResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = CancelWorkRequestResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -131,7 +132,8 @@ func (client ApplicationMigrationClient) ChangeMigrationCompartment(ctx context.
 	ociResponse, err = common.Retry(ctx, request, client.changeMigrationCompartment, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ChangeMigrationCompartmentResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ChangeMigrationCompartmentResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -178,7 +180,8 @@ func (client ApplicationMigrationClient) ChangeSourceCompartment(ctx context.Con
 	ociResponse, err = common.Retry(ctx, request, client.changeSourceCompartment, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ChangeSourceCompartmentResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ChangeSourceCompartmentResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -226,7 +229,8 @@ func (client ApplicationMigrationClient) CreateMigration(ctx context.Context, re
 	ociResponse, err = common.Retry(ctx, request, client.createMigration, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = CreateMigrationResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = CreateMigrationResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -274,7 +278,8 @@ func (client ApplicationMigrationClient) CreateSource(ctx context.Context, reque
 	ociResponse, err = common.Retry(ctx, request, client.createSource, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = CreateSourceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = CreateSourceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -316,7 +321,8 @@ func (client ApplicationMigrationClient) DeleteMigration(ctx context.Context, re
 	ociResponse, err = common.Retry(ctx, request, client.deleteMigration, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = DeleteMigrationResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = DeleteMigrationResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -358,7 +364,8 @@ func (client ApplicationMigrationClient) DeleteSource(ctx context.Context, reque
 	ociResponse, err = common.Retry(ctx, request, client.deleteSource, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = DeleteSourceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = DeleteSourceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -400,7 +407,8 @@ func (client ApplicationMigrationClient) GetMigration(ctx context.Context, reque
 	ociResponse, err = common.Retry(ctx, request, client.getMigration, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetMigrationResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetMigrationResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -442,7 +450,8 @@ func (client ApplicationMigrationClient) GetSource(ctx context.Context, request 
 	ociResponse, err = common.Retry(ctx, request, client.getSource, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetSourceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetSourceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -484,7 +493,8 @@ func (client ApplicationMigrationClient) GetWorkRequest(ctx context.Context, req
 	ociResponse, err = common.Retry(ctx, request, client.getWorkRequest, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = GetWorkRequestResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = GetWorkRequestResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -526,7 +536,8 @@ func (client ApplicationMigrationClient) ListMigrations(ctx context.Context, req
 	ociResponse, err = common.Retry(ctx, request, client.listMigrations, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListMigrationsResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListMigrationsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -568,7 +579,8 @@ func (client ApplicationMigrationClient) ListSourceApplications(ctx context.Cont
 	ociResponse, err = common.Retry(ctx, request, client.listSourceApplications, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListSourceApplicationsResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListSourceApplicationsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -610,7 +622,8 @@ func (client ApplicationMigrationClient) ListSources(ctx context.Context, reques
 	ociResponse, err = common.Retry(ctx, request, client.listSources, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListSourcesResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListSourcesResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -652,7 +665,8 @@ func (client ApplicationMigrationClient) ListWorkRequestErrors(ctx context.Conte
 	ociResponse, err = common.Retry(ctx, request, client.listWorkRequestErrors, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListWorkRequestErrorsResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListWorkRequestErrorsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -694,7 +708,8 @@ func (client ApplicationMigrationClient) ListWorkRequestLogs(ctx context.Context
 	ociResponse, err = common.Retry(ctx, request, client.listWorkRequestLogs, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListWorkRequestLogsResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListWorkRequestLogsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -736,7 +751,8 @@ func (client ApplicationMigrationClient) ListWorkRequests(ctx context.Context, r
 	ociResponse, err = common.Retry(ctx, request, client.listWorkRequests, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = ListWorkRequestsResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = ListWorkRequestsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -778,7 +794,8 @@ func (client ApplicationMigrationClient) MigrateApplication(ctx context.Context,
 	ociResponse, err = common.Retry(ctx, request, client.migrateApplication, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = MigrateApplicationResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = MigrateApplicationResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -825,7 +842,8 @@ func (client ApplicationMigrationClient) UpdateMigration(ctx context.Context, re
 	ociResponse, err = common.Retry(ctx, request, client.updateMigration, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = UpdateMigrationResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = UpdateMigrationResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
@@ -867,7 +885,8 @@ func (client ApplicationMigrationClient) UpdateSource(ctx context.Context, reque
 	ociResponse, err = common.Retry(ctx, request, client.updateSource, policy)
 	if err != nil {
 		if ociResponse != nil {
-			response = UpdateSourceResponse{RawResponse: ociResponse.HTTPResponse()}
+			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
+			response = UpdateSourceResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
 		}
 		return
 	}
