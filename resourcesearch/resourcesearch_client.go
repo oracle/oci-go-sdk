@@ -84,8 +84,12 @@ func (client ResourceSearchClient) GetResourceType(ctx context.Context, request 
 	ociResponse, err = common.Retry(ctx, request, client.getResourceType, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = GetResourceTypeResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetResourceTypeResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetResourceTypeResponse{}
+			}
 		}
 		return
 	}
@@ -127,8 +131,12 @@ func (client ResourceSearchClient) ListResourceTypes(ctx context.Context, reques
 	ociResponse, err = common.Retry(ctx, request, client.listResourceTypes, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = ListResourceTypesResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListResourceTypesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListResourceTypesResponse{}
+			}
 		}
 		return
 	}
@@ -172,8 +180,12 @@ func (client ResourceSearchClient) SearchResources(ctx context.Context, request 
 	ociResponse, err = common.Retry(ctx, request, client.searchResources, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = SearchResourcesResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = SearchResourcesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = SearchResourcesResponse{}
+			}
 		}
 		return
 	}

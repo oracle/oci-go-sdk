@@ -85,8 +85,12 @@ func (client SecretsClient) GetSecretBundle(ctx context.Context, request GetSecr
 	ociResponse, err = common.Retry(ctx, request, client.getSecretBundle, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = GetSecretBundleResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetSecretBundleResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetSecretBundleResponse{}
+			}
 		}
 		return
 	}
@@ -128,8 +132,12 @@ func (client SecretsClient) ListSecretBundleVersions(ctx context.Context, reques
 	ociResponse, err = common.Retry(ctx, request, client.listSecretBundleVersions, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = ListSecretBundleVersionsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListSecretBundleVersionsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListSecretBundleVersionsResponse{}
+			}
 		}
 		return
 	}

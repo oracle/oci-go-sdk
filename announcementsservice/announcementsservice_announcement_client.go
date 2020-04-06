@@ -84,8 +84,12 @@ func (client AnnouncementClient) GetAnnouncement(ctx context.Context, request Ge
 	ociResponse, err = common.Retry(ctx, request, client.getAnnouncement, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = GetAnnouncementResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetAnnouncementResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetAnnouncementResponse{}
+			}
 		}
 		return
 	}
@@ -127,8 +131,12 @@ func (client AnnouncementClient) GetAnnouncementUserStatus(ctx context.Context, 
 	ociResponse, err = common.Retry(ctx, request, client.getAnnouncementUserStatus, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = GetAnnouncementUserStatusResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetAnnouncementUserStatusResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetAnnouncementUserStatusResponse{}
+			}
 		}
 		return
 	}
@@ -170,8 +178,12 @@ func (client AnnouncementClient) ListAnnouncements(ctx context.Context, request 
 	ociResponse, err = common.Retry(ctx, request, client.listAnnouncements, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = ListAnnouncementsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListAnnouncementsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListAnnouncementsResponse{}
+			}
 		}
 		return
 	}
@@ -213,8 +225,12 @@ func (client AnnouncementClient) UpdateAnnouncementUserStatus(ctx context.Contex
 	ociResponse, err = common.Retry(ctx, request, client.updateAnnouncementUserStatus, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = UpdateAnnouncementUserStatusResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = UpdateAnnouncementUserStatusResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = UpdateAnnouncementUserStatusResponse{}
+			}
 		}
 		return
 	}
