@@ -89,8 +89,12 @@ func (client ApplianceExportJobClient) ChangeApplianceExportJobCompartment(ctx c
 	ociResponse, err = common.Retry(ctx, request, client.changeApplianceExportJobCompartment, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = ChangeApplianceExportJobCompartmentResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ChangeApplianceExportJobCompartmentResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ChangeApplianceExportJobCompartmentResponse{}
+			}
 		}
 		return
 	}
@@ -137,8 +141,12 @@ func (client ApplianceExportJobClient) CreateApplianceExportJob(ctx context.Cont
 	ociResponse, err = common.Retry(ctx, request, client.createApplianceExportJob, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = CreateApplianceExportJobResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = CreateApplianceExportJobResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = CreateApplianceExportJobResponse{}
+			}
 		}
 		return
 	}
@@ -180,8 +188,12 @@ func (client ApplianceExportJobClient) DeleteApplianceExportJob(ctx context.Cont
 	ociResponse, err = common.Retry(ctx, request, client.deleteApplianceExportJob, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = DeleteApplianceExportJobResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = DeleteApplianceExportJobResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = DeleteApplianceExportJobResponse{}
+			}
 		}
 		return
 	}
@@ -223,8 +235,12 @@ func (client ApplianceExportJobClient) GetApplianceExportJob(ctx context.Context
 	ociResponse, err = common.Retry(ctx, request, client.getApplianceExportJob, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = GetApplianceExportJobResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetApplianceExportJobResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetApplianceExportJobResponse{}
+			}
 		}
 		return
 	}
@@ -266,8 +282,12 @@ func (client ApplianceExportJobClient) ListApplianceExportJobs(ctx context.Conte
 	ociResponse, err = common.Retry(ctx, request, client.listApplianceExportJobs, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = ListApplianceExportJobsResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListApplianceExportJobsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListApplianceExportJobsResponse{}
+			}
 		}
 		return
 	}
@@ -309,8 +329,12 @@ func (client ApplianceExportJobClient) UpdateApplianceExportJob(ctx context.Cont
 	ociResponse, err = common.Retry(ctx, request, client.updateApplianceExportJob, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = UpdateApplianceExportJobResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = UpdateApplianceExportJobResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = UpdateApplianceExportJobResponse{}
+			}
 		}
 		return
 	}
