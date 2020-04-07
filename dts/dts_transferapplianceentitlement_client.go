@@ -89,8 +89,12 @@ func (client TransferApplianceEntitlementClient) CreateTransferApplianceEntitlem
 	ociResponse, err = common.Retry(ctx, request, client.createTransferApplianceEntitlement, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = CreateTransferApplianceEntitlementResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = CreateTransferApplianceEntitlementResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = CreateTransferApplianceEntitlementResponse{}
+			}
 		}
 		return
 	}
@@ -137,8 +141,12 @@ func (client TransferApplianceEntitlementClient) GetTransferApplianceEntitlement
 	ociResponse, err = common.Retry(ctx, request, client.getTransferApplianceEntitlement, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = GetTransferApplianceEntitlementResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetTransferApplianceEntitlementResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetTransferApplianceEntitlementResponse{}
+			}
 		}
 		return
 	}
@@ -180,8 +188,12 @@ func (client TransferApplianceEntitlementClient) ListTransferApplianceEntitlemen
 	ociResponse, err = common.Retry(ctx, request, client.listTransferApplianceEntitlement, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = ListTransferApplianceEntitlementResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListTransferApplianceEntitlementResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListTransferApplianceEntitlementResponse{}
+			}
 		}
 		return
 	}

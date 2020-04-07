@@ -84,8 +84,12 @@ func (client TransferPackageClient) AttachDevicesToTransferPackage(ctx context.C
 	ociResponse, err = common.Retry(ctx, request, client.attachDevicesToTransferPackage, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = AttachDevicesToTransferPackageResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = AttachDevicesToTransferPackageResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = AttachDevicesToTransferPackageResponse{}
+			}
 		}
 		return
 	}
@@ -132,8 +136,12 @@ func (client TransferPackageClient) CreateTransferPackage(ctx context.Context, r
 	ociResponse, err = common.Retry(ctx, request, client.createTransferPackage, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = CreateTransferPackageResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = CreateTransferPackageResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = CreateTransferPackageResponse{}
+			}
 		}
 		return
 	}
@@ -175,8 +183,12 @@ func (client TransferPackageClient) DeleteTransferPackage(ctx context.Context, r
 	ociResponse, err = common.Retry(ctx, request, client.deleteTransferPackage, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = DeleteTransferPackageResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = DeleteTransferPackageResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = DeleteTransferPackageResponse{}
+			}
 		}
 		return
 	}
@@ -218,8 +230,12 @@ func (client TransferPackageClient) DetachDevicesFromTransferPackage(ctx context
 	ociResponse, err = common.Retry(ctx, request, client.detachDevicesFromTransferPackage, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = DetachDevicesFromTransferPackageResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = DetachDevicesFromTransferPackageResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = DetachDevicesFromTransferPackageResponse{}
+			}
 		}
 		return
 	}
@@ -261,8 +277,12 @@ func (client TransferPackageClient) GetTransferPackage(ctx context.Context, requ
 	ociResponse, err = common.Retry(ctx, request, client.getTransferPackage, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = GetTransferPackageResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetTransferPackageResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetTransferPackageResponse{}
+			}
 		}
 		return
 	}
@@ -304,8 +324,12 @@ func (client TransferPackageClient) ListTransferPackages(ctx context.Context, re
 	ociResponse, err = common.Retry(ctx, request, client.listTransferPackages, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = ListTransferPackagesResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListTransferPackagesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListTransferPackagesResponse{}
+			}
 		}
 		return
 	}
@@ -347,8 +371,12 @@ func (client TransferPackageClient) UpdateTransferPackage(ctx context.Context, r
 	ociResponse, err = common.Retry(ctx, request, client.updateTransferPackage, policy)
 	if err != nil {
 		if ociResponse != nil {
-			opcRequestId := ociResponse.HTTPResponse().Header.Get("opc-request-id")
-			response = UpdateTransferPackageResponse{RawResponse: ociResponse.HTTPResponse(), OpcRequestId: &opcRequestId}
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = UpdateTransferPackageResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = UpdateTransferPackageResponse{}
+			}
 		}
 		return
 	}
