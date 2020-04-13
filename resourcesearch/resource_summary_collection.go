@@ -12,7 +12,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ResourceSummaryCollection Summary representation of resources that matched the search criteria.
+// ResourceSummaryCollection A summary representation of resources that matched the search criteria.
 type ResourceSummaryCollection struct {
 
 	// A list of resources.

@@ -13,10 +13,10 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// SearchDetails A base request type containing common criteria for searching for resources.
+// SearchDetails A base request type that contains common criteria for searching for resources.
 type SearchDetails interface {
 
-	// The type of matching context returned in the response. If you specify `HIGHLIGHTS`, then the service will highlight fragments in its response. (See ResourceSummary.searchContext and SearchContext for more information.) The default setting is `NONE`.
+	// The type of matching context returned in the response. If you specify `HIGHLIGHTS`, then the service will highlight fragments in its response. (For more information, see ResourceSummary.searchContext and SearchContext.) The default setting is `NONE`.
 	GetMatchingContextType() SearchDetailsMatchingContextTypeEnum
 }
 
