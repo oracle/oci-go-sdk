@@ -17,7 +17,7 @@ type SearchContext struct {
 
 	// Describes what in each field matched the search criteria by showing highlighted values, but only for free text searches or for structured
 	// queries that use a MATCHING clause. The list of strings represents fragments of values that matched the query conditions. Highlighted
-	// values are wrapped with <hl>..</hl> tags. All values are HTML-encoded (except <hl> tags).
+	// values are wrapped with &lt;h1&gt;..&lt;/h1&gt; tags. All values are HTML-encoded (except &lt;h1&gt; tags).
 	Highlights map[string][]string `mandatory:"false" json:"highlights"`
 }
 

@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 17.4.0 - 2020-04-14
+### Added
+- Support for access types on instances in the Content and Experience service
+- Support for identity contexts in the Search service
+
 ## 17.3.0 - 2020-04-07
 ### Added
 - Support for changing compartments of runs and applications in the Data Flow service

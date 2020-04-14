@@ -30,7 +30,7 @@ func ExampleDnsZone() {
 	ctx := context.Background()
 
 	// Create a new zone
-	zoneName := common.String(helpers.GetRandomString(15))
+	zoneName := common.String("testdomain." + helpers.GetRandomString(15))
 	createReq := dns.CreateZoneRequest{
 		CreateZoneDetails: dns.CreateZoneDetails{
 			CompartmentId: helpers.CompartmentID(),

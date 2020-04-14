@@ -13,13 +13,14 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// StructuredSearchDetails A request containing search filters using the structured search query language.
+// StructuredSearchDetails A request that uses Search's structured query language to specify filter conditions to apply to search results.
+// For more information about writing queries, see Search Language Syntax (https://docs.cloud.oracle.com/en-us/iaas/Content/Search/Concepts/querysyntax.htm).
 type StructuredSearchDetails struct {
 
 	// The structured query describing which resources to search for.
 	Query *string `mandatory:"true" json:"query"`
 
-	// The type of matching context returned in the response. If you specify `HIGHLIGHTS`, then the service will highlight fragments in its response. (See ResourceSummary.searchContext and SearchContext for more information.) The default setting is `NONE`.
+	// The type of matching context returned in the response. If you specify `HIGHLIGHTS`, then the service will highlight fragments in its response. (For more information, see ResourceSummary.searchContext and SearchContext.) The default setting is `NONE`.
 	MatchingContextType SearchDetailsMatchingContextTypeEnum `mandatory:"false" json:"matchingContextType,omitempty"`
 }
 
