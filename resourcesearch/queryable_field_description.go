@@ -21,10 +21,10 @@ type QueryableFieldDescription struct {
 	// The name of the field to use when constructing the query. Field names are present for all types except `OBJECT`.
 	FieldName *string `mandatory:"true" json:"fieldName"`
 
-	// Indicates this field is actually an array of the specified field type.
+	// Indicates that this field is actually an array of the specified field type.
 	IsArray *bool `mandatory:"false" json:"isArray"`
 
-	// If the field type is `OBJECT`, then this property will provide all the individual properties on the object that can
+	// If the field type is `OBJECT`, then this property will provide all the individual properties of the object that can
 	// be queried.
 	ObjectProperties []QueryableFieldDescription `mandatory:"false" json:"objectProperties"`
 }
