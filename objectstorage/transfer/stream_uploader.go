@@ -1,4 +1,5 @@
-// Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
+// Copyright (c) 2016, 2018, 2020, Oracle and/or its affiliates.  All rights reserved.
+// This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 
 package transfer
 
@@ -75,13 +76,13 @@ func (streamUpload *streamUpload) startConcurrentUpload(ctx context.Context, don
 	if err != nil {
 		common.Debugf("failed to commit with error: %v\n", err)
 		return UploadResponse{
-				Type: MultipartUpload,
+				Type:                    MultipartUpload,
 				MultipartUploadResponse: &MultipartUploadResponse{UploadID: common.String(streamUpload.uploadID)}},
 			err
 	}
 
 	response = UploadResponse{
-		Type: MultipartUpload,
+		Type:                    MultipartUpload,
 		MultipartUploadResponse: &MultipartUploadResponse{CommitMultipartUploadResponse: resp},
 	}
 	return
