@@ -2,27 +2,27 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// OSMS
+// MySQL Database Service API
 //
-// OS Management as a Service API definition
+// The API for the MySQL Database Service
 //
 
-package osmanagement
+package mysql
 
 import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ManagedInstanceUpdateDetails Updated information for the managed instance
-type ManagedInstanceUpdateDetails struct {
+// Version A supported MySQL Version.
+type Version struct {
 
-	// Managed Instance identifier
-	DisplayName *string `mandatory:"true" json:"displayName"`
+	// The specific version identifier
+	Version *string `mandatory:"false" json:"version"`
 
-	// Information specified by the user about the managed instance
+	// A link to a page describing the version.
 	Description *string `mandatory:"false" json:"description"`
 }
 
-func (m ManagedInstanceUpdateDetails) String() string {
+func (m Version) String() string {
 	return common.PointerString(m)
 }
