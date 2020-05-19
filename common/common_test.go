@@ -4,6 +4,7 @@
 package common
 
 import (
+	"errors"
 	"io/ioutil"
 	"os"
 	"path"
@@ -293,4 +294,54 @@ func TestSetRegionMetadataFromCfgFile(t *testing.T) {
 	ok = SetRegionMetadataFromCfgFile(&expectedRegion)
 	assert.Equal(t, false, ok)
 
+}
+
+func getRegionInfoFromInstanceMetadataServiceSucceed() ([]byte, error) {
+	contentString :=
+		`{ 
+	"realmKey" : "OC-test",
+	"realmDomainComponent" : "test.com",
+	"regionKey" : "key",
+	"regionIdentifier" : "us-test-1"
+}`
+	return []byte(contentString), nil
+}
+
+func getRegionInfoFromInstanceMetadataServiceInvalidContent() ([]byte, error) {
+	contentString :=
+		`{ 
+	"realmKey" : "",
+	"realmDomainComponent" : "",
+	"regionKey" : "",
+	"regionIdentifier" : ""
+}`
+	return []byte(contentString), nil
+}
+
+func getRegionInfoFromInstanceMetadataServiceFail() ([]byte, error) {
+	return nil, errors.New("test error")
+}
+
+func TestSetRegionFromInstanceMetadataService(t *testing.T) {
+	expectedRegion := "us-test-1"
+	GetRegionInfoFromInstanceMetadataService = getRegionInfoFromInstanceMetadataServiceSucceed
+	ok := SetRegionFromInstanceMetadataService(&expectedRegion)
+	assert.Equal(t, true, ok)
+	assert.Equal(t, "oc-test", regionRealm[Region("us-test-1")])
+	assert.Equal(t, "test.com", realm["oc-test"])
+
+	shortCode := "testRegionKey"
+	GetRegionInfoFromInstanceMetadataService = getRegionInfoFromInstanceMetadataServiceSucceed
+	ok = SetRegionFromInstanceMetadataService(&shortCode)
+	assert.Equal(t, true, ok)
+	assert.Equal(t, "oc-test", regionRealm[Region("us-test-1")])
+	assert.Equal(t, "test.com", realm["oc-test"])
+
+	GetRegionInfoFromInstanceMetadataService = getRegionInfoFromInstanceMetadataServiceInvalidContent
+	ok = SetRegionFromInstanceMetadataService(&expectedRegion)
+	assert.Equal(t, false, ok)
+
+	GetRegionInfoFromInstanceMetadataService = getRegionInfoFromInstanceMetadataServiceFail
+	ok = SetRegionFromInstanceMetadataService(&expectedRegion)
+	assert.Equal(t, false, ok)
 }
