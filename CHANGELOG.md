@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 19.3.0 - 2020-05-18
+### Added
+- Support for returning the private IP of a private endpoint database in the Database service
+- Support for native JWT validation in the API Gateway service
+
+
 ## 19.2.0 - 2020-05-12
 ### Added
 - Support for drift detection in the Resource Manager service
