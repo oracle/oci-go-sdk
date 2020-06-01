@@ -65,6 +65,7 @@ yptNH3FsyqeyM9kDwbDpBQAvpsDIQJfwAbQPLAiQJhpbixZyG9lqhkKOhYTZhU3l
 ufFtnLEj/5G9a8A//MFrXsXePUeBDEzjtEcjPGNxe0ZkuOgYx11Zc0R4oLI7LoHO
 07vtw4qCH4hztCJ5+JOUac6sGcILFRc4vSQQ15Cg5QEdBiSbQ/yo1P0hbNtSvnwO
 -----END RSA PRIVATE KEY-----`
+	testSecurityToken = "testSecurityToken"
 	testKeyPassphrase = "goisfun"
 )
 
@@ -526,6 +527,32 @@ compartment = somecompartment
 	_, e1 = c.Region()
 	assert.Error(t, e1)
 
+}
+
+func TestFileConfigurationProvider_SecurityToken(t *testing.T) {
+	dataTpl := `[security_token_based_auth]
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+region=someregion
+security_token_file=%s
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	tokenFile := writeTempFile(testSecurityToken)
+	data := fmt.Sprintf(dataTpl, keyFile, tokenFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(tokenFile)
+	defer removeFileFn(keyFile)
+
+	c, e0 := ConfigurationProviderFromFileWithProfile(tmpConfFile, "security_token_based_auth", "")
+	assert.NoError(t, e0)
+	_, e1 := c.PrivateRSAKey()
+	assert.NoError(t, e1)
+	_, e1 = c.KeyID()
+	assert.NoError(t, e1)
 }
 
 func TestComposingConfigurationProvider_MultipleFiles(t *testing.T) {
