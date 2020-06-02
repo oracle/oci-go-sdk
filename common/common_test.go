@@ -27,6 +27,10 @@ func TestEndpoint(t *testing.T) {
 	endpoint = region.Endpoint("bar")
 	assert.Equal(t, "bar.ca-toronto-1.oraclecloud.com", endpoint)
 
+	region = StringToRegion("ap-chuncheon-1")
+	endpoint = region.Endpoint("bar")
+	assert.Equal(t, "bar.ap-chuncheon-1.oraclecloud.com", endpoint)
+
 	// OC2
 	region = StringToRegion("us-langley-1")
 	endpoint = region.Endpoint("bar")
@@ -61,6 +65,13 @@ func TestEndpointForTemplate(t *testing.T) {
 		{
 			// template with second level domain
 			region:           StringToRegion("us-phoenix-1"),
+			service:          "test",
+			endpointTemplate: "https://foo.region.{secondLevelDomain}",
+			expected:         "https://foo.region.oraclecloud.com",
+		},
+		{
+			// template with second level domain
+			region:           StringToRegion("ap-chuncheon-1"),
 			service:          "test",
 			endpointTemplate: "https://foo.region.{secondLevelDomain}",
 			expected:         "https://foo.region.oraclecloud.com",
@@ -158,6 +169,9 @@ func TestStringToRegion(t *testing.T) {
 
 	region = StringToRegion("yul")
 	assert.Equal(t, RegionCAMontreal1, region)
+
+	region = StringToRegion("yny")
+	assert.Equal(t, RegionAPChuncheon1, region)
 
 	regionMetadataEnvVar := `{"realmKey":"OC0","realmDomainComponent":"testRealm.com","regionKey":"RTK","regionIdentifier":"us-testregion-1"}`
 	os.Unsetenv("OCI_REGION_METADATA")
