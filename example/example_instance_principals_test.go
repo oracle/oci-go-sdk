@@ -1,3 +1,12 @@
+// Copyright (c) 2016, 2018, 2020, Oracle and/or its affiliates.  All rights reserved.
+// This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
+
+// Example code for instance principle auth
+// ExampleInstancePrincipals lists the availability domains in your tenancy.
+// Make sure you run this example from a instance with the right permissions. In this example
+// the root compartment is read from the OCI_ROOT_COMPARTMENT_ID environment variable.
+// More information on instance principals can be found here: https://docs.cloud.oracle.com/Content/Identity/Tasks/callingservicesfrominstances.htm
+
 package example
 
 import (
@@ -14,10 +23,6 @@ import (
 	"github.com/oracle/oci-go-sdk/identity"
 )
 
-// ExampleInstancePrincipals lists the availability domains in your tenancy.
-// Make sure you run this example from a instance with the right permissions. In this example
-// the root compartment is read from the OCI_ROOT_COMPARTMENT_ID environment variable.
-// More information on instance principals can be found here: https://docs.cloud.oracle.com/Content/Identity/Tasks/callingservicesfrominstances.htm
 func ExampleInstancePrincipals() {
 
 	provider, err := auth.InstancePrincipalConfigurationProvider()

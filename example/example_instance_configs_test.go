@@ -1,19 +1,13 @@
-// Copyright (c) 2019, 2020, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2020, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
-//
-// Example code for Compute Management Services API
-//
-//
 
-/**
- * This class provides an example of how you can create and use an Instance Configuration. It will:
- * <ul>
- * <li>Create the InstanceConfiguration from input details</li>
- * <li>Launching an instance with instance configuration</li>
- * <li>Creating an instance configuration from a running instance</li>
- * <li>Clean everything up.</li>
- * </ul>
- */
+// Example code for Compute Management Services API
+// This class provides an example of how you can create and use an Instance Configuration. It will:
+//
+//   * Create the InstanceConfiguration from input details
+//   * Launching an instance with instance configuration
+//   * Creating an instance configuration from a running instance
+//   * Clean everything up
 
 package example
 
