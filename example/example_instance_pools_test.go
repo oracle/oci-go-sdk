@@ -1,23 +1,17 @@
-// Copyright (c) 2019, 2020, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2020, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
-//
-// Example code for Compute Management Services API
-//
-//
 
-/**
- * This class provides an example of how you can create and manage an Instance Pool. It will:
- * <ul>
- * <li>Create the InstanceConfiguration</li>
- * <li>Create a pool of size 1 based off of that configuration.</li>
- * <li>Wait for the pool to go to Running state.</li>
- * <li>Update the pool to a size of 2.</li>
- * <li>Wait for the InstancePool to scale up.</li>
- * <li>Attached a load balancer to the pool.</li>
- * <li>Wait for the load balancer to become ATTACHED.</li>
- * <li>Clean everything up.</li>
- * </ul>
- */
+// Example code for Compute Management Services API
+// This class provides an example of how you can create and manage an Instance Pool. It will:
+//
+//   * Create the InstanceConfiguration
+//   * Create a pool of size 1 based off of that configuration
+//   * Wait for the pool to go to Running state
+//   * Update the pool to a size of 2
+//   * Wait for the InstancePool to scale up
+//   * Attached a load balancer to the pool
+//   * Wait for the load balancer to become ATTACHED
+//   * Clean everything up
 
 package example
 

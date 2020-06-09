@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 20.0.0 - 2020-06-09
+### Added
+- Support for returning the database version of backups in the Database service
+- Support for patching on Exadata Cloud at Customer resources in the Database service
+- Support for new lifecycle substates on instances in the Digital Assistant service
+- Support for file servers in the Integration service
+- Support for deleting non-empty tag namespaces and bulk deleting tags in the Identity service
+- Support for bulk move and bulk delete of resources by compartment in the Identity service
+- Support for allowing config file location to be set via env var
+
+### Breaking changes
+- Updated property DataStorageSizeInTBs type from *int to *float64 in the database service
+- Removed state 'OFFLINE' and added 'DISCONNECTED' for property ExadataInfrastructureLifecycleStateEnum in database service
+
+
 ## 19.4.0 - 2020-06-02
 ### Added
 - Support for optionally supplying a signature when deleting an agreement in the Marketplace service

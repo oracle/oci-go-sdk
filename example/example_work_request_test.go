@@ -1,15 +1,15 @@
-// Copyright (c) 2016, 2019, 2020, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2020, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
-//
-//
+
+// Example code for workrequests API
 // This script provides a basic example of how to use work requests using Go SDK.
 // This script will:
 //
-//    * Read in user OCI config
-//    * Retrieve a list of all Work Requests for the compartment
-//    * Get Work Request details
-//    * List errors related to a Work Request
-//    * List logs related to a Work Request
+//   * Read in user OCI config
+//   * Retrieve a list of all Work Requests for the compartment
+//   * Get Work Request details
+//   * List errors related to a Work Request
+//   * List logs related to a Work Request
 //
 // This script takes no arguments
 //

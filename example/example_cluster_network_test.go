@@ -1,19 +1,13 @@
-// Copyright (c) 2019, 2020, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2020, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
-//
-// Example code for Compute Management Services API
-//
-//
 
-/**
- * This class provides an example of how you can create and manage a Cluster Network. It will:
- * <ul>
- * <li>Create the InstanceConfiguration with an HPC shape</li>
- * <li>Create a cluster network of size 1 based off of that configuration.</li>
- * <li>Wait for the cluster network to go to Running state.</li>
- * <li>Clean everything up.</li>
- * </ul>
- */
+// Example code for Compute Management Services API
+// This class provides an example of how you can create and manage a Cluster Network. It will:
+//
+//   * Create the InstanceConfiguration with an HPC shape
+//   * Create a cluster network of size 1 based off of that configuration
+//   * Wait for the cluster network to go to Running state
+//   * Clean everything up
 
 package example
 
@@ -121,7 +115,7 @@ func createClusterNetwork(ctx context.Context, client core.ComputeManagementClie
 			PlacementConfiguration: &placementConfigurationDetails,
 			InstancePools: []core.CreateClusterNetworkInstancePoolDetails{
 				{
-					Size: &size,
+					Size:                    &size,
 					InstanceConfigurationId: &instanceConfigurationId,
 				},
 			},
