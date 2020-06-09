@@ -1,8 +1,7 @@
 // Copyright (c) 2016, 2018, 2020, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
-//
+
 // Example code for Load Balancing Service API
-//
 
 package example
 
@@ -129,9 +128,9 @@ func ExampleCreateLoadbalancer() {
 	listeners := map[string]loadbalancer.ListenerDetails{
 		listenerDisplayName: {
 			DefaultBackendSetName: common.String(backendSetOneName),
-			Port:         common.Int(80),
-			Protocol:     common.String("HTTP"),
-			RuleSetNames: []string{rulesetOneName},
+			Port:                  common.Int(80),
+			Protocol:              common.String("HTTP"),
+			RuleSetNames:          []string{rulesetOneName},
 		},
 	}
 
