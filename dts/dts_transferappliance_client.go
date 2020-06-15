@@ -54,7 +54,7 @@ func newTransferApplianceClientFromBaseClient(baseClient common.BaseClient, conf
 
 // SetRegion overrides the region of this client.
 func (client *TransferApplianceClient) SetRegion(region string) {
-	client.Host = common.StringToRegion(region).EndpointForTemplate("dts", "https://datatransfer.{region}.{secondLevelDomain}")
+	client.Host = common.StringToRegion(region).EndpointForTemplate("dts", "https://datatransfer.{region}.oci.{secondLevelDomain}")
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
