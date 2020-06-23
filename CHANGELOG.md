@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 21.0.0 - 2020-06-23
+### Added
+- Support for the Data Integration service
+- Support for updating database home IDs on databases in the Database service
+- Support for backing up autonomous databases on Cloud at Customer in the Database service
+- Support for managing autonomous VM clusters on Cloud at Customer in the Database service
+- Support for accessing data assets via private endpoints in the Data Catalog service
+- Support for dependency archive zip files to be specified for use by applications in the Data Flow service
+
+### Breaking changes
+- Property `LifecycleState` type changed from `JobLifecycleStateEnum` to `ListJobsLifecycleStateEnum` in the Data Catalog service
+- Property `JobType` type changed from `JobTypeEnum` to `ListJobsJobTypeEnum` in the Data Catalog service
+
 ## 20.1.0 - 2020-06-16
 ### Added
 - Support for creating a new database from an existing database based on a given timestamp in the Database service
