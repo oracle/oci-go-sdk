@@ -43,5 +43,6 @@ func (m *UpdateResourceDetails) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.Item = nil
 	}
+
 	return
 }

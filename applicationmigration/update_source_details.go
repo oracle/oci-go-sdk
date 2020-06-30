@@ -84,5 +84,6 @@ func (m *UpdateSourceDetails) UnmarshalJSON(data []byte) (e error) {
 	m.FreeformTags = model.FreeformTags
 
 	m.DefinedTags = model.DefinedTags
+
 	return
 }
