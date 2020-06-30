@@ -97,6 +97,7 @@ func (m *SecretBundle) UnmarshalJSON(data []byte) (e error) {
 	m.SecretId = model.SecretId
 
 	m.VersionNumber = model.VersionNumber
+
 	return
 }
 

@@ -90,5 +90,6 @@ func (m *CreateSourceDetails) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.SourceDetails = nil
 	}
+
 	return
 }

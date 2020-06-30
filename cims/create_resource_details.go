@@ -55,5 +55,6 @@ func (m *CreateResourceDetails) UnmarshalJSON(data []byte) (e error) {
 	m.Region = model.Region
 
 	m.AvailabilityDomain = model.AvailabilityDomain
+
 	return
 }
