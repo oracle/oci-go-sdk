@@ -17,8 +17,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stretchr/testify/assert"
 	"math"
+
+	"github.com/stretchr/testify/assert"
 )
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,6 +79,13 @@ type KVRequest struct {
 	KVList `contributesTo:"body"`
 }
 
+type UniqueHeader struct {
+	Namespace            string `mandatory:"true" contributesTo:"body"`
+	Bucket               string `mandatory:"true" contributesTo:"body"`
+	Content              string `mandatory:"true" contributesTo:"body"`
+	UniqueHeaderValueOne string `mandatory:"false" contributesTo:"header" name:"Content-Type"`
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 func TestHttpMarshallerInvalidStruct(t *testing.T) {
@@ -127,6 +135,19 @@ func TestHttpMarshallerSimpleStruct(t *testing.T) {
 	request := MakeDefaultHTTPRequest(http.MethodPost, "/random")
 	HTTPRequestMarshaller(s, &request)
 	assert.True(t, strings.Contains(request.URL.Path, "111"))
+}
+
+func TestHttpMarshallerDuplicateOnUniqueHeader(t *testing.T) {
+	s := UniqueHeader{
+		Namespace:            "bmcinfrachef",
+		Bucket:               "stack-deployments",
+		Content:              "Hello World!",
+		UniqueHeaderValueOne: "application/json_1",
+	}
+	request := MakeDefaultHTTPRequest(http.MethodPost, "/random")
+	HTTPRequestMarshaller(s, &request)
+	header := request.Header
+	assert.True(t, header.Get(requestHeaderContentType) == "application/json_1")
 }
 
 func TestHttpMarshallerSimpleBody(t *testing.T) {
