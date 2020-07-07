@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 21.2.0 - 2020-07-07
+### Added
+- Support for registering and deregistering autonomous dedicated databases with Data Safe in the Database service
+- Support for switching between non-private-endpoints and private endpoints on autonomous databases in the Database service
+- Support for returning group names when listing identity provider groups in the Identity service
+- Support for server-side object re-encryption in the Object Storage service
+- Support for private endpoint (ingress) and public endpoint whitelisting in the Analytics Cloud service
+
+### Fixed
+- Fixed a bug where setting a Content-Type header twice in the same request
+
 ## 21.1.0 - 2020-06-30
 ### Added
 - Support for the Usage service

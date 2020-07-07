@@ -317,7 +317,7 @@ func createOrGetRouteTable(c core.VirtualNetworkClient, gatewayID, VcnID *string
 			}
 
 			updateRTRequest := core.UpdateRouteTableRequest{
-				RtId: listRTResponse.Items[0].Id,
+				RtId:                    listRTResponse.Items[0].Id,
 				UpdateRouteTableDetails: updateRTDetails,
 			}
 
