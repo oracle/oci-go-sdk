@@ -128,9 +128,9 @@ func ExampleCreateLoadbalancer() {
 	listeners := map[string]loadbalancer.ListenerDetails{
 		listenerDisplayName: {
 			DefaultBackendSetName: common.String(backendSetOneName),
-			Port:         common.Int(80),
-			Protocol:     common.String("HTTP"),
-			RuleSetNames: []string{rulesetOneName},
+			Port:                  common.Int(80),
+			Protocol:              common.String("HTTP"),
+			RuleSetNames:          []string{rulesetOneName},
 		},
 	}
 
