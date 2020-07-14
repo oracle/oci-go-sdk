@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 21.3.0 - 2020-07-14
+### Added
+- Support for the Blockchain service
+- Support for failing over an autonomous database that has Data Guard enabled in the Database service
+- Support for switching over an autonomous database that has Data Guard enabled in the Database service
+- Support for git configuration sources in the Resource Manager service
+- Support for optionally specifying a VCN id on list operations of DHCP options, subnets, security lists, route tables, internet gateways, and local peering gateways in the Networking service
+
 ## 21.2.0 - 2020-07-07
 ### Added
 - Support for registering and deregistering autonomous dedicated databases with Data Safe in the Database service
