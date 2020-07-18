@@ -166,15 +166,20 @@ func (manifest *multipartManifest) splitStreamToParts(done <-chan struct{}, part
 		partNum := 1
 		for {
 			buffer := make([]byte, partSize)
-			_, err := reader.Read(buffer)
+			numberOfBytesRead, err := reader.Read(buffer)
 
 			if err == io.EOF {
 				break
 			}
 
+			// If the number of bytes read is less than the initial buffer size, reduce the buffer size to match the actual content size.
+			if int64(numberOfBytesRead) < partSize {
+				buffer = buffer[:numberOfBytesRead]
+			}
+
 			part := uploadPart{
 				partNum:  partNum,
-				size:     partSize,
+				size:     int64(numberOfBytesRead),
 				err:      err,
 				partBody: buffer,
 			}
