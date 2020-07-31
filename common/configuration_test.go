@@ -794,6 +794,37 @@ region=someregion
 	assert.NotNil(t, key)
 }
 
+func TestComposingConfigurationProvider_WithRegionEnvVar(t *testing.T) {
+	dataTpl := `[DEFAULT]
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+tenancy=sometenancy
+compartment = somecompartment
+`
+	os.Unsetenv("OCI_REGION")
+	os.Setenv("OCI_REGION", "us-phoenix-1")
+
+	keyFile := writeTempFile(testEncryptedPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	provider, err := ConfigurationProviderFromFile(tmpConfFile, testKeyPassphrase)
+	assert.NoError(t, err)
+	ok, err := IsConfigurationProviderValid(provider)
+	assert.NoError(t, err)
+	assert.True(t, ok)
+
+	os.Unsetenv("OCI_REGION")
+	provider, err = ConfigurationProviderFromFile(tmpConfFile, testKeyPassphrase)
+	assert.NoError(t, err)
+	ok, err = IsConfigurationProviderValid(provider)
+	assert.Error(t, err)
+}
+
 func TestConfigurationWithTilde(t *testing.T) {
 	dataTpl := `[DEFAULT]
 user=someuser
