@@ -187,6 +187,9 @@ func TestStringToRegion(t *testing.T) {
 	region = StringToRegion("sjc")
 	assert.Equal(t, RegionSJC1, region)
 
+	region = StringToRegion("brs")
+	assert.Equal(t, RegionUKGovCardiff1, region)
+
 	regionMetadataEnvVar := `{"realmKey":"OC0","realmDomainComponent":"testRealm.com","regionKey":"RTK","regionIdentifier":"us-testregion-1"}`
 	os.Unsetenv("OCI_REGION_METADATA")
 	os.Setenv("OCI_REGION_METADATA", regionMetadataEnvVar)
@@ -204,8 +207,8 @@ func TestStringToRegion(t *testing.T) {
 		"regionIdentifier" : "ap-testregion-2"
 	},
 	{
-		"realmKey" : "OC6",
-		"realmDomainComponent" : "oraclensrcloud.com",
+		"realmKey" : "OC100",
+		"realmDomainComponent" : "oraclefoobar.com",
 		"regionKey" : "DEF",
 		"regionIdentifier" : "us-testregion-3"
 	}
@@ -314,8 +317,8 @@ func TestSetRegionMetadataFromCfgFileWithNormalRegionName(t *testing.T) {
 		"regionIdentifier" : "ap-testregion-2"
 	},
 	{
-		"realmKey" : "OC6",
-		"realmDomainComponent" : "oraclensrcloud.com",
+		"realmKey" : "OC100",
+		"realmDomainComponent" : "oraclefoobar.com",
 		"regionKey" : "DEF",
 		"regionIdentifier" : "us-testregion-3"
 	}
@@ -339,16 +342,16 @@ func TestSetRegionMetadataFromCfgFileWithNormalRegionName(t *testing.T) {
 	ok := setRegionMetadataFromCfgFile(&expectedRegion)
 	assert.Equal(t, true, ok)
 	assert.Equal(t, "", regionRealm[Region("us-testregion-2")])
-	assert.Equal(t, "oc6", regionRealm[Region("us-testregion-3")])
-	assert.Equal(t, "oraclensrcloud.com", realm["oc6"])
+	assert.Equal(t, "oc100", regionRealm[Region("us-testregion-3")])
+	assert.Equal(t, "oraclefoobar.com", realm["oc100"])
 
 	ok = setRegionMetadataFromCfgFile(&expectedRegion)
 	assert.Equal(t, false, ok)
 
 	r := StringToRegion(expectedRegion)
 	assert.Equal(t, Region("us-testregion-3"), r)
-	assert.Equal(t, "oc6", regionRealm[Region("us-testregion-3")])
-	assert.Equal(t, "oraclensrcloud.com", realm["oc6"])
+	assert.Equal(t, "oc100", regionRealm[Region("us-testregion-3")])
+	assert.Equal(t, "oraclefoobar.com", realm["oc100"])
 }
 
 func TestSetRegionMetadataFromCfgFileWithShortRegionName(t *testing.T) {
@@ -361,8 +364,8 @@ func TestSetRegionMetadataFromCfgFileWithShortRegionName(t *testing.T) {
 		"regionIdentifier" : "ap-testregion-2"
 	},
 	{
-		"realmKey" : "OC6",
-		"realmDomainComponent" : "oraclensrcloud.com",
+		"realmKey" : "OC100",
+		"realmDomainComponent" : "oraclefoobar.com",
 		"regionKey" : "DEF",
 		"regionIdentifier" : "us-testregion-3"
 	}
@@ -387,16 +390,16 @@ func TestSetRegionMetadataFromCfgFileWithShortRegionName(t *testing.T) {
 	assert.Equal(t, true, ok)
 	assert.Equal(t, "us-testregion-3", shortCode)
 	assert.Equal(t, "", regionRealm[Region("us-testregion-2")])
-	assert.Equal(t, "oc6", regionRealm[Region("us-testregion-3")])
-	assert.Equal(t, "oraclensrcloud.com", realm["oc6"])
+	assert.Equal(t, "oc100", regionRealm[Region("us-testregion-3")])
+	assert.Equal(t, "oraclefoobar.com", realm["oc100"])
 
 	ok = setRegionMetadataFromCfgFile(&shortCode)
 	assert.Equal(t, false, ok)
 
 	r := StringToRegion("Def")
 	assert.Equal(t, Region("us-testregion-3"), r)
-	assert.Equal(t, "oc6", regionRealm[Region("us-testregion-3")])
-	assert.Equal(t, "oraclensrcloud.com", realm["oc6"])
+	assert.Equal(t, "oc100", regionRealm[Region("us-testregion-3")])
+	assert.Equal(t, "oraclefoobar.com", realm["oc100"])
 }
 
 func TestSetRegionMetadataFromCfgFileWithInvalidFileContent(t *testing.T) {
