@@ -13,20 +13,24 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateTicketDetails Details of Ticket created
+// CreateTicketDetails Details relevant to the support ticket.
+// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type CreateTicketDetails struct {
 
-	// Severity of the ticket. eg: HIGH, MEDIUM
+	// The severity of the support ticket.
 	Severity CreateTicketDetailsSeverityEnum `mandatory:"true" json:"severity"`
 
-	// Title of ticket
+	// The title of the support ticket.
 	Title *string `mandatory:"true" json:"title"`
 
-	// Details of ticket
+	// The description of the support ticket.
 	Description *string `mandatory:"true" json:"description"`
 
-	// List of resources
+	// The list of resources.
 	ResourceList []CreateResourceDetails `mandatory:"false" json:"resourceList"`
+
+	// The context from where the ticket is getting created.
+	ContextualData *ContextualData `mandatory:"false" json:"contextualData"`
 }
 
 func (m CreateTicketDetails) String() string {

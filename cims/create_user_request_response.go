@@ -9,11 +9,11 @@ import (
 	"net/http"
 )
 
-// GetStatusRequest wrapper for the GetStatus operation
-type GetStatusRequest struct {
+// CreateUserRequest wrapper for the CreateUser operation
+type CreateUserRequest struct {
 
-	// The system that generated the support ticket, such as My Oracle Support.
-	Source *string `mandatory:"true" contributesTo:"path" name:"source"`
+	// User information
+	CreateUserDetails `contributesTo:"body"`
 
 	// User OCID for Oracle Identity Cloud Service (IDCS) users who also have a federated Oracle Cloud Infrastructure account.
 	Ocid *string `mandatory:"true" contributesTo:"header" name:"ocid"`
@@ -29,38 +29,38 @@ type GetStatusRequest struct {
 	RequestMetadata common.RequestMetadata
 }
 
-func (request GetStatusRequest) String() string {
+func (request CreateUserRequest) String() string {
 	return common.PointerString(request)
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request GetStatusRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request CreateUserRequest) HTTPRequest(method, path string) (http.Request, error) {
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
-func (request GetStatusRequest) RetryPolicy() *common.RetryPolicy {
+func (request CreateUserRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
 }
 
-// GetStatusResponse wrapper for the GetStatus operation
-type GetStatusResponse struct {
+// CreateUserResponse wrapper for the CreateUser operation
+type CreateUserResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
 
-	// The Status instance
-	Status `presentIn:"body"`
+	// The User instance
+	User `presentIn:"body"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 
-func (response GetStatusResponse) String() string {
+func (response CreateUserResponse) String() string {
 	return common.PointerString(response)
 }
 
 // HTTPResponse implements the OCIResponse interface
-func (response GetStatusResponse) HTTPResponse() *http.Response {
+func (response CreateUserResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
 }

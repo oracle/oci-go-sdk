@@ -13,24 +13,25 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateIncident Details of Incident
+// CreateIncident Details gathered during the creation of the support ticket.
+// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type CreateIncident struct {
 
-	// Tenancy Ocid
+	// The OCID of the tenancy.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	Ticket *CreateTicketDetails `mandatory:"true" json:"ticket"`
 
-	// States type of incident. eg: LIMIT, TECH
+	// The kind of support ticket, such as a technical issue request.
 	ProblemType ProblemTypeEnum `mandatory:"true" json:"problemType"`
 
-	// Customer Support Identifier of the support account
+	// The Customer Support Identifier number for the support account.
 	Csi *string `mandatory:"false" json:"csi"`
 
-	// List of contacts
+	// The list of contacts.
 	Contacts []Contact `mandatory:"false" json:"contacts"`
 
-	// Referrer of the incident., its usually the URL for where the customer logged the incident
+	// The incident referrer. This value is often the URL that the customer used when creating the support ticket.
 	Referrer *string `mandatory:"false" json:"referrer"`
 }
 

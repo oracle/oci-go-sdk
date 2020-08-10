@@ -14,7 +14,8 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateItemDetails Details of Item
+// UpdateItemDetails Details for udpating an item.
+// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type UpdateItemDetails interface {
 }
 

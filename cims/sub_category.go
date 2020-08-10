@@ -13,13 +13,13 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// SubCategory Details of Sub Category of the incident
+// SubCategory Details about the subcategory associated with the support ticket.
 type SubCategory struct {
 
-	// Unique ID that identifies a Sub Category
+	// Unique identifier for the subcategory.
 	SubCategoryKey *string `mandatory:"false" json:"subCategoryKey"`
 
-	// Name of sub category. eg: Backup Count, Custom Image Count
+	// The name of the subcategory. For example, `Backup Count` or `Custom Image Count`.
 	Name *string `mandatory:"false" json:"name"`
 }
 

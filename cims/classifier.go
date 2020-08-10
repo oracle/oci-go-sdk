@@ -13,28 +13,28 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Classifier Incident Classifier details
+// Classifier Details about the incident classifier object.
 type Classifier struct {
 
-	// Unique ID that identifies a classifier
+	// Unique identifier of the classifier.
 	Id *string `mandatory:"false" json:"id"`
 
-	// Name of classifier. eg: LIMIT Increase
+	// The display name of the classifier.
 	Name *string `mandatory:"false" json:"name"`
 
-	// Label of classifier
+	// The label associated with the classifier.
 	Label *string `mandatory:"false" json:"label"`
 
-	// Description of classifier
+	// The description of the classifier.
 	Description *string `mandatory:"false" json:"description"`
 
-	// List of Issues
+	// The list of issues.
 	IssueTypeList []IssueType `mandatory:"false" json:"issueTypeList"`
 
-	// Scope of Service category/resource
+	// The scope of the service category or resource.
 	Scope ClassifierScopeEnum `mandatory:"false" json:"scope,omitempty"`
 
-	// Unit to measure Service category/ resource
+	// The unit to use to measure the service category or resource.
 	Unit ClassifierUnitEnum `mandatory:"false" json:"unit,omitempty"`
 }
 

@@ -13,22 +13,22 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IncidentResourceType Details of incident type
+// IncidentResourceType Details about the resource associated with the support request.
 type IncidentResourceType struct {
 
-	// Label associated with Incident Type
+	// The label associated with the resource.
 	Label *string `mandatory:"true" json:"label"`
 
-	// Unique ID that identifies an Incident Type
+	// Unique identifier of the resource.
 	ResourceTypeKey *string `mandatory:"false" json:"resourceTypeKey"`
 
-	// Name of Incident type
+	// The display name of the resource.
 	Name *string `mandatory:"false" json:"name"`
 
-	// Details of Incident Type
+	// The description of the resource.
 	Description *string `mandatory:"false" json:"description"`
 
-	// Service Category List
+	// The service category list.
 	ServiceCategoryList []ServiceCategory `mandatory:"false" json:"serviceCategoryList"`
 }
 

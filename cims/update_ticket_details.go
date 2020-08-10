@@ -13,10 +13,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateTicketDetails Details of Ticket updated
+// UpdateTicketDetails Details about the ticket updated.
+// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type UpdateTicketDetails struct {
 
-	// List of resources
+	// The list of resources.
 	Resource *interface{} `mandatory:"true" json:"resource"`
 }
 

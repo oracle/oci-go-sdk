@@ -14,7 +14,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateLimitItemDetails Details of Limit Item
+// CreateLimitItemDetails Reserved for future use.
 type CreateLimitItemDetails struct {
 	Category *CreateCategoryDetails `mandatory:"false" json:"category"`
 
@@ -22,19 +22,19 @@ type CreateLimitItemDetails struct {
 
 	IssueType *CreateIssueTypeDetails `mandatory:"false" json:"issueType"`
 
-	// Name of the item
+	// The display name of the item.
 	Name *string `mandatory:"false" json:"name"`
 
-	// Current available limit of the resource
+	// The limit of the resource currently available.
 	CurrentLimit *int `mandatory:"false" json:"currentLimit"`
 
-	// Current used limit of the resource
+	// The current usage of the resource.
 	CurrentUsage *int `mandatory:"false" json:"currentUsage"`
 
-	// Requested limit for the resource
+	// Reserved for future use.
 	RequestedLimit *int `mandatory:"false" json:"requestedLimit"`
 
-	// Status of the Limit
+	// The current status of the request.
 	LimitStatus CreateLimitItemDetailsLimitStatusEnum `mandatory:"false" json:"limitStatus,omitempty"`
 }
 

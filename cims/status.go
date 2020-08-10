@@ -13,13 +13,13 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Status Details of Ticket Status
+// Status Details about the status of the support ticket.
 type Status struct {
 
-	// Unique code
+	// The code unique to this ticket status.
 	Code *string `mandatory:"true" json:"code"`
 
-	// Status message
+	// The status message for this ticket.
 	Message *string `mandatory:"true" json:"message"`
 }
 

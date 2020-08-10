@@ -13,19 +13,19 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Contact Contact Details of the Customer
+// Contact Contact details for the customer.
 type Contact struct {
 
-	// Contact person name
+	// The name of the contact person.
 	ContactName *string `mandatory:"false" json:"contactName"`
 
-	// Contact person email
+	// The email of the contact person.
 	ContactEmail *string `mandatory:"false" json:"contactEmail"`
 
-	// Contact person phone number
+	// The phone number of the contact person.
 	ContactPhone *string `mandatory:"false" json:"contactPhone"`
 
-	// ContactType enum. eg: MANAGER, PRIMARY
+	// The type of contact, such as primary or alternate.
 	ContactType ContactContactTypeEnum `mandatory:"false" json:"contactType,omitempty"`
 }
 

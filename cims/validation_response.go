@@ -13,10 +13,10 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ValidationResponse Validation Response
+// ValidationResponse The validation response returned when checking whether the requested user is valid.
 type ValidationResponse struct {
 
-	// Boolean value to check whether requested user is valid or not
+	// Boolean value that indicates whether the requested user is valid.
 	IsValidUser *bool `mandatory:"false" json:"isValidUser"`
 }
 

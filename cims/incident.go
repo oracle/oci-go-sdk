@@ -13,13 +13,13 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Incident Details of Incident
+// Incident Details of about the incident object.
 type Incident struct {
 
-	// Unique ID that identifies an Incident
+	// Unique identifier for the support ticket.
 	Key *string `mandatory:"true" json:"key"`
 
-	// Tenancy Ocid
+	// The OCID of the tenancy.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	ContactList *ContactList `mandatory:"false" json:"contactList"`
@@ -30,10 +30,10 @@ type Incident struct {
 
 	IncidentType *IncidentType `mandatory:"false" json:"incidentType"`
 
-	// States type of incident. eg: LIMIT, TECH
+	// The kind of support ticket, such as a technical support request.
 	ProblemType ProblemTypeEnum `mandatory:"false" json:"problemType,omitempty"`
 
-	// Referrer of the incident., its usually the URL for where the customer logged the incident
+	// The incident referrer. This value is often the URL that the customer used when creating the support ticket.
 	Referrer *string `mandatory:"false" json:"referrer"`
 }
 

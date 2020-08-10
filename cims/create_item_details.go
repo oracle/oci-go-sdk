@@ -14,7 +14,8 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateItemDetails Details of Item
+// CreateItemDetails Details gathered during item creation.
+// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type CreateItemDetails interface {
 	GetCategory() *CreateCategoryDetails
 
@@ -22,7 +23,7 @@ type CreateItemDetails interface {
 
 	GetIssueType() *CreateIssueTypeDetails
 
-	// Name of the item
+	// The display name of the item.
 	GetName() *string
 }
 
