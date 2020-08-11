@@ -23,7 +23,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 - Support for changing instance shapes and restarting nodes in the Big Data service
 - Support for additional versions (for example CSQL) in the Big Data service
 - Support for creating stacks from compartments in the Resource Manager service
-- Support for Go Modules
 
 ### Breaking changes
 - Updated the property of `LifeCycleDetails` to `LifecycleDetails` from the model of `BlockchainPlatformSummary` and `BlockchainPlatformByHostname` in the blockchain service
