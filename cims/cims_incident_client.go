@@ -75,18 +75,13 @@ func (client *IncidentClient) ConfigurationProvider() *common.ConfigurationProvi
 	return client.config
 }
 
-// CreateIncident This API enables the customer to Create an Incident
+// CreateIncident Enables the customer to create an support ticket.
 func (client IncidentClient) CreateIncident(ctx context.Context, request CreateIncidentRequest) (response CreateIncidentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
-
-	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
-		request.OpcRetryToken = common.String(common.RetryToken())
-	}
-
 	ociResponse, err = common.Retry(ctx, request, client.createIncident, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -127,7 +122,7 @@ func (client IncidentClient) createIncident(ctx context.Context, request common.
 	return response, err
 }
 
-// GetIncident This API fetches the details of a requested Incident
+// GetIncident Gets the details of the support ticket.
 func (client IncidentClient) GetIncident(ctx context.Context, request GetIncidentRequest) (response GetIncidentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -174,7 +169,7 @@ func (client IncidentClient) getIncident(ctx context.Context, request common.OCI
 	return response, err
 }
 
-// GetStatus GetStatus of the Service
+// GetStatus Gets the status of the service.
 func (client IncidentClient) GetStatus(ctx context.Context, request GetStatusRequest) (response GetStatusResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -221,7 +216,7 @@ func (client IncidentClient) getStatus(ctx context.Context, request common.OCIRe
 	return response, err
 }
 
-// ListIncidentResourceTypes This API returns the list of all possible product that OCI supports, while creating an incident
+// ListIncidentResourceTypes During support ticket creation, returns the list of all possible products that Oracle Cloud Infrastructure supports.
 func (client IncidentClient) ListIncidentResourceTypes(ctx context.Context, request ListIncidentResourceTypesRequest) (response ListIncidentResourceTypesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -268,7 +263,7 @@ func (client IncidentClient) listIncidentResourceTypes(ctx context.Context, requ
 	return response, err
 }
 
-// ListIncidents This API returns the list of incidents raised by the tenant
+// ListIncidents Returns the list of support tickets raised by the tenancy.
 func (client IncidentClient) ListIncidents(ctx context.Context, request ListIncidentsRequest) (response ListIncidentsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -315,18 +310,13 @@ func (client IncidentClient) listIncidents(ctx context.Context, request common.O
 	return response, err
 }
 
-// UpdateIncident This API updates an existing incident
+// UpdateIncident Updates the specified support ticket's information.
 func (client IncidentClient) UpdateIncident(ctx context.Context, request UpdateIncidentRequest) (response UpdateIncidentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
-
-	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
-		request.OpcRetryToken = common.String(common.RetryToken())
-	}
-
 	ociResponse, err = common.Retry(ctx, request, client.updateIncident, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -367,18 +357,13 @@ func (client IncidentClient) updateIncident(ctx context.Context, request common.
 	return response, err
 }
 
-// ValidateUser ValidateUser
+// ValidateUser Checks whether the requested user is valid.
 func (client IncidentClient) ValidateUser(ctx context.Context, request ValidateUserRequest) (response ValidateUserResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
-
-	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
-		request.OpcRetryToken = common.String(common.RetryToken())
-	}
-
 	ociResponse, err = common.Retry(ctx, request, client.validateUser, policy)
 	if err != nil {
 		if ociResponse != nil {

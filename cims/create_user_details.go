@@ -13,16 +13,34 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// TenancyInformation Details about the customer's tenancy.
-type TenancyInformation struct {
-
-	// The Customer Support Identifier number associated with the tenancy.
-	CustomerSupportKey *string `mandatory:"true" json:"customerSupportKey"`
+// CreateUserDetails Details about creation of user.
+type CreateUserDetails struct {
 
 	// The OCID of the tenancy.
-	TenancyId *string `mandatory:"true" json:"tenancyId"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
+
+	// First name of the user.
+	FirstName *string `mandatory:"true" json:"firstName"`
+
+	// Last name of the user.
+	LastName *string `mandatory:"true" json:"lastName"`
+
+	// Country of the user.
+	Country *string `mandatory:"true" json:"country"`
+
+	// CSI to be associated to the user.
+	Csi *string `mandatory:"true" json:"csi"`
+
+	// Contact number of the user.
+	Phone *string `mandatory:"true" json:"phone"`
+
+	// Timezone of the user.
+	Timezone *string `mandatory:"true" json:"timezone"`
+
+	// Organization of the user.
+	OrganizationName *string `mandatory:"true" json:"organizationName"`
 }
 
-func (m TenancyInformation) String() string {
+func (m CreateUserDetails) String() string {
 	return common.PointerString(m)
 }

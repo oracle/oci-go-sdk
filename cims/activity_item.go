@@ -14,13 +14,13 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// ActivityItem Details of Activity Item
+// ActivityItem Details about the ActivityItem object.
 type ActivityItem struct {
 
-	// Unique ID that identifies an Item
+	// Unique identifier for the item.
 	ItemKey *string `mandatory:"true" json:"itemKey"`
 
-	// Name of item
+	// The display name of the item.
 	Name *string `mandatory:"false" json:"name"`
 
 	Category *Category `mandatory:"false" json:"category"`
@@ -29,19 +29,19 @@ type ActivityItem struct {
 
 	IssueType *IssueType `mandatory:"false" json:"issueType"`
 
-	// Comments to update as part of Activity
+	// Comments added with the activity on the support ticket.
 	Comments *string `mandatory:"false" json:"comments"`
 
-	// Epoch time when activity was created
+	// The time when the activity was created, in milliseconds since epoch time.
 	TimeCreated *int `mandatory:"false" json:"timeCreated"`
 
-	// Epoch time when activity was updated
+	// The time when the activity was updated, in milliseconds since epoch time.
 	TimeUpdated *int `mandatory:"false" json:"timeUpdated"`
 
-	// Type of activity. eg: NOTES, UPDATE
+	// The type of activity occuring on the support ticket.
 	ActivityType ActivityItemActivityTypeEnum `mandatory:"false" json:"activityType,omitempty"`
 
-	// Person who updates the activity
+	// The person who updates the activity on the support ticket.
 	ActivityAuthor ActivityItemActivityAuthorEnum `mandatory:"false" json:"activityAuthor,omitempty"`
 }
 

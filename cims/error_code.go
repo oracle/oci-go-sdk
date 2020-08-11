@@ -32,6 +32,11 @@ const (
 	ErrorCodeExternalServiceProviderUnavailable ErrorCodeEnum = "EXTERNAL_SERVICE_PROVIDER_UNAVAILABLE"
 	ErrorCodeExternalServiceProviderTimeout     ErrorCodeEnum = "EXTERNAL_SERVICE_PROVIDER_TIMEOUT"
 	ErrorCodeTooManyRequests                    ErrorCodeEnum = "TOO_MANY_REQUESTS"
+	ErrorCodeIdpScimNotSetup                    ErrorCodeEnum = "IDP_SCIM_NOT_SETUP"
+	ErrorCodeIncidentNotFound                   ErrorCodeEnum = "INCIDENT_NOT_FOUND"
+	ErrorCodeInvalidUserCsi                     ErrorCodeEnum = "INVALID_USER_CSI"
+	ErrorCodeDataAlreadyExists                  ErrorCodeEnum = "DATA_ALREADY_EXISTS"
+	ErrorCodeAuthUserNotMatching                ErrorCodeEnum = "AUTH_USER_NOT_MATCHING"
 )
 
 var mappingErrorCode = map[string]ErrorCodeEnum{
@@ -53,6 +58,11 @@ var mappingErrorCode = map[string]ErrorCodeEnum{
 	"EXTERNAL_SERVICE_PROVIDER_UNAVAILABLE": ErrorCodeExternalServiceProviderUnavailable,
 	"EXTERNAL_SERVICE_PROVIDER_TIMEOUT":     ErrorCodeExternalServiceProviderTimeout,
 	"TOO_MANY_REQUESTS":                     ErrorCodeTooManyRequests,
+	"IDP_SCIM_NOT_SETUP":                    ErrorCodeIdpScimNotSetup,
+	"INCIDENT_NOT_FOUND":                    ErrorCodeIncidentNotFound,
+	"INVALID_USER_CSI":                      ErrorCodeInvalidUserCsi,
+	"DATA_ALREADY_EXISTS":                   ErrorCodeDataAlreadyExists,
+	"AUTH_USER_NOT_MATCHING":                ErrorCodeAuthUserNotMatching,
 }
 
 // GetErrorCodeEnumValues Enumerates the set of values for ErrorCodeEnum

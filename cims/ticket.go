@@ -13,34 +13,34 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// Ticket Details of Ticket created
+// Ticket Details about the ticket created.
 type Ticket struct {
 
-	// Severity of the ticket. eg: HIGH, MEDIUM
+	// The severity assigned to the ticket.
 	Severity TicketSeverityEnum `mandatory:"true" json:"severity"`
 
-	// Title of ticket
+	// The title of the ticket.
 	Title *string `mandatory:"true" json:"title"`
 
-	// Details of ticket
+	// The description of the issue addressed in the ticket.
 	Description *string `mandatory:"true" json:"description"`
 
-	// Unique ID that identifies a Ticket
+	// Unique identifier for the ticket.
 	TicketNumber *string `mandatory:"false" json:"ticketNumber"`
 
-	// List of resources
+	// The list of resources associated with the ticket.
 	ResourceList []Resource `mandatory:"false" json:"resourceList"`
 
-	// Epoch time of ticket creation
+	// The time when the ticket was created, in milliseconds since epoch time.
 	TimeCreated *int `mandatory:"false" json:"timeCreated"`
 
-	// Epoch time of ticket updated
+	// The time when the ticket was updated, in milliseconds since epoch time.
 	TimeUpdated *int `mandatory:"false" json:"timeUpdated"`
 
-	// Describes the lifecycles of a ticket
+	// The current state of the ticket.
 	LifecycleState LifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
-	// Describes the lifecycle details of a ticket
+	// Additional information about the current `lifecycleState`.
 	LifecycleDetails LifecycleDetailsEnum `mandatory:"false" json:"lifecycleDetails,omitempty"`
 }
 

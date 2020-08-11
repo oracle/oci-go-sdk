@@ -257,6 +257,16 @@ Built-in logging in the SDK is controlled via the environment variable "OCI_GO_S
 If the value of the environment variable does not match any of the above then default logging level is "info".
 If the environment variable is not present then no logging messages are emitted.
 
+The default destination for logging is Stderr and if you want to output log to a file you can set via environment variable "OCI_GO_SDK_LOG_OUTPUT_MODE". The below are possible values
+
+1. "file" or "f" enables all logging output saved to file
+
+2. "combine" or "c" enables all logging output to both stderr and file
+
+If the value does not match any of the above or does not exist then default logging output will be set to Stderr
+
+You can also customize the log file location and name via "OCI_GO_SDK_LOG_FILE" environment variable, the value should be the path to a specific file
+If this environment variable is not present, the default location will be the project root path
 
 Retry
 

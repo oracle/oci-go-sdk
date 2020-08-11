@@ -40,8 +40,6 @@ const (
 	AvailabilityDomainApSeoul1Ad1     AvailabilityDomainEnum = "AP_SEOUL_1_AD_1"
 	AvailabilityDomainApMumbai1Ad1    AvailabilityDomainEnum = "AP_MUMBAI_1_AD_1"
 	AvailabilityDomainSaSaopaulo1Ad1  AvailabilityDomainEnum = "SA_SAOPAULO_1_AD_1"
-	AvailabilityDomainUsLuke1Ad1      AvailabilityDomainEnum = "US_LUKE_1_AD_1"
-	AvailabilityDomainUsLangley1Ad1   AvailabilityDomainEnum = "US_LANGLEY_1_AD_1"
 	AvailabilityDomainMeJeddah1Ad1    AvailabilityDomainEnum = "ME_JEDDAH_1_AD_1"
 	AvailabilityDomainApOsaka1Ad1     AvailabilityDomainEnum = "AP_OSAKA_1_AD_1"
 	AvailabilityDomainApSydney1Ad1    AvailabilityDomainEnum = "AP_SYDNEY_1_AD_1"
@@ -51,7 +49,6 @@ const (
 	AvailabilityDomainCaMontreal1Ad1  AvailabilityDomainEnum = "CA_MONTREAL_1_AD_1"
 	AvailabilityDomainApHyderabad1Ad1 AvailabilityDomainEnum = "AP_HYDERABAD_1_AD_1"
 	AvailabilityDomainApChuncheon1Ad1 AvailabilityDomainEnum = "AP_CHUNCHEON_1_AD_1"
-	AvailabilityDomainUsTacoma1Ad1    AvailabilityDomainEnum = "US_TACOMA_1_AD_1"
 	AvailabilityDomainNoAd            AvailabilityDomainEnum = "NO_AD"
 )
 
@@ -82,8 +79,6 @@ var mappingAvailabilityDomain = map[string]AvailabilityDomainEnum{
 	"AP_SEOUL_1_AD_1":     AvailabilityDomainApSeoul1Ad1,
 	"AP_MUMBAI_1_AD_1":    AvailabilityDomainApMumbai1Ad1,
 	"SA_SAOPAULO_1_AD_1":  AvailabilityDomainSaSaopaulo1Ad1,
-	"US_LUKE_1_AD_1":      AvailabilityDomainUsLuke1Ad1,
-	"US_LANGLEY_1_AD_1":   AvailabilityDomainUsLangley1Ad1,
 	"ME_JEDDAH_1_AD_1":    AvailabilityDomainMeJeddah1Ad1,
 	"AP_OSAKA_1_AD_1":     AvailabilityDomainApOsaka1Ad1,
 	"AP_SYDNEY_1_AD_1":    AvailabilityDomainApSydney1Ad1,
@@ -93,7 +88,6 @@ var mappingAvailabilityDomain = map[string]AvailabilityDomainEnum{
 	"CA_MONTREAL_1_AD_1":  AvailabilityDomainCaMontreal1Ad1,
 	"AP_HYDERABAD_1_AD_1": AvailabilityDomainApHyderabad1Ad1,
 	"AP_CHUNCHEON_1_AD_1": AvailabilityDomainApChuncheon1Ad1,
-	"US_TACOMA_1_AD_1":    AvailabilityDomainUsTacoma1Ad1,
 	"NO_AD":               AvailabilityDomainNoAd,
 }
 

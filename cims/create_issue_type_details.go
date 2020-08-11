@@ -13,10 +13,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateIssueTypeDetails Details Issue Type of the incident
+// CreateIssueTypeDetails Details for creating the issue type of the support ticket.
+// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type CreateIssueTypeDetails struct {
 
-	// Unique ID that identifies an Issue Type
+	// Unique identifier for the issue type.
 	IssueTypeKey *string `mandatory:"false" json:"issueTypeKey"`
 }
 

@@ -13,16 +13,16 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IncidentSummary Details of Incident
+// IncidentSummary Details about the support ticket.
 type IncidentSummary struct {
 
-	// Unique ID that identifies an Incident
+	// Unique identifier of the incident.
 	Key *string `mandatory:"true" json:"key"`
 
-	// States type of incident. eg: LIMIT, TECH
+	// The kind of support ticket, such as a technical support request.
 	ProblemType ProblemTypeEnum `mandatory:"true" json:"problemType"`
 
-	// Tenancy Ocid
+	// The OCID of the tenancy.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	ContactList *ContactList `mandatory:"false" json:"contactList"`

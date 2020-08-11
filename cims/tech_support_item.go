@@ -14,13 +14,13 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// TechSupportItem Details of TechSupport Item
+// TechSupportItem Details about the TechSupportItem object.
 type TechSupportItem struct {
 
-	// Unique ID that identifies an Item
+	// Unique identifier for the item.
 	ItemKey *string `mandatory:"true" json:"itemKey"`
 
-	// Name of item
+	// The display name of the item.
 	Name *string `mandatory:"false" json:"name"`
 
 	Category *Category `mandatory:"false" json:"category"`

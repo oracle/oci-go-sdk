@@ -14,7 +14,8 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateTechSupportItemDetails Details of TechSupport Item
+// CreateTechSupportItemDetails Details about the issue that the technical support request relates to.
+// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type CreateTechSupportItemDetails struct {
 	Category *CreateCategoryDetails `mandatory:"false" json:"category"`
 
@@ -22,7 +23,7 @@ type CreateTechSupportItemDetails struct {
 
 	IssueType *CreateIssueTypeDetails `mandatory:"false" json:"issueType"`
 
-	// Name of the item
+	// The display name of the item.
 	Name *string `mandatory:"false" json:"name"`
 }
 
