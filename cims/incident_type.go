@@ -13,22 +13,22 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IncidentType Details of incident type
+// IncidentType Details about the incident type object.
 type IncidentType struct {
 
-	// Unique ID that identifies an Incident Type
+	// Unique identifier for the incident type.
 	Id *string `mandatory:"false" json:"id"`
 
-	// Name of Incident type
+	// The name of the incident type.
 	Name *string `mandatory:"false" json:"name"`
 
-	// Label associated with Incident Type
+	// The label associated with the incident type.
 	Label *string `mandatory:"false" json:"label"`
 
-	// Details of Incident Type
+	// The description of the incident type.
 	Description *string `mandatory:"false" json:"description"`
 
-	// List of classifiers
+	// The list of classifiers.
 	ClassifierList []Classifier `mandatory:"false" json:"classifierList"`
 }
 

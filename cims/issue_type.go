@@ -13,13 +13,13 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// IssueType Details Issue Type of the incident
+// IssueType Details about the issue type associated with the support ticket.
 type IssueType struct {
 
-	// Unique ID that identifies an Issue Type
+	// Unique identifier for the issue type.
 	IssueTypeKey *string `mandatory:"false" json:"issueTypeKey"`
 
-	// Label of issue type. eg: Instance Performance
+	// The label for the issue type. For example, `Instance Performance`.
 	Label *string `mandatory:"false" json:"label"`
 }
 

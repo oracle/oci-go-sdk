@@ -13,10 +13,11 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// CreateCategoryDetails Details of Category of the incident
+// CreateCategoryDetails Details for creating the category of the support ticket.
+// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type CreateCategoryDetails struct {
 
-	// Unique ID that identifies a Category
+	// Unique identifier for the category.
 	CategoryKey *string `mandatory:"false" json:"categoryKey"`
 }
 

@@ -14,13 +14,14 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateActivityItemDetails Details of Activity Item
+// UpdateActivityItemDetails Details for udpating the support ticket activity.
+// **Caution:** Avoid using any confidential information when you supply string values using the API.
 type UpdateActivityItemDetails struct {
 
-	// Comments to update as part of Activity
+	// Comments updated at the time that the activity occurs.
 	Comments *string `mandatory:"false" json:"comments"`
 
-	// Type of activity. eg: NOTES, UPDATE
+	// The type of activity occurring.
 	ActivityType UpdateActivityItemDetailsActivityTypeEnum `mandatory:"false" json:"activityType,omitempty"`
 }
 

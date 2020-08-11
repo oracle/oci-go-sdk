@@ -13,16 +13,22 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// TenancyInformation Details about the customer's tenancy.
-type TenancyInformation struct {
+// ContextualData The representation of ContextualData
+type ContextualData struct {
 
-	// The Customer Support Identifier number associated with the tenancy.
-	CustomerSupportKey *string `mandatory:"true" json:"customerSupportKey"`
+	// The unique client identifier
+	ClientId *string `mandatory:"true" json:"clientId"`
 
-	// The OCID of the tenancy.
-	TenancyId *string `mandatory:"true" json:"tenancyId"`
+	// The schema name
+	SchemaName *string `mandatory:"true" json:"schemaName"`
+
+	// The schema version
+	SchemaVersion *string `mandatory:"true" json:"schemaVersion"`
+
+	// The context data payload
+	Payload *string `mandatory:"true" json:"payload"`
 }
 
-func (m TenancyInformation) String() string {
+func (m ContextualData) String() string {
 	return common.PointerString(m)
 }

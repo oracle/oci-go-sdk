@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// UpdateIncident Details of Resource Item to be updated
+// UpdateIncident Details about the support ticket being updated.
 type UpdateIncident struct {
 	Ticket *UpdateTicketDetails `mandatory:"true" json:"ticket"`
 }

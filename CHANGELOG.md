@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 24.0.0 - 2020-08-11
+### Added
+- Support for autonomous json databases in the Database service
+- Support for cleaning up uncommitted multipart uploads in the Object Storage service
+- Support for additional list API filters in the Data Catalog service
+- Support for Go SDK logging to file 
+- Support for Go Modules
+
+### Breaking changes
+- Some unusable region enums were removed from the Support Management service
+- `CreateIncidentRequest` parameter `OpcRetryToken` was removed from the Support Management service
+
 ## 23.0.0 - 2020-08-04
 ### Added
 - Support for calling Oracle Cloud Infrastructure services in the uk-gov-cardiff-1 region

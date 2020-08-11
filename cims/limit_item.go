@@ -14,13 +14,13 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 )
 
-// LimitItem Details of Limit Item
+// LimitItem Reserved for future use.
 type LimitItem struct {
 
-	// Unique ID that identifies an Item
+	// Unique identifier for the item.
 	ItemKey *string `mandatory:"true" json:"itemKey"`
 
-	// Name of item
+	// The display name of the item.
 	Name *string `mandatory:"false" json:"name"`
 
 	Category *Category `mandatory:"false" json:"category"`
@@ -29,16 +29,16 @@ type LimitItem struct {
 
 	IssueType *IssueType `mandatory:"false" json:"issueType"`
 
-	// Current available limit of the resource
+	// The currently available limit of the resource.
 	CurrentLimit *int `mandatory:"false" json:"currentLimit"`
 
-	// Current used limit of the resource
+	// The current usage of the resource.
 	CurrentUsage *int `mandatory:"false" json:"currentUsage"`
 
-	// Requested limit for the resource
+	// The requested limit for the resource.
 	RequestedLimit *int `mandatory:"false" json:"requestedLimit"`
 
-	// Status of the Limit
+	// The status of the request.
 	LimitStatus LimitItemLimitStatusEnum `mandatory:"false" json:"limitStatus,omitempty"`
 }
 
