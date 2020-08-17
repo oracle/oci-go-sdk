@@ -56,6 +56,8 @@ func (uploader *multipartUpload) uploadParts(ctx context.Context, done <-chan st
 		if err != nil {
 			common.Debugf("upload error %v\n", err)
 			part.err = err
+		} else {
+			part.partBody = nil
 		}
 		part.etag = resp.ETag
 		select {

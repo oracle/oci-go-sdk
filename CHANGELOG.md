@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 24.1.0 - 2020-08-18
+### Added
+- Support for custom boot volume size and other node pool updates in the Container Engine for Kubernetes service
+- Support for Data Guard on Exadata Cloud at Customer VM clusters in the Database service
+- Support for stopping VM instances after scheduled maintenance or hypervisor reboots in the Compute service
+- Support for creating and managing private endpoints in the Data Flow service
+- Fix upload manager upload extreme large file out of memory issue
+- Temporarily remove go mod feature
+
 ## 24.0.0 - 2020-08-11
 ### Added
 - Support for autonomous json databases in the Database service
