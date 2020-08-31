@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 24.2.0 - 2020-09-01
+### Added
+- Support for calling Oracle Cloud Infrastructure services in the ap-chiyoda-1 region
+- Support for VM database cloning in the Database service
+- Support for the MAINTENANCE_IN_PROGRESS lifecycle state on database systems, VM clusters, and Cloud Exadata in the Database service
+- Support for provisioning refreshable clones in the Database service
+- Support for new options on listeners and backend sets for specifying SSL protocols, SSL cipher suites, and server ordering preferences in the Load Balancing service
+- Support for AMD flexible shapes with configurable CPU in the Container Engine for Kubernetes service
+- Support for network sources in authentication policies in the Identity service
+
 ## 24.1.0 - 2020-08-18
 ### Added
 - Support for custom boot volume size and other node pool updates in the Container Engine for Kubernetes service
