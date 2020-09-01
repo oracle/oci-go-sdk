@@ -49,6 +49,11 @@ func TestEndpoint(t *testing.T) {
 	region = StringToRegion("uk-gov-london-1")
 	endpoint = region.Endpoint("bar")
 	assert.Equal(t, "bar.uk-gov-london-1.oraclegovcloud.uk", endpoint)
+
+	//OC8
+	region = StringToRegion("ap-chiyoda-1")
+	endpoint = region.Endpoint("bar")
+	assert.Equal(t, "bar.ap-chiyoda-1.oraclecloud8.com", endpoint)
 }
 
 func TestEndpointForTemplate(t *testing.T) {
@@ -136,6 +141,13 @@ func TestEndpointForTemplate(t *testing.T) {
 			endpointTemplate: "https://test.{region}.{secondLevelDomain}",
 			expected:         "https://test.uk-gov-london-1.oraclegovcloud.uk",
 		},
+		{
+			// template with everything for OC8
+			region:           StringToRegion("ap-chiyoda-1"),
+			service:          "test",
+			endpointTemplate: "https://test.{region}.{secondLevelDomain}",
+			expected:         "https://test.ap-chiyoda-1.oraclecloud8.com",
+		},
 	}
 
 	for _, testData := range testDataSet {
@@ -153,6 +165,9 @@ func TestStringToRegion(t *testing.T) {
 
 	region = StringToRegion("kix")
 	assert.Equal(t, RegionAPOsaka1, region)
+
+	region = StringToRegion("nja")
+	assert.Equal(t, RegionAPChiyoda1, region)
 
 	region = StringToRegion("syd")
 	assert.Equal(t, RegionAPSydney1, region)
