@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // CompositeType A CompositeType represents a type that is composed of a list of sub-types, for example an "Address" type.   The sub-types can be simple DataType or other CompositeType objects. Thus in general a CompositeType may represent an arbitrarily deep hierarchy of types.

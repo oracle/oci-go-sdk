@@ -11,7 +11,7 @@ package analytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // ChangeAnalyticsInstanceNetworkEndpointDetails Input payload to update an Analytics instance endpoint details.

@@ -12,7 +12,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // UpdateManagementSavedSearchDetails Properties of a saved search.  Saved search id must not be provided.

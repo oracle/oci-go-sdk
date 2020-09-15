@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 25.0.0 - 2020-09-15
+### Added
+- Support for the Cloud Guard service
+- Support for specifying desired consumption models when creating instances in the Integration service
+- Support for dynamic shapes in the Load Balancing service
+- Support for allowing clients to return their currently configured endpoint
+- Support for running existing code/samples which call the SDK in Cloud Shell without any changes
+- Support for dumping request/response body in SDK logging error for 4XX/5XX errors
+- Support for Go Modules
+
+### Breaking changes
+- All oci-go-sdk imports need to add specific major version for go module users, for more information please refer README.md
+- Method `AuthType()` was added to the interface `ConfigurationProvider`, any interface/struct that inherits the interface is expected to implement AuthType()
+- Client end logging level was updated from debug to info level for errors in `client.HTTPClient.Do(request)`
+
 ## 24.3.0 - 2020-09-08
 ### Added
 - Support for Logging Service

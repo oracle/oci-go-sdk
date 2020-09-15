@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // UpdateAuthenticationPolicyDetails Update request for authentication policy, describes set of validation rules and their parameters to be updated.

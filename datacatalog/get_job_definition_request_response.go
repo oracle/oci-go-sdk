@@ -5,7 +5,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 	"net/http"
 )
 
@@ -99,21 +99,21 @@ const (
 )
 
 var mappingGetJobDefinitionFields = map[string]GetJobDefinitionFieldsEnum{
-	"key":             GetJobDefinitionFieldsKey,
-	"displayName":     GetJobDefinitionFieldsDisplayname,
-	"description":     GetJobDefinitionFieldsDescription,
-	"catalogId":       GetJobDefinitionFieldsCatalogid,
-	"jobType":         GetJobDefinitionFieldsJobtype,
-	"isIncremental":   GetJobDefinitionFieldsIsincremental,
-	"dataAssetKey":    GetJobDefinitionFieldsDataassetkey,
-	"connectionKey":   GetJobDefinitionFieldsConnectionkey,
-	"internalVersion": GetJobDefinitionFieldsInternalversion,
-	"lifecycleState":  GetJobDefinitionFieldsLifecyclestate,
-	"timeCreated":     GetJobDefinitionFieldsTimecreated,
-	"timeUpdated":     GetJobDefinitionFieldsTimeupdated,
-	"createdById":     GetJobDefinitionFieldsCreatedbyid,
-	"updatedById":     GetJobDefinitionFieldsUpdatedbyid,
-	"uri":             GetJobDefinitionFieldsUri,
+	"key":                        GetJobDefinitionFieldsKey,
+	"displayName":                GetJobDefinitionFieldsDisplayname,
+	"description":                GetJobDefinitionFieldsDescription,
+	"catalogId":                  GetJobDefinitionFieldsCatalogid,
+	"jobType":                    GetJobDefinitionFieldsJobtype,
+	"isIncremental":              GetJobDefinitionFieldsIsincremental,
+	"dataAssetKey":               GetJobDefinitionFieldsDataassetkey,
+	"connectionKey":              GetJobDefinitionFieldsConnectionkey,
+	"internalVersion":            GetJobDefinitionFieldsInternalversion,
+	"lifecycleState":             GetJobDefinitionFieldsLifecyclestate,
+	"timeCreated":                GetJobDefinitionFieldsTimecreated,
+	"timeUpdated":                GetJobDefinitionFieldsTimeupdated,
+	"createdById":                GetJobDefinitionFieldsCreatedbyid,
+	"updatedById":                GetJobDefinitionFieldsUpdatedbyid,
+	"uri":                        GetJobDefinitionFieldsUri,
 	"isSampleDataExtracted":      GetJobDefinitionFieldsIssampledataextracted,
 	"sampleDataSizeInMBs":        GetJobDefinitionFieldsSampledatasizeinmbs,
 	"timeLatestExecutionStarted": GetJobDefinitionFieldsTimelatestexecutionstarted,

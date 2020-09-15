@@ -44,6 +44,10 @@ func (c customConfig) KeyID() (string, error) {
 	return "b/b/b", nil
 }
 
+func (c customConfig) AuthType() (AuthConfig, error) {
+	return AuthConfig{UserPrincipal, false, nil}, nil
+}
+
 func testClientWithRegion(r Region) BaseClient {
 	p := customConfig{Reg: r}
 	c, _ := NewClientWithConfig(p)
@@ -528,9 +532,78 @@ region=us-ashburn-1
 
 	configurationProvider, errConf := ConfigurationProviderFromFile(tmpConfFile, "")
 	assert.NoError(t, errConf)
+	authConfig, err := configurationProvider.AuthType()
+	assert.Nil(t, err)
+	assert.Equal(t, authConfig.AuthType, UserPrincipal)
 
 	client, err := NewClientWithConfig(configurationProvider)
 	assert.NotNil(t, client)
+	assert.NoError(t, err)
+}
+
+func TestBaseClient_CreateWithAuthConfig(t *testing.T) {
+	delegationTokenContent := `fakeContent`
+	tokenFile := writeTempFile(delegationTokenContent)
+	dataTpl := `[DEFAULT]
+tenancy=sometenancy
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+region=us-ashburn-1
+authentication_type=instance_principal
+delegation_token_file=%s
+`
+
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile, tokenFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+	defer removeFileFn(tokenFile)
+
+	configurationProvider, errConf := ConfigurationProviderFromFile(tmpConfFile, "")
+	assert.NoError(t, errConf)
+	authConfig, err := configurationProvider.AuthType()
+	assert.Nil(t, err)
+	assert.Equal(t, *authConfig.OboToken, delegationTokenContent)
+	assert.Equal(t, authConfig.AuthType, InstancePrincipalDelegationToken)
+
+	client, err := NewClientWithConfig(configurationProvider)
+	assert.NotNil(t, client)
+	assert.NotNil(t, client.Signer)
+	assert.NotNil(t, client.Interceptor)
+	assert.NoError(t, err)
+}
+
+func TestBaseClient_CreateWithErrorAuthConfig(t *testing.T) {
+	dataTpl := `[DEFAULT]
+tenancy=sometenancy
+user=someuser
+fingerprint=somefingerprint
+key_file=%s
+region=us-ashburn-1
+authentication_type=instance_principal
+delegation_token_file=/nothingThere
+`
+	keyFile := writeTempFile(testPrivateKeyConf)
+	data := fmt.Sprintf(dataTpl, keyFile)
+	tmpConfFile := writeTempFile(data)
+
+	defer removeFileFn(tmpConfFile)
+	defer removeFileFn(keyFile)
+
+	configurationProvider, errConf := ConfigurationProviderFromFile(tmpConfFile, "")
+	assert.NoError(t, errConf)
+	authConfig, err := configurationProvider.AuthType()
+	assert.Nil(t, err)
+	assert.Nil(t, authConfig.OboToken)
+	assert.Equal(t, authConfig.AuthType, UnknownAuthenticationType)
+
+	client, err := NewClientWithConfig(configurationProvider)
+	assert.NotNil(t, client)
+	assert.NotNil(t, client.Signer)
+	assert.Nil(t, client.Interceptor)
 	assert.NoError(t, err)
 }
 

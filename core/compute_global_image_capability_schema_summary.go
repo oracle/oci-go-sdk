@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // ComputeGlobalImageCapabilitySchemaSummary Summary information for a compute global image capability schema

@@ -12,7 +12,8 @@ package loggingingestion
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/common/auth"
 	"net/http"
 )
 
@@ -25,12 +26,13 @@ type LoggingClient struct {
 // NewLoggingClientWithConfigurationProvider Creates a new default Logging client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewLoggingClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client LoggingClient, err error) {
-	baseClient, err := common.NewClientWithConfig(configProvider)
-	if err != nil {
-		return
+	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
+		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
+			return newLoggingClientFromBaseClient(baseClient, configProvider)
+		}
 	}
 
-	return newLoggingClientFromBaseClient(baseClient, configProvider)
+	return
 }
 
 // NewLoggingClientWithOboToken Creates a new default Logging client with the given configuration provider.

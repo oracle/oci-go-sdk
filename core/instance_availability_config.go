@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // InstanceAvailabilityConfig Options for customers to define the general policy of how compute service perform maintenance on VM instances.

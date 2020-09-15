@@ -5,7 +5,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 	"net/http"
 )
 
@@ -150,12 +150,12 @@ var mappingListTagsFields = map[string]ListTagsFieldsEnum{
 	"glossaryKey":               ListTagsFieldsGlossarykey,
 	"parentTermKey":             ListTagsFieldsParenttermkey,
 	"isAllowedToHaveChildTerms": ListTagsFieldsIsallowedtohavechildterms,
-	"path":                  ListTagsFieldsPath,
-	"lifecycleState":        ListTagsFieldsLifecyclestate,
-	"timeCreated":           ListTagsFieldsTimecreated,
-	"workflowStatus":        ListTagsFieldsWorkflowstatus,
-	"associatedObjectCount": ListTagsFieldsAssociatedobjectcount,
-	"uri": ListTagsFieldsUri,
+	"path":                      ListTagsFieldsPath,
+	"lifecycleState":            ListTagsFieldsLifecyclestate,
+	"timeCreated":               ListTagsFieldsTimecreated,
+	"workflowStatus":            ListTagsFieldsWorkflowstatus,
+	"associatedObjectCount":     ListTagsFieldsAssociatedobjectcount,
+	"uri":                       ListTagsFieldsUri,
 }
 
 // GetListTagsFieldsEnumValues Enumerates the set of values for ListTagsFieldsEnum

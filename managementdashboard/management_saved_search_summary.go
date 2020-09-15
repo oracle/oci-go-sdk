@@ -12,7 +12,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // ManagementSavedSearchSummary Summary of properties of a saved search.

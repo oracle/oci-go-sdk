@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // ApiKey A PEM-format RSA credential for securing requests to the Oracle Cloud Infrastructure REST API. Also known

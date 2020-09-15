@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // RenameHeaderPolicyItem The value will be a copy of the original value of the source header and will not be affected by any other

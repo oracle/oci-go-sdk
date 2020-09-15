@@ -10,7 +10,7 @@
 package announcementsservice
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // AnnouncementsCollection A list of announcements that match filter criteria, if any. Results contain both the announcements and the user-specific status of the announcements.

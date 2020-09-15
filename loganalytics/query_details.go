@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // QueryDetails Input arguments for running a log anlaytics query. If the request is set to run in asynchronous mode

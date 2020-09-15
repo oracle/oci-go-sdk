@@ -12,7 +12,8 @@ package cims
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/common/auth"
 	"net/http"
 )
 
@@ -25,12 +26,13 @@ type UserClient struct {
 // NewUserClientWithConfigurationProvider Creates a new default User client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewUserClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client UserClient, err error) {
-	baseClient, err := common.NewClientWithConfig(configProvider)
-	if err != nil {
-		return
+	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
+		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
+			return newUserClientFromBaseClient(baseClient, configProvider)
+		}
 	}
 
-	return newUserClientFromBaseClient(baseClient, configProvider)
+	return
 }
 
 // NewUserClientWithOboToken Creates a new default User client with the given configuration provider.

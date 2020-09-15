@@ -11,7 +11,7 @@ package resourcesearch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // SearchDetails A base request type that contains common criteria for searching for resources.

@@ -10,7 +10,7 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // SourceApplicationSummary An application running in the source environment that is available for export.

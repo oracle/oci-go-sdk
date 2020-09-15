@@ -12,7 +12,8 @@ package loganalytics
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/common/auth"
 	"net/http"
 )
 
@@ -25,12 +26,13 @@ type LogAnalyticsClient struct {
 // NewLogAnalyticsClientWithConfigurationProvider Creates a new default LogAnalytics client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewLogAnalyticsClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client LogAnalyticsClient, err error) {
-	baseClient, err := common.NewClientWithConfig(configProvider)
-	if err != nil {
-		return
+	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
+		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
+			return newLogAnalyticsClientFromBaseClient(baseClient, configProvider)
+		}
 	}
 
-	return newLogAnalyticsClientFromBaseClient(baseClient, configProvider)
+	return
 }
 
 // NewLogAnalyticsClientWithOboToken Creates a new default LogAnalytics client with the given configuration provider.

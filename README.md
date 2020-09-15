@@ -21,6 +21,38 @@ go get -u github.com/oracle/oci-go-sdk
 ```
 Alternatively you can git clone this repo.
 
+We've applied Go Module after v25.0.0, for legacy user not using Go Module, you can still clone the repo under Go Path and use same import as before.
+
+If you're using Go Module to import OCI Go SDK and you want to use the latest or specific Go SDK version, you need to update your require in `go.mod`:
+
+```go
+require github.com/oracle/oci-go-sdk/{major-version} {version}
+```
+
+And in the code, you also need to update the import following this pattern:
+
+```go
+import (
+ "github.com/oracle/oci-go-sdk/{major-version}/common"
+)
+```
+
+If you don't update your import and use your import like this `github.com/oracle/oci-go-sdk/common`, your Go SDK version will remain at version: v24.2.0
+
+Everytime after a major version release (which means it will include some breaking changes), you'll need to update the version in require and import to get the latest changes.
+```go
+import (
+    "github.com/oracle/oci-go-sdk/v25"
+)
+```
+in `go.mod` or run `go mod tidy` / `go build` after updating the import
+```go
+require (
+    github.com/oracle/oci-go-sdk/{updated-major-version} {version}
+)
+```
+The version will not be impacted without updating the import
+
 ## Working with the Go SDK
 To start working with the Go SDK, you import the service package, create a client, and then use that client to make calls.
 

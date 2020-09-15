@@ -10,7 +10,7 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // SourceSummary The Source object. Sources represent external locations from which

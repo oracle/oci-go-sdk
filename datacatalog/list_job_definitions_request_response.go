@@ -5,7 +5,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 	"net/http"
 )
 
@@ -256,16 +256,16 @@ const (
 )
 
 var mappingListJobDefinitionsFields = map[string]ListJobDefinitionsFieldsEnum{
-	"key":                   ListJobDefinitionsFieldsKey,
-	"displayName":           ListJobDefinitionsFieldsDisplayname,
-	"description":           ListJobDefinitionsFieldsDescription,
-	"catalogId":             ListJobDefinitionsFieldsCatalogid,
-	"jobType":               ListJobDefinitionsFieldsJobtype,
-	"connectionKey":         ListJobDefinitionsFieldsConnectionkey,
-	"lifecycleState":        ListJobDefinitionsFieldsLifecyclestate,
-	"timeCreated":           ListJobDefinitionsFieldsTimecreated,
-	"isSampleDataExtracted": ListJobDefinitionsFieldsIssampledataextracted,
-	"uri": ListJobDefinitionsFieldsUri,
+	"key":                        ListJobDefinitionsFieldsKey,
+	"displayName":                ListJobDefinitionsFieldsDisplayname,
+	"description":                ListJobDefinitionsFieldsDescription,
+	"catalogId":                  ListJobDefinitionsFieldsCatalogid,
+	"jobType":                    ListJobDefinitionsFieldsJobtype,
+	"connectionKey":              ListJobDefinitionsFieldsConnectionkey,
+	"lifecycleState":             ListJobDefinitionsFieldsLifecyclestate,
+	"timeCreated":                ListJobDefinitionsFieldsTimecreated,
+	"isSampleDataExtracted":      ListJobDefinitionsFieldsIssampledataextracted,
+	"uri":                        ListJobDefinitionsFieldsUri,
 	"timeLatestExecutionStarted": ListJobDefinitionsFieldsTimelatestexecutionstarted,
 	"timeLatestExecutionEnded":   ListJobDefinitionsFieldsTimelatestexecutionended,
 	"jobExecutionState":          ListJobDefinitionsFieldsJobexecutionstate,

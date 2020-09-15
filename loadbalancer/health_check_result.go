@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // HealthCheckResult Information about a single backend server health check result reported by a load balancer.
@@ -53,7 +53,7 @@ const (
 )
 
 var mappingHealthCheckResultHealthCheckStatus = map[string]HealthCheckResultHealthCheckStatusEnum{
-	"OK": HealthCheckResultHealthCheckStatusOk,
+	"OK":                  HealthCheckResultHealthCheckStatusOk,
 	"INVALID_STATUS_CODE": HealthCheckResultHealthCheckStatusInvalidStatusCode,
 	"TIMED_OUT":           HealthCheckResultHealthCheckStatusTimedOut,
 	"REGEX_MISMATCH":      HealthCheckResultHealthCheckStatusRegexMismatch,

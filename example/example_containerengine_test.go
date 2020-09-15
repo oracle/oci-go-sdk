@@ -8,13 +8,13 @@ package example
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/core"
+	"github.com/oracle/oci-go-sdk/v25/core"
 	"strings"
 
-	"github.com/oracle/oci-go-sdk/common"
-	"github.com/oracle/oci-go-sdk/containerengine"
-	"github.com/oracle/oci-go-sdk/example/helpers"
-	"github.com/oracle/oci-go-sdk/identity"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/containerengine"
+	"github.com/oracle/oci-go-sdk/v25/example/helpers"
+	"github.com/oracle/oci-go-sdk/v25/identity"
 )
 
 // Example for how to do CRUD on cluster, how to get kubernets config and

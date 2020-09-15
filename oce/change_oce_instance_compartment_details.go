@@ -10,7 +10,7 @@
 package oce
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // ChangeOceInstanceCompartmentDetails The information about compartment details.

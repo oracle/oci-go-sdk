@@ -12,7 +12,7 @@
 package healthchecks
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // HttpMonitorSummary A summary containing all of the mutable and immutable properties for an HTTP monitor.

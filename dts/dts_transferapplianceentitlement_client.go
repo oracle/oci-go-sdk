@@ -12,7 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/common/auth"
 	"net/http"
 )
 
@@ -25,12 +26,13 @@ type TransferApplianceEntitlementClient struct {
 // NewTransferApplianceEntitlementClientWithConfigurationProvider Creates a new default TransferApplianceEntitlement client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewTransferApplianceEntitlementClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client TransferApplianceEntitlementClient, err error) {
-	baseClient, err := common.NewClientWithConfig(configProvider)
-	if err != nil {
-		return
+	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
+		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
+			return newTransferApplianceEntitlementClientFromBaseClient(baseClient, configProvider)
+		}
 	}
 
-	return newTransferApplianceEntitlementClientFromBaseClient(baseClient, configProvider)
+	return
 }
 
 // NewTransferApplianceEntitlementClientWithOboToken Creates a new default TransferApplianceEntitlement client with the given configuration provider.

@@ -4,7 +4,7 @@
 package auth
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"os"

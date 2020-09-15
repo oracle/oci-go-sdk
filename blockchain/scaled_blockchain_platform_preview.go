@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // ScaledBlockchainPlatformPreview Blockchain Platform Instance Description Preview after Scaling.

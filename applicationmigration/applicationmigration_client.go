@@ -12,7 +12,8 @@ package applicationmigration
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/common/auth"
 	"net/http"
 )
 
@@ -25,12 +26,13 @@ type ApplicationMigrationClient struct {
 // NewApplicationMigrationClientWithConfigurationProvider Creates a new default ApplicationMigration client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewApplicationMigrationClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ApplicationMigrationClient, err error) {
-	baseClient, err := common.NewClientWithConfig(configProvider)
-	if err != nil {
-		return
+	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
+		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
+			return newApplicationMigrationClientFromBaseClient(baseClient, configProvider)
+		}
 	}
 
-	return newApplicationMigrationClientFromBaseClient(baseClient, configProvider)
+	return
 }
 
 // NewApplicationMigrationClientWithOboToken Creates a new default ApplicationMigration client with the given configuration provider.

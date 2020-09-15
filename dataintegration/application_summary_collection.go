@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // ApplicationSummaryCollection This is the collection of application summaries, it may be a collection of lightweight details or full definitions.

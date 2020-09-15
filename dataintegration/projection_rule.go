@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // ProjectionRule Base type for how fields are projected, there are many different mechanisms for doing this such as by a name patter, datatype etc. See the modelType property for the types.
