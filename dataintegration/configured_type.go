@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // ConfiguredType A ConfiguraedType represents a type that has built-in configuration to the type itself. An example is a SSN type whose basic type is VARCHAR, but the type itself also has a built-in configuration like length=10

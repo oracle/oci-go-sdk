@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // AttachCatalogPrivateEndpointDetails Information about the attaching the private endpoint resource to a catalog

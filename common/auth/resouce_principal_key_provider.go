@@ -7,7 +7,7 @@ import (
 	"crypto/rsa"
 	"errors"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 	"os"
 	"path"
 )
@@ -177,6 +177,10 @@ func (p *resourcePrincipalKeyProvider) KeyFingerprint() (string, error) {
 
 func (p *resourcePrincipalKeyProvider) UserOCID() (string, error) {
 	return "", nil
+}
+
+func (p *resourcePrincipalKeyProvider) AuthType() (common.AuthConfig, error) {
+	return common.AuthConfig{common.UnknownAuthenticationType, false, nil}, fmt.Errorf("unsupported, keep the interface")
 }
 
 // By contract for the the content of a resource principal to be considered path, it needs to be

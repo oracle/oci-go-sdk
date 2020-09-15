@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // VolumeBackupSchedule Defines the backup frequency and retention period for a volume backup policy. For more information,
@@ -224,7 +224,7 @@ const (
 )
 
 var mappingVolumeBackupScheduleTimeZone = map[string]VolumeBackupScheduleTimeZoneEnum{
-	"UTC": VolumeBackupScheduleTimeZoneUtc,
+	"UTC":                       VolumeBackupScheduleTimeZoneUtc,
 	"REGIONAL_DATA_CENTER_TIME": VolumeBackupScheduleTimeZoneRegionalDataCenterTime,
 }
 

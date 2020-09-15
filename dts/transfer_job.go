@@ -10,7 +10,7 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // TransferJob The representation of TransferJob

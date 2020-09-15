@@ -10,7 +10,7 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // ChangeVaultCompartmentDetails The representation of ChangeVaultCompartmentDetails

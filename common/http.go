@@ -279,9 +279,12 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 	request.Header.Set(requestHeaderContentLength, strconv.FormatInt(request.ContentLength, 10))
 	request.Header.Set(requestHeaderContentType, "application/json")
 	request.Body = ioutil.NopCloser(bodyBytes)
+	snapshot := *bodyBytes
 	request.GetBody = func() (io.ReadCloser, error) {
-		return ioutil.NopCloser(bodyBytes), nil
+		r := snapshot
+		return ioutil.NopCloser(&r), nil
 	}
+
 	return
 }
 

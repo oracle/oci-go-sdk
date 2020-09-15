@@ -11,7 +11,7 @@ package applicationmigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // SoacsDiscoveryDetails Specifies the credentials to access the source SOACS instance

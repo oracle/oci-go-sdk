@@ -11,7 +11,7 @@ package logging
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // UnifiedAgentNoneParser this parser signifies a non parser and puts entire log line in a message_key.

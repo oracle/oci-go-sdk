@@ -12,7 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/common/auth"
 	"net/http"
 )
 
@@ -25,12 +26,13 @@ type TransferDeviceClient struct {
 // NewTransferDeviceClientWithConfigurationProvider Creates a new default TransferDevice client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewTransferDeviceClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client TransferDeviceClient, err error) {
-	baseClient, err := common.NewClientWithConfig(configProvider)
-	if err != nil {
-		return
+	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
+		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
+			return newTransferDeviceClientFromBaseClient(baseClient, configProvider)
+		}
 	}
 
-	return newTransferDeviceClientFromBaseClient(baseClient, configProvider)
+	return
 }
 
 // NewTransferDeviceClientWithOboToken Creates a new default TransferDevice client with the given configuration provider.

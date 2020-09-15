@@ -10,7 +10,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // AccessRuleCriteria When defined, the parent challenge would be applied only for the requests that matched all the listed conditions.
@@ -99,17 +99,17 @@ var mappingAccessRuleCriteriaCondition = map[string]AccessRuleCriteriaConditionE
 	"URL_DOES_NOT_START_WITH":    AccessRuleCriteriaConditionUrlDoesNotStartWith,
 	"URL_PART_DOES_NOT_CONTAIN":  AccessRuleCriteriaConditionUrlPartDoesNotContain,
 	"URL_PART_DOES_NOT_END_WITH": AccessRuleCriteriaConditionUrlPartDoesNotEndWith,
-	"IP_IS":                AccessRuleCriteriaConditionIpIs,
-	"IP_IS_NOT":            AccessRuleCriteriaConditionIpIsNot,
-	"IP_IN_LIST":           AccessRuleCriteriaConditionIpInList,
-	"IP_NOT_IN_LIST":       AccessRuleCriteriaConditionIpNotInList,
-	"HTTP_HEADER_CONTAINS": AccessRuleCriteriaConditionHttpHeaderContains,
-	"HTTP_METHOD_IS":       AccessRuleCriteriaConditionHttpMethodIs,
-	"HTTP_METHOD_IS_NOT":   AccessRuleCriteriaConditionHttpMethodIsNot,
-	"COUNTRY_IS":           AccessRuleCriteriaConditionCountryIs,
-	"COUNTRY_IS_NOT":       AccessRuleCriteriaConditionCountryIsNot,
-	"USER_AGENT_IS":        AccessRuleCriteriaConditionUserAgentIs,
-	"USER_AGENT_IS_NOT":    AccessRuleCriteriaConditionUserAgentIsNot,
+	"IP_IS":                      AccessRuleCriteriaConditionIpIs,
+	"IP_IS_NOT":                  AccessRuleCriteriaConditionIpIsNot,
+	"IP_IN_LIST":                 AccessRuleCriteriaConditionIpInList,
+	"IP_NOT_IN_LIST":             AccessRuleCriteriaConditionIpNotInList,
+	"HTTP_HEADER_CONTAINS":       AccessRuleCriteriaConditionHttpHeaderContains,
+	"HTTP_METHOD_IS":             AccessRuleCriteriaConditionHttpMethodIs,
+	"HTTP_METHOD_IS_NOT":         AccessRuleCriteriaConditionHttpMethodIsNot,
+	"COUNTRY_IS":                 AccessRuleCriteriaConditionCountryIs,
+	"COUNTRY_IS_NOT":             AccessRuleCriteriaConditionCountryIsNot,
+	"USER_AGENT_IS":              AccessRuleCriteriaConditionUserAgentIs,
+	"USER_AGENT_IS_NOT":          AccessRuleCriteriaConditionUserAgentIsNot,
 }
 
 // GetAccessRuleCriteriaConditionEnumValues Enumerates the set of values for AccessRuleCriteriaConditionEnum

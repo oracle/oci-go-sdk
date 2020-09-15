@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/oracle/oci-go-sdk/common"
-	"github.com/oracle/oci-go-sdk/core"
-	"github.com/oracle/oci-go-sdk/example/helpers"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/core"
+	"github.com/oracle/oci-go-sdk/v25/example/helpers"
 )
 
 // ExampleListShapes_Pagination demostrate how to use page parameter

@@ -12,7 +12,8 @@ package cims
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/common/auth"
 	"net/http"
 )
 
@@ -25,12 +26,13 @@ type IncidentClient struct {
 // NewIncidentClientWithConfigurationProvider Creates a new default Incident client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewIncidentClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client IncidentClient, err error) {
-	baseClient, err := common.NewClientWithConfig(configProvider)
-	if err != nil {
-		return
+	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
+		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
+			return newIncidentClientFromBaseClient(baseClient, configProvider)
+		}
 	}
 
-	return newIncidentClientFromBaseClient(baseClient, configProvider)
+	return
 }
 
 // NewIncidentClientWithOboToken Creates a new default Incident client with the given configuration provider.

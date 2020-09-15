@@ -8,7 +8,7 @@ import (
 	"crypto/sha1"
 	"crypto/x509"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 	"net/http"
 	"net/http/httputil"
 	"strings"
@@ -67,4 +67,19 @@ func fingerprint(certificate *x509.Certificate) string {
 func colonSeparatedString(fingerprint [sha1.Size]byte) string {
 	spaceSeparated := fmt.Sprintf("% x", fingerprint)
 	return strings.Replace(spaceSeparated, " ", ":", -1)
+}
+
+// GetGenericConfigurationProvider checks auth config paras in config file and return the final configuration provider
+func GetGenericConfigurationProvider(configProvider common.ConfigurationProvider) (common.ConfigurationProvider, error) {
+	if authConfig, err := configProvider.AuthType(); err == nil && authConfig.IsFromConfigFile {
+		switch authConfig.AuthType {
+		case common.InstancePrincipalDelegationToken:
+			return InstancePrincipalDelegationTokenConfigurationProvider(authConfig.OboToken)
+		case common.InstancePrincipal:
+			return InstancePrincipalConfigurationProvider()
+		case common.UserPrincipal:
+			return configProvider, nil
+		}
+	}
+	return configProvider, nil
 }

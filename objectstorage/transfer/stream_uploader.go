@@ -6,7 +6,7 @@ package transfer
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 	"strings"
 	"sync"
 )
@@ -76,13 +76,13 @@ func (streamUpload *streamUpload) startConcurrentUpload(ctx context.Context, don
 	if err != nil {
 		common.Debugf("failed to commit with error: %v\n", err)
 		return UploadResponse{
-				Type: MultipartUpload,
+				Type:                    MultipartUpload,
 				MultipartUploadResponse: &MultipartUploadResponse{UploadID: common.String(streamUpload.uploadID)}},
 			err
 	}
 
 	response = UploadResponse{
-		Type: MultipartUpload,
+		Type:                    MultipartUpload,
 		MultipartUploadResponse: &MultipartUploadResponse{CommitMultipartUploadResponse: resp},
 	}
 	return

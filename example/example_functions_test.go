@@ -14,10 +14,10 @@ import (
 	"os"
 	"reflect"
 
-	"github.com/oracle/oci-go-sdk/common"
-	"github.com/oracle/oci-go-sdk/core"
-	"github.com/oracle/oci-go-sdk/example/helpers"
-	"github.com/oracle/oci-go-sdk/functions"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/core"
+	"github.com/oracle/oci-go-sdk/v25/example/helpers"
+	"github.com/oracle/oci-go-sdk/v25/functions"
 )
 
 var (
@@ -317,7 +317,7 @@ func createOrGetRouteTable(c core.VirtualNetworkClient, gatewayID, VcnID *string
 			}
 
 			updateRTRequest := core.UpdateRouteTableRequest{
-				RtId: listRTResponse.Items[0].Id,
+				RtId:                    listRTResponse.Items[0].Id,
 				UpdateRouteTableDetails: updateRTDetails,
 			}
 

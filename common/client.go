@@ -5,8 +5,11 @@
 package common
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
+	"io/ioutil"
 	"math/rand"
 	"net/http"
 	"net/http/httputil"
@@ -71,8 +74,9 @@ const (
 	defaultConfigFileName    = "config"
 	defaultConfigDirName     = ".oci"
 	configFilePathEnvVarName = "OCI_CONFIG_FILE"
-	secondaryConfigDirName   = ".oraclebmc"
-	maxBodyLenForDebug       = 1024 * 1000
+
+	secondaryConfigDirName = ".oraclebmc"
+	maxBodyLenForDebug     = 1024 * 1000
 )
 
 // RequestInterceptor function used to customize the request before calling the underlying service
@@ -103,6 +107,16 @@ type BaseClient struct {
 
 	//Base path for all operations of this client
 	BasePath string
+}
+
+// Endpoint returns the enpoint configured for client
+func (client *BaseClient) Endpoint() string {
+	host := client.Host
+	if !strings.Contains(host, "http") &&
+		!strings.Contains(host, "https") {
+		host = fmt.Sprintf("%s://%s", defaultScheme, host)
+	}
+	return host
 }
 
 func defaultUserAgent() string {
@@ -158,6 +172,11 @@ func NewClientWithConfig(configProvider ConfigurationProvider) (client BaseClien
 
 	client = defaultBaseClient(configProvider)
 
+	if authConfig, e := configProvider.AuthType(); e == nil && authConfig.OboToken != nil {
+		Debugf("authConfig's authType is %s, and token content is %s", authConfig.AuthType, *authConfig.OboToken)
+		signOboToken(&client, *authConfig.OboToken, configProvider)
+	}
+
 	return
 }
 
@@ -168,6 +187,13 @@ func NewClientWithOboToken(configProvider ConfigurationProvider, oboToken string
 		return
 	}
 
+	signOboToken(&client, oboToken, configProvider)
+
+	return
+}
+
+// Add obo token header to Interceptor and sign to client
+func signOboToken(client *BaseClient, oboToken string, configProvider ConfigurationProvider) {
 	// Interceptor to add obo token header
 	client.Interceptor = func(request *http.Request) error {
 		request.Header.Add(requestHeaderOpcOboToken, oboToken)
@@ -176,8 +202,6 @@ func NewClientWithOboToken(configProvider ConfigurationProvider, oboToken string
 	// Obo token will also be signed
 	defaultHeaders := append(DefaultGenericHeaders(), requestHeaderOpcOboToken)
 	client.Signer = RequestSigner(configProvider, defaultHeaders, DefaultBodyHeaders())
-
-	return
 }
 
 func getHomeFolder() string {
@@ -285,12 +309,68 @@ func (client BaseClient) intercept(request *http.Request) (err error) {
 	return
 }
 
-func checkForSuccessfulResponse(res *http.Response) error {
+// checkForSuccessfulResponse checks if the response is successful
+// If Error Code is 4XX/5XX and debug level is set to info, will log the request and response
+func checkForSuccessfulResponse(res *http.Response, requestBody *io.ReadCloser) error {
 	familyStatusCode := res.StatusCode / 100
 	if familyStatusCode == 4 || familyStatusCode == 5 {
+		IfInfo(func() {
+			// If debug level is set to verbose, the request and request body will be dumped and logged under debug level, this is to avoid duplicate logging
+			if defaultLogger.LogLevel() < verboseLogging {
+				logRequest(res.Request, Logf, noLogging)
+				bodyContent, _ := ioutil.ReadAll(*requestBody)
+				Logf("Dump Request Body: \n%s", string(bodyContent))
+			}
+			logResponse(res, Logf, infoLogging)
+		})
 		return newServiceFailureFromResponse(res)
 	}
+	IfDebug(func() {
+		logResponse(res, Debugf, verboseLogging)
+	})
 	return nil
+}
+
+func logRequest(request *http.Request, fn func(format string, v ...interface{}), bodyLoggingLevel int) {
+	if request == nil {
+		return
+	}
+	dumpBody := true
+	if checkBodyLengthExceedLimit(request.ContentLength) {
+		fn("not dumping body too big\n")
+		dumpBody = false
+	}
+
+	dumpBody = dumpBody && defaultLogger.LogLevel() >= bodyLoggingLevel && bodyLoggingLevel != noLogging
+	if dump, e := httputil.DumpRequestOut(request, dumpBody); e == nil {
+		fn("Dump Request %s", string(dump))
+	} else {
+		fn("%v\n", e)
+	}
+}
+
+func logResponse(response *http.Response, fn func(format string, v ...interface{}), bodyLoggingLevel int) {
+	if response == nil {
+		return
+	}
+	dumpBody := true
+	if checkBodyLengthExceedLimit(response.ContentLength) {
+		fn("not dumping body too big\n")
+		dumpBody = false
+	}
+	dumpBody = dumpBody && defaultLogger.LogLevel() >= bodyLoggingLevel && bodyLoggingLevel != noLogging
+	if dump, e := httputil.DumpResponse(response, dumpBody); e == nil {
+		fn("Dump Response %s", string(dump))
+	} else {
+		fn("%v\n", e)
+	}
+}
+
+func checkBodyLengthExceedLimit(contentLength int64) bool {
+	if contentLength > maxBodyLenForDebug {
+		return true
+	}
+	return false
 }
 
 // OCIRequest is any request made to an OCI service.
@@ -349,48 +429,26 @@ func (client BaseClient) CallWithDetails(ctx context.Context, request *http.Requ
 		return
 	}
 
+	//Copy request body and save for logging
+	dumpRequestBody := ioutil.NopCloser(bytes.NewBuffer(nil))
+	if request.Body != nil && !checkBodyLengthExceedLimit(request.ContentLength) {
+		dumpRequestBody, _ = request.GetBody()
+	}
 	IfDebug(func() {
-		dumpBody := true
-		if request.ContentLength > maxBodyLenForDebug {
-			Debugf("not dumping body too big\n")
-			dumpBody = false
-		}
-		dumpBody = dumpBody && defaultLogger.LogLevel() == verboseLogging
-		if dump, e := httputil.DumpRequestOut(request, dumpBody); e == nil {
-			Debugf("Dump Request %s", string(dump))
-		} else {
-			Debugf("%v\n", e)
-		}
+		logRequest(request, Debugf, verboseLogging)
 	})
 
 	//Execute the http request
 	response, err = client.HTTPClient.Do(request)
 
-	IfDebug(func() {
-		if err != nil {
-			Debugf("%v\n", err)
-			return
-		}
-
-		dumpBody := true
-		if response.ContentLength > maxBodyLenForDebug {
-			Debugf("not dumping body too big\n")
-			dumpBody = false
-		}
-
-		dumpBody = dumpBody && defaultLogger.LogLevel() == verboseLogging
-		if dump, e := httputil.DumpResponse(response, dumpBody); e == nil {
-			Debugf("Dump Response %s", string(dump))
-		} else {
-			Debugf("%v\n", e)
-		}
-	})
-
 	if err != nil {
+		IfInfo(func() {
+			Logf("%v\n", err)
+		})
 		return
 	}
 
-	err = checkForSuccessfulResponse(response)
+	err = checkForSuccessfulResponse(response, &dumpRequestBody)
 	return
 }
 

@@ -6,7 +6,7 @@ package auth
 import (
 	"crypto/rsa"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 type instancePrincipalConfigurationProvider struct {
@@ -103,4 +103,8 @@ func (p instancePrincipalConfigurationProvider) Region() (string, error) {
 		return string(region), nil
 	}
 	return string(*p.region), nil
+}
+
+func (p instancePrincipalConfigurationProvider) AuthType() (common.AuthConfig, error) {
+	return common.AuthConfig{common.InstancePrincipal, false, nil}, fmt.Errorf("unsupported, keep the interface")
 }

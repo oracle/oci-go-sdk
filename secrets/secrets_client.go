@@ -12,7 +12,8 @@ package secrets
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/common/auth"
 	"net/http"
 )
 
@@ -25,12 +26,13 @@ type SecretsClient struct {
 // NewSecretsClientWithConfigurationProvider Creates a new default Secrets client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewSecretsClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client SecretsClient, err error) {
-	baseClient, err := common.NewClientWithConfig(configProvider)
-	if err != nil {
-		return
+	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
+		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
+			return newSecretsClientFromBaseClient(baseClient, configProvider)
+		}
 	}
 
-	return newSecretsClientFromBaseClient(baseClient, configProvider)
+	return
 }
 
 // NewSecretsClientWithOboToken Creates a new default Secrets client with the given configuration provider.

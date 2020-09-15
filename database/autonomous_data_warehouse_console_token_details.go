@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // AutonomousDataWarehouseConsoleTokenDetails **Deprecated.** See AutonomousDatabaseConsoleTokenDetails for reference information about the token that allows the OCI Console to access the Autonomous Data Warehouse Service Console.

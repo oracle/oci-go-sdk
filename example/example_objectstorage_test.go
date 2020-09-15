@@ -13,10 +13,10 @@ import (
 	"os"
 	"path"
 
-	"github.com/oracle/oci-go-sdk/common"
-	"github.com/oracle/oci-go-sdk/example/helpers"
-	"github.com/oracle/oci-go-sdk/objectstorage"
-	"github.com/oracle/oci-go-sdk/objectstorage/transfer"
+	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v25/example/helpers"
+	"github.com/oracle/oci-go-sdk/v25/objectstorage"
+	"github.com/oracle/oci-go-sdk/v25/objectstorage/transfer"
 )
 
 // ExampleObjectStorage_UploadFile shows how to create a bucket and upload a file
@@ -79,7 +79,7 @@ func ExampleObjectStorage_UploadManager_UploadFile() {
 			BucketName:    common.String(bname),
 			ObjectName:    common.String(objectName),
 			//PartSize:      common.Int(10000000),
-			CallBack: callBack,
+			CallBack:                            callBack,
 			EnableMultipartChecksumVerification: common.Bool(true),
 		},
 		FilePath: filepath,

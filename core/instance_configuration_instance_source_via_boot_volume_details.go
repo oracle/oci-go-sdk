@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // InstanceConfigurationInstanceSourceViaBootVolumeDetails The representation of InstanceConfigurationInstanceSourceViaBootVolumeDetails

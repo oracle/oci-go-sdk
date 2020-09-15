@@ -10,7 +10,7 @@
 package budget
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // CreateAlertRuleDetails The create alert rule details. This is a batch-create.

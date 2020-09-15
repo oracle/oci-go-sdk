@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // FilterQueryParameterPolicyItem A query parameter to drop (with BLOCK) or pass through (with ALLOW).

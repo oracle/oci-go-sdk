@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // DataSafePrivateEndpoint A Data Safe private endpoint that allows Data Safe to connect to databases in a customer's virtual cloud network (VCN).

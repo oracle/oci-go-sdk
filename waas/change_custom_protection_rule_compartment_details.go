@@ -10,7 +10,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // ChangeCustomProtectionRuleCompartmentDetails The representation of ChangeCustomProtectionRuleCompartmentDetails

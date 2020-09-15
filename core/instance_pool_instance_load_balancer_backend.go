@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/common"
+	"github.com/oracle/oci-go-sdk/v25/common"
 )
 
 // InstancePoolInstanceLoadBalancerBackend Represents the load balancer Backend that is configured for an instance pool instance.
