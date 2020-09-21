@@ -37,7 +37,7 @@ import (
 )
 ```
 
-If you don't update your import and use your import like this `github.com/oracle/oci-go-sdk/common`, your Go SDK version will remain at version: v24.2.0
+If you don't update your import and use your import like this `github.com/oracle/oci-go-sdk/common`, your Go SDK version will remain at version: v24.3.0
 
 Everytime after a major version release (which means it will include some breaking changes), you'll need to update the version in require and import to get the latest changes.
 ```go
