@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // CreateAutonomousDataWarehouseBackupDetails **Deprecated.** See CreateAutonomousDatabaseBackupDetails for reference information about creating Autonomous Data Warehouse backups.

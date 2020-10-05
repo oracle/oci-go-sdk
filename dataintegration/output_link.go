@@ -11,10 +11,10 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// OutputLink The information about output links.
+// OutputLink Details about the outgoing data of an operator in a data flow design.
 type OutputLink struct {
 
 	// The key of the object.

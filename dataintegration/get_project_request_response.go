@@ -5,17 +5,17 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 	"net/http"
 )
 
 // GetProjectRequest wrapper for the GetProject operation
 type GetProjectRequest struct {
 
-	// DIS workspace id
+	// The workspace ID.
 	WorkspaceId *string `mandatory:"true" contributesTo:"path" name:"workspaceId"`
 
-	// DIS Project key
+	// The project key.
 	ProjectKey *string `mandatory:"true" contributesTo:"path" name:"projectKey"`
 
 	// Unique Oracle-assigned identifier for the request. If

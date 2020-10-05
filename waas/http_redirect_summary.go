@@ -10,7 +10,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // HttpRedirectSummary The details of a HTTP Redirect configuration to allow redirecting HTTP traffic from a request domain to a new target.

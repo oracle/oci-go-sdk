@@ -10,16 +10,16 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// ParameterValue A parameter value.
+// ParameterValue User defined value for a parameter.
 type ParameterValue struct {
 
 	// A simple value for the parameter.
 	SimpleValue *interface{} `mandatory:"false" json:"simpleValue"`
 
-	// This can be any object such as a file entity, or a schema or a table.
+	// This can be any object such as a file entity, a schema, or a table.
 	RootObjectValue *interface{} `mandatory:"false" json:"rootObjectValue"`
 }
 

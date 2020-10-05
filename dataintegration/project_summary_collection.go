@@ -10,13 +10,13 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // ProjectSummaryCollection A collection of project summaries. The collection can be lightweight details or full definitions.
 type ProjectSummaryCollection struct {
 
-	// The array of Project summaries
+	// The array of project summaries.
 	Items []ProjectSummary `mandatory:"true" json:"items"`
 }
 

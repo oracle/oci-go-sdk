@@ -10,7 +10,7 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // Cursor A cursor that indicates the position in the stream from which you want to begin consuming messages and which is required by the GetMessages operation.

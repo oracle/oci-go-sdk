@@ -10,13 +10,13 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// CountStatistic A count statistics
+// CountStatistic A count statistics.
 type CountStatistic struct {
 
-	// The array of statistics
+	// The array of statistics.
 	ObjectTypeCountList []CountStatisticSummary `mandatory:"true" json:"objectTypeCountList"`
 }
 

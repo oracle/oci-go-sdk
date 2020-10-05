@@ -5,14 +5,14 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 	"net/http"
 )
 
 // ChangeBackupDestinationCompartmentRequest wrapper for the ChangeBackupDestinationCompartment operation
 type ChangeBackupDestinationCompartmentRequest struct {
 
-	// Request to move backup destination to a different compartment
+	// Request to move backup destination to a different compartment.
 	ChangeCompartmentDetails `contributesTo:"body"`
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the backup destination.

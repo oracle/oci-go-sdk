@@ -10,13 +10,13 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// ConnectionValidationSummaryCollection List of connection validation summaries
+// ConnectionValidationSummaryCollection A list of connection validation summaries.
 type ConnectionValidationSummaryCollection struct {
 
-	// The array of validation summaries
+	// An array of connection validation summaries.
 	Items []ConnectionValidationSummary `mandatory:"true" json:"items"`
 }
 

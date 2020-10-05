@@ -10,7 +10,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // ListingSummary The model for a summary of an Oracle Cloud Infrastructure Marketplace listing.
@@ -36,7 +36,7 @@ type ListingSummary struct {
 	// Summary of the pricing types available across all packages in the listing.
 	PricingTypes []ListingSummaryPricingTypesEnum `mandatory:"false" json:"pricingTypes,omitempty"`
 
-	// The regions where the listing is eligible to be deployed.
+	// The regions where you can deploy the listing. (Some listings have restrictions that limit their deployment to United States regions only.)
 	Regions []Region `mandatory:"false" json:"regions"`
 
 	// Indicates whether the listing is featured.

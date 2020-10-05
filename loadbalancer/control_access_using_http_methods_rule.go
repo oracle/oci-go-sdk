@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // ControlAccessUsingHttpMethodsRule An object that represents the action of returning a specified response code when the requested HTTP method is not in

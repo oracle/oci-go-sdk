@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // RegistryMetadata Information about the object and its parent.
@@ -22,11 +22,14 @@ type RegistryMetadata struct {
 	// Labels are keywords or labels that you can add to data assets, dataflows etc. You can define your own labels and use them to categorize content.
 	Labels []string `mandatory:"false" json:"labels"`
 
-	// Registry version.
+	// The registry version.
 	RegistryVersion *int `mandatory:"false" json:"registryVersion"`
 
 	// The identifying key for the object.
 	Key *string `mandatory:"false" json:"key"`
+
+	// Specifies whether this object is a favorite or not.
+	IsFavorite *bool `mandatory:"false" json:"isFavorite"`
 }
 
 func (m RegistryMetadata) String() string {

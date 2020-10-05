@@ -10,7 +10,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // Listing The model for an Oracle Cloud Infrastructure Marketplace listing.
@@ -79,7 +79,7 @@ type Listing struct {
 
 	Banner *UploadData `mandatory:"false" json:"banner"`
 
-	// The regions where the listing is eligible to be deployed.
+	// The regions where you can deploy the listing. (Some listings have restrictions that limit their deployment to United States regions only.)
 	Regions []Region `mandatory:"false" json:"regions"`
 
 	// The listing's package type.

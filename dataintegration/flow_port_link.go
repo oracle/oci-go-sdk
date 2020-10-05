@@ -11,10 +11,10 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// FlowPortLink The details of the flow port links.
+// FlowPortLink Details about the link between two data flow operators.
 type FlowPortLink interface {
 
 	// The key of the object.

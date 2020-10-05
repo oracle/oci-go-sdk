@@ -5,14 +5,14 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 	"net/http"
 )
 
 // CreateVmClusterRequest wrapper for the CreateVmCluster operation
 type CreateVmClusterRequest struct {
 
-	// Request to create a VM cluster.
+	// Request to create an Exadata Cloud@Customer VM cluster.
 	CreateVmClusterDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

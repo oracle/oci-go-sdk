@@ -5,17 +5,17 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 	"net/http"
 )
 
 // GetApplicationRequest wrapper for the GetApplication operation
 type GetApplicationRequest struct {
 
-	// DIS workspace id
+	// The workspace ID.
 	WorkspaceId *string `mandatory:"true" contributesTo:"path" name:"workspaceId"`
 
-	// DIS application key
+	// The application key.
 	ApplicationKey *string `mandatory:"true" contributesTo:"path" name:"applicationKey"`
 
 	// Unique Oracle-assigned identifier for the request. If

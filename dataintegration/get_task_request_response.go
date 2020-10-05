@@ -5,17 +5,17 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 	"net/http"
 )
 
 // GetTaskRequest wrapper for the GetTask operation
 type GetTaskRequest struct {
 
-	// DIS workspace id
+	// The workspace ID.
 	WorkspaceId *string `mandatory:"true" contributesTo:"path" name:"workspaceId"`
 
-	// DIS Task key
+	// The task key.
 	TaskKey *string `mandatory:"true" contributesTo:"path" name:"taskKey"`
 
 	// Unique Oracle-assigned identifier for the request. If

@@ -10,10 +10,10 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// ActivateExadataInfrastructureDetails The activation details for the Exadata infrastructure.
+// ActivateExadataInfrastructureDetails The activation details for the Exadata Cloud@Customer infrastructure.
 type ActivateExadataInfrastructureDetails struct {
 
 	// The activation zip file.

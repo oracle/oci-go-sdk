@@ -10,10 +10,10 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// ChangeCompartmentDetails The information about change compartment action.
+// ChangeCompartmentDetails The information needed to change the workspace compartment.
 type ChangeCompartmentDetails struct {
 
 	// The OCID of the compartment to move the the workspace to.

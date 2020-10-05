@@ -10,13 +10,13 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// ParentReference A reference to the object's parent
+// ParentReference A reference to the object's parent.
 type ParentReference struct {
 
-	// Key of the parent object
+	// Key of the parent object.
 	Parent *string `mandatory:"false" json:"parent"`
 }
 

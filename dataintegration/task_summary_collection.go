@@ -11,13 +11,13 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // TaskSummaryCollection This is the collection of task summaries, it may be a collection of lightweight details or full definitions.
 type TaskSummaryCollection struct {
 
-	// The array of Task summaries.
+	// The array of task summaries.
 	Items []TaskSummary `mandatory:"true" json:"items"`
 }
 

@@ -11,10 +11,10 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// OracleReadAttribute The Oracle read attribute
+// OracleReadAttribute The Oracle read attribute.
 type OracleReadAttribute struct {
 
 	// The fetch size for reading.

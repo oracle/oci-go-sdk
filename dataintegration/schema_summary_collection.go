@@ -10,13 +10,13 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // SchemaSummaryCollection This is the collection of schema summaries, it may be a collection of lightweight details or full definitions.
 type SchemaSummaryCollection struct {
 
-	// The array of Schema summaries
+	// The array of schema summaries.
 	Items []SchemaSummary `mandatory:"true" json:"items"`
 }
 

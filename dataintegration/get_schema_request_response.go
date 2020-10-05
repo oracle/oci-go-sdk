@@ -5,20 +5,20 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 	"net/http"
 )
 
 // GetSchemaRequest wrapper for the GetSchema operation
 type GetSchemaRequest struct {
 
-	// DIS workspace id
+	// The workspace ID.
 	WorkspaceId *string `mandatory:"true" contributesTo:"path" name:"workspaceId"`
 
-	// The connection key
+	// The connection key.
 	ConnectionKey *string `mandatory:"true" contributesTo:"path" name:"connectionKey"`
 
-	// Schema resource name used for retrieving schemas
+	// The schema resource name used for retrieving schemas.
 	SchemaResourceName *string `mandatory:"true" contributesTo:"path" name:"schemaResourceName"`
 
 	// Unique Oracle-assigned identifier for the request. If

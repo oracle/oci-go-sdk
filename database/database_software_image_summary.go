@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // DatabaseSoftwareImageSummary The Database service supports the creation of database software images for use in creating and patching DB systems and databases.
@@ -86,6 +86,8 @@ const (
 	DatabaseSoftwareImageSummaryLifecycleStateDeleting     DatabaseSoftwareImageSummaryLifecycleStateEnum = "DELETING"
 	DatabaseSoftwareImageSummaryLifecycleStateDeleted      DatabaseSoftwareImageSummaryLifecycleStateEnum = "DELETED"
 	DatabaseSoftwareImageSummaryLifecycleStateFailed       DatabaseSoftwareImageSummaryLifecycleStateEnum = "FAILED"
+	DatabaseSoftwareImageSummaryLifecycleStateTerminating  DatabaseSoftwareImageSummaryLifecycleStateEnum = "TERMINATING"
+	DatabaseSoftwareImageSummaryLifecycleStateTerminated   DatabaseSoftwareImageSummaryLifecycleStateEnum = "TERMINATED"
 	DatabaseSoftwareImageSummaryLifecycleStateUpdating     DatabaseSoftwareImageSummaryLifecycleStateEnum = "UPDATING"
 )
 
@@ -95,6 +97,8 @@ var mappingDatabaseSoftwareImageSummaryLifecycleState = map[string]DatabaseSoftw
 	"DELETING":     DatabaseSoftwareImageSummaryLifecycleStateDeleting,
 	"DELETED":      DatabaseSoftwareImageSummaryLifecycleStateDeleted,
 	"FAILED":       DatabaseSoftwareImageSummaryLifecycleStateFailed,
+	"TERMINATING":  DatabaseSoftwareImageSummaryLifecycleStateTerminating,
+	"TERMINATED":   DatabaseSoftwareImageSummaryLifecycleStateTerminated,
 	"UPDATING":     DatabaseSoftwareImageSummaryLifecycleStateUpdating,
 }
 

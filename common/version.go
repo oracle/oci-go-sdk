@@ -11,8 +11,8 @@ import (
 )
 
 const (
-	major = "25"
-	minor = "2"
+	major = "26"
+	minor = "0"
 	patch = "0"
 	tag   = ""
 )

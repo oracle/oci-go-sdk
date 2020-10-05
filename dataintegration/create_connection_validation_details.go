@@ -11,10 +11,10 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// CreateConnectionValidationDetails Connection validation definition
+// CreateConnectionValidationDetails The properties used in create connection validation operations.
 type CreateConnectionValidationDetails struct {
 	DataAsset CreateDataAssetDetails `mandatory:"false" json:"dataAsset"`
 

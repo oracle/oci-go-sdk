@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // AbstractReadAttribute The abstract read attribute.
@@ -67,10 +67,12 @@ type AbstractReadAttributeModelTypeEnum string
 // Set of constants representing the allowable values for AbstractReadAttributeModelTypeEnum
 const (
 	AbstractReadAttributeModelTypeOraclereadattribute AbstractReadAttributeModelTypeEnum = "ORACLEREADATTRIBUTE"
+	AbstractReadAttributeModelTypeOracleReadAttribute AbstractReadAttributeModelTypeEnum = "ORACLE_READ_ATTRIBUTE"
 )
 
 var mappingAbstractReadAttributeModelType = map[string]AbstractReadAttributeModelTypeEnum{
-	"ORACLEREADATTRIBUTE": AbstractReadAttributeModelTypeOraclereadattribute,
+	"ORACLEREADATTRIBUTE":   AbstractReadAttributeModelTypeOraclereadattribute,
+	"ORACLE_READ_ATTRIBUTE": AbstractReadAttributeModelTypeOracleReadAttribute,
 }
 
 // GetAbstractReadAttributeModelTypeEnumValues Enumerates the set of values for AbstractReadAttributeModelTypeEnum

@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // CsvFormatAttribute The CSV format attribute.
@@ -32,7 +32,10 @@ type CsvFormatAttribute struct {
 	// Defines whether the file has a header row.
 	HasHeader *bool `mandatory:"false" json:"hasHeader"`
 
-	// Format for timestamp data.
+	// Defines whether a file pattern is supported.
+	IsFilePattern *bool `mandatory:"false" json:"isFilePattern"`
+
+	// Format for timestamp information.
 	TimestampFormat *string `mandatory:"false" json:"timestampFormat"`
 }
 

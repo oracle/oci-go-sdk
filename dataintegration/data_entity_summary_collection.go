@@ -11,13 +11,13 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // DataEntitySummaryCollection This is the collection of data entity summaries, it may be a collection of lightweight details or full definitions.
 type DataEntitySummaryCollection struct {
 
-	// The array of DataEntity summaries
+	// The array of data entity summaries.
 	Items []DataEntitySummary `mandatory:"true" json:"items"`
 }
 

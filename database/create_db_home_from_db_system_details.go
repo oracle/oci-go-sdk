@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // CreateDbHomeFromDbSystemDetails Details for creating a Database Home if you are cloning a database from a another database system.
