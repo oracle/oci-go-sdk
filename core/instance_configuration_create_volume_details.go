@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // InstanceConfigurationCreateVolumeDetails Creates a new block volume. Please see CreateVolumeDetails

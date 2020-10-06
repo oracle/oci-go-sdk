@@ -14,7 +14,7 @@
 package workrequests
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // WorkRequest An asynchronous work request.

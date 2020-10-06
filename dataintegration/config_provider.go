@@ -10,16 +10,16 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // ConfigProvider The information about the configuration provider.
 type ConfigProvider struct {
 
-	// bindings
+	// The configuration provider bindings.
 	Bindings map[string]ParameterValue `mandatory:"false" json:"bindings"`
 
-	// childProviders
+	// The child providers.
 	ChildProviders map[string]ConfigProvider `mandatory:"false" json:"childProviders"`
 }
 

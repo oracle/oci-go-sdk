@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // FilterQueryParameterPolicy Filter parameters from the query string as they pass through the gateway.  The gateway applies filters after other

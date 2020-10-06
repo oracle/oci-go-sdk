@@ -10,13 +10,13 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// TaskRunSummaryCollection List of taskRun summaries
+// TaskRunSummaryCollection A list of task run summaries.
 type TaskRunSummaryCollection struct {
 
-	// The array of taskRun summaries
+	// The array of task run summaries.
 	Items []TaskRunSummary `mandatory:"true" json:"items"`
 }
 

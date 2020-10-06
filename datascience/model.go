@@ -10,7 +10,7 @@
 package datascience
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // Model Models are mathematical representations of the relationships between data. Models are represented by their associated metadata and artifacts.

@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // WorkRequest The API operations used to create and configure Data Integration resources do not take effect immediately. In these cases, the operation spawns an asynchronous workflow to fulfill the request. Work requests provide visibility into the status of these in-progress, long-running asynchronous workflows.
@@ -22,10 +22,10 @@ type WorkRequest struct {
 	// The status of this work request.
 	Status WorkRequestStatusEnum `mandatory:"true" json:"status"`
 
-	// The id of the work request.
+	// The ID of the work request.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The ocid of the compartment that contains this work request. Work requests should be scoped to
+	// The OCID of the compartment that contains this work request. Work requests should be scoped to
 	// the same compartment as the resource the work request affects. If the work request affects multiple resources that are not in the same compartment, then the system picks a primary
 	// resource whose compartment should be used.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`

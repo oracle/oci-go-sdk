@@ -5,14 +5,14 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 	"net/http"
 )
 
 // GetWorkRequestRequest wrapper for the GetWorkRequest operation
 type GetWorkRequestRequest struct {
 
-	// The ID of the asynchronous request.
+	// The ID of the asynchronous work request to retrieve.
 	WorkRequestId *string `mandatory:"true" contributesTo:"path" name:"workRequestId"`
 
 	// Unique Oracle-assigned identifier for the request. If

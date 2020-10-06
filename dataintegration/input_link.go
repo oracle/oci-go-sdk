@@ -11,10 +11,10 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// InputLink The information about input links.
+// InputLink Details about the incoming data to an operator in a data flow design.
 type InputLink struct {
 
 	// The key of the object.
@@ -34,7 +34,7 @@ type InputLink struct {
 	// Key of FlowPort reference
 	Port *string `mandatory:"false" json:"port"`
 
-	// From link reference.
+	// The from link reference.
 	FromLink *string `mandatory:"false" json:"fromLink"`
 
 	FieldMap FieldMap `mandatory:"false" json:"fieldMap"`

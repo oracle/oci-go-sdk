@@ -11,13 +11,13 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // ConnectionSummaryCollection This is the collection of connection summaries, it may be a collection of lightweight details or full definitions.
 type ConnectionSummaryCollection struct {
 
-	// The array of Connection summaries
+	// The array of connection summaries.
 	Items []ConnectionSummary `mandatory:"true" json:"items"`
 }
 

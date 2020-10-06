@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // DataSafeConfiguration A Data Safe Configuration that allows customer to enable Data Safe in their tenancy.

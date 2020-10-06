@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // UpdateInstanceDetails The representation of UpdateInstanceDetails
@@ -75,6 +75,8 @@ type UpdateInstanceDetails struct {
 	Shape *string `mandatory:"false" json:"shape"`
 
 	ShapeConfig *UpdateInstanceShapeConfigDetails `mandatory:"false" json:"shapeConfig"`
+
+	InstanceOptions *InstanceOptions `mandatory:"false" json:"instanceOptions"`
 
 	// A fault domain is a grouping of hardware and infrastructure within an availability domain.
 	// Each availability domain contains three fault domains. Fault domains let you distribute your

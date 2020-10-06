@@ -10,13 +10,13 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
-// TaskValidationSummaryCollection List of task validation summaries
+// TaskValidationSummaryCollection A list of task validation summaries.
 type TaskValidationSummaryCollection struct {
 
-	// The array of validation summaries
+	// An array of validation summaries.
 	Items []TaskValidationSummary `mandatory:"true" json:"items"`
 }
 

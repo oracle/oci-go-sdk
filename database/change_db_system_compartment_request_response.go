@@ -5,14 +5,14 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 	"net/http"
 )
 
 // ChangeDbSystemCompartmentRequest wrapper for the ChangeDbSystemCompartment operation
 type ChangeDbSystemCompartmentRequest struct {
 
-	// Request to move Db System to a different compartment
+	// Request to move the DB system to a different compartment.
 	ChangeCompartmentDetails `contributesTo:"body"`
 
 	// The DB system OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).

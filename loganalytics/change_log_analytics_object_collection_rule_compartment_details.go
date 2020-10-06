@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // ChangeLogAnalyticsObjectCollectionRuleCompartmentDetails Log Analytics Object Storage based collection rule compartment to be updated to.

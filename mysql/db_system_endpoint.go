@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // DbSystemEndpoint A particular functional endpoint for access to a DB System, and the properties that apply to it.

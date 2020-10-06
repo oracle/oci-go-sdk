@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // DatabaseSoftwareImage Database software images are created by specifying a patch set, one-off patches and patches for the database home (listed by `ls inventory`).
@@ -82,6 +82,8 @@ const (
 	DatabaseSoftwareImageLifecycleStateDeleting     DatabaseSoftwareImageLifecycleStateEnum = "DELETING"
 	DatabaseSoftwareImageLifecycleStateDeleted      DatabaseSoftwareImageLifecycleStateEnum = "DELETED"
 	DatabaseSoftwareImageLifecycleStateFailed       DatabaseSoftwareImageLifecycleStateEnum = "FAILED"
+	DatabaseSoftwareImageLifecycleStateTerminating  DatabaseSoftwareImageLifecycleStateEnum = "TERMINATING"
+	DatabaseSoftwareImageLifecycleStateTerminated   DatabaseSoftwareImageLifecycleStateEnum = "TERMINATED"
 	DatabaseSoftwareImageLifecycleStateUpdating     DatabaseSoftwareImageLifecycleStateEnum = "UPDATING"
 )
 
@@ -91,6 +93,8 @@ var mappingDatabaseSoftwareImageLifecycleState = map[string]DatabaseSoftwareImag
 	"DELETING":     DatabaseSoftwareImageLifecycleStateDeleting,
 	"DELETED":      DatabaseSoftwareImageLifecycleStateDeleted,
 	"FAILED":       DatabaseSoftwareImageLifecycleStateFailed,
+	"TERMINATING":  DatabaseSoftwareImageLifecycleStateTerminating,
+	"TERMINATED":   DatabaseSoftwareImageLifecycleStateTerminated,
 	"UPDATING":     DatabaseSoftwareImageLifecycleStateUpdating,
 }
 

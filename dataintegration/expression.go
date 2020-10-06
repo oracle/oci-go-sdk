@@ -10,19 +10,19 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // Expression An expression node.
 type Expression struct {
 
-	// The key of the object.
+	// The object key.
 	Key *string `mandatory:"false" json:"key"`
 
-	// The type of the object.
+	// The object type.
 	ModelType *string `mandatory:"false" json:"modelType"`
 
-	// The model version of an object.
+	// The object's model version.
 	ModelVersion *string `mandatory:"false" json:"modelVersion"`
 
 	ParentRef *ParentReference `mandatory:"false" json:"parentRef"`

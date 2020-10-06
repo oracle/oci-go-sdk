@@ -5,7 +5,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 	"net/http"
 )
 
@@ -15,7 +15,7 @@ type GenerateRecommendedVmClusterNetworkRequest struct {
 	// The Exadata infrastructure OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).
 	ExadataInfrastructureId *string `mandatory:"true" contributesTo:"path" name:"exadataInfrastructureId"`
 
-	// Request to generate a recommended VM cluster network configuration.
+	// Request to generate a recommended Cloud@Customer VM cluster network configuration.
 	GenerateRecommendedNetworkDetails `contributesTo:"body"`
 
 	// Unique identifier for the request.

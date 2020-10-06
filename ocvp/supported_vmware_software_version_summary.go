@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // SupportedVmwareSoftwareVersionSummary A specific version of bundled VMware software supported by the Oracle Cloud

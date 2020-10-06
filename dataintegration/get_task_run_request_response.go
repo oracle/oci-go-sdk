@@ -5,20 +5,20 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v25/common"
+	"github.com/oracle/oci-go-sdk/v26/common"
 	"net/http"
 )
 
 // GetTaskRunRequest wrapper for the GetTaskRun operation
 type GetTaskRunRequest struct {
 
-	// DIS workspace id
+	// The workspace ID.
 	WorkspaceId *string `mandatory:"true" contributesTo:"path" name:"workspaceId"`
 
-	// DIS application key
+	// The application key.
 	ApplicationKey *string `mandatory:"true" contributesTo:"path" name:"applicationKey"`
 
-	// DIS taskRun key
+	// The task run key.
 	TaskRunKey *string `mandatory:"true" contributesTo:"path" name:"taskRunKey"`
 
 	// Unique Oracle-assigned identifier for the request. If
