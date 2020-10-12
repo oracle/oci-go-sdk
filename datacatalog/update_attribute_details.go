@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // UpdateAttributeDetails Properties used in attribute update operations.
@@ -60,6 +60,9 @@ type UpdateAttributeDetails struct {
 
 	// External attribute key that represents the parent attribute  of this attribute , applicable if the parent attribute is of complex type.
 	ExternalParentAttributeKey *string `mandatory:"false" json:"externalParentAttributeKey"`
+
+	// The list of customized properties along with the values for this object
+	CustomPropertyMembers []CustomPropertySetUsage `mandatory:"false" json:"customPropertyMembers"`
 
 	// A map of maps that contains the properties which are specific to the attribute type. Each attribute type
 	// definition defines it's set of required and optional properties. The map keys are category names and the

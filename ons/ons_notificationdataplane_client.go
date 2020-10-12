@@ -13,8 +13,8 @@ package ons
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -29,7 +29,7 @@ type NotificationDataPlaneClient struct {
 func NewNotificationDataPlaneClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client NotificationDataPlaneClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newNotificationDataPlaneClientFromBaseClient(baseClient, configProvider)
+			return newNotificationDataPlaneClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -85,6 +85,9 @@ func (client *NotificationDataPlaneClient) ConfigurationProvider() *common.Confi
 func (client NotificationDataPlaneClient) ChangeSubscriptionCompartment(ctx context.Context, request ChangeSubscriptionCompartmentRequest) (response ChangeSubscriptionCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -140,6 +143,9 @@ func (client NotificationDataPlaneClient) changeSubscriptionCompartment(ctx cont
 func (client NotificationDataPlaneClient) CreateSubscription(ctx context.Context, request CreateSubscriptionRequest) (response CreateSubscriptionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -193,6 +199,9 @@ func (client NotificationDataPlaneClient) createSubscription(ctx context.Context
 func (client NotificationDataPlaneClient) DeleteSubscription(ctx context.Context, request DeleteSubscriptionRequest) (response DeleteSubscriptionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -241,6 +250,9 @@ func (client NotificationDataPlaneClient) deleteSubscription(ctx context.Context
 func (client NotificationDataPlaneClient) GetConfirmSubscription(ctx context.Context, request GetConfirmSubscriptionRequest) (response GetConfirmSubscriptionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -289,6 +301,9 @@ func (client NotificationDataPlaneClient) getConfirmSubscription(ctx context.Con
 func (client NotificationDataPlaneClient) GetSubscription(ctx context.Context, request GetSubscriptionRequest) (response GetSubscriptionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -337,6 +352,9 @@ func (client NotificationDataPlaneClient) getSubscription(ctx context.Context, r
 func (client NotificationDataPlaneClient) GetUnsubscription(ctx context.Context, request GetUnsubscriptionRequest) (response GetUnsubscriptionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -385,6 +403,9 @@ func (client NotificationDataPlaneClient) getUnsubscription(ctx context.Context,
 func (client NotificationDataPlaneClient) ListSubscriptions(ctx context.Context, request ListSubscriptionsRequest) (response ListSubscriptionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -442,6 +463,9 @@ func (client NotificationDataPlaneClient) listSubscriptions(ctx context.Context,
 func (client NotificationDataPlaneClient) PublishMessage(ctx context.Context, request PublishMessageRequest) (response PublishMessageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -490,6 +514,9 @@ func (client NotificationDataPlaneClient) publishMessage(ctx context.Context, re
 func (client NotificationDataPlaneClient) ResendSubscriptionConfirmation(ctx context.Context, request ResendSubscriptionConfirmationRequest) (response ResendSubscriptionConfirmationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -538,6 +565,9 @@ func (client NotificationDataPlaneClient) resendSubscriptionConfirmation(ctx con
 func (client NotificationDataPlaneClient) UpdateSubscription(ctx context.Context, request UpdateSubscriptionRequest) (response UpdateSubscriptionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

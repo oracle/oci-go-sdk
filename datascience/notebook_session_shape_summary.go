@@ -10,7 +10,7 @@
 package datascience
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // NotebookSessionShapeSummary The compute shape used to launch a notebook session compute instance.

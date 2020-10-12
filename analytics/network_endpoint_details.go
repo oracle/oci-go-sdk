@@ -11,7 +11,7 @@ package analytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // NetworkEndpointDetails Base representation of a network endpoint.

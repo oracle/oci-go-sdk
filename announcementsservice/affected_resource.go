@@ -10,7 +10,7 @@
 package announcementsservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // AffectedResource The resource affected by the event described in the announcement.

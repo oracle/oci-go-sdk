@@ -14,8 +14,8 @@ package apigateway
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -30,7 +30,7 @@ type GatewayClient struct {
 func NewGatewayClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client GatewayClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newGatewayClientFromBaseClient(baseClient, configProvider)
+			return newGatewayClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -83,6 +83,9 @@ func (client *GatewayClient) ConfigurationProvider() *common.ConfigurationProvid
 func (client GatewayClient) ChangeGatewayCompartment(ctx context.Context, request ChangeGatewayCompartmentRequest) (response ChangeGatewayCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -135,6 +138,9 @@ func (client GatewayClient) changeGatewayCompartment(ctx context.Context, reques
 func (client GatewayClient) CreateGateway(ctx context.Context, request CreateGatewayRequest) (response CreateGatewayResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -187,6 +193,9 @@ func (client GatewayClient) createGateway(ctx context.Context, request common.OC
 func (client GatewayClient) DeleteGateway(ctx context.Context, request DeleteGatewayRequest) (response DeleteGatewayResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -234,6 +243,9 @@ func (client GatewayClient) deleteGateway(ctx context.Context, request common.OC
 func (client GatewayClient) GetGateway(ctx context.Context, request GetGatewayRequest) (response GetGatewayResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -281,6 +293,9 @@ func (client GatewayClient) getGateway(ctx context.Context, request common.OCIRe
 func (client GatewayClient) ListGateways(ctx context.Context, request ListGatewaysRequest) (response ListGatewaysResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -328,6 +343,9 @@ func (client GatewayClient) listGateways(ctx context.Context, request common.OCI
 func (client GatewayClient) UpdateGateway(ctx context.Context, request UpdateGatewayRequest) (response UpdateGatewayResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // Aggregator The information about the aggregator operator. The aggregate operator performs calculations, like sum or count, on all rows or a group of rows to create new, derivative attributes.

@@ -12,8 +12,8 @@ package integration
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type IntegrationInstanceClient struct {
 func NewIntegrationInstanceClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client IntegrationInstanceClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newIntegrationInstanceClientFromBaseClient(baseClient, configProvider)
+			return newIntegrationInstanceClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *IntegrationInstanceClient) ConfigurationProvider() *common.Configu
 func (client IntegrationInstanceClient) ChangeIntegrationInstanceCompartment(ctx context.Context, request ChangeIntegrationInstanceCompartmentRequest) (response ChangeIntegrationInstanceCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client IntegrationInstanceClient) changeIntegrationInstanceCompartment(ctx
 func (client IntegrationInstanceClient) CreateIntegrationInstance(ctx context.Context, request CreateIntegrationInstanceRequest) (response CreateIntegrationInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -185,6 +191,9 @@ func (client IntegrationInstanceClient) createIntegrationInstance(ctx context.Co
 func (client IntegrationInstanceClient) DeleteIntegrationInstance(ctx context.Context, request DeleteIntegrationInstanceRequest) (response DeleteIntegrationInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -232,6 +241,9 @@ func (client IntegrationInstanceClient) deleteIntegrationInstance(ctx context.Co
 func (client IntegrationInstanceClient) GetIntegrationInstance(ctx context.Context, request GetIntegrationInstanceRequest) (response GetIntegrationInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -279,6 +291,9 @@ func (client IntegrationInstanceClient) getIntegrationInstance(ctx context.Conte
 func (client IntegrationInstanceClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -326,6 +341,9 @@ func (client IntegrationInstanceClient) getWorkRequest(ctx context.Context, requ
 func (client IntegrationInstanceClient) ListIntegrationInstances(ctx context.Context, request ListIntegrationInstancesRequest) (response ListIntegrationInstancesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -373,6 +391,9 @@ func (client IntegrationInstanceClient) listIntegrationInstances(ctx context.Con
 func (client IntegrationInstanceClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -420,6 +441,9 @@ func (client IntegrationInstanceClient) listWorkRequestErrors(ctx context.Contex
 func (client IntegrationInstanceClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -467,6 +491,9 @@ func (client IntegrationInstanceClient) listWorkRequestLogs(ctx context.Context,
 func (client IntegrationInstanceClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -514,6 +541,9 @@ func (client IntegrationInstanceClient) listWorkRequests(ctx context.Context, re
 func (client IntegrationInstanceClient) StartIntegrationInstance(ctx context.Context, request StartIntegrationInstanceRequest) (response StartIntegrationInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -566,6 +596,9 @@ func (client IntegrationInstanceClient) startIntegrationInstance(ctx context.Con
 func (client IntegrationInstanceClient) StopIntegrationInstance(ctx context.Context, request StopIntegrationInstanceRequest) (response StopIntegrationInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -618,6 +651,9 @@ func (client IntegrationInstanceClient) stopIntegrationInstance(ctx context.Cont
 func (client IntegrationInstanceClient) UpdateIntegrationInstance(ctx context.Context, request UpdateIntegrationInstanceRequest) (response UpdateIntegrationInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

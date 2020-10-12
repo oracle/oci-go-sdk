@@ -5,14 +5,14 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 	"net/http"
 )
 
 // GetLogIncludedSearchRequest wrapper for the GetLogIncludedSearch operation
 type GetLogIncludedSearchRequest struct {
 
-	// Compartment OCID to list resources in. Please see compartmentIdInSubtree
+	// Compartment OCID to list resources in. See compartmentIdInSubtree
 	//      for nested compartments traversal.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 

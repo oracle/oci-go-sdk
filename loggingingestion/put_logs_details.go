@@ -2,15 +2,15 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// PublicLoggingDataplane API
+// Logging Ingestion API
 //
-// PublicLoggingDataplane API specification
+// Use the Logging Ingestion API to ingest your application logs.
 //
 
 package loggingingestion
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // PutLogsDetails The request body for the PutLogs request.

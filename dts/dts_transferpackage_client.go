@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type TransferPackageClient struct {
 func NewTransferPackageClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client TransferPackageClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newTransferPackageClientFromBaseClient(baseClient, configProvider)
+			return newTransferPackageClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *TransferPackageClient) ConfigurationProvider() *common.Configurati
 func (client TransferPackageClient) AttachDevicesToTransferPackage(ctx context.Context, request AttachDevicesToTransferPackageRequest) (response AttachDevicesToTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -128,6 +131,9 @@ func (client TransferPackageClient) attachDevicesToTransferPackage(ctx context.C
 func (client TransferPackageClient) CreateTransferPackage(ctx context.Context, request CreateTransferPackageRequest) (response CreateTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -180,6 +186,9 @@ func (client TransferPackageClient) createTransferPackage(ctx context.Context, r
 func (client TransferPackageClient) DeleteTransferPackage(ctx context.Context, request DeleteTransferPackageRequest) (response DeleteTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -227,6 +236,9 @@ func (client TransferPackageClient) deleteTransferPackage(ctx context.Context, r
 func (client TransferPackageClient) DetachDevicesFromTransferPackage(ctx context.Context, request DetachDevicesFromTransferPackageRequest) (response DetachDevicesFromTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -274,6 +286,9 @@ func (client TransferPackageClient) detachDevicesFromTransferPackage(ctx context
 func (client TransferPackageClient) GetTransferPackage(ctx context.Context, request GetTransferPackageRequest) (response GetTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -321,6 +336,9 @@ func (client TransferPackageClient) getTransferPackage(ctx context.Context, requ
 func (client TransferPackageClient) ListTransferPackages(ctx context.Context, request ListTransferPackagesRequest) (response ListTransferPackagesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -368,6 +386,9 @@ func (client TransferPackageClient) listTransferPackages(ctx context.Context, re
 func (client TransferPackageClient) UpdateTransferPackage(ctx context.Context, request UpdateTransferPackageRequest) (response UpdateTransferPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

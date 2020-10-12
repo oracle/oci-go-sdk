@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // CreateConnectionDetails Properties used in connection create operations.
@@ -35,6 +35,9 @@ type CreateConnectionDetails struct {
 
 	// A description of the connection.
 	Description *string `mandatory:"false" json:"description"`
+
+	// The list of customized properties along with the values for this object
+	CustomPropertyMembers []CustomPropertySetUsage `mandatory:"false" json:"customPropertyMembers"`
 
 	// A map of maps that contains the encrypted values for sensitive properties which are specific to the
 	// connection type. Each connection type definition defines it's set of required and optional properties.

@@ -14,8 +14,8 @@ package audit
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -30,7 +30,7 @@ type AuditClient struct {
 func NewAuditClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client AuditClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newAuditClientFromBaseClient(baseClient, configProvider)
+			return newAuditClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -83,6 +83,9 @@ func (client *AuditClient) ConfigurationProvider() *common.ConfigurationProvider
 func (client AuditClient) GetConfiguration(ctx context.Context, request GetConfigurationRequest) (response GetConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -126,6 +129,9 @@ func (client AuditClient) getConfiguration(ctx context.Context, request common.O
 func (client AuditClient) ListEvents(ctx context.Context, request ListEventsRequest) (response ListEventsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -173,6 +179,9 @@ func (client AuditClient) listEvents(ctx context.Context, request common.OCIRequ
 func (client AuditClient) UpdateConfiguration(ctx context.Context, request UpdateConfigurationRequest) (response UpdateConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

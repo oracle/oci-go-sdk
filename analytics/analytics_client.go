@@ -12,8 +12,8 @@ package analytics
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type AnalyticsClient struct {
 func NewAnalyticsClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client AnalyticsClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newAnalyticsClientFromBaseClient(baseClient, configProvider)
+			return newAnalyticsClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -82,6 +82,9 @@ func (client *AnalyticsClient) ConfigurationProvider() *common.ConfigurationProv
 func (client AnalyticsClient) ChangeAnalyticsInstanceCompartment(ctx context.Context, request ChangeAnalyticsInstanceCompartmentRequest) (response ChangeAnalyticsInstanceCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -135,6 +138,9 @@ func (client AnalyticsClient) changeAnalyticsInstanceCompartment(ctx context.Con
 func (client AnalyticsClient) ChangeAnalyticsInstanceNetworkEndpoint(ctx context.Context, request ChangeAnalyticsInstanceNetworkEndpointRequest) (response ChangeAnalyticsInstanceNetworkEndpointResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -188,6 +194,9 @@ func (client AnalyticsClient) changeAnalyticsInstanceNetworkEndpoint(ctx context
 func (client AnalyticsClient) CreateAnalyticsInstance(ctx context.Context, request CreateAnalyticsInstanceRequest) (response CreateAnalyticsInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -241,6 +250,9 @@ func (client AnalyticsClient) createAnalyticsInstance(ctx context.Context, reque
 func (client AnalyticsClient) DeleteAnalyticsInstance(ctx context.Context, request DeleteAnalyticsInstanceRequest) (response DeleteAnalyticsInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -293,6 +305,9 @@ func (client AnalyticsClient) deleteAnalyticsInstance(ctx context.Context, reque
 func (client AnalyticsClient) DeleteWorkRequest(ctx context.Context, request DeleteWorkRequestRequest) (response DeleteWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -340,6 +355,9 @@ func (client AnalyticsClient) deleteWorkRequest(ctx context.Context, request com
 func (client AnalyticsClient) GetAnalyticsInstance(ctx context.Context, request GetAnalyticsInstanceRequest) (response GetAnalyticsInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -387,6 +405,9 @@ func (client AnalyticsClient) getAnalyticsInstance(ctx context.Context, request 
 func (client AnalyticsClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -434,6 +455,9 @@ func (client AnalyticsClient) getWorkRequest(ctx context.Context, request common
 func (client AnalyticsClient) ListAnalyticsInstances(ctx context.Context, request ListAnalyticsInstancesRequest) (response ListAnalyticsInstancesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -481,6 +505,9 @@ func (client AnalyticsClient) listAnalyticsInstances(ctx context.Context, reques
 func (client AnalyticsClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -528,6 +555,9 @@ func (client AnalyticsClient) listWorkRequestErrors(ctx context.Context, request
 func (client AnalyticsClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -575,6 +605,9 @@ func (client AnalyticsClient) listWorkRequestLogs(ctx context.Context, request c
 func (client AnalyticsClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -623,6 +656,9 @@ func (client AnalyticsClient) listWorkRequests(ctx context.Context, request comm
 func (client AnalyticsClient) ScaleAnalyticsInstance(ctx context.Context, request ScaleAnalyticsInstanceRequest) (response ScaleAnalyticsInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -676,6 +712,9 @@ func (client AnalyticsClient) scaleAnalyticsInstance(ctx context.Context, reques
 func (client AnalyticsClient) StartAnalyticsInstance(ctx context.Context, request StartAnalyticsInstanceRequest) (response StartAnalyticsInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -729,6 +768,9 @@ func (client AnalyticsClient) startAnalyticsInstance(ctx context.Context, reques
 func (client AnalyticsClient) StopAnalyticsInstance(ctx context.Context, request StopAnalyticsInstanceRequest) (response StopAnalyticsInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -782,6 +824,9 @@ func (client AnalyticsClient) stopAnalyticsInstance(ctx context.Context, request
 func (client AnalyticsClient) UpdateAnalyticsInstance(ctx context.Context, request UpdateAnalyticsInstanceRequest) (response UpdateAnalyticsInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

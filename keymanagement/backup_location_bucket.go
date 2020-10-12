@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // BackupLocationBucket Object storage bucket details to upload or download the backup

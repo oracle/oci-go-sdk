@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // SearchResultCollection The list of search result items matching the criteria returned from the search operation. Search errors and
@@ -22,6 +22,12 @@ type SearchResultCollection struct {
 
 	// Search result set.
 	Items []SearchResult `mandatory:"false" json:"items"`
+
+	// String that data objects are to be searched with.
+	Query *string `mandatory:"false" json:"query"`
+
+	// Aggregations/facets on properties of data objects.
+	FacetedSearchAggregation []FacetedSearchAggregation `mandatory:"false" json:"facetedSearchAggregation"`
 }
 
 func (m SearchResultCollection) String() string {

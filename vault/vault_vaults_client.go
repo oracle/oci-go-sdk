@@ -12,8 +12,8 @@ package vault
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type VaultsClient struct {
 func NewVaultsClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client VaultsClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newVaultsClientFromBaseClient(baseClient, configProvider)
+			return newVaultsClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -83,6 +83,9 @@ func (client *VaultsClient) ConfigurationProvider() *common.ConfigurationProvide
 func (client VaultsClient) CancelSecretDeletion(ctx context.Context, request CancelSecretDeletionRequest) (response CancelSecretDeletionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -130,6 +133,9 @@ func (client VaultsClient) cancelSecretDeletion(ctx context.Context, request com
 func (client VaultsClient) CancelSecretVersionDeletion(ctx context.Context, request CancelSecretVersionDeletionRequest) (response CancelSecretVersionDeletionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -179,6 +185,9 @@ func (client VaultsClient) cancelSecretVersionDeletion(ctx context.Context, requ
 func (client VaultsClient) ChangeSecretCompartment(ctx context.Context, request ChangeSecretCompartmentRequest) (response ChangeSecretCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -232,6 +241,9 @@ func (client VaultsClient) changeSecretCompartment(ctx context.Context, request 
 func (client VaultsClient) CreateSecret(ctx context.Context, request CreateSecretRequest) (response CreateSecretResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -284,6 +296,9 @@ func (client VaultsClient) createSecret(ctx context.Context, request common.OCIR
 func (client VaultsClient) GetSecret(ctx context.Context, request GetSecretRequest) (response GetSecretResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -331,6 +346,9 @@ func (client VaultsClient) getSecret(ctx context.Context, request common.OCIRequ
 func (client VaultsClient) GetSecretVersion(ctx context.Context, request GetSecretVersionRequest) (response GetSecretVersionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -378,6 +396,9 @@ func (client VaultsClient) getSecretVersion(ctx context.Context, request common.
 func (client VaultsClient) ListSecretVersions(ctx context.Context, request ListSecretVersionsRequest) (response ListSecretVersionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -425,6 +446,9 @@ func (client VaultsClient) listSecretVersions(ctx context.Context, request commo
 func (client VaultsClient) ListSecrets(ctx context.Context, request ListSecretsRequest) (response ListSecretsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -473,6 +497,9 @@ func (client VaultsClient) listSecrets(ctx context.Context, request common.OCIRe
 func (client VaultsClient) ScheduleSecretDeletion(ctx context.Context, request ScheduleSecretDeletionRequest) (response ScheduleSecretDeletionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -521,6 +548,9 @@ func (client VaultsClient) scheduleSecretDeletion(ctx context.Context, request c
 func (client VaultsClient) ScheduleSecretVersionDeletion(ctx context.Context, request ScheduleSecretVersionDeletionRequest) (response ScheduleSecretVersionDeletionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -572,6 +602,9 @@ func (client VaultsClient) scheduleSecretVersionDeletion(ctx context.Context, re
 func (client VaultsClient) UpdateSecret(ctx context.Context, request UpdateSecretRequest) (response UpdateSecretResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

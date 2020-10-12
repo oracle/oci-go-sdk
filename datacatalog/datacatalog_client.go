@@ -12,8 +12,8 @@ package datacatalog
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type DataCatalogClient struct {
 func NewDataCatalogClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client DataCatalogClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newDataCatalogClientFromBaseClient(baseClient, configProvider)
+			return newDataCatalogClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -77,10 +77,123 @@ func (client *DataCatalogClient) ConfigurationProvider() *common.ConfigurationPr
 	return client.config
 }
 
+// AddDataSelectorPatterns Add data selector pattern to the data asset.
+func (client DataCatalogClient) AddDataSelectorPatterns(ctx context.Context, request AddDataSelectorPatternsRequest) (response AddDataSelectorPatternsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.addDataSelectorPatterns, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = AddDataSelectorPatternsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = AddDataSelectorPatternsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(AddDataSelectorPatternsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into AddDataSelectorPatternsResponse")
+	}
+	return
+}
+
+// addDataSelectorPatterns implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) addDataSelectorPatterns(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/catalogs/{catalogId}/dataAssets/{dataAssetKey}/actions/addDataSelectorPatterns")
+	if err != nil {
+		return nil, err
+	}
+
+	var response AddDataSelectorPatternsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// AssociateCustomProperty Associate the custom property for the given type
+func (client DataCatalogClient) AssociateCustomProperty(ctx context.Context, request AssociateCustomPropertyRequest) (response AssociateCustomPropertyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.associateCustomProperty, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = AssociateCustomPropertyResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = AssociateCustomPropertyResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(AssociateCustomPropertyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into AssociateCustomPropertyResponse")
+	}
+	return
+}
+
+// associateCustomProperty implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) associateCustomProperty(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/catalogs/{catalogId}/types/{typeKey}/actions/associateCustomProperties")
+	if err != nil {
+		return nil, err
+	}
+
+	var response AssociateCustomPropertyResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // AttachCatalogPrivateEndpoint Attaches a private reverse connection endpoint resource to a data catalog resource. When provided, 'If-Match' is checked against 'ETag' values of the resource.
 func (client DataCatalogClient) AttachCatalogPrivateEndpoint(ctx context.Context, request AttachCatalogPrivateEndpointRequest) (response AttachCatalogPrivateEndpointResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +246,9 @@ func (client DataCatalogClient) attachCatalogPrivateEndpoint(ctx context.Context
 func (client DataCatalogClient) ChangeCatalogCompartment(ctx context.Context, request ChangeCatalogCompartmentRequest) (response ChangeCatalogCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -180,6 +296,9 @@ func (client DataCatalogClient) changeCatalogCompartment(ctx context.Context, re
 func (client DataCatalogClient) ChangeCatalogPrivateEndpointCompartment(ctx context.Context, request ChangeCatalogPrivateEndpointCompartmentRequest) (response ChangeCatalogPrivateEndpointCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -227,6 +346,9 @@ func (client DataCatalogClient) changeCatalogPrivateEndpointCompartment(ctx cont
 func (client DataCatalogClient) CreateAttribute(ctx context.Context, request CreateAttributeRequest) (response CreateAttributeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -279,6 +401,9 @@ func (client DataCatalogClient) createAttribute(ctx context.Context, request com
 func (client DataCatalogClient) CreateAttributeTag(ctx context.Context, request CreateAttributeTagRequest) (response CreateAttributeTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -332,6 +457,9 @@ func (client DataCatalogClient) createAttributeTag(ctx context.Context, request 
 func (client DataCatalogClient) CreateCatalog(ctx context.Context, request CreateCatalogRequest) (response CreateCatalogResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -384,6 +512,9 @@ func (client DataCatalogClient) createCatalog(ctx context.Context, request commo
 func (client DataCatalogClient) CreateCatalogPrivateEndpoint(ctx context.Context, request CreateCatalogPrivateEndpointRequest) (response CreateCatalogPrivateEndpointResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -436,6 +567,9 @@ func (client DataCatalogClient) createCatalogPrivateEndpoint(ctx context.Context
 func (client DataCatalogClient) CreateConnection(ctx context.Context, request CreateConnectionRequest) (response CreateConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -484,10 +618,68 @@ func (client DataCatalogClient) createConnection(ctx context.Context, request co
 	return response, err
 }
 
+// CreateCustomProperty Create a new Custom Property
+func (client DataCatalogClient) CreateCustomProperty(ctx context.Context, request CreateCustomPropertyRequest) (response CreateCustomPropertyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.createCustomProperty, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = CreateCustomPropertyResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = CreateCustomPropertyResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(CreateCustomPropertyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into CreateCustomPropertyResponse")
+	}
+	return
+}
+
+// createCustomProperty implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) createCustomProperty(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/catalogs/{catalogId}/namespaces/{namespaceId}/customProperties")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateCustomPropertyResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // CreateDataAsset Create a new data asset.
 func (client DataCatalogClient) CreateDataAsset(ctx context.Context, request CreateDataAssetRequest) (response CreateDataAssetResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -540,6 +732,9 @@ func (client DataCatalogClient) createDataAsset(ctx context.Context, request com
 func (client DataCatalogClient) CreateDataAssetTag(ctx context.Context, request CreateDataAssetTagRequest) (response CreateDataAssetTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -592,6 +787,9 @@ func (client DataCatalogClient) createDataAssetTag(ctx context.Context, request 
 func (client DataCatalogClient) CreateEntity(ctx context.Context, request CreateEntityRequest) (response CreateEntityResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -644,6 +842,9 @@ func (client DataCatalogClient) createEntity(ctx context.Context, request common
 func (client DataCatalogClient) CreateEntityTag(ctx context.Context, request CreateEntityTagRequest) (response CreateEntityTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -696,6 +897,9 @@ func (client DataCatalogClient) createEntityTag(ctx context.Context, request com
 func (client DataCatalogClient) CreateFolder(ctx context.Context, request CreateFolderRequest) (response CreateFolderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -748,6 +952,9 @@ func (client DataCatalogClient) createFolder(ctx context.Context, request common
 func (client DataCatalogClient) CreateFolderTag(ctx context.Context, request CreateFolderTagRequest) (response CreateFolderTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -800,6 +1007,9 @@ func (client DataCatalogClient) createFolderTag(ctx context.Context, request com
 func (client DataCatalogClient) CreateGlossary(ctx context.Context, request CreateGlossaryRequest) (response CreateGlossaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -852,6 +1062,9 @@ func (client DataCatalogClient) createGlossary(ctx context.Context, request comm
 func (client DataCatalogClient) CreateJob(ctx context.Context, request CreateJobRequest) (response CreateJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -904,6 +1117,9 @@ func (client DataCatalogClient) createJob(ctx context.Context, request common.OC
 func (client DataCatalogClient) CreateJobDefinition(ctx context.Context, request CreateJobDefinitionRequest) (response CreateJobDefinitionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -956,6 +1172,9 @@ func (client DataCatalogClient) createJobDefinition(ctx context.Context, request
 func (client DataCatalogClient) CreateJobExecution(ctx context.Context, request CreateJobExecutionRequest) (response CreateJobExecutionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1004,10 +1223,123 @@ func (client DataCatalogClient) createJobExecution(ctx context.Context, request 
 	return response, err
 }
 
+// CreateNamespace Create a new Namespace to be used by a custom property
+func (client DataCatalogClient) CreateNamespace(ctx context.Context, request CreateNamespaceRequest) (response CreateNamespaceResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.createNamespace, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = CreateNamespaceResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = CreateNamespaceResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(CreateNamespaceResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into CreateNamespaceResponse")
+	}
+	return
+}
+
+// createNamespace implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) createNamespace(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/catalogs/{catalogId}/namespaces")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreateNamespaceResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// CreatePattern Create a new pattern.
+func (client DataCatalogClient) CreatePattern(ctx context.Context, request CreatePatternRequest) (response CreatePatternResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.createPattern, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = CreatePatternResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = CreatePatternResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(CreatePatternResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into CreatePatternResponse")
+	}
+	return
+}
+
+// createPattern implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) createPattern(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/catalogs/{catalogId}/patterns")
+	if err != nil {
+		return nil, err
+	}
+
+	var response CreatePatternResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // CreateTerm Create a new term within a glossary.
 func (client DataCatalogClient) CreateTerm(ctx context.Context, request CreateTermRequest) (response CreateTermResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1060,6 +1392,9 @@ func (client DataCatalogClient) createTerm(ctx context.Context, request common.O
 func (client DataCatalogClient) CreateTermRelationship(ctx context.Context, request CreateTermRelationshipRequest) (response CreateTermRelationshipResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1112,6 +1447,9 @@ func (client DataCatalogClient) createTermRelationship(ctx context.Context, requ
 func (client DataCatalogClient) DeleteAttribute(ctx context.Context, request DeleteAttributeRequest) (response DeleteAttributeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1159,6 +1497,9 @@ func (client DataCatalogClient) deleteAttribute(ctx context.Context, request com
 func (client DataCatalogClient) DeleteAttributeTag(ctx context.Context, request DeleteAttributeTagRequest) (response DeleteAttributeTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1206,6 +1547,9 @@ func (client DataCatalogClient) deleteAttributeTag(ctx context.Context, request 
 func (client DataCatalogClient) DeleteCatalog(ctx context.Context, request DeleteCatalogRequest) (response DeleteCatalogResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1253,6 +1597,9 @@ func (client DataCatalogClient) deleteCatalog(ctx context.Context, request commo
 func (client DataCatalogClient) DeleteCatalogPrivateEndpoint(ctx context.Context, request DeleteCatalogPrivateEndpointRequest) (response DeleteCatalogPrivateEndpointResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1300,6 +1647,9 @@ func (client DataCatalogClient) deleteCatalogPrivateEndpoint(ctx context.Context
 func (client DataCatalogClient) DeleteConnection(ctx context.Context, request DeleteConnectionRequest) (response DeleteConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1343,10 +1693,63 @@ func (client DataCatalogClient) deleteConnection(ctx context.Context, request co
 	return response, err
 }
 
+// DeleteCustomProperty Deletes a specific custom property identified by it's key.
+func (client DataCatalogClient) DeleteCustomProperty(ctx context.Context, request DeleteCustomPropertyRequest) (response DeleteCustomPropertyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteCustomProperty, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = DeleteCustomPropertyResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = DeleteCustomPropertyResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(DeleteCustomPropertyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteCustomPropertyResponse")
+	}
+	return
+}
+
+// deleteCustomProperty implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) deleteCustomProperty(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/catalogs/{catalogId}/namespaces/{namespaceId}/customProperties/{customPropertyKey}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteCustomPropertyResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // DeleteDataAsset Deletes a specific data asset identified by it's key.
 func (client DataCatalogClient) DeleteDataAsset(ctx context.Context, request DeleteDataAssetRequest) (response DeleteDataAssetResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1394,6 +1797,9 @@ func (client DataCatalogClient) deleteDataAsset(ctx context.Context, request com
 func (client DataCatalogClient) DeleteDataAssetTag(ctx context.Context, request DeleteDataAssetTagRequest) (response DeleteDataAssetTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1441,6 +1847,9 @@ func (client DataCatalogClient) deleteDataAssetTag(ctx context.Context, request 
 func (client DataCatalogClient) DeleteEntity(ctx context.Context, request DeleteEntityRequest) (response DeleteEntityResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1488,6 +1897,9 @@ func (client DataCatalogClient) deleteEntity(ctx context.Context, request common
 func (client DataCatalogClient) DeleteEntityTag(ctx context.Context, request DeleteEntityTagRequest) (response DeleteEntityTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1535,6 +1947,9 @@ func (client DataCatalogClient) deleteEntityTag(ctx context.Context, request com
 func (client DataCatalogClient) DeleteFolder(ctx context.Context, request DeleteFolderRequest) (response DeleteFolderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1582,6 +1997,9 @@ func (client DataCatalogClient) deleteFolder(ctx context.Context, request common
 func (client DataCatalogClient) DeleteFolderTag(ctx context.Context, request DeleteFolderTagRequest) (response DeleteFolderTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1629,6 +2047,9 @@ func (client DataCatalogClient) deleteFolderTag(ctx context.Context, request com
 func (client DataCatalogClient) DeleteGlossary(ctx context.Context, request DeleteGlossaryRequest) (response DeleteGlossaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1676,6 +2097,9 @@ func (client DataCatalogClient) deleteGlossary(ctx context.Context, request comm
 func (client DataCatalogClient) DeleteJob(ctx context.Context, request DeleteJobRequest) (response DeleteJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1723,6 +2147,9 @@ func (client DataCatalogClient) deleteJob(ctx context.Context, request common.OC
 func (client DataCatalogClient) DeleteJobDefinition(ctx context.Context, request DeleteJobDefinitionRequest) (response DeleteJobDefinitionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1766,10 +2193,113 @@ func (client DataCatalogClient) deleteJobDefinition(ctx context.Context, request
 	return response, err
 }
 
+// DeleteNamespace Deletes a specific Namespace identified by it's key.
+func (client DataCatalogClient) DeleteNamespace(ctx context.Context, request DeleteNamespaceRequest) (response DeleteNamespaceResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deleteNamespace, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = DeleteNamespaceResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = DeleteNamespaceResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(DeleteNamespaceResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeleteNamespaceResponse")
+	}
+	return
+}
+
+// deleteNamespace implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) deleteNamespace(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/catalogs/{catalogId}/namespaces/{namespaceId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeleteNamespaceResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// DeletePattern Deletes a specific pattern identified by it's key.
+func (client DataCatalogClient) DeletePattern(ctx context.Context, request DeletePatternRequest) (response DeletePatternResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.deletePattern, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = DeletePatternResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = DeletePatternResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(DeletePatternResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DeletePatternResponse")
+	}
+	return
+}
+
+// deletePattern implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) deletePattern(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/catalogs/{catalogId}/patterns/{patternKey}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DeletePatternResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // DeleteTerm Deletes a specific glossary term.
 func (client DataCatalogClient) DeleteTerm(ctx context.Context, request DeleteTermRequest) (response DeleteTermResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1817,6 +2347,9 @@ func (client DataCatalogClient) deleteTerm(ctx context.Context, request common.O
 func (client DataCatalogClient) DeleteTermRelationship(ctx context.Context, request DeleteTermRelationshipRequest) (response DeleteTermRelationshipResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1864,6 +2397,9 @@ func (client DataCatalogClient) deleteTermRelationship(ctx context.Context, requ
 func (client DataCatalogClient) DetachCatalogPrivateEndpoint(ctx context.Context, request DetachCatalogPrivateEndpointRequest) (response DetachCatalogPrivateEndpointResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1907,10 +2443,68 @@ func (client DataCatalogClient) detachCatalogPrivateEndpoint(ctx context.Context
 	return response, err
 }
 
+// DisassociateCustomProperty Remove the custom property for the given type
+func (client DataCatalogClient) DisassociateCustomProperty(ctx context.Context, request DisassociateCustomPropertyRequest) (response DisassociateCustomPropertyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.disassociateCustomProperty, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = DisassociateCustomPropertyResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = DisassociateCustomPropertyResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(DisassociateCustomPropertyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into DisassociateCustomPropertyResponse")
+	}
+	return
+}
+
+// disassociateCustomProperty implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) disassociateCustomProperty(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/catalogs/{catalogId}/types/{typeKey}/actions/disassociateCustomProperties")
+	if err != nil {
+		return nil, err
+	}
+
+	var response DisassociateCustomPropertyResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // ExpandTreeForGlossary Returns the fully expanded tree hierarchy of parent and child terms in this glossary.
 func (client DataCatalogClient) ExpandTreeForGlossary(ctx context.Context, request ExpandTreeForGlossaryRequest) (response ExpandTreeForGlossaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1963,6 +2557,9 @@ func (client DataCatalogClient) expandTreeForGlossary(ctx context.Context, reque
 func (client DataCatalogClient) ExportGlossary(ctx context.Context, request ExportGlossaryRequest) (response ExportGlossaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2015,6 +2612,9 @@ func (client DataCatalogClient) exportGlossary(ctx context.Context, request comm
 func (client DataCatalogClient) GetAttribute(ctx context.Context, request GetAttributeRequest) (response GetAttributeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2062,6 +2662,9 @@ func (client DataCatalogClient) getAttribute(ctx context.Context, request common
 func (client DataCatalogClient) GetAttributeTag(ctx context.Context, request GetAttributeTagRequest) (response GetAttributeTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2109,6 +2712,9 @@ func (client DataCatalogClient) getAttributeTag(ctx context.Context, request com
 func (client DataCatalogClient) GetCatalog(ctx context.Context, request GetCatalogRequest) (response GetCatalogResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2156,6 +2762,9 @@ func (client DataCatalogClient) getCatalog(ctx context.Context, request common.O
 func (client DataCatalogClient) GetCatalogPrivateEndpoint(ctx context.Context, request GetCatalogPrivateEndpointRequest) (response GetCatalogPrivateEndpointResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2203,6 +2812,9 @@ func (client DataCatalogClient) getCatalogPrivateEndpoint(ctx context.Context, r
 func (client DataCatalogClient) GetConnection(ctx context.Context, request GetConnectionRequest) (response GetConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2246,10 +2858,63 @@ func (client DataCatalogClient) getConnection(ctx context.Context, request commo
 	return response, err
 }
 
+// GetCustomProperty Gets a specific custom property for the given key within a data catalog.
+func (client DataCatalogClient) GetCustomProperty(ctx context.Context, request GetCustomPropertyRequest) (response GetCustomPropertyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getCustomProperty, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetCustomPropertyResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetCustomPropertyResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetCustomPropertyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetCustomPropertyResponse")
+	}
+	return
+}
+
+// getCustomProperty implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) getCustomProperty(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/catalogs/{catalogId}/namespaces/{namespaceId}/customProperties/{customPropertyKey}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetCustomPropertyResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // GetDataAsset Gets a specific data asset for the given key within a data catalog.
 func (client DataCatalogClient) GetDataAsset(ctx context.Context, request GetDataAssetRequest) (response GetDataAssetResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2297,6 +2962,9 @@ func (client DataCatalogClient) getDataAsset(ctx context.Context, request common
 func (client DataCatalogClient) GetDataAssetTag(ctx context.Context, request GetDataAssetTagRequest) (response GetDataAssetTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2344,6 +3012,9 @@ func (client DataCatalogClient) getDataAssetTag(ctx context.Context, request com
 func (client DataCatalogClient) GetEntity(ctx context.Context, request GetEntityRequest) (response GetEntityResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2391,6 +3062,9 @@ func (client DataCatalogClient) getEntity(ctx context.Context, request common.OC
 func (client DataCatalogClient) GetEntityTag(ctx context.Context, request GetEntityTagRequest) (response GetEntityTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2438,6 +3112,9 @@ func (client DataCatalogClient) getEntityTag(ctx context.Context, request common
 func (client DataCatalogClient) GetFolder(ctx context.Context, request GetFolderRequest) (response GetFolderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2485,6 +3162,9 @@ func (client DataCatalogClient) getFolder(ctx context.Context, request common.OC
 func (client DataCatalogClient) GetFolderTag(ctx context.Context, request GetFolderTagRequest) (response GetFolderTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2532,6 +3212,9 @@ func (client DataCatalogClient) getFolderTag(ctx context.Context, request common
 func (client DataCatalogClient) GetGlossary(ctx context.Context, request GetGlossaryRequest) (response GetGlossaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2579,6 +3262,9 @@ func (client DataCatalogClient) getGlossary(ctx context.Context, request common.
 func (client DataCatalogClient) GetJob(ctx context.Context, request GetJobRequest) (response GetJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2626,6 +3312,9 @@ func (client DataCatalogClient) getJob(ctx context.Context, request common.OCIRe
 func (client DataCatalogClient) GetJobDefinition(ctx context.Context, request GetJobDefinitionRequest) (response GetJobDefinitionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2673,6 +3362,9 @@ func (client DataCatalogClient) getJobDefinition(ctx context.Context, request co
 func (client DataCatalogClient) GetJobExecution(ctx context.Context, request GetJobExecutionRequest) (response GetJobExecutionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2720,6 +3412,9 @@ func (client DataCatalogClient) getJobExecution(ctx context.Context, request com
 func (client DataCatalogClient) GetJobLog(ctx context.Context, request GetJobLogRequest) (response GetJobLogResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2767,6 +3462,9 @@ func (client DataCatalogClient) getJobLog(ctx context.Context, request common.OC
 func (client DataCatalogClient) GetJobMetrics(ctx context.Context, request GetJobMetricsRequest) (response GetJobMetricsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2810,10 +3508,113 @@ func (client DataCatalogClient) getJobMetrics(ctx context.Context, request commo
 	return response, err
 }
 
+// GetNamespace Gets a specific namespace for the given key within a data catalog.
+func (client DataCatalogClient) GetNamespace(ctx context.Context, request GetNamespaceRequest) (response GetNamespaceResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getNamespace, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetNamespaceResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetNamespaceResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetNamespaceResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetNamespaceResponse")
+	}
+	return
+}
+
+// getNamespace implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) getNamespace(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/catalogs/{catalogId}/namespaces/{namespaceId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetNamespaceResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetPattern Gets a specific pattern for the given key within a data catalog.
+func (client DataCatalogClient) GetPattern(ctx context.Context, request GetPatternRequest) (response GetPatternResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getPattern, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetPatternResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetPatternResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetPatternResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetPatternResponse")
+	}
+	return
+}
+
+// getPattern implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) getPattern(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/catalogs/{catalogId}/patterns/{patternKey}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetPatternResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // GetTerm Gets a specific glossary term by key.
 func (client DataCatalogClient) GetTerm(ctx context.Context, request GetTermRequest) (response GetTermResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2861,6 +3662,9 @@ func (client DataCatalogClient) getTerm(ctx context.Context, request common.OCIR
 func (client DataCatalogClient) GetTermRelationship(ctx context.Context, request GetTermRelationshipRequest) (response GetTermRelationshipResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2908,6 +3712,9 @@ func (client DataCatalogClient) getTermRelationship(ctx context.Context, request
 func (client DataCatalogClient) GetType(ctx context.Context, request GetTypeRequest) (response GetTypeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2955,6 +3762,9 @@ func (client DataCatalogClient) getType(ctx context.Context, request common.OCIR
 func (client DataCatalogClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3002,6 +3812,9 @@ func (client DataCatalogClient) getWorkRequest(ctx context.Context, request comm
 func (client DataCatalogClient) ImportConnection(ctx context.Context, request ImportConnectionRequest) (response ImportConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3054,6 +3867,9 @@ func (client DataCatalogClient) importConnection(ctx context.Context, request co
 func (client DataCatalogClient) ImportGlossary(ctx context.Context, request ImportGlossaryRequest) (response ImportGlossaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3102,10 +3918,63 @@ func (client DataCatalogClient) importGlossary(ctx context.Context, request comm
 	return response, err
 }
 
+// ListAggregatedPhysicalEntities List the physical entities aggregated by this logical entity.
+func (client DataCatalogClient) ListAggregatedPhysicalEntities(ctx context.Context, request ListAggregatedPhysicalEntitiesRequest) (response ListAggregatedPhysicalEntitiesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listAggregatedPhysicalEntities, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListAggregatedPhysicalEntitiesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListAggregatedPhysicalEntitiesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListAggregatedPhysicalEntitiesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListAggregatedPhysicalEntitiesResponse")
+	}
+	return
+}
+
+// listAggregatedPhysicalEntities implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) listAggregatedPhysicalEntities(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/catalogs/{catalogId}/dataAssets/{dataAssetKey}/entities/{entityKey}/actions/listAggregatedPhysicalEntities")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListAggregatedPhysicalEntitiesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // ListAttributeTags Returns a list of all tags for an entity attribute.
 func (client DataCatalogClient) ListAttributeTags(ctx context.Context, request ListAttributeTagsRequest) (response ListAttributeTagsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3153,6 +4022,9 @@ func (client DataCatalogClient) listAttributeTags(ctx context.Context, request c
 func (client DataCatalogClient) ListAttributes(ctx context.Context, request ListAttributesRequest) (response ListAttributesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3200,6 +4072,9 @@ func (client DataCatalogClient) listAttributes(ctx context.Context, request comm
 func (client DataCatalogClient) ListCatalogPrivateEndpoints(ctx context.Context, request ListCatalogPrivateEndpointsRequest) (response ListCatalogPrivateEndpointsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3247,6 +4122,9 @@ func (client DataCatalogClient) listCatalogPrivateEndpoints(ctx context.Context,
 func (client DataCatalogClient) ListCatalogs(ctx context.Context, request ListCatalogsRequest) (response ListCatalogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3294,6 +4172,9 @@ func (client DataCatalogClient) listCatalogs(ctx context.Context, request common
 func (client DataCatalogClient) ListConnections(ctx context.Context, request ListConnectionsRequest) (response ListConnectionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3337,10 +4218,63 @@ func (client DataCatalogClient) listConnections(ctx context.Context, request com
 	return response, err
 }
 
+// ListCustomProperties Returns a list of custom properties within a data catalog.
+func (client DataCatalogClient) ListCustomProperties(ctx context.Context, request ListCustomPropertiesRequest) (response ListCustomPropertiesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listCustomProperties, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListCustomPropertiesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListCustomPropertiesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListCustomPropertiesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListCustomPropertiesResponse")
+	}
+	return
+}
+
+// listCustomProperties implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) listCustomProperties(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/catalogs/{catalogId}/namespaces/{namespaceId}/customProperties")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListCustomPropertiesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // ListDataAssetTags Returns a list of all tags for a data asset.
 func (client DataCatalogClient) ListDataAssetTags(ctx context.Context, request ListDataAssetTagsRequest) (response ListDataAssetTagsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3388,6 +4322,9 @@ func (client DataCatalogClient) listDataAssetTags(ctx context.Context, request c
 func (client DataCatalogClient) ListDataAssets(ctx context.Context, request ListDataAssetsRequest) (response ListDataAssetsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3431,10 +4368,68 @@ func (client DataCatalogClient) listDataAssets(ctx context.Context, request comm
 	return response, err
 }
 
+// ListDerivedLogicalEntities List logical entities derived from this pattern.
+func (client DataCatalogClient) ListDerivedLogicalEntities(ctx context.Context, request ListDerivedLogicalEntitiesRequest) (response ListDerivedLogicalEntitiesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.listDerivedLogicalEntities, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListDerivedLogicalEntitiesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListDerivedLogicalEntitiesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListDerivedLogicalEntitiesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListDerivedLogicalEntitiesResponse")
+	}
+	return
+}
+
+// listDerivedLogicalEntities implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) listDerivedLogicalEntities(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/catalogs/{catalogId}/patterns/{patternKey}/actions/listDerivedLogicalEntities")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListDerivedLogicalEntitiesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // ListEntities Returns a list of all entities of a data asset.
 func (client DataCatalogClient) ListEntities(ctx context.Context, request ListEntitiesRequest) (response ListEntitiesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3482,6 +4477,9 @@ func (client DataCatalogClient) listEntities(ctx context.Context, request common
 func (client DataCatalogClient) ListEntityTags(ctx context.Context, request ListEntityTagsRequest) (response ListEntityTagsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3529,6 +4527,9 @@ func (client DataCatalogClient) listEntityTags(ctx context.Context, request comm
 func (client DataCatalogClient) ListFolderTags(ctx context.Context, request ListFolderTagsRequest) (response ListFolderTagsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3576,6 +4577,9 @@ func (client DataCatalogClient) listFolderTags(ctx context.Context, request comm
 func (client DataCatalogClient) ListFolders(ctx context.Context, request ListFoldersRequest) (response ListFoldersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3623,6 +4627,9 @@ func (client DataCatalogClient) listFolders(ctx context.Context, request common.
 func (client DataCatalogClient) ListGlossaries(ctx context.Context, request ListGlossariesRequest) (response ListGlossariesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3670,6 +4677,9 @@ func (client DataCatalogClient) listGlossaries(ctx context.Context, request comm
 func (client DataCatalogClient) ListJobDefinitions(ctx context.Context, request ListJobDefinitionsRequest) (response ListJobDefinitionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3717,6 +4727,9 @@ func (client DataCatalogClient) listJobDefinitions(ctx context.Context, request 
 func (client DataCatalogClient) ListJobExecutions(ctx context.Context, request ListJobExecutionsRequest) (response ListJobExecutionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3764,6 +4777,9 @@ func (client DataCatalogClient) listJobExecutions(ctx context.Context, request c
 func (client DataCatalogClient) ListJobLogs(ctx context.Context, request ListJobLogsRequest) (response ListJobLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3811,6 +4827,9 @@ func (client DataCatalogClient) listJobLogs(ctx context.Context, request common.
 func (client DataCatalogClient) ListJobMetrics(ctx context.Context, request ListJobMetricsRequest) (response ListJobMetricsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3858,6 +4877,9 @@ func (client DataCatalogClient) listJobMetrics(ctx context.Context, request comm
 func (client DataCatalogClient) ListJobs(ctx context.Context, request ListJobsRequest) (response ListJobsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3901,10 +4923,113 @@ func (client DataCatalogClient) listJobs(ctx context.Context, request common.OCI
 	return response, err
 }
 
+// ListNamespaces Returns a list of namespaces within a data catalog.
+func (client DataCatalogClient) ListNamespaces(ctx context.Context, request ListNamespacesRequest) (response ListNamespacesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listNamespaces, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListNamespacesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListNamespacesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListNamespacesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListNamespacesResponse")
+	}
+	return
+}
+
+// listNamespaces implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) listNamespaces(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/catalogs/{catalogId}/namespaces")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListNamespacesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListPatterns Returns a list of patterns within a data catalog.
+func (client DataCatalogClient) ListPatterns(ctx context.Context, request ListPatternsRequest) (response ListPatternsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listPatterns, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListPatternsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListPatternsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListPatternsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListPatternsResponse")
+	}
+	return
+}
+
+// listPatterns implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) listPatterns(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/catalogs/{catalogId}/patterns")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListPatternsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // ListTags Returns a list of all user created tags in the system.
 func (client DataCatalogClient) ListTags(ctx context.Context, request ListTagsRequest) (response ListTagsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3952,6 +5077,9 @@ func (client DataCatalogClient) listTags(ctx context.Context, request common.OCI
 func (client DataCatalogClient) ListTermRelationships(ctx context.Context, request ListTermRelationshipsRequest) (response ListTermRelationshipsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3999,6 +5127,9 @@ func (client DataCatalogClient) listTermRelationships(ctx context.Context, reque
 func (client DataCatalogClient) ListTerms(ctx context.Context, request ListTermsRequest) (response ListTermsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4046,6 +5177,9 @@ func (client DataCatalogClient) listTerms(ctx context.Context, request common.OC
 func (client DataCatalogClient) ListTypes(ctx context.Context, request ListTypesRequest) (response ListTypesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4093,6 +5227,9 @@ func (client DataCatalogClient) listTypes(ctx context.Context, request common.OC
 func (client DataCatalogClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4140,6 +5277,9 @@ func (client DataCatalogClient) listWorkRequestErrors(ctx context.Context, reque
 func (client DataCatalogClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4187,6 +5327,9 @@ func (client DataCatalogClient) listWorkRequestLogs(ctx context.Context, request
 func (client DataCatalogClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4234,6 +5377,9 @@ func (client DataCatalogClient) listWorkRequests(ctx context.Context, request co
 func (client DataCatalogClient) ObjectStats(ctx context.Context, request ObjectStatsRequest) (response ObjectStatsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4281,6 +5427,9 @@ func (client DataCatalogClient) objectStats(ctx context.Context, request common.
 func (client DataCatalogClient) ParseConnection(ctx context.Context, request ParseConnectionRequest) (response ParseConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4329,10 +5478,68 @@ func (client DataCatalogClient) parseConnection(ctx context.Context, request com
 	return response, err
 }
 
+// RemoveDataSelectorPatterns Remove data selector pattern from the data asset.
+func (client DataCatalogClient) RemoveDataSelectorPatterns(ctx context.Context, request RemoveDataSelectorPatternsRequest) (response RemoveDataSelectorPatternsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.removeDataSelectorPatterns, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = RemoveDataSelectorPatternsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = RemoveDataSelectorPatternsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(RemoveDataSelectorPatternsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into RemoveDataSelectorPatternsResponse")
+	}
+	return
+}
+
+// removeDataSelectorPatterns implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) removeDataSelectorPatterns(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/catalogs/{catalogId}/dataAssets/{dataAssetKey}/actions/removeDataSelectorPatterns")
+	if err != nil {
+		return nil, err
+	}
+
+	var response RemoveDataSelectorPatternsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // SearchCriteria Returns a list of search results within a data catalog.
 func (client DataCatalogClient) SearchCriteria(ctx context.Context, request SearchCriteriaRequest) (response SearchCriteriaResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4380,6 +5587,9 @@ func (client DataCatalogClient) searchCriteria(ctx context.Context, request comm
 func (client DataCatalogClient) TestConnection(ctx context.Context, request TestConnectionRequest) (response TestConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4432,6 +5642,9 @@ func (client DataCatalogClient) testConnection(ctx context.Context, request comm
 func (client DataCatalogClient) UpdateAttribute(ctx context.Context, request UpdateAttributeRequest) (response UpdateAttributeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4479,6 +5692,9 @@ func (client DataCatalogClient) updateAttribute(ctx context.Context, request com
 func (client DataCatalogClient) UpdateCatalog(ctx context.Context, request UpdateCatalogRequest) (response UpdateCatalogResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4526,6 +5742,9 @@ func (client DataCatalogClient) updateCatalog(ctx context.Context, request commo
 func (client DataCatalogClient) UpdateCatalogPrivateEndpoint(ctx context.Context, request UpdateCatalogPrivateEndpointRequest) (response UpdateCatalogPrivateEndpointResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4573,6 +5792,9 @@ func (client DataCatalogClient) updateCatalogPrivateEndpoint(ctx context.Context
 func (client DataCatalogClient) UpdateConnection(ctx context.Context, request UpdateConnectionRequest) (response UpdateConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4616,10 +5838,63 @@ func (client DataCatalogClient) updateConnection(ctx context.Context, request co
 	return response, err
 }
 
+// UpdateCustomProperty Updates a specific custom property identified by the given key.
+func (client DataCatalogClient) UpdateCustomProperty(ctx context.Context, request UpdateCustomPropertyRequest) (response UpdateCustomPropertyResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.updateCustomProperty, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = UpdateCustomPropertyResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = UpdateCustomPropertyResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(UpdateCustomPropertyResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into UpdateCustomPropertyResponse")
+	}
+	return
+}
+
+// updateCustomProperty implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) updateCustomProperty(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/catalogs/{catalogId}/namespaces/{namespaceId}/customProperties/{customPropertyKey}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateCustomPropertyResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // UpdateDataAsset Updates a specific data asset identified by the given key.
 func (client DataCatalogClient) UpdateDataAsset(ctx context.Context, request UpdateDataAssetRequest) (response UpdateDataAssetResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4667,6 +5942,9 @@ func (client DataCatalogClient) updateDataAsset(ctx context.Context, request com
 func (client DataCatalogClient) UpdateEntity(ctx context.Context, request UpdateEntityRequest) (response UpdateEntityResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4714,6 +5992,9 @@ func (client DataCatalogClient) updateEntity(ctx context.Context, request common
 func (client DataCatalogClient) UpdateFolder(ctx context.Context, request UpdateFolderRequest) (response UpdateFolderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4761,6 +6042,9 @@ func (client DataCatalogClient) updateFolder(ctx context.Context, request common
 func (client DataCatalogClient) UpdateGlossary(ctx context.Context, request UpdateGlossaryRequest) (response UpdateGlossaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4808,6 +6092,9 @@ func (client DataCatalogClient) updateGlossary(ctx context.Context, request comm
 func (client DataCatalogClient) UpdateJob(ctx context.Context, request UpdateJobRequest) (response UpdateJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4855,6 +6142,9 @@ func (client DataCatalogClient) updateJob(ctx context.Context, request common.OC
 func (client DataCatalogClient) UpdateJobDefinition(ctx context.Context, request UpdateJobDefinitionRequest) (response UpdateJobDefinitionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4898,10 +6188,113 @@ func (client DataCatalogClient) updateJobDefinition(ctx context.Context, request
 	return response, err
 }
 
+// UpdateNamespace Updates a specific namespace identified by the given key.
+func (client DataCatalogClient) UpdateNamespace(ctx context.Context, request UpdateNamespaceRequest) (response UpdateNamespaceResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.updateNamespace, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = UpdateNamespaceResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = UpdateNamespaceResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(UpdateNamespaceResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into UpdateNamespaceResponse")
+	}
+	return
+}
+
+// updateNamespace implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) updateNamespace(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/catalogs/{catalogId}/namespaces/{namespaceId}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdateNamespaceResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// UpdatePattern Updates a specific pattern identified by the given key.
+func (client DataCatalogClient) UpdatePattern(ctx context.Context, request UpdatePatternRequest) (response UpdatePatternResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.updatePattern, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = UpdatePatternResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = UpdatePatternResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(UpdatePatternResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into UpdatePatternResponse")
+	}
+	return
+}
+
+// updatePattern implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) updatePattern(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/catalogs/{catalogId}/patterns/{patternKey}")
+	if err != nil {
+		return nil, err
+	}
+
+	var response UpdatePatternResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // UpdateTerm Updates a specific glossary term.
 func (client DataCatalogClient) UpdateTerm(ctx context.Context, request UpdateTermRequest) (response UpdateTermResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4949,6 +6342,9 @@ func (client DataCatalogClient) updateTerm(ctx context.Context, request common.O
 func (client DataCatalogClient) UpdateTermRelationship(ctx context.Context, request UpdateTermRelationshipRequest) (response UpdateTermRelationshipResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4996,6 +6392,9 @@ func (client DataCatalogClient) updateTermRelationship(ctx context.Context, requ
 func (client DataCatalogClient) UploadCredentials(ctx context.Context, request UploadCredentialsRequest) (response UploadCredentialsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5048,6 +6447,9 @@ func (client DataCatalogClient) uploadCredentials(ctx context.Context, request c
 func (client DataCatalogClient) Users(ctx context.Context, request UsersRequest) (response UsersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5095,6 +6497,9 @@ func (client DataCatalogClient) users(ctx context.Context, request common.OCIReq
 func (client DataCatalogClient) ValidateConnection(ctx context.Context, request ValidateConnectionRequest) (response ValidateConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5131,6 +6536,61 @@ func (client DataCatalogClient) validateConnection(ctx context.Context, request 
 	}
 
 	var response ValidateConnectionResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ValidatePattern Validate pattern by deriving file groups representing logical entities using the expression
+func (client DataCatalogClient) ValidatePattern(ctx context.Context, request ValidatePatternRequest) (response ValidatePatternResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
+	ociResponse, err = common.Retry(ctx, request, client.validatePattern, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ValidatePatternResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ValidatePatternResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ValidatePatternResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ValidatePatternResponse")
+	}
+	return
+}
+
+// validatePattern implements the OCIOperation interface (enables retrying operations)
+func (client DataCatalogClient) validatePattern(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/catalogs/{catalogId}/patterns/{patternKey}/actions/validate")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ValidatePatternResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)

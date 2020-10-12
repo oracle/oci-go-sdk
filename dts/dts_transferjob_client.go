@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type TransferJobClient struct {
 func NewTransferJobClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client TransferJobClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newTransferJobClientFromBaseClient(baseClient, configProvider)
+			return newTransferJobClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *TransferJobClient) ConfigurationProvider() *common.ConfigurationPr
 func (client TransferJobClient) ChangeTransferJobCompartment(ctx context.Context, request ChangeTransferJobCompartmentRequest) (response ChangeTransferJobCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client TransferJobClient) changeTransferJobCompartment(ctx context.Context
 func (client TransferJobClient) CreateTransferJob(ctx context.Context, request CreateTransferJobRequest) (response CreateTransferJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -185,6 +191,9 @@ func (client TransferJobClient) createTransferJob(ctx context.Context, request c
 func (client TransferJobClient) DeleteTransferJob(ctx context.Context, request DeleteTransferJobRequest) (response DeleteTransferJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -232,6 +241,9 @@ func (client TransferJobClient) deleteTransferJob(ctx context.Context, request c
 func (client TransferJobClient) GetTransferJob(ctx context.Context, request GetTransferJobRequest) (response GetTransferJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -279,6 +291,9 @@ func (client TransferJobClient) getTransferJob(ctx context.Context, request comm
 func (client TransferJobClient) ListTransferJobs(ctx context.Context, request ListTransferJobsRequest) (response ListTransferJobsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -326,6 +341,9 @@ func (client TransferJobClient) listTransferJobs(ctx context.Context, request co
 func (client TransferJobClient) UpdateTransferJob(ctx context.Context, request UpdateTransferJobRequest) (response UpdateTransferJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

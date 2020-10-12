@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/example/helpers"
-	"github.com/oracle/oci-go-sdk/v26/identity"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/example/helpers"
+	"github.com/oracle/oci-go-sdk/v27/identity"
 	"net/http"
 )
 

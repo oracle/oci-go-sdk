@@ -2,31 +2,30 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// PublicLoggingDataplane API
+// Logging Ingestion API
 //
-// PublicLoggingDataplane API specification
+// Use the Logging Ingestion API to ingest your application logs.
 //
 
 package loggingingestion
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
-// LogEntry Contains the content of the log with associated timestamp and id. Each
+// LogEntry Contains the log content with the associated timestamp and ID. Each
 // entry should be less than 1 MB size.
 type LogEntry struct {
 
-	// The content of the log entry.
+	// The log entry content.
 	Data *string `mandatory:"true" json:"data"`
 
 	// UUID uniquely representing this logEntry. This is not an OCID related
 	// to any oracle resource.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Optional. The timestamp associated with the log entry. Defaults to
-	// PutLogsDetails.defaultlogentrytime if unspecified. An RFC3339 formatted
-	// datetime string.
+	// Optional. The timestamp associated with the log entry. An RFC3339-formatted date-time string.
+	// If unspecified, defaults to PutLogsDetails.defaultlogentrytime.
 	Time *common.SDKTime `mandatory:"false" json:"time"`
 }
 

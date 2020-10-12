@@ -88,6 +88,11 @@ type HTTPRequestDispatcher interface {
 	Do(req *http.Request) (*http.Response, error)
 }
 
+// CustomClientConfiguration contains configurations set at client level, currently it only includes RetryPolicy
+type CustomClientConfiguration struct {
+	RetryPolicy *RetryPolicy
+}
+
 // BaseClient struct implements all basic operations to call oci web services.
 type BaseClient struct {
 	//HTTPClient performs the http network operations
@@ -107,6 +112,18 @@ type BaseClient struct {
 
 	//Base path for all operations of this client
 	BasePath string
+
+	Configuration CustomClientConfiguration
+}
+
+// SetCustomClientConfiguration sets client with retry and other custom configurations
+func (client *BaseClient) SetCustomClientConfiguration(config CustomClientConfiguration) {
+	client.Configuration = config
+}
+
+// RetryPolicy returns the retryPolicy configured for client
+func (client *BaseClient) RetryPolicy() *RetryPolicy {
+	return client.Configuration.RetryPolicy
 }
 
 // Endpoint returns the enpoint configured for client

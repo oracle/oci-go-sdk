@@ -12,8 +12,8 @@ package limits
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type QuotasClient struct {
 func NewQuotasClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client QuotasClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newQuotasClientFromBaseClient(baseClient, configProvider)
+			return newQuotasClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *QuotasClient) ConfigurationProvider() *common.ConfigurationProvide
 func (client QuotasClient) CreateQuota(ctx context.Context, request CreateQuotaRequest) (response CreateQuotaResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client QuotasClient) createQuota(ctx context.Context, request common.OCIRe
 func (client QuotasClient) DeleteQuota(ctx context.Context, request DeleteQuotaRequest) (response DeleteQuotaResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -180,6 +186,9 @@ func (client QuotasClient) deleteQuota(ctx context.Context, request common.OCIRe
 func (client QuotasClient) GetQuota(ctx context.Context, request GetQuotaRequest) (response GetQuotaResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -227,6 +236,9 @@ func (client QuotasClient) getQuota(ctx context.Context, request common.OCIReque
 func (client QuotasClient) ListQuotas(ctx context.Context, request ListQuotasRequest) (response ListQuotasResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -274,6 +286,9 @@ func (client QuotasClient) listQuotas(ctx context.Context, request common.OCIReq
 func (client QuotasClient) UpdateQuota(ctx context.Context, request UpdateQuotaRequest) (response UpdateQuotaResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

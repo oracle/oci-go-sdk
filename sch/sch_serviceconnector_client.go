@@ -14,8 +14,8 @@ package sch
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -30,7 +30,7 @@ type ServiceConnectorClient struct {
 func NewServiceConnectorClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ServiceConnectorClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newServiceConnectorClientFromBaseClient(baseClient, configProvider)
+			return newServiceConnectorClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -88,6 +88,9 @@ func (client *ServiceConnectorClient) ConfigurationProvider() *common.Configurat
 func (client ServiceConnectorClient) ActivateServiceConnector(ctx context.Context, request ActivateServiceConnectorRequest) (response ActivateServiceConnectorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -143,6 +146,9 @@ func (client ServiceConnectorClient) activateServiceConnector(ctx context.Contex
 func (client ServiceConnectorClient) ChangeServiceConnectorCompartment(ctx context.Context, request ChangeServiceConnectorCompartmentRequest) (response ChangeServiceConnectorCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -205,6 +211,9 @@ func (client ServiceConnectorClient) changeServiceConnectorCompartment(ctx conte
 func (client ServiceConnectorClient) CreateServiceConnector(ctx context.Context, request CreateServiceConnectorRequest) (response CreateServiceConnectorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -261,6 +270,9 @@ func (client ServiceConnectorClient) createServiceConnector(ctx context.Context,
 func (client ServiceConnectorClient) DeactivateServiceConnector(ctx context.Context, request DeactivateServiceConnectorRequest) (response DeactivateServiceConnectorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -315,6 +327,9 @@ func (client ServiceConnectorClient) deactivateServiceConnector(ctx context.Cont
 func (client ServiceConnectorClient) DeleteServiceConnector(ctx context.Context, request DeleteServiceConnectorRequest) (response DeleteServiceConnectorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -362,6 +377,9 @@ func (client ServiceConnectorClient) deleteServiceConnector(ctx context.Context,
 func (client ServiceConnectorClient) GetServiceConnector(ctx context.Context, request GetServiceConnectorRequest) (response GetServiceConnectorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -409,6 +427,9 @@ func (client ServiceConnectorClient) getServiceConnector(ctx context.Context, re
 func (client ServiceConnectorClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -456,6 +477,9 @@ func (client ServiceConnectorClient) getWorkRequest(ctx context.Context, request
 func (client ServiceConnectorClient) ListServiceConnectors(ctx context.Context, request ListServiceConnectorsRequest) (response ListServiceConnectorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -503,6 +527,9 @@ func (client ServiceConnectorClient) listServiceConnectors(ctx context.Context, 
 func (client ServiceConnectorClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -550,6 +577,9 @@ func (client ServiceConnectorClient) listWorkRequestErrors(ctx context.Context, 
 func (client ServiceConnectorClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -597,6 +627,9 @@ func (client ServiceConnectorClient) listWorkRequestLogs(ctx context.Context, re
 func (client ServiceConnectorClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -647,6 +680,9 @@ func (client ServiceConnectorClient) listWorkRequests(ctx context.Context, reque
 func (client ServiceConnectorClient) UpdateServiceConnector(ctx context.Context, request UpdateServiceConnectorRequest) (response UpdateServiceConnectorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

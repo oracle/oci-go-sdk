@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // UpdateAutonomousContainerDatabaseDetails Describes the modification parameters for the Autonomous Container Database.
@@ -23,6 +23,10 @@ type UpdateAutonomousContainerDatabaseDetails struct {
 	PatchModel UpdateAutonomousContainerDatabaseDetailsPatchModelEnum `mandatory:"false" json:"patchModel,omitempty"`
 
 	MaintenanceWindowDetails *MaintenanceWindow `mandatory:"false" json:"maintenanceWindowDetails"`
+
+	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database.
+	// This value represents the number of days before the primary database maintenance schedule.
+	StandbyMaintenanceBufferInDays *int `mandatory:"false" json:"standbyMaintenanceBufferInDays"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
 	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).

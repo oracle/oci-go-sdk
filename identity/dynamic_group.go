@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // DynamicGroup A dynamic group defines a matching rule. Every bare metal or virtual machine instance is deployed with an instance certificate.

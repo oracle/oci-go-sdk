@@ -12,8 +12,8 @@ package oce
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type OceInstanceClient struct {
 func NewOceInstanceClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client OceInstanceClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newOceInstanceClientFromBaseClient(baseClient, configProvider)
+			return newOceInstanceClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *OceInstanceClient) ConfigurationProvider() *common.ConfigurationPr
 func (client OceInstanceClient) ChangeOceInstanceCompartment(ctx context.Context, request ChangeOceInstanceCompartmentRequest) (response ChangeOceInstanceCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client OceInstanceClient) changeOceInstanceCompartment(ctx context.Context
 func (client OceInstanceClient) CreateOceInstance(ctx context.Context, request CreateOceInstanceRequest) (response CreateOceInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -185,6 +191,9 @@ func (client OceInstanceClient) createOceInstance(ctx context.Context, request c
 func (client OceInstanceClient) DeleteOceInstance(ctx context.Context, request DeleteOceInstanceRequest) (response DeleteOceInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -232,6 +241,9 @@ func (client OceInstanceClient) deleteOceInstance(ctx context.Context, request c
 func (client OceInstanceClient) GetOceInstance(ctx context.Context, request GetOceInstanceRequest) (response GetOceInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -279,6 +291,9 @@ func (client OceInstanceClient) getOceInstance(ctx context.Context, request comm
 func (client OceInstanceClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -326,6 +341,9 @@ func (client OceInstanceClient) getWorkRequest(ctx context.Context, request comm
 func (client OceInstanceClient) ListOceInstances(ctx context.Context, request ListOceInstancesRequest) (response ListOceInstancesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -373,6 +391,9 @@ func (client OceInstanceClient) listOceInstances(ctx context.Context, request co
 func (client OceInstanceClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -420,6 +441,9 @@ func (client OceInstanceClient) listWorkRequestErrors(ctx context.Context, reque
 func (client OceInstanceClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -467,6 +491,9 @@ func (client OceInstanceClient) listWorkRequestLogs(ctx context.Context, request
 func (client OceInstanceClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -514,6 +541,9 @@ func (client OceInstanceClient) listWorkRequests(ctx context.Context, request co
 func (client OceInstanceClient) UpdateOceInstance(ctx context.Context, request UpdateOceInstanceRequest) (response UpdateOceInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

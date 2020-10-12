@@ -12,7 +12,7 @@
 package monitoring
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // PostMetricDataDetails An array of metric objects containing raw metric data points to be posted to the Monitoring service.

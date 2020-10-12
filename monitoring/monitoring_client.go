@@ -14,8 +14,8 @@ package monitoring
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -30,7 +30,7 @@ type MonitoringClient struct {
 func NewMonitoringClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client MonitoringClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newMonitoringClientFromBaseClient(baseClient, configProvider)
+			return newMonitoringClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -84,6 +84,9 @@ func (client *MonitoringClient) ConfigurationProvider() *common.ConfigurationPro
 func (client MonitoringClient) ChangeAlarmCompartment(ctx context.Context, request ChangeAlarmCompartmentRequest) (response ChangeAlarmCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -140,6 +143,9 @@ func (client MonitoringClient) changeAlarmCompartment(ctx context.Context, reque
 func (client MonitoringClient) CreateAlarm(ctx context.Context, request CreateAlarmRequest) (response CreateAlarmResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -196,6 +202,9 @@ func (client MonitoringClient) createAlarm(ctx context.Context, request common.O
 func (client MonitoringClient) DeleteAlarm(ctx context.Context, request DeleteAlarmRequest) (response DeleteAlarmResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -247,6 +256,9 @@ func (client MonitoringClient) deleteAlarm(ctx context.Context, request common.O
 func (client MonitoringClient) GetAlarm(ctx context.Context, request GetAlarmRequest) (response GetAlarmResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -298,6 +310,9 @@ func (client MonitoringClient) getAlarm(ctx context.Context, request common.OCIR
 func (client MonitoringClient) GetAlarmHistory(ctx context.Context, request GetAlarmHistoryRequest) (response GetAlarmHistoryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -349,6 +364,9 @@ func (client MonitoringClient) getAlarmHistory(ctx context.Context, request comm
 func (client MonitoringClient) ListAlarms(ctx context.Context, request ListAlarmsRequest) (response ListAlarmsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -400,6 +418,9 @@ func (client MonitoringClient) listAlarms(ctx context.Context, request common.OC
 func (client MonitoringClient) ListAlarmsStatus(ctx context.Context, request ListAlarmsStatusRequest) (response ListAlarmsStatusResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -450,6 +471,9 @@ func (client MonitoringClient) listAlarmsStatus(ctx context.Context, request com
 func (client MonitoringClient) ListMetrics(ctx context.Context, request ListMetricsRequest) (response ListMetricsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -509,6 +533,9 @@ func (client MonitoringClient) listMetrics(ctx context.Context, request common.O
 func (client MonitoringClient) PostMetricData(ctx context.Context, request PostMetricDataRequest) (response PostMetricDataResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -560,6 +587,9 @@ func (client MonitoringClient) postMetricData(ctx context.Context, request commo
 func (client MonitoringClient) RemoveAlarmSuppression(ctx context.Context, request RemoveAlarmSuppressionRequest) (response RemoveAlarmSuppressionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -610,6 +640,9 @@ func (client MonitoringClient) removeAlarmSuppression(ctx context.Context, reque
 func (client MonitoringClient) SummarizeMetricsData(ctx context.Context, request SummarizeMetricsDataRequest) (response SummarizeMetricsDataResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -661,6 +694,9 @@ func (client MonitoringClient) summarizeMetricsData(ctx context.Context, request
 func (client MonitoringClient) UpdateAlarm(ctx context.Context, request UpdateAlarmRequest) (response UpdateAlarmResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

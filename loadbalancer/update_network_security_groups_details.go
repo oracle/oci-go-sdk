@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // UpdateNetworkSecurityGroupsDetails An object representing an updated list of network security groups (NSGs) that overwrites the existing list of NSGs.

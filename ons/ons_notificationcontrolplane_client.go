@@ -13,8 +13,8 @@ package ons
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -29,7 +29,7 @@ type NotificationControlPlaneClient struct {
 func NewNotificationControlPlaneClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client NotificationControlPlaneClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newNotificationControlPlaneClientFromBaseClient(baseClient, configProvider)
+			return newNotificationControlPlaneClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -85,6 +85,9 @@ func (client *NotificationControlPlaneClient) ConfigurationProvider() *common.Co
 func (client NotificationControlPlaneClient) ChangeTopicCompartment(ctx context.Context, request ChangeTopicCompartmentRequest) (response ChangeTopicCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -146,6 +149,9 @@ func (client NotificationControlPlaneClient) changeTopicCompartment(ctx context.
 func (client NotificationControlPlaneClient) CreateTopic(ctx context.Context, request CreateTopicRequest) (response CreateTopicResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -199,6 +205,9 @@ func (client NotificationControlPlaneClient) createTopic(ctx context.Context, re
 func (client NotificationControlPlaneClient) DeleteTopic(ctx context.Context, request DeleteTopicRequest) (response DeleteTopicResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -246,6 +255,9 @@ func (client NotificationControlPlaneClient) deleteTopic(ctx context.Context, re
 func (client NotificationControlPlaneClient) GetTopic(ctx context.Context, request GetTopicRequest) (response GetTopicResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -294,6 +306,9 @@ func (client NotificationControlPlaneClient) getTopic(ctx context.Context, reque
 func (client NotificationControlPlaneClient) ListTopics(ctx context.Context, request ListTopicsRequest) (response ListTopicsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -342,6 +357,9 @@ func (client NotificationControlPlaneClient) listTopics(ctx context.Context, req
 func (client NotificationControlPlaneClient) UpdateTopic(ctx context.Context, request UpdateTopicRequest) (response UpdateTopicResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // InstanceConfigurationLaunchInstanceDetails Instance launch details for creating an instance from an instance configuration. Use the `sourceDetails`

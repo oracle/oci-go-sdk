@@ -6,7 +6,7 @@ package transfer
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 	"strings"
 	"sync"
 )
@@ -69,16 +69,17 @@ func (streamUpload *streamUpload) startConcurrentUpload(ctx context.Context, don
 	multipartMD5 := streamUpload.manifest.getMultipartMD5Checksum(request.EnableMultipartChecksumVerification, streamUpload.uploadID)
 
 	resp, err := streamUpload.multipartUploader.commit(ctx, request.UploadRequest, streamUpload.manifest.parts[streamUpload.uploadID], streamUpload.uploadID)
-	if multipartMD5 != nil && *request.EnableMultipartChecksumVerification && strings.Compare(*resp.OpcMultipartMd5, *multipartMD5) != 0 {
 
-		err = fmt.Errorf("multipart base64 MD5 checksum verification failure, the sending opcMD5 is %s, the reveived is %s", *resp.OpcMultipartMd5, *multipartMD5)
-	}
 	if err != nil {
 		common.Debugf("failed to commit with error: %v\n", err)
 		return UploadResponse{
 				Type:                    MultipartUpload,
 				MultipartUploadResponse: &MultipartUploadResponse{UploadID: common.String(streamUpload.uploadID)}},
 			err
+	}
+	if multipartMD5 != nil && *request.EnableMultipartChecksumVerification && strings.Compare(*resp.OpcMultipartMd5, *multipartMD5) != 0 {
+		err = fmt.Errorf("multipart base64 MD5 checksum verification failure, the sending opcMD5 is %s, the reveived is %s", *resp.OpcMultipartMd5, *multipartMD5)
+		common.Debugf("MD5 checksum error: %v\n", err)
 	}
 
 	response = UploadResponse{

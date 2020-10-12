@@ -12,8 +12,8 @@ package announcementsservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type AnnouncementClient struct {
 func NewAnnouncementClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client AnnouncementClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newAnnouncementClientFromBaseClient(baseClient, configProvider)
+			return newAnnouncementClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *AnnouncementClient) ConfigurationProvider() *common.ConfigurationP
 func (client AnnouncementClient) GetAnnouncement(ctx context.Context, request GetAnnouncementRequest) (response GetAnnouncementResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -128,6 +131,9 @@ func (client AnnouncementClient) getAnnouncement(ctx context.Context, request co
 func (client AnnouncementClient) GetAnnouncementUserStatus(ctx context.Context, request GetAnnouncementUserStatusRequest) (response GetAnnouncementUserStatusResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -175,6 +181,9 @@ func (client AnnouncementClient) getAnnouncementUserStatus(ctx context.Context, 
 func (client AnnouncementClient) ListAnnouncements(ctx context.Context, request ListAnnouncementsRequest) (response ListAnnouncementsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -222,6 +231,9 @@ func (client AnnouncementClient) listAnnouncements(ctx context.Context, request 
 func (client AnnouncementClient) UpdateAnnouncementUserStatus(ctx context.Context, request UpdateAnnouncementUserStatusRequest) (response UpdateAnnouncementUserStatusResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // UpdateGlossaryDetails Properties used in glossary update operations.
@@ -28,6 +28,9 @@ type UpdateGlossaryDetails struct {
 
 	// Status of the approval process workflow for this business glossary.
 	WorkflowStatus TermWorkflowStatusEnum `mandatory:"false" json:"workflowStatus,omitempty"`
+
+	// The list of customized properties along with the values for this object
+	CustomPropertyMembers []CustomPropertySetUsage `mandatory:"false" json:"customPropertyMembers"`
 }
 
 func (m UpdateGlossaryDetails) String() string {

@@ -5,10 +5,12 @@ NON_GEN_TARGETS = common common/auth objectstorage/transfer example
 TARGETS = $(NON_GEN_TARGETS) $(GEN_TARGETS)
 
 TARGETS_WITH_TESTS = common common/auth objectstorage/transfer
+TARGETS_WITH_INTEG_TESTS = integtest
 TARGETS_BUILD = $(patsubst %,build-%, $(TARGETS))
 TARGETS_CLEAN = $(patsubst %,clean-%, $(GEN_TARGETS))
 TARGETS_LINT = $(patsubst %,lint-%, $(TARGETS))
 TARGETS_TEST = $(patsubst %,test-%, $(TARGETS_WITH_TESTS))
+TARGETS_INTEG_TEST = $(patsubst %,test-%, $(TARGETS_WITH_INTEG_TESTS))
 TARGETS_RELEASE= $(patsubst %,release-%, $(TARGETS))
 GOLINT=$(GOPATH)/bin/golint
 LINT_FLAGS=-min_confidence 0.9 -set_exit_status
@@ -21,6 +23,8 @@ EXCLUDED_CLEAN_DIRECTORIES = objectstorage/transfer*
 build: lint $(TARGETS_BUILD)
 
 test: build $(TARGETS_TEST)
+
+test-integ: build $(TARGETS_INTEG_TEST)
 
 lint: $(TARGETS_LINT)
 
@@ -46,6 +50,9 @@ $(TARGETS_BUILD): build-%:%
 	fi
 
 $(TARGETS_TEST): test-%:%
+	@(cd $< && go test -v)
+
+$(TARGETS_INTEG_TEST): test-%:%
 	@(cd $< && go test -v)
 
 $(TARGETS_CLEAN): clean-%:%

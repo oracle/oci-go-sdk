@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // Entity Data entity details. A representation of data with a set of attributes, normally representing a single
@@ -46,6 +46,12 @@ type Entity struct {
 
 	// Unique external key of this object in the source system.
 	ExternalKey *string `mandatory:"false" json:"externalKey"`
+
+	// Key of the associated pattern if this is a logical entity.
+	PatternKey *string `mandatory:"false" json:"patternKey"`
+
+	// The expression realized after resolving qualifiers . Used in deriving this logical entity
+	RealizedExpression *string `mandatory:"false" json:"realizedExpression"`
 
 	// Last modified timestamp of this object in the external system.
 	TimeExternal *common.SDKTime `mandatory:"false" json:"timeExternal"`
@@ -83,6 +89,9 @@ type Entity struct {
 
 	// URI to the data entity instance in the API.
 	Uri *string `mandatory:"false" json:"uri"`
+
+	// The list of customized properties along with the values for this object
+	CustomPropertyMembers []CustomPropertyGetUsage `mandatory:"false" json:"customPropertyMembers"`
 
 	// A map of maps that contains the properties which are specific to the entity type. Each entity type
 	// definition defines it's set of required and optional properties. The map keys are category names and the

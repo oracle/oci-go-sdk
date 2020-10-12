@@ -21,9 +21,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/core"
-	"github.com/oracle/oci-go-sdk/v26/example/helpers"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/core"
+	"github.com/oracle/oci-go-sdk/v27/example/helpers"
 )
 
 var (

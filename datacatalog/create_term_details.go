@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // CreateTermDetails Properties used in term create operations.
@@ -34,6 +34,9 @@ type CreateTermDetails struct {
 
 	// Status of the approval process workflow for this business term in the glossary.
 	WorkflowStatus TermWorkflowStatusEnum `mandatory:"false" json:"workflowStatus,omitempty"`
+
+	// The list of customized properties along with the values for this object
+	CustomPropertyMembers []CustomPropertySetUsage `mandatory:"false" json:"customPropertyMembers"`
 }
 
 func (m CreateTermDetails) String() string {

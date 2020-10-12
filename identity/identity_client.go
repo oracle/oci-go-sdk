@@ -12,8 +12,8 @@ package identity
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type IdentityClient struct {
 func NewIdentityClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client IdentityClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newIdentityClientFromBaseClient(baseClient, configProvider)
+			return newIdentityClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *IdentityClient) ConfigurationProvider() *common.ConfigurationProvi
 func (client IdentityClient) ActivateMfaTotpDevice(ctx context.Context, request ActivateMfaTotpDeviceRequest) (response ActivateMfaTotpDeviceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -135,6 +138,9 @@ func (client IdentityClient) activateMfaTotpDevice(ctx context.Context, request 
 func (client IdentityClient) AddUserToGroup(ctx context.Context, request AddUserToGroupRequest) (response AddUserToGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -190,6 +196,9 @@ func (client IdentityClient) addUserToGroup(ctx context.Context, request common.
 func (client IdentityClient) AssembleEffectiveTagSet(ctx context.Context, request AssembleEffectiveTagSetRequest) (response AssembleEffectiveTagSetResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -241,6 +250,9 @@ func (client IdentityClient) assembleEffectiveTagSet(ctx context.Context, reques
 func (client IdentityClient) BulkDeleteResources(ctx context.Context, request BulkDeleteResourcesRequest) (response BulkDeleteResourcesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -308,6 +320,9 @@ func (client IdentityClient) bulkDeleteResources(ctx context.Context, request co
 func (client IdentityClient) BulkDeleteTags(ctx context.Context, request BulkDeleteTagsRequest) (response BulkDeleteTagsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -364,6 +379,9 @@ func (client IdentityClient) bulkDeleteTags(ctx context.Context, request common.
 func (client IdentityClient) BulkMoveResources(ctx context.Context, request BulkMoveResourcesRequest) (response BulkMoveResourcesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -428,6 +446,9 @@ func (client IdentityClient) bulkMoveResources(ctx context.Context, request comm
 func (client IdentityClient) CascadeDeleteTagNamespace(ctx context.Context, request CascadeDeleteTagNamespaceRequest) (response CascadeDeleteTagNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -483,6 +504,9 @@ func (client IdentityClient) cascadeDeleteTagNamespace(ctx context.Context, requ
 func (client IdentityClient) ChangeTagNamespaceCompartment(ctx context.Context, request ChangeTagNamespaceCompartmentRequest) (response ChangeTagNamespaceCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -542,6 +566,9 @@ func (client IdentityClient) changeTagNamespaceCompartment(ctx context.Context, 
 func (client IdentityClient) CreateAuthToken(ctx context.Context, request CreateAuthTokenRequest) (response CreateAuthTokenResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -607,6 +634,9 @@ func (client IdentityClient) createAuthToken(ctx context.Context, request common
 func (client IdentityClient) CreateCompartment(ctx context.Context, request CreateCompartmentRequest) (response CreateCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -667,6 +697,9 @@ func (client IdentityClient) createCompartment(ctx context.Context, request comm
 func (client IdentityClient) CreateCustomerSecretKey(ctx context.Context, request CreateCustomerSecretKeyRequest) (response CreateCustomerSecretKeyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -732,6 +765,9 @@ func (client IdentityClient) createCustomerSecretKey(ctx context.Context, reques
 func (client IdentityClient) CreateDynamicGroup(ctx context.Context, request CreateDynamicGroupRequest) (response CreateDynamicGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -799,6 +835,9 @@ func (client IdentityClient) createDynamicGroup(ctx context.Context, request com
 func (client IdentityClient) CreateGroup(ctx context.Context, request CreateGroupRequest) (response CreateGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -864,6 +903,9 @@ func (client IdentityClient) createGroup(ctx context.Context, request common.OCI
 func (client IdentityClient) CreateIdentityProvider(ctx context.Context, request CreateIdentityProviderRequest) (response CreateIdentityProviderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -917,6 +959,9 @@ func (client IdentityClient) createIdentityProvider(ctx context.Context, request
 func (client IdentityClient) CreateIdpGroupMapping(ctx context.Context, request CreateIdpGroupMappingRequest) (response CreateIdpGroupMappingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -969,6 +1014,9 @@ func (client IdentityClient) createIdpGroupMapping(ctx context.Context, request 
 func (client IdentityClient) CreateMfaTotpDevice(ctx context.Context, request CreateMfaTotpDeviceRequest) (response CreateMfaTotpDeviceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1036,6 +1084,9 @@ func (client IdentityClient) createMfaTotpDevice(ctx context.Context, request co
 func (client IdentityClient) CreateNetworkSource(ctx context.Context, request CreateNetworkSourceRequest) (response CreateNetworkSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1088,6 +1139,9 @@ func (client IdentityClient) createNetworkSource(ctx context.Context, request co
 func (client IdentityClient) CreateOAuthClientCredential(ctx context.Context, request CreateOAuthClientCredentialRequest) (response CreateOAuthClientCredentialResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1148,6 +1202,9 @@ func (client IdentityClient) createOAuthClientCredential(ctx context.Context, re
 func (client IdentityClient) CreateOrResetUIPassword(ctx context.Context, request CreateOrResetUIPasswordRequest) (response CreateOrResetUIPasswordResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1211,6 +1268,9 @@ func (client IdentityClient) createOrResetUIPassword(ctx context.Context, reques
 func (client IdentityClient) CreatePolicy(ctx context.Context, request CreatePolicyRequest) (response CreatePolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1263,6 +1323,9 @@ func (client IdentityClient) createPolicy(ctx context.Context, request common.OC
 func (client IdentityClient) CreateRegionSubscription(ctx context.Context, request CreateRegionSubscriptionRequest) (response CreateRegionSubscriptionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1318,6 +1381,9 @@ func (client IdentityClient) createRegionSubscription(ctx context.Context, reque
 func (client IdentityClient) CreateSmtpCredential(ctx context.Context, request CreateSmtpCredentialRequest) (response CreateSmtpCredentialResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1378,6 +1444,9 @@ func (client IdentityClient) createSmtpCredential(ctx context.Context, request c
 func (client IdentityClient) CreateSwiftPassword(ctx context.Context, request CreateSwiftPasswordRequest) (response CreateSwiftPasswordResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1446,6 +1515,9 @@ func (client IdentityClient) createSwiftPassword(ctx context.Context, request co
 func (client IdentityClient) CreateTag(ctx context.Context, request CreateTagRequest) (response CreateTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1503,6 +1575,9 @@ func (client IdentityClient) createTag(ctx context.Context, request common.OCIRe
 func (client IdentityClient) CreateTagDefault(ctx context.Context, request CreateTagDefaultRequest) (response CreateTagDefaultResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1565,6 +1640,9 @@ func (client IdentityClient) createTagDefault(ctx context.Context, request commo
 func (client IdentityClient) CreateTagNamespace(ctx context.Context, request CreateTagNamespaceRequest) (response CreateTagNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1645,6 +1723,9 @@ func (client IdentityClient) createTagNamespace(ctx context.Context, request com
 func (client IdentityClient) CreateUser(ctx context.Context, request CreateUserRequest) (response CreateUserResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1701,6 +1782,9 @@ func (client IdentityClient) createUser(ctx context.Context, request common.OCIR
 func (client IdentityClient) DeleteApiKey(ctx context.Context, request DeleteApiKeyRequest) (response DeleteApiKeyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1748,6 +1832,9 @@ func (client IdentityClient) deleteApiKey(ctx context.Context, request common.OC
 func (client IdentityClient) DeleteAuthToken(ctx context.Context, request DeleteAuthTokenRequest) (response DeleteAuthTokenResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1795,6 +1882,9 @@ func (client IdentityClient) deleteAuthToken(ctx context.Context, request common
 func (client IdentityClient) DeleteCompartment(ctx context.Context, request DeleteCompartmentRequest) (response DeleteCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1842,6 +1932,9 @@ func (client IdentityClient) deleteCompartment(ctx context.Context, request comm
 func (client IdentityClient) DeleteCustomerSecretKey(ctx context.Context, request DeleteCustomerSecretKeyRequest) (response DeleteCustomerSecretKeyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1889,6 +1982,9 @@ func (client IdentityClient) deleteCustomerSecretKey(ctx context.Context, reques
 func (client IdentityClient) DeleteDynamicGroup(ctx context.Context, request DeleteDynamicGroupRequest) (response DeleteDynamicGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1936,6 +2032,9 @@ func (client IdentityClient) deleteDynamicGroup(ctx context.Context, request com
 func (client IdentityClient) DeleteGroup(ctx context.Context, request DeleteGroupRequest) (response DeleteGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1984,6 +2083,9 @@ func (client IdentityClient) deleteGroup(ctx context.Context, request common.OCI
 func (client IdentityClient) DeleteIdentityProvider(ctx context.Context, request DeleteIdentityProviderRequest) (response DeleteIdentityProviderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2031,6 +2133,9 @@ func (client IdentityClient) deleteIdentityProvider(ctx context.Context, request
 func (client IdentityClient) DeleteIdpGroupMapping(ctx context.Context, request DeleteIdpGroupMappingRequest) (response DeleteIdpGroupMappingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2078,6 +2183,9 @@ func (client IdentityClient) deleteIdpGroupMapping(ctx context.Context, request 
 func (client IdentityClient) DeleteMfaTotpDevice(ctx context.Context, request DeleteMfaTotpDeviceRequest) (response DeleteMfaTotpDeviceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2125,6 +2233,9 @@ func (client IdentityClient) deleteMfaTotpDevice(ctx context.Context, request co
 func (client IdentityClient) DeleteNetworkSource(ctx context.Context, request DeleteNetworkSourceRequest) (response DeleteNetworkSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2172,6 +2283,9 @@ func (client IdentityClient) deleteNetworkSource(ctx context.Context, request co
 func (client IdentityClient) DeleteOAuthClientCredential(ctx context.Context, request DeleteOAuthClientCredentialRequest) (response DeleteOAuthClientCredentialResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2219,6 +2333,9 @@ func (client IdentityClient) deleteOAuthClientCredential(ctx context.Context, re
 func (client IdentityClient) DeletePolicy(ctx context.Context, request DeletePolicyRequest) (response DeletePolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2266,6 +2383,9 @@ func (client IdentityClient) deletePolicy(ctx context.Context, request common.OC
 func (client IdentityClient) DeleteSmtpCredential(ctx context.Context, request DeleteSmtpCredentialRequest) (response DeleteSmtpCredentialResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2314,6 +2434,9 @@ func (client IdentityClient) deleteSmtpCredential(ctx context.Context, request c
 func (client IdentityClient) DeleteSwiftPassword(ctx context.Context, request DeleteSwiftPasswordRequest) (response DeleteSwiftPasswordResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2376,6 +2499,9 @@ func (client IdentityClient) deleteSwiftPassword(ctx context.Context, request co
 func (client IdentityClient) DeleteTag(ctx context.Context, request DeleteTagRequest) (response DeleteTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2423,6 +2549,9 @@ func (client IdentityClient) deleteTag(ctx context.Context, request common.OCIRe
 func (client IdentityClient) DeleteTagDefault(ctx context.Context, request DeleteTagDefaultRequest) (response DeleteTagDefaultResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2474,6 +2603,9 @@ func (client IdentityClient) deleteTagDefault(ctx context.Context, request commo
 func (client IdentityClient) DeleteTagNamespace(ctx context.Context, request DeleteTagNamespaceRequest) (response DeleteTagNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2521,6 +2653,9 @@ func (client IdentityClient) deleteTagNamespace(ctx context.Context, request com
 func (client IdentityClient) DeleteUser(ctx context.Context, request DeleteUserRequest) (response DeleteUserResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2568,6 +2703,9 @@ func (client IdentityClient) deleteUser(ctx context.Context, request common.OCIR
 func (client IdentityClient) GenerateTotpSeed(ctx context.Context, request GenerateTotpSeedRequest) (response GenerateTotpSeedResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2616,6 +2754,9 @@ func (client IdentityClient) generateTotpSeed(ctx context.Context, request commo
 func (client IdentityClient) GetAuthenticationPolicy(ctx context.Context, request GetAuthenticationPolicyRequest) (response GetAuthenticationPolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2669,6 +2810,9 @@ func (client IdentityClient) getAuthenticationPolicy(ctx context.Context, reques
 func (client IdentityClient) GetCompartment(ctx context.Context, request GetCompartmentRequest) (response GetCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2716,6 +2860,9 @@ func (client IdentityClient) getCompartment(ctx context.Context, request common.
 func (client IdentityClient) GetDynamicGroup(ctx context.Context, request GetDynamicGroupRequest) (response GetDynamicGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2766,6 +2913,9 @@ func (client IdentityClient) getDynamicGroup(ctx context.Context, request common
 func (client IdentityClient) GetGroup(ctx context.Context, request GetGroupRequest) (response GetGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2813,6 +2963,9 @@ func (client IdentityClient) getGroup(ctx context.Context, request common.OCIReq
 func (client IdentityClient) GetIdentityProvider(ctx context.Context, request GetIdentityProviderRequest) (response GetIdentityProviderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2860,6 +3013,9 @@ func (client IdentityClient) getIdentityProvider(ctx context.Context, request co
 func (client IdentityClient) GetIdpGroupMapping(ctx context.Context, request GetIdpGroupMappingRequest) (response GetIdpGroupMappingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2907,6 +3063,9 @@ func (client IdentityClient) getIdpGroupMapping(ctx context.Context, request com
 func (client IdentityClient) GetMfaTotpDevice(ctx context.Context, request GetMfaTotpDeviceRequest) (response GetMfaTotpDeviceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2954,6 +3113,9 @@ func (client IdentityClient) getMfaTotpDevice(ctx context.Context, request commo
 func (client IdentityClient) GetNetworkSource(ctx context.Context, request GetNetworkSourceRequest) (response GetNetworkSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3001,6 +3163,9 @@ func (client IdentityClient) getNetworkSource(ctx context.Context, request commo
 func (client IdentityClient) GetPolicy(ctx context.Context, request GetPolicyRequest) (response GetPolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3048,6 +3213,9 @@ func (client IdentityClient) getPolicy(ctx context.Context, request common.OCIRe
 func (client IdentityClient) GetTag(ctx context.Context, request GetTagRequest) (response GetTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3095,6 +3263,9 @@ func (client IdentityClient) getTag(ctx context.Context, request common.OCIReque
 func (client IdentityClient) GetTagDefault(ctx context.Context, request GetTagDefaultRequest) (response GetTagDefaultResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3142,6 +3313,9 @@ func (client IdentityClient) getTagDefault(ctx context.Context, request common.O
 func (client IdentityClient) GetTagNamespace(ctx context.Context, request GetTagNamespaceRequest) (response GetTagNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3190,6 +3364,9 @@ func (client IdentityClient) getTagNamespace(ctx context.Context, request common
 func (client IdentityClient) GetTaggingWorkRequest(ctx context.Context, request GetTaggingWorkRequestRequest) (response GetTaggingWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3237,6 +3414,9 @@ func (client IdentityClient) getTaggingWorkRequest(ctx context.Context, request 
 func (client IdentityClient) GetTenancy(ctx context.Context, request GetTenancyRequest) (response GetTenancyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3284,6 +3464,9 @@ func (client IdentityClient) getTenancy(ctx context.Context, request common.OCIR
 func (client IdentityClient) GetUser(ctx context.Context, request GetUserRequest) (response GetUserResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3331,6 +3514,9 @@ func (client IdentityClient) getUser(ctx context.Context, request common.OCIRequ
 func (client IdentityClient) GetUserGroupMembership(ctx context.Context, request GetUserGroupMembershipRequest) (response GetUserGroupMembershipResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3379,6 +3565,9 @@ func (client IdentityClient) getUserGroupMembership(ctx context.Context, request
 func (client IdentityClient) GetUserUIPasswordInformation(ctx context.Context, request GetUserUIPasswordInformationRequest) (response GetUserUIPasswordInformationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3427,6 +3616,9 @@ func (client IdentityClient) getUserUIPasswordInformation(ctx context.Context, r
 func (client IdentityClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3476,6 +3668,9 @@ func (client IdentityClient) getWorkRequest(ctx context.Context, request common.
 func (client IdentityClient) ListApiKeys(ctx context.Context, request ListApiKeysRequest) (response ListApiKeysResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3524,6 +3719,9 @@ func (client IdentityClient) listApiKeys(ctx context.Context, request common.OCI
 func (client IdentityClient) ListAuthTokens(ctx context.Context, request ListAuthTokensRequest) (response ListAuthTokensResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3575,6 +3773,9 @@ func (client IdentityClient) listAuthTokens(ctx context.Context, request common.
 func (client IdentityClient) ListAvailabilityDomains(ctx context.Context, request ListAvailabilityDomainsRequest) (response ListAvailabilityDomainsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3628,6 +3829,9 @@ func (client IdentityClient) listAvailabilityDomains(ctx context.Context, reques
 func (client IdentityClient) ListBulkActionResourceTypes(ctx context.Context, request ListBulkActionResourceTypesRequest) (response ListBulkActionResourceTypesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3688,6 +3892,9 @@ func (client IdentityClient) listBulkActionResourceTypes(ctx context.Context, re
 func (client IdentityClient) ListCompartments(ctx context.Context, request ListCompartmentsRequest) (response ListCompartmentsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3736,6 +3943,9 @@ func (client IdentityClient) listCompartments(ctx context.Context, request commo
 func (client IdentityClient) ListCostTrackingTags(ctx context.Context, request ListCostTrackingTagsRequest) (response ListCostTrackingTagsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3784,6 +3994,9 @@ func (client IdentityClient) listCostTrackingTags(ctx context.Context, request c
 func (client IdentityClient) ListCustomerSecretKeys(ctx context.Context, request ListCustomerSecretKeysRequest) (response ListCustomerSecretKeysResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3833,6 +4046,9 @@ func (client IdentityClient) listCustomerSecretKeys(ctx context.Context, request
 func (client IdentityClient) ListDynamicGroups(ctx context.Context, request ListDynamicGroupsRequest) (response ListDynamicGroupsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3882,6 +4098,9 @@ func (client IdentityClient) listDynamicGroups(ctx context.Context, request comm
 func (client IdentityClient) ListFaultDomains(ctx context.Context, request ListFaultDomainsRequest) (response ListFaultDomainsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3931,6 +4150,9 @@ func (client IdentityClient) listFaultDomains(ctx context.Context, request commo
 func (client IdentityClient) ListGroups(ctx context.Context, request ListGroupsRequest) (response ListGroupsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3978,6 +4200,9 @@ func (client IdentityClient) listGroups(ctx context.Context, request common.OCIR
 func (client IdentityClient) ListIdentityProviderGroups(ctx context.Context, request ListIdentityProviderGroupsRequest) (response ListIdentityProviderGroupsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4044,6 +4269,9 @@ func (m *listidentityprovider) UnmarshalPolymorphicJSON(data []byte) (interface{
 func (client IdentityClient) ListIdentityProviders(ctx context.Context, request ListIdentityProvidersRequest) (response ListIdentityProvidersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4091,6 +4319,9 @@ func (client IdentityClient) listIdentityProviders(ctx context.Context, request 
 func (client IdentityClient) ListIdpGroupMappings(ctx context.Context, request ListIdpGroupMappingsRequest) (response ListIdpGroupMappingsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4139,6 +4370,9 @@ func (client IdentityClient) listIdpGroupMappings(ctx context.Context, request c
 func (client IdentityClient) ListMfaTotpDevices(ctx context.Context, request ListMfaTotpDevicesRequest) (response ListMfaTotpDevicesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4188,6 +4422,9 @@ func (client IdentityClient) listMfaTotpDevices(ctx context.Context, request com
 func (client IdentityClient) ListNetworkSources(ctx context.Context, request ListNetworkSourcesRequest) (response ListNetworkSourcesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4235,6 +4472,9 @@ func (client IdentityClient) listNetworkSources(ctx context.Context, request com
 func (client IdentityClient) ListOAuthClientCredentials(ctx context.Context, request ListOAuthClientCredentialsRequest) (response ListOAuthClientCredentialsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4285,6 +4525,9 @@ func (client IdentityClient) listOAuthClientCredentials(ctx context.Context, req
 func (client IdentityClient) ListPolicies(ctx context.Context, request ListPoliciesRequest) (response ListPoliciesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4332,6 +4575,9 @@ func (client IdentityClient) listPolicies(ctx context.Context, request common.OC
 func (client IdentityClient) ListRegionSubscriptions(ctx context.Context, request ListRegionSubscriptionsRequest) (response ListRegionSubscriptionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4421,6 +4667,9 @@ func (client IdentityClient) listRegions(ctx context.Context) (common.OCIRespons
 func (client IdentityClient) ListSmtpCredentials(ctx context.Context, request ListSmtpCredentialsRequest) (response ListSmtpCredentialsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4470,6 +4719,9 @@ func (client IdentityClient) listSmtpCredentials(ctx context.Context, request co
 func (client IdentityClient) ListSwiftPasswords(ctx context.Context, request ListSwiftPasswordsRequest) (response ListSwiftPasswordsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4517,6 +4769,9 @@ func (client IdentityClient) listSwiftPasswords(ctx context.Context, request com
 func (client IdentityClient) ListTagDefaults(ctx context.Context, request ListTagDefaultsRequest) (response ListTagDefaultsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4564,6 +4819,9 @@ func (client IdentityClient) listTagDefaults(ctx context.Context, request common
 func (client IdentityClient) ListTagNamespaces(ctx context.Context, request ListTagNamespacesRequest) (response ListTagNamespacesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4611,6 +4869,9 @@ func (client IdentityClient) listTagNamespaces(ctx context.Context, request comm
 func (client IdentityClient) ListTaggingWorkRequestErrors(ctx context.Context, request ListTaggingWorkRequestErrorsRequest) (response ListTaggingWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4658,6 +4919,9 @@ func (client IdentityClient) listTaggingWorkRequestErrors(ctx context.Context, r
 func (client IdentityClient) ListTaggingWorkRequestLogs(ctx context.Context, request ListTaggingWorkRequestLogsRequest) (response ListTaggingWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4705,6 +4969,9 @@ func (client IdentityClient) listTaggingWorkRequestLogs(ctx context.Context, req
 func (client IdentityClient) ListTaggingWorkRequests(ctx context.Context, request ListTaggingWorkRequestsRequest) (response ListTaggingWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4752,6 +5019,9 @@ func (client IdentityClient) listTaggingWorkRequests(ctx context.Context, reques
 func (client IdentityClient) ListTags(ctx context.Context, request ListTagsRequest) (response ListTagsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4807,6 +5077,9 @@ func (client IdentityClient) listTags(ctx context.Context, request common.OCIReq
 func (client IdentityClient) ListUserGroupMemberships(ctx context.Context, request ListUserGroupMembershipsRequest) (response ListUserGroupMembershipsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4856,6 +5129,9 @@ func (client IdentityClient) listUserGroupMemberships(ctx context.Context, reque
 func (client IdentityClient) ListUsers(ctx context.Context, request ListUsersRequest) (response ListUsersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4903,6 +5179,9 @@ func (client IdentityClient) listUsers(ctx context.Context, request common.OCIRe
 func (client IdentityClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4956,6 +5235,9 @@ func (client IdentityClient) listWorkRequests(ctx context.Context, request commo
 func (client IdentityClient) MoveCompartment(ctx context.Context, request MoveCompartmentRequest) (response MoveCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5008,6 +5290,9 @@ func (client IdentityClient) moveCompartment(ctx context.Context, request common
 func (client IdentityClient) RecoverCompartment(ctx context.Context, request RecoverCompartmentRequest) (response RecoverCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5055,6 +5340,9 @@ func (client IdentityClient) recoverCompartment(ctx context.Context, request com
 func (client IdentityClient) RemoveUserFromGroup(ctx context.Context, request RemoveUserFromGroupRequest) (response RemoveUserFromGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5102,6 +5390,9 @@ func (client IdentityClient) removeUserFromGroup(ctx context.Context, request co
 func (client IdentityClient) ResetIdpScimClient(ctx context.Context, request ResetIdpScimClientRequest) (response ResetIdpScimClientResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5149,6 +5440,9 @@ func (client IdentityClient) resetIdpScimClient(ctx context.Context, request com
 func (client IdentityClient) UpdateAuthToken(ctx context.Context, request UpdateAuthTokenRequest) (response UpdateAuthTokenResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5196,6 +5490,9 @@ func (client IdentityClient) updateAuthToken(ctx context.Context, request common
 func (client IdentityClient) UpdateAuthenticationPolicy(ctx context.Context, request UpdateAuthenticationPolicyRequest) (response UpdateAuthenticationPolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5243,6 +5540,9 @@ func (client IdentityClient) updateAuthenticationPolicy(ctx context.Context, req
 func (client IdentityClient) UpdateCompartment(ctx context.Context, request UpdateCompartmentRequest) (response UpdateCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5290,6 +5590,9 @@ func (client IdentityClient) updateCompartment(ctx context.Context, request comm
 func (client IdentityClient) UpdateCustomerSecretKey(ctx context.Context, request UpdateCustomerSecretKeyRequest) (response UpdateCustomerSecretKeyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5337,6 +5640,9 @@ func (client IdentityClient) updateCustomerSecretKey(ctx context.Context, reques
 func (client IdentityClient) UpdateDynamicGroup(ctx context.Context, request UpdateDynamicGroupRequest) (response UpdateDynamicGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5384,6 +5690,9 @@ func (client IdentityClient) updateDynamicGroup(ctx context.Context, request com
 func (client IdentityClient) UpdateGroup(ctx context.Context, request UpdateGroupRequest) (response UpdateGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5431,6 +5740,9 @@ func (client IdentityClient) updateGroup(ctx context.Context, request common.OCI
 func (client IdentityClient) UpdateIdentityProvider(ctx context.Context, request UpdateIdentityProviderRequest) (response UpdateIdentityProviderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5478,6 +5790,9 @@ func (client IdentityClient) updateIdentityProvider(ctx context.Context, request
 func (client IdentityClient) UpdateIdpGroupMapping(ctx context.Context, request UpdateIdpGroupMappingRequest) (response UpdateIdpGroupMappingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5525,6 +5840,9 @@ func (client IdentityClient) updateIdpGroupMapping(ctx context.Context, request 
 func (client IdentityClient) UpdateNetworkSource(ctx context.Context, request UpdateNetworkSourceRequest) (response UpdateNetworkSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5572,6 +5890,9 @@ func (client IdentityClient) updateNetworkSource(ctx context.Context, request co
 func (client IdentityClient) UpdateOAuthClientCredential(ctx context.Context, request UpdateOAuthClientCredentialRequest) (response UpdateOAuthClientCredentialResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5620,6 +5941,9 @@ func (client IdentityClient) updateOAuthClientCredential(ctx context.Context, re
 func (client IdentityClient) UpdatePolicy(ctx context.Context, request UpdatePolicyRequest) (response UpdatePolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5667,6 +5991,9 @@ func (client IdentityClient) updatePolicy(ctx context.Context, request common.OC
 func (client IdentityClient) UpdateSmtpCredential(ctx context.Context, request UpdateSmtpCredentialRequest) (response UpdateSmtpCredentialResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5715,6 +6042,9 @@ func (client IdentityClient) updateSmtpCredential(ctx context.Context, request c
 func (client IdentityClient) UpdateSwiftPassword(ctx context.Context, request UpdateSwiftPasswordRequest) (response UpdateSwiftPasswordResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5769,6 +6099,9 @@ func (client IdentityClient) updateSwiftPassword(ctx context.Context, request co
 func (client IdentityClient) UpdateTag(ctx context.Context, request UpdateTagRequest) (response UpdateTagResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5820,6 +6153,9 @@ func (client IdentityClient) updateTag(ctx context.Context, request common.OCIRe
 func (client IdentityClient) UpdateTagDefault(ctx context.Context, request UpdateTagDefaultRequest) (response UpdateTagDefaultResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5873,6 +6209,9 @@ func (client IdentityClient) updateTagDefault(ctx context.Context, request commo
 func (client IdentityClient) UpdateTagNamespace(ctx context.Context, request UpdateTagNamespaceRequest) (response UpdateTagNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5920,6 +6259,9 @@ func (client IdentityClient) updateTagNamespace(ctx context.Context, request com
 func (client IdentityClient) UpdateUser(ctx context.Context, request UpdateUserRequest) (response UpdateUserResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5967,6 +6309,9 @@ func (client IdentityClient) updateUser(ctx context.Context, request common.OCIR
 func (client IdentityClient) UpdateUserCapabilities(ctx context.Context, request UpdateUserCapabilitiesRequest) (response UpdateUserCapabilitiesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -6014,6 +6359,9 @@ func (client IdentityClient) updateUserCapabilities(ctx context.Context, request
 func (client IdentityClient) UpdateUserState(ctx context.Context, request UpdateUserStateRequest) (response UpdateUserStateResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -6072,6 +6420,9 @@ func (client IdentityClient) updateUserState(ctx context.Context, request common
 func (client IdentityClient) UploadApiKey(ctx context.Context, request UploadApiKeyRequest) (response UploadApiKeyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

@@ -440,13 +440,49 @@ type listRegionsResponse struct {
 }
 
 type listUsersResponse struct {
-	Items        []int   `presentIn:"body"`
-	OpcRequestID string  `presentIn:"header" name:"opcrequestid"`
-	OpcNextPage  int     `presentIn:"header" name:"opcnextpage"`
-	SomeUint     uint    `presentIn:"header" name:"someuint"`
-	SomeBool     bool    `presentIn:"header" name:"somebool"`
-	SomeTime     SDKTime `presentIn:"header" name:"sometime"`
-	SomeFloat    float64 `presentIn:"header" name:"somefloat"`
+	Items        []int           `presentIn:"body"`
+	OpcRequestID string          `presentIn:"header" name:"opcrequestid"`
+	OpcNextPage  int             `presentIn:"header" name:"opcnextpage"`
+	SomeUint     uint            `presentIn:"header" name:"someuint"`
+	SomeBool     bool            `presentIn:"header" name:"somebool"`
+	SomeTime     SDKTime         `presentIn:"header" name:"sometime"`
+	SomeFloat    float64         `presentIn:"header" name:"somefloat"`
+	SomeEnum     GetSomeEnumType `presentIn:"header" name:"someenum"`
+}
+
+// GetSomeEnumType Enum with underlying type: string
+type GetSomeEnumType string
+
+// Set of constants representing the allowable values for GetSomeEnum
+const (
+	SomeEnumVal1 GetSomeEnumType = "EnumVal1"
+	SomeEnumVal2 GetSomeEnumType = "EnumVal2"
+	SomeEnumVal3 GetSomeEnumType = "EnumVal3"
+)
+
+var mappingGetSomeEnum = map[string]GetSomeEnumType{
+	"EnumVal1": SomeEnumVal1,
+	"EnumVal2": SomeEnumVal2,
+	"EnumVal3": SomeEnumVal3,
+}
+
+// GetSomeEnumValues Enumerates the set of values for GetSomeEnum
+func GetSomeEnumValues() []GetSomeEnumType {
+	values := make([]GetSomeEnumType, 0)
+	for _, v := range mappingGetSomeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+func TestUnmarshalResponse_EnumHeader(t *testing.T) {
+	header := http.Header{}
+	header.Set("someenum", "EnumVal2")
+	r := http.Response{Header: header}
+	s := listUsersResponse{}
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.Equal(t, s.SomeEnum, SomeEnumVal2)
 }
 
 func TestUnmarshalResponse_StringHeader(t *testing.T) {

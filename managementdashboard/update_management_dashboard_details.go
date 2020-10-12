@@ -12,7 +12,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // UpdateManagementDashboardDetails Properties for a dashboard.  Dashboard id must not be provided.

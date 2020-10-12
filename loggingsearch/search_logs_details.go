@@ -10,7 +10,7 @@
 package loggingsearch
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // SearchLogsDetails Search request object.

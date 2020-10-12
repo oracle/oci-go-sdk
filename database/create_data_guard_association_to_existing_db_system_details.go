@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // CreateDataGuardAssociationToExistingDbSystemDetails The configuration details for creating a Data Guard association for a bare metal or Exadata DB system database. For these types of DB system databases, the `creationType` should be `ExistingDbSystem`. A standby database will be created in the DB system you specify.
@@ -30,6 +30,10 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the DB system in which to create the standby database.
 	// You must supply this value if creationType is `ExistingDbSystem`.
 	PeerDbSystemId *string `mandatory:"false" json:"peerDbSystemId"`
+
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the DB home in which to create the standby database.
+	// You must supply this value to create standby database with an existing DB home
+	PeerDbHomeId *string `mandatory:"false" json:"peerDbHomeId"`
 
 	// The protection mode to set up between the primary and standby databases. For more information, see
 	// Oracle Data Guard Protection Modes (http://docs.oracle.com/database/122/SBYDB/oracle-data-guard-protection-modes.htm#SBYDB02000)

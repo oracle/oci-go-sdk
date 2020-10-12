@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // SearchResult The search result object is the definition of an element that is returned as part of search. It contains basic
@@ -97,6 +97,12 @@ type SearchResult struct {
 
 	// Absolute path of this resource, which could be a term, folder, entity etc, usually resolvable to this resource through a namespace hierarchy.
 	Path *string `mandatory:"false" json:"path"`
+
+	// Expression for logical entities against which names of dataObjects will be matched.
+	Expression *string `mandatory:"false" json:"expression"`
+
+	// Custom properties defined by users.
+	CustomProperties []FacetedSearchCustomProperty `mandatory:"false" json:"customProperties"`
 }
 
 func (m SearchResult) String() string {

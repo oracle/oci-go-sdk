@@ -12,8 +12,8 @@ package streaming
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type StreamClient struct {
 func NewStreamClientWithConfigurationProvider(configProvider common.ConfigurationProvider, endpoint string) (client StreamClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newStreamClientFromBaseClient(baseClient, configProvider, endpoint)
+			return newStreamClientFromBaseClient(baseClient, provider, endpoint)
 		}
 	}
 
@@ -75,6 +75,9 @@ func (client *StreamClient) ConfigurationProvider() *common.ConfigurationProvide
 func (client StreamClient) ConsumerCommit(ctx context.Context, request ConsumerCommitRequest) (response ConsumerCommitResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -122,6 +125,9 @@ func (client StreamClient) consumerCommit(ctx context.Context, request common.OC
 func (client StreamClient) ConsumerHeartbeat(ctx context.Context, request ConsumerHeartbeatRequest) (response ConsumerHeartbeatResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -173,6 +179,9 @@ func (client StreamClient) consumerHeartbeat(ctx context.Context, request common
 func (client StreamClient) CreateCursor(ctx context.Context, request CreateCursorRequest) (response CreateCursorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -220,6 +229,9 @@ func (client StreamClient) createCursor(ctx context.Context, request common.OCIR
 func (client StreamClient) CreateGroupCursor(ctx context.Context, request CreateGroupCursorRequest) (response CreateGroupCursorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -267,6 +279,9 @@ func (client StreamClient) createGroupCursor(ctx context.Context, request common
 func (client StreamClient) GetGroup(ctx context.Context, request GetGroupRequest) (response GetGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -316,6 +331,9 @@ func (client StreamClient) getGroup(ctx context.Context, request common.OCIReque
 func (client StreamClient) GetMessages(ctx context.Context, request GetMessagesRequest) (response GetMessagesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -366,6 +384,9 @@ func (client StreamClient) getMessages(ctx context.Context, request common.OCIRe
 func (client StreamClient) PutMessages(ctx context.Context, request PutMessagesRequest) (response PutMessagesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -423,6 +444,9 @@ func (client StreamClient) putMessages(ctx context.Context, request common.OCIRe
 func (client StreamClient) UpdateGroup(ctx context.Context, request UpdateGroupRequest) (response UpdateGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

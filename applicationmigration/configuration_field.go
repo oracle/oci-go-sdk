@@ -10,7 +10,7 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // ConfigurationField Information required to migrate an application. Populated by the service as the source application is introspected

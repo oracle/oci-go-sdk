@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type TransferDeviceClient struct {
 func NewTransferDeviceClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client TransferDeviceClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newTransferDeviceClientFromBaseClient(baseClient, configProvider)
+			return newTransferDeviceClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *TransferDeviceClient) ConfigurationProvider() *common.Configuratio
 func (client TransferDeviceClient) CreateTransferDevice(ctx context.Context, request CreateTransferDeviceRequest) (response CreateTransferDeviceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client TransferDeviceClient) createTransferDevice(ctx context.Context, req
 func (client TransferDeviceClient) DeleteTransferDevice(ctx context.Context, request DeleteTransferDeviceRequest) (response DeleteTransferDeviceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -180,6 +186,9 @@ func (client TransferDeviceClient) deleteTransferDevice(ctx context.Context, req
 func (client TransferDeviceClient) GetTransferDevice(ctx context.Context, request GetTransferDeviceRequest) (response GetTransferDeviceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -227,6 +236,9 @@ func (client TransferDeviceClient) getTransferDevice(ctx context.Context, reques
 func (client TransferDeviceClient) ListTransferDevices(ctx context.Context, request ListTransferDevicesRequest) (response ListTransferDevicesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -274,6 +286,9 @@ func (client TransferDeviceClient) listTransferDevices(ctx context.Context, requ
 func (client TransferDeviceClient) UpdateTransferDevice(ctx context.Context, request UpdateTransferDeviceRequest) (response UpdateTransferDeviceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
