@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // Folder A generic term used in the data catalog for an external organization concept used for a collection of data entities
@@ -37,6 +37,9 @@ type Folder struct {
 
 	// The key of the associated data asset.
 	DataAssetKey *string `mandatory:"false" json:"dataAssetKey"`
+
+	// The list of customized properties along with the values for this object
+	CustomPropertyMembers []CustomPropertyGetUsage `mandatory:"false" json:"customPropertyMembers"`
 
 	// A map of maps that contains the properties which are specific to the folder type. Each folder type
 	// definition defines it's set of required and optional properties. The map keys are category names and the

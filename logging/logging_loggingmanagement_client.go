@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// loggingManagementControlplane API
+// Logging Management API
 //
-// loggingManagementControlplane API specification
+// Use the Logging Management API to create, read, list, update, and delete log groups, log objects, and agent configurations.
 //
 
 package logging
@@ -12,8 +12,8 @@ package logging
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type LoggingManagementClient struct {
 func NewLoggingManagementClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client LoggingManagementClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newLoggingManagementClientFromBaseClient(baseClient, configProvider)
+			return newLoggingManagementClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -77,11 +77,14 @@ func (client *LoggingManagementClient) ConfigurationProvider() *common.Configura
 	return client.config
 }
 
-// ChangeLogGroupCompartment Moves a log group into a different compartment within the same tenancy.  When provided, If-Match is checked against ETag values of the resource.
+// ChangeLogGroupCompartment Moves a log group into a different compartment within the same tenancy.  When provided, the If-Match is checked against the resource ETag values.
 // For information about moving resources between compartments, see Moving Resources Between Compartments (https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingcompartments.htm#moveRes).
 func (client LoggingManagementClient) ChangeLogGroupCompartment(ctx context.Context, request ChangeLogGroupCompartmentRequest) (response ChangeLogGroupCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -125,10 +128,13 @@ func (client LoggingManagementClient) changeLogGroupCompartment(ctx context.Cont
 	return response, err
 }
 
-// ChangeLogLogGroup Moves a log into a different log group within the same tenancy.  When provided, If-Match is checked against ETag values of the resource.
+// ChangeLogLogGroup Moves a log into a different log group within the same tenancy.  When provided, the If-Match is checked against the ETag values of the resource.
 func (client LoggingManagementClient) ChangeLogLogGroup(ctx context.Context, request ChangeLogLogGroupRequest) (response ChangeLogLogGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -177,6 +183,9 @@ func (client LoggingManagementClient) changeLogLogGroup(ctx context.Context, req
 func (client LoggingManagementClient) ChangeLogSavedSearchCompartment(ctx context.Context, request ChangeLogSavedSearchCompartmentRequest) (response ChangeLogSavedSearchCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -225,11 +234,14 @@ func (client LoggingManagementClient) changeLogSavedSearchCompartment(ctx contex
 	return response, err
 }
 
-// ChangeUnifiedAgentConfigurationCompartment Moves unified agent configuration into a different compartment within the same tenancy.  When provided, If-Match is checked against ETag values of the resource.
+// ChangeUnifiedAgentConfigurationCompartment Moves the unified agent configuration into a different compartment within the same tenancy.  When provided, the If-Match is checked against the ETag values of the resource.
 // For information about moving resources between compartments, see Moving Resources Between Compartments (https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingcompartments.htm#moveRes).
 func (client LoggingManagementClient) ChangeUnifiedAgentConfigurationCompartment(ctx context.Context, request ChangeUnifiedAgentConfigurationCompartmentRequest) (response ChangeUnifiedAgentConfigurationCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -278,11 +290,14 @@ func (client LoggingManagementClient) changeUnifiedAgentConfigurationCompartment
 	return response, err
 }
 
-// CreateLog Creates a log within specified log group. This call fails if log group is already created
-// with same displayName or (service, resource, category) triplet.
+// CreateLog Creates a log within the specified log group. This call fails if a log group has already been created
+// with the same displayName or (service, resource, category) triplet.
 func (client LoggingManagementClient) CreateLog(ctx context.Context, request CreateLogRequest) (response CreateLogResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -331,11 +346,14 @@ func (client LoggingManagementClient) createLog(ctx context.Context, request com
 	return response, err
 }
 
-// CreateLogGroup Create new log group with unique display name. This call fails
-// if log group is already created with same displayName in the compartment.
+// CreateLogGroup Create a new log group with a unique display name. This call fails
+// if the log group is already created with the same displayName in the compartment.
 func (client LoggingManagementClient) CreateLogGroup(ctx context.Context, request CreateLogGroupRequest) (response CreateLogGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -388,6 +406,9 @@ func (client LoggingManagementClient) createLogGroup(ctx context.Context, reques
 func (client LoggingManagementClient) CreateLogSavedSearch(ctx context.Context, request CreateLogSavedSearchRequest) (response CreateLogSavedSearchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -436,10 +457,13 @@ func (client LoggingManagementClient) createLogSavedSearch(ctx context.Context, 
 	return response, err
 }
 
-// CreateUnifiedAgentConfiguration Create unified agent config registration
+// CreateUnifiedAgentConfiguration Create unified agent configuration registration.
 func (client LoggingManagementClient) CreateUnifiedAgentConfiguration(ctx context.Context, request CreateUnifiedAgentConfigurationRequest) (response CreateUnifiedAgentConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -492,6 +516,9 @@ func (client LoggingManagementClient) createUnifiedAgentConfiguration(ctx contex
 func (client LoggingManagementClient) DeleteLog(ctx context.Context, request DeleteLogRequest) (response DeleteLogResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -539,6 +566,9 @@ func (client LoggingManagementClient) deleteLog(ctx context.Context, request com
 func (client LoggingManagementClient) DeleteLogGroup(ctx context.Context, request DeleteLogGroupRequest) (response DeleteLogGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -586,6 +616,9 @@ func (client LoggingManagementClient) deleteLogGroup(ctx context.Context, reques
 func (client LoggingManagementClient) DeleteLogSavedSearch(ctx context.Context, request DeleteLogSavedSearchRequest) (response DeleteLogSavedSearchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -629,10 +662,13 @@ func (client LoggingManagementClient) deleteLogSavedSearch(ctx context.Context, 
 	return response, err
 }
 
-// DeleteUnifiedAgentConfiguration Delete unified agent configuration
+// DeleteUnifiedAgentConfiguration Delete unified agent configuration.
 func (client LoggingManagementClient) DeleteUnifiedAgentConfiguration(ctx context.Context, request DeleteUnifiedAgentConfigurationRequest) (response DeleteUnifiedAgentConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -680,6 +716,9 @@ func (client LoggingManagementClient) deleteUnifiedAgentConfiguration(ctx contex
 func (client LoggingManagementClient) DeleteWorkRequest(ctx context.Context, request DeleteWorkRequestRequest) (response DeleteWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -723,10 +762,13 @@ func (client LoggingManagementClient) deleteWorkRequest(ctx context.Context, req
 	return response, err
 }
 
-// GetLog Gets the log object config for log object OCID.
+// GetLog Gets the log object configuration for the log object OCID.
 func (client LoggingManagementClient) GetLog(ctx context.Context, request GetLogRequest) (response GetLogResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -774,6 +816,9 @@ func (client LoggingManagementClient) getLog(ctx context.Context, request common
 func (client LoggingManagementClient) GetLogGroup(ctx context.Context, request GetLogGroupRequest) (response GetLogGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -821,6 +866,9 @@ func (client LoggingManagementClient) getLogGroup(ctx context.Context, request c
 func (client LoggingManagementClient) GetLogIncludedSearch(ctx context.Context, request GetLogIncludedSearchRequest) (response GetLogIncludedSearchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -868,6 +916,9 @@ func (client LoggingManagementClient) getLogIncludedSearch(ctx context.Context, 
 func (client LoggingManagementClient) GetLogSavedSearch(ctx context.Context, request GetLogSavedSearchRequest) (response GetLogSavedSearchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -911,10 +962,13 @@ func (client LoggingManagementClient) getLogSavedSearch(ctx context.Context, req
 	return response, err
 }
 
-// GetUnifiedAgentConfiguration Get unified agent configuration for an id
+// GetUnifiedAgentConfiguration Get the unified agent configuration for an ID.
 func (client LoggingManagementClient) GetUnifiedAgentConfiguration(ctx context.Context, request GetUnifiedAgentConfigurationRequest) (response GetUnifiedAgentConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -962,6 +1016,9 @@ func (client LoggingManagementClient) getUnifiedAgentConfiguration(ctx context.C
 func (client LoggingManagementClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1009,6 +1066,9 @@ func (client LoggingManagementClient) getWorkRequest(ctx context.Context, reques
 func (client LoggingManagementClient) ListLogGroups(ctx context.Context, request ListLogGroupsRequest) (response ListLogGroupsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1056,6 +1116,9 @@ func (client LoggingManagementClient) listLogGroups(ctx context.Context, request
 func (client LoggingManagementClient) ListLogIncludedSearches(ctx context.Context, request ListLogIncludedSearchesRequest) (response ListLogIncludedSearchesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1103,6 +1166,9 @@ func (client LoggingManagementClient) listLogIncludedSearches(ctx context.Contex
 func (client LoggingManagementClient) ListLogSavedSearches(ctx context.Context, request ListLogSavedSearchesRequest) (response ListLogSavedSearchesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1150,6 +1216,9 @@ func (client LoggingManagementClient) listLogSavedSearches(ctx context.Context, 
 func (client LoggingManagementClient) ListLogs(ctx context.Context, request ListLogsRequest) (response ListLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1193,10 +1262,13 @@ func (client LoggingManagementClient) listLogs(ctx context.Context, request comm
 	return response, err
 }
 
-// ListServices Lists all services supporting logging.
+// ListServices Lists all services that support logging.
 func (client LoggingManagementClient) ListServices(ctx context.Context, request ListServicesRequest) (response ListServicesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1240,10 +1312,13 @@ func (client LoggingManagementClient) listServices(ctx context.Context, request 
 	return response, err
 }
 
-// ListUnifiedAgentConfigurations Lists all unified agent configurations in the specified compartment
+// ListUnifiedAgentConfigurations Lists all unified agent configurations in the specified compartment.
 func (client LoggingManagementClient) ListUnifiedAgentConfigurations(ctx context.Context, request ListUnifiedAgentConfigurationsRequest) (response ListUnifiedAgentConfigurationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1291,6 +1366,9 @@ func (client LoggingManagementClient) listUnifiedAgentConfigurations(ctx context
 func (client LoggingManagementClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1338,6 +1416,9 @@ func (client LoggingManagementClient) listWorkRequestErrors(ctx context.Context,
 func (client LoggingManagementClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1385,6 +1466,9 @@ func (client LoggingManagementClient) listWorkRequestLogs(ctx context.Context, r
 func (client LoggingManagementClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1428,11 +1512,14 @@ func (client LoggingManagementClient) listWorkRequests(ctx context.Context, requ
 	return response, err
 }
 
-// UpdateLog Updates existing log object with the associated config. This call
-//       fails if log object does not exist.
+// UpdateLog Updates the existing log object with the associated configuration. This call
+//       fails if the log object does not exist.
 func (client LoggingManagementClient) UpdateLog(ctx context.Context, request UpdateLogRequest) (response UpdateLogResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1476,11 +1563,14 @@ func (client LoggingManagementClient) updateLog(ctx context.Context, request com
 	return response, err
 }
 
-// UpdateLogGroup Updates existing log group with the associated config. This call
-//       fails if log group does not exist.
+// UpdateLogGroup Updates the existing log group with the associated configuration. This call
+//       fails if the log group does not exist.
 func (client LoggingManagementClient) UpdateLogGroup(ctx context.Context, request UpdateLogGroupRequest) (response UpdateLogGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1528,6 +1618,9 @@ func (client LoggingManagementClient) updateLogGroup(ctx context.Context, reques
 func (client LoggingManagementClient) UpdateLogSavedSearch(ctx context.Context, request UpdateLogSavedSearchRequest) (response UpdateLogSavedSearchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1572,10 +1665,13 @@ func (client LoggingManagementClient) updateLogSavedSearch(ctx context.Context, 
 }
 
 // UpdateUnifiedAgentConfiguration Update an existing unified agent configuration. This call
-//       fails if log group does not exist.
+//       fails if the log group does not exist.
 func (client LoggingManagementClient) UpdateUnifiedAgentConfiguration(ctx context.Context, request UpdateUnifiedAgentConfigurationRequest) (response UpdateUnifiedAgentConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

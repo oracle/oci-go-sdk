@@ -13,8 +13,8 @@ package keymanagement
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -29,7 +29,7 @@ type KmsVaultClient struct {
 func NewKmsVaultClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client KmsVaultClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newKmsVaultClientFromBaseClient(baseClient, configProvider)
+			return newKmsVaultClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -84,6 +84,9 @@ func (client *KmsVaultClient) ConfigurationProvider() *common.ConfigurationProvi
 func (client KmsVaultClient) BackupVault(ctx context.Context, request BackupVaultRequest) (response BackupVaultResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -143,6 +146,9 @@ func (client KmsVaultClient) backupVault(ctx context.Context, request common.OCI
 func (client KmsVaultClient) CancelVaultDeletion(ctx context.Context, request CancelVaultDeletionRequest) (response CancelVaultDeletionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -201,6 +207,9 @@ func (client KmsVaultClient) cancelVaultDeletion(ctx context.Context, request co
 func (client KmsVaultClient) ChangeVaultCompartment(ctx context.Context, request ChangeVaultCompartmentRequest) (response ChangeVaultCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -260,6 +269,9 @@ func (client KmsVaultClient) changeVaultCompartment(ctx context.Context, request
 func (client KmsVaultClient) CreateVault(ctx context.Context, request CreateVaultRequest) (response CreateVaultResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -316,6 +328,9 @@ func (client KmsVaultClient) createVault(ctx context.Context, request common.OCI
 func (client KmsVaultClient) GetVault(ctx context.Context, request GetVaultRequest) (response GetVaultResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -363,6 +378,9 @@ func (client KmsVaultClient) getVault(ctx context.Context, request common.OCIReq
 func (client KmsVaultClient) GetVaultUsage(ctx context.Context, request GetVaultUsageRequest) (response GetVaultUsageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -414,6 +432,9 @@ func (client KmsVaultClient) getVaultUsage(ctx context.Context, request common.O
 func (client KmsVaultClient) ListVaults(ctx context.Context, request ListVaultsRequest) (response ListVaultsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -463,6 +484,9 @@ func (client KmsVaultClient) listVaults(ctx context.Context, request common.OCIR
 func (client KmsVaultClient) RestoreVaultFromFile(ctx context.Context, request RestoreVaultFromFileRequest) (response RestoreVaultFromFileResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -517,6 +541,9 @@ func (client KmsVaultClient) restoreVaultFromFile(ctx context.Context, request c
 func (client KmsVaultClient) RestoreVaultFromObjectStore(ctx context.Context, request RestoreVaultFromObjectStoreRequest) (response RestoreVaultFromObjectStoreResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -577,6 +604,9 @@ func (client KmsVaultClient) restoreVaultFromObjectStore(ctx context.Context, re
 func (client KmsVaultClient) ScheduleVaultDeletion(ctx context.Context, request ScheduleVaultDeletionRequest) (response ScheduleVaultDeletionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -635,6 +665,9 @@ func (client KmsVaultClient) scheduleVaultDeletion(ctx context.Context, request 
 func (client KmsVaultClient) UpdateVault(ctx context.Context, request UpdateVaultRequest) (response UpdateVaultResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

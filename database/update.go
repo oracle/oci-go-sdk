@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // Update The representation of Update
@@ -103,11 +103,13 @@ type UpdateUpdateTypeEnum string
 
 // Set of constants representing the allowable values for UpdateUpdateTypeEnum
 const (
-	UpdateUpdateTypeGiPatch UpdateUpdateTypeEnum = "GI_PATCH"
+	UpdateUpdateTypeUpgrade UpdateUpdateTypeEnum = "GI_UPGRADE"
+	UpdateUpdateTypePatch   UpdateUpdateTypeEnum = "GI_PATCH"
 )
 
 var mappingUpdateUpdateType = map[string]UpdateUpdateTypeEnum{
-	"GI_PATCH": UpdateUpdateTypeGiPatch,
+	"GI_UPGRADE": UpdateUpdateTypeUpgrade,
+	"GI_PATCH":   UpdateUpdateTypePatch,
 }
 
 // GetUpdateUpdateTypeEnumValues Enumerates the set of values for UpdateUpdateTypeEnum

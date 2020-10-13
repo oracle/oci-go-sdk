@@ -12,8 +12,8 @@ package dataintegration
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type DataIntegrationClient struct {
 func NewDataIntegrationClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client DataIntegrationClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newDataIntegrationClientFromBaseClient(baseClient, configProvider)
+			return newDataIntegrationClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *DataIntegrationClient) ConfigurationProvider() *common.Configurati
 func (client DataIntegrationClient) ChangeCompartment(ctx context.Context, request ChangeCompartmentRequest) (response ChangeCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client DataIntegrationClient) changeCompartment(ctx context.Context, reque
 func (client DataIntegrationClient) CreateApplication(ctx context.Context, request CreateApplicationRequest) (response CreateApplicationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -185,6 +191,9 @@ func (client DataIntegrationClient) createApplication(ctx context.Context, reque
 func (client DataIntegrationClient) CreateConnection(ctx context.Context, request CreateConnectionRequest) (response CreateConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -237,6 +246,9 @@ func (client DataIntegrationClient) createConnection(ctx context.Context, reques
 func (client DataIntegrationClient) CreateConnectionValidation(ctx context.Context, request CreateConnectionValidationRequest) (response CreateConnectionValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -289,6 +301,9 @@ func (client DataIntegrationClient) createConnectionValidation(ctx context.Conte
 func (client DataIntegrationClient) CreateDataAsset(ctx context.Context, request CreateDataAssetRequest) (response CreateDataAssetResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -341,6 +356,9 @@ func (client DataIntegrationClient) createDataAsset(ctx context.Context, request
 func (client DataIntegrationClient) CreateDataFlow(ctx context.Context, request CreateDataFlowRequest) (response CreateDataFlowResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -393,6 +411,9 @@ func (client DataIntegrationClient) createDataFlow(ctx context.Context, request 
 func (client DataIntegrationClient) CreateDataFlowValidation(ctx context.Context, request CreateDataFlowValidationRequest) (response CreateDataFlowValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -445,6 +466,9 @@ func (client DataIntegrationClient) createDataFlowValidation(ctx context.Context
 func (client DataIntegrationClient) CreateEntityShape(ctx context.Context, request CreateEntityShapeRequest) (response CreateEntityShapeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -497,6 +521,9 @@ func (client DataIntegrationClient) createEntityShape(ctx context.Context, reque
 func (client DataIntegrationClient) CreateExternalPublication(ctx context.Context, request CreateExternalPublicationRequest) (response CreateExternalPublicationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -549,6 +576,9 @@ func (client DataIntegrationClient) createExternalPublication(ctx context.Contex
 func (client DataIntegrationClient) CreateExternalPublicationValidation(ctx context.Context, request CreateExternalPublicationValidationRequest) (response CreateExternalPublicationValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -602,6 +632,9 @@ func (client DataIntegrationClient) createExternalPublicationValidation(ctx cont
 func (client DataIntegrationClient) CreateFolder(ctx context.Context, request CreateFolderRequest) (response CreateFolderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -654,6 +687,9 @@ func (client DataIntegrationClient) createFolder(ctx context.Context, request co
 func (client DataIntegrationClient) CreatePatch(ctx context.Context, request CreatePatchRequest) (response CreatePatchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -706,6 +742,9 @@ func (client DataIntegrationClient) createPatch(ctx context.Context, request com
 func (client DataIntegrationClient) CreateProject(ctx context.Context, request CreateProjectRequest) (response CreateProjectResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -758,6 +797,9 @@ func (client DataIntegrationClient) createProject(ctx context.Context, request c
 func (client DataIntegrationClient) CreateTask(ctx context.Context, request CreateTaskRequest) (response CreateTaskResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -810,6 +852,9 @@ func (client DataIntegrationClient) createTask(ctx context.Context, request comm
 func (client DataIntegrationClient) CreateTaskRun(ctx context.Context, request CreateTaskRunRequest) (response CreateTaskRunResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -862,6 +907,9 @@ func (client DataIntegrationClient) createTaskRun(ctx context.Context, request c
 func (client DataIntegrationClient) CreateTaskValidation(ctx context.Context, request CreateTaskValidationRequest) (response CreateTaskValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -914,6 +962,9 @@ func (client DataIntegrationClient) createTaskValidation(ctx context.Context, re
 func (client DataIntegrationClient) CreateWorkspace(ctx context.Context, request CreateWorkspaceRequest) (response CreateWorkspaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -966,6 +1017,9 @@ func (client DataIntegrationClient) createWorkspace(ctx context.Context, request
 func (client DataIntegrationClient) DeleteApplication(ctx context.Context, request DeleteApplicationRequest) (response DeleteApplicationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1013,6 +1067,9 @@ func (client DataIntegrationClient) deleteApplication(ctx context.Context, reque
 func (client DataIntegrationClient) DeleteConnection(ctx context.Context, request DeleteConnectionRequest) (response DeleteConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1060,6 +1117,9 @@ func (client DataIntegrationClient) deleteConnection(ctx context.Context, reques
 func (client DataIntegrationClient) DeleteConnectionValidation(ctx context.Context, request DeleteConnectionValidationRequest) (response DeleteConnectionValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1107,6 +1167,9 @@ func (client DataIntegrationClient) deleteConnectionValidation(ctx context.Conte
 func (client DataIntegrationClient) DeleteDataAsset(ctx context.Context, request DeleteDataAssetRequest) (response DeleteDataAssetResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1154,6 +1217,9 @@ func (client DataIntegrationClient) deleteDataAsset(ctx context.Context, request
 func (client DataIntegrationClient) DeleteDataFlow(ctx context.Context, request DeleteDataFlowRequest) (response DeleteDataFlowResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1201,6 +1267,9 @@ func (client DataIntegrationClient) deleteDataFlow(ctx context.Context, request 
 func (client DataIntegrationClient) DeleteDataFlowValidation(ctx context.Context, request DeleteDataFlowValidationRequest) (response DeleteDataFlowValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1248,6 +1317,9 @@ func (client DataIntegrationClient) deleteDataFlowValidation(ctx context.Context
 func (client DataIntegrationClient) DeleteExternalPublication(ctx context.Context, request DeleteExternalPublicationRequest) (response DeleteExternalPublicationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1295,6 +1367,9 @@ func (client DataIntegrationClient) deleteExternalPublication(ctx context.Contex
 func (client DataIntegrationClient) DeleteExternalPublicationValidation(ctx context.Context, request DeleteExternalPublicationValidationRequest) (response DeleteExternalPublicationValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1342,6 +1417,9 @@ func (client DataIntegrationClient) deleteExternalPublicationValidation(ctx cont
 func (client DataIntegrationClient) DeleteFolder(ctx context.Context, request DeleteFolderRequest) (response DeleteFolderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1389,6 +1467,9 @@ func (client DataIntegrationClient) deleteFolder(ctx context.Context, request co
 func (client DataIntegrationClient) DeletePatch(ctx context.Context, request DeletePatchRequest) (response DeletePatchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1436,6 +1517,9 @@ func (client DataIntegrationClient) deletePatch(ctx context.Context, request com
 func (client DataIntegrationClient) DeleteProject(ctx context.Context, request DeleteProjectRequest) (response DeleteProjectResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1483,6 +1567,9 @@ func (client DataIntegrationClient) deleteProject(ctx context.Context, request c
 func (client DataIntegrationClient) DeleteTask(ctx context.Context, request DeleteTaskRequest) (response DeleteTaskResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1530,6 +1617,9 @@ func (client DataIntegrationClient) deleteTask(ctx context.Context, request comm
 func (client DataIntegrationClient) DeleteTaskRun(ctx context.Context, request DeleteTaskRunRequest) (response DeleteTaskRunResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1577,6 +1667,9 @@ func (client DataIntegrationClient) deleteTaskRun(ctx context.Context, request c
 func (client DataIntegrationClient) DeleteTaskValidation(ctx context.Context, request DeleteTaskValidationRequest) (response DeleteTaskValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1624,6 +1717,9 @@ func (client DataIntegrationClient) deleteTaskValidation(ctx context.Context, re
 func (client DataIntegrationClient) DeleteWorkspace(ctx context.Context, request DeleteWorkspaceRequest) (response DeleteWorkspaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1671,6 +1767,9 @@ func (client DataIntegrationClient) deleteWorkspace(ctx context.Context, request
 func (client DataIntegrationClient) GetApplication(ctx context.Context, request GetApplicationRequest) (response GetApplicationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1718,6 +1817,9 @@ func (client DataIntegrationClient) getApplication(ctx context.Context, request 
 func (client DataIntegrationClient) GetConnection(ctx context.Context, request GetConnectionRequest) (response GetConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1765,6 +1867,9 @@ func (client DataIntegrationClient) getConnection(ctx context.Context, request c
 func (client DataIntegrationClient) GetConnectionValidation(ctx context.Context, request GetConnectionValidationRequest) (response GetConnectionValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1813,6 +1918,9 @@ func (client DataIntegrationClient) getConnectionValidation(ctx context.Context,
 func (client DataIntegrationClient) GetCountStatistic(ctx context.Context, request GetCountStatisticRequest) (response GetCountStatisticResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1860,6 +1968,9 @@ func (client DataIntegrationClient) getCountStatistic(ctx context.Context, reque
 func (client DataIntegrationClient) GetDataAsset(ctx context.Context, request GetDataAssetRequest) (response GetDataAssetResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1907,6 +2018,9 @@ func (client DataIntegrationClient) getDataAsset(ctx context.Context, request co
 func (client DataIntegrationClient) GetDataEntity(ctx context.Context, request GetDataEntityRequest) (response GetDataEntityResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1954,6 +2068,9 @@ func (client DataIntegrationClient) getDataEntity(ctx context.Context, request c
 func (client DataIntegrationClient) GetDataFlow(ctx context.Context, request GetDataFlowRequest) (response GetDataFlowResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2001,6 +2118,9 @@ func (client DataIntegrationClient) getDataFlow(ctx context.Context, request com
 func (client DataIntegrationClient) GetDataFlowValidation(ctx context.Context, request GetDataFlowValidationRequest) (response GetDataFlowValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2048,6 +2168,9 @@ func (client DataIntegrationClient) getDataFlowValidation(ctx context.Context, r
 func (client DataIntegrationClient) GetDependentObject(ctx context.Context, request GetDependentObjectRequest) (response GetDependentObjectResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2095,6 +2218,9 @@ func (client DataIntegrationClient) getDependentObject(ctx context.Context, requ
 func (client DataIntegrationClient) GetExternalPublication(ctx context.Context, request GetExternalPublicationRequest) (response GetExternalPublicationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2142,6 +2268,9 @@ func (client DataIntegrationClient) getExternalPublication(ctx context.Context, 
 func (client DataIntegrationClient) GetExternalPublicationValidation(ctx context.Context, request GetExternalPublicationValidationRequest) (response GetExternalPublicationValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2189,6 +2318,9 @@ func (client DataIntegrationClient) getExternalPublicationValidation(ctx context
 func (client DataIntegrationClient) GetFolder(ctx context.Context, request GetFolderRequest) (response GetFolderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2236,6 +2368,9 @@ func (client DataIntegrationClient) getFolder(ctx context.Context, request commo
 func (client DataIntegrationClient) GetPatch(ctx context.Context, request GetPatchRequest) (response GetPatchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2283,6 +2418,9 @@ func (client DataIntegrationClient) getPatch(ctx context.Context, request common
 func (client DataIntegrationClient) GetProject(ctx context.Context, request GetProjectRequest) (response GetProjectResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2330,6 +2468,9 @@ func (client DataIntegrationClient) getProject(ctx context.Context, request comm
 func (client DataIntegrationClient) GetPublishedObject(ctx context.Context, request GetPublishedObjectRequest) (response GetPublishedObjectResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2377,6 +2518,9 @@ func (client DataIntegrationClient) getPublishedObject(ctx context.Context, requ
 func (client DataIntegrationClient) GetReference(ctx context.Context, request GetReferenceRequest) (response GetReferenceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2424,6 +2568,9 @@ func (client DataIntegrationClient) getReference(ctx context.Context, request co
 func (client DataIntegrationClient) GetSchema(ctx context.Context, request GetSchemaRequest) (response GetSchemaResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2471,6 +2618,9 @@ func (client DataIntegrationClient) getSchema(ctx context.Context, request commo
 func (client DataIntegrationClient) GetTask(ctx context.Context, request GetTaskRequest) (response GetTaskResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2518,6 +2668,9 @@ func (client DataIntegrationClient) getTask(ctx context.Context, request common.
 func (client DataIntegrationClient) GetTaskRun(ctx context.Context, request GetTaskRunRequest) (response GetTaskRunResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2565,6 +2718,9 @@ func (client DataIntegrationClient) getTaskRun(ctx context.Context, request comm
 func (client DataIntegrationClient) GetTaskValidation(ctx context.Context, request GetTaskValidationRequest) (response GetTaskValidationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2612,6 +2768,9 @@ func (client DataIntegrationClient) getTaskValidation(ctx context.Context, reque
 func (client DataIntegrationClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2659,6 +2818,9 @@ func (client DataIntegrationClient) getWorkRequest(ctx context.Context, request 
 func (client DataIntegrationClient) GetWorkspace(ctx context.Context, request GetWorkspaceRequest) (response GetWorkspaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2706,6 +2868,9 @@ func (client DataIntegrationClient) getWorkspace(ctx context.Context, request co
 func (client DataIntegrationClient) ListApplications(ctx context.Context, request ListApplicationsRequest) (response ListApplicationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2753,6 +2918,9 @@ func (client DataIntegrationClient) listApplications(ctx context.Context, reques
 func (client DataIntegrationClient) ListConnectionValidations(ctx context.Context, request ListConnectionValidationsRequest) (response ListConnectionValidationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2800,6 +2968,9 @@ func (client DataIntegrationClient) listConnectionValidations(ctx context.Contex
 func (client DataIntegrationClient) ListConnections(ctx context.Context, request ListConnectionsRequest) (response ListConnectionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2847,6 +3018,9 @@ func (client DataIntegrationClient) listConnections(ctx context.Context, request
 func (client DataIntegrationClient) ListDataAssets(ctx context.Context, request ListDataAssetsRequest) (response ListDataAssetsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2894,6 +3068,9 @@ func (client DataIntegrationClient) listDataAssets(ctx context.Context, request 
 func (client DataIntegrationClient) ListDataEntities(ctx context.Context, request ListDataEntitiesRequest) (response ListDataEntitiesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2941,6 +3118,9 @@ func (client DataIntegrationClient) listDataEntities(ctx context.Context, reques
 func (client DataIntegrationClient) ListDataFlowValidations(ctx context.Context, request ListDataFlowValidationsRequest) (response ListDataFlowValidationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2988,6 +3168,9 @@ func (client DataIntegrationClient) listDataFlowValidations(ctx context.Context,
 func (client DataIntegrationClient) ListDataFlows(ctx context.Context, request ListDataFlowsRequest) (response ListDataFlowsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3035,6 +3218,9 @@ func (client DataIntegrationClient) listDataFlows(ctx context.Context, request c
 func (client DataIntegrationClient) ListDependentObjects(ctx context.Context, request ListDependentObjectsRequest) (response ListDependentObjectsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3082,6 +3268,9 @@ func (client DataIntegrationClient) listDependentObjects(ctx context.Context, re
 func (client DataIntegrationClient) ListExternalPublicationValidations(ctx context.Context, request ListExternalPublicationValidationsRequest) (response ListExternalPublicationValidationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3129,6 +3318,9 @@ func (client DataIntegrationClient) listExternalPublicationValidations(ctx conte
 func (client DataIntegrationClient) ListExternalPublications(ctx context.Context, request ListExternalPublicationsRequest) (response ListExternalPublicationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3176,6 +3368,9 @@ func (client DataIntegrationClient) listExternalPublications(ctx context.Context
 func (client DataIntegrationClient) ListFolders(ctx context.Context, request ListFoldersRequest) (response ListFoldersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3223,6 +3418,9 @@ func (client DataIntegrationClient) listFolders(ctx context.Context, request com
 func (client DataIntegrationClient) ListPatchChanges(ctx context.Context, request ListPatchChangesRequest) (response ListPatchChangesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3270,6 +3468,9 @@ func (client DataIntegrationClient) listPatchChanges(ctx context.Context, reques
 func (client DataIntegrationClient) ListPatches(ctx context.Context, request ListPatchesRequest) (response ListPatchesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3317,6 +3518,9 @@ func (client DataIntegrationClient) listPatches(ctx context.Context, request com
 func (client DataIntegrationClient) ListProjects(ctx context.Context, request ListProjectsRequest) (response ListProjectsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3364,6 +3568,9 @@ func (client DataIntegrationClient) listProjects(ctx context.Context, request co
 func (client DataIntegrationClient) ListPublishedObjects(ctx context.Context, request ListPublishedObjectsRequest) (response ListPublishedObjectsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3411,6 +3618,9 @@ func (client DataIntegrationClient) listPublishedObjects(ctx context.Context, re
 func (client DataIntegrationClient) ListReferences(ctx context.Context, request ListReferencesRequest) (response ListReferencesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3458,6 +3668,9 @@ func (client DataIntegrationClient) listReferences(ctx context.Context, request 
 func (client DataIntegrationClient) ListSchemas(ctx context.Context, request ListSchemasRequest) (response ListSchemasResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3505,6 +3718,9 @@ func (client DataIntegrationClient) listSchemas(ctx context.Context, request com
 func (client DataIntegrationClient) ListTaskRunLogs(ctx context.Context, request ListTaskRunLogsRequest) (response ListTaskRunLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3552,6 +3768,9 @@ func (client DataIntegrationClient) listTaskRunLogs(ctx context.Context, request
 func (client DataIntegrationClient) ListTaskRuns(ctx context.Context, request ListTaskRunsRequest) (response ListTaskRunsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3599,6 +3818,9 @@ func (client DataIntegrationClient) listTaskRuns(ctx context.Context, request co
 func (client DataIntegrationClient) ListTaskValidations(ctx context.Context, request ListTaskValidationsRequest) (response ListTaskValidationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3646,6 +3868,9 @@ func (client DataIntegrationClient) listTaskValidations(ctx context.Context, req
 func (client DataIntegrationClient) ListTasks(ctx context.Context, request ListTasksRequest) (response ListTasksResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3693,6 +3918,9 @@ func (client DataIntegrationClient) listTasks(ctx context.Context, request commo
 func (client DataIntegrationClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3740,6 +3968,9 @@ func (client DataIntegrationClient) listWorkRequestErrors(ctx context.Context, r
 func (client DataIntegrationClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3787,6 +4018,9 @@ func (client DataIntegrationClient) listWorkRequestLogs(ctx context.Context, req
 func (client DataIntegrationClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3834,6 +4068,9 @@ func (client DataIntegrationClient) listWorkRequests(ctx context.Context, reques
 func (client DataIntegrationClient) ListWorkspaces(ctx context.Context, request ListWorkspacesRequest) (response ListWorkspacesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3881,6 +4118,9 @@ func (client DataIntegrationClient) listWorkspaces(ctx context.Context, request 
 func (client DataIntegrationClient) StartWorkspace(ctx context.Context, request StartWorkspaceRequest) (response StartWorkspaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3933,6 +4173,9 @@ func (client DataIntegrationClient) startWorkspace(ctx context.Context, request 
 func (client DataIntegrationClient) StopWorkspace(ctx context.Context, request StopWorkspaceRequest) (response StopWorkspaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3985,6 +4228,9 @@ func (client DataIntegrationClient) stopWorkspace(ctx context.Context, request c
 func (client DataIntegrationClient) UpdateApplication(ctx context.Context, request UpdateApplicationRequest) (response UpdateApplicationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4032,6 +4278,9 @@ func (client DataIntegrationClient) updateApplication(ctx context.Context, reque
 func (client DataIntegrationClient) UpdateConnection(ctx context.Context, request UpdateConnectionRequest) (response UpdateConnectionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4079,6 +4328,9 @@ func (client DataIntegrationClient) updateConnection(ctx context.Context, reques
 func (client DataIntegrationClient) UpdateDataAsset(ctx context.Context, request UpdateDataAssetRequest) (response UpdateDataAssetResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4126,6 +4378,9 @@ func (client DataIntegrationClient) updateDataAsset(ctx context.Context, request
 func (client DataIntegrationClient) UpdateDataFlow(ctx context.Context, request UpdateDataFlowRequest) (response UpdateDataFlowResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4173,6 +4428,9 @@ func (client DataIntegrationClient) updateDataFlow(ctx context.Context, request 
 func (client DataIntegrationClient) UpdateExternalPublication(ctx context.Context, request UpdateExternalPublicationRequest) (response UpdateExternalPublicationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4220,6 +4478,9 @@ func (client DataIntegrationClient) updateExternalPublication(ctx context.Contex
 func (client DataIntegrationClient) UpdateFolder(ctx context.Context, request UpdateFolderRequest) (response UpdateFolderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4267,6 +4528,9 @@ func (client DataIntegrationClient) updateFolder(ctx context.Context, request co
 func (client DataIntegrationClient) UpdateProject(ctx context.Context, request UpdateProjectRequest) (response UpdateProjectResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4314,6 +4578,9 @@ func (client DataIntegrationClient) updateProject(ctx context.Context, request c
 func (client DataIntegrationClient) UpdateReference(ctx context.Context, request UpdateReferenceRequest) (response UpdateReferenceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4366,6 +4633,9 @@ func (client DataIntegrationClient) updateReference(ctx context.Context, request
 func (client DataIntegrationClient) UpdateTask(ctx context.Context, request UpdateTaskRequest) (response UpdateTaskResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4413,6 +4683,9 @@ func (client DataIntegrationClient) updateTask(ctx context.Context, request comm
 func (client DataIntegrationClient) UpdateTaskRun(ctx context.Context, request UpdateTaskRunRequest) (response UpdateTaskRunResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4460,6 +4733,9 @@ func (client DataIntegrationClient) updateTaskRun(ctx context.Context, request c
 func (client DataIntegrationClient) UpdateWorkspace(ctx context.Context, request UpdateWorkspaceRequest) (response UpdateWorkspaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

@@ -5,14 +5,14 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 	"net/http"
 )
 
 // DeleteUnifiedAgentConfigurationRequest wrapper for the DeleteUnifiedAgentConfiguration operation
 type DeleteUnifiedAgentConfigurationRequest struct {
 
-	// The OCID of the unified agent configuration.
+	// The OCID of the Unified Agent configuration.
 	UnifiedAgentConfigurationId *string `mandatory:"true" contributesTo:"path" name:"unifiedAgentConfigurationId"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about

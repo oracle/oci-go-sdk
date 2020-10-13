@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // InstanceConfigurationLaunchOptions Options for tuning the compatibility and performance of VM shapes. The values that you specify override any

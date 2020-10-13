@@ -16,8 +16,8 @@ package autoscaling
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -32,7 +32,7 @@ type AutoScalingClient struct {
 func NewAutoScalingClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client AutoScalingClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newAutoScalingClientFromBaseClient(baseClient, configProvider)
+			return newAutoScalingClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -89,6 +89,9 @@ func (client *AutoScalingClient) ConfigurationProvider() *common.ConfigurationPr
 func (client AutoScalingClient) ChangeAutoScalingConfigurationCompartment(ctx context.Context, request ChangeAutoScalingConfigurationCompartmentRequest) (response ChangeAutoScalingConfigurationCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -141,6 +144,9 @@ func (client AutoScalingClient) changeAutoScalingConfigurationCompartment(ctx co
 func (client AutoScalingClient) CreateAutoScalingConfiguration(ctx context.Context, request CreateAutoScalingConfigurationRequest) (response CreateAutoScalingConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -193,6 +199,9 @@ func (client AutoScalingClient) createAutoScalingConfiguration(ctx context.Conte
 func (client AutoScalingClient) CreateAutoScalingPolicy(ctx context.Context, request CreateAutoScalingPolicyRequest) (response CreateAutoScalingPolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -245,6 +254,9 @@ func (client AutoScalingClient) createAutoScalingPolicy(ctx context.Context, req
 func (client AutoScalingClient) DeleteAutoScalingConfiguration(ctx context.Context, request DeleteAutoScalingConfigurationRequest) (response DeleteAutoScalingConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -292,6 +304,9 @@ func (client AutoScalingClient) deleteAutoScalingConfiguration(ctx context.Conte
 func (client AutoScalingClient) DeleteAutoScalingPolicy(ctx context.Context, request DeleteAutoScalingPolicyRequest) (response DeleteAutoScalingPolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -339,6 +354,9 @@ func (client AutoScalingClient) deleteAutoScalingPolicy(ctx context.Context, req
 func (client AutoScalingClient) GetAutoScalingConfiguration(ctx context.Context, request GetAutoScalingConfigurationRequest) (response GetAutoScalingConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -386,6 +404,9 @@ func (client AutoScalingClient) getAutoScalingConfiguration(ctx context.Context,
 func (client AutoScalingClient) GetAutoScalingPolicy(ctx context.Context, request GetAutoScalingPolicyRequest) (response GetAutoScalingPolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -433,6 +454,9 @@ func (client AutoScalingClient) getAutoScalingPolicy(ctx context.Context, reques
 func (client AutoScalingClient) ListAutoScalingConfigurations(ctx context.Context, request ListAutoScalingConfigurationsRequest) (response ListAutoScalingConfigurationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -480,6 +504,9 @@ func (client AutoScalingClient) listAutoScalingConfigurations(ctx context.Contex
 func (client AutoScalingClient) ListAutoScalingPolicies(ctx context.Context, request ListAutoScalingPoliciesRequest) (response ListAutoScalingPoliciesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -528,6 +555,9 @@ func (client AutoScalingClient) listAutoScalingPolicies(ctx context.Context, req
 func (client AutoScalingClient) UpdateAutoScalingConfiguration(ctx context.Context, request UpdateAutoScalingConfigurationRequest) (response UpdateAutoScalingConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -580,6 +610,9 @@ func (client AutoScalingClient) updateAutoScalingConfiguration(ctx context.Conte
 func (client AutoScalingClient) UpdateAutoScalingPolicy(ctx context.Context, request UpdateAutoScalingPolicyRequest) (response UpdateAutoScalingPolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

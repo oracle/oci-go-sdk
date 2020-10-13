@@ -12,8 +12,8 @@ package blockchain
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type BlockchainPlatformClient struct {
 func NewBlockchainPlatformClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client BlockchainPlatformClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newBlockchainPlatformClientFromBaseClient(baseClient, configProvider)
+			return newBlockchainPlatformClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *BlockchainPlatformClient) ConfigurationProvider() *common.Configur
 func (client BlockchainPlatformClient) ChangeBlockchainPlatformCompartment(ctx context.Context, request ChangeBlockchainPlatformCompartmentRequest) (response ChangeBlockchainPlatformCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client BlockchainPlatformClient) changeBlockchainPlatformCompartment(ctx c
 func (client BlockchainPlatformClient) CreateBlockchainPlatform(ctx context.Context, request CreateBlockchainPlatformRequest) (response CreateBlockchainPlatformResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -185,6 +191,9 @@ func (client BlockchainPlatformClient) createBlockchainPlatform(ctx context.Cont
 func (client BlockchainPlatformClient) CreateOsn(ctx context.Context, request CreateOsnRequest) (response CreateOsnResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -237,6 +246,9 @@ func (client BlockchainPlatformClient) createOsn(ctx context.Context, request co
 func (client BlockchainPlatformClient) CreatePeer(ctx context.Context, request CreatePeerRequest) (response CreatePeerResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -289,6 +301,9 @@ func (client BlockchainPlatformClient) createPeer(ctx context.Context, request c
 func (client BlockchainPlatformClient) DeleteBlockchainPlatform(ctx context.Context, request DeleteBlockchainPlatformRequest) (response DeleteBlockchainPlatformResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -336,6 +351,9 @@ func (client BlockchainPlatformClient) deleteBlockchainPlatform(ctx context.Cont
 func (client BlockchainPlatformClient) DeleteOsn(ctx context.Context, request DeleteOsnRequest) (response DeleteOsnResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -383,6 +401,9 @@ func (client BlockchainPlatformClient) deleteOsn(ctx context.Context, request co
 func (client BlockchainPlatformClient) DeletePeer(ctx context.Context, request DeletePeerRequest) (response DeletePeerResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -430,6 +451,9 @@ func (client BlockchainPlatformClient) deletePeer(ctx context.Context, request c
 func (client BlockchainPlatformClient) DeleteWorkRequest(ctx context.Context, request DeleteWorkRequestRequest) (response DeleteWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -477,6 +501,9 @@ func (client BlockchainPlatformClient) deleteWorkRequest(ctx context.Context, re
 func (client BlockchainPlatformClient) GetBlockchainPlatform(ctx context.Context, request GetBlockchainPlatformRequest) (response GetBlockchainPlatformResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -524,6 +551,9 @@ func (client BlockchainPlatformClient) getBlockchainPlatform(ctx context.Context
 func (client BlockchainPlatformClient) GetOsn(ctx context.Context, request GetOsnRequest) (response GetOsnResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -571,6 +601,9 @@ func (client BlockchainPlatformClient) getOsn(ctx context.Context, request commo
 func (client BlockchainPlatformClient) GetPeer(ctx context.Context, request GetPeerRequest) (response GetPeerResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -618,6 +651,9 @@ func (client BlockchainPlatformClient) getPeer(ctx context.Context, request comm
 func (client BlockchainPlatformClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -665,6 +701,9 @@ func (client BlockchainPlatformClient) getWorkRequest(ctx context.Context, reque
 func (client BlockchainPlatformClient) ListBlockchainPlatforms(ctx context.Context, request ListBlockchainPlatformsRequest) (response ListBlockchainPlatformsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -712,6 +751,9 @@ func (client BlockchainPlatformClient) listBlockchainPlatforms(ctx context.Conte
 func (client BlockchainPlatformClient) ListOsns(ctx context.Context, request ListOsnsRequest) (response ListOsnsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -764,6 +806,9 @@ func (client BlockchainPlatformClient) listOsns(ctx context.Context, request com
 func (client BlockchainPlatformClient) ListPeers(ctx context.Context, request ListPeersRequest) (response ListPeersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -816,6 +861,9 @@ func (client BlockchainPlatformClient) listPeers(ctx context.Context, request co
 func (client BlockchainPlatformClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -863,6 +911,9 @@ func (client BlockchainPlatformClient) listWorkRequestErrors(ctx context.Context
 func (client BlockchainPlatformClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -910,6 +961,9 @@ func (client BlockchainPlatformClient) listWorkRequestLogs(ctx context.Context, 
 func (client BlockchainPlatformClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -957,6 +1011,9 @@ func (client BlockchainPlatformClient) listWorkRequests(ctx context.Context, req
 func (client BlockchainPlatformClient) PreviewScaleBlockchainPlatform(ctx context.Context, request PreviewScaleBlockchainPlatformRequest) (response PreviewScaleBlockchainPlatformResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1004,6 +1061,9 @@ func (client BlockchainPlatformClient) previewScaleBlockchainPlatform(ctx contex
 func (client BlockchainPlatformClient) ScaleBlockchainPlatform(ctx context.Context, request ScaleBlockchainPlatformRequest) (response ScaleBlockchainPlatformResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1056,6 +1116,9 @@ func (client BlockchainPlatformClient) scaleBlockchainPlatform(ctx context.Conte
 func (client BlockchainPlatformClient) StartBlockchainPlatform(ctx context.Context, request StartBlockchainPlatformRequest) (response StartBlockchainPlatformResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1103,6 +1166,9 @@ func (client BlockchainPlatformClient) startBlockchainPlatform(ctx context.Conte
 func (client BlockchainPlatformClient) StopBlockchainPlatform(ctx context.Context, request StopBlockchainPlatformRequest) (response StopBlockchainPlatformResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1150,6 +1216,9 @@ func (client BlockchainPlatformClient) stopBlockchainPlatform(ctx context.Contex
 func (client BlockchainPlatformClient) UpdateBlockchainPlatform(ctx context.Context, request UpdateBlockchainPlatformRequest) (response UpdateBlockchainPlatformResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1197,6 +1266,9 @@ func (client BlockchainPlatformClient) updateBlockchainPlatform(ctx context.Cont
 func (client BlockchainPlatformClient) UpdateOsn(ctx context.Context, request UpdateOsnRequest) (response UpdateOsnResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1249,6 +1321,9 @@ func (client BlockchainPlatformClient) updateOsn(ctx context.Context, request co
 func (client BlockchainPlatformClient) UpdatePeer(ctx context.Context, request UpdatePeerRequest) (response UpdatePeerResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

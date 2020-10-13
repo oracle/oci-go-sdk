@@ -13,8 +13,8 @@ package keymanagement
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -29,7 +29,7 @@ type KmsCryptoClient struct {
 func NewKmsCryptoClientWithConfigurationProvider(configProvider common.ConfigurationProvider, endpoint string) (client KmsCryptoClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newKmsCryptoClientFromBaseClient(baseClient, configProvider, endpoint)
+			return newKmsCryptoClientFromBaseClient(baseClient, provider, endpoint)
 		}
 	}
 
@@ -75,6 +75,9 @@ func (client *KmsCryptoClient) ConfigurationProvider() *common.ConfigurationProv
 func (client KmsCryptoClient) Decrypt(ctx context.Context, request DecryptRequest) (response DecryptResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -123,6 +126,9 @@ func (client KmsCryptoClient) decrypt(ctx context.Context, request common.OCIReq
 func (client KmsCryptoClient) Encrypt(ctx context.Context, request EncryptRequest) (response EncryptResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -172,6 +178,9 @@ func (client KmsCryptoClient) encrypt(ctx context.Context, request common.OCIReq
 func (client KmsCryptoClient) ExportKey(ctx context.Context, request ExportKeyRequest) (response ExportKeyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -219,6 +228,9 @@ func (client KmsCryptoClient) exportKey(ctx context.Context, request common.OCIR
 func (client KmsCryptoClient) GenerateDataEncryptionKey(ctx context.Context, request GenerateDataEncryptionKeyRequest) (response GenerateDataEncryptionKeyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

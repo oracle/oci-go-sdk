@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/objectstorage"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/objectstorage"
 )
 
 // requestValidator validate user's input and assign default values if not defined
@@ -171,7 +171,7 @@ const (
 // UploadResponse is the response from commitMultipart or the putObject API operation.
 type UploadResponse struct {
 
-	// Polymorphic reponse type indicates the response type
+	// Polymorphic response type indicates the response type
 	Type UploadResponseType
 
 	// response for putObject API response (single part upload), will be nil if the operation is multiPart upload

@@ -12,8 +12,8 @@ package oda
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type OdaClient struct {
 func NewOdaClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client OdaClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newOdaClientFromBaseClient(baseClient, configProvider)
+			return newOdaClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -82,6 +82,9 @@ func (client *OdaClient) ConfigurationProvider() *common.ConfigurationProvider {
 func (client OdaClient) ChangeOdaInstanceCompartment(ctx context.Context, request ChangeOdaInstanceCompartmentRequest) (response ChangeOdaInstanceCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -136,6 +139,9 @@ func (client OdaClient) changeOdaInstanceCompartment(ctx context.Context, reques
 func (client OdaClient) CreateOdaInstance(ctx context.Context, request CreateOdaInstanceRequest) (response CreateOdaInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -189,6 +195,9 @@ func (client OdaClient) createOdaInstance(ctx context.Context, request common.OC
 func (client OdaClient) DeleteOdaInstance(ctx context.Context, request DeleteOdaInstanceRequest) (response DeleteOdaInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -236,6 +245,9 @@ func (client OdaClient) deleteOdaInstance(ctx context.Context, request common.OC
 func (client OdaClient) GetOdaInstance(ctx context.Context, request GetOdaInstanceRequest) (response GetOdaInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -285,6 +297,9 @@ func (client OdaClient) getOdaInstance(ctx context.Context, request common.OCIRe
 func (client OdaClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -336,6 +351,9 @@ func (client OdaClient) getWorkRequest(ctx context.Context, request common.OCIRe
 func (client OdaClient) ListOdaInstances(ctx context.Context, request ListOdaInstancesRequest) (response ListOdaInstancesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -386,6 +404,9 @@ func (client OdaClient) listOdaInstances(ctx context.Context, request common.OCI
 func (client OdaClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -436,6 +457,9 @@ func (client OdaClient) listWorkRequestErrors(ctx context.Context, request commo
 func (client OdaClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -486,6 +510,9 @@ func (client OdaClient) listWorkRequestLogs(ctx context.Context, request common.
 func (client OdaClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -534,6 +561,9 @@ func (client OdaClient) listWorkRequests(ctx context.Context, request common.OCI
 func (client OdaClient) StartOdaInstance(ctx context.Context, request StartOdaInstanceRequest) (response StartOdaInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -588,6 +618,9 @@ func (client OdaClient) startOdaInstance(ctx context.Context, request common.OCI
 func (client OdaClient) StopOdaInstance(ctx context.Context, request StopOdaInstanceRequest) (response StopOdaInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -640,6 +673,9 @@ func (client OdaClient) stopOdaInstance(ctx context.Context, request common.OCIR
 func (client OdaClient) UpdateOdaInstance(ctx context.Context, request UpdateOdaInstanceRequest) (response UpdateOdaInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

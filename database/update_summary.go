@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // UpdateSummary A maintenance update for a cloud VM cluster.
@@ -106,11 +106,13 @@ type UpdateSummaryUpdateTypeEnum string
 
 // Set of constants representing the allowable values for UpdateSummaryUpdateTypeEnum
 const (
-	UpdateSummaryUpdateTypeGiPatch UpdateSummaryUpdateTypeEnum = "GI_PATCH"
+	UpdateSummaryUpdateTypeUpgrade UpdateSummaryUpdateTypeEnum = "GI_UPGRADE"
+	UpdateSummaryUpdateTypePatch   UpdateSummaryUpdateTypeEnum = "GI_PATCH"
 )
 
 var mappingUpdateSummaryUpdateType = map[string]UpdateSummaryUpdateTypeEnum{
-	"GI_PATCH": UpdateSummaryUpdateTypeGiPatch,
+	"GI_UPGRADE": UpdateSummaryUpdateTypeUpgrade,
+	"GI_PATCH":   UpdateSummaryUpdateTypePatch,
 }
 
 // GetUpdateSummaryUpdateTypeEnumValues Enumerates the set of values for UpdateSummaryUpdateTypeEnum

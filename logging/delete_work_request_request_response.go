@@ -5,14 +5,14 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 	"net/http"
 )
 
 // DeleteWorkRequestRequest wrapper for the DeleteWorkRequest operation
 type DeleteWorkRequestRequest struct {
 
-	// The ID of the asynchronous request.
+	// The asynchronous request ID.
 	WorkRequestId *string `mandatory:"true" contributesTo:"path" name:"workRequestId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a

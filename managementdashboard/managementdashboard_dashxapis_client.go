@@ -14,8 +14,8 @@ package managementdashboard
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -30,7 +30,7 @@ type DashxApisClient struct {
 func NewDashxApisClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client DashxApisClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newDashxApisClientFromBaseClient(baseClient, configProvider)
+			return newDashxApisClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -83,6 +83,9 @@ func (client *DashxApisClient) ConfigurationProvider() *common.ConfigurationProv
 func (client DashxApisClient) ChangeManagementDashboardsCompartment(ctx context.Context, request ChangeManagementDashboardsCompartmentRequest) (response ChangeManagementDashboardsCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -135,6 +138,9 @@ func (client DashxApisClient) changeManagementDashboardsCompartment(ctx context.
 func (client DashxApisClient) ChangeManagementSavedSearchesCompartment(ctx context.Context, request ChangeManagementSavedSearchesCompartmentRequest) (response ChangeManagementSavedSearchesCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -187,6 +193,9 @@ func (client DashxApisClient) changeManagementSavedSearchesCompartment(ctx conte
 func (client DashxApisClient) CreateManagementDashboard(ctx context.Context, request CreateManagementDashboardRequest) (response CreateManagementDashboardResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -239,6 +248,9 @@ func (client DashxApisClient) createManagementDashboard(ctx context.Context, req
 func (client DashxApisClient) CreateManagementSavedSearch(ctx context.Context, request CreateManagementSavedSearchRequest) (response CreateManagementSavedSearchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -291,6 +303,9 @@ func (client DashxApisClient) createManagementSavedSearch(ctx context.Context, r
 func (client DashxApisClient) DeleteManagementDashboard(ctx context.Context, request DeleteManagementDashboardRequest) (response DeleteManagementDashboardResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -338,6 +353,9 @@ func (client DashxApisClient) deleteManagementDashboard(ctx context.Context, req
 func (client DashxApisClient) DeleteManagementSavedSearch(ctx context.Context, request DeleteManagementSavedSearchRequest) (response DeleteManagementSavedSearchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -385,6 +403,9 @@ func (client DashxApisClient) deleteManagementSavedSearch(ctx context.Context, r
 func (client DashxApisClient) ExportDashboard(ctx context.Context, request ExportDashboardRequest) (response ExportDashboardResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -437,6 +458,9 @@ func (client DashxApisClient) exportDashboard(ctx context.Context, request commo
 func (client DashxApisClient) GetManagementDashboard(ctx context.Context, request GetManagementDashboardRequest) (response GetManagementDashboardResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -489,6 +513,9 @@ func (client DashxApisClient) getManagementDashboard(ctx context.Context, reques
 func (client DashxApisClient) GetManagementSavedSearch(ctx context.Context, request GetManagementSavedSearchRequest) (response GetManagementSavedSearchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -541,6 +568,9 @@ func (client DashxApisClient) getManagementSavedSearch(ctx context.Context, requ
 func (client DashxApisClient) ImportDashboard(ctx context.Context, request ImportDashboardRequest) (response ImportDashboardResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -593,6 +623,9 @@ func (client DashxApisClient) importDashboard(ctx context.Context, request commo
 func (client DashxApisClient) ListManagementDashboards(ctx context.Context, request ListManagementDashboardsRequest) (response ListManagementDashboardsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -640,6 +673,9 @@ func (client DashxApisClient) listManagementDashboards(ctx context.Context, requ
 func (client DashxApisClient) ListManagementSavedSearches(ctx context.Context, request ListManagementSavedSearchesRequest) (response ListManagementSavedSearchesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -687,6 +723,9 @@ func (client DashxApisClient) listManagementSavedSearches(ctx context.Context, r
 func (client DashxApisClient) UpdateManagementDashboard(ctx context.Context, request UpdateManagementDashboardRequest) (response UpdateManagementDashboardResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -739,6 +778,9 @@ func (client DashxApisClient) updateManagementDashboard(ctx context.Context, req
 func (client DashxApisClient) UpdateManagementSavedSearch(ctx context.Context, request UpdateManagementSavedSearchRequest) (response UpdateManagementSavedSearchResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

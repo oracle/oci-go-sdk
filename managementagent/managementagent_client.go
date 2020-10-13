@@ -12,8 +12,8 @@ package managementagent
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type ManagementAgentClient struct {
 func NewManagementAgentClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ManagementAgentClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newManagementAgentClientFromBaseClient(baseClient, configProvider)
+			return newManagementAgentClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *ManagementAgentClient) ConfigurationProvider() *common.Configurati
 func (client ManagementAgentClient) CreateManagementAgentInstallKey(ctx context.Context, request CreateManagementAgentInstallKeyRequest) (response CreateManagementAgentInstallKeyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client ManagementAgentClient) createManagementAgentInstallKey(ctx context.
 func (client ManagementAgentClient) DeleteManagementAgent(ctx context.Context, request DeleteManagementAgentRequest) (response DeleteManagementAgentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -180,6 +186,9 @@ func (client ManagementAgentClient) deleteManagementAgent(ctx context.Context, r
 func (client ManagementAgentClient) DeleteManagementAgentInstallKey(ctx context.Context, request DeleteManagementAgentInstallKeyRequest) (response DeleteManagementAgentInstallKeyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -227,6 +236,9 @@ func (client ManagementAgentClient) deleteManagementAgentInstallKey(ctx context.
 func (client ManagementAgentClient) DeleteWorkRequest(ctx context.Context, request DeleteWorkRequestRequest) (response DeleteWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -274,6 +286,9 @@ func (client ManagementAgentClient) deleteWorkRequest(ctx context.Context, reque
 func (client ManagementAgentClient) DeployPlugins(ctx context.Context, request DeployPluginsRequest) (response DeployPluginsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -326,6 +341,9 @@ func (client ManagementAgentClient) deployPlugins(ctx context.Context, request c
 func (client ManagementAgentClient) GetManagementAgent(ctx context.Context, request GetManagementAgentRequest) (response GetManagementAgentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -373,6 +391,9 @@ func (client ManagementAgentClient) getManagementAgent(ctx context.Context, requ
 func (client ManagementAgentClient) GetManagementAgentInstallKey(ctx context.Context, request GetManagementAgentInstallKeyRequest) (response GetManagementAgentInstallKeyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -420,6 +441,9 @@ func (client ManagementAgentClient) getManagementAgentInstallKey(ctx context.Con
 func (client ManagementAgentClient) GetManagementAgentInstallKeyContent(ctx context.Context, request GetManagementAgentInstallKeyContentRequest) (response GetManagementAgentInstallKeyContentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -466,6 +490,9 @@ func (client ManagementAgentClient) getManagementAgentInstallKeyContent(ctx cont
 func (client ManagementAgentClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -513,6 +540,9 @@ func (client ManagementAgentClient) getWorkRequest(ctx context.Context, request 
 func (client ManagementAgentClient) ListManagementAgentImages(ctx context.Context, request ListManagementAgentImagesRequest) (response ListManagementAgentImagesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -565,6 +595,9 @@ func (client ManagementAgentClient) listManagementAgentImages(ctx context.Contex
 func (client ManagementAgentClient) ListManagementAgentInstallKeys(ctx context.Context, request ListManagementAgentInstallKeysRequest) (response ListManagementAgentInstallKeysResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -612,6 +645,9 @@ func (client ManagementAgentClient) listManagementAgentInstallKeys(ctx context.C
 func (client ManagementAgentClient) ListManagementAgentPlugins(ctx context.Context, request ListManagementAgentPluginsRequest) (response ListManagementAgentPluginsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -659,6 +695,9 @@ func (client ManagementAgentClient) listManagementAgentPlugins(ctx context.Conte
 func (client ManagementAgentClient) ListManagementAgents(ctx context.Context, request ListManagementAgentsRequest) (response ListManagementAgentsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -706,6 +745,9 @@ func (client ManagementAgentClient) listManagementAgents(ctx context.Context, re
 func (client ManagementAgentClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -753,6 +795,9 @@ func (client ManagementAgentClient) listWorkRequestErrors(ctx context.Context, r
 func (client ManagementAgentClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -800,6 +845,9 @@ func (client ManagementAgentClient) listWorkRequestLogs(ctx context.Context, req
 func (client ManagementAgentClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -847,6 +895,9 @@ func (client ManagementAgentClient) listWorkRequests(ctx context.Context, reques
 func (client ManagementAgentClient) UpdateManagementAgent(ctx context.Context, request UpdateManagementAgentRequest) (response UpdateManagementAgentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -899,6 +950,9 @@ func (client ManagementAgentClient) updateManagementAgent(ctx context.Context, r
 func (client ManagementAgentClient) UpdateManagementAgentInstallKey(ctx context.Context, request UpdateManagementAgentInstallKeyRequest) (response UpdateManagementAgentInstallKeyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

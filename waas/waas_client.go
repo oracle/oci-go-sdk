@@ -12,8 +12,8 @@ package waas
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type WaasClient struct {
 func NewWaasClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client WaasClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newWaasClientFromBaseClient(baseClient, configProvider)
+			return newWaasClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -82,6 +82,9 @@ func (client *WaasClient) ConfigurationProvider() *common.ConfigurationProvider 
 func (client WaasClient) AcceptRecommendations(ctx context.Context, request AcceptRecommendationsRequest) (response AcceptRecommendationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -129,6 +132,9 @@ func (client WaasClient) acceptRecommendations(ctx context.Context, request comm
 func (client WaasClient) CancelWorkRequest(ctx context.Context, request CancelWorkRequestRequest) (response CancelWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -183,6 +189,9 @@ func (client WaasClient) cancelWorkRequest(ctx context.Context, request common.O
 func (client WaasClient) ChangeAddressListCompartment(ctx context.Context, request ChangeAddressListCompartmentRequest) (response ChangeAddressListCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -236,6 +245,9 @@ func (client WaasClient) changeAddressListCompartment(ctx context.Context, reque
 func (client WaasClient) ChangeCertificateCompartment(ctx context.Context, request ChangeCertificateCompartmentRequest) (response ChangeCertificateCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -288,6 +300,9 @@ func (client WaasClient) changeCertificateCompartment(ctx context.Context, reque
 func (client WaasClient) ChangeCustomProtectionRuleCompartment(ctx context.Context, request ChangeCustomProtectionRuleCompartmentRequest) (response ChangeCustomProtectionRuleCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -341,6 +356,9 @@ func (client WaasClient) changeCustomProtectionRuleCompartment(ctx context.Conte
 func (client WaasClient) ChangeWaasPolicyCompartment(ctx context.Context, request ChangeWaasPolicyCompartmentRequest) (response ChangeWaasPolicyCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -393,6 +411,9 @@ func (client WaasClient) changeWaasPolicyCompartment(ctx context.Context, reques
 func (client WaasClient) CreateAddressList(ctx context.Context, request CreateAddressListRequest) (response CreateAddressListResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -446,6 +467,9 @@ func (client WaasClient) createAddressList(ctx context.Context, request common.O
 func (client WaasClient) CreateCertificate(ctx context.Context, request CreateCertificateRequest) (response CreateCertificateResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -499,6 +523,9 @@ func (client WaasClient) createCertificate(ctx context.Context, request common.O
 func (client WaasClient) CreateCustomProtectionRule(ctx context.Context, request CreateCustomProtectionRuleRequest) (response CreateCustomProtectionRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -557,6 +584,9 @@ func (client WaasClient) createCustomProtectionRule(ctx context.Context, request
 func (client WaasClient) CreateWaasPolicy(ctx context.Context, request CreateWaasPolicyRequest) (response CreateWaasPolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -609,6 +639,9 @@ func (client WaasClient) createWaasPolicy(ctx context.Context, request common.OC
 func (client WaasClient) DeleteAddressList(ctx context.Context, request DeleteAddressListRequest) (response DeleteAddressListResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -661,6 +694,9 @@ func (client WaasClient) deleteAddressList(ctx context.Context, request common.O
 func (client WaasClient) DeleteCertificate(ctx context.Context, request DeleteCertificateRequest) (response DeleteCertificateResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -713,6 +749,9 @@ func (client WaasClient) deleteCertificate(ctx context.Context, request common.O
 func (client WaasClient) DeleteCustomProtectionRule(ctx context.Context, request DeleteCustomProtectionRuleRequest) (response DeleteCustomProtectionRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -765,6 +804,9 @@ func (client WaasClient) deleteCustomProtectionRule(ctx context.Context, request
 func (client WaasClient) DeleteWaasPolicy(ctx context.Context, request DeleteWaasPolicyRequest) (response DeleteWaasPolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -817,6 +859,9 @@ func (client WaasClient) deleteWaasPolicy(ctx context.Context, request common.OC
 func (client WaasClient) GetAddressList(ctx context.Context, request GetAddressListRequest) (response GetAddressListResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -864,6 +909,9 @@ func (client WaasClient) getAddressList(ctx context.Context, request common.OCIR
 func (client WaasClient) GetCertificate(ctx context.Context, request GetCertificateRequest) (response GetCertificateResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -911,6 +959,9 @@ func (client WaasClient) getCertificate(ctx context.Context, request common.OCIR
 func (client WaasClient) GetCustomProtectionRule(ctx context.Context, request GetCustomProtectionRuleRequest) (response GetCustomProtectionRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -958,6 +1009,9 @@ func (client WaasClient) getCustomProtectionRule(ctx context.Context, request co
 func (client WaasClient) GetDeviceFingerprintChallenge(ctx context.Context, request GetDeviceFingerprintChallengeRequest) (response GetDeviceFingerprintChallengeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1005,6 +1059,9 @@ func (client WaasClient) getDeviceFingerprintChallenge(ctx context.Context, requ
 func (client WaasClient) GetHumanInteractionChallenge(ctx context.Context, request GetHumanInteractionChallengeRequest) (response GetHumanInteractionChallengeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1052,6 +1109,9 @@ func (client WaasClient) getHumanInteractionChallenge(ctx context.Context, reque
 func (client WaasClient) GetJsChallenge(ctx context.Context, request GetJsChallengeRequest) (response GetJsChallengeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1099,6 +1159,9 @@ func (client WaasClient) getJsChallenge(ctx context.Context, request common.OCIR
 func (client WaasClient) GetPolicyConfig(ctx context.Context, request GetPolicyConfigRequest) (response GetPolicyConfigResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1146,6 +1209,9 @@ func (client WaasClient) getPolicyConfig(ctx context.Context, request common.OCI
 func (client WaasClient) GetProtectionRule(ctx context.Context, request GetProtectionRuleRequest) (response GetProtectionRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1193,6 +1259,9 @@ func (client WaasClient) getProtectionRule(ctx context.Context, request common.O
 func (client WaasClient) GetProtectionSettings(ctx context.Context, request GetProtectionSettingsRequest) (response GetProtectionSettingsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1240,6 +1309,9 @@ func (client WaasClient) getProtectionSettings(ctx context.Context, request comm
 func (client WaasClient) GetWaasPolicy(ctx context.Context, request GetWaasPolicyRequest) (response GetWaasPolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1287,6 +1359,9 @@ func (client WaasClient) getWaasPolicy(ctx context.Context, request common.OCIRe
 func (client WaasClient) GetWafAddressRateLimiting(ctx context.Context, request GetWafAddressRateLimitingRequest) (response GetWafAddressRateLimitingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1334,6 +1409,9 @@ func (client WaasClient) getWafAddressRateLimiting(ctx context.Context, request 
 func (client WaasClient) GetWafConfig(ctx context.Context, request GetWafConfigRequest) (response GetWafConfigResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1381,6 +1459,9 @@ func (client WaasClient) getWafConfig(ctx context.Context, request common.OCIReq
 func (client WaasClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1429,6 +1510,9 @@ func (client WaasClient) getWorkRequest(ctx context.Context, request common.OCIR
 func (client WaasClient) ListAccessRules(ctx context.Context, request ListAccessRulesRequest) (response ListAccessRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1476,6 +1560,9 @@ func (client WaasClient) listAccessRules(ctx context.Context, request common.OCI
 func (client WaasClient) ListAddressLists(ctx context.Context, request ListAddressListsRequest) (response ListAddressListsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1524,6 +1611,9 @@ func (client WaasClient) listAddressLists(ctx context.Context, request common.OC
 func (client WaasClient) ListCachingRules(ctx context.Context, request ListCachingRulesRequest) (response ListCachingRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1574,6 +1664,9 @@ func (client WaasClient) listCachingRules(ctx context.Context, request common.OC
 func (client WaasClient) ListCaptchas(ctx context.Context, request ListCaptchasRequest) (response ListCaptchasResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1621,6 +1714,9 @@ func (client WaasClient) listCaptchas(ctx context.Context, request common.OCIReq
 func (client WaasClient) ListCertificates(ctx context.Context, request ListCertificatesRequest) (response ListCertificatesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1668,6 +1764,9 @@ func (client WaasClient) listCertificates(ctx context.Context, request common.OC
 func (client WaasClient) ListCustomProtectionRules(ctx context.Context, request ListCustomProtectionRulesRequest) (response ListCustomProtectionRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1715,6 +1814,9 @@ func (client WaasClient) listCustomProtectionRules(ctx context.Context, request 
 func (client WaasClient) ListEdgeSubnets(ctx context.Context, request ListEdgeSubnetsRequest) (response ListEdgeSubnetsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1763,6 +1865,9 @@ func (client WaasClient) listEdgeSubnets(ctx context.Context, request common.OCI
 func (client WaasClient) ListGoodBots(ctx context.Context, request ListGoodBotsRequest) (response ListGoodBotsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1811,6 +1916,9 @@ func (client WaasClient) listGoodBots(ctx context.Context, request common.OCIReq
 func (client WaasClient) ListProtectionRules(ctx context.Context, request ListProtectionRulesRequest) (response ListProtectionRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1860,6 +1968,9 @@ func (client WaasClient) listProtectionRules(ctx context.Context, request common
 func (client WaasClient) ListRecommendations(ctx context.Context, request ListRecommendationsRequest) (response ListRecommendationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1909,6 +2020,9 @@ func (client WaasClient) listRecommendations(ctx context.Context, request common
 func (client WaasClient) ListThreatFeeds(ctx context.Context, request ListThreatFeedsRequest) (response ListThreatFeedsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1956,6 +2070,9 @@ func (client WaasClient) listThreatFeeds(ctx context.Context, request common.OCI
 func (client WaasClient) ListWaasPolicies(ctx context.Context, request ListWaasPoliciesRequest) (response ListWaasPoliciesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2003,6 +2120,9 @@ func (client WaasClient) listWaasPolicies(ctx context.Context, request common.OC
 func (client WaasClient) ListWaasPolicyCustomProtectionRules(ctx context.Context, request ListWaasPolicyCustomProtectionRulesRequest) (response ListWaasPolicyCustomProtectionRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2050,6 +2170,9 @@ func (client WaasClient) listWaasPolicyCustomProtectionRules(ctx context.Context
 func (client WaasClient) ListWafBlockedRequests(ctx context.Context, request ListWafBlockedRequestsRequest) (response ListWafBlockedRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2099,6 +2222,9 @@ func (client WaasClient) listWafBlockedRequests(ctx context.Context, request com
 func (client WaasClient) ListWafLogs(ctx context.Context, request ListWafLogsRequest) (response ListWafLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2148,6 +2274,9 @@ func (client WaasClient) listWafLogs(ctx context.Context, request common.OCIRequ
 func (client WaasClient) ListWafRequests(ctx context.Context, request ListWafRequestsRequest) (response ListWafRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2196,6 +2325,9 @@ func (client WaasClient) listWafRequests(ctx context.Context, request common.OCI
 func (client WaasClient) ListWafTraffic(ctx context.Context, request ListWafTrafficRequest) (response ListWafTrafficResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2243,6 +2375,9 @@ func (client WaasClient) listWafTraffic(ctx context.Context, request common.OCIR
 func (client WaasClient) ListWhitelists(ctx context.Context, request ListWhitelistsRequest) (response ListWhitelistsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2290,6 +2425,9 @@ func (client WaasClient) listWhitelists(ctx context.Context, request common.OCIR
 func (client WaasClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2338,6 +2476,9 @@ func (client WaasClient) listWorkRequests(ctx context.Context, request common.OC
 func (client WaasClient) PurgeCache(ctx context.Context, request PurgeCacheRequest) (response PurgeCacheResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2389,6 +2530,9 @@ func (client WaasClient) purgeCache(ctx context.Context, request common.OCIReque
 func (client WaasClient) UpdateAccessRules(ctx context.Context, request UpdateAccessRulesRequest) (response UpdateAccessRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2441,6 +2585,9 @@ func (client WaasClient) updateAccessRules(ctx context.Context, request common.O
 func (client WaasClient) UpdateAddressList(ctx context.Context, request UpdateAddressListRequest) (response UpdateAddressListResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2491,6 +2638,9 @@ func (client WaasClient) updateAddressList(ctx context.Context, request common.O
 func (client WaasClient) UpdateCachingRules(ctx context.Context, request UpdateCachingRulesRequest) (response UpdateCachingRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2548,6 +2698,9 @@ func (client WaasClient) updateCachingRules(ctx context.Context, request common.
 func (client WaasClient) UpdateCaptchas(ctx context.Context, request UpdateCaptchasRequest) (response UpdateCaptchasResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2600,6 +2753,9 @@ func (client WaasClient) updateCaptchas(ctx context.Context, request common.OCIR
 func (client WaasClient) UpdateCertificate(ctx context.Context, request UpdateCertificateRequest) (response UpdateCertificateResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2647,6 +2803,9 @@ func (client WaasClient) updateCertificate(ctx context.Context, request common.O
 func (client WaasClient) UpdateCustomProtectionRule(ctx context.Context, request UpdateCustomProtectionRuleRequest) (response UpdateCustomProtectionRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2701,6 +2860,9 @@ func (client WaasClient) updateCustomProtectionRule(ctx context.Context, request
 func (client WaasClient) UpdateDeviceFingerprintChallenge(ctx context.Context, request UpdateDeviceFingerprintChallengeRequest) (response UpdateDeviceFingerprintChallengeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2754,6 +2916,9 @@ func (client WaasClient) updateDeviceFingerprintChallenge(ctx context.Context, r
 func (client WaasClient) UpdateGoodBots(ctx context.Context, request UpdateGoodBotsRequest) (response UpdateGoodBotsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2806,6 +2971,9 @@ func (client WaasClient) updateGoodBots(ctx context.Context, request common.OCIR
 func (client WaasClient) UpdateHumanInteractionChallenge(ctx context.Context, request UpdateHumanInteractionChallengeRequest) (response UpdateHumanInteractionChallengeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2858,6 +3026,9 @@ func (client WaasClient) updateHumanInteractionChallenge(ctx context.Context, re
 func (client WaasClient) UpdateJsChallenge(ctx context.Context, request UpdateJsChallengeRequest) (response UpdateJsChallengeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2910,6 +3081,9 @@ func (client WaasClient) updateJsChallenge(ctx context.Context, request common.O
 func (client WaasClient) UpdatePolicyConfig(ctx context.Context, request UpdatePolicyConfigRequest) (response UpdatePolicyConfigResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2964,6 +3138,9 @@ func (client WaasClient) updatePolicyConfig(ctx context.Context, request common.
 func (client WaasClient) UpdateProtectionRules(ctx context.Context, request UpdateProtectionRulesRequest) (response UpdateProtectionRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3011,6 +3188,9 @@ func (client WaasClient) updateProtectionRules(ctx context.Context, request comm
 func (client WaasClient) UpdateProtectionSettings(ctx context.Context, request UpdateProtectionSettingsRequest) (response UpdateProtectionSettingsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3063,6 +3243,9 @@ func (client WaasClient) updateProtectionSettings(ctx context.Context, request c
 func (client WaasClient) UpdateThreatFeeds(ctx context.Context, request UpdateThreatFeedsRequest) (response UpdateThreatFeedsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3112,6 +3295,9 @@ func (client WaasClient) updateThreatFeeds(ctx context.Context, request common.O
 func (client WaasClient) UpdateWaasPolicy(ctx context.Context, request UpdateWaasPolicyRequest) (response UpdateWaasPolicyResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3164,6 +3350,9 @@ func (client WaasClient) updateWaasPolicy(ctx context.Context, request common.OC
 func (client WaasClient) UpdateWaasPolicyCustomProtectionRules(ctx context.Context, request UpdateWaasPolicyCustomProtectionRulesRequest) (response UpdateWaasPolicyCustomProtectionRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3216,6 +3405,9 @@ func (client WaasClient) updateWaasPolicyCustomProtectionRules(ctx context.Conte
 func (client WaasClient) UpdateWafAddressRateLimiting(ctx context.Context, request UpdateWafAddressRateLimitingRequest) (response UpdateWafAddressRateLimitingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3273,6 +3465,9 @@ func (client WaasClient) updateWafAddressRateLimiting(ctx context.Context, reque
 func (client WaasClient) UpdateWafConfig(ctx context.Context, request UpdateWafConfigRequest) (response UpdateWafConfigResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3329,6 +3524,9 @@ func (client WaasClient) updateWafConfig(ctx context.Context, request common.OCI
 func (client WaasClient) UpdateWhitelists(ctx context.Context, request UpdateWhitelistsRequest) (response UpdateWhitelistsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

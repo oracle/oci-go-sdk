@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // CreateGlossaryDetails Properties used in glossary create operations.
@@ -28,6 +28,9 @@ type CreateGlossaryDetails struct {
 
 	// OCID of the user who is the owner of the glossary.
 	Owner *string `mandatory:"false" json:"owner"`
+
+	// The list of customized properties along with the values for this object
+	CustomPropertyMembers []CustomPropertySetUsage `mandatory:"false" json:"customPropertyMembers"`
 }
 
 func (m CreateGlossaryDetails) String() string {

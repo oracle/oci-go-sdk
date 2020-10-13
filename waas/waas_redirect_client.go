@@ -12,8 +12,8 @@ package waas
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type RedirectClient struct {
 func NewRedirectClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client RedirectClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newRedirectClientFromBaseClient(baseClient, configProvider)
+			return newRedirectClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *RedirectClient) ConfigurationProvider() *common.ConfigurationProvi
 func (client RedirectClient) ChangeHttpRedirectCompartment(ctx context.Context, request ChangeHttpRedirectCompartmentRequest) (response ChangeHttpRedirectCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client RedirectClient) changeHttpRedirectCompartment(ctx context.Context, 
 func (client RedirectClient) CreateHttpRedirect(ctx context.Context, request CreateHttpRedirectRequest) (response CreateHttpRedirectResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -185,6 +191,9 @@ func (client RedirectClient) createHttpRedirect(ctx context.Context, request com
 func (client RedirectClient) DeleteHttpRedirect(ctx context.Context, request DeleteHttpRedirectRequest) (response DeleteHttpRedirectResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -237,6 +246,9 @@ func (client RedirectClient) deleteHttpRedirect(ctx context.Context, request com
 func (client RedirectClient) GetHttpRedirect(ctx context.Context, request GetHttpRedirectRequest) (response GetHttpRedirectResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -284,6 +296,9 @@ func (client RedirectClient) getHttpRedirect(ctx context.Context, request common
 func (client RedirectClient) ListHttpRedirects(ctx context.Context, request ListHttpRedirectsRequest) (response ListHttpRedirectsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -331,6 +346,9 @@ func (client RedirectClient) listHttpRedirects(ctx context.Context, request comm
 func (client RedirectClient) UpdateHttpRedirect(ctx context.Context, request UpdateHttpRedirectRequest) (response UpdateHttpRedirectResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

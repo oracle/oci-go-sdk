@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // UpdateDataAssetDetails Properties used in data asset update operations.
@@ -22,6 +22,9 @@ type UpdateDataAssetDetails struct {
 
 	// Detailed description of the data asset.
 	Description *string `mandatory:"false" json:"description"`
+
+	// The list of customized properties along with the values for this object
+	CustomPropertyMembers []CustomPropertySetUsage `mandatory:"false" json:"customPropertyMembers"`
 
 	// A map of maps that contains the properties which are specific to the asset type. Each data asset type
 	// definition defines it's set of required and optional properties. The map keys are category names and the

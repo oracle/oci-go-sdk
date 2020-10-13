@@ -10,7 +10,7 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // MigrationSummary An application being migrated from a source environment to OCI.

@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type ShippingVendorsClient struct {
 func NewShippingVendorsClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ShippingVendorsClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newShippingVendorsClientFromBaseClient(baseClient, configProvider)
+			return newShippingVendorsClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *ShippingVendorsClient) ConfigurationProvider() *common.Configurati
 func (client ShippingVendorsClient) ListShippingVendors(ctx context.Context, request ListShippingVendorsRequest) (response ListShippingVendorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

@@ -13,8 +13,8 @@ package osmanagement
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -29,7 +29,7 @@ type OsManagementClient struct {
 func NewOsManagementClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client OsManagementClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newOsManagementClientFromBaseClient(baseClient, configProvider)
+			return newOsManagementClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -82,6 +82,9 @@ func (client *OsManagementClient) ConfigurationProvider() *common.ConfigurationP
 func (client OsManagementClient) AddPackagesToSoftwareSource(ctx context.Context, request AddPackagesToSoftwareSourceRequest) (response AddPackagesToSoftwareSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -131,6 +134,9 @@ func (client OsManagementClient) addPackagesToSoftwareSource(ctx context.Context
 func (client OsManagementClient) AttachChildSoftwareSourceToManagedInstance(ctx context.Context, request AttachChildSoftwareSourceToManagedInstanceRequest) (response AttachChildSoftwareSourceToManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -186,6 +192,9 @@ func (client OsManagementClient) attachChildSoftwareSourceToManagedInstance(ctx 
 func (client OsManagementClient) AttachManagedInstanceToManagedInstanceGroup(ctx context.Context, request AttachManagedInstanceToManagedInstanceGroupRequest) (response AttachManagedInstanceToManagedInstanceGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -241,6 +250,9 @@ func (client OsManagementClient) attachManagedInstanceToManagedInstanceGroup(ctx
 func (client OsManagementClient) AttachParentSoftwareSourceToManagedInstance(ctx context.Context, request AttachParentSoftwareSourceToManagedInstanceRequest) (response AttachParentSoftwareSourceToManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -294,6 +306,9 @@ func (client OsManagementClient) attachParentSoftwareSourceToManagedInstance(ctx
 func (client OsManagementClient) ChangeManagedInstanceGroupCompartment(ctx context.Context, request ChangeManagedInstanceGroupCompartmentRequest) (response ChangeManagedInstanceGroupCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -347,6 +362,9 @@ func (client OsManagementClient) changeManagedInstanceGroupCompartment(ctx conte
 func (client OsManagementClient) ChangeScheduledJobCompartment(ctx context.Context, request ChangeScheduledJobCompartmentRequest) (response ChangeScheduledJobCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -400,6 +418,9 @@ func (client OsManagementClient) changeScheduledJobCompartment(ctx context.Conte
 func (client OsManagementClient) ChangeSoftwareSourceCompartment(ctx context.Context, request ChangeSoftwareSourceCompartmentRequest) (response ChangeSoftwareSourceCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -454,6 +475,9 @@ func (client OsManagementClient) changeSoftwareSourceCompartment(ctx context.Con
 func (client OsManagementClient) CreateManagedInstanceGroup(ctx context.Context, request CreateManagedInstanceGroupRequest) (response CreateManagedInstanceGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -509,6 +533,9 @@ func (client OsManagementClient) createManagedInstanceGroup(ctx context.Context,
 func (client OsManagementClient) CreateScheduledJob(ctx context.Context, request CreateScheduledJobRequest) (response CreateScheduledJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -563,6 +590,9 @@ func (client OsManagementClient) createScheduledJob(ctx context.Context, request
 func (client OsManagementClient) CreateSoftwareSource(ctx context.Context, request CreateSoftwareSourceRequest) (response CreateSoftwareSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -615,6 +645,9 @@ func (client OsManagementClient) createSoftwareSource(ctx context.Context, reque
 func (client OsManagementClient) DeleteManagedInstanceGroup(ctx context.Context, request DeleteManagedInstanceGroupRequest) (response DeleteManagedInstanceGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -662,6 +695,9 @@ func (client OsManagementClient) deleteManagedInstanceGroup(ctx context.Context,
 func (client OsManagementClient) DeleteScheduledJob(ctx context.Context, request DeleteScheduledJobRequest) (response DeleteScheduledJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -709,6 +745,9 @@ func (client OsManagementClient) deleteScheduledJob(ctx context.Context, request
 func (client OsManagementClient) DeleteSoftwareSource(ctx context.Context, request DeleteSoftwareSourceRequest) (response DeleteSoftwareSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -757,6 +796,9 @@ func (client OsManagementClient) deleteSoftwareSource(ctx context.Context, reque
 func (client OsManagementClient) DetachChildSoftwareSourceFromManagedInstance(ctx context.Context, request DetachChildSoftwareSourceFromManagedInstanceRequest) (response DetachChildSoftwareSourceFromManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -809,6 +851,9 @@ func (client OsManagementClient) detachChildSoftwareSourceFromManagedInstance(ct
 func (client OsManagementClient) DetachManagedInstanceFromManagedInstanceGroup(ctx context.Context, request DetachManagedInstanceFromManagedInstanceGroupRequest) (response DetachManagedInstanceFromManagedInstanceGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -862,6 +907,9 @@ func (client OsManagementClient) detachManagedInstanceFromManagedInstanceGroup(c
 func (client OsManagementClient) DetachParentSoftwareSourceFromManagedInstance(ctx context.Context, request DetachParentSoftwareSourceFromManagedInstanceRequest) (response DetachParentSoftwareSourceFromManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -914,6 +962,9 @@ func (client OsManagementClient) detachParentSoftwareSourceFromManagedInstance(c
 func (client OsManagementClient) GetErratum(ctx context.Context, request GetErratumRequest) (response GetErratumResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -961,6 +1012,9 @@ func (client OsManagementClient) getErratum(ctx context.Context, request common.
 func (client OsManagementClient) GetManagedInstance(ctx context.Context, request GetManagedInstanceRequest) (response GetManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1008,6 +1062,9 @@ func (client OsManagementClient) getManagedInstance(ctx context.Context, request
 func (client OsManagementClient) GetManagedInstanceGroup(ctx context.Context, request GetManagedInstanceGroupRequest) (response GetManagedInstanceGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1055,6 +1112,9 @@ func (client OsManagementClient) getManagedInstanceGroup(ctx context.Context, re
 func (client OsManagementClient) GetScheduledJob(ctx context.Context, request GetScheduledJobRequest) (response GetScheduledJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1102,6 +1162,9 @@ func (client OsManagementClient) getScheduledJob(ctx context.Context, request co
 func (client OsManagementClient) GetSoftwarePackage(ctx context.Context, request GetSoftwarePackageRequest) (response GetSoftwarePackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1149,6 +1212,9 @@ func (client OsManagementClient) getSoftwarePackage(ctx context.Context, request
 func (client OsManagementClient) GetSoftwareSource(ctx context.Context, request GetSoftwareSourceRequest) (response GetSoftwareSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1196,6 +1262,9 @@ func (client OsManagementClient) getSoftwareSource(ctx context.Context, request 
 func (client OsManagementClient) GetWindowsUpdate(ctx context.Context, request GetWindowsUpdateRequest) (response GetWindowsUpdateResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1243,6 +1312,9 @@ func (client OsManagementClient) getWindowsUpdate(ctx context.Context, request c
 func (client OsManagementClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1290,6 +1362,9 @@ func (client OsManagementClient) getWorkRequest(ctx context.Context, request com
 func (client OsManagementClient) InstallAllPackageUpdatesOnManagedInstance(ctx context.Context, request InstallAllPackageUpdatesOnManagedInstanceRequest) (response InstallAllPackageUpdatesOnManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1342,6 +1417,9 @@ func (client OsManagementClient) installAllPackageUpdatesOnManagedInstance(ctx c
 func (client OsManagementClient) InstallAllWindowsUpdatesOnManagedInstance(ctx context.Context, request InstallAllWindowsUpdatesOnManagedInstanceRequest) (response InstallAllWindowsUpdatesOnManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1394,6 +1472,9 @@ func (client OsManagementClient) installAllWindowsUpdatesOnManagedInstance(ctx c
 func (client OsManagementClient) InstallPackageOnManagedInstance(ctx context.Context, request InstallPackageOnManagedInstanceRequest) (response InstallPackageOnManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1446,6 +1527,9 @@ func (client OsManagementClient) installPackageOnManagedInstance(ctx context.Con
 func (client OsManagementClient) InstallPackageUpdateOnManagedInstance(ctx context.Context, request InstallPackageUpdateOnManagedInstanceRequest) (response InstallPackageUpdateOnManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1498,6 +1582,9 @@ func (client OsManagementClient) installPackageUpdateOnManagedInstance(ctx conte
 func (client OsManagementClient) InstallWindowsUpdateOnManagedInstance(ctx context.Context, request InstallWindowsUpdateOnManagedInstanceRequest) (response InstallWindowsUpdateOnManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1550,6 +1637,9 @@ func (client OsManagementClient) installWindowsUpdateOnManagedInstance(ctx conte
 func (client OsManagementClient) ListAvailablePackagesForManagedInstance(ctx context.Context, request ListAvailablePackagesForManagedInstanceRequest) (response ListAvailablePackagesForManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1597,6 +1687,9 @@ func (client OsManagementClient) listAvailablePackagesForManagedInstance(ctx con
 func (client OsManagementClient) ListAvailableSoftwareSourcesForManagedInstance(ctx context.Context, request ListAvailableSoftwareSourcesForManagedInstanceRequest) (response ListAvailableSoftwareSourcesForManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1644,6 +1737,9 @@ func (client OsManagementClient) listAvailableSoftwareSourcesForManagedInstance(
 func (client OsManagementClient) ListAvailableUpdatesForManagedInstance(ctx context.Context, request ListAvailableUpdatesForManagedInstanceRequest) (response ListAvailableUpdatesForManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1691,6 +1787,9 @@ func (client OsManagementClient) listAvailableUpdatesForManagedInstance(ctx cont
 func (client OsManagementClient) ListAvailableWindowsUpdatesForManagedInstance(ctx context.Context, request ListAvailableWindowsUpdatesForManagedInstanceRequest) (response ListAvailableWindowsUpdatesForManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1738,6 +1837,9 @@ func (client OsManagementClient) listAvailableWindowsUpdatesForManagedInstance(c
 func (client OsManagementClient) ListManagedInstanceGroups(ctx context.Context, request ListManagedInstanceGroupsRequest) (response ListManagedInstanceGroupsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1785,6 +1887,9 @@ func (client OsManagementClient) listManagedInstanceGroups(ctx context.Context, 
 func (client OsManagementClient) ListManagedInstances(ctx context.Context, request ListManagedInstancesRequest) (response ListManagedInstancesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1832,6 +1937,9 @@ func (client OsManagementClient) listManagedInstances(ctx context.Context, reque
 func (client OsManagementClient) ListPackagesInstalledOnManagedInstance(ctx context.Context, request ListPackagesInstalledOnManagedInstanceRequest) (response ListPackagesInstalledOnManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1879,6 +1987,9 @@ func (client OsManagementClient) listPackagesInstalledOnManagedInstance(ctx cont
 func (client OsManagementClient) ListScheduledJobs(ctx context.Context, request ListScheduledJobsRequest) (response ListScheduledJobsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1926,6 +2037,9 @@ func (client OsManagementClient) listScheduledJobs(ctx context.Context, request 
 func (client OsManagementClient) ListSoftwareSourcePackages(ctx context.Context, request ListSoftwareSourcePackagesRequest) (response ListSoftwareSourcePackagesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1973,6 +2087,9 @@ func (client OsManagementClient) listSoftwareSourcePackages(ctx context.Context,
 func (client OsManagementClient) ListSoftwareSources(ctx context.Context, request ListSoftwareSourcesRequest) (response ListSoftwareSourcesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2020,6 +2137,9 @@ func (client OsManagementClient) listSoftwareSources(ctx context.Context, reques
 func (client OsManagementClient) ListUpcomingScheduledJobs(ctx context.Context, request ListUpcomingScheduledJobsRequest) (response ListUpcomingScheduledJobsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2067,6 +2187,9 @@ func (client OsManagementClient) listUpcomingScheduledJobs(ctx context.Context, 
 func (client OsManagementClient) ListWindowsUpdates(ctx context.Context, request ListWindowsUpdatesRequest) (response ListWindowsUpdatesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2114,6 +2237,9 @@ func (client OsManagementClient) listWindowsUpdates(ctx context.Context, request
 func (client OsManagementClient) ListWindowsUpdatesInstalledOnManagedInstance(ctx context.Context, request ListWindowsUpdatesInstalledOnManagedInstanceRequest) (response ListWindowsUpdatesInstalledOnManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2161,6 +2287,9 @@ func (client OsManagementClient) listWindowsUpdatesInstalledOnManagedInstance(ct
 func (client OsManagementClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2208,6 +2337,9 @@ func (client OsManagementClient) listWorkRequestErrors(ctx context.Context, requ
 func (client OsManagementClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2255,6 +2387,9 @@ func (client OsManagementClient) listWorkRequestLogs(ctx context.Context, reques
 func (client OsManagementClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2302,6 +2437,9 @@ func (client OsManagementClient) listWorkRequests(ctx context.Context, request c
 func (client OsManagementClient) RemovePackageFromManagedInstance(ctx context.Context, request RemovePackageFromManagedInstanceRequest) (response RemovePackageFromManagedInstanceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2354,6 +2492,9 @@ func (client OsManagementClient) removePackageFromManagedInstance(ctx context.Co
 func (client OsManagementClient) RemovePackagesFromSoftwareSource(ctx context.Context, request RemovePackagesFromSoftwareSourceRequest) (response RemovePackagesFromSoftwareSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2402,6 +2543,9 @@ func (client OsManagementClient) removePackagesFromSoftwareSource(ctx context.Co
 func (client OsManagementClient) RunScheduledJobNow(ctx context.Context, request RunScheduledJobNowRequest) (response RunScheduledJobNowResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2455,6 +2599,9 @@ func (client OsManagementClient) runScheduledJobNow(ctx context.Context, request
 func (client OsManagementClient) SearchSoftwarePackages(ctx context.Context, request SearchSoftwarePackagesRequest) (response SearchSoftwarePackagesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2503,6 +2650,9 @@ func (client OsManagementClient) searchSoftwarePackages(ctx context.Context, req
 func (client OsManagementClient) SkipNextScheduledJobExecution(ctx context.Context, request SkipNextScheduledJobExecutionRequest) (response SkipNextScheduledJobExecutionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2555,6 +2705,9 @@ func (client OsManagementClient) skipNextScheduledJobExecution(ctx context.Conte
 func (client OsManagementClient) UpdateManagedInstanceGroup(ctx context.Context, request UpdateManagedInstanceGroupRequest) (response UpdateManagedInstanceGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2602,6 +2755,9 @@ func (client OsManagementClient) updateManagedInstanceGroup(ctx context.Context,
 func (client OsManagementClient) UpdateScheduledJob(ctx context.Context, request UpdateScheduledJobRequest) (response UpdateScheduledJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2649,6 +2805,9 @@ func (client OsManagementClient) updateScheduledJob(ctx context.Context, request
 func (client OsManagementClient) UpdateSoftwareSource(ctx context.Context, request UpdateSoftwareSourceRequest) (response UpdateSoftwareSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

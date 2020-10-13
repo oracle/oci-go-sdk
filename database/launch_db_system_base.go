@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // LaunchDbSystemBase Parameters for provisioning a bare metal, virtual machine, or Exadata DB system.

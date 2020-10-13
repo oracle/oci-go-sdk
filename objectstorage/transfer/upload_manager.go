@@ -14,12 +14,13 @@ package transfer
 import (
 	"context"
 	"errors"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/objectstorage"
 	"math"
+	"net/http"
 	"os"
 	"strings"
 	"time"
-
-	"github.com/oracle/oci-go-sdk/v26/common"
 )
 
 // UploadManager is the interface that groups the upload methods
@@ -71,7 +72,7 @@ func (uploadManager *UploadManager) UploadFile(ctx context.Context, request Uplo
 
 	fileSize := fi.Size()
 
-	// parrallel upload disabled by user or the file size smaller than or equal to partSize
+	// parallel upload disabled by user or the file size smaller than or equal to partSize
 	// use UploadFilePutObject
 	if !*request.AllowMultipartUploads ||
 		fileSize <= *request.PartSize {
@@ -110,9 +111,38 @@ func (uploadManager *UploadManager) UploadStream(ctx context.Context, request Up
 		err = errorInvalidStreamUploader
 		return
 	}
+	//check if the stream is empty
+	buffer := make([]byte, *request.PartSize)
+	numberOfBytesRead, err := request.StreamReader.Read(buffer)
+
+	if numberOfBytesRead == 0 {
+		return uploadEmptyStream(ctx, request)
+	}
 
 	response, err = uploadManager.StreamUploader.UploadStream(ctx, request)
 	return
+}
+
+func uploadEmptyStream(ctx context.Context, request UploadStreamRequest) (response UploadResponse, err error) {
+	putObjReq := objectstorage.PutObjectRequest{
+		NamespaceName:      request.UploadRequest.NamespaceName,
+		BucketName:         request.UploadRequest.BucketName,
+		ObjectName:         request.UploadRequest.ObjectName,
+		ContentLength:      new(int64),
+		PutObjectBody:      http.NoBody,
+		OpcMeta:            request.UploadRequest.Metadata,
+		IfMatch:            request.UploadRequest.IfMatch,
+		IfNoneMatch:        request.UploadRequest.IfNoneMatch,
+		ContentType:        request.UploadRequest.ContentType,
+		ContentLanguage:    request.UploadRequest.ContentLanguage,
+		ContentEncoding:    request.UploadRequest.ContentEncoding,
+		ContentMD5:         request.UploadRequest.ContentMD5,
+		OpcClientRequestId: request.UploadRequest.OpcClientRequestID,
+		RequestMetadata:    request.UploadRequest.RequestMetadata,
+	}
+	putObjResp, err := request.UploadRequest.ObjectStorageClient.PutObject(ctx, putObjReq)
+	spUploadResp := SinglepartUploadResponse{putObjResp}
+	return UploadResponse{SinglepartUpload, &spUploadResp, nil}, err
 }
 
 func getUploadManagerRetryPolicy() *common.RetryPolicy {

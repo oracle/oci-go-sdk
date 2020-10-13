@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // CreateDataAssetDetails Properties used in data asset create operations.
@@ -25,6 +25,9 @@ type CreateDataAssetDetails struct {
 
 	// Detailed description of the data asset.
 	Description *string `mandatory:"false" json:"description"`
+
+	// The list of customized properties along with the values for this object
+	CustomPropertyMembers []CustomPropertySetUsage `mandatory:"false" json:"customPropertyMembers"`
 
 	// A map of maps that contains the properties which are specific to the data asset type. Each data asset type
 	// definition defines it's set of required and optional properties. The map keys are category names and the

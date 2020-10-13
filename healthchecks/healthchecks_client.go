@@ -14,8 +14,8 @@ package healthchecks
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -30,7 +30,7 @@ type HealthChecksClient struct {
 func NewHealthChecksClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client HealthChecksClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newHealthChecksClientFromBaseClient(baseClient, configProvider)
+			return newHealthChecksClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -84,6 +84,9 @@ func (client *HealthChecksClient) ConfigurationProvider() *common.ConfigurationP
 func (client HealthChecksClient) ChangeHttpMonitorCompartment(ctx context.Context, request ChangeHttpMonitorCompartmentRequest) (response ChangeHttpMonitorCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -137,6 +140,9 @@ func (client HealthChecksClient) changeHttpMonitorCompartment(ctx context.Contex
 func (client HealthChecksClient) ChangePingMonitorCompartment(ctx context.Context, request ChangePingMonitorCompartmentRequest) (response ChangePingMonitorCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -191,6 +197,9 @@ func (client HealthChecksClient) changePingMonitorCompartment(ctx context.Contex
 func (client HealthChecksClient) CreateHttpMonitor(ctx context.Context, request CreateHttpMonitorRequest) (response CreateHttpMonitorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -245,6 +254,9 @@ func (client HealthChecksClient) createHttpMonitor(ctx context.Context, request 
 func (client HealthChecksClient) CreateOnDemandHttpProbe(ctx context.Context, request CreateOnDemandHttpProbeRequest) (response CreateOnDemandHttpProbeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -294,6 +306,9 @@ func (client HealthChecksClient) createOnDemandHttpProbe(ctx context.Context, re
 func (client HealthChecksClient) CreateOnDemandPingProbe(ctx context.Context, request CreateOnDemandPingProbeRequest) (response CreateOnDemandPingProbeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -343,6 +358,9 @@ func (client HealthChecksClient) createOnDemandPingProbe(ctx context.Context, re
 func (client HealthChecksClient) CreatePingMonitor(ctx context.Context, request CreatePingMonitorRequest) (response CreatePingMonitorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -396,6 +414,9 @@ func (client HealthChecksClient) createPingMonitor(ctx context.Context, request 
 func (client HealthChecksClient) DeleteHttpMonitor(ctx context.Context, request DeleteHttpMonitorRequest) (response DeleteHttpMonitorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -444,6 +465,9 @@ func (client HealthChecksClient) deleteHttpMonitor(ctx context.Context, request 
 func (client HealthChecksClient) DeletePingMonitor(ctx context.Context, request DeletePingMonitorRequest) (response DeletePingMonitorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -491,6 +515,9 @@ func (client HealthChecksClient) deletePingMonitor(ctx context.Context, request 
 func (client HealthChecksClient) GetHttpMonitor(ctx context.Context, request GetHttpMonitorRequest) (response GetHttpMonitorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -538,6 +565,9 @@ func (client HealthChecksClient) getHttpMonitor(ctx context.Context, request com
 func (client HealthChecksClient) GetPingMonitor(ctx context.Context, request GetPingMonitorRequest) (response GetPingMonitorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -585,6 +615,9 @@ func (client HealthChecksClient) getPingMonitor(ctx context.Context, request com
 func (client HealthChecksClient) ListHealthChecksVantagePoints(ctx context.Context, request ListHealthChecksVantagePointsRequest) (response ListHealthChecksVantagePointsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -632,6 +665,9 @@ func (client HealthChecksClient) listHealthChecksVantagePoints(ctx context.Conte
 func (client HealthChecksClient) ListHttpMonitors(ctx context.Context, request ListHttpMonitorsRequest) (response ListHttpMonitorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -681,6 +717,9 @@ func (client HealthChecksClient) listHttpMonitors(ctx context.Context, request c
 func (client HealthChecksClient) ListHttpProbeResults(ctx context.Context, request ListHttpProbeResultsRequest) (response ListHttpProbeResultsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -730,6 +769,9 @@ func (client HealthChecksClient) listHttpProbeResults(ctx context.Context, reque
 func (client HealthChecksClient) ListPingMonitors(ctx context.Context, request ListPingMonitorsRequest) (response ListPingMonitorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -782,6 +824,9 @@ func (client HealthChecksClient) listPingMonitors(ctx context.Context, request c
 func (client HealthChecksClient) ListPingProbeResults(ctx context.Context, request ListPingProbeResultsRequest) (response ListPingProbeResultsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -831,6 +876,9 @@ func (client HealthChecksClient) listPingProbeResults(ctx context.Context, reque
 func (client HealthChecksClient) UpdateHttpMonitor(ctx context.Context, request UpdateHttpMonitorRequest) (response UpdateHttpMonitorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -880,6 +928,9 @@ func (client HealthChecksClient) updateHttpMonitor(ctx context.Context, request 
 func (client HealthChecksClient) UpdatePingMonitor(ctx context.Context, request UpdatePingMonitorRequest) (response UpdatePingMonitorResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

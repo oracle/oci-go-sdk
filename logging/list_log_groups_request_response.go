@@ -5,14 +5,14 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 	"net/http"
 )
 
 // ListLogGroupsRequest wrapper for the ListLogGroups operation
 type ListLogGroupsRequest struct {
 
-	// Compartment OCID to list resources in. Please see compartmentIdInSubtree
+	// Compartment OCID to list resources in. See compartmentIdInSubtree
 	//      for nested compartments traversal.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
@@ -33,7 +33,7 @@ type ListLogGroupsRequest struct {
 	// ascending exception of `timeCreated` and `timeLastModified` columns (descending).
 	SortBy ListLogGroupsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// The sort order to use, either 'asc' or 'desc'
+	// The sort order to use, whether 'asc' or 'desc'.
 	SortOrder ListLogGroupsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about

@@ -16,8 +16,8 @@ package core
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -32,7 +32,7 @@ type ComputeManagementClient struct {
 func NewComputeManagementClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ComputeManagementClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newComputeManagementClientFromBaseClient(baseClient, configProvider)
+			return newComputeManagementClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -85,6 +85,9 @@ func (client *ComputeManagementClient) ConfigurationProvider() *common.Configura
 func (client ComputeManagementClient) AttachLoadBalancer(ctx context.Context, request AttachLoadBalancerRequest) (response AttachLoadBalancerResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -141,6 +144,9 @@ func (client ComputeManagementClient) attachLoadBalancer(ctx context.Context, re
 func (client ComputeManagementClient) ChangeClusterNetworkCompartment(ctx context.Context, request ChangeClusterNetworkCompartmentRequest) (response ChangeClusterNetworkCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -203,6 +209,9 @@ func (client ComputeManagementClient) changeClusterNetworkCompartment(ctx contex
 func (client ComputeManagementClient) ChangeInstanceConfigurationCompartment(ctx context.Context, request ChangeInstanceConfigurationCompartmentRequest) (response ChangeInstanceConfigurationCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -259,6 +268,9 @@ func (client ComputeManagementClient) changeInstanceConfigurationCompartment(ctx
 func (client ComputeManagementClient) ChangeInstancePoolCompartment(ctx context.Context, request ChangeInstancePoolCompartmentRequest) (response ChangeInstancePoolCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -312,6 +324,9 @@ func (client ComputeManagementClient) changeInstancePoolCompartment(ctx context.
 func (client ComputeManagementClient) CreateClusterNetwork(ctx context.Context, request CreateClusterNetworkRequest) (response CreateClusterNetworkResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -365,6 +380,9 @@ func (client ComputeManagementClient) createClusterNetwork(ctx context.Context, 
 func (client ComputeManagementClient) CreateInstanceConfiguration(ctx context.Context, request CreateInstanceConfigurationRequest) (response CreateInstanceConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -417,6 +435,9 @@ func (client ComputeManagementClient) createInstanceConfiguration(ctx context.Co
 func (client ComputeManagementClient) CreateInstancePool(ctx context.Context, request CreateInstancePoolRequest) (response CreateInstancePoolResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -469,6 +490,9 @@ func (client ComputeManagementClient) createInstancePool(ctx context.Context, re
 func (client ComputeManagementClient) DeleteInstanceConfiguration(ctx context.Context, request DeleteInstanceConfigurationRequest) (response DeleteInstanceConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -516,6 +540,9 @@ func (client ComputeManagementClient) deleteInstanceConfiguration(ctx context.Co
 func (client ComputeManagementClient) DetachLoadBalancer(ctx context.Context, request DetachLoadBalancerRequest) (response DetachLoadBalancerResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -568,6 +595,9 @@ func (client ComputeManagementClient) detachLoadBalancer(ctx context.Context, re
 func (client ComputeManagementClient) GetClusterNetwork(ctx context.Context, request GetClusterNetworkRequest) (response GetClusterNetworkResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -615,6 +645,9 @@ func (client ComputeManagementClient) getClusterNetwork(ctx context.Context, req
 func (client ComputeManagementClient) GetInstanceConfiguration(ctx context.Context, request GetInstanceConfigurationRequest) (response GetInstanceConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -662,6 +695,9 @@ func (client ComputeManagementClient) getInstanceConfiguration(ctx context.Conte
 func (client ComputeManagementClient) GetInstancePool(ctx context.Context, request GetInstancePoolRequest) (response GetInstancePoolResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -709,6 +745,9 @@ func (client ComputeManagementClient) getInstancePool(ctx context.Context, reque
 func (client ComputeManagementClient) GetInstancePoolLoadBalancerAttachment(ctx context.Context, request GetInstancePoolLoadBalancerAttachmentRequest) (response GetInstancePoolLoadBalancerAttachmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -761,6 +800,9 @@ func (client ComputeManagementClient) getInstancePoolLoadBalancerAttachment(ctx 
 func (client ComputeManagementClient) LaunchInstanceConfiguration(ctx context.Context, request LaunchInstanceConfigurationRequest) (response LaunchInstanceConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -813,6 +855,9 @@ func (client ComputeManagementClient) launchInstanceConfiguration(ctx context.Co
 func (client ComputeManagementClient) ListClusterNetworkInstances(ctx context.Context, request ListClusterNetworkInstancesRequest) (response ListClusterNetworkInstancesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -860,6 +905,9 @@ func (client ComputeManagementClient) listClusterNetworkInstances(ctx context.Co
 func (client ComputeManagementClient) ListClusterNetworks(ctx context.Context, request ListClusterNetworksRequest) (response ListClusterNetworksResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -907,6 +955,9 @@ func (client ComputeManagementClient) listClusterNetworks(ctx context.Context, r
 func (client ComputeManagementClient) ListInstanceConfigurations(ctx context.Context, request ListInstanceConfigurationsRequest) (response ListInstanceConfigurationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -954,6 +1005,9 @@ func (client ComputeManagementClient) listInstanceConfigurations(ctx context.Con
 func (client ComputeManagementClient) ListInstancePoolInstances(ctx context.Context, request ListInstancePoolInstancesRequest) (response ListInstancePoolInstancesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1001,6 +1055,9 @@ func (client ComputeManagementClient) listInstancePoolInstances(ctx context.Cont
 func (client ComputeManagementClient) ListInstancePools(ctx context.Context, request ListInstancePoolsRequest) (response ListInstancePoolsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1049,6 +1106,9 @@ func (client ComputeManagementClient) listInstancePools(ctx context.Context, req
 func (client ComputeManagementClient) ResetInstancePool(ctx context.Context, request ResetInstancePoolRequest) (response ResetInstancePoolResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1102,6 +1162,9 @@ func (client ComputeManagementClient) resetInstancePool(ctx context.Context, req
 func (client ComputeManagementClient) SoftresetInstancePool(ctx context.Context, request SoftresetInstancePoolRequest) (response SoftresetInstancePoolResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1155,6 +1218,9 @@ func (client ComputeManagementClient) softresetInstancePool(ctx context.Context,
 func (client ComputeManagementClient) StartInstancePool(ctx context.Context, request StartInstancePoolRequest) (response StartInstancePoolResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1208,6 +1274,9 @@ func (client ComputeManagementClient) startInstancePool(ctx context.Context, req
 func (client ComputeManagementClient) StopInstancePool(ctx context.Context, request StopInstancePoolRequest) (response StopInstancePoolResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1262,6 +1331,9 @@ func (client ComputeManagementClient) stopInstancePool(ctx context.Context, requ
 func (client ComputeManagementClient) TerminateClusterNetwork(ctx context.Context, request TerminateClusterNetworkRequest) (response TerminateClusterNetworkResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1314,6 +1386,9 @@ func (client ComputeManagementClient) terminateClusterNetwork(ctx context.Contex
 func (client ComputeManagementClient) TerminateInstancePool(ctx context.Context, request TerminateInstancePoolRequest) (response TerminateInstancePoolResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1361,6 +1436,9 @@ func (client ComputeManagementClient) terminateInstancePool(ctx context.Context,
 func (client ComputeManagementClient) UpdateClusterNetwork(ctx context.Context, request UpdateClusterNetworkRequest) (response UpdateClusterNetworkResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1413,6 +1491,9 @@ func (client ComputeManagementClient) updateClusterNetwork(ctx context.Context, 
 func (client ComputeManagementClient) UpdateInstanceConfiguration(ctx context.Context, request UpdateInstanceConfigurationRequest) (response UpdateInstanceConfigurationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1466,6 +1547,9 @@ func (client ComputeManagementClient) updateInstanceConfiguration(ctx context.Co
 func (client ComputeManagementClient) UpdateInstancePool(ctx context.Context, request UpdateInstancePoolRequest) (response UpdateInstancePoolResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

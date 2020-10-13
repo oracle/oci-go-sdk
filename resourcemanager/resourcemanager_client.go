@@ -15,8 +15,8 @@ package resourcemanager
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -31,7 +31,7 @@ type ResourceManagerClient struct {
 func NewResourceManagerClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ResourceManagerClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newResourceManagerClientFromBaseClient(baseClient, configProvider)
+			return newResourceManagerClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -86,6 +86,9 @@ func (client *ResourceManagerClient) ConfigurationProvider() *common.Configurati
 func (client ResourceManagerClient) CancelJob(ctx context.Context, request CancelJobRequest) (response CancelJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -135,6 +138,9 @@ func (client ResourceManagerClient) cancelJob(ctx context.Context, request commo
 func (client ResourceManagerClient) ChangeConfigurationSourceProviderCompartment(ctx context.Context, request ChangeConfigurationSourceProviderCompartmentRequest) (response ChangeConfigurationSourceProviderCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -187,6 +193,9 @@ func (client ResourceManagerClient) changeConfigurationSourceProviderCompartment
 func (client ResourceManagerClient) ChangeStackCompartment(ctx context.Context, request ChangeStackCompartmentRequest) (response ChangeStackCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -241,6 +250,9 @@ func (client ResourceManagerClient) changeStackCompartment(ctx context.Context, 
 func (client ResourceManagerClient) CreateConfigurationSourceProvider(ctx context.Context, request CreateConfigurationSourceProviderRequest) (response CreateConfigurationSourceProviderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -293,6 +305,9 @@ func (client ResourceManagerClient) createConfigurationSourceProvider(ctx contex
 func (client ResourceManagerClient) CreateJob(ctx context.Context, request CreateJobRequest) (response CreateJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -350,6 +365,9 @@ func (client ResourceManagerClient) createJob(ctx context.Context, request commo
 func (client ResourceManagerClient) CreateStack(ctx context.Context, request CreateStackRequest) (response CreateStackResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -402,6 +420,9 @@ func (client ResourceManagerClient) createStack(ctx context.Context, request com
 func (client ResourceManagerClient) DeleteConfigurationSourceProvider(ctx context.Context, request DeleteConfigurationSourceProviderRequest) (response DeleteConfigurationSourceProviderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -449,6 +470,9 @@ func (client ResourceManagerClient) deleteConfigurationSourceProvider(ctx contex
 func (client ResourceManagerClient) DeleteStack(ctx context.Context, request DeleteStackRequest) (response DeleteStackResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -496,6 +520,9 @@ func (client ResourceManagerClient) deleteStack(ctx context.Context, request com
 func (client ResourceManagerClient) DetectStackDrift(ctx context.Context, request DetectStackDriftRequest) (response DetectStackDriftResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -548,6 +575,9 @@ func (client ResourceManagerClient) detectStackDrift(ctx context.Context, reques
 func (client ResourceManagerClient) GetConfigurationSourceProvider(ctx context.Context, request GetConfigurationSourceProviderRequest) (response GetConfigurationSourceProviderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -595,6 +625,9 @@ func (client ResourceManagerClient) getConfigurationSourceProvider(ctx context.C
 func (client ResourceManagerClient) GetJob(ctx context.Context, request GetJobRequest) (response GetJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -642,6 +675,9 @@ func (client ResourceManagerClient) getJob(ctx context.Context, request common.O
 func (client ResourceManagerClient) GetJobLogs(ctx context.Context, request GetJobLogsRequest) (response GetJobLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -690,6 +726,9 @@ func (client ResourceManagerClient) getJobLogs(ctx context.Context, request comm
 func (client ResourceManagerClient) GetJobLogsContent(ctx context.Context, request GetJobLogsContentRequest) (response GetJobLogsContentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -738,6 +777,9 @@ func (client ResourceManagerClient) getJobLogsContent(ctx context.Context, reque
 func (client ResourceManagerClient) GetJobTfConfig(ctx context.Context, request GetJobTfConfigRequest) (response GetJobTfConfigResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -784,6 +826,9 @@ func (client ResourceManagerClient) getJobTfConfig(ctx context.Context, request 
 func (client ResourceManagerClient) GetJobTfState(ctx context.Context, request GetJobTfStateRequest) (response GetJobTfStateResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -830,6 +875,9 @@ func (client ResourceManagerClient) getJobTfState(ctx context.Context, request c
 func (client ResourceManagerClient) GetStack(ctx context.Context, request GetStackRequest) (response GetStackResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -878,6 +926,9 @@ func (client ResourceManagerClient) getStack(ctx context.Context, request common
 func (client ResourceManagerClient) GetStackTfConfig(ctx context.Context, request GetStackTfConfigRequest) (response GetStackTfConfigResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -924,6 +975,9 @@ func (client ResourceManagerClient) getStackTfConfig(ctx context.Context, reques
 func (client ResourceManagerClient) GetStackTfState(ctx context.Context, request GetStackTfStateRequest) (response GetStackTfStateResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -970,6 +1024,9 @@ func (client ResourceManagerClient) getStackTfState(ctx context.Context, request
 func (client ResourceManagerClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1019,6 +1076,9 @@ func (client ResourceManagerClient) getWorkRequest(ctx context.Context, request 
 func (client ResourceManagerClient) ListConfigurationSourceProviders(ctx context.Context, request ListConfigurationSourceProvidersRequest) (response ListConfigurationSourceProvidersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1069,6 +1129,9 @@ func (client ResourceManagerClient) listConfigurationSourceProviders(ctx context
 func (client ResourceManagerClient) ListJobs(ctx context.Context, request ListJobsRequest) (response ListJobsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1116,6 +1179,9 @@ func (client ResourceManagerClient) listJobs(ctx context.Context, request common
 func (client ResourceManagerClient) ListResourceDiscoveryServices(ctx context.Context, request ListResourceDiscoveryServicesRequest) (response ListResourceDiscoveryServicesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1165,6 +1231,9 @@ func (client ResourceManagerClient) listResourceDiscoveryServices(ctx context.Co
 func (client ResourceManagerClient) ListStackResourceDriftDetails(ctx context.Context, request ListStackResourceDriftDetailsRequest) (response ListStackResourceDriftDetailsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1214,6 +1283,9 @@ func (client ResourceManagerClient) listStackResourceDriftDetails(ctx context.Co
 func (client ResourceManagerClient) ListStacks(ctx context.Context, request ListStacksRequest) (response ListStacksResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1261,6 +1333,9 @@ func (client ResourceManagerClient) listStacks(ctx context.Context, request comm
 func (client ResourceManagerClient) ListTerraformVersions(ctx context.Context, request ListTerraformVersionsRequest) (response ListTerraformVersionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1308,6 +1383,9 @@ func (client ResourceManagerClient) listTerraformVersions(ctx context.Context, r
 func (client ResourceManagerClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1355,6 +1433,9 @@ func (client ResourceManagerClient) listWorkRequestErrors(ctx context.Context, r
 func (client ResourceManagerClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1402,6 +1483,9 @@ func (client ResourceManagerClient) listWorkRequestLogs(ctx context.Context, req
 func (client ResourceManagerClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1451,6 +1535,9 @@ func (client ResourceManagerClient) listWorkRequests(ctx context.Context, reques
 func (client ResourceManagerClient) UpdateConfigurationSourceProvider(ctx context.Context, request UpdateConfigurationSourceProviderRequest) (response UpdateConfigurationSourceProviderResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1498,6 +1585,9 @@ func (client ResourceManagerClient) updateConfigurationSourceProvider(ctx contex
 func (client ResourceManagerClient) UpdateJob(ctx context.Context, request UpdateJobRequest) (response UpdateJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1550,6 +1640,9 @@ func (client ResourceManagerClient) updateJob(ctx context.Context, request commo
 func (client ResourceManagerClient) UpdateStack(ctx context.Context, request UpdateStackRequest) (response UpdateStackResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

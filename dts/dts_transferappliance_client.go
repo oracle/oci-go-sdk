@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type TransferApplianceClient struct {
 func NewTransferApplianceClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client TransferApplianceClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newTransferApplianceClientFromBaseClient(baseClient, configProvider)
+			return newTransferApplianceClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *TransferApplianceClient) ConfigurationProvider() *common.Configura
 func (client TransferApplianceClient) CreateTransferAppliance(ctx context.Context, request CreateTransferApplianceRequest) (response CreateTransferApplianceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client TransferApplianceClient) createTransferAppliance(ctx context.Contex
 func (client TransferApplianceClient) CreateTransferApplianceAdminCredentials(ctx context.Context, request CreateTransferApplianceAdminCredentialsRequest) (response CreateTransferApplianceAdminCredentialsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -180,6 +186,9 @@ func (client TransferApplianceClient) createTransferApplianceAdminCredentials(ct
 func (client TransferApplianceClient) DeleteTransferAppliance(ctx context.Context, request DeleteTransferApplianceRequest) (response DeleteTransferApplianceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -227,6 +236,9 @@ func (client TransferApplianceClient) deleteTransferAppliance(ctx context.Contex
 func (client TransferApplianceClient) GetTransferAppliance(ctx context.Context, request GetTransferApplianceRequest) (response GetTransferApplianceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -274,6 +286,9 @@ func (client TransferApplianceClient) getTransferAppliance(ctx context.Context, 
 func (client TransferApplianceClient) GetTransferApplianceCertificateAuthorityCertificate(ctx context.Context, request GetTransferApplianceCertificateAuthorityCertificateRequest) (response GetTransferApplianceCertificateAuthorityCertificateResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -321,6 +336,9 @@ func (client TransferApplianceClient) getTransferApplianceCertificateAuthorityCe
 func (client TransferApplianceClient) GetTransferApplianceEncryptionPassphrase(ctx context.Context, request GetTransferApplianceEncryptionPassphraseRequest) (response GetTransferApplianceEncryptionPassphraseResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -368,6 +386,9 @@ func (client TransferApplianceClient) getTransferApplianceEncryptionPassphrase(c
 func (client TransferApplianceClient) ListTransferAppliances(ctx context.Context, request ListTransferAppliancesRequest) (response ListTransferAppliancesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -415,6 +436,9 @@ func (client TransferApplianceClient) listTransferAppliances(ctx context.Context
 func (client TransferApplianceClient) UpdateTransferAppliance(ctx context.Context, request UpdateTransferApplianceRequest) (response UpdateTransferApplianceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

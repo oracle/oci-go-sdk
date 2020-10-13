@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // ModelType Full data catalog type definition. Fully defines a type of the data catalog. All types are statically defined
@@ -70,6 +70,9 @@ type ModelType struct {
 
 	// URI to the type instance in the API.
 	Uri *string `mandatory:"false" json:"uri"`
+
+	// Custom properties associated with this Type.
+	CustomProperties []CustomPropertySummary `mandatory:"false" json:"customProperties"`
 }
 
 func (m ModelType) String() string {

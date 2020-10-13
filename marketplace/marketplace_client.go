@@ -12,8 +12,8 @@ package marketplace
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type MarketplaceClient struct {
 func NewMarketplaceClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client MarketplaceClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newMarketplaceClientFromBaseClient(baseClient, configProvider)
+			return newMarketplaceClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -82,6 +82,9 @@ func (client *MarketplaceClient) ConfigurationProvider() *common.ConfigurationPr
 func (client MarketplaceClient) CreateAcceptedAgreement(ctx context.Context, request CreateAcceptedAgreementRequest) (response CreateAcceptedAgreementResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -136,6 +139,9 @@ func (client MarketplaceClient) createAcceptedAgreement(ctx context.Context, req
 func (client MarketplaceClient) DeleteAcceptedAgreement(ctx context.Context, request DeleteAcceptedAgreementRequest) (response DeleteAcceptedAgreementResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -183,6 +189,9 @@ func (client MarketplaceClient) deleteAcceptedAgreement(ctx context.Context, req
 func (client MarketplaceClient) GetAcceptedAgreement(ctx context.Context, request GetAcceptedAgreementRequest) (response GetAcceptedAgreementResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -231,6 +240,9 @@ func (client MarketplaceClient) getAcceptedAgreement(ctx context.Context, reques
 func (client MarketplaceClient) GetAgreement(ctx context.Context, request GetAgreementRequest) (response GetAgreementResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -289,6 +301,9 @@ func (client MarketplaceClient) getAgreement(ctx context.Context, request common
 func (client MarketplaceClient) GetListing(ctx context.Context, request GetListingRequest) (response GetListingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -346,6 +361,9 @@ func (client MarketplaceClient) getListing(ctx context.Context, request common.O
 func (client MarketplaceClient) GetPackage(ctx context.Context, request GetPackageRequest) (response GetPackageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -394,6 +412,9 @@ func (client MarketplaceClient) getPackage(ctx context.Context, request common.O
 func (client MarketplaceClient) ListAcceptedAgreements(ctx context.Context, request ListAcceptedAgreementsRequest) (response ListAcceptedAgreementsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -441,6 +462,9 @@ func (client MarketplaceClient) listAcceptedAgreements(ctx context.Context, requ
 func (client MarketplaceClient) ListAgreements(ctx context.Context, request ListAgreementsRequest) (response ListAgreementsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -489,6 +513,9 @@ func (client MarketplaceClient) listAgreements(ctx context.Context, request comm
 func (client MarketplaceClient) ListCategories(ctx context.Context, request ListCategoriesRequest) (response ListCategoriesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -547,6 +574,9 @@ func (client MarketplaceClient) listCategories(ctx context.Context, request comm
 func (client MarketplaceClient) ListListings(ctx context.Context, request ListListingsRequest) (response ListListingsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -604,6 +634,9 @@ func (client MarketplaceClient) listListings(ctx context.Context, request common
 func (client MarketplaceClient) ListPackages(ctx context.Context, request ListPackagesRequest) (response ListPackagesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -651,6 +684,9 @@ func (client MarketplaceClient) listPackages(ctx context.Context, request common
 func (client MarketplaceClient) ListPublishers(ctx context.Context, request ListPublishersRequest) (response ListPublishersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -698,6 +734,9 @@ func (client MarketplaceClient) listPublishers(ctx context.Context, request comm
 func (client MarketplaceClient) ListReportTypes(ctx context.Context, request ListReportTypesRequest) (response ListReportTypesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -745,6 +784,9 @@ func (client MarketplaceClient) listReportTypes(ctx context.Context, request com
 func (client MarketplaceClient) ListReports(ctx context.Context, request ListReportsRequest) (response ListReportsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -792,6 +834,9 @@ func (client MarketplaceClient) listReports(ctx context.Context, request common.
 func (client MarketplaceClient) ListTaxes(ctx context.Context, request ListTaxesRequest) (response ListTaxesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -839,6 +884,9 @@ func (client MarketplaceClient) listTaxes(ctx context.Context, request common.OC
 func (client MarketplaceClient) UpdateAcceptedAgreement(ctx context.Context, request UpdateAcceptedAgreementRequest) (response UpdateAcceptedAgreementResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

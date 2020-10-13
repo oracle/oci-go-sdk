@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type ApplianceExportJobClient struct {
 func NewApplianceExportJobClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ApplianceExportJobClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newApplianceExportJobClientFromBaseClient(baseClient, configProvider)
+			return newApplianceExportJobClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *ApplianceExportJobClient) ConfigurationProvider() *common.Configur
 func (client ApplianceExportJobClient) ChangeApplianceExportJobCompartment(ctx context.Context, request ChangeApplianceExportJobCompartmentRequest) (response ChangeApplianceExportJobCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client ApplianceExportJobClient) changeApplianceExportJobCompartment(ctx c
 func (client ApplianceExportJobClient) CreateApplianceExportJob(ctx context.Context, request CreateApplianceExportJobRequest) (response CreateApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -185,6 +191,9 @@ func (client ApplianceExportJobClient) createApplianceExportJob(ctx context.Cont
 func (client ApplianceExportJobClient) DeleteApplianceExportJob(ctx context.Context, request DeleteApplianceExportJobRequest) (response DeleteApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -232,6 +241,9 @@ func (client ApplianceExportJobClient) deleteApplianceExportJob(ctx context.Cont
 func (client ApplianceExportJobClient) GetApplianceExportJob(ctx context.Context, request GetApplianceExportJobRequest) (response GetApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -279,6 +291,9 @@ func (client ApplianceExportJobClient) getApplianceExportJob(ctx context.Context
 func (client ApplianceExportJobClient) ListApplianceExportJobs(ctx context.Context, request ListApplianceExportJobsRequest) (response ListApplianceExportJobsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -326,6 +341,9 @@ func (client ApplianceExportJobClient) listApplianceExportJobs(ctx context.Conte
 func (client ApplianceExportJobClient) UpdateApplianceExportJob(ctx context.Context, request UpdateApplianceExportJobRequest) (response UpdateApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

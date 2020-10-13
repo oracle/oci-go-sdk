@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // Attribute Details of an entity attribute. An attribute of a data entity describing an item of data,
@@ -101,6 +101,9 @@ type Attribute struct {
 
 	// Full path of the attribute.
 	Path *string `mandatory:"false" json:"path"`
+
+	// The list of customized properties along with the values for this object
+	CustomPropertyMembers []CustomPropertyGetUsage `mandatory:"false" json:"customPropertyMembers"`
 
 	// A map of maps that contains the properties which are specific to the attribute type. Each attribute type
 	// definition defines it's set of required and optional properties. The map keys are category names and the

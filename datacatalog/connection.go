@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // Connection Detailed representation of a connection to a data asset, minus any sensitive properties.
@@ -38,6 +38,9 @@ type Connection struct {
 
 	// OCID of the user who modified the connection.
 	UpdatedById *string `mandatory:"false" json:"updatedById"`
+
+	// The list of customized properties along with the values for this object
+	CustomPropertyMembers []CustomPropertyGetUsage `mandatory:"false" json:"customPropertyMembers"`
 
 	// A map of maps that contains the properties which are specific to the connection type. Each connection type
 	// definition defines it's set of required and optional properties. The map keys are category names and the

@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // UpdateHistoryEntrySummary The record of an update action on a specified target.
@@ -75,11 +75,13 @@ type UpdateHistoryEntrySummaryUpdateTypeEnum string
 
 // Set of constants representing the allowable values for UpdateHistoryEntrySummaryUpdateTypeEnum
 const (
-	UpdateHistoryEntrySummaryUpdateTypeGiPatch UpdateHistoryEntrySummaryUpdateTypeEnum = "GI_PATCH"
+	UpdateHistoryEntrySummaryUpdateTypeUpgrade UpdateHistoryEntrySummaryUpdateTypeEnum = "GI_UPGRADE"
+	UpdateHistoryEntrySummaryUpdateTypePatch   UpdateHistoryEntrySummaryUpdateTypeEnum = "GI_PATCH"
 )
 
 var mappingUpdateHistoryEntrySummaryUpdateType = map[string]UpdateHistoryEntrySummaryUpdateTypeEnum{
-	"GI_PATCH": UpdateHistoryEntrySummaryUpdateTypeGiPatch,
+	"GI_UPGRADE": UpdateHistoryEntrySummaryUpdateTypeUpgrade,
+	"GI_PATCH":   UpdateHistoryEntrySummaryUpdateTypePatch,
 }
 
 // GetUpdateHistoryEntrySummaryUpdateTypeEnumValues Enumerates the set of values for UpdateHistoryEntrySummaryUpdateTypeEnum

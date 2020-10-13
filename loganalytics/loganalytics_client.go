@@ -12,8 +12,8 @@ package loganalytics
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type LogAnalyticsClient struct {
 func NewLogAnalyticsClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client LogAnalyticsClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newLogAnalyticsClientFromBaseClient(baseClient, configProvider)
+			return newLogAnalyticsClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -81,6 +81,9 @@ func (client *LogAnalyticsClient) ConfigurationProvider() *common.ConfigurationP
 func (client LogAnalyticsClient) AddEntityAssociation(ctx context.Context, request AddEntityAssociationRequest) (response AddEntityAssociationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -133,6 +136,9 @@ func (client LogAnalyticsClient) addEntityAssociation(ctx context.Context, reque
 func (client LogAnalyticsClient) BatchGetBasicInfo(ctx context.Context, request BatchGetBasicInfoRequest) (response BatchGetBasicInfoResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -180,6 +186,9 @@ func (client LogAnalyticsClient) batchGetBasicInfo(ctx context.Context, request 
 func (client LogAnalyticsClient) CancelQueryWorkRequest(ctx context.Context, request CancelQueryWorkRequestRequest) (response CancelQueryWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -227,6 +236,9 @@ func (client LogAnalyticsClient) cancelQueryWorkRequest(ctx context.Context, req
 func (client LogAnalyticsClient) ChangeLogAnalyticsEntityCompartment(ctx context.Context, request ChangeLogAnalyticsEntityCompartmentRequest) (response ChangeLogAnalyticsEntityCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -279,6 +291,9 @@ func (client LogAnalyticsClient) changeLogAnalyticsEntityCompartment(ctx context
 func (client LogAnalyticsClient) ChangeLogAnalyticsLogGroupCompartment(ctx context.Context, request ChangeLogAnalyticsLogGroupCompartmentRequest) (response ChangeLogAnalyticsLogGroupCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -331,6 +346,9 @@ func (client LogAnalyticsClient) changeLogAnalyticsLogGroupCompartment(ctx conte
 func (client LogAnalyticsClient) ChangeLogAnalyticsObjectCollectionRuleCompartment(ctx context.Context, request ChangeLogAnalyticsObjectCollectionRuleCompartmentRequest) (response ChangeLogAnalyticsObjectCollectionRuleCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -378,6 +396,9 @@ func (client LogAnalyticsClient) changeLogAnalyticsObjectCollectionRuleCompartme
 func (client LogAnalyticsClient) ChangeScheduledTaskCompartment(ctx context.Context, request ChangeScheduledTaskCompartmentRequest) (response ChangeScheduledTaskCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -431,6 +452,9 @@ func (client LogAnalyticsClient) changeScheduledTaskCompartment(ctx context.Cont
 func (client LogAnalyticsClient) Clean(ctx context.Context, request CleanRequest) (response CleanResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -483,6 +507,9 @@ func (client LogAnalyticsClient) clean(ctx context.Context, request common.OCIRe
 func (client LogAnalyticsClient) CreateLogAnalyticsEntity(ctx context.Context, request CreateLogAnalyticsEntityRequest) (response CreateLogAnalyticsEntityResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -535,6 +562,9 @@ func (client LogAnalyticsClient) createLogAnalyticsEntity(ctx context.Context, r
 func (client LogAnalyticsClient) CreateLogAnalyticsEntityType(ctx context.Context, request CreateLogAnalyticsEntityTypeRequest) (response CreateLogAnalyticsEntityTypeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -587,6 +617,9 @@ func (client LogAnalyticsClient) createLogAnalyticsEntityType(ctx context.Contex
 func (client LogAnalyticsClient) CreateLogAnalyticsLogGroup(ctx context.Context, request CreateLogAnalyticsLogGroupRequest) (response CreateLogAnalyticsLogGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -639,6 +672,9 @@ func (client LogAnalyticsClient) createLogAnalyticsLogGroup(ctx context.Context,
 func (client LogAnalyticsClient) CreateLogAnalyticsObjectCollectionRule(ctx context.Context, request CreateLogAnalyticsObjectCollectionRuleRequest) (response CreateLogAnalyticsObjectCollectionRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -686,6 +722,9 @@ func (client LogAnalyticsClient) createLogAnalyticsObjectCollectionRule(ctx cont
 func (client LogAnalyticsClient) CreateScheduledTask(ctx context.Context, request CreateScheduledTaskRequest) (response CreateScheduledTaskResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -738,6 +777,9 @@ func (client LogAnalyticsClient) createScheduledTask(ctx context.Context, reques
 func (client LogAnalyticsClient) DeleteAssociations(ctx context.Context, request DeleteAssociationsRequest) (response DeleteAssociationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -790,6 +832,9 @@ func (client LogAnalyticsClient) deleteAssociations(ctx context.Context, request
 func (client LogAnalyticsClient) DeleteField(ctx context.Context, request DeleteFieldRequest) (response DeleteFieldResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -842,6 +887,9 @@ func (client LogAnalyticsClient) deleteField(ctx context.Context, request common
 func (client LogAnalyticsClient) DeleteLabel(ctx context.Context, request DeleteLabelRequest) (response DeleteLabelResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -894,6 +942,9 @@ func (client LogAnalyticsClient) deleteLabel(ctx context.Context, request common
 func (client LogAnalyticsClient) DeleteLogAnalyticsEntity(ctx context.Context, request DeleteLogAnalyticsEntityRequest) (response DeleteLogAnalyticsEntityResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -941,6 +992,9 @@ func (client LogAnalyticsClient) deleteLogAnalyticsEntity(ctx context.Context, r
 func (client LogAnalyticsClient) DeleteLogAnalyticsEntityType(ctx context.Context, request DeleteLogAnalyticsEntityTypeRequest) (response DeleteLogAnalyticsEntityTypeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -988,6 +1042,9 @@ func (client LogAnalyticsClient) deleteLogAnalyticsEntityType(ctx context.Contex
 func (client LogAnalyticsClient) DeleteLogAnalyticsLogGroup(ctx context.Context, request DeleteLogAnalyticsLogGroupRequest) (response DeleteLogAnalyticsLogGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1036,6 +1093,9 @@ func (client LogAnalyticsClient) deleteLogAnalyticsLogGroup(ctx context.Context,
 func (client LogAnalyticsClient) DeleteLogAnalyticsObjectCollectionRule(ctx context.Context, request DeleteLogAnalyticsObjectCollectionRuleRequest) (response DeleteLogAnalyticsObjectCollectionRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1083,6 +1143,9 @@ func (client LogAnalyticsClient) deleteLogAnalyticsObjectCollectionRule(ctx cont
 func (client LogAnalyticsClient) DeleteParser(ctx context.Context, request DeleteParserRequest) (response DeleteParserResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1135,6 +1198,9 @@ func (client LogAnalyticsClient) deleteParser(ctx context.Context, request commo
 func (client LogAnalyticsClient) DeleteScheduledTask(ctx context.Context, request DeleteScheduledTaskRequest) (response DeleteScheduledTaskResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1182,6 +1248,9 @@ func (client LogAnalyticsClient) deleteScheduledTask(ctx context.Context, reques
 func (client LogAnalyticsClient) DeleteSource(ctx context.Context, request DeleteSourceRequest) (response DeleteSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1235,6 +1304,9 @@ func (client LogAnalyticsClient) deleteSource(ctx context.Context, request commo
 func (client LogAnalyticsClient) DeleteUpload(ctx context.Context, request DeleteUploadRequest) (response DeleteUploadResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1283,6 +1355,9 @@ func (client LogAnalyticsClient) deleteUpload(ctx context.Context, request commo
 func (client LogAnalyticsClient) DeleteUploadFile(ctx context.Context, request DeleteUploadFileRequest) (response DeleteUploadFileResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1330,6 +1405,9 @@ func (client LogAnalyticsClient) deleteUploadFile(ctx context.Context, request c
 func (client LogAnalyticsClient) DeleteUploadWarning(ctx context.Context, request DeleteUploadWarningRequest) (response DeleteUploadWarningResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1377,6 +1455,9 @@ func (client LogAnalyticsClient) deleteUploadWarning(ctx context.Context, reques
 func (client LogAnalyticsClient) DisableArchiving(ctx context.Context, request DisableArchivingRequest) (response DisableArchivingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1424,6 +1505,9 @@ func (client LogAnalyticsClient) disableArchiving(ctx context.Context, request c
 func (client LogAnalyticsClient) EnableArchiving(ctx context.Context, request EnableArchivingRequest) (response EnableArchivingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1471,6 +1555,9 @@ func (client LogAnalyticsClient) enableArchiving(ctx context.Context, request co
 func (client LogAnalyticsClient) EstimatePurgeDataSize(ctx context.Context, request EstimatePurgeDataSizeRequest) (response EstimatePurgeDataSizeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1523,6 +1610,9 @@ func (client LogAnalyticsClient) estimatePurgeDataSize(ctx context.Context, requ
 func (client LogAnalyticsClient) ExportCustomContent(ctx context.Context, request ExportCustomContentRequest) (response ExportCustomContentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1574,6 +1664,9 @@ func (client LogAnalyticsClient) exportCustomContent(ctx context.Context, reques
 func (client LogAnalyticsClient) ExportQueryResult(ctx context.Context, request ExportQueryResultRequest) (response ExportQueryResultResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1620,6 +1713,9 @@ func (client LogAnalyticsClient) exportQueryResult(ctx context.Context, request 
 func (client LogAnalyticsClient) ExtractStructuredLogFieldPaths(ctx context.Context, request ExtractStructuredLogFieldPathsRequest) (response ExtractStructuredLogFieldPathsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1672,6 +1768,9 @@ func (client LogAnalyticsClient) extractStructuredLogFieldPaths(ctx context.Cont
 func (client LogAnalyticsClient) ExtractStructuredLogHeaderPaths(ctx context.Context, request ExtractStructuredLogHeaderPathsRequest) (response ExtractStructuredLogHeaderPathsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1724,6 +1823,9 @@ func (client LogAnalyticsClient) extractStructuredLogHeaderPaths(ctx context.Con
 func (client LogAnalyticsClient) Filter(ctx context.Context, request FilterRequest) (response FilterResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1771,6 +1873,9 @@ func (client LogAnalyticsClient) filter(ctx context.Context, request common.OCIR
 func (client LogAnalyticsClient) GetAssociationSummary(ctx context.Context, request GetAssociationSummaryRequest) (response GetAssociationSummaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1818,6 +1923,9 @@ func (client LogAnalyticsClient) getAssociationSummary(ctx context.Context, requ
 func (client LogAnalyticsClient) GetColumnNames(ctx context.Context, request GetColumnNamesRequest) (response GetColumnNamesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1870,6 +1978,9 @@ func (client LogAnalyticsClient) getColumnNames(ctx context.Context, request com
 func (client LogAnalyticsClient) GetConfigWorkRequest(ctx context.Context, request GetConfigWorkRequestRequest) (response GetConfigWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1917,6 +2028,9 @@ func (client LogAnalyticsClient) getConfigWorkRequest(ctx context.Context, reque
 func (client LogAnalyticsClient) GetField(ctx context.Context, request GetFieldRequest) (response GetFieldResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -1964,6 +2078,9 @@ func (client LogAnalyticsClient) getField(ctx context.Context, request common.OC
 func (client LogAnalyticsClient) GetFieldsSummary(ctx context.Context, request GetFieldsSummaryRequest) (response GetFieldsSummaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2011,6 +2128,9 @@ func (client LogAnalyticsClient) getFieldsSummary(ctx context.Context, request c
 func (client LogAnalyticsClient) GetLabel(ctx context.Context, request GetLabelRequest) (response GetLabelResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2058,6 +2178,9 @@ func (client LogAnalyticsClient) getLabel(ctx context.Context, request common.OC
 func (client LogAnalyticsClient) GetLabelSummary(ctx context.Context, request GetLabelSummaryRequest) (response GetLabelSummaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2105,6 +2228,9 @@ func (client LogAnalyticsClient) getLabelSummary(ctx context.Context, request co
 func (client LogAnalyticsClient) GetLogAnalyticsEntitiesSummary(ctx context.Context, request GetLogAnalyticsEntitiesSummaryRequest) (response GetLogAnalyticsEntitiesSummaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2152,6 +2278,9 @@ func (client LogAnalyticsClient) getLogAnalyticsEntitiesSummary(ctx context.Cont
 func (client LogAnalyticsClient) GetLogAnalyticsEntity(ctx context.Context, request GetLogAnalyticsEntityRequest) (response GetLogAnalyticsEntityResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2199,6 +2328,9 @@ func (client LogAnalyticsClient) getLogAnalyticsEntity(ctx context.Context, requ
 func (client LogAnalyticsClient) GetLogAnalyticsEntityType(ctx context.Context, request GetLogAnalyticsEntityTypeRequest) (response GetLogAnalyticsEntityTypeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2246,6 +2378,9 @@ func (client LogAnalyticsClient) getLogAnalyticsEntityType(ctx context.Context, 
 func (client LogAnalyticsClient) GetLogAnalyticsLogGroup(ctx context.Context, request GetLogAnalyticsLogGroupRequest) (response GetLogAnalyticsLogGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2293,6 +2428,9 @@ func (client LogAnalyticsClient) getLogAnalyticsLogGroup(ctx context.Context, re
 func (client LogAnalyticsClient) GetLogAnalyticsLogGroupsSummary(ctx context.Context, request GetLogAnalyticsLogGroupsSummaryRequest) (response GetLogAnalyticsLogGroupsSummaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2340,6 +2478,9 @@ func (client LogAnalyticsClient) getLogAnalyticsLogGroupsSummary(ctx context.Con
 func (client LogAnalyticsClient) GetLogAnalyticsObjectCollectionRule(ctx context.Context, request GetLogAnalyticsObjectCollectionRuleRequest) (response GetLogAnalyticsObjectCollectionRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2387,6 +2528,9 @@ func (client LogAnalyticsClient) getLogAnalyticsObjectCollectionRule(ctx context
 func (client LogAnalyticsClient) GetNamespace(ctx context.Context, request GetNamespaceRequest) (response GetNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2434,6 +2578,9 @@ func (client LogAnalyticsClient) getNamespace(ctx context.Context, request commo
 func (client LogAnalyticsClient) GetParser(ctx context.Context, request GetParserRequest) (response GetParserResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2481,6 +2628,9 @@ func (client LogAnalyticsClient) getParser(ctx context.Context, request common.O
 func (client LogAnalyticsClient) GetParserSummary(ctx context.Context, request GetParserSummaryRequest) (response GetParserSummaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2529,6 +2679,9 @@ func (client LogAnalyticsClient) getParserSummary(ctx context.Context, request c
 func (client LogAnalyticsClient) GetQueryResult(ctx context.Context, request GetQueryResultRequest) (response GetQueryResultResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2576,6 +2729,9 @@ func (client LogAnalyticsClient) getQueryResult(ctx context.Context, request com
 func (client LogAnalyticsClient) GetQueryWorkRequest(ctx context.Context, request GetQueryWorkRequestRequest) (response GetQueryWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2623,6 +2779,9 @@ func (client LogAnalyticsClient) getQueryWorkRequest(ctx context.Context, reques
 func (client LogAnalyticsClient) GetScheduledTask(ctx context.Context, request GetScheduledTaskRequest) (response GetScheduledTaskResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2670,6 +2829,9 @@ func (client LogAnalyticsClient) getScheduledTask(ctx context.Context, request c
 func (client LogAnalyticsClient) GetSource(ctx context.Context, request GetSourceRequest) (response GetSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2717,6 +2879,9 @@ func (client LogAnalyticsClient) getSource(ctx context.Context, request common.O
 func (client LogAnalyticsClient) GetSourceSummary(ctx context.Context, request GetSourceSummaryRequest) (response GetSourceSummaryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2764,6 +2929,9 @@ func (client LogAnalyticsClient) getSourceSummary(ctx context.Context, request c
 func (client LogAnalyticsClient) GetStorage(ctx context.Context, request GetStorageRequest) (response GetStorageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2811,6 +2979,9 @@ func (client LogAnalyticsClient) getStorage(ctx context.Context, request common.
 func (client LogAnalyticsClient) GetStorageUsage(ctx context.Context, request GetStorageUsageRequest) (response GetStorageUsageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2859,6 +3030,9 @@ func (client LogAnalyticsClient) getStorageUsage(ctx context.Context, request co
 func (client LogAnalyticsClient) GetStorageWorkRequest(ctx context.Context, request GetStorageWorkRequestRequest) (response GetStorageWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2906,6 +3080,9 @@ func (client LogAnalyticsClient) getStorageWorkRequest(ctx context.Context, requ
 func (client LogAnalyticsClient) GetUpload(ctx context.Context, request GetUploadRequest) (response GetUploadResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -2953,6 +3130,9 @@ func (client LogAnalyticsClient) getUpload(ctx context.Context, request common.O
 func (client LogAnalyticsClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3000,6 +3180,9 @@ func (client LogAnalyticsClient) getWorkRequest(ctx context.Context, request com
 func (client LogAnalyticsClient) ImportCustomContent(ctx context.Context, request ImportCustomContentRequest) (response ImportCustomContentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3052,6 +3235,9 @@ func (client LogAnalyticsClient) importCustomContent(ctx context.Context, reques
 func (client LogAnalyticsClient) ListAssociatedEntities(ctx context.Context, request ListAssociatedEntitiesRequest) (response ListAssociatedEntitiesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3099,6 +3285,9 @@ func (client LogAnalyticsClient) listAssociatedEntities(ctx context.Context, req
 func (client LogAnalyticsClient) ListConfigWorkRequests(ctx context.Context, request ListConfigWorkRequestsRequest) (response ListConfigWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3146,6 +3335,9 @@ func (client LogAnalyticsClient) listConfigWorkRequests(ctx context.Context, req
 func (client LogAnalyticsClient) ListEntityAssociations(ctx context.Context, request ListEntityAssociationsRequest) (response ListEntityAssociationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3193,6 +3385,9 @@ func (client LogAnalyticsClient) listEntityAssociations(ctx context.Context, req
 func (client LogAnalyticsClient) ListEntitySourceAssociations(ctx context.Context, request ListEntitySourceAssociationsRequest) (response ListEntitySourceAssociationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3240,6 +3435,9 @@ func (client LogAnalyticsClient) listEntitySourceAssociations(ctx context.Contex
 func (client LogAnalyticsClient) ListFields(ctx context.Context, request ListFieldsRequest) (response ListFieldsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3287,6 +3485,9 @@ func (client LogAnalyticsClient) listFields(ctx context.Context, request common.
 func (client LogAnalyticsClient) ListLabelPriorities(ctx context.Context, request ListLabelPrioritiesRequest) (response ListLabelPrioritiesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3334,6 +3535,9 @@ func (client LogAnalyticsClient) listLabelPriorities(ctx context.Context, reques
 func (client LogAnalyticsClient) ListLabelSourceDetails(ctx context.Context, request ListLabelSourceDetailsRequest) (response ListLabelSourceDetailsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3381,6 +3585,9 @@ func (client LogAnalyticsClient) listLabelSourceDetails(ctx context.Context, req
 func (client LogAnalyticsClient) ListLabels(ctx context.Context, request ListLabelsRequest) (response ListLabelsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3428,6 +3635,9 @@ func (client LogAnalyticsClient) listLabels(ctx context.Context, request common.
 func (client LogAnalyticsClient) ListLogAnalyticsEntities(ctx context.Context, request ListLogAnalyticsEntitiesRequest) (response ListLogAnalyticsEntitiesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3475,6 +3685,9 @@ func (client LogAnalyticsClient) listLogAnalyticsEntities(ctx context.Context, r
 func (client LogAnalyticsClient) ListLogAnalyticsEntityTypes(ctx context.Context, request ListLogAnalyticsEntityTypesRequest) (response ListLogAnalyticsEntityTypesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3522,6 +3735,9 @@ func (client LogAnalyticsClient) listLogAnalyticsEntityTypes(ctx context.Context
 func (client LogAnalyticsClient) ListLogAnalyticsLogGroups(ctx context.Context, request ListLogAnalyticsLogGroupsRequest) (response ListLogAnalyticsLogGroupsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3569,6 +3785,9 @@ func (client LogAnalyticsClient) listLogAnalyticsLogGroups(ctx context.Context, 
 func (client LogAnalyticsClient) ListLogAnalyticsObjectCollectionRules(ctx context.Context, request ListLogAnalyticsObjectCollectionRulesRequest) (response ListLogAnalyticsObjectCollectionRulesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3616,6 +3835,9 @@ func (client LogAnalyticsClient) listLogAnalyticsObjectCollectionRules(ctx conte
 func (client LogAnalyticsClient) ListMetaSourceTypes(ctx context.Context, request ListMetaSourceTypesRequest) (response ListMetaSourceTypesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3663,6 +3885,9 @@ func (client LogAnalyticsClient) listMetaSourceTypes(ctx context.Context, reques
 func (client LogAnalyticsClient) ListNamespaces(ctx context.Context, request ListNamespacesRequest) (response ListNamespacesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3710,6 +3935,9 @@ func (client LogAnalyticsClient) listNamespaces(ctx context.Context, request com
 func (client LogAnalyticsClient) ListParserFunctions(ctx context.Context, request ListParserFunctionsRequest) (response ListParserFunctionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3757,6 +3985,9 @@ func (client LogAnalyticsClient) listParserFunctions(ctx context.Context, reques
 func (client LogAnalyticsClient) ListParserMetaPlugins(ctx context.Context, request ListParserMetaPluginsRequest) (response ListParserMetaPluginsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3804,6 +4035,9 @@ func (client LogAnalyticsClient) listParserMetaPlugins(ctx context.Context, requ
 func (client LogAnalyticsClient) ListParsers(ctx context.Context, request ListParsersRequest) (response ListParsersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3851,6 +4085,9 @@ func (client LogAnalyticsClient) listParsers(ctx context.Context, request common
 func (client LogAnalyticsClient) ListQueryWorkRequests(ctx context.Context, request ListQueryWorkRequestsRequest) (response ListQueryWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3898,6 +4135,9 @@ func (client LogAnalyticsClient) listQueryWorkRequests(ctx context.Context, requ
 func (client LogAnalyticsClient) ListScheduledTasks(ctx context.Context, request ListScheduledTasksRequest) (response ListScheduledTasksResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3945,6 +4185,9 @@ func (client LogAnalyticsClient) listScheduledTasks(ctx context.Context, request
 func (client LogAnalyticsClient) ListSourceAssociations(ctx context.Context, request ListSourceAssociationsRequest) (response ListSourceAssociationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -3992,6 +4235,9 @@ func (client LogAnalyticsClient) listSourceAssociations(ctx context.Context, req
 func (client LogAnalyticsClient) ListSourceExtendedFieldDefinitions(ctx context.Context, request ListSourceExtendedFieldDefinitionsRequest) (response ListSourceExtendedFieldDefinitionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4039,6 +4285,9 @@ func (client LogAnalyticsClient) listSourceExtendedFieldDefinitions(ctx context.
 func (client LogAnalyticsClient) ListSourceLabelOperators(ctx context.Context, request ListSourceLabelOperatorsRequest) (response ListSourceLabelOperatorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4086,6 +4335,9 @@ func (client LogAnalyticsClient) listSourceLabelOperators(ctx context.Context, r
 func (client LogAnalyticsClient) ListSourceMetaFunctions(ctx context.Context, request ListSourceMetaFunctionsRequest) (response ListSourceMetaFunctionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4133,6 +4385,9 @@ func (client LogAnalyticsClient) listSourceMetaFunctions(ctx context.Context, re
 func (client LogAnalyticsClient) ListSourcePatterns(ctx context.Context, request ListSourcePatternsRequest) (response ListSourcePatternsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4180,6 +4435,9 @@ func (client LogAnalyticsClient) listSourcePatterns(ctx context.Context, request
 func (client LogAnalyticsClient) ListSources(ctx context.Context, request ListSourcesRequest) (response ListSourcesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4227,6 +4485,9 @@ func (client LogAnalyticsClient) listSources(ctx context.Context, request common
 func (client LogAnalyticsClient) ListStorageWorkRequestErrors(ctx context.Context, request ListStorageWorkRequestErrorsRequest) (response ListStorageWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4274,6 +4535,9 @@ func (client LogAnalyticsClient) listStorageWorkRequestErrors(ctx context.Contex
 func (client LogAnalyticsClient) ListStorageWorkRequests(ctx context.Context, request ListStorageWorkRequestsRequest) (response ListStorageWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4321,6 +4585,9 @@ func (client LogAnalyticsClient) listStorageWorkRequests(ctx context.Context, re
 func (client LogAnalyticsClient) ListSupportedCharEncodings(ctx context.Context, request ListSupportedCharEncodingsRequest) (response ListSupportedCharEncodingsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4368,6 +4635,9 @@ func (client LogAnalyticsClient) listSupportedCharEncodings(ctx context.Context,
 func (client LogAnalyticsClient) ListSupportedTimezones(ctx context.Context, request ListSupportedTimezonesRequest) (response ListSupportedTimezonesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4415,6 +4685,9 @@ func (client LogAnalyticsClient) listSupportedTimezones(ctx context.Context, req
 func (client LogAnalyticsClient) ListUploadFiles(ctx context.Context, request ListUploadFilesRequest) (response ListUploadFilesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4462,6 +4735,9 @@ func (client LogAnalyticsClient) listUploadFiles(ctx context.Context, request co
 func (client LogAnalyticsClient) ListUploadWarnings(ctx context.Context, request ListUploadWarningsRequest) (response ListUploadWarningsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4510,6 +4786,9 @@ func (client LogAnalyticsClient) listUploadWarnings(ctx context.Context, request
 func (client LogAnalyticsClient) ListUploads(ctx context.Context, request ListUploadsRequest) (response ListUploadsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4557,6 +4836,9 @@ func (client LogAnalyticsClient) listUploads(ctx context.Context, request common
 func (client LogAnalyticsClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4604,6 +4886,9 @@ func (client LogAnalyticsClient) listWorkRequestErrors(ctx context.Context, requ
 func (client LogAnalyticsClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4651,6 +4936,9 @@ func (client LogAnalyticsClient) listWorkRequestLogs(ctx context.Context, reques
 func (client LogAnalyticsClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4698,6 +4986,9 @@ func (client LogAnalyticsClient) listWorkRequests(ctx context.Context, request c
 func (client LogAnalyticsClient) OffboardNamespace(ctx context.Context, request OffboardNamespaceRequest) (response OffboardNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4745,6 +5036,9 @@ func (client LogAnalyticsClient) offboardNamespace(ctx context.Context, request 
 func (client LogAnalyticsClient) OnboardNamespace(ctx context.Context, request OnboardNamespaceRequest) (response OnboardNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4797,6 +5091,9 @@ func (client LogAnalyticsClient) onboardNamespace(ctx context.Context, request c
 func (client LogAnalyticsClient) ParseQuery(ctx context.Context, request ParseQueryRequest) (response ParseQueryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4844,6 +5141,9 @@ func (client LogAnalyticsClient) parseQuery(ctx context.Context, request common.
 func (client LogAnalyticsClient) PurgeStorageData(ctx context.Context, request PurgeStorageDataRequest) (response PurgeStorageDataResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4896,6 +5196,9 @@ func (client LogAnalyticsClient) purgeStorageData(ctx context.Context, request c
 func (client LogAnalyticsClient) PutQueryWorkRequestBackground(ctx context.Context, request PutQueryWorkRequestBackgroundRequest) (response PutQueryWorkRequestBackgroundResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4943,6 +5246,9 @@ func (client LogAnalyticsClient) putQueryWorkRequestBackground(ctx context.Conte
 func (client LogAnalyticsClient) Query(ctx context.Context, request QueryRequest) (response QueryResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -4990,6 +5296,9 @@ func (client LogAnalyticsClient) query(ctx context.Context, request common.OCIRe
 func (client LogAnalyticsClient) RecallArchivedData(ctx context.Context, request RecallArchivedDataRequest) (response RecallArchivedDataResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5042,6 +5351,9 @@ func (client LogAnalyticsClient) recallArchivedData(ctx context.Context, request
 func (client LogAnalyticsClient) RegisterLookup(ctx context.Context, request RegisterLookupRequest) (response RegisterLookupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5094,6 +5406,9 @@ func (client LogAnalyticsClient) registerLookup(ctx context.Context, request com
 func (client LogAnalyticsClient) ReleaseRecalledData(ctx context.Context, request ReleaseRecalledDataRequest) (response ReleaseRecalledDataResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5146,6 +5461,9 @@ func (client LogAnalyticsClient) releaseRecalledData(ctx context.Context, reques
 func (client LogAnalyticsClient) RemoveEntityAssociations(ctx context.Context, request RemoveEntityAssociationsRequest) (response RemoveEntityAssociationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5200,6 +5518,9 @@ func (client LogAnalyticsClient) removeEntityAssociations(ctx context.Context, r
 func (client LogAnalyticsClient) Run(ctx context.Context, request RunRequest) (response RunResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5252,6 +5573,9 @@ func (client LogAnalyticsClient) run(ctx context.Context, request common.OCIRequ
 func (client LogAnalyticsClient) Suggest(ctx context.Context, request SuggestRequest) (response SuggestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5299,6 +5623,9 @@ func (client LogAnalyticsClient) suggest(ctx context.Context, request common.OCI
 func (client LogAnalyticsClient) TestParser(ctx context.Context, request TestParserRequest) (response TestParserResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5351,6 +5678,9 @@ func (client LogAnalyticsClient) testParser(ctx context.Context, request common.
 func (client LogAnalyticsClient) UpdateLogAnalyticsEntity(ctx context.Context, request UpdateLogAnalyticsEntityRequest) (response UpdateLogAnalyticsEntityResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5398,6 +5728,9 @@ func (client LogAnalyticsClient) updateLogAnalyticsEntity(ctx context.Context, r
 func (client LogAnalyticsClient) UpdateLogAnalyticsEntityType(ctx context.Context, request UpdateLogAnalyticsEntityTypeRequest) (response UpdateLogAnalyticsEntityTypeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5445,6 +5778,9 @@ func (client LogAnalyticsClient) updateLogAnalyticsEntityType(ctx context.Contex
 func (client LogAnalyticsClient) UpdateLogAnalyticsLogGroup(ctx context.Context, request UpdateLogAnalyticsLogGroupRequest) (response UpdateLogAnalyticsLogGroupResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5492,6 +5828,9 @@ func (client LogAnalyticsClient) updateLogAnalyticsLogGroup(ctx context.Context,
 func (client LogAnalyticsClient) UpdateLogAnalyticsObjectCollectionRule(ctx context.Context, request UpdateLogAnalyticsObjectCollectionRuleRequest) (response UpdateLogAnalyticsObjectCollectionRuleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5539,6 +5878,9 @@ func (client LogAnalyticsClient) updateLogAnalyticsObjectCollectionRule(ctx cont
 func (client LogAnalyticsClient) UpdateScheduledTask(ctx context.Context, request UpdateScheduledTaskRequest) (response UpdateScheduledTaskResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5586,6 +5928,9 @@ func (client LogAnalyticsClient) updateScheduledTask(ctx context.Context, reques
 func (client LogAnalyticsClient) UpdateStorage(ctx context.Context, request UpdateStorageRequest) (response UpdateStorageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5633,6 +5978,9 @@ func (client LogAnalyticsClient) updateStorage(ctx context.Context, request comm
 func (client LogAnalyticsClient) UploadLogFile(ctx context.Context, request UploadLogFileRequest) (response UploadLogFileResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5695,6 +6043,9 @@ func (client LogAnalyticsClient) uploadLogFile(ctx context.Context, request comm
 func (client LogAnalyticsClient) UpsertAssociations(ctx context.Context, request UpsertAssociationsRequest) (response UpsertAssociationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5747,6 +6098,9 @@ func (client LogAnalyticsClient) upsertAssociations(ctx context.Context, request
 func (client LogAnalyticsClient) UpsertField(ctx context.Context, request UpsertFieldRequest) (response UpsertFieldResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5799,6 +6153,9 @@ func (client LogAnalyticsClient) upsertField(ctx context.Context, request common
 func (client LogAnalyticsClient) UpsertLabel(ctx context.Context, request UpsertLabelRequest) (response UpsertLabelResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5851,6 +6208,9 @@ func (client LogAnalyticsClient) upsertLabel(ctx context.Context, request common
 func (client LogAnalyticsClient) UpsertParser(ctx context.Context, request UpsertParserRequest) (response UpsertParserResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5903,6 +6263,9 @@ func (client LogAnalyticsClient) upsertParser(ctx context.Context, request commo
 func (client LogAnalyticsClient) UpsertSource(ctx context.Context, request UpsertSourceRequest) (response UpsertSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -5955,6 +6318,9 @@ func (client LogAnalyticsClient) upsertSource(ctx context.Context, request commo
 func (client LogAnalyticsClient) ValidateAssociationParameters(ctx context.Context, request ValidateAssociationParametersRequest) (response ValidateAssociationParametersResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -6007,6 +6373,9 @@ func (client LogAnalyticsClient) validateAssociationParameters(ctx context.Conte
 func (client LogAnalyticsClient) ValidateFile(ctx context.Context, request ValidateFileRequest) (response ValidateFileResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -6054,6 +6423,9 @@ func (client LogAnalyticsClient) validateFile(ctx context.Context, request commo
 func (client LogAnalyticsClient) ValidateSource(ctx context.Context, request ValidateSourceRequest) (response ValidateSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -6106,6 +6478,9 @@ func (client LogAnalyticsClient) validateSource(ctx context.Context, request com
 func (client LogAnalyticsClient) ValidateSourceExtendedFieldDetails(ctx context.Context, request ValidateSourceExtendedFieldDetailsRequest) (response ValidateSourceExtendedFieldDetailsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -6158,6 +6533,9 @@ func (client LogAnalyticsClient) validateSourceExtendedFieldDetails(ctx context.
 func (client LogAnalyticsClient) ValidateSourceMapping(ctx context.Context, request ValidateSourceMappingRequest) (response ValidateSourceMappingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

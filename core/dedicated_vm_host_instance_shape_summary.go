@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // DedicatedVmHostInstanceShapeSummary The shape used to launch instances associated with the dedicated VM host.

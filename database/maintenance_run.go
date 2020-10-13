@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // MaintenanceRun Details of a maintenance run.
@@ -57,6 +57,9 @@ type MaintenanceRun struct {
 
 	// Maintenance sub-type.
 	MaintenanceSubtype MaintenanceRunMaintenanceSubtypeEnum `mandatory:"false" json:"maintenanceSubtype,omitempty"`
+
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the maintenance run for the Autonomous Data Guard association's peer container database.
+	PeerMaintenanceRunId *string `mandatory:"false" json:"peerMaintenanceRunId"`
 }
 
 func (m MaintenanceRun) String() string {

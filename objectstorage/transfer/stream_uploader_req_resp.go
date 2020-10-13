@@ -5,9 +5,9 @@ package transfer
 
 import (
 	"errors"
+	"github.com/oracle/oci-go-sdk/v27/common"
 	"io"
-
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"reflect"
 )
 
 // UploadStreamRequest defines the input parameters for UploadFile method
@@ -29,11 +29,23 @@ func (request UploadStreamRequest) validate() error {
 		return err
 	}
 
-	if request.StreamReader == nil {
+	if isNil(request.StreamReader) {
 		return errorInvalidStream
 	}
 
 	return nil
+}
+
+func isNil(i interface{}) bool {
+	if i == nil {
+		return true
+	}
+	kind := reflect.TypeOf(i).Kind()
+	switch kind {
+	case reflect.Ptr, reflect.Map, reflect.Array, reflect.Chan, reflect.Slice:
+		return reflect.ValueOf(i).IsNil()
+	}
+	return false
 }
 
 func (request *UploadStreamRequest) initDefaultValues() error {

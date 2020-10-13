@@ -12,8 +12,8 @@ package ocvp
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v26/common"
-	"github.com/oracle/oci-go-sdk/v26/common/auth"
+	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v27/common/auth"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type SddcClient struct {
 func NewSddcClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client SddcClient, err error) {
 	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
 		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newSddcClientFromBaseClient(baseClient, configProvider)
+			return newSddcClientFromBaseClient(baseClient, provider)
 		}
 	}
 
@@ -83,6 +83,9 @@ func (client *SddcClient) ConfigurationProvider() *common.ConfigurationProvider 
 func (client SddcClient) ChangeSddcCompartment(ctx context.Context, request ChangeSddcCompartmentRequest) (response ChangeSddcCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -137,6 +140,9 @@ func (client SddcClient) changeSddcCompartment(ctx context.Context, request comm
 func (client SddcClient) CreateSddc(ctx context.Context, request CreateSddcRequest) (response CreateSddcResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -193,6 +199,9 @@ func (client SddcClient) createSddc(ctx context.Context, request common.OCIReque
 func (client SddcClient) DeleteSddc(ctx context.Context, request DeleteSddcRequest) (response DeleteSddcResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -240,6 +249,9 @@ func (client SddcClient) deleteSddc(ctx context.Context, request common.OCIReque
 func (client SddcClient) GetSddc(ctx context.Context, request GetSddcRequest) (response GetSddcResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -288,6 +300,9 @@ func (client SddcClient) getSddc(ctx context.Context, request common.OCIRequest)
 func (client SddcClient) ListSddcs(ctx context.Context, request ListSddcsRequest) (response ListSddcsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -336,6 +351,9 @@ func (client SddcClient) listSddcs(ctx context.Context, request common.OCIReques
 func (client SddcClient) ListSupportedVmwareSoftwareVersions(ctx context.Context, request ListSupportedVmwareSoftwareVersionsRequest) (response ListSupportedVmwareSoftwareVersionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
@@ -387,6 +405,9 @@ func (client SddcClient) listSupportedVmwareSoftwareVersions(ctx context.Context
 func (client SddcClient) UpdateSddc(ctx context.Context, request UpdateSddcRequest) (response UpdateSddcResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}

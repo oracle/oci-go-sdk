@@ -11,7 +11,7 @@ package identity
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v26/common"
+	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
 // DefaultTagDefinitionValidator Use this validator to clear any existing validator on the tag key definition with the UpdateTag
