@@ -4,7 +4,7 @@
 
 // Logging Search API
 //
-// Search for logs in your compartements / log groups / log objects.
+// Search for logs in your compartments, log groups, and log objects.
 //
 
 package loggingsearch
@@ -23,8 +23,8 @@ type SearchLogsDetails struct {
 	TimeEnd *common.SDKTime `mandatory:"true" json:"timeEnd"`
 
 	// Query corresponding to the search operation. This query is parsed and validated before execution and
-	// should follow the spec. For query language specification see:
-	// https://docs.cloud.oracle.com/iaas/Content/Logging/Reference/query_language_specification.htm
+	// should follow the specification. For more information on the query language specification, see
+	// Logging Query Language Specification (https://docs.cloud.oracle.com/Content/Logging/Reference/query_language_specification.htm).
 	SearchQuery *string `mandatory:"true" json:"searchQuery"`
 
 	// Whether to return field schema information for the log stream specified in searchQuery.

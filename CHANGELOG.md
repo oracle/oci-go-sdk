@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 27.2.0 - 2020-10-27
+### Added
+- Support for the Compute Instance Agent service
+- Support for key store resources and operations in the Database service
+- Support for specifying a key store when creating autonomous container databases in the Database service
+
 ## 27.1.0 - 2020-10-20
 ### Added
 - Support for the Operations Insights service

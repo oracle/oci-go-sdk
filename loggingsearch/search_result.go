@@ -4,7 +4,7 @@
 
 // Logging Search API
 //
-// Search for logs in your compartements / log groups / log objects.
+// Search for logs in your compartments, log groups, and log objects.
 //
 
 package loggingsearch
@@ -13,10 +13,10 @@ import (
 	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
-// SearchResult A log search result entry
+// SearchResult A log search result entry.
 type SearchResult struct {
 
-	// JSON blob containing the search entry with projected fields.
+	// JSON blob containing the search entry with the projected fields.
 	Data *interface{} `mandatory:"true" json:"data"`
 }
 

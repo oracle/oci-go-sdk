@@ -2,27 +2,24 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Logging Search API
+// InstanceAgentService API
 //
-// Search for logs in your compartments, log groups, and log objects.
+// Instance Agent Service API
 //
 
-package loggingsearch
+package computeinstanceagent
 
 import (
 	"github.com/oracle/oci-go-sdk/v27/common"
 )
 
-// SearchResultSummary Summary of results.
-type SearchResultSummary struct {
+// InstanceAgentCommandTarget Target instances that will receive a command.
+type InstanceAgentCommandTarget struct {
 
-	// Total number of search results.
-	ResultCount *int `mandatory:"false" json:"resultCount"`
-
-	// Total number of field schema information.
-	FieldCount *int `mandatory:"false" json:"fieldCount"`
+	// The target instance OCID
+	InstanceId *string `mandatory:"false" json:"instanceId"`
 }
 
-func (m SearchResultSummary) String() string {
+func (m InstanceAgentCommandTarget) String() string {
 	return common.PointerString(m)
 }
