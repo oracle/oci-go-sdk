@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // AddSecurityRuleDetails A rule for allowing inbound (INGRESS) or outbound (EGRESS) IP packets.

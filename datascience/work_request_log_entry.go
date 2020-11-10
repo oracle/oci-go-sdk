@@ -10,7 +10,7 @@
 package datascience
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // WorkRequestLogEntry Log entries related to a specific work request.

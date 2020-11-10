@@ -10,7 +10,7 @@
 package oce
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // WorkflowStep Workflow step of workflow monitor.

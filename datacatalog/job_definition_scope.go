@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // JobDefinitionScope Defines the rules or criteria based on which the scope for job definition is circumscribed.

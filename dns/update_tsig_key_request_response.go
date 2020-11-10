@@ -5,7 +5,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
@@ -36,6 +36,9 @@ type UpdateTsigKeyRequest struct {
 	// to contact Oracle about a particular request, please provide
 	// the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+
+	// Specifies to operate only on resources that have a matching DNS scope.
+	Scope UpdateTsigKeyScopeEnum `mandatory:"false" contributesTo:"query" name:"scope" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
@@ -83,4 +86,27 @@ func (response UpdateTsigKeyResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response UpdateTsigKeyResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
+}
+
+// UpdateTsigKeyScopeEnum Enum with underlying type: string
+type UpdateTsigKeyScopeEnum string
+
+// Set of constants representing the allowable values for UpdateTsigKeyScopeEnum
+const (
+	UpdateTsigKeyScopeGlobal  UpdateTsigKeyScopeEnum = "GLOBAL"
+	UpdateTsigKeyScopePrivate UpdateTsigKeyScopeEnum = "PRIVATE"
+)
+
+var mappingUpdateTsigKeyScope = map[string]UpdateTsigKeyScopeEnum{
+	"GLOBAL":  UpdateTsigKeyScopeGlobal,
+	"PRIVATE": UpdateTsigKeyScopePrivate,
+}
+
+// GetUpdateTsigKeyScopeEnumValues Enumerates the set of values for UpdateTsigKeyScopeEnum
+func GetUpdateTsigKeyScopeEnumValues() []UpdateTsigKeyScopeEnum {
+	values := make([]UpdateTsigKeyScopeEnum, 0)
+	for _, v := range mappingUpdateTsigKeyScope {
+		values = append(values, v)
+	}
+	return values
 }

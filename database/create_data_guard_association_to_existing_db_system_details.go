@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // CreateDataGuardAssociationToExistingDbSystemDetails The configuration details for creating a Data Guard association for a bare metal or Exadata DB system database. For these types of DB system databases, the `creationType` should be `ExistingDbSystem`. A standby database will be created in the DB system you specify.
@@ -26,6 +26,9 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	// * At least two special characters. Valid special characters include "_", "#", and "-" only.
 	// **The password MUST be the same as the primary admin password.**
 	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword"`
+
+	// The database software image OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
+	DatabaseSoftwareImageId *string `mandatory:"false" json:"databaseSoftwareImageId"`
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the DB system in which to create the standby database.
 	// You must supply this value if creationType is `ExistingDbSystem`.
@@ -50,6 +53,11 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 	// in the Oracle Data Guard documentation.
 	// **IMPORTANT** - The only transport type currently supported by the Database service is ASYNC.
 	TransportType CreateDataGuardAssociationDetailsTransportTypeEnum `mandatory:"true" json:"transportType"`
+}
+
+//GetDatabaseSoftwareImageId returns DatabaseSoftwareImageId
+func (m CreateDataGuardAssociationToExistingDbSystemDetails) GetDatabaseSoftwareImageId() *string {
+	return m.DatabaseSoftwareImageId
 }
 
 //GetDatabaseAdminPassword returns DatabaseAdminPassword

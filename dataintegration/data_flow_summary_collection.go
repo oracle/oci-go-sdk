@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // DataFlowSummaryCollection This is the collection of data flow summaries, it may be a collection of lightweight details or full definitions.

@@ -11,8 +11,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/oracle/oci-go-sdk/v27/common"
-	"github.com/oracle/oci-go-sdk/v27/objectstorage"
+	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v28/objectstorage"
 )
 
 // FileUploader is an interface to upload a file
@@ -185,10 +185,6 @@ func (fileUpload *fileUpload) startConcurrentUpload(ctx context.Context, done <-
 
 	resp, err := fileUpload.multipartUploader.commit(ctx, request.UploadRequest, fileUpload.manifest.parts[fileUpload.uploadID], fileUpload.uploadID)
 
-	if multipartMD5 != nil && *request.EnableMultipartChecksumVerification && strings.Compare(*resp.OpcMultipartMd5, *multipartMD5) != 0 {
-
-		err = fmt.Errorf("multipart base64 MD5 checksum verification failure, the sending opcMD5 is %s, the reveived is %s", *resp.OpcMultipartMd5, *multipartMD5)
-	}
 	if err != nil {
 		common.Debugf("failed to commit with error: %v\n", err)
 		return UploadResponse{
@@ -196,6 +192,11 @@ func (fileUpload *fileUpload) startConcurrentUpload(ctx context.Context, done <-
 				MultipartUploadResponse: &MultipartUploadResponse{
 					isResumable: common.Bool(true), UploadID: common.String(fileUpload.uploadID)}},
 			err
+	}
+
+	if multipartMD5 != nil && *request.EnableMultipartChecksumVerification && strings.Compare(*resp.OpcMultipartMd5, *multipartMD5) != 0 {
+		err = fmt.Errorf("multipart base64 MD5 checksum verification failure, the sending opcMD5 is %s, the reveived is %s", *resp.OpcMultipartMd5, *multipartMD5)
+		common.Debugf("MD5 checksum error: %v\n", err)
 	}
 
 	response = UploadResponse{

@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // CreateDataGuardAssociationToExistingVmClusterDetails The configuration details for creating a Data Guard association for a ExaCC Vmcluster database. For these types of vm cluster databases, the `creationType` should be `ExistingVmCluster`. A standby database will be created in the VM cluster you specify.
@@ -25,6 +25,9 @@ type CreateDataGuardAssociationToExistingVmClusterDetails struct {
 	// * At least two special characters. Valid special characters include "_", "#", and "-" only.
 	// **The password MUST be the same as the primary admin password.**
 	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword"`
+
+	// The database software image OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
+	DatabaseSoftwareImageId *string `mandatory:"false" json:"databaseSoftwareImageId"`
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the VM Cluster in which to create the standby database.
 	// You must supply this value if creationType is `ExistingVmCluster`.
@@ -49,6 +52,11 @@ type CreateDataGuardAssociationToExistingVmClusterDetails struct {
 	// in the Oracle Data Guard documentation.
 	// **IMPORTANT** - The only transport type currently supported by the Database service is ASYNC.
 	TransportType CreateDataGuardAssociationDetailsTransportTypeEnum `mandatory:"true" json:"transportType"`
+}
+
+//GetDatabaseSoftwareImageId returns DatabaseSoftwareImageId
+func (m CreateDataGuardAssociationToExistingVmClusterDetails) GetDatabaseSoftwareImageId() *string {
+	return m.DatabaseSoftwareImageId
 }
 
 //GetDatabaseAdminPassword returns DatabaseAdminPassword

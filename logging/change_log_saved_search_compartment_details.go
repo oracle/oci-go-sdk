@@ -10,7 +10,7 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // ChangeLogSavedSearchCompartmentDetails Contains details indicating which compartment the resource should move to

@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // UpdateBackupDestinationDetails For a RECOVERY_APPLIANCE backup destination, used to update the connection string and/or the list of VPC users.

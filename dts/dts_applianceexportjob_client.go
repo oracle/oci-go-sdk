@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v27/common"
-	"github.com/oracle/oci-go-sdk/v27/common/auth"
+	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v28/common/auth"
 	"net/http"
 )
 
@@ -26,13 +26,15 @@ type ApplianceExportJobClient struct {
 // NewApplianceExportJobClientWithConfigurationProvider Creates a new default ApplianceExportJob client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewApplianceExportJobClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ApplianceExportJobClient, err error) {
-	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
-		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newApplianceExportJobClientFromBaseClient(baseClient, provider)
-		}
+	provider, err := auth.GetGenericConfigurationProvider(configProvider)
+	if err != nil {
+		return client, err
 	}
-
-	return
+	baseClient, e := common.NewClientWithConfig(provider)
+	if e != nil {
+		return client, e
+	}
+	return newApplianceExportJobClientFromBaseClient(baseClient, provider)
 }
 
 // NewApplianceExportJobClientWithOboToken Creates a new default ApplianceExportJob client with the given configuration provider.
@@ -41,7 +43,7 @@ func NewApplianceExportJobClientWithConfigurationProvider(configProvider common.
 func NewApplianceExportJobClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client ApplianceExportJobClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {
-		return
+		return client, err
 	}
 
 	return newApplianceExportJobClientFromBaseClient(baseClient, configProvider)

@@ -11,7 +11,7 @@ package computeinstanceagent
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // InstanceAgentCommandExecutionOutputViaObjectStorageTupleDetails command execution output via object storage tuple.

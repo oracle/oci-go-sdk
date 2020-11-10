@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // AuthToken An `AuthToken` is an Oracle-generated token string that you can use to authenticate with third-party APIs

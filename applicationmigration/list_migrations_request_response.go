@@ -5,21 +5,21 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
 // ListMigrationsRequest wrapper for the ListMigrations operation
 type ListMigrationsRequest struct {
 
-	// The compartment OCID on which to filter.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of a compartment. Retrieves details of objects in the specified compartment.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// The OCID on which to query for an application.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) on which to query for a migration.
 	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
 
 	// The number of items returned in a paginated `List` call. For information about pagination, see
@@ -41,8 +41,8 @@ type ListMigrationsRequest struct {
 	// Display name on which to query.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
 
-	// The lifecycle state on which to filter.
-	LifecycleState MigrationLifecycleStatesEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
+	// This field is not supported. Do not use.
+	LifecycleState ListMigrationsLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
@@ -76,9 +76,9 @@ type ListMigrationsResponse struct {
 	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// For pagination of a list of items. When paging through a list, if this header appears in the response,
-	// then a partial list might have been returned. Include this value as the `page` parameter for the
-	// subsequent GET request to get the next batch of items.
+	// For list pagination. When this header appears in the response, additional pages of results remain.
+	// For details about how pagination works, see List Pagination (https://docs.cloud.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
+	// Include this value as the `page` parameter for the subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
 }
 
@@ -132,6 +132,39 @@ var mappingListMigrationsSortBy = map[string]ListMigrationsSortByEnum{
 func GetListMigrationsSortByEnumValues() []ListMigrationsSortByEnum {
 	values := make([]ListMigrationsSortByEnum, 0)
 	for _, v := range mappingListMigrationsSortBy {
+		values = append(values, v)
+	}
+	return values
+}
+
+// ListMigrationsLifecycleStateEnum Enum with underlying type: string
+type ListMigrationsLifecycleStateEnum string
+
+// Set of constants representing the allowable values for ListMigrationsLifecycleStateEnum
+const (
+	ListMigrationsLifecycleStateCreating  ListMigrationsLifecycleStateEnum = "CREATING"
+	ListMigrationsLifecycleStateActive    ListMigrationsLifecycleStateEnum = "ACTIVE"
+	ListMigrationsLifecycleStateInactive  ListMigrationsLifecycleStateEnum = "INACTIVE"
+	ListMigrationsLifecycleStateUpdating  ListMigrationsLifecycleStateEnum = "UPDATING"
+	ListMigrationsLifecycleStateSucceeded ListMigrationsLifecycleStateEnum = "SUCCEEDED"
+	ListMigrationsLifecycleStateDeleting  ListMigrationsLifecycleStateEnum = "DELETING"
+	ListMigrationsLifecycleStateDeleted   ListMigrationsLifecycleStateEnum = "DELETED"
+)
+
+var mappingListMigrationsLifecycleState = map[string]ListMigrationsLifecycleStateEnum{
+	"CREATING":  ListMigrationsLifecycleStateCreating,
+	"ACTIVE":    ListMigrationsLifecycleStateActive,
+	"INACTIVE":  ListMigrationsLifecycleStateInactive,
+	"UPDATING":  ListMigrationsLifecycleStateUpdating,
+	"SUCCEEDED": ListMigrationsLifecycleStateSucceeded,
+	"DELETING":  ListMigrationsLifecycleStateDeleting,
+	"DELETED":   ListMigrationsLifecycleStateDeleted,
+}
+
+// GetListMigrationsLifecycleStateEnumValues Enumerates the set of values for ListMigrationsLifecycleStateEnum
+func GetListMigrationsLifecycleStateEnumValues() []ListMigrationsLifecycleStateEnum {
+	values := make([]ListMigrationsLifecycleStateEnum, 0)
+	for _, v := range mappingListMigrationsLifecycleState {
 		values = append(values, v)
 	}
 	return values

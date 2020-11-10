@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // CreateVlanDetails The representation of CreateVlanDetails
@@ -27,6 +27,7 @@ type CreateVlanDetails struct {
 	// The range of IPv4 addresses that will be used for layer 3 communication with
 	// hosts outside the VLAN. The CIDR must maintain the following rules -
 	// a. The CIDR block is valid and correctly formatted.
+	// b. The new range is within one of the parent VCN ranges.
 	// Example: `192.0.2.0/24`
 	CidrBlock *string `mandatory:"true" json:"cidrBlock"`
 

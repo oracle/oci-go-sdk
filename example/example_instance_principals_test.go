@@ -17,10 +17,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/oracle/oci-go-sdk/v27/common"
-	"github.com/oracle/oci-go-sdk/v27/common/auth"
-	"github.com/oracle/oci-go-sdk/v27/example/helpers"
-	"github.com/oracle/oci-go-sdk/v27/identity"
+	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v28/common/auth"
+	"github.com/oracle/oci-go-sdk/v28/example/helpers"
+	"github.com/oracle/oci-go-sdk/v28/identity"
 )
 
 func ExampleInstancePrincipals() {

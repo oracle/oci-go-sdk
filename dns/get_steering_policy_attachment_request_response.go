@@ -5,7 +5,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
@@ -31,6 +31,9 @@ type GetSteeringPolicyAttachmentRequest struct {
 	// to contact Oracle about a particular request, please provide
 	// the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+
+	// Specifies to operate only on resources that have a matching DNS scope.
+	Scope GetSteeringPolicyAttachmentScopeEnum `mandatory:"false" contributesTo:"query" name:"scope" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
@@ -84,4 +87,27 @@ func (response GetSteeringPolicyAttachmentResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response GetSteeringPolicyAttachmentResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
+}
+
+// GetSteeringPolicyAttachmentScopeEnum Enum with underlying type: string
+type GetSteeringPolicyAttachmentScopeEnum string
+
+// Set of constants representing the allowable values for GetSteeringPolicyAttachmentScopeEnum
+const (
+	GetSteeringPolicyAttachmentScopeGlobal  GetSteeringPolicyAttachmentScopeEnum = "GLOBAL"
+	GetSteeringPolicyAttachmentScopePrivate GetSteeringPolicyAttachmentScopeEnum = "PRIVATE"
+)
+
+var mappingGetSteeringPolicyAttachmentScope = map[string]GetSteeringPolicyAttachmentScopeEnum{
+	"GLOBAL":  GetSteeringPolicyAttachmentScopeGlobal,
+	"PRIVATE": GetSteeringPolicyAttachmentScopePrivate,
+}
+
+// GetGetSteeringPolicyAttachmentScopeEnumValues Enumerates the set of values for GetSteeringPolicyAttachmentScopeEnum
+func GetGetSteeringPolicyAttachmentScopeEnumValues() []GetSteeringPolicyAttachmentScopeEnum {
+	values := make([]GetSteeringPolicyAttachmentScopeEnum, 0)
+	for _, v := range mappingGetSteeringPolicyAttachmentScope {
+		values = append(values, v)
+	}
+	return values
 }

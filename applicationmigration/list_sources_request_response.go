@@ -5,21 +5,21 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
 // ListSourcesRequest wrapper for the ListSources operation
 type ListSourcesRequest struct {
 
-	// The compartment OCID on which to filter.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of a compartment. Retrieves details of objects in the specified compartment.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// The OCID on which to query for a source.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) on which to query for a source.
 	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
 
 	// The number of items returned in a paginated `List` call. For information about pagination, see
@@ -41,8 +41,8 @@ type ListSourcesRequest struct {
 	// Display name on which to query.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
 
-	// The lifecycle state on which to filter.
-	LifecycleState SourceLifecycleStatesEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
+	// Retrieves details of sources in the specified lifecycle state.
+	LifecycleState ListSourcesLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
@@ -76,9 +76,9 @@ type ListSourcesResponse struct {
 	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// For pagination of a list of items. When paging through a list, if this header appears in the response,
-	// then a partial list might have been returned. Include this value as the `page` parameter for the
-	// subsequent GET request to get the next batch of items.
+	// For list pagination. When this header appears in the response, additional pages of results remain.
+	// For details about how pagination works, see List Pagination (https://docs.cloud.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
+	// Include this value as the `page` parameter for the subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
 }
 
@@ -132,6 +132,37 @@ var mappingListSourcesSortBy = map[string]ListSourcesSortByEnum{
 func GetListSourcesSortByEnumValues() []ListSourcesSortByEnum {
 	values := make([]ListSourcesSortByEnum, 0)
 	for _, v := range mappingListSourcesSortBy {
+		values = append(values, v)
+	}
+	return values
+}
+
+// ListSourcesLifecycleStateEnum Enum with underlying type: string
+type ListSourcesLifecycleStateEnum string
+
+// Set of constants representing the allowable values for ListSourcesLifecycleStateEnum
+const (
+	ListSourcesLifecycleStateCreating ListSourcesLifecycleStateEnum = "CREATING"
+	ListSourcesLifecycleStateDeleting ListSourcesLifecycleStateEnum = "DELETING"
+	ListSourcesLifecycleStateUpdating ListSourcesLifecycleStateEnum = "UPDATING"
+	ListSourcesLifecycleStateActive   ListSourcesLifecycleStateEnum = "ACTIVE"
+	ListSourcesLifecycleStateInactive ListSourcesLifecycleStateEnum = "INACTIVE"
+	ListSourcesLifecycleStateDeleted  ListSourcesLifecycleStateEnum = "DELETED"
+)
+
+var mappingListSourcesLifecycleState = map[string]ListSourcesLifecycleStateEnum{
+	"CREATING": ListSourcesLifecycleStateCreating,
+	"DELETING": ListSourcesLifecycleStateDeleting,
+	"UPDATING": ListSourcesLifecycleStateUpdating,
+	"ACTIVE":   ListSourcesLifecycleStateActive,
+	"INACTIVE": ListSourcesLifecycleStateInactive,
+	"DELETED":  ListSourcesLifecycleStateDeleted,
+}
+
+// GetListSourcesLifecycleStateEnumValues Enumerates the set of values for ListSourcesLifecycleStateEnum
+func GetListSourcesLifecycleStateEnumValues() []ListSourcesLifecycleStateEnum {
+	values := make([]ListSourcesLifecycleStateEnum, 0)
+	for _, v := range mappingListSourcesLifecycleState {
 		values = append(values, v)
 	}
 	return values

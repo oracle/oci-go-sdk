@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // EnumStringImageCapabilitySchemaDescriptor Enum String type of ImageCapabilitySchemaDescriptor

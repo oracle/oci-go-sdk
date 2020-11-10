@@ -5,7 +5,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
@@ -40,6 +40,9 @@ type ListTsigKeysRequest struct {
 
 	// The order to sort the resources.
 	SortOrder ListTsigKeysSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
+
+	// Specifies to operate only on resources that have a matching DNS scope.
+	Scope ListTsigKeysScopeEnum `mandatory:"false" contributesTo:"query" name:"scope" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
@@ -130,6 +133,29 @@ var mappingListTsigKeysSortOrder = map[string]ListTsigKeysSortOrderEnum{
 func GetListTsigKeysSortOrderEnumValues() []ListTsigKeysSortOrderEnum {
 	values := make([]ListTsigKeysSortOrderEnum, 0)
 	for _, v := range mappingListTsigKeysSortOrder {
+		values = append(values, v)
+	}
+	return values
+}
+
+// ListTsigKeysScopeEnum Enum with underlying type: string
+type ListTsigKeysScopeEnum string
+
+// Set of constants representing the allowable values for ListTsigKeysScopeEnum
+const (
+	ListTsigKeysScopeGlobal  ListTsigKeysScopeEnum = "GLOBAL"
+	ListTsigKeysScopePrivate ListTsigKeysScopeEnum = "PRIVATE"
+)
+
+var mappingListTsigKeysScope = map[string]ListTsigKeysScopeEnum{
+	"GLOBAL":  ListTsigKeysScopeGlobal,
+	"PRIVATE": ListTsigKeysScopePrivate,
+}
+
+// GetListTsigKeysScopeEnumValues Enumerates the set of values for ListTsigKeysScopeEnum
+func GetListTsigKeysScopeEnumValues() []ListTsigKeysScopeEnum {
+	values := make([]ListTsigKeysScopeEnum, 0)
+	for _, v := range mappingListTsigKeysScope {
 		values = append(values, v)
 	}
 	return values

@@ -5,14 +5,14 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
 // DeleteMigrationRequest wrapper for the DeleteMigration operation
 type DeleteMigrationRequest struct {
 
-	// The application OCID
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the migration.
 	MigrationId *string `mandatory:"true" contributesTo:"path" name:"migrationId"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
@@ -20,7 +20,7 @@ type DeleteMigrationRequest struct {
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
 	// For optimistic concurrency control. In the `PUT` or `DELETE` call for a resource, set the `if-match`
-	// parameter to the value of the etag from a previous `GET` or `POST` response for that resource.  The resource
+	// parameter to the value of the etag from a previous `GET` or `POST` response for that resource. The resource
 	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
 

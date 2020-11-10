@@ -12,7 +12,7 @@ package dns
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // CreateZoneDetails The body for defining a new zone.
@@ -37,12 +37,19 @@ type CreateZoneDetails struct {
 	// **Example:** `{"Operations": {"CostCenter": "42"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 
+	// This value will be null for zones in the global DNS.
+	ViewId *string `mandatory:"false" json:"viewId"`
+
 	// External master servers for the zone. `externalMasters` becomes a
 	// required parameter when the `zoneType` value is `SECONDARY`.
 	ExternalMasters []ExternalMaster `mandatory:"false" json:"externalMasters"`
 
-	// The type of the zone. Must be either `PRIMARY` or `SECONDARY`.
+	// The type of the zone. Must be either `PRIMARY` or `SECONDARY`. `SECONDARY` is only supported for GLOBAL
+	// zones.
 	ZoneType CreateZoneDetailsZoneTypeEnum `mandatory:"false" json:"zoneType,omitempty"`
+
+	// The scope of the zone.
+	Scope ScopeEnum `mandatory:"false" json:"scope,omitempty"`
 }
 
 //GetName returns Name

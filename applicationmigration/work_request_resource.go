@@ -2,15 +2,18 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Application Migration Service API
+// Application Migration API
 //
-// API for the Application Migration service. Use this API to migrate applications from Oracle Cloud Infrastructure - Classic to Oracle Cloud Infrastructure.
+// Application Migration simplifies the migration of applications from Oracle Cloud Infrastructure Classic to Oracle Cloud Infrastructure.
+// You can use Application Migration API to migrate applications, such as Oracle Java Cloud Service, SOA Cloud Service, and Integration Classic
+// instances, to Oracle Cloud Infrastructure. For more information, see
+// Overview of Application Migration (https://docs.cloud.oracle.com/iaas/application-migration/appmigrationoverview.htm).
 //
 
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // WorkRequestResource A resource that is created or operated on by an asynchronous operation that is tracked by a work request.
@@ -19,7 +22,7 @@ type WorkRequestResource struct {
 	// The way in which this resource was affected by the operation that spawned the work request.
 	ActionType WorkRequestResourceActionTypeEnum `mandatory:"true" json:"actionType"`
 
-	// The resource type the work request affects.
+	// The resource type that the work request affects, source or migration.
 	EntityType *string `mandatory:"true" json:"entityType"`
 
 	// An OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) or other unique identifier for the resource.

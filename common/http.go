@@ -462,7 +462,7 @@ func addToHeader(request *http.Request, value reflect.Value, field reflect.Struc
 
 // Check if the header is required to be unique
 func isUniqueHeaderRequired(headerName string) bool {
-	return strings.EqualFold(headerName, requestHeaderContentType)
+	return strings.EqualFold(headerName, requestHeaderContentType) || strings.EqualFold(headerName, requestHeaderContentLength)
 }
 
 // Header collection is a map of string to string that gets rendered as individual headers with a given prefix
@@ -563,6 +563,12 @@ func structToRequestPart(request *http.Request, val reflect.Value) (err error) {
 	//If headers are and the content type was not set, we default to application/json
 	if request.Header != nil && request.Header.Get(requestHeaderContentType) == "" {
 		request.Header.Set(requestHeaderContentType, "application/json")
+	}
+
+	//If content length is zero, to avoid sending transfer-coding: chunked header, need to explicitly set the body to nil/Nobody.
+	if request.Header != nil && request.Body != nil && request.Body != http.NoBody &&
+		parseContentLength(request.Header.Get("Content-Length")) == 0 {
+		request.Body = http.NoBody
 	}
 
 	return

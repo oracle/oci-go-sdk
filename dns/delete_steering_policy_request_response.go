@@ -5,7 +5,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
@@ -33,6 +33,9 @@ type DeleteSteeringPolicyRequest struct {
 	// to contact Oracle about a particular request, please provide
 	// the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+
+	// Specifies to operate only on resources that have a matching DNS scope.
+	Scope DeleteSteeringPolicyScopeEnum `mandatory:"false" contributesTo:"query" name:"scope" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
@@ -72,4 +75,27 @@ func (response DeleteSteeringPolicyResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response DeleteSteeringPolicyResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
+}
+
+// DeleteSteeringPolicyScopeEnum Enum with underlying type: string
+type DeleteSteeringPolicyScopeEnum string
+
+// Set of constants representing the allowable values for DeleteSteeringPolicyScopeEnum
+const (
+	DeleteSteeringPolicyScopeGlobal  DeleteSteeringPolicyScopeEnum = "GLOBAL"
+	DeleteSteeringPolicyScopePrivate DeleteSteeringPolicyScopeEnum = "PRIVATE"
+)
+
+var mappingDeleteSteeringPolicyScope = map[string]DeleteSteeringPolicyScopeEnum{
+	"GLOBAL":  DeleteSteeringPolicyScopeGlobal,
+	"PRIVATE": DeleteSteeringPolicyScopePrivate,
+}
+
+// GetDeleteSteeringPolicyScopeEnumValues Enumerates the set of values for DeleteSteeringPolicyScopeEnum
+func GetDeleteSteeringPolicyScopeEnumValues() []DeleteSteeringPolicyScopeEnum {
+	values := make([]DeleteSteeringPolicyScopeEnum, 0)
+	for _, v := range mappingDeleteSteeringPolicyScope {
+		values = append(values, v)
+	}
+	return values
 }

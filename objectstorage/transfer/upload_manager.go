@@ -12,10 +12,12 @@
 package transfer
 
 import (
+	"bytes"
 	"context"
 	"errors"
-	"github.com/oracle/oci-go-sdk/v27/common"
-	"github.com/oracle/oci-go-sdk/v27/objectstorage"
+	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v28/objectstorage"
+	"io"
 	"math"
 	"net/http"
 	"os"
@@ -112,15 +114,32 @@ func (uploadManager *UploadManager) UploadStream(ctx context.Context, request Up
 		return
 	}
 	//check if the stream is empty
-	buffer := make([]byte, *request.PartSize)
-	numberOfBytesRead, err := request.StreamReader.Read(buffer)
-
-	if numberOfBytesRead == 0 {
+	if isZeroLength(request.StreamReader) {
 		return uploadEmptyStream(ctx, request)
 	}
 
 	response, err = uploadManager.StreamUploader.UploadStream(ctx, request)
 	return
+}
+
+func isZeroLength(streamReader io.Reader) bool {
+	switch v := streamReader.(type) {
+	case *bytes.Buffer:
+		return v.Len() == 0
+	case *bytes.Reader:
+		return v.Len() == 0
+	case *strings.Reader:
+		return v.Len() == 0
+	case *os.File:
+		fi, err := v.Stat()
+		if err != nil {
+			return false
+		}
+		return fi.Size() == 0
+	default:
+		return false
+	}
+	return false
 }
 
 func uploadEmptyStream(ctx context.Context, request UploadStreamRequest) (response UploadResponse, err error) {

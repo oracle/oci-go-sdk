@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v27/common"
-	"github.com/oracle/oci-go-sdk/v27/common/auth"
+	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v28/common/auth"
 	"net/http"
 )
 
@@ -26,13 +26,15 @@ type RecipientInvitationClient struct {
 // NewRecipientInvitationClientWithConfigurationProvider Creates a new default RecipientInvitation client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewRecipientInvitationClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client RecipientInvitationClient, err error) {
-	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
-		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newRecipientInvitationClientFromBaseClient(baseClient, provider)
-		}
+	provider, err := auth.GetGenericConfigurationProvider(configProvider)
+	if err != nil {
+		return client, err
 	}
-
-	return
+	baseClient, e := common.NewClientWithConfig(provider)
+	if e != nil {
+		return client, e
+	}
+	return newRecipientInvitationClientFromBaseClient(baseClient, provider)
 }
 
 // NewRecipientInvitationClientWithOboToken Creates a new default RecipientInvitation client with the given configuration provider.
@@ -41,7 +43,7 @@ func NewRecipientInvitationClientWithConfigurationProvider(configProvider common
 func NewRecipientInvitationClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client RecipientInvitationClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {
-		return
+		return client, err
 	}
 
 	return newRecipientInvitationClientFromBaseClient(baseClient, configProvider)

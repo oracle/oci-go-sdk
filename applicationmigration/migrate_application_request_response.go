@@ -5,19 +5,31 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
 // MigrateApplicationRequest wrapper for the MigrateApplication operation
 type MigrateApplicationRequest struct {
 
-	// The application OCID
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the migration.
 	MigrationId *string `mandatory:"true" contributesTo:"path" name:"migrationId"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
 	// particular request, please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+
+	// For optimistic concurrency control. In the `PUT` or `DELETE` call for a resource, set the `if-match`
+	// parameter to the value of the etag from a previous `GET` or `POST` response for that resource. The resource
+	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
+	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
+
+	// A token that uniquely identifies a request so it can be retried in case of a timeout or
+	// server error without risk of retrying the same action. Retry tokens expire after
+	// 24 hours, but can be invalidated before then due to conflicting operations. For example,
+	// if a resource has been deleted and purged from the system, then a retry of the original
+	// creation request may be rejected.
+	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.

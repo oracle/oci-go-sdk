@@ -14,7 +14,7 @@
 package workrequests
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // WorkRequestLogEntry A log message from executing an operation that is tracked by a work request.

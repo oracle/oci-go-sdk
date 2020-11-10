@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // FastConnectProviderServiceKey A provider service key and its details. A provider service key is an identifier for a provider's

@@ -11,13 +11,13 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // RrSet A collection of DNS records of the same domain and type. For more
 // information about record types, see Resource Record (RR) TYPEs (https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4).
 type RrSet struct {
-	Items []Record `mandatory:"false" json:"items"`
+	Items []Record `mandatory:"true" json:"items"`
 }
 
 func (m RrSet) String() string {
