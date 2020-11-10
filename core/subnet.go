@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // Subnet A logical subdivision of a VCN. Each subnet
@@ -149,6 +149,7 @@ const (
 	SubnetLifecycleStateAvailable    SubnetLifecycleStateEnum = "AVAILABLE"
 	SubnetLifecycleStateTerminating  SubnetLifecycleStateEnum = "TERMINATING"
 	SubnetLifecycleStateTerminated   SubnetLifecycleStateEnum = "TERMINATED"
+	SubnetLifecycleStateUpdating     SubnetLifecycleStateEnum = "UPDATING"
 )
 
 var mappingSubnetLifecycleState = map[string]SubnetLifecycleStateEnum{
@@ -156,6 +157,7 @@ var mappingSubnetLifecycleState = map[string]SubnetLifecycleStateEnum{
 	"AVAILABLE":    SubnetLifecycleStateAvailable,
 	"TERMINATING":  SubnetLifecycleStateTerminating,
 	"TERMINATED":   SubnetLifecycleStateTerminated,
+	"UPDATING":     SubnetLifecycleStateUpdating,
 }
 
 // GetSubnetLifecycleStateEnumValues Enumerates the set of values for SubnetLifecycleStateEnum

@@ -7,7 +7,7 @@ import (
 	"bytes"
 	"crypto/rsa"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 	"strings"
 )

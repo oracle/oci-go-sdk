@@ -5,7 +5,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
@@ -42,6 +42,12 @@ type PatchRRSetRequest struct {
 	// to contact Oracle about a particular request, please provide
 	// the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+
+	// Specifies to operate only on resources that have a matching DNS scope.
+	Scope PatchRRSetScopeEnum `mandatory:"false" contributesTo:"query" name:"scope" omitEmpty:"true"`
+
+	// The OCID of the view the resource is associated with.
+	ViewId *string `mandatory:"false" contributesTo:"query" name:"viewId"`
 
 	// The OCID of the compartment the resource belongs to.
 	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
@@ -100,4 +106,27 @@ func (response PatchRRSetResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response PatchRRSetResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
+}
+
+// PatchRRSetScopeEnum Enum with underlying type: string
+type PatchRRSetScopeEnum string
+
+// Set of constants representing the allowable values for PatchRRSetScopeEnum
+const (
+	PatchRRSetScopeGlobal  PatchRRSetScopeEnum = "GLOBAL"
+	PatchRRSetScopePrivate PatchRRSetScopeEnum = "PRIVATE"
+)
+
+var mappingPatchRRSetScope = map[string]PatchRRSetScopeEnum{
+	"GLOBAL":  PatchRRSetScopeGlobal,
+	"PRIVATE": PatchRRSetScopePrivate,
+}
+
+// GetPatchRRSetScopeEnumValues Enumerates the set of values for PatchRRSetScopeEnum
+func GetPatchRRSetScopeEnumValues() []PatchRRSetScopeEnum {
+	values := make([]PatchRRSetScopeEnum, 0)
+	for _, v := range mappingPatchRRSetScope {
+		values = append(values, v)
+	}
+	return values
 }

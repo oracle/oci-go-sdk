@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v27/common"
-	"github.com/oracle/oci-go-sdk/v27/common/auth"
+	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v28/common/auth"
 	"net/http"
 )
 
@@ -26,13 +26,15 @@ type TransferApplianceClient struct {
 // NewTransferApplianceClientWithConfigurationProvider Creates a new default TransferAppliance client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewTransferApplianceClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client TransferApplianceClient, err error) {
-	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
-		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newTransferApplianceClientFromBaseClient(baseClient, provider)
-		}
+	provider, err := auth.GetGenericConfigurationProvider(configProvider)
+	if err != nil {
+		return client, err
 	}
-
-	return
+	baseClient, e := common.NewClientWithConfig(provider)
+	if e != nil {
+		return client, e
+	}
+	return newTransferApplianceClientFromBaseClient(baseClient, provider)
 }
 
 // NewTransferApplianceClientWithOboToken Creates a new default TransferAppliance client with the given configuration provider.
@@ -41,7 +43,7 @@ func NewTransferApplianceClientWithConfigurationProvider(configProvider common.C
 func NewTransferApplianceClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client TransferApplianceClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {
-		return
+		return client, err
 	}
 
 	return newTransferApplianceClientFromBaseClient(baseClient, configProvider)

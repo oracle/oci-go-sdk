@@ -2,21 +2,24 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Application Migration Service API
+// Application Migration API
 //
-// API for the Application Migration service. Use this API to migrate applications from Oracle Cloud Infrastructure - Classic to Oracle Cloud Infrastructure.
+// Application Migration simplifies the migration of applications from Oracle Cloud Infrastructure Classic to Oracle Cloud Infrastructure.
+// You can use Application Migration API to migrate applications, such as Oracle Java Cloud Service, SOA Cloud Service, and Integration Classic
+// instances, to Oracle Cloud Infrastructure. For more information, see
+// Overview of Application Migration (https://docs.cloud.oracle.com/iaas/application-migration/appmigrationoverview.htm).
 //
 
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
-// WorkRequestLogEntry A log message from executing an operation that is tracked by a work request.
+// WorkRequestLogEntry A log message about the execution of an operation that is tracked by a work request.
 type WorkRequestLogEntry struct {
 
-	// A human-readable log message.
+	// A user-friendly log message.
 	Message *string `mandatory:"true" json:"message"`
 
 	// The time the log message was written.

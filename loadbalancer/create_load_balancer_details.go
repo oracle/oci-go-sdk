@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // CreateLoadBalancerDetails The configuration details for creating a load balancer.
@@ -49,6 +49,9 @@ type CreateLoadBalancerDetails struct {
 	// If "IPV6", the service assigns an IPv6 address and the load balancer supports IPv6 traffic.
 	// Example: "ipMode":"IPV6"
 	IpMode CreateLoadBalancerDetailsIpModeEnum `mandatory:"false" json:"ipMode,omitempty"`
+
+	// An array of reserved Ips.
+	ReservedIps []ReservedIp `mandatory:"false" json:"reservedIps"`
 
 	Listeners map[string]ListenerDetails `mandatory:"false" json:"listeners"`
 

@@ -5,21 +5,21 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
 // ChangeSourceCompartmentRequest wrapper for the ChangeSourceCompartment operation
 type ChangeSourceCompartmentRequest struct {
 
-	// The source OCID
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the source.
 	SourceId *string `mandatory:"true" contributesTo:"path" name:"sourceId"`
 
 	// The updated compartment details
 	ChangeSourceCompartmentDetails ChangeCompartmentDetails `contributesTo:"body"`
 
 	// For optimistic concurrency control. In the `PUT` or `DELETE` call for a resource, set the `if-match`
-	// parameter to the value of the etag from a previous `GET` or `POST` response for that resource.  The resource
+	// parameter to the value of the etag from a previous `GET` or `POST` response for that resource. The resource
 	// will be updated or deleted only if the etag you provide matches the resource's current etag value.
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
 

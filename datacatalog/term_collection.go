@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // TermCollection Results of a terms listing. Terms are defined in business glossary and are used in tagging catalog objects.

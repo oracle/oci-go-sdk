@@ -12,7 +12,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // ManagementDashboardForImportExportDetails Properties for a dashboard, including dashboard id, and saved searches, for import purposes.

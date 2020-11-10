@@ -11,7 +11,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // multipartManifest provides thread-safe access to an ongoing manifest upload.
@@ -157,8 +157,8 @@ func md5Encode(data []byte) []byte {
 }
 
 // splitStreamToParts starts a goroutine to read a stream and break down to parts and send the parts to
-// uploadPart channel. It sends the error to error chanel. If done is closed, splitStreamToParts
-// abandones its works.
+// uploadPart channel. It sends the error to error channel. If done is closed, splitStreamToParts
+// abandons its works.
 func (manifest *multipartManifest) splitStreamToParts(done <-chan struct{}, partSize int64, isChecksumEnabled *bool, reader io.Reader) <-chan uploadPart {
 	parts := make(chan uploadPart)
 

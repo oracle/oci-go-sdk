@@ -9,6 +9,7 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
+	"net/textproto"
 	"reflect"
 	"strconv"
 	"strings"
@@ -253,6 +254,16 @@ func parsePKCSPrivateKey(decryptedKey []byte) (*rsa.PrivateKey, error) {
 		}
 	}
 	return nil, fmt.Errorf("failed to parse private key")
+}
+
+// parseContentLength trims whitespace from cl and returns -1 if can't purse uint, or the value if it's no less than 0
+func parseContentLength(cl string) int64 {
+	cl = textproto.TrimString(cl)
+	n, err := strconv.ParseUint(cl, 10, 63)
+	if err != nil {
+		return -1
+	}
+	return int64(n)
 }
 
 func generateRandUUID() (string, error) {

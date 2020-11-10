@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // GlossarySummary Summary of a glossary. A glossary of business terms, such as 'Customer', 'Account', 'Contact', 'Address',

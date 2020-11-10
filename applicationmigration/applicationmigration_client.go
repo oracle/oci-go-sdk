@@ -2,9 +2,12 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Application Migration Service API
+// Application Migration API
 //
-// API for the Application Migration service. Use this API to migrate applications from Oracle Cloud Infrastructure - Classic to Oracle Cloud Infrastructure.
+// Application Migration simplifies the migration of applications from Oracle Cloud Infrastructure Classic to Oracle Cloud Infrastructure.
+// You can use Application Migration API to migrate applications, such as Oracle Java Cloud Service, SOA Cloud Service, and Integration Classic
+// instances, to Oracle Cloud Infrastructure. For more information, see
+// Overview of Application Migration (https://docs.cloud.oracle.com/iaas/application-migration/appmigrationoverview.htm).
 //
 
 package applicationmigration
@@ -12,8 +15,8 @@ package applicationmigration
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v27/common"
-	"github.com/oracle/oci-go-sdk/v27/common/auth"
+	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v28/common/auth"
 	"net/http"
 )
 
@@ -26,13 +29,15 @@ type ApplicationMigrationClient struct {
 // NewApplicationMigrationClientWithConfigurationProvider Creates a new default ApplicationMigration client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewApplicationMigrationClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client ApplicationMigrationClient, err error) {
-	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
-		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newApplicationMigrationClientFromBaseClient(baseClient, provider)
-		}
+	provider, err := auth.GetGenericConfigurationProvider(configProvider)
+	if err != nil {
+		return client, err
 	}
-
-	return
+	baseClient, e := common.NewClientWithConfig(provider)
+	if e != nil {
+		return client, e
+	}
+	return newApplicationMigrationClientFromBaseClient(baseClient, provider)
 }
 
 // NewApplicationMigrationClientWithOboToken Creates a new default ApplicationMigration client with the given configuration provider.
@@ -41,7 +46,7 @@ func NewApplicationMigrationClientWithConfigurationProvider(configProvider commo
 func NewApplicationMigrationClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client ApplicationMigrationClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {
-		return
+		return client, err
 	}
 
 	return newApplicationMigrationClientFromBaseClient(baseClient, configProvider)
@@ -77,7 +82,9 @@ func (client *ApplicationMigrationClient) ConfigurationProvider() *common.Config
 	return client.config
 }
 
-// CancelWorkRequest Cancels the specified work request
+// CancelWorkRequest Cancels the specified work request. When you cancel a work request, it causes the in-progress task to be canceled.
+// For example, if the create migration work request is in the accepted or in progress state for a long time, you can cancel the work request.
+// When you cancel a work request, the state of the work request changes to cancelling, and then to the cancelled state.
 func (client ApplicationMigrationClient) CancelWorkRequest(ctx context.Context, request CancelWorkRequestRequest) (response CancelWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -127,7 +134,8 @@ func (client ApplicationMigrationClient) cancelWorkRequest(ctx context.Context, 
 	return response, err
 }
 
-// ChangeMigrationCompartment Moves a Migration into a different compartment.
+// ChangeMigrationCompartment Moves the specified migration into a different compartment within the same tenancy. For information about moving resources between compartments,
+// see Moving Resources to a Different Compartment (https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingcompartments.htm#moveRes).
 func (client ApplicationMigrationClient) ChangeMigrationCompartment(ctx context.Context, request ChangeMigrationCompartmentRequest) (response ChangeMigrationCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -182,7 +190,8 @@ func (client ApplicationMigrationClient) changeMigrationCompartment(ctx context.
 	return response, err
 }
 
-// ChangeSourceCompartment Moves a Source into a different compartment.
+// ChangeSourceCompartment Moves the specified source into a different compartment within the same tenancy. For information about moving resources
+// between compartments, see Moving Resources to a Different Compartment (https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingcompartments.htm#moveRes).
 func (client ApplicationMigrationClient) ChangeSourceCompartment(ctx context.Context, request ChangeSourceCompartmentRequest) (response ChangeSourceCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -237,8 +246,23 @@ func (client ApplicationMigrationClient) changeSourceCompartment(ctx context.Con
 	return response, err
 }
 
-// CreateMigration Creates an application migration in the specified compartment.
-// Specify the compartment using the compartment ID.
+// CreateMigration Creates a migration. A migration represents the end-to-end workflow of moving an application from a source environment to Oracle Cloud
+// Infrastructure. Each migration moves a single application to Oracle Cloud Infrastructure. For more information,
+// see Manage Migrations (https://docs.cloud.oracle.com/iaas/application-migration/manage_migrations.htm).
+// When you create a migration, provide the required information to let Application Migration access the source environment.
+// Application Migration uses this information to access the application in the source environment and discover application artifacts.
+// All Oracle Cloud Infrastructure resources, including migrations, get an Oracle-assigned, unique ID called an Oracle Cloud Identifier (OCID).
+// When you create a resource, you can find its OCID in the response. You can also retrieve a resource's OCID by using a List API operation on
+// that resource type, or by viewing the resource in the Console. For more information, see Resource Identifiers.
+// After you send your request, a migration is created in the compartment that contains the source. The new migration's lifecycle state
+// will temporarily be <code>CREATING</code> and the state of the migration will be <code>DISCOVERING_APPLICATION</code>. During this phase,
+// Application Migration sets the template for the <code>serviceConfig</code> and <code>applicationConfig</code> fields of the migration.
+// When this operation is complete, the state of the migration changes to <code>MISSING_CONFIG_VALUES</code>.
+// Next, you'll need to update the migration to provide configuration values. Before updating the
+// migration, ensure that its state has changed to <code>MISSING_CONFIG_VALUES</code>.
+// To track the progress of this operation, you can monitor the status of the Create Migration and Discover Application work requests
+// by using the <code>GetWorkRequest</code> REST API operation on the work request or by viewing the status of the work request in
+// the console.
 func (client ApplicationMigrationClient) CreateMigration(ctx context.Context, request CreateMigrationRequest) (response CreateMigrationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -293,8 +317,19 @@ func (client ApplicationMigrationClient) createMigration(ctx context.Context, re
 	return response, err
 }
 
-// CreateSource Creates a migration source in the specified compartment.
-// Specify the compartment using the compartment ID.
+// CreateSource Creates a source in the specified compartment. In Application Migration, a source refers to the environment from which the application
+// is being migrated. For more information, see Manage Sources (https://docs.cloud.oracle.com/iaas/application-migration/manage_sources.htm).
+// All Oracle Cloud Infrastructure resources, including sources, get an Oracle-assigned, unique ID called an Oracle Cloud Identifier (OCID).
+// When you create a resource, you can find its OCID in the response. You can also retrieve a resource's OCID by using a List API operation
+// on that resource type, or by viewing the resource in the Console.
+// After you send your request, a source is created in the specified compartment. The new source's lifecycle state will temporarily be
+// <code>CREATING</code>. Application Migration connects to the source environment with the authentication credentials that you have provided.
+// If the connection is established, the status of the source changes to <code>ACTIVE</code> and Application Migration fetches the list of
+// applications that are available for migration in the source environment.
+// To track the progress of the operation, you can monitor the status of the Create Source work request by using the
+// <code>GetWorkRequest</code> REST API operation on the work request or by viewing the status of the work request in the console.
+// Ensure that the state of the source has changed to <code>ACTIVE</code>, before you retrieve the list of applications from
+// the source environment using the <code>ListSourceApplications</code> REST API call.
 func (client ApplicationMigrationClient) CreateSource(ctx context.Context, request CreateSourceRequest) (response CreateSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -349,7 +384,10 @@ func (client ApplicationMigrationClient) createSource(ctx context.Context, reque
 	return response, err
 }
 
-// DeleteMigration Deletes the specified Application object.
+// DeleteMigration Deletes the specified migration.
+// If you have migrated the application or for any other reason if you no longer require a migration, then you can delete the
+// relevant migration. You can delete a migration, irrespective of its state. If any work request is being processed for the migration
+// that you want to delete, then the associated work requests are cancelled and then the migration is deleted.
 func (client ApplicationMigrationClient) DeleteMigration(ctx context.Context, request DeleteMigrationRequest) (response DeleteMigrationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -399,7 +437,10 @@ func (client ApplicationMigrationClient) deleteMigration(ctx context.Context, re
 	return response, err
 }
 
-// DeleteSource Deletes the specified Source object.
+// DeleteSource Deletes the specified source.
+// Before deleting a source, you must delete all the migrations associated with the source.
+// If you have migrated all the required applications in a source or for any other reason you no longer require a source, then you can
+// delete the relevant source.
 func (client ApplicationMigrationClient) DeleteSource(ctx context.Context, request DeleteSourceRequest) (response DeleteSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -449,7 +490,7 @@ func (client ApplicationMigrationClient) deleteSource(ctx context.Context, reque
 	return response, err
 }
 
-// GetMigration Gets an application migration using the ID.
+// GetMigration Retrieves details of the specified migration.
 func (client ApplicationMigrationClient) GetMigration(ctx context.Context, request GetMigrationRequest) (response GetMigrationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -499,7 +540,7 @@ func (client ApplicationMigrationClient) getMigration(ctx context.Context, reque
 	return response, err
 }
 
-// GetSource Gets a migration source using the source ID.
+// GetSource Retrieves details of the specified source. Specify the OCID of the source for which you want to retrieve details.
 func (client ApplicationMigrationClient) GetSource(ctx context.Context, request GetSourceRequest) (response GetSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -549,7 +590,7 @@ func (client ApplicationMigrationClient) getSource(ctx context.Context, request 
 	return response, err
 }
 
-// GetWorkRequest Gets the details of a work request.
+// GetWorkRequest Gets the details of the specified work request.
 func (client ApplicationMigrationClient) GetWorkRequest(ctx context.Context, request GetWorkRequestRequest) (response GetWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -599,7 +640,7 @@ func (client ApplicationMigrationClient) getWorkRequest(ctx context.Context, req
 	return response, err
 }
 
-// ListMigrations Returns a list of migrations in a given compartment.
+// ListMigrations Retrieves details of all the migrations that are available in the specified compartment.
 func (client ApplicationMigrationClient) ListMigrations(ctx context.Context, request ListMigrationsRequest) (response ListMigrationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -649,7 +690,9 @@ func (client ApplicationMigrationClient) listMigrations(ctx context.Context, req
 	return response, err
 }
 
-// ListSourceApplications Returns a list of applications running in the source environment. This list is generated dynamically by interrogating the source and changes as applications are started or stopped in that environment.
+// ListSourceApplications Retrieves details of all the applications associated with the specified source.
+// This list is generated dynamically by interrogating the source and the list changes as applications are started or
+// stopped in the source environment.
 func (client ApplicationMigrationClient) ListSourceApplications(ctx context.Context, request ListSourceApplicationsRequest) (response ListSourceApplicationsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -699,7 +742,10 @@ func (client ApplicationMigrationClient) listSourceApplications(ctx context.Cont
 	return response, err
 }
 
-// ListSources Returns a list of migration sources in a specified compartment.
+// ListSources Retrieves details of all the sources that are available in the specified compartment and match the specified query criteria.
+// If you don't specify any query criteria, then details of all the sources are displayed.
+// To filter the retrieved results, you can pass one or more of the following query parameters, by appending them to the URI
+// as shown in the following example.
 func (client ApplicationMigrationClient) ListSources(ctx context.Context, request ListSourcesRequest) (response ListSourcesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -749,7 +795,7 @@ func (client ApplicationMigrationClient) listSources(ctx context.Context, reques
 	return response, err
 }
 
-// ListWorkRequestErrors Gets the errors for a work request.
+// ListWorkRequestErrors Retrieves details of the errors encountered while executing an operation that is tracked by the specified work request.
 func (client ApplicationMigrationClient) ListWorkRequestErrors(ctx context.Context, request ListWorkRequestErrorsRequest) (response ListWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -799,7 +845,7 @@ func (client ApplicationMigrationClient) listWorkRequestErrors(ctx context.Conte
 	return response, err
 }
 
-// ListWorkRequestLogs Gets the logs for a work request.
+// ListWorkRequestLogs Retrieves logs for the specified work request.
 func (client ApplicationMigrationClient) ListWorkRequestLogs(ctx context.Context, request ListWorkRequestLogsRequest) (response ListWorkRequestLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -849,7 +895,7 @@ func (client ApplicationMigrationClient) listWorkRequestLogs(ctx context.Context
 	return response, err
 }
 
-// ListWorkRequests Lists the work requests in a compartment or for a specified resource.
+// ListWorkRequests Retrieves details of all the work requests and match the specified query criteria. To filter the retrieved results, you can pass one or more of the following query parameters, by appending them to the URI as shown in the following example.
 func (client ApplicationMigrationClient) ListWorkRequests(ctx context.Context, request ListWorkRequestsRequest) (response ListWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -899,7 +945,14 @@ func (client ApplicationMigrationClient) listWorkRequests(ctx context.Context, r
 	return response, err
 }
 
-// MigrateApplication Validates target configuration and migrates a PaaS application running in a Source environment into the customers Oracle Cloud Infrastructure tenancy. This an optional action and only required if automatic start of migration was not selected when creating the migration.
+// MigrateApplication Starts migrating the specified application to Oracle Cloud Infrastructure.
+// Before sending this request, ensure that you have provided configuration details to update the migration and the state of the migration
+// is <code>READY</code>.
+// After you send this request, the migration's state will temporarily be <code>MIGRATING</code>.
+// To track the progress of the operation, you can monitor the status of the Migrate Application work request by using the
+// <code>GetWorkRequest</code> REST API operation on the work request or by viewing the status of the work request in the console.
+// When this work request is processed successfully, Application Migration creates the required resources in the target environment
+// and the state of the migration changes to <code>MIGRATION_SUCCEEDED</code>.
 func (client ApplicationMigrationClient) MigrateApplication(ctx context.Context, request MigrateApplicationRequest) (response MigrateApplicationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -909,6 +962,11 @@ func (client ApplicationMigrationClient) MigrateApplication(ctx context.Context,
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.migrateApplication, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -949,7 +1007,29 @@ func (client ApplicationMigrationClient) migrateApplication(ctx context.Context,
 	return response, err
 }
 
-// UpdateMigration Update the configuration for an application migration.
+// UpdateMigration Updates the configuration details for the specified migration.
+// When you create a migration, Application Migration sets the template for the <code>serviceConfig</code> and <code>applicationConfig</code>
+// attributes of the migration.
+// When you update the migration, you must provide values for these fields to specify configuration information for the application in the
+// target environment.
+//
+// Before updating the migration, complete the following tasks:
+// <ol>
+// <li>Identify the migration that you want to update and ensure that the migration is in the <code>MISSING_CONFIG_VALUES</code> state.</li>
+// <li>Get details of the migration using the <code>GetMigration</code> command. This returns the  template for the <code>serviceConfig</code>
+// and <code>applicationConfig</code> attributes of the migration.</li>
+// <li>You must fill out the required details for the <code>serviceConfig</code> and <code>applicationConfig</code> attributes.
+// The <code>isRequired</code> attribute of a configuration property indicates whether it is mandatory to provide a value.</li>
+// <li>You can provide values for the optional configuration properties or you can delete the optional properties for which you do not
+// provide values. Note that you cannot add any property that is not present in the template.</li>
+// </ol>
+// To update the migration, pass the configuration values in the request body. The information that you must provide depends on the type
+// of application that you are migrating. For reference information about configuration fields, see
+// Provide Configuration Information (https://docs.cloud.oracle.com/iaas/application-migration/manage_migrations.htm#provide_configuration_details).
+// To track the progress of the operation, you can monitor the status of the Update Migration work request by using the
+// <code>GetWorkRequest</code> REST API operation on the work request or by viewing the status of the work request in the console.
+// When the migration has been updated, the state of the migration changes to <code>READY</code>. After updating the migration,
+// you can start the migration whenever you are ready.
 func (client ApplicationMigrationClient) UpdateMigration(ctx context.Context, request UpdateMigrationRequest) (response UpdateMigrationResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -1004,7 +1084,9 @@ func (client ApplicationMigrationClient) updateMigration(ctx context.Context, re
 	return response, err
 }
 
-// UpdateSource Update source details.
+// UpdateSource You can update the authorization details to access the source environment from which you want to migrate applications to Oracle Cloud
+// Infrastructure. You can also update the description and tags of a source.
+// **Warning:** Oracle recommends that you avoid using any confidential information when you supply string values using the API.
 func (client ApplicationMigrationClient) UpdateSource(ctx context.Context, request UpdateSourceRequest) (response UpdateSourceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

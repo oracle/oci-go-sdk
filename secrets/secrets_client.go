@@ -12,8 +12,8 @@ package secrets
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v27/common"
-	"github.com/oracle/oci-go-sdk/v27/common/auth"
+	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v28/common/auth"
 	"net/http"
 )
 
@@ -26,13 +26,15 @@ type SecretsClient struct {
 // NewSecretsClientWithConfigurationProvider Creates a new default Secrets client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewSecretsClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client SecretsClient, err error) {
-	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
-		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newSecretsClientFromBaseClient(baseClient, provider)
-		}
+	provider, err := auth.GetGenericConfigurationProvider(configProvider)
+	if err != nil {
+		return client, err
 	}
-
-	return
+	baseClient, e := common.NewClientWithConfig(provider)
+	if e != nil {
+		return client, e
+	}
+	return newSecretsClientFromBaseClient(baseClient, provider)
 }
 
 // NewSecretsClientWithOboToken Creates a new default Secrets client with the given configuration provider.
@@ -41,7 +43,7 @@ func NewSecretsClientWithConfigurationProvider(configProvider common.Configurati
 func NewSecretsClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client SecretsClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {
-		return
+		return client, err
 	}
 
 	return newSecretsClientFromBaseClient(baseClient, configProvider)

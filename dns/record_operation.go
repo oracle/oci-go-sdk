@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // RecordOperation An extension of the existing record resource, describing either a
@@ -39,8 +39,7 @@ type RecordOperation struct {
 	// from the preceding version.
 	RrsetVersion *string `mandatory:"false" json:"rrsetVersion"`
 
-	// The canonical name for the record's type, such as A or CNAME. For more
-	// information, see Resource Record (RR) TYPEs (https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4).
+	// The type of DNS record, such as A or CNAME. For more information, see Resource Record (RR) TYPEs (https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4).
 	Rtype *string `mandatory:"false" json:"rtype"`
 
 	// The Time To Live for the record, in seconds.

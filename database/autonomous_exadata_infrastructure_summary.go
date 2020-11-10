@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // AutonomousExadataInfrastructureSummary Infrastructure that enables the running of multiple Autonomous Databases within a dedicated DB system.

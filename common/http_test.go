@@ -696,7 +696,8 @@ func TestUnmarshalResponse_BodyAndHeaderPtr(t *testing.T) {
 }
 
 type reqWithBinaryFiled struct {
-	Content io.Reader `mandatory:"true" contributesTo:"body" encoding:"binary"`
+	ContentLength *int64    `mandatory:"true" contributesTo:"header" name:"Content-Length"`
+	Content       io.Reader `mandatory:"true" contributesTo:"body" encoding:"binary"`
 }
 
 type reqWithNonMandatoryBinaryField struct {
@@ -706,9 +707,23 @@ type reqWithNonMandatoryBinaryField struct {
 func TestMarshalBinaryRequest(t *testing.T) {
 	data := "some data in a file"
 	buffer := bytes.NewBufferString(data)
-	r := reqWithBinaryFiled{Content: ioutil.NopCloser(buffer)}
+	length := int64(buffer.Len())
+	r := reqWithBinaryFiled{Content: ioutil.NopCloser(buffer), ContentLength: &length}
 	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("PUT", "/obj", r)
 	assert.NoError(t, err)
+	all, err := ioutil.ReadAll(httpRequest.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, data, string(all))
+}
+
+func TestMarshalBinaryZeroLengthRequest(t *testing.T) {
+	data := ""
+	buffer := bytes.NewBufferString(data)
+	length := int64(buffer.Len())
+	r := reqWithBinaryFiled{Content: ioutil.NopCloser(buffer), ContentLength: &length}
+	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("PUT", "/obj", r)
+	assert.NoError(t, err)
+	assert.Equal(t, httpRequest.Body, http.NoBody)
 	all, err := ioutil.ReadAll(httpRequest.Body)
 	assert.NoError(t, err)
 	assert.Equal(t, data, string(all))
@@ -742,7 +757,8 @@ func TestMarshalBinaryRequestIsSigned(t *testing.T) {
 	}
 	data := "some data in a file"
 	buffer := bytes.NewBufferString(data)
-	r := reqWithBinaryFiled{Content: ioutil.NopCloser(buffer)}
+	length := int64(buffer.Len())
+	r := reqWithBinaryFiled{Content: ioutil.NopCloser(buffer), ContentLength: &length}
 	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("POST", "/obj", r)
 	assert.NoError(t, err)
 	err = signer.Sign(&httpRequest)

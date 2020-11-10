@@ -2,41 +2,47 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Application Migration Service API
+// Application Migration API
 //
-// API for the Application Migration service. Use this API to migrate applications from Oracle Cloud Infrastructure - Classic to Oracle Cloud Infrastructure.
+// Application Migration simplifies the migration of applications from Oracle Cloud Infrastructure Classic to Oracle Cloud Infrastructure.
+// You can use Application Migration API to migrate applications, such as Oracle Java Cloud Service, SOA Cloud Service, and Integration Classic
+// instances, to Oracle Cloud Infrastructure. For more information, see
+// Overview of Application Migration (https://docs.cloud.oracle.com/iaas/application-migration/appmigrationoverview.htm).
 //
 
 package applicationmigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
-// CreateSourceDetails The Source object. Sources represent external locations from which
-// applications may be imported into an OCI tenancy.
+// CreateSourceDetails The configuration details for creating a source.
+// When you create a source, provide the required information to let Application Migration access the source environment.
+// You must also assign a name and provide a description for the source. This helps you to identify the appropriate source environment when you
+// have multiple sources defined.
+// **Warning:** Oracle recommends that you avoid using any confidential information when you supply string values using the API.
 type CreateSourceDetails struct {
 
-	// Unique idenfifier (OCID) for the compartment where the Source is located.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment that contains the source.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	SourceDetails SourceDetails `mandatory:"true" json:"sourceDetails"`
 
-	// Human-readable name of the source.
+	// Name of the source. This helps you to identify the appropriate source environment when you have multiple sources defined.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Description of the source.
+	// Description of the source. This helps you to identify the appropriate source environment when you have multiple sources defined.
 	Description *string `mandatory:"false" json:"description"`
 
 	AuthorizationDetails AuthorizationDetails `mandatory:"false" json:"authorizationDetails"`
 
-	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// Example: `{"bar-key": "value"}`
+	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"Department": "Finance"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
-	// Example: `{"foo-namespace": {"bar-key": "value"}}`
+	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"Operations": {"CostCenter": "42"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }
 

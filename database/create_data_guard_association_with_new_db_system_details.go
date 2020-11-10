@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // CreateDataGuardAssociationWithNewDbSystemDetails The configuration details for creating a Data Guard association for a virtual machine DB system database. For this type of DB system database, the `creationType` should be `NewDbSystem`. A new DB system will be launched to create the standby database.
@@ -26,6 +26,9 @@ type CreateDataGuardAssociationWithNewDbSystemDetails struct {
 	// * At least two special characters. Valid special characters include "_", "#", and "-" only.
 	// **The password MUST be the same as the primary admin password.**
 	DatabaseAdminPassword *string `mandatory:"true" json:"databaseAdminPassword"`
+
+	// The database software image OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
+	DatabaseSoftwareImageId *string `mandatory:"false" json:"databaseSoftwareImageId"`
 
 	// The user-friendly name of the DB system that will contain the the standby database. The display name does not have to be unique.
 	DisplayName *string `mandatory:"false" json:"displayName"`
@@ -72,6 +75,11 @@ type CreateDataGuardAssociationWithNewDbSystemDetails struct {
 	// in the Oracle Data Guard documentation.
 	// **IMPORTANT** - The only transport type currently supported by the Database service is ASYNC.
 	TransportType CreateDataGuardAssociationDetailsTransportTypeEnum `mandatory:"true" json:"transportType"`
+}
+
+//GetDatabaseSoftwareImageId returns DatabaseSoftwareImageId
+func (m CreateDataGuardAssociationWithNewDbSystemDetails) GetDatabaseSoftwareImageId() *string {
+	return m.DatabaseSoftwareImageId
 }
 
 //GetDatabaseAdminPassword returns DatabaseAdminPassword

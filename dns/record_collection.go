@@ -11,12 +11,12 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // RecordCollection A collection of DNS resource records.
 type RecordCollection struct {
-	Items []Record `mandatory:"false" json:"items"`
+	Items []Record `mandatory:"true" json:"items"`
 }
 
 func (m RecordCollection) String() string {

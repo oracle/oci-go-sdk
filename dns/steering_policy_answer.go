@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // SteeringPolicyAnswer DNS record data with metadata for processing in a steering policy.
@@ -36,7 +36,7 @@ type SteeringPolicyAnswer struct {
 	//   ]
 	Name *string `mandatory:"true" json:"name"`
 
-	// The canonical name for the record's type. Only A, AAAA, and CNAME are supported. For more
+	// The type of DNS record, such as A or CNAME. Only A, AAAA, and CNAME are supported. For more
 	// information, see Supported DNS Resource Record Types (https://docs.cloud.oracle.com/iaas/Content/DNS/Reference/supporteddnsresource.htm).
 	Rtype *string `mandatory:"true" json:"rtype"`
 

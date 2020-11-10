@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v27/common"
-	"github.com/oracle/oci-go-sdk/v27/objectstorage"
+	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v28/objectstorage"
 )
 
 // requestValidator validate user's input and assign default values if not defined
@@ -50,6 +50,8 @@ type UploadRequest struct {
 	NumberOfGoroutines *int `mandatory:"false"`
 
 	// A configured object storage client to use for interacting with the Object Storage service.
+	// Default timeout is 60s which includes the time for reading the body.
+	// Default timeout doesn't work for big file size and big part size(once upload each part longer than 60s), need to manually update timeout to support big file upload.
 	ObjectStorageClient *objectstorage.ObjectStorageClient `mandatory:"false"`
 
 	// [Optional] The entity tag of the object to match.

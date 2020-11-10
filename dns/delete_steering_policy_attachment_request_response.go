@@ -5,7 +5,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
@@ -33,6 +33,9 @@ type DeleteSteeringPolicyAttachmentRequest struct {
 	// to contact Oracle about a particular request, please provide
 	// the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+
+	// Specifies to operate only on resources that have a matching DNS scope.
+	Scope DeleteSteeringPolicyAttachmentScopeEnum `mandatory:"false" contributesTo:"query" name:"scope" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
@@ -72,4 +75,27 @@ func (response DeleteSteeringPolicyAttachmentResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response DeleteSteeringPolicyAttachmentResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
+}
+
+// DeleteSteeringPolicyAttachmentScopeEnum Enum with underlying type: string
+type DeleteSteeringPolicyAttachmentScopeEnum string
+
+// Set of constants representing the allowable values for DeleteSteeringPolicyAttachmentScopeEnum
+const (
+	DeleteSteeringPolicyAttachmentScopeGlobal  DeleteSteeringPolicyAttachmentScopeEnum = "GLOBAL"
+	DeleteSteeringPolicyAttachmentScopePrivate DeleteSteeringPolicyAttachmentScopeEnum = "PRIVATE"
+)
+
+var mappingDeleteSteeringPolicyAttachmentScope = map[string]DeleteSteeringPolicyAttachmentScopeEnum{
+	"GLOBAL":  DeleteSteeringPolicyAttachmentScopeGlobal,
+	"PRIVATE": DeleteSteeringPolicyAttachmentScopePrivate,
+}
+
+// GetDeleteSteeringPolicyAttachmentScopeEnumValues Enumerates the set of values for DeleteSteeringPolicyAttachmentScopeEnum
+func GetDeleteSteeringPolicyAttachmentScopeEnumValues() []DeleteSteeringPolicyAttachmentScopeEnum {
+	values := make([]DeleteSteeringPolicyAttachmentScopeEnum, 0)
+	for _, v := range mappingDeleteSteeringPolicyAttachmentScope {
+		values = append(values, v)
+	}
+	return values
 }

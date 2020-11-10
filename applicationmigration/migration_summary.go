@@ -2,59 +2,62 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Application Migration Service API
+// Application Migration API
 //
-// API for the Application Migration service. Use this API to migrate applications from Oracle Cloud Infrastructure - Classic to Oracle Cloud Infrastructure.
+// Application Migration simplifies the migration of applications from Oracle Cloud Infrastructure Classic to Oracle Cloud Infrastructure.
+// You can use Application Migration API to migrate applications, such as Oracle Java Cloud Service, SOA Cloud Service, and Integration Classic
+// instances, to Oracle Cloud Infrastructure. For more information, see
+// Overview of Application Migration (https://docs.cloud.oracle.com/iaas/application-migration/appmigrationoverview.htm).
 //
 
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
-// MigrationSummary An application being migrated from a source environment to OCI.
+// MigrationSummary Details about the migration. Each migration moves a single application from a specified source to Oracle Cloud Infrastructure.
 type MigrationSummary struct {
 
-	// Unique identifier (OCID) for the application
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the migration.
 	Id *string `mandatory:"false" json:"id"`
 
-	// Unique idenfifier (OCID) for the compartment where the Source is located.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment that contains the migration.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
-	// Human-readable name of the migration.
+	// User-friendly name of the migration.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// Description of the migration.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The date and time at which the migration was created.
+	// The date and time at which the migration was created, in the format defined by RFC3339.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// Unique identifier (OCID) of the source.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the source.
 	SourceId *string `mandatory:"false" json:"sourceId"`
 
-	// Name of the application being migrated from the source.
+	// Name of the application which is being migrated from the source environment.
 	ApplicationName *string `mandatory:"false" json:"applicationName"`
 
 	// The type of application being migrated.
 	ApplicationType MigrationTypesEnum `mandatory:"false" json:"applicationType,omitempty"`
 
-	// The current state of the Migration
+	// The current state of the migration.
 	LifecycleState MigrationLifecycleStatesEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
-	// Details about the current lifecycle state
+	// Details about the current lifecycle state.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
-	// The current state of the overall Migration process
+	// The current state of the overall migration process.
 	MigrationState MigrationStatesEnum `mandatory:"false" json:"migrationState,omitempty"`
 
-	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// Example: `{"bar-key": "value"}`
+	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"Department": "Finance"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
-	// Example: `{"foo-namespace": {"bar-key": "value"}}`
+	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"Operations": {"CostCenter": "42"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }
 

@@ -5,7 +5,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 	"net/http"
 )
 
@@ -19,6 +19,9 @@ type ListShapesRequest struct {
 	// contact Oracle about a specific request, please provide the request
 	// ID that you supplied in this header with the request.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+
+	// Return shapes that are supported by the service feature.
+	IsSupportedFor []ListShapesIsSupportedForEnum `contributesTo:"query" name:"isSupportedFor" omitEmpty:"true" collectionFormat:"multi"`
 
 	// The name of the Availability Domain.
 	AvailabilityDomain *string `mandatory:"false" contributesTo:"query" name:"availabilityDomain"`
@@ -66,4 +69,27 @@ func (response ListShapesResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response ListShapesResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
+}
+
+// ListShapesIsSupportedForEnum Enum with underlying type: string
+type ListShapesIsSupportedForEnum string
+
+// Set of constants representing the allowable values for ListShapesIsSupportedForEnum
+const (
+	ListShapesIsSupportedForDbsystem         ListShapesIsSupportedForEnum = "DBSYSTEM"
+	ListShapesIsSupportedForAnalyticscluster ListShapesIsSupportedForEnum = "ANALYTICSCLUSTER"
+)
+
+var mappingListShapesIsSupportedFor = map[string]ListShapesIsSupportedForEnum{
+	"DBSYSTEM":         ListShapesIsSupportedForDbsystem,
+	"ANALYTICSCLUSTER": ListShapesIsSupportedForAnalyticscluster,
+}
+
+// GetListShapesIsSupportedForEnumValues Enumerates the set of values for ListShapesIsSupportedForEnum
+func GetListShapesIsSupportedForEnumValues() []ListShapesIsSupportedForEnum {
+	values := make([]ListShapesIsSupportedForEnum, 0)
+	for _, v := range mappingListShapesIsSupportedFor {
+		values = append(values, v)
+	}
+	return values
 }

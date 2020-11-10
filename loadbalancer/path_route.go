@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // PathRoute A "path route rule" to evaluate an incoming URI path, and then route a matching request to the specified backend set.

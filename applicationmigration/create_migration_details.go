@@ -2,50 +2,68 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Application Migration Service API
+// Application Migration API
 //
-// API for the Application Migration service. Use this API to migrate applications from Oracle Cloud Infrastructure - Classic to Oracle Cloud Infrastructure.
+// Application Migration simplifies the migration of applications from Oracle Cloud Infrastructure Classic to Oracle Cloud Infrastructure.
+// You can use Application Migration API to migrate applications, such as Oracle Java Cloud Service, SOA Cloud Service, and Integration Classic
+// instances, to Oracle Cloud Infrastructure. For more information, see
+// Overview of Application Migration (https://docs.cloud.oracle.com/iaas/application-migration/appmigrationoverview.htm).
 //
 
 package applicationmigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
-// CreateMigrationDetails An application being migrated from a source environment to OCI.
+// CreateMigrationDetails While creating a migration, specify the source and the application that you want migrate.
+// Each migration moves a single application from a specified source to a specified Oracle Cloud Infrastructure tenancy.
+// If required, provide the credentials of the application administrator in the source environment.
+// Application Migration uses this information to access the application, as well as discover application artifacts,
+// such as the complete domain configuration along with data sources and other dependencies.
+// You must also assign a name and provide a description for the migration.
+// This helps you to identify the appropriate source environment when you have multiple sources defined.
+// **Warning:** Oracle recommends that you avoid using any confidential information when you supply string values using the API.
 type CreateMigrationDetails struct {
 
-	// Unique idenfifier (OCID) for the compartment where the Source is located.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment that contains the source.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Unique identifier (OCID) of the application source.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the source.
 	SourceId *string `mandatory:"true" json:"sourceId"`
 
-	// Name of the application being migrated from the source.
+	// Name of the application that you want to migrate from the source environment.
 	ApplicationName *string `mandatory:"true" json:"applicationName"`
 
 	DiscoveryDetails DiscoveryDetails `mandatory:"true" json:"discoveryDetails"`
 
-	// Human-readable name of the application.
+	// User-friendly name of the application. This will be the name of the migrated application in Oracle Cloud Infrastructure.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Description of the application.
+	// Description of the application that you are migrating.
 	Description *string `mandatory:"false" json:"description"`
 
-	// Configuration required to migrate the application. In addition to the key and value, additional fields are provided to describe type type and purpose of each field. Only the value for each key is required when passing configuration to the CreateMigration operation.
+	// The pre-existing database type to be used in this migration. Currently, Application migration only supports Oracle Cloud
+	// Infrastrure databases and this option is currently available only for `JAVA_CLOUD_SERVICE` and `WEBLOGIC_CLOUD_SERVICE` target instance types.
+	PreCreatedTargetDatabaseType TargetDatabaseTypesEnum `mandatory:"false" json:"preCreatedTargetDatabaseType,omitempty"`
+
+	// Configuration required to migrate the application. In addition to the key and value, additional fields are provided
+	// to describe type type and purpose of each field. Only the value for each key is required when passing configuration to the
+	// CreateMigration operation.
 	ServiceConfig map[string]ConfigurationField `mandatory:"false" json:"serviceConfig"`
 
-	// Configuration required to migrate the application. In addition to the key and value, additional fields are provided to describe type type and purpose of each field. Only the value for each key is required when passing configuration to the CreateMigration operation.
+	// Configuration required to migrate the application. In addition to the key and value, additional fields are provided
+	// to describe type type and purpose of each field. Only the value for each key is required when passing configuration to the
+	// CreateMigration operation.
 	ApplicationConfig map[string]ConfigurationField `mandatory:"false" json:"applicationConfig"`
 
-	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// Example: `{"bar-key": "value"}`
+	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"Department": "Finance"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
-	// Example: `{"foo-namespace": {"bar-key": "value"}}`
+	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"Operations": {"CostCenter": "42"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }
 
@@ -56,16 +74,17 @@ func (m CreateMigrationDetails) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *CreateMigrationDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		DisplayName       *string                           `json:"displayName"`
-		Description       *string                           `json:"description"`
-		ServiceConfig     map[string]ConfigurationField     `json:"serviceConfig"`
-		ApplicationConfig map[string]ConfigurationField     `json:"applicationConfig"`
-		FreeformTags      map[string]string                 `json:"freeformTags"`
-		DefinedTags       map[string]map[string]interface{} `json:"definedTags"`
-		CompartmentId     *string                           `json:"compartmentId"`
-		SourceId          *string                           `json:"sourceId"`
-		ApplicationName   *string                           `json:"applicationName"`
-		DiscoveryDetails  discoverydetails                  `json:"discoveryDetails"`
+		DisplayName                  *string                           `json:"displayName"`
+		Description                  *string                           `json:"description"`
+		PreCreatedTargetDatabaseType TargetDatabaseTypesEnum           `json:"preCreatedTargetDatabaseType"`
+		ServiceConfig                map[string]ConfigurationField     `json:"serviceConfig"`
+		ApplicationConfig            map[string]ConfigurationField     `json:"applicationConfig"`
+		FreeformTags                 map[string]string                 `json:"freeformTags"`
+		DefinedTags                  map[string]map[string]interface{} `json:"definedTags"`
+		CompartmentId                *string                           `json:"compartmentId"`
+		SourceId                     *string                           `json:"sourceId"`
+		ApplicationName              *string                           `json:"applicationName"`
+		DiscoveryDetails             discoverydetails                  `json:"discoveryDetails"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -76,6 +95,8 @@ func (m *CreateMigrationDetails) UnmarshalJSON(data []byte) (e error) {
 	m.DisplayName = model.DisplayName
 
 	m.Description = model.Description
+
+	m.PreCreatedTargetDatabaseType = model.PreCreatedTargetDatabaseType
 
 	m.ServiceConfig = model.ServiceConfig
 

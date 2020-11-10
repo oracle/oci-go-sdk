@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v27/common"
+	"github.com/oracle/oci-go-sdk/v28/common"
 )
 
 // AutonomousDatabaseDataguardAssociation The properties that define dataguard association between two different Autonomous Databases.

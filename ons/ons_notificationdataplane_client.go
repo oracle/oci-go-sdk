@@ -13,8 +13,8 @@ package ons
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v27/common"
-	"github.com/oracle/oci-go-sdk/v27/common/auth"
+	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v28/common/auth"
 	"net/http"
 )
 
@@ -27,13 +27,15 @@ type NotificationDataPlaneClient struct {
 // NewNotificationDataPlaneClientWithConfigurationProvider Creates a new default NotificationDataPlane client with the given configuration provider.
 // the configuration provider will be used for the default signer as well as reading the region
 func NewNotificationDataPlaneClientWithConfigurationProvider(configProvider common.ConfigurationProvider) (client NotificationDataPlaneClient, err error) {
-	if provider, err := auth.GetGenericConfigurationProvider(configProvider); err == nil {
-		if baseClient, err := common.NewClientWithConfig(provider); err == nil {
-			return newNotificationDataPlaneClientFromBaseClient(baseClient, provider)
-		}
+	provider, err := auth.GetGenericConfigurationProvider(configProvider)
+	if err != nil {
+		return client, err
 	}
-
-	return
+	baseClient, e := common.NewClientWithConfig(provider)
+	if e != nil {
+		return client, e
+	}
+	return newNotificationDataPlaneClientFromBaseClient(baseClient, provider)
 }
 
 // NewNotificationDataPlaneClientWithOboToken Creates a new default NotificationDataPlane client with the given configuration provider.
@@ -42,7 +44,7 @@ func NewNotificationDataPlaneClientWithConfigurationProvider(configProvider comm
 func NewNotificationDataPlaneClientWithOboToken(configProvider common.ConfigurationProvider, oboToken string) (client NotificationDataPlaneClient, err error) {
 	baseClient, err := common.NewClientWithOboToken(configProvider, oboToken)
 	if err != nil {
-		return
+		return client, err
 	}
 
 	return newNotificationDataPlaneClientFromBaseClient(baseClient, configProvider)
