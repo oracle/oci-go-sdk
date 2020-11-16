@@ -13,7 +13,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // UpdateSenderDetails The details allowed for updating a sender.

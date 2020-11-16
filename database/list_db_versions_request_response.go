@@ -5,7 +5,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
@@ -31,6 +31,9 @@ type ListDbVersionsRequest struct {
 	// * ASM - Automatic storage management
 	// * LVM - Logical volume management
 	StorageManagement DbSystemOptionsStorageManagementEnum `mandatory:"false" contributesTo:"query" name:"storageManagement" omitEmpty:"true"`
+
+	// If provided, filters the results to the set of database versions which are supported for Upgrade.
+	IsUpgradeSupported *bool `mandatory:"false" contributesTo:"query" name:"isUpgradeSupported"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.

@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// CharEncodingCollection Set of valid character encodings
+// CharEncodingCollection List of supported character encodings
 type CharEncodingCollection struct {
 
-	// character encodings
+	// List of supported character encodings
 	Items []string `mandatory:"true" json:"items"`
 }
 

@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // LogAnalyticsObjectCollectionRule The configuration details of an Object Storage based collection rule.
@@ -32,9 +32,7 @@ type LogAnalyticsObjectCollectionRule struct {
 	OsBucketName *string `mandatory:"true" json:"osBucketName"`
 
 	// The type of collection.
-	// Accepted values are: LIVE.
-	// Collection type LIVE indicates to enable log collection from the time of this rule creation,
-	// and continue until the rule exists.
+	// Supported collection types: LIVE, HISTORIC, HISTORIC_LIVE
 	CollectionType ObjectCollectionRuleCollectionTypesEnum `mandatory:"true" json:"collectionType"`
 
 	// The oldest time of the file in the bucket to consider for collection.
@@ -42,10 +40,10 @@ type LogAnalyticsObjectCollectionRule struct {
 	// When collectionType is LIVE, specifying pollSince value other than CURRENT_TIME will result in error.
 	PollSince *string `mandatory:"true" json:"pollSince"`
 
-	// Log Analytics Log group OCID to associate the processed logs with.
+	// Logging Analytics Log group OCID to associate the processed logs with.
 	LogGroupId *string `mandatory:"true" json:"logGroupId"`
 
-	// Name of the Log Analytics Source to use for the processing.
+	// Name of the Logging Analytics Source to use for the processing.
 	LogSourceName *string `mandatory:"true" json:"logSourceName"`
 
 	// The current state of the rule.
@@ -66,7 +64,7 @@ type LogAnalyticsObjectCollectionRule struct {
 	// When collectionType is LIVE, specifying pollTill will result in error.
 	PollTill *string `mandatory:"false" json:"pollTill"`
 
-	// Log Analytics entity OCID to associate the processed logs with.
+	// Logging Analytics entity OCID to associate the processed logs with.
 	EntityId *string `mandatory:"false" json:"entityId"`
 
 	// An optional character encoding to aid in detecting the character encoding of the contents of the objects while processing.

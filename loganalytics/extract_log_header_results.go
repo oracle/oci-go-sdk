@@ -10,10 +10,10 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// ExtractLogHeaderResults The representation of ExtractLogHeaderResults
+// ExtractLogHeaderResults log header values
 type ExtractLogHeaderResults struct {
 
 	// log header json paths

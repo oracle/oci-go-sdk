@@ -11,7 +11,7 @@ package waas
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // StickyCookieLoadBalancingMethod An object that represents the `sticky-cookie` load balancing method and its properties.

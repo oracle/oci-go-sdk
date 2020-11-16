@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // DatabaseSoftwareImageSummary The Database service supports the creation of database software images for use in creating and patching DB systems and databases.
@@ -70,6 +70,9 @@ type DatabaseSoftwareImageSummary struct {
 
 	// output from lsinventory which will get passed as a string
 	LsInventory *string `mandatory:"false" json:"lsInventory"`
+
+	// True if this Database software image is supported for Upgrade.
+	IsUpgradeSupported *bool `mandatory:"false" json:"isUpgradeSupported"`
 }
 
 func (m DatabaseSoftwareImageSummary) String() string {

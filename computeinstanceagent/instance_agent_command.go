@@ -10,7 +10,7 @@
 package computeinstanceagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // InstanceAgentCommand The command payload.

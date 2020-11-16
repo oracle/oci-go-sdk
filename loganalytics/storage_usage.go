@@ -10,19 +10,19 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// StorageUsage Storage usage of a tenancy in Logan Analytics application
+// StorageUsage This is the storage usage information of a tenancy in Logan Analytics application
 type StorageUsage struct {
 
-	// number of bytes
+	// This is the number of bytes of active data (non-archived)
 	ActiveDataSizeInBytes *int64 `mandatory:"true" json:"activeDataSizeInBytes"`
 
-	// number of bytes archived in object store
+	// This is the number of bytes of archived data in object storage
 	ArchivedDataSizeInBytes *int64 `mandatory:"true" json:"archivedDataSizeInBytes"`
 
-	// number of bytes recalled from archived data in object store
+	// This is the number of bytes of recalled data from archived in object store
 	RecalledArchivedDataSizeInBytes *int64 `mandatory:"true" json:"recalledArchivedDataSizeInBytes"`
 }
 

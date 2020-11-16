@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// StorageWorkRequestCollection List of work request summaries.
+// StorageWorkRequestCollection This is a list of work request summaries.
 type StorageWorkRequestCollection struct {
 
-	// List of work request summaries.
+	// This is an array of work request summaries.
 	Items []StorageWorkRequestSummary `mandatory:"true" json:"items"`
 }
 

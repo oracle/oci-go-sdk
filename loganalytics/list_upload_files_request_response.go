@@ -5,14 +5,14 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
 // ListUploadFilesRequest wrapper for the ListUploadFiles operation
 type ListUploadFilesRequest struct {
 
-	// The Log Analytics namespace used for the request.
+	// The Logging Analytics namespace used for the request.
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
 	// Unique internal identifier to refer to upload container
@@ -30,10 +30,10 @@ type ListUploadFilesRequest struct {
 	// The field to sort by. Only one sort order may be provided. Default order for timeCreated is descending.
 	SortBy ListUploadFilesSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// Search string
+	// Search string used to filtering uploads based on file name, log group name and log source name.
 	SearchStr *string `mandatory:"false" contributesTo:"query" name:"searchStr"`
 
-	// Status
+	// Upload Status.
 	Status []ListUploadFilesStatusEnum `contributesTo:"query" name:"status" omitEmpty:"true" collectionFormat:"multi"`
 
 	// The client request ID for tracing.
@@ -67,8 +67,7 @@ type ListUploadFilesResponse struct {
 	// A list of UploadFileCollection instances
 	UploadFileCollection `presentIn:"body"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact
-	// Oracle about a particular request, please provide the request ID.
+	// Unique Oracle-assigned identifier for the request. When you contact Oracle about a specific request, provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

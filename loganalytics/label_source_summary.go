@@ -10,10 +10,10 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// LabelSourceSummary The representation of LabelSourceSummary
+// LabelSourceSummary source summary
 type LabelSourceSummary struct {
 
 	// display name

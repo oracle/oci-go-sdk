@@ -13,7 +13,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // StackResourceDriftSummary Drift status details for the indicated resource and stack. Includes actual and expected (defined) properties.

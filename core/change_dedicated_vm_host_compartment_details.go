@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // ChangeDedicatedVmHostCompartmentDetails Specifies the compartment to move the dedicated virtual machine host to.

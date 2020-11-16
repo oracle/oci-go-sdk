@@ -10,22 +10,22 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// ReleaseRecalledDataDetails Work request details to release recalled data
+// ReleaseRecalledDataDetails This is the input used to release recalled data
 type ReleaseRecalledDataDetails struct {
 
-	// the compartment OCID for permission checking
+	// This is the compartment OCID for permission checking
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// the end of the time interval
+	// This is the end of the time interval
 	TimeDataEnded *common.SDKTime `mandatory:"true" json:"timeDataEnded"`
 
-	// the start of the time interval
+	// This is the start of the time interval
 	TimeDataStarted *common.SDKTime `mandatory:"true" json:"timeDataStarted"`
 
-	// the type of the log data to be purged
+	// This is the type of the recalled data to be released
 	DataType StorageDataTypeEnum `mandatory:"false" json:"dataType,omitempty"`
 }
 

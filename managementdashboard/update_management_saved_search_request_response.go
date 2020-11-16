@@ -5,17 +5,17 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
 // UpdateManagementSavedSearchRequest wrapper for the UpdateManagementSavedSearch operation
 type UpdateManagementSavedSearchRequest struct {
 
-	// unique saved search identifier
+	// A unique saved search identifier.
 	ManagementSavedSearchId *string `mandatory:"true" contributesTo:"path" name:"managementSavedSearchId"`
 
-	// Json metadata for changed properties in existing saved search.
+	// JSON metadata for changed saved search properties.
 	UpdateManagementSavedSearchDetails `contributesTo:"body"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call

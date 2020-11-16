@@ -4,51 +4,51 @@
 
 // ManagementDashboard API
 //
-// Management Dashboard micro-service provides a set of CRUD, import, export, and compartment related APIs (such as change compartment)   to support dashboard and saved search metadata preservation.  These APIs are mainly for client UIs, for various UI activities such as get list of all saved searches in a compartment, create a dashboard, open a saved search, etc.  Use export to retrieve  dashboards and their saved searches, then edit the Json if necessary (for example change compartmentIds), then import the result to  destination dashboard service.
-// APIs validate all required properties to ensure properties are present and have correct type and values.
+// API for the Management Dashboard micro-service. Use this API for dashboard and saved search metadata preservation and to perform  tasks such as creating a dashboard, creating a saved search, and obtaining a list of dashboards and saved searches in a compartment.
 //
 //
 
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// ManagementDashboardTileDetails Properties of dashboard tile representing a saved search.
+// ManagementDashboardTileDetails Properties of the dashboard tile representing a saved search.
+// Tiles are laid out in a twelve column grid system with (0,0) at upper left corner.
 type ManagementDashboardTileDetails struct {
 
-	// Display name for saved search.
+	// Display name of the saved search.
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
-	// Id of saved search.
+	// ID of the saved search.
 	SavedSearchId *string `mandatory:"true" json:"savedSearchId"`
 
-	// Row, Y position
+	// Tile's row number.
 	Row *int `mandatory:"true" json:"row"`
 
-	// Column, X position
+	// Tile's column number.
 	Column *int `mandatory:"true" json:"column"`
 
-	// Height position
+	// The number of rows the tile occupies.
 	Height *int `mandatory:"true" json:"height"`
 
-	// Width position
+	// The number of columns the tile occupies.
 	Width *int `mandatory:"true" json:"width"`
 
-	// Json for internationalization.
+	// JSON that contains internationalization options.
 	Nls *interface{} `mandatory:"true" json:"nls"`
 
-	// Json to contain options for UI.
+	// JSON that contains user interface options.
 	UiConfig *interface{} `mandatory:"true" json:"uiConfig"`
 
-	// Array of Json to contain options for source of data.
+	// Array of JSON that contain data source options.
 	DataConfig []interface{} `mandatory:"true" json:"dataConfig"`
 
-	// State of saved search.
+	// Current state of the saved search.
 	State ManagementDashboardTileDetailsStateEnum `mandatory:"true" json:"state"`
 
-	// Drill down configuration
+	// Drill-down configuration to define the destination of a drill-down action.
 	DrilldownConfig *interface{} `mandatory:"true" json:"drilldownConfig"`
 }
 

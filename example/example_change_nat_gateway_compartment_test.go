@@ -25,9 +25,9 @@ package example
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v28/common"
-	"github.com/oracle/oci-go-sdk/v28/core"
-	"github.com/oracle/oci-go-sdk/v28/example/helpers"
+	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v29/core"
+	"github.com/oracle/oci-go-sdk/v29/example/helpers"
 	"log"
 	"os"
 )

@@ -10,7 +10,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // HistoryCollection A list containing the recommendation history items that match filter criteria, if any. Results contain `HistorySummary` objects.

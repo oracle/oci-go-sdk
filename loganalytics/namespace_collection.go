@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// NamespaceCollection List of NamespaceSummary: there is at most one item.
+// NamespaceCollection This is a list of NamespaceSummary: there is at most one item in the list.
 type NamespaceCollection struct {
 
-	// List of NamespaceSummary: there is at most one item.
+	// There is at most one item in the items array.
 	Items []NamespaceSummary `mandatory:"true" json:"items"`
 }
 

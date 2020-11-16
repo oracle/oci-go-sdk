@@ -10,19 +10,19 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// Namespace Namespace of a tenancy in Logan Analytics application
+// Namespace This is the namespace details of a tenancy in Logan Analytics application
 type Namespace struct {
 
-	// namespace name
+	// This is the namespace name of a tenancy
 	NamespaceName *string `mandatory:"true" json:"namespaceName"`
 
-	// Tenancy ID
+	// The is the tenancy ID
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// if tenancy is onboarded to logging analytics
+	// This indicates if the tenancy is onboarded to Logging Analytics
 	IsOnboarded *bool `mandatory:"true" json:"isOnboarded"`
 }
 

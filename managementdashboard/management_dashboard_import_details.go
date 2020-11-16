@@ -4,21 +4,20 @@
 
 // ManagementDashboard API
 //
-// Management Dashboard micro-service provides a set of CRUD, import, export, and compartment related APIs (such as change compartment)   to support dashboard and saved search metadata preservation.  These APIs are mainly for client UIs, for various UI activities such as get list of all saved searches in a compartment, create a dashboard, open a saved search, etc.  Use export to retrieve  dashboards and their saved searches, then edit the Json if necessary (for example change compartmentIds), then import the result to  destination dashboard service.
-// APIs validate all required properties to ensure properties are present and have correct type and values.
+// API for the Management Dashboard micro-service. Use this API for dashboard and saved search metadata preservation and to perform  tasks such as creating a dashboard, creating a saved search, and obtaining a list of dashboards and saved searches in a compartment.
 //
 //
 
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // ManagementDashboardImportDetails Array of dashboards to import.
 type ManagementDashboardImportDetails struct {
 
-	// Array of dashboards
+	// Array of dashboards.
 	Dashboards []ManagementDashboardForImportExportDetails `mandatory:"true" json:"dashboards"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.

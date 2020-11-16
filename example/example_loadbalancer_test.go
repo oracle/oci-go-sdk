@@ -2,6 +2,7 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 
 // Example code for Load Balancing Service API
+// This example creates a new loadbalancer with SSL cipher suites. After that it creates a new listener with the SSL configuration and updates the backend set with it. Finally it updates the loadbalancer cipher suites.
 
 package example
 
@@ -11,11 +12,11 @@ import (
 	"math"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v28/common"
-	"github.com/oracle/oci-go-sdk/v28/core"
-	"github.com/oracle/oci-go-sdk/v28/example/helpers"
-	"github.com/oracle/oci-go-sdk/v28/identity"
-	"github.com/oracle/oci-go-sdk/v28/loadbalancer"
+	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v29/core"
+	"github.com/oracle/oci-go-sdk/v29/example/helpers"
+	"github.com/oracle/oci-go-sdk/v29/identity"
+	"github.com/oracle/oci-go-sdk/v29/loadbalancer"
 )
 
 const (
@@ -25,6 +26,15 @@ const (
 	listenerDisplayName     = "GO_SDK_Listener"
 	rulesetOneName          = "ruleset1"
 	backendSetOneName       = "backendset1"
+	cipherName              = "test-cipher"
+	certificateName         = "example-certificate"
+	publicCert              = `-----BEGIN CERTIFICATE-----
+    publicKeyGoesHere
+    -----END CERTIFICATE-----`
+
+	privateKey = `-----BEGIN RSA PRIVATE KEY-----
+    PrivateKeyGoesHere
+    -----END RSA PRIVATE KEY-----`
 )
 
 func ExampleCreateLoadbalancer() {
@@ -92,6 +102,28 @@ func ExampleCreateLoadbalancer() {
 	}
 	request.RuleSets = ruleSets
 
+	// ssl cipher suites for the load balancer
+
+	sslCiphers := map[string]loadbalancer.SslCipherSuiteDetails{
+		cipherName: {
+			Name:    common.String(cipherName),
+			Ciphers: []string{"AES128-SHA", "AES256-SHA"},
+		},
+	}
+
+	request.SslCipherSuites = sslCiphers
+
+	cert := map[string]loadbalancer.CertificateDetails{
+		certificateName: {
+			CertificateName:   common.String(certificateName),
+			PrivateKey:        common.String(privateKey),
+			PublicCertificate: common.String(publicCert),
+			CaCertificate:     common.String(publicCert),
+		},
+	}
+
+	request.Certificates = cert
+
 	// Backend Sets for our new LB. Includes an LB Cookie session persistence configuration. Note that this is
 	//   mutually exclusive with a session persistence configuration.
 	backendSets := map[string]loadbalancer.BackendSetDetails{
@@ -121,6 +153,12 @@ func ExampleCreateLoadbalancer() {
 				IsSecure:        common.Bool(false),
 				IsHttpOnly:      common.Bool(false),
 			},
+			SslConfiguration: &loadbalancer.SslConfigurationDetails{
+				CertificateName:       common.String("example-certificate"),
+				VerifyPeerCertificate: common.Bool(true),
+				CipherSuiteName:       common.String(cipherName),
+				Protocols:             []string{"TLSv1.1"},
+			},
 		},
 	}
 	request.BackendSets = backendSets
@@ -131,6 +169,12 @@ func ExampleCreateLoadbalancer() {
 			Port:                  common.Int(80),
 			Protocol:              common.String("HTTP"),
 			RuleSetNames:          []string{rulesetOneName},
+			SslConfiguration: &loadbalancer.SslConfigurationDetails{
+				CertificateName:       common.String("example-certificate"),
+				VerifyPeerCertificate: common.Bool(true),
+				CipherSuiteName:       common.String(cipherName),
+				Protocols:             []string{"TLSv1.1"},
+			},
 		},
 	}
 
@@ -194,6 +238,9 @@ func ExampleCreateLoadbalancer() {
 
 	newCreatedLoadBalancer := getLoadBalancer()
 	fmt.Printf("New loadbalancer LifecycleState is: %s\n\n", newCreatedLoadBalancer.LifecycleState)
+
+	//Update cipher suites
+	updateSSLCiphers(ctx, c, newCreatedLoadBalancer.Id)
 
 	loadBalancerRuleSets := listRuleSets(ctx, c, newCreatedLoadBalancer.Id)
 	fmt.Printf("Rule Sets from GET: %+v\n\n", loadBalancerRuleSets)
@@ -394,6 +441,20 @@ func addBackendSet(ctx context.Context, client loadbalancer.LoadBalancerClient, 
 	helpers.FatalIfError(err)
 	println("backendset added")
 	return response, err
+}
+
+//Update ssl ciphers
+func updateSSLCiphers(ctx context.Context, c loadbalancer.LoadBalancerClient, loadBalancerId *string) {
+	request := loadbalancer.UpdateSSLCipherSuiteRequest{
+		RequestMetadata: helpers.GetRequestMetadataWithDefaultRetryPolicy(),
+	}
+	details := loadbalancer.UpdateSslCipherSuiteDetails{
+		Ciphers: []string{"ECDHE-ECDSA-AES256-GCM-SHA384"},
+	}
+	request.LoadBalancerId = loadBalancerId
+	request.UpdateSslCipherSuiteDetails = details
+	_, err := c.UpdateSSLCipherSuite(ctx, request)
+	helpers.FatalIfError(err)
 }
 
 // Create network security group

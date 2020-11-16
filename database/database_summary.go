@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // DatabaseSummary An Oracle Database on a bare metal or virtual machine DB system. For more information, see Bare Metal and Virtual Machine DB Systems (https://docs.cloud.oracle.com/Content/Database/Concepts/overview.htm).
@@ -97,6 +97,7 @@ const (
 	DatabaseSummaryLifecycleStateAvailable        DatabaseSummaryLifecycleStateEnum = "AVAILABLE"
 	DatabaseSummaryLifecycleStateUpdating         DatabaseSummaryLifecycleStateEnum = "UPDATING"
 	DatabaseSummaryLifecycleStateBackupInProgress DatabaseSummaryLifecycleStateEnum = "BACKUP_IN_PROGRESS"
+	DatabaseSummaryLifecycleStateUpgrading        DatabaseSummaryLifecycleStateEnum = "UPGRADING"
 	DatabaseSummaryLifecycleStateTerminating      DatabaseSummaryLifecycleStateEnum = "TERMINATING"
 	DatabaseSummaryLifecycleStateTerminated       DatabaseSummaryLifecycleStateEnum = "TERMINATED"
 	DatabaseSummaryLifecycleStateRestoreFailed    DatabaseSummaryLifecycleStateEnum = "RESTORE_FAILED"
@@ -108,6 +109,7 @@ var mappingDatabaseSummaryLifecycleState = map[string]DatabaseSummaryLifecycleSt
 	"AVAILABLE":          DatabaseSummaryLifecycleStateAvailable,
 	"UPDATING":           DatabaseSummaryLifecycleStateUpdating,
 	"BACKUP_IN_PROGRESS": DatabaseSummaryLifecycleStateBackupInProgress,
+	"UPGRADING":          DatabaseSummaryLifecycleStateUpgrading,
 	"TERMINATING":        DatabaseSummaryLifecycleStateTerminating,
 	"TERMINATED":         DatabaseSummaryLifecycleStateTerminated,
 	"RESTORE_FAILED":     DatabaseSummaryLifecycleStateRestoreFailed,

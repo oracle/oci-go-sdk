@@ -10,10 +10,10 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// UpdateStorageDetails Update storage configuration of a tenancy in Logan Analytics application
+// UpdateStorageDetails This is the input to update storage configuration of a tenancy in Logan Analytics application
 type UpdateStorageDetails struct {
 	ArchivingConfiguration *ArchivingConfiguration `mandatory:"true" json:"archivingConfiguration"`
 }

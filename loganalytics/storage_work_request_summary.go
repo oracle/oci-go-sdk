@@ -10,28 +10,28 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// StorageWorkRequestSummary Storage work request summary for list operation.
+// StorageWorkRequestSummary This is the summary of a storage work request.
 type StorageWorkRequestSummary struct {
 
-	// Unique OCID identifier to reference this storage work Request with.
+	// This is the OCID of the storage work Request.
 	Id *string `mandatory:"true" json:"id"`
 
 	// Compartment Identifier OCID  (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Work request status.
+	// This is the work request status.
 	Status WorkRequestStatusEnum `mandatory:"true" json:"status"`
 
-	// the end of the time interval
+	// This is the end of the time interval
 	TimeDataEnded *common.SDKTime `mandatory:"true" json:"timeDataEnded"`
 
-	// the type of the log data to be purged
+	// Thie is the type of data to be purged
 	DataType StorageDataTypeEnum `mandatory:"true" json:"dataType"`
 
-	// Asynchronous storage request name.
+	// This is the type of the work request.
 	OperationType StorageOperationTypeEnum `mandatory:"true" json:"operationType"`
 
 	// When the work request started.
@@ -49,28 +49,28 @@ type StorageWorkRequestSummary struct {
 	// Percentage progress completion of the work request.
 	PercentComplete *int `mandatory:"false" json:"percentComplete"`
 
-	// the start of the time interval
+	// This is the start of the time interval
 	TimeDataStarted *common.SDKTime `mandatory:"false" json:"timeDataStarted"`
 
-	// the solr data filter query, '*' means all
+	// This is the solr query used to filter data for purge, '*' means all
 	PurgeQueryString *string `mandatory:"false" json:"purgeQueryString"`
 
-	// more detailed status if applicable
+	// This provides more detailed status if applicable
 	StatusDetails *string `mandatory:"false" json:"statusDetails"`
 
-	// more detailed info about this operation if applicable
+	// This provides more detailed info about the work request if applicable
 	OperationDetails *string `mandatory:"false" json:"operationDetails"`
 
-	// policy name if applicable (e.g. purge policy)
+	// This is the policy name if applicable (e.g. purge policy)
 	PolicyName *string `mandatory:"false" json:"policyName"`
 
-	// purge policy ID
+	// This is the purge policy ID if applicable
 	PolicyId *string `mandatory:"false" json:"policyId"`
 
-	// storage usage in bytes if applicable
+	// This is the data usage in bytes if applicable
 	StorageUsageInBytes *int64 `mandatory:"false" json:"storageUsageInBytes"`
 
-	// if true, purge child compartments data, only applicable to purge request
+	// If true, purge child compartments data, only applicable to purge request
 	CompartmentIdInSubtree *bool `mandatory:"false" json:"compartmentIdInSubtree"`
 }
 

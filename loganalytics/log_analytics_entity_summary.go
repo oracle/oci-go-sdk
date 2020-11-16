@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // LogAnalyticsEntitySummary Summary of a log analytics entity.
@@ -59,6 +59,14 @@ type LogAnalyticsEntitySummary struct {
 
 	// This indicates the type of source. It is primarily for Enterprise Manager Repository ID.
 	SourceId *string `mandatory:"false" json:"sourceId"`
+
+	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
+	// Example: `{"bar-key": "value"}`
+	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
+
+	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
+	// Example: `{"foo-namespace": {"bar-key": "value"}}`
+	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }
 
 func (m LogAnalyticsEntitySummary) String() string {

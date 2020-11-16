@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // UploadFileCollection Collection of UploadFileSummary objects.
 type UploadFileCollection struct {
 
-	// list of UploadFileSummary objects.
+	// List of UploadFileSummary objects.
 	Items []UploadFileSummary `mandatory:"true" json:"items"`
 }
 

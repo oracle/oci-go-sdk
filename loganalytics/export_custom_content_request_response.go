@@ -5,7 +5,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"io"
 	"net/http"
 )
@@ -13,9 +13,10 @@ import (
 // ExportCustomContentRequest wrapper for the ExportCustomContent operation
 type ExportCustomContentRequest struct {
 
-	// The Log Analytics namespace used for the request.
+	// The Logging Analytics namespace used for the request.
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
+	// content to export
 	ExportCustomContentDetails ExportContent `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
@@ -56,8 +57,7 @@ type ExportCustomContentResponse struct {
 	// The io.ReadCloser instance
 	Content io.ReadCloser `presentIn:"body" encoding:"binary"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact
-	// Oracle about a particular request, please provide the request ID.
+	// Unique Oracle-assigned identifier for the request. When you contact Oracle about a specific request, provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 

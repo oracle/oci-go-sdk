@@ -10,10 +10,10 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// SourceValidateResults The representation of SourceValidateResults
+// SourceValidateResults results of source validation
 type SourceValidateResults struct {
 
 	// items
