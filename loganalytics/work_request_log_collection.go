@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// WorkRequestLogCollection List of logs for the specified work request if any.
+// WorkRequestLogCollection This is a list of logs for the work request.
 type WorkRequestLogCollection struct {
 
-	// List of logs for the specified work request if any.
+	// This is an array of logs for the work request.
 	Items []WorkRequestLog `mandatory:"true" json:"items"`
 }
 

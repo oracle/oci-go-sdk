@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// WorkRequestErrorCollection List of errors for the specified work request if any.
+// WorkRequestErrorCollection This is a list of errors for the work request.
 type WorkRequestErrorCollection struct {
 
-	// List of errors for the specified work request if any.
+	// This is an array of errors for the work request.
 	Items []WorkRequestError `mandatory:"true" json:"items"`
 }
 

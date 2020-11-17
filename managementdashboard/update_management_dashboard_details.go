@@ -4,69 +4,68 @@
 
 // ManagementDashboard API
 //
-// Management Dashboard micro-service provides a set of CRUD, import, export, and compartment related APIs (such as change compartment)   to support dashboard and saved search metadata preservation.  These APIs are mainly for client UIs, for various UI activities such as get list of all saved searches in a compartment, create a dashboard, open a saved search, etc.  Use export to retrieve  dashboards and their saved searches, then edit the Json if necessary (for example change compartmentIds), then import the result to  destination dashboard service.
-// APIs validate all required properties to ensure properties are present and have correct type and values.
+// API for the Management Dashboard micro-service. Use this API for dashboard and saved search metadata preservation and to perform  tasks such as creating a dashboard, creating a saved search, and obtaining a list of dashboards and saved searches in a compartment.
 //
 //
 
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// UpdateManagementDashboardDetails Properties for a dashboard.  Dashboard id must not be provided.
+// UpdateManagementDashboardDetails Properties of a dashboard.  Dashboard ID must not be provided.
 type UpdateManagementDashboardDetails struct {
 
-	// Provider Id.
+	// ID of the service (for example, log-analytics) that owns the dashboard. Each service has a unique ID.
 	ProviderId *string `mandatory:"false" json:"providerId"`
 
-	// Provider name.
+	// Name of the service (for example, Logging Analytics) that owns the dashboard.
 	ProviderName *string `mandatory:"false" json:"providerName"`
 
-	// Provider version.
+	// Version of the service that owns the dashboard.
 	ProviderVersion *string `mandatory:"false" json:"providerVersion"`
 
-	// Dashboard tiles array.
+	// Array of dashboard tiles.
 	Tiles []ManagementDashboardTileDetails `mandatory:"false" json:"tiles"`
 
-	// Display name for dashboard.
+	// Display name of the dashboard.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Dashboard's description.
+	// Description of the dashboard.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The ocid of the compartment that owns the dashboard.
+	// OCID of the compartment in which the dashboard resides.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
-	// String boolean ("true" or "false").  OOB (Out of the Box) dashboards are only provided by Oracle.  They cannot be modified by non-Oracle.
+	// Determines whether the dashboard is an Out-of-the-Box (OOB) dashboard. Note that OOB dashboards are only provided by Oracle and cannot be modified.
 	IsOobDashboard *bool `mandatory:"false" json:"isOobDashboard"`
 
-	// String boolean ("true" or "false").  When false, dashboard is not shown in dashboard home.
+	// Determines whether the dashboard will be displayed in Dashboard Home.
 	IsShowInHome *bool `mandatory:"false" json:"isShowInHome"`
 
 	// Version of the metadata.
 	MetadataVersion *string `mandatory:"false" json:"metadataVersion"`
 
-	// String boolean ("true" or "false").  Whether to show the dashboard description.
+	// Determines whether the description of the dashboard is displayed.
 	IsShowDescription *bool `mandatory:"false" json:"isShowDescription"`
 
-	// Screen image.
+	// Screen image of the dashboard.
 	ScreenImage *string `mandatory:"false" json:"screenImage"`
 
-	// Json for internationalization.
+	// JSON that contains internationalization options.
 	Nls *interface{} `mandatory:"false" json:"nls"`
 
-	// Json to contain options for UI.
+	// JSON that contains user interface options.
 	UiConfig *interface{} `mandatory:"false" json:"uiConfig"`
 
-	// Array of Json to contain options for source of data.
+	// Array of JSON that contain data source options.
 	DataConfig []interface{} `mandatory:"false" json:"dataConfig"`
 
-	// NORMAL meaning single dashboard, or SET meaning dashboard set.
+	// Type of dashboard. NORMAL denotes a single dashboard and SET denotes a dashboard set.
 	Type *string `mandatory:"false" json:"type"`
 
-	// String boolean ("true" or "false").
+	// Determines whether the dashboard is set as favorite.
 	IsFavorite *bool `mandatory:"false" json:"isFavorite"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.

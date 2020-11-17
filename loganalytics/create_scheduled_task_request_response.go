@@ -5,14 +5,14 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
 // CreateScheduledTaskRequest wrapper for the CreateScheduledTask operation
 type CreateScheduledTaskRequest struct {
 
-	// The Log Analytics namespace used for the request.
+	// The Logging Analytics namespace used for the request.
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
 	// Scheduled task to be created.
@@ -56,8 +56,7 @@ type CreateScheduledTaskResponse struct {
 	// The ScheduledTask instance
 	ScheduledTask `presentIn:"body"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact
-	// Oracle about a particular request, please provide the request ID.
+	// Unique Oracle-assigned identifier for the request. When you contact Oracle about a specific request, provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For optimistic concurrency control. See `if-match`.

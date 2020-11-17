@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // LogAnalyticsImportCustomContent LogAnalyticsImportCustomContent
@@ -25,7 +25,6 @@ type LogAnalyticsImportCustomContent struct {
 	// fieldNames
 	FieldNames []string `mandatory:"false" json:"fieldNames"`
 
-	// changeList
 	ChangeList *LogAnalyticsImportCustomChangeList `mandatory:"false" json:"changeList"`
 
 	// contentName

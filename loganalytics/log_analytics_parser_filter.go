@@ -10,14 +10,14 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // LogAnalyticsParserFilter LogAnalyticsParserFilter
 type LogAnalyticsParserFilter struct {
 
 	// id
-	Id *interface{} `mandatory:"false" json:"id"`
+	Id *string `mandatory:"false" json:"id"`
 
 	Parser *LogAnalyticsParser `mandatory:"false" json:"parser"`
 

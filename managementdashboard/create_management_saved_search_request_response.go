@@ -5,14 +5,14 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
 // CreateManagementSavedSearchRequest wrapper for the CreateManagementSavedSearch operation
 type CreateManagementSavedSearchRequest struct {
 
-	// Json metadata for the saved search.
+	// JSON metadata for the saved search.
 	CreateManagementSavedSearchDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

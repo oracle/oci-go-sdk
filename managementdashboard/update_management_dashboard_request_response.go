@@ -5,17 +5,17 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
 // UpdateManagementDashboardRequest wrapper for the UpdateManagementDashboard operation
 type UpdateManagementDashboardRequest struct {
 
-	// unique dashboard identifier
+	// A unique dashboard identifier.
 	ManagementDashboardId *string `mandatory:"true" contributesTo:"path" name:"managementDashboardId"`
 
-	// Json Metadata for changed dashboard properties.
+	// JSON metadata for changed dashboard properties.
 	UpdateManagementDashboardDetails `contributesTo:"body"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call

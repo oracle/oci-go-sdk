@@ -5,14 +5,14 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
 // DeleteManagementDashboardRequest wrapper for the DeleteManagementDashboard operation
 type DeleteManagementDashboardRequest struct {
 
-	// unique dashboard identifier
+	// A unique dashboard identifier.
 	ManagementDashboardId *string `mandatory:"true" contributesTo:"path" name:"managementDashboardId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call

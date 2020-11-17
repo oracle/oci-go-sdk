@@ -5,7 +5,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
@@ -15,7 +15,7 @@ type ListStorageWorkRequestsRequest struct {
 	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// The Log Analytics namespace used for the request.
+	// The Logging Analytics namespace used for the request.
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
 	// The client request ID for tracing.
@@ -30,25 +30,26 @@ type ListStorageWorkRequestsRequest struct {
 	// The sort order to use, either ascending (`ASC`) or descending (`DESC`).
 	SortOrder ListStorageWorkRequestsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
-	// The field to sort by. Only one sort order may be provided. Default order for timeAccepted is descending. If no value is specified timeAccepted is default.
+	// This is the query parameter of which field to sort by. Only one sort order may be provided. Default order for timeAccepted
+	// is descending. If no value is specified timeAccepted is default.
 	SortBy ListStorageWorkRequestsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// storage operation type
+	// The is the work request type query parameter
 	OperationType ListStorageWorkRequestsOperationTypeEnum `mandatory:"false" contributesTo:"query" name:"operationType" omitEmpty:"true"`
 
-	// storage operation status
+	// The is the work request status query parameter
 	Status ListStorageWorkRequestsStatusEnum `mandatory:"false" contributesTo:"query" name:"status" omitEmpty:"true"`
 
-	// storage operation started time
+	// The is the query parameter of when the processing of work request was started
 	TimeStarted *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeStarted"`
 
-	// storage operation time finished
+	// The is the query parameter of when the processing of work request was finished
 	TimeFinished *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeFinished"`
 
-	// policy name e.g. purge policy
+	// This is the query parameter of purge policy name
 	PolicyName *string `mandatory:"false" contributesTo:"query" name:"policyName"`
 
-	// policy ID e.g. purge policy ID
+	// This is the query parameter of purge policy ID
 	PolicyId *string `mandatory:"false" contributesTo:"query" name:"policyId"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
@@ -79,8 +80,7 @@ type ListStorageWorkRequestsResponse struct {
 	// A list of StorageWorkRequestCollection instances
 	StorageWorkRequestCollection `presentIn:"body"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact
-	// Oracle about a particular request, please provide the request ID.
+	// Unique Oracle-assigned identifier for the request. When you contact Oracle about a specific request, provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For pagination of a list of items. When paging through a list, if this header appears in the response,

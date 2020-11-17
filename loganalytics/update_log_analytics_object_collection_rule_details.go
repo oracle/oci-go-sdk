@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // UpdateLogAnalyticsObjectCollectionRuleDetails To update the attributes of an Object Storage based collection rule.
@@ -20,13 +20,13 @@ type UpdateLogAnalyticsObjectCollectionRuleDetails struct {
 	// Avoid entering confidential information.
 	Description *string `mandatory:"false" json:"description"`
 
-	// Log Analytics Log group OCID to associate the processed logs with.
+	// Logging Analytics Log group OCID to associate the processed logs with.
 	LogGroupId *string `mandatory:"false" json:"logGroupId"`
 
-	// Name of the Log Analytics Source to use for the processing.
+	// Name of the Logging Analytics Source to use for the processing.
 	LogSourceName *string `mandatory:"false" json:"logSourceName"`
 
-	// Log Analytics entity OCID. Associates the processed logs with the given entity (optional).
+	// Logging Analytics entity OCID. Associates the processed logs with the given entity (optional).
 	EntityId *string `mandatory:"false" json:"entityId"`
 
 	// An optional character encoding to aid in detecting the character encoding of the contents of the objects while processing.

@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // EstimatePurgeDataSizeResult purge data size in bytes
 type EstimatePurgeDataSizeResult struct {
 
-	// purge data size in bytes
+	// This is the size of data to be purged in bytes
 	PurgeDataSizeInBytes *int64 `mandatory:"true" json:"purgeDataSizeInBytes"`
 }
 

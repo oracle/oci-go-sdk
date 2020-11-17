@@ -10,16 +10,16 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// WorkRequestLog A log message from the execution of a work request.
+// WorkRequestLog This is a log message from the execution of a work request.
 type WorkRequestLog struct {
 
-	// Human-readable log message.
+	// This is a human-readable log message.
 	Message *string `mandatory:"true" json:"message"`
 
-	// The time the log message was written. An RFC3339 formatted datetime string
+	// This is the time the log message was written. An RFC3339 formatted datetime string
 	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp"`
 }
 

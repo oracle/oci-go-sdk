@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // QueryDetails Input arguments for running a log anlaytics query. If the request is set to run in asynchronous mode
@@ -20,7 +20,7 @@ type QueryDetails struct {
 	// Compartment Identifier OCID  (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Query to perform.
+	// Query to perform. Must conform to logging analytic querylanguage syntax. Syntax errors will be returned if present.
 	QueryString *string `mandatory:"true" json:"queryString"`
 
 	// Default subsystem to qualify fields with in the queryString if not specified.
@@ -29,7 +29,7 @@ type QueryDetails struct {
 	// Flag to search all child compartments of the compartment Id specified in the compartmentId query parameter.
 	CompartmentIdInSubtree *bool `mandatory:"false" json:"compartmentIdInSubtree"`
 
-	// Saved search OCID for this query if known, used to track usage of saved search queryString.
+	// Saved search OCID for this query if known.
 	SavedSearchId *string `mandatory:"false" json:"savedSearchId"`
 
 	// Maximum number of results to count.  Note a maximum of 2001 will be enforced; that is, actualMaxTotalCountUsed = Math.min(maxTotalCount, 2001).
@@ -43,10 +43,10 @@ type QueryDetails struct {
 	// Amount of time, in seconds, allowed for a query to execute. If this time expires before the query is complete, any partial results will be returned.
 	QueryTimeoutInSeconds *int `mandatory:"false" json:"queryTimeoutInSeconds"`
 
-	// Option to run the query asynchronously. This will lead to a LogAnalyticsQueryJobWorkRequest being submitted and the {workRequestId} will be returned to fetch the results.
+	// Option to run the query asynchronously. This will lead to a LogAnalyticsQueryJobWorkRequest being submitted and the {workRequestId} will be returned to use for fetching the results.
 	ShouldRunAsync *bool `mandatory:"false" json:"shouldRunAsync"`
 
-	// Execution mode for the query if running asynchronously  (shouldRunAsync is true).
+	// Execution mode for the query if running asynchronously i.e (shouldRunAsync is set to true).
 	AsyncMode JobModeEnum `mandatory:"false" json:"asyncMode,omitempty"`
 
 	// Include the total number of results from the query. Note, this value will always be equal to or less than maxTotalCount.
@@ -58,7 +58,7 @@ type QueryDetails struct {
 	// Include fields in response
 	ShouldIncludeFields *bool `mandatory:"false" json:"shouldIncludeFields"`
 
-	// Controls if query should ignore pre-calculated results if available and only use raw data.
+	// Controls if query should ignore pre-calculated results if available and only use raw data. If set and no acceleration data is found it will fallback to raw data.
 	ShouldUseAcceleration *bool `mandatory:"false" json:"shouldUseAcceleration"`
 }
 

@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // Filter Query builder filter action to apply edit to queryString.
@@ -19,7 +19,7 @@ type Filter struct {
 	// Operator to apply when editing the query string.
 	Operator FilterOperatorEnum `mandatory:"true" json:"operator"`
 
-	// Field filter references when inserting filter into the query string. Field must be a valid enterprise logging out-of-the-box field, virtual field calculated in the query or a user defined field.
+	// Field filter references when inserting filter into the query string. Field must be a valid logging analytics out-of-the-box field, virtual field calculated in the query or a user defined field.
 	FieldName *string `mandatory:"false" json:"fieldName"`
 
 	// Field values that will be inserted into the query string for the specified fieldName. Please note all values should reflect the fields data type otherwise the insert is subject to fail.

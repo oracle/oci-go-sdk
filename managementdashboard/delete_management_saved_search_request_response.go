@@ -5,14 +5,14 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
 // DeleteManagementSavedSearchRequest wrapper for the DeleteManagementSavedSearch operation
 type DeleteManagementSavedSearchRequest struct {
 
-	// unique saved search identifier
+	// A unique saved search identifier.
 	ManagementSavedSearchId *string `mandatory:"true" contributesTo:"path" name:"managementSavedSearchId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call

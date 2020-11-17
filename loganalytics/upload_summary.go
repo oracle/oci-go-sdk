@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // UploadSummary Summary of the Upload.
@@ -34,7 +34,7 @@ type UploadSummary struct {
 	// This time represents the latest time of the log entry in this container. An RFC3339 formatted datetime string
 	TimeLatestLogEntry *common.SDKTime `mandatory:"false" json:"timeLatestLogEntry"`
 
-	// Warnings summary.
+	// Number of warnings associated to the upload.
 	WarningsCount *int `mandatory:"false" json:"warningsCount"`
 }
 

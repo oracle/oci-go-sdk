@@ -5,7 +5,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"io"
 	"net/http"
 )
@@ -13,7 +13,7 @@ import (
 // UploadLogFileRequest wrapper for the UploadLogFile operation
 type UploadLogFileRequest struct {
 
-	// The Log Analytics namespace used for the request.
+	// The Logging Analytics namespace used for the request.
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
 	// The name of the upload. This can be considered as a container name where different kind of logs will be collected and searched together. This upload name/id can further be used for retrieving the details of the upload, including its status or deleting the upload.
@@ -26,7 +26,6 @@ type UploadLogFileRequest struct {
 	Filename *string `mandatory:"true" contributesTo:"query" name:"filename"`
 
 	// The log group OCID to which the log data in this upload will be mapped to.
-	//   Example: `ocid1.loganalyticsloggroup.oc1..aaaaaaaad3q4sosi5i7z7onw2kgbwyk1581620537198`
 	OpcMetaLoggrpid *string `mandatory:"true" contributesTo:"header" name:"opc-meta-loggrpid"`
 
 	// Log data
@@ -38,7 +37,7 @@ type UploadLogFileRequest struct {
 	// Timezone to be used when processing log entries whose timestamps do not include an explicit timezone. When this property is not specified, the timezone of the entity specified is used. If the entity is also not specified or do not have a valid timezone then UTC is used
 	Timezone *string `mandatory:"false" contributesTo:"query" name:"timezone"`
 
-	// character Encoding
+	// Character Encoding
 	CharEncoding *string `mandatory:"false" contributesTo:"query" name:"charEncoding"`
 
 	// This property is used to specify the format of the date. This is to be used for ambiguous dates like 12/11/10. This property can take any of the following values -  MONTH_DAY_YEAR, DAY_MONTH_YEAR, YEAR_MONTH_DAY, MONTH_DAY, DAY_MONTH.
@@ -53,13 +52,13 @@ type UploadLogFileRequest struct {
 	// The client request ID for tracing.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// The base-64 encoded MD5 hash of the body. If the Content-MD5 header is present, Log Analytics performs an integrity check
+	// The base-64 encoded MD5 hash of the body. If the Content-MD5 header is present, Logging Analytics performs an integrity check
 	// on the body of the HTTP request by computing the MD5 hash for the body and comparing it to the MD5 hash supplied in the header.
 	// If the two hashes do not match, the log data is rejected and an HTTP-400 Unmatched Content MD5 error is returned with the message:
 	// "The computed MD5 of the request body (ACTUAL_MD5) does not match the Content-MD5 header (HEADER_MD5)"
 	ContentMd5 *string `mandatory:"false" contributesTo:"header" name:"content-md5"`
 
-	// The content type of the log data. Defaults to 'application/octet-stream' if not overridden during the UploadLogFile call.
+	// The content type of the log data.
 	ContentType *string `mandatory:"false" contributesTo:"header" name:"content-type"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or
@@ -97,8 +96,7 @@ type UploadLogFileResponse struct {
 	// The Upload instance
 	Upload `presentIn:"body"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact
-	// Oracle about a particular request, please provide the request ID.
+	// Unique Oracle-assigned identifier for the request. When you contact Oracle about a specific request, provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// The base-64 encoded MD5 hash of the request body as computed by the server.

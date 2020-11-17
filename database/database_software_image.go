@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // DatabaseSoftwareImage Database software images are created by specifying a patch set, one-off patches and patches for the database home (listed by `ls inventory`).
@@ -66,6 +66,9 @@ type DatabaseSoftwareImage struct {
 
 	// output from lsinventory which will get passed as a string
 	LsInventory *string `mandatory:"false" json:"lsInventory"`
+
+	// True if this Database software image is supported for Upgrade.
+	IsUpgradeSupported *bool `mandatory:"false" json:"isUpgradeSupported"`
 }
 
 func (m DatabaseSoftwareImage) String() string {

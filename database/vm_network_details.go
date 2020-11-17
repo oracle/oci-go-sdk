@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // VmNetworkDetails Details of the client or backup networks in an Exadata Cloud@Customer VM cluster network.

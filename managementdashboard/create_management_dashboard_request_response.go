@@ -5,14 +5,14 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
 // CreateManagementDashboardRequest wrapper for the CreateManagementDashboard operation
 type CreateManagementDashboardRequest struct {
 
-	// Json metadata for creating a new dashboard.
+	// JSON metadata for creating a new dashboard.
 	CreateManagementDashboardDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

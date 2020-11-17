@@ -10,19 +10,19 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // FileValidationResponse Response object containing details about file upload eligibility.
 type FileValidationResponse struct {
 
-	// Input File
+	// Input File Name.
 	InputFile *string `mandatory:"true" json:"inputFile"`
 
-	// Object Location
+	// Object Location where file content is available.
 	ObjectLocation *string `mandatory:"true" json:"objectLocation"`
 
-	// Files
+	// List of files inside the given archive file and their corresponding status information.
 	Files []UploadFileStatus `mandatory:"false" json:"files"`
 }
 

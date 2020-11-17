@@ -10,25 +10,25 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// EstimatePurgeDataSizeDetails Parameters used to estimate purge data size
+// EstimatePurgeDataSizeDetails This is the input used to estimate the size of data that might be purged
 type EstimatePurgeDataSizeDetails struct {
 
-	// the compartment OCID under which the data will be purged
+	// This is the compartment OCID under which the data will be purged
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// the time before which data will be purged
+	// This is the time before which data will be purged
 	TimeDataEnded *common.SDKTime `mandatory:"true" json:"timeDataEnded"`
 
-	// if true, purge child compartments data
+	// If true, purge child compartments data
 	CompartmentIdInSubtree *bool `mandatory:"false" json:"compartmentIdInSubtree"`
 
-	// the solr data filter query, '*' means all
+	// This is the solr data filter query, '*' means all
 	PurgeQueryString *string `mandatory:"false" json:"purgeQueryString"`
 
-	// the type of the log data to be purged
+	// This is the type of the log data to be purged
 	DataType StorageDataTypeEnum `mandatory:"false" json:"dataType,omitempty"`
 }
 

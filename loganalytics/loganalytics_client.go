@@ -12,8 +12,8 @@ package loganalytics
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v28/common"
-	"github.com/oracle/oci-go-sdk/v28/common/auth"
+	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v29/common/auth"
 	"net/http"
 )
 
@@ -1453,7 +1453,7 @@ func (client LogAnalyticsClient) deleteUploadWarning(ctx context.Context, reques
 	return response, err
 }
 
-// DisableArchiving disable archiving
+// DisableArchiving This API disables archiving.
 func (client LogAnalyticsClient) DisableArchiving(ctx context.Context, request DisableArchivingRequest) (response DisableArchivingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -1503,7 +1503,7 @@ func (client LogAnalyticsClient) disableArchiving(ctx context.Context, request c
 	return response, err
 }
 
-// EnableArchiving enable archiving.
+// EnableArchiving THis API enables archiving.
 func (client LogAnalyticsClient) EnableArchiving(ctx context.Context, request EnableArchivingRequest) (response EnableArchivingResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -1553,7 +1553,7 @@ func (client LogAnalyticsClient) enableArchiving(ctx context.Context, request co
 	return response, err
 }
 
-// EstimatePurgeDataSize estimate the size of data to be purged based on query parameters.
+// EstimatePurgeDataSize This API estimates the size of data to be purged based based on time interval, purge query etc.
 func (client LogAnalyticsClient) EstimatePurgeDataSize(ctx context.Context, request EstimatePurgeDataSizeRequest) (response EstimatePurgeDataSizeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -1821,7 +1821,7 @@ func (client LogAnalyticsClient) extractStructuredLogHeaderPaths(ctx context.Con
 	return response, err
 }
 
-// Filter Each filter specifies an operator, a field and one or more values.
+// Filter Each filter specifies an operator, a field and one or more values to be inserted into the provided query as criteria.
 func (client LogAnalyticsClient) Filter(ctx context.Context, request FilterRequest) (response FilterResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -2526,7 +2526,7 @@ func (client LogAnalyticsClient) getLogAnalyticsObjectCollectionRule(ctx context
 	return response, err
 }
 
-// GetNamespace Get Namespace of a tenancy already onboarded in Log Analytics Application
+// GetNamespace This API gets the namespace details of a tenancy already onboarded in Logging Analytics Application
 func (client LogAnalyticsClient) GetNamespace(ctx context.Context, request GetNamespaceRequest) (response GetNamespaceResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -2927,7 +2927,7 @@ func (client LogAnalyticsClient) getSourceSummary(ctx context.Context, request c
 	return response, err
 }
 
-// GetStorage Storage configuration and status.
+// GetStorage This API gets the storage configuration of a tenancy
 func (client LogAnalyticsClient) GetStorage(ctx context.Context, request GetStorageRequest) (response GetStorageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -2977,7 +2977,8 @@ func (client LogAnalyticsClient) getStorage(ctx context.Context, request common.
 	return response, err
 }
 
-// GetStorageUsage Storage usage info includes active, archived or recalled data.  The unit of return value is in bytes.
+// GetStorageUsage This API gets storage usage information of a tenancy.  Storage usage information includes active, archived or recalled
+// data.  The unit of return data is in bytes.
 func (client LogAnalyticsClient) GetStorageUsage(ctx context.Context, request GetStorageUsageRequest) (response GetStorageUsageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -3027,8 +3028,8 @@ func (client LogAnalyticsClient) getStorageUsage(ctx context.Context, request co
 	return response, err
 }
 
-// GetStorageWorkRequest Retrieve work request details by key. This endpoint can be polled for status tracking of work request.
-// Clients should poll using the interval returned in retry-after header.
+// GetStorageWorkRequest This API returns work request details specified by {workRequestId}. This API can be polled for status tracking of
+// work request.  Clients should poll using the interval returned in retry-after header.
 func (client LogAnalyticsClient) GetStorageWorkRequest(ctx context.Context, request GetStorageWorkRequestRequest) (response GetStorageWorkRequestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -3883,7 +3884,8 @@ func (client LogAnalyticsClient) listMetaSourceTypes(ctx context.Context, reques
 	return response, err
 }
 
-// ListNamespaces List Namespaces.
+// ListNamespaces Given a tenancy OCID, this API returns the namespace of the tenancy if it is valid and subscribed to the region.  The
+// result also indicates if the tenancy is onboarded with Logging Analytics.
 func (client LogAnalyticsClient) ListNamespaces(ctx context.Context, request ListNamespacesRequest) (response ListNamespacesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -4483,7 +4485,7 @@ func (client LogAnalyticsClient) listSources(ctx context.Context, request common
 	return response, err
 }
 
-// ListStorageWorkRequestErrors Retrieve work request errors if any
+// ListStorageWorkRequestErrors This API returns the list of work request errors if any.
 func (client LogAnalyticsClient) ListStorageWorkRequestErrors(ctx context.Context, request ListStorageWorkRequestErrorsRequest) (response ListStorageWorkRequestErrorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -4533,7 +4535,7 @@ func (client LogAnalyticsClient) listStorageWorkRequestErrors(ctx context.Contex
 	return response, err
 }
 
-// ListStorageWorkRequests List non-expired storage manager work requests.
+// ListStorageWorkRequests This API lists storage work requests.  Use query parameters to narrow down or sort the result list.
 func (client LogAnalyticsClient) ListStorageWorkRequests(ctx context.Context, request ListStorageWorkRequestsRequest) (response ListStorageWorkRequestsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -4994,6 +4996,11 @@ func (client LogAnalyticsClient) OffboardNamespace(ctx context.Context, request 
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.offboardNamespace, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -5139,7 +5146,8 @@ func (client LogAnalyticsClient) parseQuery(ctx context.Context, request common.
 	return response, err
 }
 
-// PurgeStorageData submit work requests to purge old data based on the type.
+// PurgeStorageData This API submits a work request to purge data. Only data from log groups that the user has permission to delete
+// will be purged.  To purge all data, the user must have permission to all log groups.
 func (client LogAnalyticsClient) PurgeStorageData(ctx context.Context, request PurgeStorageDataRequest) (response PurgeStorageDataResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -5194,7 +5202,7 @@ func (client LogAnalyticsClient) purgeStorageData(ctx context.Context, request c
 	return response, err
 }
 
-// PutQueryWorkRequestBackground Put the work request specified by {workRequestId} into the background.
+// PutQueryWorkRequestBackground Put the work request specified by {workRequestId} into the background. Backgrounded queries will preserve query results on query completion for up to 7 days for recall. After 7 days the results and query expire.
 func (client LogAnalyticsClient) PutQueryWorkRequestBackground(ctx context.Context, request PutQueryWorkRequestBackgroundRequest) (response PutQueryWorkRequestBackgroundResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -5294,7 +5302,7 @@ func (client LogAnalyticsClient) query(ctx context.Context, request common.OCIRe
 	return response, err
 }
 
-// RecallArchivedData submit work requests to recall archived data.
+// RecallArchivedData This API submits a work request to recall archived data based on time interval and data type.
 func (client LogAnalyticsClient) RecallArchivedData(ctx context.Context, request RecallArchivedDataRequest) (response RecallArchivedDataResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -5404,7 +5412,7 @@ func (client LogAnalyticsClient) registerLookup(ctx context.Context, request com
 	return response, err
 }
 
-// ReleaseRecalledData submit work requests to release recalled data.
+// ReleaseRecalledData This API submits a work request to release recalled data based on time interval and data type.
 func (client LogAnalyticsClient) ReleaseRecalledData(ctx context.Context, request ReleaseRecalledDataRequest) (response ReleaseRecalledDataResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -5571,7 +5579,7 @@ func (client LogAnalyticsClient) run(ctx context.Context, request common.OCIRequ
 	return response, err
 }
 
-// Suggest Returns a context specific list of either commands, fields, or values to add to the end of the query string.
+// Suggest Returns a context specific list of either commands, fields, or values to append to the end of the specified query string if applicable.
 func (client LogAnalyticsClient) Suggest(ctx context.Context, request SuggestRequest) (response SuggestResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -5926,7 +5934,7 @@ func (client LogAnalyticsClient) updateScheduledTask(ctx context.Context, reques
 	return response, err
 }
 
-// UpdateStorage update the archiving configuration
+// UpdateStorage This API updates the archiving configuration
 func (client LogAnalyticsClient) UpdateStorage(ctx context.Context, request UpdateStorageRequest) (response UpdateStorageResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -5976,7 +5984,7 @@ func (client LogAnalyticsClient) updateStorage(ctx context.Context, request comm
 	return response, err
 }
 
-// UploadLogFile Accepts log data for processing by Log Analytics.
+// UploadLogFile Accepts log data for processing by Logging Analytics.
 func (client LogAnalyticsClient) UploadLogFile(ctx context.Context, request UploadLogFileRequest) (response UploadLogFileResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

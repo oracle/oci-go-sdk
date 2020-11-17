@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // ParsedContent Parsed Content
@@ -25,10 +25,10 @@ type ParsedContent struct {
 	// Parsed field values
 	ParsedFieldValues []ParsedField `mandatory:"false" json:"parsedFieldValues"`
 
-	// Log Content
+	// Sample log entries picked up from the given file for validation
 	LogContent *string `mandatory:"false" json:"logContent"`
 
-	// Sample Size
+	// Sample Size taken for validation
 	SampleSize *int `mandatory:"false" json:"sampleSize"`
 
 	// Match Status

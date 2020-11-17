@@ -10,18 +10,18 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// ArchivingConfiguration configuration for archiving data in object storage
+// ArchivingConfiguration This is the configuration for data archiving in object storage
 type ArchivingConfiguration struct {
 
-	// duration in active storage before data is archived, as described in
+	// Thi is the duration data in active storage before data is archived, as described in
 	// https://en.wikipedia.org/wiki/ISO_8601#Durations.
 	// The largest supported unit is D, e.g. P365D (not P1Y) or P14D (not P2W).
 	ActiveStorageDuration *string `mandatory:"false" json:"activeStorageDuration"`
 
-	// duration before data is deleted from object storage, as described in
+	// The is the duration before archived data is deleted from object storage, as described in
 	// https://en.wikipedia.org/wiki/ISO_8601#Durations
 	// The largest supported unit is D, e.g. P365D (not P1Y) or P14D (not P2W).
 	ArchivalStorageDuration *string `mandatory:"false" json:"archivalStorageDuration"`

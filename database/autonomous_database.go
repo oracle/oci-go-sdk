@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // AutonomousDatabase An Oracle Autonomous Database.
@@ -49,6 +49,8 @@ type AutonomousDatabase struct {
 
 	// The date and time the Always Free database will be automatically deleted because of inactivity. If the database is in the STOPPED state and without activity until this time, it will be deleted.
 	TimeDeletionOfFreeAutonomousDatabase *common.SDKTime `mandatory:"false" json:"timeDeletionOfFreeAutonomousDatabase"`
+
+	BackupConfig *AutonomousDatabaseBackupConfig `mandatory:"false" json:"backupConfig"`
 
 	// The infrastructure type this resource belongs to.
 	InfrastructureType AutonomousDatabaseInfrastructureTypeEnum `mandatory:"false" json:"infrastructureType,omitempty"`

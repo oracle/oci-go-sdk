@@ -4,60 +4,59 @@
 
 // ManagementDashboard API
 //
-// Management Dashboard micro-service provides a set of CRUD, import, export, and compartment related APIs (such as change compartment)   to support dashboard and saved search metadata preservation.  These APIs are mainly for client UIs, for various UI activities such as get list of all saved searches in a compartment, create a dashboard, open a saved search, etc.  Use export to retrieve  dashboards and their saved searches, then edit the Json if necessary (for example change compartmentIds), then import the result to  destination dashboard service.
-// APIs validate all required properties to ensure properties are present and have correct type and values.
+// API for the Management Dashboard micro-service. Use this API for dashboard and saved search metadata preservation and to perform  tasks such as creating a dashboard, creating a saved search, and obtaining a list of dashboards and saved searches in a compartment.
 //
 //
 
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// ManagementDashboardSummary Summary of properties for a dashboard.
+// ManagementDashboardSummary Summary of the properties of a dashboard.
 type ManagementDashboardSummary struct {
 
-	// Dashboard Id. Must be providied if OOB, otherwise must not be provided.
+	// ID of the dashboard.
 	DashboardId *string `mandatory:"true" json:"dashboardId"`
 
-	// Display name for dashboard.
+	// Display name of the dashboard.
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
-	// Dashboard's description.
+	// Description of the dashboard.
 	Description *string `mandatory:"true" json:"description"`
 
-	// The ocid of the compartment that owns the dashboard.
+	// OCID of the compartment in which the dashboard resides.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// String boolean ("true" or "false").  OOB (Out of the Box) dashboards are only provided by Oracle.  They cannot be modified by non-Oracle.
+	// Determines whether the dashboard is an Out-of-the-Box (OOB) dashboard. Note that OOB dashboards are only provided by Oracle and cannot be modified.
 	IsOobDashboard *bool `mandatory:"true" json:"isOobDashboard"`
 
-	// Created by which user.
+	// User who created the dashboard.
 	CreatedBy *string `mandatory:"true" json:"createdBy"`
 
-	// Time created.
+	// Date and time the dashboard was created.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// Updated by which user.
+	// User who updated the dashboard.
 	UpdatedBy *string `mandatory:"true" json:"updatedBy"`
 
-	// Time updated.
+	// Date and time the dashboard was updated.
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
 	// Version of the metadata.
 	MetadataVersion *string `mandatory:"true" json:"metadataVersion"`
 
-	// screen image.
+	// Screen image of the dashboard.
 	ScreenImage *string `mandatory:"true" json:"screenImage"`
 
-	// Json for internationalization.
+	// JSON that contains internationalization options.
 	Nls *interface{} `mandatory:"true" json:"nls"`
 
-	// NORMAL means single dashboard, SET means dashboard set.
+	// Type of dashboard. NORMAL denotes a single dashboard and SET denotes a dashboard set.
 	Type *string `mandatory:"true" json:"type"`
 
-	// State of dashboard.
+	// Current lifecycle state of the dashboard.
 	LifecycleState LifecycleStatesEnum `mandatory:"true" json:"lifecycleState"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.

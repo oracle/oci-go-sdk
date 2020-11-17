@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // FilterDetails Query builder edit request details.
 type FilterDetails struct {
 
-	// Query to update.
+	// Query to apply edits to.
 	QueryString *string `mandatory:"true" json:"queryString"`
 
 	// Default subsystem to qualify fields with in the queryString if not specified.

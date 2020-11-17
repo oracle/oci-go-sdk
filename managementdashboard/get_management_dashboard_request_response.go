@@ -5,14 +5,14 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
 // GetManagementDashboardRequest wrapper for the GetManagementDashboard operation
 type GetManagementDashboardRequest struct {
 
-	// unique dashboard identifier
+	// A unique dashboard identifier.
 	ManagementDashboardId *string `mandatory:"true" contributesTo:"path" name:"managementDashboardId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

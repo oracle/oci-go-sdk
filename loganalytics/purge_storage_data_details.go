@@ -10,25 +10,25 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// PurgeStorageDataDetails Work request details to purge old data
+// PurgeStorageDataDetails This is the input used to purge data
 type PurgeStorageDataDetails struct {
 
-	// the compartment OCID under which the data will be purged and required permission will be checked
+	// This is the compartment OCID under which the data will be purged and required permission will be checked
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// the end of the time interval
+	// This is the end of the purge time interval
 	TimeDataEnded *common.SDKTime `mandatory:"true" json:"timeDataEnded"`
 
-	// if true, purge child compartments data
+	// If true, purge child compartments data
 	CompartmentIdInSubtree *bool `mandatory:"false" json:"compartmentIdInSubtree"`
 
-	// the solr data filter query, '*' means all
+	// This is the solr query used to filter data, '*' means all
 	PurgeQueryString *string `mandatory:"false" json:"purgeQueryString"`
 
-	// the type of the log data to be purged
+	// This is the type of the log data to be purged
 	DataType StorageDataTypeEnum `mandatory:"false" json:"dataType,omitempty"`
 }
 

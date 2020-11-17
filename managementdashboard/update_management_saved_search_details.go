@@ -4,63 +4,62 @@
 
 // ManagementDashboard API
 //
-// Management Dashboard micro-service provides a set of CRUD, import, export, and compartment related APIs (such as change compartment)   to support dashboard and saved search metadata preservation.  These APIs are mainly for client UIs, for various UI activities such as get list of all saved searches in a compartment, create a dashboard, open a saved search, etc.  Use export to retrieve  dashboards and their saved searches, then edit the Json if necessary (for example change compartmentIds), then import the result to  destination dashboard service.
-// APIs validate all required properties to ensure properties are present and have correct type and values.
+// API for the Management Dashboard micro-service. Use this API for dashboard and saved search metadata preservation and to perform  tasks such as creating a dashboard, creating a saved search, and obtaining a list of dashboards and saved searches in a compartment.
 //
 //
 
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// UpdateManagementSavedSearchDetails Properties of a saved search.  Saved search id must not be provided.
+// UpdateManagementSavedSearchDetails Properties of a saved search.  Saved search ID must not be provided.
 type UpdateManagementSavedSearchDetails struct {
 
-	// Display name for saved search.
+	// Display name of the saved search.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Id for application (LA, APM, etc.) that owners this saved search.  Each owner has a unique Id.
+	// ID of the service (for example log-analytics) that owns the saved search. Each service has a unique ID.
 	ProviderId *string `mandatory:"false" json:"providerId"`
 
-	// Version.
+	// Version of the service that owns this saved search.
 	ProviderVersion *string `mandatory:"false" json:"providerVersion"`
 
-	// Name for application (LA, APM, etc.) that owners this saved search.
+	// Name of the service (for example, Logging Analytics) that owns the saved search.
 	ProviderName *string `mandatory:"false" json:"providerName"`
 
-	// The ocid of the compartment that owns the saved search.
+	// OCID of the compartment in which the saved search resides.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
-	// String boolean ("true" or "false") to indicate Out Of the Box saved search.
+	// Determines whether the saved search is an Out-of-the-Box (OOB) saved search. Note that OOB saved searches are only provided by Oracle and cannot be modified.
 	IsOobSavedSearch *bool `mandatory:"false" json:"isOobSavedSearch"`
 
-	// Description.
+	// Description of the saved search.
 	Description *string `mandatory:"false" json:"description"`
 
-	// Json for internationalization.
+	// JSON that contains internationalization options.
 	Nls *interface{} `mandatory:"false" json:"nls"`
 
-	// How to show the saved search.
+	// Determines how the saved search is displayed in a dashboard.
 	Type SavedSearchTypesEnum `mandatory:"false" json:"type,omitempty"`
 
-	// Json to contain options for UI.
+	// JSON that contains user interface options.
 	UiConfig *interface{} `mandatory:"false" json:"uiConfig"`
 
-	// Array of Json to contain options for source of data.
+	// Array of JSON that contain data source options.
 	DataConfig []interface{} `mandatory:"false" json:"dataConfig"`
 
-	// Screenshot.
+	// Screen image of the saved search.
 	ScreenImage *string `mandatory:"false" json:"screenImage"`
 
 	// Version of the metadata.
 	MetadataVersion *string `mandatory:"false" json:"metadataVersion"`
 
-	// Template.
+	// Reference to the HTML file of the widget.
 	WidgetTemplate *string `mandatory:"false" json:"widgetTemplate"`
 
-	// View Model
+	// Reference to the view model of the widget.
 	WidgetVM *string `mandatory:"false" json:"widgetVM"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.

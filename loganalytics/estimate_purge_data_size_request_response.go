@@ -5,17 +5,17 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
 // EstimatePurgeDataSizeRequest wrapper for the EstimatePurgeDataSize operation
 type EstimatePurgeDataSizeRequest struct {
 
-	// The Log Analytics namespace used for the request.
+	// The Logging Analytics namespace used for the request.
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
-	// Parameters used to estimate purge data size
+	// This is the input to estimate the size of data to be purged.
 	EstimatePurgeDataSizeDetails `contributesTo:"body"`
 
 	// The client request ID for tracing.
@@ -63,8 +63,7 @@ type EstimatePurgeDataSizeResponse struct {
 	// The EstimatePurgeDataSizeResult instance
 	EstimatePurgeDataSizeResult `presentIn:"body"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact
-	// Oracle about a particular request, please provide the request ID.
+	// Unique Oracle-assigned identifier for the request. When you contact Oracle about a specific request, provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For optimistic concurrency control. See `if-match`.

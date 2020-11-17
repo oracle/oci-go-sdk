@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// TimezoneCollection Set of supported timezones.
+// TimezoneCollection List of supported timezones.
 type TimezoneCollection struct {
 
-	// timezones.
+	// List of supported timezones.
 	Items []string `mandatory:"true" json:"items"`
 }
 

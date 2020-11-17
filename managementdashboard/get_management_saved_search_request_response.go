@@ -5,14 +5,14 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 	"net/http"
 )
 
 // GetManagementSavedSearchRequest wrapper for the GetManagementSavedSearch operation
 type GetManagementSavedSearchRequest struct {
 
-	// unique saved search identifier
+	// A unique saved search identifier.
 	ManagementSavedSearchId *string `mandatory:"true" contributesTo:"path" name:"managementSavedSearchId"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

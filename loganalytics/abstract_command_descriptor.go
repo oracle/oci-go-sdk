@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // AbstractCommandDescriptor Generic command descriptor defining all attributes common to all querylanguage commands for parse output.
@@ -271,7 +271,7 @@ const (
 	AbstractCommandDescriptorNameLinkDetails    AbstractCommandDescriptorNameEnum = "LINK_DETAILS"
 	AbstractCommandDescriptorNameCluster        AbstractCommandDescriptorNameEnum = "CLUSTER"
 	AbstractCommandDescriptorNameClusterDetails AbstractCommandDescriptorNameEnum = "CLUSTER_DETAILS"
-	AbstractCommandDescriptorNameCuslterSplit   AbstractCommandDescriptorNameEnum = "CUSLTER_SPLIT"
+	AbstractCommandDescriptorNameClusterSplit   AbstractCommandDescriptorNameEnum = "CLUSTER_SPLIT"
 	AbstractCommandDescriptorNameEval           AbstractCommandDescriptorNameEnum = "EVAL"
 	AbstractCommandDescriptorNameExtract        AbstractCommandDescriptorNameEnum = "EXTRACT"
 	AbstractCommandDescriptorNameEventStats     AbstractCommandDescriptorNameEnum = "EVENT_STATS"
@@ -311,7 +311,7 @@ var mappingAbstractCommandDescriptorName = map[string]AbstractCommandDescriptorN
 	"LINK_DETAILS":    AbstractCommandDescriptorNameLinkDetails,
 	"CLUSTER":         AbstractCommandDescriptorNameCluster,
 	"CLUSTER_DETAILS": AbstractCommandDescriptorNameClusterDetails,
-	"CUSLTER_SPLIT":   AbstractCommandDescriptorNameCuslterSplit,
+	"CLUSTER_SPLIT":   AbstractCommandDescriptorNameClusterSplit,
 	"EVAL":            AbstractCommandDescriptorNameEval,
 	"EXTRACT":         AbstractCommandDescriptorNameExtract,
 	"EVENT_STATS":     AbstractCommandDescriptorNameEventStats,

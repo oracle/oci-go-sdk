@@ -10,10 +10,10 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
-// LogAnalyticsFieldSummary The representation of LogAnalyticsFieldSummary
+// LogAnalyticsFieldSummary summary of fields
 type LogAnalyticsFieldSummary struct {
 
 	// The name this field is given in the common event expression standard from mitre.org.

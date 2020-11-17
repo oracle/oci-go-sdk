@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // QueryAggregation Query results.
@@ -29,7 +29,7 @@ type QueryAggregation struct {
 	// True if query did not complete processing all data.
 	ArePartialResults *bool `mandatory:"false" json:"arePartialResults"`
 
-	// Explanation of why results may be partial. Only set if isPartialResults is true.
+	// Explanation of why results may be partial. Only set if arePartialResults is true.
 	PartialResultReason *string `mandatory:"false" json:"partialResultReason"`
 
 	// Query result columns

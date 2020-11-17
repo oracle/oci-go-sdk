@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // ExportContent ExportContent
@@ -19,6 +19,7 @@ type ExportContent struct {
 	// fieldNames
 	FieldNames []string `mandatory:"false" json:"fieldNames"`
 
+	// parserNames
 	ParserNames []string `mandatory:"false" json:"parserNames"`
 
 	// sourceNames

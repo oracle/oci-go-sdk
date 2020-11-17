@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v28/common"
+	"github.com/oracle/oci-go-sdk/v29/common"
 )
 
 // UploadWarningSummary Summary of Upload warnings.
@@ -19,7 +19,7 @@ type UploadWarningSummary struct {
 	// Unique internal identifier to refer to upload warning
 	Reference *string `mandatory:"true" json:"reference"`
 
-	// Status
+	// Status of the upload. Ex - Failed
 	Status *string `mandatory:"false" json:"status"`
 
 	// The time when the upload processing started
