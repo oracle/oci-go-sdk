@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // UpdateLogAnalyticsObjectCollectionRuleDetails To update the attributes of an Object Storage based collection rule.

@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // PublicIpPool A Public IP pool, conceptually, is a set of public IP addresses (represented as one or more CIDRs) Users can be allocated addresses from this for internet access.

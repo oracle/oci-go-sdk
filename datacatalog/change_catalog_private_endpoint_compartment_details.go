@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // ChangeCatalogPrivateEndpointCompartmentDetails Information about the change compartment for the  private endpoint resource

@@ -10,7 +10,7 @@
 package loggingsearch
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // SearchResultSummary Summary of results.

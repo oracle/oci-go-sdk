@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // VirtualCircuitPublicPrefix A public IP prefix and its details. With a public virtual circuit, the customer

@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // WorkRequestSummary A description of workrequest status
@@ -65,6 +65,7 @@ const (
 	WorkRequestSummaryOperationTypeStartPlatform     WorkRequestSummaryOperationTypeEnum = "START_PLATFORM"
 	WorkRequestSummaryOperationTypeStopPlatform      WorkRequestSummaryOperationTypeEnum = "STOP_PLATFORM"
 	WorkRequestSummaryOperationTypeCustomizePlatform WorkRequestSummaryOperationTypeEnum = "CUSTOMIZE_PLATFORM"
+	WorkRequestSummaryOperationTypeScaleStorage      WorkRequestSummaryOperationTypeEnum = "SCALE_STORAGE"
 )
 
 var mappingWorkRequestSummaryOperationType = map[string]WorkRequestSummaryOperationTypeEnum{
@@ -75,6 +76,7 @@ var mappingWorkRequestSummaryOperationType = map[string]WorkRequestSummaryOperat
 	"START_PLATFORM":     WorkRequestSummaryOperationTypeStartPlatform,
 	"STOP_PLATFORM":      WorkRequestSummaryOperationTypeStopPlatform,
 	"CUSTOMIZE_PLATFORM": WorkRequestSummaryOperationTypeCustomizePlatform,
+	"SCALE_STORAGE":      WorkRequestSummaryOperationTypeScaleStorage,
 }
 
 // GetWorkRequestSummaryOperationTypeEnumValues Enumerates the set of values for WorkRequestSummaryOperationTypeEnum

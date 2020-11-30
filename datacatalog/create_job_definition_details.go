@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // CreateJobDefinitionDetails Representation of a job definition Resource. Job definitions define the harvest scope and includes the list of

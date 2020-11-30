@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // ScaleBlockchainPlatformDetails Scale operation details for a blockchain platform. The scale operation payload has multiple options

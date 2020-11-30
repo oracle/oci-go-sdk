@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // BackupSummary Details of Backups such as OCID, description, backupType, and so on.
@@ -31,6 +31,9 @@ type BackupSummary struct {
 
 	// The type of backup.
 	BackupType BackupBackupTypeEnum `mandatory:"true" json:"backupType"`
+
+	// If the backup was created automatically, or by a manual request.
+	CreationType BackupCreationTypeEnum `mandatory:"true" json:"creationType"`
 
 	// The OCID of the DB System the Backup is associated with.
 	DbSystemId *string `mandatory:"true" json:"dbSystemId"`
@@ -56,11 +59,11 @@ type BackupSummary struct {
 	// The shape of the DB System instance used for backup.
 	ShapeName *string `mandatory:"false" json:"shapeName"`
 
-	// Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only.
+	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
-	// Usage of predefined tag keys. These predefined keys are scoped to namespaces.
+	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }

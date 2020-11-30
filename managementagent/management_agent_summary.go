@@ -10,7 +10,7 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // ManagementAgentSummary The summary of the Management Agent inventory including the associated plugins.
@@ -51,6 +51,12 @@ type ManagementAgentSummary struct {
 
 	// list of managementAgentPlugins associated with the agent
 	PluginList []ManagementAgentPluginDetails `mandatory:"false" json:"pluginList"`
+
+	// The time the Management Agent has last recorded its heartbeat. An RFC3339 formatted datetime string
+	TimeLastHeartbeat *common.SDKTime `mandatory:"false" json:"timeLastHeartbeat"`
+
+	// The current availability status of managementAgent
+	AvailabilityStatus AvailabilityStatusEnum `mandatory:"false" json:"availabilityStatus,omitempty"`
 
 	// The current state of managementAgent
 	LifecycleState LifecycleStatesEnum `mandatory:"false" json:"lifecycleState,omitempty"`

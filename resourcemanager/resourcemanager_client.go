@@ -15,8 +15,8 @@ package resourcemanager
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v29/common"
-	"github.com/oracle/oci-go-sdk/v29/common/auth"
+	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v30/common/auth"
 	"net/http"
 )
 
