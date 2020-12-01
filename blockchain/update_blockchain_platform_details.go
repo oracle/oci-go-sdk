@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // UpdateBlockchainPlatformDetails Blockchain Platform details for updating a service.

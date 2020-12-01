@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // UpdateTermDetails Properties used in term update operations.

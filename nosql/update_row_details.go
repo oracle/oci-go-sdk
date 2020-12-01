@@ -13,7 +13,7 @@
 package nosql
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // UpdateRowDetails Specifications for the putting of a table row.

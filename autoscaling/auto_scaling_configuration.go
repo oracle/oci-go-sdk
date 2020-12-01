@@ -15,7 +15,7 @@ package autoscaling
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // AutoScalingConfiguration An autoscaling configuration allows you to dynamically scale the resources in a Compute instance pool.

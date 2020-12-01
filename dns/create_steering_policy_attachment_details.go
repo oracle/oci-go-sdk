@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // CreateSteeringPolicyAttachmentDetails The body for defining an attachment between a steering policy and a domain.

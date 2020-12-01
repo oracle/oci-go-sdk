@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // CreateBackupPolicyDetails Backup policy as optionally used for DB System Creation.
@@ -28,6 +28,7 @@ type CreateBackupPolicyDetails struct {
 	RetentionInDays *int `mandatory:"false" json:"retentionInDays"`
 
 	// Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only.
+	// Tags defined here will be copied verbatim as tags on the Backup resource created by this BackupPolicy.
 	// Example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 

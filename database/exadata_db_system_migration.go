@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // ExadataDbSystemMigration Information about the Exadata DB system migration. The migration is used to move the system to the Exadata infrastructure resource model.

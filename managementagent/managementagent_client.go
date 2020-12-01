@@ -12,8 +12,8 @@ package managementagent
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v29/common"
-	"github.com/oracle/oci-go-sdk/v29/common/auth"
+	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v30/common/auth"
 	"net/http"
 )
 
@@ -526,6 +526,56 @@ func (client ManagementAgentClient) getWorkRequest(ctx context.Context, request 
 	}
 
 	var response GetWorkRequestResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListAvailabilityHistories Lists the availability history records of Management Agent
+func (client ManagementAgentClient) ListAvailabilityHistories(ctx context.Context, request ListAvailabilityHistoriesRequest) (response ListAvailabilityHistoriesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listAvailabilityHistories, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListAvailabilityHistoriesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListAvailabilityHistoriesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListAvailabilityHistoriesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListAvailabilityHistoriesResponse")
+	}
+	return
+}
+
+// listAvailabilityHistories implements the OCIOperation interface (enables retrying operations)
+func (client ManagementAgentClient) listAvailabilityHistories(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/managementAgents/{managementAgentId}/availabilityHistories")
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListAvailabilityHistoriesResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)

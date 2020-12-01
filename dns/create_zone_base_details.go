@@ -12,7 +12,7 @@ package dns
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // CreateZoneBaseDetails The body for either defining a new zone or migrating a zone from migrationSource. This is determined by the migrationSource discriminator.

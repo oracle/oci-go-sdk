@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // DbSystemSource Parameters detailing how to provision the initial data of the DB System.
@@ -50,6 +50,10 @@ func (m *dbsystemsource) UnmarshalPolymorphicJSON(data []byte) (interface{}, err
 	switch m.SourceType {
 	case "BACKUP":
 		mm := DbSystemSourceFromBackup{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "NONE":
+		mm := DbSystemSourceFromNone{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	case "IMPORTURL":

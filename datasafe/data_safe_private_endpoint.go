@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // DataSafePrivateEndpoint A Data Safe private endpoint that allows Data Safe to connect to databases in a customer's virtual cloud network (VCN).
@@ -43,7 +43,7 @@ type DataSafePrivateEndpoint struct {
 	// The description of the private endpoint.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The date and time the private endpoint was created, in the format defined by RFC3339.
+	// The date and time the private endpoint was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
 	// The current state of the private endpoint.
@@ -57,7 +57,7 @@ type DataSafePrivateEndpoint struct {
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm)
-	// Example: `{"foo-namespace": {"bar-key": "value"}}`
+	// Example: `{"Operations": {"CostCenter": "42"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }
 

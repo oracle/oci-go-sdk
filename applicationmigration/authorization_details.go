@@ -14,7 +14,7 @@ package applicationmigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // AuthorizationDetails Details of the source environment from which you want to migrate applications to Oracle Cloud Infrastructure. It also contains access

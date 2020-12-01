@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // GenerateAutonomousDataWarehouseWalletDetails **Deprecated.** See GenerateAutonomousDatabaseWalletDetails for reference information about creating and downloading a wallet for an Oracle Autonomous Data Warehouse.

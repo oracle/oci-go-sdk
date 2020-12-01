@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // SmtpCredentialSummary As the name suggests, an `SmtpCredentialSummary` object contains information about an `SmtpCredential`.

@@ -11,7 +11,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // CreateManagementDashboardDetails Properties of a dashboard.  ID of the dashboard must only be provided for Out-of-the-Box (OOB) dashboards.

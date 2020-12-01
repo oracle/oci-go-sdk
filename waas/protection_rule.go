@@ -10,7 +10,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // ProtectionRule The protection rule settings. Protection rules can allow, block, or trigger an alert if a request meets the parameters of an applied rule.

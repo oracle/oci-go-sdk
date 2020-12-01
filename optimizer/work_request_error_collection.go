@@ -10,7 +10,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v29/common"
+	"github.com/oracle/oci-go-sdk/v30/common"
 )
 
 // WorkRequestErrorCollection A list of work request errors that match filter criteria, if any. Results contain `WorkRequestError` objects.
