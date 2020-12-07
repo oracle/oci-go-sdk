@@ -237,6 +237,7 @@ const (
 	SummarizeSqlStatisticsCategoryVariant                                              SummarizeSqlStatisticsCategoryEnum = "VARIANT"
 	SummarizeSqlStatisticsCategoryInefficient                                          SummarizeSqlStatisticsCategoryEnum = "INEFFICIENT"
 	SummarizeSqlStatisticsCategoryChangingPlans                                        SummarizeSqlStatisticsCategoryEnum = "CHANGING_PLANS"
+	SummarizeSqlStatisticsCategoryImproving                                            SummarizeSqlStatisticsCategoryEnum = "IMPROVING"
 	SummarizeSqlStatisticsCategoryDegradingVariant                                     SummarizeSqlStatisticsCategoryEnum = "DEGRADING_VARIANT"
 	SummarizeSqlStatisticsCategoryDegradingInefficient                                 SummarizeSqlStatisticsCategoryEnum = "DEGRADING_INEFFICIENT"
 	SummarizeSqlStatisticsCategoryDegradingChangingPlans                               SummarizeSqlStatisticsCategoryEnum = "DEGRADING_CHANGING_PLANS"
@@ -264,6 +265,7 @@ var mappingSummarizeSqlStatisticsCategory = map[string]SummarizeSqlStatisticsCat
 	"VARIANT":                                     SummarizeSqlStatisticsCategoryVariant,
 	"INEFFICIENT":                                 SummarizeSqlStatisticsCategoryInefficient,
 	"CHANGING_PLANS":                              SummarizeSqlStatisticsCategoryChangingPlans,
+	"IMPROVING":                                   SummarizeSqlStatisticsCategoryImproving,
 	"DEGRADING_VARIANT":                           SummarizeSqlStatisticsCategoryDegradingVariant,
 	"DEGRADING_INEFFICIENT":                       SummarizeSqlStatisticsCategoryDegradingInefficient,
 	"DEGRADING_CHANGING_PLANS":                    SummarizeSqlStatisticsCategoryDegradingChangingPlans,
