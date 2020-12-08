@@ -716,19 +716,6 @@ func TestMarshalBinaryRequest(t *testing.T) {
 	assert.Equal(t, data, string(all))
 }
 
-func TestMarshalBinaryZeroLengthRequest(t *testing.T) {
-	data := ""
-	buffer := bytes.NewBufferString(data)
-	length := int64(buffer.Len())
-	r := reqWithBinaryFiled{Content: ioutil.NopCloser(buffer), ContentLength: &length}
-	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("PUT", "/obj", r)
-	assert.NoError(t, err)
-	assert.Equal(t, httpRequest.Body, http.NoBody)
-	all, err := ioutil.ReadAll(httpRequest.Body)
-	assert.NoError(t, err)
-	assert.Equal(t, data, string(all))
-}
-
 func TestMarshalBinaryRequestNonMandatoryBody(t *testing.T) {
 	signer := ociRequestSigner{KeyProvider: testKeyProvider{},
 		ShouldHashBody: defaultBodyHashPredicate,

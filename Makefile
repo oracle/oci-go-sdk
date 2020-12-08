@@ -16,7 +16,7 @@ GOLINT=$(GOPATH)/bin/golint
 LINT_FLAGS=-min_confidence 0.9 -set_exit_status
 
 # directories under gen targets which contains hand writen code
-EXCLUDED_CLEAN_DIRECTORIES = objectstorage/transfer*
+EXCLUDED_CLEAN_DIRECTORIES = objectstorage/transfer*\|objectstorage/objectstorage_client_customization.go
 
 .PHONY: $(TARGETS_BUILD) $(TARGET_TEST)
 
@@ -57,13 +57,13 @@ $(TARGETS_INTEG_TEST): test-%:%
 
 $(TARGETS_CLEAN): clean-%:%
 	@echo "cleaning $<"
-	@-find $< -not -path "$<" | grep -vZ ${EXCLUDED_CLEAN_DIRECTORIES} | xargs rm -rf
+	@-find $< -not -path "$<" | grep -vZ '${EXCLUDED_CLEAN_DIRECTORIES}' | xargs rm -rf
 
 # clean all generated code under GEN_TARGETS folder
 clean-generate:
 	for target in ${GEN_TARGETS}; do \
 		echo "cleaning $$target"; \
-		find $$target -not -path "$$target" | grep -vZ ${EXCLUDED_CLEAN_DIRECTORIES} | xargs rm -rf; \
+		find $$target -not -path "$$target" | grep -vZ '${EXCLUDED_CLEAN_DIRECTORIES}' | xargs rm -rf; \
 	done
 
 pre-doc:

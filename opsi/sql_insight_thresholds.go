@@ -41,6 +41,9 @@ type SqlInsightThresholds struct {
 	// variant or inefficient. And these SQLs should also have increasing change in
 	// Other Wait Time beyond threshold. Insights are derived using linear regression.
 	IncreaseInInefficientWaitInPct *int `mandatory:"true" json:"increaseInInefficientWaitInPct"`
+
+	// Improved Percent Threshold is used to derive improving SQLs.
+	ImprovedInPct *int `mandatory:"true" json:"improvedInPct"`
 }
 
 func (m SqlInsightThresholds) String() string {
