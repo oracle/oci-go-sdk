@@ -10,7 +10,7 @@
 package filestorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // UpdateExportSetDetails Details for updating the export set.

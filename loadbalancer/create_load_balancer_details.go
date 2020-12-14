@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // CreateLoadBalancerDetails The configuration details for creating a load balancer.
@@ -34,6 +34,9 @@ type CreateLoadBalancerDetails struct {
 
 	// An array of subnet OCIDs (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).
 	SubnetIds []string `mandatory:"true" json:"subnetIds"`
+
+	// The configuration details to create load balancer using Flexible shape. This is required only if shapeName is `Flexible`.
+	ShapeDetails *ShapeDetails `mandatory:"false" json:"shapeDetails"`
 
 	// Whether the load balancer has a VCN-local (private) IP address.
 	// If "true", the service assigns a private IP address to the load balancer.

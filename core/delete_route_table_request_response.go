@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteRouteTableRequest wrapper for the DeleteRouteTable operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/DeleteRouteTable.go.html to see an example of how to use DeleteRouteTableRequest.
 type DeleteRouteTableRequest struct {
 
 	// The OCID of the route table.

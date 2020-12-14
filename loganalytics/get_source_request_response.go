@@ -5,11 +5,15 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetSourceRequest wrapper for the GetSource operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loganalytics/GetSource.go.html to see an example of how to use GetSourceRequest.
 type GetSourceRequest struct {
 
 	// The Logging Analytics namespace used for the request.

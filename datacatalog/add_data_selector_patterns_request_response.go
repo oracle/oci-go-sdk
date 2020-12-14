@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // AddDataSelectorPatternsRequest wrapper for the AddDataSelectorPatterns operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/AddDataSelectorPatterns.go.html to see an example of how to use AddDataSelectorPatternsRequest.
 type AddDataSelectorPatternsRequest struct {
 
 	// Unique catalog identifier.

@@ -10,7 +10,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // SkipBulkResponderExecutionDetails List of responder execution ids to skip the execution

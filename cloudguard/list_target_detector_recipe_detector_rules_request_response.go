@@ -5,11 +5,15 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListTargetDetectorRecipeDetectorRulesRequest wrapper for the ListTargetDetectorRecipeDetectorRules operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cloudguard/ListTargetDetectorRecipeDetectorRules.go.html to see an example of how to use ListTargetDetectorRecipeDetectorRulesRequest.
 type ListTargetDetectorRecipeDetectorRulesRequest struct {
 
 	// OCID of target

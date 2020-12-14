@@ -5,11 +5,15 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListWindowsUpdatesInstalledOnManagedInstanceRequest wrapper for the ListWindowsUpdatesInstalledOnManagedInstance operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagement/ListWindowsUpdatesInstalledOnManagedInstance.go.html to see an example of how to use ListWindowsUpdatesInstalledOnManagedInstanceRequest.
 type ListWindowsUpdatesInstalledOnManagedInstanceRequest struct {
 
 	// OCID for the managed instance

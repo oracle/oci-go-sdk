@@ -5,11 +5,15 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // BulkDeleteTagsRequest wrapper for the BulkDeleteTags operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/identity/BulkDeleteTags.go.html to see an example of how to use BulkDeleteTagsRequest.
 type BulkDeleteTagsRequest struct {
 
 	// Request object for deleting tags in bulk.

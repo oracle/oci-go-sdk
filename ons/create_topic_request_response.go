@@ -5,11 +5,15 @@
 package ons
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateTopicRequest wrapper for the CreateTopic operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ons/CreateTopic.go.html to see an example of how to use CreateTopicRequest.
 type CreateTopicRequest struct {
 
 	// The topic to create.

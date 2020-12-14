@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetVnicRequest wrapper for the GetVnic operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetVnic.go.html to see an example of how to use GetVnicRequest.
 type GetVnicRequest struct {
 
 	// The OCID of the VNIC.

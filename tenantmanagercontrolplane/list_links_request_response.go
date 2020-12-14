@@ -5,11 +5,15 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListLinksRequest wrapper for the ListLinks operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/ListLinks.go.html to see an example of how to use ListLinksRequest.
 type ListLinksRequest struct {
 
 	// The ID of the parent tenancy this link is associated with.

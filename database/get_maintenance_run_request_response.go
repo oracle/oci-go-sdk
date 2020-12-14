@@ -5,11 +5,15 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetMaintenanceRunRequest wrapper for the GetMaintenanceRun operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/database/GetMaintenanceRun.go.html to see an example of how to use GetMaintenanceRunRequest.
 type GetMaintenanceRunRequest struct {
 
 	// The maintenance run OCID.

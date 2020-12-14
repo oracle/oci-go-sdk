@@ -5,11 +5,15 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateSourceRequest wrapper for the CreateSource operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/CreateSource.go.html to see an example of how to use CreateSourceRequest.
 type CreateSourceRequest struct {
 
 	// The properties for creating a source.

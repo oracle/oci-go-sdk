@@ -5,11 +5,15 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetEsxiHostRequest wrapper for the GetEsxiHost operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocvp/GetEsxiHost.go.html to see an example of how to use GetEsxiHostRequest.
 type GetEsxiHostRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the ESXi host.

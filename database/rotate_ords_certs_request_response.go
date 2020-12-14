@@ -5,11 +5,15 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // RotateOrdsCertsRequest wrapper for the RotateOrdsCerts operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/database/RotateOrdsCerts.go.html to see an example of how to use RotateOrdsCertsRequest.
 type RotateOrdsCertsRequest struct {
 
 	// The Autonomous Exadata Infrastructure  OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).

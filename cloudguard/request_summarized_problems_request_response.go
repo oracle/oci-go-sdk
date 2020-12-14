@@ -5,11 +5,15 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // RequestSummarizedProblemsRequest wrapper for the RequestSummarizedProblems operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cloudguard/RequestSummarizedProblems.go.html to see an example of how to use RequestSummarizedProblemsRequest.
 type RequestSummarizedProblemsRequest struct {
 
 	// The possible attributes based on which the problems can be distinguished.

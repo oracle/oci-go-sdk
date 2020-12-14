@@ -5,11 +5,15 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateCustomProtectionRuleRequest wrapper for the CreateCustomProtectionRule operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/waas/CreateCustomProtectionRule.go.html to see an example of how to use CreateCustomProtectionRuleRequest.
 type CreateCustomProtectionRuleRequest struct {
 
 	// The details of the custom protection rule.

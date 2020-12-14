@@ -5,11 +5,15 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateHumanInteractionChallengeRequest wrapper for the UpdateHumanInteractionChallenge operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/waas/UpdateHumanInteractionChallenge.go.html to see an example of how to use UpdateHumanInteractionChallengeRequest.
 type UpdateHumanInteractionChallengeRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the WAAS policy.

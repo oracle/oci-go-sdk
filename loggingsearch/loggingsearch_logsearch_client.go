@@ -12,8 +12,8 @@ package loggingsearch
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v30/common"
-	"github.com/oracle/oci-go-sdk/v30/common/auth"
+	"github.com/oracle/oci-go-sdk/v31/common"
+	"github.com/oracle/oci-go-sdk/v31/common/auth"
 	"net/http"
 )
 
@@ -80,6 +80,10 @@ func (client *LogSearchClient) ConfigurationProvider() *common.ConfigurationProv
 }
 
 // SearchLogs Submit a query to search logs.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loggingsearch/SearchLogs.go.html to see an example of how to use SearchLogs API.
 func (client LogSearchClient) SearchLogs(ctx context.Context, request SearchLogsRequest) (response SearchLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

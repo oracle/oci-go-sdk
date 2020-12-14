@@ -5,11 +5,15 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetStreamRequest wrapper for the GetStream operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/streaming/GetStream.go.html to see an example of how to use GetStreamRequest.
 type GetStreamRequest struct {
 
 	// The OCID of the stream.

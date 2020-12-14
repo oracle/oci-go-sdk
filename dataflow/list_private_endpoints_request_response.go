@@ -5,11 +5,15 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListPrivateEndpointsRequest wrapper for the ListPrivateEndpoints operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dataflow/ListPrivateEndpoints.go.html to see an example of how to use ListPrivateEndpointsRequest.
 type ListPrivateEndpointsRequest struct {
 
 	// The OCID of the compartment.

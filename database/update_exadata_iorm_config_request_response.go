@@ -5,11 +5,15 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateExadataIormConfigRequest wrapper for the UpdateExadataIormConfig operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/database/UpdateExadataIormConfig.go.html to see an example of how to use UpdateExadataIormConfigRequest.
 type UpdateExadataIormConfigRequest struct {
 
 	// The DB system OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).

@@ -5,11 +5,15 @@
 package budget
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateBudgetRequest wrapper for the CreateBudget operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/budget/CreateBudget.go.html to see an example of how to use CreateBudgetRequest.
 type CreateBudgetRequest struct {
 
 	// Details for the new Budget.

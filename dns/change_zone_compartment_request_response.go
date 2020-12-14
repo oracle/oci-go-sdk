@@ -5,11 +5,15 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeZoneCompartmentRequest wrapper for the ChangeZoneCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dns/ChangeZoneCompartment.go.html to see an example of how to use ChangeZoneCompartmentRequest.
 type ChangeZoneCompartmentRequest struct {
 
 	// The OCID of the target zone.

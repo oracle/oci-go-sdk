@@ -10,7 +10,7 @@
 package oda
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // ChangeOdaInstanceCompartmentDetails Properties required to move a Digital Assistant instance from one compartment to another.

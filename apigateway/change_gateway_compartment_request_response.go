@@ -5,11 +5,15 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeGatewayCompartmentRequest wrapper for the ChangeGatewayCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apigateway/ChangeGatewayCompartment.go.html to see an example of how to use ChangeGatewayCompartmentRequest.
 type ChangeGatewayCompartmentRequest struct {
 
 	// The ocid of the gateway.

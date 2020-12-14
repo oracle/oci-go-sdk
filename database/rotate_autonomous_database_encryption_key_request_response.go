@@ -5,11 +5,15 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // RotateAutonomousDatabaseEncryptionKeyRequest wrapper for the RotateAutonomousDatabaseEncryptionKey operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/database/RotateAutonomousDatabaseEncryptionKey.go.html to see an example of how to use RotateAutonomousDatabaseEncryptionKeyRequest.
 type RotateAutonomousDatabaseEncryptionKeyRequest struct {
 
 	// The database OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).

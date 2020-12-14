@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // CreateConfigurationSourceProviderDetails The details for creating a configuration source provider.
@@ -83,6 +83,10 @@ func (m *createconfigurationsourceproviderdetails) UnmarshalPolymorphicJSON(data
 	switch m.ConfigSourceProviderType {
 	case "GITLAB_ACCESS_TOKEN":
 		mm := CreateGitlabAccessTokenConfigurationSourceProviderDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "GITHUB_ACCESS_TOKEN":
+		mm := CreateGithubAccessTokenConfigurationSourceProviderDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:

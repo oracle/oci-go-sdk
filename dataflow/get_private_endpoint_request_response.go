@@ -5,11 +5,15 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetPrivateEndpointRequest wrapper for the GetPrivateEndpoint operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dataflow/GetPrivateEndpoint.go.html to see an example of how to use GetPrivateEndpointRequest.
 type GetPrivateEndpointRequest struct {
 
 	// The unique ID for a private endpoint.

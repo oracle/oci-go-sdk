@@ -5,11 +5,15 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // RequestSummarizedTrendResponderExecutionsRequest wrapper for the RequestSummarizedTrendResponderExecutions operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cloudguard/RequestSummarizedTrendResponderExecutions.go.html to see an example of how to use RequestSummarizedTrendResponderExecutionsRequest.
 type RequestSummarizedTrendResponderExecutionsRequest struct {
 
 	// The ID of the compartment in which to list resources.

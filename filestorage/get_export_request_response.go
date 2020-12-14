@@ -5,11 +5,15 @@
 package filestorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetExportRequest wrapper for the GetExport operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/filestorage/GetExport.go.html to see an example of how to use GetExportRequest.
 type GetExportRequest struct {
 
 	// The OCID of the export.

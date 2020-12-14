@@ -5,11 +5,15 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetTransferApplianceEntitlementRequest wrapper for the GetTransferApplianceEntitlement operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferApplianceEntitlement.go.html to see an example of how to use GetTransferApplianceEntitlementRequest.
 type GetTransferApplianceEntitlementRequest struct {
 
 	// Id of the Transfer Appliance Entitlement

@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v30/common"
-	"github.com/oracle/oci-go-sdk/v30/common/auth"
+	"github.com/oracle/oci-go-sdk/v31/common"
+	"github.com/oracle/oci-go-sdk/v31/common/auth"
 	"net/http"
 )
 
@@ -80,6 +80,10 @@ func (client *TransferApplianceEntitlementClient) ConfigurationProvider() *commo
 }
 
 // CreateTransferApplianceEntitlement Create the Entitlement to use a Transfer Appliance. It requires some offline process of review and signatures before request is granted.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateTransferApplianceEntitlement.go.html to see an example of how to use CreateTransferApplianceEntitlement API.
 func (client TransferApplianceEntitlementClient) CreateTransferApplianceEntitlement(ctx context.Context, request CreateTransferApplianceEntitlementRequest) (response CreateTransferApplianceEntitlementResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -135,6 +139,10 @@ func (client TransferApplianceEntitlementClient) createTransferApplianceEntitlem
 }
 
 // GetTransferApplianceEntitlement Describes the Transfer Appliance Entitlement in detail
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetTransferApplianceEntitlement.go.html to see an example of how to use GetTransferApplianceEntitlement API.
 func (client TransferApplianceEntitlementClient) GetTransferApplianceEntitlement(ctx context.Context, request GetTransferApplianceEntitlementRequest) (response GetTransferApplianceEntitlementResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -190,6 +198,10 @@ func (client TransferApplianceEntitlementClient) getTransferApplianceEntitlement
 }
 
 // ListTransferApplianceEntitlement Lists Transfer Transfer Appliance Entitlement
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListTransferApplianceEntitlement.go.html to see an example of how to use ListTransferApplianceEntitlement API.
 func (client TransferApplianceEntitlementClient) ListTransferApplianceEntitlement(ctx context.Context, request ListTransferApplianceEntitlementRequest) (response ListTransferApplianceEntitlementResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

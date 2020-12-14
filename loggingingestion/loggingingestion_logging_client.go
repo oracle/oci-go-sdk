@@ -12,8 +12,8 @@ package loggingingestion
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v30/common"
-	"github.com/oracle/oci-go-sdk/v30/common/auth"
+	"github.com/oracle/oci-go-sdk/v31/common"
+	"github.com/oracle/oci-go-sdk/v31/common/auth"
 	"net/http"
 )
 
@@ -81,6 +81,10 @@ func (client *LoggingClient) ConfigurationProvider() *common.ConfigurationProvid
 
 // PutLogs This API allows ingesting logs associated with a logId. A success
 // response implies the data has been accepted.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loggingingestion/PutLogs.go.html to see an example of how to use PutLogs API.
 func (client LoggingClient) PutLogs(ctx context.Context, request PutLogsRequest) (response PutLogsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

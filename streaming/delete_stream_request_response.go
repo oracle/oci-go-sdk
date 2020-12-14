@@ -5,11 +5,15 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteStreamRequest wrapper for the DeleteStream operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/streaming/DeleteStream.go.html to see an example of how to use DeleteStreamRequest.
 type DeleteStreamRequest struct {
 
 	// The OCID of the stream.

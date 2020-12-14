@@ -5,11 +5,15 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateRunRequest wrapper for the UpdateRun operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dataflow/UpdateRun.go.html to see an example of how to use UpdateRunRequest.
 type UpdateRunRequest struct {
 
 	// Details for updating a run.

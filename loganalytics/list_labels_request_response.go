@@ -5,11 +5,15 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListLabelsRequest wrapper for the ListLabels operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loganalytics/ListLabels.go.html to see an example of how to use ListLabelsRequest.
 type ListLabelsRequest struct {
 
 	// The Logging Analytics namespace used for the request.

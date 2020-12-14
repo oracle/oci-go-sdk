@@ -5,11 +5,15 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetManagedListRequest wrapper for the GetManagedList operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cloudguard/GetManagedList.go.html to see an example of how to use GetManagedListRequest.
 type GetManagedListRequest struct {
 
 	// The cloudguard list OCID to be passed in the request.

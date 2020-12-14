@@ -5,11 +5,15 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetManagedInstanceGroupRequest wrapper for the GetManagedInstanceGroup operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagement/GetManagedInstanceGroup.go.html to see an example of how to use GetManagedInstanceGroupRequest.
 type GetManagedInstanceGroupRequest struct {
 
 	// OCID for the managed instance group

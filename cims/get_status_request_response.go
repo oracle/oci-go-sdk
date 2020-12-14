@@ -5,11 +5,15 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetStatusRequest wrapper for the GetStatus operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/GetStatus.go.html to see an example of how to use GetStatusRequest.
 type GetStatusRequest struct {
 
 	// The system that generated the support ticket, such as My Oracle Support.

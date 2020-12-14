@@ -5,11 +5,15 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // AcceptRecipientInvitationRequest wrapper for the AcceptRecipientInvitation operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/AcceptRecipientInvitation.go.html to see an example of how to use AcceptRecipientInvitationRequest.
 type AcceptRecipientInvitationRequest struct {
 
 	// OCID of recipient invitation to accept.

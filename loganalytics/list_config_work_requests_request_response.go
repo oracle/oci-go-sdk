@@ -5,11 +5,15 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListConfigWorkRequestsRequest wrapper for the ListConfigWorkRequests operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loganalytics/ListConfigWorkRequests.go.html to see an example of how to use ListConfigWorkRequestsRequest.
 type ListConfigWorkRequestsRequest struct {
 
 	// The Logging Analytics namespace used for the request.

@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // ShapeOcpuOptions For a flexible shape, the number of OCPUs available for instances that use this shape.

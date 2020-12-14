@@ -5,11 +5,15 @@
 package filestorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListMountTargetsRequest wrapper for the ListMountTargets operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/filestorage/ListMountTargets.go.html to see an example of how to use ListMountTargetsRequest.
 type ListMountTargetsRequest struct {
 
 	// The OCID of the compartment.

@@ -5,11 +5,15 @@
 package analytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // StartAnalyticsInstanceRequest wrapper for the StartAnalyticsInstance operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/analytics/StartAnalyticsInstance.go.html to see an example of how to use StartAnalyticsInstanceRequest.
 type StartAnalyticsInstanceRequest struct {
 
 	// The OCID of the AnalyticsInstance.

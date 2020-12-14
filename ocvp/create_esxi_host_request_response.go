@@ -5,11 +5,15 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateEsxiHostRequest wrapper for the CreateEsxiHost operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocvp/CreateEsxiHost.go.html to see an example of how to use CreateEsxiHostRequest.
 type CreateEsxiHostRequest struct {
 
 	// Details for the ESXi host.

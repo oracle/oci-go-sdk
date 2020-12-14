@@ -5,11 +5,15 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // InstallPackageUpdateOnManagedInstanceRequest wrapper for the InstallPackageUpdateOnManagedInstance operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagement/InstallPackageUpdateOnManagedInstance.go.html to see an example of how to use InstallPackageUpdateOnManagedInstanceRequest.
 type InstallPackageUpdateOnManagedInstanceRequest struct {
 
 	// OCID for the managed instance

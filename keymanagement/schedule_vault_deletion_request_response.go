@@ -5,11 +5,15 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ScheduleVaultDeletionRequest wrapper for the ScheduleVaultDeletion operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/keymanagement/ScheduleVaultDeletion.go.html to see an example of how to use ScheduleVaultDeletionRequest.
 type ScheduleVaultDeletionRequest struct {
 
 	// The OCID of the vault.

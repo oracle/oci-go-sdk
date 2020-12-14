@@ -5,11 +5,15 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetLogIncludedSearchRequest wrapper for the GetLogIncludedSearch operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/logging/GetLogIncludedSearch.go.html to see an example of how to use GetLogIncludedSearchRequest.
 type GetLogIncludedSearchRequest struct {
 
 	// Compartment OCID to list resources in. See compartmentIdInSubtree

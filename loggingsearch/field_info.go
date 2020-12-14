@@ -10,7 +10,7 @@
 package loggingsearch
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // FieldInfo Contains field schema information.

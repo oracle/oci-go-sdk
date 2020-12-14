@@ -5,11 +5,15 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeletePreauthenticatedRequestRequest wrapper for the DeletePreauthenticatedRequest operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/objectstorage/DeletePreauthenticatedRequest.go.html to see an example of how to use DeletePreauthenticatedRequestRequest.
 type DeletePreauthenticatedRequestRequest struct {
 
 	// The Object Storage namespace used for the request.

@@ -5,11 +5,15 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteAuthTokenRequest wrapper for the DeleteAuthToken operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/identity/DeleteAuthToken.go.html to see an example of how to use DeleteAuthTokenRequest.
 type DeleteAuthTokenRequest struct {
 
 	// The OCID of the user.

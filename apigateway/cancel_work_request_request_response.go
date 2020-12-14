@@ -5,11 +5,15 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CancelWorkRequestRequest wrapper for the CancelWorkRequest operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apigateway/CancelWorkRequest.go.html to see an example of how to use CancelWorkRequestRequest.
 type CancelWorkRequestRequest struct {
 
 	// The ocid of the asynchronous request.

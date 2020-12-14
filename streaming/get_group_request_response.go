@@ -5,11 +5,15 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetGroupRequest wrapper for the GetGroup operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/streaming/GetGroup.go.html to see an example of how to use GetGroupRequest.
 type GetGroupRequest struct {
 
 	// The OCID of the stream.

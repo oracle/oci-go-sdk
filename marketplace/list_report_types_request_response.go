@@ -5,11 +5,15 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListReportTypesRequest wrapper for the ListReportTypes operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplace/ListReportTypes.go.html to see an example of how to use ListReportTypesRequest.
 type ListReportTypesRequest struct {
 
 	// The unique identifier for the compartment.

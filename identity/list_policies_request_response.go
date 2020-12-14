@@ -5,11 +5,15 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListPoliciesRequest wrapper for the ListPolicies operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/identity/ListPolicies.go.html to see an example of how to use ListPoliciesRequest.
 type ListPoliciesRequest struct {
 
 	// The OCID of the compartment (remember that the tenancy is simply the root compartment).

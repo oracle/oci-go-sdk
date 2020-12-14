@@ -5,11 +5,15 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteRuleSetRequest wrapper for the DeleteRuleSet operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loadbalancer/DeleteRuleSet.go.html to see an example of how to use DeleteRuleSetRequest.
 type DeleteRuleSetRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the specified load balancer.

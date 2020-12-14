@@ -5,11 +5,15 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateTagDefaultRequest wrapper for the UpdateTagDefault operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/identity/UpdateTagDefault.go.html to see an example of how to use UpdateTagDefaultRequest.
 type UpdateTagDefaultRequest struct {
 
 	// The OCID of the tag default.

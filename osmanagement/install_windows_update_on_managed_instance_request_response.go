@@ -5,11 +5,15 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // InstallWindowsUpdateOnManagedInstanceRequest wrapper for the InstallWindowsUpdateOnManagedInstance operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagement/InstallWindowsUpdateOnManagedInstance.go.html to see an example of how to use InstallWindowsUpdateOnManagedInstanceRequest.
 type InstallWindowsUpdateOnManagedInstanceRequest struct {
 
 	// OCID for the managed instance

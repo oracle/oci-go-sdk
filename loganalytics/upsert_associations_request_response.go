@@ -5,11 +5,15 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpsertAssociationsRequest wrapper for the UpsertAssociations operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loganalytics/UpsertAssociations.go.html to see an example of how to use UpsertAssociationsRequest.
 type UpsertAssociationsRequest struct {
 
 	// The Logging Analytics namespace used for the request.

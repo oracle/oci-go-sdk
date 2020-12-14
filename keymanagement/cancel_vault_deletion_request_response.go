@@ -5,11 +5,15 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CancelVaultDeletionRequest wrapper for the CancelVaultDeletion operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/keymanagement/CancelVaultDeletion.go.html to see an example of how to use CancelVaultDeletionRequest.
 type CancelVaultDeletionRequest struct {
 
 	// The OCID of the vault.

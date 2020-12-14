@@ -5,11 +5,15 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateVmClusterNetworkRequest wrapper for the CreateVmClusterNetwork operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/database/CreateVmClusterNetwork.go.html to see an example of how to use CreateVmClusterNetworkRequest.
 type CreateVmClusterNetworkRequest struct {
 
 	// The Exadata infrastructure OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).

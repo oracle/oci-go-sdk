@@ -5,11 +5,15 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteLogRequest wrapper for the DeleteLog operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/logging/DeleteLog.go.html to see an example of how to use DeleteLogRequest.
 type DeleteLogRequest struct {
 
 	// OCID of a log group to work with.

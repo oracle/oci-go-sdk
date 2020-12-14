@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DetachBootVolumeRequest wrapper for the DetachBootVolume operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/DetachBootVolume.go.html to see an example of how to use DetachBootVolumeRequest.
 type DetachBootVolumeRequest struct {
 
 	// The OCID of the boot volume attachment.

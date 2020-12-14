@@ -5,11 +5,15 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateSenderInvitationRequest wrapper for the UpdateSenderInvitation operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/tenantmanagercontrolplane/UpdateSenderInvitation.go.html to see an example of how to use UpdateSenderInvitationRequest.
 type UpdateSenderInvitationRequest struct {
 
 	// OCID of the sender invitation to update.

@@ -5,11 +5,15 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateAutonomousContainerDatabaseRequest wrapper for the CreateAutonomousContainerDatabase operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/database/CreateAutonomousContainerDatabase.go.html to see an example of how to use CreateAutonomousContainerDatabaseRequest.
 type CreateAutonomousContainerDatabaseRequest struct {
 
 	// Request to create an Autonomous Container Database in a specified Autonomous Exadata Infrastructure.

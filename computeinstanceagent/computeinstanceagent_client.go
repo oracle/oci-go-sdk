@@ -12,8 +12,8 @@ package computeinstanceagent
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v30/common"
-	"github.com/oracle/oci-go-sdk/v30/common/auth"
+	"github.com/oracle/oci-go-sdk/v31/common"
+	"github.com/oracle/oci-go-sdk/v31/common/auth"
 	"net/http"
 )
 
@@ -80,6 +80,10 @@ func (client *ComputeInstanceAgentClient) ConfigurationProvider() *common.Config
 }
 
 // CancelInstanceAgentCommand Cancel a command. Cancel is best effort attempt. If the commmand has already completed it will skip cancel.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/computeinstanceagent/CancelInstanceAgentCommand.go.html to see an example of how to use CancelInstanceAgentCommand API.
 func (client ComputeInstanceAgentClient) CancelInstanceAgentCommand(ctx context.Context, request CancelInstanceAgentCommandRequest) (response CancelInstanceAgentCommandResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -130,6 +134,10 @@ func (client ComputeInstanceAgentClient) cancelInstanceAgentCommand(ctx context.
 }
 
 // CreateInstanceAgentCommand Create command for one or more managed instances
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/computeinstanceagent/CreateInstanceAgentCommand.go.html to see an example of how to use CreateInstanceAgentCommand API.
 func (client ComputeInstanceAgentClient) CreateInstanceAgentCommand(ctx context.Context, request CreateInstanceAgentCommandRequest) (response CreateInstanceAgentCommandResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -185,6 +193,10 @@ func (client ComputeInstanceAgentClient) createInstanceAgentCommand(ctx context.
 }
 
 // GetInstanceAgentCommand Gets information about the specified instance agent commandId.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/computeinstanceagent/GetInstanceAgentCommand.go.html to see an example of how to use GetInstanceAgentCommand API.
 func (client ComputeInstanceAgentClient) GetInstanceAgentCommand(ctx context.Context, request GetInstanceAgentCommandRequest) (response GetInstanceAgentCommandResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -235,6 +247,10 @@ func (client ComputeInstanceAgentClient) getInstanceAgentCommand(ctx context.Con
 }
 
 // GetInstanceAgentCommandExecution Gets information about the status of specified instance agent commandId for the given instanceId.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/computeinstanceagent/GetInstanceAgentCommandExecution.go.html to see an example of how to use GetInstanceAgentCommandExecution API.
 func (client ComputeInstanceAgentClient) GetInstanceAgentCommandExecution(ctx context.Context, request GetInstanceAgentCommandExecutionRequest) (response GetInstanceAgentCommandExecutionResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -286,6 +302,10 @@ func (client ComputeInstanceAgentClient) getInstanceAgentCommandExecution(ctx co
 
 // ListInstanceAgentCommandExecutions List all executions of a command, i.e return command execution results from all targeted instances batch by
 // batch.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/computeinstanceagent/ListInstanceAgentCommandExecutions.go.html to see an example of how to use ListInstanceAgentCommandExecutions API.
 func (client ComputeInstanceAgentClient) ListInstanceAgentCommandExecutions(ctx context.Context, request ListInstanceAgentCommandExecutionsRequest) (response ListInstanceAgentCommandExecutionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -337,6 +357,10 @@ func (client ComputeInstanceAgentClient) listInstanceAgentCommandExecutions(ctx 
 
 // ListInstanceAgentCommands List Instance agent commands issued with the specified filter.
 // Additonally you can filter commands sent to a particular InstanceId
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/computeinstanceagent/ListInstanceAgentCommands.go.html to see an example of how to use ListInstanceAgentCommands API.
 func (client ComputeInstanceAgentClient) ListInstanceAgentCommands(ctx context.Context, request ListInstanceAgentCommandsRequest) (response ListInstanceAgentCommandsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

@@ -5,11 +5,15 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetRunRequest wrapper for the GetRun operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dataflow/GetRun.go.html to see an example of how to use GetRunRequest.
 type GetRunRequest struct {
 
 	// The unique ID for the run

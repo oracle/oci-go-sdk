@@ -5,11 +5,15 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeBlockchainPlatformCompartmentRequest wrapper for the ChangeBlockchainPlatformCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/blockchain/ChangeBlockchainPlatformCompartment.go.html to see an example of how to use ChangeBlockchainPlatformCompartmentRequest.
 type ChangeBlockchainPlatformCompartmentRequest struct {
 
 	// Unique service identifier.

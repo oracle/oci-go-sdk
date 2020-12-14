@@ -5,12 +5,16 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"io"
 	"net/http"
 )
 
 // GetApiContentRequest wrapper for the GetApiContent operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apigateway/GetApiContent.go.html to see an example of how to use GetApiContentRequest.
 type GetApiContentRequest struct {
 
 	// The ocid of the API.

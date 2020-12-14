@@ -5,11 +5,15 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CascadeDeleteTagNamespaceRequest wrapper for the CascadeDeleteTagNamespace operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/identity/CascadeDeleteTagNamespace.go.html to see an example of how to use CascadeDeleteTagNamespaceRequest.
 type CascadeDeleteTagNamespaceRequest struct {
 
 	// The OCID of the tag namespace.

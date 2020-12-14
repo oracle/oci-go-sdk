@@ -5,11 +5,15 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // AttachManagedInstanceToManagedInstanceGroupRequest wrapper for the AttachManagedInstanceToManagedInstanceGroup operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagement/AttachManagedInstanceToManagedInstanceGroup.go.html to see an example of how to use AttachManagedInstanceToManagedInstanceGroupRequest.
 type AttachManagedInstanceToManagedInstanceGroupRequest struct {
 
 	// OCID for the managed instance group

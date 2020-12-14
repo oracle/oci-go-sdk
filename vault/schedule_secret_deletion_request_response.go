@@ -5,11 +5,15 @@
 package vault
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ScheduleSecretDeletionRequest wrapper for the ScheduleSecretDeletion operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/vault/ScheduleSecretDeletion.go.html to see an example of how to use ScheduleSecretDeletionRequest.
 type ScheduleSecretDeletionRequest struct {
 
 	// The OCID of the secret.

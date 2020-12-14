@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetServiceGatewayRequest wrapper for the GetServiceGateway operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetServiceGateway.go.html to see an example of how to use GetServiceGatewayRequest.
 type GetServiceGatewayRequest struct {
 
 	// The service gateway's OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).

@@ -5,11 +5,15 @@
 package ons
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetConfirmSubscriptionRequest wrapper for the GetConfirmSubscription operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ons/GetConfirmSubscription.go.html to see an example of how to use GetConfirmSubscriptionRequest.
 type GetConfirmSubscriptionRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the subscription to get the confirmation details for.

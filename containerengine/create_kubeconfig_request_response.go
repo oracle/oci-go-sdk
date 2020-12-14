@@ -5,12 +5,16 @@
 package containerengine
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"io"
 	"net/http"
 )
 
 // CreateKubeconfigRequest wrapper for the CreateKubeconfig operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/containerengine/CreateKubeconfig.go.html to see an example of how to use CreateKubeconfigRequest.
 type CreateKubeconfigRequest struct {
 
 	// The OCID of the cluster.

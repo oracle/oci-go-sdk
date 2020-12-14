@@ -5,11 +5,15 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteSSLCipherSuiteRequest wrapper for the DeleteSSLCipherSuite operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loadbalancer/DeleteSSLCipherSuite.go.html to see an example of how to use DeleteSSLCipherSuiteRequest.
 type DeleteSSLCipherSuiteRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the associated load balancer.

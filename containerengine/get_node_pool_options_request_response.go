@@ -5,11 +5,15 @@
 package containerengine
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetNodePoolOptionsRequest wrapper for the GetNodePoolOptions operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/containerengine/GetNodePoolOptions.go.html to see an example of how to use GetNodePoolOptionsRequest.
 type GetNodePoolOptionsRequest struct {
 
 	// The id of the option set to retrieve. Use "all" get all options, or use a cluster ID to get options specific to the provided cluster.

@@ -5,11 +5,15 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // PutQueryWorkRequestBackgroundRequest wrapper for the PutQueryWorkRequestBackground operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loganalytics/PutQueryWorkRequestBackground.go.html to see an example of how to use PutQueryWorkRequestBackgroundRequest.
 type PutQueryWorkRequestBackgroundRequest struct {
 
 	// The Logging Analytics namespace used for the request.

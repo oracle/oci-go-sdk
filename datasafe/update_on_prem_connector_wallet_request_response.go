@@ -5,11 +5,15 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateOnPremConnectorWalletRequest wrapper for the UpdateOnPremConnectorWallet operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datasafe/UpdateOnPremConnectorWallet.go.html to see an example of how to use UpdateOnPremConnectorWalletRequest.
 type UpdateOnPremConnectorWalletRequest struct {
 
 	// The details used to update an on-premises connector's wallet.

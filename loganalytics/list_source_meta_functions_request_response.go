@@ -5,11 +5,15 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListSourceMetaFunctionsRequest wrapper for the ListSourceMetaFunctions operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loganalytics/ListSourceMetaFunctions.go.html to see an example of how to use ListSourceMetaFunctionsRequest.
 type ListSourceMetaFunctionsRequest struct {
 
 	// The Logging Analytics namespace used for the request.

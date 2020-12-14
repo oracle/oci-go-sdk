@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateCatalogRequest wrapper for the CreateCatalog operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/CreateCatalog.go.html to see an example of how to use CreateCatalogRequest.
 type CreateCatalogRequest struct {
 
 	// Details for the new data catalog.

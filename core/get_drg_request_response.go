@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetDrgRequest wrapper for the GetDrg operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetDrg.go.html to see an example of how to use GetDrgRequest.
 type GetDrgRequest struct {
 
 	// The OCID of the DRG.

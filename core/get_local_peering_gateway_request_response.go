@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetLocalPeeringGatewayRequest wrapper for the GetLocalPeeringGateway operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetLocalPeeringGateway.go.html to see an example of how to use GetLocalPeeringGatewayRequest.
 type GetLocalPeeringGatewayRequest struct {
 
 	// The OCID of the local peering gateway.

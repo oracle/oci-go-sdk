@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // AssociateCustomPropertyRequest wrapper for the AssociateCustomProperty operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/AssociateCustomProperty.go.html to see an example of how to use AssociateCustomPropertyRequest.
 type AssociateCustomPropertyRequest struct {
 
 	// Unique catalog identifier.

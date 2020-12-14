@@ -5,11 +5,15 @@
 package sch
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeactivateServiceConnectorRequest wrapper for the DeactivateServiceConnector operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/sch/DeactivateServiceConnector.go.html to see an example of how to use DeactivateServiceConnectorRequest.
 type DeactivateServiceConnectorRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the service connector.

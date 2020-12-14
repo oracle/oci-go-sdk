@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteInternetGatewayRequest wrapper for the DeleteInternetGateway operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/DeleteInternetGateway.go.html to see an example of how to use DeleteInternetGatewayRequest.
 type DeleteInternetGatewayRequest struct {
 
 	// The OCID of the internet gateway.

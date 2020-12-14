@@ -5,11 +5,15 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateSuppressionRequest wrapper for the CreateSuppression operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/email/CreateSuppression.go.html to see an example of how to use CreateSuppressionRequest.
 type CreateSuppressionRequest struct {
 
 	// Adds a single email address to the suppression list for a compartment's tenancy.

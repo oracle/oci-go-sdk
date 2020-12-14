@@ -5,11 +5,15 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeOnPremConnectorCompartmentRequest wrapper for the ChangeOnPremConnectorCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datasafe/ChangeOnPremConnectorCompartment.go.html to see an example of how to use ChangeOnPremConnectorCompartmentRequest.
 type ChangeOnPremConnectorCompartmentRequest struct {
 
 	// The OCID of the on-premises connector.

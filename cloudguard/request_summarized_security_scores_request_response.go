@@ -5,11 +5,15 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // RequestSummarizedSecurityScoresRequest wrapper for the RequestSummarizedSecurityScores operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cloudguard/RequestSummarizedSecurityScores.go.html to see an example of how to use RequestSummarizedSecurityScoresRequest.
 type RequestSummarizedSecurityScoresRequest struct {
 
 	// The ID of the compartment in which to list resources.

@@ -5,11 +5,15 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetPreauthenticatedRequestRequest wrapper for the GetPreauthenticatedRequest operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/objectstorage/GetPreauthenticatedRequest.go.html to see an example of how to use GetPreauthenticatedRequestRequest.
 type GetPreauthenticatedRequestRequest struct {
 
 	// The Object Storage namespace used for the request.

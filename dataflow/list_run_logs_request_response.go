@@ -5,11 +5,15 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListRunLogsRequest wrapper for the ListRunLogs operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dataflow/ListRunLogs.go.html to see an example of how to use ListRunLogsRequest.
 type ListRunLogsRequest struct {
 
 	// The unique ID for the run

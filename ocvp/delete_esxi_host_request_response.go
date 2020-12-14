@@ -5,11 +5,15 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteEsxiHostRequest wrapper for the DeleteEsxiHost operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ocvp/DeleteEsxiHost.go.html to see an example of how to use DeleteEsxiHostRequest.
 type DeleteEsxiHostRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the ESXi host.

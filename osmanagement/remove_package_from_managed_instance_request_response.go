@@ -5,11 +5,15 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // RemovePackageFromManagedInstanceRequest wrapper for the RemovePackageFromManagedInstance operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagement/RemovePackageFromManagedInstance.go.html to see an example of how to use RemovePackageFromManagedInstanceRequest.
 type RemovePackageFromManagedInstanceRequest struct {
 
 	// OCID for the managed instance

@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateLocalPeeringGatewayRequest wrapper for the UpdateLocalPeeringGateway operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/UpdateLocalPeeringGateway.go.html to see an example of how to use UpdateLocalPeeringGatewayRequest.
 type UpdateLocalPeeringGatewayRequest struct {
 
 	// The OCID of the local peering gateway.

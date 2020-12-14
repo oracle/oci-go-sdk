@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // AttachCatalogPrivateEndpointRequest wrapper for the AttachCatalogPrivateEndpoint operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/AttachCatalogPrivateEndpoint.go.html to see an example of how to use AttachCatalogPrivateEndpointRequest.
 type AttachCatalogPrivateEndpointRequest struct {
 
 	// Details for private reverse connection endpoint to be used for attachment.

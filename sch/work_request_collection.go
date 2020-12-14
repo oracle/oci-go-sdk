@@ -12,7 +12,7 @@
 package sch
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // WorkRequestCollection Collection of work requests.

@@ -5,11 +5,15 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdatePrivateEndpointRequest wrapper for the UpdatePrivateEndpoint operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dataflow/UpdatePrivateEndpoint.go.html to see an example of how to use UpdatePrivateEndpointRequest.
 type UpdatePrivateEndpointRequest struct {
 
 	// Details for updating a private endpoint.

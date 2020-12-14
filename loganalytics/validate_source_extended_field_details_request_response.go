@@ -5,11 +5,15 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ValidateSourceExtendedFieldDetailsRequest wrapper for the ValidateSourceExtendedFieldDetails operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loganalytics/ValidateSourceExtendedFieldDetails.go.html to see an example of how to use ValidateSourceExtendedFieldDetailsRequest.
 type ValidateSourceExtendedFieldDetailsRequest struct {
 
 	// The Logging Analytics namespace used for the request.

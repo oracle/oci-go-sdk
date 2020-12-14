@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ValidateByoipRangeRequest wrapper for the ValidateByoipRange operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ValidateByoipRange.go.html to see an example of how to use ValidateByoipRangeRequest.
 type ValidateByoipRangeRequest struct {
 
 	// The OCID of the Byoip Range object.

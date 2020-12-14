@@ -5,11 +5,15 @@
 package healthchecks
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreatePingMonitorRequest wrapper for the CreatePingMonitor operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/healthchecks/CreatePingMonitor.go.html to see an example of how to use CreatePingMonitorRequest.
 type CreatePingMonitorRequest struct {
 
 	// The configuration details for creating a ping monitor.

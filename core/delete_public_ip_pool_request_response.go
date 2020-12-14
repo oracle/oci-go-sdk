@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeletePublicIpPoolRequest wrapper for the DeletePublicIpPool operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/DeletePublicIpPool.go.html to see an example of how to use DeletePublicIpPoolRequest.
 type DeletePublicIpPoolRequest struct {
 
 	// The OCID of the Public Ip Pool object.

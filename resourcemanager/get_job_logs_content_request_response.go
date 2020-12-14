@@ -5,11 +5,15 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetJobLogsContentRequest wrapper for the GetJobLogsContent operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcemanager/GetJobLogsContent.go.html to see an example of how to use GetJobLogsContentRequest.
 type GetJobLogsContentRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the job.

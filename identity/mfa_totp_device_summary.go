@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // MfaTotpDeviceSummary As the name suggests, a `MfaTotpDeviceSummary` object contains information about a `MfaTotpDevice`.

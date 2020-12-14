@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteVolumeRequest wrapper for the DeleteVolume operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/DeleteVolume.go.html to see an example of how to use DeleteVolumeRequest.
 type DeleteVolumeRequest struct {
 
 	// The OCID of the volume.

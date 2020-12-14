@@ -5,11 +5,15 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteSenderRequest wrapper for the DeleteSender operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/email/DeleteSender.go.html to see an example of how to use DeleteSenderRequest.
 type DeleteSenderRequest struct {
 
 	// The unique OCID of the sender.

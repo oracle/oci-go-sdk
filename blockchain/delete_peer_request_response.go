@@ -5,11 +5,15 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeletePeerRequest wrapper for the DeletePeer operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/blockchain/DeletePeer.go.html to see an example of how to use DeletePeerRequest.
 type DeletePeerRequest struct {
 
 	// Unique service identifier.

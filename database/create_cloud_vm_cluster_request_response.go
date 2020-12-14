@@ -5,11 +5,15 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateCloudVmClusterRequest wrapper for the CreateCloudVmCluster operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/database/CreateCloudVmCluster.go.html to see an example of how to use CreateCloudVmClusterRequest.
 type CreateCloudVmClusterRequest struct {
 
 	// Request to create a cloud VM cluster. Applies to Exadata Cloud Service instances only. See The New Exadata Cloud Service Resource Model (https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/exaflexsystem.htm#exaflexsystem_topic-resource_model) for information on this resource type.

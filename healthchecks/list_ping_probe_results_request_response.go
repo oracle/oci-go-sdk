@@ -5,11 +5,15 @@
 package healthchecks
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListPingProbeResultsRequest wrapper for the ListPingProbeResults operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/healthchecks/ListPingProbeResults.go.html to see an example of how to use ListPingProbeResultsRequest.
 type ListPingProbeResultsRequest struct {
 
 	// The OCID of a monitor or on-demand probe.

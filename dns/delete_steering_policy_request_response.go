@@ -5,11 +5,15 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteSteeringPolicyRequest wrapper for the DeleteSteeringPolicy operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dns/DeleteSteeringPolicy.go.html to see an example of how to use DeleteSteeringPolicyRequest.
 type DeleteSteeringPolicyRequest struct {
 
 	// The OCID of the target steering policy.

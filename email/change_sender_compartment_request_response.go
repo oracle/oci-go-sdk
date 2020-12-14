@@ -5,11 +5,15 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeSenderCompartmentRequest wrapper for the ChangeSenderCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/email/ChangeSenderCompartment.go.html to see an example of how to use ChangeSenderCompartmentRequest.
 type ChangeSenderCompartmentRequest struct {
 
 	// The unique OCID of the sender.

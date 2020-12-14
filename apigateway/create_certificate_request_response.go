@@ -5,11 +5,15 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateCertificateRequest wrapper for the CreateCertificate operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apigateway/CreateCertificate.go.html to see an example of how to use CreateCertificateRequest.
 type CreateCertificateRequest struct {
 
 	// Details for the new certificate

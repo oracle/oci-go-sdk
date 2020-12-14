@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateDrgAttachmentRequest wrapper for the CreateDrgAttachment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/CreateDrgAttachment.go.html to see an example of how to use CreateDrgAttachmentRequest.
 type CreateDrgAttachmentRequest struct {
 
 	// Details for creating a `DrgAttachment`.

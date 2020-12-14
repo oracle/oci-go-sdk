@@ -5,11 +5,15 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateAnalyticsClusterRequest wrapper for the UpdateAnalyticsCluster operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/mysql/UpdateAnalyticsCluster.go.html to see an example of how to use UpdateAnalyticsClusterRequest.
 type UpdateAnalyticsClusterRequest struct {
 
 	// The DB System OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).

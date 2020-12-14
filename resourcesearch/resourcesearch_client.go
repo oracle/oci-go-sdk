@@ -12,8 +12,8 @@ package resourcesearch
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v30/common"
-	"github.com/oracle/oci-go-sdk/v30/common/auth"
+	"github.com/oracle/oci-go-sdk/v31/common"
+	"github.com/oracle/oci-go-sdk/v31/common/auth"
 	"net/http"
 )
 
@@ -80,6 +80,10 @@ func (client *ResourceSearchClient) ConfigurationProvider() *common.Configuratio
 }
 
 // GetResourceType Gets detailed information about a resource type by using the resource type name.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcesearch/GetResourceType.go.html to see an example of how to use GetResourceType API.
 func (client ResourceSearchClient) GetResourceType(ctx context.Context, request GetResourceTypeRequest) (response GetResourceTypeResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -130,6 +134,10 @@ func (client ResourceSearchClient) getResourceType(ctx context.Context, request 
 }
 
 // ListResourceTypes Lists all resource types that you can search or query for.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcesearch/ListResourceTypes.go.html to see an example of how to use ListResourceTypes API.
 func (client ResourceSearchClient) ListResourceTypes(ctx context.Context, request ListResourceTypesRequest) (response ListResourceTypesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -182,6 +190,10 @@ func (client ResourceSearchClient) listResourceTypes(ctx context.Context, reques
 // SearchResources Queries any and all compartments in the specified tenancy to find resources that match the specified criteria.
 // Results include resources that you have permission to view and can span different resource types.
 // You can also sort results based on a specified resource attribute.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcesearch/SearchResources.go.html to see an example of how to use SearchResources API.
 func (client ResourceSearchClient) SearchResources(ctx context.Context, request SearchResourcesRequest) (response SearchResourcesResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

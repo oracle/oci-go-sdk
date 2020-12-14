@@ -5,11 +5,15 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeDeploymentCompartmentRequest wrapper for the ChangeDeploymentCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apigateway/ChangeDeploymentCompartment.go.html to see an example of how to use ChangeDeploymentCompartmentRequest.
 type ChangeDeploymentCompartmentRequest struct {
 
 	// The ocid of the deployment.

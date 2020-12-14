@@ -5,11 +5,15 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteCompartmentRequest wrapper for the DeleteCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/identity/DeleteCompartment.go.html to see an example of how to use DeleteCompartmentRequest.
 type DeleteCompartmentRequest struct {
 
 	// The OCID of the compartment.

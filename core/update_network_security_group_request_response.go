@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateNetworkSecurityGroupRequest wrapper for the UpdateNetworkSecurityGroup operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/UpdateNetworkSecurityGroup.go.html to see an example of how to use UpdateNetworkSecurityGroupRequest.
 type UpdateNetworkSecurityGroupRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the network security group.

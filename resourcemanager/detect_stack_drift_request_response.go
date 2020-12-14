@@ -5,11 +5,15 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DetectStackDriftRequest wrapper for the DetectStackDrift operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcemanager/DetectStackDrift.go.html to see an example of how to use DetectStackDriftRequest.
 type DetectStackDriftRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the stack.

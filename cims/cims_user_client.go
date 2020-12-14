@@ -12,8 +12,8 @@ package cims
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v30/common"
-	"github.com/oracle/oci-go-sdk/v30/common/auth"
+	"github.com/oracle/oci-go-sdk/v31/common"
+	"github.com/oracle/oci-go-sdk/v31/common/auth"
 	"net/http"
 )
 
@@ -80,6 +80,10 @@ func (client *UserClient) ConfigurationProvider() *common.ConfigurationProvider 
 }
 
 // CreateUser Create user to request Customer Support Identifier(CSI) to Customer User Administrator(CUA).
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/CreateUser.go.html to see an example of how to use CreateUser API.
 func (client UserClient) CreateUser(ctx context.Context, request CreateUserRequest) (response CreateUserResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

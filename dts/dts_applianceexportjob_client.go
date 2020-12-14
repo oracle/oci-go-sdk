@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v30/common"
-	"github.com/oracle/oci-go-sdk/v30/common/auth"
+	"github.com/oracle/oci-go-sdk/v31/common"
+	"github.com/oracle/oci-go-sdk/v31/common/auth"
 	"net/http"
 )
 
@@ -80,6 +80,10 @@ func (client *ApplianceExportJobClient) ConfigurationProvider() *common.Configur
 }
 
 // ChangeApplianceExportJobCompartment Moves a ApplianceExportJob into a different compartment.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ChangeApplianceExportJobCompartment.go.html to see an example of how to use ChangeApplianceExportJobCompartment API.
 func (client ApplianceExportJobClient) ChangeApplianceExportJobCompartment(ctx context.Context, request ChangeApplianceExportJobCompartmentRequest) (response ChangeApplianceExportJobCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -135,6 +139,10 @@ func (client ApplianceExportJobClient) changeApplianceExportJobCompartment(ctx c
 }
 
 // CreateApplianceExportJob Creates a new Appliance Export Job that corresponds with customer's logical dataset
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateApplianceExportJob.go.html to see an example of how to use CreateApplianceExportJob API.
 func (client ApplianceExportJobClient) CreateApplianceExportJob(ctx context.Context, request CreateApplianceExportJobRequest) (response CreateApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -190,6 +198,10 @@ func (client ApplianceExportJobClient) createApplianceExportJob(ctx context.Cont
 }
 
 // DeleteApplianceExportJob deletes a Appliance Export Job
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteApplianceExportJob.go.html to see an example of how to use DeleteApplianceExportJob API.
 func (client ApplianceExportJobClient) DeleteApplianceExportJob(ctx context.Context, request DeleteApplianceExportJobRequest) (response DeleteApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -240,6 +252,10 @@ func (client ApplianceExportJobClient) deleteApplianceExportJob(ctx context.Cont
 }
 
 // GetApplianceExportJob Describes a Appliance Export Job in detail
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/GetApplianceExportJob.go.html to see an example of how to use GetApplianceExportJob API.
 func (client ApplianceExportJobClient) GetApplianceExportJob(ctx context.Context, request GetApplianceExportJobRequest) (response GetApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -290,6 +306,10 @@ func (client ApplianceExportJobClient) getApplianceExportJob(ctx context.Context
 }
 
 // ListApplianceExportJobs Lists Appliance Export Jobs in a given compartment
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListApplianceExportJobs.go.html to see an example of how to use ListApplianceExportJobs API.
 func (client ApplianceExportJobClient) ListApplianceExportJobs(ctx context.Context, request ListApplianceExportJobsRequest) (response ListApplianceExportJobsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -340,6 +360,10 @@ func (client ApplianceExportJobClient) listApplianceExportJobs(ctx context.Conte
 }
 
 // UpdateApplianceExportJob Updates a Appliance Export Job that corresponds with customer's logical dataset.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateApplianceExportJob.go.html to see an example of how to use UpdateApplianceExportJob API.
 func (client ApplianceExportJobClient) UpdateApplianceExportJob(ctx context.Context, request UpdateApplianceExportJobRequest) (response UpdateApplianceExportJobResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

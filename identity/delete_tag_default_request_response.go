@@ -5,11 +5,15 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteTagDefaultRequest wrapper for the DeleteTagDefault operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/identity/DeleteTagDefault.go.html to see an example of how to use DeleteTagDefaultRequest.
 type DeleteTagDefaultRequest struct {
 
 	// The OCID of the tag default.

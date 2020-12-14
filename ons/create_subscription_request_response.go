@@ -5,11 +5,15 @@
 package ons
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateSubscriptionRequest wrapper for the CreateSubscription operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ons/CreateSubscription.go.html to see an example of how to use CreateSubscriptionRequest.
 type CreateSubscriptionRequest struct {
 
 	// The subscription to create.

@@ -10,7 +10,7 @@
 package oce
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // WorkflowMonitor The workflow monitor for this work request.

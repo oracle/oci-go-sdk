@@ -5,11 +5,15 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListConnectionValidationsRequest wrapper for the ListConnectionValidations operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dataintegration/ListConnectionValidations.go.html to see an example of how to use ListConnectionValidationsRequest.
 type ListConnectionValidationsRequest struct {
 
 	// The workspace ID.

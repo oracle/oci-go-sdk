@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeComputeImageCapabilitySchemaCompartmentRequest wrapper for the ChangeComputeImageCapabilitySchemaCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ChangeComputeImageCapabilitySchemaCompartment.go.html to see an example of how to use ChangeComputeImageCapabilitySchemaCompartmentRequest.
 type ChangeComputeImageCapabilitySchemaCompartmentRequest struct {
 
 	// The id of the compute image capability schema or the image ocid

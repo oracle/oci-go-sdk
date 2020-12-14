@@ -5,11 +5,15 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteProfileRequest wrapper for the DeleteProfile operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/optimizer/DeleteProfile.go.html to see an example of how to use DeleteProfileRequest.
 type DeleteProfileRequest struct {
 
 	// The unique OCID of the profile.

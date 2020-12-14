@@ -5,11 +5,15 @@
 package autoscaling
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateAutoScalingConfigurationRequest wrapper for the CreateAutoScalingConfiguration operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/autoscaling/CreateAutoScalingConfiguration.go.html to see an example of how to use CreateAutoScalingConfigurationRequest.
 type CreateAutoScalingConfigurationRequest struct {
 
 	// Creation details for an autoscaling configuration.

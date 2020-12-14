@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateCpeRequest wrapper for the UpdateCpe operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/UpdateCpe.go.html to see an example of how to use UpdateCpeRequest.
 type UpdateCpeRequest struct {
 
 	// The OCID of the CPE.

@@ -5,11 +5,15 @@
 package autoscaling
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateAutoScalingPolicyRequest wrapper for the CreateAutoScalingPolicy operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/autoscaling/CreateAutoScalingPolicy.go.html to see an example of how to use CreateAutoScalingPolicyRequest.
 type CreateAutoScalingPolicyRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the autoscaling configuration.

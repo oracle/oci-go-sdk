@@ -5,11 +5,15 @@
 package nosql
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListTableUsageRequest wrapper for the ListTableUsage operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/nosql/ListTableUsage.go.html to see an example of how to use ListTableUsageRequest.
 type ListTableUsageRequest struct {
 
 	// A table name within the compartment, or a table OCID.

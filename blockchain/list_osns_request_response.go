@@ -5,11 +5,15 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListOsnsRequest wrapper for the ListOsns operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/blockchain/ListOsns.go.html to see an example of how to use ListOsnsRequest.
 type ListOsnsRequest struct {
 
 	// Unique service identifier.

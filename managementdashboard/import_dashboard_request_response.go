@@ -5,11 +5,15 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ImportDashboardRequest wrapper for the ImportDashboard operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/managementdashboard/ImportDashboard.go.html to see an example of how to use ImportDashboardRequest.
 type ImportDashboardRequest struct {
 
 	// JSON metadata for importing dashboards and their saved searches.

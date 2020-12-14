@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v30/common"
-	"github.com/oracle/oci-go-sdk/v30/common/auth"
+	"github.com/oracle/oci-go-sdk/v31/common"
+	"github.com/oracle/oci-go-sdk/v31/common/auth"
 	"net/http"
 )
 
@@ -80,6 +80,10 @@ func (client *ShippingVendorsClient) ConfigurationProvider() *common.Configurati
 }
 
 // ListShippingVendors Lists available shipping vendors for Transfer Package delivery
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ListShippingVendors.go.html to see an example of how to use ListShippingVendors API.
 func (client ShippingVendorsClient) ListShippingVendors(ctx context.Context, request ListShippingVendorsRequest) (response ListShippingVendorsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

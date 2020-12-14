@@ -5,11 +5,15 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateUserCapabilitiesRequest wrapper for the UpdateUserCapabilities operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/identity/UpdateUserCapabilities.go.html to see an example of how to use UpdateUserCapabilitiesRequest.
 type UpdateUserCapabilitiesRequest struct {
 
 	// The OCID of the user.

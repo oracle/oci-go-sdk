@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeCrossConnectCompartmentRequest wrapper for the ChangeCrossConnectCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ChangeCrossConnectCompartment.go.html to see an example of how to use ChangeCrossConnectCompartmentRequest.
 type ChangeCrossConnectCompartmentRequest struct {
 
 	// The OCID of the cross-connect.

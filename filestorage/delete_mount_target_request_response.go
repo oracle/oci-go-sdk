@@ -5,11 +5,15 @@
 package filestorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteMountTargetRequest wrapper for the DeleteMountTarget operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/filestorage/DeleteMountTarget.go.html to see an example of how to use DeleteMountTargetRequest.
 type DeleteMountTargetRequest struct {
 
 	// The OCID of the mount target.

@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateVirtualCircuitRequest wrapper for the CreateVirtualCircuit operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/CreateVirtualCircuit.go.html to see an example of how to use CreateVirtualCircuitRequest.
 type CreateVirtualCircuitRequest struct {
 
 	// Details to create a VirtualCircuit.

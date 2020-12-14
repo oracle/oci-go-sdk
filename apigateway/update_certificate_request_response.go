@@ -5,11 +5,15 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateCertificateRequest wrapper for the UpdateCertificate operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apigateway/UpdateCertificate.go.html to see an example of how to use UpdateCertificateRequest.
 type UpdateCertificateRequest struct {
 
 	// The ocid of the certificate.

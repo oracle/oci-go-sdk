@@ -5,11 +5,15 @@
 package bds
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListBdsInstancesRequest wrapper for the ListBdsInstances operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/bds/ListBdsInstances.go.html to see an example of how to use ListBdsInstancesRequest.
 type ListBdsInstancesRequest struct {
 
 	// The OCID of the compartment.

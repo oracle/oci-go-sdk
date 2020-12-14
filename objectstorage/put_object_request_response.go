@@ -5,12 +5,16 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"io"
 	"net/http"
 )
 
 // PutObjectRequest wrapper for the PutObject operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/objectstorage/PutObject.go.html to see an example of how to use PutObjectRequest.
 type PutObjectRequest struct {
 
 	// The Object Storage namespace used for the request.

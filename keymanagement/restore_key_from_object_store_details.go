@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // RestoreKeyFromObjectStoreDetails The representation of RestoreKeyFromObjectStoreDetails

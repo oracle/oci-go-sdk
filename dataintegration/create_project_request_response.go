@@ -5,11 +5,15 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateProjectRequest wrapper for the CreateProject operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dataintegration/CreateProject.go.html to see an example of how to use CreateProjectRequest.
 type CreateProjectRequest struct {
 
 	// The workspace ID.

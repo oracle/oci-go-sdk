@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // UpdateLoadBalancerShapeDetails The representation of UpdateLoadBalancerShapeDetails
@@ -23,7 +23,12 @@ type UpdateLoadBalancerShapeDetails struct {
 	//   *  100Mbps
 	//   *  400Mbps
 	//   *  8000Mbps
+	//   *  Flexible
+	//   Example: `Flexible`
 	ShapeName *string `mandatory:"true" json:"shapeName"`
+
+	// The configuration details to update load balancer to a different profile.
+	ShapeDetails *ShapeDetails `mandatory:"false" json:"shapeDetails"`
 }
 
 func (m UpdateLoadBalancerShapeDetails) String() string {

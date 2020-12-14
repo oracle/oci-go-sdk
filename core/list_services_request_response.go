@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListServicesRequest wrapper for the ListServices operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ListServices.go.html to see an example of how to use ListServicesRequest.
 type ListServicesRequest struct {
 
 	// For list pagination. The maximum number of results per page, or items to return in a paginated

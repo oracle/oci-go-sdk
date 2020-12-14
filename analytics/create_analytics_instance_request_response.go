@@ -5,11 +5,15 @@
 package analytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateAnalyticsInstanceRequest wrapper for the CreateAnalyticsInstance operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/analytics/CreateAnalyticsInstance.go.html to see an example of how to use CreateAnalyticsInstanceRequest.
 type CreateAnalyticsInstanceRequest struct {
 
 	// Analytics Instance details.

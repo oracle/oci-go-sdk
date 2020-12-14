@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ValidateConnectionRequest wrapper for the ValidateConnection operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/ValidateConnection.go.html to see an example of how to use ValidateConnectionRequest.
 type ValidateConnectionRequest struct {
 
 	// Unique catalog identifier.

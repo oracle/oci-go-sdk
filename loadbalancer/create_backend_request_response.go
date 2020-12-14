@@ -5,11 +5,15 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateBackendRequest wrapper for the CreateBackend operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loadbalancer/CreateBackend.go.html to see an example of how to use CreateBackendRequest.
 type CreateBackendRequest struct {
 
 	// The details to add a backend server to a backend set.

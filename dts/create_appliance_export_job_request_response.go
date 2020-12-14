@@ -5,11 +5,15 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateApplianceExportJobRequest wrapper for the CreateApplianceExportJob operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/CreateApplianceExportJob.go.html to see an example of how to use CreateApplianceExportJobRequest.
 type CreateApplianceExportJobRequest struct {
 
 	// Creates a new Appliance Export Job

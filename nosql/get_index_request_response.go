@@ -5,11 +5,15 @@
 package nosql
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetIndexRequest wrapper for the GetIndex operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/nosql/GetIndex.go.html to see an example of how to use GetIndexRequest.
 type GetIndexRequest struct {
 
 	// A table name within the compartment, or a table OCID.

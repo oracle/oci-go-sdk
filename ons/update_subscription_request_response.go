@@ -5,11 +5,15 @@
 package ons
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateSubscriptionRequest wrapper for the UpdateSubscription operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ons/UpdateSubscription.go.html to see an example of how to use UpdateSubscriptionRequest.
 type UpdateSubscriptionRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the subscription to update.

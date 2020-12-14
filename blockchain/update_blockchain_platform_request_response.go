@@ -5,11 +5,15 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateBlockchainPlatformRequest wrapper for the UpdateBlockchainPlatform operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/blockchain/UpdateBlockchainPlatform.go.html to see an example of how to use UpdateBlockchainPlatformRequest.
 type UpdateBlockchainPlatformRequest struct {
 
 	// The Blockchain Platform fields to update. Fields that are not provided will not be updated.

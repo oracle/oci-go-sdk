@@ -5,11 +5,15 @@
 package healthchecks
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeHttpMonitorCompartmentRequest wrapper for the ChangeHttpMonitorCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/healthchecks/ChangeHttpMonitorCompartment.go.html to see an example of how to use ChangeHttpMonitorCompartmentRequest.
 type ChangeHttpMonitorCompartmentRequest struct {
 
 	// The OCID of a monitor.

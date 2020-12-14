@@ -5,11 +5,15 @@
 package vault
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateSecretRequest wrapper for the CreateSecret operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/vault/CreateSecret.go.html to see an example of how to use CreateSecretRequest.
 type CreateSecretRequest struct {
 
 	// Request to create a new secret.

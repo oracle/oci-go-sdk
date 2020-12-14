@@ -5,11 +5,15 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListWorkRequestErrorsRequest wrapper for the ListWorkRequestErrors operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dataflow/ListWorkRequestErrors.go.html to see an example of how to use ListWorkRequestErrorsRequest.
 type ListWorkRequestErrorsRequest struct {
 
 	// The unique ID for a work request.

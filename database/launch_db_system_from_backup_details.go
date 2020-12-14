@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // LaunchDbSystemFromBackupDetails Used for creating a new DB system from a database backup.
@@ -117,6 +117,12 @@ type LaunchDbSystemFromBackupDetails struct {
 
 	// Size (in GB) of the initial data volume that will be created and attached to a virtual machine DB system. You can scale up storage after provisioning, as needed. Note that the total storage size attached will be more than the amount you specify to allow for REDO/RECO space and software volume.
 	InitialDataStorageSizeInGB *int `mandatory:"false" json:"initialDataStorageSizeInGB"`
+
+	// The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
+	KmsKeyId *string `mandatory:"false" json:"kmsKeyId"`
+
+	// The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation.
+	KmsKeyVersionId *string `mandatory:"false" json:"kmsKeyVersionId"`
 
 	// The number of nodes to launch for a 2-node RAC virtual machine DB system. Specify either 1 or 2.
 	NodeCount *int `mandatory:"false" json:"nodeCount"`
@@ -240,6 +246,16 @@ func (m LaunchDbSystemFromBackupDetails) GetDataStoragePercentage() *int {
 //GetInitialDataStorageSizeInGB returns InitialDataStorageSizeInGB
 func (m LaunchDbSystemFromBackupDetails) GetInitialDataStorageSizeInGB() *int {
 	return m.InitialDataStorageSizeInGB
+}
+
+//GetKmsKeyId returns KmsKeyId
+func (m LaunchDbSystemFromBackupDetails) GetKmsKeyId() *string {
+	return m.KmsKeyId
+}
+
+//GetKmsKeyVersionId returns KmsKeyVersionId
+func (m LaunchDbSystemFromBackupDetails) GetKmsKeyVersionId() *string {
+	return m.KmsKeyVersionId
 }
 
 //GetNodeCount returns NodeCount

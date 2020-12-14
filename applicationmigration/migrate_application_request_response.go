@@ -5,11 +5,15 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // MigrateApplicationRequest wrapper for the MigrateApplication operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/MigrateApplication.go.html to see an example of how to use MigrateApplicationRequest.
 type MigrateApplicationRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the migration.

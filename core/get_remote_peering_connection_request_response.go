@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetRemotePeeringConnectionRequest wrapper for the GetRemotePeeringConnection operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetRemotePeeringConnection.go.html to see an example of how to use GetRemotePeeringConnectionRequest.
 type GetRemotePeeringConnectionRequest struct {
 
 	// The OCID of the remote peering connection (RPC).

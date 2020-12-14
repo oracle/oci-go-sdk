@@ -5,11 +5,15 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // BulkMoveResourcesRequest wrapper for the BulkMoveResources operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/identity/BulkMoveResources.go.html to see an example of how to use BulkMoveResourcesRequest.
 type BulkMoveResourcesRequest struct {
 
 	// The OCID of the compartment.

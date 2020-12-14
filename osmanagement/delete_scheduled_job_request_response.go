@@ -5,11 +5,15 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteScheduledJobRequest wrapper for the DeleteScheduledJob operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagement/DeleteScheduledJob.go.html to see an example of how to use DeleteScheduledJobRequest.
 type DeleteScheduledJobRequest struct {
 
 	// The ID of the scheduled job.

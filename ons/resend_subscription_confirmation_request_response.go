@@ -5,11 +5,15 @@
 package ons
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ResendSubscriptionConfirmationRequest wrapper for the ResendSubscriptionConfirmation operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ons/ResendSubscriptionConfirmation.go.html to see an example of how to use ResendSubscriptionConfirmationRequest.
 type ResendSubscriptionConfirmationRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the subscription to resend the confirmation for.

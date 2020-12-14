@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListAppCatalogListingsRequest wrapper for the ListAppCatalogListings operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ListAppCatalogListings.go.html to see an example of how to use ListAppCatalogListingsRequest.
 type ListAppCatalogListingsRequest struct {
 
 	// For list pagination. The maximum number of results per page, or items to return in a paginated

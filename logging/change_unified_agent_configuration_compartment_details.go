@@ -10,7 +10,7 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // ChangeUnifiedAgentConfigurationCompartmentDetails Contains details indicating which compartment the resource should move to.

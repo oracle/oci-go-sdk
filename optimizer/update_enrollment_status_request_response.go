@@ -5,11 +5,15 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateEnrollmentStatusRequest wrapper for the UpdateEnrollmentStatus operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/optimizer/UpdateEnrollmentStatus.go.html to see an example of how to use UpdateEnrollmentStatusRequest.
 type UpdateEnrollmentStatusRequest struct {
 
 	// The unique OCID associated with the enrollment status.

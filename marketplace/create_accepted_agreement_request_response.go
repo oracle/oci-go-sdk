@@ -5,11 +5,15 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateAcceptedAgreementRequest wrapper for the CreateAcceptedAgreement operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplace/CreateAcceptedAgreement.go.html to see an example of how to use CreateAcceptedAgreementRequest.
 type CreateAcceptedAgreementRequest struct {
 
 	// Details necessary to accept an agreement.

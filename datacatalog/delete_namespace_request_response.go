@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteNamespaceRequest wrapper for the DeleteNamespace operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/DeleteNamespace.go.html to see an example of how to use DeleteNamespaceRequest.
 type DeleteNamespaceRequest struct {
 
 	// Unique catalog identifier.

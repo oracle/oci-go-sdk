@@ -5,12 +5,16 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"io"
 	"net/http"
 )
 
 // GetIpsecCpeDeviceConfigContentRequest wrapper for the GetIpsecCpeDeviceConfigContent operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetIpsecCpeDeviceConfigContent.go.html to see an example of how to use GetIpsecCpeDeviceConfigContentRequest.
 type GetIpsecCpeDeviceConfigContentRequest struct {
 
 	// The OCID of the IPSec connection.

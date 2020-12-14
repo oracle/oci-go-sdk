@@ -5,11 +5,15 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteApplianceExportJobRequest wrapper for the DeleteApplianceExportJob operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/DeleteApplianceExportJob.go.html to see an example of how to use DeleteApplianceExportJobRequest.
 type DeleteApplianceExportJobRequest struct {
 
 	// ID of the Appliance Export Job

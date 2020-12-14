@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateInstanceConfigurationRequest wrapper for the CreateInstanceConfiguration operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/CreateInstanceConfiguration.go.html to see an example of how to use CreateInstanceConfigurationRequest.
 type CreateInstanceConfigurationRequest struct {
 
 	// Instance configuration creation details

@@ -5,11 +5,15 @@
 package sch
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateServiceConnectorRequest wrapper for the CreateServiceConnector operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/sch/CreateServiceConnector.go.html to see an example of how to use CreateServiceConnectorRequest.
 type CreateServiceConnectorRequest struct {
 
 	// Configuration details for the new service connector.

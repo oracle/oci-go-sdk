@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteConnectionRequest wrapper for the DeleteConnection operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/DeleteConnection.go.html to see an example of how to use DeleteConnectionRequest.
 type DeleteConnectionRequest struct {
 
 	// Unique catalog identifier.

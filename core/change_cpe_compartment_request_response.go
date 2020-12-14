@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeCpeCompartmentRequest wrapper for the ChangeCpeCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ChangeCpeCompartment.go.html to see an example of how to use ChangeCpeCompartmentRequest.
 type ChangeCpeCompartmentRequest struct {
 
 	// The OCID of the CPE.

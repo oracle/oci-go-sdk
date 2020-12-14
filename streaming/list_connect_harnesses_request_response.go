@@ -5,11 +5,15 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListConnectHarnessesRequest wrapper for the ListConnectHarnesses operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/streaming/ListConnectHarnesses.go.html to see an example of how to use ListConnectHarnessesRequest.
 type ListConnectHarnessesRequest struct {
 
 	// The OCID of the compartment.

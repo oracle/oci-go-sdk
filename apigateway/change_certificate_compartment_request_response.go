@@ -5,11 +5,15 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeCertificateCompartmentRequest wrapper for the ChangeCertificateCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apigateway/ChangeCertificateCompartment.go.html to see an example of how to use ChangeCertificateCompartmentRequest.
 type ChangeCertificateCompartmentRequest struct {
 
 	// The ocid of the certificate.

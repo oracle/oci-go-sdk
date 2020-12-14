@@ -5,11 +5,15 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateTransferDeviceRequest wrapper for the UpdateTransferDevice operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/UpdateTransferDevice.go.html to see an example of how to use UpdateTransferDeviceRequest.
 type UpdateTransferDeviceRequest struct {
 
 	// ID of the Transfer Job

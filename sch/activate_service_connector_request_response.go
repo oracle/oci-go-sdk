@@ -5,11 +5,15 @@
 package sch
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ActivateServiceConnectorRequest wrapper for the ActivateServiceConnector operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/sch/ActivateServiceConnector.go.html to see an example of how to use ActivateServiceConnectorRequest.
 type ActivateServiceConnectorRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the service connector.
