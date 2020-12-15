@@ -5,11 +5,15 @@
 package oce
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteOceInstanceRequest wrapper for the DeleteOceInstance operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/oce/DeleteOceInstance.go.html to see an example of how to use DeleteOceInstanceRequest.
 type DeleteOceInstanceRequest struct {
 
 	// unique OceInstance identifier

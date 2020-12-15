@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // MaintenanceRun Details of a maintenance run.
@@ -34,7 +34,7 @@ type MaintenanceRun struct {
 	// Description of the maintenance run.
 	Description *string `mandatory:"false" json:"description"`
 
-	// Additional information about the current lifecycleState.
+	// Additional information about the current lifecycle state.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
 	// The date and time the maintenance run starts.

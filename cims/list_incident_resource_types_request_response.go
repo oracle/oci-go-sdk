@@ -5,11 +5,15 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListIncidentResourceTypesRequest wrapper for the ListIncidentResourceTypes operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ListIncidentResourceTypes.go.html to see an example of how to use ListIncidentResourceTypesRequest.
 type ListIncidentResourceTypesRequest struct {
 
 	// The kind of support request.

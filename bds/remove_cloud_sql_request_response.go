@@ -5,11 +5,15 @@
 package bds
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // RemoveCloudSqlRequest wrapper for the RemoveCloudSql operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/bds/RemoveCloudSql.go.html to see an example of how to use RemoveCloudSqlRequest.
 type RemoveCloudSqlRequest struct {
 
 	// The OCID of the BDS instance

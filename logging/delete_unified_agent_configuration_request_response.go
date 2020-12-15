@@ -5,11 +5,15 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteUnifiedAgentConfigurationRequest wrapper for the DeleteUnifiedAgentConfiguration operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/logging/DeleteUnifiedAgentConfiguration.go.html to see an example of how to use DeleteUnifiedAgentConfigurationRequest.
 type DeleteUnifiedAgentConfigurationRequest struct {
 
 	// The OCID of the Unified Agent configuration.

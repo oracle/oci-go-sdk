@@ -5,11 +5,15 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateKeyRequest wrapper for the UpdateKey operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/keymanagement/UpdateKey.go.html to see an example of how to use UpdateKeyRequest.
 type UpdateKeyRequest struct {
 
 	// The OCID of the key.

@@ -5,11 +5,15 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateViewRequest wrapper for the CreateView operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dns/CreateView.go.html to see an example of how to use CreateViewRequest.
 type CreateViewRequest struct {
 
 	// Details for creating a new view.

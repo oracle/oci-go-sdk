@@ -5,11 +5,15 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateJobRequest wrapper for the CreateJob operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/resourcemanager/CreateJob.go.html to see an example of how to use CreateJobRequest.
 type CreateJobRequest struct {
 
 	// The properties for a request to create a job.

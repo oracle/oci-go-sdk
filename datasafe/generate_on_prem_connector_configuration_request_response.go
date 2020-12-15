@@ -5,12 +5,16 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"io"
 	"net/http"
 )
 
 // GenerateOnPremConnectorConfigurationRequest wrapper for the GenerateOnPremConnectorConfiguration operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datasafe/GenerateOnPremConnectorConfiguration.go.html to see an example of how to use GenerateOnPremConnectorConfigurationRequest.
 type GenerateOnPremConnectorConfigurationRequest struct {
 
 	// The details used to create and download on-premises connector's configuration.

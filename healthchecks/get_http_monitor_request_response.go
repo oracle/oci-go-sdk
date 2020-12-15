@@ -5,11 +5,15 @@
 package healthchecks
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetHttpMonitorRequest wrapper for the GetHttpMonitor operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/healthchecks/GetHttpMonitor.go.html to see an example of how to use GetHttpMonitorRequest.
 type GetHttpMonitorRequest struct {
 
 	// The OCID of a monitor.

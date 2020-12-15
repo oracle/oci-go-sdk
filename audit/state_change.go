@@ -12,17 +12,10 @@
 package audit
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // StateChange A container object for state change attributes.
-// Example:
-//   -----
-//     {
-//       "previous": null,
-//       "current": null
-//     }
-//   -----
 type StateChange struct {
 
 	// Provides the previous state of fields that may have changed during an operation. To determine

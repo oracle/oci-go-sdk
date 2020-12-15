@@ -5,11 +5,15 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeMigrationCompartmentRequest wrapper for the ChangeMigrationCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/applicationmigration/ChangeMigrationCompartment.go.html to see an example of how to use ChangeMigrationCompartmentRequest.
 type ChangeMigrationCompartmentRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the migration.

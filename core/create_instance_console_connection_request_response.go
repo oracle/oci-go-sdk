@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateInstanceConsoleConnectionRequest wrapper for the CreateInstanceConsoleConnection operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/CreateInstanceConsoleConnection.go.html to see an example of how to use CreateInstanceConsoleConnectionRequest.
 type CreateInstanceConsoleConnectionRequest struct {
 
 	// Request object for creating an InstanceConsoleConnection

@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateAppCatalogSubscriptionRequest wrapper for the CreateAppCatalogSubscription operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/CreateAppCatalogSubscription.go.html to see an example of how to use CreateAppCatalogSubscriptionRequest.
 type CreateAppCatalogSubscriptionRequest struct {
 
 	// Request for the creation of a subscription for listing resource version for a compartment.

@@ -5,11 +5,15 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteWorkRequestRequest wrapper for the DeleteWorkRequest operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/managementagent/DeleteWorkRequest.go.html to see an example of how to use DeleteWorkRequestRequest.
 type DeleteWorkRequestRequest struct {
 
 	// The ID of the asynchronous request.

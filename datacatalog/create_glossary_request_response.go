@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateGlossaryRequest wrapper for the CreateGlossary operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/CreateGlossary.go.html to see an example of how to use CreateGlossaryRequest.
 type CreateGlossaryRequest struct {
 
 	// Unique catalog identifier.

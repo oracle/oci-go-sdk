@@ -5,11 +5,15 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetKeyRequest wrapper for the GetKey operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/keymanagement/GetKey.go.html to see an example of how to use GetKeyRequest.
 type GetKeyRequest struct {
 
 	// The OCID of the key.

@@ -5,11 +5,15 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListStreamPoolsRequest wrapper for the ListStreamPools operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/streaming/ListStreamPools.go.html to see an example of how to use ListStreamPoolsRequest.
 type ListStreamPoolsRequest struct {
 
 	// The OCID of the compartment.

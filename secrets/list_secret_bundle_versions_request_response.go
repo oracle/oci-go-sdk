@@ -5,11 +5,15 @@
 package secrets
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListSecretBundleVersionsRequest wrapper for the ListSecretBundleVersions operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/secrets/ListSecretBundleVersions.go.html to see an example of how to use ListSecretBundleVersionsRequest.
 type ListSecretBundleVersionsRequest struct {
 
 	// The OCID of the secret.

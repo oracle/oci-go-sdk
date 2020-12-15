@@ -5,11 +5,15 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetChannelRequest wrapper for the GetChannel operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/mysql/GetChannel.go.html to see an example of how to use GetChannelRequest.
 type GetChannelRequest struct {
 
 	// The Channel OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).

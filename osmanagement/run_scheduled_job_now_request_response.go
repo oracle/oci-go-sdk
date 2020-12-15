@@ -5,11 +5,15 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // RunScheduledJobNowRequest wrapper for the RunScheduledJobNow operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/osmanagement/RunScheduledJobNow.go.html to see an example of how to use RunScheduledJobNowRequest.
 type RunScheduledJobNowRequest struct {
 
 	// The ID of the scheduled job.

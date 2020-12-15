@@ -4,6 +4,34 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 31.0.0 - 2020-12-15
+### Added
+- Support for filtering listKeys based on KeyShape in KeyManagement service
+- Support for the Oracle Roving Edge Infrastructure service
+- Support for flexible ShapeDetails in Load Balancer service
+- Support for listing of harvested Rules, additional filtering for Logical Entity list calls in Data Catalog service
+- Support second level domain for audit SDK
+- Support for listing flex components in Database service
+- Support for APEX service for ADBS on OCI console for Database service
+- Support for Customer-Managed Key features as a part of the Database service
+- Support for Github configuration source provider as part of the Resource Manager service
+
+### Breaking changes
+- Removed deprecated API `CreateAutonomousDataWarehouse` from Database service
+- Removed deprecated API `CreateAutonomousDataWarehouseBackup` from Database service
+- Removed deprecated API `DeleteAutonomousDataWarehouse` from Database service
+- Removed deprecated API `GenerateAutonomousDataWarehouseWallet` from Database service
+- Removed deprecated API `GetAutonomousDataWarehouse` from Database service
+- Removed deprecated API `GetAutonomousDataWarehouseBackup` from Database service
+- Removed deprecated API `ListAutonomousDataWarehouseBackups` from Database service
+- Removed deprecated API `ListAutonomousDataWarehouses` from Database service
+- Removed deprecated API `RestoreAutonomousDataWarehouse` from Database service
+- Removed deprecated API `StartAutonomousDataWarehouse` from Database service
+- Removed deprecated API `StopAutonomousDataWarehouse` from Database service
+- Removed deprecated API `UpdateAutonomousDataWarehouse` from Database service
+- Method GetLifecycleState()'s return type in the interface `ConfigurationSourceProviderSummary` was changed from 
+`ConfigurationSourceProviderSummary` to `ConfigurationSourceProviderLifecycleStateEnum`
+
 ## 30.1.0 - 2020-12-08
 ### Added
 - Support for Integration Service custom endpoint feature

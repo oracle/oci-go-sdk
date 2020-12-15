@@ -5,11 +5,15 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListManagementAgentImagesRequest wrapper for the ListManagementAgentImages operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/managementagent/ListManagementAgentImages.go.html to see an example of how to use ListManagementAgentImagesRequest.
 type ListManagementAgentImagesRequest struct {
 
 	// The ID of the compartment from which the Management Agents to be listed.

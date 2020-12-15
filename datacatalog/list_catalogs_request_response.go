@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListCatalogsRequest wrapper for the ListCatalogs operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/ListCatalogs.go.html to see an example of how to use ListCatalogsRequest.
 type ListCatalogsRequest struct {
 
 	// The OCID of the compartment where you want to list resources.

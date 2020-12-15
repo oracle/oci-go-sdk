@@ -5,11 +5,15 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateTaskRequest wrapper for the CreateTask operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dataintegration/CreateTask.go.html to see an example of how to use CreateTaskRequest.
 type CreateTaskRequest struct {
 
 	// The workspace ID.

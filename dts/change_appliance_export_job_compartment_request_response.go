@@ -5,11 +5,15 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeApplianceExportJobCompartmentRequest wrapper for the ChangeApplianceExportJobCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dts/ChangeApplianceExportJobCompartment.go.html to see an example of how to use ChangeApplianceExportJobCompartmentRequest.
 type ChangeApplianceExportJobCompartmentRequest struct {
 
 	// ID of the Appliance Export Job

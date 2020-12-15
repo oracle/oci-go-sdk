@@ -5,11 +5,15 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ValidateUserRequest wrapper for the ValidateUser operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/ValidateUser.go.html to see an example of how to use ValidateUserRequest.
 type ValidateUserRequest struct {
 
 	// The Customer Support Identifier number for the support account.

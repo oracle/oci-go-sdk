@@ -5,11 +5,15 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeExadataInfrastructureCompartmentRequest wrapper for the ChangeExadataInfrastructureCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/database/ChangeExadataInfrastructureCompartment.go.html to see an example of how to use ChangeExadataInfrastructureCompartmentRequest.
 type ChangeExadataInfrastructureCompartmentRequest struct {
 
 	// Request to move Exadata infrastructure to a different compartment

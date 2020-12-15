@@ -5,11 +5,15 @@
 package nosql
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateIndexRequest wrapper for the CreateIndex operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/nosql/CreateIndex.go.html to see an example of how to use CreateIndexRequest.
 type CreateIndexRequest struct {
 
 	// A table name within the compartment, or a table OCID.

@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateConnectionRequest wrapper for the CreateConnection operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/CreateConnection.go.html to see an example of how to use CreateConnectionRequest.
 type CreateConnectionRequest struct {
 
 	// Unique catalog identifier.

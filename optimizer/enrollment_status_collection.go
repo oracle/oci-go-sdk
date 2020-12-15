@@ -10,7 +10,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // EnrollmentStatusCollection A list of enrollment statuses that match filter criteria, if any. Results contain `EnrollmentStatusSummary` objects.

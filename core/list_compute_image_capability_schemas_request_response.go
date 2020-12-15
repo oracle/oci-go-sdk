@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListComputeImageCapabilitySchemasRequest wrapper for the ListComputeImageCapabilitySchemas operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ListComputeImageCapabilitySchemas.go.html to see an example of how to use ListComputeImageCapabilitySchemasRequest.
 type ListComputeImageCapabilitySchemasRequest struct {
 
 	// A filter to return only resources that match the given compartment OCID exactly.

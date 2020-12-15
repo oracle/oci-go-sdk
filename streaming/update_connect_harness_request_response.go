@@ -5,11 +5,15 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateConnectHarnessRequest wrapper for the UpdateConnectHarness operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/streaming/UpdateConnectHarness.go.html to see an example of how to use UpdateConnectHarnessRequest.
 type UpdateConnectHarnessRequest struct {
 
 	// The OCID of the connect harness.

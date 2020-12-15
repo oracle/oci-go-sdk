@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // ByoipRange A ByoipRange, is an IP address prefix that the user owns and wishes to import into OCI.

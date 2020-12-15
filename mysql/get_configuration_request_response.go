@@ -5,11 +5,15 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetConfigurationRequest wrapper for the GetConfiguration operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/mysql/GetConfiguration.go.html to see an example of how to use GetConfigurationRequest.
 type GetConfigurationRequest struct {
 
 	// The OCID of the Configuration.

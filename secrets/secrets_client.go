@@ -12,8 +12,8 @@ package secrets
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v30/common"
-	"github.com/oracle/oci-go-sdk/v30/common/auth"
+	"github.com/oracle/oci-go-sdk/v31/common"
+	"github.com/oracle/oci-go-sdk/v31/common/auth"
 	"net/http"
 )
 
@@ -81,6 +81,10 @@ func (client *SecretsClient) ConfigurationProvider() *common.ConfigurationProvid
 
 // GetSecretBundle Gets a secret bundle that matches either the specified `stage`, `label`, or `versionNumber` parameter.
 // If none of these parameters are provided, the bundle for the secret version marked as `CURRENT` will be returned.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/secrets/GetSecretBundle.go.html to see an example of how to use GetSecretBundle API.
 func (client SecretsClient) GetSecretBundle(ctx context.Context, request GetSecretBundleRequest) (response GetSecretBundleResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()
@@ -131,6 +135,10 @@ func (client SecretsClient) getSecretBundle(ctx context.Context, request common.
 }
 
 // ListSecretBundleVersions Lists all secret bundle versions for the specified secret.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/secrets/ListSecretBundleVersions.go.html to see an example of how to use ListSecretBundleVersions API.
 func (client SecretsClient) ListSecretBundleVersions(ctx context.Context, request ListSecretBundleVersionsRequest) (response ListSecretBundleVersionsResponse, err error) {
 	var ociResponse common.OCIResponse
 	policy := common.NoRetryPolicy()

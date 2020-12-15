@@ -14,18 +14,18 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // CreateGitlabAccessTokenConfigurationSourceProviderDetails The details for creating a configuration source provider of the type `GITLAB_ACCESS_TOKEN`.
 // This type corresponds to a configuration source provider in GitLab that is authenticated with a personal access token.
 type CreateGitlabAccessTokenConfigurationSourceProviderDetails struct {
 
-	// The Git service API endpoint.
-	// Example: `https://gitlab.com/api/v4/`
+	// The Git service endpoint.
+	// Example: `https://gitlab.com`
 	ApiEndpoint *string `mandatory:"true" json:"apiEndpoint"`
 
-	// The personal access token to be configured on the Git repository. Avoid entering confidential information.
+	// The personal access token to be configured on the GitLab repository. Avoid entering confidential information.
 	AccessToken *string `mandatory:"true" json:"accessToken"`
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment where

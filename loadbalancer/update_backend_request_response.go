@@ -5,11 +5,15 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateBackendRequest wrapper for the UpdateBackend operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loadbalancer/UpdateBackend.go.html to see an example of how to use UpdateBackendRequest.
 type UpdateBackendRequest struct {
 
 	// Details for updating a backend server.

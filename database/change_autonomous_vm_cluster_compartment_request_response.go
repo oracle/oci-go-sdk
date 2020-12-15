@@ -5,11 +5,15 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeAutonomousVmClusterCompartmentRequest wrapper for the ChangeAutonomousVmClusterCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/database/ChangeAutonomousVmClusterCompartment.go.html to see an example of how to use ChangeAutonomousVmClusterCompartmentRequest.
 type ChangeAutonomousVmClusterCompartmentRequest struct {
 
 	// Request to move Autonomous VM cluster to a different compartment

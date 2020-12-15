@@ -5,11 +5,15 @@
 package analytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteWorkRequestRequest wrapper for the DeleteWorkRequest operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/analytics/DeleteWorkRequest.go.html to see an example of how to use DeleteWorkRequestRequest.
 type DeleteWorkRequestRequest struct {
 
 	// The OCID of the work request.

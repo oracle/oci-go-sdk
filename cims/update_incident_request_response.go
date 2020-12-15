@@ -5,11 +5,15 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateIncidentRequest wrapper for the UpdateIncident operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cims/UpdateIncident.go.html to see an example of how to use UpdateIncidentRequest.
 type UpdateIncidentRequest struct {
 
 	// Unique identifier for the support ticket.

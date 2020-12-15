@@ -5,12 +5,16 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"io"
 	"net/http"
 )
 
 // ImportCustomContentRequest wrapper for the ImportCustomContent operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/loganalytics/ImportCustomContent.go.html to see an example of how to use ImportCustomContentRequest.
 type ImportCustomContentRequest struct {
 
 	// The Logging Analytics namespace used for the request.

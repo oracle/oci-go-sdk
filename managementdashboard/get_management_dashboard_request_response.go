@@ -5,11 +5,15 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetManagementDashboardRequest wrapper for the GetManagementDashboard operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/managementdashboard/GetManagementDashboard.go.html to see an example of how to use GetManagementDashboardRequest.
 type GetManagementDashboardRequest struct {
 
 	// A unique dashboard identifier.

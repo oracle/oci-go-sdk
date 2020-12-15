@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // UiPasswordInformation Information about the UIPassword, which is a text password that enables a user to sign in to the Console,

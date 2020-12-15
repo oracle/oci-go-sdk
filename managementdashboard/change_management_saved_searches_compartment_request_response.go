@@ -5,11 +5,15 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeManagementSavedSearchesCompartmentRequest wrapper for the ChangeManagementSavedSearchesCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/managementdashboard/ChangeManagementSavedSearchesCompartment.go.html to see an example of how to use ChangeManagementSavedSearchesCompartmentRequest.
 type ChangeManagementSavedSearchesCompartmentRequest struct {
 
 	// A unique saved search identifier.

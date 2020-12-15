@@ -5,11 +5,15 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetManagementAgentInstallKeyRequest wrapper for the GetManagementAgentInstallKey operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/managementagent/GetManagementAgentInstallKey.go.html to see an example of how to use GetManagementAgentInstallKeyRequest.
 type GetManagementAgentInstallKeyRequest struct {
 
 	// Unique Management Agent Install Key identifier

@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateVolumeBackupPolicyAssignmentRequest wrapper for the CreateVolumeBackupPolicyAssignment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/CreateVolumeBackupPolicyAssignment.go.html to see an example of how to use CreateVolumeBackupPolicyAssignmentRequest.
 type CreateVolumeBackupPolicyAssignmentRequest struct {
 
 	// Request to assign a specified policy to a particular volume.

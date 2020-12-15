@@ -5,11 +5,15 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetRetentionRuleRequest wrapper for the GetRetentionRule operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/objectstorage/GetRetentionRule.go.html to see an example of how to use GetRetentionRuleRequest.
 type GetRetentionRuleRequest struct {
 
 	// The Object Storage namespace used for the request.

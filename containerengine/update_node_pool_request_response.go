@@ -5,11 +5,15 @@
 package containerengine
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateNodePoolRequest wrapper for the UpdateNodePool operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/containerengine/UpdateNodePool.go.html to see an example of how to use UpdateNodePoolRequest.
 type UpdateNodePoolRequest struct {
 
 	// The OCID of the node pool.

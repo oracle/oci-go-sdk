@@ -5,11 +5,15 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // SkipBulkResponderExecutionRequest wrapper for the SkipBulkResponderExecution operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/cloudguard/SkipBulkResponderExecution.go.html to see an example of how to use SkipBulkResponderExecutionRequest.
 type SkipBulkResponderExecutionRequest struct {
 
 	// A list of responder execution ids to skip the execution

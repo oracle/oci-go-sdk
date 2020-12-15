@@ -5,11 +5,15 @@
 package announcementsservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateAnnouncementUserStatusRequest wrapper for the UpdateAnnouncementUserStatus operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/announcementsservice/UpdateAnnouncementUserStatus.go.html to see an example of how to use UpdateAnnouncementUserStatusRequest.
 type UpdateAnnouncementUserStatusRequest struct {
 
 	// The OCID of the announcement.

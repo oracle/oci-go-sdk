@@ -5,11 +5,15 @@
 package integration
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListIntegrationInstancesRequest wrapper for the ListIntegrationInstances operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/integration/ListIntegrationInstances.go.html to see an example of how to use ListIntegrationInstancesRequest.
 type ListIntegrationInstancesRequest struct {
 
 	// The ID of the compartment in which to list resources.

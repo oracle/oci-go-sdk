@@ -5,11 +5,15 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeKeyCompartmentRequest wrapper for the ChangeKeyCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/keymanagement/ChangeKeyCompartment.go.html to see an example of how to use ChangeKeyCompartmentRequest.
 type ChangeKeyCompartmentRequest struct {
 
 	// The OCID of the key.

@@ -5,11 +5,15 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateUnifiedAgentConfigurationRequest wrapper for the CreateUnifiedAgentConfiguration operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/logging/CreateUnifiedAgentConfiguration.go.html to see an example of how to use CreateUnifiedAgentConfigurationRequest.
 type CreateUnifiedAgentConfigurationRequest struct {
 
 	// Unified agent configuration creation object.

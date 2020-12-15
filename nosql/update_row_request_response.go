@@ -5,11 +5,15 @@
 package nosql
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateRowRequest wrapper for the UpdateRow operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/nosql/UpdateRow.go.html to see an example of how to use UpdateRowRequest.
 type UpdateRowRequest struct {
 
 	// A table name within the compartment, or a table OCID.

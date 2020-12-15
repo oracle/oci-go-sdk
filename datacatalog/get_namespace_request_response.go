@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetNamespaceRequest wrapper for the GetNamespace operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/GetNamespace.go.html to see an example of how to use GetNamespaceRequest.
 type GetNamespaceRequest struct {
 
 	// Unique catalog identifier.

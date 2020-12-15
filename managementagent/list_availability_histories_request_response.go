@@ -5,11 +5,15 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListAvailabilityHistoriesRequest wrapper for the ListAvailabilityHistories operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/managementagent/ListAvailabilityHistories.go.html to see an example of how to use ListAvailabilityHistoriesRequest.
 type ListAvailabilityHistoriesRequest struct {
 
 	// Unique Management Agent identifier

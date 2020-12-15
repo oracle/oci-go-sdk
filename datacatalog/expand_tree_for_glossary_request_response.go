@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ExpandTreeForGlossaryRequest wrapper for the ExpandTreeForGlossary operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/ExpandTreeForGlossary.go.html to see an example of how to use ExpandTreeForGlossaryRequest.
 type ExpandTreeForGlossaryRequest struct {
 
 	// Unique catalog identifier.

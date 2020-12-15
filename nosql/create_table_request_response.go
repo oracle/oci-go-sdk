@@ -5,11 +5,15 @@
 package nosql
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateTableRequest wrapper for the CreateTable operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/nosql/CreateTable.go.html to see an example of how to use CreateTableRequest.
 type CreateTableRequest struct {
 
 	// Specifications for the new table.

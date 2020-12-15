@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteVolumeGroupRequest wrapper for the DeleteVolumeGroup operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/DeleteVolumeGroup.go.html to see an example of how to use DeleteVolumeGroupRequest.
 type DeleteVolumeGroupRequest struct {
 
 	// The Oracle Cloud ID (OCID) that uniquely identifies the volume group.

@@ -5,11 +5,15 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetAcceptedAgreementRequest wrapper for the GetAcceptedAgreement operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/marketplace/GetAcceptedAgreement.go.html to see an example of how to use GetAcceptedAgreementRequest.
 type GetAcceptedAgreementRequest struct {
 
 	// The unique identifier for the accepted terms of use agreement.

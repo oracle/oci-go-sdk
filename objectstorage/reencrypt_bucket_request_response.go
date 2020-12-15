@@ -5,11 +5,15 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ReencryptBucketRequest wrapper for the ReencryptBucket operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/objectstorage/ReencryptBucket.go.html to see an example of how to use ReencryptBucketRequest.
 type ReencryptBucketRequest struct {
 
 	// The Object Storage namespace used for the request.

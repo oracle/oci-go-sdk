@@ -5,11 +5,15 @@
 package analytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateAnalyticsInstanceRequest wrapper for the UpdateAnalyticsInstance operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/analytics/UpdateAnalyticsInstance.go.html to see an example of how to use UpdateAnalyticsInstanceRequest.
 type UpdateAnalyticsInstanceRequest struct {
 
 	// The OCID of the AnalyticsInstance.

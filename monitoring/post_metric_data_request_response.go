@@ -5,11 +5,15 @@
 package monitoring
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // PostMetricDataRequest wrapper for the PostMetricData operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/monitoring/PostMetricData.go.html to see an example of how to use PostMetricDataRequest.
 type PostMetricDataRequest struct {
 
 	// An array of metric objects containing raw metric data points to be posted to the Monitoring service.

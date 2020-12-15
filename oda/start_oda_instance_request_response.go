@@ -5,11 +5,15 @@
 package oda
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // StartOdaInstanceRequest wrapper for the StartOdaInstance operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/oda/StartOdaInstance.go.html to see an example of how to use StartOdaInstanceRequest.
 type StartOdaInstanceRequest struct {
 
 	// Unique Digital Assistant instance identifier.

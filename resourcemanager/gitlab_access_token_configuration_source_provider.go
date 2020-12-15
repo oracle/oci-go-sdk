@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // GitlabAccessTokenConfigurationSourceProvider The properties that define a configuration source provider of the type `GITLAB_ACCESS_TOKEN`.
@@ -48,8 +48,8 @@ type GitlabAccessTokenConfigurationSourceProvider struct {
 	// Example: `{"Operations": {"CostCenter": "42"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 
-	// The Git service API endpoint.
-	// Example: `https://gitlab.com/api/v4/`
+	// The Git service endpoint.
+	// Example: `https://gitlab.com`
 	ApiEndpoint *string `mandatory:"false" json:"apiEndpoint"`
 
 	// The current lifecycle state of the configuration source provider.

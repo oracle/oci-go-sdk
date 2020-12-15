@@ -5,11 +5,15 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // StopBlockchainPlatformRequest wrapper for the StopBlockchainPlatform operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/blockchain/StopBlockchainPlatform.go.html to see an example of how to use StopBlockchainPlatformRequest.
 type StopBlockchainPlatformRequest struct {
 
 	// Unique service identifier.

@@ -5,11 +5,15 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateApplicationRequest wrapper for the CreateApplication operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/dataintegration/CreateApplication.go.html to see an example of how to use CreateApplicationRequest.
 type CreateApplicationRequest struct {
 
 	// The workspace ID.

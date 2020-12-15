@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateFolderTagRequest wrapper for the CreateFolderTag operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/CreateFolderTag.go.html to see an example of how to use CreateFolderTagRequest.
 type CreateFolderTagRequest struct {
 
 	// Unique catalog identifier.

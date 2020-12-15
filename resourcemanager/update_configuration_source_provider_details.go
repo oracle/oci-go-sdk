@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 )
 
 // UpdateConfigurationSourceProviderDetails The details for updating a configuration source provider.
@@ -77,6 +77,10 @@ func (m *updateconfigurationsourceproviderdetails) UnmarshalPolymorphicJSON(data
 	switch m.ConfigSourceProviderType {
 	case "GITLAB_ACCESS_TOKEN":
 		mm := UpdateGitlabAccessTokenConfigurationSourceProviderDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "GITHUB_ACCESS_TOKEN":
+		mm := UpdateGithubAccessTokenConfigurationSourceProviderDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:

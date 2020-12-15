@@ -5,11 +5,15 @@
 package limits
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateQuotaRequest wrapper for the CreateQuota operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/limits/CreateQuota.go.html to see an example of how to use CreateQuotaRequest.
 type CreateQuotaRequest struct {
 
 	// Request object for creating a new quota.

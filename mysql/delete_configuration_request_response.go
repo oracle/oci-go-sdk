@@ -5,11 +5,15 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteConfigurationRequest wrapper for the DeleteConfiguration operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/mysql/DeleteConfiguration.go.html to see an example of how to use DeleteConfigurationRequest.
 type DeleteConfigurationRequest struct {
 
 	// The OCID of the Configuration.

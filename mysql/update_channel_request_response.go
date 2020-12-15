@@ -5,11 +5,15 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateChannelRequest wrapper for the UpdateChannel operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/mysql/UpdateChannel.go.html to see an example of how to use UpdateChannelRequest.
 type UpdateChannelRequest struct {
 
 	// The Channel OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).

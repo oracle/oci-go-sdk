@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteVolumeBackupPolicyRequest wrapper for the DeleteVolumeBackupPolicy operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/DeleteVolumeBackupPolicy.go.html to see an example of how to use DeleteVolumeBackupPolicyRequest.
 type DeleteVolumeBackupPolicyRequest struct {
 
 	// The OCID of the volume backup policy.

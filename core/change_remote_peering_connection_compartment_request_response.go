@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeRemotePeeringConnectionCompartmentRequest wrapper for the ChangeRemotePeeringConnectionCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ChangeRemotePeeringConnectionCompartment.go.html to see an example of how to use ChangeRemotePeeringConnectionCompartmentRequest.
 type ChangeRemotePeeringConnectionCompartmentRequest struct {
 
 	// The OCID of the remote peering connection (RPC).

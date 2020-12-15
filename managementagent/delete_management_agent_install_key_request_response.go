@@ -5,11 +5,15 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteManagementAgentInstallKeyRequest wrapper for the DeleteManagementAgentInstallKey operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/managementagent/DeleteManagementAgentInstallKey.go.html to see an example of how to use DeleteManagementAgentInstallKeyRequest.
 type DeleteManagementAgentInstallKeyRequest struct {
 
 	// Unique Management Agent Install Key identifier

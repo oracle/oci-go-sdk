@@ -5,11 +5,15 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // RequestSummarizedUsagesRequest wrapper for the RequestSummarizedUsages operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/usageapi/RequestSummarizedUsages.go.html to see an example of how to use RequestSummarizedUsagesRequest.
 type RequestSummarizedUsagesRequest struct {
 
 	// getUsageRequest contains query inforamtion.

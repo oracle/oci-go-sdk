@@ -5,11 +5,15 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UpdateAutonomousDatabaseRegionalWalletRequest wrapper for the UpdateAutonomousDatabaseRegionalWallet operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/database/UpdateAutonomousDatabaseRegionalWallet.go.html to see an example of how to use UpdateAutonomousDatabaseRegionalWalletRequest.
 type UpdateAutonomousDatabaseRegionalWalletRequest struct {
 
 	// Request to update the properties of Autonomous Database regional wallet.

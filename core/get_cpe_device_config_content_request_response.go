@@ -5,12 +5,16 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"io"
 	"net/http"
 )
 
 // GetCpeDeviceConfigContentRequest wrapper for the GetCpeDeviceConfigContent operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetCpeDeviceConfigContent.go.html to see an example of how to use GetCpeDeviceConfigContentRequest.
 type GetCpeDeviceConfigContentRequest struct {
 
 	// The OCID of the CPE.

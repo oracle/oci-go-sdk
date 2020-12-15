@@ -5,11 +5,15 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateVaultRequest wrapper for the CreateVault operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/keymanagement/CreateVault.go.html to see an example of how to use CreateVaultRequest.
 type CreateVaultRequest struct {
 
 	// CreateVaultDetails

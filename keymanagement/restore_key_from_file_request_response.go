@@ -5,12 +5,16 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"io"
 	"net/http"
 )
 
 // RestoreKeyFromFileRequest wrapper for the RestoreKeyFromFile operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/keymanagement/RestoreKeyFromFile.go.html to see an example of how to use RestoreKeyFromFileRequest.
 type RestoreKeyFromFileRequest struct {
 
 	// The content length of the body.

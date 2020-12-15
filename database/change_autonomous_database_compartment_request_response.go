@@ -5,11 +5,15 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ChangeAutonomousDatabaseCompartmentRequest wrapper for the ChangeAutonomousDatabaseCompartment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/database/ChangeAutonomousDatabaseCompartment.go.html to see an example of how to use ChangeAutonomousDatabaseCompartmentRequest.
 type ChangeAutonomousDatabaseCompartmentRequest struct {
 
 	// Request to move Autonomous Database to a different compartment

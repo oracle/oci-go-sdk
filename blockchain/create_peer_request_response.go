@@ -5,11 +5,15 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreatePeerRequest wrapper for the CreatePeer operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/blockchain/CreatePeer.go.html to see an example of how to use CreatePeerRequest.
 type CreatePeerRequest struct {
 
 	// Unique service identifier.

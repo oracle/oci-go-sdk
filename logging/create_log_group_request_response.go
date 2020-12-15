@@ -5,11 +5,15 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // CreateLogGroupRequest wrapper for the CreateLogGroup operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/logging/CreateLogGroup.go.html to see an example of how to use CreateLogGroupRequest.
 type CreateLogGroupRequest struct {
 
 	// Details to create log group.

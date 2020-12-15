@@ -5,11 +5,15 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ScheduleKeyVersionDeletionRequest wrapper for the ScheduleKeyVersionDeletion operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/keymanagement/ScheduleKeyVersionDeletion.go.html to see an example of how to use ScheduleKeyVersionDeletionRequest.
 type ScheduleKeyVersionDeletionRequest struct {
 
 	// The OCID of the key.

@@ -5,11 +5,15 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // DeleteDeploymentRequest wrapper for the DeleteDeployment operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apigateway/DeleteDeployment.go.html to see an example of how to use DeleteDeploymentRequest.
 type DeleteDeploymentRequest struct {
 
 	// The ocid of the deployment.

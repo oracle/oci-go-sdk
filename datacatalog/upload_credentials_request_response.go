@@ -5,11 +5,15 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // UploadCredentialsRequest wrapper for the UploadCredentials operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datacatalog/UploadCredentials.go.html to see an example of how to use UploadCredentialsRequest.
 type UploadCredentialsRequest struct {
 
 	// Unique catalog identifier.

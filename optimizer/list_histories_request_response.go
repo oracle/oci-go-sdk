@@ -5,11 +5,15 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // ListHistoriesRequest wrapper for the ListHistories operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/optimizer/ListHistories.go.html to see an example of how to use ListHistoriesRequest.
 type ListHistoriesRequest struct {
 
 	// The OCID of the compartment.

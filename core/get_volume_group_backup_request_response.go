@@ -5,11 +5,15 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v30/common"
+	"github.com/oracle/oci-go-sdk/v31/common"
 	"net/http"
 )
 
 // GetVolumeGroupBackupRequest wrapper for the GetVolumeGroupBackup operation
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetVolumeGroupBackup.go.html to see an example of how to use GetVolumeGroupBackupRequest.
 type GetVolumeGroupBackupRequest struct {
 
 	// The Oracle Cloud ID (OCID) that uniquely identifies the volume group backup.
