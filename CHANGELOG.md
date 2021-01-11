@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 32.0.0 - 2021-01-12
+### Added
+- Support for auto-scaling in the Big Data service
+- Documentation fixes for the Logging Search service
+
+### Breaking changes
+- Removed `NodeLifecycleStateStarting` and `NodeLifecycleStateStopping` from the model of `NodeLifecycleStateEnum` in the Big Data service
+- Removed `BdsInstanceLifecycleStateUpdatingInfra` from `BdsInstanceLifecycleStateEnum` from the model of `BdsInstance` in the Big Data service
+
 ## 31.0.0 - 2020-12-15
 ### Added
 - Support for filtering listKeys based on KeyShape in KeyManagement service

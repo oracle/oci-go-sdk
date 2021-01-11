@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2018, 2020, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2021, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v31/common"
+	"github.com/oracle/oci-go-sdk/v32/common"
 )
 
 // Gateway A gateway is a virtual network appliance in a regional subnet. A gateway routes inbound traffic to back-end services including public, private, and partner HTTP APIs, as well as Oracle Functions. Avoid entering confidential information. For more information, see
