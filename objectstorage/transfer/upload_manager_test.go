@@ -7,8 +7,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/oracle/oci-go-sdk/v31/common"
-	"github.com/oracle/oci-go-sdk/v31/example/helpers"
+	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v32/example/helpers"
 	"github.com/stretchr/testify/assert"
 )
 
