@@ -10,7 +10,7 @@
 package filestorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // CreateMountTargetDetails Details for creating the mount target.

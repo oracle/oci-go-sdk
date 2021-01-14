@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // DetachCatalogPrivateEndpointDetails Information about the detaching the private endpoint resource from a catalog

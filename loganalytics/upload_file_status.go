@@ -10,16 +10,16 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // UploadFileStatus Upload File Status
 type UploadFileStatus struct {
 
-	// Name of the file
+	// Name of the file.
 	FileName *string `mandatory:"false" json:"fileName"`
 
-	// Is Valid flag
+	// Is Valid flag.
 	IsValid *bool `mandatory:"false" json:"isValid"`
 }
 

@@ -1,4 +1,4 @@
-module github.com/oracle/oci-go-sdk/v32
+module github.com/oracle/oci-go-sdk/v33
 
 go 1.13
 

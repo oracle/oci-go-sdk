@@ -13,7 +13,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // ResourceDiscoveryServiceCollection The list of services supported for use with Resource Discovery (https://www.terraform.io/docs/providers/oci/guides/resource_discovery.html#services).

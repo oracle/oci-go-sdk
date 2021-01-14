@@ -10,7 +10,7 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // RoverClusterCollection Results of a roverCluster search. Contains both RoverClusterSummary items and other data.

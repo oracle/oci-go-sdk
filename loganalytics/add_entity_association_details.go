@@ -10,10 +10,10 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
-// AddEntityAssociationDetails Information about the associations to be added between log analytics entity and other existing entities.
+// AddEntityAssociationDetails Information about the associations to be added between a source log analytics entity and other existing destination entities.
 type AddEntityAssociationDetails struct {
 
 	// Destination entities OCIDs with which associations are to be added.

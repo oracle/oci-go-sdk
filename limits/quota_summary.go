@@ -10,7 +10,7 @@
 package limits
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // QuotaSummary Entails a subset of all the properties of the corresponding Quota and is recommended to be used in cases requiring

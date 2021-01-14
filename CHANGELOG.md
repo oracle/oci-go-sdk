@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 33.0.0 - 2021-01-19
+### Added
+- Support for Logging Analytics as a target in the Service Connector Hub service
+- Support for lookups, agent collection warnings, task commands, and data archive/recall in the Logging Analytics service
+
+### Fixed
+- Fixed a bug in the endpoint used for the Management Dashboard service
+
+### Breaking changes
+- Parameter `SortBy` type in request `ListMetaSourceTypesRequest` changed from `*string` to `ListMetaSourceTypesSortByEnum` in the Logging Analytics service
+- Parameter `SortBy` type in request `ListParserFunctionsRequest` changed from `*string` to `ListParserFunctionsSortByEnum` in the Logging Analytics service
+- Parameter `SortBy` type in request `ListParserMetaPluginsRequest` changed from `*string` to `ListParserMetaPluginsSortByEnum` in the Logging Analytics service
+- Parameter `SortBy` type in request `ListSourceLabelOperatorsRequest` changed from `*string` to `ListSourceLabelOperatorsSortByEnum` in the Logging Analytics service
+- Parameter `SortBy` type in request `ListSourceMetaFunctionsRequest` changed from `*string` to `ListSourceMetaFunctionsSortByEnum` in the Logging Analytics service
+- Model `UpdateScheduledTaskDetails` type changed from struct to interface
+- Model `ScheduledTask` type changed from struct to interface in the Logging Analytics service
+
 ## 32.0.0 - 2021-01-12
 ### Added
 - Support for auto-scaling in the Big Data service

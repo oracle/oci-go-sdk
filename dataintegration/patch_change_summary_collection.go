@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // PatchChangeSummaryCollection This is the collection of patch report summaries,. It may be a collection of lightweight details or full definitions.

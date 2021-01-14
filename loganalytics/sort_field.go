@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // SortField Field outlining queryString sort command fields and their corresponding sort order.
@@ -41,6 +41,9 @@ type SortField struct {
 
 	// Query used to derive this field if specified.
 	FilterQueryString *string `mandatory:"false" json:"filterQueryString"`
+
+	// Field denoting field unit type.
+	UnitType *string `mandatory:"false" json:"unitType"`
 
 	// Sort order for the field specified in the queryString.
 	Direction SortFieldDirectionEnum `mandatory:"false" json:"direction,omitempty"`
@@ -92,6 +95,11 @@ func (m SortField) GetAlias() *string {
 //GetFilterQueryString returns FilterQueryString
 func (m SortField) GetFilterQueryString() *string {
 	return m.FilterQueryString
+}
+
+//GetUnitType returns UnitType
+func (m SortField) GetUnitType() *string {
+	return m.UnitType
 }
 
 func (m SortField) String() string {

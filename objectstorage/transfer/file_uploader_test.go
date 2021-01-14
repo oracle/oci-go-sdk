@@ -10,9 +10,9 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/oracle/oci-go-sdk/v32/common"
-	"github.com/oracle/oci-go-sdk/v32/example/helpers"
-	"github.com/oracle/oci-go-sdk/v32/objectstorage"
+	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v33/example/helpers"
+	"github.com/oracle/oci-go-sdk/v33/objectstorage"
 )
 
 type fake struct {

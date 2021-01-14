@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
-// SourceMappingResponse Response object containing match status and parsed representation of log data
+// SourceMappingResponse Response object containing match status and parsed representation of log data.
 type SourceMappingResponse struct {
 
-	// Parsed representation of the log file
+	// Parsed representation of the log file.
 	ParsedResponse []ParsedContent `mandatory:"true" json:"parsedResponse"`
 }
 

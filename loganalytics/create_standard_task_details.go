@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // CreateStandardTaskDetails Details for creating a scheduled task.
@@ -23,6 +23,7 @@ type CreateStandardTaskDetails struct {
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// Schedules, typically a single schedule.
+	// Note there may only be a single schedule for SAVED_SEARCH and PURGE scheduled tasks.
 	Schedules []Schedule `mandatory:"true" json:"schedules"`
 
 	Action Action `mandatory:"true" json:"action"`

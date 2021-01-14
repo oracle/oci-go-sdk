@@ -5,7 +5,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 	"net/http"
 )
 
@@ -22,7 +22,7 @@ type RemoveEntityAssociationsRequest struct {
 	// The log analytics entity OCID.
 	LogAnalyticsEntityId *string `mandatory:"true" contributesTo:"path" name:"logAnalyticsEntityId"`
 
-	// This parameter specifies the entity OCIDs with which associations are to be deleted. Specify destination OCIDs as comma separated string.
+	// This parameter specifies the entity OCIDs with which associations are to be deleted.
 	RemoveEntityAssociationsDetails `contributesTo:"body"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call

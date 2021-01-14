@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // AutonomousDataWarehouseSummary **Deprecated.** See AutonomousDatabase for reference information about Autonomous Databases with the warehouse workload type.

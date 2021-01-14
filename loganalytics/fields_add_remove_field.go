@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // FieldsAddRemoveField Field denoting a field specified in querylanguage FIELDS command.
@@ -41,6 +41,9 @@ type FieldsAddRemoveField struct {
 
 	// Query used to derive this field if specified.
 	FilterQueryString *string `mandatory:"false" json:"filterQueryString"`
+
+	// Field denoting field unit type.
+	UnitType *string `mandatory:"false" json:"unitType"`
 
 	// Denotes if field entry in FIELDS command is to show / hide field in results.
 	Operation FieldsAddRemoveFieldOperationEnum `mandatory:"false" json:"operation,omitempty"`
@@ -92,6 +95,11 @@ func (m FieldsAddRemoveField) GetAlias() *string {
 //GetFilterQueryString returns FilterQueryString
 func (m FieldsAddRemoveField) GetFilterQueryString() *string {
 	return m.FilterQueryString
+}
+
+//GetUnitType returns UnitType
+func (m FieldsAddRemoveField) GetUnitType() *string {
+	return m.UnitType
 }
 
 func (m FieldsAddRemoveField) String() string {
