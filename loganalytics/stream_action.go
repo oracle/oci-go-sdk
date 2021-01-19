@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // StreamAction Stream action for scheduled task.
@@ -19,6 +19,8 @@ type StreamAction struct {
 
 	// The ManagementSavedSearch id [OCID] utilized in the action.
 	SavedSearchId *string `mandatory:"false" json:"savedSearchId"`
+
+	MetricExtraction *MetricExtraction `mandatory:"false" json:"metricExtraction"`
 }
 
 func (m StreamAction) String() string {

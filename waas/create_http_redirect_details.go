@@ -10,7 +10,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // CreateHttpRedirectDetails The details of a HTTP Redirect configured to redirect traffic from one hostname to another.

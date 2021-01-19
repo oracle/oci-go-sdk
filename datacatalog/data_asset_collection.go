@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // DataAssetCollection Results of a data assets listing. A data asset is often synonymous with a 'System', such as a database, or may be a file container or a message stream.

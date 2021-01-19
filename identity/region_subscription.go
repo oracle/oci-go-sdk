@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // RegionSubscription An object that represents your tenancy's access to a particular region (i.e., a subscription), the status of that

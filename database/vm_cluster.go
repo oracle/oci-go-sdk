@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // VmCluster Details of the VM cluster resource. Applies to Exadata Cloud@Customer instances only.

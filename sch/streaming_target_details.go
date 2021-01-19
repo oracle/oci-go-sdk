@@ -13,10 +13,10 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
-// StreamingTargetDetails The streaming target.
+// StreamingTargetDetails The stream used for the Streaming target.
 type StreamingTargetDetails struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the stream.

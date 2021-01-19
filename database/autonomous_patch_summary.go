@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // AutonomousPatchSummary A patch for an Autonomous Exadata Infrastructure or Autonomous Container Database.

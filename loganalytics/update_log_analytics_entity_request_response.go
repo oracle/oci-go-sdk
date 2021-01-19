@@ -5,7 +5,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 	"net/http"
 )
 
@@ -22,7 +22,7 @@ type UpdateLogAnalyticsEntityRequest struct {
 	// The log analytics entity OCID.
 	LogAnalyticsEntityId *string `mandatory:"true" contributesTo:"path" name:"logAnalyticsEntityId"`
 
-	// The information to be updated.
+	// Log analytics entity information to be updated.
 	UpdateLogAnalyticsEntityDetails `contributesTo:"body"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call

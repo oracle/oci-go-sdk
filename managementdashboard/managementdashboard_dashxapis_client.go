@@ -13,8 +13,8 @@ package managementdashboard
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v32/common"
-	"github.com/oracle/oci-go-sdk/v32/common/auth"
+	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v33/common/auth"
 	"net/http"
 )
 
@@ -59,7 +59,7 @@ func newDashxApisClientFromBaseClient(baseClient common.BaseClient, configProvid
 
 // SetRegion overrides the region of this client.
 func (client *DashxApisClient) SetRegion(region string) {
-	client.Host = common.StringToRegion(region).EndpointForTemplate("managementdashboard", "https://managementdashboards.{region}.oci.{secondLevelDomain}")
+	client.Host = common.StringToRegion(region).EndpointForTemplate("managementdashboard", "https://managementdashboard.{region}.oci.{secondLevelDomain}")
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid

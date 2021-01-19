@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // LogAnalyticsConfigWorkRequestPayload LogAnalyticsConfigWorkRequestPayload
@@ -24,6 +24,9 @@ type LogAnalyticsConfigWorkRequestPayload struct {
 
 	// lookupReference
 	LookupReference *int64 `mandatory:"false" json:"lookupReference"`
+
+	// lookupReference
+	LookupReferenceString *string `mandatory:"false" json:"lookupReferenceString"`
 }
 
 func (m LogAnalyticsConfigWorkRequestPayload) String() string {

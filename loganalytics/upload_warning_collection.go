@@ -10,10 +10,10 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
-// UploadWarningCollection Collection of UploadFileSummary objects.
+// UploadWarningCollection Collection of UploadWarningSummary objects.
 type UploadWarningCollection struct {
 
 	// list of UploadWarningSummary objects.

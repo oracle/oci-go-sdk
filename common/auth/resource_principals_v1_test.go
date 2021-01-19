@@ -6,7 +6,7 @@ package auth
 import (
 	"bytes"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"

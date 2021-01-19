@@ -12,7 +12,7 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // Bucket A bucket is a container for storing objects in a compartment within a namespace. A bucket is associated with a single compartment.

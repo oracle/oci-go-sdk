@@ -5,7 +5,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 	"net/http"
 )
 
@@ -19,7 +19,7 @@ type ValidateFileRequest struct {
 	// The Logging Analytics namespace used for the request.
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
-	// Location of the log file
+	// Location of the log file.
 	ObjectLocation *string `mandatory:"true" contributesTo:"query" name:"objectLocation"`
 
 	// The name of the file being uploaded. The extension of the filename part will be used to detect the type of file (like zip, tar).

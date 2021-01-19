@@ -12,7 +12,7 @@
 package bds
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // AutoScalePolicyRule A rule that defines a specific autoscaling action to take and the metric that triggers that action.

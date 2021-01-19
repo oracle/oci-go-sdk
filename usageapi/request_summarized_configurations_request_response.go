@@ -5,7 +5,7 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 	"net/http"
 )
 

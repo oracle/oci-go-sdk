@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // LogAnalyticsConfigWorkRequestSummary LogAnalyticsConfigWorkRequestSummary
@@ -49,11 +49,17 @@ type LogAnalyticsConfigWorkRequestSummaryOperationTypeEnum string
 const (
 	LogAnalyticsConfigWorkRequestSummaryOperationTypeCreateAssociations LogAnalyticsConfigWorkRequestSummaryOperationTypeEnum = "CREATE_ASSOCIATIONS"
 	LogAnalyticsConfigWorkRequestSummaryOperationTypeDeleteAssociations LogAnalyticsConfigWorkRequestSummaryOperationTypeEnum = "DELETE_ASSOCIATIONS"
+	LogAnalyticsConfigWorkRequestSummaryOperationTypeAppendLookupData   LogAnalyticsConfigWorkRequestSummaryOperationTypeEnum = "APPEND_LOOKUP_DATA"
+	LogAnalyticsConfigWorkRequestSummaryOperationTypeUpdateLookupData   LogAnalyticsConfigWorkRequestSummaryOperationTypeEnum = "UPDATE_LOOKUP_DATA"
+	LogAnalyticsConfigWorkRequestSummaryOperationTypeDeleteLookup       LogAnalyticsConfigWorkRequestSummaryOperationTypeEnum = "DELETE_LOOKUP"
 )
 
 var mappingLogAnalyticsConfigWorkRequestSummaryOperationType = map[string]LogAnalyticsConfigWorkRequestSummaryOperationTypeEnum{
 	"CREATE_ASSOCIATIONS": LogAnalyticsConfigWorkRequestSummaryOperationTypeCreateAssociations,
 	"DELETE_ASSOCIATIONS": LogAnalyticsConfigWorkRequestSummaryOperationTypeDeleteAssociations,
+	"APPEND_LOOKUP_DATA":  LogAnalyticsConfigWorkRequestSummaryOperationTypeAppendLookupData,
+	"UPDATE_LOOKUP_DATA":  LogAnalyticsConfigWorkRequestSummaryOperationTypeUpdateLookupData,
+	"DELETE_LOOKUP":       LogAnalyticsConfigWorkRequestSummaryOperationTypeDeleteLookup,
 }
 
 // GetLogAnalyticsConfigWorkRequestSummaryOperationTypeEnumValues Enumerates the set of values for LogAnalyticsConfigWorkRequestSummaryOperationTypeEnum

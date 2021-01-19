@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // LogAnalyticsObjectCollectionRuleCollection Collection of LogAnalyticsObjectCollectionRuleSummary objects.
 type LogAnalyticsObjectCollectionRuleCollection struct {
 
-	// list of LogAnalyticsObjectCollectionRuleSummary objects.
+	// List of LogAnalyticsObjectCollectionRuleSummary objects.
 	Items []LogAnalyticsObjectCollectionRuleSummary `mandatory:"true" json:"items"`
 }
 

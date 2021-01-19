@@ -14,8 +14,8 @@ package bds
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v32/common"
-	"github.com/oracle/oci-go-sdk/v32/common/auth"
+	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v33/common/auth"
 	"net/http"
 )
 

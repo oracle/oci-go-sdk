@@ -10,7 +10,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v32/common"
+	"github.com/oracle/oci-go-sdk/v33/common"
 )
 
 // WorkRequestCollection A list of work requests that match filter criteria, if any. Results contain `WorkRequest` objects.
