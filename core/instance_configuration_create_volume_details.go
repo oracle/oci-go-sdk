@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // InstanceConfigurationCreateVolumeDetails Creates a new block volume. Please see CreateVolumeDetails
@@ -62,9 +62,6 @@ type InstanceConfigurationCreateVolumeDetails struct {
 	// The size of the volume in GBs.
 	SizeInGBs *int64 `mandatory:"false" json:"sizeInGBs"`
 
-	// Specifies the volume source details for a new Block volume. The volume source is either another Block volume in the same availability domain or a Block volume backup.
-	// This is an optional field. If not specified or set to null, the new Block volume will be empty.
-	// When specified, the new Block volume will contain data from the source volume or backup.
 	SourceDetails InstanceConfigurationVolumeSourceDetails `mandatory:"false" json:"sourceDetails"`
 }
 

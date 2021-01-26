@@ -12,7 +12,7 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // ObjectNameFilter A filter that compares object names to a set of prefixes or patterns to determine if a rule applies to a

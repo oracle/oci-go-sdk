@@ -14,10 +14,10 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
-// UpdatePublicIpPoolDetails The data to update a public ip pool
+// UpdatePublicIpPoolDetails The data to update for a public IP pool.
 type UpdatePublicIpPoolDetails struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a

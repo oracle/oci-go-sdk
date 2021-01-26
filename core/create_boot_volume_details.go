@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // CreateBootVolumeDetails The representation of CreateBootVolumeDetails
@@ -28,8 +28,6 @@ type CreateBootVolumeDetails struct {
 	// The OCID of the compartment that contains the boot volume.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Specifies the boot volume source details for a new boot volume. The volume source is either another boot volume in the same availability domain or a boot volume backup.
-	// This is a mandatory field for a boot volume.
 	SourceDetails BootVolumeSourceDetails `mandatory:"true" json:"sourceDetails"`
 
 	// If provided, specifies the ID of the boot volume backup policy to assign to the newly

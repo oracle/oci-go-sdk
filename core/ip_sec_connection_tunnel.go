@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // IpSecConnectionTunnel Information about a single tunnel in an IPSec connection. This object does not include the tunnel's
@@ -49,7 +49,6 @@ type IpSecConnectionTunnel struct {
 	// entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Information for establishing the tunnel's BGP session.
 	BgpSessionInfo *BgpSessionInfo `mandatory:"false" json:"bgpSessionInfo"`
 
 	// The type of routing used for this tunnel (either BGP dynamic routing or static routing).

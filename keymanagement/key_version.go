@@ -11,7 +11,7 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // KeyVersion The representation of KeyVersion
@@ -32,6 +32,9 @@ type KeyVersion struct {
 
 	// The OCID of the vault that contains this key version.
 	VaultId *string `mandatory:"true" json:"vaultId"`
+
+	// The public key in PEM format which will be populated only in case of RSA and ECDSA keys.
+	PublicKey *string `mandatory:"false" json:"publicKey"`
 
 	// The key version's current lifecycle state.
 	// Example: `ENABLED`

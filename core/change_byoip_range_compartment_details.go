@@ -14,14 +14,13 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // ChangeByoipRangeCompartmentDetails The configuration details for the move operation.
 type ChangeByoipRangeCompartmentDetails struct {
 
-	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment to move the
-	// Byoip Range to.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the destination compartment for the BYOIP CIDR block move.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 }
 
