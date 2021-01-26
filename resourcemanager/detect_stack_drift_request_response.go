@@ -5,7 +5,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 	"net/http"
 )
 
@@ -34,6 +34,9 @@ type DetectStackDriftRequest struct {
 	// if a resource has been deleted and purged from the system, then a retry of the original
 	// creation request may be rejected.
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
+
+	// The details for detecting drift in a stack
+	DetectStackDriftDetails `contributesTo:"body"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.

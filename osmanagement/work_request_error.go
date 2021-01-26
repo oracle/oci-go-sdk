@@ -11,7 +11,7 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // WorkRequestError Human readable error message describing why the work request failed

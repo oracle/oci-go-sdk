@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // UpdateAuthTokenDetails The representation of UpdateAuthTokenDetails

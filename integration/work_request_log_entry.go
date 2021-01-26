@@ -10,7 +10,7 @@
 package integration
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // WorkRequestLogEntry Log entries related to a specific work request.

@@ -14,13 +14,11 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // InstanceConfigurationAttachVnicDetails The representation of InstanceConfigurationAttachVnicDetails
 type InstanceConfigurationAttachVnicDetails struct {
-
-	// Details for creating a new VNIC.
 	CreateVnicDetails *InstanceConfigurationCreateVnicDetails `mandatory:"false" json:"createVnicDetails"`
 
 	// A user-friendly name for the attachment. Does not have to be unique, and it cannot be changed.

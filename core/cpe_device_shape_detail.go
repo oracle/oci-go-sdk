@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // CpeDeviceShapeDetail The detailed information about a particular CPE device type. Compare with
@@ -25,7 +25,6 @@ type CpeDeviceShapeDetail struct {
 	// This value uniquely identifies the type of CPE device.
 	CpeDeviceShapeId *string `mandatory:"false" json:"cpeDeviceShapeId"`
 
-	// Basic information about this particular CPE device type.
 	CpeDeviceInfo *CpeDeviceInfo `mandatory:"false" json:"cpeDeviceInfo"`
 
 	// For certain CPE devices types, the customer can provide answers to

@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // AutomatedMountDetails Used for creating NFS Auto Mount backup destinations for autonomous on ExaCC.

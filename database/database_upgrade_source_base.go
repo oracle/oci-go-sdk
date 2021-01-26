@@ -11,11 +11,10 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
-// DatabaseUpgradeSourceBase Details of upgrade source using which the database is upgraded.
-// **Warning:** Oracle recommends that you avoid using any confidential information when you supply string values using the API.
+// DatabaseUpgradeSourceBase Details for the database upgrade source.
 type DatabaseUpgradeSourceBase interface {
 }
 

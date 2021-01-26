@@ -5,7 +5,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 	"net/http"
 )
 

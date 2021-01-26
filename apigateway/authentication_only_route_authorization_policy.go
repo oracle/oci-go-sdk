@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // AuthenticationOnlyRouteAuthorizationPolicy Only authentication is performed for the request and authorization is skipped.

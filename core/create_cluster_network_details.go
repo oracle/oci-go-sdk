@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // CreateClusterNetworkDetails The data to create a cluster network.
@@ -28,7 +28,6 @@ type CreateClusterNetworkDetails struct {
 	// Each cluster network can have one instance pool.
 	InstancePools []CreateClusterNetworkInstancePoolDetails `mandatory:"true" json:"instancePools"`
 
-	// The placement configuration for the instance pools in the cluster network.
 	PlacementConfiguration *ClusterNetworkPlacementConfigurationDetails `mandatory:"true" json:"placementConfiguration"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a

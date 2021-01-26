@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // CreateAutonomousContainerDatabaseDetails Describes the required parameters for the creation of an Autonomous Container Database.
@@ -50,6 +50,9 @@ type CreateAutonomousContainerDatabaseDetails struct {
 	PeerAutonomousContainerDatabaseCompartmentId *string `mandatory:"false" json:"peerAutonomousContainerDatabaseCompartmentId"`
 
 	PeerAutonomousContainerDatabaseBackupConfig *PeerAutonomousContainerDatabaseBackupConfig `mandatory:"false" json:"peerAutonomousContainerDatabaseBackupConfig"`
+
+	// The `DB_UNIQUE_NAME` of the peer Autonomous Container Database in a Data Guard association.
+	PeerDbUniqueName *string `mandatory:"false" json:"peerDbUniqueName"`
 
 	// The OCID of the Autonomous VM Cluster.
 	AutonomousVmClusterId *string `mandatory:"false" json:"autonomousVmClusterId"`

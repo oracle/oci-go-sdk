@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // UpdateInstancePoolPlacementConfigurationDetails The location for where an instance pool will place instances.

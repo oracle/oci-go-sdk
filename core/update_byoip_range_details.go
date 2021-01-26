@@ -14,10 +14,10 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
-// UpdateByoipRangeDetails The data to update a Byoip Range
+// UpdateByoipRangeDetails The information used to update a `ByoipRange` resource.
 type UpdateByoipRangeDetails struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a

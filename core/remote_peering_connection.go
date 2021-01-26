@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // RemotePeeringConnection A remote peering connection (RPC) is an object on a DRG that lets the VCN that is attached

@@ -5,7 +5,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/CreateByoipRange.go.html to see an example of how to use CreateByoipRangeRequest.
 type CreateByoipRangeRequest struct {
 
-	// Create Byoip Range details.
+	// Details needed to create a BYOIP CIDR block subrange.
 	CreateByoipRangeDetails `contributesTo:"body"`
 
 	// Unique identifier for the request.

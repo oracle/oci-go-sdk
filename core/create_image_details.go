@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // CreateImageDetails Either instanceId or imageSourceDetails must be provided in addition to other required parameters.
@@ -40,7 +40,6 @@ type CreateImageDetails struct {
 	// Example: `{"Department": "Finance"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
-	// Details for creating an image through import
 	ImageSourceDetails ImageSourceDetails `mandatory:"false" json:"imageSourceDetails"`
 
 	// The OCID of the instance you want to use as the basis for the image.

@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // UpdateIpSecConnectionTunnelDetails The representation of UpdateIpSecConnectionTunnelDetails
@@ -30,7 +30,6 @@ type UpdateIpSecConnectionTunnelDetails struct {
 	// Internet Key Exchange protocol version.
 	IkeVersion UpdateIpSecConnectionTunnelDetailsIkeVersionEnum `mandatory:"false" json:"ikeVersion,omitempty"`
 
-	// Information for establishing a BGP session for the IPSec tunnel.
 	BgpSessionConfig *UpdateIpSecTunnelBgpSessionDetails `mandatory:"false" json:"bgpSessionConfig"`
 }
 

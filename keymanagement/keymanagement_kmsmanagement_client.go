@@ -13,8 +13,8 @@ package keymanagement
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v33/common"
-	"github.com/oracle/oci-go-sdk/v33/common/auth"
+	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v34/common/auth"
 	"net/http"
 )
 

@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // CreateNatGatewayDetails The representation of CreateNatGatewayDetails
@@ -45,7 +45,7 @@ type CreateNatGatewayDetails struct {
 	// Example: `true`
 	BlockTraffic *bool `mandatory:"false" json:"blockTraffic"`
 
-	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the Public IP associated with the NAT gateway.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the public IP address associated with the NAT gateway.
 	PublicIpId *string `mandatory:"false" json:"publicIpId"`
 }
 

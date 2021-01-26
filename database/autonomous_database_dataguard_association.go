@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v33/common"
+	"github.com/oracle/oci-go-sdk/v34/common"
 )
 
 // AutonomousDatabaseDataguardAssociation The properties that define dataguard association between two different Autonomous Databases.
@@ -111,6 +111,7 @@ const (
 	AutonomousDatabaseDataguardAssociationLifecycleStateTerminating          AutonomousDatabaseDataguardAssociationLifecycleStateEnum = "TERMINATING"
 	AutonomousDatabaseDataguardAssociationLifecycleStateTerminated           AutonomousDatabaseDataguardAssociationLifecycleStateEnum = "TERMINATED"
 	AutonomousDatabaseDataguardAssociationLifecycleStateFailed               AutonomousDatabaseDataguardAssociationLifecycleStateEnum = "FAILED"
+	AutonomousDatabaseDataguardAssociationLifecycleStateUnavailable          AutonomousDatabaseDataguardAssociationLifecycleStateEnum = "UNAVAILABLE"
 )
 
 var mappingAutonomousDatabaseDataguardAssociationLifecycleState = map[string]AutonomousDatabaseDataguardAssociationLifecycleStateEnum{
@@ -120,6 +121,7 @@ var mappingAutonomousDatabaseDataguardAssociationLifecycleState = map[string]Aut
 	"TERMINATING":             AutonomousDatabaseDataguardAssociationLifecycleStateTerminating,
 	"TERMINATED":              AutonomousDatabaseDataguardAssociationLifecycleStateTerminated,
 	"FAILED":                  AutonomousDatabaseDataguardAssociationLifecycleStateFailed,
+	"UNAVAILABLE":             AutonomousDatabaseDataguardAssociationLifecycleStateUnavailable,
 }
 
 // GetAutonomousDatabaseDataguardAssociationLifecycleStateEnumValues Enumerates the set of values for AutonomousDatabaseDataguardAssociationLifecycleStateEnum
@@ -167,6 +169,7 @@ const (
 	AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateTerminating          AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum = "TERMINATING"
 	AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateTerminated           AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum = "TERMINATED"
 	AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateFailed               AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum = "FAILED"
+	AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateUnavailable          AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum = "UNAVAILABLE"
 )
 
 var mappingAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleState = map[string]AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum{
@@ -176,6 +179,7 @@ var mappingAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycle
 	"TERMINATING":             AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateTerminating,
 	"TERMINATED":              AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateTerminated,
 	"FAILED":                  AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateFailed,
+	"UNAVAILABLE":             AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateUnavailable,
 }
 
 // GetAutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnumValues Enumerates the set of values for AutonomousDatabaseDataguardAssociationPeerAutonomousDatabaseLifeCycleStateEnum
