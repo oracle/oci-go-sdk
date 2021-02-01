@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // Volume A detachable block volume device that allows you to dynamically expand
@@ -45,7 +45,8 @@ type Volume struct {
 	// The current state of a volume.
 	LifecycleState VolumeLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// The size of the volume in MBs. This field is deprecated. Use sizeInGBs instead.
+	// The size of the volume in MBs. This field is deprecated. Use
+	// sizeInGBs instead.
 	SizeInMBs *int64 `mandatory:"true" json:"sizeInMBs"`
 
 	// The date and time the volume was created. Format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).

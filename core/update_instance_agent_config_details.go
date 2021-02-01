@@ -14,16 +14,17 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
-// UpdateInstanceAgentConfigDetails Instance agent configuration options to choose for updating the instance
+// UpdateInstanceAgentConfigDetails Configuration options for the Oracle Cloud Agent software running on the instance.
 type UpdateInstanceAgentConfigDetails struct {
 
-	// Whether the agent running on the instance can gather performance metrics and monitor the instance.
+	// Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the
+	// monitoring plugins.
 	IsMonitoringDisabled *bool `mandatory:"false" json:"isMonitoringDisabled"`
 
-	// Whether the agent running on the instance can run all the available management plugins
+	// Whether Oracle Cloud Agent can run all the available management plugins.
 	IsManagementDisabled *bool `mandatory:"false" json:"isManagementDisabled"`
 }
 

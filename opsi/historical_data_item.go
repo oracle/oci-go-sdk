@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // HistoricalDataItem The historical timestamp and the corresponding resource value.

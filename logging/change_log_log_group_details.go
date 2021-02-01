@@ -10,7 +10,7 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ChangeLogLogGroupDetails Contains details indicating which log group the log should move to.

@@ -10,7 +10,7 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // PrivateEndpointSettings Optional settings if the stream pool is private.

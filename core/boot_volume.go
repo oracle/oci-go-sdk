@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // BootVolume A detachable boot volume device that contains the image used to boot a Compute instance. For more information, see
@@ -69,7 +69,8 @@ type BootVolume struct {
 	// The image OCID used to create the boot volume.
 	ImageId *string `mandatory:"false" json:"imageId"`
 
-	// Specifies whether the boot volume's data has finished copying from the source boot volume or boot volume backup.
+	// Specifies whether the boot volume's data has finished copying
+	// from the source boot volume or boot volume backup.
 	IsHydrated *bool `mandatory:"false" json:"isHydrated"`
 
 	// The number of volume performance units (VPUs) that will be applied to this boot volume per GB,

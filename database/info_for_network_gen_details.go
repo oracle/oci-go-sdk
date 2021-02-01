@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // InfoForNetworkGenDetails Parameters for generation of the client or backup network in a VM cluster network in an Exadata Cloud@Customer system.

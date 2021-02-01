@@ -13,7 +13,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // SenderSummary The email addresses and `senderId` representing an approved sender.

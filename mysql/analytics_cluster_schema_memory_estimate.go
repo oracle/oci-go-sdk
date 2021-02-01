@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // AnalyticsClusterSchemaMemoryEstimate Schema with estimated memory footprints for each MySQL user table

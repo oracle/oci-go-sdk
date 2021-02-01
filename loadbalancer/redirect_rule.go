@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // RedirectRule An object that represents the action of returning a specified response code and a redirect URI. Each RedirectRule

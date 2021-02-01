@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ClusterNetwork A cluster network is a group of high performance computing (HPC) bare metal instances that are connected

@@ -10,7 +10,7 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // PutMessagesResult The response to a PutMessages request. It indicates the number

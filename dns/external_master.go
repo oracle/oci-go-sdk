@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ExternalMaster An external master name server used as the source of zone data.

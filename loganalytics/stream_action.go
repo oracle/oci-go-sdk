@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // StreamAction Stream action for scheduled task.

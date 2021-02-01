@@ -6,7 +6,7 @@ package transfer
 import (
 	"errors"
 
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // UploadFileRequest defines the input parameters for UploadFile method

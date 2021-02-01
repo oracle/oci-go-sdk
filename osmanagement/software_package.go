@@ -11,7 +11,7 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // SoftwarePackage The details for a software package

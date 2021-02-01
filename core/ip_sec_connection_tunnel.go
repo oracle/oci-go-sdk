@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // IpSecConnectionTunnel Information about a single tunnel in an IPSec connection. This object does not include the tunnel's
@@ -51,6 +51,8 @@ type IpSecConnectionTunnel struct {
 
 	BgpSessionInfo *BgpSessionInfo `mandatory:"false" json:"bgpSessionInfo"`
 
+	EncryptionDomainConfig *EncryptionDomainConfig `mandatory:"false" json:"encryptionDomainConfig"`
+
 	// The type of routing used for this tunnel (either BGP dynamic routing or static routing).
 	Routing IpSecConnectionTunnelRoutingEnum `mandatory:"false" json:"routing,omitempty"`
 
@@ -75,12 +77,14 @@ const (
 	IpSecConnectionTunnelStatusUp                 IpSecConnectionTunnelStatusEnum = "UP"
 	IpSecConnectionTunnelStatusDown               IpSecConnectionTunnelStatusEnum = "DOWN"
 	IpSecConnectionTunnelStatusDownForMaintenance IpSecConnectionTunnelStatusEnum = "DOWN_FOR_MAINTENANCE"
+	IpSecConnectionTunnelStatusPartialUp          IpSecConnectionTunnelStatusEnum = "PARTIAL_UP"
 )
 
 var mappingIpSecConnectionTunnelStatus = map[string]IpSecConnectionTunnelStatusEnum{
 	"UP":                   IpSecConnectionTunnelStatusUp,
 	"DOWN":                 IpSecConnectionTunnelStatusDown,
 	"DOWN_FOR_MAINTENANCE": IpSecConnectionTunnelStatusDownForMaintenance,
+	"PARTIAL_UP":           IpSecConnectionTunnelStatusPartialUp,
 }
 
 // GetIpSecConnectionTunnelStatusEnumValues Enumerates the set of values for IpSecConnectionTunnelStatusEnum
@@ -149,11 +153,13 @@ type IpSecConnectionTunnelRoutingEnum string
 const (
 	IpSecConnectionTunnelRoutingBgp    IpSecConnectionTunnelRoutingEnum = "BGP"
 	IpSecConnectionTunnelRoutingStatic IpSecConnectionTunnelRoutingEnum = "STATIC"
+	IpSecConnectionTunnelRoutingPolicy IpSecConnectionTunnelRoutingEnum = "POLICY"
 )
 
 var mappingIpSecConnectionTunnelRouting = map[string]IpSecConnectionTunnelRoutingEnum{
 	"BGP":    IpSecConnectionTunnelRoutingBgp,
 	"STATIC": IpSecConnectionTunnelRoutingStatic,
+	"POLICY": IpSecConnectionTunnelRoutingPolicy,
 }
 
 // GetIpSecConnectionTunnelRoutingEnumValues Enumerates the set of values for IpSecConnectionTunnelRoutingEnum

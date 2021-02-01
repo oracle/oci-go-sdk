@@ -15,7 +15,7 @@ package autoscaling
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // CronExecutionSchedule Specifies the execution schedule of CRON type.

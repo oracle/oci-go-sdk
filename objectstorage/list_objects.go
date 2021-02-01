@@ -12,7 +12,7 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ListObjects To use any of the API operations, you must be authorized in an IAM policy. If you are not authorized,
@@ -26,7 +26,7 @@ type ListObjects struct {
 	// Prefixes that are common to the results returned by the request if the request specified a delimiter.
 	Prefixes []string `mandatory:"false" json:"prefixes"`
 
-	// The name of the object to use in the 'start' parameter to obtain the next page of
+	// The name of the object to use in the `start` parameter to obtain the next page of
 	// a truncated ListObjects response. Avoid entering confidential information.
 	// Example: test/object1.log
 	NextStartWith *string `mandatory:"false" json:"nextStartWith"`

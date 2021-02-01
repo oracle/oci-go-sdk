@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // StaticPublicKey A static public key which is used to verify the JWT signature.

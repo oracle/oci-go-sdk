@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ImageSourceViaObjectStorageTupleDetails The representation of ImageSourceViaObjectStorageTupleDetails
@@ -34,7 +34,7 @@ type ImageSourceViaObjectStorageTupleDetails struct {
 
 	OperatingSystemVersion *string `mandatory:"false" json:"operatingSystemVersion"`
 
-	// The format of the image to be imported.  Only monolithic
+	// The format of the image to be imported. Only monolithic
 	// images are supported. This attribute is not used for exported Oracle images with the OCI image format.
 	SourceImageType ImageSourceDetailsSourceImageTypeEnum `mandatory:"false" json:"sourceImageType,omitempty"`
 }

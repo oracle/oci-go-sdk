@@ -11,7 +11,7 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ErratumSummary Important changes for software. This can include security advisories, bug fixes, or enhancements.

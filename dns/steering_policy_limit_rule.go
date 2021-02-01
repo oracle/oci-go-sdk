@@ -12,7 +12,7 @@ package dns
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // SteeringPolicyLimitRule The representation of SteeringPolicyLimitRule

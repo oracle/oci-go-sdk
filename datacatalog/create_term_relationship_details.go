@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // CreateTermRelationshipDetails Properties used in term relationship create operations.

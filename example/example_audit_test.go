@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v34/audit"
-	"github.com/oracle/oci-go-sdk/v34/common"
-	"github.com/oracle/oci-go-sdk/v34/example/helpers"
+	"github.com/oracle/oci-go-sdk/v35/audit"
+	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v35/example/helpers"
 )
 
 func ExampleListEvents() {

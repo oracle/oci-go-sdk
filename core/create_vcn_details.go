@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // CreateVcnDetails The representation of CreateVcnDetails
@@ -57,7 +57,8 @@ type CreateVcnDetails struct {
 	// Example: `{"Operations": {"CostCenter": "42"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 
-	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// A user-friendly name. Does not have to be unique, and it's changeable.
+	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	// A DNS label for the VCN, used in conjunction with the VNIC's hostname and

@@ -12,7 +12,7 @@
 package audit
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // StateChange A container object for state change attributes.

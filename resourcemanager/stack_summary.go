@@ -13,7 +13,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // StackSummary Returns a list of properties and the defining property values for the specified stack.

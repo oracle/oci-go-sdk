@@ -13,7 +13,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // LogEntry Log entry for an operation resulting from a job's execution.

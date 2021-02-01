@@ -10,7 +10,7 @@
 package datascience
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // CreateProjectDetails Parameters needed to create a new project. Projects enable users to organize their data science work.

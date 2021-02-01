@@ -12,7 +12,7 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // WorkRequestSummary A summary of the status of a work request.

@@ -12,8 +12,8 @@ import (
 
 	fdk "github.com/fnproject/fdk-go"
 
-	"github.com/oracle/oci-go-sdk/v34/common/auth"
-	"github.com/oracle/oci-go-sdk/v34/identity"
+	"github.com/oracle/oci-go-sdk/v35/common/auth"
+	"github.com/oracle/oci-go-sdk/v35/identity"
 )
 
 func main() {

@@ -13,7 +13,7 @@
 package nosql
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // TableUsageSummary TableUsageSummary represents a single usage record, or slice, that includes

@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // UpdateOsnDetails OSN attributes that can be updated.

@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // VolumeGroupSourceFromVolumeGroupBackupDetails Specifies the volume group backup to restore from.

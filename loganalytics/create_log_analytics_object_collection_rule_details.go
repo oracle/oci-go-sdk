@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // CreateLogAnalyticsObjectCollectionRuleDetails The configuration details of collection rule to enable automatic log collection from an object storage bucket.

@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // GenerateOnPremConnectorConfigurationDetails The details used to create and download on-premises connector's configuration.

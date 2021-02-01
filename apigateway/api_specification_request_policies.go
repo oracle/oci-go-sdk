@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ApiSpecificationRequestPolicies Global behavior applied to all requests received by the API.

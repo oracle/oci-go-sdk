@@ -10,7 +10,7 @@
 package analytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // WorkRequestError Error encountered during the execution of a work request.

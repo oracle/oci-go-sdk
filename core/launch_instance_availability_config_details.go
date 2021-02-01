@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // LaunchInstanceAvailabilityConfigDetails Options for defining the availability of a VM instance after a maintenance event that impacts the underlying hardware.

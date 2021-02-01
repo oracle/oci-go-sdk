@@ -12,7 +12,7 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ObjectLifecyclePolicy The collection of lifecycle policy rules that together form the object lifecycle policy of a given bucket.

@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ExternalPublicationValidationSummary The external publication validation summary contains the validation summary information and the definition of the external object.

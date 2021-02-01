@@ -5,7 +5,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 	"net/http"
 )
 
@@ -53,7 +53,8 @@ type ListVolumesRequest struct {
 	// The OCID of the volume group.
 	VolumeGroupId *string `mandatory:"false" contributesTo:"query" name:"volumeGroupId"`
 
-	// A filter to only return resources that match the given lifecycle state.  The state value is case-insensitive.
+	// A filter to only return resources that match the given lifecycle state. The state
+	// value is case-insensitive.
 	LifecycleState VolumeLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
 	// Unique Oracle-assigned identifier for the request.

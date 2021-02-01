@@ -5,7 +5,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 	"net/http"
 )
 
@@ -65,9 +65,6 @@ type ListAppCatalogListingResourceVersionsResponse struct {
 
 	// A list of []AppCatalogListingResourceVersionSummary instances
 	Items []AppCatalogListingResourceVersionSummary `presentIn:"body"`
-
-	// For optimistic concurrency control. See `if-match`.
-	Etag *string `presentIn:"header" name:"etag"`
 
 	// For list pagination. When this header appears in the response, additional pages
 	// of results remain. For important details about how pagination works, see

@@ -10,7 +10,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ResponderExecutionSummary Summary of the Responder Execution.

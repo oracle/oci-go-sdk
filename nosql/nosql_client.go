@@ -15,8 +15,8 @@ package nosql
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v34/common"
-	"github.com/oracle/oci-go-sdk/v34/common/auth"
+	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v35/common/auth"
 	"net/http"
 )
 

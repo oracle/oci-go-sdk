@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // CreateConfigSourceDetails Property details for the configuration source used for the stack.
@@ -68,6 +68,10 @@ func (m *createconfigsourcedetails) UnmarshalPolymorphicJSON(data []byte) (inter
 		return mm, err
 	case "COMPARTMENT_CONFIG_SOURCE":
 		mm := CreateCompartmentConfigSourceDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "TEMPLATE_CONFIG_SOURCE":
+		mm := CreateStackTemplateConfigSourceDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:

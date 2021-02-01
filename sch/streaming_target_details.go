@@ -13,7 +13,7 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // StreamingTargetDetails The stream used for the Streaming target.
