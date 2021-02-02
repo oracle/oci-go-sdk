@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // UpdateIpSecConnectionTunnelDetails The representation of UpdateIpSecConnectionTunnelDetails
@@ -31,6 +31,8 @@ type UpdateIpSecConnectionTunnelDetails struct {
 	IkeVersion UpdateIpSecConnectionTunnelDetailsIkeVersionEnum `mandatory:"false" json:"ikeVersion,omitempty"`
 
 	BgpSessionConfig *UpdateIpSecTunnelBgpSessionDetails `mandatory:"false" json:"bgpSessionConfig"`
+
+	EncryptionDomainConfig *UpdateIpSecTunnelEncryptionDomainDetails `mandatory:"false" json:"encryptionDomainConfig"`
 }
 
 func (m UpdateIpSecConnectionTunnelDetails) String() string {
@@ -44,11 +46,13 @@ type UpdateIpSecConnectionTunnelDetailsRoutingEnum string
 const (
 	UpdateIpSecConnectionTunnelDetailsRoutingBgp    UpdateIpSecConnectionTunnelDetailsRoutingEnum = "BGP"
 	UpdateIpSecConnectionTunnelDetailsRoutingStatic UpdateIpSecConnectionTunnelDetailsRoutingEnum = "STATIC"
+	UpdateIpSecConnectionTunnelDetailsRoutingPolicy UpdateIpSecConnectionTunnelDetailsRoutingEnum = "POLICY"
 )
 
 var mappingUpdateIpSecConnectionTunnelDetailsRouting = map[string]UpdateIpSecConnectionTunnelDetailsRoutingEnum{
 	"BGP":    UpdateIpSecConnectionTunnelDetailsRoutingBgp,
 	"STATIC": UpdateIpSecConnectionTunnelDetailsRoutingStatic,
+	"POLICY": UpdateIpSecConnectionTunnelDetailsRoutingPolicy,
 }
 
 // GetUpdateIpSecConnectionTunnelDetailsRoutingEnumValues Enumerates the set of values for UpdateIpSecConnectionTunnelDetailsRoutingEnum

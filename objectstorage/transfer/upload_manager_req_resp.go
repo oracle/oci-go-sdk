@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v34/common"
-	"github.com/oracle/oci-go-sdk/v34/objectstorage"
+	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v35/objectstorage"
 )
 
 // requestValidator validate user's input and assign default values if not defined
@@ -83,6 +83,10 @@ type UploadRequest struct {
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
 	RequestMetadata common.RequestMetadata
+
+	// [Optional] The storage tier of the object to upload. If not specified, the storage tier is
+	// defaulted to 'Standard'
+	StorageTier objectstorage.PutObjectStorageTierEnum `mandatory:"false"`
 
 	// [Optional] Callback API that can be invoked during multiPartUploads
 	CallBack UploadCallBack `mandatory:"false"`

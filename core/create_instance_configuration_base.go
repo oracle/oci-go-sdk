@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // CreateInstanceConfigurationBase Creation details for an instance configuration.
@@ -30,7 +30,7 @@ type CreateInstanceConfigurationBase interface {
 	// Example: `{"Operations": {"CostCenter": "42"}}`
 	GetDefinedTags() map[string]map[string]interface{}
 
-	// A user-friendly name for the instance configuration.  Does not have to be unique,
+	// A user-friendly name for the instance configuration. Does not have to be unique,
 	// and it's changeable. Avoid entering confidential information.
 	GetDisplayName() *string
 

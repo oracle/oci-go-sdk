@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // RemoveHttpResponseHeaderRule An object that represents the action of removing a header from a response. This rule applies only to HTTP listeners.

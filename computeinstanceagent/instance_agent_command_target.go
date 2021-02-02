@@ -10,7 +10,7 @@
 package computeinstanceagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // InstanceAgentCommandTarget Target instances that will receive a command.

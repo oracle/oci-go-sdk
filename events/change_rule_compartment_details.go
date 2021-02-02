@@ -11,7 +11,7 @@
 package events
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ChangeRuleCompartmentDetails Specifies which compartment to move a rule to when changing a rule's compartment.

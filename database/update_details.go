@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // UpdateDetails Details specifying which maintenance update to apply to the cloud VM cluster and which actions are to be performed by the maintenance update. Applies to Exadata Cloud Service instances only.
@@ -35,12 +35,14 @@ const (
 	UpdateDetailsUpdateActionRollingApply    UpdateDetailsUpdateActionEnum = "ROLLING_APPLY"
 	UpdateDetailsUpdateActionNonRollingApply UpdateDetailsUpdateActionEnum = "NON_ROLLING_APPLY"
 	UpdateDetailsUpdateActionPrecheck        UpdateDetailsUpdateActionEnum = "PRECHECK"
+	UpdateDetailsUpdateActionRollback        UpdateDetailsUpdateActionEnum = "ROLLBACK"
 )
 
 var mappingUpdateDetailsUpdateAction = map[string]UpdateDetailsUpdateActionEnum{
 	"ROLLING_APPLY":     UpdateDetailsUpdateActionRollingApply,
 	"NON_ROLLING_APPLY": UpdateDetailsUpdateActionNonRollingApply,
 	"PRECHECK":          UpdateDetailsUpdateActionPrecheck,
+	"ROLLBACK":          UpdateDetailsUpdateActionRollback,
 }
 
 // GetUpdateDetailsUpdateActionEnumValues Enumerates the set of values for UpdateDetailsUpdateActionEnum

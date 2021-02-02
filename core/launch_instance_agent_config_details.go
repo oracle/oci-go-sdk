@@ -14,18 +14,18 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
-// LaunchInstanceAgentConfigDetails Instance agent configuration options to choose for launching the instance
+// LaunchInstanceAgentConfigDetails Configuration options for the Oracle Cloud Agent software running on the instance.
 type LaunchInstanceAgentConfigDetails struct {
 
-	// Whether the agent running on the instance can gather performance metrics and monitor the instance.
-	// Default value is false.
+	// Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the
+	// monitoring plugins. Default value is false (monitoring plugins are enabled).
 	IsMonitoringDisabled *bool `mandatory:"false" json:"isMonitoringDisabled"`
 
-	// Whether the agent running on the instance can run all the available management plugins.
-	// Default value is false.
+	// Whether Oracle Cloud Agent can run all the available management plugins.
+	// Default value is false (management plugins are enabled).
 	IsManagementDisabled *bool `mandatory:"false" json:"isManagementDisabled"`
 }
 

@@ -12,7 +12,7 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // CreateMultipartUploadDetails To use any of the API operations, you must be authorized in an IAM policy. If you are not authorized,
@@ -54,6 +54,10 @@ type CreateMultipartUploadDetails struct {
 	// that read the object determine what to do based on the value provided.
 	// For example, you could use this header to identify objects that require caching restrictions.
 	CacheControl *string `mandatory:"false" json:"cacheControl"`
+
+	// The storage tier that the object should be stored in. If not specified, the object will be stored in
+	// the same storage tier as the bucket.
+	StorageTier StorageTierEnum `mandatory:"false" json:"storageTier,omitempty"`
 
 	// Arbitrary string keys and values for the user-defined metadata for the object.
 	// Keys must be in "opc-meta-*" format. Avoid entering confidential information.

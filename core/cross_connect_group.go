@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // CrossConnectGroup For use with Oracle Cloud Infrastructure FastConnect. A cross-connect group
@@ -28,8 +28,6 @@ import (
 // To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized,
 // talk to an administrator. If you're an administrator who needs to write policies to give users access, see
 // Getting Started with Policies (https://docs.cloud.oracle.com/Content/Identity/Concepts/policygetstarted.htm).
-// **Warning:** Oracle recommends that you avoid using any confidential information when you
-// supply string values using the API.
 type CrossConnectGroup struct {
 
 	// The OCID of the compartment containing the cross-connect group.

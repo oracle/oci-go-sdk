@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // CreateVolumeGroupBackupDetails The representation of CreateVolumeGroupBackupDetails
@@ -23,7 +23,9 @@ type CreateVolumeGroupBackupDetails struct {
 	// The OCID of the volume group that needs to be backed up.
 	VolumeGroupId *string `mandatory:"true" json:"volumeGroupId"`
 
-	// The OCID of the compartment that will contain the volume group backup. This parameter is optional, by default backup will be created in the same compartment and source volume group.
+	// The OCID of the compartment that will contain the volume group
+	// backup. This parameter is optional, by default backup will be created in
+	// the same compartment and source volume group.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a

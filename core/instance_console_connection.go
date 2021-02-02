@@ -14,13 +14,12 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // InstanceConsoleConnection The `InstanceConsoleConnection` API provides you with console access to Compute instances,
 // enabling you to troubleshoot malfunctioning instances remotely.
-// For more information about console access, see
-// Accessing the Console (https://docs.cloud.oracle.com/Content/Compute/References/serialconsole.htm).
+// For more information about instance console connections, see Troubleshooting Instances Using Instance Console Connections (https://docs.cloud.oracle.com/Content/Compute/References/serialconsole.htm).
 type InstanceConsoleConnection struct {
 
 	// The OCID of the compartment to contain the console connection.

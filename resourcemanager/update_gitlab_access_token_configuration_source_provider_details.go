@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // UpdateGitlabAccessTokenConfigurationSourceProviderDetails The details for updating a configuration source provider of the type `GITLAB_ACCESS_TOKEN`.

@@ -11,8 +11,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/oracle/oci-go-sdk/v34/common"
-	"github.com/oracle/oci-go-sdk/v34/objectstorage"
+	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v35/objectstorage"
 )
 
 // FileUploader is an interface to upload a file
@@ -104,6 +104,7 @@ func (fileUpload *fileUpload) UploadFilePutObject(ctx context.Context, request U
 		ContentMD5:         request.ContentMD5,
 		OpcClientRequestId: request.OpcClientRequestID,
 		RequestMetadata:    request.RequestMetadata,
+		StorageTier:        request.StorageTier,
 	}
 
 	resp, err := request.ObjectStorageClient.PutObject(ctx, req)

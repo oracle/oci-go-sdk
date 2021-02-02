@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // CreateDatabaseSoftwareImageDetails Parameters for creating a database software image in the specified compartment.
@@ -32,7 +32,7 @@ type CreateDatabaseSoftwareImageDetails struct {
 	// To what shape the image is meant for.
 	ImageShapeFamily CreateDatabaseSoftwareImageDetailsImageShapeFamilyEnum `mandatory:"false" json:"imageShapeFamily,omitempty"`
 
-	// List of the Fault Domains in which this DB system is provisioned.
+	// The type of software image. Can be grid or database.
 	ImageType CreateDatabaseSoftwareImageDetailsImageTypeEnum `mandatory:"false" json:"imageType,omitempty"`
 
 	// List of one-off patches for Database Homes.

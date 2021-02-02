@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // FastConnectProviderServiceKey A provider service key and its details. A provider service key is an identifier for a provider's
@@ -27,7 +27,7 @@ type FastConnectProviderServiceKey struct {
 	// GetFastConnectProviderServiceKey.
 	Name *string `mandatory:"true" json:"name"`
 
-	// The provisioned data rate of the connection.  To get a list of the
+	// The provisioned data rate of the connection. To get a list of the
 	// available bandwidth levels (that is, shapes), see
 	// ListFastConnectProviderVirtualCircuitBandwidthShapes.
 	// Example: `10 Gbps`

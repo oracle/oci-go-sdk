@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // IpSecConnectionTunnelSharedSecret The tunnel's shared secret (pre-shared key).

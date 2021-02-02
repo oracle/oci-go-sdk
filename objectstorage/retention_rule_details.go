@@ -12,13 +12,14 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // RetentionRuleDetails The details to create or update a retention rule.
 type RetentionRuleDetails struct {
 
 	// A user-specified name for the retention rule. Names can be helpful in identifying retention rules.
+	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
 	Duration *Duration `mandatory:"false" json:"duration"`

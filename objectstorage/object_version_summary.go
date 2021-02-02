@@ -12,7 +12,7 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v34/common"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
 // ObjectVersionSummary To use any of the API operations, you must be authorized in an IAM policy. If you are not authorized,
@@ -44,6 +44,12 @@ type ObjectVersionSummary struct {
 
 	// The current entity tag (ETag) for the object.
 	Etag *string `mandatory:"false" json:"etag"`
+
+	// The storage tier that the object is stored in.
+	StorageTier StorageTierEnum `mandatory:"false" json:"storageTier,omitempty"`
+
+	// Archival state of an object. This field is set only for objects in Archive tier.
+	ArchivalState ArchivalStateEnum `mandatory:"false" json:"archivalState,omitempty"`
 }
 
 func (m ObjectVersionSummary) String() string {
