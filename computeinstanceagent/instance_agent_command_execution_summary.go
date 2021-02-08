@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// InstanceAgentService API
+// Oracle Cloud Agent API
 //
-// Instance Agent Service API
+// API for the Oracle Cloud Agent software running on compute instances. Oracle Cloud Agent
+// is a lightweight process that monitors and manages compute instances.
 //
 
 package computeinstanceagent
@@ -14,44 +15,47 @@ import (
 	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
-// InstanceAgentCommandExecutionSummary A command's execution summary.
+// InstanceAgentCommandExecutionSummary Execution details for a command.
 type InstanceAgentCommandExecutionSummary struct {
 
-	// The OCID of the command
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the command.
 	InstanceAgentCommandId *string `mandatory:"true" json:"instanceAgentCommandId"`
 
-	// The OCID of the instance
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the instance.
 	InstanceId *string `mandatory:"true" json:"instanceId"`
 
-	// Specifies the command delivery state.
-	//  * `VISIBLE` - The command is visible to instance.
-	//  * `PENDING` - The command is pending ack from the instance.
-	//  * `ACKED` - The command has been received and acked by the instance.
-	//  * `ACKED_CANCELED` - The canceled command has been received and acked by the instance.
-	//  * `EXPIRED` - The instance has not requested for commands and its delivery has expired.
+	// The command delivery state.
+	//  * `VISIBLE` - The command is visible to the instance.
+	//  * `PENDING` - The command is pending acknowledgment from the instance.
+	//  * `ACKED` - The command has been received and acknowledged by the instance.
+	//  * `ACKED_CANCELED` - The canceled command has been received and acknowledged by the instance.
+	//  * `EXPIRED` - The instance has not requested for commands and the command's delivery has expired.
 	DeliveryState InstanceAgentCommandExecutionSummaryDeliveryStateEnum `mandatory:"true" json:"deliveryState"`
 
-	// command execution life cycle state.
-	// * `ACCEPTED` - The command execution has been accepted to run.
-	// * `IN_PROGRESS` - The command execution is in progress.
-	// * `SUCCEEDED` - The command execution is successful.
-	// * `FAILED` - The command execution has failed.
-	// * `TIMED_OUT` - The command execution has timedout.
-	// * `CANCELED` - The command execution has canceled.
+	// The command execution lifecycle state.
+	// * `ACCEPTED` - The command has been accepted to run.
+	// * `IN_PROGRESS` - The command is in progress.
+	// * `SUCCEEDED` - The command was successfully executed.
+	// * `FAILED` - The command failed to execute.
+	// * `TIMED_OUT` - The command execution timed out.
+	// * `CANCELED` - The command execution was canceled.
 	LifecycleState InstanceAgentCommandExecutionSummaryLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// The command creation date
+	// The date and time the command was created, in the format defined by
+	// RFC3339 (https://tools.ietf.org/html/rfc3339).
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// The command last updated at date.
+	// The date and time the command was last updated, in the format defined by
+	// RFC3339 (https://tools.ietf.org/html/rfc3339).
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
-	// The large non-consecutive number that Run Command Service assigns to each created command.
+	// A large, non-consecutive number that Oracle Cloud Agent assigns to each created command.
 	SequenceNumber *int64 `mandatory:"true" json:"sequenceNumber"`
 
+	// The execution output from a command.
 	Content InstanceAgentCommandExecutionOutputContent `mandatory:"true" json:"content"`
 
-	// The user friendly display name of the command.
+	// A user-friendly name. Does not have to be unique.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 

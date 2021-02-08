@@ -700,6 +700,10 @@ type reqWithBinaryFiled struct {
 	Content       io.Reader `mandatory:"true" contributesTo:"body" encoding:"binary"`
 }
 
+type reqWithBinaryFiledButNoContentLengthField struct {
+	Content io.Reader `mandatory:"true" contributesTo:"body" encoding:"binary"`
+}
+
 type reqWithNonMandatoryBinaryField struct {
 	Content io.Reader `mandatory:"false" contributesTo:"body" encoding:"binary"`
 }
@@ -709,6 +713,17 @@ func TestMarshalBinaryRequest(t *testing.T) {
 	buffer := bytes.NewBufferString(data)
 	length := int64(buffer.Len())
 	r := reqWithBinaryFiled{Content: ioutil.NopCloser(buffer), ContentLength: &length}
+	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("PUT", "/obj", r)
+	assert.NoError(t, err)
+	all, err := ioutil.ReadAll(httpRequest.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, data, string(all))
+}
+
+func TestMarshalBinaryRequestWithoutContentLengthSetting(t *testing.T) {
+	data := "some data in a file"
+	buffer := bytes.NewBufferString(data)
+	r := reqWithBinaryFiledButNoContentLengthField{Content: ioutil.NopCloser(buffer)}
 	httpRequest, err := MakeDefaultHTTPRequestWithTaggedStruct("PUT", "/obj", r)
 	assert.NoError(t, err)
 	all, err := ioutil.ReadAll(httpRequest.Body)
