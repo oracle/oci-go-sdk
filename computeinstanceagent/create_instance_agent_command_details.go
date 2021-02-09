@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// InstanceAgentService API
+// Oracle Cloud Agent API
 //
-// Instance Agent Service API
+// API for the Oracle Cloud Agent software running on compute instances. Oracle Cloud Agent
+// is a lightweight process that monitors and manages compute instances.
 //
 
 package computeinstanceagent
@@ -13,22 +14,25 @@ import (
 	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
-// CreateInstanceAgentCommandDetails Create Command Details
+// CreateInstanceAgentCommandDetails Creation details for an Oracle Cloud Agent command.
 type CreateInstanceAgentCommandDetails struct {
 
-	// The OCID of the compartment you want to create the command.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment to create the command in.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Command execution time limit. Zero means no timeout.
+	// The amount of time that Oracle Cloud Agent is given to run the command on the instance before timing
+	// out. The timer starts when Oracle Cloud Agent starts the command. Zero means no timeout.
 	ExecutionTimeOutInSeconds *int `mandatory:"true" json:"executionTimeOutInSeconds"`
 
+	// The target instance to run the command on.
 	Target *InstanceAgentCommandTarget `mandatory:"true" json:"target"`
 
+	// The contents of the command.
 	Content *InstanceAgentCommandContent `mandatory:"true" json:"content"`
 
 	// A user-friendly name for the command. It does not have to be unique.
 	// Avoid entering confidential information.
-	// Example: `Database Backup Command`
+	// Example: `Database Backup Script`
 	DisplayName *string `mandatory:"false" json:"displayName"`
 }
 

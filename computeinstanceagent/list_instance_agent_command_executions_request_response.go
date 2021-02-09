@@ -19,28 +19,32 @@ type ListInstanceAgentCommandExecutionsRequest struct {
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// The OCID of the instance.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the instance.
 	InstanceId *string `mandatory:"true" contributesTo:"query" name:"instanceId"`
 
-	// Unique identifier for the request.
-	// If you need to contact Oracle about a particular request, please provide the request ID.
+	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request,
+	// please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// The value of the `opc-next-page` response header from the previous "List" call.
+	// For list pagination. The value of the `opc-next-page` response header from the previous "List"
+	// call. For important details about how pagination works, see
+	// List Pagination (https://docs.cloud.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
-	// The maximum number of items to return in a paginated "List" call.
+	// For list pagination. The maximum number of results per page, or items to return in a paginated
+	// "List" call. For important details about how pagination works, see
+	// List Pagination (https://docs.cloud.oracle.com/iaas/Content/API/Concepts/usingapi.htm#nine).
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 
 	// The field to sort by. You can provide one sort order (`sortOrder`). Default order for
-	// TIMECREATED is descending.
+	// `TIMECREATED` is descending.
 	// **Note:** In general, some "List" operations (for example, `ListInstances`) let you
 	// optionally filter by availability domain if the scope of the resource type is within a
 	// single availability domain. If you call one of these "List" operations without specifying
 	// an availability domain, the resources are grouped by availability domain, then sorted.
 	SortBy ListInstanceAgentCommandExecutionsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The DISPLAYNAME sort order
+	// The sort order to use, either ascending (`ASC`) or descending (`DESC`). The `DISPLAYNAME` sort order
 	// is case sensitive.
 	SortOrder ListInstanceAgentCommandExecutionsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 

@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// InstanceAgentService API
+// Oracle Cloud Agent API
 //
-// Instance Agent Service API
+// API for the Oracle Cloud Agent software running on compute instances. Oracle Cloud Agent
+// is a lightweight process that monitors and manages compute instances.
 //
 
 package computeinstanceagent
@@ -79,7 +80,10 @@ func (client *ComputeInstanceAgentClient) ConfigurationProvider() *common.Config
 	return client.config
 }
 
-// CancelInstanceAgentCommand Cancel a command. Cancel is best effort attempt. If the commmand has already completed it will skip cancel.
+// CancelInstanceAgentCommand Cancels a command that is scheduled to run on a compute instance that is managed
+// by Oracle Cloud Agent.
+// Canceling a command is a best-effort attempt. If the command has already
+// completed, it will not be canceled.
 //
 // See also
 //
@@ -133,7 +137,11 @@ func (client ComputeInstanceAgentClient) cancelInstanceAgentCommand(ctx context.
 	return response, err
 }
 
-// CreateInstanceAgentCommand Create command for one or more managed instances
+// CreateInstanceAgentCommand Creates a command or script to run on a compute instance that is managed by Oracle Cloud Agent.
+// On Linux instances, the script runs in a bash shell. On Windows instances, the
+// script runs in a batch shell.
+// Commands that require administrator privileges will run only if Oracle Cloud Agent
+// is running with administrator privileges.
 //
 // See also
 //
@@ -192,7 +200,7 @@ func (client ComputeInstanceAgentClient) createInstanceAgentCommand(ctx context.
 	return response, err
 }
 
-// GetInstanceAgentCommand Gets information about the specified instance agent commandId.
+// GetInstanceAgentCommand Gets information about an Oracle Cloud Agent command.
 //
 // See also
 //
@@ -300,8 +308,8 @@ func (client ComputeInstanceAgentClient) getInstanceAgentCommandExecution(ctx co
 	return response, err
 }
 
-// ListInstanceAgentCommandExecutions List all executions of a command, i.e return command execution results from all targeted instances batch by
-// batch.
+// ListInstanceAgentCommandExecutions Lists the execution details for Oracle Cloud Agent commands that run on the specified compute
+// instance.
 //
 // See also
 //
@@ -355,8 +363,7 @@ func (client ComputeInstanceAgentClient) listInstanceAgentCommandExecutions(ctx 
 	return response, err
 }
 
-// ListInstanceAgentCommands List Instance agent commands issued with the specified filter.
-// Additonally you can filter commands sent to a particular InstanceId
+// ListInstanceAgentCommands Lists the Oracle Cloud Agent commands issued in a compartment.
 //
 // See also
 //

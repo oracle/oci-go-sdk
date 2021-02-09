@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// InstanceAgentService API
+// Oracle Cloud Agent API
 //
-// Instance Agent Service API
+// API for the Oracle Cloud Agent software running on compute instances. Oracle Cloud Agent
+// is a lightweight process that monitors and manages compute instances.
 //
 
 package computeinstanceagent
@@ -14,10 +15,10 @@ import (
 	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
-// InstanceAgentCommandSourceViaObjectStorageUriDetails Command content via uri.
+// InstanceAgentCommandSourceViaObjectStorageUriDetails The source of the command when imported from an Object Storage URL.
 type InstanceAgentCommandSourceViaObjectStorageUriDetails struct {
 
-	// The Object Storage URL or PAR for the command.
+	// The Object Storage URL or pre-authenticated request (PAR) for the command.
 	SourceUri *string `mandatory:"true" json:"sourceUri"`
 }
 

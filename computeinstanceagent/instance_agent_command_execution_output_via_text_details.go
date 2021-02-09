@@ -2,9 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// InstanceAgentService API
+// Oracle Cloud Agent API
 //
-// Instance Agent Service API
+// API for the Oracle Cloud Agent software running on compute instances. Oracle Cloud Agent
+// is a lightweight process that monitors and manages compute instances.
 //
 
 package computeinstanceagent
@@ -14,19 +15,19 @@ import (
 	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
-// InstanceAgentCommandExecutionOutputViaTextDetails command execution output via text.
+// InstanceAgentCommandExecutionOutputViaTextDetails The execution output from a command when returned in plain text.
 type InstanceAgentCommandExecutionOutputViaTextDetails struct {
 
-	// command exit code.
+	// The exit code for the command. Exit code `0` indicates success.
 	ExitCode *int `mandatory:"true" json:"exitCode"`
 
-	// The command response output.
-	Text *string `mandatory:"true" json:"text"`
-
-	// optional status message that agent's can populate for additional troubleshooting.
+	// An optional status message that Oracle Cloud Agent can populate for additional troubleshooting.
 	Message *string `mandatory:"false" json:"message"`
 
-	// Sha256 checksum value of the text content
+	// The command output.
+	Text *string `mandatory:"false" json:"text"`
+
+	// SHA-256 checksum value of the text content.
 	TextSha256 *string `mandatory:"false" json:"textSha256"`
 }
 
