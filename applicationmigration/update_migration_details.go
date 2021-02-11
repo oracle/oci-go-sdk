@@ -31,6 +31,9 @@ type UpdateMigrationDetails struct {
 
 	DiscoveryDetails DiscoveryDetails `mandatory:"false" json:"discoveryDetails"`
 
+	// If set to `true`, Application Migration migrates the application resources selectively depending on the source.
+	IsSelectiveMigration *bool `mandatory:"false" json:"isSelectiveMigration"`
+
 	// Configuration required to migrate the application. In addition to the key and value, additional fields are provided
 	// to describe type type and purpose of each field. Only the value for each key is required when passing configuration to the
 	// CreateMigration operation.
@@ -57,13 +60,14 @@ func (m UpdateMigrationDetails) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *UpdateMigrationDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		DisplayName       *string                           `json:"displayName"`
-		Description       *string                           `json:"description"`
-		DiscoveryDetails  discoverydetails                  `json:"discoveryDetails"`
-		ServiceConfig     map[string]ConfigurationField     `json:"serviceConfig"`
-		ApplicationConfig map[string]ConfigurationField     `json:"applicationConfig"`
-		FreeformTags      map[string]string                 `json:"freeformTags"`
-		DefinedTags       map[string]map[string]interface{} `json:"definedTags"`
+		DisplayName          *string                           `json:"displayName"`
+		Description          *string                           `json:"description"`
+		DiscoveryDetails     discoverydetails                  `json:"discoveryDetails"`
+		IsSelectiveMigration *bool                             `json:"isSelectiveMigration"`
+		ServiceConfig        map[string]ConfigurationField     `json:"serviceConfig"`
+		ApplicationConfig    map[string]ConfigurationField     `json:"applicationConfig"`
+		FreeformTags         map[string]string                 `json:"freeformTags"`
+		DefinedTags          map[string]map[string]interface{} `json:"definedTags"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -84,6 +88,8 @@ func (m *UpdateMigrationDetails) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.DiscoveryDetails = nil
 	}
+
+	m.IsSelectiveMigration = model.IsSelectiveMigration
 
 	m.ServiceConfig = model.ServiceConfig
 

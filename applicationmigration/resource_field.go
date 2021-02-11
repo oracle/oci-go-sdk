@@ -12,27 +12,26 @@
 
 package applicationmigration
 
-// SourceTypesEnum Enum with underlying type: string
-type SourceTypesEnum string
-
-// Set of constants representing the allowable values for SourceTypesEnum
-const (
-	SourceTypesOcic            SourceTypesEnum = "OCIC"
-	SourceTypesInternalCompute SourceTypesEnum = "INTERNAL_COMPUTE"
-	SourceTypesOcc             SourceTypesEnum = "OCC"
+import (
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
-var mappingSourceTypes = map[string]SourceTypesEnum{
-	"OCIC":             SourceTypesOcic,
-	"INTERNAL_COMPUTE": SourceTypesInternalCompute,
-	"OCC":              SourceTypesOcc,
+// ResourceField Resource object that can be used to pass details about any list of resources associated with Migrations. The List of resources are added to ConfigurationField to add the capability to pass lists of resources of any type and group.
+type ResourceField struct {
+
+	// The type of the resource field.
+	Type *string `mandatory:"true" json:"type"`
+
+	// The value of the field.
+	Value *string `mandatory:"true" json:"value"`
+
+	// The display name of the resource field.
+	Name *string `mandatory:"false" json:"name"`
+
+	// The name of the group to which this field belongs to.
+	Group *string `mandatory:"false" json:"group"`
 }
 
-// GetSourceTypesEnumValues Enumerates the set of values for SourceTypesEnum
-func GetSourceTypesEnumValues() []SourceTypesEnum {
-	values := make([]SourceTypesEnum, 0)
-	for _, v := range mappingSourceTypes {
-		values = append(values, v)
-	}
-	return values
+func (m ResourceField) String() string {
+	return common.PointerString(m)
 }

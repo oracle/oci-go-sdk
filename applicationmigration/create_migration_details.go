@@ -48,6 +48,9 @@ type CreateMigrationDetails struct {
 	// Infrastrure databases and this option is currently available only for `JAVA_CLOUD_SERVICE` and `WEBLOGIC_CLOUD_SERVICE` target instance types.
 	PreCreatedTargetDatabaseType TargetDatabaseTypesEnum `mandatory:"false" json:"preCreatedTargetDatabaseType,omitempty"`
 
+	// If set to `true`, Application Migration migrates the application resources selectively depending on the source.
+	IsSelectiveMigration *bool `mandatory:"false" json:"isSelectiveMigration"`
+
 	// Configuration required to migrate the application. In addition to the key and value, additional fields are provided
 	// to describe type type and purpose of each field. Only the value for each key is required when passing configuration to the
 	// CreateMigration operation.
@@ -77,6 +80,7 @@ func (m *CreateMigrationDetails) UnmarshalJSON(data []byte) (e error) {
 		DisplayName                  *string                           `json:"displayName"`
 		Description                  *string                           `json:"description"`
 		PreCreatedTargetDatabaseType TargetDatabaseTypesEnum           `json:"preCreatedTargetDatabaseType"`
+		IsSelectiveMigration         *bool                             `json:"isSelectiveMigration"`
 		ServiceConfig                map[string]ConfigurationField     `json:"serviceConfig"`
 		ApplicationConfig            map[string]ConfigurationField     `json:"applicationConfig"`
 		FreeformTags                 map[string]string                 `json:"freeformTags"`
@@ -97,6 +101,8 @@ func (m *CreateMigrationDetails) UnmarshalJSON(data []byte) (e error) {
 	m.Description = model.Description
 
 	m.PreCreatedTargetDatabaseType = model.PreCreatedTargetDatabaseType
+
+	m.IsSelectiveMigration = model.IsSelectiveMigration
 
 	m.ServiceConfig = model.ServiceConfig
 
