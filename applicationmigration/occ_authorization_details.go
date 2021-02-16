@@ -12,27 +12,35 @@
 
 package applicationmigration
 
-// SourceTypesEnum Enum with underlying type: string
-type SourceTypesEnum string
-
-// Set of constants representing the allowable values for SourceTypesEnum
-const (
-	SourceTypesOcic            SourceTypesEnum = "OCIC"
-	SourceTypesInternalCompute SourceTypesEnum = "INTERNAL_COMPUTE"
-	SourceTypesOcc             SourceTypesEnum = "OCC"
+import (
+	"encoding/json"
+	"github.com/oracle/oci-go-sdk/v35/common"
 )
 
-var mappingSourceTypes = map[string]SourceTypesEnum{
-	"OCIC":             SourceTypesOcic,
-	"INTERNAL_COMPUTE": SourceTypesInternalCompute,
-	"OCC":              SourceTypesOcc,
+// OccAuthorizationDetails Credentials to access Oracle Cloud @ Customer, which is the source environment from which you want to migrate the application.
+type OccAuthorizationDetails struct {
+
+	// User with Compute Operations role in Oracle Cloud @ Customer.
+	Username *string `mandatory:"true" json:"username"`
+
+	// Password for this user.
+	Password *string `mandatory:"true" json:"password"`
 }
 
-// GetSourceTypesEnumValues Enumerates the set of values for SourceTypesEnum
-func GetSourceTypesEnumValues() []SourceTypesEnum {
-	values := make([]SourceTypesEnum, 0)
-	for _, v := range mappingSourceTypes {
-		values = append(values, v)
+func (m OccAuthorizationDetails) String() string {
+	return common.PointerString(m)
+}
+
+// MarshalJSON marshals to json representation
+func (m OccAuthorizationDetails) MarshalJSON() (buff []byte, e error) {
+	type MarshalTypeOccAuthorizationDetails OccAuthorizationDetails
+	s := struct {
+		DiscriminatorParam string `json:"type"`
+		MarshalTypeOccAuthorizationDetails
+	}{
+		"OCC",
+		(MarshalTypeOccAuthorizationDetails)(m),
 	}
-	return values
+
+	return json.Marshal(&s)
 }

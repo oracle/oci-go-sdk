@@ -36,6 +36,9 @@ type ConfigurationField struct {
 	// Help text to guide the user in setting the configuration value.
 	Description *string `mandatory:"false" json:"description"`
 
+	// A list of resources associated with a specific configuration object.
+	ResourceList []ResourceField `mandatory:"false" json:"resourceList"`
+
 	// Indicates whether or not the field is required (defaults to `true`).
 	IsRequired *bool `mandatory:"false" json:"isRequired"`
 

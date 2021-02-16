@@ -22,6 +22,7 @@ import (
 // SOA Cloud Service applications from Oracle Cloud Infrastructure - Classic.
 // Specify `INTERNAL_COMPUTE` if you have a traditional Oracle Cloud Infrastructure - Classic account and you want to migrate Oracle
 // Process Cloud Service or Oracle Integration Cloud Service applications.
+// Specify `OCC` if you have an Oracle Cloud @ Customer account.
 type SourceDetails interface {
 }
 
@@ -55,6 +56,10 @@ func (m *sourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, erro
 
 	var err error
 	switch m.Type {
+	case "OCC":
+		mm := OccSourceDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "INTERNAL_COMPUTE":
 		mm := InternalSourceDetails{}
 		err = json.Unmarshal(data, &mm)
