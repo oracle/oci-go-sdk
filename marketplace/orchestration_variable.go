@@ -10,7 +10,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // OrchestrationVariable The model of a variable for an orchestration resource.

@@ -10,7 +10,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // StrategyParameter The metadata associated with the strategy parameter.

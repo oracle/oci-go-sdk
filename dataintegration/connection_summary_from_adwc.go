@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // ConnectionSummaryFromAdwc The connection summary details for an Autonomous Data Warehouse data asset.
@@ -58,6 +58,8 @@ type ConnectionSummaryFromAdwc struct {
 
 	// The password for the connection.
 	Password *string `mandatory:"false" json:"password"`
+
+	PasswordSecret *SensitiveAttribute `mandatory:"false" json:"passwordSecret"`
 }
 
 //GetKey returns Key

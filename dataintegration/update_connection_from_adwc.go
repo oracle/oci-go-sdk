@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // UpdateConnectionFromAdwc The details to update an Autonomous Data Warehouse data asset connection.
@@ -50,6 +50,8 @@ type UpdateConnectionFromAdwc struct {
 
 	// The password for the connection.
 	Password *string `mandatory:"false" json:"password"`
+
+	PasswordSecret *SensitiveAttribute `mandatory:"false" json:"passwordSecret"`
 }
 
 //GetKey returns Key

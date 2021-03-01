@@ -11,7 +11,7 @@ package waas
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // AddHttpResponseHeaderAction An object that represents the action of replacing or adding a header field.

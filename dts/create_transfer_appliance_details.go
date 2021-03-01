@@ -10,7 +10,7 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // CreateTransferApplianceDetails The representation of CreateTransferApplianceDetails

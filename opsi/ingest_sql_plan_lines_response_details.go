@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // IngestSqlPlanLinesResponseDetails The response object returned from IngestSqlPlanLines operation.

@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // InstanceConfigurationCreateVnicDetails Contains the properties of the VNIC for an instance configuration. See CreateVnicDetails

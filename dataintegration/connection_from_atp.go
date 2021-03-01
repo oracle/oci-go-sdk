@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // ConnectionFromAtp The connection details for an Autonomous Transaction Processing data asset.
@@ -58,6 +58,8 @@ type ConnectionFromAtp struct {
 
 	// The password for the connection.
 	Password *string `mandatory:"false" json:"password"`
+
+	PasswordSecret *SensitiveAttribute `mandatory:"false" json:"passwordSecret"`
 }
 
 //GetKey returns Key

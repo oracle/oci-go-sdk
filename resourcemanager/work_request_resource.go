@@ -13,7 +13,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // WorkRequestResource A resource created or operated on by a work request.

@@ -12,7 +12,7 @@
 package bds
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // AutoScalePolicy Policy definitions for the autoscaling configuration

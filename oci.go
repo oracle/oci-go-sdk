@@ -19,8 +19,8 @@ them out to stdout
 		"context"
 		"fmt"
 
-		"github.com/oracle/oci-go-sdk/v35/common"
-		"github.com/oracle/oci-go-sdk/v35/identity"
+		"github.com/oracle/oci-go-sdk/v36/common"
+		"github.com/oracle/oci-go-sdk/v36/identity"
 	)
 
 	func main() {

@@ -10,10 +10,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v35/common"
-	"github.com/oracle/oci-go-sdk/v35/core"
-	"github.com/oracle/oci-go-sdk/v35/example/helpers"
-	"github.com/oracle/oci-go-sdk/v35/identity"
+	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v36/core"
+	"github.com/oracle/oci-go-sdk/v36/example/helpers"
+	"github.com/oracle/oci-go-sdk/v36/identity"
 )
 
 // ExampleTagging shows the sample for tag and tagNamespace operations: create, update, get, list etc...

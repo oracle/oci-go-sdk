@@ -13,7 +13,7 @@ package containerengine
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // UpdateNodePoolDetails The properties that define a request to update a node pool.

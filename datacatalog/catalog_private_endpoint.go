@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // CatalogPrivateEndpoint A private network reverse connection creates a connection from service to customer subnet over a private network.

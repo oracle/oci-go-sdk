@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // DependentObjectSummary Details of the dependent object.
@@ -36,6 +36,8 @@ type DependentObjectSummary struct {
 
 	// The owning object key for this object.
 	AggregatorKey *string `mandatory:"false" json:"aggregatorKey"`
+
+	Aggregator *AggregatorSummary `mandatory:"false" json:"aggregator"`
 
 	// The full path to identify this object.
 	IdentifierPath *string `mandatory:"false" json:"identifierPath"`

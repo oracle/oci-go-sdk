@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // RegisterAutonomousDatabaseDataSafeDetails Details for registering an Autonomous Database with Data Safe.

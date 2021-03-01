@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v35/common"
-	"github.com/oracle/oci-go-sdk/v35/objectstorage"
+	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v36/objectstorage"
 )
 
 // requestValidator validate user's input and assign default values if not defined

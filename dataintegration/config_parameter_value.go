@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // ConfigParameterValue Contains the parameter configuration values.
@@ -21,6 +21,9 @@ type ConfigParameterValue struct {
 
 	// An integer value of the parameter.
 	IntValue *int `mandatory:"false" json:"intValue"`
+
+	// An object value of the parameter.
+	ObjectValue *interface{} `mandatory:"false" json:"objectValue"`
 
 	// The root object reference value.
 	RefValue *interface{} `mandatory:"false" json:"refValue"`

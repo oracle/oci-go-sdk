@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // ActivateExadataInfrastructureDetails The activation details for the Exadata Cloud@Customer infrastructure. Applies to Exadata Cloud@Customer instances only.

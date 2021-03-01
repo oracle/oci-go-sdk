@@ -5,7 +5,7 @@
 package filestorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/filestorage/DeleteMountTarget.go.html to see an example of how to use DeleteMountTargetRequest.
 type DeleteMountTargetRequest struct {
 
-	// The OCID of the mount target.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the mount target.
 	MountTargetId *string `mandatory:"true" contributesTo:"path" name:"mountTargetId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call

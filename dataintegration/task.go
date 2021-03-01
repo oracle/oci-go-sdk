@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // Task The task type contains the audit summary information and the definition of the task.
@@ -119,6 +119,10 @@ func (m *task) UnmarshalPolymorphicJSON(data []byte) (interface{}, error) {
 
 	var err error
 	switch m.ModelType {
+	case "PIPELINE_TASK":
+		mm := TaskFromPipelineTaskDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "INTEGRATION_TASK":
 		mm := TaskFromIntegrationTaskDetails{}
 		err = json.Unmarshal(data, &mm)
@@ -218,11 +222,13 @@ type TaskModelTypeEnum string
 const (
 	TaskModelTypeIntegrationTask TaskModelTypeEnum = "INTEGRATION_TASK"
 	TaskModelTypeDataLoaderTask  TaskModelTypeEnum = "DATA_LOADER_TASK"
+	TaskModelTypePipelineTask    TaskModelTypeEnum = "PIPELINE_TASK"
 )
 
 var mappingTaskModelType = map[string]TaskModelTypeEnum{
 	"INTEGRATION_TASK": TaskModelTypeIntegrationTask,
 	"DATA_LOADER_TASK": TaskModelTypeDataLoaderTask,
+	"PIPELINE_TASK":    TaskModelTypePipelineTask,
 }
 
 // GetTaskModelTypeEnumValues Enumerates the set of values for TaskModelTypeEnum
