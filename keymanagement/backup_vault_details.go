@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // BackupVaultDetails The representation of BackupVaultDetails

@@ -5,7 +5,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 	"net/http"
 )
 
@@ -50,6 +50,12 @@ type ListDataEntitiesRequest struct {
 	// you need to contact Oracle about a particular request,
 	// please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+
+	// Used to filter by the name of the object.
+	NameList []string `contributesTo:"query" name:"nameList" collectionFormat:"multi"`
+
+	// This parameter can be used to specify whether entity search type is pattern search or not.
+	IsPattern *bool `mandatory:"false" contributesTo:"query" name:"isPattern"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.

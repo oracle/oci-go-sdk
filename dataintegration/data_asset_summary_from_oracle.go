@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // DataAssetSummaryFromOracle Summary details for the Oracle Database data asset type.
@@ -67,6 +67,10 @@ type DataAssetSummaryFromOracle struct {
 
 	// The credential file content from a wallet for the data asset.
 	CredentialFileContent *string `mandatory:"false" json:"credentialFileContent"`
+
+	WalletSecret *SensitiveAttribute `mandatory:"false" json:"walletSecret"`
+
+	WalletPasswordSecret *SensitiveAttribute `mandatory:"false" json:"walletPasswordSecret"`
 
 	DefaultConnection *ConnectionSummaryFromOracle `mandatory:"false" json:"defaultConnection"`
 }

@@ -5,7 +5,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 	"net/http"
 )
 
@@ -23,6 +23,9 @@ type ListWorkRequestsRequest struct {
 	// you need to contact Oracle about a particular request,
 	// please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+
+	// DIS workspace id
+	WorkspaceId *string `mandatory:"false" contributesTo:"query" name:"workspaceId"`
 
 	// The work request status.
 	WorkRequestStatus ListWorkRequestsWorkRequestStatusEnum `mandatory:"false" contributesTo:"query" name:"workRequestStatus" omitEmpty:"true"`

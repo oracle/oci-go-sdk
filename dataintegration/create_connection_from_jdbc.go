@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // CreateConnectionFromJdbc The details to create a generic JDBC data asset connection.
@@ -47,6 +47,8 @@ type CreateConnectionFromJdbc struct {
 
 	// The password for the connection.
 	Password *string `mandatory:"false" json:"password"`
+
+	PasswordSecret *SensitiveAttribute `mandatory:"false" json:"passwordSecret"`
 }
 
 //GetKey returns Key

@@ -11,7 +11,7 @@ package analytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // AnalyticsInstance Analytics Instance metadata.

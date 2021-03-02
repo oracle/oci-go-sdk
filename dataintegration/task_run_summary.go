@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // TaskRunSummary The information about a task run.
@@ -110,11 +110,13 @@ type TaskRunSummaryTaskTypeEnum string
 const (
 	TaskRunSummaryTaskTypeIntegrationTask TaskRunSummaryTaskTypeEnum = "INTEGRATION_TASK"
 	TaskRunSummaryTaskTypeDataLoaderTask  TaskRunSummaryTaskTypeEnum = "DATA_LOADER_TASK"
+	TaskRunSummaryTaskTypePipelineTask    TaskRunSummaryTaskTypeEnum = "PIPELINE_TASK"
 )
 
 var mappingTaskRunSummaryTaskType = map[string]TaskRunSummaryTaskTypeEnum{
 	"INTEGRATION_TASK": TaskRunSummaryTaskTypeIntegrationTask,
 	"DATA_LOADER_TASK": TaskRunSummaryTaskTypeDataLoaderTask,
+	"PIPELINE_TASK":    TaskRunSummaryTaskTypePipelineTask,
 }
 
 // GetTaskRunSummaryTaskTypeEnumValues Enumerates the set of values for TaskRunSummaryTaskTypeEnum

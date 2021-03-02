@@ -5,7 +5,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 	"net/http"
 )
 
@@ -26,6 +26,9 @@ type ListTaskRunsRequest struct {
 	// you need to contact Oracle about a particular request,
 	// please provide the request ID.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
+
+	// Used to filter by the project or the folder object.
+	AggregatorKey *string `mandatory:"false" contributesTo:"query" name:"aggregatorKey"`
 
 	// Specifies the fields to get for an object.
 	Fields []string `contributesTo:"query" name:"fields" collectionFormat:"multi"`

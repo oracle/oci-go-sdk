@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // PatchChangeSummary This is the patch report summary information.
@@ -49,11 +49,13 @@ type PatchChangeSummaryTypeEnum string
 const (
 	PatchChangeSummaryTypeIntegrationTask PatchChangeSummaryTypeEnum = "INTEGRATION_TASK"
 	PatchChangeSummaryTypeDataLoaderTask  PatchChangeSummaryTypeEnum = "DATA_LOADER_TASK"
+	PatchChangeSummaryTypePipelineTask    PatchChangeSummaryTypeEnum = "PIPELINE_TASK"
 )
 
 var mappingPatchChangeSummaryType = map[string]PatchChangeSummaryTypeEnum{
 	"INTEGRATION_TASK": PatchChangeSummaryTypeIntegrationTask,
 	"DATA_LOADER_TASK": PatchChangeSummaryTypeDataLoaderTask,
+	"PIPELINE_TASK":    PatchChangeSummaryTypePipelineTask,
 }
 
 // GetPatchChangeSummaryTypeEnumValues Enumerates the set of values for PatchChangeSummaryTypeEnum

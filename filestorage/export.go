@@ -10,7 +10,7 @@
 package filestorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // Export A file system and the path that you can use to mount it. Each export
@@ -64,13 +64,13 @@ type Export struct {
 	// associated with the file system.
 	ExportOptions []ClientOptions `mandatory:"true" json:"exportOptions"`
 
-	// The OCID of this export's export set.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of this export's export set.
 	ExportSetId *string `mandatory:"true" json:"exportSetId"`
 
-	// The OCID of this export's file system.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of this export's file system.
 	FileSystemId *string `mandatory:"true" json:"fileSystemId"`
 
-	// The OCID of this export.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of this export.
 	Id *string `mandatory:"true" json:"id"`
 
 	// The current state of this export.

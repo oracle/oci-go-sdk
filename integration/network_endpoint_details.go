@@ -11,7 +11,7 @@ package integration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // NetworkEndpointDetails Base representation of a network endpoint.

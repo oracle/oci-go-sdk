@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // PublishedObject The information about the published object.
@@ -91,6 +91,10 @@ func (m *publishedobject) UnmarshalPolymorphicJSON(data []byte) (interface{}, er
 		mm := PublishedObjectFromDataLoaderTask{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "PIPELINE_TASK":
+		mm := PublishedObjectFromPipelineTask{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "INTEGRATION_TASK":
 		mm := PublishedObjectFromIntegrationTask{}
 		err = json.Unmarshal(data, &mm)
@@ -151,11 +155,13 @@ type PublishedObjectModelTypeEnum string
 const (
 	PublishedObjectModelTypeIntegrationTask PublishedObjectModelTypeEnum = "INTEGRATION_TASK"
 	PublishedObjectModelTypeDataLoaderTask  PublishedObjectModelTypeEnum = "DATA_LOADER_TASK"
+	PublishedObjectModelTypePipelineTask    PublishedObjectModelTypeEnum = "PIPELINE_TASK"
 )
 
 var mappingPublishedObjectModelType = map[string]PublishedObjectModelTypeEnum{
 	"INTEGRATION_TASK": PublishedObjectModelTypeIntegrationTask,
 	"DATA_LOADER_TASK": PublishedObjectModelTypeDataLoaderTask,
+	"PIPELINE_TASK":    PublishedObjectModelTypePipelineTask,
 }
 
 // GetPublishedObjectModelTypeEnumValues Enumerates the set of values for PublishedObjectModelTypeEnum

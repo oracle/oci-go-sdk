@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // UpdateTaskDetails Properties used in task create operations.
@@ -114,6 +114,10 @@ func (m *updatetaskdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, 
 
 	var err error
 	switch m.ModelType {
+	case "PIPELINE_TASK":
+		mm := UpdateTaskFromPipelineTask{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "DATA_LOADER_TASK":
 		mm := UpdateTaskFromDataLoaderTask{}
 		err = json.Unmarshal(data, &mm)
@@ -208,11 +212,13 @@ type UpdateTaskDetailsModelTypeEnum string
 const (
 	UpdateTaskDetailsModelTypeIntegrationTask UpdateTaskDetailsModelTypeEnum = "INTEGRATION_TASK"
 	UpdateTaskDetailsModelTypeDataLoaderTask  UpdateTaskDetailsModelTypeEnum = "DATA_LOADER_TASK"
+	UpdateTaskDetailsModelTypePipelineTask    UpdateTaskDetailsModelTypeEnum = "PIPELINE_TASK"
 )
 
 var mappingUpdateTaskDetailsModelType = map[string]UpdateTaskDetailsModelTypeEnum{
 	"INTEGRATION_TASK": UpdateTaskDetailsModelTypeIntegrationTask,
 	"DATA_LOADER_TASK": UpdateTaskDetailsModelTypeDataLoaderTask,
+	"PIPELINE_TASK":    UpdateTaskDetailsModelTypePipelineTask,
 }
 
 // GetUpdateTaskDetailsModelTypeEnumValues Enumerates the set of values for UpdateTaskDetailsModelTypeEnum

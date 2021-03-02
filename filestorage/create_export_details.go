@@ -10,16 +10,16 @@
 package filestorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // CreateExportDetails Details for creating the export.
 type CreateExportDetails struct {
 
-	// The OCID of this export's export set.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of this export's export set.
 	ExportSetId *string `mandatory:"true" json:"exportSetId"`
 
-	// The OCID of this export's file system.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of this export's file system.
 	FileSystemId *string `mandatory:"true" json:"fileSystemId"`
 
 	// Path used to access the associated file system.

@@ -10,7 +10,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // ProfileCollection A list of profiles that match filter criteria, if any. Results contain `ProfileSummary` objects.

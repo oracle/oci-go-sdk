@@ -11,7 +11,7 @@
 package events
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // Rule The configuration details of an Events rule. For more information, see

@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // OrchestrationListingPackage A listing package for orchestration.

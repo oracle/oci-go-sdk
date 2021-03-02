@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // FlowPort Each operator owns a set of `InputPort` and `OutputPort` objects (can scale to zero), which represent the ports that can be connected to/from the operator.

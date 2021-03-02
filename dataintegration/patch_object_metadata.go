@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // PatchObjectMetadata A summary type containing information about the object including its key, name and when/who created/updated it.
@@ -49,11 +49,13 @@ type PatchObjectMetadataTypeEnum string
 const (
 	PatchObjectMetadataTypeIntegrationTask PatchObjectMetadataTypeEnum = "INTEGRATION_TASK"
 	PatchObjectMetadataTypeDataLoaderTask  PatchObjectMetadataTypeEnum = "DATA_LOADER_TASK"
+	PatchObjectMetadataTypePipelineTask    PatchObjectMetadataTypeEnum = "PIPELINE_TASK"
 )
 
 var mappingPatchObjectMetadataType = map[string]PatchObjectMetadataTypeEnum{
 	"INTEGRATION_TASK": PatchObjectMetadataTypeIntegrationTask,
 	"DATA_LOADER_TASK": PatchObjectMetadataTypeDataLoaderTask,
+	"PIPELINE_TASK":    PatchObjectMetadataTypePipelineTask,
 }
 
 // GetPatchObjectMetadataTypeEnumValues Enumerates the set of values for PatchObjectMetadataTypeEnum

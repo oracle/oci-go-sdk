@@ -17,7 +17,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // FatalIfError is equivalent to Println() followed by a call to os.Exit(1) if error is not nil

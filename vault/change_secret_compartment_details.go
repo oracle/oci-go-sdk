@@ -10,7 +10,7 @@
 package vault
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // ChangeSecretCompartmentDetails Specifies the updated compartment OCID for the secret.

@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // DataSelectorPatternDetails List of pattern Ids.  Used in the addition and removal of patterns in data assets.

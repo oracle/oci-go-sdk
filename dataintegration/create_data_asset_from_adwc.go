@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v35/common"
+	"github.com/oracle/oci-go-sdk/v36/common"
 )
 
 // CreateDataAssetFromAdwc Details for the Autonomous Data Warehouse data asset type.
@@ -51,6 +51,10 @@ type CreateDataAssetFromAdwc struct {
 
 	// The credential file content from a Autonomous Data Warehouse wallet.
 	CredentialFileContent *string `mandatory:"false" json:"credentialFileContent"`
+
+	WalletSecret *SensitiveAttribute `mandatory:"false" json:"walletSecret"`
+
+	WalletPasswordSecret *SensitiveAttribute `mandatory:"false" json:"walletPasswordSecret"`
 
 	DefaultConnection *CreateConnectionFromAdwc `mandatory:"false" json:"defaultConnection"`
 }
