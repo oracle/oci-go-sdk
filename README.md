@@ -84,6 +84,8 @@ type ConfigurationProvider interface {
 	UserOCID() (string, error)
 	KeyFingerprint() (string, error)
 	Region() (string, error)
+	// AuthType() is used for specify the needed auth type, like UserPrincipal, InstancePrincipal, etc. AuthConfig is used for getting auth related paras in config file.
+	AuthType() (AuthConfig, error)
 }
 ```
 Or simply use one of  structs exposed by the `oci-go-sdk` that already implement the above [interface](https://godoc.org/github.com/oracle/oci-go-sdk/common#ConfigurationProvider)
