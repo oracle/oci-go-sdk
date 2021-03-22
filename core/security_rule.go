@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // SecurityRule A security rule is one of the items in a NetworkSecurityGroup.

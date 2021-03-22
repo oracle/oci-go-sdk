@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // ReplicaDetails Number of replicas of service components like Rest Proxy, CA and Console

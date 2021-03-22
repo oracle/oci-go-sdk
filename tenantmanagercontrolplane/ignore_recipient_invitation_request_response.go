@@ -5,7 +5,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -26,8 +26,8 @@ type IgnoreRecipientInvitationRequest struct {
 	// provide matches the resource's current etag value.
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
 
-	// A token that uniquely identifies a request so it can be retried in case of a timeout or
-	// server error without risk of executing that same action again. Retry tokens expire after 24
+	// A token that uniquely identifies a request, so it can be retried in case of a timeout or
+	// server error, without risk of executing that same action again. Retry tokens expire after 24
 	// hours, but can be invalidated before then due to conflicting operations. For example, if a resource
 	// has been deleted and purged from the system, then a retry of the original creation request
 	// might be rejected.

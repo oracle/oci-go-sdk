@@ -12,7 +12,7 @@
 package monitoring
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // PostMetricDataResponseDetails The response object returned from a PostMetricData operation.

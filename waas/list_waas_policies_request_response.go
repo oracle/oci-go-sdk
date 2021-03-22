@@ -5,7 +5,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -41,7 +41,7 @@ type ListWaasPoliciesRequest struct {
 	DisplayName []string `contributesTo:"query" name:"displayName" collectionFormat:"multi"`
 
 	// Filter policies using a list of lifecycle states.
-	LifecycleState []ListWaasPoliciesLifecycleStateEnum `contributesTo:"query" name:"lifecycleState" omitEmpty:"true" collectionFormat:"multi"`
+	LifecycleState []LifecycleStatesEnum `contributesTo:"query" name:"lifecycleState" omitEmpty:"true" collectionFormat:"multi"`
 
 	// A filter that matches policies created on or after the specified date and time.
 	TimeCreatedGreaterThanOrEqualTo *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeCreatedGreaterThanOrEqualTo"`
@@ -136,37 +136,6 @@ var mappingListWaasPoliciesSortOrder = map[string]ListWaasPoliciesSortOrderEnum{
 func GetListWaasPoliciesSortOrderEnumValues() []ListWaasPoliciesSortOrderEnum {
 	values := make([]ListWaasPoliciesSortOrderEnum, 0)
 	for _, v := range mappingListWaasPoliciesSortOrder {
-		values = append(values, v)
-	}
-	return values
-}
-
-// ListWaasPoliciesLifecycleStateEnum Enum with underlying type: string
-type ListWaasPoliciesLifecycleStateEnum string
-
-// Set of constants representing the allowable values for ListWaasPoliciesLifecycleStateEnum
-const (
-	ListWaasPoliciesLifecycleStateCreating ListWaasPoliciesLifecycleStateEnum = "CREATING"
-	ListWaasPoliciesLifecycleStateActive   ListWaasPoliciesLifecycleStateEnum = "ACTIVE"
-	ListWaasPoliciesLifecycleStateFailed   ListWaasPoliciesLifecycleStateEnum = "FAILED"
-	ListWaasPoliciesLifecycleStateUpdating ListWaasPoliciesLifecycleStateEnum = "UPDATING"
-	ListWaasPoliciesLifecycleStateDeleting ListWaasPoliciesLifecycleStateEnum = "DELETING"
-	ListWaasPoliciesLifecycleStateDeleted  ListWaasPoliciesLifecycleStateEnum = "DELETED"
-)
-
-var mappingListWaasPoliciesLifecycleState = map[string]ListWaasPoliciesLifecycleStateEnum{
-	"CREATING": ListWaasPoliciesLifecycleStateCreating,
-	"ACTIVE":   ListWaasPoliciesLifecycleStateActive,
-	"FAILED":   ListWaasPoliciesLifecycleStateFailed,
-	"UPDATING": ListWaasPoliciesLifecycleStateUpdating,
-	"DELETING": ListWaasPoliciesLifecycleStateDeleting,
-	"DELETED":  ListWaasPoliciesLifecycleStateDeleted,
-}
-
-// GetListWaasPoliciesLifecycleStateEnumValues Enumerates the set of values for ListWaasPoliciesLifecycleStateEnum
-func GetListWaasPoliciesLifecycleStateEnumValues() []ListWaasPoliciesLifecycleStateEnum {
-	values := make([]ListWaasPoliciesLifecycleStateEnum, 0)
-	for _, v := range mappingListWaasPoliciesLifecycleState {
 		values = append(values, v)
 	}
 	return values

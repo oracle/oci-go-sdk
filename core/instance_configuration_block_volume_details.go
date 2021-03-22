@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // InstanceConfigurationBlockVolumeDetails Create new block volumes or attach to an existing volume. Specify either createDetails or volumeId.

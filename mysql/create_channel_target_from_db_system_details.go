@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // CreateChannelTargetFromDbSystemDetails Parameters detailing how to provision the target endpoint that is a DB System.

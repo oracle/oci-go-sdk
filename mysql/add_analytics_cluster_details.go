@@ -10,10 +10,11 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
-// AddAnalyticsClusterDetails Details required to add an Analytics Cluster.
+// AddAnalyticsClusterDetails DEPRECATED -- please use HeatWave API instead.
+// Details required to add an Analytics Cluster.
 type AddAnalyticsClusterDetails struct {
 
 	// The shape determines resources to allocate to the Analytics

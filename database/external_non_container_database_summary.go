@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // ExternalNonContainerDatabaseSummary An Oracle Cloud Infrastructure external non-container database resource. This resource is used to manage a non-container

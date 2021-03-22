@@ -5,7 +5,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -17,18 +17,18 @@ import (
 type RequestSummarizedResponderExecutionsRequest struct {
 
 	// The possible attributes based on which the responder executions can be distinguished
-	ResponderExecutionsDimensions []RequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnum `contributesTo:"query" name:"responderExecutionsDimensions" omitEmpty:"true" collectionFormat:"multi"`
+	ResponderExecutionsDimensions []ResponderDimensionEnum `contributesTo:"query" name:"responderExecutionsDimensions" omitEmpty:"true" collectionFormat:"multi"`
 
 	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The possible filters for Responder Type Dimension to distinguish Responder Executions.
 	// If no values are passed, the metric for responder executions of all reponder types are returned
-	ResponderTypeFilter []RequestSummarizedResponderExecutionsResponderTypeFilterEnum `contributesTo:"query" name:"responderTypeFilter" omitEmpty:"true" collectionFormat:"multi"`
+	ResponderTypeFilter []ResponderTypeEnum `contributesTo:"query" name:"responderTypeFilter" omitEmpty:"true" collectionFormat:"multi"`
 
 	// The possible filters for Responder Type Dimension to distinguish Responder Executions.
 	// If no values are passed, the metric for responder executions of all status are returned
-	ResponderExecutionStatusFilter []RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum `contributesTo:"query" name:"responderExecutionStatusFilter" omitEmpty:"true" collectionFormat:"multi"`
+	ResponderExecutionStatusFilter []ResponderExecutionStatusEnum `contributesTo:"query" name:"responderExecutionStatusFilter" omitEmpty:"true" collectionFormat:"multi"`
 
 	// Default is false.
 	// When set to true, the hierarchy of compartments is traversed
@@ -97,81 +97,6 @@ func (response RequestSummarizedResponderExecutionsResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response RequestSummarizedResponderExecutionsResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
-}
-
-// RequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnum Enum with underlying type: string
-type RequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnum string
-
-// Set of constants representing the allowable values for RequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnum
-const (
-	RequestSummarizedResponderExecutionsResponderExecutionsDimensionsRuleType        RequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnum = "RESPONDER_RULE_TYPE"
-	RequestSummarizedResponderExecutionsResponderExecutionsDimensionsExecutionStatus RequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnum = "RESPONDER_EXECUTION_STATUS"
-)
-
-var mappingRequestSummarizedResponderExecutionsResponderExecutionsDimensions = map[string]RequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnum{
-	"RESPONDER_RULE_TYPE":        RequestSummarizedResponderExecutionsResponderExecutionsDimensionsRuleType,
-	"RESPONDER_EXECUTION_STATUS": RequestSummarizedResponderExecutionsResponderExecutionsDimensionsExecutionStatus,
-}
-
-// GetRequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnumValues Enumerates the set of values for RequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnum
-func GetRequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnumValues() []RequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnum {
-	values := make([]RequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnum, 0)
-	for _, v := range mappingRequestSummarizedResponderExecutionsResponderExecutionsDimensions {
-		values = append(values, v)
-	}
-	return values
-}
-
-// RequestSummarizedResponderExecutionsResponderTypeFilterEnum Enum with underlying type: string
-type RequestSummarizedResponderExecutionsResponderTypeFilterEnum string
-
-// Set of constants representing the allowable values for RequestSummarizedResponderExecutionsResponderTypeFilterEnum
-const (
-	RequestSummarizedResponderExecutionsResponderTypeFilterRemediation  RequestSummarizedResponderExecutionsResponderTypeFilterEnum = "REMEDIATION"
-	RequestSummarizedResponderExecutionsResponderTypeFilterNotification RequestSummarizedResponderExecutionsResponderTypeFilterEnum = "NOTIFICATION"
-)
-
-var mappingRequestSummarizedResponderExecutionsResponderTypeFilter = map[string]RequestSummarizedResponderExecutionsResponderTypeFilterEnum{
-	"REMEDIATION":  RequestSummarizedResponderExecutionsResponderTypeFilterRemediation,
-	"NOTIFICATION": RequestSummarizedResponderExecutionsResponderTypeFilterNotification,
-}
-
-// GetRequestSummarizedResponderExecutionsResponderTypeFilterEnumValues Enumerates the set of values for RequestSummarizedResponderExecutionsResponderTypeFilterEnum
-func GetRequestSummarizedResponderExecutionsResponderTypeFilterEnumValues() []RequestSummarizedResponderExecutionsResponderTypeFilterEnum {
-	values := make([]RequestSummarizedResponderExecutionsResponderTypeFilterEnum, 0)
-	for _, v := range mappingRequestSummarizedResponderExecutionsResponderTypeFilter {
-		values = append(values, v)
-	}
-	return values
-}
-
-// RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum Enum with underlying type: string
-type RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum string
-
-// Set of constants representing the allowable values for RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum
-const (
-	RequestSummarizedResponderExecutionsResponderExecutionStatusFilterStarted              RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum = "STARTED"
-	RequestSummarizedResponderExecutionsResponderExecutionStatusFilterAwaitingConfirmation RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum = "AWAITING_CONFIRMATION"
-	RequestSummarizedResponderExecutionsResponderExecutionStatusFilterSucceeded            RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum = "SUCCEEDED"
-	RequestSummarizedResponderExecutionsResponderExecutionStatusFilterFailed               RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum = "FAILED"
-	RequestSummarizedResponderExecutionsResponderExecutionStatusFilterSkipped              RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum = "SKIPPED"
-)
-
-var mappingRequestSummarizedResponderExecutionsResponderExecutionStatusFilter = map[string]RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum{
-	"STARTED":               RequestSummarizedResponderExecutionsResponderExecutionStatusFilterStarted,
-	"AWAITING_CONFIRMATION": RequestSummarizedResponderExecutionsResponderExecutionStatusFilterAwaitingConfirmation,
-	"SUCCEEDED":             RequestSummarizedResponderExecutionsResponderExecutionStatusFilterSucceeded,
-	"FAILED":                RequestSummarizedResponderExecutionsResponderExecutionStatusFilterFailed,
-	"SKIPPED":               RequestSummarizedResponderExecutionsResponderExecutionStatusFilterSkipped,
-}
-
-// GetRequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnumValues Enumerates the set of values for RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum
-func GetRequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnumValues() []RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum {
-	values := make([]RequestSummarizedResponderExecutionsResponderExecutionStatusFilterEnum, 0)
-	for _, v := range mappingRequestSummarizedResponderExecutionsResponderExecutionStatusFilter {
-		values = append(values, v)
-	}
-	return values
 }
 
 // RequestSummarizedResponderExecutionsAccessLevelEnum Enum with underlying type: string

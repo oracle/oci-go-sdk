@@ -10,7 +10,7 @@
 package resourcesearch
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // QueryableFieldDescription An individual field that can be used as part of a query filter.

@@ -12,11 +12,11 @@ import (
 	"math"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v36/common"
-	"github.com/oracle/oci-go-sdk/v36/core"
-	"github.com/oracle/oci-go-sdk/v36/example/helpers"
-	"github.com/oracle/oci-go-sdk/v36/identity"
-	"github.com/oracle/oci-go-sdk/v36/loadbalancer"
+	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v37/core"
+	"github.com/oracle/oci-go-sdk/v37/example/helpers"
+	"github.com/oracle/oci-go-sdk/v37/identity"
+	"github.com/oracle/oci-go-sdk/v37/loadbalancer"
 )
 
 const (

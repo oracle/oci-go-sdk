@@ -15,13 +15,14 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
-// AmdMilanBmPlatformConfig The platform configuration of a bare metal instance specific to the AMD Milan platform.
+// AmdMilanBmPlatformConfig The platform configuration of a bare metal instance that uses an E4 shape
+// (the AMD Milan platform).
 type AmdMilanBmPlatformConfig struct {
 
-	// The number of NUMA nodes per socket.
+	// The number of NUMA nodes per socket (NPS).
 	NumaNodesPerSocket AmdMilanBmPlatformConfigNumaNodesPerSocketEnum `mandatory:"false" json:"numaNodesPerSocket,omitempty"`
 }
 

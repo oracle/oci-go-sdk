@@ -11,7 +11,7 @@ package vault
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // Secret The details of the secret. Secret details do not contain the contents of the secret itself.

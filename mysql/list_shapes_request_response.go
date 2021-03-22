@@ -5,7 +5,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -82,11 +82,13 @@ type ListShapesIsSupportedForEnum string
 const (
 	ListShapesIsSupportedForDbsystem         ListShapesIsSupportedForEnum = "DBSYSTEM"
 	ListShapesIsSupportedForAnalyticscluster ListShapesIsSupportedForEnum = "ANALYTICSCLUSTER"
+	ListShapesIsSupportedForHeatwavecluster  ListShapesIsSupportedForEnum = "HEATWAVECLUSTER"
 )
 
 var mappingListShapesIsSupportedFor = map[string]ListShapesIsSupportedForEnum{
 	"DBSYSTEM":         ListShapesIsSupportedForDbsystem,
 	"ANALYTICSCLUSTER": ListShapesIsSupportedForAnalyticscluster,
+	"HEATWAVECLUSTER":  ListShapesIsSupportedForHeatwavecluster,
 }
 
 // GetListShapesIsSupportedForEnumValues Enumerates the set of values for ListShapesIsSupportedForEnum

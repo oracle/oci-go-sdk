@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // ShapeSummary The shape of the DB System. The shape determines resources to allocate
@@ -43,11 +43,13 @@ type ShapeSummaryIsSupportedForEnum string
 const (
 	ShapeSummaryIsSupportedForDbsystem         ShapeSummaryIsSupportedForEnum = "DBSYSTEM"
 	ShapeSummaryIsSupportedForAnalyticscluster ShapeSummaryIsSupportedForEnum = "ANALYTICSCLUSTER"
+	ShapeSummaryIsSupportedForHeatwavecluster  ShapeSummaryIsSupportedForEnum = "HEATWAVECLUSTER"
 )
 
 var mappingShapeSummaryIsSupportedFor = map[string]ShapeSummaryIsSupportedForEnum{
 	"DBSYSTEM":         ShapeSummaryIsSupportedForDbsystem,
 	"ANALYTICSCLUSTER": ShapeSummaryIsSupportedForAnalyticscluster,
+	"HEATWAVECLUSTER":  ShapeSummaryIsSupportedForHeatwavecluster,
 }
 
 // GetShapeSummaryIsSupportedForEnumValues Enumerates the set of values for ShapeSummaryIsSupportedForEnum

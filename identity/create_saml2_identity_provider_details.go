@@ -11,7 +11,7 @@ package identity
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // CreateSaml2IdentityProviderDetails The representation of CreateSaml2IdentityProviderDetails

@@ -15,14 +15,14 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // VolumeAttachment A base object for all types of attachments between a storage volume and an instance.
 // For specific details about iSCSI attachments, see
 // IScsiVolumeAttachment.
 // For general information about volume attachments, see
-// Overview of Block Volume Storage (https://docs.cloud.oracle.com/Content/Block/Concepts/overview.htm).
+// Overview of Block Volume Storage (https://docs.cloud.oracle.com/iaas/Content/Block/Concepts/overview.htm).
 // **Warning:** Oracle recommends that you avoid using any confidential information when you
 // supply string values using the API.
 type VolumeAttachment interface {

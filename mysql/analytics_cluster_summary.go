@@ -10,10 +10,11 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
-// AnalyticsClusterSummary A summary of an Analytics Cluster.
+// AnalyticsClusterSummary DEPRECATED -- please use HeatWave API instead.
+// A summary of an Analytics Cluster.
 type AnalyticsClusterSummary struct {
 
 	// The shape determines resources to allocate to the Analytics

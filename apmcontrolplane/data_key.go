@@ -11,7 +11,7 @@
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // DataKey The information about a Data Key, including the Data Key's value.

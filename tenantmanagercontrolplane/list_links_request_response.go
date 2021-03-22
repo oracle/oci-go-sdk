@@ -5,7 +5,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -34,7 +34,7 @@ type ListLinksRequest struct {
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 
-	// The sort order to use, either 'asc' or 'desc'.
+	// The sort order to use, whether 'asc' or 'desc'.
 	SortOrder ListLinksSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but

@@ -11,7 +11,7 @@ package goldengate
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // RestoreDeploymentDetails The information about the Restore for a Deployment.

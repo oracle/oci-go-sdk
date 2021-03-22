@@ -10,7 +10,7 @@
 package resourcesearch
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // SearchContext Contains search context, such as highlighting, for found resources.

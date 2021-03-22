@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // MfaTotpDevice Users can enable multi-factor authentication (MFA) for their own user accounts. After MFA is enabled, the

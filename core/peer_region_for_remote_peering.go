@@ -14,11 +14,11 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // PeerRegionForRemotePeering Details about a region that supports remote VCN peering. For more
-// information, see VCN Peering (https://docs.cloud.oracle.com/Content/Network/Tasks/VCNpeering.htm).
+// information, see VCN Peering (https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/VCNpeering.htm).
 type PeerRegionForRemotePeering struct {
 
 	// The region's name.
