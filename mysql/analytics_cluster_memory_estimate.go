@@ -10,10 +10,11 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
-// AnalyticsClusterMemoryEstimate Analytics Cluster memory estimate
+// AnalyticsClusterMemoryEstimate DEPRECATED -- please use HeatWave API instead.
+// Analytics Cluster memory estimate
 // that can be used to determine a suitable Analytics Cluster size. For each MySQL user table the estimated memory
 // footprint when the table is loaded to the Analytics Cluster memory is returned.
 type AnalyticsClusterMemoryEstimate struct {

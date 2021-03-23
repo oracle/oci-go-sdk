@@ -5,7 +5,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -41,7 +41,7 @@ type ListHttpRedirectsRequest struct {
 	DisplayName []string `contributesTo:"query" name:"displayName" collectionFormat:"multi"`
 
 	// Filter redirects using a list of lifecycle states.
-	LifecycleState []ListHttpRedirectsLifecycleStateEnum `contributesTo:"query" name:"lifecycleState" omitEmpty:"true" collectionFormat:"multi"`
+	LifecycleState []LifecycleStatesEnum `contributesTo:"query" name:"lifecycleState" omitEmpty:"true" collectionFormat:"multi"`
 
 	// A filter that matches redirects created on or after the specified date and time.
 	TimeCreatedGreaterThanOrEqualTo *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeCreatedGreaterThanOrEqualTo"`
@@ -138,37 +138,6 @@ var mappingListHttpRedirectsSortBy = map[string]ListHttpRedirectsSortByEnum{
 func GetListHttpRedirectsSortByEnumValues() []ListHttpRedirectsSortByEnum {
 	values := make([]ListHttpRedirectsSortByEnum, 0)
 	for _, v := range mappingListHttpRedirectsSortBy {
-		values = append(values, v)
-	}
-	return values
-}
-
-// ListHttpRedirectsLifecycleStateEnum Enum with underlying type: string
-type ListHttpRedirectsLifecycleStateEnum string
-
-// Set of constants representing the allowable values for ListHttpRedirectsLifecycleStateEnum
-const (
-	ListHttpRedirectsLifecycleStateCreating ListHttpRedirectsLifecycleStateEnum = "CREATING"
-	ListHttpRedirectsLifecycleStateActive   ListHttpRedirectsLifecycleStateEnum = "ACTIVE"
-	ListHttpRedirectsLifecycleStateFailed   ListHttpRedirectsLifecycleStateEnum = "FAILED"
-	ListHttpRedirectsLifecycleStateUpdating ListHttpRedirectsLifecycleStateEnum = "UPDATING"
-	ListHttpRedirectsLifecycleStateDeleting ListHttpRedirectsLifecycleStateEnum = "DELETING"
-	ListHttpRedirectsLifecycleStateDeleted  ListHttpRedirectsLifecycleStateEnum = "DELETED"
-)
-
-var mappingListHttpRedirectsLifecycleState = map[string]ListHttpRedirectsLifecycleStateEnum{
-	"CREATING": ListHttpRedirectsLifecycleStateCreating,
-	"ACTIVE":   ListHttpRedirectsLifecycleStateActive,
-	"FAILED":   ListHttpRedirectsLifecycleStateFailed,
-	"UPDATING": ListHttpRedirectsLifecycleStateUpdating,
-	"DELETING": ListHttpRedirectsLifecycleStateDeleting,
-	"DELETED":  ListHttpRedirectsLifecycleStateDeleted,
-}
-
-// GetListHttpRedirectsLifecycleStateEnumValues Enumerates the set of values for ListHttpRedirectsLifecycleStateEnum
-func GetListHttpRedirectsLifecycleStateEnumValues() []ListHttpRedirectsLifecycleStateEnum {
-	values := make([]ListHttpRedirectsLifecycleStateEnum, 0)
-	for _, v := range mappingListHttpRedirectsLifecycleState {
 		values = append(values, v)
 	}
 	return values

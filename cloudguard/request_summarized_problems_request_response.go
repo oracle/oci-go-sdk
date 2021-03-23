@@ -5,7 +5,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -17,7 +17,7 @@ import (
 type RequestSummarizedProblemsRequest struct {
 
 	// The possible attributes based on which the problems can be distinguished.
-	ListDimensions []RequestSummarizedProblemsListDimensionsEnum `contributesTo:"query" name:"listDimensions" omitEmpty:"true" collectionFormat:"multi"`
+	ListDimensions []ProblemDimensionEnum `contributesTo:"query" name:"listDimensions" omitEmpty:"true" collectionFormat:"multi"`
 
 	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
@@ -89,33 +89,6 @@ func (response RequestSummarizedProblemsResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response RequestSummarizedProblemsResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
-}
-
-// RequestSummarizedProblemsListDimensionsEnum Enum with underlying type: string
-type RequestSummarizedProblemsListDimensionsEnum string
-
-// Set of constants representing the allowable values for RequestSummarizedProblemsListDimensionsEnum
-const (
-	RequestSummarizedProblemsListDimensionsResourceType  RequestSummarizedProblemsListDimensionsEnum = "RESOURCE_TYPE"
-	RequestSummarizedProblemsListDimensionsRegion        RequestSummarizedProblemsListDimensionsEnum = "REGION"
-	RequestSummarizedProblemsListDimensionsCompartmentId RequestSummarizedProblemsListDimensionsEnum = "COMPARTMENT_ID"
-	RequestSummarizedProblemsListDimensionsRiskLevel     RequestSummarizedProblemsListDimensionsEnum = "RISK_LEVEL"
-)
-
-var mappingRequestSummarizedProblemsListDimensions = map[string]RequestSummarizedProblemsListDimensionsEnum{
-	"RESOURCE_TYPE":  RequestSummarizedProblemsListDimensionsResourceType,
-	"REGION":         RequestSummarizedProblemsListDimensionsRegion,
-	"COMPARTMENT_ID": RequestSummarizedProblemsListDimensionsCompartmentId,
-	"RISK_LEVEL":     RequestSummarizedProblemsListDimensionsRiskLevel,
-}
-
-// GetRequestSummarizedProblemsListDimensionsEnumValues Enumerates the set of values for RequestSummarizedProblemsListDimensionsEnum
-func GetRequestSummarizedProblemsListDimensionsEnumValues() []RequestSummarizedProblemsListDimensionsEnum {
-	values := make([]RequestSummarizedProblemsListDimensionsEnum, 0)
-	for _, v := range mappingRequestSummarizedProblemsListDimensions {
-		values = append(values, v)
-	}
-	return values
 }
 
 // RequestSummarizedProblemsAccessLevelEnum Enum with underlying type: string

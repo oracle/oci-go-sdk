@@ -10,7 +10,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // ListingSummary The model for a summary of an Oracle Cloud Infrastructure Marketplace listing.
@@ -46,6 +46,12 @@ type ListingSummary struct {
 	Categories []string `mandatory:"false" json:"categories"`
 
 	Publisher *PublisherSummary `mandatory:"false" json:"publisher"`
+
+	// List of operating systems supported.
+	SupportedOperatingSystems []OperatingSystem `mandatory:"false" json:"supportedOperatingSystems"`
+
+	// In which catalog the listing should exist.
+	ListingType ListingTypeEnum `mandatory:"false" json:"listingType,omitempty"`
 }
 
 func (m ListingSummary) String() string {

@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // CreateAutonomousDatabaseFromBackupDetails Details to create an Oracle Autonomous Database by cloning from a backup of an existing Autonomous Database.

@@ -14,13 +14,13 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // ChangeVolumeBackupCompartmentDetails Contains the details for the compartment to move the volume backup to.
 type ChangeVolumeBackupCompartmentDetails struct {
 
-	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment to move the volume backup to.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment to move the volume backup to.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 }
 

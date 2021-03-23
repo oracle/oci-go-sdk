@@ -14,13 +14,13 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // InstancePoolPlacementSecondaryVnicSubnet The secondary VNIC object for the placement configuration for an instance pool.
 type InstancePoolPlacementSecondaryVnicSubnet struct {
 
-	// The subnet OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) for the secondary VNIC.
+	// The subnet OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for the secondary VNIC.
 	SubnetId *string `mandatory:"true" json:"subnetId"`
 
 	// The display name of the VNIC. This is also use to match against the instance configuration defined

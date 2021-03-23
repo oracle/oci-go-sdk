@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // CopyBootVolumeBackupDetails The representation of CopyBootVolumeBackupDetails
@@ -33,8 +33,8 @@ type CopyBootVolumeBackupDetails struct {
 	// will be encrypted with the Oracle-provided encryption key when it is copied to the destination region.
 	//
 	// For more information about the Key Management service and encryption keys, see
-	// Overview of Key Management (https://docs.cloud.oracle.com/Content/KeyManagement/Concepts/keyoverview.htm) and
-	// Using Keys (https://docs.cloud.oracle.com/Content/KeyManagement/Tasks/usingkeys.htm).
+	// Overview of Key Management (https://docs.cloud.oracle.com/iaas/Content/KeyManagement/Concepts/keyoverview.htm) and
+	// Using Keys (https://docs.cloud.oracle.com/iaas/Content/KeyManagement/Tasks/usingkeys.htm).
 	KmsKeyId *string `mandatory:"false" json:"kmsKeyId"`
 }
 

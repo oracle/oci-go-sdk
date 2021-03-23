@@ -10,7 +10,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // Listing The model for an Oracle Cloud Infrastructure Marketplace listing.
@@ -93,6 +93,12 @@ type Listing struct {
 
 	// Indicates whether the listing is included in Featured Listings.
 	IsFeatured *bool `mandatory:"false" json:"isFeatured"`
+
+	// In which catalog the listing should exist.
+	ListingType ListingTypeEnum `mandatory:"false" json:"listingType,omitempty"`
+
+	// List of operating systems supported.
+	SupportedOperatingSystems []OperatingSystem `mandatory:"false" json:"supportedOperatingSystems"`
 }
 
 func (m Listing) String() string {

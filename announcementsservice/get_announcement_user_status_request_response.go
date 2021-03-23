@@ -5,7 +5,7 @@
 package announcementsservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -51,6 +51,7 @@ type GetAnnouncementUserStatusResponse struct {
 	// The AnnouncementUserStatusDetails instance
 	AnnouncementUserStatusDetails `presentIn:"body"`
 
+	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the complete request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 

@@ -10,7 +10,7 @@
 package announcementsservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // AffectedResource The resource affected by the event described in the announcement.
@@ -24,6 +24,9 @@ type AffectedResource struct {
 
 	// The region where the affected resource exists.
 	Region *string `mandatory:"true" json:"region"`
+
+	// Additional properties associated with the resource.
+	AdditionalProperties []Property `mandatory:"false" json:"additionalProperties"`
 }
 
 func (m AffectedResource) String() string {

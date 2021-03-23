@@ -5,7 +5,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -41,7 +41,7 @@ type ListAddressListsRequest struct {
 	Name []string `contributesTo:"query" name:"name" collectionFormat:"multi"`
 
 	// Filter address lists using a list of lifecycle states.
-	LifecycleState []ListAddressListsLifecycleStateEnum `contributesTo:"query" name:"lifecycleState" omitEmpty:"true" collectionFormat:"multi"`
+	LifecycleState []LifecycleStatesEnum `contributesTo:"query" name:"lifecycleState" omitEmpty:"true" collectionFormat:"multi"`
 
 	// A filter that matches address lists created on or after the specified date-time.
 	TimeCreatedGreaterThanOrEqualTo *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeCreatedGreaterThanOrEqualTo"`
@@ -136,37 +136,6 @@ var mappingListAddressListsSortOrder = map[string]ListAddressListsSortOrderEnum{
 func GetListAddressListsSortOrderEnumValues() []ListAddressListsSortOrderEnum {
 	values := make([]ListAddressListsSortOrderEnum, 0)
 	for _, v := range mappingListAddressListsSortOrder {
-		values = append(values, v)
-	}
-	return values
-}
-
-// ListAddressListsLifecycleStateEnum Enum with underlying type: string
-type ListAddressListsLifecycleStateEnum string
-
-// Set of constants representing the allowable values for ListAddressListsLifecycleStateEnum
-const (
-	ListAddressListsLifecycleStateCreating ListAddressListsLifecycleStateEnum = "CREATING"
-	ListAddressListsLifecycleStateActive   ListAddressListsLifecycleStateEnum = "ACTIVE"
-	ListAddressListsLifecycleStateFailed   ListAddressListsLifecycleStateEnum = "FAILED"
-	ListAddressListsLifecycleStateUpdating ListAddressListsLifecycleStateEnum = "UPDATING"
-	ListAddressListsLifecycleStateDeleting ListAddressListsLifecycleStateEnum = "DELETING"
-	ListAddressListsLifecycleStateDeleted  ListAddressListsLifecycleStateEnum = "DELETED"
-)
-
-var mappingListAddressListsLifecycleState = map[string]ListAddressListsLifecycleStateEnum{
-	"CREATING": ListAddressListsLifecycleStateCreating,
-	"ACTIVE":   ListAddressListsLifecycleStateActive,
-	"FAILED":   ListAddressListsLifecycleStateFailed,
-	"UPDATING": ListAddressListsLifecycleStateUpdating,
-	"DELETING": ListAddressListsLifecycleStateDeleting,
-	"DELETED":  ListAddressListsLifecycleStateDeleted,
-}
-
-// GetListAddressListsLifecycleStateEnumValues Enumerates the set of values for ListAddressListsLifecycleStateEnum
-func GetListAddressListsLifecycleStateEnumValues() []ListAddressListsLifecycleStateEnum {
-	values := make([]ListAddressListsLifecycleStateEnum, 0)
-	for _, v := range mappingListAddressListsLifecycleState {
 		values = append(values, v)
 	}
 	return values

@@ -4,6 +4,52 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 37.0.0 - 2021-03-23
+### Added
+- Support for the Network Load Balancing service
+- Support for maintenance runs on autonomous databases in the Database service
+- Support for announcement preferences in the Announcements service
+- Support for domain claiming in the Organizations service
+- Support for saved reports in the Usage service
+- Support for the HeatWave in-memory analytics accelerator in the MySQL Database service
+- Support for community applications in the Marketplace service
+- Support for capacity reservations in the Compute service
+
+### Breaking changes
+- Operation `ListWorkRequests`'s param `Status`'s type was changed from `[]ListWorkRequestsStatusEnum` to 
+`[]WorkRequestStatusEnum` in the Analytics service
+- Operation `RequestSummarizedProblems`'s parameter `ListDimensions`'s type was changed from 
+`[]RequestSummarizedProblemsListDimensionsEnum` to `[]ProblemDimensionEnum` in the Cloudguard service
+- Operation `RequestSummarizedResponderExecutions`'s parameter `ResponderExecutionsDimensions`'s type was changed from 
+`[]RequestSummarizedResponderExecutionsResponderExecutionsDimensionsEnum` to `[]ResponderDimensionEnum` in the Cloudguard service
+- Operation `ListClusters`'s parameter `LifecycleState`'s type was changed from `[]ListClustersLifecycleStateEnum` to 
+`[]ClusterLifecycleStateEnum` in the ContainerEngine service
+- Model `Attribute`'s property `AssociatedRuleTypes`'s type was changed from `[]AttributeAssociatedRuleTypesEnum` to 
+`[]RuleTypeEnum` in the Datacatalog service
+- Model `AttributeSummary`'s property `AssociatedRuleTypes`'s type was changed from `[]AttributeSummaryAssociatedRuleTypesEnum`
+to `[]RuleTypeEnum` in the Datacatalog service
+- Operation `ListCustomProperties`'s parameter `DataTypes`'s type was changed from `[]ListCustomPropertiesDataTypesEnum` to 
+`[]CustomPropertyDataTypeEnum` in the Datacatalog service
+- Operation `Recommendations`'s parameter `RecommendationType`'s type was changed from `[]RecommendationsRecommendationTypeEnum`
+to `[]RecommendationTypeEnum` in the Datacatalog service
+- Operation `ListListings`'s parameter `Pricing`'s type was changed from `[]ListListingsPricingEnum`  to `[]PricingTypeEnumEnum`
+in the Marketplace service
+- Operation `ListListings`'s parameter `ListingTypes`'s type was changed from `[]ListListingsListingTypesEnum`  to `[]ListingTypeEnum`
+in the Marketplace service
+- Operation `ListAddressLists`'s parameter `LifecycleState`'s type was changed from `[]ListAddressListsLifecycleStateEnum` to
+`LifecycleStatesEnum` in the Waas service
+- Operation `ListCertificates`'s parameter `LifecycleState`'s type was changed from `[]ListCertificatesLifecycleStateEnum` to 
+`[]LifecycleStatesEnum` in the Waas service
+- Operation `ListCustomProtectionRules`'s parameter `LifecycleState`'s type was changed from `[]ListCustomProtectionRulesLifecycleStateEnum`
+to `[]LifecycleStatesEnum` in the Waas service
+- Operation `ListHttpRedirects`'s parameter `LifecycleState`'s type was changed from `[]ListHttpRedirectsLifecycleStateEnum`
+to `[]LifecycleStatesEnum` in the Waas service
+- Operation `ListWaasPolicies`'s parameter `LifecycleState`'s type was changed from `[]ListWaasPoliciesLifecycleStateEnum` to
+`LifecycleStatesEnum` in the Waas service
+- Operation `ListWorkRequestErrors`'s parameter `CompartmentId` was removed in the Tenantmanagercontrolplane Service
+- Model `Ipv6`'s property `VnicId` was tagged as mandatory in the VCN service
+- Model `CreateIpv6Details`'s property `VnicId` was tagged as mandatory in the VCN service
+
 ## 36.2.0 - 2021-03-16
 ### Added
 - Support for routing policies and HTTP2 listener protocols in the Load Balancing service

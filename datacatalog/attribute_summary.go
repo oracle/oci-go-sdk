@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // AttributeSummary Summary of an entity attribute.
@@ -81,34 +81,9 @@ type AttributeSummary struct {
 	Path *string `mandatory:"false" json:"path"`
 
 	// Rule types associated with attribute.
-	AssociatedRuleTypes []AttributeSummaryAssociatedRuleTypesEnum `mandatory:"false" json:"associatedRuleTypes,omitempty"`
+	AssociatedRuleTypes []RuleTypeEnum `mandatory:"false" json:"associatedRuleTypes,omitempty"`
 }
 
 func (m AttributeSummary) String() string {
 	return common.PointerString(m)
-}
-
-// AttributeSummaryAssociatedRuleTypesEnum Enum with underlying type: string
-type AttributeSummaryAssociatedRuleTypesEnum string
-
-// Set of constants representing the allowable values for AttributeSummaryAssociatedRuleTypesEnum
-const (
-	AttributeSummaryAssociatedRuleTypesPrimarykey AttributeSummaryAssociatedRuleTypesEnum = "PRIMARYKEY"
-	AttributeSummaryAssociatedRuleTypesForeignkey AttributeSummaryAssociatedRuleTypesEnum = "FOREIGNKEY"
-	AttributeSummaryAssociatedRuleTypesUniquekey  AttributeSummaryAssociatedRuleTypesEnum = "UNIQUEKEY"
-)
-
-var mappingAttributeSummaryAssociatedRuleTypes = map[string]AttributeSummaryAssociatedRuleTypesEnum{
-	"PRIMARYKEY": AttributeSummaryAssociatedRuleTypesPrimarykey,
-	"FOREIGNKEY": AttributeSummaryAssociatedRuleTypesForeignkey,
-	"UNIQUEKEY":  AttributeSummaryAssociatedRuleTypesUniquekey,
-}
-
-// GetAttributeSummaryAssociatedRuleTypesEnumValues Enumerates the set of values for AttributeSummaryAssociatedRuleTypesEnum
-func GetAttributeSummaryAssociatedRuleTypesEnumValues() []AttributeSummaryAssociatedRuleTypesEnum {
-	values := make([]AttributeSummaryAssociatedRuleTypesEnum, 0)
-	for _, v := range mappingAttributeSummaryAssociatedRuleTypes {
-		values = append(values, v)
-	}
-	return values
 }

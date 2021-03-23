@@ -2,15 +2,15 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// TenantManager API
+// Organizations API
 //
-// A description of the TenantManager API
+// The Organizations API allows you to consolidate multiple OCI tenancies into an organization, and centrally manage your tenancies and its resources.
 //
 
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // WorkRequestResource A resource created or operated on by a work request.
@@ -21,7 +21,7 @@ type WorkRequestResource struct {
 
 	// The way in which this resource is affected by the work tracked in the work request.
 	// A resource being created, updated, or deleted will remain in the IN_PROGRESS state until
-	// work is complete for that resource at which point it will transition to CREATED, UPDATED,
+	// work is complete for that resource, at which point it will transition to CREATED, UPDATED,
 	// or DELETED, respectively.
 	ActionType ActionTypeEnum `mandatory:"true" json:"actionType"`
 

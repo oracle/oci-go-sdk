@@ -10,10 +10,10 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
-// UpdateExternalDatabaseDetailsBase Details for updating an external database.
+// UpdateExternalDatabaseDetailsBase Details for updating an external database. This API is not currently supported.
 type UpdateExternalDatabaseDetailsBase struct {
 
 	// The user-friendly name for the external database. The name does not have to be unique.

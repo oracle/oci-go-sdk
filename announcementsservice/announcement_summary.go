@@ -11,10 +11,10 @@ package announcementsservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
-// AnnouncementSummary Summary representation of an announcement.
+// AnnouncementSummary A summary representation of an announcement.
 type AnnouncementSummary struct {
 
 	// The OCID of the announcement.
@@ -40,16 +40,16 @@ type AnnouncementSummary struct {
 	// Example: `Time Started`
 	TimeOneTitle *string `mandatory:"false" json:"timeOneTitle"`
 
-	// The actual value of the first time value for the event. Typically, this is the time an event started, but the meaning
-	// can vary, depending on the announcement type.
+	// The actual value of the first time value for the event. Typically, this denotes the time an event started, but the meaning
+	// can vary, depending on the announcement type. The `timeOneType` attribute describes the meaning.
 	TimeOneValue *common.SDKTime `mandatory:"false" json:"timeOneValue"`
 
 	// The label associated with a second time value.
 	// Example: `Time Ended`
 	TimeTwoTitle *string `mandatory:"false" json:"timeTwoTitle"`
 
-	// The actual value of the second time value. Typically, this is the time an event ended, but the meaning
-	// can vary, depending on the announcement type.
+	// The actual value of the second time value. Typically, this denotes the time an event ended, but the meaning
+	// can vary, depending on the announcement type. The `timeTwoType` attribute describes the meaning.
 	TimeTwoValue *common.SDKTime `mandatory:"false" json:"timeTwoValue"`
 
 	// The date and time the announcement was created, expressed in RFC 3339 (https://tools.ietf.org/html/rfc3339) timestamp format.
@@ -59,6 +59,14 @@ type AnnouncementSummary struct {
 	// The date and time the announcement was last updated, expressed in RFC 3339 (https://tools.ietf.org/html/rfc3339) timestamp format.
 	// Example: `2019-01-01T17:43:01.389+0000`
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
+
+	// The type of a time associated with an initial time value. If the `timeOneTitle` attribute is present, then the `timeOneTitle` attribute contains a label of `timeOneType` in English.
+	// Example: `START_TIME`
+	TimeOneType BaseAnnouncementTimeOneTypeEnum `mandatory:"false" json:"timeOneType,omitempty"`
+
+	// The type of a time associated with second time value. If the `timeTwoTitle` attribute is present, then the `timeTwoTitle` attribute contains a label of `timeTwoType` in English.
+	// Example: `END_TIME`
+	TimeTwoType BaseAnnouncementTimeTwoTypeEnum `mandatory:"false" json:"timeTwoType,omitempty"`
 
 	// The type of announcement. An announcement's type signals its severity.
 	AnnouncementType BaseAnnouncementAnnouncementTypeEnum `mandatory:"true" json:"announcementType"`
@@ -87,6 +95,11 @@ func (m AnnouncementSummary) GetTimeOneTitle() *string {
 	return m.TimeOneTitle
 }
 
+//GetTimeOneType returns TimeOneType
+func (m AnnouncementSummary) GetTimeOneType() BaseAnnouncementTimeOneTypeEnum {
+	return m.TimeOneType
+}
+
 //GetTimeOneValue returns TimeOneValue
 func (m AnnouncementSummary) GetTimeOneValue() *common.SDKTime {
 	return m.TimeOneValue
@@ -95,6 +108,11 @@ func (m AnnouncementSummary) GetTimeOneValue() *common.SDKTime {
 //GetTimeTwoTitle returns TimeTwoTitle
 func (m AnnouncementSummary) GetTimeTwoTitle() *string {
 	return m.TimeTwoTitle
+}
+
+//GetTimeTwoType returns TimeTwoType
+func (m AnnouncementSummary) GetTimeTwoType() BaseAnnouncementTimeTwoTypeEnum {
+	return m.TimeTwoType
 }
 
 //GetTimeTwoValue returns TimeTwoValue

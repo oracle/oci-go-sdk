@@ -11,7 +11,7 @@ package announcementsservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // BaseAnnouncement Incident information that forms the basis of an announcement. Avoid entering confidential information.
@@ -46,16 +46,24 @@ type BaseAnnouncement interface {
 	// Example: `Time Started`
 	GetTimeOneTitle() *string
 
-	// The actual value of the first time value for the event. Typically, this is the time an event started, but the meaning
-	// can vary, depending on the announcement type.
+	// The type of a time associated with an initial time value. If the `timeOneTitle` attribute is present, then the `timeOneTitle` attribute contains a label of `timeOneType` in English.
+	// Example: `START_TIME`
+	GetTimeOneType() BaseAnnouncementTimeOneTypeEnum
+
+	// The actual value of the first time value for the event. Typically, this denotes the time an event started, but the meaning
+	// can vary, depending on the announcement type. The `timeOneType` attribute describes the meaning.
 	GetTimeOneValue() *common.SDKTime
 
 	// The label associated with a second time value.
 	// Example: `Time Ended`
 	GetTimeTwoTitle() *string
 
-	// The actual value of the second time value. Typically, this is the time an event ended, but the meaning
-	// can vary, depending on the announcement type.
+	// The type of a time associated with second time value. If the `timeTwoTitle` attribute is present, then the `timeTwoTitle` attribute contains a label of `timeTwoType` in English.
+	// Example: `END_TIME`
+	GetTimeTwoType() BaseAnnouncementTimeTwoTypeEnum
+
+	// The actual value of the second time value. Typically, this denotes the time an event ended, but the meaning
+	// can vary, depending on the announcement type. The `timeTwoType` attribute describes the meaning.
 	GetTimeTwoValue() *common.SDKTime
 
 	// The date and time the announcement was created, expressed in RFC 3339 (https://tools.ietf.org/html/rfc3339) timestamp format.
@@ -78,8 +86,10 @@ type baseannouncement struct {
 	LifecycleState        BaseAnnouncementLifecycleStateEnum   `mandatory:"true" json:"lifecycleState"`
 	IsBanner              *bool                                `mandatory:"true" json:"isBanner"`
 	TimeOneTitle          *string                              `mandatory:"false" json:"timeOneTitle"`
+	TimeOneType           BaseAnnouncementTimeOneTypeEnum      `mandatory:"false" json:"timeOneType,omitempty"`
 	TimeOneValue          *common.SDKTime                      `mandatory:"false" json:"timeOneValue"`
 	TimeTwoTitle          *string                              `mandatory:"false" json:"timeTwoTitle"`
+	TimeTwoType           BaseAnnouncementTimeTwoTypeEnum      `mandatory:"false" json:"timeTwoType,omitempty"`
 	TimeTwoValue          *common.SDKTime                      `mandatory:"false" json:"timeTwoValue"`
 	TimeCreated           *common.SDKTime                      `mandatory:"false" json:"timeCreated"`
 	TimeUpdated           *common.SDKTime                      `mandatory:"false" json:"timeUpdated"`
@@ -106,8 +116,10 @@ func (m *baseannouncement) UnmarshalJSON(data []byte) error {
 	m.LifecycleState = s.Model.LifecycleState
 	m.IsBanner = s.Model.IsBanner
 	m.TimeOneTitle = s.Model.TimeOneTitle
+	m.TimeOneType = s.Model.TimeOneType
 	m.TimeOneValue = s.Model.TimeOneValue
 	m.TimeTwoTitle = s.Model.TimeTwoTitle
+	m.TimeTwoType = s.Model.TimeTwoType
 	m.TimeTwoValue = s.Model.TimeTwoValue
 	m.TimeCreated = s.Model.TimeCreated
 	m.TimeUpdated = s.Model.TimeUpdated
@@ -183,6 +195,11 @@ func (m baseannouncement) GetTimeOneTitle() *string {
 	return m.TimeOneTitle
 }
 
+//GetTimeOneType returns TimeOneType
+func (m baseannouncement) GetTimeOneType() BaseAnnouncementTimeOneTypeEnum {
+	return m.TimeOneType
+}
+
 //GetTimeOneValue returns TimeOneValue
 func (m baseannouncement) GetTimeOneValue() *common.SDKTime {
 	return m.TimeOneValue
@@ -191,6 +208,11 @@ func (m baseannouncement) GetTimeOneValue() *common.SDKTime {
 //GetTimeTwoTitle returns TimeTwoTitle
 func (m baseannouncement) GetTimeTwoTitle() *string {
 	return m.TimeTwoTitle
+}
+
+//GetTimeTwoType returns TimeTwoType
+func (m baseannouncement) GetTimeTwoType() BaseAnnouncementTimeTwoTypeEnum {
+	return m.TimeTwoType
 }
 
 //GetTimeTwoValue returns TimeTwoValue
@@ -210,6 +232,60 @@ func (m baseannouncement) GetTimeUpdated() *common.SDKTime {
 
 func (m baseannouncement) String() string {
 	return common.PointerString(m)
+}
+
+// BaseAnnouncementTimeOneTypeEnum Enum with underlying type: string
+type BaseAnnouncementTimeOneTypeEnum string
+
+// Set of constants representing the allowable values for BaseAnnouncementTimeOneTypeEnum
+const (
+	BaseAnnouncementTimeOneTypeActionRequiredBy BaseAnnouncementTimeOneTypeEnum = "ACTION_REQUIRED_BY"
+	BaseAnnouncementTimeOneTypeNewStartTime     BaseAnnouncementTimeOneTypeEnum = "NEW_START_TIME"
+	BaseAnnouncementTimeOneTypeOriginalEndTime  BaseAnnouncementTimeOneTypeEnum = "ORIGINAL_END_TIME"
+	BaseAnnouncementTimeOneTypeReportDate       BaseAnnouncementTimeOneTypeEnum = "REPORT_DATE"
+	BaseAnnouncementTimeOneTypeStartTime        BaseAnnouncementTimeOneTypeEnum = "START_TIME"
+	BaseAnnouncementTimeOneTypeTimeDetected     BaseAnnouncementTimeOneTypeEnum = "TIME_DETECTED"
+)
+
+var mappingBaseAnnouncementTimeOneType = map[string]BaseAnnouncementTimeOneTypeEnum{
+	"ACTION_REQUIRED_BY": BaseAnnouncementTimeOneTypeActionRequiredBy,
+	"NEW_START_TIME":     BaseAnnouncementTimeOneTypeNewStartTime,
+	"ORIGINAL_END_TIME":  BaseAnnouncementTimeOneTypeOriginalEndTime,
+	"REPORT_DATE":        BaseAnnouncementTimeOneTypeReportDate,
+	"START_TIME":         BaseAnnouncementTimeOneTypeStartTime,
+	"TIME_DETECTED":      BaseAnnouncementTimeOneTypeTimeDetected,
+}
+
+// GetBaseAnnouncementTimeOneTypeEnumValues Enumerates the set of values for BaseAnnouncementTimeOneTypeEnum
+func GetBaseAnnouncementTimeOneTypeEnumValues() []BaseAnnouncementTimeOneTypeEnum {
+	values := make([]BaseAnnouncementTimeOneTypeEnum, 0)
+	for _, v := range mappingBaseAnnouncementTimeOneType {
+		values = append(values, v)
+	}
+	return values
+}
+
+// BaseAnnouncementTimeTwoTypeEnum Enum with underlying type: string
+type BaseAnnouncementTimeTwoTypeEnum string
+
+// Set of constants representing the allowable values for BaseAnnouncementTimeTwoTypeEnum
+const (
+	BaseAnnouncementTimeTwoTypeEndTime    BaseAnnouncementTimeTwoTypeEnum = "END_TIME"
+	BaseAnnouncementTimeTwoTypeNewEndTime BaseAnnouncementTimeTwoTypeEnum = "NEW_END_TIME"
+)
+
+var mappingBaseAnnouncementTimeTwoType = map[string]BaseAnnouncementTimeTwoTypeEnum{
+	"END_TIME":     BaseAnnouncementTimeTwoTypeEndTime,
+	"NEW_END_TIME": BaseAnnouncementTimeTwoTypeNewEndTime,
+}
+
+// GetBaseAnnouncementTimeTwoTypeEnumValues Enumerates the set of values for BaseAnnouncementTimeTwoTypeEnum
+func GetBaseAnnouncementTimeTwoTypeEnumValues() []BaseAnnouncementTimeTwoTypeEnum {
+	values := make([]BaseAnnouncementTimeTwoTypeEnum, 0)
+	for _, v := range mappingBaseAnnouncementTimeTwoType {
+		values = append(values, v)
+	}
+	return values
 }
 
 // BaseAnnouncementAnnouncementTypeEnum Enum with underlying type: string

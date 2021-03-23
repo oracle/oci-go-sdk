@@ -10,10 +10,11 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
-// AnalyticsClusterSchemaMemoryEstimate Schema with estimated memory footprints for each MySQL user table
+// AnalyticsClusterSchemaMemoryEstimate DEPRECATED -- please use HeatWave API instead.
+// Schema with estimated memory footprints for each MySQL user table
 // of the schema when loaded to Analytics Cluster memory.
 type AnalyticsClusterSchemaMemoryEstimate struct {
 

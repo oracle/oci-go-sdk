@@ -5,7 +5,7 @@
 package containerengine
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -20,7 +20,7 @@ type ListClustersRequest struct {
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// A cluster lifecycle state to filter on. Can have multiple parameters of this name.
-	LifecycleState []ListClustersLifecycleStateEnum `contributesTo:"query" name:"lifecycleState" omitEmpty:"true" collectionFormat:"multi"`
+	LifecycleState []ClusterLifecycleStateEnum `contributesTo:"query" name:"lifecycleState" omitEmpty:"true" collectionFormat:"multi"`
 
 	// The name to filter on.
 	Name *string `mandatory:"false" contributesTo:"query" name:"name"`
@@ -88,37 +88,6 @@ func (response ListClustersResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response ListClustersResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
-}
-
-// ListClustersLifecycleStateEnum Enum with underlying type: string
-type ListClustersLifecycleStateEnum string
-
-// Set of constants representing the allowable values for ListClustersLifecycleStateEnum
-const (
-	ListClustersLifecycleStateCreating ListClustersLifecycleStateEnum = "CREATING"
-	ListClustersLifecycleStateActive   ListClustersLifecycleStateEnum = "ACTIVE"
-	ListClustersLifecycleStateFailed   ListClustersLifecycleStateEnum = "FAILED"
-	ListClustersLifecycleStateDeleting ListClustersLifecycleStateEnum = "DELETING"
-	ListClustersLifecycleStateDeleted  ListClustersLifecycleStateEnum = "DELETED"
-	ListClustersLifecycleStateUpdating ListClustersLifecycleStateEnum = "UPDATING"
-)
-
-var mappingListClustersLifecycleState = map[string]ListClustersLifecycleStateEnum{
-	"CREATING": ListClustersLifecycleStateCreating,
-	"ACTIVE":   ListClustersLifecycleStateActive,
-	"FAILED":   ListClustersLifecycleStateFailed,
-	"DELETING": ListClustersLifecycleStateDeleting,
-	"DELETED":  ListClustersLifecycleStateDeleted,
-	"UPDATING": ListClustersLifecycleStateUpdating,
-}
-
-// GetListClustersLifecycleStateEnumValues Enumerates the set of values for ListClustersLifecycleStateEnum
-func GetListClustersLifecycleStateEnumValues() []ListClustersLifecycleStateEnum {
-	values := make([]ListClustersLifecycleStateEnum, 0)
-	for _, v := range mappingListClustersLifecycleState {
-		values = append(values, v)
-	}
-	return values
 }
 
 // ListClustersSortOrderEnum Enum with underlying type: string

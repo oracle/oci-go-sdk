@@ -5,7 +5,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -31,7 +31,7 @@ type ListCustomPropertiesRequest struct {
 	DisplayNameContains *string `mandatory:"false" contributesTo:"query" name:"displayNameContains"`
 
 	// Return the custom properties which has specified data types
-	DataTypes []ListCustomPropertiesDataTypesEnum `contributesTo:"query" name:"dataTypes" omitEmpty:"true" collectionFormat:"multi"`
+	DataTypes []CustomPropertyDataTypeEnum `contributesTo:"query" name:"dataTypes" omitEmpty:"true" collectionFormat:"multi"`
 
 	// A filter to return only resources that match the entire type name given. The match is not case sensitive
 	TypeName []ListCustomPropertiesTypeNameEnum `contributesTo:"query" name:"typeName" omitEmpty:"true" collectionFormat:"multi"`
@@ -112,35 +112,6 @@ func (response ListCustomPropertiesResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response ListCustomPropertiesResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
-}
-
-// ListCustomPropertiesDataTypesEnum Enum with underlying type: string
-type ListCustomPropertiesDataTypesEnum string
-
-// Set of constants representing the allowable values for ListCustomPropertiesDataTypesEnum
-const (
-	ListCustomPropertiesDataTypesText     ListCustomPropertiesDataTypesEnum = "TEXT"
-	ListCustomPropertiesDataTypesRichText ListCustomPropertiesDataTypesEnum = "RICH_TEXT"
-	ListCustomPropertiesDataTypesBoolean  ListCustomPropertiesDataTypesEnum = "BOOLEAN"
-	ListCustomPropertiesDataTypesNumber   ListCustomPropertiesDataTypesEnum = "NUMBER"
-	ListCustomPropertiesDataTypesDate     ListCustomPropertiesDataTypesEnum = "DATE"
-)
-
-var mappingListCustomPropertiesDataTypes = map[string]ListCustomPropertiesDataTypesEnum{
-	"TEXT":      ListCustomPropertiesDataTypesText,
-	"RICH_TEXT": ListCustomPropertiesDataTypesRichText,
-	"BOOLEAN":   ListCustomPropertiesDataTypesBoolean,
-	"NUMBER":    ListCustomPropertiesDataTypesNumber,
-	"DATE":      ListCustomPropertiesDataTypesDate,
-}
-
-// GetListCustomPropertiesDataTypesEnumValues Enumerates the set of values for ListCustomPropertiesDataTypesEnum
-func GetListCustomPropertiesDataTypesEnumValues() []ListCustomPropertiesDataTypesEnum {
-	values := make([]ListCustomPropertiesDataTypesEnum, 0)
-	for _, v := range mappingListCustomPropertiesDataTypes {
-		values = append(values, v)
-	}
-	return values
 }
 
 // ListCustomPropertiesTypeNameEnum Enum with underlying type: string

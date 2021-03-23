@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
 // LbCookieSessionPersistenceConfigurationDetails The configuration details for implementing load balancer cookie session persistence (LB cookie stickiness).

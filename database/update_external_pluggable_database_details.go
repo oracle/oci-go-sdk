@@ -10,10 +10,10 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 )
 
-// UpdateExternalPluggableDatabaseDetails Details for updating an external pluggable database.
+// UpdateExternalPluggableDatabaseDetails Details for updating an external pluggable database. This API is not currently supported.
 type UpdateExternalPluggableDatabaseDetails struct {
 
 	// The user-friendly name for the external database. The name does not have to be unique.

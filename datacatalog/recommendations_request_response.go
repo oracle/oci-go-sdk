@@ -5,7 +5,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -20,7 +20,7 @@ type RecommendationsRequest struct {
 	CatalogId *string `mandatory:"true" contributesTo:"path" name:"catalogId"`
 
 	// A filter used to return only recommendations of the specified type.
-	RecommendationType []RecommendationsRecommendationTypeEnum `contributesTo:"query" name:"recommendationType" omitEmpty:"true" collectionFormat:"multi"`
+	RecommendationType []RecommendationTypeEnum `contributesTo:"query" name:"recommendationType" omitEmpty:"true" collectionFormat:"multi"`
 
 	// A filter used to provide the unique identifier of the source object, for which a list of recommendations will be returned for review.
 	SourceObjectKey *string `mandatory:"true" contributesTo:"query" name:"sourceObjectKey"`
@@ -74,27 +74,6 @@ func (response RecommendationsResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response RecommendationsResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
-}
-
-// RecommendationsRecommendationTypeEnum Enum with underlying type: string
-type RecommendationsRecommendationTypeEnum string
-
-// Set of constants representing the allowable values for RecommendationsRecommendationTypeEnum
-const (
-	RecommendationsRecommendationTypeLinkGlossaryTerm RecommendationsRecommendationTypeEnum = "LINK_GLOSSARY_TERM"
-)
-
-var mappingRecommendationsRecommendationType = map[string]RecommendationsRecommendationTypeEnum{
-	"LINK_GLOSSARY_TERM": RecommendationsRecommendationTypeLinkGlossaryTerm,
-}
-
-// GetRecommendationsRecommendationTypeEnumValues Enumerates the set of values for RecommendationsRecommendationTypeEnum
-func GetRecommendationsRecommendationTypeEnumValues() []RecommendationsRecommendationTypeEnum {
-	values := make([]RecommendationsRecommendationTypeEnum, 0)
-	for _, v := range mappingRecommendationsRecommendationType {
-		values = append(values, v)
-	}
-	return values
 }
 
 // RecommendationsSourceObjectTypeEnum Enum with underlying type: string

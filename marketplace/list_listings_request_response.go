@@ -5,7 +5,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -52,10 +52,16 @@ type ListListingsRequest struct {
 
 	// Name of the pricing type. If multiple pricing types are provided, then any listing with
 	// one or more matching pricing models will be returned.
-	Pricing []ListListingsPricingEnum `contributesTo:"query" name:"pricing" omitEmpty:"true" collectionFormat:"multi"`
+	Pricing []PricingTypeEnumEnum `contributesTo:"query" name:"pricing" omitEmpty:"true" collectionFormat:"multi"`
 
 	// Indicates whether to show only featured listings. If this is set to `false` or is omitted, then all listings will be returned.
 	IsFeatured *bool `mandatory:"false" contributesTo:"query" name:"isFeatured"`
+
+	// The type of the listing
+	ListingTypes []ListingTypeEnum `contributesTo:"query" name:"listingTypes" omitEmpty:"true" collectionFormat:"multi"`
+
+	// OS of the listing.
+	OperatingSystems []string `contributesTo:"query" name:"operatingSystems" collectionFormat:"multi"`
 
 	// The unique identifier for the compartment.
 	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
@@ -146,31 +152,6 @@ var mappingListListingsSortOrder = map[string]ListListingsSortOrderEnum{
 func GetListListingsSortOrderEnumValues() []ListListingsSortOrderEnum {
 	values := make([]ListListingsSortOrderEnum, 0)
 	for _, v := range mappingListListingsSortOrder {
-		values = append(values, v)
-	}
-	return values
-}
-
-// ListListingsPricingEnum Enum with underlying type: string
-type ListListingsPricingEnum string
-
-// Set of constants representing the allowable values for ListListingsPricingEnum
-const (
-	ListListingsPricingFree  ListListingsPricingEnum = "FREE"
-	ListListingsPricingByol  ListListingsPricingEnum = "BYOL"
-	ListListingsPricingPaygo ListListingsPricingEnum = "PAYGO"
-)
-
-var mappingListListingsPricing = map[string]ListListingsPricingEnum{
-	"FREE":  ListListingsPricingFree,
-	"BYOL":  ListListingsPricingByol,
-	"PAYGO": ListListingsPricingPaygo,
-}
-
-// GetListListingsPricingEnumValues Enumerates the set of values for ListListingsPricingEnum
-func GetListListingsPricingEnumValues() []ListListingsPricingEnum {
-	values := make([]ListListingsPricingEnum, 0)
-	for _, v := range mappingListListingsPricing {
 		values = append(values, v)
 	}
 	return values

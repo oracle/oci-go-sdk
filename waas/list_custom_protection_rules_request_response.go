@@ -5,7 +5,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v36/common"
+	"github.com/oracle/oci-go-sdk/v37/common"
 	"net/http"
 )
 
@@ -41,7 +41,7 @@ type ListCustomProtectionRulesRequest struct {
 	DisplayName []string `contributesTo:"query" name:"displayName" collectionFormat:"multi"`
 
 	// Filter Custom Protection rules using a list of lifecycle states.
-	LifecycleState []ListCustomProtectionRulesLifecycleStateEnum `contributesTo:"query" name:"lifecycleState" omitEmpty:"true" collectionFormat:"multi"`
+	LifecycleState []LifecycleStatesEnum `contributesTo:"query" name:"lifecycleState" omitEmpty:"true" collectionFormat:"multi"`
 
 	// A filter that matches Custom Protection rules created on or after the specified date-time.
 	TimeCreatedGreaterThanOrEqualTo *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeCreatedGreaterThanOrEqualTo"`
@@ -140,37 +140,6 @@ var mappingListCustomProtectionRulesSortOrder = map[string]ListCustomProtectionR
 func GetListCustomProtectionRulesSortOrderEnumValues() []ListCustomProtectionRulesSortOrderEnum {
 	values := make([]ListCustomProtectionRulesSortOrderEnum, 0)
 	for _, v := range mappingListCustomProtectionRulesSortOrder {
-		values = append(values, v)
-	}
-	return values
-}
-
-// ListCustomProtectionRulesLifecycleStateEnum Enum with underlying type: string
-type ListCustomProtectionRulesLifecycleStateEnum string
-
-// Set of constants representing the allowable values for ListCustomProtectionRulesLifecycleStateEnum
-const (
-	ListCustomProtectionRulesLifecycleStateCreating ListCustomProtectionRulesLifecycleStateEnum = "CREATING"
-	ListCustomProtectionRulesLifecycleStateActive   ListCustomProtectionRulesLifecycleStateEnum = "ACTIVE"
-	ListCustomProtectionRulesLifecycleStateFailed   ListCustomProtectionRulesLifecycleStateEnum = "FAILED"
-	ListCustomProtectionRulesLifecycleStateUpdating ListCustomProtectionRulesLifecycleStateEnum = "UPDATING"
-	ListCustomProtectionRulesLifecycleStateDeleting ListCustomProtectionRulesLifecycleStateEnum = "DELETING"
-	ListCustomProtectionRulesLifecycleStateDeleted  ListCustomProtectionRulesLifecycleStateEnum = "DELETED"
-)
-
-var mappingListCustomProtectionRulesLifecycleState = map[string]ListCustomProtectionRulesLifecycleStateEnum{
-	"CREATING": ListCustomProtectionRulesLifecycleStateCreating,
-	"ACTIVE":   ListCustomProtectionRulesLifecycleStateActive,
-	"FAILED":   ListCustomProtectionRulesLifecycleStateFailed,
-	"UPDATING": ListCustomProtectionRulesLifecycleStateUpdating,
-	"DELETING": ListCustomProtectionRulesLifecycleStateDeleting,
-	"DELETED":  ListCustomProtectionRulesLifecycleStateDeleted,
-}
-
-// GetListCustomProtectionRulesLifecycleStateEnumValues Enumerates the set of values for ListCustomProtectionRulesLifecycleStateEnum
-func GetListCustomProtectionRulesLifecycleStateEnumValues() []ListCustomProtectionRulesLifecycleStateEnum {
-	values := make([]ListCustomProtectionRulesLifecycleStateEnum, 0)
-	for _, v := range mappingListCustomProtectionRulesLifecycleState {
 		values = append(values, v)
 	}
 	return values
