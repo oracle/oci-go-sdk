@@ -10,28 +10,28 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsAssociatedEntity LogAnalyticsAssociatedEntity
 type LogAnalyticsAssociatedEntity struct {
 
-	// entity guid
+	// The entity unique identifier.
 	EntityId *string `mandatory:"false" json:"entityId"`
 
-	// entity name
+	// The entity name.
 	EntityName *string `mandatory:"false" json:"entityName"`
 
-	// entity type
+	// The entity type.
 	EntityType *string `mandatory:"false" json:"entityType"`
 
-	// entity type display name
+	// The entity type display name.
 	EntityTypeDisplayName *string `mandatory:"false" json:"entityTypeDisplayName"`
 
-	// on host
+	// The host associated with the entity.
 	OnHost *string `mandatory:"false" json:"onHost"`
 
-	// associationCount
+	// The association count for the entity.
 	AssociationCount *int64 `mandatory:"false" json:"associationCount"`
 }
 

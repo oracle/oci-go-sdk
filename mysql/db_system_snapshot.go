@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // DbSystemSnapshot Snapshot of the DbSystem details at the time of the backup
@@ -77,6 +77,10 @@ type DbSystemSnapshot struct {
 
 	// The network port on which X Plugin listens for TCP/IP connections. This is the X Plugin equivalent of port.
 	PortX *int `mandatory:"false" json:"portX"`
+
+	// If the policy is to enable high availability of the instance, by
+	// maintaining secondary/failover capacity as necessary.
+	IsHighlyAvailable *bool `mandatory:"false" json:"isHighlyAvailable"`
 
 	// The network endpoints available for this DB System.
 	Endpoints []DbSystemEndpoint `mandatory:"false" json:"endpoints"`

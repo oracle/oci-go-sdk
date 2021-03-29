@@ -10,10 +10,10 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
-// ChangeLogAnalyticsLogGroupCompartmentDetails The information to be updated.
+// ChangeLogAnalyticsLogGroupCompartmentDetails The information required to change a log group compartment.
 type ChangeLogAnalyticsLogGroupCompartmentDetails struct {
 
 	// The OCID of the compartment where the log analytics entity should be moved.

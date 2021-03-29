@@ -11,7 +11,7 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // DetachChildSoftwareSourceFromManagedInstanceDetails Information for detaching a software source from a managed instance

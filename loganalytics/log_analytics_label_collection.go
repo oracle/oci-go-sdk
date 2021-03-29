@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
-// LogAnalyticsLabelCollection LogAnalytics Label Collection
+// LogAnalyticsLabelCollection A collection of LogAnalytics Labels.
 type LogAnalyticsLabelCollection struct {
 
-	// Array of log analytics label summary.
+	// An array of log analytics label summaries.
 	Items []LogAnalyticsLabelSummary `mandatory:"false" json:"items"`
 }
 

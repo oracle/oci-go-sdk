@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // Namespace This is the namespace details of a tenancy in Logan Analytics application
@@ -24,6 +24,9 @@ type Namespace struct {
 
 	// This indicates if the tenancy is onboarded to Logging Analytics
 	IsOnboarded *bool `mandatory:"true" json:"isOnboarded"`
+
+	// This indicates if the log set feature is enabled for the tenancy
+	IsLogSetEnabled *bool `mandatory:"false" json:"isLogSetEnabled"`
 }
 
 func (m Namespace) String() string {

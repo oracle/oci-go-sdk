@@ -10,16 +10,16 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LabelSummaryReport LabelSummaryReport
 type LabelSummaryReport struct {
 
-	// non out-of-the-box count
+	// The count of custom (user defined) labels.
 	NonOobCount *int `mandatory:"false" json:"nonOobCount"`
 
-	// out-of-the-box count
+	// The count of built in labels.
 	OobCount *int `mandatory:"false" json:"oobCount"`
 }
 

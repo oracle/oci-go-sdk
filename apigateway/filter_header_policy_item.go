@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // FilterHeaderPolicyItem A header to drop (with BLOCK) or pass through (with ALLOW).

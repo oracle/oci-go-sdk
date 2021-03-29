@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // DatabaseConnectionCredentials Credentials used to connect to the database. Currently only the `DETAILS` type is supported for creating MACS connector crendentials.

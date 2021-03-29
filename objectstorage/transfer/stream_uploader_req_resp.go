@@ -5,7 +5,7 @@ package transfer
 
 import (
 	"errors"
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 	"io"
 	"reflect"
 )

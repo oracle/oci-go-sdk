@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsParserCollection LogAnalyticsParserCollection
 type LogAnalyticsParserCollection struct {
 
-	// list of parsers
+	// An array of parsers.
 	Items []LogAnalyticsParserSummary `mandatory:"false" json:"items"`
 }
 

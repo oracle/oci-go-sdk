@@ -11,7 +11,7 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // KeySummary The representation of KeySummary
@@ -55,7 +55,7 @@ type KeySummary struct {
 	// a key's protection mode is set to `HSM`. You can't change a key's protection mode after the key is created or imported.
 	ProtectionMode KeySummaryProtectionModeEnum `mandatory:"false" json:"protectionMode,omitempty"`
 
-	// The algorithm used by a key's key versions to encrypt or decrypt.
+	// The algorithm used by a key's key versions to encrypt or decrypt data.
 	Algorithm KeySummaryAlgorithmEnum `mandatory:"false" json:"algorithm,omitempty"`
 }
 

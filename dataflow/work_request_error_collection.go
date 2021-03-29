@@ -10,7 +10,7 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // WorkRequestErrorCollection Results of a query for a list of work request errors. Contains WorkRequestError items.

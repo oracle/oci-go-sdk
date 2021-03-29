@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsSourceExtendedFieldDefinitionCollection LogAnalyticsSourceExtendedFieldDefinitionCollection
 type LogAnalyticsSourceExtendedFieldDefinitionCollection struct {
 
-	// list of extended field definitions
+	// An array of extended field definitions.
 	Items []LogAnalyticsSourceExtendedFieldDefinition `mandatory:"false" json:"items"`
 }
 

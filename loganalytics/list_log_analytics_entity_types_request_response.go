@@ -5,7 +5,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 	"net/http"
 )
 
@@ -103,11 +103,13 @@ type ListLogAnalyticsEntityTypesCloudTypeEnum string
 const (
 	ListLogAnalyticsEntityTypesCloudTypeCloud    ListLogAnalyticsEntityTypesCloudTypeEnum = "CLOUD"
 	ListLogAnalyticsEntityTypesCloudTypeNonCloud ListLogAnalyticsEntityTypesCloudTypeEnum = "NON_CLOUD"
+	ListLogAnalyticsEntityTypesCloudTypeAll      ListLogAnalyticsEntityTypesCloudTypeEnum = "ALL"
 )
 
 var mappingListLogAnalyticsEntityTypesCloudType = map[string]ListLogAnalyticsEntityTypesCloudTypeEnum{
 	"CLOUD":     ListLogAnalyticsEntityTypesCloudTypeCloud,
 	"NON_CLOUD": ListLogAnalyticsEntityTypesCloudTypeNonCloud,
+	"ALL":       ListLogAnalyticsEntityTypesCloudTypeAll,
 }
 
 // GetListLogAnalyticsEntityTypesCloudTypeEnumValues Enumerates the set of values for ListLogAnalyticsEntityTypesCloudTypeEnum

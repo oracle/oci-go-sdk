@@ -10,16 +10,16 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // SourceValidateDetails source validation details
 type SourceValidateDetails struct {
 
-	// key
+	// The key.
 	Key *string `mandatory:"false" json:"key"`
 
-	// value
+	// The value.
 	Value *string `mandatory:"false" json:"value"`
 }
 

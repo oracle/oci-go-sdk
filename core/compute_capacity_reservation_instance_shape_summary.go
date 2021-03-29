@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ComputeCapacityReservationInstanceShapeSummary An available shape used to launch instances in a compute capacity reservation.

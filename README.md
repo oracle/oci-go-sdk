@@ -7,6 +7,10 @@ The home page for the project is [here](https://godoc.org/github.com/oracle/oci-
 please consider using the  [Go dependency management tool](https://github.com/golang/dep), or vendoring the SDK. 
 This will allow you to pin to a specific version of the Go SDK in your project, letting you control how and when you move to the next major version.
 
+## Survey
+Are you a Developer using the OCI SDK? If so, please fill out our survey to help us make the OCI SDK better for you. Click [here](https://oracle.questionpro.com/t/APeMlZka26?custom3=pkg) for the survey page.
+
+
 ## Dependencies
 - Install [Go programming language](https://golang.org/dl/).
 - Install [GNU Make](https://www.gnu.org/software/make/), using the package manager or binary distribution tool appropriate for your platform.

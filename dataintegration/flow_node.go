@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // FlowNode The flow node can be connected to other nodes in a data flow with input and output links and is bound to an opertor which defines the semantics of the node.

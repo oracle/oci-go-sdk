@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ExtractLogFieldResults log field path values
 type ExtractLogFieldResults struct {
 
-	// log field path values
+	// The log field path values.
 	Paths []string `mandatory:"false" json:"paths"`
 }
 

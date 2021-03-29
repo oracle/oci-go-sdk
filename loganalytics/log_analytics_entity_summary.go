@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsEntitySummary Summary of a log analytics entity.
@@ -59,6 +59,8 @@ type LogAnalyticsEntitySummary struct {
 
 	// This indicates the type of source. It is primarily for Enterprise Manager Repository ID.
 	SourceId *string `mandatory:"false" json:"sourceId"`
+
+	CreationSource *CreationSource `mandatory:"false" json:"creationSource"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`

@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ColumnName Column Names from a SQL Query
 type ColumnName struct {
 
-	// column name
+	// The column name from a SQL query.
 	Name *string `mandatory:"false" json:"name"`
 }
 

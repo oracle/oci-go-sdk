@@ -5,7 +5,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 	"net/http"
 )
 
@@ -31,7 +31,7 @@ type ValidateAssociationParametersRequest struct {
 	// The sort order to use, either ascending (`ASC`) or descending (`DESC`).
 	SortOrder ValidateAssociationParametersSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
-	// sort by field
+	// The attribute used to sort the returned association parameters
 	SortBy ValidateAssociationParametersSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

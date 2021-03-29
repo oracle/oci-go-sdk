@@ -10,16 +10,16 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ExtractLogHeaderResults log header values
 type ExtractLogHeaderResults struct {
 
-	// log header json paths
+	// The log header json paths.
 	JsonPaths []ExtractLogHeaderDetails `mandatory:"false" json:"jsonPaths"`
 
-	// log field or header values
+	// The log field or log header values.
 	XmlPaths []string `mandatory:"false" json:"xmlPaths"`
 }
 

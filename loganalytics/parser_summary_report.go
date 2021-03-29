@@ -10,16 +10,16 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ParserSummaryReport ParserSummaryReport
 type ParserSummaryReport struct {
 
-	// non out-of-the-box count
+	// The count of custom (user defined) parsers.
 	NonOobCount *int `mandatory:"false" json:"nonOobCount"`
 
-	// out-of-the-box count
+	// The count of built in parsers.
 	OobCount *int `mandatory:"false" json:"oobCount"`
 }
 

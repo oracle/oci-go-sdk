@@ -5,7 +5,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 	"net/http"
 )
 
@@ -22,10 +22,12 @@ type UpsertSourceRequest struct {
 	// Details for the new LoganSourceDetails.
 	UpsertLogAnalyticsSourceDetails `contributesTo:"body"`
 
-	// create like sourceId
+	// The unique identifier of the source to use as the reference for a create like
+	// operation.
 	CreateLikeSourceId *int `mandatory:"false" contributesTo:"query" name:"createLikeSourceId"`
 
-	// is incremental
+	// A flag indicating whether or not the update of a source is incremental or not.  If incremental,
+	// the name of the source must be specified.
 	IsIncremental *bool `mandatory:"false" contributesTo:"query" name:"isIncremental"`
 
 	// is ignore warning

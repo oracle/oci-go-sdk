@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // CrossConnectGroup For use with Oracle Cloud Infrastructure FastConnect. A cross-connect group

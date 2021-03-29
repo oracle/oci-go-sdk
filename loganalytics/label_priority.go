@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
-// LabelPriority Label Priority
+// LabelPriority The label priority.
 type LabelPriority struct {
 
-	// tag priority
+	// The label priority. Default value is NONE.
 	Priority LabelPriorityPriorityEnum `mandatory:"false" json:"priority,omitempty"`
 }
 

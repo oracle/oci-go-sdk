@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // CustomerSecretKeySummary As the name suggests, a `CustomerSecretKeySummary` object contains information about a `CustomerSecretKey`.

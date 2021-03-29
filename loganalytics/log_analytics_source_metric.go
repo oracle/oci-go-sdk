@@ -10,22 +10,22 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsSourceMetric LogAnalyticsSourceMetric
 type LogAnalyticsSourceMetric struct {
 
-	// is enabled flag
+	// A flag specifying whether or not the metric source is enabled.
 	IsMetricSourceEnabled *bool `mandatory:"false" json:"isMetricSourceEnabled"`
 
-	// metric name
+	// The metric name.
 	MetricName *string `mandatory:"false" json:"metricName"`
 
-	// source internal name
+	// The source internal name.
 	SourceName *string `mandatory:"false" json:"sourceName"`
 
-	// entity type
+	// The entity type.
 	EntityType *string `mandatory:"false" json:"entityType"`
 }
 

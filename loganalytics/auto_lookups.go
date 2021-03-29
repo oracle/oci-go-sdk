@@ -10,16 +10,16 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // AutoLookups AutoLookups
 type AutoLookups struct {
 
-	// canonical link
+	// The canonical link.
 	CanonicalLink *string `mandatory:"false" json:"canonicalLink"`
 
-	// total count
+	// The total count.
 	TotalCount *int64 `mandatory:"false" json:"totalCount"`
 }
 
