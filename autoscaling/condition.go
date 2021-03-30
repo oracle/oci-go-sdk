@@ -14,7 +14,7 @@
 package autoscaling
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // Condition A rule that defines a specific autoscaling action to take (scale in or scale out) and the metric that triggers that action.

@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ChangeVmClusterCompartmentDetails The configuration details for moving the VM cluster.

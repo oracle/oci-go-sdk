@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // AmdMilanBmPlatformConfig The platform configuration of a bare metal instance that uses an E4 shape

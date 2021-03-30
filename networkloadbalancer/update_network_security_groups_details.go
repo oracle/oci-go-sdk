@@ -10,7 +10,7 @@
 package networkloadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // UpdateNetworkSecurityGroupsDetails An object representing an updated list of network security groups that overwrites the existing list of network security groups.

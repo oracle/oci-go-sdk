@@ -10,16 +10,16 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // AbstractParserTestResultLogLine AbstractParserTestResultLogLine
 type AbstractParserTestResultLogLine struct {
 
-	// original log line
+	// The original log line.
 	OriginalLogLine *string `mandatory:"false" json:"originalLogLine"`
 
-	// pre-processed log line
+	// The pre-processed log line.
 	PreProcessedLogLine *string `mandatory:"false" json:"preProcessedLogLine"`
 }
 

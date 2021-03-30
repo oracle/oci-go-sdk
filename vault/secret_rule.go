@@ -11,7 +11,7 @@ package vault
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // SecretRule A rule that you can apply to a secret to enforce certain conditions on the secret's usage and management.

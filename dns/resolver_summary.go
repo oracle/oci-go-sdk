@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ResolverSummary An OCI DNS resolver. If the resolver has an attached VCN then the VCN will attempt to answer queries based on the

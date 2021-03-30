@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsAssociatedEntityCollection LogAnalytics Associated Entity Collection
 type LogAnalyticsAssociatedEntityCollection struct {
 
-	// list of entities
+	// A list of entities.
 	Items []LogAnalyticsAssociatedEntity `mandatory:"false" json:"items"`
 }
 

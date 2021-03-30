@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // PublishedObjectSummaryCollection This is the collection of published object summaries, it may be a collection of lightweight details or full definitions.

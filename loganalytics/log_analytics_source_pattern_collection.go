@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsSourcePatternCollection LogAnalyticsSourcePatternCollection
 type LogAnalyticsSourcePatternCollection struct {
 
-	// list of source patterns
+	// An array of source patterns.
 	Items []LogAnalyticsSourcePattern `mandatory:"false" json:"items"`
 }
 

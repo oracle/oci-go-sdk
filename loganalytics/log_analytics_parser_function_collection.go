@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsParserFunctionCollection LogAnalyticsParserFunctionCollection
 type LogAnalyticsParserFunctionCollection struct {
 
-	// meta pre-process pagination list
+	// An array of parser function.
 	Items []LogAnalyticsParserFunction `mandatory:"false" json:"items"`
 }
 

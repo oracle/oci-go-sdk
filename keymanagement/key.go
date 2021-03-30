@@ -11,7 +11,7 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // Key The representation of Key
@@ -68,6 +68,10 @@ type Key struct {
 
 	// The OCID of the key from which this key was restored.
 	RestoredFromKeyId *string `mandatory:"false" json:"restoredFromKeyId"`
+
+	ReplicaDetails *KeyReplicaDetails `mandatory:"false" json:"replicaDetails"`
+
+	IsPrimary *bool `mandatory:"false" json:"isPrimary"`
 }
 
 func (m Key) String() string {

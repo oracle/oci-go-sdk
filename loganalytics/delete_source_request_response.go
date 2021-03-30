@@ -5,7 +5,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 	"net/http"
 )
 
@@ -19,7 +19,7 @@ type DeleteSourceRequest struct {
 	// The Logging Analytics namespace used for the request.
 	NamespaceName *string `mandatory:"true" contributesTo:"path" name:"namespaceName"`
 
-	// source name
+	// The source name.
 	SourceName *string `mandatory:"true" contributesTo:"path" name:"sourceName"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

@@ -10,7 +10,7 @@
 package functions
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // UpdateFunctionDetails Updates attributes of a function.

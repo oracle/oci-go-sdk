@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // FaultDomain A Fault Domain is a logical grouping of hardware and infrastructure within an Availability Domain that can become

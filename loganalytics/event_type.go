@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // EventType The event type.
@@ -27,6 +27,9 @@ type EventType struct {
 
 	// A flag indicating whether or not the event type is user defined.
 	IsSystem *bool `mandatory:"false" json:"isSystem"`
+
+	// The last updated time.
+	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 }
 
 func (m EventType) String() string {

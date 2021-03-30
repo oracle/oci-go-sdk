@@ -10,13 +10,13 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // RequestSummarizedUsagesDetails Details for the '/usage' query.
 type RequestSummarizedUsagesDetails struct {
 
-	// Tenant ID
+	// Tenant ID.
 	TenantId *string `mandatory:"true" json:"tenantId"`
 
 	// The usage start time.
@@ -34,6 +34,8 @@ type RequestSummarizedUsagesDetails struct {
 
 	// is aggregated by time. true isAggregateByTime will add up all usage/cost over query time period
 	IsAggregateByTime *bool `mandatory:"false" json:"isAggregateByTime"`
+
+	Forecast *Forecast `mandatory:"false" json:"forecast"`
 
 	// The query usage type. COST by default if it is missing
 	// Usage - Query the usage data.

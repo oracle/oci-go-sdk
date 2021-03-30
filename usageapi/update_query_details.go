@@ -10,7 +10,7 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // UpdateQueryDetails Details for the query to update reportQuery, costAnalysisUI and displayName.

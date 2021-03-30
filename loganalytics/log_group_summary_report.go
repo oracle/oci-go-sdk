@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
-// LogGroupSummaryReport LogGroupSummaryReport
+// LogGroupSummaryReport A LogAnalytics Log Group summary report.
 type LogGroupSummaryReport struct {
 
-	// log group count
+	// The log group count.
 	Count *int `mandatory:"false" json:"count"`
 }
 

@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // DbSystemSummary The Database Service supports several types of DB systems, ranging in size, price, and performance. For details about

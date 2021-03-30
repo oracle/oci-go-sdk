@@ -10,7 +10,7 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // UsageSummary The usage store result.
@@ -96,6 +96,9 @@ type UsageSummary struct {
 
 	// The overage usage.
 	Overage *string `mandatory:"false" json:"overage"`
+
+	// is forecasted data
+	IsForecast *bool `mandatory:"false" json:"isForecast"`
 
 	// For grouping, a tag definition. For filtering, a definition and key.
 	Tags []Tag `mandatory:"false" json:"tags"`

@@ -12,7 +12,7 @@
 package sch
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // WorkRequest An object representing an asynchronous work flow.

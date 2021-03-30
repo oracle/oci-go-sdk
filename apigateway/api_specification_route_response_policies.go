@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ApiSpecificationRouteResponsePolicies Behavior applied to any responses sent by the API for requests on this route.

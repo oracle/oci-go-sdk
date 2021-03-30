@@ -10,22 +10,22 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // UsageStatusItem UsageStatusItem
 type UsageStatusItem struct {
 
-	// data type
+	// The field data type.
 	DataType *string `mandatory:"false" json:"dataType"`
 
-	// is the field multi valued
+	// A flag indicating whether or not the field is multi-valued.
 	IsMultiValued *bool `mandatory:"false" json:"isMultiValued"`
 
-	// current usage
+	// The current usage of the field.
 	CurrentUsage *int64 `mandatory:"false" json:"currentUsage"`
 
-	// maximum available
+	// The maximum availability of the field.
 	MaxAvailable *int `mandatory:"false" json:"maxAvailable"`
 }
 

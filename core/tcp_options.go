@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // TcpOptions Optional and valid only for TCP. Use to specify particular destination ports for TCP rules.

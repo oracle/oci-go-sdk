@@ -4,13 +4,13 @@
 
 // Oracle Cloud VMware Solution API
 //
-// Use this API to manage the Oracle Cloud VMware Solution.
+// Use this API to manage your Oracle Cloud VMware Solution (https://docs.cloud.oracle.com/iaas/Content/VMware/Concepts/ocvsoverview.htm).
 //
 
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // EsxiHost An ESXi host is a node in an SDDC. At a minimum, each SDDC has 3 ESXi hosts

@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsAssociationParameterCollection LogAnalytics Association Parameter Collection
 type LogAnalyticsAssociationParameterCollection struct {
 
-	// list of entities
+	// A list of association parameters.
 	Items []LogAnalyticsAssociationParameter `mandatory:"false" json:"items"`
 }
 

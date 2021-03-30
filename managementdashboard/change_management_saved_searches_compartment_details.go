@@ -11,7 +11,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ChangeManagementSavedSearchesCompartmentDetails Compartment to which the saved search is being moved.

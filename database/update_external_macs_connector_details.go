@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // UpdateExternalMacsConnectorDetails Details for updating an external Management Agent cloud service (MACS) (https://docs.cloud.oracle.com/iaas/management-agents/index.html) database connection.

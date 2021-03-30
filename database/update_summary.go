@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // UpdateSummary A maintenance update for a cloud VM cluster. Applies to Exadata Cloud Service instances only.

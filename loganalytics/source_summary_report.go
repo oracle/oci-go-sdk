@@ -10,19 +10,19 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // SourceSummaryReport SourceSummaryReport
 type SourceSummaryReport struct {
 
-	// non out-of-the-box count
+	// The count of custom (user defined) sources.
 	NonOobCount *int `mandatory:"false" json:"nonOobCount"`
 
-	// count of sources set to auto-associate
+	// The count of sources set to auto-associate.
 	AutoAssociationSourceCount *int `mandatory:"false" json:"autoAssociationSourceCount"`
 
-	// out-of-the-box count
+	// The count of built in sources.
 	OobCount *int `mandatory:"false" json:"oobCount"`
 }
 

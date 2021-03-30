@@ -11,7 +11,7 @@ package waas
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // AccessRule A content access rule. An access rule specifies an action to take if a set of criteria is matched by a request.

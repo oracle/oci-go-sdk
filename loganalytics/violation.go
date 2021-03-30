@@ -10,25 +10,25 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // Violation Violation
 type Violation struct {
 
-	// indexes
+	// The indices associated with regular expression violations.
 	Indexes []Indexes `mandatory:"false" json:"indexes"`
 
-	// ruleDescription
+	// The rule description.
 	RuleDescription *string `mandatory:"false" json:"ruleDescription"`
 
-	// ruleName
+	// The rule name.
 	RuleName *string `mandatory:"false" json:"ruleName"`
 
-	// ruleRemediation
+	// The rule remediation.
 	RuleRemediation *string `mandatory:"false" json:"ruleRemediation"`
 
-	// ruleType
+	// The rule type.  Either WARN or ERROR.
 	RuleType ViolationRuleTypeEnum `mandatory:"false" json:"ruleType,omitempty"`
 }
 

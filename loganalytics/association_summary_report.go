@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // AssociationSummaryReport AssociationSummaryReport
 type AssociationSummaryReport struct {
 
-	// association count
+	// The association count.
 	AssociationCount *int `mandatory:"false" json:"associationCount"`
 }
 

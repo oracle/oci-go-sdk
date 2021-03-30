@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LabelNames LabelName
 type LabelNames struct {
 
-	// string list
+	// An array of label names.
 	LabelNames []string `mandatory:"false" json:"labelNames"`
 }
 

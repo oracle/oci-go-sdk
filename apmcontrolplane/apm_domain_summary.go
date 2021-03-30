@@ -11,7 +11,7 @@
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ApmDomainSummary Summary of an APM Domain.

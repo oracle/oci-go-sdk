@@ -5,7 +5,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 	"io"
 	"net/http"
 )
@@ -72,6 +72,9 @@ type UploadLogFileRequest struct {
 	// has been deleted and purged from the system, then a retry of the original creation request
 	// might be rejected.
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
+
+	// The log set that gets associated with the uploaded logs.
+	LogSet *string `mandatory:"false" contributesTo:"query" name:"logSet"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.

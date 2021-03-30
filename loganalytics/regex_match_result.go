@@ -10,25 +10,25 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // RegexMatchResult RegexMatchResult
 type RegexMatchResult struct {
 
-	// matchedLogEntryEndIndex
+	// The matched log entry end index.
 	MatchedLogEntryEndIndex *int `mandatory:"false" json:"matchedLogEntryEndIndex"`
 
-	// regexScore
+	// The regular expression score.
 	RegexScore *int `mandatory:"false" json:"regexScore"`
 
-	// regexStepsInfo
+	// The regular expression steps information.
 	RegexStepsInfo []StepInfo `mandatory:"false" json:"regexStepsInfo"`
 
-	// stepCount
+	// The regular expression step count.
 	StepCount *int `mandatory:"false" json:"stepCount"`
 
-	// subRegexesMatchInfo
+	// The regular expression match information.
 	SubRegexesMatchInfo map[string]MatchInfo `mandatory:"false" json:"subRegexesMatchInfo"`
 }
 

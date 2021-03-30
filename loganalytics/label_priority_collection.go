@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LabelPriorityCollection Label Priority Info List
 type LabelPriorityCollection struct {
 
-	// list of tag priorities
+	// An array of label priorities.
 	Items []LabelPriority `mandatory:"false" json:"items"`
 }
 

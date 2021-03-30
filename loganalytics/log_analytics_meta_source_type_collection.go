@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsMetaSourceTypeCollection Source Meta Type List
 type LogAnalyticsMetaSourceTypeCollection struct {
 
-	// list of tag priorities
+	// An array of meta source types.
 	Items []LogAnalyticsMetaSourceType `mandatory:"false" json:"items"`
 }
 

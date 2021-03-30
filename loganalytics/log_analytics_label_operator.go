@@ -10,16 +10,16 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsLabelOperator LogAnalyticsLabelOperator
 type LogAnalyticsLabelOperator struct {
 
-	// operator display name
+	// The operator display name.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// operator internal name
+	// The operator internal name.
 	Name *string `mandatory:"false" json:"name"`
 }
 

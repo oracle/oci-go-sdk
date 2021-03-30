@@ -8,9 +8,9 @@ package example
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v37/common"
-	"github.com/oracle/oci-go-sdk/v37/example/helpers"
-	"github.com/oracle/oci-go-sdk/v37/identity"
+	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v38/example/helpers"
+	"github.com/oracle/oci-go-sdk/v38/identity"
 	"log"
 	"os"
 	"os/user"

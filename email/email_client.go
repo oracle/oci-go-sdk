@@ -15,8 +15,8 @@ package email
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v37/common"
-	"github.com/oracle/oci-go-sdk/v37/common/auth"
+	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v38/common/auth"
 	"net/http"
 )
 

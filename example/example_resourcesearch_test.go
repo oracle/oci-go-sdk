@@ -11,9 +11,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/oracle/oci-go-sdk/v37/common"
-	"github.com/oracle/oci-go-sdk/v37/example/helpers"
-	"github.com/oracle/oci-go-sdk/v37/resourcesearch"
+	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v38/example/helpers"
+	"github.com/oracle/oci-go-sdk/v38/resourcesearch"
 )
 
 func Example_ResourceSearch() {

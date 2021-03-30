@@ -10,19 +10,19 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // FieldSummaryReport FieldSummaryReport
 type FieldSummaryReport struct {
 
-	// non out-of-the-box count
+	// The count of custom (user defined) fields.
 	NonOobCount *int `mandatory:"false" json:"nonOobCount"`
 
-	// out-of-the-box count
+	// The count of built in fields.
 	OobCount *int `mandatory:"false" json:"oobCount"`
 
-	// usage detail
+	// Field usage detailss
 	UsageDetails []UsageStatusItem `mandatory:"false" json:"usageDetails"`
 }
 

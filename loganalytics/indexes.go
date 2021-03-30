@@ -10,16 +10,16 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // Indexes Indexes
 type Indexes struct {
 
-	// endIndex
+	// The end index.
 	EndIndex *int `mandatory:"false" json:"endIndex"`
 
-	// startIndex
+	// The start index.
 	StartIndex *int `mandatory:"false" json:"startIndex"`
 }
 

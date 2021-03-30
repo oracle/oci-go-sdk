@@ -11,7 +11,7 @@ package apmsynthetics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ScriptedBrowserMonitorConfiguration Configuration details for the SCRIPTED_BROWSER monitor type.

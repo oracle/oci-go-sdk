@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ExtendedFieldsValidationResult ExtendedFieldsValidationResult
 type ExtendedFieldsValidationResult struct {
 
-	// items
+	// The regular expression evaluation result of an extended field definition.
 	Items []EfdRegexResult `mandatory:"false" json:"items"`
 }
 

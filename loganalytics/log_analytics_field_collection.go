@@ -10,13 +10,13 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // LogAnalyticsFieldCollection LogAnalytics Field Collection
 type LogAnalyticsFieldCollection struct {
 
-	// list of fields
+	// An array of fields.
 	Items []LogAnalyticsFieldSummary `mandatory:"false" json:"items"`
 }
 

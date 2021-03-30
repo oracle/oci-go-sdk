@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v37/common"
+	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
 // ConditionGroup Condition configured on a target
