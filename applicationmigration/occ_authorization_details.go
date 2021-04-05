@@ -17,10 +17,10 @@ import (
 	"github.com/oracle/oci-go-sdk/v38/common"
 )
 
-// OccAuthorizationDetails Credentials to access Oracle Cloud @ Customer, which is the source environment from which you want to migrate the application.
+// OccAuthorizationDetails Credentials to access Oracle Cloud@Customer, which is the source environment from which you want to migrate the application.
 type OccAuthorizationDetails struct {
 
-	// User with Compute Operations role in Oracle Cloud @ Customer.
+	// User with Compute Operations role in Oracle Cloud@Customer.
 	Username *string `mandatory:"true" json:"username"`
 
 	// Password for this user.

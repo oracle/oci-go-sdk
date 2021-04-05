@@ -18,44 +18,29 @@ Are you a Developer using the OCI SDK? If so, please fill out our survey to help
 
 
 ## Installing
-Use the following command to install this SDK:
+OCI Go SDK supports both `go get` and Go Modules installing.
 
+If you want to install the SDK under $GOPATH, you can use `go get` to retrieve the SDK:
 ```
 go get -u github.com/oracle/oci-go-sdk
 ```
-Alternatively you can git clone this repo.
+Alternatively, you can also clone the repo from [Github](https://github.com/oracle/oci-go-sdk).
 
-We've applied Go Module after v25.0.0, for legacy user not using Go Module, you can still clone the repo under Go Path and use same import as before.
 
-If you're using Go Module to import OCI Go SDK and you want to use the latest or specific Go SDK version, you need to update your require in `go.mod`:
-
+If you are using Go modules, you can install the latest or specific version(v25.0.0+) when adding the following in the go.mod file:
 ```go
 require github.com/oracle/oci-go-sdk/{major-version} {version}
 ```
-
-And in the code, you also need to update the import following this pattern:
-
+One example is:
 ```go
-import (
- "github.com/oracle/oci-go-sdk/{major-version}/common"
-)
+require github.com/oracle/oci-go-sdk/v38 v38.0.0
 ```
+Run `go mod tidy`
 
-If you don't update your import and use your import like this `github.com/oracle/oci-go-sdk/common`, your Go SDK version will remain at version: v24.3.0
-
-Everytime after a major version release (which means it will include some breaking changes), you'll need to update the version in require and import to get the latest changes.
+In your project, you also need to add/update the major-version to make sure `go build` works
 ```go
-import (
-    "github.com/oracle/oci-go-sdk/v25"
-)
+import "github.com/oracle/oci-go-sdk/v38/common"
 ```
-in `go.mod` or run `go mod tidy` / `go build` after updating the import
-```go
-require (
-    github.com/oracle/oci-go-sdk/{updated-major-version} {version}
-)
-```
-The version will not be impacted without updating the import
 
 ## Working with the Go SDK
 To start working with the Go SDK, you import the service package, create a client, and then use that client to make calls.
