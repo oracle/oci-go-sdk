@@ -20,12 +20,14 @@ const (
 	SourceTypesOcic            SourceTypesEnum = "OCIC"
 	SourceTypesInternalCompute SourceTypesEnum = "INTERNAL_COMPUTE"
 	SourceTypesOcc             SourceTypesEnum = "OCC"
+	SourceTypesOcicIdcs        SourceTypesEnum = "OCIC_IDCS"
 )
 
 var mappingSourceTypes = map[string]SourceTypesEnum{
 	"OCIC":             SourceTypesOcic,
 	"INTERNAL_COMPUTE": SourceTypesInternalCompute,
 	"OCC":              SourceTypesOcc,
+	"OCIC_IDCS":        SourceTypesOcicIdcs,
 }
 
 // GetSourceTypesEnumValues Enumerates the set of values for SourceTypesEnum

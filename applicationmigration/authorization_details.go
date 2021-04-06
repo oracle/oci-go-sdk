@@ -60,6 +60,10 @@ func (m *authorizationdetails) UnmarshalPolymorphicJSON(data []byte) (interface{
 		mm := InternalAuthorizationDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "OCIC_IDCS":
+		mm := OcicAuthorizationTokenDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "OCIC":
 		mm := OcicAuthorizationDetails{}
 		err = json.Unmarshal(data, &mm)

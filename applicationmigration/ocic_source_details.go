@@ -23,7 +23,7 @@ type OcicSourceDetails struct {
 	// The Oracle Cloud Infrastructure - Classic region from which you want to migrate your applications. For example, uscom-east-1 or uscom-central-1.
 	Region *string `mandatory:"true" json:"region"`
 
-	// If you are using a Oracle Cloud Infrastructure - Classic account with Identity Cloud Service (IDCS), enter the service instance ID.
+	// If you are using an Oracle Cloud Infrastructure - Classic account with Identity Cloud Service (IDCS), enter the service instance ID.
 	// For example, if Compute-567890123 is the account name of your Oracle Cloud Infrastructure Classic Compute service entitlement,
 	// then enter 567890123.
 	// If you are using a traditional Oracle Cloud Infrastructure - Classic account, enter your identity domain ID.
