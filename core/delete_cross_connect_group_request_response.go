@@ -5,7 +5,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/DeleteCrossConnectGroup.go.html to see an example of how to use DeleteCrossConnectGroupRequest.
 type DeleteCrossConnectGroupRequest struct {
 
-	// The OCID of the cross-connect group.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the cross-connect group.
 	CrossConnectGroupId *string `mandatory:"true" contributesTo:"path" name:"crossConnectGroupId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`

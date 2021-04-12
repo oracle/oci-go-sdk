@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // CreateIpSecConnectionDetails The representation of CreateIpSecConnectionDetails
@@ -26,7 +26,7 @@ type CreateIpSecConnectionDetails struct {
 	// The OCID of the Cpe object.
 	CpeId *string `mandatory:"true" json:"cpeId"`
 
-	// The OCID of the DRG.
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the DRG.
 	DrgId *string `mandatory:"true" json:"drgId"`
 
 	// Static routes to the CPE. A static route's CIDR must not be a
@@ -36,8 +36,8 @@ type CreateIpSecConnectionDetails struct {
 	// you must provide at least one valid static route. If you configure both
 	// tunnels to use BGP dynamic routing, you can provide an empty list for the static routes.
 	// For more information, see the important note in IPSecConnection.
-	// The CIDR can be either IPv4 or IPv6. Note that IPv6 addressing is currently supported only
-	// in certain regions. See IPv6 Addresses (https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/ipv6.htm).
+	// The CIDR can be either IPv4 or IPv6. IPv6 addressing is supported for all commercial and government regions.
+	// See IPv6 Addresses (https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/ipv6.htm).
 	// Example: `10.0.1.0/24`
 	// Example: `2001:db8::/32`
 	StaticRoutes []string `mandatory:"true" json:"staticRoutes"`

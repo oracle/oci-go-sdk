@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // RouteTable A collection of `RouteRule` objects, which are used to route packets
@@ -37,7 +37,7 @@ type RouteTable struct {
 	// The collection of rules for routing destination IPs to network devices.
 	RouteRules []RouteRule `mandatory:"true" json:"routeRules"`
 
-	// The OCID of the VCN the route table list belongs to.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the VCN the route table list belongs to.
 	VcnId *string `mandatory:"true" json:"vcnId"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a

@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -19,9 +19,6 @@ type ListSqlPlansRequest struct {
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// Required OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database.
-	DatabaseId *string `mandatory:"true" contributesTo:"query" name:"databaseId"`
-
 	// Unique SQL_ID for a SQL Statement.
 	// Example: `6rgjh9bjmy2s7`
 	SqlIdentifier *string `mandatory:"true" contributesTo:"query" name:"sqlIdentifier"`
@@ -29,6 +26,12 @@ type ListSqlPlansRequest struct {
 	// Unique plan hash for a SQL Plan of a particular SQL Statement.
 	// Example: `9820154385`
 	PlanHash []int64 `contributesTo:"query" name:"planHash" collectionFormat:"multi"`
+
+	// Optional OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the associated DBaaS entity.
+	DatabaseId *string `mandatory:"false" contributesTo:"query" name:"databaseId"`
+
+	// OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database insight resource.
+	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
 
 	// For list pagination. The value of the `opc-next-page` response header from
 	// the previous "List" call. For important details about how pagination works,

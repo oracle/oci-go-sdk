@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // UpdateEsxiHostDetails The ESXi host information to be updated.
@@ -20,6 +20,10 @@ type UpdateEsxiHostDetails struct {
 	// Esxi Host name requirements are 1-16 character length limit, Must start with a letter, Must be English letters, numbers, - only, No repeating hyphens, Must be unique within the SDDC.
 	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
+
+	// Billing option to switch to once existing billing cycle ends.
+	// ListSupportedSkus.
+	NextSku SkuEnum `mandatory:"false" json:"nextSku,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no
 	// predefined name, type, or namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).

@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -20,11 +20,14 @@ type SummarizeSqlStatisticsRequest struct {
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// Filter by one or more database type.
-	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D
+	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D, EXTERNAL-PDB, EXTERNAL-NONCDB.
 	DatabaseType []SummarizeSqlStatisticsDatabaseTypeEnum `contributesTo:"query" name:"databaseType" omitEmpty:"true" collectionFormat:"multi"`
 
-	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
+	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the associated DBaaS entity.
 	DatabaseId []string `contributesTo:"query" name:"databaseId" collectionFormat:"multi"`
+
+	// Optional list of database insight resource OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database insight resource.
+	Id []string `contributesTo:"query" name:"id" collectionFormat:"multi"`
 
 	// Filter sqls by percentage of db time.
 	DatabaseTimePctGreaterThan *float64 `mandatory:"false" contributesTo:"query" name:"databaseTimePctGreaterThan"`
@@ -130,17 +133,21 @@ type SummarizeSqlStatisticsDatabaseTypeEnum string
 
 // Set of constants representing the allowable values for SummarizeSqlStatisticsDatabaseTypeEnum
 const (
-	SummarizeSqlStatisticsDatabaseTypeAdwS SummarizeSqlStatisticsDatabaseTypeEnum = "ADW-S"
-	SummarizeSqlStatisticsDatabaseTypeAtpS SummarizeSqlStatisticsDatabaseTypeEnum = "ATP-S"
-	SummarizeSqlStatisticsDatabaseTypeAdwD SummarizeSqlStatisticsDatabaseTypeEnum = "ADW-D"
-	SummarizeSqlStatisticsDatabaseTypeAtpD SummarizeSqlStatisticsDatabaseTypeEnum = "ATP-D"
+	SummarizeSqlStatisticsDatabaseTypeAdwS           SummarizeSqlStatisticsDatabaseTypeEnum = "ADW-S"
+	SummarizeSqlStatisticsDatabaseTypeAtpS           SummarizeSqlStatisticsDatabaseTypeEnum = "ATP-S"
+	SummarizeSqlStatisticsDatabaseTypeAdwD           SummarizeSqlStatisticsDatabaseTypeEnum = "ADW-D"
+	SummarizeSqlStatisticsDatabaseTypeAtpD           SummarizeSqlStatisticsDatabaseTypeEnum = "ATP-D"
+	SummarizeSqlStatisticsDatabaseTypeExternalPdb    SummarizeSqlStatisticsDatabaseTypeEnum = "EXTERNAL-PDB"
+	SummarizeSqlStatisticsDatabaseTypeExternalNoncdb SummarizeSqlStatisticsDatabaseTypeEnum = "EXTERNAL-NONCDB"
 )
 
 var mappingSummarizeSqlStatisticsDatabaseType = map[string]SummarizeSqlStatisticsDatabaseTypeEnum{
-	"ADW-S": SummarizeSqlStatisticsDatabaseTypeAdwS,
-	"ATP-S": SummarizeSqlStatisticsDatabaseTypeAtpS,
-	"ADW-D": SummarizeSqlStatisticsDatabaseTypeAdwD,
-	"ATP-D": SummarizeSqlStatisticsDatabaseTypeAtpD,
+	"ADW-S":           SummarizeSqlStatisticsDatabaseTypeAdwS,
+	"ATP-S":           SummarizeSqlStatisticsDatabaseTypeAtpS,
+	"ADW-D":           SummarizeSqlStatisticsDatabaseTypeAdwD,
+	"ATP-D":           SummarizeSqlStatisticsDatabaseTypeAtpD,
+	"EXTERNAL-PDB":    SummarizeSqlStatisticsDatabaseTypeExternalPdb,
+	"EXTERNAL-NONCDB": SummarizeSqlStatisticsDatabaseTypeExternalNoncdb,
 }
 
 // GetSummarizeSqlStatisticsDatabaseTypeEnumValues Enumerates the set of values for SummarizeSqlStatisticsDatabaseTypeEnum

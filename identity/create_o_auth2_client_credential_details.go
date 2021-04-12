@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // CreateOAuth2ClientCredentialDetails The representation of CreateOAuth2ClientCredentialDetails

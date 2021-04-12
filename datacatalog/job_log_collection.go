@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // JobLogCollection Results of a job logs Listing. A job log is an audit log record inserted during the lifecycle of a job execution instance.

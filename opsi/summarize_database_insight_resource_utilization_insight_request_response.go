@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -20,7 +20,7 @@ type SummarizeDatabaseInsightResourceUtilizationInsightRequest struct {
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// Filter by resource metric.
-	// Supported values are CPU and STORAGE.
+	// Supported values are CPU , STORAGE, MEMORY and IO.
 	ResourceMetric *string `mandatory:"true" contributesTo:"query" name:"resourceMetric"`
 
 	// Specify time period in ISO 8601 format with respect to current time.
@@ -43,11 +43,14 @@ type SummarizeDatabaseInsightResourceUtilizationInsightRequest struct {
 	TimeIntervalEnd *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeIntervalEnd"`
 
 	// Filter by one or more database type.
-	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D
+	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D, EXTERNAL-PDB, EXTERNAL-NONCDB.
 	DatabaseType []SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum `contributesTo:"query" name:"databaseType" omitEmpty:"true" collectionFormat:"multi"`
 
-	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
+	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the associated DBaaS entity.
 	DatabaseId []string `contributesTo:"query" name:"databaseId" collectionFormat:"multi"`
+
+	// Optional list of database insight resource OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database insight resource.
+	Id []string `contributesTo:"query" name:"id" collectionFormat:"multi"`
 
 	// Number of days used for utilization forecast analysis.
 	ForecastDays *int `mandatory:"false" contributesTo:"query" name:"forecastDays"`
@@ -113,17 +116,21 @@ type SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum string
 
 // Set of constants representing the allowable values for SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum
 const (
-	SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAdwS SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum = "ADW-S"
-	SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAtpS SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum = "ATP-S"
-	SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAdwD SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum = "ADW-D"
-	SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAtpD SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum = "ATP-D"
+	SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAdwS           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum = "ADW-S"
+	SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAtpS           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum = "ATP-S"
+	SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAdwD           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum = "ADW-D"
+	SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAtpD           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum = "ATP-D"
+	SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeExternalPdb    SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum = "EXTERNAL-PDB"
+	SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeExternalNoncdb SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum = "EXTERNAL-NONCDB"
 )
 
 var mappingSummarizeDatabaseInsightResourceUtilizationInsightDatabaseType = map[string]SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum{
-	"ADW-S": SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAdwS,
-	"ATP-S": SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAtpS,
-	"ADW-D": SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAdwD,
-	"ATP-D": SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAtpD,
+	"ADW-S":           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAdwS,
+	"ATP-S":           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAtpS,
+	"ADW-D":           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAdwD,
+	"ATP-D":           SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeAtpD,
+	"EXTERNAL-PDB":    SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeExternalPdb,
+	"EXTERNAL-NONCDB": SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeExternalNoncdb,
 }
 
 // GetSummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceUtilizationInsightDatabaseTypeEnum

@@ -5,7 +5,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetSubnet.go.html to see an example of how to use GetSubnetRequest.
 type GetSubnetRequest struct {
 
-	// The OCID of the subnet.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the subnet.
 	SubnetId *string `mandatory:"true" contributesTo:"path" name:"subnetId"`
 
 	// Unique Oracle-assigned identifier for the request.

@@ -13,7 +13,7 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // SourceDetails An object that represents the source of the flow defined by the service connector.
@@ -57,6 +57,10 @@ func (m *sourcedetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, erro
 		mm := LoggingSourceDetails{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
+	case "streaming":
+		mm := StreamingSourceDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	default:
 		return *m, nil
 	}
@@ -71,11 +75,13 @@ type SourceDetailsKindEnum string
 
 // Set of constants representing the allowable values for SourceDetailsKindEnum
 const (
-	SourceDetailsKindLogging SourceDetailsKindEnum = "logging"
+	SourceDetailsKindLogging   SourceDetailsKindEnum = "logging"
+	SourceDetailsKindStreaming SourceDetailsKindEnum = "streaming"
 )
 
 var mappingSourceDetailsKind = map[string]SourceDetailsKindEnum{
-	"logging": SourceDetailsKindLogging,
+	"logging":   SourceDetailsKindLogging,
+	"streaming": SourceDetailsKindStreaming,
 }
 
 // GetSourceDetailsKindEnumValues Enumerates the set of values for SourceDetailsKindEnum

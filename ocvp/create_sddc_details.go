@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // CreateSddcDetails Details of the SDDC.
@@ -34,6 +34,10 @@ type CreateSddcDetails struct {
 	// you cannot add more VMware workloads to the SDDC until it again has at least
 	// 3 ESXi hosts.
 	EsxiHostsCount *int `mandatory:"true" json:"esxiHostsCount"`
+
+	// Billing option selected during SDDC creation
+	// ListSupportedSkus.
+	InitialSku SkuEnum `mandatory:"true" json:"initialSku"`
 
 	// One or more public SSH keys to be included in the `~/.ssh/authorized_keys` file for
 	// the default user on each ESXi host. Use a newline character to separate multiple keys.

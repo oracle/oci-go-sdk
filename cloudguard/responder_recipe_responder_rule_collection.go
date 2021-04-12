@@ -10,7 +10,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // ResponderRecipeResponderRuleCollection Summary of the ResponderRule within ResponderRecipe.

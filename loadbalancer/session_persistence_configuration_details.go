@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // SessionPersistenceConfigurationDetails The configuration details for implementing session persistence based on a user-specified cookie name (application

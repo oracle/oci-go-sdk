@@ -12,7 +12,8 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"encoding/json"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // DatabaseInsightsCollection Collection of database insight summary objects.
@@ -24,4 +25,31 @@ type DatabaseInsightsCollection struct {
 
 func (m DatabaseInsightsCollection) String() string {
 	return common.PointerString(m)
+}
+
+// UnmarshalJSON unmarshals from json
+func (m *DatabaseInsightsCollection) UnmarshalJSON(data []byte) (e error) {
+	model := struct {
+		Items []databaseinsightsummary `json:"items"`
+	}{}
+
+	e = json.Unmarshal(data, &model)
+	if e != nil {
+		return
+	}
+	var nn interface{}
+	m.Items = make([]DatabaseInsightSummary, len(model.Items))
+	for i, n := range model.Items {
+		nn, e = n.UnmarshalPolymorphicJSON(n.JsonData)
+		if e != nil {
+			return e
+		}
+		if nn != nil {
+			m.Items[i] = nn.(DatabaseInsightSummary)
+		} else {
+			m.Items[i] = nil
+		}
+	}
+
+	return
 }

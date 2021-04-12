@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -20,7 +20,7 @@ type SummarizeDatabaseInsightResourceStatisticsRequest struct {
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// Filter by resource metric.
-	// Supported values are CPU and STORAGE.
+	// Supported values are CPU , STORAGE, MEMORY and IO.
 	ResourceMetric *string `mandatory:"true" contributesTo:"query" name:"resourceMetric"`
 
 	// Specify time period in ISO 8601 format with respect to current time.
@@ -43,11 +43,14 @@ type SummarizeDatabaseInsightResourceStatisticsRequest struct {
 	TimeIntervalEnd *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeIntervalEnd"`
 
 	// Filter by one or more database type.
-	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D
+	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D, EXTERNAL-PDB, EXTERNAL-NONCDB.
 	DatabaseType []SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum `contributesTo:"query" name:"databaseType" omitEmpty:"true" collectionFormat:"multi"`
 
-	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
+	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the associated DBaaS entity.
 	DatabaseId []string `contributesTo:"query" name:"databaseId" collectionFormat:"multi"`
+
+	// Optional list of database insight resource OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database insight resource.
+	Id []string `contributesTo:"query" name:"id" collectionFormat:"multi"`
 
 	// Percentile values of daily usage to be used for computing the aggregate resource usage.
 	Percentile *int `mandatory:"false" contributesTo:"query" name:"percentile"`
@@ -77,6 +80,9 @@ type SummarizeDatabaseInsightResourceStatisticsRequest struct {
 
 	// The order in which resource statistics records are listed
 	SortBy SummarizeDatabaseInsightResourceStatisticsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
+
+	// Filter by one or more hostname.
+	HostName []string `contributesTo:"query" name:"hostName" collectionFormat:"multi"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.
@@ -134,17 +140,21 @@ type SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum string
 
 // Set of constants representing the allowable values for SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum
 const (
-	SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAdwS SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum = "ADW-S"
-	SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAtpS SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum = "ATP-S"
-	SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAdwD SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum = "ADW-D"
-	SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAtpD SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum = "ATP-D"
+	SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAdwS           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum = "ADW-S"
+	SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAtpS           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum = "ATP-S"
+	SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAdwD           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum = "ADW-D"
+	SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAtpD           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum = "ATP-D"
+	SummarizeDatabaseInsightResourceStatisticsDatabaseTypeExternalPdb    SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum = "EXTERNAL-PDB"
+	SummarizeDatabaseInsightResourceStatisticsDatabaseTypeExternalNoncdb SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum = "EXTERNAL-NONCDB"
 )
 
 var mappingSummarizeDatabaseInsightResourceStatisticsDatabaseType = map[string]SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum{
-	"ADW-S": SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAdwS,
-	"ATP-S": SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAtpS,
-	"ADW-D": SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAdwD,
-	"ATP-D": SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAtpD,
+	"ADW-S":           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAdwS,
+	"ATP-S":           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAtpS,
+	"ADW-D":           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAdwD,
+	"ATP-D":           SummarizeDatabaseInsightResourceStatisticsDatabaseTypeAtpD,
+	"EXTERNAL-PDB":    SummarizeDatabaseInsightResourceStatisticsDatabaseTypeExternalPdb,
+	"EXTERNAL-NONCDB": SummarizeDatabaseInsightResourceStatisticsDatabaseTypeExternalNoncdb,
 }
 
 // GetSummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceStatisticsDatabaseTypeEnum

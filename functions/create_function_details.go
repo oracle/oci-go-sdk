@@ -10,7 +10,7 @@
 package functions
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // CreateFunctionDetails Properties to create a new function.
@@ -43,6 +43,8 @@ type CreateFunctionDetails struct {
 
 	// Timeout for executions of the function. Value in seconds.
 	TimeoutInSeconds *int `mandatory:"false" json:"timeoutInSeconds"`
+
+	TraceConfig *FunctionTraceConfig `mandatory:"false" json:"traceConfig"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
 	// For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).

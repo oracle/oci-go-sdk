@@ -10,7 +10,7 @@
 package functions
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // Function A function resource defines the code (Docker image) and configuration for a specific function. Functions are defined in applications. Avoid entering confidential information.
@@ -52,6 +52,8 @@ type Function struct {
 
 	// Timeout for executions of the function. Value in seconds.
 	TimeoutInSeconds *int `mandatory:"false" json:"timeoutInSeconds"`
+
+	TraceConfig *FunctionTraceConfig `mandatory:"false" json:"traceConfig"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
 	// For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).

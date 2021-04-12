@@ -13,7 +13,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // ChangeSenderCompartmentDetails The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment

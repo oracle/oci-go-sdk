@@ -10,10 +10,10 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 
-	"github.com/oracle/oci-go-sdk/v38/example/helpers"
-	"github.com/oracle/oci-go-sdk/v38/healthchecks"
+	"github.com/oracle/oci-go-sdk/v39/example/helpers"
+	"github.com/oracle/oci-go-sdk/v39/healthchecks"
 )
 
 // Shows listing vantage points

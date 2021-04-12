@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // UpdateIpv6Details The representation of UpdateIpv6Details
@@ -33,14 +33,6 @@ type UpdateIpv6Details struct {
 	// predefined name, type, or namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).
 	// Example: `{"Department": "Finance"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
-
-	// Whether the IPv6 can be used for internet communication. Allowed by default for an IPv6 in
-	// a public subnet. Never allowed for an IPv6 in a private subnet. If the value is `true`, the
-	// IPv6 uses its public IP address for internet communication.
-	// If you switch this from `true` to `false`, the `publicIpAddress` attribute for the IPv6
-	// becomes null.
-	// Example: `false`
-	IsInternetAccessAllowed *bool `mandatory:"false" json:"isInternetAccessAllowed"`
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the VNIC to reassign the IPv6 to.
 	// The VNIC must be in the same subnet as the current VNIC.

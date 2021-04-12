@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -20,7 +20,7 @@ type SummarizeDatabaseInsightResourceCapacityTrendRequest struct {
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// Filter by resource metric.
-	// Supported values are CPU and STORAGE.
+	// Supported values are CPU , STORAGE, MEMORY and IO.
 	ResourceMetric *string `mandatory:"true" contributesTo:"query" name:"resourceMetric"`
 
 	// Specify time period in ISO 8601 format with respect to current time.
@@ -43,11 +43,14 @@ type SummarizeDatabaseInsightResourceCapacityTrendRequest struct {
 	TimeIntervalEnd *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeIntervalEnd"`
 
 	// Filter by one or more database type.
-	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D
+	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D, EXTERNAL-PDB, EXTERNAL-NONCDB.
 	DatabaseType []SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum `contributesTo:"query" name:"databaseType" omitEmpty:"true" collectionFormat:"multi"`
 
-	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
+	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the associated DBaaS entity.
 	DatabaseId []string `contributesTo:"query" name:"databaseId" collectionFormat:"multi"`
+
+	// Optional list of database insight resource OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database insight resource.
+	Id []string `contributesTo:"query" name:"id" collectionFormat:"multi"`
 
 	// Filter by utilization level by the following buckets:
 	//   - HIGH_UTILIZATION: DBs with utilization greater or equal than 75.
@@ -66,6 +69,12 @@ type SummarizeDatabaseInsightResourceCapacityTrendRequest struct {
 
 	// Sorts using end timestamp , capacity or baseCapacity
 	SortBy SummarizeDatabaseInsightResourceCapacityTrendSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
+
+	// Tablespace name for a database
+	TablespaceName *string `mandatory:"false" contributesTo:"query" name:"tablespaceName"`
+
+	// Filter by one or more hostname.
+	HostName []string `contributesTo:"query" name:"hostName" collectionFormat:"multi"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.
@@ -123,17 +132,21 @@ type SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum string
 
 // Set of constants representing the allowable values for SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum
 const (
-	SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAdwS SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum = "ADW-S"
-	SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAtpS SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum = "ATP-S"
-	SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAdwD SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum = "ADW-D"
-	SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAtpD SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum = "ATP-D"
+	SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAdwS           SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum = "ADW-S"
+	SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAtpS           SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum = "ATP-S"
+	SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAdwD           SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum = "ADW-D"
+	SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAtpD           SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum = "ATP-D"
+	SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeExternalPdb    SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum = "EXTERNAL-PDB"
+	SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeExternalNoncdb SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum = "EXTERNAL-NONCDB"
 )
 
 var mappingSummarizeDatabaseInsightResourceCapacityTrendDatabaseType = map[string]SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum{
-	"ADW-S": SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAdwS,
-	"ATP-S": SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAtpS,
-	"ADW-D": SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAdwD,
-	"ATP-D": SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAtpD,
+	"ADW-S":           SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAdwS,
+	"ATP-S":           SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAtpS,
+	"ADW-D":           SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAdwD,
+	"ATP-D":           SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeAtpD,
+	"EXTERNAL-PDB":    SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeExternalPdb,
+	"EXTERNAL-NONCDB": SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeExternalNoncdb,
 }
 
 // GetSummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceCapacityTrendDatabaseTypeEnum

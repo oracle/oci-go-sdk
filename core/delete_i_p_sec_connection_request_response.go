@@ -5,7 +5,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/DeleteIPSecConnection.go.html to see an example of how to use DeleteIPSecConnectionRequest.
 type DeleteIPSecConnectionRequest struct {
 
-	// The OCID of the IPSec connection.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the IPSec connection.
 	IpscId *string `mandatory:"true" contributesTo:"path" name:"ipscId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match`

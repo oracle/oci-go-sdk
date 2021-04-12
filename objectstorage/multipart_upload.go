@@ -12,7 +12,7 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // MultipartUpload Multipart uploads provide efficient and resilient uploads, especially for large objects. Multipart uploads also accommodate

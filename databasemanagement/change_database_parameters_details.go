@@ -12,10 +12,10 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
-// ChangeDatabaseParametersDetails The details required to change database parameters' values.
+// ChangeDatabaseParametersDetails The details required to change database parameter values.
 type ChangeDatabaseParametersDetails struct {
 	Credentials *DatabaseCredentials `mandatory:"true" json:"credentials"`
 

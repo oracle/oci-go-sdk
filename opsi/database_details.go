@@ -12,11 +12,14 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // DatabaseDetails Partial information about the database which includes id, name, type.
 type DatabaseDetails struct {
+
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database insight resource.
+	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database.
 	DatabaseId *string `mandatory:"true" json:"databaseId"`
@@ -32,6 +35,9 @@ type DatabaseDetails struct {
 
 	// The version of the database.
 	DatabaseVersion *string `mandatory:"false" json:"databaseVersion"`
+
+	// Array of hostname and instance name.
+	Instances []HostInstanceMap `mandatory:"false" json:"instances"`
 }
 
 func (m DatabaseDetails) String() string {

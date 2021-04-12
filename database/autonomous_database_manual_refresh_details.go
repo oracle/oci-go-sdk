@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // AutonomousDatabaseManualRefreshDetails Details of manual refresh for an Autonomous Database refreshable clone.

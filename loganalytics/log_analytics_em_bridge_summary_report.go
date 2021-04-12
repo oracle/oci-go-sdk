@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // LogAnalyticsEmBridgeSummaryReport Log-Analytics EM Bridge counts summary.

@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // DatabaseTimeAggregateMetrics The database time metric details.
@@ -24,6 +24,8 @@ type DatabaseTimeAggregateMetrics struct {
 	WaitTime *MetricDataPoint `mandatory:"false" json:"waitTime"`
 
 	UserIoTime *MetricDataPoint `mandatory:"false" json:"userIoTime"`
+
+	Cluster *MetricDataPoint `mandatory:"false" json:"cluster"`
 }
 
 func (m DatabaseTimeAggregateMetrics) String() string {
