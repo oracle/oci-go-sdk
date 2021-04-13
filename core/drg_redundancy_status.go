@@ -14,14 +14,14 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // DrgRedundancyStatus The redundancy status of the DRG. For more information, see
 // Redundancy Remedies (https://docs.cloud.oracle.com/iaas/Content/Network/Troubleshoot/drgredundancy.htm).
 type DrgRedundancyStatus struct {
 
-	// The OCID of the DRG.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the DRG.
 	Id *string `mandatory:"false" json:"id"`
 
 	// The redundancy status of the DRG.

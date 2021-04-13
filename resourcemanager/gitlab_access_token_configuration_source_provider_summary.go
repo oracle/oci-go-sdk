@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // GitlabAccessTokenConfigurationSourceProviderSummary Summary information for a configuration source provider of the type `GITLAB_ACCESS_TOKEN`.

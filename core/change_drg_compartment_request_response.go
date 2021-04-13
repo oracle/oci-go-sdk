@@ -5,7 +5,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ChangeDrgCompartment.go.html to see an example of how to use ChangeDrgCompartmentRequest.
 type ChangeDrgCompartmentRequest struct {
 
-	// The OCID of the DRG.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)](/iaas/Content/General/Concepts/identifiers.htm) of the DRG.
 	DrgId *string `mandatory:"true" contributesTo:"path" name:"drgId"`
 
 	// Request to change the compartment of a DRG.

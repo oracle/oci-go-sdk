@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -17,13 +17,25 @@ import (
 type ListDatabaseInsightsRequest struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment.
-	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
+
+	// Unique Enterprise Manager bridge identifier
+	EnterpriseManagerBridgeId *string `mandatory:"false" contributesTo:"query" name:"enterpriseManagerBridgeId"`
+
+	// Optional list of database insight resource OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database insight resource.
+	Id []string `contributesTo:"query" name:"id" collectionFormat:"multi"`
+
+	// Resource Status
+	Status []ResourceStatusEnum `contributesTo:"query" name:"status" omitEmpty:"true" collectionFormat:"multi"`
+
+	// Lifecycle states
+	LifecycleState []LifecycleStateEnum `contributesTo:"query" name:"lifecycleState" omitEmpty:"true" collectionFormat:"multi"`
 
 	// Filter by one or more database type.
-	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D
+	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D, EXTERNAL-PDB, EXTERNAL-NONCDB.
 	DatabaseType []ListDatabaseInsightsDatabaseTypeEnum `contributesTo:"query" name:"databaseType" omitEmpty:"true" collectionFormat:"multi"`
 
-	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
+	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the associated DBaaS entity.
 	DatabaseId []string `contributesTo:"query" name:"databaseId" collectionFormat:"multi"`
 
 	// Specifies the fields to return in a database summary response. By default all fields are returned if omitted.
@@ -106,17 +118,21 @@ type ListDatabaseInsightsDatabaseTypeEnum string
 
 // Set of constants representing the allowable values for ListDatabaseInsightsDatabaseTypeEnum
 const (
-	ListDatabaseInsightsDatabaseTypeAdwS ListDatabaseInsightsDatabaseTypeEnum = "ADW-S"
-	ListDatabaseInsightsDatabaseTypeAtpS ListDatabaseInsightsDatabaseTypeEnum = "ATP-S"
-	ListDatabaseInsightsDatabaseTypeAdwD ListDatabaseInsightsDatabaseTypeEnum = "ADW-D"
-	ListDatabaseInsightsDatabaseTypeAtpD ListDatabaseInsightsDatabaseTypeEnum = "ATP-D"
+	ListDatabaseInsightsDatabaseTypeAdwS           ListDatabaseInsightsDatabaseTypeEnum = "ADW-S"
+	ListDatabaseInsightsDatabaseTypeAtpS           ListDatabaseInsightsDatabaseTypeEnum = "ATP-S"
+	ListDatabaseInsightsDatabaseTypeAdwD           ListDatabaseInsightsDatabaseTypeEnum = "ADW-D"
+	ListDatabaseInsightsDatabaseTypeAtpD           ListDatabaseInsightsDatabaseTypeEnum = "ATP-D"
+	ListDatabaseInsightsDatabaseTypeExternalPdb    ListDatabaseInsightsDatabaseTypeEnum = "EXTERNAL-PDB"
+	ListDatabaseInsightsDatabaseTypeExternalNoncdb ListDatabaseInsightsDatabaseTypeEnum = "EXTERNAL-NONCDB"
 )
 
 var mappingListDatabaseInsightsDatabaseType = map[string]ListDatabaseInsightsDatabaseTypeEnum{
-	"ADW-S": ListDatabaseInsightsDatabaseTypeAdwS,
-	"ATP-S": ListDatabaseInsightsDatabaseTypeAtpS,
-	"ADW-D": ListDatabaseInsightsDatabaseTypeAdwD,
-	"ATP-D": ListDatabaseInsightsDatabaseTypeAtpD,
+	"ADW-S":           ListDatabaseInsightsDatabaseTypeAdwS,
+	"ATP-S":           ListDatabaseInsightsDatabaseTypeAtpS,
+	"ADW-D":           ListDatabaseInsightsDatabaseTypeAdwD,
+	"ATP-D":           ListDatabaseInsightsDatabaseTypeAtpD,
+	"EXTERNAL-PDB":    ListDatabaseInsightsDatabaseTypeExternalPdb,
+	"EXTERNAL-NONCDB": ListDatabaseInsightsDatabaseTypeExternalNoncdb,
 }
 
 // GetListDatabaseInsightsDatabaseTypeEnumValues Enumerates the set of values for ListDatabaseInsightsDatabaseTypeEnum

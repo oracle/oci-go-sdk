@@ -10,7 +10,7 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // RoverEntitlementCollection Results of a roverEntitlement search. Contains RoverEntitlementSummary.

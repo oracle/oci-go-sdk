@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // BootVolumeReplica An asynchronous replica of a boot volume that can then be used to create
@@ -71,6 +71,9 @@ type BootVolumeReplica struct {
 
 	// The image OCID used to create the boot volume the replica is replicated from.
 	ImageId *string `mandatory:"false" json:"imageId"`
+
+	// The total size of the data transferred from the source boot volume to the boot volume replica, in GBs.
+	TotalDataTransferredInGBs *int64 `mandatory:"false" json:"totalDataTransferredInGBs"`
 }
 
 func (m BootVolumeReplica) String() string {

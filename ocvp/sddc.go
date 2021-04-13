@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // Sddc An Oracle Cloud VMware Solution (https://docs.cloud.oracle.com/iaas/Content/VMware/Concepts/ocvsoverview.htm) software-defined data center (SDDC) contains the resources required for a
@@ -55,6 +55,10 @@ type Sddc struct {
 
 	// The number of ESXi hosts in the SDDC.
 	EsxiHostsCount *int `mandatory:"true" json:"esxiHostsCount"`
+
+	// Billing option selected during SDDC creation
+	// ListSupportedSkus.
+	InitialSku SkuEnum `mandatory:"true" json:"initialSku"`
 
 	// The FQDN for vCenter.
 	// Example: `vcenter-my-sddc.sddc.us-phoenix-1.oraclecloud.com`

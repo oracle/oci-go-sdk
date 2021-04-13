@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // ChangeCloudVmClusterCompartmentDetails The configuration details for moving the cloud VM cluster to another compartment. Applies to Exadata Cloud Service instances only.

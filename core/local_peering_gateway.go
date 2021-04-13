@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // LocalPeeringGateway A local peering gateway (LPG) is an object on a VCN that lets that VCN peer
@@ -48,6 +48,9 @@ type LocalPeeringGateway struct {
 	// peered. `PENDING` means the peering is being established. `REVOKED` means the
 	// LPG at the other end of the peering has been deleted.
 	PeeringStatus LocalPeeringGatewayPeeringStatusEnum `mandatory:"true" json:"peeringStatus"`
+
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the peered LPG.
+	PeerId *string `mandatory:"true" json:"peerId"`
 
 	// The date and time the LPG was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
 	// Example: `2016-08-25T21:10:29.600Z`

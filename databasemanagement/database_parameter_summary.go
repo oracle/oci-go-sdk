@@ -12,10 +12,10 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
-// DatabaseParameterSummary The details of a database parameter.
+// DatabaseParameterSummary A summary of the database parameter.
 type DatabaseParameterSummary struct {
 
 	// The parameter name.

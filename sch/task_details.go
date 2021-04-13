@@ -13,7 +13,7 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // TaskDetails An object that represents a task within the flow defined by the service connector.
@@ -53,6 +53,10 @@ func (m *taskdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, error)
 
 	var err error
 	switch m.Kind {
+	case "function":
+		mm := FunctionTaskDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "logRule":
 		mm := LogRuleTaskDetails{}
 		err = json.Unmarshal(data, &mm)
@@ -71,11 +75,13 @@ type TaskDetailsKindEnum string
 
 // Set of constants representing the allowable values for TaskDetailsKindEnum
 const (
-	TaskDetailsKindLogrule TaskDetailsKindEnum = "logRule"
+	TaskDetailsKindFunction TaskDetailsKindEnum = "function"
+	TaskDetailsKindLogrule  TaskDetailsKindEnum = "logRule"
 )
 
 var mappingTaskDetailsKind = map[string]TaskDetailsKindEnum{
-	"logRule": TaskDetailsKindLogrule,
+	"function": TaskDetailsKindFunction,
+	"logRule":  TaskDetailsKindLogrule,
 }
 
 // GetTaskDetailsKindEnumValues Enumerates the set of values for TaskDetailsKindEnum

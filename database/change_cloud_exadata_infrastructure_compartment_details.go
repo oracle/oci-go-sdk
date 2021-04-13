@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // ChangeCloudExadataInfrastructureCompartmentDetails The configuration details for moving the cloud Exadata infrastructure resource to another compartment. Applies to Exadata Cloud Service instances only.

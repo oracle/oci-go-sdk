@@ -12,10 +12,10 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
-// UpdateDatabaseParametersResult The results of database parameters' update.
+// UpdateDatabaseParametersResult The results of database parameter update.
 type UpdateDatabaseParametersResult struct {
 
 	// A map with the parameter name as key and its update status as value.

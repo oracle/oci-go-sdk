@@ -5,7 +5,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetPublicIp.go.html to see an example of how to use GetPublicIpRequest.
 type GetPublicIpRequest struct {
 
-	// The OCID of the public IP.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the public IP.
 	PublicIpId *string `mandatory:"true" contributesTo:"path" name:"publicIpId"`
 
 	// Unique Oracle-assigned identifier for the request.

@@ -5,7 +5,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ChangeSecurityListCompartment.go.html to see an example of how to use ChangeSecurityListCompartmentRequest.
 type ChangeSecurityListCompartmentRequest struct {
 
-	// The OCID of the security list.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the security list.
 	SecurityListId *string `mandatory:"true" contributesTo:"path" name:"securityListId"`
 
 	// Request to change the compartment of a given security list.

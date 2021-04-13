@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // SummarizeDatabaseInsightResourceUtilizationInsightAggregation Insights response containing current/projected groups for storage or CPU.
@@ -24,7 +24,7 @@ type SummarizeDatabaseInsightResourceUtilizationInsightAggregation struct {
 	// The end timestamp that was passed into the request.
 	TimeIntervalEnd *common.SDKTime `mandatory:"true" json:"timeIntervalEnd"`
 
-	// Defines the type of resource metric (CPU, STORAGE)
+	// Defines the type of resource metric (example: CPU, STORAGE)
 	ResourceMetric SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum `mandatory:"true" json:"resourceMetric"`
 
 	ProjectedUtilization *ResourceInsightProjectedUtilization `mandatory:"true" json:"projectedUtilization"`
@@ -41,13 +41,21 @@ type SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetric
 
 // Set of constants representing the allowable values for SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum
 const (
-	SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricCpu     SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum = "CPU"
-	SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricStorage SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum = "STORAGE"
+	SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricCpu       SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum = "CPU"
+	SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricStorage   SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum = "STORAGE"
+	SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricIo        SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum = "IO"
+	SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricMemory    SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum = "MEMORY"
+	SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricMemoryPga SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum = "MEMORY_PGA"
+	SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricMemorySga SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum = "MEMORY_SGA"
 )
 
 var mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetric = map[string]SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum{
-	"CPU":     SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricCpu,
-	"STORAGE": SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricStorage,
+	"CPU":        SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricCpu,
+	"STORAGE":    SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricStorage,
+	"IO":         SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricIo,
+	"MEMORY":     SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricMemory,
+	"MEMORY_PGA": SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricMemoryPga,
+	"MEMORY_SGA": SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricMemorySga,
 }
 
 // GetSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum

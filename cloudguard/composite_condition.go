@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // CompositeCondition Composite Condition object with nested Condition

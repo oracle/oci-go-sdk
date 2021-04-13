@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -20,7 +20,7 @@ type SummarizeDatabaseInsightResourceForecastTrendRequest struct {
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// Filter by resource metric.
-	// Supported values are CPU and STORAGE.
+	// Supported values are CPU , STORAGE, MEMORY and IO.
 	ResourceMetric *string `mandatory:"true" contributesTo:"query" name:"resourceMetric"`
 
 	// Specify time period in ISO 8601 format with respect to current time.
@@ -43,11 +43,14 @@ type SummarizeDatabaseInsightResourceForecastTrendRequest struct {
 	TimeIntervalEnd *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeIntervalEnd"`
 
 	// Filter by one or more database type.
-	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D
+	// Possible values are ADW-S, ATP-S, ADW-D, ATP-D, EXTERNAL-PDB, EXTERNAL-NONCDB.
 	DatabaseType []SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum `contributesTo:"query" name:"databaseType" omitEmpty:"true" collectionFormat:"multi"`
 
-	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
+	// Optional list of database OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the associated DBaaS entity.
 	DatabaseId []string `contributesTo:"query" name:"databaseId" collectionFormat:"multi"`
+
+	// Optional list of database insight resource OCIDs (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database insight resource.
+	Id []string `contributesTo:"query" name:"id" collectionFormat:"multi"`
 
 	// Choose the type of statistic metric data to be used for forecasting.
 	Statistic SummarizeDatabaseInsightResourceForecastTrendStatisticEnum `mandatory:"false" contributesTo:"query" name:"statistic" omitEmpty:"true"`
@@ -80,6 +83,12 @@ type SummarizeDatabaseInsightResourceForecastTrendRequest struct {
 	// the previous "List" call. For important details about how pagination works,
 	// see List Pagination (https://docs.cloud.oracle.com/Content/API/Concepts/usingapi.htm#nine).
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
+
+	// Filter by one or more hostname.
+	HostName []string `contributesTo:"query" name:"hostName" collectionFormat:"multi"`
+
+	// Tablespace name for a database
+	TablespaceName *string `mandatory:"false" contributesTo:"query" name:"tablespaceName"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.
@@ -137,17 +146,21 @@ type SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum string
 
 // Set of constants representing the allowable values for SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum
 const (
-	SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAdwS SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum = "ADW-S"
-	SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAtpS SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum = "ATP-S"
-	SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAdwD SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum = "ADW-D"
-	SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAtpD SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum = "ATP-D"
+	SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAdwS           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum = "ADW-S"
+	SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAtpS           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum = "ATP-S"
+	SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAdwD           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum = "ADW-D"
+	SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAtpD           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum = "ATP-D"
+	SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeExternalPdb    SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum = "EXTERNAL-PDB"
+	SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeExternalNoncdb SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum = "EXTERNAL-NONCDB"
 )
 
 var mappingSummarizeDatabaseInsightResourceForecastTrendDatabaseType = map[string]SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum{
-	"ADW-S": SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAdwS,
-	"ATP-S": SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAtpS,
-	"ADW-D": SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAdwD,
-	"ATP-D": SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAtpD,
+	"ADW-S":           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAdwS,
+	"ATP-S":           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAtpS,
+	"ADW-D":           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAdwD,
+	"ATP-D":           SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeAtpD,
+	"EXTERNAL-PDB":    SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeExternalPdb,
+	"EXTERNAL-NONCDB": SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeExternalNoncdb,
 }
 
 // GetSummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnumValues Enumerates the set of values for SummarizeDatabaseInsightResourceForecastTrendDatabaseTypeEnum

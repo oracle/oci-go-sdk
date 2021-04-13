@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // ActivityTimeSeriesMetrics The response object representing activityMetric details for a specific database at a particular time.
@@ -28,6 +28,8 @@ type ActivityTimeSeriesMetrics struct {
 	UserIoTime *MetricDataPoint `mandatory:"false" json:"userIoTime"`
 
 	CpuCount *MetricDataPoint `mandatory:"false" json:"cpuCount"`
+
+	Cluster *MetricDataPoint `mandatory:"false" json:"cluster"`
 }
 
 func (m ActivityTimeSeriesMetrics) String() string {

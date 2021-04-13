@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 	"net/http"
 )
 
@@ -19,12 +19,15 @@ type SummarizeSqlPlanInsightsRequest struct {
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// Required OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database.
-	DatabaseId *string `mandatory:"true" contributesTo:"query" name:"databaseId"`
-
 	// Unique SQL_ID for a SQL Statement.
 	// Example: `6rgjh9bjmy2s7`
 	SqlIdentifier *string `mandatory:"true" contributesTo:"query" name:"sqlIdentifier"`
+
+	// Optional OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the associated DBaaS entity.
+	DatabaseId *string `mandatory:"false" contributesTo:"query" name:"databaseId"`
+
+	// OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database insight resource.
+	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
 
 	// Specify time period in ISO 8601 format with respect to current time.
 	// Default is last 30 days represented by P30D.

@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // EsxiHost An ESXi host is a node in an SDDC. At a minimum, each SDDC has 3 ESXi hosts
@@ -31,6 +31,19 @@ type EsxiHost struct {
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the SDDC that the
 	// ESXi host belongs to.
 	SddcId *string `mandatory:"true" json:"sddcId"`
+
+	// Billing option selected during SDDC creation.
+	// ListSupportedSkus.
+	CurrentSku SkuEnum `mandatory:"true" json:"currentSku"`
+
+	// Billing option to switch to once existing billing cycle ends.
+	// ListSupportedSkus.
+	NextSku SkuEnum `mandatory:"true" json:"nextSku"`
+
+	// Current billing cycle end date. If nextSku is different from existing SKU, then we switch to newSKu
+	// after this contractEndDate
+	// Example: `2016-08-25T21:10:29.600Z`
+	BillingContractEndDate *common.SDKTime `mandatory:"true" json:"billingContractEndDate"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no
 	// predefined name, type, or namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).

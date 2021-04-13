@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // BlockVolumeReplica An asynchronous replica of a block volume that can then be used to create
@@ -68,6 +68,9 @@ type BlockVolumeReplica struct {
 	// predefined name, type, or namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).
 	// Example: `{"Department": "Finance"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
+
+	// The total size of the data transferred from the source block volume to the block volume replica, in GBs.
+	TotalDataTransferredInGBs *int64 `mandatory:"false" json:"totalDataTransferredInGBs"`
 }
 
 func (m BlockVolumeReplica) String() string {

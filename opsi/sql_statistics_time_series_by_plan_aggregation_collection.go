@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v38/common"
+	"github.com/oracle/oci-go-sdk/v39/common"
 )
 
 // SqlStatisticsTimeSeriesByPlanAggregationCollection SQL performance statistics by plan over the selected time window.
@@ -20,6 +20,9 @@ type SqlStatisticsTimeSeriesByPlanAggregationCollection struct {
 
 	// Unique SQL_ID for a SQL Statement.
 	SqlIdentifier *string `mandatory:"true" json:"sqlIdentifier"`
+
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database insight resource.
+	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database.
 	DatabaseId *string `mandatory:"true" json:"databaseId"`
