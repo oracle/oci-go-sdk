@@ -10,7 +10,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // ResponderExecutionTrendAggregation Provides the timestamps and their corresponding number of remediations.

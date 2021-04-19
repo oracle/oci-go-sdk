@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // TerminatePreemptionAction Terminates the preemptible instance when it is interrupted for eviction.

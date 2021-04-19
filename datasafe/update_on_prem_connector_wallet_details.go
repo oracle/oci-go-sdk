@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // UpdateOnPremConnectorWalletDetails The details used to update an on-premises connector's wallet.

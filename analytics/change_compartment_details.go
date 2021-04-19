@@ -10,7 +10,7 @@
 package analytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // ChangeCompartmentDetails Input payload to change a resource's compartment.

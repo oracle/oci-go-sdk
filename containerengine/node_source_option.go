@@ -13,7 +13,7 @@ package containerengine
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // NodeSourceOption The source option for the node.

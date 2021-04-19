@@ -12,7 +12,7 @@
 package audit
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // Configuration The retention period setting, specified in days. For more information, see Setting Audit

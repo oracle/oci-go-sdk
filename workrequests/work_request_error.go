@@ -14,7 +14,7 @@
 package workrequests
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // WorkRequestError An error encountered while executing an operation that is tracked by a work request.

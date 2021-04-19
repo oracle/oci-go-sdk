@@ -10,7 +10,7 @@
 package goldengate
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // UpdateDeploymentDetails The information to use to update a Deployment.

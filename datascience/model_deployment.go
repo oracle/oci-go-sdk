@@ -11,7 +11,7 @@ package datascience
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // ModelDeployment Model deployments are interactive coding environments for data scientists.

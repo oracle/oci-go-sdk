@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // JobSummary Details of a job. Jobs are scheduled instances of a job definition.
@@ -74,6 +74,9 @@ type JobSummary struct {
 
 	// The display name of the job definition resource that defined the scope of this job.
 	JobDefinitionName *string `mandatory:"false" json:"jobDefinitionName"`
+
+	// Unique key of the data asset to which this job applies, if the job involves a data asset.
+	DataAssetKey *string `mandatory:"false" json:"dataAssetKey"`
 
 	// Error code returned from the latest job execution for this job. Useful when the latest Job execution is in FAILED state.
 	ErrorCode *string `mandatory:"false" json:"errorCode"`

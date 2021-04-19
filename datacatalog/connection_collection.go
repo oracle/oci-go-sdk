@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // ConnectionCollection Results of a connections listing. Each member of the result is a summary representation of a connection to a data asset.

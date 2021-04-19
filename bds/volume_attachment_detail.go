@@ -12,7 +12,7 @@
 package bds
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // VolumeAttachmentDetail A detail of the attached block volume.

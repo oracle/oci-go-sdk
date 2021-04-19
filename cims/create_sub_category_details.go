@@ -10,7 +10,7 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // CreateSubCategoryDetails Details for creating the subcategory of the support ticket.

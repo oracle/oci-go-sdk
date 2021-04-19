@@ -10,7 +10,7 @@
 package apmsynthetics
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // MonitorSummary Information about the monitor.

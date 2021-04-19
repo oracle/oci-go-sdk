@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // NamePatternRule This rule projects fields by a name pattern, for example it may start with STR_ or end with _DATE. This is defined using a regular expression.

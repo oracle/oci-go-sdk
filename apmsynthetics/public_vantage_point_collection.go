@@ -10,7 +10,7 @@
 package apmsynthetics
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // PublicVantagePointCollection The results of a public vantage point search, which contains PublicVantagePointSummary items and other data in an APM domain.

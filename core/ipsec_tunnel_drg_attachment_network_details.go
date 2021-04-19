@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // IpsecTunnelDrgAttachmentNetworkDetails Specifies the IPSec tunnel attached to the DRG.

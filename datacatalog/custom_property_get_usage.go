@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // CustomPropertyGetUsage Details of a single custom property
@@ -45,6 +45,9 @@ type CustomPropertyGetUsage struct {
 
 	// If this field is a editable field
 	IsEditable *bool `mandatory:"false" json:"isEditable"`
+
+	// If this field is displayed in a list view of applicable objects.
+	IsShownInList *bool `mandatory:"false" json:"isShownInList"`
 
 	// Is this property allowed to have list of values
 	IsListType *bool `mandatory:"false" json:"isListType"`

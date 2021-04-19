@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // WorkRequestLogEntryCollection A list of work request logs.

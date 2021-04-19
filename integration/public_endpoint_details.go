@@ -11,7 +11,7 @@ package integration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // PublicEndpointDetails Public endpoint configuration details.

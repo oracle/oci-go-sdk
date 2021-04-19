@@ -5,7 +5,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 	"io"
 	"net/http"
 )
@@ -37,8 +37,16 @@ func (request GetTunnelCpeDeviceConfigContentRequest) String() string {
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request GetTunnelCpeDeviceConfigContentRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request GetTunnelCpeDeviceConfigContentRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser) (http.Request, error) {
+
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// BinaryRequestBody implements the OCIRequest interface
+func (request GetTunnelCpeDeviceConfigContentRequest) BinaryRequestBody() (*common.OCIReadSeekCloser, bool) {
+
+	return nil, false
+
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.

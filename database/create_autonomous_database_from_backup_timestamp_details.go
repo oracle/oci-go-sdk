@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // CreateAutonomousDatabaseFromBackupTimestampDetails Details to create a point-in-time clone of an Oracle Autonomous Database by specifying a timestamp. Point-in-time clones use backups as the source of the data for the clone.
@@ -121,6 +121,9 @@ type CreateAutonomousDatabaseFromBackupTimestampDetails struct {
 
 	// A valid Oracle Database version for Autonomous Database.
 	DbVersion *string `mandatory:"false" json:"dbVersion"`
+
+	// Customer Contacts.
+	CustomerContacts []CustomerContact `mandatory:"false" json:"customerContacts"`
 
 	// The Autonomous Database clone type.
 	CloneType CreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum `mandatory:"true" json:"cloneType"`
@@ -257,6 +260,11 @@ func (m CreateAutonomousDatabaseFromBackupTimestampDetails) GetDefinedTags() map
 //GetDbVersion returns DbVersion
 func (m CreateAutonomousDatabaseFromBackupTimestampDetails) GetDbVersion() *string {
 	return m.DbVersion
+}
+
+//GetCustomerContacts returns CustomerContacts
+func (m CreateAutonomousDatabaseFromBackupTimestampDetails) GetCustomerContacts() []CustomerContact {
+	return m.CustomerContacts
 }
 
 func (m CreateAutonomousDatabaseFromBackupTimestampDetails) String() string {

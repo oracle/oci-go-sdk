@@ -14,7 +14,7 @@
 package autoscaling
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // Capacity Capacity limits for the instance pool.

@@ -9,6 +9,7 @@ import (
 	"crypto/rsa"
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -295,11 +296,15 @@ type retryableOCIRequest struct {
 	retryPolicy *RetryPolicy
 }
 
-func (request retryableOCIRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request retryableOCIRequest) HTTPRequest(method, path string, binaryRequestBody *OCIReadSeekCloser) (http.Request, error) {
 	r := http.Request{}
 	r.Method = method
 	r.URL = &url.URL{Path: path}
 	return r, nil
+}
+
+func (request retryableOCIRequest) BinaryRequestBody() (*OCIReadSeekCloser, bool) {
+	return nil, false
 }
 
 func (request retryableOCIRequest) RetryPolicy() *RetryPolicy {
@@ -334,8 +339,8 @@ func TestRetry_NeverGetSuccessfulResponse(t *testing.T) {
 	retryableRequest := retryableOCIRequest{
 		retryPolicy: &retryPolicy,
 	}
-	// type OCIOperation func(context.Context, OCIRequest) (OCIResponse, error)
-	fakeOperation := func(context.Context, OCIRequest) (OCIResponse, error) {
+	// type OCIOperation func(context.Context, OCIRequest, OCIReadSeekCloser) (OCIResponse, error)
+	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser) (OCIResponse, error) {
 		return errorResponse, errors.New(errorMessage)
 	}
 
@@ -368,8 +373,8 @@ func TestRetry_ImmediatelyGetsSuccessfulResponse(t *testing.T) {
 	retryableRequest := retryableOCIRequest{
 		retryPolicy: &retryPolicy,
 	}
-	// type OCIOperation func(context.Context, OCIRequest) (OCIResponse, error)
-	fakeOperation := func(context.Context, OCIRequest) (OCIResponse, error) {
+	// type OCIOperation func(context.Context, OCIRequest, OCIReadSeekCloser) (OCIResponse, error)
+	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser) (OCIResponse, error) {
 		return successResponse, nil
 	}
 
@@ -402,8 +407,8 @@ func TestRetry_RaisesDeadlineExceededException(t *testing.T) {
 	retryableRequest := retryableOCIRequest{
 		retryPolicy: &retryPolicy,
 	}
-	// type OCIOperation func(context.Context, OCIRequest) (OCIResponse, error)
-	fakeOperation := func(context.Context, OCIRequest) (OCIResponse, error) {
+	// type OCIOperation func(context.Context, OCIReadSeekCloser) (OCIResponse, error)
+	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser) (OCIResponse, error) {
 		return errorResponse, nil
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
@@ -444,8 +449,8 @@ func TestRetry_GetsSuccessfulResponseAfterMultipleAttempts(t *testing.T) {
 	retryableRequest := retryableOCIRequest{
 		retryPolicy: &retryPolicy,
 	}
-	// type OCIOperation func(context.Context, OCIRequest) (OCIResponse, error)
-	fakeOperation := func(context.Context, OCIRequest) (OCIResponse, error) {
+	// type OCIOperation func(context.Context, OCIRequest, OCIReadSeekCloser) (OCIResponse, error)
+	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser) (OCIResponse, error) {
 		if numberOfTimesWeEnterShouldRetry < 7 {
 			return errorResponse, nil
 		}
@@ -472,7 +477,7 @@ func TestRetry_CancelContextWhileSleeping(t *testing.T) {
 	}
 	pol := NewRetryPolicy(uint(10), shouldRetryOperation, getNextDuration)
 	req := retryableOCIRequest{retryPolicy: &pol}
-	fakeOperation := func(context.Context, OCIRequest) (OCIResponse, error) { return errorResponse, nil }
+	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser) (OCIResponse, error) { return errorResponse, nil }
 
 	ctx, cancelFn := context.WithDeadline(context.Background(), time.Now().Add(10*time.Second))
 
@@ -704,4 +709,66 @@ func TestHomeDir(t *testing.T) {
 	h := getHomeFolder()
 	_, e := os.Stat(h)
 	assert.NoError(t, e)
+}
+
+func TestSeekable(t *testing.T) {
+	file, err := ioutil.TempFile("", "TEMPFILE")
+	assert.NoError(t, err)
+	_, err = file.WriteString("Hello World")
+	assert.NoError(t, err)
+	defer file.Close()
+	ocirsc := NewOCIReadSeekCloser(file)
+	assert.True(t, ocirsc.Seekable())
+
+	wrappedFile := ioutil.NopCloser(file)
+	wrappedOcirsc := NewOCIReadSeekCloser(wrappedFile)
+	assert.True(t, wrappedOcirsc.Seekable())
+
+	byteArray := []byte("test for section reader")
+	reader := bytes.NewReader(byteArray)
+
+	offset := int64(2)
+	sectionLength := int64(5)
+	sectionReader := io.NewSectionReader(reader, offset, sectionLength)
+	ocirsc = NewOCIReadSeekCloser(ioutil.NopCloser(sectionReader))
+	assert.True(t, ocirsc.Seekable())
+
+	ocirsc = NewOCIReadSeekCloser(ioutil.NopCloser(reader))
+	assert.True(t, ocirsc.Seekable())
+
+	nilOcirsc := NewOCIReadSeekCloser(nil)
+	assert.False(t, nilOcirsc.Seekable())
+
+}
+
+func TestSeek(t *testing.T) {
+	file, err := ioutil.TempFile("", "TEMPFILE")
+	assert.NoError(t, err)
+	_, err = file.WriteString("Hello World1")
+	assert.NoError(t, err)
+	defer file.Close()
+	offset := int64(0)
+	ocirsc := NewOCIReadSeekCloser(file)
+	curPos, e := ocirsc.Seek(offset, io.SeekCurrent)
+	if info, err := file.Stat(); err == nil {
+		length := info.Size()
+		assert.Equal(t, curPos, length)
+	}
+	offset = int64(2)
+	curPos, e = ocirsc.Seek(offset, io.SeekStart)
+	assert.Nil(t, e)
+	assert.Equal(t, curPos, offset)
+
+	byteArray := []byte("test for bytes.reader")
+	reader := bytes.NewReader(byteArray)
+	ocirsc = NewOCIReadSeekCloser(ioutil.NopCloser(reader))
+	offset = int64(6)
+	curPos, e = ocirsc.Seek(offset, io.SeekCurrent)
+	assert.Nil(t, e)
+	assert.Equal(t, curPos, offset)
+
+	offset = int64(0)
+	curPos, e = ocirsc.Seek(offset, io.SeekStart)
+	assert.Nil(t, e)
+	assert.Equal(t, curPos, offset)
 }

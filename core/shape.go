@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // Shape A compute instance shape that can be used in LaunchInstance.
@@ -65,6 +65,9 @@ type Shape struct {
 	// A short description of the local disks available for this shape.
 	// If the shape does not have any local disks, this field is `null`.
 	LocalDiskDescription *string `mandatory:"false" json:"localDiskDescription"`
+
+	// Whether live migration is supported for this shape.
+	IsLiveMigrationSupported *bool `mandatory:"false" json:"isLiveMigrationSupported"`
 
 	OcpuOptions *ShapeOcpuOptions `mandatory:"false" json:"ocpuOptions"`
 

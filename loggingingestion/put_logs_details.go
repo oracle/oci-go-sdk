@@ -10,7 +10,7 @@
 package loggingingestion
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // PutLogsDetails The request body for the PutLogs request.

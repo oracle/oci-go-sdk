@@ -12,7 +12,7 @@
 package sch
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // ServiceConnectorCollection Collection of service connector property summaries.

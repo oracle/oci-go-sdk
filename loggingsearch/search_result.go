@@ -10,7 +10,7 @@
 package loggingsearch
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // SearchResult A log search result entry.

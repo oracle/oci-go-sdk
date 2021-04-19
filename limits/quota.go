@@ -10,7 +10,7 @@
 package limits
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // Quota Quotas are applied on top of the service limits and inherited through the nested compartment hierarchy.

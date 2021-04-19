@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // SupportedSkuSummaryCollection A specific SKU. HOUR, MONTH, ONE_YEAR and THREE_YEARS supported by the Oracle Cloud VMware Solution.

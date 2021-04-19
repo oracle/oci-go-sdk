@@ -10,7 +10,7 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // ManagementAgent The details of the Management Agent inventory including the associated plugins.

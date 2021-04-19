@@ -12,8 +12,8 @@ package resourcesearch
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -114,8 +114,8 @@ func (client ResourceSearchClient) GetResourceType(ctx context.Context, request 
 }
 
 // getResourceType implements the OCIOperation interface (enables retrying operations)
-func (client ResourceSearchClient) getResourceType(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/resourceTypes/{name}")
+func (client ResourceSearchClient) getResourceType(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/resourceTypes/{name}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -168,8 +168,8 @@ func (client ResourceSearchClient) ListResourceTypes(ctx context.Context, reques
 }
 
 // listResourceTypes implements the OCIOperation interface (enables retrying operations)
-func (client ResourceSearchClient) listResourceTypes(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/resourceTypes")
+func (client ResourceSearchClient) listResourceTypes(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/resourceTypes", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -224,8 +224,8 @@ func (client ResourceSearchClient) SearchResources(ctx context.Context, request 
 }
 
 // searchResources implements the OCIOperation interface (enables retrying operations)
-func (client ResourceSearchClient) searchResources(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/resources")
+func (client ResourceSearchClient) searchResources(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/resources", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

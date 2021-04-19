@@ -13,7 +13,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // CreateSenderDetails The details needed for creating a sender.

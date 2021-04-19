@@ -12,8 +12,8 @@ package apmtraces
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -115,8 +115,8 @@ func (client QueryClient) ListQuickPicks(ctx context.Context, request ListQuickP
 }
 
 // listQuickPicks implements the OCIOperation interface (enables retrying operations)
-func (client QueryClient) listQuickPicks(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/queries/quickPicks")
+func (client QueryClient) listQuickPicks(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/queries/quickPicks", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -172,8 +172,8 @@ func (client QueryClient) Query(ctx context.Context, request QueryRequest) (resp
 }
 
 // query implements the OCIOperation interface (enables retrying operations)
-func (client QueryClient) query(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/queries/actions/runQuery")
+func (client QueryClient) query(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/queries/actions/runQuery", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -231,8 +231,8 @@ func (client QueryClient) QueryOld(ctx context.Context, request QueryOldRequest)
 }
 
 // queryOld implements the OCIOperation interface (enables retrying operations)
-func (client QueryClient) queryOld(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/queries/action/runQuery")
+func (client QueryClient) queryOld(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/queries/action/runQuery", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

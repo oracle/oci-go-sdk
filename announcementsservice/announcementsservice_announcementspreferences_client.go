@@ -12,8 +12,8 @@ package announcementsservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,8 @@ func (client AnnouncementsPreferencesClient) CreateAnnouncementsPreference(ctx c
 }
 
 // createAnnouncementsPreference implements the OCIOperation interface (enables retrying operations)
-func (client AnnouncementsPreferencesClient) createAnnouncementsPreference(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/announcementsPreferences")
+func (client AnnouncementsPreferencesClient) createAnnouncementsPreference(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/announcementsPreferences", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -173,8 +173,8 @@ func (client AnnouncementsPreferencesClient) GetAnnouncementsPreference(ctx cont
 }
 
 // getAnnouncementsPreference implements the OCIOperation interface (enables retrying operations)
-func (client AnnouncementsPreferencesClient) getAnnouncementsPreference(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/announcementsPreferences/{preferenceId}")
+func (client AnnouncementsPreferencesClient) getAnnouncementsPreference(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/announcementsPreferences/{preferenceId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -227,8 +227,8 @@ func (client AnnouncementsPreferencesClient) ListAnnouncementsPreferences(ctx co
 }
 
 // listAnnouncementsPreferences implements the OCIOperation interface (enables retrying operations)
-func (client AnnouncementsPreferencesClient) listAnnouncementsPreferences(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/announcementsPreferences")
+func (client AnnouncementsPreferencesClient) listAnnouncementsPreferences(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/announcementsPreferences", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -281,8 +281,8 @@ func (client AnnouncementsPreferencesClient) UpdateAnnouncementsPreference(ctx c
 }
 
 // updateAnnouncementsPreference implements the OCIOperation interface (enables retrying operations)
-func (client AnnouncementsPreferencesClient) updateAnnouncementsPreference(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/announcementsPreferences/{preferenceId}")
+func (client AnnouncementsPreferencesClient) updateAnnouncementsPreference(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/announcementsPreferences/{preferenceId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

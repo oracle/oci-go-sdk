@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // ChangeManagedDatabaseGroupCompartmentDetails The details required to change the compartment of a Managed Database Group.

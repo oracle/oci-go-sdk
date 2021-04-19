@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // RemoveManagedDatabaseFromManagedDatabaseGroupDetails The Managed Database details required to remove it from a Managed Database Group.

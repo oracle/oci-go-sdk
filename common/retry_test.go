@@ -96,12 +96,16 @@ type mockedRequest struct {
 	Policy  *RetryPolicy
 }
 
-func (m mockedRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (m mockedRequest) HTTPRequest(method, path string, binaryRequestBody *OCIReadSeekCloser) (http.Request, error) {
 	return m.Request, nil
 }
 
 func (m mockedRequest) RetryPolicy() *RetryPolicy {
 	return m.Policy
+}
+
+func (m mockedRequest) BinaryRequestBody() (*OCIReadSeekCloser, bool) {
+	return NewOCIReadSeekCloser(nil), false
 }
 
 func TestRetryTokenPersists(t *testing.T) {
@@ -111,12 +115,12 @@ func TestRetryTokenPersists(t *testing.T) {
 	req.Header.Set(requestHeaderOpcRetryToken, token)
 	policy := getExponentialBackoffRetryPolicy(2)
 	r := mockedRequest{Request: *req, Policy: &policy}
-	operation := func(i context.Context, request OCIRequest) (OCIResponse, error) {
+	operation := func(i context.Context, request OCIRequest, binaryRequestBody *OCIReadSeekCloser) (OCIResponse, error) {
 		httpResponse := http.Response{
 			Header:     http.Header{},
 			StatusCode: 200,
 		}
-		httpReq, _ := request.HTTPRequest("POST", "/some")
+		httpReq, _ := request.HTTPRequest("POST", "/some", NewOCIReadSeekCloser(nil))
 		headerToken := httpReq.Header.Get(requestHeaderOpcRetryToken)
 
 		assert.Equal(t, token, headerToken)
@@ -133,7 +137,7 @@ func TestRetryWithPanicInOperation(t *testing.T) {
 	policy := getExponentialBackoffRetryPolicy(3)
 	r := mockedRequest{Request: *req, Policy: &policy}
 	times := 0
-	operation := func(i context.Context, request OCIRequest) (OCIResponse, error) {
+	operation := func(i context.Context, request OCIRequest, binaryRequestBody *OCIReadSeekCloser) (OCIResponse, error) {
 		httpResponse := http.Response{
 			Header:     http.Header{},
 			StatusCode: 200,

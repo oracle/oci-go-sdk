@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // SummarizeDatabaseInsightResourceUtilizationInsightAggregation Insights response containing current/projected groups for storage or CPU.

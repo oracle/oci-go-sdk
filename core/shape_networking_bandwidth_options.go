@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // ShapeNetworkingBandwidthOptions For a flexible shape, the amount of networking bandwidth available for instances that use this shape.

@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,8 @@ func (client TransferJobClient) ChangeTransferJobCompartment(ctx context.Context
 }
 
 // changeTransferJobCompartment implements the OCIOperation interface (enables retrying operations)
-func (client TransferJobClient) changeTransferJobCompartment(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{transferJobId}/actions/changeCompartment")
+func (client TransferJobClient) changeTransferJobCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{transferJobId}/actions/changeCompartment", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -178,8 +178,8 @@ func (client TransferJobClient) CreateTransferJob(ctx context.Context, request C
 }
 
 // createTransferJob implements the OCIOperation interface (enables retrying operations)
-func (client TransferJobClient) createTransferJob(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs")
+func (client TransferJobClient) createTransferJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -232,8 +232,8 @@ func (client TransferJobClient) DeleteTransferJob(ctx context.Context, request D
 }
 
 // deleteTransferJob implements the OCIOperation interface (enables retrying operations)
-func (client TransferJobClient) deleteTransferJob(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/transferJobs/{id}")
+func (client TransferJobClient) deleteTransferJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/transferJobs/{id}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -286,8 +286,8 @@ func (client TransferJobClient) GetTransferJob(ctx context.Context, request GetT
 }
 
 // getTransferJob implements the OCIOperation interface (enables retrying operations)
-func (client TransferJobClient) getTransferJob(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}")
+func (client TransferJobClient) getTransferJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -340,8 +340,8 @@ func (client TransferJobClient) ListTransferJobs(ctx context.Context, request Li
 }
 
 // listTransferJobs implements the OCIOperation interface (enables retrying operations)
-func (client TransferJobClient) listTransferJobs(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs")
+func (client TransferJobClient) listTransferJobs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -394,8 +394,8 @@ func (client TransferJobClient) UpdateTransferJob(ctx context.Context, request U
 }
 
 // updateTransferJob implements the OCIOperation interface (enables retrying operations)
-func (client TransferJobClient) updateTransferJob(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/transferJobs/{id}")
+func (client TransferJobClient) updateTransferJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/transferJobs/{id}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

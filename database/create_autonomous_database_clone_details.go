@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // CreateAutonomousDatabaseCloneDetails Details to create an Oracle Autonomous Database by cloning an existing Autonomous Database.
@@ -118,6 +118,9 @@ type CreateAutonomousDatabaseCloneDetails struct {
 
 	// A valid Oracle Database version for Autonomous Database.
 	DbVersion *string `mandatory:"false" json:"dbVersion"`
+
+	// Customer Contacts.
+	CustomerContacts []CustomerContact `mandatory:"false" json:"customerContacts"`
 
 	// The Autonomous Database clone type.
 	CloneType CreateAutonomousDatabaseCloneDetailsCloneTypeEnum `mandatory:"true" json:"cloneType"`
@@ -254,6 +257,11 @@ func (m CreateAutonomousDatabaseCloneDetails) GetDefinedTags() map[string]map[st
 //GetDbVersion returns DbVersion
 func (m CreateAutonomousDatabaseCloneDetails) GetDbVersion() *string {
 	return m.DbVersion
+}
+
+//GetCustomerContacts returns CustomerContacts
+func (m CreateAutonomousDatabaseCloneDetails) GetCustomerContacts() []CustomerContact {
+	return m.CustomerContacts
 }
 
 func (m CreateAutonomousDatabaseCloneDetails) String() string {

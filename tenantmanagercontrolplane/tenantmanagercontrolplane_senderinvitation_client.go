@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,8 @@ func (client SenderInvitationClient) CancelSenderInvitation(ctx context.Context,
 }
 
 // cancelSenderInvitation implements the OCIOperation interface (enables retrying operations)
-func (client SenderInvitationClient) cancelSenderInvitation(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/senderInvitations/{senderInvitationId}/actions/cancel")
+func (client SenderInvitationClient) cancelSenderInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/senderInvitations/{senderInvitationId}/actions/cancel", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -178,8 +178,8 @@ func (client SenderInvitationClient) CreateSenderInvitation(ctx context.Context,
 }
 
 // createSenderInvitation implements the OCIOperation interface (enables retrying operations)
-func (client SenderInvitationClient) createSenderInvitation(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/senderInvitations")
+func (client SenderInvitationClient) createSenderInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/senderInvitations", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -232,8 +232,8 @@ func (client SenderInvitationClient) GetSenderInvitation(ctx context.Context, re
 }
 
 // getSenderInvitation implements the OCIOperation interface (enables retrying operations)
-func (client SenderInvitationClient) getSenderInvitation(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/senderInvitations/{senderInvitationId}")
+func (client SenderInvitationClient) getSenderInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/senderInvitations/{senderInvitationId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -286,8 +286,8 @@ func (client SenderInvitationClient) ListSenderInvitations(ctx context.Context, 
 }
 
 // listSenderInvitations implements the OCIOperation interface (enables retrying operations)
-func (client SenderInvitationClient) listSenderInvitations(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/senderInvitations")
+func (client SenderInvitationClient) listSenderInvitations(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/senderInvitations", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -340,8 +340,8 @@ func (client SenderInvitationClient) UpdateSenderInvitation(ctx context.Context,
 }
 
 // updateSenderInvitation implements the OCIOperation interface (enables retrying operations)
-func (client SenderInvitationClient) updateSenderInvitation(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/senderInvitations/{senderInvitationId}")
+func (client SenderInvitationClient) updateSenderInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/senderInvitations/{senderInvitationId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

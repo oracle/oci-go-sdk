@@ -12,7 +12,7 @@
 package monitoring
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // ListMetricsDetails The request details for retrieving metric definitions. Specify optional properties to filter the returned results.

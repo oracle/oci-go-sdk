@@ -12,8 +12,8 @@ package secrets
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -115,8 +115,8 @@ func (client SecretsClient) GetSecretBundle(ctx context.Context, request GetSecr
 }
 
 // getSecretBundle implements the OCIOperation interface (enables retrying operations)
-func (client SecretsClient) getSecretBundle(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/secretbundles/{secretId}")
+func (client SecretsClient) getSecretBundle(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/secretbundles/{secretId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -169,8 +169,8 @@ func (client SecretsClient) ListSecretBundleVersions(ctx context.Context, reques
 }
 
 // listSecretBundleVersions implements the OCIOperation interface (enables retrying operations)
-func (client SecretsClient) listSecretBundleVersions(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/secretbundles/{secretId}/versions")
+func (client SecretsClient) listSecretBundleVersions(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/secretbundles/{secretId}/versions", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

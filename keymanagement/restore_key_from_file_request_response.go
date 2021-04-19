@@ -5,7 +5,7 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 	"io"
 	"net/http"
 )
@@ -60,8 +60,22 @@ func (request RestoreKeyFromFileRequest) String() string {
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request RestoreKeyFromFileRequest) HTTPRequest(method, path string) (http.Request, error) {
-	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+func (request RestoreKeyFromFileRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser) (http.Request, error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+	if err == nil && binaryRequestBody.Seekable() {
+		common.UpdateRequestBinaryBody(&httpRequest, binaryRequestBody)
+	}
+	return httpRequest, err
+}
+
+// BinaryRequestBody implements the OCIRequest interface
+func (request RestoreKeyFromFileRequest) BinaryRequestBody() (*common.OCIReadSeekCloser, bool) {
+	rsc := common.NewOCIReadSeekCloser(request.RestoreKeyFromFileDetails)
+	if rsc.Seekable() {
+		return rsc, true
+	}
+	return nil, true
+
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.

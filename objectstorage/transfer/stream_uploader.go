@@ -6,7 +6,7 @@ package transfer
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 	"strings"
 	"sync"
 )

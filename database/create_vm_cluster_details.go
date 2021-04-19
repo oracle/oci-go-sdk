@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // CreateVmClusterDetails Details for the create Exadata VM cluster operation. Applies to Exadata Cloud@Customer instances only.

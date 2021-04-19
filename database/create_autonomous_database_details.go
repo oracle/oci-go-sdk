@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // CreateAutonomousDatabaseDetails Details to create an Oracle Autonomous Database.
@@ -115,6 +115,9 @@ type CreateAutonomousDatabaseDetails struct {
 
 	// A valid Oracle Database version for Autonomous Database.
 	DbVersion *string `mandatory:"false" json:"dbVersion"`
+
+	// Customer Contacts.
+	CustomerContacts []CustomerContact `mandatory:"false" json:"customerContacts"`
 
 	// The Autonomous Database workload type. The following values are valid:
 	// - OLTP - indicates an Autonomous Transaction Processing database
@@ -248,6 +251,11 @@ func (m CreateAutonomousDatabaseDetails) GetDefinedTags() map[string]map[string]
 //GetDbVersion returns DbVersion
 func (m CreateAutonomousDatabaseDetails) GetDbVersion() *string {
 	return m.DbVersion
+}
+
+//GetCustomerContacts returns CustomerContacts
+func (m CreateAutonomousDatabaseDetails) GetCustomerContacts() []CustomerContact {
+	return m.CustomerContacts
 }
 
 func (m CreateAutonomousDatabaseDetails) String() string {

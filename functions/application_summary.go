@@ -10,7 +10,7 @@
 package functions
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // ApplicationSummary Summary of an application.

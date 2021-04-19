@@ -10,7 +10,7 @@
 package announcementsservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // Property A generic property that might be associated with the affected resource.

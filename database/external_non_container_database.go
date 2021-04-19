@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // ExternalNonContainerDatabase an external Oracle non-container database.
@@ -70,6 +70,8 @@ type ExternalNonContainerDatabase struct {
 	DbPacks *string `mandatory:"false" json:"dbPacks"`
 
 	DatabaseManagementConfig *DatabaseManagementConfig `mandatory:"false" json:"databaseManagementConfig"`
+
+	OperationsInsightsConfig *OperationsInsightsConfig `mandatory:"false" json:"operationsInsightsConfig"`
 }
 
 func (m ExternalNonContainerDatabase) String() string {
