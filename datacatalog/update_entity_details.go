@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // UpdateEntityDetails Properties used in entity update operations.
@@ -19,6 +19,9 @@ type UpdateEntityDetails struct {
 	// A user-friendly display name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
+
+	// Optional user friendly business name of the data entity. If set, this supplements the harvested display name of the object.
+	BusinessName *string `mandatory:"false" json:"businessName"`
 
 	// Detailed description of a data entity.
 	Description *string `mandatory:"false" json:"description"`

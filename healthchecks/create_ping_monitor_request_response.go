@@ -5,7 +5,7 @@
 package healthchecks
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 	"net/http"
 )
 
@@ -40,8 +40,16 @@ func (request CreatePingMonitorRequest) String() string {
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request CreatePingMonitorRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request CreatePingMonitorRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser) (http.Request, error) {
+
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// BinaryRequestBody implements the OCIRequest interface
+func (request CreatePingMonitorRequest) BinaryRequestBody() (*common.OCIReadSeekCloser, bool) {
+
+	return nil, false
+
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.

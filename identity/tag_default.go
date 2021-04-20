@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // TagDefault Tag defaults let you specify a default tag (tagnamespace.tag="value") to apply to all resource types

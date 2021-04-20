@@ -12,8 +12,8 @@ package cims
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -114,8 +114,8 @@ func (client IncidentClient) CreateIncident(ctx context.Context, request CreateI
 }
 
 // createIncident implements the OCIOperation interface (enables retrying operations)
-func (client IncidentClient) createIncident(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/v2/incidents")
+func (client IncidentClient) createIncident(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/v2/incidents", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -168,8 +168,8 @@ func (client IncidentClient) GetIncident(ctx context.Context, request GetInciden
 }
 
 // getIncident implements the OCIOperation interface (enables retrying operations)
-func (client IncidentClient) getIncident(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/{incidentKey}")
+func (client IncidentClient) getIncident(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/{incidentKey}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -222,8 +222,8 @@ func (client IncidentClient) GetStatus(ctx context.Context, request GetStatusReq
 }
 
 // getStatus implements the OCIOperation interface (enables retrying operations)
-func (client IncidentClient) getStatus(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/status/{source}")
+func (client IncidentClient) getStatus(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/status/{source}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -276,8 +276,8 @@ func (client IncidentClient) ListIncidentResourceTypes(ctx context.Context, requ
 }
 
 // listIncidentResourceTypes implements the OCIOperation interface (enables retrying operations)
-func (client IncidentClient) listIncidentResourceTypes(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/incidentResourceTypes")
+func (client IncidentClient) listIncidentResourceTypes(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/incidentResourceTypes", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -330,8 +330,8 @@ func (client IncidentClient) ListIncidents(ctx context.Context, request ListInci
 }
 
 // listIncidents implements the OCIOperation interface (enables retrying operations)
-func (client IncidentClient) listIncidents(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents")
+func (client IncidentClient) listIncidents(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -384,8 +384,8 @@ func (client IncidentClient) UpdateIncident(ctx context.Context, request UpdateI
 }
 
 // updateIncident implements the OCIOperation interface (enables retrying operations)
-func (client IncidentClient) updateIncident(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/v2/incidents/{incidentKey}")
+func (client IncidentClient) updateIncident(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/v2/incidents/{incidentKey}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -438,8 +438,8 @@ func (client IncidentClient) ValidateUser(ctx context.Context, request ValidateU
 }
 
 // validateUser implements the OCIOperation interface (enables retrying operations)
-func (client IncidentClient) validateUser(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/user/validate")
+func (client IncidentClient) validateUser(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/v2/incidents/user/validate", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

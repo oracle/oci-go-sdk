@@ -5,7 +5,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 	"net/http"
 )
 
@@ -56,8 +56,16 @@ func (request ListPackagesRequest) String() string {
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request ListPackagesRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request ListPackagesRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser) (http.Request, error) {
+
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// BinaryRequestBody implements the OCIRequest interface
+func (request ListPackagesRequest) BinaryRequestBody() (*common.OCIReadSeekCloser, bool) {
+
+	return nil, false
+
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.

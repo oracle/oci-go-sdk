@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // UpdateConnectionDetails Properties used in connection update operations.
@@ -43,7 +43,7 @@ type UpdateConnectionDetails struct {
 	// To determine the set of optional and required properties for a connection type, a query can be done
 	// on '/types?type=connection' that returns a collection of all connection types. The appropriate connection
 	// type, which will include definitions of all of it's properties, can be identified from this collection.
-	// Example: `{"encProperties": { "default": { "password": "pwd"}}}`
+	// Example: `{"encProperties": { "default": { "password": "example-password"}}}`
 	EncProperties map[string]map[string]string `mandatory:"false" json:"encProperties"`
 
 	// Indicates whether this connection is the default connection.

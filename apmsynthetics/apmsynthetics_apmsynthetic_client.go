@@ -12,8 +12,8 @@ package apmsynthetics
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,8 @@ func (client ApmSyntheticClient) CreateMonitor(ctx context.Context, request Crea
 }
 
 // createMonitor implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) createMonitor(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/monitors")
+func (client ApmSyntheticClient) createMonitor(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/monitors", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -178,8 +178,8 @@ func (client ApmSyntheticClient) CreateScript(ctx context.Context, request Creat
 }
 
 // createScript implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) createScript(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/scripts")
+func (client ApmSyntheticClient) createScript(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/scripts", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -232,8 +232,8 @@ func (client ApmSyntheticClient) DeleteMonitor(ctx context.Context, request Dele
 }
 
 // deleteMonitor implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) deleteMonitor(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/monitors/{monitorId}")
+func (client ApmSyntheticClient) deleteMonitor(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/monitors/{monitorId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -286,8 +286,8 @@ func (client ApmSyntheticClient) DeleteScript(ctx context.Context, request Delet
 }
 
 // deleteScript implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) deleteScript(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/scripts/{scriptId}")
+func (client ApmSyntheticClient) deleteScript(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/scripts/{scriptId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -340,8 +340,8 @@ func (client ApmSyntheticClient) GetMonitor(ctx context.Context, request GetMoni
 }
 
 // getMonitor implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) getMonitor(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/monitors/{monitorId}")
+func (client ApmSyntheticClient) getMonitor(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/monitors/{monitorId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -394,8 +394,8 @@ func (client ApmSyntheticClient) GetMonitorResult(ctx context.Context, request G
 }
 
 // getMonitorResult implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) getMonitorResult(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/monitors/{monitorId}/results/{executionTime}")
+func (client ApmSyntheticClient) getMonitorResult(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/monitors/{monitorId}/results/{executionTime}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -448,8 +448,8 @@ func (client ApmSyntheticClient) GetScript(ctx context.Context, request GetScrip
 }
 
 // getScript implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) getScript(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/scripts/{scriptId}")
+func (client ApmSyntheticClient) getScript(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/scripts/{scriptId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -502,8 +502,8 @@ func (client ApmSyntheticClient) ListMonitors(ctx context.Context, request ListM
 }
 
 // listMonitors implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) listMonitors(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/monitors")
+func (client ApmSyntheticClient) listMonitors(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/monitors", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -556,8 +556,8 @@ func (client ApmSyntheticClient) ListPublicVantagePoints(ctx context.Context, re
 }
 
 // listPublicVantagePoints implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) listPublicVantagePoints(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/publicVantagePoints")
+func (client ApmSyntheticClient) listPublicVantagePoints(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/publicVantagePoints", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -610,8 +610,8 @@ func (client ApmSyntheticClient) ListScripts(ctx context.Context, request ListSc
 }
 
 // listScripts implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) listScripts(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/scripts")
+func (client ApmSyntheticClient) listScripts(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/scripts", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -664,8 +664,8 @@ func (client ApmSyntheticClient) UpdateMonitor(ctx context.Context, request Upda
 }
 
 // updateMonitor implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) updateMonitor(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/monitors/{monitorId}")
+func (client ApmSyntheticClient) updateMonitor(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/monitors/{monitorId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -718,8 +718,8 @@ func (client ApmSyntheticClient) UpdateScript(ctx context.Context, request Updat
 }
 
 // updateScript implements the OCIOperation interface (enables retrying operations)
-func (client ApmSyntheticClient) updateScript(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/scripts/{scriptId}")
+func (client ApmSyntheticClient) updateScript(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/scripts/{scriptId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

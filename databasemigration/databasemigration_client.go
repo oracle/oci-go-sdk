@@ -12,8 +12,8 @@ package databasemigration
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,8 @@ func (client DatabaseMigrationClient) AbortJob(ctx context.Context, request Abor
 }
 
 // abortJob implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) abortJob(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/jobs/{jobId}/actions/abort")
+func (client DatabaseMigrationClient) abortJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/jobs/{jobId}/actions/abort", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -178,8 +178,8 @@ func (client DatabaseMigrationClient) ChangeAgentCompartment(ctx context.Context
 }
 
 // changeAgentCompartment implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) changeAgentCompartment(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/agents/{agentId}/actions/changeCompartment")
+func (client DatabaseMigrationClient) changeAgentCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/agents/{agentId}/actions/changeCompartment", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -237,8 +237,8 @@ func (client DatabaseMigrationClient) ChangeConnectionCompartment(ctx context.Co
 }
 
 // changeConnectionCompartment implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) changeConnectionCompartment(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/connections/{connectionId}/actions/changeCompartment")
+func (client DatabaseMigrationClient) changeConnectionCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/connections/{connectionId}/actions/changeCompartment", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -296,8 +296,8 @@ func (client DatabaseMigrationClient) ChangeMigrationCompartment(ctx context.Con
 }
 
 // changeMigrationCompartment implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) changeMigrationCompartment(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations/{migrationId}/actions/changeCompartment")
+func (client DatabaseMigrationClient) changeMigrationCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations/{migrationId}/actions/changeCompartment", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -355,8 +355,8 @@ func (client DatabaseMigrationClient) CloneMigration(ctx context.Context, reques
 }
 
 // cloneMigration implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) cloneMigration(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations/{migrationId}/actions/clone")
+func (client DatabaseMigrationClient) cloneMigration(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations/{migrationId}/actions/clone", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -415,8 +415,8 @@ func (client DatabaseMigrationClient) CreateConnection(ctx context.Context, requ
 }
 
 // createConnection implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) createConnection(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/connections")
+func (client DatabaseMigrationClient) createConnection(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/connections", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -476,8 +476,8 @@ func (client DatabaseMigrationClient) CreateMigration(ctx context.Context, reque
 }
 
 // createMigration implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) createMigration(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations")
+func (client DatabaseMigrationClient) createMigration(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -530,8 +530,8 @@ func (client DatabaseMigrationClient) DeleteAgent(ctx context.Context, request D
 }
 
 // deleteAgent implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) deleteAgent(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/agents/{agentId}")
+func (client DatabaseMigrationClient) deleteAgent(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/agents/{agentId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -584,8 +584,8 @@ func (client DatabaseMigrationClient) DeleteConnection(ctx context.Context, requ
 }
 
 // deleteConnection implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) deleteConnection(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/connections/{connectionId}")
+func (client DatabaseMigrationClient) deleteConnection(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/connections/{connectionId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -638,8 +638,8 @@ func (client DatabaseMigrationClient) DeleteJob(ctx context.Context, request Del
 }
 
 // deleteJob implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) deleteJob(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/jobs/{jobId}")
+func (client DatabaseMigrationClient) deleteJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/jobs/{jobId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -692,8 +692,8 @@ func (client DatabaseMigrationClient) DeleteMigration(ctx context.Context, reque
 }
 
 // deleteMigration implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) deleteMigration(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/migrations/{migrationId}")
+func (client DatabaseMigrationClient) deleteMigration(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/migrations/{migrationId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -751,8 +751,8 @@ func (client DatabaseMigrationClient) EvaluateMigration(ctx context.Context, req
 }
 
 // evaluateMigration implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) evaluateMigration(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations/{migrationId}/actions/validate")
+func (client DatabaseMigrationClient) evaluateMigration(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations/{migrationId}/actions/validate", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -805,8 +805,8 @@ func (client DatabaseMigrationClient) GetAgent(ctx context.Context, request GetA
 }
 
 // getAgent implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) getAgent(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/agents/{agentId}")
+func (client DatabaseMigrationClient) getAgent(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/agents/{agentId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -859,8 +859,8 @@ func (client DatabaseMigrationClient) GetConnection(ctx context.Context, request
 }
 
 // getConnection implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) getConnection(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/connections/{connectionId}")
+func (client DatabaseMigrationClient) getConnection(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/connections/{connectionId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -913,8 +913,8 @@ func (client DatabaseMigrationClient) GetJob(ctx context.Context, request GetJob
 }
 
 // getJob implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) getJob(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/jobs/{jobId}")
+func (client DatabaseMigrationClient) getJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/jobs/{jobId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -967,8 +967,8 @@ func (client DatabaseMigrationClient) GetJobOutputContent(ctx context.Context, r
 }
 
 // getJobOutputContent implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) getJobOutputContent(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/jobs/{jobId}/output/content")
+func (client DatabaseMigrationClient) getJobOutputContent(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/jobs/{jobId}/output/content", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1020,8 +1020,8 @@ func (client DatabaseMigrationClient) GetMigration(ctx context.Context, request 
 }
 
 // getMigration implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) getMigration(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/migrations/{migrationId}")
+func (client DatabaseMigrationClient) getMigration(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/migrations/{migrationId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1074,8 +1074,8 @@ func (client DatabaseMigrationClient) GetWorkRequest(ctx context.Context, reques
 }
 
 // getWorkRequest implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) getWorkRequest(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}")
+func (client DatabaseMigrationClient) getWorkRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1128,8 +1128,8 @@ func (client DatabaseMigrationClient) ListAgentImages(ctx context.Context, reque
 }
 
 // listAgentImages implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) listAgentImages(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/agentImages")
+func (client DatabaseMigrationClient) listAgentImages(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/agentImages", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1182,8 +1182,8 @@ func (client DatabaseMigrationClient) ListAgents(ctx context.Context, request Li
 }
 
 // listAgents implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) listAgents(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/agents")
+func (client DatabaseMigrationClient) listAgents(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/agents", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1236,8 +1236,8 @@ func (client DatabaseMigrationClient) ListConnections(ctx context.Context, reque
 }
 
 // listConnections implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) listConnections(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/connections")
+func (client DatabaseMigrationClient) listConnections(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/connections", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1290,8 +1290,8 @@ func (client DatabaseMigrationClient) ListJobOutputs(ctx context.Context, reques
 }
 
 // listJobOutputs implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) listJobOutputs(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/jobs/{jobId}/output")
+func (client DatabaseMigrationClient) listJobOutputs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/jobs/{jobId}/output", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1345,8 +1345,8 @@ func (client DatabaseMigrationClient) ListJobs(ctx context.Context, request List
 }
 
 // listJobs implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) listJobs(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/jobs")
+func (client DatabaseMigrationClient) listJobs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/jobs", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1399,8 +1399,8 @@ func (client DatabaseMigrationClient) ListMigrations(ctx context.Context, reques
 }
 
 // listMigrations implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) listMigrations(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/migrations")
+func (client DatabaseMigrationClient) listMigrations(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/migrations", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1453,8 +1453,8 @@ func (client DatabaseMigrationClient) ListWorkRequestErrors(ctx context.Context,
 }
 
 // listWorkRequestErrors implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) listWorkRequestErrors(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/errors")
+func (client DatabaseMigrationClient) listWorkRequestErrors(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/errors", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1507,8 +1507,8 @@ func (client DatabaseMigrationClient) ListWorkRequestLogs(ctx context.Context, r
 }
 
 // listWorkRequestLogs implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) listWorkRequestLogs(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/logs")
+func (client DatabaseMigrationClient) listWorkRequestLogs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/logs", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1561,8 +1561,8 @@ func (client DatabaseMigrationClient) ListWorkRequests(ctx context.Context, requ
 }
 
 // listWorkRequests implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) listWorkRequests(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests")
+func (client DatabaseMigrationClient) listWorkRequests(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1620,8 +1620,8 @@ func (client DatabaseMigrationClient) ResumeJob(ctx context.Context, request Res
 }
 
 // resumeJob implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) resumeJob(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/jobs/{jobId}/actions/resume")
+func (client DatabaseMigrationClient) resumeJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/jobs/{jobId}/actions/resume", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1674,8 +1674,8 @@ func (client DatabaseMigrationClient) RetrieveSupportedPhases(ctx context.Contex
 }
 
 // retrieveSupportedPhases implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) retrieveSupportedPhases(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations/{migrationId}/actions/getSupportedPhases")
+func (client DatabaseMigrationClient) retrieveSupportedPhases(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations/{migrationId}/actions/getSupportedPhases", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1733,8 +1733,8 @@ func (client DatabaseMigrationClient) StartMigration(ctx context.Context, reques
 }
 
 // startMigration implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) startMigration(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations/{migrationId}/actions/start")
+func (client DatabaseMigrationClient) startMigration(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/migrations/{migrationId}/actions/start", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1792,8 +1792,8 @@ func (client DatabaseMigrationClient) UpdateAgent(ctx context.Context, request U
 }
 
 // updateAgent implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) updateAgent(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/agents/{agentId}")
+func (client DatabaseMigrationClient) updateAgent(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/agents/{agentId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1846,8 +1846,8 @@ func (client DatabaseMigrationClient) UpdateConnection(ctx context.Context, requ
 }
 
 // updateConnection implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) updateConnection(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/connections/{connectionId}")
+func (client DatabaseMigrationClient) updateConnection(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/connections/{connectionId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1900,8 +1900,8 @@ func (client DatabaseMigrationClient) UpdateJob(ctx context.Context, request Upd
 }
 
 // updateJob implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) updateJob(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/jobs/{jobId}")
+func (client DatabaseMigrationClient) updateJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/jobs/{jobId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -1954,8 +1954,8 @@ func (client DatabaseMigrationClient) UpdateMigration(ctx context.Context, reque
 }
 
 // updateMigration implements the OCIOperation interface (enables retrying operations)
-func (client DatabaseMigrationClient) updateMigration(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/migrations/{migrationId}")
+func (client DatabaseMigrationClient) updateMigration(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/migrations/{migrationId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

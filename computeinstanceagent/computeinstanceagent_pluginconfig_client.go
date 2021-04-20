@@ -13,8 +13,8 @@ package computeinstanceagent
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -115,8 +115,8 @@ func (client PluginconfigClient) ListInstanceagentAvailablePlugins(ctx context.C
 }
 
 // listInstanceagentAvailablePlugins implements the OCIOperation interface (enables retrying operations)
-func (client PluginconfigClient) listInstanceagentAvailablePlugins(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/instanceagent/availablePlugins")
+func (client PluginconfigClient) listInstanceagentAvailablePlugins(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/instanceagent/availablePlugins", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

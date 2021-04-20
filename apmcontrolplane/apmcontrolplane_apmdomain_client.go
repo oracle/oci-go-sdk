@@ -13,8 +13,8 @@ package apmcontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -120,8 +120,8 @@ func (client ApmDomainClient) ChangeApmDomainCompartment(ctx context.Context, re
 }
 
 // changeApmDomainCompartment implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) changeApmDomainCompartment(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/apmDomains/{apmDomainId}/actions/changeCompartment")
+func (client ApmDomainClient) changeApmDomainCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/apmDomains/{apmDomainId}/actions/changeCompartment", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -179,8 +179,8 @@ func (client ApmDomainClient) CreateApmDomain(ctx context.Context, request Creat
 }
 
 // createApmDomain implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) createApmDomain(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/apmDomains")
+func (client ApmDomainClient) createApmDomain(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/apmDomains", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -235,8 +235,8 @@ func (client ApmDomainClient) DeleteApmDomain(ctx context.Context, request Delet
 }
 
 // deleteApmDomain implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) deleteApmDomain(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/apmDomains/{apmDomainId}")
+func (client ApmDomainClient) deleteApmDomain(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/apmDomains/{apmDomainId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -290,8 +290,8 @@ func (client ApmDomainClient) GenerateDataKeys(ctx context.Context, request Gene
 }
 
 // generateDataKeys implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) generateDataKeys(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/apmDomains/{apmDomainId}/actions/generateDataKeys")
+func (client ApmDomainClient) generateDataKeys(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/apmDomains/{apmDomainId}/actions/generateDataKeys", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -344,8 +344,8 @@ func (client ApmDomainClient) GetApmDomain(ctx context.Context, request GetApmDo
 }
 
 // getApmDomain implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) getApmDomain(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/apmDomains/{apmDomainId}")
+func (client ApmDomainClient) getApmDomain(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/apmDomains/{apmDomainId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -398,8 +398,8 @@ func (client ApmDomainClient) GetWorkRequest(ctx context.Context, request GetWor
 }
 
 // getWorkRequest implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) getWorkRequest(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}")
+func (client ApmDomainClient) getWorkRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -452,8 +452,8 @@ func (client ApmDomainClient) ListApmDomainWorkRequests(ctx context.Context, req
 }
 
 // listApmDomainWorkRequests implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) listApmDomainWorkRequests(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/apmDomains/{apmDomainId}/workRequests")
+func (client ApmDomainClient) listApmDomainWorkRequests(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/apmDomains/{apmDomainId}/workRequests", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -506,8 +506,8 @@ func (client ApmDomainClient) ListApmDomains(ctx context.Context, request ListAp
 }
 
 // listApmDomains implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) listApmDomains(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/apmDomains")
+func (client ApmDomainClient) listApmDomains(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/apmDomains", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -561,8 +561,8 @@ func (client ApmDomainClient) ListDataKeys(ctx context.Context, request ListData
 }
 
 // listDataKeys implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) listDataKeys(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/apmDomains/{apmDomainId}/dataKeys")
+func (client ApmDomainClient) listDataKeys(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/apmDomains/{apmDomainId}/dataKeys", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -615,8 +615,8 @@ func (client ApmDomainClient) ListWorkRequestErrors(ctx context.Context, request
 }
 
 // listWorkRequestErrors implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) listWorkRequestErrors(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/errors")
+func (client ApmDomainClient) listWorkRequestErrors(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/errors", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -669,8 +669,8 @@ func (client ApmDomainClient) ListWorkRequestLogs(ctx context.Context, request L
 }
 
 // listWorkRequestLogs implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) listWorkRequestLogs(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/logs")
+func (client ApmDomainClient) listWorkRequestLogs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/logs", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -723,8 +723,8 @@ func (client ApmDomainClient) ListWorkRequests(ctx context.Context, request List
 }
 
 // listWorkRequests implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) listWorkRequests(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests")
+func (client ApmDomainClient) listWorkRequests(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -778,8 +778,8 @@ func (client ApmDomainClient) RemoveDataKeys(ctx context.Context, request Remove
 }
 
 // removeDataKeys implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) removeDataKeys(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/apmDomains/{apmDomainId}/actions/removeDataKeys")
+func (client ApmDomainClient) removeDataKeys(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/apmDomains/{apmDomainId}/actions/removeDataKeys", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -832,8 +832,8 @@ func (client ApmDomainClient) UpdateApmDomain(ctx context.Context, request Updat
 }
 
 // updateApmDomain implements the OCIOperation interface (enables retrying operations)
-func (client ApmDomainClient) updateApmDomain(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/apmDomains/{apmDomainId}")
+func (client ApmDomainClient) updateApmDomain(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/apmDomains/{apmDomainId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

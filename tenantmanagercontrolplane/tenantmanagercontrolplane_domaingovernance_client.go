@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,8 @@ func (client DomainGovernanceClient) CreateDomainGovernance(ctx context.Context,
 }
 
 // createDomainGovernance implements the OCIOperation interface (enables retrying operations)
-func (client DomainGovernanceClient) createDomainGovernance(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/domainGovernances")
+func (client DomainGovernanceClient) createDomainGovernance(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/domainGovernances", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -173,8 +173,8 @@ func (client DomainGovernanceClient) DeleteDomainGovernance(ctx context.Context,
 }
 
 // deleteDomainGovernance implements the OCIOperation interface (enables retrying operations)
-func (client DomainGovernanceClient) deleteDomainGovernance(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/domainGovernances/{domainGovernanceId}")
+func (client DomainGovernanceClient) deleteDomainGovernance(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/domainGovernances/{domainGovernanceId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -227,8 +227,8 @@ func (client DomainGovernanceClient) GetDomainGovernance(ctx context.Context, re
 }
 
 // getDomainGovernance implements the OCIOperation interface (enables retrying operations)
-func (client DomainGovernanceClient) getDomainGovernance(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/domainGovernances/{domainGovernanceId}")
+func (client DomainGovernanceClient) getDomainGovernance(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/domainGovernances/{domainGovernanceId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -281,8 +281,8 @@ func (client DomainGovernanceClient) ListDomainGovernances(ctx context.Context, 
 }
 
 // listDomainGovernances implements the OCIOperation interface (enables retrying operations)
-func (client DomainGovernanceClient) listDomainGovernances(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/domainGovernances")
+func (client DomainGovernanceClient) listDomainGovernances(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/domainGovernances", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -335,8 +335,8 @@ func (client DomainGovernanceClient) UpdateDomainGovernance(ctx context.Context,
 }
 
 // updateDomainGovernance implements the OCIOperation interface (enables retrying operations)
-func (client DomainGovernanceClient) updateDomainGovernance(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/domainGovernances/{domainGovernanceId}")
+func (client DomainGovernanceClient) updateDomainGovernance(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/domainGovernances/{domainGovernanceId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

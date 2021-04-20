@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // EntitySummary Summary of an data entity. A representation of data with a set of attributes, normally representing a single
@@ -24,6 +24,9 @@ type EntitySummary struct {
 	// A user-friendly display name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
+
+	// Optional user friendly business name of the data entity. If set, this supplements the harvested display name of the object.
+	BusinessName *string `mandatory:"false" json:"businessName"`
 
 	// Detailed description of a data entity.
 	Description *string `mandatory:"false" json:"description"`
@@ -42,6 +45,9 @@ type EntitySummary struct {
 
 	// Key of the associated pattern if this is a logical entity.
 	PatternKey *string `mandatory:"false" json:"patternKey"`
+
+	// The type of data entity object. Type keys can be found via the '/types' endpoint.
+	TypeKey *string `mandatory:"false" json:"typeKey"`
 
 	// The expression realized after resolving qualifiers . Used in deriving this logical entity
 	RealizedExpression *string `mandatory:"false" json:"realizedExpression"`

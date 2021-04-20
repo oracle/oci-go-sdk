@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,8 @@ func (client DomainClient) CreateDomain(ctx context.Context, request CreateDomai
 }
 
 // createDomain implements the OCIOperation interface (enables retrying operations)
-func (client DomainClient) createDomain(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/domains")
+func (client DomainClient) createDomain(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/domains", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -173,8 +173,8 @@ func (client DomainClient) DeleteDomain(ctx context.Context, request DeleteDomai
 }
 
 // deleteDomain implements the OCIOperation interface (enables retrying operations)
-func (client DomainClient) deleteDomain(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/domains/{domainId}")
+func (client DomainClient) deleteDomain(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/domains/{domainId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -227,8 +227,8 @@ func (client DomainClient) GetDomain(ctx context.Context, request GetDomainReque
 }
 
 // getDomain implements the OCIOperation interface (enables retrying operations)
-func (client DomainClient) getDomain(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/domains/{domainId}")
+func (client DomainClient) getDomain(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/domains/{domainId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -281,8 +281,8 @@ func (client DomainClient) ListDomains(ctx context.Context, request ListDomainsR
 }
 
 // listDomains implements the OCIOperation interface (enables retrying operations)
-func (client DomainClient) listDomains(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/domains")
+func (client DomainClient) listDomains(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/domains", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -335,8 +335,8 @@ func (client DomainClient) UpdateDomain(ctx context.Context, request UpdateDomai
 }
 
 // updateDomain implements the OCIOperation interface (enables retrying operations)
-func (client DomainClient) updateDomain(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/domains/{domainId}")
+func (client DomainClient) updateDomain(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/domains/{domainId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

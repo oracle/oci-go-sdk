@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,8 @@ func (client TransferApplianceClient) CreateTransferAppliance(ctx context.Contex
 }
 
 // createTransferAppliance implements the OCIOperation interface (enables retrying operations)
-func (client TransferApplianceClient) createTransferAppliance(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{id}/transferAppliances")
+func (client TransferApplianceClient) createTransferAppliance(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{id}/transferAppliances", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -173,8 +173,8 @@ func (client TransferApplianceClient) CreateTransferApplianceAdminCredentials(ct
 }
 
 // createTransferApplianceAdminCredentials implements the OCIOperation interface (enables retrying operations)
-func (client TransferApplianceClient) createTransferApplianceAdminCredentials(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}/admin_credentials")
+func (client TransferApplianceClient) createTransferApplianceAdminCredentials(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}/admin_credentials", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -227,8 +227,8 @@ func (client TransferApplianceClient) DeleteTransferAppliance(ctx context.Contex
 }
 
 // deleteTransferAppliance implements the OCIOperation interface (enables retrying operations)
-func (client TransferApplianceClient) deleteTransferAppliance(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}")
+func (client TransferApplianceClient) deleteTransferAppliance(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -281,8 +281,8 @@ func (client TransferApplianceClient) GetTransferAppliance(ctx context.Context, 
 }
 
 // getTransferAppliance implements the OCIOperation interface (enables retrying operations)
-func (client TransferApplianceClient) getTransferAppliance(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}")
+func (client TransferApplianceClient) getTransferAppliance(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -335,8 +335,8 @@ func (client TransferApplianceClient) GetTransferApplianceCertificateAuthorityCe
 }
 
 // getTransferApplianceCertificateAuthorityCertificate implements the OCIOperation interface (enables retrying operations)
-func (client TransferApplianceClient) getTransferApplianceCertificateAuthorityCertificate(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}/certificate_authority_certificate")
+func (client TransferApplianceClient) getTransferApplianceCertificateAuthorityCertificate(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}/certificate_authority_certificate", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -389,8 +389,8 @@ func (client TransferApplianceClient) GetTransferApplianceEncryptionPassphrase(c
 }
 
 // getTransferApplianceEncryptionPassphrase implements the OCIOperation interface (enables retrying operations)
-func (client TransferApplianceClient) getTransferApplianceEncryptionPassphrase(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}/encryptionPassphrase")
+func (client TransferApplianceClient) getTransferApplianceEncryptionPassphrase(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}/encryptionPassphrase", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -443,8 +443,8 @@ func (client TransferApplianceClient) ListTransferAppliances(ctx context.Context
 }
 
 // listTransferAppliances implements the OCIOperation interface (enables retrying operations)
-func (client TransferApplianceClient) listTransferAppliances(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferAppliances")
+func (client TransferApplianceClient) listTransferAppliances(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferAppliances", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -497,8 +497,8 @@ func (client TransferApplianceClient) UpdateTransferAppliance(ctx context.Contex
 }
 
 // updateTransferAppliance implements the OCIOperation interface (enables retrying operations)
-func (client TransferApplianceClient) updateTransferAppliance(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}")
+func (client TransferApplianceClient) updateTransferAppliance(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/transferJobs/{id}/transferAppliances/{transferApplianceLabel}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

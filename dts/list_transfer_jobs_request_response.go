@@ -5,7 +5,7 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 	"net/http"
 )
 
@@ -50,8 +50,16 @@ func (request ListTransferJobsRequest) String() string {
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request ListTransferJobsRequest) HTTPRequest(method, path string) (http.Request, error) {
+func (request ListTransferJobsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser) (http.Request, error) {
+
 	return common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+}
+
+// BinaryRequestBody implements the OCIRequest interface
+func (request ListTransferJobsRequest) BinaryRequestBody() (*common.OCIReadSeekCloser, bool) {
+
+	return nil, false
+
 }
 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.

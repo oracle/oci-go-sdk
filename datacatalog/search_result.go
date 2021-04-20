@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // SearchResult The search result object is the definition of an element that is returned as part of search. It contains basic
@@ -97,6 +97,12 @@ type SearchResult struct {
 
 	// Absolute path of this resource, which could be a term, folder, entity etc, usually resolvable to this resource through a namespace hierarchy.
 	Path *string `mandatory:"false" json:"path"`
+
+	// Optional user friendly business name of the data object. If set, this supplements the harvested display name of the object.
+	BusinessName *string `mandatory:"false" json:"businessName"`
+
+	// The current state of the data object.
+	LifecycleState LifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// Expression for logical entities against which names of dataObjects will be matched.
 	Expression *string `mandatory:"false" json:"expression"`

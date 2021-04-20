@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 40.0.0 - 2021-04-20
+### Added
+- Support for opting in/out of live migration on instances in the Compute service
+- Support for enabling/disabling Operations Insights on external non-container and external pluggable databases in the Database service
+- Support for a GraphStudio URL as a connection URL on databases in the Database service
+- Support for adding customer contacts on autonomous databases in the Database service
+- Support for name annotations on harvested objects in the Data Catalog service
+- Fixed retry doesn't work once the request is with binary request body issue, for detail, can refer https://github.com/oracle/oci-go-sdk/blob/master/oci.go#L271
+
+### Breaking changes
+- Added a method `BinaryRequestBody()` to interface `OCIRetryableRequest`, any data type inherit the interface has to implement the method
+
 ## 39.0.0 - 2021-04-13
 ### Added
 - Support for the Database Migration service

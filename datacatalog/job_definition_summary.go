@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // JobDefinitionSummary A list of job definition resources. Job definitions define the harvest scope and includes the list of objects
@@ -62,6 +62,9 @@ type JobDefinitionSummary struct {
 
 	// Type of job schedule for the latest job executed.
 	ScheduleType JobScheduleTypeEnum `mandatory:"false" json:"scheduleType,omitempty"`
+
+	// Unique key of the data asset to which this job applies, if the job involves a data asset.
+	DataAssetKey *string `mandatory:"false" json:"dataAssetKey"`
 }
 
 func (m JobDefinitionSummary) String() string {

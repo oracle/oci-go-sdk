@@ -12,8 +12,8 @@ package loggingsearch
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -114,8 +114,8 @@ func (client LogSearchClient) SearchLogs(ctx context.Context, request SearchLogs
 }
 
 // searchLogs implements the OCIOperation interface (enables retrying operations)
-func (client LogSearchClient) searchLogs(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/search")
+func (client LogSearchClient) searchLogs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/search", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}

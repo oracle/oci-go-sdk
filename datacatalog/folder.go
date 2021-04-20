@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // Folder A generic term used in the data catalog for an external organization concept used for a collection of data entities
@@ -25,6 +25,9 @@ type Folder struct {
 	// A user-friendly display name. Does not have to be unique, and it's changeable.
 	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
+
+	// Optional user friendly business name of the folder. If set, this supplements the harvested display name of the object.
+	BusinessName *string `mandatory:"false" json:"businessName"`
 
 	// Detailed description of a folder.
 	Description *string `mandatory:"false" json:"description"`

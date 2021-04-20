@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v39/common"
+	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
 // MigrationPhaseCollection Results of a Migration Phase search. Contains a collection of valid ODMS Job Phases.

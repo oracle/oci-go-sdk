@@ -12,8 +12,8 @@ package rover
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v39/common"
-	"github.com/oracle/oci-go-sdk/v39/common/auth"
+	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v40/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,8 @@ func (client RoverEntitlementClient) ChangeRoverEntitlementCompartment(ctx conte
 }
 
 // changeRoverEntitlementCompartment implements the OCIOperation interface (enables retrying operations)
-func (client RoverEntitlementClient) changeRoverEntitlementCompartment(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverEntitlements/{roverEntitlementId}/actions/changeCompartment")
+func (client RoverEntitlementClient) changeRoverEntitlementCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverEntitlements/{roverEntitlementId}/actions/changeCompartment", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -178,8 +178,8 @@ func (client RoverEntitlementClient) CreateRoverEntitlement(ctx context.Context,
 }
 
 // createRoverEntitlement implements the OCIOperation interface (enables retrying operations)
-func (client RoverEntitlementClient) createRoverEntitlement(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverEntitlements")
+func (client RoverEntitlementClient) createRoverEntitlement(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverEntitlements", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -237,8 +237,8 @@ func (client RoverEntitlementClient) DeleteRoverEntitlement(ctx context.Context,
 }
 
 // deleteRoverEntitlement implements the OCIOperation interface (enables retrying operations)
-func (client RoverEntitlementClient) deleteRoverEntitlement(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/roverEntitlements/{roverEntitlementId}")
+func (client RoverEntitlementClient) deleteRoverEntitlement(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/roverEntitlements/{roverEntitlementId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -296,8 +296,8 @@ func (client RoverEntitlementClient) GetRoverEntitlement(ctx context.Context, re
 }
 
 // getRoverEntitlement implements the OCIOperation interface (enables retrying operations)
-func (client RoverEntitlementClient) getRoverEntitlement(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverEntitlements/{roverEntitlementId}")
+func (client RoverEntitlementClient) getRoverEntitlement(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverEntitlements/{roverEntitlementId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -350,8 +350,8 @@ func (client RoverEntitlementClient) ListRoverEntitlements(ctx context.Context, 
 }
 
 // listRoverEntitlements implements the OCIOperation interface (enables retrying operations)
-func (client RoverEntitlementClient) listRoverEntitlements(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverEntitlements")
+func (client RoverEntitlementClient) listRoverEntitlements(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverEntitlements", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
@@ -404,8 +404,8 @@ func (client RoverEntitlementClient) UpdateRoverEntitlement(ctx context.Context,
 }
 
 // updateRoverEntitlement implements the OCIOperation interface (enables retrying operations)
-func (client RoverEntitlementClient) updateRoverEntitlement(ctx context.Context, request common.OCIRequest) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/roverEntitlements/{roverEntitlementId}")
+func (client RoverEntitlementClient) updateRoverEntitlement(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/roverEntitlements/{roverEntitlementId}", binaryReqBody)
 	if err != nil {
 		return nil, err
 	}
