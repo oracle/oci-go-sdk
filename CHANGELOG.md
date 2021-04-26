@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 40.1.0 - 2021-04-27
+### Added
+- VCN id parameters were moved from being required to being optional on all list operations in the Networking service
+- Support for RACs (real application clusters) for external container, non-container, and pluggable databases in the Database service
+- Support for data masking in the Cloud Guard service
+- Support for opting out of DNS records during instance launch, as well as attaching secondary VNICs, in the Compute service
+- Support for mutable sizes on cluster networks in the Autoscaling service
+- Support for auto-tiering on buckets in the Object Storage service
+
+
+
+
 ## 40.0.0 - 2021-04-20
 ### Added
 - Support for opting in/out of live migration on instances in the Compute service

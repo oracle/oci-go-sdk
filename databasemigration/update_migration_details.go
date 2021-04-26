@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// REST API for Zero Downtime Migration (Oracle Database Migration Service --ODMS-- as customer-facing service name)
+// Database Migration API
 //
-// Provides users the ability to perform Zero Downtime migration operations
+// Use the Oracle Cloud Infrastructure Database Migration APIs to perform database migration operations.
 //
 
 package databasemigration
@@ -28,9 +28,9 @@ type UpdateMigrationDetails struct {
 	// The OCID of the Source Database Connection.
 	SourceDatabaseConnectionId *string `mandatory:"false" json:"sourceDatabaseConnectionId"`
 
-	// The OCID of the Source Container Database Connection. Only used for ONLINE migrations.
+	// The OCID of the Source Container Database Connection. Only used for Online migrations.
 	// Only Connections of type Non-Autonomous can be used as source container databases.
-	// An empty value would remove the stored Connection Id.
+	// An empty value would remove the stored Connection ID.
 	SourceContainerDatabaseConnectionId *string `mandatory:"false" json:"sourceContainerDatabaseConnectionId"`
 
 	// The OCID of the Target Database Connection.

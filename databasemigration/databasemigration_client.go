@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// REST API for Zero Downtime Migration (Oracle Database Migration Service --ODMS-- as customer-facing service name)
+// Database Migration API
 //
-// Provides users the ability to perform Zero Downtime migration operations
+// Use the Oracle Cloud Infrastructure Database Migration APIs to perform database migration operations.
 //
 
 package databasemigration
@@ -138,7 +138,7 @@ func (client DatabaseMigrationClient) abortJob(ctx context.Context, request comm
 	return response, err
 }
 
-// ChangeAgentCompartment Used to configure a ODMS Agent Compartment Id.
+// ChangeAgentCompartment Used to configure an ODMS Agent Compartment ID.
 //
 // See also
 //
@@ -197,7 +197,7 @@ func (client DatabaseMigrationClient) changeAgentCompartment(ctx context.Context
 	return response, err
 }
 
-// ChangeConnectionCompartment Used to change the Databasee Connection compartment.
+// ChangeConnectionCompartment Used to change the Database Connection compartment.
 //
 // See also
 //
@@ -435,7 +435,7 @@ func (client DatabaseMigrationClient) createConnection(ctx context.Context, requ
 }
 
 // CreateMigration Create a Migration resource that contains all the details to perform the
-// database migration operation like source and destination database
+// database migration operation, such as source and destination database
 // details, credentials, etc.
 //
 // See also
@@ -495,7 +495,7 @@ func (client DatabaseMigrationClient) createMigration(ctx context.Context, reque
 	return response, err
 }
 
-// DeleteAgent Delete the ODMS Agent represented by the given ODMS Agent id.
+// DeleteAgent Delete the ODMS Agent represented by the specified ODMS Agent ID.
 //
 // See also
 //
@@ -1752,7 +1752,7 @@ func (client DatabaseMigrationClient) startMigration(ctx context.Context, reques
 	return response, err
 }
 
-// UpdateAgent Modifies the ODMS Agent represented by the given ODMS agent Id.
+// UpdateAgent Modifies the ODMS Agent represented by the given ODMS Agent ID.
 //
 // See also
 //
@@ -1811,7 +1811,7 @@ func (client DatabaseMigrationClient) updateAgent(ctx context.Context, request c
 	return response, err
 }
 
-// UpdateConnection Update a Database Connection resource details.
+// UpdateConnection Update Database Connection resource details.
 //
 // See also
 //
@@ -1865,7 +1865,7 @@ func (client DatabaseMigrationClient) updateConnection(ctx context.Context, requ
 	return response, err
 }
 
-// UpdateJob Update a Migration Job resource details.
+// UpdateJob Update Migration Job resource details.
 //
 // See also
 //
@@ -1919,7 +1919,7 @@ func (client DatabaseMigrationClient) updateJob(ctx context.Context, request com
 	return response, err
 }
 
-// UpdateMigration Update a Migration resource details.
+// UpdateMigration Update Migration resource details.
 //
 // See also
 //

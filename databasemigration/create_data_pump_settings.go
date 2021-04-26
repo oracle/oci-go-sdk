@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// REST API for Zero Downtime Migration (Oracle Database Migration Service --ODMS-- as customer-facing service name)
+// Database Migration API
 //
-// Provides users the ability to perform Zero Downtime migration operations
+// Use the Oracle Cloud Infrastructure Database Migration APIs to perform database migration operations.
 //
 
 package databasemigration
@@ -13,17 +13,17 @@ import (
 	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
-// CreateDataPumpSettings Optional settings for Datapump Export and Import jobs
+// CreateDataPumpSettings Optional settings for Data Pump Export and Import jobs
 type CreateDataPumpSettings struct {
 
-	// DataPump job mode.
-	// Refer to docs.oracle.com/en/database/oracle/oracle-database/19/arpls/ODMS_DATAPUMP.html#GUID-92C2CB46-8BC9-414D-B62E-79CD788C1E62__BABBDEHD
+	// Data Pump job mode.
+	// Refer to link text (https://docs.oracle.com/en/database/oracle/oracle-database/19/sutil/oracle-data-pump-export-utility.html#GUID-8E497131-6B9B-4CC8-AA50-35F480CAC2C4)
 	JobMode DataPumpJobModeEnum `mandatory:"false" json:"jobMode,omitempty"`
 
 	DataPumpParameters *CreateDataPumpParameters `mandatory:"false" json:"dataPumpParameters"`
 
 	// Defines remapping to be applied to objects as they are processed.
-	// Refer to https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/ODMS_DATAPUMP.html#GUID-0FC32790-91E6-4781-87A3-229DE024CB3D.
+	// Refer to DATA_REMAP (https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_DATAPUMP.html#GUID-E75AAE6F-4EA6-4737-A752-6B62F5E9D460)
 	MetadataRemaps []MetadataRemap `mandatory:"false" json:"metadataRemaps"`
 
 	ExportDirectoryObject *CreateDirectoryObject `mandatory:"false" json:"exportDirectoryObject"`

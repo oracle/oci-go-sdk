@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// REST API for Zero Downtime Migration (Oracle Database Migration Service --ODMS-- as customer-facing service name)
+// Database Migration API
 //
-// Provides users the ability to perform Zero Downtime migration operations
+// Use the Oracle Cloud Infrastructure Database Migration APIs to perform database migration operations.
 //
 
 package databasemigration
@@ -14,7 +14,7 @@ import (
 )
 
 // UpdateDataTransferMediumDetails Data Transfer Medium details for the Migration.
-// Only one type of medium details can be specified and will replace the stored Data Transfer Medium details.
+// Only one type of data transfer medium can be specified and will replace the stored Data Transfer Medium details.
 // If an empty object is specified, the stored Data Transfer Medium details will be removed.
 type UpdateDataTransferMediumDetails struct {
 	DatabaseLinkDetails *UpdateDatabaseLinkDetails `mandatory:"false" json:"databaseLinkDetails"`

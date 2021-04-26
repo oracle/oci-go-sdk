@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// REST API for Zero Downtime Migration (Oracle Database Migration Service --ODMS-- as customer-facing service name)
+// Database Migration API
 //
-// Provides users the ability to perform Zero Downtime migration operations
+// Use the Oracle Cloud Infrastructure Database Migration APIs to perform database migration operations.
 //
 
 package databasemigration
@@ -27,13 +27,13 @@ type UpdateGoldenGateHub struct {
 	// Refer to https://docs.oracle.com/en/middleware/goldengate/core/19.1/securing/network.html#GUID-A709DA55-111D-455E-8942-C9BDD1E38CAA
 	Url *string `mandatory:"false" json:"url"`
 
-	// Name of Microservices deployment to operate on source DB
+	// Name of GoldenGate deployment to operate on source database
 	SourceMicroservicesDeploymentName *string `mandatory:"false" json:"sourceMicroservicesDeploymentName"`
 
-	// Name of Microservices deployment to operate on target DB
+	// Name of GoldenGate deployment to operate on target database
 	TargetMicroservicesDeploymentName *string `mandatory:"false" json:"targetMicroservicesDeploymentName"`
 
-	// OCID of Golden Gate compute instance. An empty value will remove the stored computeId.
+	// OCID of GoldenGate compute instance. An empty value will remove the stored computeId.
 	ComputeId *string `mandatory:"false" json:"computeId"`
 }
 

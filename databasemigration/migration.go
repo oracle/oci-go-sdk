@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// REST API for Zero Downtime Migration (Oracle Database Migration Service --ODMS-- as customer-facing service name)
+// Database Migration API
 //
-// Provides users the ability to perform Zero Downtime migration operations
+// Use the Oracle Cloud Infrastructure Database Migration APIs to perform database migration operations.
 //
 
 package databasemigration
@@ -37,17 +37,17 @@ type Migration struct {
 	// The time the Migration was created. An RFC3339 formatted datetime string.
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
-	// The current state of the Migration Resource.
+	// The current state of the Migration resource.
 	LifecycleState LifecycleStatesEnum `mandatory:"true" json:"lifecycleState"`
 
 	// Name of a migration phase. The Job will wait after executing this
 	// phase until the Resume Job endpoint is called.
 	WaitAfter OdmsJobPhasesEnum `mandatory:"false" json:"waitAfter,omitempty"`
 
-	// The OCID of the registered On-Prem ODMS Agent. Required for Offline Migrations.
+	// The OCID of the registered on-premises ODMS Agent. Only valid for Offline Migrations.
 	AgentId *string `mandatory:"false" json:"agentId"`
 
-	// OCID of the Secret in the OCI vault containing the Migration credentials. Used to store Golden Gate admin user credentials.
+	// OCID of the Secret in the OCI vault containing the Migration credentials. Used to store GoldenGate administrator user credentials.
 	CredentialsSecretId *string `mandatory:"false" json:"credentialsSecretId"`
 
 	// The OCID of the Source Container Database Connection.

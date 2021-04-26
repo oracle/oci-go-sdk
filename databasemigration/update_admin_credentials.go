@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// REST API for Zero Downtime Migration (Oracle Database Migration Service --ODMS-- as customer-facing service name)
+// Database Migration API
 //
-// Provides users the ability to perform Zero Downtime migration operations
+// Use the Oracle Cloud Infrastructure Database Migration APIs to perform database migration operations.
 //
 
 package databasemigration
@@ -13,13 +13,13 @@ import (
 	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
-// UpdateAdminCredentials Database Admin Credentials details. An empty object would result in the removal of the stored details.
+// UpdateAdminCredentials Database Administrator Credentials details. An empty object would result in the removal of the stored details.
 type UpdateAdminCredentials struct {
 
-	// Admin username
+	// Administrator username
 	Username *string `mandatory:"false" json:"username"`
 
-	// Admin password
+	// Administrator password
 	Password *string `mandatory:"false" json:"password"`
 }
 

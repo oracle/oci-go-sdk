@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// REST API for Zero Downtime Migration (Oracle Database Migration Service --ODMS-- as customer-facing service name)
+// Database Migration API
 //
-// Provides users the ability to perform Zero Downtime migration operations
+// Use the Oracle Cloud Infrastructure Database Migration APIs to perform database migration operations.
 //
 
 package databasemigration
@@ -28,13 +28,13 @@ type Job struct {
 	// The job type.
 	Type JobTypesEnum `mandatory:"true" json:"type"`
 
-	// The time the DB Migration Job was created. An RFC3339 formatted datetime string
+	// The time the Migration Job was created. An RFC3339 formatted datetime string
 	TimeCreated *common.SDKTime `mandatory:"true" json:"timeCreated"`
 
 	// The current state of the migration job.
 	LifecycleState JobLifecycleStatesEnum `mandatory:"true" json:"lifecycleState"`
 
-	// The time the DB Migration Job was last updated. An RFC3339 formatted datetime string
+	// The time the Migration Job was last updated. An RFC3339 formatted datetime string
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
 	Progress *MigrationJobProgressResource `mandatory:"false" json:"progress"`
