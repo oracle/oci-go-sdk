@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/databasemigration/RetrieveSupportedPhases.go.html to see an example of how to use RetrieveSupportedPhasesRequest.
 type RetrieveSupportedPhasesRequest struct {
 
-	// The OCID of the job
+	// The OCID of the migration
 	MigrationId *string `mandatory:"true" contributesTo:"path" name:"migrationId"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a

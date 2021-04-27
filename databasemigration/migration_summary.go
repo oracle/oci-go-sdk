@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// REST API for Zero Downtime Migration (Oracle Database Migration Service --ODMS-- as customer-facing service name)
+// Database Migration API
 //
-// Provides users the ability to perform Zero Downtime migration operations
+// Use the Oracle Cloud Infrastructure Database Migration APIs to perform database migration operations.
 //
 
 package databasemigration
@@ -46,7 +46,7 @@ type MigrationSummary struct {
 	// OCID of the current ODMS Job in execution for the Migration, if any.
 	ExecutingJobId *string `mandatory:"false" json:"executingJobId"`
 
-	// The OCID of the registered On-Prem ODMS Agent. Required for Offline Migrations.
+	// The OCID of the registered on-premises ODMS Agent. Only valid for Offline Migrations.
 	AgentId *string `mandatory:"false" json:"agentId"`
 
 	VaultDetails *VaultDetails `mandatory:"false" json:"vaultDetails"`

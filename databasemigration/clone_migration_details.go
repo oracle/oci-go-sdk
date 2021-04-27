@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// REST API for Zero Downtime Migration (Oracle Database Migration Service --ODMS-- as customer-facing service name)
+// Database Migration API
 //
-// Provides users the ability to perform Zero Downtime migration operations
+// Use the Oracle Cloud Infrastructure Database Migration APIs to perform database migration operations.
 //
 
 package databasemigration
@@ -13,7 +13,7 @@ import (
 	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
-// CloneMigrationDetails Details to specify that will override an existing Migration configuration that will be cloned.
+// CloneMigrationDetails Details that will override an existing Migration configuration that will be cloned.
 type CloneMigrationDetails struct {
 
 	// The OCID of the Source Database Connection.
@@ -28,10 +28,10 @@ type CloneMigrationDetails struct {
 	// OCID of the compartment
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
-	// The OCID of the registered On-Prem ODMS Agent. Required for OFFLINE Migrations.
+	// The OCID of the registered on-premises ODMS Agent. Only valid for Offline Logical Migrations.
 	AgentId *string `mandatory:"false" json:"agentId"`
 
-	// The OCID of the Source Container Database Connection. Only used for ONLINE migrations.
+	// The OCID of the Source Container Database Connection. Only used for Online migrations.
 	// Only Connections of type Non-Autonomous can be used as source container databases.
 	SourceContainerDatabaseConnectionId *string `mandatory:"false" json:"sourceContainerDatabaseConnectionId"`
 

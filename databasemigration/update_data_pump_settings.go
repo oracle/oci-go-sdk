@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// REST API for Zero Downtime Migration (Oracle Database Migration Service --ODMS-- as customer-facing service name)
+// Database Migration API
 //
-// Provides users the ability to perform Zero Downtime migration operations
+// Use the Oracle Cloud Infrastructure Database Migration APIs to perform database migration operations.
 //
 
 package databasemigration
@@ -13,17 +13,17 @@ import (
 	"github.com/oracle/oci-go-sdk/v40/common"
 )
 
-// UpdateDataPumpSettings Optional settings for Datapump Export and Import jobs
+// UpdateDataPumpSettings Optional settings for Data Pump Export and Import jobs
 type UpdateDataPumpSettings struct {
 
-	// DataPump job mode.
-	// Refer to docs.oracle.com/en/database/oracle/oracle-database/19/arpls/ODMS_DATAPUMP.html#GUID-92C2CB46-8BC9-414D-B62E-79CD788C1E62__BABBDEHD
+	// Data Pump job mode.
+	// Refer to Data Pump Export Modes  (https://docs.oracle.com/en/database/oracle/oracle-database/19/sutil/oracle-data-pump-export-utility.html#GUID-8E497131-6B9B-4CC8-AA50-35F480CAC2C4)
 	JobMode DataPumpJobModeEnum `mandatory:"false" json:"jobMode,omitempty"`
 
 	DataPumpParameters *UpdateDataPumpParameters `mandatory:"false" json:"dataPumpParameters"`
 
-	// Defines remapping to be applied to objects as they are processed.
-	// Refer to https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/ODMS_DATAPUMP.html#GUID-0FC32790-91E6-4781-87A3-229DE024CB3D.
+	// Defines remappings to be applied to objects as they are processed.
+	// Refer to METADATA_REMAP Procedure  (https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_DATAPUMP.html#GUID-0FC32790-91E6-4781-87A3-229DE024CB3D)
 	// If specified, the list will be replaced entirely. Empty list will remove stored Metadata Remap details.
 	MetadataRemaps []MetadataRemap `mandatory:"false" json:"metadataRemaps"`
 

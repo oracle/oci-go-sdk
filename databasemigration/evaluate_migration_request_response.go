@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/databasemigration/EvaluateMigration.go.html to see an example of how to use EvaluateMigrationRequest.
 type EvaluateMigrationRequest struct {
 
-	// The OCID of the job
+	// The OCID of the migration
 	MigrationId *string `mandatory:"true" contributesTo:"path" name:"migrationId"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call

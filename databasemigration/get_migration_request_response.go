@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/databasemigration/GetMigration.go.html to see an example of how to use GetMigrationRequest.
 type GetMigrationRequest struct {
 
-	// The OCID of the job
+	// The OCID of the migration
 	MigrationId *string `mandatory:"true" contributesTo:"path" name:"migrationId"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a
