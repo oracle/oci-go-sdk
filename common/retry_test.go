@@ -6,11 +6,12 @@ package common
 import (
 	"bytes"
 	"context"
-	"github.com/stretchr/testify/assert"
 	"math"
 	"net/http"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 // testing resource for mocking responses
@@ -32,6 +33,21 @@ func getMockedOCIOperationResponse(statusCode int, attemptNumber uint) OCIOperat
 		RawResponse: &httpResponse,
 	}
 	return NewOCIOperationResponse(response, nil, attemptNumber)
+}
+
+func getMockedOCIOperationResponseWithError(status int, statusCode string) OCIOperationResponse {
+	httpResponse := http.Response{
+		Header:     http.Header{},
+		StatusCode: status,
+	}
+	response := mockedResponse{
+		RawResponse: &httpResponse,
+	}
+	err := servicefailure{
+		StatusCode: status,
+		Code:       statusCode,
+	}
+	return NewOCIOperationResponse(response, err, uint(1))
 }
 
 func getExponentialBackoffRetryPolicy(attempts uint) RetryPolicy {
@@ -89,6 +105,112 @@ func TestRetryPolicyExponentialBackoffNextDurationUnrolled(t *testing.T) {
 	assert.Equal(t, 16*time.Second, policy.NextDuration(responses[4]))
 	// done
 	assert.False(t, shouldContinueIssuingRequests(6, policy.MaximumNumberAttempts))
+}
+
+func TestDefaultRetryPolicy(t *testing.T) {
+	responses := []OCIOperationResponse{
+		getMockedOCIOperationResponseWithError(400, "CannotParseRequest"),
+		getMockedOCIOperationResponseWithError(400, "InvalidParameter"),
+		getMockedOCIOperationResponseWithError(400, "MissingParameter"),
+		getMockedOCIOperationResponseWithError(400, "QuotaExceeded"),
+		getMockedOCIOperationResponseWithError(400, "LimitExceeded"),
+		getMockedOCIOperationResponseWithError(400, "RelatedResourceNotAuthorizedOrNotFound"),
+		getMockedOCIOperationResponseWithError(401, "NotAuthenticated"),
+		getMockedOCIOperationResponseWithError(403, "SignUpRequired"),
+		getMockedOCIOperationResponseWithError(403, "NotAllowed"),
+		getMockedOCIOperationResponseWithError(403, "NotAuthorized"),
+
+		getMockedOCIOperationResponseWithError(404, "NotFound"),
+		getMockedOCIOperationResponseWithError(404, "InvalidParameter"),
+		getMockedOCIOperationResponseWithError(404, "NotAuthorizedOrNotFound"),
+		getMockedOCIOperationResponseWithError(405, "MethodNotAllowed"),
+		getMockedOCIOperationResponseWithError(409, "NotAuthorizedOrResourceAlreadyExists"),
+		getMockedOCIOperationResponseWithError(409, "InvalidatedRetryToken"),
+		getMockedOCIOperationResponseWithError(409, "IncorrectState"),
+		getMockedOCIOperationResponseWithError(409, "Conflict"),
+		getMockedOCIOperationResponseWithError(412, "NoEtagMatch"),
+		getMockedOCIOperationResponseWithError(413, "PayloadTooLarge"),
+
+		getMockedOCIOperationResponseWithError(422, "UnprocessableEntity"),
+		getMockedOCIOperationResponseWithError(429, "TooManyRequests"),
+		getMockedOCIOperationResponseWithError(431, "RequestHeaderFieldsTooLarge"),
+		getMockedOCIOperationResponseWithError(500, "InternalServerError"),
+		getMockedOCIOperationResponseWithError(500, "OutOfCapacity"),
+		getMockedOCIOperationResponseWithError(501, "MethodNotImplemented"),
+		getMockedOCIOperationResponseWithError(503, "ServiceUnavailable"),
+		getMockedOCIOperationResponseWithError(599, "Unknown 500 Error"),
+
+		getMockedOCIOperationResponse(200, 1),
+	}
+	policy := DefaultRetryPolicy()
+	// unroll an exponential retry policy with a specified maximum
+	// number of attempts so it's more obvious what's happening
+	assert.True(t, shouldContinueIssuingRequests(1, policy.MaximumNumberAttempts))
+	assert.True(t, shouldContinueIssuingRequests(2, policy.MaximumNumberAttempts))
+	assert.True(t, shouldContinueIssuingRequests(3, policy.MaximumNumberAttempts))
+	assert.False(t, shouldContinueIssuingRequests(4, policy.MaximumNumberAttempts))
+
+	// request #1
+	assert.False(t, policy.ShouldRetryOperation(responses[0]))
+	// request #2
+	assert.False(t, policy.ShouldRetryOperation(responses[1]))
+	// request #3
+	assert.False(t, policy.ShouldRetryOperation(responses[2]))
+	// request #4
+	assert.False(t, policy.ShouldRetryOperation(responses[3]))
+	// request #5
+	assert.False(t, policy.ShouldRetryOperation(responses[4]))
+	// request #6
+	assert.False(t, policy.ShouldRetryOperation(responses[5]))
+	// request #7
+	assert.False(t, policy.ShouldRetryOperation(responses[6]))
+	// request #8
+	assert.False(t, policy.ShouldRetryOperation(responses[7]))
+	// request #9
+	assert.False(t, policy.ShouldRetryOperation(responses[8]))
+	// request #10
+	assert.False(t, policy.ShouldRetryOperation(responses[9]))
+
+	// request #11
+	assert.False(t, policy.ShouldRetryOperation(responses[10]))
+	// request #12
+	assert.False(t, policy.ShouldRetryOperation(responses[11]))
+	// request #13
+	assert.False(t, policy.ShouldRetryOperation(responses[12]))
+	// request #14
+	assert.False(t, policy.ShouldRetryOperation(responses[13]))
+	// request #15
+	assert.False(t, policy.ShouldRetryOperation(responses[14]))
+	// request #16
+	assert.False(t, policy.ShouldRetryOperation(responses[15]))
+	// request #17
+	assert.True(t, policy.ShouldRetryOperation(responses[16]))
+	// request #18
+	assert.False(t, policy.ShouldRetryOperation(responses[17]))
+	// request #19
+	assert.False(t, policy.ShouldRetryOperation(responses[18]))
+	// request #20
+	assert.False(t, policy.ShouldRetryOperation(responses[19]))
+
+	// request #21
+	assert.False(t, policy.ShouldRetryOperation(responses[20]))
+	// request #22
+	assert.True(t, policy.ShouldRetryOperation(responses[21]))
+	// request #23
+	assert.False(t, policy.ShouldRetryOperation(responses[22]))
+	// request #24
+	assert.True(t, policy.ShouldRetryOperation(responses[23]))
+	// request #25
+	assert.True(t, policy.ShouldRetryOperation(responses[24]))
+	// request #26
+	assert.False(t, policy.ShouldRetryOperation(responses[25]))
+	// request #27
+	assert.True(t, policy.ShouldRetryOperation(responses[26]))
+	// request #28
+	assert.True(t, policy.ShouldRetryOperation(responses[27]))
+
+	// request #29
+	assert.False(t, policy.ShouldRetryOperation(responses[28]))
 }
 
 type mockedRequest struct {
