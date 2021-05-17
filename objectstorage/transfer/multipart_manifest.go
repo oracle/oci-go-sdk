@@ -167,13 +167,15 @@ func (manifest *multipartManifest) splitStreamToParts(done <-chan struct{}, part
 		partNum := 1
 		for {
 			buffer := make([]byte, partSize)
-			numberOfBytesRead, err := reader.Read(buffer)
+			numberOfBytesRead, err := io.ReadFull(reader, buffer)
 
+			// ignore io.ErrUnexpectedEOF here
 			if err == io.EOF {
 				break
 			}
 
 			// If the number of bytes read is less than the initial buffer size, reduce the buffer size to match the actual content size.
+			// it's actually the handling of io.ErrUnexpectedEOF
 			if int64(numberOfBytesRead) < partSize {
 				buffer = buffer[:numberOfBytesRead]
 			}
@@ -181,7 +183,7 @@ func (manifest *multipartManifest) splitStreamToParts(done <-chan struct{}, part
 			part := uploadPart{
 				partNum:  partNum,
 				size:     int64(numberOfBytesRead),
-				err:      err,
+				err:      nil,
 				partBody: buffer,
 			}
 			// Once enabled multipartMD5 verification, add opcMD5 for part

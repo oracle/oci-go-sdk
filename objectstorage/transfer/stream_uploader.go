@@ -27,11 +27,11 @@ type streamUpload struct {
 func (streamUpload *streamUpload) UploadStream(ctx context.Context, request UploadStreamRequest) (response UploadResponse, err error) {
 
 	uploadID, err := streamUpload.multipartUploader.createMultipartUpload(ctx, request.UploadRequest)
-	streamUpload.uploadID = uploadID
 
 	if err != nil {
 		return UploadResponse{}, err
 	}
+	streamUpload.uploadID = uploadID
 
 	if streamUpload.manifest == nil {
 		streamUpload.manifest = &multipartManifest{parts: make(map[string]map[int]uploadPart)}

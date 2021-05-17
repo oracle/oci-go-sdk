@@ -49,11 +49,11 @@ func (fileUpload *fileUpload) UploadFileMultiparts(ctx context.Context, request 
 	fileSize := fi.Size()
 
 	uploadID, err := fileUpload.multipartUploader.createMultipartUpload(ctx, request.UploadRequest)
-	fileUpload.uploadID = uploadID
 
 	if err != nil {
 		return
 	}
+	fileUpload.uploadID = uploadID
 
 	if fileUpload.fileUploadReqs == nil {
 		fileUpload.fileUploadReqs = make(map[string]UploadFileRequest)
