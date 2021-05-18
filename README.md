@@ -3,9 +3,6 @@
 
 This is the Go SDK for Oracle Cloud Infrastructure. This project is open source and maintained by Oracle Corp. 
 The home page for the project is [here](https://godoc.org/github.com/oracle/oci-go-sdk/).
->***WARNING:***: To avoid automatically consuming breaking changes if we have to rev the major version of the Go SDK, 
-please consider using the  [Go dependency management tool](https://github.com/golang/dep), or vendoring the SDK. 
-This will allow you to pin to a specific version of the Go SDK in your project, letting you control how and when you move to the next major version.
 
 ## Survey
 Are you a Developer using the OCI SDK? If so, please fill out our survey to help us make the OCI SDK better for you. Click [here](https://oracle.questionpro.com/t/APeMlZka26?custom3=pkg) for the survey page.
@@ -18,28 +15,23 @@ Are you a Developer using the OCI SDK? If so, please fill out our survey to help
 
 
 ## Installing
-OCI Go SDK supports both `go get` and Go Modules installing.
-
 If you want to install the SDK under $GOPATH, you can use `go get` to retrieve the SDK:
 ```
 go get -u github.com/oracle/oci-go-sdk
 ```
-Alternatively, you can also clone the repo from [Github](https://github.com/oracle/oci-go-sdk).
-
-
-If you are using Go modules, you can install the latest or specific version(v25.0.0+) when adding the following in the go.mod file:
-```go
-require github.com/oracle/oci-go-sdk/{major-version} {version}
+If you are using Go modules, you can install by running the following command within a folder containing a `go.mod` file:
 ```
-One example is:
-```go
-require github.com/oracle/oci-go-sdk/v38 v38.0.0
+go get -d github.com/oracle/oci-go-sdk/@latest
+```
+Alternatively, you can install a specific version(supported from `v25.0.0` on):
+```
+go get -d github.com/oracle/oci-go-sdk/@v40.4.0
 ```
 Run `go mod tidy`
 
-In your project, you also need to add/update the major-version to make sure `go build` works
-```go
-import "github.com/oracle/oci-go-sdk/v38/common"
+In your project, you also need to ensure the import paths contain the correct major-version:
+```
+import "github.com/oracle/oci-go-sdk/v40/common"  // or whatever major version you're using
 ```
 
 ## Working with the Go SDK
