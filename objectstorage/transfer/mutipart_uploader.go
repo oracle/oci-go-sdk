@@ -48,7 +48,10 @@ func (uploader *multipartUpload) createMultipartUpload(ctx context.Context, requ
 	}
 
 	resp, err := request.ObjectStorageClient.CreateMultipartUpload(ctx, multipartUploadRequest)
-	return *resp.UploadId, err
+	if err == nil {
+		return *resp.UploadId, nil
+	}
+	return "", err
 }
 
 func (uploader *multipartUpload) uploadParts(ctx context.Context, done <-chan struct{}, parts <-chan uploadPart, result chan<- uploadPart, request UploadRequest, uploadID string) {
