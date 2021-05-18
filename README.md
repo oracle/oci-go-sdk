@@ -2,7 +2,7 @@
 [![wercker status](https://app.wercker.com/status/09bc4818e7b1d70b04285331a9bdbc41/s/master "wercker status")](https://app.wercker.com/project/byKey/09bc4818e7b1d70b04285331a9bdbc41)
 
 This is the Go SDK for Oracle Cloud Infrastructure. This project is open source and maintained by Oracle Corp. 
-The home page for the project is [here](https://godoc.org/github.com/oracle/oci-go-sdk/).
+The home page for the project is [here](https://godoc.org/github.com/oracle/oci-go-sdk/v40).
 >***WARNING:***: To avoid automatically consuming breaking changes if we have to rev the major version of the Go SDK, 
 please consider using the  [Go dependency management tool](https://github.com/golang/dep), or vendoring the SDK. 
 This will allow you to pin to a specific version of the Go SDK in your project, letting you control how and when you move to the next major version.
@@ -77,7 +77,7 @@ type ConfigurationProvider interface {
 	AuthType() (AuthConfig, error)
 }
 ```
-Or simply use one of  structs exposed by the `oci-go-sdk` that already implement the above [interface](https://godoc.org/github.com/oracle/oci-go-sdk/common#ConfigurationProvider)
+Or simply use one of  structs exposed by the `oci-go-sdk` that already implement the above [interface](https://godoc.org/github.com/oracle/oci-go-sdk/v40/common#ConfigurationProvider)
 
 ### Making a Request
 To make a request to an Oracle Cloud Infrastructure service, create a client for the service and then use the client to call a function from the service.
@@ -128,7 +128,7 @@ in this package are meant to be used by the service packages.
 Examples can be found [here](https://github.com/oracle/oci-go-sdk/tree/master/example)
 
 ## Documentation
-Full documentation can be found [on the godocs site](https://godoc.org/github.com/oracle/oci-go-sdk/).
+Full documentation can be found [on the godocs site](https://godoc.org/github.com/oracle/oci-go-sdk/v40).
 
 ## Help
 * The [Issues](https://github.com/oracle/oci-go-sdk/issues) page of this GitHub repository.
