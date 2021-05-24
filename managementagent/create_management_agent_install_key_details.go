@@ -10,7 +10,7 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // CreateManagementAgentInstallKeyDetails The information about new Management Agent install Key.

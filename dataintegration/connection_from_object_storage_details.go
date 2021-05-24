@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // ConnectionFromObjectStorageDetails The connection summary details for an Oracle Object Storage data asset.

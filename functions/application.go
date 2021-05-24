@@ -10,7 +10,7 @@
 package functions
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // Application An application contains functions and defined attributes shared between those functions, such as network configuration and configuration. Avoid entering confidential information.

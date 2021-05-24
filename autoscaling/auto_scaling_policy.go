@@ -15,7 +15,7 @@ package autoscaling
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // AutoScalingPolicy Autoscaling policies define the criteria that trigger autoscaling actions and the actions to take.

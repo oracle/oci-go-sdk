@@ -13,7 +13,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // CreateSuppressionDetails The details needed for creating a single suppression.

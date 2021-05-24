@@ -10,7 +10,7 @@
 package vault
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // SecretVersionSummary The secret version summary object, which doesn't include the contents of the secret.

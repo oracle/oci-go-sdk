@@ -5,7 +5,7 @@
 package limits
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 	"net/http"
 )
 
@@ -28,7 +28,7 @@ type ListLimitDefinitionsRequest struct {
 	// The field to sort by.
 	SortBy ListLimitDefinitionsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// The sort order to use, either 'asc' or 'desc'. By default it will be ascending.
+	// The sort order to use, either 'asc' or 'desc'. By default, it is ascending.
 	SortOrder ListLimitDefinitionsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// The maximum number of items to return in a paginated "List" call.

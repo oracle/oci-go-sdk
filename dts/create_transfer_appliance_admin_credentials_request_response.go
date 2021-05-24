@@ -5,7 +5,7 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 	"net/http"
 )
 

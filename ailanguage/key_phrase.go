@@ -12,7 +12,7 @@
 package ailanguage
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // KeyPhrase Key phrase and score for the given text.

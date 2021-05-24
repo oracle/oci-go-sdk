@@ -4,13 +4,13 @@
 
 // Service Limits APIs
 //
-// APIs that interact with the resource limits of a specific resource type
+// APIs that interact with the resource limits of a specific resource type.
 //
 
 package limits
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // LimitValueSummary The value of a specific resource limit.

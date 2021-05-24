@@ -10,7 +10,7 @@
 package functions
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // ChangeApplicationCompartmentDetails Properties to change the compartment of an application.

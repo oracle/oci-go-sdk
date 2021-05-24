@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 41.0.0 - 2021-05-25
+### Added
+- Support for the Generic Artifacts service
+- Support for the Bastion service
+- Support for reading secrets by name in the Vault service
+- Support for the isDynamic field when listing definitions in the Limits service
+- Support for getting billable image sizes in the Compute service
+- Support for getting Automatic Workload Repository (AWR) data on external databases in the Database Management service
+- Support for the VM.Standard.E3.Flex flexible compute shape with customizable OCPUs and memory on notebooks in the Data Science service
+- Support for container images and generic artifacts billing in the Registry service
+- Support for the HCX Enterprise add-on in the VMware Solution service
+
+### Breaking changes
+- Property `Name` of Model `SupportedSkuSummary` type changed from `SupportedSkuSummaryNameEnum` to `SkuEnum` in the VMware Solution service
+
 ## 40.4.0 - 2021-05-18
 ### Added
 - Support for spark-submit compatible options in the Data Flow service

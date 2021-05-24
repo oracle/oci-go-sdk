@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // WorkRequestLogEntryCollection Result of a platform lpnist or search. Contains WorkRequestLogEntry

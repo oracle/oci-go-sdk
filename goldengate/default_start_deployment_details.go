@@ -11,7 +11,7 @@ package goldengate
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // DefaultStartDeploymentDetails Definiton of the additional attributes for default deployment start.

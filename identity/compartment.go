@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // Compartment A collection of related resources. Compartments are a fundamental component of Oracle Cloud Infrastructure

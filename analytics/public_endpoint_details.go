@@ -11,7 +11,7 @@ package analytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // PublicEndpointDetails Public endpoint configuration details.

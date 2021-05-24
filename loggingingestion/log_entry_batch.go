@@ -10,7 +10,7 @@
 package loggingingestion
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // LogEntryBatch A single batch of Log Entries.
@@ -29,8 +29,8 @@ type LogEntryBatch struct {
 
 	// The timestamp for all log entries in this batch. This can be
 	// considered as the default timestamp for each entry, unless it is
-	// overwritten by the entry time. An RFC3339-formatted date-time
-	// string.
+	// overwritten by the entry time. An RFC3339-formatted date-time string
+	// with milliseconds precision.
 	Defaultlogentrytime *common.SDKTime `mandatory:"true" json:"defaultlogentrytime"`
 
 	// This optional field is useful for specifying the specific sub-resource

@@ -10,10 +10,11 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
-// SupportedSkuSummaryCollection A specific SKU. HOUR, MONTH, ONE_YEAR and THREE_YEARS supported by the Oracle Cloud VMware Solution.
+// SupportedSkuSummaryCollection A specific SKU. Oracle Cloud Infrastructure VMware Solution supports the following billing interval SKUs:
+// HOUR, MONTH, ONE_YEAR, and THREE_YEARS.
 type SupportedSkuSummaryCollection struct {
 
 	// A list of the supported SKUs.

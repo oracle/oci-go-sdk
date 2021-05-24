@@ -12,7 +12,7 @@
 package audit
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // Data The payload of the event. Information within `data` comes from the resource emitting the event.

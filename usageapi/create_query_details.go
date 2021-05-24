@@ -10,7 +10,7 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // CreateQueryDetails New query detail with savedRequestSummarizedUsagesDetails, savedCostAnalysisUI and displayName.

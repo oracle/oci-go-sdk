@@ -12,7 +12,7 @@ Are you a Developer using the OCI SDK? If so, please fill out our survey to help
 
 
 ## Dependencies
-- Install [Go programming language](https://golang.org/dl/).
+- Install [Go programming language](https://golang.org/dl/), Go1.14 is supported By OCI Go SDK.
 - Install [GNU Make](https://www.gnu.org/software/make/), using the package manager or binary distribution tool appropriate for your platform.
  
 

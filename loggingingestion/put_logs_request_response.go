@@ -5,7 +5,7 @@
 package loggingingestion
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 	"net/http"
 )
 
@@ -23,7 +23,7 @@ type PutLogsRequest struct {
 	PutLogsDetails `contributesTo:"body"`
 
 	// Effective timestamp, for when the agent started processing the log
-	// segment being sent. An RFC3339-formatted date-time string.
+	// segment being sent. An RFC3339-formatted date-time string with milliseconds precision.
 	TimestampOpcAgentProcessing *common.SDKTime `mandatory:"false" contributesTo:"header" name:"timestamp-opc-agent-processing"`
 
 	// Version of the agent sending the request.

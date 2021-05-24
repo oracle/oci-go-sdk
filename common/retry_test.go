@@ -148,7 +148,13 @@ func TestDefaultRetryPolicy(t *testing.T) {
 	assert.True(t, shouldContinueIssuingRequests(1, policy.MaximumNumberAttempts))
 	assert.True(t, shouldContinueIssuingRequests(2, policy.MaximumNumberAttempts))
 	assert.True(t, shouldContinueIssuingRequests(3, policy.MaximumNumberAttempts))
-	assert.False(t, shouldContinueIssuingRequests(4, policy.MaximumNumberAttempts))
+	assert.True(t, shouldContinueIssuingRequests(4, policy.MaximumNumberAttempts))
+	assert.True(t, shouldContinueIssuingRequests(5, policy.MaximumNumberAttempts))
+	assert.True(t, shouldContinueIssuingRequests(6, policy.MaximumNumberAttempts))
+	assert.True(t, shouldContinueIssuingRequests(7, policy.MaximumNumberAttempts))
+	assert.True(t, shouldContinueIssuingRequests(8, policy.MaximumNumberAttempts))
+
+	assert.False(t, shouldContinueIssuingRequests(9, policy.MaximumNumberAttempts))
 
 	// request #1
 	assert.False(t, policy.ShouldRetryOperation(responses[0]))

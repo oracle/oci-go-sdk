@@ -10,7 +10,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // UpdateCustomProtectionRuleDetails Updates the configuration details of a custom protection rule. Custom protection rules can only be updated if they are not active in a WAAS policy.

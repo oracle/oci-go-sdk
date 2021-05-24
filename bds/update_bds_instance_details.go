@@ -12,7 +12,7 @@
 package bds
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // UpdateBdsInstanceDetails The information about to-be-updated BDS instance
