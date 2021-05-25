@@ -10,7 +10,7 @@
 package vault
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // ScheduleSecretDeletionDetails Details for scheduling the deletion of the specified secret.

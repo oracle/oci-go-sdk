@@ -5,7 +5,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 	"net/http"
 )
 
@@ -49,7 +49,7 @@ type ListJobsRequest struct {
 	// The ‘NAME’ sort order is case-sensitive.
 	SortBy ListJobsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// The option to sort information in ascending (‘ASC’) or descending (‘DESC’) order.
+	// The option to sort information in ascending (‘ASC’) or descending (‘DESC’) order. Ascending order is the the default order.
 	SortOrder ListJobsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but

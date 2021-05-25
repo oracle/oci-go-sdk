@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // DataAssetSummaryCollection This is the collection of data asset summaries, it may be a collection of lightweight details or full definitions.

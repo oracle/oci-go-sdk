@@ -10,7 +10,7 @@
 package loggingingestion
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // LogEntry Contains the log content with the associated timestamp and ID. Each
@@ -24,7 +24,7 @@ type LogEntry struct {
 	// to any oracle resource.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Optional. The timestamp associated with the log entry. An RFC3339-formatted date-time string.
+	// Optional. The timestamp associated with the log entry. An RFC3339-formatted date-time string with milliseconds precision.
 	// If unspecified, defaults to PutLogsDetails.defaultlogentrytime.
 	Time *common.SDKTime `mandatory:"false" json:"time"`
 }

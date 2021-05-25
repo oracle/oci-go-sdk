@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // ImagePublicationPackage A package for image publications.

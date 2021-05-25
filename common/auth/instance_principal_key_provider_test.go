@@ -6,12 +6,13 @@ package auth
 import (
 	"crypto/rsa"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 )
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClient(t *testing.T) {
@@ -33,6 +34,134 @@ func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFound(t *te
 	_, err := getRegionForFederationClient(&http.Client{}, regionServer.URL)
 
 	assert.Error(t, err)
+}
+
+func TestInstancePrincipalKeyProvider_getRegionForFederationClientTimeout(t *testing.T) {
+	HandlerFunc := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		time.Sleep(100 * time.Millisecond)
+	})
+	regionServer := httptest.NewServer(http.TimeoutHandler(HandlerFunc, 20*time.Millisecond, "Timeout occured"))
+	defer regionServer.Close()
+
+	start := time.Now()
+	response, _ := getRegionForFederationClient(&http.Client{}, regionServer.URL)
+	assert.NotNil(t, response)
+	elapsed := time.Since(start)
+	assert.GreaterOrEqual(t, elapsed.Seconds(), 3.0)
+}
+
+func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFoundRetrySuccess(t *testing.T) {
+	responses := []func(w http.ResponseWriter, r *http.Request){
+		func(w http.ResponseWriter, r *http.Request) {
+			http.Error(w, "Bad request ", 404)
+			fmt.Fprintln(w, "First response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			http.Error(w, "Bad request ", 404)
+			fmt.Fprintln(w, "Second response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			http.Error(w, "Good request ", 200)
+			fmt.Fprintln(w, "Third response")
+		},
+	}
+	responseCounter := 0
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		responses[responseCounter](w, r)
+		responseCounter++
+	}))
+	defer ts.Close()
+	response, err := getRegionForFederationClient(&http.Client{}, ts.URL)
+
+	assert.NoError(t, err)
+	assert.NotEmpty(t, response)
+	assert.NotNil(t, response)
+}
+
+func TestInstancePrincipalKeyProvider_getRegionForFederationClientNotFoundRetryFailure(t *testing.T) {
+	responses := []func(w http.ResponseWriter, r *http.Request){
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "First response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Second response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Third response")
+		},
+	}
+	responseCounter := 0
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.Error(w, "Bad request ", 404)
+		responses[responseCounter](w, r)
+		responseCounter++
+	}))
+	defer ts.Close()
+	response, err := getRegionForFederationClient(&http.Client{}, ts.URL)
+
+	assert.Error(t, err)
+	assert.Empty(t, response)
+	assert.NotNil(t, response)
+}
+
+func TestInstancePrincipalKeyProvider_getRegionForFederationClientRetrySuccess(t *testing.T) {
+	statusCodeList := []int{400, 401, 403, 405, 408, 409, 412, 413, 422, 429, 431, 500, 501, 503}
+	for _, statusCode := range statusCodeList {
+		responses := []func(w http.ResponseWriter, r *http.Request){
+			func(w http.ResponseWriter, r *http.Request) {
+				http.Error(w, "Bad request ", statusCode)
+				fmt.Fprintln(w, "First response")
+			},
+			func(w http.ResponseWriter, r *http.Request) {
+				http.Error(w, "Bad request ", statusCode)
+				fmt.Fprintln(w, "Second response")
+			},
+			func(w http.ResponseWriter, r *http.Request) {
+				http.Error(w, "Good request - Third ", 200)
+				fmt.Fprintln(w, "Third response")
+			},
+		}
+		responseCounter := 0
+		ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			responses[responseCounter](w, r)
+			responseCounter++
+		}))
+		defer ts.Close()
+
+		response, err := getRegionForFederationClient(&http.Client{}, ts.URL)
+
+		assert.NoError(t, err)
+		assert.NotEmpty(t, response)
+		assert.NotNil(t, response)
+	}
+}
+
+func TestInstancePrincipalKeyProvider_getRegionForFederationClientRetryFailure(t *testing.T) {
+	statusCodeList := []int{400, 401, 403, 405, 408, 409, 412, 413, 422, 429, 431, 500, 501, 503}
+	responses := []func(w http.ResponseWriter, r *http.Request){
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "First response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Second response")
+		},
+		func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintln(w, "Third response")
+		},
+	}
+	for _, statusCode := range statusCodeList {
+		responseCounter := 0
+		ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			http.Error(w, "Bad request ", statusCode)
+			responses[responseCounter](w, r)
+			responseCounter++
+		}))
+		defer ts.Close()
+
+		response, err := getRegionForFederationClient(&http.Client{}, ts.URL)
+		assert.Error(t, err)
+		assert.Empty(t, response)
+	}
 }
 
 func TestInstancePrincipalKeyProvider_getRegionForFederationClientInternalServerError(t *testing.T) {

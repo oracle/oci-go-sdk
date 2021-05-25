@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // NetworkSecurityGroup A *network security group* (NSG) provides virtual firewall rules for a specific set of

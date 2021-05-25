@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // SummarizeHostInsightResourceStatisticsAggregationCollection Returns list of hosts with resource statistics like usage, capacity, utilization, usage change percent and load.

@@ -2,7 +2,7 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Secrets
+// Vault Service Secret Retrieval API
 //
 // API for retrieving secrets from vaults.
 //
@@ -12,8 +12,8 @@ package secrets
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v40/common"
-	"github.com/oracle/oci-go-sdk/v40/common/auth"
+	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v41/common/auth"
 	"net/http"
 )
 
@@ -79,7 +79,7 @@ func (client *SecretsClient) ConfigurationProvider() *common.ConfigurationProvid
 	return client.config
 }
 
-// GetSecretBundle Gets a secret bundle that matches either the specified `stage`, `label`, or `versionNumber` parameter.
+// GetSecretBundle Gets a secret bundle that matches either the specified `stage`, `secretVersionName`, or `versionNumber` parameter.
 // If none of these parameters are provided, the bundle for the secret version marked as `CURRENT` will be returned.
 //
 // See also
@@ -122,6 +122,61 @@ func (client SecretsClient) getSecretBundle(ctx context.Context, request common.
 	}
 
 	var response GetSecretBundleResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetSecretBundleByName Gets a secret bundle by secret name and vault ID, and secret version that matches either the specified `stage`, `secretVersionName`, or `versionNumber` parameter.
+// If none of these parameters are provided, the bundle for the secret version marked as `CURRENT` is returned.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/secrets/GetSecretBundleByName.go.html to see an example of how to use GetSecretBundleByName API.
+func (client SecretsClient) GetSecretBundleByName(ctx context.Context, request GetSecretBundleByNameRequest) (response GetSecretBundleByNameResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getSecretBundleByName, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetSecretBundleByNameResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetSecretBundleByNameResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetSecretBundleByNameResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetSecretBundleByNameResponse")
+	}
+	return
+}
+
+// getSecretBundleByName implements the OCIOperation interface (enables retrying operations)
+func (client SecretsClient) getSecretBundleByName(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/secretbundles/actions/getByName", binaryReqBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetSecretBundleByNameResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)

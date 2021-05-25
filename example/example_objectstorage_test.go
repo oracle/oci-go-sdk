@@ -14,10 +14,10 @@ import (
 	"os"
 	"path"
 
-	"github.com/oracle/oci-go-sdk/v40/common"
-	"github.com/oracle/oci-go-sdk/v40/example/helpers"
-	"github.com/oracle/oci-go-sdk/v40/objectstorage"
-	"github.com/oracle/oci-go-sdk/v40/objectstorage/transfer"
+	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v41/example/helpers"
+	"github.com/oracle/oci-go-sdk/v41/objectstorage"
+	"github.com/oracle/oci-go-sdk/v41/objectstorage/transfer"
 )
 
 // ExampleObjectStorage_UploadFile shows how to create a bucket and upload a file

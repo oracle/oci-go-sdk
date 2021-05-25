@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // ExternalDatabaseConnector An Oracle Cloud Infrastructure resource used to connect to an external Oracle Database.

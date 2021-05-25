@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // UpdateCloudExadataInfrastructureDetails Updates the cloud Exadata infrastructure. Applies to Exadata Cloud Service instances only.

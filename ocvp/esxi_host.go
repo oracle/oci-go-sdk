@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // EsxiHost An ESXi host is a node in an SDDC. At a minimum, each SDDC has 3 ESXi hosts
@@ -33,6 +33,8 @@ type EsxiHost struct {
 	SddcId *string `mandatory:"true" json:"sddcId"`
 
 	// Billing option selected during SDDC creation.
+	// Oracle Cloud Infrastructure VMware Solution supports the following billing interval SKUs:
+	// HOUR, MONTH, ONE_YEAR, and THREE_YEARS.
 	// ListSupportedSkus.
 	CurrentSku SkuEnum `mandatory:"true" json:"currentSku"`
 

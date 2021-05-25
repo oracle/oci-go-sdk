@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // Image A boot disk image for launching an instance. For more information, see
@@ -88,6 +88,10 @@ type Image struct {
 	// Note this is not the same as the size of the image when it was exported or the actual size of the image.
 	// Example: `47694`
 	SizeInMBs *int64 `mandatory:"false" json:"sizeInMBs"`
+
+	// The size of the internal storage for this image that is subject to billing (1 GB = 1,073,741,824 bytes).
+	// Example: `100`
+	BillableSizeInGBs *int64 `mandatory:"false" json:"billableSizeInGBs"`
 }
 
 func (m Image) String() string {

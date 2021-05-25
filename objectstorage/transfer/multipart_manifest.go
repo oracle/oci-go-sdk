@@ -11,7 +11,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/oracle/oci-go-sdk/v40/common"
+	"github.com/oracle/oci-go-sdk/v41/common"
 )
 
 // multipartManifest provides thread-safe access to an ongoing manifest upload.
