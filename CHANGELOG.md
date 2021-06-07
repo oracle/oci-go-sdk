@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 41.2.0 - 2021-06-08
+### Added
+- Support for Java Management service
+- Support for resource principals for the Enterprise Manager bridge resource in Operations Insights service
+- Support for encryptionInTransitType in BootVolumeAttachment and IScsiVolumeAttachment in Core service
+- Support for updating iscsiLoginState for VolumeAttachment in Core service
+- Support for a new type of Source called Import for use with the Export tool in Application Migration service
+- Support for Expect/100-continue HTTP header. Expect headers are added by default for all PUT/POST operations
+
 ## 41.1.0 - 2021-06-01
 ### Added
 - Support for configuration of autonomous database KMS keys in the Database service
