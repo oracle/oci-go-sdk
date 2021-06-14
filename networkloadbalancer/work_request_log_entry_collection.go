@@ -10,7 +10,7 @@
 package networkloadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // WorkRequestLogEntryCollection Wrapper object for an array of WorkRequestLogEntry objects.

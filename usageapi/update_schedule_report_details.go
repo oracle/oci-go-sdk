@@ -10,7 +10,7 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // UpdateScheduleReportDetails Details for updating schedule report.

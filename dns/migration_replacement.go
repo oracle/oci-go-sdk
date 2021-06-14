@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // MigrationReplacement A record to add to a zone in replacement of contents that cannot be migrated.

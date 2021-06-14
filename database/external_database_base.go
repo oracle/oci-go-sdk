@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // ExternalDatabaseBase A resource that allows you to manage an Oracle Database located outside of Oracle Cloud using Oracle Cloud Infrastructure's Console and APIs.

@@ -11,7 +11,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // ManagementDashboardTileDetails Properties of the dashboard tile representing a saved search.
@@ -50,6 +50,9 @@ type ManagementDashboardTileDetails struct {
 
 	// Drill-down configuration to define the destination of a drill-down action.
 	DrilldownConfig *interface{} `mandatory:"true" json:"drilldownConfig"`
+
+	// Specifies the saved search parameters values
+	ParametersMap *interface{} `mandatory:"false" json:"parametersMap"`
 }
 
 func (m ManagementDashboardTileDetails) String() string {

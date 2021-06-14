@@ -14,7 +14,7 @@ package applicationmigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // IcsDiscoveryDetails Credentials to access the Oracle Integration Cloud Service application in the source environment. Application Migration connects

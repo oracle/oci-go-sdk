@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // CaCertificate The CA certificate of the server used for VERIFY_IDENTITY and VERIFY_CA ssl modes.

@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // CreateObjectStorageConfigSourceDetails Details for the Object Storage bucket that contains Terraform configuration files.

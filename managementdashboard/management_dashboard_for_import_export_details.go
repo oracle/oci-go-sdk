@@ -11,7 +11,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // ManagementDashboardForImportExportDetails Properties of a dashboard, including dashboard ID and saved searches, for import purposes.
@@ -73,6 +73,9 @@ type ManagementDashboardForImportExportDetails struct {
 
 	// Array of saved searches in the dashboard.
 	SavedSearches []ManagementSavedSearchForImportDetails `mandatory:"true" json:"savedSearches"`
+
+	// Defines parameters for the dashboard.
+	ParametersConfig []interface{} `mandatory:"false" json:"parametersConfig"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`

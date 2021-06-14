@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // Ipv6 An *IPv6* is a conceptual term that refers to an IPv6 address and related properties.

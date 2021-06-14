@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // InstancePoolLoadBalancerAttachment Represents a load balancer that is attached to an instance pool.

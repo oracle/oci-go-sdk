@@ -11,7 +11,7 @@ package apmsynthetics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // RestMonitorConfiguration Request configuration details for the REST monitor type.

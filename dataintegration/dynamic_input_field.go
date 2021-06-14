@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // DynamicInputField The type representing the dynamic field concept. Dynamic fields have a dynamic type handler to define how to generate the field.

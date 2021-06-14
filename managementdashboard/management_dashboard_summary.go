@@ -11,14 +11,17 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // ManagementDashboardSummary Summary of the properties of a dashboard.
 type ManagementDashboardSummary struct {
 
-	// ID of the dashboard.
+	// ID of the dashboard.  Same as id.
 	DashboardId *string `mandatory:"true" json:"dashboardId"`
+
+	// ID of the dashboard.  Same as dashboardId.
+	Id *string `mandatory:"true" json:"id"`
 
 	// Display name of the dashboard.
 	DisplayName *string `mandatory:"true" json:"displayName"`

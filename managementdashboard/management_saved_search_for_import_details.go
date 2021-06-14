@@ -11,7 +11,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // ManagementSavedSearchForImportDetails Properties of a saved search.
@@ -72,6 +72,9 @@ type ManagementSavedSearchForImportDetails struct {
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+
+	// Defines parameters for the saved search.
+	ParametersConfig []interface{} `mandatory:"false" json:"parametersConfig"`
 }
 
 func (m ManagementSavedSearchForImportDetails) String() string {

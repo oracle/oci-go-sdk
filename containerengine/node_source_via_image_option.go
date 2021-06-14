@@ -13,7 +13,7 @@ package containerengine
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // NodeSourceViaImageOption An image can be specified as the source of nodes when launching a node pool using the `nodeSourceDetails` object.

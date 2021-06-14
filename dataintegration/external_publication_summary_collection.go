@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // ExternalPublicationSummaryCollection This is the collection of external publication summaries. It may be a collection of lightweight details or full definitions.

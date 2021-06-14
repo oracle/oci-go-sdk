@@ -11,7 +11,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // UpdateManagementDashboardDetails Properties of a dashboard.  Dashboard ID must not be provided.
@@ -67,6 +67,9 @@ type UpdateManagementDashboardDetails struct {
 
 	// Determines whether the dashboard is set as favorite.
 	IsFavorite *bool `mandatory:"false" json:"isFavorite"`
+
+	// Defines parameters for the dashboard.
+	ParametersConfig []interface{} `mandatory:"false" json:"parametersConfig"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`

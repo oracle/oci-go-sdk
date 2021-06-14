@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // OracleAdwcWriteAttributes Properties to configure when writing to Oracle Autonomous Data Warehouse Cloud.
