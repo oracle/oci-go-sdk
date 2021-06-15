@@ -11,7 +11,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // CreateManagementSavedSearchDetails Properties of a saved search.
@@ -64,6 +64,9 @@ type CreateManagementSavedSearchDetails struct {
 
 	// ID of the saved search, which must only be provided for Out-of-the-Box (OOB) saved search.
 	Id *string `mandatory:"false" json:"id"`
+
+	// Defines parameters for the saved search.
+	ParametersConfig []interface{} `mandatory:"false" json:"parametersConfig"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`

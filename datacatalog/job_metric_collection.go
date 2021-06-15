@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // JobMetricCollection Results of a job metrics listing. Job metrics are datum about a job execution in key value pairs.

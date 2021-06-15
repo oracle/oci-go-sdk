@@ -10,7 +10,7 @@
 package apmtraces
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // QueryResultRowTypeSummary A summary of the datatype, unit and related metadata of an individual row element of a query result row that is returned.

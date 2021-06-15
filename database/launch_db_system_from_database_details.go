@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // LaunchDbSystemFromDatabaseDetails Used for creating a new DB system from a database, including archived redo log data.

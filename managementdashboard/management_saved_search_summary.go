@@ -11,7 +11,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // ManagementSavedSearchSummary Summary of the properties of a saved search.
@@ -73,6 +73,9 @@ type ManagementSavedSearchSummary struct {
 
 	// Current lifecycle state of the saved search.
 	LifecycleState LifecycleStatesEnum `mandatory:"true" json:"lifecycleState"`
+
+	// Defines parameters for the saved search.
+	ParametersConfig []interface{} `mandatory:"false" json:"parametersConfig"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`

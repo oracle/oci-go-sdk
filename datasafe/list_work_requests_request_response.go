@@ -5,7 +5,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 	"net/http"
 )
 
@@ -18,6 +18,9 @@ type ListWorkRequestsRequest struct {
 
 	// A filter to return only resources that match the specified compartment OCID.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
+
+	// A filter to return only work requests that match the specific operation type.
+	OperationType *string `mandatory:"false" contributesTo:"query" name:"operationType"`
 
 	// A filter to return only work requests that match the specified resource OCID.
 	ResourceId *string `mandatory:"false" contributesTo:"query" name:"resourceId"`

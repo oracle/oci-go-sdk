@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v41/common"
+	"github.com/oracle/oci-go-sdk/v42/common"
 )
 
 // PatternSummary Summary of a pattern. A Pattern is defined using an expression and can be used as data selectors or filters
