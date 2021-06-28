@@ -12,7 +12,7 @@
 package audit
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // Response A container object for response attributes.

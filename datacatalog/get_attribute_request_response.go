@@ -5,7 +5,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 	"net/http"
 )
 
@@ -27,6 +27,9 @@ type GetAttributeRequest struct {
 
 	// Unique attribute key.
 	AttributeKey *string `mandatory:"true" contributesTo:"path" name:"attributeKey"`
+
+	// Indicates whether the list of objects and their relationships to this object will be provided in the response.
+	IsIncludeObjectRelationships *bool `mandatory:"false" contributesTo:"query" name:"isIncludeObjectRelationships"`
 
 	// Specifies the fields to return in an entity attribute response.
 	Fields []GetAttributeFieldsEnum `contributesTo:"query" name:"fields" omitEmpty:"true" collectionFormat:"multi"`

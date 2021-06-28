@@ -10,7 +10,7 @@
 package datascience
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // CreateModelDetails Parameters needed to create a new model. Models are mathematical representations of the relationships between data. Models are represented by their associated metadata and artifact.

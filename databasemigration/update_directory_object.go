@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // UpdateDirectoryObject Directory object details, used to define either import or export directory objects in Data Pump Settings.

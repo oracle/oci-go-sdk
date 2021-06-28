@@ -7,29 +7,30 @@
 // API for the Email Delivery service. Use this API to send high-volume, application-generated
 // emails. For more information, see Overview of the Email Delivery Service (https://docs.cloud.oracle.com/iaas/Content/Email/Concepts/overview.htm).
 //
-// **Note:** Write actions (POST, UPDATE, DELETE) may take several minutes to propagate and be reflected by the API. If a subsequent read request fails to reflect your changes, wait a few minutes and try again.
+// **Note:** Write actions (POST, UPDATE, DELETE) may take several minutes to propagate and be reflected by the API.
+// If a subsequent read request fails to reflect your changes, wait a few minutes and try again.
 //
 
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // SenderSummary The email addresses and `senderId` representing an approved sender.
 type SenderSummary struct {
 
 	// The OCID for the compartment.
-	CompartmentId *string `mandatory:"false" json:"compartmentId"`
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The email address of the sender.
-	EmailAddress *string `mandatory:"false" json:"emailAddress"`
+	EmailAddress *string `mandatory:"true" json:"emailAddress"`
 
 	// The unique ID of the sender.
-	Id *string `mandatory:"false" json:"id"`
+	Id *string `mandatory:"true" json:"id"`
 
 	// The current status of the approved sender.
-	LifecycleState SenderSummaryLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
+	LifecycleState SenderLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// Date time the approved sender was added, in "YYYY-MM-ddThh:mmZ"
 	// format with a Z offset, as defined by RFC 3339.
@@ -48,31 +49,4 @@ type SenderSummary struct {
 
 func (m SenderSummary) String() string {
 	return common.PointerString(m)
-}
-
-// SenderSummaryLifecycleStateEnum Enum with underlying type: string
-type SenderSummaryLifecycleStateEnum string
-
-// Set of constants representing the allowable values for SenderSummaryLifecycleStateEnum
-const (
-	SenderSummaryLifecycleStateCreating SenderSummaryLifecycleStateEnum = "CREATING"
-	SenderSummaryLifecycleStateActive   SenderSummaryLifecycleStateEnum = "ACTIVE"
-	SenderSummaryLifecycleStateDeleting SenderSummaryLifecycleStateEnum = "DELETING"
-	SenderSummaryLifecycleStateDeleted  SenderSummaryLifecycleStateEnum = "DELETED"
-)
-
-var mappingSenderSummaryLifecycleState = map[string]SenderSummaryLifecycleStateEnum{
-	"CREATING": SenderSummaryLifecycleStateCreating,
-	"ACTIVE":   SenderSummaryLifecycleStateActive,
-	"DELETING": SenderSummaryLifecycleStateDeleting,
-	"DELETED":  SenderSummaryLifecycleStateDeleted,
-}
-
-// GetSenderSummaryLifecycleStateEnumValues Enumerates the set of values for SenderSummaryLifecycleStateEnum
-func GetSenderSummaryLifecycleStateEnumValues() []SenderSummaryLifecycleStateEnum {
-	values := make([]SenderSummaryLifecycleStateEnum, 0)
-	for _, v := range mappingSenderSummaryLifecycleState {
-		values = append(values, v)
-	}
-	return values
 }

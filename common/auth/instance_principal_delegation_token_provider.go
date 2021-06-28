@@ -6,7 +6,7 @@ package auth
 import (
 	"crypto/rsa"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 type instancePrincipalDelegationTokenConfigurationProvider struct {

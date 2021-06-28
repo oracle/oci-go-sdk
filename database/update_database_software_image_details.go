@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // UpdateDatabaseSoftwareImageDetails Describes the parameters for updating the Database Software Image

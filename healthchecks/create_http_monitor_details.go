@@ -12,7 +12,7 @@
 package healthchecks
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // CreateHttpMonitorDetails The request body used to create an HTTP monitor.

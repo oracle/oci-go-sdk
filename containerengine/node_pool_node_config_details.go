@@ -12,7 +12,7 @@
 package containerengine
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // NodePoolNodeConfigDetails The size and placement configuration of nodes in the node pool.
@@ -20,6 +20,9 @@ type NodePoolNodeConfigDetails struct {
 
 	// The number of nodes in the node pool.
 	Size *int `mandatory:"false" json:"size"`
+
+	// The OCIDs of the Network Security Group(s) to associate nodes for this node pool with. For more information about NSGs, see NetworkSecurityGroup.
+	NsgIds []string `mandatory:"false" json:"nsgIds"`
 
 	// The placement configurations for the node pool. Provide one placement
 	// configuration for each availability domain in which you intend to launch a node.

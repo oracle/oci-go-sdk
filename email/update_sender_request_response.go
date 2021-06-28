@@ -5,7 +5,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 	"net/http"
 )
 
@@ -66,9 +66,8 @@ type UpdateSenderResponse struct {
 	// The Sender instance
 	Sender `presentIn:"body"`
 
-	// Unique Oracle-assigned identifier for the request. If you need
-	// to contact Oracle about a particular request, please provide the
-	// request ID.
+	// Unique Oracle-assigned identifier for the request. If you need to contact
+	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
 	// For optimistic concurrency control. See `if-match`.

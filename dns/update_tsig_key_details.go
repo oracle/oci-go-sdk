@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // UpdateTsigKeyDetails The body for updating a TSIG key.

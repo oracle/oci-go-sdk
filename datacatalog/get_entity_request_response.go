@@ -5,7 +5,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 	"net/http"
 )
 
@@ -24,6 +24,9 @@ type GetEntityRequest struct {
 
 	// Unique entity key.
 	EntityKey *string `mandatory:"true" contributesTo:"path" name:"entityKey"`
+
+	// Indicates whether the list of objects and their relationships to this object will be provided in the response.
+	IsIncludeObjectRelationships *bool `mandatory:"false" contributesTo:"query" name:"isIncludeObjectRelationships"`
 
 	// Specifies the fields to return in an entity response.
 	Fields []GetEntityFieldsEnum `contributesTo:"query" name:"fields" omitEmpty:"true" collectionFormat:"multi"`

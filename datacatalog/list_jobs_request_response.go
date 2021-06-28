@@ -5,7 +5,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 	"net/http"
 )
 
@@ -192,6 +192,7 @@ const (
 	ListJobsJobTypeScheduledExecution         ListJobsJobTypeEnum = "SCHEDULED_EXECUTION"
 	ListJobsJobTypeScheduledExecutionInstance ListJobsJobTypeEnum = "SCHEDULED_EXECUTION_INSTANCE"
 	ListJobsJobTypeAsyncDelete                ListJobsJobTypeEnum = "ASYNC_DELETE"
+	ListJobsJobTypeImportDataAsset            ListJobsJobTypeEnum = "IMPORT_DATA_ASSET"
 )
 
 var mappingListJobsJobType = map[string]ListJobsJobTypeEnum{
@@ -211,6 +212,7 @@ var mappingListJobsJobType = map[string]ListJobsJobTypeEnum{
 	"SCHEDULED_EXECUTION":          ListJobsJobTypeScheduledExecution,
 	"SCHEDULED_EXECUTION_INSTANCE": ListJobsJobTypeScheduledExecutionInstance,
 	"ASYNC_DELETE":                 ListJobsJobTypeAsyncDelete,
+	"IMPORT_DATA_ASSET":            ListJobsJobTypeImportDataAsset,
 }
 
 // GetListJobsJobTypeEnumValues Enumerates the set of values for ListJobsJobTypeEnum

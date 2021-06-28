@@ -11,7 +11,7 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // ReplicationStatusDetails Details of replication status across all replica regions

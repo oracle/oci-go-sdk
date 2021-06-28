@@ -5,7 +5,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 	"io"
 	"net/http"
 )

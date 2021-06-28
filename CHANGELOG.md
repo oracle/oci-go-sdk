@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 43.0.0 - 2021-06-29
+### Added
+- Support for the DevOps service
+- Support for configuring network security groups for node pools in the Container Engine for Kubernetes service
+- Support for optionally specifying CPU core count and data storage size when creating autonomous databases in the Database service
+- Support for metastore and initial data asset import/export in the Data Catalog service
+- Support for associating domain names to emails and managing email domain names / DKIM in the Email Delivery service
+- Support for email domain names on senders and suppressions in the Email Delivery service
+- Add multipart download example
+
+### Breaking changes
+- Property `LifecycleState` in model `SenderSummary`'s type was changed from `SenderSummaryLifecycleStateEnum` to `SenderLifecycleStateEnum` 
+  in the Email Delivery service
+- Parameter `SoryBy` in the operation `ListJobExecutions`'s type `ListJobExecutionsSortByEnum`, item `ListJobExecutionsSortByDisplayname`
+  was removed in the Data Catalog service
+
+    
+
 ## 42.1.0 - 2021-06-22
 ### Added
 - Support for virtual machine and bare metal pluggable databases in the Database service

@@ -10,7 +10,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // CachingRuleCriteria A caching rule criteria condition and value.

@@ -10,7 +10,7 @@
 package limits
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // LimitValueSummary The value of a specific resource limit.

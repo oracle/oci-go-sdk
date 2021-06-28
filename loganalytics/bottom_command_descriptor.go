@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // BottomCommandDescriptor Command descriptor for querylanguage BOTTOM command.

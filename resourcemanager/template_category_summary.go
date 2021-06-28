@@ -13,7 +13,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // TemplateCategorySummary Summary information for the template category.

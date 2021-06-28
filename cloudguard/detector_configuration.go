@@ -10,7 +10,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // DetectorConfiguration A single configuration applied to a detector

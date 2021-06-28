@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // Folder A generic term used in the data catalog for an external organization concept used for a collection of data entities
@@ -34,6 +34,15 @@ type Folder struct {
 
 	// The unique key of the containing folder or null if there is no parent folder.
 	ParentFolderKey *string `mandatory:"false" json:"parentFolderKey"`
+
+	// The type of folder object. Type keys can be found via the '/types' endpoint.
+	TypeKey *string `mandatory:"false" json:"typeKey"`
+
+	// The date and time the folder was harvested, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
+	TimeHarvested *common.SDKTime `mandatory:"false" json:"timeHarvested"`
+
+	// List of objects and their relationships to this folder.
+	ObjectRelationships []ObjectRelationship `mandatory:"false" json:"objectRelationships"`
 
 	// Full path of the folder.
 	Path *string `mandatory:"false" json:"path"`

@@ -10,7 +10,7 @@
 package resourcesearch
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // ResourceSummaryCollection A summary representation of resources that matched the search criteria.

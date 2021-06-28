@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // TypeCustomPropertyDetails Array of custom property IDs for which we have to associate the custom property to the type
@@ -18,6 +18,9 @@ type TypeCustomPropertyDetails struct {
 
 	// array of custom property Ids
 	CustomPropertyIds []string `mandatory:"false" json:"customPropertyIds"`
+
+	// If an OCI Event will be emitted when the custom property is modified.
+	IsEventEnabled *bool `mandatory:"false" json:"isEventEnabled"`
 }
 
 func (m TypeCustomPropertyDetails) String() string {

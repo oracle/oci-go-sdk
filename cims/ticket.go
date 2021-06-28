@@ -10,7 +10,7 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // Ticket Details about the ticket created.

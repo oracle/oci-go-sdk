@@ -11,7 +11,7 @@
 package computeinstanceagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // CreateInstanceAgentCommandDetails Creation details for an Oracle Cloud Agent command.

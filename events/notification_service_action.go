@@ -12,7 +12,7 @@ package events
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // NotificationServiceAction An action that delivers to an Oracle Notification Service topic.

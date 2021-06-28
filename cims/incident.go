@@ -10,7 +10,7 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // Incident Details of about the incident object.

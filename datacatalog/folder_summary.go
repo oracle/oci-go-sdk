@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // FolderSummary Summary of a folder.
@@ -38,6 +38,9 @@ type FolderSummary struct {
 
 	// The key of the containing folder or null if there is no parent.
 	ParentFolderKey *string `mandatory:"false" json:"parentFolderKey"`
+
+	// The type of folder object. Type keys can be found via the '/types' endpoint.
+	TypeKey *string `mandatory:"false" json:"typeKey"`
 
 	// Full path of the folder.
 	Path *string `mandatory:"false" json:"path"`

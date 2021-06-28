@@ -10,7 +10,7 @@
 package resourcesearch
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // ResourceType Defines a type of resource that you can find with a search or query.

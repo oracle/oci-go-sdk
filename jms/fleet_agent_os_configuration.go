@@ -10,7 +10,7 @@
 package jms
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // FleetAgentOsConfiguration Management Agent Configuration for list of include/exclude file system paths (specific to operating system).

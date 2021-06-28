@@ -10,7 +10,7 @@
 package goldengate
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // ChangeDeploymentCompartmentDetails The new compartment for a Deployment.

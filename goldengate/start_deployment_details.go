@@ -11,7 +11,7 @@ package goldengate
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // StartDeploymentDetails The information about the Start for a Deployment.

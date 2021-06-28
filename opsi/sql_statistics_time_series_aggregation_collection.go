@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // SqlStatisticsTimeSeriesAggregationCollection SQL performance statistics over the selected time window.

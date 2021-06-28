@@ -13,7 +13,7 @@
 package nosql
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // Schema The table schema information as a JSON object.
