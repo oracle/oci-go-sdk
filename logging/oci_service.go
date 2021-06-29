@@ -11,7 +11,7 @@ package logging
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // OciService OCI service logging configuration.

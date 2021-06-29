@@ -13,7 +13,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // ApplyJobPlanResolution Deprecated. Use the property `executionPlanStrategy` in `jobOperationDetails` instead.

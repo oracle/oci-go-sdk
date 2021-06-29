@@ -10,7 +10,7 @@
 package budget
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // UpdateBudgetDetails The update budget details.

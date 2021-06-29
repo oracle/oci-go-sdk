@@ -12,7 +12,7 @@ package dns
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // ResolverRule A rule for a resolver. Specifying both qnameCoverConditions and clientAddressConditions is not allowed.

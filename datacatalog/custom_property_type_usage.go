@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // CustomPropertyTypeUsage Object which describes the indivial object stats for every custom property
@@ -24,6 +24,9 @@ type CustomPropertyTypeUsage struct {
 
 	// Number of objects associated with this type
 	Count *int `mandatory:"false" json:"count"`
+
+	// If an OCI Event will be emitted when the custom property is modified.
+	IsEventEnabled *bool `mandatory:"false" json:"isEventEnabled"`
 }
 
 func (m CustomPropertyTypeUsage) String() string {

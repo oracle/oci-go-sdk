@@ -11,7 +11,7 @@ package integration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // IntegrationInstanceSummary Summary of the Integration Instance.

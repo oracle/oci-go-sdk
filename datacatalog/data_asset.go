@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // DataAsset Data asset representation. A physical store, or stream, of data known to the data catalog and containing
@@ -46,6 +46,9 @@ type DataAsset struct {
 
 	// The last time that any change was made to the data asset. An RFC3339 (https://tools.ietf.org/html/rfc3339) formatted datetime string.
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
+
+	// The last time that a harvest was performed on the data asset. An RFC3339 (https://tools.ietf.org/html/rfc3339) formatted datetime string.
+	TimeHarvested *common.SDKTime `mandatory:"false" json:"timeHarvested"`
 
 	// OCID of the user who created the data asset.
 	CreatedById *string `mandatory:"false" json:"createdById"`

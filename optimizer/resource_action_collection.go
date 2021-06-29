@@ -10,7 +10,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v42/common"
+	"github.com/oracle/oci-go-sdk/v43/common"
 )
 
 // ResourceActionCollection A list of resource actions that match filter criteria, if any. Results contain `ResourceActionSummary` objects.

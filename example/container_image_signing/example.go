@@ -6,9 +6,9 @@ package example
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v42/artifacts"
-	"github.com/oracle/oci-go-sdk/v42/common"
-	"github.com/oracle/oci-go-sdk/v42/example/helpers"
+	"github.com/oracle/oci-go-sdk/v43/artifacts"
+	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v43/example/helpers"
 )
 
 func main() {
