@@ -14,15 +14,23 @@ type OperationTypeEnum string
 
 // Set of constants representing the allowable values for OperationTypeEnum
 const (
-	OperationTypeCreateSenderInvitation    OperationTypeEnum = "CREATE_SENDER_INVITATION"
-	OperationTypeAcceptRecipientInvitation OperationTypeEnum = "ACCEPT_RECIPIENT_INVITATION"
-	OperationTypeCancelSenderInvitation    OperationTypeEnum = "CANCEL_SENDER_INVITATION"
+	OperationTypeCreateSenderInvitation       OperationTypeEnum = "CREATE_SENDER_INVITATION"
+	OperationTypeAcceptRecipientInvitation    OperationTypeEnum = "ACCEPT_RECIPIENT_INVITATION"
+	OperationTypeCancelSenderInvitation       OperationTypeEnum = "CANCEL_SENDER_INVITATION"
+	OperationTypeActivateOrderExistingTenancy OperationTypeEnum = "ACTIVATE_ORDER_EXISTING_TENANCY"
+	OperationTypeRegisterDomain               OperationTypeEnum = "REGISTER_DOMAIN"
+	OperationTypeReleaseDomain                OperationTypeEnum = "RELEASE_DOMAIN"
+	OperationTypeCreateChildTenancy           OperationTypeEnum = "CREATE_CHILD_TENANCY"
 )
 
 var mappingOperationType = map[string]OperationTypeEnum{
-	"CREATE_SENDER_INVITATION":    OperationTypeCreateSenderInvitation,
-	"ACCEPT_RECIPIENT_INVITATION": OperationTypeAcceptRecipientInvitation,
-	"CANCEL_SENDER_INVITATION":    OperationTypeCancelSenderInvitation,
+	"CREATE_SENDER_INVITATION":        OperationTypeCreateSenderInvitation,
+	"ACCEPT_RECIPIENT_INVITATION":     OperationTypeAcceptRecipientInvitation,
+	"CANCEL_SENDER_INVITATION":        OperationTypeCancelSenderInvitation,
+	"ACTIVATE_ORDER_EXISTING_TENANCY": OperationTypeActivateOrderExistingTenancy,
+	"REGISTER_DOMAIN":                 OperationTypeRegisterDomain,
+	"RELEASE_DOMAIN":                  OperationTypeReleaseDomain,
+	"CREATE_CHILD_TENANCY":            OperationTypeCreateChildTenancy,
 }
 
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
