@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // SourceVcnIdCondition An access control rule condition that requires a match on the specified source VCN OCID.

@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // OnPremConnector A Data Safe on-premises connector that enables Data Safe to connect to on-premises databases.

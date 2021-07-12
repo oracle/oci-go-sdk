@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // ExternalContainerDatabaseSummary An Oracle Cloud Infrastructure resource that allows you to manage an external Oracle container database.

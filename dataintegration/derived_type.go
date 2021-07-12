@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // DerivedType A `DerivedType` object represents a more complex type that is derived from a set of simple types, for example an `Address` or `SSN` data type.

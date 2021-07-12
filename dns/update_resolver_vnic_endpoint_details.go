@@ -12,14 +12,15 @@ package dns
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // UpdateResolverVnicEndpointDetails The body for updating an existing resolver VNIC endpoint.
 // **Warning:** Oracle recommends that you avoid using any confidential information when you supply string values using the API.
 type UpdateResolverVnicEndpointDetails struct {
 
-	// An array of NSG OCIDs for the resolver endpoint.
+	// An array of network security group OCIDs for the resolver endpoint. These must be part of the VCN that the
+	// resolver endpoint is a part of.
 	NsgIds []string `mandatory:"false" json:"nsgIds"`
 }
 

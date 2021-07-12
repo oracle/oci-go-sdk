@@ -5,7 +5,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 	"net/http"
 )
 
@@ -86,9 +86,8 @@ type DeleteRRSetResponse struct {
 	// The underlying http response
 	RawResponse *http.Response
 
-	// Unique Oracle-assigned identifier for the request. If you need
-	// to contact Oracle about a particular request, please provide
-	// the request ID.
+	// Unique Oracle-assigned identifier for the request. If you need to
+	// contact Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }
 

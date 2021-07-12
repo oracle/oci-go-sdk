@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // DbHomeSummary A directory where Oracle Database software is installed. A bare metal or Exadata DB system can have multiple Database Homes

@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // OperatorActionSummary Details of the operator action. Operator actions are pre-defined set of commands available to the operator on different layers of the infrastructure.

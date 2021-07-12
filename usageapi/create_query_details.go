@@ -10,10 +10,10 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
-// CreateQueryDetails New query detail with savedRequestSummarizedUsagesDetails, savedCostAnalysisUI and displayName.
+// CreateQueryDetails New query detail with savedRequestSummarizedUsagesDetails, savedCostAnalysisUI, and displayName.
 type CreateQueryDetails struct {
 
 	// The compartment OCID.

@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // UpdateIpSecTunnelEncryptionDomainDetails Request to update a multi-encryption domain policy on the VPNaaS tunnel.

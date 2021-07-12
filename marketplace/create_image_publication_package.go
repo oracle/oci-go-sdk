@@ -11,21 +11,21 @@ package marketplace
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
-// CreateImagePublicationPackage An object for creating image package
+// CreateImagePublicationPackage An object for creating an image publication package.
 type CreateImagePublicationPackage struct {
 
-	// The version of the package
+	// The package version.
 	PackageVersion *string `mandatory:"true" json:"packageVersion"`
 
 	OperatingSystem *OperatingSystem `mandatory:"true" json:"operatingSystem"`
 
-	// End User License Agreeement that a consumer of this listing has to accept
+	// The end user license agreeement (EULA) that consumers of this listing must accept.
 	Eula []Eula `mandatory:"true" json:"eula"`
 
-	// base image id of the listing
+	// The unique identifier for the base image of the publication.
 	ImageId *string `mandatory:"false" json:"imageId"`
 }
 

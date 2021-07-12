@@ -10,7 +10,7 @@
 package jms
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // FleetAgentConfiguration Management Agent Configuration for a Fleet. Includes JRE scanning frequency and list of include/exclude file system paths.

@@ -12,7 +12,7 @@ package computeinstanceagent
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // InstanceAgentCommandExecutionOutputViaObjectStorageUriDetails The execution output from a command when saved to an Object Storage URL.

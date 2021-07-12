@@ -10,7 +10,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // ListingPackageSummary The model for a summary of a package.
@@ -24,6 +24,8 @@ type ListingPackageSummary struct {
 
 	// The specified package's type.
 	PackageType PackageTypeEnumEnum `mandatory:"false" json:"packageType,omitempty"`
+
+	Pricing *PricingModel `mandatory:"false" json:"pricing"`
 
 	// The regions where you can deploy the listing package. (Some packages have restrictions that limit their deployment to United States regions only.)
 	Regions []Region `mandatory:"false" json:"regions"`

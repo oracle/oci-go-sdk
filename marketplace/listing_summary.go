@@ -10,7 +10,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // ListingSummary The model for a summary of an Oracle Cloud Infrastructure Marketplace listing.
@@ -47,10 +47,10 @@ type ListingSummary struct {
 
 	Publisher *PublisherSummary `mandatory:"false" json:"publisher"`
 
-	// List of operating systems supported.
+	// The list of operating systems supported by the listing.
 	SupportedOperatingSystems []OperatingSystem `mandatory:"false" json:"supportedOperatingSystems"`
 
-	// In which catalog the listing should exist.
+	// The publisher category to which the listing belongs. The publisher category informs where the listing appears for use.
 	ListingType ListingTypeEnum `mandatory:"false" json:"listingType,omitempty"`
 }
 

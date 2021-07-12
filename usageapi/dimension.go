@@ -10,10 +10,10 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
-// Dimension The dimension used for filtering. Availabe dimensions are: "service", "skuName", "skuPartNumber", "unit", "compartmentName", "compartmentPath", "compartmentId", "platform", "region", "logicalAd", "resourceId", "tenantId", "tenantName".
+// Dimension The dimension used for filtering. Availabe dimensions are: "service", "skuName", "skuPartNumber", "unit", "compartmentName", "compartmentPath", "compartmentId", "platform", "region", "logicalAd", "resourceId", "tenantId", and "tenantName".
 // For example:
 // `[{value: "COMPUTE", key: "service"}]`
 type Dimension struct {

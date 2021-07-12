@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // TunnelCpeDeviceConfig The set of CPE configuration answers for the tunnel, which the customer provides in

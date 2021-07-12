@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // LaunchInstanceAvailabilityConfigDetails Options for VM migration during infrastructure maintenance events and for defining

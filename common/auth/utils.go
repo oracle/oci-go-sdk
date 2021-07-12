@@ -8,7 +8,7 @@ import (
 	"crypto/sha1"
 	"crypto/x509"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 	"net/http"
 	"net/http/httputil"
 	"strings"

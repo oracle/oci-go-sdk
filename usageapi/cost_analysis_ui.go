@@ -10,16 +10,16 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // CostAnalysisUi The common fields for Cost Analysis UI rendering.
 type CostAnalysisUi struct {
 
-	// the type of graph mode.
+	// The graph type.
 	Graph CostAnalysisUiGraphEnum `mandatory:"false" json:"graph,omitempty"`
 
-	// is cumulative graph.
+	// A cumulative graph.
 	IsCumulativeGraph *bool `mandatory:"false" json:"isCumulativeGraph"`
 }
 
