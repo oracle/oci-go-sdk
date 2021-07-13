@@ -14,8 +14,8 @@ package ailanguage
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v43/common"
-	"github.com/oracle/oci-go-sdk/v43/common/auth"
+	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v44/common/auth"
 	"net/http"
 )
 

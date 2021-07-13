@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // TsigKeySummary A TSIG key.
@@ -66,11 +66,19 @@ type TsigKeySummaryLifecycleStateEnum string
 const (
 	TsigKeySummaryLifecycleStateActive   TsigKeySummaryLifecycleStateEnum = "ACTIVE"
 	TsigKeySummaryLifecycleStateCreating TsigKeySummaryLifecycleStateEnum = "CREATING"
+	TsigKeySummaryLifecycleStateDeleted  TsigKeySummaryLifecycleStateEnum = "DELETED"
+	TsigKeySummaryLifecycleStateDeleting TsigKeySummaryLifecycleStateEnum = "DELETING"
+	TsigKeySummaryLifecycleStateFailed   TsigKeySummaryLifecycleStateEnum = "FAILED"
+	TsigKeySummaryLifecycleStateUpdating TsigKeySummaryLifecycleStateEnum = "UPDATING"
 )
 
 var mappingTsigKeySummaryLifecycleState = map[string]TsigKeySummaryLifecycleStateEnum{
 	"ACTIVE":   TsigKeySummaryLifecycleStateActive,
 	"CREATING": TsigKeySummaryLifecycleStateCreating,
+	"DELETED":  TsigKeySummaryLifecycleStateDeleted,
+	"DELETING": TsigKeySummaryLifecycleStateDeleting,
+	"FAILED":   TsigKeySummaryLifecycleStateFailed,
+	"UPDATING": TsigKeySummaryLifecycleStateUpdating,
 }
 
 // GetTsigKeySummaryLifecycleStateEnumValues Enumerates the set of values for TsigKeySummaryLifecycleStateEnum

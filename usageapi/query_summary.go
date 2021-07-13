@@ -10,10 +10,10 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
-// QuerySummary Query summery in list request.
+// QuerySummary Query summery in the list request.
 type QuerySummary struct {
 
 	// The query OCID.

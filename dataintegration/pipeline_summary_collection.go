@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // PipelineSummaryCollection This is the collection of pipeline summaries, it may be a collection of lightweight details or full definitions.

@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // TaggingWorkRequest The asynchronous API request does not take effect immediately. This request spawns an asynchronous

@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // RecordDetails A DNS resource record. For more information about records, see RFC 1034 (https://tools.ietf.org/html/rfc1034#section-3.6).

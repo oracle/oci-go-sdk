@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // AddEntityAssociationDetails Information about the associations to be added between a source log analytics entity and other existing destination entities.

@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // ZoneSummary A DNS zone.
@@ -110,6 +110,7 @@ const (
 	ZoneSummaryLifecycleStateDeleted  ZoneSummaryLifecycleStateEnum = "DELETED"
 	ZoneSummaryLifecycleStateDeleting ZoneSummaryLifecycleStateEnum = "DELETING"
 	ZoneSummaryLifecycleStateFailed   ZoneSummaryLifecycleStateEnum = "FAILED"
+	ZoneSummaryLifecycleStateUpdating ZoneSummaryLifecycleStateEnum = "UPDATING"
 )
 
 var mappingZoneSummaryLifecycleState = map[string]ZoneSummaryLifecycleStateEnum{
@@ -118,6 +119,7 @@ var mappingZoneSummaryLifecycleState = map[string]ZoneSummaryLifecycleStateEnum{
 	"DELETED":  ZoneSummaryLifecycleStateDeleted,
 	"DELETING": ZoneSummaryLifecycleStateDeleting,
 	"FAILED":   ZoneSummaryLifecycleStateFailed,
+	"UPDATING": ZoneSummaryLifecycleStateUpdating,
 }
 
 // GetZoneSummaryLifecycleStateEnumValues Enumerates the set of values for ZoneSummaryLifecycleStateEnum

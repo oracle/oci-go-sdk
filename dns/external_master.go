@@ -11,12 +11,10 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // ExternalMaster An external master name server used as the source of zone data.
-// May either have a zone-embedded TSIG or reference a TSIG key by OCID,
-// but not both.
 type ExternalMaster struct {
 
 	// The server's IP address (IPv4 or IPv6).
@@ -25,8 +23,6 @@ type ExternalMaster struct {
 	// The server's port. Port value must be a value of 53, otherwise omit
 	// the port value.
 	Port *int `mandatory:"false" json:"port"`
-
-	Tsig *Tsig `mandatory:"false" json:"tsig"`
 
 	// The OCID of the TSIG key.
 	TsigKeyId *string `mandatory:"false" json:"tsigKeyId"`

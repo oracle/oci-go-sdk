@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
 // ChangeLogAnalyticsEmBridgeCompartmentDetails Log analytics enterprise manager bridge compartment to be updated.

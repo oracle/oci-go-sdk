@@ -5,7 +5,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 	"net/http"
 )
 
@@ -69,7 +69,7 @@ type CreateZoneResponse struct {
 	// The Zone instance
 	Zone `presentIn:"body"`
 
-	// The current version of the zone, ending with a
+	// The current version of the resource, ending with a
 	// representation-specific suffix. This value may be used in If-Match
 	// and If-None-Match headers for later requests of the same resource.
 	ETag *string `presentIn:"header" name:"etag"`

@@ -11,13 +11,13 @@ package marketplace
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v43/common"
+	"github.com/oracle/oci-go-sdk/v44/common"
 )
 
-// TextBasedEula An EULA that is provided as text
+// TextBasedEula An end user license agreement that is provided as text.
 type TextBasedEula struct {
 
-	// text of the eula
+	// The text of the end user license agreement.
 	LicenseText *string `mandatory:"false" json:"licenseText"`
 }
 
