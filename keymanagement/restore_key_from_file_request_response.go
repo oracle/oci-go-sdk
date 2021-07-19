@@ -5,7 +5,7 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 	"io"
 	"net/http"
 )
@@ -60,8 +60,8 @@ func (request RestoreKeyFromFileRequest) String() string {
 }
 
 // HTTPRequest implements the OCIRequest interface
-func (request RestoreKeyFromFileRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser) (http.Request, error) {
-	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStruct(method, path, request)
+func (request RestoreKeyFromFileRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
+	httpRequest, err := common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 	if err == nil && binaryRequestBody.Seekable() {
 		common.UpdateRequestBinaryBody(&httpRequest, binaryRequestBody)
 	}

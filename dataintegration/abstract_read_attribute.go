@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // AbstractReadAttribute The abstract read attribute.
@@ -48,6 +48,14 @@ func (m *abstractreadattribute) UnmarshalPolymorphicJSON(data []byte) (interface
 
 	var err error
 	switch m.ModelType {
+	case "ORACLE_READ_ATTRIBUTE":
+		mm := OracleReadAttributes{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "BICC_READ_ATTRIBUTE":
+		mm := BiccReadAttributes{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "ORACLEREADATTRIBUTE":
 		mm := OracleReadAttribute{}
 		err = json.Unmarshal(data, &mm)
@@ -68,11 +76,13 @@ type AbstractReadAttributeModelTypeEnum string
 const (
 	AbstractReadAttributeModelTypeOraclereadattribute AbstractReadAttributeModelTypeEnum = "ORACLEREADATTRIBUTE"
 	AbstractReadAttributeModelTypeOracleReadAttribute AbstractReadAttributeModelTypeEnum = "ORACLE_READ_ATTRIBUTE"
+	AbstractReadAttributeModelTypeBiccReadAttribute   AbstractReadAttributeModelTypeEnum = "BICC_READ_ATTRIBUTE"
 )
 
 var mappingAbstractReadAttributeModelType = map[string]AbstractReadAttributeModelTypeEnum{
 	"ORACLEREADATTRIBUTE":   AbstractReadAttributeModelTypeOraclereadattribute,
 	"ORACLE_READ_ATTRIBUTE": AbstractReadAttributeModelTypeOracleReadAttribute,
+	"BICC_READ_ATTRIBUTE":   AbstractReadAttributeModelTypeBiccReadAttribute,
 }
 
 // GetAbstractReadAttributeModelTypeEnumValues Enumerates the set of values for AbstractReadAttributeModelTypeEnum

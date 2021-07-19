@@ -12,8 +12,8 @@ package secrets
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -115,8 +115,9 @@ func (client SecretsClient) GetSecretBundle(ctx context.Context, request GetSecr
 }
 
 // getSecretBundle implements the OCIOperation interface (enables retrying operations)
-func (client SecretsClient) getSecretBundle(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/secretbundles/{secretId}", binaryReqBody)
+func (client SecretsClient) getSecretBundle(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/secretbundles/{secretId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -170,8 +171,9 @@ func (client SecretsClient) GetSecretBundleByName(ctx context.Context, request G
 }
 
 // getSecretBundleByName implements the OCIOperation interface (enables retrying operations)
-func (client SecretsClient) getSecretBundleByName(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/secretbundles/actions/getByName", binaryReqBody)
+func (client SecretsClient) getSecretBundleByName(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/secretbundles/actions/getByName", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -224,8 +226,9 @@ func (client SecretsClient) ListSecretBundleVersions(ctx context.Context, reques
 }
 
 // listSecretBundleVersions implements the OCIOperation interface (enables retrying operations)
-func (client SecretsClient) listSecretBundleVersions(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/secretbundles/{secretId}/versions", binaryReqBody)
+func (client SecretsClient) listSecretBundleVersions(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/secretbundles/{secretId}/versions", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

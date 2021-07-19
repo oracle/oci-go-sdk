@@ -14,8 +14,8 @@ package operatoraccesscontrol
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -121,8 +121,9 @@ func (client AccessRequestsClient) ApproveAccessRequest(ctx context.Context, req
 }
 
 // approveAccessRequest implements the OCIOperation interface (enables retrying operations)
-func (client AccessRequestsClient) approveAccessRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/accessRequests/{accessRequestId}/action/approve", binaryReqBody)
+func (client AccessRequestsClient) approveAccessRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/accessRequests/{accessRequestId}/action/approve", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -175,8 +176,9 @@ func (client AccessRequestsClient) GetAccessRequest(ctx context.Context, request
 }
 
 // getAccessRequest implements the OCIOperation interface (enables retrying operations)
-func (client AccessRequestsClient) getAccessRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/accessRequests/{accessRequestId}", binaryReqBody)
+func (client AccessRequestsClient) getAccessRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/accessRequests/{accessRequestId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -229,8 +231,9 @@ func (client AccessRequestsClient) ListAccessRequestHistories(ctx context.Contex
 }
 
 // listAccessRequestHistories implements the OCIOperation interface (enables retrying operations)
-func (client AccessRequestsClient) listAccessRequestHistories(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/accessRequests/{accessRequestId}/history", binaryReqBody)
+func (client AccessRequestsClient) listAccessRequestHistories(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/accessRequests/{accessRequestId}/history", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -283,8 +286,9 @@ func (client AccessRequestsClient) ListAccessRequests(ctx context.Context, reque
 }
 
 // listAccessRequests implements the OCIOperation interface (enables retrying operations)
-func (client AccessRequestsClient) listAccessRequests(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/accessRequests", binaryReqBody)
+func (client AccessRequestsClient) listAccessRequests(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/accessRequests", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -342,8 +346,9 @@ func (client AccessRequestsClient) RejectAccessRequest(ctx context.Context, requ
 }
 
 // rejectAccessRequest implements the OCIOperation interface (enables retrying operations)
-func (client AccessRequestsClient) rejectAccessRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/accessRequests/{accessRequestId}/action/reject", binaryReqBody)
+func (client AccessRequestsClient) rejectAccessRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/accessRequests/{accessRequestId}/action/reject", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -401,8 +406,9 @@ func (client AccessRequestsClient) RevokeAccessRequest(ctx context.Context, requ
 }
 
 // revokeAccessRequest implements the OCIOperation interface (enables retrying operations)
-func (client AccessRequestsClient) revokeAccessRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/accessRequests/{accessRequestId}/action/revoke", binaryReqBody)
+func (client AccessRequestsClient) revokeAccessRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/accessRequests/{accessRequestId}/action/revoke", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

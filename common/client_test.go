@@ -16,8 +16,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type customConfig struct {
@@ -288,7 +289,7 @@ type retryableOCIRequest struct {
 	retryPolicy *RetryPolicy
 }
 
-func (request retryableOCIRequest) HTTPRequest(method, path string, binaryRequestBody *OCIReadSeekCloser) (http.Request, error) {
+func (request retryableOCIRequest) HTTPRequest(method, path string, binaryRequestBody *OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 	r := http.Request{}
 	r.Method = method
 	r.URL = &url.URL{Path: path}
@@ -332,7 +333,7 @@ func TestRetry_NeverGetSuccessfulResponse(t *testing.T) {
 		retryPolicy: &retryPolicy,
 	}
 	// type OCIOperation func(context.Context, OCIRequest, OCIReadSeekCloser) (OCIResponse, error)
-	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser) (OCIResponse, error) {
+	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser, map[string]string) (OCIResponse, error) {
 		return errorResponse, errors.New(errorMessage)
 	}
 
@@ -366,7 +367,7 @@ func TestRetry_ImmediatelyGetsSuccessfulResponse(t *testing.T) {
 		retryPolicy: &retryPolicy,
 	}
 	// type OCIOperation func(context.Context, OCIRequest, OCIReadSeekCloser) (OCIResponse, error)
-	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser) (OCIResponse, error) {
+	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser, map[string]string) (OCIResponse, error) {
 		return successResponse, nil
 	}
 
@@ -400,7 +401,7 @@ func TestRetry_RaisesDeadlineExceededException(t *testing.T) {
 		retryPolicy: &retryPolicy,
 	}
 	// type OCIOperation func(context.Context, OCIReadSeekCloser) (OCIResponse, error)
-	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser) (OCIResponse, error) {
+	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser, map[string]string) (OCIResponse, error) {
 		return errorResponse, nil
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
@@ -442,7 +443,7 @@ func TestRetry_GetsSuccessfulResponseAfterMultipleAttempts(t *testing.T) {
 		retryPolicy: &retryPolicy,
 	}
 	// type OCIOperation func(context.Context, OCIRequest, OCIReadSeekCloser) (OCIResponse, error)
-	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser) (OCIResponse, error) {
+	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser, map[string]string) (OCIResponse, error) {
 		if numberOfTimesWeEnterShouldRetry < 7 {
 			return errorResponse, nil
 		}
@@ -469,7 +470,9 @@ func TestRetry_CancelContextWhileSleeping(t *testing.T) {
 	}
 	pol := NewRetryPolicy(uint(10), shouldRetryOperation, getNextDuration)
 	req := retryableOCIRequest{retryPolicy: &pol}
-	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser) (OCIResponse, error) { return errorResponse, nil }
+	fakeOperation := func(context.Context, OCIRequest, *OCIReadSeekCloser, map[string]string) (OCIResponse, error) {
+		return errorResponse, nil
+	}
 
 	ctx, cancelFn := context.WithDeadline(context.Background(), time.Now().Add(10*time.Second))
 

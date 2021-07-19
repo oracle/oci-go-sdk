@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // UpdateDataAssetFromAtp Details for the Autonomous Transaction Processing data asset type.
@@ -58,6 +58,18 @@ type UpdateDataAssetFromAtp struct {
 	WalletSecret *SensitiveAttribute `mandatory:"false" json:"walletSecret"`
 
 	WalletPasswordSecret *SensitiveAttribute `mandatory:"false" json:"walletPasswordSecret"`
+
+	// The Autonomous Data Warehouse instance region Id.
+	RegionId *string `mandatory:"false" json:"regionId"`
+
+	// The Autonomous Data Warehouse instance tenancy Id.
+	TenancyId *string `mandatory:"false" json:"tenancyId"`
+
+	// The Autonomous Data Warehouse instance compartment Id.
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
+
+	// Tha Autonomous Database Id
+	AutonomousDbId *string `mandatory:"false" json:"autonomousDbId"`
 
 	DefaultConnection *UpdateConnectionFromAtp `mandatory:"false" json:"defaultConnection"`
 }

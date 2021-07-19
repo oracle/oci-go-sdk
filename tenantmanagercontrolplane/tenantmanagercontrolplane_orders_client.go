@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,9 @@ func (client OrdersClient) ActivateOrder(ctx context.Context, request ActivateOr
 }
 
 // activateOrder implements the OCIOperation interface (enables retrying operations)
-func (client OrdersClient) activateOrder(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/orders/{activationToken}/actions/activate", binaryReqBody)
+func (client OrdersClient) activateOrder(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/orders/{activationToken}/actions/activate", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -173,8 +174,9 @@ func (client OrdersClient) GetOrder(ctx context.Context, request GetOrderRequest
 }
 
 // getOrder implements the OCIOperation interface (enables retrying operations)
-func (client OrdersClient) getOrder(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/orders/{activationToken}", binaryReqBody)
+func (client OrdersClient) getOrder(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/orders/{activationToken}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

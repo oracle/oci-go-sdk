@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // AttributeTagCollection Results of an attribute tags listing. Attribnute tags allow association of business terms with attributes.

@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // ChangeAutonomousVmClusterCompartmentDetails The configuration details for moving the Autonomous VM cluster.

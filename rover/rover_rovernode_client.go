@@ -12,8 +12,8 @@ package rover
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,9 @@ func (client RoverNodeClient) ChangeRoverNodeCompartment(ctx context.Context, re
 }
 
 // changeRoverNodeCompartment implements the OCIOperation interface (enables retrying operations)
-func (client RoverNodeClient) changeRoverNodeCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverNodes/{roverNodeId}/actions/changeCompartment", binaryReqBody)
+func (client RoverNodeClient) changeRoverNodeCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverNodes/{roverNodeId}/actions/changeCompartment", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -178,8 +179,9 @@ func (client RoverNodeClient) CreateRoverNode(ctx context.Context, request Creat
 }
 
 // createRoverNode implements the OCIOperation interface (enables retrying operations)
-func (client RoverNodeClient) createRoverNode(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverNodes", binaryReqBody)
+func (client RoverNodeClient) createRoverNode(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverNodes", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -232,8 +234,9 @@ func (client RoverNodeClient) DeleteRoverNode(ctx context.Context, request Delet
 }
 
 // deleteRoverNode implements the OCIOperation interface (enables retrying operations)
-func (client RoverNodeClient) deleteRoverNode(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/roverNodes/{roverNodeId}", binaryReqBody)
+func (client RoverNodeClient) deleteRoverNode(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/roverNodes/{roverNodeId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -286,8 +289,9 @@ func (client RoverNodeClient) GetRoverNode(ctx context.Context, request GetRover
 }
 
 // getRoverNode implements the OCIOperation interface (enables retrying operations)
-func (client RoverNodeClient) getRoverNode(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverNodes/{roverNodeId}", binaryReqBody)
+func (client RoverNodeClient) getRoverNode(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverNodes/{roverNodeId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -340,8 +344,9 @@ func (client RoverNodeClient) GetRoverNodeCertificate(ctx context.Context, reque
 }
 
 // getRoverNodeCertificate implements the OCIOperation interface (enables retrying operations)
-func (client RoverNodeClient) getRoverNodeCertificate(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverNodes/{roverNodeId}/certificate", binaryReqBody)
+func (client RoverNodeClient) getRoverNodeCertificate(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverNodes/{roverNodeId}/certificate", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -394,8 +399,9 @@ func (client RoverNodeClient) GetRoverNodeEncryptionKey(ctx context.Context, req
 }
 
 // getRoverNodeEncryptionKey implements the OCIOperation interface (enables retrying operations)
-func (client RoverNodeClient) getRoverNodeEncryptionKey(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverNodes/{roverNodeId}/encryptionKey", binaryReqBody)
+func (client RoverNodeClient) getRoverNodeEncryptionKey(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverNodes/{roverNodeId}/encryptionKey", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -448,8 +454,9 @@ func (client RoverNodeClient) GetRoverNodeGetRpt(ctx context.Context, request Ge
 }
 
 // getRoverNodeGetRpt implements the OCIOperation interface (enables retrying operations)
-func (client RoverNodeClient) getRoverNodeGetRpt(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverNodes/{roverNodeId}/getRpt", binaryReqBody)
+func (client RoverNodeClient) getRoverNodeGetRpt(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverNodes/{roverNodeId}/getRpt", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -502,8 +509,9 @@ func (client RoverNodeClient) ListRoverNodes(ctx context.Context, request ListRo
 }
 
 // listRoverNodes implements the OCIOperation interface (enables retrying operations)
-func (client RoverNodeClient) listRoverNodes(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverNodes", binaryReqBody)
+func (client RoverNodeClient) listRoverNodes(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverNodes", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -561,8 +569,9 @@ func (client RoverNodeClient) RoverNodeActionSetKey(ctx context.Context, request
 }
 
 // roverNodeActionSetKey implements the OCIOperation interface (enables retrying operations)
-func (client RoverNodeClient) roverNodeActionSetKey(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverNodes/{roverNodeId}/actions/setKey", binaryReqBody)
+func (client RoverNodeClient) roverNodeActionSetKey(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverNodes/{roverNodeId}/actions/setKey", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -615,8 +624,9 @@ func (client RoverNodeClient) UpdateRoverNode(ctx context.Context, request Updat
 }
 
 // updateRoverNode implements the OCIOperation interface (enables retrying operations)
-func (client RoverNodeClient) updateRoverNode(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/roverNodes/{roverNodeId}", binaryReqBody)
+func (client RoverNodeClient) updateRoverNode(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/roverNodes/{roverNodeId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

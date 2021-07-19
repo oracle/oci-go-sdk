@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // UpdateVmClusterDetails Details for updating the VM cluster. Applies to Exadata Cloud@Customer instances only.
@@ -36,6 +36,8 @@ type UpdateVmClusterDetails struct {
 	SshPublicKeys []string `mandatory:"false" json:"sshPublicKeys"`
 
 	Version *PatchDetails `mandatory:"false" json:"version"`
+
+	UpdateDetails *VmClusterUpdateDetails `mandatory:"false" json:"updateDetails"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
 	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).

@@ -12,8 +12,8 @@ package announcementsservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -114,8 +114,9 @@ func (client AnnouncementClient) GetAnnouncement(ctx context.Context, request Ge
 }
 
 // getAnnouncement implements the OCIOperation interface (enables retrying operations)
-func (client AnnouncementClient) getAnnouncement(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/announcements/{announcementId}", binaryReqBody)
+func (client AnnouncementClient) getAnnouncement(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/announcements/{announcementId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -168,8 +169,9 @@ func (client AnnouncementClient) GetAnnouncementUserStatus(ctx context.Context, 
 }
 
 // getAnnouncementUserStatus implements the OCIOperation interface (enables retrying operations)
-func (client AnnouncementClient) getAnnouncementUserStatus(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/announcements/{announcementId}/userStatus", binaryReqBody)
+func (client AnnouncementClient) getAnnouncementUserStatus(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/announcements/{announcementId}/userStatus", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -222,8 +224,9 @@ func (client AnnouncementClient) ListAnnouncements(ctx context.Context, request 
 }
 
 // listAnnouncements implements the OCIOperation interface (enables retrying operations)
-func (client AnnouncementClient) listAnnouncements(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/announcements", binaryReqBody)
+func (client AnnouncementClient) listAnnouncements(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/announcements", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -276,8 +279,9 @@ func (client AnnouncementClient) UpdateAnnouncementUserStatus(ctx context.Contex
 }
 
 // updateAnnouncementUserStatus implements the OCIOperation interface (enables retrying operations)
-func (client AnnouncementClient) updateAnnouncementUserStatus(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/announcements/{announcementId}/userStatus", binaryReqBody)
+func (client AnnouncementClient) updateAnnouncementUserStatus(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/announcements/{announcementId}/userStatus", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

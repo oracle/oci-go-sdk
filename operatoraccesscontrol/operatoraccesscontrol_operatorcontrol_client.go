@@ -14,8 +14,8 @@ package operatoraccesscontrol
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -121,8 +121,9 @@ func (client OperatorControlClient) ChangeOperatorControlCompartment(ctx context
 }
 
 // changeOperatorControlCompartment implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlClient) changeOperatorControlCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/operatorControls/{operatorControlId}/actions/changeCompartment", binaryReqBody)
+func (client OperatorControlClient) changeOperatorControlCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/operatorControls/{operatorControlId}/actions/changeCompartment", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -180,8 +181,9 @@ func (client OperatorControlClient) CreateOperatorControl(ctx context.Context, r
 }
 
 // createOperatorControl implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlClient) createOperatorControl(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/operatorControls", binaryReqBody)
+func (client OperatorControlClient) createOperatorControl(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/operatorControls", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -238,8 +240,9 @@ func (client OperatorControlClient) DeleteOperatorControl(ctx context.Context, r
 }
 
 // deleteOperatorControl implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlClient) deleteOperatorControl(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/operatorControls/{operatorControlId}", binaryReqBody)
+func (client OperatorControlClient) deleteOperatorControl(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/operatorControls/{operatorControlId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -292,8 +295,9 @@ func (client OperatorControlClient) GetOperatorControl(ctx context.Context, requ
 }
 
 // getOperatorControl implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlClient) getOperatorControl(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorControls/{operatorControlId}", binaryReqBody)
+func (client OperatorControlClient) getOperatorControl(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorControls/{operatorControlId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -346,8 +350,9 @@ func (client OperatorControlClient) ListOperatorControls(ctx context.Context, re
 }
 
 // listOperatorControls implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlClient) listOperatorControls(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorControls", binaryReqBody)
+func (client OperatorControlClient) listOperatorControls(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorControls", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -400,8 +405,9 @@ func (client OperatorControlClient) UpdateOperatorControl(ctx context.Context, r
 }
 
 // updateOperatorControl implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlClient) updateOperatorControl(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/operatorControls/{operatorControlId}", binaryReqBody)
+func (client OperatorControlClient) updateOperatorControl(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/operatorControls/{operatorControlId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

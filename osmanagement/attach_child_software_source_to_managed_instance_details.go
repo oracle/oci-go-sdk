@@ -11,7 +11,7 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // AttachChildSoftwareSourceToManagedInstanceDetails Information for attaching a software source to a managed instance

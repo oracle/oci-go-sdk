@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -114,8 +114,9 @@ func (client ShippingVendorsClient) ListShippingVendors(ctx context.Context, req
 }
 
 // listShippingVendors implements the OCIOperation interface (enables retrying operations)
-func (client ShippingVendorsClient) listShippingVendors(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/shippingVendors", binaryReqBody)
+func (client ShippingVendorsClient) listShippingVendors(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/shippingVendors", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // ComputeInstanceGroupDeployEnvironment Specifies the Compute instance group environment. The instances in the group is the combined results of each selectors in the instance group selectors.

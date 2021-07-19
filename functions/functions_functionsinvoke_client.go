@@ -12,8 +12,8 @@ package functions
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -107,8 +107,9 @@ func (client FunctionsInvokeClient) InvokeFunction(ctx context.Context, request 
 }
 
 // invokeFunction implements the OCIOperation interface (enables retrying operations)
-func (client FunctionsInvokeClient) invokeFunction(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/functions/{functionId}/actions/invoke", binaryReqBody)
+func (client FunctionsInvokeClient) invokeFunction(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/functions/{functionId}/actions/invoke", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

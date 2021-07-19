@@ -10,10 +10,10 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
-// UpdatePluggableDatabaseDetails Details for updating a pluggable database.
+// UpdatePluggableDatabaseDetails Details for updating a pluggable database (PDB).
 // **Warning:** Oracle recommends that you avoid using any confidential information when you supply string values using the API.
 type UpdatePluggableDatabaseDetails struct {
 

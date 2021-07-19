@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // ConfigParameterValue Contains the parameter configuration values.
@@ -30,6 +30,9 @@ type ConfigParameterValue struct {
 
 	// Reference to the parameter by its key.
 	ParameterValue *string `mandatory:"false" json:"parameterValue"`
+
+	// The root object value, used in custom parameters.
+	RootObjectValue *interface{} `mandatory:"false" json:"rootObjectValue"`
 }
 
 func (m ConfigParameterValue) String() string {

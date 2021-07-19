@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // ParentReference A reference to the object's parent.
@@ -18,6 +18,9 @@ type ParentReference struct {
 
 	// Key of the parent object.
 	Parent *string `mandatory:"false" json:"parent"`
+
+	// Key of the root document object.
+	RootDocId *string `mandatory:"false" json:"rootDocId"`
 }
 
 func (m ParentReference) String() string {

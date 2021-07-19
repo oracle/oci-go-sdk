@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // UpdateTaskDetails Properties used in task create operations.
@@ -114,8 +114,20 @@ func (m *updatetaskdetails) UnmarshalPolymorphicJSON(data []byte) (interface{}, 
 
 	var err error
 	switch m.ModelType {
+	case "REST_TASK":
+		mm := UpdateTaskFromRestTask{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "PIPELINE_TASK":
 		mm := UpdateTaskFromPipelineTask{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "OCI_DATAFLOW_TASK":
+		mm := UpdateTaskFromOciDataflowTask{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "SQL_TASK":
+		mm := UpdateTaskFromSqlTask{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	case "DATA_LOADER_TASK":
@@ -213,12 +225,18 @@ const (
 	UpdateTaskDetailsModelTypeIntegrationTask UpdateTaskDetailsModelTypeEnum = "INTEGRATION_TASK"
 	UpdateTaskDetailsModelTypeDataLoaderTask  UpdateTaskDetailsModelTypeEnum = "DATA_LOADER_TASK"
 	UpdateTaskDetailsModelTypePipelineTask    UpdateTaskDetailsModelTypeEnum = "PIPELINE_TASK"
+	UpdateTaskDetailsModelTypeSqlTask         UpdateTaskDetailsModelTypeEnum = "SQL_TASK"
+	UpdateTaskDetailsModelTypeOciDataflowTask UpdateTaskDetailsModelTypeEnum = "OCI_DATAFLOW_TASK"
+	UpdateTaskDetailsModelTypeRestTask        UpdateTaskDetailsModelTypeEnum = "REST_TASK"
 )
 
 var mappingUpdateTaskDetailsModelType = map[string]UpdateTaskDetailsModelTypeEnum{
-	"INTEGRATION_TASK": UpdateTaskDetailsModelTypeIntegrationTask,
-	"DATA_LOADER_TASK": UpdateTaskDetailsModelTypeDataLoaderTask,
-	"PIPELINE_TASK":    UpdateTaskDetailsModelTypePipelineTask,
+	"INTEGRATION_TASK":  UpdateTaskDetailsModelTypeIntegrationTask,
+	"DATA_LOADER_TASK":  UpdateTaskDetailsModelTypeDataLoaderTask,
+	"PIPELINE_TASK":     UpdateTaskDetailsModelTypePipelineTask,
+	"SQL_TASK":          UpdateTaskDetailsModelTypeSqlTask,
+	"OCI_DATAFLOW_TASK": UpdateTaskDetailsModelTypeOciDataflowTask,
+	"REST_TASK":         UpdateTaskDetailsModelTypeRestTask,
 }
 
 // GetUpdateTaskDetailsModelTypeEnumValues Enumerates the set of values for UpdateTaskDetailsModelTypeEnum

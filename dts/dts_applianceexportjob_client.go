@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,9 @@ func (client ApplianceExportJobClient) ChangeApplianceExportJobCompartment(ctx c
 }
 
 // changeApplianceExportJobCompartment implements the OCIOperation interface (enables retrying operations)
-func (client ApplianceExportJobClient) changeApplianceExportJobCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/applianceExportJobs/{applianceExportJobId}/actions/changeCompartment", binaryReqBody)
+func (client ApplianceExportJobClient) changeApplianceExportJobCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/applianceExportJobs/{applianceExportJobId}/actions/changeCompartment", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -178,8 +179,9 @@ func (client ApplianceExportJobClient) CreateApplianceExportJob(ctx context.Cont
 }
 
 // createApplianceExportJob implements the OCIOperation interface (enables retrying operations)
-func (client ApplianceExportJobClient) createApplianceExportJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/applianceExportJobs", binaryReqBody)
+func (client ApplianceExportJobClient) createApplianceExportJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/applianceExportJobs", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -232,8 +234,9 @@ func (client ApplianceExportJobClient) DeleteApplianceExportJob(ctx context.Cont
 }
 
 // deleteApplianceExportJob implements the OCIOperation interface (enables retrying operations)
-func (client ApplianceExportJobClient) deleteApplianceExportJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/applianceExportJobs/{applianceExportJobId}", binaryReqBody)
+func (client ApplianceExportJobClient) deleteApplianceExportJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/applianceExportJobs/{applianceExportJobId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -286,8 +289,9 @@ func (client ApplianceExportJobClient) GetApplianceExportJob(ctx context.Context
 }
 
 // getApplianceExportJob implements the OCIOperation interface (enables retrying operations)
-func (client ApplianceExportJobClient) getApplianceExportJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/applianceExportJobs/{applianceExportJobId}", binaryReqBody)
+func (client ApplianceExportJobClient) getApplianceExportJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/applianceExportJobs/{applianceExportJobId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -340,8 +344,9 @@ func (client ApplianceExportJobClient) ListApplianceExportJobs(ctx context.Conte
 }
 
 // listApplianceExportJobs implements the OCIOperation interface (enables retrying operations)
-func (client ApplianceExportJobClient) listApplianceExportJobs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/applianceExportJobs", binaryReqBody)
+func (client ApplianceExportJobClient) listApplianceExportJobs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/applianceExportJobs", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -394,8 +399,9 @@ func (client ApplianceExportJobClient) UpdateApplianceExportJob(ctx context.Cont
 }
 
 // updateApplianceExportJob implements the OCIOperation interface (enables retrying operations)
-func (client ApplianceExportJobClient) updateApplianceExportJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/applianceExportJobs/{applianceExportJobId}", binaryReqBody)
+func (client ApplianceExportJobClient) updateApplianceExportJob(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/applianceExportJobs/{applianceExportJobId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

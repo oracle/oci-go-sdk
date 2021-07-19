@@ -11,7 +11,7 @@
 package genericartifactscontent
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // GenericArtifact The metadata of the artifact.
