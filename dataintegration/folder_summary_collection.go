@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // FolderSummaryCollection A collection of folder summaries. The collection can be lightweight details or full definitions.

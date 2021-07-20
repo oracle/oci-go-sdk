@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // DependentObjectSummary Details of the dependent object.
@@ -53,6 +53,8 @@ type DependentObjectSummary struct {
 
 	// Specifies whether this object is a favorite or not.
 	IsFavorite *bool `mandatory:"false" json:"isFavorite"`
+
+	CountStatistics *CountStatistic `mandatory:"false" json:"countStatistics"`
 }
 
 func (m DependentObjectSummary) String() string {

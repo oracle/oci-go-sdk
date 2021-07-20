@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // UpdateDeployPipelineRedeploymentDetails Update details for a pipeline redeployment.

@@ -12,8 +12,8 @@ package apmtraces
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -114,8 +114,9 @@ func (client TraceClient) GetSpan(ctx context.Context, request GetSpanRequest) (
 }
 
 // getSpan implements the OCIOperation interface (enables retrying operations)
-func (client TraceClient) getSpan(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/spans/{traceKey}/{spanKey}", binaryReqBody)
+func (client TraceClient) getSpan(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/spans/{traceKey}/{spanKey}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -168,8 +169,9 @@ func (client TraceClient) GetTrace(ctx context.Context, request GetTraceRequest)
 }
 
 // getTrace implements the OCIOperation interface (enables retrying operations)
-func (client TraceClient) getTrace(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/traces/{traceKey}", binaryReqBody)
+func (client TraceClient) getTrace(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/traces/{traceKey}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 45.0.0 - 2021-07-20
+### Added
+- Support for schedules, schedule tasks, REST tasks, operators, S3, and Fusion Apps in the Data Integration service
+- Support for getting available updates and update histories for VM clusters in the Database service
+- Support for downloading network validation reports for Exadata network resources in the Database service
+- Support for patch and upgrade of Grid Infrastructure (GI), and update of DomU OS software for VM clusters in the Database service
+- Support for updating data guard associations in the Database service
+
+### Breaking
+- The property `ModelType` was removed and property `BucketName` was replaced by `BucketSchema` in the models OracleAdwcWriteAttributes and OracleAtpWriteAttributes under the Data Integration service
+- The type for property `Type` was changed from `BaseType` to `*interface{}` for Parameter model under the Data Integration service
+- The type for property `Type` was changed from `*string` to `*interface{}` for ShapeField and NativeShapeField models under the Data Integration service
+- Added extraHeaders parameter to `HTTPRequest` method in OCIRquest interface
+
 ## 44.0.0 - 2021-07-13
 ### Added
 - Support for the AI Anomaly Detection service

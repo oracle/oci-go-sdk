@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // AutonomousDatabaseDetails The details of the Oracle Autonomous Database to be registered as a target database in Data Safe.

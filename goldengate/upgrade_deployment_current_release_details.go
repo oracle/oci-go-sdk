@@ -11,7 +11,7 @@ package goldengate
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // UpgradeDeploymentCurrentReleaseDetails Definiton of the additional attributes for a Current Release upgrade.

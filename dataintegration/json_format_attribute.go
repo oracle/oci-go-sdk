@@ -11,14 +11,22 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // JsonFormatAttribute The JSON file format attribute.
 type JsonFormatAttribute struct {
 
+	// Defines whether a file pattern is supported.
+	IsFilePattern *bool `mandatory:"false" json:"isFilePattern"`
+
 	// The encoding for the file.
 	Encoding *string `mandatory:"false" json:"encoding"`
+}
+
+//GetIsFilePattern returns IsFilePattern
+func (m JsonFormatAttribute) GetIsFilePattern() *bool {
+	return m.IsFilePattern
 }
 
 func (m JsonFormatAttribute) String() string {

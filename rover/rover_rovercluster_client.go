@@ -12,8 +12,8 @@ package rover
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,9 @@ func (client RoverClusterClient) ChangeRoverClusterCompartment(ctx context.Conte
 }
 
 // changeRoverClusterCompartment implements the OCIOperation interface (enables retrying operations)
-func (client RoverClusterClient) changeRoverClusterCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverClusters/{roverClusterId}/actions/changeCompartment", binaryReqBody)
+func (client RoverClusterClient) changeRoverClusterCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverClusters/{roverClusterId}/actions/changeCompartment", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -178,8 +179,9 @@ func (client RoverClusterClient) CreateRoverCluster(ctx context.Context, request
 }
 
 // createRoverCluster implements the OCIOperation interface (enables retrying operations)
-func (client RoverClusterClient) createRoverCluster(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverClusters", binaryReqBody)
+func (client RoverClusterClient) createRoverCluster(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/roverClusters", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -232,8 +234,9 @@ func (client RoverClusterClient) DeleteRoverCluster(ctx context.Context, request
 }
 
 // deleteRoverCluster implements the OCIOperation interface (enables retrying operations)
-func (client RoverClusterClient) deleteRoverCluster(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/roverClusters/{roverClusterId}", binaryReqBody)
+func (client RoverClusterClient) deleteRoverCluster(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/roverClusters/{roverClusterId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -286,8 +289,9 @@ func (client RoverClusterClient) GetRoverCluster(ctx context.Context, request Ge
 }
 
 // getRoverCluster implements the OCIOperation interface (enables retrying operations)
-func (client RoverClusterClient) getRoverCluster(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverClusters/{roverClusterId}", binaryReqBody)
+func (client RoverClusterClient) getRoverCluster(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverClusters/{roverClusterId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -340,8 +344,9 @@ func (client RoverClusterClient) GetRoverClusterCertificate(ctx context.Context,
 }
 
 // getRoverClusterCertificate implements the OCIOperation interface (enables retrying operations)
-func (client RoverClusterClient) getRoverClusterCertificate(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverClusters/{roverClusterId}/certificate", binaryReqBody)
+func (client RoverClusterClient) getRoverClusterCertificate(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverClusters/{roverClusterId}/certificate", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -394,8 +399,9 @@ func (client RoverClusterClient) ListRoverClusters(ctx context.Context, request 
 }
 
 // listRoverClusters implements the OCIOperation interface (enables retrying operations)
-func (client RoverClusterClient) listRoverClusters(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverClusters", binaryReqBody)
+func (client RoverClusterClient) listRoverClusters(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/roverClusters", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -448,8 +454,9 @@ func (client RoverClusterClient) UpdateRoverCluster(ctx context.Context, request
 }
 
 // updateRoverCluster implements the OCIOperation interface (enables retrying operations)
-func (client RoverClusterClient) updateRoverCluster(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/roverClusters/{roverClusterId}", binaryReqBody)
+func (client RoverClusterClient) updateRoverCluster(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/roverClusters/{roverClusterId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

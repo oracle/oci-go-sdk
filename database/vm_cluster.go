@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // VmCluster Details of the VM cluster resource. Applies to Exadata Cloud@Customer instances only.
@@ -69,6 +69,9 @@ type VmCluster struct {
 
 	// The Oracle Grid Infrastructure software version for the VM cluster.
 	GiVersion *string `mandatory:"false" json:"giVersion"`
+
+	// Operating system version of the image.
+	SystemVersion *string `mandatory:"false" json:"systemVersion"`
 
 	// The public key portion of one or more key pairs used for SSH access to the VM cluster.
 	SshPublicKeys []string `mandatory:"false" json:"sshPublicKeys"`

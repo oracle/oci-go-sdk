@@ -12,8 +12,8 @@ package dts
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -114,8 +114,9 @@ func (client TransferPackageClient) AttachDevicesToTransferPackage(ctx context.C
 }
 
 // attachDevicesToTransferPackage implements the OCIOperation interface (enables retrying operations)
-func (client TransferPackageClient) attachDevicesToTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{id}/transferPackages/{transferPackageLabel}/actions/attachDevices", binaryReqBody)
+func (client TransferPackageClient) attachDevicesToTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{id}/transferPackages/{transferPackageLabel}/actions/attachDevices", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -173,8 +174,9 @@ func (client TransferPackageClient) CreateTransferPackage(ctx context.Context, r
 }
 
 // createTransferPackage implements the OCIOperation interface (enables retrying operations)
-func (client TransferPackageClient) createTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{id}/transferPackages", binaryReqBody)
+func (client TransferPackageClient) createTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{id}/transferPackages", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -227,8 +229,9 @@ func (client TransferPackageClient) DeleteTransferPackage(ctx context.Context, r
 }
 
 // deleteTransferPackage implements the OCIOperation interface (enables retrying operations)
-func (client TransferPackageClient) deleteTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/transferJobs/{id}/transferPackages/{transferPackageLabel}", binaryReqBody)
+func (client TransferPackageClient) deleteTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/transferJobs/{id}/transferPackages/{transferPackageLabel}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -281,8 +284,9 @@ func (client TransferPackageClient) DetachDevicesFromTransferPackage(ctx context
 }
 
 // detachDevicesFromTransferPackage implements the OCIOperation interface (enables retrying operations)
-func (client TransferPackageClient) detachDevicesFromTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{id}/transferPackages/{transferPackageLabel}/actions/detachDevices", binaryReqBody)
+func (client TransferPackageClient) detachDevicesFromTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/transferJobs/{id}/transferPackages/{transferPackageLabel}/actions/detachDevices", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -335,8 +339,9 @@ func (client TransferPackageClient) GetTransferPackage(ctx context.Context, requ
 }
 
 // getTransferPackage implements the OCIOperation interface (enables retrying operations)
-func (client TransferPackageClient) getTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferPackages/{transferPackageLabel}", binaryReqBody)
+func (client TransferPackageClient) getTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferPackages/{transferPackageLabel}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -389,8 +394,9 @@ func (client TransferPackageClient) ListTransferPackages(ctx context.Context, re
 }
 
 // listTransferPackages implements the OCIOperation interface (enables retrying operations)
-func (client TransferPackageClient) listTransferPackages(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferPackages", binaryReqBody)
+func (client TransferPackageClient) listTransferPackages(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/transferJobs/{id}/transferPackages", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -443,8 +449,9 @@ func (client TransferPackageClient) UpdateTransferPackage(ctx context.Context, r
 }
 
 // updateTransferPackage implements the OCIOperation interface (enables retrying operations)
-func (client TransferPackageClient) updateTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/transferJobs/{id}/transferPackages/{transferPackageLabel}", binaryReqBody)
+func (client TransferPackageClient) updateTransferPackage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/transferJobs/{id}/transferPackages/{transferPackageLabel}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

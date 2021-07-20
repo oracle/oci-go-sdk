@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // ComputeInstanceGroupByIdsSelector Specifies the Compute instance group environment by listing the OCIDs of the compute instances.

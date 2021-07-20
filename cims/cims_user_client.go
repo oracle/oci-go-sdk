@@ -12,8 +12,8 @@ package cims
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -114,8 +114,9 @@ func (client UserClient) CreateUser(ctx context.Context, request CreateUserReque
 }
 
 // createUser implements the OCIOperation interface (enables retrying operations)
-func (client UserClient) createUser(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/v2/users", binaryReqBody)
+func (client UserClient) createUser(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/v2/users", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

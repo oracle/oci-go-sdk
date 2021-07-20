@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // NativeShapeField The native shape field object.
@@ -23,7 +23,7 @@ type NativeShapeField struct {
 	ModelType *string `mandatory:"false" json:"modelType"`
 
 	// The type reference.
-	Type *string `mandatory:"false" json:"type"`
+	Type *interface{} `mandatory:"false" json:"type"`
 
 	ConfigValues *ConfigValues `mandatory:"false" json:"configValues"`
 

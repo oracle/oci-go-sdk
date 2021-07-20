@@ -14,8 +14,8 @@ package operatoraccesscontrol
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -121,8 +121,9 @@ func (client OperatorControlAssignmentClient) ChangeOperatorControlAssignmentCom
 }
 
 // changeOperatorControlAssignmentCompartment implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlAssignmentClient) changeOperatorControlAssignmentCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/operatorControlAssignments/{operatorControlAssignmentId}/actions/changeCompartment", binaryReqBody)
+func (client OperatorControlAssignmentClient) changeOperatorControlAssignmentCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/operatorControlAssignments/{operatorControlAssignmentId}/actions/changeCompartment", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -180,8 +181,9 @@ func (client OperatorControlAssignmentClient) CreateOperatorControlAssignment(ct
 }
 
 // createOperatorControlAssignment implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlAssignmentClient) createOperatorControlAssignment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/operatorControlAssignments", binaryReqBody)
+func (client OperatorControlAssignmentClient) createOperatorControlAssignment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/operatorControlAssignments", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -234,8 +236,9 @@ func (client OperatorControlAssignmentClient) DeleteOperatorControlAssignment(ct
 }
 
 // deleteOperatorControlAssignment implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlAssignmentClient) deleteOperatorControlAssignment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/operatorControlAssignments/{operatorControlAssignmentId}", binaryReqBody)
+func (client OperatorControlAssignmentClient) deleteOperatorControlAssignment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/operatorControlAssignments/{operatorControlAssignmentId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -288,8 +291,9 @@ func (client OperatorControlAssignmentClient) GetOperatorControlAssignment(ctx c
 }
 
 // getOperatorControlAssignment implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlAssignmentClient) getOperatorControlAssignment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorControlAssignments/{operatorControlAssignmentId}", binaryReqBody)
+func (client OperatorControlAssignmentClient) getOperatorControlAssignment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorControlAssignments/{operatorControlAssignmentId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -342,8 +346,9 @@ func (client OperatorControlAssignmentClient) ListOperatorControlAssignments(ctx
 }
 
 // listOperatorControlAssignments implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlAssignmentClient) listOperatorControlAssignments(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorControlAssignments", binaryReqBody)
+func (client OperatorControlAssignmentClient) listOperatorControlAssignments(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorControlAssignments", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -396,8 +401,9 @@ func (client OperatorControlAssignmentClient) UpdateOperatorControlAssignment(ct
 }
 
 // updateOperatorControlAssignment implements the OCIOperation interface (enables retrying operations)
-func (client OperatorControlAssignmentClient) updateOperatorControlAssignment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/operatorControlAssignments/{operatorControlAssignmentId}", binaryReqBody)
+func (client OperatorControlAssignmentClient) updateOperatorControlAssignment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/operatorControlAssignments/{operatorControlAssignmentId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

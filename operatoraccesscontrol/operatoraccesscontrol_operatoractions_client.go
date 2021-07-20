@@ -14,8 +14,8 @@ package operatoraccesscontrol
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -116,8 +116,9 @@ func (client OperatorActionsClient) GetOperatorAction(ctx context.Context, reque
 }
 
 // getOperatorAction implements the OCIOperation interface (enables retrying operations)
-func (client OperatorActionsClient) getOperatorAction(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorActions/{operatorActionId}", binaryReqBody)
+func (client OperatorActionsClient) getOperatorAction(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorActions/{operatorActionId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -170,8 +171,9 @@ func (client OperatorActionsClient) ListOperatorActions(ctx context.Context, req
 }
 
 // listOperatorActions implements the OCIOperation interface (enables retrying operations)
-func (client OperatorActionsClient) listOperatorActions(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorActions", binaryReqBody)
+func (client OperatorActionsClient) listOperatorActions(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/operatorActions", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

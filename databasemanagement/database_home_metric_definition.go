@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // DatabaseHomeMetricDefinition The response containing the CPU, Storage, Wait, DB Time, and Memory metrics for a specific database.

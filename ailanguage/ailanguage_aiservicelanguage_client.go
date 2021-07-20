@@ -14,8 +14,8 @@ package ailanguage
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -116,8 +116,9 @@ func (client AIServiceLanguageClient) DetectDominantLanguage(ctx context.Context
 }
 
 // detectDominantLanguage implements the OCIOperation interface (enables retrying operations)
-func (client AIServiceLanguageClient) detectDominantLanguage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectDominantLanguage", binaryReqBody)
+func (client AIServiceLanguageClient) detectDominantLanguage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectDominantLanguage", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -170,8 +171,9 @@ func (client AIServiceLanguageClient) DetectLanguageEntities(ctx context.Context
 }
 
 // detectLanguageEntities implements the OCIOperation interface (enables retrying operations)
-func (client AIServiceLanguageClient) detectLanguageEntities(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectLanguageEntities", binaryReqBody)
+func (client AIServiceLanguageClient) detectLanguageEntities(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectLanguageEntities", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -224,8 +226,9 @@ func (client AIServiceLanguageClient) DetectLanguageKeyPhrases(ctx context.Conte
 }
 
 // detectLanguageKeyPhrases implements the OCIOperation interface (enables retrying operations)
-func (client AIServiceLanguageClient) detectLanguageKeyPhrases(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectLanguageKeyPhrases", binaryReqBody)
+func (client AIServiceLanguageClient) detectLanguageKeyPhrases(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectLanguageKeyPhrases", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -278,8 +281,9 @@ func (client AIServiceLanguageClient) DetectLanguageSentiments(ctx context.Conte
 }
 
 // detectLanguageSentiments implements the OCIOperation interface (enables retrying operations)
-func (client AIServiceLanguageClient) detectLanguageSentiments(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectLanguageSentiments", binaryReqBody)
+func (client AIServiceLanguageClient) detectLanguageSentiments(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectLanguageSentiments", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -332,8 +336,9 @@ func (client AIServiceLanguageClient) DetectLanguageTextClassification(ctx conte
 }
 
 // detectLanguageTextClassification implements the OCIOperation interface (enables retrying operations)
-func (client AIServiceLanguageClient) detectLanguageTextClassification(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectLanguageTextClassification", binaryReqBody)
+func (client AIServiceLanguageClient) detectLanguageTextClassification(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectLanguageTextClassification", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

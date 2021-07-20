@@ -10,7 +10,7 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // RoverNodeCollection Results of a roverNode search. Contains both RoverNodeSummary items and other data.

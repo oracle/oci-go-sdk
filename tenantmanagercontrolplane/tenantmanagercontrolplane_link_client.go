@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -114,8 +114,9 @@ func (client LinkClient) DeleteLink(ctx context.Context, request DeleteLinkReque
 }
 
 // deleteLink implements the OCIOperation interface (enables retrying operations)
-func (client LinkClient) deleteLink(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/links/{linkId}", binaryReqBody)
+func (client LinkClient) deleteLink(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/links/{linkId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -168,8 +169,9 @@ func (client LinkClient) GetLink(ctx context.Context, request GetLinkRequest) (r
 }
 
 // getLink implements the OCIOperation interface (enables retrying operations)
-func (client LinkClient) getLink(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/links/{linkId}", binaryReqBody)
+func (client LinkClient) getLink(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/links/{linkId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -222,8 +224,9 @@ func (client LinkClient) ListLinks(ctx context.Context, request ListLinksRequest
 }
 
 // listLinks implements the OCIOperation interface (enables retrying operations)
-func (client LinkClient) listLinks(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/links", binaryReqBody)
+func (client LinkClient) listLinks(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/links", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

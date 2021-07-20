@@ -8,7 +8,7 @@ import (
 	"path"
 	"testing"
 
-	"github.com/oracle/oci-go-sdk/v44/example/helpers"
+	"github.com/oracle/oci-go-sdk/v45/example/helpers"
 	"github.com/stretchr/testify/assert"
 )
 

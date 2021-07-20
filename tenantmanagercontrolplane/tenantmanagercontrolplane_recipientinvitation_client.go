@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -119,8 +119,9 @@ func (client RecipientInvitationClient) AcceptRecipientInvitation(ctx context.Co
 }
 
 // acceptRecipientInvitation implements the OCIOperation interface (enables retrying operations)
-func (client RecipientInvitationClient) acceptRecipientInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/recipientInvitations/{recipientInvitationId}/actions/accept", binaryReqBody)
+func (client RecipientInvitationClient) acceptRecipientInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/recipientInvitations/{recipientInvitationId}/actions/accept", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -173,8 +174,9 @@ func (client RecipientInvitationClient) GetRecipientInvitation(ctx context.Conte
 }
 
 // getRecipientInvitation implements the OCIOperation interface (enables retrying operations)
-func (client RecipientInvitationClient) getRecipientInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/recipientInvitations/{recipientInvitationId}", binaryReqBody)
+func (client RecipientInvitationClient) getRecipientInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/recipientInvitations/{recipientInvitationId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -232,8 +234,9 @@ func (client RecipientInvitationClient) IgnoreRecipientInvitation(ctx context.Co
 }
 
 // ignoreRecipientInvitation implements the OCIOperation interface (enables retrying operations)
-func (client RecipientInvitationClient) ignoreRecipientInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/recipientInvitations/{recipientInvitationId}/actions/ignore", binaryReqBody)
+func (client RecipientInvitationClient) ignoreRecipientInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/recipientInvitations/{recipientInvitationId}/actions/ignore", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -286,8 +289,9 @@ func (client RecipientInvitationClient) ListRecipientInvitations(ctx context.Con
 }
 
 // listRecipientInvitations implements the OCIOperation interface (enables retrying operations)
-func (client RecipientInvitationClient) listRecipientInvitations(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/recipientInvitations", binaryReqBody)
+func (client RecipientInvitationClient) listRecipientInvitations(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/recipientInvitations", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -340,8 +344,9 @@ func (client RecipientInvitationClient) UpdateRecipientInvitation(ctx context.Co
 }
 
 // updateRecipientInvitation implements the OCIOperation interface (enables retrying operations)
-func (client RecipientInvitationClient) updateRecipientInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/recipientInvitations/{recipientInvitationId}", binaryReqBody)
+func (client RecipientInvitationClient) updateRecipientInvitation(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/recipientInvitations/{recipientInvitationId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

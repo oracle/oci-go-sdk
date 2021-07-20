@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // SetQueryParameterPolicyItem Set will add a new query parameter if it was not in the original request.  If the parameter already exists on the

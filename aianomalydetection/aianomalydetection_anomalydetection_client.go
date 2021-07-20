@@ -14,8 +14,8 @@ package aianomalydetection
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v44/common"
-	"github.com/oracle/oci-go-sdk/v44/common/auth"
+	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v45/common/auth"
 	"net/http"
 )
 
@@ -116,8 +116,9 @@ func (client AnomalyDetectionClient) CancelWorkRequest(ctx context.Context, requ
 }
 
 // cancelWorkRequest implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) cancelWorkRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/workRequests/{workRequestId}", binaryReqBody)
+func (client AnomalyDetectionClient) cancelWorkRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/workRequests/{workRequestId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -175,8 +176,9 @@ func (client AnomalyDetectionClient) ChangeAiPrivateEndpointCompartment(ctx cont
 }
 
 // changeAiPrivateEndpointCompartment implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) changeAiPrivateEndpointCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/aiPrivateEndpoints/{aiPrivateEndpointId}/actions/changeCompartment", binaryReqBody)
+func (client AnomalyDetectionClient) changeAiPrivateEndpointCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/aiPrivateEndpoints/{aiPrivateEndpointId}/actions/changeCompartment", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -234,8 +236,9 @@ func (client AnomalyDetectionClient) ChangeDataAssetCompartment(ctx context.Cont
 }
 
 // changeDataAssetCompartment implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) changeDataAssetCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/dataAssets/{dataAssetId}/actions/changeCompartment", binaryReqBody)
+func (client AnomalyDetectionClient) changeDataAssetCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/dataAssets/{dataAssetId}/actions/changeCompartment", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -293,8 +296,9 @@ func (client AnomalyDetectionClient) ChangeModelCompartment(ctx context.Context,
 }
 
 // changeModelCompartment implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) changeModelCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/models/{modelId}/actions/changeCompartment", binaryReqBody)
+func (client AnomalyDetectionClient) changeModelCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/models/{modelId}/actions/changeCompartment", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -352,8 +356,9 @@ func (client AnomalyDetectionClient) ChangeProjectCompartment(ctx context.Contex
 }
 
 // changeProjectCompartment implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) changeProjectCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/projects/{projectId}/actions/changeCompartment", binaryReqBody)
+func (client AnomalyDetectionClient) changeProjectCompartment(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/projects/{projectId}/actions/changeCompartment", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -411,8 +416,9 @@ func (client AnomalyDetectionClient) CreateAiPrivateEndpoint(ctx context.Context
 }
 
 // createAiPrivateEndpoint implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) createAiPrivateEndpoint(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/aiPrivateEndpoints", binaryReqBody)
+func (client AnomalyDetectionClient) createAiPrivateEndpoint(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/aiPrivateEndpoints", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -470,8 +476,9 @@ func (client AnomalyDetectionClient) CreateDataAsset(ctx context.Context, reques
 }
 
 // createDataAsset implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) createDataAsset(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/dataAssets", binaryReqBody)
+func (client AnomalyDetectionClient) createDataAsset(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/dataAssets", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -529,8 +536,9 @@ func (client AnomalyDetectionClient) CreateModel(ctx context.Context, request Cr
 }
 
 // createModel implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) createModel(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/models", binaryReqBody)
+func (client AnomalyDetectionClient) createModel(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/models", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -588,8 +596,9 @@ func (client AnomalyDetectionClient) CreateProject(ctx context.Context, request 
 }
 
 // createProject implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) createProject(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/projects", binaryReqBody)
+func (client AnomalyDetectionClient) createProject(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/projects", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -642,8 +651,9 @@ func (client AnomalyDetectionClient) DeleteAiPrivateEndpoint(ctx context.Context
 }
 
 // deleteAiPrivateEndpoint implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) deleteAiPrivateEndpoint(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/aiPrivateEndpoints/{aiPrivateEndpointId}", binaryReqBody)
+func (client AnomalyDetectionClient) deleteAiPrivateEndpoint(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/aiPrivateEndpoints/{aiPrivateEndpointId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -696,8 +706,9 @@ func (client AnomalyDetectionClient) DeleteDataAsset(ctx context.Context, reques
 }
 
 // deleteDataAsset implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) deleteDataAsset(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/dataAssets/{dataAssetId}", binaryReqBody)
+func (client AnomalyDetectionClient) deleteDataAsset(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/dataAssets/{dataAssetId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -750,8 +761,9 @@ func (client AnomalyDetectionClient) DeleteModel(ctx context.Context, request De
 }
 
 // deleteModel implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) deleteModel(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/models/{modelId}", binaryReqBody)
+func (client AnomalyDetectionClient) deleteModel(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/models/{modelId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -804,8 +816,9 @@ func (client AnomalyDetectionClient) DeleteProject(ctx context.Context, request 
 }
 
 // deleteProject implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) deleteProject(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/projects/{projectId}", binaryReqBody)
+func (client AnomalyDetectionClient) deleteProject(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodDelete, "/projects/{projectId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -863,8 +876,9 @@ func (client AnomalyDetectionClient) DetectAnomalies(ctx context.Context, reques
 }
 
 // detectAnomalies implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) detectAnomalies(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectAnomalies", binaryReqBody)
+func (client AnomalyDetectionClient) detectAnomalies(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/detectAnomalies", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -917,8 +931,9 @@ func (client AnomalyDetectionClient) GetAiPrivateEndpoint(ctx context.Context, r
 }
 
 // getAiPrivateEndpoint implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) getAiPrivateEndpoint(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/aiPrivateEndpoints/{aiPrivateEndpointId}", binaryReqBody)
+func (client AnomalyDetectionClient) getAiPrivateEndpoint(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/aiPrivateEndpoints/{aiPrivateEndpointId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -971,8 +986,9 @@ func (client AnomalyDetectionClient) GetDataAsset(ctx context.Context, request G
 }
 
 // getDataAsset implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) getDataAsset(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/dataAssets/{dataAssetId}", binaryReqBody)
+func (client AnomalyDetectionClient) getDataAsset(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/dataAssets/{dataAssetId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1025,8 +1041,9 @@ func (client AnomalyDetectionClient) GetModel(ctx context.Context, request GetMo
 }
 
 // getModel implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) getModel(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/models/{modelId}", binaryReqBody)
+func (client AnomalyDetectionClient) getModel(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/models/{modelId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1079,8 +1096,9 @@ func (client AnomalyDetectionClient) GetProject(ctx context.Context, request Get
 }
 
 // getProject implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) getProject(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/projects/{projectId}", binaryReqBody)
+func (client AnomalyDetectionClient) getProject(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/projects/{projectId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1133,8 +1151,9 @@ func (client AnomalyDetectionClient) GetWorkRequest(ctx context.Context, request
 }
 
 // getWorkRequest implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) getWorkRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}", binaryReqBody)
+func (client AnomalyDetectionClient) getWorkRequest(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1187,8 +1206,9 @@ func (client AnomalyDetectionClient) ListAiPrivateEndpoints(ctx context.Context,
 }
 
 // listAiPrivateEndpoints implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) listAiPrivateEndpoints(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/aiPrivateEndpoints", binaryReqBody)
+func (client AnomalyDetectionClient) listAiPrivateEndpoints(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/aiPrivateEndpoints", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1241,8 +1261,9 @@ func (client AnomalyDetectionClient) ListDataAssets(ctx context.Context, request
 }
 
 // listDataAssets implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) listDataAssets(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/dataAssets", binaryReqBody)
+func (client AnomalyDetectionClient) listDataAssets(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/dataAssets", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1295,8 +1316,9 @@ func (client AnomalyDetectionClient) ListModels(ctx context.Context, request Lis
 }
 
 // listModels implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) listModels(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/models", binaryReqBody)
+func (client AnomalyDetectionClient) listModels(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/models", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1349,8 +1371,9 @@ func (client AnomalyDetectionClient) ListProjects(ctx context.Context, request L
 }
 
 // listProjects implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) listProjects(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/projects", binaryReqBody)
+func (client AnomalyDetectionClient) listProjects(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/projects", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1403,8 +1426,9 @@ func (client AnomalyDetectionClient) ListWorkRequestErrors(ctx context.Context, 
 }
 
 // listWorkRequestErrors implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) listWorkRequestErrors(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/errors", binaryReqBody)
+func (client AnomalyDetectionClient) listWorkRequestErrors(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/errors", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1457,8 +1481,9 @@ func (client AnomalyDetectionClient) ListWorkRequestLogs(ctx context.Context, re
 }
 
 // listWorkRequestLogs implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) listWorkRequestLogs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/logs", binaryReqBody)
+func (client AnomalyDetectionClient) listWorkRequestLogs(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests/{workRequestId}/logs", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1511,8 +1536,9 @@ func (client AnomalyDetectionClient) ListWorkRequests(ctx context.Context, reque
 }
 
 // listWorkRequests implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) listWorkRequests(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests", binaryReqBody)
+func (client AnomalyDetectionClient) listWorkRequests(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/workRequests", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1565,8 +1591,9 @@ func (client AnomalyDetectionClient) UpdateAiPrivateEndpoint(ctx context.Context
 }
 
 // updateAiPrivateEndpoint implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) updateAiPrivateEndpoint(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/aiPrivateEndpoints/{aiPrivateEndpointId}", binaryReqBody)
+func (client AnomalyDetectionClient) updateAiPrivateEndpoint(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/aiPrivateEndpoints/{aiPrivateEndpointId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1619,8 +1646,9 @@ func (client AnomalyDetectionClient) UpdateDataAsset(ctx context.Context, reques
 }
 
 // updateDataAsset implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) updateDataAsset(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/dataAssets/{dataAssetId}", binaryReqBody)
+func (client AnomalyDetectionClient) updateDataAsset(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/dataAssets/{dataAssetId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1673,8 +1701,9 @@ func (client AnomalyDetectionClient) UpdateModel(ctx context.Context, request Up
 }
 
 // updateModel implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) updateModel(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/models/{modelId}", binaryReqBody)
+func (client AnomalyDetectionClient) updateModel(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/models/{modelId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
@@ -1727,8 +1756,9 @@ func (client AnomalyDetectionClient) UpdateProject(ctx context.Context, request 
 }
 
 // updateProject implements the OCIOperation interface (enables retrying operations)
-func (client AnomalyDetectionClient) updateProject(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser) (common.OCIResponse, error) {
-	httpRequest, err := request.HTTPRequest(http.MethodPut, "/projects/{projectId}", binaryReqBody)
+func (client AnomalyDetectionClient) updateProject(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPut, "/projects/{projectId}", binaryReqBody, extraHeaders)
 	if err != nil {
 		return nil, err
 	}

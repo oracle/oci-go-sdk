@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // ComputeInstanceGroupCanaryTrafficShiftDeployStageExecutionProgress Specifies the Instance Group Canary deployment load balancer traffic shift stage.

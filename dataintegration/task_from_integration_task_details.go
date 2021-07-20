@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // TaskFromIntegrationTaskDetails The information about the integration task.
@@ -57,6 +57,8 @@ type TaskFromIntegrationTaskDetails struct {
 
 	// A key map. If provided, key is replaced with generated key. This structure provides mapping between user provided key and generated key.
 	KeyMap map[string]string `mandatory:"false" json:"keyMap"`
+
+	RegistryMetadata *RegistryMetadata `mandatory:"false" json:"registryMetadata"`
 
 	DataFlow *DataFlow `mandatory:"false" json:"dataFlow"`
 }
@@ -134,6 +136,11 @@ func (m TaskFromIntegrationTaskDetails) GetMetadata() *ObjectMetadata {
 //GetKeyMap returns KeyMap
 func (m TaskFromIntegrationTaskDetails) GetKeyMap() map[string]string {
 	return m.KeyMap
+}
+
+//GetRegistryMetadata returns RegistryMetadata
+func (m TaskFromIntegrationTaskDetails) GetRegistryMetadata() *RegistryMetadata {
+	return m.RegistryMetadata
 }
 
 func (m TaskFromIntegrationTaskDetails) String() string {

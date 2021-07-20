@@ -11,7 +11,7 @@
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // WorkRequest A description of workrequest status

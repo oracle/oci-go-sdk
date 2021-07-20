@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v44/common"
+	"github.com/oracle/oci-go-sdk/v45/common"
 )
 
 // HeaderValidationRequestPolicy Validate the HTTP headers on the incoming API requests on a specific route.
