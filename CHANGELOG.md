@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 45.2.0 - 2021-08-03
+### Added
+- Support for manually copying volume group backups across regions in the Block Volume service
+- Support for work requests for the copy volume backup and copy boot volume backup operations in the Block Volume service
+- Support for specifying external Hive metastores during application creation in the Data Flow service
+- Support for changing the compartment of a backup in the MySQL Database service
+- Support for model catalog features including provenance, metadata, schemas, and artifact introspection in the Data Science service
+- Support for Exadata system network bonding in the Database service
+- Support for creating autonomous databases with early patching enabled in the Database service
+
 ## 45.1.0 - 2021-07-27
 ### Added
 - Support for filtering by tag on capacity planning and SQL warehouse list operations in the Operations Insights service
