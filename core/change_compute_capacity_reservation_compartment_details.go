@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // ChangeComputeCapacityReservationCompartmentDetails Specifies the compartment to move the compute capacity reservation to.

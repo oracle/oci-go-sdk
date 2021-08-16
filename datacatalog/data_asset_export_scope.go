@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // DataAssetExportScope Scope of asset export, which consists of a container object (bucket, folder, schema, etc) within the asset,

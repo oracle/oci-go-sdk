@@ -10,7 +10,7 @@
 package jms
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // JreUsage Java Runtime usage during a specified time period. A Java Runtime is identified by its vendor and version.

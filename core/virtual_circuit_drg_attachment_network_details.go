@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // VirtualCircuitDrgAttachmentNetworkDetails Specifies the virtual circuit attached to the DRG.

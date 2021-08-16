@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // NamespaceCollection Results of a namespaces listing. A namespace is an unique name tied to the first class object of data catalog which will be used to create a custom property

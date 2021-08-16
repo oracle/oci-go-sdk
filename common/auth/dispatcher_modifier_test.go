@@ -6,7 +6,7 @@ package auth
 import (
 	"crypto/tls"
 	"errors"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"testing"

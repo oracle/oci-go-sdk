@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // PluggableDatabaseConnectionStrings Connection strings to connect to an Oracle Pluggable Database.
