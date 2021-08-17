@@ -10,7 +10,7 @@
 package bds
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // CloudSqlDetails The information about added Cloud SQL capability

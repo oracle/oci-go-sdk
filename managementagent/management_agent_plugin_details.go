@@ -10,7 +10,7 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // ManagementAgentPluginDetails The information about the current management agent plugins that agent is having.
@@ -27,6 +27,9 @@ type ManagementAgentPluginDetails struct {
 
 	// Plugin Version
 	PluginVersion *string `mandatory:"false" json:"pluginVersion"`
+
+	// flag indicating whether the plugin is in enabled mode or disabled mode.
+	IsEnabled *bool `mandatory:"false" json:"isEnabled"`
 }
 
 func (m ManagementAgentPluginDetails) String() string {

@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // UpdateDrgRouteDistributionDetails Details used in a request to update a route distribution.

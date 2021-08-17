@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // Patch The patch object contains the audit summary information and the definition of the patch.

@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // EsxiHostCollection A list of ESXi hosts.

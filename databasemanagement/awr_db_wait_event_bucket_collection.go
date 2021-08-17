@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // AwrDbWaitEventBucketCollection The percentage distribution of waits in the AWR wait event buckets.

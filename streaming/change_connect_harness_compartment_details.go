@@ -10,7 +10,7 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // ChangeConnectHarnessCompartmentDetails Detailed representation of a change connect harness compartment operation.

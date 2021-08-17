@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // CreateAutonomousContainerDatabaseDetails Describes the required parameters for the creation of an Autonomous Container Database.

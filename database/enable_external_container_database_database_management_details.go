@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // EnableExternalContainerDatabaseDatabaseManagementDetails Details to enable Database Management on an external container database.

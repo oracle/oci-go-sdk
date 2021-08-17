@@ -14,7 +14,7 @@
 package autoscaling
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // CreateConditionDetails Creation details for a condition in a threshold-based autoscaling policy.

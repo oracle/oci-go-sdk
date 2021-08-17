@@ -10,7 +10,7 @@
 package servicecatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // PrivateApplicationSummary Brief data about an application or a solution, which lives inside the tenancy and may be included into service catalogs.

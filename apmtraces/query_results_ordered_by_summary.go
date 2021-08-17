@@ -10,7 +10,7 @@
 package apmtraces
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // QueryResultsOrderedBySummary Summary of the sort attribute and order by which the query results are organized.

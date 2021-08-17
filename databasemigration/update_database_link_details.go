@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // UpdateDatabaseLinkDetails Optional details for updating a network database link from OCI database to on-premise database.

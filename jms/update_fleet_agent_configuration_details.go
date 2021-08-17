@@ -10,7 +10,7 @@
 package jms
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // UpdateFleetAgentConfigurationDetails Attributes to update a Fleet Agent Configuration.

@@ -5,7 +5,7 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/managementagent/ListWorkRequests.go.html to see an example of how to use ListWorkRequestsRequest.
 type ListWorkRequestsRequest struct {
 
-	// The ID of the compartment from which the Management Agents to be listed.
+	// The OCID of the compartment to which a request will be scoped.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
 	// The ManagementAgentID of the agent from which the Management Agents to be filtered.

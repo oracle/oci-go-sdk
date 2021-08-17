@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // AbsoluteWaitCriteriaSummary Specifies the absolute wait criteria, user can specify fixed length of wait duration.

@@ -10,7 +10,7 @@
 package jms
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // WorkRequestErrorCollection Results of a work request error search. Contains WorkRequestError items

@@ -11,7 +11,7 @@
 package artifacts
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // ContainerRepositoryCollection List of container repository results.

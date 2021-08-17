@@ -13,7 +13,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // ChangeConfigurationSourceProviderCompartmentDetails The details for moving a configuration source provider to a different compartment.

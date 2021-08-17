@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // AccessRequest An Oracle operator raises access request when they need access to any infrastructure resource governed by Operator Access Control.

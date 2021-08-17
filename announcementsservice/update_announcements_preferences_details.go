@@ -11,7 +11,7 @@ package announcementsservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // UpdateAnnouncementsPreferencesDetails The object used to update announcement email preferences.

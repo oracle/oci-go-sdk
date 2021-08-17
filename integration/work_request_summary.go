@@ -10,7 +10,7 @@
 package integration
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // WorkRequestSummary A description of work request status.

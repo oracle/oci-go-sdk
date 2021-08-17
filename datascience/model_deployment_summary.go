@@ -11,7 +11,7 @@ package datascience
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // ModelDeploymentSummary Summary information for a model deployment.

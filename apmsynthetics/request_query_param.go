@@ -10,7 +10,7 @@
 package apmsynthetics
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // RequestQueryParam Information about request query parameters.

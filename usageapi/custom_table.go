@@ -10,7 +10,7 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // CustomTable The saved custom table.

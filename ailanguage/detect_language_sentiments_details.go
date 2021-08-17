@@ -12,7 +12,7 @@
 package ailanguage
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // DetectLanguageSentimentsDetails The document details for sentiments detect call.

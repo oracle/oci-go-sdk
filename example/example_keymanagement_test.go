@@ -11,9 +11,9 @@ import (
 	"math"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v45/common"
-	"github.com/oracle/oci-go-sdk/v45/example/helpers"
-	"github.com/oracle/oci-go-sdk/v45/keymanagement"
+	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v46/example/helpers"
+	"github.com/oracle/oci-go-sdk/v46/keymanagement"
 )
 
 // ExampleKeyManagement_VaultOperations shows how to create, schedule deletion

@@ -11,7 +11,7 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // GenerateKeyDetails The representation of GenerateKeyDetails

@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // AwrDbSnapshotCollection The list of AWR snapshots for one database.

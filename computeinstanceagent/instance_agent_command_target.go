@@ -11,7 +11,7 @@
 package computeinstanceagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // InstanceAgentCommandTarget The target instance that the command runs on.

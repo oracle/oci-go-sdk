@@ -11,7 +11,7 @@ package waas
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // PolicyConfig The configuration details for the WAAS policy.

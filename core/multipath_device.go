@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // MultipathDevice Secondary multipath device, it uses the charUsername and chapSecret from primary volume attachment

@@ -10,7 +10,7 @@
 package announcementsservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // AnnouncementUserStatusDetails An announcement's status regarding whether it has been acknowledged by a user.

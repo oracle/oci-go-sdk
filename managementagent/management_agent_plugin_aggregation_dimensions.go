@@ -10,16 +10,16 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
-// WorkSubmissionKey Work Submission Identifier
-type WorkSubmissionKey struct {
+// ManagementAgentPluginAggregationDimensions The Aggregation of Management Agent Plugin Dimensions
+type ManagementAgentPluginAggregationDimensions struct {
 
-	// Work Submission Identifier
-	WorkSubmissionKey *string `mandatory:"true" json:"workSubmissionKey"`
+	// Management Agent Plugin Name
+	PluginName *string `mandatory:"false" json:"pluginName"`
 }
 
-func (m WorkSubmissionKey) String() string {
+func (m ManagementAgentPluginAggregationDimensions) String() string {
 	return common.PointerString(m)
 }

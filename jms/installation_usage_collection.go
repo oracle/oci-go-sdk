@@ -10,7 +10,7 @@
 package jms
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // InstallationUsageCollection Results of an installation search. Contains InstallationUsage items.

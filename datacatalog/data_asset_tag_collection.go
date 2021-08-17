@@ -10,7 +10,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // DataAssetTagCollection Results of a data asset tag listing. Data asset tags represent an association of a data asset to a term.

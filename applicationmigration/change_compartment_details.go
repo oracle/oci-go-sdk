@@ -13,7 +13,7 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // ChangeCompartmentDetails Moves the resource to the specified compartment.

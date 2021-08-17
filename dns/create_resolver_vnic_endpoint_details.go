@@ -12,7 +12,7 @@ package dns
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // CreateResolverVnicEndpointDetails The body for defining a new resolver VNIC endpoint. Either isForwarding or isListening must be true, but not both.

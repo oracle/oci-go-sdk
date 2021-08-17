@@ -10,7 +10,7 @@
 package goldengate
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // ChangeDatabaseRegistrationCompartmentDetails The new compartment for a DatabaseRegistration.

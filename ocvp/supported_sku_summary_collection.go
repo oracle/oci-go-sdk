@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // SupportedSkuSummaryCollection A specific SKU. Oracle Cloud Infrastructure VMware Solution supports the following billing interval SKUs:

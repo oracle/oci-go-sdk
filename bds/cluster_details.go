@@ -10,7 +10,7 @@
 package bds
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // ClusterDetails Specific info about a Hadoop cluster

@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // CreateDataMaskRuleDetails The information about new Data Mask Rule.

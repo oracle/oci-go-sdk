@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // LocalClonePluggableDatabaseDetails Parameters for cloning a pluggable database (PDB) within the same database (CDB).

@@ -15,7 +15,7 @@ package autoscaling
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // ScheduledPolicy An autoscaling policy that defines execution schedules for an autoscaling configuration.

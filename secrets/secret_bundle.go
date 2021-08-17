@@ -11,7 +11,7 @@ package secrets
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // SecretBundle The contents of the secret, properties of the secret (and secret version), and user-provided contextual metadata for the secret.

@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // DhcpOption A single DHCP option according to RFC 1533 (https://tools.ietf.org/html/rfc1533).

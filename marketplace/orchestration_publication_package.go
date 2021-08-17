@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // OrchestrationPublicationPackage A publication package for stack publications.

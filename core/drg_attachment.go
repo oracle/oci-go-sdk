@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v45/common"
+	"github.com/oracle/oci-go-sdk/v46/common"
 )
 
 // DrgAttachment A DRG attachment serves as a link between a DRG and a network resource. A DRG can be attached to a VCN,
