@@ -15,6 +15,8 @@ TARGETS_RELEASE= $(patsubst %,release-%, $(TARGETS))
 GOLINT=$(GOPATH)/bin/golint
 LINT_FLAGS=-min_confidence 0.9 -set_exit_status
 
+AUTOTEST_DIR = autotest
+
 # directories under gen targets which contains hand writen code
 EXCLUDED_CLEAN_DIRECTORIES = objectstorage/transfer*
 
@@ -24,7 +26,12 @@ build: lint $(TARGETS_BUILD)
 
 test: build $(TARGETS_TEST)
 
-test-integ: build $(TARGETS_INTEG_TEST)
+test-all: build build-autotest test test-integ
+
+test-integ: 
+	@if [ -d $(TARGETS_WITH_INTEG_TESTS) ]; then\
+		make build $(TARGETS_INTEG_TEST);\
+	fi
 
 lint: $(TARGETS_LINT)
 
@@ -77,3 +84,8 @@ gen-version:
 	go generate -x
 
 release: gen-version build pre-doc
+
+build-autotest:
+	@if [ -d $(AUTOTEST_DIR) ]; then\
+		(cd $(AUTOTEST_DIR) && gofmt -s -w . && go test -c);\
+	fi
