@@ -5,9 +5,7 @@ package transfer
 
 import (
 	"errors"
-	"math"
 	"net/http"
-	"time"
 
 	"github.com/oracle/oci-go-sdk/v46/common"
 	"github.com/oracle/oci-go-sdk/v46/objectstorage"
@@ -218,10 +216,9 @@ func getUploadManagerDefaultRetryPolicy() *common.RetryPolicy {
 		return !(r.Error == nil && 199 < r.Response.HTTPResponse().StatusCode && r.Response.HTTPResponse().StatusCode < 300)
 	}
 
-	exponentialBackoff := func(r common.OCIOperationResponse) time.Duration {
-		return time.Duration(math.Pow(float64(2), float64(r.AttemptNumber-1))) * time.Second
-	}
-	policy := common.NewRetryPolicy(attempts, retryOnAllNon200ResponseCodes, exponentialBackoff)
+	policy := common.NewRetryPolicyWithOptions(
+		common.WithMaximumNumberAttempts(attempts),
+		common.WithShouldRetryOperation(retryOnAllNon200ResponseCodes))
 
 	return &policy
 }

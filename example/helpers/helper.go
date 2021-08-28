@@ -11,7 +11,6 @@ import (
 	"io"
 	"io/ioutil"
 	"log"
-	"math"
 	"math/rand"
 	"reflect"
 	"strings"
@@ -120,7 +119,9 @@ func GetRequestMetadataWithDefaultRetryPolicy() common.RequestMetadata {
 // input function (retry until the function return false)
 func GetRequestMetadataWithCustomizedRetryPolicy(fn func(r common.OCIOperationResponse) bool) common.RequestMetadata {
 	return common.RequestMetadata{
-		RetryPolicy: getExponentialBackoffRetryPolicy(uint(20), fn),
+		// since the goal here is to return until the function returns false, we should not be handling
+		// eventual consistency in a special way, therefore setting handleEventualConsistency to false
+		RetryPolicy: getExponentialBackoffRetryPolicy(uint(20), fn, false),
 	}
 }
 
@@ -132,15 +133,16 @@ func getDefaultRetryPolicy() *common.RetryPolicy {
 	retryOnAllNon200ResponseCodes := func(r common.OCIOperationResponse) bool {
 		return !(r.Error == nil && 199 < r.Response.HTTPResponse().StatusCode && r.Response.HTTPResponse().StatusCode < 300)
 	}
-	return getExponentialBackoffRetryPolicy(attempts, retryOnAllNon200ResponseCodes)
+	// since we are handling ALL non-2xx error codes, we can set handleEventualConsistency to false
+	return getExponentialBackoffRetryPolicy(attempts, retryOnAllNon200ResponseCodes, false)
 }
 
-func getExponentialBackoffRetryPolicy(n uint, fn func(r common.OCIOperationResponse) bool) *common.RetryPolicy {
-	// the duration between each retry operation, you might want to waite longer each time the retry fails
-	exponentialBackoff := func(r common.OCIOperationResponse) time.Duration {
-		return time.Duration(math.Pow(float64(2), float64(r.AttemptNumber-1))) * time.Second
-	}
-	policy := common.NewRetryPolicy(n, fn, exponentialBackoff)
+func getExponentialBackoffRetryPolicy(n uint, fn func(r common.OCIOperationResponse) bool, handleEventualConsistency bool) *common.RetryPolicy {
+	policy := common.NewRetryPolicyWithOptions(
+		// only base off DefaultRetryPolicyWithoutEventualConsistency() if we're not handling eventual consistency
+		common.WithConditionalOption(!handleEventualConsistency, common.ReplaceWithValuesFromRetryPolicy(common.DefaultRetryPolicyWithoutEventualConsistency())),
+		common.WithMaximumNumberAttempts(n),
+		common.WithShouldRetryOperation(fn))
 	return &policy
 }
 

@@ -288,7 +288,6 @@ func getRetryPolicy() common.RetryPolicy {
 	}
 
 	return common.NewRetryPolicy(attempts, shouldRetry, nextDuration)
-
 }
 
 func usage() {
