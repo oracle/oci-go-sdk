@@ -18,11 +18,9 @@ import (
 	"github.com/oracle/oci-go-sdk/v46/common"
 	"github.com/oracle/oci-go-sdk/v46/objectstorage"
 	"io"
-	"math"
 	"net/http"
 	"os"
 	"strings"
-	"time"
 )
 
 // UploadManager is the interface that groups the upload methods
@@ -170,10 +168,12 @@ func getUploadManagerRetryPolicy() *common.RetryPolicy {
 		return !(r.Error == nil && 199 < r.Response.HTTPResponse().StatusCode && r.Response.HTTPResponse().StatusCode < 300)
 	}
 
-	exponentialBackoff := func(r common.OCIOperationResponse) time.Duration {
-		return time.Duration(math.Pow(float64(2), float64(r.AttemptNumber-1))) * time.Second
-	}
-	policy := common.NewRetryPolicy(attempts, retryOnAllNon200ResponseCodes, exponentialBackoff)
+	policy := common.NewRetryPolicyWithOptions(
+		// since this retries on ANY non-2xx response, we don't need special handling for eventual consistency
+		common.ReplaceWithValuesFromRetryPolicy(common.DefaultRetryPolicyWithoutEventualConsistency()),
+		common.WithMaximumNumberAttempts(attempts),
+		common.WithShouldRetryOperation(retryOnAllNon200ResponseCodes),
+	)
 
 	return &policy
 }

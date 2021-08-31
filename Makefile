@@ -10,6 +10,7 @@ TARGETS_BUILD = $(patsubst %,build-%, $(TARGETS))
 TARGETS_CLEAN = $(patsubst %,clean-%, $(GEN_TARGETS))
 TARGETS_LINT = $(patsubst %,lint-%, $(TARGETS))
 TARGETS_TEST = $(patsubst %,test-%, $(TARGETS_WITH_TESTS))
+TARGETS_TESTFILTERED = $(patsubst %,testfiltered-%, $(TARGETS_WITH_TESTS))
 TARGETS_INTEG_TEST = $(patsubst %,test-%, $(TARGETS_WITH_INTEG_TESTS))
 TARGETS_RELEASE= $(patsubst %,release-%, $(TARGETS))
 GOLINT=$(GOPATH)/bin/golint
@@ -58,6 +59,9 @@ $(TARGETS_BUILD): build-%:%
 
 $(TARGETS_TEST): test-%:%
 	@(cd $< && go test -v)
+
+$(TARGETS_TESTFILTERED): testfiltered-%:%
+	@(cd $< && go test -v -run $(TEST_NAME))
 
 $(TARGETS_INTEG_TEST): test-%:%
 	@(cd $< && go test -v)
