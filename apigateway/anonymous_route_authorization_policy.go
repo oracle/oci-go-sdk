@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // AnonymousRouteAuthorizationPolicy For a type of ANONYMOUS, an authenticated API must have the "isAnonymousAccessAllowed" property set to "true"

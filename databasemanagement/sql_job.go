@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // SqlJob The details of the SQL job.
@@ -50,6 +50,8 @@ type SqlJob struct {
 	Timeout *string `mandatory:"false" json:"timeout"`
 
 	ResultLocation JobExecutionResultLocation `mandatory:"false" json:"resultLocation"`
+
+	ScheduleDetails *JobScheduleDetails `mandatory:"false" json:"scheduleDetails"`
 
 	// The error message that is returned if the job submission fails. Null is returned in all other scenarios.
 	SubmissionErrorMessage *string `mandatory:"false" json:"submissionErrorMessage"`
@@ -140,6 +142,11 @@ func (m SqlJob) GetResultLocation() JobExecutionResultLocation {
 	return m.ResultLocation
 }
 
+//GetScheduleDetails returns ScheduleDetails
+func (m SqlJob) GetScheduleDetails() *JobScheduleDetails {
+	return m.ScheduleDetails
+}
+
 //GetSubmissionErrorMessage returns SubmissionErrorMessage
 func (m SqlJob) GetSubmissionErrorMessage() *string {
 	return m.SubmissionErrorMessage
@@ -183,6 +190,7 @@ func (m *SqlJob) UnmarshalJSON(data []byte) (e error) {
 		DatabaseSubType         DatabaseSubTypeEnum        `json:"databaseSubType"`
 		Timeout                 *string                    `json:"timeout"`
 		ResultLocation          jobexecutionresultlocation `json:"resultLocation"`
+		ScheduleDetails         *JobScheduleDetails        `json:"scheduleDetails"`
 		SubmissionErrorMessage  *string                    `json:"submissionErrorMessage"`
 		SqlType                 SqlJobSqlTypeEnum          `json:"sqlType"`
 		SqlText                 *string                    `json:"sqlText"`
@@ -227,6 +235,8 @@ func (m *SqlJob) UnmarshalJSON(data []byte) (e error) {
 	} else {
 		m.ResultLocation = nil
 	}
+
+	m.ScheduleDetails = model.ScheduleDetails
 
 	m.SubmissionErrorMessage = model.SubmissionErrorMessage
 

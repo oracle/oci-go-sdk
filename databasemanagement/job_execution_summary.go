@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // JobExecutionSummary A summary of a job execution on a Managed Database.
@@ -47,6 +47,18 @@ type JobExecutionSummary struct {
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the Managed Database Group where the parent job has to be executed.
 	ManagedDatabaseGroupId *string `mandatory:"false" json:"managedDatabaseGroupId"`
+
+	// The type of Oracle Database installation.
+	DatabaseType DatabaseTypeEnum `mandatory:"false" json:"databaseType,omitempty"`
+
+	// The subtype of the Oracle Database. Indicates whether the database is a Container Database, Pluggable Database, or a Non-container Database.
+	DatabaseSubType DatabaseSubTypeEnum `mandatory:"false" json:"databaseSubType,omitempty"`
+
+	// A list of the supported infrastructure that can be used to deploy the database.
+	DeploymentType DeploymentTypeEnum `mandatory:"false" json:"deploymentType,omitempty"`
+
+	// Indicates whether the Oracle Database is part of a cluster.
+	IsCluster *bool `mandatory:"false" json:"isCluster"`
 
 	// The date and time when the job execution was completed.
 	TimeCompleted *common.SDKTime `mandatory:"false" json:"timeCompleted"`

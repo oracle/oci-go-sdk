@@ -5,7 +5,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 	"net/http"
 )
 
@@ -71,6 +71,12 @@ type ChangeManagementSavedSearchesCompartmentResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
+
+	// The ManagementSavedSearch instance
+	ManagementSavedSearch `presentIn:"body"`
+
+	// For optimistic concurrency control. See `if-match`.
+	Etag *string `presentIn:"header" name:"etag"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.

@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // AnyOfRouteAuthorizationPolicy If authentication has been performed, validate whether the request scope (if any) applies to this route.

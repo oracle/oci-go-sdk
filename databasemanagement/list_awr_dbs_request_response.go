@@ -5,7 +5,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 	"net/http"
 )
 
@@ -38,7 +38,7 @@ type ListAwrDbsRequest struct {
 	// The option to sort the AWR summary data.
 	SortBy ListAwrDbsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// The option to sort information in ascending (‘ASC’) or descending (‘DESC’) order. Descending order is the the default order.
+	// The option to sort information in ascending (‘ASC’) or descending (‘DESC’) order. Descending order is the default order.
 	SortOrder ListAwrDbsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// The client request ID for tracing.

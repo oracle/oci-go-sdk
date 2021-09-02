@@ -10,7 +10,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // RecommendationStrategyCollection A list of strategies that match filter criteria, if any. Results contain `RecommendationStrategySummary` objects.

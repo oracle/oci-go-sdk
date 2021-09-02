@@ -11,7 +11,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // ManagementDashboardExportDetails Array of dashboards to export.  Response from export must be directly acceptable to import (compartmentIds may have to be changed).

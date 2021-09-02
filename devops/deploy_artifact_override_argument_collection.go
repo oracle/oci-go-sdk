@@ -10,7 +10,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // DeployArtifactOverrideArgumentCollection Specifies the list of artifact override arguments at the time of deployment.

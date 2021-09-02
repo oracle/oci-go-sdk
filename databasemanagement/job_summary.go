@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // JobSummary A summary of the job.
@@ -53,6 +53,8 @@ type JobSummary struct {
 
 	// The subtype of the Oracle Database where the job has to be executed. Only applicable when managedDatabaseGroupId is provided.
 	DatabaseSubType DatabaseSubTypeEnum `mandatory:"false" json:"databaseSubType,omitempty"`
+
+	ScheduleDetails *JobScheduleDetails `mandatory:"false" json:"scheduleDetails"`
 
 	// The job timeout duration, which is expressed like "1h 10m 15s".
 	Timeout *string `mandatory:"false" json:"timeout"`

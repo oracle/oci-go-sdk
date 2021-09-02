@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // TopologyAssociatedWithEntityRelationship Defines the `associatedWith` relationship between virtual network topology entities. An `AssociatedWith` relationship

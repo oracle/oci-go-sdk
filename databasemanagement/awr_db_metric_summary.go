@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // AwrDbMetricSummary The summary of the AWR metric data for a particular metric at a specific time.
@@ -30,7 +30,7 @@ type AwrDbMetricSummary struct {
 	// The minimum value of the sampling period.
 	MinValue *float64 `mandatory:"false" json:"minValue"`
 
-	// The maximum value of the sampling period.v
+	// The maximum value of the sampling period.
 	MaxValue *float64 `mandatory:"false" json:"maxValue"`
 }
 

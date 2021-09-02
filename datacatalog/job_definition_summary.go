@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // JobDefinitionSummary A list of job definition resources. Job definitions define the harvest scope and includes the list of objects
