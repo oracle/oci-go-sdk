@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // FolderTagCollection Results of a folders tag listing. Folder tags allow association of folder objects to business terms.

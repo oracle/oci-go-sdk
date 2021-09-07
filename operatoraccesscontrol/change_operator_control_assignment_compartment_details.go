@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // ChangeOperatorControlAssignmentCompartmentDetails Details of the new compartment to contain the operator control assignment.

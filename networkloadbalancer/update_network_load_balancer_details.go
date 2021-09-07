@@ -10,7 +10,7 @@
 package networkloadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // UpdateNetworkLoadBalancerDetails Configuration details to update a network load balancer.

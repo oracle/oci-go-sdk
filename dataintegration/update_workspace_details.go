@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // UpdateWorkspaceDetails The information to be updated, the private network can be enabled and VCN and subnet set only when initially it is has been created with it off.

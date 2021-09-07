@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // DynamicProxyField The type representing the dynamic proxy field concept. Dynamic proxy fields have a reference to another field.

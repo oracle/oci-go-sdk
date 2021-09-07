@@ -13,8 +13,8 @@ package genericartifactscontent
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v46/common"
-	"github.com/oracle/oci-go-sdk/v46/common/auth"
+	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v47/common/auth"
 	"net/http"
 )
 

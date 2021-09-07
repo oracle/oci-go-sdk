@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // CreateInstanceConfigurationFromInstanceDetails Details for creating an instance configuration using an existing instance as a template.

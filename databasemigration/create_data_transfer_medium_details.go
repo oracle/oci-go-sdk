@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // CreateDataTransferMediumDetails Data Transfer Medium details for the Migration. If not specified, it will default to Database Link. Only one type

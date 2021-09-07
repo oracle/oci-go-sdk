@@ -19,8 +19,8 @@ them out to stdout
 		"context"
 		"fmt"
 
-		"github.com/oracle/oci-go-sdk/v46/common"
-		"github.com/oracle/oci-go-sdk/v46/identity"
+		"github.com/oracle/oci-go-sdk/v47/common"
+		"github.com/oracle/oci-go-sdk/v47/identity"
 	)
 
 	func main() {
@@ -276,6 +276,68 @@ You might also want to retry the same operation again if there's network issue e
 This can be accomplished by using the RequestMetadata.RetryPolicy. You can find the examples here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_retry_test.go
 
 If you are trying to make a PUT/POST API call with binary request body, please make sure the binary request body is resettable, which means the request body should inherit Seeker interface.
+
+Default Retry Policy
+
+The OCI Go SDK defines a default retry policy that retries on the errors suitable for retries (see https://docs.oracle.com/en-us/iaas/Content/API/References/apierrors.htm),
+for a recommended period of time (up to 7 attempts spread out over at most approximately 1.5 minutes). This default retry policy can be created using:
+
+	// use SDK's default retry policy
+	defaultRetryPolicy := common.DefaultRetryPolicy()
+
+You can set this retry policy for a single request:
+
+	request.RequestMetadata = common.RequestMetadata{
+		RetryPolicy: &defaultRetryPolicy,
+	}
+
+or for all requests made by a client:
+
+	client.SetCustomClientConfiguration(common.CustomClientConfiguration{
+		RetryPolicy: &defaultRetryPolicy,
+	})
+
+Eventual Consistency
+
+Some resources may have to be replicated across regions and are only eventually consistent. That means the request to create, update, or delete the resource succeeded,
+but the resource is not available everywhere immediately. Creating, updating, or deleting any resource in the Identity service is affected by eventual consistency, and
+doing so may cause other operations in other services to fail until the Identity resource has been replicated.
+
+For example, the request to CreateTag in the Identity service in the home region succeeds, but immediately using that created tag in another region in a request to
+LaunchInstance in the Compute service may fail.
+
+If you are creating, updating, or deleting resources in the Identity service, we recommend using an eventually consistent retry policy for any service you access. The
+default retry policy already deals with eventual consistency. Example:
+
+	// use SDK's default retry policy (which also deals with eventual consistency)
+	defaultRetryPolicy := common.DefaultRetryPolicy()
+
+This retry policy will use a different strategy if an eventually consistent change was made in the recent past (called the "eventually consistent window", currently
+defined to be 4 minutes after the eventually consistent change). This special retry policy for eventual consistency will:
+
+1. make up to 9 attempts (including the initial attempt); if an attempt is successful, no more attempts will be made
+
+2. retry at most until (a) approximately the end of the eventually consistent window or (b) the end of the default retry period of about 1.5 minutes, whichever is
+farther in the future; if an attempt is successful, no more attempts will be made, and the OCI Go SDK will not wait any longer
+
+3. retry on the error codes 400-RelatedResourceNotAuthorizedOrNotFound, 404-NotAuthorizedOrNotFound, and 409-NotAuthorizedOrResourceAlreadyExists, for which the
+default retry policy does not retry, in addition to the errors the default retry policy retries on (see https://docs.oracle.com/en-us/iaas/Content/API/References/apierrors.htm)
+
+If there were no eventually consistent actions within the recent past, then this special retry strategy is not used.
+
+If you want a retry policy that does not handle eventual consistency in a special way, for example because you retry on all error responses, you can use
+DefaultRetryPolicyWithoutEventualConsistency or NewRetryPolicyWithOptions with the common.ReplaceWithValuesFromRetryPolicy(common.DefaultRetryPolicyWithoutEventualConsistency()) option:
+
+	// use SDK's default retry policy, but without eventual consistency
+	noEcRetryPolicy := common.DefaultRetryPolicyWithoutEventualConsistency()
+
+	// or
+	noEcRetryPolicy := common.NewRetryPolicyWithOptions(
+		common.ReplaceWithValuesFromRetryPolicy(common.DefaultRetryPolicyWithoutEventualConsistency()),
+		// possibly other options...
+	)
+
+The NewRetryPolicy function also creates a retry policy without eventual consistency.
 
 Using the SDK with a Proxy Server
 

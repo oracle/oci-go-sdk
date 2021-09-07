@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // DatabaseSoftwareImage Database software images are created by specifying a patch set, one-off patches and patches for the database home (listed by `ls inventory`).

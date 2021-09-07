@@ -5,7 +5,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 	"net/http"
 )
 
@@ -21,7 +21,7 @@ type GetAwrDbReportRequest struct {
 
 	// The parameter to filter the database by internal ID.
 	// Note that the internal ID of the database can be retrieved from the following endpoint:
-	// /managedDatabases/{managedDatabaseId}/awrDbs:
+	// /managedDatabases/{managedDatabaseId}/awrDbs
 	AwrDbId *string `mandatory:"true" contributesTo:"path" name:"awrDbId"`
 
 	// The optional multiple value query parameter to filter the database instance numbers.

@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // PrivateEndpoint The details required to establish a connection to the database using a private endpoint.

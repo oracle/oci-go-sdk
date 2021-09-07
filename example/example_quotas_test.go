@@ -21,8 +21,8 @@ package example
 import (
 	"context"                                 // To supply to the Quotas client while making requests
 	"fmt"                                     // To print to the console
-	"github.com/oracle/oci-go-sdk/v46/common" // For common OCI types
-	"github.com/oracle/oci-go-sdk/v46/limits" // For types and methods corresponding to Limits
+	"github.com/oracle/oci-go-sdk/v47/common" // For common OCI types
+	"github.com/oracle/oci-go-sdk/v47/limits" // For types and methods corresponding to Limits
 )
 
 // Creates a new Quota with the details given in createQuotaDetails

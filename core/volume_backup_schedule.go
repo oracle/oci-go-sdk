@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // VolumeBackupSchedule Defines the backup frequency and retention period for a volume backup policy. For more information,

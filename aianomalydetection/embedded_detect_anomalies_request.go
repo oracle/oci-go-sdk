@@ -13,7 +13,7 @@ package aianomalydetection
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // EmbeddedDetectAnomaliesRequest The request body when the user selects to provide byte data in detect call which is Base64 encoded.

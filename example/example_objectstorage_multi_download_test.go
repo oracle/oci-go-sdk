@@ -13,9 +13,9 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/oracle/oci-go-sdk/v46/common"
-	"github.com/oracle/oci-go-sdk/v46/example/helpers"
-	"github.com/oracle/oci-go-sdk/v46/objectstorage"
+	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v47/example/helpers"
+	"github.com/oracle/oci-go-sdk/v47/objectstorage"
 )
 
 // ExampleMultipartDownload shows how to use get object API to perform multi-part download operation

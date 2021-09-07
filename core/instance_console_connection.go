@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // InstanceConsoleConnection The `InstanceConsoleConnection` API provides you with console access to Compute instances,

@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // ShapeMaxVnicAttachmentOptions For a flexible shape, the number of VNIC attachments that are available for instances that use this shape.

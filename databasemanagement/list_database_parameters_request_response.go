@@ -5,7 +5,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 	"net/http"
 )
 
@@ -38,7 +38,7 @@ type ListDatabaseParametersRequest struct {
 	// default sort order for `NAME` is ascending and it is case-sensitive.
 	SortBy ListDatabaseParametersSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// The option to sort information in ascending (‘ASC’) or descending (‘DESC’) order. Ascending order is the the default order.
+	// The option to sort information in ascending (‘ASC’) or descending (‘DESC’) order. Ascending order is the default order.
 	SortOrder ListDatabaseParametersSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but

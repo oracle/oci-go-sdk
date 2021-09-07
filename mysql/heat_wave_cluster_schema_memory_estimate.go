@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // HeatWaveClusterSchemaMemoryEstimate Schema with estimated memory footprints for each MySQL user table

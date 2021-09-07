@@ -10,7 +10,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // Project DevOps project groups resources needed to implement the CI/CD workload. DevOps resources include artifacts, pipelines, and environments.

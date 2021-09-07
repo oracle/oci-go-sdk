@@ -12,7 +12,7 @@
 package audit
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 )
 
 // AuditEvent All the attributes of an audit event. For more information, see Viewing Audit Log Events (https://docs.cloud.oracle.com/iaas/Content/Audit/Tasks/viewinglogevents.htm).

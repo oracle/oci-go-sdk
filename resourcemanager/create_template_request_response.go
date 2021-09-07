@@ -5,7 +5,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v46/common"
+	"github.com/oracle/oci-go-sdk/v47/common"
 	"net/http"
 )
 
@@ -29,9 +29,6 @@ type CreateTemplateRequest struct {
 	// if a resource has been deleted and purged from the system, then a retry of the original
 	// creation request may be rejected.
 	OpcRetryToken *string `mandatory:"false" contributesTo:"header" name:"opc-retry-token"`
-
-	// This is to enable limit/quota support through splat
-	OciSplatGeneratedOcids *string `mandatory:"false" contributesTo:"header" name:"oci-splat-generated-ocids"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
