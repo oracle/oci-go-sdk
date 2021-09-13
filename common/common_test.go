@@ -4,14 +4,34 @@
 package common
 
 import (
+	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
+
+func TestAllRegions(t *testing.T) {
+	fileName := "regions.json"
+	content, err := ioutil.ReadFile(fileName)
+	assert.True(t, err == nil, "Failed to read regions.json.")
+	var jsonArr []map[string]string
+	err = json.Unmarshal(content, &jsonArr)
+	assert.True(t, err == nil, "Failed to unmarshal contents.")
+
+	for _, jsonItem := range jsonArr {
+		potentialRegion := Region(jsonItem["regionIdentifier"])
+		_, ok := regionRealm[potentialRegion]
+		assert.True(t, ok, fmt.Sprintf("Region %s not found.", jsonItem["regionIdentifier"]))
+		_, ok = realm[strings.ToLower(jsonItem["realmKey"])]
+		assert.True(t, ok, fmt.Sprintf("Realm %s not found.", jsonItem["realmKey"]))
+	}
+}
 
 func TestEndpoint(t *testing.T) {
 	// OC1
