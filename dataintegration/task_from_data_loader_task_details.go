@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // TaskFromDataLoaderTaskDetails The information about a data flow task.

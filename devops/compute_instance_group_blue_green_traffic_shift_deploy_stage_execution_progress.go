@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // ComputeInstanceGroupBlueGreenTrafficShiftDeployStageExecutionProgress Specifies the instance group blue-green deployment load balancer traffic shift stage.

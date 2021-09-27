@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // ChangeDataSafePrivateEndpointCompartmentDetails The details used to change the compartment of a Data Safe private endpoint.

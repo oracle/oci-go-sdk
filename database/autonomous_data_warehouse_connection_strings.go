@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // AutonomousDataWarehouseConnectionStrings **Deprecated.** For information about connection strings to connect to an Oracle Autonomous Data Warehouse, see AutonomousDatabaseConnectionStrings.

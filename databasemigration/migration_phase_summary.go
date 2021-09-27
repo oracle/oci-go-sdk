@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// MigrationPhaseSummary Migration Phase Summary of details.
+// MigrationPhaseSummary Note: Deprecated. Use the new resource model APIs instead.
+// Migration Phase Summary of details.
 type MigrationPhaseSummary struct {
 
 	// ODMS Job phase name

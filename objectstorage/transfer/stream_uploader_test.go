@@ -10,8 +10,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/oracle/oci-go-sdk/v47/common"
-	"github.com/oracle/oci-go-sdk/v47/example/helpers"
+	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v48/example/helpers"
 )
 
 func TestUploadStreamMultiparts(t *testing.T) {

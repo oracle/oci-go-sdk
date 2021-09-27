@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // PrivateIp A *private IP* is a conceptual term that refers to an IPv4 private IP address and related properties.

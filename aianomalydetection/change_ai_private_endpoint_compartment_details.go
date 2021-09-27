@@ -12,7 +12,7 @@
 package aianomalydetection
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // ChangeAiPrivateEndpointCompartmentDetails Information about the change compartment for the  private endpoint resource.

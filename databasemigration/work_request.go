@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// WorkRequest An asynchronous work request.
+// WorkRequest Note: Deprecated. Use the new resource model APIs instead.
+// An asynchronous work request.
 type WorkRequest struct {
 
 	// Type of the work request

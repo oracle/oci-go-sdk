@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // RemotePeeringConnectionDrgAttachmentNetworkDetails Specifies the DRG attachment to another DRG.

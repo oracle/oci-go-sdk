@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// AgentCollection Results of an Agent search. Contains AgentSummary items.
+// AgentCollection Note: Deprecated. Use the new resource model APIs instead.
+// Results of an Agent search. Contains AgentSummary items.
 type AgentCollection struct {
 
 	// Items in collection.

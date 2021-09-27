@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // Gateway A gateway is a virtual network appliance in a regional subnet. A gateway routes inbound traffic to back-end services including public, private, and partner HTTP APIs, as well as Oracle Functions. Avoid entering confidential information. For more information, see
@@ -40,6 +40,9 @@ type Gateway struct {
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the subnet in which
 	// related resources are created.
 	SubnetId *string `mandatory:"false" json:"subnetId"`
+
+	// An array of Network Security Groups OCIDs associated with this API Gateway.
+	NetworkSecurityGroupIds []string `mandatory:"false" json:"networkSecurityGroupIds"`
 
 	// The time this resource was created. An RFC3339 formatted datetime string.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
@@ -86,21 +89,22 @@ func (m Gateway) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *Gateway) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		DisplayName          *string                           `json:"displayName"`
-		SubnetId             *string                           `json:"subnetId"`
-		TimeCreated          *common.SDKTime                   `json:"timeCreated"`
-		TimeUpdated          *common.SDKTime                   `json:"timeUpdated"`
-		LifecycleState       GatewayLifecycleStateEnum         `json:"lifecycleState"`
-		LifecycleDetails     *string                           `json:"lifecycleDetails"`
-		Hostname             *string                           `json:"hostname"`
-		CertificateId        *string                           `json:"certificateId"`
-		IpAddresses          []IpAddress                       `json:"ipAddresses"`
-		ResponseCacheDetails responsecachedetails              `json:"responseCacheDetails"`
-		FreeformTags         map[string]string                 `json:"freeformTags"`
-		DefinedTags          map[string]map[string]interface{} `json:"definedTags"`
-		Id                   *string                           `json:"id"`
-		CompartmentId        *string                           `json:"compartmentId"`
-		EndpointType         GatewayEndpointTypeEnum           `json:"endpointType"`
+		DisplayName             *string                           `json:"displayName"`
+		SubnetId                *string                           `json:"subnetId"`
+		NetworkSecurityGroupIds []string                          `json:"networkSecurityGroupIds"`
+		TimeCreated             *common.SDKTime                   `json:"timeCreated"`
+		TimeUpdated             *common.SDKTime                   `json:"timeUpdated"`
+		LifecycleState          GatewayLifecycleStateEnum         `json:"lifecycleState"`
+		LifecycleDetails        *string                           `json:"lifecycleDetails"`
+		Hostname                *string                           `json:"hostname"`
+		CertificateId           *string                           `json:"certificateId"`
+		IpAddresses             []IpAddress                       `json:"ipAddresses"`
+		ResponseCacheDetails    responsecachedetails              `json:"responseCacheDetails"`
+		FreeformTags            map[string]string                 `json:"freeformTags"`
+		DefinedTags             map[string]map[string]interface{} `json:"definedTags"`
+		Id                      *string                           `json:"id"`
+		CompartmentId           *string                           `json:"compartmentId"`
+		EndpointType            GatewayEndpointTypeEnum           `json:"endpointType"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -111,6 +115,11 @@ func (m *Gateway) UnmarshalJSON(data []byte) (e error) {
 	m.DisplayName = model.DisplayName
 
 	m.SubnetId = model.SubnetId
+
+	m.NetworkSecurityGroupIds = make([]string, len(model.NetworkSecurityGroupIds))
+	for i, n := range model.NetworkSecurityGroupIds {
+		m.NetworkSecurityGroupIds[i] = n
+	}
 
 	m.TimeCreated = model.TimeCreated
 

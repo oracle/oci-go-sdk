@@ -10,7 +10,7 @@
 package networkloadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // NetworkLoadBalancerCollection Wrapper object for an array of NetworkLoadBalancerSummary objects.

@@ -12,7 +12,7 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // SseCustomerKeyDetails Specifies the details of the customer-provided encryption key (SSE-C) associated with an object.

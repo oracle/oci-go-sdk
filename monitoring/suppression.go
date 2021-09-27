@@ -12,12 +12,11 @@
 package monitoring
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // Suppression The configuration details for suppressing an alarm.
 // For information about alarms, see Alarms Overview (https://docs.cloud.oracle.com/iaas/Content/Monitoring/Concepts/monitoringoverview.htm#AlarmsOverview).
-// **Warning:** Oracle recommends that you avoid using any confidential information when you supply string values using the API.
 type Suppression struct {
 
 	// The start date and time for the suppression to take place, inclusive. Format defined by RFC3339.

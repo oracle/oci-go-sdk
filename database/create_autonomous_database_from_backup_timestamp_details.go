@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // CreateAutonomousDatabaseFromBackupTimestampDetails Details to create a point-in-time clone of an Oracle Autonomous Database by specifying a timestamp. Point-in-time clones use backups as the source of the data for the clone.
@@ -146,6 +146,9 @@ type CreateAutonomousDatabaseFromBackupTimestampDetails struct {
 
 	// Customer Contacts.
 	CustomerContacts []CustomerContact `mandatory:"false" json:"customerContacts"`
+
+	// Indicates whether the Autonomous Database requires mTLS connections.
+	IsMtlsConnectionRequired *bool `mandatory:"false" json:"isMtlsConnectionRequired"`
 
 	// The Autonomous Database clone type.
 	CloneType CreateAutonomousDatabaseFromBackupTimestampDetailsCloneTypeEnum `mandatory:"true" json:"cloneType"`
@@ -311,6 +314,11 @@ func (m CreateAutonomousDatabaseFromBackupTimestampDetails) GetDbVersion() *stri
 //GetCustomerContacts returns CustomerContacts
 func (m CreateAutonomousDatabaseFromBackupTimestampDetails) GetCustomerContacts() []CustomerContact {
 	return m.CustomerContacts
+}
+
+//GetIsMtlsConnectionRequired returns IsMtlsConnectionRequired
+func (m CreateAutonomousDatabaseFromBackupTimestampDetails) GetIsMtlsConnectionRequired() *bool {
+	return m.IsMtlsConnectionRequired
 }
 
 //GetAutonomousMaintenanceScheduleType returns AutonomousMaintenanceScheduleType

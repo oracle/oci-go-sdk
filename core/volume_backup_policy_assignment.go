@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // VolumeBackupPolicyAssignment Specifies the volume that the volume backup policy is assigned to.

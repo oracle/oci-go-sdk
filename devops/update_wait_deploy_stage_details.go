@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // UpdateWaitDeployStageDetails Specifies the Wait stage. User can specify a criteria for wait time or give an absolute duration.

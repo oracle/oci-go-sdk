@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// UpdateExtract Parameters for Extract processes.
+// UpdateExtract Note: Deprecated. Use the new resource model APIs instead.
+// Parameters for Extract processes.
 // If an empty object is specified, the stored Extract details will be removed.
 type UpdateExtract struct {
 

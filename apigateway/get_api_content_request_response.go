@@ -5,7 +5,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 	"io"
 	"net/http"
 )
@@ -29,6 +29,11 @@ type GetApiContentRequest struct {
 	// The resource will be updated or deleted only if the etag you
 	// provide matches the resource's current etag value.
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`
+
+	// The Range HTTP request header indicates the part of a document that the
+	// server should return. RFC 7233 (https://tools.ietf.org/html/rfc7233#section-3.1).
+	// Note that only a single range of bytes is supported.
+	Range *string `mandatory:"false" contributesTo:"header" name:"range"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.

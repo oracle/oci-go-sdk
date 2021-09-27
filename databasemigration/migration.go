@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// Migration Migration resource
+// Migration Note: Deprecated. Use the new resource model APIs instead.
+// Migration resource
 type Migration struct {
 
 	// The OCID of the resource

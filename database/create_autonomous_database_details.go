@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // CreateAutonomousDatabaseDetails Details to create an Oracle Autonomous Database.
@@ -140,6 +140,9 @@ type CreateAutonomousDatabaseDetails struct {
 
 	// Customer Contacts.
 	CustomerContacts []CustomerContact `mandatory:"false" json:"customerContacts"`
+
+	// Indicates whether the Autonomous Database requires mTLS connections.
+	IsMtlsConnectionRequired *bool `mandatory:"false" json:"isMtlsConnectionRequired"`
 
 	// The Autonomous Database workload type. The following values are valid:
 	// - OLTP - indicates an Autonomous Transaction Processing database
@@ -302,6 +305,11 @@ func (m CreateAutonomousDatabaseDetails) GetDbVersion() *string {
 //GetCustomerContacts returns CustomerContacts
 func (m CreateAutonomousDatabaseDetails) GetCustomerContacts() []CustomerContact {
 	return m.CustomerContacts
+}
+
+//GetIsMtlsConnectionRequired returns IsMtlsConnectionRequired
+func (m CreateAutonomousDatabaseDetails) GetIsMtlsConnectionRequired() *bool {
+	return m.IsMtlsConnectionRequired
 }
 
 //GetAutonomousMaintenanceScheduleType returns AutonomousMaintenanceScheduleType

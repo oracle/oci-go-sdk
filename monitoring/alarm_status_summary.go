@@ -12,7 +12,7 @@
 package monitoring
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // AlarmStatusSummary A summary of properties for the specified alarm and its current evaluation status.
@@ -37,6 +37,7 @@ type AlarmStatusSummary struct {
 	Severity AlarmStatusSummarySeverityEnum `mandatory:"true" json:"severity"`
 
 	// Timestamp for the transition of the alarm state. For example, the time when the alarm transitioned from OK to Firing.
+	// Note: A three-minute lag for this value accounts for any late-arriving metrics.
 	// Example: `2019-02-01T01:02:29.600Z`
 	TimestampTriggered *common.SDKTime `mandatory:"true" json:"timestampTriggered"`
 

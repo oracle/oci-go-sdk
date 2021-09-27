@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // MeasuredBootEntry One Trusted Platform Module (TPM) Platform Configuration Register (PCR) entry. The entry might be measured during boot,

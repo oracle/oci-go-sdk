@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// CreateGoldenGateHub Details about Oracle GoldenGate Microservices. Required for online logical migration.
+// CreateGoldenGateHub Note: Deprecated. Use the new resource model APIs instead.
+// Details about Oracle GoldenGate Microservices. Required for online logical migration.
 type CreateGoldenGateHub struct {
 	RestAdminCredentials *CreateAdminCredentials `mandatory:"true" json:"restAdminCredentials"`
 

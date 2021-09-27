@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// MigrationPhaseCollection Results of a Migration Phase search. Contains a collection of valid ODMS Job Phases.
+// MigrationPhaseCollection Note: Deprecated. Use the new resource model APIs instead.
+// Results of a Migration Phase search. Contains a collection of valid ODMS Job Phases.
 type MigrationPhaseCollection struct {
 
 	// Items in collection.

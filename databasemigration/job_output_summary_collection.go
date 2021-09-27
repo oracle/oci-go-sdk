@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// JobOutputSummaryCollection Results of a Job output listing. Contains JobOutputSummary items.
+// JobOutputSummaryCollection Note: Deprecated. Use the new resource model APIs instead.
+// Results of a Job output listing. Contains JobOutputSummary items.
 type JobOutputSummaryCollection struct {
 
 	// Items in collection.

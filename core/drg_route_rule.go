@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // DrgRouteRule A DRG route rule is a mapping between a destination IP address range and a DRG attachment.

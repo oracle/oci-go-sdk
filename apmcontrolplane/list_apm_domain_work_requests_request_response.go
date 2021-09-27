@@ -5,7 +5,7 @@
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 	"net/http"
 )
 

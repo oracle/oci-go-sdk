@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// UpdateObjectStoreBucket OCI Object Storage bucket details.
+// UpdateObjectStoreBucket Note: Deprecated. Use the new resource model APIs instead.
+// OCI Object Storage bucket details.
 type UpdateObjectStoreBucket struct {
 
 	// Namespace name of the object store bucket.
