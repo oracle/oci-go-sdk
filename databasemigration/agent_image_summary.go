@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// AgentImageSummary Available ODMS Agent Images.
+// AgentImageSummary Note: Deprecated. Use the new resource model APIs instead.
+// Available ODMS Agent Images.
 type AgentImageSummary struct {
 
 	// ODMS Agent Image version.

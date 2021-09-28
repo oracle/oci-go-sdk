@@ -14,7 +14,7 @@ package applicationmigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // PcsDiscoveryDetails Credentials to access the Oracle Process Cloud Service application in the source environment. Application Migration connects to the

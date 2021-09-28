@@ -10,7 +10,7 @@
 package apmtraces
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // QueryResultRow An object that represents a single row of the query result.  It contains the queryResultRowData object that holds the actual data

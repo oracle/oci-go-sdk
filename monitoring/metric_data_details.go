@@ -12,7 +12,7 @@
 package monitoring
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // MetricDataDetails A metric object containing raw metric data points to be posted to the Monitoring service.
@@ -44,7 +44,7 @@ type MetricDataDetails struct {
 	// A list of metric values with timestamps. At least one data point is required per call.
 	Datapoints []Datapoint `mandatory:"true" json:"datapoints"`
 
-	// Resource group to assign to the metric. A resource group is a custom string that can be used as a filter. Only one resource group can be applied per metric.
+	// Resource group to assign to the metric. A resource group is a custom string that you can match when retrieving custom metrics. Only one resource group can be applied per metric.
 	// A valid resourceGroup value starts with an alphabetical character and includes only alphanumeric characters, periods (.), underscores (_), hyphens (-), and dollar signs ($).
 	// Avoid entering confidential information.
 	// Example: `frontend-fleet`

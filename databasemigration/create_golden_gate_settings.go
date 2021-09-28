@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// CreateGoldenGateSettings Optional settings for GoldenGate Microservices processes
+// CreateGoldenGateSettings Note: Deprecated. Use the new resource model APIs instead.
+// Optional settings for GoldenGate Microservices processes
 type CreateGoldenGateSettings struct {
 	Extract *CreateExtract `mandatory:"false" json:"extract"`
 

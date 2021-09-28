@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // SmtpCredential Simple Mail Transfer Protocol (SMTP) credentials are needed to send email through Email Delivery.

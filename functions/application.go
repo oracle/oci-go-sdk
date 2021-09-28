@@ -10,7 +10,7 @@
 package functions
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // Application An application contains functions and defined attributes shared between those functions, such as network configuration and configuration. Avoid entering confidential information.
@@ -36,6 +36,9 @@ type Application struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)s of the subnets in which to run functions in the application.
 	SubnetIds []string `mandatory:"false" json:"subnetIds"`
+
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)s of the Network Security Groups to add the application to.
+	NetworkSecurityGroupIds []string `mandatory:"false" json:"networkSecurityGroupIds"`
 
 	// A syslog URL to which to send all function logs. Supports tcp, udp, and tcp+tls.
 	// The syslog URL must be reachable from all of the subnets configured for the application.
@@ -63,6 +66,8 @@ type Application struct {
 	// timestamp format.
 	// Example: `2018-09-12T22:47:12.613Z`
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
+
+	ImagePolicyConfig *ImagePolicyConfig `mandatory:"false" json:"imagePolicyConfig"`
 }
 
 func (m Application) String() string {

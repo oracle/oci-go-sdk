@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// UpdateJobDetails Update Job Details
+// UpdateJobDetails Note: Deprecated. Use the new resource model APIs instead.
+// Update Job Details
 type UpdateJobDetails struct {
 
 	// Name of the job.

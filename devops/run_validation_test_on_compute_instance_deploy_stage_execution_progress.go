@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // RunValidationTestOnComputeInstanceDeployStageExecutionProgress Specifies run validation test on an compute instance stage specific execution details.

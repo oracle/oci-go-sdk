@@ -12,7 +12,7 @@
 package aianomalydetection
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // RowReductionDetails Information regarding how/what row reduction methods will be applied. If this property is not present or is null, then it means row reduction is not applied.

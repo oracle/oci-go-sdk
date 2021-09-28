@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // QueryParameterValidationRequestPolicy Validate the URL query parameters on the incoming API requests on a specific route.

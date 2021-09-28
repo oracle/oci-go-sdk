@@ -566,3 +566,29 @@ func TestSetRegionFromInstanceMetadataService(t *testing.T) {
 	ok = setRegionFromInstanceMetadataService(&expectedRegion)
 	assert.Equal(t, false, ok)
 }
+
+func TestGetRealmIDFromRegion(t *testing.T) {
+	// normal region:
+	region := Region("us-langley-1")
+	realmID, err := region.RealmID()
+	assert.NoError(t, err)
+	assert.Equal(t, "oc2", realmID)
+
+	// not existed region:
+	region = Region("us-whatever-1")
+	realmID, err = region.RealmID()
+	assert.Equal(t, "", realmID)
+	assert.Error(t, err)
+
+	// defined in env var region
+	regionMetadataEnvVar := `{"realmKey":"OC0","realmDomainComponent":"testRealm.com","regionKey":"RTK","regionIdentifier":"us-testregion-1"}`
+	os.Unsetenv("OCI_REGION_METADATA")
+	os.Setenv("OCI_REGION_METADATA", regionMetadataEnvVar)
+	defer os.Unsetenv("OCI_REGION_METADATA")
+
+	region = StringToRegion("rtk")
+	assert.Equal(t, Region("us-testregion-1"), region)
+	realmID, err = region.RealmID()
+	assert.NoError(t, err)
+	assert.Equal(t, "oc0", realmID)
+}

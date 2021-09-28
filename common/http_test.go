@@ -530,6 +530,12 @@ type rgn struct {
 	Name string `mandatory:"false" json:"name,omitempty"`
 }
 
+type UserAggregation struct {
+
+	// The array of user aggregation data.
+	Items []map[string]interface{} `mandatory:"true" json:"items"`
+}
+
 func TestUnmarshalResponse_SimpleBody(t *testing.T) {
 	sampleResponse := `{"key" : "RegionFRA","name" : "eu-frankfurt-1"}`
 	header := http.Header{}
@@ -562,6 +568,26 @@ func TestUnmarshalResponse_SimpleBodyList(t *testing.T) {
 	assert.NotEmpty(t, s.Items)
 	assert.Equal(t, "eu-frankfurt-1", s.Items[0].Name)
 	assert.Equal(t, "RegionIAD", s.Items[1].Key)
+}
+
+func TestUnmarshalResponse_ComplexBodyList(t *testing.T) {
+	sampleResponse := `[{"items":[{"count":6,"startTimestamp":"1631631511174","dimensions":{"targetId":"ocid1.datasafetargetdatabase.oc1.me-dubai-1.amaaaaaagioyniyarsla2fyw24ol5gkjyuc5wcmlcunl7gfytb34dxfixxha"}},{"grantCount":1936,"startTimestamp":1631631511174,"dimensions":{"targetId":"ocid1.datasafetargetdatabase.oc1.me-dubai-1.amaaaaaagioyniyarsla2fyw24ol5gkjyuc5wcmlcunl7gfytb34dxfixxha"}}]}]`
+	header := http.Header{}
+	opcID := "111"
+	header.Set("OpcrequestId", opcID)
+	s := struct {
+		Items []UserAggregation `presentIn:"body"`
+	}{}
+	r := http.Response{Header: header}
+	bodyBuffer := bytes.NewBufferString(sampleResponse)
+	r.Body = ioutil.NopCloser(bodyBuffer)
+	err := UnmarshalResponse(&r, &s)
+	assert.NoError(t, err)
+	assert.NotEmpty(t, s.Items)
+	assert.Equal(t, "1631631511174", s.Items[0].Items[0]["startTimestamp"])
+	aaa := s.Items[0].Items[1]["dimensions"].(map[string]interface{})
+	assert.Equal(t, "ocid1.datasafetargetdatabase.oc1.me-dubai-1.amaaaaaagioyniyarsla2fyw24ol5gkjyuc5wcmlcunl7gfytb34dxfixxha",
+		aaa["targetId"])
 }
 
 func TestUnmarshalResponse_SimpleBodyPtr(t *testing.T) {

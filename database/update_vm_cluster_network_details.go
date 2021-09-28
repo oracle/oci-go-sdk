@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // UpdateVmClusterNetworkDetails Details for an Exadata VM cluster network. Applies to Exadata Cloud@Customer instances only.

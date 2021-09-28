@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // GatewaySummary A summary of the gateway.
@@ -38,6 +38,9 @@ type GatewaySummary struct {
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the subnet in which
 	// related resources are created.
 	SubnetId *string `mandatory:"false" json:"subnetId"`
+
+	// An array of Network Security Groups OCIDs associated with this API Gateway.
+	NetworkSecurityGroupIds []string `mandatory:"false" json:"networkSecurityGroupIds"`
 
 	// The time this resource was created. An RFC3339 formatted datetime string.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`

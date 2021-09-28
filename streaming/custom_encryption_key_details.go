@@ -10,7 +10,7 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // CustomEncryptionKeyDetails The OCID of the custom encryption key to be used or deleted if currently being used.

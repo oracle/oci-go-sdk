@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // ApiSpecificationLoggingPolicies Policies controlling the pushing of logs to OCI Public Logging.

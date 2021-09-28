@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // OkeDeployStageExecutionProgress Specifies the execution details for a Container Engine for Kubernetes (OKE) cluster deployment stage.

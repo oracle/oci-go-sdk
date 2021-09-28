@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // FleetMetricSummaryDefinition A summary of the fleet metrics, which provides the metric aggregated value of the databases in the fleet.

@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// ConnectionSummary Database Connection Summary.
+// ConnectionSummary Note: Deprecated. Use the new resource model APIs instead.
+// Database Connection Summary.
 type ConnectionSummary struct {
 
 	// The OCID of the resource

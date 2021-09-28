@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // TopologyRoutesToEntityRelationship Defines the `routesTo` relationship between virtual network topology entities. A `RoutesTo` relationship

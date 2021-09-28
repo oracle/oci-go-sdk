@@ -13,7 +13,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // TerraformAdvancedOptions Specifies advanced options for Terraform commands. These options are not necessary for normal usage of Terraform.

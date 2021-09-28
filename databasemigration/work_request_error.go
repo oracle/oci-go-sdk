@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// WorkRequestError An error encountered while executing an operation that is tracked by a work request.
+// WorkRequestError Note: Deprecated. Use the new resource model APIs instead.
+// An error encountered while executing an operation that is tracked by a work request.
 type WorkRequestError struct {
 
 	// A machine-usable code for the error that occured. Error codes are listed on

@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // ChangeDbManagementPrivateEndpointCompartmentDetails The details used to change the compartment of a Database Management private endpoint.

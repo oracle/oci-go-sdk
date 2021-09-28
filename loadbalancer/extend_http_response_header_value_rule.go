@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
 // ExtendHttpResponseHeaderValueRule An object that represents the action of modifying a response header value. This rule applies only to HTTP listeners.

@@ -13,8 +13,8 @@ package osmanagement
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v47/common"
-	"github.com/oracle/oci-go-sdk/v47/common/auth"
+	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v48/common/auth"
 	"net/http"
 )
 

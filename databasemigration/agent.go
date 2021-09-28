@@ -10,10 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v47/common"
+	"github.com/oracle/oci-go-sdk/v48/common"
 )
 
-// Agent ODMS Agent Details
+// Agent Note: Deprecated. Use the new resource model APIs instead.
+// ODMS Agent Details
 type Agent struct {
 
 	// The OCID of the resource
