@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // Backup A full or incremental copy of a DB System which can be used to create a
@@ -43,7 +43,7 @@ type Backup struct {
 	// The type of backup.
 	BackupType BackupBackupTypeEnum `mandatory:"true" json:"backupType"`
 
-	// If the backup was created automatically, or by a manual request.
+	// Indicates how the backup was created: manually, automatic, or by an Operator.
 	CreationType BackupCreationTypeEnum `mandatory:"true" json:"creationType"`
 
 	// The OCID of the DB System the backup is associated with.
@@ -148,11 +148,13 @@ type BackupCreationTypeEnum string
 const (
 	BackupCreationTypeManual    BackupCreationTypeEnum = "MANUAL"
 	BackupCreationTypeAutomatic BackupCreationTypeEnum = "AUTOMATIC"
+	BackupCreationTypeOperator  BackupCreationTypeEnum = "OPERATOR"
 )
 
 var mappingBackupCreationType = map[string]BackupCreationTypeEnum{
 	"MANUAL":    BackupCreationTypeManual,
 	"AUTOMATIC": BackupCreationTypeAutomatic,
+	"OPERATOR":  BackupCreationTypeOperator,
 }
 
 // GetBackupCreationTypeEnumValues Enumerates the set of values for BackupCreationTypeEnum

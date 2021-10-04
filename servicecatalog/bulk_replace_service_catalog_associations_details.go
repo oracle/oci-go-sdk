@@ -10,7 +10,7 @@
 package servicecatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // BulkReplaceServiceCatalogAssociationsDetails The model to replace service catalog associations in bulk.

@@ -10,7 +10,7 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // ManagementAgentPluginAggregationDimensions The Aggregation of Management Agent Plugin Dimensions
@@ -18,6 +18,9 @@ type ManagementAgentPluginAggregationDimensions struct {
 
 	// Management Agent Plugin Name
 	PluginName *string `mandatory:"false" json:"pluginName"`
+
+	// Management Agent Plugin Display Name
+	PluginDisplayName *string `mandatory:"false" json:"pluginDisplayName"`
 }
 
 func (m ManagementAgentPluginAggregationDimensions) String() string {

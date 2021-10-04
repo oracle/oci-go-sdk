@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// Connection Note: Deprecated. Use the new resource model APIs instead.
-// Database Connection resource used for migrations.
+// Connection Database Connection resource used for migrations.
 type Connection struct {
 
 	// The OCID of the resource

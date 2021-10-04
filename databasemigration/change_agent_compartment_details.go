@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// ChangeAgentCompartmentDetails Note: Deprecated. Use the new resource model APIs instead.
-// Change Agent compartment details
+// ChangeAgentCompartmentDetails Change Agent compartment details
 type ChangeAgentCompartmentDetails struct {
 
 	// The OCID of the compartment to move the resource to.

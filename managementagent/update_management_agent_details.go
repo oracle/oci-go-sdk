@@ -10,14 +10,11 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // UpdateManagementAgentDetails Details required to update console-managed properties of the Management Agent.
 type UpdateManagementAgentDetails struct {
-
-	// Setting of this flag is no longer supported.
-	IsAgentAutoUpgradable *bool `mandatory:"false" json:"isAgentAutoUpgradable"`
 
 	// New displayName of Agent.
 	DisplayName *string `mandatory:"false" json:"displayName"`

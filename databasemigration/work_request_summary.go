@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// WorkRequestSummary Note: Deprecated. Use the new resource model APIs instead.
-// A summary of the status of a work request.
+// WorkRequestSummary A summary of the status of a work request.
 type WorkRequestSummary struct {
 
 	// The asynchronous operation tracked by this work request.

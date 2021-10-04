@@ -11,7 +11,7 @@ package announcementsservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // BaseCreateAnnouncementsPreferencesDetails The model for the parameters of announcement email preferences configured for the tenancy (root compartment).

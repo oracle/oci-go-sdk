@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// UpdateDataPumpSettings Note: Deprecated. Use the new resource model APIs instead.
-// Optional settings for Data Pump Export and Import jobs
+// UpdateDataPumpSettings Optional settings for Data Pump Export and Import jobs
 type UpdateDataPumpSettings struct {
 
 	// Data Pump job mode.

@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// ParLink Note: Deprecated. Use the new resource model APIs instead.
-// Pre-Authenticated Request Link for ODMS Agent log use.
+// ParLink Pre-Authenticated Request Link for ODMS Agent log use.
 type ParLink struct {
 
 	// Pre-Authenticated Request URI.

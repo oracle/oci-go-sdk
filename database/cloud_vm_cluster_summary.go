@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // CloudVmClusterSummary Details of the cloud VM cluster. Applies to Exadata Cloud Service instances only.
