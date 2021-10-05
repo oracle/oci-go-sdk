@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // ScheduledTask Log analytics scheduled task resource.
@@ -76,8 +76,8 @@ type scheduledtask struct {
 	Id                  *string                           `mandatory:"true" json:"id"`
 	DisplayName         *string                           `mandatory:"true" json:"displayName"`
 	TaskType            TaskTypeEnum                      `mandatory:"true" json:"taskType"`
-	Schedules           []Schedule                        `mandatory:"true" json:"schedules"`
-	Action              Action                            `mandatory:"true" json:"action"`
+	Schedules           json.RawMessage                   `mandatory:"true" json:"schedules"`
+	Action              json.RawMessage                   `mandatory:"true" json:"action"`
 	CompartmentId       *string                           `mandatory:"true" json:"compartmentId"`
 	TimeCreated         *common.SDKTime                   `mandatory:"true" json:"timeCreated"`
 	TimeUpdated         *common.SDKTime                   `mandatory:"true" json:"timeUpdated"`
@@ -158,12 +158,12 @@ func (m scheduledtask) GetTaskType() TaskTypeEnum {
 }
 
 //GetSchedules returns Schedules
-func (m scheduledtask) GetSchedules() []Schedule {
+func (m scheduledtask) GetSchedules() json.RawMessage {
 	return m.Schedules
 }
 
 //GetAction returns Action
-func (m scheduledtask) GetAction() Action {
+func (m scheduledtask) GetAction() json.RawMessage {
 	return m.Action
 }
 

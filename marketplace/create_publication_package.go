@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // CreatePublicationPackage A base object for creating a publication package.
@@ -30,7 +30,7 @@ type createpublicationpackage struct {
 	JsonData        []byte
 	PackageVersion  *string          `mandatory:"true" json:"packageVersion"`
 	OperatingSystem *OperatingSystem `mandatory:"true" json:"operatingSystem"`
-	Eula            []Eula           `mandatory:"true" json:"eula"`
+	Eula            json.RawMessage  `mandatory:"true" json:"eula"`
 	PackageType     string           `json:"packageType"`
 }
 
@@ -82,7 +82,7 @@ func (m createpublicationpackage) GetOperatingSystem() *OperatingSystem {
 }
 
 //GetEula returns Eula
-func (m createpublicationpackage) GetEula() []Eula {
+func (m createpublicationpackage) GetEula() json.RawMessage {
 	return m.Eula
 }
 

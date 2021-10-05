@@ -12,7 +12,7 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // ObjectVersionCollection To use any of the API operations, you must be authorized in an IAM policy. If you are not authorized,

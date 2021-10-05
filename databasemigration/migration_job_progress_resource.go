@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// MigrationJobProgressResource Note: Deprecated. Use the new resource model APIs instead.
-// Progress details of a Migration Job.
+// MigrationJobProgressResource Progress details of a Migration Job.
 type MigrationJobProgressResource struct {
 
 	// Current status of the job.

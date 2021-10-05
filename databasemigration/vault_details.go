@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// VaultDetails Note: Deprecated. Use the new resource model APIs instead.
-// OCI Vault details to store migration and connection credentials secrets
+// VaultDetails OCI Vault details to store migration and connection credentials secrets
 type VaultDetails struct {
 
 	// OCID of the compartment where the secret containing the credentials will be created.

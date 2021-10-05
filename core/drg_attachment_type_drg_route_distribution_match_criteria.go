@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // DrgAttachmentTypeDrgRouteDistributionMatchCriteria The attachment type from which the DRG will import routes. Routes will be imported from

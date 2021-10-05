@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // LoadBalancerTrafficShiftDeployStageExecutionProgress Specifies the load balancer traffic shift stage execution details.

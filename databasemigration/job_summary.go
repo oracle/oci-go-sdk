@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// JobSummary Note: Deprecated. Use the new resource model APIs instead.
-// Job description
+// JobSummary Job description
 type JobSummary struct {
 
 	// The OCID of the Migration Job.

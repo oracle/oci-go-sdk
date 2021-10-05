@@ -10,18 +10,17 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// WorkRequestLogEntry Note: Deprecated. Use the new resource model APIs instead.
-// A log message from executing an operation that is tracked by a work request.
+// WorkRequestLogEntry A log message from executing an operation that is tracked by a work request.
 type WorkRequestLogEntry struct {
 
 	// A human-readable log message.
 	Message *string `mandatory:"true" json:"message"`
 
 	// The time the log message was written. An RFC3339 formatted datetime string
-	TimeStamp *common.SDKTime `mandatory:"true" json:"timeStamp"`
+	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp"`
 }
 
 func (m WorkRequestLogEntry) String() string {

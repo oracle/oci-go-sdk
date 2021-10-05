@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// CreateGoldenGateDetails Note: Deprecated. Use the new resource model APIs instead.
-// Details about Oracle GoldenGate Microservices. Required for online logical migration.
+// CreateGoldenGateDetails Details about Oracle GoldenGate Microservices. Required for online logical migration.
 type CreateGoldenGateDetails struct {
 	Hub *CreateGoldenGateHub `mandatory:"true" json:"hub"`
 

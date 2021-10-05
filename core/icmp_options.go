@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // IcmpOptions Optional and valid only for ICMP and ICMPv6. Use to specify a particular ICMP type and code

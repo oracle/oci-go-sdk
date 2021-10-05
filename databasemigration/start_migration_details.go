@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// StartMigrationDetails Note: Deprecated. Use the new resource model APIs instead.
-// Parameters to specify to a Migration job operation.
+// StartMigrationDetails Parameters to specify to a Migration job operation.
 type StartMigrationDetails struct {
 
 	// Name of a migration phase. The Job will wait after executing this

@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// GenerateToken Note: Deprecated. Use the new resource model APIs instead.
-// ODMS Agent token details.
+// GenerateToken ODMS Agent token details.
 type GenerateToken struct {
 
 	// Resource Principals Token in serialized form.
