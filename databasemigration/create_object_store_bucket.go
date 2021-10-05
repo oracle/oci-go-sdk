@@ -10,11 +10,11 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// CreateObjectStoreBucket Note: Deprecated. Use the new resource model APIs instead.
-// In lieu of a network database link, OCI Object Storage bucket will be used to store Data Pump dump files for the migration.
+// CreateObjectStoreBucket In lieu of a network database link, OCI Object Storage bucket will be used to store Data Pump dump files for the migration.
+// Additionally, it can be specified alongside a database link data transfer medium.
 type CreateObjectStoreBucket struct {
 
 	// Namespace name of the object store bucket.

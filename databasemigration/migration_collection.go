@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// MigrationCollection Note: Deprecated. Use the new resource model APIs instead.
-// Results of a Migration search. Contains MigrationSummary items.
+// MigrationCollection Results of a Migration search. Contains MigrationSummary items.
 type MigrationCollection struct {
 
 	// Items in collection.

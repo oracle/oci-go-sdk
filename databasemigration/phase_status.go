@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// PhaseStatus Note: Deprecated. Use the new resource model APIs instead.
-// Job phase status details.
+// PhaseStatus Job phase status details.
 type PhaseStatus struct {
 
 	// Phase name
@@ -25,6 +24,14 @@ type PhaseStatus struct {
 
 	// Duration of the phase in milliseconds
 	DurationInMs *int `mandatory:"true" json:"durationInMs"`
+
+	// True if a Pre-Migration Advisor report is available for this phase. False or null if no report is available.
+	IsAdvisorReportAvailable *bool `mandatory:"false" json:"isAdvisorReportAvailable"`
+
+	// Summary of phase status results.
+	Extract []PhaseExtractEntry `mandatory:"false" json:"extract"`
+
+	LogLocation *LogLocationBucketDetails `mandatory:"false" json:"logLocation"`
 
 	// Percent progress of job phase.
 	Progress *int `mandatory:"false" json:"progress"`

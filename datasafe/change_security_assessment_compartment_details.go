@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // ChangeSecurityAssessmentCompartmentDetails The details that can be changed (or retained) when a security assessment is moved to another compartment.

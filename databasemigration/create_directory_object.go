@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// CreateDirectoryObject Note: Deprecated. Use the new resource model APIs instead.
-// Directory object details, used to define either import or export directory objects in Data Pump Settings.
+// CreateDirectoryObject Directory object details, used to define either import or export directory objects in Data Pump Settings.
 // Import directory is required for Non-Autonomous target connections. If specified for an autonomous target, it will show an error.
 // Export directory will error if there are database link details specified.
 type CreateDirectoryObject struct {

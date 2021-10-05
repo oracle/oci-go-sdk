@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // Topology Defines the representation of a virtual network topology.
@@ -33,10 +33,10 @@ type Topology interface {
 
 type topology struct {
 	JsonData      []byte
-	Entities      []interface{}                `mandatory:"true" json:"entities"`
-	Relationships []TopologyEntityRelationship `mandatory:"true" json:"relationships"`
-	TimeCreated   *common.SDKTime              `mandatory:"true" json:"timeCreated"`
-	Type          string                       `json:"type"`
+	Entities      []interface{}   `mandatory:"true" json:"entities"`
+	Relationships json.RawMessage `mandatory:"true" json:"relationships"`
+	TimeCreated   *common.SDKTime `mandatory:"true" json:"timeCreated"`
+	Type          string          `json:"type"`
 }
 
 // UnmarshalJSON unmarshals json
@@ -86,7 +86,7 @@ func (m topology) GetEntities() []interface{} {
 }
 
 //GetRelationships returns Relationships
-func (m topology) GetRelationships() []TopologyEntityRelationship {
+func (m topology) GetRelationships() json.RawMessage {
 	return m.Relationships
 }
 

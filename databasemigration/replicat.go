@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// Replicat Note: Deprecated. Use the new resource model APIs instead.
-// Parameters for Replicat processes.
+// Replicat Parameters for Replicat processes.
 type Replicat struct {
 
 	// Number of threads used to read trail files (valid for Parallel Replicat)

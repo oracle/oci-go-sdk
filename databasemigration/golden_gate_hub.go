@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// GoldenGateHub Note: Deprecated. Use the new resource model APIs instead.
-// Details about Oracle GoldenGate Microservices.
+// GoldenGateHub Details about Oracle GoldenGate Microservices.
 type GoldenGateHub struct {
 	RestAdminCredentials *AdminCredentials `mandatory:"true" json:"restAdminCredentials"`
 

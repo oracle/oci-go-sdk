@@ -10,15 +10,16 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// UpdateDatabaseLinkDetails Note: Deprecated. Use the new resource model APIs instead.
-// Optional details for updating a network database link from OCI database to on-premise database.
+// UpdateDatabaseLinkDetails Optional details for updating a network database link from OCI database to on-premise database.
 type UpdateDatabaseLinkDetails struct {
 
 	// Name of database link from OCI database to on-premise database. ODMS will create link, if the link does not already exist.
-	Name *string `mandatory:"true" json:"name"`
+	Name *string `mandatory:"false" json:"name"`
+
+	WalletBucket *UpdateObjectStoreBucket `mandatory:"false" json:"walletBucket"`
 }
 
 func (m UpdateDatabaseLinkDetails) String() string {

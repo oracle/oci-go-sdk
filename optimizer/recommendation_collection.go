@@ -10,7 +10,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // RecommendationCollection A list of recommendations that match filter criteria, if any. Results contain `RecommendationSummary` objects.

@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// WorkRequestLogEntryCollection Note: Deprecated. Use the new resource model APIs instead.
-// Results of a Work Request search. Contains WorkRequestLogEntry items.
+// WorkRequestLogEntryCollection Results of a Work Request search. Contains WorkRequestLogEntry items.
 type WorkRequestLogEntryCollection struct {
 
 	// Items in collection.

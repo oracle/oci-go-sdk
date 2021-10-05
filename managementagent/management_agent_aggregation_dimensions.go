@@ -10,7 +10,7 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // ManagementAgentAggregationDimensions The Aggregation of Management Agent Dimensions
@@ -27,6 +27,9 @@ type ManagementAgentAggregationDimensions struct {
 
 	// Whether or not a managementAgent has at least one plugin
 	HasPlugins *bool `mandatory:"false" json:"hasPlugins"`
+
+	// The install type, either AGENT or GATEWAY
+	InstallType InstallTypesEnum `mandatory:"false" json:"installType,omitempty"`
 }
 
 func (m ManagementAgentAggregationDimensions) String() string {

@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// CreatePrivateEndpoint Note: Deprecated. Use the new resource model APIs instead.
-// OCI Private Endpoint configuration details.
+// CreatePrivateEndpoint OCI Private Endpoint configuration details.
 // Not required for source container database connections, it will default to the specified Source Database Connection Private Endpoint.
 type CreatePrivateEndpoint struct {
 

@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// ConnectionCollection Note: Deprecated. Use the new resource model APIs instead.
-// Results of a Database Connection search. Contains DatabaseConnectionSummary items.
+// ConnectionCollection Results of a Database Connection search. Contains DatabaseConnectionSummary items.
 type ConnectionCollection struct {
 
 	// Items in collection.

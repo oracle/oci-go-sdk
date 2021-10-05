@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// UpdatePrivateEndpoint Note: Deprecated. Use the new resource model APIs instead.
-// OCI Private Endpoint configuration details.
+// UpdatePrivateEndpoint OCI Private Endpoint configuration details.
 // An empty object would result in the removal of the stored details.
 type UpdatePrivateEndpoint struct {
 

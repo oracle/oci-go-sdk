@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
 // IntelSkylakeBmPlatformConfig The platform configuration of a bare metal instance that uses the Intel Skylake platform.

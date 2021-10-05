@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// AdminCredentials Note: Deprecated. Use the new resource model APIs instead.
-// Database Administrator Credentials details.
+// AdminCredentials Database Administrator Credentials details.
 type AdminCredentials struct {
 
 	// Administrator username

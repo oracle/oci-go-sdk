@@ -10,11 +10,10 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v48/common"
+	"github.com/oracle/oci-go-sdk/v49/common"
 )
 
-// CreateMigrationDetails Note: Deprecated. Use the new resource model APIs instead.
-// Create Migration resource parameters.
+// CreateMigrationDetails Create Migration resource parameters.
 type CreateMigrationDetails struct {
 
 	// Migration type.
@@ -41,10 +40,17 @@ type CreateMigrationDetails struct {
 
 	DataTransferMediumDetails *CreateDataTransferMediumDetails `mandatory:"false" json:"dataTransferMediumDetails"`
 
+	DumpTransferDetails *CreateDumpTransferDetails `mandatory:"false" json:"dumpTransferDetails"`
+
 	DatapumpSettings *CreateDataPumpSettings `mandatory:"false" json:"datapumpSettings"`
 
-	// Database objects to exclude from migration.
+	AdvisorSettings *CreateAdvisorSettings `mandatory:"false" json:"advisorSettings"`
+
+	// Database objects to exclude from migration, cannot be specified alongside 'includeObjects'
 	ExcludeObjects []DatabaseObject `mandatory:"false" json:"excludeObjects"`
+
+	// Database objects to include from migration, cannot be specified alongside 'excludeObjects'
+	IncludeObjects []DatabaseObject `mandatory:"false" json:"includeObjects"`
 
 	GoldenGateDetails *CreateGoldenGateDetails `mandatory:"false" json:"goldenGateDetails"`
 
