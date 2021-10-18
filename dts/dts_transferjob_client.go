@@ -50,6 +50,9 @@ func NewTransferJobClientWithOboToken(configProvider common.ConfigurationProvide
 }
 
 func newTransferJobClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client TransferJobClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = TransferJobClient{BaseClient: baseClient}
 	client.BasePath = "20171001"
 	err = client.setConfigurationProvider(configProvider)

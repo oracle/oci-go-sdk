@@ -182,6 +182,7 @@ func buildResponsesNoRetry(endOfWindowTime *time.Time, backoffScalingFactor floa
 		getMockedOCIOperationResponseWithErrorFull(422, "UnprocessableEntity", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(431, "RequestHeaderFieldsTooLarge", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(501, "MethodNotImplemented", endOfWindowTime, backoffScalingFactor),
+		getMockedOCIOperationResponseWithErrorFull(599, "Unknown 500 Error", endOfWindowTime, backoffScalingFactor),
 
 		getMockedOCIOperationResponse(200, 1),
 	}
@@ -195,7 +196,6 @@ func buildResponsesWantRetry(endOfWindowTime *time.Time, backoffScalingFactor fl
 		getMockedOCIOperationResponseWithErrorFull(500, "InternalServerError", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(500, "OutOfCapacity", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(503, "ServiceUnavailable", endOfWindowTime, backoffScalingFactor),
-		getMockedOCIOperationResponseWithErrorFull(599, "Unknown 500 Error", endOfWindowTime, backoffScalingFactor),
 	}
 	return responses
 }
@@ -236,7 +236,6 @@ func buildEcResponsesWantRetry(endOfWindowTime *time.Time, backoffScalingFactor 
 		getMockedOCIOperationResponseWithErrorFull(500, "InternalServerError", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(500, "OutOfCapacity", endOfWindowTime, backoffScalingFactor),
 		getMockedOCIOperationResponseWithErrorFull(503, "ServiceUnavailable", endOfWindowTime, backoffScalingFactor),
-		getMockedOCIOperationResponseWithErrorFull(599, "Unknown 500 Error", endOfWindowTime, backoffScalingFactor),
 	}
 	return responses
 }

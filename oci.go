@@ -273,9 +273,18 @@ Retry
 Sometimes you may need to wait until an attribute of a resource, such as an instance or a VCN, reaches a certain state.
 An example of this would be launching an instance and then waiting for the instance to become available, or waiting until a subnet in a VCN has been terminated.
 You might also want to retry the same operation again if there's network issue etc...
-This can be accomplished by using the RequestMetadata.RetryPolicy. You can find the examples here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_retry_test.go
+This can be accomplished by using the RequestMetadata.RetryPolicy(request level configuration), alternatively, global(all services) or client level RetryPolicy configration is also possible.
+You can find the examples here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_retry_test.go
 
 If you are trying to make a PUT/POST API call with binary request body, please make sure the binary request body is resettable, which means the request body should inherit Seeker interface.
+
+The Retry behavior Precedence (Highest to lowest) is defined as below:-
+
+   Operation level retry policy
+   Client level retry policy
+   Global level retry policy
+   Environment level default retry policy for default retry
+   Service level default retry policy
 
 Default Retry Policy
 
@@ -296,6 +305,16 @@ or for all requests made by a client:
 	client.SetCustomClientConfiguration(common.CustomClientConfiguration{
 		RetryPolicy: &defaultRetryPolicy,
 	})
+
+or for all requests made by all clients:
+
+    common.GlobalRetry = &defaultRetryPolicy
+
+or setting default retry via environment varaible, which is a global switch for all services:
+
+	export OCI_SDK_DEFAULT_RETRY_ENABLED=TRUE
+
+Some services enable retry for operations by default, this can be overridden using any alternatives mentioned above.
 
 Eventual Consistency
 
@@ -338,6 +357,16 @@ DefaultRetryPolicyWithoutEventualConsistency or NewRetryPolicyWithOptions with t
 	)
 
 The NewRetryPolicy function also creates a retry policy without eventual consistency.
+
+Circuit Breaker
+
+Circuit Breaker can prevent an application repeatedly trying to execute an operation that is likely to fail, allowing it to continue without waiting for the fault to be rectified or wasting CPU cycles,
+of course, it also enables an application to detect whether the fault has been resolved. If the problem appears to have been rectified, the application can attempt to invoke the operation.
+Go SDK intergrates sony/gobreaker solution, wraps in a circuit breaker object, which monitors for failures. Once the failures reach a certain threshold, the circuit breaker trips,
+and all further calls to the circuit breaker return with an error, this also saves the service from being overwhelmed with network calls in case of an outage.
+
+Go SDK enable circuit breaker with default configuration, if you don't want to enable the solution, can disable the functionality before your application running
+Go SDK also supports customize Circuit Breaker with specified configuratoins. You can find the examples here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_circuitbreaker_test.go
 
 Using the SDK with a Proxy Server
 

@@ -53,6 +53,9 @@ func NewApplicationMigrationClientWithOboToken(configProvider common.Configurati
 }
 
 func newApplicationMigrationClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client ApplicationMigrationClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = ApplicationMigrationClient{BaseClient: baseClient}
 	client.BasePath = "20191031"
 	err = client.setConfigurationProvider(configProvider)
