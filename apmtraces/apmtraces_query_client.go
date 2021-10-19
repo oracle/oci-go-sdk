@@ -50,6 +50,9 @@ func NewQueryClientWithOboToken(configProvider common.ConfigurationProvider, obo
 }
 
 func newQueryClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client QueryClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = QueryClient{BaseClient: baseClient}
 	client.BasePath = "20200630"
 	err = client.setConfigurationProvider(configProvider)

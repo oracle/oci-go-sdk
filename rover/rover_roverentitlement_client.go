@@ -50,6 +50,9 @@ func NewRoverEntitlementClientWithOboToken(configProvider common.ConfigurationPr
 }
 
 func newRoverEntitlementClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client RoverEntitlementClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = RoverEntitlementClient{BaseClient: baseClient}
 	client.BasePath = "20201210"
 	err = client.setConfigurationProvider(configProvider)

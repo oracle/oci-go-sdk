@@ -50,6 +50,9 @@ func NewTraceClientWithOboToken(configProvider common.ConfigurationProvider, obo
 }
 
 func newTraceClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client TraceClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = TraceClient{BaseClient: baseClient}
 	client.BasePath = "20200630"
 	err = client.setConfigurationProvider(configProvider)

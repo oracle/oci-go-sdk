@@ -52,6 +52,9 @@ func NewAccessRequestsClientWithOboToken(configProvider common.ConfigurationProv
 }
 
 func newAccessRequestsClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client AccessRequestsClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = AccessRequestsClient{BaseClient: baseClient}
 	client.BasePath = "20200630"
 	err = client.setConfigurationProvider(configProvider)

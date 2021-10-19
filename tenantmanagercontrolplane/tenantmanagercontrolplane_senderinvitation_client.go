@@ -50,6 +50,9 @@ func NewSenderInvitationClientWithOboToken(configProvider common.ConfigurationPr
 }
 
 func newSenderInvitationClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client SenderInvitationClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = SenderInvitationClient{BaseClient: baseClient}
 	client.BasePath = "20200801"
 	err = client.setConfigurationProvider(configProvider)

@@ -607,28 +607,6 @@ delegation_token_file=/nothingThere
 	assert.NoError(t, err)
 }
 
-func TestCustomProfileClient_CreateWithConfig(t *testing.T) {
-	dataTpl := `[DEFAULT]
-tenancy=sometenancy
-[PROFILE1]
-user=someuser
-fingerprint=somefingerprint
-key_file=%s
-region=us-ashburn-1
-`
-
-	keyFile := writeTempFile(testPrivateKeyConf)
-	data := fmt.Sprintf(dataTpl, keyFile)
-	tmpConfFile := writeTempFile(data)
-
-	defer removeFileFn(tmpConfFile)
-	defer removeFileFn(keyFile)
-	configurationProvider := CustomProfileConfigProvider(tmpConfFile, "PROFILE1")
-	client, err := NewClientWithConfig(configurationProvider)
-	assert.NotNil(t, client)
-	assert.NoError(t, err)
-}
-
 func TestBaseClient_CreateWithBadRegion(t *testing.T) {
 	dataTpl := `[DEFAULT]
 tenancy=sometenancy

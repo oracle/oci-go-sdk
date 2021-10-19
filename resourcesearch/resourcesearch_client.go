@@ -50,6 +50,9 @@ func NewResourceSearchClientWithOboToken(configProvider common.ConfigurationProv
 }
 
 func newResourceSearchClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client ResourceSearchClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = ResourceSearchClient{BaseClient: baseClient}
 	client.BasePath = "20180409"
 	err = client.setConfigurationProvider(configProvider)

@@ -18,9 +18,35 @@ import (
 
 // ExampleRetry shows how to use default retry for Create and Delete groups, please
 // refer to example_core_test.go->ExampleLaunchInstance for more examples
+// The Retry behavior Precedence (Highest to lowest) is defined as below:
+//   Operation level retry policy - setting request.RequestMetadata
+//   Client level retry policy - setting client.SetCustomClientConfiguration
+//   Global level retry policy - setting common.GlobalRetry
+
 func ExampleRetry() {
+	// create global level user customized retry policy
+	// globalLevelPolicy := common.NewRetryPolicyWithOptions(
+	//	  common.WithMaximumNumberAttempts(5),
+	//    common.WithNextDuration(func(r common.OCIOperationResponse) time.Duration {
+	//    	return time.Duration(math.Pow(float64(2), float64(r.AttemptNumber-1))) * time.Second
+	//    }),
+	// )
+	// common.GlobalRetry = &globalLevelPolicy
+
 	// create and delete group with retry
 	client, clerr := identity.NewIdentityClientWithConfigurationProvider(common.DefaultConfigProvider())
+
+	// create a client level defined retry policy
+	// clientLevelPolicy := common.NewRetryPolicyWithOptions(
+	//	   common.WithMaximumNumberAttempts(6),
+	//	   common.WithNextDuration(func(r common.OCIOperationResponse) time.Duration {
+	//		   return time.Duration(math.Pow(float64(2), float64(r.AttemptNumber-1))) * time.Second
+	//	   }),
+	// )
+	// client.SetCustomClientConfiguration(common.CustomClientConfiguration{
+	//	  RetryPolicy: &clientLevelPolicy,
+	// })
+
 	ctx := context.Background()
 	helpers.FatalIfError(clerr)
 
@@ -32,7 +58,7 @@ func ExampleRetry() {
 	// use SDK's default retry policy which deals with eventual consistency
 	defaultRetryPolicy := common.DefaultRetryPolicy()
 
-	// create request metadata for retry
+	// create request metadata for retry(request level retry)
 	request.RequestMetadata = common.RequestMetadata{
 		RetryPolicy: &defaultRetryPolicy,
 	}

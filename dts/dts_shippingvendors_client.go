@@ -50,6 +50,9 @@ func NewShippingVendorsClientWithOboToken(configProvider common.ConfigurationPro
 }
 
 func newShippingVendorsClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client ShippingVendorsClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = ShippingVendorsClient{BaseClient: baseClient}
 	client.BasePath = "20171001"
 	err = client.setConfigurationProvider(configProvider)

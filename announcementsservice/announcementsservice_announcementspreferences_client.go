@@ -50,6 +50,9 @@ func NewAnnouncementsPreferencesClientWithOboToken(configProvider common.Configu
 }
 
 func newAnnouncementsPreferencesClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client AnnouncementsPreferencesClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = AnnouncementsPreferencesClient{BaseClient: baseClient}
 	client.BasePath = "20180904"
 	err = client.setConfigurationProvider(configProvider)

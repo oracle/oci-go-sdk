@@ -50,6 +50,9 @@ func NewDomainClientWithOboToken(configProvider common.ConfigurationProvider, ob
 }
 
 func newDomainClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client DomainClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = DomainClient{BaseClient: baseClient}
 	client.BasePath = "20200801"
 	err = client.setConfigurationProvider(configProvider)

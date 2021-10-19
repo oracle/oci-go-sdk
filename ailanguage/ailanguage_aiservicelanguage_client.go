@@ -52,6 +52,9 @@ func NewAIServiceLanguageClientWithOboToken(configProvider common.ConfigurationP
 }
 
 func newAIServiceLanguageClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client AIServiceLanguageClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = AIServiceLanguageClient{BaseClient: baseClient}
 	client.BasePath = "20210101"
 	err = client.setConfigurationProvider(configProvider)
