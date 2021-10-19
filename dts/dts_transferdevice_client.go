@@ -50,6 +50,9 @@ func NewTransferDeviceClientWithOboToken(configProvider common.ConfigurationProv
 }
 
 func newTransferDeviceClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client TransferDeviceClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = TransferDeviceClient{BaseClient: baseClient}
 	client.BasePath = "20171001"
 	err = client.setConfigurationProvider(configProvider)

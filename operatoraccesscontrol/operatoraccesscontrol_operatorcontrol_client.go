@@ -52,6 +52,9 @@ func NewOperatorControlClientWithOboToken(configProvider common.ConfigurationPro
 }
 
 func newOperatorControlClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client OperatorControlClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = OperatorControlClient{BaseClient: baseClient}
 	client.BasePath = "20200630"
 	err = client.setConfigurationProvider(configProvider)

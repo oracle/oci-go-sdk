@@ -50,6 +50,9 @@ func NewLogSearchClientWithOboToken(configProvider common.ConfigurationProvider,
 }
 
 func newLogSearchClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client LogSearchClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = LogSearchClient{BaseClient: baseClient}
 	client.BasePath = "20190909"
 	err = client.setConfigurationProvider(configProvider)

@@ -21,17 +21,19 @@ go get -u github.com/oracle/oci-go-sdk
 ```
 If you are using Go modules, you can install by running the following command within a folder containing a `go.mod` file:
 ```
-go get -d github.com/oracle/oci-go-sdk/@latest
+go get -d github.com/oracle/oci-go-sdk/v49@latest
 ```
-Alternatively, you can install a specific version(supported from `v25.0.0` on):
+The latest major version (for example `v49`) can be identified on the [Github releases page](https://github.com/oracle/oci-go-sdk/releases).
+
+Alternatively, you can install a specific version (supported from `v25.0.0` on):
 ```
-go get -d github.com/oracle/oci-go-sdk/@v41.0.0
+go get -d github.com/oracle/oci-go-sdk/v49@v49.1.0
 ```
 Run `go mod tidy`
 
 In your project, you also need to ensure the import paths contain the correct major-version:
 ```
-import "github.com/oracle/oci-go-sdk/v41/common"  // or whatever major version you're using
+import "github.com/oracle/oci-go-sdk/v49/common"  // or whatever major version you're using
 ```
 
 ## Working with the Go SDK
@@ -47,8 +49,8 @@ Once a config file has been setup, call `common.DefaultConfigProvider()` functio
  ```go
  // Import necessary packages
  import (
-	"github.com/oracle/oci-go-sdk/v41/common"
-	"github.com/oracle/oci-go-sdk/v41/identity" // Identity or any other service you wish to make requests to
+	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v49/identity" // Identity or any other service you wish to make requests to
 )
  
  //...
@@ -103,9 +105,14 @@ if err != nil {
 fmt.Println("Group's name is:", response.Name)
 ```
 
-- *Expect header*: By default, "PUT/POST" request would add Expect 100-continue header, if it is not expected, please explicitly set the env var:
+- *Expect header*: Some services specified "PUT/POST" requests add Expect 100-continue header by default, if it is not expected, please explicitly set the env var:
 ```sh
 export OCI_GOSDK_USING_EXPECT_HEADER=FALSE
+```
+
+- *Circuit Breaker*: By default, circuit breaker feature is enabled, if it is not expected, please explicitly set the env var:
+```sh
+export OCI_SDK_DEFAULT_CIRCUITBREAKER_ENABLED=FALSE
 ```
 
 ## Organization of the SDK

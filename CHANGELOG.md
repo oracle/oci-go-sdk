@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 49.2.0 - 2021-10-19
+### Added
+- Support for creating database systems from backups with database software images in the Database service
+- Support for optionally providing a SID prefix during Exadata database creation in the Database service
+- Support for node subsetting on VM clusters in the Database service
+- Support for non-CDB to PDB conversion in the Database service
+- Support for default homepages, unprocessed data buckets, and parsing geostats in the Logging Analytics service
+- Support for creating instance principal delegation token in a specific region
+- Support for circuit breaker feature
+
 ## 49.1.0 - 2021-10-12
 ### Added
 - Support for the Data Labeling Service

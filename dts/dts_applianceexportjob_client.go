@@ -50,6 +50,9 @@ func NewApplianceExportJobClientWithOboToken(configProvider common.Configuration
 }
 
 func newApplianceExportJobClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client ApplianceExportJobClient, err error) {
+	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
+	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
+
 	client = ApplianceExportJobClient{BaseClient: baseClient}
 	client.BasePath = "20171001"
 	err = client.setConfigurationProvider(configProvider)

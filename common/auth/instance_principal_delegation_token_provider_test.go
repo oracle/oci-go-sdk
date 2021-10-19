@@ -4,17 +4,27 @@
 package auth
 
 import (
+	"github.com/oracle/oci-go-sdk/v49/common"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestInstancePrincipalDelegationTokenConfigurationProvider_ErrorInput(t *testing.T) {
 	delegationToken := ""
+	region := common.StringToRegion("us-ashburn-1")
 	configurationProvider, err := InstancePrincipalDelegationTokenConfigurationProvider(&delegationToken)
 	assert.Nil(t, configurationProvider)
 	assert.NotNil(t, err)
 
 	configurationProvider, err = InstancePrincipalDelegationTokenConfigurationProvider(nil)
 	assert.Nil(t, configurationProvider)
+	assert.NotNil(t, err)
+
+	configurationProviderForRegion, err := InstancePrincipalDelegationTokenConfigurationProviderForRegion(&delegationToken, region)
+	assert.Nil(t, configurationProviderForRegion)
+	assert.NotNil(t, err)
+
+	configurationProviderForRegionNotFound, err := InstancePrincipalDelegationTokenConfigurationProviderForRegion(&delegationToken, "")
+	assert.Nil(t, configurationProviderForRegionNotFound)
 	assert.NotNil(t, err)
 }
