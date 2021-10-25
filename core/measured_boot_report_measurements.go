@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // MeasuredBootReportMeasurements A list of Trusted Platform Module (TPM) Platform Configuration Register (PCR) entries.

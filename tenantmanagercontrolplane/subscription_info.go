@@ -10,25 +10,25 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
-// SubscriptionInfo A single subscription's details
+// SubscriptionInfo A single subscription's details.
 type SubscriptionInfo struct {
 
-	// Subscription id.
+	// Subscription ID.
 	SpmSubscriptionId *string `mandatory:"true" json:"spmSubscriptionId"`
 
-	// Service name for subscription
+	// Service name for subscription.
 	Service *string `mandatory:"true" json:"service"`
 
-	// Subscription start date. An RFC3339 formatted datetime string
+	// Subscription start date. An RFC 3339-formatted date and time string.
 	StartDate *common.SDKTime `mandatory:"true" json:"startDate"`
 
-	// Subscription end date. An RFC3339 formatted datetime string
+	// Subscription end date. An RFC 3339-formatted date and time string.
 	EndDate *common.SDKTime `mandatory:"true" json:"endDate"`
 
-	// List of SKUs the subscription contains
+	// List of SKUs the subscription contains.
 	Skus []Sku `mandatory:"true" json:"skus"`
 }
 

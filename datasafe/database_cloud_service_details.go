@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // DatabaseCloudServiceDetails The details of the Oracle Database Cloud Service to be registered as a target database in Data Safe.

@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // EventConfig Describes an event configuration, for a given object type and property. Primarily, whether a property change will result in an event being emitted.

@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v49/common"
-	"github.com/oracle/oci-go-sdk/v49/common/auth"
+	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v50/common/auth"
 	"net/http"
 )
 
@@ -82,7 +82,7 @@ func (client *OrdersClient) ConfigurationProvider() *common.ConfigurationProvide
 	return client.config
 }
 
-// ActivateOrder Triggers an order activation workflow on behalf of the tenant given by compartment id in the body.
+// ActivateOrder Triggers an order activation workflow on behalf of the tenant, given by compartment ID in the body.
 //
 // See also
 //

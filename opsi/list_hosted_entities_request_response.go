@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 	"net/http"
 )
 
@@ -44,6 +44,9 @@ type ListHostedEntitiesRequest struct {
 	// Filter by one or more platform types.
 	// Possible value is LINUX.
 	PlatformType []ListHostedEntitiesPlatformTypeEnum `contributesTo:"query" name:"platformType" omitEmpty:"true" collectionFormat:"multi"`
+
+	// OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of exadata insight resource.
+	ExadataInsightId *string `mandatory:"false" contributesTo:"query" name:"exadataInsightId"`
 
 	// For list pagination. The maximum number of results per page, or items to
 	// return in a paginated "List" call.

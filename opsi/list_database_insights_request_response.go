@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 	"net/http"
 )
 
@@ -58,6 +58,9 @@ type ListDatabaseInsightsRequest struct {
 
 	// Database insight list sort options. If `fields` parameter is selected, the `sortBy` parameter must be one of the fields specified.
 	SortBy ListDatabaseInsightsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
+
+	// OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of exadata insight resource.
+	ExadataInsightId *string `mandatory:"false" contributesTo:"query" name:"exadataInsightId"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.

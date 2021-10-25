@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // UpdateHostInsightDetails The information to be updated.
@@ -62,6 +62,10 @@ func (m *updatehostinsightdetails) UnmarshalPolymorphicJSON(data []byte) (interf
 
 	var err error
 	switch m.EntitySource {
+	case "EM_MANAGED_EXTERNAL_HOST":
+		mm := UpdateEmManagedExternalHostInsightDetails{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
 	case "MACS_MANAGED_EXTERNAL_HOST":
 		mm := UpdateMacsManagedExternalHostInsightDetails{}
 		err = json.Unmarshal(data, &mm)

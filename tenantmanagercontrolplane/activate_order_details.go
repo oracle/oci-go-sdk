@@ -10,13 +10,13 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
-// ActivateOrderDetails The parameters for activating an order subscription in a tenancy
+// ActivateOrderDetails The parameters for activating an order subscription in a tenancy.
 type ActivateOrderDetails struct {
 
-	// Tenant Id to activate the Order.
+	// Tenant ID to activate the order.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 }
 

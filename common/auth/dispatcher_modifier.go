@@ -3,7 +3,7 @@
 
 package auth
 
-import "github.com/oracle/oci-go-sdk/v49/common"
+import "github.com/oracle/oci-go-sdk/v50/common"
 
 //dispatcherModifier gives ability to modify a HTTPRequestDispatcher before use.
 type dispatcherModifier struct {

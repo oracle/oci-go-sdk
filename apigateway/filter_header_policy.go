@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // FilterHeaderPolicy Filter HTTP headers as they pass through the gateway.  The gateway applies filters after other transformations,

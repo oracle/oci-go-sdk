@@ -10,7 +10,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // Link A link between a parent tenancy and a child tenancy.
@@ -22,7 +22,7 @@ type Link struct {
 	// OCID of the parent tenancy.
 	ParentTenancyId *string `mandatory:"true" json:"parentTenancyId"`
 
-	// OCID of the child tenancy
+	// OCID of the child tenancy.
 	ChildTenancyId *string `mandatory:"true" json:"childTenancyId"`
 
 	// Date-time when this link was created.

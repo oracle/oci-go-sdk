@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // SddcSummary A summary of the SDDC.
@@ -20,7 +20,7 @@ type SddcSummary struct {
 	// contains the SDDC.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The availability domain that the SDDC's ESXi hosts are running in.
+	// The availability domain that the SDDC's ESXi hosts are running in. For Multi-AD SDDC, it is `multi-AD`.
 	ComputeAvailabilityDomain *string `mandatory:"true" json:"computeAvailabilityDomain"`
 
 	// A descriptive name for the SDDC. It must be unique, start with a letter, and contain only letters, digits,

@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 	"net/http"
 )
 
@@ -34,6 +34,12 @@ type ListWorkRequestLogsRequest struct {
 	// List Pagination (https://docs.cloud.oracle.com/Content/API/Concepts/usingapi.htm#nine).
 	// Example: `50`
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
+
+	// The field to sort by. Only one sort order may be provided. Default order for timeAccepted is descending.
+	SortBy ListWorkRequestLogsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
+
+	// The sort order to use, either ascending (`ASC`) or descending (`DESC`).
+	SortOrder ListWorkRequestLogsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.
@@ -88,4 +94,48 @@ func (response ListWorkRequestLogsResponse) String() string {
 // HTTPResponse implements the OCIResponse interface
 func (response ListWorkRequestLogsResponse) HTTPResponse() *http.Response {
 	return response.RawResponse
+}
+
+// ListWorkRequestLogsSortByEnum Enum with underlying type: string
+type ListWorkRequestLogsSortByEnum string
+
+// Set of constants representing the allowable values for ListWorkRequestLogsSortByEnum
+const (
+	ListWorkRequestLogsSortByTimeaccepted ListWorkRequestLogsSortByEnum = "timeAccepted"
+)
+
+var mappingListWorkRequestLogsSortBy = map[string]ListWorkRequestLogsSortByEnum{
+	"timeAccepted": ListWorkRequestLogsSortByTimeaccepted,
+}
+
+// GetListWorkRequestLogsSortByEnumValues Enumerates the set of values for ListWorkRequestLogsSortByEnum
+func GetListWorkRequestLogsSortByEnumValues() []ListWorkRequestLogsSortByEnum {
+	values := make([]ListWorkRequestLogsSortByEnum, 0)
+	for _, v := range mappingListWorkRequestLogsSortBy {
+		values = append(values, v)
+	}
+	return values
+}
+
+// ListWorkRequestLogsSortOrderEnum Enum with underlying type: string
+type ListWorkRequestLogsSortOrderEnum string
+
+// Set of constants representing the allowable values for ListWorkRequestLogsSortOrderEnum
+const (
+	ListWorkRequestLogsSortOrderAsc  ListWorkRequestLogsSortOrderEnum = "ASC"
+	ListWorkRequestLogsSortOrderDesc ListWorkRequestLogsSortOrderEnum = "DESC"
+)
+
+var mappingListWorkRequestLogsSortOrder = map[string]ListWorkRequestLogsSortOrderEnum{
+	"ASC":  ListWorkRequestLogsSortOrderAsc,
+	"DESC": ListWorkRequestLogsSortOrderDesc,
+}
+
+// GetListWorkRequestLogsSortOrderEnumValues Enumerates the set of values for ListWorkRequestLogsSortOrderEnum
+func GetListWorkRequestLogsSortOrderEnumValues() []ListWorkRequestLogsSortOrderEnum {
+	values := make([]ListWorkRequestLogsSortOrderEnum, 0)
+	for _, v := range mappingListWorkRequestLogsSortOrder {
+		values = append(values, v)
+	}
+	return values
 }

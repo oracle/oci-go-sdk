@@ -10,16 +10,16 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
-// WorkRequest A description of work request status.
+// WorkRequest A description of the work request status.
 type WorkRequest struct {
 
 	// Type of the work request.
 	OperationType OperationTypeEnum `mandatory:"true" json:"operationType"`
 
-	// Status of current work request.
+	// Status of the current work request.
 	Status OperationStatusEnum `mandatory:"true" json:"status"`
 
 	// The ID of the work request.

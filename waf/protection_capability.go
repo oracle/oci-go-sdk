@@ -11,7 +11,7 @@
 package waf
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // ProtectionCapability References an OCI-managed protection capability. Checks if HTTP requests/responses are malicious.
