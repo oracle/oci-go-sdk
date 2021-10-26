@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // CustomerContact Customer contact information that will be used by Oracle to provide notifications needed by database and infrastructure administrators.

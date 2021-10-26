@@ -10,19 +10,19 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
-// Sku A single Subscription SKU
+// Sku A single subscription SKU.
 type Sku struct {
 
-	// SKU number
+	// SKU number.
 	Number *string `mandatory:"false" json:"number"`
 
-	// SKU name
+	// SKU name.
 	Name *string `mandatory:"false" json:"name"`
 
-	// SKU quantity
+	// SKU quantity.
 	Quantity *int `mandatory:"false" json:"quantity"`
 }
 

@@ -12,8 +12,8 @@ package tenantmanagercontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v49/common"
-	"github.com/oracle/oci-go-sdk/v49/common/auth"
+	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v50/common/auth"
 	"net/http"
 )
 
@@ -82,7 +82,7 @@ func (client *LinkClient) ConfigurationProvider() *common.ConfigurationProvider 
 	return client.config
 }
 
-// DeleteLink Terminate the link.
+// DeleteLink Starts the link termination workflow.
 //
 // See also
 //

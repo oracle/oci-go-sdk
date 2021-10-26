@@ -10,19 +10,19 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
-// Order Order Details for Console plugin display
+// Order Order details.
 type Order struct {
 
-	// Immutable and unique order number holding customer subscription information
+	// Immutable and unique order number holding customer subscription information.
 	OrderNumber *string `mandatory:"true" json:"orderNumber"`
 
-	// Admin e-mail owning subscription.
+	// Administrator email owning the subscription.
 	AdminEmail *string `mandatory:"true" json:"adminEmail"`
 
-	// State of order.
+	// State of the order.
 	OrderState *string `mandatory:"true" json:"orderState"`
 
 	// Array of subscriptions associated with the order.

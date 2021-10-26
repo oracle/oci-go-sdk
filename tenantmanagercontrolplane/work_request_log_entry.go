@@ -10,7 +10,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // WorkRequestLogEntry A log message from the execution of a work request.
@@ -19,7 +19,7 @@ type WorkRequestLogEntry struct {
 	// Human-readable log message.
 	Message *string `mandatory:"true" json:"message"`
 
-	// The time the log message was written. An RFC3339-formatted date and time string.
+	// The time the log message was written. An RFC 3339-formatted date and time string.
 	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp"`
 }
 

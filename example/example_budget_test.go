@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/oracle/oci-go-sdk/v49/budget"
-	"github.com/oracle/oci-go-sdk/v49/common"
-	"github.com/oracle/oci-go-sdk/v49/example/helpers"
+	"github.com/oracle/oci-go-sdk/v50/budget"
+	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v50/example/helpers"
 )
 
 // ExampleBudget shows the sample for budget operations: create, update, get, list etc...

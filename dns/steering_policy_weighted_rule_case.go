@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // SteeringPolicyWeightedRuleCase The representation of SteeringPolicyWeightedRuleCase

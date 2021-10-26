@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // WorkRequestResource A resource created or operated on by a work request.
@@ -32,6 +32,9 @@ type WorkRequestResource struct {
 
 	// The URI path that the user can do a GET on to access the resource
 	EntityUri *string `mandatory:"false" json:"entityUri"`
+
+	// Additional information that helps to explain the resource.
+	Metadata map[string]string `mandatory:"false" json:"metadata"`
 }
 
 func (m WorkRequestResource) String() string {

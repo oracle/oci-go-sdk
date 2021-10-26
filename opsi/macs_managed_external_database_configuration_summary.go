@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // MacsManagedExternalDatabaseConfigurationSummary Configuration Summary of a Macs Managed External database.
@@ -36,6 +36,9 @@ type MacsManagedExternalDatabaseConfigurationSummary struct {
 
 	// The version of the database.
 	DatabaseVersion *string `mandatory:"true" json:"databaseVersion"`
+
+	// Name of the CDB.Only applies to PDB.
+	CdbName *string `mandatory:"true" json:"cdbName"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
@@ -89,6 +92,11 @@ func (m MacsManagedExternalDatabaseConfigurationSummary) GetDatabaseType() *stri
 //GetDatabaseVersion returns DatabaseVersion
 func (m MacsManagedExternalDatabaseConfigurationSummary) GetDatabaseVersion() *string {
 	return m.DatabaseVersion
+}
+
+//GetCdbName returns CdbName
+func (m MacsManagedExternalDatabaseConfigurationSummary) GetCdbName() *string {
+	return m.CdbName
 }
 
 //GetDefinedTags returns DefinedTags

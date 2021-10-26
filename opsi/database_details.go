@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // DatabaseDetails Partial information about the database which includes id, name, type.
@@ -38,6 +38,9 @@ type DatabaseDetails struct {
 
 	// Array of hostname and instance name.
 	Instances []HostInstanceMap `mandatory:"false" json:"instances"`
+
+	// Name of the CDB.Only applies to PDB.
+	CdbName *string `mandatory:"false" json:"cdbName"`
 }
 
 func (m DatabaseDetails) String() string {

@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // HostInsightSummary Summary of a host insight resource.
@@ -125,6 +125,10 @@ func (m *hostinsightsummary) UnmarshalPolymorphicJSON(data []byte) (interface{},
 	switch m.EntitySource {
 	case "MACS_MANAGED_EXTERNAL_HOST":
 		mm := MacsManagedExternalHostInsightSummary{}
+		err = json.Unmarshal(data, &mm)
+		return mm, err
+	case "EM_MANAGED_EXTERNAL_HOST":
+		mm := EmManagedExternalHostInsightSummary{}
 		err = json.Unmarshal(data, &mm)
 		return mm, err
 	default:

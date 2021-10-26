@@ -4,14 +4,14 @@
 
 // Data Integration API
 //
-// Use the Data Integration Service APIs to perform common extract, load, and transform (ETL) tasks.
+// Use the Data Integration API to organize your data integration projects, create data flows, pipelines and tasks, and then publish, schedule, and run tasks that extract, transform, and load data. For more information, see Data Integration (https://docs.oracle.com/iaas/data-integration/home.htm).
 //
 
 package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // DerivedField The type representing the derived field concept. Derived fields have an expression to define how to derive the field.
@@ -40,6 +40,9 @@ type DerivedField struct {
 
 	// The type of the field.
 	Type *string `mandatory:"false" json:"type"`
+
+	// Specifies whether to use inferred expression output type as output type of the derived field. Default value of this flag is false.
+	IsUseInferredType *bool `mandatory:"false" json:"isUseInferredType"`
 
 	// Labels are keywords or labels that you can add to data assets, dataflows and so on. You can define your own labels and use them to categorize content.
 	Labels []string `mandatory:"false" json:"labels"`

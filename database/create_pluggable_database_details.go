@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // CreatePluggableDatabaseDetails Parameters for creating a pluggable database in a specified container database (CDB).

@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // CreateEmManagedExternalDatabaseInsightDetails The information about database to be analyzed.
@@ -38,6 +38,9 @@ type CreateEmManagedExternalDatabaseInsightDetails struct {
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// Example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
+
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the Exadata insight.
+	ExadataInsightId *string `mandatory:"false" json:"exadataInsightId"`
 }
 
 //GetCompartmentId returns CompartmentId

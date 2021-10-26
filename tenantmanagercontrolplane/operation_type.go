@@ -17,20 +17,28 @@ const (
 	OperationTypeCreateSenderInvitation       OperationTypeEnum = "CREATE_SENDER_INVITATION"
 	OperationTypeAcceptRecipientInvitation    OperationTypeEnum = "ACCEPT_RECIPIENT_INVITATION"
 	OperationTypeCancelSenderInvitation       OperationTypeEnum = "CANCEL_SENDER_INVITATION"
+	OperationTypeCompleteOrderActivation      OperationTypeEnum = "COMPLETE_ORDER_ACTIVATION"
 	OperationTypeActivateOrderExistingTenancy OperationTypeEnum = "ACTIVATE_ORDER_EXISTING_TENANCY"
 	OperationTypeRegisterDomain               OperationTypeEnum = "REGISTER_DOMAIN"
 	OperationTypeReleaseDomain                OperationTypeEnum = "RELEASE_DOMAIN"
 	OperationTypeCreateChildTenancy           OperationTypeEnum = "CREATE_CHILD_TENANCY"
+	OperationTypeAssignDefaultSubscription    OperationTypeEnum = "ASSIGN_DEFAULT_SUBSCRIPTION"
+	OperationTypeManualLinkCreation           OperationTypeEnum = "MANUAL_LINK_CREATION"
+	OperationTypeTerminateOrganizationTenancy OperationTypeEnum = "TERMINATE_ORGANIZATION_TENANCY"
 )
 
 var mappingOperationType = map[string]OperationTypeEnum{
 	"CREATE_SENDER_INVITATION":        OperationTypeCreateSenderInvitation,
 	"ACCEPT_RECIPIENT_INVITATION":     OperationTypeAcceptRecipientInvitation,
 	"CANCEL_SENDER_INVITATION":        OperationTypeCancelSenderInvitation,
+	"COMPLETE_ORDER_ACTIVATION":       OperationTypeCompleteOrderActivation,
 	"ACTIVATE_ORDER_EXISTING_TENANCY": OperationTypeActivateOrderExistingTenancy,
 	"REGISTER_DOMAIN":                 OperationTypeRegisterDomain,
 	"RELEASE_DOMAIN":                  OperationTypeReleaseDomain,
 	"CREATE_CHILD_TENANCY":            OperationTypeCreateChildTenancy,
+	"ASSIGN_DEFAULT_SUBSCRIPTION":     OperationTypeAssignDefaultSubscription,
+	"MANUAL_LINK_CREATION":            OperationTypeManualLinkCreation,
+	"TERMINATE_ORGANIZATION_TENANCY":  OperationTypeTerminateOrganizationTenancy,
 }
 
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum

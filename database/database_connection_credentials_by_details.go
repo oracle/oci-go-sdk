@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // DatabaseConnectionCredentialsByDetails User information to connect to the database. Required when performing the CreateExternalDatabaseConnectorDetails operation.

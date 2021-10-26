@@ -10,7 +10,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // Domain The domain model that is associated with a tenancy.
@@ -34,10 +34,10 @@ type Domain struct {
 	// The code that the owner of the domain will need to add as a TXT record to their domain.
 	TxtRecord *string `mandatory:"true" json:"txtRecord"`
 
-	// Date-time when this domain was created. An RFC3339-formatted date and time string.
+	// Date-time when this domain was created. An RFC 3339-formatted date and time string.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// Date-time when this domain was last updated. An RFC3339-formatted date and time string.
+	// Date-time when this domain was last updated. An RFC 3339-formatted date and time string.
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.

@@ -10,7 +10,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // DomainGovernanceSummary The summary of a domain govenance entity owned by a tenancy.
@@ -40,10 +40,10 @@ type DomainGovernanceSummary struct {
 	// The email to notify the user, and that the ONS subscription will be created with.
 	SubscriptionEmail *string `mandatory:"false" json:"subscriptionEmail"`
 
-	// Date-time when this domain governance was created. An RFC3339-formatted date and time string.
+	// Date-time when this domain governance was created. An RFC 3339-formatted date and time string.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// Date-time when this domain governance was last updated. An RFC3339-formatted date and time string.
+	// Date-time when this domain governance was last updated. An RFC 3339-formatted date and time string.
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.

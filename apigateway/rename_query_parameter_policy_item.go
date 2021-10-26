@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // RenameQueryParameterPolicyItem The value will be a copy of the original value of the source parameter and will not be affected by any other

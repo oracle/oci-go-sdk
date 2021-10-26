@@ -11,7 +11,7 @@
 package waf
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // WorkRequestLogEntryCollection Result of a WorkRequestLog search. Contains both WorkRequestLog items and other information, such as metadata.
