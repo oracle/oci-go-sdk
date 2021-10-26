@@ -11,7 +11,7 @@ package cims
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // ActivityItem Details about the ActivityItem object.

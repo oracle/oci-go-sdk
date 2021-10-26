@@ -10,7 +10,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // EsxiHostSummary A summary of the ESXi host.
@@ -36,6 +36,9 @@ type EsxiHostSummary struct {
 	// becomes the new `currentSKU` when the `contractEndDate` is reached.
 	// Example: `2016-08-25T21:10:29.600Z`
 	BillingContractEndDate *common.SDKTime `mandatory:"true" json:"billingContractEndDate"`
+
+	// The availability domain of the ESXi host.
+	ComputeAvailabilityDomain *string `mandatory:"true" json:"computeAvailabilityDomain"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no
 	// predefined name, type, or namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).

@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // UpdateConnectDescriptor Connect Descriptor details. If a Private Endpoint was specified in the Connection, the host entry should be a valid IP address.

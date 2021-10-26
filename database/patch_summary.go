@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // PatchSummary A Patch for a DB system or DB Home.

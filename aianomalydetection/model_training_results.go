@@ -12,7 +12,7 @@
 package aianomalydetection
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // ModelTrainingResults Specifies the details for an Anomaly Detection model trained with MSET.

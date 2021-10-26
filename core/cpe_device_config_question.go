@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // CpeDeviceConfigQuestion An individual question that the customer can answer about the CPE device.

@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // UpdateExternalContainerDatabaseDetails Details for updating an external container database. This API is not currently supported.

@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // Storage This is the storage configuration and status of a tenancy in Logan Analytics application

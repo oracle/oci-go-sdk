@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // SearchListingsDetails The base model for a Search Listings details.

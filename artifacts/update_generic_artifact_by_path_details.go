@@ -11,7 +11,7 @@
 package artifacts
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // UpdateGenericArtifactByPathDetails Details for updating an artifact by providing its `artifactPath` and `version`.

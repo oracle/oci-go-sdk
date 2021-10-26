@@ -13,7 +13,7 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // FunctionTaskDetails The function task. Batch input can be limited by either size or time. The first limit reached determines the boundary of the batch.

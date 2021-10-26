@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // LogLocationBucketDetails Details to access log file in the specified Object Storage bucket, if any.

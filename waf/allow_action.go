@@ -12,7 +12,7 @@ package waf
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // AllowAction An object that represents an action which upon matching rule skips all remaining rules in the current module.

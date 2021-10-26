@@ -11,7 +11,7 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // GenericEntity This is an extensible entity type for users and the base entity type for some annotation formats

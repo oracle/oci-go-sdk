@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // FastConnectProviderService A service offering from a supported provider. For more information,

@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // AnalyticsClusterMemoryEstimate DEPRECATED -- please use HeatWave API instead.

@@ -10,7 +10,7 @@
 package networkloadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // CreateBackendDetails The configuration of a backend server that is a member of a network load balancer backend set.

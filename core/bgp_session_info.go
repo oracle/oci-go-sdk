@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // BgpSessionInfo Information for establishing a BGP session for the IPSec tunnel.

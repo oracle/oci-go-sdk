@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // UpdateDeploymentDetails The information to be updated.

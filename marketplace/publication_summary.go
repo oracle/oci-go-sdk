@@ -10,7 +10,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // PublicationSummary The model for a summary of an Oracle Cloud Infrastructure publication.

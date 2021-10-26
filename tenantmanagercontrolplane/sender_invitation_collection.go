@@ -10,7 +10,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // SenderInvitationCollection Result of a query request for a list of sender invitations. Contains SenderInvitationSummary items.

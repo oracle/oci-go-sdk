@@ -12,7 +12,7 @@
 package healthchecks
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // PingProbeResultSummary The results returned by running a ping probe.  All times and durations are

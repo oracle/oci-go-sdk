@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // EntityTag Represents an association of an entity to a term.

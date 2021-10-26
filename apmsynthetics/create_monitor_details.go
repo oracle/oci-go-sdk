@@ -11,7 +11,7 @@ package apmsynthetics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // CreateMonitorDetails Details of the request body used to create a new monitor.

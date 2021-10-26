@@ -12,7 +12,7 @@
 package healthchecks
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // CreateOnDemandHttpProbeDetails The request body used to create an on-demand HTTP probe.

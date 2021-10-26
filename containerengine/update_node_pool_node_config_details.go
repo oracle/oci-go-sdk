@@ -12,7 +12,7 @@
 package containerengine
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // UpdateNodePoolNodeConfigDetails The size and placement configuration of nodes in the node pool.

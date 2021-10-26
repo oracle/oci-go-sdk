@@ -13,7 +13,7 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // CreateServiceConnectorDetails The configuration details for creating a service connector.

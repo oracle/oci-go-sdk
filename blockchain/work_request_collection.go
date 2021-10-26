@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // WorkRequestCollection Result of a platform list or search. Contains WorkRequestSummary

@@ -11,7 +11,7 @@ package apmconfig
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // ConfigCollection A collection of configuration entities

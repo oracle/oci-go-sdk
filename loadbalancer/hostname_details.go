@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // HostnameDetails The details of a hostname resource associated with a load balancer.

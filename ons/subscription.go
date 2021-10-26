@@ -11,7 +11,7 @@
 package ons
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // Subscription The subscription's configuration. For general information about subscriptions, see

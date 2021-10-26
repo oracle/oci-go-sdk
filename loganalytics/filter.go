@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // Filter Query builder filter action to apply edit to queryString.

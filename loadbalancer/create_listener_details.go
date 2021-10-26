@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // CreateListenerDetails The configuration details for adding a listener to a backend set.

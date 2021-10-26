@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // DetachInstancePoolInstanceDetails An instance that is to be detached from an instance pool.

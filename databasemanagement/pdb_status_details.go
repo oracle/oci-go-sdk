@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // PdbStatusDetails The number and status of PDBs in a Container Database.

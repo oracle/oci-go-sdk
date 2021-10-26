@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // AutonomousDatabaseBackupConfig Autonomous Database configuration details for storing manual backups (https://docs.cloud.oracle.com/Content/Database/Tasks/adbbackingup.htm) in the Object Storage (https://docs.cloud.oracle.com/Content/Object/Concepts/objectstorageoverview.htm) service.

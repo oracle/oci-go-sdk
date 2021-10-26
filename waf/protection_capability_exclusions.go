@@ -11,7 +11,7 @@
 package waf
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // ProtectionCapabilityExclusions Identifies specific HTTP message parameters to exclude from inspection by a protection capability.

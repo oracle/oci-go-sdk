@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // HttpHeaderRule An object that represents the advance http header options that allow the setting of http header size and allow/disallow

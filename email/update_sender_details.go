@@ -14,7 +14,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // UpdateSenderDetails The details allowed for updating a sender.

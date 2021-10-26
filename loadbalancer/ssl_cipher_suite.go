@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // SslCipherSuite The configuration details of an SSL cipher suite.

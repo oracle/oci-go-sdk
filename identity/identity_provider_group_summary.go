@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // IdentityProviderGroupSummary A group created in an identity provider that can be mapped to a group in OCI

@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // EntityTagCollection Results of an entity tags listing. Entity tags allow assciation of business terms with entities.

@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // TopologyEntityRelationship Defines the relationship between Virtual Network topology entities.

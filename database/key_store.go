@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // KeyStore A key store to connect to an on-premise encryption key appliance like Oracle Key Vault.

@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // HostMemoryConfiguration Memory Configuration metric for the host

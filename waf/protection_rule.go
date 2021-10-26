@@ -12,7 +12,7 @@ package waf
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // ProtectionRule Rule that represents Request/Response Protection.

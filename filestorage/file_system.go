@@ -10,7 +10,7 @@
 package filestorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // FileSystem An NFS file system. To allow access to a file system, add it

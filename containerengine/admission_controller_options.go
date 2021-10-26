@@ -12,7 +12,7 @@
 package containerengine
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // AdmissionControllerOptions The properties that define supported admission controllers.

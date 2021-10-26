@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // UpdateSqlJobDetails The details specific to the SQL job request.

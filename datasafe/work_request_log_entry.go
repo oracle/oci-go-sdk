@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // WorkRequestLogEntry A log entry related to a work request.

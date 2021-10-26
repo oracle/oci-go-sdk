@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // LookupSummaryReport Summary report of lookups in the tenancy.

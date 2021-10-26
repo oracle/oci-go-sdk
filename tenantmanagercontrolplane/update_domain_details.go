@@ -10,7 +10,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // UpdateDomainDetails The parameters for updating a domain.

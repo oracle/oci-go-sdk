@@ -10,7 +10,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // UpdateBulkProblemStatusDetails List of problem ids to be passed in to update the Problem status.

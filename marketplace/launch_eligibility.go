@@ -10,7 +10,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // LaunchEligibility Tenant eligibility and other information for launching a PIC image

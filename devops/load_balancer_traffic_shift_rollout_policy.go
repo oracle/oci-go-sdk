@@ -10,7 +10,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // LoadBalancerTrafficShiftRolloutPolicy Description of rollout policy for load balancer traffic shift stage.

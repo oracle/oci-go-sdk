@@ -13,7 +13,7 @@
 package resourcemanager
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // ResourceDiscoveryServiceSummary A service supported for use with Resource Discovery.

@@ -12,7 +12,7 @@
 package healthchecks
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // PingMonitor A summary containing all of the mutable and immutable properties for a ping monitor.

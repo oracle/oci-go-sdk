@@ -11,7 +11,7 @@
 package ons
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // BackoffRetryPolicy The backoff retry portion of the subscription delivery policy. For information about retry durations for subscriptions, see

@@ -11,7 +11,7 @@
 package loadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // LoadBalancerPolicy A policy that determines how traffic is distributed among backend servers.

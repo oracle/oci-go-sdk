@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // CreateOsnDetails The Ordering Service Node details to be added

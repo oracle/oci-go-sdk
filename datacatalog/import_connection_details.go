@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // ImportConnectionDetails Import connection from the connection metadata and oracle wallet file.

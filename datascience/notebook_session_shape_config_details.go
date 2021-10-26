@@ -10,7 +10,7 @@
 package datascience
 
 import (
-	"github.com/oracle/oci-go-sdk/v49/common"
+	"github.com/oracle/oci-go-sdk/v50/common"
 )
 
 // NotebookSessionShapeConfigDetails Details for the notebook session shape configuration.
