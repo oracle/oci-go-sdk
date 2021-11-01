@@ -71,6 +71,11 @@ func TestEndpoint(t *testing.T) {
 	endpoint = region.Endpoint("bar")
 	assert.Equal(t, "bar.sa-vinhedo-1.oraclecloud.com", endpoint)
 
+	os.Setenv("OCI_DEFAULT_REALM", "oraclevaporcloud.space")
+	region = StringToRegion("us-unknownregion-1")
+	endpoint = region.Endpoint("foo")
+	assert.Equal(t, "foo.us-unknownregion-1.oraclevaporcloud.space", endpoint)
+	os.Unsetenv("OCI_DEFAULT_REALM")
 	// OC2
 	region = StringToRegion("us-langley-1")
 	endpoint = region.Endpoint("bar")
@@ -285,6 +290,7 @@ func TestStringToRegion(t *testing.T) {
 	os.Unsetenv("OCI_REGION_METADATA")
 	os.Setenv("OCI_REGION_METADATA", regionMetadataEnvVar)
 	defer os.Unsetenv("OCI_REGION_METADATA")
+	readEnvVar = true
 
 	region = StringToRegion("rtk")
 	assert.Equal(t, Region("us-testregion-1"), region)
