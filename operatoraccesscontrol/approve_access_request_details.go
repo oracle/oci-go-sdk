@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ApproveAccessRequestDetails Details of the access request approval.
@@ -28,6 +28,9 @@ type ApproveAccessRequestDetails struct {
 
 	// Message that needs to be displayed to the Ops User.
 	AdditionalMessage *string `mandatory:"false" json:"additionalMessage"`
+
+	// The time when access request is scheduled to be approved in RFC 3339 (https://tools.ietf.org/html/rfc3339) timestamp format.Example: '2020-05-22T21:10:29.600Z'
+	TimeOfUserCreation *common.SDKTime `mandatory:"false" json:"timeOfUserCreation"`
 }
 
 func (m ApproveAccessRequestDetails) String() string {

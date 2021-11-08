@@ -10,7 +10,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DiffResponse Response object for obtaining list of changed files.

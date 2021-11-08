@@ -11,7 +11,7 @@
 package computeinstanceagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // AvailablePluginSummary Describes where the plugin is supported

@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // OperatorActionSummary Details of the operator action. Operator actions are pre-defined set of commands available to the operator on different layers of the infrastructure.
@@ -29,6 +29,9 @@ type OperatorActionSummary struct {
 
 	// compartmentId for which the OperatorAction is applicable
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
+
+	// resourceType for which the OperatorAction is applicable
+	ResourceType ResourceTypesEnum `mandatory:"false" json:"resourceType,omitempty"`
 
 	// The current lifecycle state of the operator action.
 	LifecycleState OperatorActionLifecycleStatesEnum `mandatory:"false" json:"lifecycleState,omitempty"`

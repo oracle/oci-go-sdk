@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateOperatorControlDetails While creating the operator control, specify how operator actions are approved and the users who have the privilege of approving the operator actions associated with the Operator Control.
@@ -23,6 +23,16 @@ type CreateOperatorControlDetails struct {
 	// Name of the operator control.
 	OperatorControlName *string `mandatory:"true" json:"operatorControlName"`
 
+	// List of user groups who can approve an access request associated with a resource governed by this operator control.
+	ApproverGroupsList []string `mandatory:"true" json:"approverGroupsList"`
+
+	// Whether all the operator actions have been pre-approved. If yes, all access requests associated with a resource governed by this operator control
+	// will be auto-approved.
+	IsFullyPreApproved *bool `mandatory:"true" json:"isFullyPreApproved"`
+
+	// resourceType for which the OperatorControl is applicable
+	ResourceType ResourceTypesEnum `mandatory:"true" json:"resourceType"`
+
 	// The OCID of the compartment that contains this operator control.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
@@ -32,16 +42,9 @@ type CreateOperatorControlDetails struct {
 	// List of users who can approve an access request associated with a resource governed by this operator control.
 	ApproversList []string `mandatory:"false" json:"approversList"`
 
-	// List of user groups who can approve an access request associated with a resource governed by this operator control.
-	ApproverGroupsList []string `mandatory:"false" json:"approverGroupsList"`
-
 	// List of pre-approved operator actions. Access requests associated with a resource governed by this operator control will be
 	// auto-approved if the access request only contain operator actions in the pre-approved list.
 	PreApprovedOpActionList []string `mandatory:"false" json:"preApprovedOpActionList"`
-
-	// Whether all the operator actions have been pre-approved. If yes, all access requests associated with a resource governed by this operator control
-	// will be auto-approved.
-	IsFullyPreApproved *bool `mandatory:"false" json:"isFullyPreApproved"`
 
 	// List of emailId.
 	EmailIdList []string `mandatory:"false" json:"emailIdList"`

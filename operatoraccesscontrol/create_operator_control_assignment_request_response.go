@@ -5,7 +5,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 	"net/http"
 )
 
@@ -61,6 +61,12 @@ type CreateOperatorControlAssignmentResponse struct {
 
 	// The underlying http response
 	RawResponse *http.Response
+
+	// The OperatorControlAssignment instance
+	OperatorControlAssignment `presentIn:"body"`
+
+	// For optimistic concurrency control. See `if-match`.
+	Etag *string `presentIn:"header" name:"etag"`
 
 	// Unique Oracle-assigned identifier for the asynchronous request. You can use this to query status of the asynchronous operation.
 	OpcWorkRequestId *string `presentIn:"header" name:"opc-work-request-id"`

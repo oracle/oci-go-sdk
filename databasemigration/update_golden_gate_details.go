@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateGoldenGateDetails Details about Oracle GoldenGate Microservices. If an empty object is specified, the stored Golden Gate details will be removed.

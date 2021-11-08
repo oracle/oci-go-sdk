@@ -10,7 +10,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // WorkRequestError An object returned in the event of a work request error.

@@ -10,7 +10,7 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // PartitionReservation Represents the state of a single partition reservation.

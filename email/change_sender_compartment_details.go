@@ -14,7 +14,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ChangeSenderCompartmentDetails The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment

@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // Record A DNS resource record. For more information, see

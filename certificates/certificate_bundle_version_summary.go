@@ -10,7 +10,7 @@
 package certificates
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CertificateBundleVersionSummary The properties of the certificate bundle. Certificate bundle version summary objects do not include the actual contents of the certificate.

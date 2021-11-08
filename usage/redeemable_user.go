@@ -10,7 +10,7 @@
 package usage
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // RedeemableUser The Email object for redeemable user.

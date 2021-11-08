@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // AddHttpResponseHeaderRule An object that represents the action of adding a header to a response.

@@ -12,7 +12,7 @@
 package objectstorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // PreauthenticatedRequest Pre-authenticated requests provide a way to let users access a bucket or an object without having their own credentials.

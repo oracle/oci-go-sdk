@@ -12,7 +12,7 @@ package waf
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateNetworkAddressListAddressesDetails The information to be updated for NetworkAddressListAddresses.

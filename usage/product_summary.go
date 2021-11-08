@@ -10,7 +10,7 @@
 package usage
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ProductSummary It provides details about a product rewards and usage amount.

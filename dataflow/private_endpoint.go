@@ -10,7 +10,7 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // PrivateEndpoint A Data Flow private endpoint object.

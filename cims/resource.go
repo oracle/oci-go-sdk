@@ -11,7 +11,7 @@ package cims
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // Resource Details about the ticket item object.

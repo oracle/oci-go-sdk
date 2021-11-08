@@ -11,7 +11,7 @@ package datascience
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ModelDeployment Model deployments are used by data scientists to perform predictions from the model hosted on an HTTP server.

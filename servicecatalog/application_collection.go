@@ -10,7 +10,7 @@
 package servicecatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ApplicationCollection Collection of applications in a given service catalog or a tenancy.

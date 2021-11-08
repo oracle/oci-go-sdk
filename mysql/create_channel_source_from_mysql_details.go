@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateChannelSourceFromMysqlDetails Parameters detailing how to provision the source endpoint that is a MySQL Server.

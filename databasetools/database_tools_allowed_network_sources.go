@@ -10,7 +10,7 @@
 package databasetools
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DatabaseToolsAllowedNetworkSources Allow to restrict access to only requests that come from the specified public or virtual source IP addresses.

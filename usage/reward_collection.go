@@ -10,7 +10,7 @@
 package usage
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // RewardCollection The response object for the ListRewards API call. It provides information about the rewards for a subscription.

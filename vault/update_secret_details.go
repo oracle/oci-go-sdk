@@ -11,7 +11,7 @@ package vault
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateSecretDetails Details for updating a secret.

@@ -11,7 +11,7 @@
 package waf
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ProtectionCapabilityGroupTagCollection Result of a protection capabilities group tags search.

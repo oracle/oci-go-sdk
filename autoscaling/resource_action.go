@@ -15,7 +15,7 @@ package autoscaling
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ResourceAction An action that can be executed against a resource.

@@ -10,7 +10,7 @@
 package servicecatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ServiceCatalogAssociationSummary The model for a summary of a service catalog association.

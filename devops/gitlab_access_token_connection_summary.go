@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // GitlabAccessTokenConnectionSummary Summary information for a connection of the type `GITLAB_ACCESS_TOKEN`.

@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DatabaseUpgradeWithDatabaseSoftwareImageDetails Details of the database software image to be used to upgrade a database.

@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // TopologyContainsEntityRelationship Defines the `contains` relationship between virtual network topology entities. A `Contains` relationship

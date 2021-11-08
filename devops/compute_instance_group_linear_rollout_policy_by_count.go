@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ComputeInstanceGroupLinearRolloutPolicyByCount Specifies a linear rollout strategy for a compute instance group rolling deployment stage.

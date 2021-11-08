@@ -13,7 +13,7 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ObjectStorageTargetDetails The bucket used for the Object Storage target.

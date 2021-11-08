@@ -10,7 +10,7 @@
 package integration
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // VirtualCloudNetwork Virtual Cloud Network definition.

@@ -10,7 +10,7 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateStreamPoolDetails Object used to update the stream pool's details.

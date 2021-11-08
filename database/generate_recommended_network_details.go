@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // GenerateRecommendedNetworkDetails Generates a recommended VM cluster network configuration for an Exadata Cloud@Customer system. Applies to Exadata Cloud@Customer instances only.

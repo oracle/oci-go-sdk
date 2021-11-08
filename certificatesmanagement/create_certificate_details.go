@@ -11,7 +11,7 @@ package certificatesmanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateCertificateDetails The details of the certificate to create.

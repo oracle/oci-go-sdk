@@ -36,6 +36,8 @@ const (
 	AccessRequestLifecycleStatesCompleting        AccessRequestLifecycleStatesEnum = "COMPLETING"
 	AccessRequestLifecycleStatesCompleted         AccessRequestLifecycleStatesEnum = "COMPLETED"
 	AccessRequestLifecycleStatesExpired           AccessRequestLifecycleStatesEnum = "EXPIRED"
+	AccessRequestLifecycleStatesApprovedforfuture AccessRequestLifecycleStatesEnum = "APPROVEDFORFUTURE"
+	AccessRequestLifecycleStatesInreview          AccessRequestLifecycleStatesEnum = "INREVIEW"
 )
 
 var mappingAccessRequestLifecycleStates = map[string]AccessRequestLifecycleStatesEnum{
@@ -59,6 +61,8 @@ var mappingAccessRequestLifecycleStates = map[string]AccessRequestLifecycleState
 	"COMPLETING":        AccessRequestLifecycleStatesCompleting,
 	"COMPLETED":         AccessRequestLifecycleStatesCompleted,
 	"EXPIRED":           AccessRequestLifecycleStatesExpired,
+	"APPROVEDFORFUTURE": AccessRequestLifecycleStatesApprovedforfuture,
+	"INREVIEW":          AccessRequestLifecycleStatesInreview,
 }
 
 // GetAccessRequestLifecycleStatesEnumValues Enumerates the set of values for AccessRequestLifecycleStatesEnum

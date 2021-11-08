@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // PublicationPackage A base object for all types of publication packages.

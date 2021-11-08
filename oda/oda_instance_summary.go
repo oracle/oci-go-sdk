@@ -10,7 +10,7 @@
 package oda
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // OdaInstanceSummary Summary of the Digital Assistant instance.

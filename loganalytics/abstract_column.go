@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // AbstractColumn Generic column defining all attributes common to all querylanguage columns.

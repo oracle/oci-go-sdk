@@ -10,7 +10,7 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // RoverNodeActionSetKeyDetails The information required to update a rover node's set key details.

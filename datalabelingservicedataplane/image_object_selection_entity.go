@@ -11,7 +11,7 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ImageObjectSelectionEntity This allows the labeler to use specify a series of coordinates in the image to represent an object and apply labels to it.  The coordinates will be connected in the order that they are provided and the last coordinate in the array will be connected to the first.

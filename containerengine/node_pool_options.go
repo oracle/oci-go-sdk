@@ -13,7 +13,7 @@ package containerengine
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // NodePoolOptions Options for creating or updating node pools.

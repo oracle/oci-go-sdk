@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DbSystem A DB System is the core logical unit of MySQL Database Service.

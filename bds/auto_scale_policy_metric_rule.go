@@ -10,7 +10,7 @@
 package bds
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // AutoScalePolicyMetricRule Metric and threshold details for triggering an autoscale action.

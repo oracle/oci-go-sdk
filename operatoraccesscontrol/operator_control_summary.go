@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // OperatorControlSummary Summary of the OperatorControl.
@@ -29,6 +29,9 @@ type OperatorControlSummary struct {
 
 	// Whether all operator actions are pre-approved. If yes, an access request associated with a resource governed by the operator control will be automatically approved by the system.
 	IsFullyPreApproved *bool `mandatory:"false" json:"isFullyPreApproved"`
+
+	// resourceType for which the OperatorControl is applicable
+	ResourceType ResourceTypesEnum `mandatory:"false" json:"resourceType,omitempty"`
 
 	// Time when the operator control was created, expressed in RFC 3339  (https://tools.ietf.org/html/rfc3339) timestamp format. Example: '2020-05-22T21:10:29.600Z'
 	TimeOfCreation *common.SDKTime `mandatory:"false" json:"timeOfCreation"`

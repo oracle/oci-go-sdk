@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DbSystemSource Parameters detailing how to provision the initial data of the DB System.

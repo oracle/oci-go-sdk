@@ -10,7 +10,7 @@
 package apmsynthetics
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ScriptCollection The results of a script search, which contains both ScriptSummary items and other data in an APM domain.

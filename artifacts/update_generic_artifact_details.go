@@ -11,7 +11,7 @@
 package artifacts
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateGenericArtifactDetails Details for updating an artifact by providing its OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).

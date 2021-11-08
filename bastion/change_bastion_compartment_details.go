@@ -10,7 +10,7 @@
 package bastion
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ChangeBastionCompartmentDetails Details about the compartment that the bastion should move to.
