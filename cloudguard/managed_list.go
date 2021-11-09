@@ -10,7 +10,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ManagedList A cloud guard list containing one or more items of a list type

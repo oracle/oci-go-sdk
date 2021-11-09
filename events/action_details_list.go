@@ -12,7 +12,7 @@ package events
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ActionDetailsList A list of ActionDetails objects to create for a rule.

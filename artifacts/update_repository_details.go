@@ -12,7 +12,7 @@ package artifacts
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateRepositoryDetails Details for updating a repository.

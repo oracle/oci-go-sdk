@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // AccessRequest An Oracle operator raises access request when they need access to any infrastructure resource governed by Operator Access Control.
@@ -48,6 +48,9 @@ type AccessRequest struct {
 	// The OCID of the compartment that contains the access request.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 
+	// resourceType for which the AccessRequest is applicable
+	ResourceType ResourceTypesEnum `mandatory:"false" json:"resourceType,omitempty"`
+
 	// List of operator actions for which approval is sought by the operator user.
 	ActionRequestsList []string `mandatory:"false" json:"actionRequestsList"`
 
@@ -78,6 +81,9 @@ type AccessRequest struct {
 
 	// Time when the access request was last modified in RFC 3339 (https://tools.ietf.org/html/rfc3339)timestamp format. Example: '2020-05-22T21:10:29.600Z'
 	TimeOfModification *common.SDKTime `mandatory:"false" json:"timeOfModification"`
+
+	// The time when access request is scheduled to be approved in RFC 3339 (https://tools.ietf.org/html/rfc3339) timestamp format.Example: '2020-05-22T21:10:29.600Z'
+	TimeOfUserCreation *common.SDKTime `mandatory:"false" json:"timeOfUserCreation"`
 
 	// The OCID of the user that last modified the access request.
 	UserId *string `mandatory:"false" json:"userId"`

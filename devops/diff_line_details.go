@@ -10,7 +10,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DiffLineDetails Details about a line within the diff.

@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // OperatorControlAssignmentSummary Details of the operator control assignment.
@@ -30,8 +30,8 @@ type OperatorControlAssignmentSummary struct {
 	// The OCID of the compartment that contains the operator control assignment.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Type of the target resource being governed by the operator control.
-	ResourceType *string `mandatory:"false" json:"resourceType"`
+	// resourceType for which the OperatorControlAssignment is applicable
+	ResourceType ResourceTypesEnum `mandatory:"false" json:"resourceType,omitempty"`
 
 	// The time at which the target resource will be brought under the governance of the operator control in RFC 3339 (https://tools.ietf.org/html/rfc3339) timestamp format. Example: '2020-05-22T21:10:29.600Z'
 	TimeAssignmentFrom *common.SDKTime `mandatory:"false" json:"timeAssignmentFrom"`
@@ -44,6 +44,21 @@ type OperatorControlAssignmentSummary struct {
 
 	// Time when the operator control assignment is created in RFC 3339 (https://tools.ietf.org/html/rfc3339) timestamp format. Example: '2020-05-22T21:10:29.600Z'
 	TimeOfAssignment *common.SDKTime `mandatory:"false" json:"timeOfAssignment"`
+
+	// The code identifying the error occurred during Assignment operation.
+	ErrorCode *int `mandatory:"false" json:"errorCode"`
+
+	// The message describing the error occurred during Assignment operation.
+	ErrorMessage *string `mandatory:"false" json:"errorMessage"`
+
+	// If set, then the audit logs are being forwarded to the relevant remote logging server
+	IsLogForwarded *bool `mandatory:"false" json:"isLogForwarded"`
+
+	// The address of the remote syslog server where the audit logs are being forwarded to. Address in host or IP format.
+	RemoteSyslogServerAddress *string `mandatory:"false" json:"remoteSyslogServerAddress"`
+
+	// The listening port of the remote syslog server. The port range is 0 - 65535.
+	RemoteSyslogServerPort *int `mandatory:"false" json:"remoteSyslogServerPort"`
 
 	// The current lifcycle state of the OperatorControl.
 	LifecycleState OperatorControlAssignmentLifecycleStatesEnum `mandatory:"false" json:"lifecycleState,omitempty"`

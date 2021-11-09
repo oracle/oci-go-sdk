@@ -11,7 +11,7 @@ package announcementsservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // BaseAnnouncement Incident information that forms the basis of an announcement. Avoid entering confidential information.

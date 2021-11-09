@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // OperatorAction Details of the operator action. Operator actions are a pre-defined set of commands available to the operator on different layers of the infrastructure. Although the groupings may differ depending on the infrastructure layers,
@@ -24,11 +24,17 @@ type OperatorAction struct {
 	// Unique Oracle assigned identifier for the operator action.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Name of the operator action.
+	// Unique name of the operator action.
 	Name *string `mandatory:"true" json:"name"`
+
+	// Display Name of the operator action.
+	CustomerDisplayName *string `mandatory:"false" json:"customerDisplayName"`
 
 	// Name of the infrastructure layer associated with the operator action.
 	Component *string `mandatory:"false" json:"component"`
+
+	// resourceType for which the OperatorAction is applicable
+	ResourceType ResourceTypesEnum `mandatory:"false" json:"resourceType,omitempty"`
 
 	// Description of the operator action in terms of associated risk profile, and characteristics of the operating system commands made
 	// available to the operator under this operator action.

@@ -10,7 +10,7 @@
 package certificates
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // Validity An object that describes a period of time during which an entity is valid.

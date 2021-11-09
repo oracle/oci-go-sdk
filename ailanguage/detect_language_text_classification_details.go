@@ -12,7 +12,7 @@
 package ailanguage
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DetectLanguageTextClassificationDetails The document details for text classification detect call.

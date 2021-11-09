@@ -10,7 +10,7 @@
 package certificatesmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ChangeCaBundleCompartmentDetails The details of the request to change compartments for the CA bundle.

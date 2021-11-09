@@ -10,7 +10,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ChangePublicationCompartmentDetails The model for the parameters needed move a publication from one compartment to another.

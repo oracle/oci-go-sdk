@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // IamWorkRequestErrorSummary An error encountered while executing an operation that is tracked by a IAM work request.

@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // MonthlyRuleFrequencyDetails Frequency Details model for monthly frequency based on week of month and day of week.

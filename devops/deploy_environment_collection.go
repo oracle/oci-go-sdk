@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DeployEnvironmentCollection Results of a deployment environment search.

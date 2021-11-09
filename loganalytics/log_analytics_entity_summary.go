@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // LogAnalyticsEntitySummary Summary of a log analytics entity.

@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ImportTfStateJobOperationDetailsSummary Job details that are specific to import Terraform state operations.

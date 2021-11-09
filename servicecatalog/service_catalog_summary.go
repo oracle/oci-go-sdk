@@ -10,7 +10,7 @@
 package servicecatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ServiceCatalogSummary The model for a summary of an Oracle Cloud Infrastructure service catalog.

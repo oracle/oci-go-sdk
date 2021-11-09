@@ -13,7 +13,7 @@ package aianomalydetection
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // InlineDetectAnomaliesRequest This is the specialised JSON format that we accept as Training data, with an additional

@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // RestoreVaultFromObjectStoreDetails The representation of RestoreVaultFromObjectStoreDetails

@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // TypedNamePatternRule The typed name rule for field projection.

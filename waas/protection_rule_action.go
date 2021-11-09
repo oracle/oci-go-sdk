@@ -10,7 +10,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ProtectionRuleAction A protection rule key and the associated action to apply to that rule.

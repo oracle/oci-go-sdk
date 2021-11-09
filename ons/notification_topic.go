@@ -11,7 +11,7 @@
 package ons
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // NotificationTopic The properties that define a topic. For general information about topics, see

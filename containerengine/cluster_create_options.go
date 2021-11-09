@@ -12,7 +12,7 @@
 package containerengine
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ClusterCreateOptions The properties that define extra options for a cluster.

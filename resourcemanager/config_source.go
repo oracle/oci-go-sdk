@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ConfigSource Information about the Terraform configuration.

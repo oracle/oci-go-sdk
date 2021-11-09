@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DataAssetSummaryFromMySql Summary details for the MYSQL data asset type.

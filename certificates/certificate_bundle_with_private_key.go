@@ -11,7 +11,7 @@ package certificates
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CertificateBundleWithPrivateKey A certificate bundle, including the private key.

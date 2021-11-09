@@ -11,7 +11,7 @@ package databasetools
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateDatabaseToolsConnectionOracleDatabaseDetails The information about new DatabaseToolsConnection for an Oracle Database

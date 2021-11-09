@@ -10,7 +10,7 @@
 package certificatesmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateCaBundleDetails The details of the CA bundle to update.

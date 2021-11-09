@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ManagedDatabaseSummary A summary of the Managed Database.

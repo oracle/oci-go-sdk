@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ValidationRequestPolicy Top-level validation policy mixin (not directly used).

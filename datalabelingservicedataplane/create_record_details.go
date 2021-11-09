@@ -11,7 +11,7 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateRecordDetails A record represents an entry in a dataset that needs labeling.

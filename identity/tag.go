@@ -11,7 +11,7 @@ package identity
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // Tag A tag definition that belongs to a specific tag namespace.  "Defined tags" must be set up in your tenancy before

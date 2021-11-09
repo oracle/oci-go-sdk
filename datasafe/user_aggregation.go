@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UserAggregation The user aggregation provides information about the overall security state of database users.

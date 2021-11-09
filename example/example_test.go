@@ -9,7 +9,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/oracle/oci-go-sdk/v50/example/helpers"
+	"github.com/oracle/oci-go-sdk/v51/example/helpers"
 )
 
 // Before run the samples, update the environment variables with your tenancy info.

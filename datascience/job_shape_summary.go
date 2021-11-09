@@ -10,7 +10,7 @@
 package datascience
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // JobShapeSummary The compute shape used to launch a job compute instance.

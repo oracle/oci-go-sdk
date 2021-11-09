@@ -10,7 +10,7 @@
 package datascience
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // JobSummary Summary information for a Job.

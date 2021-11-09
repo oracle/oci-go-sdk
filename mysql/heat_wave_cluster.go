@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // HeatWaveCluster A HeatWave cluster is a database accelerator for a DB System.

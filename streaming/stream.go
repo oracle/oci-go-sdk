@@ -10,7 +10,7 @@
 package streaming
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // Stream Detailed representation of a stream, including all its partitions.

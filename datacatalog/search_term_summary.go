@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // SearchTermSummary Summary of a term associated with an object. This is a brief summary returned as part of the search result.

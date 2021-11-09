@@ -12,7 +12,7 @@ package computeinstanceagent
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // InstanceAgentCommandOutputViaTextDetails The command output destination when returned in plain text.

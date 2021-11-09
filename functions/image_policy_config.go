@@ -10,7 +10,7 @@
 package functions
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ImagePolicyConfig Define the image signature verification policy for an application.

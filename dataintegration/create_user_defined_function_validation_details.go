@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateUserDefinedFunctionValidationDetails The properties used in create UserDefinedFunction validation operations.

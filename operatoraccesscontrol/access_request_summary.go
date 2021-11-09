@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // AccessRequestSummary Summary of access request.
@@ -37,6 +37,9 @@ type AccessRequestSummary struct {
 	// The name of the target resource.
 	ResourceName *string `mandatory:"false" json:"resourceName"`
 
+	// resourceType for which the AccessRequest is applicable
+	ResourceType ResourceTypesEnum `mandatory:"false" json:"resourceType,omitempty"`
+
 	// The current state of the AccessRequest.
 	LifecycleState AccessRequestLifecycleStatesEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
@@ -45,6 +48,9 @@ type AccessRequestSummary struct {
 
 	// Time when the access request was last modified in RFC 3339 (https://tools.ietf.org/html/rfc3339) timestamp format.Example: '2020-05-22T21:10:29.600Z'
 	TimeOfModification *common.SDKTime `mandatory:"false" json:"timeOfModification"`
+
+	// The time when access request is scheduled to be approved in RFC 3339 (https://tools.ietf.org/html/rfc3339) timestamp format.Example: '2020-05-22T21:10:29.600Z'
+	TimeOfUserCreation *common.SDKTime `mandatory:"false" json:"timeOfUserCreation"`
 
 	// Duration in hours for which access is sought on the target resource.
 	Duration *int `mandatory:"false" json:"duration"`

@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ExadataInsightResourceInsightUtilizationItem Object containing current utilization, projected utilization, id and daysToReach high and low utilization value.

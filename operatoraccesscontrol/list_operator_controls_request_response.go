@@ -5,7 +5,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 	"net/http"
 )
 
@@ -24,6 +24,9 @@ type ListOperatorControlsRequest struct {
 
 	// A filter to return OperatorControl that match the entire display name given.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
+
+	// A filter to return only lists of resources that match the entire given service type.
+	ResourceType *string `mandatory:"false" contributesTo:"query" name:"resourceType"`
 
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`

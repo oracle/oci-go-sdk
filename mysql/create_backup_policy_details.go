@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateBackupPolicyDetails Backup policy as optionally used for DB System Creation.

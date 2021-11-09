@@ -10,7 +10,7 @@
 package oda
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateOdaInstanceDetails The Digital Assistant instance information to be updated.

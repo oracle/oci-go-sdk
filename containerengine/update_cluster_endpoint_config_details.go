@@ -12,7 +12,7 @@
 package containerengine
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateClusterEndpointConfigDetails The properties that define a request to update a cluster endpoint config.

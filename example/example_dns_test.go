@@ -11,10 +11,10 @@ import (
 	"log"
 	"os"
 
-	"github.com/oracle/oci-go-sdk/v50/dns"
+	"github.com/oracle/oci-go-sdk/v51/dns"
 
-	"github.com/oracle/oci-go-sdk/v50/common"
-	"github.com/oracle/oci-go-sdk/v50/example/helpers"
+	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v51/example/helpers"
 )
 
 // ExampleDnsZone creates, gets, lists, and deletes a DNS Zone.

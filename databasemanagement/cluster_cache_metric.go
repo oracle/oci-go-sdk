@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ClusterCacheMetric The response containing the cluster cache metrics for the

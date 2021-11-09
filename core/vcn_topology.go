@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // VcnTopology Defines the representation of a virtual network topology for a VCN.

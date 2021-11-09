@@ -10,7 +10,7 @@
 package goldengate
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DeploymentSummary Summary of the Deployment.

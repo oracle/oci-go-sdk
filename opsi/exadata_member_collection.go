@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ExadataMemberCollection Partial definition of the exadata insight resource.

@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ExadataInsightResourceForecastTrendSummary List of resource id, name , capacity insight value, pattern, historical usage and projected data.

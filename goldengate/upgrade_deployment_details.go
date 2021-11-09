@@ -11,7 +11,7 @@ package goldengate
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpgradeDeploymentDetails The information about the Patch for a Deployment.

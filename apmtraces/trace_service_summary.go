@@ -10,7 +10,7 @@
 package apmtraces
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // TraceServiceSummary A summary of the spans in a trace by service.

@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // InstanceConfigurationAmdVmLaunchInstancePlatformConfig The platform configuration used when launching a virtual machine instance with the AMD platform.

@@ -13,7 +13,7 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ImportManifest Manifest describing details about an import source

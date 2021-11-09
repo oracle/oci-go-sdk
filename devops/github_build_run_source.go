@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // GithubBuildRunSource Specifies details of build run through Github.

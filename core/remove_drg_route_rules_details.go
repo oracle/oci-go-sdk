@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // RemoveDrgRouteRulesDetails Details used in a request to remove static routes from a DRG route table.

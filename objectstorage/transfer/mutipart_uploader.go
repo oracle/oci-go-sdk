@@ -8,8 +8,8 @@ import (
 	"context"
 	"io/ioutil"
 
-	"github.com/oracle/oci-go-sdk/v50/common"
-	"github.com/oracle/oci-go-sdk/v50/objectstorage"
+	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v51/objectstorage"
 )
 
 // multipartUploader is an interface wrap the methods talk to object storage service

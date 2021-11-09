@@ -11,7 +11,7 @@ package apmconfig
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateConfigDetails The request body used to create new Configuration entities. It must specify the configuration type of the item to

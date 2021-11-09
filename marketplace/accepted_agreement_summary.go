@@ -10,7 +10,7 @@
 package marketplace
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // AcceptedAgreementSummary The model for a summary of an accepted agreement.

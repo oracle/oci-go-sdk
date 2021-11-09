@@ -11,7 +11,7 @@
 package ons
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // MessageDetails The content of the message to be published.

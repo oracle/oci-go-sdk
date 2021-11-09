@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ExternalStorage BICC Connector Attribute.Object Storage as External storage where the BICC extracted files are written

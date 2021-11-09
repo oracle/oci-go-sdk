@@ -10,7 +10,7 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateRecordDetails Assuming we support tags, tags are supposed to be updatable.

@@ -10,7 +10,7 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // Category Details about the category associated with the support ticket.

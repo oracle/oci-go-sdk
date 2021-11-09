@@ -10,7 +10,7 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // Contact Contact details for the customer.

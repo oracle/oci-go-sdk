@@ -10,7 +10,7 @@
 package goldengate
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // WorkRequest The API operations that create and configure GoldenGate resources do not take effect immediately. In these cases, the operation spawns an asynchronous workflow to fulfill teh request. Work requests provide visibility into the status of these in-progress, long-running asynchronous workflows.

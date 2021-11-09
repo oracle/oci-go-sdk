@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // OsnSummary OSN summary information for returning in a list.

@@ -10,7 +10,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // SupportedLevels Optional. The profile levels supported by a recommendation.

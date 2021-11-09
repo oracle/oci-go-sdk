@@ -14,7 +14,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateEmailDomainDetails The attributes to update in the email domain.

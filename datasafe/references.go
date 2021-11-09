@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // References References to the sections of STIG, CIS, and/or GDPR relevant to the current finding.

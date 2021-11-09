@@ -10,7 +10,7 @@
 package filestorage
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ExportSet A set of file systems to export through one or more mount

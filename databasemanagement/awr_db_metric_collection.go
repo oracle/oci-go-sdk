@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // AwrDbMetricCollection The AWR metrics time series summary data.

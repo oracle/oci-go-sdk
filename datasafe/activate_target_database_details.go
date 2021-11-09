@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ActivateTargetDatabaseDetails The details required to reactivate a previously deactived target database in Data Safe.

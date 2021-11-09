@@ -10,7 +10,7 @@
 package servicecatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ErrorEntity The model for the error entity.

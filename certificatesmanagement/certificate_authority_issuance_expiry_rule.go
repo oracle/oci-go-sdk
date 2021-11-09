@@ -11,7 +11,7 @@ package certificatesmanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CertificateAuthorityIssuanceExpiryRule A rule that enforces how long certificates or certificate authorities (CAs) issued by this particular CA are valid.

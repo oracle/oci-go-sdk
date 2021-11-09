@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ExternalPublicationSummary The external publication summary contains the audit summary information and the definition of the external object.

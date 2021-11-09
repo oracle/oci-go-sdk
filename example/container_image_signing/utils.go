@@ -9,9 +9,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v50/artifacts"
-	"github.com/oracle/oci-go-sdk/v50/common"
-	"github.com/oracle/oci-go-sdk/v50/keymanagement"
+	"github.com/oracle/oci-go-sdk/v51/artifacts"
+	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v51/keymanagement"
 	"regexp"
 	"strings"
 )

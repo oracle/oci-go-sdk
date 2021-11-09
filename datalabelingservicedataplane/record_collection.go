@@ -10,7 +10,7 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // RecordCollection Results of a record search. Contains both RecordSummary items and other data.

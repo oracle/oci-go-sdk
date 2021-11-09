@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // Catalog A data catalog enables you to collect, organize, find, access, understand, enrich, and activate technical, business, and operational metadata.

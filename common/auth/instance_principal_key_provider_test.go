@@ -6,7 +6,7 @@ package auth
 import (
 	"crypto/rsa"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"net/http"

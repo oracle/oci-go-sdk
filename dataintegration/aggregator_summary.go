@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // AggregatorSummary A summary type containing information about the object's aggregator including its type, key, name and description.

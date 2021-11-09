@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateDataPumpSettings Optional settings for Data Pump Export and Import jobs

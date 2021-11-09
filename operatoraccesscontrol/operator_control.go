@@ -12,7 +12,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // OperatorControl Operator Access Control enables you to grant, audit, or revoke the access Oracle has to your Exadata Cloud@Customer infrastructure, and obtain audit reports of all actions taken by a human operator, in a near real-time manner.
@@ -48,6 +48,12 @@ type OperatorControl struct {
 	// Whether all the operator actions have been pre-approved. If yes, all access requests associated with a resource governed by this operator control
 	// will be auto-approved.
 	IsFullyPreApproved *bool `mandatory:"false" json:"isFullyPreApproved"`
+
+	// List of emailId.
+	EmailIdList []string `mandatory:"false" json:"emailIdList"`
+
+	// resourceType for which the OperatorControl is applicable
+	ResourceType ResourceTypesEnum `mandatory:"false" json:"resourceType,omitempty"`
 
 	// System message that would be displayed to the operator users on accessing the target resource under the governance of this operator control.
 	SystemMessage *string `mandatory:"false" json:"systemMessage"`

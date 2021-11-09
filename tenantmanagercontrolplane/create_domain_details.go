@@ -10,7 +10,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateDomainDetails The parameters for creating a domain.

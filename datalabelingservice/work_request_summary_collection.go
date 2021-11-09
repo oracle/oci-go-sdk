@@ -10,7 +10,7 @@
 package datalabelingservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // WorkRequestSummaryCollection Results of a workRequest search. Contains both WorkRequest items and other information, such as metadata.

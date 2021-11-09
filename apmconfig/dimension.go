@@ -10,7 +10,7 @@
 package apmconfig
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // Dimension A dimension is a label that can be used to describe or group metrics.

@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 51.0.0 - 2021-11-09
+### Added
+- Support for drill down metadata in the Management Dashboard service
+- Support for operator access control on dedicated autonomous databases in the Operator Access Control service
+
+### Breaking changes
+- `OperatorControlName`, `ApproverGroupsList` and `IsFullyPreApproved` changed from optional to required in UpdateOperatorControlDetails
+- `IsEnforcedAlways` changed from optional to required in UpdateOperatorControlAssignmentDetails
+- `ResourceType` in OperatorControlAssignmentSummary changed return type from *string to ResourceTypesEnum
+- `ApproverGroupsList`, `IsFullyPreApproved` and `ResourceType` in CreateOperatorControlDetails changed from optional to required
+- `ResourceType` and `IsEnforcedAlways` in CreateOperatorControlAssignmentDetail changed from optional to required
+
 ## 50.1.0 - 2021-11-02
 ### Added
 - Support for the Database Tools service

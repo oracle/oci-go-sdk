@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DataAssetSummary Summary of a data asset. A physical store, or stream, of data known to the data catalog and containing one or

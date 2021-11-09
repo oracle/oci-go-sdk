@@ -11,7 +11,7 @@ package cims
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateResourceDetails Details about the resource that the support ticket relates to.

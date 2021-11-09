@@ -13,7 +13,7 @@
 package nosql
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // IndexKey Specifies a single key in a secondary index.

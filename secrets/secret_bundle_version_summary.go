@@ -10,7 +10,7 @@
 package secrets
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // SecretBundleVersionSummary The properties of the secret bundle. (Secret bundle version summary objects do not include the actual contents of the secret.)

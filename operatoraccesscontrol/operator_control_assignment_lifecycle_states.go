@@ -16,17 +16,23 @@ type OperatorControlAssignmentLifecycleStatesEnum string
 
 // Set of constants representing the allowable values for OperatorControlAssignmentLifecycleStatesEnum
 const (
-	OperatorControlAssignmentLifecycleStatesCreated     OperatorControlAssignmentLifecycleStatesEnum = "CREATED"
-	OperatorControlAssignmentLifecycleStatesApplied     OperatorControlAssignmentLifecycleStatesEnum = "APPLIED"
-	OperatorControlAssignmentLifecycleStatesApplyfailed OperatorControlAssignmentLifecycleStatesEnum = "APPLYFAILED"
-	OperatorControlAssignmentLifecycleStatesDeleted     OperatorControlAssignmentLifecycleStatesEnum = "DELETED"
+	OperatorControlAssignmentLifecycleStatesCreated        OperatorControlAssignmentLifecycleStatesEnum = "CREATED"
+	OperatorControlAssignmentLifecycleStatesApplied        OperatorControlAssignmentLifecycleStatesEnum = "APPLIED"
+	OperatorControlAssignmentLifecycleStatesApplyfailed    OperatorControlAssignmentLifecycleStatesEnum = "APPLYFAILED"
+	OperatorControlAssignmentLifecycleStatesUpdating       OperatorControlAssignmentLifecycleStatesEnum = "UPDATING"
+	OperatorControlAssignmentLifecycleStatesDeleting       OperatorControlAssignmentLifecycleStatesEnum = "DELETING"
+	OperatorControlAssignmentLifecycleStatesDeleted        OperatorControlAssignmentLifecycleStatesEnum = "DELETED"
+	OperatorControlAssignmentLifecycleStatesDeletionfailed OperatorControlAssignmentLifecycleStatesEnum = "DELETIONFAILED"
 )
 
 var mappingOperatorControlAssignmentLifecycleStates = map[string]OperatorControlAssignmentLifecycleStatesEnum{
-	"CREATED":     OperatorControlAssignmentLifecycleStatesCreated,
-	"APPLIED":     OperatorControlAssignmentLifecycleStatesApplied,
-	"APPLYFAILED": OperatorControlAssignmentLifecycleStatesApplyfailed,
-	"DELETED":     OperatorControlAssignmentLifecycleStatesDeleted,
+	"CREATED":        OperatorControlAssignmentLifecycleStatesCreated,
+	"APPLIED":        OperatorControlAssignmentLifecycleStatesApplied,
+	"APPLYFAILED":    OperatorControlAssignmentLifecycleStatesApplyfailed,
+	"UPDATING":       OperatorControlAssignmentLifecycleStatesUpdating,
+	"DELETING":       OperatorControlAssignmentLifecycleStatesDeleting,
+	"DELETED":        OperatorControlAssignmentLifecycleStatesDeleted,
+	"DELETIONFAILED": OperatorControlAssignmentLifecycleStatesDeletionfailed,
 }
 
 // GetOperatorControlAssignmentLifecycleStatesEnumValues Enumerates the set of values for OperatorControlAssignmentLifecycleStatesEnum

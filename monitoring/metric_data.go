@@ -12,7 +12,7 @@
 package monitoring
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // MetricData The set of aggregated data returned for a metric.

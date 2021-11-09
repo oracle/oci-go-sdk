@@ -14,7 +14,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ChangeEmailDomainCompartmentDetails The configuration details for the move operation.

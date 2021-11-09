@@ -5,7 +5,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 	"net/http"
 )
 
@@ -22,8 +22,21 @@ type ListAccessRequestsRequest struct {
 	// A filter to return only resources that match the given ResourceName.
 	ResourceName *string `mandatory:"false" contributesTo:"query" name:"resourceName"`
 
+	// A filter to return only lists of resources that match the entire given service type.
+	ResourceType *string `mandatory:"false" contributesTo:"query" name:"resourceType"`
+
 	// A filter to return only resources whose lifecycleState matches the given AccessRequest lifecycleState.
 	LifecycleState ListAccessRequestsLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
+
+	// Query start time in UTC in ISO 8601 format(inclusive).
+	// Example 2019-10-30T00:00:00Z (yyyy-MM-ddThh:mm:ssZ).
+	// timeIntervalStart and timeIntervalEnd parameters are used together.
+	TimeStart *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeStart"`
+
+	// Query start time in UTC in ISO 8601 format(inclusive).
+	// Example 2019-10-30T00:00:00Z (yyyy-MM-ddThh:mm:ssZ).
+	// timeIntervalStart and timeIntervalEnd parameters are used together.
+	TimeEnd *common.SDKTime `mandatory:"false" contributesTo:"query" name:"timeEnd"`
 
 	// The maximum number of items to return.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
@@ -120,6 +133,8 @@ const (
 	ListAccessRequestsLifecycleStateCompleting        ListAccessRequestsLifecycleStateEnum = "COMPLETING"
 	ListAccessRequestsLifecycleStateCompleted         ListAccessRequestsLifecycleStateEnum = "COMPLETED"
 	ListAccessRequestsLifecycleStateExpired           ListAccessRequestsLifecycleStateEnum = "EXPIRED"
+	ListAccessRequestsLifecycleStateApprovedforfuture ListAccessRequestsLifecycleStateEnum = "APPROVEDFORFUTURE"
+	ListAccessRequestsLifecycleStateInreview          ListAccessRequestsLifecycleStateEnum = "INREVIEW"
 )
 
 var mappingListAccessRequestsLifecycleState = map[string]ListAccessRequestsLifecycleStateEnum{
@@ -143,6 +158,8 @@ var mappingListAccessRequestsLifecycleState = map[string]ListAccessRequestsLifec
 	"COMPLETING":        ListAccessRequestsLifecycleStateCompleting,
 	"COMPLETED":         ListAccessRequestsLifecycleStateCompleted,
 	"EXPIRED":           ListAccessRequestsLifecycleStateExpired,
+	"APPROVEDFORFUTURE": ListAccessRequestsLifecycleStateApprovedforfuture,
+	"INREVIEW":          ListAccessRequestsLifecycleStateInreview,
 }
 
 // GetListAccessRequestsLifecycleStateEnumValues Enumerates the set of values for ListAccessRequestsLifecycleStateEnum

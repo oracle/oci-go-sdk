@@ -10,7 +10,7 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdatePrivateEndpointDetails The details required to update a private endpoint.

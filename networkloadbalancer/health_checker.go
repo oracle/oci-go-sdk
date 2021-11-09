@@ -10,7 +10,7 @@
 package networkloadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // HealthChecker The health check policy configuration.

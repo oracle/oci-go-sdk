@@ -11,7 +11,7 @@ package databasemigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateCurlTransferDetails Optional properties for Curl-based dump transfer in source or target host.

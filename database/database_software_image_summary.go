@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // DatabaseSoftwareImageSummary The Database service supports the creation of database software images for use in creating and patching DB systems and databases.

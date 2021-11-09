@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // SetQueryParameterPolicy Set parameters on the query string as they pass through the gateway.

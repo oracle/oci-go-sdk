@@ -12,7 +12,7 @@ package events
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // StreamingServiceAction An action that delivers to an Oracle Stream Service stream.

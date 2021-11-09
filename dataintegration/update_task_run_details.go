@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateTaskRunDetails Properties used in task run update operations.

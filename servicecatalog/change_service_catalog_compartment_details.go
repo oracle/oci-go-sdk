@@ -10,7 +10,7 @@
 package servicecatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ChangeServiceCatalogCompartmentDetails The model for the parameters needed move a service catalog from one compartment to another.

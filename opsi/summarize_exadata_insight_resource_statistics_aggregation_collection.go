@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // SummarizeExadataInsightResourceStatisticsAggregationCollection Returns list of the resources with resource statistics like usage,capacity,utilization and usage change percent.

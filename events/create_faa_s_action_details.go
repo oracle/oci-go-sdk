@@ -12,7 +12,7 @@ package events
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateFaaSActionDetails Create an action that delivers to an Oracle Functions Service endpoint.
