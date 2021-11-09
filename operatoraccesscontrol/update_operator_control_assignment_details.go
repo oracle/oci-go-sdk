@@ -12,11 +12,14 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UpdateOperatorControlAssignmentDetails Details for modifying the Operator Control assignment.
 type UpdateOperatorControlAssignmentDetails struct {
+
+	// If true, then the target resource is always governed by the operator control. Otherwise governance is time-based as specified by timeAssignmentTo and timeAssignmentFrom.
+	IsEnforcedAlways *bool `mandatory:"true" json:"isEnforcedAlways"`
 
 	// The time at which the target resource will be brought under the governance of the operator control in RFC 3339 (https://tools.ietf.org/html/rfc3339) timestamp format. Example: '2020-05-22T21:10:29.600Z'
 	TimeAssignmentFrom *common.SDKTime `mandatory:"false" json:"timeAssignmentFrom"`
@@ -24,11 +27,23 @@ type UpdateOperatorControlAssignmentDetails struct {
 	// The time at which the target resource will leave the governance of the operator control in RFC 3339 (https://tools.ietf.org/html/rfc3339)timestamp format.Example: '2020-05-22T21:10:29.600Z'
 	TimeAssignmentTo *common.SDKTime `mandatory:"false" json:"timeAssignmentTo"`
 
-	// If true, then the target resource is always governed by the operator control. Otherwise governance is time-based as specified by timeAssignmentTo and timeAssignmentFrom.
-	IsEnforcedAlways *bool `mandatory:"false" json:"isEnforcedAlways"`
-
 	// Comment about the modification of the operator control assignment.
 	Comment *string `mandatory:"false" json:"comment"`
+
+	// If set, then the audit logs will be forwarded to the relevant remote logging server
+	IsLogForwarded *bool `mandatory:"false" json:"isLogForwarded"`
+
+	// The address of the remote syslog server where the audit logs will be forwarded to. Address in host or IP format.
+	RemoteSyslogServerAddress *string `mandatory:"false" json:"remoteSyslogServerAddress"`
+
+	// The listening port of the remote syslog server. The port range is 0 - 65535. Only TCP supported.
+	RemoteSyslogServerPort *int `mandatory:"false" json:"remoteSyslogServerPort"`
+
+	// The CA certificate of the remote syslog server. Identity of the remote syslog server will be asserted based on this certificate.
+	RemoteSyslogServerCACert *string `mandatory:"false" json:"remoteSyslogServerCACert"`
+
+	// The boolean if true would autoApprove during maintenance.
+	IsAutoApproveDuringMaintenance *bool `mandatory:"false" json:"isAutoApproveDuringMaintenance"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`

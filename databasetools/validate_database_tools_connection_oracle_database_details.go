@@ -11,7 +11,7 @@ package databasetools
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // ValidateDatabaseToolsConnectionOracleDatabaseDetails Connection validation details for Oracle Database.

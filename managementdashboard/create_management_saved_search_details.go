@@ -11,7 +11,7 @@
 package managementdashboard
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CreateManagementSavedSearchDetails Properties of a saved search.
@@ -67,6 +67,9 @@ type CreateManagementSavedSearchDetails struct {
 
 	// Defines parameters for the saved search.
 	ParametersConfig []interface{} `mandatory:"false" json:"parametersConfig"`
+
+	// Drill-down configuration to define the destination of a drill-down action.
+	DrilldownConfig []interface{} `mandatory:"false" json:"drilldownConfig"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// Example: `{"bar-key": "value"}`

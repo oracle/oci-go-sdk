@@ -11,7 +11,7 @@
 package waf
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // RequestRateLimiting Module that allows inspection of HTTP connection properties and to limit requests frequency for a given key.

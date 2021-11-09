@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // BuildRun Each time we attempt to run a BuildPipeline we create one BuildRun. A BuildRun may be happening now, or it may be a record of the run that happened in the past. The set of BuildRuns constitutes a BuildPipeline's history.

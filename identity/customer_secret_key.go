@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // CustomerSecretKey A `CustomerSecretKey` is an Oracle-provided key for using the Object Storage Service's

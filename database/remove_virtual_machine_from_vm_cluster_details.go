@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // RemoveVirtualMachineFromVmClusterDetails Details of removing Virtual Machines from the VM Cluster. Applies to Exadata Cloud@Customer instances only.

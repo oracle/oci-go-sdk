@@ -14,7 +14,7 @@
 package workrequests
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // WorkRequestResource A resource that is created or operated on by an asynchronous operation that is tracked by

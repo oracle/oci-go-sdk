@@ -16,11 +16,15 @@ type ResourceTypesEnum string
 
 // Set of constants representing the allowable values for ResourceTypesEnum
 const (
-	ResourceTypesExacc ResourceTypesEnum = "EXACC"
+	ResourceTypesExacc                 ResourceTypesEnum = "EXACC"
+	ResourceTypesExadatainfrastructure ResourceTypesEnum = "EXADATAINFRASTRUCTURE"
+	ResourceTypesAutonomousvmcluster   ResourceTypesEnum = "AUTONOMOUSVMCLUSTER"
 )
 
 var mappingResourceTypes = map[string]ResourceTypesEnum{
-	"EXACC": ResourceTypesExacc,
+	"EXACC":                 ResourceTypesExacc,
+	"EXADATAINFRASTRUCTURE": ResourceTypesExadatainfrastructure,
+	"AUTONOMOUSVMCLUSTER":   ResourceTypesAutonomousvmcluster,
 }
 
 // GetResourceTypesEnumValues Enumerates the set of values for ResourceTypesEnum

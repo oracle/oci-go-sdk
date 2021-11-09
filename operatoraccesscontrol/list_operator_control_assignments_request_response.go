@@ -5,7 +5,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 	"net/http"
 )
 
@@ -24,6 +24,9 @@ type ListOperatorControlAssignmentsRequest struct {
 
 	// A filter to return only resources that match the given ResourceName.
 	ResourceName *string `mandatory:"false" contributesTo:"query" name:"resourceName"`
+
+	// A filter to return only lists of resources that match the entire given service type.
+	ResourceType *string `mandatory:"false" contributesTo:"query" name:"resourceType"`
 
 	// A filter to return only resources whose lifecycleState matches the given OperatorControlAssignment lifecycleState.
 	LifecycleState ListOperatorControlAssignmentsLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
@@ -103,17 +106,23 @@ type ListOperatorControlAssignmentsLifecycleStateEnum string
 
 // Set of constants representing the allowable values for ListOperatorControlAssignmentsLifecycleStateEnum
 const (
-	ListOperatorControlAssignmentsLifecycleStateCreated     ListOperatorControlAssignmentsLifecycleStateEnum = "CREATED"
-	ListOperatorControlAssignmentsLifecycleStateApplied     ListOperatorControlAssignmentsLifecycleStateEnum = "APPLIED"
-	ListOperatorControlAssignmentsLifecycleStateApplyfailed ListOperatorControlAssignmentsLifecycleStateEnum = "APPLYFAILED"
-	ListOperatorControlAssignmentsLifecycleStateDeleted     ListOperatorControlAssignmentsLifecycleStateEnum = "DELETED"
+	ListOperatorControlAssignmentsLifecycleStateCreated        ListOperatorControlAssignmentsLifecycleStateEnum = "CREATED"
+	ListOperatorControlAssignmentsLifecycleStateApplied        ListOperatorControlAssignmentsLifecycleStateEnum = "APPLIED"
+	ListOperatorControlAssignmentsLifecycleStateApplyfailed    ListOperatorControlAssignmentsLifecycleStateEnum = "APPLYFAILED"
+	ListOperatorControlAssignmentsLifecycleStateUpdating       ListOperatorControlAssignmentsLifecycleStateEnum = "UPDATING"
+	ListOperatorControlAssignmentsLifecycleStateDeleting       ListOperatorControlAssignmentsLifecycleStateEnum = "DELETING"
+	ListOperatorControlAssignmentsLifecycleStateDeleted        ListOperatorControlAssignmentsLifecycleStateEnum = "DELETED"
+	ListOperatorControlAssignmentsLifecycleStateDeletionfailed ListOperatorControlAssignmentsLifecycleStateEnum = "DELETIONFAILED"
 )
 
 var mappingListOperatorControlAssignmentsLifecycleState = map[string]ListOperatorControlAssignmentsLifecycleStateEnum{
-	"CREATED":     ListOperatorControlAssignmentsLifecycleStateCreated,
-	"APPLIED":     ListOperatorControlAssignmentsLifecycleStateApplied,
-	"APPLYFAILED": ListOperatorControlAssignmentsLifecycleStateApplyfailed,
-	"DELETED":     ListOperatorControlAssignmentsLifecycleStateDeleted,
+	"CREATED":        ListOperatorControlAssignmentsLifecycleStateCreated,
+	"APPLIED":        ListOperatorControlAssignmentsLifecycleStateApplied,
+	"APPLYFAILED":    ListOperatorControlAssignmentsLifecycleStateApplyfailed,
+	"UPDATING":       ListOperatorControlAssignmentsLifecycleStateUpdating,
+	"DELETING":       ListOperatorControlAssignmentsLifecycleStateDeleting,
+	"DELETED":        ListOperatorControlAssignmentsLifecycleStateDeleted,
+	"DELETIONFAILED": ListOperatorControlAssignmentsLifecycleStateDeletionfailed,
 }
 
 // GetListOperatorControlAssignmentsLifecycleStateEnumValues Enumerates the set of values for ListOperatorControlAssignmentsLifecycleStateEnum

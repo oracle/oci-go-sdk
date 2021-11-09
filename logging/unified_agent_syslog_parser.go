@@ -11,7 +11,7 @@ package logging
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 )
 
 // UnifiedAgentSyslogParser Syslog Parser.

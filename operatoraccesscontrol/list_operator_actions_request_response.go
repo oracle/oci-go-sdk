@@ -5,7 +5,7 @@
 package operatoraccesscontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v50/common"
+	"github.com/oracle/oci-go-sdk/v51/common"
 	"net/http"
 )
 
@@ -21,6 +21,9 @@ type ListOperatorActionsRequest struct {
 
 	// A filter to return only resources that match the entire display name given.
 	Name *string `mandatory:"false" contributesTo:"query" name:"name"`
+
+	// A filter to return only lists of resources that match the entire given service type.
+	ResourceType *string `mandatory:"false" contributesTo:"query" name:"resourceType"`
 
 	// A filter to return only resources whose lifecycleState matches the given OperatorAction lifecycleState.
 	LifecycleState ListOperatorActionsLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
