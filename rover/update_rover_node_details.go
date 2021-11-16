@@ -10,7 +10,7 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // UpdateRoverNodeDetails The information required to update a RoverNode.
@@ -65,6 +65,18 @@ type UpdateRoverNodeDetails struct {
 
 	// End time for the window to pickup the device from customer.
 	TimeReturnWindowEnds *common.SDKTime `mandatory:"false" json:"timeReturnWindowEnds"`
+
+	// The flag indicating that customer requests data to be imported to OCI upon Rover node return.
+	IsImportRequested *bool `mandatory:"false" json:"isImportRequested"`
+
+	// An OCID of a compartment where data will be imported to upon Rover node return.
+	ImportCompartmentId *string `mandatory:"false" json:"importCompartmentId"`
+
+	// Name of a bucket where files from NFS share will be imported to upon Rover node return.
+	ImportFileBucket *string `mandatory:"false" json:"importFileBucket"`
+
+	// Validation code returned by data validation tool. Required for return shipping label generation if data import was requested.
+	DataValidationCode *string `mandatory:"false" json:"dataValidationCode"`
 
 	// The public key of the resource principal
 	PublicKey *string `mandatory:"false" json:"publicKey"`

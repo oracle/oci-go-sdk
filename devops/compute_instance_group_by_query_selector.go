@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // ComputeInstanceGroupByQuerySelector Specifies the Compute instance group environment filtered by DSL expression of the compute instances.

@@ -11,7 +11,7 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // UpdateAnnotationDetails This is the payload sent in the CreateAnnotation operation. It contains all the information required for a user to create an Annotation for a record.

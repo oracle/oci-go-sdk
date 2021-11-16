@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // SummarizeDatabaseInsightResourceCapacityTrendAggregationCollection Collection of resource capacity trend.

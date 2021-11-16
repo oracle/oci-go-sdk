@@ -19,8 +19,8 @@ them out to stdout
 		"context"
 		"fmt"
 
-		"github.com/oracle/oci-go-sdk/v51/common"
-		"github.com/oracle/oci-go-sdk/v51/identity"
+		"github.com/oracle/oci-go-sdk/v52/common"
+		"github.com/oracle/oci-go-sdk/v52/identity"
 	)
 
 	func main() {
@@ -289,7 +289,49 @@ The Retry behavior Precedence (Highest to lowest) is defined as below:-
 Default Retry Policy
 
 The OCI Go SDK defines a default retry policy that retries on the errors suitable for retries (see https://docs.oracle.com/en-us/iaas/Content/API/References/apierrors.htm),
-for a recommended period of time (up to 7 attempts spread out over at most approximately 1.5 minutes). This default retry policy can be created using:
+for a recommended period of time (up to 7 attempts spread out over at most approximately 1.5 minutes). The default retry policy is defined by : 
+
+Default Retry-able Errors
+Below is the list of default retry-able errors for which retry attempts should be made.
+
+The following errors should be retried (with backoff). 
+
+
+HTTP Code       Customer-facing Error Code
+
+ 409	 		IncorrectState
+ 429			Any Response Body
+ 500			Any Response Body
+ 502			Any Response Body
+ 503			Any Response Body
+ 504			Any Response Body
+ 
+Apart from the above errors, retries should also be attempted in the following Client Side errors : 
+
+1. HTTP Connection timeout
+2. Request Connection Errors
+3. Request Exceptions
+4. Other timeouts (like Read Timeout)
+
+The above errors can be avoided through retrying and hence, are classified as the default retry-able errors.
+
+Additionally, retries should also be made for Circuit Breaker exceptions (Exceptions raised by Circuit Breaker in an open state)
+
+Default Termination Strategy
+The termination strategy defines when SDKs should stop attempting to retry. In other words, it's the deadline for retries.
+The OCI SDKs should stop retrying the operation after 7 retry attempts. This means the SDKs will have retried for ~98 seconds or ~1.5 minutes have elapsed due to total delays. SDKs will make a total of 8 attempts. (1 initial request + 7 retries)
+
+Default Delay Strategy
+Default Delay Strategy - The delay strategy defines the amount of time to wait between each of the retry attempts.
+
+The default delay strategy chosen for the SDK – Exponential backoff with jitter, using:
+
+1. The base time to use in retry calculations will be 1 second
+2. An exponent of 2. When calculating the next retry time, the SDK will raise this to the power of the number of attempts
+3. A maximum wait time between calls of 30 seconds (Capped)
+4. Added jitter value between 0-1000 milliseconds to spread out the requests
+
+Configure and use default retry policy
 
 	// use SDK's default retry policy
 	defaultRetryPolicy := common.DefaultRetryPolicy()
@@ -314,7 +356,8 @@ or setting default retry via environment varaible, which is a global switch for 
 
 	export OCI_SDK_DEFAULT_RETRY_ENABLED=TRUE
 
-Some services enable retry for operations by default, this can be overridden using any alternatives mentioned above.
+Some services enable retry for operations by default, this can be overridden using any alternatives mentioned above.  To know which service operations have retries enabled by default, 
+look at the operation's description in the SDK - it will say whether that it has retries enabled by default
 
 Eventual Consistency
 
@@ -365,8 +408,40 @@ of course, it also enables an application to detect whether the fault has been r
 Go SDK intergrates sony/gobreaker solution, wraps in a circuit breaker object, which monitors for failures. Once the failures reach a certain threshold, the circuit breaker trips,
 and all further calls to the circuit breaker return with an error, this also saves the service from being overwhelmed with network calls in case of an outage.
 
-Go SDK enable circuit breaker with default configuration, if you don't want to enable the solution, can disable the functionality before your application running
-Go SDK also supports customize Circuit Breaker with specified configuratoins. You can find the examples here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_circuitbreaker_test.go
+Circuit Breaker Configuration definitions
+
+Circuit Breaker Configuration Definitions
+1. Failure Rate Threshold - The state of the CircuitBreaker changes from CLOSED to OPEN when the failure rate is equal or greater than a configurable threshold. For example when more than 50% of the recorded calls have failed.
+2. Reset Timeout -  The timeout after which an open circuit breaker will attempt a request if a request is made
+3. Failure Exceptions - The list of Exceptions that will be regarded as failures for the circuit.
+4. Minimum number of calls/ Volume threshold - Configures the minimum number of calls which are required (per sliding window period) before the CircuitBreaker can calculate the error rate.
+
+Default Circuit Breaker Configuration
+
+1. Failure Rate Threshold - 80% - This means when 80% of the requests calculated for a time window of 120 seconds have failed then the circuit will transition from closed to open. 
+2. Minimum number of calls/ Volume threshold - A value of 10, for the above defined time window of 120 seconds.
+3. Reset Timeout - 30 seconds to wait before setting the breaker to halfOpen state, and trying the action again.
+4. Failure Exceptions - The failures for the circuit will only be recorded for the retryable/transient exceptions. This means only the following exceptions will be regarded as failure for the circuit.
+
+HTTP Code       Customer-facing Error Code
+
+ 409	 		IncorrectState
+ 429			Any Response Body
+ 500			Any Response Body
+ 502			Any Response Body
+ 503			Any Response Body
+ 504			Any Response Body
+
+Apart from the above, the following client side exceptions will also be treated as a failure for the circuit :
+
+1. HTTP Connection timeout
+2. Request Connection Errors
+3. Request Exceptions
+4. Other timeouts (like Read Timeout)
+
+Go SDK enable circuit breaker with default configuration for most of the service clients, if you don't want to enable the solution, can disable the functionality before your application running
+Go SDK also supports customize Circuit Breaker with specified configurations. You can find the examples here: https://github.com/oracle/oci-go-sdk/blob/master/example/example_circuitbreaker_test.go
+To know which service clients have circuit breakers enabled, look at the service client's description in the SDK - it will say whether that it has circuit breakers enabled by default
 
 Using the SDK with a Proxy Server
 

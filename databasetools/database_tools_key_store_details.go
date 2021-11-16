@@ -11,7 +11,7 @@ package databasetools
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // DatabaseToolsKeyStoreDetails The details of the key store.

@@ -10,7 +10,7 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CreateRoverClusterDetails The information required to create a RoverCluster.
@@ -22,7 +22,7 @@ type CreateRoverClusterDetails struct {
 	// The OCID of the compartment containing the RoverCluster.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Number of nodes desired in the cluster, between 5 and 15.
+	// Number of nodes desired in the cluster, in standalone clusters, between 5 and 15 inclusive. In station clusters, between 15 and 30 inclusive.
 	ClusterSize *int `mandatory:"true" json:"clusterSize"`
 
 	CustomerShippingAddress *ShippingAddress `mandatory:"false" json:"customerShippingAddress"`
@@ -62,6 +62,18 @@ type CreateRoverClusterDetails struct {
 
 	// A property that can contain details on the lifecycle.
 	LifecycleStateDetails *string `mandatory:"false" json:"lifecycleStateDetails"`
+
+	// The flag indicating that customer requests data to be imported to OCI upon Rover cluster return.
+	IsImportRequested *bool `mandatory:"false" json:"isImportRequested"`
+
+	// An OCID of a compartment where data will be imported to upon Rover cluster return.
+	ImportCompartmentId *string `mandatory:"false" json:"importCompartmentId"`
+
+	// Name of a bucket where files from NFS share will be imported to upon Rover cluster return.
+	ImportFileBucket *string `mandatory:"false" json:"importFileBucket"`
+
+	// Validation code returned by data validation tool. Required for return shipping label generation if data import was requested.
+	DataValidationCode *string `mandatory:"false" json:"dataValidationCode"`
 
 	// The freeform tags associated with this resource, if any. Each tag is a simple key-value pair with no
 	// predefined name, type, or namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).

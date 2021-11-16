@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // AddManagedDatabaseToManagedDatabaseGroupDetails The Managed Database details required to add it to a Managed Database Group.

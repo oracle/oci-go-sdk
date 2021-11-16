@@ -4,17 +4,17 @@
 
 // Core Services API
 //
-// API covering the Networking (https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/overview.htm),
+// Use the Core Services API to manage resources such as virtual cloud networks (VCNs),
+// compute instances, and block storage volumes. For more information, see the console
+// documentation for the Networking (https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/overview.htm),
 // Compute (https://docs.cloud.oracle.com/iaas/Content/Compute/Concepts/computeoverview.htm), and
-// Block Volume (https://docs.cloud.oracle.com/iaas/Content/Block/Concepts/overview.htm) services. Use this API
-// to manage resources such as virtual cloud networks (VCNs), compute instances, and
-// block storage volumes.
+// Block Volume (https://docs.cloud.oracle.com/iaas/Content/Block/Concepts/overview.htm) services.
 //
 
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // DefaultDrgRouteTables The default DRG route table for this DRG. Each network type
@@ -32,7 +32,7 @@ type DefaultDrgRouteTables struct {
 	// of type IPSEC_TUNNEL on creation.
 	IpsecTunnel *string `mandatory:"false" json:"ipsecTunnel"`
 
-	// The OCID of the default DRG route table to be assigned to DRG attachments
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the default DRG route table to be assigned to DRG attachments
 	// of type VIRTUAL_CIRCUIT on creation.
 	VirtualCircuit *string `mandatory:"false" json:"virtualCircuit"`
 

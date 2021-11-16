@@ -4,13 +4,15 @@
 
 // Cloud Advisor API
 //
-// APIs for managing Cloud Advisor. Cloud Advisor provides recommendations that help you maximize cost savings and improve the security posture of your tenancy.
+// Use the Cloud Advisor API to find potential inefficiencies in your tenancy and address them.
+// Cloud Advisor can help you save money, improve performance, strengthen system resilience, and improve security.
+// For more information, see Cloud Advisor (https://docs.cloud.oracle.com/Content/CloudAdvisor/Concepts/cloudadvisoroverview.htm).
 //
 
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // UpdateProfileDetails Details for updating a profile.
@@ -18,6 +20,9 @@ type UpdateProfileDetails struct {
 
 	// Text describing the profile. Avoid entering confidential information.
 	Description *string `mandatory:"false" json:"description"`
+
+	// The time period over which to collect data for the recommendations, measured in number of days.
+	AggregationIntervalInDays *int `mandatory:"false" json:"aggregationIntervalInDays"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// For more information, see Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).

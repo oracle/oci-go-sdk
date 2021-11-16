@@ -11,7 +11,7 @@ package certificatesmanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CreateSubordinateCaIssuedByInternalCaConfigDetails The details for creating a private subordinate certificate authority (CA) which is issued by a private CA.

@@ -10,7 +10,7 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // RoverNode Information about a RoverNode.
@@ -93,11 +93,26 @@ type RoverNode struct {
 	// Uri to download return shipping label.
 	ReturnShippingLabelUri *string `mandatory:"false" json:"returnShippingLabelUri"`
 
+	// The flag indicating that customer requests data to be imported to OCI upon Rover node return.
+	IsImportRequested *bool `mandatory:"false" json:"isImportRequested"`
+
+	// An OCID of a compartment where data will be imported to upon Rover node return.
+	ImportCompartmentId *string `mandatory:"false" json:"importCompartmentId"`
+
+	// Name of a bucket where files from NFS share will be imported to upon Rover node return.
+	ImportFileBucket *string `mandatory:"false" json:"importFileBucket"`
+
+	// Validation code returned by data validation tool. Required for return shipping label generation if data import was requested.
+	DataValidationCode *string `mandatory:"false" json:"dataValidationCode"`
+
 	// The public key of the resource principal
 	PublicKey *string `mandatory:"false" json:"publicKey"`
 
 	// The link to pre-authenticated request for a bucket where image workloads are moved.
 	ImageExportPar *string `mandatory:"false" json:"imageExportPar"`
+
+	// The tags associated with tagSlug.
+	Tags *string `mandatory:"false" json:"tags"`
 
 	// The freeform tags associated with this resource, if any. Each tag is a simple key-value pair with no
 	// predefined name, type, or namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).
