@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // OkeDeployStage Specifies the Container Engine for Kubernetes(OKE) cluster deployment stage.

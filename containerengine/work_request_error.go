@@ -12,7 +12,7 @@
 package containerengine
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // WorkRequestError Errors related to a specific work request.

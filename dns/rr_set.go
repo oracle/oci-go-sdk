@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // RrSet A collection of DNS records of the same domain and type. For more

@@ -13,8 +13,8 @@ package computeinstanceagent
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v51/common"
-	"github.com/oracle/oci-go-sdk/v51/common/auth"
+	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v52/common/auth"
 	"net/http"
 )
 
@@ -51,6 +51,8 @@ func NewPluginconfigClientWithOboToken(configProvider common.ConfigurationProvid
 }
 
 func newPluginconfigClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client PluginconfigClient, err error) {
+	// Pluginconfig service default circuit breaker is enabled
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSetting())
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 

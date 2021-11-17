@@ -12,7 +12,7 @@
 package healthchecks
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CreatePingMonitorDetails The request body used to create a Ping monitor.

@@ -10,10 +10,10 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
-// CreateRoverNodeDetails The information requied to create a RoverNode.
+// CreateRoverNodeDetails The representation of CreateRoverNodeDetails
 type CreateRoverNodeDetails struct {
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
@@ -71,6 +71,18 @@ type CreateRoverNodeDetails struct {
 
 	// Tracking Url for the shipped FmsRoverNode.
 	OracleShippingTrackingUrl *string `mandatory:"false" json:"oracleShippingTrackingUrl"`
+
+	// The flag indicating that customer requests data to be imported to OCI upon Rover node return.
+	IsImportRequested *bool `mandatory:"false" json:"isImportRequested"`
+
+	// An OCID of a compartment where data will be imported to upon Rover node return.
+	ImportCompartmentId *string `mandatory:"false" json:"importCompartmentId"`
+
+	// Name of a bucket where files from NFS share will be imported to upon Rover node return.
+	ImportFileBucket *string `mandatory:"false" json:"importFileBucket"`
+
+	// Validation code returned by data validation tool. Required for return shipping label generation if data import was requested.
+	DataValidationCode *string `mandatory:"false" json:"dataValidationCode"`
 
 	// The freeform tags associated with this resource, if any. Each tag is a simple key-value pair with no
 	// predefined name, type, or namespace. For more information, see Resource Tags (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/resourcetags.htm).

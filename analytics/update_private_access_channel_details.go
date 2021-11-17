@@ -10,7 +10,7 @@
 package analytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // UpdatePrivateAccessChannelDetails Input payload to update a Private Access Channel.

@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // SourceVcnIpAddressCondition An access control rule condition that requires a match on the specified source VCN and IP address range.

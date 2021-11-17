@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CreateExternalMacsConnectorDetails Details for creating a resource used to connect to an external Oracle Database using

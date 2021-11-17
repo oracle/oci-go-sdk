@@ -14,7 +14,7 @@ package applicationmigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // DiscoveryDetails Base model for different application discovery requirements.

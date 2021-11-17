@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // DbServerDetails Details of the Exacc Db server. Applies to Exadata Cloud@Customer instances only.

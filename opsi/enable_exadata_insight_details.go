@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // EnableExadataInsightDetails The information about the Exadata system to be analyzed.

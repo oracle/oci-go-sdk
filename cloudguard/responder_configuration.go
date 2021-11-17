@@ -10,7 +10,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // ResponderConfiguration A single configuration applied to a responder

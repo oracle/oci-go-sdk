@@ -10,7 +10,7 @@
 package networkloadbalancer
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // ListenerCollection Wrapper object for an array of ListenerSummary objects.

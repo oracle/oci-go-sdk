@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // BodyValidationRequestPolicy Validate the payload body of the incoming API requests on a specific route.

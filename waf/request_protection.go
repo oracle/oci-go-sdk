@@ -11,7 +11,7 @@
 package waf
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // RequestProtection Module that allows to enable OCI-managed protection capabilities for incoming HTTP requests.

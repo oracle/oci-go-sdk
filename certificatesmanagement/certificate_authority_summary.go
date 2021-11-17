@@ -11,7 +11,7 @@ package certificatesmanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CertificateAuthoritySummary The metadata details of the certificate authority (CA). This summary object does not contain the CA contents.

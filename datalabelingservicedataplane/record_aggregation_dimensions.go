@@ -10,7 +10,7 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // RecordAggregationDimensions Dimensions to summarize record information for a given dataset

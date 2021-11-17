@@ -10,7 +10,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // FileLineDetails Object containing the details of a line in a file

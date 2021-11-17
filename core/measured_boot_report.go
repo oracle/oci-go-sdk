@@ -4,23 +4,23 @@
 
 // Core Services API
 //
-// API covering the Networking (https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/overview.htm),
+// Use the Core Services API to manage resources such as virtual cloud networks (VCNs),
+// compute instances, and block storage volumes. For more information, see the console
+// documentation for the Networking (https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/overview.htm),
 // Compute (https://docs.cloud.oracle.com/iaas/Content/Compute/Concepts/computeoverview.htm), and
-// Block Volume (https://docs.cloud.oracle.com/iaas/Content/Block/Concepts/overview.htm) services. Use this API
-// to manage resources such as virtual cloud networks (VCNs), compute instances, and
-// block storage volumes.
+// Block Volume (https://docs.cloud.oracle.com/iaas/Content/Block/Concepts/overview.htm) services.
 //
 
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
-// MeasuredBootReport The Measured Boot report for a shielded instance.
+// MeasuredBootReport The measured boot report for a shielded instance.
 type MeasuredBootReport struct {
 
-	// Whether the verification succeeded and the new values matched the expected values.
+	// Whether the verification succeeded, and the new values match the expected values.
 	IsPolicyVerificationSuccessful *bool `mandatory:"true" json:"isPolicyVerificationSuccessful"`
 
 	Measurements *MeasuredBootReportMeasurements `mandatory:"false" json:"measurements"`

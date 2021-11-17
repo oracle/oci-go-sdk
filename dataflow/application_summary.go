@@ -10,7 +10,7 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // ApplicationSummary A Data Flow application object used in bulk listings.

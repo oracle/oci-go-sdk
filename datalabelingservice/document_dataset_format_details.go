@@ -11,7 +11,7 @@ package datalabelingservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // DocumentDatasetFormatDetails Allows the user to specify that the dataset is comprised of document files (e.g. PDFs, DOCs, etc.).  It is open for further configurability.

@@ -10,7 +10,7 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // LogIncludedSearch A search provided by OCI that serves common customer needs.

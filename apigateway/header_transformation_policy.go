@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // HeaderTransformationPolicy A set of transformations to apply to HTTP headers that pass through the gateway.

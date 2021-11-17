@@ -10,7 +10,7 @@
 package limits
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // UpdateQuotaDetails Request object for update quota operation.

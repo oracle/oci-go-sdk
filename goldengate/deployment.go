@@ -10,7 +10,7 @@
 package goldengate
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // Deployment A container for your OCI GoldenGate resources, such as the OCI GoldenGate deployment console.

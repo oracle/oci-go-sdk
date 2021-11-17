@@ -11,7 +11,7 @@ package databasemigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CreateHostDumpTransferDetails Optional additional properties for dump transfer in source or target host. Default kind is CURL

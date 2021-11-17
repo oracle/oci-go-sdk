@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // Template The properties that define a template. A template is a pre-built Terraform configuration that provisions a set of resources used in a common scenario.

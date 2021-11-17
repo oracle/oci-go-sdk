@@ -10,7 +10,7 @@
 package datascience
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // Metadata Defines properties of each model metadata.

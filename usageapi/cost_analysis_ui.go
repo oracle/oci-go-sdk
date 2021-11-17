@@ -10,7 +10,7 @@
 package usageapi
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CostAnalysisUi The common fields for Cost Analysis UI rendering.

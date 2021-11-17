@@ -12,7 +12,7 @@
 package aianomalydetection
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // Anomaly An object to hold value information for each anomaly point

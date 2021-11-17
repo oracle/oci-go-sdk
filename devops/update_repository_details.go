@@ -10,7 +10,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // UpdateRepositoryDetails The information to be updated.

@@ -11,7 +11,7 @@ package vault
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // SecretExpiryRule A rule that helps enforce the expiration of a secret's contents.

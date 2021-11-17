@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CloneMigrationDetails Details that will override an existing Migration configuration that will be cloned.

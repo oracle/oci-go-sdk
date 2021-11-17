@@ -14,8 +14,8 @@ package operatoraccesscontrol
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v51/common"
-	"github.com/oracle/oci-go-sdk/v51/common/auth"
+	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v52/common/auth"
 	"net/http"
 )
 
@@ -52,6 +52,8 @@ func NewOperatorControlClientWithOboToken(configProvider common.ConfigurationPro
 }
 
 func newOperatorControlClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client OperatorControlClient, err error) {
+	// OperatorControl service default circuit breaker is enabled
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSetting())
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 

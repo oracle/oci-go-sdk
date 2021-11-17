@@ -4,17 +4,17 @@
 
 // Core Services API
 //
-// API covering the Networking (https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/overview.htm),
+// Use the Core Services API to manage resources such as virtual cloud networks (VCNs),
+// compute instances, and block storage volumes. For more information, see the console
+// documentation for the Networking (https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/overview.htm),
 // Compute (https://docs.cloud.oracle.com/iaas/Content/Compute/Concepts/computeoverview.htm), and
-// Block Volume (https://docs.cloud.oracle.com/iaas/Content/Block/Concepts/overview.htm) services. Use this API
-// to manage resources such as virtual cloud networks (VCNs), compute instances, and
-// block storage volumes.
+// Block Volume (https://docs.cloud.oracle.com/iaas/Content/Block/Concepts/overview.htm) services.
 //
 
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // ComputeGlobalImageCapabilitySchema Compute Global Image Capability Schema is a container for a set of compute global image capability schema versions
@@ -23,7 +23,8 @@ type ComputeGlobalImageCapabilitySchema struct {
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compute global image capability schema
 	Id *string `mandatory:"true" json:"id"`
 
-	// A user-friendly name for the compute global image capability schema
+	// A user-friendly name. Does not have to be unique, and it's changeable.
+	// Avoid entering confidential information.
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
 	// The date and time the compute global image capability schema was created, in the format defined by

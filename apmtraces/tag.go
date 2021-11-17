@@ -10,7 +10,7 @@
 package apmtraces
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // Tag Definition of a tag which is a key value pair.

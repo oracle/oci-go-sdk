@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // ComputeInstanceGroupFailurePolicyByPercentage Specifies a failure policy by percentage for a compute instance group rolling deployment stage.

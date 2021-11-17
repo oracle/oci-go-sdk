@@ -10,7 +10,7 @@
 package logging
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // UnifiedAgentConfigurationCollection Results of a UnifiedAgentConfiguration search. Contains UnifiedAgentConfigurationSummary items.

@@ -10,7 +10,7 @@
 package analytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CreateVanityUrlDetails Input payload to create a vanity url.

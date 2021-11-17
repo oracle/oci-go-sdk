@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // BulkActionResourceTypeCollection Collection of resource-types supported by a compartment bulk action.

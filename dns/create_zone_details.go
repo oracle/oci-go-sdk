@@ -12,7 +12,7 @@ package dns
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CreateZoneDetails The body for defining a new zone.

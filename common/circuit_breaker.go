@@ -5,8 +5,9 @@ package common
 
 import (
 	"fmt"
-	"github.com/sony/gobreaker"
 	"time"
+
+	"github.com/sony/gobreaker"
 )
 
 const (

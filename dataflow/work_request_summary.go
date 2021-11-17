@@ -10,7 +10,7 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // WorkRequestSummary A Data Flow work request summary object.

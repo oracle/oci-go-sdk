@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CreateSshDetails Details of the SSH key that will be used. Required for source database Manual and UserManagerOci connection types.

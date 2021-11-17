@@ -12,7 +12,7 @@ package computeinstanceagent
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // InstanceAgentCommandExecution A command's execution summary.

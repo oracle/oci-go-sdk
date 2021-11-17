@@ -10,7 +10,7 @@
 package oda
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // WorkRequestSummary A description of the work request's status.

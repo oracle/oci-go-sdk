@@ -10,7 +10,7 @@
 package mysql
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // HeatWaveNode A HeatWave node is a compute host that is part of a HeatWave cluster.

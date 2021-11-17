@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // PeerSummary Peer summary information for returning in a list.

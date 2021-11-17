@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // UpdateTargetDatabaseDetails The details of the database used for updating the target database in Data Safe.

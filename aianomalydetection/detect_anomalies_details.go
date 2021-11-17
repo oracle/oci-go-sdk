@@ -13,7 +13,7 @@ package aianomalydetection
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // DetectAnomaliesDetails Base class for the DetectAnomalies call. It contains the identifier that will

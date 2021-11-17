@@ -11,7 +11,7 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // RelatedEventCollection Results of a event occurence search. Contains RelatedEventSummary.

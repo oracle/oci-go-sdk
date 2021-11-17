@@ -11,7 +11,7 @@
 package artifacts
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // RestoreContainerImageDetails Undelete container image request details.

@@ -10,7 +10,7 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // UpdateRoverEntitlementDetails Information required to update a RoverEntitlement.

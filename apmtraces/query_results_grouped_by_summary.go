@@ -10,7 +10,7 @@
 package apmtraces
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // QueryResultsGroupedBySummary Summary of the attribute based on which the query results are grouped by.

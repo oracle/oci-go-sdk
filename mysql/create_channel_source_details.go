@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CreateChannelSourceDetails Parameters detailing how to provision the source for the given Channel.

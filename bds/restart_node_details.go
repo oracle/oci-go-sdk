@@ -10,7 +10,7 @@
 package bds
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // RestartNodeDetails The information about restarted node.

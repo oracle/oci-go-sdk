@@ -10,7 +10,7 @@
 package databasetools
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // DatabaseToolsPrivateEndpointReverseConnectionConfiguration Reverse connection configuration details of Private Endpoint.

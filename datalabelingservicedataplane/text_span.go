@@ -10,7 +10,7 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // TextSpan A wrapper class for offset and length, which together represent a span of text in a text document.

@@ -11,7 +11,7 @@
 package osmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // WorkRequestResource A resource created, operated on or used by a work request.

@@ -13,7 +13,7 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // LatestStreamingCursor `LATEST` cursor type. Sets the starting point for consuming the stream at messages published after saving the service connector. For more information about Streaming cursors, see Using Cursors (https://docs.cloud.oracle.com/iaas/Content/Streaming/Tasks/using_a_single_consumer.htm#usingcursors).
