@@ -8,7 +8,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/sony/gobreaker"
 	"io"
 	"io/ioutil"
 	"math/rand"
@@ -25,6 +24,8 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/sony/gobreaker"
 )
 
 const (
@@ -587,7 +588,7 @@ func (client BaseClient) CallWithDetails(ctx context.Context, request *http.Requ
 			return client.httpDo(request)
 		})
 		if cbErr != nil {
-			return nil, cbErr
+			return resp.(*http.Response), cbErr
 		}
 		return resp.(*http.Response), nil
 	}
