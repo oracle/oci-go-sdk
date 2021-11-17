@@ -12,8 +12,8 @@ package apmtraces
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v51/common"
-	"github.com/oracle/oci-go-sdk/v51/common/auth"
+	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v52/common/auth"
 	"net/http"
 )
 
@@ -50,6 +50,8 @@ func NewQueryClientWithOboToken(configProvider common.ConfigurationProvider, obo
 }
 
 func newQueryClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client QueryClient, err error) {
+	// Query service default circuit breaker is enabled
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSetting())
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 

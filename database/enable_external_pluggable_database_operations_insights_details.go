@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // EnableExternalPluggableDatabaseOperationsInsightsDetails Details to enable Operations Insights on the external pluggable database

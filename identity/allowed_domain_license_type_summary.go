@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // AllowedDomainLicenseTypeSummary The 'AllowedDomainLicenseTypeSummary' object contains information about the 'Domain License type'.

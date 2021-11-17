@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // ExternalMacsConnectorSummary An Oracle Cloud Infrastructure resource that uses the Management Agent cloud service (MACS) (https://docs.cloud.oracle.com/iaas/management-agents/index.html) to connect to an external Oracle Database.

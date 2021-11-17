@@ -11,9 +11,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v51/common"
-	"github.com/oracle/oci-go-sdk/v51/core"
-	"github.com/oracle/oci-go-sdk/v51/example/helpers"
+	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v52/core"
+	"github.com/oracle/oci-go-sdk/v52/example/helpers"
 )
 
 const (

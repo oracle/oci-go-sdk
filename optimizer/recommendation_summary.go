@@ -4,13 +4,15 @@
 
 // Cloud Advisor API
 //
-// APIs for managing Cloud Advisor. Cloud Advisor provides recommendations that help you maximize cost savings and improve the security posture of your tenancy.
+// Use the Cloud Advisor API to find potential inefficiencies in your tenancy and address them.
+// Cloud Advisor can help you save money, improve performance, strengthen system resilience, and improve security.
+// For more information, see Cloud Advisor (https://docs.cloud.oracle.com/Content/CloudAdvisor/Concepts/cloudadvisoroverview.htm).
 //
 
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // RecommendationSummary The metadata associated with the recommendation summary.
@@ -62,6 +64,11 @@ type RecommendationSummary struct {
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
 	SupportedLevels *SupportedLevels `mandatory:"false" json:"supportedLevels"`
+
+	// Additional metadata key/value pairs for the recommendation summary.
+	// For example:
+	// `{"EstimatedSaving": "200"}`
+	ExtendedMetadata map[string]string `mandatory:"false" json:"extendedMetadata"`
 }
 
 func (m RecommendationSummary) String() string {

@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CreateGithubAccessTokenConfigurationSourceProviderDetails The details for creating a configuration source provider of the type `GITHUB_ACCESS_TOKEN`.

@@ -10,7 +10,7 @@
 package certificatesmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // CertificateAuthorityVersionCollection The results of a certificate authority (CA) version search. This object contains CA version summary objects and other data.

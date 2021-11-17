@@ -12,8 +12,8 @@ package rover
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v51/common"
-	"github.com/oracle/oci-go-sdk/v51/common/auth"
+	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v52/common/auth"
 	"net/http"
 )
 
@@ -50,6 +50,8 @@ func NewRoverNodeClientWithOboToken(configProvider common.ConfigurationProvider,
 }
 
 func newRoverNodeClientFromBaseClient(baseClient common.BaseClient, configProvider common.ConfigurationProvider) (client RoverNodeClient, err error) {
+	// RoverNode service default circuit breaker is enabled
+	baseClient.Configuration.CircuitBreaker = common.NewCircuitBreaker(common.DefaultCircuitBreakerSetting())
 	common.ConfigCircuitBreakerFromEnvVar(&baseClient)
 	common.ConfigCircuitBreakerFromGlobalVar(&baseClient)
 
@@ -87,9 +89,10 @@ func (client *RoverNodeClient) ConfigurationProvider() *common.ConfigurationProv
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ChangeRoverNodeCompartment.go.html to see an example of how to use ChangeRoverNodeCompartment API.
+// A default retry strategy applies to this operation ChangeRoverNodeCompartment()
 func (client RoverNodeClient) ChangeRoverNodeCompartment(ctx context.Context, request ChangeRoverNodeCompartmentRequest) (response ChangeRoverNodeCompartmentResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -147,9 +150,10 @@ func (client RoverNodeClient) changeRoverNodeCompartment(ctx context.Context, re
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/CreateRoverNode.go.html to see an example of how to use CreateRoverNode API.
+// A default retry strategy applies to this operation CreateRoverNode()
 func (client RoverNodeClient) CreateRoverNode(ctx context.Context, request CreateRoverNodeRequest) (response CreateRoverNodeResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -207,15 +211,21 @@ func (client RoverNodeClient) createRoverNode(ctx context.Context, request commo
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/DeleteRoverNode.go.html to see an example of how to use DeleteRoverNode API.
+// A default retry strategy applies to this operation DeleteRoverNode()
 func (client RoverNodeClient) DeleteRoverNode(ctx context.Context, request DeleteRoverNodeRequest) (response DeleteRoverNodeResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
 	if request.RetryPolicy() != nil {
 		policy = *request.RetryPolicy()
 	}
+
+	if !(request.OpcRetryToken != nil && *request.OpcRetryToken != "") {
+		request.OpcRetryToken = common.String(common.RetryToken())
+	}
+
 	ociResponse, err = common.Retry(ctx, request, client.deleteRoverNode, policy)
 	if err != nil {
 		if ociResponse != nil {
@@ -262,9 +272,10 @@ func (client RoverNodeClient) deleteRoverNode(ctx context.Context, request commo
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNode.go.html to see an example of how to use GetRoverNode API.
+// A default retry strategy applies to this operation GetRoverNode()
 func (client RoverNodeClient) GetRoverNode(ctx context.Context, request GetRoverNodeRequest) (response GetRoverNodeResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -317,9 +328,10 @@ func (client RoverNodeClient) getRoverNode(ctx context.Context, request common.O
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNodeCertificate.go.html to see an example of how to use GetRoverNodeCertificate API.
+// A default retry strategy applies to this operation GetRoverNodeCertificate()
 func (client RoverNodeClient) GetRoverNodeCertificate(ctx context.Context, request GetRoverNodeCertificateRequest) (response GetRoverNodeCertificateResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -372,9 +384,10 @@ func (client RoverNodeClient) getRoverNodeCertificate(ctx context.Context, reque
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNodeEncryptionKey.go.html to see an example of how to use GetRoverNodeEncryptionKey API.
+// A default retry strategy applies to this operation GetRoverNodeEncryptionKey()
 func (client RoverNodeClient) GetRoverNodeEncryptionKey(ctx context.Context, request GetRoverNodeEncryptionKeyRequest) (response GetRoverNodeEncryptionKeyResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -427,9 +440,10 @@ func (client RoverNodeClient) getRoverNodeEncryptionKey(ctx context.Context, req
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/GetRoverNodeGetRpt.go.html to see an example of how to use GetRoverNodeGetRpt API.
+// A default retry strategy applies to this operation GetRoverNodeGetRpt()
 func (client RoverNodeClient) GetRoverNodeGetRpt(ctx context.Context, request GetRoverNodeGetRptRequest) (response GetRoverNodeGetRptResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -482,9 +496,10 @@ func (client RoverNodeClient) getRoverNodeGetRpt(ctx context.Context, request co
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/ListRoverNodes.go.html to see an example of how to use ListRoverNodes API.
+// A default retry strategy applies to this operation ListRoverNodes()
 func (client RoverNodeClient) ListRoverNodes(ctx context.Context, request ListRoverNodesRequest) (response ListRoverNodesResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -537,9 +552,10 @@ func (client RoverNodeClient) listRoverNodes(ctx context.Context, request common
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/RoverNodeActionSetKey.go.html to see an example of how to use RoverNodeActionSetKey API.
+// A default retry strategy applies to this operation RoverNodeActionSetKey()
 func (client RoverNodeClient) RoverNodeActionSetKey(ctx context.Context, request RoverNodeActionSetKeyRequest) (response RoverNodeActionSetKeyResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}
@@ -597,9 +613,10 @@ func (client RoverNodeClient) roverNodeActionSetKey(ctx context.Context, request
 // See also
 //
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/rover/UpdateRoverNode.go.html to see an example of how to use UpdateRoverNode API.
+// A default retry strategy applies to this operation UpdateRoverNode()
 func (client RoverNodeClient) UpdateRoverNode(ctx context.Context, request UpdateRoverNodeRequest) (response UpdateRoverNodeResponse, err error) {
 	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
+	policy := common.DefaultRetryPolicy()
 	if client.RetryPolicy() != nil {
 		policy = *client.RetryPolicy()
 	}

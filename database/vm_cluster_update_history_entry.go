@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // VmClusterUpdateHistoryEntry The record of a maintenance update action performed on a specified VM cluster. Applies to Exadata Cloud@Customer instances only.

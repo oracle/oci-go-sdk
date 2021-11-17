@@ -10,7 +10,7 @@
 package databasetools
 
 import (
-	"github.com/oracle/oci-go-sdk/v51/common"
+	"github.com/oracle/oci-go-sdk/v52/common"
 )
 
 // ChangeDatabaseToolsConnectionCompartmentDetails Contains the details for the compartment to move the DatabaseToolsConnection to.
