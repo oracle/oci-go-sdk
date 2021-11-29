@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // DatabaseDetails Partial information about the database which includes id, name, type.
@@ -23,6 +23,9 @@ type DatabaseDetails struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the database.
 	DatabaseId *string `mandatory:"true" json:"databaseId"`
+
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment.
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The database name. The database name is unique within the tenancy.
 	DatabaseName *string `mandatory:"true" json:"databaseName"`

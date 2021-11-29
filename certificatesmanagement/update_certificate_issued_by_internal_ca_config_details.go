@@ -11,7 +11,7 @@ package certificatesmanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // UpdateCertificateIssuedByInternalCaConfigDetails The details for updating an internally managed certificate which is issued by a private certificate authority (CA).

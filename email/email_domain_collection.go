@@ -14,7 +14,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // EmailDomainCollection Results of an EmailDomain search. Contains boh EmailDomainSummary items and other information, such as metadata.

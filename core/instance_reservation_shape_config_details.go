@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // InstanceReservationShapeConfigDetails The shape configuration requested when launching instances in a compute capacity reservation.

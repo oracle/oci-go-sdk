@@ -11,10 +11,10 @@ import (
 	"math"
 	"time"
 
-	"github.com/oracle/oci-go-sdk/v52/common"
-	"github.com/oracle/oci-go-sdk/v52/core"
-	"github.com/oracle/oci-go-sdk/v52/example/helpers"
-	"github.com/oracle/oci-go-sdk/v52/identity"
+	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v53/core"
+	"github.com/oracle/oci-go-sdk/v53/example/helpers"
+	"github.com/oracle/oci-go-sdk/v53/identity"
 )
 
 // This is a pretend OCID, an instance with this OCID does not actually exist.

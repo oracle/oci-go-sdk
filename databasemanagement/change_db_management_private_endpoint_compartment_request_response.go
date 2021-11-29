@@ -5,7 +5,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -19,7 +19,7 @@ type ChangeDbManagementPrivateEndpointCompartmentRequest struct {
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the Database Management private endpoint.
 	DbManagementPrivateEndpointId *string `mandatory:"true" contributesTo:"path" name:"dbManagementPrivateEndpointId"`
 
-	// The details used to change the compartment of a Database Management private endpoint.
+	// The details used to move the Database Management private endpoint to another compartment.
 	ChangeDbManagementPrivateEndpointCompartmentDetails `contributesTo:"body"`
 
 	// The client request ID for tracing.

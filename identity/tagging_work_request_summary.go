@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // TaggingWorkRequestSummary The work request summary. Tracks the status of the asynchronous operation.
@@ -60,6 +60,7 @@ const (
 	TaggingWorkRequestSummaryOperationTypeDeleteNonEmptyTagNamespace TaggingWorkRequestSummaryOperationTypeEnum = "DELETE_NON_EMPTY_TAG_NAMESPACE"
 	TaggingWorkRequestSummaryOperationTypeBulkDeleteTagDefinition    TaggingWorkRequestSummaryOperationTypeEnum = "BULK_DELETE_TAG_DEFINITION"
 	TaggingWorkRequestSummaryOperationTypeBulkEditOfTags             TaggingWorkRequestSummaryOperationTypeEnum = "BULK_EDIT_OF_TAGS"
+	TaggingWorkRequestSummaryOperationTypeImportStandardTags         TaggingWorkRequestSummaryOperationTypeEnum = "IMPORT_STANDARD_TAGS"
 )
 
 var mappingTaggingWorkRequestSummaryOperationType = map[string]TaggingWorkRequestSummaryOperationTypeEnum{
@@ -67,6 +68,7 @@ var mappingTaggingWorkRequestSummaryOperationType = map[string]TaggingWorkReques
 	"DELETE_NON_EMPTY_TAG_NAMESPACE": TaggingWorkRequestSummaryOperationTypeDeleteNonEmptyTagNamespace,
 	"BULK_DELETE_TAG_DEFINITION":     TaggingWorkRequestSummaryOperationTypeBulkDeleteTagDefinition,
 	"BULK_EDIT_OF_TAGS":              TaggingWorkRequestSummaryOperationTypeBulkEditOfTags,
+	"IMPORT_STANDARD_TAGS":           TaggingWorkRequestSummaryOperationTypeImportStandardTags,
 }
 
 // GetTaggingWorkRequestSummaryOperationTypeEnumValues Enumerates the set of values for TaggingWorkRequestSummaryOperationTypeEnum

@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // AutonomousDatabaseSummary An Oracle Autonomous Database.
@@ -199,6 +199,9 @@ type AutonomousDatabaseSummary struct {
 
 	// Status of Operations Insights for this Autonomous Database.
 	OperationsInsightsStatus AutonomousDatabaseSummaryOperationsInsightsStatusEnum `mandatory:"false" json:"operationsInsightsStatus,omitempty"`
+
+	// Status of Database Management for this Autonomous Database.
+	DatabaseManagementStatus AutonomousDatabaseSummaryDatabaseManagementStatusEnum `mandatory:"false" json:"databaseManagementStatus,omitempty"`
 
 	// The date and time when maintenance will begin.
 	TimeMaintenanceBegin *common.SDKTime `mandatory:"false" json:"timeMaintenanceBegin"`
@@ -476,6 +479,37 @@ var mappingAutonomousDatabaseSummaryOperationsInsightsStatus = map[string]Autono
 func GetAutonomousDatabaseSummaryOperationsInsightsStatusEnumValues() []AutonomousDatabaseSummaryOperationsInsightsStatusEnum {
 	values := make([]AutonomousDatabaseSummaryOperationsInsightsStatusEnum, 0)
 	for _, v := range mappingAutonomousDatabaseSummaryOperationsInsightsStatus {
+		values = append(values, v)
+	}
+	return values
+}
+
+// AutonomousDatabaseSummaryDatabaseManagementStatusEnum Enum with underlying type: string
+type AutonomousDatabaseSummaryDatabaseManagementStatusEnum string
+
+// Set of constants representing the allowable values for AutonomousDatabaseSummaryDatabaseManagementStatusEnum
+const (
+	AutonomousDatabaseSummaryDatabaseManagementStatusEnabling        AutonomousDatabaseSummaryDatabaseManagementStatusEnum = "ENABLING"
+	AutonomousDatabaseSummaryDatabaseManagementStatusEnabled         AutonomousDatabaseSummaryDatabaseManagementStatusEnum = "ENABLED"
+	AutonomousDatabaseSummaryDatabaseManagementStatusDisabling       AutonomousDatabaseSummaryDatabaseManagementStatusEnum = "DISABLING"
+	AutonomousDatabaseSummaryDatabaseManagementStatusNotEnabled      AutonomousDatabaseSummaryDatabaseManagementStatusEnum = "NOT_ENABLED"
+	AutonomousDatabaseSummaryDatabaseManagementStatusFailedEnabling  AutonomousDatabaseSummaryDatabaseManagementStatusEnum = "FAILED_ENABLING"
+	AutonomousDatabaseSummaryDatabaseManagementStatusFailedDisabling AutonomousDatabaseSummaryDatabaseManagementStatusEnum = "FAILED_DISABLING"
+)
+
+var mappingAutonomousDatabaseSummaryDatabaseManagementStatus = map[string]AutonomousDatabaseSummaryDatabaseManagementStatusEnum{
+	"ENABLING":         AutonomousDatabaseSummaryDatabaseManagementStatusEnabling,
+	"ENABLED":          AutonomousDatabaseSummaryDatabaseManagementStatusEnabled,
+	"DISABLING":        AutonomousDatabaseSummaryDatabaseManagementStatusDisabling,
+	"NOT_ENABLED":      AutonomousDatabaseSummaryDatabaseManagementStatusNotEnabled,
+	"FAILED_ENABLING":  AutonomousDatabaseSummaryDatabaseManagementStatusFailedEnabling,
+	"FAILED_DISABLING": AutonomousDatabaseSummaryDatabaseManagementStatusFailedDisabling,
+}
+
+// GetAutonomousDatabaseSummaryDatabaseManagementStatusEnumValues Enumerates the set of values for AutonomousDatabaseSummaryDatabaseManagementStatusEnum
+func GetAutonomousDatabaseSummaryDatabaseManagementStatusEnumValues() []AutonomousDatabaseSummaryDatabaseManagementStatusEnum {
+	values := make([]AutonomousDatabaseSummaryDatabaseManagementStatusEnum, 0)
+	for _, v := range mappingAutonomousDatabaseSummaryDatabaseManagementStatus {
 		values = append(values, v)
 	}
 	return values

@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -22,13 +22,13 @@ type ListTriggersRequest struct {
 	// unique project identifier
 	ProjectId *string `mandatory:"false" contributesTo:"query" name:"projectId"`
 
-	// A filter to return only Triggers that matches the given lifecycleState
+	// A filter to return only triggers that matches the given lifecycle state.
 	LifecycleState TriggerLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
 	// A filter to return only resources that match the entire display name given.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
 
-	// unique Trigger identifier
+	// Unique trigger identifier.
 	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
 
 	// The maximum number of items to return.

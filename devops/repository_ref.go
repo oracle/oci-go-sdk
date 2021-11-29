@@ -4,26 +4,26 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// RepositoryRef Ref object with name and commitId
+// RepositoryRef Reference object with name and commit ID.
 type RepositoryRef interface {
 
-	// Unique Ref name inside a repository
+	// Unique reference name inside a repository.
 	GetRefName() *string
 
-	// Unique full ref name inside a repository
+	// Unique full reference name inside a repository.
 	GetFullRefName() *string
 
-	// The OCID of the repository containing the ref.
+	// The OCID of the repository containing the reference.
 	GetRepositoryId() *string
 }
 

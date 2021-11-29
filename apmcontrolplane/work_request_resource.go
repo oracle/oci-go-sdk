@@ -2,19 +2,19 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Application Performance Monitoring (APM) Control Plane API
+// Application Performance Monitoring Control Plane API
 //
-// Provide a set of APIs for tenant to perform operations like create, update, delete and list APM domains, and also
-// work request APIs to monitor progress of these operations.
+// Use the Application Performance Monitoring Control Plane API to perform operations such as creating, updating,
+// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs.
 //
 
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// WorkRequestResource A resource created or operated on by a work request.
+// WorkRequestResource The details of the resource that the work request affects.
 type WorkRequestResource struct {
 
 	// The resource type the work request affects.
@@ -29,7 +29,7 @@ type WorkRequestResource struct {
 	// The identifier of the resource the work request affects.
 	Identifier *string `mandatory:"true" json:"identifier"`
 
-	// The URI path that the user can do a GET on to access the resource metadata
+	// The URI path that the user can do a GET on to access the resource metadata.
 	EntityUri *string `mandatory:"false" json:"entityUri"`
 }
 

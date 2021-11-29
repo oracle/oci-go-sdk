@@ -4,38 +4,38 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// GitlabTriggerSummary Summary of the Gitlab Trigger.
+// GitlabTriggerSummary Summary of the GitLab trigger.
 type GitlabTriggerSummary struct {
 
-	// Unique identifier that is immutable on creation
+	// Unique identifier that is immutable on creation.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Project to which the Trigger belongs
+	// The OCID of the DevOps project to which the trigger belongs to.
 	ProjectId *string `mandatory:"true" json:"projectId"`
 
-	// Compartment to which the Trigger belongs
+	// The OCID of the compartment that contains the trigger.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Name for Trigger.
+	// Trigger display name. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Description about the Trigger
+	// Description about the trigger.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The time the the Trigger was created. An RFC3339 formatted datetime string
+	// The time the trigger was created. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// The time the Trigger was updated. An RFC3339 formatted datetime string
+	// The time the trigger was updated. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
 	// A message describing the current state in more detail. For example, can be used to provide actionable information for a resource in Failed state.
@@ -50,7 +50,7 @@ type GitlabTriggerSummary struct {
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. See Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
 	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 
-	// The current state of the Trigger.
+	// The current state of the trigger.
 	LifecycleState TriggerLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 

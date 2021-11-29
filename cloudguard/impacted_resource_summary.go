@@ -10,7 +10,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // ImpactedResourceSummary Impacted Resource summary Definition.
@@ -39,6 +39,12 @@ type ImpactedResourceSummary struct {
 
 	// Time when the problem was identified
 	TimeIdentified *common.SDKTime `mandatory:"true" json:"timeIdentified"`
+
+	// Identifier for the sighting type
+	SightingType *string `mandatory:"false" json:"sightingType"`
+
+	// Name of the sighting type
+	SightingTypeDisplayName *string `mandatory:"false" json:"sightingTypeDisplayName"`
 }
 
 func (m ImpactedResourceSummary) String() string {

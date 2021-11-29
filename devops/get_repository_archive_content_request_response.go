@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"io"
 	"net/http"
 )
@@ -17,13 +17,13 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/GetRepositoryArchiveContent.go.html to see an example of how to use GetRepositoryArchiveContentRequest.
 type GetRepositoryArchiveContentRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
-	// A filter to return only resources that match the given Ref name.
+	// A filter to return only resources that match the given reference name.
 	RefName *string `mandatory:"false" contributesTo:"query" name:"refName"`
 
-	// The archive format query parm for download repo endpoint.
+	// The archive format query parameter for downloading repository endpoint.
 	Format *string `mandatory:"false" contributesTo:"query" name:"format"`
 
 	// Unique Oracle-assigned identifier for the request.  If you need to contact Oracle about a particular request, provide the request ID.

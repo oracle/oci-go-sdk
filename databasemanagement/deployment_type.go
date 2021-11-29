@@ -16,11 +16,12 @@ type DeploymentTypeEnum string
 
 // Set of constants representing the allowable values for DeploymentTypeEnum
 const (
-	DeploymentTypeOnpremise DeploymentTypeEnum = "ONPREMISE"
-	DeploymentTypeBm        DeploymentTypeEnum = "BM"
-	DeploymentTypeVm        DeploymentTypeEnum = "VM"
-	DeploymentTypeExadata   DeploymentTypeEnum = "EXADATA"
-	DeploymentTypeExadataCc DeploymentTypeEnum = "EXADATA_CC"
+	DeploymentTypeOnpremise  DeploymentTypeEnum = "ONPREMISE"
+	DeploymentTypeBm         DeploymentTypeEnum = "BM"
+	DeploymentTypeVm         DeploymentTypeEnum = "VM"
+	DeploymentTypeExadata    DeploymentTypeEnum = "EXADATA"
+	DeploymentTypeExadataCc  DeploymentTypeEnum = "EXADATA_CC"
+	DeploymentTypeAutonomous DeploymentTypeEnum = "AUTONOMOUS"
 )
 
 var mappingDeploymentType = map[string]DeploymentTypeEnum{
@@ -29,6 +30,7 @@ var mappingDeploymentType = map[string]DeploymentTypeEnum{
 	"VM":         DeploymentTypeVm,
 	"EXADATA":    DeploymentTypeExadata,
 	"EXADATA_CC": DeploymentTypeExadataCc,
+	"AUTONOMOUS": DeploymentTypeAutonomous,
 }
 
 // GetDeploymentTypeEnumValues Enumerates the set of values for DeploymentTypeEnum

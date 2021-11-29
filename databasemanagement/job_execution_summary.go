@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // JobExecutionSummary A summary of a job execution on a Managed Database.
@@ -59,6 +59,9 @@ type JobExecutionSummary struct {
 
 	// Indicates whether the Oracle Database is part of a cluster.
 	IsCluster *bool `mandatory:"false" json:"isCluster"`
+
+	// The workload type of the Autonomous Database.
+	WorkloadType WorkloadTypeEnum `mandatory:"false" json:"workloadType,omitempty"`
 
 	// The date and time when the job execution was completed.
 	TimeCompleted *common.SDKTime `mandatory:"false" json:"timeCompleted"`

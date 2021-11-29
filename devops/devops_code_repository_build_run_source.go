@@ -4,25 +4,25 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// DevopsCodeRepositoryBuildRunSource Specifies details of build run through Devops Code Repository.
+// DevopsCodeRepositoryBuildRunSource Specifies details of build run through DevOps code repository.
 type DevopsCodeRepositoryBuildRunSource struct {
 
-	// The Trigger that invoked this build run
+	// The trigger that invoked the build run.
 	TriggerId *string `mandatory:"true" json:"triggerId"`
 
 	TriggerInfo *TriggerInfo `mandatory:"true" json:"triggerInfo"`
 
-	// The Devops Code Repository RepoId that invoked this build run
+	// The DevOps code repository identifier that invoked the build run.
 	RepositoryId *string `mandatory:"true" json:"repositoryId"`
 }
 

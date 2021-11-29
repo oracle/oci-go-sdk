@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,16 +16,16 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/GetCommitDiff.go.html to see an example of how to use GetCommitDiffRequest.
 type GetCommitDiffRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
-	// The commit or ref name where changes are coming from
+	// The commit or reference name where changes are coming from.
 	TargetVersion *string `mandatory:"true" contributesTo:"query" name:"targetVersion"`
 
-	// The commit or ref name to compare changes against. If baseVersion is not provided, the diff will be gone against an empty tree.
+	// The commit or reference name to compare changes against. If base version is not provided, the difference goes against an empty tree.
 	BaseVersion *string `mandatory:"false" contributesTo:"query" name:"baseVersion"`
 
-	// boolean for whether to use merge base or most recent revision
+	// Boolean value to indicate whether to use merge base or most recent revision.
 	IsComparisonFromMergeBase *bool `mandatory:"false" contributesTo:"query" name:"isComparisonFromMergeBase"`
 
 	// Unique Oracle-assigned identifier for the request.  If you need to contact Oracle about a particular request, provide the request ID.

@@ -4,42 +4,42 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // GithubAccessTokenConnection The properties that define a connection of the type `GITHUB_ACCESS_TOKEN`.
 // This type corresponds to a connection in GitHub that is authenticated with a personal access token.
 type GithubAccessTokenConnection struct {
 
-	// Unique identifier that is immutable on creation
+	// Unique identifier that is immutable on creation.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Compartment Identifier
+	// The OCID of the compartment containing the connection.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Project Identifier
+	// The OCID of the DevOps project.
 	ProjectId *string `mandatory:"true" json:"projectId"`
 
-	// OCID of personal access token saved in secret store
+	// The OCID of personal access token saved in secret store.
 	AccessToken *string `mandatory:"true" json:"accessToken"`
 
-	// Optional description about the connection
+	// Optional description about the connection.
 	Description *string `mandatory:"false" json:"description"`
 
-	// Connection identifier which can be renamed and is not necessarily unique
+	// Connection display name, which can be renamed and is not necessarily unique. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// The time the Connection was created. An RFC3339 formatted datetime string
+	// The time the connection was created. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// The time at which the Connection was updated. An RFC3339 formatted datetime string
+	// The time the connection was updated. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"bar-key": "value"}`
@@ -51,7 +51,7 @@ type GithubAccessTokenConnection struct {
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. See Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
 	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 
-	// The current state of the Connection.
+	// The current state of the connection.
 	LifecycleState ConnectionLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 

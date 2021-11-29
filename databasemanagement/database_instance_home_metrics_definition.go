@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // DatabaseInstanceHomeMetricsDefinition The response containing the CPU, Wait, DB Time, and Memory metrics
@@ -38,6 +38,8 @@ type DatabaseInstanceHomeMetricsDefinition struct {
 	IoAggregateMetrics *DatabaseIoAggregateMetrics `mandatory:"true" json:"ioAggregateMetrics"`
 
 	MemoryAggregateMetrics *MemoryAggregateMetrics `mandatory:"true" json:"memoryAggregateMetrics"`
+
+	CpuUtilizationAggregateMetrics *CpuUtilizationAggregateMetrics `mandatory:"false" json:"cpuUtilizationAggregateMetrics"`
 }
 
 func (m DatabaseInstanceHomeMetricsDefinition) String() string {

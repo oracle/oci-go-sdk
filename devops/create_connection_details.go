@@ -4,26 +4,26 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // CreateConnectionDetails The details for creating a connection.
 type CreateConnectionDetails interface {
 
-	// Project Identifier
+	// The OCID of the DevOps project.
 	GetProjectId() *string
 
-	// Optional description about the Connection
+	// Optional description about the connection.
 	GetDescription() *string
 
-	// Optional Connection display name
+	// Optional connection display name. Avoid entering confidential information.
 	GetDisplayName() *string
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"bar-key": "value"}`

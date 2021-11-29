@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // BlockchainPlatform Blockchain Platform Instance Description.
@@ -42,6 +42,9 @@ type BlockchainPlatform struct {
 
 	// The time the Platform Instance was updated. An RFC3339 formatted datetime string
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
+
+	// Platform Version
+	PlatformVersion *string `mandatory:"false" json:"platformVersion"`
 
 	// The version of the Platform Instance.
 	ServiceVersion *string `mandatory:"false" json:"serviceVersion"`

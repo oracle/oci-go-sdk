@@ -12,40 +12,43 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// DbManagementPrivateEndpoint A Database Management private endpoint that allows Database Management services to connect to databases in a customer's virtual cloud network (VCN).
+// DbManagementPrivateEndpoint A Database Management private endpoint allows Database Management to connect to databases in a Virtual Cloud Network (VCN).
 type DbManagementPrivateEndpoint struct {
 
-	// The OCID of the Database Management private endpoint.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the Database Management private endpoint.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The display name of the private endpoint.
+	// The display name of the Database Management private endpoint.
 	Name *string `mandatory:"true" json:"name"`
 
-	// The OCID of the compartment.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The OCID of the VCN.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the VCN.
 	VcnId *string `mandatory:"true" json:"vcnId"`
 
-	// The OCID of the subnet.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the subnet.
 	SubnetId *string `mandatory:"true" json:"subnetId"`
 
-	// The private IP addresses assigned to the private endpoint.
+	// Specifies whether the Database Management private endpoint can be used for Oracle Databases in a cluster.
+	IsCluster *bool `mandatory:"false" json:"isCluster"`
+
+	// The IP addresses assigned to the Database Management private endpoint.
 	PrivateIp *string `mandatory:"false" json:"privateIp"`
 
-	// The description of the private endpoint.
+	// The description of the Database Management private endpoint.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The date and time the private endpoint was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
+	// The date and time the Database Managament private endpoint was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// The current state of the private endpoint.
+	// The current lifecycle state of the Database Management private endpoint.
 	LifecycleState LifecycleStatesEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
-	// The OCIDs of the network security groups that the private endpoint belongs to.
+	// The OCIDs of the Network Security Groups to which the Database Management private endpoint belongs.
 	NsgIds []string `mandatory:"false" json:"nsgIds"`
 }
 

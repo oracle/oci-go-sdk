@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // NetworkSourcesSummary A network source specifies a list of source IP addresses that are allowed to make authorization requests.

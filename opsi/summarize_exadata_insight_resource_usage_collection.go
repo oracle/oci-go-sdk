@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // SummarizeExadataInsightResourceUsageCollection Resource usage , allocation, utilization and usage ChangePercent for the current time period

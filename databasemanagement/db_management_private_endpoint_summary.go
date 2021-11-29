@@ -12,25 +12,25 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// DbManagementPrivateEndpointSummary Summary of a Database Management private endpoint.
+// DbManagementPrivateEndpointSummary The summary of a Database Management private endpoint.
 type DbManagementPrivateEndpointSummary struct {
 
-	// The OCID of the Database Management private endpoint.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the Database Management private endpoint.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The display name of the private endpoint.
+	// The display name of the Database Management private endpoint.
 	Name *string `mandatory:"true" json:"name"`
 
-	// The OCID of the compartment.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The OCID of the VCN.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the VCN.
 	VcnId *string `mandatory:"true" json:"vcnId"`
 
-	// The OCID of the subnet.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the subnet.
 	SubnetId *string `mandatory:"true" json:"subnetId"`
 
 	// The description of the private endpoint.
@@ -39,7 +39,7 @@ type DbManagementPrivateEndpointSummary struct {
 	// The date and time the private endpoint was created, in the format defined by RFC3339 (https://tools.ietf.org/html/rfc3339).
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// The current state of the private endpoint.
+	// The current lifecycle state of the private endpoint.
 	LifecycleState LifecycleStatesEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 }
 

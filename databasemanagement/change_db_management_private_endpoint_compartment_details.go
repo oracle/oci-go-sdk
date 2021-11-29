@@ -12,13 +12,13 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// ChangeDbManagementPrivateEndpointCompartmentDetails The details used to change the compartment of a Database Management private endpoint.
+// ChangeDbManagementPrivateEndpointCompartmentDetails The details used to move the Database Management private endpoint to another compartment.
 type ChangeDbManagementPrivateEndpointCompartmentDetails struct {
 
-	// The OCID of the new compartment.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment to which the Database Management private endpoint needs to be moved.
 	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 }
 

@@ -19,12 +19,16 @@ const (
 	DatabaseSubTypeCdb    DatabaseSubTypeEnum = "CDB"
 	DatabaseSubTypePdb    DatabaseSubTypeEnum = "PDB"
 	DatabaseSubTypeNonCdb DatabaseSubTypeEnum = "NON_CDB"
+	DatabaseSubTypeAcd    DatabaseSubTypeEnum = "ACD"
+	DatabaseSubTypeAdb    DatabaseSubTypeEnum = "ADB"
 )
 
 var mappingDatabaseSubType = map[string]DatabaseSubTypeEnum{
 	"CDB":     DatabaseSubTypeCdb,
 	"PDB":     DatabaseSubTypePdb,
 	"NON_CDB": DatabaseSubTypeNonCdb,
+	"ACD":     DatabaseSubTypeAcd,
+	"ADB":     DatabaseSubTypeAdb,
 }
 
 // GetDatabaseSubTypeEnumValues Enumerates the set of values for DatabaseSubTypeEnum

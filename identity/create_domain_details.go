@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // CreateDomainDetails Create a domain details
@@ -25,7 +25,7 @@ type CreateDomainDetails struct {
 	// Domain entity description
 	Description *string `mandatory:"true" json:"description"`
 
-	// The region's name. See Regions and Availability Domains (https://docs.cloud.oracle.com/Content/General/Concepts/regions.htm)
+	// The region's name identifier. See Regions and Availability Domains (https://docs.cloud.oracle.com/Content/General/Concepts/regions.htm)
 	// for the full list of supported region names.
 	// Example: `us-phoenix-1`
 	HomeRegion *string `mandatory:"true" json:"homeRegion"`

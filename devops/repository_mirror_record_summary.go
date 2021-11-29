@@ -4,16 +4,16 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// RepositoryMirrorRecordSummary Object containing information about a mirror record
+// RepositoryMirrorRecordSummary Object containing information about a mirror record.
 type RepositoryMirrorRecordSummary struct {
 
 	// Mirror status of current mirror entry.
@@ -23,7 +23,7 @@ type RepositoryMirrorRecordSummary struct {
 	// FAILED - Mirroring Failed
 	MirrorStatus RepositoryMirrorRecordSummaryMirrorStatusEnum `mandatory:"true" json:"mirrorStatus"`
 
-	// Workrequest Id to track current mirror operation
+	// Workrequest ID to track current mirror operation.
 	WorkRequestId *string `mandatory:"false" json:"workRequestId"`
 
 	// The time to enqueue a mirror operation.
@@ -32,7 +32,7 @@ type RepositoryMirrorRecordSummary struct {
 	// The time to start a mirror operation.
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 
-	// The time complete a mirror operation.
+	// The time to complete a mirror operation.
 	TimeCompleted *common.SDKTime `mandatory:"false" json:"timeCompleted"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"bar-key": "value"}`

@@ -12,13 +12,13 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// PdbMetrics The summary of Pdb's and it's resource usage metrics (CPU, IO, Storage and Active sessions) for a specified Container database.
+// PdbMetrics The summary of Pluggable Databases (PDBs) and their resource usage metrics, within a specific Container Database (CDB).
 type PdbMetrics struct {
 
-	// The summary of Pdb's and it's resource usage metrics (CPU, IO, Storage and Active sessions) for a specified Container database.
+	// A summary of PDBs and their resource usage metrics such as CPU, User I/O, and Storage, within a specific CDB.
 	DatabaseUsageMetrics []DatabaseUsageMetrics `mandatory:"true" json:"databaseUsageMetrics"`
 }
 

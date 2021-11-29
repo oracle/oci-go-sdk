@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // ImportableEnterpriseManagerEntity An Enterprise Manager entity that can be imported into Operations Insights.

@@ -12,44 +12,43 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// WorkRequest A description of workrequest status
+// WorkRequest A description of the work request status.
 type WorkRequest struct {
 
 	// The ID of the work request.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The ocid of the compartment that contains the work request. Work requests should be scoped to
-	// the same compartment as the resource the work request affects. If the work request affects multiple resources,
-	// and those resources are not in the same compartment, it is up to the service team to pick the primary
-	// resource whose compartment should be used.
+	// The OCID of the compartment that contains the work request. Work requests should be scoped to
+	// the same compartment as the resource the work request affects. If the work request affects multiple resources that are not in the same compartment,
+	// then the system picks the primary resource whose compartment should be used.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Type of the work request
+	// The type of work request.
 	OperationType WorkRequestOperationTypeEnum `mandatory:"true" json:"operationType"`
 
-	// Status of current work request.
+	// The status of the current work request.
 	Status WorkRequestStatusEnum `mandatory:"true" json:"status"`
 
-	// Percentage of the request completed.
+	// The completed percentage of the operation tracked by the work request.
 	PercentComplete *float32 `mandatory:"true" json:"percentComplete"`
 
-	// The date and time the request was created, as described in
-	// RFC 3339 (https://tools.ietf.org/rfc/rfc3339), section 14.29.
-	// The precision for this time object is milliseconds.
+	// The date and time the work request was accepted, as described in
+	// RFC 3339 (https://tools.ietf.org/rfc/rfc3339).
+	// The precision for this time object in milliseconds.
 	TimeAccepted *common.SDKTime `mandatory:"true" json:"timeAccepted"`
 
 	// The resources affected by this work request.
 	Resources []WorkRequestResource `mandatory:"true" json:"resources"`
 
-	// The date and time the request was started, as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339),
-	// section 14.29. The precision for this time object is milliseconds.
+	// The date and time the work request transitioned from ACCEPTED to IN_PROGRESS, as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339).
+	// The precision for this time object is in milliseconds.
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 
-	// The date and time the object was finished, as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339).
-	// The precision for this time object is milliseconds.
+	// The date and time the work request reached a terminal state, either FAILED or SUCCEEDED, as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339).
+	// The precision for this time object is in milliseconds.
 	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished"`
 }
 

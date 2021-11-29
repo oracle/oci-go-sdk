@@ -5,7 +5,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -78,6 +78,9 @@ type ListHostConfigurationsRequest struct {
 	// Currently, only existence ("true" at the end) is supported. Absence ("false" at the end) is not supported.
 	// Multiple values for different tag names are interpreted as "AND".
 	FreeformTagExists []string `contributesTo:"query" name:"freeformTagExists" collectionFormat:"multi"`
+
+	// A flag to search all resources within a given compartment and all sub-compartments.
+	CompartmentIdInSubtree *bool `mandatory:"false" contributesTo:"query" name:"compartmentIdInSubtree"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
 	// represents information that the SDK will consume to drive retry behavior.

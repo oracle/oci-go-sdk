@@ -4,40 +4,40 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// BuildPipelineSummary Summary of the BuildPipeline.
+// BuildPipelineSummary Summary of the build pipeline.
 type BuildPipelineSummary struct {
 
-	// Unique identifier that is immutable on creation
+	// Unique identifier that is immutable on creation.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Compartment Identifier
+	// The OCID of the compartment where the build pipeline is created.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Project Identifier
+	// The OCID of the DevOps project.
 	ProjectId *string `mandatory:"true" json:"projectId"`
 
-	// Optional description about the BuildPipeline
+	// Optional description about the build pipeline.
 	Description *string `mandatory:"false" json:"description"`
 
-	// BuildPipeline identifier which can be renamed and is not necessarily unique.
+	// Build pipeline display name, which can be renamed and is not necessarily unique. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// The time the the BuildPipeline was created. An RFC3339 formatted datetime string
+	// The time the build pipeline was created. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// The time the BuildPipeline was updated. An RFC3339 formatted datetime string
+	// The time the build pipeline was updated. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
-	// The current state of the BuildPipeline.
+	// The current state of the build pipeline.
 	LifecycleState BuildPipelineLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	BuildPipelineParameters *BuildPipelineParameterCollection `mandatory:"false" json:"buildPipelineParameters"`

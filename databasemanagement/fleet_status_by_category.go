@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // FleetStatusByCategory The number of databases in the fleet, grouped by database type and sub type.
@@ -21,8 +21,12 @@ type FleetStatusByCategory struct {
 	// The type of Oracle Database installation.
 	DatabaseType DatabaseTypeEnum `mandatory:"false" json:"databaseType,omitempty"`
 
-	// The subtype of the Oracle Database. Indicates whether the database is a Container Database, Pluggable Database, or a Non-container Database.
+	// The subtype of the Oracle Database. Indicates whether the database is a Container Database,
+	// Pluggable Database, Non-container Database, Autonomous Database, or Autonomous Container Database.
 	DatabaseSubType DatabaseSubTypeEnum `mandatory:"false" json:"databaseSubType,omitempty"`
+
+	// The infrastructure used to deploy the Oracle Database.
+	DeploymentType DeploymentTypeEnum `mandatory:"false" json:"deploymentType,omitempty"`
 
 	// The number of databases in the fleet.
 	InventoryCount *int `mandatory:"false" json:"inventoryCount"`

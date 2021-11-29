@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -19,13 +19,13 @@ type ListBuildPipelineStagesRequest struct {
 	// Unique identifier or OCID for listing a single resource by ID.
 	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
 
-	// The ID of the parent build pipeline.
+	// The OCID of the parent build pipeline.
 	BuildPipelineId *string `mandatory:"false" contributesTo:"query" name:"buildPipelineId"`
 
 	// The OCID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
 
-	// A filter to return the stages that match with the given lifecycleState.
+	// A filter to return the stages that matches the given lifecycle state.
 	LifecycleState BuildPipelineStageLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
 	// A filter to return only resources that match the entire display name given.

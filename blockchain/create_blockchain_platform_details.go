@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // CreateBlockchainPlatformDetails Blockchain Platform details for creating a new service.
@@ -36,6 +36,9 @@ type CreateBlockchainPlatformDetails struct {
 
 	// Bring your own license
 	IsByol *bool `mandatory:"false" json:"isByol"`
+
+	// Platform version
+	PlatformVersion *string `mandatory:"false" json:"platformVersion"`
 
 	// Identifier for a federated user
 	FederatedUserId *string `mandatory:"false" json:"federatedUserId"`

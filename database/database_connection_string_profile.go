@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // DatabaseConnectionStringProfile The connection string profile to allow clients to group, filter and select connection string values based on structured metadata.

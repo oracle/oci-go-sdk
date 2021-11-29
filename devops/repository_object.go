@@ -4,28 +4,28 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// RepositoryObject Object containing information about files and directories in a repository
+// RepositoryObject Object containing information about files and directories in a repository.
 type RepositoryObject struct {
 
 	// The type of git object.
 	Type RepositoryObjectTypeEnum `mandatory:"true" json:"type"`
 
-	// Size in Bytes
+	// Size in bytes.
 	SizeInBytes *int64 `mandatory:"true" json:"sizeInBytes"`
 
-	// SHA-1 hash of git object
+	// SHA-1 hash of git object.
 	Sha *string `mandatory:"true" json:"sha"`
 
-	// flag to determine is the object contains binary file content or not.
+	// Flag to determine if the object contains binary file content or not.
 	IsBinary *bool `mandatory:"false" json:"isBinary"`
 }
 

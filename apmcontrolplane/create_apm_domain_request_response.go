@@ -5,7 +5,7 @@
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/CreateApmDomain.go.html to see an example of how to use CreateApmDomainRequest.
 type CreateApmDomainRequest struct {
 
-	// Details for the new APM Domain.
+	// Details for the new APM domain.
 	CreateApmDomainDetails `contributesTo:"body"`
 
 	// A token that uniquely identifies a request so it can be retried in case of a timeout or

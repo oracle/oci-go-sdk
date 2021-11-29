@@ -26,8 +26,10 @@ const (
 	OperationTypeGoldengateDeploymentStart            OperationTypeEnum = "GOLDENGATE_DEPLOYMENT_START"
 	OperationTypeGoldengateDeploymentStop             OperationTypeEnum = "GOLDENGATE_DEPLOYMENT_STOP"
 	OperationTypeGoldengateDeploymentPatch            OperationTypeEnum = "GOLDENGATE_DEPLOYMENT_PATCH"
+	OperationTypeGoldengateDeploymentUpgrade          OperationTypeEnum = "GOLDENGATE_DEPLOYMENT_UPGRADE"
 	OperationTypeGoldengateDeploymentBackupCreate     OperationTypeEnum = "GOLDENGATE_DEPLOYMENT_BACKUP_CREATE"
 	OperationTypeGoldengateDeploymentBackupDelete     OperationTypeEnum = "GOLDENGATE_DEPLOYMENT_BACKUP_DELETE"
+	OperationTypeGoldengateDeploymentBackupCancel     OperationTypeEnum = "GOLDENGATE_DEPLOYMENT_BACKUP_CANCEL"
 )
 
 var mappingOperationType = map[string]OperationTypeEnum{
@@ -43,8 +45,10 @@ var mappingOperationType = map[string]OperationTypeEnum{
 	"GOLDENGATE_DEPLOYMENT_START":             OperationTypeGoldengateDeploymentStart,
 	"GOLDENGATE_DEPLOYMENT_STOP":              OperationTypeGoldengateDeploymentStop,
 	"GOLDENGATE_DEPLOYMENT_PATCH":             OperationTypeGoldengateDeploymentPatch,
+	"GOLDENGATE_DEPLOYMENT_UPGRADE":           OperationTypeGoldengateDeploymentUpgrade,
 	"GOLDENGATE_DEPLOYMENT_BACKUP_CREATE":     OperationTypeGoldengateDeploymentBackupCreate,
 	"GOLDENGATE_DEPLOYMENT_BACKUP_DELETE":     OperationTypeGoldengateDeploymentBackupDelete,
+	"GOLDENGATE_DEPLOYMENT_BACKUP_CANCEL":     OperationTypeGoldengateDeploymentBackupCancel,
 }
 
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum

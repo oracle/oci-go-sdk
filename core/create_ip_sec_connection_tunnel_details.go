@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // CreateIpSecConnectionTunnelDetails The representation of CreateIpSecConnectionTunnelDetails
@@ -37,6 +37,18 @@ type CreateIpSecConnectionTunnelDetails struct {
 	SharedSecret *string `mandatory:"false" json:"sharedSecret"`
 
 	BgpSessionConfig *CreateIpSecTunnelBgpSessionDetails `mandatory:"false" json:"bgpSessionConfig"`
+
+	// Whether Oracle side is the initiator for negotiation.
+	OracleInitiation CreateIpSecConnectionTunnelDetailsOracleInitiationEnum `mandatory:"false" json:"oracleInitiation,omitempty"`
+
+	// Whether NAT-T Enabled on the tunnel
+	NatTranslationEnabled CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum `mandatory:"false" json:"natTranslationEnabled,omitempty"`
+
+	PhaseOneConfig *PhaseOneConfigDetails `mandatory:"false" json:"phaseOneConfig"`
+
+	PhaseTwoConfig *PhaseTwoConfigDetails `mandatory:"false" json:"phaseTwoConfig"`
+
+	DpdConfig *DpdConfig `mandatory:"false" json:"dpdConfig"`
 
 	EncryptionDomainConfig *CreateIpSecTunnelEncryptionDomainDetails `mandatory:"false" json:"encryptionDomainConfig"`
 }
@@ -88,6 +100,54 @@ var mappingCreateIpSecConnectionTunnelDetailsIkeVersion = map[string]CreateIpSec
 func GetCreateIpSecConnectionTunnelDetailsIkeVersionEnumValues() []CreateIpSecConnectionTunnelDetailsIkeVersionEnum {
 	values := make([]CreateIpSecConnectionTunnelDetailsIkeVersionEnum, 0)
 	for _, v := range mappingCreateIpSecConnectionTunnelDetailsIkeVersion {
+		values = append(values, v)
+	}
+	return values
+}
+
+// CreateIpSecConnectionTunnelDetailsOracleInitiationEnum Enum with underlying type: string
+type CreateIpSecConnectionTunnelDetailsOracleInitiationEnum string
+
+// Set of constants representing the allowable values for CreateIpSecConnectionTunnelDetailsOracleInitiationEnum
+const (
+	CreateIpSecConnectionTunnelDetailsOracleInitiationInitiatorOrResponder CreateIpSecConnectionTunnelDetailsOracleInitiationEnum = "INITIATOR_OR_RESPONDER"
+	CreateIpSecConnectionTunnelDetailsOracleInitiationResponderOnly        CreateIpSecConnectionTunnelDetailsOracleInitiationEnum = "RESPONDER_ONLY"
+)
+
+var mappingCreateIpSecConnectionTunnelDetailsOracleInitiation = map[string]CreateIpSecConnectionTunnelDetailsOracleInitiationEnum{
+	"INITIATOR_OR_RESPONDER": CreateIpSecConnectionTunnelDetailsOracleInitiationInitiatorOrResponder,
+	"RESPONDER_ONLY":         CreateIpSecConnectionTunnelDetailsOracleInitiationResponderOnly,
+}
+
+// GetCreateIpSecConnectionTunnelDetailsOracleInitiationEnumValues Enumerates the set of values for CreateIpSecConnectionTunnelDetailsOracleInitiationEnum
+func GetCreateIpSecConnectionTunnelDetailsOracleInitiationEnumValues() []CreateIpSecConnectionTunnelDetailsOracleInitiationEnum {
+	values := make([]CreateIpSecConnectionTunnelDetailsOracleInitiationEnum, 0)
+	for _, v := range mappingCreateIpSecConnectionTunnelDetailsOracleInitiation {
+		values = append(values, v)
+	}
+	return values
+}
+
+// CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum Enum with underlying type: string
+type CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum string
+
+// Set of constants representing the allowable values for CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum
+const (
+	CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnabled  CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum = "ENABLED"
+	CreateIpSecConnectionTunnelDetailsNatTranslationEnabledDisabled CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum = "DISABLED"
+	CreateIpSecConnectionTunnelDetailsNatTranslationEnabledAuto     CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum = "AUTO"
+)
+
+var mappingCreateIpSecConnectionTunnelDetailsNatTranslationEnabled = map[string]CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum{
+	"ENABLED":  CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnabled,
+	"DISABLED": CreateIpSecConnectionTunnelDetailsNatTranslationEnabledDisabled,
+	"AUTO":     CreateIpSecConnectionTunnelDetailsNatTranslationEnabledAuto,
+}
+
+// GetCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumValues Enumerates the set of values for CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum
+func GetCreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnumValues() []CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum {
+	values := make([]CreateIpSecConnectionTunnelDetailsNatTranslationEnabledEnum, 0)
+	for _, v := range mappingCreateIpSecConnectionTunnelDetailsNatTranslationEnabled {
 		values = append(values, v)
 	}
 	return values

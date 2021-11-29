@@ -20,6 +20,8 @@ const (
 	DatabaseTypeExternalRac  DatabaseTypeEnum = "EXTERNAL_RAC"
 	DatabaseTypeCloudSidb    DatabaseTypeEnum = "CLOUD_SIDB"
 	DatabaseTypeCloudRac     DatabaseTypeEnum = "CLOUD_RAC"
+	DatabaseTypeShared       DatabaseTypeEnum = "SHARED"
+	DatabaseTypeDedicated    DatabaseTypeEnum = "DEDICATED"
 )
 
 var mappingDatabaseType = map[string]DatabaseTypeEnum{
@@ -27,6 +29,8 @@ var mappingDatabaseType = map[string]DatabaseTypeEnum{
 	"EXTERNAL_RAC":  DatabaseTypeExternalRac,
 	"CLOUD_SIDB":    DatabaseTypeCloudSidb,
 	"CLOUD_RAC":     DatabaseTypeCloudRac,
+	"SHARED":        DatabaseTypeShared,
+	"DEDICATED":     DatabaseTypeDedicated,
 }
 
 // GetDatabaseTypeEnumValues Enumerates the set of values for DatabaseTypeEnum

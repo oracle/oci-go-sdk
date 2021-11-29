@@ -5,7 +5,7 @@
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -104,6 +104,7 @@ const (
 	ListApmDomainsLifecycleStateUpdating ListApmDomainsLifecycleStateEnum = "UPDATING"
 	ListApmDomainsLifecycleStateActive   ListApmDomainsLifecycleStateEnum = "ACTIVE"
 	ListApmDomainsLifecycleStateDeleting ListApmDomainsLifecycleStateEnum = "DELETING"
+	ListApmDomainsLifecycleStateDeleted  ListApmDomainsLifecycleStateEnum = "DELETED"
 	ListApmDomainsLifecycleStateFailed   ListApmDomainsLifecycleStateEnum = "FAILED"
 )
 
@@ -112,6 +113,7 @@ var mappingListApmDomainsLifecycleState = map[string]ListApmDomainsLifecycleStat
 	"UPDATING": ListApmDomainsLifecycleStateUpdating,
 	"ACTIVE":   ListApmDomainsLifecycleStateActive,
 	"DELETING": ListApmDomainsLifecycleStateDeleting,
+	"DELETED":  ListApmDomainsLifecycleStateDeleted,
 	"FAILED":   ListApmDomainsLifecycleStateFailed,
 }
 

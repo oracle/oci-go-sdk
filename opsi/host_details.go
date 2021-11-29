@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // HostDetails Partial information about a host which includes id, name, type.
@@ -20,6 +20,9 @@ type HostDetails struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the host.
 	Id *string `mandatory:"true" json:"id"`
+
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment.
+	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
 	// The host name. The host name is unique amongst the hosts managed by the same management agent.
 	HostName *string `mandatory:"true" json:"hostName"`

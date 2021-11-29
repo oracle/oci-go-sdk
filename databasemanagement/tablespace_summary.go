@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // TablespaceSummary The summary of a tablespace.
@@ -21,13 +21,13 @@ type TablespaceSummary struct {
 	// The name of the tablespace.
 	Name *string `mandatory:"true" json:"name"`
 
-	// The type of the tablespace.
+	// The type of tablespace.
 	Type TablespaceSummaryTypeEnum `mandatory:"true" json:"type"`
 
 	// The status of the tablespace.
 	Status TablespaceSummaryStatusEnum `mandatory:"false" json:"status,omitempty"`
 
-	// The tablespace block size in bytes.
+	// The tablespace block size.
 	BlockSizeBytes *float32 `mandatory:"false" json:"blockSizeBytes"`
 
 	// The default logging attribute.
@@ -66,16 +66,16 @@ type TablespaceSummary struct {
 	// The operation type for which default compression is enabled.
 	CompressFor TablespaceSummaryCompressForEnum `mandatory:"false" json:"compressFor,omitempty"`
 
-	// Indicates whether the In-Memory Column Store (IM column store) is by default enabled or disabled for tables in this tablespace.
+	// Indicates whether the In-Memory Column Store (IM column store) is by default enabled or disabled for tables in the tablespace.
 	DefaultInMemory TablespaceSummaryDefaultInMemoryEnum `mandatory:"false" json:"defaultInMemory,omitempty"`
 
-	// Indicates the default priority for In-Memory Column Store (IM column store) population for this tablespace.
+	// Indicates the default priority for In-Memory Column Store (IM column store) population for the tablespace.
 	DefaultInMemoryPriority TablespaceSummaryDefaultInMemoryPriorityEnum `mandatory:"false" json:"defaultInMemoryPriority,omitempty"`
 
-	// Indicates how the IM column store is distributed by default for this tablespace in an Oracle Real Application Clusters (Oracle RAC) environment.
+	// Indicates how the IM column store is distributed by default for the tablespace in an Oracle Real Application Clusters (Oracle RAC) environment.
 	DefaultInMemoryDistribute TablespaceSummaryDefaultInMemoryDistributeEnum `mandatory:"false" json:"defaultInMemoryDistribute,omitempty"`
 
-	// Indicates the default compression level for the IM column store for this tablespace.
+	// Indicates the default compression level for the IM column store for the tablespace.
 	DefaultInMemoryCompression TablespaceSummaryDefaultInMemoryCompressionEnum `mandatory:"false" json:"defaultInMemoryCompression,omitempty"`
 
 	// Indicates the duplicate setting for the IM column store in an Oracle RAC environment.
@@ -93,10 +93,10 @@ type TablespaceSummary struct {
 	// This specifies the default value for the CELLMEMORY attribute that tables created in the tablespace will inherit unless the behavior is overridden explicitly. This column is intended for use with Oracle Exadata.
 	DefaultCellMemory *string `mandatory:"false" json:"defaultCellMemory"`
 
-	// Indicates how the IM column store is populated on various instances by default for this tablespace.
+	// Indicates how the IM column store is populated on various instances by default for the tablespace.
 	DefaultInMemoryService TablespaceSummaryDefaultInMemoryServiceEnum `mandatory:"false" json:"defaultInMemoryService,omitempty"`
 
-	// Indicates the service name for the service on which the IM column store should be populated by default for this tablespace. This column has a value only when the corresponding DEF_INMEMORY_SERVICE is USER_DEFINED. In all other cases, this column is null.
+	// Indicates the service name for the service on which the IM column store should be populated by default for the tablespace. This column has a value only when the corresponding DEF_INMEMORY_SERVICE is USER_DEFINED. In all other cases, this column is null.
 	DefaultInMemoryServiceName *string `mandatory:"false" json:"defaultInMemoryServiceName"`
 
 	// The lost write protection setting for the tablespace.
@@ -108,7 +108,7 @@ type TablespaceSummary struct {
 	// The temporary tablespace group.
 	TempGroup *string `mandatory:"false" json:"tempGroup"`
 
-	// The maximum tablespace size in KB. If the tablespace contains any datafiles with Autoextend enabled, then this column displays the amount of underlying free storage space for the tablespace. For example, if the current tablespace size is 1 GB, the combined maximum size of all its datafiles is 32 GB, and its underlying storage (for example, ASM or file system storage) has 20 GB of free space, then this column will have a value of approximately 20 GB. If the tablespace contains only datafiles with autoextend disabled, then this column displays the allocated space for the entire tablespace, that is, the combined size of all datafiles in the tablespace.
+	// The maximum tablespace size in KB. If the tablespace contains any data files with Autoextend enabled, then this column displays the amount of underlying free storage space for the tablespace. For example, if the current tablespace size is 1 GB, the combined maximum size of all its data files is 32 GB, and its underlying storage (for example, ASM or file system storage) has 20 GB of free space, then this column will have a value of approximately 20 GB. If the tablespace contains only data files with autoextend disabled, then this column displays the allocated space for the entire tablespace, that is, the combined size of all data files in the tablespace.
 	MaxSizeKB *float32 `mandatory:"false" json:"maxSizeKB"`
 
 	// The allocated tablespace size in KB.
@@ -117,7 +117,7 @@ type TablespaceSummary struct {
 	// The size of the tablespace available for user data in KB. The difference between tablespace size and user data size is used for storing metadata.
 	UserSizeKB *float32 `mandatory:"false" json:"userSizeKB"`
 
-	// The free space available in this tablespace in KB.
+	// The free space available in the tablespace in KB.
 	FreeSpaceKB *float32 `mandatory:"false" json:"freeSpaceKB"`
 
 	// The total space used by the tablespace in KB.
@@ -129,7 +129,7 @@ type TablespaceSummary struct {
 	// The percentage of used space out of the total allocated space in the tablespace.
 	UsedPercentAllocated *float64 `mandatory:"false" json:"usedPercentAllocated"`
 
-	// A list of the datafiles associated with the tablespace.
+	// A list of the data files associated with the tablespace.
 	Datafiles []Datafile `mandatory:"false" json:"datafiles"`
 }
 

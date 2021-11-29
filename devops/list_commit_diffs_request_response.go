@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,16 +16,16 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/ListCommitDiffs.go.html to see an example of how to use ListCommitDiffsRequest.
 type ListCommitDiffsRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
-	// The commit or ref name to compare changes against
+	// The commit or reference name to compare changes against.
 	BaseVersion *string `mandatory:"true" contributesTo:"query" name:"baseVersion"`
 
-	// The commit or ref name where changes are coming from
+	// The commit or reference name where changes are coming from.
 	TargetVersion *string `mandatory:"true" contributesTo:"query" name:"targetVersion"`
 
-	// boolean for whether to use merge base or most recent revision
+	// Boolean value to indicate whether to use merge base or most recent revision.
 	IsComparisonFromMergeBase *bool `mandatory:"false" contributesTo:"query" name:"isComparisonFromMergeBase"`
 
 	// The maximum number of items to return.

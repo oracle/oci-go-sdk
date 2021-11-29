@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -25,13 +25,13 @@ type ListConnectionsRequest struct {
 	// The OCID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"false" contributesTo:"query" name:"compartmentId"`
 
-	// A filter to return only Connections that matches the given lifecycleState
+	// A filter to return only connections that matches the given lifecycle state.
 	LifecycleState ConnectionLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
 	// A filter to return only resources that match the entire display name given.
 	DisplayName *string `mandatory:"false" contributesTo:"query" name:"displayName"`
 
-	// A filter to return only resources that match the connection type given.
+	// A filter to return only resources that match the given connection type.
 	ConnectionType ConnectionConnectionTypeEnum `mandatory:"false" contributesTo:"query" name:"connectionType" omitEmpty:"true"`
 
 	// The maximum number of items to return.
