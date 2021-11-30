@@ -2,10 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Application Performance Monitoring (APM) Control Plane API
+// Application Performance Monitoring Control Plane API
 //
-// Provide a set of APIs for tenant to perform operations like create, update, delete and list APM domains, and also
-// work request APIs to monitor progress of these operations.
+// Use the Application Performance Monitoring Control Plane API to perform operations such as creating, updating,
+// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs.
 //
 
 package apmcontrolplane
@@ -13,8 +13,8 @@ package apmcontrolplane
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v52/common"
-	"github.com/oracle/oci-go-sdk/v52/common/auth"
+	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v53/common/auth"
 	"net/http"
 )
 
@@ -85,7 +85,7 @@ func (client *ApmDomainClient) ConfigurationProvider() *common.ConfigurationProv
 	return client.config
 }
 
-// ChangeApmDomainCompartment Moves a APM Domain into a different compartment. When provided, If-Match is checked against ETag values of the resource.
+// ChangeApmDomainCompartment Moves an APM domain into a different compartment. When provided, If-Match is checked against ETag values of the APM domain.
 //
 // See also
 //
@@ -145,7 +145,7 @@ func (client ApmDomainClient) changeApmDomainCompartment(ctx context.Context, re
 	return response, err
 }
 
-// CreateApmDomain Creates a new APM Domain.
+// CreateApmDomain Creates a new APM domain.
 //
 // See also
 //
@@ -205,9 +205,9 @@ func (client ApmDomainClient) createApmDomain(ctx context.Context, request commo
 	return response, err
 }
 
-// DeleteApmDomain Delete the specified APM domain asynchronously. The APM domain is placed in the 'Deleting' state and will stop
+// DeleteApmDomain Deletes the specified APM domain asynchronously. The APM domain is placed in the 'Deleting' state and will stop
 // accepting any operation requests. All resources associated with the APM domain are eventually recovered. Use the
-// returned work request to track the progress of the background activity to complete deleting the domain.
+// returned work request ID to track the progress of the background activity to complete deleting the APM domain.
 //
 // See also
 //
@@ -318,7 +318,7 @@ func (client ApmDomainClient) generateDataKeys(ctx context.Context, request comm
 	return response, err
 }
 
-// GetApmDomain Gets details of APM Domain by identifier
+// GetApmDomain Gets the details of the APM domain specified by OCID.
 //
 // See also
 //
@@ -428,7 +428,7 @@ func (client ApmDomainClient) getWorkRequest(ctx context.Context, request common
 	return response, err
 }
 
-// ListApmDomainWorkRequests Returns a (paginated) list of work requests related to a specific APM Domain.
+// ListApmDomainWorkRequests Returns a (paginated) list of work requests related to a specific APM domain.
 //
 // See also
 //
@@ -483,7 +483,7 @@ func (client ApmDomainClient) listApmDomainWorkRequests(ctx context.Context, req
 	return response, err
 }
 
-// ListApmDomains Lists all APM Domains for the specified tenant compartment.
+// ListApmDomains Lists all APM domains for the specified tenant compartment.
 //
 // See also
 //
@@ -538,7 +538,7 @@ func (client ApmDomainClient) listApmDomains(ctx context.Context, request common
 	return response, err
 }
 
-// ListDataKeys Lists all Data Keys for the specified APM Domain. The caller may filter the list by specifying the 'dataKeyType'
+// ListDataKeys Lists all Data Keys for the specified APM domain. The caller may filter the list by specifying the 'dataKeyType'
 // query parameter.
 //
 // See also
@@ -594,7 +594,7 @@ func (client ApmDomainClient) listDataKeys(ctx context.Context, request common.O
 	return response, err
 }
 
-// ListWorkRequestErrors Return a (paginated) list of errors for a given work request.
+// ListWorkRequestErrors Returns a (paginated) list of errors for a given work request.
 //
 // See also
 //
@@ -649,7 +649,7 @@ func (client ApmDomainClient) listWorkRequestErrors(ctx context.Context, request
 	return response, err
 }
 
-// ListWorkRequestLogs Return a (paginated) list of logs for a given work request.
+// ListWorkRequestLogs Returns a (paginated) list of logs for a given work request.
 //
 // See also
 //
@@ -815,7 +815,7 @@ func (client ApmDomainClient) removeDataKeys(ctx context.Context, request common
 	return response, err
 }
 
-// UpdateApmDomain Update the APM domain when it is ready and active.
+// UpdateApmDomain Updates the APM domain.
 //
 // See also
 //

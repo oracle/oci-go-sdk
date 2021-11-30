@@ -13,7 +13,7 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // NotificationsTargetDetails The topic used for the Notifications target.

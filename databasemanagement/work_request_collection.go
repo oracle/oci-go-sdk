@@ -12,13 +12,13 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// WorkRequestCollection Lists all work requests in a given compartment. Contains WorkRequestSummary items.
+// WorkRequestCollection Lists all work requests in a specific compartment. This contains WorkRequestSummary items.
 type WorkRequestCollection struct {
 
-	// Collection of work requests
+	// A collection of work requests.
 	Items []WorkRequestSummary `mandatory:"true" json:"items"`
 }
 

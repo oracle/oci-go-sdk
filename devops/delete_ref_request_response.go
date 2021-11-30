@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,10 +16,10 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/DeleteRef.go.html to see an example of how to use DeleteRefRequest.
 type DeleteRefRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
-	// A filter to return only resources that match the given Ref name.
+	// A filter to return only resources that match the given reference name.
 	RefName *string `mandatory:"true" contributesTo:"path" name:"refName"`
 
 	// For optimistic concurrency control. In the PUT or DELETE call for a resource, set the `if-match` parameter to the value of the etag from a previous GET or POST response for that resource. The resource will be updated or deleted only if the etag you provide matches the resource's current etag value.

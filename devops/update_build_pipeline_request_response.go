@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/UpdateBuildPipeline.go.html to see an example of how to use UpdateBuildPipelineRequest.
 type UpdateBuildPipelineRequest struct {
 
-	// unique BuildPipeline identifier
+	// Unique build pipeline identifier.
 	BuildPipelineId *string `mandatory:"true" contributesTo:"path" name:"buildPipelineId"`
 
 	// The information to be updated.

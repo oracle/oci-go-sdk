@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,10 +16,10 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/GetCommit.go.html to see an example of how to use GetCommitRequest.
 type GetCommitRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
-	// A filter to return only resources that match the given commit Id.
+	// A filter to return only resources that match the given commit ID.
 	CommitId *string `mandatory:"true" contributesTo:"path" name:"commitId"`
 
 	// Unique Oracle-assigned identifier for the request.  If you need to contact Oracle about a particular request, provide the request ID.

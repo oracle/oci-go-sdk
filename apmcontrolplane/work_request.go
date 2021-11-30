@@ -2,34 +2,34 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Application Performance Monitoring (APM) Control Plane API
+// Application Performance Monitoring Control Plane API
 //
-// Provide a set of APIs for tenant to perform operations like create, update, delete and list APM domains, and also
-// work request APIs to monitor progress of these operations.
+// Use the Application Performance Monitoring Control Plane API to perform operations such as creating, updating,
+// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs.
 //
 
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// WorkRequest A description of workrequest status
+// WorkRequest A description of work request.
 type WorkRequest struct {
 
-	// Type of the work request
+	// The type of the work request.
 	OperationType OperationTypesEnum `mandatory:"true" json:"operationType"`
 
 	// Status of current work request.
 	Status OperationStatusEnum `mandatory:"true" json:"status"`
 
-	// The id of the work request.
+	// The ID of the work request.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The ocid of the compartment that contains the work request.
+	// The OCID of the compartment that contains the work request.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The resources affected by this work request.
+	// The resources affected by the work request.
 	Resources []WorkRequestResource `mandatory:"true" json:"resources"`
 
 	// Percentage of the request completed.

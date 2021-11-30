@@ -5,7 +5,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -34,11 +34,11 @@ type ListManagedDatabasesRequest struct {
 	// A filter to return Managed Databases of the specified deployment type.
 	DeploymentType ListManagedDatabasesDeploymentTypeEnum `mandatory:"false" contributesTo:"query" name:"deploymentType" omitEmpty:"true"`
 
-	// The page token representing the page, from where the next set of paginated results
+	// The page token representing the page from where the next set of paginated results
 	// are retrieved. This is usually retrieved from a previous list call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
-	// The maximum number of records returned in paginated response.
+	// The maximum number of records returned in the paginated response.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 
 	// The field to sort information by. Only one sortOrder can be used. The default sort order
@@ -132,11 +132,12 @@ type ListManagedDatabasesDeploymentTypeEnum string
 
 // Set of constants representing the allowable values for ListManagedDatabasesDeploymentTypeEnum
 const (
-	ListManagedDatabasesDeploymentTypeOnpremise ListManagedDatabasesDeploymentTypeEnum = "ONPREMISE"
-	ListManagedDatabasesDeploymentTypeBm        ListManagedDatabasesDeploymentTypeEnum = "BM"
-	ListManagedDatabasesDeploymentTypeVm        ListManagedDatabasesDeploymentTypeEnum = "VM"
-	ListManagedDatabasesDeploymentTypeExadata   ListManagedDatabasesDeploymentTypeEnum = "EXADATA"
-	ListManagedDatabasesDeploymentTypeExadataCc ListManagedDatabasesDeploymentTypeEnum = "EXADATA_CC"
+	ListManagedDatabasesDeploymentTypeOnpremise  ListManagedDatabasesDeploymentTypeEnum = "ONPREMISE"
+	ListManagedDatabasesDeploymentTypeBm         ListManagedDatabasesDeploymentTypeEnum = "BM"
+	ListManagedDatabasesDeploymentTypeVm         ListManagedDatabasesDeploymentTypeEnum = "VM"
+	ListManagedDatabasesDeploymentTypeExadata    ListManagedDatabasesDeploymentTypeEnum = "EXADATA"
+	ListManagedDatabasesDeploymentTypeExadataCc  ListManagedDatabasesDeploymentTypeEnum = "EXADATA_CC"
+	ListManagedDatabasesDeploymentTypeAutonomous ListManagedDatabasesDeploymentTypeEnum = "AUTONOMOUS"
 )
 
 var mappingListManagedDatabasesDeploymentType = map[string]ListManagedDatabasesDeploymentTypeEnum{
@@ -145,6 +146,7 @@ var mappingListManagedDatabasesDeploymentType = map[string]ListManagedDatabasesD
 	"VM":         ListManagedDatabasesDeploymentTypeVm,
 	"EXADATA":    ListManagedDatabasesDeploymentTypeExadata,
 	"EXADATA_CC": ListManagedDatabasesDeploymentTypeExadataCc,
+	"AUTONOMOUS": ListManagedDatabasesDeploymentTypeAutonomous,
 }
 
 // GetListManagedDatabasesDeploymentTypeEnumValues Enumerates the set of values for ListManagedDatabasesDeploymentTypeEnum

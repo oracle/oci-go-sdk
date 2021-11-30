@@ -10,7 +10,7 @@
 package certificates
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // CertificateAuthorityBundle The contents of the certificate, properties of the certificate (and certificate version), and user-provided contextual metadata for the certificate.

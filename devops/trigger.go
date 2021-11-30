@@ -4,44 +4,44 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// Trigger Description of Trigger.
+// Trigger Trigger the deployment pipeline to deploy the artifact.
 type Trigger interface {
 
-	// Unique identifier that is immutable on creation
+	// Unique identifier that is immutable on creation.
 	GetId() *string
 
-	// Project to which the Trigger belongs
+	// The OCID of the DevOps project to which the trigger belongs to.
 	GetProjectId() *string
 
-	// Compartment to which the Trigger belongs
+	// The OCID of the compartment that contains the trigger.
 	GetCompartmentId() *string
 
-	// The list of actions that are to be performed for this Trigger
+	// The list of actions that are to be performed for this trigger.
 	GetActions() []TriggerAction
 
-	// Name for Trigger.
+	// Trigger display name. Avoid entering confidential information.
 	GetDisplayName() *string
 
-	// Description about the Trigger
+	// Description about the trigger.
 	GetDescription() *string
 
-	// The time the the Trigger was created. An RFC3339 formatted datetime string
+	// The time the trigger was created. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	GetTimeCreated() *common.SDKTime
 
-	// The time the Trigger was updated. An RFC3339 formatted datetime string
+	// The time the trigger was updated. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	GetTimeUpdated() *common.SDKTime
 
-	// The current state of the Trigger.
+	// The current state of the trigger.
 	GetLifecycleState() TriggerLifecycleStateEnum
 
 	// A message describing the current state in more detail. For example, can be used to provide actionable information for a resource in Failed state.

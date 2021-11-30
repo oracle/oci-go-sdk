@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // LaunchAutonomousExadataInfrastructureDetails Describes the input parameters to launch a new Autonomous Exadata Infrastructure.

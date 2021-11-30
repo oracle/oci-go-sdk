@@ -12,13 +12,13 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// WorkRequestErrorCollection Results of a work request error search. Contains both WorkRequestError items and other data.
+// WorkRequestErrorCollection The results of a work request error search. This contains WorkRequestError items and other data.
 type WorkRequestErrorCollection struct {
 
-	// collection of work request errors
+	// A collection of work request errors.
 	Items []WorkRequestError `mandatory:"true" json:"items"`
 }
 

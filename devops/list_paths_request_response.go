@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,14 +16,14 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/ListPaths.go.html to see an example of how to use ListPathsRequest.
 type ListPathsRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
-	// The name of branch/tag or commit hash it points to. If names conflict order of preference is commit > branch > tag.
-	// You can disambiguate with "heads/foobar" and "tags/foobar". Repository's default branch will be used if left blank.
+	// The name of branch/tag or commit hash it points to. If names conflict, order of preference is commit > branch > tag.
+	// You can disambiguate with "heads/foobar" and "tags/foobar". If left blank repository's default branch will be used.
 	Ref *string `mandatory:"false" contributesTo:"query" name:"ref"`
 
-	// Flag to determine if files should be retrived recursively. false by default
+	// Flag to determine if files must be retrived recursively. Flag is False by default.
 	PathsInSubtree *bool `mandatory:"false" contributesTo:"query" name:"pathsInSubtree"`
 
 	// The fully qualified path to the folder whose contents are returned, including the folder name. For example, /examples is a fully-qualified path to a folder named examples that was created off of the root directory (/) of a repository.

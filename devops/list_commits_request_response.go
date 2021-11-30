@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,13 +16,13 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/ListCommits.go.html to see an example of how to use ListCommitsRequest.
 type ListCommitsRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
-	// A filter to return only resources that match the given Ref name.
+	// A filter to return only resources that match the given reference name.
 	RefName *string `mandatory:"false" contributesTo:"query" name:"refName"`
 
-	// A filter to exclude commits that match the given Ref name.
+	// A filter to exclude commits that match the given reference name.
 	ExcludeRefName *string `mandatory:"false" contributesTo:"query" name:"excludeRefName"`
 
 	// A filter to return only commits that affect any of the specified paths.

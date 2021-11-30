@@ -2,10 +2,10 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Application Performance Monitoring (APM) Control Plane API
+// Application Performance Monitoring Control Plane API
 //
-// Provide a set of APIs for tenant to perform operations like create, update, delete and list APM domains, and also
-// work request APIs to monitor progress of these operations.
+// Use the Application Performance Monitoring Control Plane API to perform operations such as creating, updating,
+// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs.
 //
 
 package apmcontrolplane
@@ -19,6 +19,7 @@ const (
 	LifecycleStatesUpdating LifecycleStatesEnum = "UPDATING"
 	LifecycleStatesActive   LifecycleStatesEnum = "ACTIVE"
 	LifecycleStatesDeleting LifecycleStatesEnum = "DELETING"
+	LifecycleStatesDeleted  LifecycleStatesEnum = "DELETED"
 	LifecycleStatesFailed   LifecycleStatesEnum = "FAILED"
 )
 
@@ -27,6 +28,7 @@ var mappingLifecycleStates = map[string]LifecycleStatesEnum{
 	"UPDATING": LifecycleStatesUpdating,
 	"ACTIVE":   LifecycleStatesActive,
 	"DELETING": LifecycleStatesDeleting,
+	"DELETED":  LifecycleStatesDeleted,
 	"FAILED":   LifecycleStatesFailed,
 }
 

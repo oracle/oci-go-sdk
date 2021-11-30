@@ -12,25 +12,28 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // CreateDbManagementPrivateEndpointDetails The details used to create a new Database Management private endpoint.
 type CreateDbManagementPrivateEndpointDetails struct {
 
-	// The display name for the private endpoint. It is changeable.
+	// The display name of the Database Management private endpoint.
 	Name *string `mandatory:"true" json:"name"`
 
-	// The OCID of the compartment.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the compartment.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The OCID of the subnet.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the subnet.
 	SubnetId *string `mandatory:"true" json:"subnetId"`
+
+	// Specifies whether the Database Management private endpoint will be used for Oracle Databases in a cluster.
+	IsCluster *bool `mandatory:"false" json:"isCluster"`
 
 	// The description of the private endpoint.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The OCIDs of the network security groups that the private endpoint belongs to.
+	// The OCIDs of the Network Security Groups to which the Database Management private endpoint belongs.
 	NsgIds []string `mandatory:"false" json:"nsgIds"`
 }
 

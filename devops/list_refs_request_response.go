@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,13 +16,13 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/ListRefs.go.html to see an example of how to use ListRefsRequest.
 type ListRefsRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
-	// Ref type to distinguish between branch and tag. If it is not specified, return all refs.
+	// Reference type to distinguish between branch and tag. If it is not specified, all references are returned.
 	RefType ListRefsRefTypeEnum `mandatory:"false" contributesTo:"query" name:"refType" omitEmpty:"true"`
 
-	// Commit id in a repository
+	// Commit ID in a repository.
 	CommitId *string `mandatory:"false" contributesTo:"query" name:"commitId"`
 
 	// The maximum number of items to return.
@@ -31,13 +31,13 @@ type ListRefsRequest struct {
 	// The page token representing the page at which to start retrieving results. This is usually retrieved from a previous list call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
-	// A filter to return only resources that match the given Ref name.
+	// A filter to return only resources that match the given reference name.
 	RefName *string `mandatory:"false" contributesTo:"query" name:"refName"`
 
 	// The sort order to use. Use either ascending or descending.
 	SortOrder ListRefsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
-	// The field to sort by. Only one sort order may be provided. Default order for refName is ascending. Default order for refType is ascending. If no value is specified refName is default.
+	// The field to sort by. Only one sort order may be provided. Default order for reference name is ascending. Default order for reference type is ascending. If no value is specified reference name is default.
 	SortBy ListRefsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// Unique Oracle-assigned identifier for the request.  If you need to contact Oracle about a particular request, provide the request ID.

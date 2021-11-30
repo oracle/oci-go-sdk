@@ -5,7 +5,7 @@
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -19,12 +19,11 @@ type GenerateDataKeysRequest struct {
 	// List of new Data Keys to be generated.
 	GenerateDataKeysListDetails []GenerateDataKeyDetails `contributesTo:"body"`
 
-	// OCID of the APM Domain
+	// The OCID of the APM domain
 	ApmDomainId *string `mandatory:"true" contributesTo:"path" name:"apmDomainId"`
 
-	// For optimistic concurrency control. In the PUT or DELETE call
-	// for a resource, set the `if-match` parameter to the value of the
-	// etag from a previous GET or POST response for that resource.
+	// For optimistic concurrency control. Set the `if-match` parameter
+	// to the value of the etag from a previous GET or POST response for that resource.
 	// The resource will be updated or deleted only if the etag you
 	// provide matches the resource's current etag value.
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`

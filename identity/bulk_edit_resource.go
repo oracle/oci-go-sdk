@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // BulkEditResource The representation of BulkEditResource
@@ -19,7 +19,7 @@ type BulkEditResource struct {
 	// The unique OCID of the resource.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The type of resource. See BulkEditResourceTypes.
+	// The type of resource. See ListBulkEditTagsResourceTypes.
 	ResourceType *string `mandatory:"true" json:"resourceType"`
 
 	// Additional information that identifies the resource for bulk editing of tags. This information is provided in the resource's API documentation.

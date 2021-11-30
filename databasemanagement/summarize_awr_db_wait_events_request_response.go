@@ -5,7 +5,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -50,7 +50,7 @@ type SummarizeAwrDbWaitEventsRequest struct {
 	// /managedDatabases/{managedDatabaseId}/awrDbSnapshotRanges
 	ContainerId *int `mandatory:"false" contributesTo:"query" name:"containerId"`
 
-	// The page token representing the page, from where the next set of paginated results
+	// The page token representing the page from where the next set of paginated results
 	// are retrieved. This is usually retrieved from a previous list call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 

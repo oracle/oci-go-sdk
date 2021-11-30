@@ -10,7 +10,7 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // SetAutoUpgradableConfigDetails Details for configuring tenancy-level agent AutoUpgradable configuration.

@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // JobExecution The details of a job execution.
@@ -64,6 +64,9 @@ type JobExecution struct {
 	// Indicates whether the Oracle Database is part of a cluster.
 	IsCluster *bool `mandatory:"false" json:"isCluster"`
 
+	// The workload type of the Autonomous Database.
+	WorkloadType WorkloadTypeEnum `mandatory:"false" json:"workloadType,omitempty"`
+
 	// The error message that is returned if the job execution fails. Null is returned if the job is
 	// still running or if the job execution is successful.
 	ErrorMessage *string `mandatory:"false" json:"errorMessage"`
@@ -94,6 +97,7 @@ func (m *JobExecution) UnmarshalJSON(data []byte) (e error) {
 		DatabaseSubType        DatabaseSubTypeEnum       `json:"databaseSubType"`
 		DeploymentType         DeploymentTypeEnum        `json:"deploymentType"`
 		IsCluster              *bool                     `json:"isCluster"`
+		WorkloadType           WorkloadTypeEnum          `json:"workloadType"`
 		ErrorMessage           *string                   `json:"errorMessage"`
 		ResultDetails          jobexecutionresultdetails `json:"resultDetails"`
 		TimeCompleted          *common.SDKTime           `json:"timeCompleted"`
@@ -126,6 +130,8 @@ func (m *JobExecution) UnmarshalJSON(data []byte) (e error) {
 	m.DeploymentType = model.DeploymentType
 
 	m.IsCluster = model.IsCluster
+
+	m.WorkloadType = model.WorkloadType
 
 	m.ErrorMessage = model.ErrorMessage
 

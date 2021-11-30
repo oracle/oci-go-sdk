@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // TaggingWorkRequest The asynchronous API request does not take effect immediately. This request spawns an asynchronous
@@ -61,6 +61,7 @@ const (
 	TaggingWorkRequestOperationTypeDeleteNonEmptyTagNamespace TaggingWorkRequestOperationTypeEnum = "DELETE_NON_EMPTY_TAG_NAMESPACE"
 	TaggingWorkRequestOperationTypeBulkDeleteTagDefinition    TaggingWorkRequestOperationTypeEnum = "BULK_DELETE_TAG_DEFINITION"
 	TaggingWorkRequestOperationTypeBulkEditOfTags             TaggingWorkRequestOperationTypeEnum = "BULK_EDIT_OF_TAGS"
+	TaggingWorkRequestOperationTypeImportStandardTags         TaggingWorkRequestOperationTypeEnum = "IMPORT_STANDARD_TAGS"
 )
 
 var mappingTaggingWorkRequestOperationType = map[string]TaggingWorkRequestOperationTypeEnum{
@@ -68,6 +69,7 @@ var mappingTaggingWorkRequestOperationType = map[string]TaggingWorkRequestOperat
 	"DELETE_NON_EMPTY_TAG_NAMESPACE": TaggingWorkRequestOperationTypeDeleteNonEmptyTagNamespace,
 	"BULK_DELETE_TAG_DEFINITION":     TaggingWorkRequestOperationTypeBulkDeleteTagDefinition,
 	"BULK_EDIT_OF_TAGS":              TaggingWorkRequestOperationTypeBulkEditOfTags,
+	"IMPORT_STANDARD_TAGS":           TaggingWorkRequestOperationTypeImportStandardTags,
 }
 
 // GetTaggingWorkRequestOperationTypeEnumValues Enumerates the set of values for TaggingWorkRequestOperationTypeEnum

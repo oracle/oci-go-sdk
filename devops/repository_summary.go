@@ -4,60 +4,60 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// RepositorySummary Summary of the Repository.
+// RepositorySummary Summary of the repository.
 type RepositorySummary struct {
 
 	// The OCID of the repository. This value is unique and immutable.
 	Id *string `mandatory:"true" json:"id"`
 
-	// The OCID of the repository's Compartment.
+	// The OCID of the repository's compartment.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The OCID of the Project containing the repository.
+	// The OCID of the DevOps project containing the repository.
 	ProjectId *string `mandatory:"true" json:"projectId"`
 
 	// Unique name of a repository. This value is mutable.
 	Name *string `mandatory:"false" json:"name"`
 
-	// Tenancy unique namespace. This value is fetched from Project Service
+	// Tenancy unique namespace.
 	Namespace *string `mandatory:"false" json:"namespace"`
 
-	// Unique name of a project in a namespace. This value is fetched from Project Service
+	// Unique project name in a namespace.
 	ProjectName *string `mandatory:"false" json:"projectName"`
 
-	// The description of this repository. Avoid entering confidential information
+	// Details of the repository. Avoid entering confidential information.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The default branch of the repository
+	// The default branch of the repository.
 	DefaultBranch *string `mandatory:"false" json:"defaultBranch"`
 
-	// Type of repository
+	// Type of repository.
 	RepositoryType RepositoryRepositoryTypeEnum `mandatory:"false" json:"repositoryType,omitempty"`
 
-	// ssh url user utilized to git clone, pull and push
+	// SSH URL that you use to git clone, pull and push.
 	SshUrl *string `mandatory:"false" json:"sshUrl"`
 
-	// http url user utilized to git clone, pull and push
+	// HTTP URL that you use to git clone, pull and push.
 	HttpUrl *string `mandatory:"false" json:"httpUrl"`
 
 	MirrorRepositoryConfig *MirrorRepositoryConfig `mandatory:"false" json:"mirrorRepositoryConfig"`
 
-	// The time the the Repository was created. An RFC3339 formatted datetime string
+	// The time the repository was created. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// The time the Repository was updated. An RFC3339 formatted datetime string
+	// The time the repository was updated. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
-	// The current state of the Repository.
+	// The current state of the repository.
 	LifecycleState RepositoryLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// A message describing the current state in more detail. For example, can be used to provide actionable information for a resource in Failed state.

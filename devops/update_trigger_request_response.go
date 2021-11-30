@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/UpdateTrigger.go.html to see an example of how to use UpdateTriggerRequest.
 type UpdateTriggerRequest struct {
 
-	// unique Trigger identifier
+	// Unique trigger identifier.
 	TriggerId *string `mandatory:"true" contributesTo:"path" name:"triggerId"`
 
 	// The information to be updated.

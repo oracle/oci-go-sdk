@@ -4,45 +4,45 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// BuildPipelineStage A single step in a BuildPipeline. A stage takes a specific designated action. There are
-// many types of stages. For eg. `Build` stage, `Deliver Artifact` Stage.
+// BuildPipelineStage A single node in a build pipeline. A stage takes a specific designated action.
+// There are many types of stages such as 'Build' and 'Deliver Artifacts'.
 type BuildPipelineStage interface {
 
-	// Unique identifier that is immutable on creation
+	// Unique identifier that is immutable on creation.
 	GetId() *string
 
-	// Project Identifier
+	// The OCID of the DevOps project.
 	GetProjectId() *string
 
-	// Build Pipeline Identifier
+	// The OCID of the build pipeline.
 	GetBuildPipelineId() *string
 
-	// Compartment Identifier
+	// The OCID of the compartment where the pipeline is created.
 	GetCompartmentId() *string
 
-	// Stage identifier which can be renamed and is not necessarily unique
+	// Stage display name, which can be renamed and is not necessarily unique. Avoid entering confidential information.
 	GetDisplayName() *string
 
-	// Optional description about the BuildStage
+	// Optional description about the build stage.
 	GetDescription() *string
 
-	// The time at which the Stage was created. An RFC3339 formatted datetime string
+	// The time the stage was created. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	GetTimeCreated() *common.SDKTime
 
-	// The time at which the Stage was updated. An RFC3339 formatted datetime string
+	// The time the stage was updated. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	GetTimeUpdated() *common.SDKTime
 
-	// The current state of the Stage.
+	// The current state of the stage.
 	GetLifecycleState() BuildPipelineStageLifecycleStateEnum
 
 	// A message describing the current state in more detail. For example, can be used to provide actionable information for a resource in Failed state.

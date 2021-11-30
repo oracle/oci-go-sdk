@@ -5,7 +5,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -161,12 +161,14 @@ const (
 	ListProblemsLifecycleDetailOpen      ListProblemsLifecycleDetailEnum = "OPEN"
 	ListProblemsLifecycleDetailResolved  ListProblemsLifecycleDetailEnum = "RESOLVED"
 	ListProblemsLifecycleDetailDismissed ListProblemsLifecycleDetailEnum = "DISMISSED"
+	ListProblemsLifecycleDetailDeleted   ListProblemsLifecycleDetailEnum = "DELETED"
 )
 
 var mappingListProblemsLifecycleDetail = map[string]ListProblemsLifecycleDetailEnum{
 	"OPEN":      ListProblemsLifecycleDetailOpen,
 	"RESOLVED":  ListProblemsLifecycleDetailResolved,
 	"DISMISSED": ListProblemsLifecycleDetailDismissed,
+	"DELETED":   ListProblemsLifecycleDetailDeleted,
 }
 
 // GetListProblemsLifecycleDetailEnumValues Enumerates the set of values for ListProblemsLifecycleDetailEnum

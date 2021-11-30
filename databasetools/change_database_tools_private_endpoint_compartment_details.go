@@ -10,7 +10,7 @@
 package databasetools
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // ChangeDatabaseToolsPrivateEndpointCompartmentDetails Contains the details for the compartment to move the DatabaseToolsPrivateEndpoint to.

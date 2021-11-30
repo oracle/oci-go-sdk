@@ -4,33 +4,33 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// CreateRepositoryDetails The information about new Repository.
+// CreateRepositoryDetails Information about the new repository.
 type CreateRepositoryDetails struct {
 
 	// Unique name of a repository.
 	Name *string `mandatory:"true" json:"name"`
 
-	// The OCID of the Project containing the repository.
+	// The OCID of the DevOps project containing the repository.
 	ProjectId *string `mandatory:"true" json:"projectId"`
 
 	// The default branch of the repository.
 	DefaultBranch *string `mandatory:"false" json:"defaultBranch"`
 
-	// Type of repository
+	// Type of repository.
 	RepositoryType RepositoryRepositoryTypeEnum `mandatory:"false" json:"repositoryType,omitempty"`
 
 	MirrorRepositoryConfig *MirrorRepositoryConfig `mandatory:"false" json:"mirrorRepositoryConfig"`
 
-	// The description of this repository. Avoid entering confidential information
+	// Details of the repository. Avoid entering confidential information.
 	Description *string `mandatory:"false" json:"description"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"bar-key": "value"}`

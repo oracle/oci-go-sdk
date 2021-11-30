@@ -5,7 +5,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -37,10 +37,10 @@ type ListJobsRequest struct {
 	// The lifecycle state of the job.
 	LifecycleState JobLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
-	// The maximum number of records returned in paginated response.
+	// The maximum number of records returned in the paginated response.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 
-	// The page token representing the page, from where the next set of paginated results
+	// The page token representing the page from where the next set of paginated results
 	// are retrieved. This is usually retrieved from a previous list call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 

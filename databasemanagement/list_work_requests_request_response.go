@@ -5,7 +5,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -25,23 +25,23 @@ type ListWorkRequestsRequest struct {
 	// The client request ID for tracing.
 	OpcRequestId *string `mandatory:"false" contributesTo:"header" name:"opc-request-id"`
 
-	// The ID of the asynchronous work request.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the asynchronous work request.
 	WorkRequestId *string `mandatory:"false" contributesTo:"query" name:"workRequestId"`
 
-	// A filter to return only resources their status matches the given WorkRequestStatus.
+	// A filter that returns the resources whose status matches the given WorkRequestStatus.
 	Status ListWorkRequestsStatusEnum `mandatory:"false" contributesTo:"query" name:"status" omitEmpty:"true"`
 
 	// The option to sort information in ascending (‘ASC’) or descending (‘DESC’) order. Ascending order is the default order.
 	SortOrder ListWorkRequestsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
-	// The field to sort by. Only one sort order may be provided. Default order for timeAccepted is descending.
+	// The field to sort by. Only one sort order may be provided and the default order for timeAccepted is descending.
 	SortBy ListWorkRequestsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// The page token representing the page, from where the next set of paginated results
+	// The page token representing the page from where the next set of paginated results
 	// are retrieved. This is usually retrieved from a previous list call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
-	// The maximum number of records returned in paginated response.
+	// The maximum number of records returned in the paginated response.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but

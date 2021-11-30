@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,16 +16,16 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/GetRepositoryFileLines.go.html to see an example of how to use GetRepositoryFileLinesRequest.
 type GetRepositoryFileLinesRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
 	// Path to a file within a repository.
 	FilePath *string `mandatory:"true" contributesTo:"path" name:"filePath"`
 
-	// Retrive file lines from specific revision.
+	// Retrieve file lines from specific revision.
 	Revision *string `mandatory:"true" contributesTo:"query" name:"revision"`
 
-	// Line number from where to start returning file lines. 1 indexed.
+	// Line number from where to start returning file lines.
 	StartLineNumber *int `mandatory:"false" contributesTo:"query" name:"startLineNumber"`
 
 	// The maximum number of items to return.

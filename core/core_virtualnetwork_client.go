@@ -16,8 +16,8 @@ package core
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v52/common"
-	"github.com/oracle/oci-go-sdk/v52/common/auth"
+	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v53/common/auth"
 	"net/http"
 )
 
@@ -5496,6 +5496,61 @@ func (client VirtualNetworkClient) getAllDrgAttachments(ctx context.Context, req
 	return response, err
 }
 
+// GetAllowedIkeIPSecParameters The allowed parameters for IKE IPSec
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetAllowedIkeIPSecParameters.go.html to see an example of how to use GetAllowedIkeIPSecParameters API.
+func (client VirtualNetworkClient) GetAllowedIkeIPSecParameters(ctx context.Context, request GetAllowedIkeIPSecParametersRequest) (response GetAllowedIkeIPSecParametersResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getAllowedIkeIPSecParameters, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetAllowedIkeIPSecParametersResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetAllowedIkeIPSecParametersResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetAllowedIkeIPSecParametersResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetAllowedIkeIPSecParametersResponse")
+	}
+	return
+}
+
+// getAllowedIkeIPSecParameters implements the OCIOperation interface (enables retrying operations)
+func (client VirtualNetworkClient) getAllowedIkeIPSecParameters(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/ipsecAlgorithms", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetAllowedIkeIPSecParametersResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
 // GetByoipRange Gets the `ByoipRange` resource. You must specify the OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
 //
 // See also
@@ -6614,6 +6669,61 @@ func (client VirtualNetworkClient) getIPSecConnectionTunnel(ctx context.Context,
 	}
 
 	var response GetIPSecConnectionTunnelResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// GetIPSecConnectionTunnelError Get the identified error for the specified IPSec Tunnel ID.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/GetIPSecConnectionTunnelError.go.html to see an example of how to use GetIPSecConnectionTunnelError API.
+func (client VirtualNetworkClient) GetIPSecConnectionTunnelError(ctx context.Context, request GetIPSecConnectionTunnelErrorRequest) (response GetIPSecConnectionTunnelErrorResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.getIPSecConnectionTunnelError, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = GetIPSecConnectionTunnelErrorResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = GetIPSecConnectionTunnelErrorResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(GetIPSecConnectionTunnelErrorResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into GetIPSecConnectionTunnelErrorResponse")
+	}
+	return
+}
+
+// getIPSecConnectionTunnelError implements the OCIOperation interface (enables retrying operations)
+func (client VirtualNetworkClient) getIPSecConnectionTunnelError(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/ipsecConnections/{ipscId}/tunnels/{tunnelId}/error", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response GetIPSecConnectionTunnelErrorResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)
@@ -9351,6 +9461,116 @@ func (client VirtualNetworkClient) listFastConnectProviderVirtualCircuitBandwidt
 	}
 
 	var response ListFastConnectProviderVirtualCircuitBandwidthShapesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListIPSecConnectionTunnelRoutes The routes advertised to the Customer and the routes received from the Customer.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ListIPSecConnectionTunnelRoutes.go.html to see an example of how to use ListIPSecConnectionTunnelRoutes API.
+func (client VirtualNetworkClient) ListIPSecConnectionTunnelRoutes(ctx context.Context, request ListIPSecConnectionTunnelRoutesRequest) (response ListIPSecConnectionTunnelRoutesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listIPSecConnectionTunnelRoutes, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListIPSecConnectionTunnelRoutesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListIPSecConnectionTunnelRoutesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListIPSecConnectionTunnelRoutesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListIPSecConnectionTunnelRoutesResponse")
+	}
+	return
+}
+
+// listIPSecConnectionTunnelRoutes implements the OCIOperation interface (enables retrying operations)
+func (client VirtualNetworkClient) listIPSecConnectionTunnelRoutes(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/ipsecConnections/{ipscId}/tunnels/{tunnelId}/routes", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListIPSecConnectionTunnelRoutesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// ListIPSecConnectionTunnelSecurityAssociations Lists the tunnel Security Associations information for the specified IPSec Tunnel ID.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/core/ListIPSecConnectionTunnelSecurityAssociations.go.html to see an example of how to use ListIPSecConnectionTunnelSecurityAssociations API.
+func (client VirtualNetworkClient) ListIPSecConnectionTunnelSecurityAssociations(ctx context.Context, request ListIPSecConnectionTunnelSecurityAssociationsRequest) (response ListIPSecConnectionTunnelSecurityAssociationsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.listIPSecConnectionTunnelSecurityAssociations, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = ListIPSecConnectionTunnelSecurityAssociationsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = ListIPSecConnectionTunnelSecurityAssociationsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(ListIPSecConnectionTunnelSecurityAssociationsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into ListIPSecConnectionTunnelSecurityAssociationsResponse")
+	}
+	return
+}
+
+// listIPSecConnectionTunnelSecurityAssociations implements the OCIOperation interface (enables retrying operations)
+func (client VirtualNetworkClient) listIPSecConnectionTunnelSecurityAssociations(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodGet, "/ipsecConnections/{ipscId}/tunnels/{tunnelId}/tunnelSecurityAssociations", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response ListIPSecConnectionTunnelSecurityAssociationsResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)

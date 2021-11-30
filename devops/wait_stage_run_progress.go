@@ -4,34 +4,34 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// WaitStageRunProgress Specifies wait stage specific run details.
+// WaitStageRunProgress Specifies Wait stage specific run details.
 type WaitStageRunProgress struct {
 
-	// BuildRun identifier which can be renamed and is not necessarily unique
+	// Build Run display name, which can be renamed and is not necessarily unique. Avoid entering confidential information.
 	StageDisplayName *string `mandatory:"false" json:"stageDisplayName"`
 
-	// Stage id
+	// The stage OCID.
 	BuildPipelineStageId *string `mandatory:"false" json:"buildPipelineStageId"`
 
-	// The time the Stage was started executing. An RFC3339 formatted datetime string
+	// The time the stage started executing. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 
-	// The time the Stage was finished executing. An RFC3339 formatted datetime string
+	// The time the stage finished executing. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished"`
 
 	BuildPipelineStagePredecessors *BuildPipelineStagePredecessorCollection `mandatory:"false" json:"buildPipelineStagePredecessors"`
 
-	// The current status of the Stage.
+	// The current status of the stage.
 	Status BuildPipelineStageRunProgressStatusEnum `mandatory:"false" json:"status,omitempty"`
 }
 

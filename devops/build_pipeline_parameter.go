@@ -4,26 +4,26 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// BuildPipelineParameter Parameter name for which the values will be supplied at the time of BuildRun.
+// BuildPipelineParameter Parameter name for which the values will be supplied at the time of running the build.
 type BuildPipelineParameter struct {
 
-	// Name of the parameter (Case-sensitive).
-	// Example: 'Pipeline_param' is not same as 'pipeline_Param'
+	// Name of the parameter (case-sensitive). Parameter name must be ^[a-zA-Z][a-zA-Z_0-9]*$.
+	// Example: 'Build_Pipeline_param' is not same as 'build_pipeline_Param'
 	Name *string `mandatory:"true" json:"name"`
 
-	// Default value of the parameter
+	// Default value of the parameter.
 	DefaultValue *string `mandatory:"false" json:"defaultValue"`
 
-	// Description of the parameter
+	// Description of the parameter.
 	Description *string `mandatory:"false" json:"description"`
 }
 

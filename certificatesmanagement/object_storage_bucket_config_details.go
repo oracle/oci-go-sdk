@@ -10,7 +10,7 @@
 package certificatesmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // ObjectStorageBucketConfigDetails The details of the Object Storage bucket configured to store the certificate revocation list (CRL).

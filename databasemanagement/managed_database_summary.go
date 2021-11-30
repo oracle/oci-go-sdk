@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // ManagedDatabaseSummary A summary of the Managed Database.
@@ -30,7 +30,8 @@ type ManagedDatabaseSummary struct {
 	// The type of Oracle Database installation.
 	DatabaseType DatabaseTypeEnum `mandatory:"true" json:"databaseType"`
 
-	// The subtype of the Oracle Database. Indicates whether the database is a Container Database, Pluggable Database, or a Non-container Database.
+	// The subtype of the Oracle Database. Indicates whether the database is a Container Database,
+	// Pluggable Database, Non-container Database, Autonomous Database, or Autonomous Container Database.
 	DatabaseSubType DatabaseSubTypeEnum `mandatory:"true" json:"databaseSubType"`
 
 	// Indicates whether the Oracle Database is part of a cluster.
@@ -44,6 +45,9 @@ type ManagedDatabaseSummary struct {
 
 	// The management option used when enabling Database Management.
 	ManagementOption ManagementOptionEnum `mandatory:"false" json:"managementOption,omitempty"`
+
+	// The workload type of the Autonomous Database.
+	WorkloadType WorkloadTypeEnum `mandatory:"false" json:"workloadType,omitempty"`
 
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the parent Container Database
 	// if the Managed Database is a Pluggable Database.

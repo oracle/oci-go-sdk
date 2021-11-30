@@ -7,9 +7,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/oracle/oci-go-sdk/v52/common"
-	"github.com/oracle/oci-go-sdk/v52/datalabelingservice"
-	"github.com/oracle/oci-go-sdk/v52/example/helpers"
+	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v53/datalabelingservice"
+	"github.com/oracle/oci-go-sdk/v53/example/helpers"
 )
 
 // ExampleCreateDataset to create a dataset in a given compartment Id.

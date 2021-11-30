@@ -12,22 +12,22 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// Datafile The details of a datafile.
+// Datafile The details of a data file.
 type Datafile struct {
 
-	// The filename (including the path) of the datafile or tempfile.
+	// The filename (including the path) of the data file or temp file.
 	Name *string `mandatory:"true" json:"name"`
 
-	// The status of the file. INVALID status is used when the file number is not in use, for example, a file in a tablespace that was dropped.
+	// The status of the file. INVALID status is used when the file number is not in use, for example, a file in a tablespace that was removed.
 	Status DatafileStatusEnum `mandatory:"false" json:"status,omitempty"`
 
 	// The online status of the file.
 	OnlineStatus DatafileOnlineStatusEnum `mandatory:"false" json:"onlineStatus,omitempty"`
 
-	// Indicates whether the datafile is auto-extensible.
+	// Indicates whether the data file is auto-extensible.
 	IsAutoExtensible *bool `mandatory:"false" json:"isAutoExtensible"`
 
 	// The lost write protection status of the file.
@@ -51,10 +51,10 @@ type Datafile struct {
 	// The number of blocks used as auto-extension increment.
 	IncrementBy *float32 `mandatory:"false" json:"incrementBy"`
 
-	// The free space available in the datafile in KB.
+	// The free space available in the data file in KB.
 	FreeSpaceKB *float32 `mandatory:"false" json:"freeSpaceKB"`
 
-	// The total space used in the datafile in KB.
+	// The total space used in the data file in KB.
 	UsedSpaceKB *float32 `mandatory:"false" json:"usedSpaceKB"`
 
 	// The percentage of used space out of the maximum available space in the file.

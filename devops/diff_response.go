@@ -4,25 +4,25 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // DiffResponse Response object for obtaining list of changed files.
 type DiffResponse struct {
 
-	// List of changes in the diff.
+	// List of changes in the difference.
 	Changes []DiffResponseEntry `mandatory:"true" json:"changes"`
 
-	// Boolean for whether all changes are included in the response.
+	// Boolean value to indicate if all changes are included in the response.
 	AreAllChangesIncluded *bool `mandatory:"false" json:"areAllChangesIncluded"`
 
-	// Count of each type of change in diff.
+	// Count of each type of change in difference.
 	ChangeTypeCount map[string]int `mandatory:"false" json:"changeTypeCount"`
 
 	// The ID of the common commit between source and target.
@@ -34,10 +34,10 @@ type DiffResponse struct {
 	// The number of commits source is behind target by.
 	CommitsBehindCount *int `mandatory:"false" json:"commitsBehindCount"`
 
-	// The number of lines added in whole diff.
+	// The number of lines added in whole difference.
 	AddedLinesCount *int `mandatory:"false" json:"addedLinesCount"`
 
-	// The number of lines deleted in whole diff.
+	// The number of lines deleted in whole difference.
 	DeletedLinesCount *int `mandatory:"false" json:"deletedLinesCount"`
 }
 

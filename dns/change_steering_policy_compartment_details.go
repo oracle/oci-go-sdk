@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // ChangeSteeringPolicyCompartmentDetails The representation of ChangeSteeringPolicyCompartmentDetails
