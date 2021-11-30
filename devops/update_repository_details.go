@@ -4,28 +4,28 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // UpdateRepositoryDetails The information to be updated.
 type UpdateRepositoryDetails struct {
 
-	// Repository Identifier
+	// Unique name of a repository.
 	Name *string `mandatory:"false" json:"name"`
 
-	// The description of this repository. Avoid entering confidential information
+	// Details of the repository. Avoid entering confidential information.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The default branch of the repository
+	// The default branch of the repository.
 	DefaultBranch *string `mandatory:"false" json:"defaultBranch"`
 
-	// Type of repository
+	// Type of repository.
 	RepositoryType RepositoryRepositoryTypeEnum `mandatory:"false" json:"repositoryType,omitempty"`
 
 	MirrorRepositoryConfig *MirrorRepositoryConfig `mandatory:"false" json:"mirrorRepositoryConfig"`

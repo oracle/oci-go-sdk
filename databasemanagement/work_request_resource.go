@@ -12,13 +12,13 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// WorkRequestResource A resource created or operated on by a work request.
+// WorkRequestResource The resource that is created or operated on by a work request.
 type WorkRequestResource struct {
 
-	// The entity type the work request is affects.
+	// The resource type the work request affects.
 	EntityType *string `mandatory:"true" json:"entityType"`
 
 	// The way in which this resource is affected by the work tracked in the work request.
@@ -27,10 +27,10 @@ type WorkRequestResource struct {
 	// or DELETED, respectively.
 	ActionType WorkRequestResourceActionTypeEnum `mandatory:"true" json:"actionType"`
 
-	// The identifier of the resource the work request affects.
+	// The OCID or other unique identifier of the resource the work request affects.
 	Identifier *string `mandatory:"true" json:"identifier"`
 
-	// The URI path that the user can do a GET on to access the resource metadata
+	// The URI path that is used in a GET request to access the resource metadata.
 	EntityUri *string `mandatory:"false" json:"entityUri"`
 }
 

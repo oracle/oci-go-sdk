@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // ShapeNumaNodesPerSocketPlatformOptions Configuration options for NUMA nodes per socket.

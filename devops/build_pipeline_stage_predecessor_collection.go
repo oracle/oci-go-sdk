@@ -4,19 +4,19 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// BuildPipelineStagePredecessorCollection The containing collection for the predecessors of a Stage.
+// BuildPipelineStagePredecessorCollection The collection containing the predecessors of a stage.
 type BuildPipelineStagePredecessorCollection struct {
 
-	// A list of BuildPipelineStagePredecessors for a stage.
+	// A list of build pipeline stage predecessors for a stage.
 	Items []BuildPipelineStagePredecessor `mandatory:"true" json:"items"`
 }
 

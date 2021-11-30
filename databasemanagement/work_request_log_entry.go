@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // WorkRequestLogEntry A log message from the execution of a work request.
@@ -24,11 +24,10 @@ type WorkRequestLogEntry struct {
 	// The OCID of the work request.
 	WorkRequestId *string `mandatory:"true" json:"workRequestId"`
 
-	// Human-readable log message.
+	// A human-readable log message.
 	Message *string `mandatory:"true" json:"message"`
 
-	// The time the log message was written.
-	// An RFC3339 formatted datetime string. The precision for the time object is milliseconds.
+	// The date and time the log message was written, described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339). The precision for the time object is in milliseconds.
 	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp"`
 }
 

@@ -10,7 +10,7 @@
 package goldengate
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // DeploymentBackupSummary The summary of the Backup.
@@ -42,6 +42,12 @@ type DeploymentBackupSummary struct {
 
 	// The time of the resource backup. The format is defined by RFC3339 (https://tools.ietf.org/html/rfc3339), such as `2016-08-25T21:10:29.600Z`.
 	TimeOfBackup *common.SDKTime `mandatory:"false" json:"timeOfBackup"`
+
+	// The time of the resource backup finish. The format is defined by RFC3339 (https://tools.ietf.org/html/rfc3339), such as `2016-08-25T21:10:29.600Z`.
+	TimeBackupFinished *common.SDKTime `mandatory:"false" json:"timeBackupFinished"`
+
+	// The size of the backup stored in object storage (in bytes)
+	SizeInBytes *float32 `mandatory:"false" json:"sizeInBytes"`
 
 	// Possible Deployment backup types.
 	BackupType DeploymentBackupTypeEnum `mandatory:"false" json:"backupType,omitempty"`

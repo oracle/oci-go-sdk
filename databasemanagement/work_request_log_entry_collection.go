@@ -12,13 +12,13 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// WorkRequestLogEntryCollection Results of a work request log search. Contains both WorkRequestLog items and other data.
+// WorkRequestLogEntryCollection The results of a work request log search. This contains WorkRequestLog items and other data.
 type WorkRequestLogEntryCollection struct {
 
-	// Collection of work request logs
+	// A collection of work request logs.
 	Items []WorkRequestLogEntry `mandatory:"true" json:"items"`
 }
 

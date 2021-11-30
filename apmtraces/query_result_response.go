@@ -10,7 +10,7 @@
 package apmtraces
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // QueryResultResponse A response containing a collection of query rows (selected attributes and aggregations) filtered, grouped and

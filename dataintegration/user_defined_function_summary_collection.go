@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // UserDefinedFunctionSummaryCollection This is the collection of user defined function summaries, it may be a collection of lightweight details or full definitions.

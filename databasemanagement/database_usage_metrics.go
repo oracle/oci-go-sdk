@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // DatabaseUsageMetrics The list of aggregated metrics for Managed Databases in the fleet.
@@ -27,7 +27,8 @@ type DatabaseUsageMetrics struct {
 	// The type of Oracle Database installation.
 	DatabaseType DatabaseTypeEnum `mandatory:"false" json:"databaseType,omitempty"`
 
-	// The subtype of the Oracle Database. Indicates whether the database is a Container Database, Pluggable Database, or a Non-container Database.
+	// The subtype of the Oracle Database. Indicates whether the database is a Container Database,
+	// Pluggable Database, Non-container Database, Autonomous Database, or Autonomous Container Database.
 	DatabaseSubType DatabaseSubTypeEnum `mandatory:"false" json:"databaseSubType,omitempty"`
 
 	// The infrastructure used to deploy the Oracle Database.
@@ -35,6 +36,9 @@ type DatabaseUsageMetrics struct {
 
 	// The Oracle Database version.
 	DatabaseVersion *string `mandatory:"false" json:"databaseVersion"`
+
+	// The workload type of the Autonomous Database.
+	WorkloadType WorkloadTypeEnum `mandatory:"false" json:"workloadType,omitempty"`
 
 	// The display name of the Managed Database.
 	DatabaseName *string `mandatory:"false" json:"databaseName"`

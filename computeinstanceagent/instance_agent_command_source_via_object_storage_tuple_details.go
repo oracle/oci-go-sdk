@@ -12,7 +12,7 @@ package computeinstanceagent
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // InstanceAgentCommandSourceViaObjectStorageTupleDetails The source of the command when imported from an Object Storage bucket.

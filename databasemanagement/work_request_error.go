@@ -12,30 +12,29 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // WorkRequestError An error encountered while executing a work request.
 type WorkRequestError struct {
 
-	// The identifier of the work request erorr.
+	// The identifier of the work request error.
 	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID of the work request.
 	WorkRequestId *string `mandatory:"true" json:"workRequestId"`
 
-	// A machine-usable code for the error that occured. Error codes are listed on
-	// (https://docs.cloud.oracle.com/Content/API/References/apierrors.htm)
+	// A machine-usable code for the error that occurred. Error codes are listed on
+	// (https://docs.cloud.oracle.com/Content/API/References/apierrors.htm).
 	Code *string `mandatory:"true" json:"code"`
 
-	// A human readable description of the issue encountered.
+	// A human-readable description of the issue that occurred.
 	Message *string `mandatory:"true" json:"message"`
 
-	// The time the error occured.
-	// An RFC3339 formatted datetime string. The precision for the time object is milliseconds.
+	// The date and time the error occurred as described in RFC 3339 (https://tools.ietf.org/rfc/rfc3339). The precision for the time object is in milliseconds.
 	Timestamp *common.SDKTime `mandatory:"true" json:"timestamp"`
 
-	// To determine the work request error is retryable or not
+	// Determines if the work request error can be reproduced and tried again.
 	IsRetryable *bool `mandatory:"false" json:"isRetryable"`
 }
 

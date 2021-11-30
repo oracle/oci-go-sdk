@@ -4,44 +4,44 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// BuildStageSummary Specifies the Build Stage.
+// BuildStageSummary Specifies the build stage.
 type BuildStageSummary struct {
 
-	// Unique identifier that is immutable on creation
+	// Unique identifier that is immutable on creation.
 	Id *string `mandatory:"true" json:"id"`
 
-	// Build Project Identifier
+	// The OCID of the DevOps project.
 	ProjectId *string `mandatory:"true" json:"projectId"`
 
-	// Build Pipeline Identifier
+	// The OCID of the build pipeline.
 	BuildPipelineId *string `mandatory:"true" json:"buildPipelineId"`
 
-	// Compartment Identifier
+	// The OCID of the compartment where the pipeline is created.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Stage identifier which can be renamed and is not necessarily unique
+	// Stage display name, which can be renamed and is not necessarily unique. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// The time at which the Stage was created. An RFC3339 formatted datetime string
+	// The time the stage was created. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// The time at which the Stage was updated. An RFC3339 formatted datetime string
+	// The time the stage was updated. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
 	// A message describing the current state in more detail. For example, can be used to provide actionable information for a resource in Failed state.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`
 
-	// Optional description about the BuildStage
+	// Optional description about the build stage.
 	Description *string `mandatory:"false" json:"description"`
 
 	BuildPipelineStagePredecessorCollection *BuildPipelineStagePredecessorCollection `mandatory:"false" json:"buildPipelineStagePredecessorCollection"`
@@ -55,21 +55,21 @@ type BuildStageSummary struct {
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. See Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
 	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 
-	// The path to the build specification file for this Environment. The default location if not specified is build_spec.yaml
+	// The path to the build specification file for this environment. The default location of the file if not specified is build_spec.yaml.
 	BuildSpecFile *string `mandatory:"false" json:"buildSpecFile"`
 
-	// Timeout for the Build Stage Execution. Value in seconds.
+	// Timeout for the build stage execution. Specify value in seconds.
 	StageExecutionTimeoutInSeconds *int `mandatory:"false" json:"stageExecutionTimeoutInSeconds"`
 
 	BuildSourceCollection *BuildSourceCollection `mandatory:"false" json:"buildSourceCollection"`
 
-	// Name of the BuildSource in which the build_spec.yml file need to be located. If not specified, the 1st entry in the BuildSource collection will be chosen as Primary.
+	// Name of the build source where the build_spec.yml file is located. If not specified, the first entry in the build source collection is chosen as primary build source.
 	PrimaryBuildSource *string `mandatory:"false" json:"primaryBuildSource"`
 
-	// The current state of the Stage.
+	// The current state of the stage.
 	LifecycleState BuildPipelineStageLifecycleStateEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
-	// Image for the Build Environment
+	// Image for the build environment.
 	Image BuildStageImageEnum `mandatory:"true" json:"image"`
 }
 

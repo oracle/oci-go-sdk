@@ -10,7 +10,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // OrganizationTenancyCollection Result of a query request for a list of organization tenancies. Contains OrganizationTenancySummary items.

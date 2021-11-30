@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // IngestDatabaseConfigurationResponseDetails The response object returned from IngestDatabaseConfiguration operation.

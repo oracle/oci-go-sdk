@@ -16,11 +16,13 @@ type PlatformTypesEnum string
 const (
 	PlatformTypesLinux   PlatformTypesEnum = "LINUX"
 	PlatformTypesWindows PlatformTypesEnum = "WINDOWS"
+	PlatformTypesSolaris PlatformTypesEnum = "SOLARIS"
 )
 
 var mappingPlatformTypes = map[string]PlatformTypesEnum{
 	"LINUX":   PlatformTypesLinux,
 	"WINDOWS": PlatformTypesWindows,
+	"SOLARIS": PlatformTypesSolaris,
 }
 
 // GetPlatformTypesEnumValues Enumerates the set of values for PlatformTypesEnum

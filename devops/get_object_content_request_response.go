@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"io"
 	"net/http"
 )
@@ -17,10 +17,10 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/GetObjectContent.go.html to see an example of how to use GetObjectContentRequest.
 type GetObjectContentRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
-	// The SHA of a blob or tree
+	// The SHA of a blob or tree.
 	Sha *string `mandatory:"true" contributesTo:"path" name:"sha"`
 
 	// A filter to return only commits that affect any of the specified paths.

@@ -4,16 +4,16 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// DiffLineDetails Details about a line within the diff.
+// DiffLineDetails Details about a line within the difference.
 type DiffLineDetails struct {
 
 	// The number of a line in the base version.
@@ -25,7 +25,7 @@ type DiffLineDetails struct {
 	// The contents of a line.
 	LineContent *string `mandatory:"false" json:"lineContent"`
 
-	// Indicates whether a line in a conflicted section of the diff is from the base version, the target version, or if its just a marker indicating the beginning, middle, or end of a conflicted section.
+	// Indicates whether a line in a conflicted section of the difference is from the base version, the target version, or if its just a marker indicating the beginning, middle, or end of a conflicted section.
 	ConflictMarker DiffLineDetailsConflictMarkerEnum `mandatory:"false" json:"conflictMarker,omitempty"`
 }
 

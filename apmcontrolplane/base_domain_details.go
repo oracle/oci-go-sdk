@@ -2,43 +2,43 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Application Performance Monitoring (APM) Control Plane API
+// Application Performance Monitoring Control Plane API
 //
-// Provide a set of APIs for tenant to perform operations like create, update, delete and list APM domains, and also
-// work request APIs to monitor progress of these operations.
+// Use the Application Performance Monitoring Control Plane API to perform operations such as creating, updating,
+// deleting and listing APM domains and monitoring the progress of these operations using the work request APIs.
 //
 
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// BaseDomainDetails Basic details for an APM Domain.
+// BaseDomainDetails Details for an APM domain.
 type BaseDomainDetails struct {
 
 	// Unique identifier that is immutable on creation.
 	Id *string `mandatory:"true" json:"id"`
 
-	// APM Domain display name, can be updated.
+	// Display name of the APM domain, which can be updated.
 	DisplayName *string `mandatory:"true" json:"displayName"`
 
-	// The OCID of the compartment corresponding to the APM Domain.
+	// The OCID of the compartment corresponding to the APM domain.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// Description of the APM Domain.
+	// Description of the APM domain.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The current lifecycle state of the APM Domain.
+	// The current lifecycle state of the APM domain.
 	LifecycleState LifecycleStatesEnum `mandatory:"false" json:"lifecycleState,omitempty"`
 
 	// Indicates if this is an Always Free resource.
 	IsFreeTier *bool `mandatory:"false" json:"isFreeTier"`
 
-	// The time the the APM Domain was created. An RFC3339 formatted datetime string
+	// The time the APM domain was created, expressed in RFC 3339 timestamp format.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// The time the APM Domain was updated. An RFC3339 formatted datetime string
+	// The time the APM domain was updated, expressed in RFC 3339 timestamp format.
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.

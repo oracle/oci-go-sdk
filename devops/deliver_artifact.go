@@ -4,22 +4,22 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// DeliverArtifact Artifact info that need to be pushed to the artifactory stores.
+// DeliverArtifact Artifact information that need to be pushed to the artifactory stores.
 type DeliverArtifact struct {
 
-	// Name of the artifact specified in the build_spec.yml file.
+	// Name of the artifact specified in the build_spec.yaml file.
 	ArtifactName *string `mandatory:"true" json:"artifactName"`
 
-	// Artifact Identifier which contains the Artifact Definition.
+	// Artifact identifier that contains the artifact definition.
 	ArtifactId *string `mandatory:"true" json:"artifactId"`
 }
 

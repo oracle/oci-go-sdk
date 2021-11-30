@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,13 +16,13 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/GetObject.go.html to see an example of how to use GetObjectRequest.
 type GetObjectRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
 	// A filter to return only commits that affect any of the specified paths.
 	FilePath *string `mandatory:"false" contributesTo:"query" name:"filePath"`
 
-	// A filter to return only resources that match the given Ref name.
+	// A filter to return only resources that match the given reference name.
 	RefName *string `mandatory:"false" contributesTo:"query" name:"refName"`
 
 	// Unique Oracle-assigned identifier for the request.  If you need to contact Oracle about a particular request, provide the request ID.

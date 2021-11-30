@@ -10,7 +10,7 @@
 package waas
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // PurgeCache The list of cached resources to purge. If a resource is not specified, the purge targets all rules in a policy.

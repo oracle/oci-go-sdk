@@ -4,43 +4,43 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// RepositoryCommit Commit object with commit information
+// RepositoryCommit Commit object with commit information.
 type RepositoryCommit struct {
 
-	// Commit hash pointed to by Ref name
+	// Commit hash pointed to by reference name.
 	CommitId *string `mandatory:"true" json:"commitId"`
 
 	// The commit message.
 	CommitMessage *string `mandatory:"true" json:"commitMessage"`
 
-	// The name of the author of the repository.
+	// Name of the author of the repository.
 	AuthorName *string `mandatory:"false" json:"authorName"`
 
-	// The email of the author of the repository.
+	// Email of the author of the repository.
 	AuthorEmail *string `mandatory:"false" json:"authorEmail"`
 
-	// The name of who create the commit.
+	// Name of who creates the commit.
 	CommitterName *string `mandatory:"false" json:"committerName"`
 
-	// The email of who create the commit.
+	// Email of who creates the commit.
 	CommitterEmail *string `mandatory:"false" json:"committerEmail"`
 
-	// An array of parent commit ids of created commit.
+	// An array of parent commit IDs of created commit.
 	ParentCommitIds []string `mandatory:"false" json:"parentCommitIds"`
 
 	// The time at which commit was created.
 	TimeCreated *common.SDKTime `mandatory:"false" json:"timeCreated"`
 
-	// Tree information for the specified commit
+	// Tree information for the specified commit.
 	TreeId *string `mandatory:"false" json:"treeId"`
 }
 

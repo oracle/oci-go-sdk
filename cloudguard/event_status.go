@@ -19,6 +19,7 @@ const (
 	EventStatusUpdate  EventStatusEnum = "UPDATE"
 	EventStatusResolve EventStatusEnum = "RESOLVE"
 	EventStatusDismiss EventStatusEnum = "DISMISS"
+	EventStatusDelete  EventStatusEnum = "DELETE"
 )
 
 var mappingEventStatus = map[string]EventStatusEnum{
@@ -27,6 +28,7 @@ var mappingEventStatus = map[string]EventStatusEnum{
 	"UPDATE":  EventStatusUpdate,
 	"RESOLVE": EventStatusResolve,
 	"DISMISS": EventStatusDismiss,
+	"DELETE":  EventStatusDelete,
 }
 
 // GetEventStatusEnumValues Enumerates the set of values for EventStatusEnum

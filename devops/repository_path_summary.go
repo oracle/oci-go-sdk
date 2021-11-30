@@ -4,34 +4,34 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// RepositoryPathSummary Object containing information about files and directories in a repository
+// RepositoryPathSummary Object containing information about files and directories in a repository.
 type RepositoryPathSummary struct {
 
-	// File or Directory
+	// File or directory.
 	Type *string `mandatory:"false" json:"type"`
 
-	// Size of file or directory
+	// Size of file or directory.
 	SizeInBytes *int64 `mandatory:"false" json:"sizeInBytes"`
 
-	// Name of file or directory
+	// Name of file or directory.
 	Name *string `mandatory:"false" json:"name"`
 
-	// Path to file or directory in a repository
+	// Path to file or directory in a repository.
 	Path *string `mandatory:"false" json:"path"`
 
-	// SHA-1 checksum of blob or tree
+	// SHA-1 checksum of blob or tree.
 	Sha *string `mandatory:"false" json:"sha"`
 
-	// The giturl of the submodule
+	// The git URL of the submodule.
 	SubmoduleGitUrl *string `mandatory:"false" json:"submoduleGitUrl"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"bar-key": "value"}`

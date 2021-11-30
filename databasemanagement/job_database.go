@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // JobDatabase The Managed Database on which the job is executed.
@@ -35,6 +35,9 @@ type JobDatabase struct {
 
 	// Indicates whether the Oracle Database is part of a cluster.
 	IsCluster *bool `mandatory:"false" json:"isCluster"`
+
+	// The workload type of the Autonomous Database.
+	WorkloadType WorkloadTypeEnum `mandatory:"false" json:"workloadType,omitempty"`
 }
 
 func (m JobDatabase) String() string {

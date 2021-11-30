@@ -5,7 +5,7 @@
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,15 +16,14 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmcontrolplane/ChangeApmDomainCompartment.go.html to see an example of how to use ChangeApmDomainCompartmentRequest.
 type ChangeApmDomainCompartmentRequest struct {
 
-	// OCID of the APM Domain
+	// The OCID of the APM domain
 	ApmDomainId *string `mandatory:"true" contributesTo:"path" name:"apmDomainId"`
 
 	// The information to be used in changing compartment.
 	ChangeApmDomainCompartmentDetails `contributesTo:"body"`
 
-	// For optimistic concurrency control. In the PUT or DELETE call
-	// for a resource, set the `if-match` parameter to the value of the
-	// etag from a previous GET or POST response for that resource.
+	// For optimistic concurrency control. Set the `if-match` parameter
+	// to the value of the etag from a previous GET or POST response for that resource.
 	// The resource will be updated or deleted only if the etag you
 	// provide matches the resource's current etag value.
 	IfMatch *string `mandatory:"false" contributesTo:"header" name:"if-match"`

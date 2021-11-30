@@ -17,12 +17,14 @@ const (
 	ProblemLifecycleDetailOpen      ProblemLifecycleDetailEnum = "OPEN"
 	ProblemLifecycleDetailResolved  ProblemLifecycleDetailEnum = "RESOLVED"
 	ProblemLifecycleDetailDismissed ProblemLifecycleDetailEnum = "DISMISSED"
+	ProblemLifecycleDetailDeleted   ProblemLifecycleDetailEnum = "DELETED"
 )
 
 var mappingProblemLifecycleDetail = map[string]ProblemLifecycleDetailEnum{
 	"OPEN":      ProblemLifecycleDetailOpen,
 	"RESOLVED":  ProblemLifecycleDetailResolved,
 	"DISMISSED": ProblemLifecycleDetailDismissed,
+	"DELETED":   ProblemLifecycleDetailDeleted,
 }
 
 // GetProblemLifecycleDetailEnumValues Enumerates the set of values for ProblemLifecycleDetailEnum

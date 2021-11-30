@@ -12,22 +12,22 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// AssociatedDatabaseSummary Summary of a Database currently using a Private Endpoint.
+// AssociatedDatabaseSummary The summary of a database currently using a Database Management private endpoint.
 type AssociatedDatabaseSummary struct {
 
-	// The OCID of the database.
+	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the database.
 	Id *string `mandatory:"true" json:"id"`
 
 	// The name of the database.
 	Name *string `mandatory:"true" json:"name"`
 
-	// The compartment ID of the database.
+	// The compartment OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the database.
 	CompartmentId *string `mandatory:"true" json:"compartmentId"`
 
-	// The time when the database was registered for Database Management.
+	// The time when Database Management was enabled for the database.
 	TimeRegistered *common.SDKTime `mandatory:"true" json:"timeRegistered"`
 }
 

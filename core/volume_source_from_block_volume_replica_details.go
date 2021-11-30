@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // VolumeSourceFromBlockVolumeReplicaDetails Specifies the source block volume replica which the block volume will be created from.

@@ -10,7 +10,7 @@
 package blockchain
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // WorkRequestSummary A description of workrequest status
@@ -60,6 +60,7 @@ type WorkRequestSummaryOperationTypeEnum string
 const (
 	WorkRequestSummaryOperationTypeCreatePlatform    WorkRequestSummaryOperationTypeEnum = "CREATE_PLATFORM"
 	WorkRequestSummaryOperationTypeUpdatePlatform    WorkRequestSummaryOperationTypeEnum = "UPDATE_PLATFORM"
+	WorkRequestSummaryOperationTypeUpgradePlatform   WorkRequestSummaryOperationTypeEnum = "UPGRADE_PLATFORM"
 	WorkRequestSummaryOperationTypeDeletePlatform    WorkRequestSummaryOperationTypeEnum = "DELETE_PLATFORM"
 	WorkRequestSummaryOperationTypeScalePlatform     WorkRequestSummaryOperationTypeEnum = "SCALE_PLATFORM"
 	WorkRequestSummaryOperationTypeStartPlatform     WorkRequestSummaryOperationTypeEnum = "START_PLATFORM"
@@ -71,6 +72,7 @@ const (
 var mappingWorkRequestSummaryOperationType = map[string]WorkRequestSummaryOperationTypeEnum{
 	"CREATE_PLATFORM":    WorkRequestSummaryOperationTypeCreatePlatform,
 	"UPDATE_PLATFORM":    WorkRequestSummaryOperationTypeUpdatePlatform,
+	"UPGRADE_PLATFORM":   WorkRequestSummaryOperationTypeUpgradePlatform,
 	"DELETE_PLATFORM":    WorkRequestSummaryOperationTypeDeletePlatform,
 	"SCALE_PLATFORM":     WorkRequestSummaryOperationTypeScalePlatform,
 	"START_PLATFORM":     WorkRequestSummaryOperationTypeStartPlatform,

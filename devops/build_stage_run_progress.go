@@ -4,30 +4,30 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// BuildStageRunProgress Specifies the Run details for Build Stage.
+// BuildStageRunProgress Specifies the run details for Build stage.
 type BuildStageRunProgress struct {
 	BuildSourceCollection *BuildSourceCollection `mandatory:"true" json:"buildSourceCollection"`
 
-	// BuildRun identifier which can be renamed and is not necessarily unique
+	// Build Run display name, which can be renamed and is not necessarily unique. Avoid entering confidential information.
 	StageDisplayName *string `mandatory:"false" json:"stageDisplayName"`
 
-	// Stage id
+	// The stage OCID.
 	BuildPipelineStageId *string `mandatory:"false" json:"buildPipelineStageId"`
 
-	// The time the Stage was started executing. An RFC3339 formatted datetime string
+	// The time the stage started executing. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeStarted *common.SDKTime `mandatory:"false" json:"timeStarted"`
 
-	// The time the Stage was finished executing. An RFC3339 formatted datetime string
+	// The time the stage finished executing. Format defined by RFC3339 (https://datatracker.ietf.org/doc/html/rfc3339).
 	TimeFinished *common.SDKTime `mandatory:"false" json:"timeFinished"`
 
 	BuildPipelineStagePredecessors *BuildPipelineStagePredecessorCollection `mandatory:"false" json:"buildPipelineStagePredecessors"`
@@ -46,7 +46,7 @@ type BuildStageRunProgress struct {
 	// Name of the BuildSource in which the build_spec.yml file need to be located. If not specified, the 1st entry in the BuildSource collection will be chosen as Primary.
 	PrimaryBuildSource *string `mandatory:"false" json:"primaryBuildSource"`
 
-	// The details about all the steps in a Build Stage
+	// The details about all the steps in a Build stage
 	Steps []BuildStageRunStep `mandatory:"false" json:"steps"`
 
 	ExportedVariables *ExportedVariableCollection `mandatory:"false" json:"exportedVariables"`
@@ -54,7 +54,7 @@ type BuildStageRunProgress struct {
 	// Image name for the Build Environment
 	Image BuildStageRunProgressImageEnum `mandatory:"true" json:"image"`
 
-	// The current status of the Stage.
+	// The current status of the stage.
 	Status BuildPipelineStageRunProgressStatusEnum `mandatory:"false" json:"status,omitempty"`
 }
 

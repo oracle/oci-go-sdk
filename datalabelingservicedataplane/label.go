@@ -10,7 +10,7 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // Label A label is a string value.  The API will validate that it's one of the dataset's pre-defined labels. In the future, we'll be able to support a confidence score.

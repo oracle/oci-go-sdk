@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,12 +16,12 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/GetMirrorRecord.go.html to see an example of how to use GetMirrorRecordRequest.
 type GetMirrorRecordRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
-	// The field of mirror record type. Only one mirror record type may be provided.
+	// The field of mirror record type. Only one mirror record type can be provided:
 	// current - The current mirror record.
-	// lastSuccessful - The last successful mirror record
+	// lastSuccessful - The last successful mirror record.
 	MirrorRecordType GetMirrorRecordMirrorRecordTypeEnum `mandatory:"true" contributesTo:"path" name:"mirrorRecordType"`
 
 	// Unique Oracle-assigned identifier for the request.  If you need to contact Oracle about a particular request, provide the request ID.

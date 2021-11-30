@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // UpdateDbManagementPrivateEndpointDetails The details used to update a Database Management private endpoint.
@@ -24,7 +24,7 @@ type UpdateDbManagementPrivateEndpointDetails struct {
 	// The description of the private endpoint.
 	Description *string `mandatory:"false" json:"description"`
 
-	// The OCIDs of the network security groups that the private endpoint belongs to.
+	// The OCIDs of the Network Security Groups to which the Database Management private endpoint belongs.
 	NsgIds []string `mandatory:"false" json:"nsgIds"`
 }
 

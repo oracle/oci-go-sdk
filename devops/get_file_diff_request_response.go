@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,19 +16,19 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/GetFileDiff.go.html to see an example of how to use GetFileDiffRequest.
 type GetFileDiffRequest struct {
 
-	// unique Repository identifier.
+	// Unique repository identifier.
 	RepositoryId *string `mandatory:"true" contributesTo:"path" name:"repositoryId"`
 
 	// Path to a file within a repository.
 	FilePath *string `mandatory:"true" contributesTo:"path" name:"filePath"`
 
-	// The branch to compare changes against
+	// The branch to compare changes against.
 	BaseVersion *string `mandatory:"true" contributesTo:"query" name:"baseVersion"`
 
-	// The branch where changes are coming from
+	// The branch where changes are coming from.
 	TargetVersion *string `mandatory:"true" contributesTo:"query" name:"targetVersion"`
 
-	// boolean for whether to use merge base or most recent revision
+	// Boolean to indicate whether to use merge base or most recent revision.
 	IsComparisonFromMergeBase *bool `mandatory:"false" contributesTo:"query" name:"isComparisonFromMergeBase"`
 
 	// Unique Oracle-assigned identifier for the request.  If you need to contact Oracle about a particular request, provide the request ID.

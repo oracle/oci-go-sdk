@@ -4,23 +4,23 @@
 
 // DevOps API
 //
-// Use the DevOps APIs to create a DevOps project to group the pipelines,  add reference to target deployment environments, add artifacts to deploy,  and create deployment pipelines needed to deploy your software.
+// Use the DevOps API to create DevOps projects, configure code repositories,  add artifacts to deploy, build and test software applications, configure  target deployment environments, and deploy software applications.  For more information, see DevOps (https://docs.cloud.oracle.com/Content/devops/using/home.htm).
 //
 
 package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
-// UpdateTriggerDeploymentStageDetails Specifies trigger Deployment Pipleline stage which runs another pipeline of the application.
+// UpdateTriggerDeploymentStageDetails Specifies the Trigger Deployment stage, which runs another pipeline of the application.
 type UpdateTriggerDeploymentStageDetails struct {
 
-	// Stage identifier which can be renamed and is not necessarily unique
+	// Stage display name, which can be renamed and is not necessarily unique. Avoid entering confidential information.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// Optional description about the BuildStage
+	// Optional description about the build stage.
 	Description *string `mandatory:"false" json:"description"`
 
 	BuildPipelineStagePredecessorCollection *BuildPipelineStagePredecessorCollection `mandatory:"false" json:"buildPipelineStagePredecessorCollection"`
@@ -31,10 +31,10 @@ type UpdateTriggerDeploymentStageDetails struct {
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags (https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm). Example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 
-	// A target Pipeline ocid that will be run in this stage.
+	// A target deployment pipeline OCID that will run in this stage.
 	DeployPipelineId *string `mandatory:"false" json:"deployPipelineId"`
 
-	// A boolean flag specifies whether the parameters should be passed during the deployment trigger.
+	// A boolean flag that specifies whether all the parameters must be passed when the deployment is triggered.
 	IsPassAllParametersEnabled *bool `mandatory:"false" json:"isPassAllParametersEnabled"`
 }
 

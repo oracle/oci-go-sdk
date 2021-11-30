@@ -5,7 +5,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -25,13 +25,16 @@ type ListDbManagementPrivateEndpointsRequest struct {
 	// The OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) of the VCN.
 	VcnId *string `mandatory:"false" contributesTo:"query" name:"vcnId"`
 
+	// The option to filter Database Management private endpoints that can used for Oracle Databases in a cluster. This should be used along with the vcnId query parameter.
+	IsCluster *bool `mandatory:"false" contributesTo:"query" name:"isCluster"`
+
 	// The lifecycle state of a resource.
 	LifecycleState ListDbManagementPrivateEndpointsLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
-	// The maximum number of records returned in paginated response.
+	// The maximum number of records returned in the paginated response.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 
-	// The page token representing the page, from where the next set of paginated results
+	// The page token representing the page from where the next set of paginated results
 	// are retrieved. This is usually retrieved from a previous list call.
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 

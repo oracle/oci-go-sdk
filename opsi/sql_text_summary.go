@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 )
 
 // SqlTextSummary SQL Text details
@@ -29,6 +29,9 @@ type SqlTextSummary struct {
 
 	// SQL Text
 	SqlText *string `mandatory:"true" json:"sqlText"`
+
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment.
+	CompartmentId *string `mandatory:"false" json:"compartmentId"`
 }
 
 func (m SqlTextSummary) String() string {

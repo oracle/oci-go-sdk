@@ -5,7 +5,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v52/common"
+	"github.com/oracle/oci-go-sdk/v53/common"
 	"net/http"
 )
 
@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/devops/CancelBuildRun.go.html to see an example of how to use CancelBuildRunRequest.
 type CancelBuildRunRequest struct {
 
-	// Details the input parameters required to cancel a build run.
+	// Parameter details required to cancel a build run.
 	CancelBuildRunDetails `contributesTo:"body"`
 
 	// Unique build run identifier.
