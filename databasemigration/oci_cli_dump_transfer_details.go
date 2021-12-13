@@ -11,7 +11,7 @@ package databasemigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // OciCliDumpTransferDetails Optional dump transfer details for OCI-CLI-based dump transfer in source or target host.

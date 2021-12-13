@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // AttributeSummary Summary of an entity attribute.
@@ -63,6 +63,9 @@ type AttributeSummary struct {
 
 	// Data type of the attribute as defined in the external source system.
 	ExternalDataType *string `mandatory:"false" json:"externalDataType"`
+
+	// The type of the attribute. Type keys can be found via the '/types' endpoint.
+	TypeKey *string `mandatory:"false" json:"typeKey"`
 
 	// The minimum count for the number of instances of a given type stored in this collection type attribute,applicable if this attribute is a complex type.
 	MinCollectionCount *int `mandatory:"false" json:"minCollectionCount"`

@@ -10,7 +10,7 @@
 package jms
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // WorkRequest An asynchronous work request. See Work Requests (https://docs.cloud.oracle.com/Content/General/Concepts/workrequestoverview.htm).

@@ -5,7 +5,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 	"net/http"
 )
 
@@ -30,7 +30,7 @@ type ListTermRelationshipsRequest struct {
 
 	// A filter to return only resources that match display name pattern given. The match is not case sensitive.
 	// For Example : /folders?displayNameContains=Cu.*
-	// The above would match all folders with display name that starts with "Cu".
+	// The above would match all folders with display name that starts with "Cu" or has the pattern "Cu" anywhere in between.
 	DisplayNameContains *string `mandatory:"false" contributesTo:"query" name:"displayNameContains"`
 
 	// A filter to return only resources that match the specified lifecycle state. The value is case insensitive.

@@ -14,7 +14,7 @@ package applicationmigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // SoacsDiscoveryDetails Credentials to access the Oracle SOA Cloud Service application in the source environment. When you create and update a migration,

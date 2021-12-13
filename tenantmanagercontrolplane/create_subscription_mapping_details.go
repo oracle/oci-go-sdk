@@ -10,7 +10,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // CreateSubscriptionMappingDetails CreateSubscriptionMappingDetails contains subscription and compartment identified by the tenancy, and OCID information.

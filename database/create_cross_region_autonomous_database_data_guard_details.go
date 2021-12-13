@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // CreateCrossRegionAutonomousDatabaseDataGuardDetails Details to create an Autonomous Data Guard association for an existing Autonomous Database where the standby is in a different (remote) region from the source primary database.
@@ -146,6 +146,9 @@ type CreateCrossRegionAutonomousDatabaseDataGuardDetails struct {
 
 	// Indicates whether the Autonomous Database requires mTLS connections.
 	IsMtlsConnectionRequired *bool `mandatory:"false" json:"isMtlsConnectionRequired"`
+
+	// list of scheduled operations
+	ScheduledOperations []ScheduledOperationDetails `mandatory:"false" json:"scheduledOperations"`
 
 	// The Autonomous Database workload type. The following values are valid:
 	// - OLTP - indicates an Autonomous Transaction Processing database
@@ -318,6 +321,11 @@ func (m CreateCrossRegionAutonomousDatabaseDataGuardDetails) GetIsMtlsConnection
 //GetAutonomousMaintenanceScheduleType returns AutonomousMaintenanceScheduleType
 func (m CreateCrossRegionAutonomousDatabaseDataGuardDetails) GetAutonomousMaintenanceScheduleType() CreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum {
 	return m.AutonomousMaintenanceScheduleType
+}
+
+//GetScheduledOperations returns ScheduledOperations
+func (m CreateCrossRegionAutonomousDatabaseDataGuardDetails) GetScheduledOperations() []ScheduledOperationDetails {
+	return m.ScheduledOperations
 }
 
 func (m CreateCrossRegionAutonomousDatabaseDataGuardDetails) String() string {

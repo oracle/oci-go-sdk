@@ -12,7 +12,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // QueryableFieldCollection List of the fields that are indexed for querying and their associated value types. Results contain `QueryableFieldSummary` objects.

@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // CloneSqlTuningTaskDetails Request to clone and run a SQL tuning task. The new task uses same inputs as the one being cloned.

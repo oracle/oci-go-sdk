@@ -11,7 +11,7 @@
 package waf
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // WorkRequestErrorCollection Result of a WorkRequestError search. Contains both WorkRequestError items and other information, such as metadata.

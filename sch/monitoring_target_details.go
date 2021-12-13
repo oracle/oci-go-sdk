@@ -13,10 +13,12 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // MonitoringTargetDetails The metric and metric namespace used for the Monitoring target.
+// For configuration instructions, see
+// To create a service connector (https://docs.cloud.oracle.com/iaas/Content/service-connector-hub/managingconnectors.htm#create).
 type MonitoringTargetDetails struct {
 
 	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the compartment containing the metric.
@@ -29,6 +31,9 @@ type MonitoringTargetDetails struct {
 	// The name of the metric.
 	// Example: `CpuUtilization`
 	Metric *string `mandatory:"true" json:"metric"`
+
+	// List of dimension names and values.
+	Dimensions []DimensionDetails `mandatory:"false" json:"dimensions"`
 }
 
 func (m MonitoringTargetDetails) String() string {

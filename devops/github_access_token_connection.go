@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // GithubAccessTokenConnection The properties that define a connection of the type `GITHUB_ACCESS_TOKEN`.

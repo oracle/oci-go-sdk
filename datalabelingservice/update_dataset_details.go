@@ -10,7 +10,7 @@
 package datalabelingservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // UpdateDatasetDetails Once the Dataset is defined, it's largely immutable from a metadata perspective.  The records found in the data source itself, may change over time.

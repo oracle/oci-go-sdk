@@ -10,7 +10,7 @@
 package certificates
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // CertificateBundleVersionCollection The results of a certificate bundle versions search. Results contain certificate bundle version summary objects.

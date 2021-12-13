@@ -10,7 +10,7 @@
 package datasafe
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // SecurityAssessmentComparison Provides a list of the differences in a comparison of the security assessment with the baseline value.

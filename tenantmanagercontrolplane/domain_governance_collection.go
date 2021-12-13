@@ -10,7 +10,7 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // DomainGovernanceCollection Result of a query request for a list of domain governance entities. Contains DomainGovernanceSummary items.

@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // UpdateAutonomousDatabaseDetails Details to update an Oracle Autonomous Database.
@@ -155,6 +155,9 @@ type UpdateAutonomousDatabaseDetails struct {
 
 	// Indicates whether the Autonomous Database requires mTLS connections.
 	IsMtlsConnectionRequired *bool `mandatory:"false" json:"isMtlsConnectionRequired"`
+
+	// list of scheduled operations
+	ScheduledOperations []ScheduledOperationDetails `mandatory:"false" json:"scheduledOperations"`
 }
 
 func (m UpdateAutonomousDatabaseDetails) String() string {

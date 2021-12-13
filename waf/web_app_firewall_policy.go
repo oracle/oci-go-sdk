@@ -12,7 +12,7 @@ package waf
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // WebAppFirewallPolicy The details of WebAppFirewallPolicy. A policy is comprised of rules, which allows executing inspections of

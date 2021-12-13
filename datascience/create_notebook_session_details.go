@@ -10,7 +10,7 @@
 package datascience
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // CreateNotebookSessionDetails Parameters needed to create a new notebook session. Notebook sessions are interactive coding environments for data scientists.

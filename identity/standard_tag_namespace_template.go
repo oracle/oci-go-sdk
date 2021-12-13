@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // StandardTagNamespaceTemplate The template of the standard tag namespace. This object includes necessary details to create the provided standard tag namespace.

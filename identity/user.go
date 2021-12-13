@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // User An individual employee or system that needs to manage or use your company's Oracle Cloud Infrastructure
@@ -62,6 +62,9 @@ type User struct {
 
 	// Whether the email address has been validated.
 	EmailVerified *bool `mandatory:"false" json:"emailVerified"`
+
+	// DB username of the DB credential. Has to be unique across the tenancy.
+	DbUserName *string `mandatory:"false" json:"dbUserName"`
 
 	// The OCID of the `IdentityProvider` this user belongs to.
 	IdentityProviderId *string `mandatory:"false" json:"identityProviderId"`

@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // SqlTuningAdvisorTaskSummaryReportStatementCounts The statement counts data for the SQL Tuning Advisor summary report.

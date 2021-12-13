@@ -12,7 +12,7 @@ package waf
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // WebAppFirewall A resource connecting a WebAppFirewallPolicy to a backend of particular type, applying that policy's coverage to the backend.

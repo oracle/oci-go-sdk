@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // DrgRouteDistributionMatchCriteria The match criteria in a route distribution statement. The match criteria outlines which routes

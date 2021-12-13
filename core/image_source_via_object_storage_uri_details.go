@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // ImageSourceViaObjectStorageUriDetails The representation of ImageSourceViaObjectStorageUriDetails

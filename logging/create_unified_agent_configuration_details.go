@@ -11,7 +11,7 @@ package logging
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // CreateUnifiedAgentConfigurationDetails Unified Agent configuration creation object.

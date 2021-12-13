@@ -12,7 +12,7 @@ package waf
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // WebAppFirewallPolicyRule Base schema for WebAppFirewallPolicyRules, including properties common to all of them.

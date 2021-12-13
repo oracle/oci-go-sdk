@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // EnableExternalNonContainerDatabaseOperationsInsightsDetails Details to enable Operations Insights on the external non-container database

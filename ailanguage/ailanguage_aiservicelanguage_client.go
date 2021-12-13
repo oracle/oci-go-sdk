@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Oracle Cloud Infrastructure Artificial Intelligence Services API
+// Language API
 //
-// OCI AI Service solutions can help Enterprise customers integrate AI into their products immediately using our proven,
+// OCI Language Service solutions can help enterprise customers integrate AI into their products immediately using our proven,
 //     pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
 //     This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
 //
@@ -14,8 +14,8 @@ package ailanguage
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v53/common"
-	"github.com/oracle/oci-go-sdk/v53/common/auth"
+	"github.com/oracle/oci-go-sdk/v54/common"
+	"github.com/oracle/oci-go-sdk/v54/common/auth"
 	"net/http"
 )
 
@@ -84,6 +84,281 @@ func (client *AIServiceLanguageClient) setConfigurationProvider(configProvider c
 // ConfigurationProvider the ConfigurationProvider used in this client, or null if none set
 func (client *AIServiceLanguageClient) ConfigurationProvider() *common.ConfigurationProvider {
 	return client.config
+}
+
+// BatchDetectDominantLanguage Make a detect call to language detection pre-deployed model.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/BatchDetectDominantLanguage.go.html to see an example of how to use BatchDetectDominantLanguage API.
+func (client AIServiceLanguageClient) BatchDetectDominantLanguage(ctx context.Context, request BatchDetectDominantLanguageRequest) (response BatchDetectDominantLanguageResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.batchDetectDominantLanguage, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = BatchDetectDominantLanguageResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = BatchDetectDominantLanguageResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(BatchDetectDominantLanguageResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into BatchDetectDominantLanguageResponse")
+	}
+	return
+}
+
+// batchDetectDominantLanguage implements the OCIOperation interface (enables retrying operations)
+func (client AIServiceLanguageClient) batchDetectDominantLanguage(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/batchDetectDominantLanguage", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response BatchDetectDominantLanguageResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// BatchDetectLanguageEntities Make a batch detect call to entity pre-deployed model
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/BatchDetectLanguageEntities.go.html to see an example of how to use BatchDetectLanguageEntities API.
+func (client AIServiceLanguageClient) BatchDetectLanguageEntities(ctx context.Context, request BatchDetectLanguageEntitiesRequest) (response BatchDetectLanguageEntitiesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.batchDetectLanguageEntities, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = BatchDetectLanguageEntitiesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = BatchDetectLanguageEntitiesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(BatchDetectLanguageEntitiesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into BatchDetectLanguageEntitiesResponse")
+	}
+	return
+}
+
+// batchDetectLanguageEntities implements the OCIOperation interface (enables retrying operations)
+func (client AIServiceLanguageClient) batchDetectLanguageEntities(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/batchDetectLanguageEntities", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response BatchDetectLanguageEntitiesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// BatchDetectLanguageKeyPhrases Make a detect call to the keyPhrase pre-deployed model.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/BatchDetectLanguageKeyPhrases.go.html to see an example of how to use BatchDetectLanguageKeyPhrases API.
+func (client AIServiceLanguageClient) BatchDetectLanguageKeyPhrases(ctx context.Context, request BatchDetectLanguageKeyPhrasesRequest) (response BatchDetectLanguageKeyPhrasesResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.batchDetectLanguageKeyPhrases, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = BatchDetectLanguageKeyPhrasesResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = BatchDetectLanguageKeyPhrasesResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(BatchDetectLanguageKeyPhrasesResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into BatchDetectLanguageKeyPhrasesResponse")
+	}
+	return
+}
+
+// batchDetectLanguageKeyPhrases implements the OCIOperation interface (enables retrying operations)
+func (client AIServiceLanguageClient) batchDetectLanguageKeyPhrases(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/batchDetectLanguageKeyPhrases", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response BatchDetectLanguageKeyPhrasesResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// BatchDetectLanguageSentiments Make a detect call to sentiment pre-deployed model.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/BatchDetectLanguageSentiments.go.html to see an example of how to use BatchDetectLanguageSentiments API.
+func (client AIServiceLanguageClient) BatchDetectLanguageSentiments(ctx context.Context, request BatchDetectLanguageSentimentsRequest) (response BatchDetectLanguageSentimentsResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.batchDetectLanguageSentiments, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = BatchDetectLanguageSentimentsResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = BatchDetectLanguageSentimentsResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(BatchDetectLanguageSentimentsResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into BatchDetectLanguageSentimentsResponse")
+	}
+	return
+}
+
+// batchDetectLanguageSentiments implements the OCIOperation interface (enables retrying operations)
+func (client AIServiceLanguageClient) batchDetectLanguageSentiments(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/batchDetectLanguageSentiments", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response BatchDetectLanguageSentimentsResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
+}
+
+// BatchDetectLanguageTextClassification Make a detect call to text classification from the pre-deployed model.
+//
+// See also
+//
+// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/ailanguage/BatchDetectLanguageTextClassification.go.html to see an example of how to use BatchDetectLanguageTextClassification API.
+func (client AIServiceLanguageClient) BatchDetectLanguageTextClassification(ctx context.Context, request BatchDetectLanguageTextClassificationRequest) (response BatchDetectLanguageTextClassificationResponse, err error) {
+	var ociResponse common.OCIResponse
+	policy := common.NoRetryPolicy()
+	if client.RetryPolicy() != nil {
+		policy = *client.RetryPolicy()
+	}
+	if request.RetryPolicy() != nil {
+		policy = *request.RetryPolicy()
+	}
+	ociResponse, err = common.Retry(ctx, request, client.batchDetectLanguageTextClassification, policy)
+	if err != nil {
+		if ociResponse != nil {
+			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
+				opcRequestId := httpResponse.Header.Get("opc-request-id")
+				response = BatchDetectLanguageTextClassificationResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
+			} else {
+				response = BatchDetectLanguageTextClassificationResponse{}
+			}
+		}
+		return
+	}
+	if convertedResponse, ok := ociResponse.(BatchDetectLanguageTextClassificationResponse); ok {
+		response = convertedResponse
+	} else {
+		err = fmt.Errorf("failed to convert OCIResponse into BatchDetectLanguageTextClassificationResponse")
+	}
+	return
+}
+
+// batchDetectLanguageTextClassification implements the OCIOperation interface (enables retrying operations)
+func (client AIServiceLanguageClient) batchDetectLanguageTextClassification(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
+
+	httpRequest, err := request.HTTPRequest(http.MethodPost, "/actions/batchDetectLanguageTextClassification", binaryReqBody, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+
+	var response BatchDetectLanguageTextClassificationResponse
+	var httpResponse *http.Response
+	httpResponse, err = client.Call(ctx, &httpRequest)
+	defer common.CloseBodyIfValid(httpResponse)
+	response.RawResponse = httpResponse
+	if err != nil {
+		return response, err
+	}
+
+	err = common.UnmarshalResponse(httpResponse, &response)
+	return response, err
 }
 
 // DetectDominantLanguage Make a detect call to language detection pre-deployed model.
