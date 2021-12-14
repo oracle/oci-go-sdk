@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Oracle Cloud Infrastructure Artificial Intelligence Services API
+// Language API
 //
-// OCI AI Service solutions can help Enterprise customers integrate AI into their products immediately using our proven,
+// OCI Language Service solutions can help enterprise customers integrate AI into their products immediately using our proven,
 //     pre-trained and custom models or containers, without a need to set up an house team of AI and ML experts.
 //     This allows enterprises to focus on business drivers and development work rather than AI and ML operations, which shortens the time to market.
 //
@@ -12,16 +12,17 @@
 package ailanguage
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
-// KeyPhrase Key phrase and score for the given text.
+// KeyPhrase Key phrase for the given text.
 type KeyPhrase struct {
 
-	// Key phrase of the the given text.
+	// Key phrase exreacted from given text.
 	Text *string `mandatory:"true" json:"text"`
 
-	// Score of the given key phrase.
+	// Score or confidence of the key phrase.
+	// Example: `0.9999856066867399`
 	Score *float64 `mandatory:"true" json:"score"`
 }
 

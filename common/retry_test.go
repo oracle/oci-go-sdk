@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"reflect"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 
@@ -1547,4 +1548,51 @@ func TestRetryPolicy_RetryWithBadRetryPolicy(t *testing.T) {
 	_, error := Retry(context.Background(), r, operation, *r.Policy)
 
 	assert.True(t, strings.Contains(error.Error(), "ShouldRetryOperation"))
+}
+
+func helperTestGetEndTimeOfEventuallyConsistentWindowMultiThreadedSet(t *testing.T, wg2 *sync.WaitGroup) {
+	EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
+	assert.NotEqual(t, (*time.Time)(nil), EcContext.GetEndOfWindow())
+
+	wg2.Done()
+
+	value1 := EcContext.GetEndOfWindow()
+	assert.True(t, value1.Before(time.Now().Add(eventuallyConsistentWindowSize)))
+	value2 := EcContext.GetEndOfWindow()
+	assert.Equal(t, value1, value2)
+	EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
+	value3 := EcContext.GetEndOfWindow()
+	assert.True(t, value3.Before(time.Now().Add(eventuallyConsistentWindowSize)))
+	assert.True(t, value1.Before(*value3))
+	assert.True(t, value2.Before(*value3))
+}
+
+func helperTestGetEndTimeOfEventuallyConsistentWindowMultiThreadedGet(t *testing.T, wg2 *sync.WaitGroup) {
+	wg2.Wait()
+
+	assert.NotEqual(t, (*time.Time)(nil), EcContext.GetEndOfWindow())
+}
+
+func TestGetEndTimeOfEventuallyConsistentWindow_MultiThreaded(t *testing.T) {
+	assert.Equal(t, (*time.Time)(nil), EcContext.GetEndOfWindow())
+
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	var wg2 sync.WaitGroup
+	wg2.Add(1)
+
+	go func() {
+		defer wg.Done()
+		helperTestGetEndTimeOfEventuallyConsistentWindowMultiThreadedSet(t, &wg2)
+	}()
+
+	go func() {
+		defer wg.Done()
+		helperTestGetEndTimeOfEventuallyConsistentWindowMultiThreadedGet(t, &wg2)
+	}()
+
+	wg.Wait()
+
+	assert.NotEqual(t, (*time.Time)(nil), EcContext.GetEndOfWindow())
 }

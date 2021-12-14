@@ -11,7 +11,7 @@
 package keymanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // ExportKeyDetails The details of the key that you want to wrap and export.

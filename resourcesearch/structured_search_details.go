@@ -11,7 +11,7 @@ package resourcesearch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // StructuredSearchDetails A request that uses Search's structured query language to specify filter conditions to apply to search results.

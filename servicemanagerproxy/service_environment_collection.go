@@ -4,16 +4,18 @@
 
 // Service Manager Proxy API
 //
-// API to manage Service manager proxy.
+// Use the Service Manager Proxy API to obtain information about SaaS environments provisioned by Service Manager.
+// You can get information such as service types and service environment URLs.
 //
 
 package servicemanagerproxy
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
-// ServiceEnvironmentCollection Collection of Service environements.
+// ServiceEnvironmentCollection Collection of service environments.
+// **Note:** Service URL formats may vary from the provided example.
 type ServiceEnvironmentCollection struct {
 
 	// Collection of items.

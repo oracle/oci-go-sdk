@@ -10,7 +10,7 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // AnnotationSummary An annotation summary is the representation returned in list views.  It is usually a subset of the full annotation entity and should not contain any potentially sensitive information.

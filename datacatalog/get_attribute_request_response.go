@@ -5,7 +5,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 	"net/http"
 )
 
@@ -122,6 +122,7 @@ const (
 	GetAttributeFieldsExternaldatatypeentitykey  GetAttributeFieldsEnum = "externalDatatypeEntityKey"
 	GetAttributeFieldsParentattributekey         GetAttributeFieldsEnum = "parentAttributeKey"
 	GetAttributeFieldsExternalparentattributekey GetAttributeFieldsEnum = "externalParentAttributeKey"
+	GetAttributeFieldsTypekey                    GetAttributeFieldsEnum = "typeKey"
 )
 
 var mappingGetAttributeFields = map[string]GetAttributeFieldsEnum{
@@ -152,6 +153,7 @@ var mappingGetAttributeFields = map[string]GetAttributeFieldsEnum{
 	"externalDatatypeEntityKey":  GetAttributeFieldsExternaldatatypeentitykey,
 	"parentAttributeKey":         GetAttributeFieldsParentattributekey,
 	"externalParentAttributeKey": GetAttributeFieldsExternalparentattributekey,
+	"typeKey":                    GetAttributeFieldsTypekey,
 }
 
 // GetGetAttributeFieldsEnumValues Enumerates the set of values for GetAttributeFieldsEnum

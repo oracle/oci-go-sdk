@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // UpdateUserCapabilitiesDetails The representation of UpdateUserCapabilitiesDetails
@@ -27,6 +27,9 @@ type UpdateUserCapabilitiesDetails struct {
 
 	// Indicates if the user can use SMTP passwords.
 	CanUseSmtpCredentials *bool `mandatory:"false" json:"canUseSmtpCredentials"`
+
+	// Indicates if the user can use DB passwords.
+	CanUseDBCredentials *bool `mandatory:"false" json:"canUseDBCredentials"`
 
 	// Indicates if the user can use SigV4 symmetric keys.
 	CanUseCustomerSecretKeys *bool `mandatory:"false" json:"canUseCustomerSecretKeys"`

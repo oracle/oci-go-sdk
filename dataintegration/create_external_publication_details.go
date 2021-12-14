@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // CreateExternalPublicationDetails Properties used to publish an Oracle Cloud Infrastructure Data Flow object.

@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // UpdateVaultDetails OCI Vault details to store migration and connection credentials secrets. An empty object would result in the removal of the stored details.

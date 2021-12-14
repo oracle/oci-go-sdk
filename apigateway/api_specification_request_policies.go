@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // ApiSpecificationRequestPolicies Global behavior applied to all requests received by the API.
@@ -23,6 +23,8 @@ type ApiSpecificationRequestPolicies struct {
 	RateLimiting *RateLimitingPolicy `mandatory:"false" json:"rateLimiting"`
 
 	Cors *CorsPolicy `mandatory:"false" json:"cors"`
+
+	MutualTls *MutualTlsDetails `mandatory:"false" json:"mutualTls"`
 }
 
 func (m ApiSpecificationRequestPolicies) String() string {
@@ -35,6 +37,7 @@ func (m *ApiSpecificationRequestPolicies) UnmarshalJSON(data []byte) (e error) {
 		Authentication authenticationpolicy `json:"authentication"`
 		RateLimiting   *RateLimitingPolicy  `json:"rateLimiting"`
 		Cors           *CorsPolicy          `json:"cors"`
+		MutualTls      *MutualTlsDetails    `json:"mutualTls"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -55,6 +58,8 @@ func (m *ApiSpecificationRequestPolicies) UnmarshalJSON(data []byte) (e error) {
 	m.RateLimiting = model.RateLimiting
 
 	m.Cors = model.Cors
+
+	m.MutualTls = model.MutualTls
 
 	return
 }

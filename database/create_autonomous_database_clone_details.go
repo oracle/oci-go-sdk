@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // CreateAutonomousDatabaseCloneDetails Details to create an Oracle Autonomous Database by cloning an existing Autonomous Database.
@@ -146,6 +146,9 @@ type CreateAutonomousDatabaseCloneDetails struct {
 
 	// Indicates whether the Autonomous Database requires mTLS connections.
 	IsMtlsConnectionRequired *bool `mandatory:"false" json:"isMtlsConnectionRequired"`
+
+	// list of scheduled operations
+	ScheduledOperations []ScheduledOperationDetails `mandatory:"false" json:"scheduledOperations"`
 
 	// The Autonomous Database clone type.
 	CloneType CreateAutonomousDatabaseCloneDetailsCloneTypeEnum `mandatory:"true" json:"cloneType"`
@@ -321,6 +324,11 @@ func (m CreateAutonomousDatabaseCloneDetails) GetIsMtlsConnectionRequired() *boo
 //GetAutonomousMaintenanceScheduleType returns AutonomousMaintenanceScheduleType
 func (m CreateAutonomousDatabaseCloneDetails) GetAutonomousMaintenanceScheduleType() CreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum {
 	return m.AutonomousMaintenanceScheduleType
+}
+
+//GetScheduledOperations returns ScheduledOperations
+func (m CreateAutonomousDatabaseCloneDetails) GetScheduledOperations() []ScheduledOperationDetails {
+	return m.ScheduledOperations
 }
 
 func (m CreateAutonomousDatabaseCloneDetails) String() string {

@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // InstanceReservationConfigDetails A template that contains the settings to use when defining the instance capacity configuration.

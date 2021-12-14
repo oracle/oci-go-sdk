@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // VmClusterSummary Details of the Exadata Cloud@Customer VM cluster.
@@ -55,6 +55,9 @@ type VmClusterSummary struct {
 	// The number of enabled CPU cores.
 	CpusEnabled *int `mandatory:"false" json:"cpusEnabled"`
 
+	// The number of enabled OCPU cores.
+	OcpusEnabled *float32 `mandatory:"false" json:"ocpusEnabled"`
+
 	// The memory allocated in GBs.
 	MemorySizeInGBs *int `mandatory:"false" json:"memorySizeInGBs"`
 
@@ -63,6 +66,9 @@ type VmClusterSummary struct {
 
 	// Size, in terabytes, of the DATA disk group.
 	DataStorageSizeInTBs *float64 `mandatory:"false" json:"dataStorageSizeInTBs"`
+
+	// Size, in gigabytes, of the DATA disk group.
+	DataStorageSizeInGBs *float64 `mandatory:"false" json:"dataStorageSizeInGBs"`
 
 	// The shape of the Exadata infrastructure. The shape determines the amount of CPU, storage, and memory resources allocated to the instance.
 	Shape *string `mandatory:"false" json:"shape"`

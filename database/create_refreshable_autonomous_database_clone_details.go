@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // CreateRefreshableAutonomousDatabaseCloneDetails Details to create an Oracle Autonomous Database refreshable clone.
@@ -146,6 +146,9 @@ type CreateRefreshableAutonomousDatabaseCloneDetails struct {
 
 	// Indicates whether the Autonomous Database requires mTLS connections.
 	IsMtlsConnectionRequired *bool `mandatory:"false" json:"isMtlsConnectionRequired"`
+
+	// list of scheduled operations
+	ScheduledOperations []ScheduledOperationDetails `mandatory:"false" json:"scheduledOperations"`
 
 	// The refresh mode of the clone. AUTOMATIC indicates that the clone is automatically being refreshed with data from the source Autonomous Database.
 	RefreshableMode CreateRefreshableAutonomousDatabaseCloneDetailsRefreshableModeEnum `mandatory:"false" json:"refreshableMode,omitempty"`
@@ -321,6 +324,11 @@ func (m CreateRefreshableAutonomousDatabaseCloneDetails) GetIsMtlsConnectionRequ
 //GetAutonomousMaintenanceScheduleType returns AutonomousMaintenanceScheduleType
 func (m CreateRefreshableAutonomousDatabaseCloneDetails) GetAutonomousMaintenanceScheduleType() CreateAutonomousDatabaseBaseAutonomousMaintenanceScheduleTypeEnum {
 	return m.AutonomousMaintenanceScheduleType
+}
+
+//GetScheduledOperations returns ScheduledOperations
+func (m CreateRefreshableAutonomousDatabaseCloneDetails) GetScheduledOperations() []ScheduledOperationDetails {
+	return m.ScheduledOperations
 }
 
 func (m CreateRefreshableAutonomousDatabaseCloneDetails) String() string {

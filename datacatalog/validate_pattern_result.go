@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // ValidatePatternResult Details regarding the validation of a pattern resource.
@@ -26,7 +26,10 @@ type ValidatePatternResult struct {
 	// The expression used in the pattern validation.
 	Expression *string `mandatory:"false" json:"expression"`
 
-	// Collection of logical entities derived from the expression applied to a list of file paths.
+	// The prefix used in the pattern validation.
+	FilePathPrefix *string `mandatory:"false" json:"filePathPrefix"`
+
+	// Collection of logical entities derived from the pattern, as applied to a list of file paths.
 	DerivedLogicalEntities []DerivedLogicalEntities `mandatory:"false" json:"derivedLogicalEntities"`
 }
 

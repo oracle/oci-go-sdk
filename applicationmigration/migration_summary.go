@@ -13,7 +13,7 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // MigrationSummary Details about the migration. Each migration moves a single application from a specified source to Oracle Cloud Infrastructure.

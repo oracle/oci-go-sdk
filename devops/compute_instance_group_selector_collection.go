@@ -11,7 +11,7 @@ package devops
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // ComputeInstanceGroupSelectorCollection A collection of selectors. The combination of instances matching the selectors are included in the instance group.

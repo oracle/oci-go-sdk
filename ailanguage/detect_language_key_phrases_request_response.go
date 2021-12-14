@@ -5,7 +5,7 @@
 package ailanguage
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 	"net/http"
 )
 
@@ -17,8 +17,6 @@ import (
 type DetectLanguageKeyPhrasesRequest struct {
 
 	// The details to make keyPhrase detect call.
-	//  Example: `{"text": "If an emerging growth company, indicate by check mark if the registrant has elected not
-	//                to use the extended transition period for complying"}`
 	DetectLanguageKeyPhrasesDetails `contributesTo:"body"`
 
 	// The client request ID for tracing.

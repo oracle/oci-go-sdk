@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // TaskScheduleSummaryCollection A collection of TaskSchedule summaries. The collection can be lightweight details or full definitions.

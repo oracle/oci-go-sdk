@@ -10,7 +10,7 @@
 package databasemigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // AdvisorReportBucketDetails Details to access Pre-Migration Advisor report in the specified Object Storage bucket, if any.

@@ -11,7 +11,7 @@ package integration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // ChangeIntegrationInstanceNetworkEndpointDetails Input payload to update an Integration instance endpoint details. An empty payload will clear out any existing configuration.
