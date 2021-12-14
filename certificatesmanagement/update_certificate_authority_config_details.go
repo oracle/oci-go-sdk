@@ -11,7 +11,7 @@ package certificatesmanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // UpdateCertificateAuthorityConfigDetails The configuration details for updating a certificate authority (CA).

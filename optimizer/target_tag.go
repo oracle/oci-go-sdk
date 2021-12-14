@@ -12,7 +12,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // TargetTag A tag key definition used in the current profile override, including the tag namespace, tag key, tag value type, and tag values.

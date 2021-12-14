@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // ParseConnectionDetails Parse connections from the connection metadata and Oracle wallet file.

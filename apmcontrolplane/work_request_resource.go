@@ -11,7 +11,7 @@
 package apmcontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // WorkRequestResource The details of the resource that the work request affects.

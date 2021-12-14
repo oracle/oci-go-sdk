@@ -13,13 +13,15 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // TargetDetails An object that represents the target of the flow defined by the service connector.
-// An example target is a stream.
+// An example target is a stream (Streaming service).
 // For more information about flows defined by service connectors, see
 // Service Connector Hub Overview (https://docs.cloud.oracle.com/iaas/Content/service-connector-hub/overview.htm).
+// For configuration instructions, see
+// To create a service connector (https://docs.cloud.oracle.com/iaas/Content/service-connector-hub/managingconnectors.htm#create).
 type TargetDetails interface {
 }
 

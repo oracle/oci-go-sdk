@@ -13,13 +13,15 @@ package sch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // SourceDetails An object that represents the source of the flow defined by the service connector.
 // An example source is the VCNFlow logs within the NetworkLogs group.
 // For more information about flows defined by service connectors, see
 // Service Connector Hub Overview (https://docs.cloud.oracle.com/iaas/Content/service-connector-hub/overview.htm).
+// For configuration instructions, see
+// To create a service connector (https://docs.cloud.oracle.com/iaas/Content/service-connector-hub/managingconnectors.htm#create).
 type SourceDetails interface {
 }
 

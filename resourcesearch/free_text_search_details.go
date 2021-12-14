@@ -11,7 +11,7 @@ package resourcesearch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // FreeTextSearchDetails A request containing arbitrary text that must be present in the resource.

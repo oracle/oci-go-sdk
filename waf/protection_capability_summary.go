@@ -11,7 +11,7 @@
 package waf
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // ProtectionCapabilitySummary A summary of available OCI-managed protection capabilities in WebAppFirewallPolicy.

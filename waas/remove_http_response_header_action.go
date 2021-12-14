@@ -11,7 +11,7 @@ package waas
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // RemoveHttpResponseHeaderAction An object that represents the action of removing from a response all occurrences of header fields

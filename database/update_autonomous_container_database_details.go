@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // UpdateAutonomousContainerDatabaseDetails Describes the modification parameters for the Autonomous Container Database.

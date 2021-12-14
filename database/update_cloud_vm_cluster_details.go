@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // UpdateCloudVmClusterDetails Details for updating the cloud VM cluster. Applies to Exadata Cloud Service instances only.
@@ -21,6 +21,9 @@ type UpdateCloudVmClusterDetails struct {
 
 	// The number of CPU cores to enable for the cloud VM cluster.
 	CpuCoreCount *int `mandatory:"false" json:"cpuCoreCount"`
+
+	// The number of OCPU cores to enable for a cloud VM cluster. Only 1 decimal place is allowed for the fractional part.
+	OcpuCount *float32 `mandatory:"false" json:"ocpuCount"`
 
 	// The Oracle license model that applies to the cloud VM cluster. The default is BRING_YOUR_OWN_LICENSE. Applies to Exadata Cloud Service instances only.
 	LicenseModel UpdateCloudVmClusterDetailsLicenseModelEnum `mandatory:"false" json:"licenseModel,omitempty"`

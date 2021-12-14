@@ -10,7 +10,7 @@
 package certificates
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // RevocationStatus The current revocation status of the certificate or certificate authority (CA).

@@ -11,7 +11,7 @@
 package dns
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // SteeringPolicyWeightedAnswerData The representation of SteeringPolicyWeightedAnswerData

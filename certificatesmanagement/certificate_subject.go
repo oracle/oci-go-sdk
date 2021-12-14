@@ -10,7 +10,7 @@
 package certificatesmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // CertificateSubject The subject of the certificate, which is a distinguished name that identifies the entity that owns the public key in the certificate.

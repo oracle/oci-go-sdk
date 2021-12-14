@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // LogAnalyticsEntityTopologySummary Log Analytics Entity topology that contains a set of log analytics entities and a set of relationships between those.

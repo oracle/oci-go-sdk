@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // DbManagementPrivateEndpoint A Database Management private endpoint allows Database Management to connect to databases in a Virtual Cloud Network (VCN).

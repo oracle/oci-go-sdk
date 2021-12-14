@@ -12,7 +12,7 @@ package artifacts
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // GenericRepository The metadata for the artifact repository.

@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // UpdateTermDetails Properties used in term update operations.
@@ -24,7 +24,7 @@ type UpdateTermDetails struct {
 	// Detailed description of the term.
 	Description *string `mandatory:"false" json:"description"`
 
-	// This terms parent term key. Will be null if the term has no parent term.
+	// The parent key of the term. In the case of a root-level category only, the term would have no parent and this should be left unset.
 	ParentTermKey *string `mandatory:"false" json:"parentTermKey"`
 
 	// OCID of the user who is the owner of this business terminology.

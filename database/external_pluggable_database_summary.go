@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // ExternalPluggableDatabaseSummary An Oracle Cloud Infrastructure resource that allows you to manage an external pluggable database.

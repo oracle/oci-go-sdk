@@ -10,7 +10,7 @@
 package appmgmtcontrol
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // MonitoredInstanceCollection Results of a monitored instance search. Contains MonitoredInstanceSummary items.

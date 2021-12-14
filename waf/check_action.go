@@ -12,7 +12,7 @@ package waf
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // CheckAction An object that represents an action which does not stop the execution of rules in current module,

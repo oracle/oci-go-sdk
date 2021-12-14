@@ -13,7 +13,7 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // SourceSummary Details of the source. In Application Migration, a source refers to the environment from which the application is migrated to Oracle Cloud Infrastructure.

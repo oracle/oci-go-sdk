@@ -10,7 +10,7 @@
 package certificatesmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // ScheduleCertificateAuthorityVersionDeletionDetails The details of the request to schedule the deletion of the specified certificate authority (CA) version.

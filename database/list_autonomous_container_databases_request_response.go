@@ -5,7 +5,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 	"net/http"
 )
 
@@ -52,6 +52,9 @@ type ListAutonomousContainerDatabasesRequest struct {
 
 	// A filter to return only resources that match the given service-level agreement type exactly.
 	ServiceLevelAgreementType *string `mandatory:"false" contributesTo:"query" name:"serviceLevelAgreementType"`
+
+	// The cloud Autonomous VM Cluster OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm).
+	CloudAutonomousVmClusterId *string `mandatory:"false" contributesTo:"query" name:"cloudAutonomousVmClusterId"`
 
 	// Unique Oracle-assigned identifier for the request.
 	// If you need to contact Oracle about a particular request, please provide the request ID.

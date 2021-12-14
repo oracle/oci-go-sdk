@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // UserCapabilities Properties indicating how the user is allowed to authenticate.
@@ -27,6 +27,9 @@ type UserCapabilities struct {
 
 	// Indicates if the user can use SMTP passwords.
 	CanUseSmtpCredentials *bool `mandatory:"false" json:"canUseSmtpCredentials"`
+
+	// Indicates if the user can use DB passwords.
+	CanUseDbCredentials *bool `mandatory:"false" json:"canUseDbCredentials"`
 
 	// Indicates if the user can use SigV4 symmetric keys.
 	CanUseCustomerSecretKeys *bool `mandatory:"false" json:"canUseCustomerSecretKeys"`

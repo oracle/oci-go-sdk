@@ -11,7 +11,7 @@ package apmconfig
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // UpdateSpanFilterDetails A span filter is a named setting that specifies filter criteria to match a subset of the spans.

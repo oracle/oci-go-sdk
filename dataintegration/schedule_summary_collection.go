@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v53/common"
+	"github.com/oracle/oci-go-sdk/v54/common"
 )
 
 // ScheduleSummaryCollection A collection of schedule summaries. The collection can be lightweight details or full definitions.
