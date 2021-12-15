@@ -241,7 +241,7 @@ func TestHttpMarshalerAll(t *testing.T) {
 	var content map[string]string
 	body, _ := ioutil.ReadAll(request.Body)
 	json.Unmarshal(body, &content)
-	when := s.When.Format(time.RFC3339Nano)
+	when := s.When.Format(sdkTimeFormat)
 	assert.True(t, request.URL.Path == "//101")
 	assert.True(t, request.URL.Query().Get("name") == s.Name)
 	assert.True(t, request.URL.Query().Get("income") == strconv.FormatFloat(float64(s.Income), 'f', 2, 32))
@@ -314,7 +314,7 @@ func TestHttpMarshallerSimpleStructPointers(t *testing.T) {
 	assert.Equal(t, "", request.Header.Get(requestHeaderOpcRetryToken))
 	assert.True(t, strings.Contains(request.URL.Path, "111"))
 	assert.True(t, strings.Contains(string(all), "thekey"))
-	assert.Contains(t, string(all), now.Format(time.RFC3339Nano))
+	assert.Contains(t, string(all), now.Format(sdkTimeFormat))
 }
 
 func TestHttpMarshallerSimpleStructPointersFilled(t *testing.T) {
@@ -1190,11 +1190,11 @@ func TestToStringValue_TimeFormat(t *testing.T) {
 	}{
 		{
 			Input:    "2018-10-15T19:43:05.080Z",
-			Expected: "2018-10-15T19:43:05.08Z",
+			Expected: "2018-10-15T19:43:05.080Z",
 		},
 		{
 			Input:    "2018-10-15T19:43:05Z",
-			Expected: "2018-10-15T19:43:05Z",
+			Expected: "2018-10-15T19:43:05.000Z",
 		},
 	}
 
