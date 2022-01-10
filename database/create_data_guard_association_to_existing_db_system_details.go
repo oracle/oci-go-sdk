@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2018, 2021, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2022, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
@@ -11,7 +11,7 @@ package database
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v54/common"
+	"github.com/oracle/oci-go-sdk/v55/common"
 )
 
 // CreateDataGuardAssociationToExistingDbSystemDetails The configuration details for creating a Data Guard association for a bare metal or Exadata DB system database. For these types of DB system databases, the `creationType` should be `ExistingDbSystem`. A standby database will be created in the DB system you specify.
@@ -29,6 +29,9 @@ type CreateDataGuardAssociationToExistingDbSystemDetails struct {
 
 	// The database software image OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
 	DatabaseSoftwareImageId *string `mandatory:"false" json:"databaseSoftwareImageId"`
+
+	// True if active Data Guard is enabled.
+	IsActiveDataGuardEnabled *bool `mandatory:"false" json:"isActiveDataGuardEnabled"`
 
 	// Specifies the `DB_UNIQUE_NAME` of the peer database to be created.
 	PeerDbUniqueName *string `mandatory:"false" json:"peerDbUniqueName"`
@@ -79,6 +82,11 @@ func (m CreateDataGuardAssociationToExistingDbSystemDetails) GetProtectionMode()
 //GetTransportType returns TransportType
 func (m CreateDataGuardAssociationToExistingDbSystemDetails) GetTransportType() CreateDataGuardAssociationDetailsTransportTypeEnum {
 	return m.TransportType
+}
+
+//GetIsActiveDataGuardEnabled returns IsActiveDataGuardEnabled
+func (m CreateDataGuardAssociationToExistingDbSystemDetails) GetIsActiveDataGuardEnabled() *bool {
+	return m.IsActiveDataGuardEnabled
 }
 
 //GetPeerDbUniqueName returns PeerDbUniqueName
