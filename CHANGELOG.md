@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 55.0.0 - 2022-01-11
+## '### Added
+- Support for calling Oracle Cloud Infrastructure services in the af-johannesburg-1 and eu-stockholm-1 regions
+- Support for multiple protocols on the same listener in the Network Load Balancing service
+- IPv6 support in the Network Load Balancing service
+- Support for creating Enterprise Manager-based Solaris and SunOS host targets in the Operations Insights service
+- Support for choosing Data Guard type (Active Data Guard or regular) on databases in the Database service
+
+### Breaking Changes
+- Support for retries enabled by default on all operations in the Java Management service'
+
 ## 54.0.0 - 2021-12-14
 ### Added
 - Support for node replacement in the VMWare Solution service
