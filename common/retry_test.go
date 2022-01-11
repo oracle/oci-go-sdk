@@ -1,4 +1,4 @@
-// Copyright (c) 2016, 2018, 2021, Oracle and/or its affiliates.  All rights reserved.
+// Copyright (c) 2016, 2018, 2022, Oracle and/or its affiliates.  All rights reserved.
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 
 package common
@@ -355,11 +355,13 @@ func TestGetEndTimeOfEventuallyConsistentWindow(t *testing.T) {
 	EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
 	assert.NotEqual(t, (*time.Time)(nil), EcContext.GetEndOfWindow())
 	value1 := EcContext.GetEndOfWindow()
+	time.Sleep(1 * time.Second)
 	assert.True(t, value1.Before(time.Now().Add(eventuallyConsistentWindowSize)))
 	value2 := EcContext.GetEndOfWindow()
 	assert.Equal(t, value1, value2)
 	EcContext.UpdateEndOfWindow(eventuallyConsistentWindowSize)
 	value3 := EcContext.GetEndOfWindow()
+	time.Sleep(1 * time.Second)
 	assert.True(t, value3.Before(time.Now().Add(eventuallyConsistentWindowSize)))
 	assert.True(t, value1.Before(*value3))
 	assert.True(t, value2.Before(*value3))

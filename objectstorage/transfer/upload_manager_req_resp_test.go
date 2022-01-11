@@ -6,7 +6,7 @@ package transfer
 import (
 	"testing"
 
-	"github.com/oracle/oci-go-sdk/v54/common"
+	"github.com/oracle/oci-go-sdk/v55/common"
 	"github.com/stretchr/testify/assert"
 )
 
