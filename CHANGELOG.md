@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 ## 55.0.0 - 2022-01-11
-## '### Added
+### Added
 - Support for calling Oracle Cloud Infrastructure services in the af-johannesburg-1 and eu-stockholm-1 regions
 - Support for multiple protocols on the same listener in the Network Load Balancing service
 - IPv6 support in the Network Load Balancing service
