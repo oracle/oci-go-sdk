@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// DlsDataPlane API
+// Data Labeling API
 //
-// A description of the DlsDataPlane API.
+// Use Data Labeling API to create Annotations on Images, Texts & Documents, and generate snapshots.
 //
 
 package datalabelingservicedataplane
@@ -14,10 +14,10 @@ import (
 	"github.com/oracle/oci-go-sdk/v55/common"
 )
 
-// Dataset A dataset is a logical collection of records. The dataset contains all the information necessary to describe a record's source, format, type of annotations allowed on these records, and labels allowed on annotations.
+// Dataset A dataset is a logical collection of records. The dataset contains all the information necessary to describe a record's source, format, the type of annotations allowed for the record, and the labels allowed on annotations.
 type Dataset struct {
 
-	// The OCID of the Dataset.
+	// The OCID of the dataset.
 	Id *string `mandatory:"true" json:"id"`
 
 	// The OCID of the compartment of the resource.
@@ -30,10 +30,10 @@ type Dataset struct {
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
 	// The state of a dataset.
-	// CREATING - The dataset is being created.  It will transition to ACTIVE when it is ready for labeling.
+	// CREATING - The dataset is being created.  It transitions to ACTIVE when it is ready for labeling.
 	// ACTIVE   - The dataset is ready for labeling.
-	// UPDATING - The dataset is being updated.  It and its related resources may be unavailable for other updates until it returns to ACTIVE.
-	// NEEDS_ATTENTION - A dataset updation operation has failed due to validation or other errors and needs attention.
+	// UPDATING - The dataset is being updated.  It, and its related resources, might be unavailable for other updates until it returns to ACTIVE.
+	// NEEDS_ATTENTION - A dataset updaten operation has failed due to validation or other errors, and needs attention.
 	// DELETING - The dataset and its related resources are being deleted.
 	// DELETED  - The dataset has been deleted and is no longer available.
 	// FAILED   - The dataset has failed due to validation or other errors.
@@ -51,7 +51,7 @@ type Dataset struct {
 	// A user-friendly display name for the resource.
 	DisplayName *string `mandatory:"false" json:"displayName"`
 
-	// A user provided description of the dataset
+	// A user-provided description of the dataset
 	Description *string `mandatory:"false" json:"description"`
 
 	// A message describing the current state in more detail. For example, it can be used to provide actionable information for a resource in FAILED or NEEDS_ATTENTION state.
@@ -59,16 +59,19 @@ type Dataset struct {
 
 	InitialRecordGenerationConfiguration *InitialRecordGenerationConfiguration `mandatory:"false" json:"initialRecordGenerationConfiguration"`
 
-	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// Example: `{"bar-key": "value"}`
+	// The labeling instructions for human labelers in rich text format
+	LabelingInstructions *string `mandatory:"false" json:"labelingInstructions"`
+
+	// A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only.
+	// For example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
-	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
-	// Example: `{"foo-namespace": {"bar-key": "value"}}`
+	// The defined tags for this resource. Each key is predefined and scoped to a namespace.
+	// For example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 
-	// Usage of system tag keys. These predefined keys are scoped to namespaces.
-	// Example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
+	// The usage of system tag keys. These predefined keys are scoped to namespaces.
+	// For example: `{"orcl-cloud": {"free-tier-retained": "true"}}`
 	SystemTags map[string]map[string]interface{} `mandatory:"false" json:"systemTags"`
 }
 
@@ -83,6 +86,7 @@ func (m *Dataset) UnmarshalJSON(data []byte) (e error) {
 		Description                          *string                               `json:"description"`
 		LifecycleDetails                     *string                               `json:"lifecycleDetails"`
 		InitialRecordGenerationConfiguration *InitialRecordGenerationConfiguration `json:"initialRecordGenerationConfiguration"`
+		LabelingInstructions                 *string                               `json:"labelingInstructions"`
 		FreeformTags                         map[string]string                     `json:"freeformTags"`
 		DefinedTags                          map[string]map[string]interface{}     `json:"definedTags"`
 		SystemTags                           map[string]map[string]interface{}     `json:"systemTags"`
@@ -109,6 +113,8 @@ func (m *Dataset) UnmarshalJSON(data []byte) (e error) {
 	m.LifecycleDetails = model.LifecycleDetails
 
 	m.InitialRecordGenerationConfiguration = model.InitialRecordGenerationConfiguration
+
+	m.LabelingInstructions = model.LabelingInstructions
 
 	m.FreeformTags = model.FreeformTags
 

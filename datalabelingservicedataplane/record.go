@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// DlsDataPlane API
+// Data Labeling API
 //
-// A description of the DlsDataPlane API.
+// Use Data Labeling API to create Annotations on Images, Texts & Documents, and generate snapshots.
 //
 
 package datalabelingservicedataplane
@@ -17,10 +17,10 @@ import (
 // Record A record represents an entry in a dataset that needs labeling.
 type Record struct {
 
-	// The OCID of the record
+	// The OCID of the record.
 	Id *string `mandatory:"true" json:"id"`
 
-	// This will be created by Customer. It will be unique and immutable.
+	// The name is created by the user. It is unique and immutable.
 	Name *string `mandatory:"true" json:"name"`
 
 	// The date and time the resource was created, in the timestamp format defined by RFC3339.
@@ -29,7 +29,7 @@ type Record struct {
 	// The date and time the resource was updated, in the timestamp format defined by RFC3339.
 	TimeUpdated *common.SDKTime `mandatory:"true" json:"timeUpdated"`
 
-	// The OCID of the dataset to associate the record with
+	// The OCID of the dataset to associate the record with.
 	DatasetId *string `mandatory:"true" json:"datasetId"`
 
 	// The OCID of the compartment for the task.
@@ -37,21 +37,23 @@ type Record struct {
 
 	SourceDetails SourceDetails `mandatory:"true" json:"sourceDetails"`
 
-	// Whether the record has been labeled and has associated annotations.
+	// Whether or not the record has been labeled and has associated annotations.
 	IsLabeled *bool `mandatory:"true" json:"isLabeled"`
 
-	// Lifecycle state of the Record.
-	// ACTIVE - Record is active and ready for labeling.
-	// INACTIVE - Record has been marked as inactive and should not be used for labeling.
-	// DELETED - Record has been deleted and no longer available for labeling.
+	// The lifecycle state of the record.
+	// ACTIVE - The record is active and ready for labeling.
+	// INACTIVE - The record has been marked as inactive and should not be used for labeling.
+	// DELETED - The record has been deleted and is no longer available for labeling.
 	LifecycleState RecordLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
 
-	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// Example: `{"bar-key": "value"}`
+	RecordMetadata RecordMetadata `mandatory:"false" json:"recordMetadata"`
+
+	// A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only.
+	// For example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
-	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
-	// Example: `{"foo-namespace": {"bar-key": "value"}}`
+	// The defined tags for this resource. Each key is predefined and scoped to a namespace.
+	// For example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }
 
@@ -62,6 +64,7 @@ func (m Record) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *Record) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
+		RecordMetadata recordmetadata                    `json:"recordMetadata"`
 		FreeformTags   map[string]string                 `json:"freeformTags"`
 		DefinedTags    map[string]map[string]interface{} `json:"definedTags"`
 		Id             *string                           `json:"id"`
@@ -80,6 +83,16 @@ func (m *Record) UnmarshalJSON(data []byte) (e error) {
 		return
 	}
 	var nn interface{}
+	nn, e = model.RecordMetadata.UnmarshalPolymorphicJSON(model.RecordMetadata.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.RecordMetadata = nn.(RecordMetadata)
+	} else {
+		m.RecordMetadata = nil
+	}
+
 	m.FreeformTags = model.FreeformTags
 
 	m.DefinedTags = model.DefinedTags

@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// DlsDataPlane API
+// Data Labeling API
 //
-// A description of the DlsDataPlane API.
+// Use Data Labeling API to create Annotations on Images, Texts & Documents, and generate snapshots.
 //
 
 package datalabelingservicedataplane
@@ -14,16 +14,16 @@ import (
 	"github.com/oracle/oci-go-sdk/v55/common"
 )
 
-// ObjectStorageDatasetSourceDetails Specifies the dataset location in object storage. This requires that all records are in this bucket, and under this prefix. We do not support a dataset with objects in arbitrary locations across buckets or prefixes.
+// ObjectStorageDatasetSourceDetails Specifies the dataset location in object storage. This requires that all records are in this bucket, and under this prefix. A dataset with objects in arbitrary locations across buckets or prefixes is not allowed.
 type ObjectStorageDatasetSourceDetails struct {
 
-	// Namespace of the bucket that contains the dataset data source
+	// The namespace of the bucket that contains the dataset data source.
 	Namespace *string `mandatory:"true" json:"namespace"`
 
-	// The object storage bucket that contains the dataset data source
+	// The object storage bucket that contains the dataset data source.
 	Bucket *string `mandatory:"true" json:"bucket"`
 
-	// A common path prefix shared by the objects that make up the dataset.
+	// A common path prefix shared by the objects that make up the dataset. Records will not be generated for objects whose name match exactly with prefix.
 	Prefix *string `mandatory:"false" json:"prefix"`
 }
 

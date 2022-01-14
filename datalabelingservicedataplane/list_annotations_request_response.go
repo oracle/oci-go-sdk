@@ -19,19 +19,19 @@ type ListAnnotationsRequest struct {
 	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// Filter results by the OCID of the dataset.
+	// Filter the results by the OCID of the dataset.
 	DatasetId *string `mandatory:"true" contributesTo:"query" name:"datasetId"`
 
-	// A filter to return only resources their lifecycleState matches the given lifecycleState.
+	// A filter to return only resources whose lifecycleState matches the given lifecycleState.
 	LifecycleState AnnotationLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
-	// Unique OCID identifier
+	// The unique OCID identifier.
 	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
 
-	// The OCID of the principal who updated the annotation.
+	// The OCID of the principal which updated the annotation.
 	UpdatedBy *string `mandatory:"false" contributesTo:"query" name:"updatedBy"`
 
-	// The OCID of the record annotated
+	// The OCID of the record annotated.
 	RecordId *string `mandatory:"false" contributesTo:"query" name:"recordId"`
 
 	// The date and time the resource was created, in the timestamp format defined by RFC3339.
@@ -49,7 +49,7 @@ type ListAnnotationsRequest struct {
 	// The sort order to use, either 'asc' or 'desc'.
 	SortOrder ListAnnotationsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
-	// The field to sort by. Only one sort order may be provided. Default order for timeCreated is descending. If no value is specified timeCreated is default.
+	// The field to sort by. Only one sort order may be provided. The default order for timeCreated is descending. If no value is specified timeCreated is used by default.
 	SortBy ListAnnotationsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// The client request ID for tracing.
@@ -91,11 +91,11 @@ type ListAnnotationsResponse struct {
 	// A list of AnnotationCollection instances
 	AnnotationCollection `presentIn:"body"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact
+	// A unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// For pagination of a list of items. When paging through a list, if this header appears in the response,
+	// For the pagination of a list of items. When paging through a list, if this header appears in the response,
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
