@@ -17,7 +17,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetRecordContent.go.html to see an example of how to use GetRecordContentRequest.
 type GetRecordContentRequest struct {
 
-	// The OCID of the record annotated
+	// The OCID of the record annotated.
 	RecordId *string `mandatory:"true" contributesTo:"path" name:"recordId"`
 
 	// The client request ID for tracing.
@@ -69,7 +69,7 @@ type GetRecordContentResponse struct {
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact
+	// A unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 

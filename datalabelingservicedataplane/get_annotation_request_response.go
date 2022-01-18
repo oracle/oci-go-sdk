@@ -16,7 +16,7 @@ import (
 // Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/datalabelingservicedataplane/GetAnnotation.go.html to see an example of how to use GetAnnotationRequest.
 type GetAnnotationRequest struct {
 
-	// unique Annotation identifier
+	// A unique annotation identifier.
 	AnnotationId *string `mandatory:"true" contributesTo:"path" name:"annotationId"`
 
 	// The client request ID for tracing.
@@ -61,7 +61,7 @@ type GetAnnotationResponse struct {
 	// For optimistic concurrency control. See `if-match`.
 	Etag *string `presentIn:"header" name:"etag"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact
+	// A unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 }

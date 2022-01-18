@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// DlsDataPlane API
+// Data Labeling API
 //
-// A description of the DlsDataPlane API.
+// Use Data Labeling API to create Annotations on Images, Texts & Documents, and generate snapshots.
 //
 
 package datalabelingservicedataplane
@@ -13,13 +13,13 @@ import (
 	"github.com/oracle/oci-go-sdk/v55/common"
 )
 
-// RecordAggregationDimensions Dimensions to summarize record information for a given dataset
+// RecordAggregationDimensions The dimensions to summarize record information for a given dataset.
 type RecordAggregationDimensions struct {
 
-	// Whether the record has been labeled and has associated annotations.
+	// Whether or not the record has been labeled and has associated annotations.
 	IsLabeled *bool `mandatory:"false" json:"isLabeled"`
 
-	// Whether the annotation contains label.
+	// Whether or not the annotation contains a label.
 	AnnotationLabelContains *string `mandatory:"false" json:"annotationLabelContains"`
 }
 

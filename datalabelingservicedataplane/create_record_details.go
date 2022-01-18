@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// DlsDataPlane API
+// Data Labeling API
 //
-// A description of the DlsDataPlane API.
+// Use Data Labeling API to create Annotations on Images, Texts & Documents, and generate snapshots.
 //
 
 package datalabelingservicedataplane
@@ -17,7 +17,7 @@ import (
 // CreateRecordDetails A record represents an entry in a dataset that needs labeling.
 type CreateRecordDetails struct {
 
-	// This will be automatically assigned by the service. It will be unique and immutable.
+	// The name is automatically assigned by the service. It is unique and immutable.
 	Name *string `mandatory:"true" json:"name"`
 
 	// The OCID of the dataset to associate the record with.
@@ -28,12 +28,14 @@ type CreateRecordDetails struct {
 
 	SourceDetails CreateSourceDetails `mandatory:"true" json:"sourceDetails"`
 
-	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// Example: `{"bar-key": "value"}`
+	RecordMetadata RecordMetadata `mandatory:"false" json:"recordMetadata"`
+
+	// A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only.
+	// For example: `{"bar-key": "value"}`
 	FreeformTags map[string]string `mandatory:"false" json:"freeformTags"`
 
-	// Defined tags for this resource. Each key is predefined and scoped to a namespace.
-	// Example: `{"foo-namespace": {"bar-key": "value"}}`
+	// The defined tags for this resource. Each key is predefined and scoped to a namespace.
+	// For example: `{"foo-namespace": {"bar-key": "value"}}`
 	DefinedTags map[string]map[string]interface{} `mandatory:"false" json:"definedTags"`
 }
 
@@ -44,12 +46,13 @@ func (m CreateRecordDetails) String() string {
 // UnmarshalJSON unmarshals from json
 func (m *CreateRecordDetails) UnmarshalJSON(data []byte) (e error) {
 	model := struct {
-		FreeformTags  map[string]string                 `json:"freeformTags"`
-		DefinedTags   map[string]map[string]interface{} `json:"definedTags"`
-		Name          *string                           `json:"name"`
-		DatasetId     *string                           `json:"datasetId"`
-		CompartmentId *string                           `json:"compartmentId"`
-		SourceDetails createsourcedetails               `json:"sourceDetails"`
+		RecordMetadata recordmetadata                    `json:"recordMetadata"`
+		FreeformTags   map[string]string                 `json:"freeformTags"`
+		DefinedTags    map[string]map[string]interface{} `json:"definedTags"`
+		Name           *string                           `json:"name"`
+		DatasetId      *string                           `json:"datasetId"`
+		CompartmentId  *string                           `json:"compartmentId"`
+		SourceDetails  createsourcedetails               `json:"sourceDetails"`
 	}{}
 
 	e = json.Unmarshal(data, &model)
@@ -57,6 +60,16 @@ func (m *CreateRecordDetails) UnmarshalJSON(data []byte) (e error) {
 		return
 	}
 	var nn interface{}
+	nn, e = model.RecordMetadata.UnmarshalPolymorphicJSON(model.RecordMetadata.JsonData)
+	if e != nil {
+		return
+	}
+	if nn != nil {
+		m.RecordMetadata = nn.(RecordMetadata)
+	} else {
+		m.RecordMetadata = nil
+	}
+
 	m.FreeformTags = model.FreeformTags
 
 	m.DefinedTags = model.DefinedTags
