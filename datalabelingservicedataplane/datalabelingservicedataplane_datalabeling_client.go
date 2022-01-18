@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// DlsDataPlane API
+// Data Labeling API
 //
-// A description of the DlsDataPlane API.
+// Use Data Labeling API to create Annotations on Images, Texts & Documents, and generate snapshots.
 //
 
 package datalabelingservicedataplane
@@ -144,7 +144,7 @@ func (client DataLabelingClient) createAnnotation(ctx context.Context, request c
 	return response, err
 }
 
-// CreateRecord Creates a Record.
+// CreateRecord Creates a record.
 //
 // See also
 //
@@ -204,7 +204,7 @@ func (client DataLabelingClient) createRecord(ctx context.Context, request commo
 	return response, err
 }
 
-// DeleteAnnotation Deletes an Annotation resource by identifier
+// DeleteAnnotation It deletes an annotation resource by identifier.
 //
 // See also
 //
@@ -259,7 +259,7 @@ func (client DataLabelingClient) deleteAnnotation(ctx context.Context, request c
 	return response, err
 }
 
-// DeleteRecord Deletes a Record resource by identifier
+// DeleteRecord Deletes a record resource by identifier.
 //
 // See also
 //
@@ -314,7 +314,7 @@ func (client DataLabelingClient) deleteRecord(ctx context.Context, request commo
 	return response, err
 }
 
-// GetAnnotation Gets an Annotation
+// GetAnnotation Gets an annotation.
 //
 // See also
 //
@@ -369,7 +369,7 @@ func (client DataLabelingClient) getAnnotation(ctx context.Context, request comm
 	return response, err
 }
 
-// GetDataset Gets a Dataset by identifier
+// GetDataset Gets a dataset by identifier.
 //
 // See also
 //
@@ -424,7 +424,7 @@ func (client DataLabelingClient) getDataset(ctx context.Context, request common.
 	return response, err
 }
 
-// GetRecord Gets a record
+// GetRecord Gets a record.
 //
 // See also
 //
@@ -479,7 +479,7 @@ func (client DataLabelingClient) getRecord(ctx context.Context, request common.O
 	return response, err
 }
 
-// GetRecordContent Retrieves the content of the record from the Dataset source.
+// GetRecordContent Retrieves the content of the record from the dataset source.
 //
 // See also
 //
@@ -533,7 +533,7 @@ func (client DataLabelingClient) getRecordContent(ctx context.Context, request c
 	return response, err
 }
 
-// GetRecordPreviewContent Retrieves the preview of the record content from the Dataset source.
+// GetRecordPreviewContent Retrieves the preview of the record content from the dataset source.
 //
 // See also
 //
@@ -587,7 +587,7 @@ func (client DataLabelingClient) getRecordPreviewContent(ctx context.Context, re
 	return response, err
 }
 
-// ListAnnotations Returns a list of Annotations.
+// ListAnnotations Returns a list of annotations.
 //
 // See also
 //
@@ -642,7 +642,7 @@ func (client DataLabelingClient) listAnnotations(ctx context.Context, request co
 	return response, err
 }
 
-// ListRecords List Record in the specified compartment.
+// ListRecords The list of records in the specified compartment.
 //
 // See also
 //
@@ -697,7 +697,7 @@ func (client DataLabelingClient) listRecords(ctx context.Context, request common
 	return response, err
 }
 
-// SummarizeAnnotationAnalytics Summarize annotations created for a given dataset
+// SummarizeAnnotationAnalytics Summarize the annotations created for a given dataset.
 //
 // See also
 //
@@ -752,7 +752,7 @@ func (client DataLabelingClient) summarizeAnnotationAnalytics(ctx context.Contex
 	return response, err
 }
 
-// SummarizeRecordAnalytics Summarize records created for a given dataset
+// SummarizeRecordAnalytics Summarize the records created for a given dataset.
 //
 // See also
 //
@@ -862,7 +862,7 @@ func (client DataLabelingClient) updateAnnotation(ctx context.Context, request c
 	return response, err
 }
 
-// UpdateRecord Updates record.
+// UpdateRecord Updates a record.
 //
 // See also
 //

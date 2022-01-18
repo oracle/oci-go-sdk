@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// DlsDataPlane API
+// Data Labeling API
 //
-// A description of the DlsDataPlane API.
+// Use Data Labeling API to create Annotations on Images, Texts & Documents, and generate snapshots.
 //
 
 package datalabelingservicedataplane
@@ -14,14 +14,14 @@ import (
 	"github.com/oracle/oci-go-sdk/v55/common"
 )
 
-// GenericEntity This is an extensible entity type for users and the base entity type for some annotation formats
+// GenericEntity This is an extensible entity type for users, and the base entity type for some annotation formats.
 type GenericEntity struct {
 
-	// collection of Label entities
+	// A collection of label entities.
 	Labels []Label `mandatory:"true" json:"labels"`
 
-	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// Example: `{"bar-key": "value"}`
+	// A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only.
+	// For example: `{"bar-key": "value"}`
 	ExtendedMetadata map[string]string `mandatory:"false" json:"extendedMetadata"`
 }
 

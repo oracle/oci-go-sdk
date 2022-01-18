@@ -19,13 +19,13 @@ type SummarizeAnnotationAnalyticsRequest struct {
 	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// Filter results by the OCID of the dataset.
+	// Filter the results by the OCID of the dataset.
 	DatasetId *string `mandatory:"true" contributesTo:"query" name:"datasetId"`
 
-	// A filter to return only resources their lifecycleState matches the given lifecycleState.
+	// A filter to return only resources whose lifecycleState matches the given lifecycleState.
 	LifecycleState AnnotationLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
-	// This field is used to summarize annotations with specified label.
+	// It summarizes annotations with the specified label.
 	Label *string `mandatory:"false" contributesTo:"query" name:"label"`
 
 	// The maximum number of items to return.
@@ -37,10 +37,10 @@ type SummarizeAnnotationAnalyticsRequest struct {
 	// The sort order to use, either 'asc' or 'desc'.
 	SortOrder SummarizeAnnotationAnalyticsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
-	// The field to sort by. Only one sort order may be provided. Default order is descending. If no value is specified updatedBy is default.
+	// The field to sort by. Only one sort order may be provided. The default order is descending. If no value is specified, updatedBy is used by default.
 	SortBy SummarizeAnnotationAnalyticsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
-	// The field to group by. If no value is specified updatedBy is default.
+	// The field to group by. If no value is specified, updatedBy is used by default.
 	AnnotationGroupBy SummarizeAnnotationAnalyticsAnnotationGroupByEnum `mandatory:"false" contributesTo:"query" name:"annotationGroupBy" omitEmpty:"true"`
 
 	// The client request ID for tracing.
@@ -82,11 +82,11 @@ type SummarizeAnnotationAnalyticsResponse struct {
 	// A list of AnnotationAnalyticsAggregationCollection instances
 	AnnotationAnalyticsAggregationCollection `presentIn:"body"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact
+	// A unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// For pagination of a list of items. When paging through a list, if this header appears in the response,
+	// For the pagination of a list of items. When paging through a list, if this header appears in the response,
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`

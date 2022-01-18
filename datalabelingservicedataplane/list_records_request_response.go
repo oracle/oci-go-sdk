@@ -19,22 +19,22 @@ type ListRecordsRequest struct {
 	// The ID of the compartment in which to list resources.
 	CompartmentId *string `mandatory:"true" contributesTo:"query" name:"compartmentId"`
 
-	// Filter results by the OCID of the dataset.
+	// Filter the results by the OCID of the dataset.
 	DatasetId *string `mandatory:"true" contributesTo:"query" name:"datasetId"`
 
-	// A filter to return only resources their lifecycleState matches the given lifecycleState.
+	// A filter to return only resources whose lifecycleState matches the given lifecycleState.
 	LifecycleState RecordLifecycleStateEnum `mandatory:"false" contributesTo:"query" name:"lifecycleState" omitEmpty:"true"`
 
-	// Name of the record
+	// The name of the record.
 	Name *string `mandatory:"false" contributesTo:"query" name:"name"`
 
-	// Unique OCID identifier
+	// The unique OCID identifier.
 	Id *string `mandatory:"false" contributesTo:"query" name:"id"`
 
 	// Whether the record has been labeled and has associated annotations.
 	IsLabeled *bool `mandatory:"false" contributesTo:"query" name:"isLabeled"`
 
-	// Allows the user to filter records based on the related annotations.
+	// Lets the user filter records based on the related annotations.
 	AnnotationLabelsContains []string `contributesTo:"query" name:"annotationLabelsContains" collectionFormat:"multi"`
 
 	// The maximum number of items to return.
@@ -46,7 +46,7 @@ type ListRecordsRequest struct {
 	// The sort order to use, either 'asc' or 'desc'.
 	SortOrder ListRecordsSortOrderEnum `mandatory:"false" contributesTo:"query" name:"sortOrder" omitEmpty:"true"`
 
-	// The field to sort by. Only one sort order may be provided. Default order for timeCreated is descending. Default order for name is ascending. If no value is specified timeCreated is default.
+	// The field to sort by. Only one sort order may be provided. The default order for timeCreated is descending. The default order for name is ascending. If no value is specified, timeCreated is used by default.
 	SortBy ListRecordsSortByEnum `mandatory:"false" contributesTo:"query" name:"sortBy" omitEmpty:"true"`
 
 	// The client request ID for tracing.
@@ -88,11 +88,11 @@ type ListRecordsResponse struct {
 	// A list of RecordCollection instances
 	RecordCollection `presentIn:"body"`
 
-	// Unique Oracle-assigned identifier for the request. If you need to contact
+	// A unique Oracle-assigned identifier for the request. If you need to contact
 	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
 
-	// For pagination of a list of items. When paging through a list, if this header appears in the response,
+	// For the pagination of a list of items. When paging through a list, if this header appears in the response,
 	// then a partial list might have been returned. Include this value as the `page` parameter for the
 	// subsequent GET request to get the next batch of items.
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
