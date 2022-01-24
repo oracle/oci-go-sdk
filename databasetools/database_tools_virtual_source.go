@@ -10,7 +10,7 @@
 package databasetools
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // DatabaseToolsVirtualSource A VCN OCID (https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm) and a list of CIDR blocks.

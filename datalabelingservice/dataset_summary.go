@@ -11,7 +11,7 @@ package datalabelingservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // DatasetSummary A dataset summary is the representation returned in list views.  It is usually a subset of the full dataset entity and should not contain any potentially sensitive information.

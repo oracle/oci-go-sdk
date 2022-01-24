@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
+## 56.0.0 - 2022-01-25
+### Added
+- Support for OneSubscription services
+- Support for specifying if a run or application is streaming or batch in the Data Flow service
+- Support for updating the Instance Configuration of an Instance Pool within a Cluster Network in the Compute Management service
+- Updated documentation for Cross Region ADG feature for Autonomous Database in the Database service
+
+### Breaking Changes
+- Support for retries enabled by default on all operations in the Object Storage service
+
 ## 55.1.0 - 2022-01-18
 ### Added
 - Support for calling Oracle Cloud Infrastructure services in the me-dcc-muscat-1 region

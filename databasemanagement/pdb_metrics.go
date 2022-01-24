@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // PdbMetrics The summary of Pluggable Databases (PDBs) and their resource usage metrics, within a specific Container Database (CDB).

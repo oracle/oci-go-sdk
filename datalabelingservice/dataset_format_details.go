@@ -11,7 +11,7 @@ package datalabelingservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // DatasetFormatDetails Specifies how to process the data. Supported formats include DOCUMENT, IMAGE and TEXT.

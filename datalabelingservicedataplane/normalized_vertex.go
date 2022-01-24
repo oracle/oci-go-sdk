@@ -10,7 +10,7 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // NormalizedVertex A NormalizedVertex is a cartesian coordinate that represents a corner between two segments of a polygon.

@@ -10,7 +10,7 @@
 package dataintegration
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // FunctionLibrary The FunctionLibrary type contains the audit summary information and the definition of the FunctionLibrary.

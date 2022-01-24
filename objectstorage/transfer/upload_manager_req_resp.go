@@ -7,8 +7,8 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/oracle/oci-go-sdk/v55/common"
-	"github.com/oracle/oci-go-sdk/v55/objectstorage"
+	"github.com/oracle/oci-go-sdk/v56/common"
+	"github.com/oracle/oci-go-sdk/v56/objectstorage"
 )
 
 // requestValidator validate user's input and assign default values if not defined

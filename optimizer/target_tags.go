@@ -12,7 +12,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // TargetTags Optional. The tags specified in the profile override for a recommendation.

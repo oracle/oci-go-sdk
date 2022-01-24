@@ -10,7 +10,7 @@
 package datalabelingservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ChangeDatasetCompartmentDetails The payload sent to the Change Dataset compartment operation.

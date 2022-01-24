@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // SqlTuningAdvisorTaskRecommendationSummary A recommendation for a given object in a SQL Tuning Task.

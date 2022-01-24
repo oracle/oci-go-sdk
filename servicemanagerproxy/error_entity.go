@@ -11,7 +11,7 @@
 package servicemanagerproxy
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ErrorEntity The model for the error entity.

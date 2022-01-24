@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ShapeTrustedPlatformModuleOptions Configuration options for the Trusted Platform Module (TPM).

@@ -11,7 +11,7 @@
 package visualbuilder
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // RequestSummarizedApplicationsDetails The information to summarize the applications.

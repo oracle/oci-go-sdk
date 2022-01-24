@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // UpdateIpSecTunnelEncryptionDomainDetails Request to update a multi-encryption domain policy on the IPSec tunnel.

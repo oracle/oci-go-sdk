@@ -10,7 +10,7 @@
 package datalabelingservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // SnapshotDatasetDetails Allows outputting the latest records paired with annotations and write them to object storage.

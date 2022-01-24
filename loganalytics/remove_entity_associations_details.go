@@ -10,7 +10,7 @@
 package loganalytics
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // RemoveEntityAssociationsDetails Information about the associations to be deleted between source entity and other existing destination entities.

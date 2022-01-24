@@ -11,7 +11,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // WorkRequestLogEntry A log message from executing an operation that is tracked by a work request.

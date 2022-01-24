@@ -11,7 +11,7 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ObjectStorageDatasetSourceDetails Specifies the dataset location in object storage. This requires that all records are in this bucket, and under this prefix. A dataset with objects in arbitrary locations across buckets or prefixes is not allowed.

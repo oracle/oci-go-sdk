@@ -12,7 +12,7 @@ package waf
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // AccessControlRule Rule that represents Request/Response Access Control.

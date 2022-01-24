@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // AutonomousDatabaseConsoleTokenDetails The token that allows the OCI Console to access the Autonomous Database Service Console.

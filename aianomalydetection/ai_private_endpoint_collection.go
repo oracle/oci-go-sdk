@@ -12,7 +12,7 @@
 package aianomalydetection
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // AiPrivateEndpointCollection A collection of AI Service PrivateEndpoints Each item is a AI Service PrivateEndpoint Summary object.

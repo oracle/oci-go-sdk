@@ -12,7 +12,7 @@ package osmanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // KernelCrashEvent Information about a Kernel Crash.

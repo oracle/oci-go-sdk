@@ -10,7 +10,7 @@
 package apmconfig
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // Metric A metric. This a quantitative measurement of an entity.
