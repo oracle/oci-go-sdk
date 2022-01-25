@@ -11,7 +11,7 @@
 package datacatalog
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // TermRelationshipCollection Results of a terms relationship listing. Term relationships are associations between two terms in business glossary.

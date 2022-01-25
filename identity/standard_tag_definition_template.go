@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // StandardTagDefinitionTemplate The template of the tag definition. This object includes necessary details to create the provided standard tag definition.

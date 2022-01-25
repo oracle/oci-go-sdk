@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // LocalPeeringGateway A local peering gateway (LPG) is an object on a VCN that lets that VCN peer

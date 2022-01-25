@@ -11,7 +11,7 @@ package servicecatalog
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // CreatePrivateApplicationPackage A base object for creating a private application package.

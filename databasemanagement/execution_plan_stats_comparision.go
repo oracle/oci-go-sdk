@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ExecutionPlanStatsComparision The comparision report of SQL execution plans' statistics between the original plan and modified plan.

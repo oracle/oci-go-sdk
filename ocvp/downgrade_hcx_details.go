@@ -11,7 +11,7 @@
 package ocvp
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // DowngradeHcxDetails The HCX on-premise license keys to be reserved when downgrading from HCX Enterprise to HCX Advanced.

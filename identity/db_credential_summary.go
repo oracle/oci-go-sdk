@@ -10,7 +10,7 @@
 package identity
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // DbCredentialSummary As the name suggests, an `DbCredentialSummary` object contains information about an `DbCredential`.

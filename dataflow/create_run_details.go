@@ -10,7 +10,7 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // CreateRunDetails The create run details. The following properties are optional and override the default values
@@ -116,6 +116,9 @@ type CreateRunDetails struct {
 
 	// The Spark version utilized to run the application. This value may be set if applicationId is not since the Spark version will be taken from the associated application.
 	SparkVersion *string `mandatory:"false" json:"sparkVersion"`
+
+	// The Spark application processing type.
+	Type ApplicationTypeEnum `mandatory:"false" json:"type,omitempty"`
 
 	// An Oracle Cloud Infrastructure URI of the bucket to be used as default warehouse directory
 	// for BATCH SQL runs.

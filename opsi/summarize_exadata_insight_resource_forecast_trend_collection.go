@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // SummarizeExadataInsightResourceForecastTrendCollection Usage and Forecast results with breakdown by databases, hosts or storage servers.

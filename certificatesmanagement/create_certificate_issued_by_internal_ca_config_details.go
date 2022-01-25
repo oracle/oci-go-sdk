@@ -11,7 +11,7 @@ package certificatesmanagement
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // CreateCertificateIssuedByInternalCaConfigDetails The details of the configuration for creating an internally managed certificate which is issued by a private certificate authority (CA).

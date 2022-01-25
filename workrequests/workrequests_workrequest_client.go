@@ -16,8 +16,8 @@ package workrequests
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v55/common"
-	"github.com/oracle/oci-go-sdk/v55/common/auth"
+	"github.com/oracle/oci-go-sdk/v56/common"
+	"github.com/oracle/oci-go-sdk/v56/common/auth"
 	"net/http"
 )
 

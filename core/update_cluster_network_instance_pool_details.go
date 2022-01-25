@@ -14,7 +14,7 @@
 package core
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // UpdateClusterNetworkInstancePoolDetails The data to update an instance pool within a cluster network.
@@ -39,6 +39,9 @@ type UpdateClusterNetworkInstancePoolDetails struct {
 
 	// The number of instances that should be in the instance pool.
 	Size *int `mandatory:"false" json:"size"`
+
+	// The OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the instance configuration associated with the instance pool.
+	InstanceConfigurationId *string `mandatory:"false" json:"instanceConfigurationId"`
 }
 
 func (m UpdateClusterNetworkInstancePoolDetails) String() string {

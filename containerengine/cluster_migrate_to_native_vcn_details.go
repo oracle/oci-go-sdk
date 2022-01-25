@@ -12,7 +12,7 @@
 package containerengine
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ClusterMigrateToNativeVcnDetails The properties that define a request to migrate a cluster to Native VCN.

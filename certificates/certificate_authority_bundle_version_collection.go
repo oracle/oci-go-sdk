@@ -10,7 +10,7 @@
 package certificates
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // CertificateAuthorityBundleVersionCollection The results of a certificate authority (CA) version search. Results contain CA version summary objects and other data.

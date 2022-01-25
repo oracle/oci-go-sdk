@@ -11,7 +11,7 @@
 package waf
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // CollaborativeCapabilityWeight Defines how much a contributing capability contributes towards the action threshold of a collaborative protection capability.

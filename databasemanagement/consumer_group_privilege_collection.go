@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ConsumerGroupPrivilegeCollection A collection of ConsumerGroupPrivileges granted to the current User.

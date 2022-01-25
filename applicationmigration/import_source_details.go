@@ -14,7 +14,7 @@ package applicationmigration
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ImportSourceDetails / Basic details about the source, import manifest and object storage bucket as well as object name of the archive that should be used during import
