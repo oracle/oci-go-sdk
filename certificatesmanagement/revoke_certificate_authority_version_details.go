@@ -10,7 +10,7 @@
 package certificatesmanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // RevokeCertificateAuthorityVersionDetails The details of the request to revoke a certificate authority (CA) version.

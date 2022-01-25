@@ -10,7 +10,7 @@
 package cloudguard
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // UpdateTargetDetectorRecipeDetectorRuleDetails The details to be updated in DetectorRule

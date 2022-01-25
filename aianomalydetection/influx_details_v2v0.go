@@ -13,7 +13,7 @@ package aianomalydetection
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // InfluxDetailsV2v0 Influx details for V_2_0.

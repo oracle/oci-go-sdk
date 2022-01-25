@@ -12,7 +12,7 @@
 package apigateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // MutualTlsDetails Properties used to configure client mTLS verification when API Consumer makes connection to the gateway.

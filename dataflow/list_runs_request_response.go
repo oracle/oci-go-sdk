@@ -5,7 +5,7 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 	"net/http"
 )
 
@@ -124,6 +124,8 @@ const (
 	ListRunsLifecycleStateCanceled   ListRunsLifecycleStateEnum = "CANCELED"
 	ListRunsLifecycleStateFailed     ListRunsLifecycleStateEnum = "FAILED"
 	ListRunsLifecycleStateSucceeded  ListRunsLifecycleStateEnum = "SUCCEEDED"
+	ListRunsLifecycleStateStopping   ListRunsLifecycleStateEnum = "STOPPING"
+	ListRunsLifecycleStateStopped    ListRunsLifecycleStateEnum = "STOPPED"
 )
 
 var mappingListRunsLifecycleState = map[string]ListRunsLifecycleStateEnum{
@@ -133,6 +135,8 @@ var mappingListRunsLifecycleState = map[string]ListRunsLifecycleStateEnum{
 	"CANCELED":    ListRunsLifecycleStateCanceled,
 	"FAILED":      ListRunsLifecycleStateFailed,
 	"SUCCEEDED":   ListRunsLifecycleStateSucceeded,
+	"STOPPING":    ListRunsLifecycleStateStopping,
+	"STOPPED":     ListRunsLifecycleStateStopped,
 }
 
 // GetListRunsLifecycleStateEnumValues Enumerates the set of values for ListRunsLifecycleStateEnum

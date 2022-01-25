@@ -12,7 +12,7 @@
 package databasemanagement
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // SqlTuningAdvisorTaskSummaryReportStatistics Statistics of statements and findings for the SQL Tuning Advisor summary report.

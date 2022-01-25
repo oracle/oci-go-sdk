@@ -12,7 +12,7 @@
 package ailanguage
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // SentimentDocumentResult The document response for sentiment detect call.

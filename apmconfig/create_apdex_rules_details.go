@@ -11,7 +11,7 @@ package apmconfig
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // CreateApdexRulesDetails The set of Apdex rules to be used in Apdex computation. In the current version, only one rule set may exist per

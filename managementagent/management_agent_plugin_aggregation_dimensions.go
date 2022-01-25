@@ -10,7 +10,7 @@
 package managementagent
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ManagementAgentPluginAggregationDimensions The Aggregation of Management Agent Plugin Dimensions

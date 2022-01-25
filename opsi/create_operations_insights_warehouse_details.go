@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // CreateOperationsInsightsWarehouseDetails The information about a Operations Insights Warehouse resource to be created. Input compartmentId MUST be the root compartment.

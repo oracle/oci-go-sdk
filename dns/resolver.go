@@ -12,7 +12,7 @@ package dns
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // Resolver An OCI DNS resolver. If the resolver has an attached VCN, the VCN will attempt to answer queries based on the

@@ -12,7 +12,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // Strategy The metadata associated with the strategy. The strategy is the method used to apply the recommendation.

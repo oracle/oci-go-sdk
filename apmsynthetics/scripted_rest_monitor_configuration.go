@@ -11,7 +11,7 @@ package apmsynthetics
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ScriptedRestMonitorConfiguration Configuration details for the SCRIPTED_REST monitor type.

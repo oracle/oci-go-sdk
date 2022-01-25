@@ -11,7 +11,7 @@ package datascience
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // JobInfrastructureConfigurationDetails The job infrastructure configuration details (shape, block storage, etc.)

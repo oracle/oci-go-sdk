@@ -15,7 +15,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // IntelVmLaunchInstancePlatformConfig The platform configuration used when launching a virtual machine instance with the Intel platform.

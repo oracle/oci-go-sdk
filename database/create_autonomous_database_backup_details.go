@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // CreateAutonomousDatabaseBackupDetails Details to create an Oracle Autonomous Database backup.

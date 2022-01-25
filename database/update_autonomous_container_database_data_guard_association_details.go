@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // UpdateAutonomousContainerDatabaseDataGuardAssociationDetails The configuration details for updating a Autonomous Container DatabaseData Guard association for a Autonomous Container Database.

@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // WorkRequestLogEntryCollection Results of a workRequestLog search. Contains both workRequestLog items and other information, such as metadata.

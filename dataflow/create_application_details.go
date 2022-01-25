@@ -10,7 +10,7 @@
 package dataflow
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // CreateApplicationDetails The create application details.
@@ -99,6 +99,9 @@ type CreateApplicationDetails struct {
 
 	// The OCID of a private endpoint.
 	PrivateEndpointId *string `mandatory:"false" json:"privateEndpointId"`
+
+	// The Spark application processing type.
+	Type ApplicationTypeEnum `mandatory:"false" json:"type,omitempty"`
 
 	// An Oracle Cloud Infrastructure URI of the bucket to be used as default warehouse directory
 	// for BATCH SQL runs.

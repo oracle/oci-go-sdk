@@ -11,7 +11,7 @@ package datalabelingservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // DatasetSourceDetails This allows the customer to specify the source of the dataset.

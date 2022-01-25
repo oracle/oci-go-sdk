@@ -12,7 +12,7 @@
 package ailanguage
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // BatchDetectLanguageEntitiesDetails The documents details for entities detect call.

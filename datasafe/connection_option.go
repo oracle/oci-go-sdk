@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ConnectionOption Types of connection supported by Data Safe.

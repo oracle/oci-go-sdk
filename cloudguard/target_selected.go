@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // TargetSelected Target Selection eg select ALL or select on basis of TargetResourceTypes or TargetIds.

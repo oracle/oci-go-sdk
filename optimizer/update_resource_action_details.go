@@ -12,7 +12,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // UpdateResourceActionDetails The request object for updating the resource action details.

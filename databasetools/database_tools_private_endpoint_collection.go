@@ -10,7 +10,7 @@
 package databasetools
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // DatabaseToolsPrivateEndpointCollection List of DatabaseToolsPrivateEndpointSummary items.

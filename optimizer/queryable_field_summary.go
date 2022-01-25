@@ -12,7 +12,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // QueryableFieldSummary An individual field that can be used as part of a query filter.

@@ -12,7 +12,7 @@
 package optimizer
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ProfileLevelCollection A list of profile levels that match the filter criteria, if any. The result contains `ProfileLevelSummary` objects.

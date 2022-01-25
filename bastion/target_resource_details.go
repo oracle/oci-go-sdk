@@ -11,7 +11,7 @@ package bastion
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // TargetResourceDetails Details about a bastion session's target resource.

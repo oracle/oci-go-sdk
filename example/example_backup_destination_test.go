@@ -10,9 +10,9 @@ package example
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v55/common"
-	"github.com/oracle/oci-go-sdk/v55/database"
-	"github.com/oracle/oci-go-sdk/v55/example/helpers"
+	"github.com/oracle/oci-go-sdk/v56/common"
+	"github.com/oracle/oci-go-sdk/v56/database"
+	"github.com/oracle/oci-go-sdk/v56/example/helpers"
 	"os"
 	"strings"
 )

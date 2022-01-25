@@ -10,7 +10,7 @@
 package bds
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // ActivateBdsMetastoreConfigurationDetails The reqeust body when activating a BDS metastore configuration

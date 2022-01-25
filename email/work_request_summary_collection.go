@@ -14,7 +14,7 @@
 package email
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // WorkRequestSummaryCollection Results of a workRequest search. Contains both WorkRequest items and other information, such as metadata.

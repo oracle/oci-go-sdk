@@ -10,7 +10,7 @@
 package devops
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // DeliverArtifactCollection Specifies an array of artifacts that need to be pushed to the artifactory stores.

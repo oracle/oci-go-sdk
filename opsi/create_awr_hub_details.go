@@ -12,7 +12,7 @@
 package opsi
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // CreateAwrHubDetails The information about Hub to be analyzed. Input compartmentId MUST be the root compartment.

@@ -10,7 +10,7 @@
 package database
 
 import (
-	"github.com/oracle/oci-go-sdk/v55/common"
+	"github.com/oracle/oci-go-sdk/v56/common"
 )
 
 // CreateExadataInfrastructureDetails Request to create Exadata infrastructure resource. Applies to Exadata Cloud@Customer instances only.
