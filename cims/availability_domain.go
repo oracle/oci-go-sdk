@@ -52,7 +52,7 @@ const (
 	AvailabilityDomainNoAd            AvailabilityDomainEnum = "NO_AD"
 )
 
-var mappingAvailabilityDomain = map[string]AvailabilityDomainEnum{
+var mappingAvailabilityDomainEnum = map[string]AvailabilityDomainEnum{
 	"DEV_1":               AvailabilityDomainDev1,
 	"DEV_2":               AvailabilityDomainDev2,
 	"DEV_3":               AvailabilityDomainDev3,
@@ -94,8 +94,50 @@ var mappingAvailabilityDomain = map[string]AvailabilityDomainEnum{
 // GetAvailabilityDomainEnumValues Enumerates the set of values for AvailabilityDomainEnum
 func GetAvailabilityDomainEnumValues() []AvailabilityDomainEnum {
 	values := make([]AvailabilityDomainEnum, 0)
-	for _, v := range mappingAvailabilityDomain {
+	for _, v := range mappingAvailabilityDomainEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetAvailabilityDomainEnumStringValues Enumerates the set of values in String for AvailabilityDomainEnum
+func GetAvailabilityDomainEnumStringValues() []string {
+	return []string{
+		"DEV_1",
+		"DEV_2",
+		"DEV_3",
+		"INTEG_NEXT_1",
+		"INTEG_STABLE_1",
+		"SEA_AD_1",
+		"SEA_AD_2",
+		"SEA_AD_3",
+		"PHX_AD_1",
+		"PHX_AD_2",
+		"PHX_AD_3",
+		"US_ASHBURN_AD_1",
+		"US_ASHBURN_AD_2",
+		"US_ASHBURN_AD_3",
+		"US_ASHBURN_AD_4",
+		"EU_FRANKFURT_1_AD_1",
+		"EU_FRANKFURT_1_AD_2",
+		"EU_FRANKFURT_1_AD_3",
+		"UK_LONDON_1_AD_1",
+		"UK_LONDON_1_AD_2",
+		"UK_LONDON_1_AD_3",
+		"CA_TORONTO_1_AD_1",
+		"AP_TOKYO_1_AD_1",
+		"AP_SEOUL_1_AD_1",
+		"AP_MUMBAI_1_AD_1",
+		"SA_SAOPAULO_1_AD_1",
+		"ME_JEDDAH_1_AD_1",
+		"AP_OSAKA_1_AD_1",
+		"AP_SYDNEY_1_AD_1",
+		"EU_ZURICH_1_AD_1",
+		"EU_AMSTERDAM_1_AD_1",
+		"AP_MELBOURNE_1_AD_1",
+		"CA_MONTREAL_1_AD_1",
+		"AP_HYDERABAD_1_AD_1",
+		"AP_CHUNCHEON_1_AD_1",
+		"NO_AD",
+	}
 }

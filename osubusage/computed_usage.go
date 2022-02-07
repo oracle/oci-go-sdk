@@ -10,7 +10,9 @@
 package osubusage
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // ComputedUsage Computed Usage Summary object
@@ -94,6 +96,21 @@ func (m ComputedUsage) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m ComputedUsage) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingComputedUsageTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetComputedUsageTypeEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // ComputedUsageTypeEnum Enum with underlying type: string
 type ComputedUsageTypeEnum string
 
@@ -116,7 +133,7 @@ const (
 	ComputedUsageTypeDelayedUsagePostTermination   ComputedUsageTypeEnum = "DELAYED_USAGE_POST_TERMINATION"
 )
 
-var mappingComputedUsageType = map[string]ComputedUsageTypeEnum{
+var mappingComputedUsageTypeEnum = map[string]ComputedUsageTypeEnum{
 	"PROMOTION":                         ComputedUsageTypePromotion,
 	"DO_NOT_BILL":                       ComputedUsageTypeDoNotBill,
 	"USAGE":                             ComputedUsageTypeUsage,
@@ -137,8 +154,29 @@ var mappingComputedUsageType = map[string]ComputedUsageTypeEnum{
 // GetComputedUsageTypeEnumValues Enumerates the set of values for ComputedUsageTypeEnum
 func GetComputedUsageTypeEnumValues() []ComputedUsageTypeEnum {
 	values := make([]ComputedUsageTypeEnum, 0)
-	for _, v := range mappingComputedUsageType {
+	for _, v := range mappingComputedUsageTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetComputedUsageTypeEnumStringValues Enumerates the set of values in String for ComputedUsageTypeEnum
+func GetComputedUsageTypeEnumStringValues() []string {
+	return []string{
+		"PROMOTION",
+		"DO_NOT_BILL",
+		"USAGE",
+		"COMMIT",
+		"OVERAGE",
+		"PAY_AS_YOU_GO",
+		"MONTHLY_MINIMUM",
+		"DELAYED_USAGE_INVOICE_TIMING",
+		"DELAYED_USAGE_COMMITMENT_EXP",
+		"ON_ACCOUNT_CREDIT",
+		"SERVICE_CREDIT",
+		"COMMITMENT_EXPIRATION",
+		"FUNDED_ALLOCATION",
+		"DONOT_BILL_USAGE_POST_TERMINATION",
+		"DELAYED_USAGE_POST_TERMINATION",
+	}
 }

@@ -5,8 +5,10 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListMigrationsRequest wrapper for the ListMigrations operation
@@ -60,6 +62,10 @@ func (request ListMigrationsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListMigrationsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -73,6 +79,26 @@ func (request ListMigrationsRequest) BinaryRequestBody() (*common.OCIReadSeekClo
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListMigrationsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListMigrationsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListMigrationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListMigrationsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListMigrationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListMigrationsSortByEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListMigrationsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListMigrationsLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListMigrationsResponse wrapper for the ListMigrations operation
@@ -112,7 +138,7 @@ const (
 	ListMigrationsSortOrderDesc ListMigrationsSortOrderEnum = "DESC"
 )
 
-var mappingListMigrationsSortOrder = map[string]ListMigrationsSortOrderEnum{
+var mappingListMigrationsSortOrderEnum = map[string]ListMigrationsSortOrderEnum{
 	"ASC":  ListMigrationsSortOrderAsc,
 	"DESC": ListMigrationsSortOrderDesc,
 }
@@ -120,10 +146,18 @@ var mappingListMigrationsSortOrder = map[string]ListMigrationsSortOrderEnum{
 // GetListMigrationsSortOrderEnumValues Enumerates the set of values for ListMigrationsSortOrderEnum
 func GetListMigrationsSortOrderEnumValues() []ListMigrationsSortOrderEnum {
 	values := make([]ListMigrationsSortOrderEnum, 0)
-	for _, v := range mappingListMigrationsSortOrder {
+	for _, v := range mappingListMigrationsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListMigrationsSortOrderEnumStringValues Enumerates the set of values in String for ListMigrationsSortOrderEnum
+func GetListMigrationsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListMigrationsSortByEnum Enum with underlying type: string
@@ -135,7 +169,7 @@ const (
 	ListMigrationsSortByDisplayname ListMigrationsSortByEnum = "DISPLAYNAME"
 )
 
-var mappingListMigrationsSortBy = map[string]ListMigrationsSortByEnum{
+var mappingListMigrationsSortByEnum = map[string]ListMigrationsSortByEnum{
 	"TIMECREATED": ListMigrationsSortByTimecreated,
 	"DISPLAYNAME": ListMigrationsSortByDisplayname,
 }
@@ -143,10 +177,18 @@ var mappingListMigrationsSortBy = map[string]ListMigrationsSortByEnum{
 // GetListMigrationsSortByEnumValues Enumerates the set of values for ListMigrationsSortByEnum
 func GetListMigrationsSortByEnumValues() []ListMigrationsSortByEnum {
 	values := make([]ListMigrationsSortByEnum, 0)
-	for _, v := range mappingListMigrationsSortBy {
+	for _, v := range mappingListMigrationsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListMigrationsSortByEnumStringValues Enumerates the set of values in String for ListMigrationsSortByEnum
+func GetListMigrationsSortByEnumStringValues() []string {
+	return []string{
+		"TIMECREATED",
+		"DISPLAYNAME",
+	}
 }
 
 // ListMigrationsLifecycleStateEnum Enum with underlying type: string
@@ -163,7 +205,7 @@ const (
 	ListMigrationsLifecycleStateDeleted   ListMigrationsLifecycleStateEnum = "DELETED"
 )
 
-var mappingListMigrationsLifecycleState = map[string]ListMigrationsLifecycleStateEnum{
+var mappingListMigrationsLifecycleStateEnum = map[string]ListMigrationsLifecycleStateEnum{
 	"CREATING":  ListMigrationsLifecycleStateCreating,
 	"ACTIVE":    ListMigrationsLifecycleStateActive,
 	"INACTIVE":  ListMigrationsLifecycleStateInactive,
@@ -176,8 +218,21 @@ var mappingListMigrationsLifecycleState = map[string]ListMigrationsLifecycleStat
 // GetListMigrationsLifecycleStateEnumValues Enumerates the set of values for ListMigrationsLifecycleStateEnum
 func GetListMigrationsLifecycleStateEnumValues() []ListMigrationsLifecycleStateEnum {
 	values := make([]ListMigrationsLifecycleStateEnum, 0)
-	for _, v := range mappingListMigrationsLifecycleState {
+	for _, v := range mappingListMigrationsLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListMigrationsLifecycleStateEnumStringValues Enumerates the set of values in String for ListMigrationsLifecycleStateEnum
+func GetListMigrationsLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"INACTIVE",
+		"UPDATING",
+		"SUCCEEDED",
+		"DELETING",
+		"DELETED",
+	}
 }

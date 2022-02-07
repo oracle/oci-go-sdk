@@ -5,8 +5,10 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListAnnotationsRequest wrapper for the ListAnnotations operation
@@ -67,6 +69,10 @@ func (request ListAnnotationsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListAnnotationsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -80,6 +86,26 @@ func (request ListAnnotationsRequest) BinaryRequestBody() (*common.OCIReadSeekCl
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListAnnotationsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListAnnotationsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingAnnotationLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetAnnotationLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListAnnotationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAnnotationsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListAnnotationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAnnotationsSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListAnnotationsResponse wrapper for the ListAnnotations operation
@@ -119,7 +145,7 @@ const (
 	ListAnnotationsSortOrderDesc ListAnnotationsSortOrderEnum = "DESC"
 )
 
-var mappingListAnnotationsSortOrder = map[string]ListAnnotationsSortOrderEnum{
+var mappingListAnnotationsSortOrderEnum = map[string]ListAnnotationsSortOrderEnum{
 	"ASC":  ListAnnotationsSortOrderAsc,
 	"DESC": ListAnnotationsSortOrderDesc,
 }
@@ -127,10 +153,18 @@ var mappingListAnnotationsSortOrder = map[string]ListAnnotationsSortOrderEnum{
 // GetListAnnotationsSortOrderEnumValues Enumerates the set of values for ListAnnotationsSortOrderEnum
 func GetListAnnotationsSortOrderEnumValues() []ListAnnotationsSortOrderEnum {
 	values := make([]ListAnnotationsSortOrderEnum, 0)
-	for _, v := range mappingListAnnotationsSortOrder {
+	for _, v := range mappingListAnnotationsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListAnnotationsSortOrderEnumStringValues Enumerates the set of values in String for ListAnnotationsSortOrderEnum
+func GetListAnnotationsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListAnnotationsSortByEnum Enum with underlying type: string
@@ -142,7 +176,7 @@ const (
 	ListAnnotationsSortByLabel       ListAnnotationsSortByEnum = "label"
 )
 
-var mappingListAnnotationsSortBy = map[string]ListAnnotationsSortByEnum{
+var mappingListAnnotationsSortByEnum = map[string]ListAnnotationsSortByEnum{
 	"timeCreated": ListAnnotationsSortByTimecreated,
 	"label":       ListAnnotationsSortByLabel,
 }
@@ -150,8 +184,16 @@ var mappingListAnnotationsSortBy = map[string]ListAnnotationsSortByEnum{
 // GetListAnnotationsSortByEnumValues Enumerates the set of values for ListAnnotationsSortByEnum
 func GetListAnnotationsSortByEnumValues() []ListAnnotationsSortByEnum {
 	values := make([]ListAnnotationsSortByEnum, 0)
-	for _, v := range mappingListAnnotationsSortBy {
+	for _, v := range mappingListAnnotationsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListAnnotationsSortByEnumStringValues Enumerates the set of values in String for ListAnnotationsSortByEnum
+func GetListAnnotationsSortByEnumStringValues() []string {
+	return []string{
+		"timeCreated",
+		"label",
+	}
 }

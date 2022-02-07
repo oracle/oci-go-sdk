@@ -5,8 +5,10 @@
 package certificates
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // GetCertificateAuthorityBundleRequest wrapper for the GetCertificateAuthorityBundle operation
@@ -44,6 +46,10 @@ func (request GetCertificateAuthorityBundleRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request GetCertificateAuthorityBundleRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -57,6 +63,20 @@ func (request GetCertificateAuthorityBundleRequest) BinaryRequestBody() (*common
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request GetCertificateAuthorityBundleRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request GetCertificateAuthorityBundleRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingGetCertificateAuthorityBundleStageEnum[string(request.Stage)]; !ok && request.Stage != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stage: %s. Supported values are: %s.", request.Stage, strings.Join(GetGetCertificateAuthorityBundleStageEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // GetCertificateAuthorityBundleResponse wrapper for the GetCertificateAuthorityBundle operation
@@ -96,7 +116,7 @@ const (
 	GetCertificateAuthorityBundleStageDeprecated GetCertificateAuthorityBundleStageEnum = "DEPRECATED"
 )
 
-var mappingGetCertificateAuthorityBundleStage = map[string]GetCertificateAuthorityBundleStageEnum{
+var mappingGetCertificateAuthorityBundleStageEnum = map[string]GetCertificateAuthorityBundleStageEnum{
 	"CURRENT":    GetCertificateAuthorityBundleStageCurrent,
 	"PENDING":    GetCertificateAuthorityBundleStagePending,
 	"LATEST":     GetCertificateAuthorityBundleStageLatest,
@@ -107,8 +127,19 @@ var mappingGetCertificateAuthorityBundleStage = map[string]GetCertificateAuthori
 // GetGetCertificateAuthorityBundleStageEnumValues Enumerates the set of values for GetCertificateAuthorityBundleStageEnum
 func GetGetCertificateAuthorityBundleStageEnumValues() []GetCertificateAuthorityBundleStageEnum {
 	values := make([]GetCertificateAuthorityBundleStageEnum, 0)
-	for _, v := range mappingGetCertificateAuthorityBundleStage {
+	for _, v := range mappingGetCertificateAuthorityBundleStageEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetGetCertificateAuthorityBundleStageEnumStringValues Enumerates the set of values in String for GetCertificateAuthorityBundleStageEnum
+func GetGetCertificateAuthorityBundleStageEnumStringValues() []string {
+	return []string{
+		"CURRENT",
+		"PENDING",
+		"LATEST",
+		"PREVIOUS",
+		"DEPRECATED",
+	}
 }

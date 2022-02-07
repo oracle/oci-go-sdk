@@ -27,7 +27,7 @@ const (
 	OperationTypeTerminateOrganizationTenancy OperationTypeEnum = "TERMINATE_ORGANIZATION_TENANCY"
 )
 
-var mappingOperationType = map[string]OperationTypeEnum{
+var mappingOperationTypeEnum = map[string]OperationTypeEnum{
 	"CREATE_SENDER_INVITATION":        OperationTypeCreateSenderInvitation,
 	"ACCEPT_RECIPIENT_INVITATION":     OperationTypeAcceptRecipientInvitation,
 	"CANCEL_SENDER_INVITATION":        OperationTypeCancelSenderInvitation,
@@ -44,8 +44,25 @@ var mappingOperationType = map[string]OperationTypeEnum{
 // GetOperationTypeEnumValues Enumerates the set of values for OperationTypeEnum
 func GetOperationTypeEnumValues() []OperationTypeEnum {
 	values := make([]OperationTypeEnum, 0)
-	for _, v := range mappingOperationType {
+	for _, v := range mappingOperationTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetOperationTypeEnumStringValues Enumerates the set of values in String for OperationTypeEnum
+func GetOperationTypeEnumStringValues() []string {
+	return []string{
+		"CREATE_SENDER_INVITATION",
+		"ACCEPT_RECIPIENT_INVITATION",
+		"CANCEL_SENDER_INVITATION",
+		"COMPLETE_ORDER_ACTIVATION",
+		"ACTIVATE_ORDER_EXISTING_TENANCY",
+		"REGISTER_DOMAIN",
+		"RELEASE_DOMAIN",
+		"CREATE_CHILD_TENANCY",
+		"ASSIGN_DEFAULT_SUBSCRIPTION",
+		"MANUAL_LINK_CREATION",
+		"TERMINATE_ORGANIZATION_TENANCY",
+	}
 }

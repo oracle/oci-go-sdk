@@ -24,9 +24,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/oracle/oci-go-sdk/v56/common"
-	"github.com/oracle/oci-go-sdk/v56/example/helpers"
-	"github.com/oracle/oci-go-sdk/v56/workrequests"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v57/example/helpers"
+	"github.com/oracle/oci-go-sdk/v57/workrequests"
 )
 
 func ExampleWorkRequests() {

@@ -10,7 +10,9 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // RoverCluster Description of RoverCluster.
@@ -128,6 +130,27 @@ func (m RoverCluster) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m RoverCluster) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if _, ok := mappingEnclosureTypeEnum[string(m.EnclosureType)]; !ok && m.EnclosureType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnclosureType: %s. Supported values are: %s.", m.EnclosureType, strings.Join(GetEnclosureTypeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingRoverClusterShippingPreferenceEnum[string(m.ShippingPreference)]; !ok && m.ShippingPreference != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShippingPreference: %s. Supported values are: %s.", m.ShippingPreference, strings.Join(GetRoverClusterShippingPreferenceEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // RoverClusterShippingPreferenceEnum Enum with underlying type: string
 type RoverClusterShippingPreferenceEnum string
 
@@ -137,7 +160,7 @@ const (
 	RoverClusterShippingPreferenceCustomerPickup RoverClusterShippingPreferenceEnum = "CUSTOMER_PICKUP"
 )
 
-var mappingRoverClusterShippingPreference = map[string]RoverClusterShippingPreferenceEnum{
+var mappingRoverClusterShippingPreferenceEnum = map[string]RoverClusterShippingPreferenceEnum{
 	"ORACLE_SHIPPED":  RoverClusterShippingPreferenceOracleShipped,
 	"CUSTOMER_PICKUP": RoverClusterShippingPreferenceCustomerPickup,
 }
@@ -145,8 +168,16 @@ var mappingRoverClusterShippingPreference = map[string]RoverClusterShippingPrefe
 // GetRoverClusterShippingPreferenceEnumValues Enumerates the set of values for RoverClusterShippingPreferenceEnum
 func GetRoverClusterShippingPreferenceEnumValues() []RoverClusterShippingPreferenceEnum {
 	values := make([]RoverClusterShippingPreferenceEnum, 0)
-	for _, v := range mappingRoverClusterShippingPreference {
+	for _, v := range mappingRoverClusterShippingPreferenceEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetRoverClusterShippingPreferenceEnumStringValues Enumerates the set of values in String for RoverClusterShippingPreferenceEnum
+func GetRoverClusterShippingPreferenceEnumStringValues() []string {
+	return []string{
+		"ORACLE_SHIPPED",
+		"CUSTOMER_PICKUP",
+	}
 }

@@ -10,7 +10,9 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // NewTransferDevice The representation of NewTransferDevice
@@ -34,6 +36,21 @@ func (m NewTransferDevice) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m NewTransferDevice) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingNewTransferDeviceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetNewTransferDeviceLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // NewTransferDeviceLifecycleStateEnum Enum with underlying type: string
 type NewTransferDeviceLifecycleStateEnum string
 
@@ -42,15 +59,22 @@ const (
 	NewTransferDeviceLifecycleStatePreparing NewTransferDeviceLifecycleStateEnum = "PREPARING"
 )
 
-var mappingNewTransferDeviceLifecycleState = map[string]NewTransferDeviceLifecycleStateEnum{
+var mappingNewTransferDeviceLifecycleStateEnum = map[string]NewTransferDeviceLifecycleStateEnum{
 	"PREPARING": NewTransferDeviceLifecycleStatePreparing,
 }
 
 // GetNewTransferDeviceLifecycleStateEnumValues Enumerates the set of values for NewTransferDeviceLifecycleStateEnum
 func GetNewTransferDeviceLifecycleStateEnumValues() []NewTransferDeviceLifecycleStateEnum {
 	values := make([]NewTransferDeviceLifecycleStateEnum, 0)
-	for _, v := range mappingNewTransferDeviceLifecycleState {
+	for _, v := range mappingNewTransferDeviceLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetNewTransferDeviceLifecycleStateEnumStringValues Enumerates the set of values in String for NewTransferDeviceLifecycleStateEnum
+func GetNewTransferDeviceLifecycleStateEnumStringValues() []string {
+	return []string{
+		"PREPARING",
+	}
 }

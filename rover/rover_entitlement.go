@@ -10,7 +10,9 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // RoverEntitlement Information about a RoverEntitlement.
@@ -69,6 +71,21 @@ func (m RoverEntitlement) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m RoverEntitlement) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingRoverEntitlementLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetRoverEntitlementLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // RoverEntitlementLifecycleStateEnum Enum with underlying type: string
 type RoverEntitlementLifecycleStateEnum string
 
@@ -80,7 +97,7 @@ const (
 	RoverEntitlementLifecycleStateDeleted  RoverEntitlementLifecycleStateEnum = "DELETED"
 )
 
-var mappingRoverEntitlementLifecycleState = map[string]RoverEntitlementLifecycleStateEnum{
+var mappingRoverEntitlementLifecycleStateEnum = map[string]RoverEntitlementLifecycleStateEnum{
 	"CREATING": RoverEntitlementLifecycleStateCreating,
 	"ACTIVE":   RoverEntitlementLifecycleStateActive,
 	"INACTIVE": RoverEntitlementLifecycleStateInactive,
@@ -90,8 +107,18 @@ var mappingRoverEntitlementLifecycleState = map[string]RoverEntitlementLifecycle
 // GetRoverEntitlementLifecycleStateEnumValues Enumerates the set of values for RoverEntitlementLifecycleStateEnum
 func GetRoverEntitlementLifecycleStateEnumValues() []RoverEntitlementLifecycleStateEnum {
 	values := make([]RoverEntitlementLifecycleStateEnum, 0)
-	for _, v := range mappingRoverEntitlementLifecycleState {
+	for _, v := range mappingRoverEntitlementLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetRoverEntitlementLifecycleStateEnumStringValues Enumerates the set of values in String for RoverEntitlementLifecycleStateEnum
+func GetRoverEntitlementLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"INACTIVE",
+		"DELETED",
+	}
 }

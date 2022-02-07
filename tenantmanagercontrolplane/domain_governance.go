@@ -10,7 +10,9 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // DomainGovernance The model for a domain governance entity.
@@ -63,6 +65,21 @@ func (m DomainGovernance) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m DomainGovernance) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingDomainGovernanceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDomainGovernanceLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // DomainGovernanceLifecycleStateEnum Enum with underlying type: string
 type DomainGovernanceLifecycleStateEnum string
 
@@ -72,7 +89,7 @@ const (
 	DomainGovernanceLifecycleStateInactive DomainGovernanceLifecycleStateEnum = "INACTIVE"
 )
 
-var mappingDomainGovernanceLifecycleState = map[string]DomainGovernanceLifecycleStateEnum{
+var mappingDomainGovernanceLifecycleStateEnum = map[string]DomainGovernanceLifecycleStateEnum{
 	"ACTIVE":   DomainGovernanceLifecycleStateActive,
 	"INACTIVE": DomainGovernanceLifecycleStateInactive,
 }
@@ -80,8 +97,16 @@ var mappingDomainGovernanceLifecycleState = map[string]DomainGovernanceLifecycle
 // GetDomainGovernanceLifecycleStateEnumValues Enumerates the set of values for DomainGovernanceLifecycleStateEnum
 func GetDomainGovernanceLifecycleStateEnumValues() []DomainGovernanceLifecycleStateEnum {
 	values := make([]DomainGovernanceLifecycleStateEnum, 0)
-	for _, v := range mappingDomainGovernanceLifecycleState {
+	for _, v := range mappingDomainGovernanceLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetDomainGovernanceLifecycleStateEnumStringValues Enumerates the set of values in String for DomainGovernanceLifecycleStateEnum
+func GetDomainGovernanceLifecycleStateEnumStringValues() []string {
+	return []string{
+		"ACTIVE",
+		"INACTIVE",
+	}
 }

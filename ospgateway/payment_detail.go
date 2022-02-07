@@ -2,16 +2,18 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Billing Center Gateway API
+// OSP Gateway API
 //
-// This site describes all the Rest endpoints of Billing Center Gateway.
+// This site describes all the Rest endpoints of OSP Gateway.
 //
 
 package ospgateway
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // PaymentDetail Payment related details
@@ -99,6 +101,18 @@ func (m paymentdetail) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m paymentdetail) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // PaymentDetailPaymentMethodEnum Enum with underlying type: string
 type PaymentDetailPaymentMethodEnum string
 
@@ -109,7 +123,7 @@ const (
 	PaymentDetailPaymentMethodOther      PaymentDetailPaymentMethodEnum = "OTHER"
 )
 
-var mappingPaymentDetailPaymentMethod = map[string]PaymentDetailPaymentMethodEnum{
+var mappingPaymentDetailPaymentMethodEnum = map[string]PaymentDetailPaymentMethodEnum{
 	"CREDIT_CARD": PaymentDetailPaymentMethodCreditCard,
 	"PAYPAL":      PaymentDetailPaymentMethodPaypal,
 	"OTHER":       PaymentDetailPaymentMethodOther,
@@ -118,8 +132,17 @@ var mappingPaymentDetailPaymentMethod = map[string]PaymentDetailPaymentMethodEnu
 // GetPaymentDetailPaymentMethodEnumValues Enumerates the set of values for PaymentDetailPaymentMethodEnum
 func GetPaymentDetailPaymentMethodEnumValues() []PaymentDetailPaymentMethodEnum {
 	values := make([]PaymentDetailPaymentMethodEnum, 0)
-	for _, v := range mappingPaymentDetailPaymentMethod {
+	for _, v := range mappingPaymentDetailPaymentMethodEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetPaymentDetailPaymentMethodEnumStringValues Enumerates the set of values in String for PaymentDetailPaymentMethodEnum
+func GetPaymentDetailPaymentMethodEnumStringValues() []string {
+	return []string{
+		"CREDIT_CARD",
+		"PAYPAL",
+		"OTHER",
+	}
 }

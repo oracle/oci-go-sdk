@@ -20,7 +20,7 @@ const (
 	NerModelVersionV11 NerModelVersionEnum = "V1.1"
 )
 
-var mappingNerModelVersion = map[string]NerModelVersionEnum{
+var mappingNerModelVersionEnum = map[string]NerModelVersionEnum{
 	"V2.1": NerModelVersionV21,
 	"V1.1": NerModelVersionV11,
 }
@@ -28,8 +28,16 @@ var mappingNerModelVersion = map[string]NerModelVersionEnum{
 // GetNerModelVersionEnumValues Enumerates the set of values for NerModelVersionEnum
 func GetNerModelVersionEnumValues() []NerModelVersionEnum {
 	values := make([]NerModelVersionEnum, 0)
-	for _, v := range mappingNerModelVersion {
+	for _, v := range mappingNerModelVersionEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetNerModelVersionEnumStringValues Enumerates the set of values in String for NerModelVersionEnum
+func GetNerModelVersionEnumStringValues() []string {
+	return []string{
+		"V2.1",
+		"V1.1",
+	}
 }

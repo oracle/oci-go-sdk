@@ -10,7 +10,9 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // TransferJob The representation of TransferJob
@@ -55,6 +57,24 @@ func (m TransferJob) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m TransferJob) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingTransferJobDeviceTypeEnum[string(m.DeviceType)]; !ok && m.DeviceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeviceType: %s. Supported values are: %s.", m.DeviceType, strings.Join(GetTransferJobDeviceTypeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingTransferJobLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTransferJobLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // TransferJobDeviceTypeEnum Enum with underlying type: string
 type TransferJobDeviceTypeEnum string
 
@@ -64,7 +84,7 @@ const (
 	TransferJobDeviceTypeAppliance TransferJobDeviceTypeEnum = "APPLIANCE"
 )
 
-var mappingTransferJobDeviceType = map[string]TransferJobDeviceTypeEnum{
+var mappingTransferJobDeviceTypeEnum = map[string]TransferJobDeviceTypeEnum{
 	"DISK":      TransferJobDeviceTypeDisk,
 	"APPLIANCE": TransferJobDeviceTypeAppliance,
 }
@@ -72,10 +92,18 @@ var mappingTransferJobDeviceType = map[string]TransferJobDeviceTypeEnum{
 // GetTransferJobDeviceTypeEnumValues Enumerates the set of values for TransferJobDeviceTypeEnum
 func GetTransferJobDeviceTypeEnumValues() []TransferJobDeviceTypeEnum {
 	values := make([]TransferJobDeviceTypeEnum, 0)
-	for _, v := range mappingTransferJobDeviceType {
+	for _, v := range mappingTransferJobDeviceTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetTransferJobDeviceTypeEnumStringValues Enumerates the set of values in String for TransferJobDeviceTypeEnum
+func GetTransferJobDeviceTypeEnumStringValues() []string {
+	return []string{
+		"DISK",
+		"APPLIANCE",
+	}
 }
 
 // TransferJobLifecycleStateEnum Enum with underlying type: string
@@ -90,7 +118,7 @@ const (
 	TransferJobLifecycleStateClosed    TransferJobLifecycleStateEnum = "CLOSED"
 )
 
-var mappingTransferJobLifecycleState = map[string]TransferJobLifecycleStateEnum{
+var mappingTransferJobLifecycleStateEnum = map[string]TransferJobLifecycleStateEnum{
 	"INITIATED": TransferJobLifecycleStateInitiated,
 	"PREPARING": TransferJobLifecycleStatePreparing,
 	"ACTIVE":    TransferJobLifecycleStateActive,
@@ -101,8 +129,19 @@ var mappingTransferJobLifecycleState = map[string]TransferJobLifecycleStateEnum{
 // GetTransferJobLifecycleStateEnumValues Enumerates the set of values for TransferJobLifecycleStateEnum
 func GetTransferJobLifecycleStateEnumValues() []TransferJobLifecycleStateEnum {
 	values := make([]TransferJobLifecycleStateEnum, 0)
-	for _, v := range mappingTransferJobLifecycleState {
+	for _, v := range mappingTransferJobLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetTransferJobLifecycleStateEnumStringValues Enumerates the set of values in String for TransferJobLifecycleStateEnum
+func GetTransferJobLifecycleStateEnumStringValues() []string {
+	return []string{
+		"INITIATED",
+		"PREPARING",
+		"ACTIVE",
+		"DELETED",
+		"CLOSED",
+	}
 }

@@ -5,8 +5,10 @@
 package osubusage
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListComputedUsagesRequest wrapper for the ListComputedUsages operation
@@ -65,6 +67,10 @@ func (request ListComputedUsagesRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListComputedUsagesRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -78,6 +84,23 @@ func (request ListComputedUsagesRequest) BinaryRequestBody() (*common.OCIReadSee
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListComputedUsagesRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListComputedUsagesRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListComputedUsagesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListComputedUsagesSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListComputedUsagesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListComputedUsagesSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListComputedUsagesResponse wrapper for the ListComputedUsages operation
@@ -117,7 +140,7 @@ const (
 	ListComputedUsagesSortOrderDesc ListComputedUsagesSortOrderEnum = "DESC"
 )
 
-var mappingListComputedUsagesSortOrder = map[string]ListComputedUsagesSortOrderEnum{
+var mappingListComputedUsagesSortOrderEnum = map[string]ListComputedUsagesSortOrderEnum{
 	"ASC":  ListComputedUsagesSortOrderAsc,
 	"DESC": ListComputedUsagesSortOrderDesc,
 }
@@ -125,10 +148,18 @@ var mappingListComputedUsagesSortOrder = map[string]ListComputedUsagesSortOrderE
 // GetListComputedUsagesSortOrderEnumValues Enumerates the set of values for ListComputedUsagesSortOrderEnum
 func GetListComputedUsagesSortOrderEnumValues() []ListComputedUsagesSortOrderEnum {
 	values := make([]ListComputedUsagesSortOrderEnum, 0)
-	for _, v := range mappingListComputedUsagesSortOrder {
+	for _, v := range mappingListComputedUsagesSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListComputedUsagesSortOrderEnumStringValues Enumerates the set of values in String for ListComputedUsagesSortOrderEnum
+func GetListComputedUsagesSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListComputedUsagesSortByEnum Enum with underlying type: string
@@ -141,7 +172,7 @@ const (
 	ListComputedUsagesSortByTimemeteredon ListComputedUsagesSortByEnum = "timeMeteredOn"
 )
 
-var mappingListComputedUsagesSortBy = map[string]ListComputedUsagesSortByEnum{
+var mappingListComputedUsagesSortByEnum = map[string]ListComputedUsagesSortByEnum{
 	"timeCreated":   ListComputedUsagesSortByTimecreated,
 	"timeOfArrival": ListComputedUsagesSortByTimeofarrival,
 	"timeMeteredOn": ListComputedUsagesSortByTimemeteredon,
@@ -150,8 +181,17 @@ var mappingListComputedUsagesSortBy = map[string]ListComputedUsagesSortByEnum{
 // GetListComputedUsagesSortByEnumValues Enumerates the set of values for ListComputedUsagesSortByEnum
 func GetListComputedUsagesSortByEnumValues() []ListComputedUsagesSortByEnum {
 	values := make([]ListComputedUsagesSortByEnum, 0)
-	for _, v := range mappingListComputedUsagesSortBy {
+	for _, v := range mappingListComputedUsagesSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListComputedUsagesSortByEnumStringValues Enumerates the set of values in String for ListComputedUsagesSortByEnum
+func GetListComputedUsagesSortByEnumStringValues() []string {
+	return []string{
+		"timeCreated",
+		"timeOfArrival",
+		"timeMeteredOn",
+	}
 }

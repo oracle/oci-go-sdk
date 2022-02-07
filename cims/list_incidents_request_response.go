@@ -5,8 +5,10 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListIncidentsRequest wrapper for the ListIncidents operation
@@ -61,6 +63,10 @@ func (request ListIncidentsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListIncidentsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -74,6 +80,26 @@ func (request ListIncidentsRequest) BinaryRequestBody() (*common.OCIReadSeekClos
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListIncidentsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListIncidentsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListIncidentsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListIncidentsSortByEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListIncidentsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListIncidentsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListIncidentsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListIncidentsLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListIncidentsResponse wrapper for the ListIncidents operation
@@ -110,7 +136,7 @@ const (
 	ListIncidentsSortBySeverity    ListIncidentsSortByEnum = "severity"
 )
 
-var mappingListIncidentsSortBy = map[string]ListIncidentsSortByEnum{
+var mappingListIncidentsSortByEnum = map[string]ListIncidentsSortByEnum{
 	"dateUpdated": ListIncidentsSortByDateupdated,
 	"severity":    ListIncidentsSortBySeverity,
 }
@@ -118,10 +144,18 @@ var mappingListIncidentsSortBy = map[string]ListIncidentsSortByEnum{
 // GetListIncidentsSortByEnumValues Enumerates the set of values for ListIncidentsSortByEnum
 func GetListIncidentsSortByEnumValues() []ListIncidentsSortByEnum {
 	values := make([]ListIncidentsSortByEnum, 0)
-	for _, v := range mappingListIncidentsSortBy {
+	for _, v := range mappingListIncidentsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListIncidentsSortByEnumStringValues Enumerates the set of values in String for ListIncidentsSortByEnum
+func GetListIncidentsSortByEnumStringValues() []string {
+	return []string{
+		"dateUpdated",
+		"severity",
+	}
 }
 
 // ListIncidentsSortOrderEnum Enum with underlying type: string
@@ -133,7 +167,7 @@ const (
 	ListIncidentsSortOrderDesc ListIncidentsSortOrderEnum = "DESC"
 )
 
-var mappingListIncidentsSortOrder = map[string]ListIncidentsSortOrderEnum{
+var mappingListIncidentsSortOrderEnum = map[string]ListIncidentsSortOrderEnum{
 	"ASC":  ListIncidentsSortOrderAsc,
 	"DESC": ListIncidentsSortOrderDesc,
 }
@@ -141,10 +175,18 @@ var mappingListIncidentsSortOrder = map[string]ListIncidentsSortOrderEnum{
 // GetListIncidentsSortOrderEnumValues Enumerates the set of values for ListIncidentsSortOrderEnum
 func GetListIncidentsSortOrderEnumValues() []ListIncidentsSortOrderEnum {
 	values := make([]ListIncidentsSortOrderEnum, 0)
-	for _, v := range mappingListIncidentsSortOrder {
+	for _, v := range mappingListIncidentsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListIncidentsSortOrderEnumStringValues Enumerates the set of values in String for ListIncidentsSortOrderEnum
+func GetListIncidentsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListIncidentsLifecycleStateEnum Enum with underlying type: string
@@ -156,7 +198,7 @@ const (
 	ListIncidentsLifecycleStateClosed ListIncidentsLifecycleStateEnum = "CLOSED"
 )
 
-var mappingListIncidentsLifecycleState = map[string]ListIncidentsLifecycleStateEnum{
+var mappingListIncidentsLifecycleStateEnum = map[string]ListIncidentsLifecycleStateEnum{
 	"ACTIVE": ListIncidentsLifecycleStateActive,
 	"CLOSED": ListIncidentsLifecycleStateClosed,
 }
@@ -164,8 +206,16 @@ var mappingListIncidentsLifecycleState = map[string]ListIncidentsLifecycleStateE
 // GetListIncidentsLifecycleStateEnumValues Enumerates the set of values for ListIncidentsLifecycleStateEnum
 func GetListIncidentsLifecycleStateEnumValues() []ListIncidentsLifecycleStateEnum {
 	values := make([]ListIncidentsLifecycleStateEnum, 0)
-	for _, v := range mappingListIncidentsLifecycleState {
+	for _, v := range mappingListIncidentsLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListIncidentsLifecycleStateEnumStringValues Enumerates the set of values in String for ListIncidentsLifecycleStateEnum
+func GetListIncidentsLifecycleStateEnumStringValues() []string {
+	return []string{
+		"ACTIVE",
+		"CLOSED",
+	}
 }

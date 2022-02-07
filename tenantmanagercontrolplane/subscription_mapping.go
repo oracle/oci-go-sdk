@@ -10,7 +10,9 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // SubscriptionMapping Subscription mapping information.
@@ -45,6 +47,21 @@ func (m SubscriptionMapping) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m SubscriptionMapping) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingSubscriptionMappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSubscriptionMappingLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // SubscriptionMappingLifecycleStateEnum Enum with underlying type: string
 type SubscriptionMappingLifecycleStateEnum string
 
@@ -59,7 +76,7 @@ const (
 	SubscriptionMappingLifecycleStateFailed   SubscriptionMappingLifecycleStateEnum = "FAILED"
 )
 
-var mappingSubscriptionMappingLifecycleState = map[string]SubscriptionMappingLifecycleStateEnum{
+var mappingSubscriptionMappingLifecycleStateEnum = map[string]SubscriptionMappingLifecycleStateEnum{
 	"CREATING": SubscriptionMappingLifecycleStateCreating,
 	"ACTIVE":   SubscriptionMappingLifecycleStateActive,
 	"INACTIVE": SubscriptionMappingLifecycleStateInactive,
@@ -72,8 +89,21 @@ var mappingSubscriptionMappingLifecycleState = map[string]SubscriptionMappingLif
 // GetSubscriptionMappingLifecycleStateEnumValues Enumerates the set of values for SubscriptionMappingLifecycleStateEnum
 func GetSubscriptionMappingLifecycleStateEnumValues() []SubscriptionMappingLifecycleStateEnum {
 	values := make([]SubscriptionMappingLifecycleStateEnum, 0)
-	for _, v := range mappingSubscriptionMappingLifecycleState {
+	for _, v := range mappingSubscriptionMappingLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSubscriptionMappingLifecycleStateEnumStringValues Enumerates the set of values in String for SubscriptionMappingLifecycleStateEnum
+func GetSubscriptionMappingLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"INACTIVE",
+		"UPDATING",
+		"DELETING",
+		"DELETED",
+		"FAILED",
+	}
 }

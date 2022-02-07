@@ -19,7 +19,7 @@ const (
 	UnitNone  UnitEnum = "NONE"
 )
 
-var mappingUnit = map[string]UnitEnum{
+var mappingUnitEnum = map[string]UnitEnum{
 	"COUNT": UnitCount,
 	"GB":    UnitGb,
 	"NONE":  UnitNone,
@@ -28,8 +28,17 @@ var mappingUnit = map[string]UnitEnum{
 // GetUnitEnumValues Enumerates the set of values for UnitEnum
 func GetUnitEnumValues() []UnitEnum {
 	values := make([]UnitEnum, 0)
-	for _, v := range mappingUnit {
+	for _, v := range mappingUnitEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetUnitEnumStringValues Enumerates the set of values in String for UnitEnum
+func GetUnitEnumStringValues() []string {
+	return []string{
+		"COUNT",
+		"GB",
+		"NONE",
+	}
 }

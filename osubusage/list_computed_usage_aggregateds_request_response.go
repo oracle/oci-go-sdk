@@ -5,8 +5,10 @@
 package osubusage
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListComputedUsageAggregatedsRequest wrapper for the ListComputedUsageAggregateds operation
@@ -60,6 +62,10 @@ func (request ListComputedUsageAggregatedsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListComputedUsageAggregatedsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -73,6 +79,20 @@ func (request ListComputedUsageAggregatedsRequest) BinaryRequestBody() (*common.
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListComputedUsageAggregatedsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListComputedUsageAggregatedsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListComputedUsageAggregatedsGroupingEnum[string(request.Grouping)]; !ok && request.Grouping != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Grouping: %s. Supported values are: %s.", request.Grouping, strings.Join(GetListComputedUsageAggregatedsGroupingEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListComputedUsageAggregatedsResponse wrapper for the ListComputedUsageAggregateds operation
@@ -114,7 +134,7 @@ const (
 	ListComputedUsageAggregatedsGroupingNone    ListComputedUsageAggregatedsGroupingEnum = "NONE"
 )
 
-var mappingListComputedUsageAggregatedsGrouping = map[string]ListComputedUsageAggregatedsGroupingEnum{
+var mappingListComputedUsageAggregatedsGroupingEnum = map[string]ListComputedUsageAggregatedsGroupingEnum{
 	"HOURLY":  ListComputedUsageAggregatedsGroupingHourly,
 	"DAILY":   ListComputedUsageAggregatedsGroupingDaily,
 	"MONTHLY": ListComputedUsageAggregatedsGroupingMonthly,
@@ -124,8 +144,18 @@ var mappingListComputedUsageAggregatedsGrouping = map[string]ListComputedUsageAg
 // GetListComputedUsageAggregatedsGroupingEnumValues Enumerates the set of values for ListComputedUsageAggregatedsGroupingEnum
 func GetListComputedUsageAggregatedsGroupingEnumValues() []ListComputedUsageAggregatedsGroupingEnum {
 	values := make([]ListComputedUsageAggregatedsGroupingEnum, 0)
-	for _, v := range mappingListComputedUsageAggregatedsGrouping {
+	for _, v := range mappingListComputedUsageAggregatedsGroupingEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListComputedUsageAggregatedsGroupingEnumStringValues Enumerates the set of values in String for ListComputedUsageAggregatedsGroupingEnum
+func GetListComputedUsageAggregatedsGroupingEnumStringValues() []string {
+	return []string{
+		"HOURLY",
+		"DAILY",
+		"MONTHLY",
+		"NONE",
+	}
 }

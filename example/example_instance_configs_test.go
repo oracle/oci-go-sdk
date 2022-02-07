@@ -17,9 +17,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/oracle/oci-go-sdk/v56/common"
-	"github.com/oracle/oci-go-sdk/v56/core"
-	"github.com/oracle/oci-go-sdk/v56/example/helpers"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v57/core"
+	"github.com/oracle/oci-go-sdk/v57/example/helpers"
 )
 
 // Example to showcase instance configuration create and operations, and eventual teardown

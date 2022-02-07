@@ -13,7 +13,9 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // MigrationSummary Details about the migration. Each migration moves a single application from a specified source to Oracle Cloud Infrastructure.
@@ -63,4 +65,25 @@ type MigrationSummary struct {
 
 func (m MigrationSummary) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m MigrationSummary) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingMigrationTypesEnum[string(m.ApplicationType)]; !ok && m.ApplicationType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ApplicationType: %s. Supported values are: %s.", m.ApplicationType, strings.Join(GetMigrationTypesEnumStringValues(), ",")))
+	}
+	if _, ok := mappingMigrationLifecycleStatesEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetMigrationLifecycleStatesEnumStringValues(), ",")))
+	}
+	if _, ok := mappingMigrationStatesEnum[string(m.MigrationState)]; !ok && m.MigrationState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MigrationState: %s. Supported values are: %s.", m.MigrationState, strings.Join(GetMigrationStatesEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }

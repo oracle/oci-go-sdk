@@ -44,7 +44,7 @@ const (
 	TimeZoneCentralAfricanTime               TimeZoneEnum = "CENTRAL_AFRICAN_TIME"
 )
 
-var mappingTimeZone = map[string]TimeZoneEnum{
+var mappingTimeZoneEnum = map[string]TimeZoneEnum{
 	"GREENWICH_MEAN_TIME":                    TimeZoneGreenwichMeanTime,
 	"EUROPEAN_CENTRAL_TIME":                  TimeZoneEuropeanCentralTime,
 	"EASTERN_EUROPEAN_TIME":                  TimeZoneEasternEuropeanTime,
@@ -78,8 +78,42 @@ var mappingTimeZone = map[string]TimeZoneEnum{
 // GetTimeZoneEnumValues Enumerates the set of values for TimeZoneEnum
 func GetTimeZoneEnumValues() []TimeZoneEnum {
 	values := make([]TimeZoneEnum, 0)
-	for _, v := range mappingTimeZone {
+	for _, v := range mappingTimeZoneEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetTimeZoneEnumStringValues Enumerates the set of values in String for TimeZoneEnum
+func GetTimeZoneEnumStringValues() []string {
+	return []string{
+		"GREENWICH_MEAN_TIME",
+		"EUROPEAN_CENTRAL_TIME",
+		"EASTERN_EUROPEAN_TIME",
+		"EASTERN_AFRICAN_TIME",
+		"MIDDLE_EAST_TIME",
+		"NEAR_EAST_TIME",
+		"PAKISTAN_LAHORE_TIME",
+		"INDIA_STANDARD_TIME",
+		"BANGLADESH_STANDARD_TIME",
+		"VIETNAM_STANDARD_TIME",
+		"CHINA_TAIWAN_TIME",
+		"JAPAN_STANDARD_TIME",
+		"AUSTRALIA_CENTRAL_TIME",
+		"AUSTRALIA_EASTERN_TIME",
+		"SOLOMON_STANDARD_TIME",
+		"NEW_ZEALAND_STANDARD_TIME",
+		"MIDWAY_ISLANDS_TIME",
+		"HAWAII_STANDARD_TIME",
+		"ALASKA_STANDARD_TIME",
+		"PACIFIC_STANDARD_TIME",
+		"MOUNTAIN_STANDARD_TIME",
+		"CENTRAL_STANDARD_TIME",
+		"EASTERN_STANDARD_TIME",
+		"PUERTO_RICO_AND_US_VIRGIN_ISLANDS_TIME",
+		"CANADA_NEWFOUNDLAND_TIME",
+		"ARGENTINA_STANDARD_TIME",
+		"MID_ATLANTIC_TIME",
+		"CENTRAL_AFRICAN_TIME",
+	}
 }

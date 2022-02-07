@@ -20,7 +20,7 @@ const (
 	ProblemTypeAccount     ProblemTypeEnum = "ACCOUNT"
 )
 
-var mappingProblemType = map[string]ProblemTypeEnum{
+var mappingProblemTypeEnum = map[string]ProblemTypeEnum{
 	"LIMIT":        ProblemTypeLimit,
 	"LEGACY_LIMIT": ProblemTypeLegacyLimit,
 	"TECH":         ProblemTypeTech,
@@ -30,8 +30,18 @@ var mappingProblemType = map[string]ProblemTypeEnum{
 // GetProblemTypeEnumValues Enumerates the set of values for ProblemTypeEnum
 func GetProblemTypeEnumValues() []ProblemTypeEnum {
 	values := make([]ProblemTypeEnum, 0)
-	for _, v := range mappingProblemType {
+	for _, v := range mappingProblemTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetProblemTypeEnumStringValues Enumerates the set of values in String for ProblemTypeEnum
+func GetProblemTypeEnumStringValues() []string {
+	return []string{
+		"LIMIT",
+		"LEGACY_LIMIT",
+		"TECH",
+		"ACCOUNT",
+	}
 }

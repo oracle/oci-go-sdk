@@ -5,8 +5,10 @@
 package secrets
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListSecretBundleVersionsRequest wrapper for the ListSecretBundleVersions operation
@@ -49,6 +51,10 @@ func (request ListSecretBundleVersionsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListSecretBundleVersionsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -62,6 +68,23 @@ func (request ListSecretBundleVersionsRequest) BinaryRequestBody() (*common.OCIR
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListSecretBundleVersionsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListSecretBundleVersionsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListSecretBundleVersionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSecretBundleVersionsSortByEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListSecretBundleVersionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSecretBundleVersionsSortOrderEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListSecretBundleVersionsResponse wrapper for the ListSecretBundleVersions operation
@@ -100,17 +123,24 @@ const (
 	ListSecretBundleVersionsSortByVersionNumber ListSecretBundleVersionsSortByEnum = "VERSION_NUMBER"
 )
 
-var mappingListSecretBundleVersionsSortBy = map[string]ListSecretBundleVersionsSortByEnum{
+var mappingListSecretBundleVersionsSortByEnum = map[string]ListSecretBundleVersionsSortByEnum{
 	"VERSION_NUMBER": ListSecretBundleVersionsSortByVersionNumber,
 }
 
 // GetListSecretBundleVersionsSortByEnumValues Enumerates the set of values for ListSecretBundleVersionsSortByEnum
 func GetListSecretBundleVersionsSortByEnumValues() []ListSecretBundleVersionsSortByEnum {
 	values := make([]ListSecretBundleVersionsSortByEnum, 0)
-	for _, v := range mappingListSecretBundleVersionsSortBy {
+	for _, v := range mappingListSecretBundleVersionsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListSecretBundleVersionsSortByEnumStringValues Enumerates the set of values in String for ListSecretBundleVersionsSortByEnum
+func GetListSecretBundleVersionsSortByEnumStringValues() []string {
+	return []string{
+		"VERSION_NUMBER",
+	}
 }
 
 // ListSecretBundleVersionsSortOrderEnum Enum with underlying type: string
@@ -122,7 +152,7 @@ const (
 	ListSecretBundleVersionsSortOrderDesc ListSecretBundleVersionsSortOrderEnum = "DESC"
 )
 
-var mappingListSecretBundleVersionsSortOrder = map[string]ListSecretBundleVersionsSortOrderEnum{
+var mappingListSecretBundleVersionsSortOrderEnum = map[string]ListSecretBundleVersionsSortOrderEnum{
 	"ASC":  ListSecretBundleVersionsSortOrderAsc,
 	"DESC": ListSecretBundleVersionsSortOrderDesc,
 }
@@ -130,8 +160,16 @@ var mappingListSecretBundleVersionsSortOrder = map[string]ListSecretBundleVersio
 // GetListSecretBundleVersionsSortOrderEnumValues Enumerates the set of values for ListSecretBundleVersionsSortOrderEnum
 func GetListSecretBundleVersionsSortOrderEnumValues() []ListSecretBundleVersionsSortOrderEnum {
 	values := make([]ListSecretBundleVersionsSortOrderEnum, 0)
-	for _, v := range mappingListSecretBundleVersionsSortOrder {
+	for _, v := range mappingListSecretBundleVersionsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListSecretBundleVersionsSortOrderEnumStringValues Enumerates the set of values in String for ListSecretBundleVersionsSortOrderEnum
+func GetListSecretBundleVersionsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }

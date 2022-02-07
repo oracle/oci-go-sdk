@@ -30,7 +30,7 @@ const (
 	OperationTypesChangeMigrationCompartment OperationTypesEnum = "CHANGE_MIGRATION_COMPARTMENT"
 )
 
-var mappingOperationTypes = map[string]OperationTypesEnum{
+var mappingOperationTypesEnum = map[string]OperationTypesEnum{
 	"CREATE_SOURCE":                OperationTypesCreateSource,
 	"UPDATE_SOURCE":                OperationTypesUpdateSource,
 	"DELETE_SOURCE":                OperationTypesDeleteSource,
@@ -47,8 +47,25 @@ var mappingOperationTypes = map[string]OperationTypesEnum{
 // GetOperationTypesEnumValues Enumerates the set of values for OperationTypesEnum
 func GetOperationTypesEnumValues() []OperationTypesEnum {
 	values := make([]OperationTypesEnum, 0)
-	for _, v := range mappingOperationTypes {
+	for _, v := range mappingOperationTypesEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetOperationTypesEnumStringValues Enumerates the set of values in String for OperationTypesEnum
+func GetOperationTypesEnumStringValues() []string {
+	return []string{
+		"CREATE_SOURCE",
+		"UPDATE_SOURCE",
+		"DELETE_SOURCE",
+		"CREATE_MIGRATION",
+		"UPDATE_MIGRATION",
+		"DELETE_MIGRATION",
+		"AUTHORIZE_SOURCE",
+		"DISCOVER_APPLICATION",
+		"MIGRATE_APPLICATION",
+		"CHANGE_SOURCE_COMPARTMENT",
+		"CHANGE_MIGRATION_COMPARTMENT",
+	}
 }

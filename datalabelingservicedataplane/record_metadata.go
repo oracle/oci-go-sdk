@@ -11,7 +11,9 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // RecordMetadata Collection of record's metadata.  This can be, for example, the height, width or depth of image for an image record.
@@ -69,6 +71,18 @@ func (m recordmetadata) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m recordmetadata) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // RecordMetadataRecordTypeEnum Enum with underlying type: string
 type RecordMetadataRecordTypeEnum string
 
@@ -79,7 +93,7 @@ const (
 	RecordMetadataRecordTypeDocumentMetadata RecordMetadataRecordTypeEnum = "DOCUMENT_METADATA"
 )
 
-var mappingRecordMetadataRecordType = map[string]RecordMetadataRecordTypeEnum{
+var mappingRecordMetadataRecordTypeEnum = map[string]RecordMetadataRecordTypeEnum{
 	"IMAGE_METADATA":    RecordMetadataRecordTypeImageMetadata,
 	"TEXT_METADATA":     RecordMetadataRecordTypeTextMetadata,
 	"DOCUMENT_METADATA": RecordMetadataRecordTypeDocumentMetadata,
@@ -88,8 +102,17 @@ var mappingRecordMetadataRecordType = map[string]RecordMetadataRecordTypeEnum{
 // GetRecordMetadataRecordTypeEnumValues Enumerates the set of values for RecordMetadataRecordTypeEnum
 func GetRecordMetadataRecordTypeEnumValues() []RecordMetadataRecordTypeEnum {
 	values := make([]RecordMetadataRecordTypeEnum, 0)
-	for _, v := range mappingRecordMetadataRecordType {
+	for _, v := range mappingRecordMetadataRecordTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetRecordMetadataRecordTypeEnumStringValues Enumerates the set of values in String for RecordMetadataRecordTypeEnum
+func GetRecordMetadataRecordTypeEnumStringValues() []string {
+	return []string{
+		"IMAGE_METADATA",
+		"TEXT_METADATA",
+		"DOCUMENT_METADATA",
+	}
 }

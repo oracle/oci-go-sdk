@@ -11,7 +11,9 @@ package cims
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // ActivityItem Details about the ActivityItem object.
@@ -74,6 +76,24 @@ func (m ActivityItem) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m ActivityItem) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingActivityItemActivityTypeEnum[string(m.ActivityType)]; !ok && m.ActivityType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ActivityType: %s. Supported values are: %s.", m.ActivityType, strings.Join(GetActivityItemActivityTypeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingActivityItemActivityAuthorEnum[string(m.ActivityAuthor)]; !ok && m.ActivityAuthor != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ActivityAuthor: %s. Supported values are: %s.", m.ActivityAuthor, strings.Join(GetActivityItemActivityAuthorEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // MarshalJSON marshals to json representation
 func (m ActivityItem) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeActivityItem ActivityItem
@@ -99,7 +119,7 @@ const (
 	ActivityItemActivityTypeClose              ActivityItemActivityTypeEnum = "CLOSE"
 )
 
-var mappingActivityItemActivityType = map[string]ActivityItemActivityTypeEnum{
+var mappingActivityItemActivityTypeEnum = map[string]ActivityItemActivityTypeEnum{
 	"NOTES":               ActivityItemActivityTypeNotes,
 	"PROBLEM_DESCRIPTION": ActivityItemActivityTypeProblemDescription,
 	"UPDATE":              ActivityItemActivityTypeUpdate,
@@ -109,10 +129,20 @@ var mappingActivityItemActivityType = map[string]ActivityItemActivityTypeEnum{
 // GetActivityItemActivityTypeEnumValues Enumerates the set of values for ActivityItemActivityTypeEnum
 func GetActivityItemActivityTypeEnumValues() []ActivityItemActivityTypeEnum {
 	values := make([]ActivityItemActivityTypeEnum, 0)
-	for _, v := range mappingActivityItemActivityType {
+	for _, v := range mappingActivityItemActivityTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetActivityItemActivityTypeEnumStringValues Enumerates the set of values in String for ActivityItemActivityTypeEnum
+func GetActivityItemActivityTypeEnumStringValues() []string {
+	return []string{
+		"NOTES",
+		"PROBLEM_DESCRIPTION",
+		"UPDATE",
+		"CLOSE",
+	}
 }
 
 // ActivityItemActivityAuthorEnum Enum with underlying type: string
@@ -124,7 +154,7 @@ const (
 	ActivityItemActivityAuthorOracle   ActivityItemActivityAuthorEnum = "ORACLE"
 )
 
-var mappingActivityItemActivityAuthor = map[string]ActivityItemActivityAuthorEnum{
+var mappingActivityItemActivityAuthorEnum = map[string]ActivityItemActivityAuthorEnum{
 	"CUSTOMER": ActivityItemActivityAuthorCustomer,
 	"ORACLE":   ActivityItemActivityAuthorOracle,
 }
@@ -132,8 +162,16 @@ var mappingActivityItemActivityAuthor = map[string]ActivityItemActivityAuthorEnu
 // GetActivityItemActivityAuthorEnumValues Enumerates the set of values for ActivityItemActivityAuthorEnum
 func GetActivityItemActivityAuthorEnumValues() []ActivityItemActivityAuthorEnum {
 	values := make([]ActivityItemActivityAuthorEnum, 0)
-	for _, v := range mappingActivityItemActivityAuthor {
+	for _, v := range mappingActivityItemActivityAuthorEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetActivityItemActivityAuthorEnumStringValues Enumerates the set of values in String for ActivityItemActivityAuthorEnum
+func GetActivityItemActivityAuthorEnumStringValues() []string {
+	return []string{
+		"CUSTOMER",
+		"ORACLE",
+	}
 }

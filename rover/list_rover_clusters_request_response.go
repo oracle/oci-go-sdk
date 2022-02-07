@@ -5,8 +5,10 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListRoverClustersRequest wrapper for the ListRoverClusters operation
@@ -52,6 +54,10 @@ func (request ListRoverClustersRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListRoverClustersRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -65,6 +71,26 @@ func (request ListRoverClustersRequest) BinaryRequestBody() (*common.OCIReadSeek
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListRoverClustersRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListRoverClustersRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListRoverClustersLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListRoverClustersLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListRoverClustersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRoverClustersSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListRoverClustersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRoverClustersSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListRoverClustersResponse wrapper for the ListRoverClusters operation
@@ -113,7 +139,7 @@ const (
 	ListRoverClustersLifecycleStateFailed   ListRoverClustersLifecycleStateEnum = "FAILED"
 )
 
-var mappingListRoverClustersLifecycleState = map[string]ListRoverClustersLifecycleStateEnum{
+var mappingListRoverClustersLifecycleStateEnum = map[string]ListRoverClustersLifecycleStateEnum{
 	"CREATING": ListRoverClustersLifecycleStateCreating,
 	"UPDATING": ListRoverClustersLifecycleStateUpdating,
 	"ACTIVE":   ListRoverClustersLifecycleStateActive,
@@ -125,10 +151,22 @@ var mappingListRoverClustersLifecycleState = map[string]ListRoverClustersLifecyc
 // GetListRoverClustersLifecycleStateEnumValues Enumerates the set of values for ListRoverClustersLifecycleStateEnum
 func GetListRoverClustersLifecycleStateEnumValues() []ListRoverClustersLifecycleStateEnum {
 	values := make([]ListRoverClustersLifecycleStateEnum, 0)
-	for _, v := range mappingListRoverClustersLifecycleState {
+	for _, v := range mappingListRoverClustersLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRoverClustersLifecycleStateEnumStringValues Enumerates the set of values in String for ListRoverClustersLifecycleStateEnum
+func GetListRoverClustersLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"UPDATING",
+		"ACTIVE",
+		"DELETING",
+		"DELETED",
+		"FAILED",
+	}
 }
 
 // ListRoverClustersSortOrderEnum Enum with underlying type: string
@@ -140,7 +178,7 @@ const (
 	ListRoverClustersSortOrderDesc ListRoverClustersSortOrderEnum = "DESC"
 )
 
-var mappingListRoverClustersSortOrder = map[string]ListRoverClustersSortOrderEnum{
+var mappingListRoverClustersSortOrderEnum = map[string]ListRoverClustersSortOrderEnum{
 	"ASC":  ListRoverClustersSortOrderAsc,
 	"DESC": ListRoverClustersSortOrderDesc,
 }
@@ -148,10 +186,18 @@ var mappingListRoverClustersSortOrder = map[string]ListRoverClustersSortOrderEnu
 // GetListRoverClustersSortOrderEnumValues Enumerates the set of values for ListRoverClustersSortOrderEnum
 func GetListRoverClustersSortOrderEnumValues() []ListRoverClustersSortOrderEnum {
 	values := make([]ListRoverClustersSortOrderEnum, 0)
-	for _, v := range mappingListRoverClustersSortOrder {
+	for _, v := range mappingListRoverClustersSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRoverClustersSortOrderEnumStringValues Enumerates the set of values in String for ListRoverClustersSortOrderEnum
+func GetListRoverClustersSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListRoverClustersSortByEnum Enum with underlying type: string
@@ -163,7 +209,7 @@ const (
 	ListRoverClustersSortByDisplayname ListRoverClustersSortByEnum = "displayName"
 )
 
-var mappingListRoverClustersSortBy = map[string]ListRoverClustersSortByEnum{
+var mappingListRoverClustersSortByEnum = map[string]ListRoverClustersSortByEnum{
 	"timeCreated": ListRoverClustersSortByTimecreated,
 	"displayName": ListRoverClustersSortByDisplayname,
 }
@@ -171,8 +217,16 @@ var mappingListRoverClustersSortBy = map[string]ListRoverClustersSortByEnum{
 // GetListRoverClustersSortByEnumValues Enumerates the set of values for ListRoverClustersSortByEnum
 func GetListRoverClustersSortByEnumValues() []ListRoverClustersSortByEnum {
 	values := make([]ListRoverClustersSortByEnum, 0)
-	for _, v := range mappingListRoverClustersSortBy {
+	for _, v := range mappingListRoverClustersSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRoverClustersSortByEnumStringValues Enumerates the set of values in String for ListRoverClustersSortByEnum
+func GetListRoverClustersSortByEnumStringValues() []string {
+	return []string{
+		"timeCreated",
+		"displayName",
+	}
 }

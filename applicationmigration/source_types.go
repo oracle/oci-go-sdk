@@ -24,7 +24,7 @@ const (
 	SourceTypesImport          SourceTypesEnum = "IMPORT"
 )
 
-var mappingSourceTypes = map[string]SourceTypesEnum{
+var mappingSourceTypesEnum = map[string]SourceTypesEnum{
 	"OCIC":             SourceTypesOcic,
 	"INTERNAL_COMPUTE": SourceTypesInternalCompute,
 	"OCC":              SourceTypesOcc,
@@ -35,8 +35,19 @@ var mappingSourceTypes = map[string]SourceTypesEnum{
 // GetSourceTypesEnumValues Enumerates the set of values for SourceTypesEnum
 func GetSourceTypesEnumValues() []SourceTypesEnum {
 	values := make([]SourceTypesEnum, 0)
-	for _, v := range mappingSourceTypes {
+	for _, v := range mappingSourceTypesEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSourceTypesEnumStringValues Enumerates the set of values in String for SourceTypesEnum
+func GetSourceTypesEnumStringValues() []string {
+	return []string{
+		"OCIC",
+		"INTERNAL_COMPUTE",
+		"OCC",
+		"OCIC_IDCS",
+		"IMPORT",
+	}
 }

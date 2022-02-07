@@ -5,8 +5,10 @@
 package ailanguage
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // DetectLanguageEntitiesRequest wrapper for the DetectLanguageEntities operation
@@ -41,6 +43,10 @@ func (request DetectLanguageEntitiesRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request DetectLanguageEntitiesRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -54,6 +60,20 @@ func (request DetectLanguageEntitiesRequest) BinaryRequestBody() (*common.OCIRea
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request DetectLanguageEntitiesRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request DetectLanguageEntitiesRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingDetectLanguageEntitiesModelVersionEnum[string(request.ModelVersion)]; !ok && request.ModelVersion != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ModelVersion: %s. Supported values are: %s.", request.ModelVersion, strings.Join(GetDetectLanguageEntitiesModelVersionEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // DetectLanguageEntitiesResponse wrapper for the DetectLanguageEntities operation
@@ -88,7 +108,7 @@ const (
 	DetectLanguageEntitiesModelVersionV11 DetectLanguageEntitiesModelVersionEnum = "V1.1"
 )
 
-var mappingDetectLanguageEntitiesModelVersion = map[string]DetectLanguageEntitiesModelVersionEnum{
+var mappingDetectLanguageEntitiesModelVersionEnum = map[string]DetectLanguageEntitiesModelVersionEnum{
 	"V2.1": DetectLanguageEntitiesModelVersionV21,
 	"V1.1": DetectLanguageEntitiesModelVersionV11,
 }
@@ -96,8 +116,16 @@ var mappingDetectLanguageEntitiesModelVersion = map[string]DetectLanguageEntitie
 // GetDetectLanguageEntitiesModelVersionEnumValues Enumerates the set of values for DetectLanguageEntitiesModelVersionEnum
 func GetDetectLanguageEntitiesModelVersionEnumValues() []DetectLanguageEntitiesModelVersionEnum {
 	values := make([]DetectLanguageEntitiesModelVersionEnum, 0)
-	for _, v := range mappingDetectLanguageEntitiesModelVersion {
+	for _, v := range mappingDetectLanguageEntitiesModelVersionEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetDetectLanguageEntitiesModelVersionEnumStringValues Enumerates the set of values in String for DetectLanguageEntitiesModelVersionEnum
+func GetDetectLanguageEntitiesModelVersionEnumStringValues() []string {
+	return []string{
+		"V2.1",
+		"V1.1",
+	}
 }

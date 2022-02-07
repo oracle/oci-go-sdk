@@ -11,7 +11,9 @@ package announcementsservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // BaseAnnouncement Incident information that forms the basis of an announcement. Avoid entering confidential information.
@@ -234,6 +236,30 @@ func (m baseannouncement) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m baseannouncement) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingBaseAnnouncementAnnouncementTypeEnum[string(m.AnnouncementType)]; !ok && m.AnnouncementType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AnnouncementType: %s. Supported values are: %s.", m.AnnouncementType, strings.Join(GetBaseAnnouncementAnnouncementTypeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingBaseAnnouncementLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBaseAnnouncementLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if _, ok := mappingBaseAnnouncementTimeOneTypeEnum[string(m.TimeOneType)]; !ok && m.TimeOneType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TimeOneType: %s. Supported values are: %s.", m.TimeOneType, strings.Join(GetBaseAnnouncementTimeOneTypeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingBaseAnnouncementTimeTwoTypeEnum[string(m.TimeTwoType)]; !ok && m.TimeTwoType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TimeTwoType: %s. Supported values are: %s.", m.TimeTwoType, strings.Join(GetBaseAnnouncementTimeTwoTypeEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // BaseAnnouncementTimeOneTypeEnum Enum with underlying type: string
 type BaseAnnouncementTimeOneTypeEnum string
 
@@ -247,7 +273,7 @@ const (
 	BaseAnnouncementTimeOneTypeTimeDetected     BaseAnnouncementTimeOneTypeEnum = "TIME_DETECTED"
 )
 
-var mappingBaseAnnouncementTimeOneType = map[string]BaseAnnouncementTimeOneTypeEnum{
+var mappingBaseAnnouncementTimeOneTypeEnum = map[string]BaseAnnouncementTimeOneTypeEnum{
 	"ACTION_REQUIRED_BY": BaseAnnouncementTimeOneTypeActionRequiredBy,
 	"NEW_START_TIME":     BaseAnnouncementTimeOneTypeNewStartTime,
 	"ORIGINAL_END_TIME":  BaseAnnouncementTimeOneTypeOriginalEndTime,
@@ -259,10 +285,22 @@ var mappingBaseAnnouncementTimeOneType = map[string]BaseAnnouncementTimeOneTypeE
 // GetBaseAnnouncementTimeOneTypeEnumValues Enumerates the set of values for BaseAnnouncementTimeOneTypeEnum
 func GetBaseAnnouncementTimeOneTypeEnumValues() []BaseAnnouncementTimeOneTypeEnum {
 	values := make([]BaseAnnouncementTimeOneTypeEnum, 0)
-	for _, v := range mappingBaseAnnouncementTimeOneType {
+	for _, v := range mappingBaseAnnouncementTimeOneTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetBaseAnnouncementTimeOneTypeEnumStringValues Enumerates the set of values in String for BaseAnnouncementTimeOneTypeEnum
+func GetBaseAnnouncementTimeOneTypeEnumStringValues() []string {
+	return []string{
+		"ACTION_REQUIRED_BY",
+		"NEW_START_TIME",
+		"ORIGINAL_END_TIME",
+		"REPORT_DATE",
+		"START_TIME",
+		"TIME_DETECTED",
+	}
 }
 
 // BaseAnnouncementTimeTwoTypeEnum Enum with underlying type: string
@@ -274,7 +312,7 @@ const (
 	BaseAnnouncementTimeTwoTypeNewEndTime BaseAnnouncementTimeTwoTypeEnum = "NEW_END_TIME"
 )
 
-var mappingBaseAnnouncementTimeTwoType = map[string]BaseAnnouncementTimeTwoTypeEnum{
+var mappingBaseAnnouncementTimeTwoTypeEnum = map[string]BaseAnnouncementTimeTwoTypeEnum{
 	"END_TIME":     BaseAnnouncementTimeTwoTypeEndTime,
 	"NEW_END_TIME": BaseAnnouncementTimeTwoTypeNewEndTime,
 }
@@ -282,10 +320,18 @@ var mappingBaseAnnouncementTimeTwoType = map[string]BaseAnnouncementTimeTwoTypeE
 // GetBaseAnnouncementTimeTwoTypeEnumValues Enumerates the set of values for BaseAnnouncementTimeTwoTypeEnum
 func GetBaseAnnouncementTimeTwoTypeEnumValues() []BaseAnnouncementTimeTwoTypeEnum {
 	values := make([]BaseAnnouncementTimeTwoTypeEnum, 0)
-	for _, v := range mappingBaseAnnouncementTimeTwoType {
+	for _, v := range mappingBaseAnnouncementTimeTwoTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetBaseAnnouncementTimeTwoTypeEnumStringValues Enumerates the set of values in String for BaseAnnouncementTimeTwoTypeEnum
+func GetBaseAnnouncementTimeTwoTypeEnumStringValues() []string {
+	return []string{
+		"END_TIME",
+		"NEW_END_TIME",
+	}
 }
 
 // BaseAnnouncementAnnouncementTypeEnum Enum with underlying type: string
@@ -309,7 +355,7 @@ const (
 	BaseAnnouncementAnnouncementTypeScheduledMaintenance            BaseAnnouncementAnnouncementTypeEnum = "SCHEDULED_MAINTENANCE"
 )
 
-var mappingBaseAnnouncementAnnouncementType = map[string]BaseAnnouncementAnnouncementTypeEnum{
+var mappingBaseAnnouncementAnnouncementTypeEnum = map[string]BaseAnnouncementAnnouncementTypeEnum{
 	"ACTION_RECOMMENDED":                BaseAnnouncementAnnouncementTypeActionRecommended,
 	"ACTION_REQUIRED":                   BaseAnnouncementAnnouncementTypeActionRequired,
 	"EMERGENCY_CHANGE":                  BaseAnnouncementAnnouncementTypeEmergencyChange,
@@ -329,10 +375,30 @@ var mappingBaseAnnouncementAnnouncementType = map[string]BaseAnnouncementAnnounc
 // GetBaseAnnouncementAnnouncementTypeEnumValues Enumerates the set of values for BaseAnnouncementAnnouncementTypeEnum
 func GetBaseAnnouncementAnnouncementTypeEnumValues() []BaseAnnouncementAnnouncementTypeEnum {
 	values := make([]BaseAnnouncementAnnouncementTypeEnum, 0)
-	for _, v := range mappingBaseAnnouncementAnnouncementType {
+	for _, v := range mappingBaseAnnouncementAnnouncementTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetBaseAnnouncementAnnouncementTypeEnumStringValues Enumerates the set of values in String for BaseAnnouncementAnnouncementTypeEnum
+func GetBaseAnnouncementAnnouncementTypeEnumStringValues() []string {
+	return []string{
+		"ACTION_RECOMMENDED",
+		"ACTION_REQUIRED",
+		"EMERGENCY_CHANGE",
+		"EMERGENCY_MAINTENANCE",
+		"EMERGENCY_MAINTENANCE_COMPLETE",
+		"EMERGENCY_MAINTENANCE_EXTENDED",
+		"EMERGENCY_MAINTENANCE_RESCHEDULED",
+		"INFORMATION",
+		"PLANNED_CHANGE",
+		"PLANNED_CHANGE_COMPLETE",
+		"PLANNED_CHANGE_EXTENDED",
+		"PLANNED_CHANGE_RESCHEDULED",
+		"PRODUCTION_EVENT_NOTIFICATION",
+		"SCHEDULED_MAINTENANCE",
+	}
 }
 
 // BaseAnnouncementLifecycleStateEnum Enum with underlying type: string
@@ -344,7 +410,7 @@ const (
 	BaseAnnouncementLifecycleStateInactive BaseAnnouncementLifecycleStateEnum = "INACTIVE"
 )
 
-var mappingBaseAnnouncementLifecycleState = map[string]BaseAnnouncementLifecycleStateEnum{
+var mappingBaseAnnouncementLifecycleStateEnum = map[string]BaseAnnouncementLifecycleStateEnum{
 	"ACTIVE":   BaseAnnouncementLifecycleStateActive,
 	"INACTIVE": BaseAnnouncementLifecycleStateInactive,
 }
@@ -352,8 +418,16 @@ var mappingBaseAnnouncementLifecycleState = map[string]BaseAnnouncementLifecycle
 // GetBaseAnnouncementLifecycleStateEnumValues Enumerates the set of values for BaseAnnouncementLifecycleStateEnum
 func GetBaseAnnouncementLifecycleStateEnumValues() []BaseAnnouncementLifecycleStateEnum {
 	values := make([]BaseAnnouncementLifecycleStateEnum, 0)
-	for _, v := range mappingBaseAnnouncementLifecycleState {
+	for _, v := range mappingBaseAnnouncementLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetBaseAnnouncementLifecycleStateEnumStringValues Enumerates the set of values in String for BaseAnnouncementLifecycleStateEnum
+func GetBaseAnnouncementLifecycleStateEnumStringValues() []string {
+	return []string{
+		"ACTIVE",
+		"INACTIVE",
+	}
 }

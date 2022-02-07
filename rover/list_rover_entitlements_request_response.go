@@ -5,8 +5,10 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListRoverEntitlementsRequest wrapper for the ListRoverEntitlements operation
@@ -55,6 +57,10 @@ func (request ListRoverEntitlementsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListRoverEntitlementsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -68,6 +74,26 @@ func (request ListRoverEntitlementsRequest) BinaryRequestBody() (*common.OCIRead
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListRoverEntitlementsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListRoverEntitlementsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListRoverEntitlementsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListRoverEntitlementsLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListRoverEntitlementsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRoverEntitlementsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListRoverEntitlementsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRoverEntitlementsSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListRoverEntitlementsResponse wrapper for the ListRoverEntitlements operation
@@ -114,7 +140,7 @@ const (
 	ListRoverEntitlementsLifecycleStateFailed   ListRoverEntitlementsLifecycleStateEnum = "FAILED"
 )
 
-var mappingListRoverEntitlementsLifecycleState = map[string]ListRoverEntitlementsLifecycleStateEnum{
+var mappingListRoverEntitlementsLifecycleStateEnum = map[string]ListRoverEntitlementsLifecycleStateEnum{
 	"CREATING": ListRoverEntitlementsLifecycleStateCreating,
 	"UPDATING": ListRoverEntitlementsLifecycleStateUpdating,
 	"ACTIVE":   ListRoverEntitlementsLifecycleStateActive,
@@ -126,10 +152,22 @@ var mappingListRoverEntitlementsLifecycleState = map[string]ListRoverEntitlement
 // GetListRoverEntitlementsLifecycleStateEnumValues Enumerates the set of values for ListRoverEntitlementsLifecycleStateEnum
 func GetListRoverEntitlementsLifecycleStateEnumValues() []ListRoverEntitlementsLifecycleStateEnum {
 	values := make([]ListRoverEntitlementsLifecycleStateEnum, 0)
-	for _, v := range mappingListRoverEntitlementsLifecycleState {
+	for _, v := range mappingListRoverEntitlementsLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRoverEntitlementsLifecycleStateEnumStringValues Enumerates the set of values in String for ListRoverEntitlementsLifecycleStateEnum
+func GetListRoverEntitlementsLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"UPDATING",
+		"ACTIVE",
+		"DELETING",
+		"DELETED",
+		"FAILED",
+	}
 }
 
 // ListRoverEntitlementsSortOrderEnum Enum with underlying type: string
@@ -141,7 +179,7 @@ const (
 	ListRoverEntitlementsSortOrderDesc ListRoverEntitlementsSortOrderEnum = "DESC"
 )
 
-var mappingListRoverEntitlementsSortOrder = map[string]ListRoverEntitlementsSortOrderEnum{
+var mappingListRoverEntitlementsSortOrderEnum = map[string]ListRoverEntitlementsSortOrderEnum{
 	"ASC":  ListRoverEntitlementsSortOrderAsc,
 	"DESC": ListRoverEntitlementsSortOrderDesc,
 }
@@ -149,10 +187,18 @@ var mappingListRoverEntitlementsSortOrder = map[string]ListRoverEntitlementsSort
 // GetListRoverEntitlementsSortOrderEnumValues Enumerates the set of values for ListRoverEntitlementsSortOrderEnum
 func GetListRoverEntitlementsSortOrderEnumValues() []ListRoverEntitlementsSortOrderEnum {
 	values := make([]ListRoverEntitlementsSortOrderEnum, 0)
-	for _, v := range mappingListRoverEntitlementsSortOrder {
+	for _, v := range mappingListRoverEntitlementsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRoverEntitlementsSortOrderEnumStringValues Enumerates the set of values in String for ListRoverEntitlementsSortOrderEnum
+func GetListRoverEntitlementsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListRoverEntitlementsSortByEnum Enum with underlying type: string
@@ -164,7 +210,7 @@ const (
 	ListRoverEntitlementsSortByDisplayname ListRoverEntitlementsSortByEnum = "displayName"
 )
 
-var mappingListRoverEntitlementsSortBy = map[string]ListRoverEntitlementsSortByEnum{
+var mappingListRoverEntitlementsSortByEnum = map[string]ListRoverEntitlementsSortByEnum{
 	"timeCreated": ListRoverEntitlementsSortByTimecreated,
 	"displayName": ListRoverEntitlementsSortByDisplayname,
 }
@@ -172,8 +218,16 @@ var mappingListRoverEntitlementsSortBy = map[string]ListRoverEntitlementsSortByE
 // GetListRoverEntitlementsSortByEnumValues Enumerates the set of values for ListRoverEntitlementsSortByEnum
 func GetListRoverEntitlementsSortByEnumValues() []ListRoverEntitlementsSortByEnum {
 	values := make([]ListRoverEntitlementsSortByEnum, 0)
-	for _, v := range mappingListRoverEntitlementsSortBy {
+	for _, v := range mappingListRoverEntitlementsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRoverEntitlementsSortByEnumStringValues Enumerates the set of values in String for ListRoverEntitlementsSortByEnum
+func GetListRoverEntitlementsSortByEnumStringValues() []string {
+	return []string{
+		"timeCreated",
+		"displayName",
+	}
 }

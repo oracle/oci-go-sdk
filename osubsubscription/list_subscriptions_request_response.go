@@ -5,8 +5,10 @@
 package osubsubscription
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListSubscriptionsRequest wrapper for the ListSubscriptions operation
@@ -66,6 +68,10 @@ func (request ListSubscriptionsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListSubscriptionsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -79,6 +85,23 @@ func (request ListSubscriptionsRequest) BinaryRequestBody() (*common.OCIReadSeek
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListSubscriptionsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListSubscriptionsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListSubscriptionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSubscriptionsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListSubscriptionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSubscriptionsSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListSubscriptionsResponse wrapper for the ListSubscriptions operation
@@ -118,7 +141,7 @@ const (
 	ListSubscriptionsSortOrderDesc ListSubscriptionsSortOrderEnum = "DESC"
 )
 
-var mappingListSubscriptionsSortOrder = map[string]ListSubscriptionsSortOrderEnum{
+var mappingListSubscriptionsSortOrderEnum = map[string]ListSubscriptionsSortOrderEnum{
 	"ASC":  ListSubscriptionsSortOrderAsc,
 	"DESC": ListSubscriptionsSortOrderDesc,
 }
@@ -126,10 +149,18 @@ var mappingListSubscriptionsSortOrder = map[string]ListSubscriptionsSortOrderEnu
 // GetListSubscriptionsSortOrderEnumValues Enumerates the set of values for ListSubscriptionsSortOrderEnum
 func GetListSubscriptionsSortOrderEnumValues() []ListSubscriptionsSortOrderEnum {
 	values := make([]ListSubscriptionsSortOrderEnum, 0)
-	for _, v := range mappingListSubscriptionsSortOrder {
+	for _, v := range mappingListSubscriptionsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListSubscriptionsSortOrderEnumStringValues Enumerates the set of values in String for ListSubscriptionsSortOrderEnum
+func GetListSubscriptionsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListSubscriptionsSortByEnum Enum with underlying type: string
@@ -141,7 +172,7 @@ const (
 	ListSubscriptionsSortByTimestart   ListSubscriptionsSortByEnum = "TIMESTART"
 )
 
-var mappingListSubscriptionsSortBy = map[string]ListSubscriptionsSortByEnum{
+var mappingListSubscriptionsSortByEnum = map[string]ListSubscriptionsSortByEnum{
 	"TIMECREATED": ListSubscriptionsSortByTimecreated,
 	"TIMESTART":   ListSubscriptionsSortByTimestart,
 }
@@ -149,8 +180,16 @@ var mappingListSubscriptionsSortBy = map[string]ListSubscriptionsSortByEnum{
 // GetListSubscriptionsSortByEnumValues Enumerates the set of values for ListSubscriptionsSortByEnum
 func GetListSubscriptionsSortByEnumValues() []ListSubscriptionsSortByEnum {
 	values := make([]ListSubscriptionsSortByEnum, 0)
-	for _, v := range mappingListSubscriptionsSortBy {
+	for _, v := range mappingListSubscriptionsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListSubscriptionsSortByEnumStringValues Enumerates the set of values in String for ListSubscriptionsSortByEnum
+func GetListSubscriptionsSortByEnumStringValues() []string {
+	return []string{
+		"TIMECREATED",
+		"TIMESTART",
+	}
 }

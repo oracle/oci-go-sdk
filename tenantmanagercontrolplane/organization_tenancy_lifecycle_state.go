@@ -22,7 +22,7 @@ const (
 	OrganizationTenancyLifecycleStateDeleting OrganizationTenancyLifecycleStateEnum = "DELETING"
 )
 
-var mappingOrganizationTenancyLifecycleState = map[string]OrganizationTenancyLifecycleStateEnum{
+var mappingOrganizationTenancyLifecycleStateEnum = map[string]OrganizationTenancyLifecycleStateEnum{
 	"CREATING": OrganizationTenancyLifecycleStateCreating,
 	"ACTIVE":   OrganizationTenancyLifecycleStateActive,
 	"INACTIVE": OrganizationTenancyLifecycleStateInactive,
@@ -34,8 +34,20 @@ var mappingOrganizationTenancyLifecycleState = map[string]OrganizationTenancyLif
 // GetOrganizationTenancyLifecycleStateEnumValues Enumerates the set of values for OrganizationTenancyLifecycleStateEnum
 func GetOrganizationTenancyLifecycleStateEnumValues() []OrganizationTenancyLifecycleStateEnum {
 	values := make([]OrganizationTenancyLifecycleStateEnum, 0)
-	for _, v := range mappingOrganizationTenancyLifecycleState {
+	for _, v := range mappingOrganizationTenancyLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetOrganizationTenancyLifecycleStateEnumStringValues Enumerates the set of values in String for OrganizationTenancyLifecycleStateEnum
+func GetOrganizationTenancyLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"INACTIVE",
+		"DELETED",
+		"FAILED",
+		"DELETING",
+	}
 }

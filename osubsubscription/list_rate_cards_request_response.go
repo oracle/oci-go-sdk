@@ -5,8 +5,10 @@
 package osubsubscription
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListRateCardsRequest wrapper for the ListRateCards operation
@@ -62,6 +64,10 @@ func (request ListRateCardsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListRateCardsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -75,6 +81,23 @@ func (request ListRateCardsRequest) BinaryRequestBody() (*common.OCIReadSeekClos
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListRateCardsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListRateCardsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListRateCardsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRateCardsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListRateCardsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRateCardsSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListRateCardsResponse wrapper for the ListRateCards operation
@@ -111,7 +134,7 @@ const (
 	ListRateCardsSortOrderDesc ListRateCardsSortOrderEnum = "DESC"
 )
 
-var mappingListRateCardsSortOrder = map[string]ListRateCardsSortOrderEnum{
+var mappingListRateCardsSortOrderEnum = map[string]ListRateCardsSortOrderEnum{
 	"ASC":  ListRateCardsSortOrderAsc,
 	"DESC": ListRateCardsSortOrderDesc,
 }
@@ -119,10 +142,18 @@ var mappingListRateCardsSortOrder = map[string]ListRateCardsSortOrderEnum{
 // GetListRateCardsSortOrderEnumValues Enumerates the set of values for ListRateCardsSortOrderEnum
 func GetListRateCardsSortOrderEnumValues() []ListRateCardsSortOrderEnum {
 	values := make([]ListRateCardsSortOrderEnum, 0)
-	for _, v := range mappingListRateCardsSortOrder {
+	for _, v := range mappingListRateCardsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRateCardsSortOrderEnumStringValues Enumerates the set of values in String for ListRateCardsSortOrderEnum
+func GetListRateCardsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListRateCardsSortByEnum Enum with underlying type: string
@@ -134,7 +165,7 @@ const (
 	ListRateCardsSortByTimestart   ListRateCardsSortByEnum = "TIMESTART"
 )
 
-var mappingListRateCardsSortBy = map[string]ListRateCardsSortByEnum{
+var mappingListRateCardsSortByEnum = map[string]ListRateCardsSortByEnum{
 	"TIMECREATED": ListRateCardsSortByTimecreated,
 	"TIMESTART":   ListRateCardsSortByTimestart,
 }
@@ -142,8 +173,16 @@ var mappingListRateCardsSortBy = map[string]ListRateCardsSortByEnum{
 // GetListRateCardsSortByEnumValues Enumerates the set of values for ListRateCardsSortByEnum
 func GetListRateCardsSortByEnumValues() []ListRateCardsSortByEnum {
 	values := make([]ListRateCardsSortByEnum, 0)
-	for _, v := range mappingListRateCardsSortBy {
+	for _, v := range mappingListRateCardsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRateCardsSortByEnumStringValues Enumerates the set of values in String for ListRateCardsSortByEnum
+func GetListRateCardsSortByEnumStringValues() []string {
+	return []string{
+		"TIMECREATED",
+		"TIMESTART",
+	}
 }

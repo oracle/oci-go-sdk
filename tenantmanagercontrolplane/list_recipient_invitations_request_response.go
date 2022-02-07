@@ -5,8 +5,10 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListRecipientInvitationsRequest wrapper for the ListRecipientInvitations operation
@@ -46,6 +48,10 @@ func (request ListRecipientInvitationsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListRecipientInvitationsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -59,6 +65,23 @@ func (request ListRecipientInvitationsRequest) BinaryRequestBody() (*common.OCIR
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListRecipientInvitationsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListRecipientInvitationsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListRecipientInvitationsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListRecipientInvitationsLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListRecipientInvitationsStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetListRecipientInvitationsStatusEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListRecipientInvitationsResponse wrapper for the ListRecipientInvitations operation
@@ -102,7 +125,7 @@ const (
 	ListRecipientInvitationsLifecycleStateTerminated ListRecipientInvitationsLifecycleStateEnum = "TERMINATED"
 )
 
-var mappingListRecipientInvitationsLifecycleState = map[string]ListRecipientInvitationsLifecycleStateEnum{
+var mappingListRecipientInvitationsLifecycleStateEnum = map[string]ListRecipientInvitationsLifecycleStateEnum{
 	"CREATING":   ListRecipientInvitationsLifecycleStateCreating,
 	"ACTIVE":     ListRecipientInvitationsLifecycleStateActive,
 	"INACTIVE":   ListRecipientInvitationsLifecycleStateInactive,
@@ -114,10 +137,22 @@ var mappingListRecipientInvitationsLifecycleState = map[string]ListRecipientInvi
 // GetListRecipientInvitationsLifecycleStateEnumValues Enumerates the set of values for ListRecipientInvitationsLifecycleStateEnum
 func GetListRecipientInvitationsLifecycleStateEnumValues() []ListRecipientInvitationsLifecycleStateEnum {
 	values := make([]ListRecipientInvitationsLifecycleStateEnum, 0)
-	for _, v := range mappingListRecipientInvitationsLifecycleState {
+	for _, v := range mappingListRecipientInvitationsLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRecipientInvitationsLifecycleStateEnumStringValues Enumerates the set of values in String for ListRecipientInvitationsLifecycleStateEnum
+func GetListRecipientInvitationsLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"INACTIVE",
+		"UPDATING",
+		"FAILED",
+		"TERMINATED",
+	}
 }
 
 // ListRecipientInvitationsStatusEnum Enum with underlying type: string
@@ -133,7 +168,7 @@ const (
 	ListRecipientInvitationsStatusFailed   ListRecipientInvitationsStatusEnum = "FAILED"
 )
 
-var mappingListRecipientInvitationsStatus = map[string]ListRecipientInvitationsStatusEnum{
+var mappingListRecipientInvitationsStatusEnum = map[string]ListRecipientInvitationsStatusEnum{
 	"PENDING":  ListRecipientInvitationsStatusPending,
 	"CANCELED": ListRecipientInvitationsStatusCanceled,
 	"ACCEPTED": ListRecipientInvitationsStatusAccepted,
@@ -145,8 +180,20 @@ var mappingListRecipientInvitationsStatus = map[string]ListRecipientInvitationsS
 // GetListRecipientInvitationsStatusEnumValues Enumerates the set of values for ListRecipientInvitationsStatusEnum
 func GetListRecipientInvitationsStatusEnumValues() []ListRecipientInvitationsStatusEnum {
 	values := make([]ListRecipientInvitationsStatusEnum, 0)
-	for _, v := range mappingListRecipientInvitationsStatus {
+	for _, v := range mappingListRecipientInvitationsStatusEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRecipientInvitationsStatusEnumStringValues Enumerates the set of values in String for ListRecipientInvitationsStatusEnum
+func GetListRecipientInvitationsStatusEnumStringValues() []string {
+	return []string{
+		"PENDING",
+		"CANCELED",
+		"ACCEPTED",
+		"IGNORED",
+		"EXPIRED",
+		"FAILED",
+	}
 }

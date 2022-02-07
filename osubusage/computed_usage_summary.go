@@ -10,7 +10,9 @@
 package osubusage
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // ComputedUsageSummary Computed Usage Summary object
@@ -94,6 +96,21 @@ func (m ComputedUsageSummary) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m ComputedUsageSummary) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingComputedUsageSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetComputedUsageSummaryTypeEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // ComputedUsageSummaryTypeEnum Enum with underlying type: string
 type ComputedUsageSummaryTypeEnum string
 
@@ -116,7 +133,7 @@ const (
 	ComputedUsageSummaryTypeDelayedUsagePostTermination   ComputedUsageSummaryTypeEnum = "DELAYED_USAGE_POST_TERMINATION"
 )
 
-var mappingComputedUsageSummaryType = map[string]ComputedUsageSummaryTypeEnum{
+var mappingComputedUsageSummaryTypeEnum = map[string]ComputedUsageSummaryTypeEnum{
 	"PROMOTION":                         ComputedUsageSummaryTypePromotion,
 	"DO_NOT_BILL":                       ComputedUsageSummaryTypeDoNotBill,
 	"USAGE":                             ComputedUsageSummaryTypeUsage,
@@ -137,8 +154,29 @@ var mappingComputedUsageSummaryType = map[string]ComputedUsageSummaryTypeEnum{
 // GetComputedUsageSummaryTypeEnumValues Enumerates the set of values for ComputedUsageSummaryTypeEnum
 func GetComputedUsageSummaryTypeEnumValues() []ComputedUsageSummaryTypeEnum {
 	values := make([]ComputedUsageSummaryTypeEnum, 0)
-	for _, v := range mappingComputedUsageSummaryType {
+	for _, v := range mappingComputedUsageSummaryTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetComputedUsageSummaryTypeEnumStringValues Enumerates the set of values in String for ComputedUsageSummaryTypeEnum
+func GetComputedUsageSummaryTypeEnumStringValues() []string {
+	return []string{
+		"PROMOTION",
+		"DO_NOT_BILL",
+		"USAGE",
+		"COMMIT",
+		"OVERAGE",
+		"PAY_AS_YOU_GO",
+		"MONTHLY_MINIMUM",
+		"DELAYED_USAGE_INVOICE_TIMING",
+		"DELAYED_USAGE_COMMITMENT_EXP",
+		"ON_ACCOUNT_CREDIT",
+		"SERVICE_CREDIT",
+		"COMMITMENT_EXPIRATION",
+		"FUNDED_ALLOCATION",
+		"DONOT_BILL_USAGE_POST_TERMINATION",
+		"DELAYED_USAGE_POST_TERMINATION",
+	}
 }
