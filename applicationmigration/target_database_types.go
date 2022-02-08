@@ -21,7 +21,7 @@ const (
 	TargetDatabaseTypesNotSet         TargetDatabaseTypesEnum = "NOT_SET"
 )
 
-var mappingTargetDatabaseTypes = map[string]TargetDatabaseTypesEnum{
+var mappingTargetDatabaseTypesEnum = map[string]TargetDatabaseTypesEnum{
 	"DATABASE_SYSTEM": TargetDatabaseTypesDatabaseSystem,
 	"NOT_SET":         TargetDatabaseTypesNotSet,
 }
@@ -29,8 +29,16 @@ var mappingTargetDatabaseTypes = map[string]TargetDatabaseTypesEnum{
 // GetTargetDatabaseTypesEnumValues Enumerates the set of values for TargetDatabaseTypesEnum
 func GetTargetDatabaseTypesEnumValues() []TargetDatabaseTypesEnum {
 	values := make([]TargetDatabaseTypesEnum, 0)
-	for _, v := range mappingTargetDatabaseTypes {
+	for _, v := range mappingTargetDatabaseTypesEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetTargetDatabaseTypesEnumStringValues Enumerates the set of values in String for TargetDatabaseTypesEnum
+func GetTargetDatabaseTypesEnumStringValues() []string {
+	return []string{
+		"DATABASE_SYSTEM",
+		"NOT_SET",
+	}
 }

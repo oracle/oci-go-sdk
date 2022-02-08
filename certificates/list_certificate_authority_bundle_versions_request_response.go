@@ -5,8 +5,10 @@
 package certificates
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListCertificateAuthorityBundleVersionsRequest wrapper for the ListCertificateAuthorityBundleVersions operation
@@ -42,6 +44,10 @@ func (request ListCertificateAuthorityBundleVersionsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListCertificateAuthorityBundleVersionsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -55,6 +61,23 @@ func (request ListCertificateAuthorityBundleVersionsRequest) BinaryRequestBody()
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListCertificateAuthorityBundleVersionsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListCertificateAuthorityBundleVersionsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListCertificateAuthorityBundleVersionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCertificateAuthorityBundleVersionsSortByEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListCertificateAuthorityBundleVersionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCertificateAuthorityBundleVersionsSortOrderEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListCertificateAuthorityBundleVersionsResponse wrapper for the ListCertificateAuthorityBundleVersions operation
@@ -87,17 +110,24 @@ const (
 	ListCertificateAuthorityBundleVersionsSortByVersionNumber ListCertificateAuthorityBundleVersionsSortByEnum = "VERSION_NUMBER"
 )
 
-var mappingListCertificateAuthorityBundleVersionsSortBy = map[string]ListCertificateAuthorityBundleVersionsSortByEnum{
+var mappingListCertificateAuthorityBundleVersionsSortByEnum = map[string]ListCertificateAuthorityBundleVersionsSortByEnum{
 	"VERSION_NUMBER": ListCertificateAuthorityBundleVersionsSortByVersionNumber,
 }
 
 // GetListCertificateAuthorityBundleVersionsSortByEnumValues Enumerates the set of values for ListCertificateAuthorityBundleVersionsSortByEnum
 func GetListCertificateAuthorityBundleVersionsSortByEnumValues() []ListCertificateAuthorityBundleVersionsSortByEnum {
 	values := make([]ListCertificateAuthorityBundleVersionsSortByEnum, 0)
-	for _, v := range mappingListCertificateAuthorityBundleVersionsSortBy {
+	for _, v := range mappingListCertificateAuthorityBundleVersionsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListCertificateAuthorityBundleVersionsSortByEnumStringValues Enumerates the set of values in String for ListCertificateAuthorityBundleVersionsSortByEnum
+func GetListCertificateAuthorityBundleVersionsSortByEnumStringValues() []string {
+	return []string{
+		"VERSION_NUMBER",
+	}
 }
 
 // ListCertificateAuthorityBundleVersionsSortOrderEnum Enum with underlying type: string
@@ -109,7 +139,7 @@ const (
 	ListCertificateAuthorityBundleVersionsSortOrderDesc ListCertificateAuthorityBundleVersionsSortOrderEnum = "DESC"
 )
 
-var mappingListCertificateAuthorityBundleVersionsSortOrder = map[string]ListCertificateAuthorityBundleVersionsSortOrderEnum{
+var mappingListCertificateAuthorityBundleVersionsSortOrderEnum = map[string]ListCertificateAuthorityBundleVersionsSortOrderEnum{
 	"ASC":  ListCertificateAuthorityBundleVersionsSortOrderAsc,
 	"DESC": ListCertificateAuthorityBundleVersionsSortOrderDesc,
 }
@@ -117,8 +147,16 @@ var mappingListCertificateAuthorityBundleVersionsSortOrder = map[string]ListCert
 // GetListCertificateAuthorityBundleVersionsSortOrderEnumValues Enumerates the set of values for ListCertificateAuthorityBundleVersionsSortOrderEnum
 func GetListCertificateAuthorityBundleVersionsSortOrderEnumValues() []ListCertificateAuthorityBundleVersionsSortOrderEnum {
 	values := make([]ListCertificateAuthorityBundleVersionsSortOrderEnum, 0)
-	for _, v := range mappingListCertificateAuthorityBundleVersionsSortOrder {
+	for _, v := range mappingListCertificateAuthorityBundleVersionsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListCertificateAuthorityBundleVersionsSortOrderEnumStringValues Enumerates the set of values in String for ListCertificateAuthorityBundleVersionsSortOrderEnum
+func GetListCertificateAuthorityBundleVersionsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }

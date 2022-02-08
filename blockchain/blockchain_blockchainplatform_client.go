@@ -12,8 +12,8 @@ package blockchain
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v56/common"
-	"github.com/oracle/oci-go-sdk/v56/common/auth"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v57/common/auth"
 	"net/http"
 )
 

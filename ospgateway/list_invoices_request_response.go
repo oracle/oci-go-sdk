@@ -5,8 +5,10 @@
 package ospgateway
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListInvoicesRequest wrapper for the ListInvoices operation
@@ -77,6 +79,10 @@ func (request ListInvoicesRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListInvoicesRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -90,6 +96,35 @@ func (request ListInvoicesRequest) BinaryRequestBody() (*common.OCIReadSeekClose
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListInvoicesRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListInvoicesRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	for _, val := range request.Type {
+		if _, ok := mappingListInvoicesTypeEnum[string(val)]; !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", val, strings.Join(GetListInvoicesTypeEnumStringValues(), ",")))
+		}
+	}
+
+	for _, val := range request.Status {
+		if _, ok := mappingListInvoicesStatusEnum[string(val)]; !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", val, strings.Join(GetListInvoicesStatusEnumStringValues(), ",")))
+		}
+	}
+
+	if _, ok := mappingListInvoicesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListInvoicesSortByEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListInvoicesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListInvoicesSortOrderEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListInvoicesResponse wrapper for the ListInvoices operation
@@ -138,7 +173,7 @@ const (
 	ListInvoicesTypeUsage        ListInvoicesTypeEnum = "USAGE"
 )
 
-var mappingListInvoicesType = map[string]ListInvoicesTypeEnum{
+var mappingListInvoicesTypeEnum = map[string]ListInvoicesTypeEnum{
 	"HARDWARE":     ListInvoicesTypeHardware,
 	"SUBSCRIPTION": ListInvoicesTypeSubscription,
 	"SUPPORT":      ListInvoicesTypeSupport,
@@ -152,10 +187,24 @@ var mappingListInvoicesType = map[string]ListInvoicesTypeEnum{
 // GetListInvoicesTypeEnumValues Enumerates the set of values for ListInvoicesTypeEnum
 func GetListInvoicesTypeEnumValues() []ListInvoicesTypeEnum {
 	values := make([]ListInvoicesTypeEnum, 0)
-	for _, v := range mappingListInvoicesType {
+	for _, v := range mappingListInvoicesTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListInvoicesTypeEnumStringValues Enumerates the set of values in String for ListInvoicesTypeEnum
+func GetListInvoicesTypeEnumStringValues() []string {
+	return []string{
+		"HARDWARE",
+		"SUBSCRIPTION",
+		"SUPPORT",
+		"LICENSE",
+		"EDUCATION",
+		"CONSULTING",
+		"SERVICE",
+		"USAGE",
+	}
 }
 
 // ListInvoicesStatusEnum Enum with underlying type: string
@@ -169,7 +218,7 @@ const (
 	ListInvoicesStatusClosed           ListInvoicesStatusEnum = "CLOSED"
 )
 
-var mappingListInvoicesStatus = map[string]ListInvoicesStatusEnum{
+var mappingListInvoicesStatusEnum = map[string]ListInvoicesStatusEnum{
 	"OPEN":              ListInvoicesStatusOpen,
 	"PAST_DUE":          ListInvoicesStatusPastDue,
 	"PAYMENT_SUBMITTED": ListInvoicesStatusPaymentSubmitted,
@@ -179,10 +228,20 @@ var mappingListInvoicesStatus = map[string]ListInvoicesStatusEnum{
 // GetListInvoicesStatusEnumValues Enumerates the set of values for ListInvoicesStatusEnum
 func GetListInvoicesStatusEnumValues() []ListInvoicesStatusEnum {
 	values := make([]ListInvoicesStatusEnum, 0)
-	for _, v := range mappingListInvoicesStatus {
+	for _, v := range mappingListInvoicesStatusEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListInvoicesStatusEnumStringValues Enumerates the set of values in String for ListInvoicesStatusEnum
+func GetListInvoicesStatusEnumStringValues() []string {
+	return []string{
+		"OPEN",
+		"PAST_DUE",
+		"PAYMENT_SUBMITTED",
+		"CLOSED",
+	}
 }
 
 // ListInvoicesSortByEnum Enum with underlying type: string
@@ -201,7 +260,7 @@ const (
 	ListInvoicesSortByBalanceDue  ListInvoicesSortByEnum = "BALANCE_DUE"
 )
 
-var mappingListInvoicesSortBy = map[string]ListInvoicesSortByEnum{
+var mappingListInvoicesSortByEnum = map[string]ListInvoicesSortByEnum{
 	"INVOICE_NO":   ListInvoicesSortByInvoiceNo,
 	"REF_NO":       ListInvoicesSortByRefNo,
 	"STATUS":       ListInvoicesSortByStatus,
@@ -216,10 +275,25 @@ var mappingListInvoicesSortBy = map[string]ListInvoicesSortByEnum{
 // GetListInvoicesSortByEnumValues Enumerates the set of values for ListInvoicesSortByEnum
 func GetListInvoicesSortByEnumValues() []ListInvoicesSortByEnum {
 	values := make([]ListInvoicesSortByEnum, 0)
-	for _, v := range mappingListInvoicesSortBy {
+	for _, v := range mappingListInvoicesSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListInvoicesSortByEnumStringValues Enumerates the set of values in String for ListInvoicesSortByEnum
+func GetListInvoicesSortByEnumStringValues() []string {
+	return []string{
+		"INVOICE_NO",
+		"REF_NO",
+		"STATUS",
+		"TYPE",
+		"INVOICE_DATE",
+		"DUE_DATE",
+		"PAYM_REF",
+		"TOTAL_AMOUNT",
+		"BALANCE_DUE",
+	}
 }
 
 // ListInvoicesSortOrderEnum Enum with underlying type: string
@@ -231,7 +305,7 @@ const (
 	ListInvoicesSortOrderDesc ListInvoicesSortOrderEnum = "DESC"
 )
 
-var mappingListInvoicesSortOrder = map[string]ListInvoicesSortOrderEnum{
+var mappingListInvoicesSortOrderEnum = map[string]ListInvoicesSortOrderEnum{
 	"ASC":  ListInvoicesSortOrderAsc,
 	"DESC": ListInvoicesSortOrderDesc,
 }
@@ -239,8 +313,16 @@ var mappingListInvoicesSortOrder = map[string]ListInvoicesSortOrderEnum{
 // GetListInvoicesSortOrderEnumValues Enumerates the set of values for ListInvoicesSortOrderEnum
 func GetListInvoicesSortOrderEnumValues() []ListInvoicesSortOrderEnum {
 	values := make([]ListInvoicesSortOrderEnum, 0)
-	for _, v := range mappingListInvoicesSortOrder {
+	for _, v := range mappingListInvoicesSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListInvoicesSortOrderEnumStringValues Enumerates the set of values in String for ListInvoicesSortOrderEnum
+func GetListInvoicesSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }

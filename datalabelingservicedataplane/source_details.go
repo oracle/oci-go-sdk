@@ -11,7 +11,9 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // SourceDetails The source information is a polymorphic entity. It captures the details of data used for record creation. The discriminator type must match the dataset's source type. The convention is enforced by the API.
@@ -61,6 +63,18 @@ func (m sourcedetails) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m sourcedetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // SourceDetailsSourceTypeEnum Enum with underlying type: string
 type SourceDetailsSourceTypeEnum string
 
@@ -69,15 +83,22 @@ const (
 	SourceDetailsSourceTypeObjectStorage SourceDetailsSourceTypeEnum = "OBJECT_STORAGE"
 )
 
-var mappingSourceDetailsSourceType = map[string]SourceDetailsSourceTypeEnum{
+var mappingSourceDetailsSourceTypeEnum = map[string]SourceDetailsSourceTypeEnum{
 	"OBJECT_STORAGE": SourceDetailsSourceTypeObjectStorage,
 }
 
 // GetSourceDetailsSourceTypeEnumValues Enumerates the set of values for SourceDetailsSourceTypeEnum
 func GetSourceDetailsSourceTypeEnumValues() []SourceDetailsSourceTypeEnum {
 	values := make([]SourceDetailsSourceTypeEnum, 0)
-	for _, v := range mappingSourceDetailsSourceType {
+	for _, v := range mappingSourceDetailsSourceTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSourceDetailsSourceTypeEnumStringValues Enumerates the set of values in String for SourceDetailsSourceTypeEnum
+func GetSourceDetailsSourceTypeEnumStringValues() []string {
+	return []string{
+		"OBJECT_STORAGE",
+	}
 }

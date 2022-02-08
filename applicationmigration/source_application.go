@@ -13,7 +13,9 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // SourceApplication Details about an application running in the source environment that you can migrate to Oracle Cloud Infrastructure.
@@ -37,4 +39,19 @@ type SourceApplication struct {
 
 func (m SourceApplication) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m SourceApplication) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingMigrationTypesEnum[string(m.Type)]; !ok && m.Type != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetMigrationTypesEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }

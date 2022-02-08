@@ -16,7 +16,9 @@
 package dashboardservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // DashboardGroup The base schema for a dashboard group.
@@ -64,6 +66,21 @@ func (m DashboardGroup) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m DashboardGroup) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingDashboardGroupLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDashboardGroupLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // DashboardGroupLifecycleStateEnum Enum with underlying type: string
 type DashboardGroupLifecycleStateEnum string
 
@@ -77,7 +94,7 @@ const (
 	DashboardGroupLifecycleStateFailed   DashboardGroupLifecycleStateEnum = "FAILED"
 )
 
-var mappingDashboardGroupLifecycleState = map[string]DashboardGroupLifecycleStateEnum{
+var mappingDashboardGroupLifecycleStateEnum = map[string]DashboardGroupLifecycleStateEnum{
 	"CREATING": DashboardGroupLifecycleStateCreating,
 	"UPDATING": DashboardGroupLifecycleStateUpdating,
 	"ACTIVE":   DashboardGroupLifecycleStateActive,
@@ -89,8 +106,20 @@ var mappingDashboardGroupLifecycleState = map[string]DashboardGroupLifecycleStat
 // GetDashboardGroupLifecycleStateEnumValues Enumerates the set of values for DashboardGroupLifecycleStateEnum
 func GetDashboardGroupLifecycleStateEnumValues() []DashboardGroupLifecycleStateEnum {
 	values := make([]DashboardGroupLifecycleStateEnum, 0)
-	for _, v := range mappingDashboardGroupLifecycleState {
+	for _, v := range mappingDashboardGroupLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetDashboardGroupLifecycleStateEnumStringValues Enumerates the set of values in String for DashboardGroupLifecycleStateEnum
+func GetDashboardGroupLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"UPDATING",
+		"ACTIVE",
+		"DELETING",
+		"DELETED",
+		"FAILED",
+	}
 }

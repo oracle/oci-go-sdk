@@ -10,7 +10,9 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // ServiceCategory Information about the incident classifier.
@@ -43,4 +45,22 @@ type ServiceCategory struct {
 
 func (m ServiceCategory) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m ServiceCategory) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingScopeEnum[string(m.Scope)]; !ok && m.Scope != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", m.Scope, strings.Join(GetScopeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingUnitEnum[string(m.Unit)]; !ok && m.Unit != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Unit: %s. Supported values are: %s.", m.Unit, strings.Join(GetUnitEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }

@@ -11,7 +11,9 @@ package secrets
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // SecretBundle The contents of the secret, properties of the secret (and secret version), and user-provided contextual metadata for the secret.
@@ -48,6 +50,24 @@ type SecretBundle struct {
 
 func (m SecretBundle) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m SecretBundle) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	for _, val := range m.Stages {
+		if _, ok := mappingSecretBundleStagesEnum[string(val)]; !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stages: %s. Supported values are: %s.", val, strings.Join(GetSecretBundleStagesEnumStringValues(), ",")))
+		}
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // UnmarshalJSON unmarshals from json
@@ -113,7 +133,7 @@ const (
 	SecretBundleStagesDeprecated SecretBundleStagesEnum = "DEPRECATED"
 )
 
-var mappingSecretBundleStages = map[string]SecretBundleStagesEnum{
+var mappingSecretBundleStagesEnum = map[string]SecretBundleStagesEnum{
 	"CURRENT":    SecretBundleStagesCurrent,
 	"PENDING":    SecretBundleStagesPending,
 	"LATEST":     SecretBundleStagesLatest,
@@ -124,8 +144,19 @@ var mappingSecretBundleStages = map[string]SecretBundleStagesEnum{
 // GetSecretBundleStagesEnumValues Enumerates the set of values for SecretBundleStagesEnum
 func GetSecretBundleStagesEnumValues() []SecretBundleStagesEnum {
 	values := make([]SecretBundleStagesEnum, 0)
-	for _, v := range mappingSecretBundleStages {
+	for _, v := range mappingSecretBundleStagesEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSecretBundleStagesEnumStringValues Enumerates the set of values in String for SecretBundleStagesEnum
+func GetSecretBundleStagesEnumStringValues() []string {
+	return []string{
+		"CURRENT",
+		"PENDING",
+		"LATEST",
+		"PREVIOUS",
+		"DEPRECATED",
+	}
 }

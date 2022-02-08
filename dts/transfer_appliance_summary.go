@@ -10,7 +10,9 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // TransferApplianceSummary The representation of TransferApplianceSummary
@@ -26,6 +28,21 @@ type TransferApplianceSummary struct {
 
 func (m TransferApplianceSummary) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m TransferApplianceSummary) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingTransferApplianceSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTransferApplianceSummaryLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // TransferApplianceSummaryLifecycleStateEnum Enum with underlying type: string
@@ -55,7 +72,7 @@ const (
 	TransferApplianceSummaryLifecycleStateError                   TransferApplianceSummaryLifecycleStateEnum = "ERROR"
 )
 
-var mappingTransferApplianceSummaryLifecycleState = map[string]TransferApplianceSummaryLifecycleStateEnum{
+var mappingTransferApplianceSummaryLifecycleStateEnum = map[string]TransferApplianceSummaryLifecycleStateEnum{
 	"REQUESTED":                 TransferApplianceSummaryLifecycleStateRequested,
 	"ORACLE_PREPARING":          TransferApplianceSummaryLifecycleStateOraclePreparing,
 	"SHIPPING":                  TransferApplianceSummaryLifecycleStateShipping,
@@ -81,8 +98,34 @@ var mappingTransferApplianceSummaryLifecycleState = map[string]TransferAppliance
 // GetTransferApplianceSummaryLifecycleStateEnumValues Enumerates the set of values for TransferApplianceSummaryLifecycleStateEnum
 func GetTransferApplianceSummaryLifecycleStateEnumValues() []TransferApplianceSummaryLifecycleStateEnum {
 	values := make([]TransferApplianceSummaryLifecycleStateEnum, 0)
-	for _, v := range mappingTransferApplianceSummaryLifecycleState {
+	for _, v := range mappingTransferApplianceSummaryLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetTransferApplianceSummaryLifecycleStateEnumStringValues Enumerates the set of values in String for TransferApplianceSummaryLifecycleStateEnum
+func GetTransferApplianceSummaryLifecycleStateEnumStringValues() []string {
+	return []string{
+		"REQUESTED",
+		"ORACLE_PREPARING",
+		"SHIPPING",
+		"DELIVERED",
+		"PREPARING",
+		"FINALIZED",
+		"RETURN_DELAYED",
+		"RETURN_SHIPPED",
+		"RETURN_SHIPPED_CANCELLED",
+		"ORACLE_RECEIVED",
+		"ORACLE_RECEIVED_CANCELLED",
+		"PROCESSING",
+		"COMPLETE",
+		"CUSTOMER_NEVER_RECEIVED",
+		"ORACLE_NEVER_RECEIVED",
+		"CUSTOMER_LOST",
+		"CANCELLED",
+		"DELETED",
+		"REJECTED",
+		"ERROR",
+	}
 }

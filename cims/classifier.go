@@ -10,7 +10,9 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // Classifier Details about the incident classifier object.
@@ -42,6 +44,24 @@ func (m Classifier) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m Classifier) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingClassifierScopeEnum[string(m.Scope)]; !ok && m.Scope != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", m.Scope, strings.Join(GetClassifierScopeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingClassifierUnitEnum[string(m.Unit)]; !ok && m.Unit != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Unit: %s. Supported values are: %s.", m.Unit, strings.Join(GetClassifierUnitEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // ClassifierScopeEnum Enum with underlying type: string
 type ClassifierScopeEnum string
 
@@ -53,7 +73,7 @@ const (
 	ClassifierScopeNone    ClassifierScopeEnum = "NONE"
 )
 
-var mappingClassifierScope = map[string]ClassifierScopeEnum{
+var mappingClassifierScopeEnum = map[string]ClassifierScopeEnum{
 	"AD":      ClassifierScopeAd,
 	"REGION":  ClassifierScopeRegion,
 	"TENANCY": ClassifierScopeTenancy,
@@ -63,10 +83,20 @@ var mappingClassifierScope = map[string]ClassifierScopeEnum{
 // GetClassifierScopeEnumValues Enumerates the set of values for ClassifierScopeEnum
 func GetClassifierScopeEnumValues() []ClassifierScopeEnum {
 	values := make([]ClassifierScopeEnum, 0)
-	for _, v := range mappingClassifierScope {
+	for _, v := range mappingClassifierScopeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetClassifierScopeEnumStringValues Enumerates the set of values in String for ClassifierScopeEnum
+func GetClassifierScopeEnumStringValues() []string {
+	return []string{
+		"AD",
+		"REGION",
+		"TENANCY",
+		"NONE",
+	}
 }
 
 // ClassifierUnitEnum Enum with underlying type: string
@@ -79,7 +109,7 @@ const (
 	ClassifierUnitNone  ClassifierUnitEnum = "NONE"
 )
 
-var mappingClassifierUnit = map[string]ClassifierUnitEnum{
+var mappingClassifierUnitEnum = map[string]ClassifierUnitEnum{
 	"COUNT": ClassifierUnitCount,
 	"GB":    ClassifierUnitGb,
 	"NONE":  ClassifierUnitNone,
@@ -88,8 +118,17 @@ var mappingClassifierUnit = map[string]ClassifierUnitEnum{
 // GetClassifierUnitEnumValues Enumerates the set of values for ClassifierUnitEnum
 func GetClassifierUnitEnumValues() []ClassifierUnitEnum {
 	values := make([]ClassifierUnitEnum, 0)
-	for _, v := range mappingClassifierUnit {
+	for _, v := range mappingClassifierUnitEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetClassifierUnitEnumStringValues Enumerates the set of values in String for ClassifierUnitEnum
+func GetClassifierUnitEnumStringValues() []string {
+	return []string{
+		"COUNT",
+		"GB",
+		"NONE",
+	}
 }

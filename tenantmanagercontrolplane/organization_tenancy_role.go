@@ -19,7 +19,7 @@ const (
 	OrganizationTenancyRoleNone   OrganizationTenancyRoleEnum = "NONE"
 )
 
-var mappingOrganizationTenancyRole = map[string]OrganizationTenancyRoleEnum{
+var mappingOrganizationTenancyRoleEnum = map[string]OrganizationTenancyRoleEnum{
 	"PARENT": OrganizationTenancyRoleParent,
 	"CHILD":  OrganizationTenancyRoleChild,
 	"NONE":   OrganizationTenancyRoleNone,
@@ -28,8 +28,17 @@ var mappingOrganizationTenancyRole = map[string]OrganizationTenancyRoleEnum{
 // GetOrganizationTenancyRoleEnumValues Enumerates the set of values for OrganizationTenancyRoleEnum
 func GetOrganizationTenancyRoleEnumValues() []OrganizationTenancyRoleEnum {
 	values := make([]OrganizationTenancyRoleEnum, 0)
-	for _, v := range mappingOrganizationTenancyRole {
+	for _, v := range mappingOrganizationTenancyRoleEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetOrganizationTenancyRoleEnumStringValues Enumerates the set of values in String for OrganizationTenancyRoleEnum
+func GetOrganizationTenancyRoleEnumStringValues() []string {
+	return []string{
+		"PARENT",
+		"CHILD",
+		"NONE",
+	}
 }

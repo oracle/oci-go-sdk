@@ -2,16 +2,18 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Billing Center Gateway API
+// OSP Gateway API
 //
-// This site describes all the Rest endpoints of Billing Center Gateway.
+// This site describes all the Rest endpoints of OSP Gateway.
 //
 
 package ospgateway
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // Invoice Invoice details
@@ -84,7 +86,7 @@ type Invoice struct {
 
 	LastPaymentDetail PaymentDetail `mandatory:"false" json:"lastPaymentDetail"`
 
-	BillToAddress *Address `mandatory:"false" json:"billToAddress"`
+	BillToAddress *BillToAddress `mandatory:"false" json:"billToAddress"`
 
 	// List of subscription identifiers
 	SubscriptionIds []string `mandatory:"false" json:"subscriptionIds"`
@@ -92,6 +94,24 @@ type Invoice struct {
 
 func (m Invoice) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m Invoice) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingInvoiceInvoiceTypeEnum[string(m.InvoiceType)]; !ok && m.InvoiceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InvoiceType: %s. Supported values are: %s.", m.InvoiceType, strings.Join(GetInvoiceInvoiceTypeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingInvoiceInvoiceStatusEnum[string(m.InvoiceStatus)]; !ok && m.InvoiceStatus != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InvoiceStatus: %s. Supported values are: %s.", m.InvoiceStatus, strings.Join(GetInvoiceInvoiceStatusEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // UnmarshalJSON unmarshals from json
@@ -119,7 +139,7 @@ func (m *Invoice) UnmarshalJSON(data []byte) (e error) {
 		IsPayable             *bool                    `json:"isPayable"`
 		PaymentTerms          *string                  `json:"paymentTerms"`
 		LastPaymentDetail     paymentdetail            `json:"lastPaymentDetail"`
-		BillToAddress         *Address                 `json:"billToAddress"`
+		BillToAddress         *BillToAddress           `json:"billToAddress"`
 		SubscriptionIds       []string                 `json:"subscriptionIds"`
 		InvoiceId             *string                  `json:"invoiceId"`
 	}{}
@@ -208,7 +228,7 @@ const (
 	InvoiceInvoiceTypeUsage        InvoiceInvoiceTypeEnum = "USAGE"
 )
 
-var mappingInvoiceInvoiceType = map[string]InvoiceInvoiceTypeEnum{
+var mappingInvoiceInvoiceTypeEnum = map[string]InvoiceInvoiceTypeEnum{
 	"HARDWARE":     InvoiceInvoiceTypeHardware,
 	"SUBSCRIPTION": InvoiceInvoiceTypeSubscription,
 	"SUPPORT":      InvoiceInvoiceTypeSupport,
@@ -222,10 +242,24 @@ var mappingInvoiceInvoiceType = map[string]InvoiceInvoiceTypeEnum{
 // GetInvoiceInvoiceTypeEnumValues Enumerates the set of values for InvoiceInvoiceTypeEnum
 func GetInvoiceInvoiceTypeEnumValues() []InvoiceInvoiceTypeEnum {
 	values := make([]InvoiceInvoiceTypeEnum, 0)
-	for _, v := range mappingInvoiceInvoiceType {
+	for _, v := range mappingInvoiceInvoiceTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetInvoiceInvoiceTypeEnumStringValues Enumerates the set of values in String for InvoiceInvoiceTypeEnum
+func GetInvoiceInvoiceTypeEnumStringValues() []string {
+	return []string{
+		"HARDWARE",
+		"SUBSCRIPTION",
+		"SUPPORT",
+		"LICENSE",
+		"EDUCATION",
+		"CONSULTING",
+		"SERVICE",
+		"USAGE",
+	}
 }
 
 // InvoiceInvoiceStatusEnum Enum with underlying type: string
@@ -239,7 +273,7 @@ const (
 	InvoiceInvoiceStatusClosed           InvoiceInvoiceStatusEnum = "CLOSED"
 )
 
-var mappingInvoiceInvoiceStatus = map[string]InvoiceInvoiceStatusEnum{
+var mappingInvoiceInvoiceStatusEnum = map[string]InvoiceInvoiceStatusEnum{
 	"OPEN":              InvoiceInvoiceStatusOpen,
 	"PAST_DUE":          InvoiceInvoiceStatusPastDue,
 	"PAYMENT_SUBMITTED": InvoiceInvoiceStatusPaymentSubmitted,
@@ -249,8 +283,18 @@ var mappingInvoiceInvoiceStatus = map[string]InvoiceInvoiceStatusEnum{
 // GetInvoiceInvoiceStatusEnumValues Enumerates the set of values for InvoiceInvoiceStatusEnum
 func GetInvoiceInvoiceStatusEnumValues() []InvoiceInvoiceStatusEnum {
 	values := make([]InvoiceInvoiceStatusEnum, 0)
-	for _, v := range mappingInvoiceInvoiceStatus {
+	for _, v := range mappingInvoiceInvoiceStatusEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetInvoiceInvoiceStatusEnumStringValues Enumerates the set of values in String for InvoiceInvoiceStatusEnum
+func GetInvoiceInvoiceStatusEnumStringValues() []string {
+	return []string{
+		"OPEN",
+		"PAST_DUE",
+		"PAYMENT_SUBMITTED",
+		"CLOSED",
+	}
 }

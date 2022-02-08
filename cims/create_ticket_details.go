@@ -10,7 +10,9 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // CreateTicketDetails Details relevant to the support ticket.
@@ -37,6 +39,21 @@ func (m CreateTicketDetails) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m CreateTicketDetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingCreateTicketDetailsSeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetCreateTicketDetailsSeverityEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // CreateTicketDetailsSeverityEnum Enum with underlying type: string
 type CreateTicketDetailsSeverityEnum string
 
@@ -47,7 +64,7 @@ const (
 	CreateTicketDetailsSeverityMedium  CreateTicketDetailsSeverityEnum = "MEDIUM"
 )
 
-var mappingCreateTicketDetailsSeverity = map[string]CreateTicketDetailsSeverityEnum{
+var mappingCreateTicketDetailsSeverityEnum = map[string]CreateTicketDetailsSeverityEnum{
 	"HIGHEST": CreateTicketDetailsSeverityHighest,
 	"HIGH":    CreateTicketDetailsSeverityHigh,
 	"MEDIUM":  CreateTicketDetailsSeverityMedium,
@@ -56,8 +73,17 @@ var mappingCreateTicketDetailsSeverity = map[string]CreateTicketDetailsSeverityE
 // GetCreateTicketDetailsSeverityEnumValues Enumerates the set of values for CreateTicketDetailsSeverityEnum
 func GetCreateTicketDetailsSeverityEnumValues() []CreateTicketDetailsSeverityEnum {
 	values := make([]CreateTicketDetailsSeverityEnum, 0)
-	for _, v := range mappingCreateTicketDetailsSeverity {
+	for _, v := range mappingCreateTicketDetailsSeverityEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetCreateTicketDetailsSeverityEnumStringValues Enumerates the set of values in String for CreateTicketDetailsSeverityEnum
+func GetCreateTicketDetailsSeverityEnumStringValues() []string {
+	return []string{
+		"HIGHEST",
+		"HIGH",
+		"MEDIUM",
+	}
 }

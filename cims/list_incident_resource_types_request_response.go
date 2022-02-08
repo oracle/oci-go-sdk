@@ -5,8 +5,10 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListIncidentResourceTypesRequest wrapper for the ListIncidentResourceTypes operation
@@ -61,6 +63,10 @@ func (request ListIncidentResourceTypesRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListIncidentResourceTypesRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -74,6 +80,23 @@ func (request ListIncidentResourceTypesRequest) BinaryRequestBody() (*common.OCI
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListIncidentResourceTypesRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListIncidentResourceTypesRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListIncidentResourceTypesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListIncidentResourceTypesSortByEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListIncidentResourceTypesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListIncidentResourceTypesSortOrderEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListIncidentResourceTypesResponse wrapper for the ListIncidentResourceTypes operation
@@ -110,7 +133,7 @@ const (
 	ListIncidentResourceTypesSortBySeverity    ListIncidentResourceTypesSortByEnum = "severity"
 )
 
-var mappingListIncidentResourceTypesSortBy = map[string]ListIncidentResourceTypesSortByEnum{
+var mappingListIncidentResourceTypesSortByEnum = map[string]ListIncidentResourceTypesSortByEnum{
 	"dateUpdated": ListIncidentResourceTypesSortByDateupdated,
 	"severity":    ListIncidentResourceTypesSortBySeverity,
 }
@@ -118,10 +141,18 @@ var mappingListIncidentResourceTypesSortBy = map[string]ListIncidentResourceType
 // GetListIncidentResourceTypesSortByEnumValues Enumerates the set of values for ListIncidentResourceTypesSortByEnum
 func GetListIncidentResourceTypesSortByEnumValues() []ListIncidentResourceTypesSortByEnum {
 	values := make([]ListIncidentResourceTypesSortByEnum, 0)
-	for _, v := range mappingListIncidentResourceTypesSortBy {
+	for _, v := range mappingListIncidentResourceTypesSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListIncidentResourceTypesSortByEnumStringValues Enumerates the set of values in String for ListIncidentResourceTypesSortByEnum
+func GetListIncidentResourceTypesSortByEnumStringValues() []string {
+	return []string{
+		"dateUpdated",
+		"severity",
+	}
 }
 
 // ListIncidentResourceTypesSortOrderEnum Enum with underlying type: string
@@ -133,7 +164,7 @@ const (
 	ListIncidentResourceTypesSortOrderDesc ListIncidentResourceTypesSortOrderEnum = "DESC"
 )
 
-var mappingListIncidentResourceTypesSortOrder = map[string]ListIncidentResourceTypesSortOrderEnum{
+var mappingListIncidentResourceTypesSortOrderEnum = map[string]ListIncidentResourceTypesSortOrderEnum{
 	"ASC":  ListIncidentResourceTypesSortOrderAsc,
 	"DESC": ListIncidentResourceTypesSortOrderDesc,
 }
@@ -141,8 +172,16 @@ var mappingListIncidentResourceTypesSortOrder = map[string]ListIncidentResourceT
 // GetListIncidentResourceTypesSortOrderEnumValues Enumerates the set of values for ListIncidentResourceTypesSortOrderEnum
 func GetListIncidentResourceTypesSortOrderEnumValues() []ListIncidentResourceTypesSortOrderEnum {
 	values := make([]ListIncidentResourceTypesSortOrderEnum, 0)
-	for _, v := range mappingListIncidentResourceTypesSortOrder {
+	for _, v := range mappingListIncidentResourceTypesSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListIncidentResourceTypesSortOrderEnumStringValues Enumerates the set of values in String for ListIncidentResourceTypesSortOrderEnum
+func GetListIncidentResourceTypesSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }

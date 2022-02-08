@@ -10,7 +10,9 @@
 package rover
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // RoverNode Information about a RoverNode.
@@ -134,6 +136,30 @@ func (m RoverNode) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m RoverNode) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if _, ok := mappingNodeTypeEnum[string(m.NodeType)]; !ok && m.NodeType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NodeType: %s. Supported values are: %s.", m.NodeType, strings.Join(GetNodeTypeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingEnclosureTypeEnum[string(m.EnclosureType)]; !ok && m.EnclosureType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EnclosureType: %s. Supported values are: %s.", m.EnclosureType, strings.Join(GetEnclosureTypeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingRoverNodeShippingPreferenceEnum[string(m.ShippingPreference)]; !ok && m.ShippingPreference != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShippingPreference: %s. Supported values are: %s.", m.ShippingPreference, strings.Join(GetRoverNodeShippingPreferenceEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // RoverNodeShippingPreferenceEnum Enum with underlying type: string
 type RoverNodeShippingPreferenceEnum string
 
@@ -143,7 +169,7 @@ const (
 	RoverNodeShippingPreferenceCustomerPickup RoverNodeShippingPreferenceEnum = "CUSTOMER_PICKUP"
 )
 
-var mappingRoverNodeShippingPreference = map[string]RoverNodeShippingPreferenceEnum{
+var mappingRoverNodeShippingPreferenceEnum = map[string]RoverNodeShippingPreferenceEnum{
 	"ORACLE_SHIPPED":  RoverNodeShippingPreferenceOracleShipped,
 	"CUSTOMER_PICKUP": RoverNodeShippingPreferenceCustomerPickup,
 }
@@ -151,8 +177,16 @@ var mappingRoverNodeShippingPreference = map[string]RoverNodeShippingPreferenceE
 // GetRoverNodeShippingPreferenceEnumValues Enumerates the set of values for RoverNodeShippingPreferenceEnum
 func GetRoverNodeShippingPreferenceEnumValues() []RoverNodeShippingPreferenceEnum {
 	values := make([]RoverNodeShippingPreferenceEnum, 0)
-	for _, v := range mappingRoverNodeShippingPreference {
+	for _, v := range mappingRoverNodeShippingPreferenceEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetRoverNodeShippingPreferenceEnumStringValues Enumerates the set of values in String for RoverNodeShippingPreferenceEnum
+func GetRoverNodeShippingPreferenceEnumStringValues() []string {
+	return []string{
+		"ORACLE_SHIPPED",
+		"CUSTOMER_PICKUP",
+	}
 }

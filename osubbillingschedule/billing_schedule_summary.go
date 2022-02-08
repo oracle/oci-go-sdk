@@ -10,7 +10,9 @@
 package osubbillingschedule
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // BillingScheduleSummary Billing schedule details related to Subscription Id
@@ -56,6 +58,21 @@ func (m BillingScheduleSummary) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m BillingScheduleSummary) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingBillingScheduleSummaryInvoiceStatusEnum[string(m.InvoiceStatus)]; !ok && m.InvoiceStatus != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InvoiceStatus: %s. Supported values are: %s.", m.InvoiceStatus, strings.Join(GetBillingScheduleSummaryInvoiceStatusEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // BillingScheduleSummaryInvoiceStatusEnum Enum with underlying type: string
 type BillingScheduleSummaryInvoiceStatusEnum string
 
@@ -65,7 +82,7 @@ const (
 	BillingScheduleSummaryInvoiceStatusNotInvoiced BillingScheduleSummaryInvoiceStatusEnum = "NOT_INVOICED"
 )
 
-var mappingBillingScheduleSummaryInvoiceStatus = map[string]BillingScheduleSummaryInvoiceStatusEnum{
+var mappingBillingScheduleSummaryInvoiceStatusEnum = map[string]BillingScheduleSummaryInvoiceStatusEnum{
 	"INVOICED":     BillingScheduleSummaryInvoiceStatusInvoiced,
 	"NOT_INVOICED": BillingScheduleSummaryInvoiceStatusNotInvoiced,
 }
@@ -73,8 +90,16 @@ var mappingBillingScheduleSummaryInvoiceStatus = map[string]BillingScheduleSumma
 // GetBillingScheduleSummaryInvoiceStatusEnumValues Enumerates the set of values for BillingScheduleSummaryInvoiceStatusEnum
 func GetBillingScheduleSummaryInvoiceStatusEnumValues() []BillingScheduleSummaryInvoiceStatusEnum {
 	values := make([]BillingScheduleSummaryInvoiceStatusEnum, 0)
-	for _, v := range mappingBillingScheduleSummaryInvoiceStatus {
+	for _, v := range mappingBillingScheduleSummaryInvoiceStatusEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetBillingScheduleSummaryInvoiceStatusEnumStringValues Enumerates the set of values in String for BillingScheduleSummaryInvoiceStatusEnum
+func GetBillingScheduleSummaryInvoiceStatusEnumStringValues() []string {
+	return []string{
+		"INVOICED",
+		"NOT_INVOICED",
+	}
 }

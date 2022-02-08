@@ -2,16 +2,18 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Billing Center Gateway API
+// OSP Gateway API
 //
-// This site describes all the Rest endpoints of Billing Center Gateway.
+// This site describes all the Rest endpoints of OSP Gateway.
 //
 
 package ospgateway
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // InvoiceSummary Invoice list elements
@@ -96,6 +98,24 @@ type InvoiceSummary struct {
 
 func (m InvoiceSummary) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m InvoiceSummary) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingInvoiceSummaryInvoiceStatusEnum[string(m.InvoiceStatus)]; !ok && m.InvoiceStatus != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InvoiceStatus: %s. Supported values are: %s.", m.InvoiceStatus, strings.Join(GetInvoiceSummaryInvoiceStatusEnumStringValues(), ",")))
+	}
+	if _, ok := mappingInvoiceSummaryInvoiceTypeEnum[string(m.InvoiceType)]; !ok && m.InvoiceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InvoiceType: %s. Supported values are: %s.", m.InvoiceType, strings.Join(GetInvoiceSummaryInvoiceTypeEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // UnmarshalJSON unmarshals from json
@@ -211,7 +231,7 @@ const (
 	InvoiceSummaryInvoiceStatusClosed           InvoiceSummaryInvoiceStatusEnum = "CLOSED"
 )
 
-var mappingInvoiceSummaryInvoiceStatus = map[string]InvoiceSummaryInvoiceStatusEnum{
+var mappingInvoiceSummaryInvoiceStatusEnum = map[string]InvoiceSummaryInvoiceStatusEnum{
 	"OPEN":              InvoiceSummaryInvoiceStatusOpen,
 	"PAST_DUE":          InvoiceSummaryInvoiceStatusPastDue,
 	"PAYMENT_SUBMITTED": InvoiceSummaryInvoiceStatusPaymentSubmitted,
@@ -221,10 +241,20 @@ var mappingInvoiceSummaryInvoiceStatus = map[string]InvoiceSummaryInvoiceStatusE
 // GetInvoiceSummaryInvoiceStatusEnumValues Enumerates the set of values for InvoiceSummaryInvoiceStatusEnum
 func GetInvoiceSummaryInvoiceStatusEnumValues() []InvoiceSummaryInvoiceStatusEnum {
 	values := make([]InvoiceSummaryInvoiceStatusEnum, 0)
-	for _, v := range mappingInvoiceSummaryInvoiceStatus {
+	for _, v := range mappingInvoiceSummaryInvoiceStatusEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetInvoiceSummaryInvoiceStatusEnumStringValues Enumerates the set of values in String for InvoiceSummaryInvoiceStatusEnum
+func GetInvoiceSummaryInvoiceStatusEnumStringValues() []string {
+	return []string{
+		"OPEN",
+		"PAST_DUE",
+		"PAYMENT_SUBMITTED",
+		"CLOSED",
+	}
 }
 
 // InvoiceSummaryInvoiceTypeEnum Enum with underlying type: string
@@ -242,7 +272,7 @@ const (
 	InvoiceSummaryInvoiceTypeUsage        InvoiceSummaryInvoiceTypeEnum = "USAGE"
 )
 
-var mappingInvoiceSummaryInvoiceType = map[string]InvoiceSummaryInvoiceTypeEnum{
+var mappingInvoiceSummaryInvoiceTypeEnum = map[string]InvoiceSummaryInvoiceTypeEnum{
 	"HARDWARE":     InvoiceSummaryInvoiceTypeHardware,
 	"SUBSCRIPTION": InvoiceSummaryInvoiceTypeSubscription,
 	"SUPPORT":      InvoiceSummaryInvoiceTypeSupport,
@@ -256,8 +286,22 @@ var mappingInvoiceSummaryInvoiceType = map[string]InvoiceSummaryInvoiceTypeEnum{
 // GetInvoiceSummaryInvoiceTypeEnumValues Enumerates the set of values for InvoiceSummaryInvoiceTypeEnum
 func GetInvoiceSummaryInvoiceTypeEnumValues() []InvoiceSummaryInvoiceTypeEnum {
 	values := make([]InvoiceSummaryInvoiceTypeEnum, 0)
-	for _, v := range mappingInvoiceSummaryInvoiceType {
+	for _, v := range mappingInvoiceSummaryInvoiceTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetInvoiceSummaryInvoiceTypeEnumStringValues Enumerates the set of values in String for InvoiceSummaryInvoiceTypeEnum
+func GetInvoiceSummaryInvoiceTypeEnumStringValues() []string {
+	return []string{
+		"HARDWARE",
+		"SUBSCRIPTION",
+		"SUPPORT",
+		"LICENSE",
+		"EDUCATION",
+		"CONSULTING",
+		"SERVICE",
+		"USAGE",
+	}
 }

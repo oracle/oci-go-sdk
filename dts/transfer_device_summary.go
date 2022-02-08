@@ -10,7 +10,9 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // TransferDeviceSummary The representation of TransferDeviceSummary
@@ -34,6 +36,21 @@ func (m TransferDeviceSummary) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m TransferDeviceSummary) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingTransferDeviceSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTransferDeviceSummaryLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // TransferDeviceSummaryLifecycleStateEnum Enum with underlying type: string
 type TransferDeviceSummaryLifecycleStateEnum string
 
@@ -51,7 +68,7 @@ const (
 	TransferDeviceSummaryLifecycleStateCancelled  TransferDeviceSummaryLifecycleStateEnum = "CANCELLED"
 )
 
-var mappingTransferDeviceSummaryLifecycleState = map[string]TransferDeviceSummaryLifecycleStateEnum{
+var mappingTransferDeviceSummaryLifecycleStateEnum = map[string]TransferDeviceSummaryLifecycleStateEnum{
 	"PREPARING":  TransferDeviceSummaryLifecycleStatePreparing,
 	"READY":      TransferDeviceSummaryLifecycleStateReady,
 	"PACKAGED":   TransferDeviceSummaryLifecycleStatePackaged,
@@ -67,8 +84,24 @@ var mappingTransferDeviceSummaryLifecycleState = map[string]TransferDeviceSummar
 // GetTransferDeviceSummaryLifecycleStateEnumValues Enumerates the set of values for TransferDeviceSummaryLifecycleStateEnum
 func GetTransferDeviceSummaryLifecycleStateEnumValues() []TransferDeviceSummaryLifecycleStateEnum {
 	values := make([]TransferDeviceSummaryLifecycleStateEnum, 0)
-	for _, v := range mappingTransferDeviceSummaryLifecycleState {
+	for _, v := range mappingTransferDeviceSummaryLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetTransferDeviceSummaryLifecycleStateEnumStringValues Enumerates the set of values in String for TransferDeviceSummaryLifecycleStateEnum
+func GetTransferDeviceSummaryLifecycleStateEnumStringValues() []string {
+	return []string{
+		"PREPARING",
+		"READY",
+		"PACKAGED",
+		"ACTIVE",
+		"PROCESSING",
+		"COMPLETE",
+		"MISSING",
+		"ERROR",
+		"DELETED",
+		"CANCELLED",
+	}
 }

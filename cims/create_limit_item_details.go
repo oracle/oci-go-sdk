@@ -11,7 +11,9 @@ package cims
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // CreateLimitItemDetails Reserved for future use.
@@ -62,6 +64,21 @@ func (m CreateLimitItemDetails) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m CreateLimitItemDetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingCreateLimitItemDetailsLimitStatusEnum[string(m.LimitStatus)]; !ok && m.LimitStatus != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LimitStatus: %s. Supported values are: %s.", m.LimitStatus, strings.Join(GetCreateLimitItemDetailsLimitStatusEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // MarshalJSON marshals to json representation
 func (m CreateLimitItemDetails) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeCreateLimitItemDetails CreateLimitItemDetails
@@ -86,7 +103,7 @@ const (
 	CreateLimitItemDetailsLimitStatusNotApproved       CreateLimitItemDetailsLimitStatusEnum = "NOT_APPROVED"
 )
 
-var mappingCreateLimitItemDetailsLimitStatus = map[string]CreateLimitItemDetailsLimitStatusEnum{
+var mappingCreateLimitItemDetailsLimitStatusEnum = map[string]CreateLimitItemDetailsLimitStatusEnum{
 	"APPROVED":           CreateLimitItemDetailsLimitStatusApproved,
 	"PARTIALLY_APPROVED": CreateLimitItemDetailsLimitStatusPartiallyApproved,
 	"NOT_APPROVED":       CreateLimitItemDetailsLimitStatusNotApproved,
@@ -95,8 +112,17 @@ var mappingCreateLimitItemDetailsLimitStatus = map[string]CreateLimitItemDetails
 // GetCreateLimitItemDetailsLimitStatusEnumValues Enumerates the set of values for CreateLimitItemDetailsLimitStatusEnum
 func GetCreateLimitItemDetailsLimitStatusEnumValues() []CreateLimitItemDetailsLimitStatusEnum {
 	values := make([]CreateLimitItemDetailsLimitStatusEnum, 0)
-	for _, v := range mappingCreateLimitItemDetailsLimitStatus {
+	for _, v := range mappingCreateLimitItemDetailsLimitStatusEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetCreateLimitItemDetailsLimitStatusEnumStringValues Enumerates the set of values in String for CreateLimitItemDetailsLimitStatusEnum
+func GetCreateLimitItemDetailsLimitStatusEnumStringValues() []string {
+	return []string{
+		"APPROVED",
+		"PARTIALLY_APPROVED",
+		"NOT_APPROVED",
+	}
 }

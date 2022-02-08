@@ -10,7 +10,9 @@
 package certificates
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // CertificateBundleVersionSummary The properties of the certificate bundle. Certificate bundle version summary objects do not include the actual contents of the certificate.
@@ -50,4 +52,21 @@ type CertificateBundleVersionSummary struct {
 
 func (m CertificateBundleVersionSummary) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m CertificateBundleVersionSummary) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	for _, val := range m.Stages {
+		if _, ok := mappingVersionStageEnum[string(val)]; !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stages: %s. Supported values are: %s.", val, strings.Join(GetVersionStageEnumStringValues(), ",")))
+		}
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }

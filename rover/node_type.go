@@ -18,7 +18,7 @@ const (
 	NodeTypeClustered  NodeTypeEnum = "CLUSTERED"
 )
 
-var mappingNodeType = map[string]NodeTypeEnum{
+var mappingNodeTypeEnum = map[string]NodeTypeEnum{
 	"STANDALONE": NodeTypeStandalone,
 	"CLUSTERED":  NodeTypeClustered,
 }
@@ -26,8 +26,16 @@ var mappingNodeType = map[string]NodeTypeEnum{
 // GetNodeTypeEnumValues Enumerates the set of values for NodeTypeEnum
 func GetNodeTypeEnumValues() []NodeTypeEnum {
 	values := make([]NodeTypeEnum, 0)
-	for _, v := range mappingNodeType {
+	for _, v := range mappingNodeTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetNodeTypeEnumStringValues Enumerates the set of values in String for NodeTypeEnum
+func GetNodeTypeEnumStringValues() []string {
+	return []string{
+		"STANDALONE",
+		"CLUSTERED",
+	}
 }

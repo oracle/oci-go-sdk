@@ -11,7 +11,9 @@ package secrets
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // SecretBundleContentDetails The contents of the secret.
@@ -61,6 +63,18 @@ func (m secretbundlecontentdetails) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m secretbundlecontentdetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // SecretBundleContentDetailsContentTypeEnum Enum with underlying type: string
 type SecretBundleContentDetailsContentTypeEnum string
 
@@ -69,15 +83,22 @@ const (
 	SecretBundleContentDetailsContentTypeBase64 SecretBundleContentDetailsContentTypeEnum = "BASE64"
 )
 
-var mappingSecretBundleContentDetailsContentType = map[string]SecretBundleContentDetailsContentTypeEnum{
+var mappingSecretBundleContentDetailsContentTypeEnum = map[string]SecretBundleContentDetailsContentTypeEnum{
 	"BASE64": SecretBundleContentDetailsContentTypeBase64,
 }
 
 // GetSecretBundleContentDetailsContentTypeEnumValues Enumerates the set of values for SecretBundleContentDetailsContentTypeEnum
 func GetSecretBundleContentDetailsContentTypeEnumValues() []SecretBundleContentDetailsContentTypeEnum {
 	values := make([]SecretBundleContentDetailsContentTypeEnum, 0)
-	for _, v := range mappingSecretBundleContentDetailsContentType {
+	for _, v := range mappingSecretBundleContentDetailsContentTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSecretBundleContentDetailsContentTypeEnumStringValues Enumerates the set of values in String for SecretBundleContentDetailsContentTypeEnum
+func GetSecretBundleContentDetailsContentTypeEnumStringValues() []string {
+	return []string{
+		"BASE64",
+	}
 }

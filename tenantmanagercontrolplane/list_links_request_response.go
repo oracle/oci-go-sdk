@@ -5,8 +5,10 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListLinksRequest wrapper for the ListLinks operation
@@ -49,6 +51,10 @@ func (request ListLinksRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListLinksRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -62,6 +68,23 @@ func (request ListLinksRequest) BinaryRequestBody() (*common.OCIReadSeekCloser, 
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListLinksRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListLinksRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListLinksLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListLinksLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListLinksSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLinksSortOrderEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListLinksResponse wrapper for the ListLinks operation
@@ -105,7 +128,7 @@ const (
 	ListLinksLifecycleStateTerminated ListLinksLifecycleStateEnum = "TERMINATED"
 )
 
-var mappingListLinksLifecycleState = map[string]ListLinksLifecycleStateEnum{
+var mappingListLinksLifecycleStateEnum = map[string]ListLinksLifecycleStateEnum{
 	"CREATING":   ListLinksLifecycleStateCreating,
 	"ACTIVE":     ListLinksLifecycleStateActive,
 	"INACTIVE":   ListLinksLifecycleStateInactive,
@@ -117,10 +140,22 @@ var mappingListLinksLifecycleState = map[string]ListLinksLifecycleStateEnum{
 // GetListLinksLifecycleStateEnumValues Enumerates the set of values for ListLinksLifecycleStateEnum
 func GetListLinksLifecycleStateEnumValues() []ListLinksLifecycleStateEnum {
 	values := make([]ListLinksLifecycleStateEnum, 0)
-	for _, v := range mappingListLinksLifecycleState {
+	for _, v := range mappingListLinksLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListLinksLifecycleStateEnumStringValues Enumerates the set of values in String for ListLinksLifecycleStateEnum
+func GetListLinksLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"INACTIVE",
+		"UPDATING",
+		"FAILED",
+		"TERMINATED",
+	}
 }
 
 // ListLinksSortOrderEnum Enum with underlying type: string
@@ -132,7 +167,7 @@ const (
 	ListLinksSortOrderDesc ListLinksSortOrderEnum = "DESC"
 )
 
-var mappingListLinksSortOrder = map[string]ListLinksSortOrderEnum{
+var mappingListLinksSortOrderEnum = map[string]ListLinksSortOrderEnum{
 	"ASC":  ListLinksSortOrderAsc,
 	"DESC": ListLinksSortOrderDesc,
 }
@@ -140,8 +175,16 @@ var mappingListLinksSortOrder = map[string]ListLinksSortOrderEnum{
 // GetListLinksSortOrderEnumValues Enumerates the set of values for ListLinksSortOrderEnum
 func GetListLinksSortOrderEnumValues() []ListLinksSortOrderEnum {
 	values := make([]ListLinksSortOrderEnum, 0)
-	for _, v := range mappingListLinksSortOrder {
+	for _, v := range mappingListLinksSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListLinksSortOrderEnumStringValues Enumerates the set of values in String for ListLinksSortOrderEnum
+func GetListLinksSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }

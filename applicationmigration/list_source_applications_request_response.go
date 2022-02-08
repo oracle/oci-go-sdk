@@ -5,8 +5,10 @@
 package applicationmigration
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListSourceApplicationsRequest wrapper for the ListSourceApplications operation
@@ -57,6 +59,10 @@ func (request ListSourceApplicationsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListSourceApplicationsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -70,6 +76,23 @@ func (request ListSourceApplicationsRequest) BinaryRequestBody() (*common.OCIRea
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListSourceApplicationsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListSourceApplicationsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListSourceApplicationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSourceApplicationsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListSourceApplicationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSourceApplicationsSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListSourceApplicationsResponse wrapper for the ListSourceApplications operation
@@ -109,7 +132,7 @@ const (
 	ListSourceApplicationsSortOrderDesc ListSourceApplicationsSortOrderEnum = "DESC"
 )
 
-var mappingListSourceApplicationsSortOrder = map[string]ListSourceApplicationsSortOrderEnum{
+var mappingListSourceApplicationsSortOrderEnum = map[string]ListSourceApplicationsSortOrderEnum{
 	"ASC":  ListSourceApplicationsSortOrderAsc,
 	"DESC": ListSourceApplicationsSortOrderDesc,
 }
@@ -117,10 +140,18 @@ var mappingListSourceApplicationsSortOrder = map[string]ListSourceApplicationsSo
 // GetListSourceApplicationsSortOrderEnumValues Enumerates the set of values for ListSourceApplicationsSortOrderEnum
 func GetListSourceApplicationsSortOrderEnumValues() []ListSourceApplicationsSortOrderEnum {
 	values := make([]ListSourceApplicationsSortOrderEnum, 0)
-	for _, v := range mappingListSourceApplicationsSortOrder {
+	for _, v := range mappingListSourceApplicationsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListSourceApplicationsSortOrderEnumStringValues Enumerates the set of values in String for ListSourceApplicationsSortOrderEnum
+func GetListSourceApplicationsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListSourceApplicationsSortByEnum Enum with underlying type: string
@@ -132,7 +163,7 @@ const (
 	ListSourceApplicationsSortByDisplayname ListSourceApplicationsSortByEnum = "DISPLAYNAME"
 )
 
-var mappingListSourceApplicationsSortBy = map[string]ListSourceApplicationsSortByEnum{
+var mappingListSourceApplicationsSortByEnum = map[string]ListSourceApplicationsSortByEnum{
 	"TIMECREATED": ListSourceApplicationsSortByTimecreated,
 	"DISPLAYNAME": ListSourceApplicationsSortByDisplayname,
 }
@@ -140,8 +171,16 @@ var mappingListSourceApplicationsSortBy = map[string]ListSourceApplicationsSortB
 // GetListSourceApplicationsSortByEnumValues Enumerates the set of values for ListSourceApplicationsSortByEnum
 func GetListSourceApplicationsSortByEnumValues() []ListSourceApplicationsSortByEnum {
 	values := make([]ListSourceApplicationsSortByEnum, 0)
-	for _, v := range mappingListSourceApplicationsSortBy {
+	for _, v := range mappingListSourceApplicationsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListSourceApplicationsSortByEnumStringValues Enumerates the set of values in String for ListSourceApplicationsSortByEnum
+func GetListSourceApplicationsSortByEnumStringValues() []string {
+	return []string{
+		"TIMECREATED",
+		"DISPLAYNAME",
+	}
 }

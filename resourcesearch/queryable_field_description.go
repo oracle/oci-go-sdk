@@ -10,7 +10,9 @@
 package resourcesearch
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // QueryableFieldDescription An individual field that can be used as part of a query filter.
@@ -34,6 +36,21 @@ func (m QueryableFieldDescription) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m QueryableFieldDescription) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingQueryableFieldDescriptionFieldTypeEnum[string(m.FieldType)]; !ok && m.FieldType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FieldType: %s. Supported values are: %s.", m.FieldType, strings.Join(GetQueryableFieldDescriptionFieldTypeEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // QueryableFieldDescriptionFieldTypeEnum Enum with underlying type: string
 type QueryableFieldDescriptionFieldTypeEnum string
 
@@ -49,7 +66,7 @@ const (
 	QueryableFieldDescriptionFieldTypeObject     QueryableFieldDescriptionFieldTypeEnum = "OBJECT"
 )
 
-var mappingQueryableFieldDescriptionFieldType = map[string]QueryableFieldDescriptionFieldTypeEnum{
+var mappingQueryableFieldDescriptionFieldTypeEnum = map[string]QueryableFieldDescriptionFieldTypeEnum{
 	"IDENTIFIER": QueryableFieldDescriptionFieldTypeIdentifier,
 	"STRING":     QueryableFieldDescriptionFieldTypeString,
 	"INTEGER":    QueryableFieldDescriptionFieldTypeInteger,
@@ -63,8 +80,22 @@ var mappingQueryableFieldDescriptionFieldType = map[string]QueryableFieldDescrip
 // GetQueryableFieldDescriptionFieldTypeEnumValues Enumerates the set of values for QueryableFieldDescriptionFieldTypeEnum
 func GetQueryableFieldDescriptionFieldTypeEnumValues() []QueryableFieldDescriptionFieldTypeEnum {
 	values := make([]QueryableFieldDescriptionFieldTypeEnum, 0)
-	for _, v := range mappingQueryableFieldDescriptionFieldType {
+	for _, v := range mappingQueryableFieldDescriptionFieldTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetQueryableFieldDescriptionFieldTypeEnumStringValues Enumerates the set of values in String for QueryableFieldDescriptionFieldTypeEnum
+func GetQueryableFieldDescriptionFieldTypeEnumStringValues() []string {
+	return []string{
+		"IDENTIFIER",
+		"STRING",
+		"INTEGER",
+		"RATIONAL",
+		"BOOLEAN",
+		"DATETIME",
+		"IP",
+		"OBJECT",
+	}
 }

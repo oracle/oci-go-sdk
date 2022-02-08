@@ -10,7 +10,9 @@
 package osubusage
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // ComputedUsageAggregatedSummary Subscribed Service Contract details
@@ -50,6 +52,21 @@ func (m ComputedUsageAggregatedSummary) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m ComputedUsageAggregatedSummary) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingComputedUsageAggregatedSummaryPricingModelEnum[string(m.PricingModel)]; !ok && m.PricingModel != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PricingModel: %s. Supported values are: %s.", m.PricingModel, strings.Join(GetComputedUsageAggregatedSummaryPricingModelEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // ComputedUsageAggregatedSummaryPricingModelEnum Enum with underlying type: string
 type ComputedUsageAggregatedSummaryPricingModelEnum string
 
@@ -62,7 +79,7 @@ const (
 	ComputedUsageAggregatedSummaryPricingModelFundedAllocation ComputedUsageAggregatedSummaryPricingModelEnum = "FUNDED_ALLOCATION"
 )
 
-var mappingComputedUsageAggregatedSummaryPricingModel = map[string]ComputedUsageAggregatedSummaryPricingModelEnum{
+var mappingComputedUsageAggregatedSummaryPricingModelEnum = map[string]ComputedUsageAggregatedSummaryPricingModelEnum{
 	"PAY_AS_YOU_GO":     ComputedUsageAggregatedSummaryPricingModelPayAsYouGo,
 	"MONTHLY":           ComputedUsageAggregatedSummaryPricingModelMonthly,
 	"ANNUAL":            ComputedUsageAggregatedSummaryPricingModelAnnual,
@@ -73,8 +90,19 @@ var mappingComputedUsageAggregatedSummaryPricingModel = map[string]ComputedUsage
 // GetComputedUsageAggregatedSummaryPricingModelEnumValues Enumerates the set of values for ComputedUsageAggregatedSummaryPricingModelEnum
 func GetComputedUsageAggregatedSummaryPricingModelEnumValues() []ComputedUsageAggregatedSummaryPricingModelEnum {
 	values := make([]ComputedUsageAggregatedSummaryPricingModelEnum, 0)
-	for _, v := range mappingComputedUsageAggregatedSummaryPricingModel {
+	for _, v := range mappingComputedUsageAggregatedSummaryPricingModelEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetComputedUsageAggregatedSummaryPricingModelEnumStringValues Enumerates the set of values in String for ComputedUsageAggregatedSummaryPricingModelEnum
+func GetComputedUsageAggregatedSummaryPricingModelEnumStringValues() []string {
+	return []string{
+		"PAY_AS_YOU_GO",
+		"MONTHLY",
+		"ANNUAL",
+		"PREPAID",
+		"FUNDED_ALLOCATION",
+	}
 }

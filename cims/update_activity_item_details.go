@@ -11,7 +11,9 @@ package cims
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // UpdateActivityItemDetails Details for udpating the support ticket activity.
@@ -27,6 +29,21 @@ type UpdateActivityItemDetails struct {
 
 func (m UpdateActivityItemDetails) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m UpdateActivityItemDetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingUpdateActivityItemDetailsActivityTypeEnum[string(m.ActivityType)]; !ok && m.ActivityType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ActivityType: %s. Supported values are: %s.", m.ActivityType, strings.Join(GetUpdateActivityItemDetailsActivityTypeEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // MarshalJSON marshals to json representation
@@ -54,7 +71,7 @@ const (
 	UpdateActivityItemDetailsActivityTypeClose              UpdateActivityItemDetailsActivityTypeEnum = "CLOSE"
 )
 
-var mappingUpdateActivityItemDetailsActivityType = map[string]UpdateActivityItemDetailsActivityTypeEnum{
+var mappingUpdateActivityItemDetailsActivityTypeEnum = map[string]UpdateActivityItemDetailsActivityTypeEnum{
 	"NOTES":               UpdateActivityItemDetailsActivityTypeNotes,
 	"PROBLEM_DESCRIPTION": UpdateActivityItemDetailsActivityTypeProblemDescription,
 	"UPDATE":              UpdateActivityItemDetailsActivityTypeUpdate,
@@ -64,8 +81,18 @@ var mappingUpdateActivityItemDetailsActivityType = map[string]UpdateActivityItem
 // GetUpdateActivityItemDetailsActivityTypeEnumValues Enumerates the set of values for UpdateActivityItemDetailsActivityTypeEnum
 func GetUpdateActivityItemDetailsActivityTypeEnumValues() []UpdateActivityItemDetailsActivityTypeEnum {
 	values := make([]UpdateActivityItemDetailsActivityTypeEnum, 0)
-	for _, v := range mappingUpdateActivityItemDetailsActivityType {
+	for _, v := range mappingUpdateActivityItemDetailsActivityTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetUpdateActivityItemDetailsActivityTypeEnumStringValues Enumerates the set of values in String for UpdateActivityItemDetailsActivityTypeEnum
+func GetUpdateActivityItemDetailsActivityTypeEnumStringValues() []string {
+	return []string{
+		"NOTES",
+		"PROBLEM_DESCRIPTION",
+		"UPDATE",
+		"CLOSE",
+	}
 }

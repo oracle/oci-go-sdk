@@ -5,8 +5,10 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListSenderInvitationsRequest wrapper for the ListSenderInvitations operation
@@ -61,6 +63,10 @@ func (request ListSenderInvitationsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListSenderInvitationsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -74,6 +80,29 @@ func (request ListSenderInvitationsRequest) BinaryRequestBody() (*common.OCIRead
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListSenderInvitationsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListSenderInvitationsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListSenderInvitationsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListSenderInvitationsLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListSenderInvitationsStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetListSenderInvitationsStatusEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListSenderInvitationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSenderInvitationsSortByEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListSenderInvitationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSenderInvitationsSortOrderEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListSenderInvitationsResponse wrapper for the ListSenderInvitations operation
@@ -117,7 +146,7 @@ const (
 	ListSenderInvitationsLifecycleStateTerminated ListSenderInvitationsLifecycleStateEnum = "TERMINATED"
 )
 
-var mappingListSenderInvitationsLifecycleState = map[string]ListSenderInvitationsLifecycleStateEnum{
+var mappingListSenderInvitationsLifecycleStateEnum = map[string]ListSenderInvitationsLifecycleStateEnum{
 	"CREATING":   ListSenderInvitationsLifecycleStateCreating,
 	"ACTIVE":     ListSenderInvitationsLifecycleStateActive,
 	"INACTIVE":   ListSenderInvitationsLifecycleStateInactive,
@@ -129,10 +158,22 @@ var mappingListSenderInvitationsLifecycleState = map[string]ListSenderInvitation
 // GetListSenderInvitationsLifecycleStateEnumValues Enumerates the set of values for ListSenderInvitationsLifecycleStateEnum
 func GetListSenderInvitationsLifecycleStateEnumValues() []ListSenderInvitationsLifecycleStateEnum {
 	values := make([]ListSenderInvitationsLifecycleStateEnum, 0)
-	for _, v := range mappingListSenderInvitationsLifecycleState {
+	for _, v := range mappingListSenderInvitationsLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListSenderInvitationsLifecycleStateEnumStringValues Enumerates the set of values in String for ListSenderInvitationsLifecycleStateEnum
+func GetListSenderInvitationsLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"INACTIVE",
+		"UPDATING",
+		"FAILED",
+		"TERMINATED",
+	}
 }
 
 // ListSenderInvitationsStatusEnum Enum with underlying type: string
@@ -147,7 +188,7 @@ const (
 	ListSenderInvitationsStatusFailed   ListSenderInvitationsStatusEnum = "FAILED"
 )
 
-var mappingListSenderInvitationsStatus = map[string]ListSenderInvitationsStatusEnum{
+var mappingListSenderInvitationsStatusEnum = map[string]ListSenderInvitationsStatusEnum{
 	"PENDING":  ListSenderInvitationsStatusPending,
 	"CANCELED": ListSenderInvitationsStatusCanceled,
 	"ACCEPTED": ListSenderInvitationsStatusAccepted,
@@ -158,10 +199,21 @@ var mappingListSenderInvitationsStatus = map[string]ListSenderInvitationsStatusE
 // GetListSenderInvitationsStatusEnumValues Enumerates the set of values for ListSenderInvitationsStatusEnum
 func GetListSenderInvitationsStatusEnumValues() []ListSenderInvitationsStatusEnum {
 	values := make([]ListSenderInvitationsStatusEnum, 0)
-	for _, v := range mappingListSenderInvitationsStatus {
+	for _, v := range mappingListSenderInvitationsStatusEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListSenderInvitationsStatusEnumStringValues Enumerates the set of values in String for ListSenderInvitationsStatusEnum
+func GetListSenderInvitationsStatusEnumStringValues() []string {
+	return []string{
+		"PENDING",
+		"CANCELED",
+		"ACCEPTED",
+		"EXPIRED",
+		"FAILED",
+	}
 }
 
 // ListSenderInvitationsSortByEnum Enum with underlying type: string
@@ -173,7 +225,7 @@ const (
 	ListSenderInvitationsSortByDisplayname ListSenderInvitationsSortByEnum = "displayName"
 )
 
-var mappingListSenderInvitationsSortBy = map[string]ListSenderInvitationsSortByEnum{
+var mappingListSenderInvitationsSortByEnum = map[string]ListSenderInvitationsSortByEnum{
 	"timeCreated": ListSenderInvitationsSortByTimecreated,
 	"displayName": ListSenderInvitationsSortByDisplayname,
 }
@@ -181,10 +233,18 @@ var mappingListSenderInvitationsSortBy = map[string]ListSenderInvitationsSortByE
 // GetListSenderInvitationsSortByEnumValues Enumerates the set of values for ListSenderInvitationsSortByEnum
 func GetListSenderInvitationsSortByEnumValues() []ListSenderInvitationsSortByEnum {
 	values := make([]ListSenderInvitationsSortByEnum, 0)
-	for _, v := range mappingListSenderInvitationsSortBy {
+	for _, v := range mappingListSenderInvitationsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListSenderInvitationsSortByEnumStringValues Enumerates the set of values in String for ListSenderInvitationsSortByEnum
+func GetListSenderInvitationsSortByEnumStringValues() []string {
+	return []string{
+		"timeCreated",
+		"displayName",
+	}
 }
 
 // ListSenderInvitationsSortOrderEnum Enum with underlying type: string
@@ -196,7 +256,7 @@ const (
 	ListSenderInvitationsSortOrderDesc ListSenderInvitationsSortOrderEnum = "DESC"
 )
 
-var mappingListSenderInvitationsSortOrder = map[string]ListSenderInvitationsSortOrderEnum{
+var mappingListSenderInvitationsSortOrderEnum = map[string]ListSenderInvitationsSortOrderEnum{
 	"ASC":  ListSenderInvitationsSortOrderAsc,
 	"DESC": ListSenderInvitationsSortOrderDesc,
 }
@@ -204,8 +264,16 @@ var mappingListSenderInvitationsSortOrder = map[string]ListSenderInvitationsSort
 // GetListSenderInvitationsSortOrderEnumValues Enumerates the set of values for ListSenderInvitationsSortOrderEnum
 func GetListSenderInvitationsSortOrderEnumValues() []ListSenderInvitationsSortOrderEnum {
 	values := make([]ListSenderInvitationsSortOrderEnum, 0)
-	for _, v := range mappingListSenderInvitationsSortOrder {
+	for _, v := range mappingListSenderInvitationsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListSenderInvitationsSortOrderEnumStringValues Enumerates the set of values in String for ListSenderInvitationsSortOrderEnum
+func GetListSenderInvitationsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }

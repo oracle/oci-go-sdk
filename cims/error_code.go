@@ -39,7 +39,7 @@ const (
 	ErrorCodeAuthUserNotMatching                ErrorCodeEnum = "AUTH_USER_NOT_MATCHING"
 )
 
-var mappingErrorCode = map[string]ErrorCodeEnum{
+var mappingErrorCodeEnum = map[string]ErrorCodeEnum{
 	"CONTENT_EMPTY":                         ErrorCodeContentEmpty,
 	"CLIENT_EXCEPTION":                      ErrorCodeClientException,
 	"INVALID_FORMAT":                        ErrorCodeInvalidFormat,
@@ -68,8 +68,37 @@ var mappingErrorCode = map[string]ErrorCodeEnum{
 // GetErrorCodeEnumValues Enumerates the set of values for ErrorCodeEnum
 func GetErrorCodeEnumValues() []ErrorCodeEnum {
 	values := make([]ErrorCodeEnum, 0)
-	for _, v := range mappingErrorCode {
+	for _, v := range mappingErrorCodeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetErrorCodeEnumStringValues Enumerates the set of values in String for ErrorCodeEnum
+func GetErrorCodeEnumStringValues() []string {
+	return []string{
+		"CONTENT_EMPTY",
+		"CLIENT_EXCEPTION",
+		"INVALID_FORMAT",
+		"INVALID_JSON_INPUT",
+		"SSL_AUTHORIZATION",
+		"AUTH_FAILED",
+		"CSI_NOT_AUTHORIZED",
+		"USER_POLICY_NOT_AUTHORIZED",
+		"EMAIL_NOT_VERIFIED",
+		"EMAIL_NOT_FOUND",
+		"IDCS_EMAIL_NOT_VALID",
+		"INVALID_PATH",
+		"METHOD_NOT_ALLOWED",
+		"JSON_PROCESSING",
+		"GENERIC_EXCEPTION",
+		"EXTERNAL_SERVICE_PROVIDER_UNAVAILABLE",
+		"EXTERNAL_SERVICE_PROVIDER_TIMEOUT",
+		"TOO_MANY_REQUESTS",
+		"IDP_SCIM_NOT_SETUP",
+		"INCIDENT_NOT_FOUND",
+		"INVALID_USER_CSI",
+		"DATA_ALREADY_EXISTS",
+		"AUTH_USER_NOT_MATCHING",
+	}
 }

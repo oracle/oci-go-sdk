@@ -10,7 +10,9 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // Domain The domain model that is associated with a tenancy.
@@ -57,6 +59,24 @@ func (m Domain) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m Domain) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingDomainLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDomainLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingDomainStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetDomainStatusEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // DomainLifecycleStateEnum Enum with underlying type: string
 type DomainLifecycleStateEnum string
 
@@ -67,7 +87,7 @@ const (
 	DomainLifecycleStateFailed  DomainLifecycleStateEnum = "FAILED"
 )
 
-var mappingDomainLifecycleState = map[string]DomainLifecycleStateEnum{
+var mappingDomainLifecycleStateEnum = map[string]DomainLifecycleStateEnum{
 	"ACTIVE":  DomainLifecycleStateActive,
 	"DELETED": DomainLifecycleStateDeleted,
 	"FAILED":  DomainLifecycleStateFailed,
@@ -76,10 +96,19 @@ var mappingDomainLifecycleState = map[string]DomainLifecycleStateEnum{
 // GetDomainLifecycleStateEnumValues Enumerates the set of values for DomainLifecycleStateEnum
 func GetDomainLifecycleStateEnumValues() []DomainLifecycleStateEnum {
 	values := make([]DomainLifecycleStateEnum, 0)
-	for _, v := range mappingDomainLifecycleState {
+	for _, v := range mappingDomainLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetDomainLifecycleStateEnumStringValues Enumerates the set of values in String for DomainLifecycleStateEnum
+func GetDomainLifecycleStateEnumStringValues() []string {
+	return []string{
+		"ACTIVE",
+		"DELETED",
+		"FAILED",
+	}
 }
 
 // DomainStatusEnum Enum with underlying type: string
@@ -97,7 +126,7 @@ const (
 	DomainStatusFailed    DomainStatusEnum = "FAILED"
 )
 
-var mappingDomainStatus = map[string]DomainStatusEnum{
+var mappingDomainStatusEnum = map[string]DomainStatusEnum{
 	"PENDING":   DomainStatusPending,
 	"RELEASING": DomainStatusReleasing,
 	"RELEASED":  DomainStatusReleased,
@@ -111,8 +140,22 @@ var mappingDomainStatus = map[string]DomainStatusEnum{
 // GetDomainStatusEnumValues Enumerates the set of values for DomainStatusEnum
 func GetDomainStatusEnumValues() []DomainStatusEnum {
 	values := make([]DomainStatusEnum, 0)
-	for _, v := range mappingDomainStatus {
+	for _, v := range mappingDomainStatusEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetDomainStatusEnumStringValues Enumerates the set of values in String for DomainStatusEnum
+func GetDomainStatusEnumStringValues() []string {
+	return []string{
+		"PENDING",
+		"RELEASING",
+		"RELEASED",
+		"EXPIRING",
+		"REVOKING",
+		"REVOKED",
+		"ACTIVE",
+		"FAILED",
+	}
 }

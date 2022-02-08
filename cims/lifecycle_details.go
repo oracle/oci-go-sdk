@@ -20,7 +20,7 @@ const (
 	LifecycleDetailsClosed              LifecycleDetailsEnum = "CLOSED"
 )
 
-var mappingLifecycleDetails = map[string]LifecycleDetailsEnum{
+var mappingLifecycleDetailsEnum = map[string]LifecycleDetailsEnum{
 	"PENDING_WITH_ORACLE":   LifecycleDetailsPendingWithOracle,
 	"PENDING_WITH_CUSTOMER": LifecycleDetailsPendingWithCustomer,
 	"CLOSE_REQUESTED":       LifecycleDetailsCloseRequested,
@@ -30,8 +30,18 @@ var mappingLifecycleDetails = map[string]LifecycleDetailsEnum{
 // GetLifecycleDetailsEnumValues Enumerates the set of values for LifecycleDetailsEnum
 func GetLifecycleDetailsEnumValues() []LifecycleDetailsEnum {
 	values := make([]LifecycleDetailsEnum, 0)
-	for _, v := range mappingLifecycleDetails {
+	for _, v := range mappingLifecycleDetailsEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetLifecycleDetailsEnumStringValues Enumerates the set of values in String for LifecycleDetailsEnum
+func GetLifecycleDetailsEnumStringValues() []string {
+	return []string{
+		"PENDING_WITH_ORACLE",
+		"PENDING_WITH_CUSTOMER",
+		"CLOSE_REQUESTED",
+		"CLOSED",
+	}
 }

@@ -10,7 +10,9 @@
 package loggingsearch
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // FieldInfo Contains field schema information.
@@ -31,6 +33,21 @@ func (m FieldInfo) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m FieldInfo) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingFieldInfoFieldTypeEnum[string(m.FieldType)]; !ok && m.FieldType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FieldType: %s. Supported values are: %s.", m.FieldType, strings.Join(GetFieldInfoFieldTypeEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // FieldInfoFieldTypeEnum Enum with underlying type: string
 type FieldInfoFieldTypeEnum string
 
@@ -42,7 +59,7 @@ const (
 	FieldInfoFieldTypeArray   FieldInfoFieldTypeEnum = "ARRAY"
 )
 
-var mappingFieldInfoFieldType = map[string]FieldInfoFieldTypeEnum{
+var mappingFieldInfoFieldTypeEnum = map[string]FieldInfoFieldTypeEnum{
 	"STRING":  FieldInfoFieldTypeString,
 	"NUMBER":  FieldInfoFieldTypeNumber,
 	"BOOLEAN": FieldInfoFieldTypeBoolean,
@@ -52,8 +69,18 @@ var mappingFieldInfoFieldType = map[string]FieldInfoFieldTypeEnum{
 // GetFieldInfoFieldTypeEnumValues Enumerates the set of values for FieldInfoFieldTypeEnum
 func GetFieldInfoFieldTypeEnumValues() []FieldInfoFieldTypeEnum {
 	values := make([]FieldInfoFieldTypeEnum, 0)
-	for _, v := range mappingFieldInfoFieldType {
+	for _, v := range mappingFieldInfoFieldTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetFieldInfoFieldTypeEnumStringValues Enumerates the set of values in String for FieldInfoFieldTypeEnum
+func GetFieldInfoFieldTypeEnumStringValues() []string {
+	return []string{
+		"STRING",
+		"NUMBER",
+		"BOOLEAN",
+		"ARRAY",
+	}
 }

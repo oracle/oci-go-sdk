@@ -10,7 +10,9 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // UpdateApplianceExportJobDetails The representation of UpdateApplianceExportJobDetails
@@ -71,6 +73,21 @@ func (m UpdateApplianceExportJobDetails) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m UpdateApplianceExportJobDetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingUpdateApplianceExportJobDetailsLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetUpdateApplianceExportJobDetailsLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // UpdateApplianceExportJobDetailsLifecycleStateEnum Enum with underlying type: string
 type UpdateApplianceExportJobDetailsLifecycleStateEnum string
 
@@ -85,7 +102,7 @@ const (
 	UpdateApplianceExportJobDetailsLifecycleStateDeleted    UpdateApplianceExportJobDetailsLifecycleStateEnum = "DELETED"
 )
 
-var mappingUpdateApplianceExportJobDetailsLifecycleState = map[string]UpdateApplianceExportJobDetailsLifecycleStateEnum{
+var mappingUpdateApplianceExportJobDetailsLifecycleStateEnum = map[string]UpdateApplianceExportJobDetailsLifecycleStateEnum{
 	"CREATING":   UpdateApplianceExportJobDetailsLifecycleStateCreating,
 	"ACTIVE":     UpdateApplianceExportJobDetailsLifecycleStateActive,
 	"INPROGRESS": UpdateApplianceExportJobDetailsLifecycleStateInprogress,
@@ -98,8 +115,21 @@ var mappingUpdateApplianceExportJobDetailsLifecycleState = map[string]UpdateAppl
 // GetUpdateApplianceExportJobDetailsLifecycleStateEnumValues Enumerates the set of values for UpdateApplianceExportJobDetailsLifecycleStateEnum
 func GetUpdateApplianceExportJobDetailsLifecycleStateEnumValues() []UpdateApplianceExportJobDetailsLifecycleStateEnum {
 	values := make([]UpdateApplianceExportJobDetailsLifecycleStateEnum, 0)
-	for _, v := range mappingUpdateApplianceExportJobDetailsLifecycleState {
+	for _, v := range mappingUpdateApplianceExportJobDetailsLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetUpdateApplianceExportJobDetailsLifecycleStateEnumStringValues Enumerates the set of values in String for UpdateApplianceExportJobDetailsLifecycleStateEnum
+func GetUpdateApplianceExportJobDetailsLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"INPROGRESS",
+		"SUCCEEDED",
+		"FAILED",
+		"CANCELLED",
+		"DELETED",
+	}
 }

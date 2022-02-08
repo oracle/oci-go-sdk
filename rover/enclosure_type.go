@@ -18,7 +18,7 @@ const (
 	EnclosureTypeNonRuggadized EnclosureTypeEnum = "NON_RUGGADIZED"
 )
 
-var mappingEnclosureType = map[string]EnclosureTypeEnum{
+var mappingEnclosureTypeEnum = map[string]EnclosureTypeEnum{
 	"RUGGADIZED":     EnclosureTypeRuggadized,
 	"NON_RUGGADIZED": EnclosureTypeNonRuggadized,
 }
@@ -26,8 +26,16 @@ var mappingEnclosureType = map[string]EnclosureTypeEnum{
 // GetEnclosureTypeEnumValues Enumerates the set of values for EnclosureTypeEnum
 func GetEnclosureTypeEnumValues() []EnclosureTypeEnum {
 	values := make([]EnclosureTypeEnum, 0)
-	for _, v := range mappingEnclosureType {
+	for _, v := range mappingEnclosureTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetEnclosureTypeEnumStringValues Enumerates the set of values in String for EnclosureTypeEnum
+func GetEnclosureTypeEnumStringValues() []string {
+	return []string{
+		"RUGGADIZED",
+		"NON_RUGGADIZED",
+	}
 }

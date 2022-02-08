@@ -22,7 +22,7 @@ const (
 	RecipientInvitationStatusFailed   RecipientInvitationStatusEnum = "FAILED"
 )
 
-var mappingRecipientInvitationStatus = map[string]RecipientInvitationStatusEnum{
+var mappingRecipientInvitationStatusEnum = map[string]RecipientInvitationStatusEnum{
 	"PENDING":  RecipientInvitationStatusPending,
 	"CANCELED": RecipientInvitationStatusCanceled,
 	"ACCEPTED": RecipientInvitationStatusAccepted,
@@ -34,8 +34,20 @@ var mappingRecipientInvitationStatus = map[string]RecipientInvitationStatusEnum{
 // GetRecipientInvitationStatusEnumValues Enumerates the set of values for RecipientInvitationStatusEnum
 func GetRecipientInvitationStatusEnumValues() []RecipientInvitationStatusEnum {
 	values := make([]RecipientInvitationStatusEnum, 0)
-	for _, v := range mappingRecipientInvitationStatus {
+	for _, v := range mappingRecipientInvitationStatusEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetRecipientInvitationStatusEnumStringValues Enumerates the set of values in String for RecipientInvitationStatusEnum
+func GetRecipientInvitationStatusEnumStringValues() []string {
+	return []string{
+		"PENDING",
+		"CANCELED",
+		"ACCEPTED",
+		"IGNORED",
+		"EXPIRED",
+		"FAILED",
+	}
 }

@@ -10,7 +10,9 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // Organization An organization entity.
@@ -45,6 +47,21 @@ func (m Organization) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m Organization) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingOrganizationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetOrganizationLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // OrganizationLifecycleStateEnum Enum with underlying type: string
 type OrganizationLifecycleStateEnum string
 
@@ -58,7 +75,7 @@ const (
 	OrganizationLifecycleStateFailed   OrganizationLifecycleStateEnum = "FAILED"
 )
 
-var mappingOrganizationLifecycleState = map[string]OrganizationLifecycleStateEnum{
+var mappingOrganizationLifecycleStateEnum = map[string]OrganizationLifecycleStateEnum{
 	"CREATING": OrganizationLifecycleStateCreating,
 	"ACTIVE":   OrganizationLifecycleStateActive,
 	"UPDATING": OrganizationLifecycleStateUpdating,
@@ -70,8 +87,20 @@ var mappingOrganizationLifecycleState = map[string]OrganizationLifecycleStateEnu
 // GetOrganizationLifecycleStateEnumValues Enumerates the set of values for OrganizationLifecycleStateEnum
 func GetOrganizationLifecycleStateEnumValues() []OrganizationLifecycleStateEnum {
 	values := make([]OrganizationLifecycleStateEnum, 0)
-	for _, v := range mappingOrganizationLifecycleState {
+	for _, v := range mappingOrganizationLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetOrganizationLifecycleStateEnumStringValues Enumerates the set of values in String for OrganizationLifecycleStateEnum
+func GetOrganizationLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"UPDATING",
+		"DELETING",
+		"DELETED",
+		"FAILED",
+	}
 }

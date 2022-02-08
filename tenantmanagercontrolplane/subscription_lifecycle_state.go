@@ -23,7 +23,7 @@ const (
 	SubscriptionLifecycleStateFailed   SubscriptionLifecycleStateEnum = "FAILED"
 )
 
-var mappingSubscriptionLifecycleState = map[string]SubscriptionLifecycleStateEnum{
+var mappingSubscriptionLifecycleStateEnum = map[string]SubscriptionLifecycleStateEnum{
 	"CREATING": SubscriptionLifecycleStateCreating,
 	"ACTIVE":   SubscriptionLifecycleStateActive,
 	"INACTIVE": SubscriptionLifecycleStateInactive,
@@ -36,8 +36,21 @@ var mappingSubscriptionLifecycleState = map[string]SubscriptionLifecycleStateEnu
 // GetSubscriptionLifecycleStateEnumValues Enumerates the set of values for SubscriptionLifecycleStateEnum
 func GetSubscriptionLifecycleStateEnumValues() []SubscriptionLifecycleStateEnum {
 	values := make([]SubscriptionLifecycleStateEnum, 0)
-	for _, v := range mappingSubscriptionLifecycleState {
+	for _, v := range mappingSubscriptionLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSubscriptionLifecycleStateEnumStringValues Enumerates the set of values in String for SubscriptionLifecycleStateEnum
+func GetSubscriptionLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"INACTIVE",
+		"UPDATING",
+		"DELETING",
+		"DELETED",
+		"FAILED",
+	}
 }

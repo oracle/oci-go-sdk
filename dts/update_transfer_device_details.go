@@ -10,7 +10,9 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // UpdateTransferDeviceDetails The representation of UpdateTransferDeviceDetails
@@ -20,6 +22,21 @@ type UpdateTransferDeviceDetails struct {
 
 func (m UpdateTransferDeviceDetails) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m UpdateTransferDeviceDetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingUpdateTransferDeviceDetailsLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetUpdateTransferDeviceDetailsLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // UpdateTransferDeviceDetailsLifecycleStateEnum Enum with underlying type: string
@@ -32,7 +49,7 @@ const (
 	UpdateTransferDeviceDetailsLifecycleStateCancelled UpdateTransferDeviceDetailsLifecycleStateEnum = "CANCELLED"
 )
 
-var mappingUpdateTransferDeviceDetailsLifecycleState = map[string]UpdateTransferDeviceDetailsLifecycleStateEnum{
+var mappingUpdateTransferDeviceDetailsLifecycleStateEnum = map[string]UpdateTransferDeviceDetailsLifecycleStateEnum{
 	"PREPARING": UpdateTransferDeviceDetailsLifecycleStatePreparing,
 	"READY":     UpdateTransferDeviceDetailsLifecycleStateReady,
 	"CANCELLED": UpdateTransferDeviceDetailsLifecycleStateCancelled,
@@ -41,8 +58,17 @@ var mappingUpdateTransferDeviceDetailsLifecycleState = map[string]UpdateTransfer
 // GetUpdateTransferDeviceDetailsLifecycleStateEnumValues Enumerates the set of values for UpdateTransferDeviceDetailsLifecycleStateEnum
 func GetUpdateTransferDeviceDetailsLifecycleStateEnumValues() []UpdateTransferDeviceDetailsLifecycleStateEnum {
 	values := make([]UpdateTransferDeviceDetailsLifecycleStateEnum, 0)
-	for _, v := range mappingUpdateTransferDeviceDetailsLifecycleState {
+	for _, v := range mappingUpdateTransferDeviceDetailsLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetUpdateTransferDeviceDetailsLifecycleStateEnumStringValues Enumerates the set of values in String for UpdateTransferDeviceDetailsLifecycleStateEnum
+func GetUpdateTransferDeviceDetailsLifecycleStateEnumStringValues() []string {
+	return []string{
+		"PREPARING",
+		"READY",
+		"CANCELLED",
+	}
 }

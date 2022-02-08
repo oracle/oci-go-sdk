@@ -5,8 +5,10 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListTransferAppliancesRequest wrapper for the ListTransferAppliances operation
@@ -38,6 +40,10 @@ func (request ListTransferAppliancesRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListTransferAppliancesRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -51,6 +57,20 @@ func (request ListTransferAppliancesRequest) BinaryRequestBody() (*common.OCIRea
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListTransferAppliancesRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListTransferAppliancesRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListTransferAppliancesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListTransferAppliancesLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListTransferAppliancesResponse wrapper for the ListTransferAppliances operation
@@ -101,7 +121,7 @@ const (
 	ListTransferAppliancesLifecycleStateError                   ListTransferAppliancesLifecycleStateEnum = "ERROR"
 )
 
-var mappingListTransferAppliancesLifecycleState = map[string]ListTransferAppliancesLifecycleStateEnum{
+var mappingListTransferAppliancesLifecycleStateEnum = map[string]ListTransferAppliancesLifecycleStateEnum{
 	"REQUESTED":                 ListTransferAppliancesLifecycleStateRequested,
 	"ORACLE_PREPARING":          ListTransferAppliancesLifecycleStateOraclePreparing,
 	"SHIPPING":                  ListTransferAppliancesLifecycleStateShipping,
@@ -127,8 +147,34 @@ var mappingListTransferAppliancesLifecycleState = map[string]ListTransferApplian
 // GetListTransferAppliancesLifecycleStateEnumValues Enumerates the set of values for ListTransferAppliancesLifecycleStateEnum
 func GetListTransferAppliancesLifecycleStateEnumValues() []ListTransferAppliancesLifecycleStateEnum {
 	values := make([]ListTransferAppliancesLifecycleStateEnum, 0)
-	for _, v := range mappingListTransferAppliancesLifecycleState {
+	for _, v := range mappingListTransferAppliancesLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListTransferAppliancesLifecycleStateEnumStringValues Enumerates the set of values in String for ListTransferAppliancesLifecycleStateEnum
+func GetListTransferAppliancesLifecycleStateEnumStringValues() []string {
+	return []string{
+		"REQUESTED",
+		"ORACLE_PREPARING",
+		"SHIPPING",
+		"DELIVERED",
+		"PREPARING",
+		"FINALIZED",
+		"RETURN_DELAYED",
+		"RETURN_SHIPPED",
+		"RETURN_SHIPPED_CANCELLED",
+		"ORACLE_RECEIVED",
+		"ORACLE_RECEIVED_CANCELLED",
+		"PROCESSING",
+		"COMPLETE",
+		"CUSTOMER_NEVER_RECEIVED",
+		"ORACLE_NEVER_RECEIVED",
+		"CUSTOMER_LOST",
+		"CANCELLED",
+		"DELETED",
+		"REJECTED",
+		"ERROR",
+	}
 }
