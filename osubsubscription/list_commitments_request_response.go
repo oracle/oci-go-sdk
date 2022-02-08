@@ -5,8 +5,10 @@
 package osubsubscription
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListCommitmentsRequest wrapper for the ListCommitments operation
@@ -57,6 +59,10 @@ func (request ListCommitmentsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListCommitmentsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -70,6 +76,23 @@ func (request ListCommitmentsRequest) BinaryRequestBody() (*common.OCIReadSeekCl
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListCommitmentsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListCommitmentsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListCommitmentsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCommitmentsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListCommitmentsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCommitmentsSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListCommitmentsResponse wrapper for the ListCommitments operation
@@ -109,7 +132,7 @@ const (
 	ListCommitmentsSortOrderDesc ListCommitmentsSortOrderEnum = "DESC"
 )
 
-var mappingListCommitmentsSortOrder = map[string]ListCommitmentsSortOrderEnum{
+var mappingListCommitmentsSortOrderEnum = map[string]ListCommitmentsSortOrderEnum{
 	"ASC":  ListCommitmentsSortOrderAsc,
 	"DESC": ListCommitmentsSortOrderDesc,
 }
@@ -117,10 +140,18 @@ var mappingListCommitmentsSortOrder = map[string]ListCommitmentsSortOrderEnum{
 // GetListCommitmentsSortOrderEnumValues Enumerates the set of values for ListCommitmentsSortOrderEnum
 func GetListCommitmentsSortOrderEnumValues() []ListCommitmentsSortOrderEnum {
 	values := make([]ListCommitmentsSortOrderEnum, 0)
-	for _, v := range mappingListCommitmentsSortOrder {
+	for _, v := range mappingListCommitmentsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListCommitmentsSortOrderEnumStringValues Enumerates the set of values in String for ListCommitmentsSortOrderEnum
+func GetListCommitmentsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListCommitmentsSortByEnum Enum with underlying type: string
@@ -132,7 +163,7 @@ const (
 	ListCommitmentsSortByTimestart   ListCommitmentsSortByEnum = "TIMESTART"
 )
 
-var mappingListCommitmentsSortBy = map[string]ListCommitmentsSortByEnum{
+var mappingListCommitmentsSortByEnum = map[string]ListCommitmentsSortByEnum{
 	"TIMECREATED": ListCommitmentsSortByTimecreated,
 	"TIMESTART":   ListCommitmentsSortByTimestart,
 }
@@ -140,8 +171,16 @@ var mappingListCommitmentsSortBy = map[string]ListCommitmentsSortByEnum{
 // GetListCommitmentsSortByEnumValues Enumerates the set of values for ListCommitmentsSortByEnum
 func GetListCommitmentsSortByEnumValues() []ListCommitmentsSortByEnum {
 	values := make([]ListCommitmentsSortByEnum, 0)
-	for _, v := range mappingListCommitmentsSortBy {
+	for _, v := range mappingListCommitmentsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListCommitmentsSortByEnumStringValues Enumerates the set of values in String for ListCommitmentsSortByEnum
+func GetListCommitmentsSortByEnumStringValues() []string {
+	return []string{
+		"TIMECREATED",
+		"TIMESTART",
+	}
 }

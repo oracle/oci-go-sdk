@@ -17,7 +17,9 @@ package dashboardservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // Dashboard The base schema for a dashboard.
@@ -185,6 +187,21 @@ func (m dashboard) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m dashboard) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingDashboardLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDashboardLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // DashboardLifecycleStateEnum Enum with underlying type: string
 type DashboardLifecycleStateEnum string
 
@@ -198,7 +215,7 @@ const (
 	DashboardLifecycleStateFailed   DashboardLifecycleStateEnum = "FAILED"
 )
 
-var mappingDashboardLifecycleState = map[string]DashboardLifecycleStateEnum{
+var mappingDashboardLifecycleStateEnum = map[string]DashboardLifecycleStateEnum{
 	"CREATING": DashboardLifecycleStateCreating,
 	"UPDATING": DashboardLifecycleStateUpdating,
 	"ACTIVE":   DashboardLifecycleStateActive,
@@ -210,10 +227,22 @@ var mappingDashboardLifecycleState = map[string]DashboardLifecycleStateEnum{
 // GetDashboardLifecycleStateEnumValues Enumerates the set of values for DashboardLifecycleStateEnum
 func GetDashboardLifecycleStateEnumValues() []DashboardLifecycleStateEnum {
 	values := make([]DashboardLifecycleStateEnum, 0)
-	for _, v := range mappingDashboardLifecycleState {
+	for _, v := range mappingDashboardLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetDashboardLifecycleStateEnumStringValues Enumerates the set of values in String for DashboardLifecycleStateEnum
+func GetDashboardLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"UPDATING",
+		"ACTIVE",
+		"DELETING",
+		"DELETED",
+		"FAILED",
+	}
 }
 
 // DashboardSchemaVersionEnum Enum with underlying type: string
@@ -224,15 +253,22 @@ const (
 	DashboardSchemaVersionV1 DashboardSchemaVersionEnum = "V1"
 )
 
-var mappingDashboardSchemaVersion = map[string]DashboardSchemaVersionEnum{
+var mappingDashboardSchemaVersionEnum = map[string]DashboardSchemaVersionEnum{
 	"V1": DashboardSchemaVersionV1,
 }
 
 // GetDashboardSchemaVersionEnumValues Enumerates the set of values for DashboardSchemaVersionEnum
 func GetDashboardSchemaVersionEnumValues() []DashboardSchemaVersionEnum {
 	values := make([]DashboardSchemaVersionEnum, 0)
-	for _, v := range mappingDashboardSchemaVersion {
+	for _, v := range mappingDashboardSchemaVersionEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetDashboardSchemaVersionEnumStringValues Enumerates the set of values in String for DashboardSchemaVersionEnum
+func GetDashboardSchemaVersionEnumStringValues() []string {
+	return []string{
+		"V1",
+	}
 }

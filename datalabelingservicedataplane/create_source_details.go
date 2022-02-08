@@ -11,7 +11,9 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // CreateSourceDetails The source information is a polymorphic entity. It captures the details of how to access the data for record creation. The discriminator type must match the dataset's source type. The convention will be enforced by the API. It should only provide the difference in data necessary to access the content, i.e. the object storage path, or the database record id.
@@ -61,6 +63,18 @@ func (m createsourcedetails) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m createsourcedetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // CreateSourceDetailsSourceTypeEnum Enum with underlying type: string
 type CreateSourceDetailsSourceTypeEnum string
 
@@ -69,15 +83,22 @@ const (
 	CreateSourceDetailsSourceTypeObjectStorage CreateSourceDetailsSourceTypeEnum = "OBJECT_STORAGE"
 )
 
-var mappingCreateSourceDetailsSourceType = map[string]CreateSourceDetailsSourceTypeEnum{
+var mappingCreateSourceDetailsSourceTypeEnum = map[string]CreateSourceDetailsSourceTypeEnum{
 	"OBJECT_STORAGE": CreateSourceDetailsSourceTypeObjectStorage,
 }
 
 // GetCreateSourceDetailsSourceTypeEnumValues Enumerates the set of values for CreateSourceDetailsSourceTypeEnum
 func GetCreateSourceDetailsSourceTypeEnumValues() []CreateSourceDetailsSourceTypeEnum {
 	values := make([]CreateSourceDetailsSourceTypeEnum, 0)
-	for _, v := range mappingCreateSourceDetailsSourceType {
+	for _, v := range mappingCreateSourceDetailsSourceTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetCreateSourceDetailsSourceTypeEnumStringValues Enumerates the set of values in String for CreateSourceDetailsSourceTypeEnum
+func GetCreateSourceDetailsSourceTypeEnumStringValues() []string {
+	return []string{
+		"OBJECT_STORAGE",
+	}
 }

@@ -26,7 +26,7 @@ const (
 	MigrationStatesMigrationSucceeded     MigrationStatesEnum = "MIGRATION_SUCCEEDED"
 )
 
-var mappingMigrationStates = map[string]MigrationStatesEnum{
+var mappingMigrationStatesEnum = map[string]MigrationStatesEnum{
 	"DISCOVERING_APPLICATION": MigrationStatesDiscoveringApplication,
 	"DISCOVERY_FAILED":        MigrationStatesDiscoveryFailed,
 	"MISSING_CONFIG_VALUES":   MigrationStatesMissingConfigValues,
@@ -39,8 +39,21 @@ var mappingMigrationStates = map[string]MigrationStatesEnum{
 // GetMigrationStatesEnumValues Enumerates the set of values for MigrationStatesEnum
 func GetMigrationStatesEnumValues() []MigrationStatesEnum {
 	values := make([]MigrationStatesEnum, 0)
-	for _, v := range mappingMigrationStates {
+	for _, v := range mappingMigrationStatesEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetMigrationStatesEnumStringValues Enumerates the set of values in String for MigrationStatesEnum
+func GetMigrationStatesEnumStringValues() []string {
+	return []string{
+		"DISCOVERING_APPLICATION",
+		"DISCOVERY_FAILED",
+		"MISSING_CONFIG_VALUES",
+		"READY",
+		"MIGRATING",
+		"MIGRATION_FAILED",
+		"MIGRATION_SUCCEEDED",
+	}
 }

@@ -10,7 +10,9 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // Contact Contact details for the customer.
@@ -33,6 +35,21 @@ func (m Contact) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m Contact) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingContactContactTypeEnum[string(m.ContactType)]; !ok && m.ContactType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ContactType: %s. Supported values are: %s.", m.ContactType, strings.Join(GetContactContactTypeEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // ContactContactTypeEnum Enum with underlying type: string
 type ContactContactTypeEnum string
 
@@ -45,7 +62,7 @@ const (
 	ContactContactTypeManager   ContactContactTypeEnum = "MANAGER"
 )
 
-var mappingContactContactType = map[string]ContactContactTypeEnum{
+var mappingContactContactTypeEnum = map[string]ContactContactTypeEnum{
 	"PRIMARY":   ContactContactTypePrimary,
 	"ALTERNATE": ContactContactTypeAlternate,
 	"SECONDARY": ContactContactTypeSecondary,
@@ -56,8 +73,19 @@ var mappingContactContactType = map[string]ContactContactTypeEnum{
 // GetContactContactTypeEnumValues Enumerates the set of values for ContactContactTypeEnum
 func GetContactContactTypeEnumValues() []ContactContactTypeEnum {
 	values := make([]ContactContactTypeEnum, 0)
-	for _, v := range mappingContactContactType {
+	for _, v := range mappingContactContactTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetContactContactTypeEnumStringValues Enumerates the set of values in String for ContactContactTypeEnum
+func GetContactContactTypeEnumStringValues() []string {
+	return []string{
+		"PRIMARY",
+		"ALTERNATE",
+		"SECONDARY",
+		"ADMIN",
+		"MANAGER",
+	}
 }

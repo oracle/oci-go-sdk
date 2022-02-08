@@ -5,8 +5,10 @@
 package osubbillingschedule
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListBillingSchedulesRequest wrapper for the ListBillingSchedules operation
@@ -56,6 +58,10 @@ func (request ListBillingSchedulesRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListBillingSchedulesRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -69,6 +75,23 @@ func (request ListBillingSchedulesRequest) BinaryRequestBody() (*common.OCIReadS
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListBillingSchedulesRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListBillingSchedulesRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListBillingSchedulesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListBillingSchedulesSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListBillingSchedulesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListBillingSchedulesSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListBillingSchedulesResponse wrapper for the ListBillingSchedules operation
@@ -108,7 +131,7 @@ const (
 	ListBillingSchedulesSortOrderDesc ListBillingSchedulesSortOrderEnum = "DESC"
 )
 
-var mappingListBillingSchedulesSortOrder = map[string]ListBillingSchedulesSortOrderEnum{
+var mappingListBillingSchedulesSortOrderEnum = map[string]ListBillingSchedulesSortOrderEnum{
 	"ASC":  ListBillingSchedulesSortOrderAsc,
 	"DESC": ListBillingSchedulesSortOrderDesc,
 }
@@ -116,10 +139,18 @@ var mappingListBillingSchedulesSortOrder = map[string]ListBillingSchedulesSortOr
 // GetListBillingSchedulesSortOrderEnumValues Enumerates the set of values for ListBillingSchedulesSortOrderEnum
 func GetListBillingSchedulesSortOrderEnumValues() []ListBillingSchedulesSortOrderEnum {
 	values := make([]ListBillingSchedulesSortOrderEnum, 0)
-	for _, v := range mappingListBillingSchedulesSortOrder {
+	for _, v := range mappingListBillingSchedulesSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListBillingSchedulesSortOrderEnumStringValues Enumerates the set of values in String for ListBillingSchedulesSortOrderEnum
+func GetListBillingSchedulesSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListBillingSchedulesSortByEnum Enum with underlying type: string
@@ -131,7 +162,7 @@ const (
 	ListBillingSchedulesSortByTimeinvoicing ListBillingSchedulesSortByEnum = "TIMEINVOICING"
 )
 
-var mappingListBillingSchedulesSortBy = map[string]ListBillingSchedulesSortByEnum{
+var mappingListBillingSchedulesSortByEnum = map[string]ListBillingSchedulesSortByEnum{
 	"ORDERNUMBER":   ListBillingSchedulesSortByOrdernumber,
 	"TIMEINVOICING": ListBillingSchedulesSortByTimeinvoicing,
 }
@@ -139,8 +170,16 @@ var mappingListBillingSchedulesSortBy = map[string]ListBillingSchedulesSortByEnu
 // GetListBillingSchedulesSortByEnumValues Enumerates the set of values for ListBillingSchedulesSortByEnum
 func GetListBillingSchedulesSortByEnumValues() []ListBillingSchedulesSortByEnum {
 	values := make([]ListBillingSchedulesSortByEnum, 0)
-	for _, v := range mappingListBillingSchedulesSortBy {
+	for _, v := range mappingListBillingSchedulesSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListBillingSchedulesSortByEnumStringValues Enumerates the set of values in String for ListBillingSchedulesSortByEnum
+func GetListBillingSchedulesSortByEnumStringValues() []string {
+	return []string{
+		"ORDERNUMBER",
+		"TIMEINVOICING",
+	}
 }

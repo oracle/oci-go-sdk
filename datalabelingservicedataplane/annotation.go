@@ -11,7 +11,9 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // Annotation An annotation represents a user- or machine-generated annotation for a given record.  The details of the annotation are captured in the RecordAnnotationDetails.
@@ -58,6 +60,21 @@ type Annotation struct {
 
 func (m Annotation) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m Annotation) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingAnnotationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAnnotationLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // UnmarshalJSON unmarshals from json
@@ -127,7 +144,7 @@ const (
 	AnnotationLifecycleStateDeleted  AnnotationLifecycleStateEnum = "DELETED"
 )
 
-var mappingAnnotationLifecycleState = map[string]AnnotationLifecycleStateEnum{
+var mappingAnnotationLifecycleStateEnum = map[string]AnnotationLifecycleStateEnum{
 	"ACTIVE":   AnnotationLifecycleStateActive,
 	"INACTIVE": AnnotationLifecycleStateInactive,
 	"DELETED":  AnnotationLifecycleStateDeleted,
@@ -136,8 +153,17 @@ var mappingAnnotationLifecycleState = map[string]AnnotationLifecycleStateEnum{
 // GetAnnotationLifecycleStateEnumValues Enumerates the set of values for AnnotationLifecycleStateEnum
 func GetAnnotationLifecycleStateEnumValues() []AnnotationLifecycleStateEnum {
 	values := make([]AnnotationLifecycleStateEnum, 0)
-	for _, v := range mappingAnnotationLifecycleState {
+	for _, v := range mappingAnnotationLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetAnnotationLifecycleStateEnumStringValues Enumerates the set of values in String for AnnotationLifecycleStateEnum
+func GetAnnotationLifecycleStateEnumStringValues() []string {
+	return []string{
+		"ACTIVE",
+		"INACTIVE",
+		"DELETED",
+	}
 }

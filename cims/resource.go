@@ -11,7 +11,9 @@ package cims
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // Resource Details about the ticket item object.
@@ -27,6 +29,24 @@ type Resource struct {
 
 func (m Resource) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m Resource) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingRegionEnum[string(m.Region)]; !ok && m.Region != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Region: %s. Supported values are: %s.", m.Region, strings.Join(GetRegionEnumStringValues(), ",")))
+	}
+	if _, ok := mappingAvailabilityDomainEnum[string(m.AvailabilityDomain)]; !ok && m.AvailabilityDomain != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AvailabilityDomain: %s. Supported values are: %s.", m.AvailabilityDomain, strings.Join(GetAvailabilityDomainEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // UnmarshalJSON unmarshals from json

@@ -5,8 +5,10 @@
 package secrets
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // GetSecretBundleRequest wrapper for the GetSecretBundle operation
@@ -43,6 +45,10 @@ func (request GetSecretBundleRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request GetSecretBundleRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -56,6 +62,20 @@ func (request GetSecretBundleRequest) BinaryRequestBody() (*common.OCIReadSeekCl
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request GetSecretBundleRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request GetSecretBundleRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingGetSecretBundleStageEnum[string(request.Stage)]; !ok && request.Stage != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stage: %s. Supported values are: %s.", request.Stage, strings.Join(GetGetSecretBundleStageEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // GetSecretBundleResponse wrapper for the GetSecretBundle operation
@@ -95,7 +115,7 @@ const (
 	GetSecretBundleStageDeprecated GetSecretBundleStageEnum = "DEPRECATED"
 )
 
-var mappingGetSecretBundleStage = map[string]GetSecretBundleStageEnum{
+var mappingGetSecretBundleStageEnum = map[string]GetSecretBundleStageEnum{
 	"CURRENT":    GetSecretBundleStageCurrent,
 	"PENDING":    GetSecretBundleStagePending,
 	"LATEST":     GetSecretBundleStageLatest,
@@ -106,8 +126,19 @@ var mappingGetSecretBundleStage = map[string]GetSecretBundleStageEnum{
 // GetGetSecretBundleStageEnumValues Enumerates the set of values for GetSecretBundleStageEnum
 func GetGetSecretBundleStageEnumValues() []GetSecretBundleStageEnum {
 	values := make([]GetSecretBundleStageEnum, 0)
-	for _, v := range mappingGetSecretBundleStage {
+	for _, v := range mappingGetSecretBundleStageEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetGetSecretBundleStageEnumStringValues Enumerates the set of values in String for GetSecretBundleStageEnum
+func GetGetSecretBundleStageEnumStringValues() []string {
+	return []string{
+		"CURRENT",
+		"PENDING",
+		"LATEST",
+		"PREVIOUS",
+		"DEPRECATED",
+	}
 }

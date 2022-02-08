@@ -10,7 +10,9 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // TransferJobSummary The representation of TransferJobSummary
@@ -44,6 +46,24 @@ func (m TransferJobSummary) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m TransferJobSummary) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingTransferJobSummaryDeviceTypeEnum[string(m.DeviceType)]; !ok && m.DeviceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeviceType: %s. Supported values are: %s.", m.DeviceType, strings.Join(GetTransferJobSummaryDeviceTypeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingTransferJobSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTransferJobSummaryLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // TransferJobSummaryDeviceTypeEnum Enum with underlying type: string
 type TransferJobSummaryDeviceTypeEnum string
 
@@ -53,7 +73,7 @@ const (
 	TransferJobSummaryDeviceTypeAppliance TransferJobSummaryDeviceTypeEnum = "APPLIANCE"
 )
 
-var mappingTransferJobSummaryDeviceType = map[string]TransferJobSummaryDeviceTypeEnum{
+var mappingTransferJobSummaryDeviceTypeEnum = map[string]TransferJobSummaryDeviceTypeEnum{
 	"DISK":      TransferJobSummaryDeviceTypeDisk,
 	"APPLIANCE": TransferJobSummaryDeviceTypeAppliance,
 }
@@ -61,10 +81,18 @@ var mappingTransferJobSummaryDeviceType = map[string]TransferJobSummaryDeviceTyp
 // GetTransferJobSummaryDeviceTypeEnumValues Enumerates the set of values for TransferJobSummaryDeviceTypeEnum
 func GetTransferJobSummaryDeviceTypeEnumValues() []TransferJobSummaryDeviceTypeEnum {
 	values := make([]TransferJobSummaryDeviceTypeEnum, 0)
-	for _, v := range mappingTransferJobSummaryDeviceType {
+	for _, v := range mappingTransferJobSummaryDeviceTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetTransferJobSummaryDeviceTypeEnumStringValues Enumerates the set of values in String for TransferJobSummaryDeviceTypeEnum
+func GetTransferJobSummaryDeviceTypeEnumStringValues() []string {
+	return []string{
+		"DISK",
+		"APPLIANCE",
+	}
 }
 
 // TransferJobSummaryLifecycleStateEnum Enum with underlying type: string
@@ -79,7 +107,7 @@ const (
 	TransferJobSummaryLifecycleStateClosed    TransferJobSummaryLifecycleStateEnum = "CLOSED"
 )
 
-var mappingTransferJobSummaryLifecycleState = map[string]TransferJobSummaryLifecycleStateEnum{
+var mappingTransferJobSummaryLifecycleStateEnum = map[string]TransferJobSummaryLifecycleStateEnum{
 	"INITIATED": TransferJobSummaryLifecycleStateInitiated,
 	"PREPARING": TransferJobSummaryLifecycleStatePreparing,
 	"ACTIVE":    TransferJobSummaryLifecycleStateActive,
@@ -90,8 +118,19 @@ var mappingTransferJobSummaryLifecycleState = map[string]TransferJobSummaryLifec
 // GetTransferJobSummaryLifecycleStateEnumValues Enumerates the set of values for TransferJobSummaryLifecycleStateEnum
 func GetTransferJobSummaryLifecycleStateEnumValues() []TransferJobSummaryLifecycleStateEnum {
 	values := make([]TransferJobSummaryLifecycleStateEnum, 0)
-	for _, v := range mappingTransferJobSummaryLifecycleState {
+	for _, v := range mappingTransferJobSummaryLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetTransferJobSummaryLifecycleStateEnumStringValues Enumerates the set of values in String for TransferJobSummaryLifecycleStateEnum
+func GetTransferJobSummaryLifecycleStateEnumStringValues() []string {
+	return []string{
+		"INITIATED",
+		"PREPARING",
+		"ACTIVE",
+		"DELETED",
+		"CLOSED",
+	}
 }

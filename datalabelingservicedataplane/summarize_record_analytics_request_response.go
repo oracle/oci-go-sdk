@@ -5,8 +5,10 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // SummarizeRecordAnalyticsRequest wrapper for the SummarizeRecordAnalytics operation
@@ -55,6 +57,10 @@ func (request SummarizeRecordAnalyticsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request SummarizeRecordAnalyticsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -68,6 +74,29 @@ func (request SummarizeRecordAnalyticsRequest) BinaryRequestBody() (*common.OCIR
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request SummarizeRecordAnalyticsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request SummarizeRecordAnalyticsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingRecordLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetRecordLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingSummarizeRecordAnalyticsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeRecordAnalyticsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingSummarizeRecordAnalyticsRecordGroupByEnum[string(request.RecordGroupBy)]; !ok && request.RecordGroupBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RecordGroupBy: %s. Supported values are: %s.", request.RecordGroupBy, strings.Join(GetSummarizeRecordAnalyticsRecordGroupByEnumStringValues(), ",")))
+	}
+	if _, ok := mappingSummarizeRecordAnalyticsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeRecordAnalyticsSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // SummarizeRecordAnalyticsResponse wrapper for the SummarizeRecordAnalytics operation
@@ -107,7 +136,7 @@ const (
 	SummarizeRecordAnalyticsSortOrderDesc SummarizeRecordAnalyticsSortOrderEnum = "DESC"
 )
 
-var mappingSummarizeRecordAnalyticsSortOrder = map[string]SummarizeRecordAnalyticsSortOrderEnum{
+var mappingSummarizeRecordAnalyticsSortOrderEnum = map[string]SummarizeRecordAnalyticsSortOrderEnum{
 	"ASC":  SummarizeRecordAnalyticsSortOrderAsc,
 	"DESC": SummarizeRecordAnalyticsSortOrderDesc,
 }
@@ -115,10 +144,18 @@ var mappingSummarizeRecordAnalyticsSortOrder = map[string]SummarizeRecordAnalyti
 // GetSummarizeRecordAnalyticsSortOrderEnumValues Enumerates the set of values for SummarizeRecordAnalyticsSortOrderEnum
 func GetSummarizeRecordAnalyticsSortOrderEnumValues() []SummarizeRecordAnalyticsSortOrderEnum {
 	values := make([]SummarizeRecordAnalyticsSortOrderEnum, 0)
-	for _, v := range mappingSummarizeRecordAnalyticsSortOrder {
+	for _, v := range mappingSummarizeRecordAnalyticsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSummarizeRecordAnalyticsSortOrderEnumStringValues Enumerates the set of values in String for SummarizeRecordAnalyticsSortOrderEnum
+func GetSummarizeRecordAnalyticsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // SummarizeRecordAnalyticsRecordGroupByEnum Enum with underlying type: string
@@ -130,7 +167,7 @@ const (
 	SummarizeRecordAnalyticsRecordGroupByAnnotationlabelcontains SummarizeRecordAnalyticsRecordGroupByEnum = "annotationLabelContains"
 )
 
-var mappingSummarizeRecordAnalyticsRecordGroupBy = map[string]SummarizeRecordAnalyticsRecordGroupByEnum{
+var mappingSummarizeRecordAnalyticsRecordGroupByEnum = map[string]SummarizeRecordAnalyticsRecordGroupByEnum{
 	"isLabeled":               SummarizeRecordAnalyticsRecordGroupByIslabeled,
 	"annotationLabelContains": SummarizeRecordAnalyticsRecordGroupByAnnotationlabelcontains,
 }
@@ -138,10 +175,18 @@ var mappingSummarizeRecordAnalyticsRecordGroupBy = map[string]SummarizeRecordAna
 // GetSummarizeRecordAnalyticsRecordGroupByEnumValues Enumerates the set of values for SummarizeRecordAnalyticsRecordGroupByEnum
 func GetSummarizeRecordAnalyticsRecordGroupByEnumValues() []SummarizeRecordAnalyticsRecordGroupByEnum {
 	values := make([]SummarizeRecordAnalyticsRecordGroupByEnum, 0)
-	for _, v := range mappingSummarizeRecordAnalyticsRecordGroupBy {
+	for _, v := range mappingSummarizeRecordAnalyticsRecordGroupByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSummarizeRecordAnalyticsRecordGroupByEnumStringValues Enumerates the set of values in String for SummarizeRecordAnalyticsRecordGroupByEnum
+func GetSummarizeRecordAnalyticsRecordGroupByEnumStringValues() []string {
+	return []string{
+		"isLabeled",
+		"annotationLabelContains",
+	}
 }
 
 // SummarizeRecordAnalyticsSortByEnum Enum with underlying type: string
@@ -153,7 +198,7 @@ const (
 	SummarizeRecordAnalyticsSortByIslabeled SummarizeRecordAnalyticsSortByEnum = "isLabeled"
 )
 
-var mappingSummarizeRecordAnalyticsSortBy = map[string]SummarizeRecordAnalyticsSortByEnum{
+var mappingSummarizeRecordAnalyticsSortByEnum = map[string]SummarizeRecordAnalyticsSortByEnum{
 	"count":     SummarizeRecordAnalyticsSortByCount,
 	"isLabeled": SummarizeRecordAnalyticsSortByIslabeled,
 }
@@ -161,8 +206,16 @@ var mappingSummarizeRecordAnalyticsSortBy = map[string]SummarizeRecordAnalyticsS
 // GetSummarizeRecordAnalyticsSortByEnumValues Enumerates the set of values for SummarizeRecordAnalyticsSortByEnum
 func GetSummarizeRecordAnalyticsSortByEnumValues() []SummarizeRecordAnalyticsSortByEnum {
 	values := make([]SummarizeRecordAnalyticsSortByEnum, 0)
-	for _, v := range mappingSummarizeRecordAnalyticsSortBy {
+	for _, v := range mappingSummarizeRecordAnalyticsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSummarizeRecordAnalyticsSortByEnumStringValues Enumerates the set of values in String for SummarizeRecordAnalyticsSortByEnum
+func GetSummarizeRecordAnalyticsSortByEnumStringValues() []string {
+	return []string{
+		"count",
+		"isLabeled",
+	}
 }

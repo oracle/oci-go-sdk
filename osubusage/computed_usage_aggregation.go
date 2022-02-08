@@ -10,7 +10,9 @@
 package osubusage
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // ComputedUsageAggregation Computed Usage Aggregation object
@@ -44,6 +46,21 @@ func (m ComputedUsageAggregation) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m ComputedUsageAggregation) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingComputedUsageAggregationTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetComputedUsageAggregationTypeEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // ComputedUsageAggregationTypeEnum Enum with underlying type: string
 type ComputedUsageAggregationTypeEnum string
 
@@ -66,7 +83,7 @@ const (
 	ComputedUsageAggregationTypeDelayedUsagePostTermination   ComputedUsageAggregationTypeEnum = "DELAYED_USAGE_POST_TERMINATION"
 )
 
-var mappingComputedUsageAggregationType = map[string]ComputedUsageAggregationTypeEnum{
+var mappingComputedUsageAggregationTypeEnum = map[string]ComputedUsageAggregationTypeEnum{
 	"PROMOTION":                         ComputedUsageAggregationTypePromotion,
 	"DO_NOT_BILL":                       ComputedUsageAggregationTypeDoNotBill,
 	"USAGE":                             ComputedUsageAggregationTypeUsage,
@@ -87,8 +104,29 @@ var mappingComputedUsageAggregationType = map[string]ComputedUsageAggregationTyp
 // GetComputedUsageAggregationTypeEnumValues Enumerates the set of values for ComputedUsageAggregationTypeEnum
 func GetComputedUsageAggregationTypeEnumValues() []ComputedUsageAggregationTypeEnum {
 	values := make([]ComputedUsageAggregationTypeEnum, 0)
-	for _, v := range mappingComputedUsageAggregationType {
+	for _, v := range mappingComputedUsageAggregationTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetComputedUsageAggregationTypeEnumStringValues Enumerates the set of values in String for ComputedUsageAggregationTypeEnum
+func GetComputedUsageAggregationTypeEnumStringValues() []string {
+	return []string{
+		"PROMOTION",
+		"DO_NOT_BILL",
+		"USAGE",
+		"COMMIT",
+		"OVERAGE",
+		"PAY_AS_YOU_GO",
+		"MONTHLY_MINIMUM",
+		"DELAYED_USAGE_INVOICE_TIMING",
+		"DELAYED_USAGE_COMMITMENT_EXP",
+		"ON_ACCOUNT_CREDIT",
+		"SERVICE_CREDIT",
+		"COMMITMENT_EXPIRATION",
+		"FUNDED_ALLOCATION",
+		"DONOT_BILL_USAGE_POST_TERMINATION",
+		"DELAYED_USAGE_POST_TERMINATION",
+	}
 }

@@ -11,7 +11,9 @@ package resourcesearch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // FreeTextSearchDetails A request containing arbitrary text that must be present in the resource.
@@ -31,6 +33,21 @@ func (m FreeTextSearchDetails) GetMatchingContextType() SearchDetailsMatchingCon
 
 func (m FreeTextSearchDetails) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m FreeTextSearchDetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingSearchDetailsMatchingContextTypeEnum[string(m.MatchingContextType)]; !ok && m.MatchingContextType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MatchingContextType: %s. Supported values are: %s.", m.MatchingContextType, strings.Join(GetSearchDetailsMatchingContextTypeEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // MarshalJSON marshals to json representation

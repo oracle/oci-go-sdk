@@ -5,8 +5,10 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListApplianceExportJobsRequest wrapper for the ListApplianceExportJobs operation
@@ -52,6 +54,10 @@ func (request ListApplianceExportJobsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListApplianceExportJobsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -65,6 +71,20 @@ func (request ListApplianceExportJobsRequest) BinaryRequestBody() (*common.OCIRe
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListApplianceExportJobsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListApplianceExportJobsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListApplianceExportJobsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListApplianceExportJobsLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListApplianceExportJobsResponse wrapper for the ListApplianceExportJobs operation
@@ -109,7 +129,7 @@ const (
 	ListApplianceExportJobsLifecycleStateDeleted    ListApplianceExportJobsLifecycleStateEnum = "DELETED"
 )
 
-var mappingListApplianceExportJobsLifecycleState = map[string]ListApplianceExportJobsLifecycleStateEnum{
+var mappingListApplianceExportJobsLifecycleStateEnum = map[string]ListApplianceExportJobsLifecycleStateEnum{
 	"CREATING":   ListApplianceExportJobsLifecycleStateCreating,
 	"ACTIVE":     ListApplianceExportJobsLifecycleStateActive,
 	"INPROGRESS": ListApplianceExportJobsLifecycleStateInprogress,
@@ -122,8 +142,21 @@ var mappingListApplianceExportJobsLifecycleState = map[string]ListApplianceExpor
 // GetListApplianceExportJobsLifecycleStateEnumValues Enumerates the set of values for ListApplianceExportJobsLifecycleStateEnum
 func GetListApplianceExportJobsLifecycleStateEnumValues() []ListApplianceExportJobsLifecycleStateEnum {
 	values := make([]ListApplianceExportJobsLifecycleStateEnum, 0)
-	for _, v := range mappingListApplianceExportJobsLifecycleState {
+	for _, v := range mappingListApplianceExportJobsLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListApplianceExportJobsLifecycleStateEnumStringValues Enumerates the set of values in String for ListApplianceExportJobsLifecycleStateEnum
+func GetListApplianceExportJobsLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"INPROGRESS",
+		"SUCCEEDED",
+		"FAILED",
+		"CANCELLED",
+		"DELETED",
+	}
 }

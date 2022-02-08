@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Billing Center Gateway API
+// OSP Gateway API
 //
-// This site describes all the Rest endpoints of Billing Center Gateway.
+// This site describes all the Rest endpoints of OSP Gateway.
 //
 
 package ospgateway
@@ -12,8 +12,8 @@ package ospgateway
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v56/common"
-	"github.com/oracle/oci-go-sdk/v56/common/auth"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v57/common/auth"
 	"net/http"
 )
 

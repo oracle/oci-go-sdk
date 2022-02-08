@@ -5,8 +5,10 @@
 package dashboardservice
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListDashboardGroupsRequest wrapper for the ListDashboardGroups operation
@@ -65,6 +67,10 @@ func (request ListDashboardGroupsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListDashboardGroupsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -78,6 +84,26 @@ func (request ListDashboardGroupsRequest) BinaryRequestBody() (*common.OCIReadSe
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListDashboardGroupsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListDashboardGroupsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingDashboardGroupLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDashboardGroupLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListDashboardGroupsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDashboardGroupsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListDashboardGroupsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDashboardGroupsSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListDashboardGroupsResponse wrapper for the ListDashboardGroups operation
@@ -117,7 +143,7 @@ const (
 	ListDashboardGroupsSortOrderDesc ListDashboardGroupsSortOrderEnum = "DESC"
 )
 
-var mappingListDashboardGroupsSortOrder = map[string]ListDashboardGroupsSortOrderEnum{
+var mappingListDashboardGroupsSortOrderEnum = map[string]ListDashboardGroupsSortOrderEnum{
 	"ASC":  ListDashboardGroupsSortOrderAsc,
 	"DESC": ListDashboardGroupsSortOrderDesc,
 }
@@ -125,10 +151,18 @@ var mappingListDashboardGroupsSortOrder = map[string]ListDashboardGroupsSortOrde
 // GetListDashboardGroupsSortOrderEnumValues Enumerates the set of values for ListDashboardGroupsSortOrderEnum
 func GetListDashboardGroupsSortOrderEnumValues() []ListDashboardGroupsSortOrderEnum {
 	values := make([]ListDashboardGroupsSortOrderEnum, 0)
-	for _, v := range mappingListDashboardGroupsSortOrder {
+	for _, v := range mappingListDashboardGroupsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListDashboardGroupsSortOrderEnumStringValues Enumerates the set of values in String for ListDashboardGroupsSortOrderEnum
+func GetListDashboardGroupsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListDashboardGroupsSortByEnum Enum with underlying type: string
@@ -140,7 +174,7 @@ const (
 	ListDashboardGroupsSortByDisplayname ListDashboardGroupsSortByEnum = "displayName"
 )
 
-var mappingListDashboardGroupsSortBy = map[string]ListDashboardGroupsSortByEnum{
+var mappingListDashboardGroupsSortByEnum = map[string]ListDashboardGroupsSortByEnum{
 	"timeCreated": ListDashboardGroupsSortByTimecreated,
 	"displayName": ListDashboardGroupsSortByDisplayname,
 }
@@ -148,8 +182,16 @@ var mappingListDashboardGroupsSortBy = map[string]ListDashboardGroupsSortByEnum{
 // GetListDashboardGroupsSortByEnumValues Enumerates the set of values for ListDashboardGroupsSortByEnum
 func GetListDashboardGroupsSortByEnumValues() []ListDashboardGroupsSortByEnum {
 	values := make([]ListDashboardGroupsSortByEnum, 0)
-	for _, v := range mappingListDashboardGroupsSortBy {
+	for _, v := range mappingListDashboardGroupsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListDashboardGroupsSortByEnumStringValues Enumerates the set of values in String for ListDashboardGroupsSortByEnum
+func GetListDashboardGroupsSortByEnumStringValues() []string {
+	return []string{
+		"timeCreated",
+		"displayName",
+	}
 }

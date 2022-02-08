@@ -39,7 +39,7 @@ const (
 	RegionYny          RegionEnum = "YNY"
 )
 
-var mappingRegion = map[string]RegionEnum{
+var mappingRegionEnum = map[string]RegionEnum{
 	"DEV":            RegionDev,
 	"SEA":            RegionSea,
 	"INTEG_NEXT":     RegionIntegNext,
@@ -68,8 +68,37 @@ var mappingRegion = map[string]RegionEnum{
 // GetRegionEnumValues Enumerates the set of values for RegionEnum
 func GetRegionEnumValues() []RegionEnum {
 	values := make([]RegionEnum, 0)
-	for _, v := range mappingRegion {
+	for _, v := range mappingRegionEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetRegionEnumStringValues Enumerates the set of values in String for RegionEnum
+func GetRegionEnumStringValues() []string {
+	return []string{
+		"DEV",
+		"SEA",
+		"INTEG_NEXT",
+		"INTEG_STABLE",
+		"PHX",
+		"IAD",
+		"FRA",
+		"EU_FRANKFURT_1",
+		"LHR",
+		"YYZ",
+		"NRT",
+		"ICN",
+		"BOM",
+		"GRU",
+		"SYD",
+		"ZRH",
+		"JED",
+		"AMS",
+		"KIX",
+		"MEL",
+		"YUL",
+		"HYD",
+		"YNY",
+	}
 }

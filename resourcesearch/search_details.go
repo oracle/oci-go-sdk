@@ -11,7 +11,9 @@ package resourcesearch
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // SearchDetails A base request type that contains common criteria for searching for resources.
@@ -75,6 +77,21 @@ func (m searchdetails) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m searchdetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingSearchDetailsMatchingContextTypeEnum[string(m.MatchingContextType)]; !ok && m.MatchingContextType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MatchingContextType: %s. Supported values are: %s.", m.MatchingContextType, strings.Join(GetSearchDetailsMatchingContextTypeEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // SearchDetailsMatchingContextTypeEnum Enum with underlying type: string
 type SearchDetailsMatchingContextTypeEnum string
 
@@ -84,7 +101,7 @@ const (
 	SearchDetailsMatchingContextTypeHighlights SearchDetailsMatchingContextTypeEnum = "HIGHLIGHTS"
 )
 
-var mappingSearchDetailsMatchingContextType = map[string]SearchDetailsMatchingContextTypeEnum{
+var mappingSearchDetailsMatchingContextTypeEnum = map[string]SearchDetailsMatchingContextTypeEnum{
 	"NONE":       SearchDetailsMatchingContextTypeNone,
 	"HIGHLIGHTS": SearchDetailsMatchingContextTypeHighlights,
 }
@@ -92,8 +109,16 @@ var mappingSearchDetailsMatchingContextType = map[string]SearchDetailsMatchingCo
 // GetSearchDetailsMatchingContextTypeEnumValues Enumerates the set of values for SearchDetailsMatchingContextTypeEnum
 func GetSearchDetailsMatchingContextTypeEnumValues() []SearchDetailsMatchingContextTypeEnum {
 	values := make([]SearchDetailsMatchingContextTypeEnum, 0)
-	for _, v := range mappingSearchDetailsMatchingContextType {
+	for _, v := range mappingSearchDetailsMatchingContextTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSearchDetailsMatchingContextTypeEnumStringValues Enumerates the set of values in String for SearchDetailsMatchingContextTypeEnum
+func GetSearchDetailsMatchingContextTypeEnumStringValues() []string {
+	return []string{
+		"NONE",
+		"HIGHLIGHTS",
+	}
 }

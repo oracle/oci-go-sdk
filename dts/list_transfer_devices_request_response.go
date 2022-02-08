@@ -5,8 +5,10 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListTransferDevicesRequest wrapper for the ListTransferDevices operation
@@ -41,6 +43,10 @@ func (request ListTransferDevicesRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListTransferDevicesRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -54,6 +60,20 @@ func (request ListTransferDevicesRequest) BinaryRequestBody() (*common.OCIReadSe
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListTransferDevicesRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListTransferDevicesRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListTransferDevicesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListTransferDevicesLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListTransferDevicesResponse wrapper for the ListTransferDevices operation
@@ -94,7 +114,7 @@ const (
 	ListTransferDevicesLifecycleStateCancelled  ListTransferDevicesLifecycleStateEnum = "CANCELLED"
 )
 
-var mappingListTransferDevicesLifecycleState = map[string]ListTransferDevicesLifecycleStateEnum{
+var mappingListTransferDevicesLifecycleStateEnum = map[string]ListTransferDevicesLifecycleStateEnum{
 	"PREPARING":  ListTransferDevicesLifecycleStatePreparing,
 	"READY":      ListTransferDevicesLifecycleStateReady,
 	"PACKAGED":   ListTransferDevicesLifecycleStatePackaged,
@@ -110,8 +130,24 @@ var mappingListTransferDevicesLifecycleState = map[string]ListTransferDevicesLif
 // GetListTransferDevicesLifecycleStateEnumValues Enumerates the set of values for ListTransferDevicesLifecycleStateEnum
 func GetListTransferDevicesLifecycleStateEnumValues() []ListTransferDevicesLifecycleStateEnum {
 	values := make([]ListTransferDevicesLifecycleStateEnum, 0)
-	for _, v := range mappingListTransferDevicesLifecycleState {
+	for _, v := range mappingListTransferDevicesLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListTransferDevicesLifecycleStateEnumStringValues Enumerates the set of values in String for ListTransferDevicesLifecycleStateEnum
+func GetListTransferDevicesLifecycleStateEnumStringValues() []string {
+	return []string{
+		"PREPARING",
+		"READY",
+		"PACKAGED",
+		"ACTIVE",
+		"PROCESSING",
+		"COMPLETE",
+		"MISSING",
+		"ERROR",
+		"DELETED",
+		"CANCELLED",
+	}
 }

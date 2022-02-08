@@ -11,7 +11,9 @@ package certificates
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // CertificateBundle The contents of the certificate, properties of the certificate (and certificate version), and user-provided contextual metadata for the certificate.
@@ -175,6 +177,23 @@ func (m certificatebundle) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m certificatebundle) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	for _, val := range m.Stages {
+		if _, ok := mappingVersionStageEnum[string(val)]; !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stages: %s. Supported values are: %s.", val, strings.Join(GetVersionStageEnumStringValues(), ",")))
+		}
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // CertificateBundleCertificateBundleTypeEnum Enum with underlying type: string
 type CertificateBundleCertificateBundleTypeEnum string
 
@@ -184,7 +203,7 @@ const (
 	CertificateBundleCertificateBundleTypeWithPrivateKey CertificateBundleCertificateBundleTypeEnum = "CERTIFICATE_CONTENT_WITH_PRIVATE_KEY"
 )
 
-var mappingCertificateBundleCertificateBundleType = map[string]CertificateBundleCertificateBundleTypeEnum{
+var mappingCertificateBundleCertificateBundleTypeEnum = map[string]CertificateBundleCertificateBundleTypeEnum{
 	"CERTIFICATE_CONTENT_PUBLIC_ONLY":      CertificateBundleCertificateBundleTypePublicOnly,
 	"CERTIFICATE_CONTENT_WITH_PRIVATE_KEY": CertificateBundleCertificateBundleTypeWithPrivateKey,
 }
@@ -192,8 +211,16 @@ var mappingCertificateBundleCertificateBundleType = map[string]CertificateBundle
 // GetCertificateBundleCertificateBundleTypeEnumValues Enumerates the set of values for CertificateBundleCertificateBundleTypeEnum
 func GetCertificateBundleCertificateBundleTypeEnumValues() []CertificateBundleCertificateBundleTypeEnum {
 	values := make([]CertificateBundleCertificateBundleTypeEnum, 0)
-	for _, v := range mappingCertificateBundleCertificateBundleType {
+	for _, v := range mappingCertificateBundleCertificateBundleTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetCertificateBundleCertificateBundleTypeEnumStringValues Enumerates the set of values in String for CertificateBundleCertificateBundleTypeEnum
+func GetCertificateBundleCertificateBundleTypeEnumStringValues() []string {
+	return []string{
+		"CERTIFICATE_CONTENT_PUBLIC_ONLY",
+		"CERTIFICATE_CONTENT_WITH_PRIVATE_KEY",
+	}
 }

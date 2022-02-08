@@ -11,7 +11,9 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // Record A record represents an entry in a dataset that needs labeling.
@@ -59,6 +61,21 @@ type Record struct {
 
 func (m Record) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m Record) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingRecordLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetRecordLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // UnmarshalJSON unmarshals from json
@@ -136,7 +153,7 @@ const (
 	RecordLifecycleStateDeleted  RecordLifecycleStateEnum = "DELETED"
 )
 
-var mappingRecordLifecycleState = map[string]RecordLifecycleStateEnum{
+var mappingRecordLifecycleStateEnum = map[string]RecordLifecycleStateEnum{
 	"ACTIVE":   RecordLifecycleStateActive,
 	"INACTIVE": RecordLifecycleStateInactive,
 	"DELETED":  RecordLifecycleStateDeleted,
@@ -145,8 +162,17 @@ var mappingRecordLifecycleState = map[string]RecordLifecycleStateEnum{
 // GetRecordLifecycleStateEnumValues Enumerates the set of values for RecordLifecycleStateEnum
 func GetRecordLifecycleStateEnumValues() []RecordLifecycleStateEnum {
 	values := make([]RecordLifecycleStateEnum, 0)
-	for _, v := range mappingRecordLifecycleState {
+	for _, v := range mappingRecordLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetRecordLifecycleStateEnumStringValues Enumerates the set of values in String for RecordLifecycleStateEnum
+func GetRecordLifecycleStateEnumStringValues() []string {
+	return []string{
+		"ACTIVE",
+		"INACTIVE",
+		"DELETED",
+	}
 }

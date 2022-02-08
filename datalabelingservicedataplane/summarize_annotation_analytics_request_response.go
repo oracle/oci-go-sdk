@@ -5,8 +5,10 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // SummarizeAnnotationAnalyticsRequest wrapper for the SummarizeAnnotationAnalytics operation
@@ -58,6 +60,10 @@ func (request SummarizeAnnotationAnalyticsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request SummarizeAnnotationAnalyticsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -71,6 +77,29 @@ func (request SummarizeAnnotationAnalyticsRequest) BinaryRequestBody() (*common.
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request SummarizeAnnotationAnalyticsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request SummarizeAnnotationAnalyticsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingAnnotationLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetAnnotationLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingSummarizeAnnotationAnalyticsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeAnnotationAnalyticsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingSummarizeAnnotationAnalyticsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeAnnotationAnalyticsSortByEnumStringValues(), ",")))
+	}
+	if _, ok := mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum[string(request.AnnotationGroupBy)]; !ok && request.AnnotationGroupBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AnnotationGroupBy: %s. Supported values are: %s.", request.AnnotationGroupBy, strings.Join(GetSummarizeAnnotationAnalyticsAnnotationGroupByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // SummarizeAnnotationAnalyticsResponse wrapper for the SummarizeAnnotationAnalytics operation
@@ -110,7 +139,7 @@ const (
 	SummarizeAnnotationAnalyticsSortOrderDesc SummarizeAnnotationAnalyticsSortOrderEnum = "DESC"
 )
 
-var mappingSummarizeAnnotationAnalyticsSortOrder = map[string]SummarizeAnnotationAnalyticsSortOrderEnum{
+var mappingSummarizeAnnotationAnalyticsSortOrderEnum = map[string]SummarizeAnnotationAnalyticsSortOrderEnum{
 	"ASC":  SummarizeAnnotationAnalyticsSortOrderAsc,
 	"DESC": SummarizeAnnotationAnalyticsSortOrderDesc,
 }
@@ -118,10 +147,18 @@ var mappingSummarizeAnnotationAnalyticsSortOrder = map[string]SummarizeAnnotatio
 // GetSummarizeAnnotationAnalyticsSortOrderEnumValues Enumerates the set of values for SummarizeAnnotationAnalyticsSortOrderEnum
 func GetSummarizeAnnotationAnalyticsSortOrderEnumValues() []SummarizeAnnotationAnalyticsSortOrderEnum {
 	values := make([]SummarizeAnnotationAnalyticsSortOrderEnum, 0)
-	for _, v := range mappingSummarizeAnnotationAnalyticsSortOrder {
+	for _, v := range mappingSummarizeAnnotationAnalyticsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSummarizeAnnotationAnalyticsSortOrderEnumStringValues Enumerates the set of values in String for SummarizeAnnotationAnalyticsSortOrderEnum
+func GetSummarizeAnnotationAnalyticsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // SummarizeAnnotationAnalyticsSortByEnum Enum with underlying type: string
@@ -134,7 +171,7 @@ const (
 	SummarizeAnnotationAnalyticsSortByUpdatedby SummarizeAnnotationAnalyticsSortByEnum = "updatedBy"
 )
 
-var mappingSummarizeAnnotationAnalyticsSortBy = map[string]SummarizeAnnotationAnalyticsSortByEnum{
+var mappingSummarizeAnnotationAnalyticsSortByEnum = map[string]SummarizeAnnotationAnalyticsSortByEnum{
 	"count":     SummarizeAnnotationAnalyticsSortByCount,
 	"label":     SummarizeAnnotationAnalyticsSortByLabel,
 	"updatedBy": SummarizeAnnotationAnalyticsSortByUpdatedby,
@@ -143,10 +180,19 @@ var mappingSummarizeAnnotationAnalyticsSortBy = map[string]SummarizeAnnotationAn
 // GetSummarizeAnnotationAnalyticsSortByEnumValues Enumerates the set of values for SummarizeAnnotationAnalyticsSortByEnum
 func GetSummarizeAnnotationAnalyticsSortByEnumValues() []SummarizeAnnotationAnalyticsSortByEnum {
 	values := make([]SummarizeAnnotationAnalyticsSortByEnum, 0)
-	for _, v := range mappingSummarizeAnnotationAnalyticsSortBy {
+	for _, v := range mappingSummarizeAnnotationAnalyticsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSummarizeAnnotationAnalyticsSortByEnumStringValues Enumerates the set of values in String for SummarizeAnnotationAnalyticsSortByEnum
+func GetSummarizeAnnotationAnalyticsSortByEnumStringValues() []string {
+	return []string{
+		"count",
+		"label",
+		"updatedBy",
+	}
 }
 
 // SummarizeAnnotationAnalyticsAnnotationGroupByEnum Enum with underlying type: string
@@ -158,7 +204,7 @@ const (
 	SummarizeAnnotationAnalyticsAnnotationGroupByLabel     SummarizeAnnotationAnalyticsAnnotationGroupByEnum = "label"
 )
 
-var mappingSummarizeAnnotationAnalyticsAnnotationGroupBy = map[string]SummarizeAnnotationAnalyticsAnnotationGroupByEnum{
+var mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum = map[string]SummarizeAnnotationAnalyticsAnnotationGroupByEnum{
 	"updatedBy": SummarizeAnnotationAnalyticsAnnotationGroupByUpdatedby,
 	"label":     SummarizeAnnotationAnalyticsAnnotationGroupByLabel,
 }
@@ -166,8 +212,16 @@ var mappingSummarizeAnnotationAnalyticsAnnotationGroupBy = map[string]SummarizeA
 // GetSummarizeAnnotationAnalyticsAnnotationGroupByEnumValues Enumerates the set of values for SummarizeAnnotationAnalyticsAnnotationGroupByEnum
 func GetSummarizeAnnotationAnalyticsAnnotationGroupByEnumValues() []SummarizeAnnotationAnalyticsAnnotationGroupByEnum {
 	values := make([]SummarizeAnnotationAnalyticsAnnotationGroupByEnum, 0)
-	for _, v := range mappingSummarizeAnnotationAnalyticsAnnotationGroupBy {
+	for _, v := range mappingSummarizeAnnotationAnalyticsAnnotationGroupByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSummarizeAnnotationAnalyticsAnnotationGroupByEnumStringValues Enumerates the set of values in String for SummarizeAnnotationAnalyticsAnnotationGroupByEnum
+func GetSummarizeAnnotationAnalyticsAnnotationGroupByEnumStringValues() []string {
+	return []string{
+		"updatedBy",
+		"label",
+	}
 }

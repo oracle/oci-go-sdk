@@ -11,7 +11,9 @@ package announcementsservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // BaseAnnouncementsPreferences The object that contains the announcement email preferences configured for the tenancy (root compartment).
@@ -125,4 +127,19 @@ func (m baseannouncementspreferences) GetPreferenceType() BaseCreateAnnouncement
 
 func (m baseannouncementspreferences) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m baseannouncementspreferences) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum[string(m.PreferenceType)]; !ok && m.PreferenceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PreferenceType: %s. Supported values are: %s.", m.PreferenceType, strings.Join(GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }

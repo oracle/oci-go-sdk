@@ -11,7 +11,9 @@ package announcementsservice
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // BaseCreateAnnouncementsPreferencesDetails The model for the parameters of announcement email preferences configured for the tenancy (root compartment).
@@ -97,6 +99,21 @@ func (m basecreateannouncementspreferencesdetails) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m basecreateannouncementspreferencesdetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum[string(m.PreferenceType)]; !ok && m.PreferenceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PreferenceType: %s. Supported values are: %s.", m.PreferenceType, strings.Join(GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum Enum with underlying type: string
 type BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum string
 
@@ -107,7 +124,7 @@ const (
 	BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeOutAllAnnouncements                   BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum = "OPT_OUT_ALL_ANNOUNCEMENTS"
 )
 
-var mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceType = map[string]BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum{
+var mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum = map[string]BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum{
 	"OPT_IN_TENANT_ANNOUNCEMENTS":                   BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeInTenantAnnouncements,
 	"OPT_IN_TENANT_AND_INFORMATIONAL_ANNOUNCEMENTS": BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeInTenantAndInformationalAnnouncements,
 	"OPT_OUT_ALL_ANNOUNCEMENTS":                     BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeOutAllAnnouncements,
@@ -116,8 +133,17 @@ var mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceType = map[string]
 // GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumValues Enumerates the set of values for BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum
 func GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumValues() []BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum {
 	values := make([]BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum, 0)
-	for _, v := range mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceType {
+	for _, v := range mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumStringValues Enumerates the set of values in String for BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum
+func GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumStringValues() []string {
+	return []string{
+		"OPT_IN_TENANT_ANNOUNCEMENTS",
+		"OPT_IN_TENANT_AND_INFORMATIONAL_ANNOUNCEMENTS",
+		"OPT_OUT_ALL_ANNOUNCEMENTS",
+	}
 }

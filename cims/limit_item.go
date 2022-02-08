@@ -11,7 +11,9 @@ package cims
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // LimitItem Reserved for future use.
@@ -71,6 +73,21 @@ func (m LimitItem) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m LimitItem) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingLimitItemLimitStatusEnum[string(m.LimitStatus)]; !ok && m.LimitStatus != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LimitStatus: %s. Supported values are: %s.", m.LimitStatus, strings.Join(GetLimitItemLimitStatusEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // MarshalJSON marshals to json representation
 func (m LimitItem) MarshalJSON() (buff []byte, e error) {
 	type MarshalTypeLimitItem LimitItem
@@ -95,7 +112,7 @@ const (
 	LimitItemLimitStatusNotApproved       LimitItemLimitStatusEnum = "NOT_APPROVED"
 )
 
-var mappingLimitItemLimitStatus = map[string]LimitItemLimitStatusEnum{
+var mappingLimitItemLimitStatusEnum = map[string]LimitItemLimitStatusEnum{
 	"APPROVED":           LimitItemLimitStatusApproved,
 	"PARTIALLY_APPROVED": LimitItemLimitStatusPartiallyApproved,
 	"NOT_APPROVED":       LimitItemLimitStatusNotApproved,
@@ -104,8 +121,17 @@ var mappingLimitItemLimitStatus = map[string]LimitItemLimitStatusEnum{
 // GetLimitItemLimitStatusEnumValues Enumerates the set of values for LimitItemLimitStatusEnum
 func GetLimitItemLimitStatusEnumValues() []LimitItemLimitStatusEnum {
 	values := make([]LimitItemLimitStatusEnum, 0)
-	for _, v := range mappingLimitItemLimitStatus {
+	for _, v := range mappingLimitItemLimitStatusEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetLimitItemLimitStatusEnumStringValues Enumerates the set of values in String for LimitItemLimitStatusEnum
+func GetLimitItemLimitStatusEnumStringValues() []string {
+	return []string{
+		"APPROVED",
+		"PARTIALLY_APPROVED",
+		"NOT_APPROVED",
+	}
 }

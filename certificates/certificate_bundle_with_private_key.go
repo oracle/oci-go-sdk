@@ -11,7 +11,9 @@ package certificates
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // CertificateBundleWithPrivateKey A certificate bundle, including the private key.
@@ -114,6 +116,24 @@ func (m CertificateBundleWithPrivateKey) GetRevocationStatus() *RevocationStatus
 
 func (m CertificateBundleWithPrivateKey) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m CertificateBundleWithPrivateKey) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	for _, val := range m.Stages {
+		if _, ok := mappingVersionStageEnum[string(val)]; !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stages: %s. Supported values are: %s.", val, strings.Join(GetVersionStageEnumStringValues(), ",")))
+		}
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // MarshalJSON marshals to json representation

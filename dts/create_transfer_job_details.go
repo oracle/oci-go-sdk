@@ -10,7 +10,9 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // CreateTransferJobDetails The representation of CreateTransferJobDetails
@@ -38,6 +40,21 @@ func (m CreateTransferJobDetails) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m CreateTransferJobDetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingCreateTransferJobDetailsDeviceTypeEnum[string(m.DeviceType)]; !ok && m.DeviceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeviceType: %s. Supported values are: %s.", m.DeviceType, strings.Join(GetCreateTransferJobDetailsDeviceTypeEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // CreateTransferJobDetailsDeviceTypeEnum Enum with underlying type: string
 type CreateTransferJobDetailsDeviceTypeEnum string
 
@@ -47,7 +64,7 @@ const (
 	CreateTransferJobDetailsDeviceTypeAppliance CreateTransferJobDetailsDeviceTypeEnum = "APPLIANCE"
 )
 
-var mappingCreateTransferJobDetailsDeviceType = map[string]CreateTransferJobDetailsDeviceTypeEnum{
+var mappingCreateTransferJobDetailsDeviceTypeEnum = map[string]CreateTransferJobDetailsDeviceTypeEnum{
 	"DISK":      CreateTransferJobDetailsDeviceTypeDisk,
 	"APPLIANCE": CreateTransferJobDetailsDeviceTypeAppliance,
 }
@@ -55,8 +72,16 @@ var mappingCreateTransferJobDetailsDeviceType = map[string]CreateTransferJobDeta
 // GetCreateTransferJobDetailsDeviceTypeEnumValues Enumerates the set of values for CreateTransferJobDetailsDeviceTypeEnum
 func GetCreateTransferJobDetailsDeviceTypeEnumValues() []CreateTransferJobDetailsDeviceTypeEnum {
 	values := make([]CreateTransferJobDetailsDeviceTypeEnum, 0)
-	for _, v := range mappingCreateTransferJobDetailsDeviceType {
+	for _, v := range mappingCreateTransferJobDetailsDeviceTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetCreateTransferJobDetailsDeviceTypeEnumStringValues Enumerates the set of values in String for CreateTransferJobDetailsDeviceTypeEnum
+func GetCreateTransferJobDetailsDeviceTypeEnumStringValues() []string {
+	return []string{
+		"DISK",
+		"APPLIANCE",
+	}
 }

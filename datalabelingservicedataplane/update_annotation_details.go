@@ -11,7 +11,9 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // UpdateAnnotationDetails This is the payload sent in the CreateAnnotation operation. It contains all the information required for a user to create an annotation for a record.
@@ -31,6 +33,18 @@ type UpdateAnnotationDetails struct {
 
 func (m UpdateAnnotationDetails) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m UpdateAnnotationDetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // UnmarshalJSON unmarshals from json

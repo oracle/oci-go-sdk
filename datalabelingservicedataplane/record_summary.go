@@ -10,7 +10,9 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // RecordSummary A record summary is the representation returned in list views.  It is usually a subset of the full record entity and should not contain any potentially sensitive information.
@@ -51,4 +53,19 @@ type RecordSummary struct {
 
 func (m RecordSummary) String() string {
 	return common.PointerString(m)
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m RecordSummary) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingRecordLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetRecordLifecycleStateEnumStringValues(), ",")))
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }

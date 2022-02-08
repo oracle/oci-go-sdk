@@ -5,8 +5,10 @@
 package datalabelingservicedataplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListRecordsRequest wrapper for the ListRecords operation
@@ -64,6 +66,10 @@ func (request ListRecordsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListRecordsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -77,6 +83,26 @@ func (request ListRecordsRequest) BinaryRequestBody() (*common.OCIReadSeekCloser
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListRecordsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListRecordsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingRecordLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetRecordLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListRecordsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRecordsSortOrderEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListRecordsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRecordsSortByEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListRecordsResponse wrapper for the ListRecords operation
@@ -116,7 +142,7 @@ const (
 	ListRecordsSortOrderDesc ListRecordsSortOrderEnum = "DESC"
 )
 
-var mappingListRecordsSortOrder = map[string]ListRecordsSortOrderEnum{
+var mappingListRecordsSortOrderEnum = map[string]ListRecordsSortOrderEnum{
 	"ASC":  ListRecordsSortOrderAsc,
 	"DESC": ListRecordsSortOrderDesc,
 }
@@ -124,10 +150,18 @@ var mappingListRecordsSortOrder = map[string]ListRecordsSortOrderEnum{
 // GetListRecordsSortOrderEnumValues Enumerates the set of values for ListRecordsSortOrderEnum
 func GetListRecordsSortOrderEnumValues() []ListRecordsSortOrderEnum {
 	values := make([]ListRecordsSortOrderEnum, 0)
-	for _, v := range mappingListRecordsSortOrder {
+	for _, v := range mappingListRecordsSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRecordsSortOrderEnumStringValues Enumerates the set of values in String for ListRecordsSortOrderEnum
+func GetListRecordsSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }
 
 // ListRecordsSortByEnum Enum with underlying type: string
@@ -139,7 +173,7 @@ const (
 	ListRecordsSortByName        ListRecordsSortByEnum = "name"
 )
 
-var mappingListRecordsSortBy = map[string]ListRecordsSortByEnum{
+var mappingListRecordsSortByEnum = map[string]ListRecordsSortByEnum{
 	"timeCreated": ListRecordsSortByTimecreated,
 	"name":        ListRecordsSortByName,
 }
@@ -147,8 +181,16 @@ var mappingListRecordsSortBy = map[string]ListRecordsSortByEnum{
 // GetListRecordsSortByEnumValues Enumerates the set of values for ListRecordsSortByEnum
 func GetListRecordsSortByEnumValues() []ListRecordsSortByEnum {
 	values := make([]ListRecordsSortByEnum, 0)
-	for _, v := range mappingListRecordsSortBy {
+	for _, v := range mappingListRecordsSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListRecordsSortByEnumStringValues Enumerates the set of values in String for ListRecordsSortByEnum
+func GetListRecordsSortByEnumStringValues() []string {
+	return []string{
+		"timeCreated",
+		"name",
+	}
 }

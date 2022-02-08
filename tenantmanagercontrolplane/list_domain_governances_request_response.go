@@ -5,8 +5,10 @@
 package tenantmanagercontrolplane
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListDomainGovernancesRequest wrapper for the ListDomainGovernances operation
@@ -61,6 +63,10 @@ func (request ListDomainGovernancesRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListDomainGovernancesRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -74,6 +80,26 @@ func (request ListDomainGovernancesRequest) BinaryRequestBody() (*common.OCIRead
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListDomainGovernancesRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListDomainGovernancesRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListDomainGovernancesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListDomainGovernancesLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListDomainGovernancesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDomainGovernancesSortByEnumStringValues(), ",")))
+	}
+	if _, ok := mappingListDomainGovernancesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDomainGovernancesSortOrderEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListDomainGovernancesResponse wrapper for the ListDomainGovernances operation
@@ -117,7 +143,7 @@ const (
 	ListDomainGovernancesLifecycleStateTerminated ListDomainGovernancesLifecycleStateEnum = "TERMINATED"
 )
 
-var mappingListDomainGovernancesLifecycleState = map[string]ListDomainGovernancesLifecycleStateEnum{
+var mappingListDomainGovernancesLifecycleStateEnum = map[string]ListDomainGovernancesLifecycleStateEnum{
 	"CREATING":   ListDomainGovernancesLifecycleStateCreating,
 	"ACTIVE":     ListDomainGovernancesLifecycleStateActive,
 	"INACTIVE":   ListDomainGovernancesLifecycleStateInactive,
@@ -129,10 +155,22 @@ var mappingListDomainGovernancesLifecycleState = map[string]ListDomainGovernance
 // GetListDomainGovernancesLifecycleStateEnumValues Enumerates the set of values for ListDomainGovernancesLifecycleStateEnum
 func GetListDomainGovernancesLifecycleStateEnumValues() []ListDomainGovernancesLifecycleStateEnum {
 	values := make([]ListDomainGovernancesLifecycleStateEnum, 0)
-	for _, v := range mappingListDomainGovernancesLifecycleState {
+	for _, v := range mappingListDomainGovernancesLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListDomainGovernancesLifecycleStateEnumStringValues Enumerates the set of values in String for ListDomainGovernancesLifecycleStateEnum
+func GetListDomainGovernancesLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"ACTIVE",
+		"INACTIVE",
+		"UPDATING",
+		"FAILED",
+		"TERMINATED",
+	}
 }
 
 // ListDomainGovernancesSortByEnum Enum with underlying type: string
@@ -144,7 +182,7 @@ const (
 	ListDomainGovernancesSortByDisplayname ListDomainGovernancesSortByEnum = "displayName"
 )
 
-var mappingListDomainGovernancesSortBy = map[string]ListDomainGovernancesSortByEnum{
+var mappingListDomainGovernancesSortByEnum = map[string]ListDomainGovernancesSortByEnum{
 	"timeCreated": ListDomainGovernancesSortByTimecreated,
 	"displayName": ListDomainGovernancesSortByDisplayname,
 }
@@ -152,10 +190,18 @@ var mappingListDomainGovernancesSortBy = map[string]ListDomainGovernancesSortByE
 // GetListDomainGovernancesSortByEnumValues Enumerates the set of values for ListDomainGovernancesSortByEnum
 func GetListDomainGovernancesSortByEnumValues() []ListDomainGovernancesSortByEnum {
 	values := make([]ListDomainGovernancesSortByEnum, 0)
-	for _, v := range mappingListDomainGovernancesSortBy {
+	for _, v := range mappingListDomainGovernancesSortByEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListDomainGovernancesSortByEnumStringValues Enumerates the set of values in String for ListDomainGovernancesSortByEnum
+func GetListDomainGovernancesSortByEnumStringValues() []string {
+	return []string{
+		"timeCreated",
+		"displayName",
+	}
 }
 
 // ListDomainGovernancesSortOrderEnum Enum with underlying type: string
@@ -167,7 +213,7 @@ const (
 	ListDomainGovernancesSortOrderDesc ListDomainGovernancesSortOrderEnum = "DESC"
 )
 
-var mappingListDomainGovernancesSortOrder = map[string]ListDomainGovernancesSortOrderEnum{
+var mappingListDomainGovernancesSortOrderEnum = map[string]ListDomainGovernancesSortOrderEnum{
 	"ASC":  ListDomainGovernancesSortOrderAsc,
 	"DESC": ListDomainGovernancesSortOrderDesc,
 }
@@ -175,8 +221,16 @@ var mappingListDomainGovernancesSortOrder = map[string]ListDomainGovernancesSort
 // GetListDomainGovernancesSortOrderEnumValues Enumerates the set of values for ListDomainGovernancesSortOrderEnum
 func GetListDomainGovernancesSortOrderEnumValues() []ListDomainGovernancesSortOrderEnum {
 	values := make([]ListDomainGovernancesSortOrderEnum, 0)
-	for _, v := range mappingListDomainGovernancesSortOrder {
+	for _, v := range mappingListDomainGovernancesSortOrderEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListDomainGovernancesSortOrderEnumStringValues Enumerates the set of values in String for ListDomainGovernancesSortOrderEnum
+func GetListDomainGovernancesSortOrderEnumStringValues() []string {
+	return []string{
+		"ASC",
+		"DESC",
+	}
 }

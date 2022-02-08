@@ -5,8 +5,10 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // ListTransferJobsRequest wrapper for the ListTransferJobs operation
@@ -52,6 +54,10 @@ func (request ListTransferJobsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request ListTransferJobsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -65,6 +71,20 @@ func (request ListTransferJobsRequest) BinaryRequestBody() (*common.OCIReadSeekC
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request ListTransferJobsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request ListTransferJobsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingListTransferJobsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListTransferJobsLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // ListTransferJobsResponse wrapper for the ListTransferJobs operation
@@ -107,7 +127,7 @@ const (
 	ListTransferJobsLifecycleStateClosed    ListTransferJobsLifecycleStateEnum = "CLOSED"
 )
 
-var mappingListTransferJobsLifecycleState = map[string]ListTransferJobsLifecycleStateEnum{
+var mappingListTransferJobsLifecycleStateEnum = map[string]ListTransferJobsLifecycleStateEnum{
 	"INITIATED": ListTransferJobsLifecycleStateInitiated,
 	"PREPARING": ListTransferJobsLifecycleStatePreparing,
 	"ACTIVE":    ListTransferJobsLifecycleStateActive,
@@ -118,8 +138,19 @@ var mappingListTransferJobsLifecycleState = map[string]ListTransferJobsLifecycle
 // GetListTransferJobsLifecycleStateEnumValues Enumerates the set of values for ListTransferJobsLifecycleStateEnum
 func GetListTransferJobsLifecycleStateEnumValues() []ListTransferJobsLifecycleStateEnum {
 	values := make([]ListTransferJobsLifecycleStateEnum, 0)
-	for _, v := range mappingListTransferJobsLifecycleState {
+	for _, v := range mappingListTransferJobsLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetListTransferJobsLifecycleStateEnumStringValues Enumerates the set of values in String for ListTransferJobsLifecycleStateEnum
+func GetListTransferJobsLifecycleStateEnumStringValues() []string {
+	return []string{
+		"INITIATED",
+		"PREPARING",
+		"ACTIVE",
+		"DELETED",
+		"CLOSED",
+	}
 }

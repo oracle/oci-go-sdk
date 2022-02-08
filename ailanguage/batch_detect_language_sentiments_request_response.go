@@ -5,8 +5,10 @@
 package ailanguage
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
 	"net/http"
+	"strings"
 )
 
 // BatchDetectLanguageSentimentsRequest wrapper for the BatchDetectLanguageSentiments operation
@@ -40,6 +42,10 @@ func (request BatchDetectLanguageSentimentsRequest) String() string {
 // HTTPRequest implements the OCIRequest interface
 func (request BatchDetectLanguageSentimentsRequest) HTTPRequest(method, path string, binaryRequestBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (http.Request, error) {
 
+	_, err := request.ValidateEnumValue()
+	if err != nil {
+		return http.Request{}, err
+	}
 	return common.MakeDefaultHTTPRequestWithTaggedStructAndExtraHeaders(method, path, request, extraHeaders)
 }
 
@@ -53,6 +59,23 @@ func (request BatchDetectLanguageSentimentsRequest) BinaryRequestBody() (*common
 // RetryPolicy implements the OCIRetryableRequest interface. This retrieves the specified retry policy.
 func (request BatchDetectLanguageSentimentsRequest) RetryPolicy() *common.RetryPolicy {
 	return request.RequestMetadata.RetryPolicy
+}
+
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (request BatchDetectLanguageSentimentsRequest) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	for _, val := range request.Level {
+		if _, ok := mappingBatchDetectLanguageSentimentsLevelEnum[string(val)]; !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Level: %s. Supported values are: %s.", val, strings.Join(GetBatchDetectLanguageSentimentsLevelEnumStringValues(), ",")))
+		}
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
 }
 
 // BatchDetectLanguageSentimentsResponse wrapper for the BatchDetectLanguageSentiments operation
@@ -87,7 +110,7 @@ const (
 	BatchDetectLanguageSentimentsLevelSentence BatchDetectLanguageSentimentsLevelEnum = "SENTENCE"
 )
 
-var mappingBatchDetectLanguageSentimentsLevel = map[string]BatchDetectLanguageSentimentsLevelEnum{
+var mappingBatchDetectLanguageSentimentsLevelEnum = map[string]BatchDetectLanguageSentimentsLevelEnum{
 	"ASPECT":   BatchDetectLanguageSentimentsLevelAspect,
 	"SENTENCE": BatchDetectLanguageSentimentsLevelSentence,
 }
@@ -95,8 +118,16 @@ var mappingBatchDetectLanguageSentimentsLevel = map[string]BatchDetectLanguageSe
 // GetBatchDetectLanguageSentimentsLevelEnumValues Enumerates the set of values for BatchDetectLanguageSentimentsLevelEnum
 func GetBatchDetectLanguageSentimentsLevelEnumValues() []BatchDetectLanguageSentimentsLevelEnum {
 	values := make([]BatchDetectLanguageSentimentsLevelEnum, 0)
-	for _, v := range mappingBatchDetectLanguageSentimentsLevel {
+	for _, v := range mappingBatchDetectLanguageSentimentsLevelEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetBatchDetectLanguageSentimentsLevelEnumStringValues Enumerates the set of values in String for BatchDetectLanguageSentimentsLevelEnum
+func GetBatchDetectLanguageSentimentsLevelEnumStringValues() []string {
+	return []string{
+		"ASPECT",
+		"SENTENCE",
+	}
 }

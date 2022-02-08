@@ -10,7 +10,9 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // UpdateTransferPackageDetails The representation of UpdateTransferPackageDetails
@@ -28,6 +30,21 @@ func (m UpdateTransferPackageDetails) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m UpdateTransferPackageDetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingUpdateTransferPackageDetailsLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetUpdateTransferPackageDetailsLifecycleStateEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // UpdateTransferPackageDetailsLifecycleStateEnum Enum with underlying type: string
 type UpdateTransferPackageDetailsLifecycleStateEnum string
 
@@ -37,7 +54,7 @@ const (
 	UpdateTransferPackageDetailsLifecycleStateCancelled UpdateTransferPackageDetailsLifecycleStateEnum = "CANCELLED"
 )
 
-var mappingUpdateTransferPackageDetailsLifecycleState = map[string]UpdateTransferPackageDetailsLifecycleStateEnum{
+var mappingUpdateTransferPackageDetailsLifecycleStateEnum = map[string]UpdateTransferPackageDetailsLifecycleStateEnum{
 	"SHIPPING":  UpdateTransferPackageDetailsLifecycleStateShipping,
 	"CANCELLED": UpdateTransferPackageDetailsLifecycleStateCancelled,
 }
@@ -45,8 +62,16 @@ var mappingUpdateTransferPackageDetailsLifecycleState = map[string]UpdateTransfe
 // GetUpdateTransferPackageDetailsLifecycleStateEnumValues Enumerates the set of values for UpdateTransferPackageDetailsLifecycleStateEnum
 func GetUpdateTransferPackageDetailsLifecycleStateEnumValues() []UpdateTransferPackageDetailsLifecycleStateEnum {
 	values := make([]UpdateTransferPackageDetailsLifecycleStateEnum, 0)
-	for _, v := range mappingUpdateTransferPackageDetailsLifecycleState {
+	for _, v := range mappingUpdateTransferPackageDetailsLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetUpdateTransferPackageDetailsLifecycleStateEnumStringValues Enumerates the set of values in String for UpdateTransferPackageDetailsLifecycleStateEnum
+func GetUpdateTransferPackageDetailsLifecycleStateEnumStringValues() []string {
+	return []string{
+		"SHIPPING",
+		"CANCELLED",
+	}
 }

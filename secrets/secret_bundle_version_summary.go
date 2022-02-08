@@ -10,7 +10,9 @@
 package secrets
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // SecretBundleVersionSummary The properties of the secret bundle. (Secret bundle version summary objects do not include the actual contents of the secret.)
@@ -44,6 +46,24 @@ func (m SecretBundleVersionSummary) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m SecretBundleVersionSummary) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	for _, val := range m.Stages {
+		if _, ok := mappingSecretBundleVersionSummaryStagesEnum[string(val)]; !ok && val != "" {
+			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stages: %s. Supported values are: %s.", val, strings.Join(GetSecretBundleVersionSummaryStagesEnumStringValues(), ",")))
+		}
+	}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // SecretBundleVersionSummaryStagesEnum Enum with underlying type: string
 type SecretBundleVersionSummaryStagesEnum string
 
@@ -56,7 +76,7 @@ const (
 	SecretBundleVersionSummaryStagesDeprecated SecretBundleVersionSummaryStagesEnum = "DEPRECATED"
 )
 
-var mappingSecretBundleVersionSummaryStages = map[string]SecretBundleVersionSummaryStagesEnum{
+var mappingSecretBundleVersionSummaryStagesEnum = map[string]SecretBundleVersionSummaryStagesEnum{
 	"CURRENT":    SecretBundleVersionSummaryStagesCurrent,
 	"PENDING":    SecretBundleVersionSummaryStagesPending,
 	"LATEST":     SecretBundleVersionSummaryStagesLatest,
@@ -67,8 +87,19 @@ var mappingSecretBundleVersionSummaryStages = map[string]SecretBundleVersionSumm
 // GetSecretBundleVersionSummaryStagesEnumValues Enumerates the set of values for SecretBundleVersionSummaryStagesEnum
 func GetSecretBundleVersionSummaryStagesEnumValues() []SecretBundleVersionSummaryStagesEnum {
 	values := make([]SecretBundleVersionSummaryStagesEnum, 0)
-	for _, v := range mappingSecretBundleVersionSummaryStages {
+	for _, v := range mappingSecretBundleVersionSummaryStagesEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSecretBundleVersionSummaryStagesEnumStringValues Enumerates the set of values in String for SecretBundleVersionSummaryStagesEnum
+func GetSecretBundleVersionSummaryStagesEnumStringValues() []string {
+	return []string{
+		"CURRENT",
+		"PENDING",
+		"LATEST",
+		"PREVIOUS",
+		"DEPRECATED",
+	}
 }

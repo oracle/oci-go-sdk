@@ -25,7 +25,7 @@ const (
 	SourceLifecycleStatesDeleted  SourceLifecycleStatesEnum = "DELETED"
 )
 
-var mappingSourceLifecycleStates = map[string]SourceLifecycleStatesEnum{
+var mappingSourceLifecycleStatesEnum = map[string]SourceLifecycleStatesEnum{
 	"CREATING": SourceLifecycleStatesCreating,
 	"DELETING": SourceLifecycleStatesDeleting,
 	"UPDATING": SourceLifecycleStatesUpdating,
@@ -37,8 +37,20 @@ var mappingSourceLifecycleStates = map[string]SourceLifecycleStatesEnum{
 // GetSourceLifecycleStatesEnumValues Enumerates the set of values for SourceLifecycleStatesEnum
 func GetSourceLifecycleStatesEnumValues() []SourceLifecycleStatesEnum {
 	values := make([]SourceLifecycleStatesEnum, 0)
-	for _, v := range mappingSourceLifecycleStates {
+	for _, v := range mappingSourceLifecycleStatesEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetSourceLifecycleStatesEnumStringValues Enumerates the set of values in String for SourceLifecycleStatesEnum
+func GetSourceLifecycleStatesEnumStringValues() []string {
+	return []string{
+		"CREATING",
+		"DELETING",
+		"UPDATING",
+		"ACTIVE",
+		"INACTIVE",
+		"DELETED",
+	}
 }

@@ -11,7 +11,9 @@ package datalabelingservicedataplane
 
 import (
 	"encoding/json"
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // Entity An entity allows the labeler to identify an object in the record to label.  This can be, for example, a snippet of text, an entire image, or a bounding box within an image.  All entity types have an array of labels that are indexed. If more than one label is provided, but the annotationType on the corresponding dataset is for a single class, the API rejects the create annotation request.
@@ -69,6 +71,18 @@ func (m entity) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m entity) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // EntityEntityTypeEnum Enum with underlying type: string
 type EntityEntityTypeEnum string
 
@@ -79,7 +93,7 @@ const (
 	EntityEntityTypeTextselection        EntityEntityTypeEnum = "TEXTSELECTION"
 )
 
-var mappingEntityEntityType = map[string]EntityEntityTypeEnum{
+var mappingEntityEntityTypeEnum = map[string]EntityEntityTypeEnum{
 	"GENERIC":              EntityEntityTypeGeneric,
 	"IMAGEOBJECTSELECTION": EntityEntityTypeImageobjectselection,
 	"TEXTSELECTION":        EntityEntityTypeTextselection,
@@ -88,8 +102,17 @@ var mappingEntityEntityType = map[string]EntityEntityTypeEnum{
 // GetEntityEntityTypeEnumValues Enumerates the set of values for EntityEntityTypeEnum
 func GetEntityEntityTypeEnumValues() []EntityEntityTypeEnum {
 	values := make([]EntityEntityTypeEnum, 0)
-	for _, v := range mappingEntityEntityType {
+	for _, v := range mappingEntityEntityTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetEntityEntityTypeEnumStringValues Enumerates the set of values in String for EntityEntityTypeEnum
+func GetEntityEntityTypeEnumStringValues() []string {
+	return []string{
+		"GENERIC",
+		"IMAGEOBJECTSELECTION",
+		"TEXTSELECTION",
+	}
 }

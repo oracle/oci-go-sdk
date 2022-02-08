@@ -10,7 +10,9 @@
 package cims
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // Ticket Details about the ticket created.
@@ -48,6 +50,27 @@ func (m Ticket) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m Ticket) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+	if _, ok := mappingTicketSeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetTicketSeverityEnumStringValues(), ",")))
+	}
+
+	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingLifecycleDetailsEnum[string(m.LifecycleDetails)]; !ok && m.LifecycleDetails != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleDetails: %s. Supported values are: %s.", m.LifecycleDetails, strings.Join(GetLifecycleDetailsEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // TicketSeverityEnum Enum with underlying type: string
 type TicketSeverityEnum string
 
@@ -58,7 +81,7 @@ const (
 	TicketSeverityMedium  TicketSeverityEnum = "MEDIUM"
 )
 
-var mappingTicketSeverity = map[string]TicketSeverityEnum{
+var mappingTicketSeverityEnum = map[string]TicketSeverityEnum{
 	"HIGHEST": TicketSeverityHighest,
 	"HIGH":    TicketSeverityHigh,
 	"MEDIUM":  TicketSeverityMedium,
@@ -67,8 +90,17 @@ var mappingTicketSeverity = map[string]TicketSeverityEnum{
 // GetTicketSeverityEnumValues Enumerates the set of values for TicketSeverityEnum
 func GetTicketSeverityEnumValues() []TicketSeverityEnum {
 	values := make([]TicketSeverityEnum, 0)
-	for _, v := range mappingTicketSeverity {
+	for _, v := range mappingTicketSeverityEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetTicketSeverityEnumStringValues Enumerates the set of values in String for TicketSeverityEnum
+func GetTicketSeverityEnumStringValues() []string {
+	return []string{
+		"HIGHEST",
+		"HIGH",
+		"MEDIUM",
+	}
 }

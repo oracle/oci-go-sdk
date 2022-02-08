@@ -10,7 +10,9 @@
 package dts
 
 import (
-	"github.com/oracle/oci-go-sdk/v56/common"
+	"fmt"
+	"github.com/oracle/oci-go-sdk/v57/common"
+	"strings"
 )
 
 // UpdateTransferJobDetails The representation of UpdateTransferJobDetails
@@ -36,6 +38,24 @@ func (m UpdateTransferJobDetails) String() string {
 	return common.PointerString(m)
 }
 
+// ValidateEnumValue returns an error when providing an unsupported enum value
+// This function is being called during constructing API request process
+// Not recommended for calling this function directly
+func (m UpdateTransferJobDetails) ValidateEnumValue() (bool, error) {
+	errMessage := []string{}
+
+	if _, ok := mappingUpdateTransferJobDetailsLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetUpdateTransferJobDetailsLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingUpdateTransferJobDetailsDeviceTypeEnum[string(m.DeviceType)]; !ok && m.DeviceType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeviceType: %s. Supported values are: %s.", m.DeviceType, strings.Join(GetUpdateTransferJobDetailsDeviceTypeEnumStringValues(), ",")))
+	}
+	if len(errMessage) > 0 {
+		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
+	}
+	return false, nil
+}
+
 // UpdateTransferJobDetailsLifecycleStateEnum Enum with underlying type: string
 type UpdateTransferJobDetailsLifecycleStateEnum string
 
@@ -44,17 +64,24 @@ const (
 	UpdateTransferJobDetailsLifecycleStateClosed UpdateTransferJobDetailsLifecycleStateEnum = "CLOSED"
 )
 
-var mappingUpdateTransferJobDetailsLifecycleState = map[string]UpdateTransferJobDetailsLifecycleStateEnum{
+var mappingUpdateTransferJobDetailsLifecycleStateEnum = map[string]UpdateTransferJobDetailsLifecycleStateEnum{
 	"CLOSED": UpdateTransferJobDetailsLifecycleStateClosed,
 }
 
 // GetUpdateTransferJobDetailsLifecycleStateEnumValues Enumerates the set of values for UpdateTransferJobDetailsLifecycleStateEnum
 func GetUpdateTransferJobDetailsLifecycleStateEnumValues() []UpdateTransferJobDetailsLifecycleStateEnum {
 	values := make([]UpdateTransferJobDetailsLifecycleStateEnum, 0)
-	for _, v := range mappingUpdateTransferJobDetailsLifecycleState {
+	for _, v := range mappingUpdateTransferJobDetailsLifecycleStateEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetUpdateTransferJobDetailsLifecycleStateEnumStringValues Enumerates the set of values in String for UpdateTransferJobDetailsLifecycleStateEnum
+func GetUpdateTransferJobDetailsLifecycleStateEnumStringValues() []string {
+	return []string{
+		"CLOSED",
+	}
 }
 
 // UpdateTransferJobDetailsDeviceTypeEnum Enum with underlying type: string
@@ -66,7 +93,7 @@ const (
 	UpdateTransferJobDetailsDeviceTypeAppliance UpdateTransferJobDetailsDeviceTypeEnum = "APPLIANCE"
 )
 
-var mappingUpdateTransferJobDetailsDeviceType = map[string]UpdateTransferJobDetailsDeviceTypeEnum{
+var mappingUpdateTransferJobDetailsDeviceTypeEnum = map[string]UpdateTransferJobDetailsDeviceTypeEnum{
 	"DISK":      UpdateTransferJobDetailsDeviceTypeDisk,
 	"APPLIANCE": UpdateTransferJobDetailsDeviceTypeAppliance,
 }
@@ -74,8 +101,16 @@ var mappingUpdateTransferJobDetailsDeviceType = map[string]UpdateTransferJobDeta
 // GetUpdateTransferJobDetailsDeviceTypeEnumValues Enumerates the set of values for UpdateTransferJobDetailsDeviceTypeEnum
 func GetUpdateTransferJobDetailsDeviceTypeEnumValues() []UpdateTransferJobDetailsDeviceTypeEnum {
 	values := make([]UpdateTransferJobDetailsDeviceTypeEnum, 0)
-	for _, v := range mappingUpdateTransferJobDetailsDeviceType {
+	for _, v := range mappingUpdateTransferJobDetailsDeviceTypeEnum {
 		values = append(values, v)
 	}
 	return values
+}
+
+// GetUpdateTransferJobDetailsDeviceTypeEnumStringValues Enumerates the set of values in String for UpdateTransferJobDetailsDeviceTypeEnum
+func GetUpdateTransferJobDetailsDeviceTypeEnumStringValues() []string {
+	return []string{
+		"DISK",
+		"APPLIANCE",
+	}
 }
