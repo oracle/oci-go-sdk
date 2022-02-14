@@ -2,9 +2,9 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Apm Traces API
+// Application Performance Monitoring Trace Explorer API
 //
-// API for APM Trace service. Use this API to query the Traces and associated Spans.
+// Use the Application Performance Monitoring Trace Explorer API to query traces and associated spans in Trace Explorer. For more information, see Application Performance Monitoring (https://docs.oracle.com/iaas/application-performance-monitoring/index.html).
 //
 
 package apmtraces
@@ -12,8 +12,8 @@ package apmtraces
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
-	"github.com/oracle/oci-go-sdk/v57/common/auth"
+	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v58/common/auth"
 	"net/http"
 )
 
@@ -84,7 +84,7 @@ func (client *QueryClient) ConfigurationProvider() *common.ConfigurationProvider
 	return client.config
 }
 
-// ListQuickPicks Returns a list of predefined quick pick queries intended to assist the user
+// ListQuickPicks Returns a list of predefined Quick Pick queries intended to assist the user
 // to choose a query to run.  There is no sorting applied on the results.
 //
 // See also
@@ -140,8 +140,8 @@ func (client QueryClient) listQuickPicks(ctx context.Context, request common.OCI
 	return response, err
 }
 
-// Query Given a query, constructed according to the APM Defined Query Syntax, retrieves the results - selected attributes,
-// and aggregations of the queried entity.  Query Results are filtered by the filter criteria specified in the where clause.
+// Query Retrieves the results (selected attributes and aggregations) of a query constructed according to the Application Performance Monitoring Defined Query Syntax.
+// Query results are filtered by the filter criteria specified in the where clause.
 // Further query results are grouped by the attributes specified in the group by clause.  Finally,
 // ordering (asc/desc) is done by the specified attributes in the order by clause.
 //
@@ -186,66 +186,6 @@ func (client QueryClient) query(ctx context.Context, request common.OCIRequest, 
 	}
 
 	var response QueryResponse
-	var httpResponse *http.Response
-	httpResponse, err = client.Call(ctx, &httpRequest)
-	defer common.CloseBodyIfValid(httpResponse)
-	response.RawResponse = httpResponse
-	if err != nil {
-		return response, err
-	}
-
-	err = common.UnmarshalResponse(httpResponse, &response)
-	return response, err
-}
-
-// QueryOld THIS API ENDPOINT WILL BE DEPRECATED AND INSTEAD /queries/actions/runQuery as defined below WILL BE USED GOING FORWARD.  THIS EXISTS JUST
-// AS A TEMPORARY PLACEHOLDER SO AS TO BE BACKWARDS COMPATIBLE WITH THE UI BETWEEN RELEASE CYCLES.
-// Given a query, constructed according to the APM Defined Query Syntax, retrieves the results - selected attributes,
-// and aggregations of the queried entity.  Query Results are filtered by the filter criteria specified in the where clause.
-// Further query results are grouped by the attributes specified in the group by clause.  Finally,
-// ordering (asc/desc) is done by the specified attributes in the order by clause.
-//
-// See also
-//
-// Click https://docs.cloud.oracle.com/en-us/iaas/tools/go-sdk-examples/latest/apmtraces/QueryOld.go.html to see an example of how to use QueryOld API.
-func (client QueryClient) QueryOld(ctx context.Context, request QueryOldRequest) (response QueryOldResponse, err error) {
-	var ociResponse common.OCIResponse
-	policy := common.NoRetryPolicy()
-	if client.RetryPolicy() != nil {
-		policy = *client.RetryPolicy()
-	}
-	if request.RetryPolicy() != nil {
-		policy = *request.RetryPolicy()
-	}
-	ociResponse, err = common.Retry(ctx, request, client.queryOld, policy)
-	if err != nil {
-		if ociResponse != nil {
-			if httpResponse := ociResponse.HTTPResponse(); httpResponse != nil {
-				opcRequestId := httpResponse.Header.Get("opc-request-id")
-				response = QueryOldResponse{RawResponse: httpResponse, OpcRequestId: &opcRequestId}
-			} else {
-				response = QueryOldResponse{}
-			}
-		}
-		return
-	}
-	if convertedResponse, ok := ociResponse.(QueryOldResponse); ok {
-		response = convertedResponse
-	} else {
-		err = fmt.Errorf("failed to convert OCIResponse into QueryOldResponse")
-	}
-	return
-}
-
-// queryOld implements the OCIOperation interface (enables retrying operations)
-func (client QueryClient) queryOld(ctx context.Context, request common.OCIRequest, binaryReqBody *common.OCIReadSeekCloser, extraHeaders map[string]string) (common.OCIResponse, error) {
-
-	httpRequest, err := request.HTTPRequest(http.MethodPost, "/queries/action/runQuery", binaryReqBody, extraHeaders)
-	if err != nil {
-		return nil, err
-	}
-
-	var response QueryOldResponse
 	var httpResponse *http.Response
 	httpResponse, err = client.Call(ctx, &httpRequest)
 	defer common.CloseBodyIfValid(httpResponse)

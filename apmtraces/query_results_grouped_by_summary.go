@@ -2,23 +2,23 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Apm Traces API
+// Application Performance Monitoring Trace Explorer API
 //
-// API for APM Trace service. Use this API to query the Traces and associated Spans.
+// Use the Application Performance Monitoring Trace Explorer API to query traces and associated spans in Trace Explorer. For more information, see Application Performance Monitoring (https://docs.oracle.com/iaas/application-performance-monitoring/index.html).
 //
 
 package apmtraces
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
-// QueryResultsGroupedBySummary Summary of the attribute based on which the query results are grouped by.
+// QueryResultsGroupedBySummary Summary of the attribute based on which the query results are grouped.
 type QueryResultsGroupedBySummary struct {
 
-	// Column or attribute in the query result which is a group by value.
+	// Column or attribute in the query result, which is a group by value.
 	QueryResultsGroupedByColumn *string `mandatory:"false" json:"queryResultsGroupedByColumn"`
 }
 

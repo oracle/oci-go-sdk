@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -41,6 +41,9 @@ type TargetDatabaseSummary struct {
 
 	// The description of the target database in Data Safe.
 	Description *string `mandatory:"false" json:"description"`
+
+	// The OCIDs of associated resources like Database, Data Safe private endpoint etc.
+	AssociatedResourceIds []string `mandatory:"false" json:"associatedResourceIds"`
 
 	// Details about the current state of the target database in Data Safe.
 	LifecycleDetails *string `mandatory:"false" json:"lifecycleDetails"`

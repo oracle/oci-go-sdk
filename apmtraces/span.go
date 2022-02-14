@@ -2,16 +2,16 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Apm Traces API
+// Application Performance Monitoring Trace Explorer API
 //
-// API for APM Trace service. Use this API to query the Traces and associated Spans.
+// Use the Application Performance Monitoring Trace Explorer API to query traces and associated spans in Trace Explorer. For more information, see Application Performance Monitoring (https://docs.oracle.com/iaas/application-performance-monitoring/index.html).
 //
 
 package apmtraces
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -19,8 +19,8 @@ import (
 type Span struct {
 
 	// Unique identifier (spanId) for the span.  Note that this field is
-	// defined as spanKey in the API to comply with OCI API fields naming conventions.
-	// The spanKey maps to the spanId in the APM repository.
+	// defined as spanKey in the API and it maps to the spanId in the trace data
+	// in Application Performance Monitoring.
 	Key *string `mandatory:"true" json:"key"`
 
 	// Unique identifier for the trace.
@@ -35,10 +35,10 @@ type Span struct {
 	// Total span duration in milliseconds.
 	DurationInMs *int64 `mandatory:"true" json:"durationInMs"`
 
-	// Span name associated with the trace.  This is usually the method or uri of the request.
+	// Span name associated with the trace.  This is usually the method or URI of the request.
 	OperationName *string `mandatory:"true" json:"operationName"`
 
-	// Indicates if the span has an error
+	// Indicates if the span has an error.
 	IsError *bool `mandatory:"true" json:"isError"`
 
 	// Unique parent identifier for the span if one exists. For root spans this will be null.

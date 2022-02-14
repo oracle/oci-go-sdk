@@ -12,7 +12,7 @@ package announcementsservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -75,6 +75,12 @@ type BaseAnnouncement interface {
 	// The date and time the announcement was last updated, expressed in RFC 3339 (https://tools.ietf.org/html/rfc3339) timestamp format.
 	// Example: `2019-01-01T17:43:01.389+0000`
 	GetTimeUpdated() *common.SDKTime
+
+	// The name of the environment that this announcement pertains to.
+	GetEnvironmentName() *string
+
+	// The platform type that this announcement pertains to.
+	GetPlatformType() BaseAnnouncementPlatformTypeEnum
 }
 
 type baseannouncement struct {
@@ -95,6 +101,8 @@ type baseannouncement struct {
 	TimeTwoValue          *common.SDKTime                      `mandatory:"false" json:"timeTwoValue"`
 	TimeCreated           *common.SDKTime                      `mandatory:"false" json:"timeCreated"`
 	TimeUpdated           *common.SDKTime                      `mandatory:"false" json:"timeUpdated"`
+	EnvironmentName       *string                              `mandatory:"false" json:"environmentName"`
+	PlatformType          BaseAnnouncementPlatformTypeEnum     `mandatory:"false" json:"platformType,omitempty"`
 	Type                  string                               `json:"type"`
 }
 
@@ -125,6 +133,8 @@ func (m *baseannouncement) UnmarshalJSON(data []byte) error {
 	m.TimeTwoValue = s.Model.TimeTwoValue
 	m.TimeCreated = s.Model.TimeCreated
 	m.TimeUpdated = s.Model.TimeUpdated
+	m.EnvironmentName = s.Model.EnvironmentName
+	m.PlatformType = s.Model.PlatformType
 	m.Type = s.Model.Type
 
 	return err
@@ -232,6 +242,16 @@ func (m baseannouncement) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
+//GetEnvironmentName returns EnvironmentName
+func (m baseannouncement) GetEnvironmentName() *string {
+	return m.EnvironmentName
+}
+
+//GetPlatformType returns PlatformType
+func (m baseannouncement) GetPlatformType() BaseAnnouncementPlatformTypeEnum {
+	return m.PlatformType
+}
+
 func (m baseannouncement) String() string {
 	return common.PointerString(m)
 }
@@ -253,6 +273,9 @@ func (m baseannouncement) ValidateEnumValue() (bool, error) {
 	}
 	if _, ok := mappingBaseAnnouncementTimeTwoTypeEnum[string(m.TimeTwoType)]; !ok && m.TimeTwoType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TimeTwoType: %s. Supported values are: %s.", m.TimeTwoType, strings.Join(GetBaseAnnouncementTimeTwoTypeEnumStringValues(), ",")))
+	}
+	if _, ok := mappingBaseAnnouncementPlatformTypeEnum[string(m.PlatformType)]; !ok && m.PlatformType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", m.PlatformType, strings.Join(GetBaseAnnouncementPlatformTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
@@ -429,5 +452,36 @@ func GetBaseAnnouncementLifecycleStateEnumStringValues() []string {
 	return []string{
 		"ACTIVE",
 		"INACTIVE",
+	}
+}
+
+// BaseAnnouncementPlatformTypeEnum Enum with underlying type: string
+type BaseAnnouncementPlatformTypeEnum string
+
+// Set of constants representing the allowable values for BaseAnnouncementPlatformTypeEnum
+const (
+	BaseAnnouncementPlatformTypeIaas BaseAnnouncementPlatformTypeEnum = "IAAS"
+	BaseAnnouncementPlatformTypeSaas BaseAnnouncementPlatformTypeEnum = "SAAS"
+)
+
+var mappingBaseAnnouncementPlatformTypeEnum = map[string]BaseAnnouncementPlatformTypeEnum{
+	"IAAS": BaseAnnouncementPlatformTypeIaas,
+	"SAAS": BaseAnnouncementPlatformTypeSaas,
+}
+
+// GetBaseAnnouncementPlatformTypeEnumValues Enumerates the set of values for BaseAnnouncementPlatformTypeEnum
+func GetBaseAnnouncementPlatformTypeEnumValues() []BaseAnnouncementPlatformTypeEnum {
+	values := make([]BaseAnnouncementPlatformTypeEnum, 0)
+	for _, v := range mappingBaseAnnouncementPlatformTypeEnum {
+		values = append(values, v)
+	}
+	return values
+}
+
+// GetBaseAnnouncementPlatformTypeEnumStringValues Enumerates the set of values in String for BaseAnnouncementPlatformTypeEnum
+func GetBaseAnnouncementPlatformTypeEnumStringValues() []string {
+	return []string{
+		"IAAS",
+		"SAAS",
 	}
 }

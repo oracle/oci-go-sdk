@@ -2,21 +2,21 @@
 // This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
 // Code generated. DO NOT EDIT.
 
-// Apm Traces API
+// Application Performance Monitoring Trace Explorer API
 //
-// API for APM Trace service. Use this API to query the Traces and associated Spans.
+// Use the Application Performance Monitoring Trace Explorer API to query traces and associated spans in Trace Explorer. For more information, see Application Performance Monitoring (https://docs.oracle.com/iaas/application-performance-monitoring/index.html).
 //
 
 package apmtraces
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
-// QueryResultRow An object that represents a single row of the query result.  It contains the queryResultRowData object that holds the actual data
-// represented by the elements of the query result row, and a queryResultRowMetadata object that holds the metadata about the data contained in
+// QueryResultRow Object that represents a single row of the query result.  It contains the queryResultRowData object that contains the actual data
+// represented by the elements of the query result row, and a queryResultRowMetadata object that contains the metadata about the data contained in
 // the query result row.
 type QueryResultRow struct {
 
@@ -25,14 +25,13 @@ type QueryResultRow struct {
 	// The value is the actual value of that attribute or aggregate function of the corresponding single row of the query result set.
 	// If an alias name is specified for an attribute or an aggregate function, then the key will be the alias name specified in the show
 	// clause.  If an alias name is not specified for the group by aggregate function in the show clause, then the corresponding key
-	// will be the appropriate aggregate_function_name_column_name (Eg: count(traces) will be keyed as count_traces).  For more details
-	// on the supported aggregate functions, look at the APM confluence doc on High Level Query Aggregation.  The datatype of the value
-	// is presented in the queryResultRowTypeSummaries list in the queryResultMetadata structure, where the ith queryResultRowTypeSummary object
-	// represents the datatype of the ith value when this map is iterated in order.
+	// will be the appropriate aggregate_function_name_column_name (For example: count(traces) will be keyed as count_traces).  The datatype of the value
+	// is presented in the queryResultRowTypeSummaries list in the queryResultMetadata structure, where the i-th queryResultRowTypeSummary object
+	// represents the datatype of the i-th value when this map is iterated in order.
 	QueryResultRowData map[string]interface{} `mandatory:"true" json:"queryResultRowData"`
 
 	// A map containing metadata or add-on data for the data presented in the queryResultRowData map.  Data required to present drill down
-	// information from the queryResultRowData is presented as key value pairs.
+	// information from the queryResultRowData is presented as key-value pairs.
 	QueryResultRowMetadata map[string]interface{} `mandatory:"true" json:"queryResultRowMetadata"`
 }
 

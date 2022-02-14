@@ -12,8 +12,8 @@ package announcementsservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
-	"github.com/oracle/oci-go-sdk/v57/common/auth"
+	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v58/common/auth"
 	"net/http"
 )
 
@@ -63,7 +63,7 @@ func newAnnouncementsPreferencesClientFromBaseClient(baseClient common.BaseClien
 
 // SetRegion overrides the region of this client.
 func (client *AnnouncementsPreferencesClient) SetRegion(region string) {
-	client.Host = common.StringToRegion(region).EndpointForTemplate("announcements", "https://announcements.{region}.{secondLevelDomain}")
+	client.Host = common.StringToRegion(region).EndpointForTemplate("announcements", "https://announcements.{region}.oci.{secondLevelDomain}")
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
@@ -85,6 +85,7 @@ func (client *AnnouncementsPreferencesClient) ConfigurationProvider() *common.Co
 }
 
 // CreateAnnouncementsPreference Creates a request that specifies preferences for the tenancy regarding receiving announcements by email.
+// This call is subject to an Announcements limit that applies to the total number of requests across all read or write operations. Announcements might throttle this call to reject an otherwise valid request when the total rate of operations exceeds 20 requests per second for a given user. The service might also throttle this call to reject an otherwise valid request when the total rate of operations exceeds 100 requests per second for a given tenancy.
 //
 // See also
 //
@@ -145,6 +146,7 @@ func (client AnnouncementsPreferencesClient) createAnnouncementsPreference(ctx c
 }
 
 // GetAnnouncementsPreference Gets the current preferences of the tenancy regarding receiving announcements by email.
+// This call is subject to an Announcements limit that applies to the total number of requests across all read or write operations. Announcements might throttle this call to reject an otherwise valid request when the total rate of operations exceeds 20 requests per second for a given user. The service might also throttle this call to reject an otherwise valid request when the total rate of operations exceeds 100 requests per second for a given tenancy.
 //
 // See also
 //
@@ -200,6 +202,7 @@ func (client AnnouncementsPreferencesClient) getAnnouncementsPreference(ctx cont
 }
 
 // ListAnnouncementsPreferences Gets the current preferences of the tenancy regarding receiving announcements by email.
+// This call is subject to an Announcements limit that applies to the total number of requests across all read or write operations. Announcements might throttle this call to reject an otherwise valid request when the total rate of operations exceeds 20 requests per second for a given user. The service might also throttle this call to reject an otherwise valid request when the total rate of operations exceeds 100 requests per second for a given tenancy.
 //
 // See also
 //
@@ -255,6 +258,7 @@ func (client AnnouncementsPreferencesClient) listAnnouncementsPreferences(ctx co
 }
 
 // UpdateAnnouncementsPreference Updates the preferences of the tenancy regarding receiving announcements by email.
+// This call is subject to an Announcements limit that applies to the total number of requests across all read or write operations. Announcements might throttle this call to reject an otherwise valid request when the total rate of operations exceeds 20 requests per second for a given user. The service might also throttle this call to reject an otherwise valid request when the total rate of operations exceeds 100 requests per second for a given tenancy.
 //
 // See also
 //

@@ -12,8 +12,8 @@ package announcementsservice
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
-	"github.com/oracle/oci-go-sdk/v57/common/auth"
+	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v58/common/auth"
 	"net/http"
 )
 
@@ -63,7 +63,7 @@ func newAnnouncementClientFromBaseClient(baseClient common.BaseClient, configPro
 
 // SetRegion overrides the region of this client.
 func (client *AnnouncementClient) SetRegion(region string) {
-	client.Host = common.StringToRegion(region).EndpointForTemplate("announcements", "https://announcements.{region}.{secondLevelDomain}")
+	client.Host = common.StringToRegion(region).EndpointForTemplate("announcements", "https://announcements.{region}.oci.{secondLevelDomain}")
 }
 
 // SetConfigurationProvider sets the configuration provider including the region, returns an error if is not valid
@@ -85,6 +85,7 @@ func (client *AnnouncementClient) ConfigurationProvider() *common.ConfigurationP
 }
 
 // GetAnnouncement Gets the details of a specific announcement.
+// This call is subject to an Announcements limit that applies to the total number of requests across all read or write operations. Announcements might throttle this call to reject an otherwise valid request when the total rate of operations exceeds 20 requests per second for a given user. The service might also throttle this call to reject an otherwise valid request when the total rate of operations exceeds 100 requests per second for a given tenancy.
 //
 // See also
 //
@@ -140,6 +141,7 @@ func (client AnnouncementClient) getAnnouncement(ctx context.Context, request co
 }
 
 // GetAnnouncementUserStatus Gets information about whether a specific announcement was acknowledged by a user.
+// This call is subject to an Announcements limit that applies to the total number of requests across all read or write operations. Announcements might throttle this call to reject an otherwise valid request when the total rate of operations exceeds 20 requests per second for a given user. The service might also throttle this call to reject an otherwise valid request when the total rate of operations exceeds 100 requests per second for a given tenancy.
 //
 // See also
 //
@@ -195,6 +197,7 @@ func (client AnnouncementClient) getAnnouncementUserStatus(ctx context.Context, 
 }
 
 // ListAnnouncements Gets a list of announcements for the current tenancy.
+// This call is subject to an Announcements limit that applies to the total number of requests across all read or write operations. Announcements might throttle this call to reject an otherwise valid request when the total rate of operations exceeds 20 requests per second for a given user. The service might also throttle this call to reject an otherwise valid request when the total rate of operations exceeds 100 requests per second for a given tenancy.
 //
 // See also
 //
@@ -250,6 +253,7 @@ func (client AnnouncementClient) listAnnouncements(ctx context.Context, request 
 }
 
 // UpdateAnnouncementUserStatus Updates the status of the specified announcement with regard to whether it has been marked as read.
+// This call is subject to an Announcements limit that applies to the total number of requests across all read or write operations. Announcements might throttle this call to reject an otherwise valid request when the total rate of operations exceeds 20 requests per second for a given user. The service might also throttle this call to reject an otherwise valid request when the total rate of operations exceeds 100 requests per second for a given tenancy.
 //
 // See also
 //

@@ -12,7 +12,7 @@ package announcementsservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -62,6 +62,9 @@ type Announcement struct {
 	// Example: `2019-01-01T17:43:01.389+0000`
 	TimeUpdated *common.SDKTime `mandatory:"false" json:"timeUpdated"`
 
+	// The name of the environment that this announcement pertains to.
+	EnvironmentName *string `mandatory:"false" json:"environmentName"`
+
 	// A detailed explanation of the event, expressed by using Markdown language. Avoid entering
 	// confidential information.
 	Description *string `mandatory:"false" json:"description"`
@@ -87,6 +90,9 @@ type Announcement struct {
 
 	// The current lifecycle state of the announcement.
 	LifecycleState BaseAnnouncementLifecycleStateEnum `mandatory:"true" json:"lifecycleState"`
+
+	// The platform type that this announcement pertains to.
+	PlatformType BaseAnnouncementPlatformTypeEnum `mandatory:"false" json:"platformType,omitempty"`
 }
 
 //GetId returns Id
@@ -169,6 +175,16 @@ func (m Announcement) GetTimeUpdated() *common.SDKTime {
 	return m.TimeUpdated
 }
 
+//GetEnvironmentName returns EnvironmentName
+func (m Announcement) GetEnvironmentName() *string {
+	return m.EnvironmentName
+}
+
+//GetPlatformType returns PlatformType
+func (m Announcement) GetPlatformType() BaseAnnouncementPlatformTypeEnum {
+	return m.PlatformType
+}
+
 func (m Announcement) String() string {
 	return common.PointerString(m)
 }
@@ -190,6 +206,9 @@ func (m Announcement) ValidateEnumValue() (bool, error) {
 	}
 	if _, ok := mappingBaseAnnouncementLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBaseAnnouncementLifecycleStateEnumStringValues(), ",")))
+	}
+	if _, ok := mappingBaseAnnouncementPlatformTypeEnum[string(m.PlatformType)]; !ok && m.PlatformType != "" {
+		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", m.PlatformType, strings.Join(GetBaseAnnouncementPlatformTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
 		return true, fmt.Errorf(strings.Join(errMessage, "\n"))
