@@ -11,6 +11,10 @@
 
 package optimizer
 
+import (
+	"strings"
+)
+
 // ImportanceEnum Enum with underlying type: string
 type ImportanceEnum string
 
@@ -49,4 +53,15 @@ func GetImportanceEnumStringValues() []string {
 		"LOW",
 		"MINOR",
 	}
+}
+
+// GetMappingImportanceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImportanceEnum(val string) (ImportanceEnum, bool) {
+	mappingImportanceEnumIgnoreCase := make(map[string]ImportanceEnum)
+	for k, v := range mappingImportanceEnum {
+		mappingImportanceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImportanceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

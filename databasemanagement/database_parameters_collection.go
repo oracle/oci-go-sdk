@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -46,10 +46,10 @@ func (m DatabaseParametersCollection) String() string {
 // Not recommended for calling this function directly
 func (m DatabaseParametersCollection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDatabaseTypeEnum[string(m.DatabaseType)]; !ok && m.DatabaseType != "" {
+	if _, ok := GetMappingDatabaseTypeEnum(string(m.DatabaseType)); !ok && m.DatabaseType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseType: %s. Supported values are: %s.", m.DatabaseType, strings.Join(GetDatabaseTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseSubTypeEnum[string(m.DatabaseSubType)]; !ok && m.DatabaseSubType != "" {
+	if _, ok := GetMappingDatabaseSubTypeEnum(string(m.DatabaseSubType)); !ok && m.DatabaseSubType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseSubType: %s. Supported values are: %s.", m.DatabaseSubType, strings.Join(GetDatabaseSubTypeEnumStringValues(), ",")))
 	}
 

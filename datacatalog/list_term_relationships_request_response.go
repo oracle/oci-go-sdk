@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -92,19 +92,19 @@ func (request ListTermRelationshipsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListTermRelationshipsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListTermRelationshipsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListTermRelationshipsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListTermRelationshipsLifecycleStateEnumStringValues(), ",")))
 	}
 	for _, val := range request.Fields {
-		if _, ok := mappingListTermRelationshipsFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListTermRelationshipsFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListTermRelationshipsFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListTermRelationshipsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTermRelationshipsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTermRelationshipsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTermRelationshipsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTermRelationshipsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTermRelationshipsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -188,6 +188,17 @@ func GetListTermRelationshipsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTermRelationshipsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTermRelationshipsLifecycleStateEnum(val string) (ListTermRelationshipsLifecycleStateEnum, bool) {
+	mappingListTermRelationshipsLifecycleStateEnumIgnoreCase := make(map[string]ListTermRelationshipsLifecycleStateEnum)
+	for k, v := range mappingListTermRelationshipsLifecycleStateEnum {
+		mappingListTermRelationshipsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTermRelationshipsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTermRelationshipsFieldsEnum Enum with underlying type: string
 type ListTermRelationshipsFieldsEnum string
 
@@ -243,6 +254,17 @@ func GetListTermRelationshipsFieldsEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTermRelationshipsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTermRelationshipsFieldsEnum(val string) (ListTermRelationshipsFieldsEnum, bool) {
+	mappingListTermRelationshipsFieldsEnumIgnoreCase := make(map[string]ListTermRelationshipsFieldsEnum)
+	for k, v := range mappingListTermRelationshipsFieldsEnum {
+		mappingListTermRelationshipsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTermRelationshipsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTermRelationshipsSortByEnum Enum with underlying type: string
 type ListTermRelationshipsSortByEnum string
 
@@ -274,6 +296,17 @@ func GetListTermRelationshipsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTermRelationshipsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTermRelationshipsSortByEnum(val string) (ListTermRelationshipsSortByEnum, bool) {
+	mappingListTermRelationshipsSortByEnumIgnoreCase := make(map[string]ListTermRelationshipsSortByEnum)
+	for k, v := range mappingListTermRelationshipsSortByEnum {
+		mappingListTermRelationshipsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTermRelationshipsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTermRelationshipsSortOrderEnum Enum with underlying type: string
 type ListTermRelationshipsSortOrderEnum string
 
@@ -303,4 +336,15 @@ func GetListTermRelationshipsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListTermRelationshipsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTermRelationshipsSortOrderEnum(val string) (ListTermRelationshipsSortOrderEnum, bool) {
+	mappingListTermRelationshipsSortOrderEnumIgnoreCase := make(map[string]ListTermRelationshipsSortOrderEnum)
+	for k, v := range mappingListTermRelationshipsSortOrderEnum {
+		mappingListTermRelationshipsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTermRelationshipsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

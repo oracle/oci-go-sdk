@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -111,10 +111,10 @@ func (m CreateDataGuardAssociationToExistingDbSystemDetails) String() string {
 func (m CreateDataGuardAssociationToExistingDbSystemDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateDataGuardAssociationDetailsProtectionModeEnum[string(m.ProtectionMode)]; !ok && m.ProtectionMode != "" {
+	if _, ok := GetMappingCreateDataGuardAssociationDetailsProtectionModeEnum(string(m.ProtectionMode)); !ok && m.ProtectionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", m.ProtectionMode, strings.Join(GetCreateDataGuardAssociationDetailsProtectionModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateDataGuardAssociationDetailsTransportTypeEnum[string(m.TransportType)]; !ok && m.TransportType != "" {
+	if _, ok := GetMappingCreateDataGuardAssociationDetailsTransportTypeEnum(string(m.TransportType)); !ok && m.TransportType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TransportType: %s. Supported values are: %s.", m.TransportType, strings.Join(GetCreateDataGuardAssociationDetailsTransportTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

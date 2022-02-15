@@ -9,6 +9,10 @@
 
 package networkloadbalancer
 
+import (
+	"strings"
+)
+
 // HealthCheckProtocolsEnum Enum with underlying type: string
 type HealthCheckProtocolsEnum string
 
@@ -44,4 +48,15 @@ func GetHealthCheckProtocolsEnumStringValues() []string {
 		"TCP",
 		"UDP",
 	}
+}
+
+// GetMappingHealthCheckProtocolsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHealthCheckProtocolsEnum(val string) (HealthCheckProtocolsEnum, bool) {
+	mappingHealthCheckProtocolsEnumIgnoreCase := make(map[string]HealthCheckProtocolsEnum)
+	for k, v := range mappingHealthCheckProtocolsEnum {
+		mappingHealthCheckProtocolsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHealthCheckProtocolsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

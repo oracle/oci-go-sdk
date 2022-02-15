@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -50,7 +50,7 @@ func (m ExportKeyDetails) String() string {
 // Not recommended for calling this function directly
 func (m ExportKeyDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExportKeyDetailsAlgorithmEnum[string(m.Algorithm)]; !ok && m.Algorithm != "" {
+	if _, ok := GetMappingExportKeyDetailsAlgorithmEnum(string(m.Algorithm)); !ok && m.Algorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Algorithm: %s. Supported values are: %s.", m.Algorithm, strings.Join(GetExportKeyDetailsAlgorithmEnumStringValues(), ",")))
 	}
 
@@ -89,4 +89,15 @@ func GetExportKeyDetailsAlgorithmEnumStringValues() []string {
 		"RSA_OAEP_AES_SHA256",
 		"RSA_OAEP_SHA256",
 	}
+}
+
+// GetMappingExportKeyDetailsAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExportKeyDetailsAlgorithmEnum(val string) (ExportKeyDetailsAlgorithmEnum, bool) {
+	mappingExportKeyDetailsAlgorithmEnumIgnoreCase := make(map[string]ExportKeyDetailsAlgorithmEnum)
+	for k, v := range mappingExportKeyDetailsAlgorithmEnum {
+		mappingExportKeyDetailsAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExportKeyDetailsAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

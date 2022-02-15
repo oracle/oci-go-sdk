@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -70,7 +70,7 @@ func (request InstallAllUpdatesOnManagedInstanceGroupRequest) RetryPolicy() *com
 // Not recommended for calling this function directly
 func (request InstallAllUpdatesOnManagedInstanceGroupRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnum[string(request.UpdateType)]; !ok && request.UpdateType != "" {
+	if _, ok := GetMappingInstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnum(string(request.UpdateType)); !ok && request.UpdateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UpdateType: %s. Supported values are: %s.", request.UpdateType, strings.Join(GetInstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -144,4 +144,15 @@ func GetInstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnumStringValues() []st
 		"KSPLICE",
 		"ALL",
 	}
+}
+
+// GetMappingInstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnum(val string) (InstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnum, bool) {
+	mappingInstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnumIgnoreCase := make(map[string]InstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnum)
+	for k, v := range mappingInstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnum {
+		mappingInstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstallAllUpdatesOnManagedInstanceGroupUpdateTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

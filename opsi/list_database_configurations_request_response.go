@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -130,15 +130,15 @@ func (request ListDatabaseConfigurationsRequest) RetryPolicy() *common.RetryPoli
 func (request ListDatabaseConfigurationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.DatabaseType {
-		if _, ok := mappingListDatabaseConfigurationsDatabaseTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListDatabaseConfigurationsDatabaseTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseType: %s. Supported values are: %s.", val, strings.Join(GetListDatabaseConfigurationsDatabaseTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListDatabaseConfigurationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDatabaseConfigurationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDatabaseConfigurationsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDatabaseConfigurationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDatabaseConfigurationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDatabaseConfigurationsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -221,6 +221,17 @@ func GetListDatabaseConfigurationsDatabaseTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDatabaseConfigurationsDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseConfigurationsDatabaseTypeEnum(val string) (ListDatabaseConfigurationsDatabaseTypeEnum, bool) {
+	mappingListDatabaseConfigurationsDatabaseTypeEnumIgnoreCase := make(map[string]ListDatabaseConfigurationsDatabaseTypeEnum)
+	for k, v := range mappingListDatabaseConfigurationsDatabaseTypeEnum {
+		mappingListDatabaseConfigurationsDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseConfigurationsDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDatabaseConfigurationsSortOrderEnum Enum with underlying type: string
 type ListDatabaseConfigurationsSortOrderEnum string
 
@@ -250,6 +261,17 @@ func GetListDatabaseConfigurationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDatabaseConfigurationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseConfigurationsSortOrderEnum(val string) (ListDatabaseConfigurationsSortOrderEnum, bool) {
+	mappingListDatabaseConfigurationsSortOrderEnumIgnoreCase := make(map[string]ListDatabaseConfigurationsSortOrderEnum)
+	for k, v := range mappingListDatabaseConfigurationsSortOrderEnum {
+		mappingListDatabaseConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListDatabaseConfigurationsSortByEnum Enum with underlying type: string
@@ -284,4 +306,15 @@ func GetListDatabaseConfigurationsSortByEnumStringValues() []string {
 		"databaseDisplayName",
 		"databaseType",
 	}
+}
+
+// GetMappingListDatabaseConfigurationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDatabaseConfigurationsSortByEnum(val string) (ListDatabaseConfigurationsSortByEnum, bool) {
+	mappingListDatabaseConfigurationsSortByEnumIgnoreCase := make(map[string]ListDatabaseConfigurationsSortByEnum)
+	for k, v := range mappingListDatabaseConfigurationsSortByEnum {
+		mappingListDatabaseConfigurationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDatabaseConfigurationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

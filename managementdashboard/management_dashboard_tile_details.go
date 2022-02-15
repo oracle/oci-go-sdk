@@ -12,7 +12,7 @@ package managementdashboard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -66,7 +66,7 @@ func (m ManagementDashboardTileDetails) String() string {
 // Not recommended for calling this function directly
 func (m ManagementDashboardTileDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingManagementDashboardTileDetailsStateEnum[string(m.State)]; !ok && m.State != "" {
+	if _, ok := GetMappingManagementDashboardTileDetailsStateEnum(string(m.State)); !ok && m.State != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for State: %s. Supported values are: %s.", m.State, strings.Join(GetManagementDashboardTileDetailsStateEnumStringValues(), ",")))
 	}
 
@@ -108,4 +108,15 @@ func GetManagementDashboardTileDetailsStateEnumStringValues() []string {
 		"UNAUTHORIZED",
 		"DEFAULT",
 	}
+}
+
+// GetMappingManagementDashboardTileDetailsStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingManagementDashboardTileDetailsStateEnum(val string) (ManagementDashboardTileDetailsStateEnum, bool) {
+	mappingManagementDashboardTileDetailsStateEnumIgnoreCase := make(map[string]ManagementDashboardTileDetailsStateEnum)
+	for k, v := range mappingManagementDashboardTileDetailsStateEnum {
+		mappingManagementDashboardTileDetailsStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingManagementDashboardTileDetailsStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // AwrHubLifecycleStateEnum Enum with underlying type: string
 type AwrHubLifecycleStateEnum string
 
@@ -52,4 +56,15 @@ func GetAwrHubLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingAwrHubLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAwrHubLifecycleStateEnum(val string) (AwrHubLifecycleStateEnum, bool) {
+	mappingAwrHubLifecycleStateEnumIgnoreCase := make(map[string]AwrHubLifecycleStateEnum)
+	for k, v := range mappingAwrHubLifecycleStateEnum {
+		mappingAwrHubLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAwrHubLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

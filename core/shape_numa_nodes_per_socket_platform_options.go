@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -40,7 +40,7 @@ func (m ShapeNumaNodesPerSocketPlatformOptions) ValidateEnumValue() (bool, error
 	errMessage := []string{}
 
 	for _, val := range m.AllowedValues {
-		if _, ok := mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AllowedValues: %s. Supported values are: %s.", val, strings.Join(GetShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumStringValues(), ",")))
 		}
 	}
@@ -86,4 +86,15 @@ func GetShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumStringValues() []
 		"NPS2",
 		"NPS4",
 	}
+}
+
+// GetMappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum(val string) (ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum, bool) {
+	mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumIgnoreCase := make(map[string]ShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum)
+	for k, v := range mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnum {
+		mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingShapeNumaNodesPerSocketPlatformOptionsAllowedValuesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

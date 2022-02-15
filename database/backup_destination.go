@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -81,13 +81,13 @@ func (m BackupDestination) String() string {
 func (m BackupDestination) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBackupDestinationTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingBackupDestinationTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetBackupDestinationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBackupDestinationNfsMountTypeEnum[string(m.NfsMountType)]; !ok && m.NfsMountType != "" {
+	if _, ok := GetMappingBackupDestinationNfsMountTypeEnum(string(m.NfsMountType)); !ok && m.NfsMountType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NfsMountType: %s. Supported values are: %s.", m.NfsMountType, strings.Join(GetBackupDestinationNfsMountTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBackupDestinationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBackupDestinationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBackupDestinationLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -127,6 +127,17 @@ func GetBackupDestinationTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingBackupDestinationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupDestinationTypeEnum(val string) (BackupDestinationTypeEnum, bool) {
+	mappingBackupDestinationTypeEnumIgnoreCase := make(map[string]BackupDestinationTypeEnum)
+	for k, v := range mappingBackupDestinationTypeEnum {
+		mappingBackupDestinationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupDestinationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BackupDestinationNfsMountTypeEnum Enum with underlying type: string
 type BackupDestinationNfsMountTypeEnum string
 
@@ -156,6 +167,17 @@ func GetBackupDestinationNfsMountTypeEnumStringValues() []string {
 		"SELF_MOUNT",
 		"AUTOMATED_MOUNT",
 	}
+}
+
+// GetMappingBackupDestinationNfsMountTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupDestinationNfsMountTypeEnum(val string) (BackupDestinationNfsMountTypeEnum, bool) {
+	mappingBackupDestinationNfsMountTypeEnumIgnoreCase := make(map[string]BackupDestinationNfsMountTypeEnum)
+	for k, v := range mappingBackupDestinationNfsMountTypeEnum {
+		mappingBackupDestinationNfsMountTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupDestinationNfsMountTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // BackupDestinationLifecycleStateEnum Enum with underlying type: string
@@ -190,4 +212,15 @@ func GetBackupDestinationLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"DELETED",
 	}
+}
+
+// GetMappingBackupDestinationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupDestinationLifecycleStateEnum(val string) (BackupDestinationLifecycleStateEnum, bool) {
+	mappingBackupDestinationLifecycleStateEnumIgnoreCase := make(map[string]BackupDestinationLifecycleStateEnum)
+	for k, v := range mappingBackupDestinationLifecycleStateEnum {
+		mappingBackupDestinationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupDestinationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

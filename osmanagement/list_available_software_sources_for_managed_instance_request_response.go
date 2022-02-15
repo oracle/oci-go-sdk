@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -79,10 +79,10 @@ func (request ListAvailableSoftwareSourcesForManagedInstanceRequest) RetryPolicy
 // Not recommended for calling this function directly
 func (request ListAvailableSoftwareSourcesForManagedInstanceRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAvailableSoftwareSourcesForManagedInstanceSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAvailableSoftwareSourcesForManagedInstanceSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,6 +151,17 @@ func GetListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumStringValues(
 	}
 }
 
+// GetMappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum(val string) (ListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum, bool) {
+	mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumIgnoreCase := make(map[string]ListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum)
+	for k, v := range mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnum {
+		mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAvailableSoftwareSourcesForManagedInstanceSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAvailableSoftwareSourcesForManagedInstanceSortByEnum Enum with underlying type: string
 type ListAvailableSoftwareSourcesForManagedInstanceSortByEnum string
 
@@ -180,4 +191,15 @@ func GetListAvailableSoftwareSourcesForManagedInstanceSortByEnumStringValues() [
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListAvailableSoftwareSourcesForManagedInstanceSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAvailableSoftwareSourcesForManagedInstanceSortByEnum(val string) (ListAvailableSoftwareSourcesForManagedInstanceSortByEnum, bool) {
+	mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnumIgnoreCase := make(map[string]ListAvailableSoftwareSourcesForManagedInstanceSortByEnum)
+	for k, v := range mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnum {
+		mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAvailableSoftwareSourcesForManagedInstanceSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -14,7 +14,7 @@ package aianomalydetection
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -44,7 +44,7 @@ func (m EmbeddedDetectAnomaliesRequest) String() string {
 // Not recommended for calling this function directly
 func (m EmbeddedDetectAnomaliesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingEmbeddedDetectAnomaliesRequestContentTypeEnum[string(m.ContentType)]; !ok && m.ContentType != "" {
+	if _, ok := GetMappingEmbeddedDetectAnomaliesRequestContentTypeEnum(string(m.ContentType)); !ok && m.ContentType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ContentType: %s. Supported values are: %s.", m.ContentType, strings.Join(GetEmbeddedDetectAnomaliesRequestContentTypeEnumStringValues(), ",")))
 	}
 
@@ -97,4 +97,15 @@ func GetEmbeddedDetectAnomaliesRequestContentTypeEnumStringValues() []string {
 		"CSV",
 		"JSON",
 	}
+}
+
+// GetMappingEmbeddedDetectAnomaliesRequestContentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEmbeddedDetectAnomaliesRequestContentTypeEnum(val string) (EmbeddedDetectAnomaliesRequestContentTypeEnum, bool) {
+	mappingEmbeddedDetectAnomaliesRequestContentTypeEnumIgnoreCase := make(map[string]EmbeddedDetectAnomaliesRequestContentTypeEnum)
+	for k, v := range mappingEmbeddedDetectAnomaliesRequestContentTypeEnum {
+		mappingEmbeddedDetectAnomaliesRequestContentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEmbeddedDetectAnomaliesRequestContentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -42,12 +42,12 @@ func (m WeeklyFrequencyDetails) String() string {
 func (m WeeklyFrequencyDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range m.Days {
-		if _, ok := mappingWeeklyFrequencyDetailsDaysEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingWeeklyFrequencyDetailsDaysEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Days: %s. Supported values are: %s.", val, strings.Join(GetWeeklyFrequencyDetailsDaysEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingAbstractFrequencyDetailsFrequencyEnum[string(m.Frequency)]; !ok && m.Frequency != "" {
+	if _, ok := GetMappingAbstractFrequencyDetailsFrequencyEnum(string(m.Frequency)); !ok && m.Frequency != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Frequency: %s. Supported values are: %s.", m.Frequency, strings.Join(GetAbstractFrequencyDetailsFrequencyEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -114,4 +114,15 @@ func GetWeeklyFrequencyDetailsDaysEnumStringValues() []string {
 		"FRIDAY",
 		"SATURDAY",
 	}
+}
+
+// GetMappingWeeklyFrequencyDetailsDaysEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWeeklyFrequencyDetailsDaysEnum(val string) (WeeklyFrequencyDetailsDaysEnum, bool) {
+	mappingWeeklyFrequencyDetailsDaysEnumIgnoreCase := make(map[string]WeeklyFrequencyDetailsDaysEnum)
+	for k, v := range mappingWeeklyFrequencyDetailsDaysEnum {
+		mappingWeeklyFrequencyDetailsDaysEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWeeklyFrequencyDetailsDaysEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

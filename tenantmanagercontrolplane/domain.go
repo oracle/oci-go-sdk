@@ -11,7 +11,7 @@ package tenantmanagercontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -64,10 +64,10 @@ func (m Domain) String() string {
 // Not recommended for calling this function directly
 func (m Domain) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDomainLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDomainLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDomainLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDomainStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingDomainStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetDomainStatusEnumStringValues(), ",")))
 	}
 
@@ -109,6 +109,17 @@ func GetDomainLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingDomainLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDomainLifecycleStateEnum(val string) (DomainLifecycleStateEnum, bool) {
+	mappingDomainLifecycleStateEnumIgnoreCase := make(map[string]DomainLifecycleStateEnum)
+	for k, v := range mappingDomainLifecycleStateEnum {
+		mappingDomainLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDomainLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DomainStatusEnum Enum with underlying type: string
@@ -158,4 +169,15 @@ func GetDomainStatusEnumStringValues() []string {
 		"ACTIVE",
 		"FAILED",
 	}
+}
+
+// GetMappingDomainStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDomainStatusEnum(val string) (DomainStatusEnum, bool) {
+	mappingDomainStatusEnumIgnoreCase := make(map[string]DomainStatusEnum)
+	for k, v := range mappingDomainStatusEnum {
+		mappingDomainStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDomainStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

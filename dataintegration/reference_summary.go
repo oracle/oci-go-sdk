@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -59,7 +59,7 @@ func (m ReferenceSummary) String() string {
 func (m ReferenceSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingReferenceSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingReferenceSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetReferenceSummaryTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -109,4 +109,15 @@ func GetReferenceSummaryTypeEnumStringValues() []string {
 		"MYSQL_DATA_ASSET",
 		"GENERIC_JDBC_DATA_ASSET",
 	}
+}
+
+// GetMappingReferenceSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReferenceSummaryTypeEnum(val string) (ReferenceSummaryTypeEnum, bool) {
+	mappingReferenceSummaryTypeEnumIgnoreCase := make(map[string]ReferenceSummaryTypeEnum)
+	for k, v := range mappingReferenceSummaryTypeEnum {
+		mappingReferenceSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReferenceSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

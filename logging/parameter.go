@@ -11,7 +11,7 @@ package logging
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -37,7 +37,7 @@ func (m Parameter) String() string {
 // Not recommended for calling this function directly
 func (m Parameter) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingParameterTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingParameterTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetParameterTypeEnumStringValues(), ",")))
 	}
 
@@ -79,4 +79,15 @@ func GetParameterTypeEnumStringValues() []string {
 		"string",
 		"boolean",
 	}
+}
+
+// GetMappingParameterTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingParameterTypeEnum(val string) (ParameterTypeEnum, bool) {
+	mappingParameterTypeEnumIgnoreCase := make(map[string]ParameterTypeEnum)
+	for k, v := range mappingParameterTypeEnum {
+		mappingParameterTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingParameterTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

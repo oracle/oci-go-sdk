@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -39,7 +39,7 @@ func (m GenerateAutonomousDatabaseWalletDetails) String() string {
 func (m GenerateAutonomousDatabaseWalletDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingGenerateAutonomousDatabaseWalletDetailsGenerateTypeEnum[string(m.GenerateType)]; !ok && m.GenerateType != "" {
+	if _, ok := GetMappingGenerateAutonomousDatabaseWalletDetailsGenerateTypeEnum(string(m.GenerateType)); !ok && m.GenerateType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GenerateType: %s. Supported values are: %s.", m.GenerateType, strings.Join(GetGenerateAutonomousDatabaseWalletDetailsGenerateTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -77,4 +77,15 @@ func GetGenerateAutonomousDatabaseWalletDetailsGenerateTypeEnumStringValues() []
 		"ALL",
 		"SINGLE",
 	}
+}
+
+// GetMappingGenerateAutonomousDatabaseWalletDetailsGenerateTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGenerateAutonomousDatabaseWalletDetailsGenerateTypeEnum(val string) (GenerateAutonomousDatabaseWalletDetailsGenerateTypeEnum, bool) {
+	mappingGenerateAutonomousDatabaseWalletDetailsGenerateTypeEnumIgnoreCase := make(map[string]GenerateAutonomousDatabaseWalletDetailsGenerateTypeEnum)
+	for k, v := range mappingGenerateAutonomousDatabaseWalletDetailsGenerateTypeEnum {
+		mappingGenerateAutonomousDatabaseWalletDetailsGenerateTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGenerateAutonomousDatabaseWalletDetailsGenerateTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

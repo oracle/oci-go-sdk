@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -48,7 +48,7 @@ func (m DatabaseFleetHealthMetrics) String() string {
 func (m DatabaseFleetHealthMetrics) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCompareTypeEnum[string(m.CompareType)]; !ok && m.CompareType != "" {
+	if _, ok := GetMappingCompareTypeEnum(string(m.CompareType)); !ok && m.CompareType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CompareType: %s. Supported values are: %s.", m.CompareType, strings.Join(GetCompareTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

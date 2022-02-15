@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -51,7 +51,7 @@ func (m TablespaceAdminPasswordCredentialDetails) String() string {
 func (m TablespaceAdminPasswordCredentialDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTablespaceAdminCredentialDetailsRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingTablespaceAdminCredentialDetailsRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetTablespaceAdminCredentialDetailsRoleEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

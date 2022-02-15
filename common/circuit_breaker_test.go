@@ -4,9 +4,10 @@
 package common
 
 import (
+	"testing"
+
 	"github.com/sony/gobreaker"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestCircuitBreaker_ReadyToTrip(t *testing.T) {

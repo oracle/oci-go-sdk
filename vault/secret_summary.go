@@ -11,7 +11,7 @@ package vault
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -74,7 +74,7 @@ func (m SecretSummary) String() string {
 // Not recommended for calling this function directly
 func (m SecretSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSecretSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSecretSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSecretSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -134,4 +134,15 @@ func GetSecretSummaryLifecycleStateEnumStringValues() []string {
 		"CANCELLING_DELETION",
 		"FAILED",
 	}
+}
+
+// GetMappingSecretSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretSummaryLifecycleStateEnum(val string) (SecretSummaryLifecycleStateEnum, bool) {
+	mappingSecretSummaryLifecycleStateEnumIgnoreCase := make(map[string]SecretSummaryLifecycleStateEnum)
+	for k, v := range mappingSecretSummaryLifecycleStateEnum {
+		mappingSecretSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

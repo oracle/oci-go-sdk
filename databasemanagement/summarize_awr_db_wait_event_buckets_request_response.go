@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -117,10 +117,10 @@ func (request SummarizeAwrDbWaitEventBucketsRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request SummarizeAwrDbWaitEventBucketsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeAwrDbWaitEventBucketsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeAwrDbWaitEventBucketsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeAwrDbWaitEventBucketsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeAwrDbWaitEventBucketsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeAwrDbWaitEventBucketsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeAwrDbWaitEventBucketsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -188,6 +188,17 @@ func GetSummarizeAwrDbWaitEventBucketsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeAwrDbWaitEventBucketsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbWaitEventBucketsSortByEnum(val string) (SummarizeAwrDbWaitEventBucketsSortByEnum, bool) {
+	mappingSummarizeAwrDbWaitEventBucketsSortByEnumIgnoreCase := make(map[string]SummarizeAwrDbWaitEventBucketsSortByEnum)
+	for k, v := range mappingSummarizeAwrDbWaitEventBucketsSortByEnum {
+		mappingSummarizeAwrDbWaitEventBucketsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbWaitEventBucketsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeAwrDbWaitEventBucketsSortOrderEnum Enum with underlying type: string
 type SummarizeAwrDbWaitEventBucketsSortOrderEnum string
 
@@ -217,4 +228,15 @@ func GetSummarizeAwrDbWaitEventBucketsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeAwrDbWaitEventBucketsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeAwrDbWaitEventBucketsSortOrderEnum(val string) (SummarizeAwrDbWaitEventBucketsSortOrderEnum, bool) {
+	mappingSummarizeAwrDbWaitEventBucketsSortOrderEnumIgnoreCase := make(map[string]SummarizeAwrDbWaitEventBucketsSortOrderEnum)
+	for k, v := range mappingSummarizeAwrDbWaitEventBucketsSortOrderEnum {
+		mappingSummarizeAwrDbWaitEventBucketsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeAwrDbWaitEventBucketsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

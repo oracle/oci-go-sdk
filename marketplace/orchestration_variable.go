@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -47,7 +47,7 @@ func (m OrchestrationVariable) String() string {
 func (m OrchestrationVariable) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingOrchestrationVariableTypeEnumEnum[string(m.DataType)]; !ok && m.DataType != "" {
+	if _, ok := GetMappingOrchestrationVariableTypeEnumEnum(string(m.DataType)); !ok && m.DataType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DataType: %s. Supported values are: %s.", m.DataType, strings.Join(GetOrchestrationVariableTypeEnumEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

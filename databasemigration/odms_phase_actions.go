@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // OdmsPhaseActionsEnum Enum with underlying type: string
 type OdmsPhaseActionsEnum string
 
@@ -35,4 +39,15 @@ func GetOdmsPhaseActionsEnumStringValues() []string {
 	return []string{
 		"WAIT",
 	}
+}
+
+// GetMappingOdmsPhaseActionsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOdmsPhaseActionsEnum(val string) (OdmsPhaseActionsEnum, bool) {
+	mappingOdmsPhaseActionsEnumIgnoreCase := make(map[string]OdmsPhaseActionsEnum)
+	for k, v := range mappingOdmsPhaseActionsEnum {
+		mappingOdmsPhaseActionsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOdmsPhaseActionsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

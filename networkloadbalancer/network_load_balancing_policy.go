@@ -9,6 +9,10 @@
 
 package networkloadbalancer
 
+import (
+	"strings"
+)
+
 // NetworkLoadBalancingPolicyEnum Enum with underlying type: string
 type NetworkLoadBalancingPolicyEnum string
 
@@ -41,4 +45,15 @@ func GetNetworkLoadBalancingPolicyEnumStringValues() []string {
 		"THREE_TUPLE",
 		"FIVE_TUPLE",
 	}
+}
+
+// GetMappingNetworkLoadBalancingPolicyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNetworkLoadBalancingPolicyEnum(val string) (NetworkLoadBalancingPolicyEnum, bool) {
+	mappingNetworkLoadBalancingPolicyEnumIgnoreCase := make(map[string]NetworkLoadBalancingPolicyEnum)
+	for k, v := range mappingNetworkLoadBalancingPolicyEnum {
+		mappingNetworkLoadBalancingPolicyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNetworkLoadBalancingPolicyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

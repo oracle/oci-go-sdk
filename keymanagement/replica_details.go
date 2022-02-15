@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -36,7 +36,7 @@ func (m ReplicaDetails) String() string {
 func (m ReplicaDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingReplicaDetailsStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingReplicaDetailsStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetReplicaDetailsStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -74,4 +74,15 @@ func GetReplicaDetailsStatusEnumStringValues() []string {
 		"REPLICATING",
 		"REPLICATED",
 	}
+}
+
+// GetMappingReplicaDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingReplicaDetailsStatusEnum(val string) (ReplicaDetailsStatusEnum, bool) {
+	mappingReplicaDetailsStatusEnumIgnoreCase := make(map[string]ReplicaDetailsStatusEnum)
+	for k, v := range mappingReplicaDetailsStatusEnum {
+		mappingReplicaDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingReplicaDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

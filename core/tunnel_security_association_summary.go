@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -48,7 +48,7 @@ func (m TunnelSecurityAssociationSummary) String() string {
 func (m TunnelSecurityAssociationSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnum[string(m.TunnelSaStatus)]; !ok && m.TunnelSaStatus != "" {
+	if _, ok := GetMappingTunnelSecurityAssociationSummaryTunnelSaStatusEnum(string(m.TunnelSaStatus)); !ok && m.TunnelSaStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TunnelSaStatus: %s. Supported values are: %s.", m.TunnelSaStatus, strings.Join(GetTunnelSecurityAssociationSummaryTunnelSaStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -98,4 +98,15 @@ func GetTunnelSecurityAssociationSummaryTunnelSaStatusEnumStringValues() []strin
 		"ERROR",
 		"UNKNOWN",
 	}
+}
+
+// GetMappingTunnelSecurityAssociationSummaryTunnelSaStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTunnelSecurityAssociationSummaryTunnelSaStatusEnum(val string) (TunnelSecurityAssociationSummaryTunnelSaStatusEnum, bool) {
+	mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnumIgnoreCase := make(map[string]TunnelSecurityAssociationSummaryTunnelSaStatusEnum)
+	for k, v := range mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnum {
+		mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTunnelSecurityAssociationSummaryTunnelSaStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

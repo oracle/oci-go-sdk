@@ -12,7 +12,7 @@ package datalabelingservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,4 +101,15 @@ func GetSnapshotExportDetailsExportTypeEnumStringValues() []string {
 	return []string{
 		"OBJECT_STORAGE",
 	}
+}
+
+// GetMappingSnapshotExportDetailsExportTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSnapshotExportDetailsExportTypeEnum(val string) (SnapshotExportDetailsExportTypeEnum, bool) {
+	mappingSnapshotExportDetailsExportTypeEnumIgnoreCase := make(map[string]SnapshotExportDetailsExportTypeEnum)
+	for k, v := range mappingSnapshotExportDetailsExportTypeEnum {
+		mappingSnapshotExportDetailsExportTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSnapshotExportDetailsExportTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

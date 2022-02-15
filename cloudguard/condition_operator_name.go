@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ConditionOperatorNameEnum Enum with underlying type: string
 type ConditionOperatorNameEnum string
 
@@ -59,4 +63,15 @@ func GetConditionOperatorNameEnumStringValues() []string {
 		"GREATER_THAN",
 		"RANGE",
 	}
+}
+
+// GetMappingConditionOperatorNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConditionOperatorNameEnum(val string) (ConditionOperatorNameEnum, bool) {
+	mappingConditionOperatorNameEnumIgnoreCase := make(map[string]ConditionOperatorNameEnum)
+	for k, v := range mappingConditionOperatorNameEnum {
+		mappingConditionOperatorNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConditionOperatorNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

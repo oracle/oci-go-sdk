@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -59,7 +59,7 @@ func (m AddDataFilesDetails) String() string {
 // Not recommended for calling this function directly
 func (m AddDataFilesDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAddDataFilesDetailsFileTypeEnum[string(m.FileType)]; !ok && m.FileType != "" {
+	if _, ok := GetMappingAddDataFilesDetailsFileTypeEnum(string(m.FileType)); !ok && m.FileType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FileType: %s. Supported values are: %s.", m.FileType, strings.Join(GetAddDataFilesDetailsFileTypeEnumStringValues(), ",")))
 	}
 
@@ -152,4 +152,15 @@ func GetAddDataFilesDetailsFileTypeEnumStringValues() []string {
 		"DATAFILE",
 		"TEMPFILE",
 	}
+}
+
+// GetMappingAddDataFilesDetailsFileTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAddDataFilesDetailsFileTypeEnum(val string) (AddDataFilesDetailsFileTypeEnum, bool) {
+	mappingAddDataFilesDetailsFileTypeEnumIgnoreCase := make(map[string]AddDataFilesDetailsFileTypeEnum)
+	for k, v := range mappingAddDataFilesDetailsFileTypeEnum {
+		mappingAddDataFilesDetailsFileTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAddDataFilesDetailsFileTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package applicationmigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -86,13 +86,13 @@ func (request ListSourcesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListSourcesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSourcesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSourcesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSourcesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSourcesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSourcesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSourcesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSourcesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListSourcesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListSourcesLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetListSourcesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSourcesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSourcesSortOrderEnum(val string) (ListSourcesSortOrderEnum, bool) {
+	mappingListSourcesSortOrderEnumIgnoreCase := make(map[string]ListSourcesSortOrderEnum)
+	for k, v := range mappingListSourcesSortOrderEnum {
+		mappingListSourcesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSourcesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSourcesSortByEnum Enum with underlying type: string
 type ListSourcesSortByEnum string
 
@@ -189,6 +200,17 @@ func GetListSourcesSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListSourcesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSourcesSortByEnum(val string) (ListSourcesSortByEnum, bool) {
+	mappingListSourcesSortByEnumIgnoreCase := make(map[string]ListSourcesSortByEnum)
+	for k, v := range mappingListSourcesSortByEnum {
+		mappingListSourcesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSourcesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListSourcesLifecycleStateEnum Enum with underlying type: string
@@ -232,4 +254,15 @@ func GetListSourcesLifecycleStateEnumStringValues() []string {
 		"INACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingListSourcesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSourcesLifecycleStateEnum(val string) (ListSourcesLifecycleStateEnum, bool) {
+	mappingListSourcesLifecycleStateEnumIgnoreCase := make(map[string]ListSourcesLifecycleStateEnum)
+	for k, v := range mappingListSourcesLifecycleStateEnum {
+		mappingListSourcesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSourcesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

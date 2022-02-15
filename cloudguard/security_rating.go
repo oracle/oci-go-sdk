@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // SecurityRatingEnum Enum with underlying type: string
 type SecurityRatingEnum string
 
@@ -47,4 +51,15 @@ func GetSecurityRatingEnumStringValues() []string {
 		"POOR",
 		"NA",
 	}
+}
+
+// GetMappingSecurityRatingEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecurityRatingEnum(val string) (SecurityRatingEnum, bool) {
+	mappingSecurityRatingEnumIgnoreCase := make(map[string]SecurityRatingEnum)
+	for k, v := range mappingSecurityRatingEnum {
+		mappingSecurityRatingEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecurityRatingEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

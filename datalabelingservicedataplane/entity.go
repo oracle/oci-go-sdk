@@ -12,7 +12,7 @@ package datalabelingservicedataplane
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -115,4 +115,15 @@ func GetEntityEntityTypeEnumStringValues() []string {
 		"IMAGEOBJECTSELECTION",
 		"TEXTSELECTION",
 	}
+}
+
+// GetMappingEntityEntityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEntityEntityTypeEnum(val string) (EntityEntityTypeEnum, bool) {
+	mappingEntityEntityTypeEnumIgnoreCase := make(map[string]EntityEntityTypeEnum)
+	for k, v := range mappingEntityEntityTypeEnum {
+		mappingEntityEntityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEntityEntityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

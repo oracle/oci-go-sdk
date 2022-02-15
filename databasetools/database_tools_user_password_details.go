@@ -12,7 +12,7 @@ package databasetools
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,4 +101,15 @@ func GetDatabaseToolsUserPasswordDetailsValueTypeEnumStringValues() []string {
 	return []string{
 		"SECRETID",
 	}
+}
+
+// GetMappingDatabaseToolsUserPasswordDetailsValueTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseToolsUserPasswordDetailsValueTypeEnum(val string) (DatabaseToolsUserPasswordDetailsValueTypeEnum, bool) {
+	mappingDatabaseToolsUserPasswordDetailsValueTypeEnumIgnoreCase := make(map[string]DatabaseToolsUserPasswordDetailsValueTypeEnum)
+	for k, v := range mappingDatabaseToolsUserPasswordDetailsValueTypeEnum {
+		mappingDatabaseToolsUserPasswordDetailsValueTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseToolsUserPasswordDetailsValueTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -291,13 +291,13 @@ func (m LaunchDbSystemDetails) String() string {
 // Not recommended for calling this function directly
 func (m LaunchDbSystemDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingLaunchDbSystemDetailsDatabaseEditionEnum[string(m.DatabaseEdition)]; !ok && m.DatabaseEdition != "" {
+	if _, ok := GetMappingLaunchDbSystemDetailsDatabaseEditionEnum(string(m.DatabaseEdition)); !ok && m.DatabaseEdition != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseEdition: %s. Supported values are: %s.", m.DatabaseEdition, strings.Join(GetLaunchDbSystemDetailsDatabaseEditionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLaunchDbSystemDetailsDiskRedundancyEnum[string(m.DiskRedundancy)]; !ok && m.DiskRedundancy != "" {
+	if _, ok := GetMappingLaunchDbSystemDetailsDiskRedundancyEnum(string(m.DiskRedundancy)); !ok && m.DiskRedundancy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DiskRedundancy: %s. Supported values are: %s.", m.DiskRedundancy, strings.Join(GetLaunchDbSystemDetailsDiskRedundancyEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLaunchDbSystemDetailsLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingLaunchDbSystemDetailsLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetLaunchDbSystemDetailsLicenseModelEnumStringValues(), ",")))
 	}
 
@@ -358,6 +358,17 @@ func GetLaunchDbSystemDetailsDatabaseEditionEnumStringValues() []string {
 	}
 }
 
+// GetMappingLaunchDbSystemDetailsDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchDbSystemDetailsDatabaseEditionEnum(val string) (LaunchDbSystemDetailsDatabaseEditionEnum, bool) {
+	mappingLaunchDbSystemDetailsDatabaseEditionEnumIgnoreCase := make(map[string]LaunchDbSystemDetailsDatabaseEditionEnum)
+	for k, v := range mappingLaunchDbSystemDetailsDatabaseEditionEnum {
+		mappingLaunchDbSystemDetailsDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchDbSystemDetailsDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // LaunchDbSystemDetailsDiskRedundancyEnum Enum with underlying type: string
 type LaunchDbSystemDetailsDiskRedundancyEnum string
 
@@ -389,6 +400,17 @@ func GetLaunchDbSystemDetailsDiskRedundancyEnumStringValues() []string {
 	}
 }
 
+// GetMappingLaunchDbSystemDetailsDiskRedundancyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchDbSystemDetailsDiskRedundancyEnum(val string) (LaunchDbSystemDetailsDiskRedundancyEnum, bool) {
+	mappingLaunchDbSystemDetailsDiskRedundancyEnumIgnoreCase := make(map[string]LaunchDbSystemDetailsDiskRedundancyEnum)
+	for k, v := range mappingLaunchDbSystemDetailsDiskRedundancyEnum {
+		mappingLaunchDbSystemDetailsDiskRedundancyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchDbSystemDetailsDiskRedundancyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // LaunchDbSystemDetailsLicenseModelEnum Enum with underlying type: string
 type LaunchDbSystemDetailsLicenseModelEnum string
 
@@ -418,4 +440,15 @@ func GetLaunchDbSystemDetailsLicenseModelEnumStringValues() []string {
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingLaunchDbSystemDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchDbSystemDetailsLicenseModelEnum(val string) (LaunchDbSystemDetailsLicenseModelEnum, bool) {
+	mappingLaunchDbSystemDetailsLicenseModelEnumIgnoreCase := make(map[string]LaunchDbSystemDetailsLicenseModelEnum)
+	for k, v := range mappingLaunchDbSystemDetailsLicenseModelEnum {
+		mappingLaunchDbSystemDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchDbSystemDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

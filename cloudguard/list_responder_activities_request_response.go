@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -72,10 +72,10 @@ func (request ListResponderActivitiesRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListResponderActivitiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListResponderActivitiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListResponderActivitiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListResponderActivitiesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListResponderActivitiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListResponderActivitiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListResponderActivitiesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -143,6 +143,17 @@ func GetListResponderActivitiesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListResponderActivitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResponderActivitiesSortOrderEnum(val string) (ListResponderActivitiesSortOrderEnum, bool) {
+	mappingListResponderActivitiesSortOrderEnumIgnoreCase := make(map[string]ListResponderActivitiesSortOrderEnum)
+	for k, v := range mappingListResponderActivitiesSortOrderEnum {
+		mappingListResponderActivitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResponderActivitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListResponderActivitiesSortByEnum Enum with underlying type: string
 type ListResponderActivitiesSortByEnum string
 
@@ -172,4 +183,15 @@ func GetListResponderActivitiesSortByEnumStringValues() []string {
 		"timeCreated",
 		"responderRuleName",
 	}
+}
+
+// GetMappingListResponderActivitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListResponderActivitiesSortByEnum(val string) (ListResponderActivitiesSortByEnum, bool) {
+	mappingListResponderActivitiesSortByEnumIgnoreCase := make(map[string]ListResponderActivitiesSortByEnum)
+	for k, v := range mappingListResponderActivitiesSortByEnum {
+		mappingListResponderActivitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListResponderActivitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

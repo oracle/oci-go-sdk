@@ -6,7 +6,7 @@ package autoscaling
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -79,10 +79,10 @@ func (request ListAutoScalingPoliciesRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListAutoScalingPoliciesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAutoScalingPoliciesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAutoScalingPoliciesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAutoScalingPoliciesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAutoScalingPoliciesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAutoScalingPoliciesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAutoScalingPoliciesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,6 +149,17 @@ func GetListAutoScalingPoliciesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAutoScalingPoliciesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutoScalingPoliciesSortByEnum(val string) (ListAutoScalingPoliciesSortByEnum, bool) {
+	mappingListAutoScalingPoliciesSortByEnumIgnoreCase := make(map[string]ListAutoScalingPoliciesSortByEnum)
+	for k, v := range mappingListAutoScalingPoliciesSortByEnum {
+		mappingListAutoScalingPoliciesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutoScalingPoliciesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAutoScalingPoliciesSortOrderEnum Enum with underlying type: string
 type ListAutoScalingPoliciesSortOrderEnum string
 
@@ -178,4 +189,15 @@ func GetListAutoScalingPoliciesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAutoScalingPoliciesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAutoScalingPoliciesSortOrderEnum(val string) (ListAutoScalingPoliciesSortOrderEnum, bool) {
+	mappingListAutoScalingPoliciesSortOrderEnumIgnoreCase := make(map[string]ListAutoScalingPoliciesSortOrderEnum)
+	for k, v := range mappingListAutoScalingPoliciesSortOrderEnum {
+		mappingListAutoScalingPoliciesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAutoScalingPoliciesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

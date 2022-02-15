@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -174,4 +174,15 @@ func GetFlowPortLinkModelTypeEnumStringValues() []string {
 		"OUTPUT_LINK",
 		"INPUT_LINK",
 	}
+}
+
+// GetMappingFlowPortLinkModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFlowPortLinkModelTypeEnum(val string) (FlowPortLinkModelTypeEnum, bool) {
+	mappingFlowPortLinkModelTypeEnumIgnoreCase := make(map[string]FlowPortLinkModelTypeEnum)
+	for k, v := range mappingFlowPortLinkModelTypeEnum {
+		mappingFlowPortLinkModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFlowPortLinkModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

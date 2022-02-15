@@ -6,7 +6,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -77,10 +77,10 @@ func (request ListKeyVersionsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListKeyVersionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListKeyVersionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListKeyVersionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListKeyVersionsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListKeyVersionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListKeyVersionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListKeyVersionsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,6 +149,17 @@ func GetListKeyVersionsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListKeyVersionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListKeyVersionsSortByEnum(val string) (ListKeyVersionsSortByEnum, bool) {
+	mappingListKeyVersionsSortByEnumIgnoreCase := make(map[string]ListKeyVersionsSortByEnum)
+	for k, v := range mappingListKeyVersionsSortByEnum {
+		mappingListKeyVersionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListKeyVersionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListKeyVersionsSortOrderEnum Enum with underlying type: string
 type ListKeyVersionsSortOrderEnum string
 
@@ -178,4 +189,15 @@ func GetListKeyVersionsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListKeyVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListKeyVersionsSortOrderEnum(val string) (ListKeyVersionsSortOrderEnum, bool) {
+	mappingListKeyVersionsSortOrderEnumIgnoreCase := make(map[string]ListKeyVersionsSortOrderEnum)
+	for k, v := range mappingListKeyVersionsSortOrderEnum {
+		mappingListKeyVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListKeyVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

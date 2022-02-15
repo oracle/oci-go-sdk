@@ -6,7 +6,7 @@ package waf
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -86,15 +86,15 @@ func (request ListWebAppFirewallPoliciesRequest) RetryPolicy() *common.RetryPoli
 func (request ListWebAppFirewallPoliciesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.LifecycleState {
-		if _, ok := mappingWebAppFirewallPolicyLifecycleStateEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingWebAppFirewallPolicyLifecycleStateEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", val, strings.Join(GetWebAppFirewallPolicyLifecycleStateEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListWebAppFirewallPoliciesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListWebAppFirewallPoliciesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListWebAppFirewallPoliciesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListWebAppFirewallPoliciesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListWebAppFirewallPoliciesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListWebAppFirewallPoliciesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetListWebAppFirewallPoliciesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListWebAppFirewallPoliciesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWebAppFirewallPoliciesSortOrderEnum(val string) (ListWebAppFirewallPoliciesSortOrderEnum, bool) {
+	mappingListWebAppFirewallPoliciesSortOrderEnumIgnoreCase := make(map[string]ListWebAppFirewallPoliciesSortOrderEnum)
+	for k, v := range mappingListWebAppFirewallPoliciesSortOrderEnum {
+		mappingListWebAppFirewallPoliciesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWebAppFirewallPoliciesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListWebAppFirewallPoliciesSortByEnum Enum with underlying type: string
 type ListWebAppFirewallPoliciesSortByEnum string
 
@@ -191,4 +202,15 @@ func GetListWebAppFirewallPoliciesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListWebAppFirewallPoliciesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListWebAppFirewallPoliciesSortByEnum(val string) (ListWebAppFirewallPoliciesSortByEnum, bool) {
+	mappingListWebAppFirewallPoliciesSortByEnumIgnoreCase := make(map[string]ListWebAppFirewallPoliciesSortByEnum)
+	for k, v := range mappingListWebAppFirewallPoliciesSortByEnum {
+		mappingListWebAppFirewallPoliciesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListWebAppFirewallPoliciesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

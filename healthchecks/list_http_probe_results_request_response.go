@@ -6,7 +6,7 @@ package healthchecks
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -80,7 +80,7 @@ func (request ListHttpProbeResultsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListHttpProbeResultsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListHttpProbeResultsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListHttpProbeResultsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListHttpProbeResultsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,4 +148,15 @@ func GetListHttpProbeResultsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListHttpProbeResultsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHttpProbeResultsSortOrderEnum(val string) (ListHttpProbeResultsSortOrderEnum, bool) {
+	mappingListHttpProbeResultsSortOrderEnumIgnoreCase := make(map[string]ListHttpProbeResultsSortOrderEnum)
+	for k, v := range mappingListHttpProbeResultsSortOrderEnum {
+		mappingListHttpProbeResultsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHttpProbeResultsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -82,7 +82,7 @@ func (m LogAnalyticsAssociation) String() string {
 func (m LogAnalyticsAssociation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLogAnalyticsAssociationLifeCycleStateEnum[string(m.LifeCycleState)]; !ok && m.LifeCycleState != "" {
+	if _, ok := GetMappingLogAnalyticsAssociationLifeCycleStateEnum(string(m.LifeCycleState)); !ok && m.LifeCycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifeCycleState: %s. Supported values are: %s.", m.LifeCycleState, strings.Join(GetLogAnalyticsAssociationLifeCycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -126,4 +126,15 @@ func GetLogAnalyticsAssociationLifeCycleStateEnumStringValues() []string {
 		"SUCCEEDED",
 		"FAILED",
 	}
+}
+
+// GetMappingLogAnalyticsAssociationLifeCycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsAssociationLifeCycleStateEnum(val string) (LogAnalyticsAssociationLifeCycleStateEnum, bool) {
+	mappingLogAnalyticsAssociationLifeCycleStateEnumIgnoreCase := make(map[string]LogAnalyticsAssociationLifeCycleStateEnum)
+	for k, v := range mappingLogAnalyticsAssociationLifeCycleStateEnum {
+		mappingLogAnalyticsAssociationLifeCycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsAssociationLifeCycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

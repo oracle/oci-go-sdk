@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -84,13 +84,13 @@ func (request ListManagedDatabaseGroupsRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListManagedDatabaseGroupsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListManagedDatabaseGroupsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListManagedDatabaseGroupsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListManagedDatabaseGroupsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagedDatabaseGroupsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListManagedDatabaseGroupsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListManagedDatabaseGroupsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagedDatabaseGroupsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListManagedDatabaseGroupsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListManagedDatabaseGroupsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -170,6 +170,17 @@ func GetListManagedDatabaseGroupsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagedDatabaseGroupsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedDatabaseGroupsLifecycleStateEnum(val string) (ListManagedDatabaseGroupsLifecycleStateEnum, bool) {
+	mappingListManagedDatabaseGroupsLifecycleStateEnumIgnoreCase := make(map[string]ListManagedDatabaseGroupsLifecycleStateEnum)
+	for k, v := range mappingListManagedDatabaseGroupsLifecycleStateEnum {
+		mappingListManagedDatabaseGroupsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedDatabaseGroupsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagedDatabaseGroupsSortByEnum Enum with underlying type: string
 type ListManagedDatabaseGroupsSortByEnum string
 
@@ -201,6 +212,17 @@ func GetListManagedDatabaseGroupsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagedDatabaseGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedDatabaseGroupsSortByEnum(val string) (ListManagedDatabaseGroupsSortByEnum, bool) {
+	mappingListManagedDatabaseGroupsSortByEnumIgnoreCase := make(map[string]ListManagedDatabaseGroupsSortByEnum)
+	for k, v := range mappingListManagedDatabaseGroupsSortByEnum {
+		mappingListManagedDatabaseGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedDatabaseGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagedDatabaseGroupsSortOrderEnum Enum with underlying type: string
 type ListManagedDatabaseGroupsSortOrderEnum string
 
@@ -230,4 +252,15 @@ func GetListManagedDatabaseGroupsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListManagedDatabaseGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedDatabaseGroupsSortOrderEnum(val string) (ListManagedDatabaseGroupsSortOrderEnum, bool) {
+	mappingListManagedDatabaseGroupsSortOrderEnumIgnoreCase := make(map[string]ListManagedDatabaseGroupsSortOrderEnum)
+	for k, v := range mappingListManagedDatabaseGroupsSortOrderEnum {
+		mappingListManagedDatabaseGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedDatabaseGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

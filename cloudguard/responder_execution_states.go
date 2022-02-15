@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ResponderExecutionStatesEnum Enum with underlying type: string
 type ResponderExecutionStatesEnum string
 
@@ -53,4 +57,15 @@ func GetResponderExecutionStatesEnumStringValues() []string {
 		"SKIPPED",
 		"ALL",
 	}
+}
+
+// GetMappingResponderExecutionStatesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponderExecutionStatesEnum(val string) (ResponderExecutionStatesEnum, bool) {
+	mappingResponderExecutionStatesEnumIgnoreCase := make(map[string]ResponderExecutionStatesEnum)
+	for k, v := range mappingResponderExecutionStatesEnum {
+		mappingResponderExecutionStatesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResponderExecutionStatesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

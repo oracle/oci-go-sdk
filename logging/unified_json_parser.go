@@ -12,7 +12,7 @@ package logging
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -89,7 +89,7 @@ func (m UnifiedJsonParser) String() string {
 // Not recommended for calling this function directly
 func (m UnifiedJsonParser) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUnifiedJsonParserTimeTypeEnum[string(m.TimeType)]; !ok && m.TimeType != "" {
+	if _, ok := GetMappingUnifiedJsonParserTimeTypeEnum(string(m.TimeType)); !ok && m.TimeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TimeType: %s. Supported values are: %s.", m.TimeType, strings.Join(GetUnifiedJsonParserTimeTypeEnumStringValues(), ",")))
 	}
 
@@ -145,4 +145,15 @@ func GetUnifiedJsonParserTimeTypeEnumStringValues() []string {
 		"UNIXTIME",
 		"STRING",
 	}
+}
+
+// GetMappingUnifiedJsonParserTimeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUnifiedJsonParserTimeTypeEnum(val string) (UnifiedJsonParserTimeTypeEnum, bool) {
+	mappingUnifiedJsonParserTimeTypeEnumIgnoreCase := make(map[string]UnifiedJsonParserTimeTypeEnum)
+	for k, v := range mappingUnifiedJsonParserTimeTypeEnum {
+		mappingUnifiedJsonParserTimeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUnifiedJsonParserTimeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -48,13 +48,13 @@ func (m PhaseOneConfigDetails) String() string {
 func (m PhaseOneConfigDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnum[string(m.AuthenticationAlgorithm)]; !ok && m.AuthenticationAlgorithm != "" {
+	if _, ok := GetMappingPhaseOneConfigDetailsAuthenticationAlgorithmEnum(string(m.AuthenticationAlgorithm)); !ok && m.AuthenticationAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuthenticationAlgorithm: %s. Supported values are: %s.", m.AuthenticationAlgorithm, strings.Join(GetPhaseOneConfigDetailsAuthenticationAlgorithmEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPhaseOneConfigDetailsEncryptionAlgorithmEnum[string(m.EncryptionAlgorithm)]; !ok && m.EncryptionAlgorithm != "" {
+	if _, ok := GetMappingPhaseOneConfigDetailsEncryptionAlgorithmEnum(string(m.EncryptionAlgorithm)); !ok && m.EncryptionAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EncryptionAlgorithm: %s. Supported values are: %s.", m.EncryptionAlgorithm, strings.Join(GetPhaseOneConfigDetailsEncryptionAlgorithmEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPhaseOneConfigDetailsDiffieHelmanGroupEnum[string(m.DiffieHelmanGroup)]; !ok && m.DiffieHelmanGroup != "" {
+	if _, ok := GetMappingPhaseOneConfigDetailsDiffieHelmanGroupEnum(string(m.DiffieHelmanGroup)); !ok && m.DiffieHelmanGroup != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DiffieHelmanGroup: %s. Supported values are: %s.", m.DiffieHelmanGroup, strings.Join(GetPhaseOneConfigDetailsDiffieHelmanGroupEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -97,6 +97,17 @@ func GetPhaseOneConfigDetailsAuthenticationAlgorithmEnumStringValues() []string 
 	}
 }
 
+// GetMappingPhaseOneConfigDetailsAuthenticationAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPhaseOneConfigDetailsAuthenticationAlgorithmEnum(val string) (PhaseOneConfigDetailsAuthenticationAlgorithmEnum, bool) {
+	mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnumIgnoreCase := make(map[string]PhaseOneConfigDetailsAuthenticationAlgorithmEnum)
+	for k, v := range mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnum {
+		mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPhaseOneConfigDetailsAuthenticationAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PhaseOneConfigDetailsEncryptionAlgorithmEnum Enum with underlying type: string
 type PhaseOneConfigDetailsEncryptionAlgorithmEnum string
 
@@ -129,6 +140,17 @@ func GetPhaseOneConfigDetailsEncryptionAlgorithmEnumStringValues() []string {
 		"AES_192_CBC",
 		"AES_128_CBC",
 	}
+}
+
+// GetMappingPhaseOneConfigDetailsEncryptionAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPhaseOneConfigDetailsEncryptionAlgorithmEnum(val string) (PhaseOneConfigDetailsEncryptionAlgorithmEnum, bool) {
+	mappingPhaseOneConfigDetailsEncryptionAlgorithmEnumIgnoreCase := make(map[string]PhaseOneConfigDetailsEncryptionAlgorithmEnum)
+	for k, v := range mappingPhaseOneConfigDetailsEncryptionAlgorithmEnum {
+		mappingPhaseOneConfigDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPhaseOneConfigDetailsEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // PhaseOneConfigDetailsDiffieHelmanGroupEnum Enum with underlying type: string
@@ -172,4 +194,15 @@ func GetPhaseOneConfigDetailsDiffieHelmanGroupEnumStringValues() []string {
 		"GROUP20",
 		"GROUP24",
 	}
+}
+
+// GetMappingPhaseOneConfigDetailsDiffieHelmanGroupEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPhaseOneConfigDetailsDiffieHelmanGroupEnum(val string) (PhaseOneConfigDetailsDiffieHelmanGroupEnum, bool) {
+	mappingPhaseOneConfigDetailsDiffieHelmanGroupEnumIgnoreCase := make(map[string]PhaseOneConfigDetailsDiffieHelmanGroupEnum)
+	for k, v := range mappingPhaseOneConfigDetailsDiffieHelmanGroupEnum {
+		mappingPhaseOneConfigDetailsDiffieHelmanGroupEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPhaseOneConfigDetailsDiffieHelmanGroupEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -223,19 +223,19 @@ func (m ConfigurationVariables) String() string {
 func (m ConfigurationVariables) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingConfigurationVariablesCompletionTypeEnum[string(m.CompletionType)]; !ok && m.CompletionType != "" {
+	if _, ok := GetMappingConfigurationVariablesCompletionTypeEnum(string(m.CompletionType)); !ok && m.CompletionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CompletionType: %s. Supported values are: %s.", m.CompletionType, strings.Join(GetConfigurationVariablesCompletionTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingConfigurationVariablesDefaultAuthenticationPluginEnum[string(m.DefaultAuthenticationPlugin)]; !ok && m.DefaultAuthenticationPlugin != "" {
+	if _, ok := GetMappingConfigurationVariablesDefaultAuthenticationPluginEnum(string(m.DefaultAuthenticationPlugin)); !ok && m.DefaultAuthenticationPlugin != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DefaultAuthenticationPlugin: %s. Supported values are: %s.", m.DefaultAuthenticationPlugin, strings.Join(GetConfigurationVariablesDefaultAuthenticationPluginEnumStringValues(), ",")))
 	}
-	if _, ok := mappingConfigurationVariablesTransactionIsolationEnum[string(m.TransactionIsolation)]; !ok && m.TransactionIsolation != "" {
+	if _, ok := GetMappingConfigurationVariablesTransactionIsolationEnum(string(m.TransactionIsolation)); !ok && m.TransactionIsolation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TransactionIsolation: %s. Supported values are: %s.", m.TransactionIsolation, strings.Join(GetConfigurationVariablesTransactionIsolationEnumStringValues(), ",")))
 	}
-	if _, ok := mappingConfigurationVariablesGroupReplicationConsistencyEnum[string(m.GroupReplicationConsistency)]; !ok && m.GroupReplicationConsistency != "" {
+	if _, ok := GetMappingConfigurationVariablesGroupReplicationConsistencyEnum(string(m.GroupReplicationConsistency)); !ok && m.GroupReplicationConsistency != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GroupReplicationConsistency: %s. Supported values are: %s.", m.GroupReplicationConsistency, strings.Join(GetConfigurationVariablesGroupReplicationConsistencyEnumStringValues(), ",")))
 	}
-	if _, ok := mappingConfigurationVariablesBinlogRowMetadataEnum[string(m.BinlogRowMetadata)]; !ok && m.BinlogRowMetadata != "" {
+	if _, ok := GetMappingConfigurationVariablesBinlogRowMetadataEnum(string(m.BinlogRowMetadata)); !ok && m.BinlogRowMetadata != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BinlogRowMetadata: %s. Supported values are: %s.", m.BinlogRowMetadata, strings.Join(GetConfigurationVariablesBinlogRowMetadataEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -278,6 +278,17 @@ func GetConfigurationVariablesCompletionTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingConfigurationVariablesCompletionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigurationVariablesCompletionTypeEnum(val string) (ConfigurationVariablesCompletionTypeEnum, bool) {
+	mappingConfigurationVariablesCompletionTypeEnumIgnoreCase := make(map[string]ConfigurationVariablesCompletionTypeEnum)
+	for k, v := range mappingConfigurationVariablesCompletionTypeEnum {
+		mappingConfigurationVariablesCompletionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigurationVariablesCompletionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ConfigurationVariablesDefaultAuthenticationPluginEnum Enum with underlying type: string
 type ConfigurationVariablesDefaultAuthenticationPluginEnum string
 
@@ -310,6 +321,17 @@ func GetConfigurationVariablesDefaultAuthenticationPluginEnumStringValues() []st
 		"sha256_password",
 		"caching_sha2_password",
 	}
+}
+
+// GetMappingConfigurationVariablesDefaultAuthenticationPluginEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigurationVariablesDefaultAuthenticationPluginEnum(val string) (ConfigurationVariablesDefaultAuthenticationPluginEnum, bool) {
+	mappingConfigurationVariablesDefaultAuthenticationPluginEnumIgnoreCase := make(map[string]ConfigurationVariablesDefaultAuthenticationPluginEnum)
+	for k, v := range mappingConfigurationVariablesDefaultAuthenticationPluginEnum {
+		mappingConfigurationVariablesDefaultAuthenticationPluginEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigurationVariablesDefaultAuthenticationPluginEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ConfigurationVariablesTransactionIsolationEnum Enum with underlying type: string
@@ -352,6 +374,17 @@ func GetConfigurationVariablesTransactionIsolationEnumStringValues() []string {
 	}
 }
 
+// GetMappingConfigurationVariablesTransactionIsolationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigurationVariablesTransactionIsolationEnum(val string) (ConfigurationVariablesTransactionIsolationEnum, bool) {
+	mappingConfigurationVariablesTransactionIsolationEnumIgnoreCase := make(map[string]ConfigurationVariablesTransactionIsolationEnum)
+	for k, v := range mappingConfigurationVariablesTransactionIsolationEnum {
+		mappingConfigurationVariablesTransactionIsolationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigurationVariablesTransactionIsolationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ConfigurationVariablesGroupReplicationConsistencyEnum Enum with underlying type: string
 type ConfigurationVariablesGroupReplicationConsistencyEnum string
 
@@ -392,6 +425,17 @@ func GetConfigurationVariablesGroupReplicationConsistencyEnumStringValues() []st
 	}
 }
 
+// GetMappingConfigurationVariablesGroupReplicationConsistencyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigurationVariablesGroupReplicationConsistencyEnum(val string) (ConfigurationVariablesGroupReplicationConsistencyEnum, bool) {
+	mappingConfigurationVariablesGroupReplicationConsistencyEnumIgnoreCase := make(map[string]ConfigurationVariablesGroupReplicationConsistencyEnum)
+	for k, v := range mappingConfigurationVariablesGroupReplicationConsistencyEnum {
+		mappingConfigurationVariablesGroupReplicationConsistencyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigurationVariablesGroupReplicationConsistencyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ConfigurationVariablesBinlogRowMetadataEnum Enum with underlying type: string
 type ConfigurationVariablesBinlogRowMetadataEnum string
 
@@ -421,4 +465,15 @@ func GetConfigurationVariablesBinlogRowMetadataEnumStringValues() []string {
 		"FULL",
 		"MINIMAL",
 	}
+}
+
+// GetMappingConfigurationVariablesBinlogRowMetadataEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigurationVariablesBinlogRowMetadataEnum(val string) (ConfigurationVariablesBinlogRowMetadataEnum, bool) {
+	mappingConfigurationVariablesBinlogRowMetadataEnumIgnoreCase := make(map[string]ConfigurationVariablesBinlogRowMetadataEnum)
+	for k, v := range mappingConfigurationVariablesBinlogRowMetadataEnum {
+		mappingConfigurationVariablesBinlogRowMetadataEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigurationVariablesBinlogRowMetadataEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

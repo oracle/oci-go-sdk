@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,13 +81,13 @@ func (request ListRefsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRefsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRefsRefTypeEnum[string(request.RefType)]; !ok && request.RefType != "" {
+	if _, ok := GetMappingListRefsRefTypeEnum(string(request.RefType)); !ok && request.RefType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RefType: %s. Supported values are: %s.", request.RefType, strings.Join(GetListRefsRefTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRefsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListRefsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRefsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRefsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListRefsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRefsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -152,6 +152,17 @@ func GetListRefsRefTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRefsRefTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRefsRefTypeEnum(val string) (ListRefsRefTypeEnum, bool) {
+	mappingListRefsRefTypeEnumIgnoreCase := make(map[string]ListRefsRefTypeEnum)
+	for k, v := range mappingListRefsRefTypeEnum {
+		mappingListRefsRefTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRefsRefTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRefsSortOrderEnum Enum with underlying type: string
 type ListRefsSortOrderEnum string
 
@@ -183,6 +194,17 @@ func GetListRefsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRefsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRefsSortOrderEnum(val string) (ListRefsSortOrderEnum, bool) {
+	mappingListRefsSortOrderEnumIgnoreCase := make(map[string]ListRefsSortOrderEnum)
+	for k, v := range mappingListRefsSortOrderEnum {
+		mappingListRefsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRefsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRefsSortByEnum Enum with underlying type: string
 type ListRefsSortByEnum string
 
@@ -212,4 +234,15 @@ func GetListRefsSortByEnumStringValues() []string {
 		"refType",
 		"refName",
 	}
+}
+
+// GetMappingListRefsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRefsSortByEnum(val string) (ListRefsSortByEnum, bool) {
+	mappingListRefsSortByEnumIgnoreCase := make(map[string]ListRefsSortByEnum)
+	for k, v := range mappingListRefsSortByEnum {
+		mappingListRefsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRefsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

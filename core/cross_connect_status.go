@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -64,13 +64,13 @@ func (m CrossConnectStatus) String() string {
 func (m CrossConnectStatus) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCrossConnectStatusInterfaceStateEnum[string(m.InterfaceState)]; !ok && m.InterfaceState != "" {
+	if _, ok := GetMappingCrossConnectStatusInterfaceStateEnum(string(m.InterfaceState)); !ok && m.InterfaceState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InterfaceState: %s. Supported values are: %s.", m.InterfaceState, strings.Join(GetCrossConnectStatusInterfaceStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCrossConnectStatusLightLevelIndicatorEnum[string(m.LightLevelIndicator)]; !ok && m.LightLevelIndicator != "" {
+	if _, ok := GetMappingCrossConnectStatusLightLevelIndicatorEnum(string(m.LightLevelIndicator)); !ok && m.LightLevelIndicator != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LightLevelIndicator: %s. Supported values are: %s.", m.LightLevelIndicator, strings.Join(GetCrossConnectStatusLightLevelIndicatorEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCrossConnectStatusEncryptionStatusEnum[string(m.EncryptionStatus)]; !ok && m.EncryptionStatus != "" {
+	if _, ok := GetMappingCrossConnectStatusEncryptionStatusEnum(string(m.EncryptionStatus)); !ok && m.EncryptionStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EncryptionStatus: %s. Supported values are: %s.", m.EncryptionStatus, strings.Join(GetCrossConnectStatusEncryptionStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -108,6 +108,17 @@ func GetCrossConnectStatusInterfaceStateEnumStringValues() []string {
 		"UP",
 		"DOWN",
 	}
+}
+
+// GetMappingCrossConnectStatusInterfaceStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCrossConnectStatusInterfaceStateEnum(val string) (CrossConnectStatusInterfaceStateEnum, bool) {
+	mappingCrossConnectStatusInterfaceStateEnumIgnoreCase := make(map[string]CrossConnectStatusInterfaceStateEnum)
+	for k, v := range mappingCrossConnectStatusInterfaceStateEnum {
+		mappingCrossConnectStatusInterfaceStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCrossConnectStatusInterfaceStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // CrossConnectStatusLightLevelIndicatorEnum Enum with underlying type: string
@@ -150,6 +161,17 @@ func GetCrossConnectStatusLightLevelIndicatorEnumStringValues() []string {
 	}
 }
 
+// GetMappingCrossConnectStatusLightLevelIndicatorEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCrossConnectStatusLightLevelIndicatorEnum(val string) (CrossConnectStatusLightLevelIndicatorEnum, bool) {
+	mappingCrossConnectStatusLightLevelIndicatorEnumIgnoreCase := make(map[string]CrossConnectStatusLightLevelIndicatorEnum)
+	for k, v := range mappingCrossConnectStatusLightLevelIndicatorEnum {
+		mappingCrossConnectStatusLightLevelIndicatorEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCrossConnectStatusLightLevelIndicatorEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CrossConnectStatusEncryptionStatusEnum Enum with underlying type: string
 type CrossConnectStatusEncryptionStatusEnum string
 
@@ -188,4 +210,15 @@ func GetCrossConnectStatusEncryptionStatusEnumStringValues() []string {
 		"CKN_MISMATCH",
 		"CAK_MISMATCH",
 	}
+}
+
+// GetMappingCrossConnectStatusEncryptionStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCrossConnectStatusEncryptionStatusEnum(val string) (CrossConnectStatusEncryptionStatusEnum, bool) {
+	mappingCrossConnectStatusEncryptionStatusEnumIgnoreCase := make(map[string]CrossConnectStatusEncryptionStatusEnum)
+	for k, v := range mappingCrossConnectStatusEncryptionStatusEnum {
+		mappingCrossConnectStatusEncryptionStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCrossConnectStatusEncryptionStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

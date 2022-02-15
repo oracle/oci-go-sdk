@@ -6,7 +6,7 @@ package budget
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,13 +81,13 @@ func (request ListAlertRulesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAlertRulesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAlertRulesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAlertRulesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAlertRulesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAlertRulesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAlertRulesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAlertRulesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAlertRulesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListAlertRulesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListAlertRulesLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -156,6 +156,17 @@ func GetListAlertRulesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAlertRulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertRulesSortOrderEnum(val string) (ListAlertRulesSortOrderEnum, bool) {
+	mappingListAlertRulesSortOrderEnumIgnoreCase := make(map[string]ListAlertRulesSortOrderEnum)
+	for k, v := range mappingListAlertRulesSortOrderEnum {
+		mappingListAlertRulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertRulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAlertRulesSortByEnum Enum with underlying type: string
 type ListAlertRulesSortByEnum string
 
@@ -187,6 +198,17 @@ func GetListAlertRulesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAlertRulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertRulesSortByEnum(val string) (ListAlertRulesSortByEnum, bool) {
+	mappingListAlertRulesSortByEnumIgnoreCase := make(map[string]ListAlertRulesSortByEnum)
+	for k, v := range mappingListAlertRulesSortByEnum {
+		mappingListAlertRulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertRulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAlertRulesLifecycleStateEnum Enum with underlying type: string
 type ListAlertRulesLifecycleStateEnum string
 
@@ -216,4 +238,15 @@ func GetListAlertRulesLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"INACTIVE",
 	}
+}
+
+// GetMappingListAlertRulesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAlertRulesLifecycleStateEnum(val string) (ListAlertRulesLifecycleStateEnum, bool) {
+	mappingListAlertRulesLifecycleStateEnumIgnoreCase := make(map[string]ListAlertRulesLifecycleStateEnum)
+	for k, v := range mappingListAlertRulesLifecycleStateEnum {
+		mappingListAlertRulesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAlertRulesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

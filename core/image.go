@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -105,14 +105,14 @@ func (m Image) String() string {
 // Not recommended for calling this function directly
 func (m Image) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingImageLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingImageLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetImageLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingImageLaunchModeEnum[string(m.LaunchMode)]; !ok && m.LaunchMode != "" {
+	if _, ok := GetMappingImageLaunchModeEnum(string(m.LaunchMode)); !ok && m.LaunchMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LaunchMode: %s. Supported values are: %s.", m.LaunchMode, strings.Join(GetImageLaunchModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingImageListingTypeEnum[string(m.ListingType)]; !ok && m.ListingType != "" {
+	if _, ok := GetMappingImageListingTypeEnum(string(m.ListingType)); !ok && m.ListingType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ListingType: %s. Supported values are: %s.", m.ListingType, strings.Join(GetImageListingTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,6 +158,17 @@ func GetImageLaunchModeEnumStringValues() []string {
 	}
 }
 
+// GetMappingImageLaunchModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImageLaunchModeEnum(val string) (ImageLaunchModeEnum, bool) {
+	mappingImageLaunchModeEnumIgnoreCase := make(map[string]ImageLaunchModeEnum)
+	for k, v := range mappingImageLaunchModeEnum {
+		mappingImageLaunchModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImageLaunchModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ImageLifecycleStateEnum Enum with underlying type: string
 type ImageLifecycleStateEnum string
 
@@ -201,6 +212,17 @@ func GetImageLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingImageLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImageLifecycleStateEnum(val string) (ImageLifecycleStateEnum, bool) {
+	mappingImageLifecycleStateEnumIgnoreCase := make(map[string]ImageLifecycleStateEnum)
+	for k, v := range mappingImageLifecycleStateEnum {
+		mappingImageLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImageLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ImageListingTypeEnum Enum with underlying type: string
 type ImageListingTypeEnum string
 
@@ -230,4 +252,15 @@ func GetImageListingTypeEnumStringValues() []string {
 		"COMMUNITY",
 		"NONE",
 	}
+}
+
+// GetMappingImageListingTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImageListingTypeEnum(val string) (ImageListingTypeEnum, bool) {
+	mappingImageListingTypeEnumIgnoreCase := make(map[string]ImageListingTypeEnum)
+	for k, v := range mappingImageListingTypeEnum {
+		mappingImageListingTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImageListingTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

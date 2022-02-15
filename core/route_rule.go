@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -70,7 +70,7 @@ func (m RouteRule) String() string {
 func (m RouteRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingRouteRuleDestinationTypeEnum[string(m.DestinationType)]; !ok && m.DestinationType != "" {
+	if _, ok := GetMappingRouteRuleDestinationTypeEnum(string(m.DestinationType)); !ok && m.DestinationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DestinationType: %s. Supported values are: %s.", m.DestinationType, strings.Join(GetRouteRuleDestinationTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -108,4 +108,15 @@ func GetRouteRuleDestinationTypeEnumStringValues() []string {
 		"CIDR_BLOCK",
 		"SERVICE_CIDR_BLOCK",
 	}
+}
+
+// GetMappingRouteRuleDestinationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRouteRuleDestinationTypeEnum(val string) (RouteRuleDestinationTypeEnum, bool) {
+	mappingRouteRuleDestinationTypeEnumIgnoreCase := make(map[string]RouteRuleDestinationTypeEnum)
+	for k, v := range mappingRouteRuleDestinationTypeEnum {
+		mappingRouteRuleDestinationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRouteRuleDestinationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

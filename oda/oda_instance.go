@@ -11,7 +11,7 @@ package oda
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -74,14 +74,14 @@ func (m OdaInstance) String() string {
 // Not recommended for calling this function directly
 func (m OdaInstance) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingOdaInstanceShapeNameEnum[string(m.ShapeName)]; !ok && m.ShapeName != "" {
+	if _, ok := GetMappingOdaInstanceShapeNameEnum(string(m.ShapeName)); !ok && m.ShapeName != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ShapeName: %s. Supported values are: %s.", m.ShapeName, strings.Join(GetOdaInstanceShapeNameEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingOdaInstanceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingOdaInstanceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetOdaInstanceLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingOdaInstanceLifecycleSubStateEnum[string(m.LifecycleSubState)]; !ok && m.LifecycleSubState != "" {
+	if _, ok := GetMappingOdaInstanceLifecycleSubStateEnum(string(m.LifecycleSubState)); !ok && m.LifecycleSubState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleSubState: %s. Supported values are: %s.", m.LifecycleSubState, strings.Join(GetOdaInstanceLifecycleSubStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -119,6 +119,17 @@ func GetOdaInstanceShapeNameEnumStringValues() []string {
 		"DEVELOPMENT",
 		"PRODUCTION",
 	}
+}
+
+// GetMappingOdaInstanceShapeNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOdaInstanceShapeNameEnum(val string) (OdaInstanceShapeNameEnum, bool) {
+	mappingOdaInstanceShapeNameEnumIgnoreCase := make(map[string]OdaInstanceShapeNameEnum)
+	for k, v := range mappingOdaInstanceShapeNameEnum {
+		mappingOdaInstanceShapeNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOdaInstanceShapeNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // OdaInstanceLifecycleStateEnum Enum with underlying type: string
@@ -165,6 +176,17 @@ func GetOdaInstanceLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingOdaInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOdaInstanceLifecycleStateEnum(val string) (OdaInstanceLifecycleStateEnum, bool) {
+	mappingOdaInstanceLifecycleStateEnumIgnoreCase := make(map[string]OdaInstanceLifecycleStateEnum)
+	for k, v := range mappingOdaInstanceLifecycleStateEnum {
+		mappingOdaInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOdaInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // OdaInstanceLifecycleSubStateEnum Enum with underlying type: string
@@ -217,4 +239,15 @@ func GetOdaInstanceLifecycleSubStateEnumStringValues() []string {
 		"PURGING",
 		"QUEUED",
 	}
+}
+
+// GetMappingOdaInstanceLifecycleSubStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOdaInstanceLifecycleSubStateEnum(val string) (OdaInstanceLifecycleSubStateEnum, bool) {
+	mappingOdaInstanceLifecycleSubStateEnumIgnoreCase := make(map[string]OdaInstanceLifecycleSubStateEnum)
+	for k, v := range mappingOdaInstanceLifecycleSubStateEnum {
+		mappingOdaInstanceLifecycleSubStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOdaInstanceLifecycleSubStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

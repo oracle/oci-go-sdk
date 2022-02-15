@@ -13,7 +13,7 @@ package healthchecks
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -68,7 +68,7 @@ func (m HttpMonitorSummary) String() string {
 func (m HttpMonitorSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingHttpProbeProtocolEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingHttpProbeProtocolEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetHttpProbeProtocolEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

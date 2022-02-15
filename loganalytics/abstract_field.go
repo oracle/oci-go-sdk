@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -182,7 +182,7 @@ func (m abstractfield) String() string {
 func (m abstractfield) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingValueTypeEnum[string(m.ValueType)]; !ok && m.ValueType != "" {
+	if _, ok := GetMappingValueTypeEnum(string(m.ValueType)); !ok && m.ValueType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ValueType: %s. Supported values are: %s.", m.ValueType, strings.Join(GetValueTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -226,4 +226,15 @@ func GetAbstractFieldNameEnumStringValues() []string {
 		"FUNCTION",
 		"SORT",
 	}
+}
+
+// GetMappingAbstractFieldNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractFieldNameEnum(val string) (AbstractFieldNameEnum, bool) {
+	mappingAbstractFieldNameEnumIgnoreCase := make(map[string]AbstractFieldNameEnum)
+	for k, v := range mappingAbstractFieldNameEnum {
+		mappingAbstractFieldNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractFieldNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package logging
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -255,4 +255,15 @@ func GetUnifiedAgentParserParserTypeEnumStringValues() []string {
 		"GROK",
 		"MULTILINE_GROK",
 	}
+}
+
+// GetMappingUnifiedAgentParserParserTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUnifiedAgentParserParserTypeEnum(val string) (UnifiedAgentParserParserTypeEnum, bool) {
+	mappingUnifiedAgentParserParserTypeEnumIgnoreCase := make(map[string]UnifiedAgentParserParserTypeEnum)
+	for k, v := range mappingUnifiedAgentParserParserTypeEnum {
+		mappingUnifiedAgentParserParserTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUnifiedAgentParserParserTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package analytics
 
+import (
+	"strings"
+)
+
 // WorkRequestResourceTypeEnum Enum with underlying type: string
 type WorkRequestResourceTypeEnum string
 
@@ -35,4 +39,15 @@ func GetWorkRequestResourceTypeEnumStringValues() []string {
 	return []string{
 		"ANALYTICS_INSTANCE",
 	}
+}
+
+// GetMappingWorkRequestResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestResourceTypeEnum(val string) (WorkRequestResourceTypeEnum, bool) {
+	mappingWorkRequestResourceTypeEnumIgnoreCase := make(map[string]WorkRequestResourceTypeEnum)
+	for k, v := range mappingWorkRequestResourceTypeEnum {
+		mappingWorkRequestResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

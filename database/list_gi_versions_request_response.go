@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -73,7 +73,7 @@ func (request ListGiVersionsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListGiVersionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListGiVersionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListGiVersionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListGiVersionsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -140,4 +140,15 @@ func GetListGiVersionsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListGiVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListGiVersionsSortOrderEnum(val string) (ListGiVersionsSortOrderEnum, bool) {
+	mappingListGiVersionsSortOrderEnumIgnoreCase := make(map[string]ListGiVersionsSortOrderEnum)
+	for k, v := range mappingListGiVersionsSortOrderEnum {
+		mappingListGiVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListGiVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

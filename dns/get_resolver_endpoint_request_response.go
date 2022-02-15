@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -80,7 +80,7 @@ func (request GetResolverEndpointRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetResolverEndpointRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetResolverEndpointScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingGetResolverEndpointScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetGetResolverEndpointScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -152,4 +152,15 @@ func GetGetResolverEndpointScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingGetResolverEndpointScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetResolverEndpointScopeEnum(val string) (GetResolverEndpointScopeEnum, bool) {
+	mappingGetResolverEndpointScopeEnumIgnoreCase := make(map[string]GetResolverEndpointScopeEnum)
+	for k, v := range mappingGetResolverEndpointScopeEnum {
+		mappingGetResolverEndpointScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetResolverEndpointScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

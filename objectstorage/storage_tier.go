@@ -11,6 +11,10 @@
 
 package objectstorage
 
+import (
+	"strings"
+)
+
 // StorageTierEnum Enum with underlying type: string
 type StorageTierEnum string
 
@@ -43,4 +47,15 @@ func GetStorageTierEnumStringValues() []string {
 		"InfrequentAccess",
 		"Archive",
 	}
+}
+
+// GetMappingStorageTierEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStorageTierEnum(val string) (StorageTierEnum, bool) {
+	mappingStorageTierEnumIgnoreCase := make(map[string]StorageTierEnum)
+	for k, v := range mappingStorageTierEnum {
+		mappingStorageTierEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStorageTierEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

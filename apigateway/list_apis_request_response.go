@@ -6,7 +6,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -83,13 +83,13 @@ func (request ListApisRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListApisRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingApiSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingApiSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetApiSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListApisSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListApisSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListApisSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListApisSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListApisSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListApisSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -165,6 +165,17 @@ func GetListApisSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListApisSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListApisSortOrderEnum(val string) (ListApisSortOrderEnum, bool) {
+	mappingListApisSortOrderEnumIgnoreCase := make(map[string]ListApisSortOrderEnum)
+	for k, v := range mappingListApisSortOrderEnum {
+		mappingListApisSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListApisSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListApisSortByEnum Enum with underlying type: string
 type ListApisSortByEnum string
 
@@ -194,4 +205,15 @@ func GetListApisSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListApisSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListApisSortByEnum(val string) (ListApisSortByEnum, bool) {
+	mappingListApisSortByEnumIgnoreCase := make(map[string]ListApisSortByEnum)
+	for k, v := range mappingListApisSortByEnum {
+		mappingListApisSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListApisSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

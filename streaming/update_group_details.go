@@ -11,7 +11,7 @@ package streaming
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -35,7 +35,7 @@ func (m UpdateGroupDetails) String() string {
 func (m UpdateGroupDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateGroupDetailsTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingUpdateGroupDetailsTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetUpdateGroupDetailsTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -76,4 +76,15 @@ func GetUpdateGroupDetailsTypeEnumStringValues() []string {
 		"LATEST",
 		"TRIM_HORIZON",
 	}
+}
+
+// GetMappingUpdateGroupDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateGroupDetailsTypeEnum(val string) (UpdateGroupDetailsTypeEnum, bool) {
+	mappingUpdateGroupDetailsTypeEnumIgnoreCase := make(map[string]UpdateGroupDetailsTypeEnum)
+	for k, v := range mappingUpdateGroupDetailsTypeEnum {
+		mappingUpdateGroupDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateGroupDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

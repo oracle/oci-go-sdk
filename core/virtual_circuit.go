@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -165,34 +165,34 @@ func (m VirtualCircuit) String() string {
 func (m VirtualCircuit) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingVirtualCircuitBgpManagementEnum[string(m.BgpManagement)]; !ok && m.BgpManagement != "" {
+	if _, ok := GetMappingVirtualCircuitBgpManagementEnum(string(m.BgpManagement)); !ok && m.BgpManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BgpManagement: %s. Supported values are: %s.", m.BgpManagement, strings.Join(GetVirtualCircuitBgpManagementEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVirtualCircuitBgpSessionStateEnum[string(m.BgpSessionState)]; !ok && m.BgpSessionState != "" {
+	if _, ok := GetMappingVirtualCircuitBgpSessionStateEnum(string(m.BgpSessionState)); !ok && m.BgpSessionState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BgpSessionState: %s. Supported values are: %s.", m.BgpSessionState, strings.Join(GetVirtualCircuitBgpSessionStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVirtualCircuitBgpIpv6SessionStateEnum[string(m.BgpIpv6SessionState)]; !ok && m.BgpIpv6SessionState != "" {
+	if _, ok := GetMappingVirtualCircuitBgpIpv6SessionStateEnum(string(m.BgpIpv6SessionState)); !ok && m.BgpIpv6SessionState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BgpIpv6SessionState: %s. Supported values are: %s.", m.BgpIpv6SessionState, strings.Join(GetVirtualCircuitBgpIpv6SessionStateEnumStringValues(), ",")))
 	}
 	for _, val := range m.RoutingPolicy {
-		if _, ok := mappingVirtualCircuitRoutingPolicyEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingVirtualCircuitRoutingPolicyEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RoutingPolicy: %s. Supported values are: %s.", val, strings.Join(GetVirtualCircuitRoutingPolicyEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingVirtualCircuitLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVirtualCircuitLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVirtualCircuitLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVirtualCircuitProviderStateEnum[string(m.ProviderState)]; !ok && m.ProviderState != "" {
+	if _, ok := GetMappingVirtualCircuitProviderStateEnum(string(m.ProviderState)); !ok && m.ProviderState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProviderState: %s. Supported values are: %s.", m.ProviderState, strings.Join(GetVirtualCircuitProviderStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVirtualCircuitServiceTypeEnum[string(m.ServiceType)]; !ok && m.ServiceType != "" {
+	if _, ok := GetMappingVirtualCircuitServiceTypeEnum(string(m.ServiceType)); !ok && m.ServiceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ServiceType: %s. Supported values are: %s.", m.ServiceType, strings.Join(GetVirtualCircuitServiceTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVirtualCircuitTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingVirtualCircuitTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetVirtualCircuitTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVirtualCircuitIpMtuEnum[string(m.IpMtu)]; !ok && m.IpMtu != "" {
+	if _, ok := GetMappingVirtualCircuitIpMtuEnum(string(m.IpMtu)); !ok && m.IpMtu != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IpMtu: %s. Supported values are: %s.", m.IpMtu, strings.Join(GetVirtualCircuitIpMtuEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -235,6 +235,17 @@ func GetVirtualCircuitBgpManagementEnumStringValues() []string {
 	}
 }
 
+// GetMappingVirtualCircuitBgpManagementEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVirtualCircuitBgpManagementEnum(val string) (VirtualCircuitBgpManagementEnum, bool) {
+	mappingVirtualCircuitBgpManagementEnumIgnoreCase := make(map[string]VirtualCircuitBgpManagementEnum)
+	for k, v := range mappingVirtualCircuitBgpManagementEnum {
+		mappingVirtualCircuitBgpManagementEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVirtualCircuitBgpManagementEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VirtualCircuitBgpSessionStateEnum Enum with underlying type: string
 type VirtualCircuitBgpSessionStateEnum string
 
@@ -266,6 +277,17 @@ func GetVirtualCircuitBgpSessionStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingVirtualCircuitBgpSessionStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVirtualCircuitBgpSessionStateEnum(val string) (VirtualCircuitBgpSessionStateEnum, bool) {
+	mappingVirtualCircuitBgpSessionStateEnumIgnoreCase := make(map[string]VirtualCircuitBgpSessionStateEnum)
+	for k, v := range mappingVirtualCircuitBgpSessionStateEnum {
+		mappingVirtualCircuitBgpSessionStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVirtualCircuitBgpSessionStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VirtualCircuitBgpIpv6SessionStateEnum Enum with underlying type: string
 type VirtualCircuitBgpIpv6SessionStateEnum string
 
@@ -295,6 +317,17 @@ func GetVirtualCircuitBgpIpv6SessionStateEnumStringValues() []string {
 		"UP",
 		"DOWN",
 	}
+}
+
+// GetMappingVirtualCircuitBgpIpv6SessionStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVirtualCircuitBgpIpv6SessionStateEnum(val string) (VirtualCircuitBgpIpv6SessionStateEnum, bool) {
+	mappingVirtualCircuitBgpIpv6SessionStateEnumIgnoreCase := make(map[string]VirtualCircuitBgpIpv6SessionStateEnum)
+	for k, v := range mappingVirtualCircuitBgpIpv6SessionStateEnum {
+		mappingVirtualCircuitBgpIpv6SessionStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVirtualCircuitBgpIpv6SessionStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // VirtualCircuitRoutingPolicyEnum Enum with underlying type: string
@@ -332,6 +365,17 @@ func GetVirtualCircuitRoutingPolicyEnumStringValues() []string {
 		"MARKET_LEVEL",
 		"GLOBAL",
 	}
+}
+
+// GetMappingVirtualCircuitRoutingPolicyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVirtualCircuitRoutingPolicyEnum(val string) (VirtualCircuitRoutingPolicyEnum, bool) {
+	mappingVirtualCircuitRoutingPolicyEnumIgnoreCase := make(map[string]VirtualCircuitRoutingPolicyEnum)
+	for k, v := range mappingVirtualCircuitRoutingPolicyEnum {
+		mappingVirtualCircuitRoutingPolicyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVirtualCircuitRoutingPolicyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // VirtualCircuitLifecycleStateEnum Enum with underlying type: string
@@ -383,6 +427,17 @@ func GetVirtualCircuitLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingVirtualCircuitLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVirtualCircuitLifecycleStateEnum(val string) (VirtualCircuitLifecycleStateEnum, bool) {
+	mappingVirtualCircuitLifecycleStateEnumIgnoreCase := make(map[string]VirtualCircuitLifecycleStateEnum)
+	for k, v := range mappingVirtualCircuitLifecycleStateEnum {
+		mappingVirtualCircuitLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVirtualCircuitLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VirtualCircuitProviderStateEnum Enum with underlying type: string
 type VirtualCircuitProviderStateEnum string
 
@@ -412,6 +467,17 @@ func GetVirtualCircuitProviderStateEnumStringValues() []string {
 		"ACTIVE",
 		"INACTIVE",
 	}
+}
+
+// GetMappingVirtualCircuitProviderStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVirtualCircuitProviderStateEnum(val string) (VirtualCircuitProviderStateEnum, bool) {
+	mappingVirtualCircuitProviderStateEnumIgnoreCase := make(map[string]VirtualCircuitProviderStateEnum)
+	for k, v := range mappingVirtualCircuitProviderStateEnum {
+		mappingVirtualCircuitProviderStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVirtualCircuitProviderStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // VirtualCircuitServiceTypeEnum Enum with underlying type: string
@@ -448,6 +514,17 @@ func GetVirtualCircuitServiceTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingVirtualCircuitServiceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVirtualCircuitServiceTypeEnum(val string) (VirtualCircuitServiceTypeEnum, bool) {
+	mappingVirtualCircuitServiceTypeEnumIgnoreCase := make(map[string]VirtualCircuitServiceTypeEnum)
+	for k, v := range mappingVirtualCircuitServiceTypeEnum {
+		mappingVirtualCircuitServiceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVirtualCircuitServiceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VirtualCircuitTypeEnum Enum with underlying type: string
 type VirtualCircuitTypeEnum string
 
@@ -477,4 +554,15 @@ func GetVirtualCircuitTypeEnumStringValues() []string {
 		"PUBLIC",
 		"PRIVATE",
 	}
+}
+
+// GetMappingVirtualCircuitTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVirtualCircuitTypeEnum(val string) (VirtualCircuitTypeEnum, bool) {
+	mappingVirtualCircuitTypeEnumIgnoreCase := make(map[string]VirtualCircuitTypeEnum)
+	for k, v := range mappingVirtualCircuitTypeEnum {
+		mappingVirtualCircuitTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVirtualCircuitTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

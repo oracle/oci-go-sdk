@@ -12,7 +12,7 @@ package waas
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -90,20 +90,20 @@ func (m AccessRule) String() string {
 // Not recommended for calling this function directly
 func (m AccessRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAccessRuleActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingAccessRuleActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetAccessRuleActionEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingAccessRuleBlockActionEnum[string(m.BlockAction)]; !ok && m.BlockAction != "" {
+	if _, ok := GetMappingAccessRuleBlockActionEnum(string(m.BlockAction)); !ok && m.BlockAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BlockAction: %s. Supported values are: %s.", m.BlockAction, strings.Join(GetAccessRuleBlockActionEnumStringValues(), ",")))
 	}
 	for _, val := range m.BypassChallenges {
-		if _, ok := mappingAccessRuleBypassChallengesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingAccessRuleBypassChallengesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BypassChallenges: %s. Supported values are: %s.", val, strings.Join(GetAccessRuleBypassChallengesEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingAccessRuleRedirectResponseCodeEnum[string(m.RedirectResponseCode)]; !ok && m.RedirectResponseCode != "" {
+	if _, ok := GetMappingAccessRuleRedirectResponseCodeEnum(string(m.RedirectResponseCode)); !ok && m.RedirectResponseCode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RedirectResponseCode: %s. Supported values are: %s.", m.RedirectResponseCode, strings.Join(GetAccessRuleRedirectResponseCodeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -233,6 +233,17 @@ func GetAccessRuleActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingAccessRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAccessRuleActionEnum(val string) (AccessRuleActionEnum, bool) {
+	mappingAccessRuleActionEnumIgnoreCase := make(map[string]AccessRuleActionEnum)
+	for k, v := range mappingAccessRuleActionEnum {
+		mappingAccessRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAccessRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AccessRuleBlockActionEnum Enum with underlying type: string
 type AccessRuleBlockActionEnum string
 
@@ -262,6 +273,17 @@ func GetAccessRuleBlockActionEnumStringValues() []string {
 		"SET_RESPONSE_CODE",
 		"SHOW_ERROR_PAGE",
 	}
+}
+
+// GetMappingAccessRuleBlockActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAccessRuleBlockActionEnum(val string) (AccessRuleBlockActionEnum, bool) {
+	mappingAccessRuleBlockActionEnumIgnoreCase := make(map[string]AccessRuleBlockActionEnum)
+	for k, v := range mappingAccessRuleBlockActionEnum {
+		mappingAccessRuleBlockActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAccessRuleBlockActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AccessRuleBypassChallengesEnum Enum with underlying type: string
@@ -301,6 +323,17 @@ func GetAccessRuleBypassChallengesEnumStringValues() []string {
 	}
 }
 
+// GetMappingAccessRuleBypassChallengesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAccessRuleBypassChallengesEnum(val string) (AccessRuleBypassChallengesEnum, bool) {
+	mappingAccessRuleBypassChallengesEnumIgnoreCase := make(map[string]AccessRuleBypassChallengesEnum)
+	for k, v := range mappingAccessRuleBypassChallengesEnum {
+		mappingAccessRuleBypassChallengesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAccessRuleBypassChallengesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AccessRuleRedirectResponseCodeEnum Enum with underlying type: string
 type AccessRuleRedirectResponseCodeEnum string
 
@@ -330,4 +363,15 @@ func GetAccessRuleRedirectResponseCodeEnumStringValues() []string {
 		"MOVED_PERMANENTLY",
 		"FOUND",
 	}
+}
+
+// GetMappingAccessRuleRedirectResponseCodeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAccessRuleRedirectResponseCodeEnum(val string) (AccessRuleRedirectResponseCodeEnum, bool) {
+	mappingAccessRuleRedirectResponseCodeEnumIgnoreCase := make(map[string]AccessRuleRedirectResponseCodeEnum)
+	for k, v := range mappingAccessRuleRedirectResponseCodeEnum {
+		mappingAccessRuleRedirectResponseCodeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAccessRuleRedirectResponseCodeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

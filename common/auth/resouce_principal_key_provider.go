@@ -7,9 +7,10 @@ import (
 	"crypto/rsa"
 	"errors"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
 	"os"
 	"path"
+
+	"github.com/oracle/oci-go-sdk/v58/common"
 )
 
 const (

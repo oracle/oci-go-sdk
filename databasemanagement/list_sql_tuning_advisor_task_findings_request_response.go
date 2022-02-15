@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -95,16 +95,16 @@ func (request ListSqlTuningAdvisorTaskFindingsRequest) RetryPolicy() *common.Ret
 // Not recommended for calling this function directly
 func (request ListSqlTuningAdvisorTaskFindingsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSqlTuningAdvisorTaskFindingsSearchPeriodEnum[string(request.SearchPeriod)]; !ok && request.SearchPeriod != "" {
+	if _, ok := GetMappingListSqlTuningAdvisorTaskFindingsSearchPeriodEnum(string(request.SearchPeriod)); !ok && request.SearchPeriod != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SearchPeriod: %s. Supported values are: %s.", request.SearchPeriod, strings.Join(GetListSqlTuningAdvisorTaskFindingsSearchPeriodEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSqlTuningAdvisorTaskFindingsFindingFilterEnum[string(request.FindingFilter)]; !ok && request.FindingFilter != "" {
+	if _, ok := GetMappingListSqlTuningAdvisorTaskFindingsFindingFilterEnum(string(request.FindingFilter)); !ok && request.FindingFilter != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FindingFilter: %s. Supported values are: %s.", request.FindingFilter, strings.Join(GetListSqlTuningAdvisorTaskFindingsFindingFilterEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSqlTuningAdvisorTaskFindingsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSqlTuningAdvisorTaskFindingsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSqlTuningAdvisorTaskFindingsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSqlTuningAdvisorTaskFindingsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSqlTuningAdvisorTaskFindingsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSqlTuningAdvisorTaskFindingsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -181,6 +181,17 @@ func GetListSqlTuningAdvisorTaskFindingsSearchPeriodEnumStringValues() []string 
 	}
 }
 
+// GetMappingListSqlTuningAdvisorTaskFindingsSearchPeriodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSqlTuningAdvisorTaskFindingsSearchPeriodEnum(val string) (ListSqlTuningAdvisorTaskFindingsSearchPeriodEnum, bool) {
+	mappingListSqlTuningAdvisorTaskFindingsSearchPeriodEnumIgnoreCase := make(map[string]ListSqlTuningAdvisorTaskFindingsSearchPeriodEnum)
+	for k, v := range mappingListSqlTuningAdvisorTaskFindingsSearchPeriodEnum {
+		mappingListSqlTuningAdvisorTaskFindingsSearchPeriodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSqlTuningAdvisorTaskFindingsSearchPeriodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSqlTuningAdvisorTaskFindingsFindingFilterEnum Enum with underlying type: string
 type ListSqlTuningAdvisorTaskFindingsFindingFilterEnum string
 
@@ -237,6 +248,17 @@ func GetListSqlTuningAdvisorTaskFindingsFindingFilterEnumStringValues() []string
 		"AUTO_PROFILES",
 		"OTHER_PROFILES",
 	}
+}
+
+// GetMappingListSqlTuningAdvisorTaskFindingsFindingFilterEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSqlTuningAdvisorTaskFindingsFindingFilterEnum(val string) (ListSqlTuningAdvisorTaskFindingsFindingFilterEnum, bool) {
+	mappingListSqlTuningAdvisorTaskFindingsFindingFilterEnumIgnoreCase := make(map[string]ListSqlTuningAdvisorTaskFindingsFindingFilterEnum)
+	for k, v := range mappingListSqlTuningAdvisorTaskFindingsFindingFilterEnum {
+		mappingListSqlTuningAdvisorTaskFindingsFindingFilterEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSqlTuningAdvisorTaskFindingsFindingFilterEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListSqlTuningAdvisorTaskFindingsSortByEnum Enum with underlying type: string
@@ -303,6 +325,17 @@ func GetListSqlTuningAdvisorTaskFindingsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSqlTuningAdvisorTaskFindingsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSqlTuningAdvisorTaskFindingsSortByEnum(val string) (ListSqlTuningAdvisorTaskFindingsSortByEnum, bool) {
+	mappingListSqlTuningAdvisorTaskFindingsSortByEnumIgnoreCase := make(map[string]ListSqlTuningAdvisorTaskFindingsSortByEnum)
+	for k, v := range mappingListSqlTuningAdvisorTaskFindingsSortByEnum {
+		mappingListSqlTuningAdvisorTaskFindingsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSqlTuningAdvisorTaskFindingsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSqlTuningAdvisorTaskFindingsSortOrderEnum Enum with underlying type: string
 type ListSqlTuningAdvisorTaskFindingsSortOrderEnum string
 
@@ -332,4 +365,15 @@ func GetListSqlTuningAdvisorTaskFindingsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListSqlTuningAdvisorTaskFindingsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSqlTuningAdvisorTaskFindingsSortOrderEnum(val string) (ListSqlTuningAdvisorTaskFindingsSortOrderEnum, bool) {
+	mappingListSqlTuningAdvisorTaskFindingsSortOrderEnumIgnoreCase := make(map[string]ListSqlTuningAdvisorTaskFindingsSortOrderEnum)
+	for k, v := range mappingListSqlTuningAdvisorTaskFindingsSortOrderEnum {
+		mappingListSqlTuningAdvisorTaskFindingsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSqlTuningAdvisorTaskFindingsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

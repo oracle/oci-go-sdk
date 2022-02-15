@@ -12,7 +12,7 @@ package apmsynthetics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -76,7 +76,7 @@ func (m UpdateMonitorDetails) String() string {
 func (m UpdateMonitorDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingMonitorStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingMonitorStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetMonitorStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

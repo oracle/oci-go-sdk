@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -83,7 +83,7 @@ func (m DbServer) String() string {
 func (m DbServer) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDbServerLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDbServerLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDbServerLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -133,4 +133,15 @@ func GetDbServerLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"MAINTENANCE_IN_PROGRESS",
 	}
+}
+
+// GetMappingDbServerLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbServerLifecycleStateEnum(val string) (DbServerLifecycleStateEnum, bool) {
+	mappingDbServerLifecycleStateEnumIgnoreCase := make(map[string]DbServerLifecycleStateEnum)
+	for k, v := range mappingDbServerLifecycleStateEnum {
+		mappingDbServerLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbServerLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

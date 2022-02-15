@@ -9,6 +9,10 @@
 
 package budget
 
+import (
+	"strings"
+)
+
 // AlertTypeEnum Enum with underlying type: string
 type AlertTypeEnum string
 
@@ -38,4 +42,15 @@ func GetAlertTypeEnumStringValues() []string {
 		"ACTUAL",
 		"FORECAST",
 	}
+}
+
+// GetMappingAlertTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAlertTypeEnum(val string) (AlertTypeEnum, bool) {
+	mappingAlertTypeEnumIgnoreCase := make(map[string]AlertTypeEnum)
+	for k, v := range mappingAlertTypeEnum {
+		mappingAlertTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAlertTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

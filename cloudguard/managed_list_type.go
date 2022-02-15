@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ManagedListTypeEnum Enum with underlying type: string
 type ManagedListTypeEnum string
 
@@ -68,4 +72,15 @@ func GetManagedListTypeEnumStringValues() []string {
 		"TAGS",
 		"GENERIC",
 	}
+}
+
+// GetMappingManagedListTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingManagedListTypeEnum(val string) (ManagedListTypeEnum, bool) {
+	mappingManagedListTypeEnumIgnoreCase := make(map[string]ManagedListTypeEnum)
+	for k, v := range mappingManagedListTypeEnum {
+		mappingManagedListTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingManagedListTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

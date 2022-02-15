@@ -15,7 +15,7 @@ package email
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -47,7 +47,7 @@ func (m WorkRequestResource) String() string {
 // Not recommended for calling this function directly
 func (m WorkRequestResource) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingActionTypeEnum[string(m.ActionType)]; !ok && m.ActionType != "" {
+	if _, ok := GetMappingActionTypeEnum(string(m.ActionType)); !ok && m.ActionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ActionType: %s. Supported values are: %s.", m.ActionType, strings.Join(GetActionTypeEnumStringValues(), ",")))
 	}
 

@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -103,4 +103,15 @@ func GetUpdateResolverEndpointDetailsEndpointTypeEnumStringValues() []string {
 	return []string{
 		"VNIC",
 	}
+}
+
+// GetMappingUpdateResolverEndpointDetailsEndpointTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateResolverEndpointDetailsEndpointTypeEnum(val string) (UpdateResolverEndpointDetailsEndpointTypeEnum, bool) {
+	mappingUpdateResolverEndpointDetailsEndpointTypeEnumIgnoreCase := make(map[string]UpdateResolverEndpointDetailsEndpointTypeEnum)
+	for k, v := range mappingUpdateResolverEndpointDetailsEndpointTypeEnum {
+		mappingUpdateResolverEndpointDetailsEndpointTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateResolverEndpointDetailsEndpointTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -86,7 +86,7 @@ func (m CloudExadataInfrastructure) String() string {
 // Not recommended for calling this function directly
 func (m CloudExadataInfrastructure) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCloudExadataInfrastructureLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingCloudExadataInfrastructureLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetCloudExadataInfrastructureLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -140,4 +140,15 @@ func GetCloudExadataInfrastructureLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"MAINTENANCE_IN_PROGRESS",
 	}
+}
+
+// GetMappingCloudExadataInfrastructureLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCloudExadataInfrastructureLifecycleStateEnum(val string) (CloudExadataInfrastructureLifecycleStateEnum, bool) {
+	mappingCloudExadataInfrastructureLifecycleStateEnumIgnoreCase := make(map[string]CloudExadataInfrastructureLifecycleStateEnum)
+	for k, v := range mappingCloudExadataInfrastructureLifecycleStateEnum {
+		mappingCloudExadataInfrastructureLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCloudExadataInfrastructureLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

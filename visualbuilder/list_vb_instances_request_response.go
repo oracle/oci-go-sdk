@@ -6,7 +6,7 @@ package visualbuilder
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,13 +81,13 @@ func (request ListVbInstancesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListVbInstancesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListVbInstancesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListVbInstancesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListVbInstancesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListVbInstancesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListVbInstancesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListVbInstancesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListVbInstancesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListVbInstancesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListVbInstancesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -172,6 +172,17 @@ func GetListVbInstancesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListVbInstancesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVbInstancesLifecycleStateEnum(val string) (ListVbInstancesLifecycleStateEnum, bool) {
+	mappingListVbInstancesLifecycleStateEnumIgnoreCase := make(map[string]ListVbInstancesLifecycleStateEnum)
+	for k, v := range mappingListVbInstancesLifecycleStateEnum {
+		mappingListVbInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVbInstancesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListVbInstancesSortOrderEnum Enum with underlying type: string
 type ListVbInstancesSortOrderEnum string
 
@@ -203,6 +214,17 @@ func GetListVbInstancesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListVbInstancesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVbInstancesSortOrderEnum(val string) (ListVbInstancesSortOrderEnum, bool) {
+	mappingListVbInstancesSortOrderEnumIgnoreCase := make(map[string]ListVbInstancesSortOrderEnum)
+	for k, v := range mappingListVbInstancesSortOrderEnum {
+		mappingListVbInstancesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVbInstancesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListVbInstancesSortByEnum Enum with underlying type: string
 type ListVbInstancesSortByEnum string
 
@@ -232,4 +254,15 @@ func GetListVbInstancesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListVbInstancesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVbInstancesSortByEnum(val string) (ListVbInstancesSortByEnum, bool) {
+	mappingListVbInstancesSortByEnumIgnoreCase := make(map[string]ListVbInstancesSortByEnum)
+	for k, v := range mappingListVbInstancesSortByEnum {
+		mappingListVbInstancesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVbInstancesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

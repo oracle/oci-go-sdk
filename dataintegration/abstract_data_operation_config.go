@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -108,4 +108,15 @@ func GetAbstractDataOperationConfigModelTypeEnumStringValues() []string {
 		"READ_OPERATION_CONFIG",
 		"WRITE_OPERATION_CONFIG",
 	}
+}
+
+// GetMappingAbstractDataOperationConfigModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractDataOperationConfigModelTypeEnum(val string) (AbstractDataOperationConfigModelTypeEnum, bool) {
+	mappingAbstractDataOperationConfigModelTypeEnumIgnoreCase := make(map[string]AbstractDataOperationConfigModelTypeEnum)
+	for k, v := range mappingAbstractDataOperationConfigModelTypeEnum {
+		mappingAbstractDataOperationConfigModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractDataOperationConfigModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

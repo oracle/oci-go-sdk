@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -37,7 +37,7 @@ func (m Filter) String() string {
 // Not recommended for calling this function directly
 func (m Filter) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingFilterOperatorEnum[string(m.Operator)]; !ok && m.Operator != "" {
+	if _, ok := GetMappingFilterOperatorEnum(string(m.Operator)); !ok && m.Operator != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Operator: %s. Supported values are: %s.", m.Operator, strings.Join(GetFilterOperatorEnumStringValues(), ",")))
 	}
 
@@ -124,4 +124,15 @@ func GetFilterOperatorEnumStringValues() []string {
 		"ADD_SUBQUERY",
 		"CLEAR_SUBQUERY",
 	}
+}
+
+// GetMappingFilterOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFilterOperatorEnum(val string) (FilterOperatorEnum, bool) {
+	mappingFilterOperatorEnumIgnoreCase := make(map[string]FilterOperatorEnum)
+	for k, v := range mappingFilterOperatorEnum {
+		mappingFilterOperatorEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFilterOperatorEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package ocvp
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -38,7 +38,7 @@ func (m HcxLicenseSummary) String() string {
 // Not recommended for calling this function directly
 func (m HcxLicenseSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingHcxLicenseStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingHcxLicenseStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetHcxLicenseStatusEnumStringValues(), ",")))
 	}
 

@@ -6,7 +6,7 @@ package loggingsearch
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -28,7 +28,8 @@ type SearchLogsRequest struct {
 	// The maximum number of items to return in a response. Pagination is not supported in this API.
 	Limit *int `mandatory:"false" contributesTo:"query" name:"limit"`
 
-	// Reserved for future use. Pagination is not supported in this API.
+	// For list pagination. The value of the opc-next-page response header from the previous "Search" call.
+	// For important details about how pagination works, see List Pagination (https://docs.cloud.oracle.com/Content/API/Concepts/usingapi.htm#nine).
 	Page *string `mandatory:"false" contributesTo:"query" name:"page"`
 
 	// Metadata about the request. This information will not be transmitted to the service, but
@@ -82,7 +83,10 @@ type SearchLogsResponse struct {
 	// A list of SearchResponse instances
 	SearchResponse `presentIn:"body"`
 
-	// Reserved for future use. Pagination is not supported in this API.
+	// For list pagination. When this header appears in the response,
+	// additional pages of results remain.
+	// For important details about how pagination works, see
+	// List Pagination (https://docs.cloud.oracle.com/Content/API/Concepts/usingapi.htm#nine).
 	OpcNextPage *string `presentIn:"header" name:"opc-next-page"`
 
 	// Unique Oracle-assigned identifier for the request. If you need to contact

@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -78,13 +78,13 @@ func (request ListMetastoresRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListMetastoresRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListMetastoresLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListMetastoresLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListMetastoresLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListMetastoresSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListMetastoresSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListMetastoresSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListMetastoresSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListMetastoresSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListMetastoresSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -168,6 +168,17 @@ func GetListMetastoresLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListMetastoresLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMetastoresLifecycleStateEnum(val string) (ListMetastoresLifecycleStateEnum, bool) {
+	mappingListMetastoresLifecycleStateEnumIgnoreCase := make(map[string]ListMetastoresLifecycleStateEnum)
+	for k, v := range mappingListMetastoresLifecycleStateEnum {
+		mappingListMetastoresLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMetastoresLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListMetastoresSortOrderEnum Enum with underlying type: string
 type ListMetastoresSortOrderEnum string
 
@@ -199,6 +210,17 @@ func GetListMetastoresSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListMetastoresSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMetastoresSortOrderEnum(val string) (ListMetastoresSortOrderEnum, bool) {
+	mappingListMetastoresSortOrderEnumIgnoreCase := make(map[string]ListMetastoresSortOrderEnum)
+	for k, v := range mappingListMetastoresSortOrderEnum {
+		mappingListMetastoresSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMetastoresSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListMetastoresSortByEnum Enum with underlying type: string
 type ListMetastoresSortByEnum string
 
@@ -228,4 +250,15 @@ func GetListMetastoresSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListMetastoresSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListMetastoresSortByEnum(val string) (ListMetastoresSortByEnum, bool) {
+	mappingListMetastoresSortByEnumIgnoreCase := make(map[string]ListMetastoresSortByEnum)
+	for k, v := range mappingListMetastoresSortByEnum {
+		mappingListMetastoresSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListMetastoresSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

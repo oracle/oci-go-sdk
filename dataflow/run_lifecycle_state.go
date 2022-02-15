@@ -9,6 +9,10 @@
 
 package dataflow
 
+import (
+	"strings"
+)
+
 // RunLifecycleStateEnum Enum with underlying type: string
 type RunLifecycleStateEnum string
 
@@ -56,4 +60,15 @@ func GetRunLifecycleStateEnumStringValues() []string {
 		"STOPPING",
 		"STOPPED",
 	}
+}
+
+// GetMappingRunLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRunLifecycleStateEnum(val string) (RunLifecycleStateEnum, bool) {
+	mappingRunLifecycleStateEnumIgnoreCase := make(map[string]RunLifecycleStateEnum)
+	for k, v := range mappingRunLifecycleStateEnum {
+		mappingRunLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRunLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -69,7 +69,7 @@ func (request GetSqlExecutionPlanRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetSqlExecutionPlanRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetSqlExecutionPlanAttributeEnum[string(request.Attribute)]; !ok && request.Attribute != "" {
+	if _, ok := GetMappingGetSqlExecutionPlanAttributeEnum(string(request.Attribute)); !ok && request.Attribute != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Attribute: %s. Supported values are: %s.", request.Attribute, strings.Join(GetGetSqlExecutionPlanAttributeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -136,4 +136,15 @@ func GetGetSqlExecutionPlanAttributeEnumStringValues() []string {
 		"USING_SQL_PROFILE",
 		"USING_NEW_INDICES",
 	}
+}
+
+// GetMappingGetSqlExecutionPlanAttributeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetSqlExecutionPlanAttributeEnum(val string) (GetSqlExecutionPlanAttributeEnum, bool) {
+	mappingGetSqlExecutionPlanAttributeEnumIgnoreCase := make(map[string]GetSqlExecutionPlanAttributeEnum)
+	for k, v := range mappingGetSqlExecutionPlanAttributeEnum {
+		mappingGetSqlExecutionPlanAttributeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetSqlExecutionPlanAttributeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

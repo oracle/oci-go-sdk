@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -158,4 +158,15 @@ func GetCreateInstanceConfigurationBaseSourceEnumStringValues() []string {
 		"NONE",
 		"INSTANCE",
 	}
+}
+
+// GetMappingCreateInstanceConfigurationBaseSourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateInstanceConfigurationBaseSourceEnum(val string) (CreateInstanceConfigurationBaseSourceEnum, bool) {
+	mappingCreateInstanceConfigurationBaseSourceEnumIgnoreCase := make(map[string]CreateInstanceConfigurationBaseSourceEnum)
+	for k, v := range mappingCreateInstanceConfigurationBaseSourceEnum {
+		mappingCreateInstanceConfigurationBaseSourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateInstanceConfigurationBaseSourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

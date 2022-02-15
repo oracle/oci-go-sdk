@@ -6,7 +6,7 @@ package resourcemanager
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -89,10 +89,10 @@ func (request ListConfigurationSourceProvidersRequest) RetryPolicy() *common.Ret
 // Not recommended for calling this function directly
 func (request ListConfigurationSourceProvidersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListConfigurationSourceProvidersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListConfigurationSourceProvidersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListConfigurationSourceProvidersSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListConfigurationSourceProvidersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListConfigurationSourceProvidersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListConfigurationSourceProvidersSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetListConfigurationSourceProvidersSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListConfigurationSourceProvidersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConfigurationSourceProvidersSortByEnum(val string) (ListConfigurationSourceProvidersSortByEnum, bool) {
+	mappingListConfigurationSourceProvidersSortByEnumIgnoreCase := make(map[string]ListConfigurationSourceProvidersSortByEnum)
+	for k, v := range mappingListConfigurationSourceProvidersSortByEnum {
+		mappingListConfigurationSourceProvidersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConfigurationSourceProvidersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListConfigurationSourceProvidersSortOrderEnum Enum with underlying type: string
 type ListConfigurationSourceProvidersSortOrderEnum string
 
@@ -191,4 +202,15 @@ func GetListConfigurationSourceProvidersSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListConfigurationSourceProvidersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListConfigurationSourceProvidersSortOrderEnum(val string) (ListConfigurationSourceProvidersSortOrderEnum, bool) {
+	mappingListConfigurationSourceProvidersSortOrderEnumIgnoreCase := make(map[string]ListConfigurationSourceProvidersSortOrderEnum)
+	for k, v := range mappingListConfigurationSourceProvidersSortOrderEnum {
+		mappingListConfigurationSourceProvidersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListConfigurationSourceProvidersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -14,7 +14,7 @@ package aianomalydetection
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -121,4 +121,15 @@ func GetDetectAnomaliesDetailsRequestTypeEnumStringValues() []string {
 		"INLINE",
 		"BASE64_ENCODED",
 	}
+}
+
+// GetMappingDetectAnomaliesDetailsRequestTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDetectAnomaliesDetailsRequestTypeEnum(val string) (DetectAnomaliesDetailsRequestTypeEnum, bool) {
+	mappingDetectAnomaliesDetailsRequestTypeEnumIgnoreCase := make(map[string]DetectAnomaliesDetailsRequestTypeEnum)
+	for k, v := range mappingDetectAnomaliesDetailsRequestTypeEnum {
+		mappingDetectAnomaliesDetailsRequestTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDetectAnomaliesDetailsRequestTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

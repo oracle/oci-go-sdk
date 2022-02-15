@@ -6,7 +6,7 @@ package secrets
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -75,10 +75,10 @@ func (request ListSecretBundleVersionsRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListSecretBundleVersionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSecretBundleVersionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSecretBundleVersionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSecretBundleVersionsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSecretBundleVersionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSecretBundleVersionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSecretBundleVersionsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -143,6 +143,17 @@ func GetListSecretBundleVersionsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSecretBundleVersionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSecretBundleVersionsSortByEnum(val string) (ListSecretBundleVersionsSortByEnum, bool) {
+	mappingListSecretBundleVersionsSortByEnumIgnoreCase := make(map[string]ListSecretBundleVersionsSortByEnum)
+	for k, v := range mappingListSecretBundleVersionsSortByEnum {
+		mappingListSecretBundleVersionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSecretBundleVersionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSecretBundleVersionsSortOrderEnum Enum with underlying type: string
 type ListSecretBundleVersionsSortOrderEnum string
 
@@ -172,4 +183,15 @@ func GetListSecretBundleVersionsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListSecretBundleVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSecretBundleVersionsSortOrderEnum(val string) (ListSecretBundleVersionsSortOrderEnum, bool) {
+	mappingListSecretBundleVersionsSortOrderEnumIgnoreCase := make(map[string]ListSecretBundleVersionsSortOrderEnum)
+	for k, v := range mappingListSecretBundleVersionsSortOrderEnum {
+		mappingListSecretBundleVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSecretBundleVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

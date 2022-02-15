@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -118,4 +118,15 @@ func GetRouteAuthorizationPolicyTypeEnumStringValues() []string {
 		"ANY_OF",
 		"AUTHENTICATION_ONLY",
 	}
+}
+
+// GetMappingRouteAuthorizationPolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRouteAuthorizationPolicyTypeEnum(val string) (RouteAuthorizationPolicyTypeEnum, bool) {
+	mappingRouteAuthorizationPolicyTypeEnumIgnoreCase := make(map[string]RouteAuthorizationPolicyTypeEnum)
+	for k, v := range mappingRouteAuthorizationPolicyTypeEnum {
+		mappingRouteAuthorizationPolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRouteAuthorizationPolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -86,13 +86,13 @@ func (request ListDbCredentialsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDbCredentialsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDbCredentialsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDbCredentialsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDbCredentialsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDbCredentialsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDbCredentialsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDbCredentialsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDbCredentialLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingDbCredentialLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDbCredentialLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetListDbCredentialsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDbCredentialsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDbCredentialsSortByEnum(val string) (ListDbCredentialsSortByEnum, bool) {
+	mappingListDbCredentialsSortByEnumIgnoreCase := make(map[string]ListDbCredentialsSortByEnum)
+	for k, v := range mappingListDbCredentialsSortByEnum {
+		mappingListDbCredentialsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDbCredentialsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDbCredentialsSortOrderEnum Enum with underlying type: string
 type ListDbCredentialsSortOrderEnum string
 
@@ -189,4 +200,15 @@ func GetListDbCredentialsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDbCredentialsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDbCredentialsSortOrderEnum(val string) (ListDbCredentialsSortOrderEnum, bool) {
+	mappingListDbCredentialsSortOrderEnumIgnoreCase := make(map[string]ListDbCredentialsSortOrderEnum)
+	for k, v := range mappingListDbCredentialsSortOrderEnum {
+		mappingListDbCredentialsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDbCredentialsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

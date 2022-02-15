@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -85,16 +85,16 @@ func (m CreateBucketDetails) String() string {
 func (m CreateBucketDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateBucketDetailsPublicAccessTypeEnum[string(m.PublicAccessType)]; !ok && m.PublicAccessType != "" {
+	if _, ok := GetMappingCreateBucketDetailsPublicAccessTypeEnum(string(m.PublicAccessType)); !ok && m.PublicAccessType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PublicAccessType: %s. Supported values are: %s.", m.PublicAccessType, strings.Join(GetCreateBucketDetailsPublicAccessTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateBucketDetailsStorageTierEnum[string(m.StorageTier)]; !ok && m.StorageTier != "" {
+	if _, ok := GetMappingCreateBucketDetailsStorageTierEnum(string(m.StorageTier)); !ok && m.StorageTier != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for StorageTier: %s. Supported values are: %s.", m.StorageTier, strings.Join(GetCreateBucketDetailsStorageTierEnumStringValues(), ",")))
 	}
-	if _, ok := mappingCreateBucketDetailsVersioningEnum[string(m.Versioning)]; !ok && m.Versioning != "" {
+	if _, ok := GetMappingCreateBucketDetailsVersioningEnum(string(m.Versioning)); !ok && m.Versioning != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Versioning: %s. Supported values are: %s.", m.Versioning, strings.Join(GetCreateBucketDetailsVersioningEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBucketAutoTieringEnum[string(m.AutoTiering)]; !ok && m.AutoTiering != "" {
+	if _, ok := GetMappingBucketAutoTieringEnum(string(m.AutoTiering)); !ok && m.AutoTiering != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AutoTiering: %s. Supported values are: %s.", m.AutoTiering, strings.Join(GetBucketAutoTieringEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -137,6 +137,17 @@ func GetCreateBucketDetailsPublicAccessTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingCreateBucketDetailsPublicAccessTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateBucketDetailsPublicAccessTypeEnum(val string) (CreateBucketDetailsPublicAccessTypeEnum, bool) {
+	mappingCreateBucketDetailsPublicAccessTypeEnumIgnoreCase := make(map[string]CreateBucketDetailsPublicAccessTypeEnum)
+	for k, v := range mappingCreateBucketDetailsPublicAccessTypeEnum {
+		mappingCreateBucketDetailsPublicAccessTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateBucketDetailsPublicAccessTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateBucketDetailsStorageTierEnum Enum with underlying type: string
 type CreateBucketDetailsStorageTierEnum string
 
@@ -168,6 +179,17 @@ func GetCreateBucketDetailsStorageTierEnumStringValues() []string {
 	}
 }
 
+// GetMappingCreateBucketDetailsStorageTierEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateBucketDetailsStorageTierEnum(val string) (CreateBucketDetailsStorageTierEnum, bool) {
+	mappingCreateBucketDetailsStorageTierEnumIgnoreCase := make(map[string]CreateBucketDetailsStorageTierEnum)
+	for k, v := range mappingCreateBucketDetailsStorageTierEnum {
+		mappingCreateBucketDetailsStorageTierEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateBucketDetailsStorageTierEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateBucketDetailsVersioningEnum Enum with underlying type: string
 type CreateBucketDetailsVersioningEnum string
 
@@ -197,4 +219,15 @@ func GetCreateBucketDetailsVersioningEnumStringValues() []string {
 		"Enabled",
 		"Disabled",
 	}
+}
+
+// GetMappingCreateBucketDetailsVersioningEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateBucketDetailsVersioningEnum(val string) (CreateBucketDetailsVersioningEnum, bool) {
+	mappingCreateBucketDetailsVersioningEnumIgnoreCase := make(map[string]CreateBucketDetailsVersioningEnum)
+	for k, v := range mappingCreateBucketDetailsVersioningEnum {
+		mappingCreateBucketDetailsVersioningEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateBucketDetailsVersioningEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

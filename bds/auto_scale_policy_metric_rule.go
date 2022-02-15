@@ -11,7 +11,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -33,7 +33,7 @@ func (m AutoScalePolicyMetricRule) String() string {
 // Not recommended for calling this function directly
 func (m AutoScalePolicyMetricRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutoScalePolicyMetricRuleMetricTypeEnum[string(m.MetricType)]; !ok && m.MetricType != "" {
+	if _, ok := GetMappingAutoScalePolicyMetricRuleMetricTypeEnum(string(m.MetricType)); !ok && m.MetricType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MetricType: %s. Supported values are: %s.", m.MetricType, strings.Join(GetAutoScalePolicyMetricRuleMetricTypeEnumStringValues(), ",")))
 	}
 
@@ -69,4 +69,15 @@ func GetAutoScalePolicyMetricRuleMetricTypeEnumStringValues() []string {
 	return []string{
 		"CPU_UTILIZATION",
 	}
+}
+
+// GetMappingAutoScalePolicyMetricRuleMetricTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutoScalePolicyMetricRuleMetricTypeEnum(val string) (AutoScalePolicyMetricRuleMetricTypeEnum, bool) {
+	mappingAutoScalePolicyMetricRuleMetricTypeEnumIgnoreCase := make(map[string]AutoScalePolicyMetricRuleMetricTypeEnum)
+	for k, v := range mappingAutoScalePolicyMetricRuleMetricTypeEnum {
+		mappingAutoScalePolicyMetricRuleMetricTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutoScalePolicyMetricRuleMetricTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

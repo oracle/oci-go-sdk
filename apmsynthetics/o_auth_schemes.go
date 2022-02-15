@@ -9,6 +9,10 @@
 
 package apmsynthetics
 
+import (
+	"strings"
+)
+
 // OAuthSchemesEnum Enum with underlying type: string
 type OAuthSchemesEnum string
 
@@ -38,4 +42,15 @@ func GetOAuthSchemesEnumStringValues() []string {
 		"NONE",
 		"BASIC",
 	}
+}
+
+// GetMappingOAuthSchemesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOAuthSchemesEnum(val string) (OAuthSchemesEnum, bool) {
+	mappingOAuthSchemesEnumIgnoreCase := make(map[string]OAuthSchemesEnum)
+	for k, v := range mappingOAuthSchemesEnum {
+		mappingOAuthSchemesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOAuthSchemesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

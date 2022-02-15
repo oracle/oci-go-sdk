@@ -6,13 +6,15 @@ package auth
 import (
 	"bytes"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/oracle/oci-go-sdk/v58/common"
+
 	"io/ioutil"
 	"net/http"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type fakeHTTPCaller struct {

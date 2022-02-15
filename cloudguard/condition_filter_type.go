@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ConditionFilterTypeEnum Enum with underlying type: string
 type ConditionFilterTypeEnum string
 
@@ -38,4 +42,15 @@ func GetConditionFilterTypeEnumStringValues() []string {
 		"CONDITION",
 		"CONFIG",
 	}
+}
+
+// GetMappingConditionFilterTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConditionFilterTypeEnum(val string) (ConditionFilterTypeEnum, bool) {
+	mappingConditionFilterTypeEnumIgnoreCase := make(map[string]ConditionFilterTypeEnum)
+	for k, v := range mappingConditionFilterTypeEnum {
+		mappingConditionFilterTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConditionFilterTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

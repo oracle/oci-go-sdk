@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -70,7 +70,7 @@ func (m InstanceConsoleConnection) String() string {
 func (m InstanceConsoleConnection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingInstanceConsoleConnectionLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingInstanceConsoleConnectionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetInstanceConsoleConnectionLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -117,4 +117,15 @@ func GetInstanceConsoleConnectionLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"FAILED",
 	}
+}
+
+// GetMappingInstanceConsoleConnectionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceConsoleConnectionLifecycleStateEnum(val string) (InstanceConsoleConnectionLifecycleStateEnum, bool) {
+	mappingInstanceConsoleConnectionLifecycleStateEnumIgnoreCase := make(map[string]InstanceConsoleConnectionLifecycleStateEnum)
+	for k, v := range mappingInstanceConsoleConnectionLifecycleStateEnum {
+		mappingInstanceConsoleConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceConsoleConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

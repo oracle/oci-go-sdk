@@ -6,7 +6,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -93,19 +93,19 @@ func (request ListKeysRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListKeysRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListKeysSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListKeysSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListKeysSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListKeysSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListKeysSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListKeysSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListKeysProtectionModeEnum[string(request.ProtectionMode)]; !ok && request.ProtectionMode != "" {
+	if _, ok := GetMappingListKeysProtectionModeEnum(string(request.ProtectionMode)); !ok && request.ProtectionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", request.ProtectionMode, strings.Join(GetListKeysProtectionModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListKeysAlgorithmEnum[string(request.Algorithm)]; !ok && request.Algorithm != "" {
+	if _, ok := GetMappingListKeysAlgorithmEnum(string(request.Algorithm)); !ok && request.Algorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Algorithm: %s. Supported values are: %s.", request.Algorithm, strings.Join(GetListKeysAlgorithmEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListKeysCurveIdEnum[string(request.CurveId)]; !ok && request.CurveId != "" {
+	if _, ok := GetMappingListKeysCurveIdEnum(string(request.CurveId)); !ok && request.CurveId != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CurveId: %s. Supported values are: %s.", request.CurveId, strings.Join(GetListKeysCurveIdEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -174,6 +174,17 @@ func GetListKeysSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListKeysSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListKeysSortByEnum(val string) (ListKeysSortByEnum, bool) {
+	mappingListKeysSortByEnumIgnoreCase := make(map[string]ListKeysSortByEnum)
+	for k, v := range mappingListKeysSortByEnum {
+		mappingListKeysSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListKeysSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListKeysSortOrderEnum Enum with underlying type: string
 type ListKeysSortOrderEnum string
 
@@ -205,6 +216,17 @@ func GetListKeysSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListKeysSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListKeysSortOrderEnum(val string) (ListKeysSortOrderEnum, bool) {
+	mappingListKeysSortOrderEnumIgnoreCase := make(map[string]ListKeysSortOrderEnum)
+	for k, v := range mappingListKeysSortOrderEnum {
+		mappingListKeysSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListKeysSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListKeysProtectionModeEnum Enum with underlying type: string
 type ListKeysProtectionModeEnum string
 
@@ -234,6 +256,17 @@ func GetListKeysProtectionModeEnumStringValues() []string {
 		"HSM",
 		"SOFTWARE",
 	}
+}
+
+// GetMappingListKeysProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListKeysProtectionModeEnum(val string) (ListKeysProtectionModeEnum, bool) {
+	mappingListKeysProtectionModeEnumIgnoreCase := make(map[string]ListKeysProtectionModeEnum)
+	for k, v := range mappingListKeysProtectionModeEnum {
+		mappingListKeysProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListKeysProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListKeysAlgorithmEnum Enum with underlying type: string
@@ -270,6 +303,17 @@ func GetListKeysAlgorithmEnumStringValues() []string {
 	}
 }
 
+// GetMappingListKeysAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListKeysAlgorithmEnum(val string) (ListKeysAlgorithmEnum, bool) {
+	mappingListKeysAlgorithmEnumIgnoreCase := make(map[string]ListKeysAlgorithmEnum)
+	for k, v := range mappingListKeysAlgorithmEnum {
+		mappingListKeysAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListKeysAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListKeysCurveIdEnum Enum with underlying type: string
 type ListKeysCurveIdEnum string
 
@@ -302,4 +346,15 @@ func GetListKeysCurveIdEnumStringValues() []string {
 		"NIST_P384",
 		"NIST_P521",
 	}
+}
+
+// GetMappingListKeysCurveIdEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListKeysCurveIdEnum(val string) (ListKeysCurveIdEnum, bool) {
+	mappingListKeysCurveIdEnumIgnoreCase := make(map[string]ListKeysCurveIdEnum)
+	for k, v := range mappingListKeysCurveIdEnum {
+		mappingListKeysCurveIdEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListKeysCurveIdEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

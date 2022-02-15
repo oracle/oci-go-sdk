@@ -9,6 +9,10 @@
 
 package datascience
 
+import (
+	"strings"
+)
+
 // NotebookSessionShapeSeriesEnum Enum with underlying type: string
 type NotebookSessionShapeSeriesEnum string
 
@@ -44,4 +48,15 @@ func GetNotebookSessionShapeSeriesEnumStringValues() []string {
 		"NVIDIA_GPU",
 		"LEGACY",
 	}
+}
+
+// GetMappingNotebookSessionShapeSeriesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNotebookSessionShapeSeriesEnum(val string) (NotebookSessionShapeSeriesEnum, bool) {
+	mappingNotebookSessionShapeSeriesEnumIgnoreCase := make(map[string]NotebookSessionShapeSeriesEnum)
+	for k, v := range mappingNotebookSessionShapeSeriesEnum {
+		mappingNotebookSessionShapeSeriesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNotebookSessionShapeSeriesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

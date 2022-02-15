@@ -12,7 +12,7 @@ package cloudguard
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -43,7 +43,7 @@ func (m UpdateDetectorRuleDetails) String() string {
 // Not recommended for calling this function directly
 func (m UpdateDetectorRuleDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRiskLevelEnum[string(m.RiskLevel)]; !ok && m.RiskLevel != "" {
+	if _, ok := GetMappingRiskLevelEnum(string(m.RiskLevel)); !ok && m.RiskLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RiskLevel: %s. Supported values are: %s.", m.RiskLevel, strings.Join(GetRiskLevelEnumStringValues(), ",")))
 	}
 

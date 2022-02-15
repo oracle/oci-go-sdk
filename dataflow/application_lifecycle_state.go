@@ -9,6 +9,10 @@
 
 package dataflow
 
+import (
+	"strings"
+)
+
 // ApplicationLifecycleStateEnum Enum with underlying type: string
 type ApplicationLifecycleStateEnum string
 
@@ -41,4 +45,15 @@ func GetApplicationLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"INACTIVE",
 	}
+}
+
+// GetMappingApplicationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApplicationLifecycleStateEnum(val string) (ApplicationLifecycleStateEnum, bool) {
+	mappingApplicationLifecycleStateEnumIgnoreCase := make(map[string]ApplicationLifecycleStateEnum)
+	for k, v := range mappingApplicationLifecycleStateEnum {
+		mappingApplicationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApplicationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

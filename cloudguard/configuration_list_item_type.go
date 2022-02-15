@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ConfigurationListItemTypeEnum Enum with underlying type: string
 type ConfigurationListItemTypeEnum string
 
@@ -38,4 +42,15 @@ func GetConfigurationListItemTypeEnumStringValues() []string {
 		"MANAGED",
 		"CUSTOM",
 	}
+}
+
+// GetMappingConfigurationListItemTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigurationListItemTypeEnum(val string) (ConfigurationListItemTypeEnum, bool) {
+	mappingConfigurationListItemTypeEnumIgnoreCase := make(map[string]ConfigurationListItemTypeEnum)
+	for k, v := range mappingConfigurationListItemTypeEnum {
+		mappingConfigurationListItemTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigurationListItemTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

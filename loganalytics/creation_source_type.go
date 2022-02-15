@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // CreationSourceTypeEnum Enum with underlying type: string
 type CreationSourceTypeEnum string
 
@@ -41,4 +45,15 @@ func GetCreationSourceTypeEnumStringValues() []string {
 		"SERVICE_CONNECTOR_HUB",
 		"NONE",
 	}
+}
+
+// GetMappingCreationSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreationSourceTypeEnum(val string) (CreationSourceTypeEnum, bool) {
+	mappingCreationSourceTypeEnumIgnoreCase := make(map[string]CreationSourceTypeEnum)
+	for k, v := range mappingCreationSourceTypeEnum {
+		mappingCreationSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreationSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

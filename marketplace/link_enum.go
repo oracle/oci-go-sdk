@@ -9,6 +9,10 @@
 
 package marketplace
 
+import (
+	"strings"
+)
+
 // LinkEnumEnum Enum with underlying type: string
 type LinkEnumEnum string
 
@@ -47,4 +51,15 @@ func GetLinkEnumEnumStringValues() []string {
 		"TEMPLATE",
 		"PREV",
 	}
+}
+
+// GetMappingLinkEnumEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLinkEnumEnum(val string) (LinkEnumEnum, bool) {
+	mappingLinkEnumEnumIgnoreCase := make(map[string]LinkEnumEnum)
+	for k, v := range mappingLinkEnumEnum {
+		mappingLinkEnumEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLinkEnumEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

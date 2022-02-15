@@ -6,7 +6,7 @@ package datascience
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -97,13 +97,13 @@ func (request ListNotebookSessionsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListNotebookSessionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListNotebookSessionsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListNotebookSessionsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListNotebookSessionsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNotebookSessionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListNotebookSessionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListNotebookSessionsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListNotebookSessionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListNotebookSessionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListNotebookSessionsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -187,6 +187,17 @@ func GetListNotebookSessionsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNotebookSessionsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNotebookSessionsLifecycleStateEnum(val string) (ListNotebookSessionsLifecycleStateEnum, bool) {
+	mappingListNotebookSessionsLifecycleStateEnumIgnoreCase := make(map[string]ListNotebookSessionsLifecycleStateEnum)
+	for k, v := range mappingListNotebookSessionsLifecycleStateEnum {
+		mappingListNotebookSessionsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNotebookSessionsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNotebookSessionsSortOrderEnum Enum with underlying type: string
 type ListNotebookSessionsSortOrderEnum string
 
@@ -218,6 +229,17 @@ func GetListNotebookSessionsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListNotebookSessionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNotebookSessionsSortOrderEnum(val string) (ListNotebookSessionsSortOrderEnum, bool) {
+	mappingListNotebookSessionsSortOrderEnumIgnoreCase := make(map[string]ListNotebookSessionsSortOrderEnum)
+	for k, v := range mappingListNotebookSessionsSortOrderEnum {
+		mappingListNotebookSessionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNotebookSessionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListNotebookSessionsSortByEnum Enum with underlying type: string
 type ListNotebookSessionsSortByEnum string
 
@@ -247,4 +269,15 @@ func GetListNotebookSessionsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListNotebookSessionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListNotebookSessionsSortByEnum(val string) (ListNotebookSessionsSortByEnum, bool) {
+	mappingListNotebookSessionsSortByEnumIgnoreCase := make(map[string]ListNotebookSessionsSortByEnum)
+	for k, v := range mappingListNotebookSessionsSortByEnum {
+		mappingListNotebookSessionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListNotebookSessionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

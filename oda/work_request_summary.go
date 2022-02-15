@@ -11,7 +11,7 @@ package oda
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -46,10 +46,10 @@ func (m WorkRequestSummary) String() string {
 // Not recommended for calling this function directly
 func (m WorkRequestSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWorkRequestSummaryRequestActionEnum[string(m.RequestAction)]; !ok && m.RequestAction != "" {
+	if _, ok := GetMappingWorkRequestSummaryRequestActionEnum(string(m.RequestAction)); !ok && m.RequestAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RequestAction: %s. Supported values are: %s.", m.RequestAction, strings.Join(GetWorkRequestSummaryRequestActionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingWorkRequestSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingWorkRequestSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetWorkRequestSummaryStatusEnumStringValues(), ",")))
 	}
 
@@ -120,6 +120,17 @@ func GetWorkRequestSummaryRequestActionEnumStringValues() []string {
 	}
 }
 
+// GetMappingWorkRequestSummaryRequestActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestSummaryRequestActionEnum(val string) (WorkRequestSummaryRequestActionEnum, bool) {
+	mappingWorkRequestSummaryRequestActionEnumIgnoreCase := make(map[string]WorkRequestSummaryRequestActionEnum)
+	for k, v := range mappingWorkRequestSummaryRequestActionEnum {
+		mappingWorkRequestSummaryRequestActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestSummaryRequestActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // WorkRequestSummaryStatusEnum Enum with underlying type: string
 type WorkRequestSummaryStatusEnum string
 
@@ -161,4 +172,15 @@ func GetWorkRequestSummaryStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingWorkRequestSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestSummaryStatusEnum(val string) (WorkRequestSummaryStatusEnum, bool) {
+	mappingWorkRequestSummaryStatusEnumIgnoreCase := make(map[string]WorkRequestSummaryStatusEnum)
+	for k, v := range mappingWorkRequestSummaryStatusEnum {
+		mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -84,7 +84,7 @@ func (request GetAlarmHistoryRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetAlarmHistoryRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetAlarmHistoryAlarmHistorytypeEnum[string(request.AlarmHistorytype)]; !ok && request.AlarmHistorytype != "" {
+	if _, ok := GetMappingGetAlarmHistoryAlarmHistorytypeEnum(string(request.AlarmHistorytype)); !ok && request.AlarmHistorytype != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AlarmHistorytype: %s. Supported values are: %s.", request.AlarmHistorytype, strings.Join(GetGetAlarmHistoryAlarmHistorytypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,4 +149,15 @@ func GetGetAlarmHistoryAlarmHistorytypeEnumStringValues() []string {
 		"STATE_HISTORY",
 		"STATE_TRANSITION_HISTORY",
 	}
+}
+
+// GetMappingGetAlarmHistoryAlarmHistorytypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetAlarmHistoryAlarmHistorytypeEnum(val string) (GetAlarmHistoryAlarmHistorytypeEnum, bool) {
+	mappingGetAlarmHistoryAlarmHistorytypeEnumIgnoreCase := make(map[string]GetAlarmHistoryAlarmHistorytypeEnum)
+	for k, v := range mappingGetAlarmHistoryAlarmHistorytypeEnum {
+		mappingGetAlarmHistoryAlarmHistorytypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetAlarmHistoryAlarmHistorytypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

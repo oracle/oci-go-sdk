@@ -6,7 +6,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -99,7 +99,7 @@ func (request ListObjectVersionsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListObjectVersionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListObjectVersionsFieldsEnum[string(request.Fields)]; !ok && request.Fields != "" {
+	if _, ok := GetMappingListObjectVersionsFieldsEnum(string(request.Fields)); !ok && request.Fields != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", request.Fields, strings.Join(GetListObjectVersionsFieldsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -190,4 +190,15 @@ func GetListObjectVersionsFieldsEnumStringValues() []string {
 		"storageTier",
 		"archivalState",
 	}
+}
+
+// GetMappingListObjectVersionsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListObjectVersionsFieldsEnum(val string) (ListObjectVersionsFieldsEnum, bool) {
+	mappingListObjectVersionsFieldsEnumIgnoreCase := make(map[string]ListObjectVersionsFieldsEnum)
+	for k, v := range mappingListObjectVersionsFieldsEnum {
+		mappingListObjectVersionsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListObjectVersionsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

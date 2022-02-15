@@ -6,7 +6,7 @@ package announcementsservice
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -76,8 +76,12 @@ type GetAnnouncementUserStatusResponse struct {
 	// The AnnouncementUserStatusDetails instance
 	AnnouncementUserStatusDetails `presentIn:"body"`
 
-	// The unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the complete request ID.
+	// Unique Oracle-assigned identifier for the request. If you need to contact
+	// Oracle about a particular request, please provide the request ID.
 	OpcRequestId *string `presentIn:"header" name:"opc-request-id"`
+
+	// For optimistic concurrency control. See `if-match`.
+	Etag *string `presentIn:"header" name:"etag"`
 }
 
 func (response GetAnnouncementUserStatusResponse) String() string {

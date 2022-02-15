@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -110,15 +110,15 @@ func (request ListHostedEntitiesRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListHostedEntitiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.PlatformType {
-		if _, ok := mappingListHostedEntitiesPlatformTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListHostedEntitiesPlatformTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", val, strings.Join(GetListHostedEntitiesPlatformTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListHostedEntitiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListHostedEntitiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListHostedEntitiesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListHostedEntitiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListHostedEntitiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListHostedEntitiesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -189,6 +189,17 @@ func GetListHostedEntitiesPlatformTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListHostedEntitiesPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHostedEntitiesPlatformTypeEnum(val string) (ListHostedEntitiesPlatformTypeEnum, bool) {
+	mappingListHostedEntitiesPlatformTypeEnumIgnoreCase := make(map[string]ListHostedEntitiesPlatformTypeEnum)
+	for k, v := range mappingListHostedEntitiesPlatformTypeEnum {
+		mappingListHostedEntitiesPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHostedEntitiesPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListHostedEntitiesSortOrderEnum Enum with underlying type: string
 type ListHostedEntitiesSortOrderEnum string
 
@@ -220,6 +231,17 @@ func GetListHostedEntitiesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListHostedEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHostedEntitiesSortOrderEnum(val string) (ListHostedEntitiesSortOrderEnum, bool) {
+	mappingListHostedEntitiesSortOrderEnumIgnoreCase := make(map[string]ListHostedEntitiesSortOrderEnum)
+	for k, v := range mappingListHostedEntitiesSortOrderEnum {
+		mappingListHostedEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHostedEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListHostedEntitiesSortByEnum Enum with underlying type: string
 type ListHostedEntitiesSortByEnum string
 
@@ -249,4 +271,15 @@ func GetListHostedEntitiesSortByEnumStringValues() []string {
 		"entityName",
 		"entityType",
 	}
+}
+
+// GetMappingListHostedEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHostedEntitiesSortByEnum(val string) (ListHostedEntitiesSortByEnum, bool) {
+	mappingListHostedEntitiesSortByEnumIgnoreCase := make(map[string]ListHostedEntitiesSortByEnum)
+	for k, v := range mappingListHostedEntitiesSortByEnum {
+		mappingListHostedEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHostedEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

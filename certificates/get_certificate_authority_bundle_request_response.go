@@ -6,7 +6,7 @@ package certificates
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -70,7 +70,7 @@ func (request GetCertificateAuthorityBundleRequest) RetryPolicy() *common.RetryP
 // Not recommended for calling this function directly
 func (request GetCertificateAuthorityBundleRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetCertificateAuthorityBundleStageEnum[string(request.Stage)]; !ok && request.Stage != "" {
+	if _, ok := GetMappingGetCertificateAuthorityBundleStageEnum(string(request.Stage)); !ok && request.Stage != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stage: %s. Supported values are: %s.", request.Stage, strings.Join(GetGetCertificateAuthorityBundleStageEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -142,4 +142,15 @@ func GetGetCertificateAuthorityBundleStageEnumStringValues() []string {
 		"PREVIOUS",
 		"DEPRECATED",
 	}
+}
+
+// GetMappingGetCertificateAuthorityBundleStageEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetCertificateAuthorityBundleStageEnum(val string) (GetCertificateAuthorityBundleStageEnum, bool) {
+	mappingGetCertificateAuthorityBundleStageEnumIgnoreCase := make(map[string]GetCertificateAuthorityBundleStageEnum)
+	for k, v := range mappingGetCertificateAuthorityBundleStageEnum {
+		mappingGetCertificateAuthorityBundleStageEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetCertificateAuthorityBundleStageEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -95,13 +95,13 @@ func (request ListComputeCapacityReservationsRequest) RetryPolicy() *common.Retr
 // Not recommended for calling this function directly
 func (request ListComputeCapacityReservationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingComputeCapacityReservationLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingComputeCapacityReservationLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetComputeCapacityReservationLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListComputeCapacityReservationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListComputeCapacityReservationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListComputeCapacityReservationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListComputeCapacityReservationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListComputeCapacityReservationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListComputeCapacityReservationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,6 +169,17 @@ func GetListComputeCapacityReservationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListComputeCapacityReservationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListComputeCapacityReservationsSortByEnum(val string) (ListComputeCapacityReservationsSortByEnum, bool) {
+	mappingListComputeCapacityReservationsSortByEnumIgnoreCase := make(map[string]ListComputeCapacityReservationsSortByEnum)
+	for k, v := range mappingListComputeCapacityReservationsSortByEnum {
+		mappingListComputeCapacityReservationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListComputeCapacityReservationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListComputeCapacityReservationsSortOrderEnum Enum with underlying type: string
 type ListComputeCapacityReservationsSortOrderEnum string
 
@@ -198,4 +209,15 @@ func GetListComputeCapacityReservationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListComputeCapacityReservationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListComputeCapacityReservationsSortOrderEnum(val string) (ListComputeCapacityReservationsSortOrderEnum, bool) {
+	mappingListComputeCapacityReservationsSortOrderEnumIgnoreCase := make(map[string]ListComputeCapacityReservationsSortOrderEnum)
+	for k, v := range mappingListComputeCapacityReservationsSortOrderEnum {
+		mappingListComputeCapacityReservationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListComputeCapacityReservationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

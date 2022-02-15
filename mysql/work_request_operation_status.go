@@ -9,6 +9,10 @@
 
 package mysql
 
+import (
+	"strings"
+)
+
 // WorkRequestOperationStatusEnum Enum with underlying type: string
 type WorkRequestOperationStatusEnum string
 
@@ -50,4 +54,15 @@ func GetWorkRequestOperationStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingWorkRequestOperationStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestOperationStatusEnum(val string) (WorkRequestOperationStatusEnum, bool) {
+	mappingWorkRequestOperationStatusEnumIgnoreCase := make(map[string]WorkRequestOperationStatusEnum)
+	for k, v := range mappingWorkRequestOperationStatusEnum {
+		mappingWorkRequestOperationStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestOperationStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

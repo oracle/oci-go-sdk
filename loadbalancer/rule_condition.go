@@ -13,7 +13,7 @@ package loadbalancer
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -123,4 +123,15 @@ func GetRuleConditionAttributeNameEnumStringValues() []string {
 		"SOURCE_VCN_IP_ADDRESS",
 		"PATH",
 	}
+}
+
+// GetMappingRuleConditionAttributeNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRuleConditionAttributeNameEnum(val string) (RuleConditionAttributeNameEnum, bool) {
+	mappingRuleConditionAttributeNameEnumIgnoreCase := make(map[string]RuleConditionAttributeNameEnum)
+	for k, v := range mappingRuleConditionAttributeNameEnum {
+		mappingRuleConditionAttributeNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRuleConditionAttributeNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

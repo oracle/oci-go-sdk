@@ -6,7 +6,7 @@ package dashboardservice
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -91,13 +91,13 @@ func (request ListDashboardGroupsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDashboardGroupsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDashboardGroupLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingDashboardGroupLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDashboardGroupLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDashboardGroupsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDashboardGroupsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDashboardGroupsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDashboardGroupsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDashboardGroupsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDashboardGroupsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -165,6 +165,17 @@ func GetListDashboardGroupsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDashboardGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDashboardGroupsSortOrderEnum(val string) (ListDashboardGroupsSortOrderEnum, bool) {
+	mappingListDashboardGroupsSortOrderEnumIgnoreCase := make(map[string]ListDashboardGroupsSortOrderEnum)
+	for k, v := range mappingListDashboardGroupsSortOrderEnum {
+		mappingListDashboardGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDashboardGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDashboardGroupsSortByEnum Enum with underlying type: string
 type ListDashboardGroupsSortByEnum string
 
@@ -194,4 +205,15 @@ func GetListDashboardGroupsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListDashboardGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDashboardGroupsSortByEnum(val string) (ListDashboardGroupsSortByEnum, bool) {
+	mappingListDashboardGroupsSortByEnumIgnoreCase := make(map[string]ListDashboardGroupsSortByEnum)
+	for k, v := range mappingListDashboardGroupsSortByEnum {
+		mappingListDashboardGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDashboardGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

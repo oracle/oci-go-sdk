@@ -6,7 +6,7 @@ package jms
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -85,13 +85,13 @@ func (request ListFleetsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListFleetsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListFleetsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListFleetsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListFleetsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListFleetsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListFleetsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListFleetsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListFleetsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListFleetsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListFleetsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -171,6 +171,17 @@ func GetListFleetsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListFleetsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFleetsLifecycleStateEnum(val string) (ListFleetsLifecycleStateEnum, bool) {
+	mappingListFleetsLifecycleStateEnumIgnoreCase := make(map[string]ListFleetsLifecycleStateEnum)
+	for k, v := range mappingListFleetsLifecycleStateEnum {
+		mappingListFleetsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFleetsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListFleetsSortOrderEnum Enum with underlying type: string
 type ListFleetsSortOrderEnum string
 
@@ -202,6 +213,17 @@ func GetListFleetsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListFleetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFleetsSortOrderEnum(val string) (ListFleetsSortOrderEnum, bool) {
+	mappingListFleetsSortOrderEnumIgnoreCase := make(map[string]ListFleetsSortOrderEnum)
+	for k, v := range mappingListFleetsSortOrderEnum {
+		mappingListFleetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFleetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListFleetsSortByEnum Enum with underlying type: string
 type ListFleetsSortByEnum string
 
@@ -231,4 +253,15 @@ func GetListFleetsSortByEnumStringValues() []string {
 		"displayName",
 		"timeCreated",
 	}
+}
+
+// GetMappingListFleetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFleetsSortByEnum(val string) (ListFleetsSortByEnum, bool) {
+	mappingListFleetsSortByEnumIgnoreCase := make(map[string]ListFleetsSortByEnum)
+	for k, v := range mappingListFleetsSortByEnum {
+		mappingListFleetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFleetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

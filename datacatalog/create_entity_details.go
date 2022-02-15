@@ -12,7 +12,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -83,7 +83,7 @@ func (m CreateEntityDetails) String() string {
 func (m CreateEntityDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingHarvestStatusEnum[string(m.HarvestStatus)]; !ok && m.HarvestStatus != "" {
+	if _, ok := GetMappingHarvestStatusEnum(string(m.HarvestStatus)); !ok && m.HarvestStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for HarvestStatus: %s. Supported values are: %s.", m.HarvestStatus, strings.Join(GetHarvestStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

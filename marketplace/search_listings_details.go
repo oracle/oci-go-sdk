@@ -12,7 +12,7 @@ package marketplace
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -83,7 +83,7 @@ func (m searchlistingsdetails) String() string {
 func (m searchlistingsdetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingMatchingContextTypeEnumEnum[string(m.MatchingContextType)]; !ok && m.MatchingContextType != "" {
+	if _, ok := GetMappingMatchingContextTypeEnumEnum(string(m.MatchingContextType)); !ok && m.MatchingContextType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MatchingContextType: %s. Supported values are: %s.", m.MatchingContextType, strings.Join(GetMatchingContextTypeEnumEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -14,7 +14,7 @@ package aianomalydetection
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -72,7 +72,7 @@ func (m DataAsset) String() string {
 // Not recommended for calling this function directly
 func (m DataAsset) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDataAssetLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDataAssetLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDataAssetLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -171,4 +171,15 @@ func GetDataAssetLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingDataAssetLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataAssetLifecycleStateEnum(val string) (DataAssetLifecycleStateEnum, bool) {
+	mappingDataAssetLifecycleStateEnumIgnoreCase := make(map[string]DataAssetLifecycleStateEnum)
+	for k, v := range mappingDataAssetLifecycleStateEnum {
+		mappingDataAssetLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataAssetLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

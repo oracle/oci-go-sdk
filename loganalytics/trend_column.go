@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -133,10 +133,10 @@ func (m TrendColumn) String() string {
 func (m TrendColumn) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSubSystemNameEnum[string(m.SubSystem)]; !ok && m.SubSystem != "" {
+	if _, ok := GetMappingSubSystemNameEnum(string(m.SubSystem)); !ok && m.SubSystem != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SubSystem: %s. Supported values are: %s.", m.SubSystem, strings.Join(GetSubSystemNameEnumStringValues(), ",")))
 	}
-	if _, ok := mappingValueTypeEnum[string(m.ValueType)]; !ok && m.ValueType != "" {
+	if _, ok := GetMappingValueTypeEnum(string(m.ValueType)); !ok && m.ValueType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ValueType: %s. Supported values are: %s.", m.ValueType, strings.Join(GetValueTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

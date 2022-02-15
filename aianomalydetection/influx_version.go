@@ -11,6 +11,10 @@
 
 package aianomalydetection
 
+import (
+	"strings"
+)
+
 // InfluxVersionEnum Enum with underlying type: string
 type InfluxVersionEnum string
 
@@ -40,4 +44,15 @@ func GetInfluxVersionEnumStringValues() []string {
 		"V_1_8",
 		"V_2_0",
 	}
+}
+
+// GetMappingInfluxVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInfluxVersionEnum(val string) (InfluxVersionEnum, bool) {
+	mappingInfluxVersionEnumIgnoreCase := make(map[string]InfluxVersionEnum)
+	for k, v := range mappingInfluxVersionEnum {
+		mappingInfluxVersionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInfluxVersionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

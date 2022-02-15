@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -108,4 +108,15 @@ func GetArgumentTypeEnumStringValues() []string {
 		"FIELD",
 		"LITERAL",
 	}
+}
+
+// GetMappingArgumentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingArgumentTypeEnum(val string) (ArgumentTypeEnum, bool) {
+	mappingArgumentTypeEnumIgnoreCase := make(map[string]ArgumentTypeEnum)
+	for k, v := range mappingArgumentTypeEnum {
+		mappingArgumentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingArgumentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

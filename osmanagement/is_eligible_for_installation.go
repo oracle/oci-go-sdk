@@ -10,6 +10,10 @@
 
 package osmanagement
 
+import (
+	"strings"
+)
+
 // IsEligibleForInstallationEnum Enum with underlying type: string
 type IsEligibleForInstallationEnum string
 
@@ -42,4 +46,15 @@ func GetIsEligibleForInstallationEnumStringValues() []string {
 		"NOT_INSTALLABLE",
 		"UNKNOWN",
 	}
+}
+
+// GetMappingIsEligibleForInstallationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIsEligibleForInstallationEnum(val string) (IsEligibleForInstallationEnum, bool) {
+	mappingIsEligibleForInstallationEnumIgnoreCase := make(map[string]IsEligibleForInstallationEnum)
+	for k, v := range mappingIsEligibleForInstallationEnum {
+		mappingIsEligibleForInstallationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIsEligibleForInstallationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

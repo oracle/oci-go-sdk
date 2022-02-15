@@ -9,6 +9,10 @@
 
 package jms
 
+import (
+	"strings"
+)
+
 // SummarizeManagedInstanceUsageFieldsEnum Enum with underlying type: string
 type SummarizeManagedInstanceUsageFieldsEnum string
 
@@ -41,4 +45,15 @@ func GetSummarizeManagedInstanceUsageFieldsEnumStringValues() []string {
 		"approximateInstallationCount",
 		"approximateApplicationCount",
 	}
+}
+
+// GetMappingSummarizeManagedInstanceUsageFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeManagedInstanceUsageFieldsEnum(val string) (SummarizeManagedInstanceUsageFieldsEnum, bool) {
+	mappingSummarizeManagedInstanceUsageFieldsEnumIgnoreCase := make(map[string]SummarizeManagedInstanceUsageFieldsEnum)
+	for k, v := range mappingSummarizeManagedInstanceUsageFieldsEnum {
+		mappingSummarizeManagedInstanceUsageFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeManagedInstanceUsageFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

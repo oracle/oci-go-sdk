@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -81,7 +81,7 @@ func (m DrgRouteTable) String() string {
 // Not recommended for calling this function directly
 func (m DrgRouteTable) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDrgRouteTableLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDrgRouteTableLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDrgRouteTableLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -126,4 +126,15 @@ func GetDrgRouteTableLifecycleStateEnumStringValues() []string {
 		"TERMINATING",
 		"TERMINATED",
 	}
+}
+
+// GetMappingDrgRouteTableLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgRouteTableLifecycleStateEnum(val string) (DrgRouteTableLifecycleStateEnum, bool) {
+	mappingDrgRouteTableLifecycleStateEnumIgnoreCase := make(map[string]DrgRouteTableLifecycleStateEnum)
+	for k, v := range mappingDrgRouteTableLifecycleStateEnum {
+		mappingDrgRouteTableLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgRouteTableLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -86,10 +86,10 @@ func (request ListExternalPublicationValidationsRequest) RetryPolicy() *common.R
 // Not recommended for calling this function directly
 func (request ListExternalPublicationValidationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListExternalPublicationValidationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListExternalPublicationValidationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListExternalPublicationValidationsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListExternalPublicationValidationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListExternalPublicationValidationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListExternalPublicationValidationsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -161,6 +161,17 @@ func GetListExternalPublicationValidationsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListExternalPublicationValidationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListExternalPublicationValidationsSortOrderEnum(val string) (ListExternalPublicationValidationsSortOrderEnum, bool) {
+	mappingListExternalPublicationValidationsSortOrderEnumIgnoreCase := make(map[string]ListExternalPublicationValidationsSortOrderEnum)
+	for k, v := range mappingListExternalPublicationValidationsSortOrderEnum {
+		mappingListExternalPublicationValidationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListExternalPublicationValidationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListExternalPublicationValidationsSortByEnum Enum with underlying type: string
 type ListExternalPublicationValidationsSortByEnum string
 
@@ -190,4 +201,15 @@ func GetListExternalPublicationValidationsSortByEnumStringValues() []string {
 		"TIME_CREATED",
 		"DISPLAY_NAME",
 	}
+}
+
+// GetMappingListExternalPublicationValidationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListExternalPublicationValidationsSortByEnum(val string) (ListExternalPublicationValidationsSortByEnum, bool) {
+	mappingListExternalPublicationValidationsSortByEnumIgnoreCase := make(map[string]ListExternalPublicationValidationsSortByEnum)
+	for k, v := range mappingListExternalPublicationValidationsSortByEnum {
+		mappingListExternalPublicationValidationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListExternalPublicationValidationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

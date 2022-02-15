@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -75,7 +75,7 @@ func (m DynamicGroup) String() string {
 // Not recommended for calling this function directly
 func (m DynamicGroup) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDynamicGroupLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDynamicGroupLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDynamicGroupLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -123,4 +123,15 @@ func GetDynamicGroupLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingDynamicGroupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDynamicGroupLifecycleStateEnum(val string) (DynamicGroupLifecycleStateEnum, bool) {
+	mappingDynamicGroupLifecycleStateEnumIgnoreCase := make(map[string]DynamicGroupLifecycleStateEnum)
+	for k, v := range mappingDynamicGroupLifecycleStateEnum {
+		mappingDynamicGroupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDynamicGroupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -147,10 +147,10 @@ func (request SummarizeExadataInsightResourceUsageRequest) RetryPolicy() *common
 // Not recommended for calling this function directly
 func (request SummarizeExadataInsightResourceUsageRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeExadataInsightResourceUsageSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceUsageSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeExadataInsightResourceUsageSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeExadataInsightResourceUsageSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeExadataInsightResourceUsageSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeExadataInsightResourceUsageSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -218,6 +218,17 @@ func GetSummarizeExadataInsightResourceUsageSortOrderEnumStringValues() []string
 	}
 }
 
+// GetMappingSummarizeExadataInsightResourceUsageSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceUsageSortOrderEnum(val string) (SummarizeExadataInsightResourceUsageSortOrderEnum, bool) {
+	mappingSummarizeExadataInsightResourceUsageSortOrderEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceUsageSortOrderEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceUsageSortOrderEnum {
+		mappingSummarizeExadataInsightResourceUsageSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceUsageSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeExadataInsightResourceUsageSortByEnum Enum with underlying type: string
 type SummarizeExadataInsightResourceUsageSortByEnum string
 
@@ -253,4 +264,15 @@ func GetSummarizeExadataInsightResourceUsageSortByEnumStringValues() []string {
 		"capacity",
 		"usageChangePercent",
 	}
+}
+
+// GetMappingSummarizeExadataInsightResourceUsageSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeExadataInsightResourceUsageSortByEnum(val string) (SummarizeExadataInsightResourceUsageSortByEnum, bool) {
+	mappingSummarizeExadataInsightResourceUsageSortByEnumIgnoreCase := make(map[string]SummarizeExadataInsightResourceUsageSortByEnum)
+	for k, v := range mappingSummarizeExadataInsightResourceUsageSortByEnum {
+		mappingSummarizeExadataInsightResourceUsageSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeExadataInsightResourceUsageSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

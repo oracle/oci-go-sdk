@@ -12,7 +12,7 @@ package marketplace
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -62,7 +62,7 @@ func (m CreatePublicationDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreatePublicationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListingTypeEnum[string(m.ListingType)]; !ok && m.ListingType != "" {
+	if _, ok := GetMappingListingTypeEnum(string(m.ListingType)); !ok && m.ListingType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ListingType: %s. Supported values are: %s.", m.ListingType, strings.Join(GetListingTypeEnumStringValues(), ",")))
 	}
 

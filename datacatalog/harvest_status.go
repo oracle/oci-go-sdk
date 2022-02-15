@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // HarvestStatusEnum Enum with underlying type: string
 type HarvestStatusEnum string
 
@@ -45,4 +49,15 @@ func GetHarvestStatusEnumStringValues() []string {
 		"IN_PROGRESS",
 		"DEFERRED",
 	}
+}
+
+// GetMappingHarvestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHarvestStatusEnum(val string) (HarvestStatusEnum, bool) {
+	mappingHarvestStatusEnumIgnoreCase := make(map[string]HarvestStatusEnum)
+	for k, v := range mappingHarvestStatusEnum {
+		mappingHarvestStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHarvestStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

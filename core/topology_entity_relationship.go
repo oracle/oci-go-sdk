@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -139,4 +139,15 @@ func GetTopologyEntityRelationshipTypeEnumStringValues() []string {
 		"ASSOCIATED_WITH",
 		"ROUTES_TO",
 	}
+}
+
+// GetMappingTopologyEntityRelationshipTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTopologyEntityRelationshipTypeEnum(val string) (TopologyEntityRelationshipTypeEnum, bool) {
+	mappingTopologyEntityRelationshipTypeEnumIgnoreCase := make(map[string]TopologyEntityRelationshipTypeEnum)
+	for k, v := range mappingTopologyEntityRelationshipTypeEnum {
+		mappingTopologyEntityRelationshipTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTopologyEntityRelationshipTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

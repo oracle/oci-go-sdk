@@ -14,7 +14,7 @@ package sch
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -110,4 +110,15 @@ func GetDimensionValueDetailsKindEnumStringValues() []string {
 		"jmesPath",
 		"static",
 	}
+}
+
+// GetMappingDimensionValueDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDimensionValueDetailsKindEnum(val string) (DimensionValueDetailsKindEnum, bool) {
+	mappingDimensionValueDetailsKindEnumIgnoreCase := make(map[string]DimensionValueDetailsKindEnum)
+	for k, v := range mappingDimensionValueDetailsKindEnum {
+		mappingDimensionValueDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDimensionValueDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

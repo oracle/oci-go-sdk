@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // DataAssetImportExportTypeFilterEnum Enum with underlying type: string
 type DataAssetImportExportTypeFilterEnum string
 
@@ -39,4 +43,15 @@ func GetDataAssetImportExportTypeFilterEnumStringValues() []string {
 		"CUSTOM_PROPERTY_VALUES",
 		"ALL",
 	}
+}
+
+// GetMappingDataAssetImportExportTypeFilterEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataAssetImportExportTypeFilterEnum(val string) (DataAssetImportExportTypeFilterEnum, bool) {
+	mappingDataAssetImportExportTypeFilterEnumIgnoreCase := make(map[string]DataAssetImportExportTypeFilterEnum)
+	for k, v := range mappingDataAssetImportExportTypeFilterEnum {
+		mappingDataAssetImportExportTypeFilterEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataAssetImportExportTypeFilterEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

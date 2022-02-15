@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"io"
 	"net/http"
 	"strings"
@@ -94,7 +94,7 @@ func (request UploadLogEventsFileRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request UploadLogEventsFileRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUploadLogEventsFilePayloadTypeEnum[string(request.PayloadType)]; !ok && request.PayloadType != "" {
+	if _, ok := GetMappingUploadLogEventsFilePayloadTypeEnum(string(request.PayloadType)); !ok && request.PayloadType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PayloadType: %s. Supported values are: %s.", request.PayloadType, strings.Join(GetUploadLogEventsFilePayloadTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,4 +160,15 @@ func GetUploadLogEventsFilePayloadTypeEnumStringValues() []string {
 		"GZIP",
 		"ZIP",
 	}
+}
+
+// GetMappingUploadLogEventsFilePayloadTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUploadLogEventsFilePayloadTypeEnum(val string) (UploadLogEventsFilePayloadTypeEnum, bool) {
+	mappingUploadLogEventsFilePayloadTypeEnumIgnoreCase := make(map[string]UploadLogEventsFilePayloadTypeEnum)
+	for k, v := range mappingUploadLogEventsFilePayloadTypeEnum {
+		mappingUploadLogEventsFilePayloadTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUploadLogEventsFilePayloadTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

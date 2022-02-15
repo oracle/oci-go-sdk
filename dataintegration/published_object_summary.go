@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -212,4 +212,15 @@ func GetPublishedObjectSummaryModelTypeEnumStringValues() []string {
 		"OCI_DATAFLOW_TASK",
 		"REST_TASK",
 	}
+}
+
+// GetMappingPublishedObjectSummaryModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPublishedObjectSummaryModelTypeEnum(val string) (PublishedObjectSummaryModelTypeEnum, bool) {
+	mappingPublishedObjectSummaryModelTypeEnumIgnoreCase := make(map[string]PublishedObjectSummaryModelTypeEnum)
+	for k, v := range mappingPublishedObjectSummaryModelTypeEnum {
+		mappingPublishedObjectSummaryModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPublishedObjectSummaryModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

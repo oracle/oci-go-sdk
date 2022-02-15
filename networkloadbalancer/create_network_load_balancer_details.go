@@ -11,7 +11,7 @@ package networkloadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -90,7 +90,7 @@ func (m CreateNetworkLoadBalancerDetails) String() string {
 func (m CreateNetworkLoadBalancerDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingNlbIpVersionEnum[string(m.NlbIpVersion)]; !ok && m.NlbIpVersion != "" {
+	if _, ok := GetMappingNlbIpVersionEnum(string(m.NlbIpVersion)); !ok && m.NlbIpVersion != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NlbIpVersion: %s. Supported values are: %s.", m.NlbIpVersion, strings.Join(GetNlbIpVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -9,6 +9,10 @@
 
 package jms
 
+import (
+	"strings"
+)
+
 // OsFamilyEnum Enum with underlying type: string
 type OsFamilyEnum string
 
@@ -44,4 +48,15 @@ func GetOsFamilyEnumStringValues() []string {
 		"MACOS",
 		"UNKNOWN",
 	}
+}
+
+// GetMappingOsFamilyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOsFamilyEnum(val string) (OsFamilyEnum, bool) {
+	mappingOsFamilyEnumIgnoreCase := make(map[string]OsFamilyEnum)
+	for k, v := range mappingOsFamilyEnum {
+		mappingOsFamilyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOsFamilyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

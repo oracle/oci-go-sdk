@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -34,7 +34,7 @@ func (m GitlabFilter) String() string {
 func (m GitlabFilter) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range m.Events {
-		if _, ok := mappingGitlabFilterEventsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGitlabFilterEventsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Events: %s. Supported values are: %s.", val, strings.Join(GetGitlabFilterEventsEnumStringValues(), ",")))
 		}
 	}
@@ -97,4 +97,15 @@ func GetGitlabFilterEventsEnumStringValues() []string {
 		"PULL_REQUEST_REOPENED",
 		"PULL_REQUEST_MERGED",
 	}
+}
+
+// GetMappingGitlabFilterEventsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGitlabFilterEventsEnum(val string) (GitlabFilterEventsEnum, bool) {
+	mappingGitlabFilterEventsEnumIgnoreCase := make(map[string]GitlabFilterEventsEnum)
+	for k, v := range mappingGitlabFilterEventsEnum {
+		mappingGitlabFilterEventsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGitlabFilterEventsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

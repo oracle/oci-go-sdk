@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -45,13 +45,13 @@ func (m SystemPrivilegeSummary) String() string {
 func (m SystemPrivilegeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSystemPrivilegeSummaryAdminOptionEnum[string(m.AdminOption)]; !ok && m.AdminOption != "" {
+	if _, ok := GetMappingSystemPrivilegeSummaryAdminOptionEnum(string(m.AdminOption)); !ok && m.AdminOption != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AdminOption: %s. Supported values are: %s.", m.AdminOption, strings.Join(GetSystemPrivilegeSummaryAdminOptionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSystemPrivilegeSummaryCommonEnum[string(m.Common)]; !ok && m.Common != "" {
+	if _, ok := GetMappingSystemPrivilegeSummaryCommonEnum(string(m.Common)); !ok && m.Common != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Common: %s. Supported values are: %s.", m.Common, strings.Join(GetSystemPrivilegeSummaryCommonEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSystemPrivilegeSummaryInheritedEnum[string(m.Inherited)]; !ok && m.Inherited != "" {
+	if _, ok := GetMappingSystemPrivilegeSummaryInheritedEnum(string(m.Inherited)); !ok && m.Inherited != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Inherited: %s. Supported values are: %s.", m.Inherited, strings.Join(GetSystemPrivilegeSummaryInheritedEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -91,6 +91,17 @@ func GetSystemPrivilegeSummaryAdminOptionEnumStringValues() []string {
 	}
 }
 
+// GetMappingSystemPrivilegeSummaryAdminOptionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSystemPrivilegeSummaryAdminOptionEnum(val string) (SystemPrivilegeSummaryAdminOptionEnum, bool) {
+	mappingSystemPrivilegeSummaryAdminOptionEnumIgnoreCase := make(map[string]SystemPrivilegeSummaryAdminOptionEnum)
+	for k, v := range mappingSystemPrivilegeSummaryAdminOptionEnum {
+		mappingSystemPrivilegeSummaryAdminOptionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSystemPrivilegeSummaryAdminOptionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SystemPrivilegeSummaryCommonEnum Enum with underlying type: string
 type SystemPrivilegeSummaryCommonEnum string
 
@@ -122,6 +133,17 @@ func GetSystemPrivilegeSummaryCommonEnumStringValues() []string {
 	}
 }
 
+// GetMappingSystemPrivilegeSummaryCommonEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSystemPrivilegeSummaryCommonEnum(val string) (SystemPrivilegeSummaryCommonEnum, bool) {
+	mappingSystemPrivilegeSummaryCommonEnumIgnoreCase := make(map[string]SystemPrivilegeSummaryCommonEnum)
+	for k, v := range mappingSystemPrivilegeSummaryCommonEnum {
+		mappingSystemPrivilegeSummaryCommonEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSystemPrivilegeSummaryCommonEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SystemPrivilegeSummaryInheritedEnum Enum with underlying type: string
 type SystemPrivilegeSummaryInheritedEnum string
 
@@ -151,4 +173,15 @@ func GetSystemPrivilegeSummaryInheritedEnumStringValues() []string {
 		"YES",
 		"NO",
 	}
+}
+
+// GetMappingSystemPrivilegeSummaryInheritedEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSystemPrivilegeSummaryInheritedEnum(val string) (SystemPrivilegeSummaryInheritedEnum, bool) {
+	mappingSystemPrivilegeSummaryInheritedEnumIgnoreCase := make(map[string]SystemPrivilegeSummaryInheritedEnum)
+	for k, v := range mappingSystemPrivilegeSummaryInheritedEnum {
+		mappingSystemPrivilegeSummaryInheritedEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSystemPrivilegeSummaryInheritedEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

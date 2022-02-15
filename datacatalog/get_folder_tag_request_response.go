@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -73,7 +73,7 @@ func (request GetFolderTagRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetFolderTagRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetFolderTagFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetFolderTagFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetFolderTagFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -163,4 +163,15 @@ func GetGetFolderTagFieldsEnumStringValues() []string {
 		"uri",
 		"folderKey",
 	}
+}
+
+// GetMappingGetFolderTagFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetFolderTagFieldsEnum(val string) (GetFolderTagFieldsEnum, bool) {
+	mappingGetFolderTagFieldsEnumIgnoreCase := make(map[string]GetFolderTagFieldsEnum)
+	for k, v := range mappingGetFolderTagFieldsEnum {
+		mappingGetFolderTagFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetFolderTagFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

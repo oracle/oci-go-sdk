@@ -12,7 +12,7 @@ package cloudguard
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -34,7 +34,7 @@ func (m CompositeCondition) String() string {
 // Not recommended for calling this function directly
 func (m CompositeCondition) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCompositeConditionCompositeOperatorEnum[string(m.CompositeOperator)]; !ok && m.CompositeOperator != "" {
+	if _, ok := GetMappingCompositeConditionCompositeOperatorEnum(string(m.CompositeOperator)); !ok && m.CompositeOperator != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CompositeOperator: %s. Supported values are: %s.", m.CompositeOperator, strings.Join(GetCompositeConditionCompositeOperatorEnumStringValues(), ",")))
 	}
 
@@ -125,4 +125,15 @@ func GetCompositeConditionCompositeOperatorEnumStringValues() []string {
 		"AND",
 		"OR",
 	}
+}
+
+// GetMappingCompositeConditionCompositeOperatorEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCompositeConditionCompositeOperatorEnum(val string) (CompositeConditionCompositeOperatorEnum, bool) {
+	mappingCompositeConditionCompositeOperatorEnumIgnoreCase := make(map[string]CompositeConditionCompositeOperatorEnum)
+	for k, v := range mappingCompositeConditionCompositeOperatorEnum {
+		mappingCompositeConditionCompositeOperatorEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCompositeConditionCompositeOperatorEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

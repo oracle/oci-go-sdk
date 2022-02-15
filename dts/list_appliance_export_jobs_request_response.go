@@ -6,7 +6,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -78,7 +78,7 @@ func (request ListApplianceExportJobsRequest) RetryPolicy() *common.RetryPolicy 
 // Not recommended for calling this function directly
 func (request ListApplianceExportJobsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListApplianceExportJobsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListApplianceExportJobsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListApplianceExportJobsLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -159,4 +159,15 @@ func GetListApplianceExportJobsLifecycleStateEnumStringValues() []string {
 		"CANCELLED",
 		"DELETED",
 	}
+}
+
+// GetMappingListApplianceExportJobsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListApplianceExportJobsLifecycleStateEnum(val string) (ListApplianceExportJobsLifecycleStateEnum, bool) {
+	mappingListApplianceExportJobsLifecycleStateEnumIgnoreCase := make(map[string]ListApplianceExportJobsLifecycleStateEnum)
+	for k, v := range mappingListApplianceExportJobsLifecycleStateEnum {
+		mappingListApplianceExportJobsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListApplianceExportJobsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -54,7 +54,7 @@ func (m DhcpDnsOption) String() string {
 // Not recommended for calling this function directly
 func (m DhcpDnsOption) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDhcpDnsOptionServerTypeEnum[string(m.ServerType)]; !ok && m.ServerType != "" {
+	if _, ok := GetMappingDhcpDnsOptionServerTypeEnum(string(m.ServerType)); !ok && m.ServerType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ServerType: %s. Supported values are: %s.", m.ServerType, strings.Join(GetDhcpDnsOptionServerTypeEnumStringValues(), ",")))
 	}
 
@@ -110,4 +110,15 @@ func GetDhcpDnsOptionServerTypeEnumStringValues() []string {
 		"VcnLocalPlusInternet",
 		"CustomDnsServer",
 	}
+}
+
+// GetMappingDhcpDnsOptionServerTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDhcpDnsOptionServerTypeEnum(val string) (DhcpDnsOptionServerTypeEnum, bool) {
+	mappingDhcpDnsOptionServerTypeEnumIgnoreCase := make(map[string]DhcpDnsOptionServerTypeEnum)
+	for k, v := range mappingDhcpDnsOptionServerTypeEnum {
+		mappingDhcpDnsOptionServerTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDhcpDnsOptionServerTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

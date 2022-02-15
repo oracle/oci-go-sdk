@@ -9,6 +9,10 @@
 
 package analytics
 
+import (
+	"strings"
+)
+
 // SortByEnum Enum with underlying type: string
 type SortByEnum string
 
@@ -50,4 +54,15 @@ func GetSortByEnumStringValues() []string {
 		"name",
 		"timeCreated",
 	}
+}
+
+// GetMappingSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSortByEnum(val string) (SortByEnum, bool) {
+	mappingSortByEnumIgnoreCase := make(map[string]SortByEnum)
+	for k, v := range mappingSortByEnum {
+		mappingSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

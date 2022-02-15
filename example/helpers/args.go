@@ -8,7 +8,7 @@ package helpers
 import (
 	"os"
 
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 )
 
 var (

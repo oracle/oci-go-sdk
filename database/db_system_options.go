@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -34,7 +34,7 @@ func (m DbSystemOptions) String() string {
 func (m DbSystemOptions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDbSystemOptionsStorageManagementEnum[string(m.StorageManagement)]; !ok && m.StorageManagement != "" {
+	if _, ok := GetMappingDbSystemOptionsStorageManagementEnum(string(m.StorageManagement)); !ok && m.StorageManagement != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for StorageManagement: %s. Supported values are: %s.", m.StorageManagement, strings.Join(GetDbSystemOptionsStorageManagementEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -72,4 +72,15 @@ func GetDbSystemOptionsStorageManagementEnumStringValues() []string {
 		"ASM",
 		"LVM",
 	}
+}
+
+// GetMappingDbSystemOptionsStorageManagementEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbSystemOptionsStorageManagementEnum(val string) (DbSystemOptionsStorageManagementEnum, bool) {
+	mappingDbSystemOptionsStorageManagementEnumIgnoreCase := make(map[string]DbSystemOptionsStorageManagementEnum)
+	for k, v := range mappingDbSystemOptionsStorageManagementEnum {
+		mappingDbSystemOptionsStorageManagementEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbSystemOptionsStorageManagementEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

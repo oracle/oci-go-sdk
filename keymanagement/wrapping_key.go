@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -49,7 +49,7 @@ func (m WrappingKey) String() string {
 // Not recommended for calling this function directly
 func (m WrappingKey) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingWrappingKeyLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingWrappingKeyLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetWrappingKeyLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -121,4 +121,15 @@ func GetWrappingKeyLifecycleStateEnumStringValues() []string {
 		"BACKUP_IN_PROGRESS",
 		"RESTORING",
 	}
+}
+
+// GetMappingWrappingKeyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWrappingKeyLifecycleStateEnum(val string) (WrappingKeyLifecycleStateEnum, bool) {
+	mappingWrappingKeyLifecycleStateEnumIgnoreCase := make(map[string]WrappingKeyLifecycleStateEnum)
+	for k, v := range mappingWrappingKeyLifecycleStateEnum {
+		mappingWrappingKeyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWrappingKeyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

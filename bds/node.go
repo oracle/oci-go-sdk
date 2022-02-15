@@ -11,7 +11,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -73,10 +73,10 @@ func (m Node) String() string {
 // Not recommended for calling this function directly
 func (m Node) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingNodeLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingNodeLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetNodeLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingNodeNodeTypeEnum[string(m.NodeType)]; !ok && m.NodeType != "" {
+	if _, ok := GetMappingNodeNodeTypeEnum(string(m.NodeType)); !ok && m.NodeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NodeType: %s. Supported values are: %s.", m.NodeType, strings.Join(GetNodeNodeTypeEnumStringValues(), ",")))
 	}
 
@@ -132,6 +132,17 @@ func GetNodeLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingNodeLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNodeLifecycleStateEnum(val string) (NodeLifecycleStateEnum, bool) {
+	mappingNodeLifecycleStateEnumIgnoreCase := make(map[string]NodeLifecycleStateEnum)
+	for k, v := range mappingNodeLifecycleStateEnum {
+		mappingNodeLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNodeLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // NodeNodeTypeEnum Enum with underlying type: string
 type NodeNodeTypeEnum string
 
@@ -173,4 +184,15 @@ func GetNodeNodeTypeEnumStringValues() []string {
 		"BURSTING",
 		"CLOUD_SQL",
 	}
+}
+
+// GetMappingNodeNodeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNodeNodeTypeEnum(val string) (NodeNodeTypeEnum, bool) {
+	mappingNodeNodeTypeEnumIgnoreCase := make(map[string]NodeNodeTypeEnum)
+	for k, v := range mappingNodeNodeTypeEnum {
+		mappingNodeNodeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNodeNodeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

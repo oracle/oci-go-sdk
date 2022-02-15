@@ -9,6 +9,10 @@
 
 package jms
 
+import (
+	"strings"
+)
+
 // ManagedInstanceSortByEnum Enum with underlying type: string
 type ManagedInstanceSortByEnum string
 
@@ -50,4 +54,15 @@ func GetManagedInstanceSortByEnumStringValues() []string {
 		"approximateApplicationCount",
 		"osName",
 	}
+}
+
+// GetMappingManagedInstanceSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingManagedInstanceSortByEnum(val string) (ManagedInstanceSortByEnum, bool) {
+	mappingManagedInstanceSortByEnumIgnoreCase := make(map[string]ManagedInstanceSortByEnum)
+	for k, v := range mappingManagedInstanceSortByEnum {
+		mappingManagedInstanceSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingManagedInstanceSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

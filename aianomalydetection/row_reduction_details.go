@@ -13,7 +13,7 @@ package aianomalydetection
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -41,7 +41,7 @@ func (m RowReductionDetails) String() string {
 // Not recommended for calling this function directly
 func (m RowReductionDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRowReductionDetailsReductionMethodEnum[string(m.ReductionMethod)]; !ok && m.ReductionMethod != "" {
+	if _, ok := GetMappingRowReductionDetailsReductionMethodEnum(string(m.ReductionMethod)); !ok && m.ReductionMethod != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReductionMethod: %s. Supported values are: %s.", m.ReductionMethod, strings.Join(GetRowReductionDetailsReductionMethodEnumStringValues(), ",")))
 	}
 
@@ -80,4 +80,15 @@ func GetRowReductionDetailsReductionMethodEnumStringValues() []string {
 		"DELETE_ROW",
 		"AVERAGE_ROW",
 	}
+}
+
+// GetMappingRowReductionDetailsReductionMethodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRowReductionDetailsReductionMethodEnum(val string) (RowReductionDetailsReductionMethodEnum, bool) {
+	mappingRowReductionDetailsReductionMethodEnumIgnoreCase := make(map[string]RowReductionDetailsReductionMethodEnum)
+	for k, v := range mappingRowReductionDetailsReductionMethodEnum {
+		mappingRowReductionDetailsReductionMethodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRowReductionDetailsReductionMethodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

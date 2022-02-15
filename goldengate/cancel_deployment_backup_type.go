@@ -9,6 +9,10 @@
 
 package goldengate
 
+import (
+	"strings"
+)
+
 // CancelDeploymentBackupTypeEnum Enum with underlying type: string
 type CancelDeploymentBackupTypeEnum string
 
@@ -35,4 +39,15 @@ func GetCancelDeploymentBackupTypeEnumStringValues() []string {
 	return []string{
 		"DEFAULT",
 	}
+}
+
+// GetMappingCancelDeploymentBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCancelDeploymentBackupTypeEnum(val string) (CancelDeploymentBackupTypeEnum, bool) {
+	mappingCancelDeploymentBackupTypeEnumIgnoreCase := make(map[string]CancelDeploymentBackupTypeEnum)
+	for k, v := range mappingCancelDeploymentBackupTypeEnum {
+		mappingCancelDeploymentBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCancelDeploymentBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

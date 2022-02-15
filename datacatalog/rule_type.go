@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // RuleTypeEnum Enum with underlying type: string
 type RuleTypeEnum string
 
@@ -42,4 +46,15 @@ func GetRuleTypeEnumStringValues() []string {
 		"FOREIGNKEY",
 		"UNIQUEKEY",
 	}
+}
+
+// GetMappingRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRuleTypeEnum(val string) (RuleTypeEnum, bool) {
+	mappingRuleTypeEnumIgnoreCase := make(map[string]RuleTypeEnum)
+	for k, v := range mappingRuleTypeEnum {
+		mappingRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

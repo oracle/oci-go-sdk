@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -85,7 +85,7 @@ func (m ComputeInstanceGroupDeployStageExecutionProgress) String() string {
 func (m ComputeInstanceGroupDeployStageExecutionProgress) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDeployStageExecutionProgressStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingDeployStageExecutionProgressStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetDeployStageExecutionProgressStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

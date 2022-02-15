@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -91,13 +91,13 @@ func (request ListDbHomesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDbHomesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDbHomesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDbHomesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDbHomesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDbHomesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDbHomesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDbHomesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDbHomeSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingDbHomeSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetDbHomeSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -166,6 +166,17 @@ func GetListDbHomesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDbHomesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDbHomesSortByEnum(val string) (ListDbHomesSortByEnum, bool) {
+	mappingListDbHomesSortByEnumIgnoreCase := make(map[string]ListDbHomesSortByEnum)
+	for k, v := range mappingListDbHomesSortByEnum {
+		mappingListDbHomesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDbHomesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDbHomesSortOrderEnum Enum with underlying type: string
 type ListDbHomesSortOrderEnum string
 
@@ -195,4 +206,15 @@ func GetListDbHomesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDbHomesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDbHomesSortOrderEnum(val string) (ListDbHomesSortOrderEnum, bool) {
+	mappingListDbHomesSortOrderEnumIgnoreCase := make(map[string]ListDbHomesSortOrderEnum)
+	for k, v := range mappingListDbHomesSortOrderEnum {
+		mappingListDbHomesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDbHomesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

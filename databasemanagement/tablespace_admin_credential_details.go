@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -94,7 +94,7 @@ func (m tablespaceadmincredentialdetails) String() string {
 // Not recommended for calling this function directly
 func (m tablespaceadmincredentialdetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingTablespaceAdminCredentialDetailsRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingTablespaceAdminCredentialDetailsRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetTablespaceAdminCredentialDetailsRoleEnumStringValues(), ",")))
 	}
 
@@ -135,6 +135,17 @@ func GetTablespaceAdminCredentialDetailsRoleEnumStringValues() []string {
 	}
 }
 
+// GetMappingTablespaceAdminCredentialDetailsRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceAdminCredentialDetailsRoleEnum(val string) (TablespaceAdminCredentialDetailsRoleEnum, bool) {
+	mappingTablespaceAdminCredentialDetailsRoleEnumIgnoreCase := make(map[string]TablespaceAdminCredentialDetailsRoleEnum)
+	for k, v := range mappingTablespaceAdminCredentialDetailsRoleEnum {
+		mappingTablespaceAdminCredentialDetailsRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceAdminCredentialDetailsRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum Enum with underlying type: string
 type TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum string
 
@@ -164,4 +175,15 @@ func GetTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnumStringV
 		"SECRET",
 		"PASSWORD",
 	}
+}
+
+// GetMappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum(val string) (TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum, bool) {
+	mappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnumIgnoreCase := make(map[string]TablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum)
+	for k, v := range mappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnum {
+		mappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTablespaceAdminCredentialDetailsTablespaceAdminCredentialTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

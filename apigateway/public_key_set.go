@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -110,4 +110,15 @@ func GetPublicKeySetTypeEnumStringValues() []string {
 		"STATIC_KEYS",
 		"REMOTE_JWKS",
 	}
+}
+
+// GetMappingPublicKeySetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPublicKeySetTypeEnum(val string) (PublicKeySetTypeEnum, bool) {
+	mappingPublicKeySetTypeEnumIgnoreCase := make(map[string]PublicKeySetTypeEnum)
+	for k, v := range mappingPublicKeySetTypeEnum {
+		mappingPublicKeySetTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPublicKeySetTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

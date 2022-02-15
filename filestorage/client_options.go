@@ -11,7 +11,7 @@ package filestorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -67,10 +67,10 @@ func (m ClientOptions) String() string {
 func (m ClientOptions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingClientOptionsAccessEnum[string(m.Access)]; !ok && m.Access != "" {
+	if _, ok := GetMappingClientOptionsAccessEnum(string(m.Access)); !ok && m.Access != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Access: %s. Supported values are: %s.", m.Access, strings.Join(GetClientOptionsAccessEnumStringValues(), ",")))
 	}
-	if _, ok := mappingClientOptionsIdentitySquashEnum[string(m.IdentitySquash)]; !ok && m.IdentitySquash != "" {
+	if _, ok := GetMappingClientOptionsIdentitySquashEnum(string(m.IdentitySquash)); !ok && m.IdentitySquash != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IdentitySquash: %s. Supported values are: %s.", m.IdentitySquash, strings.Join(GetClientOptionsIdentitySquashEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -110,6 +110,17 @@ func GetClientOptionsAccessEnumStringValues() []string {
 	}
 }
 
+// GetMappingClientOptionsAccessEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingClientOptionsAccessEnum(val string) (ClientOptionsAccessEnum, bool) {
+	mappingClientOptionsAccessEnumIgnoreCase := make(map[string]ClientOptionsAccessEnum)
+	for k, v := range mappingClientOptionsAccessEnum {
+		mappingClientOptionsAccessEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingClientOptionsAccessEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ClientOptionsIdentitySquashEnum Enum with underlying type: string
 type ClientOptionsIdentitySquashEnum string
 
@@ -142,4 +153,15 @@ func GetClientOptionsIdentitySquashEnumStringValues() []string {
 		"ROOT",
 		"ALL",
 	}
+}
+
+// GetMappingClientOptionsIdentitySquashEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingClientOptionsIdentitySquashEnum(val string) (ClientOptionsIdentitySquashEnum, bool) {
+	mappingClientOptionsIdentitySquashEnumIgnoreCase := make(map[string]ClientOptionsIdentitySquashEnum)
+	for k, v := range mappingClientOptionsIdentitySquashEnum {
+		mappingClientOptionsIdentitySquashEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingClientOptionsIdentitySquashEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

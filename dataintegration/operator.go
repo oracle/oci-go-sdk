@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -334,4 +334,15 @@ func GetOperatorModelTypeEnumStringValues() []string {
 		"EXPRESSION_OPERATOR",
 		"LOOKUP_OPERATOR",
 	}
+}
+
+// GetMappingOperatorModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperatorModelTypeEnum(val string) (OperatorModelTypeEnum, bool) {
+	mappingOperatorModelTypeEnumIgnoreCase := make(map[string]OperatorModelTypeEnum)
+	for k, v := range mappingOperatorModelTypeEnum {
+		mappingOperatorModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperatorModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -89,7 +89,7 @@ func (m OutputPort) String() string {
 // Not recommended for calling this function directly
 func (m OutputPort) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingOutputPortPortTypeEnum[string(m.PortType)]; !ok && m.PortType != "" {
+	if _, ok := GetMappingOutputPortPortTypeEnum(string(m.PortType)); !ok && m.PortType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PortType: %s. Supported values are: %s.", m.PortType, strings.Join(GetOutputPortPortTypeEnumStringValues(), ",")))
 	}
 
@@ -196,4 +196,15 @@ func GetOutputPortPortTypeEnumStringValues() []string {
 		"CONTROL",
 		"MODEL",
 	}
+}
+
+// GetMappingOutputPortPortTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOutputPortPortTypeEnum(val string) (OutputPortPortTypeEnum, bool) {
+	mappingOutputPortPortTypeEnumIgnoreCase := make(map[string]OutputPortPortTypeEnum)
+	for k, v := range mappingOutputPortPortTypeEnum {
+		mappingOutputPortPortTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOutputPortPortTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

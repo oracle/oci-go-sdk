@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -88,10 +88,10 @@ func (request SummarizeJobExecutionsStatusesRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request SummarizeJobExecutionsStatusesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeJobExecutionsStatusesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeJobExecutionsStatusesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeJobExecutionsStatusesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeJobExecutionsStatusesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeJobExecutionsStatusesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeJobExecutionsStatusesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -154,6 +154,17 @@ func GetSummarizeJobExecutionsStatusesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeJobExecutionsStatusesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeJobExecutionsStatusesSortByEnum(val string) (SummarizeJobExecutionsStatusesSortByEnum, bool) {
+	mappingSummarizeJobExecutionsStatusesSortByEnumIgnoreCase := make(map[string]SummarizeJobExecutionsStatusesSortByEnum)
+	for k, v := range mappingSummarizeJobExecutionsStatusesSortByEnum {
+		mappingSummarizeJobExecutionsStatusesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeJobExecutionsStatusesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeJobExecutionsStatusesSortOrderEnum Enum with underlying type: string
 type SummarizeJobExecutionsStatusesSortOrderEnum string
 
@@ -183,4 +194,15 @@ func GetSummarizeJobExecutionsStatusesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeJobExecutionsStatusesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeJobExecutionsStatusesSortOrderEnum(val string) (SummarizeJobExecutionsStatusesSortOrderEnum, bool) {
+	mappingSummarizeJobExecutionsStatusesSortOrderEnumIgnoreCase := make(map[string]SummarizeJobExecutionsStatusesSortOrderEnum)
+	for k, v := range mappingSummarizeJobExecutionsStatusesSortOrderEnum {
+		mappingSummarizeJobExecutionsStatusesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeJobExecutionsStatusesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

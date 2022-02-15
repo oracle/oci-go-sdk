@@ -13,7 +13,7 @@ package computeinstanceagent
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -116,4 +116,15 @@ func GetInstanceAgentCommandSourceDetailsSourceTypeEnumStringValues() []string {
 		"OBJECT_STORAGE_URI",
 		"OBJECT_STORAGE_TUPLE",
 	}
+}
+
+// GetMappingInstanceAgentCommandSourceDetailsSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceAgentCommandSourceDetailsSourceTypeEnum(val string) (InstanceAgentCommandSourceDetailsSourceTypeEnum, bool) {
+	mappingInstanceAgentCommandSourceDetailsSourceTypeEnumIgnoreCase := make(map[string]InstanceAgentCommandSourceDetailsSourceTypeEnum)
+	for k, v := range mappingInstanceAgentCommandSourceDetailsSourceTypeEnum {
+		mappingInstanceAgentCommandSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceAgentCommandSourceDetailsSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

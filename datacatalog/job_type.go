@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // JobTypeEnum Enum with underlying type: string
 type JobTypeEnum string
 
@@ -84,4 +88,15 @@ func GetJobTypeEnumStringValues() []string {
 		"ASYNC_DELETE",
 		"IMPORT_DATA_ASSET",
 	}
+}
+
+// GetMappingJobTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobTypeEnum(val string) (JobTypeEnum, bool) {
+	mappingJobTypeEnumIgnoreCase := make(map[string]JobTypeEnum)
+	for k, v := range mappingJobTypeEnum {
+		mappingJobTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

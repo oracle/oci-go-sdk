@@ -12,7 +12,7 @@ package announcementsservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -104,7 +104,7 @@ func (m basecreateannouncementspreferencesdetails) String() string {
 // Not recommended for calling this function directly
 func (m basecreateannouncementspreferencesdetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum[string(m.PreferenceType)]; !ok && m.PreferenceType != "" {
+	if _, ok := GetMappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum(string(m.PreferenceType)); !ok && m.PreferenceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PreferenceType: %s. Supported values are: %s.", m.PreferenceType, strings.Join(GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumStringValues(), ",")))
 	}
 
@@ -146,4 +146,15 @@ func GetBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumStringValues(
 		"OPT_IN_TENANT_AND_INFORMATIONAL_ANNOUNCEMENTS",
 		"OPT_OUT_ALL_ANNOUNCEMENTS",
 	}
+}
+
+// GetMappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum(val string) (BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum, bool) {
+	mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumIgnoreCase := make(map[string]BaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum)
+	for k, v := range mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnum {
+		mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBaseCreateAnnouncementsPreferencesDetailsPreferenceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

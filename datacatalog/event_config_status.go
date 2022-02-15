@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // EventConfigStatusEnum Enum with underlying type: string
 type EventConfigStatusEnum string
 
@@ -39,4 +43,15 @@ func GetEventConfigStatusEnumStringValues() []string {
 		"ENABLED",
 		"DISABLED",
 	}
+}
+
+// GetMappingEventConfigStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEventConfigStatusEnum(val string) (EventConfigStatusEnum, bool) {
+	mappingEventConfigStatusEnumIgnoreCase := make(map[string]EventConfigStatusEnum)
+	for k, v := range mappingEventConfigStatusEnum {
+		mappingEventConfigStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEventConfigStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

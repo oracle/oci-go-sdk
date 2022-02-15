@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -105,7 +105,7 @@ func (m imagesourcedetails) String() string {
 func (m imagesourcedetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingImageSourceDetailsSourceImageTypeEnum[string(m.SourceImageType)]; !ok && m.SourceImageType != "" {
+	if _, ok := GetMappingImageSourceDetailsSourceImageTypeEnum(string(m.SourceImageType)); !ok && m.SourceImageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceImageType: %s. Supported values are: %s.", m.SourceImageType, strings.Join(GetImageSourceDetailsSourceImageTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -143,4 +143,15 @@ func GetImageSourceDetailsSourceImageTypeEnumStringValues() []string {
 		"QCOW2",
 		"VMDK",
 	}
+}
+
+// GetMappingImageSourceDetailsSourceImageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingImageSourceDetailsSourceImageTypeEnum(val string) (ImageSourceDetailsSourceImageTypeEnum, bool) {
+	mappingImageSourceDetailsSourceImageTypeEnumIgnoreCase := make(map[string]ImageSourceDetailsSourceImageTypeEnum)
+	for k, v := range mappingImageSourceDetailsSourceImageTypeEnum {
+		mappingImageSourceDetailsSourceImageTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingImageSourceDetailsSourceImageTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

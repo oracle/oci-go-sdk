@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,4 +101,15 @@ func GetPartitionConfigModelTypeEnumStringValues() []string {
 	return []string{
 		"KEYRANGEPARTITIONCONFIG",
 	}
+}
+
+// GetMappingPartitionConfigModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPartitionConfigModelTypeEnum(val string) (PartitionConfigModelTypeEnum, bool) {
+	mappingPartitionConfigModelTypeEnumIgnoreCase := make(map[string]PartitionConfigModelTypeEnum)
+	for k, v := range mappingPartitionConfigModelTypeEnum {
+		mappingPartitionConfigModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPartitionConfigModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,6 +11,10 @@
 
 package objectstorage
 
+import (
+	"strings"
+)
+
 // ArchivalStateEnum Enum with underlying type: string
 type ArchivalStateEnum string
 
@@ -43,4 +47,15 @@ func GetArchivalStateEnumStringValues() []string {
 		"Restoring",
 		"Restored",
 	}
+}
+
+// GetMappingArchivalStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingArchivalStateEnum(val string) (ArchivalStateEnum, bool) {
+	mappingArchivalStateEnumIgnoreCase := make(map[string]ArchivalStateEnum)
+	for k, v := range mappingArchivalStateEnum {
+		mappingArchivalStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingArchivalStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

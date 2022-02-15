@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -172,14 +172,14 @@ func (m EmManagedExternalHostInsightSummary) String() string {
 // Not recommended for calling this function directly
 func (m EmManagedExternalHostInsightSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingEmManagedExternalHostInsightSummaryPlatformTypeEnum[string(m.PlatformType)]; !ok && m.PlatformType != "" {
+	if _, ok := GetMappingEmManagedExternalHostInsightSummaryPlatformTypeEnum(string(m.PlatformType)); !ok && m.PlatformType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", m.PlatformType, strings.Join(GetEmManagedExternalHostInsightSummaryPlatformTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingResourceStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingResourceStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetResourceStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -234,4 +234,15 @@ func GetEmManagedExternalHostInsightSummaryPlatformTypeEnumStringValues() []stri
 		"SOLARIS",
 		"SUNOS",
 	}
+}
+
+// GetMappingEmManagedExternalHostInsightSummaryPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEmManagedExternalHostInsightSummaryPlatformTypeEnum(val string) (EmManagedExternalHostInsightSummaryPlatformTypeEnum, bool) {
+	mappingEmManagedExternalHostInsightSummaryPlatformTypeEnumIgnoreCase := make(map[string]EmManagedExternalHostInsightSummaryPlatformTypeEnum)
+	for k, v := range mappingEmManagedExternalHostInsightSummaryPlatformTypeEnum {
+		mappingEmManagedExternalHostInsightSummaryPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEmManagedExternalHostInsightSummaryPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

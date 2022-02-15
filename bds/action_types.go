@@ -9,6 +9,10 @@
 
 package bds
 
+import (
+	"strings"
+)
+
 // ActionTypesEnum Enum with underlying type: string
 type ActionTypesEnum string
 
@@ -47,4 +51,15 @@ func GetActionTypesEnumStringValues() []string {
 		"IN_PROGRESS",
 		"FAILED",
 	}
+}
+
+// GetMappingActionTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingActionTypesEnum(val string) (ActionTypesEnum, bool) {
+	mappingActionTypesEnumIgnoreCase := make(map[string]ActionTypesEnum)
+	for k, v := range mappingActionTypesEnum {
+		mappingActionTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingActionTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

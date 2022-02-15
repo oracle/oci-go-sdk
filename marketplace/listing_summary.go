@@ -11,7 +11,7 @@ package marketplace
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -69,16 +69,16 @@ func (m ListingSummary) String() string {
 func (m ListingSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPackageTypeEnumEnum[string(m.PackageType)]; !ok && m.PackageType != "" {
+	if _, ok := GetMappingPackageTypeEnumEnum(string(m.PackageType)); !ok && m.PackageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PackageType: %s. Supported values are: %s.", m.PackageType, strings.Join(GetPackageTypeEnumEnumStringValues(), ",")))
 	}
 	for _, val := range m.PricingTypes {
-		if _, ok := mappingListingSummaryPricingTypesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListingSummaryPricingTypesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PricingTypes: %s. Supported values are: %s.", val, strings.Join(GetListingSummaryPricingTypesEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListingTypeEnum[string(m.ListingType)]; !ok && m.ListingType != "" {
+	if _, ok := GetMappingListingTypeEnum(string(m.ListingType)); !ok && m.ListingType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ListingType: %s. Supported values are: %s.", m.ListingType, strings.Join(GetListingTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -119,4 +119,15 @@ func GetListingSummaryPricingTypesEnumStringValues() []string {
 		"BYOL",
 		"PAYGO",
 	}
+}
+
+// GetMappingListingSummaryPricingTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListingSummaryPricingTypesEnum(val string) (ListingSummaryPricingTypesEnum, bool) {
+	mappingListingSummaryPricingTypesEnumIgnoreCase := make(map[string]ListingSummaryPricingTypesEnum)
+	for k, v := range mappingListingSummaryPricingTypesEnum {
+		mappingListingSummaryPricingTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListingSummaryPricingTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

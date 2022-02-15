@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // JobLifecycleStatesEnum Enum with underlying type: string
 type JobLifecycleStatesEnum string
 
@@ -59,4 +63,15 @@ func GetJobLifecycleStatesEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingJobLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobLifecycleStatesEnum(val string) (JobLifecycleStatesEnum, bool) {
+	mappingJobLifecycleStatesEnumIgnoreCase := make(map[string]JobLifecycleStatesEnum)
+	for k, v := range mappingJobLifecycleStatesEnum {
+		mappingJobLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

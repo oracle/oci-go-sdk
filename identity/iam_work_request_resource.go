@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -43,7 +43,7 @@ func (m IamWorkRequestResource) String() string {
 // Not recommended for calling this function directly
 func (m IamWorkRequestResource) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingIamWorkRequestResourceActionTypeEnum[string(m.ActionType)]; !ok && m.ActionType != "" {
+	if _, ok := GetMappingIamWorkRequestResourceActionTypeEnum(string(m.ActionType)); !ok && m.ActionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ActionType: %s. Supported values are: %s.", m.ActionType, strings.Join(GetIamWorkRequestResourceActionTypeEnumStringValues(), ",")))
 	}
 
@@ -91,4 +91,15 @@ func GetIamWorkRequestResourceActionTypeEnumStringValues() []string {
 		"RELATED",
 		"IN_PROGRESS",
 	}
+}
+
+// GetMappingIamWorkRequestResourceActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIamWorkRequestResourceActionTypeEnum(val string) (IamWorkRequestResourceActionTypeEnum, bool) {
+	mappingIamWorkRequestResourceActionTypeEnumIgnoreCase := make(map[string]IamWorkRequestResourceActionTypeEnum)
+	for k, v := range mappingIamWorkRequestResourceActionTypeEnum {
+		mappingIamWorkRequestResourceActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIamWorkRequestResourceActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

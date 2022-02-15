@@ -6,7 +6,7 @@ package osubbillingschedule
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -82,10 +82,10 @@ func (request ListBillingSchedulesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListBillingSchedulesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListBillingSchedulesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListBillingSchedulesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListBillingSchedulesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBillingSchedulesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListBillingSchedulesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListBillingSchedulesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,6 +153,17 @@ func GetListBillingSchedulesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBillingSchedulesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBillingSchedulesSortOrderEnum(val string) (ListBillingSchedulesSortOrderEnum, bool) {
+	mappingListBillingSchedulesSortOrderEnumIgnoreCase := make(map[string]ListBillingSchedulesSortOrderEnum)
+	for k, v := range mappingListBillingSchedulesSortOrderEnum {
+		mappingListBillingSchedulesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBillingSchedulesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBillingSchedulesSortByEnum Enum with underlying type: string
 type ListBillingSchedulesSortByEnum string
 
@@ -182,4 +193,15 @@ func GetListBillingSchedulesSortByEnumStringValues() []string {
 		"ORDERNUMBER",
 		"TIMEINVOICING",
 	}
+}
+
+// GetMappingListBillingSchedulesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBillingSchedulesSortByEnum(val string) (ListBillingSchedulesSortByEnum, bool) {
+	mappingListBillingSchedulesSortByEnumIgnoreCase := make(map[string]ListBillingSchedulesSortByEnum)
+	for k, v := range mappingListBillingSchedulesSortByEnum {
+		mappingListBillingSchedulesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBillingSchedulesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

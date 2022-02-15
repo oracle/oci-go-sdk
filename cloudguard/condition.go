@@ -12,7 +12,7 @@ package cloudguard
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -108,4 +108,15 @@ func GetConditionKindEnumStringValues() []string {
 		"COMPOSITE",
 		"SIMPLE",
 	}
+}
+
+// GetMappingConditionKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConditionKindEnum(val string) (ConditionKindEnum, bool) {
+	mappingConditionKindEnumIgnoreCase := make(map[string]ConditionKindEnum)
+	for k, v := range mappingConditionKindEnum {
+		mappingConditionKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConditionKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

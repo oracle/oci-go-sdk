@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // AdvisorResultsEnum Enum with underlying type: string
 type AdvisorResultsEnum string
 
@@ -47,4 +51,15 @@ func GetAdvisorResultsEnumStringValues() []string {
 		"INFORMATIONAL",
 		"PASS",
 	}
+}
+
+// GetMappingAdvisorResultsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAdvisorResultsEnum(val string) (AdvisorResultsEnum, bool) {
+	mappingAdvisorResultsEnumIgnoreCase := make(map[string]AdvisorResultsEnum)
+	for k, v := range mappingAdvisorResultsEnum {
+		mappingAdvisorResultsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAdvisorResultsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

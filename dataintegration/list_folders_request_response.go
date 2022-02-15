@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -89,10 +89,10 @@ func (request ListFoldersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListFoldersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListFoldersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListFoldersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListFoldersSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListFoldersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListFoldersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListFoldersSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListFoldersSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListFoldersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFoldersSortOrderEnum(val string) (ListFoldersSortOrderEnum, bool) {
+	mappingListFoldersSortOrderEnumIgnoreCase := make(map[string]ListFoldersSortOrderEnum)
+	for k, v := range mappingListFoldersSortOrderEnum {
+		mappingListFoldersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFoldersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListFoldersSortByEnum Enum with underlying type: string
 type ListFoldersSortByEnum string
 
@@ -193,4 +204,15 @@ func GetListFoldersSortByEnumStringValues() []string {
 		"TIME_CREATED",
 		"DISPLAY_NAME",
 	}
+}
+
+// GetMappingListFoldersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListFoldersSortByEnum(val string) (ListFoldersSortByEnum, bool) {
+	mappingListFoldersSortByEnumIgnoreCase := make(map[string]ListFoldersSortByEnum)
+	for k, v := range mappingListFoldersSortByEnum {
+		mappingListFoldersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListFoldersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

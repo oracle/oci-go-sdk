@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -87,13 +87,13 @@ func (m TaskRunDetails) String() string {
 func (m TaskRunDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTaskRunDetailsStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingTaskRunDetailsStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetTaskRunDetailsStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskRunDetailsTaskTypeEnum[string(m.TaskType)]; !ok && m.TaskType != "" {
+	if _, ok := GetMappingTaskRunDetailsTaskTypeEnum(string(m.TaskType)); !ok && m.TaskType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TaskType: %s. Supported values are: %s.", m.TaskType, strings.Join(GetTaskRunDetailsTaskTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskRunDetailsReRunTypeEnum[string(m.ReRunType)]; !ok && m.ReRunType != "" {
+	if _, ok := GetMappingTaskRunDetailsReRunTypeEnum(string(m.ReRunType)); !ok && m.ReRunType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ReRunType: %s. Supported values are: %s.", m.ReRunType, strings.Join(GetTaskRunDetailsReRunTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetTaskRunDetailsStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingTaskRunDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskRunDetailsStatusEnum(val string) (TaskRunDetailsStatusEnum, bool) {
+	mappingTaskRunDetailsStatusEnumIgnoreCase := make(map[string]TaskRunDetailsStatusEnum)
+	for k, v := range mappingTaskRunDetailsStatusEnum {
+		mappingTaskRunDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskRunDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TaskRunDetailsTaskTypeEnum Enum with underlying type: string
 type TaskRunDetailsTaskTypeEnum string
 
@@ -191,6 +202,17 @@ func GetTaskRunDetailsTaskTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingTaskRunDetailsTaskTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskRunDetailsTaskTypeEnum(val string) (TaskRunDetailsTaskTypeEnum, bool) {
+	mappingTaskRunDetailsTaskTypeEnumIgnoreCase := make(map[string]TaskRunDetailsTaskTypeEnum)
+	for k, v := range mappingTaskRunDetailsTaskTypeEnum {
+		mappingTaskRunDetailsTaskTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskRunDetailsTaskTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TaskRunDetailsReRunTypeEnum Enum with underlying type: string
 type TaskRunDetailsReRunTypeEnum string
 
@@ -223,4 +245,15 @@ func GetTaskRunDetailsReRunTypeEnumStringValues() []string {
 		"FAILED",
 		"STEP",
 	}
+}
+
+// GetMappingTaskRunDetailsReRunTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskRunDetailsReRunTypeEnum(val string) (TaskRunDetailsReRunTypeEnum, bool) {
+	mappingTaskRunDetailsReRunTypeEnumIgnoreCase := make(map[string]TaskRunDetailsReRunTypeEnum)
+	for k, v := range mappingTaskRunDetailsReRunTypeEnum {
+		mappingTaskRunDetailsReRunTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskRunDetailsReRunTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

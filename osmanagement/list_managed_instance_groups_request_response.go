@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -82,16 +82,16 @@ func (request ListManagedInstanceGroupsRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListManagedInstanceGroupsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListManagedInstanceGroupsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListManagedInstanceGroupsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListManagedInstanceGroupsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagedInstanceGroupsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListManagedInstanceGroupsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListManagedInstanceGroupsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagedInstanceGroupsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListManagedInstanceGroupsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListManagedInstanceGroupsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagedInstanceGroupsOsFamilyEnum[string(request.OsFamily)]; !ok && request.OsFamily != "" {
+	if _, ok := GetMappingListManagedInstanceGroupsOsFamilyEnum(string(request.OsFamily)); !ok && request.OsFamily != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OsFamily: %s. Supported values are: %s.", request.OsFamily, strings.Join(GetListManagedInstanceGroupsOsFamilyEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetListManagedInstanceGroupsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagedInstanceGroupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedInstanceGroupsSortOrderEnum(val string) (ListManagedInstanceGroupsSortOrderEnum, bool) {
+	mappingListManagedInstanceGroupsSortOrderEnumIgnoreCase := make(map[string]ListManagedInstanceGroupsSortOrderEnum)
+	for k, v := range mappingListManagedInstanceGroupsSortOrderEnum {
+		mappingListManagedInstanceGroupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedInstanceGroupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagedInstanceGroupsSortByEnum Enum with underlying type: string
 type ListManagedInstanceGroupsSortByEnum string
 
@@ -189,6 +200,17 @@ func GetListManagedInstanceGroupsSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListManagedInstanceGroupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedInstanceGroupsSortByEnum(val string) (ListManagedInstanceGroupsSortByEnum, bool) {
+	mappingListManagedInstanceGroupsSortByEnumIgnoreCase := make(map[string]ListManagedInstanceGroupsSortByEnum)
+	for k, v := range mappingListManagedInstanceGroupsSortByEnum {
+		mappingListManagedInstanceGroupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedInstanceGroupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListManagedInstanceGroupsLifecycleStateEnum Enum with underlying type: string
@@ -234,6 +256,17 @@ func GetListManagedInstanceGroupsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagedInstanceGroupsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedInstanceGroupsLifecycleStateEnum(val string) (ListManagedInstanceGroupsLifecycleStateEnum, bool) {
+	mappingListManagedInstanceGroupsLifecycleStateEnumIgnoreCase := make(map[string]ListManagedInstanceGroupsLifecycleStateEnum)
+	for k, v := range mappingListManagedInstanceGroupsLifecycleStateEnum {
+		mappingListManagedInstanceGroupsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedInstanceGroupsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagedInstanceGroupsOsFamilyEnum Enum with underlying type: string
 type ListManagedInstanceGroupsOsFamilyEnum string
 
@@ -266,4 +299,15 @@ func GetListManagedInstanceGroupsOsFamilyEnumStringValues() []string {
 		"WINDOWS",
 		"ALL",
 	}
+}
+
+// GetMappingListManagedInstanceGroupsOsFamilyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedInstanceGroupsOsFamilyEnum(val string) (ListManagedInstanceGroupsOsFamilyEnum, bool) {
+	mappingListManagedInstanceGroupsOsFamilyEnumIgnoreCase := make(map[string]ListManagedInstanceGroupsOsFamilyEnum)
+	for k, v := range mappingListManagedInstanceGroupsOsFamilyEnum {
+		mappingListManagedInstanceGroupsOsFamilyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedInstanceGroupsOsFamilyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

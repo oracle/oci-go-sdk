@@ -12,7 +12,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -109,10 +109,10 @@ func (m SteeringPolicySummary) String() string {
 // Not recommended for calling this function directly
 func (m SteeringPolicySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSteeringPolicySummaryTemplateEnum[string(m.Template)]; !ok && m.Template != "" {
+	if _, ok := GetMappingSteeringPolicySummaryTemplateEnum(string(m.Template)); !ok && m.Template != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Template: %s. Supported values are: %s.", m.Template, strings.Join(GetSteeringPolicySummaryTemplateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSteeringPolicySummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingSteeringPolicySummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetSteeringPolicySummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -165,6 +165,17 @@ func GetSteeringPolicySummaryTemplateEnumStringValues() []string {
 	}
 }
 
+// GetMappingSteeringPolicySummaryTemplateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSteeringPolicySummaryTemplateEnum(val string) (SteeringPolicySummaryTemplateEnum, bool) {
+	mappingSteeringPolicySummaryTemplateEnumIgnoreCase := make(map[string]SteeringPolicySummaryTemplateEnum)
+	for k, v := range mappingSteeringPolicySummaryTemplateEnum {
+		mappingSteeringPolicySummaryTemplateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSteeringPolicySummaryTemplateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SteeringPolicySummaryLifecycleStateEnum Enum with underlying type: string
 type SteeringPolicySummaryLifecycleStateEnum string
 
@@ -200,4 +211,15 @@ func GetSteeringPolicySummaryLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"DELETING",
 	}
+}
+
+// GetMappingSteeringPolicySummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSteeringPolicySummaryLifecycleStateEnum(val string) (SteeringPolicySummaryLifecycleStateEnum, bool) {
+	mappingSteeringPolicySummaryLifecycleStateEnumIgnoreCase := make(map[string]SteeringPolicySummaryLifecycleStateEnum)
+	for k, v := range mappingSteeringPolicySummaryLifecycleStateEnum {
+		mappingSteeringPolicySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSteeringPolicySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

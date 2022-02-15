@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // DataPumpExcludeParametersEnum Enum with underlying type: string
 type DataPumpExcludeParametersEnum string
 
@@ -41,4 +45,15 @@ func GetDataPumpExcludeParametersEnumStringValues() []string {
 		"MATERIALIZED_VIEW",
 		"MATERIALIZED_VIEW_LOG",
 	}
+}
+
+// GetMappingDataPumpExcludeParametersEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataPumpExcludeParametersEnum(val string) (DataPumpExcludeParametersEnum, bool) {
+	mappingDataPumpExcludeParametersEnumIgnoreCase := make(map[string]DataPumpExcludeParametersEnum)
+	for k, v := range mappingDataPumpExcludeParametersEnum {
+		mappingDataPumpExcludeParametersEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataPumpExcludeParametersEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

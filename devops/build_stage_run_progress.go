@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -99,11 +99,11 @@ func (m BuildStageRunProgress) String() string {
 // Not recommended for calling this function directly
 func (m BuildStageRunProgress) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBuildStageRunProgressImageEnum[string(m.Image)]; !ok && m.Image != "" {
+	if _, ok := GetMappingBuildStageRunProgressImageEnum(string(m.Image)); !ok && m.Image != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Image: %s. Supported values are: %s.", m.Image, strings.Join(GetBuildStageRunProgressImageEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingBuildPipelineStageRunProgressStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingBuildPipelineStageRunProgressStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetBuildPipelineStageRunProgressStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -152,4 +152,15 @@ func GetBuildStageRunProgressImageEnumStringValues() []string {
 	return []string{
 		"OL7_X86_64_STANDARD_10",
 	}
+}
+
+// GetMappingBuildStageRunProgressImageEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBuildStageRunProgressImageEnum(val string) (BuildStageRunProgressImageEnum, bool) {
+	mappingBuildStageRunProgressImageEnumIgnoreCase := make(map[string]BuildStageRunProgressImageEnum)
+	for k, v := range mappingBuildStageRunProgressImageEnum {
+		mappingBuildStageRunProgressImageEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBuildStageRunProgressImageEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

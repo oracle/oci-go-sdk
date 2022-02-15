@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -82,10 +82,10 @@ func (request ListSqlTuningAdvisorTaskRecommendationsRequest) RetryPolicy() *com
 // Not recommended for calling this function directly
 func (request ListSqlTuningAdvisorTaskRecommendationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSqlTuningAdvisorTaskRecommendationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSqlTuningAdvisorTaskRecommendationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSqlTuningAdvisorTaskRecommendationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSqlTuningAdvisorTaskRecommendationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSqlTuningAdvisorTaskRecommendationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSqlTuningAdvisorTaskRecommendationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,6 +153,17 @@ func GetListSqlTuningAdvisorTaskRecommendationsSortByEnumStringValues() []string
 	}
 }
 
+// GetMappingListSqlTuningAdvisorTaskRecommendationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSqlTuningAdvisorTaskRecommendationsSortByEnum(val string) (ListSqlTuningAdvisorTaskRecommendationsSortByEnum, bool) {
+	mappingListSqlTuningAdvisorTaskRecommendationsSortByEnumIgnoreCase := make(map[string]ListSqlTuningAdvisorTaskRecommendationsSortByEnum)
+	for k, v := range mappingListSqlTuningAdvisorTaskRecommendationsSortByEnum {
+		mappingListSqlTuningAdvisorTaskRecommendationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSqlTuningAdvisorTaskRecommendationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSqlTuningAdvisorTaskRecommendationsSortOrderEnum Enum with underlying type: string
 type ListSqlTuningAdvisorTaskRecommendationsSortOrderEnum string
 
@@ -182,4 +193,15 @@ func GetListSqlTuningAdvisorTaskRecommendationsSortOrderEnumStringValues() []str
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListSqlTuningAdvisorTaskRecommendationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSqlTuningAdvisorTaskRecommendationsSortOrderEnum(val string) (ListSqlTuningAdvisorTaskRecommendationsSortOrderEnum, bool) {
+	mappingListSqlTuningAdvisorTaskRecommendationsSortOrderEnumIgnoreCase := make(map[string]ListSqlTuningAdvisorTaskRecommendationsSortOrderEnum)
+	for k, v := range mappingListSqlTuningAdvisorTaskRecommendationsSortOrderEnum {
+		mappingListSqlTuningAdvisorTaskRecommendationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSqlTuningAdvisorTaskRecommendationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

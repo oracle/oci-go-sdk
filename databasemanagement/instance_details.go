@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -42,7 +42,7 @@ func (m InstanceDetails) String() string {
 // Not recommended for calling this function directly
 func (m InstanceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInstanceDetailsStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingInstanceDetailsStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetInstanceDetailsStatusEnumStringValues(), ",")))
 	}
 
@@ -84,4 +84,15 @@ func GetInstanceDetailsStatusEnumStringValues() []string {
 		"DOWN",
 		"UNKNOWN",
 	}
+}
+
+// GetMappingInstanceDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceDetailsStatusEnum(val string) (InstanceDetailsStatusEnum, bool) {
+	mappingInstanceDetailsStatusEnumIgnoreCase := make(map[string]InstanceDetailsStatusEnum)
+	for k, v := range mappingInstanceDetailsStatusEnum {
+		mappingInstanceDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,6 +11,10 @@
 
 package databasemanagement
 
+import (
+	"strings"
+)
+
 // DatabaseTypeEnum Enum with underlying type: string
 type DatabaseTypeEnum string
 
@@ -52,4 +56,15 @@ func GetDatabaseTypeEnumStringValues() []string {
 		"SHARED",
 		"DEDICATED",
 	}
+}
+
+// GetMappingDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseTypeEnum(val string) (DatabaseTypeEnum, bool) {
+	mappingDatabaseTypeEnumIgnoreCase := make(map[string]DatabaseTypeEnum)
+	for k, v := range mappingDatabaseTypeEnum {
+		mappingDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

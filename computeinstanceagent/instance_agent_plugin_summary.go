@@ -12,7 +12,7 @@ package computeinstanceagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -38,7 +38,7 @@ func (m InstanceAgentPluginSummary) String() string {
 // Not recommended for calling this function directly
 func (m InstanceAgentPluginSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInstanceAgentPluginSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingInstanceAgentPluginSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetInstanceAgentPluginSummaryStatusEnumStringValues(), ",")))
 	}
 
@@ -83,4 +83,15 @@ func GetInstanceAgentPluginSummaryStatusEnumStringValues() []string {
 		"NOT_SUPPORTED",
 		"INVALID",
 	}
+}
+
+// GetMappingInstanceAgentPluginSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceAgentPluginSummaryStatusEnum(val string) (InstanceAgentPluginSummaryStatusEnum, bool) {
+	mappingInstanceAgentPluginSummaryStatusEnumIgnoreCase := make(map[string]InstanceAgentPluginSummaryStatusEnum)
+	for k, v := range mappingInstanceAgentPluginSummaryStatusEnum {
+		mappingInstanceAgentPluginSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceAgentPluginSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

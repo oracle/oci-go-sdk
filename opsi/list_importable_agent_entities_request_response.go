@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -79,10 +79,10 @@ func (request ListImportableAgentEntitiesRequest) RetryPolicy() *common.RetryPol
 // Not recommended for calling this function directly
 func (request ListImportableAgentEntitiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListImportableAgentEntitiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListImportableAgentEntitiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListImportableAgentEntitiesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListImportableAgentEntitiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListImportableAgentEntitiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListImportableAgentEntitiesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -150,6 +150,17 @@ func GetListImportableAgentEntitiesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListImportableAgentEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListImportableAgentEntitiesSortOrderEnum(val string) (ListImportableAgentEntitiesSortOrderEnum, bool) {
+	mappingListImportableAgentEntitiesSortOrderEnumIgnoreCase := make(map[string]ListImportableAgentEntitiesSortOrderEnum)
+	for k, v := range mappingListImportableAgentEntitiesSortOrderEnum {
+		mappingListImportableAgentEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListImportableAgentEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListImportableAgentEntitiesSortByEnum Enum with underlying type: string
 type ListImportableAgentEntitiesSortByEnum string
 
@@ -179,4 +190,15 @@ func GetListImportableAgentEntitiesSortByEnumStringValues() []string {
 		"entityName",
 		"entityType",
 	}
+}
+
+// GetMappingListImportableAgentEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListImportableAgentEntitiesSortByEnum(val string) (ListImportableAgentEntitiesSortByEnum, bool) {
+	mappingListImportableAgentEntitiesSortByEnumIgnoreCase := make(map[string]ListImportableAgentEntitiesSortByEnum)
+	for k, v := range mappingListImportableAgentEntitiesSortByEnum {
+		mappingListImportableAgentEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListImportableAgentEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

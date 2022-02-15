@@ -12,7 +12,7 @@ package identity
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -99,7 +99,7 @@ func (m CreateSaml2IdentityProviderDetails) String() string {
 func (m CreateSaml2IdentityProviderDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateIdentityProviderDetailsProductTypeEnum[string(m.ProductType)]; !ok && m.ProductType != "" {
+	if _, ok := GetMappingCreateIdentityProviderDetailsProductTypeEnum(string(m.ProductType)); !ok && m.ProductType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProductType: %s. Supported values are: %s.", m.ProductType, strings.Join(GetCreateIdentityProviderDetailsProductTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

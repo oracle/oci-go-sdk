@@ -6,7 +6,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -92,16 +92,16 @@ func (request ListBackupsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListBackupsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBackupLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingBackupLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetBackupLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBackupCreationTypeEnum[string(request.CreationType)]; !ok && request.CreationType != "" {
+	if _, ok := GetMappingBackupCreationTypeEnum(string(request.CreationType)); !ok && request.CreationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CreationType: %s. Supported values are: %s.", request.CreationType, strings.Join(GetBackupCreationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBackupsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListBackupsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListBackupsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBackupsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListBackupsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListBackupsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -172,6 +172,17 @@ func GetListBackupsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBackupsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBackupsSortByEnum(val string) (ListBackupsSortByEnum, bool) {
+	mappingListBackupsSortByEnumIgnoreCase := make(map[string]ListBackupsSortByEnum)
+	for k, v := range mappingListBackupsSortByEnum {
+		mappingListBackupsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBackupsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBackupsSortOrderEnum Enum with underlying type: string
 type ListBackupsSortOrderEnum string
 
@@ -201,4 +212,15 @@ func GetListBackupsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListBackupsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBackupsSortOrderEnum(val string) (ListBackupsSortOrderEnum, bool) {
+	mappingListBackupsSortOrderEnumIgnoreCase := make(map[string]ListBackupsSortOrderEnum)
+	for k, v := range mappingListBackupsSortOrderEnum {
+		mappingListBackupsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBackupsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

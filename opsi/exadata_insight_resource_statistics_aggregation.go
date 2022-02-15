@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -124,4 +124,15 @@ func GetExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumString
 		"STORAGE_SERVER",
 		"DISKGROUP",
 	}
+}
+
+// GetMappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum(val string) (ExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum, bool) {
+	mappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumIgnoreCase := make(map[string]ExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum)
+	for k, v := range mappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnum {
+		mappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataInsightResourceStatisticsAggregationExadataResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

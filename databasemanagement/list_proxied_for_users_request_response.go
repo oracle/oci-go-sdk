@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -80,10 +80,10 @@ func (request ListProxiedForUsersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListProxiedForUsersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListProxiedForUsersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListProxiedForUsersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListProxiedForUsersSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListProxiedForUsersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListProxiedForUsersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListProxiedForUsersSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -148,6 +148,17 @@ func GetListProxiedForUsersSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListProxiedForUsersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProxiedForUsersSortByEnum(val string) (ListProxiedForUsersSortByEnum, bool) {
+	mappingListProxiedForUsersSortByEnumIgnoreCase := make(map[string]ListProxiedForUsersSortByEnum)
+	for k, v := range mappingListProxiedForUsersSortByEnum {
+		mappingListProxiedForUsersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProxiedForUsersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListProxiedForUsersSortOrderEnum Enum with underlying type: string
 type ListProxiedForUsersSortOrderEnum string
 
@@ -177,4 +188,15 @@ func GetListProxiedForUsersSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListProxiedForUsersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListProxiedForUsersSortOrderEnum(val string) (ListProxiedForUsersSortOrderEnum, bool) {
+	mappingListProxiedForUsersSortOrderEnumIgnoreCase := make(map[string]ListProxiedForUsersSortOrderEnum)
+	for k, v := range mappingListProxiedForUsersSortOrderEnum {
+		mappingListProxiedForUsersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListProxiedForUsersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

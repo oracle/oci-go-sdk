@@ -10,6 +10,10 @@
 
 package osmanagement
 
+import (
+	"strings"
+)
+
 // IntervalTypesEnum Enum with underlying type: string
 type IntervalTypesEnum string
 
@@ -45,4 +49,15 @@ func GetIntervalTypesEnumStringValues() []string {
 		"WEEK",
 		"MONTH",
 	}
+}
+
+// GetMappingIntervalTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIntervalTypesEnum(val string) (IntervalTypesEnum, bool) {
+	mappingIntervalTypesEnumIgnoreCase := make(map[string]IntervalTypesEnum)
+	for k, v := range mappingIntervalTypesEnum {
+		mappingIntervalTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIntervalTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

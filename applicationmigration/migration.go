@@ -14,7 +14,7 @@ package applicationmigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -95,16 +95,16 @@ func (m Migration) String() string {
 func (m Migration) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingMigrationTypesEnum[string(m.ApplicationType)]; !ok && m.ApplicationType != "" {
+	if _, ok := GetMappingMigrationTypesEnum(string(m.ApplicationType)); !ok && m.ApplicationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ApplicationType: %s. Supported values are: %s.", m.ApplicationType, strings.Join(GetMigrationTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTargetDatabaseTypesEnum[string(m.PreCreatedTargetDatabaseType)]; !ok && m.PreCreatedTargetDatabaseType != "" {
+	if _, ok := GetMappingTargetDatabaseTypesEnum(string(m.PreCreatedTargetDatabaseType)); !ok && m.PreCreatedTargetDatabaseType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PreCreatedTargetDatabaseType: %s. Supported values are: %s.", m.PreCreatedTargetDatabaseType, strings.Join(GetTargetDatabaseTypesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingMigrationLifecycleStatesEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingMigrationLifecycleStatesEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetMigrationLifecycleStatesEnumStringValues(), ",")))
 	}
-	if _, ok := mappingMigrationStatesEnum[string(m.MigrationState)]; !ok && m.MigrationState != "" {
+	if _, ok := GetMappingMigrationStatesEnum(string(m.MigrationState)); !ok && m.MigrationState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MigrationState: %s. Supported values are: %s.", m.MigrationState, strings.Join(GetMigrationStatesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

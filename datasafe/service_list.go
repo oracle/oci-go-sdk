@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // ServiceListEnum Enum with underlying type: string
 type ServiceListEnum string
 
@@ -24,6 +28,7 @@ const (
 	ServiceListDataSafeDev6  ServiceListEnum = "DataSafe-dev6"
 	ServiceListDataSafeDev7  ServiceListEnum = "DataSafe-dev7"
 	ServiceListDataSafeDev8  ServiceListEnum = "DataSafe-dev8"
+	ServiceListDataSafeDev9  ServiceListEnum = "DataSafe-dev9"
 	ServiceListDataSafeLrg1  ServiceListEnum = "DataSafe-lrg1"
 	ServiceListDataSafeLrg2  ServiceListEnum = "DataSafe-lrg2"
 	ServiceListDataSafeLrg3  ServiceListEnum = "DataSafe-lrg3"
@@ -44,6 +49,7 @@ var mappingServiceListEnum = map[string]ServiceListEnum{
 	"DataSafe-dev6":  ServiceListDataSafeDev6,
 	"DataSafe-dev7":  ServiceListDataSafeDev7,
 	"DataSafe-dev8":  ServiceListDataSafeDev8,
+	"DataSafe-dev9":  ServiceListDataSafeDev9,
 	"DataSafe-lrg1":  ServiceListDataSafeLrg1,
 	"DataSafe-lrg2":  ServiceListDataSafeLrg2,
 	"DataSafe-lrg3":  ServiceListDataSafeLrg3,
@@ -75,6 +81,7 @@ func GetServiceListEnumStringValues() []string {
 		"DataSafe-dev6",
 		"DataSafe-dev7",
 		"DataSafe-dev8",
+		"DataSafe-dev9",
 		"DataSafe-lrg1",
 		"DataSafe-lrg2",
 		"DataSafe-lrg3",
@@ -83,4 +90,15 @@ func GetServiceListEnumStringValues() []string {
 		"DataSafe-stest",
 		"DataSafe-stage",
 	}
+}
+
+// GetMappingServiceListEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingServiceListEnum(val string) (ServiceListEnum, bool) {
+	mappingServiceListEnumIgnoreCase := make(map[string]ServiceListEnum)
+	for k, v := range mappingServiceListEnum {
+		mappingServiceListEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingServiceListEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

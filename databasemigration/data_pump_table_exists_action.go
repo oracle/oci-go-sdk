@@ -9,6 +9,10 @@
 
 package databasemigration
 
+import (
+	"strings"
+)
+
 // DataPumpTableExistsActionEnum Enum with underlying type: string
 type DataPumpTableExistsActionEnum string
 
@@ -44,4 +48,15 @@ func GetDataPumpTableExistsActionEnumStringValues() []string {
 		"APPEND",
 		"SKIP",
 	}
+}
+
+// GetMappingDataPumpTableExistsActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataPumpTableExistsActionEnum(val string) (DataPumpTableExistsActionEnum, bool) {
+	mappingDataPumpTableExistsActionEnumIgnoreCase := make(map[string]DataPumpTableExistsActionEnum)
+	for k, v := range mappingDataPumpTableExistsActionEnum {
+		mappingDataPumpTableExistsActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataPumpTableExistsActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

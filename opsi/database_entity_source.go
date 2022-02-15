@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // DatabaseEntitySourceEnum Enum with underlying type: string
 type DatabaseEntitySourceEnum string
 
@@ -37,4 +41,15 @@ func GetDatabaseEntitySourceEnumStringValues() []string {
 	return []string{
 		"EM_MANAGED_EXTERNAL_DATABASE",
 	}
+}
+
+// GetMappingDatabaseEntitySourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseEntitySourceEnum(val string) (DatabaseEntitySourceEnum, bool) {
+	mappingDatabaseEntitySourceEnumIgnoreCase := make(map[string]DatabaseEntitySourceEnum)
+	for k, v := range mappingDatabaseEntitySourceEnum {
+		mappingDatabaseEntitySourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseEntitySourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

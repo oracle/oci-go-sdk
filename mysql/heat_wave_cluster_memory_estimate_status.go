@@ -9,6 +9,10 @@
 
 package mysql
 
+import (
+	"strings"
+)
+
 // HeatWaveClusterMemoryEstimateStatusEnum Enum with underlying type: string
 type HeatWaveClusterMemoryEstimateStatusEnum string
 
@@ -50,4 +54,15 @@ func GetHeatWaveClusterMemoryEstimateStatusEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingHeatWaveClusterMemoryEstimateStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHeatWaveClusterMemoryEstimateStatusEnum(val string) (HeatWaveClusterMemoryEstimateStatusEnum, bool) {
+	mappingHeatWaveClusterMemoryEstimateStatusEnumIgnoreCase := make(map[string]HeatWaveClusterMemoryEstimateStatusEnum)
+	for k, v := range mappingHeatWaveClusterMemoryEstimateStatusEnum {
+		mappingHeatWaveClusterMemoryEstimateStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHeatWaveClusterMemoryEstimateStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

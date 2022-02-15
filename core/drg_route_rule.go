@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -78,14 +78,14 @@ func (m DrgRouteRule) String() string {
 // Not recommended for calling this function directly
 func (m DrgRouteRule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDrgRouteRuleDestinationTypeEnum[string(m.DestinationType)]; !ok && m.DestinationType != "" {
+	if _, ok := GetMappingDrgRouteRuleDestinationTypeEnum(string(m.DestinationType)); !ok && m.DestinationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DestinationType: %s. Supported values are: %s.", m.DestinationType, strings.Join(GetDrgRouteRuleDestinationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDrgRouteRuleRouteProvenanceEnum[string(m.RouteProvenance)]; !ok && m.RouteProvenance != "" {
+	if _, ok := GetMappingDrgRouteRuleRouteProvenanceEnum(string(m.RouteProvenance)); !ok && m.RouteProvenance != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RouteProvenance: %s. Supported values are: %s.", m.RouteProvenance, strings.Join(GetDrgRouteRuleRouteProvenanceEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDrgRouteRuleRouteTypeEnum[string(m.RouteType)]; !ok && m.RouteType != "" {
+	if _, ok := GetMappingDrgRouteRuleRouteTypeEnum(string(m.RouteType)); !ok && m.RouteType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RouteType: %s. Supported values are: %s.", m.RouteType, strings.Join(GetDrgRouteRuleRouteTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -125,6 +125,17 @@ func GetDrgRouteRuleDestinationTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingDrgRouteRuleDestinationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgRouteRuleDestinationTypeEnum(val string) (DrgRouteRuleDestinationTypeEnum, bool) {
+	mappingDrgRouteRuleDestinationTypeEnumIgnoreCase := make(map[string]DrgRouteRuleDestinationTypeEnum)
+	for k, v := range mappingDrgRouteRuleDestinationTypeEnum {
+		mappingDrgRouteRuleDestinationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgRouteRuleDestinationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DrgRouteRuleRouteTypeEnum Enum with underlying type: string
 type DrgRouteRuleRouteTypeEnum string
 
@@ -154,6 +165,17 @@ func GetDrgRouteRuleRouteTypeEnumStringValues() []string {
 		"STATIC",
 		"DYNAMIC",
 	}
+}
+
+// GetMappingDrgRouteRuleRouteTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgRouteRuleRouteTypeEnum(val string) (DrgRouteRuleRouteTypeEnum, bool) {
+	mappingDrgRouteRuleRouteTypeEnumIgnoreCase := make(map[string]DrgRouteRuleRouteTypeEnum)
+	for k, v := range mappingDrgRouteRuleRouteTypeEnum {
+		mappingDrgRouteRuleRouteTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgRouteRuleRouteTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DrgRouteRuleRouteProvenanceEnum Enum with underlying type: string
@@ -191,4 +213,15 @@ func GetDrgRouteRuleRouteProvenanceEnumStringValues() []string {
 		"VIRTUAL_CIRCUIT",
 		"IPSEC_TUNNEL",
 	}
+}
+
+// GetMappingDrgRouteRuleRouteProvenanceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgRouteRuleRouteProvenanceEnum(val string) (DrgRouteRuleRouteProvenanceEnum, bool) {
+	mappingDrgRouteRuleRouteProvenanceEnumIgnoreCase := make(map[string]DrgRouteRuleRouteProvenanceEnum)
+	for k, v := range mappingDrgRouteRuleRouteProvenanceEnum {
+		mappingDrgRouteRuleRouteProvenanceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgRouteRuleRouteProvenanceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

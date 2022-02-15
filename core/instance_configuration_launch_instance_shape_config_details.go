@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -53,7 +53,7 @@ func (m InstanceConfigurationLaunchInstanceShapeConfigDetails) String() string {
 func (m InstanceConfigurationLaunchInstanceShapeConfigDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum[string(m.BaselineOcpuUtilization)]; !ok && m.BaselineOcpuUtilization != "" {
+	if _, ok := GetMappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum(string(m.BaselineOcpuUtilization)); !ok && m.BaselineOcpuUtilization != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BaselineOcpuUtilization: %s. Supported values are: %s.", m.BaselineOcpuUtilization, strings.Join(GetInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -94,4 +94,15 @@ func GetInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtiliza
 		"BASELINE_1_2",
 		"BASELINE_1_1",
 	}
+}
+
+// GetMappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum(val string) (InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum, bool) {
+	mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum)
+	for k, v := range mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnum {
+		mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceConfigurationLaunchInstanceShapeConfigDetailsBaselineOcpuUtilizationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

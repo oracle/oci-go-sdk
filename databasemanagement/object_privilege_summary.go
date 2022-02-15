@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -60,16 +60,16 @@ func (m ObjectPrivilegeSummary) String() string {
 func (m ObjectPrivilegeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingObjectPrivilegeSummaryHierarchyEnum[string(m.Hierarchy)]; !ok && m.Hierarchy != "" {
+	if _, ok := GetMappingObjectPrivilegeSummaryHierarchyEnum(string(m.Hierarchy)); !ok && m.Hierarchy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Hierarchy: %s. Supported values are: %s.", m.Hierarchy, strings.Join(GetObjectPrivilegeSummaryHierarchyEnumStringValues(), ",")))
 	}
-	if _, ok := mappingObjectPrivilegeSummaryGrantOptionEnum[string(m.GrantOption)]; !ok && m.GrantOption != "" {
+	if _, ok := GetMappingObjectPrivilegeSummaryGrantOptionEnum(string(m.GrantOption)); !ok && m.GrantOption != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for GrantOption: %s. Supported values are: %s.", m.GrantOption, strings.Join(GetObjectPrivilegeSummaryGrantOptionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingObjectPrivilegeSummaryCommonEnum[string(m.Common)]; !ok && m.Common != "" {
+	if _, ok := GetMappingObjectPrivilegeSummaryCommonEnum(string(m.Common)); !ok && m.Common != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Common: %s. Supported values are: %s.", m.Common, strings.Join(GetObjectPrivilegeSummaryCommonEnumStringValues(), ",")))
 	}
-	if _, ok := mappingObjectPrivilegeSummaryInheritedEnum[string(m.Inherited)]; !ok && m.Inherited != "" {
+	if _, ok := GetMappingObjectPrivilegeSummaryInheritedEnum(string(m.Inherited)); !ok && m.Inherited != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Inherited: %s. Supported values are: %s.", m.Inherited, strings.Join(GetObjectPrivilegeSummaryInheritedEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -109,6 +109,17 @@ func GetObjectPrivilegeSummaryHierarchyEnumStringValues() []string {
 	}
 }
 
+// GetMappingObjectPrivilegeSummaryHierarchyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingObjectPrivilegeSummaryHierarchyEnum(val string) (ObjectPrivilegeSummaryHierarchyEnum, bool) {
+	mappingObjectPrivilegeSummaryHierarchyEnumIgnoreCase := make(map[string]ObjectPrivilegeSummaryHierarchyEnum)
+	for k, v := range mappingObjectPrivilegeSummaryHierarchyEnum {
+		mappingObjectPrivilegeSummaryHierarchyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingObjectPrivilegeSummaryHierarchyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ObjectPrivilegeSummaryGrantOptionEnum Enum with underlying type: string
 type ObjectPrivilegeSummaryGrantOptionEnum string
 
@@ -138,6 +149,17 @@ func GetObjectPrivilegeSummaryGrantOptionEnumStringValues() []string {
 		"YES",
 		"NO",
 	}
+}
+
+// GetMappingObjectPrivilegeSummaryGrantOptionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingObjectPrivilegeSummaryGrantOptionEnum(val string) (ObjectPrivilegeSummaryGrantOptionEnum, bool) {
+	mappingObjectPrivilegeSummaryGrantOptionEnumIgnoreCase := make(map[string]ObjectPrivilegeSummaryGrantOptionEnum)
+	for k, v := range mappingObjectPrivilegeSummaryGrantOptionEnum {
+		mappingObjectPrivilegeSummaryGrantOptionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingObjectPrivilegeSummaryGrantOptionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ObjectPrivilegeSummaryCommonEnum Enum with underlying type: string
@@ -171,6 +193,17 @@ func GetObjectPrivilegeSummaryCommonEnumStringValues() []string {
 	}
 }
 
+// GetMappingObjectPrivilegeSummaryCommonEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingObjectPrivilegeSummaryCommonEnum(val string) (ObjectPrivilegeSummaryCommonEnum, bool) {
+	mappingObjectPrivilegeSummaryCommonEnumIgnoreCase := make(map[string]ObjectPrivilegeSummaryCommonEnum)
+	for k, v := range mappingObjectPrivilegeSummaryCommonEnum {
+		mappingObjectPrivilegeSummaryCommonEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingObjectPrivilegeSummaryCommonEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ObjectPrivilegeSummaryInheritedEnum Enum with underlying type: string
 type ObjectPrivilegeSummaryInheritedEnum string
 
@@ -200,4 +233,15 @@ func GetObjectPrivilegeSummaryInheritedEnumStringValues() []string {
 		"YES",
 		"NO",
 	}
+}
+
+// GetMappingObjectPrivilegeSummaryInheritedEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingObjectPrivilegeSummaryInheritedEnum(val string) (ObjectPrivilegeSummaryInheritedEnum, bool) {
+	mappingObjectPrivilegeSummaryInheritedEnumIgnoreCase := make(map[string]ObjectPrivilegeSummaryInheritedEnum)
+	for k, v := range mappingObjectPrivilegeSummaryInheritedEnum {
+		mappingObjectPrivilegeSummaryInheritedEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingObjectPrivilegeSummaryInheritedEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

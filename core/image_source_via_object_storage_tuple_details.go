@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -66,7 +66,7 @@ func (m ImageSourceViaObjectStorageTupleDetails) String() string {
 func (m ImageSourceViaObjectStorageTupleDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingImageSourceDetailsSourceImageTypeEnum[string(m.SourceImageType)]; !ok && m.SourceImageType != "" {
+	if _, ok := GetMappingImageSourceDetailsSourceImageTypeEnum(string(m.SourceImageType)); !ok && m.SourceImageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceImageType: %s. Supported values are: %s.", m.SourceImageType, strings.Join(GetImageSourceDetailsSourceImageTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

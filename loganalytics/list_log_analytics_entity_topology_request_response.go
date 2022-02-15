@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -80,13 +80,13 @@ func (request ListLogAnalyticsEntityTopologyRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request ListLogAnalyticsEntityTopologyRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLogAnalyticsEntityTopologyLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListLogAnalyticsEntityTopologyLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListLogAnalyticsEntityTopologyLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLogAnalyticsEntityTopologySortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLogAnalyticsEntityTopologySortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLogAnalyticsEntityTopologySortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLogAnalyticsEntityTopologySortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListLogAnalyticsEntityTopologySortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListLogAnalyticsEntityTopologySortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,6 +153,17 @@ func GetListLogAnalyticsEntityTopologyLifecycleStateEnumStringValues() []string 
 	}
 }
 
+// GetMappingListLogAnalyticsEntityTopologyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsEntityTopologyLifecycleStateEnum(val string) (ListLogAnalyticsEntityTopologyLifecycleStateEnum, bool) {
+	mappingListLogAnalyticsEntityTopologyLifecycleStateEnumIgnoreCase := make(map[string]ListLogAnalyticsEntityTopologyLifecycleStateEnum)
+	for k, v := range mappingListLogAnalyticsEntityTopologyLifecycleStateEnum {
+		mappingListLogAnalyticsEntityTopologyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsEntityTopologyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLogAnalyticsEntityTopologySortOrderEnum Enum with underlying type: string
 type ListLogAnalyticsEntityTopologySortOrderEnum string
 
@@ -182,6 +193,17 @@ func GetListLogAnalyticsEntityTopologySortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListLogAnalyticsEntityTopologySortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsEntityTopologySortOrderEnum(val string) (ListLogAnalyticsEntityTopologySortOrderEnum, bool) {
+	mappingListLogAnalyticsEntityTopologySortOrderEnumIgnoreCase := make(map[string]ListLogAnalyticsEntityTopologySortOrderEnum)
+	for k, v := range mappingListLogAnalyticsEntityTopologySortOrderEnum {
+		mappingListLogAnalyticsEntityTopologySortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsEntityTopologySortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListLogAnalyticsEntityTopologySortByEnum Enum with underlying type: string
@@ -216,4 +238,15 @@ func GetListLogAnalyticsEntityTopologySortByEnumStringValues() []string {
 		"timeUpdated",
 		"name",
 	}
+}
+
+// GetMappingListLogAnalyticsEntityTopologySortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsEntityTopologySortByEnum(val string) (ListLogAnalyticsEntityTopologySortByEnum, bool) {
+	mappingListLogAnalyticsEntityTopologySortByEnumIgnoreCase := make(map[string]ListLogAnalyticsEntityTopologySortByEnum)
+	for k, v := range mappingListLogAnalyticsEntityTopologySortByEnum {
+		mappingListLogAnalyticsEntityTopologySortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsEntityTopologySortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

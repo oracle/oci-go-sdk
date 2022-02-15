@@ -9,6 +9,10 @@
 
 package waas
 
+import (
+	"strings"
+)
+
 // WorkRequestOperationTypesEnum Enum with underlying type: string
 type WorkRequestOperationTypesEnum string
 
@@ -62,4 +66,15 @@ func GetWorkRequestOperationTypesEnumStringValues() []string {
 		"UPDATE_CUSTOM_PROTECTION_RULE",
 		"DELETE_CUSTOM_PROTECTION_RULE",
 	}
+}
+
+// GetMappingWorkRequestOperationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestOperationTypesEnum(val string) (WorkRequestOperationTypesEnum, bool) {
+	mappingWorkRequestOperationTypesEnumIgnoreCase := make(map[string]WorkRequestOperationTypesEnum)
+	for k, v := range mappingWorkRequestOperationTypesEnum {
+		mappingWorkRequestOperationTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestOperationTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

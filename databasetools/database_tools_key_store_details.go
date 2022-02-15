@@ -12,7 +12,7 @@ package databasetools
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -37,7 +37,7 @@ func (m DatabaseToolsKeyStoreDetails) String() string {
 func (m DatabaseToolsKeyStoreDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingKeyStoreTypeEnum[string(m.KeyStoreType)]; !ok && m.KeyStoreType != "" {
+	if _, ok := GetMappingKeyStoreTypeEnum(string(m.KeyStoreType)); !ok && m.KeyStoreType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for KeyStoreType: %s. Supported values are: %s.", m.KeyStoreType, strings.Join(GetKeyStoreTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

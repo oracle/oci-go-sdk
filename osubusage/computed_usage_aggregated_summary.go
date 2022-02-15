@@ -11,7 +11,7 @@ package osubusage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -58,7 +58,7 @@ func (m ComputedUsageAggregatedSummary) String() string {
 func (m ComputedUsageAggregatedSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingComputedUsageAggregatedSummaryPricingModelEnum[string(m.PricingModel)]; !ok && m.PricingModel != "" {
+	if _, ok := GetMappingComputedUsageAggregatedSummaryPricingModelEnum(string(m.PricingModel)); !ok && m.PricingModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PricingModel: %s. Supported values are: %s.", m.PricingModel, strings.Join(GetComputedUsageAggregatedSummaryPricingModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -105,4 +105,15 @@ func GetComputedUsageAggregatedSummaryPricingModelEnumStringValues() []string {
 		"PREPAID",
 		"FUNDED_ALLOCATION",
 	}
+}
+
+// GetMappingComputedUsageAggregatedSummaryPricingModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingComputedUsageAggregatedSummaryPricingModelEnum(val string) (ComputedUsageAggregatedSummaryPricingModelEnum, bool) {
+	mappingComputedUsageAggregatedSummaryPricingModelEnumIgnoreCase := make(map[string]ComputedUsageAggregatedSummaryPricingModelEnum)
+	for k, v := range mappingComputedUsageAggregatedSummaryPricingModelEnum {
+		mappingComputedUsageAggregatedSummaryPricingModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingComputedUsageAggregatedSummaryPricingModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

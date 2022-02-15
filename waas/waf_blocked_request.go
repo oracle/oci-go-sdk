@@ -11,7 +11,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -41,7 +41,7 @@ func (m WafBlockedRequest) String() string {
 func (m WafBlockedRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingWafBlockedRequestWafFeatureEnum[string(m.WafFeature)]; !ok && m.WafFeature != "" {
+	if _, ok := GetMappingWafBlockedRequestWafFeatureEnum(string(m.WafFeature)); !ok && m.WafFeature != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for WafFeature: %s. Supported values are: %s.", m.WafFeature, strings.Join(GetWafBlockedRequestWafFeatureEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -97,4 +97,15 @@ func GetWafBlockedRequestWafFeatureEnumStringValues() []string {
 		"CAPTCHA",
 		"ADDRESS_RATE_LIMITING",
 	}
+}
+
+// GetMappingWafBlockedRequestWafFeatureEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWafBlockedRequestWafFeatureEnum(val string) (WafBlockedRequestWafFeatureEnum, bool) {
+	mappingWafBlockedRequestWafFeatureEnumIgnoreCase := make(map[string]WafBlockedRequestWafFeatureEnum)
+	for k, v := range mappingWafBlockedRequestWafFeatureEnum {
+		mappingWafBlockedRequestWafFeatureEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWafBlockedRequestWafFeatureEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

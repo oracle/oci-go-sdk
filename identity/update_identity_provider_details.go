@@ -12,7 +12,7 @@ package identity
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -136,4 +136,15 @@ func GetUpdateIdentityProviderDetailsProtocolEnumStringValues() []string {
 	return []string{
 		"SAML2",
 	}
+}
+
+// GetMappingUpdateIdentityProviderDetailsProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateIdentityProviderDetailsProtocolEnum(val string) (UpdateIdentityProviderDetailsProtocolEnum, bool) {
+	mappingUpdateIdentityProviderDetailsProtocolEnumIgnoreCase := make(map[string]UpdateIdentityProviderDetailsProtocolEnum)
+	for k, v := range mappingUpdateIdentityProviderDetailsProtocolEnum {
+		mappingUpdateIdentityProviderDetailsProtocolEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateIdentityProviderDetailsProtocolEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

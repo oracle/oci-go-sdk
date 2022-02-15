@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -99,13 +99,13 @@ func (m TaskScheduleSummary) String() string {
 func (m TaskScheduleSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTaskScheduleSummaryRetryDelayUnitEnum[string(m.RetryDelayUnit)]; !ok && m.RetryDelayUnit != "" {
+	if _, ok := GetMappingTaskScheduleSummaryRetryDelayUnitEnum(string(m.RetryDelayUnit)); !ok && m.RetryDelayUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for RetryDelayUnit: %s. Supported values are: %s.", m.RetryDelayUnit, strings.Join(GetTaskScheduleSummaryRetryDelayUnitEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskScheduleSummaryAuthModeEnum[string(m.AuthMode)]; !ok && m.AuthMode != "" {
+	if _, ok := GetMappingTaskScheduleSummaryAuthModeEnum(string(m.AuthMode)); !ok && m.AuthMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuthMode: %s. Supported values are: %s.", m.AuthMode, strings.Join(GetTaskScheduleSummaryAuthModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskScheduleSummaryExpectedDurationUnitEnum[string(m.ExpectedDurationUnit)]; !ok && m.ExpectedDurationUnit != "" {
+	if _, ok := GetMappingTaskScheduleSummaryExpectedDurationUnitEnum(string(m.ExpectedDurationUnit)); !ok && m.ExpectedDurationUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExpectedDurationUnit: %s. Supported values are: %s.", m.ExpectedDurationUnit, strings.Join(GetTaskScheduleSummaryExpectedDurationUnitEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,6 +151,17 @@ func GetTaskScheduleSummaryRetryDelayUnitEnumStringValues() []string {
 	}
 }
 
+// GetMappingTaskScheduleSummaryRetryDelayUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskScheduleSummaryRetryDelayUnitEnum(val string) (TaskScheduleSummaryRetryDelayUnitEnum, bool) {
+	mappingTaskScheduleSummaryRetryDelayUnitEnumIgnoreCase := make(map[string]TaskScheduleSummaryRetryDelayUnitEnum)
+	for k, v := range mappingTaskScheduleSummaryRetryDelayUnitEnum {
+		mappingTaskScheduleSummaryRetryDelayUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskScheduleSummaryRetryDelayUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TaskScheduleSummaryAuthModeEnum Enum with underlying type: string
 type TaskScheduleSummaryAuthModeEnum string
 
@@ -183,6 +194,17 @@ func GetTaskScheduleSummaryAuthModeEnumStringValues() []string {
 		"RESOURCE_PRINCIPAL",
 		"USER_CERTIFICATE",
 	}
+}
+
+// GetMappingTaskScheduleSummaryAuthModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskScheduleSummaryAuthModeEnum(val string) (TaskScheduleSummaryAuthModeEnum, bool) {
+	mappingTaskScheduleSummaryAuthModeEnumIgnoreCase := make(map[string]TaskScheduleSummaryAuthModeEnum)
+	for k, v := range mappingTaskScheduleSummaryAuthModeEnum {
+		mappingTaskScheduleSummaryAuthModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskScheduleSummaryAuthModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TaskScheduleSummaryExpectedDurationUnitEnum Enum with underlying type: string
@@ -220,4 +242,15 @@ func GetTaskScheduleSummaryExpectedDurationUnitEnumStringValues() []string {
 		"HOURS",
 		"DAYS",
 	}
+}
+
+// GetMappingTaskScheduleSummaryExpectedDurationUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskScheduleSummaryExpectedDurationUnitEnum(val string) (TaskScheduleSummaryExpectedDurationUnitEnum, bool) {
+	mappingTaskScheduleSummaryExpectedDurationUnitEnumIgnoreCase := make(map[string]TaskScheduleSummaryExpectedDurationUnitEnum)
+	for k, v := range mappingTaskScheduleSummaryExpectedDurationUnitEnum {
+		mappingTaskScheduleSummaryExpectedDurationUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskScheduleSummaryExpectedDurationUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

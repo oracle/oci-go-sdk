@@ -10,6 +10,10 @@
 
 package ocvp
 
+import (
+	"strings"
+)
+
 // SkuEnum Enum with underlying type: string
 type SkuEnum string
 
@@ -45,4 +49,15 @@ func GetSkuEnumStringValues() []string {
 		"ONE_YEAR",
 		"THREE_YEARS",
 	}
+}
+
+// GetMappingSkuEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSkuEnum(val string) (SkuEnum, bool) {
+	mappingSkuEnumIgnoreCase := make(map[string]SkuEnum)
+	for k, v := range mappingSkuEnum {
+		mappingSkuEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSkuEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

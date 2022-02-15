@@ -12,7 +12,7 @@ package database
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,4 +101,15 @@ func GetKeyStoreTypeDetailsTypeEnumStringValues() []string {
 	return []string{
 		"ORACLE_KEY_VAULT",
 	}
+}
+
+// GetMappingKeyStoreTypeDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeyStoreTypeDetailsTypeEnum(val string) (KeyStoreTypeDetailsTypeEnum, bool) {
+	mappingKeyStoreTypeDetailsTypeEnumIgnoreCase := make(map[string]KeyStoreTypeDetailsTypeEnum)
+	for k, v := range mappingKeyStoreTypeDetailsTypeEnum {
+		mappingKeyStoreTypeDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeyStoreTypeDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

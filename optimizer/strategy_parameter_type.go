@@ -11,6 +11,10 @@
 
 package optimizer
 
+import (
+	"strings"
+)
+
 // StrategyParameterTypeEnum Enum with underlying type: string
 type StrategyParameterTypeEnum string
 
@@ -46,4 +50,15 @@ func GetStrategyParameterTypeEnumStringValues() []string {
 		"NUMBER",
 		"DATETIME",
 	}
+}
+
+// GetMappingStrategyParameterTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStrategyParameterTypeEnum(val string) (StrategyParameterTypeEnum, bool) {
+	mappingStrategyParameterTypeEnumIgnoreCase := make(map[string]StrategyParameterTypeEnum)
+	for k, v := range mappingStrategyParameterTypeEnum {
+		mappingStrategyParameterTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStrategyParameterTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

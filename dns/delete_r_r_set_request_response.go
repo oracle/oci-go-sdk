@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -91,7 +91,7 @@ func (request DeleteRRSetRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request DeleteRRSetRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDeleteRRSetScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingDeleteRRSetScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetDeleteRRSetScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -149,4 +149,15 @@ func GetDeleteRRSetScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingDeleteRRSetScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeleteRRSetScopeEnum(val string) (DeleteRRSetScopeEnum, bool) {
+	mappingDeleteRRSetScopeEnumIgnoreCase := make(map[string]DeleteRRSetScopeEnum)
+	for k, v := range mappingDeleteRRSetScopeEnum {
+		mappingDeleteRRSetScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeleteRRSetScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

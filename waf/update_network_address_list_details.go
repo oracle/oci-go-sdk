@@ -13,7 +13,7 @@ package waf
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -152,4 +152,15 @@ func GetUpdateNetworkAddressListDetailsTypeEnumStringValues() []string {
 		"ADDRESSES",
 		"VCN_ADDRESSES",
 	}
+}
+
+// GetMappingUpdateNetworkAddressListDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateNetworkAddressListDetailsTypeEnum(val string) (UpdateNetworkAddressListDetailsTypeEnum, bool) {
+	mappingUpdateNetworkAddressListDetailsTypeEnumIgnoreCase := make(map[string]UpdateNetworkAddressListDetailsTypeEnum)
+	for k, v := range mappingUpdateNetworkAddressListDetailsTypeEnum {
+		mappingUpdateNetworkAddressListDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateNetworkAddressListDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

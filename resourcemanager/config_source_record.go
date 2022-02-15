@@ -15,7 +15,7 @@ package resourcemanager
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -118,4 +118,15 @@ func GetConfigSourceRecordConfigSourceRecordTypeEnumStringValues() []string {
 		"GIT_CONFIG_SOURCE",
 		"OBJECT_STORAGE_CONFIG_SOURCE",
 	}
+}
+
+// GetMappingConfigSourceRecordConfigSourceRecordTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConfigSourceRecordConfigSourceRecordTypeEnum(val string) (ConfigSourceRecordConfigSourceRecordTypeEnum, bool) {
+	mappingConfigSourceRecordConfigSourceRecordTypeEnumIgnoreCase := make(map[string]ConfigSourceRecordConfigSourceRecordTypeEnum)
+	for k, v := range mappingConfigSourceRecordConfigSourceRecordTypeEnum {
+		mappingConfigSourceRecordConfigSourceRecordTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConfigSourceRecordConfigSourceRecordTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

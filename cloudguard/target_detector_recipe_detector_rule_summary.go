@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -66,17 +66,17 @@ func (m TargetDetectorRecipeDetectorRuleSummary) String() string {
 // Not recommended for calling this function directly
 func (m TargetDetectorRecipeDetectorRuleSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDetectorEnumEnum[string(m.Detector)]; !ok && m.Detector != "" {
+	if _, ok := GetMappingDetectorEnumEnum(string(m.Detector)); !ok && m.Detector != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Detector: %s. Supported values are: %s.", m.Detector, strings.Join(GetDetectorEnumEnumStringValues(), ",")))
 	}
 
 	for _, val := range m.ManagedListTypes {
-		if _, ok := mappingTargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingTargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagedListTypes: %s. Supported values are: %s.", val, strings.Join(GetTargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -144,4 +144,15 @@ func GetTargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnumStringValues(
 		"TAGS",
 		"GENERIC",
 	}
+}
+
+// GetMappingTargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnum(val string) (TargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnum, bool) {
+	mappingTargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnumIgnoreCase := make(map[string]TargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnum)
+	for k, v := range mappingTargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnum {
+		mappingTargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetDetectorRecipeDetectorRuleSummaryManagedListTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

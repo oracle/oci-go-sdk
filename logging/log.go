@@ -11,7 +11,7 @@ package logging
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -74,10 +74,10 @@ func (m Log) String() string {
 // Not recommended for calling this function directly
 func (m Log) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingLogLogTypeEnum[string(m.LogType)]; !ok && m.LogType != "" {
+	if _, ok := GetMappingLogLogTypeEnum(string(m.LogType)); !ok && m.LogType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LogType: %s. Supported values are: %s.", m.LogType, strings.Join(GetLogLogTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLogLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLogLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLogLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -116,4 +116,15 @@ func GetLogLogTypeEnumStringValues() []string {
 		"CUSTOM",
 		"SERVICE",
 	}
+}
+
+// GetMappingLogLogTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogLogTypeEnum(val string) (LogLogTypeEnum, bool) {
+	mappingLogLogTypeEnumIgnoreCase := make(map[string]LogLogTypeEnum)
+	for k, v := range mappingLogLogTypeEnum {
+		mappingLogLogTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogLogTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

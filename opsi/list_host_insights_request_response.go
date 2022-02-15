@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -107,27 +107,27 @@ func (request ListHostInsightsRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListHostInsightsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Status {
-		if _, ok := mappingResourceStatusEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingResourceStatusEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", val, strings.Join(GetResourceStatusEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.LifecycleState {
-		if _, ok := mappingLifecycleStateEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingLifecycleStateEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", val, strings.Join(GetLifecycleStateEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.PlatformType {
-		if _, ok := mappingListHostInsightsPlatformTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListHostInsightsPlatformTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", val, strings.Join(GetListHostInsightsPlatformTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListHostInsightsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListHostInsightsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListHostInsightsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListHostInsightsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListHostInsightsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListHostInsightsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -201,6 +201,17 @@ func GetListHostInsightsPlatformTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListHostInsightsPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHostInsightsPlatformTypeEnum(val string) (ListHostInsightsPlatformTypeEnum, bool) {
+	mappingListHostInsightsPlatformTypeEnumIgnoreCase := make(map[string]ListHostInsightsPlatformTypeEnum)
+	for k, v := range mappingListHostInsightsPlatformTypeEnum {
+		mappingListHostInsightsPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHostInsightsPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListHostInsightsSortOrderEnum Enum with underlying type: string
 type ListHostInsightsSortOrderEnum string
 
@@ -232,6 +243,17 @@ func GetListHostInsightsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListHostInsightsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHostInsightsSortOrderEnum(val string) (ListHostInsightsSortOrderEnum, bool) {
+	mappingListHostInsightsSortOrderEnumIgnoreCase := make(map[string]ListHostInsightsSortOrderEnum)
+	for k, v := range mappingListHostInsightsSortOrderEnum {
+		mappingListHostInsightsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHostInsightsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListHostInsightsSortByEnum Enum with underlying type: string
 type ListHostInsightsSortByEnum string
 
@@ -261,4 +283,15 @@ func GetListHostInsightsSortByEnumStringValues() []string {
 		"hostName",
 		"hostType",
 	}
+}
+
+// GetMappingListHostInsightsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListHostInsightsSortByEnum(val string) (ListHostInsightsSortByEnum, bool) {
+	mappingListHostInsightsSortByEnumIgnoreCase := make(map[string]ListHostInsightsSortByEnum)
+	for k, v := range mappingListHostInsightsSortByEnum {
+		mappingListHostInsightsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListHostInsightsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

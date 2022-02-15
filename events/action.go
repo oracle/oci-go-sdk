@@ -13,7 +13,7 @@ package events
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -129,7 +129,7 @@ func (m action) String() string {
 // Not recommended for calling this function directly
 func (m action) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingActionLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingActionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetActionLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -185,6 +185,17 @@ func GetActionLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingActionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingActionLifecycleStateEnum(val string) (ActionLifecycleStateEnum, bool) {
+	mappingActionLifecycleStateEnumIgnoreCase := make(map[string]ActionLifecycleStateEnum)
+	for k, v := range mappingActionLifecycleStateEnum {
+		mappingActionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingActionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ActionActionTypeEnum Enum with underlying type: string
 type ActionActionTypeEnum string
 
@@ -217,4 +228,15 @@ func GetActionActionTypeEnumStringValues() []string {
 		"OSS",
 		"FAAS",
 	}
+}
+
+// GetMappingActionActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingActionActionTypeEnum(val string) (ActionActionTypeEnum, bool) {
+	mappingActionActionTypeEnumIgnoreCase := make(map[string]ActionActionTypeEnum)
+	for k, v := range mappingActionActionTypeEnum {
+		mappingActionActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingActionActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

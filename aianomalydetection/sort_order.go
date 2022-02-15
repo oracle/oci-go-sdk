@@ -11,6 +11,10 @@
 
 package aianomalydetection
 
+import (
+	"strings"
+)
+
 // SortOrderEnum Enum with underlying type: string
 type SortOrderEnum string
 
@@ -40,4 +44,15 @@ func GetSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSortOrderEnum(val string) (SortOrderEnum, bool) {
+	mappingSortOrderEnumIgnoreCase := make(map[string]SortOrderEnum)
+	for k, v := range mappingSortOrderEnum {
+		mappingSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package managementagent
 
+import (
+	"strings"
+)
+
 // InstallTypesEnum Enum with underlying type: string
 type InstallTypesEnum string
 
@@ -38,4 +42,15 @@ func GetInstallTypesEnumStringValues() []string {
 		"AGENT",
 		"GATEWAY",
 	}
+}
+
+// GetMappingInstallTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstallTypesEnum(val string) (InstallTypesEnum, bool) {
+	mappingInstallTypesEnumIgnoreCase := make(map[string]InstallTypesEnum)
+	for k, v := range mappingInstallTypesEnum {
+		mappingInstallTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstallTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

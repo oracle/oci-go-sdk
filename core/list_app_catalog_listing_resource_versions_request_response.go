@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -76,7 +76,7 @@ func (request ListAppCatalogListingResourceVersionsRequest) RetryPolicy() *commo
 // Not recommended for calling this function directly
 func (request ListAppCatalogListingResourceVersionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAppCatalogListingResourceVersionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAppCatalogListingResourceVersionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAppCatalogListingResourceVersionsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -142,4 +142,15 @@ func GetListAppCatalogListingResourceVersionsSortOrderEnumStringValues() []strin
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAppCatalogListingResourceVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAppCatalogListingResourceVersionsSortOrderEnum(val string) (ListAppCatalogListingResourceVersionsSortOrderEnum, bool) {
+	mappingListAppCatalogListingResourceVersionsSortOrderEnumIgnoreCase := make(map[string]ListAppCatalogListingResourceVersionsSortOrderEnum)
+	for k, v := range mappingListAppCatalogListingResourceVersionsSortOrderEnum {
+		mappingListAppCatalogListingResourceVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAppCatalogListingResourceVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

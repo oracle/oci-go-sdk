@@ -6,7 +6,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -79,10 +79,10 @@ func (request ListSdkLanguageTypesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListSdkLanguageTypesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListSdkLanguageTypesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSdkLanguageTypesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSdkLanguageTypesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSdkLanguageTypesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSdkLanguageTypesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSdkLanguageTypesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,6 +158,17 @@ func GetListSdkLanguageTypesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSdkLanguageTypesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSdkLanguageTypesSortOrderEnum(val string) (ListSdkLanguageTypesSortOrderEnum, bool) {
+	mappingListSdkLanguageTypesSortOrderEnumIgnoreCase := make(map[string]ListSdkLanguageTypesSortOrderEnum)
+	for k, v := range mappingListSdkLanguageTypesSortOrderEnum {
+		mappingListSdkLanguageTypesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSdkLanguageTypesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSdkLanguageTypesSortByEnum Enum with underlying type: string
 type ListSdkLanguageTypesSortByEnum string
 
@@ -187,4 +198,15 @@ func GetListSdkLanguageTypesSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListSdkLanguageTypesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSdkLanguageTypesSortByEnum(val string) (ListSdkLanguageTypesSortByEnum, bool) {
+	mappingListSdkLanguageTypesSortByEnumIgnoreCase := make(map[string]ListSdkLanguageTypesSortByEnum)
+	for k, v := range mappingListSdkLanguageTypesSortByEnum {
+		mappingListSdkLanguageTypesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSdkLanguageTypesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

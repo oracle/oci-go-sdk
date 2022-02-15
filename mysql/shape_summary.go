@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -45,7 +45,7 @@ func (m ShapeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.IsSupportedFor {
-		if _, ok := mappingShapeSummaryIsSupportedForEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingShapeSummaryIsSupportedForEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IsSupportedFor: %s. Supported values are: %s.", val, strings.Join(GetShapeSummaryIsSupportedForEnumStringValues(), ",")))
 		}
 	}
@@ -88,4 +88,15 @@ func GetShapeSummaryIsSupportedForEnumStringValues() []string {
 		"ANALYTICSCLUSTER",
 		"HEATWAVECLUSTER",
 	}
+}
+
+// GetMappingShapeSummaryIsSupportedForEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingShapeSummaryIsSupportedForEnum(val string) (ShapeSummaryIsSupportedForEnum, bool) {
+	mappingShapeSummaryIsSupportedForEnumIgnoreCase := make(map[string]ShapeSummaryIsSupportedForEnum)
+	for k, v := range mappingShapeSummaryIsSupportedForEnum {
+		mappingShapeSummaryIsSupportedForEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingShapeSummaryIsSupportedForEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

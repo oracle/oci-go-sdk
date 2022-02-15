@@ -12,7 +12,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -68,10 +68,10 @@ func (m SoftwareSourceSummary) String() string {
 func (m SoftwareSourceSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSoftwareSourceSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingSoftwareSourceSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetSoftwareSourceSummaryStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingLifecycleStatesEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingLifecycleStatesEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetLifecycleStatesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -115,4 +115,15 @@ func GetSoftwareSourceSummaryStatusEnumStringValues() []string {
 		"ERROR",
 		"WARNING",
 	}
+}
+
+// GetMappingSoftwareSourceSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSoftwareSourceSummaryStatusEnum(val string) (SoftwareSourceSummaryStatusEnum, bool) {
+	mappingSoftwareSourceSummaryStatusEnumIgnoreCase := make(map[string]SoftwareSourceSummaryStatusEnum)
+	for k, v := range mappingSoftwareSourceSummaryStatusEnum {
+		mappingSoftwareSourceSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSoftwareSourceSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

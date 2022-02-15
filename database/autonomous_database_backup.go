@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -79,10 +79,10 @@ func (m AutonomousDatabaseBackup) String() string {
 // Not recommended for calling this function directly
 func (m AutonomousDatabaseBackup) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAutonomousDatabaseBackupTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingAutonomousDatabaseBackupTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetAutonomousDatabaseBackupTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutonomousDatabaseBackupLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutonomousDatabaseBackupLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutonomousDatabaseBackupLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -123,6 +123,17 @@ func GetAutonomousDatabaseBackupTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingAutonomousDatabaseBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseBackupTypeEnum(val string) (AutonomousDatabaseBackupTypeEnum, bool) {
+	mappingAutonomousDatabaseBackupTypeEnumIgnoreCase := make(map[string]AutonomousDatabaseBackupTypeEnum)
+	for k, v := range mappingAutonomousDatabaseBackupTypeEnum {
+		mappingAutonomousDatabaseBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AutonomousDatabaseBackupLifecycleStateEnum Enum with underlying type: string
 type AutonomousDatabaseBackupLifecycleStateEnum string
 
@@ -161,4 +172,15 @@ func GetAutonomousDatabaseBackupLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingAutonomousDatabaseBackupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDatabaseBackupLifecycleStateEnum(val string) (AutonomousDatabaseBackupLifecycleStateEnum, bool) {
+	mappingAutonomousDatabaseBackupLifecycleStateEnumIgnoreCase := make(map[string]AutonomousDatabaseBackupLifecycleStateEnum)
+	for k, v := range mappingAutonomousDatabaseBackupLifecycleStateEnum {
+		mappingAutonomousDatabaseBackupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDatabaseBackupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

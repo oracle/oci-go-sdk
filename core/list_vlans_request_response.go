@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -95,13 +95,13 @@ func (request ListVlansRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListVlansRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListVlansSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListVlansSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListVlansSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListVlansSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListVlansSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListVlansSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVlanLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingVlanLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetVlanLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -169,6 +169,17 @@ func GetListVlansSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListVlansSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVlansSortByEnum(val string) (ListVlansSortByEnum, bool) {
+	mappingListVlansSortByEnumIgnoreCase := make(map[string]ListVlansSortByEnum)
+	for k, v := range mappingListVlansSortByEnum {
+		mappingListVlansSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVlansSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListVlansSortOrderEnum Enum with underlying type: string
 type ListVlansSortOrderEnum string
 
@@ -198,4 +209,15 @@ func GetListVlansSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListVlansSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVlansSortOrderEnum(val string) (ListVlansSortOrderEnum, bool) {
+	mappingListVlansSortOrderEnumIgnoreCase := make(map[string]ListVlansSortOrderEnum)
+	for k, v := range mappingListVlansSortOrderEnum {
+		mappingListVlansSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVlansSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

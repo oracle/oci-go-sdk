@@ -10,6 +10,10 @@
 
 package datacatalog
 
+import (
+	"strings"
+)
+
 // JobExecutionStateEnum Enum with underlying type: string
 type JobExecutionStateEnum string
 
@@ -54,4 +58,15 @@ func GetJobExecutionStateEnumStringValues() []string {
 		"CANCELED",
 		"SUCCEEDED_WITH_WARNINGS",
 	}
+}
+
+// GetMappingJobExecutionStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobExecutionStateEnum(val string) (JobExecutionStateEnum, bool) {
+	mappingJobExecutionStateEnumIgnoreCase := make(map[string]JobExecutionStateEnum)
+	for k, v := range mappingJobExecutionStateEnum {
+		mappingJobExecutionStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobExecutionStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

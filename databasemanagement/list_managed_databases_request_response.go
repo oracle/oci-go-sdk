@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -87,16 +87,16 @@ func (request ListManagedDatabasesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListManagedDatabasesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListManagedDatabasesManagementOptionEnum[string(request.ManagementOption)]; !ok && request.ManagementOption != "" {
+	if _, ok := GetMappingListManagedDatabasesManagementOptionEnum(string(request.ManagementOption)); !ok && request.ManagementOption != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ManagementOption: %s. Supported values are: %s.", request.ManagementOption, strings.Join(GetListManagedDatabasesManagementOptionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagedDatabasesDeploymentTypeEnum[string(request.DeploymentType)]; !ok && request.DeploymentType != "" {
+	if _, ok := GetMappingListManagedDatabasesDeploymentTypeEnum(string(request.DeploymentType)); !ok && request.DeploymentType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeploymentType: %s. Supported values are: %s.", request.DeploymentType, strings.Join(GetListManagedDatabasesDeploymentTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagedDatabasesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListManagedDatabasesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListManagedDatabasesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagedDatabasesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListManagedDatabasesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListManagedDatabasesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListManagedDatabasesManagementOptionEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagedDatabasesManagementOptionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedDatabasesManagementOptionEnum(val string) (ListManagedDatabasesManagementOptionEnum, bool) {
+	mappingListManagedDatabasesManagementOptionEnumIgnoreCase := make(map[string]ListManagedDatabasesManagementOptionEnum)
+	for k, v := range mappingListManagedDatabasesManagementOptionEnum {
+		mappingListManagedDatabasesManagementOptionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedDatabasesManagementOptionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagedDatabasesDeploymentTypeEnum Enum with underlying type: string
 type ListManagedDatabasesDeploymentTypeEnum string
 
@@ -207,6 +218,17 @@ func GetListManagedDatabasesDeploymentTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagedDatabasesDeploymentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedDatabasesDeploymentTypeEnum(val string) (ListManagedDatabasesDeploymentTypeEnum, bool) {
+	mappingListManagedDatabasesDeploymentTypeEnumIgnoreCase := make(map[string]ListManagedDatabasesDeploymentTypeEnum)
+	for k, v := range mappingListManagedDatabasesDeploymentTypeEnum {
+		mappingListManagedDatabasesDeploymentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedDatabasesDeploymentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagedDatabasesSortByEnum Enum with underlying type: string
 type ListManagedDatabasesSortByEnum string
 
@@ -238,6 +260,17 @@ func GetListManagedDatabasesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagedDatabasesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedDatabasesSortByEnum(val string) (ListManagedDatabasesSortByEnum, bool) {
+	mappingListManagedDatabasesSortByEnumIgnoreCase := make(map[string]ListManagedDatabasesSortByEnum)
+	for k, v := range mappingListManagedDatabasesSortByEnum {
+		mappingListManagedDatabasesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedDatabasesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagedDatabasesSortOrderEnum Enum with underlying type: string
 type ListManagedDatabasesSortOrderEnum string
 
@@ -267,4 +300,15 @@ func GetListManagedDatabasesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListManagedDatabasesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedDatabasesSortOrderEnum(val string) (ListManagedDatabasesSortOrderEnum, bool) {
+	mappingListManagedDatabasesSortOrderEnumIgnoreCase := make(map[string]ListManagedDatabasesSortOrderEnum)
+	for k, v := range mappingListManagedDatabasesSortOrderEnum {
+		mappingListManagedDatabasesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedDatabasesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

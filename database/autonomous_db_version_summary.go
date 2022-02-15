@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -57,7 +57,7 @@ func (m AutonomousDbVersionSummary) String() string {
 func (m AutonomousDbVersionSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingAutonomousDbVersionSummaryDbWorkloadEnum[string(m.DbWorkload)]; !ok && m.DbWorkload != "" {
+	if _, ok := GetMappingAutonomousDbVersionSummaryDbWorkloadEnum(string(m.DbWorkload)); !ok && m.DbWorkload != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DbWorkload: %s. Supported values are: %s.", m.DbWorkload, strings.Join(GetAutonomousDbVersionSummaryDbWorkloadEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -101,4 +101,15 @@ func GetAutonomousDbVersionSummaryDbWorkloadEnumStringValues() []string {
 		"AJD",
 		"APEX",
 	}
+}
+
+// GetMappingAutonomousDbVersionSummaryDbWorkloadEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutonomousDbVersionSummaryDbWorkloadEnum(val string) (AutonomousDbVersionSummaryDbWorkloadEnum, bool) {
+	mappingAutonomousDbVersionSummaryDbWorkloadEnumIgnoreCase := make(map[string]AutonomousDbVersionSummaryDbWorkloadEnum)
+	for k, v := range mappingAutonomousDbVersionSummaryDbWorkloadEnum {
+		mappingAutonomousDbVersionSummaryDbWorkloadEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutonomousDbVersionSummaryDbWorkloadEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

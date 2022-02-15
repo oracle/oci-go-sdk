@@ -15,7 +15,7 @@ package email
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -96,7 +96,7 @@ func (m Dkim) String() string {
 func (m Dkim) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDkimLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDkimLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDkimLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -152,4 +152,15 @@ func GetDkimLifecycleStateEnumStringValues() []string {
 		"NEEDS_ATTENTION",
 		"UPDATING",
 	}
+}
+
+// GetMappingDkimLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDkimLifecycleStateEnum(val string) (DkimLifecycleStateEnum, bool) {
+	mappingDkimLifecycleStateEnumIgnoreCase := make(map[string]DkimLifecycleStateEnum)
+	for k, v := range mappingDkimLifecycleStateEnum {
+		mappingDkimLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDkimLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

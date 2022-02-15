@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -66,11 +66,11 @@ func (m PreauthenticatedRequest) String() string {
 // Not recommended for calling this function directly
 func (m PreauthenticatedRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPreauthenticatedRequestAccessTypeEnum[string(m.AccessType)]; !ok && m.AccessType != "" {
+	if _, ok := GetMappingPreauthenticatedRequestAccessTypeEnum(string(m.AccessType)); !ok && m.AccessType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessType: %s. Supported values are: %s.", m.AccessType, strings.Join(GetPreauthenticatedRequestAccessTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingPreauthenticatedRequestBucketListingActionEnum[string(m.BucketListingAction)]; !ok && m.BucketListingAction != "" {
+	if _, ok := GetMappingPreauthenticatedRequestBucketListingActionEnum(string(m.BucketListingAction)); !ok && m.BucketListingAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BucketListingAction: %s. Supported values are: %s.", m.BucketListingAction, strings.Join(GetPreauthenticatedRequestBucketListingActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -108,6 +108,17 @@ func GetPreauthenticatedRequestBucketListingActionEnumStringValues() []string {
 		"Deny",
 		"ListObjects",
 	}
+}
+
+// GetMappingPreauthenticatedRequestBucketListingActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPreauthenticatedRequestBucketListingActionEnum(val string) (PreauthenticatedRequestBucketListingActionEnum, bool) {
+	mappingPreauthenticatedRequestBucketListingActionEnumIgnoreCase := make(map[string]PreauthenticatedRequestBucketListingActionEnum)
+	for k, v := range mappingPreauthenticatedRequestBucketListingActionEnum {
+		mappingPreauthenticatedRequestBucketListingActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPreauthenticatedRequestBucketListingActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // PreauthenticatedRequestAccessTypeEnum Enum with underlying type: string
@@ -151,4 +162,15 @@ func GetPreauthenticatedRequestAccessTypeEnumStringValues() []string {
 		"AnyObjectRead",
 		"AnyObjectReadWrite",
 	}
+}
+
+// GetMappingPreauthenticatedRequestAccessTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPreauthenticatedRequestAccessTypeEnum(val string) (PreauthenticatedRequestAccessTypeEnum, bool) {
+	mappingPreauthenticatedRequestAccessTypeEnumIgnoreCase := make(map[string]PreauthenticatedRequestAccessTypeEnum)
+	for k, v := range mappingPreauthenticatedRequestAccessTypeEnum {
+		mappingPreauthenticatedRequestAccessTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPreauthenticatedRequestAccessTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

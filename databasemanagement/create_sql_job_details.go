@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -134,19 +134,19 @@ func (m CreateSqlJobDetails) String() string {
 func (m CreateSqlJobDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingJobScheduleTypeEnum[string(m.ScheduleType)]; !ok && m.ScheduleType != "" {
+	if _, ok := GetMappingJobScheduleTypeEnum(string(m.ScheduleType)); !ok && m.ScheduleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ScheduleType: %s. Supported values are: %s.", m.ScheduleType, strings.Join(GetJobScheduleTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseSubTypeEnum[string(m.DatabaseSubType)]; !ok && m.DatabaseSubType != "" {
+	if _, ok := GetMappingDatabaseSubTypeEnum(string(m.DatabaseSubType)); !ok && m.DatabaseSubType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseSubType: %s. Supported values are: %s.", m.DatabaseSubType, strings.Join(GetDatabaseSubTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSqlJobSqlTypeEnum[string(m.SqlType)]; !ok && m.SqlType != "" {
+	if _, ok := GetMappingSqlJobSqlTypeEnum(string(m.SqlType)); !ok && m.SqlType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SqlType: %s. Supported values are: %s.", m.SqlType, strings.Join(GetSqlJobSqlTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSqlJobOperationTypeEnum[string(m.OperationType)]; !ok && m.OperationType != "" {
+	if _, ok := GetMappingSqlJobOperationTypeEnum(string(m.OperationType)); !ok && m.OperationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OperationType: %s. Supported values are: %s.", m.OperationType, strings.Join(GetSqlJobOperationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSqlJobRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingSqlJobRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetSqlJobRoleEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

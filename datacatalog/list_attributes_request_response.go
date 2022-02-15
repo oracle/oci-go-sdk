@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -139,19 +139,19 @@ func (request ListAttributesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAttributesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAttributesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListAttributesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListAttributesLifecycleStateEnumStringValues(), ",")))
 	}
 	for _, val := range request.Fields {
-		if _, ok := mappingListAttributesFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListAttributesFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListAttributesFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListAttributesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAttributesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAttributesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAttributesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAttributesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAttributesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -233,6 +233,17 @@ func GetListAttributesLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"MOVING",
 	}
+}
+
+// GetMappingListAttributesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAttributesLifecycleStateEnum(val string) (ListAttributesLifecycleStateEnum, bool) {
+	mappingListAttributesLifecycleStateEnumIgnoreCase := make(map[string]ListAttributesLifecycleStateEnum)
+	for k, v := range mappingListAttributesLifecycleStateEnum {
+		mappingListAttributesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAttributesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListAttributesFieldsEnum Enum with underlying type: string
@@ -326,6 +337,17 @@ func GetListAttributesFieldsEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAttributesFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAttributesFieldsEnum(val string) (ListAttributesFieldsEnum, bool) {
+	mappingListAttributesFieldsEnumIgnoreCase := make(map[string]ListAttributesFieldsEnum)
+	for k, v := range mappingListAttributesFieldsEnum {
+		mappingListAttributesFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAttributesFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAttributesSortByEnum Enum with underlying type: string
 type ListAttributesSortByEnum string
 
@@ -360,6 +382,17 @@ func GetListAttributesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAttributesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAttributesSortByEnum(val string) (ListAttributesSortByEnum, bool) {
+	mappingListAttributesSortByEnumIgnoreCase := make(map[string]ListAttributesSortByEnum)
+	for k, v := range mappingListAttributesSortByEnum {
+		mappingListAttributesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAttributesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAttributesSortOrderEnum Enum with underlying type: string
 type ListAttributesSortOrderEnum string
 
@@ -389,4 +422,15 @@ func GetListAttributesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAttributesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAttributesSortOrderEnum(val string) (ListAttributesSortOrderEnum, bool) {
+	mappingListAttributesSortOrderEnumIgnoreCase := make(map[string]ListAttributesSortOrderEnum)
+	for k, v := range mappingListAttributesSortOrderEnum {
+		mappingListAttributesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAttributesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

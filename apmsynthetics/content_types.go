@@ -9,6 +9,10 @@
 
 package apmsynthetics
 
+import (
+	"strings"
+)
+
 // ContentTypesEnum Enum with underlying type: string
 type ContentTypesEnum string
 
@@ -38,4 +42,15 @@ func GetContentTypesEnumStringValues() []string {
 		"SIDE",
 		"JS",
 	}
+}
+
+// GetMappingContentTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingContentTypesEnum(val string) (ContentTypesEnum, bool) {
+	mappingContentTypesEnumIgnoreCase := make(map[string]ContentTypesEnum)
+	for k, v := range mappingContentTypesEnum {
+		mappingContentTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingContentTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

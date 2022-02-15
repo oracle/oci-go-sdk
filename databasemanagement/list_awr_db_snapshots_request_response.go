@@ -6,7 +6,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -105,10 +105,10 @@ func (request ListAwrDbSnapshotsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListAwrDbSnapshotsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListAwrDbSnapshotsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListAwrDbSnapshotsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListAwrDbSnapshotsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListAwrDbSnapshotsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListAwrDbSnapshotsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListAwrDbSnapshotsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -176,6 +176,17 @@ func GetListAwrDbSnapshotsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListAwrDbSnapshotsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAwrDbSnapshotsSortByEnum(val string) (ListAwrDbSnapshotsSortByEnum, bool) {
+	mappingListAwrDbSnapshotsSortByEnumIgnoreCase := make(map[string]ListAwrDbSnapshotsSortByEnum)
+	for k, v := range mappingListAwrDbSnapshotsSortByEnum {
+		mappingListAwrDbSnapshotsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAwrDbSnapshotsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListAwrDbSnapshotsSortOrderEnum Enum with underlying type: string
 type ListAwrDbSnapshotsSortOrderEnum string
 
@@ -205,4 +216,15 @@ func GetListAwrDbSnapshotsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListAwrDbSnapshotsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListAwrDbSnapshotsSortOrderEnum(val string) (ListAwrDbSnapshotsSortOrderEnum, bool) {
+	mappingListAwrDbSnapshotsSortOrderEnumIgnoreCase := make(map[string]ListAwrDbSnapshotsSortOrderEnum)
+	for k, v := range mappingListAwrDbSnapshotsSortOrderEnum {
+		mappingListAwrDbSnapshotsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListAwrDbSnapshotsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

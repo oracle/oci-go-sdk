@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -92,13 +92,13 @@ func (request ListVcnsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListVcnsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListVcnsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListVcnsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListVcnsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListVcnsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListVcnsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListVcnsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVcnLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingVcnLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetVcnLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -166,6 +166,17 @@ func GetListVcnsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListVcnsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVcnsSortByEnum(val string) (ListVcnsSortByEnum, bool) {
+	mappingListVcnsSortByEnumIgnoreCase := make(map[string]ListVcnsSortByEnum)
+	for k, v := range mappingListVcnsSortByEnum {
+		mappingListVcnsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVcnsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListVcnsSortOrderEnum Enum with underlying type: string
 type ListVcnsSortOrderEnum string
 
@@ -195,4 +206,15 @@ func GetListVcnsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListVcnsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListVcnsSortOrderEnum(val string) (ListVcnsSortOrderEnum, bool) {
+	mappingListVcnsSortOrderEnumIgnoreCase := make(map[string]ListVcnsSortOrderEnum)
+	for k, v := range mappingListVcnsSortOrderEnum {
+		mappingListVcnsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListVcnsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

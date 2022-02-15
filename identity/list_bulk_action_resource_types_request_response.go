@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -67,7 +67,7 @@ func (request ListBulkActionResourceTypesRequest) RetryPolicy() *common.RetryPol
 // Not recommended for calling this function directly
 func (request ListBulkActionResourceTypesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListBulkActionResourceTypesBulkActionTypeEnum[string(request.BulkActionType)]; !ok && request.BulkActionType != "" {
+	if _, ok := GetMappingListBulkActionResourceTypesBulkActionTypeEnum(string(request.BulkActionType)); !ok && request.BulkActionType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BulkActionType: %s. Supported values are: %s.", request.BulkActionType, strings.Join(GetListBulkActionResourceTypesBulkActionTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -133,4 +133,15 @@ func GetListBulkActionResourceTypesBulkActionTypeEnumStringValues() []string {
 		"BULK_MOVE_RESOURCES",
 		"BULK_DELETE_RESOURCES",
 	}
+}
+
+// GetMappingListBulkActionResourceTypesBulkActionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBulkActionResourceTypesBulkActionTypeEnum(val string) (ListBulkActionResourceTypesBulkActionTypeEnum, bool) {
+	mappingListBulkActionResourceTypesBulkActionTypeEnumIgnoreCase := make(map[string]ListBulkActionResourceTypesBulkActionTypeEnum)
+	for k, v := range mappingListBulkActionResourceTypesBulkActionTypeEnum {
+		mappingListBulkActionResourceTypesBulkActionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBulkActionResourceTypesBulkActionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

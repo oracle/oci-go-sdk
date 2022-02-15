@@ -9,6 +9,10 @@
 
 package certificatesmanagement
 
+import (
+	"strings"
+)
+
 // CaBundleLifecycleStateEnum Enum with underlying type: string
 type CaBundleLifecycleStateEnum string
 
@@ -50,4 +54,15 @@ func GetCaBundleLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingCaBundleLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCaBundleLifecycleStateEnum(val string) (CaBundleLifecycleStateEnum, bool) {
+	mappingCaBundleLifecycleStateEnumIgnoreCase := make(map[string]CaBundleLifecycleStateEnum)
+	for k, v := range mappingCaBundleLifecycleStateEnum {
+		mappingCaBundleLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCaBundleLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

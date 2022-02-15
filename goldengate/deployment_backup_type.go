@@ -9,6 +9,10 @@
 
 package goldengate
 
+import (
+	"strings"
+)
+
 // DeploymentBackupTypeEnum Enum with underlying type: string
 type DeploymentBackupTypeEnum string
 
@@ -38,4 +42,15 @@ func GetDeploymentBackupTypeEnumStringValues() []string {
 		"INCREMENTAL",
 		"FULL",
 	}
+}
+
+// GetMappingDeploymentBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeploymentBackupTypeEnum(val string) (DeploymentBackupTypeEnum, bool) {
+	mappingDeploymentBackupTypeEnumIgnoreCase := make(map[string]DeploymentBackupTypeEnum)
+	for k, v := range mappingDeploymentBackupTypeEnum {
+		mappingDeploymentBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeploymentBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

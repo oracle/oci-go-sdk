@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -82,13 +82,13 @@ func (m DatabaseSoftwareImage) String() string {
 // Not recommended for calling this function directly
 func (m DatabaseSoftwareImage) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDatabaseSoftwareImageLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDatabaseSoftwareImageLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDatabaseSoftwareImageLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseSoftwareImageImageTypeEnum[string(m.ImageType)]; !ok && m.ImageType != "" {
+	if _, ok := GetMappingDatabaseSoftwareImageImageTypeEnum(string(m.ImageType)); !ok && m.ImageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ImageType: %s. Supported values are: %s.", m.ImageType, strings.Join(GetDatabaseSoftwareImageImageTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDatabaseSoftwareImageImageShapeFamilyEnum[string(m.ImageShapeFamily)]; !ok && m.ImageShapeFamily != "" {
+	if _, ok := GetMappingDatabaseSoftwareImageImageShapeFamilyEnum(string(m.ImageShapeFamily)); !ok && m.ImageShapeFamily != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ImageShapeFamily: %s. Supported values are: %s.", m.ImageShapeFamily, strings.Join(GetDatabaseSoftwareImageImageShapeFamilyEnumStringValues(), ",")))
 	}
 
@@ -147,6 +147,17 @@ func GetDatabaseSoftwareImageLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDatabaseSoftwareImageLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseSoftwareImageLifecycleStateEnum(val string) (DatabaseSoftwareImageLifecycleStateEnum, bool) {
+	mappingDatabaseSoftwareImageLifecycleStateEnumIgnoreCase := make(map[string]DatabaseSoftwareImageLifecycleStateEnum)
+	for k, v := range mappingDatabaseSoftwareImageLifecycleStateEnum {
+		mappingDatabaseSoftwareImageLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseSoftwareImageLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DatabaseSoftwareImageImageTypeEnum Enum with underlying type: string
 type DatabaseSoftwareImageImageTypeEnum string
 
@@ -176,6 +187,17 @@ func GetDatabaseSoftwareImageImageTypeEnumStringValues() []string {
 		"GRID_IMAGE",
 		"DATABASE_IMAGE",
 	}
+}
+
+// GetMappingDatabaseSoftwareImageImageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseSoftwareImageImageTypeEnum(val string) (DatabaseSoftwareImageImageTypeEnum, bool) {
+	mappingDatabaseSoftwareImageImageTypeEnumIgnoreCase := make(map[string]DatabaseSoftwareImageImageTypeEnum)
+	for k, v := range mappingDatabaseSoftwareImageImageTypeEnum {
+		mappingDatabaseSoftwareImageImageTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseSoftwareImageImageTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DatabaseSoftwareImageImageShapeFamilyEnum Enum with underlying type: string
@@ -210,4 +232,15 @@ func GetDatabaseSoftwareImageImageShapeFamilyEnumStringValues() []string {
 		"EXADATA_SHAPE",
 		"EXACC_SHAPE",
 	}
+}
+
+// GetMappingDatabaseSoftwareImageImageShapeFamilyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatabaseSoftwareImageImageShapeFamilyEnum(val string) (DatabaseSoftwareImageImageShapeFamilyEnum, bool) {
+	mappingDatabaseSoftwareImageImageShapeFamilyEnumIgnoreCase := make(map[string]DatabaseSoftwareImageImageShapeFamilyEnum)
+	for k, v := range mappingDatabaseSoftwareImageImageShapeFamilyEnum {
+		mappingDatabaseSoftwareImageImageShapeFamilyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatabaseSoftwareImageImageShapeFamilyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

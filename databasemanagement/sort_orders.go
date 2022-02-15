@@ -11,6 +11,10 @@
 
 package databasemanagement
 
+import (
+	"strings"
+)
+
 // SortOrdersEnum Enum with underlying type: string
 type SortOrdersEnum string
 
@@ -40,4 +44,15 @@ func GetSortOrdersEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSortOrdersEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSortOrdersEnum(val string) (SortOrdersEnum, bool) {
+	mappingSortOrdersEnumIgnoreCase := make(map[string]SortOrdersEnum)
+	for k, v := range mappingSortOrdersEnum {
+		mappingSortOrdersEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSortOrdersEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -459,4 +459,15 @@ func GetAbstractCommandDescriptorNameEnumStringValues() []string {
 		"NLP",
 		"COMPARE",
 	}
+}
+
+// GetMappingAbstractCommandDescriptorNameEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAbstractCommandDescriptorNameEnum(val string) (AbstractCommandDescriptorNameEnum, bool) {
+	mappingAbstractCommandDescriptorNameEnumIgnoreCase := make(map[string]AbstractCommandDescriptorNameEnum)
+	for k, v := range mappingAbstractCommandDescriptorNameEnum {
+		mappingAbstractCommandDescriptorNameEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAbstractCommandDescriptorNameEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

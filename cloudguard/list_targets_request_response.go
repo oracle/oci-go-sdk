@@ -6,7 +6,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -91,16 +91,16 @@ func (request ListTargetsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListTargetsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListTargetsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListTargetsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListTargetsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetsAccessLevelEnum[string(request.AccessLevel)]; !ok && request.AccessLevel != "" {
+	if _, ok := GetMappingListTargetsAccessLevelEnum(string(request.AccessLevel)); !ok && request.AccessLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessLevel: %s. Supported values are: %s.", request.AccessLevel, strings.Join(GetListTargetsAccessLevelEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListTargetsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListTargetsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListTargetsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListTargetsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListTargetsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -183,6 +183,17 @@ func GetListTargetsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTargetsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetsLifecycleStateEnum(val string) (ListTargetsLifecycleStateEnum, bool) {
+	mappingListTargetsLifecycleStateEnumIgnoreCase := make(map[string]ListTargetsLifecycleStateEnum)
+	for k, v := range mappingListTargetsLifecycleStateEnum {
+		mappingListTargetsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTargetsAccessLevelEnum Enum with underlying type: string
 type ListTargetsAccessLevelEnum string
 
@@ -212,6 +223,17 @@ func GetListTargetsAccessLevelEnumStringValues() []string {
 		"RESTRICTED",
 		"ACCESSIBLE",
 	}
+}
+
+// GetMappingListTargetsAccessLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetsAccessLevelEnum(val string) (ListTargetsAccessLevelEnum, bool) {
+	mappingListTargetsAccessLevelEnumIgnoreCase := make(map[string]ListTargetsAccessLevelEnum)
+	for k, v := range mappingListTargetsAccessLevelEnum {
+		mappingListTargetsAccessLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetsAccessLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListTargetsSortOrderEnum Enum with underlying type: string
@@ -245,6 +267,17 @@ func GetListTargetsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListTargetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetsSortOrderEnum(val string) (ListTargetsSortOrderEnum, bool) {
+	mappingListTargetsSortOrderEnumIgnoreCase := make(map[string]ListTargetsSortOrderEnum)
+	for k, v := range mappingListTargetsSortOrderEnum {
+		mappingListTargetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListTargetsSortByEnum Enum with underlying type: string
 type ListTargetsSortByEnum string
 
@@ -274,4 +307,15 @@ func GetListTargetsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListTargetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListTargetsSortByEnum(val string) (ListTargetsSortByEnum, bool) {
+	mappingListTargetsSortByEnumIgnoreCase := make(map[string]ListTargetsSortByEnum)
+	for k, v := range mappingListTargetsSortByEnum {
+		mappingListTargetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListTargetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -59,7 +59,7 @@ func (m ApiKey) String() string {
 func (m ApiKey) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingApiKeyLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingApiKeyLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetApiKeyLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -106,4 +106,15 @@ func GetApiKeyLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingApiKeyLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingApiKeyLifecycleStateEnum(val string) (ApiKeyLifecycleStateEnum, bool) {
+	mappingApiKeyLifecycleStateEnumIgnoreCase := make(map[string]ApiKeyLifecycleStateEnum)
+	for k, v := range mappingApiKeyLifecycleStateEnum {
+		mappingApiKeyLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingApiKeyLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

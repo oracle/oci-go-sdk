@@ -6,7 +6,7 @@ package apmsynthetics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -85,10 +85,10 @@ func (request ListScriptsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListScriptsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListScriptsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListScriptsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListScriptsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListScriptsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListScriptsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListScriptsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -156,6 +156,17 @@ func GetListScriptsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListScriptsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListScriptsSortOrderEnum(val string) (ListScriptsSortOrderEnum, bool) {
+	mappingListScriptsSortOrderEnumIgnoreCase := make(map[string]ListScriptsSortOrderEnum)
+	for k, v := range mappingListScriptsSortOrderEnum {
+		mappingListScriptsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListScriptsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListScriptsSortByEnum Enum with underlying type: string
 type ListScriptsSortByEnum string
 
@@ -191,4 +202,15 @@ func GetListScriptsSortByEnumStringValues() []string {
 		"timeUpdated",
 		"contentType",
 	}
+}
+
+// GetMappingListScriptsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListScriptsSortByEnum(val string) (ListScriptsSortByEnum, bool) {
+	mappingListScriptsSortByEnumIgnoreCase := make(map[string]ListScriptsSortByEnum)
+	for k, v := range mappingListScriptsSortByEnum {
+		mappingListScriptsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListScriptsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

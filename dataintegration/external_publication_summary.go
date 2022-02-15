@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -79,7 +79,7 @@ func (m ExternalPublicationSummary) String() string {
 func (m ExternalPublicationSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingExternalPublicationSummaryStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingExternalPublicationSummaryStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetExternalPublicationSummaryStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -120,4 +120,15 @@ func GetExternalPublicationSummaryStatusEnumStringValues() []string {
 		"FAILED",
 		"PUBLISHING",
 	}
+}
+
+// GetMappingExternalPublicationSummaryStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExternalPublicationSummaryStatusEnum(val string) (ExternalPublicationSummaryStatusEnum, bool) {
+	mappingExternalPublicationSummaryStatusEnumIgnoreCase := make(map[string]ExternalPublicationSummaryStatusEnum)
+	for k, v := range mappingExternalPublicationSummaryStatusEnum {
+		mappingExternalPublicationSummaryStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExternalPublicationSummaryStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

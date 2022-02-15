@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -103,13 +103,13 @@ func (request ListImagesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListImagesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListImagesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListImagesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListImagesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListImagesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListImagesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListImagesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingImageLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingImageLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetImageLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -177,6 +177,17 @@ func GetListImagesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListImagesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListImagesSortByEnum(val string) (ListImagesSortByEnum, bool) {
+	mappingListImagesSortByEnumIgnoreCase := make(map[string]ListImagesSortByEnum)
+	for k, v := range mappingListImagesSortByEnum {
+		mappingListImagesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListImagesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListImagesSortOrderEnum Enum with underlying type: string
 type ListImagesSortOrderEnum string
 
@@ -206,4 +217,15 @@ func GetListImagesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListImagesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListImagesSortOrderEnum(val string) (ListImagesSortOrderEnum, bool) {
+	mappingListImagesSortOrderEnumIgnoreCase := make(map[string]ListImagesSortOrderEnum)
+	for k, v := range mappingListImagesSortOrderEnum {
+		mappingListImagesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListImagesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

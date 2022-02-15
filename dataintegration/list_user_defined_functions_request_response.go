@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -86,10 +86,10 @@ func (request ListUserDefinedFunctionsRequest) RetryPolicy() *common.RetryPolicy
 // Not recommended for calling this function directly
 func (request ListUserDefinedFunctionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListUserDefinedFunctionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListUserDefinedFunctionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListUserDefinedFunctionsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUserDefinedFunctionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListUserDefinedFunctionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListUserDefinedFunctionsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -161,6 +161,17 @@ func GetListUserDefinedFunctionsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUserDefinedFunctionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUserDefinedFunctionsSortOrderEnum(val string) (ListUserDefinedFunctionsSortOrderEnum, bool) {
+	mappingListUserDefinedFunctionsSortOrderEnumIgnoreCase := make(map[string]ListUserDefinedFunctionsSortOrderEnum)
+	for k, v := range mappingListUserDefinedFunctionsSortOrderEnum {
+		mappingListUserDefinedFunctionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUserDefinedFunctionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUserDefinedFunctionsSortByEnum Enum with underlying type: string
 type ListUserDefinedFunctionsSortByEnum string
 
@@ -190,4 +201,15 @@ func GetListUserDefinedFunctionsSortByEnumStringValues() []string {
 		"TIME_CREATED",
 		"DISPLAY_NAME",
 	}
+}
+
+// GetMappingListUserDefinedFunctionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUserDefinedFunctionsSortByEnum(val string) (ListUserDefinedFunctionsSortByEnum, bool) {
+	mappingListUserDefinedFunctionsSortByEnumIgnoreCase := make(map[string]ListUserDefinedFunctionsSortByEnum)
+	for k, v := range mappingListUserDefinedFunctionsSortByEnum {
+		mappingListUserDefinedFunctionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUserDefinedFunctionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

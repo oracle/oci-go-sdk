@@ -9,6 +9,10 @@
 
 package datascience
 
+import (
+	"strings"
+)
+
 // ProjectLifecycleStateEnum Enum with underlying type: string
 type ProjectLifecycleStateEnum string
 
@@ -41,4 +45,15 @@ func GetProjectLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingProjectLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProjectLifecycleStateEnum(val string) (ProjectLifecycleStateEnum, bool) {
+	mappingProjectLifecycleStateEnumIgnoreCase := make(map[string]ProjectLifecycleStateEnum)
+	for k, v := range mappingProjectLifecycleStateEnum {
+		mappingProjectLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProjectLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

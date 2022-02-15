@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -90,7 +90,7 @@ func (m CreateLoadBalancerTrafficShiftDeployStageDetails) String() string {
 func (m CreateLoadBalancerTrafficShiftDeployStageDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnum[string(m.TrafficShiftTarget)]; !ok && m.TrafficShiftTarget != "" {
+	if _, ok := GetMappingLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnum(string(m.TrafficShiftTarget)); !ok && m.TrafficShiftTarget != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TrafficShiftTarget: %s. Supported values are: %s.", m.TrafficShiftTarget, strings.Join(GetLoadBalancerTrafficShiftDeployStageTrafficShiftTargetEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

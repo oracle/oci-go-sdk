@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -47,7 +47,7 @@ func (m EncryptedData) String() string {
 func (m EncryptedData) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingEncryptedDataEncryptionAlgorithmEnum[string(m.EncryptionAlgorithm)]; !ok && m.EncryptionAlgorithm != "" {
+	if _, ok := GetMappingEncryptedDataEncryptionAlgorithmEnum(string(m.EncryptionAlgorithm)); !ok && m.EncryptionAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EncryptionAlgorithm: %s. Supported values are: %s.", m.EncryptionAlgorithm, strings.Join(GetEncryptedDataEncryptionAlgorithmEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -88,4 +88,15 @@ func GetEncryptedDataEncryptionAlgorithmEnumStringValues() []string {
 		"RSA_OAEP_SHA_1",
 		"RSA_OAEP_SHA_256",
 	}
+}
+
+// GetMappingEncryptedDataEncryptionAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEncryptedDataEncryptionAlgorithmEnum(val string) (EncryptedDataEncryptionAlgorithmEnum, bool) {
+	mappingEncryptedDataEncryptionAlgorithmEnumIgnoreCase := make(map[string]EncryptedDataEncryptionAlgorithmEnum)
+	for k, v := range mappingEncryptedDataEncryptionAlgorithmEnum {
+		mappingEncryptedDataEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEncryptedDataEncryptionAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

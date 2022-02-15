@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"io"
 	"net/http"
 	"strings"
@@ -94,7 +94,7 @@ func (request RegisterLookupRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request RegisterLookupRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRegisterLookupTypeEnum[string(request.Type)]; !ok && request.Type != "" {
+	if _, ok := GetMappingRegisterLookupTypeEnum(string(request.Type)); !ok && request.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", request.Type, strings.Join(GetRegisterLookupTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -157,4 +157,15 @@ func GetRegisterLookupTypeEnumStringValues() []string {
 		"Lookup",
 		"Dictionary",
 	}
+}
+
+// GetMappingRegisterLookupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRegisterLookupTypeEnum(val string) (RegisterLookupTypeEnum, bool) {
+	mappingRegisterLookupTypeEnumIgnoreCase := make(map[string]RegisterLookupTypeEnum)
+	for k, v := range mappingRegisterLookupTypeEnum {
+		mappingRegisterLookupTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRegisterLookupTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

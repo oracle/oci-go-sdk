@@ -15,7 +15,7 @@ package resourcemanager
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -106,10 +106,10 @@ func (m Job) String() string {
 func (m Job) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingJobOperationEnum[string(m.Operation)]; !ok && m.Operation != "" {
+	if _, ok := GetMappingJobOperationEnum(string(m.Operation)); !ok && m.Operation != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Operation: %s. Supported values are: %s.", m.Operation, strings.Join(GetJobOperationEnumStringValues(), ",")))
 	}
-	if _, ok := mappingJobLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingJobLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetJobLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -238,6 +238,17 @@ func GetJobOperationEnumStringValues() []string {
 	}
 }
 
+// GetMappingJobOperationEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobOperationEnum(val string) (JobOperationEnum, bool) {
+	mappingJobOperationEnumIgnoreCase := make(map[string]JobOperationEnum)
+	for k, v := range mappingJobOperationEnum {
+		mappingJobOperationEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobOperationEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // JobLifecycleStateEnum Enum with underlying type: string
 type JobLifecycleStateEnum string
 
@@ -279,4 +290,15 @@ func GetJobLifecycleStateEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingJobLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobLifecycleStateEnum(val string) (JobLifecycleStateEnum, bool) {
+	mappingJobLifecycleStateEnumIgnoreCase := make(map[string]JobLifecycleStateEnum)
+	for k, v := range mappingJobLifecycleStateEnum {
+		mappingJobLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

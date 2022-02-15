@@ -6,10 +6,11 @@ package auth
 import (
 	"crypto/tls"
 	"errors"
-	"github.com/oracle/oci-go-sdk/v57/common"
-	"github.com/stretchr/testify/assert"
 	"net/http"
 	"testing"
+
+	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/stretchr/testify/assert"
 )
 
 var customTransport = &http.Transport{

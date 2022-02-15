@@ -6,7 +6,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -66,7 +66,7 @@ func (request ListVirtualCircuitPublicPrefixesRequest) RetryPolicy() *common.Ret
 // Not recommended for calling this function directly
 func (request ListVirtualCircuitPublicPrefixesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVirtualCircuitPublicPrefixVerificationStateEnum[string(request.VerificationState)]; !ok && request.VerificationState != "" {
+	if _, ok := GetMappingVirtualCircuitPublicPrefixVerificationStateEnum(string(request.VerificationState)); !ok && request.VerificationState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for VerificationState: %s. Supported values are: %s.", request.VerificationState, strings.Join(GetVirtualCircuitPublicPrefixVerificationStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

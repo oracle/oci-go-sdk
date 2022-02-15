@@ -6,7 +6,7 @@ package datascience
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -96,13 +96,13 @@ func (request ListModelsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListModelsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListModelsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListModelsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListModelsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListModelsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListModelsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListModelsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListModelsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListModelsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListModelsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -177,6 +177,17 @@ func GetListModelsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListModelsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListModelsLifecycleStateEnum(val string) (ListModelsLifecycleStateEnum, bool) {
+	mappingListModelsLifecycleStateEnumIgnoreCase := make(map[string]ListModelsLifecycleStateEnum)
+	for k, v := range mappingListModelsLifecycleStateEnum {
+		mappingListModelsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListModelsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListModelsSortOrderEnum Enum with underlying type: string
 type ListModelsSortOrderEnum string
 
@@ -206,6 +217,17 @@ func GetListModelsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListModelsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListModelsSortOrderEnum(val string) (ListModelsSortOrderEnum, bool) {
+	mappingListModelsSortOrderEnumIgnoreCase := make(map[string]ListModelsSortOrderEnum)
+	for k, v := range mappingListModelsSortOrderEnum {
+		mappingListModelsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListModelsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListModelsSortByEnum Enum with underlying type: string
@@ -240,4 +262,15 @@ func GetListModelsSortByEnumStringValues() []string {
 		"displayName",
 		"lifecycleState",
 	}
+}
+
+// GetMappingListModelsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListModelsSortByEnum(val string) (ListModelsSortByEnum, bool) {
+	mappingListModelsSortByEnumIgnoreCase := make(map[string]ListModelsSortByEnum)
+	for k, v := range mappingListModelsSortByEnum {
+		mappingListModelsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListModelsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

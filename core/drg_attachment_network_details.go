@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -136,4 +136,15 @@ func GetDrgAttachmentNetworkDetailsTypeEnumStringValues() []string {
 		"VIRTUAL_CIRCUIT",
 		"REMOTE_PEERING_CONNECTION",
 	}
+}
+
+// GetMappingDrgAttachmentNetworkDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgAttachmentNetworkDetailsTypeEnum(val string) (DrgAttachmentNetworkDetailsTypeEnum, bool) {
+	mappingDrgAttachmentNetworkDetailsTypeEnumIgnoreCase := make(map[string]DrgAttachmentNetworkDetailsTypeEnum)
+	for k, v := range mappingDrgAttachmentNetworkDetailsTypeEnum {
+		mappingDrgAttachmentNetworkDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgAttachmentNetworkDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

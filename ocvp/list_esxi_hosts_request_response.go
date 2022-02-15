@@ -6,7 +6,7 @@ package ocvp
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -93,13 +93,13 @@ func (request ListEsxiHostsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListEsxiHostsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListEsxiHostsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListEsxiHostsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListEsxiHostsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEsxiHostsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListEsxiHostsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListEsxiHostsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEsxiHostsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListEsxiHostsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListEsxiHostsLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -167,6 +167,17 @@ func GetListEsxiHostsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListEsxiHostsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEsxiHostsSortOrderEnum(val string) (ListEsxiHostsSortOrderEnum, bool) {
+	mappingListEsxiHostsSortOrderEnumIgnoreCase := make(map[string]ListEsxiHostsSortOrderEnum)
+	for k, v := range mappingListEsxiHostsSortOrderEnum {
+		mappingListEsxiHostsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEsxiHostsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListEsxiHostsSortByEnum Enum with underlying type: string
 type ListEsxiHostsSortByEnum string
 
@@ -196,6 +207,17 @@ func GetListEsxiHostsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListEsxiHostsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEsxiHostsSortByEnum(val string) (ListEsxiHostsSortByEnum, bool) {
+	mappingListEsxiHostsSortByEnumIgnoreCase := make(map[string]ListEsxiHostsSortByEnum)
+	for k, v := range mappingListEsxiHostsSortByEnum {
+		mappingListEsxiHostsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEsxiHostsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListEsxiHostsLifecycleStateEnum Enum with underlying type: string
@@ -239,4 +261,15 @@ func GetListEsxiHostsLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingListEsxiHostsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEsxiHostsLifecycleStateEnum(val string) (ListEsxiHostsLifecycleStateEnum, bool) {
+	mappingListEsxiHostsLifecycleStateEnumIgnoreCase := make(map[string]ListEsxiHostsLifecycleStateEnum)
+	for k, v := range mappingListEsxiHostsLifecycleStateEnum {
+		mappingListEsxiHostsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEsxiHostsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

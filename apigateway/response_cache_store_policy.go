@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -103,4 +103,15 @@ func GetResponseCacheStorePolicyTypeEnumStringValues() []string {
 	return []string{
 		"FIXED_TTL_STORE_POLICY",
 	}
+}
+
+// GetMappingResponseCacheStorePolicyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponseCacheStorePolicyTypeEnum(val string) (ResponseCacheStorePolicyTypeEnum, bool) {
+	mappingResponseCacheStorePolicyTypeEnumIgnoreCase := make(map[string]ResponseCacheStorePolicyTypeEnum)
+	for k, v := range mappingResponseCacheStorePolicyTypeEnum {
+		mappingResponseCacheStorePolicyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResponseCacheStorePolicyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

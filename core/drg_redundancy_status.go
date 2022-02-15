@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -40,7 +40,7 @@ func (m DrgRedundancyStatus) String() string {
 func (m DrgRedundancyStatus) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDrgRedundancyStatusStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingDrgRedundancyStatusStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetDrgRedundancyStatusStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -96,4 +96,15 @@ func GetDrgRedundancyStatusStatusEnumStringValues() []string {
 		"NOT_REDUNDANT_MIX_CONNECTIONS",
 		"NOT_REDUNDANT_NO_CONNECTION",
 	}
+}
+
+// GetMappingDrgRedundancyStatusStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgRedundancyStatusStatusEnum(val string) (DrgRedundancyStatusStatusEnum, bool) {
+	mappingDrgRedundancyStatusStatusEnumIgnoreCase := make(map[string]DrgRedundancyStatusStatusEnum)
+	for k, v := range mappingDrgRedundancyStatusStatusEnum {
+		mappingDrgRedundancyStatusStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgRedundancyStatusStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

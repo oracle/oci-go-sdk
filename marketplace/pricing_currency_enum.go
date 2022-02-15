@@ -9,6 +9,10 @@
 
 package marketplace
 
+import (
+	"strings"
+)
+
 // PricingCurrencyEnumEnum Enum with underlying type: string
 type PricingCurrencyEnumEnum string
 
@@ -35,4 +39,15 @@ func GetPricingCurrencyEnumEnumStringValues() []string {
 	return []string{
 		"USD",
 	}
+}
+
+// GetMappingPricingCurrencyEnumEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPricingCurrencyEnumEnum(val string) (PricingCurrencyEnumEnum, bool) {
+	mappingPricingCurrencyEnumEnumIgnoreCase := make(map[string]PricingCurrencyEnumEnum)
+	for k, v := range mappingPricingCurrencyEnumEnum {
+		mappingPricingCurrencyEnumEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPricingCurrencyEnumEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

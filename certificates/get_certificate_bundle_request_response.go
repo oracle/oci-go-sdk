@@ -6,7 +6,7 @@ package certificates
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -73,10 +73,10 @@ func (request GetCertificateBundleRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request GetCertificateBundleRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGetCertificateBundleStageEnum[string(request.Stage)]; !ok && request.Stage != "" {
+	if _, ok := GetMappingGetCertificateBundleStageEnum(string(request.Stage)); !ok && request.Stage != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stage: %s. Supported values are: %s.", request.Stage, strings.Join(GetGetCertificateBundleStageEnumStringValues(), ",")))
 	}
-	if _, ok := mappingGetCertificateBundleCertificateBundleTypeEnum[string(request.CertificateBundleType)]; !ok && request.CertificateBundleType != "" {
+	if _, ok := GetMappingGetCertificateBundleCertificateBundleTypeEnum(string(request.CertificateBundleType)); !ok && request.CertificateBundleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for CertificateBundleType: %s. Supported values are: %s.", request.CertificateBundleType, strings.Join(GetGetCertificateBundleCertificateBundleTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -150,6 +150,17 @@ func GetGetCertificateBundleStageEnumStringValues() []string {
 	}
 }
 
+// GetMappingGetCertificateBundleStageEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetCertificateBundleStageEnum(val string) (GetCertificateBundleStageEnum, bool) {
+	mappingGetCertificateBundleStageEnumIgnoreCase := make(map[string]GetCertificateBundleStageEnum)
+	for k, v := range mappingGetCertificateBundleStageEnum {
+		mappingGetCertificateBundleStageEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetCertificateBundleStageEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // GetCertificateBundleCertificateBundleTypeEnum Enum with underlying type: string
 type GetCertificateBundleCertificateBundleTypeEnum string
 
@@ -179,4 +190,15 @@ func GetGetCertificateBundleCertificateBundleTypeEnumStringValues() []string {
 		"CERTIFICATE_CONTENT_PUBLIC_ONLY",
 		"CERTIFICATE_CONTENT_WITH_PRIVATE_KEY",
 	}
+}
+
+// GetMappingGetCertificateBundleCertificateBundleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetCertificateBundleCertificateBundleTypeEnum(val string) (GetCertificateBundleCertificateBundleTypeEnum, bool) {
+	mappingGetCertificateBundleCertificateBundleTypeEnumIgnoreCase := make(map[string]GetCertificateBundleCertificateBundleTypeEnum)
+	for k, v := range mappingGetCertificateBundleCertificateBundleTypeEnum {
+		mappingGetCertificateBundleCertificateBundleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetCertificateBundleCertificateBundleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -7,7 +7,8 @@ import (
 	"context"
 	"crypto/rsa"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+
+	"github.com/oracle/oci-go-sdk/v58/common"
 
 	"net/http"
 	"net/url"

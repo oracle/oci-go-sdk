@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -84,14 +84,14 @@ func (m Domain) String() string {
 // Not recommended for calling this function directly
 func (m Domain) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDomainTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingDomainTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetDomainTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDomainLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDomainLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDomainLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDomainLifecycleDetailsEnum[string(m.LifecycleDetails)]; !ok && m.LifecycleDetails != "" {
+	if _, ok := GetMappingDomainLifecycleDetailsEnum(string(m.LifecycleDetails)); !ok && m.LifecycleDetails != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleDetails: %s. Supported values are: %s.", m.LifecycleDetails, strings.Join(GetDomainLifecycleDetailsEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -131,6 +131,17 @@ func GetDomainTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingDomainTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDomainTypeEnum(val string) (DomainTypeEnum, bool) {
+	mappingDomainTypeEnumIgnoreCase := make(map[string]DomainTypeEnum)
+	for k, v := range mappingDomainTypeEnum {
+		mappingDomainTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDomainTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DomainLifecycleStateEnum Enum with underlying type: string
 type DomainLifecycleStateEnum string
 
@@ -168,6 +179,17 @@ func GetDomainLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDomainLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDomainLifecycleStateEnum(val string) (DomainLifecycleStateEnum, bool) {
+	mappingDomainLifecycleStateEnumIgnoreCase := make(map[string]DomainLifecycleStateEnum)
+	for k, v := range mappingDomainLifecycleStateEnum {
+		mappingDomainLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDomainLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DomainLifecycleDetailsEnum Enum with underlying type: string
 type DomainLifecycleDetailsEnum string
 
@@ -200,4 +222,15 @@ func GetDomainLifecycleDetailsEnumStringValues() []string {
 		"ACTIVATING",
 		"UPDATING",
 	}
+}
+
+// GetMappingDomainLifecycleDetailsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDomainLifecycleDetailsEnum(val string) (DomainLifecycleDetailsEnum, bool) {
+	mappingDomainLifecycleDetailsEnumIgnoreCase := make(map[string]DomainLifecycleDetailsEnum)
+	for k, v := range mappingDomainLifecycleDetailsEnum {
+		mappingDomainLifecycleDetailsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDomainLifecycleDetailsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -50,11 +50,11 @@ func (m SignDataDetails) String() string {
 // Not recommended for calling this function directly
 func (m SignDataDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSignDataDetailsSigningAlgorithmEnum[string(m.SigningAlgorithm)]; !ok && m.SigningAlgorithm != "" {
+	if _, ok := GetMappingSignDataDetailsSigningAlgorithmEnum(string(m.SigningAlgorithm)); !ok && m.SigningAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SigningAlgorithm: %s. Supported values are: %s.", m.SigningAlgorithm, strings.Join(GetSignDataDetailsSigningAlgorithmEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingSignDataDetailsMessageTypeEnum[string(m.MessageType)]; !ok && m.MessageType != "" {
+	if _, ok := GetMappingSignDataDetailsMessageTypeEnum(string(m.MessageType)); !ok && m.MessageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MessageType: %s. Supported values are: %s.", m.MessageType, strings.Join(GetSignDataDetailsMessageTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -92,6 +92,17 @@ func GetSignDataDetailsMessageTypeEnumStringValues() []string {
 		"RAW",
 		"DIGEST",
 	}
+}
+
+// GetMappingSignDataDetailsMessageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSignDataDetailsMessageTypeEnum(val string) (SignDataDetailsMessageTypeEnum, bool) {
+	mappingSignDataDetailsMessageTypeEnumIgnoreCase := make(map[string]SignDataDetailsMessageTypeEnum)
+	for k, v := range mappingSignDataDetailsMessageTypeEnum {
+		mappingSignDataDetailsMessageTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSignDataDetailsMessageTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SignDataDetailsSigningAlgorithmEnum Enum with underlying type: string
@@ -150,4 +161,15 @@ func GetSignDataDetailsSigningAlgorithmEnumStringValues() []string {
 		"ECDSA_SHA_384",
 		"ECDSA_SHA_512",
 	}
+}
+
+// GetMappingSignDataDetailsSigningAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSignDataDetailsSigningAlgorithmEnum(val string) (SignDataDetailsSigningAlgorithmEnum, bool) {
+	mappingSignDataDetailsSigningAlgorithmEnumIgnoreCase := make(map[string]SignDataDetailsSigningAlgorithmEnum)
+	for k, v := range mappingSignDataDetailsSigningAlgorithmEnum {
+		mappingSignDataDetailsSigningAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSignDataDetailsSigningAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

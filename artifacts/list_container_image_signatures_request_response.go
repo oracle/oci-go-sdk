@@ -6,7 +6,7 @@ package artifacts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -120,13 +120,13 @@ func (request ListContainerImageSignaturesRequest) RetryPolicy() *common.RetryPo
 // Not recommended for calling this function directly
 func (request ListContainerImageSignaturesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListContainerImageSignaturesSigningAlgorithmEnum[string(request.SigningAlgorithm)]; !ok && request.SigningAlgorithm != "" {
+	if _, ok := GetMappingListContainerImageSignaturesSigningAlgorithmEnum(string(request.SigningAlgorithm)); !ok && request.SigningAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SigningAlgorithm: %s. Supported values are: %s.", request.SigningAlgorithm, strings.Join(GetListContainerImageSignaturesSigningAlgorithmEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListContainerImageSignaturesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListContainerImageSignaturesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListContainerImageSignaturesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListContainerImageSignaturesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListContainerImageSignaturesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListContainerImageSignaturesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -200,6 +200,17 @@ func GetListContainerImageSignaturesSigningAlgorithmEnumStringValues() []string 
 	}
 }
 
+// GetMappingListContainerImageSignaturesSigningAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListContainerImageSignaturesSigningAlgorithmEnum(val string) (ListContainerImageSignaturesSigningAlgorithmEnum, bool) {
+	mappingListContainerImageSignaturesSigningAlgorithmEnumIgnoreCase := make(map[string]ListContainerImageSignaturesSigningAlgorithmEnum)
+	for k, v := range mappingListContainerImageSignaturesSigningAlgorithmEnum {
+		mappingListContainerImageSignaturesSigningAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListContainerImageSignaturesSigningAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListContainerImageSignaturesSortByEnum Enum with underlying type: string
 type ListContainerImageSignaturesSortByEnum string
 
@@ -231,6 +242,17 @@ func GetListContainerImageSignaturesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListContainerImageSignaturesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListContainerImageSignaturesSortByEnum(val string) (ListContainerImageSignaturesSortByEnum, bool) {
+	mappingListContainerImageSignaturesSortByEnumIgnoreCase := make(map[string]ListContainerImageSignaturesSortByEnum)
+	for k, v := range mappingListContainerImageSignaturesSortByEnum {
+		mappingListContainerImageSignaturesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListContainerImageSignaturesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListContainerImageSignaturesSortOrderEnum Enum with underlying type: string
 type ListContainerImageSignaturesSortOrderEnum string
 
@@ -260,4 +282,15 @@ func GetListContainerImageSignaturesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListContainerImageSignaturesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListContainerImageSignaturesSortOrderEnum(val string) (ListContainerImageSignaturesSortOrderEnum, bool) {
+	mappingListContainerImageSignaturesSortOrderEnumIgnoreCase := make(map[string]ListContainerImageSignaturesSortOrderEnum)
+	for k, v := range mappingListContainerImageSignaturesSortOrderEnum {
+		mappingListContainerImageSignaturesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListContainerImageSignaturesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

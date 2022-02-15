@@ -12,7 +12,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -59,7 +59,7 @@ func (m EventSummary) String() string {
 // Not recommended for calling this function directly
 func (m EventSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingEventTypeEnum[string(m.EventType)]; !ok && m.EventType != "" {
+	if _, ok := GetMappingEventTypeEnum(string(m.EventType)); !ok && m.EventType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EventType: %s. Supported values are: %s.", m.EventType, strings.Join(GetEventTypeEnumStringValues(), ",")))
 	}
 

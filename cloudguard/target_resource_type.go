@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // TargetResourceTypeEnum Enum with underlying type: string
 type TargetResourceTypeEnum string
 
@@ -41,4 +45,15 @@ func GetTargetResourceTypeEnumStringValues() []string {
 		"ERPCLOUD",
 		"HCMCLOUD",
 	}
+}
+
+// GetMappingTargetResourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetResourceTypeEnum(val string) (TargetResourceTypeEnum, bool) {
+	mappingTargetResourceTypeEnumIgnoreCase := make(map[string]TargetResourceTypeEnum)
+	for k, v := range mappingTargetResourceTypeEnum {
+		mappingTargetResourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetResourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

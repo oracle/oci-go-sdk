@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // AwrReportFormatTypeEnum Enum with underlying type: string
 type AwrReportFormatTypeEnum string
 
@@ -40,4 +44,15 @@ func GetAwrReportFormatTypeEnumStringValues() []string {
 		"HTML",
 		"TEXT",
 	}
+}
+
+// GetMappingAwrReportFormatTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAwrReportFormatTypeEnum(val string) (AwrReportFormatTypeEnum, bool) {
+	mappingAwrReportFormatTypeEnumIgnoreCase := make(map[string]AwrReportFormatTypeEnum)
+	for k, v := range mappingAwrReportFormatTypeEnum {
+		mappingAwrReportFormatTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAwrReportFormatTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

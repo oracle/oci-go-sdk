@@ -13,7 +13,7 @@ package waf
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -177,7 +177,7 @@ func (m networkaddresslist) String() string {
 // Not recommended for calling this function directly
 func (m networkaddresslist) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingNetworkAddressListLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingNetworkAddressListLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetNetworkAddressListLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -230,6 +230,17 @@ func GetNetworkAddressListLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingNetworkAddressListLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNetworkAddressListLifecycleStateEnum(val string) (NetworkAddressListLifecycleStateEnum, bool) {
+	mappingNetworkAddressListLifecycleStateEnumIgnoreCase := make(map[string]NetworkAddressListLifecycleStateEnum)
+	for k, v := range mappingNetworkAddressListLifecycleStateEnum {
+		mappingNetworkAddressListLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNetworkAddressListLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // NetworkAddressListTypeEnum Enum with underlying type: string
 type NetworkAddressListTypeEnum string
 
@@ -259,4 +270,15 @@ func GetNetworkAddressListTypeEnumStringValues() []string {
 		"ADDRESSES",
 		"VCN_ADDRESSES",
 	}
+}
+
+// GetMappingNetworkAddressListTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNetworkAddressListTypeEnum(val string) (NetworkAddressListTypeEnum, bool) {
+	mappingNetworkAddressListTypeEnumIgnoreCase := make(map[string]NetworkAddressListTypeEnum)
+	for k, v := range mappingNetworkAddressListTypeEnum {
+		mappingNetworkAddressListTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNetworkAddressListTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

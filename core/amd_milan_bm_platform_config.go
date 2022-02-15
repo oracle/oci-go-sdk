@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -61,7 +61,7 @@ func (m AmdMilanBmPlatformConfig) String() string {
 // Not recommended for calling this function directly
 func (m AmdMilanBmPlatformConfig) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnum[string(m.NumaNodesPerSocket)]; !ok && m.NumaNodesPerSocket != "" {
+	if _, ok := GetMappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnum(string(m.NumaNodesPerSocket)); !ok && m.NumaNodesPerSocket != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NumaNodesPerSocket: %s. Supported values are: %s.", m.NumaNodesPerSocket, strings.Join(GetAmdMilanBmPlatformConfigNumaNodesPerSocketEnumStringValues(), ",")))
 	}
 
@@ -120,4 +120,15 @@ func GetAmdMilanBmPlatformConfigNumaNodesPerSocketEnumStringValues() []string {
 		"NPS2",
 		"NPS4",
 	}
+}
+
+// GetMappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnum(val string) (AmdMilanBmPlatformConfigNumaNodesPerSocketEnum, bool) {
+	mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnumIgnoreCase := make(map[string]AmdMilanBmPlatformConfigNumaNodesPerSocketEnum)
+	for k, v := range mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnum {
+		mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAmdMilanBmPlatformConfigNumaNodesPerSocketEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

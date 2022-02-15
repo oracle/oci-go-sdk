@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -81,13 +81,13 @@ func (m BackupDestinationSummary) String() string {
 func (m BackupDestinationSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingBackupDestinationSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingBackupDestinationSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetBackupDestinationSummaryTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBackupDestinationSummaryNfsMountTypeEnum[string(m.NfsMountType)]; !ok && m.NfsMountType != "" {
+	if _, ok := GetMappingBackupDestinationSummaryNfsMountTypeEnum(string(m.NfsMountType)); !ok && m.NfsMountType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NfsMountType: %s. Supported values are: %s.", m.NfsMountType, strings.Join(GetBackupDestinationSummaryNfsMountTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBackupDestinationSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingBackupDestinationSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetBackupDestinationSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -127,6 +127,17 @@ func GetBackupDestinationSummaryTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingBackupDestinationSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupDestinationSummaryTypeEnum(val string) (BackupDestinationSummaryTypeEnum, bool) {
+	mappingBackupDestinationSummaryTypeEnumIgnoreCase := make(map[string]BackupDestinationSummaryTypeEnum)
+	for k, v := range mappingBackupDestinationSummaryTypeEnum {
+		mappingBackupDestinationSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupDestinationSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // BackupDestinationSummaryNfsMountTypeEnum Enum with underlying type: string
 type BackupDestinationSummaryNfsMountTypeEnum string
 
@@ -156,6 +167,17 @@ func GetBackupDestinationSummaryNfsMountTypeEnumStringValues() []string {
 		"SELF_MOUNT",
 		"AUTOMATED_MOUNT",
 	}
+}
+
+// GetMappingBackupDestinationSummaryNfsMountTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupDestinationSummaryNfsMountTypeEnum(val string) (BackupDestinationSummaryNfsMountTypeEnum, bool) {
+	mappingBackupDestinationSummaryNfsMountTypeEnumIgnoreCase := make(map[string]BackupDestinationSummaryNfsMountTypeEnum)
+	for k, v := range mappingBackupDestinationSummaryNfsMountTypeEnum {
+		mappingBackupDestinationSummaryNfsMountTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupDestinationSummaryNfsMountTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // BackupDestinationSummaryLifecycleStateEnum Enum with underlying type: string
@@ -190,4 +212,15 @@ func GetBackupDestinationSummaryLifecycleStateEnumStringValues() []string {
 		"FAILED",
 		"DELETED",
 	}
+}
+
+// GetMappingBackupDestinationSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBackupDestinationSummaryLifecycleStateEnum(val string) (BackupDestinationSummaryLifecycleStateEnum, bool) {
+	mappingBackupDestinationSummaryLifecycleStateEnumIgnoreCase := make(map[string]BackupDestinationSummaryLifecycleStateEnum)
+	for k, v := range mappingBackupDestinationSummaryLifecycleStateEnum {
+		mappingBackupDestinationSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBackupDestinationSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

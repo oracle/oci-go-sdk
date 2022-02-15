@@ -9,6 +9,10 @@
 
 package rover
 
+import (
+	"strings"
+)
+
 // NodeTypeEnum Enum with underlying type: string
 type NodeTypeEnum string
 
@@ -38,4 +42,15 @@ func GetNodeTypeEnumStringValues() []string {
 		"STANDALONE",
 		"CLUSTERED",
 	}
+}
+
+// GetMappingNodeTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNodeTypeEnum(val string) (NodeTypeEnum, bool) {
+	mappingNodeTypeEnumIgnoreCase := make(map[string]NodeTypeEnum)
+	for k, v := range mappingNodeTypeEnum {
+		mappingNodeTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNodeTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -46,7 +46,7 @@ func (m SignedData) String() string {
 // Not recommended for calling this function directly
 func (m SignedData) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSignedDataSigningAlgorithmEnum[string(m.SigningAlgorithm)]; !ok && m.SigningAlgorithm != "" {
+	if _, ok := GetMappingSignedDataSigningAlgorithmEnum(string(m.SigningAlgorithm)); !ok && m.SigningAlgorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SigningAlgorithm: %s. Supported values are: %s.", m.SigningAlgorithm, strings.Join(GetSignedDataSigningAlgorithmEnumStringValues(), ",")))
 	}
 
@@ -112,4 +112,15 @@ func GetSignedDataSigningAlgorithmEnumStringValues() []string {
 		"ECDSA_SHA_384",
 		"ECDSA_SHA_512",
 	}
+}
+
+// GetMappingSignedDataSigningAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSignedDataSigningAlgorithmEnum(val string) (SignedDataSigningAlgorithmEnum, bool) {
+	mappingSignedDataSigningAlgorithmEnumIgnoreCase := make(map[string]SignedDataSigningAlgorithmEnum)
+	for k, v := range mappingSignedDataSigningAlgorithmEnum {
+		mappingSignedDataSigningAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSignedDataSigningAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

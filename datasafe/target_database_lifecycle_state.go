@@ -9,6 +9,10 @@
 
 package datasafe
 
+import (
+	"strings"
+)
+
 // TargetDatabaseLifecycleStateEnum Enum with underlying type: string
 type TargetDatabaseLifecycleStateEnum string
 
@@ -56,4 +60,15 @@ func GetTargetDatabaseLifecycleStateEnumStringValues() []string {
 		"NEEDS_ATTENTION",
 		"FAILED",
 	}
+}
+
+// GetMappingTargetDatabaseLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTargetDatabaseLifecycleStateEnum(val string) (TargetDatabaseLifecycleStateEnum, bool) {
+	mappingTargetDatabaseLifecycleStateEnumIgnoreCase := make(map[string]TargetDatabaseLifecycleStateEnum)
+	for k, v := range mappingTargetDatabaseLifecycleStateEnum {
+		mappingTargetDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTargetDatabaseLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

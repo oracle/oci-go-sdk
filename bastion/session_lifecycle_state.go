@@ -9,6 +9,10 @@
 
 package bastion
 
+import (
+	"strings"
+)
+
 // SessionLifecycleStateEnum Enum with underlying type: string
 type SessionLifecycleStateEnum string
 
@@ -47,4 +51,15 @@ func GetSessionLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingSessionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSessionLifecycleStateEnum(val string) (SessionLifecycleStateEnum, bool) {
+	mappingSessionLifecycleStateEnumIgnoreCase := make(map[string]SessionLifecycleStateEnum)
+	for k, v := range mappingSessionLifecycleStateEnum {
+		mappingSessionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSessionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

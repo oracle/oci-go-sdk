@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -145,4 +145,15 @@ func GetBuildSourceConnectionTypeEnumStringValues() []string {
 		"GITLAB",
 		"DEVOPS_CODE_REPOSITORY",
 	}
+}
+
+// GetMappingBuildSourceConnectionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingBuildSourceConnectionTypeEnum(val string) (BuildSourceConnectionTypeEnum, bool) {
+	mappingBuildSourceConnectionTypeEnumIgnoreCase := make(map[string]BuildSourceConnectionTypeEnum)
+	for k, v := range mappingBuildSourceConnectionTypeEnum {
+		mappingBuildSourceConnectionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingBuildSourceConnectionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

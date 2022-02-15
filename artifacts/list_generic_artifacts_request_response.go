@@ -6,7 +6,7 @@ package artifacts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -106,10 +106,10 @@ func (request ListGenericArtifactsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListGenericArtifactsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListGenericArtifactsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListGenericArtifactsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListGenericArtifactsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListGenericArtifactsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListGenericArtifactsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListGenericArtifactsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -177,6 +177,17 @@ func GetListGenericArtifactsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListGenericArtifactsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListGenericArtifactsSortByEnum(val string) (ListGenericArtifactsSortByEnum, bool) {
+	mappingListGenericArtifactsSortByEnumIgnoreCase := make(map[string]ListGenericArtifactsSortByEnum)
+	for k, v := range mappingListGenericArtifactsSortByEnum {
+		mappingListGenericArtifactsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListGenericArtifactsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListGenericArtifactsSortOrderEnum Enum with underlying type: string
 type ListGenericArtifactsSortOrderEnum string
 
@@ -206,4 +217,15 @@ func GetListGenericArtifactsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListGenericArtifactsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListGenericArtifactsSortOrderEnum(val string) (ListGenericArtifactsSortOrderEnum, bool) {
+	mappingListGenericArtifactsSortOrderEnumIgnoreCase := make(map[string]ListGenericArtifactsSortOrderEnum)
+	for k, v := range mappingListGenericArtifactsSortOrderEnum {
+		mappingListGenericArtifactsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListGenericArtifactsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

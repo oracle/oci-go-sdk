@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -58,10 +58,10 @@ func (m ObjectSummary) String() string {
 func (m ObjectSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingStorageTierEnum[string(m.StorageTier)]; !ok && m.StorageTier != "" {
+	if _, ok := GetMappingStorageTierEnum(string(m.StorageTier)); !ok && m.StorageTier != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for StorageTier: %s. Supported values are: %s.", m.StorageTier, strings.Join(GetStorageTierEnumStringValues(), ",")))
 	}
-	if _, ok := mappingArchivalStateEnum[string(m.ArchivalState)]; !ok && m.ArchivalState != "" {
+	if _, ok := GetMappingArchivalStateEnum(string(m.ArchivalState)); !ok && m.ArchivalState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ArchivalState: %s. Supported values are: %s.", m.ArchivalState, strings.Join(GetArchivalStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -73,7 +73,7 @@ func (m LaunchAutonomousExadataInfrastructureDetails) String() string {
 func (m LaunchAutonomousExadataInfrastructureDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -111,4 +111,15 @@ func GetLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumStringValues
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum(val string) (LaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum, bool) {
+	mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumIgnoreCase := make(map[string]LaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum)
+	for k, v := range mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnum {
+		mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLaunchAutonomousExadataInfrastructureDetailsLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

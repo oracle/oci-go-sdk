@@ -12,7 +12,7 @@ package cims
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -38,10 +38,10 @@ func (m CreateResourceDetails) String() string {
 func (m CreateResourceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingRegionEnum[string(m.Region)]; !ok && m.Region != "" {
+	if _, ok := GetMappingRegionEnum(string(m.Region)); !ok && m.Region != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Region: %s. Supported values are: %s.", m.Region, strings.Join(GetRegionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAvailabilityDomainEnum[string(m.AvailabilityDomain)]; !ok && m.AvailabilityDomain != "" {
+	if _, ok := GetMappingAvailabilityDomainEnum(string(m.AvailabilityDomain)); !ok && m.AvailabilityDomain != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AvailabilityDomain: %s. Supported values are: %s.", m.AvailabilityDomain, strings.Join(GetAvailabilityDomainEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

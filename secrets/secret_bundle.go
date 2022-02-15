@@ -12,7 +12,7 @@ package secrets
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -59,7 +59,7 @@ func (m SecretBundle) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
 	for _, val := range m.Stages {
-		if _, ok := mappingSecretBundleStagesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSecretBundleStagesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Stages: %s. Supported values are: %s.", val, strings.Join(GetSecretBundleStagesEnumStringValues(), ",")))
 		}
 	}
@@ -159,4 +159,15 @@ func GetSecretBundleStagesEnumStringValues() []string {
 		"PREVIOUS",
 		"DEPRECATED",
 	}
+}
+
+// GetMappingSecretBundleStagesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretBundleStagesEnum(val string) (SecretBundleStagesEnum, bool) {
+	mappingSecretBundleStagesEnumIgnoreCase := make(map[string]SecretBundleStagesEnum)
+	for k, v := range mappingSecretBundleStagesEnum {
+		mappingSecretBundleStagesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretBundleStagesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

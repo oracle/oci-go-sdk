@@ -14,7 +14,7 @@ package sch
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -110,4 +110,15 @@ func GetStreamingCursorDetailsKindEnumStringValues() []string {
 		"LATEST",
 		"TRIM_HORIZON",
 	}
+}
+
+// GetMappingStreamingCursorDetailsKindEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStreamingCursorDetailsKindEnum(val string) (StreamingCursorDetailsKindEnum, bool) {
+	mappingStreamingCursorDetailsKindEnumIgnoreCase := make(map[string]StreamingCursorDetailsKindEnum)
+	for k, v := range mappingStreamingCursorDetailsKindEnum {
+		mappingStreamingCursorDetailsKindEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStreamingCursorDetailsKindEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

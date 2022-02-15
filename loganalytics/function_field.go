@@ -12,7 +12,7 @@ package loganalytics
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -117,7 +117,7 @@ func (m FunctionField) String() string {
 func (m FunctionField) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingValueTypeEnum[string(m.ValueType)]; !ok && m.ValueType != "" {
+	if _, ok := GetMappingValueTypeEnum(string(m.ValueType)); !ok && m.ValueType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ValueType: %s. Supported values are: %s.", m.ValueType, strings.Join(GetValueTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

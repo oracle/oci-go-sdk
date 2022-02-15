@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -105,14 +105,14 @@ func (m AddSecurityRuleDetails) String() string {
 // Not recommended for calling this function directly
 func (m AddSecurityRuleDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAddSecurityRuleDetailsDirectionEnum[string(m.Direction)]; !ok && m.Direction != "" {
+	if _, ok := GetMappingAddSecurityRuleDetailsDirectionEnum(string(m.Direction)); !ok && m.Direction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Direction: %s. Supported values are: %s.", m.Direction, strings.Join(GetAddSecurityRuleDetailsDirectionEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingAddSecurityRuleDetailsDestinationTypeEnum[string(m.DestinationType)]; !ok && m.DestinationType != "" {
+	if _, ok := GetMappingAddSecurityRuleDetailsDestinationTypeEnum(string(m.DestinationType)); !ok && m.DestinationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DestinationType: %s. Supported values are: %s.", m.DestinationType, strings.Join(GetAddSecurityRuleDetailsDestinationTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAddSecurityRuleDetailsSourceTypeEnum[string(m.SourceType)]; !ok && m.SourceType != "" {
+	if _, ok := GetMappingAddSecurityRuleDetailsSourceTypeEnum(string(m.SourceType)); !ok && m.SourceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceType: %s. Supported values are: %s.", m.SourceType, strings.Join(GetAddSecurityRuleDetailsSourceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -155,6 +155,17 @@ func GetAddSecurityRuleDetailsDestinationTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingAddSecurityRuleDetailsDestinationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAddSecurityRuleDetailsDestinationTypeEnum(val string) (AddSecurityRuleDetailsDestinationTypeEnum, bool) {
+	mappingAddSecurityRuleDetailsDestinationTypeEnumIgnoreCase := make(map[string]AddSecurityRuleDetailsDestinationTypeEnum)
+	for k, v := range mappingAddSecurityRuleDetailsDestinationTypeEnum {
+		mappingAddSecurityRuleDetailsDestinationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAddSecurityRuleDetailsDestinationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // AddSecurityRuleDetailsDirectionEnum Enum with underlying type: string
 type AddSecurityRuleDetailsDirectionEnum string
 
@@ -184,6 +195,17 @@ func GetAddSecurityRuleDetailsDirectionEnumStringValues() []string {
 		"EGRESS",
 		"INGRESS",
 	}
+}
+
+// GetMappingAddSecurityRuleDetailsDirectionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAddSecurityRuleDetailsDirectionEnum(val string) (AddSecurityRuleDetailsDirectionEnum, bool) {
+	mappingAddSecurityRuleDetailsDirectionEnumIgnoreCase := make(map[string]AddSecurityRuleDetailsDirectionEnum)
+	for k, v := range mappingAddSecurityRuleDetailsDirectionEnum {
+		mappingAddSecurityRuleDetailsDirectionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAddSecurityRuleDetailsDirectionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // AddSecurityRuleDetailsSourceTypeEnum Enum with underlying type: string
@@ -218,4 +240,15 @@ func GetAddSecurityRuleDetailsSourceTypeEnumStringValues() []string {
 		"SERVICE_CIDR_BLOCK",
 		"NETWORK_SECURITY_GROUP",
 	}
+}
+
+// GetMappingAddSecurityRuleDetailsSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAddSecurityRuleDetailsSourceTypeEnum(val string) (AddSecurityRuleDetailsSourceTypeEnum, bool) {
+	mappingAddSecurityRuleDetailsSourceTypeEnumIgnoreCase := make(map[string]AddSecurityRuleDetailsSourceTypeEnum)
+	for k, v := range mappingAddSecurityRuleDetailsSourceTypeEnum {
+		mappingAddSecurityRuleDetailsSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAddSecurityRuleDetailsSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

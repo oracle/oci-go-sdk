@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -95,10 +95,10 @@ func (request ListDataEntitiesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDataEntitiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDataEntitiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDataEntitiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDataEntitiesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDataEntitiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDataEntitiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDataEntitiesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -170,6 +170,17 @@ func GetListDataEntitiesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDataEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDataEntitiesSortByEnum(val string) (ListDataEntitiesSortByEnum, bool) {
+	mappingListDataEntitiesSortByEnumIgnoreCase := make(map[string]ListDataEntitiesSortByEnum)
+	for k, v := range mappingListDataEntitiesSortByEnum {
+		mappingListDataEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDataEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDataEntitiesSortOrderEnum Enum with underlying type: string
 type ListDataEntitiesSortOrderEnum string
 
@@ -199,4 +210,15 @@ func GetListDataEntitiesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDataEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDataEntitiesSortOrderEnum(val string) (ListDataEntitiesSortOrderEnum, bool) {
+	mappingListDataEntitiesSortOrderEnumIgnoreCase := make(map[string]ListDataEntitiesSortOrderEnum)
+	for k, v := range mappingListDataEntitiesSortOrderEnum {
+		mappingListDataEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDataEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

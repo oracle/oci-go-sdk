@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -43,7 +43,7 @@ func (m SummarizeDatabaseInsightResourceUtilizationInsightAggregation) String() 
 // Not recommended for calling this function directly
 func (m SummarizeDatabaseInsightResourceUtilizationInsightAggregation) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum[string(m.ResourceMetric)]; !ok && m.ResourceMetric != "" {
+	if _, ok := GetMappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum(string(m.ResourceMetric)); !ok && m.ResourceMetric != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceMetric: %s. Supported values are: %s.", m.ResourceMetric, strings.Join(GetSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumStringValues(), ",")))
 	}
 
@@ -94,4 +94,15 @@ func GetSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMet
 		"MEMORY_PGA",
 		"MEMORY_SGA",
 	}
+}
+
+// GetMappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum(val string) (SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnum {
+		mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceUtilizationInsightAggregationResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

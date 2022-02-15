@@ -9,6 +9,10 @@
 
 package budget
 
+import (
+	"strings"
+)
+
 // ThresholdTypeEnum Enum with underlying type: string
 type ThresholdTypeEnum string
 
@@ -38,4 +42,15 @@ func GetThresholdTypeEnumStringValues() []string {
 		"PERCENTAGE",
 		"ABSOLUTE",
 	}
+}
+
+// GetMappingThresholdTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingThresholdTypeEnum(val string) (ThresholdTypeEnum, bool) {
+	mappingThresholdTypeEnumIgnoreCase := make(map[string]ThresholdTypeEnum)
+	for k, v := range mappingThresholdTypeEnum {
+		mappingThresholdTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingThresholdTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package integration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -74,11 +74,11 @@ func (m CreateIntegrationInstanceDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateIntegrationInstanceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingCreateIntegrationInstanceDetailsIntegrationInstanceTypeEnum[string(m.IntegrationInstanceType)]; !ok && m.IntegrationInstanceType != "" {
+	if _, ok := GetMappingCreateIntegrationInstanceDetailsIntegrationInstanceTypeEnum(string(m.IntegrationInstanceType)); !ok && m.IntegrationInstanceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IntegrationInstanceType: %s. Supported values are: %s.", m.IntegrationInstanceType, strings.Join(GetCreateIntegrationInstanceDetailsIntegrationInstanceTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingCreateIntegrationInstanceDetailsConsumptionModelEnum[string(m.ConsumptionModel)]; !ok && m.ConsumptionModel != "" {
+	if _, ok := GetMappingCreateIntegrationInstanceDetailsConsumptionModelEnum(string(m.ConsumptionModel)); !ok && m.ConsumptionModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConsumptionModel: %s. Supported values are: %s.", m.ConsumptionModel, strings.Join(GetCreateIntegrationInstanceDetailsConsumptionModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -184,6 +184,17 @@ func GetCreateIntegrationInstanceDetailsIntegrationInstanceTypeEnumStringValues(
 	}
 }
 
+// GetMappingCreateIntegrationInstanceDetailsIntegrationInstanceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateIntegrationInstanceDetailsIntegrationInstanceTypeEnum(val string) (CreateIntegrationInstanceDetailsIntegrationInstanceTypeEnum, bool) {
+	mappingCreateIntegrationInstanceDetailsIntegrationInstanceTypeEnumIgnoreCase := make(map[string]CreateIntegrationInstanceDetailsIntegrationInstanceTypeEnum)
+	for k, v := range mappingCreateIntegrationInstanceDetailsIntegrationInstanceTypeEnum {
+		mappingCreateIntegrationInstanceDetailsIntegrationInstanceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateIntegrationInstanceDetailsIntegrationInstanceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // CreateIntegrationInstanceDetailsConsumptionModelEnum Enum with underlying type: string
 type CreateIntegrationInstanceDetailsConsumptionModelEnum string
 
@@ -216,4 +227,15 @@ func GetCreateIntegrationInstanceDetailsConsumptionModelEnumStringValues() []str
 		"GOV",
 		"OIC4SAAS",
 	}
+}
+
+// GetMappingCreateIntegrationInstanceDetailsConsumptionModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateIntegrationInstanceDetailsConsumptionModelEnum(val string) (CreateIntegrationInstanceDetailsConsumptionModelEnum, bool) {
+	mappingCreateIntegrationInstanceDetailsConsumptionModelEnumIgnoreCase := make(map[string]CreateIntegrationInstanceDetailsConsumptionModelEnum)
+	for k, v := range mappingCreateIntegrationInstanceDetailsConsumptionModelEnum {
+		mappingCreateIntegrationInstanceDetailsConsumptionModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateIntegrationInstanceDetailsConsumptionModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

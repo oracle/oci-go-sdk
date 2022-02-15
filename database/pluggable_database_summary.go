@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -69,10 +69,10 @@ func (m PluggableDatabaseSummary) String() string {
 // Not recommended for calling this function directly
 func (m PluggableDatabaseSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPluggableDatabaseSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingPluggableDatabaseSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetPluggableDatabaseSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPluggableDatabaseSummaryOpenModeEnum[string(m.OpenMode)]; !ok && m.OpenMode != "" {
+	if _, ok := GetMappingPluggableDatabaseSummaryOpenModeEnum(string(m.OpenMode)); !ok && m.OpenMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OpenMode: %s. Supported values are: %s.", m.OpenMode, strings.Join(GetPluggableDatabaseSummaryOpenModeEnumStringValues(), ",")))
 	}
 
@@ -125,6 +125,17 @@ func GetPluggableDatabaseSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingPluggableDatabaseSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPluggableDatabaseSummaryLifecycleStateEnum(val string) (PluggableDatabaseSummaryLifecycleStateEnum, bool) {
+	mappingPluggableDatabaseSummaryLifecycleStateEnumIgnoreCase := make(map[string]PluggableDatabaseSummaryLifecycleStateEnum)
+	for k, v := range mappingPluggableDatabaseSummaryLifecycleStateEnum {
+		mappingPluggableDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPluggableDatabaseSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PluggableDatabaseSummaryOpenModeEnum Enum with underlying type: string
 type PluggableDatabaseSummaryOpenModeEnum string
 
@@ -160,4 +171,15 @@ func GetPluggableDatabaseSummaryOpenModeEnumStringValues() []string {
 		"MOUNTED",
 		"MIGRATE",
 	}
+}
+
+// GetMappingPluggableDatabaseSummaryOpenModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPluggableDatabaseSummaryOpenModeEnum(val string) (PluggableDatabaseSummaryOpenModeEnum, bool) {
+	mappingPluggableDatabaseSummaryOpenModeEnumIgnoreCase := make(map[string]PluggableDatabaseSummaryOpenModeEnum)
+	for k, v := range mappingPluggableDatabaseSummaryOpenModeEnum {
+		mappingPluggableDatabaseSummaryOpenModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPluggableDatabaseSummaryOpenModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

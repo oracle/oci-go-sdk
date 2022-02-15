@@ -11,7 +11,7 @@ package databasetools
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -34,7 +34,7 @@ func (m CreateDatabaseToolsRelatedResourceDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateDatabaseToolsRelatedResourceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRelatedResourceEntityTypeEnum[string(m.EntityType)]; !ok && m.EntityType != "" {
+	if _, ok := GetMappingRelatedResourceEntityTypeEnum(string(m.EntityType)); !ok && m.EntityType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for EntityType: %s. Supported values are: %s.", m.EntityType, strings.Join(GetRelatedResourceEntityTypeEnumStringValues(), ",")))
 	}
 

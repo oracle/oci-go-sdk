@@ -9,6 +9,10 @@
 
 package mysql
 
+import (
+	"strings"
+)
+
 // InnoDbShutdownModeEnum Enum with underlying type: string
 type InnoDbShutdownModeEnum string
 
@@ -41,4 +45,15 @@ func GetInnoDbShutdownModeEnumStringValues() []string {
 		"FAST",
 		"SLOW",
 	}
+}
+
+// GetMappingInnoDbShutdownModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInnoDbShutdownModeEnum(val string) (InnoDbShutdownModeEnum, bool) {
+	mappingInnoDbShutdownModeEnumIgnoreCase := make(map[string]InnoDbShutdownModeEnum)
+	for k, v := range mappingInnoDbShutdownModeEnum {
+		mappingInnoDbShutdownModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInnoDbShutdownModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package certificatesmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -78,10 +78,10 @@ func (request ListCertificateAuthorityVersionsRequest) RetryPolicy() *common.Ret
 // Not recommended for calling this function directly
 func (request ListCertificateAuthorityVersionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListCertificateAuthorityVersionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListCertificateAuthorityVersionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListCertificateAuthorityVersionsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListCertificateAuthorityVersionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListCertificateAuthorityVersionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListCertificateAuthorityVersionsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -147,6 +147,17 @@ func GetListCertificateAuthorityVersionsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListCertificateAuthorityVersionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCertificateAuthorityVersionsSortByEnum(val string) (ListCertificateAuthorityVersionsSortByEnum, bool) {
+	mappingListCertificateAuthorityVersionsSortByEnumIgnoreCase := make(map[string]ListCertificateAuthorityVersionsSortByEnum)
+	for k, v := range mappingListCertificateAuthorityVersionsSortByEnum {
+		mappingListCertificateAuthorityVersionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCertificateAuthorityVersionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListCertificateAuthorityVersionsSortOrderEnum Enum with underlying type: string
 type ListCertificateAuthorityVersionsSortOrderEnum string
 
@@ -176,4 +187,15 @@ func GetListCertificateAuthorityVersionsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListCertificateAuthorityVersionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListCertificateAuthorityVersionsSortOrderEnum(val string) (ListCertificateAuthorityVersionsSortOrderEnum, bool) {
+	mappingListCertificateAuthorityVersionsSortOrderEnumIgnoreCase := make(map[string]ListCertificateAuthorityVersionsSortOrderEnum)
+	for k, v := range mappingListCertificateAuthorityVersionsSortOrderEnum {
+		mappingListCertificateAuthorityVersionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListCertificateAuthorityVersionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

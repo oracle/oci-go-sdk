@@ -9,6 +9,10 @@
 
 package jms
 
+import (
+	"strings"
+)
+
 // JreSecurityStatusEnum Enum with underlying type: string
 type JreSecurityStatusEnum string
 
@@ -44,4 +48,15 @@ func GetJreSecurityStatusEnumStringValues() []string {
 		"UPDATE_REQUIRED",
 		"UPGRADE_REQUIRED",
 	}
+}
+
+// GetMappingJreSecurityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJreSecurityStatusEnum(val string) (JreSecurityStatusEnum, bool) {
+	mappingJreSecurityStatusEnumIgnoreCase := make(map[string]JreSecurityStatusEnum)
+	for k, v := range mappingJreSecurityStatusEnum {
+		mappingJreSecurityStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJreSecurityStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

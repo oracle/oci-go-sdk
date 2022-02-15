@@ -9,6 +9,10 @@
 
 package apmsynthetics
 
+import (
+	"strings"
+)
+
 // RequestAuthenticationSchemesEnum Enum with underlying type: string
 type RequestAuthenticationSchemesEnum string
 
@@ -44,4 +48,15 @@ func GetRequestAuthenticationSchemesEnumStringValues() []string {
 		"BASIC",
 		"BEARER",
 	}
+}
+
+// GetMappingRequestAuthenticationSchemesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRequestAuthenticationSchemesEnum(val string) (RequestAuthenticationSchemesEnum, bool) {
+	mappingRequestAuthenticationSchemesEnumIgnoreCase := make(map[string]RequestAuthenticationSchemesEnum)
+	for k, v := range mappingRequestAuthenticationSchemesEnum {
+		mappingRequestAuthenticationSchemesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRequestAuthenticationSchemesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

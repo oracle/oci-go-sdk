@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -121,16 +121,16 @@ func (m TaskRun) String() string {
 func (m TaskRun) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTaskRunStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingTaskRunStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetTaskRunStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskRunExpectedDurationUnitEnum[string(m.ExpectedDurationUnit)]; !ok && m.ExpectedDurationUnit != "" {
+	if _, ok := GetMappingTaskRunExpectedDurationUnitEnum(string(m.ExpectedDurationUnit)); !ok && m.ExpectedDurationUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExpectedDurationUnit: %s. Supported values are: %s.", m.ExpectedDurationUnit, strings.Join(GetTaskRunExpectedDurationUnitEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskRunAuthModeEnum[string(m.AuthMode)]; !ok && m.AuthMode != "" {
+	if _, ok := GetMappingTaskRunAuthModeEnum(string(m.AuthMode)); !ok && m.AuthMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuthMode: %s. Supported values are: %s.", m.AuthMode, strings.Join(GetTaskRunAuthModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingTaskRunTaskTypeEnum[string(m.TaskType)]; !ok && m.TaskType != "" {
+	if _, ok := GetMappingTaskRunTaskTypeEnum(string(m.TaskType)); !ok && m.TaskType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TaskType: %s. Supported values are: %s.", m.TaskType, strings.Join(GetTaskRunTaskTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -185,6 +185,17 @@ func GetTaskRunStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingTaskRunStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskRunStatusEnum(val string) (TaskRunStatusEnum, bool) {
+	mappingTaskRunStatusEnumIgnoreCase := make(map[string]TaskRunStatusEnum)
+	for k, v := range mappingTaskRunStatusEnum {
+		mappingTaskRunStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskRunStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TaskRunExpectedDurationUnitEnum Enum with underlying type: string
 type TaskRunExpectedDurationUnitEnum string
 
@@ -222,6 +233,17 @@ func GetTaskRunExpectedDurationUnitEnumStringValues() []string {
 	}
 }
 
+// GetMappingTaskRunExpectedDurationUnitEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskRunExpectedDurationUnitEnum(val string) (TaskRunExpectedDurationUnitEnum, bool) {
+	mappingTaskRunExpectedDurationUnitEnumIgnoreCase := make(map[string]TaskRunExpectedDurationUnitEnum)
+	for k, v := range mappingTaskRunExpectedDurationUnitEnum {
+		mappingTaskRunExpectedDurationUnitEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskRunExpectedDurationUnitEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // TaskRunAuthModeEnum Enum with underlying type: string
 type TaskRunAuthModeEnum string
 
@@ -254,6 +276,17 @@ func GetTaskRunAuthModeEnumStringValues() []string {
 		"RESOURCE_PRINCIPAL",
 		"USER_CERTIFICATE",
 	}
+}
+
+// GetMappingTaskRunAuthModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskRunAuthModeEnum(val string) (TaskRunAuthModeEnum, bool) {
+	mappingTaskRunAuthModeEnumIgnoreCase := make(map[string]TaskRunAuthModeEnum)
+	for k, v := range mappingTaskRunAuthModeEnum {
+		mappingTaskRunAuthModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskRunAuthModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // TaskRunTaskTypeEnum Enum with underlying type: string
@@ -297,4 +330,15 @@ func GetTaskRunTaskTypeEnumStringValues() []string {
 		"OCI_DATAFLOW_TASK",
 		"REST_TASK",
 	}
+}
+
+// GetMappingTaskRunTaskTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskRunTaskTypeEnum(val string) (TaskRunTaskTypeEnum, bool) {
+	mappingTaskRunTaskTypeEnumIgnoreCase := make(map[string]TaskRunTaskTypeEnum)
+	for k, v := range mappingTaskRunTaskTypeEnum {
+		mappingTaskRunTaskTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskRunTaskTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

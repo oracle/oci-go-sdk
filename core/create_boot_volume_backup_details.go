@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -53,7 +53,7 @@ func (m CreateBootVolumeBackupDetails) String() string {
 func (m CreateBootVolumeBackupDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateBootVolumeBackupDetailsTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingCreateBootVolumeBackupDetailsTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetCreateBootVolumeBackupDetailsTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -91,4 +91,15 @@ func GetCreateBootVolumeBackupDetailsTypeEnumStringValues() []string {
 		"FULL",
 		"INCREMENTAL",
 	}
+}
+
+// GetMappingCreateBootVolumeBackupDetailsTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateBootVolumeBackupDetailsTypeEnum(val string) (CreateBootVolumeBackupDetailsTypeEnum, bool) {
+	mappingCreateBootVolumeBackupDetailsTypeEnumIgnoreCase := make(map[string]CreateBootVolumeBackupDetailsTypeEnum)
+	for k, v := range mappingCreateBootVolumeBackupDetailsTypeEnum {
+		mappingCreateBootVolumeBackupDetailsTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateBootVolumeBackupDetailsTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

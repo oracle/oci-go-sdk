@@ -6,7 +6,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -87,16 +87,16 @@ func (request ListBdsMetastoreConfigurationsRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request ListBdsMetastoreConfigurationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingBdsMetastoreConfigurationMetastoreTypeEnum[string(request.MetastoreType)]; !ok && request.MetastoreType != "" {
+	if _, ok := GetMappingBdsMetastoreConfigurationMetastoreTypeEnum(string(request.MetastoreType)); !ok && request.MetastoreType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MetastoreType: %s. Supported values are: %s.", request.MetastoreType, strings.Join(GetBdsMetastoreConfigurationMetastoreTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBdsMetastoreConfigurationLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingBdsMetastoreConfigurationLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetBdsMetastoreConfigurationLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBdsMetastoreConfigurationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListBdsMetastoreConfigurationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListBdsMetastoreConfigurationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListBdsMetastoreConfigurationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListBdsMetastoreConfigurationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListBdsMetastoreConfigurationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -164,6 +164,17 @@ func GetListBdsMetastoreConfigurationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListBdsMetastoreConfigurationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBdsMetastoreConfigurationsSortByEnum(val string) (ListBdsMetastoreConfigurationsSortByEnum, bool) {
+	mappingListBdsMetastoreConfigurationsSortByEnumIgnoreCase := make(map[string]ListBdsMetastoreConfigurationsSortByEnum)
+	for k, v := range mappingListBdsMetastoreConfigurationsSortByEnum {
+		mappingListBdsMetastoreConfigurationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBdsMetastoreConfigurationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListBdsMetastoreConfigurationsSortOrderEnum Enum with underlying type: string
 type ListBdsMetastoreConfigurationsSortOrderEnum string
 
@@ -193,4 +204,15 @@ func GetListBdsMetastoreConfigurationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListBdsMetastoreConfigurationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBdsMetastoreConfigurationsSortOrderEnum(val string) (ListBdsMetastoreConfigurationsSortOrderEnum, bool) {
+	mappingListBdsMetastoreConfigurationsSortOrderEnumIgnoreCase := make(map[string]ListBdsMetastoreConfigurationsSortOrderEnum)
+	for k, v := range mappingListBdsMetastoreConfigurationsSortOrderEnum {
+		mappingListBdsMetastoreConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBdsMetastoreConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

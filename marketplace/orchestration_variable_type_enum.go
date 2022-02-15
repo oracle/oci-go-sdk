@@ -9,6 +9,10 @@
 
 package marketplace
 
+import (
+	"strings"
+)
+
 // OrchestrationVariableTypeEnumEnum Enum with underlying type: string
 type OrchestrationVariableTypeEnumEnum string
 
@@ -38,4 +42,15 @@ func GetOrchestrationVariableTypeEnumEnumStringValues() []string {
 		"STRING",
 		"INTEGER",
 	}
+}
+
+// GetMappingOrchestrationVariableTypeEnumEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOrchestrationVariableTypeEnumEnum(val string) (OrchestrationVariableTypeEnumEnum, bool) {
+	mappingOrchestrationVariableTypeEnumEnumIgnoreCase := make(map[string]OrchestrationVariableTypeEnumEnum)
+	for k, v := range mappingOrchestrationVariableTypeEnumEnum {
+		mappingOrchestrationVariableTypeEnumEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOrchestrationVariableTypeEnumEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

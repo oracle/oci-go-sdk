@@ -12,7 +12,7 @@ package loadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -40,7 +40,7 @@ func (m PathMatchType) String() string {
 // Not recommended for calling this function directly
 func (m PathMatchType) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPathMatchTypeMatchTypeEnum[string(m.MatchType)]; !ok && m.MatchType != "" {
+	if _, ok := GetMappingPathMatchTypeMatchTypeEnum(string(m.MatchType)); !ok && m.MatchType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MatchType: %s. Supported values are: %s.", m.MatchType, strings.Join(GetPathMatchTypeMatchTypeEnumStringValues(), ",")))
 	}
 
@@ -85,4 +85,15 @@ func GetPathMatchTypeMatchTypeEnumStringValues() []string {
 		"PREFIX_MATCH",
 		"SUFFIX_MATCH",
 	}
+}
+
+// GetMappingPathMatchTypeMatchTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPathMatchTypeMatchTypeEnum(val string) (PathMatchTypeMatchTypeEnum, bool) {
+	mappingPathMatchTypeMatchTypeEnumIgnoreCase := make(map[string]PathMatchTypeMatchTypeEnum)
+	for k, v := range mappingPathMatchTypeMatchTypeEnum {
+		mappingPathMatchTypeMatchTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPathMatchTypeMatchTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -80,23 +80,23 @@ func (m VolumeBackupSchedule) String() string {
 // Not recommended for calling this function directly
 func (m VolumeBackupSchedule) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVolumeBackupScheduleBackupTypeEnum[string(m.BackupType)]; !ok && m.BackupType != "" {
+	if _, ok := GetMappingVolumeBackupScheduleBackupTypeEnum(string(m.BackupType)); !ok && m.BackupType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BackupType: %s. Supported values are: %s.", m.BackupType, strings.Join(GetVolumeBackupScheduleBackupTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVolumeBackupSchedulePeriodEnum[string(m.Period)]; !ok && m.Period != "" {
+	if _, ok := GetMappingVolumeBackupSchedulePeriodEnum(string(m.Period)); !ok && m.Period != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Period: %s. Supported values are: %s.", m.Period, strings.Join(GetVolumeBackupSchedulePeriodEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingVolumeBackupScheduleOffsetTypeEnum[string(m.OffsetType)]; !ok && m.OffsetType != "" {
+	if _, ok := GetMappingVolumeBackupScheduleOffsetTypeEnum(string(m.OffsetType)); !ok && m.OffsetType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OffsetType: %s. Supported values are: %s.", m.OffsetType, strings.Join(GetVolumeBackupScheduleOffsetTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVolumeBackupScheduleDayOfWeekEnum[string(m.DayOfWeek)]; !ok && m.DayOfWeek != "" {
+	if _, ok := GetMappingVolumeBackupScheduleDayOfWeekEnum(string(m.DayOfWeek)); !ok && m.DayOfWeek != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DayOfWeek: %s. Supported values are: %s.", m.DayOfWeek, strings.Join(GetVolumeBackupScheduleDayOfWeekEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVolumeBackupScheduleMonthEnum[string(m.Month)]; !ok && m.Month != "" {
+	if _, ok := GetMappingVolumeBackupScheduleMonthEnum(string(m.Month)); !ok && m.Month != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Month: %s. Supported values are: %s.", m.Month, strings.Join(GetVolumeBackupScheduleMonthEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVolumeBackupScheduleTimeZoneEnum[string(m.TimeZone)]; !ok && m.TimeZone != "" {
+	if _, ok := GetMappingVolumeBackupScheduleTimeZoneEnum(string(m.TimeZone)); !ok && m.TimeZone != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for TimeZone: %s. Supported values are: %s.", m.TimeZone, strings.Join(GetVolumeBackupScheduleTimeZoneEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -134,6 +134,17 @@ func GetVolumeBackupScheduleBackupTypeEnumStringValues() []string {
 		"FULL",
 		"INCREMENTAL",
 	}
+}
+
+// GetMappingVolumeBackupScheduleBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeBackupScheduleBackupTypeEnum(val string) (VolumeBackupScheduleBackupTypeEnum, bool) {
+	mappingVolumeBackupScheduleBackupTypeEnumIgnoreCase := make(map[string]VolumeBackupScheduleBackupTypeEnum)
+	for k, v := range mappingVolumeBackupScheduleBackupTypeEnum {
+		mappingVolumeBackupScheduleBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeBackupScheduleBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // VolumeBackupSchedulePeriodEnum Enum with underlying type: string
@@ -176,6 +187,17 @@ func GetVolumeBackupSchedulePeriodEnumStringValues() []string {
 	}
 }
 
+// GetMappingVolumeBackupSchedulePeriodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeBackupSchedulePeriodEnum(val string) (VolumeBackupSchedulePeriodEnum, bool) {
+	mappingVolumeBackupSchedulePeriodEnumIgnoreCase := make(map[string]VolumeBackupSchedulePeriodEnum)
+	for k, v := range mappingVolumeBackupSchedulePeriodEnum {
+		mappingVolumeBackupSchedulePeriodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeBackupSchedulePeriodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VolumeBackupScheduleOffsetTypeEnum Enum with underlying type: string
 type VolumeBackupScheduleOffsetTypeEnum string
 
@@ -205,6 +227,17 @@ func GetVolumeBackupScheduleOffsetTypeEnumStringValues() []string {
 		"STRUCTURED",
 		"NUMERIC_SECONDS",
 	}
+}
+
+// GetMappingVolumeBackupScheduleOffsetTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeBackupScheduleOffsetTypeEnum(val string) (VolumeBackupScheduleOffsetTypeEnum, bool) {
+	mappingVolumeBackupScheduleOffsetTypeEnumIgnoreCase := make(map[string]VolumeBackupScheduleOffsetTypeEnum)
+	for k, v := range mappingVolumeBackupScheduleOffsetTypeEnum {
+		mappingVolumeBackupScheduleOffsetTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeBackupScheduleOffsetTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // VolumeBackupScheduleDayOfWeekEnum Enum with underlying type: string
@@ -251,6 +284,17 @@ func GetVolumeBackupScheduleDayOfWeekEnumStringValues() []string {
 		"SATURDAY",
 		"SUNDAY",
 	}
+}
+
+// GetMappingVolumeBackupScheduleDayOfWeekEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeBackupScheduleDayOfWeekEnum(val string) (VolumeBackupScheduleDayOfWeekEnum, bool) {
+	mappingVolumeBackupScheduleDayOfWeekEnumIgnoreCase := make(map[string]VolumeBackupScheduleDayOfWeekEnum)
+	for k, v := range mappingVolumeBackupScheduleDayOfWeekEnum {
+		mappingVolumeBackupScheduleDayOfWeekEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeBackupScheduleDayOfWeekEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // VolumeBackupScheduleMonthEnum Enum with underlying type: string
@@ -314,6 +358,17 @@ func GetVolumeBackupScheduleMonthEnumStringValues() []string {
 	}
 }
 
+// GetMappingVolumeBackupScheduleMonthEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeBackupScheduleMonthEnum(val string) (VolumeBackupScheduleMonthEnum, bool) {
+	mappingVolumeBackupScheduleMonthEnumIgnoreCase := make(map[string]VolumeBackupScheduleMonthEnum)
+	for k, v := range mappingVolumeBackupScheduleMonthEnum {
+		mappingVolumeBackupScheduleMonthEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeBackupScheduleMonthEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VolumeBackupScheduleTimeZoneEnum Enum with underlying type: string
 type VolumeBackupScheduleTimeZoneEnum string
 
@@ -343,4 +398,15 @@ func GetVolumeBackupScheduleTimeZoneEnumStringValues() []string {
 		"UTC",
 		"REGIONAL_DATA_CENTER_TIME",
 	}
+}
+
+// GetMappingVolumeBackupScheduleTimeZoneEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeBackupScheduleTimeZoneEnum(val string) (VolumeBackupScheduleTimeZoneEnum, bool) {
+	mappingVolumeBackupScheduleTimeZoneEnumIgnoreCase := make(map[string]VolumeBackupScheduleTimeZoneEnum)
+	for k, v := range mappingVolumeBackupScheduleTimeZoneEnum {
+		mappingVolumeBackupScheduleTimeZoneEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeBackupScheduleTimeZoneEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

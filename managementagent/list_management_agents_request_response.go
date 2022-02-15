@@ -6,7 +6,7 @@ package managementagent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -99,25 +99,25 @@ func (request ListManagementAgentsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListManagementAgentsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListManagementAgentsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListManagementAgentsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListManagementAgentsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagementAgentsAvailabilityStatusEnum[string(request.AvailabilityStatus)]; !ok && request.AvailabilityStatus != "" {
+	if _, ok := GetMappingListManagementAgentsAvailabilityStatusEnum(string(request.AvailabilityStatus)); !ok && request.AvailabilityStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AvailabilityStatus: %s. Supported values are: %s.", request.AvailabilityStatus, strings.Join(GetListManagementAgentsAvailabilityStatusEnumStringValues(), ",")))
 	}
 	for _, val := range request.PlatformType {
-		if _, ok := mappingPlatformTypesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingPlatformTypesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", val, strings.Join(GetPlatformTypesEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListManagementAgentsInstallTypeEnum[string(request.InstallType)]; !ok && request.InstallType != "" {
+	if _, ok := GetMappingListManagementAgentsInstallTypeEnum(string(request.InstallType)); !ok && request.InstallType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for InstallType: %s. Supported values are: %s.", request.InstallType, strings.Join(GetListManagementAgentsInstallTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagementAgentsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListManagementAgentsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListManagementAgentsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagementAgentsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListManagementAgentsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListManagementAgentsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -203,6 +203,17 @@ func GetListManagementAgentsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagementAgentsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentsLifecycleStateEnum(val string) (ListManagementAgentsLifecycleStateEnum, bool) {
+	mappingListManagementAgentsLifecycleStateEnumIgnoreCase := make(map[string]ListManagementAgentsLifecycleStateEnum)
+	for k, v := range mappingListManagementAgentsLifecycleStateEnum {
+		mappingListManagementAgentsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagementAgentsAvailabilityStatusEnum Enum with underlying type: string
 type ListManagementAgentsAvailabilityStatusEnum string
 
@@ -237,6 +248,17 @@ func GetListManagementAgentsAvailabilityStatusEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagementAgentsAvailabilityStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentsAvailabilityStatusEnum(val string) (ListManagementAgentsAvailabilityStatusEnum, bool) {
+	mappingListManagementAgentsAvailabilityStatusEnumIgnoreCase := make(map[string]ListManagementAgentsAvailabilityStatusEnum)
+	for k, v := range mappingListManagementAgentsAvailabilityStatusEnum {
+		mappingListManagementAgentsAvailabilityStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentsAvailabilityStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagementAgentsInstallTypeEnum Enum with underlying type: string
 type ListManagementAgentsInstallTypeEnum string
 
@@ -268,6 +290,17 @@ func GetListManagementAgentsInstallTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagementAgentsInstallTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentsInstallTypeEnum(val string) (ListManagementAgentsInstallTypeEnum, bool) {
+	mappingListManagementAgentsInstallTypeEnumIgnoreCase := make(map[string]ListManagementAgentsInstallTypeEnum)
+	for k, v := range mappingListManagementAgentsInstallTypeEnum {
+		mappingListManagementAgentsInstallTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentsInstallTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagementAgentsSortOrderEnum Enum with underlying type: string
 type ListManagementAgentsSortOrderEnum string
 
@@ -297,6 +330,17 @@ func GetListManagementAgentsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListManagementAgentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentsSortOrderEnum(val string) (ListManagementAgentsSortOrderEnum, bool) {
+	mappingListManagementAgentsSortOrderEnumIgnoreCase := make(map[string]ListManagementAgentsSortOrderEnum)
+	for k, v := range mappingListManagementAgentsSortOrderEnum {
+		mappingListManagementAgentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListManagementAgentsSortByEnum Enum with underlying type: string
@@ -343,4 +387,15 @@ func GetListManagementAgentsSortByEnumStringValues() []string {
 		"pluginDisplayNames",
 		"version",
 	}
+}
+
+// GetMappingListManagementAgentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagementAgentsSortByEnum(val string) (ListManagementAgentsSortByEnum, bool) {
+	mappingListManagementAgentsSortByEnumIgnoreCase := make(map[string]ListManagementAgentsSortByEnum)
+	for k, v := range mappingListManagementAgentsSortByEnum {
+		mappingListManagementAgentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagementAgentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

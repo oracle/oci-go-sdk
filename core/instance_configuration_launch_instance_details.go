@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -184,10 +184,10 @@ func (m InstanceConfigurationLaunchInstanceDetails) String() string {
 func (m InstanceConfigurationLaunchInstanceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnum[string(m.LaunchMode)]; !ok && m.LaunchMode != "" {
+	if _, ok := GetMappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnum(string(m.LaunchMode)); !ok && m.LaunchMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LaunchMode: %s. Supported values are: %s.", m.LaunchMode, strings.Join(GetInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum[string(m.PreferredMaintenanceAction)]; !ok && m.PreferredMaintenanceAction != "" {
+	if _, ok := GetMappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum(string(m.PreferredMaintenanceAction)); !ok && m.PreferredMaintenanceAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PreferredMaintenanceAction: %s. Supported values are: %s.", m.PreferredMaintenanceAction, strings.Join(GetInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -334,6 +334,17 @@ func GetInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumStringValues() [
 	}
 }
 
+// GetMappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnum(val string) (InstanceConfigurationLaunchInstanceDetailsLaunchModeEnum, bool) {
+	mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchInstanceDetailsLaunchModeEnum)
+	for k, v := range mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnum {
+		mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceConfigurationLaunchInstanceDetailsLaunchModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum Enum with underlying type: string
 type InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum string
 
@@ -363,4 +374,15 @@ func GetInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum
 		"LIVE_MIGRATE",
 		"REBOOT",
 	}
+}
+
+// GetMappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum(val string) (InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum, bool) {
+	mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnumIgnoreCase := make(map[string]InstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum)
+	for k, v := range mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnum {
+		mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceConfigurationLaunchInstanceDetailsPreferredMaintenanceActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

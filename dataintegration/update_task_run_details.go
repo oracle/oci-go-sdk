@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -55,7 +55,7 @@ func (m UpdateTaskRunDetails) String() string {
 func (m UpdateTaskRunDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateTaskRunDetailsStatusEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingUpdateTaskRunDetailsStatusEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetUpdateTaskRunDetailsStatusEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -90,4 +90,15 @@ func GetUpdateTaskRunDetailsStatusEnumStringValues() []string {
 	return []string{
 		"TERMINATING",
 	}
+}
+
+// GetMappingUpdateTaskRunDetailsStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateTaskRunDetailsStatusEnum(val string) (UpdateTaskRunDetailsStatusEnum, bool) {
+	mappingUpdateTaskRunDetailsStatusEnumIgnoreCase := make(map[string]UpdateTaskRunDetailsStatusEnum)
+	for k, v := range mappingUpdateTaskRunDetailsStatusEnum {
+		mappingUpdateTaskRunDetailsStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateTaskRunDetailsStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -62,7 +62,7 @@ func (m IdpGroupMapping) String() string {
 // Not recommended for calling this function directly
 func (m IdpGroupMapping) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingIdpGroupMappingLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingIdpGroupMappingLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetIdpGroupMappingLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -110,4 +110,15 @@ func GetIdpGroupMappingLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingIdpGroupMappingLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingIdpGroupMappingLifecycleStateEnum(val string) (IdpGroupMappingLifecycleStateEnum, bool) {
+	mappingIdpGroupMappingLifecycleStateEnumIgnoreCase := make(map[string]IdpGroupMappingLifecycleStateEnum)
+	for k, v := range mappingIdpGroupMappingLifecycleStateEnum {
+		mappingIdpGroupMappingLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingIdpGroupMappingLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

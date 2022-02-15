@@ -6,7 +6,7 @@ package logging
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -91,13 +91,13 @@ func (request ListUnifiedAgentConfigurationsRequest) RetryPolicy() *common.Retry
 // Not recommended for calling this function directly
 func (request ListUnifiedAgentConfigurationsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListUnifiedAgentConfigurationsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListUnifiedAgentConfigurationsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListUnifiedAgentConfigurationsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUnifiedAgentConfigurationsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListUnifiedAgentConfigurationsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListUnifiedAgentConfigurationsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUnifiedAgentConfigurationsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListUnifiedAgentConfigurationsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListUnifiedAgentConfigurationsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -182,6 +182,17 @@ func GetListUnifiedAgentConfigurationsLifecycleStateEnumStringValues() []string 
 	}
 }
 
+// GetMappingListUnifiedAgentConfigurationsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUnifiedAgentConfigurationsLifecycleStateEnum(val string) (ListUnifiedAgentConfigurationsLifecycleStateEnum, bool) {
+	mappingListUnifiedAgentConfigurationsLifecycleStateEnumIgnoreCase := make(map[string]ListUnifiedAgentConfigurationsLifecycleStateEnum)
+	for k, v := range mappingListUnifiedAgentConfigurationsLifecycleStateEnum {
+		mappingListUnifiedAgentConfigurationsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUnifiedAgentConfigurationsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUnifiedAgentConfigurationsSortByEnum Enum with underlying type: string
 type ListUnifiedAgentConfigurationsSortByEnum string
 
@@ -213,6 +224,17 @@ func GetListUnifiedAgentConfigurationsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUnifiedAgentConfigurationsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUnifiedAgentConfigurationsSortByEnum(val string) (ListUnifiedAgentConfigurationsSortByEnum, bool) {
+	mappingListUnifiedAgentConfigurationsSortByEnumIgnoreCase := make(map[string]ListUnifiedAgentConfigurationsSortByEnum)
+	for k, v := range mappingListUnifiedAgentConfigurationsSortByEnum {
+		mappingListUnifiedAgentConfigurationsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUnifiedAgentConfigurationsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUnifiedAgentConfigurationsSortOrderEnum Enum with underlying type: string
 type ListUnifiedAgentConfigurationsSortOrderEnum string
 
@@ -242,4 +264,15 @@ func GetListUnifiedAgentConfigurationsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListUnifiedAgentConfigurationsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUnifiedAgentConfigurationsSortOrderEnum(val string) (ListUnifiedAgentConfigurationsSortOrderEnum, bool) {
+	mappingListUnifiedAgentConfigurationsSortOrderEnumIgnoreCase := make(map[string]ListUnifiedAgentConfigurationsSortOrderEnum)
+	for k, v := range mappingListUnifiedAgentConfigurationsSortOrderEnum {
+		mappingListUnifiedAgentConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUnifiedAgentConfigurationsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

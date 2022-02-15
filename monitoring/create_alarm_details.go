@@ -13,7 +13,7 @@ package monitoring
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -141,11 +141,11 @@ func (m CreateAlarmDetails) String() string {
 // Not recommended for calling this function directly
 func (m CreateAlarmDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingAlarmSeverityEnum[string(m.Severity)]; !ok && m.Severity != "" {
+	if _, ok := GetMappingAlarmSeverityEnum(string(m.Severity)); !ok && m.Severity != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Severity: %s. Supported values are: %s.", m.Severity, strings.Join(GetAlarmSeverityEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingCreateAlarmDetailsMessageFormatEnum[string(m.MessageFormat)]; !ok && m.MessageFormat != "" {
+	if _, ok := GetMappingCreateAlarmDetailsMessageFormatEnum(string(m.MessageFormat)); !ok && m.MessageFormat != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MessageFormat: %s. Supported values are: %s.", m.MessageFormat, strings.Join(GetCreateAlarmDetailsMessageFormatEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -186,4 +186,15 @@ func GetCreateAlarmDetailsMessageFormatEnumStringValues() []string {
 		"PRETTY_JSON",
 		"ONS_OPTIMIZED",
 	}
+}
+
+// GetMappingCreateAlarmDetailsMessageFormatEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateAlarmDetailsMessageFormatEnum(val string) (CreateAlarmDetailsMessageFormatEnum, bool) {
+	mappingCreateAlarmDetailsMessageFormatEnumIgnoreCase := make(map[string]CreateAlarmDetailsMessageFormatEnum)
+	for k, v := range mappingCreateAlarmDetailsMessageFormatEnum {
+		mappingCreateAlarmDetailsMessageFormatEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateAlarmDetailsMessageFormatEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

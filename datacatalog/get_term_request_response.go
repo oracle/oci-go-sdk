@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -70,7 +70,7 @@ func (request GetTermRequest) RetryPolicy() *common.RetryPolicy {
 func (request GetTermRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingGetTermFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingGetTermFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetGetTermFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -184,4 +184,15 @@ func GetGetTermFieldsEnumStringValues() []string {
 		"associatedObjectCount",
 		"associatedObjects",
 	}
+}
+
+// GetMappingGetTermFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGetTermFieldsEnum(val string) (GetTermFieldsEnum, bool) {
+	mappingGetTermFieldsEnumIgnoreCase := make(map[string]GetTermFieldsEnum)
+	for k, v := range mappingGetTermFieldsEnum {
+		mappingGetTermFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGetTermFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

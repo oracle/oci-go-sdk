@@ -11,7 +11,7 @@ package servicecatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -54,10 +54,10 @@ func (m ApplicationSummary) String() string {
 func (m ApplicationSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPricingTypeEnumEnum[string(m.PricingType)]; !ok && m.PricingType != "" {
+	if _, ok := GetMappingPricingTypeEnumEnum(string(m.PricingType)); !ok && m.PricingType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PricingType: %s. Supported values are: %s.", m.PricingType, strings.Join(GetPricingTypeEnumEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPackageTypeEnumEnum[string(m.PackageType)]; !ok && m.PackageType != "" {
+	if _, ok := GetMappingPackageTypeEnumEnum(string(m.PackageType)); !ok && m.PackageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PackageType: %s. Supported values are: %s.", m.PackageType, strings.Join(GetPackageTypeEnumEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

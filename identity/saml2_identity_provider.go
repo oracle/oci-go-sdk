@@ -12,7 +12,7 @@ package identity
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -148,7 +148,7 @@ func (m Saml2IdentityProvider) String() string {
 func (m Saml2IdentityProvider) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingIdentityProviderLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingIdentityProviderLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetIdentityProviderLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

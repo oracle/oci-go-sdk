@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,4 +101,15 @@ func GetWaitCriteriaSummaryWaitTypeEnumStringValues() []string {
 	return []string{
 		"ABSOLUTE_WAIT",
 	}
+}
+
+// GetMappingWaitCriteriaSummaryWaitTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWaitCriteriaSummaryWaitTypeEnum(val string) (WaitCriteriaSummaryWaitTypeEnum, bool) {
+	mappingWaitCriteriaSummaryWaitTypeEnumIgnoreCase := make(map[string]WaitCriteriaSummaryWaitTypeEnum)
+	for k, v := range mappingWaitCriteriaSummaryWaitTypeEnum {
+		mappingWaitCriteriaSummaryWaitTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWaitCriteriaSummaryWaitTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

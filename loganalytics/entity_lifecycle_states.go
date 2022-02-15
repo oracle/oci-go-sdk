@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // EntityLifecycleStatesEnum Enum with underlying type: string
 type EntityLifecycleStatesEnum string
 
@@ -38,4 +42,15 @@ func GetEntityLifecycleStatesEnumStringValues() []string {
 		"ACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingEntityLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEntityLifecycleStatesEnum(val string) (EntityLifecycleStatesEnum, bool) {
+	mappingEntityLifecycleStatesEnumIgnoreCase := make(map[string]EntityLifecycleStatesEnum)
+	for k, v := range mappingEntityLifecycleStatesEnum {
+		mappingEntityLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEntityLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

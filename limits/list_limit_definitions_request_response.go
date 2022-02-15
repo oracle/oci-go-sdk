@@ -6,7 +6,7 @@ package limits
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -79,10 +79,10 @@ func (request ListLimitDefinitionsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListLimitDefinitionsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListLimitDefinitionsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListLimitDefinitionsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListLimitDefinitionsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLimitDefinitionsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLimitDefinitionsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLimitDefinitionsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -150,6 +150,17 @@ func GetListLimitDefinitionsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLimitDefinitionsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLimitDefinitionsSortByEnum(val string) (ListLimitDefinitionsSortByEnum, bool) {
+	mappingListLimitDefinitionsSortByEnumIgnoreCase := make(map[string]ListLimitDefinitionsSortByEnum)
+	for k, v := range mappingListLimitDefinitionsSortByEnum {
+		mappingListLimitDefinitionsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLimitDefinitionsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLimitDefinitionsSortOrderEnum Enum with underlying type: string
 type ListLimitDefinitionsSortOrderEnum string
 
@@ -179,4 +190,15 @@ func GetListLimitDefinitionsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListLimitDefinitionsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLimitDefinitionsSortOrderEnum(val string) (ListLimitDefinitionsSortOrderEnum, bool) {
+	mappingListLimitDefinitionsSortOrderEnumIgnoreCase := make(map[string]ListLimitDefinitionsSortOrderEnum)
+	for k, v := range mappingListLimitDefinitionsSortOrderEnum {
+		mappingListLimitDefinitionsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLimitDefinitionsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -13,7 +13,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -48,10 +48,10 @@ func (m SummarizeDatabaseInsightResourceCapacityTrendAggregationCollection) Stri
 // Not recommended for calling this function directly
 func (m SummarizeDatabaseInsightResourceCapacityTrendAggregationCollection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum[string(m.ResourceMetric)]; !ok && m.ResourceMetric != "" {
+	if _, ok := GetMappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum(string(m.ResourceMetric)); !ok && m.ResourceMetric != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ResourceMetric: %s. Supported values are: %s.", m.ResourceMetric, strings.Join(GetSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUsageUnitEnum[string(m.UsageUnit)]; !ok && m.UsageUnit != "" {
+	if _, ok := GetMappingUsageUnitEnum(string(m.UsageUnit)); !ok && m.UsageUnit != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for UsageUnit: %s. Supported values are: %s.", m.UsageUnit, strings.Join(GetUsageUnitEnumStringValues(), ",")))
 	}
 
@@ -102,4 +102,15 @@ func GetSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResour
 		"MEMORY_PGA",
 		"MEMORY_SGA",
 	}
+}
+
+// GetMappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum(val string) (SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum, bool) {
+	mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnumIgnoreCase := make(map[string]SummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum)
+	for k, v := range mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnum {
+		mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeDatabaseInsightResourceCapacityTrendAggregationCollectionResourceMetricEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

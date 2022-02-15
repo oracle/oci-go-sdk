@@ -11,6 +11,10 @@
 
 package operatoraccesscontrol
 
+import (
+	"strings"
+)
+
 // OperatorControlAssignmentLifecycleStatesEnum Enum with underlying type: string
 type OperatorControlAssignmentLifecycleStatesEnum string
 
@@ -55,4 +59,15 @@ func GetOperatorControlAssignmentLifecycleStatesEnumStringValues() []string {
 		"DELETED",
 		"DELETIONFAILED",
 	}
+}
+
+// GetMappingOperatorControlAssignmentLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperatorControlAssignmentLifecycleStatesEnum(val string) (OperatorControlAssignmentLifecycleStatesEnum, bool) {
+	mappingOperatorControlAssignmentLifecycleStatesEnumIgnoreCase := make(map[string]OperatorControlAssignmentLifecycleStatesEnum)
+	for k, v := range mappingOperatorControlAssignmentLifecycleStatesEnum {
+		mappingOperatorControlAssignmentLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperatorControlAssignmentLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

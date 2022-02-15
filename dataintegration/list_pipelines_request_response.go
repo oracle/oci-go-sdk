@@ -6,7 +6,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -86,10 +86,10 @@ func (request ListPipelinesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListPipelinesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPipelinesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPipelinesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPipelinesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPipelinesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPipelinesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPipelinesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -161,6 +161,17 @@ func GetListPipelinesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPipelinesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPipelinesSortOrderEnum(val string) (ListPipelinesSortOrderEnum, bool) {
+	mappingListPipelinesSortOrderEnumIgnoreCase := make(map[string]ListPipelinesSortOrderEnum)
+	for k, v := range mappingListPipelinesSortOrderEnum {
+		mappingListPipelinesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPipelinesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPipelinesSortByEnum Enum with underlying type: string
 type ListPipelinesSortByEnum string
 
@@ -190,4 +201,15 @@ func GetListPipelinesSortByEnumStringValues() []string {
 		"TIME_CREATED",
 		"DISPLAY_NAME",
 	}
+}
+
+// GetMappingListPipelinesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPipelinesSortByEnum(val string) (ListPipelinesSortByEnum, bool) {
+	mappingListPipelinesSortByEnumIgnoreCase := make(map[string]ListPipelinesSortByEnum)
+	for k, v := range mappingListPipelinesSortByEnum {
+		mappingListPipelinesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPipelinesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

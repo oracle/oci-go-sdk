@@ -12,7 +12,7 @@ package datascience
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -101,4 +101,15 @@ func GetJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumStringValu
 	return []string{
 		"STANDALONE",
 	}
+}
+
+// GetMappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum(val string) (JobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum, bool) {
+	mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumIgnoreCase := make(map[string]JobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum)
+	for k, v := range mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnum {
+		mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobInfrastructureConfigurationDetailsJobInfrastructureTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

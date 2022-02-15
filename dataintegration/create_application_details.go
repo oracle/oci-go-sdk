@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -54,7 +54,7 @@ func (m CreateApplicationDetails) String() string {
 func (m CreateApplicationDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateApplicationDetailsModelTypeEnum[string(m.ModelType)]; !ok && m.ModelType != "" {
+	if _, ok := GetMappingCreateApplicationDetailsModelTypeEnum(string(m.ModelType)); !ok && m.ModelType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ModelType: %s. Supported values are: %s.", m.ModelType, strings.Join(GetCreateApplicationDetailsModelTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -89,4 +89,15 @@ func GetCreateApplicationDetailsModelTypeEnumStringValues() []string {
 	return []string{
 		"INTEGRATION_APPLICATION",
 	}
+}
+
+// GetMappingCreateApplicationDetailsModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateApplicationDetailsModelTypeEnum(val string) (CreateApplicationDetailsModelTypeEnum, bool) {
+	mappingCreateApplicationDetailsModelTypeEnumIgnoreCase := make(map[string]CreateApplicationDetailsModelTypeEnum)
+	for k, v := range mappingCreateApplicationDetailsModelTypeEnum {
+		mappingCreateApplicationDetailsModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateApplicationDetailsModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

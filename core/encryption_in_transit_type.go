@@ -13,6 +13,10 @@
 
 package core
 
+import (
+	"strings"
+)
+
 // EncryptionInTransitTypeEnum Enum with underlying type: string
 type EncryptionInTransitTypeEnum string
 
@@ -42,4 +46,15 @@ func GetEncryptionInTransitTypeEnumStringValues() []string {
 		"NONE",
 		"BM_ENCRYPTION_IN_TRANSIT",
 	}
+}
+
+// GetMappingEncryptionInTransitTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEncryptionInTransitTypeEnum(val string) (EncryptionInTransitTypeEnum, bool) {
+	mappingEncryptionInTransitTypeEnumIgnoreCase := make(map[string]EncryptionInTransitTypeEnum)
+	for k, v := range mappingEncryptionInTransitTypeEnum {
+		mappingEncryptionInTransitTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEncryptionInTransitTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

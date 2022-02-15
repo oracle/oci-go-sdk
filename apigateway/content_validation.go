@@ -14,7 +14,7 @@ package apigateway
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -103,4 +103,15 @@ func GetContentValidationValidationTypeEnumStringValues() []string {
 	return []string{
 		"NONE",
 	}
+}
+
+// GetMappingContentValidationValidationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingContentValidationValidationTypeEnum(val string) (ContentValidationValidationTypeEnum, bool) {
+	mappingContentValidationValidationTypeEnumIgnoreCase := make(map[string]ContentValidationValidationTypeEnum)
+	for k, v := range mappingContentValidationValidationTypeEnum {
+		mappingContentValidationValidationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingContentValidationValidationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

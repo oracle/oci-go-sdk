@@ -12,8 +12,8 @@ package loggingsearch
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
-	"github.com/oracle/oci-go-sdk/v57/common/auth"
+	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v58/common/auth"
 	"net/http"
 )
 
@@ -85,6 +85,7 @@ func (client *LogSearchClient) ConfigurationProvider() *common.ConfigurationProv
 }
 
 // SearchLogs Submit a query to search logs.
+// See Using the API (https://docs.cloud.oracle.com/Content/Logging/Concepts/using_the_api_searchlogs.htm) for SDK examples.
 //
 // See also
 //

@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -60,7 +60,7 @@ func (m OAuth2ClientCredentialSummary) String() string {
 func (m OAuth2ClientCredentialSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingOAuth2ClientCredentialSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingOAuth2ClientCredentialSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetOAuth2ClientCredentialSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -107,4 +107,15 @@ func GetOAuth2ClientCredentialSummaryLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingOAuth2ClientCredentialSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOAuth2ClientCredentialSummaryLifecycleStateEnum(val string) (OAuth2ClientCredentialSummaryLifecycleStateEnum, bool) {
+	mappingOAuth2ClientCredentialSummaryLifecycleStateEnumIgnoreCase := make(map[string]OAuth2ClientCredentialSummaryLifecycleStateEnum)
+	for k, v := range mappingOAuth2ClientCredentialSummaryLifecycleStateEnum {
+		mappingOAuth2ClientCredentialSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOAuth2ClientCredentialSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

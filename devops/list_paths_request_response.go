@@ -6,7 +6,7 @@ package devops
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -85,10 +85,10 @@ func (request ListPathsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListPathsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPathsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPathsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPathsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPathsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPathsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPathsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -153,6 +153,17 @@ func GetListPathsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPathsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPathsSortOrderEnum(val string) (ListPathsSortOrderEnum, bool) {
+	mappingListPathsSortOrderEnumIgnoreCase := make(map[string]ListPathsSortOrderEnum)
+	for k, v := range mappingListPathsSortOrderEnum {
+		mappingListPathsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPathsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPathsSortByEnum Enum with underlying type: string
 type ListPathsSortByEnum string
 
@@ -185,4 +196,15 @@ func GetListPathsSortByEnumStringValues() []string {
 		"sizeInBytes",
 		"name",
 	}
+}
+
+// GetMappingListPathsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPathsSortByEnum(val string) (ListPathsSortByEnum, bool) {
+	mappingListPathsSortByEnumIgnoreCase := make(map[string]ListPathsSortByEnum)
+	for k, v := range mappingListPathsSortByEnum {
+		mappingListPathsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPathsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

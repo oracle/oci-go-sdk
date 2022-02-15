@@ -11,6 +11,10 @@
 
 package ailanguage
 
+import (
+	"strings"
+)
+
 // NerModelVersionEnum Enum with underlying type: string
 type NerModelVersionEnum string
 
@@ -40,4 +44,15 @@ func GetNerModelVersionEnumStringValues() []string {
 		"V2.1",
 		"V1.1",
 	}
+}
+
+// GetMappingNerModelVersionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingNerModelVersionEnum(val string) (NerModelVersionEnum, bool) {
+	mappingNerModelVersionEnumIgnoreCase := make(map[string]NerModelVersionEnum)
+	for k, v := range mappingNerModelVersionEnum {
+		mappingNerModelVersionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingNerModelVersionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

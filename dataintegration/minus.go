@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -129,7 +129,7 @@ func (m Minus) String() string {
 // Not recommended for calling this function directly
 func (m Minus) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingMinusMinusTypeEnum[string(m.MinusType)]; !ok && m.MinusType != "" {
+	if _, ok := GetMappingMinusMinusTypeEnum(string(m.MinusType)); !ok && m.MinusType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MinusType: %s. Supported values are: %s.", m.MinusType, strings.Join(GetMinusMinusTypeEnumStringValues(), ",")))
 	}
 
@@ -182,4 +182,15 @@ func GetMinusMinusTypeEnumStringValues() []string {
 		"NAME",
 		"POSITION",
 	}
+}
+
+// GetMappingMinusMinusTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMinusMinusTypeEnum(val string) (MinusMinusTypeEnum, bool) {
+	mappingMinusMinusTypeEnumIgnoreCase := make(map[string]MinusMinusTypeEnum)
+	for k, v := range mappingMinusMinusTypeEnum {
+		mappingMinusMinusTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMinusMinusTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

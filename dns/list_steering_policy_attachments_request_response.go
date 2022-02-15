@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -110,16 +110,16 @@ func (request ListSteeringPolicyAttachmentsRequest) RetryPolicy() *common.RetryP
 // Not recommended for calling this function directly
 func (request ListSteeringPolicyAttachmentsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSteeringPolicyAttachmentSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingSteeringPolicyAttachmentSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetSteeringPolicyAttachmentSummaryLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSteeringPolicyAttachmentsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListSteeringPolicyAttachmentsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListSteeringPolicyAttachmentsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSteeringPolicyAttachmentsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListSteeringPolicyAttachmentsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListSteeringPolicyAttachmentsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListSteeringPolicyAttachmentsScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingListSteeringPolicyAttachmentsScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetListSteeringPolicyAttachmentsScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -193,6 +193,17 @@ func GetListSteeringPolicyAttachmentsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSteeringPolicyAttachmentsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSteeringPolicyAttachmentsSortByEnum(val string) (ListSteeringPolicyAttachmentsSortByEnum, bool) {
+	mappingListSteeringPolicyAttachmentsSortByEnumIgnoreCase := make(map[string]ListSteeringPolicyAttachmentsSortByEnum)
+	for k, v := range mappingListSteeringPolicyAttachmentsSortByEnum {
+		mappingListSteeringPolicyAttachmentsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSteeringPolicyAttachmentsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSteeringPolicyAttachmentsSortOrderEnum Enum with underlying type: string
 type ListSteeringPolicyAttachmentsSortOrderEnum string
 
@@ -224,6 +235,17 @@ func GetListSteeringPolicyAttachmentsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListSteeringPolicyAttachmentsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSteeringPolicyAttachmentsSortOrderEnum(val string) (ListSteeringPolicyAttachmentsSortOrderEnum, bool) {
+	mappingListSteeringPolicyAttachmentsSortOrderEnumIgnoreCase := make(map[string]ListSteeringPolicyAttachmentsSortOrderEnum)
+	for k, v := range mappingListSteeringPolicyAttachmentsSortOrderEnum {
+		mappingListSteeringPolicyAttachmentsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSteeringPolicyAttachmentsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListSteeringPolicyAttachmentsScopeEnum Enum with underlying type: string
 type ListSteeringPolicyAttachmentsScopeEnum string
 
@@ -253,4 +275,15 @@ func GetListSteeringPolicyAttachmentsScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingListSteeringPolicyAttachmentsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListSteeringPolicyAttachmentsScopeEnum(val string) (ListSteeringPolicyAttachmentsScopeEnum, bool) {
+	mappingListSteeringPolicyAttachmentsScopeEnumIgnoreCase := make(map[string]ListSteeringPolicyAttachmentsScopeEnum)
+	for k, v := range mappingListSteeringPolicyAttachmentsScopeEnum {
+		mappingListSteeringPolicyAttachmentsScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListSteeringPolicyAttachmentsScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

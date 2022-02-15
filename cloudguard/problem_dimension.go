@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ProblemDimensionEnum Enum with underlying type: string
 type ProblemDimensionEnum string
 
@@ -44,4 +48,15 @@ func GetProblemDimensionEnumStringValues() []string {
 		"COMPARTMENT_ID",
 		"RISK_LEVEL",
 	}
+}
+
+// GetMappingProblemDimensionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingProblemDimensionEnum(val string) (ProblemDimensionEnum, bool) {
+	mappingProblemDimensionEnumIgnoreCase := make(map[string]ProblemDimensionEnum)
+	for k, v := range mappingProblemDimensionEnum {
+		mappingProblemDimensionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingProblemDimensionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

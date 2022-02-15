@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // ExadataRackTypeEnum Enum with underlying type: string
 type ExadataRackTypeEnum string
 
@@ -46,4 +50,15 @@ func GetExadataRackTypeEnumStringValues() []string {
 		"QUARTER",
 		"EIGHTH",
 	}
+}
+
+// GetMappingExadataRackTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataRackTypeEnum(val string) (ExadataRackTypeEnum, bool) {
+	mappingExadataRackTypeEnumIgnoreCase := make(map[string]ExadataRackTypeEnum)
+	for k, v := range mappingExadataRackTypeEnum {
+		mappingExadataRackTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataRackTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

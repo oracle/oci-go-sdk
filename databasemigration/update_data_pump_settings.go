@@ -11,7 +11,7 @@ package databasemigration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -44,7 +44,7 @@ func (m UpdateDataPumpSettings) String() string {
 func (m UpdateDataPumpSettings) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingDataPumpJobModeEnum[string(m.JobMode)]; !ok && m.JobMode != "" {
+	if _, ok := GetMappingDataPumpJobModeEnum(string(m.JobMode)); !ok && m.JobMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for JobMode: %s. Supported values are: %s.", m.JobMode, strings.Join(GetDataPumpJobModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

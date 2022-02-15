@@ -11,6 +11,10 @@
 
 package optimizer
 
+import (
+	"strings"
+)
+
 // StatusEnum Enum with underlying type: string
 type StatusEnum string
 
@@ -46,4 +50,15 @@ func GetStatusEnumStringValues() []string {
 		"POSTPONED",
 		"IMPLEMENTED",
 	}
+}
+
+// GetMappingStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingStatusEnum(val string) (StatusEnum, bool) {
+	mappingStatusEnumIgnoreCase := make(map[string]StatusEnum)
+	for k, v := range mappingStatusEnum {
+		mappingStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

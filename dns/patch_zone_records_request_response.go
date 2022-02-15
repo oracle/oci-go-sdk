@@ -6,7 +6,7 @@ package dns
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -88,7 +88,7 @@ func (request PatchZoneRecordsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request PatchZoneRecordsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPatchZoneRecordsScopeEnum[string(request.Scope)]; !ok && request.Scope != "" {
+	if _, ok := GetMappingPatchZoneRecordsScopeEnum(string(request.Scope)); !ok && request.Scope != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Scope: %s. Supported values are: %s.", request.Scope, strings.Join(GetPatchZoneRecordsScopeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,4 +162,15 @@ func GetPatchZoneRecordsScopeEnumStringValues() []string {
 		"GLOBAL",
 		"PRIVATE",
 	}
+}
+
+// GetMappingPatchZoneRecordsScopeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchZoneRecordsScopeEnum(val string) (PatchZoneRecordsScopeEnum, bool) {
+	mappingPatchZoneRecordsScopeEnumIgnoreCase := make(map[string]PatchZoneRecordsScopeEnum)
+	for k, v := range mappingPatchZoneRecordsScopeEnum {
+		mappingPatchZoneRecordsScopeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchZoneRecordsScopeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

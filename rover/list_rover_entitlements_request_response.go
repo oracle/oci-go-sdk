@@ -6,7 +6,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -81,13 +81,13 @@ func (request ListRoverEntitlementsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListRoverEntitlementsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRoverEntitlementsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListRoverEntitlementsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListRoverEntitlementsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRoverEntitlementsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListRoverEntitlementsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRoverEntitlementsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRoverEntitlementsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListRoverEntitlementsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRoverEntitlementsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -170,6 +170,17 @@ func GetListRoverEntitlementsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRoverEntitlementsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRoverEntitlementsLifecycleStateEnum(val string) (ListRoverEntitlementsLifecycleStateEnum, bool) {
+	mappingListRoverEntitlementsLifecycleStateEnumIgnoreCase := make(map[string]ListRoverEntitlementsLifecycleStateEnum)
+	for k, v := range mappingListRoverEntitlementsLifecycleStateEnum {
+		mappingListRoverEntitlementsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRoverEntitlementsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRoverEntitlementsSortOrderEnum Enum with underlying type: string
 type ListRoverEntitlementsSortOrderEnum string
 
@@ -201,6 +212,17 @@ func GetListRoverEntitlementsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRoverEntitlementsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRoverEntitlementsSortOrderEnum(val string) (ListRoverEntitlementsSortOrderEnum, bool) {
+	mappingListRoverEntitlementsSortOrderEnumIgnoreCase := make(map[string]ListRoverEntitlementsSortOrderEnum)
+	for k, v := range mappingListRoverEntitlementsSortOrderEnum {
+		mappingListRoverEntitlementsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRoverEntitlementsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRoverEntitlementsSortByEnum Enum with underlying type: string
 type ListRoverEntitlementsSortByEnum string
 
@@ -230,4 +252,15 @@ func GetListRoverEntitlementsSortByEnumStringValues() []string {
 		"timeCreated",
 		"displayName",
 	}
+}
+
+// GetMappingListRoverEntitlementsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRoverEntitlementsSortByEnum(val string) (ListRoverEntitlementsSortByEnum, bool) {
+	mappingListRoverEntitlementsSortByEnumIgnoreCase := make(map[string]ListRoverEntitlementsSortByEnum)
+	for k, v := range mappingListRoverEntitlementsSortByEnum {
+		mappingListRoverEntitlementsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRoverEntitlementsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

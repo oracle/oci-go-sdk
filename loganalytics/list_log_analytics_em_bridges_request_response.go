@@ -6,7 +6,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -90,21 +90,21 @@ func (request ListLogAnalyticsEmBridgesRequest) RetryPolicy() *common.RetryPolic
 func (request ListLogAnalyticsEmBridgesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.LifecycleState {
-		if _, ok := mappingEmBridgeLifecycleStatesEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingEmBridgeLifecycleStatesEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", val, strings.Join(GetEmBridgeLifecycleStatesEnumStringValues(), ",")))
 		}
 	}
 
 	for _, val := range request.ImportStatus {
-		if _, ok := mappingEmBridgeLatestImportProcessingStatusEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingEmBridgeLatestImportProcessingStatusEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ImportStatus: %s. Supported values are: %s.", val, strings.Join(GetEmBridgeLatestImportProcessingStatusEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListLogAnalyticsEmBridgesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListLogAnalyticsEmBridgesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListLogAnalyticsEmBridgesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListLogAnalyticsEmBridgesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListLogAnalyticsEmBridgesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListLogAnalyticsEmBridgesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -171,6 +171,17 @@ func GetListLogAnalyticsEmBridgesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListLogAnalyticsEmBridgesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsEmBridgesSortOrderEnum(val string) (ListLogAnalyticsEmBridgesSortOrderEnum, bool) {
+	mappingListLogAnalyticsEmBridgesSortOrderEnumIgnoreCase := make(map[string]ListLogAnalyticsEmBridgesSortOrderEnum)
+	for k, v := range mappingListLogAnalyticsEmBridgesSortOrderEnum {
+		mappingListLogAnalyticsEmBridgesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsEmBridgesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListLogAnalyticsEmBridgesSortByEnum Enum with underlying type: string
 type ListLogAnalyticsEmBridgesSortByEnum string
 
@@ -203,4 +214,15 @@ func GetListLogAnalyticsEmBridgesSortByEnumStringValues() []string {
 		"timeUpdated",
 		"displayName",
 	}
+}
+
+// GetMappingListLogAnalyticsEmBridgesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListLogAnalyticsEmBridgesSortByEnum(val string) (ListLogAnalyticsEmBridgesSortByEnum, bool) {
+	mappingListLogAnalyticsEmBridgesSortByEnumIgnoreCase := make(map[string]ListLogAnalyticsEmBridgesSortByEnum)
+	for k, v := range mappingListLogAnalyticsEmBridgesSortByEnum {
+		mappingListLogAnalyticsEmBridgesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListLogAnalyticsEmBridgesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

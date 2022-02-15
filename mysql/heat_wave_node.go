@@ -11,7 +11,7 @@ package mysql
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -42,7 +42,7 @@ func (m HeatWaveNode) String() string {
 // Not recommended for calling this function directly
 func (m HeatWaveNode) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingHeatWaveNodeLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingHeatWaveNodeLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetHeatWaveNodeLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -96,4 +96,15 @@ func GetHeatWaveNodeLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingHeatWaveNodeLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHeatWaveNodeLifecycleStateEnum(val string) (HeatWaveNodeLifecycleStateEnum, bool) {
+	mappingHeatWaveNodeLifecycleStateEnumIgnoreCase := make(map[string]HeatWaveNodeLifecycleStateEnum)
+	for k, v := range mappingHeatWaveNodeLifecycleStateEnum {
+		mappingHeatWaveNodeLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHeatWaveNodeLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

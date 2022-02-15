@@ -6,7 +6,7 @@ package opsi
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -157,19 +157,19 @@ func (request SummarizeSqlStatisticsRequest) RetryPolicy() *common.RetryPolicy {
 func (request SummarizeSqlStatisticsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.DatabaseType {
-		if _, ok := mappingSummarizeSqlStatisticsDatabaseTypeEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeSqlStatisticsDatabaseTypeEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseType: %s. Supported values are: %s.", val, strings.Join(GetSummarizeSqlStatisticsDatabaseTypeEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingSummarizeSqlStatisticsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSummarizeSqlStatisticsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSummarizeSqlStatisticsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSummarizeSqlStatisticsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSummarizeSqlStatisticsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSummarizeSqlStatisticsSortByEnumStringValues(), ",")))
 	}
 	for _, val := range request.Category {
-		if _, ok := mappingSummarizeSqlStatisticsCategoryEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingSummarizeSqlStatisticsCategoryEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Category: %s. Supported values are: %s.", val, strings.Join(GetSummarizeSqlStatisticsCategoryEnumStringValues(), ",")))
 		}
 	}
@@ -251,6 +251,17 @@ func GetSummarizeSqlStatisticsDatabaseTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingSummarizeSqlStatisticsDatabaseTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeSqlStatisticsDatabaseTypeEnum(val string) (SummarizeSqlStatisticsDatabaseTypeEnum, bool) {
+	mappingSummarizeSqlStatisticsDatabaseTypeEnumIgnoreCase := make(map[string]SummarizeSqlStatisticsDatabaseTypeEnum)
+	for k, v := range mappingSummarizeSqlStatisticsDatabaseTypeEnum {
+		mappingSummarizeSqlStatisticsDatabaseTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeSqlStatisticsDatabaseTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SummarizeSqlStatisticsSortOrderEnum Enum with underlying type: string
 type SummarizeSqlStatisticsSortOrderEnum string
 
@@ -280,6 +291,17 @@ func GetSummarizeSqlStatisticsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSummarizeSqlStatisticsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeSqlStatisticsSortOrderEnum(val string) (SummarizeSqlStatisticsSortOrderEnum, bool) {
+	mappingSummarizeSqlStatisticsSortOrderEnumIgnoreCase := make(map[string]SummarizeSqlStatisticsSortOrderEnum)
+	for k, v := range mappingSummarizeSqlStatisticsSortOrderEnum {
+		mappingSummarizeSqlStatisticsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeSqlStatisticsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SummarizeSqlStatisticsSortByEnum Enum with underlying type: string
@@ -362,6 +384,17 @@ func GetSummarizeSqlStatisticsSortByEnumStringValues() []string {
 		"changeInExecutionsPerHourInPct",
 		"changeInInefficiencyInPct",
 	}
+}
+
+// GetMappingSummarizeSqlStatisticsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeSqlStatisticsSortByEnum(val string) (SummarizeSqlStatisticsSortByEnum, bool) {
+	mappingSummarizeSqlStatisticsSortByEnumIgnoreCase := make(map[string]SummarizeSqlStatisticsSortByEnum)
+	for k, v := range mappingSummarizeSqlStatisticsSortByEnum {
+		mappingSummarizeSqlStatisticsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeSqlStatisticsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // SummarizeSqlStatisticsCategoryEnum Enum with underlying type: string
@@ -462,4 +495,15 @@ func GetSummarizeSqlStatisticsCategoryEnumStringValues() []string {
 		"INEFFICIENT_INCREASING_INEFFICIENT_WAIT",
 		"INEFFICIENT_CHANGING_PLANS_AND_INCREASING_INEFFICIENT_WAIT",
 	}
+}
+
+// GetMappingSummarizeSqlStatisticsCategoryEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSummarizeSqlStatisticsCategoryEnum(val string) (SummarizeSqlStatisticsCategoryEnum, bool) {
+	mappingSummarizeSqlStatisticsCategoryEnumIgnoreCase := make(map[string]SummarizeSqlStatisticsCategoryEnum)
+	for k, v := range mappingSummarizeSqlStatisticsCategoryEnum {
+		mappingSummarizeSqlStatisticsCategoryEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSummarizeSqlStatisticsCategoryEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

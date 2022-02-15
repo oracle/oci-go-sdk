@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -89,13 +89,13 @@ func (request SearchCriteriaRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request SearchCriteriaRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSearchCriteriaLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingSearchCriteriaLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetSearchCriteriaLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSearchCriteriaSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingSearchCriteriaSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetSearchCriteriaSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingSearchCriteriaSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingSearchCriteriaSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetSearchCriteriaSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -179,6 +179,17 @@ func GetSearchCriteriaLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingSearchCriteriaLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSearchCriteriaLifecycleStateEnum(val string) (SearchCriteriaLifecycleStateEnum, bool) {
+	mappingSearchCriteriaLifecycleStateEnumIgnoreCase := make(map[string]SearchCriteriaLifecycleStateEnum)
+	for k, v := range mappingSearchCriteriaLifecycleStateEnum {
+		mappingSearchCriteriaLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSearchCriteriaLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SearchCriteriaSortByEnum Enum with underlying type: string
 type SearchCriteriaSortByEnum string
 
@@ -210,6 +221,17 @@ func GetSearchCriteriaSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingSearchCriteriaSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSearchCriteriaSortByEnum(val string) (SearchCriteriaSortByEnum, bool) {
+	mappingSearchCriteriaSortByEnumIgnoreCase := make(map[string]SearchCriteriaSortByEnum)
+	for k, v := range mappingSearchCriteriaSortByEnum {
+		mappingSearchCriteriaSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSearchCriteriaSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // SearchCriteriaSortOrderEnum Enum with underlying type: string
 type SearchCriteriaSortOrderEnum string
 
@@ -239,4 +261,15 @@ func GetSearchCriteriaSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingSearchCriteriaSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSearchCriteriaSortOrderEnum(val string) (SearchCriteriaSortOrderEnum, bool) {
+	mappingSearchCriteriaSortOrderEnumIgnoreCase := make(map[string]SearchCriteriaSortOrderEnum)
+	for k, v := range mappingSearchCriteriaSortOrderEnum {
+		mappingSearchCriteriaSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSearchCriteriaSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

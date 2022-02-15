@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -171,11 +171,11 @@ func (m Instance) String() string {
 // Not recommended for calling this function directly
 func (m Instance) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingInstanceLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingInstanceLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetInstanceLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingInstanceLaunchModeEnum[string(m.LaunchMode)]; !ok && m.LaunchMode != "" {
+	if _, ok := GetMappingInstanceLaunchModeEnum(string(m.LaunchMode)); !ok && m.LaunchMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LaunchMode: %s. Supported values are: %s.", m.LaunchMode, strings.Join(GetInstanceLaunchModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -334,6 +334,17 @@ func GetInstanceLaunchModeEnumStringValues() []string {
 	}
 }
 
+// GetMappingInstanceLaunchModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceLaunchModeEnum(val string) (InstanceLaunchModeEnum, bool) {
+	mappingInstanceLaunchModeEnumIgnoreCase := make(map[string]InstanceLaunchModeEnum)
+	for k, v := range mappingInstanceLaunchModeEnum {
+		mappingInstanceLaunchModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceLaunchModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // InstanceLifecycleStateEnum Enum with underlying type: string
 type InstanceLifecycleStateEnum string
 
@@ -384,4 +395,15 @@ func GetInstanceLifecycleStateEnumStringValues() []string {
 		"TERMINATING",
 		"TERMINATED",
 	}
+}
+
+// GetMappingInstanceLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInstanceLifecycleStateEnum(val string) (InstanceLifecycleStateEnum, bool) {
+	mappingInstanceLifecycleStateEnumIgnoreCase := make(map[string]InstanceLifecycleStateEnum)
+	for k, v := range mappingInstanceLifecycleStateEnum {
+		mappingInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInstanceLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

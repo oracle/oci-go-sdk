@@ -6,7 +6,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -77,7 +77,7 @@ func (request ListBucketsRequest) RetryPolicy() *common.RetryPolicy {
 func (request ListBucketsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 	for _, val := range request.Fields {
-		if _, ok := mappingListBucketsFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListBucketsFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListBucketsFieldsEnumStringValues(), ",")))
 		}
 	}
@@ -149,4 +149,15 @@ func GetListBucketsFieldsEnumStringValues() []string {
 	return []string{
 		"tags",
 	}
+}
+
+// GetMappingListBucketsFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListBucketsFieldsEnum(val string) (ListBucketsFieldsEnum, bool) {
+	mappingListBucketsFieldsEnumIgnoreCase := make(map[string]ListBucketsFieldsEnum)
+	for k, v := range mappingListBucketsFieldsEnum {
+		mappingListBucketsFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListBucketsFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

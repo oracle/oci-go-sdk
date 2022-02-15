@@ -12,7 +12,7 @@ package vault
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -108,4 +108,15 @@ func GetSecretRuleRuleTypeEnumStringValues() []string {
 		"SECRET_EXPIRY_RULE",
 		"SECRET_REUSE_RULE",
 	}
+}
+
+// GetMappingSecretRuleRuleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSecretRuleRuleTypeEnum(val string) (SecretRuleRuleTypeEnum, bool) {
+	mappingSecretRuleRuleTypeEnumIgnoreCase := make(map[string]SecretRuleRuleTypeEnum)
+	for k, v := range mappingSecretRuleRuleTypeEnum {
+		mappingSecretRuleRuleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSecretRuleRuleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

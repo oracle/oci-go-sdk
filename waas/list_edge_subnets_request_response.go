@@ -6,7 +6,7 @@ package waas
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -69,10 +69,10 @@ func (request ListEdgeSubnetsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListEdgeSubnetsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListEdgeSubnetsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListEdgeSubnetsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListEdgeSubnetsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEdgeSubnetsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListEdgeSubnetsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListEdgeSubnetsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -140,6 +140,17 @@ func GetListEdgeSubnetsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListEdgeSubnetsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEdgeSubnetsSortByEnum(val string) (ListEdgeSubnetsSortByEnum, bool) {
+	mappingListEdgeSubnetsSortByEnumIgnoreCase := make(map[string]ListEdgeSubnetsSortByEnum)
+	for k, v := range mappingListEdgeSubnetsSortByEnum {
+		mappingListEdgeSubnetsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEdgeSubnetsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListEdgeSubnetsSortOrderEnum Enum with underlying type: string
 type ListEdgeSubnetsSortOrderEnum string
 
@@ -169,4 +180,15 @@ func GetListEdgeSubnetsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListEdgeSubnetsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEdgeSubnetsSortOrderEnum(val string) (ListEdgeSubnetsSortOrderEnum, bool) {
+	mappingListEdgeSubnetsSortOrderEnumIgnoreCase := make(map[string]ListEdgeSubnetsSortOrderEnum)
+	for k, v := range mappingListEdgeSubnetsSortOrderEnum {
+		mappingListEdgeSubnetsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEdgeSubnetsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

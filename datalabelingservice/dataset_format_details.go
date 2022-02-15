@@ -12,7 +12,7 @@ package datalabelingservice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -115,4 +115,15 @@ func GetDatasetFormatDetailsFormatTypeEnumStringValues() []string {
 		"IMAGE",
 		"TEXT",
 	}
+}
+
+// GetMappingDatasetFormatDetailsFormatTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDatasetFormatDetailsFormatTypeEnum(val string) (DatasetFormatDetailsFormatTypeEnum, bool) {
+	mappingDatasetFormatDetailsFormatTypeEnumIgnoreCase := make(map[string]DatasetFormatDetailsFormatTypeEnum)
+	for k, v := range mappingDatasetFormatDetailsFormatTypeEnum {
+		mappingDatasetFormatDetailsFormatTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDatasetFormatDetailsFormatTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

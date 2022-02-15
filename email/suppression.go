@@ -15,7 +15,7 @@ package email
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -72,7 +72,7 @@ func (m Suppression) String() string {
 func (m Suppression) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSuppressionReasonEnum[string(m.Reason)]; !ok && m.Reason != "" {
+	if _, ok := GetMappingSuppressionReasonEnum(string(m.Reason)); !ok && m.Reason != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Reason: %s. Supported values are: %s.", m.Reason, strings.Join(GetSuppressionReasonEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -122,4 +122,15 @@ func GetSuppressionReasonEnumStringValues() []string {
 		"SOFTBOUNCE",
 		"UNSUBSCRIBE",
 	}
+}
+
+// GetMappingSuppressionReasonEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSuppressionReasonEnum(val string) (SuppressionReasonEnum, bool) {
+	mappingSuppressionReasonEnumIgnoreCase := make(map[string]SuppressionReasonEnum)
+	for k, v := range mappingSuppressionReasonEnum {
+		mappingSuppressionReasonEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSuppressionReasonEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

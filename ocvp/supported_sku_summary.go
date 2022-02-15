@@ -12,7 +12,7 @@ package ocvp
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -32,7 +32,7 @@ func (m SupportedSkuSummary) String() string {
 // Not recommended for calling this function directly
 func (m SupportedSkuSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingSkuEnum[string(m.Name)]; !ok && m.Name != "" {
+	if _, ok := GetMappingSkuEnum(string(m.Name)); !ok && m.Name != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Name: %s. Supported values are: %s.", m.Name, strings.Join(GetSkuEnumStringValues(), ",")))
 	}
 

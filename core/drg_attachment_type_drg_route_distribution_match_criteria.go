@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -38,7 +38,7 @@ func (m DrgAttachmentTypeDrgRouteDistributionMatchCriteria) String() string {
 // Not recommended for calling this function directly
 func (m DrgAttachmentTypeDrgRouteDistributionMatchCriteria) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum[string(m.AttachmentType)]; !ok && m.AttachmentType != "" {
+	if _, ok := GetMappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum(string(m.AttachmentType)); !ok && m.AttachmentType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AttachmentType: %s. Supported values are: %s.", m.AttachmentType, strings.Join(GetDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumStringValues(), ",")))
 	}
 
@@ -97,4 +97,15 @@ func GetDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumStri
 		"REMOTE_PEERING_CONNECTION",
 		"IPSEC_TUNNEL",
 	}
+}
+
+// GetMappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum(val string) (DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum, bool) {
+	mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumIgnoreCase := make(map[string]DrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum)
+	for k, v := range mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnum {
+		mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgAttachmentTypeDrgRouteDistributionMatchCriteriaAttachmentTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

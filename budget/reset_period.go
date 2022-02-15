@@ -9,6 +9,10 @@
 
 package budget
 
+import (
+	"strings"
+)
+
 // ResetPeriodEnum Enum with underlying type: string
 type ResetPeriodEnum string
 
@@ -35,4 +39,15 @@ func GetResetPeriodEnumStringValues() []string {
 	return []string{
 		"MONTHLY",
 	}
+}
+
+// GetMappingResetPeriodEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResetPeriodEnum(val string) (ResetPeriodEnum, bool) {
+	mappingResetPeriodEnumIgnoreCase := make(map[string]ResetPeriodEnum)
+	for k, v := range mappingResetPeriodEnum {
+		mappingResetPeriodEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResetPeriodEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

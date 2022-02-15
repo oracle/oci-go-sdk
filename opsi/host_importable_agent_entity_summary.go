@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -55,7 +55,7 @@ func (m HostImportableAgentEntitySummary) String() string {
 // Not recommended for calling this function directly
 func (m HostImportableAgentEntitySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingHostImportableAgentEntitySummaryPlatformTypeEnum[string(m.PlatformType)]; !ok && m.PlatformType != "" {
+	if _, ok := GetMappingHostImportableAgentEntitySummaryPlatformTypeEnum(string(m.PlatformType)); !ok && m.PlatformType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PlatformType: %s. Supported values are: %s.", m.PlatformType, strings.Join(GetHostImportableAgentEntitySummaryPlatformTypeEnumStringValues(), ",")))
 	}
 
@@ -111,4 +111,15 @@ func GetHostImportableAgentEntitySummaryPlatformTypeEnumStringValues() []string 
 		"SOLARIS",
 		"SUNOS",
 	}
+}
+
+// GetMappingHostImportableAgentEntitySummaryPlatformTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHostImportableAgentEntitySummaryPlatformTypeEnum(val string) (HostImportableAgentEntitySummaryPlatformTypeEnum, bool) {
+	mappingHostImportableAgentEntitySummaryPlatformTypeEnumIgnoreCase := make(map[string]HostImportableAgentEntitySummaryPlatformTypeEnum)
+	for k, v := range mappingHostImportableAgentEntitySummaryPlatformTypeEnum {
+		mappingHostImportableAgentEntitySummaryPlatformTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHostImportableAgentEntitySummaryPlatformTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // ResponderDimensionEnum Enum with underlying type: string
 type ResponderDimensionEnum string
 
@@ -38,4 +42,15 @@ func GetResponderDimensionEnumStringValues() []string {
 		"RESPONDER_RULE_TYPE",
 		"RESPONDER_EXECUTION_STATUS",
 	}
+}
+
+// GetMappingResponderDimensionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResponderDimensionEnum(val string) (ResponderDimensionEnum, bool) {
+	mappingResponderDimensionEnumIgnoreCase := make(map[string]ResponderDimensionEnum)
+	for k, v := range mappingResponderDimensionEnum {
+		mappingResponderDimensionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResponderDimensionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

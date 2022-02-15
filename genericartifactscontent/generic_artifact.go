@@ -12,7 +12,7 @@ package genericartifactscontent
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -73,7 +73,7 @@ func (m GenericArtifact) String() string {
 // Not recommended for calling this function directly
 func (m GenericArtifact) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingGenericArtifactLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingGenericArtifactLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetGenericArtifactLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -115,4 +115,15 @@ func GetGenericArtifactLifecycleStateEnumStringValues() []string {
 		"DELETING",
 		"DELETED",
 	}
+}
+
+// GetMappingGenericArtifactLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingGenericArtifactLifecycleStateEnum(val string) (GenericArtifactLifecycleStateEnum, bool) {
+	mappingGenericArtifactLifecycleStateEnumIgnoreCase := make(map[string]GenericArtifactLifecycleStateEnum)
+	for k, v := range mappingGenericArtifactLifecycleStateEnum {
+		mappingGenericArtifactLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingGenericArtifactLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

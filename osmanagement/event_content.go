@@ -12,7 +12,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -39,7 +39,7 @@ func (m EventContent) String() string {
 func (m EventContent) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingContentAvailabilityEnum[string(m.ContentAvailability)]; !ok && m.ContentAvailability != "" {
+	if _, ok := GetMappingContentAvailabilityEnum(string(m.ContentAvailability)); !ok && m.ContentAvailability != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ContentAvailability: %s. Supported values are: %s.", m.ContentAvailability, strings.Join(GetContentAvailabilityEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

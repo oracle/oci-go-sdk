@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -145,7 +145,7 @@ func (m UpdateTaskFromSqlTask) String() string {
 // Not recommended for calling this function directly
 func (m UpdateTaskFromSqlTask) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingUpdateTaskFromSqlTaskSqlScriptTypeEnum[string(m.SqlScriptType)]; !ok && m.SqlScriptType != "" {
+	if _, ok := GetMappingUpdateTaskFromSqlTaskSqlScriptTypeEnum(string(m.SqlScriptType)); !ok && m.SqlScriptType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SqlScriptType: %s. Supported values are: %s.", m.SqlScriptType, strings.Join(GetUpdateTaskFromSqlTaskSqlScriptTypeEnumStringValues(), ",")))
 	}
 
@@ -198,4 +198,15 @@ func GetUpdateTaskFromSqlTaskSqlScriptTypeEnumStringValues() []string {
 		"STORED_PROCEDURE",
 		"SQL_CODE",
 	}
+}
+
+// GetMappingUpdateTaskFromSqlTaskSqlScriptTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateTaskFromSqlTaskSqlScriptTypeEnum(val string) (UpdateTaskFromSqlTaskSqlScriptTypeEnum, bool) {
+	mappingUpdateTaskFromSqlTaskSqlScriptTypeEnumIgnoreCase := make(map[string]UpdateTaskFromSqlTaskSqlScriptTypeEnum)
+	for k, v := range mappingUpdateTaskFromSqlTaskSqlScriptTypeEnum {
+		mappingUpdateTaskFromSqlTaskSqlScriptTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateTaskFromSqlTaskSqlScriptTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

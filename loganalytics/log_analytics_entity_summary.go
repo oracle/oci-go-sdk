@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -82,7 +82,7 @@ func (m LogAnalyticsEntitySummary) String() string {
 // Not recommended for calling this function directly
 func (m LogAnalyticsEntitySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingEntityLifecycleStatesEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingEntityLifecycleStatesEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetEntityLifecycleStatesEnumStringValues(), ",")))
 	}
 

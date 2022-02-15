@@ -12,7 +12,7 @@ package keymanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -70,14 +70,14 @@ func (m KeySummary) String() string {
 // Not recommended for calling this function directly
 func (m KeySummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingKeySummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingKeySummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetKeySummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingKeySummaryProtectionModeEnum[string(m.ProtectionMode)]; !ok && m.ProtectionMode != "" {
+	if _, ok := GetMappingKeySummaryProtectionModeEnum(string(m.ProtectionMode)); !ok && m.ProtectionMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ProtectionMode: %s. Supported values are: %s.", m.ProtectionMode, strings.Join(GetKeySummaryProtectionModeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingKeySummaryAlgorithmEnum[string(m.Algorithm)]; !ok && m.Algorithm != "" {
+	if _, ok := GetMappingKeySummaryAlgorithmEnum(string(m.Algorithm)); !ok && m.Algorithm != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Algorithm: %s. Supported values are: %s.", m.Algorithm, strings.Join(GetKeySummaryAlgorithmEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -150,6 +150,17 @@ func GetKeySummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingKeySummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeySummaryLifecycleStateEnum(val string) (KeySummaryLifecycleStateEnum, bool) {
+	mappingKeySummaryLifecycleStateEnumIgnoreCase := make(map[string]KeySummaryLifecycleStateEnum)
+	for k, v := range mappingKeySummaryLifecycleStateEnum {
+		mappingKeySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeySummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // KeySummaryProtectionModeEnum Enum with underlying type: string
 type KeySummaryProtectionModeEnum string
 
@@ -179,6 +190,17 @@ func GetKeySummaryProtectionModeEnumStringValues() []string {
 		"HSM",
 		"SOFTWARE",
 	}
+}
+
+// GetMappingKeySummaryProtectionModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeySummaryProtectionModeEnum(val string) (KeySummaryProtectionModeEnum, bool) {
+	mappingKeySummaryProtectionModeEnumIgnoreCase := make(map[string]KeySummaryProtectionModeEnum)
+	for k, v := range mappingKeySummaryProtectionModeEnum {
+		mappingKeySummaryProtectionModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeySummaryProtectionModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // KeySummaryAlgorithmEnum Enum with underlying type: string
@@ -213,4 +235,15 @@ func GetKeySummaryAlgorithmEnumStringValues() []string {
 		"RSA",
 		"ECDSA",
 	}
+}
+
+// GetMappingKeySummaryAlgorithmEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingKeySummaryAlgorithmEnum(val string) (KeySummaryAlgorithmEnum, bool) {
+	mappingKeySummaryAlgorithmEnumIgnoreCase := make(map[string]KeySummaryAlgorithmEnum)
+	for k, v := range mappingKeySummaryAlgorithmEnum {
+		mappingKeySummaryAlgorithmEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingKeySummaryAlgorithmEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

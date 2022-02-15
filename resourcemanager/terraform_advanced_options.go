@@ -14,7 +14,7 @@ package resourcemanager
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -47,7 +47,7 @@ func (m TerraformAdvancedOptions) String() string {
 func (m TerraformAdvancedOptions) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTerraformAdvancedOptionsDetailedLogLevelEnum[string(m.DetailedLogLevel)]; !ok && m.DetailedLogLevel != "" {
+	if _, ok := GetMappingTerraformAdvancedOptionsDetailedLogLevelEnum(string(m.DetailedLogLevel)); !ok && m.DetailedLogLevel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DetailedLogLevel: %s. Supported values are: %s.", m.DetailedLogLevel, strings.Join(GetTerraformAdvancedOptionsDetailedLogLevelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -94,4 +94,15 @@ func GetTerraformAdvancedOptionsDetailedLogLevelEnumStringValues() []string {
 		"DEBUG",
 		"TRACE",
 	}
+}
+
+// GetMappingTerraformAdvancedOptionsDetailedLogLevelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTerraformAdvancedOptionsDetailedLogLevelEnum(val string) (TerraformAdvancedOptionsDetailedLogLevelEnum, bool) {
+	mappingTerraformAdvancedOptionsDetailedLogLevelEnumIgnoreCase := make(map[string]TerraformAdvancedOptionsDetailedLogLevelEnum)
+	for k, v := range mappingTerraformAdvancedOptionsDetailedLogLevelEnum {
+		mappingTerraformAdvancedOptionsDetailedLogLevelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTerraformAdvancedOptionsDetailedLogLevelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

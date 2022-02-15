@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // OwnerTypeEnum Enum with underlying type: string
 type OwnerTypeEnum string
 
@@ -38,4 +42,15 @@ func GetOwnerTypeEnumStringValues() []string {
 		"CUSTOMER",
 		"ORACLE",
 	}
+}
+
+// GetMappingOwnerTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOwnerTypeEnum(val string) (OwnerTypeEnum, bool) {
+	mappingOwnerTypeEnumIgnoreCase := make(map[string]OwnerTypeEnum)
+	for k, v := range mappingOwnerTypeEnum {
+		mappingOwnerTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOwnerTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

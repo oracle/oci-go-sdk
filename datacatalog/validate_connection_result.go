@@ -12,7 +12,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -35,7 +35,7 @@ func (m ValidateConnectionResult) String() string {
 // Not recommended for calling this function directly
 func (m ValidateConnectionResult) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingConnectionResultEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingConnectionResultEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetConnectionResultEnumStringValues(), ",")))
 	}
 

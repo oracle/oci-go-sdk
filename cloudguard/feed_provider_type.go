@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // FeedProviderTypeEnum Enum with underlying type: string
 type FeedProviderTypeEnum string
 
@@ -38,4 +42,15 @@ func GetFeedProviderTypeEnumStringValues() []string {
 		"CUSTOMER",
 		"ORACLE",
 	}
+}
+
+// GetMappingFeedProviderTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingFeedProviderTypeEnum(val string) (FeedProviderTypeEnum, bool) {
+	mappingFeedProviderTypeEnumIgnoreCase := make(map[string]FeedProviderTypeEnum)
+	for k, v := range mappingFeedProviderTypeEnum {
+		mappingFeedProviderTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingFeedProviderTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package dataintegration
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -50,10 +50,10 @@ func (m PatchChangeSummary) String() string {
 func (m PatchChangeSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPatchChangeSummaryTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingPatchChangeSummaryTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetPatchChangeSummaryTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPatchChangeSummaryActionEnum[string(m.Action)]; !ok && m.Action != "" {
+	if _, ok := GetMappingPatchChangeSummaryActionEnum(string(m.Action)); !ok && m.Action != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Action: %s. Supported values are: %s.", m.Action, strings.Join(GetPatchChangeSummaryActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -105,6 +105,17 @@ func GetPatchChangeSummaryTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingPatchChangeSummaryTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchChangeSummaryTypeEnum(val string) (PatchChangeSummaryTypeEnum, bool) {
+	mappingPatchChangeSummaryTypeEnumIgnoreCase := make(map[string]PatchChangeSummaryTypeEnum)
+	for k, v := range mappingPatchChangeSummaryTypeEnum {
+		mappingPatchChangeSummaryTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchChangeSummaryTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // PatchChangeSummaryActionEnum Enum with underlying type: string
 type PatchChangeSummaryActionEnum string
 
@@ -137,4 +148,15 @@ func GetPatchChangeSummaryActionEnumStringValues() []string {
 		"DELETED",
 		"UPDATED",
 	}
+}
+
+// GetMappingPatchChangeSummaryActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPatchChangeSummaryActionEnum(val string) (PatchChangeSummaryActionEnum, bool) {
+	mappingPatchChangeSummaryActionEnumIgnoreCase := make(map[string]PatchChangeSummaryActionEnum)
+	for k, v := range mappingPatchChangeSummaryActionEnum {
+		mappingPatchChangeSummaryActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPatchChangeSummaryActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

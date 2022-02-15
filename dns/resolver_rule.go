@@ -13,7 +13,7 @@ package dns
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -124,4 +124,15 @@ func GetResolverRuleActionEnumStringValues() []string {
 	return []string{
 		"FORWARD",
 	}
+}
+
+// GetMappingResolverRuleActionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResolverRuleActionEnum(val string) (ResolverRuleActionEnum, bool) {
+	mappingResolverRuleActionEnumIgnoreCase := make(map[string]ResolverRuleActionEnum)
+	for k, v := range mappingResolverRuleActionEnum {
+		mappingResolverRuleActionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResolverRuleActionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

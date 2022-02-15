@@ -11,7 +11,7 @@ package bds
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -48,10 +48,10 @@ func (m AutoScalingConfiguration) String() string {
 // Not recommended for calling this function directly
 func (m AutoScalingConfiguration) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingNodeNodeTypeEnum[string(m.NodeType)]; !ok && m.NodeType != "" {
+	if _, ok := GetMappingNodeNodeTypeEnum(string(m.NodeType)); !ok && m.NodeType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NodeType: %s. Supported values are: %s.", m.NodeType, strings.Join(GetNodeNodeTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingAutoScalingConfigurationLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingAutoScalingConfigurationLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetAutoScalingConfigurationLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -102,4 +102,15 @@ func GetAutoScalingConfigurationLifecycleStateEnumStringValues() []string {
 		"DELETED",
 		"FAILED",
 	}
+}
+
+// GetMappingAutoScalingConfigurationLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAutoScalingConfigurationLifecycleStateEnum(val string) (AutoScalingConfigurationLifecycleStateEnum, bool) {
+	mappingAutoScalingConfigurationLifecycleStateEnumIgnoreCase := make(map[string]AutoScalingConfigurationLifecycleStateEnum)
+	for k, v := range mappingAutoScalingConfigurationLifecycleStateEnum {
+		mappingAutoScalingConfigurationLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAutoScalingConfigurationLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

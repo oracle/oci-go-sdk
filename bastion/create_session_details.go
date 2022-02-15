@@ -12,7 +12,7 @@ package bastion
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -46,7 +46,7 @@ func (m CreateSessionDetails) String() string {
 func (m CreateSessionDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateSessionDetailsKeyTypeEnum[string(m.KeyType)]; !ok && m.KeyType != "" {
+	if _, ok := GetMappingCreateSessionDetailsKeyTypeEnum(string(m.KeyType)); !ok && m.KeyType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for KeyType: %s. Supported values are: %s.", m.KeyType, strings.Join(GetCreateSessionDetailsKeyTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -120,4 +120,15 @@ func GetCreateSessionDetailsKeyTypeEnumStringValues() []string {
 	return []string{
 		"PUB",
 	}
+}
+
+// GetMappingCreateSessionDetailsKeyTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateSessionDetailsKeyTypeEnum(val string) (CreateSessionDetailsKeyTypeEnum, bool) {
+	mappingCreateSessionDetailsKeyTypeEnumIgnoreCase := make(map[string]CreateSessionDetailsKeyTypeEnum)
+	for k, v := range mappingCreateSessionDetailsKeyTypeEnum {
+		mappingCreateSessionDetailsKeyTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateSessionDetailsKeyTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package datasafe
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -47,7 +47,7 @@ func (m UserDetails) String() string {
 func (m UserDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUserDetailsAuthenticationTypeEnum[string(m.AuthenticationType)]; !ok && m.AuthenticationType != "" {
+	if _, ok := GetMappingUserDetailsAuthenticationTypeEnum(string(m.AuthenticationType)); !ok && m.AuthenticationType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AuthenticationType: %s. Supported values are: %s.", m.AuthenticationType, strings.Join(GetUserDetailsAuthenticationTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -85,4 +85,15 @@ func GetUserDetailsAuthenticationTypeEnumStringValues() []string {
 		"PASSWORD",
 		"NONE",
 	}
+}
+
+// GetMappingUserDetailsAuthenticationTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUserDetailsAuthenticationTypeEnum(val string) (UserDetailsAuthenticationTypeEnum, bool) {
+	mappingUserDetailsAuthenticationTypeEnumIgnoreCase := make(map[string]UserDetailsAuthenticationTypeEnum)
+	for k, v := range mappingUserDetailsAuthenticationTypeEnum {
+		mappingUserDetailsAuthenticationTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUserDetailsAuthenticationTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -228,14 +228,14 @@ func (m job) String() string {
 // Not recommended for calling this function directly
 func (m job) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingJobScheduleTypeEnum[string(m.ScheduleType)]; !ok && m.ScheduleType != "" {
+	if _, ok := GetMappingJobScheduleTypeEnum(string(m.ScheduleType)); !ok && m.ScheduleType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ScheduleType: %s. Supported values are: %s.", m.ScheduleType, strings.Join(GetJobScheduleTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingJobLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingJobLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetJobLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDatabaseSubTypeEnum[string(m.DatabaseSubType)]; !ok && m.DatabaseSubType != "" {
+	if _, ok := GetMappingDatabaseSubTypeEnum(string(m.DatabaseSubType)); !ok && m.DatabaseSubType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseSubType: %s. Supported values are: %s.", m.DatabaseSubType, strings.Join(GetDatabaseSubTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -275,6 +275,17 @@ func GetJobScheduleTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingJobScheduleTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobScheduleTypeEnum(val string) (JobScheduleTypeEnum, bool) {
+	mappingJobScheduleTypeEnumIgnoreCase := make(map[string]JobScheduleTypeEnum)
+	for k, v := range mappingJobScheduleTypeEnum {
+		mappingJobScheduleTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobScheduleTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // JobLifecycleStateEnum Enum with underlying type: string
 type JobLifecycleStateEnum string
 
@@ -304,4 +315,15 @@ func GetJobLifecycleStateEnumStringValues() []string {
 		"ACTIVE",
 		"INACTIVE",
 	}
+}
+
+// GetMappingJobLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingJobLifecycleStateEnum(val string) (JobLifecycleStateEnum, bool) {
+	mappingJobLifecycleStateEnumIgnoreCase := make(map[string]JobLifecycleStateEnum)
+	for k, v := range mappingJobLifecycleStateEnum {
+		mappingJobLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingJobLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

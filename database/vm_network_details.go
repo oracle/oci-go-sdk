@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -46,7 +46,7 @@ func (m VmNetworkDetails) String() string {
 // Not recommended for calling this function directly
 func (m VmNetworkDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVmNetworkDetailsNetworkTypeEnum[string(m.NetworkType)]; !ok && m.NetworkType != "" {
+	if _, ok := GetMappingVmNetworkDetailsNetworkTypeEnum(string(m.NetworkType)); !ok && m.NetworkType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for NetworkType: %s. Supported values are: %s.", m.NetworkType, strings.Join(GetVmNetworkDetailsNetworkTypeEnumStringValues(), ",")))
 	}
 
@@ -85,4 +85,15 @@ func GetVmNetworkDetailsNetworkTypeEnumStringValues() []string {
 		"CLIENT",
 		"BACKUP",
 	}
+}
+
+// GetMappingVmNetworkDetailsNetworkTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVmNetworkDetailsNetworkTypeEnum(val string) (VmNetworkDetailsNetworkTypeEnum, bool) {
+	mappingVmNetworkDetailsNetworkTypeEnumIgnoreCase := make(map[string]VmNetworkDetailsNetworkTypeEnum)
+	for k, v := range mappingVmNetworkDetailsNetworkTypeEnum {
+		mappingVmNetworkDetailsNetworkTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVmNetworkDetailsNetworkTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

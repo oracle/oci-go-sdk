@@ -6,7 +6,7 @@ package ons
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -72,7 +72,7 @@ func (request PublishMessageRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request PublishMessageRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPublishMessageMessageTypeEnum[string(request.MessageType)]; !ok && request.MessageType != "" {
+	if _, ok := GetMappingPublishMessageMessageTypeEnum(string(request.MessageType)); !ok && request.MessageType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for MessageType: %s. Supported values are: %s.", request.MessageType, strings.Join(GetPublishMessageMessageTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -133,4 +133,15 @@ func GetPublishMessageMessageTypeEnumStringValues() []string {
 		"JSON",
 		"RAW_TEXT",
 	}
+}
+
+// GetMappingPublishMessageMessageTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPublishMessageMessageTypeEnum(val string) (PublishMessageMessageTypeEnum, bool) {
+	mappingPublishMessageMessageTypeEnumIgnoreCase := make(map[string]PublishMessageMessageTypeEnum)
+	for k, v := range mappingPublishMessageMessageTypeEnum {
+		mappingPublishMessageMessageTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPublishMessageMessageTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

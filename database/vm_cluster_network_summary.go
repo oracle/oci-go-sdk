@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -74,7 +74,7 @@ func (m VmClusterNetworkSummary) String() string {
 func (m VmClusterNetworkSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingVmClusterNetworkSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVmClusterNetworkSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVmClusterNetworkSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -136,4 +136,15 @@ func GetVmClusterNetworkSummaryLifecycleStateEnumStringValues() []string {
 		"TERMINATED",
 		"FAILED",
 	}
+}
+
+// GetMappingVmClusterNetworkSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVmClusterNetworkSummaryLifecycleStateEnum(val string) (VmClusterNetworkSummaryLifecycleStateEnum, bool) {
+	mappingVmClusterNetworkSummaryLifecycleStateEnumIgnoreCase := make(map[string]VmClusterNetworkSummaryLifecycleStateEnum)
+	for k, v := range mappingVmClusterNetworkSummaryLifecycleStateEnum {
+		mappingVmClusterNetworkSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVmClusterNetworkSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

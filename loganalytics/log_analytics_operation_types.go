@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // LogAnalyticsOperationTypesEnum Enum with underlying type: string
 type LogAnalyticsOperationTypesEnum string
 
@@ -38,4 +42,15 @@ func GetLogAnalyticsOperationTypesEnumStringValues() []string {
 		"CREATE_LOG_ANALYTICS",
 		"DELETE_LOG_ANALYTICS",
 	}
+}
+
+// GetMappingLogAnalyticsOperationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingLogAnalyticsOperationTypesEnum(val string) (LogAnalyticsOperationTypesEnum, bool) {
+	mappingLogAnalyticsOperationTypesEnumIgnoreCase := make(map[string]LogAnalyticsOperationTypesEnum)
+	for k, v := range mappingLogAnalyticsOperationTypesEnum {
+		mappingLogAnalyticsOperationTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingLogAnalyticsOperationTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

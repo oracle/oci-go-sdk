@@ -12,7 +12,7 @@ package mysql
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -53,7 +53,7 @@ func (m CreateChannelSourceFromMysqlDetails) String() string {
 func (m CreateChannelSourceFromMysqlDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingChannelSourceMysqlSslModeEnum[string(m.SslMode)]; !ok && m.SslMode != "" {
+	if _, ok := GetMappingChannelSourceMysqlSslModeEnum(string(m.SslMode)); !ok && m.SslMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SslMode: %s. Supported values are: %s.", m.SslMode, strings.Join(GetChannelSourceMysqlSslModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

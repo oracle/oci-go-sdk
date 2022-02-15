@@ -4,9 +4,10 @@
 package auth
 
 import (
-	"github.com/oracle/oci-go-sdk/v57/common"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestInstancePrincipalDelegationTokenConfigurationProvider_ErrorInput(t *testing.T) {

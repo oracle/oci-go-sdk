@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // ResourceStatusEnum Enum with underlying type: string
 type ResourceStatusEnum string
 
@@ -43,4 +47,15 @@ func GetResourceStatusEnumStringValues() []string {
 		"ENABLED",
 		"TERMINATED",
 	}
+}
+
+// GetMappingResourceStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingResourceStatusEnum(val string) (ResourceStatusEnum, bool) {
+	mappingResourceStatusEnumIgnoreCase := make(map[string]ResourceStatusEnum)
+	for k, v := range mappingResourceStatusEnum {
+		mappingResourceStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingResourceStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

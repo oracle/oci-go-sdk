@@ -6,7 +6,7 @@ package tenantmanagercontrolplane
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -87,16 +87,16 @@ func (request ListDomainsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListDomainsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListDomainsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListDomainsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListDomainsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDomainStatusEnum[string(request.Status)]; !ok && request.Status != "" {
+	if _, ok := GetMappingDomainStatusEnum(string(request.Status)); !ok && request.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", request.Status, strings.Join(GetDomainStatusEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDomainsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListDomainsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListDomainsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListDomainsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListDomainsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListDomainsSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -176,6 +176,17 @@ func GetListDomainsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDomainsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDomainsLifecycleStateEnum(val string) (ListDomainsLifecycleStateEnum, bool) {
+	mappingListDomainsLifecycleStateEnumIgnoreCase := make(map[string]ListDomainsLifecycleStateEnum)
+	for k, v := range mappingListDomainsLifecycleStateEnum {
+		mappingListDomainsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDomainsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDomainsSortByEnum Enum with underlying type: string
 type ListDomainsSortByEnum string
 
@@ -207,6 +218,17 @@ func GetListDomainsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListDomainsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDomainsSortByEnum(val string) (ListDomainsSortByEnum, bool) {
+	mappingListDomainsSortByEnumIgnoreCase := make(map[string]ListDomainsSortByEnum)
+	for k, v := range mappingListDomainsSortByEnum {
+		mappingListDomainsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDomainsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListDomainsSortOrderEnum Enum with underlying type: string
 type ListDomainsSortOrderEnum string
 
@@ -236,4 +258,15 @@ func GetListDomainsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListDomainsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListDomainsSortOrderEnum(val string) (ListDomainsSortOrderEnum, bool) {
+	mappingListDomainsSortOrderEnumIgnoreCase := make(map[string]ListDomainsSortOrderEnum)
+	for k, v := range mappingListDomainsSortOrderEnum {
+		mappingListDomainsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListDomainsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

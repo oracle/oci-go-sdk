@@ -14,7 +14,7 @@ package opsi
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -152,10 +152,10 @@ func (m exadataconfigurationsummary) String() string {
 // Not recommended for calling this function directly
 func (m exadataconfigurationsummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingExadataTypeEnum[string(m.ExadataType)]; !ok && m.ExadataType != "" {
+	if _, ok := GetMappingExadataTypeEnum(string(m.ExadataType)); !ok && m.ExadataType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExadataType: %s. Supported values are: %s.", m.ExadataType, strings.Join(GetExadataTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingExadataRackTypeEnum[string(m.ExadataRackType)]; !ok && m.ExadataRackType != "" {
+	if _, ok := GetMappingExadataRackTypeEnum(string(m.ExadataRackType)); !ok && m.ExadataRackType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ExadataRackType: %s. Supported values are: %s.", m.ExadataRackType, strings.Join(GetExadataRackTypeEnumStringValues(), ",")))
 	}
 

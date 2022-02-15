@@ -15,7 +15,7 @@ package core
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -114,14 +114,14 @@ func (m VolumeBackup) String() string {
 // Not recommended for calling this function directly
 func (m VolumeBackup) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingVolumeBackupLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingVolumeBackupLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetVolumeBackupLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingVolumeBackupTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingVolumeBackupTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetVolumeBackupTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingVolumeBackupSourceTypeEnum[string(m.SourceType)]; !ok && m.SourceType != "" {
+	if _, ok := GetMappingVolumeBackupSourceTypeEnum(string(m.SourceType)); !ok && m.SourceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SourceType: %s. Supported values are: %s.", m.SourceType, strings.Join(GetVolumeBackupSourceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -173,6 +173,17 @@ func GetVolumeBackupLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingVolumeBackupLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeBackupLifecycleStateEnum(val string) (VolumeBackupLifecycleStateEnum, bool) {
+	mappingVolumeBackupLifecycleStateEnumIgnoreCase := make(map[string]VolumeBackupLifecycleStateEnum)
+	for k, v := range mappingVolumeBackupLifecycleStateEnum {
+		mappingVolumeBackupLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeBackupLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VolumeBackupSourceTypeEnum Enum with underlying type: string
 type VolumeBackupSourceTypeEnum string
 
@@ -204,6 +215,17 @@ func GetVolumeBackupSourceTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingVolumeBackupSourceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeBackupSourceTypeEnum(val string) (VolumeBackupSourceTypeEnum, bool) {
+	mappingVolumeBackupSourceTypeEnumIgnoreCase := make(map[string]VolumeBackupSourceTypeEnum)
+	for k, v := range mappingVolumeBackupSourceTypeEnum {
+		mappingVolumeBackupSourceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeBackupSourceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // VolumeBackupTypeEnum Enum with underlying type: string
 type VolumeBackupTypeEnum string
 
@@ -233,4 +255,15 @@ func GetVolumeBackupTypeEnumStringValues() []string {
 		"FULL",
 		"INCREMENTAL",
 	}
+}
+
+// GetMappingVolumeBackupTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingVolumeBackupTypeEnum(val string) (VolumeBackupTypeEnum, bool) {
+	mappingVolumeBackupTypeEnumIgnoreCase := make(map[string]VolumeBackupTypeEnum)
+	for k, v := range mappingVolumeBackupTypeEnum {
+		mappingVolumeBackupTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingVolumeBackupTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

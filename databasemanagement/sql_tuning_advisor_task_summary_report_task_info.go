@@ -13,7 +13,7 @@ package databasemanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -55,7 +55,7 @@ func (m SqlTuningAdvisorTaskSummaryReportTaskInfo) String() string {
 func (m SqlTuningAdvisorTaskSummaryReportTaskInfo) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingSqlTuningTaskStatusTypesEnum[string(m.Status)]; !ok && m.Status != "" {
+	if _, ok := GetMappingSqlTuningTaskStatusTypesEnum(string(m.Status)); !ok && m.Status != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Status: %s. Supported values are: %s.", m.Status, strings.Join(GetSqlTuningTaskStatusTypesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

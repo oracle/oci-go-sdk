@@ -6,7 +6,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -83,10 +83,10 @@ func (request ListRecommendationStrategiesRequest) RetryPolicy() *common.RetryPo
 // Not recommended for calling this function directly
 func (request ListRecommendationStrategiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListRecommendationStrategiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListRecommendationStrategiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListRecommendationStrategiesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListRecommendationStrategiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListRecommendationStrategiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListRecommendationStrategiesSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -158,6 +158,17 @@ func GetListRecommendationStrategiesSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListRecommendationStrategiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRecommendationStrategiesSortOrderEnum(val string) (ListRecommendationStrategiesSortOrderEnum, bool) {
+	mappingListRecommendationStrategiesSortOrderEnumIgnoreCase := make(map[string]ListRecommendationStrategiesSortOrderEnum)
+	for k, v := range mappingListRecommendationStrategiesSortOrderEnum {
+		mappingListRecommendationStrategiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRecommendationStrategiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListRecommendationStrategiesSortByEnum Enum with underlying type: string
 type ListRecommendationStrategiesSortByEnum string
 
@@ -187,4 +198,15 @@ func GetListRecommendationStrategiesSortByEnumStringValues() []string {
 		"NAME",
 		"TIMECREATED",
 	}
+}
+
+// GetMappingListRecommendationStrategiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListRecommendationStrategiesSortByEnum(val string) (ListRecommendationStrategiesSortByEnum, bool) {
+	mappingListRecommendationStrategiesSortByEnumIgnoreCase := make(map[string]ListRecommendationStrategiesSortByEnum)
+	for k, v := range mappingListRecommendationStrategiesSortByEnum {
+		mappingListRecommendationStrategiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListRecommendationStrategiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

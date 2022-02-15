@@ -11,7 +11,7 @@ package networkloadbalancer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -53,11 +53,11 @@ func (m ListenerDetails) String() string {
 // Not recommended for calling this function directly
 func (m ListenerDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListenerProtocolsEnum[string(m.Protocol)]; !ok && m.Protocol != "" {
+	if _, ok := GetMappingListenerProtocolsEnum(string(m.Protocol)); !ok && m.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", m.Protocol, strings.Join(GetListenerProtocolsEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingIpVersionEnum[string(m.IpVersion)]; !ok && m.IpVersion != "" {
+	if _, ok := GetMappingIpVersionEnum(string(m.IpVersion)); !ok && m.IpVersion != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for IpVersion: %s. Supported values are: %s.", m.IpVersion, strings.Join(GetIpVersionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

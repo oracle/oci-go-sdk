@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -128,4 +128,15 @@ func GetDeliveredArtifactArtifactTypeEnumStringValues() []string {
 		"GENERIC_ARTIFACT",
 		"OCIR",
 	}
+}
+
+// GetMappingDeliveredArtifactArtifactTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDeliveredArtifactArtifactTypeEnum(val string) (DeliveredArtifactArtifactTypeEnum, bool) {
+	mappingDeliveredArtifactArtifactTypeEnumIgnoreCase := make(map[string]DeliveredArtifactArtifactTypeEnum)
+	for k, v := range mappingDeliveredArtifactArtifactTypeEnum {
+		mappingDeliveredArtifactArtifactTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDeliveredArtifactArtifactTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

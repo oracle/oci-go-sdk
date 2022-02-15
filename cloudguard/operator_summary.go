@@ -11,7 +11,7 @@ package cloudguard
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -49,7 +49,7 @@ func (m OperatorSummary) String() string {
 // Not recommended for calling this function directly
 func (m OperatorSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingConditionFilterTypeEnum[string(m.FilterType)]; !ok && m.FilterType != "" {
+	if _, ok := GetMappingConditionFilterTypeEnum(string(m.FilterType)); !ok && m.FilterType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FilterType: %s. Supported values are: %s.", m.FilterType, strings.Join(GetConditionFilterTypeEnumStringValues(), ",")))
 	}
 

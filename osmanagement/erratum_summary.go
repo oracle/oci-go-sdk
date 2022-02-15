@@ -12,7 +12,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -54,7 +54,7 @@ func (m ErratumSummary) String() string {
 func (m ErratumSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateTypesEnum[string(m.AdvisoryType)]; !ok && m.AdvisoryType != "" {
+	if _, ok := GetMappingUpdateTypesEnum(string(m.AdvisoryType)); !ok && m.AdvisoryType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AdvisoryType: %s. Supported values are: %s.", m.AdvisoryType, strings.Join(GetUpdateTypesEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

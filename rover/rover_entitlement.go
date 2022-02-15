@@ -11,7 +11,7 @@ package rover
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -76,7 +76,7 @@ func (m RoverEntitlement) String() string {
 // Not recommended for calling this function directly
 func (m RoverEntitlement) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingRoverEntitlementLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingRoverEntitlementLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetRoverEntitlementLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -121,4 +121,15 @@ func GetRoverEntitlementLifecycleStateEnumStringValues() []string {
 		"INACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingRoverEntitlementLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingRoverEntitlementLifecycleStateEnum(val string) (RoverEntitlementLifecycleStateEnum, bool) {
+	mappingRoverEntitlementLifecycleStateEnumIgnoreCase := make(map[string]RoverEntitlementLifecycleStateEnum)
+	for k, v := range mappingRoverEntitlementLifecycleStateEnum {
+		mappingRoverEntitlementLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingRoverEntitlementLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

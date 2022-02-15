@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -92,16 +92,16 @@ func (request ListUpcomingScheduledJobsRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListUpcomingScheduledJobsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListUpcomingScheduledJobsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListUpcomingScheduledJobsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListUpcomingScheduledJobsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUpcomingScheduledJobsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListUpcomingScheduledJobsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListUpcomingScheduledJobsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUpcomingScheduledJobsLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListUpcomingScheduledJobsLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListUpcomingScheduledJobsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListUpcomingScheduledJobsOsFamilyEnum[string(request.OsFamily)]; !ok && request.OsFamily != "" {
+	if _, ok := GetMappingListUpcomingScheduledJobsOsFamilyEnum(string(request.OsFamily)); !ok && request.OsFamily != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for OsFamily: %s. Supported values are: %s.", request.OsFamily, strings.Join(GetListUpcomingScheduledJobsOsFamilyEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -170,6 +170,17 @@ func GetListUpcomingScheduledJobsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUpcomingScheduledJobsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUpcomingScheduledJobsSortOrderEnum(val string) (ListUpcomingScheduledJobsSortOrderEnum, bool) {
+	mappingListUpcomingScheduledJobsSortOrderEnumIgnoreCase := make(map[string]ListUpcomingScheduledJobsSortOrderEnum)
+	for k, v := range mappingListUpcomingScheduledJobsSortOrderEnum {
+		mappingListUpcomingScheduledJobsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUpcomingScheduledJobsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUpcomingScheduledJobsSortByEnum Enum with underlying type: string
 type ListUpcomingScheduledJobsSortByEnum string
 
@@ -199,6 +210,17 @@ func GetListUpcomingScheduledJobsSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListUpcomingScheduledJobsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUpcomingScheduledJobsSortByEnum(val string) (ListUpcomingScheduledJobsSortByEnum, bool) {
+	mappingListUpcomingScheduledJobsSortByEnumIgnoreCase := make(map[string]ListUpcomingScheduledJobsSortByEnum)
+	for k, v := range mappingListUpcomingScheduledJobsSortByEnum {
+		mappingListUpcomingScheduledJobsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUpcomingScheduledJobsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListUpcomingScheduledJobsLifecycleStateEnum Enum with underlying type: string
@@ -244,6 +266,17 @@ func GetListUpcomingScheduledJobsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListUpcomingScheduledJobsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUpcomingScheduledJobsLifecycleStateEnum(val string) (ListUpcomingScheduledJobsLifecycleStateEnum, bool) {
+	mappingListUpcomingScheduledJobsLifecycleStateEnumIgnoreCase := make(map[string]ListUpcomingScheduledJobsLifecycleStateEnum)
+	for k, v := range mappingListUpcomingScheduledJobsLifecycleStateEnum {
+		mappingListUpcomingScheduledJobsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUpcomingScheduledJobsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListUpcomingScheduledJobsOsFamilyEnum Enum with underlying type: string
 type ListUpcomingScheduledJobsOsFamilyEnum string
 
@@ -276,4 +309,15 @@ func GetListUpcomingScheduledJobsOsFamilyEnumStringValues() []string {
 		"WINDOWS",
 		"ALL",
 	}
+}
+
+// GetMappingListUpcomingScheduledJobsOsFamilyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListUpcomingScheduledJobsOsFamilyEnum(val string) (ListUpcomingScheduledJobsOsFamilyEnum, bool) {
+	mappingListUpcomingScheduledJobsOsFamilyEnumIgnoreCase := make(map[string]ListUpcomingScheduledJobsOsFamilyEnum)
+	for k, v := range mappingListUpcomingScheduledJobsOsFamilyEnum {
+		mappingListUpcomingScheduledJobsOsFamilyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListUpcomingScheduledJobsOsFamilyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,7 +11,7 @@ package dts
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -44,10 +44,10 @@ func (m UpdateTransferJobDetails) String() string {
 func (m UpdateTransferJobDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateTransferJobDetailsLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingUpdateTransferJobDetailsLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetUpdateTransferJobDetailsLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateTransferJobDetailsDeviceTypeEnum[string(m.DeviceType)]; !ok && m.DeviceType != "" {
+	if _, ok := GetMappingUpdateTransferJobDetailsDeviceTypeEnum(string(m.DeviceType)); !ok && m.DeviceType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DeviceType: %s. Supported values are: %s.", m.DeviceType, strings.Join(GetUpdateTransferJobDetailsDeviceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -84,6 +84,17 @@ func GetUpdateTransferJobDetailsLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingUpdateTransferJobDetailsLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateTransferJobDetailsLifecycleStateEnum(val string) (UpdateTransferJobDetailsLifecycleStateEnum, bool) {
+	mappingUpdateTransferJobDetailsLifecycleStateEnumIgnoreCase := make(map[string]UpdateTransferJobDetailsLifecycleStateEnum)
+	for k, v := range mappingUpdateTransferJobDetailsLifecycleStateEnum {
+		mappingUpdateTransferJobDetailsLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateTransferJobDetailsLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateTransferJobDetailsDeviceTypeEnum Enum with underlying type: string
 type UpdateTransferJobDetailsDeviceTypeEnum string
 
@@ -113,4 +124,15 @@ func GetUpdateTransferJobDetailsDeviceTypeEnumStringValues() []string {
 		"DISK",
 		"APPLIANCE",
 	}
+}
+
+// GetMappingUpdateTransferJobDetailsDeviceTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateTransferJobDetailsDeviceTypeEnum(val string) (UpdateTransferJobDetailsDeviceTypeEnum, bool) {
+	mappingUpdateTransferJobDetailsDeviceTypeEnumIgnoreCase := make(map[string]UpdateTransferJobDetailsDeviceTypeEnum)
+	for k, v := range mappingUpdateTransferJobDetailsDeviceTypeEnum {
+		mappingUpdateTransferJobDetailsDeviceTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateTransferJobDetailsDeviceTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

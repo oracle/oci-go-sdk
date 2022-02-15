@@ -12,6 +12,10 @@
 
 package applicationmigration
 
+import (
+	"strings"
+)
+
 // SourceLifecycleStatesEnum Enum with underlying type: string
 type SourceLifecycleStatesEnum string
 
@@ -53,4 +57,15 @@ func GetSourceLifecycleStatesEnumStringValues() []string {
 		"INACTIVE",
 		"DELETED",
 	}
+}
+
+// GetMappingSourceLifecycleStatesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingSourceLifecycleStatesEnum(val string) (SourceLifecycleStatesEnum, bool) {
+	mappingSourceLifecycleStatesEnumIgnoreCase := make(map[string]SourceLifecycleStatesEnum)
+	for k, v := range mappingSourceLifecycleStatesEnum {
+		mappingSourceLifecycleStatesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingSourceLifecycleStatesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

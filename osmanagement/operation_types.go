@@ -10,6 +10,10 @@
 
 package osmanagement
 
+import (
+	"strings"
+)
+
 // OperationTypesEnum Enum with underlying type: string
 type OperationTypesEnum string
 
@@ -45,4 +49,15 @@ func GetOperationTypesEnumStringValues() []string {
 		"REMOVE",
 		"UPDATEALL",
 	}
+}
+
+// GetMappingOperationTypesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingOperationTypesEnum(val string) (OperationTypesEnum, bool) {
+	mappingOperationTypesEnumIgnoreCase := make(map[string]OperationTypesEnum)
+	for k, v := range mappingOperationTypesEnum {
+		mappingOperationTypesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingOperationTypesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

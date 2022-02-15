@@ -11,7 +11,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -71,7 +71,7 @@ func (m TagDefault) String() string {
 func (m TagDefault) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingTagDefaultLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingTagDefaultLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetTagDefaultLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -106,4 +106,15 @@ func GetTagDefaultLifecycleStateEnumStringValues() []string {
 	return []string{
 		"ACTIVE",
 	}
+}
+
+// GetMappingTagDefaultLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTagDefaultLifecycleStateEnum(val string) (TagDefaultLifecycleStateEnum, bool) {
+	mappingTagDefaultLifecycleStateEnumIgnoreCase := make(map[string]TagDefaultLifecycleStateEnum)
+	for k, v := range mappingTagDefaultLifecycleStateEnum {
+		mappingTagDefaultLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTagDefaultLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

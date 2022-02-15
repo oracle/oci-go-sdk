@@ -12,7 +12,7 @@ package devops
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -183,7 +183,7 @@ func (m connection) String() string {
 func (m connection) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingConnectionLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingConnectionLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetConnectionLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -220,6 +220,17 @@ func GetConnectionLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingConnectionLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConnectionLifecycleStateEnum(val string) (ConnectionLifecycleStateEnum, bool) {
+	mappingConnectionLifecycleStateEnumIgnoreCase := make(map[string]ConnectionLifecycleStateEnum)
+	for k, v := range mappingConnectionLifecycleStateEnum {
+		mappingConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConnectionLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ConnectionConnectionTypeEnum Enum with underlying type: string
 type ConnectionConnectionTypeEnum string
 
@@ -249,4 +260,15 @@ func GetConnectionConnectionTypeEnumStringValues() []string {
 		"GITHUB_ACCESS_TOKEN",
 		"GITLAB_ACCESS_TOKEN",
 	}
+}
+
+// GetMappingConnectionConnectionTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingConnectionConnectionTypeEnum(val string) (ConnectionConnectionTypeEnum, bool) {
+	mappingConnectionConnectionTypeEnumIgnoreCase := make(map[string]ConnectionConnectionTypeEnum)
+	for k, v := range mappingConnectionConnectionTypeEnum {
+		mappingConnectionConnectionTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingConnectionConnectionTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -6,7 +6,7 @@ package datacatalog
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -142,22 +142,22 @@ func (request ListEntitiesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListEntitiesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListEntitiesLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingListEntitiesLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetListEntitiesLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEntitiesHarvestStatusEnum[string(request.HarvestStatus)]; !ok && request.HarvestStatus != "" {
+	if _, ok := GetMappingListEntitiesHarvestStatusEnum(string(request.HarvestStatus)); !ok && request.HarvestStatus != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for HarvestStatus: %s. Supported values are: %s.", request.HarvestStatus, strings.Join(GetListEntitiesHarvestStatusEnumStringValues(), ",")))
 	}
 	for _, val := range request.Fields {
-		if _, ok := mappingListEntitiesFieldsEnum[string(val)]; !ok && val != "" {
+		if _, ok := GetMappingListEntitiesFieldsEnum(string(val)); !ok && val != "" {
 			errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Fields: %s. Supported values are: %s.", val, strings.Join(GetListEntitiesFieldsEnumStringValues(), ",")))
 		}
 	}
 
-	if _, ok := mappingListEntitiesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListEntitiesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListEntitiesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEntitiesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListEntitiesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListEntitiesSortOrderEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -241,6 +241,17 @@ func GetListEntitiesLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingListEntitiesLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEntitiesLifecycleStateEnum(val string) (ListEntitiesLifecycleStateEnum, bool) {
+	mappingListEntitiesLifecycleStateEnumIgnoreCase := make(map[string]ListEntitiesLifecycleStateEnum)
+	for k, v := range mappingListEntitiesLifecycleStateEnum {
+		mappingListEntitiesLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEntitiesLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListEntitiesHarvestStatusEnum Enum with underlying type: string
 type ListEntitiesHarvestStatusEnum string
 
@@ -276,6 +287,17 @@ func GetListEntitiesHarvestStatusEnumStringValues() []string {
 		"IN_PROGRESS",
 		"DEFERRED",
 	}
+}
+
+// GetMappingListEntitiesHarvestStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEntitiesHarvestStatusEnum(val string) (ListEntitiesHarvestStatusEnum, bool) {
+	mappingListEntitiesHarvestStatusEnumIgnoreCase := make(map[string]ListEntitiesHarvestStatusEnum)
+	for k, v := range mappingListEntitiesHarvestStatusEnum {
+		mappingListEntitiesHarvestStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEntitiesHarvestStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // ListEntitiesFieldsEnum Enum with underlying type: string
@@ -342,6 +364,17 @@ func GetListEntitiesFieldsEnumStringValues() []string {
 	}
 }
 
+// GetMappingListEntitiesFieldsEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEntitiesFieldsEnum(val string) (ListEntitiesFieldsEnum, bool) {
+	mappingListEntitiesFieldsEnumIgnoreCase := make(map[string]ListEntitiesFieldsEnum)
+	for k, v := range mappingListEntitiesFieldsEnum {
+		mappingListEntitiesFieldsEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEntitiesFieldsEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListEntitiesSortByEnum Enum with underlying type: string
 type ListEntitiesSortByEnum string
 
@@ -373,6 +406,17 @@ func GetListEntitiesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListEntitiesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEntitiesSortByEnum(val string) (ListEntitiesSortByEnum, bool) {
+	mappingListEntitiesSortByEnumIgnoreCase := make(map[string]ListEntitiesSortByEnum)
+	for k, v := range mappingListEntitiesSortByEnum {
+		mappingListEntitiesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEntitiesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListEntitiesSortOrderEnum Enum with underlying type: string
 type ListEntitiesSortOrderEnum string
 
@@ -402,4 +446,15 @@ func GetListEntitiesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListEntitiesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEntitiesSortOrderEnum(val string) (ListEntitiesSortOrderEnum, bool) {
+	mappingListEntitiesSortOrderEnumIgnoreCase := make(map[string]ListEntitiesSortOrderEnum)
+	for k, v := range mappingListEntitiesSortOrderEnum {
+		mappingListEntitiesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEntitiesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

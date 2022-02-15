@@ -6,7 +6,7 @@ package identity
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -89,16 +89,16 @@ func (request ListIdentityProvidersRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListIdentityProvidersRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListIdentityProvidersProtocolEnum[string(request.Protocol)]; !ok && request.Protocol != "" {
+	if _, ok := GetMappingListIdentityProvidersProtocolEnum(string(request.Protocol)); !ok && request.Protocol != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Protocol: %s. Supported values are: %s.", request.Protocol, strings.Join(GetListIdentityProvidersProtocolEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListIdentityProvidersSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListIdentityProvidersSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListIdentityProvidersSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListIdentityProvidersSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListIdentityProvidersSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListIdentityProvidersSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingIdentityProviderLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingIdentityProviderLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetIdentityProviderLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -163,6 +163,17 @@ func GetListIdentityProvidersProtocolEnumStringValues() []string {
 	}
 }
 
+// GetMappingListIdentityProvidersProtocolEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListIdentityProvidersProtocolEnum(val string) (ListIdentityProvidersProtocolEnum, bool) {
+	mappingListIdentityProvidersProtocolEnumIgnoreCase := make(map[string]ListIdentityProvidersProtocolEnum)
+	for k, v := range mappingListIdentityProvidersProtocolEnum {
+		mappingListIdentityProvidersProtocolEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListIdentityProvidersProtocolEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListIdentityProvidersSortByEnum Enum with underlying type: string
 type ListIdentityProvidersSortByEnum string
 
@@ -194,6 +205,17 @@ func GetListIdentityProvidersSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListIdentityProvidersSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListIdentityProvidersSortByEnum(val string) (ListIdentityProvidersSortByEnum, bool) {
+	mappingListIdentityProvidersSortByEnumIgnoreCase := make(map[string]ListIdentityProvidersSortByEnum)
+	for k, v := range mappingListIdentityProvidersSortByEnum {
+		mappingListIdentityProvidersSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListIdentityProvidersSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListIdentityProvidersSortOrderEnum Enum with underlying type: string
 type ListIdentityProvidersSortOrderEnum string
 
@@ -223,4 +245,15 @@ func GetListIdentityProvidersSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListIdentityProvidersSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListIdentityProvidersSortOrderEnum(val string) (ListIdentityProvidersSortOrderEnum, bool) {
+	mappingListIdentityProvidersSortOrderEnumIgnoreCase := make(map[string]ListIdentityProvidersSortOrderEnum)
+	for k, v := range mappingListIdentityProvidersSortOrderEnum {
+		mappingListIdentityProvidersSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListIdentityProvidersSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -11,6 +11,10 @@
 
 package operatoraccesscontrol
 
+import (
+	"strings"
+)
+
 // InfrastrcutureLayersEnum Enum with underlying type: string
 type InfrastrcutureLayersEnum string
 
@@ -43,4 +47,15 @@ func GetInfrastrcutureLayersEnumStringValues() []string {
 		"CELLSERVER",
 		"CPS",
 	}
+}
+
+// GetMappingInfrastrcutureLayersEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingInfrastrcutureLayersEnum(val string) (InfrastrcutureLayersEnum, bool) {
+	mappingInfrastrcutureLayersEnumIgnoreCase := make(map[string]InfrastrcutureLayersEnum)
+	for k, v := range mappingInfrastrcutureLayersEnum {
+		mappingInfrastrcutureLayersEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingInfrastrcutureLayersEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

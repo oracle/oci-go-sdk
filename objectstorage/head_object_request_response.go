@@ -6,7 +6,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -214,6 +214,17 @@ func GetHeadObjectStorageTierEnumStringValues() []string {
 	}
 }
 
+// GetMappingHeadObjectStorageTierEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHeadObjectStorageTierEnum(val string) (HeadObjectStorageTierEnum, bool) {
+	mappingHeadObjectStorageTierEnumIgnoreCase := make(map[string]HeadObjectStorageTierEnum)
+	for k, v := range mappingHeadObjectStorageTierEnum {
+		mappingHeadObjectStorageTierEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHeadObjectStorageTierEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // HeadObjectArchivalStateEnum Enum with underlying type: string
 type HeadObjectArchivalStateEnum string
 
@@ -246,4 +257,15 @@ func GetHeadObjectArchivalStateEnumStringValues() []string {
 		"Restoring",
 		"Restored",
 	}
+}
+
+// GetMappingHeadObjectArchivalStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHeadObjectArchivalStateEnum(val string) (HeadObjectArchivalStateEnum, bool) {
+	mappingHeadObjectArchivalStateEnumIgnoreCase := make(map[string]HeadObjectArchivalStateEnum)
+	for k, v := range mappingHeadObjectArchivalStateEnum {
+		mappingHeadObjectArchivalStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHeadObjectArchivalStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

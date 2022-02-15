@@ -9,6 +9,10 @@
 
 package loganalytics
 
+import (
+	"strings"
+)
+
 // TaskTypeEnum Enum with underlying type: string
 type TaskTypeEnum string
 
@@ -44,4 +48,15 @@ func GetTaskTypeEnumStringValues() []string {
 		"PURGE",
 		"ACCELERATION_MAINTENANCE",
 	}
+}
+
+// GetMappingTaskTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingTaskTypeEnum(val string) (TaskTypeEnum, bool) {
+	mappingTaskTypeEnumIgnoreCase := make(map[string]TaskTypeEnum)
+	for k, v := range mappingTaskTypeEnum {
+		mappingTaskTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingTaskTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

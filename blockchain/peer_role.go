@@ -11,7 +11,7 @@ package blockchain
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -32,7 +32,7 @@ func (m PeerRole) String() string {
 func (m PeerRole) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingPeerRoleRoleEnum[string(m.Role)]; !ok && m.Role != "" {
+	if _, ok := GetMappingPeerRoleRoleEnum(string(m.Role)); !ok && m.Role != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Role: %s. Supported values are: %s.", m.Role, strings.Join(GetPeerRoleRoleEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -70,4 +70,15 @@ func GetPeerRoleRoleEnumStringValues() []string {
 		"MEMBER",
 		"ADMIN",
 	}
+}
+
+// GetMappingPeerRoleRoleEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPeerRoleRoleEnum(val string) (PeerRoleRoleEnum, bool) {
+	mappingPeerRoleRoleEnumIgnoreCase := make(map[string]PeerRoleRoleEnum)
+	for k, v := range mappingPeerRoleRoleEnum {
+		mappingPeerRoleRoleEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPeerRoleRoleEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

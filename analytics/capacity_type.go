@@ -9,6 +9,10 @@
 
 package analytics
 
+import (
+	"strings"
+)
+
 // CapacityTypeEnum Enum with underlying type: string
 type CapacityTypeEnum string
 
@@ -38,4 +42,15 @@ func GetCapacityTypeEnumStringValues() []string {
 		"OLPU_COUNT",
 		"USER_COUNT",
 	}
+}
+
+// GetMappingCapacityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCapacityTypeEnum(val string) (CapacityTypeEnum, bool) {
+	mappingCapacityTypeEnumIgnoreCase := make(map[string]CapacityTypeEnum)
+	for k, v := range mappingCapacityTypeEnum {
+		mappingCapacityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCapacityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

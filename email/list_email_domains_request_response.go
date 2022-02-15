@@ -6,7 +6,7 @@ package email
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -89,13 +89,13 @@ func (request ListEmailDomainsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListEmailDomainsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListEmailDomainsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListEmailDomainsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListEmailDomainsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingEmailDomainLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingEmailDomainLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetEmailDomainLifecycleStateEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListEmailDomainsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListEmailDomainsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListEmailDomainsSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -162,6 +162,17 @@ func GetListEmailDomainsSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListEmailDomainsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEmailDomainsSortOrderEnum(val string) (ListEmailDomainsSortOrderEnum, bool) {
+	mappingListEmailDomainsSortOrderEnumIgnoreCase := make(map[string]ListEmailDomainsSortOrderEnum)
+	for k, v := range mappingListEmailDomainsSortOrderEnum {
+		mappingListEmailDomainsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEmailDomainsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListEmailDomainsSortByEnum Enum with underlying type: string
 type ListEmailDomainsSortByEnum string
 
@@ -194,4 +205,15 @@ func GetListEmailDomainsSortByEnumStringValues() []string {
 		"ID",
 		"NAME",
 	}
+}
+
+// GetMappingListEmailDomainsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListEmailDomainsSortByEnum(val string) (ListEmailDomainsSortByEnum, bool) {
+	mappingListEmailDomainsSortByEnumIgnoreCase := make(map[string]ListEmailDomainsSortByEnum)
+	for k, v := range mappingListEmailDomainsSortByEnum {
+		mappingListEmailDomainsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListEmailDomainsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

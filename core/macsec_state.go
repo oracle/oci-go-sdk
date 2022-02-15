@@ -13,6 +13,10 @@
 
 package core
 
+import (
+	"strings"
+)
+
 // MacsecStateEnum Enum with underlying type: string
 type MacsecStateEnum string
 
@@ -42,4 +46,15 @@ func GetMacsecStateEnumStringValues() []string {
 		"ENABLED",
 		"DISABLED",
 	}
+}
+
+// GetMappingMacsecStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingMacsecStateEnum(val string) (MacsecStateEnum, bool) {
+	mappingMacsecStateEnumIgnoreCase := make(map[string]MacsecStateEnum)
+	for k, v := range mappingMacsecStateEnum {
+		mappingMacsecStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingMacsecStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

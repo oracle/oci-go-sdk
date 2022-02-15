@@ -12,8 +12,8 @@ package dataintegration
 import (
 	"context"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
-	"github.com/oracle/oci-go-sdk/v57/common/auth"
+	"github.com/oracle/oci-go-sdk/v58/common"
+	"github.com/oracle/oci-go-sdk/v58/common/auth"
 	"net/http"
 )
 

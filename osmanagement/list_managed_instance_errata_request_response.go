@@ -6,7 +6,7 @@ package osmanagement
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -79,10 +79,10 @@ func (request ListManagedInstanceErrataRequest) RetryPolicy() *common.RetryPolic
 // Not recommended for calling this function directly
 func (request ListManagedInstanceErrataRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListManagedInstanceErrataSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListManagedInstanceErrataSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListManagedInstanceErrataSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListManagedInstanceErrataSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListManagedInstanceErrataSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListManagedInstanceErrataSortByEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -151,6 +151,17 @@ func GetListManagedInstanceErrataSortOrderEnumStringValues() []string {
 	}
 }
 
+// GetMappingListManagedInstanceErrataSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedInstanceErrataSortOrderEnum(val string) (ListManagedInstanceErrataSortOrderEnum, bool) {
+	mappingListManagedInstanceErrataSortOrderEnumIgnoreCase := make(map[string]ListManagedInstanceErrataSortOrderEnum)
+	for k, v := range mappingListManagedInstanceErrataSortOrderEnum {
+		mappingListManagedInstanceErrataSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedInstanceErrataSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListManagedInstanceErrataSortByEnum Enum with underlying type: string
 type ListManagedInstanceErrataSortByEnum string
 
@@ -180,4 +191,15 @@ func GetListManagedInstanceErrataSortByEnumStringValues() []string {
 		"TIMECREATED",
 		"DISPLAYNAME",
 	}
+}
+
+// GetMappingListManagedInstanceErrataSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListManagedInstanceErrataSortByEnum(val string) (ListManagedInstanceErrataSortByEnum, bool) {
+	mappingListManagedInstanceErrataSortByEnumIgnoreCase := make(map[string]ListManagedInstanceErrataSortByEnum)
+	for k, v := range mappingListManagedInstanceErrataSortByEnum {
+		mappingListManagedInstanceErrataSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListManagedInstanceErrataSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

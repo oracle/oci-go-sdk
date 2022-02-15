@@ -11,7 +11,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -195,17 +195,17 @@ func (m DbSystemSummary) String() string {
 // Not recommended for calling this function directly
 func (m DbSystemSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDbSystemSummaryDatabaseEditionEnum[string(m.DatabaseEdition)]; !ok && m.DatabaseEdition != "" {
+	if _, ok := GetMappingDbSystemSummaryDatabaseEditionEnum(string(m.DatabaseEdition)); !ok && m.DatabaseEdition != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DatabaseEdition: %s. Supported values are: %s.", m.DatabaseEdition, strings.Join(GetDbSystemSummaryDatabaseEditionEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDbSystemSummaryLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDbSystemSummaryLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDbSystemSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingDbSystemSummaryDiskRedundancyEnum[string(m.DiskRedundancy)]; !ok && m.DiskRedundancy != "" {
+	if _, ok := GetMappingDbSystemSummaryDiskRedundancyEnum(string(m.DiskRedundancy)); !ok && m.DiskRedundancy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for DiskRedundancy: %s. Supported values are: %s.", m.DiskRedundancy, strings.Join(GetDbSystemSummaryDiskRedundancyEnumStringValues(), ",")))
 	}
-	if _, ok := mappingDbSystemSummaryLicenseModelEnum[string(m.LicenseModel)]; !ok && m.LicenseModel != "" {
+	if _, ok := GetMappingDbSystemSummaryLicenseModelEnum(string(m.LicenseModel)); !ok && m.LicenseModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LicenseModel: %s. Supported values are: %s.", m.LicenseModel, strings.Join(GetDbSystemSummaryLicenseModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -249,6 +249,17 @@ func GetDbSystemSummaryDatabaseEditionEnumStringValues() []string {
 		"ENTERPRISE_EDITION_HIGH_PERFORMANCE",
 		"ENTERPRISE_EDITION_EXTREME_PERFORMANCE",
 	}
+}
+
+// GetMappingDbSystemSummaryDatabaseEditionEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbSystemSummaryDatabaseEditionEnum(val string) (DbSystemSummaryDatabaseEditionEnum, bool) {
+	mappingDbSystemSummaryDatabaseEditionEnumIgnoreCase := make(map[string]DbSystemSummaryDatabaseEditionEnum)
+	for k, v := range mappingDbSystemSummaryDatabaseEditionEnum {
+		mappingDbSystemSummaryDatabaseEditionEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbSystemSummaryDatabaseEditionEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
 
 // DbSystemSummaryLifecycleStateEnum Enum with underlying type: string
@@ -303,6 +314,17 @@ func GetDbSystemSummaryLifecycleStateEnumStringValues() []string {
 	}
 }
 
+// GetMappingDbSystemSummaryLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbSystemSummaryLifecycleStateEnum(val string) (DbSystemSummaryLifecycleStateEnum, bool) {
+	mappingDbSystemSummaryLifecycleStateEnumIgnoreCase := make(map[string]DbSystemSummaryLifecycleStateEnum)
+	for k, v := range mappingDbSystemSummaryLifecycleStateEnum {
+		mappingDbSystemSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbSystemSummaryLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DbSystemSummaryDiskRedundancyEnum Enum with underlying type: string
 type DbSystemSummaryDiskRedundancyEnum string
 
@@ -334,6 +356,17 @@ func GetDbSystemSummaryDiskRedundancyEnumStringValues() []string {
 	}
 }
 
+// GetMappingDbSystemSummaryDiskRedundancyEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbSystemSummaryDiskRedundancyEnum(val string) (DbSystemSummaryDiskRedundancyEnum, bool) {
+	mappingDbSystemSummaryDiskRedundancyEnumIgnoreCase := make(map[string]DbSystemSummaryDiskRedundancyEnum)
+	for k, v := range mappingDbSystemSummaryDiskRedundancyEnum {
+		mappingDbSystemSummaryDiskRedundancyEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbSystemSummaryDiskRedundancyEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // DbSystemSummaryLicenseModelEnum Enum with underlying type: string
 type DbSystemSummaryLicenseModelEnum string
 
@@ -363,4 +396,15 @@ func GetDbSystemSummaryLicenseModelEnumStringValues() []string {
 		"LICENSE_INCLUDED",
 		"BRING_YOUR_OWN_LICENSE",
 	}
+}
+
+// GetMappingDbSystemSummaryLicenseModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDbSystemSummaryLicenseModelEnum(val string) (DbSystemSummaryLicenseModelEnum, bool) {
+	mappingDbSystemSummaryLicenseModelEnumIgnoreCase := make(map[string]DbSystemSummaryLicenseModelEnum)
+	for k, v := range mappingDbSystemSummaryLicenseModelEnum {
+		mappingDbSystemSummaryLicenseModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDbSystemSummaryLicenseModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -12,7 +12,7 @@ package dataintegration
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -277,4 +277,15 @@ func GetDataAssetModelTypeEnumStringValues() []string {
 		"FUSION_APP_DATA_ASSET",
 		"AMAZON_S3_DATA_ASSET",
 	}
+}
+
+// GetMappingDataAssetModelTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDataAssetModelTypeEnum(val string) (DataAssetModelTypeEnum, bool) {
+	mappingDataAssetModelTypeEnumIgnoreCase := make(map[string]DataAssetModelTypeEnum)
+	for k, v := range mappingDataAssetModelTypeEnum {
+		mappingDataAssetModelTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDataAssetModelTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

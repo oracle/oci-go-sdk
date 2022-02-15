@@ -12,7 +12,7 @@ package visualbuilder
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -64,7 +64,7 @@ func (m CreateVbInstanceDetails) String() string {
 func (m CreateVbInstanceDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreateVbInstanceDetailsConsumptionModelEnum[string(m.ConsumptionModel)]; !ok && m.ConsumptionModel != "" {
+	if _, ok := GetMappingCreateVbInstanceDetailsConsumptionModelEnum(string(m.ConsumptionModel)); !ok && m.ConsumptionModel != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ConsumptionModel: %s. Supported values are: %s.", m.ConsumptionModel, strings.Join(GetCreateVbInstanceDetailsConsumptionModelEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -105,4 +105,15 @@ func GetCreateVbInstanceDetailsConsumptionModelEnumStringValues() []string {
 		"GOV",
 		"VB4SAAS",
 	}
+}
+
+// GetMappingCreateVbInstanceDetailsConsumptionModelEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingCreateVbInstanceDetailsConsumptionModelEnum(val string) (CreateVbInstanceDetailsConsumptionModelEnum, bool) {
+	mappingCreateVbInstanceDetailsConsumptionModelEnumIgnoreCase := make(map[string]CreateVbInstanceDetailsConsumptionModelEnum)
+	for k, v := range mappingCreateVbInstanceDetailsConsumptionModelEnum {
+		mappingCreateVbInstanceDetailsConsumptionModelEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingCreateVbInstanceDetailsConsumptionModelEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

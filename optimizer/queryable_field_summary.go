@@ -13,7 +13,7 @@ package optimizer
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -39,7 +39,7 @@ func (m QueryableFieldSummary) String() string {
 // Not recommended for calling this function directly
 func (m QueryableFieldSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingQueryableFieldSummaryFieldTypeEnum[string(m.FieldType)]; !ok && m.FieldType != "" {
+	if _, ok := GetMappingQueryableFieldSummaryFieldTypeEnum(string(m.FieldType)); !ok && m.FieldType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for FieldType: %s. Supported values are: %s.", m.FieldType, strings.Join(GetQueryableFieldSummaryFieldTypeEnumStringValues(), ",")))
 	}
 
@@ -87,4 +87,15 @@ func GetQueryableFieldSummaryFieldTypeEnumStringValues() []string {
 		"DATE_TIME",
 		"OBJECT",
 	}
+}
+
+// GetMappingQueryableFieldSummaryFieldTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingQueryableFieldSummaryFieldTypeEnum(val string) (QueryableFieldSummaryFieldTypeEnum, bool) {
+	mappingQueryableFieldSummaryFieldTypeEnumIgnoreCase := make(map[string]QueryableFieldSummaryFieldTypeEnum)
+	for k, v := range mappingQueryableFieldSummaryFieldTypeEnum {
+		mappingQueryableFieldSummaryFieldTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingQueryableFieldSummaryFieldTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

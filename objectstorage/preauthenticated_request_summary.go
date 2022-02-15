@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -54,11 +54,11 @@ func (m PreauthenticatedRequestSummary) String() string {
 // Not recommended for calling this function directly
 func (m PreauthenticatedRequestSummary) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingPreauthenticatedRequestSummaryAccessTypeEnum[string(m.AccessType)]; !ok && m.AccessType != "" {
+	if _, ok := GetMappingPreauthenticatedRequestSummaryAccessTypeEnum(string(m.AccessType)); !ok && m.AccessType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AccessType: %s. Supported values are: %s.", m.AccessType, strings.Join(GetPreauthenticatedRequestSummaryAccessTypeEnumStringValues(), ",")))
 	}
 
-	if _, ok := mappingPreauthenticatedRequestBucketListingActionEnum[string(m.BucketListingAction)]; !ok && m.BucketListingAction != "" {
+	if _, ok := GetMappingPreauthenticatedRequestBucketListingActionEnum(string(m.BucketListingAction)); !ok && m.BucketListingAction != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for BucketListingAction: %s. Supported values are: %s.", m.BucketListingAction, strings.Join(GetPreauthenticatedRequestBucketListingActionEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -108,4 +108,15 @@ func GetPreauthenticatedRequestSummaryAccessTypeEnumStringValues() []string {
 		"AnyObjectRead",
 		"AnyObjectReadWrite",
 	}
+}
+
+// GetMappingPreauthenticatedRequestSummaryAccessTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingPreauthenticatedRequestSummaryAccessTypeEnum(val string) (PreauthenticatedRequestSummaryAccessTypeEnum, bool) {
+	mappingPreauthenticatedRequestSummaryAccessTypeEnumIgnoreCase := make(map[string]PreauthenticatedRequestSummaryAccessTypeEnum)
+	for k, v := range mappingPreauthenticatedRequestSummaryAccessTypeEnum {
+		mappingPreauthenticatedRequestSummaryAccessTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingPreauthenticatedRequestSummaryAccessTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

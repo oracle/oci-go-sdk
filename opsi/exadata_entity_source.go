@@ -11,6 +11,10 @@
 
 package opsi
 
+import (
+	"strings"
+)
+
 // ExadataEntitySourceEnum Enum with underlying type: string
 type ExadataEntitySourceEnum string
 
@@ -37,4 +41,15 @@ func GetExadataEntitySourceEnumStringValues() []string {
 	return []string{
 		"EM_MANAGED_EXTERNAL_EXADATA",
 	}
+}
+
+// GetMappingExadataEntitySourceEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingExadataEntitySourceEnum(val string) (ExadataEntitySourceEnum, bool) {
+	mappingExadataEntitySourceEnumIgnoreCase := make(map[string]ExadataEntitySourceEnum)
+	for k, v := range mappingExadataEntitySourceEnum {
+		mappingExadataEntitySourceEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingExadataEntitySourceEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

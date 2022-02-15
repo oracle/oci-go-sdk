@@ -16,7 +16,7 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -91,7 +91,7 @@ func (m DrgAttachment) String() string {
 // Not recommended for calling this function directly
 func (m DrgAttachment) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingDrgAttachmentLifecycleStateEnum[string(m.LifecycleState)]; !ok && m.LifecycleState != "" {
+	if _, ok := GetMappingDrgAttachmentLifecycleStateEnum(string(m.LifecycleState)); !ok && m.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", m.LifecycleState, strings.Join(GetDrgAttachmentLifecycleStateEnumStringValues(), ",")))
 	}
 
@@ -199,4 +199,15 @@ func GetDrgAttachmentLifecycleStateEnumStringValues() []string {
 		"DETACHING",
 		"DETACHED",
 	}
+}
+
+// GetMappingDrgAttachmentLifecycleStateEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingDrgAttachmentLifecycleStateEnum(val string) (DrgAttachmentLifecycleStateEnum, bool) {
+	mappingDrgAttachmentLifecycleStateEnumIgnoreCase := make(map[string]DrgAttachmentLifecycleStateEnum)
+	for k, v := range mappingDrgAttachmentLifecycleStateEnum {
+		mappingDrgAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingDrgAttachmentLifecycleStateEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

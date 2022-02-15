@@ -9,6 +9,10 @@
 
 package waas
 
+import (
+	"strings"
+)
+
 // WorkRequestStatusValuesEnum Enum with underlying type: string
 type WorkRequestStatusValuesEnum string
 
@@ -50,4 +54,15 @@ func GetWorkRequestStatusValuesEnumStringValues() []string {
 		"CANCELING",
 		"CANCELED",
 	}
+}
+
+// GetMappingWorkRequestStatusValuesEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingWorkRequestStatusValuesEnum(val string) (WorkRequestStatusValuesEnum, bool) {
+	mappingWorkRequestStatusValuesEnumIgnoreCase := make(map[string]WorkRequestStatusValuesEnum)
+	for k, v := range mappingWorkRequestStatusValuesEnum {
+		mappingWorkRequestStatusValuesEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingWorkRequestStatusValuesEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

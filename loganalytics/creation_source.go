@@ -11,7 +11,7 @@ package loganalytics
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -37,7 +37,7 @@ func (m CreationSource) String() string {
 func (m CreationSource) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingCreationSourceTypeEnum[string(m.Type)]; !ok && m.Type != "" {
+	if _, ok := GetMappingCreationSourceTypeEnum(string(m.Type)); !ok && m.Type != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Type: %s. Supported values are: %s.", m.Type, strings.Join(GetCreationSourceTypeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {

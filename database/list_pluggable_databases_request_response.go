@@ -6,7 +6,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -82,13 +82,13 @@ func (request ListPluggableDatabasesRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListPluggableDatabasesRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListPluggableDatabasesSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListPluggableDatabasesSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListPluggableDatabasesSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListPluggableDatabasesSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListPluggableDatabasesSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListPluggableDatabasesSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingPluggableDatabaseSummaryLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingPluggableDatabaseSummaryLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetPluggableDatabaseSummaryLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -157,6 +157,17 @@ func GetListPluggableDatabasesSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListPluggableDatabasesSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPluggableDatabasesSortByEnum(val string) (ListPluggableDatabasesSortByEnum, bool) {
+	mappingListPluggableDatabasesSortByEnumIgnoreCase := make(map[string]ListPluggableDatabasesSortByEnum)
+	for k, v := range mappingListPluggableDatabasesSortByEnum {
+		mappingListPluggableDatabasesSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPluggableDatabasesSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListPluggableDatabasesSortOrderEnum Enum with underlying type: string
 type ListPluggableDatabasesSortOrderEnum string
 
@@ -186,4 +197,15 @@ func GetListPluggableDatabasesSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListPluggableDatabasesSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListPluggableDatabasesSortOrderEnum(val string) (ListPluggableDatabasesSortOrderEnum, bool) {
+	mappingListPluggableDatabasesSortOrderEnumIgnoreCase := make(map[string]ListPluggableDatabasesSortOrderEnum)
+	for k, v := range mappingListPluggableDatabasesSortOrderEnum {
+		mappingListPluggableDatabasesSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListPluggableDatabasesSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

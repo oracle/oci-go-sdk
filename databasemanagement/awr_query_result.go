@@ -14,7 +14,7 @@ package databasemanagement
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -227,4 +227,15 @@ func GetAwrQueryResultAwrResultTypeEnumStringValues() []string {
 		"AWRDB_DB_REPORT",
 		"AWRDB_SQL_REPORT",
 	}
+}
+
+// GetMappingAwrQueryResultAwrResultTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingAwrQueryResultAwrResultTypeEnum(val string) (AwrQueryResultAwrResultTypeEnum, bool) {
+	mappingAwrQueryResultAwrResultTypeEnumIgnoreCase := make(map[string]AwrQueryResultAwrResultTypeEnum)
+	for k, v := range mappingAwrQueryResultAwrResultTypeEnum {
+		mappingAwrQueryResultAwrResultTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingAwrQueryResultAwrResultTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

@@ -13,7 +13,7 @@ package objectstorage
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -84,13 +84,13 @@ func (m UpdateBucketDetails) String() string {
 func (m UpdateBucketDetails) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingUpdateBucketDetailsPublicAccessTypeEnum[string(m.PublicAccessType)]; !ok && m.PublicAccessType != "" {
+	if _, ok := GetMappingUpdateBucketDetailsPublicAccessTypeEnum(string(m.PublicAccessType)); !ok && m.PublicAccessType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for PublicAccessType: %s. Supported values are: %s.", m.PublicAccessType, strings.Join(GetUpdateBucketDetailsPublicAccessTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingUpdateBucketDetailsVersioningEnum[string(m.Versioning)]; !ok && m.Versioning != "" {
+	if _, ok := GetMappingUpdateBucketDetailsVersioningEnum(string(m.Versioning)); !ok && m.Versioning != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for Versioning: %s. Supported values are: %s.", m.Versioning, strings.Join(GetUpdateBucketDetailsVersioningEnumStringValues(), ",")))
 	}
-	if _, ok := mappingBucketAutoTieringEnum[string(m.AutoTiering)]; !ok && m.AutoTiering != "" {
+	if _, ok := GetMappingBucketAutoTieringEnum(string(m.AutoTiering)); !ok && m.AutoTiering != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for AutoTiering: %s. Supported values are: %s.", m.AutoTiering, strings.Join(GetBucketAutoTieringEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -133,6 +133,17 @@ func GetUpdateBucketDetailsPublicAccessTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingUpdateBucketDetailsPublicAccessTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateBucketDetailsPublicAccessTypeEnum(val string) (UpdateBucketDetailsPublicAccessTypeEnum, bool) {
+	mappingUpdateBucketDetailsPublicAccessTypeEnumIgnoreCase := make(map[string]UpdateBucketDetailsPublicAccessTypeEnum)
+	for k, v := range mappingUpdateBucketDetailsPublicAccessTypeEnum {
+		mappingUpdateBucketDetailsPublicAccessTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateBucketDetailsPublicAccessTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // UpdateBucketDetailsVersioningEnum Enum with underlying type: string
 type UpdateBucketDetailsVersioningEnum string
 
@@ -162,4 +173,15 @@ func GetUpdateBucketDetailsVersioningEnumStringValues() []string {
 		"Enabled",
 		"Suspended",
 	}
+}
+
+// GetMappingUpdateBucketDetailsVersioningEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingUpdateBucketDetailsVersioningEnum(val string) (UpdateBucketDetailsVersioningEnum, bool) {
+	mappingUpdateBucketDetailsVersioningEnumIgnoreCase := make(map[string]UpdateBucketDetailsVersioningEnum)
+	for k, v := range mappingUpdateBucketDetailsVersioningEnum {
+		mappingUpdateBucketDetailsVersioningEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingUpdateBucketDetailsVersioningEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

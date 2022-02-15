@@ -9,6 +9,10 @@
 
 package cloudguard
 
+import (
+	"strings"
+)
+
 // EventStatusEnum Enum with underlying type: string
 type EventStatusEnum string
 
@@ -50,4 +54,15 @@ func GetEventStatusEnumStringValues() []string {
 		"DISMISS",
 		"DELETE",
 	}
+}
+
+// GetMappingEventStatusEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingEventStatusEnum(val string) (EventStatusEnum, bool) {
+	mappingEventStatusEnumIgnoreCase := make(map[string]EventStatusEnum)
+	for k, v := range mappingEventStatusEnum {
+		mappingEventStatusEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingEventStatusEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

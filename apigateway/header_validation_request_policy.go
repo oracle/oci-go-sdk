@@ -13,7 +13,7 @@ package apigateway
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -41,7 +41,7 @@ func (m HeaderValidationRequestPolicy) String() string {
 func (m HeaderValidationRequestPolicy) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
 
-	if _, ok := mappingHeaderValidationRequestPolicyValidationModeEnum[string(m.ValidationMode)]; !ok && m.ValidationMode != "" {
+	if _, ok := GetMappingHeaderValidationRequestPolicyValidationModeEnum(string(m.ValidationMode)); !ok && m.ValidationMode != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ValidationMode: %s. Supported values are: %s.", m.ValidationMode, strings.Join(GetHeaderValidationRequestPolicyValidationModeEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -82,4 +82,15 @@ func GetHeaderValidationRequestPolicyValidationModeEnumStringValues() []string {
 		"PERMISSIVE",
 		"DISABLED",
 	}
+}
+
+// GetMappingHeaderValidationRequestPolicyValidationModeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingHeaderValidationRequestPolicyValidationModeEnum(val string) (HeaderValidationRequestPolicyValidationModeEnum, bool) {
+	mappingHeaderValidationRequestPolicyValidationModeEnumIgnoreCase := make(map[string]HeaderValidationRequestPolicyValidationModeEnum)
+	for k, v := range mappingHeaderValidationRequestPolicyValidationModeEnum {
+		mappingHeaderValidationRequestPolicyValidationModeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingHeaderValidationRequestPolicyValidationModeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

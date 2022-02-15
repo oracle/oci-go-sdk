@@ -12,7 +12,7 @@ package cims
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"strings"
 )
 
@@ -81,10 +81,10 @@ func (m ActivityItem) String() string {
 // Not recommended for calling this function directly
 func (m ActivityItem) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingActivityItemActivityTypeEnum[string(m.ActivityType)]; !ok && m.ActivityType != "" {
+	if _, ok := GetMappingActivityItemActivityTypeEnum(string(m.ActivityType)); !ok && m.ActivityType != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ActivityType: %s. Supported values are: %s.", m.ActivityType, strings.Join(GetActivityItemActivityTypeEnumStringValues(), ",")))
 	}
-	if _, ok := mappingActivityItemActivityAuthorEnum[string(m.ActivityAuthor)]; !ok && m.ActivityAuthor != "" {
+	if _, ok := GetMappingActivityItemActivityAuthorEnum(string(m.ActivityAuthor)); !ok && m.ActivityAuthor != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for ActivityAuthor: %s. Supported values are: %s.", m.ActivityAuthor, strings.Join(GetActivityItemActivityAuthorEnumStringValues(), ",")))
 	}
 
@@ -145,6 +145,17 @@ func GetActivityItemActivityTypeEnumStringValues() []string {
 	}
 }
 
+// GetMappingActivityItemActivityTypeEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingActivityItemActivityTypeEnum(val string) (ActivityItemActivityTypeEnum, bool) {
+	mappingActivityItemActivityTypeEnumIgnoreCase := make(map[string]ActivityItemActivityTypeEnum)
+	for k, v := range mappingActivityItemActivityTypeEnum {
+		mappingActivityItemActivityTypeEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingActivityItemActivityTypeEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ActivityItemActivityAuthorEnum Enum with underlying type: string
 type ActivityItemActivityAuthorEnum string
 
@@ -174,4 +185,15 @@ func GetActivityItemActivityAuthorEnumStringValues() []string {
 		"CUSTOMER",
 		"ORACLE",
 	}
+}
+
+// GetMappingActivityItemActivityAuthorEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingActivityItemActivityAuthorEnum(val string) (ActivityItemActivityAuthorEnum, bool) {
+	mappingActivityItemActivityAuthorEnumIgnoreCase := make(map[string]ActivityItemActivityAuthorEnum)
+	for k, v := range mappingActivityItemActivityAuthorEnum {
+		mappingActivityItemActivityAuthorEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingActivityItemActivityAuthorEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }

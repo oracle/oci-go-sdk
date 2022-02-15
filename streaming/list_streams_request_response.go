@@ -6,7 +6,7 @@ package streaming
 
 import (
 	"fmt"
-	"github.com/oracle/oci-go-sdk/v57/common"
+	"github.com/oracle/oci-go-sdk/v58/common"
 	"net/http"
 	"strings"
 )
@@ -85,13 +85,13 @@ func (request ListStreamsRequest) RetryPolicy() *common.RetryPolicy {
 // Not recommended for calling this function directly
 func (request ListStreamsRequest) ValidateEnumValue() (bool, error) {
 	errMessage := []string{}
-	if _, ok := mappingListStreamsSortByEnum[string(request.SortBy)]; !ok && request.SortBy != "" {
+	if _, ok := GetMappingListStreamsSortByEnum(string(request.SortBy)); !ok && request.SortBy != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortBy: %s. Supported values are: %s.", request.SortBy, strings.Join(GetListStreamsSortByEnumStringValues(), ",")))
 	}
-	if _, ok := mappingListStreamsSortOrderEnum[string(request.SortOrder)]; !ok && request.SortOrder != "" {
+	if _, ok := GetMappingListStreamsSortOrderEnum(string(request.SortOrder)); !ok && request.SortOrder != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for SortOrder: %s. Supported values are: %s.", request.SortOrder, strings.Join(GetListStreamsSortOrderEnumStringValues(), ",")))
 	}
-	if _, ok := mappingStreamLifecycleStateEnum[string(request.LifecycleState)]; !ok && request.LifecycleState != "" {
+	if _, ok := GetMappingStreamLifecycleStateEnum(string(request.LifecycleState)); !ok && request.LifecycleState != "" {
 		errMessage = append(errMessage, fmt.Sprintf("unsupported enum value for LifecycleState: %s. Supported values are: %s.", request.LifecycleState, strings.Join(GetStreamLifecycleStateEnumStringValues(), ",")))
 	}
 	if len(errMessage) > 0 {
@@ -160,6 +160,17 @@ func GetListStreamsSortByEnumStringValues() []string {
 	}
 }
 
+// GetMappingListStreamsSortByEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListStreamsSortByEnum(val string) (ListStreamsSortByEnum, bool) {
+	mappingListStreamsSortByEnumIgnoreCase := make(map[string]ListStreamsSortByEnum)
+	for k, v := range mappingListStreamsSortByEnum {
+		mappingListStreamsSortByEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListStreamsSortByEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
+}
+
 // ListStreamsSortOrderEnum Enum with underlying type: string
 type ListStreamsSortOrderEnum string
 
@@ -189,4 +200,15 @@ func GetListStreamsSortOrderEnumStringValues() []string {
 		"ASC",
 		"DESC",
 	}
+}
+
+// GetMappingListStreamsSortOrderEnum performs case Insensitive comparison on enum value and return the desired enum
+func GetMappingListStreamsSortOrderEnum(val string) (ListStreamsSortOrderEnum, bool) {
+	mappingListStreamsSortOrderEnumIgnoreCase := make(map[string]ListStreamsSortOrderEnum)
+	for k, v := range mappingListStreamsSortOrderEnum {
+		mappingListStreamsSortOrderEnumIgnoreCase[strings.ToLower(k)] = v
+	}
+
+	enum, ok := mappingListStreamsSortOrderEnumIgnoreCase[strings.ToLower(val)]
+	return enum, ok
 }
